@@ -10,8 +10,8 @@
 	};
 	2A37F4A9FDCFA73011CA2CEA = {
 		activeBuildStyle = CFA7AB90058DAD29009AC1FE;
-		activeExecutable = CFF98D74058CCD4700176BCE;
-		activeTarget = 8DD76F620486A84900D96B5E;
+		activeExecutable = CF9BB5DA0577B71C0025FDB4;
+		activeTarget = 8D15AC270486D014006FF6A4;
 		addToTargets = (
 			8DD76F620486A84900D96B5E,
 			CF7A1402058CEFE2007126C1,
@@ -135,7 +135,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 127328712;
+			PBXPerProjectTemplateStateSaveDate = 127332731;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -719,13 +719,11 @@
 				PBXModuleWindowStatusBarHidden = YES;
 				RubberWindowFrame = "50 158 898 178 0 0 1024 746 ";
 			};
-			PBXWorkspaceStateSaveDate = 127328712;
+			PBXWorkspaceStateSaveDate = 127332731;
 		};
 		perUserProjectItems = {
-			CF3BD4F40796D822006B4FD7 = CF3BD4F40796D822006B4FD7;
-			CF3BD4FB0796DA2C006B4FD7 = CF3BD4FB0796DA2C006B4FD7;
-			CF3BD4FD0796E1D7006B4FD7 = CF3BD4FD0796E1D7006B4FD7;
 			CF3BD5490796E4DE006B4FD7 = CF3BD5490796E4DE006B4FD7;
+			CF607A670796F2CD00379295 = CF607A670796F2CD00379295;
 			CFFD8F920775D1E3004D9F35 = CFFD8F920775D1E3004D9F35;
 			CFFD901E0775DBF2004D9F35 = CFFD901E0775DBF2004D9F35;
 			CFFD90200775DBF2004D9F35 = CFFD90200775DBF2004D9F35;
@@ -756,7 +754,7 @@
 	};
 	CF31840F0774BF7F0045D262 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {974, 1861}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1133, 2126}}";
 			sepNavSelRange = "{4252, 0}";
 			sepNavVisRect = "{{0, 0}, {0, 0}}";
 			sepNavWindowFrame = "{{176, 318}, {750, 558}}";
@@ -814,36 +812,6 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRect = "{{0, 0}, {458, 18}}";
 		};
-	};
-	CF3BD4F40796D822006B4FD7 = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF3BD4FB0796DA2C006B4FD7 = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF3BD4FD0796E1D7006B4FD7 = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
 	};
 	CF3BD5490796E4DE006B4FD7 = {
 		fRef = CF31840F0774BF7F0045D262;
@@ -1071,6 +1039,16 @@
 			sepNavWindowFrame = "{{176, 36}, {750, 558}}";
 		};
 	};
+	CF607A670796F2CD00379295 = {
+		fRef = CF31840F0774BF7F0045D262;
+		isa = PBXTextBookmark;
+		name = "setof_generation.cpp: generateCppClassImplementation";
+		rLen = 0;
+		rLoc = 4252;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
 	CF6702F605C072FF0065267C = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {705, 755}}";
@@ -1252,11 +1230,11 @@
 	};
 	CF9BB5E70577B7360025FDB4 = {
 		fallbackIsa = XCSourceControlManager;
-		isSCMEnabled = 0;
+		isSCMEnabled = 1;
 		isa = PBXSourceControlManager;
 		scmConfiguration = {
 		};
-		scmType = scm.cvs;
+		scmType = scm.subversion;
 	};
 	CF9BB5E80577B7360025FDB4 = {
 		indexTemplatePath = "";
@@ -1364,10 +1342,10 @@
 	};
 	CFC30F92058A225E003D0386 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {705, 671}}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 767}}";
 			sepNavSelRange = "{759, 18}";
-			sepNavVisRect = "{{0, 0}, {705, 505}}";
-			sepNavWindowFrame = "{{354, -26}, {750, 558}}";
+			sepNavVisRect = "{{0, 64}, {705, 428}}";
+			sepNavWindowFrame = "{{15, 465}, {750, 558}}";
 		};
 	};
 	CFD7E26E059B5B8E00410349 = {
