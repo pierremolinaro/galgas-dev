@@ -258,7 +258,7 @@
 				FC7DE10606ECE95600815CAD,
 			);
 			isa = PBXNativeTarget;
-			name = "Cocoa LL1";
+			name = "GALGAS Cocoa LL1";
 			productInstallPath = "$(HOME)/Applications";
 			productName = essai_cocoa;
 			productReference = 8D15AC370486D014006FF6A4;
@@ -399,7 +399,7 @@
 			dependencies = (
 			);
 			isa = PBXNativeTarget;
-			name = Tool;
+			name = "GALGAS tool";
 			productInstallPath = "$(HOME)/bin";
 			productName = galgas;
 			productReference = CFF98D73058CCD4700176BCE;
@@ -2132,7 +2132,7 @@
 			dependencies = (
 			);
 			isa = PBXNativeTarget;
-			name = "Tool Debug";
+			name = "GALGAS tool debug";
 			productName = galgasDebug;
 			productReference = CF7A1403058CEFE2007126C1;
 			productType = "com.apple.product-type.tool";
