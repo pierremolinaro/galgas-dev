@@ -66,6 +66,8 @@ generateHdeclarations (AC_output_stream & inHfile,
              "                           const e_" << aNomTable << " & inInfo) ;\n"
              "  //--- Method for key compare\n"
              "    public : virtual sint32 compareKeys (void * inKey) const ;\n"
+             "  //--- Method for getting key as C_string\n"
+             "    public : virtual C_string getStringForKey (void) const ;\n"
              "  //--- Get pointers\n"
              "    public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }\n"
              "    public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }\n"
@@ -221,6 +223,18 @@ generateCppClassImplementation (AC_output_stream & inCppFile,
                "  M_assert (reinterpret_cast <GGS_" << mKeyTypeName << " *> (inKey) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  GGS_" << mKeyTypeName << " * key = (GGS_" << mKeyTypeName << " *) inKey ;\n"
                "  return mKey.compare_key_for_map (* key) ;\n"
+               "}\n\n" ;
+
+//--- 'reader_hasKey' method
+  inCppFile.writeHyphenLineComment () ;
+  inCppFile << "C_string GGS_" << aNomTable << "::element_type::getStringForKey (void) const {\n"
+               "  C_string result ;\n" ;
+  if (mKeyTypeName.compareString ("lstring") == 0) {
+    inCppFile << "  result << mKey ;\n" ;
+  }else if (mKeyTypeName.compareString ("luint") == 0) {
+    inCppFile << "  result << mKey.getValue () ;\n" ;
+  }
+  inCppFile << "  return result ;\n"
                "}\n\n" ;
 
 //--- 'constructor_empty' static method
