@@ -300,6 +300,8 @@
 				CF8C5EA105A9AC2A00070938,
 				CF7E89DD0603990700EEA649,
 				CF6AE2E607BE6B3D00BCB161,
+				CF24892107FB261A00E85EE1,
+				CF24892207FB261A00E85EE1,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,6 +605,34 @@
 //CF4
 		CF0B027D0591DF9200BEEB65 = {
 			fileRef = CFA4900F0591D87A00D787ED;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF24891F07FB261900E85EE1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			name = fenetre.png;
+			path = cocoa_galgas/fenetre.png;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF24892007FB261A00E85EE1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			name = saveas.png;
+			path = cocoa_galgas/saveas.png;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF24892107FB261A00E85EE1 = {
+			fileRef = CF24891F07FB261900E85EE1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF24892207FB261A00E85EE1 = {
+			fileRef = CF24892007FB261A00E85EE1;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -3505,6 +3535,8 @@
 		CFAD482E0591BCF700BF8381 = {
 			children = (
 				CF6AE2E507BE6B3D00BCB161,
+				CF24891F07FB261900E85EE1,
+				CF24892007FB261A00E85EE1,
 				CF6702F605C072FF0065267C,
 				CFA48FD30591D6D200D787ED,
 				CFA48FD10591D6D200D787ED,
