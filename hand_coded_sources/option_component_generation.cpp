@@ -170,7 +170,7 @@ generate_option_cpp_file (C_lexique & inLexique,
              "  const char kCharArray ["<< (inBoolOptionsMap.getCount () + 1) << "] = {" ;
   currentOption = inBoolOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
-    generatedZone3.writeCcharConstant (currentOption->mInfo.mOptionChar.getValue ()) ;
+    generatedZone3 << currentOption->mInfo.mOptionChar.getUnicodeValue () ;
     generatedZone3 << ", " ;
     currentOption = currentOption->getNextItem () ;
   }          
@@ -286,7 +286,7 @@ generate_option_cpp_file (C_lexique & inLexique,
              "  const char kCharArray ["<< (inUintOptionsMap.getCount () + 1) << "] = {" ;
   currentOption = inUintOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
-    generatedZone3.writeCcharConstant (currentOption->mInfo.mOptionChar.getValue ()) ;
+    generatedZone3.writeCcharConstant ((char) currentOption->mInfo.mOptionChar.getUnicodeValue ()) ;
     generatedZone3 << ", " ;
     currentOption = currentOption->getNextItem () ;
   }          
