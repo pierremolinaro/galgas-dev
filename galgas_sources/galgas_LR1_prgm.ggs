@@ -18,16 +18,16 @@
 
 program galgas_LR1_prgm "version 0.14.1 (LR(1) grammar)" . "ggs" :
   import grammar galgas_LR1_grammar in "galgas_LR1_grammar.ggs" ;
-  include "" ;
-#--- max error and warning count
-  error 100 ;
-  warning 100 ;
+  include header ;
 #--- Start symbol arguments
   mLexiqueMapForUse ;
   mSemanticsComponentsMap ;
   mSyntaxComponentsMap ;
   mGrammarsComponentsMap ;
   mOptionComponentsMap ;
+#--- max error and warning count
+  error 100 ;
+  warning 100 ;
 end program ;
 
 #---------------------------------------------------------------------------*

@@ -42,21 +42,17 @@ end list ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                     Inclusion fichier '.m'                           *
+#              Grammar descriptor (for program component)                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeAbstraitInclusionM
-  include header ;
-end class ;
-
-class @typePasInclusionM extends @typeAbstraitInclusionM
-end class ;
-
-class @typeInclusionM extends @typeAbstraitInclusionM
-  @lstring attributNomFichier ;
-  @typeListeChaines aListeInclure ;
-end class ;
+list @L_grammarDescriptorForProgram
+  @lstring mGrammarName ;
+  @L_signature_ForGrammarComponent mStartSymbolSignature ;
+  @typeListeAttributsAxiome mStartSymbolAttributesList ;
+  @bool mIncludeHeader ;
+  @lstring mLexiqueClassName ;
+end list ;
 
 #---------------------------------------------------------------------------*
 

@@ -54,8 +54,8 @@ rule <program_attributes_declaration>
 label parse
 ;
 
-rule <include_m_file>
-  !@typeAbstraitInclusionM inclusionFichierM
+rule <include_header_for_program>
+  !@bool outIncludeHeader
 label parse
 ;
 
@@ -63,13 +63,9 @@ action generatePRGM
   ?!@lstring nomPRGMprincipal
   ?!@lstring extensionSource
   ?!@lstring versionString
-  ?!@lstring nomAnalyseurSyntaxique
-  ?!@L_signature_ForGrammarComponent startSymbolSignature
-  ?!@typeListeAttributsAxiome listeDesAttributsAxiome
-  ?!@typeAbstraitInclusionM inclusionFichierM
+  ?!@L_grammarDescriptorForProgram inGrammarDescriptorForProgramList
   ?!@luint nombreMaxErreurs
   ?!@luint nombreMaxAlertes
-  ?!@lstring inLexiqueClassName
   ?!@M_optionComponents inOptionsComponents
 ;
 
@@ -87,7 +83,6 @@ rule <galgas_component>
   @lstring nomPRGMprincipal ; # nom fichier programme principal
   @lstring extensionSource ; # extension fichiers source
   @typeListeAttributsAxiome listeDesAttributs ; # list des noms des attributs de l'axiome
-  @typeAbstraitInclusionM inclusionFichierM ; # fichier d'inclusion .m
   @luint nombreMaxErreurs ; # Nombre maximum d'erreurs
   @luint nombreMaxAlertes ; # Nombre maximum d'alertes
 #--- Get program name
@@ -100,6 +95,7 @@ rule <galgas_component>
   $literal_string$ ? extensionSource ;
   $:$ ;
 #--- Grammaire
+  @L_grammarDescriptorForProgram grammarDescriptorForProgramList [empty] ;
   $import$ ;
   $grammar$ ;
   @lstring grammarName ;
@@ -114,6 +110,7 @@ rule <galgas_component>
     grammarComponentsMap := [@M_grammarComponents empty] ;
     <parse_grammar_component_for_importing> !sourceFileName !?grammarComponentsMap ;
   end select ;
+  $;$ ;
   @lstring lexiqueClassName ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
   @M_optionComponents optionsComponentsMap ;
@@ -123,17 +120,9 @@ rule <galgas_component>
   @lstring altName := [@lstring new !"" !here] ;
   @L_signature_ForGrammarComponent startSymbolSignature ;
   search nonterminalSymbolParametersMap.searchKey altName (?startSymbolSignature) ;
-  $;$ ;
 #--- Définition de l'inclusion
-  <include_m_file> ? inclusionFichierM ;
-#--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? nombreMaxErreurs ;
-  $;$ ;
-#--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? nombreMaxAlertes ;
-  $;$ ;
+  @bool includeHeader ;
+  <include_header_for_program> ? includeHeader ;
 #--- Liste des attributs
   listeDesAttributs := [@typeListeAttributsAxiome empty] ;
   <program_attributes_declaration> !?listeDesAttributs ;
@@ -143,18 +132,23 @@ rule <galgas_component>
   elsif [listeDesAttributs length] > [startSymbolSignature length] then
     error here : "too much parameters" ;
   end if ;
+  grammarDescriptorForProgramList += !grammarName !startSymbolSignature !listeDesAttributs !includeHeader !lexiqueClassName ;
+#--- Max errors count
+  $error$ ;
+  $unsigned_literal_integer$ ? nombreMaxErreurs ;
+  $;$ ;
+#--- Max warnings count
+  $warning$ ;
+  $unsigned_literal_integer$ ? nombreMaxAlertes ;
+  $;$ ;
 #--- Engendrer le programme principal
   action generatePRGM
     !?nomPRGMprincipal
     !?extensionSource
     !?versionString
-    !?grammarName
-    !?startSymbolSignature
-    !?listeDesAttributs
-    !?inclusionFichierM
+    !?grammarDescriptorForProgramList
     !?nombreMaxErreurs
     !?nombreMaxAlertes
-    !?lexiqueClassName
     !?optionsComponentsMap
   ;
   $end$ ;
@@ -181,7 +175,9 @@ label importLexique
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
-  <include_m_file> parse ;
+  <include_header_for_program> parse ;
+#--- Program attributes
+  <program_attributes_declaration> parse ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -190,8 +186,7 @@ label importLexique
   $warning$ ;
   $unsigned_literal_integer$ ? * ;
   $;$ ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
+#--- End program
   $end$ ;
   $program$ ;
   $;$ ;
@@ -214,7 +209,9 @@ label importSyntax
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
-  <include_m_file> parse ;
+  <include_header_for_program> parse ;
+#--- Program attributes
+  <program_attributes_declaration> parse ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -223,8 +220,6 @@ label importSyntax
   $warning$ ;
   $unsigned_literal_integer$ ? * ;
   $;$ ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -247,7 +242,9 @@ label importSemantics
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
-  <include_m_file> parse ;
+  <include_header_for_program> parse ;
+#--- Program attributes
+  <program_attributes_declaration> parse ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -256,8 +253,6 @@ label importSemantics
   $warning$ ;
   $unsigned_literal_integer$ ? * ;
   $;$ ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -280,7 +275,9 @@ label importGrammarForSemantics
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
-  <include_m_file> parse ;
+  <include_header_for_program> parse ;
+#--- Program attributes
+  <program_attributes_declaration> parse ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -289,8 +286,6 @@ label importGrammarForSemantics
   $warning$ ;
   $unsigned_literal_integer$ ? * ;
   $;$ ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -313,7 +308,10 @@ label importOptions
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
-  <include_m_file> parse ;
+#--- Include header
+  <include_header_for_program> parse ;
+#--- Program attributes
+  <program_attributes_declaration> parse ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -322,8 +320,6 @@ label importOptions
   $warning$ ;
   $unsigned_literal_integer$ ? * ;
   $;$ ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -331,34 +327,21 @@ end rule ;
 
 #--------------------------------------------------------------------------------*
 
-rule <include_m_file>
-  !@typeAbstraitInclusionM inclusionFichierM
+rule <include_header_for_program>
+  !@bool outIncludeHeader
 :
-  inclusionFichierM := [@typePasInclusionM new] ;
+  outIncludeHeader := false ;
 end rule ;
 
 #--------------------------------------------------------------------------------*
 
-rule <include_m_file>
-  !@typeAbstraitInclusionM inclusionFichierM
+rule <include_header_for_program>
+  !@bool outIncludeHeader
 :
   $include$ ;
-  @lstring nomFichier ;
-  $literal_string$ ? nomFichier ;
-  @typeListeChaines listeInclure [empty] ;
-  select
-  or
-    $import$ ;
-    repeat
-      @lstring nomInclure ;
-      $literal_string$ ? nomInclure ;
-      listeInclure += !nomInclure ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
-  inclusionFichierM := [@typeInclusionM new !nomFichier !listeInclure] ;
+  $header$ ;
   $;$ ;
+  outIncludeHeader := true ;
 end rule ;
 
 #--------------------------------------------------------------------------------*
