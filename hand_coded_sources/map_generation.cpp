@@ -636,7 +636,7 @@ void cPtr_typeDefinitionTableAimplementer
       messageNumber ++ ;
     }
     inCppFile << "  GGS_" << aNomTable << "::element_type * info = ioMap."
-              << methodeCourante->mKey << " (inLexique, inKey" ;
+              << methodeCourante->mKey << " (inLexique, inKey, inKey" ;
     for (sint32 i=0 ; i<messageNumber ; i++) {
       inCppFile << ", errorMessage_" << i ;
     }
@@ -718,7 +718,7 @@ void cPtr_typeDefinitionTableAimplementer
       numeroVariable ++ ;
       current = current->getNextItem () ;
     }
-    inCppFile << "  const sint32 index = ioMap." << methodeCourante->mKey << " (lexique_var_, info, inKey" ;
+    inCppFile << "  const sint32 index = ioMap." << methodeCourante->mKey << " (lexique_var_, info, inKey, inKey" ;
     for (sint32 i=0 ; i<methodeCourante->mInfo.mErrorMessageList.getCount () ; i++) {
       inCppFile << ", kErrorMessage_" << i ;
     }
