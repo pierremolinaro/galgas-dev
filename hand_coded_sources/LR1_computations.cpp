@@ -400,7 +400,7 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
       }
     }
   }
-  M_SWAP (itemsSet, mItemsSet, TC_unique_grow_array <c_LR1_item>) ;
+  swap (itemsSet, mItemsSet) ;
   mItemsSet.sortArray (c_LR1_item::compare_LR1_items) ;
   macroMyDelete (root, cLR1_items_AVL_tree) ;
 }
@@ -506,7 +506,7 @@ compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
 //---------------------------------------------------------------------------*
 
 void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) {
-  M_SWAP (ioOperand1.mItemsSet, ioOperand2.mItemsSet, TC_unique_grow_array <c_LR1_item>) ;
+  swap (ioOperand1.mItemsSet, ioOperand2.mItemsSet) ;
 }
 
 //---------------------------------------------------------------------------*

@@ -115,7 +115,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
 
 //--- FOLLOW sets, given with an array
   { TC_unique_dyn_array <TC_unique_grow_array <sint32> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
-    M_SWAP (outFOLLOWarray, tempArray, TC_unique_dyn_array <TC_unique_grow_array <sint32> >) ;
+    swap (outFOLLOWarray, tempArray) ;
   }
   outFOLLOWsets.getArray (outFOLLOWarray) ;
 }
