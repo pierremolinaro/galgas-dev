@@ -47,6 +47,7 @@ end list ;
 #---------------------------------------------------------------------------*
 
 list @L_grammarDescriptorForProgram
+  @string mGrammarPostfix ;
   @lstring mGrammarName ;
   @L_signature_ForGrammarComponent mStartSymbolSignature ;
   @typeListeAttributsAxiome mStartSymbolAttributesList ;
