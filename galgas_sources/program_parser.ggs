@@ -132,7 +132,8 @@ rule <galgas_component>
   elsif [listeDesAttributs length] > [startSymbolSignature length] then
     error here : "too much parameters" ;
   end if ;
-  grammarDescriptorForProgramList += !grammarName !startSymbolSignature !listeDesAttributs !includeHeader !lexiqueClassName ;
+  @string postfix := "" ;
+  grammarDescriptorForProgramList += !postfix !grammarName !startSymbolSignature !listeDesAttributs !includeHeader !lexiqueClassName ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? nombreMaxErreurs ;
