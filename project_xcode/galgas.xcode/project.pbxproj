@@ -221,7 +221,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm_3_1_2/cocoa_galgas/cocoaGalgasPrefix.pch;
+				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/cocoaGalgasPrefix.pch;
 				GCC_SHORT_ENUMS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
@@ -242,7 +242,7 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm_3_1_2";
+				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
@@ -384,11 +384,11 @@
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm_3_1_2/cocoa_galgas/cliGalgasPrefix.pch;
+				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/cliGalgasPrefix.pch;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm_3_1_2";
+				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm";
 				INSTALL_PATH = "$(HOME)/bin";
 				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
 				OTHER_LDFLAGS = "";
@@ -447,6 +447,7 @@
 				CFA14160060DB7CB00601791,
 				CF6E113406269BEC001B909F,
 				CF6E113606269BEC001B909F,
+				CF3BD5250796E3B0006B4FD7,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1527,6 +1528,27 @@
 			settings = {
 			};
 		};
+		CF3BD5240796E3B0006B4FD7 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = C_text_file_write.h;
+			path = files/C_text_file_write.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF3BD5250796E3B0006B4FD7 = {
+			fileRef = CF3BD5240796E3B0006B4FD7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF3BD5260796E3B0006B4FD7 = {
+			fileRef = CF3BD5240796E3B0006B4FD7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CF3FF0B705877B62000D2F8C = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -1972,6 +1994,7 @@
 				CFA14162060DB7CB00601791,
 				CF6E113806269BEC001B909F,
 				CF6E113A06269BEC001B909F,
+				CF3BD5260796E3B0006B4FD7,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2097,7 +2120,7 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm_3_1_2";
+				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm";
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -4546,6 +4569,7 @@
 		};
 		CFF538CC057A559D00854C83 = {
 			children = (
+				CF3BD5240796E3B0006B4FD7,
 				CFF538D3057A55C000854C83,
 				CFF538D7057A55C000854C83,
 			);
