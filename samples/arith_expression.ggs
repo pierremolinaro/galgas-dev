@@ -1,0 +1,160 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   L E X I Q U E                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+lexique arithmetique_lexical_parser :
+	header "galgas/lexical_actions.h";
+	
+	@luint number;
+	$number$ ! number error message "a number";
+	
+	$)$ error message "a )";
+	$($ error message "a (";
+	
+	list operator_list error message "the'".*."' keyword":
+		"+",
+		"*";
+	rule list operator_list;
+	
+	message decimalNumberTooLarge : "Decimal number too large";
+	message internalError : "internal error";
+	
+	rule ')' :
+		send $)$;
+	end rule;
+	
+	rule '(' :
+		send $($;
+	end rule;
+	
+	rule '0'->'9':
+		enterDigitIntoUlong(number,*) error decimalNumberTooLarge, internalError;
+		repeat
+		while '0'->'9':
+		enterDigitIntoUlong(number,*) error decimalNumberTooLarge, internalError;
+		while '_' :
+		end repeat;
+		send $number$;
+	end rule;
+	
+end lexique;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S E M A N T I C S                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+semantics arithmetique_semantics :
+	abstract class @cExpression
+		include Header;
+	end class;
+
+	class @cConst extends @cExpression
+         @luint mValue ;
+	end class;
+	
+	
+	class @cAdd extends @cExpression
+       @cExpression mLeftExpression ;
+       @cExpression mRightExpression ;
+	end class;
+	
+	class @cMult extends @cExpression
+       @cExpression mLeftExpression ;
+       @cExpression mRightExpression ;
+	end class;
+	
+	
+end semantics;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S Y N T A X                                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax arithmetique_syntax_parser :
+	import lexique arithmetique_lexical_parser;
+	import semantics arithmetique_semantics;
+	
+	rule <StartSymbol>;
+	rule <Expression>!@cExpression value;
+	rule <Terme>!@cExpression value;
+	rule <Facteur>!@cExpression value;
+	rule <Constant>!@cExpression value;
+	
+	action calculer_expression ?@cExpression r ;
+	
+	rule <StartSymbol>:
+		@cExpression resultat;
+		<Expression>?resultat;
+		action calculer_expression !resultat ;
+	end rule;
+	
+	rule <Constant>!@cExpression value :
+       @luint cst ;
+	  $number$ ? cst;
+       value := [@cConst new !cst] ;
+	end rule;
+	
+	rule <Expression> !@cExpression value:
+       <Terme> ? value ;
+       repeat
+       while 
+         $+$ ;
+         @cExpression rightOperand ;
+         <Terme> ? rightOperand ;
+         value := [@cAdd new !value !rightOperand] ;
+       end repeat ;
+	end rule;
+	
+	rule <Terme> !@cExpression value:
+       <Facteur> ? value ;
+       repeat
+       while 
+         $*$ ;
+         @cExpression rightOperand ;
+         <Facteur> ? rightOperand ;
+         value := [@cMult new !value !rightOperand] ;
+       end repeat ;
+	end rule;
+
+	rule <Facteur> !@cExpression value:
+       select
+        $($ ; <Expression> ?value ; $)$ ;
+       or
+       <Constant> ?value ;
+       end select ;
+     end rule ;
+end syntax;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G R A M M A R                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+grammar arithmetique_grammar "" :
+	import lexique arithmetique_lexical_parser;
+	import syntax arithmetique_syntax_parser;
+	start <StartSymbol>;
+end grammar;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P R O G R A M                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+program arithmetique_parser "version 1.0" ."exp" :
+	import grammar arithmetique_grammar;
+	error 100;
+	warning 100;
+end program;

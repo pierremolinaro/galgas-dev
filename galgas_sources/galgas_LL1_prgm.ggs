@@ -1,0 +1,33 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS main definition                                                   *
+#                                                                           *
+#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+program galgas_LL1_prgm "version 0.14.0 (LL(1) grammar)" . "ggs" :
+  import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
+  include "" ;
+#--- max error and warning count
+  error 100 ;
+  warning 100 ;
+#--- Start symbol arguments
+  mLexiqueMapForUse ;
+  mSemanticsComponentsMap ;
+  mSyntaxComponentsMap ;
+  mGrammarsComponentsMap ;
+  mOptionComponentsMap ;
+end program ;
+
+#---------------------------------------------------------------------------*

@@ -1,0 +1,832 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//  This file handles all computations performed on grammars                 *                                                               *
+//                                                                           *
+//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
+//  ECN, Ecole Centrale de Nantes (France)                                   *
+//                                                                           *
+//  This program is free software; you can redistribute it and/or modify it  *
+//  under the terms of the GNU General Public License as published by the    *
+//  Free Software Foundation.                                                *
+//                                                                           *
+//  This program is distributed in the hope it will be useful, but WITHOUT   *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+//  more details.                                                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+#include "files/C_html_file_write.h"
+#include "files/C_text_file_write.h"
+#include "bdd/C_bdd_descriptor.h"
+#include "bdd/C_bdd_set1.h"
+#include "bdd/C_bdd_set2.h"
+#include "streams/C_console_out.h"
+
+//---------------------------------------------------------------------------*
+
+#include "useful_symbols_computations.h"
+#include "empty_strings_computations.h"
+#include "FIRST_computations.h"
+#include "follow_by_empty_computation.h"
+#include "FOLLOW_computations.h"
+#include "LL1_computations.h"
+#include "grammarComputations.h"
+#include "cPureBNFproductionsList.h"
+#include "SLR_computations.h"
+#include "LR1_computations.h"
+#include "cVocabulary.h"
+#include "printOriginalGrammar.h"
+#include "buildPureBNFgrammar.h"
+#include "semantics_instructions.h"
+#include "grammar_parser.h"
+
+//---------------------------------------------------------------------------*
+
+class cInfo {
+  public : GGS_M_terminalSymbolsMapForUse mTerminalSymbolMap ;
+  public : GGS_M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMapForGrammar ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+cProduction::cProduction (void) {
+  aLigneDefinition = 0 ;
+  aColonneDefinition = 0 ;
+  aNumeroNonTerminalGauche = 0 ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+// As 'cProduction' instances are not copiable, it is unuseful to implement  *
+// copy constructor and assignment operator : if they are actually called,   *
+// a link error occurs. However, Microsoft Visual C++ allways needs          *
+// them, altought they are not actually called !!!! So define them           *
+// for MCS...                                                                *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+#ifdef _MSC_VER
+  void cProduction::
+  operator = (const cProduction &) {
+  }
+#endif
+
+//--------------------------------------------------------------------*
+
+#ifdef _MSC_VER
+  template <typename TYPE>
+  cProduction::
+  cProduction (const cProduction &) {
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cProduction::
+engendrerAppelProduction (const sint16 nombreDeParametres,
+                          const cVocabulary & inVocabulary,
+                          const C_string & inAltName,
+                          AC_output_stream & fichierCPP) const {
+  fichierCPP << "  pr_"
+             << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE)
+             << '_'
+             << mSourceFileName << '_' << aLigneDefinition
+             << '_' << aColonneDefinition << '_' << inAltName
+             << " (lexique_var_" ;
+  for (sint16 i=1 ; i<nombreDeParametres ; i++) {
+    fichierCPP << ',' ;
+    if ((i % 5) == 4) {
+      fichierCPP << "\n                 " ;
+     }
+     fichierCPP << " parameter_" << i ;
+  }
+  fichierCPP << ") ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
+  swap (ioProduction1.mSourceFileName, ioProduction2.mSourceFileName) ;
+  swap (ioProduction1.aLigneDefinition, ioProduction2.aLigneDefinition) ;
+  swap (ioProduction1.aColonneDefinition, ioProduction2.aColonneDefinition) ;
+  swap (ioProduction1.aNumeroNonTerminalGauche, ioProduction2.aNumeroNonTerminalGauche) ;
+  M_SWAP (ioProduction1.aDerivation, ioProduction2.aDerivation, TC_unique_grow_array <sint16>) ;
+  swap (ioProduction1.aPremierDeProduction, ioProduction2.aPremierDeProduction) ;
+}
+
+//---------------------------------------------------------------------------*
+
+static bool
+searchForIdenticalProductions (const cPureBNFproductionsList & productions,
+                               C_html_file_write & inHTMLfile) {
+  inHTMLfile.outputRawData ("<p><a name=\"identical_productions\"></a></p>") ;
+  inHTMLfile.writeTitleComment ("Step 2 : searching for identical productions", "title") ;
+  bool ok = true ;
+  for (sint32 i=0 ; i<productions.getLength () ; i++) {
+    const cProduction & pi = productions (i COMMA_HERE) ;
+    for (sint32 j=i+1 ; j<productions.getLength () ; j++) {
+      const cProduction & pj = productions (j COMMA_HERE) ;
+      bool identiques = pi.aNumeroNonTerminalGauche == pj.aNumeroNonTerminalGauche ;
+      if (identiques) {
+        identiques = pi.aDerivation.getCount () == pj.aDerivation.getCount () ;
+        for (sint32 t=0 ; (t<pi.aDerivation.getCount ()) && identiques ; t++) {
+          identiques = pi.aDerivation (t COMMA_HERE) == pj.aDerivation (t COMMA_HERE) ;
+        }
+      }
+      if (identiques) {
+        inHTMLfile << "  Error : productions " << i << " and " << j << " are identical.\n" ;
+      }
+    }
+  }
+  inHTMLfile.outputRawData ("<p>") ;
+  if (ok) {
+    inHTMLfile.outputRawData ("<span class=\"success\">") ;
+    inHTMLfile << "Ok : all productions are different.\n" ;
+    inHTMLfile.outputRawData ("</span>") ;
+  }else{
+    inHTMLfile.outputRawData ("<span class=\"error\">") ;
+    inHTMLfile << "As the grammar presents identical productions, it is ambiguous :\n"
+                  "it is impossible to build a deterministic parser.\n\n" ;
+    inHTMLfile.outputRawData ("</span>") ;
+  }
+  inHTMLfile.outputRawData ("</p>") ;
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//    Generate class registering instructions in C++ file                    *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+void
+generateClassRegistering (AC_output_stream & inCppfile,
+                          const C_galgas_stringset & inClassesNamesSet) {
+  const sint32 classesCount = inClassesNamesSet.getCount () ;
+  inCppfile << "// classesCount : " << classesCount << '\n' ;
+  for (sint32 i=0 ; i<classesCount ; i++) {
+    inCppfile << "// " << i << " : " << inClassesNamesSet (i COMMA_HERE) << '\n' ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+static void
+generateGrammarHeaderFile (C_lexique & inLexique,
+                           const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+                           const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
+                           const C_string & inLexiqueName,
+                           const uint32 inOriginalGrammarStartSymbol,
+                           const C_string & inTargetFileName,
+                           const cVocabulary & inVocabulary) {
+  C_string generatedZone2 ;
+  generatedZone2 << "#ifndef GRAMMAR_" << inTargetFileName << "_DEFINED\n"
+                 << "#define GRAMMAR_" << inTargetFileName << "_DEFINED\n\n" ;
+
+//--- Engendrer les inclusions --------------------------------------------------------------
+  generatedZone2.writeHyphenLineComment () ;
+  GGS_L_syntaxComponents_ForGrammar::element_type * component = inSyntaxComponentsList.getFirstItem () ;
+  while (component != NULL) {
+    macroValidPointer (component) ;
+    generatedZone2 << "#include \"" << component->mSyntaxComponentName << ".h\"\n" ;
+    component = component->getNextItem () ;
+  }
+  generatedZone2 << '\n' ;
+
+//--- Engendrer la classe de l'analyseur syntaxique ------------------------------------------
+  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  generatedZone3.writeHyphenLineComment () ;
+  generatedZone3 << "class " << inTargetFileName ;
+  component = inSyntaxComponentsList.getFirstItem () ;
+//--- Liens d'héritage
+  bool premier = true ;
+  while (component != NULL) {
+    macroValidPointer (component) ;
+    if (premier) {
+      generatedZone3 << " :" ;
+      premier = false ;
+    }else{
+      generatedZone3 << ",\n                                " ;
+    }
+    generatedZone3 << " public " << component->mSyntaxComponentName ;
+    component = component->getNextItem () ;
+  }
+  generatedZone3 << " {\n" ;
+//--- declaration des non-terminaux de la grammaire d'origine
+  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
+  while (nonTerminal != NULL) {
+    macroValidPointer (nonTerminal) ;
+    GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
+    while (currentAltForNonTerminal != NULL) {
+      generatedZone3 << "  public : virtual void "
+               "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+            << " (" << inLexiqueName << " &" ;
+      GGS_L_signature_ForGrammarComponent::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.getFirstItem () ;
+      while (parametre != NULL) {
+        macroValidPointer (parametre) ;
+        generatedZone3 << ",\n                                " ;
+        generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
+        parametre = parametre->getNextItem () ;
+      }
+      generatedZone3 << ") ;\n" ; 
+      if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
+        generatedZone3 << "  public : void startParsing_" << currentAltForNonTerminal->mKey 
+              << " (" << inLexiqueName << " &" ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.getFirstItem () ;
+        while (parametre != NULL) {
+          macroValidPointer (parametre) ;
+          generatedZone3 << ",\n                                " ;
+          generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
+          parametre = parametre->getNextItem () ;
+        }
+        generatedZone3 << ") ;\n" ;
+      }
+      currentAltForNonTerminal = currentAltForNonTerminal->getNextItem () ;
+    }
+  //--- Next non terminal
+    nonTerminal = nonTerminal->getNextItem () ;
+  }
+//--- declaration des non-terminaux pour les instructions choix et repeter
+  for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+    if (inVocabulary.needToGenerateChoice (i COMMA_HERE)) {
+      generatedZone3 << "  public : virtual sint16 " << inVocabulary.getSymbol (i COMMA_HERE) << " ("
+            << inLexiqueName << " &) ;\n" ;
+    }
+  }
+
+//--- Fin de la classe
+  generatedZone3 << "} ;\n\n" ;
+
+//--- End of file
+  generatedZone3.writeHyphenLineComment () ;
+  generatedZone3 << "#endif\n" ;
+
+//--- Generate file
+  inLexique.generateFile (inTargetFileName + ".h",
+                          "\n\n", // User Zone 1
+                          generatedZone2,
+                          "\n\n", // User Zone 2
+                          generatedZone3) ;
+}
+
+//---------------------------------------------------------------------------*
+
+static void
+fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList,
+                            cInfo & inInfo,
+                            C_lexique & inLexique) {
+  GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.getFirstItem () ;
+  while (currentInstruction != NULL) {
+    macroValidPointer (currentInstruction) ;
+    currentInstruction->mInstruction ()->fixInfos (inInfo, inLexique) ;
+
+    currentInstruction = currentInstruction->getNextItem () ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_T_repeatInstruction_forGrammarComponent::
+fixInfos (cInfo & inInfo,
+          C_lexique & inLexique) {
+  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.getFirstItem () ;
+  while (currentBranch != NULL) {
+    macroValidPointer (currentBranch) ;
+    fixInfoForInstructionsList (currentBranch->mInstructionsList,
+                                inInfo,
+                                inLexique) ;
+    currentBranch = currentBranch->getNextItem () ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_T_selectInstruction_forGrammarComponent::
+fixInfos (cInfo & inInfo,
+          C_lexique & inLexique) {
+  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.getFirstItem () ;
+  while (currentBranch != NULL) {
+    macroValidPointer (currentBranch) ;
+    fixInfoForInstructionsList (currentBranch->mInstructionsList,
+                                inInfo,
+                                inLexique) ;
+    currentBranch = currentBranch->getNextItem () ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_T_nonterminalInstruction_forGrammarComponent::
+fixInfos (cInfo & inInfo,
+          C_lexique & inLexique) {
+/* § GGS_M_nonTerminalSymbolsForGrammar::element_type * p = searchKey_M_nonTerminalSymbolsForGrammar
+                (inLexique,
+                 mNonterminalSymbolName,
+                 mNonterminalSymbolName,
+                 inInfo.mNonterminalSymbolsMapForGrammar) ;
+  macroValidPointer (p) ;
+  mNonterminalSymbolIndex.mValue = (uint32) p->mEntryIndex ;*/
+  GGS_luint index ;
+  searchKey_M_nonTerminalSymbolsForGrammar (inLexique, inInfo.mNonterminalSymbolsMapForGrammar, mNonterminalSymbolName,
+                                            NULL, & index) ;
+  mNonterminalSymbolIndex.mValue = index.getValue () ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_T_terminalInstruction_forGrammarComponent::
+fixInfos (cInfo & inInfo,
+          C_lexique & inLexique) {
+/* §  GGS_M_terminalSymbolsMapForUse::element_type * p = searchKey_M_terminalSymbolsMapForUse
+                (inLexique,
+                 mTerminalSymbolName,
+                 mTerminalSymbolName,
+                 inInfo.mTerminalSymbolMap) ;
+  if (p != NULL) {
+    macroValidPointer (p) ;
+    mTerminalSymbolIndex.mValue = (uint32) p->mEntryIndex ;
+  }else{ // The terminal symbol does not exist. A lexical error has been raised
+    mTerminalSymbolIndex.mValue = 0 ;
+  }*/
+  GGS_luint index ;
+  searchKey_M_terminalSymbolsMapForUse (inLexique, inInfo.mTerminalSymbolMap, mTerminalSymbolName, NULL, & index) ;
+  mTerminalSymbolIndex.mValue = index.getValue () ;
+}
+
+//---------------------------------------------------------------------------*
+
+static const char k_default_style [] = {
+  "body {\n"
+  "  font-family: Helvetica, sans-serif ;\n"
+  "	font-size: small ;\n"
+  "}\n"
+  "\n"
+  "h1 {\n"
+  "  text-align: center ;\n"
+  "}\n"
+  "\n"
+  "a.header_link {\n"
+  "	 border: 1px solid #999999 ;\n"
+  "	 padding: 4px ;\n"
+  "  background-color: #FFFFCC ;\n"
+  "  font-weight: bold ;\n"
+  "}\n"
+  "\n"
+  "a:visited, a:link, a:active{\n"
+  " color: blue ;\n"
+  " text-decoration: underline ;\n"
+  "}\n"
+  "\n"
+  "a:hover {\n"
+  "  color:green ;\n"
+  "  background-color: #FF9966 ;\n"
+  "  text-decoration: none ;\n"
+  "}\n"
+  "\n"
+  "table.title {\n"
+  "  width: 100% ;\n"
+  "	border: 1px solid #999999 ;\n"
+  "  background-color: yellow ;\n"
+  "  font-weight: bold ;\n"
+  "	text-align: center ;\n"
+  "}\n"
+  "\n"
+  "table.result {\n"
+  "	border: 1px solid #999999 ;\n"
+  "}\n"
+  "\n"
+  "td.result_title {\n"
+  "  font-weight: bold ;\n"
+  "	text-align: center ;\n"
+  "}\n"
+  "\n"
+  "tr.result_line {\n"
+  "  background-color: #EEEEEE ;\n"
+  "}\n"
+  "\n"
+  "span.error {\n"
+  "  font-weight: bold ;\n"
+  "  color: red ;\n"
+  "}\n"
+  "\n"
+  "span.warning {\n"
+  "  font-weight: bold ;\n"
+  "  color: #FF9966 ;\n"
+  "}\n"
+  "\n"
+  "span.success {\n"
+  "  font-weight: bold ;\n"
+  "  color: green ;\n"
+  "}\n"
+  "\n"
+  "span.list {\n"
+  "  display: block ;\n"
+  "  line-height: 100% ;\n"
+  "}\n"
+  "\n"
+  "span.galgas_structure {\n"
+  "  display: block ;\n"
+  "}\n"
+  "\n"
+  "span.within_galgas_structure {\n"
+  "  display: block ;\n"
+  "  padding-left: 1em ;\n"
+  "  margin-left: 1em ;\n"
+  "  border-left: 1px dotted black ;\n"
+  "}\n"
+  "\n"
+  "span.galgas_keyword {\n"
+  "  display: block ;\n"
+  "  font-weight: bold ;\n"
+  "  color: blue ;\n"
+  "}\n"
+  "\n"
+  "span.galgas_terminal {\n"
+  "}\n"
+  "\n"
+  "span.galgas_nonterminal {\n"
+  "}\n"
+} ;
+
+//---------------------------------------------------------------------------*
+
+static void
+createStyleFile (const C_string & inCurrentDirectory, 
+                 const char * inStyleFileName) {
+  C_string f = inCurrentDirectory + '/' + inStyleFileName ;
+  if (! f.fileExists ()) {
+    C_text_file_write styleFile (f COMMA_SAFARI_CREATOR) ;
+    styleFile << k_default_style ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void
+analyzeGrammar (C_lexique & inLexique,
+                GGS_lstring & inTargetFileName,
+                const GGS_lstring & inGrammarClass,
+                GGS_luint & inOriginalGrammarStartSymbol,
+                GGS_lstring & inLexiqueName,
+                const GGS_location & errorLocation,
+                GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
+                GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
+                GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
+  C_galgas_stringset inClassesNamesSet ; // $
+  bool warningFlag = false ;
+
+//--- Fix info about terminal and nonterminal symbols
+  cInfo symbolsInfo ;
+  symbolsInfo.mTerminalSymbolMap = ioTerminalSymbolMap ;
+  symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
+  GGS_L_syntaxComponents_ForGrammar::element_type * currentSyntaxComponent = inSyntaxComponentsList.getFirstItem () ;
+  while (currentSyntaxComponent != NULL) {
+    macroValidPointer (currentSyntaxComponent) ;
+    GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentSyntaxComponent->mProductionRulesList.getFirstItem () ;
+    while (currentRule != NULL) {
+      macroValidPointer (currentRule) ;
+      GGS_luint index ;
+      searchKey_M_nonTerminalSymbolsForGrammar (inLexique, inNonterminalSymbolsMapForGrammar, currentRule->mLeftNonterminalSymbol,
+                                                NULL, & index) ;
+      currentRule->mLeftNonterminalSymbolIndex.mValue = index.getValue () ;
+    //--- Fix, for each rule, left nonterminal symbol index
+      fixInfoForInstructionsList (currentRule->mInstructionsList,
+                                  symbolsInfo,
+                                  inLexique) ;
+    //--- Next rule
+      currentRule = currentRule->getNextItem () ;
+    }
+    currentSyntaxComponent = currentSyntaxComponent->getNextItem () ;
+  }
+
+//--- Create GALGAS_OUTPUT directory
+  const C_string GALGAS_OUTPUT_directory = inLexique.getSourceFile ().getPath () + "/GALGAS_OUTPUT/" ;
+  GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
+
+//--- Depending of grammar class, fix operations to perform
+  typedef enum {kDefaultBehavior, kLL1grammar, kSLRgrammar, kLR1grammar, kGrammarClassError} enumGrammarClass ;
+  enumGrammarClass grammarClass = kGrammarClassError ;
+  if (inGrammarClass.getLength () == 0) { // Default behavior
+    grammarClass = kDefaultBehavior ;
+  }else if (inGrammarClass.compareString ("LL1") == 0) { // Force LL (1) grammar
+    grammarClass = kLL1grammar ;
+  }else if (inGrammarClass.compareString ("SLR") == 0) { // Force SLR grammar
+    grammarClass = kSLRgrammar ;
+  }else if (inGrammarClass.compareString ("LR1") == 0) { // Force LR (1) grammar
+    grammarClass = kLR1grammar ;
+  }else{ // Unknown class... error !
+    inGrammarClass.signalSemanticError (inLexique, "Unknown grammar class") ;
+  }
+
+//--- Error flag
+  typedef enum {kNoError, kError, kGrammarNotLL1, kGrammarNotSLR, kGrammarNotLR1} enumErrorKind ;
+  enumErrorKind errorFlag = kNoError ;
+
+//--- Output a HTML file ?
+  bool optionExists = false ;
+  const char * galgas_cli_component = "galgas_cli_options" ;
+  const char * outputHTMLgrammarFile = "outputHTMLgrammarFile" ;
+  const bool outputHTMLfile = inLexique.getGalgasIOptr ()->getBoolOptionValueFromKeys (galgas_cli_component,
+                                                                       outputHTMLgrammarFile,
+                                                                       & optionExists) ;
+  if (! optionExists) {
+    C_string warningMessage ;
+    warningMessage << galgas_cli_component << ".@" << outputHTMLgrammarFile << " option does not exist." ;
+    inLexique.onTheFlySemanticWarning (warningMessage) ;
+  }
+//--- Create "style.css" file if it does not exist
+  if (outputHTMLfile) {
+    createStyleFile (inLexique.getSourceFile ().getPath (), "style.css") ;
+  }
+
+//--- If 'HTMLfileName' is the empty string, no file is created
+  C_string s ;
+  s << "'" << inTargetFileName << "' grammar" ;
+  const C_string HTMLfileName = outputHTMLfile
+    ? (inLexique.getSourceFile ().getPath () + "/" + inTargetFileName + ".html")
+    : C_string () ;
+//--- Create output HTML file (if file is the empty string, no file is created)
+  C_html_file_write HTMLfile (HTMLfileName,
+                              s,
+                              "style.css"
+                              COMMA_SAFARI_CREATOR) ;
+
+//--- HTML title
+  HTMLfile.outputRawData ("<h1>") ;
+  HTMLfile << s ;
+  HTMLfile.outputRawData ("</h1>") ;
+
+//--- Create links to page entries
+  HTMLfile.outputRawData ("<p><a class=\"header_link\" href=\"#pure_bnf\">Pure BNF productions</a></p>"
+                          "<p><a class=\"header_link\" href=\"#vocabulary\">Vocabulary</a></p>"
+                          "<p><a class=\"header_link\" href=\"#identical_productions\">Identical productions</a></p>"
+                          "<p><a class=\"header_link\" href=\"#useful_symbols\">Useful symbols</a></p>"
+                          "<p><a class=\"header_link\" href=\"#empty_strings\">Empty string derivations</a></p>"
+                          "<p><a class=\"header_link\" href=\"#first_sets\">First sets</a></p>"
+                          "<p><a class=\"header_link\" href=\"#follow_by_empty\">Follow by empty</a></p>"
+                          "<p><a class=\"header_link\" href=\"#grammar\">Grammar analysis</a></p>"
+                          ) ;
+
+//--- Fix parameters for BDD package
+  C_bdd::changeHashMapSize (300) ;
+  C_bdd::changeITEcacheSize (100) ;
+
+//--- Print original grammar in BNF file
+  if ((errorFlag == 0) && (grammarClass != kGrammarClassError)) {
+    HTMLfile.writeTitleComment ("Original grammar", "title") ;
+    printOriginalGrammar (HTMLfile, inSyntaxComponentsList) ;
+  }
+//--- Building pure BNF productions ---------------------------------------------------------------------
+  cVocabulary vocabulary ;
+  cPureBNFproductionsList pureBNFproductions ;
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
+    co << "  Building pure BNF productions... " ;
+
+  //--- Build vocabulary
+    vocabulary.build (ioTerminalSymbolMap,
+                      inNonterminalSymbolsMapForGrammar,
+                      inOriginalGrammarStartSymbol.getValue ()) ;
+  
+  //--- Build pure BNFproductions, add new non terminal symbols from 'repeat' and 'select' instructions
+    buildPureBNFgrammar (inSyntaxComponentsList,
+                         vocabulary,
+                         pureBNFproductions) ;
+
+  //--- Print in bnf file the pure BNF productions
+    HTMLfile.outputRawData ("<p></p>") ;
+    HTMLfile.writeTitleComment ("  Pure BNF productions list", "title") ;
+    printPureBNFgrammarInBNFfile (HTMLfile, vocabulary, pureBNFproductions) ;
+    co << pureBNFproductions.getLength () << " productions.\n" ;
+    co.flush () ;
+  }
+
+//--- Define vocabulary BDD sets descriptor
+  const C_bdd_descriptor vocabularyDescriptor ((uint32) (vocabulary.getAllSymbolsCount () - 1)) ;
+
+//--- Search for identical productions -----------------------------------------------------------
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
+    co << "  Searching for identical productions... " ;
+    const bool step2ok = searchForIdenticalProductions (pureBNFproductions, HTMLfile) ;
+    if (! step2ok) {
+      errorFlag = kError ;
+    }
+    co << (step2ok ? "none, ok.\n" : "error.\n") ;
+  }
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
+  //--- Enregistrer les caractéristiques de la grammaire
+    HTMLfile << "For information :\n" ;
+    HTMLfile.outputRawData ("<ul><li>") ;
+    HTMLfile << ((sint32)(vocabulary.getTerminalSymbolsCount () - 1))
+             << " terminal symbols, numbered from 0 to "
+             << ((sint32)(vocabulary.getTerminalSymbolsCount () - 2)) << " ;" ;
+    HTMLfile.outputRawData ("</li>\n<li>") ;
+    HTMLfile << " the 'empty string' symbol '$$' is numbered "
+             << vocabulary.getEmptyStringTerminalSymbolIndex () << " ;" ;
+    HTMLfile.outputRawData ("</li>\n<li>") ;
+    HTMLfile << vocabulary.getNonTerminalSymbolsCount ()
+             << " nonterminal symbols in the pure BNF grammar, numbered from "
+             << vocabulary.getTerminalSymbolsCount ()
+             << " to "
+             << ((sint32)(vocabulary.getAllSymbolsCount () - 1)) << " ;" ;
+    HTMLfile.outputRawData ("</li>\n<li>") ;
+    HTMLfile << "whole vocabulary : "
+             << vocabulary.getAllSymbolsCount ()
+             << " elements, "
+             << vocabularyDescriptor.getBDDbitsSize ()
+             << " bits for BDDs." ;
+ //   HTMLfile.outputRawData ("</li>\n</ul></p>\n") ;
+    HTMLfile.outputRawData ("</li>\n</ul>\n") ;
+  }
+//--- Getting useful symbols ---------------------------------------------------------------------
+  C_bdd_set1 usefulSymbols (vocabularyDescriptor) ;
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
+    useful_symbols_computations (pureBNFproductions,
+                                 vocabulary,
+                                 HTMLfile,
+                                 usefulSymbols,
+                                 warningFlag) ;
+  }
+//--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
+  TC_unique_dyn_array <bool> vocabularyDerivingToEmpty_Array ;
+  C_bdd_set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptor) ;
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
+    empty_strings_computations (pureBNFproductions,
+                                HTMLfile,
+                                vocabulary,
+                                vocabularyDerivingToEmpty_Array,
+                                vocabularyDerivingToEmpty_BDD) ;
+  }
+//--- Computing FIRST sets ---------------------------------------------------------------
+  C_bdd_set2 FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
+  TC_unique_dyn_array <TC_unique_grow_array <sint32> > FIRSTarray ;
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
+    bool ok = false ;
+    FIRST_computations (pureBNFproductions,
+                        HTMLfile,
+                        vocabulary,
+                        vocabularyDerivingToEmpty_Array,
+                        vocabularyDerivingToEmpty_BDD,
+                        usefulSymbols,
+                        FIRSTsets,
+                        FIRSTarray,
+                        vocabularyDescriptor,
+                        ok) ;
+    if (! ok) {
+      errorFlag = kError ;
+    }
+  }
+//--- Calcul de l'ensemble des non-terminaux pouvant être suivi du vide -------------------------------
+  C_bdd_set1 nonTerminalSymbolsFollowedByEmpty (vocabularyDescriptor) ;
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
+    follow_by_empty_computations (pureBNFproductions,
+                                  HTMLfile,
+                                  vocabulary,
+                                  vocabularyDerivingToEmpty_Array,
+                                  nonTerminalSymbolsFollowedByEmpty) ;
+  }
+//--- Computing FOLLOW sets ---------------------------------------------------------------
+  C_bdd_set2 FOLLOWsets (vocabularyDescriptor, vocabularyDescriptor) ;
+  TC_unique_dyn_array <TC_unique_grow_array <sint32> > FOLLOWarray ;
+  if ((errorFlag == kNoError) &&
+      (grammarClass != kGrammarClassError) &&
+      (grammarClass != kLR1grammar)) { // Follow are not used by LR(1) computations
+    bool ok = false ;
+    FOLLOW_computations (pureBNFproductions,
+                         HTMLfile,
+                         vocabulary,
+                         vocabularyDerivingToEmpty_Array,
+                         usefulSymbols,
+                         FIRSTsets,
+                         nonTerminalSymbolsFollowedByEmpty,
+                         FOLLOWsets,
+                         FOLLOWarray,
+                         ok) ;
+    if (! ok) {
+      errorFlag = kError ;
+    }
+  }
+//--- Checking LL (1) condition -------------------------------------------------------------
+  HTMLfile.outputRawData ("<a name=\"grammar\"></a>") ;
+  if ((errorFlag == kNoError)
+   && ((grammarClass == kDefaultBehavior) || (grammarClass == kLL1grammar))) {
+    bool ok = false ;
+    LL1_computations (inLexique,
+                      pureBNFproductions,
+                      HTMLfile,
+                      vocabulary,
+                      vocabularyDerivingToEmpty_Array,
+                      FIRSTsets,
+                      FOLLOWsets,
+                      inNonterminalSymbolsMapForGrammar,
+                      inOriginalGrammarStartSymbol.getValue (),
+                      inTargetFileName,
+                      inLexiqueName,
+                      inClassesNamesSet,
+                      ok) ;
+    if (! ok) {
+      errorFlag = kGrammarNotLL1 ;
+    }
+  }
+//--- SLR computations... -----------------------------------------------------------------
+ if (((errorFlag == kGrammarNotLL1) && (grammarClass == kDefaultBehavior))
+        ||
+     ((errorFlag == kNoError) && (grammarClass == kSLRgrammar))) {
+    bool ok = false ;
+    SLR_computations (inLexique,
+                      pureBNFproductions,
+                      vocabulary,
+                      HTMLfile,
+                      FOLLOWarray,
+                      inNonterminalSymbolsMapForGrammar,
+                      inOriginalGrammarStartSymbol.getValue (),
+                      inTargetFileName,
+                      inLexiqueName,
+                      inClassesNamesSet,
+                      ok) ;
+    if (ok) {
+      errorFlag = kNoError ;
+    }else{
+      errorFlag = kGrammarNotSLR ;
+    }
+  }
+
+//--- LR (1) computations... -------------------------------------------------------------
+ if (((errorFlag == kGrammarNotSLR) && (grammarClass == kDefaultBehavior))
+        ||
+     ((errorFlag == kNoError) && (grammarClass == kLR1grammar))) {
+    bool ok = false ;
+    LR1_computations (inLexique,
+                      pureBNFproductions,
+                      vocabulary,
+                      HTMLfile,
+                      FIRSTarray,
+                      vocabularyDerivingToEmpty_Array,
+                      inNonterminalSymbolsMapForGrammar,
+                      inOriginalGrammarStartSymbol.getValue (),
+                      inTargetFileName,
+                      inLexiqueName,
+                      inClassesNamesSet,
+                      ok) ;
+    if (ok) {
+      errorFlag = kNoError ;
+    }else{
+      errorFlag = kGrammarNotLR1 ;
+    }
+  }
+
+//--- Final step : Generation of C++ grammar files ---------------------------------------------------------------------
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
+    generateGrammarHeaderFile (inLexique,
+                               inNonterminalSymbolsMapForGrammar,
+                               inSyntaxComponentsList,
+                               inLexiqueName,
+                               inOriginalGrammarStartSymbol.getValue (),
+                               inTargetFileName,
+                               vocabulary) ;
+  }
+//--- END -------------------------------------------------------------------------------------------------------
+  C_bdd::markAndSweepUnusedNodes () ;
+  if (errorFlag != kNoError) {
+    C_string s ; s << "ENDING ON ERROR, STEP" << ((uint16) errorFlag) ;
+    HTMLfile.writeTitleComment (s, "title") ;
+    C_string errorMessage  ;
+    if (HTMLfileName.getLength () > 0) {
+      errorMessage << "errors have been raised when analyzing the grammar: see file"
+                      " '"
+                   << HTMLfileName
+                   << "'" ;
+    }else{
+      errorMessage << "errors have been raised when analyzing the grammar:"
+                      " turn on '--output-html-grammar-file' option in order to get an output file for debugging" ;
+
+    }
+    errorLocation.signalSemanticError (inLexique, errorMessage) ;
+  }else if (warningFlag) {
+    C_string s ;
+    s << "OK ; no error, but warning(s) step(s)" ;
+    sint32 i = 1 ;
+    while (warningFlag != 0) {
+      if ((warningFlag & 1) != 0) {
+        s << ' ' << i ;
+      }
+      warningFlag >>= 1 ;
+      i ++ ;
+    }
+    HTMLfile.writeTitleComment (s, "title") ;
+    C_string warningMessage  ;
+    warningMessage << "warnings have been raised when analyzing the grammar: " ;
+    if (HTMLfileName.getLength () > 0) {
+      warningMessage << "see file '" << HTMLfileName << "'" ;
+    }else{
+      warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName << ".html' file" ;
+    }
+    errorLocation.signalSemanticWarning (inLexique, warningMessage) ;
+  }else{
+    HTMLfile.writeTitleComment ("OK (no error, no warning)", "title") ;
+  }
+}
+
+//---------------------------------------------------------------------------*

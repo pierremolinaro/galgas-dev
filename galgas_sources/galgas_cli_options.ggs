@@ -1,0 +1,23 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS Command Line Option Definition                                    *
+#                                                                           *
+#  Copyright (C) 2004 Pierre Molinaro.                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+option galgas_cli_options :
+  @bool outputHTMLgrammarFile : 'H', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
+  @bool parse_only : 'p', "parseonly" -> "Parse only input files" ;
+  @bool generate_debug : 'g', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols " ;
+end option ;
