@@ -61,7 +61,7 @@ void appendJokersIfNeeded (C_lexique &,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -111,7 +111,7 @@ void cPtr_typeExternTypeToGenerate
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -194,7 +194,7 @@ void cPtr_typeRoutineAengendrer
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -365,7 +365,7 @@ generate_header_file (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -386,7 +386,7 @@ generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -451,7 +451,7 @@ void cPtr_typeNullName
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -516,7 +516,7 @@ void cPtr_typeNullName
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -571,7 +571,7 @@ enumVariableKind cPtr_typeNullName::getVariableKind (void) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -602,7 +602,7 @@ generateFormalArgumentFromTypeName (const C_string & inTypeName,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -639,7 +639,7 @@ generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -668,7 +668,7 @@ generatePublicDeclaration (AC_output_stream & inHfile,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -696,7 +696,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -724,7 +724,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -751,7 +751,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -779,7 +779,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -807,7 +807,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -835,7 +835,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -863,7 +863,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -891,7 +891,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -919,7 +919,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -947,7 +947,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -961,7 +961,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -975,7 +975,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -989,7 +989,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1003,7 +1003,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1017,7 +1017,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1031,7 +1031,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1059,7 +1059,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1087,7 +1087,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1115,7 +1115,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1143,7 +1143,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1171,7 +1171,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1199,7 +1199,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1227,7 +1227,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -1255,7 +1255,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 

@@ -80,7 +80,7 @@ compare_LR0_items (const c_LR0_item & inItem1,
 
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -292,7 +292,7 @@ void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) {
 
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -471,7 +471,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
  
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -581,7 +581,7 @@ getProductionsWhereLocationIsRight (const sint32 inStateIndex,
 
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -612,7 +612,7 @@ c_LR0_automaton_transition::c_LR0_automaton_transition (const sint32 inSourceSta
 
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -677,7 +677,7 @@ cLR0_decisionTableElement cLR0_decisionTableElement::acceptDecision (void) {
 
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 

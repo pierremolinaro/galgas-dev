@@ -64,7 +64,7 @@ bool cPtr_typeInstructionItererTable
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -110,7 +110,7 @@ bool cPtr_typeInstructionItererListeSimple
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 

@@ -473,7 +473,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
