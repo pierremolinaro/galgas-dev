@@ -18,14 +18,14 @@
 
 #define macro_typeAbstraitInclusionM \
 public : virtual void engendrerInclusionFichierM (AC_output_stream & inHfile, \
-                                                  const GGS_lstring & nomPRGMprincipal) = 0 ; \
+                                                  const C_string & nomPRGMprincipal) = 0 ; \
 public : virtual void engendrerDirectivesInclude (AC_output_stream & inHfile) = 0 ;
 
 //--------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeAbstraitInclusionM \
 public : virtual void engendrerInclusionFichierM (AC_output_stream & inHfile, \
-                                                  const GGS_lstring & nomPRGMprincipal) ; \
+                                                  const C_string & nomPRGMprincipal) ; \
 public : virtual void engendrerDirectivesInclude (AC_output_stream & inHfile) ;
 
 //--------------------------------------------------------------------------*

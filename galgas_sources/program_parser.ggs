@@ -66,7 +66,6 @@ action generatePRGM
   ?!@lstring nomAnalyseurSyntaxique
   ?!@L_signature_ForGrammarComponent startSymbolSignature
   ?!@typeListeAttributsAxiome listeDesAttributsAxiome
-  ?!@location finListeDesAttributsAxiome
   ?!@typeAbstraitInclusionM inclusionFichierM
   ?!@luint nombreMaxErreurs
   ?!@luint nombreMaxAlertes
@@ -88,7 +87,6 @@ rule <galgas_component>
   @lstring nomPRGMprincipal ; # nom fichier programme principal
   @lstring extensionSource ; # extension fichiers source
   @typeListeAttributsAxiome listeDesAttributs ; # list des noms des attributs de l'axiome
-  @location finListeDesAttributs ; # end de la list des noms d'attributs de l'axiome
   @typeAbstraitInclusionM inclusionFichierM ; # fichier d'inclusion .m
   @luint nombreMaxErreurs ; # Nombre maximum d'erreurs
   @luint nombreMaxAlertes ; # Nombre maximum d'alertes
@@ -139,12 +137,11 @@ rule <galgas_component>
 #--- Liste des attributs
   listeDesAttributs := [@typeListeAttributsAxiome empty] ;
   <program_attributes_declaration> !?listeDesAttributs ;
-  finListeDesAttributs := here ;
 #--- Vérifier que le nombre d'attributs est correct
   if [listeDesAttributs length] < [startSymbolSignature length] then
-    error finListeDesAttributs : "one or more parameters missing" ;
+    error here : "one or more parameters missing" ;
   elsif [listeDesAttributs length] > [startSymbolSignature length] then
-    error finListeDesAttributs : "too much parameters" ;
+    error here : "too much parameters" ;
   end if ;
 #--- Engendrer le programme principal
   action generatePRGM
@@ -154,7 +151,6 @@ rule <galgas_component>
     !?grammarName
     !?startSymbolSignature
     !?listeDesAttributs
-    !?finListeDesAttributs
     !?inclusionFichierM
     !?nombreMaxErreurs
     !?nombreMaxAlertes
