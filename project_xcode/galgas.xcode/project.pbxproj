@@ -281,7 +281,7 @@
 				CFD7E271059B5B8E00410349,
 				CFD7E279059B5BBF00410349,
 				CF6702F705C072FF0065267C,
-				CF5E74F307B00E5A00858338,
+				CFF253F407B0CA1E001265A1,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,7 +341,7 @@
 				CFA1416B060DB84C00601791,
 				CF6E114606269E77001B909F,
 				CFC5CB0806687D250003D900,
-				CF5E74F207B00E5A00858338,
+				CFF253F307B0CA1E001265A1,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,8 +447,8 @@
 				CF6E113406269BEC001B909F,
 				CF6E113606269BEC001B909F,
 				CF3BD5250796E3B0006B4FD7,
-				CF5E74EF07B00E5A00858338,
 				CF5E74F707B00EA600858338,
+				CFF253F007B0CA1E001265A1,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,8 +554,8 @@
 				CF6E113306269BEC001B909F,
 				CF6E113506269BEC001B909F,
 				CF3184110774BF7F0045D262,
-				CF5E74EE07B00E5A00858338,
 				CF5E74F607B00EA600858338,
+				CFF253EF07B0CA1E001265A1,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1799,60 +1799,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CF5E74EC07B00E5A00858338 = {
-			fileEncoding = 5;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = galgas_scanner.cpp;
-			path = /Users/pierremolinaro/Documents/developpements/mes_prgms/galgas/galgas_sources/GALGAS_OUTPUT/galgas_scanner.cpp;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		CF5E74ED07B00E5A00858338 = {
-			fileEncoding = 5;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = galgas_scanner.h;
-			path = /Users/pierremolinaro/Documents/developpements/mes_prgms/galgas/galgas_sources/GALGAS_OUTPUT/galgas_scanner.h;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		CF5E74EE07B00E5A00858338 = {
-			fileRef = CF5E74EC07B00E5A00858338;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF5E74EF07B00E5A00858338 = {
-			fileRef = CF5E74ED07B00E5A00858338;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF5E74F007B00E5A00858338 = {
-			fileRef = CF5E74EC07B00E5A00858338;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF5E74F107B00E5A00858338 = {
-			fileRef = CF5E74ED07B00E5A00858338;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF5E74F207B00E5A00858338 = {
-			fileRef = CF5E74EC07B00E5A00858338;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF5E74F307B00E5A00858338 = {
-			fileRef = CF5E74ED07B00E5A00858338;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CF5E74F407B00EA600858338 = {
 			fileEncoding = 5;
 			isa = PBXFileReference;
@@ -2063,8 +2009,8 @@
 				CF6E113806269BEC001B909F,
 				CF6E113A06269BEC001B909F,
 				CF3BD5260796E3B0006B4FD7,
-				CF5E74F107B00E5A00858338,
 				CF5E74F907B00EA600858338,
+				CFF253F207B0CA1E001265A1,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2171,8 +2117,8 @@
 				CF6E113706269BEC001B909F,
 				CF6E113906269BEC001B909F,
 				CF3184130774BF7F0045D262,
-				CF5E74F007B00E5A00858338,
 				CF5E74F807B00EA600858338,
+				CFF253F107B0CA1E001265A1,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3707,6 +3653,58 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
+		CFF253ED07B0CA1E001265A1 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = galgas_scanner.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CFF253EE07B0CA1E001265A1 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = galgas_scanner.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CFF253EF07B0CA1E001265A1 = {
+			fileRef = CFF253ED07B0CA1E001265A1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CFF253F007B0CA1E001265A1 = {
+			fileRef = CFF253EE07B0CA1E001265A1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CFF253F107B0CA1E001265A1 = {
+			fileRef = CFF253ED07B0CA1E001265A1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CFF253F207B0CA1E001265A1 = {
+			fileRef = CFF253EE07B0CA1E001265A1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CFF253F307B0CA1E001265A1 = {
+			fileRef = CFF253ED07B0CA1E001265A1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CFF253F407B0CA1E001265A1 = {
+			fileRef = CFF253EE07B0CA1E001265A1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CFF53727057A4D3F00854C83 = {
 			children = (
 				CF5E74F407B00EA600858338,
@@ -3758,8 +3756,8 @@
 		};
 		CFF53740057A4EFE00854C83 = {
 			children = (
-				CF5E74EC07B00E5A00858338,
-				CF5E74ED07B00E5A00858338,
+				CFF253ED07B0CA1E001265A1,
+				CFF253EE07B0CA1E001265A1,
 			);
 			isa = PBXGroup;
 			name = "Galgas Scanner";
