@@ -322,13 +322,6 @@ fixInfos (cInfo & inInfo,
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_lexique & inLexique) {
-/* ¤ GGS_M_nonTerminalSymbolsForGrammar::element_type * p = searchKey_M_nonTerminalSymbolsForGrammar
-                (inLexique,
-                 mNonterminalSymbolName,
-                 mNonterminalSymbolName,
-                 inInfo.mNonterminalSymbolsMapForGrammar) ;
-  macroValidPointer (p) ;
-  mNonterminalSymbolIndex.mValue = (uint32) p->mEntryIndex ;*/
   GGS_luint index ;
   searchKey_M_nonTerminalSymbolsForGrammar (inLexique, inInfo.mNonterminalSymbolsMapForGrammar, mNonterminalSymbolName,
                                             NULL, & index) ;
@@ -340,17 +333,6 @@ fixInfos (cInfo & inInfo,
 void cPtr_T_terminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_lexique & inLexique) {
-/* ¤  GGS_M_terminalSymbolsMapForUse::element_type * p = searchKey_M_terminalSymbolsMapForUse
-                (inLexique,
-                 mTerminalSymbolName,
-                 mTerminalSymbolName,
-                 inInfo.mTerminalSymbolMap) ;
-  if (p != NULL) {
-    macroValidPointer (p) ;
-    mTerminalSymbolIndex.mValue = (uint32) p->mEntryIndex ;
-  }else{ // The terminal symbol does not exist. A lexical error has been raised
-    mTerminalSymbolIndex.mValue = 0 ;
-  }*/
   GGS_luint index ;
   searchKey_M_terminalSymbolsMapForUse (inLexique, inInfo.mTerminalSymbolMap, mTerminalSymbolName, NULL, & index) ;
   mTerminalSymbolIndex.mValue = index.getValue () ;
