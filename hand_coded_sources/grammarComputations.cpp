@@ -59,31 +59,6 @@ cProduction::cProduction (void) {
 }
 
 //---------------------------------------------------------------------------*
-//                                                                           *
-// As 'cProduction' instances are not copiable, it is unuseful to implement  *
-// copy constructor and assignment operator : if they are actually called,   *
-// a link error occurs. However, Microsoft Visual C++ allways needs          *
-// them, altought they are not actually called !!!! So define them           *
-// for MCS...                                                                *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-#ifdef _MSC_VER
-  void cProduction::
-  operator = (const cProduction &) {
-  }
-#endif
-
-//--------------------------------------------------------------------*
-
-#ifdef _MSC_VER
-  template <typename TYPE>
-  cProduction::
-  cProduction (const cProduction &) {
-  }
-#endif
-
-//---------------------------------------------------------------------------*
 
 void cProduction::
 engendrerAppelProduction (const sint16 nombreDeParametres,
@@ -113,7 +88,7 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.aLigneDefinition, ioProduction2.aLigneDefinition) ;
   swap (ioProduction1.aColonneDefinition, ioProduction2.aColonneDefinition) ;
   swap (ioProduction1.aNumeroNonTerminalGauche, ioProduction2.aNumeroNonTerminalGauche) ;
-  M_SWAP (ioProduction1.aDerivation, ioProduction2.aDerivation, TC_unique_grow_array <sint16>) ;
+  swap (ioProduction1.aDerivation, ioProduction2.aDerivation) ;
   swap (ioProduction1.aPremierDeProduction, ioProduction2.aPremierDeProduction) ;
 }
 

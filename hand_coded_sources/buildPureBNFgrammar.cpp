@@ -193,7 +193,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
     p.aLigneDefinition = mStartLocation.getCurrentLineNumber () ;
     p.aColonneDefinition = mStartLocation.getCurrentColumnNumber () ;
     p.aNumeroNonTerminalGauche = ((sint32) mAddedNonterminalmSymbolIndex.mValue) + inTerminalSymbolsCount ;
-    M_SWAP (p.aDerivation, derivation, TC_unique_grow_array <sint16>) ;
+    swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
     currentBranch = currentBranch->getNextItem () ;
   }
@@ -268,7 +268,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
     p.aLigneDefinition = mStartLocation.getCurrentLineNumber () ;
     p.aColonneDefinition = mStartLocation.getCurrentColumnNumber () ;
     p.aNumeroNonTerminalGauche = ((sint32) mAddedNonterminalmSymbolIndex.mValue) + inTerminalSymbolsCount ;
-    M_SWAP (p.aDerivation, derivation, TC_unique_grow_array <sint16>) ;
+    swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
     currentBranch = currentBranch->getNextItem () ;
   }
@@ -356,7 +356,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
       p.aColonneDefinition = currentRule->mLeftNonterminalSymbol.getCurrentColumnNumber () ;
       p.aNumeroNonTerminalGauche = terminalSymbolsCount
                                  + (sint32) currentRule->mLeftNonterminalSymbolIndex.mValue ;
-      M_SWAP (p.aDerivation, derivation, TC_unique_grow_array <sint16>) ;
+      swap (p.aDerivation, derivation) ;
       ioProductions.insertByExchange (p) ;
       currentRule = currentRule->getNextItem () ;
     }
@@ -392,7 +392,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
     p.aNumeroNonTerminalGauche = ioVocabulary.getAllSymbolsCount () - 1 ;
     TC_unique_grow_array <sint16> derivation ;
     derivation.appendByCopy ((sint16) ioVocabulary.getStartSymbol () COMMA_HERE) ;
-    M_SWAP (p.aDerivation, derivation, TC_unique_grow_array <sint16>) ;
+    swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
   }
 //--- Build productions arraies
@@ -473,10 +473,10 @@ buildProductionsArray (const sint32 inTerminalSymbolsCount,
 
 //--- Construire les tableaux d'indices
   { TC_unique_dyn_array <sint32> temp (inNonTerminalSymbolsCount COMMA_HERE) ;
-    M_SWAP (tableauIndicePremiereProduction, temp, TC_unique_dyn_array <sint32>) ;
+    swap (tableauIndicePremiereProduction, temp) ;
   }
   { TC_unique_dyn_array <sint32> temp (inNonTerminalSymbolsCount COMMA_HERE) ;
-    M_SWAP (tableauIndiceDerniereProduction, temp, TC_unique_dyn_array <sint32>) ;
+    swap (tableauIndiceDerniereProduction, temp) ;
   }
   for (sint32 nt=0 ; nt<inNonTerminalSymbolsCount ; nt++) {
     tableauIndicePremiereProduction (nt COMMA_HERE) = -1 ;
@@ -486,7 +486,7 @@ buildProductionsArray (const sint32 inTerminalSymbolsCount,
 //--- Construire le tableau indiquant si une production a ŽtŽ traitŽe et le tableau des indirections
   TC_unique_dyn_array <bool> productionTraitee (nombreProductions COMMA_HERE) ;
   { TC_unique_dyn_array <sint32> temp (nombreProductions COMMA_HERE) ;
-    M_SWAP (tableauIndirectionProduction, temp, TC_unique_dyn_array <sint32>) ;
+    swap (tableauIndirectionProduction, temp) ;
   }
   for (sint32 prod=0 ; prod<nombreProductions ; prod++) {
     tableauIndirectionProduction (prod COMMA_HERE) = -1 ;

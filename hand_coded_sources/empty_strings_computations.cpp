@@ -87,7 +87,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
                                          const sint32 inAllSymbolsCount,
                                          sint32 & outIterationsCount) {
   { TC_unique_dyn_array <bool> tempo (inAllSymbolsCount COMMA_HERE) ;
-    M_SWAP (tempo, vocabulaireSeDerivantEnVide, TC_unique_dyn_array <bool>) ;
+    swap (tempo, vocabulaireSeDerivantEnVide) ;
     for (sint32 i=0 ; i<inAllSymbolsCount ; i++) {
       vocabulaireSeDerivantEnVide (i COMMA_HERE) = false ;
     }
