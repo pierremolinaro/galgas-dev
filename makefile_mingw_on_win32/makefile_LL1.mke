@@ -1,0 +1,40 @@
+#---------------------------------------------------------------*
+#                                                               *
+# MAKEFILE for building galgas_LL1 command line tools           *
+#                                                               *
+#---------------------------------------------------------------*
+
+#--- Release and debug versions of galgas
+EXECUTABLE := galgas_ll1.exe
+EXECUTABLE_DEBUG := galgas_ll1_debug.exe
+
+#---------------------------------------------------------------*
+
+RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE
+
+#---------------------------------------------------------------*
+
+#--- Linker libraries
+LINKER_OPTIONS := -lstdc++ -lm -lcomdlg32
+
+#---------------------------------------------------------------*
+
+include ../common_files_for_make/makefile_LL1.mke
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Include MinGW gcc tools definitions for Win32             *
+#                                                               *
+#---------------------------------------------------------------*
+
+include $(LIB_PM_PATH)/included_makefiles/mingw_msys_on_win32.mke
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Include makefile that performs actual work                *
+#                                                               *
+#---------------------------------------------------------------*
+
+include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke
+
+#---------------------------------------------------------------*

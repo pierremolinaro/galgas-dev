@@ -1,0 +1,1 @@
+GALGAS------GALGAS is a compiler generator written in C++ running under Unix, Win 32, Mac OS Classicand Mac OS X. It is distributed under GPL license. It includes :  - a scanner generator ;  - a parser generator (LL(1), SLR and LR (1) grammars) ;  - a static semantics generator ;For installing galgas, see the INSTALL file.

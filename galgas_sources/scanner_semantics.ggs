@@ -1,0 +1,276 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS scanner component semantics definition                            *
+#                                                                           *
+#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics scanner_semantics :
+
+import semantics common_semantics in "common_semantics.ggs" ;
+
+#------------------------------------------------------------------*
+
+map @typeLexicalAttributesMap
+  insert insertKey error message "the lexical attribute '" . * . "' is already declared" ;
+  search searchKey error message "the lexical attribute '" . * . "' is not declared" ;
+  key @lstring ;
+  @AC_galgasType attributType ;
+end map ;
+
+#------------------------------------------------------------------*
+
+map @lexicalTypeMap
+  insert insertKey error message "--- internal error ---" ;
+  search searchKey error message "there is no type named '%'" ;
+  key @lstring ;
+  @AC_galgasType mAttributType ;
+end map ;
+#------------------------------------------------------------------*
+#                       Table des messages d'erreurs               *
+#------------------------------------------------------------------*
+
+map @typeTableMessagesErreurs
+  insert insertKey error message "the error message '" . * . "' is already declared" ;
+  search searchKey error message "the error message '" . * . "' is not declared" ;
+  key @lstring ;
+  @lstring mErrorMessage ;
+end map ;
+
+#------------------------------------------------------------------*
+#                       Styles map                                 *
+#------------------------------------------------------------------*
+
+map @M_styles
+  insert insertKey error message "the '" . * . "' style is already declared" ;
+  search searchKey error message "the '" . * . "' style is not declared" ;
+  key @lstring ;
+  @lstring mTitle ;
+end map ;
+
+#------------------------------------------------------------------*
+#                       Table des terminaux                        *
+#------------------------------------------------------------------*
+
+map @typeTableDefinitionTerminaux
+  insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
+  search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
+  key @lstring ;
+  @string mErrorMessage ;
+  @typeListeAttributsSemantiques attributListeDesAttributs ;
+  @luint mStyleIndex ;
+end map ;
+
+#------------------------------------------------------------------*
+#                        Tables de noms réservés                   *
+#------------------------------------------------------------------*
+
+map @typeTableMotsReserves 
+  insert insertKey error message "the word '" . * . "' is already declared" ;
+  search searchKey error message "the word '" . * . "' is not declared" ;
+  key @lstring ;
+  @lstring attributNomTerminal ;
+end map ;
+
+#------------------------------------------------------------------*
+
+map @typeTableTablesDeMotsReserves
+  insert insertKey error message "the word map '" . * . "' is already declared" ;
+  search searchKey error message "the mord map '" . * . "' is not declared" ;
+  key @lstring ;
+  @typeTableMotsReserves attributSimpleTable ;
+end map ;
+
+#------------------------------------------------------------------*
+#                        Liste de conditions lexicales             *
+#------------------------------------------------------------------*
+
+abstract class @typeConditionLexicale
+  include header ;
+end class ;
+
+class @typeConditionChaine extends @typeConditionLexicale
+  @lstring attributChaine ;
+end class ;
+
+class @typeConditionCaractere extends @typeConditionLexicale
+  @lchar attributCaractere ;
+end class ;
+
+class @typeConditionIntervalle extends @typeConditionLexicale
+  @lchar attributBorneInf ;
+  @lchar attributBorneSup ;
+end class ;
+
+list @typeListeConditionsLexicales
+  @typeConditionLexicale attributCondition ;
+end list ;
+
+#------------------------------------------------------------------*
+#                           Liste des instructions                 *
+#------------------------------------------------------------------*
+
+abstract class @typeInstructionLexicale
+  include header ;
+end class ;
+
+list @tListeInstructionsLexicales
+  @typeInstructionLexicale attributInstruction ;
+end list ;
+
+list @typeListeTestsEtInstructions
+  @typeListeConditionsLexicales attributListeConditions ;
+  @tListeInstructionsLexicales attributListeInstructions ;
+end list ;
+
+#------------------------------------------------------------------*
+#            Arguments d'un appel de routines externes             *
+#------------------------------------------------------------------*
+
+abstract class @typeArgumentRoutineExterne
+  include header ;
+end class ;
+
+list @typeListeArgumentsRoutExterne
+  @typeArgumentRoutineExterne attributArgument ;
+end list ;
+
+class @typeArgumentAttribut extends @typeArgumentRoutineExterne
+  @lstring attributNom ;
+  @AC_galgasType attributTypeAttribut ;
+end class ;
+
+class @typeArgumentCaractere extends @typeArgumentRoutineExterne
+  @lchar attributCaractere ;
+end class ;
+
+class @typeArgumentCaractereCourant extends @typeArgumentRoutineExterne
+end class ;
+
+class @typeArgumentEntier extends @typeArgumentRoutineExterne
+  @luint attributValeur ;
+end class ;
+
+class @typeArgumentRoutine extends @typeArgumentRoutineExterne
+  @lstring attributNomRoutine ;
+  @typeListeArgumentsRoutExterne attributListeArguments ;
+end class ;
+
+#------------------------------------------------------------------*
+#                   Error message indexes list                     *
+#------------------------------------------------------------------*
+
+list @typeListeMessagesErreur
+  @luint mErrorMessageIndex ;
+end list ;
+
+#------------------------------------------------------------------*
+#                   définition de l'émission                       *
+#------------------------------------------------------------------*
+
+abstract class @typeEmissionParDefaut
+  include header ;
+end class ;
+
+class @typeEmissionTerminalParDefaut extends @typeEmissionParDefaut
+  @lstring attributNomTerminal ;
+end class ;
+
+class @typeEmissionErreurParDefaut extends @typeEmissionParDefaut
+  @luint mErrorMessageIndex ;
+end class ;
+
+list @typeListeRecherche
+  @lstring attributNomAttribut ;
+  @lstring attributNomTable ;
+end list ;
+
+#------------------------------------------------------------------*
+#                           Instructions                           *
+#------------------------------------------------------------------*
+
+class @typeInstructionActionExterne extends @typeInstructionLexicale
+  @lstring attributNomRoutineExterne ;
+  @typeListeArgumentsRoutExterne attributListeArguments ;
+  @typeListeMessagesErreur attributListeMessageErreur ;
+end class ;
+
+class @typeInstructionRepetitionLexicale extends @typeInstructionLexicale
+  @tListeInstructionsLexicales attributListeInstructionsDebut ;
+  @typeListeTestsEtInstructions attributListeBranches ;
+end class ;
+
+class @typeInstructionSiLexical extends @typeInstructionLexicale
+  @typeListeTestsEtInstructions attributListeBranches ;
+  @tListeInstructionsLexicales attributBrancheSinon ;
+end class ;
+
+class @typeInstructionEmettreSimple extends @typeInstructionLexicale
+  @lstring attributTerminal ;
+end class ;
+
+class @typeInstructionEmettre extends @typeInstructionLexicale
+  @typeListeRecherche attributListeRecherches ;
+  @typeEmissionParDefaut attributEmissionParDefaut ;
+end class ;
+
+class @typeInstructionErreurLexicale extends @typeInstructionLexicale
+  @luint mErrorMessageIndex ;
+end class ;
+
+#------------------------------------------------------------------*
+#                       Inclusions list                            *
+#------------------------------------------------------------------*
+
+abstract class @typeInclusion
+  include header ;
+end class ;
+
+class @typeInclusionUtilisateur extends @typeInclusion
+  @lstring attributNomFichierInclus ;
+end class ;
+
+class @typeInclusionSysteme extends @typeInclusion
+  @lstring attributNomFichierInclus ;
+end class ;
+
+list @typeListeInclusions
+  @typeInclusion attributInclusion ;
+end list ;
+
+#------------------------------------------------------------------*
+#     This routine is called from hand coded routine GCOD_GAL      *
+#------------------------------------------------------------------*
+
+routine appendToLexicalInstructionList
+  ?!@typeListeTestsEtInstructions ioLexicalRulesList
+  ??@lstring ioDefinitionString
+  ?!@lstring ioTerminalSymbolName
+:
+#--- Build "Compare lstring" lexical condition
+  @typeListeConditionsLexicales lexicalConditionsList [empty] ;
+  @typeConditionLexicale c := [@typeConditionChaine new !ioDefinitionString] ;
+  lexicalConditionsList += !c ;
+#--- Build "simple send instruction"
+  @typeInstructionLexicale lexicalInstruction
+                          := [@typeInstructionEmettreSimple new !ioTerminalSymbolName] ;
+  @tListeInstructionsLexicales instructionList [empty] ;
+  instructionList += !lexicalInstruction ;
+#--- Append to list of rules
+  ioLexicalRulesList += !lexicalConditionsList !instructionList ;
+end routine ;
+
+#------------------------------------------------------------------*
+
+end semantics ;

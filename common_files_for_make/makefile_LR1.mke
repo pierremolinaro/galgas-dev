@@ -1,0 +1,23 @@
+#---------------------------------------------------------------*
+#                                                               *
+# MAKEFILE for building galgas_LR1 command line tools           *
+#                                                               *
+#---------------------------------------------------------------*
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Source files names list (without their actual path)       *
+#                                                               *
+#---------------------------------------------------------------*
+
+SOURCES :=
+
+include ../common_files_for_make/common_sources_makefile.mke
+
+#--------------- Source files list for building LR(1) galgas --*
+SOURCES += galgas_LR1_grammar.cpp
+SOURCES += ggs_LR1_compile_component.cpp
+SOURCES += galgas_LR1_prgm.cpp
+SOURCES += prgm_LR1.cpp
+
+#---------------------------------------------------------------*

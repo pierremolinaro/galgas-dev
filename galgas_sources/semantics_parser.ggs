@@ -1,0 +1,4963 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS semantics component parser definition                             *
+#                                                                           *
+#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax semantics_parser :
+
+import lexique galgas_scanner in "galgas_scanner.ggs" ;
+
+import semantics semantics_semantics in "semantics_semantics.ggs" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#          Rules prototypes                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+label importLexique
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+label importSyntax
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+label importGrammarForSemantics
+  ?!@M_grammarComponents ioGrammarComponentsMap
+label importOptions
+  ?!@M_optionComponents ioOptionsComponentsMap
+;
+
+rule <parse_semantics_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_semanticsComponents ioSemanticsMapForUse
+label parse
+;
+
+rule <parse_grammar_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_grammarComponents ioGrammarComponentsMap
+label parse
+;
+
+rule <parse_option_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_optionComponents ioOptionsComponentsMap
+label parse
+;
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set tableDeclAnticipeesClassePourFichierH
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@M_externClassesDirectories ioExternClassesDirectoryMap
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+label parse
+;
+
+rule <import_headers_semantics_and_grammars>
+  !@M_externClassesDirectories outExternClassesDirectoryMap
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  !@typeTableEnAvant tableEnAvant
+  ?!@string_set ioClassNamesSet
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+label parse
+;
+
+rule <parent_class>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@typeSemanticAttributesMap tableAttributs
+  !@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  !@typeTableMethodes tableDesMethodes
+  !@typeSuperClassesMap tableDesClassesAncetres
+  !@typeClassInheritedMessagesMap tableMessagesAbstraits
+label parse
+;
+
+rule <include_header>
+  !@bool generateIncludeHeader
+label parse
+;
+
+rule <attributes_definition_list>
+  ?!@typeSemanticAttributesMap tableAttributs
+  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
+  !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
+  !@L_nameWithType listeTypeeAttributsExternesCourants # définis dans la classe courante
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@string_set tableFichiersEnTetePourFichierH
+label parse
+;
+
+rule <attribute_definition>
+  ?!@typeSemanticAttributesMap tableAttributs
+  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
+  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@string_set tableFichiersEnTetePourFichierH
+label parse
+;
+
+rule <type_parsing>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@AC_galgasType definitionType
+  !@lstring outTypeName
+label parse
+;
+
+rule <parse_method>
+  ??@lstring inCurrentClassName
+  ??@typeTableMethodes inAncestorClassMethodsMap
+  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
+  ??@typeTableMethodes tableDesMethodes
+  ??@typeSuperClassesMap tableDesClassesAncetres
+  ??@typeClassInheritedMessagesMap messageMapForHeirs
+  ??@typeSemanticAttributesMap tableAttributs
+  ??@bool inClassIsAbstract
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableEnAvant tableEnAvant
+  !@lstring outMethodName
+  !@typeInstructionsList outInstructionsList
+  !@L_signature outMethodSignature
+  !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+label parse
+;
+
+rule <overrided_method>
+  ??@lstring inCurrentClassName
+  ??@typeTableMethodes inAncestorClassMethodsMap
+  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
+  ?!@typeTableMethodes tableDesMethodes
+  ??@typeSuperClassesMap tableDesClassesAncetres
+  ??@typeClassInheritedMessagesMap messageMapForHeirs
+  ??@typeSemanticAttributesMap tableAttributs
+  ??@bool estAbstraite
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableMethodesAimplementer tableMethodesAimplementer
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+label parse
+;
+
+rule <non_abstract_method>
+  ??@lstring inCurrentClassName
+  ??@typeTableMethodes inAncestorClassMethodsMap
+  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
+  ?!@typeTableMethodes tableDesMethodes
+  ??@typeSuperClassesMap tableDesClassesAncetres
+  ??@typeClassInheritedMessagesMap messageMapForHeirs
+  ??@typeSemanticAttributesMap tableAttributs
+  ??@bool inClassIsAbstract
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableMethodesAimplementer tableMethodesAimplementer
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+label parse
+;
+
+rule <abstract_method>
+  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableMethodes tableDesMethodes
+  ?!@typeTableMethodesAimplementer tableMethodesAimplementer
+  ?!@typeTableEnAvant tableEnAvant
+label parse
+;
+
+rule <semantic_instructions_list>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+label parse
+;
+
+rule <semantic_instructions_list_no_verif>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+label parse
+;
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+label parse
+;
+
+rule <extract_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?@typeCplusPlusName inSourceVarCppName
+  ?@lstring nomTypeSource
+  ?@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@typeInstruction outInstruction
+label parse
+;
+
+rule <expression>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+label parse
+;
+
+rule <optional_map_parameter>
+  !@typeCplusPlusName outVariableNameOrNull
+  ?!@typeVariablesMap ioVariablesMap
+label parse
+;
+
+rule <output_parameters_list>
+  !@typeCplusPlusNameList listeNomsCppArguments
+  ?@typeListeAttributsSemantiques listeAttributsSemantiquesFormels
+  ?!@typeVariablesMap ioVariablesMap
+label parse
+;
+
+rule <input_parameters_list>
+  !@L_assignedVariables listeAffectationParametresEffectifs
+  !@typeCplusPlusNameList outAllVariablesList
+  ?@typeListeAttributsSemantiques listeAttributsSemantiques
+  ?!@typeVariablesMap ioVariablesMap
+label parse
+;
+
+rule <actual_parameters_list>
+  ??@L_signature listeTypesParametresFormels
+  !@typeExpressionList outExpressionList
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeInstructionsList ioInstructionsList
+label parse
+;
+
+rule <parse_parameters_list>
+  !@L_actualParametersSignature listeTypesParametresEffectifs
+  !@typeExpressionList outExpressionList
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+label parse
+;
+
+rule <target_entity>
+  !@typeCible typeEntiteDestination
+  ?!@typeVariablesMap ioVariablesMap
+label parse
+;
+
+rule <read_access>
+  !@lstring nomAttribut
+  !@typeCplusPlusName nomCppEntite
+  !@AC_galgasType typeEntite
+  ?!@typeVariablesMap ioVariablesMap
+label parse
+;
+
+rule <instruction_beginning_with_identifier>
+  ?@lstring nomVarDest
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+label parse
+;
+
+rule <optional_assignment>
+  ??@lstring unused inTypeName
+  ??@lstring nomVarDest
+  ??@typeCplusPlusName inVariableCppName
+  ??@AC_galgasType inVariableType
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+label parse
+;
+
+rule <ex_map_method>
+  !@lstring nomMethode
+  !@L_stringList outMultiLingualMessage
+label parse
+;
+
+rule <map_method>
+  !@lstring nomMethode
+  !@L_stringList outMessageStringList
+label parse
+;
+
+rule <formal_arguments_list>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@L_signature listeDeTypes
+  ?!@typeVariablesMap tableArgumentsMethode
+  !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@typeTableEnAvant tableEnAvant
+  !@L_signature_ForGrammarComponent outSignature
+label importGrammarForSemantics
+  !@L_signature_ForGrammarComponent outSignature
+label parse
+;
+
+rule <output_expression_list>
+  !@typeExpressionList outExpressionList 
+  ??@typeListeAttributsSemantiques inAttributesList
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+label parse
+;
+
+rule <formal_argument_type>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@AC_galgasType type_semantique
+  ?!@typeTableEnAvant tableEnAvant
+  !@lstring outGalgasTypeName 
+label importGrammarForSemantics
+  !@lstring outGalgasTypeName 
+label parse
+;
+
+rule <drop_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+label parse
+;
+
+rule <parse_match_operand>
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeCplusPlusName outCppName
+  !@lstring outBaseTypeName
+  !@location outVarLocation
+  !@bool outIsEnumeration
+  !@typeEnumConstantesMap outEnumMessageMap
+label parse
+;
+
+rule <parse_match_case>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeVariablesMap ioVariablesMap
+  ?@lstring inTypeName
+  ?@location inVarLocation
+  ?@bool inIsEnumeration
+  ?@typeEnumConstantesMap inEnumMessageMap
+  !@lstring outTypeName
+label parse
+;
+
+rule <parse_effective_input_parameters_list>
+  ?!@typeVariablesMap ioVariablesMap
+  ?@typeListeAttributsSemantiques inFormalArgumentsList
+  ?@location inVarLocation
+  ?@bool inMapField
+label parse
+;
+
+action buildFileNameWithPath
+  !@lstring outFileNameWithPath
+  ?@lstring inPath
+  ??@lstring inCppClassName
+  ??@lstring inExtension
+;
+
+action engendrerComposant
+  ?!@lstring componentName
+  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  ?!@string defLexique
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@bool composantSyntaxique
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@string_set tableDeclAnticipeesClassePourFichierH
+;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E M A N T I C S    C O M P O N E N T                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+:
+  @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+  @bool composantSyntaxique := false ;
+  @lstring componentName ;
+  $semantics$ ;
+#--- Obtenir le nom du component sémantique
+  $identifier$ ? componentName ;
+  $:$ ;
+#--- No lexique
+  @string defLexique := "" ;
+#--- Import semantics
+  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
+  @string_set tableFichiersEnTetePourFichierH [empty] ;
+  @string_set tableFichiersEnTetePourFichierCPP [empty] ;
+  @M_optionComponents optionsComponentsMapForUse [empty] ;
+  @M_semanticsEntitiesForUse componentEntitiesMap ;
+  @M_externClassesDirectories externClassesDirectoryMap ;
+  @typeTableEnAvant tableEnAvantAimplementer [empty] ;
+  @string_set classNamesSet [empty] ;
+  @typeTableEnAvant tableEnAvant [empty] ;
+  <import_headers_semantics_and_grammars>
+    ?externClassesDirectoryMap
+    ?componentEntitiesMap
+    ?optionsComponentsMapForUse
+    !?tableFichiersEnTetePourFichierCPP
+    !?tableUtilisationsSemantiques
+    ?tableEnAvant
+    !?classNamesSet
+    !?ioSemanticsComponentsMap
+    !?ioGrammarComponentsMap
+    !?ioOptionsComponentsMap
+  ;
+#--- Semantics entities declarations
+  @string_set tableDeclAnticipeesClassePourFichierH [empty] ;
+  @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
+  @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
+  repeat
+  while
+    <semantics_declaration>
+      !?componentEntitiesMap
+      !?listeEntitesAengendrer
+      !?optionsComponentsMapForUse
+      !?tableFichiersEnTetePourFichierH
+      !?tableDeclAnticipeesClassePourFichierH
+      !?tableFichiersEnTetePourFichierCPP
+      !?tableNomRoutinesDeclarees
+      !?tableEnAvant
+      !?tableEnAvantAimplementer
+      !?tableRoutinesAimplementer
+      !?externClassesDirectoryMap
+    ;
+  end repeat ;
+#--- Enter component entities in map
+  insert ioSemanticsComponentsMap.insertKey componentName (!componentEntitiesMap !optionsComponentsMapForUse) ;
+#--- End of file
+  $end$ ;
+  $semantics$ ;
+  $;$ ;
+#--- Check that all routines have been implemented
+  foreach map tableNomRoutinesDeclarees ??@lstring nomRoutine () :
+    if not [tableRoutinesAimplementer hasKey !nomRoutine] then
+      error nomRoutine : "the routine '" . [nomRoutine value] .
+                         "' is not implemented within the component" ;
+    end if ;
+  end foreach ;
+#--- Generate component
+  action engendrerComposant
+    !?componentName
+    !?tableUtilisationsSemantiques
+    !?defLexique
+    !?listeEntitesAengendrer
+    !?composantSyntaxique
+    !?tableFichiersEnTetePourFichierH
+    !?tableFichiersEnTetePourFichierCPP
+    !?tableDeclAnticipeesClassePourFichierH
+   ;
+label importSyntax
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+:
+  $semantics$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $semantics$ ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+:
+  $semantics$ ;
+  @lstring componentName ;
+  $identifier$ ? componentName ;
+  $:$ ;
+  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap ;
+  enterBuiltinTypes ?componentSemanticsEntitiesMap ;
+
+  <import_headers_semantics_and_grammars> importSemantics
+    !?componentSemanticsEntitiesMap
+    !?ioSemanticsComponentsMap
+  ;
+  @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
+  @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
+  @typeTableEnAvant tableEnAvant [empty] ;
+  @typeTableEnAvant tableEnAvantAimplementer [empty] ;
+  repeat
+  while
+    <semantics_declaration> importSemantics
+      !?componentSemanticsEntitiesMap
+      !?tableNomRoutinesDeclarees
+      !?tableEnAvant
+      !?tableEnAvantAimplementer
+      !?tableRoutinesAimplementer
+    ;
+  end repeat ;
+#--- Enter component entities in map
+  @M_optionComponents optionsComponentsMap [empty] ;
+  insert ioSemanticsComponentsMap.insertKey componentName (!componentSemanticsEntitiesMap !optionsComponentsMap) ;
+  $end$ ;
+  $semantics$ ;
+  $;$ ;
+label importLexique
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+:
+  $semantics$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $semantics$ ;
+  $;$ ;
+label importGrammarForSemantics
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+:
+  $semantics$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $semantics$ ;
+  $;$ ;
+label importOptions
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $semantics$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $semantics$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# I M P O R T  H E A D E R S,  S E M A N T I C S  A N D  G R A M M A R S    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <import_headers_semantics_and_grammars>
+  !@M_externClassesDirectories outExternClassesDirectoryMap
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  !@typeTableEnAvant tableEnAvant
+  ?!@string_set unused ioClassNamesSet
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+:
+  tableEnAvant := [@typeTableEnAvant empty] ;
+  outExternClassesDirectoryMap := [@M_externClassesDirectories empty] ;
+  ioOptionsComponentsMapForUse := [@M_optionComponents empty] ;
+#--- enter in semantics entities map the galgas types corresponding to keywords
+  enterBuiltinTypes ?ioComponentSemanticsEntitiesMap ;
+
+#--- Loop on import instructions
+  repeat
+  while
+    $import$ ;
+    select
+      $option$ ;
+      @lstring optionComponentName ;
+      $identifier$ ? optionComponentName ;
+      @M_cli_options boolOptionsMap ;
+      @M_cli_options uintOptionsMap ;
+      select
+        search ioOptionsComponentsMap.searchKey optionComponentName (?boolOptionsMap ?uintOptionsMap) ;
+      or
+        $in$ ;
+        @lstring fileName ;
+        $literal_string$ ? fileName ;
+        @M_optionComponents importedOptionComponentsMap [empty] ;
+        <parse_option_component_for_importing>
+          !fileName
+          !?importedOptionComponentsMap
+        ;
+        search importedOptionComponentsMap.searchKey optionComponentName (?boolOptionsMap ?uintOptionsMap) ;
+      end select ;
+      insert ioOptionsComponentsMapForUse.insertKey optionComponentName (!boolOptionsMap !uintOptionsMap) ;
+    or
+      $grammar$ ;
+      @lstring grammarComponentName ;
+      $identifier$ ? grammarComponentName ;
+      @M_grammarComponents grammarComponentsMap ;
+      select
+        grammarComponentsMap := ioGrammarComponentsMap ;
+      or
+        $in$ ;
+        @lstring sourceFile ;
+        $literal_string$ ? sourceFile ;
+        grammarComponentsMap := [@M_grammarComponents empty] ;
+        <parse_grammar_component_for_importing> 
+          !sourceFile
+          !?grammarComponentsMap
+        ;
+      end select ;
+      @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
+      search grammarComponentsMap.searchKey grammarComponentName (?nonterminalSymbolParametersMap ?* ?*) ;
+      @M_nonterminalSymbolAlts grammarAltMap [empty] ;
+      foreach map nonterminalSymbolParametersMap ??@lstring altName (??@L_signature_ForGrammarComponent signature) :
+        @L_signature formalParametersList [empty] ;
+        foreach list signature (??@formalArgumentPassingMode passingMode ??@lstring typeName) :
+          @AC_semanticsEntity entity ;
+          search ioComponentSemanticsEntitiesMap.searchKey typeName (?entity) ;
+          @AC_galgasType type ;
+          extract entity->@typeEntiteType (?type) error typeName : messageTypeEntite ;
+          formalParametersList += !type !passingMode ;
+        end foreach ;
+        insert grammarAltMap.insertKey altName (!formalParametersList) ;
+      end foreach ;
+      @AC_semanticsEntity entity := [@C_grammarForSemantics new !grammarAltMap] ;
+      insert ioComponentSemanticsEntitiesMap.insertKey grammarComponentName (!entity) ;
+      @lstring path := [@lstring new !"" !here] ;
+      @lstring extension := [@lstring new !"h" !here] ;
+      @lstring fileNameWithPath ;
+      action buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
+      tableFichiersEnTetePourFichierCPP += !fileNameWithPath ;
+    or
+      $semantics$ ;
+      @lstring componentName ;
+      $identifier$ ? componentName ;
+      select
+        if not [tableUtilisationsSemantiques hasKey !componentName] then
+          @M_semanticsEntitiesForUse importedEntities ;
+          @M_optionComponents importedOptionsComponentsMap ;
+          search ioSemanticsComponentsMap.searchKey componentName (?importedEntities ?importedOptionsComponentsMap) ;
+          foreach map importedEntities ??@lstring entityName (??@AC_semanticsEntity entityType) :
+            if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
+              insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
+            end if ;
+          end foreach ;
+          insert tableUtilisationsSemantiques.insertKey componentName () ;
+        #--- Check that every used option component is already declared
+          foreach map importedOptionsComponentsMap ??@lstring optionComponentMap (??@M_cli_options boolOptions ??@M_cli_options uintOptions) :
+            if not [ioOptionsComponentsMapForUse hasKey !optionComponentMap] then
+              error here: "the '%' option component must have been imported" ;
+            end if ;
+          end foreach ;
+        end if ;
+      or
+        $in$ ;
+        @lstring sourceFile ;
+        $literal_string$ ? sourceFile ;
+        @M_semanticsComponents semanticsComponentsMap [empty] ;
+        <parse_semantics_component_for_importing> 
+          !sourceFile
+          !?semanticsComponentsMap
+        ;
+        @M_semanticsEntitiesForUse importedEntities ;
+        search semanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
+        foreach map importedEntities ??@lstring entityName (??@AC_semanticsEntity entityType) :
+          if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
+            insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
+          end if ;
+        end foreach ;
+        insert tableUtilisationsSemantiques.insertKey componentName () ;
+      end select ;
+    end select ;
+    $;$ ;
+  end repeat ;
+#--- Check that every option component used by an imported component is declared here
+  
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+:
+#--- enter in semantics entities map the galgas types corresponding to keywords
+  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
+  repeat
+  while
+    $import$ ;
+    select
+      $option$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_option_component_for_importing> parse ;
+     end select ;
+    or
+      $grammar$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_grammar_component_for_importing> parse ;
+      end select ;
+    or
+      $semantics$ ;
+      @lstring componentName ;
+      $identifier$ ? componentName ;
+      select
+        if not [tableUtilisationsSemantiques hasKey !componentName] then
+          @M_semanticsEntitiesForUse importedEntities ;
+          search ioSemanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
+          foreach map importedEntities ??@lstring entityName (??@AC_semanticsEntity entityType) :
+            if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
+              insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
+            end if ;
+          end foreach ;
+          insert tableUtilisationsSemantiques.insertKey componentName () ;
+        end if ;
+      or
+        $in$ ;
+        @lstring sourceFile ;
+        $literal_string$ ? sourceFile ;
+        @M_semanticsComponents semanticsComponentsMap [empty] ;
+        <parse_semantics_component_for_importing> 
+          !sourceFile
+          !?semanticsComponentsMap
+        ;
+        @M_semanticsEntitiesForUse importedEntities ;
+        search semanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
+        foreach map importedEntities ??@lstring entityName (??@AC_semanticsEntity entityType) :
+          if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
+            insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
+          end if ;
+        end foreach ;
+        insert tableUtilisationsSemantiques.insertKey componentName () ;
+      end select ;
+    end select ;
+    $;$ ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                      Inclusion d'un fichier extern                        *
+#---------------------------------------------------------------------------*
+
+rule <include_header>
+  !@bool generateIncludeHeader
+:
+  select
+    $include$ ;
+    $header$ ;
+    generateIncludeHeader := true ;
+    $;$ ;
+  or
+    generateIncludeHeader := false ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R O U T I N E    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@string_set unused tableFichiersEnTetePourFichierH
+  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
+  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $routine$ ;
+#---- Nom de la routine -------------------------------------------------------
+  @lstring nomRoutine ;
+  $identifier$ ?nomRoutine ;
+#---- Arguments formels de la routine -----------------------------------------
+  @L_signature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [empty] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature_ForGrammarComponent signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !?ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+#--- Insérer dans la map des routines utilisables, -------------------------
+#    or vérifier la cohérence de la signature
+ if [ioComponentSemanticsEntitiesMap hasKey !nomRoutine] then
+    @L_signature listeDeTypesPrecedenteDeclaration ;
+    @AC_semanticsEntity entite ;
+    search ioComponentSemanticsEntitiesMap.searchKey nomRoutine (?entite) ;
+    extract entite->@typeEntiteRoutine (?listeDeTypesPrecedenteDeclaration) error nomRoutine : messageTypeEntite ;
+    verifierCompatibiliteSignatures
+      !listeDeTypesPrecedenteDeclaration
+      !listeDeTypes
+      !here
+     ;
+  else
+    insert tableNomRoutinesDeclarees.insertKey nomRoutine () ;
+    @AC_semanticsEntity entite := [@typeEntiteRoutine new !listeDeTypes] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomRoutine (!entite) ;
+  end if ;
+  select
+#---- Déclaration anticipée de la routine (prototype) -------------------------
+    $;$ ;
+#---- Implémentation de la routine --------------------------------------------
+  or
+   $:$ ;
+  #--- Instructions
+    @typeInstructionsList ioInstructionsList [empty] ;
+    <semantic_instructions_list>
+      !?ioComponentSemanticsEntitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?tableArgumentsMethode
+      !?ioInstructionsList
+    ;
+    $end$ ;
+    $routine$ ;
+    $;$ ;
+  #--- Inserer la routine dans la map des routines à implementer
+    @typeEntityToGenerate ea := [@typeRoutineAengendrer new !nomRoutine
+                                                              !listeTypeEtNomsArguments
+                                                              !ioInstructionsList] ;
+    listeEntitesAengendrer += !ea ;
+    insert tableRoutinesAimplementer.insertKey nomRoutine () ;
+  end select ;
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+:
+  $routine$ ;
+#---- Nom de la routine -------------------------------------------------------
+  @lstring nomRoutine ;
+  $identifier$ ?nomRoutine ;
+#---- Arguments formels de la routine -----------------------------------------
+  @L_signature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [empty] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature_ForGrammarComponent signatureForGrammarComponent ;
+  @M_optionComponents optionsComponentsMapForUse [empty] ;
+  <formal_arguments_list>
+    !?ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+#--- Insérer dans la map des routines utilisables, -------------------------
+#    or vérifier la cohérence de la signature
+ if [ioComponentSemanticsEntitiesMap hasKey !nomRoutine] then
+    @L_signature listeDeTypesPrecedenteDeclaration ;
+    @AC_semanticsEntity entite ;
+    search ioComponentSemanticsEntitiesMap.searchKey nomRoutine (?entite) ;
+    extract entite->@typeEntiteRoutine (?listeDeTypesPrecedenteDeclaration) error nomRoutine : messageTypeEntite ;
+    verifierCompatibiliteSignatures
+      !listeDeTypesPrecedenteDeclaration
+      !listeDeTypes
+      !here
+    ;
+  else
+    insert tableNomRoutinesDeclarees.insertKey nomRoutine () ;
+    @AC_semanticsEntity entite := [@typeEntiteRoutine new !listeDeTypes] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomRoutine (!entite) ;
+  end if ;
+  select
+#---- Déclaration anticipée de la routine (prototype) -------------------------
+    $;$ ;
+#---- Implémentation de la routine --------------------------------------------
+  or
+   $:$ ;
+  #--- Instructions
+    @typeInstructionsList ioInstructionsList [empty] ;
+    @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+    <semantic_instructions_list>
+      !?ioComponentSemanticsEntitiesMap
+      !?listeEntitesAengendrer
+      !?optionsComponentsMapForUse
+      !?tableArgumentsMethode
+      !?ioInstructionsList
+    ;
+    $end$ ;
+    $routine$ ;
+    $;$ ;
+    insert tableRoutinesAimplementer.insertKey nomRoutine () ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                        ANALYSE D'UNE CLASSE MÈRE                          *
+#---------------------------------------------------------------------------*
+
+rule <parent_class>
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  !@typeSemanticAttributesMap tableAttributs
+  !@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  !@typeTableMethodes tableDesMethodes
+  !@typeSuperClassesMap tableDesClassesAncetres
+  !@typeClassInheritedMessagesMap tableMessagesAbstraits
+:
+  listeTousAttributsSemantiques := [@typeListeAttributsSemantiques empty] ;
+  tableDesClassesAncetres := [@typeSuperClassesMap empty] ;
+  tableDesMethodes := [@typeTableMethodes empty] ;
+  tableMessagesAbstraits := [@typeClassInheritedMessagesMap empty] ;
+  tableAttributs := [@typeSemanticAttributesMap empty] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <parent_class>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@typeSemanticAttributesMap tableAttributs
+  !@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  !@typeTableMethodes tableDesMethodes
+  !@typeSuperClassesMap tableDesClassesAncetres
+  !@typeClassInheritedMessagesMap tableMessagesAbstraits
+:
+#--- Parse super class name
+  $extends$ ;
+  @lstring superClassName ;
+  $type_name$ ? superClassName ;
+#--- Vérifications sémantiques sur le Parse super class name
+  @AC_galgasType typeUtilisateur ;
+  @AC_semanticsEntity entite ;
+  search ioComponentSemanticsEntitiesMap.searchKey superClassName (?entite) ;
+  extract entite->@typeEntiteType (?typeUtilisateur) error superClassName : messageTypeEntite ;
+  extract typeUtilisateur->@typeGalgasClassType (?*
+                                    ?tableDesMethodes
+                                    ?listeTousAttributsSemantiques
+                                    ?tableDesClassesAncetres
+                                    ?tableMessagesAbstraits
+                                    ?tableAttributs
+                                    ?*)
+             error superClassName : messageGalgasType ;
+#--- Le Parse super class name est la dernière insérée en fin de la liste des ancêtres 
+  insert tableDesClassesAncetres.insertKey superClassName () ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     S E T    O F    T Y P E                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@string_set unused tableFichiersEnTetePourFichierH
+  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
+  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $setof$ ;
+#--- Setof type name
+  @lstring setofTypeName ;
+  $type_name$ ? setofTypeName ;
+  $:$ ;
+#--- Enum type name
+  @lstring enumTypeName ;
+  $type_name$ ? enumTypeName ;
+#--- Check it is an enum type
+  @AC_semanticsEntity e ;
+  @AC_galgasType enumType ;
+  search ioComponentSemanticsEntitiesMap.searchKey enumTypeName (?e) ;
+  extract e : 
+  when @typeEntiteType (??@AC_galgasType kType) ->
+    extract kType :
+    when @typeGalgas_enum (??* ??* ??*) ->
+      enumType := kType ;
+    else
+      error enumTypeName : "'@" . [enumTypeName value] . "' is not an enum type" -> enumType ;
+    end extract ;
+  else
+    error enumTypeName : "'@" . [enumTypeName value] . "' is not a type" -> enumType ;
+  end extract ;
+  $;$ ;
+  @typeEntityToGenerate t := [@setTypeToGenerate new !setofTypeName !enumTypeName] ;
+  listeEntitesAengendrer += !t ;
+  @AC_galgasType type := [@typeGalgasSetType new !setofTypeName !enumTypeName !enumType] ;
+  e := [@typeEntiteType new !type] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey setofTypeName (!e) ;
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $setof$ ;
+#--- Setof type name
+  @lstring setofTypeName ;
+  $type_name$ ? setofTypeName ;
+  $:$ ;
+#--- Enum type name
+  @lstring enumTypeName ;
+  $type_name$ ? enumTypeName ;
+  $;$ ;
+#--- Check it is an enum type
+  @AC_semanticsEntity e ;
+  @AC_galgasType enumType ;
+  search ioComponentSemanticsEntitiesMap.searchKey enumTypeName (?e) ;
+  extract e : 
+  when @typeEntiteType (??@AC_galgasType kType) ->
+    extract kType :
+    when @typeGalgas_enum (??* ??* ??*) ->
+      enumType := kType ;
+    else
+      error enumTypeName : "'@" . [enumTypeName value] . "' is not an enum type" -> enumType ;
+    end extract ;
+  else
+    error enumTypeName : "'@" . [enumTypeName value] . "' is not a type" -> enumType ;
+  end extract ;
+  @AC_galgasType t := [@typeGalgasSetType new !setofTypeName !enumTypeName !enumType] ;
+  e := [@typeEntiteType new !t] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey setofTypeName (!e) ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     A B S T R A C T    C L A S S                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set tableDeclAnticipeesClassePourFichierH
+  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $abstract$ ;
+  $class$ ;
+ #--- Abstract class name
+  @lstring nomClasseAbstraite ;
+  $type_name$ ? nomClasseAbstraite ;
+  select
+    if not ([tableEnAvant hasKey !nomClasseAbstraite] |
+          [ioComponentSemanticsEntitiesMap hasKey !nomClasseAbstraite]) then
+      @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
+      insert tableEnAvant.insertKey nomClasseAbstraite (!t) ;
+      insert tableEnAvantAimplementer.insertKey nomClasseAbstraite (!t) ;
+      tableDeclAnticipeesClassePourFichierH += !nomClasseAbstraite ;
+    end if ;
+  or
+  #--- Analyse de la classe mère (if existe)
+    @typeTableMethodes ancestorClassMethodsMap ;
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
+    @typeSuperClassesMap tableDesClassesAncetres ;
+    @typeClassInheritedMessagesMap inheritedMessageMap ;
+    @typeSemanticAttributesMap tableAttributs ;
+    <parent_class>
+      !?ioComponentSemanticsEntitiesMap
+      ?tableAttributs
+      ?listeTousAttributsSemantiques
+      ?ancestorClassMethodsMap
+      ?tableDesClassesAncetres
+      ?inheritedMessageMap
+    ;
+  #--- Option 'include "..." ;'
+    @bool generateIncludeHeader ;
+    <include_header> ?generateIncludeHeader ;
+  #--- Attributs de la classe
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeAttributsExternesCourants ;
+    <attributes_definition_list>
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+      !?tableFichiersEnTetePourFichierH ;
+    @bool estAbstraite := true ;
+  #--- Déclaration des méthodes
+    @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
+    @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
+    @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
+    @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
+    repeat
+    while
+      $message$ ;
+      @lstring nomMessage ;
+      $identifier$ ? nomMessage ;
+    #--- Chaîne définissant le message d'erreur
+      @lstring messageText ;
+      $literal_string$ ? messageText ;
+    #--- Entrer le message dans la map
+      if not [inheritedMessageMap hasKey !nomMessage] then
+        insert messageMapForHeirs.insertKey nomMessage () ;
+      end if ; 
+      insert tableMessagesClasseConcrete.insertKey nomMessage (!messageText) ;
+      $;$ ;
+    while
+      <abstract_method> !?listeAttributsSemantiquesCourants
+                       !?listeEntitesAengendrer
+                       !?ioComponentSemanticsEntitiesMap
+                       !?tableDesMethodes
+                       !?tableMethodesAimplementer
+                       !?tableEnAvant ;
+    while
+      <non_abstract_method>
+        !nomClasseAbstraite
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !listeAttributsSemantiquesCourants
+        !?tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !estAbstraite
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableMethodesAimplementer
+        !?tableEnAvant
+        !?ioOptionsComponentsMapForUse
+      ;
+     while
+      <overrided_method>
+        !nomClasseAbstraite
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !listeAttributsSemantiquesCourants
+        !?tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !estAbstraite
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableMethodesAimplementer
+        !?tableEnAvant
+        !?ioOptionsComponentsMapForUse
+     ;
+    end repeat ;
+  #--- Verify that all inherited messages are defined
+    foreach map inheritedMessageMap ??@lstring nomMessageAbstrait () :
+      if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
+        error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
+      end if ;
+  end foreach ;
+  #--- Insérer dans la map des classes utilisables
+    @AC_galgasType c := [@typeGalgasClassType new 
+                                            !nomClasseAbstraite
+                                             !tableDesMethodes
+                                             !listeTousAttributsSemantiques
+                                             !tableDesClassesAncetres
+                                             !messageMapForHeirs
+                                             !tableAttributs
+                                             !estAbstraite] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomClasseAbstraite (!entite) ;
+  #--- Insérer dans la map des classes définies dans ce fichier (à implémenter)
+    @typeEntityToGenerate def := [@typeDefClasseAbstraiteAimplementer new 
+                                            !nomClasseAbstraite
+                                             !listeTousAttributsSemantiques
+                                             !tableDesMethodes
+                                             !generateIncludeHeader
+                                             !tableMethodesAimplementer
+                                             !listeAttributsSemantiquesCourants
+                                             !listeAttributsExternesCourants
+                                             !tableDesClassesAncetres
+                                             !tableMessagesClasseConcrete] ;
+    listeEntitesAengendrer += !def ;
+    $end$ ;
+    $class$ ;
+  end select ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $abstract$ ;
+  $class$ ;
+ #--- Abstract class name
+  @lstring nomClasseAbstraite ;
+  $type_name$ ? nomClasseAbstraite ;
+  select
+    if not ([tableEnAvant hasKey !nomClasseAbstraite] |
+            [ioComponentSemanticsEntitiesMap hasKey !nomClasseAbstraite]) then
+      @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
+      insert tableEnAvant.insertKey nomClasseAbstraite (!t) ;
+      insert tableEnAvantAimplementer.insertKey nomClasseAbstraite (!t) ;
+    end if ;
+  or
+  #--- Analyse de la classe mère (if existe)
+    @typeTableMethodes ancestorClassMethodsMap ;
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
+    @typeSuperClassesMap tableDesClassesAncetres ;
+    @typeClassInheritedMessagesMap inheritedMessageMap ;
+    @typeSemanticAttributesMap tableAttributs ;
+    <parent_class> !?ioComponentSemanticsEntitiesMap
+                   ?tableAttributs
+                   ?listeTousAttributsSemantiques
+                   ?ancestorClassMethodsMap
+                   ?tableDesClassesAncetres
+                   ?inheritedMessageMap ;
+  #--- Option 'include "..." ;'
+    @bool generateIncludeHeader ;
+    <include_header> ?generateIncludeHeader ;
+  #--- Attributs de la classe
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeAttributsExternesCourants ;
+    @string_set tableFichiersEnTetePourFichierH [empty] ;
+    <attributes_definition_list> !?tableAttributs
+                                 !?listeTousAttributsSemantiques
+                                 ?listeAttributsSemantiquesCourants
+                                 ?listeAttributsExternesCourants
+                                 !?ioComponentSemanticsEntitiesMap
+                                 !?tableFichiersEnTetePourFichierH ;
+    @bool estAbstraite := true ;
+  #--- Déclaration des méthodes
+    @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
+    @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
+    @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
+    @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
+    @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+    @M_optionComponents optionsComponentsMapForUse [empty] ;
+    repeat
+    while
+      $message$ ;
+      @lstring nomMessage ;
+      $identifier$ ? nomMessage ;
+    #--- Chaîne définissant le message d'erreur
+      @lstring messageText ;
+      $literal_string$ ? messageText ;
+    #--- Entrer le message dans la map
+      if not [inheritedMessageMap hasKey !nomMessage] then
+        insert messageMapForHeirs.insertKey nomMessage () ;
+      end if ; 
+      insert tableMessagesClasseConcrete.insertKey nomMessage (!messageText) ;
+      $;$ ;
+    while
+      <abstract_method> !?listeAttributsSemantiquesCourants
+                       !?listeEntitesAengendrer
+                       !?ioComponentSemanticsEntitiesMap
+                       !?tableDesMethodes
+                       !?tableMethodesAimplementer
+                       !?tableEnAvant ;
+    while
+      <non_abstract_method>
+        !nomClasseAbstraite
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !listeAttributsSemantiquesCourants
+        !?tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !estAbstraite
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableMethodesAimplementer
+        !?tableEnAvant
+        !?optionsComponentsMapForUse
+      ;
+     while
+      <overrided_method>
+        !nomClasseAbstraite
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !listeAttributsSemantiquesCourants
+        !?tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !estAbstraite
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableMethodesAimplementer
+        !?tableEnAvant
+        !?optionsComponentsMapForUse
+     ;
+    end repeat ;
+  #--- Verify that all inherited messages are defined
+    foreach map inheritedMessageMap ??@lstring nomMessageAbstrait () :
+      if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
+        error here : "the message '" .  [nomMessageAbstrait value] . "' is not defined" ;
+      end if ;
+  end foreach ;
+  #--- Insérer dans la map des classes utilisables
+    @AC_galgasType c := [@typeGalgasClassType new 
+                                            !nomClasseAbstraite
+                                             !tableDesMethodes
+                                             !listeTousAttributsSemantiques
+                                             !tableDesClassesAncetres
+                                            !messageMapForHeirs
+                                             !tableAttributs
+                                             !estAbstraite] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomClasseAbstraite (!entite) ;
+    $end$ ;
+    $class$ ;
+  end select ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     N O T    A B S T R A C T    C L A S S                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
+  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $class$ ;
+#--- Nom de la classe
+  @lstring nomClasseNonAbstraite ;
+  $type_name$ ? nomClasseNonAbstraite ;
+#--- Vérifier que cette classe n'a pas été prédéclarée
+  if [tableEnAvant hasKey !nomClasseNonAbstraite] then
+    error nomClasseNonAbstraite : "a non abstract class cannot be predeclared" ; 
+  end if ;
+#--- Parse super class name
+  $extends$ ;
+  @lstring superClassName ;
+  $type_name$ ? superClassName ;
+#--- Option 'include "..." ;'
+  @bool generateIncludeHeader ;
+ <include_header> ?generateIncludeHeader ;
+#--- Vérifications sémantiques sur le Parse super class name
+  @AC_galgasType definitionClasseMere ;
+  @AC_semanticsEntity entite ;
+  search ioComponentSemanticsEntitiesMap.searchKey superClassName (?entite) ;
+  extract entite->@typeEntiteType (?definitionClasseMere) error superClassName : messageTypeEntite ;
+  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
+  @typeSuperClassesMap tableDesClassesAncetres ;  
+  @typeTableMethodes ancestorClassMethodsMap ;
+  @typeClassInheritedMessagesMap inheritedMessageMap ;
+  @typeSemanticAttributesMap tableAttributs ;
+  extract definitionClasseMere->@typeGalgasClassType (?*
+                                    ?ancestorClassMethodsMap
+                                    ?listeTousAttributsSemantiques
+                                    ?tableDesClassesAncetres
+                                    ?inheritedMessageMap
+                                    ?tableAttributs
+                                    ?*)
+           error superClassName : messageGalgasType ;
+  insert tableDesClassesAncetres.insertKey superClassName () ;
+#------------------- list des attributs de la classe -------------------
+  @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+  @L_nameWithType listeTypeeAttributsExternesCourants ;
+  <attributes_definition_list>
+    !?tableAttributs
+    !?listeTousAttributsSemantiques
+    ?listeAttributsSemantiquesCourants
+    ?listeTypeeAttributsExternesCourants
+    !?ioComponentSemanticsEntitiesMap
+    !?tableFichiersEnTetePourFichierH 
+  ;
+  @bool estAbstraite := false ;
+#--------------------- Méthodes de la classe ----------------------------
+  @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
+  @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
+  @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
+  @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
+  block tableDesMethodes.definitionClasseNonAbstraite () :
+    repeat
+    while
+      <overrided_method>
+        !nomClasseNonAbstraite
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !listeAttributsSemantiquesCourants
+        !?tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !estAbstraite
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableMethodesAimplementer
+        !?tableEnAvant
+        !?ioOptionsComponentsMapForUse
+      ;
+    while
+      $message$ ;
+    #--- Nom du message
+      @lstring nomMessage ;
+      $identifier$ ? nomMessage ;
+    #--- Chaîne définissant le message d'erreur
+      @lstring messageText ;
+      $literal_string$ ? messageText ;
+    #--- Entrer le message dans la map
+      if not [inheritedMessageMap hasKey !nomMessage] then
+        insert messageMapForHeirs.insertKey nomMessage () ;
+      end if ; 
+      insert tableMessagesClasseConcrete.insertKey nomMessage (!messageText) ; 
+      $;$ ;
+    while
+      <non_abstract_method>
+        !nomClasseNonAbstraite
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !listeAttributsSemantiquesCourants
+        !?tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !estAbstraite
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableMethodesAimplementer
+        !?tableEnAvant
+        !?ioOptionsComponentsMapForUse
+      ;
+    end repeat ;
+  end block () ;
+#--- Verify that all inherited messages are defined
+  foreach map inheritedMessageMap ??@lstring nomMessageAbstrait () :
+    if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
+      error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
+    end if ;
+  end foreach ;
+#--- Insertion dans la tables des classes utilisables
+  @AC_galgasType c := [@typeGalgasClassType new 
+                        !nomClasseNonAbstraite
+                        !tableDesMethodes
+                        !listeTousAttributsSemantiques
+                        !tableDesClassesAncetres
+                        !messageMapForHeirs
+                        !tableAttributs
+                        !estAbstraite] ;
+  entite := [@typeEntiteType new !c] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey nomClasseNonAbstraite (!entite) ;
+#--- Insertion dans la map des classes à implémenter
+  @typeEntityToGenerate def := [@typeDefClasseNonAbstraiteAimplementer new 
+                                                !nomClasseNonAbstraite
+                                                !listeTousAttributsSemantiques
+                                                !tableDesMethodes
+                                                !tableMethodesAimplementer
+                                                !listeAttributsSemantiquesCourants
+                                                !listeTypeeAttributsExternesCourants
+                                                !tableDesClassesAncetres
+                                                !tableMessagesClasseConcrete
+                                                !generateIncludeHeader] ;
+  listeEntitesAengendrer += !def ;
+  $end$ ;
+  $class$ ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $class$ ;
+#--- Nom de la classe
+  @lstring nomClasseNonAbstraite ;
+  $type_name$ ? nomClasseNonAbstraite ;
+#--- Vérifier que cette classe n'a pas été prédéclarée
+  if [tableEnAvant hasKey !nomClasseNonAbstraite] then
+    error nomClasseNonAbstraite : "a non abstract class cannot be predeclared" ; 
+  end if ;
+#--- Parse super class name
+  $extends$ ;
+  @lstring superClassName ;
+  $type_name$ ? superClassName ;
+#--- Option 'include "..." ;'
+  @bool generateIncludeHeader ;
+ <include_header> ?generateIncludeHeader ;
+#--- Check super class name
+  @AC_galgasType definitionClasseMere ;
+  @AC_semanticsEntity entite ;
+  search ioComponentSemanticsEntitiesMap.searchKey superClassName (?entite) ;
+  extract entite->@typeEntiteType (?definitionClasseMere) error superClassName : messageTypeEntite ;
+  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
+  @typeSuperClassesMap tableDesClassesAncetres ;  
+  @typeTableMethodes ancestorClassMethodsMap ;
+  @typeClassInheritedMessagesMap inheritedMessageMap ;
+  @typeSemanticAttributesMap tableAttributs ;
+  extract definitionClasseMere->@typeGalgasClassType (?*
+                                    ?ancestorClassMethodsMap
+                                    ?listeTousAttributsSemantiques
+                                    ?tableDesClassesAncetres
+                                    ?inheritedMessageMap
+                                    ?tableAttributs
+                                    ?*)
+           error superClassName : messageGalgasType ;
+  insert tableDesClassesAncetres.insertKey superClassName () ;
+#------------------- list des attributs de la classe -------------------
+  @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+  @L_nameWithType listeTypeeAttributsExternesCourants ;
+  @string_set tableFichiersEnTetePourFichierH [empty] ;
+  <attributes_definition_list> !?tableAttributs
+                               !?listeTousAttributsSemantiques
+                               ?listeAttributsSemantiquesCourants
+                               ?listeTypeeAttributsExternesCourants
+                               !?ioComponentSemanticsEntitiesMap
+                               !?tableFichiersEnTetePourFichierH ;
+  @bool estAbstraite := false ;
+#--------------------- Méthodes de la classe ----------------------------
+  @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
+  @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
+  @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
+  @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
+  @M_optionComponents optionsComponentsMapForUse [empty] ;
+  block tableDesMethodes.definitionClasseNonAbstraite () :
+    repeat
+    while
+      @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+      <overrided_method>
+        !nomClasseNonAbstraite
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !listeAttributsSemantiquesCourants
+        !?tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !estAbstraite
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableMethodesAimplementer
+        !?tableEnAvant
+        !?optionsComponentsMapForUse
+      ;
+    while
+      $message$ ;
+    #--- Nom du message
+      @lstring nomMessage ;
+      $identifier$ ? nomMessage ;
+      @lstring messageText ;
+      $literal_string$ ?messageText ;
+    #--- Entrer le message dans la map
+      if not [inheritedMessageMap hasKey !nomMessage] then
+        insert messageMapForHeirs.insertKey nomMessage () ;
+      end if ; 
+      insert tableMessagesClasseConcrete.insertKey nomMessage (! messageText) ; 
+      $;$ ;
+    while
+      @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+      <non_abstract_method>
+        !nomClasseNonAbstraite
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !listeAttributsSemantiquesCourants
+        !?tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !estAbstraite
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableMethodesAimplementer
+        !?tableEnAvant
+        !?optionsComponentsMapForUse
+      ;
+    end repeat ;
+  end block () ;
+#--- Verify that all inherited messages are defined
+  foreach map inheritedMessageMap ??@lstring nomMessageAbstrait () :
+    if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
+      error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
+    end if ;
+  end foreach ;
+#--- Insertion dans la tables des classes utilisables
+  @AC_galgasType c := [@typeGalgasClassType new 
+                        !nomClasseNonAbstraite
+                        !tableDesMethodes
+                        !listeTousAttributsSemantiques
+                        !tableDesClassesAncetres
+                        !messageMapForHeirs
+                        !tableAttributs
+                        !estAbstraite] ;
+  entite := [@typeEntiteType new !c] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey nomClasseNonAbstraite (!entite) ;
+  $end$ ;
+  $class$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                 Méthode abstract                          *
+#---------------------------------------------------------------------------*
+
+rule <abstract_method>
+  ?!@typeListeAttributsSemantiques unused listeAttributsSemantiquesCourants
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableMethodes tableDesMethodes
+  ?!@typeTableMethodesAimplementer tableMethodesAimplementer
+  ?!@typeTableEnAvant tableEnAvant
+:
+  $abstract$ ;
+  $reader$ ;
+  @lstring nomMethode ;
+  $identifier$ ? nomMethode ;
+  @L_signature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [empty] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature_ForGrammarComponent signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !?ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  insert tableDesMethodes.insertAbstract nomMethode (!listeDeTypes) ;
+  @typeInstructionsList listeInstructions [empty] ;
+  insert tableMethodesAimplementer.insertAbstract nomMethode (!listeDeTypes !listeTypeEtNomsArguments !listeInstructions) ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <parse_method>
+  ??@lstring inCurrentClassName
+  ??@typeTableMethodes inAncestorClassMethodsMap
+  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
+  ??@typeTableMethodes tableDesMethodes
+  ??@typeSuperClassesMap tableDesClassesAncetres
+  ??@typeClassInheritedMessagesMap messageMapForHeirs
+  ??@typeSemanticAttributesMap tableAttributs
+  ??@bool inClassIsAbstract
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableEnAvant tableEnAvant
+  !@lstring outMethodName
+  !@typeInstructionsList outInstructionsList
+  !@L_signature outMethodSignature
+  !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+:
+#--- Get reader name
+  $identifier$ ? outMethodName ;
+#--- Create local variable map
+  @typeVariablesMap methodLocalVariablesMap [empty]  ;
+#--- Insert the predefined "self" variable
+  @lstring me_Constant := [@lstring new !"self" !here] ;
+  @typeCplusPlusName me_constantCppName := [@typeCppThisName new] ;
+  @AC_galgasType typeDefinition := [@typeGalgasClassType new 
+           !inCurrentClassName
+           !tableDesMethodes
+           !listeTousAttributsSemantiques
+           !tableDesClassesAncetres
+           !messageMapForHeirs
+           !tableAttributs
+           !inClassIsAbstract] ;
+  insert methodLocalVariablesMap.insertUsedConstInArgument me_Constant (!typeDefinition !me_constantCppName) ;
+#--- Insert the predefined "super" variable
+  @lstring super_Constant := [@lstring new !"super" !here] ;
+  @typeCplusPlusName super_constantCppName := [@typeCppInheritedName new] ;
+  typeDefinition := [@typeGalgasClassType new 
+           !inCurrentClassName
+           !inAncestorClassMethodsMap
+           !listeTousAttributsSemantiques
+           !tableDesClassesAncetres
+           !messageMapForHeirs
+           !tableAttributs
+           !inClassIsAbstract] ;
+  insert methodLocalVariablesMap.insertUsedConstInArgument super_Constant (!typeDefinition !super_constantCppName) ;
+#--- Parse formal arguments
+  @L_signature_ForGrammarComponent signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !?ioComponentSemanticsEntitiesMap
+    ?outMethodSignature
+    !?methodLocalVariablesMap
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  $:$ ;
+#--- Build local attributes table
+  foreach list listeAttributsSemantiquesCourants (??@AC_galgasType typeAttribut ??@lstring nomAttribut) :
+    @typeCplusPlusName nomCpp := [@typeDirectName new !nomAttribut] ;
+    insert methodLocalVariablesMap.insertUsedConstInArgument nomAttribut (!typeAttribut !nomCpp) ;
+  end foreach ;
+#--- Parse reader instruction list
+  outInstructionsList := [@typeInstructionsList empty] ;
+  <semantic_instructions_list>
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !?ioOptionsComponentsMapForUse
+    !?methodLocalVariablesMap
+    !?outInstructionsList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <non_abstract_method>
+  ??@lstring inCurrentClassName
+  ??@typeTableMethodes inAncestorClassMethodsMap
+  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
+  ?!@typeTableMethodes tableDesMethodes
+  ??@typeSuperClassesMap tableDesClassesAncetres
+  ??@typeClassInheritedMessagesMap messageMapForHeirs
+  ??@typeSemanticAttributesMap tableAttributs
+  ??@bool inClassIsAbstract
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableMethodesAimplementer tableMethodesAimplementer
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+:
+  $reader$ ;
+  @lstring methodName ;
+  @typeInstructionsList instructionsList ;
+  @L_signature methodSignature ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  <parse_method>
+    !inCurrentClassName
+    !inAncestorClassMethodsMap
+    !listeTousAttributsSemantiques
+    !listeAttributsSemantiquesCourants
+    !tableDesMethodes
+    !tableDesClassesAncetres
+    !messageMapForHeirs
+    !tableAttributs
+    !inClassIsAbstract
+    !?listeEntitesAengendrer
+    !?ioComponentSemanticsEntitiesMap
+    !?tableEnAvant
+    ?methodName
+    ?instructionsList
+    ?methodSignature
+    ?listeTypeEtNomsArguments
+    !?ioOptionsComponentsMapForUse
+ ;
+  insert tableDesMethodes.insertNotAbstract methodName (!methodSignature) ;
+  insert tableMethodesAimplementer.insertNotAbstract methodName (!methodSignature !listeTypeEtNomsArguments !instructionsList) ;
+  $end$ ;
+  $reader$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <overrided_method>
+  ??@lstring inCurrentClassName
+  ??@typeTableMethodes inAncestorClassMethodsMap
+  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
+  ?!@typeTableMethodes tableDesMethodes
+  ??@typeSuperClassesMap tableDesClassesAncetres
+  ??@typeClassInheritedMessagesMap messageMapForHeirs
+  ??@typeSemanticAttributesMap tableAttributs
+  ??@bool inClassIsAbstract
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableMethodesAimplementer tableMethodesAimplementer
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+:
+  $override$ ;
+  $reader$ ;
+  @lstring methodName ;
+  @typeInstructionsList instructionsList ;
+  @L_signature methodSignature ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  <parse_method>
+    !inCurrentClassName
+    !inAncestorClassMethodsMap
+    !listeTousAttributsSemantiques
+    !listeAttributsSemantiquesCourants
+    !tableDesMethodes
+    !tableDesClassesAncetres
+    !messageMapForHeirs
+    !tableAttributs
+    !inClassIsAbstract
+    !?listeEntitesAengendrer
+    !?ioComponentSemanticsEntitiesMap
+    !?tableEnAvant
+    ?methodName
+    ?instructionsList
+    ?methodSignature
+    ?listeTypeEtNomsArguments
+    !?ioOptionsComponentsMapForUse
+  ;
+#--- Verify reader signature is compatible with overriden reader signature
+  @L_signature listeDeTypesMethodeOriginale ;
+  search tableDesMethodes.searchForOverride methodName (?listeDeTypesMethodeOriginale) ;
+  verifierCompatibiliteSignatures
+    !listeDeTypesMethodeOriginale 
+    !methodSignature
+    !here
+  ;
+#--- Insert reader into reader table
+  insert tableMethodesAimplementer.insertNotAbstract methodName (!methodSignature !listeTypeEtNomsArguments !instructionsList) ;
+  $end$ ;
+  $reader$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#               Analyse des arguments formels d'une méthode                 *
+#                     (entrée, sortie, or entrée/sortie)                    *
+#---------------------------------------------------------------------------*
+
+rule <formal_arguments_list>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@L_signature listeDeTypes
+  ?!@typeVariablesMap tableArgumentsMethode
+  !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@typeTableEnAvant tableEnAvant
+  !@L_signature_ForGrammarComponent outSignatureForGrammar
+:
+  listeDeTypes := [@L_signature empty] ;
+  listeTypeEtNomsArguments := [@typeListeTypesEtNomsArgMethode empty] ;
+  outSignatureForGrammar := [@L_signature_ForGrammarComponent empty] ;
+  repeat
+  while
+    $??$ ; # '??'  : constant input formal parameter
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    @AC_galgasType type_semantique ;
+    @lstring galgasTypeName ;
+    <formal_argument_type>
+      !?ioComponentSemanticsEntitiesMap
+      ?type_semantique
+      !?tableEnAvant
+      ?galgasTypeName
+    ;
+    listeDeTypes += !type_semantique !passingMode ;
+    outSignatureForGrammar += !passingMode !galgasTypeName ;
+    @lstring nomArgument ;
+    @bool modeIn := true ;
+    select
+      $unused$ ;
+      $identifier$ ? nomArgument ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+      insert tableArgumentsMethode.insertUnusedConstInArgument nomArgument (!type_semantique !natureNom) ;
+    or
+      $identifier$ ? nomArgument ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+      insert tableArgumentsMethode.insertConstInArgument nomArgument (!type_semantique !natureNom) ;
+    end select ;
+  while
+    $?$ ; # '?'  : input formal parameter (must be dropped)
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
+    @AC_galgasType type_semantique ;
+    @lstring galgasTypeName ;
+    <formal_argument_type>
+      !?ioComponentSemanticsEntitiesMap
+      ?type_semantique
+      !?tableEnAvant
+      ?galgasTypeName
+    ;
+    listeDeTypes += !type_semantique !passingMode ;
+    outSignatureForGrammar += !passingMode !galgasTypeName ;
+    @lstring nomArgument ;
+    $identifier$ ? nomArgument ;
+    @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+    @bool modeIn := true ;
+    listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+    insert tableArgumentsMethode.insertInArgument nomArgument (!type_semantique !natureNom) ;
+  while
+    $?!$ ; # '?!' : input/output formal parameter
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
+    @AC_galgasType type_semantique ;
+    @lstring galgasTypeName ;
+    <formal_argument_type>
+      !?ioComponentSemanticsEntitiesMap
+      ?type_semantique
+      !?tableEnAvant
+      ?galgasTypeName
+    ;
+    listeDeTypes += !type_semantique !passingMode ;
+    outSignatureForGrammar += !passingMode !galgasTypeName ;
+    @bool modeIn := false ;
+    @lstring nomArgument ;
+    select
+      $unused$ ;
+      $identifier$ ? nomArgument ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+      insert tableArgumentsMethode.insertUnusedInOutArgument nomArgument (!type_semantique !natureNom) ;
+    or
+      $identifier$ ? nomArgument ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+      insert tableArgumentsMethode.insertInOutArgument nomArgument (!type_semantique !natureNom) ;
+    end select ;
+  while
+    $!$ ; # '!' : output formal parameter
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+    @AC_galgasType type_semantique ;
+    @lstring galgasTypeName ;
+    <formal_argument_type>
+      !?ioComponentSemanticsEntitiesMap
+      ?type_semantique
+      !?tableEnAvant
+      ?galgasTypeName
+    ;
+    listeDeTypes += !type_semantique !passingMode ;
+    outSignatureForGrammar += !passingMode !galgasTypeName ;
+    @lstring nomArgument ;
+    $identifier$ ? nomArgument ;
+    @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+    @bool modeIn := false ;
+    listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+    insert tableArgumentsMethode.insertOutArgument nomArgument (!type_semantique !natureNom) ;
+  end repeat ;
+label importGrammarForSemantics
+  !@L_signature_ForGrammarComponent outSignature
+:
+  outSignature := [@L_signature_ForGrammarComponent empty] ;
+  repeat
+  while
+    $??$ ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    @lstring galgasTypeName ; 
+    <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
+    outSignature += !passingMode !galgasTypeName ;
+    select
+      $unused$ ;
+      $identifier$ ? * ;
+    or
+      $identifier$ ? * ;
+    end select ;
+  while
+    $?$ ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
+    @lstring galgasTypeName ; 
+    <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
+    outSignature += !passingMode !galgasTypeName ;
+    $identifier$ ? * ;
+  while
+    $?!$ ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
+    @lstring galgasTypeName ; 
+    <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
+    outSignature += !passingMode !galgasTypeName ;
+    select
+      $unused$ ;
+      $identifier$ ? * ;
+    or
+      $identifier$ ? * ;
+    end select ;
+  while
+    $!$ ;
+    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+    @lstring galgasTypeName ; 
+    <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
+    outSignature += !passingMode !galgasTypeName ;
+    $identifier$ ? * ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#            Parse type name and check it is defined                        *
+#---------------------------------------------------------------------------*
+
+rule <type_parsing>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@AC_galgasType definitionType
+  !@lstring outTypeName
+:
+  $type_name$ ? outTypeName ;
+  @AC_semanticsEntity entite ;
+  search ioComponentSemanticsEntitiesMap.searchKey outTypeName (?entite) ;
+  extract entite->@typeEntiteType (?definitionType) error outTypeName : messageTypeEntite ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A S S I G N M E N T     I N S T R U C T I O N     idf := ... ;           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <instruction_beginning_with_identifier>
+  ?@lstring inTargetVarName
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+:
+  $:=$ ;
+#--- Parse source expression
+  @typeExpression sourceExpression ;
+  @AC_galgasType sourceType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?sourceExpression
+    ?sourceType
+  ;
+#--- Get target entity infos
+  @AC_galgasType targetVarType ;
+  @typeCplusPlusName targetVarCppName ;
+  search ioVariablesMap.searchForWriteAccess inTargetVarName (?targetVarType ?targetVarCppName) ;
+#--- Match target and source types
+  checkAssignmentTypesCompatibility !targetVarType !sourceType !here ;
+#--- Generate instruction
+  @typeInstruction instruction := [@C_assignmentInstruction new !targetVarCppName !sourceExpression] ;
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#        Liste d'arguments effectifs en sortie : ( !<entité source> ...)    *
+#---------------------------------------------------------------------------*
+
+rule <output_parameters_list>
+  !@typeCplusPlusNameList listeNomsCppArguments
+  ?@typeListeAttributsSemantiques listeAttributsSemantiquesFormels
+  ?!@typeVariablesMap ioVariablesMap
+:
+  listeNomsCppArguments := [@typeCplusPlusNameList empty] ;
+  @typeSemanticsTypesList listeTypesSemantiquesEffectifs [empty] ;
+  $($ ;
+  repeat
+  while
+    $!$ ;
+    @AC_galgasType typeVarSource ;
+    @typeCplusPlusName nomCpp ;
+    @lstring nomVarSource ;
+    <read_access> ?nomVarSource ?nomCpp ?typeVarSource !?ioVariablesMap ;
+    listeTypesSemantiquesEffectifs += !typeVarSource !nomVarSource ;
+    listeNomsCppArguments += !nomCpp ;
+  end repeat ;
+  $)$ ;
+  verifierCompatibiliteTypes
+    !listeTypesSemantiquesEffectifs
+    !listeAttributsSemantiquesFormels
+    !here
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#        Liste d'arguments effectifs en entrée : ( ?<entité dest> ? * ...)  *
+#---------------------------------------------------------------------------*
+
+rule <input_parameters_list>
+  !@L_assignedVariables listeAffectationParametresEffectifs
+  !@typeCplusPlusNameList outAllVariablesList
+  ?@typeListeAttributsSemantiques listeAttributsSemantiques
+  ?!@typeVariablesMap ioVariablesMap
+:
+  @typeListeCibles listeCibles [empty] ;
+  repeat
+  while
+    $?$ ;
+    @typeCible typeEntiteDestination ;
+    <target_entity> ?typeEntiteDestination !?ioVariablesMap ;
+    listeCibles += !typeEntiteDestination ;
+  end repeat ;
+  @bool ellipsis ;
+  select
+    $...$ ;
+    ellipsis := true ;
+  or
+    ellipsis := false ;
+  end select ;
+#--- Vérifier la compatibilité des list et construire la list des affectations
+  if [listeAttributsSemantiques length] < [listeCibles length] then
+    error here : "too much arguments: " . [[listeAttributsSemantiques length] string]
+      . " expected, " . [[listeCibles length] string] . " found" 
+      -> outAllVariablesList, listeAffectationParametresEffectifs ;
+  elsif ([listeAttributsSemantiques length] > [listeCibles length]) & not ellipsis then
+    error here : "argument(s) missing: " . [[listeAttributsSemantiques length] string]
+      . " expected, " . [[listeCibles length] string] . " found"
+      -> outAllVariablesList, listeAffectationParametresEffectifs ;
+  else
+    listeAffectationParametresEffectifs := [@L_assignedVariables empty] ;
+    outAllVariablesList := [@typeCplusPlusNameList empty] ;
+    foreach list listeAttributsSemantiques::listeCibles -> (??@AC_galgasType attTypeAttribut ??@lstring attNomAttribut) :: (??@typeCible attCible) :
+      @lstring nomAttributSource := attNomAttribut ;
+      [attCible verifierType !attTypeAttribut !?nomAttributSource !?listeAffectationParametresEffectifs !?outAllVariablesList] ;
+    end foreach ;
+  end if ;
+#--- Append Jojker if needed
+  @typeCplusPlusName nullName := [@typeNullName new] ;
+  action appendJokersIfNeeded
+   !?outAllVariablesList
+   ![listeCibles length]
+   ![listeAttributsSemantiques length]
+   !nullName
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <target_entity>
+  !@typeCible typeEntiteDestination
+  ?!@typeVariablesMap ioVariablesMap
+:
+  @lstring nomVariableDest ;
+  $identifier$ ? nomVariableDest ;
+  @AC_galgasType typeVarDest ;
+  @typeCplusPlusName nomCppDest ;
+  search ioVariablesMap.searchForWriteAccess nomVariableDest (?typeVarDest ?nomCppDest) ;
+  typeEntiteDestination := [@typeEntiteDest new !typeVarDest !nomCppDest !here] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <target_entity>
+  !@typeCible typeEntiteDestination
+  ?!@typeVariablesMap unused ioVariablesMap
+:
+  $*$ ;
+  typeEntiteDestination := [@typeJoker new] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   A D D    I N S T R U C T I O N                                          *
+#                                                                           *
+#  variable += !source_exp !... !source_exp ;                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <instruction_beginning_with_identifier>
+  ?@lstring nomVarDest
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+:
+  $+=$ ;
+#--- Perform an io access for target variable
+  @AC_galgasType targetVariableType ;
+  @typeCplusPlusName nomCppVariableSource ;
+  search ioVariablesMap.searchForReadWriteAccess nomVarDest (?targetVariableType ?nomCppVariableSource) ;
+#--- Does the variable class accept the += operator ?
+  @typeListeAttributsSemantiques formalParametersList ;
+  @bool accept_luint_assignment ;
+  [targetVariableType handleAddAssignOperatorCall !here ?formalParametersList ?accept_luint_assignment] ;
+#--- Parse argument list
+  @typeTypesList typeList := [@typeTypesList empty] ;
+  @typeExpressionList expressionList [empty] ;
+  repeat
+    $!$ ;
+    @typeExpression expression ;
+    @AC_galgasType resultType ;
+    <expression> 
+      !?ioComponentSemanticsEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?expression
+      ?resultType
+    ;
+    typeList += !resultType !here ;
+    expressionList += !expression ;
+  while
+  end repeat ;
+#--- Check expression types list against formal parameter list
+  if [formalParametersList length] < [typeList length] then
+    error here : "value list is too long" ;
+  elsif [formalParametersList length] > [typeList length] then
+    error here : "value list is too short" ;
+  else
+    foreach list formalParametersList  :: typeList ->
+         (??@AC_galgasType formalType ??@lstring formalName)
+      :: (??@AC_galgasType effectiveType ??@location kErrorLocation) :
+      verifierCompatibiliteTypesSemantiques !formalType !effectiveType !kErrorLocation ;
+    end foreach ;
+  end if ;
+  @typeInstruction instruction ;
+  select
+    $->$ ;
+    @lstring luint_assigned_var ;
+    $identifier$ ? luint_assigned_var ;
+    if not accept_luint_assignment then
+      error nomVarDest : "This variable does not accept 'luint' @assignment" ;
+    end if ;
+    @AC_galgasType targetVariableType ;
+    @typeCplusPlusName luint_assigned_cppVarName ;
+    search ioVariablesMap.searchForWriteAccess luint_assigned_var (?targetVariableType ?luint_assigned_cppVarName) ;
+    extract targetVariableType->@typeGalgas_luint () error luint_assigned_var : messageGalgasType ;
+    instruction := [@typeAppendInstructionWithAssignment new !nomCppVariableSource !expressionList !luint_assigned_cppVarName] ;
+  or
+    instruction := [@typeAppendInstruction new !nomCppVariableSource !expressionList] ;
+  end select ;
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#            Liste d'arguments effectifs !? entité ! entité ? entité ...    *
+#---------------------------------------------------------------------------*
+
+rule <actual_parameters_list>
+  ??@L_signature listeTypesParametresFormels
+  !@typeExpressionList outExpressionList
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  @L_actualParametersSignature listeTypesParametresEffectifs ;
+  <parse_parameters_list>
+    ?listeTypesParametresEffectifs
+    ?outExpressionList
+    !?ioVariablesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioComponentSemanticsEntitiesMap
+  ;
+#--- Vérifier la correction des arguments effectifs
+  verifierCompatibiliteArgEffectifsSignature
+    !listeTypesParametresFormels
+    !listeTypesParametresEffectifs
+    !here
+    !?ioInstructionsList
+    !?outExpressionList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#            Liste d'arguments effectifs !? entité ! entité ? entité ...    *
+#                          sans vérification de type                        *
+#---------------------------------------------------------------------------*
+
+rule <parse_parameters_list>
+  !@L_actualParametersSignature listeTypesParametresEffectifs
+  !@typeExpressionList outExpressionList
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+:
+  outExpressionList := [@typeExpressionList empty] ;
+  listeTypesParametresEffectifs := [@L_actualParametersSignature empty] ;
+  repeat
+  while
+    $!$ ;
+    @AC_galgasType expressionType ;
+    @typeExpression expressionValue ;
+    <expression>
+      !?ioComponentSemanticsEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?expressionValue
+      ?expressionType ;
+    @actualParametersPassingMode parameterPassingMode := [@actualParametersPassingMode parameterOut] ;
+    listeTypesParametresEffectifs += !expressionType !parameterPassingMode ;
+    outExpressionList += !expressionValue ;
+  while
+    $?$ ;
+    @actualParametersPassingMode parameterPassingMode := [@actualParametersPassingMode parameterIn] ;
+    select
+      $*$ ;
+      @AC_galgasType typeArgument := [@typeGalgas_jokerInParameterList new] ;
+      listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
+      @typeExpression e := [@typeJokerInExpression new !here] ;
+      outExpressionList += !e ;
+    or
+      @AC_galgasType typeArgument ;
+      @typeCplusPlusName nomCppArgument ;
+      @lstring nomArgument ;
+      $identifier$ ? nomArgument ;
+      search ioVariablesMap.searchForWriteAccess nomArgument (?typeArgument ?nomCppArgument) ;
+      listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
+      @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
+      outExpressionList += !e ;
+    end select ;
+  while
+    $!?$ ;
+    @AC_galgasType typeArgument ;
+    @typeCplusPlusName nomCppArgument ;
+    @lstring nomArgument ;
+    $identifier$ ? nomArgument ;
+    search ioVariablesMap.searchForReadWriteAccess nomArgument (?typeArgument ?nomCppArgument) ;
+    @actualParametersPassingMode parameterPassingMode := [@actualParametersPassingMode parameterOutIn] ;
+    listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
+    @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
+    outExpressionList += !e ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                        Paramètre optionnel                                *
+#      - d'une instruction d'insertion dans une map                         *
+#      - d'une instruction de recherche dans une map                        *
+#---------------------------------------------------------------------------*
+
+rule <optional_map_parameter>
+  !@typeCplusPlusName outVariableNameOrNull
+  ?!@typeVariablesMap unused ioVariablesMap
+:
+  outVariableNameOrNull := [@typeNullName new] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <optional_map_parameter>
+  !@typeCplusPlusName outVariableNameOrNull
+  ?!@typeVariablesMap ioVariablesMap
+:
+  $->$ ;
+  @lstring nomCible ;
+  $identifier$ ? nomCible ;
+  @AC_galgasType typeCible ;
+  search ioVariablesMap.searchForWriteAccess nomCible (?typeCible ?outVariableNameOrNull) ;
+  extract typeCible->@typeGalgas_luint () error nomCible : messageGalgasType ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#              LISTE DES INSTRUCTIONS SEMANTIQUES D'UNE METHODE             *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instructions_list>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  block ioVariablesMap.verifyVariableUsing () :
+    <semantic_instructions_list_no_verif>
+      !?ioComponentSemanticsEntitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      !?ioInstructionsList
+    ;
+  end block (!here) ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      extract instruction                                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+ $extract$ ;
+#--- Source variable
+  @AC_galgasType typeVarSource ;
+  @typeCplusPlusName sourceVarCppName ;
+  @lstring nomVarSource ;
+  <read_access> ?nomVarSource ?sourceVarCppName ?typeVarSource !?ioVariablesMap ;
+#--- Check variable has class type
+  @lstring nomTypeSource ;
+  @typeClassInheritedMessagesMap tableMessagesAbstraits ;
+  extract typeVarSource->@typeGalgasClassType
+           (?nomTypeSource ?* ?* ?* ?tableMessagesAbstraits ?* ?*)
+           error nomVarSource : messageGalgasType ;
+#--- Parse simple or structured extract instruction
+  @typeInstruction instruction ;
+  <extract_instruction>
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    !sourceVarCppName
+    !nomTypeSource
+    !tableMessagesAbstraits
+    ?instruction
+  ;
+  ioInstructionsList += !instruction ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#       Simple extract instruction                                          *
+#---------------------------------------------------------------------------*
+
+rule <extract_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?@typeCplusPlusName inSourceVarCppName
+  ?@lstring nomTypeSource
+  ?@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@typeInstruction outInstruction
+:
+#--- Nom de la classe pour la conversion
+  $->$ ;
+  @lstring nomClasse ;
+  $type_name$ ? nomClasse ;
+#--- Obtenir les caractéristiques de la classe nommée
+  @AC_galgasType leType ;
+  @AC_semanticsEntity entite ;
+  search ioComponentSemanticsEntitiesMap.searchKey nomClasse (?entite) ;
+  extract entite->@typeEntiteType (?leType) error nomClasse : messageTypeEntite ;
+  @typeListeAttributsSemantiques listeAttributsSemantiques ;
+  @typeSuperClassesMap tableDesClassesAncetres ;
+  extract leType->@typeGalgasClassType
+               (?*
+                ?*
+                ?listeAttributsSemantiques
+                ?tableDesClassesAncetres
+                ?*
+                ?*
+                ?*)
+             error nomClasse : messageGalgasType ;
+#--- Verify class is an heir of variable type
+  if not [tableDesClassesAncetres hasKey !nomTypeSource] then
+    error nomClasse : "This class does not inherit from '@" . [nomTypeSource value] . "'" ;
+  end if ;
+#--- Arguments
+  @L_assignedVariables listeAffectationParametresEffectifs ;
+  @typeCplusPlusNameList allVariablesList ;
+  $($ ;
+  <input_parameters_list>
+    ?listeAffectationParametresEffectifs
+    ?allVariablesList
+    !listeAttributsSemantiques
+    !?ioVariablesMap
+  ;
+  $)$ ;
+#------------------------------------------------- Error message
+  $error$ ;
+  @typeExpression errorExpression ;
+  @AC_galgasType errorExpressionType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?errorExpression
+    ?errorExpressionType
+  ;
+#--- Vérifier que la variable est d'une type contenant une location localisant l'error
+  [errorExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
+  $:$ ;
+  @lstring nomMessage ;
+  $identifier$ ? nomMessage ;
+  search tableMessagesAbstraits.searchKey nomMessage () ;
+#------------------------------------------------- Generate instruction
+  outInstruction := [@typeSimpleExtractInstruction new !inSourceVarCppName
+                                                       !nomClasse
+                                                       !listeAffectationParametresEffectifs
+                                                       !errorExpression
+                                                       !nomMessage] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#       Structured extract instruction                                      *
+#---------------------------------------------------------------------------*
+
+rule <extract_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?@typeCplusPlusName inSourceVarCppName
+  ?@lstring nomTypeSource
+  ?@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@typeInstruction outInstruction
+:
+  @typeStructuredExtractCasesList casesList [empty] ;
+  $:$ ;
+  $when$ ;
+  block ioVariablesMap.testBloc () :
+    repeat
+      block ioVariablesMap.testPart () :
+        @location indicatif1 := here ;
+      #--- Nom du type 1
+        @lstring nomType1 ;
+        $type_name$ ? nomType1 ;
+      #--- Vérifier que la classe 'nomType1' est déclarée
+        @AC_galgasType definitionClasse1 ;
+        @AC_semanticsEntity entite ;
+        search ioComponentSemanticsEntitiesMap.searchKey nomType1 (?entite) ;
+        extract entite->@typeEntiteType (?definitionClasse1) error nomType1 : messageTypeEntite ;
+      #--- Vérifier que la classe 'nomType1' hérite de la classe 'nomTypeBase1'
+        @typeSuperClassesMap tableDesClassesAncetresType1 ;
+        @typeListeAttributsSemantiques listeAttributs1 ;
+        extract definitionClasse1->@typeGalgasClassType
+                  (?*
+                   ?*
+                   ?listeAttributs1
+                   ?tableDesClassesAncetresType1
+                   ?*
+                   ?*
+                   ?*)
+              error nomType1 : messageGalgasType ;
+      #--- Verify class is an heir of variable type
+        if not [tableDesClassesAncetresType1 hasKey !nomTypeSource] then
+          error nomType1 : "This class does not inherit from '@" . [nomTypeSource value] . "'" ;
+        end if ;
+      #--- Arguments du type 1
+        $($ ;
+        @L_nameWithType elementsList [empty] ;
+        @bool noUsedParameter := true ;
+        repeat
+        while
+          $??$ ;
+          @lstring typeName ;
+          @lstring constantName ;
+          select
+            noUsedParameter := false ;
+            $type_name$ ? typeName ;
+            $identifier$ ? constantName ;
+          or
+            $*$ ;
+            typeName := [@lstring new !"" !here] ;
+            constantName := [@lstring new !"" !here] ;
+          end select ;
+          elementsList += ! typeName ! constantName ;
+        end repeat ;
+        $)$ ;
+        buildMapWithLocalConstants
+          !elementsList
+          !listeAttributs1
+          !?ioVariablesMap
+          !indicatif1
+          !false
+        ;
+      #--- Liste des instructions
+        $->$ ;
+        @typeInstructionsList instructionsList [empty] ;
+        <semantic_instructions_list>
+          !?ioComponentSemanticsEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?instructionsList
+        ;
+        casesList += !nomType1 !indicatif1 !instructionsList !noUsedParameter ;
+      end block (!here) ;
+    while
+      $when$ ;
+    end repeat ;
+  #---------------------  Default error -----------------------
+    block ioVariablesMap.testPart () :
+      $else$ ;
+      @typeInstructionsList elseInstructionList [empty] ;
+      <semantic_instructions_list>
+        !?ioComponentSemanticsEntitiesMap
+        !?listeEntitesAengendrer
+        !?ioOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?elseInstructionList
+      ;
+      outInstruction := [@typeStructuredExtractInstructionWithElse new
+        !inSourceVarCppName !casesList !elseInstructionList
+      ] ;
+    end block (!here) ;
+  end block () ;
+  $end$ ;
+  $extract$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# Local variable declaration                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+#--- Type name
+  @AC_galgasType definitionType ;
+  @lstring typeName ;
+  <type_parsing> !?ioComponentSemanticsEntitiesMap ?definitionType ?typeName ;
+#--- Type can be used for instanciation ?
+  [definitionType typeCanBeUsedInObjectDeclaration] ;
+#--- Variable name
+  @lstring nomVariable ;
+  $identifier$ ? nomVariable ;
+  @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+  insert ioVariablesMap.insertLocalVariable nomVariable (!definitionType !nomCppVariable) ;
+#--- Assignment ?
+  <optional_assignment>
+    !typeName
+    !nomVariable
+    !nomCppVariable
+    !definitionType
+    !?ioVariablesMap
+    !?ioInstructionsList
+    !?ioOptionsComponentsMapForUse
+    !?ioComponentSemanticsEntitiesMap
+  ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                    Instruction drop nomVariable, ... ;                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $drop$ ;
+  <drop_instruction>
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !?ioVariablesMap
+    !?ioInstructionsList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <drop_instruction>
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  repeat
+    @lstring nom ;
+    $identifier$ ? nom ;
+    @typeCplusPlusName nomCppVar ;
+    search ioVariablesMap.searchForDestructiveReadAccess nom (?* ?nomCppVar) ;
+    @typeInstruction instruction := [@typeDropInstruction new !nomCppVar] ;
+    ioInstructionsList += !instruction ;
+  while
+    $,$ ;
+  end repeat ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#            R O U T I N E    C A L L    I N S T R U C T I O N              *
+#                                                                           *
+#                          routine_name ... ;                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <instruction_beginning_with_identifier>
+  ?@lstring nomVarDest
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+:
+#--- Vérifier que le nom est bien un nom de routine
+  @L_signature signatureRoutine ;
+  @AC_semanticsEntity entite ;
+  search ioComponentSemanticsEntitiesMap.searchKey nomVarDest (?entite) ;
+  extract entite->@typeEntiteRoutine (?signatureRoutine) error nomVarDest : messageTypeEntite ;
+#--- Arguments effectifs
+  @typeExpressionList expressionsList ;
+  <actual_parameters_list>
+    !signatureRoutine
+    ?expressionsList
+    !?ioVariablesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioComponentSemanticsEntitiesMap
+    !?ioInstructionsList
+  ;
+#--- Generate instruction
+  @typeInstruction instruction := [@typeRoutineCallInstruction new !nomVarDest !expressionsList] ;
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           E X T E R N    C A L L    I N S T R U C T I O N                 *
+#                                                                           *
+#                         action extern_action ... ;                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+#--- Action name
+  $action$ ;
+  @lstring nomAction ;
+  $identifier$ ? nomAction ;
+#--- Search action in action map
+  @AC_semanticsEntity entite ;
+  search ioComponentSemanticsEntitiesMap.searchKey nomAction (?entite) ;
+  @L_signature listeTypesParametresFormels ;
+  extract entite->@typeEntiteActionExterne (?listeTypesParametresFormels) error nomAction : messageTypeEntite ;
+#--- Check argument list types
+  @typeExpressionList expressionsList ;
+  <actual_parameters_list>
+    !listeTypesParametresFormels
+    ?expressionsList
+    !?ioVariablesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioComponentSemanticsEntitiesMap
+    !?ioInstructionsList
+  ;
+  $;$ ;
+#--- Generate instruction
+  @typeInstruction instruction :=
+        [@typeInstructionAppelActionExterne new !nomAction
+                                               !expressionsList
+                                               !listeTypesParametresFormels] ;
+
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R E A D E R    C A L L   I N S T R U C T I O N                         *
+#               [object reader_method !... !?... ?...] ;                    *
+#                                                                           *
+#    M O D I F I E R    C A L L   I N S T R U C T I O N                     *
+#               [!?var modifier_method !... !?... ?...] ;                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $[$ ;
+#--- Get source identity characteristics
+  @typeInstruction instruction ;
+  select
+    @lstring variableName ;
+    @AC_galgasType variableType ;
+    @typeCplusPlusName cppVariableName ;
+    <read_access> ?variableName ?cppVariableName ?variableType !?ioVariablesMap ;
+    @lstring methodName ;
+    $identifier$ ? methodName ;
+    @L_signature methodSignature ;
+    [variableType handleReaderInstructionCall !methodName ?methodSignature] ;
+  #--- Actual parameters
+    @typeExpressionList expressionsList ;
+    <actual_parameters_list>
+      !methodSignature
+      ?expressionsList
+      !?ioVariablesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioComponentSemanticsEntitiesMap
+      !?ioInstructionsList
+    ;
+  #--- Generate instruction
+    instruction := [@typeReaderCallInstruction new !cppVariableName !methodName !expressionsList] ;
+  or
+    $!?$ ;
+    @lstring variableName ;
+    $identifier$ ? variableName ;
+    @AC_galgasType variableType ;
+    @typeCplusPlusName cppVariableName ;
+    search ioVariablesMap.searchForReadWriteAccess variableName (?variableType ?cppVariableName) ; 
+  #--- Get method name
+    @lstring methodName ;
+    $identifier$ ? methodName ;
+    @L_signature methodSignature ;
+    [variableType handleModifierCall !methodName ?methodSignature] ;
+  #--- Actual parameters
+    @typeExpressionList expressionsList ;
+    <actual_parameters_list>
+      !methodSignature
+      ?expressionsList
+      !?ioVariablesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioComponentSemanticsEntitiesMap
+      !?ioInstructionsList
+    ;
+  #--- Generate instruction
+    instruction := [@typeReaderCallInstruction new !cppVariableName !methodName !expressionsList] ;
+  end select ;
+  ioInstructionsList += !instruction ;
+  $]$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#             I N S T R U C T I O N   B E G I N N I N G                     *
+#               W I T H    A N    I D E N T I F I E R                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  @lstring nomVarDest ;
+  $identifier$ ? nomVarDest ;
+  <instruction_beginning_with_identifier>
+    !nomVarDest
+    !?ioVariablesMap 
+    !?ioInstructionsList
+    !?ioOptionsComponentsMapForUse
+    !?ioComponentSemanticsEntitiesMap
+  ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Instruction 'insert idfTable.method:idfClef (!arg1 ...) ->idfUlong ;'    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $insert$ ;
+#--- Map name
+  @lstring nomTable ;
+  $identifier$ ? nomTable ;
+  @AC_galgasType typeVariableTable ;
+  @typeCplusPlusName nomCppVariableTable ;
+  search ioVariablesMap.searchForReadWriteAccess nomTable (?typeVariableTable ?nomCppVariableTable) ;
+  @lstring nomTypeUtilisateur ;
+  @typeListeAttributsSemantiques listeAttributsSemantiques ;
+  @typeTableMethodesInsererChercher tableMethodesInserer ;
+  @AC_galgasType mapKeyType ;
+  extract typeVariableTable->@typeGalgasMapType  (?nomTypeUtilisateur ?listeAttributsSemantiques
+                                                 ?tableMethodesInserer ?* ?* ?* ?mapKeyType)
+                              error nomTable : messageGalgasType ;
+#--- Insert method
+  $.$ ;
+  @lstring nomMethodeInsertion ;
+  $identifier$ ? nomMethodeInsertion ;
+  search tableMethodesInserer.searchKey nomMethodeInsertion (?*) ;
+#--- Key name
+  @AC_galgasType typeVariableClef ;
+  @typeCplusPlusName nomCppVariableClef ;
+  @lstring nomVariableClef ;
+  <read_access> ?nomVariableClef ?nomCppVariableClef ?typeVariableClef !?ioVariablesMap ;
+  checkAssignmentTypesCompatibility !mapKeyType !typeVariableClef !here ;
+#--- Parameters list
+  @typeCplusPlusNameList listeNomCppParametresEffectifs ;
+  <output_parameters_list> ?listeNomCppParametresEffectifs !listeAttributsSemantiques !?ioVariablesMap ;
+#--- Optional parameter
+  @typeCplusPlusName variableNameOrNull ;
+  <optional_map_parameter>
+    ?variableNameOrNull
+    !?ioVariablesMap
+  ;
+#--- Generate instruction
+  @typeInstruction instruction := [@typeMapInsertInstruction new !nomCppVariableTable
+                                               !nomMethodeInsertion
+                                               !nomTypeUtilisateur
+                                               !nomCppVariableClef
+                                               !listeNomCppParametresEffectifs
+                                               !variableNameOrNull] ;
+  ioInstructionsList += !instruction ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# Instruction 'search idfTable.method:!idfClef (?arg1 ...) ->idfUlong ;'    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $search$ ;
+#--- Map name
+  @lstring nomTable ;
+  $identifier$ ? nomTable ;
+  @AC_galgasType typeVariableTable ;
+  @typeCplusPlusName nomCppVariableTable ;
+  search ioVariablesMap.searchForReadWriteAccess nomTable (?typeVariableTable ?nomCppVariableTable) ;
+  @lstring nomTypeUtilisateur ;
+  @typeListeAttributsSemantiques listeAttributsSemantiques ;
+  @typeTableMethodesInsererChercher tableMethodesChercher ;
+  @AC_galgasType mapKeyType ;
+  extract typeVariableTable->@typeGalgasMapType
+                          (?nomTypeUtilisateur ?listeAttributsSemantiques
+                          ?* ?tableMethodesChercher
+                          ?* ?* ?mapKeyType) error nomTable : messageGalgasType ;
+#--- Search method
+  $.$ ;
+  @lstring nomMethodeRecherche ;
+  $identifier$ ? nomMethodeRecherche ;
+  search tableMethodesChercher.searchKey nomMethodeRecherche (?*) ;
+#--- Key parsing
+  @AC_galgasType typeVariableClef ;
+  @typeCplusPlusName nomCppVariableClef ;
+  @lstring nomVariableClef ;
+  <read_access> ?nomVariableClef ?nomCppVariableClef ?typeVariableClef !?ioVariablesMap ;
+  checkAssignmentTypesCompatibility !mapKeyType !typeVariableClef !here ;
+#--- Parameters list
+  @L_assignedVariables listeParametresEffectifs ;
+  @typeCplusPlusNameList allVariablesList ;
+  $($ ;
+  <input_parameters_list> 
+    ?listeParametresEffectifs
+    ?allVariablesList
+    !listeAttributsSemantiques
+    !?ioVariablesMap
+  ;
+  $)$ ;
+#--- Optional parameter
+  @typeCplusPlusName variableNameOrNull ;
+  <optional_map_parameter>
+    ?variableNameOrNull
+    !?ioVariablesMap
+  ;
+#--- Generate instruction
+  $;$ ;
+  @typeInstruction instruction ;
+  instruction := [@typeMapSearchInstruction new !nomCppVariableTable
+                                               !nomMethodeRecherche
+                                               !nomTypeUtilisateur
+                                               !nomCppVariableClef
+                                               !allVariablesList
+                                               !variableNameOrNull] ;
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                           'warning ... ;' instruction                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $warning$ ;
+  @typeExpression errorExpression ;
+  @AC_galgasType errorExpressionType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?errorExpression
+    ?errorExpressionType
+  ;
+#--- Vérifier que la variable est d'une type contenant une location localisant l'error
+  [errorExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
+  $:$ ;
+#--- Warning message
+  @typeExpression warningMessageExpression ;
+  @AC_galgasType warningMessageExpressionType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?warningMessageExpression
+    ?warningMessageExpressionType
+  ;
+#--- Check that error message is a @string instance
+  extract warningMessageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
+#--- Generate instruction
+  @typeInstruction instruction ;
+  instruction := [@typeWarningInstruction new !errorExpression !warningMessageExpression] ;
+  ioInstructionsList += !instruction ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                           Instruction 'error ... ;'                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $error$ ;
+  @typeExpression errorLocationExpression ;
+  @AC_galgasType errorLocationExpressionType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?errorLocationExpression
+    ?errorLocationExpressionType
+  ;
+#--- Vérifier que la variable est d'une type contenant une location localisant l'error
+  [errorLocationExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
+  $:$ ;
+#--- Error message
+  @typeExpression errorMessageExpression ;
+  @AC_galgasType errorMessageExpressionType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?errorMessageExpression
+    ?errorMessageExpressionType
+  ;
+#--- Check that error message is a @string instance
+  extract errorMessageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
+#--- Build instruction and append it to instructions list
+  @typeInstruction instruction := [@typeErrorInstruction new !errorLocationExpression !errorMessageExpression] ;
+  ioInstructionsList += !instruction ;
+#--- Valuations fictives
+  select
+  or
+    $->$ ;
+    repeat
+      @lstring nomVariable ;
+      $identifier$ ? nomVariable ;
+      search ioVariablesMap.searchForWriteAccess nomVariable (?* ?*) ;
+    while
+      $,$ ;
+   end repeat ;
+  end select ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                           'message ... ;' instruction                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $message$ ;
+#--- Message
+  @typeExpression messageExpression ;
+  @AC_galgasType messageExpressionType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?messageExpression
+    ?messageExpressionType
+  ;
+#--- Check that error message is a @string instance
+  extract messageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
+#--- Construire l'instruction
+  @typeInstruction instruction := [@typeMessageInstruction new !messageExpression] ;
+  ioInstructionsList += !instruction ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Instruction 'if ... then ... elsif ... else ... end if ;'               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $if$ ;
+  @L_expression_instructionsList_list listeBranchesTest [empty] ;
+  block ioVariablesMap.testBloc () :
+    repeat
+      block ioVariablesMap.testPart () :
+        @typeExpression testBranche ;
+        @AC_galgasType resultType ;
+        <expression>
+          !?ioComponentSemanticsEntitiesMap
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          ?testBranche
+          ?resultType
+        ;
+        extract resultType ->@typeGalgas_bool () error here : messageGalgasType ;
+        $then$ ;
+        @typeInstructionsList listeInstructionsBrancheTest [empty] ;
+        <semantic_instructions_list_no_verif>
+          !?ioComponentSemanticsEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?listeInstructionsBrancheTest
+        ;
+        listeBranchesTest += !testBranche !listeInstructionsBrancheTest ;
+      end block (!here) ;
+    while
+      $elsif$ ;
+    end repeat ;
+    @typeInstructionsList listeInstructionsBrancheAutre [empty] ;
+    block ioVariablesMap.testPart () :
+      select
+      or
+        $else$ ;
+        <semantic_instructions_list_no_verif>
+          !?ioComponentSemanticsEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?listeInstructionsBrancheAutre
+        ;
+      end select ; 
+    end block (!here) ;
+    $end$ ;
+    $if$ ;
+  end block () ;
+#--- Engendrer l'instruction
+  @typeInstruction instruction ;
+  instruction := [@C_if_instruction new !listeBranchesTest !listeInstructionsBrancheAutre] ;
+  ioInstructionsList += !instruction ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    G R A M M A R    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $grammar$ ;
+#--- Nom du fichier is
+  @lstring grammarName ;
+  $identifier$ ? grammarName ;
+#--- Alt option ?
+  @lstring altName ;
+  select
+    altName := [@lstring new !"" !here] ;
+  or
+    $label$ ;
+    $identifier$ ? altName ;
+  end select ;
+#--- Parse file name
+  $in$ ;
+  @lstring nomFichierSource ;
+  @typeCplusPlusName nomCppFichierSource ;
+  @AC_galgasType typeNomFichierSource ;
+  <read_access> ?nomFichierSource ?nomCppFichierSource ?typeNomFichierSource !?ioVariablesMap ;
+  extract typeNomFichierSource ->@typeGalgas_lstring () error nomFichierSource : messageGalgasType ;
+#--- Analyse des arguments effectifs
+  @typeExpressionList expressionsList ;
+  @L_actualParametersSignature listeTypesParametresEffectifs ;
+  <parse_parameters_list>
+    ?listeTypesParametresEffectifs
+    ?expressionsList
+    !?ioVariablesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioComponentSemanticsEntitiesMap
+  ;
+#--- Look for grammar
+  @AC_semanticsEntity entity  ;
+  search ioComponentSemanticsEntitiesMap.searchKey grammarName (?entity) ;
+  @M_nonterminalSymbolAlts startSymbolAltMap ;
+  extract entity->@C_grammarForSemantics (?startSymbolAltMap) error grammarName : messageTypeEntite ;
+  @L_signature startSymbolSignature ;
+  search startSymbolAltMap.searchKey altName (?startSymbolSignature) ;
+#--- Vérifier la cohérence avec la déclaration
+  verifierCompatibiliteArgEffectifsSignature 
+    !startSymbolSignature
+    !listeTypesParametresEffectifs
+    !here
+    !?ioInstructionsList
+    !?expressionsList
+  ;
+#--- Engendrer l'instruction
+  @typeInstruction instruction ;
+  instruction := [@C_grammarInstruction new !nomCppFichierSource
+                                           !grammarName
+                                           !expressionsList
+                                           !altName] ;
+  ioInstructionsList += !instruction ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     Instructions                                                          *
+#          - 'foreach map ... ;'                                            *
+#          - 'foreach list ... ;' (1 list)                                  *
+#          - 'foreach list ... :: ... ;' (2 lists)                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $foreach$ ;
+  @typeInstruction instruction ;
+  select
+  #------------- Instruction 'foreach map ... ;'
+    $map$ ;
+  #--- Nom de la map
+    @lstring nomTable ;
+    @typeCplusPlusName nomCppVariableTable ;
+    @AC_galgasType typeVariableTable ;
+    <read_access>
+      ?nomTable
+      ?nomCppVariableTable
+      ?typeVariableTable
+      !?ioVariablesMap
+    ;
+    @lstring nomTypeTable ;
+    @typeListeAttributsSemantiques listeAttributsSemantiques ;
+    @AC_galgasType mapKeyType ;
+    extract typeVariableTable->@typeGalgasMapType
+                         (?nomTypeTable ?listeAttributsSemantiques
+                          ?* ?*
+                          ?* ?* ?mapKeyType) error nomTable : messageGalgasType ;
+  #--- Bloc répété
+    block ioVariablesMap.repeatBlock () :
+      block ioVariablesMap.repeatPart () :
+      #--- Clef
+        $??$ ;
+        @location indicatif := here ;
+        @typeCplusPlusName nomCppVarClef := [@typeKeyName new !indicatif] ;
+        select
+          $*$ ;
+        or
+          @lstring keyTypeName ;
+          $type_name$ ? keyTypeName ;
+          @string formalKeyTypeName ;
+          [mapKeyType getTypeName ?formalKeyTypeName] ;
+          if [keyTypeName value] != formalKeyTypeName then
+            error keyTypeName : "I get the '@" . [keyTypeName value]
+                   . "' type ; I was expected the '@" . formalKeyTypeName . "' type" ; 
+          end if ;
+          @lstring nomClef ;
+          $identifier$ ? nomClef ;
+          insert ioVariablesMap.insertConstInArgument nomClef (!mapKeyType !nomCppVarClef) ;
+        end select ;
+      #--- Arguments
+        <parse_effective_input_parameters_list>
+          !?ioVariablesMap
+          !listeAttributsSemantiques
+          !indicatif
+          !true
+        ;
+        $:$ ;
+      #--- Liste d'instructions
+        @typeInstructionsList listeDesInstructions [empty] ;
+        <semantic_instructions_list_no_verif>
+          !?ioComponentSemanticsEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?listeDesInstructions
+        ;
+      end block (!here) ;
+    end block () ;
+    instruction := [@typeInstructionItererTable new !indicatif
+                                                   !nomCppVariableTable
+                                                   !nomTypeTable
+                                                   !nomCppVarClef
+                                                   !listeDesInstructions] ;
+  or
+  #------------- Instruction 'foreach list ... ;'
+    $list$ ;
+  #--- Nom de la liste
+    @lstring nomListe1 ;
+    @typeCplusPlusName nomCppVariableListe1 ;
+    @AC_galgasType typeVariableListe1 ;
+    <read_access> ?nomListe1 ?nomCppVariableListe1 ?typeVariableListe1
+                  !?ioVariablesMap ;
+    @lstring nomTypeListe1 ;
+    @typeListeAttributsSemantiques listeAttributsSemantiques1 ;
+    extract typeVariableListe1->@typeGalgasListType (?nomTypeListe1 ?listeAttributsSemantiques1)
+          error nomListe1 : messageGalgasType ;
+    select
+    #------------- Instruction d'itération sur une seule liste
+    #--- Bloc répété
+      block ioVariablesMap.repeatBlock () :
+        block ioVariablesMap.repeatPart () :
+        #--- Argument
+          @location indicatif := here ;
+          <parse_effective_input_parameters_list>
+            !?ioVariablesMap
+            !listeAttributsSemantiques1
+            !indicatif
+            !false
+          ;
+          $:$ ;
+        #--- Liste d'instructions
+          @typeInstructionsList listeDesInstructions [empty] ;
+          <semantic_instructions_list_no_verif>
+            !?ioComponentSemanticsEntitiesMap
+            !?listeEntitesAengendrer
+            !?ioOptionsComponentsMapForUse
+            !?ioVariablesMap
+            !?listeDesInstructions
+          ;
+        end block (!here) ;
+      end block () ;
+      instruction := [@typeInstructionItererListeSimple new !indicatif
+                                                           !nomCppVariableListe1
+                                                           !nomTypeListe1
+                                                           !listeDesInstructions] ;
+    #------------- Instruction d'itération sur deux listes
+    or
+      $::$ ;
+    #--- Liste 2
+      @lstring nomListe2 ;
+      @AC_galgasType typeVariableListe2 ;
+      @typeCplusPlusName nomCppVariableListe2 ;
+      <read_access> ?nomListe2 ?nomCppVariableListe2 ?typeVariableListe2
+                    !?ioVariablesMap ;
+      @lstring nomTypeListe2 ;
+      @typeListeAttributsSemantiques listeAttributsSemantiques2 ;
+      extract typeVariableListe2->@typeGalgasListType (?nomTypeListe2 ?listeAttributsSemantiques2)
+          error nomListe2 : messageGalgasType ;
+      $->$ ;
+    #--- Première branche : tant qu'aucune des deux listes n'est empty
+    #--- Bloc répété
+      block ioVariablesMap.repeatBlock () :
+        block ioVariablesMap.repeatPart () :
+        #--- Arguments de la list 1
+          @location indicatif1 := here ;
+          <parse_effective_input_parameters_list>
+            !?ioVariablesMap
+            !listeAttributsSemantiques1
+            !indicatif1
+            !false
+          ;
+        #--- Arguments de la list 2
+          $::$ ;
+           @location indicatif2 := here ;
+          <parse_effective_input_parameters_list>
+            !?ioVariablesMap
+            !listeAttributsSemantiques2
+            !indicatif2
+            !false
+          ;
+          $:$ ;
+        #--- Liste d'instructions
+          @typeInstructionsList listeDesInstructions [empty] ;
+          <semantic_instructions_list_no_verif>
+            !?ioComponentSemanticsEntitiesMap
+            !?listeEntitesAengendrer
+            !?ioOptionsComponentsMapForUse
+            !?ioVariablesMap
+            !?listeDesInstructions
+          ;
+        end block (!here) ;
+      end block () ;
+    #--- Engendrer l'instruction
+      instruction := [@typeInstructionItererListeDouble new !indicatif1
+                                                           !nomCppVariableListe1
+                                                           !nomTypeListe1
+                                                           !indicatif2
+                                                           !nomCppVariableListe2
+                                                           !nomTypeListe2
+                                                           !listeDesInstructions] ;
+    end select ;
+  end select ;
+  $end$ ;
+  $foreach$ ;
+  $;$ ;
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     ' M A T C H '    I N S T R U C T I O N                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <parse_match_operand>
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeCplusPlusName outCppName
+  !@lstring outBaseTypeName
+  !@location outVarLocation
+  !@bool outIsEnumeration
+  !@typeEnumConstantesMap outEnumMessageMap
+:
+  @lstring variableName ;
+  @AC_galgasType type ;
+  <read_access>
+    ?variableName
+    ?outCppName
+    ?type
+    !?ioVariablesMap
+  ;
+  outVarLocation := here ;
+  extract type :
+  when @typeGalgasClassType (??@lstring baseTypeName ??* ??* ??* ??* ??* ??*) ->
+    outBaseTypeName := baseTypeName ;
+    outIsEnumeration := false ;
+    outEnumMessageMap := [@typeEnumConstantesMap empty] ;
+  when @typeGalgas_enum (??@lstring typeName ??@typeEnumConstantesMap enumMessageMap ??*) ->
+    outBaseTypeName := typeName ;
+    outIsEnumeration := true ;
+    outEnumMessageMap := enumMessageMap ;
+  else
+    @string actualTypeName ;
+    [type getTypeName ?actualTypeName] ; 
+    error variableName : "the type of this variable is '@" . actualTypeName
+      . "' ; I was expected an enumeration type or an abstract type" 
+      -> outBaseTypeName, outIsEnumeration, outEnumMessageMap ;
+  end extract ;
+end rule ;
+
+
+#---------------------------------------------------------------------------*
+
+rule <parse_match_case>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeVariablesMap ioVariablesMap
+  ?@lstring inTypeName
+  ?@location inVarLocation
+  ?@bool inIsEnumeration
+  ?@typeEnumConstantesMap inEnumMessageMap
+  !@lstring outTypeName
+:
+#--- Nom du type 1
+  $type_name$ ? outTypeName ;
+#--- Vérifier que la classe 'outTypeName' est déclarée
+  @AC_galgasType definitionClasse1 ;
+  @AC_semanticsEntity entite ;
+  search ioComponentSemanticsEntitiesMap.searchKey outTypeName (?entite) ;
+  extract entite->@typeEntiteType (?definitionClasse1) error outTypeName : messageTypeEntite ;
+#--- Vérifier que la classe 'outTypeName' hérite de la classe 'baseTypeName1'
+  @typeSuperClassesMap tableDesClassesAncetresType1 ;
+  @typeListeAttributsSemantiques listeAttributs1 ;
+  @bool isAbstract ;
+  extract definitionClasse1->@typeGalgasClassType
+                 (?*
+                   ?*
+                   ?listeAttributs1
+                   ?tableDesClassesAncetresType1
+                   ?*
+                   ?*
+                   ?isAbstract)
+              error outTypeName : messageGalgasType ;
+#--- Check class is not abstract
+  if isAbstract then
+    error outTypeName : "an abstract class is not allowed here" ;
+  end if ;
+#--- Verify class is an heir of variable type
+  if inIsEnumeration then
+    error outTypeName : "a constant of '@" . [inTypeName value] . "' enumeration type is expected here" ;
+  elsif not [tableDesClassesAncetresType1 hasKey !inTypeName] then
+    error outTypeName : "This type does not inherit from '" . [inTypeName value] . "'" ;
+  end if ;
+#--- Arguments
+  <parse_effective_input_parameters_list>
+    !?ioVariablesMap
+    !listeAttributs1
+    !inVarLocation
+    !false
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <parse_match_case>
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeVariablesMap unused ioVariablesMap
+  ?@lstring inTypeName
+  ?@location inVarLocation
+  ?@bool inIsEnumeration
+  ?@typeEnumConstantesMap inEnumMessageMap
+  !@lstring outEnumConstantName
+:
+#--- Enumeration constant
+  $identifier$ ? outEnumConstantName ;
+#--- Verify constant belongs to constants map
+  if inIsEnumeration then
+    search inEnumMessageMap.searchKey outEnumConstantName () ;
+  else
+    error outEnumConstantName : "a class that inherit from '@" . [inTypeName value] . "' abstract class is expected here" ;
+  end if ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  $match$ ;
+#--- Get first operand
+  @typeCplusPlusName operand1_cppName ;
+  @lstring operand1_typeName ;
+  @location operand1_location ;
+  @bool operand1_isEnumeration ;
+  @typeEnumConstantesMap operand1_enumMessageMap ;
+  <parse_match_operand>
+    !?ioVariablesMap
+    ?operand1_cppName
+    ?operand1_typeName
+    ?operand1_location
+    ?operand1_isEnumeration
+    ?operand1_enumMessageMap
+  ;
+#--- Get second operand
+  $::$ ;
+  @typeCplusPlusName operand2_cppName ;
+  @lstring operand2_typeName ;
+  @location operand2_location ;
+  @bool operand2_isEnumeration ;
+  @typeEnumConstantesMap operand2_enumMessageMap ;
+  <parse_match_operand>
+    !?ioVariablesMap
+    ?operand2_cppName
+    ?operand2_typeName
+    ?operand2_location
+    ?operand2_isEnumeration
+    ?operand2_enumMessageMap
+  ;
+#---  Cases list
+  $:$ ;
+  @L_matchInstructionCasesList casesList [empty] ;
+  block ioVariablesMap.testBloc () :
+    repeat
+    while
+      $when$ ;
+      block ioVariablesMap.testPart () :
+        @lstring case1_name ;
+      #--- First case 
+       <parse_match_case>
+          !?ioComponentSemanticsEntitiesMap
+          !?ioVariablesMap
+          !operand1_typeName
+          !operand1_location
+          !operand1_isEnumeration
+          !operand1_enumMessageMap
+          ?case1_name
+        ;
+      #--- Separator
+        $::$ ;
+      #--- Second case
+        @lstring case2_name ;
+        <parse_match_case>
+          !?ioComponentSemanticsEntitiesMap
+          !?ioVariablesMap
+          !operand2_typeName
+          !operand2_location
+          !operand2_isEnumeration
+          !operand2_enumMessageMap
+          ?case2_name
+        ;
+      #--- Instructions list
+        $:$ ;
+        @typeInstructionsList instructionsList [empty] ;
+        <semantic_instructions_list>
+          !?ioComponentSemanticsEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?instructionsList
+        ;
+        casesList += !case1_name !case2_name !instructionsList ;
+      end block (!here) ;
+    end repeat ;
+  #---------------------  E L S E    P A R T -----------------------
+    block ioVariablesMap.testPart () :
+      $else$ ;
+      @typeInstructionsList elsePartInstructionsList [empty] ;
+      <semantic_instructions_list>
+        !?ioComponentSemanticsEntitiesMap
+        !?listeEntitesAengendrer
+        !?ioOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?elsePartInstructionsList
+      ;
+    end block (!here) ;
+  end block () ;
+  $end$ ;
+  $match$ ;
+  $;$ ;
+#--- Insert instruction
+  @typeInstruction instruction := [@typeMatchInstruction new !operand1_location
+                                                             !operand2_location
+                                                             !operand1_cppName
+                                                             !operand2_cppName
+                                                             !operand1_typeName
+                                                             !operand2_typeName
+                                                             !operand1_isEnumeration
+                                                             !operand2_isEnumeration
+                                                             !casesList
+                                                             !elsePartInstructionsList] ;
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instructions_list_no_verif>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+:
+  repeat
+  while
+    <semantic_instruction>
+      !?ioComponentSemanticsEntitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      !?ioInstructionsList
+    ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                 Affection optionnelle dans une déclaration                *
+#---------------------------------------------------------------------------*
+
+rule <optional_assignment>
+  ??@lstring unused inTypeName
+  ??@lstring unused nomVarDest
+  ??@typeCplusPlusName inVariableCppName
+  ??@AC_galgasType inVariableType
+  ?!@typeVariablesMap unused ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+:
+  @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !inVariableCppName !inVariableType] ;
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <optional_assignment>
+  ??@lstring unused inTypeName
+  ??@lstring inTargetVarName
+  ??@typeCplusPlusName inTargetVariableCppName
+  ??@AC_galgasType inVariableType
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+:
+  $:=$ ;
+#--- Indicate variable is written
+  search ioVariablesMap.searchForWriteAccess inTargetVarName (?* ?*) ;
+#--- Parse source expression
+  @typeExpression sourceExpression ;
+  @AC_galgasType sourceType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?sourceExpression
+    ?sourceType
+  ;
+#--- Match target and source types
+  checkAssignmentTypesCompatibility !inVariableType !sourceType !here ;
+#--- Generate instruction
+  @typeInstruction instruction := [@C_declarationInstructionWithAssignment new !inVariableType !inTargetVariableCppName !sourceExpression] ;
+  ioInstructionsList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <optional_assignment>
+  ??@lstring inTypeName
+  ??@lstring inTargetVarName
+  ??@typeCplusPlusName inTargetVariableCppName
+  ??@AC_galgasType inVariableType
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+:
+#--- Indicate variable is written
+  search ioVariablesMap.searchForWriteAccess inTargetVarName (?* ?*) ;
+  $[$ ;
+#--- Class method name
+  @lstring constructorName ;
+  $identifier$ ? constructorName ;
+  @typeListeAttributsSemantiques listeAttributsSemantiques ;
+  [inVariableType handleConstructorCall !constructorName ?listeAttributsSemantiques] ;
+#--- Actual arguments
+  @typeExpressionList expressionList ;
+  <output_expression_list>
+    ?expressionList
+    !listeAttributsSemantiques
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+  ;
+  $]$ ;
+#--- Generate instruction
+  @typeExpression  e := [@typeConstructorExpression new !inTypeName !constructorName !expressionList] ;
+  @typeInstruction i := [@C_declarationInstructionWithAssignment new !inVariableType !inTargetVariableCppName !e] ;
+  ioInstructionsList += !i ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   M A P    T Y P E    D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set tableDeclAnticipeesClassePourFichierH
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $map$ ;
+  @lstring nomTable ;
+  $type_name$ ? nomTable ;
+  select
+    $;$ ;
+    if not ([tableEnAvant hasKey !nomTable]
+         | [ioComponentSemanticsEntitiesMap hasKey !nomTable]) then
+      @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
+      insert tableEnAvant.insertKey nomTable (!t) ;
+      insert tableEnAvantAimplementer.insertKey nomTable (!t) ;
+      tableDeclAnticipeesClassePourFichierH += !nomTable ;
+    end if ;
+  or
+  #--- map générique C++ utilisée
+    $class$ ;
+    @lstring cppClassName ;
+    $identifier$ ?cppClassName ;
+    $in$ ;
+    @lstring path ;
+    $literal_string$ ? path ; 
+    tableFichiersEnTetePourFichierH += !path ;
+    $,$ ;
+    $literal_string$ ? path ; 
+    tableFichiersEnTetePourFichierCPP += !path ;
+    $;$ ;
+  #--- Déclaration des méthodes d'insertion, de recherche, et de block
+    @typeTableMethodesInsererChercher tableMethodesInserer [empty] ;
+    @typeTableMethodesInsererChercher tableMethodesChercher [empty] ;
+    @typeTableBlocsDeTable tableMethodesBloc [empty] ;
+    repeat
+    while
+      $insert$ ;
+      @lstring nomMethode ;
+      @L_stringList listeMessagesErreur ;
+      <ex_map_method> ? nomMethode ? listeMessagesErreur ;
+      $;$ ;
+      insert tableMethodesInserer.insertKey nomMethode (!listeMessagesErreur) ;
+    while 
+      $search$ ;
+      @lstring nomMethode ;
+      @L_stringList listeMessagesErreur ;
+      <ex_map_method> ? nomMethode ? listeMessagesErreur ;
+      $;$ ;
+      insert tableMethodesChercher.insertKey nomMethode (!listeMessagesErreur) ;
+    while
+      $block$ ;
+      @lstring nomMethode ;
+      $identifier$ ? nomMethode ;
+      $:$ ;
+      @L_signature signatureDebut ;
+      @typeVariablesMap tableDebut [empty] ;
+      @typeListeTypesEtNomsArgMethode listeTypesEtNomsArgMethodeDebut ; 
+      $($ ;
+      @L_signature_ForGrammarComponent signatureForGrammarComponent ; # Not used here
+      <formal_arguments_list>
+        !?ioComponentSemanticsEntitiesMap
+        ?signatureDebut
+        !?tableDebut
+        ?listeTypesEtNomsArgMethodeDebut
+        !?tableEnAvant
+        ?signatureForGrammarComponent
+      ;
+      $)$ ;
+      $:$ ;
+      @L_signature signatureFin ;
+      @typeVariablesMap tableFin [empty] ;
+      @typeListeTypesEtNomsArgMethode listeTypesEtNomsArgMethodeFin ; 
+      $($ ;
+      <formal_arguments_list>
+        !?ioComponentSemanticsEntitiesMap
+        ?signatureFin
+        !?tableFin
+        ?listeTypesEtNomsArgMethodeFin
+        !?tableEnAvant
+        ?signatureForGrammarComponent
+      ;
+      $)$ ;
+      $;$ ;
+      insert tableMethodesBloc.insertKey nomMethode (!signatureDebut !signatureFin) ;
+    end repeat ;
+  #--- Key type declaration
+    $key$ ;
+    @lstring typeName ;
+    @AC_galgasType typeDefinition ;
+    <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
+    [typeDefinition acceptToBeKeyForMap] ;
+    $;$ ;
+  #--- Attributs de la map
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [empty] ;
+    <attributes_definition_list> !?tableAttributs
+                                 !?listeTousAttributsSemantiques
+                                 ?listeAttributsSemantiquesCourants
+                                 ?listeTypeeAttributsExternesCourants
+                                 !?ioComponentSemanticsEntitiesMap
+                                 !?tableFichiersEnTetePourFichierH ;
+  #--- Insertion dans la map des entités utilisables
+    @AC_galgasType c := [@typeGalgasMapType new !nomTable
+                                                       !listeTousAttributsSemantiques
+                                                       !tableMethodesInserer
+                                                       !tableMethodesChercher
+                                                       !tableMethodesBloc
+                                                       !typeName
+                                                       !typeDefinition] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
+  #--- Insertion dans la map des classes définies dans le fichier source courant
+    @typeEntityToGenerate def := [@typeDefinitionTableAimplementer new !nomTable
+                                                                         !listeTousAttributsSemantiques
+                                                                         !listeTypeeAttributsExternesCourants
+                                                                         !cppClassName
+                                                                         !tableMethodesInserer
+                                                                         !tableMethodesChercher
+                                                                         !tableMethodesBloc
+                                                                         !typeName] ;
+    listeEntitesAengendrer += !def ;
+    $end$ ;
+    $map$ ;
+    $;$ ;
+  or
+  #--- Déclaration des méthodes d'insertion, de recherche, et de block
+    @typeTableMethodesInsererChercher tableMethodesInserer [empty] ;
+    @typeTableMethodesInsererChercher tableMethodesChercher [empty] ;
+    @typeTableBlocsDeTable tableMethodesBloc [empty] ;
+    repeat
+    while
+      $insert$ ;
+      @lstring nomMethode ;
+      @L_stringList listeMessagesErreur ;
+      <map_method> ? nomMethode ? listeMessagesErreur ;
+      $;$ ;
+      insert tableMethodesInserer.insertKey nomMethode (!listeMessagesErreur) ;
+    while 
+      $search$ ;
+      @lstring nomMethode ;
+      @L_stringList listeMessagesErreur ;
+      <map_method> ? nomMethode ? listeMessagesErreur ;
+      $;$ ;
+      insert tableMethodesChercher.insertKey nomMethode (!listeMessagesErreur) ;
+    end repeat ;
+  #--- Key type declaration
+    $key$ ;
+    @lstring typeName ;
+    @AC_galgasType typeDefinition ;
+    <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
+    [typeDefinition acceptToBeKeyForMap] ;
+    $;$ ;
+  #--- Attributs de la map
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [empty] ;
+    <attributes_definition_list> !?tableAttributs
+                                 !?listeTousAttributsSemantiques
+                                 ?listeAttributsSemantiquesCourants
+                                 ?listeTypeeAttributsExternesCourants
+                                 !?ioComponentSemanticsEntitiesMap
+                                 !?tableFichiersEnTetePourFichierH ;
+  #--- Insertion dans la map des entités utilisables
+    @AC_galgasType c := [@typeGalgasMapType new !nomTable
+                                                !listeTousAttributsSemantiques
+                                                !tableMethodesInserer
+                                                !tableMethodesChercher
+                                                !tableMethodesBloc
+                                                !typeName
+                                                !typeDefinition] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
+  #--- Insertion dans la map des classes définies dans le fichier source courant
+    @typeEntityToGenerate def := [@C_mapToImplement new !nomTable
+                                                        !listeTousAttributsSemantiques
+                                                        !listeTypeeAttributsExternesCourants
+                                                        !tableMethodesInserer
+                                                        !tableMethodesChercher
+                                                        !typeName] ;
+    listeEntitesAengendrer += !def ;
+    $end$ ;
+    $map$ ;
+    $;$ ;
+  end select ;
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $map$ ;
+  @lstring nomTable ;
+  $type_name$ ? nomTable ;
+  select
+    $;$ ;
+    if not([tableEnAvant hasKey !nomTable] | [ioComponentSemanticsEntitiesMap hasKey !nomTable]) then
+      @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
+      insert tableEnAvant.insertKey nomTable (!t) ;
+      insert tableEnAvantAimplementer.insertKey nomTable (!t) ;
+    end if ;
+  or
+  #--- map générique C++ utilisée
+    $class$ ;
+    @lstring cppClassName ;
+    $identifier$ ?cppClassName ;
+    $in$ ;
+    $literal_string$ ? * ; 
+    $,$ ;
+    $literal_string$ ? * ; 
+    $;$ ;
+  #--- Déclaration des méthodes d'insertion, de recherche, et de block
+    @typeTableMethodesInsererChercher tableMethodesInserer [empty] ;
+    @typeTableMethodesInsererChercher tableMethodesChercher [empty] ;
+    @typeTableBlocsDeTable tableMethodesBloc [empty] ;
+    repeat
+    while
+      $insert$ ;
+      @lstring nomMethode ;
+      @L_stringList listeMessagesErreur ;
+      <ex_map_method> ? nomMethode ? listeMessagesErreur ;
+      $;$ ;
+      insert tableMethodesInserer.insertKey nomMethode (!listeMessagesErreur) ;
+    while 
+      $search$ ;
+      @lstring nomMethode ;
+      @L_stringList listeMessagesErreur ;
+      <ex_map_method> ? nomMethode ? listeMessagesErreur ;
+      $;$ ;
+      insert tableMethodesChercher.insertKey nomMethode (!listeMessagesErreur) ;
+    while
+      $block$ ;
+      @lstring nomMethode ;
+      $identifier$ ? nomMethode ;
+      $:$ ;
+      @L_signature signatureDebut ;
+      @typeVariablesMap tableDebut [empty] ;
+      @typeListeTypesEtNomsArgMethode listeTypesEtNomsArgMethodeDebut ; 
+      $($ ;
+      @L_signature_ForGrammarComponent signatureForGrammarComponent ; # Not used here
+      <formal_arguments_list>
+        !?ioComponentSemanticsEntitiesMap
+        ?signatureDebut
+        !?tableDebut
+        ?listeTypesEtNomsArgMethodeDebut
+        !?tableEnAvant
+        ?signatureForGrammarComponent
+      ;
+      $)$ ;
+      $:$ ;
+      @L_signature signatureFin ;
+      @typeVariablesMap tableFin [empty] ;
+      @typeListeTypesEtNomsArgMethode listeTypesEtNomsArgMethodeFin ; 
+      $($ ;
+      <formal_arguments_list>
+        !?ioComponentSemanticsEntitiesMap
+        ?signatureFin
+        !?tableFin
+        ?listeTypesEtNomsArgMethodeFin
+        !?tableEnAvant
+        ?signatureForGrammarComponent
+      ;
+      $)$ ;
+      $;$ ;
+      insert tableMethodesBloc.insertKey nomMethode (!signatureDebut !signatureFin) ;
+    end repeat ;
+  #--- Déclaration du type de la key
+    $key$ ;
+    @lstring typeName ;
+    @AC_galgasType typeDefinition ;
+    <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
+    [typeDefinition acceptToBeKeyForMap] ;
+    $;$ ;
+  #--- Attributs de la map
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [empty] ;
+    @string_set tableFichiersEnTetePourFichierH [empty] ;
+    <attributes_definition_list> !?tableAttributs
+                                 !?listeTousAttributsSemantiques
+                                 ?listeAttributsSemantiquesCourants
+                                 ?listeTypeeAttributsExternesCourants
+                                 !?ioComponentSemanticsEntitiesMap
+                                 !?tableFichiersEnTetePourFichierH ;
+  #--- Insertion dans la map des entités utilisables
+    @AC_galgasType c := [@typeGalgasMapType new !nomTable
+                                                       !listeTousAttributsSemantiques
+                                                       !tableMethodesInserer
+                                                       !tableMethodesChercher
+                                                       !tableMethodesBloc
+                                                       !typeName
+                                                       !typeDefinition] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
+    $end$ ;
+    $map$ ;
+    $;$ ;
+  or
+  #--- Déclaration des méthodes d'insertion, de recherche, et de block
+    @typeTableMethodesInsererChercher tableMethodesInserer [empty] ;
+    @typeTableMethodesInsererChercher tableMethodesChercher [empty] ;
+    @typeTableBlocsDeTable tableMethodesBloc [empty] ;
+    repeat
+    while
+      $insert$ ;
+      @lstring nomMethode ;
+      @L_stringList listeMessagesErreur ;
+      <map_method> ? nomMethode ? listeMessagesErreur ;
+      $;$ ;
+      insert tableMethodesInserer.insertKey nomMethode (!listeMessagesErreur) ;
+    while 
+      $search$ ;
+      @lstring nomMethode ;
+      @L_stringList listeMessagesErreur ;
+      <map_method> ? nomMethode ? listeMessagesErreur ;
+      $;$ ;
+      insert tableMethodesChercher.insertKey nomMethode (!listeMessagesErreur) ;
+    end repeat ;
+  #--- Déclaration du type de la key
+    $key$ ;
+    @lstring typeName ;
+    @AC_galgasType typeDefinition ;
+    <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
+    [typeDefinition acceptToBeKeyForMap] ;
+    $;$ ;
+  #--- Attributs de la map
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [empty] ;
+    @string_set tableFichiersEnTetePourFichierH [empty] ;
+    <attributes_definition_list> !?tableAttributs
+                                 !?listeTousAttributsSemantiques
+                                 ?listeAttributsSemantiquesCourants
+                                 ?listeTypeeAttributsExternesCourants
+                                 !?ioComponentSemanticsEntitiesMap
+                                 !?tableFichiersEnTetePourFichierH ;
+  #--- Insertion dans la map des entités utilisables
+    @AC_galgasType c := [@typeGalgasMapType new !nomTable
+                                                       !listeTousAttributsSemantiques
+                                                       !tableMethodesInserer
+                                                       !tableMethodesChercher
+                                                       !tableMethodesBloc
+                                                       !typeName
+                                                       !typeDefinition] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
+    $end$ ;
+    $map$ ;
+    $;$ ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <ex_map_method>
+  !@lstring nomMethode
+  !@L_stringList outMultiLingualMessageList
+:
+  $identifier$ ? nomMethode ;
+  $error$ ;
+  $message$ ;
+  outMultiLingualMessageList := [@L_stringList empty] ;
+  repeat
+    @lstring messageText ;
+    $literal_string$ ? messageText ;
+    outMultiLingualMessageList += ![messageText value] ;
+  while
+    $,$ ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <map_method>
+  !@lstring nomMethode
+  !@L_stringList outMessageList
+:
+  $identifier$ ? nomMethode ;
+  $error$ ;
+  $message$ ;
+  outMessageList := [@L_stringList empty] ;
+  repeat
+    select
+      @lstring messageText ;
+      $literal_string$ ? messageText ;
+      if [messageText value] != "" then
+        outMessageList += ![messageText value] ;
+      end if ;
+    or
+      $*$ ;
+      outMessageList += !"" ;
+    end select ;
+  while
+    $.$ ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     L I S T   T Y P E   D E C L A R A T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set tableDeclAnticipeesClassePourFichierH
+  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $list$ ;
+  @lstring nomListe ;
+  $type_name$ ? nomListe ;
+  select
+    $;$ ;
+    if not ([tableEnAvant hasKey !nomListe] | [ioComponentSemanticsEntitiesMap hasKey !nomListe]) then
+      @AC_galgasType t := [@typeGalgasUndefinedListType new !nomListe] ;
+      insert tableEnAvant.insertKey nomListe (!t) ;
+      insert tableEnAvantAimplementer.insertKey nomListe (!t) ;
+      tableDeclAnticipeesClassePourFichierH += !nomListe ;
+    end if ;
+  or
+  #-- Déclaration des attributs de la list
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [empty] ;
+    <attributes_definition_list> !?tableAttributs
+                                 !?listeTousAttributsSemantiques
+                                 ?listeAttributsSemantiquesCourants
+                                 ?listeTypeeAttributsExternesCourants
+                                 !?ioComponentSemanticsEntitiesMap
+                                 !?tableFichiersEnTetePourFichierH ;
+  #--- Construction de l'attribut sémantique
+    $end$ ;
+    $list$ ;
+    $;$ ;
+    @AC_galgasType c := [@typeGalgasListType new !nomListe !listeTousAttributsSemantiques] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomListe (!entite) ;
+    @typeEntityToGenerate def := [@C_listTypeToImplement new !nomListe
+                                                                   !listeTousAttributsSemantiques
+                                                                   !listeTypeeAttributsExternesCourants] ;
+    listeEntitesAengendrer += !def ;
+  end select ;
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $list$ ;
+  @lstring nomListe ;
+  $type_name$ ? nomListe ;
+  select
+    $;$ ;
+    if not ([tableEnAvant hasKey !nomListe] | [ioComponentSemanticsEntitiesMap hasKey !nomListe]) then
+      @AC_galgasType t := [@typeGalgasUndefinedListType new !nomListe] ;
+      insert tableEnAvant.insertKey nomListe (!t) ;
+      insert tableEnAvantAimplementer.insertKey nomListe (!t) ;
+    end if ;
+  or
+  #-- Déclaration des attributs de la list
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [empty] ;
+    @string_set tableFichiersEnTetePourFichierH [empty] ;
+    <attributes_definition_list> !?tableAttributs
+                                 !?listeTousAttributsSemantiques
+                                 ?listeAttributsSemantiquesCourants
+                                 ?listeTypeeAttributsExternesCourants
+                                 !?ioComponentSemanticsEntitiesMap
+                                 !?tableFichiersEnTetePourFichierH ;
+  #--- Construction de l'attribut sémantique
+    $end$ ;
+    $list$ ;
+    $;$ ;
+    @AC_galgasType c := [@typeGalgasListType new !nomListe !listeTousAttributsSemantiques] ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    insert ioComponentSemanticsEntitiesMap.insertKey nomListe (!entite) ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                 LISTE DE DÉFINITION DES ATTRIBUTS SÉMANTIQUES             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <attributes_definition_list>
+  ?!@typeSemanticAttributesMap tableAttributs
+  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
+  !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
+  !@L_nameWithType listeTypeeAttributsExternesCourants # définis dans la classe courante
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@string_set tableFichiersEnTetePourFichierH
+:
+  listeTypeeAttributsExternesCourants := [@L_nameWithType empty] ;
+  listeAttributsSemantiquesCourants := [@typeListeAttributsSemantiques empty] ;
+  repeat
+  while
+    <attribute_definition> !?tableAttributs
+                           !?listeTousAttributsSemantiques
+                           !?listeAttributsSemantiquesCourants
+                           !?ioComponentSemanticsEntitiesMap
+                           !?tableFichiersEnTetePourFichierH ;
+    $;$ ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <attribute_definition>
+  ?!@typeSemanticAttributesMap tableAttributs
+  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
+  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@string_set unused tableFichiersEnTetePourFichierH
+:
+#--- Type name
+  @AC_galgasType definitionType ;
+  @lstring typeName ;
+  <type_parsing> !?ioComponentSemanticsEntitiesMap ?definitionType ?typeName ;
+#--- Type can be used for instanciation ?
+  [definitionType typeCanBeUsedInObjectDeclaration] ;
+#--- Formal argument
+  @lstring nom ;
+  $identifier$ ? nom ;
+  insert tableAttributs.insertKey nom (!definitionType) ;
+  listeTousAttributsSemantiques += !definitionType !nom ;
+  listeAttributsSemantiquesCourants += !definitionType !nom ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     E X T E R N   T Y P E   D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
+  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $extern$ ;
+#--- Parse extern type name
+  @lstring externTypeName ;
+  $type_name$ ? externTypeName ;
+  $:$ ;
+#--- Parse C++ class name
+  $class$ ;
+  @lstring cppClassName ;
+  $identifier$ ? cppClassName ;
+  $in$ ;
+  @lstring path ;
+  $literal_string$ ? path ; 
+  tableFichiersEnTetePourFichierH += !path ;
+  $;$ ;
+#--- Default behaviour : no operator, no method available
+  @typeTableMethodes modifiersMap [empty] ;
+  @typeTableMethodes readersInInstructionMap [empty] ;
+  @bool acceptAddAssignOperatorCall := false ;
+  @typeListeAttributsSemantiques addAssignOperatorCallTypeList [empty] ;
+  @M_externTypeConstructorMap constructorsMap [empty] ;
+#--- Parse class operators and methods
+  repeat
+  while
+    $constructor$ ;
+    @lstring constructorName ;
+    $identifier$ ? constructorName ;
+    @typeListeAttributsSemantiques constructorArgumentTypesList [empty] ;
+    repeat
+    while
+      $?$ ;
+      @AC_galgasType type_semantique ;
+      @lstring galgasTypeName ; # Not used here
+      <formal_argument_type>
+        !?ioComponentSemanticsEntitiesMap
+        ?type_semantique
+        !?tableEnAvant
+        ?galgasTypeName
+      ;
+      @lstring parameterName ;
+      $identifier$ ? parameterName ;
+      constructorArgumentTypesList += !type_semantique !parameterName ;
+    end repeat ;
+    $;$ ;
+    insert constructorsMap.insertKey constructorName (!constructorArgumentTypesList) ;
+  while
+    $reader$ ;
+  #--- Method name
+    @lstring methodName ;
+    $identifier$ ? methodName ;
+  #--- Formal parameters
+    @L_signature listeDeTypes ;
+    @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+    @typeVariablesMap tableArgumentsMethode [empty] ;
+    @L_signature_ForGrammarComponent signatureForGrammarComponent ; # Not used here
+    <formal_arguments_list>
+      !?ioComponentSemanticsEntitiesMap
+      ?listeDeTypes
+      !?tableArgumentsMethode
+      ?listeTypeEtNomsArguments
+      !?tableEnAvant
+      ?signatureForGrammarComponent
+    ;
+    $;$ ;
+    insert readersInInstructionMap.insertNotAbstract methodName (!listeDeTypes) ;
+  while
+    $modifier$ ;
+    select
+    #--- Method name
+      @lstring methodName ;
+      $identifier$ ? methodName ;
+    #--- Formal parameters
+      @L_signature listeDeTypes ;
+      @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+      @typeVariablesMap tableArgumentsMethode [empty] ;
+      @L_signature_ForGrammarComponent signatureForGrammarComponent ; # Not used here
+      <formal_arguments_list>
+        !?ioComponentSemanticsEntitiesMap
+        ?listeDeTypes
+        !?tableArgumentsMethode
+        ?listeTypeEtNomsArguments
+        !?tableEnAvant
+        ?signatureForGrammarComponent
+      ;
+      insert modifiersMap.insertNotAbstract methodName (!listeDeTypes) ;
+    or
+      $+=$ ;
+      @location errorLocation := here ;
+      repeat
+      while
+        $?$ ;
+        @AC_galgasType type_semantique ;
+        @lstring galgasTypeName ; # Not used here
+        <formal_argument_type>
+          !?ioComponentSemanticsEntitiesMap
+          ?type_semantique
+          !?tableEnAvant
+          ?galgasTypeName
+        ;
+        @lstring parameterName ;
+        $identifier$ ? parameterName ;
+        addAssignOperatorCallTypeList += !type_semantique !parameterName ;
+      end repeat ;
+      if acceptAddAssignOperatorCall then
+        error errorLocation : "'+=' operator is already defined" ;
+      else
+        acceptAddAssignOperatorCall := true ;
+      end if ;
+    end select ;
+    $;$ ;
+  end repeat ;
+#--- enter the new type into the list of entities to be generated
+  @typeEntityToGenerate t := [@typeExternTypeToGenerate new !externTypeName !cppClassName] ;
+  listeEntitesAengendrer += !t ;
+#--- Enter the new type in entities map
+  @AC_galgasType c := [@typeGalgasExternType new !externTypeName
+                                                 !cppClassName
+                                                 !constructorsMap
+                                                 !modifiersMap
+                                                 !readersInInstructionMap
+                                                 !acceptAddAssignOperatorCall
+                                                 !addAssignOperatorCallTypeList] ;
+  @AC_semanticsEntity entity := [@typeEntiteType new !c] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey externTypeName (!entity) ;
+  $end$ ;
+  $extern$ ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $extern$ ;
+#--- Parse extern type name
+  @lstring externTypeName ;
+  $type_name$ ? externTypeName ;
+  $:$ ;
+#--- Parse C++ class name
+  $class$ ;
+  @lstring cppClassName ;
+  $identifier$ ? cppClassName ;
+  $in$ ;
+  $literal_string$ ? * ; 
+  $;$ ;
+#--- Default behaviour : no operator, no method available
+  @typeTableMethodes modifiersMap [empty] ;
+  @typeTableMethodes readersInInstructionMap [empty] ;
+  @bool acceptAddAssignOperatorCall := false ;
+  @typeListeAttributsSemantiques addAssignOperatorCallTypeList [empty] ;
+  @M_externTypeConstructorMap constructorsMap [empty] ;
+#--- Parse class operators and methods
+  repeat
+  while
+    $constructor$ ;
+    @lstring constructorName ;
+    $identifier$ ? constructorName ;
+    @typeListeAttributsSemantiques constructorArgumentTypesList [empty] ;
+    repeat
+    while
+      $?$ ;
+      @AC_galgasType type_semantique ;
+      @lstring galgasTypeName ; # Not used here
+      <formal_argument_type>
+        !?ioComponentSemanticsEntitiesMap
+        ?type_semantique
+        !?tableEnAvant
+        ?galgasTypeName
+      ;
+      @lstring parameterName ;
+      $identifier$ ? parameterName ;
+      constructorArgumentTypesList += !type_semantique !parameterName ;
+    end repeat ;
+    $;$ ;
+    insert constructorsMap.insertKey constructorName (!constructorArgumentTypesList) ;
+  while
+    $reader$ ;
+  #--- Method name
+    @lstring methodName ;
+    $identifier$ ? methodName ;
+  #--- Formal parameters
+    @L_signature listeDeTypes ;
+    @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+    @typeVariablesMap tableArgumentsMethode [empty] ;
+    @L_signature_ForGrammarComponent signatureForGrammarComponent ; # Not used here
+    <formal_arguments_list>
+      !?ioComponentSemanticsEntitiesMap
+      ?listeDeTypes
+      !?tableArgumentsMethode
+      ?listeTypeEtNomsArguments
+      !?tableEnAvant
+      ?signatureForGrammarComponent
+    ;
+    $;$ ;
+    insert readersInInstructionMap.insertNotAbstract methodName (!listeDeTypes) ;
+  while
+    $modifier$ ;
+    select
+    #--- Method name
+      @lstring methodName ;
+      $identifier$ ? methodName ;
+    #--- Formal parameters
+      @L_signature listeDeTypes ;
+      @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+      @typeVariablesMap tableArgumentsMethode [empty] ;
+      @L_signature_ForGrammarComponent signatureForGrammarComponent ; # Not used here
+      <formal_arguments_list>
+        !?ioComponentSemanticsEntitiesMap
+        ?listeDeTypes
+        !?tableArgumentsMethode
+        ?listeTypeEtNomsArguments
+        !?tableEnAvant
+        ?signatureForGrammarComponent
+      ;
+      insert modifiersMap.insertNotAbstract methodName (!listeDeTypes) ;
+    or
+      $+=$ ;
+      @location errorLocation := here ;
+      repeat
+      while
+        $?$ ;
+        @AC_galgasType type_semantique ;
+        @lstring galgasTypeName ; # Not used here
+        <formal_argument_type>
+          !?ioComponentSemanticsEntitiesMap
+          ?type_semantique
+          !?tableEnAvant
+          ?galgasTypeName
+        ;
+        @lstring parameterName ;
+        $identifier$ ? parameterName ;
+        addAssignOperatorCallTypeList += !type_semantique !parameterName ;
+      end repeat ;
+      if acceptAddAssignOperatorCall then
+        error errorLocation : "'+=' operator is already defined" ;
+      else
+        acceptAddAssignOperatorCall := true ;
+      end if ;
+    end select ;
+    $;$ ;
+  end repeat ;
+#--- Enter the new type in entities map
+  @AC_galgasType c := [@typeGalgasExternType new !externTypeName
+                                                 !cppClassName
+                                                 !constructorsMap
+                                                 !modifiersMap
+                                                 !readersInInstructionMap
+                                                 !acceptAddAssignOperatorCall
+                                                 !addAssignOperatorCallTypeList] ;
+  @AC_semanticsEntity entity := [@typeEntiteType new !c] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey externTypeName (!entity) ;
+  $end$ ;
+  $extern$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                            Type d'un argument                             *
+#---------------------------------------------------------------------------*
+
+rule <formal_argument_type>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@AC_galgasType type_semantique
+  ?!@typeTableEnAvant tableEnAvant
+  !@lstring outGalgasTypeName 
+:
+  $type_name$ ? outGalgasTypeName ;
+  if [ioComponentSemanticsEntitiesMap hasKey !outGalgasTypeName] then
+    @AC_semanticsEntity entite ;
+    search ioComponentSemanticsEntitiesMap.searchKey outGalgasTypeName (?entite) ;
+    extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
+  else # Déclaration 'enavant' ?
+    search tableEnAvant.searchKey outGalgasTypeName (?type_semantique) ;
+  end if ;
+label importGrammarForSemantics
+  !@lstring outGalgasTypeName 
+:
+  $type_name$ ? outGalgasTypeName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_argument_type>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@AC_galgasType type_semantique
+  ?!@typeTableEnAvant tableEnAvant
+  !@lstring outGalgasTypeName 
+:
+  $list$ ;
+  $type_name$ ? outGalgasTypeName ;
+  if [ioComponentSemanticsEntitiesMap hasKey !outGalgasTypeName] then
+    @AC_semanticsEntity entite ;
+    search ioComponentSemanticsEntitiesMap.searchKey outGalgasTypeName (?entite) ;
+    extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
+  else # Déclaration 'enavant' ?
+    search tableEnAvant.searchKey outGalgasTypeName (?type_semantique) ;
+    extract type_semantique->@typeGalgasUndefinedListType (?*) error outGalgasTypeName : messageGalgasType ;
+  end if ;
+label importGrammarForSemantics
+  !@lstring outGalgasTypeName 
+:
+  $list$ ;
+  $type_name$ ? outGalgasTypeName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_argument_type>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@AC_galgasType type_semantique
+  ?!@typeTableEnAvant tableEnAvant
+  !@lstring outGalgasTypeName 
+:
+  $map$ ;
+  $type_name$ ? outGalgasTypeName ;
+  if [ioComponentSemanticsEntitiesMap hasKey !outGalgasTypeName] then
+    @AC_semanticsEntity entite ;
+    search ioComponentSemanticsEntitiesMap.searchKey outGalgasTypeName (?entite) ;
+    extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
+  else # Déclaration 'enavant' ?
+    search tableEnAvant.searchKey outGalgasTypeName (?type_semantique) ;
+    extract type_semantique->@typeGalgasUndefinedMapType (?*) error outGalgasTypeName : messageGalgasType ;
+  end if ;
+label importGrammarForSemantics
+  !@lstring outGalgasTypeName 
+:
+  $map$ ;
+  $type_name$ ? outGalgasTypeName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_argument_type>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@AC_galgasType type_semantique
+  ?!@typeTableEnAvant tableEnAvant
+  !@lstring outGalgasTypeName 
+:
+  $abstract$ ;
+  $class$ ;
+  $identifier$ ? outGalgasTypeName ;
+  if [ioComponentSemanticsEntitiesMap hasKey !outGalgasTypeName] then
+    @AC_semanticsEntity entite ;
+    search ioComponentSemanticsEntitiesMap.searchKey outGalgasTypeName (?entite) ;
+    extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
+  else # Déclaration 'enavant' ?
+    search tableEnAvant.searchKey outGalgasTypeName (?type_semantique) ;
+    extract type_semantique->@typeGalgasUndefinedClassType (?*) error outGalgasTypeName : messageGalgasType ;
+  end if ;
+label importGrammarForSemantics
+  !@lstring outGalgasTypeName 
+:
+  $abstract$ ;
+  $class$ ;
+  $identifier$ ? outGalgasTypeName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                   DÉCLARATION D'UNE ACTION EXTERNE                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@string_set unused tableFichiersEnTetePourFichierH
+  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $action$ ;
+  @lstring nomAction ;
+  $identifier$ ?nomAction ;
+  @L_signature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [empty] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature_ForGrammarComponent signatureForGrammarComponent ; # Not used here
+  <formal_arguments_list>
+    !?ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  @AC_semanticsEntity entite := [@typeEntiteActionExterne new !listeDeTypes] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey nomAction (!entite) ;
+  @typeEntityToGenerate ea := [@typeActionExterneAengendrer new !nomAction !listeDeTypes] ;
+  listeEntitesAengendrer += !ea ;
+  select 
+  or
+    $in$ ;
+    @lstring fichierAinclure ;
+    $literal_string$ ?fichierAinclure ;
+    tableFichiersEnTetePourFichierCPP += !fichierAinclure ;
+  end select ;
+  $;$ ;    
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $action$ ;
+  @lstring nomAction ;
+  $identifier$ ?nomAction ;
+  @L_signature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [empty] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature_ForGrammarComponent signatureForGrammarComponent ; # Not used here
+  <formal_arguments_list>
+    !?ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  @AC_semanticsEntity entite := [@typeEntiteActionExterne new !listeDeTypes] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey nomAction (!entite) ;
+  select 
+  or
+    $in$ ;
+    $literal_string$ ? * ;
+  end select ;
+  $;$ ;    
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M     T Y P E                                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@string_set unused tableFichiersEnTetePourFichierH
+  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
+  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
+:
+  $enum$ ;
+#--- Enum type name
+  @lstring enumTypeName ;
+  $type_name$ ? enumTypeName ;
+  $:$ ;
+#--- Enum constants
+  @typeEnumConstantesMap constantMap [empty] ;
+#--- Messages map
+  @typeEnumMessageMap enumMessageMap [empty] ;
+  repeat
+    @lstring constantName ;
+    $identifier$ ? constantName ;
+    insert constantMap.insertKey constantName () ;
+  while
+    $,$ ;
+  end repeat ;
+  $;$ ;
+#--- Enum messages
+  repeat
+  while
+    $message$ ;
+    @lstring messageName ;
+    $identifier$ ? messageName ;
+    $:$ ;
+    @typeEnumCstMessageStringMap cstMessageStringMap [empty] ;
+    repeat
+      @lstring cstName ;
+      $identifier$ ? cstName ;
+      $->$ ;
+      @lstring cstString ;
+      $literal_string$ ? cstString ;
+      insert cstMessageStringMap.insertKey cstName (!cstString) ;
+      $;$ ;
+    while
+    end repeat ;
+    $end$ ;
+  #--- Build message string list
+    @L_lstringList messageStringList [empty] ;
+    foreach map constantMap ??@lstring constantName () :
+      @lstring name := [@lstring new ![constantName value] !here] ; #--- For best error location
+      @lstring cstString ;
+      search cstMessageStringMap.searchKey name (?cstString) ;
+      messageStringList += !cstString ;
+    end foreach ;
+  #--- Enter message definition into message map
+    insert enumMessageMap.insertKey messageName (!messageStringList) ;
+    $message$ ;
+    $;$ ;
+  end repeat ;
+#--- End type definition end
+  $end$ ;
+  $enum$ ;
+  $;$ ;
+#---- Enter enum datas into the list of entities to generate
+  @typeEntityToGenerate e := [@enumGalgasType new !enumTypeName !constantMap !enumMessageMap] ;
+  listeEntitesAengendrer += !e ;
+#--- Enter enum type into semantic entities map
+  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !enumMessageMap] ;
+  @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey enumTypeName (!entity) ;
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableEnAvant unused tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $enum$ ;
+#--- Enum type name
+  @lstring enumTypeName ;
+  $type_name$ ? enumTypeName ;
+  $:$ ;
+#--- Enum constants
+  @typeEnumConstantesMap constantMap [empty] ;
+#--- Messages map
+  @typeEnumMessageMap enumMessageMap [empty] ;
+  repeat
+    @lstring constantName ;
+    $identifier$ ? constantName ;
+    insert constantMap.insertKey constantName () ;
+  while
+    $,$ ;
+  end repeat ;
+  $;$ ;
+  repeat
+  while
+    $message$ ;
+    @lstring messageName ;
+    $identifier$ ? messageName ;
+  #--- Enter message definition into message map
+    @L_lstringList messageStringList [empty] ; #--- Actual list is not useful here
+    insert enumMessageMap.insertKey messageName (!messageStringList) ;
+    $:$ ;
+    repeat
+      $identifier$ ? * ;
+      $->$ ;
+      $literal_string$ ? * ;
+      $;$ ;
+    while
+    end repeat ;
+    $end$ ;
+    $message$ ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $enum$ ;
+  $;$ ;
+#--- Enter enum type into semantic entities map
+  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !enumMessageMap] ;
+  @AC_semanticsEntity e := [@typeEntiteType new !t] ;
+  insert ioComponentSemanticsEntitiesMap.insertKey enumTypeName (!e) ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

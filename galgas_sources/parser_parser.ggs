@@ -1,0 +1,1443 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS parser component parser definition                                *
+#                                                                           *
+#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax parser_parser :
+
+import lexique galgas_scanner in "galgas_scanner.ggs" ;
+
+import semantics parser_semantics in "parser_semantics.ggs" ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+label importLexique
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+label importSyntax
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+label importGrammarForSemantics
+  ?!@M_grammarComponents ioGrammarComponentsMap
+label importOptions
+  ?!@M_optionComponents ioOptionsComponentsMap
+;
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set tableDeclAnticipeesClassePourFichierH
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@M_externClassesDirectories ioExternClassesDirectoryMap
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableEnAvant tableEnAvantAimplementer
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+label parse
+;
+
+rule <syntax_declaration>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
+  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+  ?@lstring inSyntaxComponentName
+label importSyntax
+  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
+  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+label parse
+;
+
+rule <parse_lexique_for_importing>
+  ??@lstring inFileName
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+label parse
+;
+
+rule <import_headers_semantics_and_grammars>
+  !@M_externClassesDirectories outExternClassesDirectoryMap
+  !@M_semanticsEntitiesForUse ioEntitiesMap
+  !@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  !@typeTableEnAvant tableEnAvant
+  ?!@string_set ioClassNamesSet
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponents
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+label parse
+;
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+label parse
+;
+
+rule <syntax_instruction>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+label parse
+;
+
+rule <expression>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+label parse
+;
+
+rule <input_parameters_list>
+  !@L_assignedVariables listeAffectationParametresEffectifs
+  !@typeCplusPlusNameList outAllVariablesList
+  ?@typeListeAttributsSemantiques listeAttributsSemantiques
+  ?!@typeVariablesMap ioVariablesMap
+label parse
+;
+
+rule <actual_parameters_list>
+  ??@L_signature listeTypesParametresFormels
+  !@typeExpressionList outExpressionList
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeInstructionsList ioInstructionsList
+
+label parse
+;
+
+rule <formal_arguments_list>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  !@L_signature listeDeTypes
+  ?!@typeVariablesMap tableArgumentsMethode
+  !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@typeTableEnAvant tableEnAvant
+  !@L_signature_ForGrammarComponent outSignature
+label importGrammarForSemantics
+  !@L_signature_ForGrammarComponent outSignature
+label parse
+;
+
+rule <syntax_instructions_list>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+label parse
+;
+ 
+rule <syntax_instructions_list_no_verif>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+label parse
+;
+
+rule <rule_declaration_or_implementation>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeVariablesMap tableVariablesMethode
+  ?@L_signature listeDeTypes
+  ??@lstring inRuleName
+  ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
+  ?@L_signature_ForGrammarComponent inSignatureForGrammar
+  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+  ??@lstring inSyntaxComponentName
+label importSyntax
+  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
+  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+  ??@lstring inNonterminalSymbolName
+  ??@L_signature_ForGrammarComponent inDefaultSignature
+label parse
+;
+
+rule <get_lexique_infos>
+  !@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  !@lstring outLexiqueName
+label getLexiqueName
+  !@lstring outLexiqueName
+label parse
+;
+
+action checkLabelSignatures
+  ?!@typeAltProductionsMap ioAltProductionMap ;
+
+action checkParseRewindSignatures
+  ?!@L_parse_rewind_signature_list ioParseRewindSignature
+ ;
+
+action engendrerComposant
+  ?!@lstring componentName
+  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  ?!@string defLexique
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@bool composantSyntaxique
+  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@string_set tableDeclAnticipeesClassePourFichierH
+;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                      COMPOSANT SYNTAXIQUE                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+:
+  @typeTableEnAvant tableEnAvantAimplementer [empty] ;
+  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
+  @typeEntitiesToGenerateList listeEntitesAengendrer ;
+  @bool composantSyntaxique := true ;
+  @string_set tableFichiersEnTetePourFichierH  [empty] ;
+  @string_set tableFichiersEnTetePourFichierCPP [empty] ;
+  @string_set tableDeclAnticipeesClassePourFichierH [empty] ;
+  @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
+  @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
+  @string_set classNamesSet [empty] ;
+  $syntax$ ;
+#--- Get syntax comopnent name
+  @lstring componentName ;
+  $identifier$ ? componentName ;
+  $:$ ;
+  @M_terminalSymbolsMapForUse tableTerminaux ;
+#--- Define lexique
+  @lstring  lexiqueName ;
+  <get_lexique_infos>
+    ?tableTerminaux
+    !?ioLexiqueMapForUse
+    ?lexiqueName
+  ;
+  @string defLexique := [lexiqueName value] ;
+#--- Utilisations sémantiques
+  @typeTableEnAvant tableEnAvant ;
+  @M_semanticsEntitiesForUse entitiesMap ;
+  @M_externClassesDirectories externClassesDirectoryMap ;
+  @M_optionComponents ioOptionsComponentsMapForUse ;
+  <import_headers_semantics_and_grammars>
+    ?externClassesDirectoryMap
+    ?entitiesMap
+    ?ioOptionsComponentsMapForUse
+    !?tableFichiersEnTetePourFichierCPP
+    !?tableUtilisationsSemantiques
+    ?tableEnAvant
+    !?classNamesSet
+    !?ioSemanticsComponentsMap
+    !?ioGrammarComponentsMap
+    !?ioOptionsComponentsMap
+  ;
+  listeEntitesAengendrer := [@typeEntitiesToGenerateList empty] ;
+  @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMap [empty] ;
+  @L_productionRules_ForGrammarComponent productionRulesListForGrammar [empty] ;
+  repeat
+  while
+    <syntax_declaration>
+      !?entitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?tableEnAvant
+      !?listeEntitesAengendrer
+      !?tableTerminaux
+      !?nonTerminalSymbolsMap
+      !?productionRulesListForGrammar
+      !componentName
+    ;
+  while
+    <semantics_declaration>
+      !?entitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?tableFichiersEnTetePourFichierH
+      !?tableDeclAnticipeesClassePourFichierH
+      !?tableFichiersEnTetePourFichierCPP
+      !?tableNomRoutinesDeclarees
+      !?tableEnAvant
+      !?tableEnAvantAimplementer
+      !?tableRoutinesAimplementer
+      !?externClassesDirectoryMap
+    ;
+  end repeat ;
+#--- Check that all routines have been implemented
+  foreach map tableNomRoutinesDeclarees ??@lstring nomRoutine () :
+    if not [tableRoutinesAimplementer hasKey !nomRoutine] then
+      error nomRoutine : "the routine '" . [nomRoutine value] .
+                         "' is not implemented within the component" ;
+    end if ;
+  end foreach ;
+#--- Enter syntax component into syntax components map
+  insert ioSyntaxComponentsMap.insertKey componentName (!nonTerminalSymbolsMap
+                                                       !productionRulesListForGrammar
+                                                       !lexiqueName
+                                                       !classNamesSet) ;
+#--- Generate component
+  action engendrerComposant
+    !?componentName
+    !?tableUtilisationsSemantiques
+    !?defLexique
+    !?listeEntitesAengendrer
+    !?composantSyntaxique
+    !?tableFichiersEnTetePourFichierH
+    !?tableFichiersEnTetePourFichierCPP
+    !?tableDeclAnticipeesClassePourFichierH
+  ;
+#--- Fin du fichier
+  $end$ ;
+  $syntax$ ;
+  $;$ ;
+label importSyntax
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+:
+  $syntax$ ;
+  @lstring syntaxComponentName ;
+  $identifier$ ? syntaxComponentName ;
+  $:$ ;
+#--- Lexique
+  @lstring lexiqueName ;
+  <get_lexique_infos> getLexiqueName ? lexiqueName ;
+  <import_headers_semantics_and_grammars> parse ;
+#--- 
+  @string_set classNamesSet [empty] ;
+  @L_productionRules_ForGrammarComponent productionRulesListForGrammar [empty] ;
+  @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMap [empty] ;
+  repeat
+  while
+    <syntax_declaration> importSyntax
+      !?nonTerminalSymbolsMap
+      !?productionRulesListForGrammar
+    ;
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+#--- Enter syntax component into syntax components map
+  insert ioSyntaxComponentsMap.insertKey syntaxComponentName (!nonTerminalSymbolsMap
+                                                       !productionRulesListForGrammar
+                                                       !lexiqueName
+                                                       !classNamesSet) ;
+  $end$ ;
+  $syntax$ ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+:
+  $syntax$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <syntax_declaration> parse ;
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $syntax$ ;
+  $;$ ;
+label importLexique
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+:
+  $syntax$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <syntax_declaration> parse ;
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $syntax$ ;
+  $;$ ;
+label importGrammarForSemantics
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+:
+  $syntax$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <syntax_declaration> parse ;
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $syntax$ ;
+  $;$ ;
+label importOptions
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $syntax$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while
+    <syntax_declaration> parse ;
+  while
+    <semantics_declaration> parse ;
+  end repeat ;
+  $end$ ;
+  $syntax$ ;
+  $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                   GET LEXIQUE INFOS                                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <get_lexique_infos>
+  !@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  !@lstring outLexiqueName
+:
+#--- Get lexique name
+  $import$ ;
+  $lexique$ ;
+  $identifier$ ?outLexiqueName ;
+#--- 'in' clause ?
+  @M_lexiqueComponents lexiqueComponentsMap ;
+  select
+    lexiqueComponentsMap := ioLexiqueMapForUse ;
+  or
+    $in$ ;
+    @lstring fileName ;
+    $literal_string$ ? fileName ;
+    lexiqueComponentsMap := [@M_lexiqueComponents empty] ;
+    <parse_lexique_for_importing>
+      !fileName
+      !?lexiqueComponentsMap
+    ;
+  end select ;
+  $;$ ;
+#--- Get lexique from lexique components map
+  search lexiqueComponentsMap.searchKey
+      outLexiqueName (?tableTerminaux)
+  ;
+label getLexiqueName
+  !@lstring outLexiqueName
+:
+  $import$ ;
+  $lexique$ ;
+  $identifier$ ? outLexiqueName ;
+  select
+  or
+    $in$ ;
+    $literal_string$ ? * ;
+    <parse_lexique_for_importing> parse ;
+  end select ;
+  $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                Instruction BLOC                              *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+:
+  $block$ ;
+#--- Nom de la map
+  @lstring nomTable ;
+  $identifier$ ? nomTable ;
+  @AC_galgasType typeEntite ;
+  @typeCplusPlusName nomCppVariableTable ;
+  search ioVariablesMap.searchForReadWriteAccess nomTable (?typeEntite ?nomCppVariableTable) ; 
+  @typeTableBlocsDeTable tableMethodesBloc ;
+  extract typeEntite->@typeGalgasMapType (?* ?* ?* ?*
+                          ?tableMethodesBloc ?* ?*) error nomTable : messageGalgasType ;
+#--- Méthode block
+  $.$ ;
+  @lstring nomMethodeBloc ;
+  $identifier$ ? nomMethodeBloc ;
+  @L_signature signatureDebut ;
+  @L_signature signatureFin ;
+  search tableMethodesBloc.searchKey nomMethodeBloc (?signatureDebut ?signatureFin) ;
+#--- Analyser la list d'arguments du prologue
+  @typeExpressionList prologueExpressionList ;
+  $($ ;
+  <actual_parameters_list>
+    !signatureDebut
+    ?prologueExpressionList
+    !?ioVariablesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioEntitiesMap
+    !?ioInstructionsList
+  ;
+  $)$ ;
+#--- Generate prologue instruction
+  @typeInstruction instruction ;
+  instruction := [@typeMapBlockPrologueInstruction new !nomCppVariableTable
+                                                      !nomMethodeBloc
+                                                      !prologueExpressionList] ;
+  ioInstructionsList += !instruction ;
+#--- Liste d'instructions incluses
+  $:$ ;
+  <syntax_instructions_list_no_verif>
+    !inCheckNonTerminalsAreDeclaredWithParseLabel
+    !?ioEntitiesMap
+    !?listeEntitesAengendrer
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    !?ioInstructionsList
+    !?tableTerminaux
+    !?ioSyntaxSignature
+  ;
+  $end$ ;
+  $block$ ;
+#--- Analyser la list d'arguments de l'épilogue
+  @typeExpressionList epilogueExpressionList ;
+  $($ ;
+  <actual_parameters_list>
+    !signatureFin
+    ?epilogueExpressionList
+    !?ioVariablesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioEntitiesMap
+    !?ioInstructionsList
+  ;
+  $)$ ;
+#--- Vérifier que la map est toujours accessible en lecture/écriture
+  search ioVariablesMap.searchForReadWriteAccess nomTable (?* ?*) ;
+#--- Generate epilogue instruction
+  instruction := [@typeMapBlockEpilogueInstruction new !nomCppVariableTable
+                                                      !nomMethodeBloc
+                                                      !epilogueExpressionList] ;
+  ioInstructionsList += !instruction ;
+  $;$ ;
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+:
+  $block$ ;
+  $identifier$ ? * ;
+  $.$ ;
+  $identifier$ ? * ;
+  $($ ;
+  <actual_parameters_list> parse ;
+  $)$ ;
+  $:$ ;
+  <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
+  $end$ ;
+  $block$ ;
+  $($ ;
+  <actual_parameters_list> parse ;
+  $)$ ;
+  $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#     P A R S I N G   P R O D U C T I O N   R U L E                            *
+#------------------------------------------------------------------------------*
+
+rule <syntax_declaration>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
+  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+  ?@lstring inSyntaxComponentName
+:
+  $rule$ ;
+  @lstring ruleName ;
+  $<$ ;
+  $identifier$ ? ruleName ;
+  $>$ ;
+  @L_signature listeDeTypesFormels ;
+  @typeVariablesMap tableArgumentsMethode [empty] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature_ForGrammarComponent signatureForGrammar ;
+  <formal_arguments_list>
+    !?ioEntitiesMap
+    ?listeDeTypesFormels 
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammar
+  ;
+  <rule_declaration_or_implementation>
+    !?ioEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?tableEnAvant
+    !?tableArgumentsMethode
+    !listeDeTypesFormels
+    !ruleName
+    !listeTypeEtNomsArguments
+    !?listeEntitesAengendrer
+    !?tableTerminaux
+    !?ioNonTerminalSymbolsMap
+    !signatureForGrammar
+    !?ioProductionRulesListForGrammar
+    !inSyntaxComponentName
+  ;
+label importSyntax
+  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
+  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+:
+  $rule$ ;
+  $<$ ;
+  @lstring nonterminalSymbolName ;
+  $identifier$ ? nonterminalSymbolName ;
+  $>$ ;
+  @L_signature_ForGrammarComponent signature ;
+  <formal_arguments_list> importGrammarForSemantics ?signature ;
+  <rule_declaration_or_implementation> importSyntax
+    !?ioNonTerminalSymbolsMap
+    !?ioProductionRulesListForGrammar
+    !nonterminalSymbolName
+    !signature
+  ;
+end rule ;
+
+#----------------------------------------------------------------------------*
+#    Declaring/implementing production rules                                 *
+#----------------------------------------------------------------------------*
+
+rule <rule_declaration_or_implementation>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeVariablesMap unused ioVariablesMap
+  ?@L_signature listeDeTypes
+  ??@lstring inRuleName
+  ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_terminalSymbolsMapForUse unused tableTerminaux
+  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
+  ?@L_signature_ForGrammarComponent inSignatureForGrammar
+  ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
+  ??@lstring unused inSyntaxComponentName
+:
+  @M_nonterminalSymbolAlts parametersMap [empty] ;
+  @M_nonterminalSymbolAltsForGrammar parametersMapForGrammar [empty] ;
+  @lstring emptyId := [@lstring new !"" !here] ;
+  insert parametersMap.insertKey emptyId (!listeDeTypes) ;
+  insert parametersMapForGrammar.insertKey emptyId (!inSignatureForGrammar) ;
+  repeat
+  while
+    $label$ ;
+    select
+      $parse$ ;
+      @L_signature listeDeTypesFormels [empty] ;
+      @L_signature_ForGrammarComponent signatureForGrammarComponent [empty] ;
+      @lstring altName [new !"parse" !here] ;
+      insert parametersMap.insertKey altName (!listeDeTypesFormels) ;
+      insert parametersMapForGrammar.insertKey altName (!signatureForGrammarComponent) ;
+     or
+      @lstring altName ;
+      $identifier$ ? altName ;
+      @L_signature listeDeTypesFormels ;
+      @typeVariablesMap tableArgumentsMethode [empty] ;
+      @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+      @L_signature_ForGrammarComponent signatureForGrammarComponent ;
+      <formal_arguments_list>
+        !?ioEntitiesMap
+        ?listeDeTypesFormels 
+        !?tableArgumentsMethode
+        ?listeTypeEtNomsArguments
+        !?tableEnAvant
+        ?signatureForGrammarComponent
+      ;
+      insert parametersMap.insertKey altName (!listeDeTypesFormels) ;
+      insert parametersMapForGrammar.insertKey altName (!signatureForGrammarComponent) ;
+    end select ;
+  end repeat ;
+  $;$ ;
+  insert ioNonTerminalSymbolsMap.insertKey inRuleName (!parametersMapForGrammar) ;
+  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !inRuleName !parametersMap] ;
+  listeEntitesAengendrer += !ea ;
+  @AC_semanticsEntity entity := [@typeEntiteNonTerminal new !parametersMap] ;
+  insert ioEntitiesMap.insertKey inRuleName (!entity) ;
+label importSyntax
+  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
+  ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
+  ??@lstring inNonterminalSymbolName
+  ??@L_signature_ForGrammarComponent inDefaultSignature
+:
+  @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap [empty] ;
+  @lstring altName := [@lstring new !"" !here] ;
+  insert nonterminalSymbolParametersMap.insertKey altName (!inDefaultSignature) ;
+  repeat
+  while
+    $label$ ;
+    select
+      $parse$ ;
+      @L_signature_ForGrammarComponent signature [empty] ;
+      @lstring altName [new !"parse" !here] ;
+      insert nonterminalSymbolParametersMap.insertKey altName (!signature) ;
+    or
+      $identifier$ ?altName ;
+      @L_signature_ForGrammarComponent signature ;
+      <formal_arguments_list> importGrammarForSemantics ?signature ;
+    insert nonterminalSymbolParametersMap.insertKey altName (!signature) ;
+    end select ;
+  end repeat ;
+  insert ioNonTerminalSymbolsMap.insertKey inNonterminalSymbolName (!nonterminalSymbolParametersMap) ;
+  $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <rule_declaration_or_implementation>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeVariablesMap ioVariablesMap
+  ?@L_signature listeDeTypesFormels
+  ??@lstring inRuleName
+  ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMap
+  ?@L_signature_ForGrammarComponent inSignatureForGrammar
+  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+  ??@lstring unused inSyntaxComponentName
+:
+#--- Search non terminal symbol definition
+  @AC_semanticsEntity entite ;
+  search ioEntitiesMap.searchKey inRuleName (?entite) ;
+  @M_nonterminalSymbolAlts nonterminalSymbolAltMap ;
+  extract entite->@typeEntiteNonTerminal (?nonterminalSymbolAltMap) error inRuleName : messageTypeEntite ;
+#--- Vérifier la déclaration de la rule et la compatibilité des arguments effectifs avec les arguments formels
+  @typeAltProductionsMap altProductionsMap [empty] ;
+  @lstring altName := [@lstring new !"" !here] ;
+#--- Parse label declared ? If Yes, check that called non terminals are also declared with 'parse' label
+  @bool hasParseLabel := [nonterminalSymbolAltMap hasKey ![@lstring new !"parse" !here]] ;
+  @bool checkNonTerminalsAreDeclaredWithParseLabel := hasParseLabel ;
+#--- Parse tag ?
+  @string productionTagName ;
+  select
+    productionTagName := "" ;
+  or
+    $tag$ ;
+    @lstring tagName ;
+    $literal_string$ ? tagName ;
+    productionTagName := [tagName value] ;
+  end select ;
+  @location errorLocation := here ;
+  $:$ ;
+  @L_signature signatureFournieParPrototype ;
+  search nonterminalSymbolAltMap.searchKey altName (?signatureFournieParPrototype) ;
+  verifierCompatibiliteSignatures
+    !signatureFournieParPrototype
+    !listeDeTypesFormels
+    !errorLocation
+  ;
+#--- Parse instructions list
+  @typeInstructionsList listeInstructions [empty] ;
+  @L_ruleSyntaxSignature syntaxSignature [empty] ;
+  <syntax_instructions_list>
+    !checkNonTerminalsAreDeclaredWithParseLabel
+    !?ioEntitiesMap
+    !?listeEntitesAengendrer
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    !?listeInstructions
+    !?tableTerminaux
+    !?syntaxSignature
+  ;
+  @location endOfInstructionList := here ;
+  insert altProductionsMap.insertKey altName (!listeTypeEtNomsArguments !listeInstructions !syntaxSignature !endOfInstructionList) ;
+
+  repeat
+  while
+    $label$ ;
+    $identifier$ ?altName ;
+    ioVariablesMap := [@typeVariablesMap empty] ;
+    @L_signature_ForGrammarComponent signatureForGrammarComponent ;
+    <formal_arguments_list>
+      !?ioEntitiesMap
+      ?listeDeTypesFormels 
+      !?ioVariablesMap
+      ?listeTypeEtNomsArguments
+      !?tableEnAvant
+      ?signatureForGrammarComponent # unused
+    ;
+    @location errorLocation := here ;
+    $:$ ;
+    @L_signature signatureFournieParPrototype ;
+    search nonterminalSymbolAltMap.searchKey altName (?signatureFournieParPrototype) ;
+    verifierCompatibiliteSignatures
+      !signatureFournieParPrototype
+      !listeDeTypesFormels
+      !errorLocation
+    ;
+    @typeInstructionsList listeInstructions [empty] ;
+    @L_ruleSyntaxSignature syntaxSignature [empty] ;
+    <syntax_instructions_list>
+      !false
+      !?ioEntitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      !?listeInstructions
+      !?tableTerminaux
+      !?syntaxSignature
+    ;
+    @location endOfInstructionList := here ;
+    insert altProductionsMap.insertKey altName (!listeTypeEtNomsArguments !listeInstructions !syntaxSignature !endOfInstructionList) ;
+  end repeat ;
+  $end$ ;
+  $rule$ ;
+  $;$ ;
+#--- Check if all label rules have the same syntax signature
+  action checkLabelSignatures !?altProductionsMap ;
+#--- Check that all label rules are implemented
+  foreach map nonterminalSymbolAltMap ??@lstring nonTerminalAltName (??@L_signature altSignature) :
+    if [nonTerminalAltName value] != "parse" & not [altProductionsMap hasKey !nonTerminalAltName] then
+      error here : "the '" . [nonTerminalAltName value] . "' label is not implemented within the rule" ;
+    end if ;
+  end foreach ;
+#--- Generate production
+  @typeEntityToGenerate ea := [@typeProductionAengendrer new !inRuleName !altProductionsMap !productionTagName !hasParseLabel] ;
+  listeEntitesAengendrer += !ea ;
+#--- Generate list for grammar component
+  @uint ruleIndex := 0 ;
+  ioProductionRulesListForGrammar += !inRuleName
+                                     !ruleIndex
+                                     !syntaxSignature ;
+label importSyntax
+  ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMap
+  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
+  ??@lstring inNonterminalSymbolName
+  ??@L_signature_ForGrammarComponent unused inDefaultSignature
+:
+  select
+  or
+    $tag$ ;
+    $literal_string$ ? * ;
+  end select ;
+  $:$ ;
+  @L_ruleSyntaxSignature instructionsList [empty] ;
+  <syntax_instructions_list> importSyntax !?instructionsList ;
+  repeat
+  while
+    $label$ ;
+    $identifier$ ? * ;
+    <formal_arguments_list> parse ;
+    $:$ ;
+    <syntax_instructions_list> parse ;
+  end repeat ;
+  @uint leftNonterminalSymbolIndex := 0 ;
+  ioProductionRulesListForGrammar += !inNonterminalSymbolName
+                                     !leftNonterminalSymbolIndex
+                                     !instructionsList ;
+  $end$ ;
+  $rule$ ;
+  $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#              LISTE DES INSTRUCTIONS SYNTAXIQUES D'UNE PRODUCTION             *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instructions_list>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+:
+  block ioVariablesMap.verifyVariableUsing () :
+    <syntax_instructions_list_no_verif>
+      !inCheckNonTerminalsAreDeclaredWithParseLabel
+      !?ioEntitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      !?ioInstructionsList
+      !?tableTerminaux
+      !?ioSyntaxSignature
+    ;
+    @location positionErreur := here ;
+  end block (!positionErreur) ;
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+:
+  <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#          Instruction de vérification syntaxique $terminal$ ? ... ;           *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse unused ioEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+:
+  @lstring terminalSymbolName ;
+  $terminal$ ? terminalSymbolName ;
+  @typeListeAttributsSemantiques listeDesAttributsFormels ;
+  search tableTerminaux.searchKey terminalSymbolName (?listeDesAttributsFormels) ;
+  @L_assignedVariables listeTypeEffectifs ;
+  @typeCplusPlusNameList allVariablesList ;
+  <input_parameters_list>
+    ?listeTypeEffectifs
+    ?allVariablesList
+    !listeDesAttributsFormels
+    !?ioVariablesMap
+  ;
+  @typeInstruction instruction ;
+  instruction := [@typeInstructionVerifSyntaxique new !terminalSymbolName !listeTypeEffectifs] ;
+  ioInstructionsList += !instruction ;
+  @uint terminalSymbolIndex := 0 ;
+  @AC_instruction_ForGrammar i := [@T_terminalInstruction_forGrammarComponent new ![terminalSymbolName location] !terminalSymbolName !terminalSymbolIndex] ;
+  ioSyntaxSignature += !i ;
+  $;$ ;
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+:
+  @lstring terminalSymbolName ;
+  $terminal$ ? terminalSymbolName ;
+  <input_parameters_list> parse ;
+  @AC_instruction_ForGrammar i ;
+  @uint terminalSymbolIndex := 0 ;
+  i := [@T_terminalInstruction_forGrammarComponent new ![terminalSymbolName location] !terminalSymbolName !terminalSymbolIndex] ;
+  ioInstructionsList += !i ;
+  $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#    N O N - T E R M I N A L    C A L L    I N S T R U C T I O N    <p> ...  ; *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse unused tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+:
+  $<$ ;
+  @lstring nonterminalSymbolName ;
+  $identifier$ ? nonterminalSymbolName ;
+  $>$ ;
+  @lstring altName ;
+  select
+    altName := [@lstring new !"" !here] ;
+  or
+    $parse$ ;
+    altName := [@lstring new !"parse" !here] ;
+  or
+    $identifier$ ?altName ;
+  end select ;
+  @AC_semanticsEntity entite ;
+  search ioEntitiesMap.searchKey nonterminalSymbolName (?entite) ;
+  @M_nonterminalSymbolAlts nonterminalSymbolAltMap ;
+  extract entite->@typeEntiteNonTerminal (?nonterminalSymbolAltMap) error nonterminalSymbolName : messageTypeEntite ;
+  @L_signature signatureMethode ;
+  search nonterminalSymbolAltMap.searchKey altName (?signatureMethode) ;
+#--- Check if parse label is declared ?
+  if inCheckNonTerminalsAreDeclaredWithParseLabel & ([altName value] != "parse") then
+    if not [nonterminalSymbolAltMap hasKey ![@lstring new !"parse" !here]] then
+      error here : "As current rule has 'parse' label, every invoked non terminal symbol must be declared with 'parse' label" ;
+    end if ;
+  end if ;
+  @typeExpressionList parametersExpressionList ;
+  <actual_parameters_list>
+    !signatureMethode
+    ?parametersExpressionList
+    !?ioVariablesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioEntitiesMap
+    !?ioInstructionsList
+  ;
+  @typeInstruction instruction ;
+  instruction := [@typeInstructionAppelNonTerminal new !nonterminalSymbolName !parametersExpressionList !altName] ;
+  ioInstructionsList += !instruction ;
+  @AC_instruction_ForGrammar i ;
+  @uint nonterminalSymbolIndex := 0 ;
+  i := [@T_nonterminalInstruction_forGrammarComponent new ![nonterminalSymbolName location] !nonterminalSymbolName !nonterminalSymbolIndex] ;
+  ioSyntaxSignature += !i ;
+  $;$ ;
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+:
+  $<$ ;
+  @lstring nonterminalSymbolName ;
+  $identifier$ ? nonterminalSymbolName ;
+  $>$ ;
+  select
+  or
+    $parse$ ;
+  or
+    $identifier$ ? * ;
+  end select ;
+  <actual_parameters_list> parse ;
+  @AC_instruction_ForGrammar i ;
+  @uint nonterminalSymbolIndex := 0 ;
+  i := [@T_nonterminalInstruction_forGrammarComponent new ![nonterminalSymbolName location]
+                                                          !nonterminalSymbolName
+                                                          !nonterminalSymbolIndex] ;
+  ioInstructionsList += !i ;
+  $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#    S E L E C T    I N S T R U C T I O N                                      *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+:
+  $select$ ;
+  @location positionDebut := here ;
+  @typeListeBranchesInstructions listeBranchesChoix [empty] ;
+  @L_branchList_ForGrammarComponent selectList [empty] ;
+  block ioVariablesMap.testBloc () :
+    repeat
+      block ioVariablesMap.testPart () :
+        @typeInstructionsList listeInstructionsBrancheChoix [empty] ;
+        @L_ruleSyntaxSignature syntaxSignature [empty] ;
+        <syntax_instructions_list_no_verif>
+          !inCheckNonTerminalsAreDeclaredWithParseLabel
+          !?ioEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?listeInstructionsBrancheChoix
+          !?tableTerminaux
+          !?syntaxSignature
+        ;
+        listeBranchesChoix += !listeInstructionsBrancheChoix ;
+        selectList += !syntaxSignature ;
+      end block (!here) ;
+    while
+      $or$ ;
+    end repeat ;
+    $end$ ;
+    $select$ ;
+    $;$ ;
+  end block () ;
+#--- Engendrer l'instruction
+  @typeInstruction instruction := [@C_select_instruction new !listeBranchesChoix !positionDebut] ;
+  ioInstructionsList += !instruction ;
+  @AC_instruction_ForGrammar i ;
+  @uint v := 0 ;
+  i := [@T_selectInstruction_forGrammarComponent new !positionDebut !selectList !v] ;
+  ioSyntaxSignature += !i ;
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+:
+  $select$ ;
+  @location positionDebut := here ;
+  @L_branchList_ForGrammarComponent selectList [empty] ;
+  repeat
+    @L_ruleSyntaxSignature syntaxSignature [empty] ;
+    <syntax_instructions_list_no_verif> importSyntax !?syntaxSignature ;
+    selectList += !syntaxSignature ;
+  while
+    $or$ ;
+  end repeat ;
+  $end$ ;
+  $select$ ;
+  $;$ ;
+  @AC_instruction_ForGrammar i ;
+  @uint v := 0 ;
+  i := [@T_selectInstruction_forGrammarComponent new !positionDebut !selectList !v] ;
+  ioInstructionsList += !i ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#    R E P E A T    I N S T R U C T I O N                                      *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+:
+  $repeat$ ;
+  @location positionDebut := here ;
+  @typeListeBranchesInstructions listeBranchesRepeter [empty] ;
+  @L_branchList_ForGrammarComponent whileList [empty] ;
+  block ioVariablesMap.repeatBlock () :
+    @typeInstructionsList listeInstructionsPremiereBranche [empty] ;
+    @L_ruleSyntaxSignature repeatBranchInstructionsList [empty] ;
+    block ioVariablesMap.repeatPart () :
+      @L_ruleSyntaxSignature syntaxSignature [empty] ;
+      <syntax_instructions_list_no_verif>
+        !inCheckNonTerminalsAreDeclaredWithParseLabel
+        !?ioEntitiesMap
+        !?listeEntitesAengendrer
+        !?ioOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?listeInstructionsPremiereBranche
+        !?tableTerminaux
+        !?repeatBranchInstructionsList
+       ;
+      listeBranchesRepeter += !listeInstructionsPremiereBranche ;
+      whileList += !repeatBranchInstructionsList ;
+      @location positionErreurPremiereBranche := here ;
+    end block (!positionErreurPremiereBranche) ;
+    $while$ ;
+    repeat
+      block ioVariablesMap.repeatPart () :
+        @typeInstructionsList listeInstructionsBrancheRepeter [empty];
+        @L_ruleSyntaxSignature syntaxSignature [empty] ;
+        <syntax_instructions_list_no_verif>
+          !inCheckNonTerminalsAreDeclaredWithParseLabel
+          !?ioEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?listeInstructionsBrancheRepeter
+          !?tableTerminaux
+          !?syntaxSignature
+        ;
+        listeBranchesRepeter += !listeInstructionsBrancheRepeter ;
+        whileList += !syntaxSignature ;
+      end block (!here) ;
+    while
+      $while$ ;
+    end repeat ;
+    $end$ ;
+    $repeat$ ;
+  end block () ;
+  $;$ ;
+#--- Engendrer l'instruction
+  @typeInstruction instruction := [@C_repeat_instruction new !listeBranchesRepeter !positionDebut] ;
+  ioInstructionsList += !instruction ;
+  @AC_instruction_ForGrammar i ;
+  @uint v := 0 ;
+  i := [@T_repeatInstruction_forGrammarComponent new !positionDebut !whileList !v] ;
+  ioSyntaxSignature += !i ;
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+:
+  $repeat$ ;
+  @location positionDebut := here ;
+  @L_branchList_ForGrammarComponent repeatList [empty] ;
+  @L_ruleSyntaxSignature syntaxSignature [empty] ;
+  <syntax_instructions_list_no_verif> importSyntax !?syntaxSignature ;
+  repeatList += !syntaxSignature ;
+  $while$ ;
+  repeat
+    syntaxSignature := [@L_ruleSyntaxSignature empty] ;
+    <syntax_instructions_list_no_verif> importSyntax !?syntaxSignature ;
+    repeatList += !syntaxSignature ;
+  while
+    $while$ ;
+  end repeat ;
+  $end$ ;
+  $repeat$ ;
+  $;$ ;
+  @AC_instruction_ForGrammar i ;
+  @uint v := 0 ;
+  i := [@T_repeatInstruction_forGrammarComponent new !positionDebut !repeatList !v] ;
+  ioInstructionsList += !i ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#    P A R S E    S T A R T ...    R E W I N D ...    I N S T R U C T I O N    *
+#    P A R S E    W H E N   ...    E L S E  ...    I N S T R U C T I O N       *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+:
+  $parse$ ;
+  @typeInstruction instruction ;
+  @L_parse_rewind_signature_list parse_rewind_signature_list [empty] ;
+  select
+    $start$ ;
+    @location instructionStartLocation := here ;
+    @typeListeBranchesInstructions branchList [empty] ;
+  #--- First branch
+    @L_branchList_ForGrammarComponent whileList [empty] ;
+    @typeInstructionsList firstBranchInstructionsList [empty] ;
+    @L_ruleSyntaxSignature firstBranchSyntaxSignature [empty] ;
+    <syntax_instructions_list_no_verif>
+      !inCheckNonTerminalsAreDeclaredWithParseLabel
+      !?ioEntitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      !?firstBranchInstructionsList
+      !?tableTerminaux
+      !?firstBranchSyntaxSignature
+    ;
+    branchList += !firstBranchInstructionsList ;
+    parse_rewind_signature_list += !firstBranchSyntaxSignature !instructionStartLocation ;
+    foreach list firstBranchSyntaxSignature (??@AC_instruction_ForGrammar grammarInstruction) :
+      ioSyntaxSignature += !grammarInstruction ;
+    end foreach ;
+  #--- One or more 'rewind' branches
+    repeat
+      $rewind$ ;
+      @location branchStartLocation := here ;
+      @typeInstructionsList instructionsList [empty] ;
+      @L_ruleSyntaxSignature syntaxSignature [empty] ;
+      <syntax_instructions_list_no_verif>
+        !inCheckNonTerminalsAreDeclaredWithParseLabel
+        !?ioEntitiesMap
+        !?listeEntitesAengendrer
+        !?ioOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?instructionsList
+        !?tableTerminaux
+        !?syntaxSignature
+      ;
+      branchList += !instructionsList ;
+      parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
+    while
+    end repeat ;
+    instruction := [@C_parse_rewind_instruction new !here !branchList] ;
+  or
+  #--- Instruction parse when ... when ... else ... end parse ;
+    @L_expression_instructionsList_list branchList [empty] ;
+    block ioVariablesMap.testBloc () :
+    #--- 'when' branches
+      repeat
+        block ioVariablesMap.testPart () :
+          $when$ ;
+          @typeExpression expression ;
+          @AC_galgasType resultType ;
+          <expression>
+            !?ioEntitiesMap
+            !?ioOptionsComponentsMapForUse
+            !?ioVariablesMap
+            ?expression
+            ?resultType
+          ;
+          $:$ ;
+          @location branchStartLocation := here ;
+          @typeInstructionsList instructionsList [empty] ;
+          @L_ruleSyntaxSignature syntaxSignature [empty] ;
+          <syntax_instructions_list_no_verif>
+            !inCheckNonTerminalsAreDeclaredWithParseLabel
+            !?ioEntitiesMap
+            !?listeEntitesAengendrer
+            !?ioOptionsComponentsMapForUse
+            !?ioVariablesMap
+            !?instructionsList
+            !?tableTerminaux
+            !?syntaxSignature
+          ;
+          branchList += !expression !instructionsList ;
+          parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
+        end block (!here) ;
+      while
+      end repeat ;
+      $else$ ;
+      block ioVariablesMap.testPart () :
+        @location branchStartLocation := here ;
+        @typeInstructionsList elseInstructionsList [empty] ;
+        @L_ruleSyntaxSignature syntaxSignature [empty] ;
+        <syntax_instructions_list_no_verif>
+          !inCheckNonTerminalsAreDeclaredWithParseLabel
+          !?ioEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?elseInstructionsList
+          !?tableTerminaux
+          !?syntaxSignature
+        ;
+        parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
+        foreach list syntaxSignature (??@AC_instruction_ForGrammar grammarInstruction) :
+          ioSyntaxSignature += !grammarInstruction ;
+        end foreach ;
+      end block (!here) ;
+    end block () ;
+    instruction := [@C_parse_when_else_instruction new !branchList !elseInstructionsList] ;
+  end select ;
+  $end$ ;
+  $parse$ ;
+  $;$ ;
+#--- Generate instruction
+  ioInstructionsList += !instruction ;
+#--- Check all branches have the same syntax signature
+  action checkParseRewindSignatures !?parse_rewind_signature_list ;
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+:
+  $parse$ ;
+  select
+    $start$ ;
+    <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
+    repeat
+      $rewind$ ;
+      <syntax_instructions_list_no_verif> parse ;
+    while
+    end repeat ;
+  or
+    repeat
+      $when$ ;
+      <expression> parse ;
+      $:$ ;
+      <syntax_instructions_list_no_verif> parse ;
+    while
+    end repeat ;
+    $else$ ;
+    <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
+  end select ;
+  $end$ ;
+  $parse$ ;
+  $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instructions_list_no_verif>
+  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionsList ioInstructionsList
+  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@L_ruleSyntaxSignature ioSyntaxSignature
+:
+  repeat
+  while
+    <syntax_instruction>
+      !inCheckNonTerminalsAreDeclaredWithParseLabel
+      !?ioEntitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      !?ioInstructionsList
+      !?tableTerminaux
+      !?ioSyntaxSignature
+    ;
+  while
+    <semantic_instruction>
+      !?ioEntitiesMap
+      !?listeEntitesAengendrer
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      !?ioInstructionsList
+    ;
+  end repeat ;
+label importSyntax
+  ?!@L_ruleSyntaxSignature ioInstructionsList
+:
+  repeat
+  while
+    <syntax_instruction> importSyntax !?ioInstructionsList ;
+  while
+    <semantic_instruction> parse ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+end syntax ;
