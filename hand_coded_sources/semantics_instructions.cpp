@@ -660,6 +660,43 @@ bool cPtr_typeAppendInstruction
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeIncrementInstruction
+::generateInstruction (AC_output_stream & ioCppFile,
+                       const C_string & /* inLexiqueClassName */,
+                       const C_string & /* inTargetFileName */,
+                       sint32 & /* ioPrototypeIndex */,
+                       const bool /* inGenerateDebug */,
+                       const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    mTargetVarCppName ()->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ".increment_operation () ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeIncrementInstruction
+::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeIncrementInstruction
+::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                        const bool /* inGenerateSemanticInstructions */) const {
+  return mTargetVarCppName.isEqualTo (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeAppendInstructionWithAssignment
 ::generateInstruction (AC_output_stream & ioCppFile,
                        const C_string & /* inLexiqueClassName */,

@@ -145,6 +145,14 @@ abstract class @AC_galgasType
        -> outParametersList, outAccept_luint_assignment ;
   end reader ;
 
+#--- By default, class does not accept "++" operator
+  reader handleIncrementOperatorCall 
+    ??@location inErrorLocation
+  :
+    error inErrorLocation :
+       "variables of this type do not support call of '++' operator" ;
+  end reader ;
+
 #--- By default, class does not accept to be silently converted to @location
   reader checkAbilityToBeSilentlyConvertedToLocation 
   :
@@ -297,6 +305,12 @@ class @typeGalgas_uint extends @AC_galgasType
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "uint" ;
+  end reader ;
+
+#--- This class accepts "++" operator
+  override reader handleIncrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
   end reader ;
 
 #--- Error message
