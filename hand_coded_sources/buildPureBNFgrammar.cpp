@@ -111,7 +111,7 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -161,7 +161,7 @@ buildRightDerivation (const sint32 inTerminalSymbolsCount,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -308,7 +308,7 @@ buildSelectAndRepeatProductions (const sint32 /* inTerminalSymbolsCount */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -403,7 +403,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 

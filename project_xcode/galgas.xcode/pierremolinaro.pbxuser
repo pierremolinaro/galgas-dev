@@ -10,8 +10,8 @@
 	};
 	2A37F4A9FDCFA73011CA2CEA = {
 		activeBuildStyle = CFA7AB90058DAD29009AC1FE;
-		activeExecutable = CF7A1404058CEFE2007126C1;
-		activeTarget = CF7A1402058CEFE2007126C1;
+		activeExecutable = CF9BB5DA0577B71C0025FDB4;
+		activeTarget = 8D15AC270486D014006FF6A4;
 		addToTargets = (
 			8DD76F620486A84900D96B5E,
 			CF7A1402058CEFE2007126C1,
@@ -135,7 +135,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 127386982;
+			PBXPerProjectTemplateStateSaveDate = 127643491;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -719,24 +719,12 @@
 				PBXModuleWindowStatusBarHidden = YES;
 				RubberWindowFrame = "50 158 898 178 0 0 1024 746 ";
 			};
-			PBXWorkspaceStateSaveDate = 127386982;
+			PBXWorkspaceStateSaveDate = 127643491;
 		};
 		perUserProjectItems = {
-			CF3BD5490796E4DE006B4FD7 = CF3BD5490796E4DE006B4FD7;
-			CF607A670796F2CD00379295 = CF607A670796F2CD00379295;
-			CF86D5950797C56D0074134F = CF86D5950797C56D0074134F;
-			CF86D5980797C57C0074134F = CF86D5980797C57C0074134F;
-			CF86D59B0797C5A80074134F = CF86D59B0797C5A80074134F;
-			CF86D59D0797C5B70074134F = CF86D59D0797C5B70074134F;
-			CF86D59E0797C7610074134F = CF86D59E0797C7610074134F;
-			CF86D59F0797CA340074134F = CF86D59F0797CA340074134F;
-			CF86D5A00797CA570074134F = CF86D5A00797CA570074134F;
-			CF86D5A10797CAB30074134F = CF86D5A10797CAB30074134F;
-			CF86D5A30797CABE0074134F = CF86D5A30797CABE0074134F;
-			CF86D5A40797CAE60074134F = CF86D5A40797CAE60074134F;
-			CF86D5A50797CAF50074134F = CF86D5A50797CAF50074134F;
+			CF82A8F4079BB777009D489A = CF82A8F4079BB777009D489A;
+			CF86D5A70797CBBD0074134F = CF86D5A70797CBBD0074134F;
 			CFFD8F920775D1E3004D9F35 = CFFD8F920775D1E3004D9F35;
-			CFFD901E0775DBF2004D9F35 = CFFD901E0775DBF2004D9F35;
 			CFFD90200775DBF2004D9F35 = CFFD90200775DBF2004D9F35;
 		};
 		sourceControlManager = CF9BB5E70577B7360025FDB4;
@@ -773,7 +761,7 @@
 	};
 	CF31E0F60598DF9E00814123 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {685, 3405}}";
+			sepNavIntBoundsRect = "{{0, 0}, {598, 2981}}";
 			sepNavSelRange = "{1522, 52}";
 			sepNavVisRect = "{{0, 0}, {0, 0}}";
 			sepNavWindowFrame = "{{15, 183}, {750, 558}}";
@@ -823,16 +811,6 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRect = "{{0, 0}, {458, 18}}";
 		};
-	};
-	CF3BD5490796E4DE006B4FD7 = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
 	};
 	CF3FF0B705877B62000D2F8C = {
 		uiCtxt = {
@@ -1050,16 +1028,6 @@
 			sepNavWindowFrame = "{{176, 36}, {750, 558}}";
 		};
 	};
-	CF607A670796F2CD00379295 = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: generateCppClassImplementation";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
 	CF6702F605C072FF0065267C = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {705, 755}}";
@@ -1128,6 +1096,16 @@
 			sepNavWindowFrame = "{{23, 158}, {750, 558}}";
 		};
 	};
+	CF82A8F4079BB777009D489A = {
+		fRef = CFF53794057A514300854C83;
+		isa = PBXTextBookmark;
+		name = "eCourant) ;\n    inCppFil";
+		rLen = 24;
+		rLoc = 20086;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
 	CF86361A0586289600B23462 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {705, 1105}}";
@@ -1160,110 +1138,10 @@
 			sepNavWindowFrame = "{{153, 57}, {750, 558}}";
 		};
 	};
-	CF86D5950797C56D0074134F = {
+	CF86D5A70797CBBD0074134F = {
 		fRef = CF31840F0774BF7F0045D262;
 		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D5980797C57C0074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D59B0797C5A80074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D59D0797C5B70074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D59E0797C7610074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D59F0797CA340074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D5A00797CA570074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D5A10797CAB30074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D5A30797CABE0074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D5A40797CAE60074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
-		rLen = 0;
-		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CF86D5A50797CAF50074134F = {
-		fRef = CF31840F0774BF7F0045D262;
-		isa = PBXTextBookmark;
-		name = "setof_generation.cpp: 81";
+		name = "setof_generation.cpp: generateCppClassImplementation";
 		rLen = 0;
 		rLoc = 4252;
 		rType = 0;
@@ -1605,7 +1483,7 @@
 	};
 	CFF53794057A514300854C83 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 12969}}";
+			sepNavIntBoundsRect = "{{0, 0}, {938, 11325}}";
 			sepNavSelRange = "{20086, 24}";
 			sepNavVisRect = "{{0, 0}, {0, 0}}";
 			sepNavWindowFrame = "{{107, 381}, {750, 558}}";
@@ -2147,16 +2025,6 @@
 		name = "setof_generation.cpp: 74";
 		rLen = 0;
 		rLoc = 4252;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CFFD901E0775DBF2004D9F35 = {
-		fRef = CFF53794057A514300854C83;
-		isa = PBXTextBookmark;
-		name = "operator () (void) const";
-		rLen = 24;
-		rLoc = 20086;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 0;

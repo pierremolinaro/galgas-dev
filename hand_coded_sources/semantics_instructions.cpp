@@ -115,7 +115,7 @@ void cPtr_typeInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -198,7 +198,7 @@ bool cPtr_typeSimpleExtractInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -291,7 +291,7 @@ bool cPtr_typeStructuredExtractInstructionWithElse
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -328,7 +328,7 @@ bool cPtr_typeDropInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -369,7 +369,7 @@ bool cPtr_typeErrorInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -410,7 +410,7 @@ bool cPtr_typeWarningInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -448,7 +448,7 @@ bool cPtr_typeMessageInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -487,7 +487,7 @@ bool cPtr_typeInstructionDeclarationVarLocale
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -597,7 +597,7 @@ bool cPtr_typeMatchInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -654,7 +654,7 @@ bool cPtr_typeAppendInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -714,7 +714,7 @@ bool cPtr_typeAppendInstructionWithAssignment
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
@@ -766,7 +766,7 @@ bool cPtr_typeMapBlockPrologueInstruction
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 

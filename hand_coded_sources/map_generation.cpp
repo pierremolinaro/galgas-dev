@@ -432,7 +432,7 @@ generateCppClassImplementation (AC_output_stream & inCppFile,
 
 //---------------------------------------------------------------------------*
 
-#ifdef __MWERK__
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
