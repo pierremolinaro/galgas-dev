@@ -242,7 +242,7 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm";
+				HEADER_SEARCH_PATHS = "../galgas_sources/GALGAS_OUTPUT ../hand_coded_sources ../../libpm";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
@@ -269,7 +269,6 @@
 			files = (
 				CFA7AC55058DB19B009AC1FE,
 				CFA7ADBE058DB57F009AC1FE,
-				CFA7ADCF058DB5B3009AC1FE,
 				CFA7ADD8058DB5E0009AC1FE,
 				CFA7ADE5058DBBF2009AC1FE,
 				CFA48FBB0591D67100D787ED,
@@ -282,6 +281,7 @@
 				CFD7E271059B5B8E00410349,
 				CFD7E279059B5BBF00410349,
 				CF6702F705C072FF0065267C,
+				CF5E74F307B00E5A00858338,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,7 +326,6 @@
 				CFA7ADBD058DB57E009AC1FE,
 				CFA7ADBF058DB598009AC1FE,
 				CFA7ADC0058DB59F009AC1FE,
-				CFA7ADD0058DB5B4009AC1FE,
 				CFA7ADD7058DB5DF009AC1FE,
 				CFA7ADDE058DBBE2009AC1FE,
 				CFA7ADE4058DBBF1009AC1FE,
@@ -342,6 +341,7 @@
 				CFA1416B060DB84C00601791,
 				CF6E114606269E77001B909F,
 				CFC5CB0806687D250003D900,
+				CF5E74F207B00E5A00858338,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,7 +388,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm";
+				HEADER_SEARCH_PATHS = "../galgas_sources/GALGAS_OUTPUT ../hand_coded_sources ../../libpm";
 				INSTALL_PATH = "$(HOME)/bin";
 				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
 				OTHER_LDFLAGS = "";
@@ -409,7 +409,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2A87BC058CCE7F003EF2F4,
-				CF2A87BF058CCE85003EF2F4,
 				CF2A8817058CCF07003EF2F4,
 				CF2A8823058CCF0F003EF2F4,
 				CF2A882C058CCF2E003EF2F4,
@@ -448,6 +447,8 @@
 				CF6E113406269BEC001B909F,
 				CF6E113606269BEC001B909F,
 				CF3BD5250796E3B0006B4FD7,
+				CF5E74EF07B00E5A00858338,
+				CF5E74F707B00EA600858338,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,11 +456,9 @@
 		8DD76F640486A84900D96B5E = {
 			buildActionMask = 2147483647;
 			files = (
-				CF2A87B8058CCE6B003EF2F4,
 				CF2A87B9058CCE6B003EF2F4,
 				CF2A87BA058CCE6E003EF2F4,
 				CF2A87BD058CCE82003EF2F4,
-				CF2A87BE058CCE83003EF2F4,
 				CF2A87C0058CCE86003EF2F4,
 				CF2A87C1058CCE87003EF2F4,
 				CF2A87C2058CCE88003EF2F4,
@@ -555,6 +554,8 @@
 				CF6E113306269BEC001B909F,
 				CF6E113506269BEC001B909F,
 				CF3184110774BF7F0045D262,
+				CF5E74EE07B00E5A00858338,
+				CF5E74F607B00EA600858338,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,12 +601,6 @@
 			settings = {
 			};
 		};
-		CF2A87B8058CCE6B003EF2F4 = {
-			fileRef = CFF5372C057A4DD900854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CF2A87B9058CCE6B003EF2F4 = {
 			fileRef = CFF53781057A50D600854C83;
 			isa = PBXBuildFile;
@@ -626,18 +621,6 @@
 		};
 		CF2A87BD058CCE82003EF2F4 = {
 			fileRef = CFF5380D057A53D600854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF2A87BE058CCE83003EF2F4 = {
-			fileRef = CFF5374B057A4F6C00854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF2A87BF058CCE85003EF2F4 = {
-			fileRef = CF3FF1260587874B000D2F8C;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1720,14 +1703,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CF3FF1260587874B000D2F8C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = galgas_scanner.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		CF3FF14005878B33000D2F8C = {
 			children = (
 				CF3FF14105878B54000D2F8C,
@@ -1823,6 +1798,100 @@
 			path = useful_symbols_computations.cpp;
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		CF5E74EC07B00E5A00858338 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = galgas_scanner.cpp;
+			path = /Users/pierremolinaro/Documents/developpements/mes_prgms/galgas/galgas_sources/GALGAS_OUTPUT/galgas_scanner.cpp;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		CF5E74ED07B00E5A00858338 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = galgas_scanner.h;
+			path = /Users/pierremolinaro/Documents/developpements/mes_prgms/galgas/galgas_sources/GALGAS_OUTPUT/galgas_scanner.h;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		CF5E74EE07B00E5A00858338 = {
+			fileRef = CF5E74EC07B00E5A00858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74EF07B00E5A00858338 = {
+			fileRef = CF5E74ED07B00E5A00858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74F007B00E5A00858338 = {
+			fileRef = CF5E74EC07B00E5A00858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74F107B00E5A00858338 = {
+			fileRef = CF5E74ED07B00E5A00858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74F207B00E5A00858338 = {
+			fileRef = CF5E74EC07B00E5A00858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74F307B00E5A00858338 = {
+			fileRef = CF5E74ED07B00E5A00858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74F407B00EA600858338 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = common_semantics.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF5E74F507B00EA600858338 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = common_semantics.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF5E74F607B00EA600858338 = {
+			fileRef = CF5E74F407B00EA600858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74F707B00EA600858338 = {
+			fileRef = CF5E74F507B00EA600858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74F807B00EA600858338 = {
+			fileRef = CF5E74F407B00EA600858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF5E74F907B00EA600858338 = {
+			fileRef = CF5E74F507B00EA600858338;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		CF6702F605C072FF0065267C = {
 			fileEncoding = 5;
@@ -1955,7 +2024,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF7A1433058CFF8C007126C1,
-				CF7A1435058CFF92007126C1,
 				CF7A1461058D0081007126C1,
 				CF7A146D058D00AA007126C1,
 				CF7A1471058D00B2007126C1,
@@ -1995,6 +2063,8 @@
 				CF6E113806269BEC001B909F,
 				CF6E113A06269BEC001B909F,
 				CF3BD5260796E3B0006B4FD7,
+				CF5E74F107B00E5A00858338,
+				CF5E74F907B00EA600858338,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2002,10 +2072,8 @@
 		CF7A1401058CEFE2007126C1 = {
 			buildActionMask = 2147483647;
 			files = (
-				CF7A142F058CFF85007126C1,
 				CF7A1430058CFF87007126C1,
 				CF7A1431058CFF88007126C1,
-				CF7A1434058CFF8F007126C1,
 				CF7A1436058CFF94007126C1,
 				CF7A1437058CFF96007126C1,
 				CF7A1438058CFF97007126C1,
@@ -2103,6 +2171,8 @@
 				CF6E113706269BEC001B909F,
 				CF6E113906269BEC001B909F,
 				CF3184130774BF7F0045D262,
+				CF5E74F007B00E5A00858338,
+				CF5E74F807B00EA600858338,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2120,7 +2190,7 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "../galgas_generated_sources ../hand_coded_sources ../../libpm";
+				HEADER_SEARCH_PATHS = "../galgas_sources/GALGAS_OUTPUT ../hand_coded_sources ../../libpm";
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -2145,12 +2215,6 @@
 			refType = 3;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CF7A142F058CFF85007126C1 = {
-			fileRef = CFF5372C057A4DD900854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CF7A1430058CFF87007126C1 = {
 			fileRef = CFF53781057A50D600854C83;
 			isa = PBXBuildFile;
@@ -2165,18 +2229,6 @@
 		};
 		CF7A1433058CFF8C007126C1 = {
 			fileRef = CF82944F0587AE820058E762;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF7A1434058CFF8F007126C1 = {
-			fileRef = CFF5374B057A4F6C00854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF7A1435058CFF92007126C1 = {
-			fileRef = CF3FF1260587874B000D2F8C;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -3294,18 +3346,6 @@
 			settings = {
 			};
 		};
-		CFA7ADCF058DB5B3009AC1FE = {
-			fileRef = CF3FF1260587874B000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CFA7ADD0058DB5B4009AC1FE = {
-			fileRef = CFF5374B057A4F6C00854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CFA7ADD7058DB5DF009AC1FE = {
 			fileRef = CF86361A0586289600B23462;
 			isa = PBXBuildFile;
@@ -3669,19 +3709,12 @@
 		};
 		CFF53727057A4D3F00854C83 = {
 			children = (
-				CFF5372C057A4DD900854C83,
+				CF5E74F407B00EA600858338,
+				CF5E74F507B00EA600858338,
 			);
 			isa = PBXGroup;
 			name = "Common Semantics";
 			path = "";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CFF5372C057A4DD900854C83 = {
-			fileEncoding = 5;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			path = common_semantics.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -3701,8 +3734,8 @@
 				CFF5380A057A53B900854C83,
 			);
 			isa = PBXGroup;
-			name = "Generated by Galgas";
-			path = ../galgas_generated_sources;
+			name = GALGAS_OUTPUT;
+			path = ../galgas_sources/GALGAS_OUTPUT;
 			refType = 2;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -3725,19 +3758,11 @@
 		};
 		CFF53740057A4EFE00854C83 = {
 			children = (
-				CFF5374B057A4F6C00854C83,
-				CF3FF1260587874B000D2F8C,
+				CF5E74EC07B00E5A00858338,
+				CF5E74ED07B00E5A00858338,
 			);
 			isa = PBXGroup;
 			name = "Galgas Scanner";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CFF5374B057A4F6C00854C83 = {
-			fileEncoding = 5;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			path = galgas_scanner.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};

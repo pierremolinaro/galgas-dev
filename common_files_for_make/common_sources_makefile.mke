@@ -16,7 +16,7 @@ LIB_PM_PATH := ../../libpm
 #                                                               *
 #---------------------------------------------------------------*
 
-SOURCES_DIR := ../galgas_generated_sources ../hand_coded_sources
+SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT ../hand_coded_sources
 
 #---------------------------------------------------------------*
 #                                                               *

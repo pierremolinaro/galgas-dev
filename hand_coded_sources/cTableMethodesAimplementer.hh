@@ -182,6 +182,7 @@ template <typename INFO, typename KEY>
 sint32 cTableMethodesAimplementer <INFO, KEY>::insertAbstract (C_lexique & inLexique,
                                           const INFO & info,
                                           const KEY & clef,
+                                         const GGS_location & inLocation,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
   if (isBuilt ()) {
@@ -191,7 +192,7 @@ sint32 cTableMethodesAimplementer <INFO, KEY>::insertAbstract (C_lexique & inLex
     internalInsert (info, clef, numeroElement, true, mRoot) ;
   //--- Erreur d'insertion : la clef existe déjà
     if (numeroElement < 0) {
-      clef.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
     }
   }
   return numeroElement ;
@@ -203,6 +204,7 @@ template <typename INFO, typename KEY>
 sint32 cTableMethodesAimplementer <INFO, KEY>::insertNotAbstract (C_lexique & inLexique,
                                           const INFO & info,
                                           const KEY & clef,
+                                         const GGS_location & inLocation,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
   if (isBuilt ()) {
@@ -212,7 +214,7 @@ sint32 cTableMethodesAimplementer <INFO, KEY>::insertNotAbstract (C_lexique & in
     internalInsert (info, clef, numeroElement, false, mRoot) ;
   //--- Erreur d'insertion : la clef existe déjà
     if (numeroElement < 0) {
-      clef.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
     }
   }
   return numeroElement ;
