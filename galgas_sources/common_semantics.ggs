@@ -160,7 +160,7 @@ abstract class @AC_galgasType
 end class ;
 
 #---------------------------------------------------------------------------*
-#                    Liste d'attributs sémantiques                          *
+#                    Liste d'attributs semantiques                          *
 #---------------------------------------------------------------------------*
 
 list @typeListeAttributsSemantiques
