@@ -571,8 +571,8 @@ analyzeGrammar (C_lexique & inLexique,
                           ) ;
 
 //--- Fix parameters for BDD package
-  C_bdd::changeHashMapSize (300) ;
-  C_bdd::changeITEcacheSize (100) ;
+  C_bdd::setHashMapSize (17) ;
+  C_bdd::setITEcacheSize (14) ;
 
 //--- Print original grammar in BNF file
   if ((errorFlag == 0) && (grammarClass != kGrammarClassError)) {
