@@ -947,7 +947,7 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 void cPtr_typeGalgas_lchar::
 generateAttributeDeclaration (const GGS_lstring & nom,
                               AC_output_stream & H_file) {
-  H_file << "  public : UNICODE32 " << nom
+  H_file << "  public : UTF16 " << nom
          << " ; // user defined attribute\n" ;
 }
 
