@@ -18,16 +18,16 @@
 
 program galgas_SLR_prgm "version 0.14.1 (SLR grammar)" . "ggs" :
   import grammar galgas_SLR_grammar in "galgas_SLR_grammar.ggs" ;
-  include "" ;
-#--- max error and warning count
-  error 100 ;
-  warning 100 ;
+  include header ;
 #--- Start symbol arguments
   mLexiqueMapForUse ;
   mSemanticsComponentsMap ;
   mSyntaxComponentsMap ;
   mGrammarsComponentsMap ;
   mOptionComponentsMap ;
+#--- max error and warning count
+  error 100 ;
+  warning 100 ;
 end program ;
 
 #---------------------------------------------------------------------------*
