@@ -578,8 +578,7 @@ generateExternArgument (AC_output_stream & inCppFile) const {
 
 void cPtr_typeArgumentCaractere::
 generateExternArgument (AC_output_stream & inCppFile) const {
-//  inCppFile.writeCcharConstant ((char) attributCaractere.getUnicodeValue ()) ;
-  inCppFile << attributCaractere.getUnicodeValue () ;
+  inCppFile.writeCcharConstant (attributCaractere.getValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -775,8 +774,7 @@ generate_scanner_instruction (const C_string &, // inLexiqueName
 void cPtr_typeConditionCaractere::
 generateLexicalCondition (AC_output_stream & inCppFile) {
   inCppFile << "testForInputChar (" ;
-//  inCppFile.writeCcharConstant (attributCaractere.getValue ()) ;
-  inCppFile << attributCaractere.getUnicodeValue () ;
+  inCppFile.writeCcharConstant (attributCaractere.getValue ()) ;
   inCppFile << ")" ;
 }
 
@@ -795,11 +793,9 @@ generateLexicalCondition (AC_output_stream & inCppFile) {
 void cPtr_typeConditionIntervalle::
 generateLexicalCondition (AC_output_stream & inCppFile) {
   inCppFile << "testForInputChar (" ;
-//  inCppFile.writeCcharConstant (attributBorneInf.getValue ()) ;
-  inCppFile << attributBorneInf.getUnicodeValue () ;
+  inCppFile.writeCcharConstant (attributBorneInf.getValue ()) ;
   inCppFile << ", " ;
-//  inCppFile.writeCcharConstant (attributBorneSup.getValue ()) ;
-  inCppFile << attributBorneSup.getUnicodeValue () ;
+  inCppFile.writeCcharConstant (attributBorneSup.getValue ()) ;
   inCppFile << ")" ;
 }
 
@@ -947,7 +943,7 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 void cPtr_typeGalgas_lchar::
 generateAttributeDeclaration (const GGS_lstring & nom,
                               AC_output_stream & H_file) {
-  H_file << "  public : UTF16 " << nom
+  H_file << "  public : char " << nom
          << " ; // user defined attribute\n" ;
 }
 

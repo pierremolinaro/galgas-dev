@@ -324,8 +324,7 @@ bool cPtr_typeLiteralUIntExpression
 void cPtr_typeLiteralCharExpression::
 generateExpression (AC_output_stream & ioCppFile) {
   ioCppFile << "GGS_char (true, " ;
-//  ioCppFile.writeCcharConstant (mLiteralChar.getValue ()) ;
-  ioCppFile << mLiteralChar.getUnicodeValue () ;
+  ioCppFile.writeCcharConstant (mLiteralChar.getValue ()) ;
   ioCppFile << ')' ;
 }
 
