@@ -37,7 +37,7 @@ class cMainProgram {
   public : GGS_typeAbstraitInclusionM aInclusionFichierM ;
   public : GGS_luint aNombreMaxErreurs ;
   public : GGS_luint aNombreMaxAlertes ;
-  public : GGS_lstring aNomClasseAnalyseurLexical ;
+  public : C_string aNomClasseAnalyseurLexical ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -56,7 +56,7 @@ generate_header_file_for_prgm (C_lexique & inLexique,
         << "#include \"" << programmeCourant.aNomClasseAnalyseurLexical
         << ".h\"\n"
            "#include \"galgas/C_galgas_terminal_io.h\"\n" ;
-//--- Inclusion des fichiers citŽs dans include "..." import ... ;
+//--- Inclusion des fichiers cites dans include "..." import ... ;
   programmeCourant.aInclusionFichierM()->engendrerDirectivesInclude (generatedZone2) ;
   generatedZone2 << '\n' ; 
   generatedZone2.writeHyphenLineComment () ;
@@ -384,7 +384,7 @@ void generatePRGM (C_lexique & inLexique,
                    GGS_typeAbstraitInclusionM & inclusionFichierM,
                    GGS_luint & nombreMaxErreurs,
                    GGS_luint & nombreMaxAlertes,
-                   GGS_lstring & nomClasseAnalyseurLexical,
+                   GGS_lstring & inLexiqueClassName,
                    GGS_M_optionComponents & inOptionComponentsMap) {
 //--- Engendrer les fichiers programme  
   cMainProgram programmeCourant ;
@@ -398,7 +398,7 @@ void generatePRGM (C_lexique & inLexique,
   programmeCourant.aInclusionFichierM = inclusionFichierM ;
   programmeCourant.aNombreMaxErreurs = nombreMaxErreurs ;
   programmeCourant.aNombreMaxAlertes = nombreMaxAlertes ;
-  programmeCourant.aNomClasseAnalyseurLexical = nomClasseAnalyseurLexical ;
+  programmeCourant.aNomClasseAnalyseurLexical = inLexiqueClassName ;
   const C_string fileNameWithExtension = inLexique.getSourceFile ().getFileNameWithSuffix () ;
   const C_string GALGASversionString = inLexique.getGalgasIOptr ()->getCompilerVersion () ;
   generate_header_file_for_prgm (inLexique,

@@ -109,20 +109,24 @@ template <typename INFO, typename KEY> class cClassMethodsMap {
 //--- Method for searching
   public : element_type * searchKey (C_lexique & inLexique,
                                   const KEY & inKey,
+                                  const GGS_location & inLocation,
                                   const char * inSearchErrorMessage) ;
   public : element_type * searchForOverride (C_lexique & inLexique,
                                   const KEY & inKey,
+                                  const GGS_location & inLocation,
                                   const char * inSearchErrorMessage) ;
 
   public : sint32 insertAbstract (C_lexique & inLexique,
-                                const INFO & info,
-                                const KEY & clef,
-                                const char * messageErreurInsertion) ;
+                                  const INFO & info,
+                                  const KEY & clef,
+                                  const GGS_location & inLocation,
+                                  const char * messageErreurInsertion) ;
 
   public : sint32 insertNotAbstract (C_lexique & inLexique,
-                                   const INFO & info,
-                                   const KEY & clef,
-                                   const char * messageErreurInsertion) ;
+                                     const INFO & info,
+                                     const KEY & clef,
+                                     const GGS_location & inLocation,
+                                     const char * messageErreurInsertion) ;
 
   protected : void insulateMap (void) ;
 

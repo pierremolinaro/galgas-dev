@@ -177,41 +177,49 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
   public : sint32 insertInArgument (C_lexique & inLexique,
                                   const INFO & info,
                                   const KEY & clef,
+                                         const GGS_location & inLocation,
                                   const char * messageErreurInsertion) ;
 
   public : sint32 insertInOutArgument (C_lexique & inLexique,
                                      const INFO & info,
                                      const KEY & clef,
+                                         const GGS_location & inLocation,
                                      const char * messageErreurInsertion) ;
 
   public : sint32 insertUnusedInOutArgument (C_lexique & inLexique,
                                            const INFO & info,
                                            const KEY & clef,
+                                         const GGS_location & inLocation,
                                            const char * messageErreurInsertion) ;
 
   public : sint32 insertOutArgument (C_lexique & inLexique,
                                    const INFO & info,
                                    const KEY & clef,
+                                         const GGS_location & inLocation,
                                    const char * messageErreurInsertion) ;
 
   public : sint32 insertConstInArgument (C_lexique & inLexique,
                                        const INFO & info,
                                        const KEY & clef,
+                                         const GGS_location & inLocation,
                                        const char * messageErreurInsertion) ;
 
   public : sint32 insertUsedConstInArgument (C_lexique & inLexique,
                                            const INFO & info,
                                            const KEY & clef,
+                                         const GGS_location & inLocation,
                                            const char * messageErreurInsertion) ;
 
   public : sint32 insertUnusedConstInArgument (C_lexique & inLexique,
                                              const INFO & info,
                                              const KEY & clef,
+                                         const GGS_location & inLocation,
                                              const char * messageErreurInsertion) ;
 
   public : sint32 insertLocalVariable (C_lexique & inLexique,
                                      const INFO & info,
                                      const KEY & clef,
+                                      const GGS_location & inLocation,
                                      const char * messageErreurInsertion) ;
 
 
@@ -223,21 +231,25 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
 
   public : element_type * searchForReadOnlyAccess (C_lexique & inLexique,
                                          const KEY & clef,
+                                         const GGS_location & inLocation,
                                          const char * messageErreurRecherche,
                                          const char * messageErreurPhase) ;
 
   public : element_type * searchForDestructiveReadAccess (C_lexique & inLexique,
                                                 const KEY & clef,
+                                                const GGS_location & inLocation,
                                                 const char * messageErreurRecherche,
                                                 const char * messageErreurPhase) ;
 
   public : element_type * searchForReadWriteAccess (C_lexique & inLexique,
                                           const KEY & clef,
+                                          const GGS_location & inLocation,
                                           const char * messageErreurRecherche,
                                           const char * messageErreurPhase) ;
 
   public : element_type * searchForWriteAccess (C_lexique & inLexique,
                                       const KEY & clef,
+                                      const GGS_location & inLocation,
                                       const char * messageErreurRecherche,
                                       const char * messageErreurPhase) ;
 
@@ -277,6 +289,7 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
                          const bool inIsDeclaredUnused,
                          const bool inUsed,
                          const KEY & clef,
+                         const GGS_location & inLocation,
                          const char * messageErreurInsertion) ;
 
   private : void internalInsert (bool & insertionOk ,

@@ -103,11 +103,13 @@ template <typename INFO, typename KEY> class cTableMethodesAimplementer {
   public : sint32 insertAbstract (C_lexique & inLexique,
                                   const INFO & info,
                                   const KEY & clef,
+                                         const GGS_location & inLocation,
                                   const char * messageErreurInsertion) ;
 
   public : sint32 insertNotAbstract (C_lexique & inLexique,
                                      const INFO & info,
                                      const KEY & clef,
+                                         const GGS_location & inLocation,
                                      const char * messageErreurInsertion) ;
 
   private : void internalInsert (const INFO & info,

@@ -178,6 +178,7 @@ template <typename INFO, typename KEY>
 sint32 cClassMethodsMap <INFO, KEY>::insertAbstract (C_lexique & inLexique,
                                           const INFO & info,
                                           const KEY & clef,
+                                          const GGS_location & inLocation,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
   if (mReferenceCountPtr != NULL) {
@@ -187,7 +188,7 @@ sint32 cClassMethodsMap <INFO, KEY>::insertAbstract (C_lexique & inLexique,
     numeroElement = internalInsert (info, clef, true, mRoot) ;
   //--- Erreur d'insertion : la clef existe déjà
     if (numeroElement < 0) {
-      clef.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
     }
   }
   return numeroElement ;
@@ -199,6 +200,7 @@ template <typename INFO, typename KEY>
 sint32 cClassMethodsMap <INFO, KEY>::insertNotAbstract (C_lexique & inInputOutput,
                                           const INFO & info,
                                           const KEY & clef,
+                                          const GGS_location & inLocation,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
   if (mReferenceCountPtr != NULL) {
@@ -208,7 +210,7 @@ sint32 cClassMethodsMap <INFO, KEY>::insertNotAbstract (C_lexique & inInputOutpu
     numeroElement = internalInsert (info, clef, false, mRoot) ;
   //--- Erreur d'insertion : la clef existe déjà
     if (numeroElement < 0) {
-      clef.semanticErrorForMap (inInputOutput, messageErreurInsertion, clef) ;
+      inLocation.semanticErrorForMap (inInputOutput, messageErreurInsertion, clef) ;
     }
   }
   return numeroElement ;
@@ -257,6 +259,7 @@ template <typename INFO, typename KEY>
 cElementTableMethodesUtilisables <INFO, KEY> * cClassMethodsMap <INFO, KEY>::
 searchKey (C_lexique & inLexique,
            const KEY & inKey,
+           const GGS_location & inLocation,
            const char * inSearchErrorMessage) {
   element_type * result = (element_type *) NULL ;
   if (isBuilt () && inKey.isBuilt ()) {
@@ -274,7 +277,7 @@ searchKey (C_lexique & inLexique,
       }
     }
     if (result == NULL) { // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inKey.semanticErrorForMap (inLexique, inSearchErrorMessage, inKey) ;
+      inLocation.semanticErrorForMap (inLexique, inSearchErrorMessage, inKey) ;
     }
   }
   return result ;
@@ -286,6 +289,7 @@ template <typename INFO, typename KEY>
 cElementTableMethodesUtilisables <INFO, KEY> * cClassMethodsMap <INFO, KEY>::
 searchForOverride (C_lexique & inLexique,
                    const KEY & inKey,
+                   const GGS_location & inLocation,
                    const char * inSearchErrorMessage) {
   element_type * result = (element_type *) NULL ;
   if (isBuilt () && inKey.isBuilt ()) {
@@ -305,7 +309,7 @@ searchForOverride (C_lexique & inLexique,
       }
     }
     if (result == NULL) { // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inKey.semanticErrorForMap (inLexique, inSearchErrorMessage, inKey) ;
+      inLocation.semanticErrorForMap (inLexique, inSearchErrorMessage, inKey) ;
     }else{
       macroValidPointer (result) ;
       result->champEstAbstraite = false ; // La méthode n'est plus abstraite

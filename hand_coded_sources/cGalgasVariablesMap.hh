@@ -172,8 +172,9 @@ template <typename INFO, typename KEY>
 sint32 cGalgasVariablesMap <INFO, KEY>::insertInArgument (C_lexique & inLexique,
                                                         const INFO & inInfo,
                                                         const KEY & clef,
+                                                        const GGS_location & inLocation,
                                                         const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumParametreIn, etatValue, false, false, clef, messageErreurInsertion) ;
+  return insertKey (inLexique, inInfo, enumParametreIn, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -182,8 +183,9 @@ template <typename INFO, typename KEY>
 sint32 cGalgasVariablesMap <INFO, KEY>::insertInOutArgument (C_lexique & inLexique,
                                                            const INFO & inInfo,
                                                            const KEY & clef,
+                                                           const GGS_location & inLocation,
                                                            const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, messageErreurInsertion) ;
+  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -192,8 +194,9 @@ template <typename INFO, typename KEY>
 sint32 cGalgasVariablesMap <INFO, KEY>::insertUnusedInOutArgument (C_lexique & inLexique,
                                                                  const INFO & inInfo,
                                                                  const KEY & clef,
+                                                                 const GGS_location & inLocation,
                                                                  const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, true, false, clef, messageErreurInsertion) ;
+  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, true, false, clef, inLocation, messageErreurInsertion) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -202,8 +205,9 @@ template <typename INFO, typename KEY>
  sint32 cGalgasVariablesMap <INFO, KEY>::insertOutArgument (C_lexique & inLexique,
                                                           const INFO & inInfo,
                                                           const KEY & clef,
+                                                          const GGS_location & inLocation,
                                                           const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumParametreOut, etatNonValue, false, false, clef, messageErreurInsertion) ;
+  return insertKey (inLexique, inInfo, enumParametreOut, etatNonValue, false, false, clef, inLocation, messageErreurInsertion) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -212,8 +216,9 @@ template <typename INFO, typename KEY>
 sint32 cGalgasVariablesMap <INFO, KEY>::insertLocalVariable (C_lexique & inLexique,
                                                            const INFO & inInfo,
                                                            const KEY & clef,
+                                                           const GGS_location & inLocation,
                                                            const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumVariableLocale, etatNonValue, false, false, clef, messageErreurInsertion) ;
+  return insertKey (inLexique, inInfo, enumVariableLocale, etatNonValue, false, false, clef, inLocation, messageErreurInsertion) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -222,8 +227,9 @@ template <typename INFO, typename KEY>
 sint32 cGalgasVariablesMap <INFO, KEY>::insertConstInArgument (C_lexique & inLexique,
                                                              const INFO & inInfo,
                                                              const KEY & clef,
+                                                             const GGS_location & inLocation,
                                                              const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, false, clef, messageErreurInsertion) ;
+  return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -232,8 +238,9 @@ template <typename INFO, typename KEY>
 sint32 cGalgasVariablesMap <INFO, KEY>::insertUsedConstInArgument (C_lexique & lexique_var_,
                                                              const INFO & inInfo,
                                                              const KEY & clef,
+                                                             const GGS_location & inLocation,
                                                              const char * messageErreurInsertion) {
-  return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, false, true, clef, messageErreurInsertion) ;
+  return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, false, true, clef, inLocation, messageErreurInsertion) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -242,8 +249,9 @@ template <typename INFO, typename KEY>
 sint32 cGalgasVariablesMap <INFO, KEY>::insertUnusedConstInArgument (C_lexique & lexique_var_,
                                                                    const INFO & inInfo,
                                                                    const KEY & clef,
+                                                                   const GGS_location & inLocation,
                                                                    const char * messageErreurInsertion) {
-  return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, true, false, clef, messageErreurInsertion) ;
+  return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, true, false, clef, inLocation, messageErreurInsertion) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -256,6 +264,7 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertKey (C_lexique & inLexique,
                                               const bool inIsDeclaredUnused,
                                               const bool inUsed,
                                               const KEY & inKey,
+                                              const GGS_location & inLocation,
                                               const char * messageErreurInsertion) {
   sint32 resultat = -1 ; // Erreur 'insertion incorrecte'
   if (isBuilt () && inInfo.isBuilt () && inKey.isBuilt ()) {
@@ -266,7 +275,7 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertKey (C_lexique & inLexique,
     if (insertionOk) {
       resultat = mListLength - 1 ;
     }else{ // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inKey.semanticErrorForMap (inLexique, messageErreurInsertion, inKey) ;
+      inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, inKey) ;
     }
   }
   return resultat ;
@@ -396,6 +405,7 @@ template <typename INFO, typename KEY>
 cElementTableControlePhase <INFO, KEY> * cGalgasVariablesMap <INFO, KEY>::
 searchForReadOnlyAccess (C_lexique & inLexique,
                          const KEY & clef,
+                         const GGS_location & inLocation,
                          const char * messageErreurRecherche,
                          const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
@@ -405,7 +415,7 @@ searchForReadOnlyAccess (C_lexique & inLexique,
     if (resultat->champEtat == etatValue) {
       resultat->champUtilise = true ;
     }else{
-      clef.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
     }
   }
   return resultat ;
@@ -417,6 +427,7 @@ template <typename INFO, typename KEY>
 cElementTableControlePhase <INFO, KEY> * cGalgasVariablesMap <INFO, KEY>::
 searchForDestructiveReadAccess (C_lexique & inLexique,
                                 const KEY & clef,
+                                const GGS_location & inLocation,
                                 const char * messageErreurRecherche,
                                 const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
@@ -428,7 +439,7 @@ searchForDestructiveReadAccess (C_lexique & inLexique,
       resultat->champEtat = etatDetruite ;
       resultat->champUtilise = true ;
     }else{
-      clef.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
     }
   }
   return resultat ;
@@ -440,6 +451,7 @@ template <typename INFO, typename KEY>
 cElementTableControlePhase <INFO, KEY> * cGalgasVariablesMap <INFO, KEY>::
 searchForReadWriteAccess (C_lexique & inLexique,
                           const KEY & clef,
+                          const GGS_location & inLocation,
                           const char * messageErreurRecherche,
                           const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
@@ -450,7 +462,7 @@ searchForReadWriteAccess (C_lexique & inLexique,
         && (resultat->champNature != enumConstanteLocale)) {
       resultat->champUtilise = true ;
     }else{
-      clef.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
     }
   }
   return resultat ;
@@ -462,6 +474,7 @@ template <typename INFO, typename KEY>
 cElementTableControlePhase <INFO, KEY> * cGalgasVariablesMap <INFO, KEY>::
 searchForWriteAccess (C_lexique & inLexique,
                       const KEY & clef,
+                      const GGS_location & inLocation,
                       const char * messageErreurRecherche,
                       const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
@@ -476,7 +489,7 @@ searchForWriteAccess (C_lexique & inLexique,
       resultat->champEtat = etatValue ;
       resultat->champUtilise = true ;
     }else{*/
-      clef.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
     }
   }
   return resultat ;
