@@ -1,7 +1,5 @@
 Installation notes with CodeWarrior (MAC OS, Windows) :-------------------------------------------------------
 
-	This project needs compiling and linking with LIB PM library.	The Code Warrior project file uses the "Source Trees" feature to define thesource tree "LIB_PM_x_x_x" (where x_x_x denotes needed version) symbol to point
-to the actual directory.	For setting this symbol :
-	- first open the CodeWarrior project file : an error message is displaying,
-saying "LIB_PM_x_x_x" (where x_x_x denotes needed version) symbol is not defined ;
-	- then select in "Edit" menu, "Preferences..." item and "Source Trees" panel, andadd the actual directory path with the name "LIB_PM_x_x_x".
+This project needs compiling and linking with LIB PM library.The Code Warrior project file uses the "Source Trees" feature to define the source tree "LIB_PM" symbol to point to the actual directory.For setting this symbol :
+	- first open the CodeWarrior project file : an error message is displaying, saying "LIB_PM" symbol is not defined ;
+	- then select in "Edit" menu, "Preferences..." item and "Source Trees" panel, and add the actual directory path with the name "LIB_PM".
