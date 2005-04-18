@@ -313,6 +313,18 @@ class @typeGalgas_uint extends @AC_galgasType
   :
   end reader ;
 
+#--- Class accepts class method call 'max'
+  override reader handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName value] == "max" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+    else
+      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
 #--- Error message
   message messageGalgasType "a 'uint' type" ;
 end class ;
