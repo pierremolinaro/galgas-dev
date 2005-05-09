@@ -45,7 +45,10 @@ generate_mm_file_for_cocoa (C_lexique & inLexique,
     generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
     currentOptionComponent = currentOptionComponent->getNextItem () ;
   }
-  generatedZone2 << '\n' ;
+  generatedZone2 << "#ifdef USER_DEFAULT_COLORS_DEFINED\n"
+                    "  #import \"user_default_colors.h\"\n"
+                    "#endif\n"
+                    "\n" ;
 
 //--- Global static variables
   C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
@@ -208,16 +211,23 @@ generate_mm_file_for_cocoa (C_lexique & inLexique,
              "\n"
              "void initializeTextColors (NSString * inGGS_colors) {\n"
              "  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;\n"
-             "   gColorArray = [NSMutableArray arrayWithCapacity: getStylesCount ()] ;\n"
+             "   gColorArray = [NSMutableArray arrayWithCapacity:getStylesCount ()] ;\n"
              "  [gColorArray retain] ;\n"
              "  for (int i=0 ; i<getStylesCount () ; i++) {\n"
-             "    NSString * name = [NSString stringWithFormat: inGGS_colors, i] ;\n"
+             "    NSString * name = [NSString stringWithFormat:inGGS_colors, i] ;\n"
              "    NSData * colorData = [defaults dataForKey:name] ;\n"
              "    if (colorData != nil) {\n"
              "      NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData: colorData] ;\n"
-             "      [gColorArray addObject: color] ;\n"
+             "      [gColorArray addObject:color] ;\n"
              "    }else{\n"
-             "      [gColorArray addObject: [NSColor blackColor]] ;\n"
+             "      #ifdef USER_DEFAULT_COLORS_DEFINED\n"
+             "        NSColor * newColor = getDefaultUserColor (i) ;\n"
+             "      #else\n"
+             "        NSColor * newColor = [NSColor blackColor] ;\n"
+             "      #endif\n"
+             "        [gColorArray addObject:newColor] ;\n"
+             "        colorData = [NSArchiver archivedDataWithRootObject:newColor] ;\n"
+             "        [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:name] ;\n"
              "    }\n"
              "  }\n"
              "}\n"
