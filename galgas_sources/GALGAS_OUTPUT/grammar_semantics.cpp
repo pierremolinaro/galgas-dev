@@ -20,6 +20,7 @@
 
 //--- END OF USER ZONE 1
 
+#include "memory/M_memory_control.h"
 #include "files/C_text_file_write.h"
 #include "grammar_semantics.h"
 

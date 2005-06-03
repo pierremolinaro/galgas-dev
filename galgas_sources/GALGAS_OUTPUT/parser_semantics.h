@@ -98,7 +98,7 @@ class GGS_typeListeBranchesInstructions {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -151,7 +151,7 @@ class GGS_L_parse_rewind_signature_list {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;

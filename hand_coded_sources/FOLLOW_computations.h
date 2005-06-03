@@ -23,8 +23,8 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TC_unique_dyn_array.h"
-#include "generic_arraies/TC_unique_grow_array.h"
+#include "generic_arraies/TCUniqueArray.h"
+#include "generic_arraies/TCUniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
@@ -41,12 +41,12 @@ void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      C_html_file_write & inHTMLfile,
                      const cVocabulary & inVocabulary,
-                     const TC_unique_dyn_array <bool> & inVocabularyDerivingToEmpty_Array,
+                     const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_bdd_set1 & inUsefulSymbols,
                      const C_bdd_set2 & inFIRSTsets,
                      const C_bdd_set1 & nonTerminauxPouvantEtreSuivisDuVide,
                      C_bdd_set2 & outFOLLOWsets,
-                     TC_unique_dyn_array <TC_unique_grow_array <sint32> > & outFOLLOWarray,
+                     TCUniqueArray <TCUniqueArray <sint32> > & outFOLLOWarray,
                      bool & outOk) ;
 
 //---------------------------------------------------------------------------*

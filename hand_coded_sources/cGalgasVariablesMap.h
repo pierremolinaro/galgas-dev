@@ -152,7 +152,7 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
   public : element_type * mRoot ;
   public : typeSurchargeTable * aListeSurcharges ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
 

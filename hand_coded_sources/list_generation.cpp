@@ -18,6 +18,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "semantics_generation.h"
 #include "semantics_semantics.h"
 
@@ -90,7 +91,7 @@ generateHdeclarations (AC_output_stream & inHfile,
              "  private : element_type * mCurrentItemPtr ;\n"
              "  private : sint32 mCurrentItemIndex ;\n"
              "  private : sint32 mListLength ;\n"
-             "  public : inline sint32 getCount (void) const {\n"
+             "  public : inline sint32 count (void) const {\n"
              "    return mListLength ;\n"
              "  }\n"
              "  private : sint32 * mCountReference ;\n"

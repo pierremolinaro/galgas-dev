@@ -18,6 +18,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "files/C_html_file_write.h"
 #include "galgas/C_galgas_stringset.h"
 
@@ -122,7 +123,7 @@ void printOriginalGrammar (C_html_file_write & inHTMLfile,
   GGS_L_syntaxComponents_ForGrammar::element_type * currentSyntaxComponent = inSyntaxComponentsList.getFirstItem () ;
   while (currentSyntaxComponent != NULL) {
     macroValidPointer (currentSyntaxComponent) ;
-    productionsCount += currentSyntaxComponent->mProductionRulesList.getCount () ;
+    productionsCount += currentSyntaxComponent->mProductionRulesList.count () ;
     currentSyntaxComponent = currentSyntaxComponent->getNextItem () ;
   }
   inHTMLfile.outputRawData ("<p>") ;

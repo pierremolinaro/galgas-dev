@@ -18,6 +18,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "semantics_generation.h"
 #include "semantics_semantics.h"
 
@@ -213,7 +214,7 @@ generateCppClassImplementation (AC_output_stream & inCppFile,
                "  AC_galgas_map_element * p = NULL ;\n"
                "  GGS_" << mKeyTypeName << " * key = (GGS_" << mKeyTypeName << " *) inKey ;\n"
                "  e_" << aNomTable << " * info = (e_" << aNomTable << " *) inInfo ;\n"
-               "  macroMyNew (p, element_type (* key, getCount (), * info)) ;\n"
+               "  macroMyNew (p, element_type (* key, count (), * info)) ;\n"
                "  return p ;\n"
                "}\n\n" ;
 
@@ -280,7 +281,7 @@ generateCppClassImplementation (AC_output_stream & inCppFile,
   inCppFile << "               GGS_luint * outIndex) {\n"
             << "  sint32 index = - 1 ;\n"
             << "  if (isBuilt () && inKey.isBuilt ()" ;
-  for (sint32 i=0 ; i<mNonExternAttributesList.getCount () ; i++) {
+  for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
     inCppFile << "\n                 && inParameter" << i << ".isBuilt ()" ;
   }      
   inCppFile << ") {\n"
@@ -336,7 +337,7 @@ generateCppClassImplementation (AC_output_stream & inCppFile,
                "    }\n"
                "  }\n"
                "  if (node == NULL) {\n" ;
-    for (sint32 i=0 ; i<mNonExternAttributesList.getCount () ; i++) {
+    for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
       inCppFile << "    if (outParameter" << i << " != NULL) {\n"
                    "      outParameter" << i << "->drop_operation () ;\n"
                    "    }\n" ;
@@ -394,7 +395,7 @@ generateCppClassImplementation (AC_output_stream & inCppFile,
                  "  ioMap.searchElement (inLexique,\n"
                  "                       kErrorMessage,\n"
                  "                       inKey,\n" ;
-    for (sint32 i=0 ; i<mNonExternAttributesList.getCount () ; i++) {
+    for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
       inCppFile << "                       outParameter" << i << ",\n" ;
     }
     inCppFile << "                       outIndex) ;\n"
@@ -435,7 +436,7 @@ generateCppClassImplementation (AC_output_stream & inCppFile,
                  "  ioMap.insertElement (lexique_var_,\n"
                  "                       kErrorMessage,\n"
                  "                       inKey,\n" ;
-    for (sint32 i=0 ; i<mNonExternAttributesList.getCount () ; i++) {
+    for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
       inCppFile << "                       inParameter" << i << ",\n" ;
     }
     inCppFile << "                       outIndex) ;\n"
@@ -719,7 +720,7 @@ void cPtr_typeDefinitionTableAimplementer
       current = current->getNextItem () ;
     }
     inCppFile << "  const sint32 index = ioMap." << methodeCourante->mKey << " (lexique_var_, info, inKey, inKey" ;
-    for (sint32 i=0 ; i<methodeCourante->mInfo.mErrorMessageList.getCount () ; i++) {
+    for (sint32 i=0 ; i<methodeCourante->mInfo.mErrorMessageList.count () ; i++) {
       inCppFile << ", kErrorMessage_" << i ;
     }
     inCppFile << ") ;\n"

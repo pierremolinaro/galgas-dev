@@ -71,7 +71,7 @@ class GGS_typeListeAttributsAxiome {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -122,7 +122,7 @@ class GGS_typeListeChaines {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -183,7 +183,7 @@ class GGS_L_grammarDescriptorForProgram {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;

@@ -18,6 +18,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "files/C_html_file_write.h"
 
 //---------------------------------------------------------------------------*
@@ -119,34 +120,34 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 /* inTerminalSymbolsCount */,
-                      TC_unique_grow_array <sint16> & ioInstructionsList) {
-  ioInstructionsList.appendByCopy ((sint16) mTerminalSymbolIndex.mValue COMMA_HERE) ;
+                      TCUniqueArray <sint16> & ioInstructionsList) {
+  ioInstructionsList.addObject ((sint16) mTerminalSymbolIndex.mValue) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 inTerminalSymbolsCount,
-                      TC_unique_grow_array <sint16> & ioInstructionsList) {
+                      TCUniqueArray <sint16> & ioInstructionsList) {
 
-  ioInstructionsList.appendByCopy ((sint16) (mNonterminalSymbolIndex.mValue
-                                           + inTerminalSymbolsCount) COMMA_HERE) ;
+  ioInstructionsList.addObject ((sint16) (mNonterminalSymbolIndex.mValue
+                                           + inTerminalSymbolsCount)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_T_selectInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 inTerminalSymbolsCount,
-                      TC_unique_grow_array <sint16> & ioInstructionsList) {
-  ioInstructionsList.appendByCopy ((sint16) (mAddedNonterminalmSymbolIndex.mValue
-                                           + inTerminalSymbolsCount) COMMA_HERE) ;
+                      TCUniqueArray <sint16> & ioInstructionsList) {
+  ioInstructionsList.addObject ((sint16) (mAddedNonterminalmSymbolIndex.mValue
+                                           + inTerminalSymbolsCount)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 inTerminalSymbolsCount,
-                      TC_unique_grow_array <sint16> & ioInstructionsList) {
+                      TCUniqueArray <sint16> & ioInstructionsList) {
   GGS_L_branchList_ForGrammarComponent::element_type * firstBranch = mRepeatList.getFirstItem () ;
   macroValidPointer (firstBranch) ;
   GGS_L_ruleSyntaxSignature::element_type * instruction = firstBranch->mInstructionsList.getFirstItem () ;
@@ -154,8 +155,8 @@ buildRightDerivation (const sint32 inTerminalSymbolsCount,
     instruction->mInstruction ()->buildRightDerivation (inTerminalSymbolsCount, ioInstructionsList) ;
     instruction = instruction->getNextItem () ;
   }
-  ioInstructionsList.appendByCopy ((sint16) (mAddedNonterminalmSymbolIndex.mValue
-                                           + inTerminalSymbolsCount) COMMA_HERE) ;
+  ioInstructionsList.addObject ((sint16) (mAddedNonterminalmSymbolIndex.mValue
+                                           + inTerminalSymbolsCount)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -182,7 +183,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.getFirstItem () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    TC_unique_grow_array <sint16> derivation ;
+    TCUniqueArray <sint16> derivation ;
     GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionsList.getFirstItem () ;
     while (instruction != NULL) {
        instruction->mInstruction ()->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
@@ -248,7 +249,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = firstBranch->getNextItem () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    TC_unique_grow_array <sint16> derivation ;
+    TCUniqueArray <sint16> derivation ;
   //--- insert branch instructions
     GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionsList.getFirstItem () ;
     while (instruction != NULL) {
@@ -262,7 +263,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
       instruction = instruction->getNextItem () ;
     }
   //--- insert <T> production call
-    derivation.appendByCopy ((sint16) (mAddedNonterminalmSymbolIndex.mValue + inTerminalSymbolsCount) COMMA_HERE) ;
+    derivation.addObject ((sint16) (mAddedNonterminalmSymbolIndex.mValue + inTerminalSymbolsCount)) ;
     cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
     p.aLigneDefinition = mStartLocation.getCurrentLineNumber () ;
@@ -343,7 +344,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
     GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentComponent->mProductionRulesList.getFirstItem () ;
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
-      TC_unique_grow_array <sint16> derivation ;
+      TCUniqueArray <sint16> derivation ;
       GGS_L_ruleSyntaxSignature::element_type * instruction = currentRule->mInstructionsList.getFirstItem () ;
       while (instruction != NULL) {
         macroValidPointer (instruction) ;
@@ -390,8 +391,8 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
     p.aLigneDefinition = 0 ;
     p.aColonneDefinition = 0 ;
     p.aNumeroNonTerminalGauche = ioVocabulary.getAllSymbolsCount () - 1 ;
-    TC_unique_grow_array <sint16> derivation ;
-    derivation.appendByCopy ((sint16) ioVocabulary.getStartSymbol () COMMA_HERE) ;
+    TCUniqueArray <sint16> derivation ;
+    derivation.addObject ((sint16) ioVocabulary.getStartSymbol ()) ;
     swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
   }
@@ -440,7 +441,7 @@ printPureBNFgrammarInBNFfile (C_html_file_write & inHTMLfile,
                 << p.aLigneDefinition ;
     }
     inHTMLfile.outputRawData ("</td><td><code>") ;
-    for (sint32 d=0 ; d<p.aDerivation.getCount () ; d++) {
+    for (sint32 d=0 ; d<p.aDerivation.count () ; d++) {
       if (d != 0) {
         inHTMLfile.outputRawData ("<br>") ;
       }
@@ -472,25 +473,17 @@ buildProductionsArray (const sint32 inTerminalSymbolsCount,
   const sint32 nombreProductions = getLength () ;
 
 //--- Construire les tableaux d'indices
-  { TC_unique_dyn_array <sint32> temp (inNonTerminalSymbolsCount COMMA_HERE) ;
+  { TCUniqueArray <sint32> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
     swap (tableauIndicePremiereProduction, temp) ;
   }
-  { TC_unique_dyn_array <sint32> temp (inNonTerminalSymbolsCount COMMA_HERE) ;
+  { TCUniqueArray <sint32> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
     swap (tableauIndiceDerniereProduction, temp) ;
-  }
-  for (sint32 nt=0 ; nt<inNonTerminalSymbolsCount ; nt++) {
-    tableauIndicePremiereProduction (nt COMMA_HERE) = -1 ;
-    tableauIndiceDerniereProduction (nt COMMA_HERE) = -1 ;
   }
 
 //--- Construire le tableau indiquant si une production a ŽtŽ traitŽe et le tableau des indirections
-  TC_unique_dyn_array <bool> productionTraitee (nombreProductions COMMA_HERE) ;
-  { TC_unique_dyn_array <sint32> temp (nombreProductions COMMA_HERE) ;
+  TCUniqueArray <bool> productionTraitee (nombreProductions, false COMMA_HERE) ;
+  { TCUniqueArray <sint32> temp (nombreProductions, -1 COMMA_HERE) ;
     swap (tableauIndirectionProduction, temp) ;
-  }
-  for (sint32 prod=0 ; prod<nombreProductions ; prod++) {
-    tableauIndirectionProduction (prod COMMA_HERE) = -1 ;
-    productionTraitee (prod COMMA_HERE) = false ;
   }
 
 //--- Parcourir les productions

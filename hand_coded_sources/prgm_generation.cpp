@@ -18,6 +18,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "files/C_text_file_write.h"
 #include "time/C_datetime.h"
 
@@ -122,7 +123,7 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
   C_string generatedZone2 ;
   generatedZone2 << "#include \"utilities/F_display_exception.h\"\n"
              "#include \"time/C_timer.h\"\n"
-             "#include \"generic_arraies/TC_unique_grow_array.h\"\n"
+             "#include \"generic_arraies/TCUniqueArray.h\"\n"
              "#include \"command_line_interface/F_analyze_command_line_opts.h\"\n"
              "#include \"command_line_interface/myMain.h\"\n"
              "#include \"command_line_interface/C_generic_cli_options.h\"\n"
@@ -283,7 +284,7 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
              "  IOparameters.mMaxWarningsCount = "
           << inMaxWarningsCount
           << " ;\n"
-             "  TC_unique_grow_array <C_string> sourceFilesArray ;\n"
+             "  TCUniqueArray <C_string> sourceFilesArray ;\n"
              "  #ifdef TARGET_API_MAC_CARBON\n"
              "    printf (\"%s\\n\", IOparameters.mCompilerVersion.getStringPtr ()) ;\n"
              "  #endif\n"
@@ -304,7 +305,7 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
              "  " << inProgramComponentName << currentGrammar->mGrammarPostfix.getString ()
           << " compiler (IOparameters) ;\n"
              "  try{\n"
-             "    for (sint32 i=0 ; (i<sourceFilesArray.getCount ()) && (returnCode == 0) ; i++) {\n"
+             "    for (sint32 i=0 ; (i<sourceFilesArray.count ()) && (returnCode == 0) ; i++) {\n"
              "      compiler.doCompilation (sourceFilesArray (i COMMA_HERE), returnCode) ;\n"
              "    }\n"
              "  }catch (const M_STD_NAMESPACE exception & e) {\n"

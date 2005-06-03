@@ -18,8 +18,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "time/C_datetime.h"
-#include "generic_arraies/TC_unique_dyn_array.h"
+#include "generic_arraies/TCUniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
@@ -83,9 +84,9 @@ generate_option_header_file (C_lexique & inLexique,
             "                                                          bool * outFound) const ;\n"
             "\n"
             "//--- Private arraies : current options values\n"
-            "  private : bool mBoolValue [" << (inBoolOptionsMap.getCount () + 1) << "] ;\n"
-            "  private : uint32 mUintValue [" << (inUintOptionsMap.getCount () + 1) << "] ;\n"
-            "  private : TC_unique_grow_array <C_string> mStringValue ;\n"
+            "  private : bool mBoolValue [" << (inBoolOptionsMap.count () + 1) << "] ;\n"
+            "  private : uint32 mUintValue [" << (inUintOptionsMap.count () + 1) << "] ;\n"
+            "  private : TCUniqueArray <C_string> mStringValue ;\n"
             "} ;\n\n" ;
 //--- End of ".h" file
   generatedZone3.writeHyphenLineComment () ;
@@ -144,21 +145,21 @@ generate_option_cpp_file (C_lexique & inLexique,
 //--------------------------------------- Get bool options count
   generatedZone3.writeTitleComment ("G E T    B O O L    O P T I O N S    C O U N T") ;
   generatedZone3 << "sint32 " << inOptionClassName << "::getBoolOptionsCount (void) const {\n"
-          << "  return " << inBoolOptionsMap.getCount () << " ;\n"
+          << "  return " << inBoolOptionsMap.count () << " ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get bool option value
   generatedZone3.writeTitleComment ("G E T    B O O L    O P T I O N    V A L U E") ;
   generatedZone3 << "bool " << inOptionClassName
           << "::getBoolOptionValue (const sint32 inIndex) const {\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.getCount () << ")) ? mBoolValue [inIndex] : false ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.count () << ")) ? mBoolValue [inIndex] : false ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Set bool option value
   generatedZone3.writeTitleComment ("S E T    B O O L    O P T I O N    V A L U E") ;
   generatedZone3 << "void " << inOptionClassName
           << "::setBoolOptionValue (const sint32 inIndex, const bool inValue) {\n"
-             "  if ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.getCount () << ")) {\n"
+             "  if ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.count () << ")) {\n"
              "    mBoolValue [inIndex] = inValue ;\n"
              "  }\n"
              "}\n\n" ;
@@ -167,7 +168,7 @@ generate_option_cpp_file (C_lexique & inLexique,
   generatedZone3.writeTitleComment ("G E T    B O O L    O P T I O N    C H A R A C T E R") ;
   generatedZone3 << "char " << inOptionClassName
           << "::getBoolOptionChar (const sint32 inIndex) const {\n"
-             "  const char kCharArray ["<< (inBoolOptionsMap.getCount () + 1) << "] = {" ;
+             "  const char kCharArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentOption = inBoolOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     generatedZone3.writeCcharConstant (currentOption->mInfo.mOptionChar.getValue ()) ;
@@ -175,14 +176,14 @@ generate_option_cpp_file (C_lexique & inLexique,
     currentOption = currentOption->getNextItem () ;
   }          
   generatedZone3 << "'\\0'} ;\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.getCount () << ")) ? kCharArray [inIndex] : '\\0' ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.count () << ")) ? kCharArray [inIndex] : '\\0' ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get bool option string
   generatedZone3.writeTitleComment ("G E T    B O O L    O P T I O N    S T R I N G") ;
   generatedZone3 << "const char * " << inOptionClassName
           << "::getBoolOptionString (const sint32 inIndex) const {\n"
-             "  const char * kStringArray ["<< (inBoolOptionsMap.getCount () + 1) << "] = {" ;
+             "  const char * kStringArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentOption = inBoolOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     generatedZone3.writeCstringConstant (currentOption->mInfo.mOptionString) ;
@@ -190,14 +191,14 @@ generate_option_cpp_file (C_lexique & inLexique,
     currentOption = currentOption->getNextItem () ;
   }          
   generatedZone3 << "\"\"} ;\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.getCount () << ")) ? kStringArray [inIndex] : \"\" ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.count () << ")) ? kStringArray [inIndex] : \"\" ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get bool description string
   generatedZone3.writeTitleComment ("G E T    B O O L    O P T I O N    D E S C R I P T I O N") ;
   generatedZone3 << "const char * " << inOptionClassName
           << "::getBoolOptionDescription (const sint32 inIndex) const {\n"
-          << "  const char * kDescriptionArray ["<< (inBoolOptionsMap.getCount () + 1) << "] = {" ;
+          << "  const char * kDescriptionArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentOption = inBoolOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     generatedZone3.writeCstringConstant (currentOption->mInfo.mComment) ;
@@ -205,7 +206,7 @@ generate_option_cpp_file (C_lexique & inLexique,
     currentOption = currentOption->getNextItem () ;
   }          
   generatedZone3 << "\"\"} ;\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.getCount () << ")) ? kDescriptionArray [inIndex] : \"\" ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.count () << ")) ? kDescriptionArray [inIndex] : \"\" ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get bool option value from keys
@@ -214,7 +215,7 @@ generate_option_cpp_file (C_lexique & inLexique,
           << "::getBoolOptionValueFromKeys (const char * inModuleName,\n"
              "                              const char * inOptionName,\n"
              "                              bool * outFound) const {\n"
-          << "  const char * kKeyArray ["<< (inBoolOptionsMap.getCount () + 1) << "] = {" ;
+          << "  const char * kKeyArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentOption = inBoolOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
@@ -228,7 +229,7 @@ generate_option_cpp_file (C_lexique & inLexique,
              "  if (found) {\n"
              "    found = false ;\n"
              "    sint32 index = 0 ;\n"
-             "    while ((index < " << inBoolOptionsMap.getCount () << ") && ! found) {\n"
+             "    while ((index < " << inBoolOptionsMap.count () << ") && ! found) {\n"
              "      found = strcmp (inOptionName, kKeyArray [index]) == 0 ;\n"
              "      if (found) {\n"
              "        result = mBoolValue [index] ;\n"
@@ -245,21 +246,21 @@ generate_option_cpp_file (C_lexique & inLexique,
 //--------------------------------------- Get uint options count
   generatedZone3.writeTitleComment ("G E T    U I N T    O P T I O N S    C O U N T") ;
   generatedZone3 << "sint32 " << inOptionClassName << "::getUintOptionsCount (void) const {\n"
-          << "  return " << inUintOptionsMap.getCount () << " ;\n"
+          << "  return " << inUintOptionsMap.count () << " ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get uint option value
   generatedZone3.writeTitleComment ("G E T    U I N T    O P T I O N    V A L U E") ;
   generatedZone3 << "uint32 " << inOptionClassName
           << "::getUintOptionValue (const sint32 inIndex) const {\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.getCount () << ")) ? mUintValue [inIndex] : 0 ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? mUintValue [inIndex] : 0 ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get uint option default value
   generatedZone3.writeTitleComment ("G E T    U I N T    O P T I O N    D E F A U L T    V A L U E") ;
   generatedZone3 << "uint32 " << inOptionClassName
           << "::getUintOptionDefaultValue (const sint32 inIndex) const {\n"
-             "  const uint32 kDefaultValues [" << (inUintOptionsMap.getCount () + 1) << "] = {\n" ;
+             "  const uint32 kDefaultValues [" << (inUintOptionsMap.count () + 1) << "] = {\n" ;
   currentOption = inUintOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
@@ -267,14 +268,14 @@ generate_option_cpp_file (C_lexique & inLexique,
     currentOption = currentOption->getNextItem () ;
   }          
   generatedZone3 << "  0} ;\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.getCount () << ")) ? kDefaultValues [inIndex] : 0 ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? kDefaultValues [inIndex] : 0 ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Set uint option value
   generatedZone3.writeTitleComment ("S E T    U I N T    O P T I O N    V A L U E") ;
   generatedZone3 << "void " << inOptionClassName
           << "::setUintOptionValue (const sint32 inIndex, const uint32 inValue) {\n"
-             "  if ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.getCount () << ")) {\n"
+             "  if ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) {\n"
              "    mUintValue [inIndex] = inValue ;\n"
              "  }\n"
              "}\n\n" ;
@@ -283,7 +284,7 @@ generate_option_cpp_file (C_lexique & inLexique,
   generatedZone3.writeTitleComment ("G E T    U I N T    O P T I O N    C H A R A C T E R") ;
   generatedZone3 << "char " << inOptionClassName
           << "::getUintOptionChar (const sint32 inIndex) const {\n"
-             "  const char kCharArray ["<< (inUintOptionsMap.getCount () + 1) << "] = {" ;
+             "  const char kCharArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentOption = inUintOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     generatedZone3.writeCcharConstant (currentOption->mInfo.mOptionChar.getValue ()) ;
@@ -291,14 +292,14 @@ generate_option_cpp_file (C_lexique & inLexique,
     currentOption = currentOption->getNextItem () ;
   }          
   generatedZone3 << "'\\0'} ;\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.getCount () << ")) ? kCharArray [inIndex] : '\\0' ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? kCharArray [inIndex] : '\\0' ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get uint option string
   generatedZone3.writeTitleComment ("G E T    U I N T    O P T I O N    S T R I N G") ;
   generatedZone3 << "const char * " << inOptionClassName
           << "::getUintOptionString (const sint32 inIndex) const {\n"
-             "  const char * kStringArray ["<< (inUintOptionsMap.getCount () + 1) << "] = {" ;
+             "  const char * kStringArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentOption = inUintOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     generatedZone3.writeCstringConstant (currentOption->mInfo.mOptionString) ;
@@ -306,14 +307,14 @@ generate_option_cpp_file (C_lexique & inLexique,
     currentOption = currentOption->getNextItem () ;
   }          
   generatedZone3 << "\"\"} ;\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.getCount () << ")) ? kStringArray [inIndex] : \"\" ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? kStringArray [inIndex] : \"\" ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get uint description string
   generatedZone3.writeTitleComment ("G E T   U I N T    O P T I O N    D E S C R I P T I O N") ;
   generatedZone3 << "const char * " << inOptionClassName
           << "::getUintOptionDescription (const sint32 inIndex) const {\n"
-          << "  const char * kDescriptionArray ["<< (inUintOptionsMap.getCount () + 1) << "] = {" ;
+          << "  const char * kDescriptionArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentOption = inUintOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     generatedZone3.writeCstringConstant (currentOption->mInfo.mComment) ;
@@ -321,7 +322,7 @@ generate_option_cpp_file (C_lexique & inLexique,
     currentOption = currentOption->getNextItem () ;
   }          
   generatedZone3 << "\"\"} ;\n"
-             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.getCount () << ")) ? kDescriptionArray [inIndex] : \"\" ;\n"
+             "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? kDescriptionArray [inIndex] : \"\" ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Get uint option value from keys
@@ -330,7 +331,7 @@ generate_option_cpp_file (C_lexique & inLexique,
           << "::getUintOptionValueFromKeys (const char * inModuleName,\n"
              "                              const char * inOptionName,\n"
              "                              bool * outFound) const {\n"
-          << "  const char * kKeyArray ["<< (inUintOptionsMap.getCount () + 1) << "] = {" ;
+          << "  const char * kKeyArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentOption = inUintOptionsMap.getFirstItem () ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
@@ -344,7 +345,7 @@ generate_option_cpp_file (C_lexique & inLexique,
              "  if (found) {\n"
              "    found = false ;\n"
              "    sint32 index = 0 ;\n"
-             "    while ((index < " << inUintOptionsMap.getCount () << ") && ! found) {\n"
+             "    while ((index < " << inUintOptionsMap.count () << ") && ! found) {\n"
              "      found = strcmp (inOptionName, kKeyArray [index]) == 0 ;\n"
              "      if (found) {\n"
              "        result = mUintValue [index] ;\n"

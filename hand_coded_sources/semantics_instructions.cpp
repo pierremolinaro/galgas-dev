@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------------*
 
 #include "files/C_text_file_write.h"
+#include "memory/M_memory_control.h"
 
 #include "semantics_instructions.h"
 #include "semantics_semantics.h"
@@ -145,7 +146,7 @@ void cPtr_typeSimpleExtractInstruction
     ioCppFile << "    if (" ;
     aNomVariable ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".getPtr () != NULL) {\n"
-                 "      TC_unique_dyn_array <C_string> message1_ (1 COMMA_HERE) ;\n"
+                 "      TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;\n"
                  "      C_string message2_ ;\n"
                  "      message1_ (0 COMMA_HERE) << "
                  "cPtr_" << aNomClasse << "::static_string_message_" << aNomMessage << " () ;\n"

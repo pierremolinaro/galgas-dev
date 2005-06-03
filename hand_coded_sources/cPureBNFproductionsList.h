@@ -26,7 +26,6 @@
 #include "linked_lists/TC_fifo.h"
 #include "bdd/C_bdd_set1.h"
 #include "utilities/C_string.h"
-#include "generic_arraies/TC_unique_grow_array.h"
 #include "utilities/swap.h"
 
 //---------------------------------------------------------------------------*
@@ -41,7 +40,7 @@ class cProduction {
   public : sint32 aLigneDefinition ;
   public : sint32 aColonneDefinition ;
   public : sint32 aNumeroNonTerminalGauche ;
-  public : TC_unique_grow_array <sint16> aDerivation ;
+  public : TCUniqueArray <sint16> aDerivation ;
   public : C_bdd_set1 aPremierDeProduction ;
 
 //--- Constructor
@@ -64,13 +63,13 @@ class cProduction {
 //---------------------------------------------------------------------------*
 
 class cPureBNFproductionsList : public TC_fifo <cProduction> {
-   public : TC_unique_dyn_array <sint32> tableauIndicePremiereProduction ;
-   public : TC_unique_dyn_array <sint32> tableauIndiceDerniereProduction ;
-   public : TC_unique_dyn_array <sint32> tableauIndirectionProduction ;
+   public : TCUniqueArray <sint32> tableauIndicePremiereProduction ;
+   public : TCUniqueArray <sint32> tableauIndiceDerniereProduction ;
+   public : TCUniqueArray <sint32> tableauIndirectionProduction ;
 
-   public : TC_unique_dyn_array <sint32> mFirstProductionIndex ;
-   public : TC_unique_dyn_array <sint32> mLastProductionIndex ;
-   public : TC_unique_dyn_array <sint32> mProductionIndex ;
+   public : TCUniqueArray <sint32> mFirstProductionIndex ;
+   public : TCUniqueArray <sint32> mLastProductionIndex ;
+   public : TCUniqueArray <sint32> mProductionIndex ;
 
    public : void buildProductionsArray (const sint32 inTerminalSymbolsCount,
                                         const sint32 inNonTerminalSymbolsCount) ;

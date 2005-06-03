@@ -20,6 +20,7 @@
 
 #include "files/C_text_file_write.h"
 #include "time/C_datetime.h"
+#include "memory/M_memory_control.h"
 
 #include "semantics_instructions.h"
 #include "parser_generation.h"

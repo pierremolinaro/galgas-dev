@@ -85,7 +85,7 @@ template <typename INFO, typename KEY> class cClassMethodsMap {
   public : element_type * mLastItem ;
   private : sint32 mListLength ;
   public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mReferenceCountPtr ;

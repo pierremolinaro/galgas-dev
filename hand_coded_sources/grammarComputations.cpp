@@ -23,6 +23,7 @@
 #include "bdd/C_bdd_descriptor.h"
 #include "bdd/C_bdd_set1.h"
 #include "bdd/C_bdd_set2.h"
+#include "memory/M_memory_control.h"
 #include "streams/C_console_out.h"
 
 //---------------------------------------------------------------------------*
@@ -106,8 +107,8 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
       const cProduction & pj = productions (j COMMA_HERE) ;
       bool identiques = pi.aNumeroNonTerminalGauche == pj.aNumeroNonTerminalGauche ;
       if (identiques) {
-        identiques = pi.aDerivation.getCount () == pj.aDerivation.getCount () ;
-        for (sint32 t=0 ; (t<pi.aDerivation.getCount ()) && identiques ; t++) {
+        identiques = pi.aDerivation.count () == pj.aDerivation.count () ;
+        for (sint32 t=0 ; (t<pi.aDerivation.count ()) && identiques ; t++) {
           identiques = pi.aDerivation (t COMMA_HERE) == pj.aDerivation (t COMMA_HERE) ;
         }
       }
@@ -140,7 +141,7 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
 void
 generateClassRegistering (AC_output_stream & inCppfile,
                           const C_galgas_stringset & inClassesNamesSet) {
-  const sint32 classesCount = inClassesNamesSet.getCount () ;
+  const sint32 classesCount = inClassesNamesSet.count () ;
   inCppfile << "// classesCount : " << classesCount << '\n' ;
   for (sint32 i=0 ; i<classesCount ; i++) {
     inCppfile << "// " << i << " : " << inClassesNamesSet (i COMMA_HERE) << '\n' ;
@@ -607,7 +608,7 @@ analyzeGrammar (C_lexique & inLexique,
                                  warningFlag) ;
   }
 //--- Calculer l'ensemble des non terminaux pouvant se dŽriver en vide --------------------------------
-  TC_unique_dyn_array <bool> vocabularyDerivingToEmpty_Array ;
+  TCUniqueArray <bool> vocabularyDerivingToEmpty_Array ;
   C_bdd_set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     empty_strings_computations (pureBNFproductions,
@@ -618,7 +619,7 @@ analyzeGrammar (C_lexique & inLexique,
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
   C_bdd_set2 FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
-  TC_unique_dyn_array <TC_unique_grow_array <sint32> > FIRSTarray ;
+  TCUniqueArray <TCUniqueArray <sint32> > FIRSTarray ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
@@ -646,7 +647,7 @@ analyzeGrammar (C_lexique & inLexique,
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
   C_bdd_set2 FOLLOWsets (vocabularyDescriptor, vocabularyDescriptor) ;
-  TC_unique_dyn_array <TC_unique_grow_array <sint32> > FOLLOWarray ;
+  TCUniqueArray <TCUniqueArray <sint32> > FOLLOWarray ;
   if ((errorFlag == kNoError) &&
       (grammarClass != kGrammarClassError) &&
       (grammarClass != kLR1grammar)) { // Follow are not used by LR(1) computations

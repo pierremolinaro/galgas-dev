@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------------*
 
 #include "files/C_text_file_write.h"
+#include "memory/M_memory_control.h"
 
 //---------------------------------------------------------------------------*
 
@@ -690,7 +691,7 @@ generateInstruction (AC_output_stream & inCppFile,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
       currentBranch = currentBranch->getNextItem () ;
     }
-    if (mElseInstructionsList.getCount () > 0) {
+    if (mElseInstructionsList.count () > 0) {
       inCppFile << "}else{\n" ;
       sint32 localPrototypeIndex = kPrototypeIndex ;
       generateInstructionListForList (mElseInstructionsList, inCppFile,

@@ -18,6 +18,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "files/C_text_file_write.h"
 #include "time/C_datetime.h"
 
@@ -190,7 +191,7 @@ generate_mm_file_for_cocoa (C_lexique & inLexique,
              "\n"
              "void scanThenGetStyledRangeArray (const char * inSourceString,\n"
              "                                  const char * inSourceFileName,\n"
-             "                                  TC_unique_grow_array <C_styledRange> & ioStyledRangeArray,\n"
+             "                                  TCUniqueArray <C_styledRange> & ioStyledRangeArray,\n"
              "                                  const sint32 inAffectedRangeLocation,\n"
              "                                  const sint32 inAffectedRangeLength,\n"
              "                                  const sint32 inReplacementStringLength,\n"

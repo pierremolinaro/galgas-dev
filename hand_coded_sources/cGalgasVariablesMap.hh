@@ -23,6 +23,7 @@
 
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "cGalgasVariablesMap.h"
 #include <stdlib.h>
 

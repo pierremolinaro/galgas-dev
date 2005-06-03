@@ -20,7 +20,7 @@
 
 #include "files/C_html_file_write.h"
 #include "bdd/C_bdd_set2.h"
-#include "generic_arraies/TC_grow_array2.h"
+#include "generic_arraies/TCArray2.h"
 
 //---------------------------------------------------------------------------*
 
@@ -32,7 +32,7 @@
 
 static C_bdd_set2
 computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
-                  const TC_unique_dyn_array <bool> & inVocabularyDerivingInEmptyString,
+                  const TCUniqueArray <bool> & inVocabularyDerivingInEmptyString,
                   const sint32 inTerminalSymbolsCount,
                   const C_bdd_descriptor & inDescriptor,
                   sint32 & outIterationsCount) {
@@ -43,7 +43,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   C_bdd_set2 left (inDescriptor, inDescriptor) ;
   for (sint32 i=0 ; i<inProductionRules.getLength () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
-    const sint32 n = p.aDerivation.getCount () ;
+    const sint32 n = p.aDerivation.count () ;
     if (n > 0) {
       left.initDimension1 (C_bdd::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
       sint32 j = 0 ;
@@ -76,7 +76,7 @@ displayAndCheckFIRSTsets (C_html_file_write & inHTMLfile,
                           const cVocabulary & inVocabulary,
                           const C_bdd_set1 & inUsefulSymbols,
                           const C_bdd_set2 & inFIRSTsets,
-                          TC_unique_dyn_array <TC_unique_grow_array <sint32> > & outFIRSTarray,
+                          TCUniqueArray <TCUniqueArray <sint32> > & outFIRSTarray,
                           const sint32 inIterationsCount) {
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
   C_bdd_set1 temp (inVocabularyDerivingInEmptyString) ;
@@ -103,7 +103,7 @@ displayAndCheckFIRSTsets (C_html_file_write & inHTMLfile,
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
     inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
     inHTMLfile.outputRawData ("</code></td><td><code>") ;
-    const sint32 length = outFIRSTarray (symbol COMMA_HERE).getCount () ;
+    const sint32 length = outFIRSTarray (symbol COMMA_HERE).count () ;
     for (sint32 e=0 ; e<length ; e++) {
       inHTMLfile << ' ' ;
       inVocabulary.printInFile (inHTMLfile, outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
@@ -144,7 +144,7 @@ displayAndCheckFIRSTsets (C_html_file_write & inHTMLfile,
                << " nonterminal symbol"
                << ((ntInErrorCount>1) ? " has" : "s have")
                << " an empty FIRST :" ;
-    TC_unique_dyn_array <bool> errorArray ;
+    TCUniqueArray <bool> errorArray ;
     ntInError.getArray (errorArray) ;
     inHTMLfile.outputRawData ("<code>") ;
     for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
@@ -168,11 +168,11 @@ void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     C_html_file_write & inHTMLfile,
                     const cVocabulary & inVocabulary,
-                    const TC_unique_dyn_array <bool> & inVocabularyDerivingToEmpty_Array,
+                    const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_bdd_set1 & inVocabularyDerivingToEmpty_BDD,
                     const C_bdd_set1 & inUsefulSymbols,
                     C_bdd_set2 & outFIRSTsets,
-                    TC_unique_dyn_array <TC_unique_grow_array <sint32> > & outFIRSTarray,
+                    TCUniqueArray <TCUniqueArray <sint32> > & outFIRSTarray,
                     const C_bdd_descriptor & inDescriptor,
                     bool & outOk) {
 //--- Console display
