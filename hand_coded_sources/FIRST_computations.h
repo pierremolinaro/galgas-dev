@@ -23,8 +23,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TC_unique_dyn_array.h"
-#include "generic_arraies/TC_unique_grow_array.h"
+#include "generic_arraies/TCUniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
@@ -41,11 +40,11 @@ void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     C_html_file_write & inHTMLfile,
                     const cVocabulary & inVocabulary,
-                    const TC_unique_dyn_array <bool> & inVocabularyDerivingToEmpty_Array,
+                    const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_bdd_set1 & inVocabularyDerivingToEmpty_BDD,
                     const C_bdd_set1 & inUsefulSymbols,
                     C_bdd_set2 & outFIRSTsets,
-                    TC_unique_dyn_array <TC_unique_grow_array <sint32> > & outFIRSTarray,
+                    TCUniqueArray <TCUniqueArray <sint32> > & outFIRSTarray,
                     const C_bdd_descriptor & inDescriptor,
                     bool & outOk) ;
 

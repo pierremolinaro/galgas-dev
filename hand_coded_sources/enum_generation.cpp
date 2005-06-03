@@ -36,7 +36,7 @@ generateHdeclarations (AC_output_stream & inHfile,
                        C_lexique & /* inLexique */) {
 //--- Compute bit count for BDDs (set operations)
   uint16 bitCount = 0 ;
-  sint32 n = mConstantMap.getCount () ;
+  sint32 n = mConstantMap.count () ;
   while (n > 0) {
     bitCount ++ ;
     n >>= 1 ;
@@ -177,7 +177,7 @@ void cPtr_enumGalgasType
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::"
                  "\n"
                  "reader_" << m->mKey << " (void) const {\n"
-                 "  const char * kMessages [" << (m->mInfo.mMessageStringList.getCount () + 1) << "] = {\"\"" ;
+                 "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
     GGS_L_lstringList::element_type * e = m->mInfo.mMessageStringList.getFirstItem () ;
     while (e != NULL) {
       inCppFile << ",\n    " ;

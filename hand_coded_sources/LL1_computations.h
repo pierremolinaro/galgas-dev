@@ -23,7 +23,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TC_unique_dyn_array.h"
+#include "generic_arraies/TCUniqueArray.h"
 #include "common_semantics.h"
 
 //---------------------------------------------------------------------------*
@@ -43,7 +43,7 @@ LL1_computations (C_lexique & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_html_file_write & inHTMLfile,
                   const cVocabulary & inVocabulary,
-                  const TC_unique_dyn_array <bool> & inVocabularyDerivingToEmpty_Array,
+                  const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_bdd_set2 & inFIRSTsets,
                   const C_bdd_set2 & inFOLLOWsets,
                   const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForOriginalGrammar,

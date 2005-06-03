@@ -23,7 +23,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TC_unique_dyn_array.h"
+#include "generic_arraies/TCUniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
@@ -39,7 +39,7 @@ void
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
                             C_html_file_write & inHTMLfile,
                             const cVocabulary & inVocabulary,
-                            TC_unique_dyn_array <bool> & outVocabularyDerivingToEmpty_Array,
+                            TCUniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             C_bdd_set1 & outVocabularyDerivingToEmpty_BDD) ;
 
 //---------------------------------------------------------------------------*

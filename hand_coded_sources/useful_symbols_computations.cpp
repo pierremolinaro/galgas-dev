@@ -41,9 +41,9 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   C_bdd_set2 rightSymbol (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
   for (sint32 i=0 ; i<inPureBNFproductions.getLength () ; i++) {
     const cProduction & p = inPureBNFproductions (i COMMA_HERE) ;
-    if (p.aDerivation.getCount () > 0) {
+    if (p.aDerivation.count () > 0) {
       rightVocabulary.clear () ;
-      for (sint32 j=0 ; j<p.aDerivation.getCount () ; j++) {
+      for (sint32 j=0 ; j<p.aDerivation.count () ; j++) {
         rightSymbol.initDimension2 (C_bdd::kEqual, (uint16) p.aDerivation (j COMMA_HERE)) ;
         rightVocabulary |= rightSymbol ;
       }
@@ -92,7 +92,7 @@ displayUnusefulSymbols (const C_bdd_set1 & inUsefulSymbols,
     inHTMLfile << "The vocabulary has "
                << n
                << " unuseful element(s) : \n" ;
-    TC_unique_dyn_array <bool> array ;
+    TCUniqueArray <bool> array ;
     unusefulSymbols.getArray (array) ;
     const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
     inHTMLfile.outputRawData ("<code>") ;

@@ -18,9 +18,10 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "files/C_text_file_write.h"
 #include "time/C_datetime.h"
-#include "generic_arraies/TC_unique_dyn_array.h"
+#include "generic_arraies/TCUniqueArray.h"
 
 #include "scanner_parser.h"
 #include "scanner_generation.h"
@@ -140,9 +141,9 @@ class cTableEntry {
 
 //---------------------------------------------------------------------------*
 
-static sint32 compareEntries (const cTableEntry & inEntry1,
+static int compareEntries (const cTableEntry & inEntry1,
                               const cTableEntry & inEntry2) {
-  sint32 result = inEntry1.mEntryStringLength - inEntry2.mEntryStringLength ;
+  int result = inEntry1.mEntryStringLength - inEntry2.mEntryStringLength ;
   if (result == 0) {
     result = ::strcmp (inEntry1.mEntryString.getStringPtr (),
                        inEntry2.mEntryString.getStringPtr ()) ;
@@ -157,22 +158,24 @@ generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
                              AC_output_stream & inCppFile,
                              const C_string & inLexiqueName) {
 //--- Create entries array
-  const sint32 entriesCount = inMap.getCount () ;
-  TC_unique_dyn_array <cTableEntry> entriesArray (entriesCount COMMA_HERE) ;
+  const sint32 entriesCount = inMap.count () ;
+  TCUniqueArray <cTableEntry> entriesArray (entriesCount COMMA_HERE) ;
   GGS_typeTableMotsReserves::element_type * p = inMap.getFirstItem () ;
   sint32 index = 0 ;
   while (p != NULL) {
     macroValidPointer (p) ;
-    entriesArray (index COMMA_HERE).mEntryString = p->mKey ;
-    entriesArray (index COMMA_HERE).mEntryStringLength = p->mKey.getLength () ;
-    entriesArray (index COMMA_HERE).mTokenCode = p->mInfo.attributNomTerminal ;
+    cTableEntry e ;
+    e.mEntryString = p->mKey ;
+    e.mEntryStringLength = p->mKey.getLength () ;
+    e.mTokenCode = p->mInfo.attributNomTerminal ;
+    entriesArray.addObject (e) ;
     p = p->getNextItem () ;
     index ++ ;
   }
 //--- Order the array :
 //     * by length increasing order ;
 //     * by ::strcmp order
-  entriesArray.sortArray (compareEntries) ;
+  entriesArray.sortArrayUsingFunction (compareEntries) ;
 
 //--- Write entries
   for (sint32 i=0 ; i<entriesCount ; i++) {
@@ -200,7 +203,7 @@ generateKeyWordTableImplementation (const GGS_typeTableMotsReserves & inMap,
             << inLexiqueName
             << "_table_size_"
             << nomTable
-            << " = " << inMap.getCount () << " ;\n\n" ; 
+            << " = " << inMap.count () << " ;\n\n" ; 
 // ---------------------------- Generate table
   inCppFile << "const C_lexique_table_entry "
             << inLexiqueName
@@ -208,7 +211,7 @@ generateKeyWordTableImplementation (const GGS_typeTableMotsReserves & inMap,
             << inLexiqueName
             << "_table_for_"
             << nomTable
-            << " [" << inMap.getCount () << "] = {\n" ; 
+            << " [" << inMap.count () << "] = {\n" ; 
   generateKeyWordTableEntries (inMap, inCppFile, inLexiqueName) ;
   inCppFile << "} ;\n\n" ;
 // ---------------------------- Statique search method
@@ -261,7 +264,7 @@ static void generateKeyWordTableDeclaration (const GGS_typeTableMotsReserves & i
            << inLexiqueName
            << "_table_for_"
            << nomTable
-           << " [" << inMap.getCount () << "] ;\n" ;
+           << " [" << inMap.count () << "] ;\n" ;
 
 // ---------------------------- Statique search method
   H_file << "  public : static sint16 search_into_" << nomTable
@@ -480,7 +483,7 @@ generate_scanner_cpp_file (C_lexique & inLexique,
            << "::\n"
            << "appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,\n"
            << "                                           C_string & outSyntaxErrorMessage) {\n" ;
-  const sint32 n = table_des_terminaux.getCount () + 1 ;
+  const sint32 n = table_des_terminaux.count () + 1 ;
   generatedZone3 << "  static const char * syntaxErrorMessageArray [" << n << "] = {"
              "\"end of source\"" << errorMessageList << "} ;\n"
              "  outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;\n"
@@ -497,11 +500,11 @@ generate_scanner_cpp_file (C_lexique & inLexique,
 //---------------------------------------- Generate styles definition 
   generatedZone3.writeTitleComment ("Styles definition") ;
   generatedZone3 <<  "sint32 " << inLexiqueClassName << "::getStylesCount (void) {\n"
-	      "  return " <<  inStylesMap.getCount () << " ;\n"
+	      "  return " <<  inStylesMap.count () << " ;\n"
 	      "}\n\n" ;
   generatedZone3.writeHyphenLineComment () ;
   generatedZone3 <<  "const char * " << inLexiqueClassName << "::getStyleName (const sint32 inIndex) {\n"
-	            "  const char * kStylesArray [" << (inStylesMap.getCount () + 1) << "] = {" ;
+	            "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
   GGS_M_styles::element_type * style = inStylesMap.getFirstItem () ;
   while (style != NULL) {
     macroValidPointer (style) ;
@@ -510,12 +513,12 @@ generate_scanner_cpp_file (C_lexique & inLexique,
     style = style->getNextItem () ;
   }
   generatedZone3 << "NULL} ;\n"
-             "  return (inIndex < " <<  inStylesMap.getCount () << ") ? kStylesArray [inIndex] : NULL ;\n"
+             "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
 	           "} ;\n\n" ;
   generatedZone3.writeHyphenLineComment () ;
   generatedZone3 << "uint8 " << inLexiqueClassName << "::\n"
              "getTerminalStyleIndex (const sint32 inTerminal) {\n"
-             "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.getCount () + 1) << "] = {0" ;
+             "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.count () + 1) << "] = {0" ;
 
 //  generateTerminalSymbolStyleEntries (table_des_terminaux, inLexiqueClassName, generatedZone3) ;
 
@@ -909,7 +912,7 @@ generate_scanner_header_file (C_lexique & inLexique,
          << " (AC_galgas_io * inGalgasInputOutput) ;\n" ;
   generateAttributeDeclaration (table_attributs, generatedZone3) ;
   generatedZone3 << "  public : virtual sint16 getTerminalVocabularyCount_ (void) const { return "
-           << table_des_terminaux.getCount ()
+           << table_des_terminaux.count ()
            << " ; }\n\n"
 //--- Styles definition 
               "  public : static sint32 getStylesCount (void) ;\n"

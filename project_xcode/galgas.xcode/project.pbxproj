@@ -94,6 +94,8 @@
 //2A4
 		2A37F4A9FDCFA73011CA2CEA = {
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
 			};
 			buildStyles = (
 				CFA7AB90058DAD29009AC1FE,
@@ -282,6 +284,9 @@
 				CFD7E279059B5BBF00410349,
 				CF6702F705C072FF0065267C,
 				CFF253F407B0CA1E001265A1,
+				CF300EF7084F673800A9C913,
+				CF300EF8084F673800A9C913,
+				CF300EF9084F673800A9C913,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,7 +306,7 @@
 				CF7E89DD0603990700EEA649,
 				CF6AE2E607BE6B3D00BCB161,
 				CF24892107FB261A00E85EE1,
-				CF24892207FB261A00E85EE1,
+				CF300ECC084F60D200A9C913,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,7 +415,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2A87BC058CCE7F003EF2F4,
-				CF2A8817058CCF07003EF2F4,
 				CF2A8823058CCF0F003EF2F4,
 				CF2A882C058CCF2E003EF2F4,
 				CF2A882E058CCF30003EF2F4,
@@ -430,12 +434,7 @@
 				CF2A8857058CCF57003EF2F4,
 				CF2A8859058CCF59003EF2F4,
 				CF2A885E058CCF5E003EF2F4,
-				CF2A885F058CCF5E003EF2F4,
-				CF2A8860058CCF61003EF2F4,
-				CF2A8861058CCF62003EF2F4,
-				CF2A8862058CCF63003EF2F4,
 				CF2A8863058CCF63003EF2F4,
-				CF2A8864058CCF64003EF2F4,
 				CF3B8A80058CD05C00D682D2,
 				CFF13E3B059730EB00C43F5E,
 				CF31E10F0598DF9F00814123,
@@ -459,6 +458,9 @@
 				CF6FD07F07BBECDE00B133C5,
 				CF6FD08007BBECDE00B133C5,
 				CF6FD08107BBECDE00B133C5,
+				CF300EFD084F673800A9C913,
+				CF300EFE084F673800A9C913,
+				CF300EFF084F673800A9C913,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,22 +619,8 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CF24892007FB261A00E85EE1 = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.png;
-			name = saveas.png;
-			path = cocoa_galgas/saveas.png;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		CF24892107FB261A00E85EE1 = {
 			fileRef = CF24891F07FB261900E85EE1;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF24892207FB261A00E85EE1 = {
-			fileRef = CF24892007FB261A00E85EE1;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -891,12 +879,6 @@
 		};
 		CF2A8816058CCF06003EF2F4 = {
 			fileRef = CFF53856057A552C00854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF2A8817058CCF07003EF2F4 = {
-			fileRef = CF3FF14105878B54000D2F8C;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1243,38 +1225,103 @@
 			settings = {
 			};
 		};
-		CF2A885F058CCF5E003EF2F4 = {
-			fileRef = CF3FF14305878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF2A8860058CCF61003EF2F4 = {
-			fileRef = CF3FF14405878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF2A8861058CCF62003EF2F4 = {
-			fileRef = CF3FF14505878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF2A8862058CCF63003EF2F4 = {
-			fileRef = CF3FF14605878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CF2A8863058CCF63003EF2F4 = {
 			fileRef = CF3FF14705878B54000D2F8C;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		CF2A8864058CCF64003EF2F4 = {
-			fileRef = CF3FF14805878B54000D2F8C;
+		CF300ECB084F60D200A9C913 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			name = saveas.tiff;
+			path = cocoa_galgas/saveas.tiff;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF300ECC084F60D200A9C913 = {
+			fileRef = CF300ECB084F60D200A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EF4084F673800A9C913 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = TCArray.h;
+			path = generic_arraies/TCArray.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF300EF5084F673800A9C913 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = TCArray2.h;
+			path = generic_arraies/TCArray2.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF300EF6084F673800A9C913 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = TCUniqueArray.h;
+			path = generic_arraies/TCUniqueArray.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF300EF7084F673800A9C913 = {
+			fileRef = CF300EF4084F673800A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EF8084F673800A9C913 = {
+			fileRef = CF300EF5084F673800A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EF9084F673800A9C913 = {
+			fileRef = CF300EF6084F673800A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EFA084F673800A9C913 = {
+			fileRef = CF300EF4084F673800A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EFB084F673800A9C913 = {
+			fileRef = CF300EF5084F673800A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EFC084F673800A9C913 = {
+			fileRef = CF300EF6084F673800A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EFD084F673800A9C913 = {
+			fileRef = CF300EF4084F673800A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EFE084F673800A9C913 = {
+			fileRef = CF300EF5084F673800A9C913;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF300EFF084F673800A9C913 = {
+			fileRef = CF300EF6084F673800A9C913;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1729,26 +1776,14 @@
 		};
 		CF3FF14005878B33000D2F8C = {
 			children = (
-				CF3FF14105878B54000D2F8C,
+				CF300EF4084F673800A9C913,
+				CF300EF5084F673800A9C913,
+				CF300EF6084F673800A9C913,
 				CF3FF14205878B54000D2F8C,
-				CF3FF14305878B54000D2F8C,
-				CF3FF14405878B54000D2F8C,
-				CF3FF14505878B54000D2F8C,
-				CF3FF14605878B54000D2F8C,
 				CF3FF14705878B54000D2F8C,
-				CF3FF14805878B54000D2F8C,
 			);
 			isa = PBXGroup;
 			name = "Generic arraies";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CF3FF14105878B54000D2F8C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = ATC_array.h;
-			path = generic_arraies/ATC_array.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1761,57 +1796,12 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CF3FF14305878B54000D2F8C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = TC_grow_array.h;
-			path = generic_arraies/TC_grow_array.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CF3FF14405878B54000D2F8C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = TC_grow_array2.h;
-			path = generic_arraies/TC_grow_array2.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CF3FF14505878B54000D2F8C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = TC_shared_array.h;
-			path = generic_arraies/TC_shared_array.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CF3FF14605878B54000D2F8C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = TC_unique_dyn_array.h;
-			path = generic_arraies/TC_unique_dyn_array.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		CF3FF14705878B54000D2F8C = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
 			name = TC_unique_fix_array.h;
 			path = generic_arraies/TC_unique_fix_array.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CF3FF14805878B54000D2F8C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = TC_unique_grow_array.h;
-			path = generic_arraies/TC_unique_grow_array.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2197,7 +2187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF7A1433058CFF8C007126C1,
-				CF7A1461058D0081007126C1,
 				CF7A146D058D00AA007126C1,
 				CF7A1471058D00B2007126C1,
 				CF7A1475058D00B5007126C1,
@@ -2219,12 +2208,7 @@
 				CF7A14A3058D0124007126C1,
 				CF7A14A5058D0126007126C1,
 				CF7A14AB058D012C007126C1,
-				CF7A14AC058D012D007126C1,
-				CF7A14AD058D012D007126C1,
-				CF7A14AE058D012E007126C1,
-				CF7A14AF058D012F007126C1,
 				CF7A14B0058D0130007126C1,
-				CF7A14B1058D0131007126C1,
 				CFF13E3D059730EB00C43F5E,
 				CF31E1070598DF9F00814123,
 				CF31E1090598DF9F00814123,
@@ -2247,6 +2231,9 @@
 				CF6FD08807BBECDE00B133C5,
 				CF6FD08907BBECDE00B133C5,
 				CF6FD08A07BBECDE00B133C5,
+				CF300EFA084F673800A9C913,
+				CF300EFB084F673800A9C913,
+				CF300EFC084F673800A9C913,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2653,12 +2640,6 @@
 			settings = {
 			};
 		};
-		CF7A1461058D0081007126C1 = {
-			fileRef = CF3FF14105878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CF7A1462058D008C007126C1 = {
 			fileRef = CFF53902057A563000854C83;
 			isa = PBXBuildFile;
@@ -3025,38 +3006,8 @@
 			settings = {
 			};
 		};
-		CF7A14AC058D012D007126C1 = {
-			fileRef = CF3FF14305878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF7A14AD058D012D007126C1 = {
-			fileRef = CF3FF14405878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF7A14AE058D012E007126C1 = {
-			fileRef = CF3FF14505878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF7A14AF058D012F007126C1 = {
-			fileRef = CF3FF14605878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CF7A14B0058D0130007126C1 = {
 			fileRef = CF3FF14705878B54000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF7A14B1058D0131007126C1 = {
-			fileRef = CF3FF14805878B54000D2F8C;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -3536,7 +3487,7 @@
 			children = (
 				CF6AE2E507BE6B3D00BCB161,
 				CF24891F07FB261900E85EE1,
-				CF24892007FB261A00E85EE1,
+				CF300ECB084F60D200A9C913,
 				CF6702F605C072FF0065267C,
 				CFA48FD30591D6D200D787ED,
 				CFA48FD10591D6D200D787ED,

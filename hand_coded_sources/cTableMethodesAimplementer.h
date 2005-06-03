@@ -79,7 +79,7 @@ template <typename INFO, typename KEY> class cTableMethodesAimplementer {
   public : cElementTableMethodesAimplementer <INFO, KEY> * mFirstItem ;
   public : cElementTableMethodesAimplementer <INFO, KEY> * mLastItem ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   public : sint32 * mReferenceCountPtr ;

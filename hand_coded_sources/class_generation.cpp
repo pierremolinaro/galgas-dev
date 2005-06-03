@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------------*
 
 #include "files/C_text_file_write.h"
+#include "memory/M_memory_control.h"
 
 #include "semantics_instructions.h"
 #include "semantics_generation.h"
@@ -320,7 +321,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
       numeroVariable ++ ;
     }
     numeroVariable = 0 ;
-    const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.getCount () - aListeAttributsCourants.getCount () ;
+    const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
     current = aListeTousAttributsNonExternes.getFirstItem () ;
     inCppFile << ")" ;
     bool engendrerVirgule = false ;
@@ -672,7 +673,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       numeroVariable ++ ;
     }
     numeroVariable = 0 ;
-    const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.getCount () - aListeAttributsCourants.getCount () ;
+    const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
     current = aListeTousAttributsNonExternes.getFirstItem () ;
     inCppFile << ")" ;
     bool engendrerVirgule = false ;

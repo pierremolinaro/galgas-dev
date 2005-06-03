@@ -18,6 +18,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+
+#include "memory/M_memory_control.h"
 #include "semantics_instructions.h"
 #include "semantics_semantics.h"
 
@@ -820,7 +822,7 @@ void cPtr_C_if_instruction
                                       inGenerateDebug, true) ;
       currentBranch = currentBranch->getNextItem () ;
     }
-    if (mElseInstructionsList.getCount () > 0) {
+    if (mElseInstructionsList.count () > 0) {
       ioCppFile << "}else{\n" ;
       generateInstructionListForList (mElseInstructionsList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, true) ;

@@ -20,6 +20,7 @@
 
 //--- END OF USER ZONE 1
 
+#include "memory/M_memory_control.h"
 #include "files/C_text_file_write.h"
 #include "scanner_semantics.h"
 
@@ -53,7 +54,7 @@ new_element (void * inKey, void * inInfo) {
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeLexicalAttributesMap * info = (e_typeLexicalAttributesMap *) inInfo ;
-  macroMyNew (p, element_type (* key, getCount (), * info)) ;
+  macroMyNew (p, element_type (* key, count (), * info)) ;
   return p ;
 }
 
@@ -220,7 +221,7 @@ new_element (void * inKey, void * inInfo) {
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_lexicalTypeMap * info = (e_lexicalTypeMap *) inInfo ;
-  macroMyNew (p, element_type (* key, getCount (), * info)) ;
+  macroMyNew (p, element_type (* key, count (), * info)) ;
   return p ;
 }
 
@@ -383,7 +384,7 @@ new_element (void * inKey, void * inInfo) {
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableMessagesErreurs * info = (e_typeTableMessagesErreurs *) inInfo ;
-  macroMyNew (p, element_type (* key, getCount (), * info)) ;
+  macroMyNew (p, element_type (* key, count (), * info)) ;
   return p ;
 }
 
@@ -550,7 +551,7 @@ new_element (void * inKey, void * inInfo) {
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_M_styles * info = (e_M_styles *) inInfo ;
-  macroMyNew (p, element_type (* key, getCount (), * info)) ;
+  macroMyNew (p, element_type (* key, count (), * info)) ;
   return p ;
 }
 
@@ -717,7 +718,7 @@ new_element (void * inKey, void * inInfo) {
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableDefinitionTerminaux * info = (e_typeTableDefinitionTerminaux *) inInfo ;
-  macroMyNew (p, element_type (* key, getCount (), * info)) ;
+  macroMyNew (p, element_type (* key, count (), * info)) ;
   return p ;
 }
 
@@ -912,7 +913,7 @@ new_element (void * inKey, void * inInfo) {
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableMotsReserves * info = (e_typeTableMotsReserves *) inInfo ;
-  macroMyNew (p, element_type (* key, getCount (), * info)) ;
+  macroMyNew (p, element_type (* key, count (), * info)) ;
   return p ;
 }
 
@@ -1079,7 +1080,7 @@ new_element (void * inKey, void * inInfo) {
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableTablesDeMotsReserves * info = (e_typeTableTablesDeMotsReserves *) inInfo ;
-  macroMyNew (p, element_type (* key, getCount (), * info)) ;
+  macroMyNew (p, element_type (* key, count (), * info)) ;
   return p ;
 }
 

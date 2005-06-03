@@ -18,6 +18,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+#include "memory/M_memory_control.h"
 #include "galgas/C_galgas_stringset.h"
 #include "files/C_text_file_write.h"
 
@@ -46,29 +47,27 @@ build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
        const uint32 inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
-  mTerminalSymbolsCount = inTerminalSymbolMap.getCount () ;
+  mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
   GGS_M_terminalSymbolsMapForUse::element_type * t = inTerminalSymbolMap.getFirstItem () ;
   while (t != NULL) {
     macroValidPointer (t) ;
-    mStringsArray.appendByCopy (t->mKey COMMA_HERE) ;  
+    mStringsArray.addObject (t->mKey) ;  
     t = t->getNextItem () ;
   }
 //--- One more entry for the empty string symbol (displayed '$$')
-  mStringsArray.appendByCopy ("" COMMA_HERE) ; // Empty string symbol
+  mStringsArray.addObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
   GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
-    mStringsArray.appendByCopy (nonTerminal->mKey COMMA_HERE) ;  
+    mStringsArray.addObject (nonTerminal->mKey) ;  
     nonTerminal = nonTerminal->getNextItem () ;
   }
-  mOriginalGrammarSymbolsCount = mStringsArray.getCount () ;
+  mOriginalGrammarSymbolsCount = mStringsArray.count () ;
 //--- For all symbols of original grammar, don't generate choice
-  mGenerateChoiceArray.reallocArray (mOriginalGrammarSymbolsCount COMMA_HERE) ;
-  for (sint32 i=0 ; i<mOriginalGrammarSymbolsCount ; i++) {
-    mGenerateChoiceArray (i COMMA_HERE) = false ;
-  }
+  mGenerateChoiceArray.clear () ;
+  mGenerateChoiceArray.addObjects (mOriginalGrammarSymbolsCount, false) ;
 //--- Define pure BNF grammar start symbol index
   mStartSymbol = mTerminalSymbolsCount + (sint32) inOriginalGrammarStartSymbol ;
 }
@@ -101,13 +100,13 @@ sint32 cVocabulary::getTerminalSymbolsCount (void) const {
 //---------------------------------------------------------------------------*
 
 sint32 cVocabulary::getAllSymbolsCount (void) const {
-  return mStringsArray.getCount () ;
+  return mStringsArray.count () ;
 }
 
 //---------------------------------------------------------------------------*
 
 sint32 cVocabulary::getNonTerminalSymbolsCount (void) const {
-  return mStringsArray.getCount () - mTerminalSymbolsCount ;
+  return mStringsArray.count () - mTerminalSymbolsCount ;
 }
 
 //---------------------------------------------------------------------------*
@@ -121,15 +120,15 @@ void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
      << inClassName
      << '_'
      << inOrderInSourceFile ;
-  mStringsArray.appendByCopy (nt COMMA_HERE) ;
-  mGenerateChoiceArray.appendByCopy (inGenerateChoice COMMA_HERE) ;
+  mStringsArray.addObject (nt) ;
+  mGenerateChoiceArray.addObject (inGenerateChoice) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cVocabulary::addAugmentedSymbol (void) {
-  mStringsArray.appendByCopy ("" COMMA_HERE) ;
-  mGenerateChoiceArray.appendByCopy (false COMMA_HERE) ;
+  mStringsArray.addObject ("") ;
+  mGenerateChoiceArray.addObject (false) ;
 }
 
 //---------------------------------------------------------------------------*

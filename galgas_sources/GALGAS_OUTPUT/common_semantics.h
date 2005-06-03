@@ -235,7 +235,7 @@ class GGS_typeListeAttributsSemantiques {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -290,7 +290,7 @@ class GGS_typeTypesList {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -345,7 +345,7 @@ class GGS_L_signature {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -400,7 +400,7 @@ class GGS_L_actualParametersSignature {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -531,7 +531,7 @@ class GGS_L_stringList {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -582,7 +582,7 @@ class GGS_L_lstringList {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -1346,7 +1346,7 @@ class GGS_L_signature_ForGrammarComponent {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -1431,7 +1431,7 @@ class GGS_L_ruleSyntaxSignature {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -1640,7 +1640,7 @@ class GGS_L_productionRules_ForGrammarComponent {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -1856,7 +1856,7 @@ class GGS_L_branchList_ForGrammarComponent {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -1913,7 +1913,7 @@ class GGS_L_syntaxComponents_ForGrammar {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -1970,7 +1970,7 @@ class GGS_L_identifiers {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;

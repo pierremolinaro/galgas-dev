@@ -38,11 +38,11 @@ static void
 computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
                    const C_bdd_set1 & inNonterminalSymbolsFollowedByEmpty,
                    const cVocabulary & inVocabulary,
-                   const TC_unique_dyn_array <bool> & inNonterminalSymbolsDerivingInEmpty,
+                   const TCUniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
                    const C_bdd_set2 & inFIRSTsets,
                    const sint32 inTerminalSymbolsCount,
                    C_bdd_set2 & outFOLLOWsets,
-                   TC_unique_dyn_array <TC_unique_grow_array <sint32> > & outFOLLOWarray,
+                   TCUniqueArray <TCUniqueArray <sint32> > & outFOLLOWarray,
                    sint32 & outIterationsCount) {
 //--- Build the directFollower and lastOfProduction sets
   C_bdd_descriptor descriptor = inFIRSTsets.getDescriptor1 () ;
@@ -56,7 +56,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   C_bdd_set3 temp3 (lastOfProduction) ;
   for (sint32 ip=0 ; ip<inProductionRules.getLength () ; ip++) {
     const cProduction & p = inProductionRules (ip COMMA_HERE) ;
-    const sint32 derivationLength = p.aDerivation.getCount () ;
+    const sint32 derivationLength = p.aDerivation.count () ;
   //--- Direct follower
     if (derivationLength > 1) { // The right sequence has more than one element (from 0 to derivationLength-1)
       for (sint32 i=1 ; i<derivationLength ; i++) {
@@ -114,7 +114,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   outFOLLOWsets |= inNonterminalSymbolsFollowedByEmpty * temp1 ;
 
 //--- FOLLOW sets, given with an array
-  { TC_unique_dyn_array <TC_unique_grow_array <sint32> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
+  { TCUniqueArray <TCUniqueArray <sint32> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
     swap (outFOLLOWarray, tempArray) ;
   }
   outFOLLOWsets.getArray (outFOLLOWarray) ;
@@ -123,7 +123,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 static void
-printFOLLOWsets (const TC_unique_dyn_array <TC_unique_grow_array <sint32> > & inFOLLOWarray,
+printFOLLOWsets (const TCUniqueArray <TCUniqueArray <sint32> > & inFOLLOWarray,
                  const cVocabulary & inVocabulary,
                  C_html_file_write & inHTMLfile,
                  const uint32 inValuesCount,
@@ -141,14 +141,14 @@ printFOLLOWsets (const TC_unique_dyn_array <TC_unique_grow_array <sint32> > & in
 
 //--- Print FOLLOW sets (don't display last symbol, the '<>' added non terminal)
   inHTMLfile.outputRawData ("<table class=\"result\">") ;
-  const sint32 symbolsToDisplayCount = inFOLLOWarray.getCount () - 1 ;
+  const sint32 symbolsToDisplayCount = inFOLLOWarray.count () - 1 ;
   for (sint32 i=0 ; i<symbolsToDisplayCount ; i++) {
     if (i != inVocabulary.getEmptyStringTerminalSymbolIndex ()) { // Don't print follower of empty string
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
       inVocabulary.printInFile (inHTMLfile, i COMMA_HERE) ;
       inHTMLfile.outputRawData ("</code></td><td><code>") ;
-      TC_unique_grow_array <sint32> & s = inFOLLOWarray (i COMMA_HERE) ;
-      const sint32 n = s.getCount () ;
+      TCUniqueArray <sint32> & s = inFOLLOWarray (i COMMA_HERE) ;
+      const sint32 n = s.count () ;
       for (sint32 j=0 ; j<n ; j++) {
         inHTMLfile << ' ' ;
         inVocabulary.printInFile (inHTMLfile, s (j COMMA_HERE) COMMA_HERE) ;
@@ -208,7 +208,7 @@ checkFOLLOWsets (C_html_file_write & inHTMLfile,
                << ((n > 1) ? "s have" : " has")
                << " an empty FOLLOW :\n" ;
     inHTMLfile.outputRawData ("</span></p>") ;
-    TC_unique_dyn_array <bool> array ;
+    TCUniqueArray <bool> array ;
     ntErreurSuivants.getArray (array) ;
     inHTMLfile.outputRawData ("<table class=\"result\">") ;
     const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
@@ -232,12 +232,12 @@ void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      C_html_file_write & inHTMLfile,
                      const cVocabulary & inVocabulary,
-                     const TC_unique_dyn_array <bool> & inVocabularyDerivingToEmpty_Array,
+                     const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_bdd_set1 & inUsefulSymbols,
                      const C_bdd_set2 & inFIRSTsets,
                      const C_bdd_set1 & inNonterminalSymbolsFollowedByEmpty,
                      C_bdd_set2 & outFOLLOWsets,
-                     TC_unique_dyn_array <TC_unique_grow_array <sint32> > & outFOLLOWarray,
+                     TCUniqueArray <TCUniqueArray <sint32> > & outFOLLOWarray,
                      bool & outOk) {
 //--- Console display
   co << "  Computing the FOLLOW sets... " ;

@@ -36,7 +36,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
   C_bdd_set1 temp (inDescriptor);
   for (sint32 i=0 ; i<inProductionRules.getLength () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
-    if (p.aDerivation.getCount () == 0L) {
+    if (p.aDerivation.count () == 0L) {
       temp.init (C_bdd::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
       nonterminalSymbolsHavingEmptyDerivation |= temp ;
     }
@@ -51,20 +51,20 @@ static void
 printNonterminalSymbolsHavingEmptyDerivation (const C_bdd_set1 & inNonterminalSymbolsHavingEmptyDerivation,
                                               C_html_file_write & inHTMLfile,
                                               const cVocabulary & inVocabulary) {
-  TC_unique_dyn_array <bool> nonTerminalArray ;
+  TCUniqueArray <bool> nonTerminalArray ;
   inNonterminalSymbolsHavingEmptyDerivation.getArray (nonTerminalArray) ;
   const uint32 n = inNonterminalSymbolsHavingEmptyDerivation.getValuesCount () ;
   inHTMLfile.outputRawData ("<p><a name=\"empty_strings\"></a>") ;
   inHTMLfile << n << " nonterminal symbols have a empty production :\n" ;
   inHTMLfile.outputRawData ("</p>") ;
   bool exists = false ;
-  for (sint32 i=0 ; (i<nonTerminalArray.getCount ()) && ! exists ; i++) {
+  for (sint32 i=0 ; (i<nonTerminalArray.count ()) && ! exists ; i++) {
     exists = nonTerminalArray (i COMMA_HERE) ;
   }
   if (exists) {
     inHTMLfile.outputRawData ("<table class=\"result\">") ;
     sint32 index = 0 ;
-    for (sint32 i=0 ; i<nonTerminalArray.getCount () ; i++) {
+    for (sint32 i=0 ; i<nonTerminalArray.count () ; i++) {
       if (nonTerminalArray (i COMMA_HERE)) {
         inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
         inHTMLfile << index ;
@@ -83,22 +83,15 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_bdd_set1 & inNonterminalSy
 static C_bdd_set1
 computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProductionRules,
                                          const C_bdd_descriptor & inDescriptor,
-                                         TC_unique_dyn_array <bool> & vocabulaireSeDerivantEnVide, 
+                                         TCUniqueArray <bool> & vocabulaireSeDerivantEnVide, 
                                          const sint32 inAllSymbolsCount,
                                          sint32 & outIterationsCount) {
-  { TC_unique_dyn_array <bool> tempo (inAllSymbolsCount COMMA_HERE) ;
+  { TCUniqueArray <bool> tempo (inAllSymbolsCount, false COMMA_HERE) ;
     swap (tempo, vocabulaireSeDerivantEnVide) ;
-    for (sint32 i=0 ; i<inAllSymbolsCount ; i++) {
-      vocabulaireSeDerivantEnVide (i COMMA_HERE) = false ;
-    }
   }
 
   const sint32 nombreDeProductions = inProductionRules.getLength () ;
-  TC_unique_dyn_array <bool> productionTraitee (nombreDeProductions COMMA_HERE) ;
-  { for (sint32 i=0 ; i<nombreDeProductions ; i++) {
-      productionTraitee (i COMMA_HERE) = false ;
-    }
-  }
+  TCUniqueArray <bool> productionTraitee (nombreDeProductions, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;
   bool onProgresse = true ;
@@ -108,7 +101,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
     for (sint32 i=0 ; i<nombreDeProductions ; i++) {
       const cProduction & p = inProductionRules (i COMMA_HERE) ;
       if (! productionTraitee (i COMMA_HERE)) {
-        const sint32 n = p.aDerivation.getCount () ;
+        const sint32 n = p.aDerivation.count () ;
         bool estVide = true ;
         for (sint32 j=0 ; (j<n) && estVide ; j++) {
           estVide = vocabulaireSeDerivantEnVide (p.aDerivation (j COMMA_HERE) COMMA_HERE) ;
@@ -159,11 +152,11 @@ printNonterminalDerivingInEmptyString (const C_bdd_set1 & inVocabularyDerivingTo
     inHTMLfile.outputRawData ("<p>") ;
     inHTMLfile << n << " nonterminal symbol(s) in addition to those deriving directly to the empty string :\n" ;
     inHTMLfile.outputRawData ("</p>") ;
-    TC_unique_dyn_array <bool> nonTerminalArray ;
+    TCUniqueArray <bool> nonTerminalArray ;
     newNonterminal.getArray (nonTerminalArray) ;
     sint32 index = 0 ;
     inHTMLfile.outputRawData ("<table class=\"result\">") ;
-    for (sint32 i=0 ; i<nonTerminalArray.getCount () ; i++) {
+    for (sint32 i=0 ; i<nonTerminalArray.count () ; i++) {
       if (nonTerminalArray (i COMMA_HERE)) {
         inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
         inHTMLfile << index ;
@@ -185,7 +178,7 @@ void
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
                             C_html_file_write & inHTMLfile,
                             const cVocabulary & inVocabulary,
-                            TC_unique_dyn_array <bool> & outVocabularyDerivingToEmpty_Array,
+                            TCUniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             C_bdd_set1 & outVocabularyDerivingToEmpty_BDD) {
 //--- Console display
   co << "  Searching for nonterminal symbols deriving in empty string... " ;

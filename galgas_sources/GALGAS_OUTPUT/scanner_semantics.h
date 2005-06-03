@@ -619,7 +619,7 @@ class GGS_typeListeConditionsLexicales {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -697,7 +697,7 @@ class GGS_tListeInstructionsLexicales {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -750,7 +750,7 @@ class GGS_typeListeTestsEtInstructions {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -830,7 +830,7 @@ class GGS_typeListeArgumentsRoutExterne {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -881,7 +881,7 @@ class GGS_typeListeMessagesErreur {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -961,7 +961,7 @@ class GGS_typeListeRecherche {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;
@@ -1041,7 +1041,7 @@ class GGS_typeListeInclusions {
   private : element_type * mCurrentItemPtr ;
   private : sint32 mCurrentItemIndex ;
   private : sint32 mListLength ;
-  public : inline sint32 getCount (void) const {
+  public : inline sint32 count (void) const {
     return mListLength ;
   }
   private : sint32 * mCountReference ;

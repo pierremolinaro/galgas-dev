@@ -31,7 +31,7 @@ class C_html_file_write ;
                                                   const C_string & inSyntaxComponentName, \
                                                   sint32 & ioCount) = 0 ; \
   public : virtual void buildRightDerivation (const sint32 inTerminalSymbolsCount, \
-                                      TC_unique_grow_array <sint16> & ioInstructionsList) = 0 ; \
+                                      TCUniqueArray <sint16> & ioInstructionsList) = 0 ; \
   public : virtual void buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount, \
                                            const C_string & inSyntaxComponentName, \
                                            cPureBNFproductionsList & ioProductions) = 0 ; \
@@ -49,7 +49,7 @@ class C_html_file_write ;
                                                   const C_string & inSyntaxComponentName, \
                                                   sint32 & ioCount) ; \
   public : virtual void buildRightDerivation (const sint32 inTerminalSymbolsCount, \
-                                      TC_unique_grow_array <sint16> & ioInstructionsList) ; \
+                                      TCUniqueArray <sint16> & ioInstructionsList) ; \
   public : virtual void buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount, \
                                            const C_string & inSyntaxComponentName, \
                                            cPureBNFproductionsList & ioProductions) ; \

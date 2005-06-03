@@ -23,8 +23,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TC_unique_dyn_array.h"
-#include "generic_arraies/TC_unique_grow_array.h"
+#include "generic_arraies/TCUniqueArray.h"
 #include "common_semantics.h"
 
 //---------------------------------------------------------------------------*
@@ -43,7 +42,7 @@ SLR_computations (C_lexique & inLexique,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_html_file_write & inHTMLfile,
-                  const TC_unique_dyn_array <TC_unique_grow_array <sint32> > & inFOLLOWarray,
+                  const TCUniqueArray <TCUniqueArray <sint32> > & inFOLLOWarray,
                   const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                   const uint32 inOriginalGrammarStartSymbol,
                   const C_string & inTargetFileName,

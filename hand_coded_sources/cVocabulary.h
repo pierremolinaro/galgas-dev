@@ -24,7 +24,6 @@
 //---------------------------------------------------------------------------*
 
 #include "utilities/C_string.h"
-#include "generic_arraies/TC_unique_grow_array.h"
 #include "common_semantics.h"
 
 //---------------------------------------------------------------------------*
@@ -92,8 +91,8 @@ class cVocabulary {
   private : void operator = (cVocabulary &) ;
 
 //--- Private data
-  private : TC_unique_grow_array <C_string> mStringsArray ;
-  private : TC_unique_grow_array <bool> mGenerateChoiceArray ;
+  private : TCUniqueArray <C_string> mStringsArray ;
+  private : TCUniqueArray <bool> mGenerateChoiceArray ;
   private : sint32 mTerminalSymbolsCount ;
   private : sint32 mOriginalGrammarSymbolsCount ;
   private : sint32 mStartSymbol ;
