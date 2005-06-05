@@ -34,7 +34,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "galgas/C_lexique.h"
+#include "galgas/C_Lexique.h"
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -100,13 +100,13 @@ template <typename INFO, typename KEY> class cTableMethodesAimplementer {
 //--- Handle 'new' constructor
   public : static cTableMethodesAimplementer <INFO, KEY> constructor_empty (void) ;
 
-  public : sint32 insertAbstract (C_lexique & inLexique,
+  public : sint32 insertAbstract (C_Lexique & inLexique,
                                   const INFO & info,
                                   const KEY & clef,
                                          const GGS_location & inLocation,
                                   const char * messageErreurInsertion) ;
 
-  public : sint32 insertNotAbstract (C_lexique & inLexique,
+  public : sint32 insertNotAbstract (C_Lexique & inLexique,
                                      const INFO & info,
                                      const KEY & clef,
                                          const GGS_location & inLocation,

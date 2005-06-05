@@ -18,9 +18,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_html_file_write.h"
-#include "bdd/C_bdd_set2.h"
-#include "bdd/C_bdd_set3.h"
+#include "files/C_HTML_FileWrite.h"
+#include "bdd/C_BDD_Set2.h"
+#include "bdd/C_BDD_Set3.h"
 
 //---------------------------------------------------------------------------*
 
@@ -36,35 +36,35 @@
 
 static void
 computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
-                   const C_bdd_set1 & inNonterminalSymbolsFollowedByEmpty,
+                   const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
                    const cVocabulary & inVocabulary,
-                   const TCUniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
-                   const C_bdd_set2 & inFIRSTsets,
+                   const TC_UniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
+                   const C_BDD_Set2 & inFIRSTsets,
                    const sint32 inTerminalSymbolsCount,
-                   C_bdd_set2 & outFOLLOWsets,
-                   TCUniqueArray <TCUniqueArray <sint32> > & outFOLLOWarray,
+                   C_BDD_Set2 & outFOLLOWsets,
+                   TC_UniqueArray <TC_UniqueArray <sint32> > & outFOLLOWarray,
                    sint32 & outIterationsCount) {
 //--- Build the directFollower and lastOfProduction sets
-  C_bdd_descriptor descriptor = inFIRSTsets.getDescriptor1 () ;
-  C_bdd_set2 directFollower (inFIRSTsets) ; directFollower.clear () ;
-  C_bdd_set3 lastOfProduction (descriptor, descriptor, descriptor) ;
-  C_bdd_set2 s (inFIRSTsets) ; s.clear () ;
-  C_bdd_set2 temp2 (inFIRSTsets) ; temp2.clear () ;
-  C_bdd_set2 current (inFIRSTsets) ; current.clear () ;
-  C_bdd_set3 d (lastOfProduction) ;
-  C_bdd_set3 left (lastOfProduction) ;
-  C_bdd_set3 temp3 (lastOfProduction) ;
+  C_BDD_Descriptor descriptor = inFIRSTsets.getDescriptor1 () ;
+  C_BDD_Set2 directFollower (inFIRSTsets) ; directFollower.clear () ;
+  C_BDD_Set3 lastOfProduction (descriptor, descriptor, descriptor) ;
+  C_BDD_Set2 s (inFIRSTsets) ; s.clear () ;
+  C_BDD_Set2 temp2 (inFIRSTsets) ; temp2.clear () ;
+  C_BDD_Set2 current (inFIRSTsets) ; current.clear () ;
+  C_BDD_Set3 d (lastOfProduction) ;
+  C_BDD_Set3 left (lastOfProduction) ;
+  C_BDD_Set3 temp3 (lastOfProduction) ;
   for (sint32 ip=0 ; ip<inProductionRules.getLength () ; ip++) {
     const cProduction & p = inProductionRules (ip COMMA_HERE) ;
     const sint32 derivationLength = p.aDerivation.count () ;
   //--- Direct follower
     if (derivationLength > 1) { // The right sequence has more than one element (from 0 to derivationLength-1)
       for (sint32 i=1 ; i<derivationLength ; i++) {
-        current.initDimension1 (C_bdd::kEqual, (uint32) p.aDerivation (i-1 COMMA_HERE)) ;
+        current.initDimension1 (C_BDD::kEqual, (uint32) p.aDerivation (i-1 COMMA_HERE)) ;
         s.clear () ;
         sint32 j = i ;
         do{
-          temp2.initDimension2 (C_bdd::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
+          temp2.initDimension2 (C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
           s |= temp2 ;
           j++ ;
         }while ((j<derivationLength) && inNonterminalSymbolsDerivingInEmpty (p.aDerivation (j-1 COMMA_HERE) COMMA_HERE)) ;
@@ -73,12 +73,12 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
     }
   //--- Last of production
     if (derivationLength > 0) { // The right sequence is not empty
-      left.initDimension3 (C_bdd::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
+      left.initDimension3 (C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
       d.clear () ;
       sint32 j = derivationLength-1 ; // last one of right sequence
       do{
       
-        temp3.initDimension1 (C_bdd::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
+        temp3.initDimension1 (C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
         d |= temp3 ;
         j -- ;
       }while ((j>=0) && inNonterminalSymbolsDerivingInEmpty (p.aDerivation (j+1 COMMA_HERE) COMMA_HERE)) ;
@@ -87,14 +87,14 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   }
 
 //--- Compute constant for FOLLOW calculus  
-  C_bdd_set3 temp3_bis (lastOfProduction) ;
+  C_BDD_Set3 temp3_bis (lastOfProduction) ;
   temp3.initDimension13 (directFollower) ;
   temp3_bis.initDimension32 (inFIRSTsets) ;
-  const C_bdd_set2 constant = directFollower | (temp3 & temp3_bis).projeterSurAxe12 () ;
+  const C_BDD_Set2 constant = directFollower | (temp3 & temp3_bis).projeterSurAxe12 () ;
 
 //--- Loop for computing FOLLOW
 //       suivants [g, d] += directFollower [g, d] | ?y (facteurConstant [g, d, y] & suivants [y, d]) ;
-  C_bdd_set2 v (outFOLLOWsets) ;
+  C_BDD_Set2 v (outFOLLOWsets) ;
   outFOLLOWsets.clear () ;
   outIterationsCount = 0 ;
   do{
@@ -105,16 +105,16 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   }while (! v.isEqualTo (outFOLLOWsets COMMA_HERE)) ;
 
 //--- Suppress nonterminal symbols in the FOLLOW sets
-  temp2.initDimension2 (C_bdd::kLowerOrEqual, (uint32) (inTerminalSymbolsCount - 1)) ;
+  temp2.initDimension2 (C_BDD::kLowerOrEqual, (uint32) (inTerminalSymbolsCount - 1)) ;
   outFOLLOWsets &= temp2 ;
 
 //--- FOLLOW, with nonterminal symbols followed by empty string
-  C_bdd_set1 temp1 (descriptor) ;
-  temp1.init (C_bdd::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+  C_BDD_Set1 temp1 (descriptor) ;
+  temp1.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
   outFOLLOWsets |= inNonterminalSymbolsFollowedByEmpty * temp1 ;
 
 //--- FOLLOW sets, given with an array
-  { TCUniqueArray <TCUniqueArray <sint32> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
+  { TC_UniqueArray <TC_UniqueArray <sint32> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
     swap (outFOLLOWarray, tempArray) ;
   }
   outFOLLOWsets.getArray (outFOLLOWarray) ;
@@ -123,9 +123,9 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 static void
-printFOLLOWsets (const TCUniqueArray <TCUniqueArray <sint32> > & inFOLLOWarray,
+printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <sint32> > & inFOLLOWarray,
                  const cVocabulary & inVocabulary,
-                 C_html_file_write & inHTMLfile,
+                 C_HTML_FileWrite & inHTMLfile,
                  const uint32 inValuesCount,
                  const sint32 inIterationsCount) {
 //--- Print messages
@@ -147,7 +147,7 @@ printFOLLOWsets (const TCUniqueArray <TCUniqueArray <sint32> > & inFOLLOWarray,
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
       inVocabulary.printInFile (inHTMLfile, i COMMA_HERE) ;
       inHTMLfile.outputRawData ("</code></td><td><code>") ;
-      TCUniqueArray <sint32> & s = inFOLLOWarray (i COMMA_HERE) ;
+      TC_UniqueArray <sint32> & s = inFOLLOWarray (i COMMA_HERE) ;
       const sint32 n = s.count () ;
       for (sint32 j=0 ; j<n ; j++) {
         inHTMLfile << ' ' ;
@@ -162,19 +162,19 @@ printFOLLOWsets (const TCUniqueArray <TCUniqueArray <sint32> > & inFOLLOWarray,
 //---------------------------------------------------------------------------*
 
 static bool
-checkFOLLOWsets (C_html_file_write & inHTMLfile,
-                 const C_bdd_set1 & inNonterminalSymbolsFollowedByEmpty,
+checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
+                 const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
                  const cVocabulary & inVocabulary,
-                 const C_bdd_set1 & inUsefulSymbols,
-                 const C_bdd_set2 & inFOLLOWsets) {
+                 const C_BDD_Set1 & inUsefulSymbols,
+                 const C_BDD_Set2 & inFOLLOWsets) {
 
 //--- Construire le BDD des non-terminaux pouvant être suivis du vide
-  C_bdd_set1 temp1 (inUsefulSymbols) ;
-  temp1.init (C_bdd::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
-  const C_bdd_set2 ntVide = inNonterminalSymbolsFollowedByEmpty * temp1 ;
+  C_BDD_Set1 temp1 (inUsefulSymbols) ;
+  temp1.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+  const C_BDD_Set2 ntVide = inNonterminalSymbolsFollowedByEmpty * temp1 ;
 
 //--- Suivants, avec nt pouvant être suivis du vide, limités aux non terminaux utilisateur
-  const C_bdd_set2 suivantsPlusVide = ntVide | inFOLLOWsets ;
+  const C_BDD_Set2 suivantsPlusVide = ntVide | inFOLLOWsets ;
 
 //--- Vérifier les suivants
   inHTMLfile.outputRawData ("<p>") ;
@@ -186,11 +186,11 @@ checkFOLLOWsets (C_html_file_write & inHTMLfile,
   inHTMLfile.outputRawData ("</p>") ;
 
 //--- Obtenir les non terminaux en erreur
-  C_bdd_set1 nterminauxAverifier (inUsefulSymbols) ;
-  nterminauxAverifier.init (C_bdd::kGreaterOrEqual, (uint32) inVocabulary.getTerminalSymbolsCount ()) ;
-  temp1.init (C_bdd::kLowerOrEqual, (uint32) (inVocabulary.getAllSymbolsCount () - 1)) ;
+  C_BDD_Set1 nterminauxAverifier (inUsefulSymbols) ;
+  nterminauxAverifier.init (C_BDD::kGreaterOrEqual, (uint32) inVocabulary.getTerminalSymbolsCount ()) ;
+  temp1.init (C_BDD::kLowerOrEqual, (uint32) (inVocabulary.getAllSymbolsCount () - 1)) ;
   nterminauxAverifier &= temp1 ;
-  const C_bdd_set1 ntErreurSuivants = nterminauxAverifier & inUsefulSymbols & ~(suivantsPlusVide.projeterSurAxe1 ()) ; 
+  const C_BDD_Set1 ntErreurSuivants = nterminauxAverifier & inUsefulSymbols & ~(suivantsPlusVide.projeterSurAxe1 ()) ; 
 
 //--- Afficher les non-terminaux en erreur
   const uint32 n = ntErreurSuivants.getValuesCount () ;
@@ -208,7 +208,7 @@ checkFOLLOWsets (C_html_file_write & inHTMLfile,
                << ((n > 1) ? "s have" : " has")
                << " an empty FOLLOW :\n" ;
     inHTMLfile.outputRawData ("</span></p>") ;
-    TCUniqueArray <bool> array ;
+    TC_UniqueArray <bool> array ;
     ntErreurSuivants.getArray (array) ;
     inHTMLfile.outputRawData ("<table class=\"result\">") ;
     const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
@@ -230,14 +230,14 @@ checkFOLLOWsets (C_html_file_write & inHTMLfile,
 
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                     C_html_file_write & inHTMLfile,
+                     C_HTML_FileWrite & inHTMLfile,
                      const cVocabulary & inVocabulary,
-                     const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                     const C_bdd_set1 & inUsefulSymbols,
-                     const C_bdd_set2 & inFIRSTsets,
-                     const C_bdd_set1 & inNonterminalSymbolsFollowedByEmpty,
-                     C_bdd_set2 & outFOLLOWsets,
-                     TCUniqueArray <TCUniqueArray <sint32> > & outFOLLOWarray,
+                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                     const C_BDD_Set1 & inUsefulSymbols,
+                     const C_BDD_Set2 & inFIRSTsets,
+                     const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
+                     C_BDD_Set2 & outFOLLOWsets,
+                     TC_UniqueArray <TC_UniqueArray <sint32> > & outFOLLOWarray,
                      bool & outOk) {
 //--- Console display
   co << "  Computing the FOLLOW sets... " ;

@@ -23,13 +23,13 @@
 
 //---------------------------------------------------------------------------*
 
-#include "utilities/C_string.h"
+#include "utilities/C_String.h"
 #include "common_semantics.h"
 
 //---------------------------------------------------------------------------*
 
 class C_galgas_stringset ;
-class C_text_file_write ;
+class C_TextFileWrite ;
 class GGS_L_productionRules_ForGrammarComponent ;
 
 //---------------------------------------------------------------------------*
@@ -51,7 +51,7 @@ class cVocabulary {
 
 //--- Add a new non terminal symbol
   public : void addNonTerminalSymbol (const char * inPrefix,
-                                      const C_string & inClassName,
+                                      const C_String & inClassName,
                                       const sint32 inOrderInSourceFile,
                                       const bool inGenerateChoice) ;
 
@@ -59,7 +59,7 @@ class cVocabulary {
   public : void addAugmentedSymbol (void) ;
 
 //--- Print symbol in file
-  public : void printInFile (AC_output_stream & inHTMLfile,
+  public : void printInFile (AC_OutputStream & inHTMLfile,
                              const sint32 inSymbolIndex
                              COMMA_LOCATION_ARGS) const ;
 
@@ -76,7 +76,7 @@ class cVocabulary {
   public : sint32 getAllSymbolsCount (void) const ;
 
 //--- Get symbol
-  public : C_string getSymbol (const sint32 symbolIndex
+  public : C_String getSymbol (const sint32 symbolIndex
                                    COMMA_LOCATION_ARGS) const ;
 
 //--- Get start symbol
@@ -91,8 +91,8 @@ class cVocabulary {
   private : void operator = (cVocabulary &) ;
 
 //--- Private data
-  private : TCUniqueArray <C_string> mStringsArray ;
-  private : TCUniqueArray <bool> mGenerateChoiceArray ;
+  private : TC_UniqueArray <C_String> mStringsArray ;
+  private : TC_UniqueArray <bool> mGenerateChoiceArray ;
   private : sint32 mTerminalSymbolsCount ;
   private : sint32 mOriginalGrammarSymbolsCount ;
   private : sint32 mStartSymbol ;

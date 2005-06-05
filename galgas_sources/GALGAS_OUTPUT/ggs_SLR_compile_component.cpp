@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "ggs_SLR_compile_component.h"
 
 //---------------------------------------------------------------------------*
@@ -58,7 +58,7 @@ pr_galgas_component_ggs_SLR_compile_component_86_24_ (galgas_scanner & lexique_v
   lexique_var_.printMessage (((((GGS_string (true, "------ Include file '")) + (var_cas_fileName.reader_value ()))) + (GGS_string (true, "'\n")))) ;
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_fileName.getLength () > 0) && (var_cas_fileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -88,7 +88,7 @@ pr_galgas_component_ggs_SLR_compile_component_86_24_importLexique (galgas_scanne
   var_cas_fileName.defineAttribute (lexique_var_.tokenString, lexique_var_) ;
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_fileName.getLength () > 0) && (var_cas_fileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -115,7 +115,7 @@ pr_galgas_component_ggs_SLR_compile_component_86_24_importSyntax (galgas_scanner
   var_cas_fileName.defineAttribute (lexique_var_.tokenString, lexique_var_) ;
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_fileName.getLength () > 0) && (var_cas_fileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -142,7 +142,7 @@ pr_galgas_component_ggs_SLR_compile_component_86_24_importSemantics (galgas_scan
   var_cas_fileName.defineAttribute (lexique_var_.tokenString, lexique_var_) ;
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_fileName.getLength () > 0) && (var_cas_fileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -169,7 +169,7 @@ pr_galgas_component_ggs_SLR_compile_component_86_24_importGrammarForSemantics (g
   var_cas_fileName.defineAttribute (lexique_var_.tokenString, lexique_var_) ;
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_fileName.getLength () > 0) && (var_cas_fileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -196,7 +196,7 @@ pr_galgas_component_ggs_SLR_compile_component_86_24_importOptions (galgas_scanne
   var_cas_fileName.defineAttribute (lexique_var_.tokenString, lexique_var_) ;
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_fileName.getLength () > 0) && (var_cas_fileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -233,7 +233,7 @@ pr_galgas_component_ggs_SLR_compile_component_164_24_ (galgas_scanner & lexique_
   lexique_var_.printMessage (((((GGS_string (true, "------ Compile file '")) + (var_cas_fileName.reader_value ()))) + (GGS_string (true, "'\n")))) ;
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_fileName.getLength () > 0) && (var_cas_fileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -309,7 +309,7 @@ pr_parse_lexique_for_importing_ggs_SLR_compile_component_216_35_ (galgas_scanner
                                 GGS_M_lexiqueComponents  &var_cas_ioLexiqueMapForUse) {
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_inFileName.getLength () > 0) && (var_cas_inFileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -342,7 +342,7 @@ pr_parse_syntax_for_importing_ggs_SLR_compile_component_231_34_ (galgas_scanner 
                                 GGS_M_syntaxComponents  &var_cas_ioSyntaxComponentsMap) {
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_inFileName.getLength () > 0) && (var_cas_inFileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -375,7 +375,7 @@ pr_parse_semantics_component_for_importing_ggs_SLR_compile_component_246_47_ (ga
                                 GGS_M_semanticsComponents  &var_cas_ioSemanticsMapForUse) {
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_inFileName.getLength () > 0) && (var_cas_inFileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -408,7 +408,7 @@ pr_parse_grammar_component_for_importing_ggs_SLR_compile_component_261_45_ (galg
                                 GGS_M_grammarComponents  &var_cas_ioGrammarComponentsMap) {
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_inFileName.getLength () > 0) && (var_cas_inFileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }
@@ -441,7 +441,7 @@ pr_parse_option_component_for_importing_ggs_SLR_compile_component_276_44_ (galga
                                 GGS_M_optionComponents  &var_cas_ioOptionsComponentsMap) {
   { galgas_scanner scanner_ (lexique_var_.getGalgasIOptr ()) ;
     galgas_SLR_grammar grammar_ ;
-    C_string sourceFileName ;
+    C_String sourceFileName ;
     if ((var_cas_inFileName.getLength () > 0) && (var_cas_inFileName (0 COMMA_HERE) != '/')) {
       sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;
     }

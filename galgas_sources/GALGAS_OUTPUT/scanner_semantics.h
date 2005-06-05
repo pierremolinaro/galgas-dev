@@ -26,7 +26,7 @@
 #include <string.h>
 
 // Include predefined semantics types definition *
-#include "memory/C_reference_count.h"
+#include "galgas/C_GGS_Object.h"
 #include "galgas/AC_galgas_io.h"
 #include "galgas/GGS_location.h"
 #include "galgas/GGS_lbool.h"
@@ -37,7 +37,7 @@
 #include "galgas/GGS_lsint.h"
 #include "galgas/AC_galgas_map.h"
 // Include scanner definition *
-#include "galgas/C_lexique.h"
+#include "galgas/C_Lexique.h"
 // Include imported semantics *
 #include "common_semantics.h"
 
@@ -68,8 +68,8 @@ class GGS_typeLexicalAttributesMap : public AC_galgas_map {
                            const e_typeLexicalAttributesMap & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -91,13 +91,13 @@ class GGS_typeLexicalAttributesMap : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_AC_galgasType & inParameter0,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_AC_galgasType * outParameter0,
@@ -106,7 +106,7 @@ class GGS_typeLexicalAttributesMap : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeLexicalAttributesMap (C_lexique & inLexique,
+void searchKey_typeLexicalAttributesMap (C_Lexique & inLexique,
                                 GGS_typeLexicalAttributesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_galgasType   * outParameter0,
@@ -114,7 +114,7 @@ void searchKey_typeLexicalAttributesMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeLexicalAttributesMap (C_lexique & inLexique,
+void insertKey_typeLexicalAttributesMap (C_Lexique & inLexique,
                                 GGS_typeLexicalAttributesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
@@ -141,8 +141,8 @@ class GGS_lexicalTypeMap : public AC_galgas_map {
                            const e_lexicalTypeMap & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -164,13 +164,13 @@ class GGS_lexicalTypeMap : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_AC_galgasType & inParameter0,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_AC_galgasType * outParameter0,
@@ -179,7 +179,7 @@ class GGS_lexicalTypeMap : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_lexicalTypeMap (C_lexique & inLexique,
+void searchKey_lexicalTypeMap (C_Lexique & inLexique,
                                 GGS_lexicalTypeMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_galgasType   * outParameter0,
@@ -187,7 +187,7 @@ void searchKey_lexicalTypeMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_lexicalTypeMap (C_lexique & inLexique,
+void insertKey_lexicalTypeMap (C_Lexique & inLexique,
                                 GGS_lexicalTypeMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
@@ -214,8 +214,8 @@ class GGS_typeTableMessagesErreurs : public AC_galgas_map {
                            const e_typeTableMessagesErreurs & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -237,13 +237,13 @@ class GGS_typeTableMessagesErreurs : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_lstring & inParameter0,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_lstring * outParameter0,
@@ -252,7 +252,7 @@ class GGS_typeTableMessagesErreurs : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableMessagesErreurs (C_lexique & inLexique,
+void searchKey_typeTableMessagesErreurs (C_Lexique & inLexique,
                                 GGS_typeTableMessagesErreurs & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   * outParameter0,
@@ -260,7 +260,7 @@ void searchKey_typeTableMessagesErreurs (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableMessagesErreurs (C_lexique & inLexique,
+void insertKey_typeTableMessagesErreurs (C_Lexique & inLexique,
                                 GGS_typeTableMessagesErreurs & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring &  inParameter0,
@@ -287,8 +287,8 @@ class GGS_M_styles : public AC_galgas_map {
                            const e_M_styles & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -310,13 +310,13 @@ class GGS_M_styles : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_lstring & inParameter0,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_lstring * outParameter0,
@@ -325,7 +325,7 @@ class GGS_M_styles : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_M_styles (C_lexique & inLexique,
+void searchKey_M_styles (C_Lexique & inLexique,
                                 GGS_M_styles & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   * outParameter0,
@@ -333,7 +333,7 @@ void searchKey_M_styles (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_M_styles (C_lexique & inLexique,
+void insertKey_M_styles (C_Lexique & inLexique,
                                 GGS_M_styles & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring &  inParameter0,
@@ -362,8 +362,8 @@ class GGS_typeTableDefinitionTerminaux : public AC_galgas_map {
                            const e_typeTableDefinitionTerminaux & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -385,7 +385,7 @@ class GGS_typeTableDefinitionTerminaux : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_string& inParameter0,
@@ -393,7 +393,7 @@ class GGS_typeTableDefinitionTerminaux : public AC_galgas_map {
                                const GGS_luint & inParameter2,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_string* outParameter0,
@@ -404,7 +404,7 @@ class GGS_typeTableDefinitionTerminaux : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableDefinitionTerminaux (C_lexique & inLexique,
+void searchKey_typeTableDefinitionTerminaux (C_Lexique & inLexique,
                                 GGS_typeTableDefinitionTerminaux & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_string  * outParameter0,
@@ -414,7 +414,7 @@ void searchKey_typeTableDefinitionTerminaux (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableDefinitionTerminaux (C_lexique & inLexique,
+void insertKey_typeTableDefinitionTerminaux (C_Lexique & inLexique,
                                 GGS_typeTableDefinitionTerminaux & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_string&  inParameter0,
@@ -443,8 +443,8 @@ class GGS_typeTableMotsReserves : public AC_galgas_map {
                            const e_typeTableMotsReserves & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -466,13 +466,13 @@ class GGS_typeTableMotsReserves : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_lstring & inParameter0,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_lstring * outParameter0,
@@ -481,7 +481,7 @@ class GGS_typeTableMotsReserves : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableMotsReserves (C_lexique & inLexique,
+void searchKey_typeTableMotsReserves (C_Lexique & inLexique,
                                 GGS_typeTableMotsReserves & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   * outParameter0,
@@ -489,7 +489,7 @@ void searchKey_typeTableMotsReserves (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableMotsReserves (C_lexique & inLexique,
+void insertKey_typeTableMotsReserves (C_Lexique & inLexique,
                                 GGS_typeTableMotsReserves & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring &  inParameter0,
@@ -516,8 +516,8 @@ class GGS_typeTableTablesDeMotsReserves : public AC_galgas_map {
                            const e_typeTableTablesDeMotsReserves & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -539,13 +539,13 @@ class GGS_typeTableTablesDeMotsReserves : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_typeTableMotsReserves & inParameter0,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_typeTableMotsReserves * outParameter0,
@@ -554,7 +554,7 @@ class GGS_typeTableTablesDeMotsReserves : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableTablesDeMotsReserves (C_lexique & inLexique,
+void searchKey_typeTableTablesDeMotsReserves (C_Lexique & inLexique,
                                 GGS_typeTableTablesDeMotsReserves & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_typeTableMotsReserves   * outParameter0,
@@ -562,7 +562,7 @@ void searchKey_typeTableTablesDeMotsReserves (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableTablesDeMotsReserves (C_lexique & inLexique,
+void insertKey_typeTableTablesDeMotsReserves (C_Lexique & inLexique,
                                 GGS_typeTableTablesDeMotsReserves & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_typeTableMotsReserves &  inParameter0,
@@ -1068,7 +1068,7 @@ class GGS_typeListeInclusions {
   }
 } ;
 
-void routine_appendToLexicalInstructionList (C_lexique &,
+void routine_appendToLexicalInstructionList (C_Lexique &,
                                 GGS_typeListeTestsEtInstructions  &,
                                 const GGS_lstring  &,
                                 GGS_lstring  &) ;

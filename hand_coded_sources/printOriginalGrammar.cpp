@@ -18,8 +18,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
-#include "files/C_html_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_HTML_FileWrite.h"
 #include "galgas/C_galgas_stringset.h"
 
 #include "printOriginalGrammar.h"
@@ -29,7 +29,7 @@
 
 static void
 printInstructionsListForGrammar (const GGS_L_ruleSyntaxSignature & inInstructionsList,
-                                 C_html_file_write & inHTMLfile) {
+                                 C_HTML_FileWrite & inHTMLfile) {
   GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.getFirstItem () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
@@ -41,7 +41,7 @@ printInstructionsListForGrammar (const GGS_L_ruleSyntaxSignature & inInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
-printInstructionForGrammar (C_html_file_write & inHTMLfile) {
+printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
@@ -70,7 +70,7 @@ printInstructionForGrammar (C_html_file_write & inHTMLfile) {
 //---------------------------------------------------------------------------*
 
 void cPtr_T_selectInstruction_forGrammarComponent::
-printInstructionForGrammar (C_html_file_write & inHTMLfile) {
+printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
@@ -99,7 +99,7 @@ printInstructionForGrammar (C_html_file_write & inHTMLfile) {
 //---------------------------------------------------------------------------*
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
-printInstructionForGrammar (C_html_file_write & inHTMLfile) {
+printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_nonterminal\">") ;
   inHTMLfile << '<' << mNonterminalSymbolName << ">; " ;
   inHTMLfile.outputRawData ("</span>") ;
@@ -108,7 +108,7 @@ printInstructionForGrammar (C_html_file_write & inHTMLfile) {
 //---------------------------------------------------------------------------*
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
-printInstructionForGrammar (C_html_file_write & inHTMLfile) {
+printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_terminal\">") ;
   inHTMLfile << '$' << mTerminalSymbolName << "$; " ;
   inHTMLfile.outputRawData ("</span>") ;
@@ -116,7 +116,7 @@ printInstructionForGrammar (C_html_file_write & inHTMLfile) {
 
 //---------------------------------------------------------------------------*
 
-void printOriginalGrammar (C_html_file_write & inHTMLfile,
+void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                            const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList) {
 //--- Print message
   sint32 productionsCount = 0 ;

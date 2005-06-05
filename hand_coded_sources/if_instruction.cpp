@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------*
 
 
-#include "memory/M_memory_control.h"
+#include "utilities/MF_MemoryControl.h"
 #include "semantics_instructions.h"
 #include "semantics_semantics.h"
 
@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_typeTestComplement::
-generateExpression (AC_output_stream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(! " ;
   mTest ()->generateExpression (ioCppFile) ;
   ioCppFile << ')' ;
@@ -56,7 +56,7 @@ bool cPtr_typeTestComplement
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeAndOperation::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeAndOperation::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "((" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") && (" ;
@@ -89,7 +89,7 @@ bool cPtr_typeAndOperation
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeOrOperation::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeOrOperation::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "((" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") || (" ;
@@ -122,7 +122,7 @@ bool cPtr_typeOrOperation
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeConcatOperation::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeConcatOperation::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "((" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") + (" ;
@@ -155,7 +155,7 @@ bool cPtr_typeConcatOperation
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeTrueBool::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeTrueBool::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_bool (true, true)" ;
 }
 
@@ -182,7 +182,7 @@ bool cPtr_typeTrueBool
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeFalseBool::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeFalseBool::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_bool (true, false)" ;
 }
 
@@ -210,7 +210,7 @@ bool cPtr_typeFalseBool
 //---------------------------------------------------------------------------*
 
 void cPtr_typeHereExpression::
-generateExpression (AC_output_stream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_location (lexique_var_)" ;
 }
 
@@ -238,7 +238,7 @@ bool cPtr_typeHereExpression
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralStringExpression::
-generateExpression (AC_output_stream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_string (true, " ;
   ioCppFile.writeCstringConstant (mLiteralString) ;
   ioCppFile << ")" ;
@@ -268,7 +268,7 @@ bool cPtr_typeLiteralStringExpression
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralSIntExpression::
-generateExpression (AC_output_stream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_sint (true, " << mLiteralInt.getValue () << "L)" ;
 }
 
@@ -296,7 +296,7 @@ bool cPtr_typeLiteralSIntExpression
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralUIntExpression::
-generateExpression (AC_output_stream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_uint (true, " << mLiteralInt.getValue () << "UL)" ;
 }
 
@@ -324,7 +324,7 @@ bool cPtr_typeLiteralUIntExpression
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralCharExpression::
-generateExpression (AC_output_stream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_char (true, " ;
   ioCppFile.writeCcharConstant (mLiteralChar.getValue ()) ;
   ioCppFile << ')' ;
@@ -354,7 +354,7 @@ bool cPtr_typeLiteralCharExpression
 //---------------------------------------------------------------------------*
 
 void cPtr_typeConstructorExpression::
-generateExpression (AC_output_stream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_" << mClassName << "::constructor_" << mClassMethodName << " (" ;
   GGS_typeExpressionList::element_type * current = mExpressionList.getFirstItem () ;
   bool first = true ;
@@ -408,7 +408,7 @@ bool cPtr_typeConstructorExpression
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeEqualTest::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") == (" ;
@@ -441,7 +441,7 @@ bool cPtr_typeEqualTest
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeNonEqualTest::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeNonEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") != (" ;
@@ -467,7 +467,7 @@ bool cPtr_typeNonEqualTest
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInfOrEqualTest::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeInfOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") <= (" ;
@@ -500,7 +500,7 @@ bool cPtr_typeInfOrEqualTest
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeStrictInfTest::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeStrictInfTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") < (" ;
@@ -533,7 +533,7 @@ bool cPtr_typeStrictInfTest
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeSupOrEqualTest::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeSupOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") <= (" ;
@@ -566,7 +566,7 @@ bool cPtr_typeSupOrEqualTest
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeStrictSupTest::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeStrictSupTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
   mLeftExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << ") > (" ;
@@ -600,7 +600,7 @@ bool cPtr_typeStrictSupTest
 //---------------------------------------------------------------------------*
 
 void cPtr_typeReaderCallInExpression::
-generateExpression (AC_output_stream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) {
   mExpressionValue ()->generateExpression (ioCppFile) ;
   ioCppFile << ".reader_" << mReaderName << " (" ;
   GGS_typeExpressionList::element_type * e = mExpressionList.getFirstItem () ;
@@ -652,7 +652,7 @@ bool cPtr_typeReaderCallInExpression
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeVarInExpression::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeVarInExpression::generateExpression (AC_OutputStream & ioCppFile) {
   mCppVarName ()->generateCplusPlusName (ioCppFile) ;
 }
 
@@ -679,7 +679,7 @@ bool cPtr_typeVarInExpression
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeJokerInExpression::generateExpression (AC_output_stream & /* ioCppFile */) {
+void cPtr_typeJokerInExpression::generateExpression (AC_OutputStream & /* ioCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -705,7 +705,7 @@ bool cPtr_typeJokerInExpression
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeTextTableCall::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeTextTableCall::generateExpression (AC_OutputStream & ioCppFile) {
   mExpression ()->generateExpression (ioCppFile) ;
   ioCppFile << '.' << aNomMethodeTest << " (" ;
   aNomCppClef ()->generateCplusPlusName (ioCppFile) ;
@@ -736,7 +736,7 @@ bool cPtr_typeTextTableCall
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeBoolOption::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_bool (true, lexique_var_.getBoolOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
@@ -767,7 +767,7 @@ bool cPtr_typeBoolOption
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeUIntOption::generateExpression (AC_output_stream & ioCppFile) {
+void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_uint (true, lexique_var_.getUintOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
@@ -799,9 +799,9 @@ bool cPtr_typeUIntOption
 //---------------------------------------------------------------------------*
 
 void cPtr_C_if_instruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {

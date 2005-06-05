@@ -21,16 +21,18 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
 			<key>NSDocumentClass</key>
-			<string>cocoaGalgasDocument</string>
+			<string>OC_GGS_Document</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>cocoaLL1galgas</string>
+	<string>cocoaGalgas</string>
 	<key>CFBundleIconFile</key>
 	<string>galgasApplication.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>fr.ec-nantes.irccyn.cocoaGalgas</string>
+	<string>fr.ec-nantes.irccyn.molinaro.cocoaGalgas</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -38,7 +40,7 @@
 	<key>CFBundleSignature</key>
 	<string>GGSX</string>
 	<key>CFBundleVersion</key>
-	<string>27, libpm 40</string>
+	<string>28, libpm 57</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

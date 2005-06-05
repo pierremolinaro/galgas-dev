@@ -24,12 +24,12 @@
 //---------------------------------------------------------------------------*
 
 class C_galgas_stringset ;
-class C_text_file_write ;
+class C_TextFileWrite ;
 
 //---------------------------------------------------------------------------*
 
 void
-generateClassRegistering (AC_output_stream & inCppfile,
+generateClassRegistering (AC_OutputStream & inCppfile,
                           const C_galgas_stringset & inClassesNamesSet) ;
 
 //---------------------------------------------------------------------------*

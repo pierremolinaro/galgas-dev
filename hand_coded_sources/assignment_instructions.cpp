@@ -18,16 +18,16 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_text_file_write.h"
+#include "files/C_TextFileWrite.h"
 
 #include "semantics_semantics.h"
 
 //---------------------------------------------------------------------------*
 
 void cPtr_C_assignmentInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const  C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const  C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -65,9 +65,9 @@ bool cPtr_C_assignmentInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_C_declarationInstructionWithAssignment
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const  C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const  C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {

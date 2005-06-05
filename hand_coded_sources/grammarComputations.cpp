@@ -18,13 +18,13 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_html_file_write.h"
-#include "files/C_text_file_write.h"
-#include "bdd/C_bdd_descriptor.h"
-#include "bdd/C_bdd_set1.h"
-#include "bdd/C_bdd_set2.h"
-#include "memory/M_memory_control.h"
-#include "streams/C_console_out.h"
+#include "files/C_HTML_FileWrite.h"
+#include "files/C_TextFileWrite.h"
+#include "bdd/C_BDD_Descriptor.h"
+#include "bdd/C_BDD_Set1.h"
+#include "bdd/C_BDD_Set2.h"
+#include "utilities/MF_MemoryControl.h"
+#include "streams/C_ConsoleOut.h"
 
 //---------------------------------------------------------------------------*
 
@@ -64,8 +64,8 @@ cProduction::cProduction (void) {
 void cProduction::
 engendrerAppelProduction (const sint16 nombreDeParametres,
                           const cVocabulary & inVocabulary,
-                          const C_string & inAltName,
-                          AC_output_stream & fichierCPP) const {
+                          const C_String & inAltName,
+                          AC_OutputStream & fichierCPP) const {
   fichierCPP << "  pr_"
              << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE)
              << '_'
@@ -97,7 +97,7 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
 
 static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
-                               C_html_file_write & inHTMLfile) {
+                               C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<p><a name=\"identical_productions\"></a></p>") ;
   inHTMLfile.writeTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
@@ -139,7 +139,7 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
 //---------------------------------------------------------------------------*
 
 void
-generateClassRegistering (AC_output_stream & inCppfile,
+generateClassRegistering (AC_OutputStream & inCppfile,
                           const C_galgas_stringset & inClassesNamesSet) {
   const sint32 classesCount = inClassesNamesSet.count () ;
   inCppfile << "// classesCount : " << classesCount << '\n' ;
@@ -151,14 +151,14 @@ generateClassRegistering (AC_output_stream & inCppfile,
 //---------------------------------------------------------------------------*
 
 static void
-generateGrammarHeaderFile (C_lexique & inLexique,
+generateGrammarHeaderFile (C_Lexique & inLexique,
                            const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                            const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
-                           const C_string & inLexiqueName,
+                           const C_String & inLexiqueName,
                            const uint32 inOriginalGrammarStartSymbol,
-                           const C_string & inTargetFileName,
+                           const C_String & inTargetFileName,
                            const cVocabulary & inVocabulary) {
-  C_string generatedZone2 ;
+  C_String generatedZone2 ;
   generatedZone2 << "#ifndef GRAMMAR_" << inTargetFileName << "_DEFINED\n"
                  << "#define GRAMMAR_" << inTargetFileName << "_DEFINED\n\n" ;
 
@@ -173,7 +173,7 @@ generateGrammarHeaderFile (C_lexique & inLexique,
   generatedZone2 << '\n' ;
 
 //--- Engendrer la classe de l'analyseur syntaxique ------------------------------------------
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   generatedZone3.writeHyphenLineComment () ;
   generatedZone3 << "class " << inTargetFileName ;
   component = inSyntaxComponentsList.getFirstItem () ;
@@ -253,7 +253,7 @@ generateGrammarHeaderFile (C_lexique & inLexique,
 static void
 fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList,
                             cInfo & inInfo,
-                            C_lexique & inLexique) {
+                            C_Lexique & inLexique) {
   GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.getFirstItem () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
@@ -267,7 +267,7 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_lexique & inLexique) {
+          C_Lexique & inLexique) {
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.getFirstItem () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
@@ -282,7 +282,7 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_selectInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_lexique & inLexique) {
+          C_Lexique & inLexique) {
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.getFirstItem () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
@@ -297,7 +297,7 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_lexique & inLexique) {
+          C_Lexique & inLexique) {
   GGS_luint index ;
   searchKey_M_nonTerminalSymbolsForGrammar (inLexique, inInfo.mNonterminalSymbolsMapForGrammar, mNonterminalSymbolName,
                                             NULL, & index) ;
@@ -308,7 +308,7 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_lexique & inLexique) {
+          C_Lexique & inLexique) {
   GGS_luint index ;
   searchKey_M_terminalSymbolsMapForUse (inLexique, inInfo.mTerminalSymbolMap, mTerminalSymbolName, NULL, & index) ;
   mTerminalSymbolIndex.mValue = index.getValue () ;
@@ -412,11 +412,11 @@ static const char k_default_style [] = {
 //---------------------------------------------------------------------------*
 
 static void
-createStyleFile (const C_string & inCurrentDirectory, 
+createStyleFile (const C_String & inCurrentDirectory, 
                  const char * inStyleFileName) {
-  C_string f = inCurrentDirectory + '/' + inStyleFileName ;
+  C_String f = inCurrentDirectory + '/' + inStyleFileName ;
   if (! f.fileExists ()) {
-    C_text_file_write styleFile (f COMMA_SAFARI_CREATOR) ;
+    C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR) ;
     styleFile << k_default_style ;
   }
 }
@@ -424,7 +424,7 @@ createStyleFile (const C_string & inCurrentDirectory,
 //---------------------------------------------------------------------------*
 
 void
-analyzeGrammar (C_lexique & inLexique,
+analyzeGrammar (C_Lexique & inLexique,
                 GGS_lstring & inTargetFileName,
                 const GGS_lstring & inGrammarClass,
                 GGS_luint & inOriginalGrammarStartSymbol,
@@ -461,7 +461,7 @@ analyzeGrammar (C_lexique & inLexique,
   }
 
 //--- Create GALGAS_OUTPUT directory
-  const C_string GALGAS_OUTPUT_directory = inLexique.getSourceFile ().getPath () + "/GALGAS_OUTPUT/" ;
+  const C_String GALGAS_OUTPUT_directory = inLexique.getSourceFile ().getPath () + "/GALGAS_OUTPUT/" ;
   GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
 
 //--- Depending of grammar class, fix operations to perform
@@ -491,7 +491,7 @@ analyzeGrammar (C_lexique & inLexique,
                                                                        outputHTMLgrammarFile,
                                                                        & optionExists) ;
   if (! optionExists) {
-    C_string warningMessage ;
+    C_String warningMessage ;
     warningMessage << galgas_cli_component << ".@" << outputHTMLgrammarFile << " option does not exist." ;
     inLexique.onTheFlySemanticWarning (warningMessage) ;
   }
@@ -501,13 +501,13 @@ analyzeGrammar (C_lexique & inLexique,
   }
 
 //--- If 'HTMLfileName' is the empty string, no file is created
-  C_string s ;
+  C_String s ;
   s << "'" << inTargetFileName << "' grammar" ;
-  const C_string HTMLfileName = outputHTMLfile
+  const C_String HTMLfileName = outputHTMLfile
     ? (inLexique.getSourceFile ().getPath () + "/" + inTargetFileName + ".html")
-    : C_string () ;
+    : C_String () ;
 //--- Create output HTML file (if file is the empty string, no file is created)
-  C_html_file_write HTMLfile (HTMLfileName,
+  C_HTML_FileWrite HTMLfile (HTMLfileName,
                               s,
                               "style.css"
                               COMMA_SAFARI_CREATOR) ;
@@ -529,8 +529,8 @@ analyzeGrammar (C_lexique & inLexique,
                           ) ;
 
 //--- Fix parameters for BDD package
-  C_bdd::setHashMapSize (17) ;
-  C_bdd::setITEcacheSize (14) ;
+  C_BDD::setHashMapSize (17) ;
+  C_BDD::setITEcacheSize (14) ;
 
 //--- Print original grammar in BNF file
   if ((errorFlag == 0) && (grammarClass != kGrammarClassError)) {
@@ -562,7 +562,7 @@ analyzeGrammar (C_lexique & inLexique,
   }
 
 //--- Define vocabulary BDD sets descriptor
-  const C_bdd_descriptor vocabularyDescriptor ((uint32) (vocabulary.getAllSymbolsCount () - 1)) ;
+  const C_BDD_Descriptor vocabularyDescriptor ((uint32) (vocabulary.getAllSymbolsCount () - 1)) ;
 
 //--- Search for identical productions -----------------------------------------------------------
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
@@ -599,7 +599,7 @@ analyzeGrammar (C_lexique & inLexique,
     HTMLfile.outputRawData ("</li>\n</ul>\n") ;
   }
 //--- Getting useful symbols ---------------------------------------------------------------------
-  C_bdd_set1 usefulSymbols (vocabularyDescriptor) ;
+  C_BDD_Set1 usefulSymbols (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (pureBNFproductions,
                                  vocabulary,
@@ -608,8 +608,8 @@ analyzeGrammar (C_lexique & inLexique,
                                  warningFlag) ;
   }
 //--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
-  TCUniqueArray <bool> vocabularyDerivingToEmpty_Array ;
-  C_bdd_set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptor) ;
+  TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
+  C_BDD_Set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     empty_strings_computations (pureBNFproductions,
                                 HTMLfile,
@@ -618,8 +618,8 @@ analyzeGrammar (C_lexique & inLexique,
                                 vocabularyDerivingToEmpty_BDD) ;
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
-  C_bdd_set2 FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
-  TCUniqueArray <TCUniqueArray <sint32> > FIRSTarray ;
+  C_BDD_Set2 FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
+  TC_UniqueArray <TC_UniqueArray <sint32> > FIRSTarray ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
@@ -637,7 +637,7 @@ analyzeGrammar (C_lexique & inLexique,
     }
   }
 //--- Calcul de l'ensemble des non-terminaux pouvant être suivi du vide -------------------------------
-  C_bdd_set1 nonTerminalSymbolsFollowedByEmpty (vocabularyDescriptor) ;
+  C_BDD_Set1 nonTerminalSymbolsFollowedByEmpty (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     follow_by_empty_computations (pureBNFproductions,
                                   HTMLfile,
@@ -646,8 +646,8 @@ analyzeGrammar (C_lexique & inLexique,
                                   nonTerminalSymbolsFollowedByEmpty) ;
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
-  C_bdd_set2 FOLLOWsets (vocabularyDescriptor, vocabularyDescriptor) ;
-  TCUniqueArray <TCUniqueArray <sint32> > FOLLOWarray ;
+  C_BDD_Set2 FOLLOWsets (vocabularyDescriptor, vocabularyDescriptor) ;
+  TC_UniqueArray <TC_UniqueArray <sint32> > FOLLOWarray ;
   if ((errorFlag == kNoError) &&
       (grammarClass != kGrammarClassError) &&
       (grammarClass != kLR1grammar)) { // Follow are not used by LR(1) computations
@@ -746,11 +746,11 @@ analyzeGrammar (C_lexique & inLexique,
                                vocabulary) ;
   }
 //--- END -------------------------------------------------------------------------------------------------------
-  C_bdd::markAndSweepUnusedNodes () ;
+  C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
-    C_string s ; s << "ENDING ON ERROR, STEP" << ((uint16) errorFlag) ;
+    C_String s ; s << "ENDING ON ERROR, STEP" << ((uint16) errorFlag) ;
     HTMLfile.writeTitleComment (s, "title") ;
-    C_string errorMessage  ;
+    C_String errorMessage  ;
     if (HTMLfileName.getLength () > 0) {
       errorMessage << "errors have been raised when analyzing the grammar: see file"
                       " '"
@@ -763,7 +763,7 @@ analyzeGrammar (C_lexique & inLexique,
     }
     errorLocation.signalSemanticError (inLexique, errorMessage) ;
   }else if (warningFlag) {
-    C_string s ;
+    C_String s ;
     s << "OK ; no error, but warning(s) step(s)" ;
     sint32 i = 1 ;
     while (warningFlag != 0) {
@@ -774,7 +774,7 @@ analyzeGrammar (C_lexique & inLexique,
       i ++ ;
     }
     HTMLfile.writeTitleComment (s, "title") ;
-    C_string warningMessage  ;
+    C_String warningMessage  ;
     warningMessage << "warnings have been raised when analyzing the grammar: " ;
     if (HTMLfileName.getLength () > 0) {
       warningMessage << "see file '" << HTMLfileName << "'" ;

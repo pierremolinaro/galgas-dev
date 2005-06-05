@@ -18,15 +18,15 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
+#include "utilities/MF_MemoryControl.h"
 #include "semantics_semantics.h"
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeMapSearchInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -83,9 +83,9 @@ bool cPtr_typeMapSearchInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeMapInsertInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {

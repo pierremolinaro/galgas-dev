@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "semantics_parser.h"
 
 
@@ -387,8 +387,8 @@ pr_import_headers_semantics_and_grammars_semantics_parser_620_45_ (galgas_scanne
                     if (ptrExtraire_ == NULL) {
                       var_cas_type.drop_operation () ;
                       if (var_cas_entity.getPtr () != NULL) {
-                        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-                        C_string message2_ ;
+                        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+                        C_String message2_ ;
                         message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
                         message2_ << var_cas_entity ()->message_messageTypeEntite () ;
                         operand_23638->mGalgasTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -794,8 +794,8 @@ pr_semantics_declaration_semantics_parser_833_29_ (galgas_scanner & lexique_var_
       if (ptrExtraire_ == NULL) {
         var_cas_listeDeTypesPrecedenteDeclaration.drop_operation () ;
         if (var_cas_entite.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeEntiteRoutine::static_string_message_messageTypeEntite () ;
           message2_ << var_cas_entite ()->message_messageTypeEntite () ;
           var_cas_nomRoutine.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -877,8 +877,8 @@ pr_semantics_declaration_semantics_parser_833_29_importSemantics (galgas_scanner
       if (ptrExtraire_ == NULL) {
         var_cas_listeDeTypesPrecedenteDeclaration.drop_operation () ;
         if (var_cas_entite.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeEntiteRoutine::static_string_message_messageTypeEntite () ;
           message2_ << var_cas_entite ()->message_messageTypeEntite () ;
           var_cas_nomRoutine.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1005,8 +1005,8 @@ pr_parent_class_semantics_parser_991_20_ (galgas_scanner & lexique_var_,
     if (ptrExtraire_ == NULL) {
       var_cas_typeUtilisateur.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_superClassName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1024,8 +1024,8 @@ pr_parent_class_semantics_parser_991_20_ (galgas_scanner & lexique_var_,
       var_cas_tableMessagesAbstraits.drop_operation () ;
       var_cas_tableAttributs.drop_operation () ;
       if (var_cas_typeUtilisateur.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasClassType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_typeUtilisateur ()->message_messageGalgasType () ;
         var_cas_superClassName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1523,8 +1523,8 @@ pr_semantics_declaration_semantics_parser_1397_29_ (galgas_scanner & lexique_var
     if (ptrExtraire_ == NULL) {
       var_cas_definitionClasseMere.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_superClassName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1547,8 +1547,8 @@ pr_semantics_declaration_semantics_parser_1397_29_ (galgas_scanner & lexique_var
       var_cas_inheritedMessageMap.drop_operation () ;
       var_cas_tableAttributs.drop_operation () ;
       if (var_cas_definitionClasseMere.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasClassType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_definitionClasseMere ()->message_messageGalgasType () ;
         var_cas_superClassName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1674,8 +1674,8 @@ pr_semantics_declaration_semantics_parser_1397_29_importSemantics (galgas_scanne
     if (ptrExtraire_ == NULL) {
       var_cas_definitionClasseMere.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_superClassName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1698,8 +1698,8 @@ pr_semantics_declaration_semantics_parser_1397_29_importSemantics (galgas_scanne
       var_cas_inheritedMessageMap.drop_operation () ;
       var_cas_tableAttributs.drop_operation () ;
       if (var_cas_definitionClasseMere.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasClassType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_definitionClasseMere ()->message_messageGalgasType () ;
         var_cas_superClassName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -2399,8 +2399,8 @@ pr_type_parsing_semantics_parser_2055_20_ (galgas_scanner & lexique_var_,
     if (ptrExtraire_ == NULL) {
       var_cas_definitionType.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_outTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -2752,8 +2752,8 @@ pr_instruction_beginning_with_identifier_semantics_parser_2215_45_ (galgas_scann
       { cPtr_typeGalgas_luint * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_luint *> (var_cas_targetVariableType.getPtr ()) ;
         if (ptrExtraire_ == NULL) {
           if (var_cas_targetVariableType.getPtr () != NULL) {
-            TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-            C_string message2_ ;
+            TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+            C_String message2_ ;
             message1_ (0 COMMA_HERE) << cPtr_typeGalgas_luint::static_string_message_messageGalgasType () ;
             message2_ << var_cas_targetVariableType ()->message_messageGalgasType () ;
             var_cas_luint_assigned_var.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3036,8 +3036,8 @@ pr_optional_map_parameter_semantics_parser_2413_30_ (galgas_scanner & lexique_va
   { cPtr_typeGalgas_luint * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_luint *> (var_cas_typeCible.getPtr ()) ;
     if (ptrExtraire_ == NULL) {
       if (var_cas_typeCible.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgas_luint::static_string_message_messageGalgasType () ;
         message2_ << var_cas_typeCible ()->message_messageGalgasType () ;
         var_cas_nomCible.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3106,8 +3106,8 @@ pr_semantic_instruction_semantics_parser_2453_28_ (galgas_scanner & lexique_var_
       var_cas_nomTypeSource.drop_operation () ;
       var_cas_tableMessagesAbstraits.drop_operation () ;
       if (var_cas_typeVarSource.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasClassType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_typeVarSource ()->message_messageGalgasType () ;
         var_cas_nomVarSource.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3165,8 +3165,8 @@ pr_extract_instruction_semantics_parser_2492_27_ (galgas_scanner & lexique_var_,
     if (ptrExtraire_ == NULL) {
       var_cas_leType.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_nomClasse.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3183,8 +3183,8 @@ pr_extract_instruction_semantics_parser_2492_27_ (galgas_scanner & lexique_var_,
       var_cas_listeAttributsSemantiques.drop_operation () ;
       var_cas_tableDesClassesAncetres.drop_operation () ;
       if (var_cas_leType.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasClassType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_leType ()->message_messageGalgasType () ;
         var_cas_nomClasse.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3276,8 +3276,8 @@ pr_extract_instruction_semantics_parser_2566_27_ (galgas_scanner & lexique_var_,
           if (ptrExtraire_ == NULL) {
             var_cas_definitionClasse1.drop_operation () ;
             if (var_cas_entite.getPtr () != NULL) {
-              TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-              C_string message2_ ;
+              TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+              C_String message2_ ;
               message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
               message2_ << var_cas_entite ()->message_messageTypeEntite () ;
               var_cas_nomType1.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3294,8 +3294,8 @@ pr_extract_instruction_semantics_parser_2566_27_ (galgas_scanner & lexique_var_,
             var_cas_listeAttributs1.drop_operation () ;
             var_cas_tableDesClassesAncetresType1.drop_operation () ;
             if (var_cas_definitionClasse1.getPtr () != NULL) {
-              TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-              C_string message2_ ;
+              TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+              C_String message2_ ;
               message1_ (0 COMMA_HERE) << cPtr_typeGalgasClassType::static_string_message_messageGalgasType () ;
               message2_ << var_cas_definitionClasse1 ()->message_messageGalgasType () ;
               var_cas_nomType1.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3580,8 +3580,8 @@ pr_instruction_beginning_with_identifier_semantics_parser_2759_45_ (galgas_scann
     if (ptrExtraire_ == NULL) {
       var_cas_signatureRoutine.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteRoutine::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_nomVarDest.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3633,8 +3633,8 @@ pr_semantic_instruction_semantics_parser_2794_28_ (galgas_scanner & lexique_var_
     if (ptrExtraire_ == NULL) {
       var_cas_listeTypesParametresFormels.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteActionExterne::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_nomAction.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3815,8 +3815,8 @@ pr_semantic_instruction_semantics_parser_2933_28_ (galgas_scanner & lexique_var_
       var_cas_tableMethodesInserer.drop_operation () ;
       var_cas_mapKeyType.drop_operation () ;
       if (var_cas_typeVariableTable.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasMapType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_typeVariableTable ()->message_messageGalgasType () ;
         var_cas_nomTable.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3903,8 +3903,8 @@ pr_semantic_instruction_semantics_parser_2991_28_ (galgas_scanner & lexique_var_
       var_cas_tableMethodesChercher.drop_operation () ;
       var_cas_mapKeyType.drop_operation () ;
       if (var_cas_typeVariableTable.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasMapType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_typeVariableTable ()->message_messageGalgasType () ;
         var_cas_nomTable.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -3987,8 +3987,8 @@ pr_semantic_instruction_semantics_parser_3059_28_ (galgas_scanner & lexique_var_
   { cPtr_typeGalgas_string * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_string *> (var_cas_warningMessageExpressionType.getPtr ()) ;
     if (ptrExtraire_ == NULL) {
       if (var_cas_warningMessageExpressionType.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgas_string::static_string_message_messageGalgasType () ;
         message2_ << var_cas_warningMessageExpressionType ()->message_messageGalgasType () ;
         GGS_location (lexique_var_).signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4041,8 +4041,8 @@ pr_semantic_instruction_semantics_parser_3104_28_ (galgas_scanner & lexique_var_
   { cPtr_typeGalgas_string * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_string *> (var_cas_errorMessageExpressionType.getPtr ()) ;
     if (ptrExtraire_ == NULL) {
       if (var_cas_errorMessageExpressionType.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgas_string::static_string_message_messageGalgasType () ;
         message2_ << var_cas_errorMessageExpressionType ()->message_messageGalgasType () ;
         GGS_location (lexique_var_).signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4140,8 +4140,8 @@ pr_semantic_instruction_semantics_parser_3160_28_ (galgas_scanner & lexique_var_
   { cPtr_typeGalgas_string * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_string *> (var_cas_messageExpressionType.getPtr ()) ;
     if (ptrExtraire_ == NULL) {
       if (var_cas_messageExpressionType.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgas_string::static_string_message_messageGalgasType () ;
         message2_ << var_cas_messageExpressionType ()->message_messageGalgasType () ;
         GGS_location (lexique_var_).signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4191,8 +4191,8 @@ pr_semantic_instruction_semantics_parser_3192_28_ (galgas_scanner & lexique_var_
         { cPtr_typeGalgas_bool * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_bool *> (var_cas_resultType.getPtr ()) ;
           if (ptrExtraire_ == NULL) {
             if (var_cas_resultType.getPtr () != NULL) {
-              TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-              C_string message2_ ;
+              TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+              C_String message2_ ;
               message1_ (0 COMMA_HERE) << cPtr_typeGalgas_bool::static_string_message_messageGalgasType () ;
               message2_ << var_cas_resultType ()->message_messageGalgasType () ;
               GGS_location (lexique_var_).signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4313,8 +4313,8 @@ pr_semantic_instruction_semantics_parser_3258_28_ (galgas_scanner & lexique_var_
   { cPtr_typeGalgas_lstring * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_lstring *> (var_cas_typeNomFichierSource.getPtr ()) ;
     if (ptrExtraire_ == NULL) {
       if (var_cas_typeNomFichierSource.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgas_lstring::static_string_message_messageGalgasType () ;
         message2_ << var_cas_typeNomFichierSource ()->message_messageGalgasType () ;
         var_cas_nomFichierSource.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4337,8 +4337,8 @@ pr_semantic_instruction_semantics_parser_3258_28_ (galgas_scanner & lexique_var_
     if (ptrExtraire_ == NULL) {
       var_cas_startSymbolAltMap.drop_operation () ;
       if (var_cas_entity.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_C_grammarForSemantics::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entity ()->message_messageTypeEntite () ;
         var_cas_grammarName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4414,8 +4414,8 @@ pr_semantic_instruction_semantics_parser_3328_28_ (galgas_scanner & lexique_var_
           var_cas_listeAttributsSemantiques.drop_operation () ;
           var_cas_mapKeyType.drop_operation () ;
           if (var_cas_typeVariableTable.getPtr () != NULL) {
-            TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-            C_string message2_ ;
+            TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+            C_String message2_ ;
             message1_ (0 COMMA_HERE) << cPtr_typeGalgasMapType::static_string_message_messageGalgasType () ;
             message2_ << var_cas_typeVariableTable ()->message_messageGalgasType () ;
             var_cas_nomTable.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4484,8 +4484,8 @@ pr_semantic_instruction_semantics_parser_3328_28_ (galgas_scanner & lexique_var_
           var_cas_nomTypeListe1.drop_operation () ;
           var_cas_listeAttributsSemantiques1.drop_operation () ;
           if (var_cas_typeVariableListe1.getPtr () != NULL) {
-            TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-            C_string message2_ ;
+            TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+            C_String message2_ ;
             message1_ (0 COMMA_HERE) << cPtr_typeGalgasListType::static_string_message_messageGalgasType () ;
             message2_ << var_cas_typeVariableListe1 ()->message_messageGalgasType () ;
             var_cas_nomListe1.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4524,8 +4524,8 @@ pr_semantic_instruction_semantics_parser_3328_28_ (galgas_scanner & lexique_var_
               var_cas_nomTypeListe2.drop_operation () ;
               var_cas_listeAttributsSemantiques2.drop_operation () ;
               if (var_cas_typeVariableListe2.getPtr () != NULL) {
-                TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-                C_string message2_ ;
+                TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+                C_String message2_ ;
                 message1_ (0 COMMA_HERE) << cPtr_typeGalgasListType::static_string_message_messageGalgasType () ;
                 message2_ << var_cas_typeVariableListe2 ()->message_messageGalgasType () ;
                 var_cas_nomListe2.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4699,8 +4699,8 @@ pr_parse_match_case_semantics_parser_3552_24_ (galgas_scanner & lexique_var_,
     if (ptrExtraire_ == NULL) {
       var_cas_definitionClasse1.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_outTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -4719,8 +4719,8 @@ pr_parse_match_case_semantics_parser_3552_24_ (galgas_scanner & lexique_var_,
       var_cas_tableDesClassesAncetresType1.drop_operation () ;
       var_cas_isAbstract.drop_operation () ;
       if (var_cas_definitionClasse1.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasClassType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_definitionClasse1 ()->message_messageGalgasType () ;
         var_cas_outTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -6397,8 +6397,8 @@ pr_formal_argument_type_semantics_parser_4681_28_ (galgas_scanner & lexique_var_
       if (ptrExtraire_ == NULL) {
         var_cas_type_semantique.drop_operation () ;
         if (var_cas_entite.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
           message2_ << var_cas_entite ()->message_messageTypeEntite () ;
           var_cas_outGalgasTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -6459,8 +6459,8 @@ pr_formal_argument_type_semantics_parser_4703_28_ (galgas_scanner & lexique_var_
       if (ptrExtraire_ == NULL) {
         var_cas_type_semantique.drop_operation () ;
         if (var_cas_entite.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
           message2_ << var_cas_entite ()->message_messageTypeEntite () ;
           var_cas_outGalgasTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -6479,8 +6479,8 @@ pr_formal_argument_type_semantics_parser_4703_28_ (galgas_scanner & lexique_var_
     { cPtr_typeGalgasUndefinedListType * ptrExtraire_ = dynamic_cast <cPtr_typeGalgasUndefinedListType *> (var_cas_type_semantique.getPtr ()) ;
       if (ptrExtraire_ == NULL) {
         if (var_cas_type_semantique.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeGalgasUndefinedListType::static_string_message_messageGalgasType () ;
           message2_ << var_cas_type_semantique ()->message_messageGalgasType () ;
           var_cas_outGalgasTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -6536,8 +6536,8 @@ pr_formal_argument_type_semantics_parser_4728_28_ (galgas_scanner & lexique_var_
       if (ptrExtraire_ == NULL) {
         var_cas_type_semantique.drop_operation () ;
         if (var_cas_entite.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
           message2_ << var_cas_entite ()->message_messageTypeEntite () ;
           var_cas_outGalgasTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -6556,8 +6556,8 @@ pr_formal_argument_type_semantics_parser_4728_28_ (galgas_scanner & lexique_var_
     { cPtr_typeGalgasUndefinedMapType * ptrExtraire_ = dynamic_cast <cPtr_typeGalgasUndefinedMapType *> (var_cas_type_semantique.getPtr ()) ;
       if (ptrExtraire_ == NULL) {
         if (var_cas_type_semantique.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeGalgasUndefinedMapType::static_string_message_messageGalgasType () ;
           message2_ << var_cas_type_semantique ()->message_messageGalgasType () ;
           var_cas_outGalgasTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -6614,8 +6614,8 @@ pr_formal_argument_type_semantics_parser_4753_28_ (galgas_scanner & lexique_var_
       if (ptrExtraire_ == NULL) {
         var_cas_type_semantique.drop_operation () ;
         if (var_cas_entite.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
           message2_ << var_cas_entite ()->message_messageTypeEntite () ;
           var_cas_outGalgasTypeName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -6634,8 +6634,8 @@ pr_formal_argument_type_semantics_parser_4753_28_ (galgas_scanner & lexique_var_
     { cPtr_typeGalgasUndefinedClassType * ptrExtraire_ = dynamic_cast <cPtr_typeGalgasUndefinedClassType *> (var_cas_type_semantique.getPtr ()) ;
       if (ptrExtraire_ == NULL) {
         if (var_cas_type_semantique.getPtr () != NULL) {
-          TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-          C_string message2_ ;
+          TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+          C_String message2_ ;
           message1_ (0 COMMA_HERE) << cPtr_typeGalgasUndefinedClassType::static_string_message_messageGalgasType () ;
           message2_ << var_cas_type_semantique ()->message_messageGalgasType () ;
           var_cas_outGalgasTypeName.signalExtractError (lexique_var_, message1_, message2_) ;

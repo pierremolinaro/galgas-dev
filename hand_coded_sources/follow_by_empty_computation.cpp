@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------*
 
 #include "follow_by_empty_computation.h"
-#include "files/C_html_file_write.h"
-#include "bdd/C_bdd_set1.h"
+#include "files/C_HTML_FileWrite.h"
+#include "bdd/C_BDD_Set1.h"
 
 //---------------------------------------------------------------------------*
 
@@ -31,16 +31,16 @@
 
 static void
 computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
-                                   const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                                    const cVocabulary & inVocabulary,
-                                   C_bdd_set1 & outVocabularyFollowedByEmpty_BDD,
+                                   C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
                                    sint32 & outIterationsCount) {
   const sint32 allSymbolsCount = inVocabulary.getAllSymbolsCount () ;
-  TCUniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
+  TC_UniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
   vocabularyFollowedByEmpty_Array (inVocabulary.getStartSymbol () COMMA_HERE) = true ;
 
   const sint32 productionsCount = inProductionRules.getLength () ;
-  TCUniqueArray <bool> productionIsHandled (productionsCount, false COMMA_HERE) ;
+  TC_UniqueArray <bool> productionIsHandled (productionsCount, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;
   bool loop = true ;
@@ -66,10 +66,10 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   
 //--- Contruire le bdd, limité aux seuls non terminaux
   outVocabularyFollowedByEmpty_BDD.clear () ;
-  C_bdd_set1 temp (outVocabularyFollowedByEmpty_BDD) ;
+  C_BDD_Set1 temp (outVocabularyFollowedByEmpty_BDD) ;
   for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i< allSymbolsCount ; i++) {
     if (vocabularyFollowedByEmpty_Array (i COMMA_HERE)) {
-      temp.init (C_bdd::kEqual, (uint32) i) ;
+      temp.init (C_BDD::kEqual, (uint32) i) ;
       outVocabularyFollowedByEmpty_BDD |= temp ;
     }
   }
@@ -78,8 +78,8 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
 //---------------------------------------------------------------------------*
  
 static void
-displayNonterminalSymbolsFollowedByEmpty (const C_bdd_set1 & inVocabularyFollowedByEmpty_BDD,
-                                          C_html_file_write & inHTMLfile,
+displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowedByEmpty_BDD,
+                                          C_HTML_FileWrite & inHTMLfile,
                                           const cVocabulary & inVocabulary,
                                           const sint32 inIterationsCount) { 
   inHTMLfile.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
@@ -94,7 +94,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_bdd_set1 & inVocabularyFollowe
     inHTMLfile << n << " nonterminal symbols (including the start symbol) can be followed by the empty string.\n" ;
   }
   inHTMLfile.outputRawData ("</p>") ;
-  TCUniqueArray <bool> array ;
+  TC_UniqueArray <bool> array ;
   inVocabularyFollowedByEmpty_BDD.getArray (array) ;
   const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
   inHTMLfile.outputRawData ("<table class=\"result\">") ;
@@ -114,10 +114,10 @@ displayNonterminalSymbolsFollowedByEmpty (const C_bdd_set1 & inVocabularyFollowe
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                              C_html_file_write & inHTMLfile,
+                              C_HTML_FileWrite & inHTMLfile,
                               const cVocabulary & inVocabulary,
-                              const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                              C_bdd_set1 & outVocabularyFollowedByEmpty_BDD) {
+                              const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                              C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD) {
 //--- Console display
   co << "  Nonterminal symbols followed by empty string... " ;
 //--- Print in BNF file

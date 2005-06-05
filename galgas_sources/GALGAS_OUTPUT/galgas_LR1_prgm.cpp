@@ -20,13 +20,13 @@
 
 //--- END OF USER ZONE 1
 
-#include "utilities/F_display_exception.h"
-#include "time/C_timer.h"
-#include "generic_arraies/TCUniqueArray.h"
-#include "command_line_interface/F_analyze_command_line_opts.h"
-#include "command_line_interface/myMain.h"
-#include "command_line_interface/C_generic_cli_options.h"
-#include "command_line_interface/C_cli_options_group.h"
+#include "utilities/F_DisplayException.h"
+#include "time/C_Timer.h"
+#include "generic_arraies/TC_UniqueArray.h"
+#include "command_line_interface/F_Analyze_CLI_Options.h"
+#include "command_line_interface/mainForLIBPM.h"
+#include "command_line_interface/C_builtin_CLI_Options.h"
+#include "command_line_interface/C_CLI_OptionGroup.h"
 #include "galgas_cli_options.h"
 
 //---------------------------------------------------------------------------*
@@ -40,12 +40,12 @@
 
 //--- END OF USER ZONE 2
 
-class C_options_for_galgas_LR1_prgm : public C_cli_options_group {
+class C_options_for_galgas_LR1_prgm : public C_CLI_OptionGroup {
 //--- Constructor
   public : C_options_for_galgas_LR1_prgm (const bool inAcceptsDebugOption) ;
 
 //--- Included options
-  private : C_generic_cli_options mGenericOptions ;
+  private : C_builtin_CLI_Options mBuiltinOptions ;
   private : galgas_cli_options mOptions_galgas_cli_options; 
 } ;
 
@@ -57,8 +57,8 @@ class C_options_for_galgas_LR1_prgm : public C_cli_options_group {
 
 C_options_for_galgas_LR1_prgm::
 C_options_for_galgas_LR1_prgm (const bool inAcceptsDebugOption)
-:mGenericOptions (inAcceptsDebugOption) {
-  add (& mGenericOptions) ;
+:mBuiltinOptions (inAcceptsDebugOption) {
+  add (& mBuiltinOptions) ;
   add (& mOptions_galgas_cli_options) ;
 }
 
@@ -78,9 +78,9 @@ mScanner_ (& mTerminalIO), mTerminalIO (inIOparameters) {
 //---------------------------------------------------------------------------*
 
 void galgas_LR1_prgm
-::doCompilation (const C_string & inSourceFileName_,
+::doCompilation (const C_String & inSourceFileName_,
                  sint16 & returnCode) {
-  C_timer timer ;
+  C_Timer timer ;
   try{
     if (mTerminalIO.versionModeOn ()) {
       ::printf ("Reading '%s'\n", inSourceFileName_.getStringPtr ()) ;
@@ -88,39 +88,39 @@ void galgas_LR1_prgm
     mScanner_.resetAndLoadSourceFromFile (inSourceFileName_) ;
     beforeParsing_ () ;
     if (! mLexiqueMapForUse.isBuilt ()) {
-      C_string message ;
+      C_String message ;
       message << "the '"
                  "mLexiqueMapForUse"
                  "' program parameter has not been initialized" ;
-      throw C_exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
     }
     if (! mSemanticsComponentsMap.isBuilt ()) {
-      C_string message ;
+      C_String message ;
       message << "the '"
                  "mSemanticsComponentsMap"
                  "' program parameter has not been initialized" ;
-      throw C_exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
     }
     if (! mSyntaxComponentsMap.isBuilt ()) {
-      C_string message ;
+      C_String message ;
       message << "the '"
                  "mSyntaxComponentsMap"
                  "' program parameter has not been initialized" ;
-      throw C_exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
     }
     if (! mGrammarsComponentsMap.isBuilt ()) {
-      C_string message ;
+      C_String message ;
       message << "the '"
                  "mGrammarsComponentsMap"
                  "' program parameter has not been initialized" ;
-      throw C_exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
     }
     if (! mOptionComponentsMap.isBuilt ()) {
-      C_string message ;
+      C_String message ;
       message << "the '"
                  "mOptionComponentsMap"
                  "' program parameter has not been initialized" ;
-      throw C_exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
     }
     galgas_LR1_grammar grammar_ ;
     grammar_.startParsing_ (mScanner_,
@@ -167,7 +167,7 @@ void galgas_LR1_prgm
 
 //---------------------------------------------------------------------------*
 
-int myMain  (const int argc, const char * argv []) {
+int mainForLIBPM  (const int argc, const char * argv []) {
   sint16 returnCode = 0 ; // No error
 //--- Input/output parameters
   C_options_for_galgas_LR1_prgm options (false) ;
@@ -175,14 +175,14 @@ int myMain  (const int argc, const char * argv []) {
   IOparameters.mCompilerVersion = "version 0.14.1 (LR(1) grammar)" ;
   IOparameters.mMaxErrorsCount = 100 ;
   IOparameters.mMaxWarningsCount = 100 ;
-  TCUniqueArray <C_string> sourceFilesArray ;
+  TC_UniqueArray <C_String> sourceFilesArray ;
   #ifdef TARGET_API_MAC_CARBON
     printf ("%s\n", IOparameters.mCompilerVersion.getStringPtr ()) ;
   #endif
   #ifdef COMPILE_FOR_WIN32
     printf ("%s\n", IOparameters.mCompilerVersion.getStringPtr ()) ;
   #endif
-  F_analyze_command_line_opts (argc, argv,
+  F_Analyze_CLI_Options (argc, argv,
                                "version 0.14.1 (LR(1) grammar)",
                                options,
                                sourceFilesArray,

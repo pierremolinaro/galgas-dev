@@ -32,7 +32,7 @@
 #define macro_typeDefEntiteUtilisable
 #define macroInheritFrom_typeDefEntiteUtilisable
 
-class cPtr_typeDefEntiteUtilisable : public C_reference_count {
+class cPtr_typeDefEntiteUtilisable : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

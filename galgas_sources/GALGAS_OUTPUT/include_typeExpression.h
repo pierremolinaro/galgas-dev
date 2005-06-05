@@ -31,7 +31,7 @@
 
 #include "typeExpression.h"
 
-class cPtr_typeExpression : public C_reference_count {
+class cPtr_typeExpression : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

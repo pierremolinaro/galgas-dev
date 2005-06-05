@@ -18,21 +18,21 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
-#include "time/C_datetime.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
+#include "time/C_DateTime.h"
 
 #include "program_parser.h"
 
 //---------------------------------------------------------------------------*
 
 static void
-generate_header_file_for_prgm (C_lexique & inLexique,
-                               const C_string & inProgramComponentName,
+generate_header_file_for_prgm (C_Lexique & inLexique,
+                               const C_String & inProgramComponentName,
                                const GGS_M_optionComponents & inOptionComponentsMap,
                                const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList) {
 //--- Write includes
-  C_string generatedZone2 ;
+  C_String generatedZone2 ;
   generatedZone2 << "#ifndef INTERFACE_" << inProgramComponentName << "_DEFINED\n"
            "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
   GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.getFirstItem () ;
@@ -46,7 +46,7 @@ generate_header_file_for_prgm (C_lexique & inLexique,
   generatedZone2.writeHyphenLineComment () ;
 
 //--- Generate class declaration for each grammar
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   currentGrammar = inGrammarDescriptorsList.getFirstItem () ;
   while (currentGrammar != NULL) {
     macroValidPointer (currentGrammar) ;
@@ -54,7 +54,7 @@ generate_header_file_for_prgm (C_lexique & inLexique,
                    << " : public C_defaultUserSemanticActions {\n"
                       "  protected : " << currentGrammar->mLexiqueClassName << " mScanner_ ;\n"
                       "  protected : C_galgas_terminal_io mTerminalIO ;\n"
-                      "  protected : C_string mSourceFileExtension_ ;\n\n"
+                      "  protected : C_String mSourceFileExtension_ ;\n\n"
                       "//--- Command line options\n" ;
     GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
     while (currentOptionComponent != NULL) {
@@ -71,7 +71,7 @@ generate_header_file_for_prgm (C_lexique & inLexique,
     generatedZone3 << "\n//--- Constructor\n"
                       "  public : " << inProgramComponentName  << currentGrammar->mGrammarPostfix.getString ()
                    << " (const C_galgas_io_parameters & inIOparameters) ;\n\n"
-                      "  public : void doCompilation (const C_string & inSourceFileName_,\n"
+                      "  public : void doCompilation (const C_String & inSourceFileName_,\n"
                       "                               sint16 & returnCode) ;\n" ;
   //--- Engendrer la declaration des attributs de l'axiome
     GGS_L_signature_ForGrammarComponent::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.getFirstItem () ;
@@ -111,23 +111,23 @@ generate_header_file_for_prgm (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_cpp_file_for_prgm (C_lexique & inLexique,
+generate_cpp_file_for_prgm (C_Lexique & inLexique,
                             const GGS_M_optionComponents & inOptionComponentsMap,
                             const uint32 inMaxErrorsCount,
                             const uint32 inMaxWarningsCount,
-                            const C_string & inVersionString,
-                            const C_string & inSourceFileExtension,
-                            const C_string & inProgramComponentName,
+                            const C_String & inVersionString,
+                            const C_String & inSourceFileExtension,
+                            const C_String & inProgramComponentName,
                             const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList) {
 //--- Generate user includes
-  C_string generatedZone2 ;
-  generatedZone2 << "#include \"utilities/F_display_exception.h\"\n"
-             "#include \"time/C_timer.h\"\n"
-             "#include \"generic_arraies/TCUniqueArray.h\"\n"
-             "#include \"command_line_interface/F_analyze_command_line_opts.h\"\n"
-             "#include \"command_line_interface/myMain.h\"\n"
-             "#include \"command_line_interface/C_generic_cli_options.h\"\n"
-             "#include \"command_line_interface/C_cli_options_group.h\"\n" ;
+  C_String generatedZone2 ;
+  generatedZone2 << "#include \"utilities/F_DisplayException.h\"\n"
+             "#include \"time/C_Timer.h\"\n"
+             "#include \"generic_arraies/TC_UniqueArray.h\"\n"
+             "#include \"command_line_interface/F_Analyze_CLI_Options.h\"\n"
+             "#include \"command_line_interface/mainForLIBPM.h\"\n"
+             "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
+             "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n" ;
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
@@ -140,13 +140,13 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
   generatedZone2.writeHyphenLineComment () ;
 
 //--- Command line options for this program
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  generatedZone3 << "class C_options_for_" << inProgramComponentName << " : public C_cli_options_group {\n"
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  generatedZone3 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
              "//--- Constructor\n"
              "  public : C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) ;\n"
              "\n"
              "//--- Included options\n"
-             "  private : C_generic_cli_options mGenericOptions ;\n" ;
+             "  private : C_builtin_CLI_Options mBuiltinOptions ;\n" ;
   currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
@@ -157,11 +157,11 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--------------------------------------- Get bool options count
-  generatedZone3.writeTitleComment (C_string ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
+  generatedZone3.writeTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
   generatedZone3 << "C_options_for_" << inProgramComponentName  << "::\n"
              "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption)\n"
-             ":mGenericOptions (inAcceptsDebugOption) {\n"
-             "  add (& mGenericOptions) ;\n" ;
+             ":mBuiltinOptions (inAcceptsDebugOption) {\n"
+             "  add (& mBuiltinOptions) ;\n" ;
   currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
@@ -185,10 +185,10 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
     generatedZone3.writeHyphenLineComment () ;
   //--- 'doCompilation' method
     generatedZone3 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.getString () << "\n"
-               "::doCompilation (const C_string & inSourceFileName_,\n"
+               "::doCompilation (const C_String & inSourceFileName_,\n"
                "                 sint16 & returnCode) {\n" ;
     generatedZone3.incIndentation (+2) ;
-    generatedZone3 << "C_timer timer ;\n"
+    generatedZone3 << "C_Timer timer ;\n"
              "try{\n" ;
     generatedZone3.incIndentation (+2) ;
     generatedZone3 << "if (mTerminalIO.versionModeOn ()) {\n"
@@ -203,11 +203,11 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
       macroValidPointer (p) ;
       if (p->mFormalArgumentPassingMode.getValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
         generatedZone3 << "if (! " << nomCourant->aAttributAxiome << ".isBuilt ()) {\n"
-                          "  C_string message ;\n"
+                          "  C_String message ;\n"
                           "  message << \"the '\"\n"
                           "             \"" << nomCourant->aAttributAxiome << "\"\n"
                           "             \"' program parameter has not been initialized\" ;\n"
-                          "  throw C_exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;\n"
+                          "  throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;\n"
                           "}\n" ;
       }
       p = p->getNextItem () ;
@@ -266,9 +266,9 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
   generatedZone3 << "}\n\n" ;
   generatedZone3.writeHyphenLineComment () ;
 
-//--- Generate 'myMain' routine
+//--- Generate 'mainForLIBPM' routine
   const bool generateDebug = inLexique.getBoolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
-  generatedZone3 << "int myMain  (const int argc, const char * argv []) {\n"
+  generatedZone3 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
              "  sint16 returnCode = 0 ; // No error\n"
              "//--- Input/output parameters\n"
              "  C_options_for_" << inProgramComponentName << " options ("
@@ -284,14 +284,14 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
              "  IOparameters.mMaxWarningsCount = "
           << inMaxWarningsCount
           << " ;\n"
-             "  TCUniqueArray <C_string> sourceFilesArray ;\n"
+             "  TC_UniqueArray <C_String> sourceFilesArray ;\n"
              "  #ifdef TARGET_API_MAC_CARBON\n"
              "    printf (\"%s\\n\", IOparameters.mCompilerVersion.getStringPtr ()) ;\n"
              "  #endif\n"
              "  #ifdef COMPILE_FOR_WIN32\n"
              "    printf (\"%s\\n\", IOparameters.mCompilerVersion.getStringPtr ()) ;\n"
              "  #endif\n"
-             "  F_analyze_command_line_opts (argc, argv,\n"
+             "  F_Analyze_CLI_Options (argc, argv,\n"
              "                               " ;
   generatedZone3.writeCstringConstant (inVersionString) ;
   currentGrammar = inGrammarDescriptorsList.getFirstItem () ;
@@ -329,7 +329,7 @@ generate_cpp_file_for_prgm (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void generatePRGM (C_lexique & inLexique,
+void generatePRGM (C_Lexique & inLexique,
                    GGS_lstring & inProgramComponentName,
                    GGS_lstring & inSourceFileExtension,
                    GGS_lstring & inVersionString,

@@ -32,7 +32,7 @@
 #define macro_AC_semanticsEntity
 #define macroInheritFrom_AC_semanticsEntity
 
-class cPtr_AC_semanticsEntity : public C_reference_count {
+class cPtr_AC_semanticsEntity : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

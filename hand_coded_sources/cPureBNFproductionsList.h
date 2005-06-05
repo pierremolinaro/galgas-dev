@@ -23,25 +23,25 @@
 
 //---------------------------------------------------------------------------*
 
-#include "linked_lists/TC_fifo.h"
-#include "bdd/C_bdd_set1.h"
-#include "utilities/C_string.h"
-#include "utilities/swap.h"
+#include "linked_lists/TC_FIFO.h"
+#include "bdd/C_BDD_Set1.h"
+#include "utilities/C_String.h"
+#include "utilities/TF_Swap.h"
 
 //---------------------------------------------------------------------------*
 
 class cVocabulary ;
-class C_text_file_write ;
+class C_TextFileWrite ;
 
 //---------------------------------------------------------------------------*
 
 class cProduction {
-  public : C_string mSourceFileName ;
+  public : C_String mSourceFileName ;
   public : sint32 aLigneDefinition ;
   public : sint32 aColonneDefinition ;
   public : sint32 aNumeroNonTerminalGauche ;
-  public : TCUniqueArray <sint16> aDerivation ;
-  public : C_bdd_set1 aPremierDeProduction ;
+  public : TC_UniqueArray <sint16> aDerivation ;
+  public : C_BDD_Set1 aPremierDeProduction ;
 
 //--- Constructor
   public : cProduction (void) ;
@@ -49,8 +49,8 @@ class cProduction {
 //--- Generate a C++ call instruction of this production
   public : void engendrerAppelProduction (const sint16 nombreDeParametres,
                                           const cVocabulary & inVocabulary,
-                                          const C_string & inAltName,
-                                          AC_output_stream & fichierCPP) const ;
+                                          const C_String & inAltName,
+                                          AC_OutputStream & fichierCPP) const ;
 
 //--- No copy
   private : cProduction (const cProduction &) ;
@@ -62,14 +62,14 @@ class cProduction {
 
 //---------------------------------------------------------------------------*
 
-class cPureBNFproductionsList : public TC_fifo <cProduction> {
-   public : TCUniqueArray <sint32> tableauIndicePremiereProduction ;
-   public : TCUniqueArray <sint32> tableauIndiceDerniereProduction ;
-   public : TCUniqueArray <sint32> tableauIndirectionProduction ;
+class cPureBNFproductionsList : public TC_FIFO <cProduction> {
+   public : TC_UniqueArray <sint32> tableauIndicePremiereProduction ;
+   public : TC_UniqueArray <sint32> tableauIndiceDerniereProduction ;
+   public : TC_UniqueArray <sint32> tableauIndirectionProduction ;
 
-   public : TCUniqueArray <sint32> mFirstProductionIndex ;
-   public : TCUniqueArray <sint32> mLastProductionIndex ;
-   public : TCUniqueArray <sint32> mProductionIndex ;
+   public : TC_UniqueArray <sint32> mFirstProductionIndex ;
+   public : TC_UniqueArray <sint32> mLastProductionIndex ;
+   public : TC_UniqueArray <sint32> mProductionIndex ;
 
    public : void buildProductionsArray (const sint32 inTerminalSymbolsCount,
                                         const sint32 inNonTerminalSymbolsCount) ;

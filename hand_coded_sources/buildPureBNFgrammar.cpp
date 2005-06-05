@@ -18,8 +18,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
-#include "files/C_html_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_HTML_FileWrite.h"
 
 //---------------------------------------------------------------------------*
 
@@ -33,7 +33,7 @@
 static void
 fixNewNonterminalSymbolsForList (const GGS_L_ruleSyntaxSignature & inList,
                                  cVocabulary & ioVocabulary,
-                                 const C_string & inSyntaxComponentName,
+                                 const C_String & inSyntaxComponentName,
                                  sint32 & ioCount) {
   GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inList.getFirstItem () ;
   while (currentInstruction != NULL) {
@@ -47,7 +47,7 @@ fixNewNonterminalSymbolsForList (const GGS_L_ruleSyntaxSignature & inList,
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
 fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                          const C_string & inSyntaxComponentName,
+                          const C_String & inSyntaxComponentName,
                           sint32 & ioCount) {
   mAddedNonterminalmSymbolIndex.mValue = (uint32) ioVocabulary.getNonTerminalSymbolsCount () ;
 
@@ -72,7 +72,7 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
 
 void cPtr_T_selectInstruction_forGrammarComponent::
 fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                          const C_string & inSyntaxComponentName,
+                          const C_String & inSyntaxComponentName,
                           sint32 & ioCount) {
   mAddedNonterminalmSymbolIndex.mValue = (uint32) ioVocabulary.getNonTerminalSymbolsCount () ;
 
@@ -97,7 +97,7 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
-                          const C_string & /* inSyntaxComponentName */,
+                          const C_String & /* inSyntaxComponentName */,
                           sint32 & /* ioCount */) {
 }
 
@@ -105,7 +105,7 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
 fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
-                          const C_string & /* inSyntaxComponentName */,
+                          const C_String & /* inSyntaxComponentName */,
                           sint32 & /* ioCount */) {
 }
 
@@ -120,7 +120,7 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 /* inTerminalSymbolsCount */,
-                      TCUniqueArray <sint16> & ioInstructionsList) {
+                      TC_UniqueArray <sint16> & ioInstructionsList) {
   ioInstructionsList.addObject ((sint16) mTerminalSymbolIndex.mValue) ;
 }
 
@@ -128,7 +128,7 @@ buildRightDerivation (const sint32 /* inTerminalSymbolsCount */,
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 inTerminalSymbolsCount,
-                      TCUniqueArray <sint16> & ioInstructionsList) {
+                      TC_UniqueArray <sint16> & ioInstructionsList) {
 
   ioInstructionsList.addObject ((sint16) (mNonterminalSymbolIndex.mValue
                                            + inTerminalSymbolsCount)) ;
@@ -138,7 +138,7 @@ buildRightDerivation (const sint32 inTerminalSymbolsCount,
 
 void cPtr_T_selectInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 inTerminalSymbolsCount,
-                      TCUniqueArray <sint16> & ioInstructionsList) {
+                      TC_UniqueArray <sint16> & ioInstructionsList) {
   ioInstructionsList.addObject ((sint16) (mAddedNonterminalmSymbolIndex.mValue
                                            + inTerminalSymbolsCount)) ;
 }
@@ -147,7 +147,7 @@ buildRightDerivation (const sint32 inTerminalSymbolsCount,
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 inTerminalSymbolsCount,
-                      TCUniqueArray <sint16> & ioInstructionsList) {
+                      TC_UniqueArray <sint16> & ioInstructionsList) {
   GGS_L_branchList_ForGrammarComponent::element_type * firstBranch = mRepeatList.getFirstItem () ;
   macroValidPointer (firstBranch) ;
   GGS_L_ruleSyntaxSignature::element_type * instruction = firstBranch->mInstructionsList.getFirstItem () ;
@@ -170,7 +170,7 @@ buildRightDerivation (const sint32 inTerminalSymbolsCount,
 
 void cPtr_T_selectInstruction_forGrammarComponent::
 buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
-                                 const C_string & inSyntaxComponentName,
+                                 const C_String & inSyntaxComponentName,
                                  cPureBNFproductionsList & ioProductions) {
 // A ; choix X ou Y ou Z ... fin choix ; B
 //  'aNumeroNonTerminauxRepeter' désigne le nouveau non terminal 'choix_xx_xx', noté <W>,
@@ -183,7 +183,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.getFirstItem () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    TCUniqueArray <sint16> derivation ;
+    TC_UniqueArray <sint16> derivation ;
     GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionsList.getFirstItem () ;
     while (instruction != NULL) {
        instruction->mInstruction ()->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
@@ -218,7 +218,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
 buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
-                                 const C_string & inSyntaxComponentName,
+                                 const C_String & inSyntaxComponentName,
                                  cPureBNFproductionsList & ioProductions) {
 //--- How the sequence 'A ; repeat X while Y while Z ... end repeat ; B' is translated into pure BNF productions
 // A new non terminal, call it <T> is created (in fact, in the BNF file, this non terminal has a mangled
@@ -249,7 +249,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = firstBranch->getNextItem () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    TCUniqueArray <sint16> derivation ;
+    TC_UniqueArray <sint16> derivation ;
   //--- insert branch instructions
     GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionsList.getFirstItem () ;
     while (instruction != NULL) {
@@ -294,7 +294,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
 buildSelectAndRepeatProductions (const sint32 /* inTerminalSymbolsCount */,
-                                 const C_string & /* inSyntaxComponentName */,
+                                 const C_String & /* inSyntaxComponentName */,
                                  cPureBNFproductionsList  & /* ioProductions */) {
 }
 
@@ -302,7 +302,7 @@ buildSelectAndRepeatProductions (const sint32 /* inTerminalSymbolsCount */,
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 buildSelectAndRepeatProductions (const sint32 /* inTerminalSymbolsCount */,
-                                 const C_string & /* inSyntaxComponentName */,
+                                 const C_String & /* inSyntaxComponentName */,
                                  cPureBNFproductionsList  & /* ioProductions */) {
 }
 
@@ -344,7 +344,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
     GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentComponent->mProductionRulesList.getFirstItem () ;
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
-      TCUniqueArray <sint16> derivation ;
+      TC_UniqueArray <sint16> derivation ;
       GGS_L_ruleSyntaxSignature::element_type * instruction = currentRule->mInstructionsList.getFirstItem () ;
       while (instruction != NULL) {
         macroValidPointer (instruction) ;
@@ -391,7 +391,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
     p.aLigneDefinition = 0 ;
     p.aColonneDefinition = 0 ;
     p.aNumeroNonTerminalGauche = ioVocabulary.getAllSymbolsCount () - 1 ;
-    TCUniqueArray <sint16> derivation ;
+    TC_UniqueArray <sint16> derivation ;
     derivation.addObject ((sint16) ioVocabulary.getStartSymbol ()) ;
     swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
@@ -411,7 +411,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
 //---------------------------------------------------------------------------*
 
 void
-printPureBNFgrammarInBNFfile (C_html_file_write & inHTMLfile,
+printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) {
   const sint32 productionsCount = inProductions.getLength () ;
@@ -473,16 +473,16 @@ buildProductionsArray (const sint32 inTerminalSymbolsCount,
   const sint32 nombreProductions = getLength () ;
 
 //--- Construire les tableaux d'indices
-  { TCUniqueArray <sint32> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
+  { TC_UniqueArray <sint32> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
     swap (tableauIndicePremiereProduction, temp) ;
   }
-  { TCUniqueArray <sint32> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
+  { TC_UniqueArray <sint32> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
     swap (tableauIndiceDerniereProduction, temp) ;
   }
 
 //--- Construire le tableau indiquant si une production a été traitée et le tableau des indirections
-  TCUniqueArray <bool> productionTraitee (nombreProductions, false COMMA_HERE) ;
-  { TCUniqueArray <sint32> temp (nombreProductions, -1 COMMA_HERE) ;
+  TC_UniqueArray <bool> productionTraitee (nombreProductions, false COMMA_HERE) ;
+  { TC_UniqueArray <sint32> temp (nombreProductions, -1 COMMA_HERE) ;
     swap (tableauIndirectionProduction, temp) ;
   }
 

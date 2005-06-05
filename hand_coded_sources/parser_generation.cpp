@@ -18,9 +18,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_text_file_write.h"
-#include "time/C_datetime.h"
-#include "memory/M_memory_control.h"
+#include "files/C_TextFileWrite.h"
+#include "time/C_DateTime.h"
+#include "utilities/MF_MemoryControl.h"
 
 #include "semantics_instructions.h"
 #include "parser_generation.h"
@@ -30,17 +30,17 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate::
-generateHdeclarations (AC_output_stream & /* inHfile */,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
+generateHdeclarations (AC_OutputStream & /* inHfile */,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate::
-generateHdeclarations_2 (AC_output_stream & /* inHfile */,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & /* inLexique */) {
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -52,9 +52,9 @@ bool cPtr_typeNonterminalToGenerate::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate
-::generateCppClassDeclaration (AC_output_stream & inHfile,
-                               const C_string & inLexiqueClassName,
-                               const C_string & /* inTargetFileName */,
+::generateCppClassDeclaration (AC_OutputStream & inHfile,
+                               const C_String & inLexiqueClassName,
+                               const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) {
   GGS_M_nonterminalSymbolAlts::element_type * currentAlt
         = mNonterminalSymbolParametersMap.getFirstItem () ;
@@ -78,9 +78,9 @@ void cPtr_typeNonterminalToGenerate
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate
-::generateCppClassImplementation (AC_output_stream & /* inCppFile */,
-                                  const C_string & /* inLexiqueClassName */,
-                                  const C_string & /* inTargetFileName */,
+::generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
+                                  const C_String & /* inLexiqueClassName */,
+                                  const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
 }
@@ -88,17 +88,17 @@ void cPtr_typeNonterminalToGenerate
 //---------------------------------------------------------------------------*
 
 void cPtr_typeProductionAengendrer::
-generateHdeclarations (AC_output_stream & /* inHfile */,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
+generateHdeclarations (AC_OutputStream & /* inHfile */,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeProductionAengendrer::
-generateHdeclarations_2 (AC_output_stream & /* inHfile */,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & /* inLexique */) {
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -110,9 +110,9 @@ bool cPtr_typeProductionAengendrer::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeProductionAengendrer
-::generateCppClassDeclaration (AC_output_stream & inHfile,
-                               const C_string & inLexiqueClassName,
-                               const C_string & inTargetFileName,
+::generateCppClassDeclaration (AC_OutputStream & inHfile,
+                               const C_String & inLexiqueClassName,
+                               const C_String & inTargetFileName,
                                sint32 & ioPrototypeIndex) {
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::element_type * currentAlt = mAltProductionMap.getFirstItem () ;
@@ -157,12 +157,12 @@ void cPtr_typeProductionAengendrer
 //---------------------------------------------------------------------------*
 
 void cPtr_typeProductionAengendrer
-::generateCppClassImplementation (AC_output_stream & inCppFile,
-                                  const C_string & inLexiqueClassName,
-                                  const C_string & inTargetFileName,
+::generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                  const C_String & inLexiqueClassName,
+                                  const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) {
-  inCppFile.writeTitleComment (C_string ("Implementation of production rule '") + aNomProduction + "'") ;
+  inCppFile.writeTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::element_type * currentAlt = mAltProductionMap.getFirstItem () ;
   bool first = true ;
@@ -293,11 +293,11 @@ void cPtr_typeProductionAengendrer
 
 void
 engendrerDeclarationPrototypesReglesDeProduction (GGS_lstring & nomComposant,
-                                                  const C_string & inLexiqueName,
+                                                  const C_String & inLexiqueName,
                                                   GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
-                                                  AC_output_stream & inHfile) {
+                                                  AC_OutputStream & inHfile) {
 //---  declarer une classe si il existe des règles de production à implémenter
-  inHfile.writeTitleComment (C_string ("Parser class ") + nomComposant + " declaration") ;
+  inHfile.writeTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
   inHfile << "class " << nomComposant << " {\n"
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;
   GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.getFirstItem () ;

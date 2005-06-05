@@ -17,13 +17,13 @@
 //---------------------------------------------------------------------------*
 
 #define macro_typeElementMessage \
-public : virtual void engendrerMessage (C_text_file_write & inCppFile) const = 0 ; \
+public : virtual void engendrerMessage (C_TextFileWrite & inCppFile) const = 0 ; \
 public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeElementMessage \
-public : virtual void engendrerMessage (C_text_file_write & inCppFile) const ; \
+public : virtual void engendrerMessage (C_TextFileWrite & inCppFile) const ; \
 public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName) const ;
 
 //---------------------------------------------------------------------------*

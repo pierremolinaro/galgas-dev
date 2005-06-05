@@ -33,11 +33,11 @@
 
 //---------------------------------------------------------------------------*
 
-#include "galgas/C_lexique.h"
+#include "galgas/C_Lexique.h"
 
 //---------------------------------------------------------------------------*
 
-class C_text_file_write ;
+class C_TextFileWrite ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -107,22 +107,22 @@ template <typename INFO, typename KEY> class cClassMethodsMap {
   public : static cClassMethodsMap <INFO, KEY> constructor_empty (void) ;
 
 //--- Method for searching
-  public : element_type * searchKey (C_lexique & inLexique,
+  public : element_type * searchKey (C_Lexique & inLexique,
                                   const KEY & inKey,
                                   const GGS_location & inLocation,
                                   const char * inSearchErrorMessage) ;
-  public : element_type * searchForOverride (C_lexique & inLexique,
+  public : element_type * searchForOverride (C_Lexique & inLexique,
                                   const KEY & inKey,
                                   const GGS_location & inLocation,
                                   const char * inSearchErrorMessage) ;
 
-  public : sint32 insertAbstract (C_lexique & inLexique,
+  public : sint32 insertAbstract (C_Lexique & inLexique,
                                   const INFO & info,
                                   const KEY & clef,
                                   const GGS_location & inLocation,
                                   const char * messageErreurInsertion) ;
 
-  public : sint32 insertNotAbstract (C_lexique & inLexique,
+  public : sint32 insertNotAbstract (C_Lexique & inLexique,
                                      const INFO & info,
                                      const KEY & clef,
                                      const GGS_location & inLocation,
@@ -136,8 +136,8 @@ template <typename INFO, typename KEY> class cClassMethodsMap {
                                    element_type * & racine) ;
 
 //--- MŽthodes de bloc
-  public : void prologue_definitionClasseNonAbstraite (C_lexique &) {}
-  public : void epilogue_definitionClasseNonAbstraite (C_lexique &) ;
+  public : void prologue_definitionClasseNonAbstraite (C_Lexique &) {}
+  public : void epilogue_definitionClasseNonAbstraite (C_Lexique &) ;
 } ;
 
 //---------------------------------------------------------------------------*

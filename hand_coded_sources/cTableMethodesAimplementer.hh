@@ -179,7 +179,7 @@ template <typename INFO, typename KEY> void cTableMethodesAimplementer <INFO, KE
 //---------------------------------------------------------------------------*
 
 template <typename INFO, typename KEY>
-sint32 cTableMethodesAimplementer <INFO, KEY>::insertAbstract (C_lexique & inLexique,
+sint32 cTableMethodesAimplementer <INFO, KEY>::insertAbstract (C_Lexique & inLexique,
                                           const INFO & info,
                                           const KEY & clef,
                                          const GGS_location & inLocation,
@@ -201,7 +201,7 @@ sint32 cTableMethodesAimplementer <INFO, KEY>::insertAbstract (C_lexique & inLex
 //---------------------------------------------------------------------------*
 
 template <typename INFO, typename KEY>
-sint32 cTableMethodesAimplementer <INFO, KEY>::insertNotAbstract (C_lexique & inLexique,
+sint32 cTableMethodesAimplementer <INFO, KEY>::insertNotAbstract (C_Lexique & inLexique,
                                           const INFO & info,
                                           const KEY & clef,
                                          const GGS_location & inLocation,

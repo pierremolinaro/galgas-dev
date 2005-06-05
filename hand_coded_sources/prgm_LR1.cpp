@@ -18,7 +18,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "bdd/C_bdd.h"
+#include "bdd/C_BDD.h"
 
 #include "galgas_LR1_prgm.h"
 
@@ -33,7 +33,7 @@ void galgas_LR1_prgm::beforeParsing_ (void) {
   mTerminalIO.mFileGenerationStartDir = mScanner_.getSourceFile ().getPath () + "/GALGAS_OUTPUT" ;
   const bool ok = mTerminalIO.mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
-    C_string errorMessage ;
+    C_String errorMessage ;
     errorMessage << "cannot create directory '" << mTerminalIO.mFileGenerationStartDir << "'" ;
     mScanner_.getGalgasIOptr ()->printFileErrorMessage (mScanner_.getSourceFile (), errorMessage.getStringPtr ()) ;
   }
@@ -42,7 +42,7 @@ void galgas_LR1_prgm::beforeParsing_ (void) {
 //--------------------------------------------------------------------------*
 
 void galgas_LR1_prgm::afterParsing_ (void) {
-  C_bdd::markAndSweepUnusedNodes () ;
+  C_BDD::markAndSweepUnusedNodes () ;
   printf ("%lu checked line%s, %lu preserved line%s, %lu generated line%s for %lu file%s.\n",
           mScanner_.getCheckedLines (), (mScanner_.getCheckedLines () > 1) ? "s" : "",
           mScanner_.getPreservedLines (), (mScanner_.getPreservedLines () > 1) ? "s" : "",

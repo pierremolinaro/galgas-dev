@@ -18,8 +18,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_text_file_write.h"
-#include "memory/M_memory_control.h"
+#include "files/C_TextFileWrite.h"
+#include "utilities/MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------*
 
@@ -30,7 +30,7 @@
 //---------------------------------------------------------------------------*
 
 static bool
-instructionsListHaveSameSyntaxSignatures (C_lexique & lexique_var_,
+instructionsListHaveSameSyntaxSignatures (C_Lexique & lexique_var_,
                                           const GGS_L_ruleSyntaxSignature & inReferenceList,
                                           const GGS_L_ruleSyntaxSignature & inOtherList,
                                           const GGS_location & inEndOfInstructionListLocation) {
@@ -66,13 +66,13 @@ instructionsListHaveSameSyntaxSignatures (C_lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_repeatInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_lexique & lexique_var_,
+isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
   const cPtr_T_repeatInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_repeatInstruction_forGrammarComponent *> (inInstruction) ;
   bool sameSignature = p != NULL ;
   if (! sameSignature) {
-    C_string errorMessage ;
+    C_String errorMessage ;
     errorMessage << "syntax signature error : a repeat instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
   }else{
@@ -94,13 +94,13 @@ isSameSyntaxInstructionThan (C_lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_selectInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_lexique & lexique_var_,
+isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
   const cPtr_T_selectInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_selectInstruction_forGrammarComponent *> (inInstruction) ;
   bool sameSignature = p != NULL ;
   if (! sameSignature) {
-    C_string errorMessage ;
+    C_String errorMessage ;
     errorMessage << "syntax signature error : a select instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
   }else{
@@ -124,12 +124,12 @@ isSameSyntaxInstructionThan (C_lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_nonterminalInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_lexique & lexique_var_,
+isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_T_nonterminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_nonterminalInstruction_forGrammarComponent *> (inInstruction) ;
   if ((p == NULL) || (p->mNonterminalSymbolName.compareString (mNonterminalSymbolName) != 0)) {
-    C_string errorMessage ;
+    C_String errorMessage ;
     errorMessage << "syntax signature error : <" << mNonterminalSymbolName << "> non terminal is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
     p = NULL ;
@@ -140,12 +140,12 @@ isSameSyntaxInstructionThan (C_lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_terminalInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_lexique & lexique_var_,
+isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_T_terminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_terminalInstruction_forGrammarComponent *> (inInstruction) ;
   if ((p == NULL) || (p->mTerminalSymbolName.compareString (mTerminalSymbolName) != 0)) {
-    C_string errorMessage ;
+    C_String errorMessage ;
     errorMessage << "syntax signature error : $" << mTerminalSymbolName << "$ terminal is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
     p = NULL ;
@@ -156,7 +156,7 @@ isSameSyntaxInstructionThan (C_lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 void
-checkLabelSignatures (C_lexique & lexique_var_,
+checkLabelSignatures (C_Lexique & lexique_var_,
                       GGS_typeAltProductionsMap & inAltProductionMap) {
   GGS_typeAltProductionsMap::element_type * current = inAltProductionMap.getFirstItem () ;
   macroValidPointer (current) ;
@@ -175,7 +175,7 @@ checkLabelSignatures (C_lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 void
-checkParseRewindSignatures (C_lexique & lexique_var_,
+checkParseRewindSignatures (C_Lexique & lexique_var_,
                             GGS_L_parse_rewind_signature_list & inParseRewindSignatureList) {
   GGS_L_parse_rewind_signature_list::element_type * current = inParseRewindSignatureList.getFirstItem () ;
   macroValidPointer (current) ;
@@ -200,9 +200,9 @@ checkParseRewindSignatures (C_lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionVerifSyntaxique
-::generateSelectAndRepeatPrototypes (AC_output_stream & /* inHfile */,
-                                     const C_string & /* inLexiqueClassName */,
-                                     const C_string & /* inTargetFileName */,
+::generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
+                                     const C_String & /* inLexiqueClassName */,
+                                     const C_String & /* inTargetFileName */,
                                      sint32 & /* ioPrototypeIndex */,
                                      const bool /* inNotDeclared */) {
 }
@@ -210,9 +210,9 @@ void cPtr_typeInstructionVerifSyntaxique
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionVerifSyntaxique
-::generateInstruction (AC_output_stream & inCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & inCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
@@ -233,7 +233,7 @@ void cPtr_typeInstructionVerifSyntaxique
   if (inGenerateDebug) {
     GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.getFirstItem () ;
     inCppFile << "#ifdef DEBUG_TRACE_ENABLED\n"
-                 "  { C_string message_ "
+                 "  { C_String message_ "
               << ((argument == NULL) ? "" : "(\" ?\") ")
               << ";\n" ;
     while (argument != NULL) {
@@ -279,9 +279,9 @@ bool cPtr_typeInstructionVerifSyntaxique
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionAppelNonTerminal
-::generateSelectAndRepeatPrototypes (AC_output_stream & /* inHfile */,
-                                     const C_string & /* inLexiqueClassName */,
-                                     const C_string & /* inTargetFileName */,
+::generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
+                                     const C_String & /* inLexiqueClassName */,
+                                     const C_String & /* inTargetFileName */,
                                      sint32 & /* ioPrototypeIndex */,
                                      const bool /* inNotDeclared */) {
 }
@@ -289,9 +289,9 @@ void cPtr_typeInstructionAppelNonTerminal
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionAppelNonTerminal
-::generateInstruction (AC_output_stream & inCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & inCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -344,9 +344,9 @@ bool cPtr_typeInstructionAppelNonTerminal
 //---------------------------------------------------------------------------*
 
 void cPtr_C_select_instruction
-::generateSelectAndRepeatPrototypes (AC_output_stream & inHfile,
-                                     const C_string & inLexiqueClassName,
-                                     const C_string & inTargetFileName,
+::generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+                                     const C_String & inLexiqueClassName,
+                                     const C_String & inTargetFileName,
                                      sint32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
@@ -371,9 +371,9 @@ void cPtr_C_select_instruction
 //---------------------------------------------------------------------------*
 
 void cPtr_C_select_instruction
-::generateInstruction (AC_output_stream & inCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & inCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
@@ -432,9 +432,9 @@ bool cPtr_C_select_instruction
 //---------------------------------------------------------------------------*
 
 void cPtr_C_repeat_instruction
-::generateSelectAndRepeatPrototypes (AC_output_stream & inHfile,
-                                     const C_string & inLexiqueClassName,
-                                     const C_string & inTargetFileName,
+::generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+                                     const C_String & inLexiqueClassName,
+                                     const C_String & inTargetFileName,
                                      sint32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
@@ -459,9 +459,9 @@ void cPtr_C_repeat_instruction
 //---------------------------------------------------------------------------*
 
 void cPtr_C_repeat_instruction
-::generateInstruction (AC_output_stream & inCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & inCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
@@ -533,9 +533,9 @@ bool cPtr_C_repeat_instruction
 //---------------------------------------------------------------------------*
 
 void cPtr_C_parse_rewind_instruction
-::generateSelectAndRepeatPrototypes (AC_output_stream & inHfile,
-                                     const C_string & inLexiqueClassName,
-                                     const C_string & inTargetFileName,
+::generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+                                     const C_String & inLexiqueClassName,
+                                     const C_String & inTargetFileName,
                                      sint32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   GGS_typeListeBranchesInstructions::element_type * p = mBranchList.getFirstItem () ;
@@ -564,9 +564,9 @@ void cPtr_C_parse_rewind_instruction
 //---------------------------------------------------------------------------*
 
 void cPtr_C_parse_rewind_instruction
-::generateInstruction (AC_output_stream & inCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & inCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
@@ -625,9 +625,9 @@ bool cPtr_C_parse_rewind_instruction
 //---------------------------------------------------------------------------*
 
 void cPtr_C_parse_when_else_instruction::
-generateSelectAndRepeatPrototypes (AC_output_stream & inHfile,
-                                   const C_string & inLexiqueClassName,
-                                   const C_string & inTargetFileName,
+generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+                                   const C_String & inLexiqueClassName,
+                                   const C_String & inTargetFileName,
                                    sint32 & ioPrototypeIndex,
                                    const bool inNotDeclared) {
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.getFirstItem () ;
@@ -665,9 +665,9 @@ generateSelectAndRepeatPrototypes (AC_output_stream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_parse_when_else_instruction::
-generateInstruction (AC_output_stream & inCppFile,
-                     const C_string & inLexiqueClassName,
-                     const C_string & inTargetFileName,
+generateInstruction (AC_OutputStream & inCppFile,
+                     const C_String & inLexiqueClassName,
+                     const C_String & inTargetFileName,
                      sint32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {

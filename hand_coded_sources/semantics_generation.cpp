@@ -17,9 +17,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_text_file_write.h"
-#include "time/C_datetime.h"
-#include "memory/M_memory_control.h"
+#include "files/C_TextFileWrite.h"
+#include "time/C_DateTime.h"
+#include "utilities/MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------*
 
@@ -32,12 +32,12 @@
 //---------------------------------------------------------------------------*
 
 void
-buildFileNameWithPath (C_lexique &,
+buildFileNameWithPath (C_Lexique &,
                        GGS_lstring & outFileNameWithPath,
                        GGS_lstring inPath,
                        const GGS_lstring & inCppClassName,
                        const GGS_lstring & inExtension) {
-  C_string s ;
+  C_String s ;
   if (inPath.getLength () > 0) {
     s << inPath << '/' ;
   }
@@ -47,7 +47,7 @@ buildFileNameWithPath (C_lexique &,
 
 //---------------------------------------------------------------------------*
 
-void appendJokersIfNeeded (C_lexique &,
+void appendJokersIfNeeded (C_Lexique &,
                            GGS_typeCplusPlusNameList & ioVariablesList,
                            GGS_uint inEffectiveArgumentsCount,
                            GGS_uint inFormalParametersCount,
@@ -69,18 +69,18 @@ void appendJokersIfNeeded (C_lexique &,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeExternTypeToGenerate::
-generateHdeclarations_2 (AC_output_stream & /* inHfile */,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & /* inLexique */) {
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeExternTypeToGenerate::
-generateHdeclarations (AC_output_stream & inHfile,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
-  inHfile.writeTitleComment (C_string ("Extern type '") + mName +"'") ;
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
+  inHfile.writeTitleComment (C_String ("Extern type '") + mName +"'") ;
   inHfile << "typedef " << mCppClassName << " GGS_" << mName << " ;\n\n" ;
 }
 
@@ -93,18 +93,18 @@ bool cPtr_typeExternTypeToGenerate::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeExternTypeToGenerate
-::generateCppClassDeclaration (AC_output_stream & /* inHfile */,
-                               const C_string & /* inLexiqueClassName */,
-                               const C_string & /* inTargetFileName*/,
+::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                               const C_String & /* inLexiqueClassName */,
+                               const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeExternTypeToGenerate
-::generateCppClassImplementation (AC_output_stream & /* inCppFile */,
-                                  const C_string & /* inLexiqueClassName */,
-                                  const C_string & /* inTargetFileName */,
+::generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
+                                  const C_String & /* inLexiqueClassName */,
+                                  const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
 }
@@ -119,18 +119,18 @@ void cPtr_typeExternTypeToGenerate
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineAengendrer::
-generateHdeclarations_2 (AC_output_stream & /* inHfile */,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & /* inLexique */) {
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineAengendrer::
-generateHdeclarations (AC_output_stream & inHfile,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
-  inHfile << "void routine_" << aNomRoutine << " (C_lexique &" ;
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
+  inHfile << "void routine_" << aNomRoutine << " (C_Lexique &" ;
   GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.getFirstItem () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
@@ -149,22 +149,22 @@ bool cPtr_typeRoutineAengendrer::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineAengendrer
-::generateCppClassDeclaration (AC_output_stream & /* inHfile */,
-                               const C_string & /* inLexiqueClassName*/,
-                               const C_string & /* inTargetFileName */,
+::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                               const C_String & /* inLexiqueClassName*/,
+                               const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineAengendrer
-::generateCppClassImplementation (AC_output_stream & inCppFile,
-                                  const C_string & inLexiqueClassName,
-                                  const C_string & inTargetFileName,
+::generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                  const C_String & inLexiqueClassName,
+                                  const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) {
-  inCppFile.writeTitleComment (C_string ("Implementation of routine \"") + aNomRoutine + '"') ;
-  inCppFile << "void routine_" << aNomRoutine << " (C_lexique &" ;
+  inCppFile.writeTitleComment (C_String ("Implementation of routine \"") + aNomRoutine + '"') ;
+  inCppFile << "void routine_" << aNomRoutine << " (C_Lexique &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionsList, true)) {
     inCppFile << " lexique_var_" ;
   }
@@ -202,18 +202,18 @@ void cPtr_typeRoutineAengendrer
 //---------------------------------------------------------------------------*
 
 void cPtr_typeActionExterneAengendrer::
-generateHdeclarations_2 (AC_output_stream & /* inHfile */,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & /* inLexique */) {
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeActionExterneAengendrer::
-generateHdeclarations (AC_output_stream & inHfile,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
-  inHfile << "void " << aNomAction << " (C_lexique &" ;
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
+  inHfile << "void " << aNomAction << " (C_Lexique &" ;
   GGS_L_signature::element_type * currentArgument = aSignature.getFirstItem () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
@@ -232,18 +232,18 @@ bool cPtr_typeActionExterneAengendrer::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeActionExterneAengendrer
-::generateCppClassDeclaration (AC_output_stream & /* inHfile */,
-                               const C_string & /* inLexiqueClassName */,
-                               const C_string & /* inTargetFileName */,
+::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                               const C_String & /* inLexiqueClassName */,
+                               const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeActionExterneAengendrer
-::generateCppClassImplementation (AC_output_stream & /* inCppFile */,
-                                  const C_string & /* inLexiqueClassName */,
-                                  const C_string & /* inTargetFileName */,
+::generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
+                                  const C_String & /* inLexiqueClassName */,
+                                  const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
 }
@@ -255,21 +255,21 @@ void cPtr_typeActionExterneAengendrer
 //---------------------------------------------------------------------------*
 
 static void
-generate_header_file (C_lexique & inLexique,
+generate_header_file (C_Lexique & inLexique,
                       GGS_lstring & nomComposant,
                       GGS_typeTableUtilisationsSemantiques & tableUtilisationsSemantiques,
                       const GGS_string & inLexiqueName,
                       GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                       C_galgas_stringset & tableFichiersEnTetePourFichierH,
                       C_galgas_stringset & tableDeclAnticipeesClassePourFichierH) {
-  C_string generatedZone2 ;
+  C_String generatedZone2 ;
   generatedZone2 << "#ifndef " << nomComposant << "_DEFINED\n"
                  << "#define " << nomComposant << "_DEFINED\n"
                  << "\n#include <string.h>\n\n" ;
 
 //--- Inclure la déclaration des types sémantiques prédéfinis
   generatedZone2.writeCcomment ("Include predefined semantics types definition") ;
-  generatedZone2 << "#include \"memory/C_reference_count.h\"\n"
+  generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
            "#include \"galgas/AC_galgas_io.h\"\n"
            "#include \"galgas/GGS_location.h\"\n"
            "#include \"galgas/GGS_lbool.h\"\n"
@@ -284,9 +284,9 @@ generate_header_file (C_lexique & inLexique,
   generatedZone2.writeCcomment ("Include scanner definition") ;
 
 //--- Generate lexique inclusion
-  const C_string lexiqueName = inLexiqueName.getString () ;
+  const C_String lexiqueName = inLexiqueName.getString () ;
   generatedZone2 << "#include \""
-        << ((lexiqueName.getLength () == 0) ? C_string ("galgas/C_lexique") : lexiqueName)
+        << ((lexiqueName.getLength () == 0) ? C_String ("galgas/C_Lexique") : lexiqueName)
         << ".h\"\n" ;
 //--- Engendrer les inclusions des fichiers IC utilisés
   GGS_typeTableUtilisationsSemantiques::element_type * fichierCourant = tableUtilisationsSemantiques.getFirstItem () ;
@@ -314,7 +314,7 @@ generate_header_file (C_lexique & inLexique,
   }
   generatedZone2 << '\n' ;
 
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
 //--- Write classes predeclaration
   const sint32 predeclarationCount = tableDeclAnticipeesClassePourFichierH.count () ;
   if (predeclarationCount != 0) {
@@ -374,7 +374,7 @@ generate_header_file (C_lexique & inLexique,
 
 void
 generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
-                                     AC_output_stream & inHfile) {
+                                     AC_OutputStream & inHfile) {
   GGS_L_nameWithType::element_type * current = inList.getFirstItem () ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -394,42 +394,42 @@ generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDirectName
-::generateCplusPlusName (AC_output_stream & inFile) const {
+::generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << mName ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeAutomaticName
-::generateCplusPlusName (AC_output_stream & inFile) const {
+::generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "var_cas_" << mName ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLocationAutomaticName
-::generateCplusPlusName (AC_output_stream & inFile) const {
+::generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "var_cas_" << mLocation.getCurrentLocation () ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeCppThisName
-::generateCplusPlusName (AC_output_stream & inFile) const {
+::generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "(*this)" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeCppInheritedName
-::generateCplusPlusName (AC_output_stream & inFile) const {
+::generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "(*this)" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeOperandName
-::generateCplusPlusName (AC_output_stream & inFile) const {
+::generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "operand_" << mLocationOffset.getCurrentLocation () << "->"
          << (mFieldKind.getValue () ? "mInfo." : "")
          << mName ;
@@ -438,15 +438,15 @@ void cPtr_typeOperandName
 //---------------------------------------------------------------------------*
 
 void cPtr_typeKeyName
-::generateCplusPlusName (AC_output_stream & inFile) const {
+::generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "operand_" << mLocationOffset.getCurrentLocation () << "->mKey" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNullName
-::generateCplusPlusName (AC_output_stream & /* inFile */) const {
-  throw C_exception ("Internal error", 0, 0 COMMA_HERE) ;
+::generateCplusPlusName (AC_OutputStream & /* inFile */) const {
+  throw C_Exception ("Internal error", 0, 0 COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -459,42 +459,42 @@ void cPtr_typeNullName
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDirectName
-::generateVariableAddress (AC_output_stream & inFile) const {
+::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& " << mName ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeAutomaticName
-::generateVariableAddress (AC_output_stream & inFile) const {
+::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& var_cas_" << mName ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLocationAutomaticName
-::generateVariableAddress (AC_output_stream & inFile) const {
+::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& var_cas_" << mLocation.getCurrentLocation () ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeCppThisName
-::generateVariableAddress (AC_output_stream & inFile) const {
+::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "this" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeCppInheritedName
-::generateVariableAddress (AC_output_stream & inFile) const {
+::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "this" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeOperandName
-::generateVariableAddress (AC_output_stream & inFile) const {
+::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& operand_" << mLocationOffset.getCurrentLocation () << "->"
          << (mFieldKind.getValue () ? "mInfo." : "")
          << mName ;
@@ -503,14 +503,14 @@ void cPtr_typeOperandName
 //---------------------------------------------------------------------------*
 
 void cPtr_typeKeyName
-::generateVariableAddress (AC_output_stream & inFile) const {
+::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& operand_" << mLocationOffset.getCurrentLocation () << "->mKey" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNullName
-::generateVariableAddress (AC_output_stream & inFile) const {
+::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "NULL";
 }
 
@@ -579,9 +579,9 @@ enumVariableKind cPtr_typeNullName::getVariableKind (void) const {
 //---------------------------------------------------------------------------*
 
 void
-generateFormalArgumentFromTypeName (const C_string & inTypeName,
+generateFormalArgumentFromTypeName (const C_String & inTypeName,
                                     const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
-                                    AC_output_stream & inFile) {
+                                    AC_OutputStream & inFile) {
   switch (inFormalArgumentPassingMode.getValue ()) {
   case GGS_formalArgumentPassingMode::enum_argumentIn :
     inFile << "GGS_" << inTypeName ;
@@ -612,7 +612,7 @@ generateFormalArgumentFromTypeName (const C_string & inTypeName,
 void
 generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
                                 const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
-                                AC_output_stream & inFile) {
+                                AC_OutputStream & inFile) {
   macroValidPointer (inTypePtr) ;
   switch (inFormalArgumentPassingMode.getValue ()) {
   case GGS_formalArgumentPassingMode::enum_argumentIn :
@@ -647,7 +647,7 @@ generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
 //---------------------------------------------------------------------------*
 
 void cPtr_AC_galgasType::
-generateFormalParameter (AC_output_stream & inFile,
+generateFormalParameter (AC_OutputStream & inFile,
                          const bool engendrerReference) {
   generateCppClassName (inFile) ;
   if (engendrerReference) {
@@ -659,7 +659,7 @@ generateFormalParameter (AC_output_stream & inFile,
 //---------------------------------------------------------------------------*
 
 void cPtr_AC_galgasType::
-generatePublicDeclaration (AC_output_stream & inHfile,
+generatePublicDeclaration (AC_OutputStream & inHfile,
                            const GGS_lstring & nomAttribut) {
   inHfile << "  public : " ;
   generateCppClassName (inHfile) ;
@@ -676,7 +676,7 @@ generatePublicDeclaration (AC_output_stream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_enum::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mEnumTypeName ;
 }
 
@@ -684,14 +684,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_enum::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_enum::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -704,7 +704,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_jokerInParameterList::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "??" ;
 }
 
@@ -712,14 +712,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_jokerInParameterList::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_jokerInParameterList::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -731,7 +731,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 
 void cPtr_typeGalgasExternType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mGalgasClassName ;
 }
 
@@ -739,14 +739,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasExternType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasExternType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -759,7 +759,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_bool::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_bool" ;
 }
 
@@ -767,14 +767,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_bool::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_bool::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -787,7 +787,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_string::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_string" ;
 }
 
@@ -795,14 +795,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_string::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_string::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -815,7 +815,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_dfloat::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_dfloat" ;
 }
 
@@ -823,14 +823,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_dfloat::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_dfloat::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -843,7 +843,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_uint::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_uint " ;
 }
 
@@ -851,14 +851,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_uint::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_uint::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -871,7 +871,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_sint::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_sint " ;
 }
 
@@ -879,14 +879,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_sint::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_sint::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -899,7 +899,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_char::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_char" ;
 }
 
@@ -907,14 +907,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_char::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_char::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -927,7 +927,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedExternType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mGalgasClassName ;
 }
 
@@ -935,14 +935,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasUndefinedExternType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedExternType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -955,7 +955,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lbool::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_lbool " ;
 }
 
@@ -969,7 +969,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lchar::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_lchar " ;
 }
 
@@ -983,7 +983,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_luint::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_luint " ;
 }
 
@@ -997,7 +997,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lsint::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_lsint " ;
 }
 
@@ -1011,7 +1011,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_ldfloat::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_ldfloat " ;
 }
 
@@ -1025,7 +1025,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lstring::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_lstring " ;
 }
 
@@ -1039,7 +1039,7 @@ generateCppClassName (AC_output_stream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_location::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_location " ;
 }
 
@@ -1047,14 +1047,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgas_location::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_location::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1067,7 +1067,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasListType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mListTypeName << ' ' ;
 }
 
@@ -1075,14 +1075,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasListType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasListType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1095,7 +1095,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedListType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mListTypeName << ' ' ;
 }
 
@@ -1103,14 +1103,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasUndefinedListType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedListType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1123,7 +1123,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasSetType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mSetTypeName << ' ' ;
 }
 
@@ -1131,14 +1131,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasSetType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasSetType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1151,7 +1151,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasMapType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mMapTypeName << ' ' ;
 }
 
@@ -1159,14 +1159,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasMapType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasMapType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1179,7 +1179,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedMapType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mMapTypeName << ' ' ;
 }
 
@@ -1187,14 +1187,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasUndefinedMapType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedMapType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1207,7 +1207,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasClassType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_"  << mClassTypeName << ' ' ;
 }
 
@@ -1215,14 +1215,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasClassType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasClassType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1235,7 +1235,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedClassType::
-generateCppClassName (AC_output_stream & inFile) const {
+generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mClassTypeName << ' ' ;
 }
 
@@ -1243,14 +1243,14 @@ generateCppClassName (AC_output_stream & inFile) const {
 
 void cPtr_typeGalgasUndefinedClassType::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_output_stream & /* inCppFile */) {
+                              AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedClassType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_output_stream & /* inCppFile */) {
+                                 AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1267,15 +1267,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 static void
-generate_cpp_file (C_lexique & inLexique,
+generate_cpp_file (C_Lexique & inLexique,
                    GGS_lstring & nomComposant,
-                   const C_string & inLexiqueName,
+                   const C_String & inLexiqueName,
                    GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                    C_galgas_stringset & tableFichiersEnTetePourFichierCPP) {
 //--- Write file header
-  C_string generatedZone2 ;
-  generatedZone2 << "#include \"memory/M_memory_control.h\"\n"
-                    "#include \"files/C_text_file_write.h\"\n"
+  C_String generatedZone2 ;
+  generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n"
+                    "#include \"files/C_TextFileWrite.h\"\n"
                     "#include \"" << nomComposant << ".h\"\n\n";
 
 //--- Engendrer les fichiers d'inclusion correspondant aux methodes externes
@@ -1295,7 +1295,7 @@ generate_cpp_file (C_lexique & inLexique,
   }
                  
 //--- Engendrer les implementations
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.getFirstItem () ;
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {
@@ -1326,7 +1326,7 @@ generate_cpp_file (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-engendrerComposant (C_lexique & inLexique,
+engendrerComposant (C_Lexique & inLexique,
                     GGS_lstring & nomComposant,
                     GGS_typeTableUtilisationsSemantiques & tableUtilisationsSemantiques,
                     GGS_string & defLexique,

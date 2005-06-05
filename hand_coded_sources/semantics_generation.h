@@ -21,7 +21,7 @@
 
 //---------------------------------------------------------------------------*
 
-class AC_output_stream ;
+class AC_OutputStream ;
 class GGS_lbool ;
 class GGS_lstring ;
 class GGS_L_nameWithType ;
@@ -30,7 +30,7 @@ class GGS_L_nameWithType ;
 
 void
 generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
-                                     AC_output_stream & inHfile) ;
+                                     AC_OutputStream & inHfile) ;
 
 //---------------------------------------------------------------------------*
 

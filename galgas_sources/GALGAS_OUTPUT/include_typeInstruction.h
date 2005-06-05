@@ -31,7 +31,7 @@
 
 #include "typeInstruction.h"
 
-class cPtr_typeInstruction : public C_reference_count {
+class cPtr_typeInstruction : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

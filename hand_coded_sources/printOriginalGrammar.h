@@ -27,7 +27,7 @@
 
 //---------------------------------------------------------------------------*
 
-void printOriginalGrammar (C_html_file_write & inHTMLfile,
+void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                            const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList) ;
 
 //---------------------------------------------------------------------------*

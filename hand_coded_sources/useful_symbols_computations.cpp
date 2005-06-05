@@ -18,8 +18,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_html_file_write.h"
-#include "bdd/C_bdd_set2.h"
+#include "files/C_HTML_FileWrite.h"
+#include "bdd/C_BDD_Set2.h"
 
 //---------------------------------------------------------------------------*
 
@@ -31,37 +31,37 @@
 
 static void
 computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
-                      C_bdd_set1 & outUsefulSymbols,
+                      C_BDD_Set1 & outUsefulSymbols,
                       const uint16 inStartSymbolIndex,
                       sint32 & outIterationsCount) {
 //--- Traverse all productions for getting direct accessibility
-  C_bdd_set2 accessibility (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
-  C_bdd_set2 leftNonterminal (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
-  C_bdd_set2 rightVocabulary (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
-  C_bdd_set2 rightSymbol (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
+  C_BDD_Set2 accessibility (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
+  C_BDD_Set2 leftNonterminal (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
+  C_BDD_Set2 rightVocabulary (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
+  C_BDD_Set2 rightSymbol (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
   for (sint32 i=0 ; i<inPureBNFproductions.getLength () ; i++) {
     const cProduction & p = inPureBNFproductions (i COMMA_HERE) ;
     if (p.aDerivation.count () > 0) {
       rightVocabulary.clear () ;
       for (sint32 j=0 ; j<p.aDerivation.count () ; j++) {
-        rightSymbol.initDimension2 (C_bdd::kEqual, (uint16) p.aDerivation (j COMMA_HERE)) ;
+        rightSymbol.initDimension2 (C_BDD::kEqual, (uint16) p.aDerivation (j COMMA_HERE)) ;
         rightVocabulary |= rightSymbol ;
       }
-      leftNonterminal.initDimension1 (C_bdd::kEqual,(uint16) p.aNumeroNonTerminalGauche) ;
+      leftNonterminal.initDimension1 (C_BDD::kEqual,(uint16) p.aNumeroNonTerminalGauche) ;
       accessibility |= leftNonterminal & rightVocabulary ;
     }
   } 
 //--- Compute useful vocabulary
-  C_bdd_set1 initialValue (outUsefulSymbols) ;
-  initialValue.init (C_bdd::kEqual, inStartSymbolIndex) ;
+  C_BDD_Set1 initialValue (outUsefulSymbols) ;
+  initialValue.init (C_BDD::kEqual, inStartSymbolIndex) ;
   outUsefulSymbols = accessibility.getAccessibility (initialValue, outIterationsCount) ;
 }
 
 //---------------------------------------------------------------------------*
 
 static bool
-displayUnusefulSymbols (const C_bdd_set1 & inUsefulSymbols,
-                        C_html_file_write & inHTMLfile,
+displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
+                        C_HTML_FileWrite & inHTMLfile,
                         const cVocabulary & inVocabulary,
                         const sint32 nombreIterations) {
   bool warning = false ;
@@ -73,11 +73,11 @@ displayUnusefulSymbols (const C_bdd_set1 & inUsefulSymbols,
 //--- Get index of last non terminal to check (don't check augmented symbol '<>')
   const uint32 lastNonterminalToCheck = (uint32) (inVocabulary.getAllSymbolsCount () - 2) ;
 
-  C_bdd_set1 unusefulSymbols = (~ inUsefulSymbols) ;
-  C_bdd_set1 temp (unusefulSymbols) ;
-  temp.init (C_bdd::kLowerOrEqual, lastNonterminalToCheck) ;
+  C_BDD_Set1 unusefulSymbols = (~ inUsefulSymbols) ;
+  C_BDD_Set1 temp (unusefulSymbols) ;
+  temp.init (C_BDD::kLowerOrEqual, lastNonterminalToCheck) ;
   unusefulSymbols &= temp ;
-  temp.init (C_bdd::kStrictGreater, (uint32) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; // Don't display 'empty string' symbol
+  temp.init (C_BDD::kStrictGreater, (uint32) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; // Don't display 'empty string' symbol
   unusefulSymbols &= temp ;
 
   const uint32 n = unusefulSymbols.getValuesCount () ;
@@ -92,7 +92,7 @@ displayUnusefulSymbols (const C_bdd_set1 & inUsefulSymbols,
     inHTMLfile << "The vocabulary has "
                << n
                << " unuseful element(s) : \n" ;
-    TCUniqueArray <bool> array ;
+    TC_UniqueArray <bool> array ;
     unusefulSymbols.getArray (array) ;
     const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
     inHTMLfile.outputRawData ("<code>") ;
@@ -116,8 +116,8 @@ displayUnusefulSymbols (const C_bdd_set1 & inUsefulSymbols,
 void
 useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproductions,
                              const cVocabulary & inVocabulary,
-                             C_html_file_write & inHTMLfile,
-                             C_bdd_set1 & outUsefulSymbols,
+                             C_HTML_FileWrite & inHTMLfile,
+                             C_BDD_Set1 & outUsefulSymbols,
                              bool & outWarningFlag) {
 //--- Console display
   co << "  Searching for useful nonterminal symbols... " ;

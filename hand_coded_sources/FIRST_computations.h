@@ -23,29 +23,29 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TCUniqueArray.h"
+#include "generic_arraies/TC_UniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
 class cPureBNFproductionsList ;
-class C_html_file_write ;
+class C_HTML_FileWrite ;
 class cVocabulary ;
-class C_bdd_set1 ;
-class C_bdd_set2 ;
-class C_lexique ;
+class C_BDD_Set1 ;
+class C_BDD_Set2 ;
+class C_Lexique ;
 
 //---------------------------------------------------------------------------*
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    C_html_file_write & inHTMLfile,
+                    C_HTML_FileWrite & inHTMLfile,
                     const cVocabulary & inVocabulary,
-                    const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                    const C_bdd_set1 & inVocabularyDerivingToEmpty_BDD,
-                    const C_bdd_set1 & inUsefulSymbols,
-                    C_bdd_set2 & outFIRSTsets,
-                    TCUniqueArray <TCUniqueArray <sint32> > & outFIRSTarray,
-                    const C_bdd_descriptor & inDescriptor,
+                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                    const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
+                    const C_BDD_Set1 & inUsefulSymbols,
+                    C_BDD_Set2 & outFIRSTsets,
+                    TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
+                    const C_BDD_Descriptor & inDescriptor,
                     bool & outOk) ;
 
 //---------------------------------------------------------------------------*

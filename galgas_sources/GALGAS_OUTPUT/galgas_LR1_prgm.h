@@ -37,7 +37,7 @@
 class galgas_LR1_prgm : public C_defaultUserSemanticActions {
   protected : galgas_scanner mScanner_ ;
   protected : C_galgas_terminal_io mTerminalIO ;
-  protected : C_string mSourceFileExtension_ ;
+  protected : C_String mSourceFileExtension_ ;
 
 //--- Command line options
   protected : bool mOption_galgas_cli_options_outputHTMLgrammarFile ;
@@ -47,7 +47,7 @@ class galgas_LR1_prgm : public C_defaultUserSemanticActions {
 //--- Constructor
   public : galgas_LR1_prgm (const C_galgas_io_parameters & inIOparameters) ;
 
-  public : void doCompilation (const C_string & inSourceFileName_,
+  public : void doCompilation (const C_String & inSourceFileName_,
                                sint16 & returnCode) ;
   protected : GGS_M_lexiqueComponents mLexiqueMapForUse ; // start symbol attribute #1
   protected : GGS_M_semanticsComponents mSemanticsComponentsMap ; // start symbol attribute #2

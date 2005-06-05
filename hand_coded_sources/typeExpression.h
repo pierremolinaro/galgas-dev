@@ -21,14 +21,14 @@ class GGS_typeExpressionList ;
 //---------------------------------------------------------------------------*
 
 #define macro_typeExpression \
-public : virtual void generateExpression (AC_output_stream & inCppFile) = 0 ; \
+public : virtual void generateExpression (AC_OutputStream & inCppFile) = 0 ; \
 public : virtual bool isLexiqueFormalArgumentUsedForTest (void) const  = 0 ; \
 public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeExpression \
-public : virtual void generateExpression (AC_output_stream & inCppFile) ; \
+public : virtual void generateExpression (AC_OutputStream & inCppFile) ; \
 public : virtual bool isLexiqueFormalArgumentUsedForTest (void) const  ; \
 public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const ;
 

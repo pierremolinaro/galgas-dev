@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "expression_parser.h"
 
 
@@ -36,7 +36,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchAndOperator (C_lexique & lexique_var_,
+void routine_matchAndOperator (C_Lexique & lexique_var_,
                                 const GGS_AC_galgasType  & var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType  & var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType) {
@@ -59,7 +59,7 @@ void routine_matchAndOperator (C_lexique & lexique_var_,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchOrOperator (C_lexique & lexique_var_,
+void routine_matchOrOperator (C_Lexique & lexique_var_,
                                 const GGS_AC_galgasType  & var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType  & var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType) {
@@ -82,7 +82,7 @@ void routine_matchOrOperator (C_lexique & lexique_var_,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchConcatOperator (C_lexique & lexique_var_,
+void routine_matchConcatOperator (C_Lexique & lexique_var_,
                                 const GGS_AC_galgasType  & var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType  & var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType) {
@@ -105,14 +105,14 @@ void routine_matchConcatOperator (C_lexique & lexique_var_,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkNotOperator (C_lexique & lexique_var_,
+void routine_checkNotOperator (C_Lexique & lexique_var_,
                                 const GGS_AC_galgasType  & var_cas_inOperandType,
                                 GGS_AC_galgasType  & var_cas_outResultType) {
   { cPtr_typeGalgas_bool * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_bool *> (var_cas_inOperandType.getPtr ()) ;
     if (ptrExtraire_ == NULL) {
       if (var_cas_inOperandType.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgas_bool::static_string_message_messageGalgasType () ;
         message2_ << var_cas_inOperandType ()->message_messageGalgasType () ;
         GGS_location (lexique_var_).signalExtractError (lexique_var_, message1_, message2_) ;
@@ -130,7 +130,7 @@ void routine_checkNotOperator (C_lexique & lexique_var_,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_comparison_types_check (C_lexique & lexique_var_,
+void routine_comparison_types_check (C_Lexique & lexique_var_,
                                 const GGS_AC_galgasType  & var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType  & var_cas_inRightExpressionType) {
   if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
@@ -842,8 +842,8 @@ pr_factor_expression_parser_725_14_ (galgas_scanner & lexique_var_,
         if (ptrExtraire_ == NULL) {
           var_cas_outResultType.drop_operation () ;
           if (var_cas_entity.getPtr () != NULL) {
-            TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-            C_string message2_ ;
+            TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+            C_String message2_ ;
             message1_ (0 COMMA_HERE) << cPtr_typeEntiteType::static_string_message_messageTypeEntite () ;
             message2_ << var_cas_entity ()->message_messageTypeEntite () ;
             var_cas_className.signalExtractError (lexique_var_, message1_, message2_) ;

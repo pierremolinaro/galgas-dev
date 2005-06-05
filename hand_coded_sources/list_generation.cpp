@@ -18,26 +18,26 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
+#include "utilities/MF_MemoryControl.h"
 #include "semantics_generation.h"
 #include "semantics_semantics.h"
 
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement::
-generateHdeclarations_2 (AC_output_stream & /* inHfile */,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & /* inLexique */) {
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement::
-generateHdeclarations (AC_output_stream & inHfile,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
 //----------------------- List class declaration ----------------  
-  inHfile.writeTitleComment (C_string ("class list '") + aNomListe + "'") ;
+  inHfile.writeTitleComment (C_String ("class list '") + aNomListe + "'") ;
 
   inHfile << "class GGS_" << aNomListe << " {\n" ;
 
@@ -170,22 +170,22 @@ bool cPtr_C_listTypeToImplement::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement
-::generateCppClassDeclaration (AC_output_stream & /* inHfile*/,
-                               const C_string & /* inLexiqueClassName */,
-                               const C_string & /* inTargetFileName*/,
+::generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
+                               const C_String & /* inLexiqueClassName */,
+                               const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement
-::generateCppClassImplementation (AC_output_stream & inCppFile,
-                                  const C_string & /* inLexiqueClassName */,
-                                  const C_string & /* inTargetFileName */,
+::generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                  const C_String & /* inLexiqueClassName */,
+                                  const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
 //------------- ImplŽmentation de l'ŽlŽment de liste -----------------
-  inCppFile.writeTitleComment (C_string ("Class element of list '") + aNomListe + "'") ;
+  inCppFile.writeTitleComment (C_String ("Class element of list '") + aNomListe + "'") ;
 
 //--- Engendrer le constructeur de l'ŽlŽment de liste
   inCppFile << "GGS_" << aNomListe << "::element_type::\nelement_type (" ;
@@ -213,7 +213,7 @@ void cPtr_C_listTypeToImplement
   inCppFile << "}\n\n" ;
 
 // ------------- List Implementation -----------------
-  inCppFile.writeTitleComment (C_string ("class list '") + aNomListe + "'") ;
+  inCppFile.writeTitleComment (C_String ("class list '") + aNomListe + "'") ;
 
 //--- Engendrer le constructeur par dŽfaut
   inCppFile << "GGS_" << aNomListe << "\n"

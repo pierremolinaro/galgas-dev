@@ -18,10 +18,10 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_html_file_write.h"
-#include "files/C_text_file_write.h"
-#include "memory/M_memory_control.h"
-#include "bdd/C_bdd_set2.h"
+#include "files/C_HTML_FileWrite.h"
+#include "files/C_TextFileWrite.h"
+#include "utilities/MF_MemoryControl.h"
+#include "bdd/C_BDD_Set2.h"
 
 //---------------------------------------------------------------------------*
 
@@ -37,11 +37,11 @@
 
 class cAffichagePremiersProduction : public C_bdd_value_traversing {
 //--- Attributs
-  protected : C_html_file_write & mFichierBNF ;
+  protected : C_HTML_FileWrite & mFichierBNF ;
   protected : const cVocabulary & mVocabulary ;
 
 //--- Constructeur
-  public : cAffichagePremiersProduction (C_html_file_write & inHTMLfile,
+  public : cAffichagePremiersProduction (C_HTML_FileWrite & inHTMLfile,
                                          const cVocabulary & inVocabulary) ;
 
 //--- Méthode virtelle appelée pour chaque valeur
@@ -51,7 +51,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
   
 //---------------------------------------------------------------------------*
 
-cAffichagePremiersProduction::cAffichagePremiersProduction (C_html_file_write & inHTMLfile,
+cAffichagePremiersProduction::cAffichagePremiersProduction (C_HTML_FileWrite & inHTMLfile,
                                                             const cVocabulary & inVocabulary) :
 mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary) {
@@ -73,11 +73,11 @@ void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
 
 static bool
 check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
-                     const C_bdd_set2 & inFIRSTsets,
-                     const C_bdd_set2 & inFOLLOWsets,
-                     const TCUniqueArray <bool> & vocabulaireSeDerivantEnVide,
+                     const C_BDD_Set2 & inFIRSTsets,
+                     const C_BDD_Set2 & inFOLLOWsets,
+                     const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
-                     C_html_file_write & inHTMLfile) {
+                     C_HTML_FileWrite & inHTMLfile) {
 //--- Pour chaque non-terminal présentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
 // et vérifier l'absence de conflit.
   inHTMLfile.outputRawData ("<p>") ;
@@ -90,9 +90,9 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                 "for inPureBNFproductions numbering) :\n\n" ;
   inHTMLfile.outputRawData ("</p>") ;
 
-  C_bdd_set2 t (inFOLLOWsets) ; t.clear () ;
-  C_bdd_set1 premierDeProduction (inFOLLOWsets.getDescriptor1 ()) ;
-  C_bdd_set2 temp (inFOLLOWsets) ;
+  C_BDD_Set2 t (inFOLLOWsets) ; t.clear () ;
+  C_BDD_Set1 premierDeProduction (inFOLLOWsets.getDescriptor1 ()) ;
+  C_BDD_Set2 temp (inFOLLOWsets) ;
   sint16 nombreDeConflits = 0 ;
   const sint32 nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
@@ -116,11 +116,11 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
           premierDeProduction.clear () ;
           if (p.aDerivation.count () == 0) {
-            temp.initDimension1 (C_bdd::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
+            temp.initDimension1 (C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
             p.aPremierDeProduction = (temp & inFOLLOWsets).projeterSurAxe2 () ;
           }else{
             const uint32 elementEnTete = (uint32) p.aDerivation (0 COMMA_HERE) ;
-            t.initDimension1 (C_bdd::kEqual, elementEnTete) ;
+            t.initDimension1 (C_BDD::kEqual, elementEnTete) ;
             if (((sint32) elementEnTete) < terminalSymbolsCount) {
               p.aPremierDeProduction = t.projeterSurAxe1 () ;
             }else{
@@ -130,7 +130,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
               }
             }
           }
-          TCUniqueArray <bool> array ;
+          TC_UniqueArray <bool> array ;
           p.aPremierDeProduction.getArray (array) ;
           const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
           for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
@@ -189,15 +189,15 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
 
 class cEcrireNonTerminal : public C_bdd_value_traversing {
 //--- Attributs
-  protected : C_html_file_write & mFichierBNF ;
+  protected : C_HTML_FileWrite & mFichierBNF ;
   protected : const cVocabulary & mVocabulary ;
-  protected : C_string aNomClasseLexique ;
+  protected : C_String aNomClasseLexique ;
   protected : sint16 aIndice ;
 
 //--- Constructeur
-  public : cEcrireNonTerminal (C_html_file_write & inHTMLfile,
+  public : cEcrireNonTerminal (C_HTML_FileWrite & inHTMLfile,
                                const cVocabulary & inVocabulary,
-                               const C_string & nomClasseLexique) ;
+                               const C_String & nomClasseLexique) ;
 
 //--- Méthode virtuelle appelée pour chaque valeur
   public : virtual void action (const bool tableauDesValeurs [],
@@ -206,9 +206,9 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
   
 //---------------------------------------------------------------------------*
 
-cEcrireNonTerminal::cEcrireNonTerminal (C_html_file_write & inHTMLfile,
+cEcrireNonTerminal::cEcrireNonTerminal (C_HTML_FileWrite & inHTMLfile,
                                         const cVocabulary & inVocabulary,
-                                        const C_string & nomClasseLexique) :
+                                        const C_String & nomClasseLexique) :
 mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary) {
   aNomClasseLexique = nomClasseLexique ;
@@ -240,8 +240,8 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
                                  const sint32 inOriginalGrammarProductionLeftNonTerminalIndex,
                                  const sint16 nombreDeParametres,
                                  const cPureBNFproductionsList & inPureBNFproductions,
-                                 AC_output_stream & fichierCPP,
-                                 const C_string & inAltName) {
+                                 AC_OutputStream & fichierCPP,
+                                 const C_String & inAltName) {
   const sint32 first = inPureBNFproductions.tableauIndicePremiereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
   if (first >= 0) { // Au moins une production
     const sint32 derniere = inPureBNFproductions.tableauIndiceDerniereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
@@ -268,14 +268,14 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
 static void
 printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                   const cVocabulary & inVocabulary,
-                  const C_string & inLexiqueName,
+                  const C_String & inLexiqueName,
                   const sint32 inNonterminalIndex,
                   sint16 & ioProductionIndex,
                   bool & ioFirst,
-                  TCUniqueArray <sint16> & ioProductionRulesIndex,
-                  TCUniqueArray <C_string> & ioProductionRulesTitle,
-                  TCUniqueArray <sint16> & ioFirstProductionRuleIndex,
-                  AC_output_stream & inCppFile) {
+                  TC_UniqueArray <sint16> & ioProductionRulesIndex,
+                  TC_UniqueArray <C_String> & ioProductionRulesTitle,
+                  TC_UniqueArray <sint16> & ioFirstProductionRuleIndex,
+                  AC_OutputStream & inCppFile) {
   ioFirstProductionRuleIndex.addObject ((sint16) ioProductionRulesIndex.count ()) ;
   const sint32 firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
   if (firstProduction >= 0) {
@@ -283,7 +283,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
     for (sint32 j=firstProduction ; j<=lastProduction ; j++) {
       ioProductionRulesIndex.addObject (ioProductionIndex) ;
       cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
-      C_string title ;
+      C_String title ;
       inVocabulary.printInFile (title, p.aNumeroNonTerminalGauche COMMA_HERE) ;
       title << ", in file '" 
             << p.mSourceFileName
@@ -334,11 +334,11 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
 static void
 printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
                     const cVocabulary & inVocabulary,
-                    const C_string & inLexiqueName,
+                    const C_String & inLexiqueName,
                     const sint32 inNonterminalIndex,
                     sint16 & ioDecisionTableIndex,
-                    TCUniqueArray <sint16> & ioProductionDecisionTableIndex,
-                    AC_output_stream & inCppFile) {
+                    TC_UniqueArray <sint16> & ioProductionDecisionTableIndex,
+                    AC_OutputStream & inCppFile) {
   ioProductionDecisionTableIndex.addObject (ioDecisionTableIndex) ;
   inCppFile << "// At index "
             <<  ioDecisionTableIndex
@@ -356,7 +356,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
       inCppFile << '\n' ;
       for (sint32 j=firstProduction ; j<=lastProduction ; j++) {
         cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
-        TCUniqueArray <bool> array ;
+        TC_UniqueArray <bool> array ;
         p.aPremierDeProduction.getArray (array) ;
         const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
         for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
@@ -383,24 +383,24 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
 //---------------------------------------------------------------------------*
 
 static void
-generate_LL1_grammar_Cpp_file (C_lexique & inLexique,
+generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                                const uint32 inOriginalGrammarStartSymbol,
-                               const C_string & inTargetFileName,
-                               const C_string & inLexiqueName,
+                               const C_String & inTargetFileName,
+                               const C_String & inLexiqueName,
                                const C_galgas_stringset & inClassesNamesSet,
                                const cVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions) {
 //--- Generate header file inclusion --------------------------------------------------------------
-  C_string generatedZone2 ;
+  C_String generatedZone2 ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
 //--- Generate LL(1) tables
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   const sint32 productionsCount = inPureBNFproductions.getLength () ;
-  TCUniqueArray <sint16> productionRulesIndex (500 COMMA_HERE);
-  TCUniqueArray <sint16> firstProductionRuleIndex (500 COMMA_HERE) ;
-  TCUniqueArray <C_string> productionRulesTitle (500 COMMA_HERE) ;
+  TC_UniqueArray <sint16> productionRulesIndex (500 COMMA_HERE);
+  TC_UniqueArray <sint16> firstProductionRuleIndex (500 COMMA_HERE) ;
+  TC_UniqueArray <C_String> productionRulesTitle (500 COMMA_HERE) ;
 
   generatedZone3.writeTitleComment ("L L ( 1 )    P R O D U C T I O N    R U L E S") ;
   generatedZone3 << "#define TERMINAL(t)     ((t)+1)\n"
@@ -455,7 +455,7 @@ generate_LL1_grammar_Cpp_file (C_lexique & inLexique,
   
 
 //--- Generate decision tables  
-  TCUniqueArray <sint16> productionDecisionIndex (500 COMMA_HERE) ;
+  TC_UniqueArray <sint16> productionDecisionIndex (500 COMMA_HERE) ;
   generatedZone3.writeTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
   generatedZone3 << "static const sint16 gDecision [] = {\n" ;
   sint16 decisionTableIndex = 0 ;
@@ -495,7 +495,7 @@ generate_LL1_grammar_Cpp_file (C_lexique & inLexique,
   nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
-    generatedZone3.writeTitleComment (C_string ("'") + nonTerminal->mKey + "' non terminal implementation") ;
+    generatedZone3.writeTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal->mIndex COMMA_HERE) >= 0 ;
     GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
     while (altForNonterminal != NULL) {
@@ -571,7 +571,7 @@ generate_LL1_grammar_Cpp_file (C_lexique & inLexique,
 //--- Implement non terminal from 'select' and 'repeat' instructions
   for (sint32 nt=inVocabulary.getTerminalSymbolsCount () ; nt<inVocabulary.getAllSymbolsCount () ; nt++) {
     if (inVocabulary.needToGenerateChoice (nt COMMA_HERE)) {
-      generatedZone3.writeTitleComment (C_string ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
+      generatedZone3.writeTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
               << " (" << inLexiqueName << " & lexique_var_) {\n"
@@ -593,17 +593,17 @@ generate_LL1_grammar_Cpp_file (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-LL1_computations (C_lexique & inLexique,
+LL1_computations (C_Lexique & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
-                  C_html_file_write & inHTMLfile,
+                  C_HTML_FileWrite & inHTMLfile,
                   const cVocabulary & inVocabulary,
-                  const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                  const C_bdd_set2 & inFIRSTsets,
-                  const C_bdd_set2 & inFOLLOWsets,
+                  const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                  const C_BDD_Set2 & inFIRSTsets,
+                  const C_BDD_Set2 & inFOLLOWsets,
                   const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForOriginalGrammar,
                   const uint32 inOriginalGrammarStartSymbol,
-                  const C_string & inTargetFileName,
-                  const C_string & inLexiqueName,
+                  const C_String & inTargetFileName,
+                  const C_String & inLexiqueName,
                   const C_galgas_stringset & inClassesNamesSet,
                   bool & outOk) {
 //--- Console display

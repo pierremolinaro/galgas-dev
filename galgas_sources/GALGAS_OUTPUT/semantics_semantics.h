@@ -26,7 +26,7 @@
 #include <string.h>
 
 // Include predefined semantics types definition *
-#include "memory/C_reference_count.h"
+#include "galgas/C_GGS_Object.h"
 #include "galgas/AC_galgas_io.h"
 #include "galgas/GGS_location.h"
 #include "galgas/GGS_lbool.h"
@@ -37,7 +37,7 @@
 #include "galgas/GGS_lsint.h"
 #include "galgas/AC_galgas_map.h"
 // Include scanner definition *
-#include "galgas/C_lexique.h"
+#include "galgas/C_Lexique.h"
 // Include imported semantics *
 #include "common_semantics.h"
 
@@ -181,8 +181,8 @@ class GGS_typeClassMessagesMap : public AC_galgas_map {
                            const e_typeClassMessagesMap & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -204,13 +204,13 @@ class GGS_typeClassMessagesMap : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_lstring & inParameter0,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_lstring * outParameter0,
@@ -219,7 +219,7 @@ class GGS_typeClassMessagesMap : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeClassMessagesMap (C_lexique & inLexique,
+void searchKey_typeClassMessagesMap (C_Lexique & inLexique,
                                 GGS_typeClassMessagesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   * outParameter0,
@@ -227,7 +227,7 @@ void searchKey_typeClassMessagesMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeClassMessagesMap (C_lexique & inLexique,
+void insertKey_typeClassMessagesMap (C_Lexique & inLexique,
                                 GGS_typeClassMessagesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring &  inParameter0,
@@ -308,84 +308,84 @@ class e_typeVariablesMap {
 
 typedef cGalgasVariablesMap <e_typeVariablesMap, GGS_lstring> GGS_typeVariablesMap ;
 
-void searchForReadOnlyAccess_typeVariablesMap (C_lexique & inLexique,
+void searchForReadOnlyAccess_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_galgasType   * outParameter0,
                                 GGS_typeCplusPlusName   * outParameter1,
                                 GGS_luint * outIndex) ;
 
-void searchForDestructiveReadAccess_typeVariablesMap (C_lexique & inLexique,
+void searchForDestructiveReadAccess_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_galgasType   * outParameter0,
                                 GGS_typeCplusPlusName   * outParameter1,
                                 GGS_luint * outIndex) ;
 
-void searchForReadWriteAccess_typeVariablesMap (C_lexique & inLexique,
+void searchForReadWriteAccess_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_galgasType   * outParameter0,
                                 GGS_typeCplusPlusName   * outParameter1,
                                 GGS_luint * outIndex) ;
 
-void searchForWriteAccess_typeVariablesMap (C_lexique & inLexique,
+void searchForWriteAccess_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_galgasType   * outParameter0,
                                 GGS_typeCplusPlusName   * outParameter1,
                                 GGS_luint * outIndex) ;
 
-void insertInArgument_typeVariablesMap (C_lexique & inLexique,
+void insertInArgument_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
                                 const GGS_typeCplusPlusName &  inParameter1,
                                 GGS_luint * outIndex) ;
 
-void insertConstInArgument_typeVariablesMap (C_lexique & inLexique,
+void insertConstInArgument_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
                                 const GGS_typeCplusPlusName &  inParameter1,
                                 GGS_luint * outIndex) ;
 
-void insertUsedConstInArgument_typeVariablesMap (C_lexique & inLexique,
+void insertUsedConstInArgument_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
                                 const GGS_typeCplusPlusName &  inParameter1,
                                 GGS_luint * outIndex) ;
 
-void insertUnusedConstInArgument_typeVariablesMap (C_lexique & inLexique,
+void insertUnusedConstInArgument_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
                                 const GGS_typeCplusPlusName &  inParameter1,
                                 GGS_luint * outIndex) ;
 
-void insertLocalVariable_typeVariablesMap (C_lexique & inLexique,
+void insertLocalVariable_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
                                 const GGS_typeCplusPlusName &  inParameter1,
                                 GGS_luint * outIndex) ;
 
-void insertOutArgument_typeVariablesMap (C_lexique & inLexique,
+void insertOutArgument_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
                                 const GGS_typeCplusPlusName &  inParameter1,
                                 GGS_luint * outIndex) ;
 
-void insertInOutArgument_typeVariablesMap (C_lexique & inLexique,
+void insertInOutArgument_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
                                 const GGS_typeCplusPlusName &  inParameter1,
                                 GGS_luint * outIndex) ;
 
-void insertUnusedInOutArgument_typeVariablesMap (C_lexique & inLexique,
+void insertUnusedInOutArgument_typeVariablesMap (C_Lexique & inLexique,
                                 GGS_typeVariablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType &  inParameter0,
@@ -742,7 +742,7 @@ class e_typeTableMethodesAimplementer {
 
 typedef cTableMethodesAimplementer <e_typeTableMethodesAimplementer, GGS_lstring> GGS_typeTableMethodesAimplementer ;
 
-void insertAbstract_typeTableMethodesAimplementer (C_lexique & inLexique,
+void insertAbstract_typeTableMethodesAimplementer (C_Lexique & inLexique,
                                 GGS_typeTableMethodesAimplementer & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_L_signature &  inParameter0,
@@ -750,7 +750,7 @@ void insertAbstract_typeTableMethodesAimplementer (C_lexique & inLexique,
                                 const GGS_typeInstructionsList &  inParameter2,
                                 GGS_luint * outIndex) ;
 
-void insertNotAbstract_typeTableMethodesAimplementer (C_lexique & inLexique,
+void insertNotAbstract_typeTableMethodesAimplementer (C_Lexique & inLexique,
                                 GGS_typeTableMethodesAimplementer & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_L_signature &  inParameter0,
@@ -884,8 +884,8 @@ class GGS_typeTableRoutinesAimplementer : public AC_galgas_map {
                            const e_typeTableRoutinesAimplementer & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -907,12 +907,12 @@ class GGS_typeTableRoutinesAimplementer : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_luint * outIndex) ;
@@ -920,7 +920,7 @@ class GGS_typeTableRoutinesAimplementer : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableRoutinesAimplementer (C_lexique & inLexique,
+void insertKey_typeTableRoutinesAimplementer (C_Lexique & inLexique,
                                 GGS_typeTableRoutinesAimplementer & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_luint * outIndex) ;
@@ -947,8 +947,8 @@ class GGS_typeTableAttributsSemantiques : public AC_galgas_map {
                            const e_typeTableAttributsSemantiques & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -970,14 +970,14 @@ class GGS_typeTableAttributsSemantiques : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_typeCplusPlusName & inParameter0,
                                const GGS_AC_galgasType & inParameter1,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_typeCplusPlusName * outParameter0,
@@ -987,7 +987,7 @@ class GGS_typeTableAttributsSemantiques : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableAttributsSemantiques (C_lexique & inLexique,
+void searchKey_typeTableAttributsSemantiques (C_Lexique & inLexique,
                                 GGS_typeTableAttributsSemantiques & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_typeCplusPlusName   * outParameter0,
@@ -996,31 +996,31 @@ void searchKey_typeTableAttributsSemantiques (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableAttributsSemantiques (C_lexique & inLexique,
+void insertKey_typeTableAttributsSemantiques (C_Lexique & inLexique,
                                 GGS_typeTableAttributsSemantiques & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_typeCplusPlusName &  inParameter0,
                                 const GGS_AC_galgasType &  inParameter1,
                                 GGS_luint * outIndex) ;
 
-void routine_buildMapWithLocalConstants (C_lexique &,
+void routine_buildMapWithLocalConstants (C_Lexique &,
                                 GGS_L_nameWithType  ,
                                 GGS_typeListeAttributsSemantiques  ,
                                 GGS_typeVariablesMap  &,
                                 GGS_location  ,
                                 GGS_bool ) ;
 
-void routine_checkAssignmentTypesCompatibility (C_lexique &,
+void routine_checkAssignmentTypesCompatibility (C_Lexique &,
                                 GGS_AC_galgasType  ,
                                 GGS_AC_galgasType  ,
                                 GGS_location  ) ;
 
-void routine_verifierCompatibiliteTypes (C_lexique &,
+void routine_verifierCompatibiliteTypes (C_Lexique &,
                                 GGS_typeSemanticsTypesList  ,
                                 GGS_typeListeAttributsSemantiques  ,
                                 const GGS_location  &) ;
 
-void routine_verifierCompatibiliteArgEffectifsSignature (C_lexique &,
+void routine_verifierCompatibiliteArgEffectifsSignature (C_Lexique &,
                                 GGS_L_signature  ,
                                 GGS_L_actualParametersSignature  ,
                                 const GGS_location  &,
@@ -1169,8 +1169,8 @@ class GGS_typeTableNomRoutinesDeclarees : public AC_galgas_map {
                            const e_typeTableNomRoutinesDeclarees & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -1192,12 +1192,12 @@ class GGS_typeTableNomRoutinesDeclarees : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_luint * outIndex) ;
@@ -1205,7 +1205,7 @@ class GGS_typeTableNomRoutinesDeclarees : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableNomRoutinesDeclarees (C_lexique & inLexique,
+void insertKey_typeTableNomRoutinesDeclarees (C_Lexique & inLexique,
                                 GGS_typeTableNomRoutinesDeclarees & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_luint * outIndex) ;
@@ -1288,7 +1288,7 @@ class GGS_typeEntitiesToGenerateList {
   }
 } ;
 
-void routine_enterBuiltinTypes (C_lexique &,
+void routine_enterBuiltinTypes (C_Lexique &,
                                 GGS_M_semanticsEntitiesForUse  &) ;
 
 //---------------------------------------------------------------------------*
@@ -1312,8 +1312,8 @@ class GGS_typeEnumCstMessageStringMap : public AC_galgas_map {
                            const e_typeEnumCstMessageStringMap & inInfo) ;
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
-  //--- Method for getting key as C_string
-    public : virtual C_string getStringForKey (void) const ;
+  //--- Method for getting key as C_String
+    public : virtual C_String getStringForKey (void) const ;
   //--- Get pointers
     public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
     public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
@@ -1335,13 +1335,13 @@ class GGS_typeEnumCstMessageStringMap : public AC_galgas_map {
 //--- Method used for duplicate a map
   protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;
 //--- Insert an element
-  public : void insertElement (C_lexique & inLexique,
+  public : void insertElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                const GGS_lstring & inParameter0,
                                GGS_luint * outIndex) ;
 //--- Search for an element
-  public : void searchElement (C_lexique & inLexique,
+  public : void searchElement (C_Lexique & inLexique,
                                const char * inErrorMessagesArray [],
                                const GGS_lstring & inKey,
                                GGS_lstring * outParameter0,
@@ -1350,7 +1350,7 @@ class GGS_typeEnumCstMessageStringMap : public AC_galgas_map {
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeEnumCstMessageStringMap (C_lexique & inLexique,
+void searchKey_typeEnumCstMessageStringMap (C_Lexique & inLexique,
                                 GGS_typeEnumCstMessageStringMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   * outParameter0,
@@ -1358,13 +1358,13 @@ void searchKey_typeEnumCstMessageStringMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeEnumCstMessageStringMap (C_lexique & inLexique,
+void insertKey_typeEnumCstMessageStringMap (C_Lexique & inLexique,
                                 GGS_typeEnumCstMessageStringMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring &  inParameter0,
                                 GGS_luint * outIndex) ;
 
-void appendJokersIfNeeded (C_lexique &,
+void appendJokersIfNeeded (C_Lexique &,
                                 GGS_typeCplusPlusNameList  &,
                                 GGS_uint  ,
                                 GGS_uint  ,
@@ -3268,7 +3268,7 @@ class cPtr_typeJoker : public cPtr_typeCible {
   macro_typeJoker
   public : virtual bool isBuilt (void) const ;
 
-  public : virtual void methode_verifierType (C_lexique &,
+  public : virtual void methode_verifierType (C_Lexique &,
                                 GGS_AC_galgasType  ,
                                 GGS_lstring & ,
                                 GGS_L_assignedVariables & ,
@@ -3313,7 +3313,7 @@ class cPtr_typeEntiteDest : public cPtr_typeCible {
   public : GGS_location  aPositionVariableCible ;
   public : virtual bool isBuilt (void) const ;
 
-  public : virtual void methode_verifierType (C_lexique &,
+  public : virtual void methode_verifierType (C_Lexique &,
                                 GGS_AC_galgasType  ,
                                 GGS_lstring & ,
                                 GGS_L_assignedVariables & ,
