@@ -26,7 +26,7 @@
 class GGS_L_syntaxComponents_ForGrammar ;
 class cPureBNFproductionsList ;
 class cVocabulary ;
-class C_html_file_write ;
+class C_HTML_FileWrite ;
 
 //---------------------------------------------------------------------------*
 
@@ -36,7 +36,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
                      cPureBNFproductionsList & ioProductions) ;
 
 void
-printPureBNFgrammarInBNFfile (C_html_file_write & inHTMLfile,
+printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) ;
 

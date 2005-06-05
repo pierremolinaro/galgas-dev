@@ -24,9 +24,9 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionItererTable
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
@@ -37,7 +37,7 @@ void cPtr_typeInstructionItererTable
     ioCppFile << ".getFirstItem () ;\n"
                  "while (operand_" << mLocationOffset.getCurrentLocation () << " != NULL) {\n"
                  "  macroValidPointer (operand_" << mLocationOffset.getCurrentLocation () << ") ;\n" ;
-    C_string inutilise ;
+    C_String inutilise ;
     generateInstructionListForList (mInstructionsList, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
     ioCppFile << "  operand_" << mLocationOffset.getCurrentLocation () << " = operand_"
               << mLocationOffset.getCurrentLocation () << "->getNextItem () ;\n"
@@ -71,9 +71,9 @@ bool cPtr_typeInstructionItererTable
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionItererListeSimple
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
@@ -117,9 +117,9 @@ bool cPtr_typeInstructionItererListeSimple
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionItererListeDouble
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {

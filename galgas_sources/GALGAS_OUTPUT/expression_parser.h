@@ -26,7 +26,7 @@
 #include <string.h>
 
 // Include predefined semantics types definition *
-#include "memory/C_reference_count.h"
+#include "galgas/C_GGS_Object.h"
 #include "galgas/AC_galgas_io.h"
 #include "galgas/GGS_location.h"
 #include "galgas/GGS_lbool.h"
@@ -47,26 +47,26 @@
 
 //--- END OF USER ZONE 2
 
-void routine_matchAndOperator (C_lexique &,
+void routine_matchAndOperator (C_Lexique &,
                                 const GGS_AC_galgasType  &,
                                 const GGS_AC_galgasType  &,
                                 GGS_AC_galgasType  &) ;
 
-void routine_matchOrOperator (C_lexique &,
+void routine_matchOrOperator (C_Lexique &,
                                 const GGS_AC_galgasType  &,
                                 const GGS_AC_galgasType  &,
                                 GGS_AC_galgasType  &) ;
 
-void routine_matchConcatOperator (C_lexique &,
+void routine_matchConcatOperator (C_Lexique &,
                                 const GGS_AC_galgasType  &,
                                 const GGS_AC_galgasType  &,
                                 GGS_AC_galgasType  &) ;
 
-void routine_checkNotOperator (C_lexique &,
+void routine_checkNotOperator (C_Lexique &,
                                 const GGS_AC_galgasType  &,
                                 GGS_AC_galgasType  &) ;
 
-void routine_comparison_types_check (C_lexique &,
+void routine_comparison_types_check (C_Lexique &,
                                 const GGS_AC_galgasType  &,
                                 const GGS_AC_galgasType  &) ;
 

@@ -28,8 +28,8 @@
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionsList ;
-class AC_output_stream ;
-class C_string ;
+class AC_OutputStream ;
+class C_String ;
 class GGS_typeCplusPlusName ;
 class GGS_formalArgumentPassingMode ;
 class cPtr_AC_galgasType ;
@@ -38,18 +38,18 @@ class cPtr_AC_galgasType ;
 
 void
 generateInstructionListForList (const GGS_typeInstructionsList & inList,
-                                AC_output_stream & ioCppFile,
-                                const C_string & inLexiqueClassName,
-                                const C_string & inTargetFileName,
+                                AC_OutputStream & ioCppFile,
+                                const C_String & inLexiqueClassName,
+                                const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug,
                                 const bool inGenerateSemanticInstructions) ;
 
 void
 generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionsList & inList,
-                                          AC_output_stream & inHfile,
-                                          const C_string & inLexiqueClassName,
-                                          const C_string & inTargetFileName,
+                                          AC_OutputStream & inHfile,
+                                          const C_String & inLexiqueClassName,
+                                          const C_String & inTargetFileName,
                                           sint32 & ioPrototypeIndex,
                                           const bool inNotDeclared) ;
 
@@ -63,14 +63,14 @@ formalArgumentIsUsedForList (const GGS_typeInstructionsList & inList,
                              const bool inGenerateSemanticInstructions) ;
 
 void
-generateFormalArgumentFromTypeName (const C_string & inTypeName,
+generateFormalArgumentFromTypeName (const C_String & inTypeName,
                                     const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
-                                    AC_output_stream & inFile) ;
+                                    AC_OutputStream & inFile) ;
 
 void
 generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
                                 const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
-                                AC_output_stream & inFile) ;
+                                AC_OutputStream & inFile) ;
 
 //---------------------------------------------------------------------------*
 

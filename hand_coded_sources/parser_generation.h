@@ -23,15 +23,15 @@
 
 class GGS_lstring ;
 class GGS_typeEntitiesToGenerateList ;
-class AC_output_stream ;
+class AC_OutputStream ;
 
 //---------------------------------------------------------------------------*
 
 void
 engendrerDeclarationPrototypesReglesDeProduction (GGS_lstring & nomComposant,
-                                                  const C_string & inLexiqueName,
+                                                  const C_String & inLexiqueName,
                                                   GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
-                                                  AC_output_stream & inHfile) ;
+                                                  AC_OutputStream & inHfile) ;
 
 //---------------------------------------------------------------------------*
 

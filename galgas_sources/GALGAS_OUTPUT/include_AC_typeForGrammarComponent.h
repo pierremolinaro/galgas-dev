@@ -32,7 +32,7 @@
 #define macro_AC_typeForGrammarComponent
 #define macroInheritFrom_AC_typeForGrammarComponent
 
-class cPtr_AC_typeForGrammarComponent : public C_reference_count {
+class cPtr_AC_typeForGrammarComponent : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

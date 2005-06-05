@@ -22,9 +22,9 @@ public : virtual bool isSyntacticInstruction (void) const { return true ; }
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeParserInstruction \
-public : virtual void generateSelectAndRepeatPrototypes (AC_output_stream & inHfile, \
-                                                         const C_string & inLexiqueClassName, \
-                                                         const C_string & inTargetFileName, \
+public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile, \
+                                                         const C_String & inLexiqueClassName, \
+                                                         const C_String & inTargetFileName, \
                                                          sint32 & ioPrototypeIndex, \
                                                          const bool inNotDeclared) ;
 

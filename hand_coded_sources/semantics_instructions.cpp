@@ -18,8 +18,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_text_file_write.h"
-#include "memory/M_memory_control.h"
+#include "files/C_TextFileWrite.h"
+#include "utilities/MF_MemoryControl.h"
 
 #include "semantics_instructions.h"
 #include "semantics_semantics.h"
@@ -28,9 +28,9 @@
 
 void
 generateInstructionListForList (const GGS_typeInstructionsList & inList,
-                                AC_output_stream & ioCppFile,
-                                const C_string & inLexiqueClassName,
-                                const C_string & inTargetFileName,
+                                AC_OutputStream & ioCppFile,
+                                const C_String & inLexiqueClassName,
+                                const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug,
                                 const bool inGenerateSemanticInstructions) {
@@ -51,9 +51,9 @@ generateInstructionListForList (const GGS_typeInstructionsList & inList,
 
 void
 generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionsList & inList,
-                                          AC_output_stream & inHfile,
-                                          const C_string & inLexiqueClassName,
-                                          const C_string & inTargetFileName,
+                                          AC_OutputStream & inHfile,
+                                          const C_String & inLexiqueClassName,
+                                          const C_String & inTargetFileName,
                                           sint32 & ioPrototypeIndex,
                                           const bool inNotDeclared) {
   GGS_typeInstructionsList::element_type * current = inList.getFirstItem () ;
@@ -106,9 +106,9 @@ formalArgumentIsUsedForList (const GGS_typeInstructionsList & inList,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstruction
-::generateSelectAndRepeatPrototypes (AC_output_stream & /* inHfile */,
-                                     const C_string & /* inLexiqueClassName */,
-                                     const C_string & /* inTargetFileName */,
+::generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
+                                     const C_String & /* inLexiqueClassName */,
+                                     const C_String & /* inTargetFileName */,
                                      sint32 & /* ioPrototypeIndex */,
                                      const bool /* inNotDeclared */) {
 }
@@ -123,9 +123,9 @@ void cPtr_typeInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeSimpleExtractInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -146,8 +146,8 @@ void cPtr_typeSimpleExtractInstruction
     ioCppFile << "    if (" ;
     aNomVariable ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".getPtr () != NULL) {\n"
-                 "      TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;\n"
-                 "      C_string message2_ ;\n"
+                 "      TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;\n"
+                 "      C_String message2_ ;\n"
                  "      message1_ (0 COMMA_HERE) << "
                  "cPtr_" << aNomClasse << "::static_string_message_" << aNomMessage << " () ;\n"
                  "      message2_ << " ; 
@@ -206,9 +206,9 @@ bool cPtr_typeSimpleExtractInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeStructuredExtractInstructionWithElse
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
@@ -299,9 +299,9 @@ bool cPtr_typeStructuredExtractInstructionWithElse
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDropInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -336,9 +336,9 @@ bool cPtr_typeDropInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeErrorInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -377,9 +377,9 @@ bool cPtr_typeErrorInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeWarningInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -418,9 +418,9 @@ bool cPtr_typeWarningInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeMessageInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -456,9 +456,9 @@ bool cPtr_typeMessageInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionDeclarationVarLocale
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -495,9 +495,9 @@ bool cPtr_typeInstructionDeclarationVarLocale
 //---------------------------------------------------------------------------*
 
 void cPtr_typeMatchInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & inTargetFileName,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
@@ -605,9 +605,9 @@ bool cPtr_typeMatchInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeAppendInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -662,9 +662,9 @@ bool cPtr_typeAppendInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeIncrementInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -699,9 +699,9 @@ bool cPtr_typeIncrementInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeAppendInstructionWithAssignment
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -759,9 +759,9 @@ bool cPtr_typeAppendInstructionWithAssignment
 //---------------------------------------------------------------------------*
 
 void cPtr_typeMapBlockPrologueInstruction::
-generateInstruction (AC_output_stream & ioCppFile,
-                     const C_string & /* inLexiqueClassName */,
-                     const C_string & /* inTargetFileName */,
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
@@ -811,9 +811,9 @@ bool cPtr_typeMapBlockPrologueInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeMapBlockEpilogueInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {

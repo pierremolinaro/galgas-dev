@@ -18,14 +18,14 @@
 
 #define macro_typeInstructionLexicale \
 public : virtual bool instruction__uses_loop_variable (void) const = 0 ; \
-public : virtual void generate_scanner_instruction (const C_string & inLexiqueName, \
-                                                    AC_output_stream & inCppFile) const = 0 ;
+public : virtual void generate_scanner_instruction (const C_String & inLexiqueName, \
+                                                    AC_OutputStream & inCppFile) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeInstructionLexicale \
 public : virtual bool instruction__uses_loop_variable (void) const ; \
-public : virtual void generate_scanner_instruction (const C_string & inLexiqueName, \
-                                                    AC_output_stream & inCppFile) const ;
+public : virtual void generate_scanner_instruction (const C_String & inLexiqueName, \
+                                                    AC_OutputStream & inCppFile) const ;
 
 //---------------------------------------------------------------------------*

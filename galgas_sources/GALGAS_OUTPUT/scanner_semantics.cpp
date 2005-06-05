@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "scanner_semantics.h"
 
 
@@ -49,8 +49,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_typeLexicalAttributesMap::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_typeLexicalAttributesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_typeLexicalAttributesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeLexicalAttributesMap * info = (e_typeLexicalAttributesMap *) inInfo ;
@@ -61,15 +61,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_typeLexicalAttributesMap::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_typeLexicalAttributesMap::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_typeLexicalAttributesMap::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -91,7 +91,7 @@ GGS_bool GGS_typeLexicalAttributesMap::reader_hasKey (const GGS_lstring & inKey)
 //---------------------------------------------------------------------------*
 
 void GGS_typeLexicalAttributesMap::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -101,7 +101,7 @@ void GGS_typeLexicalAttributesMap::internalInsertForDuplication (AC_galgas_map_e
 //---------------------------------------------------------------------------*
 
 void GGS_typeLexicalAttributesMap::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_AC_galgasType &  inParameter0,
@@ -115,7 +115,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -128,7 +128,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_typeLexicalAttributesMap::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_AC_galgasType   * outParameter0,
@@ -136,10 +136,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -163,7 +163,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeLexicalAttributesMap (C_lexique & inLexique,
+void searchKey_typeLexicalAttributesMap (C_Lexique & inLexique,
                                 GGS_typeLexicalAttributesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_galgasType   * outParameter0,
@@ -181,7 +181,7 @@ void searchKey_typeLexicalAttributesMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeLexicalAttributesMap (C_lexique & lexique_var_,
+void insertKey_typeLexicalAttributesMap (C_Lexique & lexique_var_,
                                 GGS_typeLexicalAttributesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType & inParameter0,
@@ -216,8 +216,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_lexicalTypeMap::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_lexicalTypeMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_lexicalTypeMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_lexicalTypeMap * info = (e_lexicalTypeMap *) inInfo ;
@@ -228,15 +228,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_lexicalTypeMap::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_lexicalTypeMap::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_lexicalTypeMap::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -258,7 +258,7 @@ GGS_bool GGS_lexicalTypeMap::reader_hasKey (const GGS_lstring & inKey) const {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeMap::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -268,7 +268,7 @@ void GGS_lexicalTypeMap::internalInsertForDuplication (AC_galgas_map_element * i
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeMap::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_AC_galgasType &  inParameter0,
@@ -282,7 +282,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -295,7 +295,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeMap::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_AC_galgasType   * outParameter0,
@@ -303,10 +303,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -330,7 +330,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_lexicalTypeMap (C_lexique & inLexique,
+void searchKey_lexicalTypeMap (C_Lexique & inLexique,
                                 GGS_lexicalTypeMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_galgasType   * outParameter0,
@@ -346,7 +346,7 @@ void searchKey_lexicalTypeMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_lexicalTypeMap (C_lexique & lexique_var_,
+void insertKey_lexicalTypeMap (C_Lexique & lexique_var_,
                                 GGS_lexicalTypeMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_galgasType & inParameter0,
@@ -379,8 +379,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_typeTableMessagesErreurs::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_typeTableMessagesErreurs *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_typeTableMessagesErreurs *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableMessagesErreurs * info = (e_typeTableMessagesErreurs *) inInfo ;
@@ -391,15 +391,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_typeTableMessagesErreurs::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_typeTableMessagesErreurs::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_typeTableMessagesErreurs::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -421,7 +421,7 @@ GGS_bool GGS_typeTableMessagesErreurs::reader_hasKey (const GGS_lstring & inKey)
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableMessagesErreurs::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -431,7 +431,7 @@ void GGS_typeTableMessagesErreurs::internalInsertForDuplication (AC_galgas_map_e
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableMessagesErreurs::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_lstring &  inParameter0,
@@ -445,7 +445,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -458,7 +458,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableMessagesErreurs::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_lstring   * outParameter0,
@@ -466,10 +466,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -493,7 +493,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableMessagesErreurs (C_lexique & inLexique,
+void searchKey_typeTableMessagesErreurs (C_Lexique & inLexique,
                                 GGS_typeTableMessagesErreurs & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   * outParameter0,
@@ -511,7 +511,7 @@ void searchKey_typeTableMessagesErreurs (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableMessagesErreurs (C_lexique & lexique_var_,
+void insertKey_typeTableMessagesErreurs (C_Lexique & lexique_var_,
                                 GGS_typeTableMessagesErreurs & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring & inParameter0,
@@ -546,8 +546,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_M_styles::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_M_styles *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_M_styles *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_M_styles * info = (e_M_styles *) inInfo ;
@@ -558,15 +558,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_M_styles::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_M_styles::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_M_styles::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -588,7 +588,7 @@ GGS_bool GGS_M_styles::reader_hasKey (const GGS_lstring & inKey) const {
 //---------------------------------------------------------------------------*
 
 void GGS_M_styles::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -598,7 +598,7 @@ void GGS_M_styles::internalInsertForDuplication (AC_galgas_map_element * inPtr) 
 //---------------------------------------------------------------------------*
 
 void GGS_M_styles::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_lstring &  inParameter0,
@@ -612,7 +612,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -625,7 +625,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_M_styles::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_lstring   * outParameter0,
@@ -633,10 +633,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -660,7 +660,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_M_styles (C_lexique & inLexique,
+void searchKey_M_styles (C_Lexique & inLexique,
                                 GGS_M_styles & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   * outParameter0,
@@ -678,7 +678,7 @@ void searchKey_M_styles (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_M_styles (C_lexique & lexique_var_,
+void insertKey_M_styles (C_Lexique & lexique_var_,
                                 GGS_M_styles & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring & inParameter0,
@@ -713,8 +713,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_typeTableDefinitionTerminaux::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_typeTableDefinitionTerminaux *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_typeTableDefinitionTerminaux *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableDefinitionTerminaux * info = (e_typeTableDefinitionTerminaux *) inInfo ;
@@ -725,15 +725,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_typeTableDefinitionTerminaux::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_typeTableDefinitionTerminaux::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_typeTableDefinitionTerminaux::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -755,7 +755,7 @@ GGS_bool GGS_typeTableDefinitionTerminaux::reader_hasKey (const GGS_lstring & in
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableDefinitionTerminaux::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -765,7 +765,7 @@ void GGS_typeTableDefinitionTerminaux::internalInsertForDuplication (AC_galgas_m
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableDefinitionTerminaux::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_string&  inParameter0,
@@ -785,7 +785,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -798,7 +798,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableDefinitionTerminaux::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_string  * outParameter0,
@@ -808,10 +808,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -847,7 +847,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableDefinitionTerminaux (C_lexique & inLexique,
+void searchKey_typeTableDefinitionTerminaux (C_Lexique & inLexique,
                                 GGS_typeTableDefinitionTerminaux & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_string  * outParameter0,
@@ -869,7 +869,7 @@ void searchKey_typeTableDefinitionTerminaux (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableDefinitionTerminaux (C_lexique & lexique_var_,
+void insertKey_typeTableDefinitionTerminaux (C_Lexique & lexique_var_,
                                 GGS_typeTableDefinitionTerminaux & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_string& inParameter0,
@@ -908,8 +908,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_typeTableMotsReserves::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_typeTableMotsReserves *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_typeTableMotsReserves *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableMotsReserves * info = (e_typeTableMotsReserves *) inInfo ;
@@ -920,15 +920,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_typeTableMotsReserves::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_typeTableMotsReserves::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_typeTableMotsReserves::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -950,7 +950,7 @@ GGS_bool GGS_typeTableMotsReserves::reader_hasKey (const GGS_lstring & inKey) co
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableMotsReserves::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -960,7 +960,7 @@ void GGS_typeTableMotsReserves::internalInsertForDuplication (AC_galgas_map_elem
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableMotsReserves::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_lstring &  inParameter0,
@@ -974,7 +974,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -987,7 +987,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableMotsReserves::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_lstring   * outParameter0,
@@ -995,10 +995,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -1022,7 +1022,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableMotsReserves (C_lexique & inLexique,
+void searchKey_typeTableMotsReserves (C_Lexique & inLexique,
                                 GGS_typeTableMotsReserves & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   * outParameter0,
@@ -1040,7 +1040,7 @@ void searchKey_typeTableMotsReserves (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableMotsReserves (C_lexique & lexique_var_,
+void insertKey_typeTableMotsReserves (C_Lexique & lexique_var_,
                                 GGS_typeTableMotsReserves & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring & inParameter0,
@@ -1075,8 +1075,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_typeTableTablesDeMotsReserves::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_typeTableTablesDeMotsReserves *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_typeTableTablesDeMotsReserves *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_typeTableTablesDeMotsReserves * info = (e_typeTableTablesDeMotsReserves *) inInfo ;
@@ -1087,15 +1087,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_typeTableTablesDeMotsReserves::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_typeTableTablesDeMotsReserves::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_typeTableTablesDeMotsReserves::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -1117,7 +1117,7 @@ GGS_bool GGS_typeTableTablesDeMotsReserves::reader_hasKey (const GGS_lstring & i
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableTablesDeMotsReserves::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -1127,7 +1127,7 @@ void GGS_typeTableTablesDeMotsReserves::internalInsertForDuplication (AC_galgas_
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableTablesDeMotsReserves::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_typeTableMotsReserves &  inParameter0,
@@ -1141,7 +1141,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -1154,7 +1154,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_typeTableTablesDeMotsReserves::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_typeTableMotsReserves   * outParameter0,
@@ -1162,10 +1162,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -1189,7 +1189,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_typeTableTablesDeMotsReserves (C_lexique & inLexique,
+void searchKey_typeTableTablesDeMotsReserves (C_Lexique & inLexique,
                                 GGS_typeTableTablesDeMotsReserves & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_typeTableMotsReserves   * outParameter0,
@@ -1207,7 +1207,7 @@ void searchKey_typeTableTablesDeMotsReserves (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_typeTableTablesDeMotsReserves (C_lexique & lexique_var_,
+void insertKey_typeTableTablesDeMotsReserves (C_Lexique & lexique_var_,
                                 GGS_typeTableTablesDeMotsReserves & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_typeTableMotsReserves & inParameter0,
@@ -3380,7 +3380,7 @@ void GGS_typeListeInclusions
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_appendToLexicalInstructionList (C_lexique &,
+void routine_appendToLexicalInstructionList (C_Lexique &,
                                 GGS_typeListeTestsEtInstructions  & var_cas_ioLexicalRulesList,
                                 const GGS_lstring  & var_cas_ioDefinitionString,
                                 GGS_lstring  & var_cas_ioTerminalSymbolName) {

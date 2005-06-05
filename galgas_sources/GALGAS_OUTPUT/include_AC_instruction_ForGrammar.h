@@ -31,7 +31,7 @@
 
 #include "AC_instruction_ForGrammar.h"
 
-class cPtr_AC_instruction_ForGrammar : public C_reference_count {
+class cPtr_AC_instruction_ForGrammar : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

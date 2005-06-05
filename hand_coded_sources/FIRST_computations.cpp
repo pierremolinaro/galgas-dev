@@ -18,9 +18,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_html_file_write.h"
-#include "bdd/C_bdd_set2.h"
-#include "generic_arraies/TCArray2.h"
+#include "files/C_HTML_FileWrite.h"
+#include "bdd/C_BDD_Set2.h"
+#include "generic_arraies/TC_Array2.h"
 
 //---------------------------------------------------------------------------*
 
@@ -30,26 +30,26 @@
 
 //---------------------------------------------------------------------------*
 
-static C_bdd_set2
+static C_BDD_Set2
 computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
-                  const TCUniqueArray <bool> & inVocabularyDerivingInEmptyString,
+                  const TC_UniqueArray <bool> & inVocabularyDerivingInEmptyString,
                   const sint32 inTerminalSymbolsCount,
-                  const C_bdd_descriptor & inDescriptor,
+                  const C_BDD_Descriptor & inDescriptor,
                   sint32 & outIterationsCount) {
 //--- Compute direct firsts with each production
-  C_bdd_set2 directFIRST (inDescriptor, inDescriptor) ;
-  C_bdd_set2 pr (inDescriptor, inDescriptor) ;
-  C_bdd_set2 temp (inDescriptor, inDescriptor) ;
-  C_bdd_set2 left (inDescriptor, inDescriptor) ;
+  C_BDD_Set2 directFIRST (inDescriptor, inDescriptor) ;
+  C_BDD_Set2 pr (inDescriptor, inDescriptor) ;
+  C_BDD_Set2 temp (inDescriptor, inDescriptor) ;
+  C_BDD_Set2 left (inDescriptor, inDescriptor) ;
   for (sint32 i=0 ; i<inProductionRules.getLength () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
     const sint32 n = p.aDerivation.count () ;
     if (n > 0) {
-      left.initDimension1 (C_bdd::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
+      left.initDimension1 (C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
       sint32 j = 0 ;
       pr.clear () ;
       do{
-        temp.initDimension2 (C_bdd::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
+        temp.initDimension2 (C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
         pr |= temp ;
         j++ ;
       }while ((j<n) && inVocabularyDerivingInEmptyString (p.aDerivation (j-1 COMMA_HERE) COMMA_HERE)) ;
@@ -59,10 +59,10 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 
 
 //--- Perform transitive closure of 'directFIRST'
-  C_bdd_set2 FIRST = directFIRST.getTransitiveClosure (outIterationsCount) ;
+  C_BDD_Set2 FIRST = directFIRST.getTransitiveClosure (outIterationsCount) ;
 
 //--- Delete nonterminal symbols in FIRST
-  temp.initDimension2 (C_bdd::kLowerOrEqual, (uint32) (inTerminalSymbolsCount - 1)) ;
+  temp.initDimension2 (C_BDD::kLowerOrEqual, (uint32) (inTerminalSymbolsCount - 1)) ;
   FIRST &= temp ;
 
   return FIRST ;
@@ -71,20 +71,20 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 static bool
-displayAndCheckFIRSTsets (C_html_file_write & inHTMLfile,
-                          const C_bdd_set1 & inVocabularyDerivingInEmptyString,
+displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
+                          const C_BDD_Set1 & inVocabularyDerivingInEmptyString,
                           const cVocabulary & inVocabulary,
-                          const C_bdd_set1 & inUsefulSymbols,
-                          const C_bdd_set2 & inFIRSTsets,
-                          TCUniqueArray <TCUniqueArray <sint32> > & outFIRSTarray,
+                          const C_BDD_Set1 & inUsefulSymbols,
+                          const C_BDD_Set2 & inFIRSTsets,
+                          TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
                           const sint32 inIterationsCount) {
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
-  C_bdd_set1 temp (inVocabularyDerivingInEmptyString) ;
-  temp.init (C_bdd::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; ;
-  const C_bdd_set2 nt_x_empty = inVocabularyDerivingInEmptyString * temp ;
+  C_BDD_Set1 temp (inVocabularyDerivingInEmptyString) ;
+  temp.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; ;
+  const C_BDD_Set2 nt_x_empty = inVocabularyDerivingInEmptyString * temp ;
 
 //--- FIRST union nt symbols deriring in empty string
-  const C_bdd_set2 FIRST_with_empty = nt_x_empty | inFIRSTsets ;
+  const C_BDD_Set2 FIRST_with_empty = nt_x_empty | inFIRSTsets ;
 
 //--- Display FIRST
   const sint32 m = (sint32) FIRST_with_empty.getValuesCount () ;
@@ -122,11 +122,11 @@ displayAndCheckFIRSTsets (C_html_file_write & inHTMLfile,
   inHTMLfile.outputRawData ("</p>") ;
 
 //--- Ensemble des non-terminaux à vérifier
-  C_bdd_set1 ntToCheck (inUsefulSymbols) ;
-  ntToCheck.init (C_bdd::kGreaterOrEqual,(uint32) inVocabulary.getTerminalSymbolsCount ()) ;
+  C_BDD_Set1 ntToCheck (inUsefulSymbols) ;
+  ntToCheck.init (C_BDD::kGreaterOrEqual,(uint32) inVocabulary.getTerminalSymbolsCount ()) ;
 
 //--- Get nonterminal symbols in error
-  const C_bdd_set1 ntInError = ntToCheck & inUsefulSymbols & ~(FIRST_with_empty.projeterSurAxe1 ()) ; 
+  const C_BDD_Set1 ntInError = ntToCheck & inUsefulSymbols & ~(FIRST_with_empty.projeterSurAxe1 ()) ; 
 
 //--- Display nonterminal symbols in error
   const sint32 ntInErrorCount = (sint32) ntInError.getValuesCount () ;
@@ -144,7 +144,7 @@ displayAndCheckFIRSTsets (C_html_file_write & inHTMLfile,
                << " nonterminal symbol"
                << ((ntInErrorCount>1) ? " has" : "s have")
                << " an empty FIRST :" ;
-    TCUniqueArray <bool> errorArray ;
+    TC_UniqueArray <bool> errorArray ;
     ntInError.getArray (errorArray) ;
     inHTMLfile.outputRawData ("<code>") ;
     for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
@@ -166,14 +166,14 @@ displayAndCheckFIRSTsets (C_html_file_write & inHTMLfile,
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    C_html_file_write & inHTMLfile,
+                    C_HTML_FileWrite & inHTMLfile,
                     const cVocabulary & inVocabulary,
-                    const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                    const C_bdd_set1 & inVocabularyDerivingToEmpty_BDD,
-                    const C_bdd_set1 & inUsefulSymbols,
-                    C_bdd_set2 & outFIRSTsets,
-                    TCUniqueArray <TCUniqueArray <sint32> > & outFIRSTarray,
-                    const C_bdd_descriptor & inDescriptor,
+                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                    const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
+                    const C_BDD_Set1 & inUsefulSymbols,
+                    C_BDD_Set2 & outFIRSTsets,
+                    TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
+                    const C_BDD_Descriptor & inDescriptor,
                     bool & outOk) {
 //--- Console display
   co << "  Computing the FIRST sets... " ;

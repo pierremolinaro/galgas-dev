@@ -35,7 +35,7 @@
 //---------------------------------------------------------------------------*
 
 #include "cClassMethodsMap.h"
-#include "memory/M_memory_control.h"
+#include "utilities/MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -176,7 +176,7 @@ void cClassMethodsMap <INFO, KEY>::insulateMap (void) {
 //---------------------------------------------------------------------------*
 
 template <typename INFO, typename KEY>
-sint32 cClassMethodsMap <INFO, KEY>::insertAbstract (C_lexique & inLexique,
+sint32 cClassMethodsMap <INFO, KEY>::insertAbstract (C_Lexique & inLexique,
                                           const INFO & info,
                                           const KEY & clef,
                                           const GGS_location & inLocation,
@@ -198,7 +198,7 @@ sint32 cClassMethodsMap <INFO, KEY>::insertAbstract (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO, typename KEY>
-sint32 cClassMethodsMap <INFO, KEY>::insertNotAbstract (C_lexique & inInputOutput,
+sint32 cClassMethodsMap <INFO, KEY>::insertNotAbstract (C_Lexique & inInputOutput,
                                           const INFO & info,
                                           const KEY & clef,
                                           const GGS_location & inLocation,
@@ -258,7 +258,7 @@ sint32 cClassMethodsMap <INFO, KEY>::internalInsert (const INFO & info,
 
 template <typename INFO, typename KEY>
 cElementTableMethodesUtilisables <INFO, KEY> * cClassMethodsMap <INFO, KEY>::
-searchKey (C_lexique & inLexique,
+searchKey (C_Lexique & inLexique,
            const KEY & inKey,
            const GGS_location & inLocation,
            const char * inSearchErrorMessage) {
@@ -288,7 +288,7 @@ searchKey (C_lexique & inLexique,
 
 template <typename INFO, typename KEY>
 cElementTableMethodesUtilisables <INFO, KEY> * cClassMethodsMap <INFO, KEY>::
-searchForOverride (C_lexique & inLexique,
+searchForOverride (C_Lexique & inLexique,
                    const KEY & inKey,
                    const GGS_location & inLocation,
                    const char * inSearchErrorMessage) {
@@ -322,12 +322,12 @@ searchForOverride (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO, typename KEY>
-void cClassMethodsMap <INFO, KEY>::epilogue_definitionClasseNonAbstraite (C_lexique & lexique) {
+void cClassMethodsMap <INFO, KEY>::epilogue_definitionClasseNonAbstraite (C_Lexique & lexique) {
   cElementTableMethodesUtilisables <INFO, KEY> * p = mFirstItem ;
   while (p != NULL) {
     macroValidPointer (p) ;
     if (p->champEstAbstraite) {
-      C_string message ;
+      C_String message ;
       message << "la mŽthode abstraite '" << p->mKey << "' n'a pas ŽtŽ surchargŽe" ;
       lexique.onTheFlySemanticError (message) ;
     }

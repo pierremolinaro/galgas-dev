@@ -23,17 +23,17 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_enumGalgasType::
-generateHdeclarations_2 (AC_output_stream & /* inHfile */,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & /* inLexique */) {
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_enumGalgasType::
-generateHdeclarations (AC_output_stream & inHfile,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
 //--- Compute bit count for BDDs (set operations)
   uint16 bitCount = 0 ;
   sint32 n = mConstantMap.count () ;
@@ -42,7 +42,7 @@ generateHdeclarations (AC_output_stream & inHfile,
     n >>= 1 ;
   }
   
-  inHfile.writeTitleComment (C_string ("class for enumeration '") + mEnumTypeName + "'") ;
+  inHfile.writeTitleComment (C_String ("class for enumeration '") + mEnumTypeName + "'") ;
   
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
@@ -103,21 +103,21 @@ bool cPtr_enumGalgasType::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_enumGalgasType
-::generateCppClassDeclaration (AC_output_stream & /*inHfile */,
-                               const C_string & /* inLexiqueClassName */,
-                               const C_string & /* inTargetFileName*/,
+::generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
+                               const C_String & /* inLexiqueClassName */,
+                               const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_enumGalgasType
-::generateCppClassImplementation (AC_output_stream & inCppFile,
-                                  const C_string & /* inLexiqueClassName */,
-                                  const C_string & /* inTargetFileName */,
+::generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                  const C_String & /* inLexiqueClassName */,
+                                  const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
-  inCppFile.writeTitleComment (C_string ("class for enumeration '") + mEnumTypeName + "'") ;
+  inCppFile.writeTitleComment (C_String ("class for enumeration '") + mEnumTypeName + "'") ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"

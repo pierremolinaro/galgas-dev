@@ -18,11 +18,11 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_html_file_write.h"
-#include "files/C_text_file_write.h"
+#include "files/C_HTML_FileWrite.h"
+#include "files/C_TextFileWrite.h"
 #include "galgas/AC_galgas_io.h"
-#include "memory/M_memory_control.h"
-#include "generic_arraies/TCArray2.h"
+#include "utilities/MF_MemoryControl.h"
+#include "generic_arraies/TC_Array2.h"
 
 //---------------------------------------------------------------------------*
 
@@ -51,8 +51,8 @@ class c_LR1_item {
                        const sint32 inLocationIndex,
                        const sint32 inTerminalSymbol) ;
 //--- Compare two items
-  public : static int compare_LR1_items (const c_LR1_item & inItem1,
-                                         const c_LR1_item & inItem2) ;
+  public : static sint32 compare_LR1_items (const c_LR1_item & inItem1,
+                                            const c_LR1_item & inItem2) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -76,7 +76,7 @@ c_LR1_item (const sint32 inProductionRuleIndex,
 
 //---------------------------------------------------------------------------*
 
-int c_LR1_item::
+sint32 c_LR1_item::
 compare_LR1_items (const c_LR1_item & inItem1,
                    const c_LR1_item & inItem2) {
   sint32 result = inItem1.mProductionRuleIndex - inItem2.mProductionRuleIndex ;
@@ -109,11 +109,11 @@ class cLR1_items_AVL_tree {
   private : cLR1_items_AVL_tree (const sint32 inInfo) ;
   public : virtual ~cLR1_items_AVL_tree (void) ;
   private : sint32 compare (const c_LR1_item & in_LR1_item,
-                         const TCUniqueArray <c_LR1_item> & in_LR1_items_array) ;
+                         const TC_UniqueArray <c_LR1_item> & in_LR1_items_array) ;
   public : static void recursiveSearchOrInsert
                          (cLR1_items_AVL_tree * & ioRootPointer,
                           c_LR1_item & io_LR1_item,
-                          TCUniqueArray <c_LR1_item> & io_LR1_items_array,
+                          TC_UniqueArray <c_LR1_item> & io_LR1_items_array,
                           bool & outExtension) ;
 } ;
 
@@ -137,7 +137,7 @@ cLR1_items_AVL_tree::~cLR1_items_AVL_tree (void) {
 
 sint32 cLR1_items_AVL_tree::
 compare (const c_LR1_item & in_LR1_item,
-         const TCUniqueArray <c_LR1_item> & in_LR1_items_array) {
+         const TC_UniqueArray <c_LR1_item> & in_LR1_items_array) {
   return c_LR1_item::compare_LR1_items (in_LR1_items_array (mInfo COMMA_HERE), in_LR1_item) ;
 }
 
@@ -192,7 +192,7 @@ static void rotateRight (cLR1_items_AVL_tree * & ioPtr) {
 void cLR1_items_AVL_tree::
 recursiveSearchOrInsert (cLR1_items_AVL_tree * & ioRootPointer,
                          c_LR1_item & io_LR1_item,
-                         TCUniqueArray <c_LR1_item> & io_LR1_items_array,
+                         TC_UniqueArray <c_LR1_item> & io_LR1_items_array,
                          bool & outExtension) {
   if (ioRootPointer == NULL) {
     macroMyNew (ioRootPointer, cLR1_items_AVL_tree (io_LR1_items_array.count ())) ;
@@ -268,7 +268,7 @@ recursiveSearchOrInsert (cLR1_items_AVL_tree * & ioRootPointer,
 
 class c_LR1_items_set {
 //--- Private data
-  private : TCUniqueArray <c_LR1_item> mItemsSet ;
+  private : TC_UniqueArray <c_LR1_item> mItemsSet ;
 
 //--- Default constructor
   public : c_LR1_items_set (void) ;
@@ -286,8 +286,8 @@ class c_LR1_items_set {
 //--- Closing the LR1 items set
   public : void close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
                                      const sint32 inTerminalSymbolsCount,
-                                     const TCUniqueArray <TCUniqueArray <sint32> > & inFIRSTarray,
-                                     const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
+                                     const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
+                                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
 
 //--- Empty set ?
   public : bool isEmptySet (void) const ;
@@ -295,7 +295,7 @@ class c_LR1_items_set {
 //--- Display LR1 items set
   public : void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
-                         C_html_file_write & inHTMLfile) ;
+                         C_HTML_FileWrite & inHTMLfile) ;
 
 //--- Compare two items sets
   public : static sint32 compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
@@ -303,8 +303,8 @@ class c_LR1_items_set {
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of LR table)
   public : void getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
-                                                    TCUniqueArray <sint32> & outProductionsSet,
-                                                    TCUniqueArray <sint32> & outTerminalArray,
+                                                    TC_UniqueArray <sint32> & outProductionsSet,
+                                                    TC_UniqueArray <sint32> & outTerminalArray,
                                                     bool & outAcceptCondition) ;
 
 //--- No copy
@@ -344,9 +344,9 @@ bool c_LR1_items_set::add_LR1_item (const sint32 inProductionRuleIndex,
 void c_LR1_items_set::
 close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
                      const sint32 inTerminalSymbolsCount,
-                     const TCUniqueArray <TCUniqueArray <sint32> > & inFIRSTarray,
-                     const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array) {
-  TCUniqueArray <c_LR1_item> itemsSet (100 COMMA_HERE) ;
+                     const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
+                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) {
+  TC_UniqueArray <c_LR1_item> itemsSet (100 COMMA_HERE) ;
   cLR1_items_AVL_tree * root = (cLR1_items_AVL_tree *) NULL ;
   { for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
       bool extension = false ; // Not used
@@ -364,14 +364,14 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
       //--- Evaluate FIRSTs of derivation following prodX
         sint32 derivationIndex = locationIndex + 1 ;
         bool emptyStringAccepted = true ;
-        TCUniqueArray <sint32> theFirst ;
+        TC_UniqueArray <sint32> theFirst ;
         while (emptyStringAccepted && (derivationIndex < derivationLength)) {
           const sint32 symbol = p.aDerivation (derivationIndex COMMA_HERE) ;
           if (symbol < inTerminalSymbolsCount) {
             theFirst.addObject (symbol) ;
             emptyStringAccepted = false ;
           }else{
-            const TCUniqueArray <sint32> & f = inFIRSTarray (symbol COMMA_HERE) ;
+            const TC_UniqueArray <sint32> & f = inFIRSTarray (symbol COMMA_HERE) ;
             const sint32 nFirst = f.count () ;
             for (sint32 s=0 ; s<nFirst ; s++) {
               theFirst.addObject (f (s COMMA_HERE)) ;
@@ -385,9 +385,9 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
         }
         const sint32 first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
         if (first >= 0) { // first<0 means the non terminal symbol is unuseful
-          M_assert (first >= 0, "first (%ld) < 0", first, 0) ;
+          MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
           const sint32 last = inProductionRules.tableauIndiceDerniereProduction (prodX COMMA_HERE) ;
-          M_assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+          MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
           for (sint32 j=first ; j<=last ; j++) {
             const sint32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
             for (sint32 k=theFirst.count () - 1 ; k>=0 ; k--) {
@@ -416,7 +416,7 @@ bool c_LR1_items_set::isEmptySet (void) const {
 void c_LR1_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
-         C_html_file_write & inHTMLfile) {
+         C_HTML_FileWrite & inHTMLfile) {
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
     const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
     const sint32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
@@ -465,8 +465,8 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
 
 void c_LR1_items_set::
 getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
-                                    TCUniqueArray <sint32> & outProductionsSet,
-                                    TCUniqueArray <sint32> & outTerminalArray,
+                                    TC_UniqueArray <sint32> & outProductionsSet,
+                                    TC_UniqueArray <sint32> & outTerminalArray,
                                     bool & outAcceptCondition) {
   outProductionsSet.clear () ;
   outTerminalArray.clear () ;
@@ -529,11 +529,11 @@ class cLR1_items_sets_AVL_tree {
   private : cLR1_items_sets_AVL_tree (const sint32 inInfo) ;
   public : virtual ~cLR1_items_sets_AVL_tree (void) ;
   private : sint32 compare (const c_LR1_items_set & in_LR1_items_set,
-                         const TCUniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) ;
+                         const TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) ;
   public : static sint32 recursiveSearchOrInsert
                          (cLR1_items_sets_AVL_tree * & ioRootPointer,
                           c_LR1_items_set & io_LR1_items_set,
-                          TCUniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
+                          TC_UniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
                           bool & outExtension) ;
 } ;
 
@@ -557,7 +557,7 @@ cLR1_items_sets_AVL_tree::~cLR1_items_sets_AVL_tree (void) {
 
 sint32 cLR1_items_sets_AVL_tree::
 compare (const c_LR1_items_set & in_LR1_items_set,
-         const TCUniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) {
+         const TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) {
   return c_LR1_items_set::compare_LR1_items_sets (in_LR1_items_sets_array (mInfo COMMA_HERE), in_LR1_items_set) ;
 }
 
@@ -612,7 +612,7 @@ static void rotateRight (cLR1_items_sets_AVL_tree * & ioPtr) {
 sint32 cLR1_items_sets_AVL_tree::
 recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
                          c_LR1_items_set & io_LR1_items_set,
-                         TCUniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
+                         TC_UniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
                          bool & outExtension) {
   sint32 result ;
   if (ioRootPointer == NULL) {
@@ -710,17 +710,17 @@ class c_LR1_items_sets_collection {
 //--- Display LR1 items set
   public : void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
-                         C_html_file_write & inHTMLfile) ;
+                         C_HTML_FileWrite & inHTMLfile) ;
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of SLR table)
   public : void getProductionsWhereLocationIsRight (const sint32 inStateIndex,
                                                     const cPureBNFproductionsList & inProductionRules,
-                                                    TCUniqueArray <sint32> & outProductionsSet,
-                                                    TCUniqueArray <sint32> & outTerminalArray,
+                                                    TC_UniqueArray <sint32> & outProductionsSet,
+                                                    TC_UniqueArray <sint32> & outTerminalArray,
                                                     bool & outAcceptCondition) ;
 
 //--- Private data
-  private : TCUniqueArray <c_LR1_items_set> m_LR1_items_sets_array ;
+  private : TC_UniqueArray <c_LR1_items_set> m_LR1_items_sets_array ;
   private : cLR1_items_sets_AVL_tree * mRoot ;
 } ;
 
@@ -751,7 +751,7 @@ searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) {
 void c_LR1_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
-         C_html_file_write & inHTMLfile) {
+         C_HTML_FileWrite & inHTMLfile) {
   for (sint32 i=0 ; i<m_LR1_items_sets_array.count () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
     inHTMLfile << "S" << i ;
@@ -780,8 +780,8 @@ void c_LR1_items_sets_collection::getTransitionFrom (const cPureBNFproductionsLi
 
 void c_LR1_items_sets_collection::getProductionsWhereLocationIsRight (const sint32 inStateIndex,
                                             const cPureBNFproductionsList & inProductionRules,
-                                              TCUniqueArray <sint32> & outProductionsSet,
-                                              TCUniqueArray <sint32> & outTerminalArray,
+                                              TC_UniqueArray <sint32> & outProductionsSet,
+                                              TC_UniqueArray <sint32> & outTerminalArray,
                                                                     bool & outAcceptCondition) {
   m_LR1_items_sets_array (inStateIndex COMMA_HERE)
        .getProductionsWhereLocationIsRight (inProductionRules,
@@ -897,27 +897,27 @@ cLR1_decisionTableElement cLR1_decisionTableElement::acceptDecision (void) {
 //---------------------------------------------------------------------------*
 
 static void
-generate_LR1_grammar_cpp_file (C_lexique & inLexique,
+generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
-                               const TCArray2 <cLR1_decisionTableElement> & inSLRdecisionTable,
-                               const TC_fifo <c_LR1_automaton_transition> & inTransitionList,
+                               const TC_Array2 <cLR1_decisionTableElement> & inSLRdecisionTable,
+                               const TC_FIFO <c_LR1_automaton_transition> & inTransitionList,
                                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                                const uint32 inOriginalGrammarStartSymbol,
-                               const C_string & inLexiqueName,
-                               const C_string & inTargetFileName,
+                               const C_String & inLexiqueName,
+                               const C_String & inTargetFileName,
                                const C_galgas_stringset & inClassesNamesSet) {
 //--- Generate header file inclusion -----------------------------------------
-  C_string generatedZone2 ;
+  C_String generatedZone2 ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
 //--- Generate SLR analyze action table --------------------------------------
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   generatedZone3.writeTitleComment ("SLR analyzer action table") ;
   const sint32 rowsCount = inSLRdecisionTable.getRowsCount () ; // Number of states
   const sint32 columnsCount = inSLRdecisionTable.getColumnsCount () ; // Number of terminal symbols
 //--- State action tables
-  TCUniqueArray <sint32> startIndexArray (rowsCount COMMA_HERE) ;
+  TC_UniqueArray <sint32> startIndexArray (rowsCount COMMA_HERE) ;
   generatedZone3 << "// Action tables handle shift and reduce actions ;\n"
                     "//  - a shift action is (terminal_symbol, SHIFT (n)) : if shifts to state n ;\n"
                     "//  - the accept action is (terminal_symbol, ACCEPT) ;\n"
@@ -977,7 +977,7 @@ generate_LR1_grammar_cpp_file (C_lexique & inLexique,
 //--- Generate state successor table -----------------------------------------
   generatedZone3.writeTitleComment ("SLR states successors table") ;
 //--- Get successor count, by state
-  TCUniqueArray <sint32> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
+  TC_UniqueArray <sint32> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
   const sint32 transitionsCount = inTransitionList.getLength () ;
   { for (sint32 i=0 ; i<transitionsCount ; i++) {
       if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
@@ -1051,7 +1051,7 @@ generate_LR1_grammar_cpp_file (C_lexique & inLexique,
   GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
-    generatedZone3.writeTitleComment (C_string ("'") + nonTerminal->mKey + "' non terminal implementation") ;
+    generatedZone3.writeTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
     GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
     while (altForNonterminal != NULL) {
       macroValidPointer (altForNonterminal) ;
@@ -1075,9 +1075,9 @@ generate_LR1_grammar_cpp_file (C_lexique & inLexique,
       generatedZone3 << ") {\n" ; 
       generatedZone3 << "  switch (lexique_var_.getNextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
-        M_assert (first >= 0, "first (%ld) < 0", first, 0) ;
+        MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
         const sint32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-        M_assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+        MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
         for (sint32 j=first ; j<=last ; j++) {
           const sint32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
           generatedZone3 << "  case " << ip << " :\n    " ;
@@ -1140,16 +1140,16 @@ generate_LR1_grammar_cpp_file (C_lexique & inLexique,
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   for (sint32 ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
     if (inVocabulary.needToGenerateChoice (ts COMMA_HERE)) {
-      generatedZone3.writeTitleComment (C_string ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
+      generatedZone3.writeTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
               << inLexiqueName << " & lexique_var_) {\n"
                  "// Productions numbers :" ;
 
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
-      M_assert (first >= 0, "first (%ld) < 0", first, 0) ;
+      MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
       const sint32 last = inProductionRules.tableauIndiceDerniereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
-      M_assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+      MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       for (sint32 j=first ; j<=last ; j++) {
         generatedZone3 << ' ' << inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
       }
@@ -1179,10 +1179,10 @@ generate_LR1_grammar_cpp_file (C_lexique & inLexique,
 
 static void compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
                                     const cVocabulary & inVocabulary,
-                                    const TCUniqueArray <TCUniqueArray <sint32> > & inFIRSTarray,
+                                    const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
                                     c_LR1_items_sets_collection & outLR1_items_sets_collection,
-                                    const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                                    TC_fifo <c_LR1_automaton_transition> & outTransitionList) {
+                                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                                    TC_FIFO <c_LR1_automaton_transition> & outTransitionList) {
 //--- Create initial LR1 items set (LR(1) automaton initial state I0)
   const sint32 vocabularyCount = inVocabulary.getAllSymbolsCount () ;
   c_LR1_items_set LR1_items_set ;
@@ -1219,16 +1219,16 @@ static void compute_LR1_automation (const cPureBNFproductionsList & inProduction
 //---------------------------------------------------------------------------*
 
 void
-LR1_computations (C_lexique & inLexique,
+LR1_computations (C_Lexique & inLexique,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
-                  C_html_file_write & inHTMLfile,
-                  const TCUniqueArray <TCUniqueArray <sint32> > & inFIRSTarray,
-                  const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                  C_HTML_FileWrite & inHTMLfile,
+                  const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
+                  const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                   const uint32 inOriginalGrammarStartSymbol,
-                  const C_string & inTargetFileName,
-                  const C_string & inLexiqueName,
+                  const C_String & inTargetFileName,
+                  const C_String & inLexiqueName,
                   const C_galgas_stringset & inClassesNamesSet,
                   bool & outOk) {
 //--- Console display
@@ -1239,7 +1239,7 @@ LR1_computations (C_lexique & inLexique,
 
 //--- Compute LR1 automaton
   c_LR1_items_sets_collection LR1_items_sets_collection ;
-  TC_fifo <c_LR1_automaton_transition> transitionList ;
+  TC_FIFO <c_LR1_automaton_transition> transitionList ;
   compute_LR1_automation (inProductionRules,
                           inVocabulary,
                           inFIRSTarray,
@@ -1278,7 +1278,7 @@ LR1_computations (C_lexique & inLexique,
 
 //--- Build SLR table... detect if grammar is not SLR
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  TCArray2 <cLR1_decisionTableElement> SLRdecisionTable (LR1_items_sets_collection.getStatesCount (), terminalSymbolsCount COMMA_HERE) ;
+  TC_Array2 <cLR1_decisionTableElement> SLRdecisionTable (LR1_items_sets_collection.getStatesCount (), terminalSymbolsCount COMMA_HERE) ;
   sint32 shiftActions = 0 ;
   sint32 reduceActions = 0 ;
   sint32 successorEntries = 0 ;
@@ -1305,8 +1305,8 @@ LR1_computations (C_lexique & inLexique,
   }
 //--- Reduce actions
   sint32 conflictCount = 0 ;
-  TCUniqueArray <sint32> productionsSet ;
-  TCUniqueArray <sint32> terminalArray ;
+  TC_UniqueArray <sint32> productionsSet ;
+  TC_UniqueArray <sint32> terminalArray ;
   for (sint32 state=0 ; state<LR1_items_sets_collection.getStatesCount () ; state++) {
   //--- Accept condition
     bool acceptCondition = false ;

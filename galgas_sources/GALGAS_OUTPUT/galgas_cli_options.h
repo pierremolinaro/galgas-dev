@@ -22,7 +22,7 @@
 
 #ifndef galgas_cli_options_0_DEFINED
 #define galgas_cli_options_0_DEFINED
-#include "command_line_interface/AC_cli_options.h"
+#include "command_line_interface/AC_CLI_Options.h"
 
 //--- START OF USER ZONE 2
 
@@ -35,7 +35,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class galgas_cli_options : public AC_cli_options {
+class galgas_cli_options : public AC_CLI_Options {
 //--- Constructor
   public : galgas_cli_options (void) ;
 
@@ -64,19 +64,19 @@ class galgas_cli_options : public AC_cli_options {
 
 //--- String Command Line Interface Options
   public : virtual sint32 getStringOptionsCount (void) const ;
-  public : virtual C_string getStringOptionValue (const sint32 inIndex) const ;
-  public : virtual void setStringOptionValue (const sint32 inIndex, const C_string & inValue) ;
+  public : virtual C_String getStringOptionValue (const sint32 inIndex) const ;
+  public : virtual void setStringOptionValue (const sint32 inIndex, const C_String & inValue) ;
   public : virtual char getStringOptionChar (const sint32 inIndex) const ;
   public : virtual const char * getStringOptionString (const sint32 inIndex) const ;
   public : virtual const char * getStringOptionDescription (const sint32 inIndex) const ;
-  public : virtual C_string getStringOptionValueFromKeys (const char * inModuleName,
+  public : virtual C_String getStringOptionValueFromKeys (const char * inModuleName,
                                                           const char * inOptionName,
                                                           bool * outFound) const ;
 
 //--- Private arraies : current options values
   private : bool mBoolValue [4] ;
   private : uint32 mUintValue [1] ;
-  private : TCUniqueArray <C_string> mStringValue ;
+  private : TC_UniqueArray <C_String> mStringValue ;
 } ;
 
 //---------------------------------------------------------------------------*

@@ -17,11 +17,11 @@
 //---------------------------------------------------------------------------*
 
 #define macro_typeArgumentRoutineExterne \
-public : virtual void generateExternArgument (AC_output_stream & inCppFile) const = 0 ;
+public : virtual void generateExternArgument (AC_OutputStream & inCppFile) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeArgumentRoutineExterne \
-public : virtual void generateExternArgument (AC_output_stream & inCppFile) const ;
+public : virtual void generateExternArgument (AC_OutputStream & inCppFile) const ;
 
 //---------------------------------------------------------------------------*

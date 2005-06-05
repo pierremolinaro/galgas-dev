@@ -23,13 +23,13 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_setTypeToGenerate::
-generateHdeclarations (AC_output_stream & inHfile,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
-  inHfile.writeTitleComment (C_string ("'GGS_") + mSetTypeName + "' : SET OF 'GGS_" + mEnumElementTypeName + "'") ;
-  inHfile << "#include \"bdd/C_bdd.h\"\n\n"
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
+  inHfile.writeTitleComment (C_String ("'GGS_") + mSetTypeName + "' : SET OF 'GGS_" + mEnumElementTypeName + "'") ;
+  inHfile << "#include \"bdd/C_BDD.h\"\n\n"
              "class GGS_" << mSetTypeName << " {\n"
-             "  protected : C_bdd mSet ;\n"
+             "  protected : C_BDD mSet ;\n"
              "  protected : bool mBuilt ;\n"
              "//--- Default contructor\n"
              "  public : GGS_" << mSetTypeName << " (void) ;\n"
@@ -40,7 +40,7 @@ generateHdeclarations (AC_output_stream & inHfile,
              "//--- Is built ?\n"
              "  public : inline bool isBuilt (void) const { return mBuilt ; }\n"
              "//--- Add an element\n"
-             "  public : void methode_add (C_lexique &, const GGS_" << mEnumElementTypeName << " & inElementToAdd) ;\n"
+             "  public : void methode_add (C_Lexique &, const GGS_" << mEnumElementTypeName << " & inElementToAdd) ;\n"
              "//--- Contains an element\n"
              "  public : GGS_bool reader_contains (const GGS_" << mEnumElementTypeName << " & inElement) const ;\n"
              "//--- Includes an other set\n"
@@ -55,9 +55,9 @@ generateHdeclarations (AC_output_stream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_setTypeToGenerate::
-generateHdeclarations_2 (AC_output_stream & /* inHfile */,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & /* inLexique */) {
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -69,21 +69,21 @@ bool cPtr_setTypeToGenerate::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_setTypeToGenerate
-::generateCppClassDeclaration (AC_output_stream & /* inHfile*/,
-                               const C_string & /* inLexiqueClassName */,
-                               const C_string & /* inTargetFileName*/,
+::generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
+                               const C_String & /* inLexiqueClassName */,
+                               const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_setTypeToGenerate
-::generateCppClassImplementation (AC_output_stream & inCppFile,
-                                  const C_string & /* inLexiqueClassName */,
-                                  const C_string & /* inTargetFileName */,
+::generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                  const C_String & /* inLexiqueClassName */,
+                                  const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
-  inCppFile.writeTitleComment (C_string ("'GGS_") + mSetTypeName + "' : SET OF 'GGS_" + mEnumElementTypeName + "'") ;
+  inCppFile.writeTitleComment (C_String ("'GGS_") + mSetTypeName + "' : SET OF 'GGS_" + mEnumElementTypeName + "'") ;
   inCppFile << "GGS_" << mSetTypeName << "::GGS_" << mSetTypeName << " (void) {\n"
               "  mBuilt = false ;\n"
                "}\n\n" ;
@@ -102,9 +102,9 @@ void cPtr_setTypeToGenerate
                "  mBuilt = false ;\n"
                "}\n\n" ;
   inCppFile.writeHyphenLineComment () ;
-  inCppFile << "void GGS_" << mSetTypeName << "::methode_add (C_lexique &, const GGS_" << mEnumElementTypeName << " & inElementToAdd) {\n"
+  inCppFile << "void GGS_" << mSetTypeName << "::methode_add (C_Lexique &, const GGS_" << mEnumElementTypeName << " & inElementToAdd) {\n"
                "  if (isBuilt () && inElementToAdd.isBuilt ()) {\n"
-               "    const C_bdd e = C_bdd::varCompareConst (0, GGS_" << mEnumElementTypeName << "::bitCount (), C_bdd::kEqual, inElementToAdd.getValue ()) ;\n"
+               "    const C_BDD e = C_BDD::varCompareConst (0, GGS_" << mEnumElementTypeName << "::bitCount (), C_BDD::kEqual, inElementToAdd.getValue ()) ;\n"
                "    mSet |= e ;\n"
                "  }\n"
                "}\n\n" ;
@@ -113,7 +113,7 @@ void cPtr_setTypeToGenerate
                "  const bool built = isBuilt () && inElement.isBuilt () ;\n"
                "  bool contains = false ;\n"
                "  if (built) {\n"
-               "    const C_bdd e = C_bdd::varCompareConst (0, GGS_" << mEnumElementTypeName << "::bitCount (), C_bdd::kEqual, inElement.getValue ()) ;\n"
+               "    const C_BDD e = C_BDD::varCompareConst (0, GGS_" << mEnumElementTypeName << "::bitCount (), C_BDD::kEqual, inElement.getValue ()) ;\n"
                "    contains = (mSet & e).isEqualToBDD (e) ;\n"
                "  }\n"
                "  return GGS_bool (built, contains) ;\n" 

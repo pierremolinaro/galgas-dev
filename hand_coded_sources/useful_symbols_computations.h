@@ -25,17 +25,17 @@
 
 class cPureBNFproductionsList ;
 class cVocabulary ;
-class C_html_file_write ;
-class C_bdd_set1 ;
-class C_lexique ;
+class C_HTML_FileWrite ;
+class C_BDD_Set1 ;
+class C_Lexique ;
 
 //---------------------------------------------------------------------------*
 
 void
 useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproductions,
                              const cVocabulary & inVocabulary,
-                             C_html_file_write & inHTMLfile,
-                             C_bdd_set1 & outUsefulSymbols,
+                             C_HTML_FileWrite & inHTMLfile,
+                             C_BDD_Set1 & outUsefulSymbols,
                               bool & outWarningFlag) ;
 
 //---------------------------------------------------------------------------*

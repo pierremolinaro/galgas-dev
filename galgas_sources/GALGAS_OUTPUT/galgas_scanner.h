@@ -22,7 +22,7 @@
 
 #ifndef galgas_scanner_0_DEFINED
 #define galgas_scanner_0_DEFINED
-#include "galgas/C_lexique.h"
+#include "galgas/C_Lexique.h"
 
 //--- START OF USER ZONE 2
 
@@ -35,7 +35,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class galgas_scanner : public C_lexique {
+class galgas_scanner : public C_Lexique {
 // Terminal symbols enumeration
   public : enum {galgas_scanner_1_,
   galgas_scanner_1_identifier,
@@ -141,24 +141,24 @@ class galgas_scanner : public C_lexique {
 //--- Key words table 'galgasKeyWordList'
   public : static const sint16 galgas_scanner_table_size_galgasKeyWordList ;
   private : static const C_lexique_table_entry galgas_scanner_table_for_galgasKeyWordList [61] ;
-  public : static sint16 search_into_galgasKeyWordList (const C_string & inSearchedString) ;
+  public : static sint16 search_into_galgasKeyWordList (const C_String & inSearchedString) ;
 
 //--- Key words table 'galgasDelimitorsList'
   public : static const sint16 galgas_scanner_table_size_galgasDelimitorsList ;
   private : static const C_lexique_table_entry galgas_scanner_table_for_galgasDelimitorsList [31] ;
-  public : static sint16 search_into_galgasDelimitorsList (const C_string & inSearchedString) ;
+  public : static sint16 search_into_galgasDelimitorsList (const C_String & inSearchedString) ;
 
   protected : virtual void parseLexicalToken (const bool inPropagateLexicaleErrorException) ;
   protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,
-                                                              C_string & messageErreur) ;
+                                                              C_String & messageErreur) ;
 
 //--- Constructor
   public : galgas_scanner (AC_galgas_io * inGalgasInputOutput) ;
   public : char charValue ; // user defined attribute
   public : sint32 longValue ; // user defined attribute
   public : uint32 ulongValue ; // user defined attribute
-  public : C_string tokenString ; // user defined attribute
-  public : C_string identifierString ; // user defined attribute
+  public : C_String tokenString ; // user defined attribute
+  public : C_String identifierString ; // user defined attribute
   public : virtual sint16 getTerminalVocabularyCount_ (void) const { return 99 ; }
 
   public : static sint32 getStylesCount (void) ;

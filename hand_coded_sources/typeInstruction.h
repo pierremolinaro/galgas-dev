@@ -17,15 +17,15 @@
 //---------------------------------------------------------------------------*
 
 #define macro_typeInstruction \
-public : virtual void generateInstruction (AC_output_stream & inCppFile, \
-                                           const C_string & inLexiqueClassName, \
-                                           const C_string & inTargetFileName, \
+public : virtual void generateInstruction (AC_OutputStream & inCppFile, \
+                                           const C_String & inLexiqueClassName, \
+                                           const C_String & inTargetFileName, \
                                            sint32 & ioPrototypeIndex, \
                                            const bool inGenerateDebug, \
                                            const bool inGenerateSemanticInstructions) const = 0 ; \
-public : virtual void generateSelectAndRepeatPrototypes (AC_output_stream & inHfile, \
-                                                         const C_string & inLexiqueClassName, \
-                                                         const C_string & inTargetFileName, \
+public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile, \
+                                                         const C_String & inLexiqueClassName, \
+                                                         const C_String & inTargetFileName, \
                                                          sint32 & ioPrototypeIndex, \
                                                          const bool inNotDeclared) ; \
 public : virtual bool isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const = 0 ; \
@@ -36,9 +36,9 @@ public : virtual bool isSyntacticInstruction (void) const { return false ; }
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeInstruction \
-public : virtual void generateInstruction (AC_output_stream & inCppFile, \
-                                           const C_string & inLexiqueClassName, \
-                                           const C_string & inTargetFileName, \
+public : virtual void generateInstruction (AC_OutputStream & inCppFile, \
+                                           const C_String & inLexiqueClassName, \
+                                           const C_String & inTargetFileName, \
                                            sint32 & ioPrototypeIndex, \
                                            const bool inGenerateDebug, \
                                            const bool inGenerateSemanticInstructions) const ; \

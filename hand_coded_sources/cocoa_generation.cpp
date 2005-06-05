@@ -18,26 +18,26 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
-#include "time/C_datetime.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
+#include "time/C_DateTime.h"
 
 #include "cocoa_parser.h"
 
 //---------------------------------------------------------------------------*
 
 static void
-generate_mm_file_for_cocoa (C_lexique & inLexique,
-                            const C_string & inCocoaComponentName,
+generate_mm_file_for_cocoa (C_Lexique & inLexique,
+                            const C_String & inCocoaComponentName,
                             const GGS_lstring & inCLIToolName,
-                            const C_string & inLexiqueComponentName,
+                            const C_String & inLexiqueComponentName,
                             const GGS_M_optionComponents & inOptionComponentsMap) {
 //--- Generate user includes
-  C_string generatedZone2 ;
+  C_String generatedZone2 ;
   generatedZone2 << "#import <Cocoa/Cocoa.h>\n\n"             
-             "#include \"cocoa_wrapper_for_galgas.h\"\n"
-             "#include \"command_line_interface/C_cli_options_group.h\"\n"
-             "#include \"command_line_interface/C_generic_cli_options.h\"\n"
+             "#include \"F_CocoaWrapperForGalgas.h\"\n"
+             "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
+             "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
              "#include \"galgas/C_galgas_null_io.h\"\n"
              "#include \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
@@ -52,12 +52,12 @@ generate_mm_file_for_cocoa (C_lexique & inLexique,
                     "\n" ;
 
 //--- Global static variables
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   generatedZone3.writeTitleComment ("Global static variables") ;
   generatedZone3 << "\n" ;
   sint32 index = 0 ;
   const bool generateDebug = inLexique.getBoolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
-  generatedZone3 << "static C_generic_cli_options gGenericOptions ("
+  generatedZone3 << "static C_builtin_CLI_Options gGenericOptions ("
           << (generateDebug ? "true" : "false")
           << ") ;\n" ;
   currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
@@ -67,7 +67,7 @@ generate_mm_file_for_cocoa (C_lexique & inLexique,
     currentOptionComponent = currentOptionComponent->getNextItem () ;
     index ++ ;
   }
-  generatedZone3 << "static C_cli_options_group gCommandLineOptions (& gGenericOptions, " ;
+  generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, " ;
   index = 0 ;
   currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
   while (currentOptionComponent != NULL) {
@@ -149,11 +149,11 @@ generate_mm_file_for_cocoa (C_lexique & inLexique,
              "  return gCommandLineOptions.getStringOptionsCount () ;\n"
              "}\n"
              "\n"
-             "C_string getStringOptionValue (const sint32 inIndex COMMA_LOCATION_ARGS) {\n"
+             "C_String getStringOptionValue (const sint32 inIndex COMMA_LOCATION_ARGS) {\n"
              "  return gCommandLineOptions.getStringOptionValue (inIndex COMMA_THERE) ;\n"
              "}\n"
              "\n"
-             "void setStringOptionValue (const sint32 inIndex, const C_string & inValue COMMA_LOCATION_ARGS) {\n"
+             "void setStringOptionValue (const sint32 inIndex, const C_String & inValue COMMA_LOCATION_ARGS) {\n"
              "  gCommandLineOptions.setStringOptionValue (inIndex, inValue COMMA_THERE) ;\n"
              "}\n"
              "\n"
@@ -191,7 +191,7 @@ generate_mm_file_for_cocoa (C_lexique & inLexique,
              "\n"
              "void scanThenGetStyledRangeArray (const char * inSourceString,\n"
              "                                  const char * inSourceFileName,\n"
-             "                                  TCUniqueArray <C_styledRange> & ioStyledRangeArray,\n"
+             "                                  TC_UniqueArray <C_styledRange> & ioStyledRangeArray,\n"
              "                                  const sint32 inAffectedRangeLocation,\n"
              "                                  const sint32 inAffectedRangeLength,\n"
              "                                  const sint32 inReplacementStringLength,\n"
@@ -254,7 +254,7 @@ generate_mm_file_for_cocoa (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void 
-generateCocoaComponent (C_lexique & inLexique,
+generateCocoaComponent (C_Lexique & inLexique,
                         GGS_lstring & inCocoaComponentName,
                         GGS_lstring & inCLIToolName,
                         GGS_lstring & inLexiqueComponentName,

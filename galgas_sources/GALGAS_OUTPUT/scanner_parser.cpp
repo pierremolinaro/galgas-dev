@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "scanner_parser.h"
 
 
@@ -36,7 +36,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildLexicalTypeMap (C_lexique & lexique_var_,
+void routine_buildLexicalTypeMap (C_Lexique & lexique_var_,
                                 GGS_lexicalTypeMap  & var_cas_lexicalTypeMap) {
   var_cas_lexicalTypeMap = GGS_lexicalTypeMap::constructor_empty () ;
   GGS_AC_galgasType  var_cas_t ;
@@ -1743,8 +1743,8 @@ pr_lexical_send_instruction_scanner_parser_1033_32_ (galgas_scanner & lexique_va
         { cPtr_typeGalgas_lstring * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_lstring *> (var_cas_natureAttribut.getPtr ()) ;
           if (ptrExtraire_ == NULL) {
             if (var_cas_natureAttribut.getPtr () != NULL) {
-              TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-              C_string message2_ ;
+              TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+              C_String message2_ ;
               message1_ (0 COMMA_HERE) << cPtr_typeGalgas_lstring::static_string_message_messageGalgasType () ;
               message2_ << var_cas_natureAttribut ()->message_messageGalgasType () ;
               var_cas_nomAttribut.signalExtractError (lexique_var_, message1_, message2_) ;

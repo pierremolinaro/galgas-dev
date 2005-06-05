@@ -17,11 +17,11 @@
 //---------------------------------------------------------------------------*
 
 #define macro_typeConditionLexicale \
-public : virtual void generateLexicalCondition (AC_output_stream & inCppFile) = 0 ;
+public : virtual void generateLexicalCondition (AC_OutputStream & inCppFile) = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeConditionLexicale \
-public : virtual void generateLexicalCondition (AC_output_stream & inCppFile) ;
+public : virtual void generateLexicalCondition (AC_OutputStream & inCppFile) ;
 
 //---------------------------------------------------------------------------*

@@ -23,24 +23,24 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TCUniqueArray.h"
+#include "generic_arraies/TC_UniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
 class cPureBNFproductionsList ;
-class C_html_file_write ;
+class C_HTML_FileWrite ;
 class cVocabulary ;
-class C_bdd_set1 ;
-class C_lexique ;
+class C_BDD_Set1 ;
+class C_Lexique ;
 
 //---------------------------------------------------------------------------*
 
 void
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                            C_html_file_write & inHTMLfile,
+                            C_HTML_FileWrite & inHTMLfile,
                             const cVocabulary & inVocabulary,
-                            TCUniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                            C_bdd_set1 & outVocabularyDerivingToEmpty_BDD) ;
+                            TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
+                            C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD) ;
 
 //---------------------------------------------------------------------------*
 

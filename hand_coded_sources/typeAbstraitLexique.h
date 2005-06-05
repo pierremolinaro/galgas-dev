@@ -17,13 +17,13 @@
 //---------------------------------------------------------------------------*
 
 #define macro_typeAbstraitLexique \
-public : virtual C_string getScannerName (void) = 0 ; \
-public : virtual void generateScannerDeclaration (C_text_file_write & inHfile) = 0 ;
+public : virtual C_String getScannerName (void) = 0 ; \
+public : virtual void generateScannerDeclaration (C_TextFileWrite & inHfile) = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeAbstraitLexique \
-public : virtual C_string getScannerName (void) ; \
-public : virtual void generateScannerDeclaration (C_text_file_write & inHfile) ;
+public : virtual C_String getScannerName (void) ; \
+public : virtual void generateScannerDeclaration (C_TextFileWrite & inHfile) ;
 
 //---------------------------------------------------------------------------*

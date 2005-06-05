@@ -23,33 +23,33 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TCUniqueArray.h"
+#include "generic_arraies/TC_UniqueArray.h"
 #include "common_semantics.h"
 
 //---------------------------------------------------------------------------*
 
 class cPureBNFproductionsList ;
-class C_html_file_write ;
+class C_HTML_FileWrite ;
 class cVocabulary ;
-class C_bdd_set2 ;
-class C_string ;
+class C_BDD_Set2 ;
+class C_String ;
 class C_galgas_stringset ;
-class C_lexique ;
+class C_Lexique ;
 
 //---------------------------------------------------------------------------*
 
 void
-LL1_computations (C_lexique & inLexique,
+LL1_computations (C_Lexique & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
-                  C_html_file_write & inHTMLfile,
+                  C_HTML_FileWrite & inHTMLfile,
                   const cVocabulary & inVocabulary,
-                  const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                  const C_bdd_set2 & inFIRSTsets,
-                  const C_bdd_set2 & inFOLLOWsets,
+                  const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                  const C_BDD_Set2 & inFIRSTsets,
+                  const C_BDD_Set2 & inFOLLOWsets,
                   const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForOriginalGrammar,
                   const uint32 inOriginalGrammarStartSymbol,
-                  const C_string & inTargetFileName,
-                  const C_string & inLexiqueName,
+                  const C_String & inTargetFileName,
+                  const C_String & inLexiqueName,
                   const C_galgas_stringset & inClassesNamesSet,
                   bool & outOk) ;
 

@@ -22,14 +22,14 @@ typedef enum {k_me_constant, k_super_constant, k_other_variable} enumVariableKin
 
 #define macro_typeCplusPlusName \
 public : virtual enumVariableKind getVariableKind (void) const = 0 ; \
-public : virtual void generateVariableAddress (AC_output_stream & fichier) const = 0 ; \
-public : virtual void generateCplusPlusName (AC_output_stream & fichier) const = 0 ;
+public : virtual void generateVariableAddress (AC_OutputStream & fichier) const = 0 ; \
+public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeCplusPlusName \
 public : virtual enumVariableKind getVariableKind (void) const ; \
-public : virtual void generateVariableAddress (AC_output_stream & fichier) const ;\
-public : virtual void generateCplusPlusName (AC_output_stream & fichier) const ;
+public : virtual void generateVariableAddress (AC_OutputStream & fichier) const ;\
+public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const ;
 
 //---------------------------------------------------------------------------*

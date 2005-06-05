@@ -31,7 +31,7 @@
 
 #include "AC_galgasType.h"
 
-class cPtr_AC_galgasType : public C_reference_count {
+class cPtr_AC_galgasType : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 
@@ -39,28 +39,28 @@ class cPtr_AC_galgasType : public C_reference_count {
 
   macro_AC_galgasType
   public : virtual bool isBuilt (void) const = 0 ;
-  public : virtual void methode_getTypeName (C_lexique &,
+  public : virtual void methode_getTypeName (C_Lexique &,
                                 GGS_string& ) = 0 ;
-  public : virtual void methode_acceptAssignmentFromHere (C_lexique &,
+  public : virtual void methode_acceptAssignmentFromHere (C_Lexique &,
                                 GGS_lstring  ) ;
-  public : virtual void methode_acceptToBeKeyForMap (C_lexique &) ;
-  public : virtual void methode_handleModifierCall (C_lexique &,
+  public : virtual void methode_acceptToBeKeyForMap (C_Lexique &) ;
+  public : virtual void methode_handleModifierCall (C_Lexique &,
                                 GGS_lstring  ,
                                 GGS_L_signature & ) ;
-  public : virtual void methode_handleReaderInstructionCall (C_lexique &,
+  public : virtual void methode_handleReaderInstructionCall (C_Lexique &,
                                 GGS_lstring  ,
                                 GGS_L_signature & ) ;
-  public : virtual void methode_handleConstructorCall (C_lexique &,
+  public : virtual void methode_handleConstructorCall (C_Lexique &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ) ;
-  public : virtual void methode_handleAddAssignOperatorCall (C_lexique &,
+  public : virtual void methode_handleAddAssignOperatorCall (C_Lexique &,
                                 GGS_location  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ) ;
-  public : virtual void methode_handleIncrementOperatorCall (C_lexique &,
+  public : virtual void methode_handleIncrementOperatorCall (C_Lexique &,
                                 GGS_location  ) ;
-  public : virtual void methode_checkAbilityToBeSilentlyConvertedToLocation (C_lexique &) ;
-  public : virtual void methode_typeCanBeUsedInObjectDeclaration (C_lexique &) ;
+  public : virtual void methode_checkAbilityToBeSilentlyConvertedToLocation (C_Lexique &) ;
+  public : virtual void methode_typeCanBeUsedInObjectDeclaration (C_Lexique &) ;
   public : virtual const char * message_messageGalgasType (void) const ;
   public : static const char * static_string_message_messageGalgasType (void) ;
 } ;

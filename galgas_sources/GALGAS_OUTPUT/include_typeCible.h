@@ -32,7 +32,7 @@
 #define macro_typeCible
 #define macroInheritFrom_typeCible
 
-class cPtr_typeCible : public C_reference_count {
+class cPtr_typeCible : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 
@@ -40,7 +40,7 @@ class cPtr_typeCible : public C_reference_count {
 
   macro_typeCible
   public : virtual bool isBuilt (void) const = 0 ;
-  public : virtual void methode_verifierType (C_lexique &,
+  public : virtual void methode_verifierType (C_Lexique &,
                                 GGS_AC_galgasType  ,
                                 GGS_lstring & ,
                                 GGS_L_assignedVariables & ,

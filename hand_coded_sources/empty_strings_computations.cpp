@@ -18,8 +18,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_html_file_write.h"
-#include "bdd/C_bdd_set1.h"
+#include "files/C_HTML_FileWrite.h"
+#include "bdd/C_BDD_Set1.h"
 
 //---------------------------------------------------------------------------*
 
@@ -29,15 +29,15 @@
 
 //---------------------------------------------------------------------------*
 
-static C_bdd_set1
+static C_BDD_Set1
 computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & inProductionRules,
-                                                const C_bdd_descriptor & inDescriptor) { 
-  C_bdd_set1 nonterminalSymbolsHavingEmptyDerivation (inDescriptor) ;
-  C_bdd_set1 temp (inDescriptor);
+                                                const C_BDD_Descriptor & inDescriptor) { 
+  C_BDD_Set1 nonterminalSymbolsHavingEmptyDerivation (inDescriptor) ;
+  C_BDD_Set1 temp (inDescriptor);
   for (sint32 i=0 ; i<inProductionRules.getLength () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
     if (p.aDerivation.count () == 0L) {
-      temp.init (C_bdd::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
+      temp.init (C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
       nonterminalSymbolsHavingEmptyDerivation |= temp ;
     }
   }
@@ -48,10 +48,10 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
 //---------------------------------------------------------------------------*
 
 static void
-printNonterminalSymbolsHavingEmptyDerivation (const C_bdd_set1 & inNonterminalSymbolsHavingEmptyDerivation,
-                                              C_html_file_write & inHTMLfile,
+printNonterminalSymbolsHavingEmptyDerivation (const C_BDD_Set1 & inNonterminalSymbolsHavingEmptyDerivation,
+                                              C_HTML_FileWrite & inHTMLfile,
                                               const cVocabulary & inVocabulary) {
-  TCUniqueArray <bool> nonTerminalArray ;
+  TC_UniqueArray <bool> nonTerminalArray ;
   inNonterminalSymbolsHavingEmptyDerivation.getArray (nonTerminalArray) ;
   const uint32 n = inNonterminalSymbolsHavingEmptyDerivation.getValuesCount () ;
   inHTMLfile.outputRawData ("<p><a name=\"empty_strings\"></a>") ;
@@ -80,18 +80,18 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_bdd_set1 & inNonterminalSy
 
 //---------------------------------------------------------------------------*
 
-static C_bdd_set1
+static C_BDD_Set1
 computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProductionRules,
-                                         const C_bdd_descriptor & inDescriptor,
-                                         TCUniqueArray <bool> & vocabulaireSeDerivantEnVide, 
+                                         const C_BDD_Descriptor & inDescriptor,
+                                         TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide, 
                                          const sint32 inAllSymbolsCount,
                                          sint32 & outIterationsCount) {
-  { TCUniqueArray <bool> tempo (inAllSymbolsCount, false COMMA_HERE) ;
+  { TC_UniqueArray <bool> tempo (inAllSymbolsCount, false COMMA_HERE) ;
     swap (tempo, vocabulaireSeDerivantEnVide) ;
   }
 
   const sint32 nombreDeProductions = inProductionRules.getLength () ;
-  TCUniqueArray <bool> productionTraitee (nombreDeProductions, false COMMA_HERE) ;
+  TC_UniqueArray <bool> productionTraitee (nombreDeProductions, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;
   bool onProgresse = true ;
@@ -116,11 +116,11 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
   }
   
 //--- Contruire le bdd
-  C_bdd_set1 nonTerminauxSeDerivantEnVide (inDescriptor) ;
-  C_bdd_set1 temp (inDescriptor) ;
+  C_BDD_Set1 nonTerminauxSeDerivantEnVide (inDescriptor) ;
+  C_BDD_Set1 temp (inDescriptor) ;
   for (sint32 i=0 ; i<inAllSymbolsCount ; i++) {
     if (vocabulaireSeDerivantEnVide (i COMMA_HERE)) {
-      temp.init (C_bdd::kEqual, (uint32) i) ;
+      temp.init (C_BDD::kEqual, (uint32) i) ;
       nonTerminauxSeDerivantEnVide |= temp ;
     }
   }
@@ -131,9 +131,9 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
 //---------------------------------------------------------------------------*
 
 static void
-printNonterminalDerivingInEmptyString (const C_bdd_set1 & inVocabularyDerivingToEmpty_BDD,
-                                       const C_bdd_set1 & inNonTerminalHavingEmptyDerivation,
-                                       C_html_file_write & inHTMLfile,
+printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
+                                       const C_BDD_Set1 & inNonTerminalHavingEmptyDerivation,
+                                       C_HTML_FileWrite & inHTMLfile,
                                        const cVocabulary & inVocabulary,
                                        const sint32 inIterationsCount) { 
   inHTMLfile.outputRawData ("<p>") ;
@@ -142,7 +142,7 @@ printNonterminalDerivingInEmptyString (const C_bdd_set1 & inVocabularyDerivingTo
              << " iterations.\n" ;
   inHTMLfile.outputRawData ("</p>") ;
   const uint32 t = inVocabularyDerivingToEmpty_BDD.getValuesCount () ;
-  const C_bdd_set1 newNonterminal = inVocabularyDerivingToEmpty_BDD & ~ inNonTerminalHavingEmptyDerivation ;
+  const C_BDD_Set1 newNonterminal = inVocabularyDerivingToEmpty_BDD & ~ inNonTerminalHavingEmptyDerivation ;
   const uint32 n = newNonterminal.getValuesCount () ;
   if (n == 0L) {
     inHTMLfile.outputRawData ("<p>") ;
@@ -152,7 +152,7 @@ printNonterminalDerivingInEmptyString (const C_bdd_set1 & inVocabularyDerivingTo
     inHTMLfile.outputRawData ("<p>") ;
     inHTMLfile << n << " nonterminal symbol(s) in addition to those deriving directly to the empty string :\n" ;
     inHTMLfile.outputRawData ("</p>") ;
-    TCUniqueArray <bool> nonTerminalArray ;
+    TC_UniqueArray <bool> nonTerminalArray ;
     newNonterminal.getArray (nonTerminalArray) ;
     sint32 index = 0 ;
     inHTMLfile.outputRawData ("<table class=\"result\">") ;
@@ -176,17 +176,17 @@ printNonterminalDerivingInEmptyString (const C_bdd_set1 & inVocabularyDerivingTo
 
 void
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                            C_html_file_write & inHTMLfile,
+                            C_HTML_FileWrite & inHTMLfile,
                             const cVocabulary & inVocabulary,
-                            TCUniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                            C_bdd_set1 & outVocabularyDerivingToEmpty_BDD) {
+                            TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
+                            C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD) {
 //--- Console display
   co << "  Searching for nonterminal symbols deriving in empty string... " ;
 //--- Print in BNF file
   inHTMLfile.writeTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
 
 //--- Compute BDD for nonterminal symbols having an empty derivation
-  const C_bdd_set1 nonTerminalHavingEmptyDerivation 
+  const C_BDD_Set1 nonTerminalHavingEmptyDerivation 
     = computeNonterminalSymbolsHavingEmptyDerivation (inPureBNFproductions,
                                                       outVocabularyDerivingToEmpty_BDD.getDescriptor ()) ; 
   printNonterminalSymbolsHavingEmptyDerivation (nonTerminalHavingEmptyDerivation,

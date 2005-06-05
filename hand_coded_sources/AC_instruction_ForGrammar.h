@@ -18,42 +18,42 @@
 
 class cVocabulary ;
 class cPureBNFproductionsList ;
-class C_html_file_write ;
+class C_HTML_FileWrite ;
 
 //---------------------------------------------------------------------------*
  
 #define macro_AC_instruction_ForGrammar \
-  public : virtual bool isSameSyntaxInstructionThan (C_lexique & lexique_var_, \
+  public : virtual bool isSameSyntaxInstructionThan (C_Lexique & lexique_var_, \
                           cPtr_AC_instruction_ForGrammar * inInstruction, \
                           const GGS_location & inEndOfInstructionListLocation) const = 0 ; \
-  public : virtual void printInstructionForGrammar (C_html_file_write & inHTMLfile) = 0 ; \
+  public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) = 0 ; \
   public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary, \
-                                                  const C_string & inSyntaxComponentName, \
+                                                  const C_String & inSyntaxComponentName, \
                                                   sint32 & ioCount) = 0 ; \
   public : virtual void buildRightDerivation (const sint32 inTerminalSymbolsCount, \
-                                      TCUniqueArray <sint16> & ioInstructionsList) = 0 ; \
+                                      TC_UniqueArray <sint16> & ioInstructionsList) = 0 ; \
   public : virtual void buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount, \
-                                           const C_string & inSyntaxComponentName, \
+                                           const C_String & inSyntaxComponentName, \
                                            cPureBNFproductionsList & ioProductions) = 0 ; \
   public : virtual void fixInfos (class cInfo & inInfo, \
-                                  C_lexique & inLexique) = 0 ;
+                                  C_Lexique & inLexique) = 0 ;
 
 //---------------------------------------------------------------------------*
  
 #define macroInheritFrom_AC_instruction_ForGrammar \
-  public : virtual bool isSameSyntaxInstructionThan (C_lexique & lexique_var_, \
+  public : virtual bool isSameSyntaxInstructionThan (C_Lexique & lexique_var_, \
                             cPtr_AC_instruction_ForGrammar * inInstruction, \
                             const GGS_location & inEndOfInstructionListLocation) const ; \
-  public : virtual void printInstructionForGrammar (C_html_file_write & inHTMLfile) ; \
+  public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) ; \
   public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary, \
-                                                  const C_string & inSyntaxComponentName, \
+                                                  const C_String & inSyntaxComponentName, \
                                                   sint32 & ioCount) ; \
   public : virtual void buildRightDerivation (const sint32 inTerminalSymbolsCount, \
-                                      TCUniqueArray <sint16> & ioInstructionsList) ; \
+                                      TC_UniqueArray <sint16> & ioInstructionsList) ; \
   public : virtual void buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount, \
-                                           const C_string & inSyntaxComponentName, \
+                                           const C_String & inSyntaxComponentName, \
                                            cPureBNFproductionsList & ioProductions) ; \
   public : virtual void fixInfos (cInfo & inInfo, \
-                                  C_lexique & inLexique) ;
+                                  C_Lexique & inLexique) ;
 
 //---------------------------------------------------------------------------*

@@ -26,7 +26,7 @@
 #include <string.h>
 
 // Include predefined semantics types definition *
-#include "memory/C_reference_count.h"
+#include "galgas/C_GGS_Object.h"
 #include "galgas/AC_galgas_io.h"
 #include "galgas/GGS_location.h"
 #include "galgas/GGS_lbool.h"
@@ -47,13 +47,13 @@
 
 //--- END OF USER ZONE 2
 
-void buildFileNameWithPath (C_lexique &,
+void buildFileNameWithPath (C_Lexique &,
                                 GGS_lstring  &,
                                 GGS_lstring  ,
                                 const GGS_lstring  &,
                                 const GGS_lstring  &) ;
 
-void engendrerComposant (C_lexique &,
+void engendrerComposant (C_Lexique &,
                                 GGS_lstring  &,
                                 GGS_typeTableUtilisationsSemantiques  &,
                                 GGS_string &,

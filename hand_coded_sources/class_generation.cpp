@@ -18,8 +18,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "files/C_text_file_write.h"
-#include "memory/M_memory_control.h"
+#include "files/C_TextFileWrite.h"
+#include "utilities/MF_MemoryControl.h"
 
 #include "semantics_instructions.h"
 #include "semantics_generation.h"
@@ -29,9 +29,9 @@
 
 static void
 generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & inMap,
-                                    AC_output_stream & inCppFile,
+                                    AC_OutputStream & inCppFile,
                                     const GGS_lstring & inClassName,
-                                    const C_string & inTargetFileName,
+                                    const C_String & inTargetFileName,
                                     const bool inGenerateDebug) {
   GGS_typeTableMethodesAimplementer::element_type * current = inMap.mFirstItem ;
   while (current != NULL) {
@@ -40,7 +40,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       inCppFile.writeHyphenLineComment () ;
       inCppFile << "void cPtr_" << inClassName
                 << "::\n"
-                   "methode_" << current->mKey << " (C_lexique &" ;
+                   "methode_" << current->mKey << " (C_Lexique &" ;
     //--- L'argument lexique est-il utilisé ?
       const bool lexiqueUtilise = isLexiqueFormalArgumentUsedForList (current->mInfo.mInstructionsList, true) ;
       if (! lexiqueUtilise) {
@@ -69,7 +69,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
     //--- Terminer la déclaration
       inCppFile << ") {\n" ;
     //--- Engendrer la liste d'instructions
-      C_string inutilise ;
+      C_String inutilise ;
       sint32 prototypeIndex = 0 ; // Non used here
       generateInstructionListForList (current->mInfo.mInstructionsList, inCppFile,
                                       inutilise, inTargetFileName, prototypeIndex,
@@ -84,11 +84,11 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
 
 static void
 generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap,
-                                 AC_output_stream & inHfile) {
+                                 AC_OutputStream & inHfile) {
   GGS_typeTableMethodesAimplementer::element_type * current = inMap.mFirstItem ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << "  public : virtual void methode_" << current->mKey << " (C_lexique &" ;
+    inHfile << "  public : virtual void methode_" << current->mKey << " (C_Lexique &" ;
   //--- Engendrer les arguments formels déclarés par l'utilisateur
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.getFirstItem () ;
     while (currentArgument != NULL) {
@@ -110,14 +110,14 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseAbstraiteAimplementer::
-generateHdeclarations (AC_output_stream & inHfile,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
 //--- Generate class forward declaration
   inHfile << "class cPtr_" << aNomClasse << " ;\n\n" ;
 
 //------------- declarer la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
-  inHfile.writeTitleComment (C_string ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inHfile.writeTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << aNomClasse << " {\n"
 
@@ -177,11 +177,11 @@ generateHdeclarations (AC_output_stream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseAbstraiteAimplementer::
-generateHdeclarations_2 (AC_output_stream & inHfile,
-                         const C_string & /* inLexiqueClassName */,
-                         C_lexique & inLexique) {
-  C_string generatedZone2 ;
-  generatedZone2.writeTitleComment (C_string ("abstract class 'cPtr_") + aNomClasse + "'") ;
+generateHdeclarations_2 (AC_OutputStream & inHfile,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & inLexique) {
+  C_String generatedZone2 ;
+  generatedZone2.writeTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Generate #indef ... # define directives
   generatedZone2 << "#ifndef " << aNomClasse << "_DEFINED\n"
@@ -202,7 +202,7 @@ generateHdeclarations_2 (AC_output_stream & inHfile,
 //--- Engendrer l'en tête de la déclaration de la classe abstraite
   generatedZone2 << "class cPtr_" << aNomClasse ;
   if (mereDirecte == NULL) {
-    generatedZone2 << " : public C_reference_count {\n" ;
+    generatedZone2 << " : public C_GGS_Object {\n" ;
   }else{
     macroValidPointer (mereDirecte) ;
     generatedZone2 << " : public cPtr_" << mereDirecte->mKey << " {\n"
@@ -210,7 +210,7 @@ generateHdeclarations_2 (AC_output_stream & inHfile,
   }
 
 
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
 //--- Engendrer la macro
   generatedZone3 << "  macro_" << aNomClasse << '\n' ;
 
@@ -268,7 +268,7 @@ generateHdeclarations_2 (AC_output_stream & inHfile,
  
 //--- Generate file
   inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
-  inLexique.generateFile (C_string ("include_") + aNomClasse + ".h",
+  inLexique.generateFile (C_String ("include_") + aNomClasse + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
@@ -284,21 +284,21 @@ bool cPtr_typeDefClasseAbstraiteAimplementer::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseAbstraiteAimplementer
-::generateCppClassDeclaration (AC_output_stream & /* inHfile */,
-                               const C_string & /* inLexiqueClassName */,
-                               const C_string & /* inTargetFileName*/,
+::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                               const C_String & /* inLexiqueClassName */,
+                               const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseAbstraiteAimplementer
-::generateCppClassImplementation (AC_output_stream & inCppFile,
-                                  const C_string & /* inLexiqueClassName */,
-                                  const C_string & inTargetFileName,
+::generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                  const C_String & /* inLexiqueClassName */,
+                                  const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) {
-  inCppFile.writeTitleComment (C_string ("abstract class 'cPtr_") + aNomClasse + "'") ;
+  inCppFile.writeTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Classe mère (dernier inséré dans la table des ancêtres) : NULL si pas de classe mère
   GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.getLastItem () ;
@@ -384,7 +384,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   }
 
 //------------- Implémenter la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
-  inCppFile.writeTitleComment (C_string ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inCppFile.writeTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
 //--- Implémenter la déclaration du constructeur par défaut
   inCppFile << "GGS_" << aNomClasse << "::\n"
@@ -458,7 +458,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
     macroValidPointer (messageCourant) ;
     inCppFile.writeHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << aNomClasse << "::reader_" << messageCourant->mKey << " (void) const {\n"
-                 "  return GGS_string (mPointer != NULL, C_string ((mPointer == NULL) ? \"\" : mPointer->message_" << messageCourant->mKey << " ())) ;\n"
+                 "  return GGS_string (mPointer != NULL, C_String ((mPointer == NULL) ? \"\" : mPointer->message_" << messageCourant->mKey << " ())) ;\n"
                  "}\n\n" ;
     messageCourant = messageCourant->getNextItem () ;
   }
@@ -481,18 +481,18 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseNonAbstraiteAimplementer::
-generateHdeclarations (AC_output_stream & /* inHfile */,
-                       const C_string & /* inLexiqueClassName */,
-                       C_lexique & /* inLexique */) {
+generateHdeclarations (AC_OutputStream & /* inHfile */,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseNonAbstraiteAimplementer::
-generateHdeclarations_2 (AC_output_stream & inHfile,
-                        const C_string & /* inLexiqueClassName */,
-                        C_lexique & /* inLexique */) {
-  inHfile.writeTitleComment (C_string ("class '") + aNomClasse + "'") ;
+generateHdeclarations_2 (AC_OutputStream & inHfile,
+                        const C_String & /* inLexiqueClassName */,
+                        C_Lexique & /* inLexique */) {
+  inHfile.writeTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
 //--- Engendrer la macro
   if (mGenerateIncludeHeader.getValue ()) {
@@ -570,7 +570,7 @@ generateHdeclarations_2 (AC_output_stream & inHfile,
   inHfile << "} ;\n\n" ;
 
 //------------- declarer la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
-  inHfile.writeTitleComment (C_string ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inHfile.writeTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << aNomClasse << " {\n" ;
 //--- Generate 'constructor_new' method declaration
@@ -637,21 +637,21 @@ bool cPtr_typeDefClasseNonAbstraiteAimplementer::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseNonAbstraiteAimplementer
-::generateCppClassDeclaration (AC_output_stream & /* inHfile */,
-                               const C_string & /* inLexiqueClassName */,
-                               const C_string & /* inTargetFileName*/,
+::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                               const C_String & /* inLexiqueClassName */,
+                               const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseNonAbstraiteAimplementer
-::generateCppClassImplementation (AC_output_stream & inCppFile,
-                                  const C_string & /* inLexiqueClassName */,
-                                  const C_string & inTargetFileName,
+::generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                  const C_String & /* inLexiqueClassName */,
+                                  const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) {
-  inCppFile.writeTitleComment (C_string ("class '") + aNomClasse + "'") ;
+  inCppFile.writeTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
 //--- Classe mère (dernier inséré dans la table des ancêtres) : NULL si pas de classe mère
   GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.getLastItem () ;
@@ -766,7 +766,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
   }
 
 //------------- Implémenter la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
-  inCppFile.writeTitleComment (C_string ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inCppFile.writeTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inCppFile << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"  
                "  cPtr_" << aNomClasse

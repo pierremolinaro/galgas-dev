@@ -23,7 +23,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "galgas/C_lexique.h"
+#include "galgas/C_Lexique.h"
 
 //---------------------------------------------------------------------------*
 
@@ -174,49 +174,49 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
   public : static cGalgasVariablesMap <INFO, KEY> constructor_empty (void) ;
 
 //--- Méthodes d'insertion
-  public : sint32 insertInArgument (C_lexique & inLexique,
+  public : sint32 insertInArgument (C_Lexique & inLexique,
                                   const INFO & info,
                                   const KEY & clef,
                                          const GGS_location & inLocation,
                                   const char * messageErreurInsertion) ;
 
-  public : sint32 insertInOutArgument (C_lexique & inLexique,
+  public : sint32 insertInOutArgument (C_Lexique & inLexique,
                                      const INFO & info,
                                      const KEY & clef,
                                          const GGS_location & inLocation,
                                      const char * messageErreurInsertion) ;
 
-  public : sint32 insertUnusedInOutArgument (C_lexique & inLexique,
+  public : sint32 insertUnusedInOutArgument (C_Lexique & inLexique,
                                            const INFO & info,
                                            const KEY & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion) ;
 
-  public : sint32 insertOutArgument (C_lexique & inLexique,
+  public : sint32 insertOutArgument (C_Lexique & inLexique,
                                    const INFO & info,
                                    const KEY & clef,
                                          const GGS_location & inLocation,
                                    const char * messageErreurInsertion) ;
 
-  public : sint32 insertConstInArgument (C_lexique & inLexique,
+  public : sint32 insertConstInArgument (C_Lexique & inLexique,
                                        const INFO & info,
                                        const KEY & clef,
                                          const GGS_location & inLocation,
                                        const char * messageErreurInsertion) ;
 
-  public : sint32 insertUsedConstInArgument (C_lexique & inLexique,
+  public : sint32 insertUsedConstInArgument (C_Lexique & inLexique,
                                            const INFO & info,
                                            const KEY & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion) ;
 
-  public : sint32 insertUnusedConstInArgument (C_lexique & inLexique,
+  public : sint32 insertUnusedConstInArgument (C_Lexique & inLexique,
                                              const INFO & info,
                                              const KEY & clef,
                                          const GGS_location & inLocation,
                                              const char * messageErreurInsertion) ;
 
-  public : sint32 insertLocalVariable (C_lexique & inLexique,
+  public : sint32 insertLocalVariable (C_Lexique & inLexique,
                                      const INFO & info,
                                      const KEY & clef,
                                       const GGS_location & inLocation,
@@ -224,65 +224,65 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
 
 
 //--- Search methods
-  private : void chercherInterne (C_lexique & inLexique,
+  private : void chercherInterne (C_Lexique & inLexique,
                                   element_type * & resultat,
                                   const KEY & clef,
                                   const char * messageErreurRecherche) ;
 
-  public : element_type * searchForReadOnlyAccess (C_lexique & inLexique,
+  public : element_type * searchForReadOnlyAccess (C_Lexique & inLexique,
                                          const KEY & clef,
                                          const GGS_location & inLocation,
                                          const char * messageErreurRecherche,
                                          const char * messageErreurPhase) ;
 
-  public : element_type * searchForDestructiveReadAccess (C_lexique & inLexique,
+  public : element_type * searchForDestructiveReadAccess (C_Lexique & inLexique,
                                                 const KEY & clef,
                                                 const GGS_location & inLocation,
                                                 const char * messageErreurRecherche,
                                                 const char * messageErreurPhase) ;
 
-  public : element_type * searchForReadWriteAccess (C_lexique & inLexique,
+  public : element_type * searchForReadWriteAccess (C_Lexique & inLexique,
                                           const KEY & clef,
                                           const GGS_location & inLocation,
                                           const char * messageErreurRecherche,
                                           const char * messageErreurPhase) ;
 
-  public : element_type * searchForWriteAccess (C_lexique & inLexique,
+  public : element_type * searchForWriteAccess (C_Lexique & inLexique,
                                       const KEY & clef,
                                       const GGS_location & inLocation,
                                       const char * messageErreurRecherche,
                                       const char * messageErreurPhase) ;
 
 //--- Méthodes de bloc pour vérifier l'état des variables
-  public : void prologue_verifyVariableUsing (C_lexique &) ;
-  public : void epilogue_verifyVariableUsing (C_lexique &,
+  public : void prologue_verifyVariableUsing (C_Lexique &) ;
+  public : void epilogue_verifyVariableUsing (C_Lexique &,
                                               const GGS_location &) ;
 
 //--- Méthodes de bloc pour l'instruction test et choix
-  public : void prologue_testBloc (C_lexique &) ;
-  public : void epilogue_testBloc (C_lexique &) ;
+  public : void prologue_testBloc (C_Lexique &) ;
+  public : void epilogue_testBloc (C_Lexique &) ;
 
 //--- Méthodes de bloc pour chaque branche de l'instruction test et choix
-  public : void prologue_testPart (C_lexique &) ;
-  public : void epilogue_testPart (C_lexique &,
+  public : void prologue_testPart (C_Lexique &) ;
+  public : void epilogue_testPart (C_Lexique &,
                                    const GGS_location &) ;
 
 //--- Méthodes de bloc pour chaque instruction repeter
-  public : void prologue_repeatBlock (C_lexique &) ;
-  public : void epilogue_repeatBlock (C_lexique &) ;
+  public : void prologue_repeatBlock (C_Lexique &) ;
+  public : void epilogue_repeatBlock (C_Lexique &) ;
 
 //--- Méthodes de bloc pour chaque branche de l'instruction repeter
-  public : void prologue_repeatPart (C_lexique &) ;
-  public : void epilogue_repeatPart (C_lexique &,
+  public : void prologue_repeatPart (C_Lexique &) ;
+  public : void epilogue_repeatPart (C_Lexique &,
                                      const GGS_location &) ;
 
 //--- Méthodes de bloc pour chaque branche d'une méthode double
-  public : void prologue_blocTestMethodeDouble (C_lexique &) ;
-  public : void epilogue_blocTestMethodeDouble (C_lexique &,
+  public : void prologue_blocTestMethodeDouble (C_Lexique &) ;
+  public : void epilogue_blocTestMethodeDouble (C_Lexique &,
                                                 const GGS_location &) ;
 
 //--- Méthodes internes privées
-  private : sint32 insertKey (C_lexique & inLexique,
+  private : sint32 insertKey (C_Lexique & inLexique,
                          const INFO & info,
                          const enumNatureEntite nature,
                          const enumEtatVariable etat,
@@ -302,7 +302,7 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
                                  element_type * & racine,
                                  bool & extension) ;
 
-  private : void verificationRecursiveConsommation (C_lexique & inLexique,
+  private : void verificationRecursiveConsommation (C_Lexique & inLexique,
                                                     element_type * element,
                                                     const GGS_location & positionErreur) ;
   
@@ -314,7 +314,7 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
   
   private : void initialiserChampEtatApres (element_type * element) ;
   
-  private : void verifierChampEtatApres (C_lexique & inLexique,
+  private : void verifierChampEtatApres (C_Lexique & inLexique,
                                          element_type * element,
                                          const GGS_location & positionErreur,
                                          const char * message1,

@@ -18,9 +18,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
+#include "utilities/MF_MemoryControl.h"
 #include "galgas/C_galgas_stringset.h"
-#include "files/C_text_file_write.h"
+#include "files/C_TextFileWrite.h"
 
 //---------------------------------------------------------------------------*
 
@@ -80,7 +80,7 @@ sint32 cVocabulary::getEmptyStringTerminalSymbolIndex (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_string cVocabulary::getSymbol (const sint32 inSymbolIndex
+C_String cVocabulary::getSymbol (const sint32 inSymbolIndex
                                  COMMA_LOCATION_ARGS) const {
   return mStringsArray (inSymbolIndex COMMA_THERE) ;
 }
@@ -112,10 +112,10 @@ sint32 cVocabulary::getNonTerminalSymbolsCount (void) const {
 //---------------------------------------------------------------------------*
 
 void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
-                                        const C_string & inClassName,
+                                        const C_String & inClassName,
                                         const sint32 inOrderInSourceFile,
                                         const bool inGenerateChoice) {
-  C_string nt  ;
+  C_String nt  ;
   nt << inPrefix
      << inClassName
      << '_'
@@ -140,7 +140,7 @@ bool cVocabulary::needToGenerateChoice (const sint32 inSymbolIndex
 
 //---------------------------------------------------------------------------*
 
-void cVocabulary::printInFile (AC_output_stream & inHTMLfile,
+void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
                                const sint32 inSymbolIndex
                                COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {

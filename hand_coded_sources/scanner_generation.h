@@ -23,14 +23,14 @@
 
 //---------------------------------------------------------------------------*
 
-class C_text_file_write ;
-class C_string ;
-class C_string ;
+class C_TextFileWrite ;
+class C_String ;
+class C_String ;
 
 //---------------------------------------------------------------------------*
 
-void generateTerminalSymbolCppName (const C_string & inValue,
-                                    AC_output_stream & ioFile) ;
+void generateTerminalSymbolCppName (const C_String & inValue,
+                                    AC_OutputStream & ioFile) ;
 
 //---------------------------------------------------------------------------*
 

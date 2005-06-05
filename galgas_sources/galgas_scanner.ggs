@@ -18,7 +18,7 @@
 
 lexique galgas_scanner :
 
-header "galgas/lexical_actions.h" ;
+header "galgas/F_LexicalActions.h" ;
 
 @lstring identifierString ;
 @luint ulongValue ;

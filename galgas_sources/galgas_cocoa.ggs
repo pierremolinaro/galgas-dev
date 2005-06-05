@@ -18,7 +18,7 @@
 
 cocoa cocoaGalgas :
 
-program "galgas" ;
+program "galgasLL1" ;
 
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
 

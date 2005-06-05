@@ -17,40 +17,40 @@
 //---------------------------------------------------------------------------*
 
 #define macro_typeEntityToGenerate \
-public : virtual void generateHdeclarations (AC_output_stream & inHfile, \
-                                             const C_string & inLexiqueClassName, \
-                                             C_lexique & inLexique) = 0 ; \
-public : virtual void generateHdeclarations_2 (AC_output_stream & inHfile, \
-                                               const C_string & inLexiqueClassName, \
-                                               C_lexique & inLexique) = 0 ; \
+public : virtual void generateHdeclarations (AC_OutputStream & inHfile, \
+                                             const C_String & inLexiqueClassName, \
+                                             C_Lexique & inLexique) = 0 ; \
+public : virtual void generateHdeclarations_2 (AC_OutputStream & inHfile, \
+                                               const C_String & inLexiqueClassName, \
+                                               C_Lexique & inLexique) = 0 ; \
 public : virtual bool isCppClassNeeded (void) const = 0 ; \
-public : virtual void generateCppClassDeclaration (AC_output_stream & inHfile, \
-                                                   const C_string & inLexiqueClassName, \
-                                                   const C_string & inTargetFileName, \
+public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile, \
+                                                   const C_String & inLexiqueClassName, \
+                                                   const C_String & inTargetFileName, \
                                                    sint32 & ioPrototypeIndex) = 0 ; \
-public : virtual void generateCppClassImplementation (AC_output_stream & inCppFile, \
-                                                  const C_string & inLexiqueClassName, \
-                                                  const C_string & inTargetFileName, \
+public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFile, \
+                                                  const C_String & inLexiqueClassName, \
+                                                  const C_String & inTargetFileName, \
                                                   sint32 & ioPrototypeIndex, \
                                                   const bool inGenerateDebug) = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeEntityToGenerate \
-public : virtual void generateHdeclarations (AC_output_stream & inHfile, \
-                                             const C_string & inLexiqueClassName, \
-                                             C_lexique & inLexique) ; \
-public : virtual void generateHdeclarations_2 (AC_output_stream & inHfile, \
-                                               const C_string & inLexiqueClassName, \
-                                               C_lexique & inLexique) ; \
+public : virtual void generateHdeclarations (AC_OutputStream & inHfile, \
+                                             const C_String & inLexiqueClassName, \
+                                             C_Lexique & inLexique) ; \
+public : virtual void generateHdeclarations_2 (AC_OutputStream & inHfile, \
+                                               const C_String & inLexiqueClassName, \
+                                               C_Lexique & inLexique) ; \
 public : virtual bool isCppClassNeeded (void) const ; \
-public : virtual void generateCppClassDeclaration (AC_output_stream & inHfile, \
-                                                   const C_string & inLexiqueClassName, \
-                                                   const C_string & inTargetFileName, \
+public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile, \
+                                                   const C_String & inLexiqueClassName, \
+                                                   const C_String & inTargetFileName, \
                                                    sint32 & /* ioPrototypeIndex */) ; \
-public : virtual void generateCppClassImplementation (AC_output_stream & inCppFile, \
-                                                  const C_string & inLexiqueClassName, \
-                                                  const C_string & inTargetFileName, \
+public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFile, \
+                                                  const C_String & inLexiqueClassName, \
+                                                  const C_String & inTargetFileName, \
                                                   sint32 & ioPrototypeIndex, \
                                                   const bool inGenerateDebug) ;
 

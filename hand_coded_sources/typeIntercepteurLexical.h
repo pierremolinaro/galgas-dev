@@ -17,13 +17,13 @@
 //---------------------------------------------------------------------------*
 
 #define macro_typeIntercepteurLexical \
-public : virtual void generateLexiqueName (C_text_file_write & inCppFile) = 0 ; \
-public : virtual void generateLexiqueFullName (C_text_file_write & inCppFile) = 0 ;
+public : virtual void generateLexiqueName (C_TextFileWrite & inCppFile) = 0 ; \
+public : virtual void generateLexiqueFullName (C_TextFileWrite & inCppFile) = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeIntercepteurLexical \
-public : virtual void generateLexiqueName (C_text_file_write & inCppFile) ; \
-public : virtual void generateLexiqueFullName (C_text_file_write & inCppFile) ;
+public : virtual void generateLexiqueName (C_TextFileWrite & inCppFile) ; \
+public : virtual void generateLexiqueFullName (C_TextFileWrite & inCppFile) ;
 
 //---------------------------------------------------------------------------*

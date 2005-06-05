@@ -18,15 +18,15 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
+#include "utilities/MF_MemoryControl.h"
 #include "semantics_semantics.h"
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeReaderCallInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -91,9 +91,9 @@ bool cPtr_typeReaderCallInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeModifierCallInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -158,9 +158,9 @@ bool cPtr_typeModifierCallInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionAppelMethodeListe
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -210,16 +210,16 @@ bool cPtr_typeInstructionAppelMethodeListe
 //---------------------------------------------------------------------------*
 
 void cPtr_C_grammarInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & inLexiqueClassName,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "{ " << inLexiqueClassName << " scanner_ (lexique_var_.getGalgasIOptr ()) ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
-                 "  C_string sourceFileName ;\n"
+                 "  C_String sourceFileName ;\n"
                  "  if ((" ;
     mSourceFileCppName ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".getLength () > 0) && (" ;
@@ -283,9 +283,9 @@ bool cPtr_C_grammarInstruction
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionAppelActionExterne
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const  C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const  C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
@@ -358,9 +358,9 @@ bool cPtr_typeInstructionAppelActionExterne
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineCallInstruction
-::generateInstruction (AC_output_stream & ioCppFile,
-                       const C_string & /* inLexiqueClassName */,
-                       const C_string & /* inTargetFileName */,
+::generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & /* inLexiqueClassName */,
+                       const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {

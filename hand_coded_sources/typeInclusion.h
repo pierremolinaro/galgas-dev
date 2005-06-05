@@ -17,11 +17,11 @@
 //---------------------------------------------------------------------------*
 
 #define macro_typeInclusion \
-public : virtual void engendrerInclusion (AC_output_stream & inCppFile) = 0 ;
+public : virtual void engendrerInclusion (AC_OutputStream & inCppFile) = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_typeInclusion \
-public : virtual void engendrerInclusion (AC_output_stream & inCppFile) ;
+public : virtual void engendrerInclusion (AC_OutputStream & inCppFile) ;
 
 //---------------------------------------------------------------------------*

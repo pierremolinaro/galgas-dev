@@ -18,9 +18,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "memory/M_memory_control.h"
-#include "time/C_datetime.h"
-#include "generic_arraies/TCUniqueArray.h"
+#include "utilities/MF_MemoryControl.h"
+#include "time/C_DateTime.h"
+#include "generic_arraies/TC_UniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
@@ -33,19 +33,19 @@
 //---------------------------------------------------------------------------*
 
 static void
-generate_option_header_file (C_lexique & inLexique,
+generate_option_header_file (C_Lexique & inLexique,
                              const GGS_lstring & inOptionClassName,
                              const GGS_M_cli_options & inBoolOptionsMap,
                              const GGS_M_cli_options & inUintOptionsMap) {
 //--- Write #ifndef, ..., #include, ...
-  C_string generatedZone2 ;
+  C_String generatedZone2 ;
   generatedZone2 << "#ifndef " << inOptionClassName << "_0_DEFINED\n"
             "#define " << inOptionClassName << "_0_DEFINED\n"
-            "#include \"command_line_interface/AC_cli_options.h\"\n\n" ;
+            "#include \"command_line_interface/AC_CLI_Options.h\"\n\n" ;
 
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   generatedZone3.writeTitleComment ("Command Line Options definitions class") ;
-  generatedZone3 << "class " << inOptionClassName << " : public AC_cli_options {\n"
+  generatedZone3 << "class " << inOptionClassName << " : public AC_CLI_Options {\n"
             "//--- Constructor\n"
             "  public : " << inOptionClassName << " (void) ;\n"
             "\n"
@@ -74,19 +74,19 @@ generate_option_header_file (C_lexique & inLexique,
             "\n"
             "//--- String Command Line Interface Options\n"
             "  public : virtual sint32 getStringOptionsCount (void) const ;\n"
-            "  public : virtual C_string getStringOptionValue (const sint32 inIndex) const ;\n"
-            "  public : virtual void setStringOptionValue (const sint32 inIndex, const C_string & inValue) ;\n"
+            "  public : virtual C_String getStringOptionValue (const sint32 inIndex) const ;\n"
+            "  public : virtual void setStringOptionValue (const sint32 inIndex, const C_String & inValue) ;\n"
             "  public : virtual char getStringOptionChar (const sint32 inIndex) const ;\n"
             "  public : virtual const char * getStringOptionString (const sint32 inIndex) const ;\n"
             "  public : virtual const char * getStringOptionDescription (const sint32 inIndex) const ;\n"
-            "  public : virtual C_string getStringOptionValueFromKeys (const char * inModuleName,\n"
+            "  public : virtual C_String getStringOptionValueFromKeys (const char * inModuleName,\n"
             "                                                          const char * inOptionName,\n"
             "                                                          bool * outFound) const ;\n"
             "\n"
             "//--- Private arraies : current options values\n"
             "  private : bool mBoolValue [" << (inBoolOptionsMap.count () + 1) << "] ;\n"
             "  private : uint32 mUintValue [" << (inUintOptionsMap.count () + 1) << "] ;\n"
-            "  private : TCUniqueArray <C_string> mStringValue ;\n"
+            "  private : TC_UniqueArray <C_String> mStringValue ;\n"
             "} ;\n\n" ;
 //--- End of ".h" file
   generatedZone3.writeHyphenLineComment () ;
@@ -107,16 +107,16 @@ generate_option_header_file (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_option_cpp_file (C_lexique & inLexique,
+generate_option_cpp_file (C_Lexique & inLexique,
                           const GGS_lstring & inOptionClassName,
                           const GGS_M_cli_options & inBoolOptionsMap,
                           const GGS_M_cli_options & inUintOptionsMap) {
 //--------------------------------------- Engendrer les inclusions
-  C_string generatedZone2 ;
+  C_String generatedZone2 ;
   generatedZone2 << "#include <string.h>\n\n"
                    "#include \"" << inOptionClassName << ".h\"\n\n" ;
 
-  C_string generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
 //--------------------------------------- Constructor
   generatedZone3.writeTitleComment ("C O N S T R U C T O R") ;
   generatedZone3 << inOptionClassName << "::" << inOptionClassName
@@ -368,17 +368,17 @@ generate_option_cpp_file (C_lexique & inLexique,
 
 //--------------------------------------- Get string options value
   generatedZone3.writeTitleComment ("G E T    S T R I N G    O P T I O N S    V A L U E") ;
-  generatedZone3 << "C_string " << inOptionClassName
+  generatedZone3 << "C_String " << inOptionClassName
           << "::\n"
              "getStringOptionValue (const sint32 /* inIndex */) const {\n"
-             "  return C_string () ;\n"
+             "  return C_String () ;\n"
              "}\n\n" ;
 
 //--------------------------------------- Set string options value
   generatedZone3.writeTitleComment ("S E T    S T R I N G    O P T I O N S    V A L U E") ;
   generatedZone3 << "void " << inOptionClassName
           << "::\n"
-             "setStringOptionValue (const sint32 /* inIndex */, const C_string & /* inValue */) {\n"
+             "setStringOptionValue (const sint32 /* inIndex */, const C_String & /* inValue */) {\n"
              "}\n\n" ;
 
 //--------------------------------------- Get string option char
@@ -407,7 +407,7 @@ generate_option_cpp_file (C_lexique & inLexique,
 
 //--------------------------------------- Get string option value from keys
   generatedZone3.writeTitleComment ("G E T    S T R I N G    O P T I O N    V A L U E   F R O M   K E Y S") ;
-  generatedZone3 << "C_string " << inOptionClassName
+  generatedZone3 << "C_String " << inOptionClassName
           << "::\n"
              "getStringOptionValueFromKeys (const char * /* inModuleName */,\n"
              "                              const char * /* inOptionName */,\n"
@@ -415,7 +415,7 @@ generate_option_cpp_file (C_lexique & inLexique,
              "  if (* outFound) {\n"
              "    * outFound = false ;\n"
              "  }\n"
-             "  return C_string () ;\n"
+             "  return C_String () ;\n"
              "}\n\n" ;
 
   generatedZone3.writeHyphenLineComment () ;
@@ -431,7 +431,7 @@ generate_option_cpp_file (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-generate_option_component (C_lexique & inLexique,
+generate_option_component (C_Lexique & inLexique,
                            GGS_lstring & inOptionClassName,
                            GGS_M_cli_options & inBoolOptionsMap,
                            GGS_M_cli_options & inUintOptionsMap) {

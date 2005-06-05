@@ -23,30 +23,30 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TCUniqueArray.h"
-#include "generic_arraies/TCUniqueArray.h"
+#include "generic_arraies/TC_UniqueArray.h"
+#include "generic_arraies/TC_UniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
 class cPureBNFproductionsList ;
 class cVocabulary ;
-class C_html_file_write ;
-class C_bdd_set1 ;
-class C_bdd_set2 ;
-class C_lexique ;
+class C_HTML_FileWrite ;
+class C_BDD_Set1 ;
+class C_BDD_Set2 ;
+class C_Lexique ;
 
 //---------------------------------------------------------------------------*
 
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                     C_html_file_write & inHTMLfile,
+                     C_HTML_FileWrite & inHTMLfile,
                      const cVocabulary & inVocabulary,
-                     const TCUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                     const C_bdd_set1 & inUsefulSymbols,
-                     const C_bdd_set2 & inFIRSTsets,
-                     const C_bdd_set1 & nonTerminauxPouvantEtreSuivisDuVide,
-                     C_bdd_set2 & outFOLLOWsets,
-                     TCUniqueArray <TCUniqueArray <sint32> > & outFOLLOWarray,
+                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
+                     const C_BDD_Set1 & inUsefulSymbols,
+                     const C_BDD_Set2 & inFIRSTsets,
+                     const C_BDD_Set1 & nonTerminauxPouvantEtreSuivisDuVide,
+                     C_BDD_Set2 & outFOLLOWsets,
+                     TC_UniqueArray <TC_UniqueArray <sint32> > & outFOLLOWarray,
                      bool & outOk) ;
 
 //---------------------------------------------------------------------------*

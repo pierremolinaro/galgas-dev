@@ -6,7 +6,7 @@
 
 
 lexique arithmetique_lexical_parser :
-	header "galgas/lexical_actions.h";
+	header "galgas/F_LexicalActions.h";
 	
 	@luint number;
 	$number$ ! number error message "a number";

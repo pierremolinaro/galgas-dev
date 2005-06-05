@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "parser_parser.h"
 
 
@@ -411,8 +411,8 @@ pr_syntax_instruction_parser_parser_514_26_ (galgas_scanner & lexique_var_,
     if (ptrExtraire_ == NULL) {
       var_cas_tableMethodesBloc.drop_operation () ;
       if (var_cas_typeEntite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeGalgasMapType::static_string_message_messageGalgasType () ;
         message2_ << var_cas_typeEntite ()->message_messageGalgasType () ;
         var_cas_nomTable.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -800,8 +800,8 @@ pr_rule_declaration_or_implementation_parser_parser_767_42_ (galgas_scanner & le
     if (ptrExtraire_ == NULL) {
       var_cas_nonterminalSymbolAltMap.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteNonTerminal::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_inRuleName.signalExtractError (lexique_var_, message1_, message2_) ;
@@ -1157,8 +1157,8 @@ pr_syntax_instruction_parser_parser_999_26_ (galgas_scanner & lexique_var_,
     if (ptrExtraire_ == NULL) {
       var_cas_nonterminalSymbolAltMap.drop_operation () ;
       if (var_cas_entite.getPtr () != NULL) {
-        TCUniqueArray <C_string> message1_ (1 COMMA_HERE) ;
-        C_string message2_ ;
+        TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
+        C_String message2_ ;
         message1_ (0 COMMA_HERE) << cPtr_typeEntiteNonTerminal::static_string_message_messageTypeEntite () ;
         message2_ << var_cas_entite ()->message_messageTypeEntite () ;
         var_cas_nonterminalSymbolName.signalExtractError (lexique_var_, message1_, message2_) ;
