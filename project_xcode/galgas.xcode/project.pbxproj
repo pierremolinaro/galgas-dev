@@ -99,7 +99,7 @@
 		2A37F4A9FDCFA73011CA2CEA = {
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				SDKROOT = /Developer/SDKs/MacOSX10.3.0.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
 			};
 			buildStyles = (
 				CFA7AB90058DAD29009AC1FE,
@@ -109,13 +109,13 @@
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA;
 			projectDirPath = "";
 			targets = (
+				8D15AC270486D014006FF6A4,
 				8DD76F620486A84900D96B5E,
 				CF7A1402058CEFE2007126C1,
 				CFD6CC7B08519D4C0000FA6E,
 				CFD6CD2008519DD00000FA6E,
 				CFD6CDBD08519E080000FA6E,
 				CFD6CE6208519E740000FA6E,
-				8D15AC270486D014006FF6A4,
 			);
 		};
 		2A37F4AAFDCFA73011CA2CEA = {
@@ -7585,9 +7585,9 @@
 			);
 			isa = PBXGroup;
 			name = "Galgas SLR";
-			path = /Users/pierremolinaro/Documents/developpements/mes_prgms/galgas/galgas_sources/GALGAS_OUTPUT;
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		CFD6CE5A08519E630000FA6E = {
 			fileEncoding = 5;
@@ -8665,9 +8665,9 @@
 			);
 			isa = PBXGroup;
 			name = "Galgas LR1";
-			path = /Users/pierremolinaro/Documents/developpements/mes_prgms/galgas/hand_coded_sources;
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		CFD6CF250851A21E0000FA6E = {
 			children = (
@@ -8675,9 +8675,9 @@
 			);
 			isa = PBXGroup;
 			name = "Galgas SLR";
-			path = /Users/pierremolinaro/Documents/developpements/mes_prgms/galgas/hand_coded_sources;
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		CFD6CF260851A2610000FA6E = {
 			fileEncoding = 5;
