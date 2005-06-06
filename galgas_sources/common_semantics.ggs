@@ -1069,11 +1069,37 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+enum @lastStateEnum :
+  acceptedState, warningState, errorState ;
+end enum ;
+
+#---------------------------------------------------------------------------*
+
+list @lastStateList 
+  @lstring mLastState ;
+  @lastStateEnum mStatus ;
+  @L_stringList mMessageList ;
+end list ;
+
+#---------------------------------------------------------------------------*
+
+map @transitionStatusMap 
+  insert insertKey error message "a transition named '" . * . "' is already declared" ;
+  key @lstring ;
+  @lastStateEnum mStatus ;
+  @L_stringList mMessageList ;
+end map ;
+
+#---------------------------------------------------------------------------*
+
 map @typeTableMethodesInsererChercher
   insert insertKey error message "a method named '" . * . "' is already declared" ;
   search searchKey error message "there is no method named '" . * . "'" ;
   key @lstring ;
   @L_stringList mErrorMessageList ;
+  @string mFirstState ;
+  @lastStateList mLastStateList ;
+  @transitionStatusMap  mTransitionStatusMap ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -1681,7 +1707,7 @@ routine handleReaderCall
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outAccessorTypesList += !kKeyType ![@lstring new !"" !here] ;
       outReturnedType := [@typeGalgas_bool new] ;
-    elsif [inMethodName value] == "length" then
+    elsif [inMethodName value] == "count" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_uint new] ;
     else

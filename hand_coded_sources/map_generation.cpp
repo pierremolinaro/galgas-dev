@@ -52,14 +52,24 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //--- declaration des attributs externes
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 
-//--- declarer methode 'isBuilt'
   inHfile << "} ;\n\n" ; //--- Fin de la dŽclaration de la classe e_...
 
-// ---------------------- declaration de la classe table -----------------
+//---------------------- map class declaration -----------------
 
   inHfile.writeHyphenLineComment () ;
-  inHfile << "class GGS_" << aNomTable << " : public AC_galgas_map {\n"
-             "//--- Internal class for an element\n"
+  inHfile << "class GGS_" << aNomTable << " : public AC_galgas_map {\n" ;
+  GGS_stateMap::element_type * currentState = mStateMap.getFirstItem () ;
+  if (currentState != NULL) {
+    inHfile << "//--- Enumeration for states\n"
+               "  public : typedef enum {enum_" << currentState->mKey ;
+    currentState = currentState->getNextItem () ;
+    while (currentState != NULL) {
+      inHfile << ", enum_" << currentState->mKey ;
+      currentState = currentState->getNextItem () ;
+    }
+    inHfile << "} enumForStates ;\n" ;
+  }
+  inHfile << "//------------------------ Internal class for an element\n"
              "  public : class element_type : public AC_galgas_map_element {\n"
              "  //--- Constructor\n"
              "    public : element_type (const GGS_" << mKeyTypeName << " & inKey,\n"

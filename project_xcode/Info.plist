@@ -30,7 +30,7 @@
 	<key>CFBundleExecutable</key>
 	<string>cocoaGalgas</string>
 	<key>CFBundleIconFile</key>
-	<string>galgasApplication.icns</string>
+	<string>galgasApplication</string>
 	<key>CFBundleIdentifier</key>
 	<string>fr.ec-nantes.irccyn.molinaro.cocoaGalgas</string>
 	<key>CFBundleInfoDictionaryVersion</key>
