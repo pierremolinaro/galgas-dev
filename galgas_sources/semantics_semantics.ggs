@@ -1130,7 +1130,16 @@ end class ;
 
 #---------------------------------------------------------------------------*
 
+map @stateMap
+  insert insertKey error message "the '" . * . "' state is already declared"  ;
+  search searchKey error message "the '" . * . "' state is not declared" ;
+  key @lstring ;
+end map ;
+
+#---------------------------------------------------------------------------*
+
 class @C_mapToImplement extends @typeEntityToGenerate
+  @stateMap mStateMap ;
   @lstring aNomTable ;
   @typeListeAttributsSemantiques mNonExternAttributesList ;
   @L_nameWithType mExternAttributesList ;

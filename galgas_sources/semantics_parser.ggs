@@ -46,6 +46,14 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
+rule <parse_states>
+  ?!@stateMap ioStateValues
+  !@string outFirstStateName
+  !@lastStateList outLastStateList
+  !@transitionStatusMap  outTransitionStatusMap
+label parse
+;
+
 rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
@@ -342,6 +350,11 @@ label parse
 rule <map_method>
   !@lstring nomMethode
   !@L_stringList outMessageStringList
+label parse
+;
+
+rule <message_pattern>
+  !@L_stringList outMessageList
 label parse
 ;
 
@@ -2946,16 +2959,16 @@ rule <semantic_instruction>
   search ioVariablesMap.searchForReadWriteAccess nomTable (?typeVariableTable ?nomCppVariableTable) ;
   @lstring nomTypeUtilisateur ;
   @typeListeAttributsSemantiques listeAttributsSemantiques ;
-  @typeTableMethodesInsererChercher tableMethodesInserer ;
+  @typeTableMethodesInsererChercher insertMethodMap ;
   @AC_galgasType mapKeyType ;
   extract typeVariableTable->@typeGalgasMapType  (?nomTypeUtilisateur ?listeAttributsSemantiques
-                                                 ?tableMethodesInserer ?* ?* ?* ?mapKeyType)
+                                                 ?insertMethodMap ?* ?* ?* ?mapKeyType)
                               error nomTable : messageGalgasType ;
 #--- Insert method
   $.$ ;
   @lstring nomMethodeInsertion ;
   $identifier$ ? nomMethodeInsertion ;
-  search tableMethodesInserer.searchKey nomMethodeInsertion (?*) ;
+  search insertMethodMap.searchKey nomMethodeInsertion (?* ?* ?* ?*) ;
 #--- Key name
   @AC_galgasType typeVariableClef ;
   @typeCplusPlusName nomCppVariableClef ;
@@ -3004,17 +3017,17 @@ rule <semantic_instruction>
   search ioVariablesMap.searchForReadWriteAccess nomTable (?typeVariableTable ?nomCppVariableTable) ;
   @lstring nomTypeUtilisateur ;
   @typeListeAttributsSemantiques listeAttributsSemantiques ;
-  @typeTableMethodesInsererChercher tableMethodesChercher ;
+  @typeTableMethodesInsererChercher searchMethodMap ;
   @AC_galgasType mapKeyType ;
   extract typeVariableTable->@typeGalgasMapType
                           (?nomTypeUtilisateur ?listeAttributsSemantiques
-                          ?* ?tableMethodesChercher
+                          ?* ?searchMethodMap
                           ?* ?* ?mapKeyType) error nomTable : messageGalgasType ;
 #--- Search method
   $.$ ;
   @lstring nomMethodeRecherche ;
   $identifier$ ? nomMethodeRecherche ;
-  search tableMethodesChercher.searchKey nomMethodeRecherche (?*) ;
+  search searchMethodMap.searchKey nomMethodeRecherche (?* ?* ?* ?*) ;
 #--- Key parsing
   @AC_galgasType typeVariableClef ;
   @typeCplusPlusName nomCppVariableClef ;
@@ -3845,6 +3858,76 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+rule <parse_states>
+  ?!@stateMap ioStateValues
+  !@string outFirstStateName
+  !@lastStateList outLastStateList
+  !@transitionStatusMap  outTransitionStatusMap
+:
+#--- First state
+  select
+    $firststate$ ;
+    @lstring firstState ;
+    $identifier$ ? firstState ;
+    search ioStateValues.searchKey firstState () ;
+    outFirstStateName := [firstState value] ;
+  or
+    outFirstStateName := "" ;
+    if [ioStateValues count] != 0 then 
+      error here : "since you have declared states, you must define a first state" ;
+    end if ;
+  end select ;
+#--- Transitions
+  outTransitionStatusMap := [@transitionStatusMap  empty] ;
+  repeat
+  while
+    $transition$ ;
+    @lstring transitionName ;
+    $identifier$ ? transitionName ;
+    @lastStateEnum status ;
+    @L_stringList messageList ;
+    select
+      status := [@lastStateEnum acceptedState] ;
+      messageList := [@L_stringList empty] ;
+    or
+      $warning$ ;
+      status := [@lastStateEnum warningState] ;
+      <message_pattern> ? messageList ;
+    or
+      $error$ ;
+      status := [@lastStateEnum errorState] ;
+      <message_pattern> ? messageList ;
+    end select ;
+    insert outTransitionStatusMap.insertKey transitionName (!status !messageList) ;
+  end repeat ;
+#--- Last state(s)
+  outLastStateList := [@lastStateList empty] ;
+  repeat
+  while
+    $laststate$ ;
+    @lstring lastState ;
+    $identifier$ ? lastState ;
+    search ioStateValues.searchKey lastState () ;
+    @lastStateEnum status ;
+    @L_stringList messageList ;
+    select
+      status := [@lastStateEnum acceptedState] ;
+      messageList := [@L_stringList empty] ;
+    or
+      $warning$ ;
+      status := [@lastStateEnum warningState] ;
+      <message_pattern> ? messageList ;
+    or
+      $error$ ;
+      status := [@lastStateEnum errorState] ;
+      <message_pattern> ? messageList ;
+    end select ;
+    outLastStateList += !lastState !status !messageList ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
@@ -3884,8 +3967,8 @@ rule <semantics_declaration>
     tableFichiersEnTetePourFichierCPP += !path ;
     $;$ ;
   #--- Déclaration des méthodes d'insertion, de recherche, et de block
-    @typeTableMethodesInsererChercher tableMethodesInserer [empty] ;
-    @typeTableMethodesInsererChercher tableMethodesChercher [empty] ;
+    @typeTableMethodesInsererChercher insertMethodMap [empty] ;
+    @typeTableMethodesInsererChercher searchMethodMap [empty] ;
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
     repeat
     while
@@ -3894,14 +3977,20 @@ rule <semantics_declaration>
       @L_stringList listeMessagesErreur ;
       <ex_map_method> ? nomMethode ? listeMessagesErreur ;
       $;$ ;
-      insert tableMethodesInserer.insertKey nomMethode (!listeMessagesErreur) ;
+      @string emptyString := "" ;
+      @lastStateList emptyLastStateList [empty] ;
+      @transitionStatusMap  transitionStatusMap [empty] ;
+      insert insertMethodMap.insertKey nomMethode (!listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap) ;
     while 
       $search$ ;
       @lstring nomMethode ;
       @L_stringList listeMessagesErreur ;
       <ex_map_method> ? nomMethode ? listeMessagesErreur ;
       $;$ ;
-      insert tableMethodesChercher.insertKey nomMethode (!listeMessagesErreur) ;
+      @string emptyString := "" ;
+      @lastStateList emptyLastStateList [empty] ;
+      @transitionStatusMap  transitionStatusMap [empty] ;
+      insert searchMethodMap.insertKey nomMethode (!listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap) ;
     while
       $block$ ;
       @lstring nomMethode ;
@@ -3959,8 +4048,8 @@ rule <semantics_declaration>
   #--- Insertion dans la map des entités utilisables
     @AC_galgasType c := [@typeGalgasMapType new !nomTable
                                                        !listeTousAttributsSemantiques
-                                                       !tableMethodesInserer
-                                                       !tableMethodesChercher
+                                                       !insertMethodMap
+                                                       !searchMethodMap
                                                        !tableMethodesBloc
                                                        !typeName
                                                        !typeDefinition] ;
@@ -3971,8 +4060,8 @@ rule <semantics_declaration>
                                                                          !listeTousAttributsSemantiques
                                                                          !listeTypeeAttributsExternesCourants
                                                                          !cppClassName
-                                                                         !tableMethodesInserer
-                                                                         !tableMethodesChercher
+                                                                         !insertMethodMap
+                                                                         !searchMethodMap
                                                                          !tableMethodesBloc
                                                                          !typeName] ;
     listeEntitesAengendrer += !def ;
@@ -3980,9 +4069,23 @@ rule <semantics_declaration>
     $map$ ;
     $;$ ;
   or
+  #--- Declare state enumeration values
+    @stateMap stateValues [empty] ;
+    select
+    or
+      $state$ ;
+      repeat
+        @lstring idf ;
+        $identifier$ ? idf ;
+        insert stateValues.insertKey idf () ;
+      while
+        $,$ ;
+      end repeat ;
+      $;$ ; 
+    end select ;
   #--- Déclaration des méthodes d'insertion, de recherche, et de block
-    @typeTableMethodesInsererChercher tableMethodesInserer [empty] ;
-    @typeTableMethodesInsererChercher tableMethodesChercher [empty] ;
+    @typeTableMethodesInsererChercher insertMethodMap [empty] ;
+    @typeTableMethodesInsererChercher searchMethodMap [empty] ;
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
     repeat
     while
@@ -3990,16 +4093,32 @@ rule <semantics_declaration>
       @lstring nomMethode ;
       @L_stringList listeMessagesErreur ;
       <map_method> ? nomMethode ? listeMessagesErreur ;
+      @string firstStateName ;
+      @lastStateList emptyLastStateList ;
+      @transitionStatusMap  transitionStatusMap [empty] ;
+      <parse_states> !?stateValues ?firstStateName ?emptyLastStateList ?transitionStatusMap  ;
       $;$ ;
-      insert tableMethodesInserer.insertKey nomMethode (!listeMessagesErreur) ;
+      insert insertMethodMap.insertKey nomMethode (!listeMessagesErreur !firstStateName !emptyLastStateList !transitionStatusMap) ;
     while 
       $search$ ;
       @lstring nomMethode ;
       @L_stringList listeMessagesErreur ;
       <map_method> ? nomMethode ? listeMessagesErreur ;
+      @string firstStateName ;
+      @lastStateList emptyLastStateList ;
+      @transitionStatusMap  transitionStatusMap [empty] ;
+      <parse_states> !?stateValues ?firstStateName ?emptyLastStateList ?transitionStatusMap;
       $;$ ;
-      insert tableMethodesChercher.insertKey nomMethode (!listeMessagesErreur) ;
+      insert searchMethodMap.insertKey nomMethode (!listeMessagesErreur !firstStateName !emptyLastStateList !transitionStatusMap) ;
     end repeat ;
+  #--- Check that insert method transition names correspond to search methods
+    foreach map insertMethodMap ??@lstring kInsertMethod (??* ??* ??* ??@transitionStatusMap kTransitionStatusMap) :
+      foreach map insertMethodMap ??@lstring kSearchMethod (??* ??* ??* ??*) :
+        if not [kTransitionStatusMap hasKey !kSearchMethod] then
+          error kInsertMethod : "This insert method does not define the '" . [kSearchMethod value] . "' transition" ;
+        end if ;
+      end foreach ;
+    end foreach ;
   #--- Key type declaration
     $key$ ;
     @lstring typeName ;
@@ -4021,19 +4140,20 @@ rule <semantics_declaration>
   #--- Insertion dans la map des entités utilisables
     @AC_galgasType c := [@typeGalgasMapType new !nomTable
                                                 !listeTousAttributsSemantiques
-                                                !tableMethodesInserer
-                                                !tableMethodesChercher
+                                                !insertMethodMap
+                                                !searchMethodMap
                                                 !tableMethodesBloc
                                                 !typeName
                                                 !typeDefinition] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
   #--- Insertion dans la map des classes définies dans le fichier source courant
-    @typeEntityToGenerate def := [@C_mapToImplement new !nomTable
+    @typeEntityToGenerate def := [@C_mapToImplement new !stateValues
+                                                        !nomTable
                                                         !listeTousAttributsSemantiques
                                                         !listeTypeeAttributsExternesCourants
-                                                        !tableMethodesInserer
-                                                        !tableMethodesChercher
+                                                        !insertMethodMap
+                                                        !searchMethodMap
                                                         !typeName] ;
     listeEntitesAengendrer += !def ;
     $end$ ;
@@ -4068,8 +4188,8 @@ label importSemantics
     $literal_string$ ? * ; 
     $;$ ;
   #--- Déclaration des méthodes d'insertion, de recherche, et de block
-    @typeTableMethodesInsererChercher tableMethodesInserer [empty] ;
-    @typeTableMethodesInsererChercher tableMethodesChercher [empty] ;
+    @typeTableMethodesInsererChercher insertMethodMap [empty] ;
+    @typeTableMethodesInsererChercher searchMethodMap [empty] ;
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
     repeat
     while
@@ -4078,14 +4198,20 @@ label importSemantics
       @L_stringList listeMessagesErreur ;
       <ex_map_method> ? nomMethode ? listeMessagesErreur ;
       $;$ ;
-      insert tableMethodesInserer.insertKey nomMethode (!listeMessagesErreur) ;
+      @string emptyString := "" ;
+      @lastStateList emptyLastStateList [empty] ;
+      @transitionStatusMap  transitionStatusMap [empty] ;
+      insert insertMethodMap.insertKey nomMethode (!listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap) ;
     while 
       $search$ ;
       @lstring nomMethode ;
       @L_stringList listeMessagesErreur ;
       <ex_map_method> ? nomMethode ? listeMessagesErreur ;
       $;$ ;
-      insert tableMethodesChercher.insertKey nomMethode (!listeMessagesErreur) ;
+      @string emptyString := "" ;
+      @lastStateList emptyLastStateList [empty] ;
+      @transitionStatusMap  transitionStatusMap [empty] ;
+      insert searchMethodMap.insertKey nomMethode (!listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap) ;
     while
       $block$ ;
       @lstring nomMethode ;
@@ -4144,8 +4270,8 @@ label importSemantics
   #--- Insertion dans la map des entités utilisables
     @AC_galgasType c := [@typeGalgasMapType new !nomTable
                                                        !listeTousAttributsSemantiques
-                                                       !tableMethodesInserer
-                                                       !tableMethodesChercher
+                                                       !insertMethodMap
+                                                       !searchMethodMap
                                                        !tableMethodesBloc
                                                        !typeName
                                                        !typeDefinition] ;
@@ -4155,9 +4281,19 @@ label importSemantics
     $map$ ;
     $;$ ;
   or
+    select
+    or
+      $state$ ;
+      repeat
+        $identifier$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
+      $;$ ; 
+    end select ;
   #--- Déclaration des méthodes d'insertion, de recherche, et de block
-    @typeTableMethodesInsererChercher tableMethodesInserer [empty] ;
-    @typeTableMethodesInsererChercher tableMethodesChercher [empty] ;
+    @typeTableMethodesInsererChercher insertMethodMap [empty] ;
+    @typeTableMethodesInsererChercher searchMethodMap [empty] ;
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
     repeat
     while
@@ -4165,24 +4301,32 @@ label importSemantics
       @lstring nomMethode ;
       @L_stringList listeMessagesErreur ;
       <map_method> ? nomMethode ? listeMessagesErreur ;
+      <parse_states> parse ;
       $;$ ;
-      insert tableMethodesInserer.insertKey nomMethode (!listeMessagesErreur) ;
+      @string emptyString := "" ;
+      @lastStateList emptyLastStateList [empty] ;
+      @transitionStatusMap  transitionStatusMap [empty] ;
+      insert insertMethodMap.insertKey nomMethode (!listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap) ;
     while 
       $search$ ;
       @lstring nomMethode ;
       @L_stringList listeMessagesErreur ;
       <map_method> ? nomMethode ? listeMessagesErreur ;
+      <parse_states> parse ;
       $;$ ;
-      insert tableMethodesChercher.insertKey nomMethode (!listeMessagesErreur) ;
+      @string emptyString := "" ;
+      @lastStateList emptyLastStateList [empty] ;
+      @transitionStatusMap  transitionStatusMap [empty] ;
+      insert searchMethodMap.insertKey nomMethode (!listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap) ;
     end repeat ;
-  #--- Déclaration du type de la key
+  #--- Key type declaration
     $key$ ;
     @lstring typeName ;
     @AC_galgasType typeDefinition ;
     <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
     [typeDefinition acceptToBeKeyForMap] ;
     $;$ ;
-  #--- Attributs de la map
+  #--- Map attributes
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
@@ -4197,8 +4341,8 @@ label importSemantics
   #--- Insertion dans la map des entités utilisables
     @AC_galgasType c := [@typeGalgasMapType new !nomTable
                                                        !listeTousAttributsSemantiques
-                                                       !tableMethodesInserer
-                                                       !tableMethodesChercher
+                                                       !insertMethodMap
+                                                       !searchMethodMap
                                                        !tableMethodesBloc
                                                        !typeName
                                                        !typeDefinition] ;
@@ -4238,6 +4382,14 @@ rule <map_method>
   $identifier$ ? nomMethode ;
   $error$ ;
   $message$ ;
+  <message_pattern> ? outMessageList ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <message_pattern>
+  !@L_stringList outMessageList
+:
   outMessageList := [@L_stringList empty] ;
   repeat
     select
