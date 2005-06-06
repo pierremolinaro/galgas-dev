@@ -3867,10 +3867,10 @@ rule <parse_states>
 #--- First state
   select
     $firststate$ ;
-    @lstring firstState ;
-    $identifier$ ? firstState ;
-    search ioStateValues.searchKey firstState () ;
-    outFirstStateName := [firstState value] ;
+    @lstring firstStateName ;
+    $identifier$ ? firstStateName ;
+    search ioStateValues.searchKey firstStateName () ;
+    outFirstStateName := [firstStateName value] ;
   or
     outFirstStateName := "" ;
     if [ioStateValues count] != 0 then 
@@ -3905,9 +3905,9 @@ rule <parse_states>
   repeat
   while
     $laststate$ ;
-    @lstring lastState ;
-    $identifier$ ? lastState ;
-    search ioStateValues.searchKey lastState () ;
+    @lstring lastStateName ;
+    $identifier$ ? lastStateName ;
+    search ioStateValues.searchKey lastStateName () ;
     @lastStateEnum status ;
     @L_stringList messageList ;
     select
@@ -3922,7 +3922,7 @@ rule <parse_states>
       status := [@lastStateEnum errorState] ;
       <message_pattern> ? messageList ;
     end select ;
-    outLastStateList += !lastState !status !messageList ;
+    outLastStateList += !lastStateName !status !messageList ;
   end repeat ;
 end rule ;
 
@@ -4112,13 +4112,15 @@ rule <semantics_declaration>
       insert searchMethodMap.insertKey nomMethode (!listeMessagesErreur !firstStateName !emptyLastStateList !transitionStatusMap) ;
     end repeat ;
   #--- Check that insert method transition names correspond to search methods
-    foreach map insertMethodMap ??@lstring kInsertMethod (??* ??* ??* ??@transitionStatusMap kTransitionStatusMap) :
-      foreach map insertMethodMap ??@lstring kSearchMethod (??* ??* ??* ??*) :
-        if not [kTransitionStatusMap hasKey !kSearchMethod] then
-          error kInsertMethod : "This insert method does not define the '" . [kSearchMethod value] . "' transition" ;
-        end if ;
+    if [stateValues count] > 0 then
+      foreach map insertMethodMap ??@lstring kInsertMethod (??* ??* ??* ??@transitionStatusMap kTransitionStatusMap) :
+        foreach map insertMethodMap ??@lstring kSearchMethod (??* ??* ??* ??*) :
+          if not [kTransitionStatusMap hasKey !kSearchMethod] then
+            error kInsertMethod : "This insert method does not define the '" . [kSearchMethod value] . "' transition" ;
+          end if ;
+        end foreach ;
       end foreach ;
-    end foreach ;
+    end if ;
   #--- Key type declaration
     $key$ ;
     @lstring typeName ;
