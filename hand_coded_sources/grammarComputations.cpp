@@ -416,7 +416,7 @@ createStyleFile (const C_String & inCurrentDirectory,
                  const char * inStyleFileName) {
   C_String f = inCurrentDirectory + '/' + inStyleFileName ;
   if (! f.fileExists ()) {
-    C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR) ;
+    C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR COMMA_HERE) ;
     styleFile << k_default_style ;
   }
 }
@@ -510,7 +510,8 @@ analyzeGrammar (C_Lexique & inLexique,
   C_HTML_FileWrite HTMLfile (HTMLfileName,
                               s,
                               "style.css"
-                              COMMA_SAFARI_CREATOR) ;
+                              COMMA_SAFARI_CREATOR
+                              COMMA_HERE) ;
 
 //--- HTML title
   HTMLfile.outputRawData ("<h1>") ;
