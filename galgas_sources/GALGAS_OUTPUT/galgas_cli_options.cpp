@@ -121,7 +121,7 @@ const char * galgas_cli_options::getBoolOptionDescription (const sint32 inIndex)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-bool galgas_cli_options::getBoolOptionValueFromKeys (const char * inModuleName,
+bool galgas_cli_options::boolOptionValueFromKeys (const char * inModuleName,
                               const char * inOptionName,
                               bool * outFound) const {
   const char * kKeyArray [4] = {"outputHTMLgrammarFile",
@@ -230,7 +230,7 @@ const char * galgas_cli_options::getUintOptionDescription (const sint32 inIndex)
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-uint32 galgas_cli_options::getUintOptionValueFromKeys (const char * inModuleName,
+uint32 galgas_cli_options::uintOptionValueFromKeys (const char * inModuleName,
                               const char * inOptionName,
                               bool * outFound) const {
   const char * kKeyArray [1] = {""} ;
@@ -324,7 +324,7 @@ getStringOptionDescription (const sint32 /* inIndex */) const {
 //---------------------------------------------------------------------------*
 
 C_String galgas_cli_options::
-getStringOptionValueFromKeys (const char * /* inModuleName */,
+stringOptionValueFromKeys (const char * /* inModuleName */,
                               const char * /* inOptionName */,
                               bool * outFound) const {
   if (* outFound) {

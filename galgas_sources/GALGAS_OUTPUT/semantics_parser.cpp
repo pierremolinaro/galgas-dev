@@ -98,13 +98,13 @@ pr_galgas_component_semantics_parser_453_24_ (galgas_scanner & lexique_var_,
   lexique_var_.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
   lexique_var_.acceptTerminal (galgas_scanner::galgas_scanner_1_semantics) ;
   lexique_var_.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-  GGS_typeTableNomRoutinesDeclarees::element_type * operand_17998 = var_cas_tableNomRoutinesDeclarees.getFirstItem () ;
+  GGS_typeTableNomRoutinesDeclarees::element_type * operand_17998 = var_cas_tableNomRoutinesDeclarees.firstObject () ;
   while (operand_17998 != NULL) {
     macroValidPointer (operand_17998) ;
     if (((! var_cas_tableRoutinesAimplementer.reader_hasKey (operand_17998->mKey))).isBuiltAndTrue ()) {
         operand_17998->mKey.reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "the routine '")) + (operand_17998->mKey.reader_value ()))) + (GGS_string (true, "' is not implemented within the component")))) ;
     }
-    operand_17998 = operand_17998->getNextItem () ;
+    operand_17998 = operand_17998->nextObject () ;
   }
   if (var_cas_componentName.isBuilt () &&
       var_cas_tableUtilisationsSemantiques.isBuilt () &&
@@ -368,12 +368,12 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_ (galgas_scanne
                                               NULL) ;
               GGS_M_nonterminalSymbolAlts  var_cas_grammarAltMap ;
               var_cas_grammarAltMap = GGS_M_nonterminalSymbolAlts::constructor_empty () ;
-              GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_23735 = var_cas_nonterminalSymbolParametersMap.getFirstItem () ;
+              GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_23735 = var_cas_nonterminalSymbolParametersMap.firstObject () ;
               while (operand_23735 != NULL) {
                 macroValidPointer (operand_23735) ;
                 GGS_L_signature  var_cas_formalParametersList ;
                 var_cas_formalParametersList = GGS_L_signature::constructor_empty () ;
-                GGS_L_signature_ForGrammarComponent::element_type * operand_23883 = operand_23735->mInfo.mFormalParametersList.getFirstItem () ;
+                GGS_L_signature_ForGrammarComponent::element_type * operand_23883 = operand_23735->mInfo.mFormalParametersList.firstObject () ;
                 while (operand_23883 != NULL) {
                   macroValidPointer (operand_23883) ;
                   GGS_AC_semanticsEntity  var_cas_entity ;
@@ -399,14 +399,14 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_ (galgas_scanne
                     }
                   }
                   var_cas_formalParametersList.addAssign_operation (var_cas_type, operand_23883->mFormalArgumentPassingMode) ;
-                  operand_23883 = operand_23883->getNextItem () ;
+                  operand_23883 = operand_23883->nextObject () ;
                 }
                 insertKey_M_nonterminalSymbolAlts (lexique_var_,
                                                 var_cas_grammarAltMap,
                                                 operand_23735->mKey,
                                                 var_cas_formalParametersList,
                                                 NULL) ;
-                operand_23735 = operand_23735->getNextItem () ;
+                operand_23735 = operand_23735->nextObject () ;
               }
               GGS_AC_semanticsEntity  var_cas_entity ;
               var_cas_entity = GGS_C_grammarForSemantics::constructor_new (var_cas_grammarAltMap) ;
@@ -443,7 +443,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_ (galgas_scanne
                                                     & var_cas_importedEntities,
                                                     & var_cas_importedOptionsComponentsMap,
                                                     NULL) ;
-                    GGS_M_semanticsEntitiesForUse::element_type * operand_25281 = var_cas_importedEntities.getFirstItem () ;
+                    GGS_M_semanticsEntitiesForUse::element_type * operand_25281 = var_cas_importedEntities.firstObject () ;
                     while (operand_25281 != NULL) {
                       macroValidPointer (operand_25281) ;
                       if (((! var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (operand_25281->mKey))).isBuiltAndTrue ()) {
@@ -453,19 +453,19 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_ (galgas_scanne
                                                         operand_25281->mInfo.aDefEntite,
                                                         NULL) ;
                       }
-                      operand_25281 = operand_25281->getNextItem () ;
+                      operand_25281 = operand_25281->nextObject () ;
                     }
                     insertKey_typeTableUtilisationsSemantiques (lexique_var_,
                                                     var_cas_tableUtilisationsSemantiques,
                                                     var_cas_componentName,
                                                     NULL) ;
-                    GGS_M_optionComponents::element_type * operand_25750 = var_cas_importedOptionsComponentsMap.getFirstItem () ;
+                    GGS_M_optionComponents::element_type * operand_25750 = var_cas_importedOptionsComponentsMap.firstObject () ;
                     while (operand_25750 != NULL) {
                       macroValidPointer (operand_25750) ;
                       if (((! var_cas_ioOptionsComponentsMapForUse.reader_hasKey (operand_25750->mKey))).isBuiltAndTrue ()) {
                           GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "the '%' option component must have been imported")) ;
                       }
-                      operand_25750 = operand_25750->getNextItem () ;
+                      operand_25750 = operand_25750->nextObject () ;
                     }
                   }
                   } break ;
@@ -484,7 +484,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_ (galgas_scanne
                                                   & var_cas_importedEntities,
                                                   NULL,
                                                   NULL) ;
-                  GGS_M_semanticsEntitiesForUse::element_type * operand_26519 = var_cas_importedEntities.getFirstItem () ;
+                  GGS_M_semanticsEntitiesForUse::element_type * operand_26519 = var_cas_importedEntities.firstObject () ;
                   while (operand_26519 != NULL) {
                     macroValidPointer (operand_26519) ;
                     if (((! var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (operand_26519->mKey))).isBuiltAndTrue ()) {
@@ -494,7 +494,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_ (galgas_scanne
                                                       operand_26519->mInfo.aDefEntite,
                                                       NULL) ;
                     }
-                    operand_26519 = operand_26519->getNextItem () ;
+                    operand_26519 = operand_26519->nextObject () ;
                   }
                   insertKey_typeTableUtilisationsSemantiques (lexique_var_,
                                                   var_cas_tableUtilisationsSemantiques,
@@ -577,7 +577,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_importSemantics
                                                     & var_cas_importedEntities,
                                                     NULL,
                                                     NULL) ;
-                    GGS_M_semanticsEntitiesForUse::element_type * operand_28085 = var_cas_importedEntities.getFirstItem () ;
+                    GGS_M_semanticsEntitiesForUse::element_type * operand_28085 = var_cas_importedEntities.firstObject () ;
                     while (operand_28085 != NULL) {
                       macroValidPointer (operand_28085) ;
                       if (((! var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (operand_28085->mKey))).isBuiltAndTrue ()) {
@@ -587,7 +587,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_importSemantics
                                                         operand_28085->mInfo.aDefEntite,
                                                         NULL) ;
                       }
-                      operand_28085 = operand_28085->getNextItem () ;
+                      operand_28085 = operand_28085->nextObject () ;
                     }
                     insertKey_typeTableUtilisationsSemantiques (lexique_var_,
                                                     var_cas_tableUtilisationsSemantiques,
@@ -610,7 +610,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_importSemantics
                                                   & var_cas_importedEntities,
                                                   NULL,
                                                   NULL) ;
-                  GGS_M_semanticsEntitiesForUse::element_type * operand_28902 = var_cas_importedEntities.getFirstItem () ;
+                  GGS_M_semanticsEntitiesForUse::element_type * operand_28902 = var_cas_importedEntities.firstObject () ;
                   while (operand_28902 != NULL) {
                     macroValidPointer (operand_28902) ;
                     if (((! var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (operand_28902->mKey))).isBuiltAndTrue ()) {
@@ -620,7 +620,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_633_45_importSemantics
                                                       operand_28902->mInfo.aDefEntite,
                                                       NULL) ;
                     }
-                    operand_28902 = operand_28902->getNextItem () ;
+                    operand_28902 = operand_28902->nextObject () ;
                   }
                   insertKey_typeTableUtilisationsSemantiques (lexique_var_,
                                                   var_cas_tableUtilisationsSemantiques,
@@ -1280,13 +1280,13 @@ pr_semantics_declaration_semantics_parser_1123_29_ (galgas_scanner & lexique_var
           }
         }
       }
-      GGS_typeClassInheritedMessagesMap::element_type * operand_46217 = var_cas_inheritedMessageMap.getFirstItem () ;
+      GGS_typeClassInheritedMessagesMap::element_type * operand_46217 = var_cas_inheritedMessageMap.firstObject () ;
       while (operand_46217 != NULL) {
         macroValidPointer (operand_46217) ;
         if (((! var_cas_tableMessagesClasseConcrete.reader_hasKey (operand_46217->mKey))).isBuiltAndTrue ()) {
             GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "the message '")) + (operand_46217->mKey.reader_value ()))) + (GGS_string (true, "' is not defined")))) ;
         }
-        operand_46217 = operand_46217->getNextItem () ;
+        operand_46217 = operand_46217->nextObject () ;
       }
       GGS_AC_galgasType  var_cas_c ;
       var_cas_c = GGS_typeGalgasClassType::constructor_new (var_cas_nomClasseAbstraite, var_cas_tableDesMethodes, var_cas_listeTousAttributsSemantiques, var_cas_tableDesClassesAncetres, var_cas_messageMapForHeirs, var_cas_tableAttributs, var_cas_estAbstraite) ;
@@ -1407,13 +1407,13 @@ pr_semantics_declaration_semantics_parser_1123_29_importSemantics (galgas_scanne
           }
         }
       }
-      GGS_typeClassInheritedMessagesMap::element_type * operand_52486 = var_cas_inheritedMessageMap.getFirstItem () ;
+      GGS_typeClassInheritedMessagesMap::element_type * operand_52486 = var_cas_inheritedMessageMap.firstObject () ;
       while (operand_52486 != NULL) {
         macroValidPointer (operand_52486) ;
         if (((! var_cas_tableMessagesClasseConcrete.reader_hasKey (operand_52486->mKey))).isBuiltAndTrue ()) {
             GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "the message '")) + (operand_52486->mKey.reader_value ()))) + (GGS_string (true, "' is not defined")))) ;
         }
-        operand_52486 = operand_52486->getNextItem () ;
+        operand_52486 = operand_52486->nextObject () ;
       }
       GGS_AC_galgasType  var_cas_c ;
       var_cas_c = GGS_typeGalgasClassType::constructor_new (var_cas_nomClasseAbstraite, var_cas_tableDesMethodes, var_cas_listeTousAttributsSemantiques, var_cas_tableDesClassesAncetres, var_cas_messageMapForHeirs, var_cas_tableAttributs, var_cas_estAbstraite) ;
@@ -1617,13 +1617,13 @@ pr_semantics_declaration_semantics_parser_1410_29_ (galgas_scanner & lexique_var
     }
   }
   var_cas_tableDesMethodes.epilogue_definitionClasseNonAbstraite (lexique_var_) ;
-  GGS_typeClassInheritedMessagesMap::element_type * operand_58637 = var_cas_inheritedMessageMap.getFirstItem () ;
+  GGS_typeClassInheritedMessagesMap::element_type * operand_58637 = var_cas_inheritedMessageMap.firstObject () ;
   while (operand_58637 != NULL) {
     macroValidPointer (operand_58637) ;
     if (((! var_cas_tableMessagesClasseConcrete.reader_hasKey (operand_58637->mKey))).isBuiltAndTrue ()) {
         GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "the message '")) + (operand_58637->mKey.reader_value ()))) + (GGS_string (true, "' is not defined")))) ;
     }
-    operand_58637 = operand_58637->getNextItem () ;
+    operand_58637 = operand_58637->nextObject () ;
   }
   GGS_AC_galgasType  var_cas_c ;
   var_cas_c = GGS_typeGalgasClassType::constructor_new (var_cas_nomClasseNonAbstraite, var_cas_tableDesMethodes, var_cas_listeTousAttributsSemantiques, var_cas_tableDesClassesAncetres, var_cas_messageMapForHeirs, var_cas_tableAttributs, var_cas_estAbstraite) ;
@@ -1776,13 +1776,13 @@ pr_semantics_declaration_semantics_parser_1410_29_importSemantics (galgas_scanne
     }
   }
   var_cas_tableDesMethodes.epilogue_definitionClasseNonAbstraite (lexique_var_) ;
-  GGS_typeClassInheritedMessagesMap::element_type * operand_64988 = var_cas_inheritedMessageMap.getFirstItem () ;
+  GGS_typeClassInheritedMessagesMap::element_type * operand_64988 = var_cas_inheritedMessageMap.firstObject () ;
   while (operand_64988 != NULL) {
     macroValidPointer (operand_64988) ;
     if (((! var_cas_tableMessagesClasseConcrete.reader_hasKey (operand_64988->mKey))).isBuiltAndTrue ()) {
         GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "the message '")) + (operand_64988->mKey.reader_value ()))) + (GGS_string (true, "' is not defined")))) ;
     }
-    operand_64988 = operand_64988->getNextItem () ;
+    operand_64988 = operand_64988->nextObject () ;
   }
   GGS_AC_galgasType  var_cas_c ;
   var_cas_c = GGS_typeGalgasClassType::constructor_new (var_cas_nomClasseNonAbstraite, var_cas_tableDesMethodes, var_cas_listeTousAttributsSemantiques, var_cas_tableDesClassesAncetres, var_cas_messageMapForHeirs, var_cas_tableAttributs, var_cas_estAbstraite) ;
@@ -1941,7 +1941,7 @@ pr_parse_method_semantics_parser_1727_20_ (galgas_scanner & lexique_var_,
   GGS_L_signature_ForGrammarComponent  var_cas_signatureForGrammarComponent ;
   nt_formal_arguments_list_ (lexique_var_, var_cas_ioComponentSemanticsEntitiesMap, var_cas_outMethodSignature, var_cas_methodLocalVariablesMap, var_cas_listeTypeEtNomsArguments, var_cas_tableEnAvant, var_cas_signatureForGrammarComponent) ;
   lexique_var_.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
-  GGS_typeListeAttributsSemantiques::element_type * operand_69735 = var_cas_listeAttributsSemantiquesCourants.getFirstItem () ;
+  GGS_typeListeAttributsSemantiques::element_type * operand_69735 = var_cas_listeAttributsSemantiquesCourants.firstObject () ;
   while (operand_69735 != NULL) {
     macroValidPointer (operand_69735) ;
     GGS_typeCplusPlusName  var_cas_nomCpp ;
@@ -1952,7 +1952,7 @@ pr_parse_method_semantics_parser_1727_20_ (galgas_scanner & lexique_var_,
                                     operand_69735->mAttributType,
                                     var_cas_nomCpp,
                                     NULL) ;
-    operand_69735 = operand_69735->getNextItem () ;
+    operand_69735 = operand_69735->nextObject () ;
   }
   var_cas_outInstructionsList = GGS_typeInstructionsList::constructor_empty () ;
   nt_semantic_instructions_list_ (lexique_var_, var_cas_ioComponentSemanticsEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_methodLocalVariablesMap, var_cas_outInstructionsList) ;
@@ -2564,8 +2564,8 @@ pr_input_parameters_list_semantics_parser_2148_29_ (galgas_scanner & lexique_var
   }else{
     var_cas_listeAffectationParametresEffectifs = GGS_L_assignedVariables::constructor_empty () ;
     var_cas_outAllVariablesList = GGS_typeCplusPlusNameList::constructor_empty () ;
-    GGS_typeListeAttributsSemantiques::element_type * operand_84984 = var_cas_listeAttributsSemantiques.getFirstItem () ;
-    GGS_typeListeCibles::element_type * operand_85048 = var_cas_listeCibles.getFirstItem () ;
+    GGS_typeListeAttributsSemantiques::element_type * operand_84984 = var_cas_listeAttributsSemantiques.firstObject () ;
+    GGS_typeListeCibles::element_type * operand_85048 = var_cas_listeCibles.firstObject () ;
     while ((operand_84984 != NULL) && (operand_85048 != NULL)) {
       macroValidPointer (operand_84984) ;
       macroValidPointer (operand_85048) ;
@@ -2574,8 +2574,8 @@ pr_input_parameters_list_semantics_parser_2148_29_ (galgas_scanner & lexique_var
       if (operand_85048->aCible.isBuilt ()) {
         operand_85048->aCible ()->methode_verifierType (lexique_var_, operand_84984->mAttributType, var_cas_nomAttributSource, var_cas_listeAffectationParametresEffectifs, var_cas_outAllVariablesList) ;
       }
-      operand_84984 = operand_84984->getNextItem () ;
-      operand_85048 = operand_85048->getNextItem () ;
+      operand_84984 = operand_84984->nextObject () ;
+      operand_85048 = operand_85048->nextObject () ;
     }
   }
   GGS_typeCplusPlusName  var_cas_nullName ;
@@ -2721,14 +2721,14 @@ pr_instruction_beginning_with_identifier_semantics_parser_2228_45_ (galgas_scann
   }else if (((var_cas_formalParametersList.reader_length ()) > (var_cas_typeList.reader_length ())).isBuiltAndTrue ()) {
       GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "value list is too short")) ;
   }else{
-    GGS_typeListeAttributsSemantiques::element_type * operand_88362 = var_cas_formalParametersList.getFirstItem () ;
-    GGS_typeTypesList::element_type * operand_88432 = var_cas_typeList.getFirstItem () ;
+    GGS_typeListeAttributsSemantiques::element_type * operand_88362 = var_cas_formalParametersList.firstObject () ;
+    GGS_typeTypesList::element_type * operand_88432 = var_cas_typeList.firstObject () ;
     while ((operand_88362 != NULL) && (operand_88432 != NULL)) {
       macroValidPointer (operand_88362) ;
       macroValidPointer (operand_88432) ;
       ::routine_verifierCompatibiliteTypesSemantiques (lexique_var_,  operand_88362->mAttributType,  operand_88432->mType,  operand_88432->mEndOfExpressionLocation) ;
-      operand_88362 = operand_88362->getNextItem () ;
-      operand_88432 = operand_88432->getNextItem () ;
+      operand_88362 = operand_88362->nextObject () ;
+      operand_88432 = operand_88432->nextObject () ;
     }
   }
   GGS_typeInstruction  var_cas_instruction ;
@@ -5507,18 +5507,18 @@ pr_semantics_declaration_semantics_parser_3931_29_ (galgas_scanner & lexique_var
         }
       }
       if (((var_cas_stateValues.reader_count ()) > (GGS_uint (true, 0UL))).isBuiltAndTrue ()) {
-        GGS_typeTableMethodesInsererChercher::element_type * operand_159622 = var_cas_insertMethodMap.getFirstItem () ;
+        GGS_typeTableMethodesInsererChercher::element_type * operand_159622 = var_cas_insertMethodMap.firstObject () ;
         while (operand_159622 != NULL) {
           macroValidPointer (operand_159622) ;
-          GGS_typeTableMethodesInsererChercher::element_type * operand_159743 = var_cas_insertMethodMap.getFirstItem () ;
+          GGS_typeTableMethodesInsererChercher::element_type * operand_159743 = var_cas_insertMethodMap.firstObject () ;
           while (operand_159743 != NULL) {
             macroValidPointer (operand_159743) ;
             if (((! operand_159622->mInfo.mTransitionStatusMap.reader_hasKey (operand_159743->mKey))).isBuiltAndTrue ()) {
                 operand_159622->mKey.reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "This insert method does not define the '")) + (operand_159743->mKey.reader_value ()))) + (GGS_string (true, "' transition")))) ;
             }
-            operand_159743 = operand_159743->getNextItem () ;
+            operand_159743 = operand_159743->nextObject () ;
           }
-          operand_159622 = operand_159622->getNextItem () ;
+          operand_159622 = operand_159622->nextObject () ;
         }
       }
       lexique_var_.acceptTerminal (galgas_scanner::galgas_scanner_1_key) ;
@@ -7246,7 +7246,7 @@ pr_semantics_declaration_semantics_parser_5016_29_ (galgas_scanner & lexique_var
           lexique_var_.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
           GGS_L_lstringList  var_cas_messageStringList ;
           var_cas_messageStringList = GGS_L_lstringList::constructor_empty () ;
-          GGS_typeEnumConstantesMap::element_type * operand_197207 = var_cas_constantMap.getFirstItem () ;
+          GGS_typeEnumConstantesMap::element_type * operand_197207 = var_cas_constantMap.firstObject () ;
           while (operand_197207 != NULL) {
             macroValidPointer (operand_197207) ;
             GGS_lstring  var_cas_name ;
@@ -7258,7 +7258,7 @@ pr_semantics_declaration_semantics_parser_5016_29_ (galgas_scanner & lexique_var
                                             & var_cas_cstString,
                                             NULL) ;
             var_cas_messageStringList.addAssign_operation (var_cas_cstString) ;
-            operand_197207 = operand_197207->getNextItem () ;
+            operand_197207 = operand_197207->nextObject () ;
           }
           insertKey_typeEnumMessageMap (lexique_var_,
                                           var_cas_enumMessageMap,

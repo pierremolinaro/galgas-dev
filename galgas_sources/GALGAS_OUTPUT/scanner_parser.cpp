@@ -792,7 +792,7 @@ pr_key_words_list_declaration_scanner_parser_570_34_ (galgas_scanner & lexique_v
         }
         GGS_string var_cas_specificErrorMessageString ;
         var_cas_specificErrorMessageString = GGS_string (true, "") ;
-        GGS_L_stringList::element_type * operand_18334 = var_cas_errorMessageElementsList.getFirstItem () ;
+        GGS_L_stringList::element_type * operand_18334 = var_cas_errorMessageElementsList.firstObject () ;
         while (operand_18334 != NULL) {
           macroValidPointer (operand_18334) ;
           if (((operand_18334->mErrorMessageElement) == (GGS_string (true, "\x1"""))).isBuiltAndTrue ()) {
@@ -800,7 +800,7 @@ pr_key_words_list_declaration_scanner_parser_570_34_ (galgas_scanner & lexique_v
           }else{
             var_cas_specificErrorMessageString = ((var_cas_specificErrorMessageString) + (operand_18334->mErrorMessageElement)) ;
           }
-          operand_18334 = operand_18334->getNextItem () ;
+          operand_18334 = operand_18334->nextObject () ;
         }
         insertKey_typeTableDefinitionTerminaux (lexique_var_,
                                         var_cas_table_des_terminaux,

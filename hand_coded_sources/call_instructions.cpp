@@ -45,12 +45,12 @@ void cPtr_typeReaderCallInstruction
       ioCppFile << " ()->" ;
     }  
     ioCppFile << "methode_" << aNomMethodeSimple << " (lexique_var_"  ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ", " ;
       argCourant->mExpression ()->generateExpression (ioCppFile) ;
-      argCourant = argCourant->getNextItem () ;
+      argCourant = argCourant->nextObject () ;
     }
     ioCppFile << ") ;\n" ;
     if (ifGenerated) {
@@ -72,11 +72,11 @@ bool cPtr_typeReaderCallInstruction
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool import = aNomCppVariable.isEqualTo (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
   while ((! import) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     import = argCourant->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->getNextItem () ;
+    argCourant = argCourant->nextObject () ;
   }
   return import ;
 }
@@ -112,12 +112,12 @@ void cPtr_typeModifierCallInstruction
       ioCppFile << " ()->" ;
     }  
     ioCppFile << "methode_" << aNomMethodeSimple << " (lexique_var_"  ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ", " ;
       argCourant->mExpression ()->generateExpression (ioCppFile) ;
-      argCourant = argCourant->getNextItem () ;
+      argCourant = argCourant->nextObject () ;
     }
     ioCppFile << ") ;\n" ;
     if (ifGenerated) {
@@ -139,11 +139,11 @@ bool cPtr_typeModifierCallInstruction
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool import = aNomCppVariable.isEqualTo (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
   while ((! import) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     import = argCourant->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->getNextItem () ;
+    argCourant = argCourant->nextObject () ;
   }
   return import ;
 }
@@ -167,12 +167,12 @@ void cPtr_typeInstructionAppelMethodeListe
   if (inGenerateSemanticInstructions) {
     aNomCppAttribut ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".methode_" << aMethodeDeListe << " (lexique_var_" ;
-    GGS_typeCplusPlusNameList::element_type * current = aListeNomsCppArguments.getFirstItem () ;
+    GGS_typeCplusPlusNameList::element_type * current = aListeNomsCppArguments.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;
       ioCppFile << ",  " ;
       current->mCppName ()->generateCplusPlusName (ioCppFile) ;
-      current = current->getNextItem () ;
+      current = current->nextObject () ;
     }
     ioCppFile << ") ;\n" ;
   }
@@ -191,11 +191,11 @@ bool cPtr_typeInstructionAppelMethodeListe
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomCppAttribut.isEqualTo (inArgumentCppName) ;
-  GGS_typeCplusPlusNameList::element_type * argCourant = aListeNomsCppArguments.getFirstItem () ;
+  GGS_typeCplusPlusNameList::element_type * argCourant = aListeNomsCppArguments.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mCppName.isEqualTo (inArgumentCppName) ;
-    argCourant = argCourant->getNextItem () ;
+    argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
 }
@@ -217,15 +217,15 @@ void cPtr_C_grammarInstruction
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "{ " << inLexiqueClassName << " scanner_ (lexique_var_.getGalgasIOptr ()) ;\n"
+    ioCppFile << "{ " << inLexiqueClassName << " scanner_ (lexique_var_.galgas_IO_Ptr ()) ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
                  "  C_String sourceFileName ;\n"
                  "  if ((" ;
     mSourceFileCppName ()->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".getLength () > 0) && (" ;
+    ioCppFile << ".length () > 0) && (" ;
     mSourceFileCppName ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " (0 COMMA_HERE) != '/')) {\n"
-                 "    sourceFileName << lexique_var_.getSourceFile ().getPath () << '/' ;\n"
+                 "    sourceFileName << lexique_var_.sourceFileName ().stringByDeletingLastPathComponent () << '/' ;\n"
                  "  }\n"
                  "  sourceFileName << " ;
     mSourceFileCppName ()->generateCplusPlusName (ioCppFile) ;
@@ -234,12 +234,12 @@ void cPtr_C_grammarInstruction
                  "    scanner_.resetAndLoadSourceFromFile (sourceFileName) ;\n"
                  "    grammar_.startParsing_" << mAltSymbol
               << " (scanner_" ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ",\n                                " ;
       argCourant->mExpression ()->generateExpression (ioCppFile) ;
-      argCourant = argCourant->getNextItem () ;
+      argCourant = argCourant->nextObject () ;
     }
     ioCppFile << ") ;\n"
                  "  }catch (const C_TextReadException & inFileReadError) {\n"
@@ -264,11 +264,11 @@ bool cPtr_C_grammarInstruction
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
    bool isUsed = mSourceFileCppName.isEqualTo (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->getNextItem () ;
+    argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
 }
@@ -290,8 +290,8 @@ void cPtr_typeInstructionAppelActionExterne
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    GGS_L_signature::element_type * typeArgumentCourant = aListeTypesParametresFormels.getFirstItem () ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+    GGS_L_signature::element_type * typeArgumentCourant = aListeTypesParametresFormels.firstObject () ;
+    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     sint16 nombreArgumentsTestes = 0 ;
     while (typeArgumentCourant != NULL) {
       macroValidPointer (typeArgumentCourant) ;
@@ -305,19 +305,19 @@ void cPtr_typeInstructionAppelActionExterne
         ioCppFile << ".isBuilt ()" ;
         nombreArgumentsTestes ++ ;
       }
-      typeArgumentCourant = typeArgumentCourant->getNextItem () ;
-      argCourant = argCourant->getNextItem () ;
+      typeArgumentCourant = typeArgumentCourant->nextObject () ;
+      argCourant = argCourant->nextObject () ;
     }
     if (nombreArgumentsTestes > 0) {
       ioCppFile << ") {\n  " ;
     }
     ioCppFile << "::" << aNomAction << " (lexique_var_" ;
-    argCourant = mExpressionsList.getFirstItem () ;
+    argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ",  " ;
       argCourant->mExpression ()->generateExpression (ioCppFile) ;
-      argCourant = argCourant->getNextItem () ;
+      argCourant = argCourant->nextObject () ;
     }
     ioCppFile << ") ;\n" ; 
     if (nombreArgumentsTestes > 0) {
@@ -339,11 +339,11 @@ bool cPtr_typeInstructionAppelActionExterne
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->getNextItem () ;
+    argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
 }
@@ -366,12 +366,12 @@ void cPtr_typeRoutineCallInstruction
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "::routine_" << aNomRoutine << " (lexique_var_" ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ",  " ;
       argCourant->mExpression ()->generateExpression (ioCppFile) ;
-      argCourant = argCourant->getNextItem () ;
+      argCourant = argCourant->nextObject () ;
     }
     ioCppFile << ") ;\n" ; 
   }
@@ -390,11 +390,11 @@ bool cPtr_typeRoutineCallInstruction
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->getNextItem () ;
+    argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
 }

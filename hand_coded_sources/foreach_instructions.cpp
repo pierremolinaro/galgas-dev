@@ -32,15 +32,15 @@ void cPtr_typeInstructionItererTable
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "GGS_" << aNomTypeTable 
-              << "::element_type * operand_" << mLocationOffset.getCurrentLocation () << " = " ;
+              << "::element_type * operand_" << mLocationOffset.currentLocation () << " = " ;
     aNomCppTable ()->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".getFirstItem () ;\n"
-                 "while (operand_" << mLocationOffset.getCurrentLocation () << " != NULL) {\n"
-                 "  macroValidPointer (operand_" << mLocationOffset.getCurrentLocation () << ") ;\n" ;
+    ioCppFile << ".firstObject () ;\n"
+                 "while (operand_" << mLocationOffset.currentLocation () << " != NULL) {\n"
+                 "  macroValidPointer (operand_" << mLocationOffset.currentLocation () << ") ;\n" ;
     C_String inutilise ;
     generateInstructionListForList (mInstructionsList, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
-    ioCppFile << "  operand_" << mLocationOffset.getCurrentLocation () << " = operand_"
-              << mLocationOffset.getCurrentLocation () << "->getNextItem () ;\n"
+    ioCppFile << "  operand_" << mLocationOffset.currentLocation () << " = operand_"
+              << mLocationOffset.currentLocation () << "->nextObject () ;\n"
                  "}\n" ;
   }
 }
@@ -78,15 +78,15 @@ void cPtr_typeInstructionItererListeSimple
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "GGS_" << aNomTypeListe << "::element_type * operand_" << mLocationOffset.getCurrentLocation () << " = " ;
+    ioCppFile << "GGS_" << aNomTypeListe << "::element_type * operand_" << mLocationOffset.currentLocation () << " = " ;
     aNomCppListe ()->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".getFirstItem () ;\n"
-                 "while (operand_" << mLocationOffset.getCurrentLocation () << " != NULL) {\n"
-                 "  macroValidPointer (operand_" << mLocationOffset.getCurrentLocation () << ") ;\n" ;
+    ioCppFile << ".firstObject () ;\n"
+                 "while (operand_" << mLocationOffset.currentLocation () << " != NULL) {\n"
+                 "  macroValidPointer (operand_" << mLocationOffset.currentLocation () << ") ;\n" ;
     generateInstructionListForList (mInstructionsList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, true) ; 
-    ioCppFile << "  operand_" << mLocationOffset.getCurrentLocation () << " = operand_"
-              << mLocationOffset.getCurrentLocation () << "->getNextItem () ;\n"
+    ioCppFile << "  operand_" << mLocationOffset.currentLocation () << " = operand_"
+              << mLocationOffset.currentLocation () << "->nextObject () ;\n"
                  "}\n" ;
   }
 }
@@ -124,22 +124,22 @@ void cPtr_typeInstructionItererListeDouble
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "GGS_"<< aNomTypeListe1 << "::element_type * operand_" << aIndicatif1.getCurrentLocation () << " = " ;
+    ioCppFile << "GGS_"<< aNomTypeListe1 << "::element_type * operand_" << aIndicatif1.currentLocation () << " = " ;
     aNomCppListe1 ()->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".getFirstItem () ;\n"
-                 "GGS_" << aNomTypeListe2 << "::element_type * operand_" << aIndicatif2.getCurrentLocation () << " = " ;
+    ioCppFile << ".firstObject () ;\n"
+                 "GGS_" << aNomTypeListe2 << "::element_type * operand_" << aIndicatif2.currentLocation () << " = " ;
     aNomCppListe2 ()->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".getFirstItem () ;\n"
-              << "while ((operand_" << aIndicatif1.getCurrentLocation () << " != NULL)"
-                 " && (operand_" << aIndicatif2.getCurrentLocation () << " != NULL)) {\n"
-                 "  macroValidPointer (operand_" << aIndicatif1.getCurrentLocation () << ") ;\n"
-                 "  macroValidPointer (operand_" << aIndicatif2.getCurrentLocation () << ") ;\n" ;
+    ioCppFile << ".firstObject () ;\n"
+              << "while ((operand_" << aIndicatif1.currentLocation () << " != NULL)"
+                 " && (operand_" << aIndicatif2.currentLocation () << " != NULL)) {\n"
+                 "  macroValidPointer (operand_" << aIndicatif1.currentLocation () << ") ;\n"
+                 "  macroValidPointer (operand_" << aIndicatif2.currentLocation () << ") ;\n" ;
     generateInstructionListForList (mInstructionsList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, true) ; 
-    ioCppFile << "  operand_" << aIndicatif1.getCurrentLocation () << " = operand_"
-              << aIndicatif1.getCurrentLocation () << "->getNextItem () ;\n"
-              << "  operand_" << aIndicatif2.getCurrentLocation () << " = operand_"
-              << aIndicatif2.getCurrentLocation () << "->getNextItem () ;\n"
+    ioCppFile << "  operand_" << aIndicatif1.currentLocation () << " = operand_"
+              << aIndicatif1.currentLocation () << "->nextObject () ;\n"
+              << "  operand_" << aIndicatif2.currentLocation () << " = operand_"
+              << aIndicatif2.currentLocation () << "->nextObject () ;\n"
                  "}\n" ;
   }
 }

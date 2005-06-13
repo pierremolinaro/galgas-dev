@@ -39,7 +39,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   TC_UniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
   vocabularyFollowedByEmpty_Array (inVocabulary.getStartSymbol () COMMA_HERE) = true ;
 
-  const sint32 productionsCount = inProductionRules.getLength () ;
+  const sint32 productionsCount = inProductionRules.length () ;
   TC_UniqueArray <bool> productionIsHandled (productionsCount, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;

@@ -39,7 +39,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   C_BDD_Set2 leftNonterminal (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 rightVocabulary (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 rightSymbol (outUsefulSymbols.getDescriptor (), outUsefulSymbols.getDescriptor ()) ;
-  for (sint32 i=0 ; i<inPureBNFproductions.getLength () ; i++) {
+  for (sint32 i=0 ; i<inPureBNFproductions.length () ; i++) {
     const cProduction & p = inPureBNFproductions (i COMMA_HERE) ;
     if (p.aDerivation.count () > 0) {
       rightVocabulary.clear () ;

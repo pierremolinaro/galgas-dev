@@ -47,10 +47,10 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
              "  public : enum enumeration {kNotBuilt" ;
-  GGS_typeEnumConstantesMap::element_type * cst = mConstantMap.getFirstItem () ;
+  GGS_typeEnumConstantesMap::element_type * cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
     inHfile << ", enum_" << cst->mKey ;
-    cst = cst->getNextItem () ;
+    cst = cst->nextObject () ;
   }
   inHfile << "} ;\n\n"
              "//--- Private attribute\n"
@@ -66,20 +66,20 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Is built ?\n"
              "  public : inline bool isBuilt (void) const { return mValue > kNotBuilt ; }\n\n"
              "//--- Construction from GALGAS constructor\n" ;
-  cst = mConstantMap.getFirstItem () ;
+  cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
     inHfile << "  public : static inline GGS_" << mEnumTypeName
             << " constructor_" << cst->mKey << " (void) {\n"
                "    return GGS_" << mEnumTypeName << " (enum_" << cst->mKey << ") ;\n"
                "  }\n" ;
-    cst = cst->getNextItem () ;
+    cst = cst->nextObject () ;
   }
   inHfile << "\n"
              "//--- Messages\n" ;
-  GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.getFirstItem () ;
+  GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
     inHfile << "  public : GGS_string reader_" << m->mKey << " (void) const ;\n" ;
-    m = m->getNextItem () ;
+    m = m->nextObject () ;
   }
   inHfile << "\n"
              "//--- Drop operation\n"
@@ -171,23 +171,23 @@ void cPtr_enumGalgasType
                "                   mValue > inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.getFirstItem () ;
+  GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
     inCppFile.writeHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::"
                  "\n"
                  "reader_" << m->mKey << " (void) const {\n"
                  "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
-    GGS_L_lstringList::element_type * e = m->mInfo.mMessageStringList.getFirstItem () ;
+    GGS_L_lstringList::element_type * e = m->mInfo.mMessageStringList.firstObject () ;
     while (e != NULL) {
       inCppFile << ",\n    " ;
       inCppFile.writeCstringConstant (e->mString) ;
-      e = e->getNextItem () ;
+      e = e->nextObject () ;
     } 
     inCppFile << "\n  } ;\n"
                  "  return GGS_string (mValue > 0, kMessages [mValue]) ;\n"
                  "}\n\n" ;
-    m = m->getNextItem () ;
+    m = m->nextObject () ;
   }
 
 }

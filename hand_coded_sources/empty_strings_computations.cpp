@@ -34,7 +34,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
                                                 const C_BDD_Descriptor & inDescriptor) { 
   C_BDD_Set1 nonterminalSymbolsHavingEmptyDerivation (inDescriptor) ;
   C_BDD_Set1 temp (inDescriptor);
-  for (sint32 i=0 ; i<inProductionRules.getLength () ; i++) {
+  for (sint32 i=0 ; i<inProductionRules.length () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
     if (p.aDerivation.count () == 0L) {
       temp.init (C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
@@ -90,7 +90,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
     swap (tempo, vocabulaireSeDerivantEnVide) ;
   }
 
-  const sint32 nombreDeProductions = inProductionRules.getLength () ;
+  const sint32 nombreDeProductions = inProductionRules.length () ;
   TC_UniqueArray <bool> productionTraitee (nombreDeProductions, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;

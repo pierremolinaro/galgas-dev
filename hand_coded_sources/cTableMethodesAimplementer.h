@@ -53,7 +53,7 @@ template <typename INFO, typename KEY> class cElementTableMethodesAimplementer {
   public : INFO mInfo ;
   public : const bool champEstAbstraite ;
   public : const sint32 mEntryIndex ;
-  public : inline element_type * getNextItem (void) const { return mNextItem ; }
+  public : inline element_type * nextObject (void) const { return mNextItem ; }
   public : cElementTableMethodesAimplementer (const INFO & info,
                                               const KEY & clef,
                                               const sint32 numeroElement,

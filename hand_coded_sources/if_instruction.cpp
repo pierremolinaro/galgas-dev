@@ -356,7 +356,7 @@ bool cPtr_typeLiteralCharExpression
 void cPtr_typeConstructorExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_" << mClassName << "::constructor_" << mClassMethodName << " (" ;
-  GGS_typeExpressionList::element_type * current = mExpressionList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
   bool first = true ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -366,7 +366,7 @@ generateExpression (AC_OutputStream & ioCppFile) {
       ioCppFile << ", " ;
     }
     current->mExpression ()->generateExpression (ioCppFile) ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
   ioCppFile << ')' ;
 }
@@ -376,11 +376,11 @@ generateExpression (AC_OutputStream & ioCppFile) {
 bool cPtr_typeConstructorExpression
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * current = mExpressionList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
   while ((current != NULL) && ! isUsed) {
     macroValidPointer (current) ;
     isUsed = current->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
   return isUsed ;
 }
@@ -390,11 +390,11 @@ bool cPtr_typeConstructorExpression
 bool cPtr_typeConstructorExpression
 ::isLexiqueFormalArgumentUsedForTest (void) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * current = mExpressionList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
   while ((current != NULL) && ! isUsed) {
     macroValidPointer (current) ;
     isUsed = current->mExpression ()->isLexiqueFormalArgumentUsedForTest () ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
   return isUsed ;
 }
@@ -603,7 +603,7 @@ void cPtr_typeReaderCallInExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
   mExpressionValue ()->generateExpression (ioCppFile) ;
   ioCppFile << ".reader_" << mReaderName << " (" ;
-  GGS_typeExpressionList::element_type * e = mExpressionList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
   bool first = true ;
   while (e != NULL) {
     if (first) {
@@ -612,7 +612,7 @@ generateExpression (AC_OutputStream & ioCppFile) {
       ioCppFile << ", " ;
     }
     e->mExpression ()->generateExpression (ioCppFile) ;
-    e = e->getNextItem () ;
+    e = e->nextObject () ;
   }
   ioCppFile << ")" ;
 }
@@ -622,10 +622,10 @@ generateExpression (AC_OutputStream & ioCppFile) {
 bool cPtr_typeReaderCallInExpression
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   bool used = mExpressionValue ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * e = mExpressionList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
   while ((e != NULL) && ! used) {
     used = e->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    e = e->getNextItem () ;
+    e = e->nextObject () ;
   }
   return used ;
 }
@@ -635,10 +635,10 @@ bool cPtr_typeReaderCallInExpression
 bool cPtr_typeReaderCallInExpression
 ::isLexiqueFormalArgumentUsedForTest (void) const {
   bool used = false ;
-  GGS_typeExpressionList::element_type * e = mExpressionList.getFirstItem () ;
+  GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
   while ((e != NULL) && ! used) {
     used = e->mExpression ()->isLexiqueFormalArgumentUsedForTest () ;
-    e = e->getNextItem () ;
+    e = e->nextObject () ;
   }
   return used ;
 }
@@ -737,7 +737,7 @@ bool cPtr_typeTextTableCall
 //---------------------------------------------------------------------------*
 
 void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_bool (true, lexique_var_.getBoolOptionValueFromKeys (" ;
+  ioCppFile << "GGS_bool (true, lexique_var_.boolOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
@@ -768,7 +768,7 @@ bool cPtr_typeBoolOption
 //---------------------------------------------------------------------------*
 
 void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_uint (true, lexique_var_.getUintOptionValueFromKeys (" ;
+  ioCppFile << "GGS_uint (true, lexique_var_.uintOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
@@ -806,7 +806,7 @@ void cPtr_C_if_instruction
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.getFirstItem () ;
+    GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
     bool first = true ;
     while (currentBranch != NULL) {
       macroValidPointer (currentBranch) ;
@@ -820,7 +820,7 @@ void cPtr_C_if_instruction
       ioCppFile << ").isBuiltAndTrue ()) {\n" ;
       generateInstructionListForList (currentBranch->mInstructionsList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, true) ;
-      currentBranch = currentBranch->getNextItem () ;
+      currentBranch = currentBranch->nextObject () ;
     }
     if (mElseInstructionsList.count () > 0) {
       ioCppFile << "}else{\n" ;
@@ -836,12 +836,12 @@ void cPtr_C_if_instruction
 bool cPtr_C_if_instruction
 ::isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionsList, inGenerateSemanticInstructions) ;
-  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.getFirstItem () ;
+  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
     used = currentBranch->mIFexpression ()->isLexiqueFormalArgumentUsedForTest ()
        || isLexiqueFormalArgumentUsedForList (currentBranch->mInstructionsList, inGenerateSemanticInstructions) ;
-    currentBranch = currentBranch->getNextItem () ;
+    currentBranch = currentBranch->nextObject () ;
   }
   return used ;
 }
@@ -852,12 +852,12 @@ bool cPtr_C_if_instruction
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
-  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.getFirstItem () ;
+  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
     used = currentBranch->mIFexpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
       || formalArgumentIsUsedForList (currentBranch->mInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
-    currentBranch = currentBranch->getNextItem () ;
+    currentBranch = currentBranch->nextObject () ;
   }
   return used ;
 }

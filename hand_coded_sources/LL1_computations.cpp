@@ -249,7 +249,7 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
       const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
       inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
-      fichierCPP << "  switch (lexique_var_.getNextProductionIndex ()) {\n" ;
+      fichierCPP << "  switch (lexique_var_.nextProductionIndex ()) {\n" ;
       for (sint32 j=first ; j<=derniere ; j++) {
         fichierCPP << "  case " << ((sint32)(j - first + 1)) << " :\n  " ;
         const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
@@ -397,7 +397,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
 
 //--- Generate LL(1) tables
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  const sint32 productionsCount = inPureBNFproductions.getLength () ;
+  const sint32 productionsCount = inPureBNFproductions.length () ;
   TC_UniqueArray <sint16> productionRulesIndex (500 COMMA_HERE);
   TC_UniqueArray <sint16> firstProductionRuleIndex (500 COMMA_HERE) ;
   TC_UniqueArray <C_String> productionRulesTitle (500 COMMA_HERE) ;
@@ -407,14 +407,14 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
              "#define NONTERMINAL(nt) ((-nt)-1)\n"
              "#define END_PRODUCTION  (0)\n\n"
              "static const sint16 gProductions [] = {\n" ;
-  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
+  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   sint16 productionIndex = 0 ;
   bool first = true ;
   while (nonTerminal != NULL) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
                       nonTerminal->mIndex, productionIndex, first,
                       productionRulesIndex, productionRulesTitle, firstProductionRuleIndex, generatedZone3) ;
-    nonTerminal = nonTerminal->getNextItem () ;
+    nonTerminal = nonTerminal->nextObject () ;
   }
   generatedZone3 << "//---- Added productions from 'select' and 'repeat' instructions\n" ;  
   for (sint32 i=inVocabulary.getTerminalSymbolsCount () + inNonterminalSymbolsMapForGrammar.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
@@ -459,13 +459,13 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   generatedZone3.writeTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
   generatedZone3 << "static const sint16 gDecision [] = {\n" ;
   sint16 decisionTableIndex = 0 ;
-  nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
+  nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
     printDecisionTable (inPureBNFproductions, inVocabulary, inLexiqueName,
                         nonTerminal->mIndex, decisionTableIndex,
                         productionDecisionIndex, generatedZone3) ;
-    nonTerminal = nonTerminal->getNextItem () ;
+    nonTerminal = nonTerminal->nextObject () ;
   }
   generatedZone3 << "//---- Added non terminal symbols from 'select' and 'repeat' instructions\n" ;  
   { for (sint32 i=inVocabulary.getTerminalSymbolsCount () + inNonterminalSymbolsMapForGrammar.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
@@ -481,7 +481,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   generatedZone3 << "static const sint16 gDecisionIndexes ["
           << ((sint32)(productionDecisionIndex.count () + 1))
           << "] = {\n" ;
-  nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
+  nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   { for (sint32 i=0 ; i<productionDecisionIndex.count () ; i++) {
       generatedZone3 << productionDecisionIndex (i COMMA_HERE)
               << ", // at " << i << " : <"
@@ -492,18 +492,18 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   generatedZone3 << "0} ;\n\n" ;
   
 //--- Generate non terminal implementation ----------------------------
-  nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
+  nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
     generatedZone3.writeTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal->mIndex COMMA_HERE) >= 0 ;
-    GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
+    GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (altForNonterminal != NULL) {
       macroValidPointer (altForNonterminal) ;
       generatedZone3 << "\nvoid " << inTargetFileName
               << "::nt_" << nonTerminal->mKey << '_' << altForNonterminal->mKey
               << " (" << inLexiqueName << " & " << (existeProduction ? "lexique_var_" : "") ;
-      GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.getFirstItem () ;
+      GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -512,7 +512,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         if (existeProduction) {
           generatedZone3 << " parameter_" << numeroParametre ;
         }
-        parametre = parametre->getNextItem () ;
+        parametre = parametre->nextObject () ;
         numeroParametre ++ ;
       }
       generatedZone3 << ") {\n" ; 
@@ -520,25 +520,25 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                                        inPureBNFproductions, generatedZone3,
                                        altForNonterminal->mKey) ;
       generatedZone3 << "}\n\n" ;
-      altForNonterminal = altForNonterminal->getNextItem () ;
+      altForNonterminal = altForNonterminal->nextObject () ;
     }
   //--- Generate 'startParsing' method ?
     if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
       generatedZone3.writeTitleComment ("Grammar start symbol implementation") ;
-      altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
+      altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (altForNonterminal != NULL) {
         macroValidPointer (altForNonterminal) ;
         generatedZone3 << "\nvoid " << inTargetFileName
                    << "::startParsing_"  << altForNonterminal->mKey
                     << " (" << inLexiqueName << " & lexique_var_" ;
-        GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.getFirstItem () ;
+        GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
           generatedZone3 << " parameter_" << numeroParametre ;
-          parametre = parametre->getNextItem () ;
+          parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
         generatedZone3 << ") {\n" ;
@@ -551,21 +551,21 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                    "  if (ok && ! lexique_var_.parseOnlyFlagOn ()) {\n"
                    "    nt_" << nonTerminal->mKey << '_' << altForNonterminal->mKey
                 << " (lexique_var_" ;
-        parametre = altForNonterminal->mInfo.mFormalParametersList.getFirstItem () ;
+        parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
         numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
           generatedZone3 << ", parameter_" << numeroParametre ;
-          parametre = parametre->getNextItem () ;
+          parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
                    "  }\n"
                    "}\n\n" ;
-        altForNonterminal = altForNonterminal->getNextItem () ;
+        altForNonterminal = altForNonterminal->nextObject () ;
       }
     }
-    nonTerminal = nonTerminal->getNextItem () ;
+    nonTerminal = nonTerminal->nextObject () ;
   }
 
 //--- Implement non terminal from 'select' and 'repeat' instructions
@@ -575,7 +575,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
               << " (" << inLexiqueName << " & lexique_var_) {\n"
-                 "  return lexique_var_.getNextProductionIndex () ;\n"
+                 "  return lexique_var_.nextProductionIndex () ;\n"
                  "}\n\n" ;
     }
   }

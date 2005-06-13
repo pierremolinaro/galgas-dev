@@ -38,7 +38,7 @@ buildFileNameWithPath (C_Lexique &,
                        const GGS_lstring & inCppClassName,
                        const GGS_lstring & inExtension) {
   C_String s ;
-  if (inPath.getLength () > 0) {
+  if (inPath.length () > 0) {
     s << inPath << '/' ;
   }
   s << inCppClassName << '.' << inExtension ;
@@ -131,11 +131,11 @@ generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) {
   inHfile << "void routine_" << aNomRoutine << " (C_Lexique &" ;
-  GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.getFirstItem () ;
+  GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-    currentArgument = currentArgument->getNextItem () ;
+    currentArgument = currentArgument->nextObject () ;
   }
   inHfile << ") ;\n\n" ;
 }
@@ -168,7 +168,7 @@ void cPtr_typeRoutineAengendrer
   if (isLexiqueFormalArgumentUsedForList (mInstructionsList, true)) {
     inCppFile << " lexique_var_" ;
   }
-  GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.getFirstItem () ;
+  GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
   while (currentArgument != NULL) {
     inCppFile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
@@ -181,7 +181,7 @@ void cPtr_typeRoutineAengendrer
     if (! variableUtilisee) {
       inCppFile << " */" ;
     }
-    currentArgument = currentArgument->getNextItem () ;
+    currentArgument = currentArgument->nextObject () ;
   }
   inCppFile << ") {\n" ;
 //--- Engendrer la liste d'instructions
@@ -214,11 +214,11 @@ generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) {
   inHfile << "void " << aNomAction << " (C_Lexique &" ;
-  GGS_L_signature::element_type * currentArgument = aSignature.getFirstItem () ;
+  GGS_L_signature::element_type * currentArgument = aSignature.firstObject () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-    currentArgument = currentArgument->getNextItem () ;
+    currentArgument = currentArgument->nextObject () ;
   }
   inHfile << ") ;\n\n" ;
 }
@@ -284,12 +284,12 @@ generate_header_file (C_Lexique & inLexique,
   generatedZone2.writeCcomment ("Include scanner definition") ;
 
 //--- Generate lexique inclusion
-  const C_String lexiqueName = inLexiqueName.getString () ;
+  const C_String lexiqueName = inLexiqueName.string () ;
   generatedZone2 << "#include \""
-        << ((lexiqueName.getLength () == 0) ? C_String ("galgas/C_Lexique") : lexiqueName)
+        << ((lexiqueName.length () == 0) ? C_String ("galgas/C_Lexique") : lexiqueName)
         << ".h\"\n" ;
 //--- Engendrer les inclusions des fichiers IC utilisŽs
-  GGS_typeTableUtilisationsSemantiques::element_type * fichierCourant = tableUtilisationsSemantiques.getFirstItem () ;
+  GGS_typeTableUtilisationsSemantiques::element_type * fichierCourant = tableUtilisationsSemantiques.firstObject () ;
   if (fichierCourant != NULL) {
     generatedZone2.writeCcomment ("Include imported semantics") ;
     while (fichierCourant != NULL) {
@@ -297,7 +297,7 @@ generate_header_file (C_Lexique & inLexique,
       macroValidPointer (fichierCourant) ;
       generatedZone2 << fichierCourant->mKey ;
       generatedZone2 << ".h\"\n" ;
-      fichierCourant = fichierCourant->getNextItem () ;
+      fichierCourant = fichierCourant->nextObject () ;
     }
     generatedZone2 << '\n' ;
   }
@@ -326,26 +326,26 @@ generate_header_file (C_Lexique & inLexique,
   }
 
 //--- Entrer les dŽclarations
-  GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.getFirstItem () ;
+  GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
     element->mEntityToGenerate ()->generateHdeclarations (generatedZone3, lexiqueName, inLexique) ;
-    element = element->getNextItem () ;
+    element = element->nextObject () ;
   }
-  element = listeEntitesAengendrer.getFirstItem () ;
+  element = listeEntitesAengendrer.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
     element->mEntityToGenerate ()->generateHdeclarations_2 (generatedZone3, lexiqueName, inLexique) ;
-    element = element->getNextItem () ;
+    element = element->nextObject () ;
   }
 
 //--- Engendrer la dŽclaration de la classe de l'analyseur
   bool engendrerClasseCpp = false ;
-  element = listeEntitesAengendrer.getFirstItem () ;
+  element = listeEntitesAengendrer.firstObject () ;
   while ((element != NULL) && ! engendrerClasseCpp) {
     macroValidPointer (element) ;
     engendrerClasseCpp = element->mEntityToGenerate ()->isCppClassNeeded () ;
-    element = element->getNextItem () ;
+    element = element->nextObject () ;
   }
   if (engendrerClasseCpp) {
     engendrerDeclarationPrototypesReglesDeProduction (nomComposant, lexiqueName, listeEntitesAengendrer, generatedZone3) ;
@@ -375,12 +375,12 @@ generate_header_file (C_Lexique & inLexique,
 void
 generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
                                      AC_OutputStream & inHfile) {
-  GGS_L_nameWithType::element_type * current = inList.getFirstItem () ;
+  GGS_L_nameWithType::element_type * current = inList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "  public : " << current->mType << " "
              << current->mName << " ; // extern attribute\n" ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
 }
 
@@ -409,7 +409,7 @@ void cPtr_typeAutomaticName
 
 void cPtr_typeLocationAutomaticName
 ::generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "var_cas_" << mLocation.getCurrentLocation () ;
+  inFile << "var_cas_" << mLocation.currentLocation () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -430,7 +430,7 @@ void cPtr_typeCppInheritedName
 
 void cPtr_typeOperandName
 ::generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "operand_" << mLocationOffset.getCurrentLocation () << "->"
+  inFile << "operand_" << mLocationOffset.currentLocation () << "->"
          << (mFieldKind.getValue () ? "mInfo." : "")
          << mName ;
 }
@@ -439,7 +439,7 @@ void cPtr_typeOperandName
 
 void cPtr_typeKeyName
 ::generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "operand_" << mLocationOffset.getCurrentLocation () << "->mKey" ;
+  inFile << "operand_" << mLocationOffset.currentLocation () << "->mKey" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -474,7 +474,7 @@ void cPtr_typeAutomaticName
 
 void cPtr_typeLocationAutomaticName
 ::generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& var_cas_" << mLocation.getCurrentLocation () ;
+  inFile << "& var_cas_" << mLocation.currentLocation () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -495,7 +495,7 @@ void cPtr_typeCppInheritedName
 
 void cPtr_typeOperandName
 ::generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& operand_" << mLocationOffset.getCurrentLocation () << "->"
+  inFile << "& operand_" << mLocationOffset.currentLocation () << "->"
          << (mFieldKind.getValue () ? "mInfo." : "")
          << mName ;
 }
@@ -504,7 +504,7 @@ void cPtr_typeOperandName
 
 void cPtr_typeKeyName
 ::generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& operand_" << mLocationOffset.getCurrentLocation () << "->mKey" ;
+  inFile << "& operand_" << mLocationOffset.currentLocation () << "->mKey" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1289,14 +1289,14 @@ generate_cpp_file (C_Lexique & inLexique,
   generatedZone2 << '\n' ;
 
 //--- Generate debug ?
-  const bool generateDebug = inLexique.getBoolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
+  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
   if (generateDebug) {
     generatedZone2 << "#define DEBUG_TRACE_ENABLED\n\n" ;
   }
                  
 //--- Engendrer les implementations
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.getFirstItem () ;
+  GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {
     macroValidPointer (element) ;
@@ -1305,7 +1305,7 @@ generate_cpp_file (C_Lexique & inLexique,
                                          nomComposant,
                                          select_repeat_production_index,
                                          generateDebug) ;
-    element = element->getNextItem () ;
+    element = element->nextObject () ;
   }
   
 //--- Engendrer la fin du fichier
@@ -1335,7 +1335,7 @@ engendrerComposant (C_Lexique & inLexique,
                     C_galgas_stringset & tableFichiersEnTetePourFichierH,
                     C_galgas_stringset & tableFichiersEnTetePourFichierCPP,
                     C_galgas_stringset & tableDeclAnticipeesClassePourFichierH) {
-  if (inLexique.getGalgasIOptr ()->getCurrentFileErrorsCount () == 0) {
+  if (inLexique.galgas_IO_Ptr ()->currentFileErrorsCount () == 0) {
     generate_header_file (inLexique,
                           nomComposant,
                           tableUtilisationsSemantiques,
@@ -1345,7 +1345,7 @@ engendrerComposant (C_Lexique & inLexique,
                           tableDeclAnticipeesClassePourFichierH) ;
     generate_cpp_file (inLexique,
                        nomComposant,
-                       defLexique.getString (),
+                       defLexique.string (),
                        listeEntitesAengendrer,
                        tableFichiersEnTetePourFichierCPP) ;
   }

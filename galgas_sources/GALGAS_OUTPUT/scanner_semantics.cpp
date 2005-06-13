@@ -68,7 +68,7 @@ sint32 GGS_typeLexicalAttributesMap::element_type::compareKeys (void * inKey) co
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeLexicalAttributesMap::element_type::getStringForKey (void) const {
+C_String GGS_typeLexicalAttributesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -235,7 +235,7 @@ sint32 GGS_lexicalTypeMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_lexicalTypeMap::element_type::getStringForKey (void) const {
+C_String GGS_lexicalTypeMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -398,7 +398,7 @@ sint32 GGS_typeTableMessagesErreurs::element_type::compareKeys (void * inKey) co
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableMessagesErreurs::element_type::getStringForKey (void) const {
+C_String GGS_typeTableMessagesErreurs::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -565,7 +565,7 @@ sint32 GGS_M_styles::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_styles::element_type::getStringForKey (void) const {
+C_String GGS_M_styles::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -732,7 +732,7 @@ sint32 GGS_typeTableDefinitionTerminaux::element_type::compareKeys (void * inKey
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableDefinitionTerminaux::element_type::getStringForKey (void) const {
+C_String GGS_typeTableDefinitionTerminaux::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -927,7 +927,7 @@ sint32 GGS_typeTableMotsReserves::element_type::compareKeys (void * inKey) const
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableMotsReserves::element_type::getStringForKey (void) const {
+C_String GGS_typeTableMotsReserves::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -1094,7 +1094,7 @@ sint32 GGS_typeTableTablesDeMotsReserves::element_type::compareKeys (void * inKe
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableTablesDeMotsReserves::element_type::getStringForKey (void) const {
+C_String GGS_typeTableTablesDeMotsReserves::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;

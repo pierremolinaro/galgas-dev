@@ -54,7 +54,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   C_BDD_Set3 d (lastOfProduction) ;
   C_BDD_Set3 left (lastOfProduction) ;
   C_BDD_Set3 temp3 (lastOfProduction) ;
-  for (sint32 ip=0 ; ip<inProductionRules.getLength () ; ip++) {
+  for (sint32 ip=0 ; ip<inProductionRules.length () ; ip++) {
     const cProduction & p = inProductionRules (ip COMMA_HERE) ;
     const sint32 derivationLength = p.aDerivation.count () ;
   //--- Direct follower

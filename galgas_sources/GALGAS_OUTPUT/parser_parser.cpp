@@ -97,13 +97,13 @@ pr_galgas_component_parser_parser_254_24_ (galgas_scanner & lexique_var_,
       }
     }
   }
-  GGS_typeTableNomRoutinesDeclarees::element_type * operand_12613 = var_cas_tableNomRoutinesDeclarees.getFirstItem () ;
+  GGS_typeTableNomRoutinesDeclarees::element_type * operand_12613 = var_cas_tableNomRoutinesDeclarees.firstObject () ;
   while (operand_12613 != NULL) {
     macroValidPointer (operand_12613) ;
     if (((! var_cas_tableRoutinesAimplementer.reader_hasKey (operand_12613->mKey))).isBuiltAndTrue ()) {
         operand_12613->mKey.reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "the routine '")) + (operand_12613->mKey.reader_value ()))) + (GGS_string (true, "' is not implemented within the component")))) ;
     }
-    operand_12613 = operand_12613->getNextItem () ;
+    operand_12613 = operand_12613->nextObject () ;
   }
   insertKey_M_syntaxComponents (lexique_var_,
                                   var_cas_ioSyntaxComponentsMap,
@@ -907,13 +907,13 @@ pr_rule_declaration_or_implementation_parser_parser_767_42_ (galgas_scanner & le
   if (var_cas_altProductionsMap.isBuilt ()) {
     ::checkLabelSignatures (lexique_var_,  var_cas_altProductionsMap) ;
   }
-  GGS_M_nonterminalSymbolAlts::element_type * operand_30684 = var_cas_nonterminalSymbolAltMap.getFirstItem () ;
+  GGS_M_nonterminalSymbolAlts::element_type * operand_30684 = var_cas_nonterminalSymbolAltMap.firstObject () ;
   while (operand_30684 != NULL) {
     macroValidPointer (operand_30684) ;
     if (((((operand_30684->mKey.reader_value ()) != (GGS_string (true, "parse"))) && ((! var_cas_altProductionsMap.reader_hasKey (operand_30684->mKey))))).isBuiltAndTrue ()) {
         GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "the '")) + (operand_30684->mKey.reader_value ()))) + (GGS_string (true, "' label is not implemented within the rule")))) ;
     }
-    operand_30684 = operand_30684->getNextItem () ;
+    operand_30684 = operand_30684->nextObject () ;
   }
   GGS_typeEntityToGenerate  var_cas_ea ;
   var_cas_ea = GGS_typeProductionAengendrer::constructor_new (var_cas_inRuleName, var_cas_altProductionsMap, var_cas_productionTagName, var_cas_hasParseLabel) ;
@@ -1538,11 +1538,11 @@ pr_syntax_instruction_parser_parser_1246_26_ (galgas_scanner & lexique_var_,
       nt_syntax_instructions_list_no_verif_ (lexique_var_, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_firstBranchInstructionsList, var_cas_tableTerminaux, var_cas_firstBranchSyntaxSignature) ;
       var_cas_branchList.addAssign_operation (var_cas_firstBranchInstructionsList) ;
       var_cas_parse_rewind_signature_list.addAssign_operation (var_cas_firstBranchSyntaxSignature, var_cas_instructionStartLocation) ;
-      GGS_L_ruleSyntaxSignature::element_type * operand_46077 = var_cas_firstBranchSyntaxSignature.getFirstItem () ;
+      GGS_L_ruleSyntaxSignature::element_type * operand_46077 = var_cas_firstBranchSyntaxSignature.firstObject () ;
       while (operand_46077 != NULL) {
         macroValidPointer (operand_46077) ;
         var_cas_ioSyntaxSignature.addAssign_operation (operand_46077->mInstruction) ;
-        operand_46077 = operand_46077->getNextItem () ;
+        operand_46077 = operand_46077->nextObject () ;
       }
       { bool syntaxRepeat = true ;
         while (syntaxRepeat) {
@@ -1608,11 +1608,11 @@ pr_syntax_instruction_parser_parser_1246_26_ (galgas_scanner & lexique_var_,
       var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_empty () ;
       nt_syntax_instructions_list_no_verif_ (lexique_var_, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_elseInstructionsList, var_cas_tableTerminaux, var_cas_syntaxSignature) ;
       var_cas_parse_rewind_signature_list.addAssign_operation (var_cas_syntaxSignature, var_cas_branchStartLocation) ;
-      GGS_L_ruleSyntaxSignature::element_type * operand_48857 = var_cas_syntaxSignature.getFirstItem () ;
+      GGS_L_ruleSyntaxSignature::element_type * operand_48857 = var_cas_syntaxSignature.firstObject () ;
       while (operand_48857 != NULL) {
         macroValidPointer (operand_48857) ;
         var_cas_ioSyntaxSignature.addAssign_operation (operand_48857->mInstruction) ;
-        operand_48857 = operand_48857->getNextItem () ;
+        operand_48857 = operand_48857->nextObject () ;
       }
       var_cas_ioVariablesMap.epilogue_testPart (lexique_var_, GGS_location (lexique_var_)) ;
       var_cas_ioVariablesMap.epilogue_testBloc (lexique_var_) ;

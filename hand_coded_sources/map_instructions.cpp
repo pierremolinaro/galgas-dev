@@ -36,12 +36,12 @@ void cPtr_typeMapSearchInstruction
     aNomVariableTable ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ",\n                                " ;
     aNomVariableClef ()->generateCplusPlusName (ioCppFile) ;
-    GGS_typeCplusPlusNameList::element_type * currentVariable = mAllVariablesList.getFirstItem () ;
+    GGS_typeCplusPlusNameList::element_type * currentVariable = mAllVariablesList.firstObject () ;
     while (currentVariable != NULL) {
       macroValidPointer (currentVariable) ;
       ioCppFile << ",\n                                " ;
       currentVariable->mCppName ()->generateVariableAddress (ioCppFile) ;
-      currentVariable = currentVariable->getNextItem () ;
+      currentVariable = currentVariable->nextObject () ;
     }
     ioCppFile << ",\n                                " ;
     mOptionalIndexVariable ()->generateVariableAddress (ioCppFile) ;
@@ -64,11 +64,11 @@ bool cPtr_typeMapSearchInstruction
   bool isUsed = aNomVariableTable.isEqualTo (inArgumentCppName)
         || aNomVariableClef.isEqualTo (inArgumentCppName)
         || mOptionalIndexVariable.isEqualTo (inArgumentCppName) ;
-  GGS_typeCplusPlusNameList::element_type * affectationCourante = mAllVariablesList.getFirstItem () ;
+  GGS_typeCplusPlusNameList::element_type * affectationCourante = mAllVariablesList.firstObject () ;
   while ((! isUsed) && (affectationCourante != NULL)) {
     macroValidPointer (affectationCourante) ;
     isUsed = affectationCourante->mCppName.isEqualTo (inArgumentCppName) ;
-    affectationCourante = affectationCourante->getNextItem () ;
+    affectationCourante = affectationCourante->nextObject () ;
   }
   return isUsed ;
 }
@@ -95,12 +95,12 @@ void cPtr_typeMapInsertInstruction
     aNomVariableTable ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ",\n                                " ;
     aNomVariableClef ()->generateCplusPlusName (ioCppFile) ;
-    GGS_typeCplusPlusNameList::element_type * parametreCourant = aListeParametresEffectifs.getFirstItem () ;
+    GGS_typeCplusPlusNameList::element_type * parametreCourant = aListeParametresEffectifs.firstObject () ;
     while (parametreCourant != NULL) {
       macroValidPointer (parametreCourant) ;
       ioCppFile << ",\n                                " ;
       parametreCourant->mCppName ()->generateCplusPlusName (ioCppFile) ;
-      parametreCourant = parametreCourant->getNextItem () ;
+      parametreCourant = parametreCourant->nextObject () ;
     }
     ioCppFile << ",\n                                " ;
     mOptionalIndexVariable ()->generateVariableAddress (ioCppFile) ;
@@ -122,11 +122,11 @@ bool cPtr_typeMapInsertInstruction
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = (aNomVariableTable.isEqualTo (inArgumentCppName))
          || (aNomVariableClef.isEqualTo (inArgumentCppName)) ;
-  GGS_typeCplusPlusNameList::element_type * argCourant = aListeParametresEffectifs.getFirstItem () ;
+  GGS_typeCplusPlusNameList::element_type * argCourant = aListeParametresEffectifs.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mCppName.isEqualTo (inArgumentCppName) ;
-    argCourant = argCourant->getNextItem () ;
+    argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
 }

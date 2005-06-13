@@ -51,7 +51,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
         inCppFile << " */" ;
       }
     //--- Engendrer les arguments formels déclarés par l'utilisateur
-      GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.getFirstItem () ;
+      GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
       while (currentArgument != NULL) {
         macroValidPointer (currentArgument) ;
         inCppFile << ",\n                                " ;
@@ -64,7 +64,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
         if (! variableUtilisee) {
           inCppFile << " */" ;
         }
-        currentArgument = currentArgument->getNextItem () ;
+        currentArgument = currentArgument->nextObject () ;
       }
     //--- Terminer la déclaration
       inCppFile << ") {\n" ;
@@ -76,7 +76,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
                                       inGenerateDebug, true) ; 
       inCppFile << "}\n\n" ;
     }
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
 }
 
@@ -90,12 +90,12 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
     macroValidPointer (current) ;
     inHfile << "  public : virtual void methode_" << current->mKey << " (C_Lexique &" ;
   //--- Engendrer les arguments formels déclarés par l'utilisateur
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.getFirstItem () ;
+    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
       currentArgument->mType ()->generateFormalParameter (inHfile, ! currentArgument->aModeIn.getValue ()) ;
-      currentArgument = currentArgument->getNextItem () ;
+      currentArgument = currentArgument->nextObject () ;
     }
   //--- Terminer la déclaration
     if (current->champEstAbstraite) {
@@ -103,7 +103,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
     }else{
       inHfile << ") ;\n" ;
     }
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
 }
 
@@ -163,11 +163,11 @@ generateHdeclarations (AC_OutputStream & inHfile,
               "  public : cPtr_" << aNomClasse << " * operator () (void) const ;\n" ;
 
 //--- Generate 'message' reader prototypes              
-  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.getFirstItem () ;
+  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inHfile << "  public : GGS_string reader_" << messageCourant->mKey << " (void) const ;\n" ;
-    messageCourant = messageCourant->getNextItem () ;
+    messageCourant = messageCourant->nextObject () ;
   }
 
 //--- Engendrer la fin de la déclaration de la classe
@@ -197,7 +197,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone2 << '\n' ;
 
 //--- Classe mère (dernier inséré dans la table des ancêtres) : NULL si pas de classe mère
-  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.getLastItem () ;
+  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer l'en tête de la déclaration de la classe abstraite
   generatedZone2 << "class cPtr_" << aNomClasse ;
@@ -215,7 +215,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone3 << "  macro_" << aNomClasse << '\n' ;
 
 //--- Engendrer la déclaration du constructeur (uniquement si il y a des attributs)
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.getFirstItem () ;
+  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
   if (current != NULL) {
     generatedZone3 << "  public : cPtr_" << aNomClasse << " (" ;
     bool premier = true ;
@@ -228,17 +228,17 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       }
       generatedZone3 << "const " ;
       current->mAttributType()->generateFormalParameter (generatedZone3, true) ;
-      current = current->getNextItem () ;
+      current = current->nextObject () ;
     }
     generatedZone3 << ") ;\n" ;
   }
   
 //--- Engendrer la déclaration des attributs
-  current = aListeAttributsCourants.getFirstItem () ;
+  current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     current->mAttributType()->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
 
 //--- declaration des attributs externes
@@ -252,12 +252,12 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Pour chaque message abstrait, engendrer les déclarations de methodes virtuelles pures correspondantes
 //    et engendrer la methode statique correspondante
-  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.getFirstItem () ;
+  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     generatedZone3 << "  public : virtual const char * message_" << messageCourant->mKey << " (void) const ;\n" ;
     generatedZone3 << "  public : static const char * static_string_message_" << messageCourant->mKey << " (void) ;\n" ;
-    messageCourant = messageCourant->getNextItem () ;
+    messageCourant = messageCourant->nextObject () ;
   }
 
 //--- Fin de la déclaration de la classe
@@ -301,10 +301,10 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   inCppFile.writeTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Classe mère (dernier inséré dans la table des ancêtres) : NULL si pas de classe mère
-  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.getLastItem () ;
+  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.getFirstItem () ;
+  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
   if (current != NULL) {
     inCppFile << "cPtr_" << aNomClasse << "::\n"
                  "cPtr_" << aNomClasse << " (" ;
@@ -317,12 +317,12 @@ void cPtr_typeDefClasseAbstraiteAimplementer
       inCppFile << "const " ;
       current->mAttributType()->generateFormalParameter (inCppFile, true) ;
       inCppFile << "argument_" << numeroVariable ;
-      current = current->getNextItem () ;
+      current = current->nextObject () ;
       numeroVariable ++ ;
     }
     numeroVariable = 0 ;
     const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
-    current = aListeTousAttributsNonExternes.getFirstItem () ;
+    current = aListeTousAttributsNonExternes.firstObject () ;
     inCppFile << ")" ;
     bool engendrerVirgule = false ;
   //--- Appel du constructeur de la classe mère, si il y en a une
@@ -336,7 +336,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
         }
         inCppFile << "argument_" << numeroVariable ;
         macroValidPointer (current) ;
-        current = current->getNextItem () ;
+        current = current->nextObject () ;
         numeroVariable ++ ;
       }
       inCppFile << ')' ;
@@ -352,7 +352,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
       macroValidPointer (current) ;
       inCppFile << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
       numeroVariable ++ ;
-      current = current->getNextItem () ;
+      current = current->nextObject () ;
     }
     inCppFile << " {\n}\n\n" ;
   }
@@ -362,7 +362,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                                       inGenerateDebug) ;
 
 //--- Pour chaque message abstrait, engendrer la methode statique correspondante
-  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.getFirstItem () ;
+  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inCppFile.writeHyphenLineComment () ;
@@ -380,7 +380,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
     inCppFile.writeCstringConstant (messageCourant->mInfo.mMessage) ;
     inCppFile << " ;\n"
                  "} ;\n\n" ;
-    messageCourant = messageCourant->getNextItem () ;
+    messageCourant = messageCourant->nextObject () ;
   }
 
 //------------- Implémenter la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
@@ -453,14 +453,14 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                "}\n\n" ;
 
 //--- Generate declaration of message readers
-  messageCourant = mMessagesMap.getFirstItem () ;
+  messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inCppFile.writeHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << aNomClasse << "::reader_" << messageCourant->mKey << " (void) const {\n"
                  "  return GGS_string (mPointer != NULL, C_String ((mPointer == NULL) ? \"\" : mPointer->message_" << messageCourant->mKey << " ())) ;\n"
                  "}\n\n" ;
-    messageCourant = messageCourant->getNextItem () ;
+    messageCourant = messageCourant->nextObject () ;
   }
 
 //--- Engendrer la déclaration de la methode 'drop_operation'
@@ -503,7 +503,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
 
 //--- Classe mère (dernier inséré dans la table des ancêtres)
-  GGS_typeSuperClassesMap::element_type * classeAncetre = mAncestorClassesMap.getLastItem () ;
+  GGS_typeSuperClassesMap::element_type * classeAncetre = mAncestorClassesMap.lastObject () ;
   macroValidPointer (classeAncetre) ;
 
 //--- En tête de la classe
@@ -512,17 +512,17 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  private : typedef cPtr_" << classeAncetre->mKey << " inherited ;\n" ;
 
 //--- Engendrer la directive #include "xxx.j"
-  classeAncetre = mAncestorClassesMap.getFirstItem () ;
+  classeAncetre = mAncestorClassesMap.firstObject () ;
   while (classeAncetre != NULL) {
     macroValidPointer (classeAncetre) ;
     inHfile << "  macroInheritFrom_" << classeAncetre->mKey << '\n' ;
-    classeAncetre = classeAncetre->getNextItem () ;
+    classeAncetre = classeAncetre->nextObject () ;
   }
 //--- Engendrer la macro
   inHfile << "  macro_" << aNomClasse << '\n' ;
 
 //--- Engendrer la déclaration du constructeur (uniquement si il y a des attributs)
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.getFirstItem () ;
+  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
   if (current != NULL) {
     inHfile << "  public : cPtr_" << aNomClasse << " (" ;
     bool premier = true ;
@@ -535,17 +535,17 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       }
       inHfile << "const " ;
       current->mAttributType()->generateFormalParameter (inHfile, true) ;
-      current = current->getNextItem () ;
+      current = current->nextObject () ;
     }
     inHfile << ") ;\n" ;
   }
   
 //--- Engendrer la déclaration des attributs
-  current = aListeAttributsCourants.getFirstItem () ;
+  current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     current->mAttributType()->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
 
 //--- declaration des attributs externes
@@ -558,12 +558,12 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generateClassMethodsDeclaration (mMethodsMap, inHfile) ;
 
 //--- Pour chaque message, engendrer les déclarations de methodes virtuelles correspondantes
-  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.getFirstItem () ;
+  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inHfile << "  public : virtual const char * message_" << messageCourant->mKey << " (void) const ;\n" ;
     inHfile << "  public : static const char * static_string_message_" << messageCourant->mKey << " (void) ;\n" ;
-    messageCourant = messageCourant->getNextItem () ;
+    messageCourant = messageCourant->nextObject () ;
   }
 
 //--- Fin de la déclaration de la classe
@@ -577,7 +577,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"  
              "    public : static cPtr_" << aNomClasse
           << " * constructor_new (" ;
-  current = aListeTousAttributsNonExternes.getFirstItem () ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -587,14 +587,14 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     inHfile << "const " ;
     current->mAttributType()->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
              "  #else\n"
              "    public : inline static cPtr_" << aNomClasse
           << " * constructor_new (" ;
-  current = aListeTousAttributsNonExternes.getFirstItem () ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -604,12 +604,12 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     inHfile << "const " ;
     current->mAttributType()->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inHfile << ") {\n"
              "      return new cPtr_" << aNomClasse << "(" ;
-  current = aListeTousAttributsNonExternes.getFirstItem () ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -617,7 +617,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
@@ -654,10 +654,10 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
   inCppFile.writeTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
 //--- Classe mère (dernier inséré dans la table des ancêtres) : NULL si pas de classe mère
-  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.getLastItem () ;
+  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.getFirstItem () ;
+  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
   if (current != NULL) {
     inCppFile << "cPtr_" << aNomClasse << "::cPtr_" << aNomClasse << " (" ;
     sint16 numeroVariable = 0 ;
@@ -669,12 +669,12 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       inCppFile << "const " ;
       current->mAttributType()->generateFormalParameter (inCppFile, true) ;
       inCppFile << "argument_" << numeroVariable ;
-      current = current->getNextItem () ;
+      current = current->nextObject () ;
       numeroVariable ++ ;
     }
     numeroVariable = 0 ;
     const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
-    current = aListeTousAttributsNonExternes.getFirstItem () ;
+    current = aListeTousAttributsNonExternes.firstObject () ;
     inCppFile << ")" ;
     bool engendrerVirgule = false ;
   //--- Appel du constructeur de la classe mère, si il y en a une
@@ -688,7 +688,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
         }
         inCppFile << "argument_" << numeroVariable ;
         macroValidPointer (current) ;
-        current = current->getNextItem () ;
+        current = current->nextObject () ;
         numeroVariable ++ ;
       }
       inCppFile << ')' ;
@@ -704,7 +704,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       macroValidPointer (current) ;
       inCppFile << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
       numeroVariable ++ ;
-      current = current->getNextItem () ;
+      current = current->nextObject () ;
     }
     inCppFile << " {\n}\n\n" ;
   }
@@ -712,7 +712,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
 //--- Engendrer la déclaration de la methode 'isBuilt'
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "bool cPtr_" << aNomClasse << "::isBuilt (void) const {\n" ;
-  current = aListeTousAttributsNonExternes.getFirstItem () ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "  return" ;
   if (current == NULL) {
     inCppFile << " true ;\n" ;
@@ -727,7 +727,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
         inCppFile << "&&\n       " ;
       }
       inCppFile << current->aNomAttribut << ".isBuilt ()" ;
-      current = current->getNextItem () ;
+      current = current->nextObject () ;
     }
     inCppFile << " ;\n" ;
   }
@@ -738,7 +738,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
                                       inGenerateDebug) ;
 
 //--- Pour chaque message, engendrer l'implémentation des methodes correspondantes
-  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.getFirstItem () ;
+  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inCppFile << "\n"
@@ -762,7 +762,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
     inCppFile.writeCstringConstant (messageCourant->mInfo.mMessage) ;
     inCppFile << " ;\n"
                  "}\n\n" ;
-    messageCourant = messageCourant->getNextItem () ;
+    messageCourant = messageCourant->nextObject () ;
   }
 
 //------------- Implémenter la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
@@ -772,7 +772,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
                "  cPtr_" << aNomClasse
             << " * GGS_" << aNomClasse
             << "::\n    constructor_new (" ;
-  current = aListeTousAttributsNonExternes.getFirstItem () ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -782,14 +782,14 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
     inCppFile << "const " ;
     current->mAttributType()->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
             << "    cPtr_" << aNomClasse
             << " * ptr_ = (cPtr_" << aNomClasse << " *) NULL ;\n"
                "    macroMyNew (ptr_, cPtr_" << aNomClasse << " (" ;
-  current = aListeTousAttributsNonExternes.getFirstItem () ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -797,7 +797,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       inCppFile << ",\n                                " ;
     }
     inCppFile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ")) ;\n"

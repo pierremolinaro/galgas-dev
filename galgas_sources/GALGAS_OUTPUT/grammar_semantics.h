@@ -59,7 +59,7 @@ class GGS_typeListeAttributsAxiome {
     public : GGS_lstring  aAttributAxiome ;
     public : element_type (const GGS_lstring & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -84,7 +84,7 @@ class GGS_typeListeAttributsAxiome {
 //--- Constructor 'new'
   public : static GGS_typeListeAttributsAxiome constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_lstring & argument_0) ;
   protected : void internalAppendItem (const GGS_lstring & argument_0) ;
   public : void insulateList (void) ;
@@ -110,7 +110,7 @@ class GGS_typeListeChaines {
     public : GGS_lstring  attributChaine ;
     public : element_type (const GGS_lstring & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -135,7 +135,7 @@ class GGS_typeListeChaines {
 //--- Constructor 'new'
   public : static GGS_typeListeChaines constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_lstring & argument_0) ;
   protected : void internalAppendItem (const GGS_lstring & argument_0) ;
   public : void insulateList (void) ;
@@ -171,7 +171,7 @@ class GGS_L_grammarDescriptorForProgram {
                                 const GGS_bool& ,
                                 const GGS_lstring & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -196,7 +196,7 @@ class GGS_L_grammarDescriptorForProgram {
 //--- Constructor 'new'
   public : static GGS_L_grammarDescriptorForProgram constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_string& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_L_signature_ForGrammarComponent & argument_2,

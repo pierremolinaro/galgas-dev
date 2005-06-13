@@ -130,7 +130,7 @@ template <typename INFO, typename KEY> class classeSurchargeTableControlePhase {
   private : classeSurchargeTableControlePhase <INFO, KEY> * mNextItem ;
   public : cElementTableControlePhase <INFO, KEY> * champTable ;
   public : sint16 champCompteur ;
-  public : inline classeSurchargeTableControlePhase <INFO, KEY> * getNextItem (void) const { return mNextItem ; }
+  public : inline classeSurchargeTableControlePhase <INFO, KEY> * nextObject (void) const { return mNextItem ; }
 //--- Constructeur (pas de destructeur)
   public : classeSurchargeTableControlePhase (void) {
     mNextItem = (classeSurchargeTableControlePhase <INFO, KEY> *) NULL ;

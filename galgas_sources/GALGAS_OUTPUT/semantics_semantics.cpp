@@ -645,7 +645,7 @@ sint32 GGS_typeClassMessagesMap::element_type::compareKeys (void * inKey) const 
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeClassMessagesMap::element_type::getStringForKey (void) const {
+C_String GGS_typeClassMessagesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -4077,7 +4077,7 @@ sint32 GGS_typeTableRoutinesAimplementer::element_type::compareKeys (void * inKe
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableRoutinesAimplementer::element_type::getStringForKey (void) const {
+C_String GGS_typeTableRoutinesAimplementer::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -4214,7 +4214,7 @@ sint32 GGS_typeTableAttributsSemantiques::element_type::compareKeys (void * inKe
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableAttributsSemantiques::element_type::getStringForKey (void) const {
+C_String GGS_typeTableAttributsSemantiques::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -4369,8 +4369,8 @@ void routine_buildMapWithLocalConstants (C_Lexique & lexique_var_,
                                 GGS_typeVariablesMap  & var_cas_ioVariablesMap,
                                 GGS_location   var_cas_inLocation,
                                 GGS_bool  var_cas_inMapField) {
-  GGS_L_nameWithType::element_type * operand_27518 = var_cas_inLocalDeclarationsList.getFirstItem () ;
-  GGS_typeListeAttributsSemantiques::element_type * operand_27577 = var_cas_inSemanticAttributsList.getFirstItem () ;
+  GGS_L_nameWithType::element_type * operand_27518 = var_cas_inLocalDeclarationsList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::element_type * operand_27577 = var_cas_inSemanticAttributsList.firstObject () ;
   while ((operand_27518 != NULL) && (operand_27577 != NULL)) {
     macroValidPointer (operand_27518) ;
     macroValidPointer (operand_27577) ;
@@ -4392,8 +4392,8 @@ void routine_buildMapWithLocalConstants (C_Lexique & lexique_var_,
           operand_27518->mType.reader_location ().signalGGSSemanticError (lexique_var_, ((((((((GGS_string (true, "I have found the '@")) + (operand_27518->mType.reader_value ()))) + (GGS_string (true, "' type, I was expected the '@")))) + (var_cas_typeName))) + (GGS_string (true, "' type")))) ;
       }
     }
-    operand_27518 = operand_27518->getNextItem () ;
-    operand_27577 = operand_27577->getNextItem () ;
+    operand_27518 = operand_27518->nextObject () ;
+    operand_27577 = operand_27577->nextObject () ;
   }
   if (((var_cas_inLocalDeclarationsList.reader_length ()) < (var_cas_inSemanticAttributsList.reader_length ())).isBuiltAndTrue ()) {
       GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "one or more identifiers missing")) ;
@@ -4550,14 +4550,14 @@ void routine_verifierCompatibiliteTypes (C_Lexique & lexique_var_,
   }else if (((var_cas_t1.reader_length ()) > (var_cas_t2.reader_length ())).isBuiltAndTrue ()) {
       var_cas_inErrorLocation.reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "too much identifiers")) ;
   }else{
-    GGS_typeSemanticsTypesList::element_type * operand_33416 = var_cas_t1.getFirstItem () ;
-    GGS_typeListeAttributsSemantiques::element_type * operand_33503 = var_cas_t2.getFirstItem () ;
+    GGS_typeSemanticsTypesList::element_type * operand_33416 = var_cas_t1.firstObject () ;
+    GGS_typeListeAttributsSemantiques::element_type * operand_33503 = var_cas_t2.firstObject () ;
     while ((operand_33416 != NULL) && (operand_33503 != NULL)) {
       macroValidPointer (operand_33416) ;
       macroValidPointer (operand_33503) ;
       ::routine_verifierCompatibiliteTypesSemantiques (lexique_var_,  operand_33416->mType,  operand_33503->mAttributType,  operand_33416->mGalgasVariableName.reader_location ()) ;
-      operand_33416 = operand_33416->getNextItem () ;
-      operand_33503 = operand_33503->getNextItem () ;
+      operand_33416 = operand_33416->nextObject () ;
+      operand_33503 = operand_33503->nextObject () ;
     }
   }
 }
@@ -4579,8 +4579,8 @@ void routine_verifierCompatibiliteArgEffectifsSignature (C_Lexique & lexique_var
   }else if (((var_cas_signatureReference.reader_length ()) < (var_cas_inEffectiveArgumentsSignature.reader_length ())).isBuiltAndTrue ()) {
       var_cas_inErrorLocation.reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "too much arguments")) ;
   }else{
-    GGS_L_signature::element_type * operand_34776 = var_cas_signatureReference.getFirstItem () ;
-    GGS_L_actualParametersSignature::element_type * operand_34880 = var_cas_inEffectiveArgumentsSignature.getFirstItem () ;
+    GGS_L_signature::element_type * operand_34776 = var_cas_signatureReference.firstObject () ;
+    GGS_L_actualParametersSignature::element_type * operand_34880 = var_cas_inEffectiveArgumentsSignature.firstObject () ;
     while ((operand_34776 != NULL) && (operand_34880 != NULL)) {
       macroValidPointer (operand_34776) ;
       macroValidPointer (operand_34880) ;
@@ -4608,14 +4608,14 @@ void routine_verifierCompatibiliteArgEffectifsSignature (C_Lexique & lexique_var
           }
         }
       }
-      operand_34776 = operand_34776->getNextItem () ;
-      operand_34880 = operand_34880->getNextItem () ;
+      operand_34776 = operand_34776->nextObject () ;
+      operand_34880 = operand_34880->nextObject () ;
     }
     GGS_typeExpressionList  var_cas_expressionList ;
     var_cas_expressionList = var_cas_ioExpressionList ;
     var_cas_ioExpressionList = GGS_typeExpressionList::constructor_empty () ;
-    GGS_L_signature::element_type * operand_36161 = var_cas_signatureReference.getFirstItem () ;
-    GGS_typeExpressionList::element_type * operand_36219 = var_cas_expressionList.getFirstItem () ;
+    GGS_L_signature::element_type * operand_36161 = var_cas_signatureReference.firstObject () ;
+    GGS_typeExpressionList::element_type * operand_36219 = var_cas_expressionList.firstObject () ;
     while ((operand_36161 != NULL) && (operand_36219 != NULL)) {
       macroValidPointer (operand_36161) ;
       macroValidPointer (operand_36219) ;
@@ -4635,8 +4635,8 @@ void routine_verifierCompatibiliteArgEffectifsSignature (C_Lexique & lexique_var
           var_cas_ioExpressionList.addAssign_operation (operand_36219->mExpression) ;
         }
       }
-      operand_36161 = operand_36161->getNextItem () ;
-      operand_36219 = operand_36219->getNextItem () ;
+      operand_36161 = operand_36161->nextObject () ;
+      operand_36219 = operand_36219->nextObject () ;
     }
   }
 }
@@ -5769,7 +5769,7 @@ sint32 GGS_typeTableNomRoutinesDeclarees::element_type::compareKeys (void * inKe
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableNomRoutinesDeclarees::element_type::getStringForKey (void) const {
+C_String GGS_typeTableNomRoutinesDeclarees::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -6206,7 +6206,7 @@ sint32 GGS_stateMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_stateMap::element_type::getStringForKey (void) const {
+C_String GGS_stateMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -6919,7 +6919,7 @@ sint32 GGS_typeEnumCstMessageStringMap::element_type::compareKeys (void * inKey)
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeEnumCstMessageStringMap::element_type::getStringForKey (void) const {
+C_String GGS_typeEnumCstMessageStringMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
