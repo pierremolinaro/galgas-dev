@@ -739,7 +739,7 @@ sint32 GGS_typeAltProductionsMap::element_type::compareKeys (void * inKey) const
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeAltProductionsMap::element_type::getStringForKey (void) const {
+C_String GGS_typeAltProductionsMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;

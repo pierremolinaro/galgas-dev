@@ -387,7 +387,7 @@ chercherInterne (C_Lexique & inLexique,
           found = true ;
         }
       }
-      surchargeCourante = surchargeCourante->getNextItem () ;
+      surchargeCourante = surchargeCourante->nextObject () ;
     }
   //--- Pas trouvé : erreur de recherche
     if (resultat == NULL) {

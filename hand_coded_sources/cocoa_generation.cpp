@@ -40,11 +40,11 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
              "#include \"galgas/C_galgas_null_io.h\"\n"
              "#include \"" << inLexiqueComponentName << ".h\"\n" ;
-  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
+  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
     generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
-    currentOptionComponent = currentOptionComponent->getNextItem () ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << "#ifdef USER_DEFAULT_COLORS_DEFINED\n"
                     "  #import \"user_default_colors.h\"\n"
@@ -56,24 +56,24 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
   generatedZone3.writeTitleComment ("Global static variables") ;
   generatedZone3 << "\n" ;
   sint32 index = 0 ;
-  const bool generateDebug = inLexique.getBoolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
+  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
   generatedZone3 << "static C_builtin_CLI_Options gGenericOptions ("
           << (generateDebug ? "true" : "false")
           << ") ;\n" ;
-  currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
+  currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
     generatedZone3 << "static " << currentOptionComponent->mKey << " gOption" << index << " ;\n" ;
-    currentOptionComponent = currentOptionComponent->getNextItem () ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
     index ++ ;
   }
   generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, " ;
   index = 0 ;
-  currentOptionComponent = inOptionComponentsMap.getFirstItem () ;
+  currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
     generatedZone3 << "& gOption" << index << ", " ;
-    currentOptionComponent = currentOptionComponent->getNextItem () ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
     index ++ ;
   }
   generatedZone3 << "NULL) ;\n"

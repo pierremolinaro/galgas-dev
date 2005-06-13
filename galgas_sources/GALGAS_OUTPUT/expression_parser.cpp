@@ -993,14 +993,14 @@ pr_output_expression_list_expression_parser_828_30_ (galgas_scanner & lexique_va
   }else if (((var_cas_inFormalAttributesList.reader_length ()) > (var_cas_effectiveTypesList.reader_length ())).isBuiltAndTrue ()) {
       var_cas_endOfListLocation.reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "one or more expressions missing")) ;
   }else{
-    GGS_typeListeAttributsSemantiques::element_type * operand_32296 = var_cas_inFormalAttributesList.getFirstItem () ;
-    GGS_typeTypesList::element_type * operand_32377 = var_cas_effectiveTypesList.getFirstItem () ;
+    GGS_typeListeAttributsSemantiques::element_type * operand_32296 = var_cas_inFormalAttributesList.firstObject () ;
+    GGS_typeTypesList::element_type * operand_32377 = var_cas_effectiveTypesList.firstObject () ;
     while ((operand_32296 != NULL) && (operand_32377 != NULL)) {
       macroValidPointer (operand_32296) ;
       macroValidPointer (operand_32377) ;
       ::routine_verifierCompatibiliteTypesSemantiques (lexique_var_,  operand_32296->mAttributType,  operand_32377->mType,  operand_32377->mEndOfExpressionLocation) ;
-      operand_32296 = operand_32296->getNextItem () ;
-      operand_32377 = operand_32377->getNextItem () ;
+      operand_32296 = operand_32296->nextObject () ;
+      operand_32377 = operand_32377->nextObject () ;
     }
   }
 }

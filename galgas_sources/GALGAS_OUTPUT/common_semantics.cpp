@@ -1061,7 +1061,7 @@ sint32 GGS_M_accessors_map::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_accessors_map::element_type::getStringForKey (void) const {
+C_String GGS_M_accessors_map::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -2634,7 +2634,7 @@ sint32 GGS_M_externTypeConstructorMap::element_type::compareKeys (void * inKey) 
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_externTypeConstructorMap::element_type::getStringForKey (void) const {
+C_String GGS_M_externTypeConstructorMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -2930,7 +2930,7 @@ sint32 GGS_M_terminalSymbolsMapForUse::element_type::compareKeys (void * inKey) 
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_terminalSymbolsMapForUse::element_type::getStringForKey (void) const {
+C_String GGS_M_terminalSymbolsMapForUse::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -3097,7 +3097,7 @@ sint32 GGS_M_lexiqueComponents::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_lexiqueComponents::element_type::getStringForKey (void) const {
+C_String GGS_M_lexiqueComponents::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -3264,7 +3264,7 @@ sint32 GGS_typeTableEnAvant::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableEnAvant::element_type::getStringForKey (void) const {
+C_String GGS_typeTableEnAvant::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -3431,7 +3431,7 @@ sint32 GGS_M_nonterminalSymbolAlts::element_type::compareKeys (void * inKey) con
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_nonterminalSymbolAlts::element_type::getStringForKey (void) const {
+C_String GGS_M_nonterminalSymbolAlts::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -3598,7 +3598,7 @@ sint32 GGS_M_externClassesDirectories::element_type::compareKeys (void * inKey) 
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_externClassesDirectories::element_type::getStringForKey (void) const {
+C_String GGS_M_externClassesDirectories::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -3905,7 +3905,7 @@ sint32 GGS_M_semanticsEntitiesForUse::element_type::compareKeys (void * inKey) c
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_semanticsEntitiesForUse::element_type::getStringForKey (void) const {
+C_String GGS_M_semanticsEntitiesForUse::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -4172,7 +4172,7 @@ sint32 GGS_M_typesForGrammarComponent::element_type::compareKeys (void * inKey) 
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_typesForGrammarComponent::element_type::getStringForKey (void) const {
+C_String GGS_M_typesForGrammarComponent::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -4487,8 +4487,8 @@ void routine_checkSignature_ForGrammarComponent (C_Lexique & lexique_var_,
   }else if (((var_cas_inFormalReferenceSignature.reader_length ()) > (var_cas_inFormalTestedSignature.reader_length ())).isBuiltAndTrue ()) {
       var_cas_inEndOfListLocation.reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "one or more formal parameters missing")) ;
   }else{
-    GGS_L_signature_ForGrammarComponent::element_type * operand_34184 = var_cas_inFormalReferenceSignature.getFirstItem () ;
-    GGS_L_signature_ForGrammarComponent::element_type * operand_34264 = var_cas_inFormalTestedSignature.getFirstItem () ;
+    GGS_L_signature_ForGrammarComponent::element_type * operand_34184 = var_cas_inFormalReferenceSignature.firstObject () ;
+    GGS_L_signature_ForGrammarComponent::element_type * operand_34264 = var_cas_inFormalTestedSignature.firstObject () ;
     while ((operand_34184 != NULL) && (operand_34264 != NULL)) {
       macroValidPointer (operand_34184) ;
       macroValidPointer (operand_34264) ;
@@ -4498,8 +4498,8 @@ void routine_checkSignature_ForGrammarComponent (C_Lexique & lexique_var_,
       if (((operand_34184->mGalgasTypeName.reader_value ()) != (operand_34264->mGalgasTypeName.reader_value ())).isBuiltAndTrue ()) {
           operand_34264->mGalgasTypeName.reader_location ().signalGGSSemanticError (lexique_var_, ((((((((GGS_string (true, "I was expecting the '@")) + (operand_34184->mGalgasTypeName.reader_value ()))) + (GGS_string (true, "' type, I have got the '@")))) + (operand_34264->mGalgasTypeName.reader_value ()))) + (GGS_string (true, "' type")))) ;
       }
-      operand_34184 = operand_34184->getNextItem () ;
-      operand_34264 = operand_34264->getNextItem () ;
+      operand_34184 = operand_34184->nextObject () ;
+      operand_34264 = operand_34264->nextObject () ;
     }
   }
 }
@@ -4790,7 +4790,7 @@ sint32 GGS_L_grammarsMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_L_grammarsMap::element_type::getStringForKey (void) const {
+C_String GGS_L_grammarsMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -4957,7 +4957,7 @@ sint32 GGS_M_nonterminalSymbolAltsForGrammar::element_type::compareKeys (void * 
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_nonterminalSymbolAltsForGrammar::element_type::getStringForKey (void) const {
+C_String GGS_M_nonterminalSymbolAltsForGrammar::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -5303,7 +5303,7 @@ sint32 GGS_M_nonTerminalSymbolsForGrammar::element_type::compareKeys (void * inK
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_nonTerminalSymbolsForGrammar::element_type::getStringForKey (void) const {
+C_String GGS_M_nonTerminalSymbolsForGrammar::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -5466,7 +5466,7 @@ sint32 GGS_M_syntaxComponents::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_syntaxComponents::element_type::getStringForKey (void) const {
+C_String GGS_M_syntaxComponents::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -6352,7 +6352,7 @@ sint32 GGS_typeSuperClassesMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeSuperClassesMap::element_type::getStringForKey (void) const {
+C_String GGS_typeSuperClassesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -6489,7 +6489,7 @@ sint32 GGS_typeClassInheritedMessagesMap::element_type::compareKeys (void * inKe
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeClassInheritedMessagesMap::element_type::getStringForKey (void) const {
+C_String GGS_typeClassInheritedMessagesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -6642,7 +6642,7 @@ sint32 GGS_typeSemanticAttributesMap::element_type::compareKeys (void * inKey) c
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeSemanticAttributesMap::element_type::getStringForKey (void) const {
+C_String GGS_typeSemanticAttributesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -7040,7 +7040,7 @@ sint32 GGS_transitionStatusMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_transitionStatusMap::element_type::getStringForKey (void) const {
+C_String GGS_transitionStatusMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -7201,7 +7201,7 @@ sint32 GGS_typeTableMethodesInsererChercher::element_type::compareKeys (void * i
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableMethodesInsererChercher::element_type::getStringForKey (void) const {
+C_String GGS_typeTableMethodesInsererChercher::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -7712,7 +7712,7 @@ sint32 GGS_typeTableBlocsDeTable::element_type::compareKeys (void * inKey) const
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableBlocsDeTable::element_type::getStringForKey (void) const {
+C_String GGS_typeTableBlocsDeTable::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -8261,7 +8261,7 @@ sint32 GGS_typeTableUtilisationsSemantiques::element_type::compareKeys (void * i
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeTableUtilisationsSemantiques::element_type::getStringForKey (void) const {
+C_String GGS_typeTableUtilisationsSemantiques::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -8396,7 +8396,7 @@ sint32 GGS_typeEnumConstantesMap::element_type::compareKeys (void * inKey) const
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeEnumConstantesMap::element_type::getStringForKey (void) const {
+C_String GGS_typeEnumConstantesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -8549,7 +8549,7 @@ sint32 GGS_typeEnumMessageMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_typeEnumMessageMap::element_type::getStringForKey (void) const {
+C_String GGS_typeEnumMessageMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -8888,8 +8888,8 @@ void routine_verifierCompatibiliteSignatures (C_Lexique & lexique_var_,
   }else if (((var_cas_signatureReference.reader_length ()) > (var_cas_signatureTestee.reader_length ())).isBuiltAndTrue ()) {
       var_cas_ouSignalerErreur.reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "one or more parameters missing")) ;
   }else{
-    GGS_L_signature::element_type * operand_62881 = var_cas_signatureReference.getFirstItem () ;
-    GGS_L_signature::element_type * operand_62969 = var_cas_signatureTestee.getFirstItem () ;
+    GGS_L_signature::element_type * operand_62881 = var_cas_signatureReference.firstObject () ;
+    GGS_L_signature::element_type * operand_62969 = var_cas_signatureTestee.firstObject () ;
     while ((operand_62881 != NULL) && (operand_62969 != NULL)) {
       macroValidPointer (operand_62881) ;
       macroValidPointer (operand_62969) ;
@@ -8897,8 +8897,8 @@ void routine_verifierCompatibiliteSignatures (C_Lexique & lexique_var_,
       if (((operand_62881->mFormalArgumentPassingMode) != (operand_62969->mFormalArgumentPassingMode)).isBuiltAndTrue ()) {
           var_cas_ouSignalerErreur.reader_location ().signalGGSSemanticError (lexique_var_, ((((operand_62969->mFormalArgumentPassingMode.reader_formalArgumentMessage ()) + (GGS_string (true, " is not compatible with ")))) + (operand_62969->mFormalArgumentPassingMode.reader_formalArgumentMessage ()))) ;
       }
-      operand_62881 = operand_62881->getNextItem () ;
-      operand_62969 = operand_62969->getNextItem () ;
+      operand_62881 = operand_62881->nextObject () ;
+      operand_62969 = operand_62969->nextObject () ;
     }
   }
 }
@@ -8941,7 +8941,7 @@ sint32 GGS_M_cli_options::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_cli_options::element_type::getStringForKey (void) const {
+C_String GGS_M_cli_options::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -9150,7 +9150,7 @@ sint32 GGS_M_optionComponents::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_optionComponents::element_type::getStringForKey (void) const {
+C_String GGS_M_optionComponents::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -9331,7 +9331,7 @@ sint32 GGS_M_semanticsComponents::element_type::compareKeys (void * inKey) const
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_semanticsComponents::element_type::getStringForKey (void) const {
+C_String GGS_M_semanticsComponents::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -9512,7 +9512,7 @@ sint32 GGS_M_grammarComponents::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_grammarComponents::element_type::getStringForKey (void) const {
+C_String GGS_M_grammarComponents::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;

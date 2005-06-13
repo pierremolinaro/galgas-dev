@@ -35,11 +35,11 @@
 static bool
 instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & inList) {
   bool use = false ;
-  GGS_tListeInstructionsLexicales::element_type * courant = inList.getFirstItem () ;
+  GGS_tListeInstructionsLexicales::element_type * courant = inList.firstObject () ;
   while ((courant != NULL) && ! use) {
     macroValidPointer (courant) ;
     use = courant->attributInstruction()->instruction__uses_loop_variable () ;
-    courant = courant->getNextItem () ;
+    courant = courant->nextObject () ;
   }
   return use ;
 }
@@ -49,11 +49,11 @@ instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & in
 static bool
 instructions_list_uses_loop_variable (const GGS_typeListeTestsEtInstructions & inList) {
   bool use = false ;
-  GGS_typeListeTestsEtInstructions::element_type * current = inList.getFirstItem () ;
+  GGS_typeListeTestsEtInstructions::element_type * current = inList.firstObject () ;
   while ((current != NULL) && ! use) {
     macroValidPointer (current) ;
     use = instructions_list_uses_loop_variable (current->attributListeInstructions) ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
   }
   return use ;
 }
@@ -64,11 +64,11 @@ static void
 generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inList,
                                     const C_String & inLexiqueName,
                                     AC_OutputStream & inCppFile) {
-  GGS_tListeInstructionsLexicales::element_type * courant = inList.getFirstItem () ;
+  GGS_tListeInstructionsLexicales::element_type * courant = inList.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     courant->attributInstruction()->generate_scanner_instruction (inLexiqueName, inCppFile) ;
-    courant = courant->getNextItem () ;
+    courant = courant->nextObject () ;
   }
 }
 
@@ -79,7 +79,7 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
                      const C_String & inLexiqueName,
                      AC_OutputStream & inCppFile) {
   bool premier = true ;
-  GGS_typeListeTestsEtInstructions::element_type * courant = inList.getFirstItem () ;
+  GGS_typeListeTestsEtInstructions::element_type * courant = inList.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     if (premier) {
@@ -88,8 +88,8 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
       inCppFile << "}else " ;
     }
     inCppFile << "if (" ;
-    macroValidPointer (courant->attributListeConditions.getFirstItem ()) ;
-    GGS_typeListeConditionsLexicales::element_type * cond = courant->attributListeConditions.getFirstItem () ;
+    macroValidPointer (courant->attributListeConditions.firstObject ()) ;
+    GGS_typeListeConditionsLexicales::element_type * cond = courant->attributListeConditions.firstObject () ;
     bool premiereCondition = true ;
     while (cond != NULL) {
       macroValidPointer (cond) ;
@@ -99,13 +99,13 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
         inCppFile << " ||\n    " ;
       }
       cond->attributCondition()->generateLexicalCondition (inCppFile) ;
-      cond = cond->getNextItem () ;
+      cond = cond->nextObject () ;
     }
     inCppFile << ") {\n" ;
     inCppFile.incIndentation (+2) ;
     generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inCppFile) ;
     inCppFile.incIndentation (-2) ;
-    courant = courant->getNextItem () ;
+    courant = courant->nextObject () ;
   }
 }
 
@@ -116,9 +116,9 @@ engendrerDeclarationAttributInterne (GGS_typeLexicalAttributesMap::element_type 
                                      AC_OutputStream & H_file) {
   if (p != NULL) {
     macroValidPointer (p) ;
-    engendrerDeclarationAttributInterne (p->getInfPtr (), H_file) ;
+    engendrerDeclarationAttributInterne (p->infObject (), H_file) ;
     p->mInfo.attributType()->generateAttributeDeclaration (p->mKey, H_file) ;
-    engendrerDeclarationAttributInterne (p->getSupPtr (), H_file) ;
+    engendrerDeclarationAttributInterne (p->supObject (), H_file) ;
   }
 }
 
@@ -127,7 +127,7 @@ engendrerDeclarationAttributInterne (GGS_typeLexicalAttributesMap::element_type 
 static void
 generateAttributeDeclaration (const GGS_typeLexicalAttributesMap & inMap,
                               AC_OutputStream & H_file) {
-  engendrerDeclarationAttributInterne (inMap.getRoot (), H_file) ;
+  engendrerDeclarationAttributInterne (inMap.rootObject (), H_file) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -145,8 +145,8 @@ static sint32 compareEntries (const cTableEntry & inEntry1,
                               const cTableEntry & inEntry2) {
   sint32 result = inEntry1.mEntryStringLength - inEntry2.mEntryStringLength ;
   if (result == 0) {
-    result = ::strcmp (inEntry1.mEntryString.getStringPtr (),
-                       inEntry2.mEntryString.getStringPtr ()) ;
+    result = ::strcmp (inEntry1.mEntryString.cString (),
+                       inEntry2.mEntryString.cString ()) ;
   }
   return result ;
 }
@@ -160,16 +160,16 @@ generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
 //--- Create entries array
   const sint32 entriesCount = inMap.count () ;
   TC_UniqueArray <cTableEntry> entriesArray (entriesCount COMMA_HERE) ;
-  GGS_typeTableMotsReserves::element_type * p = inMap.getFirstItem () ;
+  GGS_typeTableMotsReserves::element_type * p = inMap.firstObject () ;
   sint32 index = 0 ;
   while (p != NULL) {
     macroValidPointer (p) ;
     cTableEntry e ;
     e.mEntryString = p->mKey ;
-    e.mEntryStringLength = p->mKey.getLength () ;
+    e.mEntryStringLength = p->mKey.length () ;
     e.mTokenCode = p->mInfo.attributNomTerminal ;
     entriesArray.addObject (e) ;
-    p = p->getNextItem () ;
+    p = p->nextObject () ;
     index ++ ;
   }
 //--- Order the array :
@@ -231,9 +231,9 @@ internalGenerateTerminalSymbolsTable (GGS_typeTableTablesDeMotsReserves::element
                                       AC_OutputStream & inCppFile) {
   if (p != NULL) {
     macroValidPointer (p) ;
-    internalGenerateTerminalSymbolsTable (p->getInfPtr (), inLexiqueName, inCppFile) ;
+    internalGenerateTerminalSymbolsTable (p->infObject (), inLexiqueName, inCppFile) ;
     generateKeyWordTableImplementation (p->mInfo.attributSimpleTable, inLexiqueName, p->mKey, inCppFile) ;
-    internalGenerateTerminalSymbolsTable (p->getSupPtr (), inLexiqueName, inCppFile) ;
+    internalGenerateTerminalSymbolsTable (p->supObject (), inLexiqueName, inCppFile) ;
   }
 }
 
@@ -243,7 +243,7 @@ static void
 generateTerminalSymbolsTable (const GGS_typeTableTablesDeMotsReserves & inMap,
                               const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) {
-  internalGenerateTerminalSymbolsTable (inMap.getRoot (), inLexiqueName, inCppFile) ;
+  internalGenerateTerminalSymbolsTable (inMap.rootObject (), inLexiqueName, inCppFile) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -279,9 +279,9 @@ internalGenerateTerminalSymbolsTableDeclaration (GGS_typeTableTablesDeMotsReserv
                                                  AC_OutputStream & H_file) {
   if (p != NULL) {
     macroValidPointer (p) ;
-    internalGenerateTerminalSymbolsTableDeclaration (p->getInfPtr (), inLexiqueName, H_file) ;
+    internalGenerateTerminalSymbolsTableDeclaration (p->infObject (), inLexiqueName, H_file) ;
     generateKeyWordTableDeclaration (p->mInfo.attributSimpleTable, inLexiqueName, p->mKey, H_file) ;
-    internalGenerateTerminalSymbolsTableDeclaration (p->getSupPtr (), inLexiqueName, H_file) ;
+    internalGenerateTerminalSymbolsTableDeclaration (p->supObject (), inLexiqueName, H_file) ;
   }
 }
 
@@ -290,7 +290,7 @@ internalGenerateTerminalSymbolsTableDeclaration (GGS_typeTableTablesDeMotsReserv
 static void generateTerminalSymbolsTableDeclaration (const GGS_typeTableTablesDeMotsReserves & inMap,
                                                      const C_String & inLexiqueName,
                                                      AC_OutputStream & H_file) {
-  internalGenerateTerminalSymbolsTableDeclaration (inMap.getRoot (), inLexiqueName, H_file) ;
+  internalGenerateTerminalSymbolsTableDeclaration (inMap.rootObject (), inLexiqueName, H_file) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -300,9 +300,9 @@ engendrerInitialisationAttributInterne (GGS_typeLexicalAttributesMap::element_ty
                                         AC_OutputStream & inCppFile) {
   if (p != NULL) {
     macroValidPointer (p) ;
-    engendrerInitialisationAttributInterne (p->getInfPtr (), inCppFile) ;
+    engendrerInitialisationAttributInterne (p->infObject (), inCppFile) ;
     p->mInfo.attributType()->generateAttributeInitialization (p->mKey, inCppFile) ;
-    engendrerInitialisationAttributInterne (p->getSupPtr (), inCppFile) ;
+    engendrerInitialisationAttributInterne (p->supObject (), inCppFile) ;
   }
 }
 
@@ -311,7 +311,7 @@ engendrerInitialisationAttributInterne (GGS_typeLexicalAttributesMap::element_ty
 static void
 generateAttributeInitialization (const GGS_typeLexicalAttributesMap & inMap,
                                  AC_OutputStream & inCppFile) {
-  engendrerInitialisationAttributInterne (inMap.getRoot (), inCppFile) ;
+  engendrerInitialisationAttributInterne (inMap.rootObject (), inCppFile) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -319,7 +319,7 @@ generateAttributeInitialization (const GGS_typeLexicalAttributesMap & inMap,
 void generateTerminalSymbolCppName (const C_String & inValue,
                                     AC_OutputStream & ioString) {
   static const char tab [17] = "0123456789ABCDEF" ;
-  const sint32 length = inValue.getLength () ;
+  const sint32 length = inValue.length () ;
   for (sint32 i=0 ; i<length ; i++) {
     const char c = inValue (i COMMA_HERE) ;
     if (isalnum (c)) {
@@ -337,28 +337,28 @@ void buildLexicalRulesFromList (C_Lexique & ioLexique,
                                 GGS_typeListeTestsEtInstructions & ioLexicalRulesList) {
 //--- First, find the longest string
   sint32 longestString = 0 ;
-  GGS_typeTableMotsReserves::element_type * currentEntry = keyWordsMap.getFirstItem () ;
+  GGS_typeTableMotsReserves::element_type * currentEntry = keyWordsMap.firstObject () ;
   while (currentEntry != NULL) {
     macroValidPointer (currentEntry) ;
-    const sint32 length = currentEntry->mKey.getLength () ;
+    const sint32 length = currentEntry->mKey.length () ;
     if (longestString < length) {
       longestString = length ;
     }
-    currentEntry = currentEntry->getNextItem () ;
+    currentEntry = currentEntry->nextObject () ;
   }
 //--- Analyse strings from longest ones
   for (sint32 length=longestString ; length>0 ; length--) {
-    currentEntry = keyWordsMap.getFirstItem () ;
+    currentEntry = keyWordsMap.firstObject () ;
     while (currentEntry != NULL) {
       macroValidPointer (currentEntry) ;
-      const sint32 currentLength = currentEntry->mKey.getLength () ;
+      const sint32 currentLength = currentEntry->mKey.length () ;
       if (length == currentLength) {
         ::routine_appendToLexicalInstructionList (ioLexique,
                                           ioLexicalRulesList,
                                           currentEntry->mKey,
                                           currentEntry->mInfo.attributNomTerminal) ;
       }
-      currentEntry = currentEntry->getNextItem () ;
+      currentEntry = currentEntry->nextObject () ;
     }
   }
 }
@@ -383,7 +383,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile << "  while (mCurrentTokenCode < 0) {\n" ;
   inCppFile.incIndentation (+4) ;
-  inCppFile << "mCurrentTokenStartLocation = getCurrentLocation () ;\n"
+  inCppFile << "mCurrentTokenStartLocation = currentLocation () ;\n"
               "try{\n" ;
   inCppFile.incIndentation (+2) ;
   generateScannerCode (programme_principal, inLexiqueClassName, inCppFile) ;
@@ -428,11 +428,11 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                     "#include <string.h>\n\n"
                     "#include \"" << inLexiqueClassName << ".h\"\n\n" ;
 
-  GGS_typeListeInclusions::element_type * courant = liste_des_inclusions.getFirstItem () ;
+  GGS_typeListeInclusions::element_type * courant = liste_des_inclusions.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     courant->attributInclusion()->engendrerInclusion (generatedZone2) ;
-    courant = courant->getNextItem () ;
+    courant = courant->nextObject () ;
   }
   generatedZone2 << "\n" ;
 
@@ -447,7 +447,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
 
 //---------------------------------------- Generate error message list
   generatedZone3.writeTitleComment ("Lexical error message list") ;
-  GGS_typeTableMessagesErreurs::element_type * currentMessage = inLexicalErrorsMessageMap.getFirstItem () ;
+  GGS_typeTableMessagesErreurs::element_type * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
   sint32 messageNumber = 0 ;
   while (currentMessage != NULL) {
     macroValidPointer (currentMessage) ;
@@ -455,7 +455,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                "static const char * gErrorMessage_" << messageNumber << " = " ;
     generatedZone3.writeCstringConstant (currentMessage->mInfo.mErrorMessage) ;
     generatedZone3 << " ;\n" ;
-    currentMessage = currentMessage->getNextItem () ;
+    currentMessage = currentMessage->nextObject () ;
     messageNumber ++ ;
   }
   generatedZone3 << "\n" ;
@@ -463,18 +463,18 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeTitleComment ("Syntax error messages") ;
   C_String errorMessageList ;
 
-  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.getFirstItem () ;
+  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     C_String constanteCname ;
     constanteCname << "gSyntaxErrorMessage_" ;
     generateTerminalSymbolCppName (currentTerminal->mKey, constanteCname) ;
     generatedZone3 << "//--- Syntax error message for terminal '$" << currentTerminal->mKey << "$' :\n"
                "static const char * " << constanteCname << " = " ;
-    generatedZone3.writeCstringConstant (currentTerminal->mInfo.mErrorMessage.getString ()) ;
+    generatedZone3.writeCstringConstant (currentTerminal->mInfo.mErrorMessage.string ()) ;
     generatedZone3 << " ;\n" ;
     errorMessageList << ",\n       gSyntaxErrorMessage_" ;
     generateTerminalSymbolCppName (currentTerminal->mKey, errorMessageList) ;
-    currentTerminal = currentTerminal->getNextItem () ;
+    currentTerminal = currentTerminal->nextObject () ;
   }
 
   generatedZone3.writeHyphenLineComment () ;
@@ -505,24 +505,24 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeHyphenLineComment () ;
   generatedZone3 <<  "const char * " << inLexiqueClassName << "::getStyleName (const sint32 inIndex) {\n"
 	            "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
-  GGS_M_styles::element_type * style = inStylesMap.getFirstItem () ;
+  GGS_M_styles::element_type * style = inStylesMap.firstObject () ;
   while (style != NULL) {
     macroValidPointer (style) ;
     generatedZone3.writeCstringConstant (style->mInfo.mTitle) ;
     generatedZone3 << ", " ;
-    style = style->getNextItem () ;
+    style = style->nextObject () ;
   }
   generatedZone3 << "NULL} ;\n"
              "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
 	           "} ;\n\n" ;
   generatedZone3.writeHyphenLineComment () ;
   generatedZone3 << "uint8 " << inLexiqueClassName << "::\n"
-             "getTerminalStyleIndex (const sint32 inTerminal) {\n"
+             "terminalStyleIndex (const sint32 inTerminal) {\n"
              "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.count () + 1) << "] = {0" ;
 
 //  generateTerminalSymbolStyleEntries (table_des_terminaux, inLexiqueClassName, generatedZone3) ;
 
-  currentTerminal = table_des_terminaux.getFirstItem () ;
+  currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     generatedZone3 << ",\n    "
             << currentTerminal->mInfo.mStyleIndex.getValue ()
@@ -531,7 +531,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
             << "_1_" ;
     generateTerminalSymbolCppName (currentTerminal->mKey, generatedZone3) ;
     generatedZone3 << " */" ;
-    currentTerminal = currentTerminal->getNextItem () ;
+    currentTerminal = currentTerminal->nextObject () ;
   }
 
 
@@ -556,7 +556,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
 static void
 generateExternArgumentForList (const GGS_typeListeArgumentsRoutExterne & inList,
                                AC_OutputStream & inCppFile) {
-  GGS_typeListeArgumentsRoutExterne::element_type * courant = inList.getFirstItem () ;
+  GGS_typeListeArgumentsRoutExterne::element_type * courant = inList.firstObject () ;
   bool premier = true ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
@@ -566,7 +566,7 @@ generateExternArgumentForList (const GGS_typeListeArgumentsRoutExterne & inList,
       inCppFile << ", " ;
     }
     courant->attributArgument()->generateExternArgument (inCppFile) ;
-    courant = courant->getNextItem () ;
+    courant = courant->nextObject () ;
   }
 }
 
@@ -588,7 +588,7 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 
 void cPtr_typeArgumentCaractereCourant::
 generateExternArgument (AC_OutputStream & inCppFile) const {
-  inCppFile << "getPreviousChar ()" ;
+  inCppFile << "previousChar ()" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -624,11 +624,11 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
 //--- Engendrer la liste des arguments (au moins 1)
   generateExternArgumentForList (attributListeArguments, inCppFile) ;
 //--- Engendrer la liste des messages d'erreurs (zŽro, un ou plusieurs)
-  GGS_typeListeMessagesErreur::element_type * courant = attributListeMessageErreur.getFirstItem () ;
+  GGS_typeListeMessagesErreur::element_type * courant = attributListeMessageErreur.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     inCppFile << ", gErrorMessage_" << courant->mErrorMessageIndex.getValue () ;
-    courant = courant->getNextItem () ;
+    courant = courant->nextObject () ;
   }
 //--- End of instruction
   inCppFile << ", * this) ;\n" ;
@@ -673,7 +673,7 @@ void cPtr_typeInstructionSiLexical::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) const {
   generateScannerCode (attributListeBranches, inLexiqueName, inCppFile) ;
-  if (attributBrancheSinon.getFirstItem () != NULL) {
+  if (attributBrancheSinon.firstObject () != NULL) {
     inCppFile << "}else{\n" ;
     inCppFile.incIndentation (+2) ;
     generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inCppFile) ;
@@ -714,7 +714,7 @@ void cPtr_typeInstructionEmettre::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) const {
   bool premier = true ;
-  GGS_typeListeRecherche::element_type * courant = attributListeRecherches.getFirstItem () ;
+  GGS_typeListeRecherche::element_type * courant = attributListeRecherches.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     if (! premier) {
@@ -729,7 +729,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
       inCppFile.incIndentation (-2) ;
       inCppFile << "}\n" ;
     }
-    courant = courant->getNextItem () ;
+    courant = courant->nextObject () ;
   }
   inCppFile << "if (mCurrentTokenCode == -1) {\n" ;
   inCppFile.incIndentation (+2) ;
@@ -787,7 +787,7 @@ void cPtr_typeConditionChaine::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
   inCppFile << "testForInputString (" ;
   inCppFile.writeCstringConstant (attributChaine) ;
-  inCppFile << ", " << attributChaine.getLength () ;
+  inCppFile << ", " << attributChaine.length () ;
   inCppFile << ")" ;
 }
 
@@ -823,7 +823,7 @@ engendrerInclusion (AC_OutputStream & inCppFile) {
 void cPtr_typeGalgas_lstring::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) {
-  inCppFile << "  " << nom << ".clearString () ;\n" ;
+  inCppFile << "  " << nom << ".clear () ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -891,14 +891,14 @@ generate_scanner_header_file (C_Lexique & inLexique,
             "// Terminal symbols enumeration\n"
             "  public : enum {" ;
   generatedZone3 <<  inLexiqueClassName << "_1_" ;
-  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.getFirstItem () ;
+  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     macroValidPointer (currentTerminal) ;    
     generatedZone3 << ",\n  " ;
     generatedZone3 << inLexiqueClassName ;
     generatedZone3 << "_1_" ;
     generateTerminalSymbolCppName (currentTerminal->mKey, generatedZone3) ;
-    currentTerminal = currentTerminal->getNextItem () ;
+    currentTerminal = currentTerminal->nextObject () ;
   }
   generatedZone3 << "} ;\n\n" ;
   generateTerminalSymbolsTableDeclaration (table_tables_mots_reserves, inLexiqueClassName, generatedZone3) ;
@@ -911,14 +911,14 @@ generate_scanner_header_file (C_Lexique & inLexique,
          << inLexiqueClassName
          << " (AC_galgas_io * inGalgasInputOutput) ;\n" ;
   generateAttributeDeclaration (table_attributs, generatedZone3) ;
-  generatedZone3 << "  public : virtual sint16 getTerminalVocabularyCount_ (void) const { return "
+  generatedZone3 << "  public : virtual sint16 terminalVocabularyCount (void) const { return "
            << table_des_terminaux.count ()
            << " ; }\n\n"
 //--- Styles definition 
               "  public : static sint32 getStylesCount (void) ;\n"
 	      "  public : static const char * getStyleName (const sint32 inIndex) ;\n"
               "//--- Virtual method called getting terminal style index\n"
-              "  public : virtual uint8 getTerminalStyleIndex (const sint32 inTerminal) ;\n"
+              "  public : virtual uint8 terminalStyleIndex (const sint32 inTerminal) ;\n"
 	      "} ;\n\n" ;
 //--- End of ".h" file
   generatedZone3.writeHyphenLineComment () ;
@@ -998,9 +998,9 @@ void generate_scanner (C_Lexique & inLexique,
                        GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
                        GGS_M_styles & inStylesMap) {
 //--- Get version string
-  const C_String GALGASversionString = inLexique.getGalgasIOptr ()->getCompilerVersion () ;
+  const C_String GALGASversionString = inLexique.galgas_IO_Ptr ()->getCompilerVersion () ;
 //--- Create GALGAS_OUTPUT directory
-  const C_String GALGAS_OUTPUT_directory = inLexique.getSourceFile ().getPath () + "/GALGAS_OUTPUT/" ;
+  const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT/" ;
   const bool ok = GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
   if (ok) {
   //--- Generate header file
@@ -1018,7 +1018,7 @@ void generate_scanner (C_Lexique & inLexique,
   }else{
     C_String errorMessage ;
     errorMessage << "cannot create directory " << GALGAS_OUTPUT_directory ;
-    inLexique.getGalgasIOptr ()->printFileErrorMessage (inLexique.getSourceFile (), errorMessage.getStringPtr ()) ;
+    inLexique.galgas_IO_Ptr ()->printFileErrorMessage (inLexique.sourceFileName (), errorMessage.cString ()) ;
   }
 }
 

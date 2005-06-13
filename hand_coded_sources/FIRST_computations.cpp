@@ -41,7 +41,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   C_BDD_Set2 pr (inDescriptor, inDescriptor) ;
   C_BDD_Set2 temp (inDescriptor, inDescriptor) ;
   C_BDD_Set2 left (inDescriptor, inDescriptor) ;
-  for (sint32 i=0 ; i<inProductionRules.getLength () ; i++) {
+  for (sint32 i=0 ; i<inProductionRules.length () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
     const sint32 n = p.aDerivation.count () ;
     if (n > 0) {

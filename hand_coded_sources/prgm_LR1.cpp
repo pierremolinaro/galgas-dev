@@ -30,12 +30,12 @@ void galgas_LR1_prgm::beforeParsing_ (void) {
   mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_empty () ;
   mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_empty () ;
   mOptionComponentsMap = GGS_M_optionComponents::constructor_empty () ;
-  mTerminalIO.mFileGenerationStartDir = mScanner_.getSourceFile ().getPath () + "/GALGAS_OUTPUT" ;
+  mTerminalIO.mFileGenerationStartDir = mScanner_.sourceFileName ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT" ;
   const bool ok = mTerminalIO.mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
     C_String errorMessage ;
     errorMessage << "cannot create directory '" << mTerminalIO.mFileGenerationStartDir << "'" ;
-    mScanner_.getGalgasIOptr ()->printFileErrorMessage (mScanner_.getSourceFile (), errorMessage.getStringPtr ()) ;
+    mScanner_.galgas_IO_Ptr ()->printFileErrorMessage (mScanner_.sourceFileName (), errorMessage.cString ()) ;
   }
 }
 
@@ -44,10 +44,10 @@ void galgas_LR1_prgm::beforeParsing_ (void) {
 void galgas_LR1_prgm::afterParsing_ (void) {
   C_BDD::markAndSweepUnusedNodes () ;
   printf ("%lu checked line%s, %lu preserved line%s, %lu generated line%s for %lu file%s.\n",
-          mScanner_.getCheckedLines (), (mScanner_.getCheckedLines () > 1) ? "s" : "",
-          mScanner_.getPreservedLines (), (mScanner_.getPreservedLines () > 1) ? "s" : "",
-          mScanner_.getGeneratedLines (), (mScanner_.getGeneratedLines () > 1) ? "s" : "",
-          mScanner_.getGeneratedFileCount (), (mScanner_.getGeneratedFileCount () > 1) ? "s" : "") ;
+          mScanner_.checkedLineCount (), (mScanner_.checkedLineCount () > 1) ? "s" : "",
+          mScanner_.preservedLineCount (), (mScanner_.preservedLineCount () > 1) ? "s" : "",
+          mScanner_.generatedLineCount (), (mScanner_.generatedLineCount () > 1) ? "s" : "",
+          mScanner_.generatedFileCount (), (mScanner_.generatedFileCount () > 1) ? "s" : "") ;
 }
 
 //---------------------------------------------------------------------------*

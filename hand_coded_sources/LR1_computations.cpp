@@ -479,7 +479,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
       outProductionsSet.addObject (productionRuleIndex) ;
       outTerminalArray.addObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
     }
-    if ((productionRuleIndex == (inProductionRules.getLength () - 1)) && (location == 1)) {
+    if ((productionRuleIndex == (inProductionRules.length () - 1)) && (location == 1)) {
       outAcceptCondition = true ;
     }
   }  
@@ -978,7 +978,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeTitleComment ("SLR states successors table") ;
 //--- Get successor count, by state
   TC_UniqueArray <sint32> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
-  const sint32 transitionsCount = inTransitionList.getLength () ;
+  const sint32 transitionsCount = inTransitionList.length () ;
   { for (sint32 i=0 ; i<transitionsCount ; i++) {
       if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
         stateSuccessorsCount (inTransitionList (i COMMA_HERE).mSourceState COMMA_HERE) ++ ;
@@ -1032,7 +1032,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
 
 //--- Write for every production, its left non terminal, ---------------------
 //    and the size of right string
-  const sint32 productionsCount = inProductionRules.getLength () ;
+  const sint32 productionsCount = inProductionRules.length () ;
   generatedZone3.writeTitleComment ("Production rules infos (left non terminal, size of right string)") ;
   generatedZone3 << "static const sint16 gProductionsTable ["
           << productionsCount
@@ -1048,11 +1048,11 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
+  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
     generatedZone3.writeTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
-    GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
+    GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (altForNonterminal != NULL) {
       macroValidPointer (altForNonterminal) ;
       generatedZone3 << "\nvoid " << inTargetFileName
@@ -1060,7 +1060,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
               << " (" << inLexiqueName << " & lexique_var_" ;
       const sint32 pureBNFleftNonterminalIndex = nonTerminal->mIndex ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.getFirstItem () ;
+      GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -1069,11 +1069,11 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
         if (first >= 0) {
           generatedZone3 << " parameter_" << numeroParametre ;
         }
-        parametre = parametre->getNextItem () ;
+        parametre = parametre->nextObject () ;
         numeroParametre ++ ;
       }
       generatedZone3 << ") {\n" ; 
-      generatedZone3 << "  switch (lexique_var_.getNextProductionIndex ()) {\n" ;
+      generatedZone3 << "  switch (lexique_var_.nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
         const sint32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
@@ -1092,25 +1092,25 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                  "    lexique_var_.internalBottomUpParserError (HERE) ;\n"
                  "  }\n"
                  "}\n\n" ;
-      altForNonterminal = altForNonterminal->getNextItem () ;
+      altForNonterminal = altForNonterminal->nextObject () ;
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
       generatedZone3.writeTitleComment ("Grammar start symbol implementation") ;
-      GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
+      GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (altForNonterminal != NULL) {
         macroValidPointer (altForNonterminal) ;
         generatedZone3 << "\nvoid " << inTargetFileName
                    << "::startParsing_" << altForNonterminal->mKey
                    << " (" << inLexiqueName << " & lexique_var_" ;
-        GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.getFirstItem () ;
+        GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
           generatedZone3 << " parameter_" << numeroParametre ;
-          parametre = parametre->getNextItem () ;
+          parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
         generatedZone3 << ") {\n" ;
@@ -1120,21 +1120,21 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                    "  if (ok && ! lexique_var_.parseOnlyFlagOn ()) {\n"
                    "    nt_" << nonTerminal->mKey << '_' << altForNonterminal->mKey
                 << " (lexique_var_" ;
-        parametre = altForNonterminal->mInfo.mFormalParametersList.getFirstItem () ;
+        parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
         numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
           generatedZone3 << ", parameter_" << numeroParametre ;
-          parametre = parametre->getNextItem () ;
+          parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
                    "  }\n"
                    "}\n\n" ;
-        altForNonterminal = altForNonterminal->getNextItem () ;
+        altForNonterminal = altForNonterminal->nextObject () ;
       }
     }
-    nonTerminal = nonTerminal->getNextItem () ;
+    nonTerminal = nonTerminal->nextObject () ;
   }
 //--- Implement non terminal from 'select' and 'repeat' instructions ---------
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
@@ -1154,7 +1154,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
         generatedZone3 << ' ' << inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
       }
       generatedZone3 << "\n"
-                 "  return (sint16) (lexique_var_.getNextProductionIndex () - "
+                 "  return (sint16) (lexique_var_.nextProductionIndex () - "
               << ((sint32)(first - 1))
               << ") ;\n"
                  "}\n\n" ;
@@ -1187,7 +1187,7 @@ static void compute_LR1_automation (const cPureBNFproductionsList & inProduction
   const sint32 vocabularyCount = inVocabulary.getAllSymbolsCount () ;
   c_LR1_items_set LR1_items_set ;
 //--- Add last production, that is the added production <> -> <start_symbol>
-  LR1_items_set.add_LR1_item (inProductionRules.getLength () - 1,
+  LR1_items_set.add_LR1_item (inProductionRules.length () - 1,
                               0,
                               inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
   LR1_items_set.close_LR1_items_set (inProductionRules,
@@ -1247,7 +1247,7 @@ LR1_computations (C_Lexique & inLexique,
                           inVocabularyDerivingToEmpty_Array,
                           transitionList) ;
   co << LR1_items_sets_collection.getStatesCount () << " states, "
-               << transitionList.getLength () << " transitions.\n" ;
+               << transitionList.length () << " transitions.\n" ;
 
 //--- Display automaton states
   inHTMLfile.outputRawData ("<p></p><table class=\"result\">"
@@ -1259,7 +1259,7 @@ LR1_computations (C_Lexique & inLexique,
   inHTMLfile.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
   inHTMLfile << "LR1 automaton transitions" ;
   inHTMLfile.outputRawData ("</td></tr>") ;
-  for (sint32 i=0 ; i<transitionList.getLength () ; i++) {
+  for (sint32 i=0 ; i<transitionList.length () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
     inHTMLfile << "S" << transitionList (i COMMA_HERE).mSourceState
               << " |- " ;
@@ -1286,7 +1286,7 @@ LR1_computations (C_Lexique & inLexique,
   inHTMLfile << "LR (1) decision table" ;
   inHTMLfile.outputRawData ("</td></tr>") ;
 //--- Shift actions
-  for (sint32 index=0 ; index<transitionList.getLength () ; index++) {
+  for (sint32 index=0 ; index<transitionList.length () ; index++) {
     if (transitionList (index COMMA_HERE).mAction < terminalSymbolsCount) {
       const sint32 sourceState = transitionList (index COMMA_HERE).mSourceState ;
       const sint32 targetState = transitionList (index COMMA_HERE).mTargetState ;
@@ -1361,7 +1361,7 @@ LR1_computations (C_Lexique & inLexique,
   }
   inHTMLfile << '\n' ;
 //--- Successors
-  for (sint32 tr=0 ; tr<transitionList.getLength () ; tr++) {
+  for (sint32 tr=0 ; tr<transitionList.length () ; tr++) {
     if (transitionList (tr COMMA_HERE).mAction >= terminalSymbolsCount) {
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
       inHTMLfile << "Successor [S"
@@ -1379,7 +1379,7 @@ LR1_computations (C_Lexique & inLexique,
   inHTMLfile << "LR1 automaton has "
             << LR1_items_sets_collection.getStatesCount ()
             << " states and "
-            << transitionList.getLength ()
+            << transitionList.length ()
             << " transitions.\n\n"
                "Analyze table has "
             << shiftActions << " shift actions, "

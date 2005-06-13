@@ -83,7 +83,7 @@ void galgas_LL1_prgm
   C_Timer timer ;
   try{
     if (mTerminalIO.versionModeOn ()) {
-      ::printf ("Reading '%s'\n", inSourceFileName_.getStringPtr ()) ;
+      ::printf ("Reading '%s'\n", inSourceFileName_.cString ()) ;
     }
     mScanner_.resetAndLoadSourceFromFile (inSourceFileName_) ;
     beforeParsing_ () ;
@@ -92,35 +92,35 @@ void galgas_LL1_prgm
       message << "the '"
                  "mLexiqueMapForUse"
                  "' program parameter has not been initialized" ;
-      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
     if (! mSemanticsComponentsMap.isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mSemanticsComponentsMap"
                  "' program parameter has not been initialized" ;
-      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
     if (! mSyntaxComponentsMap.isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mSyntaxComponentsMap"
                  "' program parameter has not been initialized" ;
-      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
     if (! mGrammarsComponentsMap.isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mGrammarsComponentsMap"
                  "' program parameter has not been initialized" ;
-      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
     if (! mOptionComponentsMap.isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mOptionComponentsMap"
                  "' program parameter has not been initialized" ;
-      throw C_Exception (message.getStringPtr (), 0, 0 COMMA_HERE) ;
+      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
     galgas_LL1_grammar grammar_ ;
     grammar_.startParsing_ (mScanner_,
@@ -132,7 +132,7 @@ void galgas_LL1_prgm
     if (mTerminalIO.getErrorTotalCount () == 0) {
       afterParsing_ () ;
     }
-    ::printf ("Analysis of '%s' completed. ", mScanner_.getSourceFile ().getFileNameWithSuffix ().getStringPtr ()) ;
+    ::printf ("Analysis of '%s' completed. ", mScanner_.sourceFileName ().lastPathComponent ().cString ()) ;
     switch (mTerminalIO.getErrorTotalCount ()) {
     case 0 :
       ::printf ("No error, ") ;
@@ -177,10 +177,10 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   IOparameters.mMaxWarningsCount = 100 ;
   TC_UniqueArray <C_String> sourceFilesArray ;
   #ifdef TARGET_API_MAC_CARBON
-    printf ("%s\n", IOparameters.mCompilerVersion.getStringPtr ()) ;
+    printf ("%s\n", IOparameters.mCompilerVersion.cString ()) ;
   #endif
   #ifdef COMPILE_FOR_WIN32
-    printf ("%s\n", IOparameters.mCompilerVersion.getStringPtr ()) ;
+    printf ("%s\n", IOparameters.mCompilerVersion.cString ()) ;
   #endif
   F_Analyze_CLI_Options (argc, argv,
                                "version 0.14.1 (LL(1) grammar)",

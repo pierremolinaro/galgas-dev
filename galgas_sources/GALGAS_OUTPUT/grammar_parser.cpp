@@ -146,7 +146,7 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
                 var_cas_syntaxComponentName.reader_location ().signalGGSSemanticError (lexique_var_, GGS_string (true, "this component does not use the previously declared lexique")) ;
             }
             var_cas_syntaxComponentsList.addAssign_operation (var_cas_importedNonterminalSymbolsMap, var_cas_importedProductionRulesList, var_cas_importedClassesNamesSet, var_cas_syntaxComponentName) ;
-            GGS_M_nonTerminalSymbolsForGrammar::element_type * operand_6800 = var_cas_importedNonterminalSymbolsMap.getFirstItem () ;
+            GGS_M_nonTerminalSymbolsForGrammar::element_type * operand_6800 = var_cas_importedNonterminalSymbolsMap.firstObject () ;
             while (operand_6800 != NULL) {
               macroValidPointer (operand_6800) ;
               if ((var_cas_nonterminalSymbolsMapForGrammar.reader_hasKey (operand_6800->mKey)).isBuiltAndTrue ()) {
@@ -156,7 +156,7 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
                                                 operand_6800->mKey,
                                                 & var_cas_altSignatureMap,
                                                 NULL) ;
-                GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_7143 = var_cas_altSignatureMap.getFirstItem () ;
+                GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_7143 = var_cas_altSignatureMap.firstObject () ;
                 while (operand_7143 != NULL) {
                   macroValidPointer (operand_7143) ;
                   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_temp ;
@@ -168,9 +168,9 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
                                                   & var_cas_importedAltSignature,
                                                   NULL) ;
                   ::routine_checkSignature_ForGrammarComponent (lexique_var_,  var_cas_importedAltSignature,  operand_7143->mInfo.mFormalParametersList,  operand_7143->mKey.reader_location ()) ;
-                  operand_7143 = operand_7143->getNextItem () ;
+                  operand_7143 = operand_7143->nextObject () ;
                 }
-                GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_7608 = operand_6800->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
+                GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_7608 = operand_6800->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
                 while (operand_7608 != NULL) {
                   macroValidPointer (operand_7608) ;
                   if (((operand_7608->mKey.reader_value ()) != (GGS_string (true, "parse"))).isBuiltAndTrue ()) {
@@ -180,7 +180,7 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
                                                     NULL,
                                                     NULL) ;
                   }
-                  operand_7608 = operand_7608->getNextItem () ;
+                  operand_7608 = operand_7608->nextObject () ;
                 }
               }else{
                 insertKey_M_nonTerminalSymbolsForGrammar (lexique_var_,
@@ -189,7 +189,7 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
                                                 operand_6800->mInfo.mNonterminalSymbolParametersMap,
                                                 NULL) ;
               }
-              operand_6800 = operand_6800->getNextItem () ;
+              operand_6800 = operand_6800->nextObject () ;
             }
             } break ;
           default :
@@ -243,7 +243,7 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
                                   var_cas_startSymbolName,
                                   & var_cas_startSymbolAltMap,
                                   & var_cas_startSymbolIndex) ;
-  GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_9068 = var_cas_startSymbolAltMap.getFirstItem () ;
+  GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_9068 = var_cas_startSymbolAltMap.firstObject () ;
   while (operand_9068 != NULL) {
     macroValidPointer (operand_9068) ;
     GGS_L_signature_ForGrammarComponent  var_cas_altMap ;
@@ -253,9 +253,9 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
                                     & var_cas_altMap,
                                     NULL) ;
     ::routine_checkSignature_ForGrammarComponent (lexique_var_,  operand_9068->mInfo.mFormalParametersList,  var_cas_altMap,  GGS_location (lexique_var_)) ;
-    operand_9068 = operand_9068->getNextItem () ;
+    operand_9068 = operand_9068->nextObject () ;
   }
-  GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_9353 = var_cas_grammarAltMap.getFirstItem () ;
+  GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_9353 = var_cas_grammarAltMap.firstObject () ;
   while (operand_9353 != NULL) {
     macroValidPointer (operand_9353) ;
     searchKey_M_nonterminalSymbolAltsForGrammar (lexique_var_,
@@ -263,7 +263,7 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
                                     operand_9353->mKey,
                                     NULL,
                                     NULL) ;
-    operand_9353 = operand_9353->getNextItem () ;
+    operand_9353 = operand_9353->nextObject () ;
   }
   GGS_location  var_cas_endOfSourceFile ;
   var_cas_endOfSourceFile = GGS_location (lexique_var_) ;

@@ -101,9 +101,9 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
   inHTMLfile.outputRawData ("<p><a name=\"identical_productions\"></a></p>") ;
   inHTMLfile.writeTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
-  for (sint32 i=0 ; i<productions.getLength () ; i++) {
+  for (sint32 i=0 ; i<productions.length () ; i++) {
     const cProduction & pi = productions (i COMMA_HERE) ;
-    for (sint32 j=i+1 ; j<productions.getLength () ; j++) {
+    for (sint32 j=i+1 ; j<productions.length () ; j++) {
       const cProduction & pj = productions (j COMMA_HERE) ;
       bool identiques = pi.aNumeroNonTerminalGauche == pj.aNumeroNonTerminalGauche ;
       if (identiques) {
@@ -164,11 +164,11 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
 
 //--- Engendrer les inclusions --------------------------------------------------------------
   generatedZone2.writeHyphenLineComment () ;
-  GGS_L_syntaxComponents_ForGrammar::element_type * component = inSyntaxComponentsList.getFirstItem () ;
+  GGS_L_syntaxComponents_ForGrammar::element_type * component = inSyntaxComponentsList.firstObject () ;
   while (component != NULL) {
     macroValidPointer (component) ;
     generatedZone2 << "#include \"" << component->mSyntaxComponentName << ".h\"\n" ;
-    component = component->getNextItem () ;
+    component = component->nextObject () ;
   }
   generatedZone2 << '\n' ;
 
@@ -176,7 +176,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   generatedZone3.writeHyphenLineComment () ;
   generatedZone3 << "class " << inTargetFileName ;
-  component = inSyntaxComponentsList.getFirstItem () ;
+  component = inSyntaxComponentsList.firstObject () ;
 //--- Liens d'hŽritage
   bool premier = true ;
   while (component != NULL) {
@@ -188,42 +188,42 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
       generatedZone3 << ",\n                                " ;
     }
     generatedZone3 << " public " << component->mSyntaxComponentName ;
-    component = component->getNextItem () ;
+    component = component->nextObject () ;
   }
   generatedZone3 << " {\n" ;
 //--- declaration des non-terminaux de la grammaire d'origine
-  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.getFirstItem () ;
+  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
-    GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.getFirstItem () ;
+    GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
       generatedZone3 << "  public : virtual void "
                "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
             << " (" << inLexiqueName << " &" ;
-      GGS_L_signature_ForGrammarComponent::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.getFirstItem () ;
+      GGS_L_signature_ForGrammarComponent::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
         generatedZone3 << ",\n                                " ;
         generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
-        parametre = parametre->getNextItem () ;
+        parametre = parametre->nextObject () ;
       }
       generatedZone3 << ") ;\n" ; 
       if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
         generatedZone3 << "  public : void startParsing_" << currentAltForNonTerminal->mKey 
               << " (" << inLexiqueName << " &" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.getFirstItem () ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
-          parametre = parametre->getNextItem () ;
+          parametre = parametre->nextObject () ;
         }
         generatedZone3 << ") ;\n" ;
       }
-      currentAltForNonTerminal = currentAltForNonTerminal->getNextItem () ;
+      currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
     }
   //--- Next non terminal
-    nonTerminal = nonTerminal->getNextItem () ;
+    nonTerminal = nonTerminal->nextObject () ;
   }
 //--- declaration des non-terminaux pour les instructions choix et repeter
   for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
@@ -254,12 +254,12 @@ static void
 fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList,
                             cInfo & inInfo,
                             C_Lexique & inLexique) {
-  GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.getFirstItem () ;
+  GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
     currentInstruction->mInstruction ()->fixInfos (inInfo, inLexique) ;
 
-    currentInstruction = currentInstruction->getNextItem () ;
+    currentInstruction = currentInstruction->nextObject () ;
   }
 }
 
@@ -268,13 +268,13 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
 void cPtr_T_repeatInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_Lexique & inLexique) {
-  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.getFirstItem () ;
+  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     fixInfoForInstructionsList (currentBranch->mInstructionsList,
                                 inInfo,
                                 inLexique) ;
-    currentBranch = currentBranch->getNextItem () ;
+    currentBranch = currentBranch->nextObject () ;
   }
 }
 
@@ -283,13 +283,13 @@ fixInfos (cInfo & inInfo,
 void cPtr_T_selectInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_Lexique & inLexique) {
-  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.getFirstItem () ;
+  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     fixInfoForInstructionsList (currentBranch->mInstructionsList,
                                 inInfo,
                                 inLexique) ;
-    currentBranch = currentBranch->getNextItem () ;
+    currentBranch = currentBranch->nextObject () ;
   }
 }
 
@@ -440,10 +440,10 @@ analyzeGrammar (C_Lexique & inLexique,
   cInfo symbolsInfo ;
   symbolsInfo.mTerminalSymbolMap = ioTerminalSymbolMap ;
   symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
-  GGS_L_syntaxComponents_ForGrammar::element_type * currentSyntaxComponent = inSyntaxComponentsList.getFirstItem () ;
+  GGS_L_syntaxComponents_ForGrammar::element_type * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
   while (currentSyntaxComponent != NULL) {
     macroValidPointer (currentSyntaxComponent) ;
-    GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentSyntaxComponent->mProductionRulesList.getFirstItem () ;
+    GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
       GGS_luint index ;
@@ -455,19 +455,19 @@ analyzeGrammar (C_Lexique & inLexique,
                                   symbolsInfo,
                                   inLexique) ;
     //--- Next rule
-      currentRule = currentRule->getNextItem () ;
+      currentRule = currentRule->nextObject () ;
     }
-    currentSyntaxComponent = currentSyntaxComponent->getNextItem () ;
+    currentSyntaxComponent = currentSyntaxComponent->nextObject () ;
   }
 
 //--- Create GALGAS_OUTPUT directory
-  const C_String GALGAS_OUTPUT_directory = inLexique.getSourceFile ().getPath () + "/GALGAS_OUTPUT/" ;
+  const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT/" ;
   GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
 
 //--- Depending of grammar class, fix operations to perform
   typedef enum {kDefaultBehavior, kLL1grammar, kSLRgrammar, kLR1grammar, kGrammarClassError} enumGrammarClass ;
   enumGrammarClass grammarClass = kGrammarClassError ;
-  if (inGrammarClass.getLength () == 0) { // Default behavior
+  if (inGrammarClass.length () == 0) { // Default behavior
     grammarClass = kDefaultBehavior ;
   }else if (inGrammarClass.compareString ("LL1") == 0) { // Force LL (1) grammar
     grammarClass = kLL1grammar ;
@@ -487,7 +487,7 @@ analyzeGrammar (C_Lexique & inLexique,
   bool optionExists = false ;
   const char * galgas_cli_component = "galgas_cli_options" ;
   const char * outputHTMLgrammarFile = "outputHTMLgrammarFile" ;
-  const bool outputHTMLfile = inLexique.getGalgasIOptr ()->getBoolOptionValueFromKeys (galgas_cli_component,
+  const bool outputHTMLfile = inLexique.galgas_IO_Ptr ()->boolOptionValueFromKeys (galgas_cli_component,
                                                                        outputHTMLgrammarFile,
                                                                        & optionExists) ;
   if (! optionExists) {
@@ -497,14 +497,14 @@ analyzeGrammar (C_Lexique & inLexique,
   }
 //--- Create "style.css" file if it does not exist
   if (outputHTMLfile) {
-    createStyleFile (inLexique.getSourceFile ().getPath (), "style.css") ;
+    createStyleFile (inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css") ;
   }
 
 //--- If 'HTMLfileName' is the empty string, no file is created
   C_String s ;
   s << "'" << inTargetFileName << "' grammar" ;
   const C_String HTMLfileName = outputHTMLfile
-    ? (inLexique.getSourceFile ().getPath () + "/" + inTargetFileName + ".html")
+    ? (inLexique.sourceFileName ().stringByDeletingLastPathComponent () + "/" + inTargetFileName + ".html")
     : C_String () ;
 //--- Create output HTML file (if file is the empty string, no file is created)
   C_HTML_FileWrite HTMLfile (HTMLfileName,
@@ -558,7 +558,7 @@ analyzeGrammar (C_Lexique & inLexique,
     HTMLfile.outputRawData ("<p></p>") ;
     HTMLfile.writeTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (HTMLfile, vocabulary, pureBNFproductions) ;
-    co << pureBNFproductions.getLength () << " productions.\n" ;
+    co << pureBNFproductions.length () << " productions.\n" ;
     co.flush () ;
   }
 
@@ -752,7 +752,7 @@ analyzeGrammar (C_Lexique & inLexique,
     C_String s ; s << "ENDING ON ERROR, STEP" << ((uint16) errorFlag) ;
     HTMLfile.writeTitleComment (s, "title") ;
     C_String errorMessage  ;
-    if (HTMLfileName.getLength () > 0) {
+    if (HTMLfileName.length () > 0) {
       errorMessage << "errors have been raised when analyzing the grammar: see file"
                       " '"
                    << HTMLfileName
@@ -777,7 +777,7 @@ analyzeGrammar (C_Lexique & inLexique,
     HTMLfile.writeTitleComment (s, "title") ;
     C_String warningMessage  ;
     warningMessage << "warnings have been raised when analyzing the grammar: " ;
-    if (HTMLfileName.getLength () > 0) {
+    if (HTMLfileName.length () > 0) {
       warningMessage << "see file '" << HTMLfileName << "'" ;
     }else{
       warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName << ".html' file" ;

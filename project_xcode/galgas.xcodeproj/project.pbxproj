@@ -526,7 +526,6 @@
 		CF825AED08536F5D0077AEAF /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CF825AEE08536F610077AEAF /* AC_OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */; };
 		CF825AEF08536F6A0077AEAF /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
-		CF893FAB058DC31100313418 /* galgasLL1 in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgasLL1 */; };
 		CF93AC4705B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF93AC4805B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
@@ -540,7 +539,12 @@
 		CFA7ADD7058DB5DF009AC1FE /* C_galgas_null_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86361A0586289600B23462 /* C_galgas_null_io.cpp */; };
 		CFA7ADD8058DB5E0009AC1FE /* C_galgas_null_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CF86361B0586289600B23462 /* C_galgas_null_io.h */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
-		CFD6CC7308519BAC0000FA6E /* galgasLL1Debug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgasLL1Debug */; };
+		CFCF14FB085C4101003AD24E /* galgasLL1Debug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgasLL1Debug */; };
+		CFCF14FC085C410E003AD24E /* galgasLL1 in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgasLL1 */; };
+		CFCF14FD085C410F003AD24E /* galgasLR1 in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CD1508519D4C0000FA6E /* galgasLR1 */; };
+		CFCF14FE085C410F003AD24E /* galgasLR1Debug in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CDB708519DD00000FA6E /* galgasLR1Debug */; };
+		CFCF14FF085C4110003AD24E /* galgasSLR in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CE5708519E080000FA6E /* galgasSLR */; };
+		CFCF1500085C4111003AD24E /* galgasSLRDebug in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CEF908519E740000FA6E /* galgasSLRDebug */; };
 		CFD6CC7E08519D4C0000FA6E /* C_galgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0B905877B62000D2F8C /* C_galgas_bdd.h */; };
 		CFD6CC7F08519D4C0000FA6E /* C_galgas_stringset.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0BC05877B62000D2F8C /* C_galgas_stringset.h */; };
 		CFD6CC8008519D4C0000FA6E /* C_galgas_terminal_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CF86365105862B0600B23462 /* C_galgas_terminal_io.h */; };
@@ -939,10 +943,6 @@
 		CFD6CEF308519E740000FA6E /* setof_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31840F0774BF7F0045D262 /* setof_generation.cpp */; };
 		CFD6CEF408519E740000FA6E /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CFD6CEF508519E740000FA6E /* galgas_scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */; };
-		CFD6CF0708519EF80000FA6E /* galgasSLR in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CE5708519E080000FA6E /* galgasSLR */; };
-		CFD6CF0808519EF90000FA6E /* galgasSLRDebug in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CEF908519E740000FA6E /* galgasSLRDebug */; };
-		CFD6CF0908519F530000FA6E /* galgasLR1 in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CD1508519D4C0000FA6E /* galgasLR1 */; };
-		CFD6CF0A08519F550000FA6E /* galgasLR1Debug in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CDB708519DD00000FA6E /* galgasLR1Debug */; };
 		CFD6CF0D0851A09B0000FA6E /* ggs_LR1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD6CF0B0851A09B0000FA6E /* ggs_LR1_compile_component.cpp */; };
 		CFD6CF0E0851A09B0000FA6E /* ggs_LR1_compile_component.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD6CF0C0851A09B0000FA6E /* ggs_LR1_compile_component.h */; };
 		CFD6CF0F0851A09B0000FA6E /* ggs_LR1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD6CF0B0851A09B0000FA6E /* ggs_LR1_compile_component.cpp */; };
@@ -1058,47 +1058,47 @@
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		CFD6CC7408519BD10000FA6E /* PBXContainerItemProxy */ = {
+		CFCF1502085C4270003AD24E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CF7A1402058CEFE2007126C1;
-			remoteInfo = "GALGAS tool LL1 debug";
+			remoteGlobalIDString = 8DD76F620486A84900D96B5E;
+			remoteInfo = "GALGAS tool LL1";
 		};
-		CFD6CEFF08519EBE0000FA6E /* PBXContainerItemProxy */ = {
+		CFCF1504085C4270003AD24E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CFD6CC7B08519D4C0000FA6E;
 			remoteInfo = "GALGAS tool LR1";
 		};
-		CFD6CF0108519EBE0000FA6E /* PBXContainerItemProxy */ = {
+		CFCF1506085C4270003AD24E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CFD6CD2008519DD00000FA6E;
 			remoteInfo = "GALGAS tool LR1 debug";
 		};
-		CFD6CF0308519EBE0000FA6E /* PBXContainerItemProxy */ = {
+		CFCF1508085C4270003AD24E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CFD6CDBD08519E080000FA6E;
 			remoteInfo = "GALGAS tool SLR";
 		};
-		CFD6CF0508519EBE0000FA6E /* PBXContainerItemProxy */ = {
+		CFCF150A085C4270003AD24E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CFD6CE6208519E740000FA6E;
 			remoteInfo = "GALGAS tool SLR debug";
 		};
-		FC7DE10506ECE95600815CAD /* PBXContainerItemProxy */ = {
+		CFD6CC7408519BD10000FA6E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DD76F620486A84900D96B5E;
-			remoteInfo = Tool;
+			remoteGlobalIDString = CF7A1402058CEFE2007126C1;
+			remoteInfo = "GALGAS tool LL1 debug";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -2419,12 +2419,12 @@
 				WRAPPER_EXTENSION = app;
 			};
 			dependencies = (
-				FC7DE10606ECE95600815CAD /* PBXTargetDependency */,
+				CFCF1503085C4270003AD24E /* PBXTargetDependency */,
 				CFD6CC7508519BD10000FA6E /* PBXTargetDependency */,
-				CFD6CF0008519EBE0000FA6E /* PBXTargetDependency */,
-				CFD6CF0208519EBE0000FA6E /* PBXTargetDependency */,
-				CFD6CF0408519EBE0000FA6E /* PBXTargetDependency */,
-				CFD6CF0608519EBE0000FA6E /* PBXTargetDependency */,
+				CFCF1505085C4270003AD24E /* PBXTargetDependency */,
+				CFCF1507085C4270003AD24E /* PBXTargetDependency */,
+				CFCF1509085C4270003AD24E /* PBXTargetDependency */,
+				CFCF150B085C4270003AD24E /* PBXTargetDependency */,
 			);
 			name = "GALGAS Cocoa";
 			productInstallPath = "$(HOME)/Applications";
@@ -2719,18 +2719,18 @@
 				CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */,
 				CF9BDF6E0585C5C900FC7DD7 /* galgasDocuments.icns in Resources */,
 				CFC30F93058A225E003D0386 /* Info.plist in Resources */,
-				CF893FAB058DC31100313418 /* galgasLL1 in Resources */,
-				CFD6CC7308519BAC0000FA6E /* galgasLL1Debug in Resources */,
-				CFD6CF0708519EF80000FA6E /* galgasSLR in Resources */,
-				CFD6CF0808519EF90000FA6E /* galgasSLRDebug in Resources */,
-				CFD6CF0908519F530000FA6E /* galgasLR1 in Resources */,
-				CFD6CF0A08519F550000FA6E /* galgasLR1Debug in Resources */,
 				CF82597D08536A130077AEAF /* I_Action.tiff in Resources */,
 				CF82597E08536A130077AEAF /* I_SaveAs.tiff in Resources */,
 				CF82597F08536A130077AEAF /* I_Stop.tiff in Resources */,
 				CF82598008536A130077AEAF /* I_Window.png in Resources */,
 				CF82599008536A1F0077AEAF /* MainMenu.nib in Resources */,
 				CF82599108536A1F0077AEAF /* OC_GGS_Document.nib in Resources */,
+				CFCF14FB085C4101003AD24E /* galgasLL1Debug in Resources */,
+				CFCF14FC085C410E003AD24E /* galgasLL1 in Resources */,
+				CFCF14FD085C410F003AD24E /* galgasLR1 in Resources */,
+				CFCF14FE085C410F003AD24E /* galgasLR1Debug in Resources */,
+				CFCF14FF085C4110003AD24E /* galgasSLR in Resources */,
+				CFCF1500085C4111003AD24E /* galgasSLRDebug in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3420,35 +3420,35 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CFCF1503085C4270003AD24E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DD76F620486A84900D96B5E /* GALGAS tool LL1 */;
+			targetProxy = CFCF1502085C4270003AD24E /* PBXContainerItemProxy */;
+		};
+		CFCF1505085C4270003AD24E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFD6CC7B08519D4C0000FA6E /* GALGAS tool LR1 */;
+			targetProxy = CFCF1504085C4270003AD24E /* PBXContainerItemProxy */;
+		};
+		CFCF1507085C4270003AD24E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFD6CD2008519DD00000FA6E /* GALGAS tool LR1 debug */;
+			targetProxy = CFCF1506085C4270003AD24E /* PBXContainerItemProxy */;
+		};
+		CFCF1509085C4270003AD24E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFD6CDBD08519E080000FA6E /* GALGAS tool SLR */;
+			targetProxy = CFCF1508085C4270003AD24E /* PBXContainerItemProxy */;
+		};
+		CFCF150B085C4270003AD24E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFD6CE6208519E740000FA6E /* GALGAS tool SLR debug */;
+			targetProxy = CFCF150A085C4270003AD24E /* PBXContainerItemProxy */;
+		};
 		CFD6CC7508519BD10000FA6E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 debug */;
 			targetProxy = CFD6CC7408519BD10000FA6E /* PBXContainerItemProxy */;
-		};
-		CFD6CF0008519EBE0000FA6E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFD6CC7B08519D4C0000FA6E /* GALGAS tool LR1 */;
-			targetProxy = CFD6CEFF08519EBE0000FA6E /* PBXContainerItemProxy */;
-		};
-		CFD6CF0208519EBE0000FA6E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFD6CD2008519DD00000FA6E /* GALGAS tool LR1 debug */;
-			targetProxy = CFD6CF0108519EBE0000FA6E /* PBXContainerItemProxy */;
-		};
-		CFD6CF0408519EBE0000FA6E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFD6CDBD08519E080000FA6E /* GALGAS tool SLR */;
-			targetProxy = CFD6CF0308519EBE0000FA6E /* PBXContainerItemProxy */;
-		};
-		CFD6CF0608519EBE0000FA6E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFD6CE6208519E740000FA6E /* GALGAS tool SLR debug */;
-			targetProxy = CFD6CF0508519EBE0000FA6E /* PBXContainerItemProxy */;
-		};
-		FC7DE10606ECE95600815CAD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8DD76F620486A84900D96B5E /* GALGAS tool LL1 */;
-			targetProxy = FC7DE10506ECE95600815CAD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

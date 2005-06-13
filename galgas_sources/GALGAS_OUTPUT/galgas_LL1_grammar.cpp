@@ -3482,7 +3482,7 @@ void galgas_LL1_grammar::nt_galgas_component_ (galgas_scanner & lexique_var_,
                                 GGS_M_syntaxComponents & parameter_3,
                                 GGS_M_grammarComponents & parameter_4,
                                 GGS_M_optionComponents & parameter_5) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_galgas_component_cli_options_parser_72_24_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5) ;
@@ -3527,7 +3527,7 @@ void galgas_LL1_grammar::nt_galgas_component_ (galgas_scanner & lexique_var_,
 
 void galgas_LL1_grammar::nt_galgas_component_importLexique (galgas_scanner & lexique_var_,
                                 GGS_M_lexiqueComponents & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_galgas_component_cli_options_parser_72_24_importLexique (lexique_var_, parameter_1) ;
     break ;
@@ -3563,7 +3563,7 @@ void galgas_LL1_grammar::nt_galgas_component_importLexique (galgas_scanner & lex
 
 void galgas_LL1_grammar::nt_galgas_component_importSyntax (galgas_scanner & lexique_var_,
                                 GGS_M_syntaxComponents & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_galgas_component_cli_options_parser_72_24_importSyntax (lexique_var_, parameter_1) ;
     break ;
@@ -3599,7 +3599,7 @@ void galgas_LL1_grammar::nt_galgas_component_importSyntax (galgas_scanner & lexi
 
 void galgas_LL1_grammar::nt_galgas_component_importSemantics (galgas_scanner & lexique_var_,
                                 GGS_M_semanticsComponents & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_galgas_component_cli_options_parser_72_24_importSemantics (lexique_var_, parameter_1) ;
     break ;
@@ -3635,7 +3635,7 @@ void galgas_LL1_grammar::nt_galgas_component_importSemantics (galgas_scanner & l
 
 void galgas_LL1_grammar::nt_galgas_component_importGrammarForSemantics (galgas_scanner & lexique_var_,
                                 GGS_M_grammarComponents & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_galgas_component_cli_options_parser_72_24_importGrammarForSemantics (lexique_var_, parameter_1) ;
     break ;
@@ -3671,7 +3671,7 @@ void galgas_LL1_grammar::nt_galgas_component_importGrammarForSemantics (galgas_s
 
 void galgas_LL1_grammar::nt_galgas_component_importOptions (galgas_scanner & lexique_var_,
                                 GGS_M_optionComponents & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_galgas_component_cli_options_parser_72_24_importOptions (lexique_var_, parameter_1) ;
     break ;
@@ -3869,7 +3869,7 @@ void galgas_LL1_grammar::nt_lexical_rule_ (galgas_scanner & lexique_var_,
                                 GGS_typeTableMessagesErreurs & parameter_3,
                                 GGS_typeLexicalAttributesMap & parameter_4,
                                 GGS_typeTableTablesDeMotsReserves & parameter_5) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_rule_scanner_parser_741_20_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5) ;
@@ -3885,7 +3885,7 @@ void galgas_LL1_grammar::nt_lexical_rule_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_lexical_rule_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_rule_scanner_parser_741_20_parse (lexique_var_) ;
     break ;
@@ -3954,7 +3954,7 @@ void galgas_LL1_grammar::nt_lexical_default_branch_ (galgas_scanner & lexique_va
                                 GGS_typeTableMessagesErreurs & parameter_3,
                                 GGS_typeLexicalAttributesMap & parameter_4,
                                 GGS_typeTableTablesDeMotsReserves & parameter_5) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_default_branch_scanner_parser_989_30_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5) ;
@@ -3970,7 +3970,7 @@ void galgas_LL1_grammar::nt_lexical_default_branch_ (galgas_scanner & lexique_va
 
 
 void galgas_LL1_grammar::nt_lexical_default_branch_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_default_branch_scanner_parser_989_30_parse (lexique_var_) ;
     break ;
@@ -4008,7 +4008,7 @@ void galgas_LL1_grammar::nt_lexical_component_inclusions_parse (galgas_scanner &
 
 void galgas_LL1_grammar::nt_lexical_component_inclusion_element_ (galgas_scanner & lexique_var_,
                                 GGS_typeInclusion & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_component_inclusion_element_scanner_parser_491_43_ (lexique_var_, parameter_1) ;
     break ;
@@ -4022,7 +4022,7 @@ void galgas_LL1_grammar::nt_lexical_component_inclusion_element_ (galgas_scanner
 
 
 void galgas_LL1_grammar::nt_lexical_component_inclusion_element_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_component_inclusion_element_scanner_parser_491_43_parse (lexique_var_) ;
     break ;
@@ -4060,7 +4060,7 @@ void galgas_LL1_grammar::nt_lexical_test_expression_parse (galgas_scanner & lexi
 
 void galgas_LL1_grammar::nt_lexical_test_term_ (galgas_scanner & lexique_var_,
                                 GGS_typeConditionLexicale & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_test_term_scanner_parser_705_25_ (lexique_var_, parameter_1) ;
     break ;
@@ -4074,7 +4074,7 @@ void galgas_LL1_grammar::nt_lexical_test_term_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_lexical_test_term_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_test_term_scanner_parser_705_25_parse (lexique_var_) ;
     break ;
@@ -4132,7 +4132,7 @@ void galgas_LL1_grammar::nt_lexical_parameters_non_empty_list_parse (galgas_scan
 void galgas_LL1_grammar::nt_lexical_error_messages_list_ (galgas_scanner & lexique_var_,
                                 GGS_typeListeMessagesErreur & parameter_1,
                                 GGS_typeTableMessagesErreurs & parameter_2) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_error_messages_list_scanner_parser_867_35_ (lexique_var_, parameter_1, parameter_2) ;
     break ;
@@ -4146,7 +4146,7 @@ void galgas_LL1_grammar::nt_lexical_error_messages_list_ (galgas_scanner & lexiq
 
 
 void galgas_LL1_grammar::nt_lexical_error_messages_list_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_error_messages_list_scanner_parser_867_35_parse (lexique_var_) ;
     break ;
@@ -4168,7 +4168,7 @@ void galgas_LL1_grammar::nt_lexical_error_messages_list_parse (galgas_scanner & 
 void galgas_LL1_grammar::nt_lexical_send_or_error_ (galgas_scanner & lexique_var_,
                                 GGS_typeEmissionParDefaut & parameter_1,
                                 GGS_typeTableMessagesErreurs & parameter_2) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_send_or_error_scanner_parser_1064_29_ (lexique_var_, parameter_1, parameter_2) ;
     break ;
@@ -4182,7 +4182,7 @@ void galgas_LL1_grammar::nt_lexical_send_or_error_ (galgas_scanner & lexique_var
 
 
 void galgas_LL1_grammar::nt_lexical_send_or_error_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_send_or_error_scanner_parser_1064_29_parse (lexique_var_) ;
     break ;
@@ -4204,7 +4204,7 @@ void galgas_LL1_grammar::nt_lexical_send_or_error_parse (galgas_scanner & lexiqu
 void galgas_LL1_grammar::nt_lexical_parameter_ (galgas_scanner & lexique_var_,
                                 GGS_typeArgumentRoutineExterne & parameter_1,
                                 GGS_typeLexicalAttributesMap & parameter_2) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_parameter_scanner_parser_911_25_ (lexique_var_, parameter_1, parameter_2) ;
     break ;
@@ -4224,7 +4224,7 @@ void galgas_LL1_grammar::nt_lexical_parameter_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_lexical_parameter_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_parameter_scanner_parser_911_25_parse (lexique_var_) ;
     break ;
@@ -4255,7 +4255,7 @@ void galgas_LL1_grammar::nt_lexical_send_instruction_ (galgas_scanner & lexique_
                                 GGS_typeTableMessagesErreurs & parameter_3,
                                 GGS_typeLexicalAttributesMap & parameter_4,
                                 GGS_typeTableTablesDeMotsReserves & parameter_5) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_send_instruction_scanner_parser_1018_32_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5) ;
@@ -4271,7 +4271,7 @@ void galgas_LL1_grammar::nt_lexical_send_instruction_ (galgas_scanner & lexique_
 
 
 void galgas_LL1_grammar::nt_lexical_send_instruction_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_lexical_send_instruction_scanner_parser_1018_32_parse (lexique_var_) ;
     break ;
@@ -4428,7 +4428,7 @@ void galgas_LL1_grammar::nt_factor_ (galgas_scanner & lexique_var_,
                                 GGS_typeVariablesMap & parameter_3,
                                 GGS_typeExpression & parameter_4,
                                 GGS_AC_galgasType & parameter_5) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_factor_expression_parser_522_14_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5) ;
@@ -4480,7 +4480,7 @@ void galgas_LL1_grammar::nt_factor_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_factor_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_factor_expression_parser_522_14_parse (lexique_var_) ;
     break ;
@@ -4659,7 +4659,7 @@ void galgas_LL1_grammar::nt_semantics_declaration_ (galgas_scanner & lexique_var
                                 GGS_typeTableEnAvant & parameter_9,
                                 GGS_typeTableRoutinesAimplementer & parameter_10,
                                 GGS_M_externClassesDirectories & parameter_11) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_semantics_declaration_semantics_parser_846_29_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6, parameter_7, parameter_8,
@@ -4717,7 +4717,7 @@ void galgas_LL1_grammar::nt_semantics_declaration_importSemantics (galgas_scanne
                                 GGS_typeTableEnAvant & parameter_3,
                                 GGS_typeTableEnAvant & parameter_4,
                                 GGS_typeTableRoutinesAimplementer & parameter_5) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_semantics_declaration_semantics_parser_846_29_importSemantics (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5) ;
@@ -4761,7 +4761,7 @@ void galgas_LL1_grammar::nt_semantics_declaration_importSemantics (galgas_scanne
 
 
 void galgas_LL1_grammar::nt_semantics_declaration_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_semantics_declaration_semantics_parser_846_29_parse (lexique_var_) ;
     break ;
@@ -4808,7 +4808,7 @@ void galgas_LL1_grammar::nt_parent_class_ (galgas_scanner & lexique_var_,
                                 GGS_typeTableMethodes & parameter_4,
                                 GGS_typeSuperClassesMap & parameter_5,
                                 GGS_typeClassInheritedMessagesMap & parameter_6) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_parent_class_semantics_parser_987_20_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6) ;
@@ -4824,7 +4824,7 @@ void galgas_LL1_grammar::nt_parent_class_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_parent_class_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_parent_class_semantics_parser_987_20_parse (lexique_var_) ;
     break ;
@@ -5099,7 +5099,7 @@ void galgas_LL1_grammar::nt_semantic_instruction_ (galgas_scanner & lexique_var_
                                 GGS_M_optionComponents & parameter_3,
                                 GGS_typeVariablesMap & parameter_4,
                                 GGS_typeInstructionsList & parameter_5) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_semantic_instruction_semantics_parser_2466_28_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5) ;
@@ -5167,7 +5167,7 @@ void galgas_LL1_grammar::nt_semantic_instruction_ (galgas_scanner & lexique_var_
 
 
 void galgas_LL1_grammar::nt_semantic_instruction_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_semantic_instruction_semantics_parser_2466_28_parse (lexique_var_) ;
     break ;
@@ -5234,7 +5234,7 @@ void galgas_LL1_grammar::nt_extract_instruction_ (galgas_scanner & lexique_var_,
                                 GGS_lstring parameter_6,
                                 GGS_typeClassInheritedMessagesMap parameter_7,
                                 GGS_typeInstruction & parameter_8) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_extract_instruction_semantics_parser_2505_27_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6, parameter_7, parameter_8) ;
@@ -5250,7 +5250,7 @@ void galgas_LL1_grammar::nt_extract_instruction_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_extract_instruction_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_extract_instruction_semantics_parser_2505_27_parse (lexique_var_) ;
     break ;
@@ -5272,7 +5272,7 @@ void galgas_LL1_grammar::nt_extract_instruction_parse (galgas_scanner & lexique_
 void galgas_LL1_grammar::nt_optional_map_parameter_ (galgas_scanner & lexique_var_,
                                 GGS_typeCplusPlusName & parameter_1,
                                 GGS_typeVariablesMap & parameter_2) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_optional_map_parameter_semantics_parser_2417_30_ (lexique_var_, parameter_1, parameter_2) ;
     break ;
@@ -5286,7 +5286,7 @@ void galgas_LL1_grammar::nt_optional_map_parameter_ (galgas_scanner & lexique_va
 
 
 void galgas_LL1_grammar::nt_optional_map_parameter_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_optional_map_parameter_semantics_parser_2417_30_parse (lexique_var_) ;
     break ;
@@ -5393,7 +5393,7 @@ void galgas_LL1_grammar::nt_parse_parameters_list_parse (galgas_scanner & lexiqu
 void galgas_LL1_grammar::nt_target_entity_ (galgas_scanner & lexique_var_,
                                 GGS_typeCible & parameter_1,
                                 GGS_typeVariablesMap & parameter_2) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_target_entity_semantics_parser_2198_21_ (lexique_var_, parameter_1, parameter_2) ;
     break ;
@@ -5407,7 +5407,7 @@ void galgas_LL1_grammar::nt_target_entity_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_target_entity_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_target_entity_semantics_parser_2198_21_parse (lexique_var_) ;
     break ;
@@ -5432,7 +5432,7 @@ void galgas_LL1_grammar::nt_instruction_beginning_with_identifier_ (galgas_scann
                                 GGS_typeInstructionsList & parameter_3,
                                 GGS_M_optionComponents & parameter_4,
                                 GGS_M_semanticsEntitiesForUse & parameter_5) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_instruction_beginning_with_identifier_semantics_parser_2085_45_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5) ;
@@ -5456,7 +5456,7 @@ void galgas_LL1_grammar::nt_instruction_beginning_with_identifier_ (galgas_scann
 
 
 void galgas_LL1_grammar::nt_instruction_beginning_with_identifier_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_instruction_beginning_with_identifier_semantics_parser_2085_45_parse (lexique_var_) ;
     break ;
@@ -5490,7 +5490,7 @@ void galgas_LL1_grammar::nt_optional_assignment_ (galgas_scanner & lexique_var_,
                                 GGS_typeInstructionsList & parameter_6,
                                 GGS_M_optionComponents & parameter_7,
                                 GGS_M_semanticsEntitiesForUse & parameter_8) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_optional_assignment_semantics_parser_3773_27_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6, parameter_7, parameter_8) ;
@@ -5510,7 +5510,7 @@ void galgas_LL1_grammar::nt_optional_assignment_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_optional_assignment_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_optional_assignment_semantics_parser_3773_27_parse (lexique_var_) ;
     break ;
@@ -5619,7 +5619,7 @@ void galgas_LL1_grammar::nt_formal_argument_type_ (galgas_scanner & lexique_var_
                                 GGS_AC_galgasType & parameter_2,
                                 GGS_typeTableEnAvant & parameter_3,
                                 GGS_lstring & parameter_4) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_formal_argument_type_semantics_parser_4835_28_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4) ;
@@ -5644,7 +5644,7 @@ void galgas_LL1_grammar::nt_formal_argument_type_ (galgas_scanner & lexique_var_
 
 void galgas_LL1_grammar::nt_formal_argument_type_importGrammarForSemantics (galgas_scanner & lexique_var_,
                                 GGS_lstring & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_formal_argument_type_semantics_parser_4835_28_importGrammarForSemantics (lexique_var_, parameter_1) ;
     break ;
@@ -5664,7 +5664,7 @@ void galgas_LL1_grammar::nt_formal_argument_type_importGrammarForSemantics (galg
 
 
 void galgas_LL1_grammar::nt_formal_argument_type_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_formal_argument_type_semantics_parser_4835_28_parse (lexique_var_) ;
     break ;
@@ -5741,7 +5741,7 @@ void galgas_LL1_grammar::nt_parse_match_case_ (galgas_scanner & lexique_var_,
                                 GGS_bool parameter_5,
                                 GGS_typeEnumConstantesMap parameter_6,
                                 GGS_lstring & parameter_7) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_parse_match_case_semantics_parser_3565_24_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6, parameter_7) ;
@@ -5757,7 +5757,7 @@ void galgas_LL1_grammar::nt_parse_match_case_ (galgas_scanner & lexique_var_,
 
 
 void galgas_LL1_grammar::nt_parse_match_case_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_parse_match_case_semantics_parser_3565_24_parse (lexique_var_) ;
     break ;
@@ -5835,7 +5835,7 @@ void galgas_LL1_grammar::nt_syntax_instruction_ (galgas_scanner & lexique_var_,
                                 GGS_typeInstructionsList & parameter_6,
                                 GGS_M_terminalSymbolsMapForUse & parameter_7,
                                 GGS_L_ruleSyntaxSignature & parameter_8) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_syntax_instruction_parser_parser_514_26_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6, parameter_7, parameter_8) ;
@@ -5868,7 +5868,7 @@ void galgas_LL1_grammar::nt_syntax_instruction_ (galgas_scanner & lexique_var_,
 
 void galgas_LL1_grammar::nt_syntax_instruction_importSyntax (galgas_scanner & lexique_var_,
                                 GGS_L_ruleSyntaxSignature & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_syntax_instruction_parser_parser_514_26_importSyntax (lexique_var_, parameter_1) ;
     break ;
@@ -5894,7 +5894,7 @@ void galgas_LL1_grammar::nt_syntax_instruction_importSyntax (galgas_scanner & le
 
 
 void galgas_LL1_grammar::nt_syntax_instruction_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_syntax_instruction_parser_parser_514_26_parse (lexique_var_) ;
     break ;
@@ -6001,7 +6001,7 @@ void galgas_LL1_grammar::nt_rule_declaration_or_implementation_ (galgas_scanner 
                                 GGS_L_signature_ForGrammarComponent parameter_11,
                                 GGS_L_productionRules_ForGrammarComponent & parameter_12,
                                 const GGS_lstring & parameter_13) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_rule_declaration_or_implementation_parser_parser_682_42_ (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4, parameter_5, parameter_6, parameter_7, parameter_8,
@@ -6023,7 +6023,7 @@ void galgas_LL1_grammar::nt_rule_declaration_or_implementation_importSyntax (gal
                                 GGS_L_productionRules_ForGrammarComponent & parameter_2,
                                 const GGS_lstring & parameter_3,
                                 const GGS_L_signature_ForGrammarComponent & parameter_4) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_rule_declaration_or_implementation_parser_parser_682_42_importSyntax (lexique_var_, parameter_1, parameter_2, parameter_3,
                   parameter_4) ;
@@ -6039,7 +6039,7 @@ void galgas_LL1_grammar::nt_rule_declaration_or_implementation_importSyntax (gal
 
 
 void galgas_LL1_grammar::nt_rule_declaration_or_implementation_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_rule_declaration_or_implementation_parser_parser_682_42_parse (lexique_var_) ;
     break ;
@@ -6120,7 +6120,7 @@ void galgas_LL1_grammar::nt_program_attributes_declaration_parse (galgas_scanner
 
 void galgas_LL1_grammar::nt_include_header_for_program_ (galgas_scanner & lexique_var_,
                                 GGS_bool & parameter_1) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_include_header_for_program_program_parser_331_34_ (lexique_var_, parameter_1) ;
     break ;
@@ -6134,7 +6134,7 @@ void galgas_LL1_grammar::nt_include_header_for_program_ (galgas_scanner & lexiqu
 
 
 void galgas_LL1_grammar::nt_include_header_for_program_parse (galgas_scanner & lexique_var_) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_include_header_for_program_program_parser_331_34_parse (lexique_var_) ;
     break ;
@@ -6292,7 +6292,7 @@ void galgas_LL1_grammar::startParsing_compileFile (galgas_scanner & lexique_var_
 
 
 sint16 galgas_LL1_grammar::select_repeat_cli_options_parser_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6303,7 +6303,7 @@ sint16 galgas_LL1_grammar::select_repeat_cli_options_parser_0 (galgas_scanner & 
 
 
 sint16 galgas_LL1_grammar::select_cli_options_parser_1 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6314,7 +6314,7 @@ sint16 galgas_LL1_grammar::select_cli_options_parser_1 (galgas_scanner & lexique
 
 
 sint16 galgas_LL1_grammar::select_cocoa_parser_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6325,7 +6325,7 @@ sint16 galgas_LL1_grammar::select_cocoa_parser_0 (galgas_scanner & lexique_var_)
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6336,7 +6336,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_0 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_1 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6347,7 +6347,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_1 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_scanner_parser_2 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6358,7 +6358,7 @@ sint16 galgas_LL1_grammar::select_scanner_parser_2 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_3 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6369,7 +6369,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_3 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_scanner_parser_4 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6380,7 +6380,7 @@ sint16 galgas_LL1_grammar::select_scanner_parser_4 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_5 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6391,7 +6391,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_5 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_scanner_parser_6 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6402,7 +6402,7 @@ sint16 galgas_LL1_grammar::select_scanner_parser_6 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_scanner_parser_7 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6413,7 +6413,7 @@ sint16 galgas_LL1_grammar::select_scanner_parser_7 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_8 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6424,7 +6424,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_8 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_scanner_parser_9 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6435,7 +6435,7 @@ sint16 galgas_LL1_grammar::select_scanner_parser_9 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_10 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6446,7 +6446,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_10 (galgas_scanner & lex
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_11 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6457,7 +6457,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_11 (galgas_scanner & lex
 
 
 sint16 galgas_LL1_grammar::select_scanner_parser_12 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6468,7 +6468,7 @@ sint16 galgas_LL1_grammar::select_scanner_parser_12 (galgas_scanner & lexique_va
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_13 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6479,7 +6479,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_13 (galgas_scanner & lex
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_14 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6490,7 +6490,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_14 (galgas_scanner & lex
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_15 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6501,7 +6501,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_15 (galgas_scanner & lex
 
 
 sint16 galgas_LL1_grammar::select_scanner_parser_16 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6512,7 +6512,7 @@ sint16 galgas_LL1_grammar::select_scanner_parser_16 (galgas_scanner & lexique_va
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_17 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6523,7 +6523,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_17 (galgas_scanner & lex
 
 
 sint16 galgas_LL1_grammar::select_repeat_scanner_parser_18 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6534,7 +6534,7 @@ sint16 galgas_LL1_grammar::select_repeat_scanner_parser_18 (galgas_scanner & lex
 
 
 sint16 galgas_LL1_grammar::select_repeat_expression_parser_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6545,7 +6545,7 @@ sint16 galgas_LL1_grammar::select_repeat_expression_parser_0 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_expression_parser_1 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6556,7 +6556,7 @@ sint16 galgas_LL1_grammar::select_repeat_expression_parser_1 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_expression_parser_2 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6567,7 +6567,7 @@ sint16 galgas_LL1_grammar::select_repeat_expression_parser_2 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_expression_parser_3 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6578,7 +6578,7 @@ sint16 galgas_LL1_grammar::select_expression_parser_3 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_expression_parser_4 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6589,7 +6589,7 @@ sint16 galgas_LL1_grammar::select_expression_parser_4 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_expression_parser_5 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6600,7 +6600,7 @@ sint16 galgas_LL1_grammar::select_repeat_expression_parser_5 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_expression_parser_6 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6611,7 +6611,7 @@ sint16 galgas_LL1_grammar::select_repeat_expression_parser_6 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_expression_parser_7 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6622,7 +6622,7 @@ sint16 galgas_LL1_grammar::select_expression_parser_7 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6633,7 +6633,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_0 (galgas_scanner & le
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_1 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6644,7 +6644,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_1 (galgas_scanner & le
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_2 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6655,7 +6655,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_2 (galgas_scanner & lexique_v
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_3 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6666,7 +6666,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_3 (galgas_scanner & lexique_v
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_4 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6677,7 +6677,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_4 (galgas_scanner & lexique_v
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_5 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6688,7 +6688,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_5 (galgas_scanner & lexique_v
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_6 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6699,7 +6699,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_6 (galgas_scanner & lexique_v
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_7 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6710,7 +6710,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_7 (galgas_scanner & lexique_v
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_8 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6721,7 +6721,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_8 (galgas_scanner & lexique_v
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_9 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6732,7 +6732,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_9 (galgas_scanner & le
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_10 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6743,7 +6743,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_10 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_11 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6754,7 +6754,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_11 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_12 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6765,7 +6765,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_12 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_13 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6776,7 +6776,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_13 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_14 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6787,7 +6787,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_14 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_15 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6798,7 +6798,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_15 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_16 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6809,7 +6809,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_16 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_17 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6820,7 +6820,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_17 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_18 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6831,7 +6831,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_18 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_19 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6842,7 +6842,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_19 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_20 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6853,7 +6853,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_20 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_21 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6864,7 +6864,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_21 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_22 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6875,7 +6875,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_22 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_23 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6886,7 +6886,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_23 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_24 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6897,7 +6897,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_24 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_25 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6908,7 +6908,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_25 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_26 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6919,7 +6919,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_26 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_27 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6930,7 +6930,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_27 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_28 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6941,7 +6941,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_28 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_29 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6952,7 +6952,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_29 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_30 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6963,7 +6963,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_30 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_31 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6974,7 +6974,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_31 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_32 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6985,7 +6985,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_32 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_33 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6996,7 +6996,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_33 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_34 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7007,7 +7007,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_34 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_35 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7018,7 +7018,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_35 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_36 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7029,7 +7029,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_36 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_37 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7040,7 +7040,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_37 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_38 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7051,7 +7051,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_38 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_39 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7062,7 +7062,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_39 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_40 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7073,7 +7073,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_40 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_41 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7084,7 +7084,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_41 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_42 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7095,7 +7095,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_42 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_43 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7106,7 +7106,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_43 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_44 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7117,7 +7117,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_44 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_45 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7128,7 +7128,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_45 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_46 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7139,7 +7139,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_46 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_47 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7150,7 +7150,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_47 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_48 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7161,7 +7161,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_48 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_49 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7172,7 +7172,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_49 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_50 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7183,7 +7183,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_50 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_51 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7194,7 +7194,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_51 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_52 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7205,7 +7205,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_52 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_53 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7216,7 +7216,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_53 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_54 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7227,7 +7227,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_54 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_semantics_parser_55 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7238,7 +7238,7 @@ sint16 galgas_LL1_grammar::select_semantics_parser_55 (galgas_scanner & lexique_
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_56 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7249,7 +7249,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_56 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_57 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7260,7 +7260,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_57 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_semantics_parser_58 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7271,7 +7271,7 @@ sint16 galgas_LL1_grammar::select_repeat_semantics_parser_58 (galgas_scanner & l
 
 
 sint16 galgas_LL1_grammar::select_repeat_parser_parser_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7282,7 +7282,7 @@ sint16 galgas_LL1_grammar::select_repeat_parser_parser_0 (galgas_scanner & lexiq
 
 
 sint16 galgas_LL1_grammar::select_parser_parser_1 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7293,7 +7293,7 @@ sint16 galgas_LL1_grammar::select_parser_parser_1 (galgas_scanner & lexique_var_
 
 
 sint16 galgas_LL1_grammar::select_repeat_parser_parser_2 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7304,7 +7304,7 @@ sint16 galgas_LL1_grammar::select_repeat_parser_parser_2 (galgas_scanner & lexiq
 
 
 sint16 galgas_LL1_grammar::select_parser_parser_3 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7315,7 +7315,7 @@ sint16 galgas_LL1_grammar::select_parser_parser_3 (galgas_scanner & lexique_var_
 
 
 sint16 galgas_LL1_grammar::select_parser_parser_4 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7326,7 +7326,7 @@ sint16 galgas_LL1_grammar::select_parser_parser_4 (galgas_scanner & lexique_var_
 
 
 sint16 galgas_LL1_grammar::select_repeat_parser_parser_5 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7337,7 +7337,7 @@ sint16 galgas_LL1_grammar::select_repeat_parser_parser_5 (galgas_scanner & lexiq
 
 
 sint16 galgas_LL1_grammar::select_parser_parser_6 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7348,7 +7348,7 @@ sint16 galgas_LL1_grammar::select_parser_parser_6 (galgas_scanner & lexique_var_
 
 
 sint16 galgas_LL1_grammar::select_repeat_parser_parser_7 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7359,7 +7359,7 @@ sint16 galgas_LL1_grammar::select_repeat_parser_parser_7 (galgas_scanner & lexiq
 
 
 sint16 galgas_LL1_grammar::select_repeat_parser_parser_8 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7370,7 +7370,7 @@ sint16 galgas_LL1_grammar::select_repeat_parser_parser_8 (galgas_scanner & lexiq
 
 
 sint16 galgas_LL1_grammar::select_parser_parser_9 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7381,7 +7381,7 @@ sint16 galgas_LL1_grammar::select_parser_parser_9 (galgas_scanner & lexique_var_
 
 
 sint16 galgas_LL1_grammar::select_repeat_parser_parser_10 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7392,7 +7392,7 @@ sint16 galgas_LL1_grammar::select_repeat_parser_parser_10 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_repeat_parser_parser_11 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7403,7 +7403,7 @@ sint16 galgas_LL1_grammar::select_repeat_parser_parser_11 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_repeat_parser_parser_12 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7414,7 +7414,7 @@ sint16 galgas_LL1_grammar::select_repeat_parser_parser_12 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_repeat_grammar_parser_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7425,7 +7425,7 @@ sint16 galgas_LL1_grammar::select_repeat_grammar_parser_0 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_grammar_parser_1 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7436,7 +7436,7 @@ sint16 galgas_LL1_grammar::select_grammar_parser_1 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_grammar_parser_2 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7447,7 +7447,7 @@ sint16 galgas_LL1_grammar::select_grammar_parser_2 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_grammar_parser_3 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7458,7 +7458,7 @@ sint16 galgas_LL1_grammar::select_grammar_parser_3 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_repeat_grammar_parser_4 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7469,7 +7469,7 @@ sint16 galgas_LL1_grammar::select_repeat_grammar_parser_4 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_program_parser_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7480,7 +7480,7 @@ sint16 galgas_LL1_grammar::select_program_parser_0 (galgas_scanner & lexique_var
 
 
 sint16 galgas_LL1_grammar::select_repeat_program_parser_1 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7491,7 +7491,7 @@ sint16 galgas_LL1_grammar::select_repeat_program_parser_1 (galgas_scanner & lexi
 
 
 sint16 galgas_LL1_grammar::select_repeat_galgas_start_0 (galgas_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*

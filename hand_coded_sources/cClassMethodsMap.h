@@ -57,7 +57,7 @@ template <typename INFO, typename KEY> class cElementTableMethodesUtilisables {
   public : INFO mInfo ;
   public : bool champEstAbstraite ;
   public : const sint32 mEntryIndex ;
-  public : inline element_type * getNextItem (void) const { return mNextItem ; }
+  public : inline element_type * nextObject (void) const { return mNextItem ; }
 
 //--- Constructeur et destructeur
   public : cElementTableMethodesUtilisables (const INFO & info,
@@ -84,7 +84,7 @@ template <typename INFO, typename KEY> class cClassMethodsMap {
   private : element_type * mFirstItem ;
   public : element_type * mLastItem ;
   private : sint32 mListLength ;
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : inline sint32 count (void) const {
     return mListLength ;
   }

@@ -45,18 +45,18 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "  public : class element_type {\n"
            << "    private : element_type * mNextItem ;\n" ;
 //--- Attributes
-  GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.getFirstItem () ;
+  GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.firstObject () ;
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
     inHfile << "  " ;
     attributCourant->mAttributType()->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
-    attributCourant = attributCourant->getNextItem () ;
+    attributCourant = attributCourant->nextObject () ;
   }
 //--- declaration des attributs externes
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 //--- declaration constructeur
   inHfile << "    public : element_type (" ;
-  attributCourant = mNonExternAttributesList.getFirstItem () ;
+  attributCourant = mNonExternAttributesList.firstObject () ;
   bool premier = true ;
   while (attributCourant != NULL) {
     if (premier) {
@@ -67,12 +67,12 @@ generateHdeclarations (AC_OutputStream & inHfile,
     macroValidPointer (attributCourant) ;
     inHfile << "const " ;
     attributCourant->mAttributType()->generateFormalParameter (inHfile, true) ;
-    attributCourant = attributCourant->getNextItem () ;
+    attributCourant = attributCourant->nextObject () ;
   }
   inHfile << ") ;\n\n"
 
 //--- Access to next item
-             "    public : inline element_type * getNextItem (void) const { return mNextItem ; }\n"
+             "    public : inline element_type * nextObject (void) const { return mNextItem ; }\n"
 
 //--- Declare copy constructor and assignment operator as private
              "    private : element_type (const element_type &) ;\n"
@@ -112,11 +112,11 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Get first item
              "//--- Get first item\n"
-             "  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }\n"
+             "  public : inline element_type * firstObject (void) const { return mFirstItem ; }\n"
 
 //--- Append a new value
              "  public : void addAssign_operation (" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.getFirstItem () ;
+  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -126,12 +126,12 @@ generateHdeclarations (AC_OutputStream & inHfile,
     inHfile << "const " ;
     current->mAttributType()->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
               "  protected : void internalAppendItem (" ;
-  current = mNonExternAttributesList.getFirstItem () ;
+  current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -139,7 +139,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     inHfile << "const " ;
     current->mAttributType()->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
@@ -189,7 +189,7 @@ void cPtr_C_listTypeToImplement
 
 //--- Engendrer le constructeur de l'ŽlŽment de liste
   inCppFile << "GGS_" << aNomListe << "::element_type::\nelement_type (" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.getFirstItem () ;
+  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint16 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -197,17 +197,17 @@ void cPtr_C_listTypeToImplement
     inCppFile << "const " ;
     current->mAttributType()->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n" ; 
   inCppFile << "  mNextItem = (element_type *) NULL ;\n" ;
-  current = mNonExternAttributesList.getFirstItem () ;
+  current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "  " << current->aNomAttribut << " = argument_" << numeroVariable << " ;\n" ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << "}\n\n" ;
@@ -295,7 +295,7 @@ void cPtr_C_listTypeToImplement
 //--- Engendrer la methode internalAppendItem
   inCppFile << "void GGS_" << aNomListe << "::"
                "\ninternalAppendItem (" ;
-  current = mNonExternAttributesList.getFirstItem () ;
+  current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -303,19 +303,19 @@ void cPtr_C_listTypeToImplement
     inCppFile << "const " ;
     current->mAttributType()->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "  element_type * nouvelElement = (element_type *) NULL ;\n" 
                "  macroMyNew (nouvelElement, element_type (" ;
-  current = mNonExternAttributesList.getFirstItem () ;
+  current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ")) ;\n" 
@@ -337,7 +337,7 @@ void cPtr_C_listTypeToImplement
 
 //--- Generate addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\naddAssign_operation (" ;
-  current = mNonExternAttributesList.getFirstItem () ;
+  current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -347,29 +347,29 @@ void cPtr_C_listTypeToImplement
     inCppFile << "const " ;
     current->mAttributType()->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "  if (isBuilt ()" ;
-  current = mNonExternAttributesList.getFirstItem () ;
+  current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "\n                 && argument_" << numeroVariable << ".isBuilt ()" ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "    insulateList () ;\n"
                "    internalAppendItem (" ;
-  current = mNonExternAttributesList.getFirstItem () ;
+  current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
@@ -392,13 +392,13 @@ void cPtr_C_listTypeToImplement
                "      while (p != NULL) {\n"
                "        macroValidPointer (p) ;\n"
                "        internalAppendItem (" ;
-  current = mNonExternAttributesList.getFirstItem () ;
+  current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "p->" << current->aNomAttribut ;
-    current = current->getNextItem () ;
+    current = current->nextObject () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"

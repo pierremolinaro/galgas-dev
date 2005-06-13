@@ -46,7 +46,7 @@ class galgas_cli_options : public AC_CLI_Options {
   public : virtual char getBoolOptionChar (const sint32 inIndex) const ;
   public : virtual const char * getBoolOptionString (const sint32 inIndex) const ;
   public : virtual const char * getBoolOptionDescription (const sint32 inIndex) const ;
-  public : virtual bool getBoolOptionValueFromKeys (const char * inModuleName,
+  public : virtual bool boolOptionValueFromKeys (const char * inModuleName,
                                                     const char * inOptionName,
                                                     bool * outFound) const ;
 
@@ -58,7 +58,7 @@ class galgas_cli_options : public AC_CLI_Options {
   public : virtual char getUintOptionChar (const sint32 inIndex) const ;
   public : virtual const char * getUintOptionString (const sint32 inIndex) const ;
   public : virtual const char * getUintOptionDescription (const sint32 inIndex) const ;
-  public : virtual uint32 getUintOptionValueFromKeys (const char * inModuleName,
+  public : virtual uint32 uintOptionValueFromKeys (const char * inModuleName,
                                                       const char * inOptionName,
                                                       bool * outFound) const ;
 
@@ -69,7 +69,7 @@ class galgas_cli_options : public AC_CLI_Options {
   public : virtual char getStringOptionChar (const sint32 inIndex) const ;
   public : virtual const char * getStringOptionString (const sint32 inIndex) const ;
   public : virtual const char * getStringOptionDescription (const sint32 inIndex) const ;
-  public : virtual C_String getStringOptionValueFromKeys (const char * inModuleName,
+  public : virtual C_String stringOptionValueFromKeys (const char * inModuleName,
                                                           const char * inOptionName,
                                                           bool * outFound) const ;
 
