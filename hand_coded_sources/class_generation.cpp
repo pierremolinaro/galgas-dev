@@ -55,7 +55,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       while (currentArgument != NULL) {
         macroValidPointer (currentArgument) ;
         inCppFile << ",\n                                " ;
-        currentArgument->mType ()->generateFormalParameter (inCppFile, ! currentArgument->aModeIn.getValue ()) ;
+        currentArgument->mType ()->generateFormalParameter (inCppFile, ! currentArgument->aModeIn.boolValue ()) ;
         const bool variableUtilisee = formalArgumentIsUsedForList (current->mInfo.mInstructionsList, currentArgument->mCppName, true) ;
         if (! variableUtilisee) {
           inCppFile << "/* " ;
@@ -94,7 +94,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
-      currentArgument->mType ()->generateFormalParameter (inHfile, ! currentArgument->aModeIn.getValue ()) ;
+      currentArgument->mType ()->generateFormalParameter (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
       currentArgument = currentArgument->nextObject () ;
     }
   //--- Terminer la déclaration
@@ -188,7 +188,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                  << "#define " << aNomClasse << "_DEFINED\n\n" ;
 
 //--- Engendrer l'inclusion ou la macro
-  if (mGenerateIncludeHeader.getValue ()) {
+  if (mGenerateIncludeHeader.boolValue ()) {
     generatedZone2 << "#include \"" << aNomClasse << ".h\"\n" ;
   }else{
     generatedZone2 << "#define macro_" << aNomClasse << "\n"
@@ -495,7 +495,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile.writeTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
 //--- Engendrer la macro
-  if (mGenerateIncludeHeader.getValue ()) {
+  if (mGenerateIncludeHeader.boolValue ()) {
     inHfile << "#include \"" << aNomClasse << ".h\"\n\n" ;
   }else{
     inHfile << "#define macro_" << aNomClasse << "\n\n"

@@ -32,7 +32,7 @@
 #include "galgas/GGS_lbool.h"
 #include "galgas/GGS_lchar.h"
 #include "galgas/GGS_lstring.h"
-#include "galgas/GGS_ldfloat.h"
+#include "galgas/GGS_ldouble.h"
 #include "galgas/GGS_luint.h"
 #include "galgas/GGS_lsint.h"
 #include "galgas/AC_galgas_map.h"

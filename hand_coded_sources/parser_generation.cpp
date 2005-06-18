@@ -143,7 +143,7 @@ void cPtr_typeProductionAengendrer
     prototypesForSelectedAndRepeatNotDeclared = false ;
   }
 //--- 'parse' label declared ?
-  const bool hasParseLabel = mHasParseLabel.getValue () ;
+  const bool hasParseLabel = mHasParseLabel.boolValue () ;
   if (hasParseLabel) {
     inHfile << "  protected : void pr_" << aNomProduction 
             << '_' << inTargetFileName
@@ -231,7 +231,7 @@ void cPtr_typeProductionAengendrer
     currentAlt = currentAlt->nextObject () ;
   }
 //--- 'parse' label declared ?
-  const bool hasParseLabel = mHasParseLabel.getValue () ;
+  const bool hasParseLabel = mHasParseLabel.boolValue () ;
 //--- If yes, generate parse only method, based on first label instructions
   if (hasParseLabel) {
     GGS_typeAltProductionsMap::element_type * firstLabelDef = mAltProductionMap.firstObject () ;

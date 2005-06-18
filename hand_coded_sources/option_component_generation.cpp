@@ -126,7 +126,7 @@ generate_option_cpp_file (C_Lexique & inLexique,
   sint32 index = 0 ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
-    generatedZone3 << "  mBoolValue [" << index << "] = " << currentOption->mInfo.mDefaultValue.getValue () << " ;\n" ;
+    generatedZone3 << "  mBoolValue [" << index << "] = " << currentOption->mInfo.mDefaultValue.uintValue () << " ;\n" ;
     index ++ ;
     currentOption = currentOption->nextObject () ;
   }
@@ -135,7 +135,7 @@ generate_option_cpp_file (C_Lexique & inLexique,
   index = 0 ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
-    generatedZone3 << "  mUintValue [" << index << "] = " << currentOption->mInfo.mDefaultValue.getValue () << " ;\n" ;
+    generatedZone3 << "  mUintValue [" << index << "] = " << currentOption->mInfo.mDefaultValue.uintValue () << " ;\n" ;
     index ++ ;
     currentOption = currentOption->nextObject () ;
   }
@@ -171,7 +171,7 @@ generate_option_cpp_file (C_Lexique & inLexique,
              "  const char kCharArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentOption = inBoolOptionsMap.firstObject () ;
   while (currentOption != NULL) {
-    generatedZone3.writeCcharConstant (currentOption->mInfo.mOptionChar.getValue ()) ;
+    generatedZone3.writeCcharConstant (currentOption->mInfo.mOptionChar.charValue ()) ;
     generatedZone3 << ", " ;
     currentOption = currentOption->nextObject () ;
   }          
@@ -264,7 +264,7 @@ generate_option_cpp_file (C_Lexique & inLexique,
   currentOption = inUintOptionsMap.firstObject () ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
-    generatedZone3 << "  " << currentOption->mInfo.mDefaultValue.getValue () << ",\n" ;
+    generatedZone3 << "  " << currentOption->mInfo.mDefaultValue.uintValue () << ",\n" ;
     currentOption = currentOption->nextObject () ;
   }          
   generatedZone3 << "  0} ;\n"
@@ -287,7 +287,7 @@ generate_option_cpp_file (C_Lexique & inLexique,
              "  const char kCharArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentOption = inUintOptionsMap.firstObject () ;
   while (currentOption != NULL) {
-    generatedZone3.writeCcharConstant (currentOption->mInfo.mOptionChar.getValue ()) ;
+    generatedZone3.writeCcharConstant (currentOption->mInfo.mOptionChar.charValue ()) ;
     generatedZone3 << ", " ;
     currentOption = currentOption->nextObject () ;
   }          

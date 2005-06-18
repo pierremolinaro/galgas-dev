@@ -208,8 +208,8 @@ routine buildLexicalTypeMap !@lexicalTypeMap lexicalTypeMap :
   typeName := [@lstring new !"lbool" !here] ;
   insert lexicalTypeMap.insertKey typeName (!t) ;
 
-  t := [@typeGalgas_ldfloat new] ;
-  typeName := [@lstring new !"dfloat" !here] ;
+  t := [@typeGalgas_ldouble new] ;
+  typeName := [@lstring new !"double" !here] ;
   insert lexicalTypeMap.insertKey typeName (!t) ;
 end routine ;
 

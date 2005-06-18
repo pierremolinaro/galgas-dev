@@ -208,7 +208,7 @@ routine comparison_types_check
   when @typeGalgas_char () :: @typeGalgas_char () :
   when @typeGalgas_uint () :: @typeGalgas_uint () :
   when @typeGalgas_sint () :: @typeGalgas_sint () :
-  when @typeGalgas_dfloat () :: @typeGalgas_dfloat () :
+  when @typeGalgas_double () :: @typeGalgas_double () :
   when @typeGalgas_string () :: @typeGalgas_string () :
   when @typeGalgas_enum (??@lstring inTypeName1 ??* ??*) :: @typeGalgas_enum (??@lstring inTypeName2 ??* ??*) :
     if [inTypeName1 value] != [inTypeName2 value] then

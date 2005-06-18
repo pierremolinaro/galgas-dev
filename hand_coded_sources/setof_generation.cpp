@@ -104,7 +104,7 @@ void cPtr_setTypeToGenerate
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "void GGS_" << mSetTypeName << "::methode_add (C_Lexique &, const GGS_" << mEnumElementTypeName << " & inElementToAdd) {\n"
                "  if (isBuilt () && inElementToAdd.isBuilt ()) {\n"
-               "    const C_BDD e = C_BDD::varCompareConst (0, GGS_" << mEnumElementTypeName << "::bitCount (), C_BDD::kEqual, inElementToAdd.getValue ()) ;\n"
+               "    const C_BDD e = C_BDD::varCompareConst (0, GGS_" << mEnumElementTypeName << "::bitCount (), C_BDD::kEqual, inElementToAdd.uintValue ()) ;\n"
                "    mSet |= e ;\n"
                "  }\n"
                "}\n\n" ;
@@ -113,7 +113,7 @@ void cPtr_setTypeToGenerate
                "  const bool built = isBuilt () && inElement.isBuilt () ;\n"
                "  bool contains = false ;\n"
                "  if (built) {\n"
-               "    const C_BDD e = C_BDD::varCompareConst (0, GGS_" << mEnumElementTypeName << "::bitCount (), C_BDD::kEqual, inElement.getValue ()) ;\n"
+               "    const C_BDD e = C_BDD::varCompareConst (0, GGS_" << mEnumElementTypeName << "::bitCount (), C_BDD::kEqual, inElement.uintValue ()) ;\n"
                "    contains = (mSet & e).isEqualToBDD (e) ;\n"
                "  }\n"
                "  return GGS_bool (built, contains) ;\n" 

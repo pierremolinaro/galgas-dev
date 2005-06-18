@@ -231,7 +231,7 @@ void cPtr_typeStructuredExtractInstructionWithElse
                    "cPtr_" << p->mClassName << " *> (" ;
       mVariableName ()->generateCplusPlusName (ioCppFile) ;
       ioCppFile << ".getPtr ()) != NULL) {\n" ;
-      if (! p->mNoUsedParameter.getValue ()) {
+      if (! p->mNoUsedParameter.boolValue ()) {
         ioCppFile << "  cPtr_" << p->mClassName << " * operand_"
                   << p->mResultVarID.currentLocation ()
                   << " = dynamic_cast <"
@@ -508,12 +508,12 @@ void cPtr_typeMatchInstruction
     aNomCppVariable2 ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".isBuilt ()) {\n" ;
     ioCppFile.incIndentation (+2) ;
-    if (! mOperand1_isEnumeration.getValue ()) {
+    if (! mOperand1_isEnumeration.boolValue ()) {
       ioCppFile << "cPtr_" << aNomTypeBase1 << " * ptr_" << aIndicatif1.currentLocation () << " = " ;
       aNomCppVariable1 ()->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " () ;\n" ;
     }
-    if (! mOperand2_isEnumeration.getValue ()) {
+    if (! mOperand2_isEnumeration.boolValue ()) {
       ioCppFile << "cPtr_" << aNomTypeBase2 << " * ptr_" << aIndicatif2.currentLocation () << " = " ;
       aNomCppVariable2 ()->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " () ;\n" ;
@@ -522,14 +522,14 @@ void cPtr_typeMatchInstruction
     GGS_L_matchInstructionCasesList::element_type * casCourant = aListeCas.firstObject () ;
     while (casCourant != NULL) {
       macroValidPointer (casCourant) ;
-      if (! mOperand1_isEnumeration.getValue ()) {
+      if (! mOperand1_isEnumeration.boolValue ()) {
         ioCppFile << "cPtr_" << casCourant->mCase1_name
                   << " * operand_" << aIndicatif1.currentLocation ()
                   << " = dynamic_cast <"
                      "cPtr_" << casCourant->mCase1_name
                   << " *> (ptr_" << aIndicatif1.currentLocation () << ") ;\n" ;
       }
-      if (! mOperand2_isEnumeration.getValue ()) {
+      if (! mOperand2_isEnumeration.boolValue ()) {
         ioCppFile << "cPtr_" << casCourant->mCase2_name
                   << " * operand_" << aIndicatif2.currentLocation ()
                   << " = dynamic_cast <"
@@ -537,16 +537,16 @@ void cPtr_typeMatchInstruction
                   << " *> (ptr_" << aIndicatif2.currentLocation () << ") ;\n" ;
       }
       ioCppFile << "if ((" ;
-      if (mOperand1_isEnumeration.getValue ()) {
+      if (mOperand1_isEnumeration.boolValue ()) {
         aNomCppVariable1 ()->generateCplusPlusName (ioCppFile) ;
-        ioCppFile << ".getValue () == GGS_" << aNomTypeBase1 << "::enum_" << casCourant->mCase1_name ;
+        ioCppFile << ".enumValue () == GGS_" << aNomTypeBase1 << "::enum_" << casCourant->mCase1_name ;
       }else{
         ioCppFile <<  "operand_" << aIndicatif1.currentLocation () << " != NULL" ;
       }
       ioCppFile <<   ") && (" ;
-      if (mOperand2_isEnumeration.getValue ()) {
+      if (mOperand2_isEnumeration.boolValue ()) {
         aNomCppVariable2 ()->generateCplusPlusName (ioCppFile) ;
-        ioCppFile << ".getValue () == GGS_" << aNomTypeBase2 << "::enum_" << casCourant->mCase2_name ;
+        ioCppFile << ".enumValue () == GGS_" << aNomTypeBase2 << "::enum_" << casCourant->mCase2_name ;
       }else{
         ioCppFile << "operand_" << aIndicatif2.currentLocation () << " != NULL" ;
       }

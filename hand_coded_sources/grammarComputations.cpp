@@ -301,7 +301,7 @@ fixInfos (cInfo & inInfo,
   GGS_luint index ;
   searchKey_M_nonTerminalSymbolsForGrammar (inLexique, inInfo.mNonterminalSymbolsMapForGrammar, mNonterminalSymbolName,
                                             NULL, & index) ;
-  mNonterminalSymbolIndex.mValue = index.getValue () ;
+  mNonterminalSymbolIndex.mValue = index.uintValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -311,7 +311,7 @@ fixInfos (cInfo & inInfo,
           C_Lexique & inLexique) {
   GGS_luint index ;
   searchKey_M_terminalSymbolsMapForUse (inLexique, inInfo.mTerminalSymbolMap, mTerminalSymbolName, NULL, & index) ;
-  mTerminalSymbolIndex.mValue = index.getValue () ;
+  mTerminalSymbolIndex.mValue = index.uintValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -449,7 +449,7 @@ analyzeGrammar (C_Lexique & inLexique,
       GGS_luint index ;
       searchKey_M_nonTerminalSymbolsForGrammar (inLexique, inNonterminalSymbolsMapForGrammar, currentRule->mLeftNonterminalSymbol,
                                                 NULL, & index) ;
-      currentRule->mLeftNonterminalSymbolIndex.mValue = index.getValue () ;
+      currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
     //--- Fix, for each rule, left nonterminal symbol index
       fixInfoForInstructionsList (currentRule->mInstructionsList,
                                   symbolsInfo,
@@ -469,11 +469,11 @@ analyzeGrammar (C_Lexique & inLexique,
   enumGrammarClass grammarClass = kGrammarClassError ;
   if (inGrammarClass.length () == 0) { // Default behavior
     grammarClass = kDefaultBehavior ;
-  }else if (inGrammarClass.compareString ("LL1") == 0) { // Force LL (1) grammar
+  }else if (inGrammarClass.compare ("LL1") == 0) { // Force LL (1) grammar
     grammarClass = kLL1grammar ;
-  }else if (inGrammarClass.compareString ("SLR") == 0) { // Force SLR grammar
+  }else if (inGrammarClass.compare ("SLR") == 0) { // Force SLR grammar
     grammarClass = kSLRgrammar ;
-  }else if (inGrammarClass.compareString ("LR1") == 0) { // Force LR (1) grammar
+  }else if (inGrammarClass.compare ("LR1") == 0) { // Force LR (1) grammar
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
     inGrammarClass.signalSemanticError (inLexique, "Unknown grammar class") ;
@@ -547,7 +547,7 @@ analyzeGrammar (C_Lexique & inLexique,
   //--- Build vocabulary
     vocabulary.build (ioTerminalSymbolMap,
                       inNonterminalSymbolsMapForGrammar,
-                      inOriginalGrammarStartSymbol.getValue ()) ;
+                      inOriginalGrammarStartSymbol.uintValue ()) ;
   
   //--- Build pure BNFproductions, add new non terminal symbols from 'repeat' and 'select' instructions
     buildPureBNFgrammar (inSyntaxComponentsList,
@@ -680,7 +680,7 @@ analyzeGrammar (C_Lexique & inLexique,
                       FIRSTsets,
                       FOLLOWsets,
                       inNonterminalSymbolsMapForGrammar,
-                      inOriginalGrammarStartSymbol.getValue (),
+                      inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
                       inClassesNamesSet,
@@ -700,7 +700,7 @@ analyzeGrammar (C_Lexique & inLexique,
                       HTMLfile,
                       FOLLOWarray,
                       inNonterminalSymbolsMapForGrammar,
-                      inOriginalGrammarStartSymbol.getValue (),
+                      inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
                       inClassesNamesSet,
@@ -724,7 +724,7 @@ analyzeGrammar (C_Lexique & inLexique,
                       FIRSTarray,
                       vocabularyDerivingToEmpty_Array,
                       inNonterminalSymbolsMapForGrammar,
-                      inOriginalGrammarStartSymbol.getValue (),
+                      inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
                       inClassesNamesSet,
@@ -742,7 +742,7 @@ analyzeGrammar (C_Lexique & inLexique,
                                inNonterminalSymbolsMapForGrammar,
                                inSyntaxComponentsList,
                                inLexiqueName,
-                               inOriginalGrammarStartSymbol.getValue (),
+                               inOriginalGrammarStartSymbol.uintValue (),
                                inTargetFileName,
                                vocabulary) ;
   }

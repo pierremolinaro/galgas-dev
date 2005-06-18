@@ -52,8 +52,8 @@ void appendJokersIfNeeded (C_Lexique &,
                            GGS_uint inEffectiveArgumentsCount,
                            GGS_uint inFormalParametersCount,
                            GGS_typeCplusPlusName inNullName) {
-  const uint32 effectiveArgumentsCount = inEffectiveArgumentsCount.getValue () ;
-  const uint32 formalParametersCount = inFormalParametersCount.getValue () ;
+  const uint32 effectiveArgumentsCount = inEffectiveArgumentsCount.uintValue () ;
+  const uint32 formalParametersCount = inFormalParametersCount.uintValue () ;
   for (unsigned i=effectiveArgumentsCount ; i<formalParametersCount ; i++) {
     ioVariablesList.addAssign_operation (inNullName) ;
   }
@@ -275,7 +275,7 @@ generate_header_file (C_Lexique & inLexique,
            "#include \"galgas/GGS_lbool.h\"\n"
            "#include \"galgas/GGS_lchar.h\"\n"
            "#include \"galgas/GGS_lstring.h\"\n"
-           "#include \"galgas/GGS_ldfloat.h\"\n"
+           "#include \"galgas/GGS_ldouble.h\"\n"
            "#include \"galgas/GGS_luint.h\"\n"
            "#include \"galgas/GGS_lsint.h\"\n"
            "#include \"galgas/AC_galgas_map.h\"\n" ;
@@ -431,7 +431,7 @@ void cPtr_typeCppInheritedName
 void cPtr_typeOperandName
 ::generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "operand_" << mLocationOffset.currentLocation () << "->"
-         << (mFieldKind.getValue () ? "mInfo." : "")
+         << (mFieldKind.boolValue () ? "mInfo." : "")
          << mName ;
 }
 
@@ -496,7 +496,7 @@ void cPtr_typeCppInheritedName
 void cPtr_typeOperandName
 ::generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& operand_" << mLocationOffset.currentLocation () << "->"
-         << (mFieldKind.getValue () ? "mInfo." : "")
+         << (mFieldKind.boolValue () ? "mInfo." : "")
          << mName ;
 }
 
@@ -582,7 +582,7 @@ void
 generateFormalArgumentFromTypeName (const C_String & inTypeName,
                                     const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
                                     AC_OutputStream & inFile) {
-  switch (inFormalArgumentPassingMode.getValue ()) {
+  switch (inFormalArgumentPassingMode.enumValue ()) {
   case GGS_formalArgumentPassingMode::enum_argumentIn :
     inFile << "GGS_" << inTypeName ;
     break ;
@@ -614,7 +614,7 @@ generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
                                 const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
                                 AC_OutputStream & inFile) {
   macroValidPointer (inTypePtr) ;
-  switch (inFormalArgumentPassingMode.getValue ()) {
+  switch (inFormalArgumentPassingMode.enumValue ()) {
   case GGS_formalArgumentPassingMode::enum_argumentIn :
     inTypePtr->generateCppClassName (inFile) ;
     inFile << ' ' ;
@@ -814,21 +814,21 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_dfloat::
+void cPtr_typeGalgas_double::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_dfloat" ;
+  inFile << "GGS_double" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_dfloat::
+void cPtr_typeGalgas_double::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
                               AC_OutputStream & /* inCppFile */) {
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_dfloat::
+void cPtr_typeGalgas_double::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
                                  AC_OutputStream & /* inCppFile */) {
 }
@@ -1010,9 +1010,9 @@ generateCppClassName (AC_OutputStream & inFile) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_ldfloat::
+void cPtr_typeGalgas_ldouble::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_ldfloat " ;
+  inFile << "GGS_ldouble " ;
 }
 
 //---------------------------------------------------------------------------*

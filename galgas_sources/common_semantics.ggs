@@ -343,14 +343,14 @@ end class ;
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_dfloat extends @AC_galgasType
+class @typeGalgas_double extends @AC_galgasType
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := "dfloat" ;
+    outTypeName := "double" ;
   end reader ;
 
 #--- Error message
-  message messageGalgasType "a dfloat type" ;
+  message messageGalgasType "a double type" ;
 end class ;
 
 #---------------------------------------------------------------------------*
@@ -555,10 +555,10 @@ end class ;
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_ldfloat extends @C_galgasPrimitiveType
+class @typeGalgas_ldouble extends @C_galgasPrimitiveType
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := "ldfloat" ;
+    outTypeName := "ldouble" ;
   end reader ;
 
 #--- Class accepts class method call 'new'
@@ -568,7 +568,7 @@ class @typeGalgas_ldfloat extends @C_galgasPrimitiveType
   :
     if [inClassMethodName value] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      @AC_galgasType t := [@typeGalgas_dfloat new] ;
+      @AC_galgasType t := [@typeGalgas_double new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
@@ -581,7 +581,7 @@ class @typeGalgas_ldfloat extends @C_galgasPrimitiveType
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "a 'dfloat' type" ;
+  message messageGalgasType "a 'double' type" ;
 end class ;
 
 #---------------------------------------------------------------------------*
@@ -1442,12 +1442,12 @@ routine verifierCompatibiliteTypesSemantiques
   when @typeGalgas_char ()     :: @typeGalgas_char () :
   when @typeGalgas_string ()   :: @typeGalgas_string () :
   when @typeGalgas_bool ()     :: @typeGalgas_bool () :
-  when @typeGalgas_dfloat()    :: @typeGalgas_dfloat () :
+  when @typeGalgas_double()    :: @typeGalgas_double () :
   when @typeGalgas_lbool ()    :: @typeGalgas_lbool () :
   when @typeGalgas_lchar ()    :: @typeGalgas_lchar () :
   when @typeGalgas_luint ()    :: @typeGalgas_luint () :
   when @typeGalgas_lsint ()    :: @typeGalgas_lsint () :
-  when @typeGalgas_ldfloat ()  :: @typeGalgas_ldfloat () :
+  when @typeGalgas_ldouble ()  :: @typeGalgas_ldouble () :
   when @typeGalgas_lstring ()  :: @typeGalgas_lstring () :
   when @typeGalgas_location () :: @typeGalgas_location () :
 
@@ -1680,10 +1680,10 @@ routine handleReaderCall
       error inMethodName : "this reader is not defined"
        -> outAccessorTypesList, outReturnedType ;
     end if ;
-  when @typeGalgas_ldfloat () ->
+  when @typeGalgas_ldouble () ->
     if [inMethodName value] == "value" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_dfloat new] ;
+      outReturnedType := [@typeGalgas_double new] ;
     elsif [inMethodName value] == "string" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_string new] ;
