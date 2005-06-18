@@ -679,8 +679,8 @@ routine checkAssignmentTypesCompatibility
   when @typeGalgas_char () :: @typeGalgas_char () :
   when @typeGalgas_string () :: @typeGalgas_string () :
   when @typeGalgas_bool () :: @typeGalgas_bool () :
-  when @typeGalgas_dfloat() :: @typeGalgas_dfloat () :
-  when @typeGalgas_ldfloat () :: @typeGalgas_ldfloat () :
+  when @typeGalgas_double() :: @typeGalgas_double () :
+  when @typeGalgas_ldouble () :: @typeGalgas_ldouble () :
   when @typeGalgas_location () :: @typeGalgas_location () :
 
 #--- Assignment to lchar 
@@ -1261,8 +1261,8 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new !t] ;
   insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
 
-  name := [@lstring new !"ldfloat" !here] ;
-  t := [@typeGalgas_ldfloat new] ;
+  name := [@lstring new !"ldouble" !here] ;
+  t := [@typeGalgas_ldouble new] ;
   e := [@typeEntiteType new !t] ;
   insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
 
@@ -1301,8 +1301,8 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new !t] ;
   insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
 
-  name := [@lstring new !"dfloat" !here] ;
-  t := [@typeGalgas_dfloat new] ;
+  name := [@lstring new !"double" !here] ;
+  t := [@typeGalgas_double new] ;
   e := [@typeEntiteType new !t] ;
   insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
 end routine ;

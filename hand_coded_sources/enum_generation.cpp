@@ -56,7 +56,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Private attribute\n"
              "  private : enumeration mValue ;\n\n"
              "//--- Get value\n"
-             "  public : inline enumeration getValue (void) const {return mValue ; }\n\n"
+             "  public : inline enumeration enumValue (void) const {return mValue ; }\n\n"
              "//--- Default constructor\n"
              "  public : inline GGS_" << mEnumTypeName << " (void) : mValue (kNotBuilt) {}\n\n"
              "//--- Internal constructor\n"

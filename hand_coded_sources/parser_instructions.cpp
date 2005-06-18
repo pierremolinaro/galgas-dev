@@ -128,7 +128,7 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_T_nonterminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_nonterminalInstruction_forGrammarComponent *> (inInstruction) ;
-  if ((p == NULL) || (p->mNonterminalSymbolName.compareString (mNonterminalSymbolName) != 0)) {
+  if ((p == NULL) || (p->mNonterminalSymbolName.compare (mNonterminalSymbolName) != 0)) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : <" << mNonterminalSymbolName << "> non terminal is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
@@ -144,7 +144,7 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_T_terminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_terminalInstruction_forGrammarComponent *> (inInstruction) ;
-  if ((p == NULL) || (p->mTerminalSymbolName.compareString (mTerminalSymbolName) != 0)) {
+  if ((p == NULL) || (p->mTerminalSymbolName.compare (mTerminalSymbolName) != 0)) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : $" << mTerminalSymbolName << "$ terminal is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;

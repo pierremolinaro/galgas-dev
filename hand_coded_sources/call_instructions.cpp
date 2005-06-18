@@ -295,7 +295,7 @@ void cPtr_typeInstructionAppelActionExterne
     sint16 nombreArgumentsTestes = 0 ;
     while (typeArgumentCourant != NULL) {
       macroValidPointer (typeArgumentCourant) ;
-      if (typeArgumentCourant->mFormalArgumentPassingMode.getValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
+      if (typeArgumentCourant->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
         if (nombreArgumentsTestes == 0) {
           ioCppFile << "if (" ;
         }else{

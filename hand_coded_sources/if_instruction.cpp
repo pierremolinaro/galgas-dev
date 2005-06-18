@@ -269,7 +269,7 @@ bool cPtr_typeLiteralStringExpression
 
 void cPtr_typeLiteralSIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_sint (true, " << mLiteralInt.getValue () << "L)" ;
+  ioCppFile << "GGS_sint (true, " << mLiteralInt.sintValue () << "L)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -297,7 +297,7 @@ bool cPtr_typeLiteralSIntExpression
 
 void cPtr_typeLiteralUIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_uint (true, " << mLiteralInt.getValue () << "UL)" ;
+  ioCppFile << "GGS_uint (true, " << mLiteralInt.uintValue () << "UL)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -326,7 +326,7 @@ bool cPtr_typeLiteralUIntExpression
 void cPtr_typeLiteralCharExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_char (true, " ;
-  ioCppFile.writeCcharConstant (mLiteralChar.getValue ()) ;
+  ioCppFile.writeCcharConstant (mLiteralChar.charValue ()) ;
   ioCppFile << ')' ;
 }
 

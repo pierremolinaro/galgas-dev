@@ -525,7 +525,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     generatedZone3 << ",\n    "
-            << currentTerminal->mInfo.mStyleIndex.getValue ()
+            << currentTerminal->mInfo.mStyleIndex.uintValue ()
             << " /* "
             << inLexiqueClassName
             << "_1_" ;
@@ -581,7 +581,7 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 
 void cPtr_typeArgumentCaractere::
 generateExternArgument (AC_OutputStream & inCppFile) const {
-  inCppFile.writeCcharConstant (attributCaractere.getValue ()) ;
+  inCppFile.writeCcharConstant (attributCaractere.charValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -595,7 +595,7 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 
 void cPtr_typeArgumentEntier::
 generateExternArgument (AC_OutputStream & inCppFile) const {
-  inCppFile << attributValeur.getValue () ;
+  inCppFile << attributValeur.uintValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -627,7 +627,7 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
   GGS_typeListeMessagesErreur::element_type * courant = attributListeMessageErreur.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
-    inCppFile << ", gErrorMessage_" << courant->mErrorMessageIndex.getValue () ;
+    inCppFile << ", gErrorMessage_" << courant->mErrorMessageIndex.uintValue () ;
     courant = courant->nextObject () ;
   }
 //--- End of instruction
@@ -753,7 +753,7 @@ generateDefaultToken (const C_String & inLexiqueName,
 void cPtr_typeEmissionErreurParDefaut::
 generateDefaultToken (const C_String &,
                       AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.getValue () << ") ;\n" ;
+  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -769,7 +769,7 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionErreurLexicale::
 generate_scanner_instruction (const C_String &, // inLexiqueName
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.getValue () << ") ;\n" ;
+  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -777,7 +777,7 @@ generate_scanner_instruction (const C_String &, // inLexiqueName
 void cPtr_typeConditionCaractere::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
   inCppFile << "testForInputChar (" ;
-  inCppFile.writeCcharConstant (attributCaractere.getValue ()) ;
+  inCppFile.writeCcharConstant (attributCaractere.charValue ()) ;
   inCppFile << ")" ;
 }
 
@@ -796,9 +796,9 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 void cPtr_typeConditionIntervalle::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
   inCppFile << "testForInputChar (" ;
-  inCppFile.writeCcharConstant (attributBorneInf.getValue ()) ;
+  inCppFile.writeCcharConstant (attributBorneInf.charValue ()) ;
   inCppFile << ", " ;
-  inCppFile.writeCcharConstant (attributBorneSup.getValue ()) ;
+  inCppFile.writeCcharConstant (attributBorneSup.charValue ()) ;
   inCppFile << ")" ;
 }
 
@@ -860,7 +860,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_ldfloat::
+void cPtr_typeGalgas_ldouble::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) {
   inCppFile << "  " << nom << " = 0.0 ;\n" ;
@@ -979,7 +979,7 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_ldfloat::
+void cPtr_typeGalgas_ldouble::
 generateAttributeDeclaration (const GGS_lstring & nom,
                               AC_OutputStream & H_file) {
   H_file << "  public : double " << nom

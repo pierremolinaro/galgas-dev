@@ -240,10 +240,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "C_String GGS_" << aNomTable << "::element_type::stringForKey (void) const {\n"
                "  C_String result ;\n" ;
-  if (mKeyTypeName.compareString ("lstring") == 0) {
+  if (mKeyTypeName.compare ("lstring") == 0) {
     inCppFile << "  result << mKey ;\n" ;
-  }else if (mKeyTypeName.compareString ("luint") == 0) {
-    inCppFile << "  result << mKey.getValue () ;\n" ;
+  }else if (mKeyTypeName.compare ("luint") == 0) {
+    inCppFile << "  result << mKey.uintValue () ;\n" ;
   }
   inCppFile << "  return result ;\n"
                "}\n\n" ;
