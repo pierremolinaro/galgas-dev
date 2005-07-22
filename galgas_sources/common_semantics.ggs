@@ -581,7 +581,7 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "a 'double' type" ;
+  message messageGalgasType "a 'ldouble' type" ;
 end class ;
 
 #---------------------------------------------------------------------------*
