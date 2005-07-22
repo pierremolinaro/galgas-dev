@@ -209,7 +209,7 @@ routine buildLexicalTypeMap !@lexicalTypeMap lexicalTypeMap :
   insert lexicalTypeMap.insertKey typeName (!t) ;
 
   t := [@typeGalgas_ldouble new] ;
-  typeName := [@lstring new !"double" !here] ;
+  typeName := [@lstring new !"ldouble" !here] ;
   insert lexicalTypeMap.insertKey typeName (!t) ;
 end routine ;
 
