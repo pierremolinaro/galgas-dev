@@ -1601,6 +1601,9 @@ routine handleReaderCall
     elsif [inMethodName value] == "stringByDeletingPathExtension" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_string new] ;
+    elsif [inMethodName value] == "stringByCapitalizingFirstCharacter" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+      outReturnedType := [@typeGalgas_string new] ;
     elsif [inMethodName value] == "stringByDeletingLastPathComponent" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_string new] ;
