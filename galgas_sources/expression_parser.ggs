@@ -112,7 +112,7 @@ rule <parse_effective_input_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
-  ?@bool inMapField
+  ?@localConstantBuildStyleEnum inLocalConstantStyle
 label parse
 ;
 
@@ -875,7 +875,7 @@ rule <parse_effective_input_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
-  ?@bool inMapField
+  ?@localConstantBuildStyleEnum inLocalConstantStyle
 :
   $($ ;
   @L_nameWithType argumentsList [empty] ;
@@ -900,7 +900,7 @@ rule <parse_effective_input_parameters_list>
     !inFormalArgumentsList
     !?ioVariablesMap
     !inVarLocation
-    !inMapField
+    !inLocalConstantStyle
   ;
 end rule ;
 

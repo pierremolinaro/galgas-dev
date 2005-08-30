@@ -422,7 +422,7 @@ rule <parse_effective_input_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
-  ?@bool inMapField
+  ?@localConstantBuildStyleEnum inLocalConstantStyle
 label parse
 ;
 
@@ -2643,7 +2643,7 @@ rule <extract_instruction>
           !listeAttributs1
           !?ioVariablesMap
           !indicatif1
-          !false
+          ![@localConstantBuildStyleEnum listStyle]
         ;
       #--- Liste des instructions
         $->$ ;
@@ -3332,6 +3332,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 #                                                                           *
 #     Instructions                                                          *
+#          - 'foreach ... ;'                                                *
 #          - 'foreach map ... ;'                                            *
 #          - 'foreach list ... ;' (1 list)                                  *
 #          - 'foreach list ... :: ... ;' (2 lists)                          *
@@ -3348,6 +3349,73 @@ rule <semantic_instruction>
   $foreach$ ;
   @typeInstruction instruction ;
   select
+  block ioVariablesMap.repeatBlock () :
+    block ioVariablesMap.repeatPart () :
+    #--- Parse enumerated variables
+      @foreachEnumerationList foreachEnumerationList [empty] ;
+      repeat
+      #--- Enumerated variable
+        @lstring variableName ;
+        @typeCplusPlusName cppName ;
+        @AC_galgasType variableType ;
+        <read_access>
+          ?variableName
+          ?cppName
+          ?variableType
+          !?ioVariablesMap
+        ;
+      #--- Check this variable can be enumerated
+        @typeListeAttributsSemantiques formalEnumerationList ;
+        [variableType acceptForeachInstruction !variableName ?formalEnumerationList] ;
+      #--- Extract type name
+        @string typeName ;
+        @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
+        extract variableType :
+        when @typeGalgasMapType (??@lstring kTypeName ??* ??* ??* ??* ??* ??*) ->
+          typeName := [kTypeName value] ;
+          localConstantBuildStyleEnum := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
+        when @typeGalgasListType (??@lstring kTypeName ??*) ->
+          typeName := [kTypeName value] ;
+          localConstantBuildStyleEnum := [@localConstantBuildStyleEnum listStyle] ;
+        else # Any values, they will not be used
+          typeName := "" ;
+          localConstantBuildStyleEnum := [@localConstantBuildStyleEnum listStyle] ;
+        end extract ;
+      #--- Parse effective input attribute list
+        @location magicNumber := here ;
+        <parse_effective_input_parameters_list>
+          !?ioVariablesMap
+          !formalEnumerationList
+          !magicNumber
+          !localConstantBuildStyleEnum
+        ;
+        foreachEnumerationList += !cppName !magicNumber !typeName ;
+      while
+        $,$ ;
+      end repeat ;
+    #--- Repeated instruction list
+      $:$ ;
+    #--- Liste d'instructions
+      @typeInstructionsList instructionList [empty] ;
+      <semantic_instructions_list_no_verif>
+        !?ioComponentSemanticsEntitiesMap
+        !?listeEntitesAengendrer
+        !?ioOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?instructionList
+      ;
+    end block (!here) ;
+  end block () ;
+  instruction := [@typeForeachInstruction new
+#    !indicatif
+    !foreachEnumerationList
+#                                                   !nomTypeTable
+#                                                   !nomCppVarClef
+    !instructionList
+  ] ;
+
+ 
+  or
   #------------- Instruction 'foreach map ... ;'
     $map$ ;
   #--- Nom de la map
@@ -3394,7 +3462,7 @@ rule <semantic_instruction>
           !?ioVariablesMap
           !listeAttributsSemantiques
           !indicatif
-          !true
+          ![@localConstantBuildStyleEnum mapStyle]
         ;
         $:$ ;
       #--- Liste d'instructions
@@ -3437,7 +3505,7 @@ rule <semantic_instruction>
             !?ioVariablesMap
             !listeAttributsSemantiques1
             !indicatif
-            !false
+            ![@localConstantBuildStyleEnum listStyle]
           ;
           $:$ ;
         #--- Liste d'instructions
@@ -3479,7 +3547,7 @@ rule <semantic_instruction>
             !?ioVariablesMap
             !listeAttributsSemantiques1
             !indicatif1
-            !false
+            ![@localConstantBuildStyleEnum listStyle]
           ;
         #--- Arguments de la list 2
           $::$ ;
@@ -3488,7 +3556,7 @@ rule <semantic_instruction>
             !?ioVariablesMap
             !listeAttributsSemantiques2
             !indicatif2
-            !false
+            ![@localConstantBuildStyleEnum listStyle]
           ;
           $:$ ;
         #--- Liste d'instructions
@@ -3606,7 +3674,7 @@ rule <parse_match_case>
     !?ioVariablesMap
     !listeAttributs1
     !inVarLocation
-    !false
+    ![@localConstantBuildStyleEnum listStyle]
   ;
 end rule ;
 
