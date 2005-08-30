@@ -634,7 +634,14 @@ void cPtr_typeAppendInstruction
 
 bool cPtr_typeAppendInstruction
 ::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return false ;
+  bool used = false ;
+  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
 }
 
 //---------------------------------------------------------------------------*

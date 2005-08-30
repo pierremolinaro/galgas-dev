@@ -2,7 +2,7 @@
 #                                                                           *
 #  Common semantics definitions                                             *
 #                                                                           *
-#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  Copyright (C) 1997-2005 Pierre Molinaro.                                 *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -96,18 +96,27 @@ abstract class @AC_galgasType
 #--- Get type name
   abstract reader getTypeName !@string outTypeName ;
 
-#--- By default, class does not accept assignment from 'here'
+#--- By default, object does not accept assignment from 'here'
   reader acceptAssignmentFromHere ??@lstring inErrorLocation :
     error inErrorLocation :
        "assignment from 'here' is not allowed for variables of this type" ;
   end reader ;
 
-#--- By default, class does not accept to be a key for map
+#--- By default, object does not accept to be enumerated (foreach instruction)
+  reader acceptForeachInstruction
+    ??@lstring inErrorLocation
+    !@typeListeAttributsSemantiques outForeachList
+  :
+    error inErrorLocation :
+       "variables of this type cannot appear in 'foreach' instruction" -> outForeachList ;
+  end reader ;
+
+#--- By default, object does not accept to be a key for map
   reader acceptToBeKeyForMap :
     error here : "this type cannot be a key for map" ;
   end reader ;
 
-#--- By default, class does not accept modifier call
+#--- By default, object does not accept modifier call
   reader handleModifierCall
     ??@lstring inModifierName
     !@L_signature outModifierSignature
@@ -730,7 +739,7 @@ end map ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                   Table des classes déclarées 'enavant'                   *
+#                   Table des classes declarees 'enavant'                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1065,7 +1074,7 @@ end map ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    Définition des tables des méthodes d'insertion et de recherche         *
+#    Definition des tables des methodes d'insertion et de recherche         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1104,7 +1113,7 @@ end map ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#             Classe abstract définissant une classe                        *
+#             Classe abstract definissant une classe                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1181,8 +1190,17 @@ end class ;
 #---------------------------------------------------------------------------*
 
 class @typeGalgasListType extends @typeGalgasUndefinedListType
-#--- List of all non extern attributes
+#--- List of all attributes
   @typeListeAttributsSemantiques mNonExternAttributesList ;
+
+#--- list object accepts to be enumerated (foreach instruction)
+  override
+  reader acceptForeachInstruction
+    ??@lstring unused inErrorLocation
+    !@typeListeAttributsSemantiques outForeachList
+  :
+    outForeachList := mNonExternAttributesList ;
+  end reader ;
   
 #--- list accepts operator "+=" call
   override reader handleAddAssignOperatorCall
@@ -1211,7 +1229,7 @@ end class ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#            Définition des tables des méthodes de surcharge                *
+#            Definition des tables des methodes de surcharge                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1225,7 +1243,7 @@ end map ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#               Définition d'un type map utilisable                         *
+#               Definition d'un type map utilisable                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1243,21 +1261,34 @@ end class ;
 #---------------------------------------------------------------------------*
 
 class @typeGalgasMapType extends @typeGalgasUndefinedMapType
-#--- Liste de tous les attributs sémantiques not externes
+#--- Liste de tous les attributs semantiques not externes
   @typeListeAttributsSemantiques mNonExternAttributesList ;
 
-#--- Table de toutes les méthodes d'insertion
+#--- Table de toutes les methodes d'insertion
   @typeTableMethodesInsererChercher aTableMethodesInserer ;
 
-#--- Table de toutes les méthodes de recherche
+#--- Table de toutes les methodes de recherche
   @typeTableMethodesInsererChercher aTableMethodesChercher ;
 
-#--- Table de toutes les méthodes de surcharge
+#--- Table de toutes les methodes de surcharge
   @typeTableBlocsDeTable aTableMethodesSurcharger ;
 
 #--- Key definition
   @lstring mKeyTypeName ;
   @AC_galgasType mKeyType ;
+
+#--- table object accepts to be enumerated (foreach instruction)
+  override
+  reader acceptForeachInstruction
+    ??@lstring unused inErrorLocation
+    !@typeListeAttributsSemantiques outForeachList
+  :
+    outForeachList := [@typeListeAttributsSemantiques empty] ;
+    outForeachList += !mKeyType ![@lstring new !"???" !here] ; # Unused second argument
+    foreach mNonExternAttributesList (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
+      outForeachList += !kAttributType !kNomAttribut ;
+    end foreach ;
+  end reader ;
 
 #--- A table accepts 'empty' constructor
   override reader handleConstructorCall
@@ -1365,7 +1396,7 @@ end class ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                   Table des utilisations sémantiques                      *
+#                   Table des utilisations semantiques                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
 

@@ -632,26 +632,40 @@ end map ;
 
 #---------------------------------------------------------------------------*
 
+enum @localConstantBuildStyleEnum :
+  listStyle, mapStyle, firstIsKeyOtherMapStyle ;
+end enum ;
+
+#---------------------------------------------------------------------------*
+
 routine buildMapWithLocalConstants
   ?@L_nameWithType inLocalDeclarationsList
   ?@typeListeAttributsSemantiques inSemanticAttributsList
   ?!@typeVariablesMap ioVariablesMap
   ?@location inLocation
-  ?@bool inMapField
+  ?@localConstantBuildStyleEnum inLocalConstantStyle
 :
+  @bool mapStyle := inLocalConstantStyle != [@localConstantBuildStyleEnum listStyle] ;
+  @bool first := true ;
   foreach list inLocalDeclarationsList :: inSemanticAttributsList ->
   (??@lstring typeNameInDeclaration ??@lstring cstName) :: (??@AC_galgasType type ??@lstring attributeName) :
     if [cstName value] != "" then
       @string typeName ;
       [type getTypeName ? typeName] ;
       if [typeNameInDeclaration value] == typeName then
-        @typeCplusPlusName cppName := [@typeOperandName new !attributeName !inLocation !inMapField] ;
+        @typeCplusPlusName cppName ;
+        if (inLocalConstantStyle == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & first then
+          cppName := [@typeKeyName new !inLocation] ;
+        else
+          cppName := [@typeOperandName new !attributeName !inLocation !mapStyle] ;
+        end if ;
         insert ioVariablesMap.insertUsedConstInArgument cstName (!type !cppName) ;
       else
         error typeNameInDeclaration : "I have found the '@" . [typeNameInDeclaration value]
           . "' type, I was expected the '@" . typeName . "' type" ;
       end if ;
     end if ;
+    first := false ;
   end foreach ;
   if [inLocalDeclarationsList length] <  [inSemanticAttributsList length] then
     error here : "one or more identifiers missing" ;
@@ -959,6 +973,28 @@ class @typeMatchInstruction extends @typeInstruction
   @bool mOperand2_isEnumeration ;
   @L_matchInstructionCasesList aListeCas ;
   @typeInstructionsList mElseInstructionsList ;
+end class ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Instruction                                                              *
+#    foreach var ??@... name ??@... name, ... :                             *
+#      instructions                                                         *
+#    end foreach ;                                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @foreachEnumerationList 
+  @typeCplusPlusName mCppEnumeratedVariableName ;
+  @location mLocationOffset ;
+  @string mCppTypeName ;
+end list ;
+
+#---------------------------------------------------------------------------*
+
+class @typeForeachInstruction extends @typeInstruction
+  @foreachEnumerationList mForeachEnumerationList ;
+  @typeInstructionsList mInstructionsList ;
 end class ;
 
 #---------------------------------------------------------------------------*
