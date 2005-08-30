@@ -647,8 +647,8 @@ routine buildMapWithLocalConstants
 :
   @bool mapStyle := inLocalConstantStyle != [@localConstantBuildStyleEnum listStyle] ;
   @bool first := true ;
-  foreach list inLocalDeclarationsList :: inSemanticAttributsList ->
-  (??@lstring typeNameInDeclaration ??@lstring cstName) :: (??@AC_galgasType type ??@lstring attributeName) :
+  foreach inLocalDeclarationsList (??@lstring typeNameInDeclaration ??@lstring cstName),
+          inSemanticAttributsList (??@AC_galgasType type ??@lstring attributeName) :
     if [cstName value] != "" then
       @string typeName ;
       [type getTypeName ? typeName] ;
@@ -772,9 +772,8 @@ routine verifierCompatibiliteTypes
   elsif [t1 length] > [t2 length] then
     error inErrorLocation : "too much identifiers" ;
   else
-    foreach list t1 :: t2 ->
-         (??@AC_galgasType attTypeEffectif ??@lstring attNomVariableEffectif)
-      :: (??@AC_galgasType attTypeAttributFormel ??@lstring attNomAttributFormel) :
+    foreach t1 (??@AC_galgasType attTypeEffectif ??@lstring attNomVariableEffectif),
+            t2 (??@AC_galgasType attTypeAttributFormel ??@lstring attNomAttributFormel) :
       verifierCompatibiliteTypesSemantiques !attTypeEffectif !attTypeAttributFormel ![attNomVariableEffectif location] ;
     end foreach ;
   end if ;
@@ -799,9 +798,8 @@ routine verifierCompatibiliteArgEffectifsSignature
     error inErrorLocation : "too much arguments" ;
   else
   #--- Check signatures
-    foreach list signatureReference:: inEffectiveArgumentsSignature ->
-         (??@AC_galgasType attSignatureType ??@formalArgumentPassingMode formalArgPassingMode)
-      :: (??@AC_galgasType attEffectiveType ??@actualParametersPassingMode parameterPassingMode) :
+    foreach signatureReference (??@AC_galgasType attSignatureType ??@formalArgumentPassingMode formalArgPassingMode),
+            inEffectiveArgumentsSignature (??@AC_galgasType attEffectiveType ??@actualParametersPassingMode parameterPassingMode) :
       match formalArgPassingMode::parameterPassingMode :
       when argumentConstantIn :: parameterOut :
         verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation ;
@@ -823,9 +821,8 @@ routine verifierCompatibiliteArgEffectifsSignature
   #--- Build expression list
     @typeExpressionList expressionList := ioExpressionList ;
     ioExpressionList := [@typeExpressionList empty] ;
-    foreach list signatureReference::expressionList ->
-         (??@AC_galgasType attSignatureType ??*)
-      :: (??@typeExpression attExpressionType) :
+    foreach signatureReference (??@AC_galgasType attSignatureType ??*),
+            expressionList (??@typeExpression attExpressionType) :
       extract attExpressionType :
       when @typeJokerInExpression (??@location kLocation) ->
         @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !kLocation] ;
@@ -994,49 +991,6 @@ end list ;
 
 class @typeForeachInstruction extends @typeInstruction
   @foreachEnumerationList mForeachEnumerationList ;
-  @typeInstructionsList mInstructionsList ;
-end class ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#                    Instruction 'foreach map ...'                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeInstructionItererTable extends @typeInstruction
-  @location mLocationOffset ;
-  @typeCplusPlusName aNomCppTable ;
-  @lstring aNomTypeTable ;
-  @typeCplusPlusName aNomCppClef ;
-  @typeInstructionsList mInstructionsList ;
-end class ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#                    Instruction 'foreach list ...' (1 list)                *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeInstructionItererListeSimple extends @typeInstruction
-  @location mLocationOffset ;
-  @typeCplusPlusName aNomCppListe ;
-  @lstring aNomTypeListe ;
-  @typeInstructionsList mInstructionsList ;
-end class ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#                    Instruction 'foreach list ...' (2 lists)               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeInstructionItererListeDouble extends @typeInstruction
-  @location aIndicatif1 ;
-  @typeCplusPlusName aNomCppListe1 ;
-  @lstring aNomTypeListe1 ;
-  @location aIndicatif2 ;
-  @typeCplusPlusName aNomCppListe2 ;
-  @lstring aNomTypeListe2 ;
   @typeInstructionsList mInstructionsList ;
 end class ;
 
