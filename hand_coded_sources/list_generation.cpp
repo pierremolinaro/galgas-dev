@@ -59,6 +59,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   attributCourant = mNonExternAttributesList.firstObject () ;
   bool premier = true ;
   while (attributCourant != NULL) {
+    macroValidPointer (attributCourant) ;
     if (premier) {
       premier = false ;
     }else{

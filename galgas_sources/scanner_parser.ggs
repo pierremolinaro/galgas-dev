@@ -620,7 +620,7 @@ rule <key_words_list_declaration>
     end select ;
   #--- Build error message
     @string specificErrorMessageString := "" ;
-    foreach list errorMessageElementsList (??@string element) :
+    foreach errorMessageElementsList (??@string element) :
       if element == "\1" then
         specificErrorMessageString := specificErrorMessageString . [terminalSymbolName value] ;
       else

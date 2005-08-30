@@ -515,7 +515,7 @@ rule <galgas_component>
   $semantics$ ;
   $;$ ;
 #--- Check that all routines have been implemented
-  foreach map tableNomRoutinesDeclarees ??@lstring nomRoutine () :
+  foreach tableNomRoutinesDeclarees (??@lstring nomRoutine) :
     if not [tableRoutinesAimplementer hasKey !nomRoutine] then
       error nomRoutine : "the routine '" . [nomRoutine value] .
                          "' is not implemented within the component" ;
@@ -692,9 +692,9 @@ rule <import_headers_semantics_and_grammars>
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
       search grammarComponentsMap.searchKey grammarComponentName (?nonterminalSymbolParametersMap ?* ?*) ;
       @M_nonterminalSymbolAlts grammarAltMap [empty] ;
-      foreach map nonterminalSymbolParametersMap ??@lstring altName (??@L_signature_ForGrammarComponent signature) :
+      foreach nonterminalSymbolParametersMap (??@lstring altName ??@L_signature_ForGrammarComponent signature) :
         @L_signature formalParametersList [empty] ;
-        foreach list signature (??@formalArgumentPassingMode passingMode ??@lstring typeName) :
+        foreach signature (??@formalArgumentPassingMode passingMode ??@lstring typeName) :
           @AC_semanticsEntity entity ;
           search ioComponentSemanticsEntitiesMap.searchKey typeName (?entity) ;
           @AC_galgasType type ;
@@ -719,14 +719,14 @@ rule <import_headers_semantics_and_grammars>
           @M_semanticsEntitiesForUse importedEntities ;
           @M_optionComponents importedOptionsComponentsMap ;
           search ioSemanticsComponentsMap.searchKey componentName (?importedEntities ?importedOptionsComponentsMap) ;
-          foreach map importedEntities ??@lstring entityName (??@AC_semanticsEntity entityType) :
+          foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
             if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
               insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
             end if ;
           end foreach ;
           insert tableUtilisationsSemantiques.insertKey componentName () ;
         #--- Check that every used option component is already declared
-          foreach map importedOptionsComponentsMap ??@lstring optionComponentMap (??@M_cli_options boolOptions ??@M_cli_options uintOptions) :
+          foreach importedOptionsComponentsMap (??@lstring optionComponentMap ??@M_cli_options boolOptions ??@M_cli_options uintOptions) :
             if not [ioOptionsComponentsMapForUse hasKey !optionComponentMap] then
               error here: "the '%' option component must have been imported" ;
             end if ;
@@ -743,7 +743,7 @@ rule <import_headers_semantics_and_grammars>
         ;
         @M_semanticsEntitiesForUse importedEntities ;
         search semanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
-        foreach map importedEntities ??@lstring entityName (??@AC_semanticsEntity entityType) :
+        foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
             insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
           end if ;
@@ -790,7 +790,7 @@ label importSemantics
         if not [tableUtilisationsSemantiques hasKey !componentName] then
           @M_semanticsEntitiesForUse importedEntities ;
           search ioSemanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
-          foreach map importedEntities ??@lstring entityName (??@AC_semanticsEntity entityType) :
+          foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
             if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
               insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
             end if ;
@@ -808,7 +808,7 @@ label importSemantics
         ;
         @M_semanticsEntitiesForUse importedEntities ;
         search semanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
-        foreach map importedEntities ??@lstring entityName (??@AC_semanticsEntity entityType) :
+        foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
             insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
           end if ;
@@ -1237,7 +1237,7 @@ rule <semantics_declaration>
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
-    foreach map inheritedMessageMap ??@lstring nomMessageAbstrait () :
+    foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
       if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
         error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
       end if ;
@@ -1379,7 +1379,7 @@ label importSemantics
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
-    foreach map inheritedMessageMap ??@lstring nomMessageAbstrait () :
+    foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
       if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
         error here : "the message '" .  [nomMessageAbstrait value] . "' is not defined" ;
       end if ;
@@ -1524,7 +1524,7 @@ rule <semantics_declaration>
     end repeat ;
   end block () ;
 #--- Verify that all inherited messages are defined
-  foreach map inheritedMessageMap ??@lstring nomMessageAbstrait () :
+  foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
     if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
       error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
     end if ;
@@ -1667,7 +1667,7 @@ label importSemantics
     end repeat ;
   end block () ;
 #--- Verify that all inherited messages are defined
-  foreach map inheritedMessageMap ??@lstring nomMessageAbstrait () :
+  foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
     if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
       error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
     end if ;
@@ -1783,7 +1783,7 @@ rule <parse_method>
   ;
   $:$ ;
 #--- Build local attributes table
-  foreach list listeAttributsSemantiquesCourants (??@AC_galgasType typeAttribut ??@lstring nomAttribut) :
+  foreach listeAttributsSemantiquesCourants (??@AC_galgasType typeAttribut ??@lstring nomAttribut) :
     @typeCplusPlusName nomCpp := [@typeDirectName new !nomAttribut] ;
     insert methodLocalVariablesMap.insertUsedConstInArgument nomAttribut (!typeAttribut !nomCpp) ;
   end foreach ;
@@ -2178,7 +2178,8 @@ rule <input_parameters_list>
   else
     listeAffectationParametresEffectifs := [@L_assignedVariables empty] ;
     outAllVariablesList := [@typeCplusPlusNameList empty] ;
-    foreach list listeAttributsSemantiques::listeCibles -> (??@AC_galgasType attTypeAttribut ??@lstring attNomAttribut) :: (??@typeCible attCible) :
+    foreach listeAttributsSemantiques (??@AC_galgasType attTypeAttribut ??@lstring attNomAttribut),
+            listeCibles (??@typeCible attCible) :
       @lstring nomAttributSource := attNomAttribut ;
       [attCible verifierType !attTypeAttribut !?nomAttributSource !?listeAffectationParametresEffectifs !?outAllVariablesList] ;
     end foreach ;
@@ -2265,9 +2266,8 @@ rule <instruction_beginning_with_identifier>
   elsif [formalParametersList length] > [typeList length] then
     error here : "value list is too short" ;
   else
-    foreach list formalParametersList  :: typeList ->
-         (??@AC_galgasType formalType ??@lstring formalName)
-      :: (??@AC_galgasType effectiveType ??@location kErrorLocation) :
+    foreach formalParametersList (??@AC_galgasType formalType ??@lstring formalName),
+            typeList (??@AC_galgasType effectiveType ??@location kErrorLocation) :
       verifierCompatibiliteTypesSemantiques !formalType !effectiveType !kErrorLocation ;
     end foreach ;
   end if ;
@@ -3331,11 +3331,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#     Instructions                                                          *
-#          - 'foreach ... ;'                                                *
-#          - 'foreach map ... ;'                                            *
-#          - 'foreach list ... ;' (1 list)                                  *
-#          - 'foreach list ... :: ... ;' (2 lists)                          *
+#     Instruction 'foreach ... ;'                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -3348,7 +3344,6 @@ rule <semantic_instruction>
 :
   $foreach$ ;
   @typeInstruction instruction ;
-  select
   block ioVariablesMap.repeatBlock () :
     block ioVariablesMap.repeatPart () :
     #--- Parse enumerated variables
@@ -3407,179 +3402,9 @@ rule <semantic_instruction>
     end block (!here) ;
   end block () ;
   instruction := [@typeForeachInstruction new
-#    !indicatif
     !foreachEnumerationList
-#                                                   !nomTypeTable
-#                                                   !nomCppVarClef
     !instructionList
   ] ;
-
- 
-  or
-  #------------- Instruction 'foreach map ... ;'
-    $map$ ;
-  #--- Nom de la map
-    @lstring nomTable ;
-    @typeCplusPlusName nomCppVariableTable ;
-    @AC_galgasType typeVariableTable ;
-    <read_access>
-      ?nomTable
-      ?nomCppVariableTable
-      ?typeVariableTable
-      !?ioVariablesMap
-    ;
-    @lstring nomTypeTable ;
-    @typeListeAttributsSemantiques listeAttributsSemantiques ;
-    @AC_galgasType mapKeyType ;
-    extract typeVariableTable->@typeGalgasMapType
-                         (?nomTypeTable ?listeAttributsSemantiques
-                          ?* ?*
-                          ?* ?* ?mapKeyType) error nomTable : messageGalgasType ;
-  #--- Bloc répété
-    block ioVariablesMap.repeatBlock () :
-      block ioVariablesMap.repeatPart () :
-      #--- Clef
-        $??$ ;
-        @location indicatif := here ;
-        @typeCplusPlusName nomCppVarClef := [@typeKeyName new !indicatif] ;
-        select
-          $*$ ;
-        or
-          @lstring keyTypeName ;
-          $type_name$ ? keyTypeName ;
-          @string formalKeyTypeName ;
-          [mapKeyType getTypeName ?formalKeyTypeName] ;
-          if [keyTypeName value] != formalKeyTypeName then
-            error keyTypeName : "I get the '@" . [keyTypeName value]
-                   . "' type ; I was expected the '@" . formalKeyTypeName . "' type" ; 
-          end if ;
-          @lstring nomClef ;
-          $identifier$ ? nomClef ;
-          insert ioVariablesMap.insertConstInArgument nomClef (!mapKeyType !nomCppVarClef) ;
-        end select ;
-      #--- Arguments
-        <parse_effective_input_parameters_list>
-          !?ioVariablesMap
-          !listeAttributsSemantiques
-          !indicatif
-          ![@localConstantBuildStyleEnum mapStyle]
-        ;
-        $:$ ;
-      #--- Liste d'instructions
-        @typeInstructionsList listeDesInstructions [empty] ;
-        <semantic_instructions_list_no_verif>
-          !?ioComponentSemanticsEntitiesMap
-          !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
-          !?ioVariablesMap
-          !?listeDesInstructions
-        ;
-      end block (!here) ;
-    end block () ;
-    instruction := [@typeInstructionItererTable new !indicatif
-                                                   !nomCppVariableTable
-                                                   !nomTypeTable
-                                                   !nomCppVarClef
-                                                   !listeDesInstructions] ;
-  or
-  #------------- Instruction 'foreach list ... ;'
-    $list$ ;
-  #--- Nom de la liste
-    @lstring nomListe1 ;
-    @typeCplusPlusName nomCppVariableListe1 ;
-    @AC_galgasType typeVariableListe1 ;
-    <read_access> ?nomListe1 ?nomCppVariableListe1 ?typeVariableListe1
-                  !?ioVariablesMap ;
-    @lstring nomTypeListe1 ;
-    @typeListeAttributsSemantiques listeAttributsSemantiques1 ;
-    extract typeVariableListe1->@typeGalgasListType (?nomTypeListe1 ?listeAttributsSemantiques1)
-          error nomListe1 : messageGalgasType ;
-    select
-    #------------- Instruction d'itération sur une seule liste
-    #--- Bloc répété
-      block ioVariablesMap.repeatBlock () :
-        block ioVariablesMap.repeatPart () :
-        #--- Argument
-          @location indicatif := here ;
-          <parse_effective_input_parameters_list>
-            !?ioVariablesMap
-            !listeAttributsSemantiques1
-            !indicatif
-            ![@localConstantBuildStyleEnum listStyle]
-          ;
-          $:$ ;
-        #--- Liste d'instructions
-          @typeInstructionsList listeDesInstructions [empty] ;
-          <semantic_instructions_list_no_verif>
-            !?ioComponentSemanticsEntitiesMap
-            !?listeEntitesAengendrer
-            !?ioOptionsComponentsMapForUse
-            !?ioVariablesMap
-            !?listeDesInstructions
-          ;
-        end block (!here) ;
-      end block () ;
-      instruction := [@typeInstructionItererListeSimple new !indicatif
-                                                           !nomCppVariableListe1
-                                                           !nomTypeListe1
-                                                           !listeDesInstructions] ;
-    #------------- Instruction d'itération sur deux listes
-    or
-      $::$ ;
-    #--- Liste 2
-      @lstring nomListe2 ;
-      @AC_galgasType typeVariableListe2 ;
-      @typeCplusPlusName nomCppVariableListe2 ;
-      <read_access> ?nomListe2 ?nomCppVariableListe2 ?typeVariableListe2
-                    !?ioVariablesMap ;
-      @lstring nomTypeListe2 ;
-      @typeListeAttributsSemantiques listeAttributsSemantiques2 ;
-      extract typeVariableListe2->@typeGalgasListType (?nomTypeListe2 ?listeAttributsSemantiques2)
-          error nomListe2 : messageGalgasType ;
-      $->$ ;
-    #--- Première branche : tant qu'aucune des deux listes n'est empty
-    #--- Bloc répété
-      block ioVariablesMap.repeatBlock () :
-        block ioVariablesMap.repeatPart () :
-        #--- Arguments de la list 1
-          @location indicatif1 := here ;
-          <parse_effective_input_parameters_list>
-            !?ioVariablesMap
-            !listeAttributsSemantiques1
-            !indicatif1
-            ![@localConstantBuildStyleEnum listStyle]
-          ;
-        #--- Arguments de la list 2
-          $::$ ;
-           @location indicatif2 := here ;
-          <parse_effective_input_parameters_list>
-            !?ioVariablesMap
-            !listeAttributsSemantiques2
-            !indicatif2
-            ![@localConstantBuildStyleEnum listStyle]
-          ;
-          $:$ ;
-        #--- Liste d'instructions
-          @typeInstructionsList listeDesInstructions [empty] ;
-          <semantic_instructions_list_no_verif>
-            !?ioComponentSemanticsEntitiesMap
-            !?listeEntitesAengendrer
-            !?ioOptionsComponentsMapForUse
-            !?ioVariablesMap
-            !?listeDesInstructions
-          ;
-        end block (!here) ;
-      end block () ;
-    #--- Engendrer l'instruction
-      instruction := [@typeInstructionItererListeDouble new !indicatif1
-                                                           !nomCppVariableListe1
-                                                           !nomTypeListe1
-                                                           !indicatif2
-                                                           !nomCppVariableListe2
-                                                           !nomTypeListe2
-                                                           !listeDesInstructions] ;
-    end select ;
-  end select ;
   $end$ ;
   $foreach$ ;
   $;$ ;
@@ -4181,8 +4006,8 @@ rule <semantics_declaration>
     end repeat ;
   #--- Check that insert method transition names correspond to search methods
     if [stateValues count] > 0 then
-      foreach map insertMethodMap ??@lstring kInsertMethod (??* ??* ??* ??@transitionStatusMap kTransitionStatusMap) :
-        foreach map insertMethodMap ??@lstring kSearchMethod (??* ??* ??* ??*) :
+      foreach insertMethodMap (??@lstring kInsertMethod ??* ??* ??* ??@transitionStatusMap kTransitionStatusMap) :
+        foreach insertMethodMap (??@lstring kSearchMethod ??* ??* ??* ??*) :
           if not [kTransitionStatusMap hasKey !kSearchMethod] then
             error kInsertMethod : "This insert method does not define the '" . [kSearchMethod value] . "' transition" ;
           end if ;
@@ -5132,7 +4957,7 @@ rule <semantics_declaration>
     $end$ ;
   #--- Build message string list
     @L_lstringList messageStringList [empty] ;
-    foreach map constantMap ??@lstring constantName () :
+    foreach constantMap (??@lstring constantName) :
       @lstring name := [@lstring new ![constantName value] !here] ; #--- For best error location
       @lstring cstString ;
       search cstMessageStringMap.searchKey name (?cstString) ;

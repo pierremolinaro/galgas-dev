@@ -848,9 +848,8 @@ routine checkSignature_ForGrammarComponent
   elsif [inFormalReferenceSignature length] > [inFormalTestedSignature length] then
     error inEndOfListLocation : "one or more formal parameters missing" ;
   else
-    foreach list inFormalReferenceSignature :: inFormalTestedSignature ->
-         (??@formalArgumentPassingMode passingMode1 ??@lstring kType1)
-      :: (??@formalArgumentPassingMode passingMode2 ??@lstring kType2) :
+    foreach inFormalReferenceSignature (??@formalArgumentPassingMode passingMode1 ??@lstring kType1),
+            inFormalTestedSignature (??@formalArgumentPassingMode passingMode2 ??@lstring kType2) :
       if passingMode1 != passingMode2 then
         error kType2 : "Prototype has " . [passingMode1 formalArgumentMessage] .
                        ", and " . [passingMode1 formalArgumentMessage] . " has been found" ;
@@ -1535,9 +1534,8 @@ routine verifierCompatibiliteSignatures
   elsif [signatureReference length] > [signatureTestee length] then
     error ouSignalerErreur : "one or more parameters missing" ;
   else 
-    foreach list signatureReference :: signatureTestee ->
-         (??@AC_galgasType attTypeG ??@formalArgumentPassingMode passingMode1)
-      :: (??@AC_galgasType attTypeD ??@formalArgumentPassingMode passingMode2) :
+    foreach signatureReference (??@AC_galgasType attTypeG ??@formalArgumentPassingMode passingMode1),
+            signatureTestee (??@AC_galgasType attTypeD ??@formalArgumentPassingMode passingMode2) :
       verifierCompatibiliteTypesSemantiques !attTypeG !attTypeD !ouSignalerErreur ;
       if passingMode1 != passingMode2 then
         error ouSignalerErreur : [passingMode2 formalArgumentMessage] . " is not compatible with " .
