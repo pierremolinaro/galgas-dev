@@ -644,6 +644,7 @@ routine buildMapWithLocalConstants
   ?!@typeVariablesMap ioVariablesMap
   ?@location inLocation
   ?@localConstantBuildStyleEnum inLocalConstantStyle
+  ?@bool inEllipsisFound
 :
   @bool mapStyle := inLocalConstantStyle != [@localConstantBuildStyleEnum listStyle] ;
   @bool first := true ;
@@ -667,12 +668,15 @@ routine buildMapWithLocalConstants
     end if ;
     first := false ;
   end foreach ;
-  if [inLocalDeclarationsList length] <  [inSemanticAttributsList length] then
-    error here : "one or more identifiers missing" ;
-  else
-    if [inLocalDeclarationsList length] <  [inSemanticAttributsList length] then
-      error here : "too much identifiers" ;
-    end if ;
+#--- Check effective parameters list length
+  if ([inLocalDeclarationsList length] < [inSemanticAttributsList length]) & not inEllipsisFound then
+    error here : "one or more parameters missing: found "
+    . [[inLocalDeclarationsList length] string] . " effective parameters, while "
+    . [[inSemanticAttributsList length] string] . " are needed" ;
+  elsif [inLocalDeclarationsList length] > [inSemanticAttributsList length] then
+    error here : "too much parameters: found "
+    . [[inLocalDeclarationsList length] string] . " effective parameters, while "
+    . [[inSemanticAttributsList length] string] . " are needed" ;
   end if ;
 end routine ;
 
@@ -991,6 +995,7 @@ end list ;
 
 class @typeForeachInstruction extends @typeInstruction
   @foreachEnumerationList mForeachEnumerationList ;
+  @typeExpression mWhileExpression ;
   @typeInstructionsList mInstructionsList ;
 end class ;
 
