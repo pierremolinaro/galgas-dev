@@ -2637,6 +2637,14 @@ rule <extract_instruction>
           end select ;
           elementsList += ! typeName ! constantName ;
         end repeat ;
+      #--- Ellipsis ?
+        @bool ellipsisFound ;
+        select
+          ellipsisFound := false ;
+        or
+          $...$ ;
+          ellipsisFound := true ;
+        end select ;
         $)$ ;
         buildMapWithLocalConstants
           !elementsList
@@ -2644,6 +2652,7 @@ rule <extract_instruction>
           !?ioVariablesMap
           !indicatif1
           ![@localConstantBuildStyleEnum listStyle]
+          !ellipsisFound
         ;
       #--- Liste des instructions
         $->$ ;
@@ -3388,6 +3397,21 @@ rule <semantic_instruction>
       while
         $,$ ;
       end repeat ;
+    #--- While expression
+      @typeExpression whileExpression ;
+      select
+        whileExpression := [@typeTrueBool new] ;
+      or
+        $while$ ;
+        @AC_galgasType resultType ;
+        <expression>
+          !?ioComponentSemanticsEntitiesMap
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          ?whileExpression
+          ?resultType
+         ;
+      end select ;
     #--- Repeated instruction list
       $:$ ;
     #--- Liste d'instructions
@@ -3403,6 +3427,7 @@ rule <semantic_instruction>
   end block () ;
   instruction := [@typeForeachInstruction new
     !foreachEnumerationList
+    !whileExpression
     !instructionList
   ] ;
   $end$ ;

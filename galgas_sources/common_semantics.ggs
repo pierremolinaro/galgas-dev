@@ -1726,7 +1726,7 @@ routine handleReaderCall
       error inMethodName : "this reader is not defined"
        -> outAccessorTypesList, outReturnedType ;
     end if ;
-  when @typeGalgasListType (??* ??* ??*) ->
+  when @typeGalgasListType (...) ->
     if [inMethodName value] == "length" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_uint new] ;

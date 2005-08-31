@@ -893,6 +893,14 @@ rule <parse_effective_input_parameters_list>
     end select ;
     argumentsList += !typeName !constantName ;
   end repeat ;
+#--- Ellipsis ?
+  @bool ellipsisFound ;
+  select
+    ellipsisFound := false ;
+  or
+    $...$ ;
+     ellipsisFound := true ;
+  end select ;
   $)$ ;
   buildMapWithLocalConstants
     !argumentsList
@@ -900,6 +908,7 @@ rule <parse_effective_input_parameters_list>
     !?ioVariablesMap
     !inVarLocation
     !inLocalConstantStyle
+    !ellipsisFound
   ;
 end rule ;
 
