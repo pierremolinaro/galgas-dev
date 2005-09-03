@@ -54,7 +54,7 @@ void cPtr_typeForeachInstruction
     if ((dynamic_cast <cPtr_typeTrueBool *> (mWhileExpression ())) == NULL) {
       ioCppFile <<  "\n    && (" ;
       mWhileExpression ()->generateExpression (ioCppFile) ;
-      ioCppFile << ")" ;    
+      ioCppFile << ".isBuiltAndTrue ())" ;    
     }
     ioCppFile << ") {\n" ;
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
