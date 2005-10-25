@@ -516,7 +516,7 @@ rule <galgas_component>
   $;$ ;
 #--- Check that all routines have been implemented
   foreach tableNomRoutinesDeclarees (??@lstring nomRoutine) :
-    if not [tableRoutinesAimplementer hasKey !nomRoutine] then
+    if not [tableRoutinesAimplementer hasKey ![nomRoutine value]] then
       error nomRoutine : "the routine '" . [nomRoutine value] .
                          "' is not implemented within the component" ;
     end if ;
@@ -715,20 +715,20 @@ rule <import_headers_semantics_and_grammars>
       @lstring componentName ;
       $identifier$ ? componentName ;
       select
-        if not [tableUtilisationsSemantiques hasKey !componentName] then
+        if not [tableUtilisationsSemantiques hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
           @M_optionComponents importedOptionsComponentsMap ;
           search ioSemanticsComponentsMap.searchKey componentName (?importedEntities ?importedOptionsComponentsMap) ;
           foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-            if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
+            if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
               insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
             end if ;
           end foreach ;
           insert tableUtilisationsSemantiques.insertKey componentName () ;
         #--- Check that every used option component is already declared
           foreach importedOptionsComponentsMap (??@lstring optionComponentMap ??@M_cli_options boolOptions ??@M_cli_options uintOptions) :
-            if not [ioOptionsComponentsMapForUse hasKey !optionComponentMap] then
-              error here: "the '%' option component must have been imported" ;
+            if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap value]] then
+              error here: "the '" . [optionComponentMap value] . "' option component must have been imported" ;
             end if ;
           end foreach ;
         end if ;
@@ -744,7 +744,7 @@ rule <import_headers_semantics_and_grammars>
         @M_semanticsEntitiesForUse importedEntities ;
         search semanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-          if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
+          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
           end if ;
         end foreach ;
@@ -787,11 +787,11 @@ label importSemantics
       @lstring componentName ;
       $identifier$ ? componentName ;
       select
-        if not [tableUtilisationsSemantiques hasKey !componentName] then
+        if not [tableUtilisationsSemantiques hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
           search ioSemanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
           foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-            if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
+            if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
               insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
             end if ;
           end foreach ;
@@ -809,7 +809,7 @@ label importSemantics
         @M_semanticsEntitiesForUse importedEntities ;
         search semanticsComponentsMap.searchKey componentName (?importedEntities ?*) ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-          if not [ioComponentSemanticsEntitiesMap hasKey !entityName] then
+          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             insert ioComponentSemanticsEntitiesMap.insertKey entityName (!entityType) ;
           end if ;
         end foreach ;
@@ -875,7 +875,7 @@ rule <semantics_declaration>
   ;
 #--- Insérer dans la map des routines utilisables, -------------------------
 #    or vérifier la cohérence de la signature
- if [ioComponentSemanticsEntitiesMap hasKey !nomRoutine] then
+ if [ioComponentSemanticsEntitiesMap hasKey ![nomRoutine value]] then
     @L_signature listeDeTypesPrecedenteDeclaration ;
     @AC_semanticsEntity entite ;
     search ioComponentSemanticsEntitiesMap.searchKey nomRoutine (?entite) ;
@@ -942,7 +942,7 @@ label importSemantics
   ;
 #--- Insérer dans la map des routines utilisables, -------------------------
 #    or vérifier la cohérence de la signature
- if [ioComponentSemanticsEntitiesMap hasKey !nomRoutine] then
+ if [ioComponentSemanticsEntitiesMap hasKey ![nomRoutine value]] then
     @L_signature listeDeTypesPrecedenteDeclaration ;
     @AC_semanticsEntity entite ;
     search ioComponentSemanticsEntitiesMap.searchKey nomRoutine (?entite) ;
@@ -1139,8 +1139,8 @@ rule <semantics_declaration>
   @lstring nomClasseAbstraite ;
   $type_name$ ? nomClasseAbstraite ;
   select
-    if not ([tableEnAvant hasKey !nomClasseAbstraite] |
-          [ioComponentSemanticsEntitiesMap hasKey !nomClasseAbstraite]) then
+    if not ([tableEnAvant hasKey ![nomClasseAbstraite value]] |
+          [ioComponentSemanticsEntitiesMap hasKey ![nomClasseAbstraite value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
       insert tableEnAvant.insertKey nomClasseAbstraite (!t) ;
       insert tableEnAvantAimplementer.insertKey nomClasseAbstraite (!t) ;
@@ -1189,7 +1189,7 @@ rule <semantics_declaration>
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey !nomMessage] then
+      if not [inheritedMessageMap hasKey ![nomMessage value]] then
         insert messageMapForHeirs.insertKey nomMessage () ;
       end if ; 
       insert tableMessagesClasseConcrete.insertKey nomMessage (!messageText) ;
@@ -1238,7 +1238,7 @@ rule <semantics_declaration>
     end repeat ;
   #--- Verify that all inherited messages are defined
     foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
-      if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
+      if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
         error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
       end if ;
   end foreach ;
@@ -1282,8 +1282,8 @@ label importSemantics
   @lstring nomClasseAbstraite ;
   $type_name$ ? nomClasseAbstraite ;
   select
-    if not ([tableEnAvant hasKey !nomClasseAbstraite] |
-            [ioComponentSemanticsEntitiesMap hasKey !nomClasseAbstraite]) then
+    if not ([tableEnAvant hasKey ![nomClasseAbstraite value]] |
+            [ioComponentSemanticsEntitiesMap hasKey ![nomClasseAbstraite value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
       insert tableEnAvant.insertKey nomClasseAbstraite (!t) ;
       insert tableEnAvantAimplementer.insertKey nomClasseAbstraite (!t) ;
@@ -1331,7 +1331,7 @@ label importSemantics
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey !nomMessage] then
+      if not [inheritedMessageMap hasKey ![nomMessage value]] then
         insert messageMapForHeirs.insertKey nomMessage () ;
       end if ; 
       insert tableMessagesClasseConcrete.insertKey nomMessage (!messageText) ;
@@ -1380,7 +1380,7 @@ label importSemantics
     end repeat ;
   #--- Verify that all inherited messages are defined
     foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
-      if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
+      if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
         error here : "the message '" .  [nomMessageAbstrait value] . "' is not defined" ;
       end if ;
   end foreach ;
@@ -1425,7 +1425,7 @@ rule <semantics_declaration>
   @lstring nomClasseNonAbstraite ;
   $type_name$ ? nomClasseNonAbstraite ;
 #--- Vérifier que cette classe n'a pas été prédéclarée
-  if [tableEnAvant hasKey !nomClasseNonAbstraite] then
+  if [tableEnAvant hasKey ![nomClasseNonAbstraite value]] then
     error nomClasseNonAbstraite : "a non abstract class cannot be predeclared" ; 
   end if ;
 #--- Parse super class name
@@ -1499,7 +1499,7 @@ rule <semantics_declaration>
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey !nomMessage] then
+      if not [inheritedMessageMap hasKey ![nomMessage value]] then
         insert messageMapForHeirs.insertKey nomMessage () ;
       end if ; 
       insert tableMessagesClasseConcrete.insertKey nomMessage (!messageText) ; 
@@ -1525,7 +1525,7 @@ rule <semantics_declaration>
   end block () ;
 #--- Verify that all inherited messages are defined
   foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
-    if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
+    if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
       error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
     end if ;
   end foreach ;
@@ -1567,7 +1567,7 @@ label importSemantics
   @lstring nomClasseNonAbstraite ;
   $type_name$ ? nomClasseNonAbstraite ;
 #--- Vérifier que cette classe n'a pas été prédéclarée
-  if [tableEnAvant hasKey !nomClasseNonAbstraite] then
+  if [tableEnAvant hasKey ![nomClasseNonAbstraite value]] then
     error nomClasseNonAbstraite : "a non abstract class cannot be predeclared" ; 
   end if ;
 #--- Parse super class name
@@ -1641,7 +1641,7 @@ label importSemantics
       @lstring messageText ;
       $literal_string$ ?messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey !nomMessage] then
+      if not [inheritedMessageMap hasKey ![nomMessage value]] then
         insert messageMapForHeirs.insertKey nomMessage () ;
       end if ; 
       insert tableMessagesClasseConcrete.insertKey nomMessage (! messageText) ; 
@@ -1668,7 +1668,7 @@ label importSemantics
   end block () ;
 #--- Verify that all inherited messages are defined
   foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
-    if not [tableMessagesClasseConcrete hasKey !nomMessageAbstrait] then
+    if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
       error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
     end if ;
   end foreach ;
@@ -2533,7 +2533,7 @@ rule <extract_instruction>
                 ?*)
              error nomClasse : messageGalgasType ;
 #--- Verify class is an heir of variable type
-  if not [tableDesClassesAncetres hasKey !nomTypeSource] then
+  if not [tableDesClassesAncetres hasKey ![nomTypeSource value]] then
     error nomClasse : "This class does not inherit from '@" . [nomTypeSource value] . "'" ;
   end if ;
 #--- Arguments
@@ -2614,7 +2614,7 @@ rule <extract_instruction>
                    ?*)
               error nomType1 : messageGalgasType ;
       #--- Verify class is an heir of variable type
-        if not [tableDesClassesAncetresType1 hasKey !nomTypeSource] then
+        if not [tableDesClassesAncetresType1 hasKey ![nomTypeSource value]] then
           error nomType1 : "This class does not inherit from '@" . [nomTypeSource value] . "'" ;
         end if ;
       #--- Arguments du type 1
@@ -2969,9 +2969,8 @@ rule <semantic_instruction>
   @lstring nomTypeUtilisateur ;
   @typeListeAttributsSemantiques listeAttributsSemantiques ;
   @typeTableMethodesInsererChercher insertMethodMap ;
-  @AC_galgasType mapKeyType ;
   extract typeVariableTable->@typeGalgasMapType  (?nomTypeUtilisateur ?listeAttributsSemantiques
-                                                 ?insertMethodMap ?* ?* ?* ?mapKeyType)
+                                                 ?insertMethodMap ...)
                               error nomTable : messageGalgasType ;
 #--- Insert method
   $.$ ;
@@ -2983,7 +2982,8 @@ rule <semantic_instruction>
   @typeCplusPlusName nomCppVariableClef ;
   @lstring nomVariableClef ;
   <read_access> ?nomVariableClef ?nomCppVariableClef ?typeVariableClef !?ioVariablesMap ;
-  checkAssignmentTypesCompatibility !mapKeyType !typeVariableClef !here ;
+  @AC_galgasType keyType := [@typeGalgas_lstring new] ;
+  checkAssignmentTypesCompatibility !keyType !typeVariableClef !here ;
 #--- Parameters list
   @typeCplusPlusNameList listeNomCppParametresEffectifs ;
   <output_parameters_list> ?listeNomCppParametresEffectifs !listeAttributsSemantiques !?ioVariablesMap ;
@@ -3027,11 +3027,10 @@ rule <semantic_instruction>
   @lstring nomTypeUtilisateur ;
   @typeListeAttributsSemantiques listeAttributsSemantiques ;
   @typeTableMethodesInsererChercher searchMethodMap ;
-  @AC_galgasType mapKeyType ;
   extract typeVariableTable->@typeGalgasMapType
                           (?nomTypeUtilisateur ?listeAttributsSemantiques
                           ?* ?searchMethodMap
-                          ?* ?* ?mapKeyType) error nomTable : messageGalgasType ;
+                          ...) error nomTable : messageGalgasType ;
 #--- Search method
   $.$ ;
   @lstring nomMethodeRecherche ;
@@ -3042,7 +3041,8 @@ rule <semantic_instruction>
   @typeCplusPlusName nomCppVariableClef ;
   @lstring nomVariableClef ;
   <read_access> ?nomVariableClef ?nomCppVariableClef ?typeVariableClef !?ioVariablesMap ;
-  checkAssignmentTypesCompatibility !mapKeyType !typeVariableClef !here ;
+  @AC_galgasType keyType := [@typeGalgas_lstring new] ;
+  checkAssignmentTypesCompatibility !keyType !typeVariableClef !here ;
 #--- Parameters list
   @L_assignedVariables listeParametresEffectifs ;
   @typeCplusPlusNameList allVariablesList ;
@@ -3375,7 +3375,7 @@ rule <semantic_instruction>
         @string typeName ;
         @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
         extract variableType :
-        when @typeGalgasMapType (??@lstring kTypeName ??* ??* ??* ??* ??* ??*) ->
+        when @typeGalgasMapType (??@lstring kTypeName ...) ->
           typeName := [kTypeName value] ;
           localConstantBuildStyleEnum := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
         when @typeGalgasListType (??@lstring kTypeName ??*) ->
@@ -3516,7 +3516,7 @@ rule <parse_match_case>
 #--- Verify class is an heir of variable type
   if inIsEnumeration then
     error outTypeName : "a constant of '@" . [inTypeName value] . "' enumeration type is expected here" ;
-  elsif not [tableDesClassesAncetresType1 hasKey !inTypeName] then
+  elsif not [tableDesClassesAncetresType1 hasKey ![inTypeName value]] then
     error outTypeName : "This type does not inherit from '" . [inTypeName value] . "'" ;
   end if ;
 #--- Arguments
@@ -3864,8 +3864,8 @@ rule <semantics_declaration>
   $type_name$ ? nomTable ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey !nomTable]
-         | [ioComponentSemanticsEntitiesMap hasKey !nomTable]) then
+    if not ([tableEnAvant hasKey ![nomTable value]]
+         | [ioComponentSemanticsEntitiesMap hasKey ![nomTable value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
       insert tableEnAvant.insertKey nomTable (!t) ;
       insert tableEnAvantAimplementer.insertKey nomTable (!t) ;
@@ -3945,13 +3945,6 @@ rule <semantics_declaration>
       $;$ ;
       insert tableMethodesBloc.insertKey nomMethode (!signatureDebut !signatureFin) ;
     end repeat ;
-  #--- Key type declaration
-    $key$ ;
-    @lstring typeName ;
-    @AC_galgasType typeDefinition ;
-    <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
-    [typeDefinition acceptToBeKeyForMap] ;
-    $;$ ;
   #--- Attributs de la map
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
@@ -3968,9 +3961,7 @@ rule <semantics_declaration>
                                                        !listeTousAttributsSemantiques
                                                        !insertMethodMap
                                                        !searchMethodMap
-                                                       !tableMethodesBloc
-                                                       !typeName
-                                                       !typeDefinition] ;
+                                                       !tableMethodesBloc] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
   #--- Insertion dans la map des classes définies dans le fichier source courant
@@ -3980,8 +3971,7 @@ rule <semantics_declaration>
                                                                          !cppClassName
                                                                          !insertMethodMap
                                                                          !searchMethodMap
-                                                                         !tableMethodesBloc
-                                                                         !typeName] ;
+                                                                         !tableMethodesBloc] ;
     listeEntitesAengendrer += !def ;
     $end$ ;
     $map$ ;
@@ -4033,19 +4023,12 @@ rule <semantics_declaration>
     if [stateValues count] > 0 then
       foreach insertMethodMap (??@lstring kInsertMethod ??* ??* ??* ??@transitionStatusMap kTransitionStatusMap) :
         foreach insertMethodMap (??@lstring kSearchMethod ??* ??* ??* ??*) :
-          if not [kTransitionStatusMap hasKey !kSearchMethod] then
+          if not [kTransitionStatusMap hasKey ![kSearchMethod value]] then
             error kInsertMethod : "This insert method does not define the '" . [kSearchMethod value] . "' transition" ;
           end if ;
         end foreach ;
       end foreach ;
     end if ;
-  #--- Key type declaration
-    $key$ ;
-    @lstring typeName ;
-    @AC_galgasType typeDefinition ;
-    <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
-    [typeDefinition acceptToBeKeyForMap] ;
-    $;$ ;
   #--- Attributs de la map
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
@@ -4062,9 +4045,7 @@ rule <semantics_declaration>
                                                 !listeTousAttributsSemantiques
                                                 !insertMethodMap
                                                 !searchMethodMap
-                                                !tableMethodesBloc
-                                                !typeName
-                                                !typeDefinition] ;
+                                                !tableMethodesBloc] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
   #--- Insertion dans la map des classes définies dans le fichier source courant
@@ -4073,8 +4054,7 @@ rule <semantics_declaration>
                                                         !listeTousAttributsSemantiques
                                                         !listeTypeeAttributsExternesCourants
                                                         !insertMethodMap
-                                                        !searchMethodMap
-                                                        !typeName] ;
+                                                        !searchMethodMap] ;
     listeEntitesAengendrer += !def ;
     $end$ ;
     $map$ ;
@@ -4092,7 +4072,7 @@ label importSemantics
   $type_name$ ? nomTable ;
   select
     $;$ ;
-    if not([tableEnAvant hasKey !nomTable] | [ioComponentSemanticsEntitiesMap hasKey !nomTable]) then
+    if not([tableEnAvant hasKey ![nomTable value]] | [ioComponentSemanticsEntitiesMap hasKey ![nomTable value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
       insert tableEnAvant.insertKey nomTable (!t) ;
       insert tableEnAvantAimplementer.insertKey nomTable (!t) ;
@@ -4168,13 +4148,6 @@ label importSemantics
       $;$ ;
       insert tableMethodesBloc.insertKey nomMethode (!signatureDebut !signatureFin) ;
     end repeat ;
-  #--- Déclaration du type de la key
-    $key$ ;
-    @lstring typeName ;
-    @AC_galgasType typeDefinition ;
-    <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
-    [typeDefinition acceptToBeKeyForMap] ;
-    $;$ ;
   #--- Attributs de la map
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
@@ -4192,9 +4165,7 @@ label importSemantics
                                                        !listeTousAttributsSemantiques
                                                        !insertMethodMap
                                                        !searchMethodMap
-                                                       !tableMethodesBloc
-                                                       !typeName
-                                                       !typeDefinition] ;
+                                                       !tableMethodesBloc] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
     $end$ ;
@@ -4239,13 +4210,6 @@ label importSemantics
       @transitionStatusMap  transitionStatusMap [empty] ;
       insert searchMethodMap.insertKey nomMethode (!listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap) ;
     end repeat ;
-  #--- Key type declaration
-    $key$ ;
-    @lstring typeName ;
-    @AC_galgasType typeDefinition ;
-    <type_parsing> !?ioComponentSemanticsEntitiesMap ?typeDefinition ?typeName ;
-    [typeDefinition acceptToBeKeyForMap] ;
-    $;$ ;
   #--- Map attributes
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
@@ -4263,9 +4227,7 @@ label importSemantics
                                                        !listeTousAttributsSemantiques
                                                        !insertMethodMap
                                                        !searchMethodMap
-                                                       !tableMethodesBloc
-                                                       !typeName
-                                                       !typeDefinition] ;
+                                                       !tableMethodesBloc] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     insert ioComponentSemanticsEntitiesMap.insertKey nomTable (!entite) ;
     $end$ ;
@@ -4351,7 +4313,7 @@ rule <semantics_declaration>
   $type_name$ ? nomListe ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey !nomListe] | [ioComponentSemanticsEntitiesMap hasKey !nomListe]) then
+    if not ([tableEnAvant hasKey ![nomListe value]] | [ioComponentSemanticsEntitiesMap hasKey ![nomListe value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedListType new !nomListe] ;
       insert tableEnAvant.insertKey nomListe (!t) ;
       insert tableEnAvantAimplementer.insertKey nomListe (!t) ;
@@ -4393,7 +4355,7 @@ label importSemantics
   $type_name$ ? nomListe ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey !nomListe] | [ioComponentSemanticsEntitiesMap hasKey !nomListe]) then
+    if not ([tableEnAvant hasKey ![nomListe value]] | [ioComponentSemanticsEntitiesMap hasKey ![nomListe value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedListType new !nomListe] ;
       insert tableEnAvant.insertKey nomListe (!t) ;
       insert tableEnAvantAimplementer.insertKey nomListe (!t) ;
@@ -4757,7 +4719,7 @@ rule <formal_argument_type>
   !@lstring outGalgasTypeName 
 :
   $type_name$ ? outGalgasTypeName ;
-  if [ioComponentSemanticsEntitiesMap hasKey !outGalgasTypeName] then
+  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName value]] then
     @AC_semanticsEntity entite ;
     search ioComponentSemanticsEntitiesMap.searchKey outGalgasTypeName (?entite) ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
@@ -4780,7 +4742,7 @@ rule <formal_argument_type>
 :
   $list$ ;
   $type_name$ ? outGalgasTypeName ;
-  if [ioComponentSemanticsEntitiesMap hasKey !outGalgasTypeName] then
+  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName value]] then
     @AC_semanticsEntity entite ;
     search ioComponentSemanticsEntitiesMap.searchKey outGalgasTypeName (?entite) ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
@@ -4805,7 +4767,7 @@ rule <formal_argument_type>
 :
   $map$ ;
   $type_name$ ? outGalgasTypeName ;
-  if [ioComponentSemanticsEntitiesMap hasKey !outGalgasTypeName] then
+  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName value]] then
     @AC_semanticsEntity entite ;
     search ioComponentSemanticsEntitiesMap.searchKey outGalgasTypeName (?entite) ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
@@ -4831,7 +4793,7 @@ rule <formal_argument_type>
   $abstract$ ;
   $class$ ;
   $identifier$ ? outGalgasTypeName ;
-  if [ioComponentSemanticsEntitiesMap hasKey !outGalgasTypeName] then
+  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName value]] then
     @AC_semanticsEntity entite ;
     search ioComponentSemanticsEntitiesMap.searchKey outGalgasTypeName (?entite) ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;

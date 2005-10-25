@@ -38,7 +38,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
                        C_Lexique & /* inLexique */) {
   inHfile.writeTitleComment (C_String ("DECLARATIONS FOR MAP '") + aNomTable + "'") ;
 
-//--- Début de la déclaration de la classe table
+//--- Starting map element class declaration
   inHfile << "class e_" << aNomTable << " {\n" ;
 
 //--- declarer les attributs
@@ -52,7 +52,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //--- declaration des attributs externes
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 
-  inHfile << "} ;\n\n" ; //--- Fin de la déclaration de la classe e_...
+  inHfile << "} ;\n\n" ; //--- End of map element class declaration e_...
 
 //---------------------- map class declaration -----------------
 
@@ -72,19 +72,14 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "//------------------------ Internal class for an element\n"
              "  public : class element_type : public AC_galgas_map_element {\n"
              "  //--- Constructor\n"
-             "    public : element_type (const GGS_" << mKeyTypeName << " & inKey,\n"
+             "    public : element_type (const GGS_lstring & inKey,\n"
              "                           const sint32 inIndex,\n"
              "                           const e_" << aNomTable << " & inInfo) ;\n"
-             "  //--- Method for key compare\n"
-             "    public : virtual sint32 compareKeys (void * inKey) const ;\n"
-             "  //--- Method for getting key as C_String\n"
-             "    public : virtual C_String stringForKey (void) const ;\n"
              "  //--- Get pointers\n"
              "    public : inline element_type * nextObject (void) const { return (element_type *) mNextItem ; }\n"
              "    public : inline element_type * infObject (void) const { return (element_type *) mInfPtr ; }\n"
              "    public : inline element_type * supObject (void) const { return (element_type *) mSupPtr ; }\n"
              "  //--- Data members\n"
-             "    public : const GGS_" << mKeyTypeName << " mKey ;\n"
              "    public : e_" << aNomTable << " mInfo ;\n"
              "  } ;\n"
              "//--- Get pointers\n"
@@ -92,17 +87,15 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }\n"
              "  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }\n"
              "//--- Create a new element\n"
-             "  protected : virtual AC_galgas_map_element * new_element (void * inKey, void * inInfo) ;\n"
+             "  protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;\n"
              "//--- 'empty' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_empty (void) ;\n"
-             "//--- 'hasKey' reader\n"
-             "  public : GGS_bool reader_hasKey (const GGS_" << mKeyTypeName << " & inKey) const ;\n"
              "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n"
              "//--- Insert an element\n"
              "  public : void insertElement (C_Lexique & inLexique,\n"
              "                               const char * inErrorMessagesArray [],\n"
-             "                               const GGS_" << mKeyTypeName << " & inKey,\n" ;
+             "                               const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
   sint32 index = 0 ;
   while (current != NULL) {
@@ -117,7 +110,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Search for an element\n"
              "  public : void searchElement (C_Lexique & inLexique,\n"
              "                               const char * inErrorMessagesArray [],\n"
-             "                               const GGS_" << mKeyTypeName << " & inKey,\n" ;
+             "                               const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
   index = 0 ;
   while (current != NULL) {
@@ -140,7 +133,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
             << methodeCourante->mKey << "_" << aNomTable
             << " (C_Lexique & inLexique"
             << ",\n                                GGS_" << aNomTable << " & ioMap"
-            << ",\n                                const GGS_" << mKeyTypeName << " & inKey" ;
+            << ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
     while (current != NULL) {
@@ -164,7 +157,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
             << methodeCourante->mKey << "_" << aNomTable
             << " (C_Lexique & inLexique" 
                ",\n                                GGS_" << aNomTable << " & ioMap"
-               ",\n                                const GGS_" << mKeyTypeName << " & inKey" ;
+               ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
     while (current != NULL) {
@@ -207,45 +200,22 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Constructor for type element
   inCppFile << "GGS_" << aNomTable << "::element_type::\n"
-               "element_type (const GGS_" << mKeyTypeName << " & inKey,\n"
+               "element_type (const GGS_lstring & inKey,\n"
                "              const sint32 inIndex,\n"
                "              const e_" << aNomTable << " & inInfo) :\n"
-               "AC_galgas_map_element (inIndex),\n"
-               "mKey (inKey),\n"
+               "AC_galgas_map_element (inKey, inIndex),\n"
                "mInfo (inInfo) {\n"
                "}\n\n" ;
 
 //--- 'new_element' method
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "AC_galgas_map_element * GGS_" << aNomTable << "::\n"
-               "new_element (void * inKey, void * inInfo) {\n"
-               "  MF_Assert (reinterpret_cast <GGS_" << mKeyTypeName << " *> (inKey) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
+               "new_element (const GGS_lstring & inKey, void * inInfo) {\n"
                "  MF_Assert (reinterpret_cast <e_" << aNomTable << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  AC_galgas_map_element * p = NULL ;\n"
-               "  GGS_" << mKeyTypeName << " * key = (GGS_" << mKeyTypeName << " *) inKey ;\n"
                "  e_" << aNomTable << " * info = (e_" << aNomTable << " *) inInfo ;\n"
-               "  macroMyNew (p, element_type (* key, count (), * info)) ;\n"
+               "  macroMyNew (p, element_type (inKey, count (), * info)) ;\n"
                "  return p ;\n"
-               "}\n\n" ;
-
-//--- 'compareKeys' method
-  inCppFile.writeHyphenLineComment () ;
-  inCppFile << "sint32 GGS_" << aNomTable << "::element_type::compareKeys (void * inKey) const {\n"
-               "  MF_Assert (reinterpret_cast <GGS_" << mKeyTypeName << " *> (inKey) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
-               "  GGS_" << mKeyTypeName << " * key = (GGS_" << mKeyTypeName << " *) inKey ;\n"
-               "  return mKey.compare_key_for_map (* key) ;\n"
-               "}\n\n" ;
-
-//--- 'reader_hasKey' method
-  inCppFile.writeHyphenLineComment () ;
-  inCppFile << "C_String GGS_" << aNomTable << "::element_type::stringForKey (void) const {\n"
-               "  C_String result ;\n" ;
-  if (mKeyTypeName.compare ("lstring") == 0) {
-    inCppFile << "  result << mKey ;\n" ;
-  }else if (mKeyTypeName.compare ("luint") == 0) {
-    inCppFile << "  result << mKey.uintValue () ;\n" ;
-  }
-  inCppFile << "  return result ;\n"
                "}\n\n" ;
 
 //--- 'constructor_empty' static method
@@ -256,12 +226,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  return result ;\n"
                "}\n\n" ;
 
-//--- 'reader_hasKey' method
-  inCppFile.writeHyphenLineComment () ;
-  inCppFile << "GGS_bool GGS_" << aNomTable << "::reader_hasKey (const GGS_" << mKeyTypeName << " & inKey) const {\n"
-               "  return GGS_bool (isBuilt (), internal_has_key ((void *) & inKey)) ;\n"
-               "}\n\n" ;
-
 //--- 'internalInsertForDuplication' method
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::internalInsertForDuplication (AC_galgas_map_element * inPtr) {\n"
@@ -269,7 +233,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  element_type * p = (element_type *) inPtr ;\n"
                "  bool extension = false ; // Unused here\n"
                "  sint32 index = -1 ; // Unused here\n"
-               "  internalInsert ((void * ) & p->mKey, (void *) & p->mInfo, mRoot, extension, index) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, mRoot, extension, index) ;\n"
                "}\n\n" ;
 
 //--- 'insertElement' method
@@ -277,7 +241,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "void GGS_" << aNomTable << "::\n"
                "insertElement (C_Lexique & inLexique,\n"
                "               const char * inErrorMessagesArray [],\n"
-               "               const GGS_" << mKeyTypeName << " & inKey,\n" ;
+               "               const GGS_lstring & inKey,\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 index = 0 ;
   while (current != NULL) {
@@ -306,7 +270,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    bool extension = false ; // Unused here\n"
-               "    internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;\n"
+               "    internalInsert (inKey, (void *) & info, mRoot, extension, index) ;\n"
                "    if (index < 0) {\n"
                "      C_String keyString ;\n"
                "      keyString << inKey ;\n"
@@ -323,7 +287,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "void GGS_" << aNomTable << "::\n"
                "searchElement (C_Lexique & inLexique,\n"
                "               const char * inErrorMessagesArray [],\n"
-               "               const GGS_" << mKeyTypeName << " & inKey,\n" ;
+               "               const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
   index = 0 ;
   while (current != NULL) {
@@ -337,7 +301,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "               GGS_luint * outIndex) {\n"
                "  element_type * node = NULL  ;\n"
                "  if (isBuilt () && inKey.isBuilt ()) {\n"
-               "    AC_galgas_map_element * p = internal_search ((void *) & inKey) ;\n"
+               "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (element_type *) p ;\n"
                "    if (node == NULL) {\n"
@@ -381,7 +345,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << methodeCourante->mKey << "_" << aNomTable
               << " (C_Lexique & inLexique"
                  ",\n                                GGS_" << aNomTable << " & ioMap"
-                 ",\n                                const GGS_" << mKeyTypeName << " & inKey" ;
+                 ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
     while (current != NULL) {
@@ -422,7 +386,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << methodeCourante->mKey << "_" << aNomTable
               << " (C_Lexique & lexique_var_"
                  ",\n                                GGS_" << aNomTable << " & ioMap"
-                 ",\n                                const GGS_" << mKeyTypeName << " & inKey" ;
+                 ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
     while (current != NULL) {
@@ -499,7 +463,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile.writeTitleComment (C_String ("map '") + aNomTable + "'") ;
 
   inHfile << "typedef "  << aNomClasseGenerique
-          << " <e_" << aNomTable << ", GGS_" << mKeyTypeName << "> "
+          << " <e_" << aNomTable << ", GGS_lstring> "
              "GGS_" << aNomTable << " ;\n" ;
 
 //--- Declaring search methods
@@ -511,7 +475,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
             << methodeCourante->mKey << "_" << aNomTable
             << " (C_Lexique & inLexique"
                ",\n                                GGS_" << aNomTable << " & ioMap"
-               ",\n                                const GGS_" << mKeyTypeName << " & inKey" ;
+               ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
     while (current != NULL) {
@@ -535,7 +499,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
             << methodeCourante->mKey << "_" << aNomTable
             << " (C_Lexique & inLexique" 
                ",\n                                GGS_" << aNomTable << " & ioMap"
-               ",\n                                const GGS_" << mKeyTypeName << " & inKey" ;
+               ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
     while (current != NULL) {
@@ -580,7 +544,7 @@ void cPtr_typeDefinitionTableAimplementer
 //--- Instanciate the template
   inCppFile << "template class "
             << aNomClasseGenerique
-            << " <e_" << aNomTable << ", GGS_" << mKeyTypeName << "> ;\n\n" ;
+            << " <e_" << aNomTable << ", GGS_lstring> ;\n\n" ;
 
 //--- Engendrer l'implémentation de la methode 'isBuilt' de l'élément de table
   inCppFile.writeHyphenLineComment () ;
@@ -623,7 +587,7 @@ void cPtr_typeDefinitionTableAimplementer
               << methodeCourante->mKey << "_" << aNomTable
               << " (C_Lexique & inLexique"
                  ",\n                                GGS_" << aNomTable << " & ioMap"
-                 ",\n                                const GGS_" << mKeyTypeName << " & inKey" ;
+                 ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
     while (current != NULL) {
@@ -698,7 +662,7 @@ void cPtr_typeDefinitionTableAimplementer
               << methodeCourante->mKey << "_" << aNomTable
               << " (C_Lexique & lexique_var_"
                  ",\n                                GGS_" << aNomTable << " & ioMap"
-                 ",\n                                const GGS_" << mKeyTypeName << " & inKey" ;
+                 ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
     while (current != NULL) {

@@ -137,13 +137,13 @@ rule <galgas_component>
     end select ;
     $;$ ;
     if [typeName value] == "bool" then
-      if [uintOptionsMap hasKey !typeName] then
+      if [uintOptionsMap hasKey ![typeName value]] then
         error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
       else
         insert boolOptionsMap.insertKey optionName (!optionChar !optionString !optionComment !defaultValue) ;
       end if ;
     elsif [typeName value] == "uint" then
-      if [boolOptionsMap hasKey !typeName] then
+      if [boolOptionsMap hasKey ![typeName value]] then
         error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
       else
         insert uintOptionsMap.insertKey optionName (!optionChar !optionString !optionComment !defaultValue) ;
@@ -331,13 +331,13 @@ label importOptions
     end select ;
     $;$ ;
     if [typeName value] == "bool" then
-      if [uintOptionsMap hasKey !typeName] then
+      if [uintOptionsMap hasKey ![typeName value]] then
         error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
       else
         insert boolOptionsMap.insertKey optionName (!optionChar !optionString !optionComment !defaultValue) ;
       end if ;
     elsif [typeName value] == "uint" then
-      if [boolOptionsMap hasKey !typeName] then
+      if [boolOptionsMap hasKey ![typeName value]] then
         error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
       else
         insert uintOptionsMap.insertKey optionName (!optionChar !optionString !optionComment !defaultValue) ;

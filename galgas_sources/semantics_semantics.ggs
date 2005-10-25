@@ -114,7 +114,6 @@ end class ;
 map @typeClassMessagesMap
   insert insertKey error message "the message '" . * . "' is already declared" ;
   search searchKey error message "the message '" . * . "' is not declared" ;
-  key @lstring ;
   @lstring mMessage ;
 end map ;
 
@@ -161,9 +160,7 @@ map @typeVariablesMap
   block  testPart : () : (?@location positionErreur) ;
   block  repeatBlock : () : () ;
   block  repeatPart : () : (?@location positionErreur) ;
-#--- Key
-  key @lstring ;
-#--- Attribut
+#--- Attributes
   @AC_galgasType mArgumentType ;
   @typeCplusPlusName mCplusPlusName ;
 end map ;
@@ -249,7 +246,6 @@ map @typeTableMethodesAimplementer
   class cTableMethodesAimplementer in "cTableMethodesAimplementer.h", "cTableMethodesAimplementer.hh" ;
   insert insertAbstract error message "the method '%' is already declared" ;
   insert insertNotAbstract error message "the method '%' is already declared" ;
-  key @lstring ;
   @L_signature aListeTypesParametres ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
   @typeInstructionsList mInstructionsList ;
@@ -613,7 +609,6 @@ end class ;
 
 map @typeTableRoutinesAimplementer
   insert insertKey error message "the routine '" . * . "' is already declared" ;
-  key @lstring ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -625,7 +620,6 @@ end map ;
 map @typeTableAttributsSemantiques
   insert insertKey error message "the attribute '" . * . "' is already declared" ;
   search searchKey error message "the attribute '" . * . "' is not declared" ;
-  key @lstring ;
   @typeCplusPlusName aNomCppAttribut ;
   @AC_galgasType mAttributType ;
 end map ;
@@ -728,7 +722,7 @@ routine checkAssignmentTypesCompatibility
   when @typeGalgasClassType (??@lstring attNomType1 ??* ??* ??* ??* ??* ??*)
     :: @typeGalgasClassType (??@lstring attNomType2 ??* ??* ??@typeSuperClassesMap attAncestorClassesMap2 ??* ??* ??*) :
     if [attNomType1 value] == [attNomType2 value] then
-    elsif not [attAncestorClassesMap2 hasKey !attNomType1] then
+    elsif not [attAncestorClassesMap2 hasKey ![attNomType1 value]] then
       error inErrorLocation : "The '" . [attNomType2 value] .
                               "' does not inherit from '" . [attNomType2 value] . "' class" ;
     end if ;
@@ -1064,7 +1058,6 @@ end class ;
 
 map @typeTableNomRoutinesDeclarees
   insert insertKey error message "the routine '" . * . "' is already declared" ;
-  key @lstring ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -1120,7 +1113,6 @@ class @typeDefinitionTableAimplementer extends @typeEntityToGenerate
   @typeTableMethodesInsererChercher aTableMethodesInserer ;
   @typeTableMethodesInsererChercher aTableMethodesChercher ;
   @typeTableBlocsDeTable aTableMethodesSurcharger ;
-  @lstring mKeyTypeName ;
 end class ;
 
 #---------------------------------------------------------------------------*
@@ -1128,7 +1120,6 @@ end class ;
 map @stateMap
   insert insertKey error message "the '" . * . "' state is already declared"  ;
   search searchKey error message "the '" . * . "' state is not declared" ;
-  key @lstring ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -1140,7 +1131,6 @@ class @C_mapToImplement extends @typeEntityToGenerate
   @L_nameWithType mExternAttributesList ;
   @typeTableMethodesInsererChercher aTableMethodesInserer ;
   @typeTableMethodesInsererChercher aTableMethodesChercher ;
-  @lstring mKeyTypeName ;
 end class ;
 
 #---------------------------------------------------------------------------*
@@ -1311,7 +1301,6 @@ end routine ;
 map @typeEnumCstMessageStringMap
   insert insertKey error message "the message for '" . * . "' constant is already declared" ;
   search searchKey error message "the message for '" . * . "' constant is not declared" ;
-  key @lstring ;
   @lstring mMessageString ;
 end map ;
 

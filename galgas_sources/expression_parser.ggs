@@ -789,10 +789,10 @@ rule <factor>
     $.$ ;
     @lstring optionName ;
     $identifier$ ? optionName ;
-    if [boolOptionsMap hasKey !optionName] then
+    if [boolOptionsMap hasKey ![optionName value]] then
       outExpression := [@typeBoolOption new !optionComponentName !optionName] ;
       outResultType := [@typeGalgas_bool new] ;
-    elsif [uintOptionsMap hasKey !optionName] then
+    elsif [uintOptionsMap hasKey ![optionName value]] then
       outExpression := [@typeUIntOption new !optionComponentName !optionName] ;
       outResultType := [@typeGalgas_uint new] ;
     else
