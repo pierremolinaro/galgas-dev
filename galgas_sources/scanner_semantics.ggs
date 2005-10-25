@@ -25,7 +25,6 @@ import semantics common_semantics in "common_semantics.ggs" ;
 map @typeLexicalAttributesMap
   insert insertKey error message "the lexical attribute '" . * . "' is already declared" ;
   search searchKey error message "the lexical attribute '" . * . "' is not declared" ;
-  key @lstring ;
   @AC_galgasType attributType ;
 end map ;
 
@@ -34,9 +33,9 @@ end map ;
 map @lexicalTypeMap
   insert insertKey error message "--- internal error ---" ;
   search searchKey error message "there is no type named '%'" ;
-  key @lstring ;
   @AC_galgasType mAttributType ;
 end map ;
+
 #------------------------------------------------------------------*
 #                       Table des messages d'erreurs               *
 #------------------------------------------------------------------*
@@ -44,7 +43,6 @@ end map ;
 map @typeTableMessagesErreurs
   insert insertKey error message "the error message '" . * . "' is already declared" ;
   search searchKey error message "the error message '" . * . "' is not declared" ;
-  key @lstring ;
   @lstring mErrorMessage ;
 end map ;
 
@@ -55,7 +53,6 @@ end map ;
 map @M_styles
   insert insertKey error message "the '" . * . "' style is already declared" ;
   search searchKey error message "the '" . * . "' style is not declared" ;
-  key @lstring ;
   @lstring mTitle ;
 end map ;
 
@@ -66,7 +63,6 @@ end map ;
 map @typeTableDefinitionTerminaux
   insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
   search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
-  key @lstring ;
   @string mErrorMessage ;
   @typeListeAttributsSemantiques attributListeDesAttributs ;
   @luint mStyleIndex ;
@@ -79,7 +75,6 @@ end map ;
 map @typeTableMotsReserves 
   insert insertKey error message "the word '" . * . "' is already declared" ;
   search searchKey error message "the word '" . * . "' is not declared" ;
-  key @lstring ;
   @lstring attributNomTerminal ;
 end map ;
 
@@ -88,7 +83,6 @@ end map ;
 map @typeTableTablesDeMotsReserves
   insert insertKey error message "the word map '" . * . "' is already declared" ;
   search searchKey error message "the mord map '" . * . "' is not declared" ;
-  key @lstring ;
   @typeTableMotsReserves attributSimpleTable ;
 end map ;
 

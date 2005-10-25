@@ -122,7 +122,6 @@ end class ;
 map @typeAltProductionsMap
   insert insertKey error message "the '" . * . "' label has been already declared" ;
   search searchKey error message "the '" . * . "' label is not declared" ;
-  key @lstring ;
   @typeListeTypesEtNomsArgMethode aListeDeTypesEffectifs ;
   @typeInstructionsList mAllInstructionsList ;
   @L_ruleSyntaxSignature mSyntaxSignature ;

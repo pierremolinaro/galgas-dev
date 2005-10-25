@@ -227,7 +227,6 @@ end list ;
 map @M_accessors_map
   insert insertKey error message "the '" . * . "' accessor has been already declared" ;
   search searchKey error message "the '" . * . "' accessor is not declared" ;
-  key @lstring ;
   @L_signature mAccessorSignature ;
   @AC_galgasType mReturnedType ;
 end map ;
@@ -607,7 +606,6 @@ map @typeTableMethodes
   search searchForOverride error message "the reader '%' cannot be overriden : it is not declared in superclass" ;
 
   block definitionClasseNonAbstraite : () : () ;
-  key @lstring ;
   @L_signature aListeTypesParametres ;
 end map ;
 
@@ -642,7 +640,6 @@ end class ;
 map @M_externTypeConstructorMap
   insert insertKey error message "the '" . * . "' constructor is already declared" ;
   search searchKey error message "the '" . * . "' constructor is not declared" ;
-  key @lstring ;
   @typeListeAttributsSemantiques aListeDesAttributs ;
 end map ;
 
@@ -720,7 +717,6 @@ end class ;
 map @M_terminalSymbolsMapForUse
   insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
   search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
-  key @lstring ;
   @typeListeAttributsSemantiques aListeDesAttributs ;
 end map ;
 
@@ -733,7 +729,6 @@ end map ;
 map @M_lexiqueComponents
   insert insertKey error message"the '" . * . "' lexique is already declared" ;
   search searchKey error message"the '" . * . "' lexique is not defined" ;
-  key @lstring ;
   @M_terminalSymbolsMapForUse mTerminalSymbolMap ;
 end map ;
 
@@ -746,7 +741,6 @@ end map ;
 map @typeTableEnAvant
   insert insertKey error message "the type '" . * . "' is already declared" ;
   search searchKey error message "the type '" . * . "' is not declared" ;
-  key @lstring ;
   @AC_galgasType mType ;
 end map ;
 
@@ -759,7 +753,6 @@ end map ;
 map @M_nonterminalSymbolAlts
   insert insertKey error message "the label '" . * . "' has been already declared" ;
   search searchKey error message "the label '" . * . "' is not declared" ;
-  key @lstring ;
   @L_signature mFormalParametersList ;
 end map ;
 
@@ -772,7 +765,6 @@ end map ;
 map @M_externClassesDirectories
   insert insertKey error message "the extern class '" . * . "' has been already declared" ;
   search searchKey error message "the extern class '" . * . "' is not declared" ;
-  key @lstring ;
   @lstring mDirectory ;
 end map ;
 
@@ -806,7 +798,6 @@ end class ;
 map @M_semanticsEntitiesForUse 
   insert insertKey error message "a semantics entity named '" . * . "' is already declared" ;
   search searchKey error message "there is no semantics entity named '" . * . "'" ;
-  key @lstring ;
   @AC_semanticsEntity aDefEntite ;
 end map ;
 
@@ -825,7 +816,6 @@ end class ;
 map @M_typesForGrammarComponent
   insert insertKey error message "the '" . * . "' type is already declared" ;
   search searchKey error message "the '" . * . "' type is not defined" ;
-  key @lstring ;
   @AC_typeForGrammarComponent mType ;
 end map ;
 
@@ -892,7 +882,6 @@ end list ;
 map @L_grammarsMap
   insert insertKey error message "the '" . * . "' grammar is already defined" ;
   search searchKey error message "the '" . * . "' grammar is not defined" ;
-  key @lstring ;
   @M_nonterminalSymbolAlts mStartSymbolParametersMap ;
 end map ;
 
@@ -913,7 +902,6 @@ end extern ;
 map @M_nonterminalSymbolAltsForGrammar
   insert insertKey error message "the rules label '" . * . "' has been already declared" ;
   search searchKey error message "the rules label '" . * . "' is not declared" ;
-  key @lstring ;
   @L_signature_ForGrammarComponent mFormalParametersList ;
 end map ;
 
@@ -938,7 +926,6 @@ end list ;
 map @M_nonTerminalSymbolsForGrammar
   insert insertKey error message "internal insert error" ;
   search searchKey error message "internal search error" ;
-  key @lstring ;
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
 end map ;
 
@@ -951,7 +938,6 @@ end map ;
 map @M_syntaxComponents
   insert insertKey error message "a syntax component named '" . * . "' is already declared" ;
   search searchKey error message "there is no syntax component named '" . * . "'" ;
-  key @lstring ;
   @M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMap ;
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
   @lstring mLexiqueComponentName ;
@@ -1043,7 +1029,6 @@ end list ;
 
 map @typeSuperClassesMap
   insert insertKey error message "the class '" . * . "' is already a super class of the current class" ;
-  key @lstring ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -1055,7 +1040,6 @@ end map ;
 map @typeClassInheritedMessagesMap
   insert insertKey error message "the message '" . * . "' is already declared" ;
   search searchKey error message "the message '" . * . "' is not declared" ;
-  key @lstring ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -1067,7 +1051,6 @@ end map ;
 map @typeSemanticAttributesMap
   insert insertKey error message "an attribut named '" . * . "' is already declared" ;
   search searchKey error message "there is no attribut named '" . * . "'" ;
-  key @lstring ;
   @AC_galgasType mAttributType ;
 end map ;
 
@@ -1093,7 +1076,6 @@ end list ;
 
 map @transitionStatusMap 
   insert insertKey error message "a transition named '" . * . "' is already declared" ;
-  key @lstring ;
   @lastStateEnum mStatus ;
   @L_stringList mMessageList ;
 end map ;
@@ -1103,7 +1085,6 @@ end map ;
 map @typeTableMethodesInsererChercher
   insert insertKey error message "a method named '" . * . "' is already declared" ;
   search searchKey error message "there is no method named '" . * . "'" ;
-  key @lstring ;
   @L_stringList mErrorMessageList ;
   @string mFirstState ;
   @lastStateList mLastStateList ;
@@ -1235,7 +1216,6 @@ end class ;
 map @typeTableBlocsDeTable
   insert insertKey error message "a block method named '" . * . "' is already declared" ;
   search searchKey error message "there is no block method named '" . * . "'" ;
-  key @lstring ;
   @L_signature aSignatureDebut ;
   @L_signature aSignatureFin ;
 end map ;
@@ -1272,18 +1252,15 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType
 #--- Table de toutes les methodes de surcharge
   @typeTableBlocsDeTable aTableMethodesSurcharger ;
 
-#--- Key definition
-  @lstring mKeyTypeName ;
-  @AC_galgasType mKeyType ;
-
 #--- table object accepts to be enumerated (foreach instruction)
   override
   reader acceptForeachInstruction
     ??@lstring unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
   :
+    @AC_galgasType keyType := [@typeGalgas_lstring new] ;
     outForeachList := [@typeListeAttributsSemantiques empty] ;
-    outForeachList += !mKeyType ![@lstring new !"???" !here] ; # Unused second argument
+    outForeachList += !keyType ![@lstring new !"???" !here] ; # Unused second argument
     foreach mNonExternAttributesList (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
       outForeachList += !kAttributType !kNomAttribut ;
     end foreach ;
@@ -1401,7 +1378,6 @@ end class ;
 
 map @typeTableUtilisationsSemantiques
   insert insertKey error message "--- internal error ---" ;
-  key @lstring ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -1413,7 +1389,6 @@ end map ;
 map @typeEnumConstantesMap
   insert insertKey error message "the '" . * . "' constant is already declared" ;
   search searchKey error message "the '" . * . "' constant is not declared" ;
-  key @lstring ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -1421,7 +1396,6 @@ end map ;
 map @typeEnumMessageMap
   insert insertKey error message "the '" . * . "' message name is already declared" ;
   search searchKey error message "the '" . * . "' message name is not declared" ;
-  key @lstring ;
   @L_lstringList mMessageStringList ;
 end map ;
 
@@ -1554,7 +1528,6 @@ end routine ;
 map @M_cli_options
   insert insertKey error message "the '" . * . "' command line option has been already declared" ;
   search searchKey error message "the '" . * . "' command line option is not declared" ;
-  key @lstring ;
   @lchar mOptionChar ;
   @lstring mOptionString ;
   @lstring mComment ;
@@ -1570,7 +1543,6 @@ end map ;
 map @M_optionComponents
   insert insertKey error message "the '" . * . "' option component named is already declared" ;
   search searchKey error message "there is no '" . * . "' option component" ;
-  key @lstring ;
   @M_cli_options mBoolOptionsMap ;
   @M_cli_options mUintOptionsMap ;
 end map ;
@@ -1584,7 +1556,6 @@ end map ;
 map @M_semanticsComponents
   insert insertKey error message "a semantics component named '" . * . "' is already declared" ;
   search searchKey error message "there is no semantics component named '" . * . "'" ;
-  key @lstring ;
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
   @M_optionComponents mOptionsComponents ;
 end map ;
@@ -1598,7 +1569,6 @@ end map ;
 map @M_grammarComponents
   insert insertKey error message "the '" . * . "' grammar component has been already declared" ;
   search searchKey error message "the '" . * . "' grammar component is not declared" ;
-  key @lstring ;
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
   @lstring mLexiqueName ;
   @M_optionComponents mOptionsMap ;
@@ -1734,10 +1704,11 @@ routine handleReaderCall
       error inMethodName :
          "list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
     end if ;
-  when @typeGalgasMapType (??* ??* ??* ??* ??* ??* ??@AC_galgasType kKeyType) ->
+  when @typeGalgasMapType (...) ->
     if [inMethodName value] == "hasKey" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outAccessorTypesList += !kKeyType ![@lstring new !"" !here] ;
+      @AC_galgasType keyType := [@typeGalgas_string new] ;
+      outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
       outReturnedType := [@typeGalgas_bool new] ;
     elsif [inMethodName value] == "count" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;

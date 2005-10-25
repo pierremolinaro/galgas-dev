@@ -104,6 +104,174 @@
 		CF6E113906269BEC001B909F /* GGS_sint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E113106269BEC001B909F /* GGS_sint.cpp */; };
 		CF6E113A06269BEC001B909F /* GGS_sint.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6E113206269BEC001B909F /* GGS_sint.h */; };
 		CF6E114606269E77001B909F /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF6E114506269E77001B909F /* main.mm */; };
+		CF76F49A090E738800036FAC /* semantics_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F499090E738800036FAC /* semantics_parser.h */; };
+		CF76F49B090E738800036FAC /* semantics_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F499090E738800036FAC /* semantics_parser.h */; };
+		CF76F49C090E738800036FAC /* semantics_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F499090E738800036FAC /* semantics_parser.h */; };
+		CF76F49D090E738800036FAC /* semantics_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F499090E738800036FAC /* semantics_parser.h */; };
+		CF76F49E090E738800036FAC /* semantics_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F499090E738800036FAC /* semantics_parser.h */; };
+		CF76F49F090E738800036FAC /* semantics_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F499090E738800036FAC /* semantics_parser.h */; };
+		CF76F4A1090E739A00036FAC /* expression_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A0090E739A00036FAC /* expression_parser.h */; };
+		CF76F4A2090E739A00036FAC /* expression_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A0090E739A00036FAC /* expression_parser.h */; };
+		CF76F4A3090E739A00036FAC /* expression_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A0090E739A00036FAC /* expression_parser.h */; };
+		CF76F4A4090E739A00036FAC /* expression_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A0090E739A00036FAC /* expression_parser.h */; };
+		CF76F4A5090E739A00036FAC /* expression_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A0090E739A00036FAC /* expression_parser.h */; };
+		CF76F4A6090E739A00036FAC /* expression_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A0090E739A00036FAC /* expression_parser.h */; };
+		CF76F4A8090E73B900036FAC /* scanner_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A7090E73B900036FAC /* scanner_parser.h */; };
+		CF76F4A9090E73B900036FAC /* scanner_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A7090E73B900036FAC /* scanner_parser.h */; };
+		CF76F4AA090E73B900036FAC /* scanner_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A7090E73B900036FAC /* scanner_parser.h */; };
+		CF76F4AB090E73B900036FAC /* scanner_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A7090E73B900036FAC /* scanner_parser.h */; };
+		CF76F4AC090E73B900036FAC /* scanner_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A7090E73B900036FAC /* scanner_parser.h */; };
+		CF76F4AD090E73B900036FAC /* scanner_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A7090E73B900036FAC /* scanner_parser.h */; };
+		CF76F4AF090E73C200036FAC /* scanner_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4AE090E73C200036FAC /* scanner_semantics.h */; };
+		CF76F4B0090E73C200036FAC /* scanner_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4AE090E73C200036FAC /* scanner_semantics.h */; };
+		CF76F4B1090E73C200036FAC /* scanner_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4AE090E73C200036FAC /* scanner_semantics.h */; };
+		CF76F4B2090E73C200036FAC /* scanner_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4AE090E73C200036FAC /* scanner_semantics.h */; };
+		CF76F4B3090E73C200036FAC /* scanner_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4AE090E73C200036FAC /* scanner_semantics.h */; };
+		CF76F4B4090E73C200036FAC /* scanner_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4AE090E73C200036FAC /* scanner_semantics.h */; };
+		CF76F4B7090E73EC00036FAC /* parser_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B5090E73EC00036FAC /* parser_parser.h */; };
+		CF76F4B8090E73EC00036FAC /* parser_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B6090E73EC00036FAC /* parser_semantics.h */; };
+		CF76F4B9090E73EC00036FAC /* parser_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B5090E73EC00036FAC /* parser_parser.h */; };
+		CF76F4BA090E73EC00036FAC /* parser_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B6090E73EC00036FAC /* parser_semantics.h */; };
+		CF76F4BB090E73EC00036FAC /* parser_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B5090E73EC00036FAC /* parser_parser.h */; };
+		CF76F4BC090E73EC00036FAC /* parser_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B6090E73EC00036FAC /* parser_semantics.h */; };
+		CF76F4BD090E73EC00036FAC /* parser_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B5090E73EC00036FAC /* parser_parser.h */; };
+		CF76F4BE090E73EC00036FAC /* parser_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B6090E73EC00036FAC /* parser_semantics.h */; };
+		CF76F4BF090E73EC00036FAC /* parser_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B5090E73EC00036FAC /* parser_parser.h */; };
+		CF76F4C0090E73EC00036FAC /* parser_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B6090E73EC00036FAC /* parser_semantics.h */; };
+		CF76F4C1090E73EC00036FAC /* parser_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B5090E73EC00036FAC /* parser_parser.h */; };
+		CF76F4C2090E73EC00036FAC /* parser_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4B6090E73EC00036FAC /* parser_semantics.h */; };
+		CF76F4C4090E73FE00036FAC /* cocoa_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4C3090E73FE00036FAC /* cocoa_parser.h */; };
+		CF76F4C5090E73FE00036FAC /* cocoa_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4C3090E73FE00036FAC /* cocoa_parser.h */; };
+		CF76F4C6090E73FE00036FAC /* cocoa_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4C3090E73FE00036FAC /* cocoa_parser.h */; };
+		CF76F4C7090E73FE00036FAC /* cocoa_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4C3090E73FE00036FAC /* cocoa_parser.h */; };
+		CF76F4C8090E73FE00036FAC /* cocoa_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4C3090E73FE00036FAC /* cocoa_parser.h */; };
+		CF76F4C9090E73FE00036FAC /* cocoa_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4C3090E73FE00036FAC /* cocoa_parser.h */; };
+		CF76F4CC090E741200036FAC /* grammar_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CA090E741200036FAC /* grammar_parser.h */; };
+		CF76F4CD090E741200036FAC /* grammar_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CB090E741200036FAC /* grammar_semantics.h */; };
+		CF76F4CE090E741200036FAC /* grammar_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CA090E741200036FAC /* grammar_parser.h */; };
+		CF76F4CF090E741200036FAC /* grammar_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CB090E741200036FAC /* grammar_semantics.h */; };
+		CF76F4D0090E741200036FAC /* grammar_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CA090E741200036FAC /* grammar_parser.h */; };
+		CF76F4D1090E741200036FAC /* grammar_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CB090E741200036FAC /* grammar_semantics.h */; };
+		CF76F4D2090E741200036FAC /* grammar_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CA090E741200036FAC /* grammar_parser.h */; };
+		CF76F4D3090E741200036FAC /* grammar_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CB090E741200036FAC /* grammar_semantics.h */; };
+		CF76F4D4090E741200036FAC /* grammar_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CA090E741200036FAC /* grammar_parser.h */; };
+		CF76F4D5090E741200036FAC /* grammar_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CB090E741200036FAC /* grammar_semantics.h */; };
+		CF76F4D6090E741200036FAC /* grammar_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CA090E741200036FAC /* grammar_parser.h */; };
+		CF76F4D7090E741200036FAC /* grammar_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4CB090E741200036FAC /* grammar_semantics.h */; };
+		CF76F4D9090E742800036FAC /* program_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4D8090E742800036FAC /* program_parser.h */; };
+		CF76F4DA090E742800036FAC /* program_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4D8090E742800036FAC /* program_parser.h */; };
+		CF76F4DB090E742800036FAC /* program_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4D8090E742800036FAC /* program_parser.h */; };
+		CF76F4DC090E742800036FAC /* program_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4D8090E742800036FAC /* program_parser.h */; };
+		CF76F4DD090E742800036FAC /* program_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4D8090E742800036FAC /* program_parser.h */; };
+		CF76F4DE090E742800036FAC /* program_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4D8090E742800036FAC /* program_parser.h */; };
+		CF76F4E0090E743800036FAC /* galgas_start.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4DF090E743800036FAC /* galgas_start.h */; };
+		CF76F4E1090E743800036FAC /* galgas_start.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4DF090E743800036FAC /* galgas_start.h */; };
+		CF76F4E2090E743800036FAC /* galgas_start.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4DF090E743800036FAC /* galgas_start.h */; };
+		CF76F4E3090E743800036FAC /* galgas_start.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4DF090E743800036FAC /* galgas_start.h */; };
+		CF76F4E4090E743800036FAC /* galgas_start.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4DF090E743800036FAC /* galgas_start.h */; };
+		CF76F4E5090E743800036FAC /* galgas_start.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4DF090E743800036FAC /* galgas_start.h */; };
+		CF76F4F7090E744F00036FAC /* include_AC_galgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E6090E744F00036FAC /* include_AC_galgasType.h */; };
+		CF76F4F8090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E7090E744F00036FAC /* include_AC_instruction_ForGrammar.h */; };
+		CF76F4F9090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E8090E744F00036FAC /* include_AC_semanticsEntity.h */; };
+		CF76F4FA090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E9090E744F00036FAC /* include_AC_typeForGrammarComponent.h */; };
+		CF76F4FB090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EA090E744F00036FAC /* include_C_galgasPrimitiveType.h */; };
+		CF76F4FC090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EB090E744F00036FAC /* include_typeAbstraitInclusionM.h */; };
+		CF76F4FD090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EC090E744F00036FAC /* include_typeArgumentRoutineExterne.h */; };
+		CF76F4FE090E744F00036FAC /* include_typeCible.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4ED090E744F00036FAC /* include_typeCible.h */; };
+		CF76F4FF090E744F00036FAC /* include_typeConditionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EE090E744F00036FAC /* include_typeConditionLexicale.h */; };
+		CF76F500090E744F00036FAC /* include_typeCplusPlusName.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EF090E744F00036FAC /* include_typeCplusPlusName.h */; };
+		CF76F501090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F0090E744F00036FAC /* include_typeDefEntiteUtilisable.h */; };
+		CF76F502090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F1090E744F00036FAC /* include_typeEmissionParDefaut.h */; };
+		CF76F503090E744F00036FAC /* include_typeExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F2090E744F00036FAC /* include_typeExpression.h */; };
+		CF76F504090E744F00036FAC /* include_typeInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F3090E744F00036FAC /* include_typeInclusion.h */; };
+		CF76F505090E744F00036FAC /* include_typeInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F4090E744F00036FAC /* include_typeInstruction.h */; };
+		CF76F506090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F5090E744F00036FAC /* include_typeInstructionLexicale.h */; };
+		CF76F507090E744F00036FAC /* include_typeParserInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F6090E744F00036FAC /* include_typeParserInstruction.h */; };
+		CF76F508090E744F00036FAC /* include_AC_galgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E6090E744F00036FAC /* include_AC_galgasType.h */; };
+		CF76F509090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E7090E744F00036FAC /* include_AC_instruction_ForGrammar.h */; };
+		CF76F50A090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E8090E744F00036FAC /* include_AC_semanticsEntity.h */; };
+		CF76F50B090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E9090E744F00036FAC /* include_AC_typeForGrammarComponent.h */; };
+		CF76F50C090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EA090E744F00036FAC /* include_C_galgasPrimitiveType.h */; };
+		CF76F50D090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EB090E744F00036FAC /* include_typeAbstraitInclusionM.h */; };
+		CF76F50E090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EC090E744F00036FAC /* include_typeArgumentRoutineExterne.h */; };
+		CF76F50F090E744F00036FAC /* include_typeCible.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4ED090E744F00036FAC /* include_typeCible.h */; };
+		CF76F510090E744F00036FAC /* include_typeConditionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EE090E744F00036FAC /* include_typeConditionLexicale.h */; };
+		CF76F511090E744F00036FAC /* include_typeCplusPlusName.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EF090E744F00036FAC /* include_typeCplusPlusName.h */; };
+		CF76F512090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F0090E744F00036FAC /* include_typeDefEntiteUtilisable.h */; };
+		CF76F513090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F1090E744F00036FAC /* include_typeEmissionParDefaut.h */; };
+		CF76F514090E744F00036FAC /* include_typeExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F2090E744F00036FAC /* include_typeExpression.h */; };
+		CF76F515090E744F00036FAC /* include_typeInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F3090E744F00036FAC /* include_typeInclusion.h */; };
+		CF76F516090E744F00036FAC /* include_typeInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F4090E744F00036FAC /* include_typeInstruction.h */; };
+		CF76F517090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F5090E744F00036FAC /* include_typeInstructionLexicale.h */; };
+		CF76F518090E744F00036FAC /* include_typeParserInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F6090E744F00036FAC /* include_typeParserInstruction.h */; };
+		CF76F519090E744F00036FAC /* include_AC_galgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E6090E744F00036FAC /* include_AC_galgasType.h */; };
+		CF76F51A090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E7090E744F00036FAC /* include_AC_instruction_ForGrammar.h */; };
+		CF76F51B090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E8090E744F00036FAC /* include_AC_semanticsEntity.h */; };
+		CF76F51C090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E9090E744F00036FAC /* include_AC_typeForGrammarComponent.h */; };
+		CF76F51D090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EA090E744F00036FAC /* include_C_galgasPrimitiveType.h */; };
+		CF76F51E090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EB090E744F00036FAC /* include_typeAbstraitInclusionM.h */; };
+		CF76F51F090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EC090E744F00036FAC /* include_typeArgumentRoutineExterne.h */; };
+		CF76F520090E744F00036FAC /* include_typeCible.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4ED090E744F00036FAC /* include_typeCible.h */; };
+		CF76F521090E744F00036FAC /* include_typeConditionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EE090E744F00036FAC /* include_typeConditionLexicale.h */; };
+		CF76F522090E744F00036FAC /* include_typeCplusPlusName.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EF090E744F00036FAC /* include_typeCplusPlusName.h */; };
+		CF76F523090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F0090E744F00036FAC /* include_typeDefEntiteUtilisable.h */; };
+		CF76F524090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F1090E744F00036FAC /* include_typeEmissionParDefaut.h */; };
+		CF76F525090E744F00036FAC /* include_typeExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F2090E744F00036FAC /* include_typeExpression.h */; };
+		CF76F526090E744F00036FAC /* include_typeInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F3090E744F00036FAC /* include_typeInclusion.h */; };
+		CF76F527090E744F00036FAC /* include_typeInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F4090E744F00036FAC /* include_typeInstruction.h */; };
+		CF76F528090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F5090E744F00036FAC /* include_typeInstructionLexicale.h */; };
+		CF76F529090E744F00036FAC /* include_typeParserInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F6090E744F00036FAC /* include_typeParserInstruction.h */; };
+		CF76F52A090E744F00036FAC /* include_AC_galgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E6090E744F00036FAC /* include_AC_galgasType.h */; };
+		CF76F52B090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E7090E744F00036FAC /* include_AC_instruction_ForGrammar.h */; };
+		CF76F52C090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E8090E744F00036FAC /* include_AC_semanticsEntity.h */; };
+		CF76F52D090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E9090E744F00036FAC /* include_AC_typeForGrammarComponent.h */; };
+		CF76F52E090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EA090E744F00036FAC /* include_C_galgasPrimitiveType.h */; };
+		CF76F52F090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EB090E744F00036FAC /* include_typeAbstraitInclusionM.h */; };
+		CF76F530090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EC090E744F00036FAC /* include_typeArgumentRoutineExterne.h */; };
+		CF76F531090E744F00036FAC /* include_typeCible.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4ED090E744F00036FAC /* include_typeCible.h */; };
+		CF76F532090E744F00036FAC /* include_typeConditionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EE090E744F00036FAC /* include_typeConditionLexicale.h */; };
+		CF76F533090E744F00036FAC /* include_typeCplusPlusName.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EF090E744F00036FAC /* include_typeCplusPlusName.h */; };
+		CF76F534090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F0090E744F00036FAC /* include_typeDefEntiteUtilisable.h */; };
+		CF76F535090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F1090E744F00036FAC /* include_typeEmissionParDefaut.h */; };
+		CF76F536090E744F00036FAC /* include_typeExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F2090E744F00036FAC /* include_typeExpression.h */; };
+		CF76F537090E744F00036FAC /* include_typeInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F3090E744F00036FAC /* include_typeInclusion.h */; };
+		CF76F538090E744F00036FAC /* include_typeInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F4090E744F00036FAC /* include_typeInstruction.h */; };
+		CF76F539090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F5090E744F00036FAC /* include_typeInstructionLexicale.h */; };
+		CF76F53A090E744F00036FAC /* include_typeParserInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F6090E744F00036FAC /* include_typeParserInstruction.h */; };
+		CF76F53B090E744F00036FAC /* include_AC_galgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E6090E744F00036FAC /* include_AC_galgasType.h */; };
+		CF76F53C090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E7090E744F00036FAC /* include_AC_instruction_ForGrammar.h */; };
+		CF76F53D090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E8090E744F00036FAC /* include_AC_semanticsEntity.h */; };
+		CF76F53E090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E9090E744F00036FAC /* include_AC_typeForGrammarComponent.h */; };
+		CF76F53F090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EA090E744F00036FAC /* include_C_galgasPrimitiveType.h */; };
+		CF76F540090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EB090E744F00036FAC /* include_typeAbstraitInclusionM.h */; };
+		CF76F541090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EC090E744F00036FAC /* include_typeArgumentRoutineExterne.h */; };
+		CF76F542090E744F00036FAC /* include_typeCible.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4ED090E744F00036FAC /* include_typeCible.h */; };
+		CF76F543090E744F00036FAC /* include_typeConditionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EE090E744F00036FAC /* include_typeConditionLexicale.h */; };
+		CF76F544090E744F00036FAC /* include_typeCplusPlusName.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EF090E744F00036FAC /* include_typeCplusPlusName.h */; };
+		CF76F545090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F0090E744F00036FAC /* include_typeDefEntiteUtilisable.h */; };
+		CF76F546090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F1090E744F00036FAC /* include_typeEmissionParDefaut.h */; };
+		CF76F547090E744F00036FAC /* include_typeExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F2090E744F00036FAC /* include_typeExpression.h */; };
+		CF76F548090E744F00036FAC /* include_typeInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F3090E744F00036FAC /* include_typeInclusion.h */; };
+		CF76F549090E744F00036FAC /* include_typeInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F4090E744F00036FAC /* include_typeInstruction.h */; };
+		CF76F54A090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F5090E744F00036FAC /* include_typeInstructionLexicale.h */; };
+		CF76F54B090E744F00036FAC /* include_typeParserInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F6090E744F00036FAC /* include_typeParserInstruction.h */; };
+		CF76F54C090E744F00036FAC /* include_AC_galgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E6090E744F00036FAC /* include_AC_galgasType.h */; };
+		CF76F54D090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E7090E744F00036FAC /* include_AC_instruction_ForGrammar.h */; };
+		CF76F54E090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E8090E744F00036FAC /* include_AC_semanticsEntity.h */; };
+		CF76F54F090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4E9090E744F00036FAC /* include_AC_typeForGrammarComponent.h */; };
+		CF76F550090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EA090E744F00036FAC /* include_C_galgasPrimitiveType.h */; };
+		CF76F551090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EB090E744F00036FAC /* include_typeAbstraitInclusionM.h */; };
+		CF76F552090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EC090E744F00036FAC /* include_typeArgumentRoutineExterne.h */; };
+		CF76F553090E744F00036FAC /* include_typeCible.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4ED090E744F00036FAC /* include_typeCible.h */; };
+		CF76F554090E745000036FAC /* include_typeConditionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EE090E744F00036FAC /* include_typeConditionLexicale.h */; };
+		CF76F555090E745000036FAC /* include_typeCplusPlusName.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4EF090E744F00036FAC /* include_typeCplusPlusName.h */; };
+		CF76F556090E745000036FAC /* include_typeDefEntiteUtilisable.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F0090E744F00036FAC /* include_typeDefEntiteUtilisable.h */; };
+		CF76F557090E745000036FAC /* include_typeEmissionParDefaut.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F1090E744F00036FAC /* include_typeEmissionParDefaut.h */; };
+		CF76F558090E745000036FAC /* include_typeExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F2090E744F00036FAC /* include_typeExpression.h */; };
+		CF76F559090E745000036FAC /* include_typeInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F3090E744F00036FAC /* include_typeInclusion.h */; };
+		CF76F55A090E745000036FAC /* include_typeInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F4090E744F00036FAC /* include_typeInstruction.h */; };
+		CF76F55B090E745000036FAC /* include_typeInstructionLexicale.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F5090E744F00036FAC /* include_typeInstructionLexicale.h */; };
+		CF76F55C090E745000036FAC /* include_typeParserInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4F6090E744F00036FAC /* include_typeParserInstruction.h */; };
 		CF7A1430058CFF87007126C1 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF7A1431058CFF88007126C1 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF7A1433058CFF8C007126C1 /* galgas_LL1_prgm.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82944F0587AE820058E762 /* galgas_LL1_prgm.h */; };
@@ -945,6 +1113,18 @@
 		CFD7E273059B5B8E00410349 /* galgas_cli_options.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD7E26F059B5B8E00410349 /* galgas_cli_options.h */; };
 		CFD7E274059B5B8E00410349 /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
 		CFD7E275059B5B8E00410349 /* galgas_cli_options.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD7E26F059B5B8E00410349 /* galgas_cli_options.h */; };
+		CFDA3E03090E758600FEB333 /* semantics_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E02090E758600FEB333 /* semantics_semantics.h */; };
+		CFDA3E04090E758600FEB333 /* semantics_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E02090E758600FEB333 /* semantics_semantics.h */; };
+		CFDA3E05090E758600FEB333 /* semantics_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E02090E758600FEB333 /* semantics_semantics.h */; };
+		CFDA3E06090E758600FEB333 /* semantics_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E02090E758600FEB333 /* semantics_semantics.h */; };
+		CFDA3E07090E758600FEB333 /* semantics_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E02090E758600FEB333 /* semantics_semantics.h */; };
+		CFDA3E08090E758600FEB333 /* semantics_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E02090E758600FEB333 /* semantics_semantics.h */; };
+		CFDA3E0A090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E09090E759600FEB333 /* include_typeEntityToGenerate.h */; };
+		CFDA3E0B090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E09090E759600FEB333 /* include_typeEntityToGenerate.h */; };
+		CFDA3E0C090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E09090E759600FEB333 /* include_typeEntityToGenerate.h */; };
+		CFDA3E0D090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E09090E759600FEB333 /* include_typeEntityToGenerate.h */; };
+		CFDA3E0E090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E09090E759600FEB333 /* include_typeEntityToGenerate.h */; };
+		CFDA3E0F090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E09090E759600FEB333 /* include_typeEntityToGenerate.h */; };
 		CFEEBE6705C056D0009FE498 /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFEEBE6805C056D0009FE498 /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFEEBE6B05C056F9009FE498 /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
@@ -1065,39 +1245,39 @@
 			remoteGlobalIDString = 8DD76F620486A84900D96B5E;
 			remoteInfo = "GALGAS tool LL1";
 		};
-		CFE3D7BA08C5BBC600DE3F08 /* PBXContainerItemProxy */ = {
+		CFDA3EE6090E996B00FEB333 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CF7A1402058CEFE2007126C1;
+			remoteGlobalIDString = CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 debug */;
 			remoteInfo = "GALGAS tool LL1 debug";
 		};
-		CFE3D7BC08C5BBC600DE3F08 /* PBXContainerItemProxy */ = {
+		CFDA3EE8090E996B00FEB333 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD6CC7B08519D4C0000FA6E;
+			remoteGlobalIDString = CFD6CC7B08519D4C0000FA6E /* GALGAS tool LR1 */;
 			remoteInfo = "GALGAS tool LR1";
 		};
-		CFE3D7BE08C5BBC600DE3F08 /* PBXContainerItemProxy */ = {
+		CFDA3EEA090E996B00FEB333 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD6CD2008519DD00000FA6E;
+			remoteGlobalIDString = CFD6CD2008519DD00000FA6E /* GALGAS tool LR1 debug */;
 			remoteInfo = "GALGAS tool LR1 debug";
 		};
-		CFE3D7C008C5BBC600DE3F08 /* PBXContainerItemProxy */ = {
+		CFDA3EEC090E996B00FEB333 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD6CDBD08519E080000FA6E;
+			remoteGlobalIDString = CFD6CDBD08519E080000FA6E /* GALGAS tool SLR */;
 			remoteInfo = "GALGAS tool SLR";
 		};
-		CFE3D7C208C5BBC600DE3F08 /* PBXContainerItemProxy */ = {
+		CFDA3EEE090E996B00FEB333 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD6CE6208519E740000FA6E;
+			remoteGlobalIDString = CFD6CE6208519E740000FA6E /* GALGAS tool SLR debug */;
 			remoteInfo = "GALGAS tool SLR debug";
 		};
 /* End PBXContainerItemProxy section */
@@ -1165,6 +1345,34 @@
 		CF6E113106269BEC001B909F /* GGS_sint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_sint.cpp; sourceTree = "<group>"; };
 		CF6E113206269BEC001B909F /* GGS_sint.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_sint.h; sourceTree = "<group>"; };
 		CF6E114506269E77001B909F /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		CF76F499090E738800036FAC /* semantics_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_parser.h; sourceTree = "<group>"; };
+		CF76F4A0090E739A00036FAC /* expression_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = expression_parser.h; sourceTree = "<group>"; };
+		CF76F4A7090E73B900036FAC /* scanner_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = scanner_parser.h; sourceTree = "<group>"; };
+		CF76F4AE090E73C200036FAC /* scanner_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = scanner_semantics.h; sourceTree = "<group>"; };
+		CF76F4B5090E73EC00036FAC /* parser_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_parser.h; sourceTree = "<group>"; };
+		CF76F4B6090E73EC00036FAC /* parser_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_semantics.h; sourceTree = "<group>"; };
+		CF76F4C3090E73FE00036FAC /* cocoa_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cocoa_parser.h; sourceTree = "<group>"; };
+		CF76F4CA090E741200036FAC /* grammar_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_parser.h; sourceTree = "<group>"; };
+		CF76F4CB090E741200036FAC /* grammar_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_semantics.h; sourceTree = "<group>"; };
+		CF76F4D8090E742800036FAC /* program_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = program_parser.h; sourceTree = "<group>"; };
+		CF76F4DF090E743800036FAC /* galgas_start.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_start.h; sourceTree = "<group>"; };
+		CF76F4E6090E744F00036FAC /* include_AC_galgasType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_galgasType.h; sourceTree = "<group>"; };
+		CF76F4E7090E744F00036FAC /* include_AC_instruction_ForGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_instruction_ForGrammar.h; sourceTree = "<group>"; };
+		CF76F4E8090E744F00036FAC /* include_AC_semanticsEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_semanticsEntity.h; sourceTree = "<group>"; };
+		CF76F4E9090E744F00036FAC /* include_AC_typeForGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_typeForGrammarComponent.h; sourceTree = "<group>"; };
+		CF76F4EA090E744F00036FAC /* include_C_galgasPrimitiveType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_galgasPrimitiveType.h; sourceTree = "<group>"; };
+		CF76F4EB090E744F00036FAC /* include_typeAbstraitInclusionM.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAbstraitInclusionM.h; sourceTree = "<group>"; };
+		CF76F4EC090E744F00036FAC /* include_typeArgumentRoutineExterne.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentRoutineExterne.h; sourceTree = "<group>"; };
+		CF76F4ED090E744F00036FAC /* include_typeCible.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCible.h; sourceTree = "<group>"; };
+		CF76F4EE090E744F00036FAC /* include_typeConditionLexicale.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeConditionLexicale.h; sourceTree = "<group>"; };
+		CF76F4EF090E744F00036FAC /* include_typeCplusPlusName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCplusPlusName.h; sourceTree = "<group>"; };
+		CF76F4F0090E744F00036FAC /* include_typeDefEntiteUtilisable.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDefEntiteUtilisable.h; sourceTree = "<group>"; };
+		CF76F4F1090E744F00036FAC /* include_typeEmissionParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionParDefaut.h; sourceTree = "<group>"; };
+		CF76F4F2090E744F00036FAC /* include_typeExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeExpression.h; sourceTree = "<group>"; };
+		CF76F4F3090E744F00036FAC /* include_typeInclusion.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInclusion.h; sourceTree = "<group>"; };
+		CF76F4F4090E744F00036FAC /* include_typeInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInstruction.h; sourceTree = "<group>"; };
+		CF76F4F5090E744F00036FAC /* include_typeInstructionLexicale.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionLexicale.h; sourceTree = "<group>"; };
+		CF76F4F6090E744F00036FAC /* include_typeParserInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeParserInstruction.h; sourceTree = "<group>"; };
 		CF7A1403058CEFE2007126C1 /* galgasLL1Debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasLL1Debug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF825950085369E70077AEAF /* C_PrimeCache2.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_PrimeCache2.cpp; path = cache/C_PrimeCache2.cpp; sourceTree = "<group>"; };
 		CF825951085369E70077AEAF /* C_PrimeCache2.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = C_PrimeCache2.h; path = cache/C_PrimeCache2.h; sourceTree = "<group>"; };
@@ -1272,6 +1480,8 @@
 		CFD6CF290851A2740000FA6E /* prgm_SLR.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = prgm_SLR.cpp; sourceTree = "<group>"; };
 		CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_cli_options.cpp; sourceTree = "<group>"; };
 		CFD7E26F059B5B8E00410349 /* galgas_cli_options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
+		CFDA3E02090E758600FEB333 /* semantics_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_semantics.h; sourceTree = "<group>"; };
+		CFDA3E09090E759600FEB333 /* include_typeEntityToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntityToGenerate.h; sourceTree = "<group>"; };
 		CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_parser.cpp; sourceTree = "<group>"; };
 		CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_generation.cpp; sourceTree = "<group>"; };
 		CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cli_options_parser.cpp; sourceTree = "<group>"; };
@@ -1484,7 +1694,9 @@
 		CF9040E3057F26B5007362F4 /* Grammar Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF76F4CA090E741200036FAC /* grammar_parser.h */,
 				CF9040E6057F270E007362F4 /* grammar_parser.cpp */,
+				CF76F4CB090E741200036FAC /* grammar_semantics.h */,
 				CF9040E7057F270E007362F4 /* grammar_semantics.cpp */,
 			);
 			name = "Grammar Component";
@@ -1562,6 +1774,7 @@
 			children = (
 				CF6702F805C073220065267C /* cocoaGalgas.mm */,
 				CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */,
+				CF76F4C3090E73FE00036FAC /* cocoa_parser.h */,
 			);
 			name = "Cocoa Component";
 			sourceTree = "<group>";
@@ -1662,6 +1875,8 @@
 			isa = PBXGroup;
 			children = (
 				CFF5376D057A506700854C83 /* scanner_parser.cpp */,
+				CF76F4A7090E73B900036FAC /* scanner_parser.h */,
+				CF76F4AE090E73C200036FAC /* scanner_semantics.h */,
 				CFF5376F057A506700854C83 /* scanner_semantics.cpp */,
 			);
 			name = "Scanner Component";
@@ -1678,8 +1893,29 @@
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFDA3E09090E759600FEB333 /* include_typeEntityToGenerate.h */,
+				CF76F4E6090E744F00036FAC /* include_AC_galgasType.h */,
+				CF76F4E7090E744F00036FAC /* include_AC_instruction_ForGrammar.h */,
+				CF76F4E8090E744F00036FAC /* include_AC_semanticsEntity.h */,
+				CF76F4E9090E744F00036FAC /* include_AC_typeForGrammarComponent.h */,
+				CF76F4EA090E744F00036FAC /* include_C_galgasPrimitiveType.h */,
+				CF76F4EB090E744F00036FAC /* include_typeAbstraitInclusionM.h */,
+				CF76F4EC090E744F00036FAC /* include_typeArgumentRoutineExterne.h */,
+				CF76F4ED090E744F00036FAC /* include_typeCible.h */,
+				CF76F4EE090E744F00036FAC /* include_typeConditionLexicale.h */,
+				CF76F4EF090E744F00036FAC /* include_typeCplusPlusName.h */,
+				CF76F4F0090E744F00036FAC /* include_typeDefEntiteUtilisable.h */,
+				CF76F4F1090E744F00036FAC /* include_typeEmissionParDefaut.h */,
+				CF76F4F2090E744F00036FAC /* include_typeExpression.h */,
+				CF76F4F3090E744F00036FAC /* include_typeInclusion.h */,
+				CF76F4F4090E744F00036FAC /* include_typeInstruction.h */,
+				CF76F4F5090E744F00036FAC /* include_typeInstructionLexicale.h */,
+				CF76F4F6090E744F00036FAC /* include_typeParserInstruction.h */,
+				CF76F4A0090E739A00036FAC /* expression_parser.h */,
 				CFF53781057A50D600854C83 /* expression_parser.cpp */,
+				CF76F499090E738800036FAC /* semantics_parser.h */,
 				CFF53785057A50E400854C83 /* semantics_parser.cpp */,
+				CFDA3E02090E758600FEB333 /* semantics_semantics.h */,
 				CFF53787057A50E400854C83 /* semantics_semantics.cpp */,
 			);
 			name = "Semantics Component";
@@ -1707,7 +1943,9 @@
 		CFF537AA057A51A000854C83 /* Parser Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF76F4B5090E73EC00036FAC /* parser_parser.h */,
 				CFF537AD057A51CB00854C83 /* parser_parser.cpp */,
+				CF76F4B6090E73EC00036FAC /* parser_semantics.h */,
 				CFF537AF057A51CB00854C83 /* parser_semantics.cpp */,
 			);
 			name = "Parser Component";
@@ -1744,6 +1982,7 @@
 		CFF537F4057A52D900854C83 /* Program Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF76F4D8090E742800036FAC /* program_parser.h */,
 				CFF537F7057A52FA00854C83 /* program_parser.cpp */,
 			);
 			name = "Program Component";
@@ -1760,6 +1999,7 @@
 		CFF53803057A537C00854C83 /* Galgas Start */ = {
 			isa = PBXGroup;
 			children = (
+				CF76F4DF090E743800036FAC /* galgas_start.h */,
 				CFF53806057A53A700854C83 /* galgas_start.cpp */,
 			);
 			name = "Galgas Start";
@@ -2030,6 +2270,36 @@
 				CF825ADF08536B780077AEAF /* TF_Swap.h in Headers */,
 				CFF2834C0864369A0055D7B6 /* GGS_double.h in Headers */,
 				CFF2834E0864369A0055D7B6 /* GGS_ldouble.h in Headers */,
+				CF76F49A090E738800036FAC /* semantics_parser.h in Headers */,
+				CF76F4A1090E739A00036FAC /* expression_parser.h in Headers */,
+				CF76F4A8090E73B900036FAC /* scanner_parser.h in Headers */,
+				CF76F4AF090E73C200036FAC /* scanner_semantics.h in Headers */,
+				CF76F4B7090E73EC00036FAC /* parser_parser.h in Headers */,
+				CF76F4B8090E73EC00036FAC /* parser_semantics.h in Headers */,
+				CF76F4C4090E73FE00036FAC /* cocoa_parser.h in Headers */,
+				CF76F4CC090E741200036FAC /* grammar_parser.h in Headers */,
+				CF76F4CD090E741200036FAC /* grammar_semantics.h in Headers */,
+				CF76F4D9090E742800036FAC /* program_parser.h in Headers */,
+				CF76F4E0090E743800036FAC /* galgas_start.h in Headers */,
+				CF76F4F7090E744F00036FAC /* include_AC_galgasType.h in Headers */,
+				CF76F4F8090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */,
+				CF76F4F9090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */,
+				CF76F4FA090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */,
+				CF76F4FB090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */,
+				CF76F4FC090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */,
+				CF76F4FD090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */,
+				CF76F4FE090E744F00036FAC /* include_typeCible.h in Headers */,
+				CF76F4FF090E744F00036FAC /* include_typeConditionLexicale.h in Headers */,
+				CF76F500090E744F00036FAC /* include_typeCplusPlusName.h in Headers */,
+				CF76F501090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */,
+				CF76F502090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */,
+				CF76F503090E744F00036FAC /* include_typeExpression.h in Headers */,
+				CF76F504090E744F00036FAC /* include_typeInclusion.h in Headers */,
+				CF76F505090E744F00036FAC /* include_typeInstruction.h in Headers */,
+				CF76F506090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */,
+				CF76F507090E744F00036FAC /* include_typeParserInstruction.h in Headers */,
+				CFDA3E03090E758600FEB333 /* semantics_semantics.h in Headers */,
+				CFDA3E0A090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2094,6 +2364,36 @@
 				CF825ACE08536B780077AEAF /* TF_Swap.h in Headers */,
 				CFF283480864369A0055D7B6 /* GGS_double.h in Headers */,
 				CFF2834A0864369A0055D7B6 /* GGS_ldouble.h in Headers */,
+				CF76F49B090E738800036FAC /* semantics_parser.h in Headers */,
+				CF76F4A2090E739A00036FAC /* expression_parser.h in Headers */,
+				CF76F4A9090E73B900036FAC /* scanner_parser.h in Headers */,
+				CF76F4B0090E73C200036FAC /* scanner_semantics.h in Headers */,
+				CF76F4B9090E73EC00036FAC /* parser_parser.h in Headers */,
+				CF76F4BA090E73EC00036FAC /* parser_semantics.h in Headers */,
+				CF76F4C5090E73FE00036FAC /* cocoa_parser.h in Headers */,
+				CF76F4CE090E741200036FAC /* grammar_parser.h in Headers */,
+				CF76F4CF090E741200036FAC /* grammar_semantics.h in Headers */,
+				CF76F4DA090E742800036FAC /* program_parser.h in Headers */,
+				CF76F4E1090E743800036FAC /* galgas_start.h in Headers */,
+				CF76F508090E744F00036FAC /* include_AC_galgasType.h in Headers */,
+				CF76F509090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */,
+				CF76F50A090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */,
+				CF76F50B090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */,
+				CF76F50C090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */,
+				CF76F50D090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */,
+				CF76F50E090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */,
+				CF76F50F090E744F00036FAC /* include_typeCible.h in Headers */,
+				CF76F510090E744F00036FAC /* include_typeConditionLexicale.h in Headers */,
+				CF76F511090E744F00036FAC /* include_typeCplusPlusName.h in Headers */,
+				CF76F512090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */,
+				CF76F513090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */,
+				CF76F514090E744F00036FAC /* include_typeExpression.h in Headers */,
+				CF76F515090E744F00036FAC /* include_typeInclusion.h in Headers */,
+				CF76F516090E744F00036FAC /* include_typeInstruction.h in Headers */,
+				CF76F517090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */,
+				CF76F518090E744F00036FAC /* include_typeParserInstruction.h in Headers */,
+				CFDA3E04090E758600FEB333 /* semantics_semantics.h in Headers */,
+				CFDA3E0B090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2157,6 +2457,36 @@
 				CF825ABD08536B780077AEAF /* TF_Swap.h in Headers */,
 				CFF283440864369A0055D7B6 /* GGS_double.h in Headers */,
 				CFF283460864369A0055D7B6 /* GGS_ldouble.h in Headers */,
+				CF76F49C090E738800036FAC /* semantics_parser.h in Headers */,
+				CF76F4A3090E739A00036FAC /* expression_parser.h in Headers */,
+				CF76F4AA090E73B900036FAC /* scanner_parser.h in Headers */,
+				CF76F4B1090E73C200036FAC /* scanner_semantics.h in Headers */,
+				CF76F4BB090E73EC00036FAC /* parser_parser.h in Headers */,
+				CF76F4BC090E73EC00036FAC /* parser_semantics.h in Headers */,
+				CF76F4C6090E73FE00036FAC /* cocoa_parser.h in Headers */,
+				CF76F4D0090E741200036FAC /* grammar_parser.h in Headers */,
+				CF76F4D1090E741200036FAC /* grammar_semantics.h in Headers */,
+				CF76F4DB090E742800036FAC /* program_parser.h in Headers */,
+				CF76F4E2090E743800036FAC /* galgas_start.h in Headers */,
+				CF76F519090E744F00036FAC /* include_AC_galgasType.h in Headers */,
+				CF76F51A090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */,
+				CF76F51B090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */,
+				CF76F51C090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */,
+				CF76F51D090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */,
+				CF76F51E090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */,
+				CF76F51F090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */,
+				CF76F520090E744F00036FAC /* include_typeCible.h in Headers */,
+				CF76F521090E744F00036FAC /* include_typeConditionLexicale.h in Headers */,
+				CF76F522090E744F00036FAC /* include_typeCplusPlusName.h in Headers */,
+				CF76F523090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */,
+				CF76F524090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */,
+				CF76F525090E744F00036FAC /* include_typeExpression.h in Headers */,
+				CF76F526090E744F00036FAC /* include_typeInclusion.h in Headers */,
+				CF76F527090E744F00036FAC /* include_typeInstruction.h in Headers */,
+				CF76F528090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */,
+				CF76F529090E744F00036FAC /* include_typeParserInstruction.h in Headers */,
+				CFDA3E05090E758600FEB333 /* semantics_semantics.h in Headers */,
+				CFDA3E0C090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2221,6 +2551,36 @@
 				CF825AAC08536B780077AEAF /* TF_Swap.h in Headers */,
 				CFF283400864369A0055D7B6 /* GGS_double.h in Headers */,
 				CFF283420864369A0055D7B6 /* GGS_ldouble.h in Headers */,
+				CF76F49D090E738800036FAC /* semantics_parser.h in Headers */,
+				CF76F4A4090E739A00036FAC /* expression_parser.h in Headers */,
+				CF76F4AB090E73B900036FAC /* scanner_parser.h in Headers */,
+				CF76F4B2090E73C200036FAC /* scanner_semantics.h in Headers */,
+				CF76F4BD090E73EC00036FAC /* parser_parser.h in Headers */,
+				CF76F4BE090E73EC00036FAC /* parser_semantics.h in Headers */,
+				CF76F4C7090E73FE00036FAC /* cocoa_parser.h in Headers */,
+				CF76F4D2090E741200036FAC /* grammar_parser.h in Headers */,
+				CF76F4D3090E741200036FAC /* grammar_semantics.h in Headers */,
+				CF76F4DC090E742800036FAC /* program_parser.h in Headers */,
+				CF76F4E3090E743800036FAC /* galgas_start.h in Headers */,
+				CF76F52A090E744F00036FAC /* include_AC_galgasType.h in Headers */,
+				CF76F52B090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */,
+				CF76F52C090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */,
+				CF76F52D090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */,
+				CF76F52E090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */,
+				CF76F52F090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */,
+				CF76F530090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */,
+				CF76F531090E744F00036FAC /* include_typeCible.h in Headers */,
+				CF76F532090E744F00036FAC /* include_typeConditionLexicale.h in Headers */,
+				CF76F533090E744F00036FAC /* include_typeCplusPlusName.h in Headers */,
+				CF76F534090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */,
+				CF76F535090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */,
+				CF76F536090E744F00036FAC /* include_typeExpression.h in Headers */,
+				CF76F537090E744F00036FAC /* include_typeInclusion.h in Headers */,
+				CF76F538090E744F00036FAC /* include_typeInstruction.h in Headers */,
+				CF76F539090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */,
+				CF76F53A090E744F00036FAC /* include_typeParserInstruction.h in Headers */,
+				CFDA3E06090E758600FEB333 /* semantics_semantics.h in Headers */,
+				CFDA3E0D090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2284,6 +2644,36 @@
 				CF825A9B08536B780077AEAF /* TF_Swap.h in Headers */,
 				CFF2833C0864369A0055D7B6 /* GGS_double.h in Headers */,
 				CFF2833E0864369A0055D7B6 /* GGS_ldouble.h in Headers */,
+				CF76F49E090E738800036FAC /* semantics_parser.h in Headers */,
+				CF76F4A5090E739A00036FAC /* expression_parser.h in Headers */,
+				CF76F4AC090E73B900036FAC /* scanner_parser.h in Headers */,
+				CF76F4B3090E73C200036FAC /* scanner_semantics.h in Headers */,
+				CF76F4BF090E73EC00036FAC /* parser_parser.h in Headers */,
+				CF76F4C0090E73EC00036FAC /* parser_semantics.h in Headers */,
+				CF76F4C8090E73FE00036FAC /* cocoa_parser.h in Headers */,
+				CF76F4D4090E741200036FAC /* grammar_parser.h in Headers */,
+				CF76F4D5090E741200036FAC /* grammar_semantics.h in Headers */,
+				CF76F4DD090E742800036FAC /* program_parser.h in Headers */,
+				CF76F4E4090E743800036FAC /* galgas_start.h in Headers */,
+				CF76F53B090E744F00036FAC /* include_AC_galgasType.h in Headers */,
+				CF76F53C090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */,
+				CF76F53D090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */,
+				CF76F53E090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */,
+				CF76F53F090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */,
+				CF76F540090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */,
+				CF76F541090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */,
+				CF76F542090E744F00036FAC /* include_typeCible.h in Headers */,
+				CF76F543090E744F00036FAC /* include_typeConditionLexicale.h in Headers */,
+				CF76F544090E744F00036FAC /* include_typeCplusPlusName.h in Headers */,
+				CF76F545090E744F00036FAC /* include_typeDefEntiteUtilisable.h in Headers */,
+				CF76F546090E744F00036FAC /* include_typeEmissionParDefaut.h in Headers */,
+				CF76F547090E744F00036FAC /* include_typeExpression.h in Headers */,
+				CF76F548090E744F00036FAC /* include_typeInclusion.h in Headers */,
+				CF76F549090E744F00036FAC /* include_typeInstruction.h in Headers */,
+				CF76F54A090E744F00036FAC /* include_typeInstructionLexicale.h in Headers */,
+				CF76F54B090E744F00036FAC /* include_typeParserInstruction.h in Headers */,
+				CFDA3E07090E758600FEB333 /* semantics_semantics.h in Headers */,
+				CFDA3E0E090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2348,6 +2738,36 @@
 				CF825A8A08536B780077AEAF /* TF_Swap.h in Headers */,
 				CFF283380864369A0055D7B6 /* GGS_double.h in Headers */,
 				CFF2833A0864369A0055D7B6 /* GGS_ldouble.h in Headers */,
+				CF76F49F090E738800036FAC /* semantics_parser.h in Headers */,
+				CF76F4A6090E739A00036FAC /* expression_parser.h in Headers */,
+				CF76F4AD090E73B900036FAC /* scanner_parser.h in Headers */,
+				CF76F4B4090E73C200036FAC /* scanner_semantics.h in Headers */,
+				CF76F4C1090E73EC00036FAC /* parser_parser.h in Headers */,
+				CF76F4C2090E73EC00036FAC /* parser_semantics.h in Headers */,
+				CF76F4C9090E73FE00036FAC /* cocoa_parser.h in Headers */,
+				CF76F4D6090E741200036FAC /* grammar_parser.h in Headers */,
+				CF76F4D7090E741200036FAC /* grammar_semantics.h in Headers */,
+				CF76F4DE090E742800036FAC /* program_parser.h in Headers */,
+				CF76F4E5090E743800036FAC /* galgas_start.h in Headers */,
+				CF76F54C090E744F00036FAC /* include_AC_galgasType.h in Headers */,
+				CF76F54D090E744F00036FAC /* include_AC_instruction_ForGrammar.h in Headers */,
+				CF76F54E090E744F00036FAC /* include_AC_semanticsEntity.h in Headers */,
+				CF76F54F090E744F00036FAC /* include_AC_typeForGrammarComponent.h in Headers */,
+				CF76F550090E744F00036FAC /* include_C_galgasPrimitiveType.h in Headers */,
+				CF76F551090E744F00036FAC /* include_typeAbstraitInclusionM.h in Headers */,
+				CF76F552090E744F00036FAC /* include_typeArgumentRoutineExterne.h in Headers */,
+				CF76F553090E744F00036FAC /* include_typeCible.h in Headers */,
+				CF76F554090E745000036FAC /* include_typeConditionLexicale.h in Headers */,
+				CF76F555090E745000036FAC /* include_typeCplusPlusName.h in Headers */,
+				CF76F556090E745000036FAC /* include_typeDefEntiteUtilisable.h in Headers */,
+				CF76F557090E745000036FAC /* include_typeEmissionParDefaut.h in Headers */,
+				CF76F558090E745000036FAC /* include_typeExpression.h in Headers */,
+				CF76F559090E745000036FAC /* include_typeInclusion.h in Headers */,
+				CF76F55A090E745000036FAC /* include_typeInstruction.h in Headers */,
+				CF76F55B090E745000036FAC /* include_typeInstructionLexicale.h in Headers */,
+				CF76F55C090E745000036FAC /* include_typeParserInstruction.h in Headers */,
+				CFDA3E08090E758600FEB333 /* semantics_semantics.h in Headers */,
+				CFDA3E0F090E759600FEB333 /* include_typeEntityToGenerate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2420,11 +2840,11 @@
 			};
 			dependencies = (
 				CFCF1503085C4270003AD24E /* PBXTargetDependency */,
-				CFE3D7BB08C5BBC600DE3F08 /* PBXTargetDependency */,
-				CFE3D7BD08C5BBC600DE3F08 /* PBXTargetDependency */,
-				CFE3D7BF08C5BBC600DE3F08 /* PBXTargetDependency */,
-				CFE3D7C108C5BBC600DE3F08 /* PBXTargetDependency */,
-				CFE3D7C308C5BBC600DE3F08 /* PBXTargetDependency */,
+				CFDA3EE7090E996B00FEB333 /* PBXTargetDependency */,
+				CFDA3EE9090E996B00FEB333 /* PBXTargetDependency */,
+				CFDA3EEB090E996B00FEB333 /* PBXTargetDependency */,
+				CFDA3EED090E996B00FEB333 /* PBXTargetDependency */,
+				CFDA3EEF090E996B00FEB333 /* PBXTargetDependency */,
 			);
 			name = "GALGAS Cocoa";
 			productInstallPath = "$(HOME)/Applications";
@@ -3425,30 +3845,30 @@
 			target = 8DD76F620486A84900D96B5E /* GALGAS tool LL1 */;
 			targetProxy = CFCF1502085C4270003AD24E /* PBXContainerItemProxy */;
 		};
-		CFE3D7BB08C5BBC600DE3F08 /* PBXTargetDependency */ = {
+		CFDA3EE7090E996B00FEB333 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 debug */;
-			targetProxy = CFE3D7BA08C5BBC600DE3F08 /* PBXContainerItemProxy */;
+			targetProxy = CFDA3EE6090E996B00FEB333 /* PBXContainerItemProxy */;
 		};
-		CFE3D7BD08C5BBC600DE3F08 /* PBXTargetDependency */ = {
+		CFDA3EE9090E996B00FEB333 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFD6CC7B08519D4C0000FA6E /* GALGAS tool LR1 */;
-			targetProxy = CFE3D7BC08C5BBC600DE3F08 /* PBXContainerItemProxy */;
+			targetProxy = CFDA3EE8090E996B00FEB333 /* PBXContainerItemProxy */;
 		};
-		CFE3D7BF08C5BBC600DE3F08 /* PBXTargetDependency */ = {
+		CFDA3EEB090E996B00FEB333 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFD6CD2008519DD00000FA6E /* GALGAS tool LR1 debug */;
-			targetProxy = CFE3D7BE08C5BBC600DE3F08 /* PBXContainerItemProxy */;
+			targetProxy = CFDA3EEA090E996B00FEB333 /* PBXContainerItemProxy */;
 		};
-		CFE3D7C108C5BBC600DE3F08 /* PBXTargetDependency */ = {
+		CFDA3EED090E996B00FEB333 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFD6CDBD08519E080000FA6E /* GALGAS tool SLR */;
-			targetProxy = CFE3D7C008C5BBC600DE3F08 /* PBXContainerItemProxy */;
+			targetProxy = CFDA3EEC090E996B00FEB333 /* PBXContainerItemProxy */;
 		};
-		CFE3D7C308C5BBC600DE3F08 /* PBXTargetDependency */ = {
+		CFDA3EEF090E996B00FEB333 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFD6CE6208519E740000FA6E /* GALGAS tool SLR debug */;
-			targetProxy = CFE3D7C208C5BBC600DE3F08 /* PBXContainerItemProxy */;
+			targetProxy = CFDA3EEE090E996B00FEB333 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

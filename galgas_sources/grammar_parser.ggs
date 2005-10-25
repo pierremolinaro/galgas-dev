@@ -178,7 +178,7 @@ rule <galgas_component>
                               !syntaxComponentName ;
     #--- Build nonterminal symbol map for grammar
       foreach importedNonterminalSymbolsMap (??@lstring ntSymbol ??@M_nonterminalSymbolAltsForGrammar importedAltSignaturesMap) :
-        if [nonterminalSymbolsMapForGrammar hasKey !ntSymbol] then
+        if [nonterminalSymbolsMapForGrammar hasKey ![ntSymbol value]] then
           @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
           search nonterminalSymbolsMapForGrammar.searchKey ntSymbol (?altSignatureMap) ;
           foreach altSignatureMap (??@lstring altName ??@L_signature_ForGrammarComponent altSignature) :

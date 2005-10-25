@@ -331,7 +331,7 @@ rule <galgas_component>
   end repeat ;
 #--- Check that all routines have been implemented
   foreach tableNomRoutinesDeclarees (??@lstring nomRoutine) :
-    if not [tableRoutinesAimplementer hasKey !nomRoutine] then
+    if not [tableRoutinesAimplementer hasKey ![nomRoutine value]] then
       error nomRoutine : "the routine '" . [nomRoutine value] .
                          "' is not implemented within the component" ;
     end if ;
@@ -530,7 +530,7 @@ rule <syntax_instruction>
   search ioVariablesMap.searchForReadWriteAccess nomTable (?typeEntite ?nomCppVariableTable) ; 
   @typeTableBlocsDeTable tableMethodesBloc ;
   extract typeEntite->@typeGalgasMapType (?* ?* ?* ?*
-                          ?tableMethodesBloc ?* ?*) error nomTable : messageGalgasType ;
+                          ?tableMethodesBloc ...) error nomTable : messageGalgasType ;
 #--- Méthode block
   $.$ ;
   @lstring nomMethodeBloc ;
@@ -788,7 +788,7 @@ rule <rule_declaration_or_implementation>
   @typeAltProductionsMap altProductionsMap [empty] ;
   @lstring altName := [@lstring new !"" !here] ;
 #--- Parse label declared ? If Yes, check that called non terminals are also declared with 'parse' label
-  @bool hasParseLabel := [nonterminalSymbolAltMap hasKey ![@lstring new !"parse" !here]] ;
+  @bool hasParseLabel := [nonterminalSymbolAltMap hasKey !"parse"] ;
   @bool checkNonTerminalsAreDeclaredWithParseLabel := hasParseLabel ;
 #--- Parse tag ?
   @string productionTagName ;
@@ -870,7 +870,7 @@ rule <rule_declaration_or_implementation>
   action checkLabelSignatures !?altProductionsMap ;
 #--- Check that all label rules are implemented
   foreach nonterminalSymbolAltMap (??@lstring nonTerminalAltName ??@L_signature altSignature) :
-    if [nonTerminalAltName value] != "parse" & not [altProductionsMap hasKey !nonTerminalAltName] then
+    if [nonTerminalAltName value] != "parse" & not [altProductionsMap hasKey ![nonTerminalAltName value]] then
       error here : "the '" . [nonTerminalAltName value] . "' label is not implemented within the rule" ;
     end if ;
   end foreach ;
@@ -1027,7 +1027,7 @@ rule <syntax_instruction>
   search nonterminalSymbolAltMap.searchKey altName (?signatureMethode) ;
 #--- Check if parse label is declared ?
   if inCheckNonTerminalsAreDeclaredWithParseLabel & ([altName value] != "parse") then
-    if not [nonterminalSymbolAltMap hasKey ![@lstring new !"parse" !here]] then
+    if not [nonterminalSymbolAltMap hasKey !"parse"] then
       error here : "As current rule has 'parse' label, every invoked non terminal symbol must be declared with 'parse' label" ;
     end if ;
   end if ;
