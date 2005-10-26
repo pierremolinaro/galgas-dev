@@ -287,7 +287,7 @@ void cPtr_typeProductionAengendrer
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//   Engendrer la déclaration des prototypes des règles de production        *
+//   Engendrer la declaration des prototypes des règles de production        *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -296,7 +296,7 @@ engendrerDeclarationPrototypesReglesDeProduction (GGS_lstring & nomComposant,
                                                   const C_String & inLexiqueName,
                                                   GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                                   AC_OutputStream & inHfile) {
-//---  declarer une classe si il existe des règles de production à implémenter
+//---  declarer une classe si il existe des règles de production à implementer
   inHfile.writeTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
   inHfile << "class " << nomComposant << " {\n"
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;

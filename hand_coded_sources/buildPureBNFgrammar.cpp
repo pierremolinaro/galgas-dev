@@ -173,12 +173,12 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
                                  const C_String & inSyntaxComponentName,
                                  cPureBNFproductionsList & ioProductions) {
 // A ; choix X ou Y ou Z ... fin choix ; B
-//  'aNumeroNonTerminauxRepeter' désigne le nouveau non terminal 'choix_xx_xx', noté <W>,
+//  'aNumeroNonTerminauxRepeter' designe le nouveau non terminal 'choix_xx_xx', note <W>,
 //     et on engendre les productions :
 //          <W> = X
 //          <W> = Y
 //          <W> = Z, ...
-//     la production analysée devient : A ; <W> ; B
+//     la production analysee devient : A ; <W> ; B
 
  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.firstObject () ;
   while (currentBranch != NULL) {
@@ -480,7 +480,7 @@ buildProductionsArray (const sint32 inTerminalSymbolsCount,
     swap (tableauIndiceDerniereProduction, temp) ;
   }
 
-//--- Construire le tableau indiquant si une production a été traitée et le tableau des indirections
+//--- Construire le tableau indiquant si une production a ete traitee et le tableau des indirections
   TC_UniqueArray <bool> productionTraitee (nombreProductions, false COMMA_HERE) ;
   { TC_UniqueArray <sint32> temp (nombreProductions, -1 COMMA_HERE) ;
     swap (tableauIndirectionProduction, temp) ;

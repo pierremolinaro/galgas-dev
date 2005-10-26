@@ -317,36 +317,6 @@ end class ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#           Insert in a map instruction                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeMapInsertInstruction extends @typeInstruction
-  @typeCplusPlusName aNomVariableTable ;
-  @lstring aNomMethodeInsertion ;
-  @lstring aNomTypeTable ;
-  @typeCplusPlusName aNomVariableClef ;
-  @typeCplusPlusNameList aListeParametresEffectifs ;
-  @typeCplusPlusName mOptionalIndexVariable ;
-end class ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#           Search in a map instruction                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeMapSearchInstruction extends @typeInstruction
-  @typeCplusPlusName aNomVariableTable ;
-  @lstring aNomMethodeRecherche ;
-  @lstring aNomTypeTable ;
-  @typeCplusPlusName aNomVariableClef ;
-  @typeCplusPlusNameList mAllVariablesList ;
-  @typeCplusPlusName mOptionalIndexVariable ;
-end class ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #           Instruction d'appel d'une méthode de list                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -654,7 +624,7 @@ routine buildMapWithLocalConstants
         else
           cppName := [@typeOperandName new !attributeName !inLocation !mapStyle] ;
         end if ;
-        insert ioVariablesMap.insertUsedConstInArgument cstName (!type !cppName) ;
+        [!?ioVariablesMap insertUsedConstInArgument !cstName !type !cppName] ;
       else
         error typeNameInDeclaration : "I have found the '@" . [typeNameInDeclaration value]
           . "' type, I was expected the '@" . typeName . "' type" ;
@@ -1026,7 +996,6 @@ class @typeStructuredExtractInstructionWithElse extends @typeInstruction
   @typeCplusPlusName mVariableName ;
   @typeStructuredExtractCasesList mCasesList ;
   @typeInstructionsList mElseInstructionList ;
-  
 end class ;
 
 #---------------------------------------------------------------------------*
@@ -1078,13 +1047,6 @@ class @typeExternTypeToGenerate extends @typeEntityToGenerate
 
 #--- C++ class name
   @lstring mCppClassName ;
-end class ;
-
-#---------------------------------------------------------------------------*
-
-class @setTypeToGenerate extends @typeEntityToGenerate
-  @lstring mSetTypeName ;
-  @lstring mEnumElementTypeName ;
 end class ;
 
 #---------------------------------------------------------------------------*
@@ -1229,67 +1191,67 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   @lstring name := [@lstring new !"lstring" !here] ;
   @AC_galgasType t := [@typeGalgas_lstring new] ;
   @AC_semanticsEntity e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"lbool" !here] ;
   t := [@typeGalgas_lbool new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"luint" !here] ;
   t := [@typeGalgas_luint new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"lsint" !here] ;
   t := [@typeGalgas_lsint new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"ldouble" !here] ;
   t := [@typeGalgas_ldouble new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"lchar" !here] ;
   t := [@typeGalgas_lchar new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"location" !here] ;
   t := [@typeGalgas_location new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"uint" !here] ;
   t := [@typeGalgas_uint new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"sint" !here] ;
   t := [@typeGalgas_sint new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"char" !here] ;
   t := [@typeGalgas_char new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"string" !here] ;
   t := [@typeGalgas_string new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"bool" !here] ;
   t := [@typeGalgas_bool new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 
   name := [@lstring new !"double" !here] ;
   t := [@typeGalgas_double new] ;
   e := [@typeEntiteType new !t] ;
-  insert ioComponentSemanticsEntitiesMap.insertKey name (!e) ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

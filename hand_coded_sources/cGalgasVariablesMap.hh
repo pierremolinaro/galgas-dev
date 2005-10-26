@@ -23,17 +23,18 @@
 
 //---------------------------------------------------------------------------*
 
+#include <stdlib.h>
+
 #include "utilities/MF_MemoryControl.h"
 #include "cGalgasVariablesMap.h"
-#include <stdlib.h>
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableControlePhase <INFO, KEY>::cElementTableControlePhase (const INFO & inInfo,
+template <typename INFO>
+cElementTableControlePhase <INFO>::cElementTableControlePhase (const INFO & inInfo,
                                                                     const enumNatureEntite nature,
                                                                     const enumEtatVariable etat,
-                                                                    const KEY & clef,
+                                                                    const GGS_lstring & clef,
                                                                     const sint32 numeroElement,
                                                                     const bool inIsDeclaredUnused,
                                                                     const bool inUsed) :
@@ -52,8 +53,8 @@ mIsDeclaredUnused (inIsDeclaredUnused) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableControlePhase <INFO, KEY>::~cElementTableControlePhase (void) {
+template <typename INFO>
+cElementTableControlePhase <INFO>::~cElementTableControlePhase (void) {
   macroMyDelete (mInfPtr, element_type) ;
   macroMyDelete (mSupPtr, element_type) ;
   macroVoidPointer (champChainageEtat) ;
@@ -61,8 +62,8 @@ cElementTableControlePhase <INFO, KEY>::~cElementTableControlePhase (void) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cGalgasVariablesMap <INFO, KEY>::cGalgasVariablesMap (void) {
+template <typename INFO>
+cGalgasVariablesMap <INFO>::cGalgasVariablesMap (void) {
   aListeSurcharges = (typeSurchargeTable *) NULL ;
   mRoot = (element_type *) NULL ;
   mListLength = 0 ;
@@ -70,24 +71,31 @@ cGalgasVariablesMap <INFO, KEY>::cGalgasVariablesMap (void) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cGalgasVariablesMap <INFO, KEY>::~cGalgasVariablesMap (void) {
+template <typename INFO>
+cGalgasVariablesMap <INFO>::~cGalgasVariablesMap (void) {
   drop_operation () ;
   macroVoidPointer (aListeSurcharges) ;
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::drop_operation (void) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::build (void) {
+  drop_operation () ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::drop_operation (void) {
   mListLength = 0 ;
   macroMyDelete (mRoot, element_type) ;
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::operator = (const cGalgasVariablesMap <INFO, KEY> & inOperand) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::operator = (const cGalgasVariablesMap <INFO> & inOperand) {
   if (inOperand.mListLength > 0) {
     printf ("--- FATAL ERROR AT LINE %d, SOURCE %s ---\n", __LINE__, __FILE__) ;
     exit (1) ;
@@ -97,9 +105,9 @@ void cGalgasVariablesMap <INFO, KEY>::operator = (const cGalgasVariablesMap <INF
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cGalgasVariablesMap <INFO, KEY>::
-cGalgasVariablesMap (const cGalgasVariablesMap <INFO, KEY> & inOperand) {
+template <typename INFO>
+cGalgasVariablesMap <INFO>::
+cGalgasVariablesMap (const cGalgasVariablesMap <INFO> & inOperand) {
   if (inOperand.mListLength > 0) {
     printf ("--- FATAL ERROR AT LINE %d, SOURCE %s ---\n", __LINE__, __FILE__) ;
     exit (1) ;
@@ -110,21 +118,9 @@ cGalgasVariablesMap (const cGalgasVariablesMap <INFO, KEY> & inOperand) {
 }
 
 //---------------------------------------------------------------------------*
-//                                                                           *
-//        'new' constructor                                                  *
-//                                                                           *
-//---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cGalgasVariablesMap <INFO, KEY> cGalgasVariablesMap <INFO, KEY>::
-constructor_empty (void) {
-  return cGalgasVariablesMap <INFO, KEY> () ;
-}
-
-//---------------------------------------------------------------------------*
-
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::rotateLeft (element_type * & a) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::rotateLeft (element_type * & a) {
 // faire la rotation 
   element_type * b = a->mSupPtr ;
   a->mSupPtr = b->mInfPtr ;
@@ -146,8 +142,8 @@ void cGalgasVariablesMap <INFO, KEY>::rotateLeft (element_type * & a) {
 
 //---------------------------------------------------------------------
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::rotateRight (element_type * & a) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::rotateRight (element_type * & a) {
 // faire la rotation 
   element_type * b = a->mInfPtr ;
   a->mInfPtr = b->mSupPtr ;
@@ -169,10 +165,10 @@ void cGalgasVariablesMap <INFO, KEY>::rotateRight (element_type * & a) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cGalgasVariablesMap <INFO, KEY>::insertInArgument (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::insertInArgument (C_Lexique & inLexique,
                                                         const INFO & inInfo,
-                                                        const KEY & clef,
+                                                        const GGS_lstring & clef,
                                                         const GGS_location & inLocation,
                                                         const char * messageErreurInsertion) {
   return insertKey (inLexique, inInfo, enumParametreIn, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
@@ -180,10 +176,10 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertInArgument (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cGalgasVariablesMap <INFO, KEY>::insertInOutArgument (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::insertInOutArgument (C_Lexique & inLexique,
                                                            const INFO & inInfo,
-                                                           const KEY & clef,
+                                                           const GGS_lstring & clef,
                                                            const GGS_location & inLocation,
                                                            const char * messageErreurInsertion) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
@@ -191,10 +187,10 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertInOutArgument (C_Lexique & inLexiq
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cGalgasVariablesMap <INFO, KEY>::insertUnusedInOutArgument (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::insertUnusedInOutArgument (C_Lexique & inLexique,
                                                                  const INFO & inInfo,
-                                                                 const KEY & clef,
+                                                                 const GGS_lstring & clef,
                                                                  const GGS_location & inLocation,
                                                                  const char * messageErreurInsertion) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, true, false, clef, inLocation, messageErreurInsertion) ;
@@ -202,10 +198,10 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertUnusedInOutArgument (C_Lexique & i
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
- sint32 cGalgasVariablesMap <INFO, KEY>::insertOutArgument (C_Lexique & inLexique,
+template <typename INFO>
+ sint32 cGalgasVariablesMap <INFO>::insertOutArgument (C_Lexique & inLexique,
                                                           const INFO & inInfo,
-                                                          const KEY & clef,
+                                                          const GGS_lstring & clef,
                                                           const GGS_location & inLocation,
                                                           const char * messageErreurInsertion) {
   return insertKey (inLexique, inInfo, enumParametreOut, etatNonValue, false, false, clef, inLocation, messageErreurInsertion) ;
@@ -213,10 +209,10 @@ template <typename INFO, typename KEY>
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cGalgasVariablesMap <INFO, KEY>::insertLocalVariable (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::insertLocalVariable (C_Lexique & inLexique,
                                                            const INFO & inInfo,
-                                                           const KEY & clef,
+                                                           const GGS_lstring & clef,
                                                            const GGS_location & inLocation,
                                                            const char * messageErreurInsertion) {
   return insertKey (inLexique, inInfo, enumVariableLocale, etatNonValue, false, false, clef, inLocation, messageErreurInsertion) ;
@@ -224,10 +220,10 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertLocalVariable (C_Lexique & inLexiq
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cGalgasVariablesMap <INFO, KEY>::insertConstInArgument (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::insertConstInArgument (C_Lexique & inLexique,
                                                              const INFO & inInfo,
-                                                             const KEY & clef,
+                                                             const GGS_lstring & clef,
                                                              const GGS_location & inLocation,
                                                              const char * messageErreurInsertion) {
   return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
@@ -235,10 +231,10 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertConstInArgument (C_Lexique & inLex
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cGalgasVariablesMap <INFO, KEY>::insertUsedConstInArgument (C_Lexique & lexique_var_,
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::insertUsedConstInArgument (C_Lexique & lexique_var_,
                                                              const INFO & inInfo,
-                                                             const KEY & clef,
+                                                             const GGS_lstring & clef,
                                                              const GGS_location & inLocation,
                                                              const char * messageErreurInsertion) {
   return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, false, true, clef, inLocation, messageErreurInsertion) ;
@@ -246,10 +242,10 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertUsedConstInArgument (C_Lexique & l
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cGalgasVariablesMap <INFO, KEY>::insertUnusedConstInArgument (C_Lexique & lexique_var_,
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::insertUnusedConstInArgument (C_Lexique & lexique_var_,
                                                                    const INFO & inInfo,
-                                                                   const KEY & clef,
+                                                                   const GGS_lstring & clef,
                                                                    const GGS_location & inLocation,
                                                                    const char * messageErreurInsertion) {
   return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, true, false, clef, inLocation, messageErreurInsertion) ;
@@ -257,14 +253,14 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertUnusedConstInArgument (C_Lexique &
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cGalgasVariablesMap <INFO, KEY>::insertKey (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::insertKey (C_Lexique & inLexique,
                                               const INFO & inInfo,
                                               const enumNatureEntite nature,
                                               const enumEtatVariable etat,
                                               const bool inIsDeclaredUnused,
                                               const bool inUsed,
-                                              const KEY & inKey,
+                                              const GGS_lstring & inKey,
                                               const GGS_location & inLocation,
                                               const char * messageErreurInsertion) {
   sint32 resultat = -1 ; // Erreur 'insertion incorrecte'
@@ -284,14 +280,14 @@ sint32 cGalgasVariablesMap <INFO, KEY>::insertKey (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::internalInsert (bool & insertionOk,
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::internalInsert (bool & insertionOk,
                                                        const INFO & inInfo,
                                                        const enumNatureEntite nature,
                                                        const enumEtatVariable etat,
                                                        const bool inIsDeclaredUnused,
                                                        const bool inUsed,
-                                                       const KEY & clef,
+                                                       const GGS_lstring & clef,
                                                        element_type * & racine,
                                                        bool & extension) {
   if (racine == NULL) {
@@ -349,11 +345,11 @@ void cGalgasVariablesMap <INFO, KEY>::internalInsert (bool & insertionOk,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::
 chercherInterne (C_Lexique & inLexique,
                  element_type * & resultat,
-                 const KEY & clef,
+                 const GGS_lstring & clef,
                  const char * messageErreurRecherche) {
   if (clef.isBuilt ()) {
   //--- Chercher d'abord dans la table désignée par la racine
@@ -402,10 +398,10 @@ chercherInterne (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableControlePhase <INFO, KEY> * cGalgasVariablesMap <INFO, KEY>::
+template <typename INFO>
+cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForReadOnlyAccess (C_Lexique & inLexique,
-                         const KEY & clef,
+                         const GGS_lstring & clef,
                          const GGS_location & inLocation,
                          const char * messageErreurRecherche,
                          const char * messageErreurPhase) {
@@ -424,10 +420,10 @@ searchForReadOnlyAccess (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableControlePhase <INFO, KEY> * cGalgasVariablesMap <INFO, KEY>::
+template <typename INFO>
+cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForDestructiveReadAccess (C_Lexique & inLexique,
-                                const KEY & clef,
+                                const GGS_lstring & clef,
                                 const GGS_location & inLocation,
                                 const char * messageErreurRecherche,
                                 const char * messageErreurPhase) {
@@ -448,10 +444,10 @@ searchForDestructiveReadAccess (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableControlePhase <INFO, KEY> * cGalgasVariablesMap <INFO, KEY>::
+template <typename INFO>
+cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForReadWriteAccess (C_Lexique & inLexique,
-                          const KEY & clef,
+                          const GGS_lstring & clef,
                           const GGS_location & inLocation,
                           const char * messageErreurRecherche,
                           const char * messageErreurPhase) {
@@ -471,10 +467,10 @@ searchForReadWriteAccess (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableControlePhase <INFO, KEY> * cGalgasVariablesMap <INFO, KEY>::
+template <typename INFO>
+cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForWriteAccess (C_Lexique & inLexique,
-                      const KEY & clef,
+                      const GGS_lstring & clef,
                       const GGS_location & inLocation,
                       const char * messageErreurRecherche,
                       const char * messageErreurPhase) {
@@ -498,22 +494,22 @@ searchForWriteAccess (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::prologue_verifyVariableUsing (C_Lexique &) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::prologue_verifyVariableUsing (C_Lexique &) {
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::epilogue_verifyVariableUsing (C_Lexique & inLexique,
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::epilogue_verifyVariableUsing (C_Lexique & inLexique,
                                                                     const GGS_location & positionErreur) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur) ;
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::verificationRecursiveConsommation (C_Lexique & inLexique,
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::verificationRecursiveConsommation (C_Lexique & inLexique,
                                                                          element_type * element,
                                                                          const GGS_location & positionErreur) {
   if (element != NULL) {
@@ -570,8 +566,8 @@ void cGalgasVariablesMap <INFO, KEY>::verificationRecursiveConsommation (C_Lexiq
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::remettreVariablesDansEtatInitial (element_type * element) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::remettreVariablesDansEtatInitial (element_type * element) {
   if (element != NULL) {
     macroValidPointer (element) ;
     remettreVariablesDansEtatInitial (element->mInfPtr) ;
@@ -598,8 +594,8 @@ void cGalgasVariablesMap <INFO, KEY>::remettreVariablesDansEtatInitial (element_
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::surchargerEtatVariables (element_type * element) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::surchargerEtatVariables (element_type * element) {
   if (element != NULL) {
     macroValidPointer (element) ;
     surchargerEtatVariables (element->mInfPtr) ;
@@ -612,8 +608,8 @@ void cGalgasVariablesMap <INFO, KEY>::surchargerEtatVariables (element_type * el
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::dechargerEtatVariables (element_type * element) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::dechargerEtatVariables (element_type * element) {
   if (element != NULL) {
     macroValidPointer (element) ;
     dechargerEtatVariables (element->mInfPtr) ;
@@ -628,8 +624,8 @@ void cGalgasVariablesMap <INFO, KEY>::dechargerEtatVariables (element_type * ele
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::initialiserChampEtatApres (element_type * element) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::initialiserChampEtatApres (element_type * element) {
   if (element != NULL) {
     macroValidPointer (element) ;
     initialiserChampEtatApres (element->mInfPtr) ;
@@ -642,8 +638,8 @@ void cGalgasVariablesMap <INFO, KEY>::initialiserChampEtatApres (element_type * 
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::verifierChampEtatApres (C_Lexique & inLexique,
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::verifierChampEtatApres (C_Lexique & inLexique,
                                                               element_type * element,
                                        const GGS_location & positionErreur,
                                        const char * message1,
@@ -664,8 +660,8 @@ void cGalgasVariablesMap <INFO, KEY>::verifierChampEtatApres (C_Lexique & inLexi
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::prologue_testBloc (C_Lexique &) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Lexique &) {
   typeSurchargeTable * tempo = (typeSurchargeTable *) NULL ;
   macroMyNew (tempo, typeSurchargeTable) ;
   tempo->mNextItem = aListeSurcharges ;
@@ -683,8 +679,8 @@ void cGalgasVariablesMap <INFO, KEY>::prologue_testBloc (C_Lexique &) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::epilogue_testBloc (C_Lexique &) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_Lexique &) {
   typeSurchargeTable * surchargeCourante = aListeSurcharges ;
   while (surchargeCourante != NULL) {
     macroValidPointer (surchargeCourante) ;
@@ -700,15 +696,15 @@ void cGalgasVariablesMap <INFO, KEY>::epilogue_testBloc (C_Lexique &) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::prologue_testPart (C_Lexique &) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::prologue_testPart (C_Lexique &) {
   macroValidPointer (aListeSurcharges) ;
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::epilogue_testPart (C_Lexique & inLexique,
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::epilogue_testPart (C_Lexique & inLexique,
                                                          const GGS_location & positionErreur) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur) ;
   macroMyDelete (mRoot, element_type) ;
@@ -737,8 +733,8 @@ void cGalgasVariablesMap <INFO, KEY>::epilogue_testPart (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::prologue_repeatBlock (C_Lexique & lexique) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::prologue_repeatBlock (C_Lexique & lexique) {
   prologue_testBloc (lexique) ;
   prologue_testPart (lexique) ;
   GGS_location sansImportance ;
@@ -747,22 +743,22 @@ void cGalgasVariablesMap <INFO, KEY>::prologue_repeatBlock (C_Lexique & lexique)
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::epilogue_repeatBlock (C_Lexique & lexique) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::epilogue_repeatBlock (C_Lexique & lexique) {
   epilogue_testBloc (lexique) ;
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::prologue_repeatPart (C_Lexique &) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::prologue_repeatPart (C_Lexique &) {
   macroValidPointer (aListeSurcharges) ;
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::epilogue_repeatPart (C_Lexique & inLexique,
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::epilogue_repeatPart (C_Lexique & inLexique,
                                                            const GGS_location & positionErreur) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur) ;
   macroMyDelete (mRoot, element_type) ;
@@ -781,8 +777,8 @@ void cGalgasVariablesMap <INFO, KEY>::epilogue_repeatPart (C_Lexique & inLexique
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::prologue_blocTestMethodeDouble (C_Lexique &) {
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::prologue_blocTestMethodeDouble (C_Lexique &) {
   macroVoidPointer (aListeSurcharges) ;
   macroMyNew (aListeSurcharges, typeSurchargeTable) ;
   aListeSurcharges->champTable = mRoot ;
@@ -791,8 +787,8 @@ void cGalgasVariablesMap <INFO, KEY>::prologue_blocTestMethodeDouble (C_Lexique 
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cGalgasVariablesMap <INFO, KEY>::epilogue_blocTestMethodeDouble (C_Lexique & inLexique,
+template <typename INFO>
+void cGalgasVariablesMap <INFO>::epilogue_blocTestMethodeDouble (C_Lexique & inLexique,
                                                                       const GGS_location & positionErreur) {
   macroValidPointer (aListeSurcharges) ;
   verificationRecursiveConsommation (inLexique, aListeSurcharges->champTable, positionErreur) ;

@@ -43,10 +43,10 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableMethodesUtilisables <INFO, KEY>
+template <typename INFO>
+cElementTableMethodesUtilisables <INFO>
                  ::cElementTableMethodesUtilisables (const INFO & info,
-                                                     const KEY & clef,
+                                                     const GGS_lstring & clef,
                                                      const sint32 numeroElement,
                                                      const bool estAbstraite)
 :champEstAbstraite (estAbstraite), mEntryIndex (numeroElement) {
@@ -59,7 +59,7 @@ cElementTableMethodesUtilisables <INFO, KEY>
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> cElementTableMethodesUtilisables <INFO, KEY>::~cElementTableMethodesUtilisables (void) {
+template <typename INFO> cElementTableMethodesUtilisables <INFO>::~cElementTableMethodesUtilisables (void) {
   macroMyDelete (mInfPtr, element_type) ;
   macroMyDelete (mSupPtr, element_type) ;
 }
@@ -70,8 +70,8 @@ template <typename INFO, typename KEY> cElementTableMethodesUtilisables <INFO, K
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cClassMethodsMap <INFO, KEY>::cClassMethodsMap (void) {
+template <typename INFO>
+cClassMethodsMap <INFO>::cClassMethodsMap (void) {
   mRoot = (element_type *) NULL ;
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
@@ -81,8 +81,8 @@ cClassMethodsMap <INFO, KEY>::cClassMethodsMap (void) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cClassMethodsMap <INFO, KEY>::cClassMethodsMap (const cClassMethodsMap <INFO, KEY> & source) {
+template <typename INFO>
+cClassMethodsMap <INFO>::cClassMethodsMap (const cClassMethodsMap <INFO> & source) {
   mRoot = (element_type *) NULL ;
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
@@ -93,9 +93,9 @@ cClassMethodsMap <INFO, KEY>::cClassMethodsMap (const cClassMethodsMap <INFO, KE
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cClassMethodsMap <INFO, KEY>
-             ::operator = (const cClassMethodsMap <INFO, KEY> & source) {
+template <typename INFO>
+void cClassMethodsMap <INFO>::
+operator = (const cClassMethodsMap <INFO> & source) {
   if (this != & source) {
     mRoot = source.mRoot ;
     mFirstItem = source.mFirstItem ;
@@ -111,14 +111,22 @@ void cClassMethodsMap <INFO, KEY>
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> cClassMethodsMap <INFO, KEY>::~cClassMethodsMap (void) {
+template <typename INFO> cClassMethodsMap <INFO>::~cClassMethodsMap (void) {
   drop_operation () ;
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cClassMethodsMap <INFO, KEY>::drop_operation (void) {
+template <typename INFO>
+void cClassMethodsMap <INFO>::build (void) {
+  drop_operation () ;
+  macroMyNew (mReferenceCountPtr, sint32 (1)) ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+void cClassMethodsMap <INFO>::drop_operation (void) {
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
   mListLength = 0 ;
@@ -141,25 +149,15 @@ void cClassMethodsMap <INFO, KEY>::drop_operation (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <class INFO, class KEY>
-cClassMethodsMap <INFO, KEY> cClassMethodsMap <INFO, KEY>::
-constructor_empty (void) {
-  cClassMethodsMap <INFO, KEY> result ;
-  macroMyNew (result.mReferenceCountPtr, sint32 (1)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-template <typename INFO, typename KEY>
-void cClassMethodsMap <INFO, KEY>::insulateMap (void) {
+template <typename INFO>
+void cClassMethodsMap <INFO>::insulateMap (void) {
   if (mReferenceCountPtr != NULL) {
     macroValidPointer (mReferenceCountPtr) ;
     if ((*mReferenceCountPtr) > 1) {
       (*mReferenceCountPtr) -- ;
       mReferenceCountPtr = (sint32 *) NULL ;
       macroMyNew (mReferenceCountPtr, sint32 (1)) ;
-      cElementTableMethodesUtilisables <INFO, KEY> * p = mFirstItem ;
+      cElementTableMethodesUtilisables <INFO> * p = mFirstItem ;
       mLastItem = (element_type *) NULL ;
       mFirstItem = (element_type *) NULL ;
       mRoot = (element_type *) NULL ;
@@ -175,10 +173,10 @@ void cClassMethodsMap <INFO, KEY>::insulateMap (void) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cClassMethodsMap <INFO, KEY>::insertAbstract (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cClassMethodsMap <INFO>::insertAbstract (C_Lexique & inLexique,
                                           const INFO & info,
-                                          const KEY & clef,
+                                          const GGS_lstring & clef,
                                           const GGS_location & inLocation,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
@@ -197,10 +195,10 @@ sint32 cClassMethodsMap <INFO, KEY>::insertAbstract (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cClassMethodsMap <INFO, KEY>::insertNotAbstract (C_Lexique & inInputOutput,
+template <typename INFO>
+sint32 cClassMethodsMap <INFO>::insertNotAbstract (C_Lexique & inInputOutput,
                                           const INFO & info,
-                                          const KEY & clef,
+                                          const GGS_lstring & clef,
                                           const GGS_location & inLocation,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
@@ -219,14 +217,14 @@ sint32 cClassMethodsMap <INFO, KEY>::insertNotAbstract (C_Lexique & inInputOutpu
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cClassMethodsMap <INFO, KEY>::internalInsert (const INFO & info,
-                                           const KEY & clef,
+template <typename INFO>
+sint32 cClassMethodsMap <INFO>::internalInsert (const INFO & info,
+                                           const GGS_lstring & clef,
                                            const bool estAbstraite,
-                                           cElementTableMethodesUtilisables <INFO, KEY> * & racine) {
+                                           cElementTableMethodesUtilisables <INFO> * & racine) {
   sint32 numeroElement = -1 ;
   if (racine == NULL) {
-    #define macroTemporaire cElementTableMethodesUtilisables <INFO, KEY> (info, clef, mListLength, estAbstraite)
+    #define macroTemporaire cElementTableMethodesUtilisables <INFO> (info, clef, mListLength, estAbstraite)
     // macroTemporaire : astuce pour pallier l'erreur d'expansion qui considère la virgule entre INFO et
     // KEY comme un séparateur entre un deuxième et un troisième argument
     macroMyNew (racine, macroTemporaire) ;
@@ -256,10 +254,10 @@ sint32 cClassMethodsMap <INFO, KEY>::internalInsert (const INFO & info,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableMethodesUtilisables <INFO, KEY> * cClassMethodsMap <INFO, KEY>::
+template <typename INFO>
+cElementTableMethodesUtilisables <INFO> * cClassMethodsMap <INFO>::
 searchKey (C_Lexique & inLexique,
-           const KEY & inKey,
+           const GGS_lstring & inKey,
            const GGS_location & inLocation,
            const char * inSearchErrorMessage) {
   element_type * result = (element_type *) NULL ;
@@ -286,10 +284,10 @@ searchKey (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableMethodesUtilisables <INFO, KEY> * cClassMethodsMap <INFO, KEY>::
+template <typename INFO>
+cElementTableMethodesUtilisables <INFO> * cClassMethodsMap <INFO>::
 searchForOverride (C_Lexique & inLexique,
-                   const KEY & inKey,
+                   const GGS_lstring & inKey,
                    const GGS_location & inLocation,
                    const char * inSearchErrorMessage) {
   element_type * result = (element_type *) NULL ;
@@ -321,9 +319,9 @@ searchForOverride (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cClassMethodsMap <INFO, KEY>::epilogue_definitionClasseNonAbstraite (C_Lexique & lexique) {
-  cElementTableMethodesUtilisables <INFO, KEY> * p = mFirstItem ;
+template <typename INFO>
+void cClassMethodsMap <INFO>::epilogue_definitionClasseNonAbstraite (C_Lexique & lexique) {
+  cElementTableMethodesUtilisables <INFO> * p = mFirstItem ;
   while (p != NULL) {
     macroValidPointer (p) ;
     if (p->champEstAbstraite) {

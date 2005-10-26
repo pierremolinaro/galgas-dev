@@ -191,26 +191,26 @@ routine buildLexicalTypeMap !@lexicalTypeMap lexicalTypeMap :
   lexicalTypeMap := [@lexicalTypeMap empty] ;
   @AC_galgasType t := [@typeGalgas_lstring new] ;
   @lstring typeName := [@lstring new !"lstring" !here] ;
-  insert lexicalTypeMap.insertKey typeName (!t) ;
+  [!?lexicalTypeMap insertKey !typeName !t] ;
   t := [@typeGalgas_lchar new] ;
   typeName := [@lstring new !"lchar" !here] ;
-  insert lexicalTypeMap.insertKey typeName (!t) ;
+  [!?lexicalTypeMap insertKey !typeName !t] ;
 
   t := [@typeGalgas_luint new] ;
   typeName := [@lstring new !"luint" !here] ;
-  insert lexicalTypeMap.insertKey typeName (!t) ;
+  [!?lexicalTypeMap insertKey !typeName !t] ;
 
   t := [@typeGalgas_lsint new] ;
   typeName := [@lstring new !"lsint" !here] ;
-  insert lexicalTypeMap.insertKey typeName (!t) ;
+  [!?lexicalTypeMap insertKey !typeName !t] ;
 
   t := [@typeGalgas_lbool new] ;
   typeName := [@lstring new !"lbool" !here] ;
-  insert lexicalTypeMap.insertKey typeName (!t) ;
+  [!?lexicalTypeMap insertKey !typeName !t] ;
 
   t := [@typeGalgas_ldouble new] ;
   typeName := [@lstring new !"ldouble" !here] ;
-  insert lexicalTypeMap.insertKey typeName (!t) ;
+  [!?lexicalTypeMap insertKey !typeName !t] ;
 end routine ;
 
 #-------------------------------------------------------------------*
@@ -245,7 +245,7 @@ rule <galgas_component>
   @M_styles stylesMap [empty] ;
   @lstring defaultStyleName [new !"Default style" !here] ;
   @lstring defaultStringIdentifier [new !"" !here] ;
-  insert stylesMap.insertKey defaultStringIdentifier (! defaultStyleName) ;
+  [!?stylesMap insertKey !defaultStringIdentifier !defaultStyleName] ;
   repeat
   while 
     <lexical_component_inclusions> !?liste_des_inclusions ;
@@ -285,7 +285,7 @@ rule <galgas_component>
   $lexique$ ;
   $;$ ;
 #--- Enter lexique in lexique map
-  insert ioLexiqueMapForUse.insertKey lexiqueName (!terminalSymbolsMapForUse) ;
+  [!?ioLexiqueMapForUse insertKey !lexiqueName !terminalSymbolsMapForUse] ;
 #--- Generate scanner
   action generate_scanner
     !?lexiqueName 
@@ -317,7 +317,7 @@ label importLexique
   @M_styles stylesMap [empty] ;
   @lstring defaultStyleName [new !"Default style" !here] ;
   @lstring defaultStringIdentifier [new !"" !here] ;
-  insert stylesMap.insertKey defaultStringIdentifier (! defaultStyleName) ;
+  [!?stylesMap insertKey !defaultStringIdentifier !defaultStyleName] ;
   repeat
   while 
     <lexical_component_inclusions> parse ;
@@ -346,7 +346,7 @@ label importLexique
     $;$ ;
   end repeat ;
 #--- Enter lexique in lexique map
-  insert ioLexiqueMapForUse.insertKey lexiqueName (!terminalSymbolsMapForUse) ;
+  [!?ioLexiqueMapForUse insertKey !lexiqueName !terminalSymbolsMapForUse] ;
   $end$ ;
   $lexique$ ;
   $;$ ;
@@ -466,7 +466,7 @@ rule <style_declaration>
     $->$ ;
     @lstring title ;
     $literal_string$ ? title ;
-    insert ioStylesMap.insertKey styleMap (! title) ;
+    [!?ioStylesMap insertKey !styleMap !title] ;
   while $,$ ;
   end repeat ;
   $;$ ;
@@ -524,10 +524,10 @@ rule <attribute_or_terminal_symbol_declaration>
     @lstring typeName ;
     $type_name$ ? typeName ;
     @AC_galgasType attributeType ;
-    search inLexicalTypeMap.searchKey typeName (?attributeType) ;
+    [!?inLexicalTypeMap searchKey !typeName ?attributeType] ;
     @lstring attributeName ;
     $identifier$ ?attributeName ;
-    insert table_des_attributs.insertKey attributeName (!attributeType) ;
+    [!?table_des_attributs insertKey !attributeName !attributeType] ;
   #--- Terminal symbol
   or
     @lstring nomTerminal ;
@@ -539,14 +539,14 @@ rule <attribute_or_terminal_symbol_declaration>
       @lstring idf ;
       $identifier$ ? idf ;
       @AC_galgasType t ;
-      search table_des_attributs.searchKey idf (?t) ;
+      [!?table_des_attributs searchKey !idf ?t] ;
       l += !t !idf ;
     end repeat ;
     @lstring errorMessage ;
     $error$ ;
     $message$ ;
     $literal_string$ ? errorMessage ;
-    insert ioTerminalSymbolsMapForUse.insertKey nomTerminal (!l) ;
+    [!?ioTerminalSymbolsMapForUse insertKey !nomTerminal !l] ;
   #--- Style ?
     @lstring styleName ;
     select
@@ -556,9 +556,9 @@ rule <attribute_or_terminal_symbol_declaration>
       $identifier$ ? styleName ;
     end select ;
     @luint styleIndex ;
-    search ioStylesMap.searchKey styleName (?*) -> styleIndex ;
+    [!?ioStylesMap searchKeyGetIndex !styleName ?* ?styleIndex] ;
     @string errorMessageString := [errorMessage value] ;
-    insert table_des_terminaux.insertKey nomTerminal (!errorMessageString !l ! styleIndex) ;
+    [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !l !styleIndex] ;
   end select ;
   $;$ ;
 end rule ;
@@ -603,7 +603,7 @@ rule <key_words_list_declaration>
     $identifier$ ? styleName ;
   end select ;
   @luint styleIndex ;
-  search ioStylesMap.searchKey styleName (?*) -> styleIndex ;
+  [!?ioStylesMap searchKeyGetIndex !styleName ?* ?styleIndex] ;
 #--- List of entries
   $:$ ;
   @typeListeAttributsSemantiques attributesList [empty] ; # Always empty
@@ -628,16 +628,16 @@ rule <key_words_list_declaration>
       end if ;
     end foreach ;
   #--- Insert terminal in terminal symbols map
-    insert table_des_terminaux.insertKey terminalSymbolName (!specificErrorMessageString
-                                                             !attributesList
-                                                             !styleIndex) ;
-    insert ioTerminalSymbolsMapForUse.insertKey terminalSymbolName (!attributesList) ;
+    [!?table_des_terminaux insertKey !terminalSymbolName !specificErrorMessageString
+                                                         !attributesList
+                                                         !styleIndex] ;
+    [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributesList] ;
   #--- Insert entry in the entries map
-    insert entriesMap.insertKey listEntry (!terminalSymbolName) ;
+    [!?entriesMap insertKey !listEntry !terminalSymbolName] ;
   while
     $,$ ;
   end repeat ;
-  insert table_tables_mots_reserves.insertKey listName (!entriesMap) ;
+  [!?table_tables_mots_reserves insertKey !listName !entriesMap] ;
   $;$ ;
 end rule ;
 
@@ -654,7 +654,7 @@ rule <lexical_error_message_declaration>
   $:$ ;
   @lstring errorMessage ;
   $literal_string$ ?errorMessage ;
-  insert table_messages.insertKey nom (!errorMessage) ;
+  [!?table_messages insertKey !nom !errorMessage] ;
   $;$ ;
 end rule ;
 
@@ -774,7 +774,7 @@ rule <lexical_rule>
   $identifier$ ?listName ;
 #--- Search list name
   @typeTableMotsReserves keyWordsMap ;
-  search table_tables_mots_reserves.searchKey listName (?keyWordsMap) ;
+  [!?table_tables_mots_reserves searchKey !listName ?keyWordsMap] ;
 #--- Build lexical analyser rules
   action buildLexicalRulesFromList !?keyWordsMap !?ioLexicalRulesList ;
 end rule ;
@@ -855,7 +855,7 @@ rule <lexical_instructions_list>
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
-    search table_des_messages_erreur.searchKey errorMessageName (?*) -> errorMessageIndex ;
+    [!?table_des_messages_erreur searchKeyGetIndex !errorMessageName ?* ?errorMessageIndex] ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionErreurLexicale new !errorMessageIndex] ;
     li += !e ;
@@ -881,7 +881,7 @@ rule <lexical_error_messages_list>
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
-    search table_des_messages_erreur.searchKey errorMessageName (?*) -> errorMessageIndex ;
+    [!?table_des_messages_erreur searchKeyGetIndex !errorMessageName ?* ?errorMessageIndex] ;
     lme += !errorMessageIndex ;
   while
     $,$ ;
@@ -948,7 +948,7 @@ rule <lexical_parameter>
   $identifier$ ? nom ; # an attribute or function call
   select
     @AC_galgasType t ;
-    search table_attributs.searchKey nom (?t) ;
+    [!?table_attributs searchKey !nom ?t] ;
     a := [@typeArgumentAttribut new !nom !t] ;
   or
     @typeListeArgumentsRoutExterne lare ;
@@ -1024,7 +1024,7 @@ rule <lexical_send_instruction>
 :
   @lstring nomTerminal ;
   $terminal$ ?nomTerminal ;
-  search table_des_terminaux.searchKey nomTerminal (?* ?* ?*) ;
+  [!?table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
   instruction := [@typeInstructionEmettreSimple new !nomTerminal] ;
 end rule ;
 
@@ -1043,12 +1043,12 @@ rule <lexical_send_instruction>
     @lstring nomAttribut ;
     $identifier$ ?nomAttribut ; # nom d'attribut
     @AC_galgasType natureAttribut ;
-    search table_attributs.searchKey nomAttribut (?natureAttribut) ;
+    [!?table_attributs searchKey !nomAttribut ?natureAttribut] ;
     extract natureAttribut->@typeGalgas_lstring () error nomAttribut : messageGalgasType ;
     $in$ ;
     @lstring listName ;
     $identifier$ ?listName ;
-    search table_tables_mots_reserves.searchKey listName (?*) ;
+    [!?table_tables_mots_reserves searchKey !listName ?*] ;
     $default$ ;
     lr += !nomAttribut !listName ;
   while
@@ -1080,7 +1080,7 @@ rule <lexical_send_or_error>
   @lstring errorMessageName ;
   $identifier$ ?errorMessageName ;
   @luint errorMessageIndex ;
-  search tableMessagesErreurs.searchKey errorMessageName (?*) -> errorMessageIndex ;
+  [!?tableMessagesErreurs searchKeyGetIndex !errorMessageName ?* ?errorMessageIndex] ;
   emissionParDefaut := [@typeEmissionErreurParDefaut new !errorMessageIndex] ;
 end rule ;
 

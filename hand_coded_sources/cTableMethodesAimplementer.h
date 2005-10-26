@@ -42,28 +42,28 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> class cTableMethodesAimplementer ;
+template <typename INFO> class cTableMethodesAimplementer ;
 
-template <typename INFO, typename KEY> class cElementTableMethodesAimplementer {
-  public : typedef cElementTableMethodesAimplementer <INFO, KEY> element_type ;
-  private : cElementTableMethodesAimplementer <INFO, KEY> * mNextItem ;
-  public : cElementTableMethodesAimplementer <INFO, KEY> * mInfPtr ;
-  public : cElementTableMethodesAimplementer <INFO, KEY> * mSupPtr ;
-  public : KEY mKey ;
+template <typename INFO> class cElementTableMethodesAimplementer {
+  public : typedef cElementTableMethodesAimplementer <INFO> element_type ;
+  private : cElementTableMethodesAimplementer <INFO> * mNextItem ;
+  public : cElementTableMethodesAimplementer <INFO> * mInfPtr ;
+  public : cElementTableMethodesAimplementer <INFO> * mSupPtr ;
+  public : GGS_lstring mKey ;
   public : INFO mInfo ;
   public : const bool champEstAbstraite ;
   public : const sint32 mEntryIndex ;
   public : inline element_type * nextObject (void) const { return mNextItem ; }
   public : cElementTableMethodesAimplementer (const INFO & info,
-                                              const KEY & clef,
+                                              const GGS_lstring & clef,
                                               const sint32 numeroElement,
                                               const bool estAbstraite) ;
   public : ~cElementTableMethodesAimplementer (void) ;
 
 //--- Protection contre la duplication
-  private : cElementTableMethodesAimplementer (const cElementTableMethodesAimplementer <INFO, KEY> &) ;
-  private : void operator = (const cElementTableMethodesAimplementer <INFO, KEY> &) ;
-  friend class cTableMethodesAimplementer <INFO, KEY> ;
+  private : cElementTableMethodesAimplementer (const cElementTableMethodesAimplementer <INFO> &) ;
+  private : void operator = (const cElementTableMethodesAimplementer <INFO> &) ;
+  friend class cTableMethodesAimplementer <INFO> ;
 
 } ;
 
@@ -73,11 +73,11 @@ template <typename INFO, typename KEY> class cElementTableMethodesAimplementer {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> class cTableMethodesAimplementer {
-  public : typedef cElementTableMethodesAimplementer <INFO, KEY> element_type ;
-  public : cElementTableMethodesAimplementer <INFO, KEY> * mRoot ;
-  public : cElementTableMethodesAimplementer <INFO, KEY> * mFirstItem ;
-  public : cElementTableMethodesAimplementer <INFO, KEY> * mLastItem ;
+template <typename INFO> class cTableMethodesAimplementer {
+  public : typedef cElementTableMethodesAimplementer <INFO> element_type ;
+  public : cElementTableMethodesAimplementer <INFO> * mRoot ;
+  public : cElementTableMethodesAimplementer <INFO> * mFirstItem ;
+  public : cElementTableMethodesAimplementer <INFO> * mLastItem ;
   private : sint32 mListLength ;
   public : inline sint32 count (void) const {
     return mListLength ;
@@ -88,35 +88,33 @@ template <typename INFO, typename KEY> class cTableMethodesAimplementer {
   public : virtual ~cTableMethodesAimplementer (void) ;
 
 //--- GŽrer la duplication
-  public : cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO, KEY> &) ; // Copy constructor
-  public : void operator = (const cTableMethodesAimplementer <INFO, KEY> &) ; // Assignment operator
+  public : cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> &) ; // Copy constructor
+  public : void operator = (const cTableMethodesAimplementer <INFO> &) ; // Assignment operator
 
   public : inline virtual bool isBuilt (void) const {
     return mReferenceCountPtr != NULL ;
   }
+  public : void build (void) ;
   public : void drop_operation (void) ;
   protected : void insulateMap (void) ;
 
-//--- Handle 'new' constructor
-  public : static cTableMethodesAimplementer <INFO, KEY> constructor_empty (void) ;
-
   public : sint32 insertAbstract (C_Lexique & inLexique,
                                   const INFO & info,
-                                  const KEY & clef,
+                                  const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                   const char * messageErreurInsertion) ;
 
   public : sint32 insertNotAbstract (C_Lexique & inLexique,
                                      const INFO & info,
-                                     const KEY & clef,
+                                     const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                      const char * messageErreurInsertion) ;
 
   private : void internalInsert (const INFO & info,
-                                 const KEY & clef,
+                                 const GGS_lstring & clef,
                                  sint32 & numero, // renvoie -1 si erreur
                                  const bool estAbstraite,
-                                 cElementTableMethodesAimplementer <INFO, KEY> * & racine) ;
+                                 cElementTableMethodesAimplementer <INFO> * & racine) ;
 } ;
 
 //---------------------------------------------------------------------------*

@@ -82,7 +82,6 @@ end enum ;
 
 list @L_signature ;
 list @typeListeAttributsSemantiques ;
-abstract class @AC_galgasType ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -669,7 +668,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     @M_externTypeConstructorMap constructorMap := mConstructorMap ;
-    search constructorMap.searchKey inClassMethodName (?outAccessorTypesList) ;
+    [!?constructorMap searchKey !inClassMethodName ?outAccessorTypesList] ;
   end reader ;
 
 #--- Handle modifier call : return modifier signature
@@ -678,7 +677,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType
     !@L_signature outModifierSignature
   :
     @typeTableMethodes methodMap := mModifiersMap ;
-    search methodMap.searchKey inModifierName (?outModifierSignature) ; 
+    [!?methodMap searchKey !inModifierName ?outModifierSignature] ; 
   end reader ;
 
 #--- By default, class does not accept reader instruction call
@@ -687,7 +686,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType
     !@L_signature outReaderSignature
   :
     @typeTableMethodes methodMap := mReadersInInstructionMap ;
-    search methodMap.searchKey inReaderName (?outReaderSignature) ; 
+    [!?methodMap searchKey !inReaderName ?outReaderSignature] ; 
   end reader ;
 
 #--- Handle operator "+=" call
@@ -814,8 +813,8 @@ end class ;
 #---------------------------------------------------------------------------*
 
 map @M_typesForGrammarComponent
-  insert insertKey error message "the '" . * . "' type is already declared" ;
-  search searchKey error message "the '" . * . "' type is not defined" ;
+  insert insertKey error message "the '@" . * . "' type is already declared" ;
+  search searchKey error message "the '@" . * . "' type is not defined" ;
   @AC_typeForGrammarComponent mType ;
 end map ;
 
@@ -1239,6 +1238,14 @@ end class ;
 
 #---------------------------------------------------------------------------*
 
+map @mapMethodMap
+  insert insertKey error message "an insert or a search method named '" . * . "' is already declared" ;
+  search searchKey error message "there is no insert nor search method named '" . * . "'" ;
+  @L_signature mMethodSignature ;
+end map ;
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgasMapType extends @typeGalgasUndefinedMapType
 #--- Liste de tous les attributs semantiques not externes
   @typeListeAttributsSemantiques mNonExternAttributesList ;
@@ -1251,6 +1258,19 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType
 
 #--- Table de toutes les methodes de surcharge
   @typeTableBlocsDeTable aTableMethodesSurcharger ;
+
+#--- (insert and search) method map
+  @mapMethodMap mMethodMap ;
+
+#--- By default, object does not accept modifier call
+  override
+  reader handleModifierCall
+    ??@lstring inModifierName
+    !@L_signature outModifierSignature
+  :
+    @mapMethodMap methodMap := mMethodMap ;
+    [!?methodMap searchKey !inModifierName ?outModifierSignature] ;
+  end reader ;
 
 #--- table object accepts to be enumerated (foreach instruction)
   override
@@ -1333,7 +1353,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType
     !@L_signature outMethodSignature
   :
     @typeTableMethodes methodMap := mMethodsMap ;
-    search methodMap.searchKey inMethodName (?outMethodSignature) ;
+    [!?methodMap searchKey !inMethodName ?outMethodSignature] ;
   end reader ;
 
 #--- Class accepts class method call 'new' if it is not abstract
@@ -1422,7 +1442,7 @@ class @typeGalgas_enum extends @AC_galgasType
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     @typeEnumConstantesMap enumConstantesMap  := mEnumConstantesMap ;
-    search enumConstantesMap.searchKey inClassMethodName () ;
+    [!?enumConstantesMap searchKey !inClassMethodName] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
   end reader ;
 
@@ -1719,12 +1739,12 @@ routine handleReaderCall
     end if ;
   when @typeGalgasClassType (??* ??* ??* ??* ??@typeClassInheritedMessagesMap kMessagesMap ??* ??*) ->
     @typeClassInheritedMessagesMap messagesMap := kMessagesMap ;
-    search messagesMap.searchKey inMethodName () ;
+    [!?messagesMap searchKey !inMethodName] ;
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
   when @typeGalgas_enum (??* ??* ??@typeEnumMessageMap kMessagesMap) ->
     @typeEnumMessageMap messagesMap := kMessagesMap ;
-    search messagesMap.searchKey inMethodName (?*) ;
+    [!?messagesMap searchKey !inMethodName ?*] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques empty] ; #--- No argument
     outReturnedType := [@typeGalgas_string new] ;
   else

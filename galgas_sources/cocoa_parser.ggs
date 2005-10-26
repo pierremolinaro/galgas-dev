@@ -93,12 +93,12 @@ rule <galgas_component>
   @lstring lexiqueClassName ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
   @M_optionComponents optionsComponentsMap ;
-  search grammarComponentsMap.searchKey grammarName (?nonterminalSymbolParametersMap
-                                                     ?lexiqueClassName
-                                                     ?optionsComponentsMap) ;
+  [!?grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap
+                                                 ?lexiqueClassName
+                                                 ?optionsComponentsMap] ;
   @lstring altName := [@lstring new !"" !here] ;
   @L_signature_ForGrammarComponent startSymbolSignature ;
-  search nonterminalSymbolParametersMap.searchKey altName (?startSymbolSignature) ;
+  [!?nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature] ;
   $;$ ;
 #--- Generate Cocoa c++ file
   action generateCocoaComponent

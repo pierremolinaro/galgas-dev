@@ -84,18 +84,18 @@ class agregatChainageEtat {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> class cGalgasVariablesMap ;
+template <typename INFO> class cGalgasVariablesMap ;
 
-template <typename INFO, typename KEY> class cElementTableControlePhase {
-  public : typedef cElementTableControlePhase <INFO, KEY> element_type ;
+template <typename INFO> class cElementTableControlePhase {
+  public : typedef cElementTableControlePhase <INFO> element_type ;
 //--- Protection contre la duplication 
-  private : cElementTableControlePhase (cElementTableControlePhase <INFO, KEY> &) ;
-  private : void operator = (cElementTableControlePhase <INFO, KEY> &) ;
+  private : cElementTableControlePhase (cElementTableControlePhase <INFO> &) ;
+  private : void operator = (cElementTableControlePhase <INFO> &) ;
 
 //--- Attributs
-  public : cElementTableControlePhase <INFO, KEY> * mInfPtr ;
-  public : cElementTableControlePhase <INFO, KEY> * mSupPtr ;
-  public : const KEY mKey ;
+  public : cElementTableControlePhase <INFO> * mInfPtr ;
+  public : cElementTableControlePhase <INFO> * mSupPtr ;
+  public : const GGS_lstring mKey ;
   public : INFO mInfo ;
   public : const sint32 mEntryIndex ;
   public : agregatChainageEtat * champChainageEtat ;
@@ -109,7 +109,7 @@ template <typename INFO, typename KEY> class cElementTableControlePhase {
   public : cElementTableControlePhase (const INFO & info,
                                        const enumNatureEntite nature,
                                        const enumEtatVariable etat,
-                                       const KEY & clef,
+                                       const GGS_lstring & clef,
                                        const sint32 numeroElement,
                                        const bool inIsDeclaredUnused,
                                        const bool inUsed) ;
@@ -122,22 +122,22 @@ template <typename INFO, typename KEY> class cElementTableControlePhase {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> class classeSurchargeTableControlePhase {
+template <typename INFO> class classeSurchargeTableControlePhase {
 //--- Interdire la duplication
-  private : classeSurchargeTableControlePhase (classeSurchargeTableControlePhase <INFO, KEY> &) ;
-  private : void operator = (classeSurchargeTableControlePhase <INFO, KEY> &) ;
+  private : classeSurchargeTableControlePhase (classeSurchargeTableControlePhase <INFO> &) ;
+  private : void operator = (classeSurchargeTableControlePhase <INFO> &) ;
 //--- Attributs
-  private : classeSurchargeTableControlePhase <INFO, KEY> * mNextItem ;
-  public : cElementTableControlePhase <INFO, KEY> * champTable ;
+  private : classeSurchargeTableControlePhase <INFO> * mNextItem ;
+  public : cElementTableControlePhase <INFO> * champTable ;
   public : sint16 champCompteur ;
-  public : inline classeSurchargeTableControlePhase <INFO, KEY> * nextObject (void) const { return mNextItem ; }
+  public : inline classeSurchargeTableControlePhase <INFO> * nextObject (void) const { return mNextItem ; }
 //--- Constructeur (pas de destructeur)
   public : classeSurchargeTableControlePhase (void) {
-    mNextItem = (classeSurchargeTableControlePhase <INFO, KEY> *) NULL ;
-    champTable = (cElementTableControlePhase <INFO, KEY> *) NULL ;
+    mNextItem = (classeSurchargeTableControlePhase <INFO> *) NULL ;
+    champTable = (cElementTableControlePhase <INFO> *) NULL ;
     champCompteur = 0 ;
   }
-  friend class cGalgasVariablesMap <INFO, KEY> ;
+  friend class cGalgasVariablesMap <INFO> ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -146,9 +146,9 @@ template <typename INFO, typename KEY> class classeSurchargeTableControlePhase {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> class cGalgasVariablesMap {
-  public : typedef cElementTableControlePhase <INFO, KEY> element_type ;
-  public : typedef classeSurchargeTableControlePhase <INFO, KEY> typeSurchargeTable ;
+template <typename INFO> class cGalgasVariablesMap {
+  public : typedef cElementTableControlePhase <INFO> element_type ;
+  public : typedef classeSurchargeTableControlePhase <INFO> typeSurchargeTable ;
   public : element_type * mRoot ;
   public : typeSurchargeTable * aListeSurcharges ;
   private : sint32 mListLength ;
@@ -157,8 +157,8 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
   }
 
 //--- No copy
-  public : cGalgasVariablesMap (const cGalgasVariablesMap <INFO, KEY> &) ;
-  public : void operator = (const cGalgasVariablesMap <INFO, KEY> &) ;
+  public : cGalgasVariablesMap (const cGalgasVariablesMap <INFO> &) ;
+  public : void operator = (const cGalgasVariablesMap <INFO> &) ;
 
 //--- Constructor and destructor
   public : cGalgasVariablesMap (void) ; // Default Constructor
@@ -166,59 +166,57 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
 
 //--- Drop operation
   public : void drop_operation (void) ;
+  public : void build (void) ;
 
 //--- This kind of map is always built
   public : inline bool isBuilt (void) const { return true ; }
 
-//--- Handle 'new' constructor
-  public : static cGalgasVariablesMap <INFO, KEY> constructor_empty (void) ;
-
-//--- MŽthodes d'insertion
+//--- Insertion Methods
   public : sint32 insertInArgument (C_Lexique & inLexique,
                                   const INFO & info,
-                                  const KEY & clef,
+                                  const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                   const char * messageErreurInsertion) ;
 
   public : sint32 insertInOutArgument (C_Lexique & inLexique,
                                      const INFO & info,
-                                     const KEY & clef,
+                                     const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                      const char * messageErreurInsertion) ;
 
   public : sint32 insertUnusedInOutArgument (C_Lexique & inLexique,
                                            const INFO & info,
-                                           const KEY & clef,
+                                           const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion) ;
 
   public : sint32 insertOutArgument (C_Lexique & inLexique,
                                    const INFO & info,
-                                   const KEY & clef,
+                                   const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                    const char * messageErreurInsertion) ;
 
   public : sint32 insertConstInArgument (C_Lexique & inLexique,
                                        const INFO & info,
-                                       const KEY & clef,
+                                       const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                        const char * messageErreurInsertion) ;
 
   public : sint32 insertUsedConstInArgument (C_Lexique & inLexique,
                                            const INFO & info,
-                                           const KEY & clef,
+                                           const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion) ;
 
   public : sint32 insertUnusedConstInArgument (C_Lexique & inLexique,
                                              const INFO & info,
-                                             const KEY & clef,
+                                             const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                              const char * messageErreurInsertion) ;
 
   public : sint32 insertLocalVariable (C_Lexique & inLexique,
                                      const INFO & info,
-                                     const KEY & clef,
+                                     const GGS_lstring & clef,
                                       const GGS_location & inLocation,
                                      const char * messageErreurInsertion) ;
 
@@ -226,29 +224,29 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
 //--- Search methods
   private : void chercherInterne (C_Lexique & inLexique,
                                   element_type * & resultat,
-                                  const KEY & clef,
+                                  const GGS_lstring & clef,
                                   const char * messageErreurRecherche) ;
 
   public : element_type * searchForReadOnlyAccess (C_Lexique & inLexique,
-                                         const KEY & clef,
+                                         const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                          const char * messageErreurRecherche,
                                          const char * messageErreurPhase) ;
 
   public : element_type * searchForDestructiveReadAccess (C_Lexique & inLexique,
-                                                const KEY & clef,
+                                                const GGS_lstring & clef,
                                                 const GGS_location & inLocation,
                                                 const char * messageErreurRecherche,
                                                 const char * messageErreurPhase) ;
 
   public : element_type * searchForReadWriteAccess (C_Lexique & inLexique,
-                                          const KEY & clef,
+                                          const GGS_lstring & clef,
                                           const GGS_location & inLocation,
                                           const char * messageErreurRecherche,
                                           const char * messageErreurPhase) ;
 
   public : element_type * searchForWriteAccess (C_Lexique & inLexique,
-                                      const KEY & clef,
+                                      const GGS_lstring & clef,
                                       const GGS_location & inLocation,
                                       const char * messageErreurRecherche,
                                       const char * messageErreurPhase) ;
@@ -288,7 +286,7 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
                          const enumEtatVariable etat,
                          const bool inIsDeclaredUnused,
                          const bool inUsed,
-                         const KEY & clef,
+                         const GGS_lstring & clef,
                          const GGS_location & inLocation,
                          const char * messageErreurInsertion) ;
 
@@ -298,7 +296,7 @@ template <typename INFO, typename KEY> class cGalgasVariablesMap {
                                  const enumEtatVariable etat,
                                  const bool inIsDeclaredUnused,
                                  const bool inUsed,
-                                 const KEY & clef,
+                                 const GGS_lstring & clef,
                                  element_type * & racine,
                                  bool & extension) ;
 

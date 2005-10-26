@@ -765,7 +765,7 @@ rule <factor>
     @lstring mClassMethodName ;
     $identifier$ ? mClassMethodName ;
     @AC_semanticsEntity entity ;
-    search ioEntitiesMap.searchKey className (?entity) ;
+    [!?ioEntitiesMap searchKey !className ?entity] ;
     extract entity->@typeEntiteType (?outResultType) error className : messageTypeEntite ;
     @typeListeAttributsSemantiques listeAttributsSemantiques ;
     [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques] ;
@@ -785,7 +785,7 @@ rule <factor>
     $identifier$ ? optionComponentName ;
     @M_cli_options boolOptionsMap ;
     @M_cli_options uintOptionsMap ;
-    search ioOptionsComponentsMapForUse.searchKey optionComponentName (?boolOptionsMap ?uintOptionsMap) ;
+    [!?ioOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
     $.$ ;
     @lstring optionName ;
     $identifier$ ? optionName ;
@@ -816,7 +816,7 @@ rule <read_access>
   ?!@typeVariablesMap ioVariablesMap
 :
   $identifier$ ? nomVariable ;
-  search ioVariablesMap.searchForReadOnlyAccess nomVariable (?typeEntite ?nomCppEntite) ; 
+  [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ; 
 end rule ;
 
 #------------------------------------------------------------------------------*

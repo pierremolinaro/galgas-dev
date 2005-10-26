@@ -44,7 +44,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
   public : cAffichagePremiersProduction (C_HTML_FileWrite & inHTMLfile,
                                          const cVocabulary & inVocabulary) ;
 
-//--- Méthode virtelle appelée pour chaque valeur
+//--- Methode virtelle appelee pour chaque valeur
   public : virtual void action (const bool tableauDesValeurs [],
                                 const uint16 nombreVariables) ;
 } ;
@@ -78,8 +78,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
                      C_HTML_FileWrite & inHTMLfile) {
-//--- Pour chaque non-terminal présentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
-// et vérifier l'absence de conflit.
+//--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
+// et verifier l'absence de conflit.
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile << "The FIRST of a production is :\n"
                 " if the production is empty, the FOLLOW of the left nonterminal symbol ;\n"
@@ -141,7 +141,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           }
           inHTMLfile.outputRawData ("</code></td></tr>") ;
         }
-     //--- Vérifier l'absence de conflit
+     //--- Verifier l'absence de conflit
         for (sint32 pr1=first ; pr1<derniere ; pr1++) {
           const sint32 numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
           for (sint32 k=pr1+1 ; k<=derniere ; k++) {
@@ -199,7 +199,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
                                const cVocabulary & inVocabulary,
                                const C_String & nomClasseLexique) ;
 
-//--- Méthode virtuelle appelée pour chaque valeur
+//--- Methode virtuelle appelee pour chaque valeur
   public : virtual void action (const bool tableauDesValeurs [],
                                 const uint16 nombreVariables) ;
 } ;

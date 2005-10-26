@@ -623,7 +623,7 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
   inCppFile << attributNomRoutineExterne << " (" ;
 //--- Engendrer la liste des arguments (au moins 1)
   generateExternArgumentForList (attributListeArguments, inCppFile) ;
-//--- Engendrer la liste des messages d'erreurs (zŽro, un ou plusieurs)
+//--- Engendrer la liste des messages d'erreurs (zero, un ou plusieurs)
   GGS_typeListeMessagesErreur::element_type * courant = attributListeMessageErreur.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;

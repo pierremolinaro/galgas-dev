@@ -45,15 +45,15 @@ class C_TextFileWrite ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> class cClassMethodsMap ;
+template <typename INFO> class cClassMethodsMap ;
 
-template <typename INFO, typename KEY> class cElementTableMethodesUtilisables {
-  public : typedef cElementTableMethodesUtilisables <INFO, KEY> element_type ;
+template <typename INFO> class cElementTableMethodesUtilisables {
+  public : typedef cElementTableMethodesUtilisables <INFO> element_type ;
 //--- Attributs
   private : element_type * mNextItem ;
   public : element_type * mInfPtr ;
   public : element_type * mSupPtr ;
-  public : KEY mKey ;
+  public : GGS_lstring mKey ;
   public : INFO mInfo ;
   public : bool champEstAbstraite ;
   public : const sint32 mEntryIndex ;
@@ -61,7 +61,7 @@ template <typename INFO, typename KEY> class cElementTableMethodesUtilisables {
 
 //--- Constructeur et destructeur
   public : cElementTableMethodesUtilisables (const INFO & info,
-                                             const KEY & clef,
+                                             const GGS_lstring & clef,
                                              const sint32 numeroElement,
                                              const bool estAbstraite) ;
   public : ~cElementTableMethodesUtilisables (void) ;
@@ -69,7 +69,7 @@ template <typename INFO, typename KEY> class cElementTableMethodesUtilisables {
 //--- Protection contre la duplication
   private : void operator = (const element_type &) ;
   private : cElementTableMethodesUtilisables (const element_type &) ;
-  friend class cClassMethodsMap <INFO, KEY> ;
+  friend class cClassMethodsMap <INFO> ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -78,8 +78,8 @@ template <typename INFO, typename KEY> class cElementTableMethodesUtilisables {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> class cClassMethodsMap {
-  public : typedef cElementTableMethodesUtilisables <INFO, KEY> element_type ;
+template <typename INFO> class cClassMethodsMap {
+  public : typedef cElementTableMethodesUtilisables <INFO> element_type ;
   public : element_type * mRoot ;
   private : element_type * mFirstItem ;
   public : element_type * mLastItem ;
@@ -93,9 +93,11 @@ template <typename INFO, typename KEY> class cClassMethodsMap {
   public : cClassMethodsMap (void) ; // Default Constructor
   public : virtual ~cClassMethodsMap (void) ;
 
-//--- GŽrer la duplication
-  public : cClassMethodsMap (const cClassMethodsMap <INFO, KEY> &) ; // Copy constructor
-  public : void operator = (const cClassMethodsMap <INFO, KEY> &) ; // Assignment operator
+//--- Gerer la duplication
+  public : cClassMethodsMap (const cClassMethodsMap <INFO> &) ; // Copy constructor
+  public : void operator = (const cClassMethodsMap <INFO> &) ; // Assignment operator
+
+  public : void build (void) ;
 
   public : inline bool isBuilt (void) const {
     return mReferenceCountPtr != NULL ;
@@ -103,35 +105,32 @@ template <typename INFO, typename KEY> class cClassMethodsMap {
   
   public : void drop_operation (void) ;
 
-//--- Handle 'new' constructor
-  public : static cClassMethodsMap <INFO, KEY> constructor_empty (void) ;
-
 //--- Method for searching
   public : element_type * searchKey (C_Lexique & inLexique,
-                                  const KEY & inKey,
+                                  const GGS_lstring & inKey,
                                   const GGS_location & inLocation,
                                   const char * inSearchErrorMessage) ;
   public : element_type * searchForOverride (C_Lexique & inLexique,
-                                  const KEY & inKey,
+                                  const GGS_lstring & inKey,
                                   const GGS_location & inLocation,
                                   const char * inSearchErrorMessage) ;
 
   public : sint32 insertAbstract (C_Lexique & inLexique,
                                   const INFO & info,
-                                  const KEY & clef,
+                                  const GGS_lstring & clef,
                                   const GGS_location & inLocation,
                                   const char * messageErreurInsertion) ;
 
   public : sint32 insertNotAbstract (C_Lexique & inLexique,
                                      const INFO & info,
-                                     const KEY & clef,
+                                     const GGS_lstring & clef,
                                      const GGS_location & inLocation,
                                      const char * messageErreurInsertion) ;
 
   protected : void insulateMap (void) ;
 
   protected : sint32 internalInsert (const INFO & info,
-                                   const KEY & clef,
+                                   const GGS_lstring & clef,
                                    const bool estAbstraite,
                                    element_type * & racine) ;
 

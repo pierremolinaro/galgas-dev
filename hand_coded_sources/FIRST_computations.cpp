@@ -121,7 +121,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
                 " In any way having none : it is an error." ;
   inHTMLfile.outputRawData ("</p>") ;
 
-//--- Ensemble des non-terminaux à vérifier
+//--- Ensemble des non-terminaux à verifier
   C_BDD_Set1 ntToCheck (inUsefulSymbols) ;
   ntToCheck.init (C_BDD::kGreaterOrEqual,(uint32) inVocabulary.getTerminalSymbolsCount ()) ;
 

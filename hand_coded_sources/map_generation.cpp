@@ -88,49 +88,125 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }\n"
              "//--- Create a new element\n"
              "  protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;\n"
+             "//--- Get object pointer (for method call)\n"
+             "  public : inline GGS_" << aNomTable << " * operator () (void) { return this ; }\n"
              "//--- 'empty' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_empty (void) ;\n"
              "//--- Method used for duplicate a map\n"
-             "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n"
-             "//--- Insert an element\n"
-             "  public : void insertElement (C_Lexique & inLexique,\n"
-             "                               const char * inErrorMessagesArray [],\n"
-             "                               const GGS_lstring & inKey,\n" ;
+             "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n" ;
+//--- Declaring insert methods
+  GGS_typeTableMethodesInsererChercher::element_type * currentMethod = aTableMethodesInserer.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+    inHfile << "//--- '" << currentMethod->mKey << "' Insert Method\n"
+               "  public : void methode_"
+            << currentMethod->mKey
+            << " (C_Lexique & inLexique" 
+               ",\n                                const GGS_lstring & inKey" ;
+    GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mNonExternAttributesList.firstObject () ;
+    sint32 index = 0 ;
+    while (currentAttribute != NULL) {
+      macroValidPointer (currentAttribute) ;
+      inHfile << ",\n                                const " ;
+      currentAttribute->mAttributType()->generateFormalParameter (inHfile, true) ;
+      inHfile << " inParameter" << index ;
+      index ++ ;
+      currentAttribute = currentAttribute->nextObject () ;
+    }
+    inHfile << ") ;\n"
+               "  public : void methode_"
+            << currentMethod->mKey
+            << "GetIndex (C_Lexique & inLexique" 
+               ",\n                                const GGS_lstring & inKey" ;
+    currentAttribute = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (currentAttribute != NULL) {
+      macroValidPointer (currentAttribute) ;
+      inHfile << ",\n                                const " ;
+      currentAttribute->mAttributType()->generateFormalParameter (inHfile, true) ;
+      inHfile << " inParameter" << index ;
+      index ++ ;
+      currentAttribute = currentAttribute->nextObject () ;
+    }
+    inHfile << ",\n                                GGS_luint & outIndex) ;\n" ;
+    currentMethod = currentMethod->nextObject () ;
+  }
+//--- Declaring search methods
+  currentMethod = aTableMethodesChercher.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+    inHfile << "//--- '" << currentMethod->mKey << "' Search Method\n"
+               "  public : void methode_" 
+            << currentMethod->mKey
+            << " (C_Lexique & inLexique"
+            << ",\n                                const GGS_lstring & inKey" ;
+    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    sint32 index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inHfile << ",\n                                " ;
+      current->mAttributType()->generateFormalParameter (inHfile, false) ;
+      inHfile << " & outParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inHfile << ") ;\n"
+               "  public : void methode_" 
+            << currentMethod->mKey
+            << "GetIndex (C_Lexique & inLexique"
+            << ",\n                                const GGS_lstring & inKey" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inHfile << ",\n                                " ;
+      current->mAttributType()->generateFormalParameter (inHfile, false) ;
+      inHfile << " & outParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inHfile << ",\n                                GGS_luint & outIndex) ;\n" ;
+    currentMethod = currentMethod->nextObject () ;
+  }
+  inHfile << "//--- Internal method for inserting an element\n"
+             "  protected : void insertElement (C_Lexique & inLexique,\n"
+             "                                  const char * inErrorMessagesArray [],\n"
+             "                                  const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
   sint32 index = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << "                               const " ;
+    inHfile << "                                  const " ;
     current->mAttributType()->generateCppClassName (inHfile) ;
     inHfile << "& inParameter" << index << ",\n" ;
     index ++ ;
     current = current->nextObject () ;
   }
-  inHfile << "                               GGS_luint * outIndex) ;\n"
-             "//--- Search for an element\n"
-             "  public : void searchElement (C_Lexique & inLexique,\n"
-             "                               const char * inErrorMessagesArray [],\n"
-             "                               const GGS_lstring & inKey,\n" ;
+  inHfile << "                                  GGS_luint * outIndex) ;\n" ;
+  inHfile << "//--- Internal method for searching for an element\n"
+             "  protected : void searchElement (C_Lexique & inLexique,\n"
+             "                                  const char * inErrorMessagesArray [],\n"
+             "                                  const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
   index = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "                               " ;
     current->mAttributType()->generateCppClassName (inHfile) ;
-    inHfile << "* outParameter" << index << ",\n" ;
+    inHfile << "& outParameter" << index << ",\n" ;
     index ++ ;
     current = current->nextObject () ;
   }
-  inHfile << "                               GGS_luint * outIndex) ;\n"
-             "} ;\n\n" ;
+  inHfile << "                                  GGS_luint * outIndex) ;\n" ;
+  inHfile << "} ;\n\n" ;
 
-//--- Declaring search methods
-  GGS_typeTableMethodesInsererChercher::element_type * methodeCourante = aTableMethodesChercher.firstObject () ;
-  while (methodeCourante != NULL) {
-    macroValidPointer (methodeCourante) ;
+//--- Declaring search and insert methods
+/*  GGS_mapMethodMap::element_type * currentMethod = mMethodMap.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
     inHfile.writeHyphenLineComment () ;
     inHfile << "void " 
-            << methodeCourante->mKey << "_" << aNomTable
+            << currentMethod->mKey << "_" << aNomTable
             << " (C_Lexique & inLexique"
             << ",\n                                GGS_" << aNomTable << " & ioMap"
             << ",\n                                const GGS_lstring & inKey" ;
@@ -145,16 +221,39 @@ generateHdeclarations (AC_OutputStream & inHfile,
       current = current->nextObject () ;
     }
     inHfile << ",\n                                GGS_luint * outIndex) ;\n\n" ;
-    methodeCourante = methodeCourante->nextObject () ;
+    currentMethod = currentMethod->nextObject () ;
+  }*/
+//--- Declaring search methods
+/*  currentMethod = aTableMethodesChercher.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+    inHfile.writeHyphenLineComment () ;
+    inHfile << "void " 
+            << currentMethod->mKey << "_" << aNomTable
+            << " (C_Lexique & inLexique"
+            << ",\n                                GGS_" << aNomTable << " & ioMap"
+            << ",\n                                const GGS_lstring & inKey" ;
+    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    sint32 index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inHfile << ",\n                                " ;
+      current->mAttributType()->generateFormalParameter (inHfile, false) ;
+      inHfile << " * outParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inHfile << ",\n                                GGS_luint * outIndex) ;\n\n" ;
+    currentMethod = currentMethod->nextObject () ;
   }
 
 //--- Declaring insert methods
-  methodeCourante = aTableMethodesInserer.firstObject () ;
-  while (methodeCourante != NULL) {
-    macroValidPointer (methodeCourante) ;
+  currentMethod = aTableMethodesChercher.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
     inHfile.writeHyphenLineComment () ;
     inHfile << "void "
-            << methodeCourante->mKey << "_" << aNomTable
+            << currentMethod->mKey << "_" << aNomTable
             << " (C_Lexique & inLexique" 
                ",\n                                GGS_" << aNomTable << " & ioMap"
                ",\n                                const GGS_lstring & inKey" ;
@@ -169,8 +268,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
       current = current->nextObject () ;
     }
     inHfile << ",\n                                GGS_luint * outIndex) ;\n\n" ;
-    methodeCourante = methodeCourante->nextObject () ;
-  }
+    currentMethod = currentMethod->nextObject () ;
+  }*/
 }
 
 //---------------------------------------------------------------------------*
@@ -294,7 +393,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (current) ;
     inCppFile << "               " ;
     current->mAttributType()->generateFormalParameter (inCppFile, false) ;
-    inCppFile << " * outParameter" << index << ",\n" ;
+    inCppFile << " & outParameter" << index << ",\n" ;
     index ++ ;
     current = current->nextObject () ;
   }
@@ -312,9 +411,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  }\n"
                "  if (node == NULL) {\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "    if (outParameter" << i << " != NULL) {\n"
-                   "      outParameter" << i << "->drop_operation () ;\n"
-                   "    }\n" ;
+      inCppFile << "    outParameter" << i << ".drop_operation () ;\n" ;
     }
     inCppFile << "    if (outIndex != NULL) {\n"
                  "      outIndex->drop_operation () ;\n"
@@ -324,9 +421,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   index = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    if (outParameter" << index << " != NULL) {\n"
-                 "      * outParameter" << index << " = node->mInfo." << current->aNomAttribut << " ;\n"
-                 "    }\n" ;
+    inCppFile << "    outParameter" << index << " = node->mInfo." << current->aNomAttribut << " ;\n" ;
     index ++ ;
     current = current->nextObject () ;
   }
@@ -337,14 +432,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- Implement search routines
-  GGS_typeTableMethodesInsererChercher::element_type * methodeCourante = aTableMethodesChercher.firstObject () ;
-  while (methodeCourante != NULL) {
-    macroValidPointer (methodeCourante) ;
+  GGS_typeTableMethodesInsererChercher::element_type * currentMethod = aTableMethodesChercher.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
     inCppFile.writeHyphenLineComment () ;
-    inCppFile << "void " 
-              << methodeCourante->mKey << "_" << aNomTable
+    inCppFile << "void GGS_" 
+              << aNomTable << "::methode_" << currentMethod->mKey
               << " (C_Lexique & inLexique"
-                 ",\n                                GGS_" << aNomTable << " & ioMap"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
@@ -352,13 +446,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
       current->mAttributType()->generateFormalParameter (inCppFile, false) ;
-      inCppFile << " * outParameter" << index ;
+      inCppFile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ",\n                                GGS_luint * outIndex) {\n"
+    inCppFile << ") {\n"
                  "  const char * kErrorMessage [] = {" ;
-    GGS_L_stringList::element_type * currentMessage = methodeCourante->mInfo.mErrorMessageList.firstObject () ;
+    GGS_L_stringList::element_type * currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
     while (currentMessage != NULL) {
       macroValidPointer (currentMessage) ;
       inCppFile.writeCstringConstant (currentMessage->mErrorMessageElement.string ()) ;
@@ -366,26 +460,58 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       currentMessage = currentMessage->nextObject () ;
     }
     inCppFile << "NULL} ;\n"
-                 "  ioMap.searchElement (inLexique,\n"
-                 "                       kErrorMessage,\n"
-                 "                       inKey,\n" ;
+                 "  searchElement (inLexique,\n"
+                 "                 kErrorMessage,\n"
+                 "                 inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "                       outParameter" << i << ",\n" ;
+      inCppFile << "                 outParameter" << i << ",\n" ;
     }
-    inCppFile << "                       outIndex) ;\n"
+    inCppFile << "                 NULL) ;\n"
               << "}\n\n" ;
-    methodeCourante = methodeCourante->nextObject () ;
+    inCppFile.writeHyphenLineComment () ;
+    inCppFile << "void GGS_" 
+              << aNomTable << "::methode_" << currentMethod->mKey
+              << "GetIndex (C_Lexique & inLexique"
+                 ",\n                                const GGS_lstring & inKey" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << ",\n                                " ;
+      current->mAttributType()->generateFormalParameter (inCppFile, false) ;
+      inCppFile << " & outParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << ",\n                                GGS_luint & outIndex) {\n"
+                 "  const char * kErrorMessage [] = {" ;
+    currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
+    while (currentMessage != NULL) {
+      macroValidPointer (currentMessage) ;
+      inCppFile.writeCstringConstant (currentMessage->mErrorMessageElement.string ()) ;
+      inCppFile << ",\n                                   " ;
+      currentMessage = currentMessage->nextObject () ;
+    }
+    inCppFile << "NULL} ;\n"
+                 "  searchElement (inLexique,\n"
+                 "                 kErrorMessage,\n"
+                 "                 inKey,\n" ;
+    for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
+      inCppFile << "                 outParameter" << i << ",\n" ;
+    }
+    inCppFile << "                 & outIndex) ;\n"
+              << "}\n\n" ;
+    currentMethod = currentMethod->nextObject () ;
   }
 
 //--- Implement insert routines
-  methodeCourante = aTableMethodesInserer.firstObject () ;
-  while (methodeCourante != NULL) {
-    macroValidPointer (methodeCourante) ;
+  currentMethod = aTableMethodesInserer.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
     inCppFile.writeHyphenLineComment () ;
-    inCppFile << "void "
-              << methodeCourante->mKey << "_" << aNomTable
+    inCppFile << "void GGS_"
+              << aNomTable << "::methode_" << currentMethod->mKey
               << " (C_Lexique & lexique_var_"
-                 ",\n                                GGS_" << aNomTable << " & ioMap"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
@@ -397,9 +523,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ",\n                                GGS_luint * outIndex) {\n"
+    inCppFile << ") {\n"
                  "  const char * kErrorMessage [] = {" ;
-    GGS_L_stringList::element_type * currentMessage = methodeCourante->mInfo.mErrorMessageList.firstObject () ;
+    GGS_L_stringList::element_type * currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
     while (currentMessage != NULL) {
       macroValidPointer (currentMessage) ;
       inCppFile.writeCstringConstant (currentMessage->mErrorMessageElement.string ()) ;
@@ -407,15 +533,48 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       currentMessage = currentMessage->nextObject () ;
     }
     inCppFile << "NULL} ;\n"
-                 "  ioMap.insertElement (lexique_var_,\n"
-                 "                       kErrorMessage,\n"
-                 "                       inKey,\n" ;
+                 "  insertElement (lexique_var_,\n"
+                 "                 kErrorMessage,\n"
+                 "                 inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
       inCppFile << "                       inParameter" << i << ",\n" ;
     }
-    inCppFile << "                       outIndex) ;\n"
+    inCppFile << "                 NULL) ;\n"
                  "}\n\n" ;
-    methodeCourante = methodeCourante->nextObject () ;
+    inCppFile.writeHyphenLineComment () ;
+    inCppFile << "void GGS_"
+              << aNomTable << "::methode_" << currentMethod->mKey
+              << "GetIndex (C_Lexique & lexique_var_"
+                 ",\n                                const GGS_lstring & inKey" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << ",\n                                const " ;
+      current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+      inCppFile << "inParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << ",\n                                GGS_luint & outIndex) {\n"
+                 "  const char * kErrorMessage [] = {" ;
+    currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
+    while (currentMessage != NULL) {
+      macroValidPointer (currentMessage) ;
+      inCppFile.writeCstringConstant (currentMessage->mErrorMessageElement.string ()) ;
+      inCppFile << ",\n                                   " ;
+      currentMessage = currentMessage->nextObject () ;
+    }
+    inCppFile << "NULL} ;\n"
+                 "  insertElement (lexique_var_,\n"
+                 "                 kErrorMessage,\n"
+                 "                 inKey,\n" ;
+    for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
+      inCppFile << "                 inParameter" << i << ",\n" ;
+    }
+    inCppFile << "                 & outIndex) ;\n"
+                 "}\n\n" ;
+    currentMethod = currentMethod->nextObject () ;
   }
 }
 
@@ -441,7 +600,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
                        C_Lexique & /* inLexique */) {
   inHfile.writeTitleComment (C_String ("class map element 'e_") + aNomTable + "'") ;
 
-//--- Début de la déclaration de la classe table
+//--- Debut de la declaration de la classe table
   inHfile << "class e_" << aNomTable << " {\n" ;
 
 //--- declarer les attributs
@@ -457,24 +616,26 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- declarer methode 'isBuilt'
   inHfile << "  public : bool isBuilt (void) const ;\n"
-             "} ;\n\n" ; //--- Fin de la déclaration de la classe e_...
+             "} ;\n\n" ; //--- Fin de la declaration de la classe e_...
 
 // ---------------------- declaration de la classe table -----------------
   inHfile.writeTitleComment (C_String ("map '") + aNomTable + "'") ;
 
-  inHfile << "typedef "  << aNomClasseGenerique
-          << " <e_" << aNomTable << ", GGS_lstring> "
-             "GGS_" << aNomTable << " ;\n" ;
+  inHfile << "class GGS_" << aNomTable << " : public "  << aNomClasseGenerique
+          << " <e_" << aNomTable << "> {\n"
+             "//--- Get object pointer\n"
+             "  public : inline GGS_" << aNomTable << " * operator () (void) { return this ; }\n"
+             "//--- Handle 'empty' constructor\n"
+             "  public : static GGS_" << aNomTable << " constructor_empty (void) ;\n" ;
 
 //--- Declaring search methods
-  GGS_typeTableMethodesInsererChercher::element_type * methodeCourante = aTableMethodesChercher.firstObject () ;
-  while (methodeCourante != NULL) {
-    macroValidPointer (methodeCourante) ;
-    inHfile << "\n"
-               "void " 
-            << methodeCourante->mKey << "_" << aNomTable
+  GGS_typeTableMethodesInsererChercher::element_type * currentMethod = aTableMethodesChercher.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+    inHfile << "//---\n"
+               "public : void methode_" 
+            << currentMethod->mKey
             << " (C_Lexique & inLexique"
-               ",\n                                GGS_" << aNomTable << " & ioMap"
                ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
@@ -482,23 +643,37 @@ generateHdeclarations (AC_OutputStream & inHfile,
       macroValidPointer (current) ;
       inHfile << ",\n                                " ;
       current->mAttributType()->generateFormalParameter (inHfile, false) ;
-      inHfile << " * outParameter" << index ;
+      inHfile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ",\n                                GGS_luint * outIndex) ;\n" ;
-    methodeCourante = methodeCourante->nextObject () ;
+    inHfile << ") ;\n" ;
+    inHfile << "public : void methode_" 
+            << currentMethod->mKey
+            << "GetIndex (C_Lexique & inLexique"
+               ",\n                                const GGS_lstring & inKey" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inHfile << ",\n                                " ;
+      current->mAttributType()->generateFormalParameter (inHfile, false) ;
+      inHfile << " & outParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inHfile << ",\n                                GGS_luint & outIndex) ;\n" ;
+    currentMethod = currentMethod->nextObject () ;
   }
 
 //--- Declaring insert methods
-  methodeCourante = aTableMethodesInserer.firstObject () ;
-  while (methodeCourante != NULL) {
-    macroValidPointer (methodeCourante) ;
-    inHfile << "\n"
-               "void "
-            << methodeCourante->mKey << "_" << aNomTable
+  currentMethod = aTableMethodesInserer.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+    inHfile << "//---\n"
+               "public : void methode_"
+            << currentMethod->mKey
             << " (C_Lexique & inLexique" 
-               ",\n                                GGS_" << aNomTable << " & ioMap"
                ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
@@ -510,10 +685,25 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ",\n                                GGS_luint * outIndex) ;\n" ;
-    methodeCourante = methodeCourante->nextObject () ;
+    inHfile << ") ;\n" ;
+    inHfile << "public : void methode_"
+            << currentMethod->mKey
+            << "GetIndex (C_Lexique & inLexique" 
+               ",\n                                const GGS_lstring & inKey" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inHfile << ",\n                                const " ;
+      current->mAttributType()->generateFormalParameter (inHfile, true) ;
+      inHfile << " inParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inHfile << ",\n                                GGS_luint & outIndex) ;\n" ;
+    currentMethod = currentMethod->nextObject () ;
   }
-  inHfile << '\n' ;
+  inHfile << "} ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -544,9 +734,9 @@ void cPtr_typeDefinitionTableAimplementer
 //--- Instanciate the template
   inCppFile << "template class "
             << aNomClasseGenerique
-            << " <e_" << aNomTable << ", GGS_lstring> ;\n\n" ;
+            << " <e_" << aNomTable << "> ;\n\n" ;
 
-//--- Engendrer l'implémentation de la methode 'isBuilt' de l'élément de table
+//--- Engendrer l'implementation de la methode 'isBuilt' de l'element de table
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "bool e_" << aNomTable << "::isBuilt (void) const {\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
@@ -573,20 +763,20 @@ void cPtr_typeDefinitionTableAimplementer
 //--------------------- ENGENDRER LA CLASSE TABLE ----------------------------
   inCppFile.writeTitleComment (C_String ("Map '") + aNomTable + "'") ;
 
+  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (void) {\n"
+               "  GGS_" << aNomTable << " t ;\n"
+               "  t.build () ;\n"
+               "  return t ;\n"
+               "}\n\n" ;
+
 //--- Implementing search methods
-  GGS_typeTableMethodesInsererChercher::element_type * methodeCourante = aTableMethodesChercher.firstObject () ;
-  bool firstRoutine = true ;
-  while (methodeCourante != NULL) {
-    if (firstRoutine) {
-      firstRoutine = false ;
-    }else{
-      inCppFile.writeHyphenLineComment () ;
-    }
-    macroValidPointer (methodeCourante) ;
-    inCppFile << "void " 
-              << methodeCourante->mKey << "_" << aNomTable
+  GGS_typeTableMethodesInsererChercher::element_type * currentMethod = aTableMethodesChercher.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+   inCppFile.writeHyphenLineComment () ;
+    inCppFile << "void GGS_" << aNomTable << "::methode_" 
+              << currentMethod->mKey
               << " (C_Lexique & inLexique"
-                 ",\n                                GGS_" << aNomTable << " & ioMap"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
@@ -594,14 +784,14 @@ void cPtr_typeDefinitionTableAimplementer
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
       current->mAttributType()->generateFormalParameter (inCppFile, false) ;
-      inCppFile << " * outParameter" << index ;
+      inCppFile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ",\n                                GGS_luint * outIndex) {\n" ;
-  //--- Insérer les messages d'erreur
+    inCppFile << ") {\n" ;
+  //--- Inserer les messages d'erreur
     sint32 messageNumber = 0 ;
-    GGS_L_stringList::element_type * currentMessage = methodeCourante->mInfo.mErrorMessageList.firstObject () ;
+    GGS_L_stringList::element_type * currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
     while (currentMessage != NULL) {
       macroValidPointer (currentMessage) ;
       inCppFile << "  const char * errorMessage_" << messageNumber  << " = " ;
@@ -610,8 +800,9 @@ void cPtr_typeDefinitionTableAimplementer
       currentMessage = currentMessage->nextObject () ;
       messageNumber ++ ;
     }
-    inCppFile << "  GGS_" << aNomTable << "::element_type * info = ioMap."
-              << methodeCourante->mKey << " (inLexique, inKey, inKey" ;
+    inCppFile.writeHyphenLineComment () ;
+    inCppFile << "  GGS_" << aNomTable << "::element_type * info = "
+              << currentMethod->mKey << " (inLexique, inKey, inKey" ;
     for (sint32 i=0 ; i<messageNumber ; i++) {
       inCppFile << ", errorMessage_" << i ;
     }
@@ -621,47 +812,86 @@ void cPtr_typeDefinitionTableAimplementer
     index = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    if (outParameter" << index << " != NULL) {\n"
-                   "      outParameter" << index << "->drop_operation () ;\n"
-                   "    }\n" ;
+      inCppFile << "    outParameter" << index << ".drop_operation () ;\n" ;
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "    if (outIndex != NULL) {\n"
-                 "      outIndex->drop_operation () ;\n"
-                 "    }\n"
+    inCppFile << "  }else{\n" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << "    outParameter" << index << " = info->mInfo." << current->aNomAttribut << " ;\n" ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << "  }\n"
+                 "}\n\n" ;
+    inCppFile << "void GGS_" << aNomTable << "::methode_" 
+              << currentMethod->mKey
+              << "GetIndex (C_Lexique & inLexique"
+                 ",\n                                const GGS_lstring & inKey" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << ",\n                                " ;
+      current->mAttributType()->generateFormalParameter (inCppFile, false) ;
+      inCppFile << " & outParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << ",\n                                GGS_luint & outIndex) {\n" ;
+  //--- Inserer les messages d'erreur
+    messageNumber = 0 ;
+    currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
+    while (currentMessage != NULL) {
+      macroValidPointer (currentMessage) ;
+      inCppFile << "  const char * errorMessage_" << messageNumber  << " = " ;
+      inCppFile.writeCstringConstant (currentMessage->mErrorMessageElement.string ()) ;
+      inCppFile << " ;\n" ;
+      currentMessage = currentMessage->nextObject () ;
+      messageNumber ++ ;
+    }
+    inCppFile << "  GGS_" << aNomTable << "::element_type * info = "
+              << currentMethod->mKey << " (inLexique, inKey, inKey" ;
+    for (sint32 i=0 ; i<messageNumber ; i++) {
+      inCppFile << ", errorMessage_" << i ;
+    }
+    inCppFile << ") ;\n"
+                 "  if (info == NULL) {\n" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << "    outParameter" << index << ".drop_operation () ;\n" ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << "    outIndex.drop_operation () ;\n"
                  "  }else{\n" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    if (outParameter" << index << " != NULL) {\n"
-                   "      * outParameter" << index << " = info->mInfo." << current->aNomAttribut << " ;\n"
-                   "    }\n" ;
+      inCppFile << "    outParameter" << index << " = info->mInfo." << current->aNomAttribut << " ;\n" ;
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "    if (outIndex != NULL) {\n"
-                 "      * outIndex = GGS_luint (GGS_uint (true, (uint32) info->mEntryIndex), inKey) ;\n"
-                 "    }\n"
+    inCppFile << "    outIndex = GGS_luint (GGS_uint (true, (uint32) info->mEntryIndex), inKey) ;\n"
                  "  }\n"
                  "}\n\n" ;
-    methodeCourante = methodeCourante->nextObject () ;
+    currentMethod = currentMethod->nextObject () ;
   }
 
-//--- Implémentation des methodes d'insertion
-  methodeCourante = aTableMethodesInserer.firstObject () ;
-  while (methodeCourante != NULL) {
-    macroValidPointer (methodeCourante) ;
-    if (firstRoutine) {
-      firstRoutine = false ;
-    }else{
-      inCppFile.writeHyphenLineComment () ;
-    }
-    inCppFile << "void "
-              << methodeCourante->mKey << "_" << aNomTable
+//--- Implementation des methodes d'insertion
+  currentMethod = aTableMethodesInserer.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+    inCppFile.writeHyphenLineComment () ;
+    inCppFile << "void GGS_" << aNomTable << "::methode_"
+              << currentMethod->mKey
               << " (C_Lexique & lexique_var_"
-                 ",\n                                GGS_" << aNomTable << " & ioMap"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
@@ -673,9 +903,9 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ",\n                                GGS_luint * outIndex) {\n" ;
+    inCppFile << ") {\n" ;
     sint32 messageNumber = 0 ;
-    GGS_L_stringList::element_type * currentMessage = methodeCourante->mInfo.mErrorMessageList.firstObject () ;
+    GGS_L_stringList::element_type * currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
     while (currentMessage != NULL) {
       macroValidPointer (currentMessage) ;
       inCppFile << "  const char * kErrorMessage_" << messageNumber  << " = " ;
@@ -693,16 +923,55 @@ void cPtr_typeDefinitionTableAimplementer
       numeroVariable ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "  const sint32 index = ioMap." << methodeCourante->mKey << " (lexique_var_, info, inKey, inKey" ;
-    for (sint32 i=0 ; i<methodeCourante->mInfo.mErrorMessageList.count () ; i++) {
+    inCppFile << "  " << currentMethod->mKey << " (lexique_var_, info, inKey, inKey" ;
+    for (sint32 i=0 ; i<currentMethod->mInfo.mErrorMessageList.count () ; i++) {
       inCppFile << ", kErrorMessage_" << i ;
     }
     inCppFile << ") ;\n"
-              << "  if (outIndex != NULL) {\n"
-              << "    * outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
-              << "  }\n"
               << "}\n\n" ;
-    methodeCourante = methodeCourante->nextObject () ;
+    inCppFile.writeHyphenLineComment () ;
+    inCppFile << "void GGS_" << aNomTable << "::methode_"
+              << currentMethod->mKey
+              << "GetIndex (C_Lexique & lexique_var_"
+                 ",\n                                const GGS_lstring & inKey" ;
+    current = mNonExternAttributesList.firstObject () ;
+    index = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << ",\n                                const " ;
+      current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+      inCppFile << " inParameter" << index ;
+      index ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << ",\n                                GGS_luint & outIndex) {\n" ;
+    messageNumber = 0 ;
+    currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
+    while (currentMessage != NULL) {
+      macroValidPointer (currentMessage) ;
+      inCppFile << "  const char * kErrorMessage_" << messageNumber  << " = " ;
+      inCppFile.writeCstringConstant (currentMessage->mErrorMessageElement.string ()) ;
+      inCppFile << " ;\n" ;
+      currentMessage = currentMessage->nextObject () ;
+      messageNumber ++ ;
+    }
+    inCppFile << "  e_" << aNomTable << " info ;\n" ;
+    current = mNonExternAttributesList.firstObject () ;
+    numeroVariable = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << "  info." << current->aNomAttribut << " = inParameter" << numeroVariable << " ;\n" ;
+      numeroVariable ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << "  const sint32 index = " << currentMethod->mKey << " (lexique_var_, info, inKey, inKey" ;
+    for (sint32 i=0 ; i<currentMethod->mInfo.mErrorMessageList.count () ; i++) {
+      inCppFile << ", kErrorMessage_" << i ;
+    }
+    inCppFile << ") ;\n"
+              << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
+              << "}\n\n" ;
+    currentMethod = currentMethod->nextObject () ;
   }
 }
 
