@@ -85,7 +85,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //--- Friend declaration
              "    friend class GGS_" << aNomListe << " ;\n"
 
-//--- Fin de la dŽclaration de la classe e_...
+//--- Fin de la declaration de la classe e_...
              "  } ;\n\n"
              "  private : element_type * mFirstItem ;\n"
              "  private : element_type * mLastItem ;\n"
@@ -185,10 +185,10 @@ void cPtr_C_listTypeToImplement
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
-//------------- ImplŽmentation de l'ŽlŽment de liste -----------------
+//------------- Implementation de l'element de liste -----------------
   inCppFile.writeTitleComment (C_String ("Class element of list '") + aNomListe + "'") ;
 
-//--- Engendrer le constructeur de l'ŽlŽment de liste
+//--- Engendrer le constructeur de l'element de liste
   inCppFile << "GGS_" << aNomListe << "::element_type::\nelement_type (" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint16 numeroVariable = 0 ;
@@ -216,7 +216,7 @@ void cPtr_C_listTypeToImplement
 // ------------- List Implementation -----------------
   inCppFile.writeTitleComment (C_String ("class list '") + aNomListe + "'") ;
 
-//--- Engendrer le constructeur par dŽfaut
+//--- Engendrer le constructeur par defaut
   inCppFile << "GGS_" << aNomListe << "\n"
                "::GGS_" << aNomListe
            << " (void) { // Default Constructor\n"
@@ -248,7 +248,7 @@ void cPtr_C_listTypeToImplement
                "}\n\n" ;
   inCppFile.writeHyphenLineComment () ;
 
-//--- Engendrer l'opŽrateur d'affectation
+//--- Engendrer l'operateur d'affectation
   inCppFile << "void GGS_" << aNomListe << "\n"
                "::operator = (const GGS_" << aNomListe << " & source) { // Assignment operator\n"
                "  if (this != & source) {\n"

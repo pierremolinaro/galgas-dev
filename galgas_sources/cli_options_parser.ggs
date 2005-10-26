@@ -140,13 +140,13 @@ rule <galgas_component>
       if [uintOptionsMap hasKey ![typeName value]] then
         error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
       else
-        insert boolOptionsMap.insertKey optionName (!optionChar !optionString !optionComment !defaultValue) ;
+        [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
       end if ;
     elsif [typeName value] == "uint" then
       if [boolOptionsMap hasKey ![typeName value]] then
         error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
       else
-        insert uintOptionsMap.insertKey optionName (!optionChar !optionString !optionComment !defaultValue) ;
+        [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
       end if ;
     else
       error typeName : "only @bool or @uint types can be used here" ;
@@ -156,7 +156,7 @@ rule <galgas_component>
   $option$ ;
   $;$ ;
 #--- Enter option component in option component map
-  insert ioOptionsComponentsMap.insertKey optionComponentName (!boolOptionsMap !uintOptionsMap) ;
+  [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
 #--- Generate option component
   action generate_option_component !?optionComponentName !?boolOptionsMap !?uintOptionsMap ;
 label importLexique
@@ -334,13 +334,13 @@ label importOptions
       if [uintOptionsMap hasKey ![typeName value]] then
         error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
       else
-        insert boolOptionsMap.insertKey optionName (!optionChar !optionString !optionComment !defaultValue) ;
+        [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
       end if ;
     elsif [typeName value] == "uint" then
       if [boolOptionsMap hasKey ![typeName value]] then
         error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
       else
-        insert uintOptionsMap.insertKey optionName (!optionChar !optionString !optionComment !defaultValue) ;
+        [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
       end if ;
     else
       error typeName : "only @bool or @uint types can be used here" ;
@@ -349,7 +349,7 @@ label importOptions
   $end$ ;
   $option$ ;
   $;$ ;
-  insert ioOptionsComponentsMap.insertKey optionComponentName (!boolOptionsMap !uintOptionsMap) ;
+  [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
 end rule ;
 
 #-------------------------------------------------------------------*

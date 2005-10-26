@@ -64,7 +64,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
     }
   }
   
-//--- Contruire le bdd, limité aux seuls non terminaux
+//--- Contruire le bdd, limite aux seuls non terminaux
   outVocabularyFollowedByEmpty_BDD.clear () ;
   C_BDD_Set1 temp (outVocabularyFollowedByEmpty_BDD) ;
   for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i< allSymbolsCount ; i++) {

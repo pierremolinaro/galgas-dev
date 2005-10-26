@@ -41,7 +41,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       inCppFile << "void cPtr_" << inClassName
                 << "::\n"
                    "methode_" << current->mKey << " (C_Lexique &" ;
-    //--- L'argument lexique est-il utilisé ?
+    //--- L'argument lexique est-il utilise ?
       const bool lexiqueUtilise = isLexiqueFormalArgumentUsedForList (current->mInfo.mInstructionsList, true) ;
       if (! lexiqueUtilise) {
         inCppFile << " /*" ;
@@ -50,7 +50,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       if (! lexiqueUtilise) {
         inCppFile << " */" ;
       }
-    //--- Engendrer les arguments formels déclarés par l'utilisateur
+    //--- Engendrer les arguments formels declares par l'utilisateur
       GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
       while (currentArgument != NULL) {
         macroValidPointer (currentArgument) ;
@@ -66,7 +66,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
         }
         currentArgument = currentArgument->nextObject () ;
       }
-    //--- Terminer la déclaration
+    //--- Terminer la declaration
       inCppFile << ") {\n" ;
     //--- Engendrer la liste d'instructions
       C_String inutilise ;
@@ -89,7 +89,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "  public : virtual void methode_" << current->mKey << " (C_Lexique &" ;
-  //--- Engendrer les arguments formels déclarés par l'utilisateur
+  //--- Engendrer les arguments formels declares par l'utilisateur
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
@@ -97,7 +97,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
       currentArgument->mType ()->generateFormalParameter (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
       currentArgument = currentArgument->nextObject () ;
     }
-  //--- Terminer la déclaration
+  //--- Terminer la declaration
     if (current->champEstAbstraite) {
       inHfile << ") = 0 ;\n" ;
     }else{
@@ -116,31 +116,31 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //--- Generate class forward declaration
   inHfile << "class cPtr_" << aNomClasse << " ;\n\n" ;
 
-//------------- declarer la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
+//------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inHfile.writeTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << aNomClasse << " {\n"
 
-//--- Engendrer la déclaration de l'attribut 'mPointer'
+//--- Engendrer la declaration de l'attribut 'mPointer'
              "  protected : cPtr_" << aNomClasse << " * mPointer ;\n"
 
-//--- Engendrer la déclaration du constructeur par défaut
+//--- Engendrer la declaration du constructeur par defaut
              "  public : GGS_" << aNomClasse << " (void) ;\n"
 
-//--- Engendrer la déclaration du constructeur de recopie
+//--- Engendrer la declaration du constructeur de recopie
              "  public : GGS_" << aNomClasse
           << " (const GGS_" << aNomClasse << " &) ;\n"
 
-//--- Engendrer la déclaration du destructeur
+//--- Engendrer la declaration du destructeur
            "  public : virtual ~GGS_" << aNomClasse << " (void) ;\n"
 
-//--- Engendrer la déclaration de la redéfinition de l'opérateur =
+//--- Engendrer la declaration de la redefinition de l'operateur =
              "  public : void operator = (const GGS_" << aNomClasse << " &) ;\n"
 
-//--- Engendrer la déclaration de la methode 'isBuilt'
+//--- Engendrer la declaration de la methode 'isBuilt'
             "  public : bool isBuilt (void) const ;\n"
 
-//--- Engendrer la déclaration et l'implémentation de la methode 'isEqualTo'
+//--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
              "  public : inline bool isEqualTo (const GGS_" << aNomClasse
           << " & operand_) const {\n"
              "    return mPointer == operand_.mPointer ;\n"
@@ -151,15 +151,15 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : GGS_" << aNomClasse
           << " (cPtr_" << aNomClasse << " * inSource) ;\n"
 
-//--- Engendrer la déclaration de la methode 'getPtr'
+//--- Engendrer la declaration de la methode 'getPtr'
               "  public : inline cPtr_" << aNomClasse << " * getPtr (void) const {\n"
               "    return mPointer ;\n"
               "  }\n"
 
-//--- Engendrer la déclaration de la methode 'drop_operation'
+//--- Engendrer la declaration de la methode 'drop_operation'
               "  public : void drop_operation (void) ;\n"
 
-//--- Engendrer la déclaration de la surcharge de l'operateur ()
+//--- Engendrer la declaration de la surcharge de l'operateur ()
               "  public : cPtr_" << aNomClasse << " * operator () (void) const ;\n" ;
 
 //--- Generate 'message' reader prototypes              
@@ -170,7 +170,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     messageCourant = messageCourant->nextObject () ;
   }
 
-//--- Engendrer la fin de la déclaration de la classe
+//--- Engendrer la fin de la declaration de la classe
   inHfile << "} ;\n\n" ;
 }
 
@@ -196,10 +196,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
   generatedZone2 << '\n' ;
 
-//--- Classe mère (dernier inséré dans la table des ancêtres) : NULL si pas de classe mère
+//--- Classe mère (dernier insere dans la table des ancêtres) : NULL si pas de classe mère
   GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
-//--- Engendrer l'en tête de la déclaration de la classe abstraite
+//--- Engendrer l'en tête de la declaration de la classe abstraite
   generatedZone2 << "class cPtr_" << aNomClasse ;
   if (mereDirecte == NULL) {
     generatedZone2 << " : public C_GGS_Object {\n" ;
@@ -214,7 +214,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Engendrer la macro
   generatedZone3 << "  macro_" << aNomClasse << '\n' ;
 
-//--- Engendrer la déclaration du constructeur (uniquement si il y a des attributs)
+//--- Engendrer la declaration du constructeur (uniquement si il y a des attributs)
   GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
   if (current != NULL) {
     generatedZone3 << "  public : cPtr_" << aNomClasse << " (" ;
@@ -233,7 +233,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     generatedZone3 << ") ;\n" ;
   }
   
-//--- Engendrer la déclaration des attributs
+//--- Engendrer la declaration des attributs
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -244,13 +244,13 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- declaration des attributs externes
   generateExternAttributesDeclaration (aListeExternesCourants, generatedZone3) ;
     
-//--- Engendrer la déclaration de la methode 'isBuilt'
+//--- Engendrer la declaration de la methode 'isBuilt'
   generatedZone3 << "  public : virtual bool isBuilt (void) const = 0 ;\n" ;
 
-//--- Pour chaque methode, engendrer sa déclaration
+//--- Pour chaque methode, engendrer sa declaration
   generateClassMethodsDeclaration (mMethodsMap, generatedZone3) ;
 
-//--- Pour chaque message abstrait, engendrer les déclarations de methodes virtuelles pures correspondantes
+//--- Pour chaque message abstrait, engendrer les declarations de methodes virtuelles pures correspondantes
 //    et engendrer la methode statique correspondante
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
@@ -260,7 +260,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     messageCourant = messageCourant->nextObject () ;
   }
 
-//--- Fin de la déclaration de la classe
+//--- Fin de la declaration de la classe
   generatedZone3 << "} ;\n\n" ;
 
   
@@ -300,7 +300,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                                   const bool inGenerateDebug) {
   inCppFile.writeTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
-//--- Classe mère (dernier inséré dans la table des ancêtres) : NULL si pas de classe mère
+//--- Classe mère (dernier insere dans la table des ancêtres) : NULL si pas de classe mère
   GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
@@ -357,7 +357,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
     inCppFile << " {\n}\n\n" ;
   }
 
-//--- Pour chaque methode non abstraite, engendrer son implémentation
+//--- Pour chaque methode non abstraite, engendrer son implementation
   generateClassMethodsImplementation (mMethodsMap, inCppFile, aNomClasse, inTargetFileName,
                                       inGenerateDebug) ;
 
@@ -383,16 +383,16 @@ void cPtr_typeDefClasseAbstraiteAimplementer
     messageCourant = messageCourant->nextObject () ;
   }
 
-//------------- Implémenter la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
+//------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
-//--- Implémenter la déclaration du constructeur par défaut
+//--- Implementer la declaration du constructeur par defaut
   inCppFile << "GGS_" << aNomClasse << "::\n"
                "GGS_" << aNomClasse << " (void) {\n"
                "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n"
                "}\n\n" ;
 
-//--- Implémenter la déclaration du constructeur de recopie
+//--- Implementer la declaration du constructeur de recopie
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "GGS_" << aNomClasse
            << "::\nGGS_" << aNomClasse << " (const "
@@ -401,21 +401,21 @@ void cPtr_typeDefClasseAbstraiteAimplementer
               "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
               "}\n\n" ;
 
-//--- Implémenter la déclaration du destructeur
+//--- Implementer la declaration du destructeur
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "GGS_" << aNomClasse
             << "::\n~GGS_" << aNomClasse << " (void) {\n"
                "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
                "}\n\n" ;
 
-//--- Implémenter la déclaration de la redéfinition de l'opérateur =
+//--- Implementer la declaration de la redefinition de l'operateur =
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse << "::\n"
            << "operator = (const GGS_" << aNomClasse << " & inOperand) {\n"
            << "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
            << "}\n\n" ;
 
-//--- Engendrer l'implémentation de la methode 'isBuilt'
+//--- Engendrer l'implementation de la methode 'isBuilt'
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "bool GGS_" << aNomClasse
             << "::isBuilt (void) const {\n"
@@ -442,7 +442,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                "  macroAttachPointer (mPointer, inSource) ;\n"
                "}\n\n" ;
 
-//--- Engendrer la déeclaration de la surcharge de l'opeérateur ()
+//--- Engendrer la deeclaration de la surcharge de l'opeerateur ()
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "cPtr_" << aNomClasse << " * "
                "GGS_" << aNomClasse
@@ -463,7 +463,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
     messageCourant = messageCourant->nextObject () ;
   }
 
-//--- Engendrer la déclaration de la methode 'drop_operation'
+//--- Engendrer la declaration de la methode 'drop_operation'
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse
             << "\n::drop_operation (void) {\n"
@@ -502,7 +502,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                "#define macroInheritFrom_" << aNomClasse << "\n\n" ;
   }
 
-//--- Classe mère (dernier inséré dans la table des ancêtres)
+//--- Classe mère (dernier insere dans la table des ancêtres)
   GGS_typeSuperClassesMap::element_type * classeAncetre = mAncestorClassesMap.lastObject () ;
   macroValidPointer (classeAncetre) ;
 
@@ -521,7 +521,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Engendrer la macro
   inHfile << "  macro_" << aNomClasse << '\n' ;
 
-//--- Engendrer la déclaration du constructeur (uniquement si il y a des attributs)
+//--- Engendrer la declaration du constructeur (uniquement si il y a des attributs)
   GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
   if (current != NULL) {
     inHfile << "  public : cPtr_" << aNomClasse << " (" ;
@@ -540,7 +540,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     inHfile << ") ;\n" ;
   }
   
-//--- Engendrer la déclaration des attributs
+//--- Engendrer la declaration des attributs
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -551,13 +551,13 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- declaration des attributs externes
   generateExternAttributesDeclaration (aListeExternesCourants, inHfile) ;
   
-//--- Engendrer la déclaration de la methode 'isBuilt'
+//--- Engendrer la declaration de la methode 'isBuilt'
   inHfile << "  public : virtual bool isBuilt (void) const ;\n\n" ;
 
-//--- Pour chaque methode, engendrer sa déclaration
+//--- Pour chaque methode, engendrer sa declaration
   generateClassMethodsDeclaration (mMethodsMap, inHfile) ;
 
-//--- Pour chaque message, engendrer les déclarations de methodes virtuelles correspondantes
+//--- Pour chaque message, engendrer les declarations de methodes virtuelles correspondantes
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
@@ -566,10 +566,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     messageCourant = messageCourant->nextObject () ;
   }
 
-//--- Fin de la déclaration de la classe
+//--- Fin de la declaration de la classe
   inHfile << "} ;\n\n" ;
 
-//------------- declarer la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
+//------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inHfile.writeTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << aNomClasse << " {\n" ;
@@ -624,7 +624,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "    }\n"
              "  #endif\n"
 
-//--- Engendrer la fin de la déclaration de la classe
+//--- Engendrer la fin de la declaration de la classe
              "} ;\n\n" ;
 }
 
@@ -653,7 +653,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
                                   const bool inGenerateDebug) {
   inCppFile.writeTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
-//--- Classe mère (dernier inséré dans la table des ancêtres) : NULL si pas de classe mère
+//--- Classe mère (dernier insere dans la table des ancêtres) : NULL si pas de classe mère
   GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
@@ -709,7 +709,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
     inCppFile << " {\n}\n\n" ;
   }
   
-//--- Engendrer la déclaration de la methode 'isBuilt'
+//--- Engendrer la declaration de la methode 'isBuilt'
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "bool cPtr_" << aNomClasse << "::isBuilt (void) const {\n" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
@@ -733,11 +733,11 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
   }
   inCppFile << "}\n\n" ;
 
-//--- Pour chaque methode non abstraite, engendrer son implémentation
+//--- Pour chaque methode non abstraite, engendrer son implementation
   generateClassMethodsImplementation (mMethodsMap, inCppFile, aNomClasse, inTargetFileName,
                                       inGenerateDebug) ;
 
-//--- Pour chaque message, engendrer l'implémentation des methodes correspondantes
+//--- Pour chaque message, engendrer l'implementation des methodes correspondantes
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
@@ -765,7 +765,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
     messageCourant = messageCourant->nextObject () ;
   }
 
-//------------- Implémenter la classe contenant un champ pointeur vers un objet héritier de la classe abstraite
+//------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inCppFile << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"  

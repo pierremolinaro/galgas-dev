@@ -173,10 +173,10 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
   temp1.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
   const C_BDD_Set2 ntVide = inNonterminalSymbolsFollowedByEmpty * temp1 ;
 
-//--- Suivants, avec nt pouvant être suivis du vide, limités aux non terminaux utilisateur
+//--- Suivants, avec nt pouvant être suivis du vide, limites aux non terminaux utilisateur
   const C_BDD_Set2 suivantsPlusVide = ntVide | inFOLLOWsets ;
 
-//--- Vérifier les suivants
+//--- Verifier les suivants
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile << "Every useful nonterminal symbol must :"
                 " either have a non empty FOLLOW,"

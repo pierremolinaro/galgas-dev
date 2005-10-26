@@ -337,10 +337,10 @@ rule <galgas_component>
     end if ;
   end foreach ;
 #--- Enter syntax component into syntax components map
-  insert ioSyntaxComponentsMap.insertKey componentName (!nonTerminalSymbolsMap
-                                                       !productionRulesListForGrammar
-                                                       !lexiqueName
-                                                       !classNamesSet) ;
+  [!?ioSyntaxComponentsMap insertKey !componentName !nonTerminalSymbolsMap
+                                                    !productionRulesListForGrammar
+                                                    !lexiqueName
+                                                    !classNamesSet] ;
 #--- Generate component
   action engendrerComposant
     !?componentName
@@ -381,10 +381,10 @@ label importSyntax
     <semantics_declaration> parse ;
   end repeat ;
 #--- Enter syntax component into syntax components map
-  insert ioSyntaxComponentsMap.insertKey syntaxComponentName (!nonTerminalSymbolsMap
-                                                       !productionRulesListForGrammar
-                                                       !lexiqueName
-                                                       !classNamesSet) ;
+  [!?ioSyntaxComponentsMap insertKey !syntaxComponentName !nonTerminalSymbolsMap
+                                                          !productionRulesListForGrammar
+                                                          !lexiqueName
+                                                          !classNamesSet] ;
   $end$ ;
   $syntax$ ;
   $;$ ;
@@ -489,9 +489,7 @@ rule <get_lexique_infos>
   end select ;
   $;$ ;
 #--- Get lexique from lexique components map
-  search lexiqueComponentsMap.searchKey
-      outLexiqueName (?tableTerminaux)
-  ;
+  [!?lexiqueComponentsMap searchKey !outLexiqueName ?tableTerminaux] ;
 label getLexiqueName
   !@lstring outLexiqueName
 :
@@ -527,7 +525,7 @@ rule <syntax_instruction>
   $identifier$ ? nomTable ;
   @AC_galgasType typeEntite ;
   @typeCplusPlusName nomCppVariableTable ;
-  search ioVariablesMap.searchForReadWriteAccess nomTable (?typeEntite ?nomCppVariableTable) ; 
+  [!?ioVariablesMap searchForReadWriteAccess !nomTable ?typeEntite ?nomCppVariableTable] ; 
   @typeTableBlocsDeTable tableMethodesBloc ;
   extract typeEntite->@typeGalgasMapType (?* ?* ?* ?*
                           ?tableMethodesBloc ...) error nomTable : messageGalgasType ;
@@ -537,7 +535,7 @@ rule <syntax_instruction>
   $identifier$ ? nomMethodeBloc ;
   @L_signature signatureDebut ;
   @L_signature signatureFin ;
-  search tableMethodesBloc.searchKey nomMethodeBloc (?signatureDebut ?signatureFin) ;
+  [!?tableMethodesBloc searchKey !nomMethodeBloc ?signatureDebut ?signatureFin] ;
 #--- Analyser la list d'arguments du prologue
   @typeExpressionList prologueExpressionList ;
   $($ ;
@@ -583,7 +581,7 @@ rule <syntax_instruction>
   ;
   $)$ ;
 #--- Vérifier que la map est toujours accessible en lecture/écriture
-  search ioVariablesMap.searchForReadWriteAccess nomTable (?* ?*) ;
+  [!?ioVariablesMap searchForReadWriteAccess !nomTable ?* ?*] ;
 #--- Generate epilogue instruction
   instruction := [@typeMapBlockEpilogueInstruction new !nomCppVariableTable
                                                       !nomMethodeBloc
@@ -697,8 +695,8 @@ rule <rule_declaration_or_implementation>
   @M_nonterminalSymbolAlts parametersMap [empty] ;
   @M_nonterminalSymbolAltsForGrammar parametersMapForGrammar [empty] ;
   @lstring emptyId := [@lstring new !"" !here] ;
-  insert parametersMap.insertKey emptyId (!listeDeTypes) ;
-  insert parametersMapForGrammar.insertKey emptyId (!inSignatureForGrammar) ;
+  [!?parametersMap insertKey !emptyId !listeDeTypes] ;
+  [!?parametersMapForGrammar insertKey !emptyId !inSignatureForGrammar] ;
   repeat
   while
     $label$ ;
@@ -707,8 +705,8 @@ rule <rule_declaration_or_implementation>
       @L_signature listeDeTypesFormels [empty] ;
       @L_signature_ForGrammarComponent signatureForGrammarComponent [empty] ;
       @lstring altName [new !"parse" !here] ;
-      insert parametersMap.insertKey altName (!listeDeTypesFormels) ;
-      insert parametersMapForGrammar.insertKey altName (!signatureForGrammarComponent) ;
+      [!?parametersMap insertKey !altName !listeDeTypesFormels] ;
+      [!?parametersMapForGrammar insertKey !altName !signatureForGrammarComponent] ;
      or
       @lstring altName ;
       $identifier$ ? altName ;
@@ -724,16 +722,16 @@ rule <rule_declaration_or_implementation>
         !?tableEnAvant
         ?signatureForGrammarComponent
       ;
-      insert parametersMap.insertKey altName (!listeDeTypesFormels) ;
-      insert parametersMapForGrammar.insertKey altName (!signatureForGrammarComponent) ;
+      [!?parametersMap insertKey !altName !listeDeTypesFormels] ;
+      [!?parametersMapForGrammar insertKey !altName !signatureForGrammarComponent] ;
     end select ;
   end repeat ;
   $;$ ;
-  insert ioNonTerminalSymbolsMap.insertKey inRuleName (!parametersMapForGrammar) ;
+  [!?ioNonTerminalSymbolsMap insertKey !inRuleName !parametersMapForGrammar] ;
   @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !inRuleName !parametersMap] ;
   listeEntitesAengendrer += !ea ;
   @AC_semanticsEntity entity := [@typeEntiteNonTerminal new !parametersMap] ;
-  insert ioEntitiesMap.insertKey inRuleName (!entity) ;
+  [!?ioEntitiesMap insertKey !inRuleName !entity] ;
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
@@ -742,7 +740,7 @@ label importSyntax
 :
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap [empty] ;
   @lstring altName := [@lstring new !"" !here] ;
-  insert nonterminalSymbolParametersMap.insertKey altName (!inDefaultSignature) ;
+  [!?nonterminalSymbolParametersMap insertKey !altName !inDefaultSignature] ;
   repeat
   while
     $label$ ;
@@ -750,15 +748,15 @@ label importSyntax
       $parse$ ;
       @L_signature_ForGrammarComponent signature [empty] ;
       @lstring altName [new !"parse" !here] ;
-      insert nonterminalSymbolParametersMap.insertKey altName (!signature) ;
+      [!?nonterminalSymbolParametersMap insertKey !altName !signature] ;
     or
       $identifier$ ?altName ;
       @L_signature_ForGrammarComponent signature ;
       <formal_arguments_list> importGrammarForSemantics ?signature ;
-    insert nonterminalSymbolParametersMap.insertKey altName (!signature) ;
+      [!?nonterminalSymbolParametersMap insertKey !altName !signature] ;
     end select ;
   end repeat ;
-  insert ioNonTerminalSymbolsMap.insertKey inNonterminalSymbolName (!nonterminalSymbolParametersMap) ;
+  [!?ioNonTerminalSymbolsMap insertKey !inNonterminalSymbolName !nonterminalSymbolParametersMap] ;
   $;$ ;
 end rule ;
 
@@ -781,7 +779,7 @@ rule <rule_declaration_or_implementation>
 :
 #--- Search non terminal symbol definition
   @AC_semanticsEntity entite ;
-  search ioEntitiesMap.searchKey inRuleName (?entite) ;
+  [!?ioEntitiesMap searchKey !inRuleName ?entite] ;
   @M_nonterminalSymbolAlts nonterminalSymbolAltMap ;
   extract entite->@typeEntiteNonTerminal (?nonterminalSymbolAltMap) error inRuleName : messageTypeEntite ;
 #--- Vérifier la déclaration de la rule et la compatibilité des arguments effectifs avec les arguments formels
@@ -803,7 +801,7 @@ rule <rule_declaration_or_implementation>
   @location errorLocation := here ;
   $:$ ;
   @L_signature signatureFournieParPrototype ;
-  search nonterminalSymbolAltMap.searchKey altName (?signatureFournieParPrototype) ;
+  [!?nonterminalSymbolAltMap searchKey !altName ?signatureFournieParPrototype] ;
   verifierCompatibiliteSignatures
     !signatureFournieParPrototype
     !listeDeTypesFormels
@@ -823,7 +821,7 @@ rule <rule_declaration_or_implementation>
     !?syntaxSignature
   ;
   @location endOfInstructionList := here ;
-  insert altProductionsMap.insertKey altName (!listeTypeEtNomsArguments !listeInstructions !syntaxSignature !endOfInstructionList) ;
+  [!?altProductionsMap insertKey !altName !listeTypeEtNomsArguments !listeInstructions !syntaxSignature !endOfInstructionList] ;
 
   repeat
   while
@@ -842,7 +840,7 @@ rule <rule_declaration_or_implementation>
     @location errorLocation := here ;
     $:$ ;
     @L_signature signatureFournieParPrototype ;
-    search nonterminalSymbolAltMap.searchKey altName (?signatureFournieParPrototype) ;
+    [!?nonterminalSymbolAltMap searchKey !altName ?signatureFournieParPrototype] ;
     verifierCompatibiliteSignatures
       !signatureFournieParPrototype
       !listeDeTypesFormels
@@ -861,7 +859,7 @@ rule <rule_declaration_or_implementation>
       !?syntaxSignature
     ;
     @location endOfInstructionList := here ;
-    insert altProductionsMap.insertKey altName (!listeTypeEtNomsArguments !listeInstructions !syntaxSignature !endOfInstructionList) ;
+    [!?altProductionsMap insertKey !altName !listeTypeEtNomsArguments !listeInstructions !syntaxSignature !endOfInstructionList] ;
   end repeat ;
   $end$ ;
   $rule$ ;
@@ -963,7 +961,7 @@ rule <syntax_instruction>
   @lstring terminalSymbolName ;
   $terminal$ ? terminalSymbolName ;
   @typeListeAttributsSemantiques listeDesAttributsFormels ;
-  search tableTerminaux.searchKey terminalSymbolName (?listeDesAttributsFormels) ;
+  [!?tableTerminaux searchKey !terminalSymbolName ?listeDesAttributsFormels] ;
   @L_assignedVariables listeTypeEffectifs ;
   @typeCplusPlusNameList allVariablesList ;
   <input_parameters_list>
@@ -1020,11 +1018,11 @@ rule <syntax_instruction>
     $identifier$ ?altName ;
   end select ;
   @AC_semanticsEntity entite ;
-  search ioEntitiesMap.searchKey nonterminalSymbolName (?entite) ;
+  [!?ioEntitiesMap searchKey !nonterminalSymbolName ?entite] ;
   @M_nonterminalSymbolAlts nonterminalSymbolAltMap ;
   extract entite->@typeEntiteNonTerminal (?nonterminalSymbolAltMap) error nonterminalSymbolName : messageTypeEntite ;
   @L_signature signatureMethode ;
-  search nonterminalSymbolAltMap.searchKey altName (?signatureMethode) ;
+  [!?nonterminalSymbolAltMap searchKey !altName ?signatureMethode] ;
 #--- Check if parse label is declared ?
   if inCheckNonTerminalsAreDeclaredWithParseLabel & ([altName value] != "parse") then
     if not [nonterminalSymbolAltMap hasKey !"parse"] then

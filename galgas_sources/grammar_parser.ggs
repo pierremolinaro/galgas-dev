@@ -124,7 +124,7 @@ rule <galgas_component>
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
       select
-        search ioOptionsComponentsMap.searchKey optionComponentName (?boolOptionsMap ?uintOptionsMap) ;
+        [!?ioOptionsComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
       or
         $in$ ;
         @lstring fileName ;
@@ -134,10 +134,10 @@ rule <galgas_component>
           !fileName
           !?importedOptionComponentsMap
         ;
-        search importedOptionComponentsMap.searchKey optionComponentName (?boolOptionsMap ?uintOptionsMap) ;
+        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
       end select ;
       $;$ ;
-      insert optionComponentsMap.insertKey optionComponentName (!boolOptionsMap !uintOptionsMap) ;
+      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
     or
       $syntax$ ;
       @lstring syntaxComponentName ;
@@ -161,12 +161,12 @@ rule <galgas_component>
       @L_productionRules_ForGrammarComponent importedProductionRulesList ;
       @lstring importedLexiqueComponentName ;
       @string_set importedClassesNamesSet ;
-      search syntaxComponentsMap.searchKey syntaxComponentName (
+      [!?syntaxComponentsMap searchKey !syntaxComponentName
         ?importedNonterminalSymbolsMap
         ?importedProductionRulesList
         ?importedLexiqueComponentName
         ?importedClassesNamesSet
-      ) ;
+      ] ;
     #--- Verify lexical component name
       if [lexiqueName value] != [importedLexiqueComponentName value] then
         error syntaxComponentName : "this component does not use the previously declared lexique" ;
@@ -180,20 +180,20 @@ rule <galgas_component>
       foreach importedNonterminalSymbolsMap (??@lstring ntSymbol ??@M_nonterminalSymbolAltsForGrammar importedAltSignaturesMap) :
         if [nonterminalSymbolsMapForGrammar hasKey ![ntSymbol value]] then
           @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
-          search nonterminalSymbolsMapForGrammar.searchKey ntSymbol (?altSignatureMap) ;
+          [!?nonterminalSymbolsMapForGrammar searchKey !ntSymbol ?altSignatureMap] ;
           foreach altSignatureMap (??@lstring altName ??@L_signature_ForGrammarComponent altSignature) :
             @M_nonterminalSymbolAltsForGrammar temp := importedAltSignaturesMap ;
             @L_signature_ForGrammarComponent importedAltSignature ;
-            search temp.searchKey altName (?importedAltSignature) ;
+            [!?temp searchKey !altName ?importedAltSignature] ;
             checkSignature_ForGrammarComponent !importedAltSignature !altSignature ![altName location] ;
           end foreach ;
           foreach importedAltSignaturesMap (??@lstring importedAltName ??@L_signature_ForGrammarComponent importedAltSignature) :
             if [importedAltName value] != "parse" then
-              search altSignatureMap.searchKey importedAltName (? *) ;
+              [!?altSignatureMap searchKey !importedAltName ?*] ;
             end if ;
           end foreach ;
         else
-          insert nonterminalSymbolsMapForGrammar.insertKey ntSymbol (!importedAltSignaturesMap) ;
+          [!?nonterminalSymbolsMapForGrammar insertKey !ntSymbol !importedAltSignaturesMap] ;
         end if ;
       end foreach ;
     end select ;
@@ -212,34 +212,24 @@ rule <galgas_component>
   repeat
     @L_signature_ForGrammarComponent signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
-    insert grammarAltMap.insertKey altName (!signature) ;
+    [!?grammarAltMap insertKey !altName !signature] ;
   while
     $label$ ;
     $identifier$ ? altName ;
   end repeat ;
-
-#--- (suppressed 8/13/2004)
-#  @lstring selectedAlt := [@lstring new !"" !here] ;
-#  repeat
-#    <formal_arguments_list> parse ;
-#  while
-#    $label$ ;
-#    $identifier$ ? selectedAlt ;
-#  end repeat ;
-
   $;$ ;
 #--- Search start symbol in non terminal map
   @M_nonterminalSymbolAltsForGrammar startSymbolAltMap ;
   @luint startSymbolIndex ;
-  search nonterminalSymbolsMapForGrammar.searchKey startSymbolName (?startSymbolAltMap) -> startSymbolIndex ;
+  [!?nonterminalSymbolsMapForGrammar searchKeyGetIndex !startSymbolName ?startSymbolAltMap ?startSymbolIndex] ;
 #--- Check signatures (added 8/13/2004)
   foreach startSymbolAltMap (??@lstring cstAltName ??@L_signature_ForGrammarComponent cstAltMap) :
     @L_signature_ForGrammarComponent altMap ;
-    search grammarAltMap.searchKey cstAltName (?altMap) ;
+    [!?grammarAltMap searchKey !cstAltName ?altMap] ;
     checkSignature_ForGrammarComponent !cstAltMap !altMap !here ;
   end foreach ;
   foreach grammarAltMap (??@lstring cstAltName ??*) :
-    search startSymbolAltMap.searchKey cstAltName (?*) ;
+    [!?startSymbolAltMap searchKey !cstAltName ?*] ;
   end foreach ;
 #--- Analyze grammar
   @location endOfSourceFile := here ;
@@ -254,9 +244,9 @@ rule <galgas_component>
     !?nonterminalSymbolsMapForGrammar
   ;
 #--- insert grammar in grammars map
-  insert ioGrammarComponentsMap.insertKey grammarName (!startSymbolAltMap
-                                                       !lexiqueName
-                                                       !optionComponentsMap) ;
+  [!?ioGrammarComponentsMap insertKey !grammarName !startSymbolAltMap
+                                                   !lexiqueName
+                                                   !optionComponentsMap] ;
   $end$ ;
   $grammar$ ;
   $;$ ;
@@ -422,7 +412,7 @@ label importGrammarForSemantics
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
       select
-        search optionComponentsMap.searchKey optionComponentName (?boolOptionsMap ?uintOptionsMap) ;
+        [!?optionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
       or
         $in$ ;
         @lstring fileName ;
@@ -432,10 +422,10 @@ label importGrammarForSemantics
           !fileName
           !?importedOptionComponentsMap
         ;
-        search importedOptionComponentsMap.searchKey optionComponentName (?boolOptionsMap ?uintOptionsMap) ;
+        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
       end select ;
       $;$ ;
-      insert optionComponentsMap.insertKey optionComponentName (!boolOptionsMap !uintOptionsMap) ;
+      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
     or
       $syntax$ ;
       $identifier$ ? * ;
@@ -457,14 +447,12 @@ label importGrammarForSemantics
   repeat
     @L_signature_ForGrammarComponent signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
-    insert grammarAltMap.insertKey altName (!signature) ;
+    [!?grammarAltMap insertKey !altName !signature] ;
   while
     $label$ ;
     $identifier$ ? altName ;
   end repeat ;
-  insert ioGrammarComponentsMap.insertKey grammarName (!grammarAltMap
-                                                       !lexiqueName
-                                                       !optionComponentsMap) ;
+  [!?ioGrammarComponentsMap insertKey !grammarName !grammarAltMap !lexiqueName !optionComponentsMap] ;
   $;$ ;
   $end$ ;
   $grammar$ ;

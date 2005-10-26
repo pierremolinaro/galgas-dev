@@ -42,10 +42,10 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableMethodesAimplementer <INFO, KEY>
+template <typename INFO>
+cElementTableMethodesAimplementer <INFO>
                  ::cElementTableMethodesAimplementer (const INFO & info,
-                                                      const KEY & clef,
+                                                      const GGS_lstring & clef,
                                                       const sint32 numeroElement,
                                                       const bool estAbstraite)
 :champEstAbstraite (estAbstraite), mEntryIndex (numeroElement) {
@@ -58,8 +58,8 @@ cElementTableMethodesAimplementer <INFO, KEY>
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cElementTableMethodesAimplementer <INFO, KEY>::~cElementTableMethodesAimplementer (void) {
+template <typename INFO>
+cElementTableMethodesAimplementer <INFO>::~cElementTableMethodesAimplementer (void) {
   macroMyDelete (mInfPtr, element_type) ;
   macroMyDelete (mSupPtr, element_type) ;
 }
@@ -70,8 +70,8 @@ cElementTableMethodesAimplementer <INFO, KEY>::~cElementTableMethodesAimplemente
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cTableMethodesAimplementer <INFO, KEY>::cTableMethodesAimplementer (void) {
+template <typename INFO>
+cTableMethodesAimplementer <INFO>::cTableMethodesAimplementer (void) {
   mRoot = (element_type *) NULL ;
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
@@ -81,16 +81,16 @@ cTableMethodesAimplementer <INFO, KEY>::cTableMethodesAimplementer (void) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cTableMethodesAimplementer <INFO, KEY>::~cTableMethodesAimplementer (void) {
+template <typename INFO>
+cTableMethodesAimplementer <INFO>::~cTableMethodesAimplementer (void) {
   drop_operation () ;
 }
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-cTableMethodesAimplementer <INFO, KEY>
-            ::cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO, KEY> & source) {
+template <typename INFO>
+cTableMethodesAimplementer <INFO>
+            ::cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> & source) {
   mRoot = (element_type *) NULL ;
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
@@ -101,9 +101,9 @@ cTableMethodesAimplementer <INFO, KEY>
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cTableMethodesAimplementer <INFO, KEY>
-            ::operator = (const cTableMethodesAimplementer <INFO, KEY> & source) {
+template <typename INFO>
+void cTableMethodesAimplementer <INFO>
+            ::operator = (const cTableMethodesAimplementer <INFO> & source) {
   if (this != & source) {
     drop_operation () ;
     mRoot = source.mRoot ;
@@ -120,7 +120,7 @@ void cTableMethodesAimplementer <INFO, KEY>
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> void cTableMethodesAimplementer <INFO, KEY>::drop_operation (void) {
+template <typename INFO> void cTableMethodesAimplementer <INFO>::drop_operation (void) {
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
   mListLength = 0 ;
@@ -143,17 +143,16 @@ template <typename INFO, typename KEY> void cTableMethodesAimplementer <INFO, KE
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-template <class INFO, class KEY>
-cTableMethodesAimplementer <INFO, KEY> cTableMethodesAimplementer <INFO, KEY>::
-constructor_empty (void) {
-  cTableMethodesAimplementer <INFO, KEY> result ;
-  macroMyNew (result.mReferenceCountPtr, sint32 (1)) ;
-  return result ;
+template <typename INFO>
+void cTableMethodesAimplementer <INFO>::build (void) {
+  drop_operation () ;
+  macroMyNew (mReferenceCountPtr, sint32 (1)) ;
 }
+
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY> void cTableMethodesAimplementer <INFO, KEY>::insulateMap (void) {
+template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (void) {
 //--- Si la table est referencee plusieurs fois, la dupliquer
   if (mReferenceCountPtr != NULL) {
     macroValidPointer (mReferenceCountPtr) ;
@@ -161,7 +160,7 @@ template <typename INFO, typename KEY> void cTableMethodesAimplementer <INFO, KE
       (*mReferenceCountPtr) -- ;
       mReferenceCountPtr = (sint32 *) NULL ;
       macroMyNew (mReferenceCountPtr, sint32 (1)) ;
-      cElementTableMethodesAimplementer <INFO, KEY> * p = mFirstItem ;
+      cElementTableMethodesAimplementer <INFO> * p = mFirstItem ;
       mLastItem = (element_type *) NULL ;
       mFirstItem = (element_type *) NULL ;
       mRoot = (element_type *) NULL ;
@@ -178,10 +177,10 @@ template <typename INFO, typename KEY> void cTableMethodesAimplementer <INFO, KE
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cTableMethodesAimplementer <INFO, KEY>::insertAbstract (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
                                           const INFO & info,
-                                          const KEY & clef,
+                                          const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
@@ -200,10 +199,10 @@ sint32 cTableMethodesAimplementer <INFO, KEY>::insertAbstract (C_Lexique & inLex
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-sint32 cTableMethodesAimplementer <INFO, KEY>::insertNotAbstract (C_Lexique & inLexique,
+template <typename INFO>
+sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexique,
                                           const INFO & info,
-                                          const KEY & clef,
+                                          const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
@@ -222,14 +221,14 @@ sint32 cTableMethodesAimplementer <INFO, KEY>::insertNotAbstract (C_Lexique & in
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO, typename KEY>
-void cTableMethodesAimplementer <INFO, KEY>::internalInsert (const INFO & info,
-                                                              const KEY & clef,
+template <typename INFO>
+void cTableMethodesAimplementer <INFO>::internalInsert (const INFO & info,
+                                                              const GGS_lstring & clef,
                                                            sint32 & numeroElement,
                                                         const bool estAbstraite,
-                      cElementTableMethodesAimplementer <INFO, KEY> * & racine) {
+                      cElementTableMethodesAimplementer <INFO> * & racine) {
   if (racine == NULL) {
-    #define macroTemporaire cElementTableMethodesAimplementer <INFO, KEY> (info, clef, mListLength, estAbstraite)
+    #define macroTemporaire cElementTableMethodesAimplementer <INFO> (info, clef, mListLength, estAbstraite)
     // macroTemporaire : astuce pour pallier l'erreur d'expansion qui considère la virgule entre INFO et
     // KEY comme un séparateur entre un deuxième et un troisième argument
     macroMyNew (racine, macroTemporaire) ;

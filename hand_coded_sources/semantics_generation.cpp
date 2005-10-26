@@ -267,7 +267,7 @@ generate_header_file (C_Lexique & inLexique,
                  << "#define " << nomComposant << "_DEFINED\n"
                  << "\n#include <string.h>\n\n" ;
 
-//--- Inclure la déclaration des types sémantiques prédéfinis
+//--- Inclure la declaration des types semantiques predefinis
   generatedZone2.writeCcomment ("Include predefined semantics types definition") ;
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
            "#include \"galgas/AC_galgas_io.h\"\n"
@@ -288,7 +288,7 @@ generate_header_file (C_Lexique & inLexique,
   generatedZone2 << "#include \""
         << ((lexiqueName.length () == 0) ? C_String ("galgas/C_Lexique") : lexiqueName)
         << ".h\"\n" ;
-//--- Engendrer les inclusions des fichiers IC utilisés
+//--- Engendrer les inclusions des fichiers IC utilises
   GGS_typeTableUtilisationsSemantiques::element_type * fichierCourant = tableUtilisationsSemantiques.firstObject () ;
   if (fichierCourant != NULL) {
     generatedZone2.writeCcomment ("Include imported semantics") ;
@@ -325,7 +325,7 @@ generate_header_file (C_Lexique & inLexique,
     generatedZone3 << "\n" ;
   }
 
-//--- Entrer les déclarations
+//--- Entrer les declarations
   GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
@@ -339,7 +339,7 @@ generate_header_file (C_Lexique & inLexique,
     element = element->nextObject () ;
   }
 
-//--- Engendrer la déclaration de la classe de l'analyseur
+//--- Engendrer la declaration de la classe de l'analyseur
   bool engendrerClasseCpp = false ;
   element = listeEntitesAengendrer.firstObject () ;
   while ((element != NULL) && ! engendrerClasseCpp) {

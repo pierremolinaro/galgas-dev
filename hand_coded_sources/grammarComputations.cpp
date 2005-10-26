@@ -177,7 +177,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
   generatedZone3.writeHyphenLineComment () ;
   generatedZone3 << "class " << inTargetFileName ;
   component = inSyntaxComponentsList.firstObject () ;
-//--- Liens d'hŽritage
+//--- Liens d'heritage
   bool premier = true ;
   while (component != NULL) {
     macroValidPointer (component) ;
@@ -299,8 +299,9 @@ void cPtr_T_nonterminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_Lexique & inLexique) {
   GGS_luint index ;
-  searchKey_M_nonTerminalSymbolsForGrammar (inLexique, inInfo.mNonterminalSymbolsMapForGrammar, mNonterminalSymbolName,
-                                            NULL, & index) ;
+  GGS_M_nonterminalSymbolAltsForGrammar unusedParameter ;
+  inInfo.mNonterminalSymbolsMapForGrammar.methode_searchKeyGetIndex (inLexique, mNonterminalSymbolName,
+                                            unusedParameter, index) ;
   mNonterminalSymbolIndex.mValue = index.uintValue () ;
 }
 
@@ -310,7 +311,8 @@ void cPtr_T_terminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_Lexique & inLexique) {
   GGS_luint index ;
-  searchKey_M_terminalSymbolsMapForUse (inLexique, inInfo.mTerminalSymbolMap, mTerminalSymbolName, NULL, & index) ;
+  GGS_typeListeAttributsSemantiques unusedParameter ;
+  inInfo.mTerminalSymbolMap.methode_searchKeyGetIndex (inLexique, mTerminalSymbolName, unusedParameter, index) ;
   mTerminalSymbolIndex.mValue = index.uintValue () ;
 }
 
@@ -447,8 +449,9 @@ analyzeGrammar (C_Lexique & inLexique,
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
       GGS_luint index ;
-      searchKey_M_nonTerminalSymbolsForGrammar (inLexique, inNonterminalSymbolsMapForGrammar, currentRule->mLeftNonterminalSymbol,
-                                                NULL, & index) ;
+      GGS_M_nonterminalSymbolAltsForGrammar unused ;
+      inNonterminalSymbolsMapForGrammar.methode_searchKeyGetIndex (inLexique, currentRule->mLeftNonterminalSymbol,
+                                                unused, index) ;
       currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
     //--- Fix, for each rule, left nonterminal symbol index
       fixInfoForInstructionsList (currentRule->mInstructionsList,
@@ -575,7 +578,7 @@ analyzeGrammar (C_Lexique & inLexique,
     co << (step2ok ? "none, ok.\n" : "error.\n") ;
   }
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
-  //--- Enregistrer les caractŽristiques de la grammaire
+  //--- Enregistrer les caracteristiques de la grammaire
     HTMLfile << "For information :\n" ;
     HTMLfile.outputRawData ("<ul><li>") ;
     HTMLfile << ((sint32)(vocabulary.getTerminalSymbolsCount () - 1))
@@ -608,7 +611,7 @@ analyzeGrammar (C_Lexique & inLexique,
                                  usefulSymbols,
                                  warningFlag) ;
   }
-//--- Calculer l'ensemble des non terminaux pouvant se dŽriver en vide --------------------------------
+//--- Calculer l'ensemble des non terminaux pouvant se deriver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
   C_BDD_Set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
