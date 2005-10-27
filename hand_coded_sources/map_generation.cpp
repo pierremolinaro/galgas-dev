@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate map declaration and implementation                              *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999-2005 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -117,7 +117,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
                "  public : void methode_"
             << currentMethod->mKey
             << "GetIndex (C_Lexique & inLexique" 
-               ",\n                                const GGS_lstring & inKey" ;
+               ",\n                                const GGS_lstring & inKey"
+               ",\n                                GGS_luint & outIndex" ;
     currentAttribute = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (currentAttribute != NULL) {
@@ -128,7 +129,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       currentAttribute = currentAttribute->nextObject () ;
     }
-    inHfile << ",\n                                GGS_luint & outIndex) ;\n" ;
+    inHfile << ") ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
 //--- Declaring search methods
@@ -154,7 +155,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
                "  public : void methode_" 
             << currentMethod->mKey
             << "GetIndex (C_Lexique & inLexique"
-            << ",\n                                const GGS_lstring & inKey" ;
+            << ",\n                                const GGS_lstring & inKey"
+               ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (current != NULL) {
@@ -165,7 +167,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ",\n                                GGS_luint & outIndex) ;\n" ;
+    inHfile << ") ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
   inHfile << "//--- Internal method for inserting an element\n"
@@ -472,7 +474,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_" 
               << aNomTable << "::methode_" << currentMethod->mKey
               << "GetIndex (C_Lexique & inLexique"
-                 ",\n                                const GGS_lstring & inKey" ;
+                 ",\n                                const GGS_lstring & inKey"
+                 ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (current != NULL) {
@@ -483,7 +486,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ",\n                                GGS_luint & outIndex) {\n"
+    inCppFile << ") {\n"
                  "  const char * kErrorMessage [] = {" ;
     currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
     while (currentMessage != NULL) {
@@ -545,7 +548,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_"
               << aNomTable << "::methode_" << currentMethod->mKey
               << "GetIndex (C_Lexique & lexique_var_"
-                 ",\n                                const GGS_lstring & inKey" ;
+                 ",\n                                const GGS_lstring & inKey"
+                 ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (current != NULL) {
@@ -556,7 +560,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ",\n                                GGS_luint & outIndex) {\n"
+    inCppFile << ") {\n"
                  "  const char * kErrorMessage [] = {" ;
     currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
     while (currentMessage != NULL) {
@@ -651,7 +655,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
     inHfile << "public : void methode_" 
             << currentMethod->mKey
             << "GetIndex (C_Lexique & inLexique"
-               ",\n                                const GGS_lstring & inKey" ;
+               ",\n                                const GGS_lstring & inKey"
+               ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (current != NULL) {
@@ -662,7 +667,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ",\n                                GGS_luint & outIndex) ;\n" ;
+    inHfile << ") ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
 
@@ -689,7 +694,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
     inHfile << "public : void methode_"
             << currentMethod->mKey
             << "GetIndex (C_Lexique & inLexique" 
-               ",\n                                const GGS_lstring & inKey" ;
+               ",\n                                const GGS_lstring & inKey"
+               ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (current != NULL) {
@@ -700,7 +706,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ",\n                                GGS_luint & outIndex) ;\n" ;
+    inHfile << ") ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
   inHfile << "} ;\n\n" ;
@@ -830,7 +836,8 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile << "void GGS_" << aNomTable << "::methode_" 
               << currentMethod->mKey
               << "GetIndex (C_Lexique & inLexique"
-                 ",\n                                const GGS_lstring & inKey" ;
+                 ",\n                                const GGS_lstring & inKey"
+                 ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (current != NULL) {
@@ -841,7 +848,7 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ",\n                                GGS_luint & outIndex) {\n" ;
+    inCppFile << ") {\n" ;
   //--- Inserer les messages d'erreur
     messageNumber = 0 ;
     currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
@@ -933,7 +940,8 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile << "void GGS_" << aNomTable << "::methode_"
               << currentMethod->mKey
               << "GetIndex (C_Lexique & lexique_var_"
-                 ",\n                                const GGS_lstring & inKey" ;
+                 ",\n                                const GGS_lstring & inKey"
+                 ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
     while (current != NULL) {
@@ -944,7 +952,7 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ",\n                                GGS_luint & outIndex) {\n" ;
+    inCppFile << ") {\n" ;
     messageNumber = 0 ;
     currentMessage = currentMethod->mInfo.mErrorMessageList.firstObject () ;
     while (currentMessage != NULL) {

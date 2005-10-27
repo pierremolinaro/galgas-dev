@@ -556,7 +556,7 @@ rule <attribute_or_terminal_symbol_declaration>
       $identifier$ ? styleName ;
     end select ;
     @luint styleIndex ;
-    [!?ioStylesMap searchKeyGetIndex !styleName ?* ?styleIndex] ;
+    [!?ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
     @string errorMessageString := [errorMessage value] ;
     [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !l !styleIndex] ;
   end select ;
@@ -603,7 +603,7 @@ rule <key_words_list_declaration>
     $identifier$ ? styleName ;
   end select ;
   @luint styleIndex ;
-  [!?ioStylesMap searchKeyGetIndex !styleName ?* ?styleIndex] ;
+  [!?ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
 #--- List of entries
   $:$ ;
   @typeListeAttributsSemantiques attributesList [empty] ; # Always empty
@@ -855,7 +855,7 @@ rule <lexical_instructions_list>
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
-    [!?table_des_messages_erreur searchKeyGetIndex !errorMessageName ?* ?errorMessageIndex] ;
+    [!?table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionErreurLexicale new !errorMessageIndex] ;
     li += !e ;
@@ -881,7 +881,7 @@ rule <lexical_error_messages_list>
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
-    [!?table_des_messages_erreur searchKeyGetIndex !errorMessageName ?* ?errorMessageIndex] ;
+    [!?table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
     lme += !errorMessageIndex ;
   while
     $,$ ;
@@ -1080,7 +1080,7 @@ rule <lexical_send_or_error>
   @lstring errorMessageName ;
   $identifier$ ?errorMessageName ;
   @luint errorMessageIndex ;
-  [!?tableMessagesErreurs searchKeyGetIndex !errorMessageName ?* ?errorMessageIndex] ;
+  [!?tableMessagesErreurs searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
   emissionParDefaut := [@typeEmissionErreurParDefaut new !errorMessageIndex] ;
 end rule ;
 

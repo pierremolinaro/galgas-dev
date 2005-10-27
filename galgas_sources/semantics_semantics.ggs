@@ -656,6 +656,7 @@ routine checkAssignmentTypesCompatibility
   ?@location inErrorLocation
 :
   match targetType :: sourceType :
+  when @typeGalgas_stringset () :: @typeGalgas_stringset () :
   when @typeGalgas_uint () :: @typeGalgas_uint () :
   when @typeGalgas_sint () :: @typeGalgas_sint () :
   when @typeGalgas_char () :: @typeGalgas_char () :
@@ -1250,6 +1251,11 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
 
   name := [@lstring new !"double" !here] ;
   t := [@typeGalgas_double new] ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
+
+  name := [@lstring new !"stringset" !here] ;
+  t := [@typeGalgas_stringset new] ;
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !name !e] ;
 end routine ;
