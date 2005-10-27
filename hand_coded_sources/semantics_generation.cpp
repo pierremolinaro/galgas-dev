@@ -278,6 +278,7 @@ generate_header_file (C_Lexique & inLexique,
            "#include \"galgas/GGS_ldouble.h\"\n"
            "#include \"galgas/GGS_luint.h\"\n"
            "#include \"galgas/GGS_lsint.h\"\n"
+           "#include \"galgas/GGS_stringset.h\"\n"
            "#include \"galgas/AC_galgas_map.h\"\n" ;
 
 //--- Include scanner definition
@@ -1038,6 +1039,34 @@ generateCppClassName (AC_OutputStream & inFile) const {
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgas_stringset::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_stringset " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_stringset::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_stringset::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeGalgas_location::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_location " ;
@@ -1109,34 +1138,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedListType::
-generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_OutputStream & /* inCppFile */) {
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasSetType::
-generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mSetTypeName << ' ' ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasSetType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasSetType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
                                  AC_OutputStream & /* inCppFile */) {
 }

@@ -301,7 +301,7 @@ fixInfos (cInfo & inInfo,
   GGS_luint index ;
   GGS_M_nonterminalSymbolAltsForGrammar unusedParameter ;
   inInfo.mNonterminalSymbolsMapForGrammar.methode_searchKeyGetIndex (inLexique, mNonterminalSymbolName,
-                                            unusedParameter, index) ;
+                                            index, unusedParameter) ;
   mNonterminalSymbolIndex.mValue = index.uintValue () ;
 }
 
@@ -312,7 +312,7 @@ fixInfos (cInfo & inInfo,
           C_Lexique & inLexique) {
   GGS_luint index ;
   GGS_typeListeAttributsSemantiques unusedParameter ;
-  inInfo.mTerminalSymbolMap.methode_searchKeyGetIndex (inLexique, mTerminalSymbolName, unusedParameter, index) ;
+  inInfo.mTerminalSymbolMap.methode_searchKeyGetIndex (inLexique, mTerminalSymbolName, index, unusedParameter) ;
   mTerminalSymbolIndex.mValue = index.uintValue () ;
 }
 
@@ -451,7 +451,7 @@ analyzeGrammar (C_Lexique & inLexique,
       GGS_luint index ;
       GGS_M_nonterminalSymbolAltsForGrammar unused ;
       inNonterminalSymbolsMapForGrammar.methode_searchKeyGetIndex (inLexique, currentRule->mLeftNonterminalSymbol,
-                                                unused, index) ;
+                                                index, unused) ;
       currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
     //--- Fix, for each rule, left nonterminal symbol index
       fixInfoForInstructionsList (currentRule->mInstructionsList,

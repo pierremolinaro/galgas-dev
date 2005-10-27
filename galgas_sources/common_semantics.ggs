@@ -139,7 +139,7 @@ abstract class @AC_galgasType
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+    error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
   end reader ;
 
 #--- By default, class does not accept operator "+=" call
@@ -328,7 +328,7 @@ class @typeGalgas_uint extends @AC_galgasType
     if [inClassMethodName value] == "max" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
     else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
@@ -413,7 +413,7 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !""! here] ;
     else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
@@ -448,7 +448,7 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
     else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
@@ -479,7 +479,7 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
     else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
@@ -510,7 +510,7 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
     else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
@@ -545,7 +545,7 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
     else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
@@ -580,7 +580,7 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
     else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
@@ -589,6 +589,58 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType
   end reader ;
 
   message messageGalgasType "a 'ldouble' type" ;
+end class ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    S T R I N G S E T    T Y P E                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_stringset extends @AC_galgasType
+#--- Get type name
+  override reader getTypeName !@string outTypeName :
+    outTypeName := "stringset" ;
+  end reader ;
+
+#--- Class accepts constructor call 'empty'
+  override reader handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName value] == "empty" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
+#--- stringset accepts operator "+=" call
+  override
+  reader handleAddAssignOperatorCall
+    ??@location unused inErrorLocation
+    !@typeListeAttributsSemantiques outParametersList
+    !@bool outAccept_luint_assignment
+  :
+    outParametersList := [@typeListeAttributsSemantiques empty] ;
+    @AC_galgasType t := [@typeGalgas_string new] ;
+    outParametersList += !t ![@lstring new !""! here] ;
+    outAccept_luint_assignment := true ;
+  end reader ;
+
+#--- stringset object accepts to be enumerated (foreach instruction)
+  override
+  reader acceptForeachInstruction
+    ??@lstring unused inErrorLocation
+    !@typeListeAttributsSemantiques outForeachList
+  :
+    @AC_galgasType keyType := [@typeGalgas_string new] ;
+    outForeachList := [@typeListeAttributsSemantiques empty] ;
+    outForeachList += !keyType ![@lstring new !"???" !here] ; # Unused second argument
+  end reader ;
+
+#--- Error message
+  message messageGalgasType "a 'stringset' type" ;
 end class ;
 
 #---------------------------------------------------------------------------*
@@ -1102,51 +1154,6 @@ end class ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   G A L G A S    S E T   T Y P E                                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeGalgasSetType extends @AC_galgasType
-  @lstring mSetTypeName ;
-  @lstring mEnumElementTypeName ;
-  @AC_galgasType mEnumType ;
-
-#--- Get type name
-  override reader getTypeName !@string outTypeName :
-    outTypeName := [mSetTypeName value] ;
-  end reader ;
-
-#--- Class accepts class method call 'new'
-  override reader handleConstructorCall
-    ??@lstring inClassMethodName
-    !@typeListeAttributsSemantiques outAccessorTypesList
-  :
-    if [inClassMethodName value] == "empty" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-    else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
-    end if ;
-  end reader ;
-
-#--- Modifier calls
-  override reader handleModifierCall
-    ??@lstring inModifierName
-    !@L_signature outModifierSignature
-  :
-    if [inModifierName value] == "add" then
-      outModifierSignature := [@L_signature empty] ;
-      outModifierSignature  += !mEnumType ![@formalArgumentPassingMode argumentIn] ;
-    else
-      error inModifierName : "variables of this type do not support modifier call"
-         -> outModifierSignature ;
-    end if ;
-  end reader ;
-
-  message messageGalgasType "set type" ;
-end class ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   G A L G A S    U N D E F I N E D    L I S T    T Y P E                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1366,7 +1373,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType
     elsif [inClassMethodName value] == "new" then
       outAccessorTypesList := mNonExternAttributesList ;
     else
-      error inClassMethodName : "This class method is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
@@ -1461,6 +1468,7 @@ routine verifierCompatibiliteTypesSemantiques
   ??@location inErrorLocation
 :
   match inFormalType :: inEffectiveType :
+  when @typeGalgas_stringset ():: @typeGalgas_stringset () :
   when @typeGalgas_uint ()     :: @typeGalgas_uint () :
   when @typeGalgas_sint ()     :: @typeGalgas_sint () :
   when @typeGalgas_char ()     :: @typeGalgas_char () :
@@ -1730,6 +1738,24 @@ routine handleReaderCall
       @AC_galgasType keyType := [@typeGalgas_string new] ;
       outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
       outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inMethodName value] == "count" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+      outReturnedType := [@typeGalgas_uint new] ;
+    else
+      error inMethodName : "this reader is not defined"
+       -> outAccessorTypesList, outReturnedType ;
+    end if ;
+  when @typeGalgas_stringset (...) ->
+    if [inMethodName value] == "hasKey" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+      @AC_galgasType keyType := [@typeGalgas_string new] ;
+      outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_bool new] ;
+    elsif [inMethodName value] == "index" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+      @AC_galgasType keyType := [@typeGalgas_string new] ;
+      outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
+      outReturnedType := [@typeGalgas_luint new] ;
     elsif [inMethodName value] == "count" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_uint new] ;

@@ -216,7 +216,7 @@ pr_galgas_component_grammar_parser_91_24_ (galgas_scanner & lexique_var_,
   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_startSymbolAltMap ;
   GGS_luint  var_cas_startSymbolIndex ;
   if (var_cas_nonterminalSymbolsMapForGrammar.isBuilt ()) {
-    var_cas_nonterminalSymbolsMapForGrammar ()->methode_searchKeyGetIndex (lexique_var_, var_cas_startSymbolName, var_cas_startSymbolAltMap, var_cas_startSymbolIndex) ;
+    var_cas_nonterminalSymbolsMapForGrammar ()->methode_searchKeyGetIndex (lexique_var_, var_cas_startSymbolName, var_cas_startSymbolIndex, var_cas_startSymbolAltMap) ;
   }
   GGS_M_nonterminalSymbolAltsForGrammar::element_type * operand_8816 = var_cas_startSymbolAltMap.firstObject () ;
   while ((operand_8816 != NULL)) {

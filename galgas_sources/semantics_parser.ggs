@@ -3683,20 +3683,21 @@ rule <semantics_declaration>
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodMap (??@lstring kKey ...) :
+    #--- Insert Methods
       @L_signature methodSignature [empty] ;
       methodSignature += !lstringType !inPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !kKey !methodSignature] ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+    #--- Insert Get Index Methods
       methodSignature := [@L_signature empty] ;
       methodSignature += !lstringType !inPassingMode ;
-    ##  methodSignature += !luintType !outPassingMode ;
+      methodSignature += !luintType !outPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
-      methodSignature += !luintType !outPassingMode ;
+      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
     foreach searchMethodMap (??@lstring kKey ...) :
@@ -3710,11 +3711,10 @@ rule <semantics_declaration>
    #--- insert method GetIndex
       methodSignature := [@L_signature empty] ;
       methodSignature += !lstringType !inPassingMode ;
-  ##    methodSignature += !luintType !outPassingMode ;
+      methodSignature += !luintType !outPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
-      methodSignature += !luintType !outPassingMode ;
       @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
@@ -3820,11 +3820,10 @@ rule <semantics_declaration>
    #-- Insert And Get Index Method
       methodSignature := [@L_signature empty] ;
       methodSignature += !lstringType !inPassingMode ;
-    ##  methodSignature += !luintType !outPassingMode ;
+      methodSignature += !luintType !outPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
-      methodSignature += !luintType !outPassingMode ;
       @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
@@ -3839,11 +3838,10 @@ rule <semantics_declaration>
     #--- Search and Get Index Method
       methodSignature := [@L_signature empty] ;
       methodSignature += !lstringType !inPassingMode ;
-    ##  methodSignature += !luintType !outPassingMode ;
+      methodSignature += !luintType !outPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
-      methodSignature += !luintType !outPassingMode ;
       @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
@@ -3975,25 +3973,39 @@ label importSemantics
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodMap (??@lstring kKey ...) :
+    #--- Insert Methods
       @L_signature methodSignature [empty] ;
       methodSignature += !lstringType !inPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !kKey !methodSignature] ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+    #--- Insert Get Index Methods
+      methodSignature := [@L_signature empty] ;
+      methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
+      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+        methodSignature += !kAttributType !inPassingMode ;      
+      end foreach ;
+      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
     foreach searchMethodMap (??@lstring kKey ...) :
+    #--- Search Methods
       @L_signature methodSignature [empty] ;
       methodSignature += !lstringType !inPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !kKey !methodSignature] ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+    #--- Search Get Index Methods
+      methodSignature := [@L_signature empty] ;
+      methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
+      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+        methodSignature += !kAttributType !outPassingMode ;      
+      end foreach ;
+      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
   #--- Insertion dans la map des entités utilisables
@@ -4066,25 +4078,39 @@ label importSemantics
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodMap (??@lstring kKey ...) :
+    #--- Insert Methods
       @L_signature methodSignature [empty] ;
       methodSignature += !lstringType !inPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !kKey !methodSignature] ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+    #--- Insert Get Index Methods
+      methodSignature := [@L_signature empty] ;
+      methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
+      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+        methodSignature += !kAttributType !inPassingMode ;      
+      end foreach ;
+      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
     foreach searchMethodMap (??@lstring kKey ...) :
+    #--- Search Methods
       @L_signature methodSignature [empty] ;
       methodSignature += !lstringType !inPassingMode ;
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !kKey !methodSignature] ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+   #--- Search Get Index Methods
+      methodSignature := [@L_signature empty] ;
+      methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
+      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+        methodSignature += !kAttributType !outPassingMode ;      
+      end foreach ;
+      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
   #--- Insertion dans la map des entités utilisables
