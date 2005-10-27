@@ -20,7 +20,6 @@
 
 #include "utilities/MF_MemoryControl.h"
 #include "files/C_HTML_FileWrite.h"
-#include "galgas/C_galgas_stringset.h"
 
 #include "printOriginalGrammar.h"
 #include "common_semantics.h"

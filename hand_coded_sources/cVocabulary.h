@@ -28,7 +28,6 @@
 
 //---------------------------------------------------------------------------*
 
-class C_galgas_stringset ;
 class C_TextFileWrite ;
 class GGS_L_productionRules_ForGrammarComponent ;
 

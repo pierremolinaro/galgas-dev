@@ -906,7 +906,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                                const uint32 inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
-                               const C_galgas_stringset & inClassesNamesSet) {
+                               const GGS_stringset & inClassesNamesSet) {
 //--- Generate header file inclusion -----------------------------------------
   C_String generatedZone2 ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
@@ -1229,7 +1229,7 @@ LR1_computations (C_Lexique & inLexique,
                   const uint32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inLexiqueName,
-                  const C_galgas_stringset & inClassesNamesSet,
+                  const GGS_stringset & inClassesNamesSet,
                   bool & outOk) {
 //--- Console display
  co << "  Building LR(1) automaton... " ; co.flush () ;

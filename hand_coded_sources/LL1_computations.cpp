@@ -388,7 +388,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                                const uint32 inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
                                const C_String & inLexiqueName,
-                               const C_galgas_stringset & inClassesNamesSet,
+                               const GGS_stringset & inClassesNamesSet,
                                const cVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions) {
 //--- Generate header file inclusion --------------------------------------------------------------
@@ -604,7 +604,7 @@ LL1_computations (C_Lexique & inLexique,
                   const uint32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inLexiqueName,
-                  const C_galgas_stringset & inClassesNamesSet,
+                  const GGS_stringset & inClassesNamesSet,
                   bool & outOk) {
 //--- Console display
   co << "  Checking LL(1) condition... " ;
@@ -622,14 +622,14 @@ LL1_computations (C_Lexique & inLexique,
 
 //--- Generate C++ file
   if (outOk) {
-      ::generate_LL1_grammar_Cpp_file (inLexique,
-                                       inNonterminalSymbolsMapForOriginalGrammar,
-                                       inOriginalGrammarStartSymbol,
-                                       inTargetFileName,
-                                       inLexiqueName,
-                                       inClassesNamesSet,
-                                       inVocabulary,
-                                       inPureBNFproductions) ;
+    generate_LL1_grammar_Cpp_file (inLexique,
+                                   inNonterminalSymbolsMapForOriginalGrammar,
+                                   inOriginalGrammarStartSymbol,
+                                   inTargetFileName,
+                                   inLexiqueName,
+                                   inClassesNamesSet,
+                                   inVocabulary,
+                                   inPureBNFproductions) ;
   }
 }
 

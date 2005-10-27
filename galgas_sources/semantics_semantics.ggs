@@ -596,12 +596,6 @@ end map ;
 
 #---------------------------------------------------------------------------*
 
-enum @localConstantBuildStyleEnum :
-  listStyle, mapStyle, firstIsKeyOtherMapStyle ;
-end enum ;
-
-#---------------------------------------------------------------------------*
-
 routine buildMapWithLocalConstants
   ?@L_nameWithType inLocalDeclarationsList
   ?@typeListeAttributsSemantiques inSemanticAttributsList

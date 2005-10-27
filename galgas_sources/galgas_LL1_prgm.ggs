@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_LL1_prgm "version 0.14.1 (LL(1) grammar)" . "ggs" :
+program galgas_LL1_prgm "version 1.0.0 (LL(1) grammar)" . "ggs" :
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
   include header ;
 #--- Start symbol arguments

@@ -19,7 +19,6 @@
 //---------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
-#include "galgas/C_galgas_stringset.h"
 #include "files/C_TextFileWrite.h"
 
 //---------------------------------------------------------------------------*

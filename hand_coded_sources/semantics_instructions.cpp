@@ -727,7 +727,7 @@ void cPtr_typeAppendInstructionWithAssignment
       exp->mExpression ()->generateExpression (ioCppFile) ;
       exp = exp->nextObject () ;
     }
-    ioCppFile << "& " ;
+    ioCppFile << ", " ;
     m_luint_TargetVarCppName ()->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ") ;\n" ;
   }

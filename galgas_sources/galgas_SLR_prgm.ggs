@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_SLR_prgm "version 0.14.1 (SLR grammar)" . "ggs" :
+program galgas_SLR_prgm "version 1.0.0 (SLR grammar)" . "ggs" :
   import grammar galgas_SLR_grammar in "galgas_SLR_grammar.ggs" ;
   include header ;
 #--- Start symbol arguments
