@@ -111,7 +111,7 @@ rule <galgas_component>
     ?lexiqueName
   ;
 #--- Parse syntax components references
-  @string_set classesNamesSet [empty] ;
+  @stringset classesNamesSet [empty] ;
   @L_syntaxComponents_ForGrammar syntaxComponentsList [empty] ;
   @M_nonTerminalSymbolsForGrammar nonterminalSymbolsMapForGrammar [empty] ;
   @M_optionComponents optionComponentsMap [empty] ;
@@ -160,7 +160,7 @@ rule <galgas_component>
       @M_nonTerminalSymbolsForGrammar importedNonterminalSymbolsMap ;
       @L_productionRules_ForGrammarComponent importedProductionRulesList ;
       @lstring importedLexiqueComponentName ;
-      @string_set importedClassesNamesSet ;
+      @stringset importedClassesNamesSet ;
       [!?syntaxComponentsMap searchKey !syntaxComponentName
         ?importedNonterminalSymbolsMap
         ?importedProductionRulesList

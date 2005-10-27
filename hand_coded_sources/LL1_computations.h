@@ -33,7 +33,6 @@ class C_HTML_FileWrite ;
 class cVocabulary ;
 class C_BDD_Set2 ;
 class C_String ;
-class C_galgas_stringset ;
 class C_Lexique ;
 
 //---------------------------------------------------------------------------*
@@ -50,7 +49,7 @@ LL1_computations (C_Lexique & inLexique,
                   const uint32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inLexiqueName,
-                  const C_galgas_stringset & inClassesNamesSet,
+                  const GGS_stringset & inClassesNamesSet,
                   bool & outOk) ;
 
 //---------------------------------------------------------------------------*

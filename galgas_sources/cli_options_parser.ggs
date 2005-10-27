@@ -52,10 +52,10 @@ rule <import_headers_semantics_and_grammars>
   !@M_externClassesDirectories outExternClassesDirectoryMap
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
-  ?!@string_set ioClassNamesSet
+  ?!@stringset ioClassNamesSet
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -86,12 +86,12 @@ rule <galgas_component>
 ##--- Import semantics
 #  @typeTableEnAvant tableEnAvant ;
 #  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques := empty ;
-#  @string_set tableFichiersEnTetePourFichierH := empty ;
-#  @string_set tableFichiersEnTetePourFichierCPP := empty ;
+#  @stringset tableFichiersEnTetePourFichierH := empty ;
+#  @stringset tableFichiersEnTetePourFichierCPP := empty ;
 #  @M_optionComponents optionsComponentsMapForUse := empty ;
 #  @M_semanticsEntitiesForUse componentEntitiesMap ;
 #  @M_externClassesDirectories externClassesDirectoryMap ;
-#  @string_set classNamesSet := empty ;
+#  @stringset classNamesSet := empty ;
 #  <import_headers_semantics_and_grammars>
 #    ?externClassesDirectoryMap
 #    ?componentEntitiesMap
@@ -280,12 +280,12 @@ label importOptions
 ##--- Import semantics
 #  @typeTableEnAvant tableEnAvant ;
 #  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques := empty ;
-#  @string_set tableFichiersEnTetePourFichierH := empty ;
-#  @string_set tableFichiersEnTetePourFichierCPP := empty ;
+#  @stringset tableFichiersEnTetePourFichierH := empty ;
+#  @stringset tableFichiersEnTetePourFichierCPP := empty ;
 #  @M_optionComponents optionsComponentsMapForUse := empty ;
 #  @M_semanticsEntitiesForUse componentEntitiesMap ;
 #  @M_externClassesDirectories externClassesDirectoryMap ;
-#  @string_set classNamesSet := empty ;
+#  @stringset classNamesSet := empty ;
 #  <import_headers_semantics_and_grammars>
 #    ?externClassesDirectoryMap
 #    ?componentEntitiesMap

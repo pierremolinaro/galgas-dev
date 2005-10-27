@@ -140,11 +140,16 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
 
 void
 generateClassRegistering (AC_OutputStream & inCppfile,
-                          const C_galgas_stringset & inClassesNamesSet) {
-  const sint32 classesCount = inClassesNamesSet.count () ;
-  inCppfile << "// classesCount : " << classesCount << '\n' ;
-  for (sint32 i=0 ; i<classesCount ; i++) {
-    inCppfile << "// " << i << " : " << inClassesNamesSet (i COMMA_HERE) << '\n' ;
+                          const GGS_stringset & inClassesNamesSet) {
+  const sint32 classCount = inClassesNamesSet.count () ;
+  inCppfile << "// classCount : " << classCount << '\n' ;
+  GGS_stringset::element_type * currentClass = inClassesNamesSet.firstObject () ;
+  sint32 index = 0 ;
+  while (currentClass != NULL) {
+    macroValidPointer (currentClass) ;
+    inCppfile << "// " << index << " : " << currentClass->mKey.string () << '\n' ;
+    index ++ ;
+    currentClass = currentClass->nextObject () ;
   }
 }
 
@@ -435,7 +440,7 @@ analyzeGrammar (C_Lexique & inLexique,
                 GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
                 GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                 GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
-  C_galgas_stringset inClassesNamesSet ; // $
+  GGS_stringset classesNamesSet ; // $
   bool warningFlag = false ;
 
 //--- Fix info about terminal and nonterminal symbols
@@ -686,7 +691,7 @@ analyzeGrammar (C_Lexique & inLexique,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
-                      inClassesNamesSet,
+                      classesNamesSet,
                       ok) ;
     if (! ok) {
       errorFlag = kGrammarNotLL1 ;
@@ -706,7 +711,7 @@ analyzeGrammar (C_Lexique & inLexique,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
-                      inClassesNamesSet,
+                      classesNamesSet,
                       ok) ;
     if (ok) {
       errorFlag = kNoError ;
@@ -730,7 +735,7 @@ analyzeGrammar (C_Lexique & inLexique,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
-                      inClassesNamesSet,
+                      classesNamesSet,
                       ok) ;
     if (ok) {
       errorFlag = kNoError ;

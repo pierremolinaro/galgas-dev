@@ -50,9 +50,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set tableDeclAnticipeesClassePourFichierH
-  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset tableDeclAnticipeesClassePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant tableEnAvantAimplementer
@@ -92,10 +92,10 @@ rule <import_headers_semantics_and_grammars>
   !@M_externClassesDirectories outExternClassesDirectoryMap
   !@M_semanticsEntitiesForUse ioEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
-  ?!@string_set ioClassNamesSet
+  ?!@stringset ioClassNamesSet
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponents
@@ -240,9 +240,9 @@ action engendrerComposant
   ?!@string defLexique
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@bool composantSyntaxique
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set tableFichiersEnTetePourFichierCPP
-  ?!@string_set tableDeclAnticipeesClassePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableDeclAnticipeesClassePourFichierH
 ;
 
 #------------------------------------------------------------------------------*
@@ -262,12 +262,12 @@ rule <galgas_component>
   @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
   @typeEntitiesToGenerateList listeEntitesAengendrer ;
   @bool composantSyntaxique := true ;
-  @string_set tableFichiersEnTetePourFichierH  [empty] ;
-  @string_set tableFichiersEnTetePourFichierCPP [empty] ;
-  @string_set tableDeclAnticipeesClassePourFichierH [empty] ;
+  @stringset tableFichiersEnTetePourFichierH  [empty] ;
+  @stringset tableFichiersEnTetePourFichierCPP [empty] ;
+  @stringset tableDeclAnticipeesClassePourFichierH [empty] ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
-  @string_set classNamesSet [empty] ;
+  @stringset classNamesSet [empty] ;
   $syntax$ ;
 #--- Get syntax comopnent name
   @lstring componentName ;
@@ -368,7 +368,7 @@ label importSyntax
   <get_lexique_infos> getLexiqueName ? lexiqueName ;
   <import_headers_semantics_and_grammars> parse ;
 #--- 
-  @string_set classNamesSet [empty] ;
+  @stringset classNamesSet [empty] ;
   @L_productionRules_ForGrammarComponent productionRulesListForGrammar [empty] ;
   @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMap [empty] ;
   repeat

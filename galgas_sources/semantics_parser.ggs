@@ -76,9 +76,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set tableDeclAnticipeesClassePourFichierH
-  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset tableDeclAnticipeesClassePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant tableEnAvantAimplementer
@@ -97,10 +97,10 @@ rule <import_headers_semantics_and_grammars>
   !@M_externClassesDirectories outExternClassesDirectoryMap
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
-  ?!@string_set ioClassNamesSet
+  ?!@stringset ioClassNamesSet
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -131,7 +131,7 @@ rule <attributes_definition_list>
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
   !@L_nameWithType listeTypeeAttributsExternesCourants # définis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierH
 label parse
 ;
 
@@ -140,7 +140,7 @@ rule <attribute_definition>
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
   ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierH
 label parse
 ;
 
@@ -426,9 +426,9 @@ action engendrerComposant
   ?!@string defLexique
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@bool composantSyntaxique
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set tableFichiersEnTetePourFichierCPP
-  ?!@string_set tableDeclAnticipeesClassePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableDeclAnticipeesClassePourFichierH
 ;
 
 #---------------------------------------------------------------------------*
@@ -455,13 +455,13 @@ rule <galgas_component>
   @string defLexique := "" ;
 #--- Import semantics
   @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
-  @string_set tableFichiersEnTetePourFichierH [empty] ;
-  @string_set tableFichiersEnTetePourFichierCPP [empty] ;
+  @stringset tableFichiersEnTetePourFichierH [empty] ;
+  @stringset tableFichiersEnTetePourFichierCPP [empty] ;
   @M_optionComponents optionsComponentsMapForUse [empty] ;
   @M_semanticsEntitiesForUse componentEntitiesMap ;
   @M_externClassesDirectories externClassesDirectoryMap ;
   @typeTableEnAvant tableEnAvantAimplementer [empty] ;
-  @string_set classNamesSet [empty] ;
+  @stringset classNamesSet [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
   <import_headers_semantics_and_grammars>
     ?externClassesDirectoryMap
@@ -476,7 +476,7 @@ rule <galgas_component>
     !?ioOptionsComponentsMap
   ;
 #--- Semantics entities declarations
-  @string_set tableDeclAnticipeesClassePourFichierH [empty] ;
+  @stringset tableDeclAnticipeesClassePourFichierH [empty] ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
   repeat
@@ -621,10 +621,10 @@ rule <import_headers_semantics_and_grammars>
   !@M_externClassesDirectories outExternClassesDirectoryMap
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
-  ?!@string_set unused ioClassNamesSet
+  ?!@stringset unused ioClassNamesSet
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -696,7 +696,7 @@ rule <import_headers_semantics_and_grammars>
       @lstring extension := [@lstring new !"h" !here] ;
       @lstring fileNameWithPath ;
       action buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
-      tableFichiersEnTetePourFichierCPP += !fileNameWithPath ;
+      tableFichiersEnTetePourFichierCPP += ![fileNameWithPath value] ;
     or
       $semantics$ ;
       @lstring componentName ;
@@ -834,9 +834,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set unused tableFichiersEnTetePourFichierH
-  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
-  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@stringset unused tableFichiersEnTetePourFichierH
+  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
+  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant unused tableEnAvantAimplementer
@@ -1027,9 +1027,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set tableDeclAnticipeesClassePourFichierH
-  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset tableDeclAnticipeesClassePourFichierH
+  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant tableEnAvantAimplementer
@@ -1047,7 +1047,7 @@ rule <semantics_declaration>
       @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
       [!?tableEnAvant insertKey !nomClasseAbstraite !t] ;
       [!?tableEnAvantAimplementer insertKey !nomClasseAbstraite !t] ;
-      tableDeclAnticipeesClassePourFichierH += !nomClasseAbstraite ;
+      tableDeclAnticipeesClassePourFichierH += ![nomClasseAbstraite value] ;
     end if ;
   or
   #--- Analyse de la classe mère (if existe)
@@ -1210,7 +1210,7 @@ label importSemantics
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeAttributsExternesCourants ;
-    @string_set tableFichiersEnTetePourFichierH [empty] ;
+    @stringset tableFichiersEnTetePourFichierH [empty] ;
     <attributes_definition_list> !?tableAttributs
                                  !?listeTousAttributsSemantiques
                                  ?listeAttributsSemantiquesCourants
@@ -1314,9 +1314,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
-  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
+  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant unused tableEnAvantAimplementer
@@ -1502,7 +1502,7 @@ label importSemantics
 #------------------- list des attributs de la classe -------------------
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
-  @string_set tableFichiersEnTetePourFichierH [empty] ;
+  @stringset tableFichiersEnTetePourFichierH [empty] ;
   <attributes_definition_list> !?tableAttributs
                                !?listeTousAttributsSemantiques
                                ?listeAttributsSemantiquesCourants
@@ -2113,8 +2113,8 @@ rule <instruction_beginning_with_identifier>
   [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetVariableType ?nomCppVariableSource] ;
 #--- Does the variable class accept the += operator ?
   @typeListeAttributsSemantiques formalParametersList ;
-  @bool accept_luint_assignment ;
-  [targetVariableType handleAddAssignOperatorCall !here ?formalParametersList ?accept_luint_assignment] ;
+  @bool accept_uint_assignment ;
+  [targetVariableType handleAddAssignOperatorCall !here ?formalParametersList ?accept_uint_assignment] ;
 #--- Parse argument list
   @typeTypesList typeList := [@typeTypesList empty] ;
   @typeExpressionList expressionList [empty] ;
@@ -2134,10 +2134,8 @@ rule <instruction_beginning_with_identifier>
   while
   end repeat ;
 #--- Check expression types list against formal parameter list
-  if [formalParametersList length] < [typeList length] then
-    error here : "value list is too long" ;
-  elsif [formalParametersList length] > [typeList length] then
-    error here : "value list is too short" ;
+  if [formalParametersList length] != [typeList length] then
+    error here : [[typeList length] string] . " argument(s), while " . [[formalParametersList length] string] . " are needed" ;
   else
     foreach formalParametersList (??@AC_galgasType formalType ??@lstring formalName),
             typeList (??@AC_galgasType effectiveType ??@location kErrorLocation) :
@@ -2146,17 +2144,17 @@ rule <instruction_beginning_with_identifier>
   end if ;
   @typeInstruction instruction ;
   select
-    $->$ ;
-    @lstring luint_assigned_var ;
-    $identifier$ ? luint_assigned_var ;
-    if not accept_luint_assignment then
-      error nomVarDest : "This variable does not accept 'luint' @assignment" ;
+    $?$ ;
+    @lstring uint_assigned_var ;
+    $identifier$ ? uint_assigned_var ;
+    if not accept_uint_assignment then
+      error nomVarDest : "The type of target object does not accept '?' parameter" ;
     end if ;
     @AC_galgasType targetVariableType ;
-    @typeCplusPlusName luint_assigned_cppVarName ;
-    [!?ioVariablesMap searchForWriteAccess !luint_assigned_var ?targetVariableType ?luint_assigned_cppVarName] ;
-    extract targetVariableType->@typeGalgas_luint () error luint_assigned_var : messageGalgasType ;
-    instruction := [@typeAppendInstructionWithAssignment new !nomCppVariableSource !expressionList !luint_assigned_cppVarName] ;
+    @typeCplusPlusName uint_assigned_cppVarName ;
+    [!?ioVariablesMap searchForWriteAccess !uint_assigned_var ?targetVariableType ?uint_assigned_cppVarName] ;
+    extract targetVariableType->@typeGalgas_uint () error uint_assigned_var : messageGalgasType ;
+    instruction := [@typeAppendInstructionWithAssignment new !nomCppVariableSource !expressionList !uint_assigned_cppVarName] ;
   or
     instruction := [@typeAppendInstruction new !nomCppVariableSource !expressionList] ;
   end select ;
@@ -3090,21 +3088,11 @@ rule <semantic_instruction>
         ;
       #--- Check this variable can be enumerated
         @typeListeAttributsSemantiques formalEnumerationList ;
-        [variableType acceptForeachInstruction !variableName ?formalEnumerationList] ;
+        @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
+        [variableType acceptForeachInstruction !variableName ?formalEnumerationList ?localConstantBuildStyleEnum] ;
       #--- Extract type name
         @string typeName ;
-        @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
-        extract variableType :
-        when @typeGalgasMapType (??@lstring kTypeName ...) ->
-          typeName := [kTypeName value] ;
-          localConstantBuildStyleEnum := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
-        when @typeGalgasListType (??@lstring kTypeName ??*) ->
-          typeName := [kTypeName value] ;
-          localConstantBuildStyleEnum := [@localConstantBuildStyleEnum listStyle] ;
-        else # Any values, they will not be used
-          typeName := "" ;
-          localConstantBuildStyleEnum := [@localConstantBuildStyleEnum listStyle] ;
-        end extract ;
+        [variableType getTypeName ?typeName] ;
       #--- Parse effective input attribute list
         @location magicNumber := here ;
         <parse_effective_input_parameters_list>
@@ -3570,9 +3558,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set tableDeclAnticipeesClassePourFichierH
-  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset tableDeclAnticipeesClassePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant tableEnAvantAimplementer
@@ -3589,7 +3577,7 @@ rule <semantics_declaration>
       @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
       [!?tableEnAvant insertKey !nomTable !t] ;
       [!?tableEnAvantAimplementer insertKey !nomTable !t] ;
-      tableDeclAnticipeesClassePourFichierH += !nomTable ;
+      tableDeclAnticipeesClassePourFichierH += ![nomTable value] ;
     end if ;
   or
   #--- map générique C++ utilisée
@@ -3599,10 +3587,10 @@ rule <semantics_declaration>
     $in$ ;
     @lstring path ;
     $literal_string$ ? path ; 
-    tableFichiersEnTetePourFichierH += !path ;
+    tableFichiersEnTetePourFichierH += ![path value] ;
     $,$ ;
     $literal_string$ ? path ; 
-    tableFichiersEnTetePourFichierCPP += !path ;
+    tableFichiersEnTetePourFichierCPP += ![path value] ;
     $;$ ;
   #--- Déclaration des méthodes d'insertion, de recherche, et de block
     @typeTableMethodesInsererChercher insertMethodMap [empty] ;
@@ -3959,7 +3947,7 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @string_set tableFichiersEnTetePourFichierH [empty] ;
+    @stringset tableFichiersEnTetePourFichierH [empty] ;
     <attributes_definition_list> !?tableAttributs
                                  !?listeTousAttributsSemantiques
                                  ?listeAttributsSemantiquesCourants
@@ -4064,7 +4052,7 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @string_set tableFichiersEnTetePourFichierH [empty] ;
+    @stringset tableFichiersEnTetePourFichierH [empty] ;
     <attributes_definition_list> !?tableAttributs
                                  !?listeTousAttributsSemantiques
                                  ?listeAttributsSemantiquesCourants
@@ -4191,9 +4179,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set tableDeclAnticipeesClassePourFichierH
-  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset tableDeclAnticipeesClassePourFichierH
+  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant tableEnAvantAimplementer
@@ -4209,7 +4197,7 @@ rule <semantics_declaration>
       @AC_galgasType t := [@typeGalgasUndefinedListType new !nomListe] ;
       [!?tableEnAvant insertKey !nomListe !t] ;
       [!?tableEnAvantAimplementer insertKey !nomListe !t] ;
-      tableDeclAnticipeesClassePourFichierH += !nomListe ;
+      tableDeclAnticipeesClassePourFichierH += ![nomListe value] ;
     end if ;
   or
   #-- Déclaration des attributs de la list
@@ -4256,7 +4244,7 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @string_set tableFichiersEnTetePourFichierH [empty] ;
+    @stringset tableFichiersEnTetePourFichierH [empty] ;
     <attributes_definition_list> !?tableAttributs
                                  !?listeTousAttributsSemantiques
                                  ?listeAttributsSemantiquesCourants
@@ -4285,7 +4273,7 @@ rule <attributes_definition_list>
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
   !@L_nameWithType listeTypeeAttributsExternesCourants # définis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@string_set tableFichiersEnTetePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierH
 :
   listeTypeeAttributsExternesCourants := [@L_nameWithType empty] ;
   listeAttributsSemantiquesCourants := [@typeListeAttributsSemantiques empty] ;
@@ -4307,7 +4295,7 @@ rule <attribute_definition>
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
   ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@string_set unused tableFichiersEnTetePourFichierH
+  ?!@stringset unused tableFichiersEnTetePourFichierH
 :
 #--- Type name
   @AC_galgasType definitionType ;
@@ -4333,9 +4321,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@string_set tableFichiersEnTetePourFichierH
-  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
-  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
+  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant unused tableEnAvantAimplementer
@@ -4354,7 +4342,7 @@ rule <semantics_declaration>
   $in$ ;
   @lstring path ;
   $literal_string$ ? path ; 
-  tableFichiersEnTetePourFichierH += !path ;
+  tableFichiersEnTetePourFichierH += ![path value] ;
   $;$ ;
 #--- Default behaviour : no operator, no method available
   @typeTableMethodes modifiersMap [empty] ;
@@ -4709,9 +4697,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@string_set unused tableFichiersEnTetePourFichierH
-  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
-  ?!@string_set tableFichiersEnTetePourFichierCPP
+  ?!@stringset unused tableFichiersEnTetePourFichierH
+  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
+  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableEnAvant unused tableEnAvantAimplementer
@@ -4742,7 +4730,7 @@ rule <semantics_declaration>
     $in$ ;
     @lstring fichierAinclure ;
     $literal_string$ ?fichierAinclure ;
-    tableFichiersEnTetePourFichierCPP += !fichierAinclure ;
+    tableFichiersEnTetePourFichierCPP += ![fichierAinclure value] ;
   end select ;
   $;$ ;    
 label importSemantics
@@ -4787,9 +4775,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@string_set unused tableFichiersEnTetePourFichierH
-  ?!@string_set unused tableDeclAnticipeesClassePourFichierH
-  ?!@string_set unused tableFichiersEnTetePourFichierCPP
+  ?!@stringset unused tableFichiersEnTetePourFichierH
+  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
+  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableEnAvant unused tableEnAvantAimplementer

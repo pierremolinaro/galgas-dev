@@ -20,29 +20,6 @@ semantics common_semantics :
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  The 'stringset' extern type handles set of strings. It is implemented    *
-#  by C_galgas_stringset C++ class in the C_galgas_stringset.cpp file.      *
-#                                                                           *
-#  Operations on stringset objects are :                                    *
-#    - assignment, copy (avalaible for any extern type)                     *
-#    - new constructor, for creating an empty string set                    *
-#    - += operator, for adding a new string to the set ; if the string      *
-#      already belongs to the set, no error is raised.                      *
-#    - getIndex method, that returns the unique entry index of a string ;   *
-#      raises a semantic error if the string is not found                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-extern @string_set :
-  class C_galgas_stringset in "galgas/C_galgas_stringset.h" ; # C++ class name
-  constructor empty ; # build an empty set
-  modifier += ?@lstring inStringToAdd ; # Accepts += with lstring parameter
-  reader getIndex ?@lstring inStringToSearch !@luint outIndex ;
-  modifier enterString ?@lstring inStringToEnter !@luint outIndex ;
-end extern ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  A C T U A L    P A R A M E T E R S    P A S S I N G    M O D E S         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -84,6 +61,12 @@ list @L_signature ;
 list @typeListeAttributsSemantiques ;
 
 #---------------------------------------------------------------------------*
+
+enum @localConstantBuildStyleEnum :
+  listStyle, mapStyle, firstIsKeyOtherMapStyle ;
+end enum ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #   G A L G A S    T Y P E    ( A B S T R A C T    C L A S S )              *
 #                                                                           *
@@ -105,9 +88,10 @@ abstract class @AC_galgasType
   reader acceptForeachInstruction
     ??@lstring inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
+    !@localConstantBuildStyleEnum outStyle
   :
     error inErrorLocation :
-       "variables of this type cannot appear in 'foreach' instruction" -> outForeachList ;
+       "variables of this type cannot appear in 'foreach' instruction" -> outForeachList, outStyle ;
   end reader ;
 
 #--- By default, object does not accept to be a key for map
@@ -146,11 +130,11 @@ abstract class @AC_galgasType
   reader handleAddAssignOperatorCall 
     ??@location inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
-    !@bool outAccept_luint_assignment
+    !@bool outAccept_uint_assignment
   :
     error inErrorLocation :
        "variables of this type do not support call of '+=' operator"
-       -> outParametersList, outAccept_luint_assignment ;
+       -> outParametersList, outAccept_uint_assignment ;
   end reader ;
 
 #--- By default, class does not accept "++" operator
@@ -620,12 +604,12 @@ class @typeGalgas_stringset extends @AC_galgasType
   reader handleAddAssignOperatorCall
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
-    !@bool outAccept_luint_assignment
+    !@bool outAccept_uint_assignment
   :
     outParametersList := [@typeListeAttributsSemantiques empty] ;
     @AC_galgasType t := [@typeGalgas_string new] ;
     outParametersList += !t ![@lstring new !""! here] ;
-    outAccept_luint_assignment := true ;
+    outAccept_uint_assignment := true ;
   end reader ;
 
 #--- stringset object accepts to be enumerated (foreach instruction)
@@ -633,10 +617,12 @@ class @typeGalgas_stringset extends @AC_galgasType
   reader acceptForeachInstruction
     ??@lstring unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
+    !@localConstantBuildStyleEnum outStyle
   :
     @AC_galgasType keyType := [@typeGalgas_string new] ;
     outForeachList := [@typeListeAttributsSemantiques empty] ;
-    outForeachList += !keyType ![@lstring new !"???" !here] ; # Unused second argument
+    outForeachList += !keyType ![@lstring new !"mKey" !here] ; # Unused second argument
+    outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
   end reader ;
 
 #--- Error message
@@ -745,13 +731,13 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType
   override reader handleAddAssignOperatorCall
     ??@location inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
-    !@bool outAccept_luint_assignment
+    !@bool outAccept_uint_assignment
   :
     if not mAcceptAddAssignOperatorCall then
-      [super handleAddAssignOperatorCall !inErrorLocation ?outParametersList ?outAccept_luint_assignment] ;
+      [super handleAddAssignOperatorCall !inErrorLocation ?outParametersList ?outAccept_uint_assignment] ;
     else
       outParametersList := mAddAssignOperatorCallTypeList ;
-      outAccept_luint_assignment := false ;
+      outAccept_uint_assignment := false ;
     end if ;
   end reader ;
 
@@ -942,14 +928,6 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-extern @SS_terminal_symbols :
-  class C_galgas_stringset in "galgas/C_galgas_stringset.h" ; # C++ class name
-  constructor empty ;
-  modifier enterString ?@lstring inStringToEnter !@luint outIndex ;
-end extern ;
-
-#---------------------------------------------------------------------------*
-
 map @M_nonterminalSymbolAltsForGrammar
   insert insertKey error message "the rules label '" . * . "' has been already declared" ;
   search searchKey error message "the rules label '" . * . "' is not declared" ;
@@ -992,7 +970,7 @@ map @M_syntaxComponents
   @M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMap ;
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
   @lstring mLexiqueComponentName ;
-  @string_set mClassesNamesSet ;
+  @stringset mClassesNamesSet ;
 end map ;
 
 #---------------------------------------------------------------------------*
@@ -1058,7 +1036,7 @@ end class ;
 list @L_syntaxComponents_ForGrammar
   @M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMap ;
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
-  @string_set mClassesNamesSet ;
+  @stringset mClassesNamesSet ;
   @lstring mSyntaxComponentName ;
 end list ;
 
@@ -1184,18 +1162,20 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType
   reader acceptForeachInstruction
     ??@lstring unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
+    !@localConstantBuildStyleEnum outStyle
   :
     outForeachList := mNonExternAttributesList ;
+    outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end reader ;
   
 #--- list accepts operator "+=" call
   override reader handleAddAssignOperatorCall
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
-    !@bool outAccept_luint_assignment
+    !@bool outAccept_uint_assignment
   :
     outParametersList := mNonExternAttributesList ;
-    outAccept_luint_assignment := false ;
+    outAccept_uint_assignment := false ;
   end reader ;
 
 #--- A list accepts 'empty' constructor
@@ -1284,6 +1264,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType
   reader acceptForeachInstruction
     ??@lstring unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
+    !@localConstantBuildStyleEnum outStyle
   :
     @AC_galgasType keyType := [@typeGalgas_lstring new] ;
     outForeachList := [@typeListeAttributsSemantiques empty] ;
@@ -1291,6 +1272,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType
     foreach mNonExternAttributesList (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
       outForeachList += !kAttributType !kNomAttribut ;
     end foreach ;
+    outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
   end reader ;
 
 #--- A table accepts 'empty' constructor
@@ -1755,7 +1737,7 @@ routine handleReaderCall
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       @AC_galgasType keyType := [@typeGalgas_string new] ;
       outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
-      outReturnedType := [@typeGalgas_luint new] ;
+      outReturnedType := [@typeGalgas_uint new] ;
     elsif [inMethodName value] == "count" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_uint new] ;
