@@ -193,7 +193,7 @@ list galgasDelimitorsList error message "the '" . * . "' delimitor" style delimi
   "==",   "??",    "!",     ":=",      "...",
   "[",     "]",   "+=",     "?!",      "!?",
   "/",    "!=",   "<=",     ">=",       "&",
-  "++" ;
+  "++",    "{",    "}" ;
 
 rule list galgasDelimitorsList ;
 

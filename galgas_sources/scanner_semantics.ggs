@@ -22,226 +22,226 @@ import semantics common_semantics in "common_semantics.ggs" ;
 
 #------------------------------------------------------------------*
 
-map @typeLexicalAttributesMap
+map @typeLexicalAttributesMap {
   insert insertKey error message "the lexical attribute '" . * . "' is already declared" ;
   search searchKey error message "the lexical attribute '" . * . "' is not declared" ;
   @AC_galgasType attributType ;
-end map ;
+}
 
 #------------------------------------------------------------------*
 
-map @lexicalTypeMap
+map @lexicalTypeMap {
   insert insertKey error message "--- internal error ---" ;
   search searchKey error message "there is no type named '%'" ;
   @AC_galgasType mAttributType ;
-end map ;
+}
 
 #------------------------------------------------------------------*
 #                       Table des messages d'erreurs               *
 #------------------------------------------------------------------*
 
-map @typeTableMessagesErreurs
+map @typeTableMessagesErreurs {
   insert insertKey error message "the error message '" . * . "' is already declared" ;
   search searchKey error message "the error message '" . * . "' is not declared" ;
   @lstring mErrorMessage ;
-end map ;
+}
 
 #------------------------------------------------------------------*
 #                       Styles map                                 *
 #------------------------------------------------------------------*
 
-map @M_styles
+map @M_styles {
   insert insertKey error message "the '" . * . "' style is already declared" ;
   search searchKey error message "the '" . * . "' style is not declared" ;
   @lstring mTitle ;
-end map ;
+}
 
 #------------------------------------------------------------------*
 #                       Table des terminaux                        *
 #------------------------------------------------------------------*
 
-map @typeTableDefinitionTerminaux
+map @typeTableDefinitionTerminaux {
   insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
   search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
   @string mErrorMessage ;
   @typeListeAttributsSemantiques attributListeDesAttributs ;
   @luint mStyleIndex ;
-end map ;
+}
 
 #------------------------------------------------------------------*
 #                        Tables de noms réservés                   *
 #------------------------------------------------------------------*
 
-map @typeTableMotsReserves 
+map @typeTableMotsReserves {
   insert insertKey error message "the word '" . * . "' is already declared" ;
   search searchKey error message "the word '" . * . "' is not declared" ;
   @lstring attributNomTerminal ;
-end map ;
+}
 
 #------------------------------------------------------------------*
 
-map @typeTableTablesDeMotsReserves
+map @typeTableTablesDeMotsReserves {
   insert insertKey error message "the word map '" . * . "' is already declared" ;
   search searchKey error message "the mord map '" . * . "' is not declared" ;
   @typeTableMotsReserves attributSimpleTable ;
-end map ;
+}
 
 #------------------------------------------------------------------*
 #                        Liste de conditions lexicales             *
 #------------------------------------------------------------------*
 
-abstract class @typeConditionLexicale
+abstract class @typeConditionLexicale {
   include header ;
-end class ;
+}
 
-class @typeConditionChaine extends @typeConditionLexicale
+class @typeConditionChaine extends @typeConditionLexicale {
   @lstring attributChaine ;
-end class ;
+}
 
-class @typeConditionCaractere extends @typeConditionLexicale
+class @typeConditionCaractere extends @typeConditionLexicale {
   @lchar attributCaractere ;
-end class ;
+}
 
-class @typeConditionIntervalle extends @typeConditionLexicale
+class @typeConditionIntervalle extends @typeConditionLexicale {
   @lchar attributBorneInf ;
   @lchar attributBorneSup ;
-end class ;
+}
 
-list @typeListeConditionsLexicales
+list @typeListeConditionsLexicales {
   @typeConditionLexicale attributCondition ;
-end list ;
+}
 
 #------------------------------------------------------------------*
 #                           Liste des instructions                 *
 #------------------------------------------------------------------*
 
-abstract class @typeInstructionLexicale
+abstract class @typeInstructionLexicale {
   include header ;
-end class ;
+}
 
-list @tListeInstructionsLexicales
+list @tListeInstructionsLexicales {
   @typeInstructionLexicale attributInstruction ;
-end list ;
+}
 
-list @typeListeTestsEtInstructions
+list @typeListeTestsEtInstructions {
   @typeListeConditionsLexicales attributListeConditions ;
   @tListeInstructionsLexicales attributListeInstructions ;
-end list ;
+}
 
 #------------------------------------------------------------------*
 #            Arguments d'un appel de routines externes             *
 #------------------------------------------------------------------*
 
-abstract class @typeArgumentRoutineExterne
+abstract class @typeArgumentRoutineExterne {
   include header ;
-end class ;
+}
 
-list @typeListeArgumentsRoutExterne
+list @typeListeArgumentsRoutExterne {
   @typeArgumentRoutineExterne attributArgument ;
-end list ;
+}
 
-class @typeArgumentAttribut extends @typeArgumentRoutineExterne
+class @typeArgumentAttribut extends @typeArgumentRoutineExterne {
   @lstring attributNom ;
   @AC_galgasType attributTypeAttribut ;
-end class ;
+}
 
-class @typeArgumentCaractere extends @typeArgumentRoutineExterne
+class @typeArgumentCaractere extends @typeArgumentRoutineExterne {
   @lchar attributCaractere ;
-end class ;
+}
 
-class @typeArgumentCaractereCourant extends @typeArgumentRoutineExterne
-end class ;
+class @typeArgumentCaractereCourant extends @typeArgumentRoutineExterne {
+}
 
-class @typeArgumentEntier extends @typeArgumentRoutineExterne
+class @typeArgumentEntier extends @typeArgumentRoutineExterne {
   @luint attributValeur ;
-end class ;
+}
 
-class @typeArgumentRoutine extends @typeArgumentRoutineExterne
+class @typeArgumentRoutine extends @typeArgumentRoutineExterne {
   @lstring attributNomRoutine ;
   @typeListeArgumentsRoutExterne attributListeArguments ;
-end class ;
+}
 
 #------------------------------------------------------------------*
 #                   Error message indexes list                     *
 #------------------------------------------------------------------*
 
-list @typeListeMessagesErreur
+list @typeListeMessagesErreur {
   @luint mErrorMessageIndex ;
-end list ;
+}
 
 #------------------------------------------------------------------*
 #                   définition de l'émission                       *
 #------------------------------------------------------------------*
 
-abstract class @typeEmissionParDefaut
+abstract class @typeEmissionParDefaut {
   include header ;
-end class ;
+}
 
-class @typeEmissionTerminalParDefaut extends @typeEmissionParDefaut
+class @typeEmissionTerminalParDefaut extends @typeEmissionParDefaut {
   @lstring attributNomTerminal ;
-end class ;
+}
 
-class @typeEmissionErreurParDefaut extends @typeEmissionParDefaut
+class @typeEmissionErreurParDefaut extends @typeEmissionParDefaut {
   @luint mErrorMessageIndex ;
-end class ;
+}
 
-list @typeListeRecherche
+list @typeListeRecherche {
   @lstring attributNomAttribut ;
   @lstring attributNomTable ;
-end list ;
+}
 
 #------------------------------------------------------------------*
 #                           Instructions                           *
 #------------------------------------------------------------------*
 
-class @typeInstructionActionExterne extends @typeInstructionLexicale
+class @typeInstructionActionExterne extends @typeInstructionLexicale {
   @lstring attributNomRoutineExterne ;
   @typeListeArgumentsRoutExterne attributListeArguments ;
   @typeListeMessagesErreur attributListeMessageErreur ;
-end class ;
+}
 
-class @typeInstructionRepetitionLexicale extends @typeInstructionLexicale
+class @typeInstructionRepetitionLexicale extends @typeInstructionLexicale {
   @tListeInstructionsLexicales attributListeInstructionsDebut ;
   @typeListeTestsEtInstructions attributListeBranches ;
-end class ;
+}
 
-class @typeInstructionSiLexical extends @typeInstructionLexicale
+class @typeInstructionSiLexical extends @typeInstructionLexicale {
   @typeListeTestsEtInstructions attributListeBranches ;
   @tListeInstructionsLexicales attributBrancheSinon ;
-end class ;
+}
 
-class @typeInstructionEmettreSimple extends @typeInstructionLexicale
+class @typeInstructionEmettreSimple extends @typeInstructionLexicale {
   @lstring attributTerminal ;
-end class ;
+}
 
-class @typeInstructionEmettre extends @typeInstructionLexicale
+class @typeInstructionEmettre extends @typeInstructionLexicale {
   @typeListeRecherche attributListeRecherches ;
   @typeEmissionParDefaut attributEmissionParDefaut ;
-end class ;
+}
 
-class @typeInstructionErreurLexicale extends @typeInstructionLexicale
+class @typeInstructionErreurLexicale extends @typeInstructionLexicale {
   @luint mErrorMessageIndex ;
-end class ;
+}
 
 #------------------------------------------------------------------*
 #                       Inclusions list                            *
 #------------------------------------------------------------------*
 
-abstract class @typeInclusion
+abstract class @typeInclusion {
   include header ;
-end class ;
+}
 
-class @typeInclusionUtilisateur extends @typeInclusion
+class @typeInclusionUtilisateur extends @typeInclusion {
   @lstring attributNomFichierInclus ;
-end class ;
+}
 
-class @typeInclusionSysteme extends @typeInclusion
+class @typeInclusionSysteme extends @typeInclusion {
   @lstring attributNomFichierInclus ;
-end class ;
+}
 
-list @typeListeInclusions
+list @typeListeInclusions {
   @typeInclusion attributInclusion ;
-end list ;
+}
 
 #------------------------------------------------------------------*
 #     This routine is called from hand coded routine GCOD_GAL      *

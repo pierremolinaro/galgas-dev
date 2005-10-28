@@ -26,9 +26,9 @@ import semantics common_semantics in "common_semantics.ggs" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeListeAttributsAxiome
+list @typeListeAttributsAxiome {
   @lstring aAttributAxiome ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -36,9 +36,9 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeListeChaines
+list @typeListeChaines {
   @lstring attributChaine ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -46,14 +46,14 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_grammarDescriptorForProgram
+list @L_grammarDescriptorForProgram {
   @string mGrammarPostfix ;
   @lstring mGrammarName ;
   @L_signature_ForGrammarComponent mStartSymbolSignature ;
   @typeListeAttributsAxiome mStartSymbolAttributesList ;
   @bool mIncludeHeader ;
   @lstring mLexiqueClassName ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 

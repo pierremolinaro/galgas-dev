@@ -72,7 +72,7 @@ end enum ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_galgasType
+abstract class @AC_galgasType {
   include header ;
 
 #--- Get type name
@@ -157,16 +157,16 @@ abstract class @AC_galgasType
 
 #--- Error message
   message messageGalgasType "any type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                    Liste d'attributs semantiques                          *
 #---------------------------------------------------------------------------*
 
-list @typeListeAttributsSemantiques
+list @typeListeAttributsSemantiques {
   @AC_galgasType mAttributType ;
   @lstring aNomAttribut ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -174,10 +174,10 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeTypesList
+list @typeTypesList {
   @AC_galgasType mType ;
   @location mEndOfExpressionLocation ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -185,10 +185,10 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_signature
+list @L_signature {
   @AC_galgasType mType ;
   @formalArgumentPassingMode mFormalArgumentPassingMode ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -196,10 +196,10 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_actualParametersSignature
+list @L_actualParametersSignature {
   @AC_galgasType mType ;
   @actualParametersPassingMode mFormalArgumentPassingMode ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -207,12 +207,12 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_accessors_map
+map @M_accessors_map {
   insert insertKey error message "the '" . * . "' accessor has been already declared" ;
   search searchKey error message "the '" . * . "' accessor is not declared" ;
   @L_signature mAccessorSignature ;
   @AC_galgasType mReturnedType ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -220,9 +220,9 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_stringList
+list @L_stringList {
   @string mErrorMessageElement ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -230,9 +230,9 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_lstringList
+list @L_lstringList {
   @lstring mString ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -240,7 +240,7 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_jokerInParameterList extends @AC_galgasType
+class @typeGalgas_jokerInParameterList extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "" ;
@@ -248,7 +248,7 @@ class @typeGalgas_jokerInParameterList extends @AC_galgasType
 
 #--- Error message
   message messageGalgasType "??" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -256,7 +256,7 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_bool extends @AC_galgasType
+class @typeGalgas_bool extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "bool" ;
@@ -264,11 +264,11 @@ class @typeGalgas_bool extends @AC_galgasType
 
 #--- Error message
   message messageGalgasType "a bool type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_string extends @AC_galgasType
+class @typeGalgas_string extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "string" ;
@@ -276,11 +276,11 @@ class @typeGalgas_string extends @AC_galgasType
 
 #--- Error message
   message messageGalgasType "a 'string' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_sint extends @AC_galgasType
+class @typeGalgas_sint extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "sint" ;
@@ -288,11 +288,11 @@ class @typeGalgas_sint extends @AC_galgasType
 
 #--- Error message
   message messageGalgasType "a 'sint' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_uint extends @AC_galgasType
+class @typeGalgas_uint extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "uint" ;
@@ -318,11 +318,11 @@ class @typeGalgas_uint extends @AC_galgasType
 
 #--- Error message
   message messageGalgasType "a 'uint' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_char extends @AC_galgasType
+class @typeGalgas_char extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "char" ;
@@ -330,11 +330,11 @@ class @typeGalgas_char extends @AC_galgasType
 
 #--- Error message
   message messageGalgasType "a 'char' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_double extends @AC_galgasType
+class @typeGalgas_double extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "double" ;
@@ -342,7 +342,7 @@ class @typeGalgas_double extends @AC_galgasType
 
 #--- Error message
   message messageGalgasType "a double type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -350,9 +350,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @C_galgasPrimitiveType extends @AC_galgasType
+abstract class @C_galgasPrimitiveType extends @AC_galgasType {
   message messageGalgasType "any primitive type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -360,7 +360,7 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_location extends @C_galgasPrimitiveType
+class @typeGalgas_location extends @C_galgasPrimitiveType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "location" ;
@@ -375,11 +375,11 @@ class @typeGalgas_location extends @C_galgasPrimitiveType
   end reader ;
 
   message messageGalgasType "'location' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_lstring extends @C_galgasPrimitiveType
+class @typeGalgas_lstring extends @C_galgasPrimitiveType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "lstring" ;
@@ -410,11 +410,11 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType
   end reader ;
 
   message messageGalgasType "a 'lstring' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_lchar extends @C_galgasPrimitiveType
+class @typeGalgas_lchar extends @C_galgasPrimitiveType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "lchar" ;
@@ -441,11 +441,11 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType
   end reader ;
 
   message messageGalgasType "a 'lchar' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_lbool extends @C_galgasPrimitiveType
+class @typeGalgas_lbool extends @C_galgasPrimitiveType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "lbool" ;
@@ -472,11 +472,11 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType
   end reader ;
 
   message messageGalgasType "a 'lbool' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_luint extends @C_galgasPrimitiveType
+class @typeGalgas_luint extends @C_galgasPrimitiveType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "luint" ;
@@ -507,11 +507,11 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType
   end reader ;
 
   message messageGalgasType "a 'luint' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_lsint extends @C_galgasPrimitiveType
+class @typeGalgas_lsint extends @C_galgasPrimitiveType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "lsint" ;
@@ -542,11 +542,11 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType
   end reader ;
 
   message messageGalgasType "a 'lsint' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_ldouble extends @C_galgasPrimitiveType
+class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "ldouble" ;
@@ -573,7 +573,7 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType
   end reader ;
 
   message messageGalgasType "a 'ldouble' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -581,7 +581,7 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_stringset extends @AC_galgasType
+class @typeGalgas_stringset extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := "stringset" ;
@@ -627,7 +627,7 @@ class @typeGalgas_stringset extends @AC_galgasType
 
 #--- Error message
   message messageGalgasType "a 'stringset' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -644,7 +644,7 @@ map @typeTableMethodes
 
   block definitionClasseNonAbstraite : () : () ;
   @L_signature aListeTypesParametres ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -652,7 +652,7 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgasUndefinedExternType extends @AC_galgasType
+class @typeGalgasUndefinedExternType extends @AC_galgasType {
 #--- Galgas class name
   @lstring mGalgasClassName ;
 
@@ -666,7 +666,7 @@ class @typeGalgasUndefinedExternType extends @AC_galgasType
 
 #--- Message
   message messageGalgasType "an undefined extern type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -674,11 +674,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_externTypeConstructorMap
+map @M_externTypeConstructorMap {
   insert insertKey error message "the '" . * . "' constructor is already declared" ;
   search searchKey error message "the '" . * . "' constructor is not declared" ;
   @typeListeAttributsSemantiques aListeDesAttributs ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -686,7 +686,7 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgasExternType extends @typeGalgasUndefinedExternType
+class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 #--- Constructor map
   @M_externTypeConstructorMap mConstructorMap ;
 
@@ -743,7 +743,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType
 
 #--- Message
   message messageGalgasType "an extern type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -751,11 +751,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_terminalSymbolsMapForUse
+map @M_terminalSymbolsMapForUse {
   insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
   search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
   @typeListeAttributsSemantiques aListeDesAttributs ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -763,11 +763,11 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_lexiqueComponents
+map @M_lexiqueComponents {
   insert insertKey error message"the '" . * . "' lexique is already declared" ;
   search searchKey error message"the '" . * . "' lexique is not defined" ;
   @M_terminalSymbolsMapForUse mTerminalSymbolMap ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -775,11 +775,11 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeTableEnAvant
+map @typeTableEnAvant {
   insert insertKey error message "the type '" . * . "' is already declared" ;
   search searchKey error message "the type '" . * . "' is not declared" ;
   @AC_galgasType mType ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -787,11 +787,11 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_nonterminalSymbolAlts
+map @M_nonterminalSymbolAlts {
   insert insertKey error message "the label '" . * . "' has been already declared" ;
   search searchKey error message "the label '" . * . "' is not declared" ;
   @L_signature mFormalParametersList ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -799,11 +799,11 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_externClassesDirectories
+map @M_externClassesDirectories {
   insert insertKey error message "the extern class '" . * . "' has been already declared" ;
   search searchKey error message "the extern class '" . * . "' is not declared" ;
   @lstring mDirectory ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -811,9 +811,9 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_semanticsEntity
+abstract class @AC_semanticsEntity {
   message messageTypeEntite  "any entity";
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -821,10 +821,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @C_grammarForSemantics extends @AC_semanticsEntity
+class @C_grammarForSemantics extends @AC_semanticsEntity {
   @M_nonterminalSymbolAlts mGrammarAltMap ;
   message messageTypeEntite  "a grammar entity";
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -832,11 +832,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_semanticsEntitiesForUse 
+map @M_semanticsEntitiesForUse  {
   insert insertKey error message "a semantics entity named '" . * . "' is already declared" ;
   search searchKey error message "there is no semantics entity named '" . * . "'" ;
   @AC_semanticsEntity aDefEntite ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -844,24 +844,24 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_typeForGrammarComponent
+abstract class @AC_typeForGrammarComponent {
   message typeForGrammarComponentMessage  "any type";
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-map @M_typesForGrammarComponent
+map @M_typesForGrammarComponent {
   insert insertKey error message "the '@" . * . "' type is already declared" ;
   search searchKey error message "the '@" . * . "' type is not defined" ;
   @AC_typeForGrammarComponent mType ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
-list @L_signature_ForGrammarComponent
+list @L_signature_ForGrammarComponent {
   @formalArgumentPassingMode mFormalArgumentPassingMode ;
   @lstring mGalgasTypeName ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -894,10 +894,10 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_instruction_ForGrammar
+abstract class @AC_instruction_ForGrammar {
   include header ;
   @location mStartLocation ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -906,9 +906,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_ruleSyntaxSignature
+list @L_ruleSyntaxSignature {
   @AC_instruction_ForGrammar mInstruction ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -916,11 +916,11 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @L_grammarsMap
+map @L_grammarsMap {
   insert insertKey error message "the '" . * . "' grammar is already defined" ;
   search searchKey error message "the '" . * . "' grammar is not defined" ;
   @M_nonterminalSymbolAlts mStartSymbolParametersMap ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -928,11 +928,11 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_nonterminalSymbolAltsForGrammar
+map @M_nonterminalSymbolAltsForGrammar {
   insert insertKey error message "the rules label '" . * . "' has been already declared" ;
   search searchKey error message "the rules label '" . * . "' is not declared" ;
   @L_signature_ForGrammarComponent mFormalParametersList ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -940,11 +940,11 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_productionRules_ForGrammarComponent
+list @L_productionRules_ForGrammarComponent {
   @lstring mLeftNonterminalSymbol ;
   @uint mLeftNonterminalSymbolIndex ;
   @L_ruleSyntaxSignature mInstructionsList ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -952,11 +952,11 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_nonTerminalSymbolsForGrammar
+map @M_nonTerminalSymbolsForGrammar {
   insert insertKey error message "internal insert error" ;
   search searchKey error message "internal search error" ;
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -964,14 +964,14 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_syntaxComponents
+map @M_syntaxComponents {
   insert insertKey error message "a syntax component named '" . * . "' is already declared" ;
   search searchKey error message "there is no syntax component named '" . * . "'" ;
   @M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMap ;
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
   @lstring mLexiqueComponentName ;
   @stringset mClassesNamesSet ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -979,10 +979,10 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @T_terminalInstruction_forGrammarComponent extends @AC_instruction_ForGrammar
+class @T_terminalInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
   @lstring mTerminalSymbolName ;
   @uint mTerminalSymbolIndex ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -990,10 +990,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @T_nonterminalInstruction_forGrammarComponent extends @AC_instruction_ForGrammar
+class @T_nonterminalInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
   @lstring mNonterminalSymbolName ;
   @uint mNonterminalSymbolIndex ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1001,9 +1001,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_branchList_ForGrammarComponent
+list @L_branchList_ForGrammarComponent {
   @L_ruleSyntaxSignature mInstructionsList ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1011,10 +1011,10 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @T_selectInstruction_forGrammarComponent extends @AC_instruction_ForGrammar
+class @T_selectInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
   @L_branchList_ForGrammarComponent mSelectList ;
   @uint mAddedNonterminalmSymbolIndex ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1022,10 +1022,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @T_repeatInstruction_forGrammarComponent extends @AC_instruction_ForGrammar
+class @T_repeatInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
   @L_branchList_ForGrammarComponent mRepeatList ;
   @uint mAddedNonterminalmSymbolIndex ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1033,12 +1033,12 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_syntaxComponents_ForGrammar
+list @L_syntaxComponents_ForGrammar {
   @M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMap ;
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
   @stringset mClassesNamesSet ;
   @lstring mSyntaxComponentName ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1046,9 +1046,9 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_identifiers
+list @L_identifiers {
   @lstring aIdentificateur ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1056,9 +1056,9 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeSuperClassesMap
+map @typeSuperClassesMap {
   insert insertKey error message "the class '" . * . "' is already a super class of the current class" ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1066,10 +1066,10 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeClassInheritedMessagesMap
+map @typeClassInheritedMessagesMap {
   insert insertKey error message "the message '" . * . "' is already declared" ;
   search searchKey error message "the message '" . * . "' is not declared" ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1077,11 +1077,11 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeSemanticAttributesMap
+map @typeSemanticAttributesMap {
   insert insertKey error message "an attribut named '" . * . "' is already declared" ;
   search searchKey error message "there is no attribut named '" . * . "'" ;
   @AC_galgasType mAttributType ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1095,30 +1095,30 @@ end enum ;
 
 #---------------------------------------------------------------------------*
 
-list @lastStateList 
+list @lastStateList  {
   @lstring mLastState ;
   @lastStateEnum mStatus ;
   @L_stringList mMessageList ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 
-map @transitionStatusMap 
+map @transitionStatusMap {
   insert insertKey error message "a transition named '" . * . "' is already declared" ;
   @lastStateEnum mStatus ;
   @L_stringList mMessageList ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
-map @typeTableMethodesInsererChercher
+map @typeTableMethodesInsererChercher {
   insert insertKey error message "a method named '" . * . "' is already declared" ;
   search searchKey error message "there is no method named '" . * . "'" ;
   @L_stringList mErrorMessageList ;
   @string mFirstState ;
   @lastStateList mLastStateList ;
   @transitionStatusMap  mTransitionStatusMap ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1126,9 +1126,9 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeDefEntiteUtilisable
+abstract class @typeDefEntiteUtilisable {
   message messageTypeEntite "any type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1136,7 +1136,7 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgasUndefinedListType extends @AC_galgasType
+class @typeGalgasUndefinedListType extends @AC_galgasType {
   @lstring mListTypeName ;
 
 #--- Get type name
@@ -1145,7 +1145,7 @@ class @typeGalgasUndefinedListType extends @AC_galgasType
   end reader ;
 
   message messageGalgasType "undefined 'list' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1153,7 +1153,7 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgasListType extends @typeGalgasUndefinedListType
+class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- List of all attributes
   @typeListeAttributsSemantiques mNonExternAttributesList ;
 
@@ -1191,7 +1191,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType
   end reader ;
 
   message messageGalgasType "'list' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1199,12 +1199,12 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeTableBlocsDeTable
+map @typeTableBlocsDeTable {
   insert insertKey error message "a block method named '" . * . "' is already declared" ;
   search searchKey error message "there is no block method named '" . * . "'" ;
   @L_signature aSignatureDebut ;
   @L_signature aSignatureFin ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1212,7 +1212,7 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgasUndefinedMapType extends @AC_galgasType
+class @typeGalgasUndefinedMapType extends @AC_galgasType {
   @lstring mMapTypeName ;
 
 #--- Get type name
@@ -1221,19 +1221,19 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType
   end reader ;
 
   message messageGalgasType "undefined 'map' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-map @mapMethodMap
+map @mapMethodMap {
   insert insertKey error message "an insert or a search method named '" . * . "' is already declared" ;
   search searchKey error message "there is no insert nor search method named '" . * . "'" ;
   @L_signature mMethodSignature ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgasMapType extends @typeGalgasUndefinedMapType
+class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Liste de tous les attributs semantiques not externes
   @typeListeAttributsSemantiques mNonExternAttributesList ;
 
@@ -1288,7 +1288,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType
   end reader ;
   
   message messageGalgasType "'map' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1296,7 +1296,7 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgasUndefinedClassType extends @AC_galgasType
+class @typeGalgasUndefinedClassType extends @AC_galgasType {
   @lstring mClassTypeName ;
 
 #--- Get type name
@@ -1305,11 +1305,11 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType
   end reader ;
 
   message messageGalgasType "undefined 'class' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgasClassType extends @typeGalgasUndefinedClassType
+class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 #--- class methods map
   @typeTableMethodes mMethodsMap ;  
 
@@ -1361,23 +1361,23 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType
 
 #--- Error message
   message messageGalgasType "'class' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeEntiteType extends @AC_semanticsEntity
+class @typeEntiteType extends @AC_semanticsEntity {
   @AC_galgasType aDefType ;
 
   message messageTypeEntite "a type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeEntiteRoutine extends @AC_semanticsEntity
+class @typeEntiteRoutine extends @AC_semanticsEntity {
   @L_signature aListeArgumentsFormels ;
 
   message messageTypeEntite "a routine" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1385,9 +1385,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeTableUtilisationsSemantiques
+map @typeTableUtilisationsSemantiques {
   insert insertKey error message "--- internal error ---" ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1395,22 +1395,22 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeEnumConstantesMap
+map @typeEnumConstantesMap {
   insert insertKey error message "the '" . * . "' constant is already declared" ;
   search searchKey error message "the '" . * . "' constant is not declared" ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
-map @typeEnumMessageMap
+map @typeEnumMessageMap {
   insert insertKey error message "the '" . * . "' message name is already declared" ;
   search searchKey error message "the '" . * . "' message name is not declared" ;
   @L_lstringList mMessageStringList ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_enum extends @AC_galgasType
+class @typeGalgas_enum extends @AC_galgasType {
 #--- Enumeration name
   @lstring mEnumTypeName ;
 
@@ -1436,7 +1436,7 @@ class @typeGalgas_enum extends @AC_galgasType
   end reader ;
 
   message messageGalgasType "a 'enum' type" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1535,14 +1535,14 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_cli_options
+map @M_cli_options {
   insert insertKey error message "the '" . * . "' command line option has been already declared" ;
   search searchKey error message "the '" . * . "' command line option is not declared" ;
   @lchar mOptionChar ;
   @lstring mOptionString ;
   @lstring mComment ;
   @uint mDefaultValue ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1550,12 +1550,12 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_optionComponents
+map @M_optionComponents {
   insert insertKey error message "the '" . * . "' option component named is already declared" ;
   search searchKey error message "there is no '" . * . "' option component" ;
   @M_cli_options mBoolOptionsMap ;
   @M_cli_options mUintOptionsMap ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1563,12 +1563,12 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_semanticsComponents
+map @M_semanticsComponents {
   insert insertKey error message "a semantics component named '" . * . "' is already declared" ;
   search searchKey error message "there is no semantics component named '" . * . "'" ;
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
   @M_optionComponents mOptionsComponents ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1576,13 +1576,13 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @M_grammarComponents
+map @M_grammarComponents {
   insert insertKey error message "the '" . * . "' grammar component has been already declared" ;
   search searchKey error message "the '" . * . "' grammar component is not declared" ;
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
   @lstring mLexiqueName ;
   @M_optionComponents mOptionsMap ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1733,11 +1733,6 @@ routine handleReaderCall
       @AC_galgasType keyType := [@typeGalgas_string new] ;
       outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
       outReturnedType := [@typeGalgas_bool new] ;
-    elsif [inMethodName value] == "index" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      @AC_galgasType keyType := [@typeGalgas_string new] ;
-      outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
-      outReturnedType := [@typeGalgas_uint new] ;
     elsif [inMethodName value] == "count" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_uint new] ;

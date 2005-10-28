@@ -22,9 +22,9 @@ import semantics semantics_semantics in "semantics_semantics.ggs" ;
 
 #---------------------------------------------------------------------------*
 
-abstract class @typeParserInstruction extends @typeInstruction
+abstract class @typeParserInstruction extends @typeInstruction {
   include header ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -32,11 +32,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeInstructionAppelNonTerminal extends @typeParserInstruction
+class @typeInstructionAppelNonTerminal extends @typeParserInstruction {
   @lstring mNonterminalName ;
   @typeExpressionList mParametersExpressionList ;
   @lstring mAltName ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -44,10 +44,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeInstructionVerifSyntaxique extends @typeParserInstruction
+class @typeInstructionVerifSyntaxique extends @typeParserInstruction {
   @lstring aNomTerminal ;
   @L_assignedVariables aListeTypeEffectifs ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -55,9 +55,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeListeBranchesInstructions
+list @typeListeBranchesInstructions {
   @typeInstructionsList mInstructionsList ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -65,10 +65,10 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @C_select_instruction extends @typeParserInstruction
+class @C_select_instruction extends @typeParserInstruction {
   @typeListeBranchesInstructions mIFbranchesList ;
   @location aPositionDebut ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -76,10 +76,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @C_repeat_instruction extends @typeParserInstruction
+class @C_repeat_instruction extends @typeParserInstruction {
   @typeListeBranchesInstructions aListesBranchesRepeter ;
   @location aPositionDebut ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -87,17 +87,17 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_parse_rewind_signature_list
+list @L_parse_rewind_signature_list {
   @L_ruleSyntaxSignature mSignature ;
   @location mErrorLocation ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @C_parse_rewind_instruction extends @typeParserInstruction
+class @C_parse_rewind_instruction extends @typeParserInstruction {
   @location mInstructionLocation ;
   @typeListeBranchesInstructions mBranchList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -105,38 +105,38 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @C_parse_when_else_instruction extends @typeParserInstruction
+class @C_parse_when_else_instruction extends @typeParserInstruction {
   @L_expression_instructionsList_list mIFbranchesList ;
   @typeInstructionsList mElseInstructionsList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeNonterminalToGenerate extends @typeEntityToGenerate
+class @typeNonterminalToGenerate extends @typeEntityToGenerate {
   @lstring aNomNonTerminal ;
   @M_nonterminalSymbolAlts mNonterminalSymbolParametersMap ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-map @typeAltProductionsMap
+map @typeAltProductionsMap {
   insert insertKey error message "the '" . * . "' label has been already declared" ;
   search searchKey error message "the '" . * . "' label is not declared" ;
   @typeListeTypesEtNomsArgMethode aListeDeTypesEffectifs ;
   @typeInstructionsList mAllInstructionsList ;
   @L_ruleSyntaxSignature mSyntaxSignature ;
   @location mEndOfInstructionListLocation ;
-end map ;
+}
 
 
 #---------------------------------------------------------------------------*
 
-class @typeProductionAengendrer extends @typeEntityToGenerate
+class @typeProductionAengendrer extends @typeEntityToGenerate {
   @lstring aNomProduction ;
   @typeAltProductionsMap mAltProductionMap ;
   @string mProductionTagName ;
   @bool mHasParseLabel ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 

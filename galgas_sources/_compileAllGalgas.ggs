@@ -18,18 +18,20 @@
 
 compile "galgas_scanner.ggs" ;
 compile "common_semantics.ggs" ;
+compile "scanner_semantics.ggs" ;
+compile "semantics_semantics.ggs" ;
+compile "parser_semantics.ggs" ;
+compile "grammar_semantics.ggs" ;
+
+compile "semantics_parser.ggs" ;
+
 compile "cocoa_parser.ggs" ;
 compile "galgas_cocoa.ggs" ;
 compile "cli_options_parser.ggs" ;
 compile "galgas_cli_options.ggs" ;
-compile "grammar_semantics.ggs" ;
 compile "grammar_parser.ggs" ;
-compile "scanner_semantics.ggs" ;
 compile "scanner_parser.ggs" ;
-compile "semantics_semantics.ggs" ;
-compile "parser_semantics.ggs" ;
 compile "expression_parser.ggs" ;
-compile "semantics_parser.ggs" ;
 compile "parser_parser.ggs" ;
 compile "program_parser.ggs" ;
 compile "ggs_LL1_compile_component.ggs" ;
