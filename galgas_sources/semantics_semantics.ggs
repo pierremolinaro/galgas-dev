@@ -26,64 +26,64 @@ import semantics common_semantics in "common_semantics.ggs" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeCplusPlusName
+abstract class @typeCplusPlusName {
   include header ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 # C++ name is the value of mName
 
-class @typeDirectName extends @typeCplusPlusName
+class @typeDirectName extends @typeCplusPlusName {
   @lstring mName ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 # C++ name is implicit (used for local method call)
 
-class @typeCppThisName extends @typeCplusPlusName
-end class ;
+class @typeCppThisName extends @typeCplusPlusName {
+}
 
 #---------------------------------------------------------------------------*
 # C++ name is implicit (used for inherited method call)
 
-class @typeCppInheritedName extends @typeCplusPlusName
-end class ;
+class @typeCppInheritedName extends @typeCplusPlusName {
+}
 
 #---------------------------------------------------------------------------*
 # C++ name is 'var_cas_' followed by the value of mName
 
-class @typeAutomaticName extends @typeCplusPlusName
+class @typeAutomaticName extends @typeCplusPlusName {
   @lstring mName ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 # C++ name is 'var_cas_' followed by the value of location
 
-class @typeLocationAutomaticName extends @typeCplusPlusName
+class @typeLocationAutomaticName extends @typeCplusPlusName {
   @location mLocation ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 # C++ name is 'operand_xxx->zz' followed by the value of mName
 
-class @typeOperandName extends @typeCplusPlusName
+class @typeOperandName extends @typeCplusPlusName {
   @lstring mName ;
   @location mLocationOffset ;
   @bool mFieldKind ; # false : zz est vide ; true : zz est 'mInfo.'
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 # C++ name is 'operand_xxx->mKey' followed by the value of mName
 
-class @typeKeyName extends @typeCplusPlusName
+class @typeKeyName extends @typeCplusPlusName {
   @location mLocationOffset ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 # No variable
 
-class @typeNullName extends @typeCplusPlusName
-end class ;
+class @typeNullName extends @typeCplusPlusName {
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -91,9 +91,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeCplusPlusNameList
+list @typeCplusPlusNameList {
   @typeCplusPlusName mCppName ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -101,9 +101,9 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeExpression
+abstract class @typeExpression {
   include header ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -111,11 +111,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeClassMessagesMap
+map @typeClassMessagesMap {
   insert insertKey error message "the message '" . * . "' is already declared" ;
   search searchKey error message "the message '" . * . "' is not declared" ;
   @lstring mMessage ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -123,10 +123,10 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeSemanticsTypesList
+list @typeSemanticsTypesList {
   @AC_galgasType mType ;
   @lstring mGalgasVariableName ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -163,14 +163,14 @@ map @typeVariablesMap
 #--- Attributes
   @AC_galgasType mArgumentType ;
   @typeCplusPlusName mCplusPlusName ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
-list @L_assignedVariables 
+list @L_assignedVariables  {
   @typeCplusPlusName aNomVariableCible ;
   @lstring aNomAttributSource ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -179,18 +179,18 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeCible
+abstract class @typeCible {
   abstract reader verifierType ?@AC_galgasType typeArgumentFormel
                                ?!@lstring nomAttributSource
                                ?!@L_assignedVariables listeAffectations
                                ?!@typeCplusPlusNameList outAllVariablesList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-list @typeListeCibles
+list @typeListeCibles {
   @typeCible aCible ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -198,12 +198,12 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeListeTypesEtNomsArgMethode
+list @typeListeTypesEtNomsArgMethode {
   @AC_galgasType mType ;
   @formalArgumentPassingMode mFormalArgumentPassingMode ;
   @typeCplusPlusName mCppName ;
   @bool aModeIn ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -211,9 +211,9 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeInstruction
+abstract class @typeInstruction {
   include header ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -221,9 +221,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeInstructionsList
+list @typeInstructionsList {
   @typeInstruction aInstruction ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -231,10 +231,10 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_nameWithType
+list @L_nameWithType {
   @lstring mType ;
   @lstring mName ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -249,15 +249,15 @@ map @typeTableMethodesAimplementer
   @L_signature aListeTypesParametres ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
   @typeInstructionsList mInstructionsList ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #   E X P R E S S I O N S    L I S T                                        *
 #---------------------------------------------------------------------------*
 
-list @typeExpressionList
+list @typeExpressionList {
   @typeExpression mExpression ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -265,10 +265,10 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeErrorInstruction extends @typeInstruction
+class @typeErrorInstruction extends @typeInstruction {
   @typeExpression mErrorLocationExpression ;
   @typeExpression mErrorMessageExpression ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -276,10 +276,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeWarningInstruction extends @typeInstruction
+class @typeWarningInstruction extends @typeInstruction {
   @typeExpression mWarningLocationExpression ;
   @typeExpression mWarningMessageExpression ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -287,9 +287,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeMessageInstruction extends @typeInstruction
+class @typeMessageInstruction extends @typeInstruction {
   @typeExpression mMessageExpression ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -297,11 +297,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeReaderCallInstruction extends @typeInstruction
+class @typeReaderCallInstruction extends @typeInstruction {
   @typeCplusPlusName aNomCppVariable ;
   @lstring aNomMethodeSimple ;
   @typeExpressionList mExpressionsList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -309,11 +309,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeModifierCallInstruction extends @typeInstruction
+class @typeModifierCallInstruction extends @typeInstruction {
   @typeCplusPlusName aNomCppVariable ;
   @lstring aNomMethodeSimple ;
   @typeExpressionList mExpressionsList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -321,11 +321,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeInstructionAppelMethodeListe extends @typeInstruction
+class @typeInstructionAppelMethodeListe extends @typeInstruction {
   @typeCplusPlusName aNomCppAttribut ;
   @lstring aMethodeDeListe ;
   @typeCplusPlusNameList aListeNomsCppArguments ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -333,10 +333,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeInstructionDeclarationVarLocale extends @typeInstruction
+class @typeInstructionDeclarationVarLocale extends @typeInstruction {
   @typeCplusPlusName aNomCppVariable ;
   @AC_galgasType aTypeVariable ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -344,189 +344,189 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeMapBlockPrologueInstruction extends @typeInstruction
+class @typeMapBlockPrologueInstruction extends @typeInstruction {
   @typeCplusPlusName aNomVariableTable ;
   @lstring aNomMethodeBloc ;
   @typeExpressionList mPrologueExpressionList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeMapBlockEpilogueInstruction extends @typeInstruction
+class @typeMapBlockEpilogueInstruction extends @typeInstruction {
   @typeCplusPlusName aNomVariableTable ;
   @lstring aNomMethodeBloc ;
   @typeExpressionList mEpilogueExpressionList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #   R E A D E R    C A L L    O P E R A N D                                 *
 #---------------------------------------------------------------------------*
 
-class @typeReaderCallInExpression extends @typeExpression
+class @typeReaderCallInExpression extends @typeExpression {
   @typeExpression mExpressionValue ;
   @lstring mReaderName ;
   @typeExpressionList mExpressionList ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 #   B O O L E A N    O P E R A T I O N S                                    *
 #---------------------------------------------------------------------------*
 
-class @typeAndOperation extends @typeExpression
+class @typeAndOperation extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeOrOperation extends @typeExpression
+class @typeOrOperation extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeConcatOperation extends @typeExpression
+class @typeConcatOperation extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeTrueBool extends @typeExpression
-end class ;
+class @typeTrueBool extends @typeExpression {
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeFalseBool extends @typeExpression
-end class ;
+class @typeFalseBool extends @typeExpression {
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeLiteralStringExpression extends @typeExpression
+class @typeLiteralStringExpression extends @typeExpression {
   @lstring mLiteralString ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeLiteralUIntExpression extends @typeExpression
+class @typeLiteralUIntExpression extends @typeExpression {
   @luint mLiteralInt ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeLiteralSIntExpression extends @typeExpression
+class @typeLiteralSIntExpression extends @typeExpression {
   @lsint mLiteralInt ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeLiteralCharExpression extends @typeExpression
+class @typeLiteralCharExpression extends @typeExpression {
   @lchar mLiteralChar ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeHereExpression extends @typeExpression
-end class ;
+class @typeHereExpression extends @typeExpression {
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeConstructorExpression extends @typeExpression
+class @typeConstructorExpression extends @typeExpression {
   @lstring mClassName ;
   @lstring mClassMethodName ;
   @typeExpressionList mExpressionList ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeTestComplement extends @typeExpression
+class @typeTestComplement extends @typeExpression {
   @typeExpression mTest ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeBoolOption extends @typeExpression
+class @typeBoolOption extends @typeExpression {
   @lstring mOptionComponentName ;
   @lstring mOptionName ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeUIntOption extends @typeExpression
+class @typeUIntOption extends @typeExpression {
   @lstring mOptionComponentName ;
   @lstring mOptionName ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 #   S I M P L E    V A R I A B L E                                          *
 #---------------------------------------------------------------------------*
 
-class @typeVarInExpression extends @typeExpression
+class @typeVarInExpression extends @typeExpression {
   @typeCplusPlusName mCppVarName ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 #   J O K E R    E X P R E S S I O N                                        *
 #---------------------------------------------------------------------------*
 
-class @typeJokerInExpression extends @typeExpression
+class @typeJokerInExpression extends @typeExpression {
   @location mLocation ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 #   C O M P A R E    O P E R A T I O N S                                    *
 #---------------------------------------------------------------------------*
 
-class @typeEqualTest extends @typeExpression
+class @typeEqualTest extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeNonEqualTest extends @typeExpression
+class @typeNonEqualTest extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeStrictInfTest extends @typeExpression
+class @typeStrictInfTest extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeInfOrEqualTest extends @typeExpression
+class @typeInfOrEqualTest extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeStrictSupTest extends @typeExpression
+class @typeStrictSupTest extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 
-class @typeSupOrEqualTest extends @typeExpression
+class @typeSupOrEqualTest extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 #   C A L L    T E S T    M E T H O D    F O R    M A P                     *
 #---------------------------------------------------------------------------*
 
-class @typeTextTableCall extends @typeExpression
+class @typeTextTableCall extends @typeExpression {
   @typeExpression mExpression ;
   @lstring aNomMethodeTest ;
   @typeCplusPlusName aNomCppClef ;
-end class ;
+}
  
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -534,10 +534,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @C_assignmentInstruction extends @typeInstruction
+class @C_assignmentInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
   @typeExpression mSourceExpression ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -547,11 +547,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @C_declarationInstructionWithAssignment extends @typeInstruction
+class @C_declarationInstructionWithAssignment extends @typeInstruction {
   @AC_galgasType mVariableType ;
   @typeCplusPlusName mTargetVarCppName ;
   @typeExpression mSourceExpression ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -559,17 +559,17 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_expression_instructionsList_list
+list @L_expression_instructionsList_list {
   @typeExpression mIFexpression ;
   @typeInstructionsList mInstructionsList ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @C_if_instruction extends @typeInstruction
+class @C_if_instruction extends @typeInstruction {
   @L_expression_instructionsList_list mIFbranchesList ;
   @typeInstructionsList mElseInstructionsList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -577,9 +577,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeTableRoutinesAimplementer
+map @typeTableRoutinesAimplementer {
   insert insertKey error message "the routine '" . * . "' is already declared" ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -587,12 +587,12 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeTableAttributsSemantiques
+map @typeTableAttributsSemantiques {
   insert insertKey error message "the attribute '" . * . "' is already declared" ;
   search searchKey error message "the attribute '" . * . "' is not declared" ;
   @typeCplusPlusName aNomCppAttribut ;
   @AC_galgasType mAttributType ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -807,7 +807,7 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeJoker extends @typeCible
+class @typeJoker extends @typeCible {
   override reader verifierType ?@AC_galgasType typeArgumentFormel
                                ?!@lstring unused nomAttributSource
                                ?!@L_assignedVariables unused listeAffectations
@@ -815,11 +815,11 @@ class @typeJoker extends @typeCible
     @typeCplusPlusName nullName := [@typeNullName new] ;
     outAllVariablesList += !nullName ;
   end reader ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeEntiteDest extends @typeCible
+class @typeEntiteDest extends @typeCible {
   @AC_galgasType aTypeVarDest ;
   @typeCplusPlusName mCppName ;
   @location aPositionVariableCible ;
@@ -833,7 +833,7 @@ class @typeEntiteDest extends @typeCible
     listeAffectations += !mCppName !nomAttributSource ;
     outAllVariablesList += !mCppName ;
   end reader ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -841,10 +841,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeEntiteNonTerminal extends @AC_semanticsEntity
+class @typeEntiteNonTerminal extends @AC_semanticsEntity {
   @M_nonterminalSymbolAlts mAltParametersMap ;
   message messageTypeEntite "a nonterminal symbol" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -852,12 +852,12 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @C_grammarInstruction extends @typeInstruction
+class @C_grammarInstruction extends @typeInstruction {
   @typeCplusPlusName mSourceFileCppName ;
   @lstring mGrammarName ;
   @typeExpressionList mExpressionsList ;
   @lstring mAltSymbol ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -865,10 +865,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeAppendInstruction extends @typeInstruction
+class @typeAppendInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
   @typeExpressionList mSourceExpressions ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -876,9 +876,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeIncrementInstruction extends @typeInstruction
+class @typeIncrementInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -886,11 +886,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeAppendInstructionWithAssignment extends @typeInstruction
+class @typeAppendInstructionWithAssignment extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
   @typeExpressionList mSourceExpressions ;
   @typeCplusPlusName m_luint_TargetVarCppName ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -898,11 +898,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeInstructionAppelActionExterne extends @typeInstruction
+class @typeInstructionAppelActionExterne extends @typeInstruction {
   @lstring aNomAction ;
   @typeExpressionList mExpressionsList ;
   @L_signature aListeTypesParametresFormels ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -910,11 +910,11 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_matchInstructionCasesList
+list @L_matchInstructionCasesList {
   @lstring mCase1_name ;
   @lstring mCase2_name ;
   @typeInstructionsList mInstructionsList ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -922,7 +922,7 @@ end list ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeMatchInstruction extends @typeInstruction
+class @typeMatchInstruction extends @typeInstruction {
   @location aIndicatif1 ;
   @location aIndicatif2 ;
   @typeCplusPlusName aNomCppVariable1 ;
@@ -933,7 +933,7 @@ class @typeMatchInstruction extends @typeInstruction
   @bool mOperand2_isEnumeration ;
   @L_matchInstructionCasesList aListeCas ;
   @typeInstructionsList mElseInstructionsList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -944,19 +944,19 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @foreachEnumerationList 
+list @foreachEnumerationList  {
   @typeCplusPlusName mCppEnumeratedVariableName ;
   @location mLocationOffset ;
   @string mCppTypeName ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeForeachInstruction extends @typeInstruction
+class @typeForeachInstruction extends @typeInstruction {
   @foreachEnumerationList mForeachEnumerationList ;
   @typeExpression mWhileExpression ;
   @typeInstructionsList mInstructionsList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -964,13 +964,13 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeSimpleExtractInstruction extends @typeInstruction
+class @typeSimpleExtractInstruction extends @typeInstruction {
   @typeCplusPlusName aNomVariable ;
   @lstring aNomClasse ;
   @L_assignedVariables aListeAffectationParametresEffectifs ;
   @typeExpression mErrorLocationExpression ;
   @lstring aNomMessage ;
-end class ;
+}
 
 #----------------------------------------------------------------------*
 #                                                                      *
@@ -978,20 +978,20 @@ end class ;
 #                                                                      *
 #----------------------------------------------------------------------*
 
-list @typeStructuredExtractCasesList
+list @typeStructuredExtractCasesList {
   @lstring mClassName ;
   @location mResultVarID ;
   @typeInstructionsList mInstructionsList ;
   @bool mNoUsedParameter ;
-end list ;
+}
 
 #----------------------------------------------------------------------*
 
-class @typeStructuredExtractInstructionWithElse extends @typeInstruction
+class @typeStructuredExtractInstructionWithElse extends @typeInstruction {
   @typeCplusPlusName mVariableName ;
   @typeStructuredExtractCasesList mCasesList ;
   @typeInstructionsList mElseInstructionList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -999,10 +999,10 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeRoutineCallInstruction extends @typeInstruction
+class @typeRoutineCallInstruction extends @typeInstruction {
   @lstring aNomRoutine ;
   @typeExpressionList mExpressionsList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1010,9 +1010,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeDropInstruction extends @typeInstruction
+class @typeDropInstruction extends @typeInstruction {
   @typeCplusPlusName aVariableConsommee ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1020,9 +1020,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeTableNomRoutinesDeclarees
+map @typeTableNomRoutinesDeclarees {
   insert insertKey error message "the routine '" . * . "' is already declared" ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1030,39 +1030,39 @@ end map ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeEntityToGenerate
+abstract class @typeEntityToGenerate {
   include header ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeExternTypeToGenerate extends @typeEntityToGenerate
+class @typeExternTypeToGenerate extends @typeEntityToGenerate {
 #--- Class name
   @lstring mName ;
 
 #--- C++ class name
   @lstring mCppClassName ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeRoutineAengendrer extends @typeEntityToGenerate
+class @typeRoutineAengendrer extends @typeEntityToGenerate {
   @lstring aNomRoutine ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
   @typeInstructionsList mInstructionsList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @C_listTypeToImplement extends @typeEntityToGenerate
+class @C_listTypeToImplement extends @typeEntityToGenerate {
   @lstring aNomListe ;
   @typeListeAttributsSemantiques mNonExternAttributesList ;
   @L_nameWithType mExternAttributesList ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeDefinitionTableAimplementer extends @typeEntityToGenerate
+class @typeDefinitionTableAimplementer extends @typeEntityToGenerate {
   @lstring aNomTable ;
   @typeListeAttributsSemantiques mNonExternAttributesList ;
   @L_nameWithType mExternAttributesList ;
@@ -1070,29 +1070,29 @@ class @typeDefinitionTableAimplementer extends @typeEntityToGenerate
   @typeTableMethodesInsererChercher aTableMethodesInserer ;
   @typeTableMethodesInsererChercher aTableMethodesChercher ;
   @typeTableBlocsDeTable aTableMethodesSurcharger ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-map @stateMap
+map @stateMap {
   insert insertKey error message "the '" . * . "' state is already declared"  ;
   search searchKey error message "the '" . * . "' state is not declared" ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @C_mapToImplement extends @typeEntityToGenerate
+class @C_mapToImplement extends @typeEntityToGenerate {
   @stateMap mStateMap ;
   @lstring aNomTable ;
   @typeListeAttributsSemantiques mNonExternAttributesList ;
   @L_nameWithType mExternAttributesList ;
   @typeTableMethodesInsererChercher aTableMethodesInserer ;
   @typeTableMethodesInsererChercher aTableMethodesChercher ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeDefClasseAbstraiteAimplementer extends @typeEntityToGenerate
+class @typeDefClasseAbstraiteAimplementer extends @typeEntityToGenerate {
   @lstring aNomClasse ;
 
 #--- Liste de tous les attributs not externes, y compris ceux définis dans une classe mère
@@ -1118,11 +1118,11 @@ class @typeDefClasseAbstraiteAimplementer extends @typeEntityToGenerate
 
 #--- Table des messages
   @typeClassMessagesMap mMessagesMap ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeDefClasseNonAbstraiteAimplementer extends @typeEntityToGenerate
+class @typeDefClasseNonAbstraiteAimplementer extends @typeEntityToGenerate {
   @lstring aNomClasse ;
 
 #--- Liste de tous les attributs not externes, y compris ceux définis dans une classe mère
@@ -1148,21 +1148,21 @@ class @typeDefClasseNonAbstraiteAimplementer extends @typeEntityToGenerate
 
 #-- Nom du fichier dont l'inclusion apparaît dans la déclaration C++ de la classe
   @bool mGenerateIncludeHeader ;  
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeEntiteActionExterne extends @AC_semanticsEntity
+class @typeEntiteActionExterne extends @AC_semanticsEntity {
   @L_signature aSignature ;
   message messageTypeEntite "an external action" ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @typeActionExterneAengendrer extends @typeEntityToGenerate
+class @typeActionExterneAengendrer extends @typeEntityToGenerate {
   @lstring aNomAction ;
   @L_signature aSignature ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1170,9 +1170,9 @@ end class ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeEntitiesToGenerateList
+list @typeEntitiesToGenerateList {
   @typeEntityToGenerate mEntityToGenerate ;
-end list ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1260,19 +1260,19 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeEnumCstMessageStringMap
+map @typeEnumCstMessageStringMap {
   insert insertKey error message "the message for '" . * . "' constant is already declared" ;
   search searchKey error message "the message for '" . * . "' constant is not declared" ;
   @lstring mMessageString ;
-end map ;
+}
 
 #---------------------------------------------------------------------------*
 
-class @enumGalgasType extends @typeEntityToGenerate
+class @enumGalgasType extends @typeEntityToGenerate {
   @lstring mEnumTypeName ;
   @typeEnumConstantesMap mConstantMap ;
   @typeEnumMessageMap mEnumMessageMap ;
-end class ;
+}
 
 #---------------------------------------------------------------------------*
 
