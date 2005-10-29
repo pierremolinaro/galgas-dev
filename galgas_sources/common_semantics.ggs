@@ -24,7 +24,7 @@ semantics common_semantics :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-enum @actualParametersPassingMode :
+enum @actualParametersPassingMode {
   parameterOut, parameterOutIn, parameterIn ;
  
   message actualArgumentMessage :
@@ -32,7 +32,7 @@ enum @actualParametersPassingMode :
     parameterIn -> "an input (?) actual parameter" ;
     parameterOut -> "an output (!) actual parameter" ;
   end message ;
-end enum ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -40,7 +40,7 @@ end enum ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-enum @formalArgumentPassingMode :
+enum @formalArgumentPassingMode {
   argumentIn, argumentOut, argumentInOut, argumentConstantIn ;
  
   message formalArgumentMessage :
@@ -49,7 +49,7 @@ enum @formalArgumentPassingMode :
     argumentOut -> "an output (!) formal argument" ;
     argumentInOut -> "an input/output (?!) argument" ;
   end message ;
-end enum ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -62,9 +62,9 @@ list @typeListeAttributsSemantiques ;
 
 #---------------------------------------------------------------------------*
 
-enum @localConstantBuildStyleEnum :
+enum @localConstantBuildStyleEnum {
   listStyle, mapStyle, firstIsKeyOtherMapStyle ;
-end enum ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -208,10 +208,10 @@ list @L_actualParametersSignature {
 #---------------------------------------------------------------------------*
 
 map @M_accessors_map {
-  insert insertKey error message "the '" . * . "' accessor has been already declared" ;
-  search searchKey error message "the '" . * . "' accessor is not declared" ;
   @L_signature mAccessorSignature ;
   @AC_galgasType mReturnedType ;
+  insert insertKey error message "the '" . * . "' accessor has been already declared" ;
+  search searchKey error message "the '" . * . "' accessor is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -675,9 +675,9 @@ class @typeGalgasUndefinedExternType extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 map @M_externTypeConstructorMap {
+  @typeListeAttributsSemantiques aListeDesAttributs ;
   insert insertKey error message "the '" . * . "' constructor is already declared" ;
   search searchKey error message "the '" . * . "' constructor is not declared" ;
-  @typeListeAttributsSemantiques aListeDesAttributs ;
 }
 
 #---------------------------------------------------------------------------*
@@ -752,9 +752,9 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 #---------------------------------------------------------------------------*
 
 map @M_terminalSymbolsMapForUse {
+  @typeListeAttributsSemantiques aListeDesAttributs ;
   insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
   search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
-  @typeListeAttributsSemantiques aListeDesAttributs ;
 }
 
 #---------------------------------------------------------------------------*
@@ -764,9 +764,9 @@ map @M_terminalSymbolsMapForUse {
 #---------------------------------------------------------------------------*
 
 map @M_lexiqueComponents {
+  @M_terminalSymbolsMapForUse mTerminalSymbolMap ;
   insert insertKey error message"the '" . * . "' lexique is already declared" ;
   search searchKey error message"the '" . * . "' lexique is not defined" ;
-  @M_terminalSymbolsMapForUse mTerminalSymbolMap ;
 }
 
 #---------------------------------------------------------------------------*
@@ -776,9 +776,9 @@ map @M_lexiqueComponents {
 #---------------------------------------------------------------------------*
 
 map @typeTableEnAvant {
+  @AC_galgasType mType ;
   insert insertKey error message "the type '" . * . "' is already declared" ;
   search searchKey error message "the type '" . * . "' is not declared" ;
-  @AC_galgasType mType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -788,9 +788,9 @@ map @typeTableEnAvant {
 #---------------------------------------------------------------------------*
 
 map @M_nonterminalSymbolAlts {
+  @L_signature mFormalParametersList ;
   insert insertKey error message "the label '" . * . "' has been already declared" ;
   search searchKey error message "the label '" . * . "' is not declared" ;
-  @L_signature mFormalParametersList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -800,9 +800,9 @@ map @M_nonterminalSymbolAlts {
 #---------------------------------------------------------------------------*
 
 map @M_externClassesDirectories {
+  @lstring mDirectory ;
   insert insertKey error message "the extern class '" . * . "' has been already declared" ;
   search searchKey error message "the extern class '" . * . "' is not declared" ;
-  @lstring mDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -833,9 +833,9 @@ class @C_grammarForSemantics extends @AC_semanticsEntity {
 #---------------------------------------------------------------------------*
 
 map @M_semanticsEntitiesForUse  {
+  @AC_semanticsEntity aDefEntite ;
   insert insertKey error message "a semantics entity named '" . * . "' is already declared" ;
   search searchKey error message "there is no semantics entity named '" . * . "'" ;
-  @AC_semanticsEntity aDefEntite ;
 }
 
 #---------------------------------------------------------------------------*
@@ -851,9 +851,9 @@ abstract class @AC_typeForGrammarComponent {
 #---------------------------------------------------------------------------*
 
 map @M_typesForGrammarComponent {
+  @AC_typeForGrammarComponent mType ;
   insert insertKey error message "the '@" . * . "' type is already declared" ;
   search searchKey error message "the '@" . * . "' type is not defined" ;
-  @AC_typeForGrammarComponent mType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -917,9 +917,9 @@ list @L_ruleSyntaxSignature {
 #---------------------------------------------------------------------------*
 
 map @L_grammarsMap {
+  @M_nonterminalSymbolAlts mStartSymbolParametersMap ;
   insert insertKey error message "the '" . * . "' grammar is already defined" ;
   search searchKey error message "the '" . * . "' grammar is not defined" ;
-  @M_nonterminalSymbolAlts mStartSymbolParametersMap ;
 }
 
 #---------------------------------------------------------------------------*
@@ -929,9 +929,9 @@ map @L_grammarsMap {
 #---------------------------------------------------------------------------*
 
 map @M_nonterminalSymbolAltsForGrammar {
+  @L_signature_ForGrammarComponent mFormalParametersList ;
   insert insertKey error message "the rules label '" . * . "' has been already declared" ;
   search searchKey error message "the rules label '" . * . "' is not declared" ;
-  @L_signature_ForGrammarComponent mFormalParametersList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -953,9 +953,9 @@ list @L_productionRules_ForGrammarComponent {
 #---------------------------------------------------------------------------*
 
 map @M_nonTerminalSymbolsForGrammar {
+  @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
   insert insertKey error message "internal insert error" ;
   search searchKey error message "internal search error" ;
-  @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
 }
 
 #---------------------------------------------------------------------------*
@@ -965,12 +965,12 @@ map @M_nonTerminalSymbolsForGrammar {
 #---------------------------------------------------------------------------*
 
 map @M_syntaxComponents {
-  insert insertKey error message "a syntax component named '" . * . "' is already declared" ;
-  search searchKey error message "there is no syntax component named '" . * . "'" ;
   @M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMap ;
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
   @lstring mLexiqueComponentName ;
   @stringset mClassesNamesSet ;
+  insert insertKey error message "a syntax component named '" . * . "' is already declared" ;
+  search searchKey error message "there is no syntax component named '" . * . "'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1078,9 +1078,9 @@ map @typeClassInheritedMessagesMap {
 #---------------------------------------------------------------------------*
 
 map @typeSemanticAttributesMap {
+  @AC_galgasType mAttributType ;
   insert insertKey error message "an attribut named '" . * . "' is already declared" ;
   search searchKey error message "there is no attribut named '" . * . "'" ;
-  @AC_galgasType mAttributType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1089,9 +1089,9 @@ map @typeSemanticAttributesMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-enum @lastStateEnum :
+enum @lastStateEnum {
   acceptedState, warningState, errorState ;
-end enum ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -1104,20 +1104,20 @@ list @lastStateList  {
 #---------------------------------------------------------------------------*
 
 map @transitionStatusMap {
-  insert insertKey error message "a transition named '" . * . "' is already declared" ;
   @lastStateEnum mStatus ;
   @L_stringList mMessageList ;
+  insert insertKey error message "a transition named '" . * . "' is already declared" ;
 }
 
 #---------------------------------------------------------------------------*
 
 map @typeTableMethodesInsererChercher {
-  insert insertKey error message "a method named '" . * . "' is already declared" ;
-  search searchKey error message "there is no method named '" . * . "'" ;
   @L_stringList mErrorMessageList ;
   @string mFirstState ;
   @lastStateList mLastStateList ;
   @transitionStatusMap  mTransitionStatusMap ;
+  insert insertKey error message "a method named '" . * . "' is already declared" ;
+  search searchKey error message "there is no method named '" . * . "'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1200,10 +1200,10 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #---------------------------------------------------------------------------*
 
 map @typeTableBlocsDeTable {
-  insert insertKey error message "a block method named '" . * . "' is already declared" ;
-  search searchKey error message "there is no block method named '" . * . "'" ;
   @L_signature aSignatureDebut ;
   @L_signature aSignatureFin ;
+  insert insertKey error message "a block method named '" . * . "' is already declared" ;
+  search searchKey error message "there is no block method named '" . * . "'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1226,9 +1226,9 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 map @mapMethodMap {
+  @L_signature mMethodSignature ;
   insert insertKey error message "an insert or a search method named '" . * . "' is already declared" ;
   search searchKey error message "there is no insert nor search method named '" . * . "'" ;
-  @L_signature mMethodSignature ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1403,9 +1403,9 @@ map @typeEnumConstantesMap {
 #---------------------------------------------------------------------------*
 
 map @typeEnumMessageMap {
+  @L_lstringList mMessageStringList ;
   insert insertKey error message "the '" . * . "' message name is already declared" ;
   search searchKey error message "the '" . * . "' message name is not declared" ;
-  @L_lstringList mMessageStringList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1536,12 +1536,12 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 map @M_cli_options {
-  insert insertKey error message "the '" . * . "' command line option has been already declared" ;
-  search searchKey error message "the '" . * . "' command line option is not declared" ;
   @lchar mOptionChar ;
   @lstring mOptionString ;
   @lstring mComment ;
   @uint mDefaultValue ;
+  insert insertKey error message "the '" . * . "' command line option has been already declared" ;
+  search searchKey error message "the '" . * . "' command line option is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1551,10 +1551,10 @@ map @M_cli_options {
 #---------------------------------------------------------------------------*
 
 map @M_optionComponents {
-  insert insertKey error message "the '" . * . "' option component named is already declared" ;
-  search searchKey error message "there is no '" . * . "' option component" ;
   @M_cli_options mBoolOptionsMap ;
   @M_cli_options mUintOptionsMap ;
+  insert insertKey error message "the '" . * . "' option component named is already declared" ;
+  search searchKey error message "there is no '" . * . "' option component" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1564,10 +1564,10 @@ map @M_optionComponents {
 #---------------------------------------------------------------------------*
 
 map @M_semanticsComponents {
-  insert insertKey error message "a semantics component named '" . * . "' is already declared" ;
-  search searchKey error message "there is no semantics component named '" . * . "'" ;
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
   @M_optionComponents mOptionsComponents ;
+  insert insertKey error message "a semantics component named '" . * . "' is already declared" ;
+  search searchKey error message "there is no semantics component named '" . * . "'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1577,11 +1577,11 @@ map @M_semanticsComponents {
 #---------------------------------------------------------------------------*
 
 map @M_grammarComponents {
-  insert insertKey error message "the '" . * . "' grammar component has been already declared" ;
-  search searchKey error message "the '" . * . "' grammar component is not declared" ;
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
   @lstring mLexiqueName ;
   @M_optionComponents mOptionsMap ;
+  insert insertKey error message "the '" . * . "' grammar component has been already declared" ;
+  search searchKey error message "the '" . * . "' grammar component is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

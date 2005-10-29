@@ -335,7 +335,8 @@ label parse
 ;
 
 rule <map_method>
-  !@lstring nomMethode
+  !@lstring methodName
+  !@lstring getIndexMethodName
   !@L_stringList outMessageStringList
 label parse
 ;
@@ -3725,6 +3726,19 @@ rule <semantics_declaration>
     $}$ ;
   or
     ${$ ;
+  #--- Parse Map attributes
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [empty] ;
+    <attributes_definition_list>
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeTypeeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+      !?tableFichiersEnTetePourFichierH
+    ;
   #--- Declare state enumeration values
     @stateMap stateValues [empty] ;
     select
@@ -3746,26 +3760,28 @@ rule <semantics_declaration>
     repeat
     while
       $insert$ ;
-      @lstring nomMethode ;
-      @L_stringList listeMessagesErreur ;
-      <map_method> ? nomMethode ? listeMessagesErreur ;
+      @lstring methodName ;
+      @lstring getIndexMethodName ;
+      @L_stringList errorMessagePattern ;
+      <map_method> ?methodName ?getIndexMethodName ?errorMessagePattern ;
       @string firstStateName ;
       @lastStateList emptyLastStateList ;
       @transitionStatusMap  transitionStatusMap [empty] ;
       <parse_states> !?stateValues ?firstStateName ?emptyLastStateList ?transitionStatusMap  ;
       $;$ ;
-      [!?insertMethodMap insertKey !nomMethode !listeMessagesErreur !firstStateName !emptyLastStateList !transitionStatusMap] ;
+      [!?insertMethodMap insertKey !methodName !errorMessagePattern !firstStateName !emptyLastStateList !transitionStatusMap] ;
     while 
       $search$ ;
-      @lstring nomMethode ;
-      @L_stringList listeMessagesErreur ;
-      <map_method> ? nomMethode ?listeMessagesErreur ;
+      @lstring methodName ;
+      @lstring getIndexMethodName ;
+      @L_stringList errorMessagePattern ;
+      <map_method> ?methodName ?getIndexMethodName ?errorMessagePattern ;
       @string firstStateName ;
       @lastStateList emptyLastStateList ;
       @transitionStatusMap  transitionStatusMap [empty] ;
       <parse_states> !?stateValues ?firstStateName ?emptyLastStateList ?transitionStatusMap;
       $;$ ;
-      [!?searchMethodMap insertKey !nomMethode !listeMessagesErreur !firstStateName !emptyLastStateList !transitionStatusMap] ;
+      [!?searchMethodMap insertKey !methodName !errorMessagePattern !firstStateName !emptyLastStateList !transitionStatusMap] ;
     end repeat ;
   #--- Check that insert method transition names correspond to search methods
     if [stateValues count] > 0 then
@@ -3777,17 +3793,6 @@ rule <semantics_declaration>
         end foreach ;
       end foreach ;
     end if ;
-  #--- Attributs de la map
-    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
-    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
-    @typeSemanticAttributesMap tableAttributs [empty] ;
-    <attributes_definition_list> !?tableAttributs
-                                 !?listeTousAttributsSemantiques
-                                 ?listeAttributsSemantiquesCourants
-                                 ?listeTypeeAttributsExternesCourants
-                                 !?ioComponentSemanticsEntitiesMap
-                                 !?tableFichiersEnTetePourFichierH ;
   #--- Build insert and search method map
     @mapMethodMap mapMethodMap [empty] ;
     @formalArgumentPassingMode inPassingMode [argumentIn] ;
@@ -4003,6 +4008,21 @@ label importSemantics
     $}$ ;
   or
     ${$ ;
+  #--- Map attributes
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [empty] ;
+    @stringset tableFichiersEnTetePourFichierH [empty] ;
+    <attributes_definition_list>
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeTypeeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+      !?tableFichiersEnTetePourFichierH
+    ;
+  #--- States
     select
     or
       $state$ ;
@@ -4020,39 +4040,29 @@ label importSemantics
     repeat
     while
       $insert$ ;
-      @lstring nomMethode ;
-      @L_stringList listeMessagesErreur ;
-      <map_method> ? nomMethode ? listeMessagesErreur ;
+      @lstring methodName ;
+      @lstring getIndexMethodName ;
+      @L_stringList errorMessagePattern ;
+      <map_method> ?methodName ?getIndexMethodName ?errorMessagePattern ;
       <parse_states> parse ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      [!?insertMethodMap insertKey !nomMethode !listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap] ;
-    while 
+      [!?insertMethodMap insertKey !methodName !errorMessagePattern !emptyString !emptyLastStateList !transitionStatusMap] ;
+    while
       $search$ ;
-      @lstring nomMethode ;
-      @L_stringList listeMessagesErreur ;
-      <map_method> ? nomMethode ? listeMessagesErreur ;
+      @lstring methodName ;
+      @lstring getIndexMethodName ;
+      @L_stringList errorMessagePattern ;
+      <map_method> ?methodName ?getIndexMethodName ?errorMessagePattern ;
       <parse_states> parse ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      [!?searchMethodMap insertKey !nomMethode !listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap] ;
+      [!?searchMethodMap insertKey !methodName !errorMessagePattern !emptyString !emptyLastStateList !transitionStatusMap] ;
     end repeat ;
-  #--- Map attributes
-    @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
-    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
-    @typeSemanticAttributesMap tableAttributs [empty] ;
-    @stringset tableFichiersEnTetePourFichierH [empty] ;
-    <attributes_definition_list> !?tableAttributs
-                                 !?listeTousAttributsSemantiques
-                                 ?listeAttributsSemantiquesCourants
-                                 ?listeTypeeAttributsExternesCourants
-                                 !?ioComponentSemanticsEntitiesMap
-                                 !?tableFichiersEnTetePourFichierH ;
   #--- Build insert and search method map
     @mapMethodMap mapMethodMap [empty] ;
     @formalArgumentPassingMode inPassingMode [argumentIn] ;
@@ -4130,10 +4140,17 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <map_method>
-  !@lstring nomMethode
+  !@lstring methodName
+  !@lstring getIndexMethodName
   !@L_stringList outMessageList
 :
-  $identifier$ ? nomMethode ;
+  $identifier$ ?methodName ;
+  select
+    getIndexMethodName := [@lstring new !"" !here] ;
+  or
+    $,$ ;
+    $identifier$ ?getIndexMethodName ;
+  end select ;
   $error$ ;
   $message$ ;
   <message_pattern> ? outMessageList ;
@@ -4778,7 +4795,7 @@ rule <semantics_declaration>
 #--- Enum type name
   @lstring enumTypeName ;
   $type_name$ ? enumTypeName ;
-  $:$ ;
+  ${$ ;
 #--- Enum constants
   @typeEnumConstantesMap constantMap [empty] ;
 #--- Messages map
@@ -4824,9 +4841,7 @@ rule <semantics_declaration>
     $;$ ;
   end repeat ;
 #--- End type definition end
-  $end$ ;
-  $enum$ ;
-  $;$ ;
+  $}$ ;
 #---- Enter enum datas into the list of entities to generate
   @typeEntityToGenerate e := [@enumGalgasType new !enumTypeName !constantMap !enumMessageMap] ;
   listeEntitesAengendrer += !e ;
@@ -4845,7 +4860,7 @@ label importSemantics
 #--- Enum type name
   @lstring enumTypeName ;
   $type_name$ ? enumTypeName ;
-  $:$ ;
+  ${$ ;
 #--- Enum constants
   @typeEnumConstantesMap constantMap [empty] ;
 #--- Messages map
@@ -4864,7 +4879,7 @@ label importSemantics
     @lstring messageName ;
     $identifier$ ? messageName ;
   #--- Enter message definition into message map
-    @L_lstringList messageStringList [empty] ; #--- Actual list is not useful here
+    @L_lstringList messageStringList [empty] ;
     [!?enumMessageMap insertKey !messageName !messageStringList] ;
     $:$ ;
     repeat
@@ -4878,9 +4893,7 @@ label importSemantics
     $message$ ;
     $;$ ;
   end repeat ;
-  $end$ ;
-  $enum$ ;
-  $;$ ;
+  $}$ ;
 #--- Enter enum type into semantic entities map
   @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !enumMessageMap] ;
   @AC_semanticsEntity e := [@typeEntiteType new !t] ;

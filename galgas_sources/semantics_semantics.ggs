@@ -112,9 +112,9 @@ abstract class @typeExpression {
 #---------------------------------------------------------------------------*
 
 map @typeClassMessagesMap {
+  @lstring mMessage ;
   insert insertKey error message "the message '" . * . "' is already declared" ;
   search searchKey error message "the message '" . * . "' is not declared" ;
-  @lstring mMessage ;
 }
 
 #---------------------------------------------------------------------------*
@@ -588,10 +588,10 @@ map @typeTableRoutinesAimplementer {
 #---------------------------------------------------------------------------*
 
 map @typeTableAttributsSemantiques {
-  insert insertKey error message "the attribute '" . * . "' is already declared" ;
-  search searchKey error message "the attribute '" . * . "' is not declared" ;
   @typeCplusPlusName aNomCppAttribut ;
   @AC_galgasType mAttributType ;
+  insert insertKey error message "the attribute '" . * . "' is already declared" ;
+  search searchKey error message "the attribute '" . * . "' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1261,9 +1261,9 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 map @typeEnumCstMessageStringMap {
+  @lstring mMessageString ;
   insert insertKey error message "the message for '" . * . "' constant is already declared" ;
   search searchKey error message "the message for '" . * . "' constant is not declared" ;
-  @lstring mMessageString ;
 }
 
 #---------------------------------------------------------------------------*
