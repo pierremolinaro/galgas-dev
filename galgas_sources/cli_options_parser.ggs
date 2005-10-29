@@ -1,0 +1,357 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS option component parser definition                                *
+#                                                                           *
+#  Copyright (C) 2004 Pierre Molinaro.                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax cli_options_parser :
+
+import lexique galgas_scanner in "galgas_scanner.ggs" ;
+
+import semantics common_semantics in "common_semantics.ggs" ;
+
+#-------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+label importLexique
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+label importSyntax
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+label importGrammarForSemantics
+  ?!@M_grammarComponents ioGrammarComponentsMap
+label importOptions
+  ?!@M_optionComponents ioOptionsComponentsMap
+;
+
+action generate_option_component
+  ?!@lstring inOptionComponentName
+  ?!@M_cli_options inBoolOptionMap
+  ?!@M_cli_options inUintOptionMap
+;
+
+rule <import_headers_semantics_and_grammars>
+  !@M_externClassesDirectories outExternClassesDirectoryMap
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@stringset tableFichiersEnTetePourFichierCPP
+  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  !@typeTableEnAvant tableEnAvant
+  ?!@stringset ioClassNamesSet
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+label importSemantics
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+label parse
+;
+
+#-------------------------------------------------------------------*
+#                   option component                                *
+#-------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+:
+  @M_cli_options boolOptionsMap [empty] ;
+  @M_cli_options uintOptionsMap [empty] ;
+#--- Option component header
+  $option$ ;
+  @lstring optionComponentName ;
+  $identifier$ ? optionComponentName ;
+  $:$ ;
+##--- Import semantics
+#  @typeTableEnAvant tableEnAvant ;
+#  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques := empty ;
+#  @stringset tableFichiersEnTetePourFichierH := empty ;
+#  @stringset tableFichiersEnTetePourFichierCPP := empty ;
+#  @M_optionComponents optionsComponentsMapForUse := empty ;
+#  @M_semanticsEntitiesForUse componentEntitiesMap ;
+#  @M_externClassesDirectories externClassesDirectoryMap ;
+#  @stringset classNamesSet := empty ;
+#  <import_headers_semantics_and_grammars>
+#    ?externClassesDirectoryMap
+#    ?componentEntitiesMap
+#    ?optionsComponentsMapForUse
+#    !?tableFichiersEnTetePourFichierCPP
+#    !?tableUtilisationsSemantiques
+#    ?tableEnAvant
+#    !?classNamesSet
+#    !?ioSemanticsComponentsMap
+#    !?ioGrammarComponentsMap
+#    !?ioOptionsComponentsMap
+#  ;
+#--- option declarations
+  repeat
+  while 
+    @lstring typeName ;
+    $type_name$ ?typeName  ;
+    @lstring optionName ;
+    $identifier$ ? optionName ;
+    $:$ ;
+    @lchar optionChar ;
+    $literal_char$ ? optionChar ;
+    $,$ ;
+    @lstring optionString ;
+    $literal_string$ ? optionString ;
+    $->$ ;
+    @lstring optionComment ;
+    $literal_string$ ? optionComment ;
+    @uint defaultValue ;
+    select
+      defaultValue := 0 ;
+      if [typeName value] == "uint" then
+        warning here : "No default value for this option, 0 will be used" ;
+      end if ;
+    or
+      $default$ ;
+      if [typeName value] == "bool" then
+        error here : "'default' construct is not allowed for a @bool option (allways false by default)" ;
+      end if ;
+      @luint v ;
+      $unsigned_literal_integer$ ? v ;
+      defaultValue := [v value] ;
+    end select ;
+    $;$ ;
+    if [typeName value] == "bool" then
+      if [uintOptionsMap hasKey ![typeName value]] then
+        error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
+      else
+        [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      end if ;
+    elsif [typeName value] == "uint" then
+      if [boolOptionsMap hasKey ![typeName value]] then
+        error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
+      else
+        [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      end if ;
+    else
+      error typeName : "only @bool or @uint types can be used here" ;
+    end if ;
+  end repeat ;
+  $end$ ;
+  $option$ ;
+  $;$ ;
+#--- Enter option component in option component map
+  [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
+#--- Generate option component
+  action generate_option_component !?optionComponentName !?boolOptionsMap !?uintOptionsMap ;
+label importLexique
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+:
+  $option$ ;
+  $identifier$ ? * ;
+  $:$ ;
+##  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while 
+    $type_name$ ?*  ;
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_char$ ? * ;
+    $,$ ;
+    $literal_string$ ? * ;
+    $->$ ;
+    $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      $unsigned_literal_integer$ ? * ;
+    end select ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $option$ ;
+  $;$ ;
+label importSyntax
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+:
+  $option$ ;
+  $identifier$ ? * ;
+  $:$ ;
+##  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while 
+    $type_name$ ?*  ;
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_char$ ? * ;
+    $,$ ;
+    $literal_string$ ? * ;
+    $->$ ;
+    $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      $unsigned_literal_integer$ ? * ;
+    end select ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $option$ ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+:
+  $option$ ;
+  $identifier$ ? * ;
+  $:$ ;
+##  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while 
+    $type_name$ ?*  ;
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_char$ ? * ;
+    $,$ ;
+    $literal_string$ ? * ;
+    $->$ ;
+    $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      $unsigned_literal_integer$ ? * ;
+    end select ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $option$ ;
+  $;$ ;
+label importGrammarForSemantics
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+:
+  $option$ ;
+  $identifier$ ? * ;
+  $:$ ;
+##  <import_headers_semantics_and_grammars> parse ;
+  repeat
+  while 
+    $type_name$ ?*  ;
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_char$ ? * ;
+    $,$ ;
+    $literal_string$ ? * ;
+    $->$ ;
+    $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      $unsigned_literal_integer$ ? * ;
+    end select ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $option$ ;
+  $;$ ;
+label importOptions
+  ?!@M_optionComponents ioOptionsComponentsMap
+:
+  @M_cli_options boolOptionsMap [empty] ;
+  @M_cli_options uintOptionsMap [empty] ;
+#--- Option component header
+  $option$ ;
+  @lstring optionComponentName ;
+  $identifier$ ? optionComponentName ;
+  $:$ ;
+##--- Import semantics
+#  @typeTableEnAvant tableEnAvant ;
+#  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques := empty ;
+#  @stringset tableFichiersEnTetePourFichierH := empty ;
+#  @stringset tableFichiersEnTetePourFichierCPP := empty ;
+#  @M_optionComponents optionsComponentsMapForUse := empty ;
+#  @M_semanticsEntitiesForUse componentEntitiesMap ;
+#  @M_externClassesDirectories externClassesDirectoryMap ;
+#  @stringset classNamesSet := empty ;
+#  <import_headers_semantics_and_grammars>
+#    ?externClassesDirectoryMap
+#    ?componentEntitiesMap
+#    ?optionsComponentsMapForUse
+#    !?tableFichiersEnTetePourFichierCPP
+#    !?tableUtilisationsSemantiques
+#    ?tableEnAvant
+#    !?classNamesSet
+#    !?ioSemanticsComponentsMap
+#    !?ioGrammarComponentsMap
+#    !?ioOptionsComponentsMap
+#  ;
+#--- option declarations
+  repeat
+  while
+    @lstring typeName ;
+    $type_name$ ?typeName  ;
+    @lstring optionName ;
+    $identifier$ ? optionName ;
+    $:$ ;
+    @lchar optionChar ;
+    $literal_char$ ? optionChar ;
+    $,$ ;
+    @lstring optionString ;
+    $literal_string$ ? optionString ;
+    $->$ ;
+    @lstring optionComment ;
+    $literal_string$ ? optionComment ;
+    @uint defaultValue ;
+    select
+      defaultValue := 0 ;
+      if [typeName value] == "uint" then
+        warning here : "No default value for this option, 0 will be used" ;
+      end if ;
+    or
+      $default$ ;
+      if [typeName value] == "bool" then
+        error here : "'default' construct is not allowed for a @bool option (allways false by default)" ;
+      end if ;
+      @luint v ;
+      $unsigned_literal_integer$ ? v ;
+      defaultValue := [v value] ;
+    end select ;
+    $;$ ;
+    if [typeName value] == "bool" then
+      if [uintOptionsMap hasKey ![typeName value]] then
+        error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
+      else
+        [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      end if ;
+    elsif [typeName value] == "uint" then
+      if [boolOptionsMap hasKey ![typeName value]] then
+        error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
+      else
+        [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      end if ;
+    else
+      error typeName : "only @bool or @uint types can be used here" ;
+    end if ;
+  end repeat ;
+  $end$ ;
+  $option$ ;
+  $;$ ;
+  [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+end syntax ;

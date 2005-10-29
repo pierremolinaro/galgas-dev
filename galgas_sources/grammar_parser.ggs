@@ -1,0 +1,511 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS grammar component definition                                      *
+#                                                                           *
+#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax grammar_parser :
+
+import lexique galgas_scanner in "galgas_scanner.ggs" ;
+
+import semantics semantics_semantics in "semantics_semantics.ggs" ;
+
+#---------------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+label importLexique
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+label importSyntax
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+label importGrammarForSemantics
+  ?!@M_grammarComponents ioGrammarComponentsMap
+label importOptions
+  ?!@M_optionComponents ioOptionsComponentsMap
+;
+
+rule <get_lexique_infos>
+  !@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  !@lstring outLexiqueName
+label getLexiqueName
+  !@lstring outLexiqueName
+label parse
+;
+
+rule <formal_arguments_list>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@L_signature listeDeTypes
+  ?!@typeVariablesMap tableArgumentsMethode
+  !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?!@typeTableEnAvant tableEnAvant
+  !@L_signature_ForGrammarComponent outSignature
+label importGrammarForSemantics
+  !@L_signature_ForGrammarComponent outSignature
+label parse
+;
+
+rule <parse_syntax_for_importing>
+  ??@lstring inFileName
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+label parse
+;
+
+rule <parse_option_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_optionComponents ioOptionsComponentsMap
+label parse
+;
+
+action analyzeGrammar
+  ?!@lstring inGrammarName
+  ??@lstring inGrammarClass
+  ?!@luint startSymbolIndex
+  ?!@lstring inLexiqueName
+  ??@location endOfSourceFile
+  ?!@M_terminalSymbolsMapForUse ioTerminalSymbolMap
+  ?!@L_syntaxComponents_ForGrammar ioSyntaxComponentsList
+  ?!@M_nonTerminalSymbolsForGrammar ioNonterminalSymbolsMapForGrammar
+;
+
+#---------------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+:
+  $grammar$ ;
+#--- Grammar name
+  @lstring grammarName ;
+  $identifier$ ? grammarName ;
+  @lstring grammarClass ;
+  $literal_string$ ? grammarClass ;
+  $:$ ;
+#--- Parse lexique reference
+  @M_terminalSymbolsMapForUse terminalSymbolMap ;
+  @lstring lexiqueName ;
+  <get_lexique_infos>
+    ?terminalSymbolMap
+    !?ioLexiqueMapForUse
+    ?lexiqueName
+  ;
+#--- Parse syntax components references
+  @stringset classesNamesSet [empty] ;
+  @L_syntaxComponents_ForGrammar syntaxComponentsList [empty] ;
+  @M_nonTerminalSymbolsForGrammar nonterminalSymbolsMapForGrammar [empty] ;
+  @M_optionComponents optionComponentsMap [empty] ;
+  repeat
+    $import$ ;
+    select
+      $option$ ;
+      @lstring optionComponentName ;
+      $identifier$ ? optionComponentName ;
+      @M_cli_options boolOptionsMap ;
+      @M_cli_options uintOptionsMap ;
+      select
+        [!?ioOptionsComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+      or
+        $in$ ;
+        @lstring fileName ;
+        $literal_string$ ? fileName ;
+        @M_optionComponents importedOptionComponentsMap [empty] ;
+        <parse_option_component_for_importing>
+          !fileName
+          !?importedOptionComponentsMap
+        ;
+        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+      end select ;
+      $;$ ;
+      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
+    or
+      $syntax$ ;
+      @lstring syntaxComponentName ;
+      $identifier$ ? syntaxComponentName ;
+      @M_syntaxComponents syntaxComponentsMap ;
+      select
+        syntaxComponentsMap := ioSyntaxComponentsMap ;
+      or
+        $in$ ;
+        @lstring fileName ;
+        $literal_string$ ? fileName ;
+        syntaxComponentsMap := [@M_syntaxComponents empty] ;
+        <parse_syntax_for_importing>
+          !fileName
+          !?syntaxComponentsMap
+        ;
+      end select ;
+      $;$ ;
+    #--- Search for syntax component
+      @M_nonTerminalSymbolsForGrammar importedNonterminalSymbolsMap ;
+      @L_productionRules_ForGrammarComponent importedProductionRulesList ;
+      @lstring importedLexiqueComponentName ;
+      @stringset importedClassesNamesSet ;
+      [!?syntaxComponentsMap searchKey !syntaxComponentName
+        ?importedNonterminalSymbolsMap
+        ?importedProductionRulesList
+        ?importedLexiqueComponentName
+        ?importedClassesNamesSet
+      ] ;
+    #--- Verify lexical component name
+      if [lexiqueName value] != [importedLexiqueComponentName value] then
+        error syntaxComponentName : "this component does not use the previously declared lexique" ;
+      end if ;
+    #--- Add syntax component to syntax components list
+      syntaxComponentsList += !importedNonterminalSymbolsMap
+                              !importedProductionRulesList
+                              !importedClassesNamesSet
+                              !syntaxComponentName ;
+    #--- Build nonterminal symbol map for grammar
+      foreach importedNonterminalSymbolsMap (??@lstring ntSymbol ??@M_nonterminalSymbolAltsForGrammar importedAltSignaturesMap) :
+        if [nonterminalSymbolsMapForGrammar hasKey ![ntSymbol value]] then
+          @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
+          [!?nonterminalSymbolsMapForGrammar searchKey !ntSymbol ?altSignatureMap] ;
+          foreach altSignatureMap (??@lstring altName ??@L_signature_ForGrammarComponent altSignature) :
+            @M_nonterminalSymbolAltsForGrammar temp := importedAltSignaturesMap ;
+            @L_signature_ForGrammarComponent importedAltSignature ;
+            [!?temp searchKey !altName ?importedAltSignature] ;
+            checkSignature_ForGrammarComponent !importedAltSignature !altSignature ![altName location] ;
+          end foreach ;
+          foreach importedAltSignaturesMap (??@lstring importedAltName ??@L_signature_ForGrammarComponent importedAltSignature) :
+            if [importedAltName value] != "parse" then
+              [!?altSignatureMap searchKey !importedAltName ?*] ;
+            end if ;
+          end foreach ;
+        else
+          [!?nonterminalSymbolsMapForGrammar insertKey !ntSymbol !importedAltSignaturesMap] ;
+        end if ;
+      end foreach ;
+    end select ;
+  while
+  end repeat ;
+#--- Grammar start symbol
+  $start$ ;
+  @lstring startSymbolName ;
+  $<$ ;
+  $identifier$ ? startSymbolName ;
+  $>$ ;
+
+#--- (added 8/13/2004)
+  @M_nonterminalSymbolAltsForGrammar grammarAltMap [empty] ;
+  @lstring altName [new !"" !here] ;
+  repeat
+    @L_signature_ForGrammarComponent signature ;
+    <formal_arguments_list> importGrammarForSemantics ?signature ;
+    [!?grammarAltMap insertKey !altName !signature] ;
+  while
+    $label$ ;
+    $identifier$ ? altName ;
+  end repeat ;
+  $;$ ;
+#--- Search start symbol in non terminal map
+  @M_nonterminalSymbolAltsForGrammar startSymbolAltMap ;
+  @luint startSymbolIndex ;
+  [!?nonterminalSymbolsMapForGrammar searchKeyGetIndex !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
+#--- Check signatures (added 8/13/2004)
+  foreach startSymbolAltMap (??@lstring cstAltName ??@L_signature_ForGrammarComponent cstAltMap) :
+    @L_signature_ForGrammarComponent altMap ;
+    [!?grammarAltMap searchKey !cstAltName ?altMap] ;
+    checkSignature_ForGrammarComponent !cstAltMap !altMap !here ;
+  end foreach ;
+  foreach grammarAltMap (??@lstring cstAltName ??*) :
+    [!?startSymbolAltMap searchKey !cstAltName ?*] ;
+  end foreach ;
+#--- Analyze grammar
+  @location endOfSourceFile := here ;
+  action analyzeGrammar
+    !?grammarName
+    !grammarClass
+    !?startSymbolIndex
+    !?lexiqueName
+    !endOfSourceFile
+    !?terminalSymbolMap
+    !?syntaxComponentsList
+    !?nonterminalSymbolsMapForGrammar
+  ;
+#--- insert grammar in grammars map
+  [!?ioGrammarComponentsMap insertKey !grammarName !startSymbolAltMap
+                                                   !lexiqueName
+                                                   !optionComponentsMap] ;
+  $end$ ;
+  $grammar$ ;
+  $;$ ;
+label importLexique
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+:
+  $grammar$ ;
+  $identifier$ ? * ;
+  $literal_string$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  repeat
+    $import$ ;
+    select
+      $option$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_option_component_for_importing> parse ;
+      end select ;
+      $;$ ;
+    or
+      $syntax$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_syntax_for_importing> parse ;
+      end select ;
+      $;$ ;
+    end select ;
+  while
+  end repeat ;
+  $start$ ;
+  $<$ ;
+  $identifier$ ? * ;
+  $>$ ;
+  repeat
+    <formal_arguments_list> parse ;
+  while
+    $label$ ;
+    $identifier$ ? * ;
+  end repeat ;
+  $;$ ;
+  $end$ ;
+  $grammar$ ;
+  $;$ ;
+label importSyntax
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+:
+  $grammar$ ;
+  $identifier$ ? * ;
+  $literal_string$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  repeat
+    $import$ ;
+    select
+      $option$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_option_component_for_importing> parse ;
+      end select ;
+      $;$ ;
+    or
+      $syntax$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_syntax_for_importing> parse ;
+      end select ;
+      $;$ ;
+    end select ;
+  while
+  end repeat ;
+  $start$ ;
+  $<$ ;
+  $identifier$ ? * ;
+  $>$ ;
+  repeat
+    <formal_arguments_list> parse ;
+  while
+    $label$ ;
+    $identifier$ ? * ;
+  end repeat ;
+  $;$ ;
+  $end$ ;
+  $grammar$ ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+:
+  $grammar$ ;
+  $identifier$ ? * ;
+  $literal_string$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  repeat
+    $import$ ;
+    select
+      $option$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_option_component_for_importing> parse ;
+      end select ;
+      $;$ ;
+    or
+      $syntax$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_syntax_for_importing> parse ;
+      end select ;
+      $;$ ;
+    end select ;
+  while
+  end repeat ;
+  $start$ ;
+  $<$ ;
+  $identifier$ ? * ;
+  $>$ ;
+  repeat
+    <formal_arguments_list> parse ;
+  while
+    $label$ ;
+    $identifier$ ? * ;
+  end repeat ;
+  $;$ ;
+  $end$ ;
+  $grammar$ ;
+  $;$ ;
+label importGrammarForSemantics
+  ?!@M_grammarComponents ioGrammarComponentsMap
+:
+  $grammar$ ;
+  @lstring grammarName ;
+  $identifier$ ? grammarName ;
+  $literal_string$ ? * ; # Ignore grammar class
+  $:$ ;
+   @lstring lexiqueName ;
+  <get_lexique_infos> getLexiqueName ?lexiqueName ;
+  @M_nonterminalSymbolAltsForGrammar grammarAltMap [empty] ;
+  @M_optionComponents optionComponentsMap [empty] ;
+  repeat
+    $import$ ;
+    select
+      $option$ ;
+      @lstring optionComponentName ;
+      $identifier$ ? optionComponentName ;
+      @M_cli_options boolOptionsMap ;
+      @M_cli_options uintOptionsMap ;
+      select
+        [!?optionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+      or
+        $in$ ;
+        @lstring fileName ;
+        $literal_string$ ? fileName ;
+        @M_optionComponents importedOptionComponentsMap [empty] ;
+        <parse_option_component_for_importing>
+          !fileName
+          !?importedOptionComponentsMap
+        ;
+        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+      end select ;
+      $;$ ;
+      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
+    or
+      $syntax$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_syntax_for_importing> parse ;
+      end select ;
+      $;$ ;
+    end select ;
+  while
+  end repeat ;
+  $start$ ;
+  $<$ ;
+  $identifier$ ? * ;
+  $>$ ;
+  @lstring altName := [@lstring new !"" !here] ;
+  repeat
+    @L_signature_ForGrammarComponent signature ;
+    <formal_arguments_list> importGrammarForSemantics ?signature ;
+    [!?grammarAltMap insertKey !altName !signature] ;
+  while
+    $label$ ;
+    $identifier$ ? altName ;
+  end repeat ;
+  [!?ioGrammarComponentsMap insertKey !grammarName !grammarAltMap !lexiqueName !optionComponentsMap] ;
+  $;$ ;
+  $end$ ;
+  $grammar$ ;
+  $;$ ;
+label importOptions
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $grammar$ ;
+  $identifier$ ? * ;
+  $literal_string$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  repeat
+    $import$ ;
+    select
+      $option$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_option_component_for_importing> parse ;
+      end select ;
+      $;$ ;
+    or
+      $syntax$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_syntax_for_importing> parse ;
+      end select ;
+      $;$ ;
+    end select ;
+  while
+  end repeat ;
+  $start$ ;
+  $<$ ;
+  $identifier$ ? * ;
+  $>$ ;
+  repeat
+    <formal_arguments_list> parse ;
+  while
+    $label$ ;
+    $identifier$ ? * ;
+  end repeat ;
+  $;$ ;
+  $end$ ;
+  $grammar$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;
