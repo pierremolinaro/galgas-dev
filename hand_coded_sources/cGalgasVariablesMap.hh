@@ -264,7 +264,7 @@ sint32 cGalgasVariablesMap <INFO>::insertKey (C_Lexique & inLexique,
                                               const GGS_location & inLocation,
                                               const char * messageErreurInsertion) {
   sint32 resultat = -1 ; // Erreur 'insertion incorrecte'
-  if (isBuilt () && inInfo.isBuilt () && inKey.isBuilt ()) {
+  if (isBuilt () && inKey.isBuilt ()) {
   //--- RŽaliser l'insertion
     bool insertionOk = false ;
     bool extension ;

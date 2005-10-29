@@ -268,27 +268,23 @@ generate_header_file (C_Lexique & inLexique,
                  << "\n#include <string.h>\n\n" ;
 
 //--- Inclure la declaration des types semantiques predefinis
-  generatedZone2.writeCcomment ("Include predefined semantics types definition") ;
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
-           "#include \"galgas/AC_galgas_io.h\"\n"
-           "#include \"galgas/GGS_location.h\"\n"
-           "#include \"galgas/GGS_lbool.h\"\n"
-           "#include \"galgas/GGS_lchar.h\"\n"
-           "#include \"galgas/GGS_lstring.h\"\n"
-           "#include \"galgas/GGS_ldouble.h\"\n"
-           "#include \"galgas/GGS_luint.h\"\n"
-           "#include \"galgas/GGS_lsint.h\"\n"
-           "#include \"galgas/GGS_stringset.h\"\n"
-           "#include \"galgas/AC_galgas_map.h\"\n" ;
-
-//--- Include scanner definition
-  generatedZone2.writeCcomment ("Include scanner definition") ;
+                    "#include \"galgas/AC_galgas_io.h\"\n"
+                    "#include \"galgas/GGS_location.h\"\n"
+                    "#include \"galgas/GGS_lbool.h\"\n"
+                    "#include \"galgas/GGS_lchar.h\"\n"
+                    "#include \"galgas/GGS_lstring.h\"\n"
+                    "#include \"galgas/GGS_ldouble.h\"\n"
+                    "#include \"galgas/GGS_luint.h\"\n"
+                    "#include \"galgas/GGS_lsint.h\"\n"
+                    "#include \"galgas/GGS_stringset.h\"\n"
+                   "#include \"galgas/AC_galgas_map.h\"\n" ;
 
 //--- Generate lexique inclusion
   const C_String lexiqueName = inLexiqueName.string () ;
   generatedZone2 << "#include \""
         << ((lexiqueName.length () == 0) ? C_String ("galgas/C_Lexique") : lexiqueName)
-        << ".h\"\n" ;
+        << ".h\"\n\n" ;
 //--- Engendrer les inclusions des fichiers IC utilises
   GGS_typeTableUtilisationsSemantiques::element_type * fichierCourant = tableUtilisationsSemantiques.firstObject () ;
   if (fichierCourant != NULL) {

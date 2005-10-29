@@ -101,7 +101,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
     const sint32 first = inPureBNFproductions.tableauIndicePremiereProduction (i COMMA_HERE) ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
       const sint32 derniere = inPureBNFproductions.tableauIndiceDerniereProduction (i COMMA_HERE) ;
-      if (derniere > first) { // Plusieurs inPureBNFproductions d'un mme non-terminal
+      if (derniere > first) { // Plusieurs inPureBNFproductions d'un meme non-terminal
       //--- Calculer et afficher les premiers
         inHTMLfile.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
         inVocabulary.printInFile (inHTMLfile, i + terminalSymbolsCount COMMA_HERE) ;
