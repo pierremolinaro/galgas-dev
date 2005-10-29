@@ -314,11 +314,10 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & inLexique) {
-  GGS_luint index ;
-  GGS_typeListeAttributsSemantiques unusedParameter ;
-  inInfo.mTerminalSymbolMap.methode_searchKeyGetIndex (inLexique, mTerminalSymbolName, index, unusedParameter) ;
-  mTerminalSymbolIndex.mValue = index.uintValue () ;
+          C_Lexique & /*inLexique */) {
+  const sint32 index = inInfo.mTerminalSymbolMap.indexOfKey (mTerminalSymbolName) ;
+  MF_Assert (index >= 0, "index (%ld) must be >=0 ", index, 0) ;
+  mTerminalSymbolIndex.mValue = (uint32) index ;
 }
 
 //---------------------------------------------------------------------------*
@@ -645,7 +644,7 @@ analyzeGrammar (C_Lexique & inLexique,
       errorFlag = kError ;
     }
   }
-//--- Calcul de l'ensemble des non-terminaux pouvant être suivi du vide -------------------------------
+//--- Calcul de l'ensemble des non-terminaux pouvant etre suivi du vide -------------------------------
   C_BDD_Set1 nonTerminalSymbolsFollowedByEmpty (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     follow_by_empty_computations (pureBNFproductions,

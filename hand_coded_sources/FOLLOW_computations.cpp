@@ -168,12 +168,12 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
                  const C_BDD_Set1 & inUsefulSymbols,
                  const C_BDD_Set2 & inFOLLOWsets) {
 
-//--- Construire le BDD des non-terminaux pouvant être suivis du vide
+//--- Construire le BDD des non-terminaux pouvant etre suivis du vide
   C_BDD_Set1 temp1 (inUsefulSymbols) ;
   temp1.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
   const C_BDD_Set2 ntVide = inNonterminalSymbolsFollowedByEmpty * temp1 ;
 
-//--- Suivants, avec nt pouvant être suivis du vide, limites aux non terminaux utilisateur
+//--- Suivants, avec nt pouvant etre suivis du vide, limites aux non terminaux utilisateur
   const C_BDD_Set2 suivantsPlusVide = ntVide | inFOLLOWsets ;
 
 //--- Verifier les suivants
