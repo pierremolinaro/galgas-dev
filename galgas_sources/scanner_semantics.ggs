@@ -23,17 +23,17 @@ import semantics common_semantics in "common_semantics.ggs" ;
 #------------------------------------------------------------------*
 
 map @typeLexicalAttributesMap {
+  @AC_galgasType attributType ;
   insert insertKey error message "the lexical attribute '" . * . "' is already declared" ;
   search searchKey error message "the lexical attribute '" . * . "' is not declared" ;
-  @AC_galgasType attributType ;
 }
 
 #------------------------------------------------------------------*
 
 map @lexicalTypeMap {
+  @AC_galgasType mAttributType ;
   insert insertKey error message "--- internal error ---" ;
   search searchKey error message "there is no type named '%'" ;
-  @AC_galgasType mAttributType ;
 }
 
 #------------------------------------------------------------------*
@@ -41,9 +41,9 @@ map @lexicalTypeMap {
 #------------------------------------------------------------------*
 
 map @typeTableMessagesErreurs {
+  @lstring mErrorMessage ;
   insert insertKey error message "the error message '" . * . "' is already declared" ;
   search searchKey error message "the error message '" . * . "' is not declared" ;
-  @lstring mErrorMessage ;
 }
 
 #------------------------------------------------------------------*
@@ -51,9 +51,9 @@ map @typeTableMessagesErreurs {
 #------------------------------------------------------------------*
 
 map @M_styles {
+  @lstring mTitle ;
   insert insertKey error message "the '" . * . "' style is already declared" ;
   search searchKey error message "the '" . * . "' style is not declared" ;
-  @lstring mTitle ;
 }
 
 #------------------------------------------------------------------*
@@ -61,11 +61,11 @@ map @M_styles {
 #------------------------------------------------------------------*
 
 map @typeTableDefinitionTerminaux {
-  insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
-  search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
   @string mErrorMessage ;
   @typeListeAttributsSemantiques attributListeDesAttributs ;
   @luint mStyleIndex ;
+  insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
+  search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
 }
 
 #------------------------------------------------------------------*
@@ -73,17 +73,17 @@ map @typeTableDefinitionTerminaux {
 #------------------------------------------------------------------*
 
 map @typeTableMotsReserves {
+  @lstring attributNomTerminal ;
   insert insertKey error message "the word '" . * . "' is already declared" ;
   search searchKey error message "the word '" . * . "' is not declared" ;
-  @lstring attributNomTerminal ;
 }
 
 #------------------------------------------------------------------*
 
 map @typeTableTablesDeMotsReserves {
+  @typeTableMotsReserves attributSimpleTable ;
   insert insertKey error message "the word map '" . * . "' is already declared" ;
   search searchKey error message "the mord map '" . * . "' is not declared" ;
-  @typeTableMotsReserves attributSimpleTable ;
 }
 
 #------------------------------------------------------------------*

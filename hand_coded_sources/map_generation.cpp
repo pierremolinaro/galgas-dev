@@ -356,12 +356,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "               GGS_luint * outIndex) {\n"
             << "  sint32 index = - 1 ;\n"
             << "  if (isBuilt () && inKey.isBuilt ()" ;
-  for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
+/* §  for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
     inCppFile << "\n                 && inParameter" << i << ".isBuilt ()" ;
-  }      
+  }*/     
   inCppFile << ") {\n"
-               "     insulateMap () ;\n"
-             << "    e_" << aNomTable << " info  ;\n" ;
+               "    insulateMap () ;\n"
+               "    e_" << aNomTable << " info  ;\n" ;
   current = mNonExternAttributesList.firstObject () ;
   index = 0 ;
   while (current != NULL) {
