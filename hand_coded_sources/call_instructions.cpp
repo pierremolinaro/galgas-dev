@@ -99,19 +99,8 @@ void cPtr_typeModifierCallInstruction
                        const bool inGenerateSemanticInstructions) const {
 
   if (inGenerateSemanticInstructions) {
-    bool ifGenerated = false ;
-    const enumVariableKind variableKind = aNomCppVariable ()->getVariableKind () ;
-    if (variableKind == k_super_constant) {
-      ioCppFile << "inherited::" ;
-    }else if (variableKind == k_other_variable) {
-      ifGenerated = true ;
-      ioCppFile << "if (" ;
       aNomCppVariable ()->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << ".isBuilt ()) {\n  " ;
-      aNomCppVariable ()->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << " ()->" ;
-    }  
-    ioCppFile << "methode_" << aNomMethodeSimple << " (lexique_var_"  ;
+    ioCppFile << ".methode_" << aNomMethodeSimple << " (lexique_var_"  ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -120,9 +109,6 @@ void cPtr_typeModifierCallInstruction
       argCourant = argCourant->nextObject () ;
     }
     ioCppFile << ") ;\n" ;
-    if (ifGenerated) {
-      ioCppFile << "}\n" ;
-    }
   }
 }
 

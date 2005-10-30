@@ -118,16 +118,6 @@ rule <lexical_default_branch>
 label parse
 ;
 
-rule <lexical_component_inclusions>
-  ?!@typeListeInclusions liste_des_inclusions
-label parse
-;
-
-rule <lexical_component_inclusion_element>
-  !@typeInclusion inclusion
-label parse
-;
-
 rule <lexical_test_expression>
   !@typeListeConditionsLexicales listeConditionsLexicales
 label parse
@@ -183,7 +173,6 @@ action generate_scanner
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@typeListeTestsEtInstructions lexicalRulesList
-  ?!@typeListeInclusions liste_des_inclusions
   ?!@typeTableMessagesErreurs table_messages
   ?!@M_styles stylesMap
 ;
@@ -224,7 +213,6 @@ rule <galgas_component>
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
 :
-  @typeListeInclusions liste_des_inclusions [empty] ;
 #--- Lexique header
   $lexique$ ;
   @lstring lexiqueName ;
@@ -247,8 +235,6 @@ rule <galgas_component>
   @lstring defaultStringIdentifier [new !"" !here] ;
   [!?stylesMap insertKey !defaultStringIdentifier !defaultStyleName] ;
   repeat
-  while 
-    <lexical_component_inclusions> !?liste_des_inclusions ;
   while 
     <style_declaration> !?stylesMap ;
   while
@@ -293,7 +279,6 @@ rule <galgas_component>
     !?table_des_terminaux
     !?table_tables_mots_reserves
     !?lexicalRulesList
-    !?liste_des_inclusions
     !?table_messages
     !?stylesMap
   ;
@@ -319,8 +304,6 @@ label importLexique
   @lstring defaultStringIdentifier [new !"" !here] ;
   [!?stylesMap insertKey !defaultStringIdentifier !defaultStyleName] ;
   repeat
-  while 
-    <lexical_component_inclusions> parse ;
   while 
     <style_declaration> !? stylesMap ;
   while
@@ -358,8 +341,6 @@ label importSyntax
   $:$ ;
   repeat
   while 
-    <lexical_component_inclusions> parse ;
-  while 
     <style_declaration> parse;
   while
     <attribute_or_terminal_symbol_declaration> parse ;
@@ -382,8 +363,6 @@ label importSemantics
   $identifier$ ? * ;
   $:$ ;
   repeat
-  while 
-    <lexical_component_inclusions> parse ;
   while 
     <style_declaration> parse ;
   while
@@ -408,8 +387,6 @@ label importGrammarForSemantics
   $:$ ;
   repeat
   while 
-    <lexical_component_inclusions> parse ;
-  while 
     <style_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration> parse ;
@@ -432,8 +409,6 @@ label importOptions
   $identifier$ ? * ;
   $:$ ;
   repeat
-  while 
-    <lexical_component_inclusions> parse ;
   while 
     <style_declaration> parse ;
   while
@@ -471,42 +446,6 @@ rule <style_declaration>
   end repeat ;
   $;$ ;
 end rule ;
-
-#-------------------------------------------------------------------*
-#              lexical_component_inclusions                         *
-#-------------------------------------------------------------------*
-
-rule <lexical_component_inclusions>
-  ?!@typeListeInclusions liste_des_inclusions
-:
-  $header$ ;
-  @typeInclusion u ;
-  <lexical_component_inclusion_element> ?u ;
-  liste_des_inclusions += !u ;
-  $;$ ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <lexical_component_inclusion_element>
-  !@typeInclusion u
-:
-  $<>$ ; # pour engendrer '$include$ <...>'
-  @lstring nomFichierInclus ;
-  $literal_string$ ?nomFichierInclus ;
-  u := [@typeInclusionSysteme new !nomFichierInclus] ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <lexical_component_inclusion_element>
-  !@typeInclusion u
-:
-  @lstring nomFichierInclus ;
-  $literal_string$ ?nomFichierInclus ;
-  u := [@typeInclusionUtilisateur new !nomFichierInclus] ;
-end rule ;
-
 
 #-------------------------------------------------------------------*
 #           Attribute or terminal symbol declaration                *

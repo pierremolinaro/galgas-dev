@@ -89,7 +89,7 @@ abstract class @AC_galgasType {
     !@localConstantBuildStyleEnum outStyle
   :
     error inErrorLocation :
-       "variables of this type cannot appear in 'foreach' instruction" -> outForeachList, outStyle ;
+       "variables of this type cannot be enumerated by in 'foreach' instruction" -> outForeachList, outStyle ;
   end reader ;
 
 #--- By default, object does not accept to be a key for map

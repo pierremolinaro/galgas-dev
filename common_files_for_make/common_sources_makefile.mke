@@ -63,7 +63,6 @@ SOURCES += GGS_stringset.cpp
 SOURCES += AC_galgas_map.cpp
 SOURCES += C_Lexique.cpp
 SOURCES += GGS_location.cpp
-SOURCES += F_LexicalActions.cpp
 SOURCES += C_String.cpp
 SOURCES += C_Timer.cpp
 SOURCES += C_TextFileWrite.cpp
