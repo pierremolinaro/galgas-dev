@@ -2720,7 +2720,7 @@ rule <semantic_instruction>
       !?ioInstructionsList
     ;
   #--- Generate instruction
-    instruction := [@typeReaderCallInstruction new !cppVariableName !methodName !expressionsList] ;
+    instruction := [@typeModifierCallInstruction new !cppVariableName !methodName !expressionsList] ;
   end select ;
   ioInstructionsList += !instruction ;
   $]$ ;

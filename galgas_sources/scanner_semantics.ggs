@@ -220,27 +220,6 @@ class @typeInstructionErreurLexicale extends @typeInstructionLexicale {
 }
 
 #------------------------------------------------------------------*
-#                       Inclusions list                            *
-#------------------------------------------------------------------*
-
-abstract class @typeInclusion {
-}
-
-class @typeInclusionUtilisateur extends @typeInclusion {
-  @lstring attributNomFichierInclus ;
-}
-
-class @typeInclusionSysteme extends @typeInclusion {
-  @lstring attributNomFichierInclus ;
-}
-
-list @typeListeInclusions {
-  @typeInclusion attributInclusion ;
-}
-
-#------------------------------------------------------------------*
-#     This routine is called from hand coded routine GCOD_GAL      *
-#------------------------------------------------------------------*
 
 routine appendToLexicalInstructionList
   ?!@typeListeTestsEtInstructions ioLexicalRulesList

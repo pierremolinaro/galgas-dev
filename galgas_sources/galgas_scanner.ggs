@@ -18,8 +18,6 @@
 
 lexique galgas_scanner :
 
-header "galgas/F_LexicalActions.h" ;
-
 @lstring identifierString ;
 @luint ulongValue ;
 @lsint longValue ;
@@ -41,24 +39,24 @@ style typeNameStyle -> "Type names (@...) :" ;
 $identifier$ ! tokenString error message "an identifier" ;
 
 list galgasKeyWordList error message "the '" . * . "' keyword" style keywordsStyle :
- "compile",   "extract",      "program",        "enum",
- "syntax",  "semantics",      "extends",      "reader",
- "extern",    "routine",      "foreach", "constructor", 
- "match",     "default",         "here",          "if",
- "else",        "elsif",         "then",      "rewind",
- "when",     "abstract",        "class",       "parse",
- "map",       "warning",     "modifier",       "state",
- "drop",     "override",       "select",   "laststate",
- "or",          "block",   "firststate",
- "header",      "false",         "true",  "transition",
- "rule",          "tag",
- "start",         "end",          "not",     "include",
- "import",    "lexique",         "list",     "message",
- "repeat",      "while",        "error",      "search",
- "insert",         "in",         "send",      "action",
- "grammar",    "option",
- "unused",      "label",
- "style",       "cocoa" ;
+ "compile",    "extract",      "program",        "enum",
+ "syntax",   "semantics",      "extends",      "reader",
+ "extern",     "routine",      "foreach", "constructor", 
+ "match",      "default",         "here",          "if",
+ "else",         "elsif",         "then",      "rewind",
+ "when",      "abstract",        "class",       "parse",
+ "map",        "warning",     "modifier",       "state",
+ "drop",      "override",       "select",   "laststate",
+ "or",           "block",   "firststate",
+ "false",         "true",   "transition",
+ "rule",           "tag", #     "include",
+ "start",          "end",          "not",
+ "import",     "lexique",         "list",     "message",
+ "repeat",       "while",        "error",      "search",
+ "insert",          "in",         "send",      "action",
+ "grammar",     "option",
+ "unused",       "label",
+ "style",        "cocoa" ;
 
 rule 'a'->'z' | 'A'->'Z' :
   repeat
