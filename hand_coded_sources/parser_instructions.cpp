@@ -38,7 +38,7 @@ instructionsListHaveSameSyntaxSignatures (C_Lexique & lexique_var_,
   GGS_L_ruleSyntaxSignature::element_type * currentReferenceInstruction = inReferenceList.firstObject () ;
   GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inOtherList.firstObject () ;
   while ((currentReferenceInstruction != NULL) && (currentInstruction != NULL) && sameSignature) {
-    sameSignature = currentReferenceInstruction->mInstruction ()->isSameSyntaxInstructionThan (lexique_var_, currentInstruction->mInstruction (), inEndOfInstructionListLocation) ;
+    sameSignature = currentReferenceInstruction->mInstruction (HERE)->isSameSyntaxInstructionThan (lexique_var_, currentInstruction->mInstruction (HERE), inEndOfInstructionListLocation) ;
     currentReferenceInstruction = currentReferenceInstruction->nextObject () ;
     currentInstruction = currentInstruction->nextObject () ;
   }
@@ -49,13 +49,13 @@ instructionsListHaveSameSyntaxSignatures (C_Lexique & lexique_var_,
         inEndOfInstructionListLocation.signalSemanticError (lexique_var_, 
                                 "syntax signature error : the branch from this point is too short") ;
       }else{
-        currentInstruction->mInstruction ()->mStartLocation.signalSemanticError (lexique_var_, 
+        currentInstruction->mInstruction (HERE)->mStartLocation.signalSemanticError (lexique_var_, 
                                 "syntax signature error : the branch from this point is too short") ;
       }
       sameSignature = false ;
     }else if (currentInstruction != NULL) {
       currentInstruction = inOtherList.firstObject () ;
-      currentInstruction->mInstruction ()->mStartLocation.signalSemanticError (lexique_var_, 
+      currentInstruction->mInstruction (HERE)->mStartLocation.signalSemanticError (lexique_var_, 
                                        "syntax signature error : the branch from this point is too long") ;
       sameSignature = false ;
     }
@@ -224,7 +224,7 @@ void cPtr_typeInstructionVerifSyntaxique
     GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.firstObject () ;
     while (argument != NULL) {
       macroValidPointer (argument) ;
-      argument->aNomVariableCible ()->generateCplusPlusName (inCppFile) ;
+      argument->aNomVariableCible (HERE)->generateCplusPlusName (inCppFile) ;
       inCppFile << ".defineAttribute (lexique_var_."
                << argument->aNomAttributSource << ", lexique_var_) ;\n" ;
       argument = argument->nextObject () ;
@@ -303,7 +303,7 @@ void cPtr_typeInstructionAppelNonTerminal
     while (argument != NULL) {
       macroValidPointer (argument) ;
       inCppFile << ", " ;
-      argument->mExpression ()->generateExpression (inCppFile) ;
+      argument->mExpression (HERE)->generateExpression (inCppFile) ;
       argument = argument->nextObject () ;
     }
   }
@@ -327,7 +327,7 @@ bool cPtr_typeInstructionAppelNonTerminal
     GGS_typeExpressionList::element_type * argument = mParametersExpressionList.firstObject () ;
     while ((argument != NULL) && !used) {
       macroValidPointer (argument) ;
-      used = argument->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+      used = argument->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
       argument = argument->nextObject () ;
     }
   }
@@ -683,7 +683,7 @@ generateInstruction (AC_OutputStream & inCppFile,
         inCppFile << "}else " ;
       }
       inCppFile << "if ((" ;
-      currentBranch->mIFexpression ()->generateExpression (inCppFile) ;
+      currentBranch->mIFexpression (HERE)->generateExpression (inCppFile) ;
       inCppFile << ").isBuiltAndTrue ()) {\n" ;
       sint32 localPrototypeIndex = kPrototypeIndex ;
       generateInstructionListForList (currentBranch->mInstructionsList, inCppFile,
@@ -710,7 +710,7 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
-    used = currentBranch->mIFexpression ()->isLexiqueFormalArgumentUsedForTest ()
+    used = currentBranch->mIFexpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
        || isLexiqueFormalArgumentUsedForList (currentBranch->mInstructionsList, inGenerateSemanticInstructions) ;
     currentBranch = currentBranch->nextObject () ;
   }
@@ -726,7 +726,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
-    used = currentBranch->mIFexpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
+    used = currentBranch->mIFexpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || formalArgumentIsUsedForList (currentBranch->mInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch = currentBranch->nextObject () ;
   }

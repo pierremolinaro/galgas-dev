@@ -67,7 +67,7 @@ void cPtr_typeNonterminalToGenerate
                = currentAlt->mInfo.mFormalParametersList.firstObject () ;
     while (currentArgument != NULL) {
       inHfile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inHfile) ;
+      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
       currentArgument = currentArgument->nextObject () ;
     }
     inHfile << ") = 0 ;\n\n" ;
@@ -129,7 +129,7 @@ void cPtr_typeProductionAengendrer
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentAlt->mInfo.aListeDeTypesEffectifs.firstObject () ;
     while (currentArgument != NULL) {
       inHfile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inHfile) ;
+      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
       currentArgument = currentArgument->nextObject () ;
     }
     inHfile << ") ;\n\n" ;
@@ -193,12 +193,12 @@ void cPtr_typeProductionAengendrer
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentAlt->mInfo.aListeDeTypesEffectifs.firstObject () ;
     while (currentArgument != NULL) {
       inCppFile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
+      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
       const bool variableUtilisee = formalArgumentIsUsedForList (currentAlt->mInfo.mAllInstructionsList, currentArgument->mCppName, true) ;
       if (! variableUtilisee) {
         inCppFile << "/* " ;
       }
-      currentArgument->mCppName ()->generateCplusPlusName (inCppFile) ;
+      currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
       if (! variableUtilisee) {
         inCppFile << " */" ;
       }
@@ -304,7 +304,7 @@ engendrerDeclarationPrototypesReglesDeProduction (GGS_lstring & nomComposant,
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate ()->generateCppClassDeclaration (inHfile,
+    element->mEntityToGenerate (HERE)->generateCppClassDeclaration (inHfile,
                                                                 inLexiqueName,
                                                                 nomComposant,
                                                                 select_repeat_production_index) ;

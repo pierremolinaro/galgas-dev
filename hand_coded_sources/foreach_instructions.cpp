@@ -37,7 +37,7 @@ void cPtr_typeForeachInstruction
       macroValidPointer (enumeratedVariable) ;
       ioCppFile << "GGS_" << enumeratedVariable->mCppTypeName.string ()
                 << "::element_type * operand_" << enumeratedVariable->mLocationOffset.currentLocation () << " = " ;
-      enumeratedVariable->mCppEnumeratedVariableName ()->generateCplusPlusName (ioCppFile) ;
+      enumeratedVariable->mCppEnumeratedVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << ".firstObject () ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
@@ -51,9 +51,9 @@ void cPtr_typeForeachInstruction
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
  //--- While expression
-    if ((dynamic_cast <cPtr_typeTrueBool *> (mWhileExpression ())) == NULL) {
+    if ((dynamic_cast <cPtr_typeTrueBool *> (mWhileExpression (HERE))) == NULL) {
       ioCppFile <<  "\n    && (" ;
-      mWhileExpression ()->generateExpression (ioCppFile) ;
+      mWhileExpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << ".isBuiltAndTrue ())" ;    
     }
     ioCppFile << ") {\n" ;
@@ -81,7 +81,7 @@ void cPtr_typeForeachInstruction
 bool cPtr_typeForeachInstruction
 ::isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   return isLexiqueFormalArgumentUsedForList (mInstructionsList, inGenerateSemanticInstructions)
-    || mWhileExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+    || mWhileExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -90,7 +90,7 @@ bool cPtr_typeForeachInstruction
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool used = formalArgumentIsUsedForList (mInstructionsList, inArgumentCppName, true)
-    || mWhileExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    || mWhileExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {
     macroValidPointer (enumeratedVariable) ;

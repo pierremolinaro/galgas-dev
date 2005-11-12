@@ -29,7 +29,7 @@
 void cPtr_typeTestComplement::
 generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(! " ;
-  mTest ()->generateExpression (ioCppFile) ;
+  mTest (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ')' ;
 }
 
@@ -37,14 +37,14 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeTestComplement
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mTest ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mTest (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeTestComplement
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mTest ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mTest (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -58,9 +58,9 @@ bool cPtr_typeTestComplement
 
 void cPtr_typeAndOperation::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "((" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") && (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "))" ;
 }
 
@@ -68,16 +68,16 @@ void cPtr_typeAndOperation::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeAndOperation
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) || 
-         mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) || 
+         mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeAndOperation
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest () || 
-         mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest () || 
+         mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -91,9 +91,9 @@ bool cPtr_typeAndOperation
 
 void cPtr_typeOrOperation::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "((" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") || (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "))" ;
 }
 
@@ -101,16 +101,16 @@ void cPtr_typeOrOperation::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeOrOperation
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) || 
-         mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) || 
+         mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeOrOperation
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest () || 
-         mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest () || 
+         mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -124,9 +124,9 @@ bool cPtr_typeOrOperation
 
 void cPtr_typeConcatOperation::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "((" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") + (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "))" ;
 }
 
@@ -134,16 +134,16 @@ void cPtr_typeConcatOperation::generateExpression (AC_OutputStream & ioCppFile) 
 
 bool cPtr_typeConcatOperation
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) || 
-         mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) || 
+         mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeConcatOperation
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest () || 
-         mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest () || 
+         mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -365,7 +365,7 @@ generateExpression (AC_OutputStream & ioCppFile) {
     }else{
       ioCppFile << ", " ;
     }
-    current->mExpression ()->generateExpression (ioCppFile) ;
+    current->mExpression (HERE)->generateExpression (ioCppFile) ;
     current = current->nextObject () ;
   }
   ioCppFile << ')' ;
@@ -379,7 +379,7 @@ bool cPtr_typeConstructorExpression
   GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
   while ((current != NULL) && ! isUsed) {
     macroValidPointer (current) ;
-    isUsed = current->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    isUsed = current->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
     current = current->nextObject () ;
   }
   return isUsed ;
@@ -393,7 +393,7 @@ bool cPtr_typeConstructorExpression
   GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
   while ((current != NULL) && ! isUsed) {
     macroValidPointer (current) ;
-    isUsed = current->mExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+    isUsed = current->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
     current = current->nextObject () ;
   }
   return isUsed ;
@@ -410,9 +410,9 @@ bool cPtr_typeConstructorExpression
 
 void cPtr_typeEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") == (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ")" ;
 }
 
@@ -420,16 +420,16 @@ void cPtr_typeEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeEqualTest
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
-      || mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeEqualTest
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest ()
-      || mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -443,9 +443,9 @@ bool cPtr_typeEqualTest
 
 void cPtr_typeNonEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") != (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ")" ;
 }
 
@@ -453,25 +453,25 @@ void cPtr_typeNonEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeNonEqualTest
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
-      || mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeNonEqualTest
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest ()
-      || mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInfOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") <= (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ")" ;
 }
 
@@ -479,16 +479,16 @@ void cPtr_typeInfOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeInfOrEqualTest
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
-      || mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeInfOrEqualTest
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest ()
-      || mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -502,9 +502,9 @@ bool cPtr_typeInfOrEqualTest
 
 void cPtr_typeStrictInfTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") < (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ")" ;
 }
 
@@ -512,16 +512,16 @@ void cPtr_typeStrictInfTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeStrictInfTest
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
-      || mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeStrictInfTest
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest ()
-      || mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -535,9 +535,9 @@ bool cPtr_typeStrictInfTest
 
 void cPtr_typeSupOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") <= (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ")" ;
 }
 
@@ -545,16 +545,16 @@ void cPtr_typeSupOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeSupOrEqualTest
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
-      || mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeSupOrEqualTest
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest ()
-      || mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -568,9 +568,9 @@ bool cPtr_typeSupOrEqualTest
 
 void cPtr_typeStrictSupTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
-  mLeftExpression ()->generateExpression (ioCppFile) ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") > (" ;
-  mRightExpression ()->generateExpression (ioCppFile) ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ")" ;
 }
 
@@ -578,16 +578,16 @@ void cPtr_typeStrictSupTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeStrictSupTest
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mLeftExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
-      || mRightExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeStrictSupTest
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mLeftExpression ()->isLexiqueFormalArgumentUsedForTest ()
-      || mRightExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -601,7 +601,7 @@ bool cPtr_typeStrictSupTest
 
 void cPtr_typeReaderCallInExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  mExpressionValue ()->generateExpression (ioCppFile) ;
+  mExpressionValue (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ".reader_" << mReaderName << " (" ;
   GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
   bool first = true ;
@@ -611,7 +611,7 @@ generateExpression (AC_OutputStream & ioCppFile) {
     }else{
       ioCppFile << ", " ;
     }
-    e->mExpression ()->generateExpression (ioCppFile) ;
+    e->mExpression (HERE)->generateExpression (ioCppFile) ;
     e = e->nextObject () ;
   }
   ioCppFile << ")" ;
@@ -621,10 +621,10 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeReaderCallInExpression
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  bool used = mExpressionValue ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  bool used = mExpressionValue (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
   while ((e != NULL) && ! used) {
-    used = e->mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    used = e->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
     e = e->nextObject () ;
   }
   return used ;
@@ -637,7 +637,7 @@ bool cPtr_typeReaderCallInExpression
   bool used = false ;
   GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
   while ((e != NULL) && ! used) {
-    used = e->mExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+    used = e->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
     e = e->nextObject () ;
   }
   return used ;
@@ -653,7 +653,7 @@ bool cPtr_typeReaderCallInExpression
 //---------------------------------------------------------------------------*
 
 void cPtr_typeVarInExpression::generateExpression (AC_OutputStream & ioCppFile) {
-  mCppVarName ()->generateCplusPlusName (ioCppFile) ;
+  mCppVarName (HERE)->generateCplusPlusName (ioCppFile) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -706,9 +706,9 @@ bool cPtr_typeJokerInExpression
 //---------------------------------------------------------------------------*
 
 void cPtr_typeTextTableCall::generateExpression (AC_OutputStream & ioCppFile) {
-  mExpression ()->generateExpression (ioCppFile) ;
+  mExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << '.' << aNomMethodeTest << " (" ;
-  aNomCppClef ()->generateCplusPlusName (ioCppFile) ;
+  aNomCppClef (HERE)->generateCplusPlusName (ioCppFile) ;
   ioCppFile << ')' ;
 }
 
@@ -716,7 +716,7 @@ void cPtr_typeTextTableCall::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeTextTableCall
 ::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
+  return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || aNomCppClef.isEqualTo (inArgumentCppName) ;
 }
 
@@ -724,7 +724,7 @@ bool cPtr_typeTextTableCall
 
 bool cPtr_typeTextTableCall
 ::isLexiqueFormalArgumentUsedForTest (void) const {
-  return mExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -816,7 +816,7 @@ void cPtr_C_if_instruction
         ioCppFile << "}else " ;
       }
       ioCppFile << "if ((" ;
-      currentBranch->mIFexpression ()->generateExpression (ioCppFile) ;
+      currentBranch->mIFexpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << ").isBuiltAndTrue ()) {\n" ;
       generateInstructionListForList (currentBranch->mInstructionsList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, true) ;
@@ -839,7 +839,7 @@ bool cPtr_C_if_instruction
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
-    used = currentBranch->mIFexpression ()->isLexiqueFormalArgumentUsedForTest ()
+    used = currentBranch->mIFexpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
        || isLexiqueFormalArgumentUsedForList (currentBranch->mInstructionsList, inGenerateSemanticInstructions) ;
     currentBranch = currentBranch->nextObject () ;
   }
@@ -855,7 +855,7 @@ bool cPtr_C_if_instruction
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
-    used = currentBranch->mIFexpression ()->formalArgumentIsUsedForTest (inArgumentCppName)
+    used = currentBranch->mIFexpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || formalArgumentIsUsedForList (currentBranch->mInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch = currentBranch->nextObject () ;
   }

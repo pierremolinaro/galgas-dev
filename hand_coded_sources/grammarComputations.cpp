@@ -262,7 +262,7 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
   GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
-    currentInstruction->mInstruction ()->fixInfos (inInfo, inLexique) ;
+    currentInstruction->mInstruction (HERE)->fixInfos (inInfo, inLexique) ;
 
     currentInstruction = currentInstruction->nextObject () ;
   }

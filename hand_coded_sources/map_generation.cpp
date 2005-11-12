@@ -51,7 +51,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType()->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
   
@@ -95,7 +95,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Create a new element\n"
              "  protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;\n"
              "//--- Get object pointer (for method call)\n"
-             "  public : inline GGS_" << aNomTable << " * operator () (void) { return this ; }\n"
+             "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "//--- 'empty' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_empty (void) ;\n"
              "//--- Method used for duplicate a map\n"
@@ -117,7 +117,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
       inHfile << ",\n                                const " ;
-      currentAttribute->mAttributType()->generateFormalParameter (inHfile, true) ;
+      currentAttribute->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << " inParameter" << index ;
       index ++ ;
       currentAttribute = currentAttribute->nextObject () ;
@@ -142,7 +142,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                " ;
-      current->mAttributType()->generateFormalParameter (inHfile, false) ;
+      current->mAttributType(HERE)->generateFormalParameter (inHfile, false) ;
       inHfile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -159,7 +159,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "                                  const " ;
-    current->mAttributType()->generateCppClassName (inHfile) ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
     inHfile << "& inParameter" << index << ",\n" ;
     index ++ ;
     current = current->nextObject () ;
@@ -174,7 +174,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "                                  " ;
-    current->mAttributType()->generateCppClassName (inHfile) ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
     inHfile << "& outParameter" << index << ",\n" ;
     index ++ ;
     current = current->nextObject () ;
@@ -257,7 +257,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "               const " ;
-    current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << " inParameter" << index << ",\n" ;
     index ++ ;
     current = current->nextObject () ;
@@ -297,7 +297,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "               " ;
-    current->mAttributType()->generateFormalParameter (inCppFile, false) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, false) ;
     inCppFile << " & outParameter" << index << ",\n" ;
     index ++ ;
     current = current->nextObject () ;
@@ -351,7 +351,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
-      current->mAttributType()->generateFormalParameter (inCppFile, false) ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, false) ;
       inCppFile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -398,7 +398,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                const " ;
-      current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << "inParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -458,7 +458,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType()->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
   
@@ -473,7 +473,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "class GGS_" << aNomTable << " : public "  << aNomClasseGenerique
           << " <e_" << aNomTable << "> {\n"
              "//--- Get object pointer\n"
-             "  public : inline GGS_" << aNomTable << " * operator () (void) { return this ; }\n"
+             "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "//--- Handle 'empty' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_empty (void) ;\n" ;
 
@@ -491,7 +491,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                " ;
-      current->mAttributType()->generateFormalParameter (inHfile, false) ;
+      current->mAttributType(HERE)->generateFormalParameter (inHfile, false) ;
       inHfile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -507,7 +507,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                " ;
-      current->mAttributType()->generateFormalParameter (inHfile, false) ;
+      current->mAttributType(HERE)->generateFormalParameter (inHfile, false) ;
       inHfile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -530,7 +530,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                const " ;
-      current->mAttributType()->generateFormalParameter (inHfile, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << " inParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -546,7 +546,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                const " ;
-      current->mAttributType()->generateFormalParameter (inHfile, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << " inParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -610,7 +610,7 @@ void cPtr_typeDefinitionTableAimplementer
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
-      current->mAttributType()->generateFormalParameter (inCppFile, false) ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, false) ;
       inCppFile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -664,7 +664,7 @@ void cPtr_typeDefinitionTableAimplementer
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
-      current->mAttributType()->generateFormalParameter (inCppFile, false) ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, false) ;
       inCppFile << " & outParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -726,7 +726,7 @@ void cPtr_typeDefinitionTableAimplementer
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                const " ;
-      current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << " inParameter" << index ;
       index ++ ;
       current = current->nextObject () ;
@@ -768,7 +768,7 @@ void cPtr_typeDefinitionTableAimplementer
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                const " ;
-      current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << " inParameter" << index ;
       index ++ ;
       current = current->nextObject () ;

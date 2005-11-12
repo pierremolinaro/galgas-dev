@@ -32,7 +32,7 @@ printInstructionsListForGrammar (const GGS_L_ruleSyntaxSignature & inInstruction
   GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
-    currentInstruction->mInstruction ()->printInstructionForGrammar (inHTMLfile) ;
+    currentInstruction->mInstruction (HERE)->printInstructionForGrammar (inHTMLfile) ;
     currentInstruction = currentInstruction->nextObject () ;
   }
 }
