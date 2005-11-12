@@ -32,9 +32,9 @@ void cPtr_C_assignmentInstruction
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    mTargetVarCppName ()->generateCplusPlusName (ioCppFile) ;
+    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " = " ;
-    mSourceExpression ()->generateExpression (ioCppFile) ;
+    mSourceExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n" ;
   }
 }
@@ -43,7 +43,7 @@ void cPtr_C_assignmentInstruction
 
 bool cPtr_C_assignmentInstruction
 ::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return mSourceExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -52,7 +52,7 @@ bool cPtr_C_assignmentInstruction
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName)
-      || (mSourceExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)) ;
+      || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -73,14 +73,14 @@ void cPtr_C_declarationInstructionWithAssignment
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
   //--- Generate declaration
-    mVariableType ()->generateCppClassName (ioCppFile) ;
+    mVariableType (HERE)->generateCppClassName (ioCppFile) ;
     ioCppFile << ' ' ;
-    mTargetVarCppName ()->generateCplusPlusName (ioCppFile) ;
+    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " ;\n" ;
   //--- Generate assignment
-    mTargetVarCppName ()->generateCplusPlusName (ioCppFile) ;
+    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " = " ;
-    mSourceExpression ()->generateExpression (ioCppFile) ;
+    mSourceExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n" ;
   }
 }
@@ -89,7 +89,7 @@ void cPtr_C_declarationInstructionWithAssignment
 
 bool cPtr_C_declarationInstructionWithAssignment
 ::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return mSourceExpression ()->isLexiqueFormalArgumentUsedForTest () ;
+  return mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -98,7 +98,7 @@ bool cPtr_C_declarationInstructionWithAssignment
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName)
-      || (mSourceExpression ()->formalArgumentIsUsedForTest (inArgumentCppName)) ;
+      || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
 }
 
 //---------------------------------------------------------------------------*

@@ -134,7 +134,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
-    generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inHfile) ;
+    generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
     currentArgument = currentArgument->nextObject () ;
   }
   inHfile << ") ;\n\n" ;
@@ -171,13 +171,13 @@ void cPtr_typeRoutineAengendrer
   GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
   while (currentArgument != NULL) {
     inCppFile << ",\n                                " ;
-    generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
+    generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
     const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionsList, currentArgument->mCppName, true) ;
     inCppFile << ' ' ;
     if (! variableUtilisee) {
       inCppFile << "/* " ;
     }
-    currentArgument->mCppName ()->generateCplusPlusName (inCppFile) ;
+    currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
     if (! variableUtilisee) {
       inCppFile << " */" ;
     }
@@ -217,7 +217,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   GGS_L_signature::element_type * currentArgument = aSignature.firstObject () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
-    generateFormalArgumentFromType (currentArgument->mType (), currentArgument->mFormalArgumentPassingMode, inHfile) ;
+    generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
     currentArgument = currentArgument->nextObject () ;
   }
   inHfile << ") ;\n\n" ;
@@ -328,13 +328,13 @@ generate_header_file (C_Lexique & inLexique,
   GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate ()->generateHdeclarations (generatedZone3, lexiqueName, inLexique) ;
+    element->mEntityToGenerate (HERE)->generateHdeclarations (generatedZone3, lexiqueName, inLexique) ;
     element = element->nextObject () ;
   }
   element = listeEntitesAengendrer.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate ()->generateHdeclarations_2 (generatedZone3, lexiqueName, inLexique) ;
+    element->mEntityToGenerate (HERE)->generateHdeclarations_2 (generatedZone3, lexiqueName, inLexique) ;
     element = element->nextObject () ;
   }
 
@@ -343,7 +343,7 @@ generate_header_file (C_Lexique & inLexique,
   element = listeEntitesAengendrer.firstObject () ;
   while ((element != NULL) && ! engendrerClasseCpp) {
     macroValidPointer (element) ;
-    engendrerClasseCpp = element->mEntityToGenerate ()->isCppClassNeeded () ;
+    engendrerClasseCpp = element->mEntityToGenerate (HERE)->isCppClassNeeded () ;
     element = element->nextObject () ;
   }
   if (engendrerClasseCpp) {
@@ -1301,7 +1301,7 @@ generate_cpp_file (C_Lexique & inLexique,
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate ()->generateCppClassImplementation (generatedZone3,
+    element->mEntityToGenerate (HERE)->generateCppClassImplementation (generatedZone3,
                                          inLexiqueName,
                                          nomComposant,
                                          select_repeat_production_index,

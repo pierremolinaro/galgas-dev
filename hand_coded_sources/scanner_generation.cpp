@@ -38,7 +38,7 @@ instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & in
   GGS_tListeInstructionsLexicales::element_type * courant = inList.firstObject () ;
   while ((courant != NULL) && ! use) {
     macroValidPointer (courant) ;
-    use = courant->attributInstruction()->instruction__uses_loop_variable () ;
+    use = courant->attributInstruction(HERE)->instruction__uses_loop_variable () ;
     courant = courant->nextObject () ;
   }
   return use ;
@@ -67,7 +67,7 @@ generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inLi
   GGS_tListeInstructionsLexicales::element_type * courant = inList.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
-    courant->attributInstruction()->generate_scanner_instruction (inLexiqueName, inCppFile) ;
+    courant->attributInstruction(HERE)->generate_scanner_instruction (inLexiqueName, inCppFile) ;
     courant = courant->nextObject () ;
   }
 }
@@ -98,7 +98,7 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
       }else{
         inCppFile << " ||\n    " ;
       }
-      cond->attributCondition()->generateLexicalCondition (inCppFile) ;
+      cond->attributCondition(HERE)->generateLexicalCondition (inCppFile) ;
       cond = cond->nextObject () ;
     }
     inCppFile << ") {\n" ;
@@ -117,7 +117,7 @@ engendrerDeclarationAttributInterne (GGS_typeLexicalAttributesMap::element_type 
   if (p != NULL) {
     macroValidPointer (p) ;
     engendrerDeclarationAttributInterne (p->infObject (), H_file) ;
-    p->mInfo.attributType()->generateAttributeDeclaration (p->mKey, H_file) ;
+    p->mInfo.attributType(HERE)->generateAttributeDeclaration (p->mKey, H_file) ;
     engendrerDeclarationAttributInterne (p->supObject (), H_file) ;
   }
 }
@@ -301,7 +301,7 @@ engendrerInitialisationAttributInterne (GGS_typeLexicalAttributesMap::element_ty
   if (p != NULL) {
     macroValidPointer (p) ;
     engendrerInitialisationAttributInterne (p->infObject (), inCppFile) ;
-    p->mInfo.attributType()->generateAttributeInitialization (p->mKey, inCppFile) ;
+    p->mInfo.attributType(HERE)->generateAttributeInitialization (p->mKey, inCppFile) ;
     engendrerInitialisationAttributInterne (p->supObject (), inCppFile) ;
   }
 }
@@ -551,7 +551,7 @@ generateExternArgumentForList (const GGS_typeListeArgumentsRoutExterne & inList,
     }else{
       inCppFile << ", " ;
     }
-    courant->attributArgument()->generateExternArgument (inCppFile) ;
+    courant->attributArgument(HERE)->generateExternArgument (inCppFile) ;
     courant = courant->nextObject () ;
   }
 }
@@ -719,7 +719,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
   }
   inCppFile << "if (mCurrentTokenCode == -1) {\n" ;
   inCppFile.incIndentation (+2) ;
-  attributEmissionParDefaut()->generateDefaultToken (inLexiqueName, inCppFile) ;
+  attributEmissionParDefaut(HERE)->generateDefaultToken (inLexiqueName, inCppFile) ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}\n" ;
 }

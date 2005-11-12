@@ -55,12 +55,12 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       while (currentArgument != NULL) {
         macroValidPointer (currentArgument) ;
         inCppFile << ",\n                                " ;
-        currentArgument->mType ()->generateFormalParameter (inCppFile, ! currentArgument->aModeIn.boolValue ()) ;
+        currentArgument->mType (HERE)->generateFormalParameter (inCppFile, ! currentArgument->aModeIn.boolValue ()) ;
         const bool variableUtilisee = formalArgumentIsUsedForList (current->mInfo.mInstructionsList, currentArgument->mCppName, true) ;
         if (! variableUtilisee) {
           inCppFile << "/* " ;
         }
-        currentArgument->mCppName ()->generateCplusPlusName (inCppFile) ;
+        currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
         if (! variableUtilisee) {
           inCppFile << " */" ;
         }
@@ -94,7 +94,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
-      currentArgument->mType ()->generateFormalParameter (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
+      currentArgument->mType (HERE)->generateFormalParameter (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
       currentArgument = currentArgument->nextObject () ;
     }
   //--- Terminer la declaration
@@ -160,7 +160,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
               "  public : void drop_operation (void) ;\n"
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
-              "  public : cPtr_" << aNomClasse << " * operator () (void) const ;\n" ;
+              "  public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n" ;
 
 //--- Generate 'message' reader prototypes              
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
@@ -216,7 +216,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
         generatedZone3 << ",\n                                " ;
       }
       generatedZone3 << "const " ;
-      current->mAttributType()->generateFormalParameter (generatedZone3, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
       current = current->nextObject () ;
     }
     generatedZone3 << ") ;\n" ;
@@ -226,7 +226,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType()->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
 
@@ -300,7 +300,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
         inCppFile << ",\n                                " ;
       }
       inCppFile << "const " ;
-      current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << "argument_" << numeroVariable ;
       current = current->nextObject () ;
       numeroVariable ++ ;
@@ -419,8 +419,8 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   inCppFile.writeHyphenLineComment () ;
   inCppFile << "cPtr_" << aNomClasse << " * "
                "GGS_" << aNomClasse
-            << "\n::operator () (void) const {\n"
-               "  macroValidPointer (mPointer) ;\n"
+            << "\n::operator () (LOCATION_ARGS) const {\n"
+               "  macroValidPointerThere (mPointer) ;\n"
                "  return mPointer ;\n"
                "}\n\n" ;
 
@@ -496,7 +496,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
         generatedZone3 << ",\n                                " ;
       }
       generatedZone3 << "const " ;
-      current->mAttributType()->generateFormalParameter (generatedZone3, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
       current = current->nextObject () ;
     }
     generatedZone3 << ") ;\n" ;
@@ -506,7 +506,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType()->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
 
@@ -553,7 +553,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType()->generateFormalParameter (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -570,7 +570,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType()->generateFormalParameter (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -634,7 +634,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
         inCppFile << ",\n                                " ;
       }
       inCppFile << "const " ;
-      current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << "argument_" << numeroVariable ;
       current = current->nextObject () ;
       numeroVariable ++ ;
@@ -724,7 +724,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;

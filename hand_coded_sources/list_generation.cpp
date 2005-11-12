@@ -49,7 +49,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
     inHfile << "  " ;
-    attributCourant->mAttributType()->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
+    attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
     attributCourant = attributCourant->nextObject () ;
   }
 //--- declaration des attributs externes
@@ -67,7 +67,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     }
     macroValidPointer (attributCourant) ;
     inHfile << "const " ;
-    attributCourant->mAttributType()->generateFormalParameter (inHfile, true) ;
+    attributCourant->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     attributCourant = attributCourant->nextObject () ;
   }
   inHfile << ") ;\n\n"
@@ -125,7 +125,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType()->generateFormalParameter (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -138,7 +138,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     macroValidPointer (current) ;
     if (numeroVariable > 0) inHfile << ",\n                                " ;
     inHfile << "const " ;
-    current->mAttributType()->generateFormalParameter (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -196,7 +196,7 @@ void cPtr_C_listTypeToImplement
     macroValidPointer (current) ;
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "const " ;
-    current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -302,7 +302,7 @@ void cPtr_C_listTypeToImplement
     macroValidPointer (current) ;
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "const " ;
-    current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -346,7 +346,7 @@ void cPtr_C_listTypeToImplement
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType()->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
