@@ -77,7 +77,7 @@ SOURCES += F_Analyze_CLI_Options.cpp
 SOURCES += F_main.cpp
 SOURCES += AC_CLI_Options.cpp
 SOURCES += C_CLI_OptionGroup.cpp
-SOURCES += C_Builtin_CLI_Options.cpp
+SOURCES += C_builtin_CLI_Options.cpp
 #--- Hand-coded files ---------------------
 SOURCES += scanner_generation.cpp
 SOURCES += cocoa_generation.cpp
