@@ -639,6 +639,7 @@
 		CF9F4E7F092A71F20055C8C3 /* C_BDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9F4E37092A71F10055C8C3 /* C_BDD.h */; };
 		CF9F4E80092A71F20055C8C3 /* C_Display_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */; };
 		CF9F4E81092A71F20055C8C3 /* C_Display_BDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9F4E39092A71F10055C8C3 /* C_Display_BDD.h */; };
+		CF9F4E86092A74410055C8C3 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
 		CFA1415F060DB7CB00601791 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
 		CFA14160060DB7CB00601791 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA1415E060DB7CB00601791 /* AC_galgas_map.h */; };
 		CFA14161060DB7CB00601791 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -5099,6 +5100,7 @@
 				CF825AED08536F5D0077AEAF /* C_DateTime.cpp in Sources */,
 				CF825AEE08536F610077AEAF /* AC_OutputStream.cpp in Sources */,
 				CF825AEF08536F6A0077AEAF /* C_ConsoleOut.cpp in Sources */,
+				CF9F4E86092A74410055C8C3 /* C_builtin_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
