@@ -5,8 +5,8 @@
 #---------------------------------------------------------------*
 
 #--- Release and debug versions of common_sources_makefile.mke
-EXECUTABLE := galgas_ll1
-EXECUTABLE_DEBUG := galgas_ll1_debug
+EXECUTABLE := galgas
+EXECUTABLE_DEBUG := galgas_debug
 
 #--- Install directory (for "install" goal)
 INSTALL_DIR := /usr/bin
