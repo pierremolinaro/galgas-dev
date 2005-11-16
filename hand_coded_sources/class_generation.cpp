@@ -160,7 +160,11 @@ generateHdeclarations (AC_OutputStream & inHfile,
               "  public : void drop_operation (void) ;\n"
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
-              "  public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n" ;
+              "  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+              "    public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n"
+              "  #else\n"
+              "    public : inline cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const { return mPointer ; }\n"
+              "  #endif\n" ;
 
 //--- Generate 'message' reader prototypes              
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
@@ -417,12 +421,13 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 
 //--- Engendrer la deeclaration de la surcharge de l'opeerateur ()
   inCppFile.writeHyphenLineComment () ;
-  inCppFile << "cPtr_" << aNomClasse << " * "
-               "GGS_" << aNomClasse
+  inCppFile << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+               "  cPtr_" << aNomClasse << " * GGS_" << aNomClasse
             << "\n::operator () (LOCATION_ARGS) const {\n"
-               "  macroValidPointerThere (mPointer) ;\n"
-               "  return mPointer ;\n"
-               "}\n\n" ;
+               "    macroValidPointerThere (mPointer) ;\n"
+               "    return mPointer ;\n"
+               "  }\n"
+               "#endif\n\n" ;
 
 //--- Generate declaration of message readers
   messageCourant = mMessagesMap.firstObject () ;
