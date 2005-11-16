@@ -649,8 +649,8 @@
 		CFA7ADD7058DB5DF009AC1FE /* C_galgas_null_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86361A0586289600B23462 /* C_galgas_null_io.cpp */; };
 		CFA7ADD8058DB5E0009AC1FE /* C_galgas_null_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CF86361B0586289600B23462 /* C_galgas_null_io.h */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
-		CFCF14FB085C4101003AD24E /* galgasLL1Debug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgasLL1Debug */; };
-		CFCF14FC085C410E003AD24E /* galgasLL1 in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgasLL1 */; };
+		CFCF14FB085C4101003AD24E /* galgasDebug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgasDebug */; };
+		CFCF14FC085C410E003AD24E /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgas */; };
 		CFCF14FD085C410F003AD24E /* galgasLR1 in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CD1508519D4C0000FA6E /* galgasLR1 */; };
 		CFCF14FE085C410F003AD24E /* galgasLR1Debug in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CDB708519DD00000FA6E /* galgasLR1Debug */; };
 		CFCF14FF085C4110003AD24E /* galgasSLR in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CE5708519E080000FA6E /* galgasSLR */; };
@@ -2153,7 +2153,7 @@
 		CF76F4CB090E741200036FAC /* grammar_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_semantics.h; sourceTree = "<group>"; };
 		CF76F4D8090E742800036FAC /* program_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = program_parser.h; sourceTree = "<group>"; };
 		CF76F4DF090E743800036FAC /* galgas_start.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_start.h; sourceTree = "<group>"; };
-		CF7A1403058CEFE2007126C1 /* galgasLL1Debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasLL1Debug; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7A1403058CEFE2007126C1 /* galgasDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF825950085369E70077AEAF /* C_PrimeCache2.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_PrimeCache2.cpp; path = cache/C_PrimeCache2.cpp; sourceTree = "<group>"; };
 		CF825951085369E70077AEAF /* C_PrimeCache2.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = C_PrimeCache2.h; path = cache/C_PrimeCache2.h; sourceTree = "<group>"; };
 		CF825952085369E70077AEAF /* C_PrimeCache3.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_PrimeCache3.cpp; path = cache/C_PrimeCache3.cpp; sourceTree = "<group>"; };
@@ -2480,7 +2480,7 @@
 		CFF53893057A558F00854C83 /* GGS_luint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_luint.cpp; sourceTree = "<group>"; };
 		CFF53895057A558F00854C83 /* GGS_string.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_string.cpp; sourceTree = "<group>"; };
 		CFF53897057A558F00854C83 /* GGS_uint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_uint.cpp; sourceTree = "<group>"; };
-		CFF98D73058CCD4700176BCE /* galgasLL1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasLL1; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFF98D73058CCD4700176BCE /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF98D7C058CCDE200176BCE /* galgas.1 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.man; path = galgas.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2542,8 +2542,8 @@
 			isa = PBXGroup;
 			children = (
 				8D15AC370486D014006FF6A4 /* cocoaGalgas.app */,
-				CFF98D73058CCD4700176BCE /* galgasLL1 */,
-				CF7A1403058CEFE2007126C1 /* galgasLL1Debug */,
+				CFF98D73058CCD4700176BCE /* galgas */,
+				CF7A1403058CEFE2007126C1 /* galgasDebug */,
 				CFD6CD1508519D4C0000FA6E /* galgasLR1 */,
 				CFD6CDB708519DD00000FA6E /* galgasLR1Debug */,
 				CFD6CE5708519E080000FA6E /* galgasSLR */,
@@ -4791,7 +4791,7 @@
 			name = "GALGAS tool LL1";
 			productInstallPath = "$(HOME)/bin";
 			productName = galgas;
-			productReference = CFF98D73058CCD4700176BCE /* galgasLL1 */;
+			productReference = CFF98D73058CCD4700176BCE /* galgas */;
 			productType = "com.apple.product-type.tool";
 		};
 		CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 debug */ = {
@@ -4827,7 +4827,7 @@
 			);
 			name = "GALGAS tool LL1 debug";
 			productName = galgasDebug;
-			productReference = CF7A1403058CEFE2007126C1 /* galgasLL1Debug */;
+			productReference = CF7A1403058CEFE2007126C1 /* galgasDebug */;
 			productType = "com.apple.product-type.tool";
 		};
 		CFD6CC7B08519D4C0000FA6E /* GALGAS tool LR1 */ = {
@@ -5040,8 +5040,8 @@
 				CF82598008536A130077AEAF /* I_Window.png in Resources */,
 				CF82599008536A1F0077AEAF /* MainMenu.nib in Resources */,
 				CF82599108536A1F0077AEAF /* OC_GGS_Document.nib in Resources */,
-				CFCF14FB085C4101003AD24E /* galgasLL1Debug in Resources */,
-				CFCF14FC085C410E003AD24E /* galgasLL1 in Resources */,
+				CFCF14FB085C4101003AD24E /* galgasDebug in Resources */,
+				CFCF14FC085C410E003AD24E /* galgas in Resources */,
 				CFCF14FD085C410F003AD24E /* galgasLR1 in Resources */,
 				CFCF14FE085C410F003AD24E /* galgasLR1Debug in Resources */,
 				CFCF14FF085C4110003AD24E /* galgasSLR in Resources */,
@@ -5806,7 +5806,7 @@
 				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgasLL1;
+				PRODUCT_NAME = galgas;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -5836,7 +5836,7 @@
 				INSTALL_PATH = "$(HOME)/bin";
 				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgasLL1;
+				PRODUCT_NAME = galgas;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -5865,7 +5865,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasLL1Debug;
+				PRODUCT_NAME = galgasDebug;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 			};
@@ -5888,7 +5888,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasLL1Debug;
+				PRODUCT_NAME = galgasDebug;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 			};
