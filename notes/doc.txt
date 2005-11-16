@@ -1,1 +1,0 @@
-Contains installation notes, tutorial and GALGAS language specification and examples

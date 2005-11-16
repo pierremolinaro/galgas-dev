@@ -1,1 +1,0 @@
-GALGAS todos :--------------- write documentation.- translate some error messages (still in French).- improve GALGAS error messages for actual parameters checking.
