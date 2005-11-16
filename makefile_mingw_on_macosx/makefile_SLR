@@ -5,8 +5,8 @@
 #---------------------------------------------------------------*
 
 #--- Release and debug versions of galgas
-EXECUTABLE := galgas_slr
-EXECUTABLE_DEBUG := galgas_slr_debug
+EXECUTABLE := galgas_slr.exe
+EXECUTABLE_DEBUG := galgas_slr_debug.exe
 
 #---------------------------------------------------------------*
 

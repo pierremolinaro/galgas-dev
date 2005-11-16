@@ -1,1 +1,0 @@
-Contains all source files (included libpm 2.0.1), executables for Mach-O, Carbon and Classic,samples, CodeWarrior Pro 8 project file and stationery project, Project Builder project file,documentation in PDF

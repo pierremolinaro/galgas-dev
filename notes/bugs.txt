@@ -1,1 +1,0 @@
-GALGAS Known bugs (version VERSION) :- calling an abstract method throught "super" is not detected as an error.
