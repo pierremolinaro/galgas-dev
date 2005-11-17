@@ -914,8 +914,8 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
 //--- Generate SLR analyze action table --------------------------------------
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   generatedZone3.writeTitleComment ("SLR analyzer action table") ;
-  const sint32 rowsCount = inSLRdecisionTable.getRowsCount () ; // Number of states
-  const sint32 columnsCount = inSLRdecisionTable.getColumnsCount () ; // Number of terminal symbols
+  const sint32 rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
+  const sint32 columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
   TC_UniqueArray <sint32> startIndexArray (rowsCount COMMA_HERE) ;
   generatedZone3 << "// Action tables handle shift and reduce actions ;\n"
