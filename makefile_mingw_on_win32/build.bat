@@ -1,2 +1,2 @@
-PATH=%PATH%;c:\mingw\bin
-mingw32-make -f makefile.mke
+SET MINGW_PATH=c:\mingw\bin
+% MINGW_PATH %\mingw32-make -f makefile.mke
