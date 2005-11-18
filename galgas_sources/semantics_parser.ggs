@@ -122,9 +122,9 @@ label parse
 
 rule <attributes_definition_list>
   ?!@typeSemanticAttributesMap tableAttributs
-  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
-  !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
-  !@L_nameWithType listeTypeeAttributsExternesCourants # définis dans la classe courante
+  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
+  !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
+  !@L_nameWithType listeTypeeAttributsExternesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@stringset tableFichiersEnTetePourFichierH
 label parse
@@ -132,8 +132,8 @@ label parse
 
 rule <attribute_definition>
   ?!@typeSemanticAttributesMap tableAttributs
-  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
-  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
+  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
+  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@stringset tableFichiersEnTetePourFichierH
 label parse
@@ -444,7 +444,7 @@ rule <galgas_component>
   @bool composantSyntaxique := false ;
   @lstring componentName ;
   $semantics$ ;
-#--- Obtenir le nom du component sémantique
+#--- Obtenir le nom du component semantique
   $identifier$ ? componentName ;
   $:$ ;
 #--- No lexique
@@ -839,8 +839,8 @@ rule <semantics_declaration>
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-#--- Insérer dans la map des routines utilisables, -------------------------
-#    or vérifier la cohérence de la signature
+#--- Inserer dans la map des routines utilisables, -------------------------
+#    or verifier la coherence de la signature
  if [ioComponentSemanticsEntitiesMap hasKey ![nomRoutine value]] then
     @L_signature listeDeTypesPrecedenteDeclaration ;
     @AC_semanticsEntity entite ;
@@ -857,9 +857,9 @@ rule <semantics_declaration>
     [!?ioComponentSemanticsEntitiesMap insertKey !nomRoutine !entite] ;
   end if ;
   select
-#---- Déclaration anticipée de la routine (prototype) -------------------------
+#---- Declaration anticipee de la routine (prototype) -------------------------
     $;$ ;
-#---- Implémentation de la routine --------------------------------------------
+#---- Implementation de la routine --------------------------------------------
   or
    $:$ ;
   #--- Instructions
@@ -874,7 +874,7 @@ rule <semantics_declaration>
     $end$ ;
     $routine$ ;
     $;$ ;
-  #--- Inserer la routine dans la map des routines à implementer
+  #--- Inserer la routine dans la map des routines a implementer
     @typeEntityToGenerate ea := [@typeRoutineAengendrer new !nomRoutine
                                                               !listeTypeEtNomsArguments
                                                               !ioInstructionsList] ;
@@ -906,8 +906,8 @@ label importSemantics
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-#--- Insérer dans la map des routines utilisables, -------------------------
-#    or vérifier la cohérence de la signature
+#--- Inserer dans la map des routines utilisables, -------------------------
+#    or verifier la coherence de la signature
  if [ioComponentSemanticsEntitiesMap hasKey ![nomRoutine value]] then
     @L_signature listeDeTypesPrecedenteDeclaration ;
     @AC_semanticsEntity entite ;
@@ -924,9 +924,9 @@ label importSemantics
     [!?ioComponentSemanticsEntitiesMap insertKey !nomRoutine !entite] ;
   end if ;
   select
-#---- Déclaration anticipée de la routine (prototype) -------------------------
+#---- Declaration anticipee de la routine (prototype) -------------------------
     $;$ ;
-#---- Implémentation de la routine --------------------------------------------
+#---- Implementation de la routine --------------------------------------------
   or
    $:$ ;
   #--- Instructions
@@ -947,7 +947,7 @@ label importSemantics
 end rule ;
 
 #---------------------------------------------------------------------------*
-#                        ANALYSE D'UNE CLASSE MÈRE                          *
+#                        ANALYSE D'UNE CLASSE MERE                          *
 #---------------------------------------------------------------------------*
 
 rule <parent_class>
@@ -979,7 +979,7 @@ rule <parent_class>
   $extends$ ;
   @lstring superClassName ;
   $type_name$ ? superClassName ;
-#--- Vérifications sémantiques sur le Parse super class name
+#--- Verifications semantiques sur le Parse super class name
   @AC_galgasType typeUtilisateur ;
   @AC_semanticsEntity entite ;
   [!?ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
@@ -992,7 +992,7 @@ rule <parent_class>
                                     ?tableAttributs
                                     ?*)
              error superClassName : messageGalgasType ;
-#--- Le Parse super class name est la dernière insérée en fin de la liste des ancêtres 
+#--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
   [!?tableDesClassesAncetres insertKey !superClassName] ;
 end rule ;
 
@@ -1030,7 +1030,7 @@ rule <semantics_declaration>
     end if ;
     $;$ ;
   or
-  #--- Analyse de la classe mère (if existe)
+  #--- Analyse de la classe mere (if existe)
     @typeTableMethodes ancestorClassMethodsMap ;
     @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
     @typeSuperClassesMap tableDesClassesAncetres ;
@@ -1056,7 +1056,7 @@ rule <semantics_declaration>
       !?ioComponentSemanticsEntitiesMap
       !?tableFichiersEnTetePourFichierH ;
     @bool estAbstraite := true ;
-  #--- Déclaration des méthodes
+  #--- Declaration des methodes
     @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
     @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
     @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
@@ -1066,7 +1066,7 @@ rule <semantics_declaration>
       $message$ ;
       @lstring nomMessage ;
       $identifier$ ? nomMessage ;
-    #--- Chaîne définissant le message d'erreur
+    #--- Chaine definissant le message d'erreur
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
@@ -1123,7 +1123,7 @@ rule <semantics_declaration>
         error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
       end if ;
   end foreach ;
-  #--- Insérer dans la map des classes utilisables
+  #--- Inserer dans la map des classes utilisables
     @AC_galgasType c := [@typeGalgasClassType new 
                                             !nomClasseAbstraite
                                              !tableDesMethodes
@@ -1134,7 +1134,7 @@ rule <semantics_declaration>
                                              !estAbstraite] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !nomClasseAbstraite !entite] ;
-  #--- Insérer dans la map des classes définies dans ce fichier (à implémenter)
+  #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
     @typeEntityToGenerate def := [@typeDefClasseAbstraiteAimplementer new 
                                             !nomClasseAbstraite
                                              !listeTousAttributsSemantiques
@@ -1168,7 +1168,7 @@ label importSemantics
     end if ;
     $;$ ;
   or
-  #--- Analyse de la classe mère (if existe)
+  #--- Analyse de la classe mere (if existe)
     @typeTableMethodes ancestorClassMethodsMap ;
     @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
     @typeSuperClassesMap tableDesClassesAncetres ;
@@ -1192,7 +1192,7 @@ label importSemantics
                                  !?ioComponentSemanticsEntitiesMap
                                  !?tableFichiersEnTetePourFichierH ;
     @bool estAbstraite := true ;
-  #--- Déclaration des méthodes
+  #--- Declaration des methodes
     @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
     @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
     @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
@@ -1204,7 +1204,7 @@ label importSemantics
       $message$ ;
       @lstring nomMessage ;
       $identifier$ ? nomMessage ;
-    #--- Chaîne définissant le message d'erreur
+    #--- Chaine definissant le message d'erreur
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
@@ -1261,7 +1261,7 @@ label importSemantics
         error here : "the message '" .  [nomMessageAbstrait value] . "' is not defined" ;
       end if ;
   end foreach ;
-  #--- Insérer dans la map des classes utilisables
+  #--- Inserer dans la map des classes utilisables
     @AC_galgasType c := [@typeGalgasClassType new 
                                             !nomClasseAbstraite
                                              !tableDesMethodes
@@ -1299,7 +1299,7 @@ rule <semantics_declaration>
 #--- Nom de la classe
   @lstring nomClasseNonAbstraite ;
   $type_name$ ? nomClasseNonAbstraite ;
-#--- Vérifier que cette classe n'a pas été prédéclarée
+#--- Verifier que cette classe n'a pas ete predeclaree
   if [tableEnAvant hasKey ![nomClasseNonAbstraite value]] then
     error nomClasseNonAbstraite : "a non abstract class cannot be predeclared" ; 
   end if ;
@@ -1308,7 +1308,7 @@ rule <semantics_declaration>
   @lstring superClassName ;
   $type_name$ ? superClassName ;
   ${$ ;
-#--- Vérifications sémantiques sur le Parse super class name
+#--- Verifications semantiques sur le Parse super class name
   @AC_galgasType definitionClasseMere ;
   @AC_semanticsEntity entite ;
   [!?ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
@@ -1339,7 +1339,7 @@ rule <semantics_declaration>
     !?tableFichiersEnTetePourFichierH 
   ;
   @bool estAbstraite := false ;
-#--------------------- Méthodes de la classe ----------------------------
+#--------------------- Methodes de la classe ----------------------------
   @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
   @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
   @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
@@ -1368,7 +1368,7 @@ rule <semantics_declaration>
     #--- Nom du message
       @lstring nomMessage ;
       $identifier$ ? nomMessage ;
-    #--- Chaîne définissant le message d'erreur
+    #--- Chaine definissant le message d'erreur
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
@@ -1413,7 +1413,7 @@ rule <semantics_declaration>
                         !estAbstraite] ;
   entite := [@typeEntiteType new !c] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !nomClasseNonAbstraite !entite] ;
-#--- Insertion dans la map des classes à implémenter
+#--- Insertion dans la map des classes a implementer
   @typeEntityToGenerate def := [@typeDefClasseNonAbstraiteAimplementer new 
                                                 !nomClasseNonAbstraite
                                                 !listeTousAttributsSemantiques
@@ -1436,7 +1436,7 @@ label importSemantics
 #--- Nom de la classe
   @lstring nomClasseNonAbstraite ;
   $type_name$ ? nomClasseNonAbstraite ;
-#--- Vérifier que cette classe n'a pas été prédéclarée
+#--- Verifier que cette classe n'a pas ete predeclaree
   if [tableEnAvant hasKey ![nomClasseNonAbstraite value]] then
     error nomClasseNonAbstraite : "a non abstract class cannot be predeclared" ; 
   end if ;
@@ -1475,7 +1475,7 @@ label importSemantics
                                !?ioComponentSemanticsEntitiesMap
                                !?tableFichiersEnTetePourFichierH ;
   @bool estAbstraite := false ;
-#--------------------- Méthodes de la classe ----------------------------
+#--------------------- Methodes de la classe ----------------------------
   @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
   @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
   @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
@@ -1555,7 +1555,7 @@ label importSemantics
 end rule ;
 
 #---------------------------------------------------------------------------*
-#                                 Méthode abstract                          *
+#                                 Methode abstract                          *
 #---------------------------------------------------------------------------*
 
 rule <abstract_method>
@@ -1772,8 +1772,8 @@ rule <overrided_method>
 end rule ;
 
 #---------------------------------------------------------------------------*
-#               Analyse des arguments formels d'une méthode                 *
-#                     (entrée, sortie, or entrée/sortie)                    *
+#               Analyse des arguments formels d'une methode                 *
+#                     (entree, sortie, or entree/sortie)                    *
 #---------------------------------------------------------------------------*
 
 rule <formal_arguments_list>
@@ -1978,7 +1978,7 @@ rule <instruction_beginning_with_identifier>
 end rule ;
 
 #---------------------------------------------------------------------------*
-#        Liste d'arguments effectifs en entrée : ( ?<entité dest> ? * ...)  *
+#        Liste d'arguments effectifs en entree : ( ?<entite dest> ? * ...)  *
 #---------------------------------------------------------------------------*
 
 rule <input_parameters_list>
@@ -2002,7 +2002,7 @@ rule <input_parameters_list>
   or
     ellipsis := false ;
   end select ;
-#--- Vérifier la compatibilité des list et construire la list des affectations
+#--- Verifier la compatibilite des list et construire la list des affectations
   if [listeAttributsSemantiques length] < [listeCibles length] then
     error here : "too much arguments: " . [[listeAttributsSemantiques length] string]
       . " expected, " . [[listeCibles length] string] . " found" 
@@ -2152,7 +2152,7 @@ rule <instruction_beginning_with_identifier>
 end rule ;
 
 #---------------------------------------------------------------------------*
-#            Liste d'arguments effectifs !? entité ! entité ? entité ...    *
+#            Liste d'arguments effectifs !? entite ! entite ? entite ...    *
 #---------------------------------------------------------------------------*
 
 rule <actual_parameters_list>
@@ -2171,7 +2171,7 @@ rule <actual_parameters_list>
     !?ioOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
   ;
-#--- Vérifier la correction des arguments effectifs
+#--- Verifier la correction des arguments effectifs
   verifierCompatibiliteArgEffectifsSignature
     !listeTypesParametresFormels
     !listeTypesParametresEffectifs
@@ -2182,8 +2182,8 @@ rule <actual_parameters_list>
 end rule ;
 
 #---------------------------------------------------------------------------*
-#            Liste d'arguments effectifs !? entité ! entité ? entité ...    *
-#                          sans vérification de type                        *
+#            Liste d'arguments effectifs !? entite ! entite ? entite ...    *
+#                          sans verification de type                        *
 #---------------------------------------------------------------------------*
 
 rule <parse_parameters_list>
@@ -2323,7 +2323,7 @@ rule <extract_instruction>
   $->$ ;
   @lstring nomClasse ;
   $type_name$ ? nomClasse ;
-#--- Obtenir les caractéristiques de la classe nommée
+#--- Obtenir les caracteristiques de la classe nommee
   @AC_galgasType leType ;
   @AC_semanticsEntity entite ;
   [!?ioComponentSemanticsEntitiesMap searchKey !nomClasse ?entite] ;
@@ -2365,7 +2365,7 @@ rule <extract_instruction>
     ?errorExpression
     ?errorExpressionType
   ;
-#--- Vérifier que la variable est d'une type contenant une location localisant l'error
+#--- Verifier que la variable est d'une type contenant une location localisant l'error
   [errorExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
   $:$ ;
   @lstring nomMessage ;
@@ -2403,12 +2403,12 @@ rule <extract_instruction>
       #--- Nom du type 1
         @lstring nomType1 ;
         $type_name$ ? nomType1 ;
-      #--- Vérifier que la classe 'nomType1' est déclarée
+      #--- Verifier que la classe 'nomType1' est declaree
         @AC_galgasType definitionClasse1 ;
         @AC_semanticsEntity entite ;
         [!?ioComponentSemanticsEntitiesMap searchKey !nomType1 ?entite] ;
         extract entite->@typeEntiteType (?definitionClasse1) error nomType1 : messageTypeEntite ;
-      #--- Vérifier que la classe 'nomType1' hérite de la classe 'nomTypeBase1'
+      #--- Verifier que la classe 'nomType1' herite de la classe 'nomTypeBase1'
         @typeSuperClassesMap tableDesClassesAncetresType1 ;
         @typeListeAttributsSemantiques listeAttributs1 ;
         extract definitionClasse1->@typeGalgasClassType
@@ -2592,7 +2592,7 @@ rule <instruction_beginning_with_identifier>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
-#--- Vérifier que le nom est bien un nom de routine
+#--- Verifier que le nom est bien un nom de routine
   @L_signature signatureRoutine ;
   @AC_semanticsEntity entite ;
   [!?ioComponentSemanticsEntitiesMap searchKey !nomVarDest ?entite] ;
@@ -2776,7 +2776,7 @@ rule <semantic_instruction>
     ?errorExpression
     ?errorExpressionType
   ;
-#--- Vérifier que la variable est d'une type contenant une location localisant l'error
+#--- Verifier que la variable est d'une type contenant une location localisant l'error
   [errorExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
   $:$ ;
 #--- Warning message
@@ -2821,7 +2821,7 @@ rule <semantic_instruction>
     ?errorLocationExpression
     ?errorLocationExpressionType
   ;
-#--- Vérifier que la variable est d'une type contenant une location localisant l'error
+#--- Verifier que la variable est d'une type contenant une location localisant l'error
   [errorLocationExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
   $:$ ;
 #--- Error message
@@ -3001,7 +3001,7 @@ rule <semantic_instruction>
   extract entity->@C_grammarForSemantics (?startSymbolAltMap) error grammarName : messageTypeEntite ;
   @L_signature startSymbolSignature ;
   [!?startSymbolAltMap searchKey !altName ?startSymbolSignature] ;
-#--- Vérifier la cohérence avec la déclaration
+#--- Verifier la coherence avec la declaration
   verifierCompatibiliteArgEffectifsSignature 
     !startSymbolSignature
     !listeTypesParametresEffectifs
@@ -3162,12 +3162,12 @@ rule <parse_match_case>
 :
 #--- Nom du type 1
   $type_name$ ? outTypeName ;
-#--- Vérifier que la classe 'outTypeName' est déclarée
+#--- Verifier que la classe 'outTypeName' est declaree
   @AC_galgasType definitionClasse1 ;
   @AC_semanticsEntity entite ;
   [!?ioComponentSemanticsEntitiesMap searchKey !outTypeName ?entite] ;
   extract entite->@typeEntiteType (?definitionClasse1) error outTypeName : messageTypeEntite ;
-#--- Vérifier que la classe 'outTypeName' hérite de la classe 'baseTypeName1'
+#--- Verifier que la classe 'outTypeName' herite de la classe 'baseTypeName1'
   @typeSuperClassesMap tableDesClassesAncetresType1 ;
   @typeListeAttributsSemantiques listeAttributs1 ;
   @bool isAbstract ;
@@ -3356,7 +3356,7 @@ rule <semantic_instructions_list_no_verif>
 end rule ;
 
 #---------------------------------------------------------------------------*
-#                 Affection optionnelle dans une déclaration                *
+#                 Affection optionnelle dans une declaration                *
 #---------------------------------------------------------------------------*
 
 rule <optional_assignment>
@@ -3543,7 +3543,7 @@ rule <semantics_declaration>
       tableDeclAnticipeesClassePourFichierH += ![nomTable value] ;
     end if ;
   or
-  #--- map générique C++ utilisée
+  #--- map generique C++ utilisee
     $class$ ;
     @lstring cppClassName ;
     $identifier$ ?cppClassName ;
@@ -3555,7 +3555,7 @@ rule <semantics_declaration>
     $literal_string$ ? path ; 
     tableFichiersEnTetePourFichierCPP += ![path value] ;
     $;$ ;
-  #--- Déclaration des méthodes d'insertion, de recherche, et de block
+  #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [empty] ;
     @insertOrSearchMethodList searchMethodList [empty] ;
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
@@ -3669,14 +3669,14 @@ rule <semantics_declaration>
       @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
-  #--- Insertion dans la map des entités utilisables
+  #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new !nomTable
                                                 !listeTousAttributsSemantiques
                                                 !tableMethodesBloc
                                                 !mapMethodMap] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !nomTable !entite] ;
-  #--- Insertion dans la map des classes définies dans le fichier source courant
+  #--- Insertion dans la map des classes definies dans le fichier source courant
     @typeEntityToGenerate def := [@typeDefinitionTableAimplementer new !nomTable
                                                                        !listeTousAttributsSemantiques
                                                                        !listeTypeeAttributsExternesCourants
@@ -3715,7 +3715,7 @@ rule <semantics_declaration>
       end repeat ;
       $;$ ; 
     end select ;
-  #--- Déclaration des méthodes d'insertion, de recherche, et de block
+  #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [empty] ;
     @insertOrSearchMethodList searchMethodList [empty] ;
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
@@ -3797,14 +3797,14 @@ rule <semantics_declaration>
         end foreach ;
       end foreach ;
     end if ;
-  #--- Insertion dans la map des entités utilisables
+  #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new !nomTable
                                                 !listeTousAttributsSemantiques
                                                 !tableMethodesBloc
                                                 !mapMethodMap] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !nomTable !entite] ;
-  #--- Insertion dans la map des classes définies dans le fichier source courant
+  #--- Insertion dans la map des classes definies dans le fichier source courant
     @typeEntityToGenerate def := [@C_mapToImplement new !stateValues
                                                         !nomTable
                                                         !listeTousAttributsSemantiques
@@ -3832,7 +3832,7 @@ label importSemantics
       [!?tableEnAvantAimplementer insertKey !nomTable !t] ;
     end if ;
   or
-  #--- map générique C++ utilisée
+  #--- map generique C++ utilisee
     $class$ ;
     @lstring cppClassName ;
     $identifier$ ?cppClassName ;
@@ -3841,7 +3841,7 @@ label importSemantics
     $,$ ;
     $literal_string$ ? * ; 
     $;$ ;
-  #--- Déclaration des méthodes d'insertion, de recherche, et de block
+  #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [empty] ;
     @insertOrSearchMethodList searchMethodList [empty] ;
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
@@ -3956,7 +3956,7 @@ label importSemantics
       @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
-  #--- Insertion dans la map des entités utilisables
+  #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new !nomTable
                                                 !listeTousAttributsSemantiques
                                                 !tableMethodesBloc
@@ -3991,7 +3991,7 @@ label importSemantics
       end repeat ;
       $;$ ; 
     end select ;
-  #--- Déclaration des méthodes d'insertion, de recherche, et de block
+  #--- Declaration des methodes d'insertion, de recherche, et de block
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
   #--- Build insert and search method map
     @formalArgumentPassingMode inPassingMode [argumentIn] ;
@@ -4050,7 +4050,7 @@ label importSemantics
         [!?mapMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
       end if ;
     end repeat ;
-  #--- Insertion dans la map des entités utilisables
+  #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new !nomTable
                                                 !listeTousAttributsSemantiques
                                                 !tableMethodesBloc
@@ -4153,7 +4153,7 @@ rule <semantics_declaration>
     end if ;
   or
     ${$ ;
-  #-- Déclaration des attributs de la list
+  #-- Declaration des attributs de la list
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
@@ -4164,7 +4164,7 @@ rule <semantics_declaration>
                                  ?listeTypeeAttributsExternesCourants
                                  !?ioComponentSemanticsEntitiesMap
                                  !?tableFichiersEnTetePourFichierH ;
-  #--- Construction de l'attribut sémantique
+  #--- Construction de l'attribut semantique
     $}$ ;
     @AC_galgasType c := [@typeGalgasListType new !nomListe !listeTousAttributsSemantiques] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
@@ -4191,7 +4191,7 @@ label importSemantics
     end if ;
   or
     ${$ ;
-  #-- Déclaration des attributs de la list
+  #-- Declaration des attributs de la list
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
@@ -4203,7 +4203,7 @@ label importSemantics
                                  ?listeTypeeAttributsExternesCourants
                                  !?ioComponentSemanticsEntitiesMap
                                  !?tableFichiersEnTetePourFichierH ;
-  #--- Construction de l'attribut sémantique
+  #--- Construction de l'attribut semantique
     $}$ ;
     @AC_galgasType c := [@typeGalgasListType new !nomListe !listeTousAttributsSemantiques] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
@@ -4213,15 +4213,15 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                 LISTE DE DÉFINITION DES ATTRIBUTS SÉMANTIQUES             *
+#                 LISTE DE DEFINITION DES ATTRIBUTS SEMANTIQUES             *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <attributes_definition_list>
   ?!@typeSemanticAttributesMap tableAttributs
-  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
-  !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
-  !@L_nameWithType listeTypeeAttributsExternesCourants # définis dans la classe courante
+  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
+  !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
+  !@L_nameWithType listeTypeeAttributsExternesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@stringset tableFichiersEnTetePourFichierH
 :
@@ -4242,8 +4242,8 @@ end rule ;
 
 rule <attribute_definition>
   ?!@typeSemanticAttributesMap tableAttributs
-  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # hérités et définis dans la classe courante
-  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # définis dans la classe courante
+  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
+  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@stringset unused tableFichiersEnTetePourFichierH
 :
@@ -4551,7 +4551,7 @@ rule <formal_argument_type>
     @AC_semanticsEntity entite ;
     [!?ioComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
-  else # Déclaration 'enavant' ?
+  else # Declaration 'enavant' ?
     [!?tableEnAvant searchKey !outGalgasTypeName ?type_semantique] ;
   end if ;
 label importGrammarForSemantics
@@ -4574,7 +4574,7 @@ rule <formal_argument_type>
     @AC_semanticsEntity entite ;
     [!?ioComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
-  else # Déclaration 'enavant' ?
+  else # Declaration 'enavant' ?
     [!?tableEnAvant searchKey !outGalgasTypeName ?type_semantique] ;
     extract type_semantique->@typeGalgasUndefinedListType (?*) error outGalgasTypeName : messageGalgasType ;
   end if ;
@@ -4599,7 +4599,7 @@ rule <formal_argument_type>
     @AC_semanticsEntity entite ;
     [!?ioComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
-  else # Déclaration 'enavant' ?
+  else # Declaration 'enavant' ?
     [!?tableEnAvant searchKey !outGalgasTypeName ?type_semantique] ;
     extract type_semantique->@typeGalgasUndefinedMapType (?*) error outGalgasTypeName : messageGalgasType ;
   end if ;
@@ -4625,7 +4625,7 @@ rule <formal_argument_type>
     @AC_semanticsEntity entite ;
     [!?ioComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
-  else # Déclaration 'enavant' ?
+  else # Declaration 'enavant' ?
     [!?tableEnAvant searchKey !outGalgasTypeName ?type_semantique] ;
     extract type_semantique->@typeGalgasUndefinedClassType (?*) error outGalgasTypeName : messageGalgasType ;
   end if ;
@@ -4639,7 +4639,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                   DÉCLARATION D'UNE ACTION EXTERNE                        *
+#                   DECLARATION D'UNE ACTION EXTERNE                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 

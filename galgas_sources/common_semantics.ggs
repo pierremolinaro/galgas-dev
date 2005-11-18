@@ -1307,7 +1307,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 #--- Attributes list (those from inherited classes, followed by those from current class)
   @typeListeAttributsSemantiques mNonExternAttributesList ;  
 
-#--- Table des classes ancêtre de la classe courante
+#--- Table des classes ancetre de la classe courante
   @typeSuperClassesMap mAncestorClassesMap ;  
 
 #--- Table des messages
@@ -1431,7 +1431,7 @@ class @typeGalgas_enum extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                 VÉRIFIER LA COMPATIBILITÉ DE DEUX TYPES                   *
+#                 VERIFIER LA COMPATIBILITE DE DEUX TYPES                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1495,7 +1495,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#     VÉRIFICATION DE COMPATIBILITÉ ENTRE DEUX SIGNATURES DE MÉTHODE        *
+#     VERIFICATION DE COMPATIBILITE ENTRE DEUX SIGNATURES DE METHODE        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 

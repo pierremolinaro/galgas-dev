@@ -173,7 +173,7 @@ list @L_assignedVariables  {
 #---------------------------------------------------------------------------*
 #                                                                           *
 #                            class 'typeCible'                              *
-#     Est utilisé pour dénoter le type d'une variable cible anonyme         *       
+#     Est utilise pour denoter le type d'une variable cible anonyme         *       
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -192,7 +192,7 @@ list @typeListeCibles {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#     Liste des types et des noms C++ des arguments d'une méthode           *
+#     Liste des types et des noms C++ des arguments d'une methode           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -205,7 +205,7 @@ list @typeListeTypesEtNomsArgMethode {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#        Définition du type abstrait instruction d'une méthode              *
+#        Definition du type abstrait instruction d'une methode              *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -214,7 +214,7 @@ abstract class @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#        Définition du type list d'instructions d'une méthode               *
+#        Definition du type list d'instructions d'une methode               *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -235,7 +235,7 @@ list @L_nameWithType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#              Table des méthodes (d'une classe à implémenter)              *
+#              Table des methodes (d'une classe a implementer)              *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -314,7 +314,7 @@ class @typeModifierCallInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#           Instruction d'appel d'une méthode de list                       *
+#           Instruction d'appel d'une methode de list                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -326,7 +326,7 @@ class @typeInstructionAppelMethodeListe extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#           Instruction de déclaration d'une variable locale                *
+#           Instruction de declaration d'une variable locale                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -570,7 +570,7 @@ class @C_if_instruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#      Définition de la map des routines à implémenter                      *
+#      Definition de la map des routines a implementer                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -580,7 +580,7 @@ map @typeTableRoutinesAimplementer {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-# Table des attributs sémantiques internes (pour list d'instructions)       *
+# Table des attributs semantiques internes (pour list d'instructions)       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -717,8 +717,8 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#     ITÉRATEUR (DOUBLE) DE VÉRIFICATION DE COMPATIBILITÉ ENTRE             *
-#   ENTRE UNE LISTE DE TYPES ET UNE LISTE D'ATTRIBUTS SÉMANTIQUES           *
+#     ITERATEUR (DOUBLE) DE VERIFICATION DE COMPATIBILITE ENTRE             *
+#   ENTRE UNE LISTE DE TYPES ET UNE LISTE D'ATTRIBUTS SEMANTIQUES           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -741,7 +741,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#     VÉRIFICATION DE COMPATIBILITÉ ENTRE UNE SIGNATURE ET UN APPEL         *
+#     VERIFICATION DE COMPATIBILITE ENTRE UNE SIGNATURE ET UN APPEL         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -800,7 +800,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 #                                                                           *
 #                           class 'typeJoker'                               *
-#     Est utilisé pour dénoter le type d'une variable cible anonyme         *       
+#     Est utilise pour denoter le type d'une variable cible anonyme         *       
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -834,7 +834,7 @@ class @typeEntiteDest extends @typeCible {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#              Entité 'not-terminal'                                        *
+#              Entite 'not-terminal'                                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1013,7 +1013,7 @@ class @typeDropInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#            Table des routines déclarées par un prototype                  *
+#            Table des routines declarees par un prototype                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1023,7 +1023,7 @@ map @typeTableNomRoutinesDeclarees {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#              Entités à engendrer                                          *
+#              Entites a engendrer                                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1091,22 +1091,22 @@ class @C_mapToImplement extends @typeEntityToGenerate {
 class @typeDefClasseAbstraiteAimplementer extends @typeEntityToGenerate {
   @lstring aNomClasse ;
 
-#--- Liste de tous les attributs not externes, y compris ceux définis dans une classe mère
+#--- Liste de tous les attributs not externes, y compris ceux definis dans une classe mere
   @typeListeAttributsSemantiques aListeTousAttributsNonExternes ;  
 
-#--- Table de toutes les méthodes, y compris celles héritées
+#--- Table de toutes les methodes, y compris celles heritees
   @typeTableMethodes aTableToutesMethodes ;
 
-#--- Table des méthodes de la classe abstract
+#--- Table des methodes de la classe abstract
   @typeTableMethodesAimplementer mMethodsMap ;
 
-#--- Liste des attributs sémantiques not externes définis dans cette classe
+#--- Liste des attributs semantiques not externes definis dans cette classe
   @typeListeAttributsSemantiques aListeAttributsCourants ;
 
-#--- Liste des attributs externes définis dans cette classe
+#--- Liste des attributs externes definis dans cette classe
   @L_nameWithType aListeExternesCourants ;
 
-#--- Table des classes ancêtre de la classe courante
+#--- Table des classes ancetre de la classe courante
   @typeSuperClassesMap mAncestorClassesMap ;
 
 #--- Table des messages
@@ -1118,22 +1118,22 @@ class @typeDefClasseAbstraiteAimplementer extends @typeEntityToGenerate {
 class @typeDefClasseNonAbstraiteAimplementer extends @typeEntityToGenerate {
   @lstring aNomClasse ;
 
-#--- Liste de tous les attributs not externes, y compris ceux définis dans une classe mère
+#--- Liste de tous les attributs not externes, y compris ceux definis dans une classe mere
   @typeListeAttributsSemantiques aListeTousAttributsNonExternes ;  
 
-#--- Table de toutes les méthodes, y compris celles héritées
+#--- Table de toutes les methodes, y compris celles heritees
   @typeTableMethodes aTableToutesMethodes ;
 
-#--- Table des méthodes de la classe à implémenter
+#--- Table des methodes de la classe a implementer
   @typeTableMethodesAimplementer mMethodsMap ;
 
-#--- Liste des attributs sémantiques not externes définis dans cette classe
+#--- Liste des attributs semantiques not externes definis dans cette classe
   @typeListeAttributsSemantiques aListeAttributsCourants ;
 
-#--- Liste des attributs externes définis dans cette classe
+#--- Liste des attributs externes definis dans cette classe
   @L_nameWithType aListeExternesCourants ;
 
-#--- Table des classes ancêtre de la classe courante
+#--- Table des classes ancetre de la classe courante
   @typeSuperClassesMap mAncestorClassesMap ;  
 
 #--- Table des messages concrets de la classe courante
@@ -1156,7 +1156,7 @@ class @typeActionExterneAengendrer extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#              Liste des entités à engendrer                                *
+#              Liste des entites a engendrer                                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 

@@ -854,7 +854,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
                     "#define " << inLexiqueClassName << "_0_DEFINED\n"
                     "#include \"galgas/C_Lexique.h\"\n\n" ;
 
-// --------------- Déclaration de la classe de l'analyseur lexical  
+// --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class " << inLexiqueClassName << " : public C_Lexique {\n" ;
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;

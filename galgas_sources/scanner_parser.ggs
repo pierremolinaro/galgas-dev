@@ -503,7 +503,7 @@ rule <attribute_or_terminal_symbol_declaration>
 end rule ;
 
 #-------------------------------------------------------------------*
-#                déclaration des listes de mots réservés            *
+#                declaration des listes de mots reserves            *
 #-------------------------------------------------------------------*
 
 rule <key_words_list_declaration>
@@ -581,7 +581,7 @@ rule <key_words_list_declaration>
 end rule ;
 
 #-------------------------------------------------------------------*
-#             déclaration de la list des messages d'error           *
+#             declaration de la list des messages d'error           *
 #-------------------------------------------------------------------*
 
 rule <lexical_error_message_declaration>
@@ -851,7 +851,7 @@ rule <lexical_parameter>
   !@typeArgumentRoutineExterne a
   ?!@typeLexicalAttributesMap unused table_attributs
 :
-  $*$ ; # le caractère courant
+  $*$ ; # le caractere courant
   a := [@typeArgumentCaractereCourant new] ;
 end rule ;
 
@@ -862,7 +862,7 @@ rule <lexical_parameter>
   ?!@typeLexicalAttributesMap unused table_attributs
 :
   @lchar c ;
-  $literal_char$ ? c ; # un caractère particulier
+  $literal_char$ ? c ; # un caractere particulier
   a := [@typeArgumentCaractere new !c] ;
 end rule ;
 

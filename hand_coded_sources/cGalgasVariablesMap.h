@@ -4,7 +4,7 @@
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
+//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
 //  This program is free software; you can redistribute it and/or modify it  *
@@ -31,19 +31,19 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//       Énumération définissant les différentes natures d'une variable      *
+//       Enumeration definissant les differentes natures d'une variable      *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-enum enumNatureEntite {enumParametreIn,  // Paramètre formel en entrée
+enum enumNatureEntite {enumParametreIn,  // Parametre formel en entree
                        enumConstanteLocale, // constante locale (non modifiable)
                        enumVariableLocale, // variable locale
-                       enumParametreInOut, // Paramètre formel en entrée/sorie
-                       enumParametreOut} ; // Paramètre formel de sortie
+                       enumParametreInOut, // Parametre formel en entree/sorie
+                       enumParametreOut} ; // Parametre formel de sortie
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//       Énumération définissant les différentes états d'une variable        *
+//       Enumeration definissant les differentes etats d'une variable        *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -51,7 +51,7 @@ enum enumEtatVariable {etatNonValue, etatValue, etatDetruite} ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//       Énumération définissant les différents accès à une variable         *
+//       Enumeration definissant les differents acces a une variable         *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -59,7 +59,7 @@ enum enumAccesVariable {ecriture, lectureSeule, lectureDestructive, lectureEcrit
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//        classe permettant de réaliser un chaînage de l'état d'une variable  *
+//        classe permettant de realiser un chainage de l'etat d'une variable  *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -80,7 +80,7 @@ class agregatChainageEtat {
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//        classe élément table 'cElementTableControlePhase'                  *
+//        classe element table 'cElementTableControlePhase'                  *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -251,35 +251,35 @@ template <typename INFO> class cGalgasVariablesMap {
                                       const char * messageErreurRecherche,
                                       const char * messageErreurPhase) ;
 
-//--- Méthodes de bloc pour vérifier l'état des variables
+//--- Methodes de bloc pour verifier l'etat des variables
   public : void prologue_verifyVariableUsing (C_Lexique &) ;
   public : void epilogue_verifyVariableUsing (C_Lexique &,
                                               const GGS_location &) ;
 
-//--- Méthodes de bloc pour l'instruction test et choix
+//--- Methodes de bloc pour l'instruction test et choix
   public : void prologue_testBloc (C_Lexique &) ;
   public : void epilogue_testBloc (C_Lexique &) ;
 
-//--- Méthodes de bloc pour chaque branche de l'instruction test et choix
+//--- Methodes de bloc pour chaque branche de l'instruction test et choix
   public : void prologue_testPart (C_Lexique &) ;
   public : void epilogue_testPart (C_Lexique &,
                                    const GGS_location &) ;
 
-//--- Méthodes de bloc pour chaque instruction repeter
+//--- Methodes de bloc pour chaque instruction repeter
   public : void prologue_repeatBlock (C_Lexique &) ;
   public : void epilogue_repeatBlock (C_Lexique &) ;
 
-//--- Méthodes de bloc pour chaque branche de l'instruction repeter
+//--- Methodes de bloc pour chaque branche de l'instruction repeter
   public : void prologue_repeatPart (C_Lexique &) ;
   public : void epilogue_repeatPart (C_Lexique &,
                                      const GGS_location &) ;
 
-//--- Méthodes de bloc pour chaque branche d'une méthode double
+//--- Methodes de bloc pour chaque branche d'une methode double
   public : void prologue_blocTestMethodeDouble (C_Lexique &) ;
   public : void epilogue_blocTestMethodeDouble (C_Lexique &,
                                                 const GGS_location &) ;
 
-//--- Méthodes internes privées
+//--- Methodes internes privees
   private : sint32 insertKey (C_Lexique & inLexique,
                          const INFO & info,
                          const enumNatureEntite nature,
@@ -318,7 +318,7 @@ template <typename INFO> class cGalgasVariablesMap {
                                          const char * message1,
                                          const char * message2) ;
 
-//--- Méthodes statiques privées pour équilibrer l'arbre binaire
+//--- Methodes statiques privees pour equilibrer l'arbre binaire
   private : static void rotateRight (element_type * & a) ;
   private : static void rotateLeft (element_type * & a) ;
 } ;

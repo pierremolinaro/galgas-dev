@@ -67,7 +67,7 @@ rule <galgas_component>
 :
   $cocoa$ ;
   @lstring cocoaComponentName ;
-#--- Définition du programme
+#--- Definition du programme
   $identifier$ ? cocoaComponentName ;
   $:$ ;
 #--- Command line tool

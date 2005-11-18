@@ -116,7 +116,7 @@ rule <galgas_component>
 #--- Liste des attributs
   listeDesAttributs := [@typeListeAttributsAxiome empty] ;
   <program_attributes_declaration> !?listeDesAttributs ;
-#--- Vérifier que le nombre d'attributs est correct
+#--- Verifier que le nombre d'attributs est correct
   if [listeDesAttributs length] < [startSymbolSignature length] then
     error here : "one or more parameters missing" ;
   elsif [listeDesAttributs length] > [startSymbolSignature length] then

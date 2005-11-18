@@ -69,7 +69,7 @@ map @typeTableDefinitionTerminaux {
 }
 
 #------------------------------------------------------------------*
-#                        Tables de noms réservés                   *
+#                        Tables de noms reserves                   *
 #------------------------------------------------------------------*
 
 map @typeTableMotsReserves {
@@ -167,7 +167,7 @@ list @typeListeMessagesErreur {
 }
 
 #------------------------------------------------------------------*
-#                   définition de l'émission                       *
+#                   definition de l'emission                       *
 #------------------------------------------------------------------*
 
 abstract class @typeEmissionParDefaut {

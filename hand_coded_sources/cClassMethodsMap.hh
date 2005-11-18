@@ -1,21 +1,21 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                     Tables génériques de méthodes                         *
+//                     Tables generiques de methodes                         *
 //                                                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  La table générique 'cClassMethodsMap' réalise :                          *
-//     - l'insertion des symboles, avec déclenchement d'erreur si le symbole *
-//       est déjà dans la table ; l'ordre d'insertion est mémorisé dans une  *
-//       liste chaînée ;                                                     * 
-//     - la recherche des symbole, avec déclenchement d'erreur si le symbole *
+//  La table generique 'cClassMethodsMap' realise :                          *
+//     - l'insertion des symboles, avec declenchement d'erreur si le symbole *
+//       est deja dans la table ; l'ordre d'insertion est memorise dans une  *
+//       liste chainee ;                                                     * 
+//     - la recherche des symbole, avec declenchement d'erreur si le symbole *
 //       n'est pas dans la table ;                                           *
 //                                                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
+//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
 //  This program is free software; you can redistribute it and/or modify it  *
@@ -39,7 +39,7 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//        classe élément table 'cElementTableMethodesUtilisables'            *
+//        classe element table 'cElementTableMethodesUtilisables'            *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -181,11 +181,11 @@ sint32 cClassMethodsMap <INFO>::insertAbstract (C_Lexique & inLexique,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
   if (mReferenceCountPtr != NULL) {
-  //--- Si la table est référencée plusieurs fois, la dupliquer
+  //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
-  //--- Réaliser l'insertion
+  //--- Realiser l'insertion
     numeroElement = internalInsert (info, clef, true, mRoot) ;
-  //--- Erreur d'insertion : la clef existe déjà
+  //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
     }
@@ -203,11 +203,11 @@ sint32 cClassMethodsMap <INFO>::insertNotAbstract (C_Lexique & inInputOutput,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
   if (mReferenceCountPtr != NULL) {
-  //--- Si la table est référencée plusieurs fois, la dupliquer
+  //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
-  //--- Réaliser l'insertion
+  //--- Realiser l'insertion
     numeroElement = internalInsert (info, clef, false, mRoot) ;
-  //--- Erreur d'insertion : la clef existe déjà
+  //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.semanticErrorForMap (inInputOutput, messageErreurInsertion, clef) ;
     }
@@ -225,8 +225,8 @@ sint32 cClassMethodsMap <INFO>::internalInsert (const INFO & info,
   sint32 numeroElement = -1 ;
   if (racine == NULL) {
     #define macroTemporaire cElementTableMethodesUtilisables <INFO> (info, clef, mListLength, estAbstraite)
-    // macroTemporaire : astuce pour pallier l'erreur d'expansion qui considère la virgule entre INFO et
-    // KEY comme un séparateur entre un deuxième et un troisième argument
+    // macroTemporaire : astuce pour pallier l'erreur d'expansion qui considere la virgule entre INFO et
+    // KEY comme un separateur entre un deuxieme et un troisieme argument
     macroMyNew (racine, macroTemporaire) ;
     #undef macroTemporaire
     if (mLastItem == NULL) {
@@ -292,7 +292,7 @@ searchForOverride (C_Lexique & inLexique,
                    const char * inSearchErrorMessage) {
   element_type * result = (element_type *) NULL ;
   if (isBuilt () && inKey.isBuilt ()) {
-  //--- Si la table est référencée plusieurs fois, la dupliquer
+  //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
     result = mRoot ;
     bool found = false ;
@@ -311,7 +311,7 @@ searchForOverride (C_Lexique & inLexique,
       inLocation.semanticErrorForMap (inLexique, inSearchErrorMessage, inKey) ;
     }else{
       macroValidPointer (result) ;
-      result->champEstAbstraite = false ; // La méthode n'est plus abstraite
+      result->champEstAbstraite = false ; // La methode n'est plus abstraite
     }
   }
   return result ;
@@ -326,7 +326,7 @@ void cClassMethodsMap <INFO>::epilogue_definitionClasseNonAbstraite (C_Lexique &
     macroValidPointer (p) ;
     if (p->champEstAbstraite) {
       C_String message ;
-      message << "la méthode abstraite '" << p->mKey << "' n'a pas été surchargée" ;
+      message << "la methode abstraite '" << p->mKey << "' n'a pas ete surchargee" ;
       lexique.onTheFlySemanticError (message) ;
     }
     p = p->mNextItem ;

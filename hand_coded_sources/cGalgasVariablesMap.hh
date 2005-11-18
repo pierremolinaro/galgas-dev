@@ -4,7 +4,7 @@
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
+//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
 //  This program is free software; you can redistribute it and/or modify it  *
@@ -126,7 +126,7 @@ void cGalgasVariablesMap <INFO>::rotateLeft (element_type * & a) {
   a->mSupPtr = b->mInfPtr ;
   b->mInfPtr = a;
 
-// recalculer l'équilibrage 
+// recalculer l'equilibrage 
   if (b->mBalance >= 0) {
     a->mBalance++ ;
   }else{
@@ -149,7 +149,7 @@ void cGalgasVariablesMap <INFO>::rotateRight (element_type * & a) {
   a->mInfPtr = b->mSupPtr ;
   b->mSupPtr = a ;
  
-// recalculer l'équilibrage 
+// recalculer l'equilibrage 
   if (b->mBalance > 0) {
     a->mBalance += (sint16) (-b->mBalance - 1) ;
   }else{
@@ -265,7 +265,7 @@ sint32 cGalgasVariablesMap <INFO>::insertKey (C_Lexique & inLexique,
                                               const char * messageErreurInsertion) {
   sint32 resultat = -1 ; // Erreur 'insertion incorrecte'
   if (isBuilt () && inKey.isBuilt ()) {
-  //--- Réaliser l'insertion
+  //--- Realiser l'insertion
     bool insertionOk = false ;
     bool extension ;
     internalInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, inKey, mRoot, extension) ;
@@ -352,7 +352,7 @@ chercherInterne (C_Lexique & inLexique,
                  const GGS_lstring & clef,
                  const char * messageErreurRecherche) {
   if (clef.isBuilt ()) {
-  //--- Chercher d'abord dans la table désignée par la racine
+  //--- Chercher d'abord dans la table designee par la racine
     resultat = mRoot ;
     bool found = false ;
     while ((resultat != NULL) && ! found) {
@@ -366,7 +366,7 @@ chercherInterne (C_Lexique & inLexique,
         found = true ;
       }
     }
-  //--- Si pas trouvé, search dans les tables surchargées
+  //--- Si pas trouve, search dans les tables surchargees
     typeSurchargeTable * surchargeCourante = aListeSurcharges ;
     while ((resultat == NULL) && (surchargeCourante != NULL)) {
       macroValidPointer (surchargeCourante) ;
@@ -385,7 +385,7 @@ chercherInterne (C_Lexique & inLexique,
       }
       surchargeCourante = surchargeCourante->nextObject () ;
     }
-  //--- Pas trouvé : erreur de recherche
+  //--- Pas trouve : erreur de recherche
     if (resultat == NULL) {
       clef.semanticErrorForMap (inLexique, messageErreurRecherche, clef) ;
     }else if (resultat->mIsDeclaredUnused) {  //--- Check the variable is not declared as unused
@@ -407,7 +407,7 @@ searchForReadOnlyAccess (C_Lexique & inLexique,
                          const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
-  if (resultat != NULL) { // Symbole trouvé
+  if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if (resultat->champEtat == etatValue) {
       resultat->champUtilise = true ;
@@ -429,7 +429,7 @@ searchForDestructiveReadAccess (C_Lexique & inLexique,
                                 const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
-  if (resultat != NULL) { // Symbole trouvé
+  if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if ((resultat->champEtat == etatValue) 
         && (resultat->champNature != enumConstanteLocale)) {
@@ -453,7 +453,7 @@ searchForReadWriteAccess (C_Lexique & inLexique,
                           const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
-  if (resultat != NULL) { // Symbole trouvé
+  if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if ((resultat->champEtat == etatValue)
         && (resultat->champNature != enumConstanteLocale)) {
@@ -476,7 +476,7 @@ searchForWriteAccess (C_Lexique & inLexique,
                       const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
-  if (resultat != NULL) { // Symbole trouvé
+  if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if (resultat->champNature != enumConstanteLocale) {
       resultat->champEtat = etatValue ;
@@ -516,46 +516,46 @@ void cGalgasVariablesMap <INFO>::verificationRecursiveConsommation (C_Lexique & 
     macroValidPointer (element) ;
     verificationRecursiveConsommation (inLexique, element->mInfPtr, positionErreur) ;
     switch (element->champNature) {
-    case enumParametreIn :  // Paramètre formel en entrée : doit être consommée
+    case enumParametreIn :  // Parametre formel en entree : doit etre consommee
      /* if (element->champEtat != etatDetruite) {
         C_String message ;
-        message << "le paramètre formel d'entrée '" << element->mKey << "' n'est pas consommé à l'issue de la liste d'instructions précédente" ;
+        message << "le parametre formel d'entree '" << element->mKey << "' n'est pas consomme a l'issue de la liste d'instructions precedente" ;
         positionErreur.signalSemanticWarning (inLexique, message) ;
       } */
       break ;
-    case enumVariableLocale : // variable locale : doit être consommée
+    case enumVariableLocale : // variable locale : doit etre consommee
       /* if (element->champEtat == etatValue) {
         C_String message ;
-        message << "la variable locale '" << element->mKey << "' n'est pas consommé à l'issue de la liste d'instructions précédente" ;
+        message << "la variable locale '" << element->mKey << "' n'est pas consomme a l'issue de la liste d'instructions precedente" ;
         positionErreur.signalSemanticWarning (inLexique, message) ;
       }else */ if (element->champEtat == etatNonValue) {
         C_String message ;
-        message << "la variable locale '" << element->mKey << "' n'est pas utilisée dans la liste d'instructions précédente" ;
+        message << "la variable locale '" << element->mKey << "' n'est pas utilisee dans la liste d'instructions precedente" ;
         positionErreur.signalSemanticWarning (inLexique, message) ;
       }
       break ;
     case enumConstanteLocale : // local constant : only verify a constant not declared as unused is effectivly used
       if ((! element-> mIsDeclaredUnused) && (! element->champUtilise)) {
         C_String message ;
-        message << "la constante locale '" << element->mKey << "' n'est pas utilisée et n'a pas été déclarée 'unused'" ;
+        message << "la constante locale '" << element->mKey << "' n'est pas utilisee et n'a pas ete declaree 'unused'" ;
         element->mKey.signalSemanticWarning (inLexique, message) ;
       }
       break ;
-    case enumParametreInOut : // Paramètre formel en entrée/sorie : doit être valuée
+    case enumParametreInOut : // Parametre formel en entree/sorie : doit etre valuee
       if (element->champEtat != etatValue) {
         C_String message ;
-        message << "le paramètre formel d'entrée/sortie '" << element->mKey << "' n'est pas valué à l'issue de la liste d'instructions précédente" ;
+        message << "le parametre formel d'entree/sortie '" << element->mKey << "' n'est pas value a l'issue de la liste d'instructions precedente" ;
         positionErreur.signalSemanticError (inLexique, message) ;
       }else if ((! element-> mIsDeclaredUnused) && (! element->champUtilise)) {
         C_String message ;
-        message << "le paramètre formel d'entrée/sortie '" << element->mKey << "' n'est pas utilisé et n'a pas été déclare 'unused'" ;
+        message << "le parametre formel d'entree/sortie '" << element->mKey << "' n'est pas utilise et n'a pas ete declare 'unused'" ;
         element->mKey.signalSemanticWarning (inLexique, message) ;
       }
       break ;
-    case enumParametreOut : // Paramètre formel de sortie : doit être valuée
+    case enumParametreOut : // Parametre formel de sortie : doit etre valuee
       if (element->champEtat != etatValue) {
         C_String message ;
-        message << "le paramètre formel de sortie '" << element->mKey << "' n'est pas valué à l'issue de la liste d'instructions précédente" ;
+        message << "le parametre formel de sortie '" << element->mKey << "' n'est pas value a l'issue de la liste d'instructions precedente" ;
         positionErreur.signalSemanticError (inLexique, message) ;
       }
       break ;
@@ -572,19 +572,19 @@ void cGalgasVariablesMap <INFO>::remettreVariablesDansEtatInitial (element_type 
     macroValidPointer (element) ;
     remettreVariablesDansEtatInitial (element->mInfPtr) ;
     switch (element->champNature) {
-    case enumParametreIn :  // Paramètre formel en entrée : doit être mis à valué
+    case enumParametreIn :  // Parametre formel en entree : doit etre mis a value
       element->champEtat = etatValue ;
       break ;
     case enumVariableLocale : // variable locale : il ne doit pas en avoir
-      MF_Assert (false, "Présence d'une variable locale !", 0, 0) ;
+      MF_Assert (false, "Presence d'une variable locale !", 0, 0) ;
       break ;
     case enumConstanteLocale : // constante locale (non modifiable) : il ne doit pas en avoir
-      MF_Assert (false, "Présence d'une constante locale !", 0, 0) ;
+      MF_Assert (false, "Presence d'une constante locale !", 0, 0) ;
       break ;
-    case enumParametreInOut : // Paramètre formel en entrée/sorie : doit être mis à valué
+    case enumParametreInOut : // Parametre formel en entree/sorie : doit etre mis a value
       element->champEtat = etatValue ;
       break ;
-    case enumParametreOut : // Paramètre formel de sortie : doit être mis à non valué
+    case enumParametreOut : // Parametre formel de sortie : doit etre mis a non value
       element->champEtat = etatNonValue ;
       break ;
     }
@@ -708,11 +708,11 @@ void cGalgasVariablesMap <INFO>::epilogue_testPart (C_Lexique & inLexique,
                                                          const GGS_location & positionErreur) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur) ;
   macroMyDelete (mRoot, element_type) ;
-//--- Vérification de l'état des variables
+//--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
   aListeSurcharges->champCompteur ++ ;
   if (aListeSurcharges->champCompteur == 1) {
-  //--- Initialiser les champs 'après'
+  //--- Initialiser les champs 'apres'
     typeSurchargeTable * surchargeCourante = aListeSurcharges ;
     while (surchargeCourante != NULL) {
       macroValidPointer (surchargeCourante) ;
@@ -720,12 +720,12 @@ void cGalgasVariablesMap <INFO>::epilogue_testPart (C_Lexique & inLexique,
       surchargeCourante = surchargeCourante->mNextItem ;
     }
   }else{
-  //--- Vérifier la concordance de l'état des variables et du champ 'après'
+  //--- Verifier la concordance de l'etat des variables et du champ 'apres'
     typeSurchargeTable * surchargeCourante = aListeSurcharges ;
     while (surchargeCourante != NULL) {
       macroValidPointer (surchargeCourante) ;
       verifierChampEtatApres (inLexique, surchargeCourante->champTable, positionErreur,
-                   "la branche précédente met la variable '", "' dans un état différent que la première branche") ;
+                   "la branche precedente met la variable '", "' dans un etat different que la premiere branche") ;
       surchargeCourante = surchargeCourante->mNextItem ;
     }
   }
@@ -762,15 +762,15 @@ void cGalgasVariablesMap <INFO>::epilogue_repeatPart (C_Lexique & inLexique,
                                                            const GGS_location & positionErreur) {
   verificationRecursiveConsommation (inLexique, mRoot, positionErreur) ;
   macroMyDelete (mRoot, element_type) ;
-//--- Vérification de l'état des variables
+//--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
   aListeSurcharges->champCompteur ++ ;
-//--- Vérifier la concordance de l'état des variables et du champ 'après'
+//--- Verifier la concordance de l'etat des variables et du champ 'apres'
   typeSurchargeTable * surchargeCourante = aListeSurcharges ;
   while (surchargeCourante != NULL) {
     macroValidPointer (surchargeCourante) ;
     verifierChampEtatApres (inLexique, surchargeCourante->champTable, positionErreur,
-                 "la branche précédente change l'état de la variable '", "'") ;
+                 "la branche precedente change l'etat de la variable '", "'") ;
     surchargeCourante = surchargeCourante->mNextItem ;
   }
 }

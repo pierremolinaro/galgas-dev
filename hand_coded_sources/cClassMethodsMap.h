@@ -1,20 +1,20 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                     Tables génériques de méthodes                         *
+//                     Tables generiques de methodes                         *
 //                                                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  La table générique 'cClassMethodsMap' réalise :                          *
-//     - l'insertion des symboles, avec déclenchement d'erreur si le symbole *
-//       est déjà dans la table ; l'ordre d'insertion est mémorisé dans une  *
-//       liste chaînée ;                                                     * 
-//     - la recherche des symbole, avec déclenchement d'erreur si le symbole *
+//  La table generique 'cClassMethodsMap' realise :                          *
+//     - l'insertion des symboles, avec declenchement d'erreur si le symbole *
+//       est deja dans la table ; l'ordre d'insertion est memorise dans une  *
+//       liste chainee ;                                                     * 
+//     - la recherche des symbole, avec declenchement d'erreur si le symbole *
 //       n'est pas dans la table ;                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
+//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
 //  This program is free software; you can redistribute it and/or modify it  *
@@ -41,7 +41,7 @@ class C_TextFileWrite ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//        classe ÈlÈment table 'cElementTableMethodesUtilisables'            *
+//        classe element table 'cElementTableMethodesUtilisables'            *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -134,7 +134,7 @@ template <typename INFO> class cClassMethodsMap {
                                    const bool estAbstraite,
                                    element_type * & racine) ;
 
-//--- Méthodes de bloc
+//--- Methodes de bloc
   public : void prologue_definitionClasseNonAbstraite (C_Lexique &) {}
   public : void epilogue_definitionClasseNonAbstraite (C_Lexique &) ;
 } ;
