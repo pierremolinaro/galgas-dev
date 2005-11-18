@@ -191,7 +191,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone2 << "#ifndef " << aNomClasse << "_DEFINED\n"
                  << "#define " << aNomClasse << "_DEFINED\n\n" ;
 
-//--- Classe mre (dernier insere dans la table des ancetres) : NULL si pas de classe mre
+//--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
   GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer l'en tete de la declaration de la classe abstraite
@@ -289,7 +289,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                                   const bool inGenerateDebug) {
   inCppFile.writeTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
-//--- Classe mre (dernier insere dans la table des ancetres) : NULL si pas de classe mre
+//--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
   GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
@@ -314,7 +314,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
     current = aListeTousAttributsNonExternes.firstObject () ;
     inCppFile << ")" ;
     bool engendrerVirgule = false ;
-  //--- Appel du constructeur de la classe mre, si il y en a une
+  //--- Appel du constructeur de la classe mere, si il y en a une
     if (nombreArgumentsHerites > 0) {
       macroValidPointer (mereDirecte) ;
       inCppFile << "\n:"
@@ -625,7 +625,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
                                   const bool inGenerateDebug) {
   inCppFile.writeTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
-//--- Classe mre (dernier insere dans la table des ancetres) : NULL si pas de classe mre
+//--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
   GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
@@ -649,7 +649,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
     current = aListeTousAttributsNonExternes.firstObject () ;
     inCppFile << ")" ;
     bool engendrerVirgule = false ;
-  //--- Appel du constructeur de la classe mre, si il y en a une
+  //--- Appel du constructeur de la classe mere, si il y en a une
     if (nombreArgumentsHerites > 0) {
       macroValidPointer (mereDirecte) ;
       inCppFile << "\n:"

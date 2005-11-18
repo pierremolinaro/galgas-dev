@@ -1,21 +1,21 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                     Tables génériques de méthodes                         *
+//                     Tables generiques de methodes                         *
 //                                                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  La table générique 'cTableMethodesAimplementer' réalise :                *
-//     - l'insertion des symboles, avec déclenchement d'erreur si le symbole *
-//       est déjà dans la table ; l'ordre d'insertion est mémorisé dans une  *
-//       liste chaînée ;                                                     * 
-//     - la recherche des symbole, avec déclenchement d'erreur si le symbole *
+//  La table generique 'cTableMethodesAimplementer' realise :                *
+//     - l'insertion des symboles, avec declenchement d'erreur si le symbole *
+//       est deja dans la table ; l'ordre d'insertion est memorise dans une  *
+//       liste chainee ;                                                     * 
+//     - la recherche des symbole, avec declenchement d'erreur si le symbole *
 //       n'est pas dans la table ;                                           *
 //                                                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
+//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
 //  This program is free software; you can redistribute it and/or modify it  *
@@ -38,7 +38,7 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//        classe élément table 'cElementTableMethodesAimplementer'            *
+//        classe element table 'cElementTableMethodesAimplementer'            *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -185,11 +185,11 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
   if (isBuilt ()) {
-  //--- Si la table est référencée plusieurs fois, la dupliquer
+  //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
-  //--- Réaliser l'insertion
+  //--- Realiser l'insertion
     internalInsert (info, clef, numeroElement, true, mRoot) ;
-  //--- Erreur d'insertion : la clef existe déjà
+  //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
     }
@@ -207,11 +207,11 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexiq
                                           const char * messageErreurInsertion) {
   sint32 numeroElement = -1 ;
   if (isBuilt ()) {
-  //--- Si la table est référencée plusieurs fois, la dupliquer
+  //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
-  //--- Réaliser l'insertion
+  //--- Realiser l'insertion
     internalInsert (info, clef, numeroElement, false, mRoot) ;
-  //--- Erreur d'insertion : la clef existe déjà
+  //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
     }
@@ -229,8 +229,8 @@ void cTableMethodesAimplementer <INFO>::internalInsert (const INFO & info,
                       cElementTableMethodesAimplementer <INFO> * & racine) {
   if (racine == NULL) {
     #define macroTemporaire cElementTableMethodesAimplementer <INFO> (info, clef, mListLength, estAbstraite)
-    // macroTemporaire : astuce pour pallier l'erreur d'expansion qui considère la virgule entre INFO et
-    // KEY comme un séparateur entre un deuxième et un troisième argument
+    // macroTemporaire : astuce pour pallier l'erreur d'expansion qui considere la virgule entre INFO et
+    // KEY comme un separateur entre un deuxieme et un troisieme argument
     macroMyNew (racine, macroTemporaire) ;
     #undef macroTemporaire
     if (mLastItem == NULL) {

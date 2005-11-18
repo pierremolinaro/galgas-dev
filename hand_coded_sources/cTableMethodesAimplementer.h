@@ -1,21 +1,21 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                     Tables génériques de méthodes                         *
+//                     Tables generiques de methodes                         *
 //                                                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  La table générique 'cTableMethodesAimplementer' réalise :                *
-//     - l'insertion des symboles, avec déclenchement d'erreur si le symbole *
-//       est déjà dans la table ; l'ordre d'insertion est mémorisé dans une  *
-//       liste chaînée ;                                                     * 
-//     - la recherche des symbole, avec déclenchement d'erreur si le symbole *
+//  La table generique 'cTableMethodesAimplementer' realise :                *
+//     - l'insertion des symboles, avec declenchement d'erreur si le symbole *
+//       est deja dans la table ; l'ordre d'insertion est memorise dans une  *
+//       liste chainee ;                                                     * 
+//     - la recherche des symbole, avec declenchement d'erreur si le symbole *
 //       n'est pas dans la table ;                                           *
 //                                                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
+//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
 //  This program is free software; you can redistribute it and/or modify it  *
@@ -38,7 +38,7 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//        classe élément table 'cElementTableMethodesAimplementer'           *
+//        classe element table 'cElementTableMethodesAimplementer'           *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -87,7 +87,7 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : cTableMethodesAimplementer (void) ; // Default Constructor
   public : virtual ~cTableMethodesAimplementer (void) ;
 
-//--- Gérer la duplication
+//--- Gerer la duplication
   public : cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> &) ; // Copy constructor
   public : void operator = (const cTableMethodesAimplementer <INFO> &) ; // Assignment operator
 

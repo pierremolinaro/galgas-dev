@@ -282,7 +282,7 @@ rule <galgas_component>
     ?lexiqueName
   ;
   @string defLexique := [lexiqueName value] ;
-#--- Utilisations sémantiques
+#--- Utilisations semantiques
   @typeTableEnAvant tableEnAvant ;
   @M_semanticsEntitiesForUse entitiesMap ;
   @M_externClassesDirectories externClassesDirectoryMap ;
@@ -528,7 +528,7 @@ rule <syntax_instruction>
   [!?ioVariablesMap searchForReadWriteAccess !nomTable ?typeEntite ?nomCppVariableTable] ; 
   @typeTableBlocsDeTable tableMethodesBloc ;
   extract typeEntite->@typeGalgasMapType (?* ?* ?tableMethodesBloc ?*) error nomTable : messageGalgasType ;
-#--- Méthode block
+#--- Methode block
   $.$ ;
   @lstring nomMethodeBloc ;
   $identifier$ ? nomMethodeBloc ;
@@ -567,7 +567,7 @@ rule <syntax_instruction>
   ;
   $end$ ;
   $block$ ;
-#--- Analyser la list d'arguments de l'épilogue
+#--- Analyser la list d'arguments de l'epilogue
   @typeExpressionList epilogueExpressionList ;
   $($ ;
   <actual_parameters_list>
@@ -579,7 +579,7 @@ rule <syntax_instruction>
     !?ioInstructionsList
   ;
   $)$ ;
-#--- Vérifier que la map est toujours accessible en lecture/écriture
+#--- Verifier que la map est toujours accessible en lecture/ecriture
   [!?ioVariablesMap searchForReadWriteAccess !nomTable ?* ?*] ;
 #--- Generate epilogue instruction
   instruction := [@typeMapBlockEpilogueInstruction new !nomCppVariableTable
@@ -781,7 +781,7 @@ rule <rule_declaration_or_implementation>
   [!?ioEntitiesMap searchKey !inRuleName ?entite] ;
   @M_nonterminalSymbolAlts nonterminalSymbolAltMap ;
   extract entite->@typeEntiteNonTerminal (?nonterminalSymbolAltMap) error inRuleName : messageTypeEntite ;
-#--- Vérifier la déclaration de la rule et la compatibilité des arguments effectifs avec les arguments formels
+#--- Verifier la declaration de la rule et la compatibilite des arguments effectifs avec les arguments formels
   @typeAltProductionsMap altProductionsMap [empty] ;
   @lstring altName := [@lstring new !"" !here] ;
 #--- Parse label declared ? If Yes, check that called non terminals are also declared with 'parse' label
@@ -944,7 +944,7 @@ label importSyntax
 end rule ;
 
 #------------------------------------------------------------------------------*
-#          Instruction de vérification syntaxique $terminal$ ? ... ;           *
+#          Instruction de verification syntaxique $terminal$ ? ... ;           *
 #------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
