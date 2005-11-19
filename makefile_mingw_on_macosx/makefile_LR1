@@ -15,7 +15,7 @@ RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE
 #---------------------------------------------------------------*
 
 #--- Linker libraries
-LINKER_OPTIONS := -lstdc++ -lm -lcomdlg32
+LINKER_OPTIONS := -lcomdlg32
 
 #---------------------------------------------------------------*
 
