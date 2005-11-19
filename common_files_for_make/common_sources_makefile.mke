@@ -24,8 +24,8 @@ SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT ../hand_coded_sources
 #                                                               *
 #---------------------------------------------------------------*
 
-OBJECTS_DIR := ./objects
-DEBUG_OBJECTS_DIR := ./debug_objects
+OBJECTS_DIR := objects
+DEBUG_OBJECTS_DIR := debug_objects
 
 #---------------------------------------------------------------*
 #                                                               *

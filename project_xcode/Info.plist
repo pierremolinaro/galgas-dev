@@ -40,7 +40,7 @@
 	<key>CFBundleSignature</key>
 	<string>GGSX</string>
 	<key>CFBundleVersion</key>
-	<string>build 69, libpm 107</string>
+	<string>build 70, libpm 107</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
