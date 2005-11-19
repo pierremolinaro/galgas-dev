@@ -15,7 +15,7 @@ RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE
 #---------------------------------------------------------------*
 
 #--- Linker libraries
-LINKER_OPTIONS := -lstdc++ -lm -lcomdlg32
+LINKER_OPTIONS := -lcomdlg32
 
 #---------------------------------------------------------------*
 
@@ -27,7 +27,7 @@ include ../common_files_for_make/makefile_LR1.mke
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/mingw_msys_on_win32.mke
+include $(LIB_PM_PATH)/included_makefiles/mingw_on_win32.mke
 
 #---------------------------------------------------------------*
 #                                                               *
