@@ -6,35 +6,22 @@
 
 
 lexique arithmetique_lexical_parser :
-  header "galgas/F_LexicalActions.h";
   
   @luint number;
   $number$ ! number error message "a number";
   
-  $)$ error message "a )";
-  $($ error message "a (";
-  
   list operator_list error message "the'".*."' keyword":
-    "+",
-    "*";
+    "+", "*", "(", ")" ;
   rule list operator_list;
   
   message decimalNumberTooLarge : "Decimal number too large";
   message internalError : "internal error";
   
-  rule ')' :
-    send $)$;
-  end rule;
-  
-  rule '(' :
-    send $($;
-  end rule;
-  
   rule '0'->'9':
     enterDigitIntoUlong(number,*) error decimalNumberTooLarge, internalError;
     repeat
     while '0'->'9':
-    enterDigitIntoUlong(number,*) error decimalNumberTooLarge, internalError;
+      enterDigitIntoUlong(number,*) error decimalNumberTooLarge, internalError;
     while '_' :
     end repeat;
     send $number$;
@@ -50,25 +37,22 @@ end lexique;
 
 
 semantics arithmetique_semantics :
-  abstract class @cExpression
-    include Header;
-  end class;
+  abstract class @cExpression {
+  }
 
-  class @cConst extends @cExpression
-         @luint mValue ;
-  end class;
+  class @cConst extends @cExpression {
+    @luint mValue ;
+  }  
   
+  class @cAdd extends @cExpression {
+    @cExpression mLeftExpression ;
+    @cExpression mRightExpression ;
+  }
   
-  class @cAdd extends @cExpression
-       @cExpression mLeftExpression ;
-       @cExpression mRightExpression ;
-  end class;
-  
-  class @cMult extends @cExpression
-       @cExpression mLeftExpression ;
-       @cExpression mRightExpression ;
-  end class;
-  
+  class @cMult extends @cExpression {
+    @cExpression mLeftExpression ;
+    @cExpression mRightExpression ;
+  }  
   
 end semantics;
 
