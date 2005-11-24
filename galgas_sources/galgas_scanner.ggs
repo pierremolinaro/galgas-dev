@@ -24,13 +24,13 @@ lexique galgas_scanner :
 @lchar charValue ;
 @lstring tokenString ;
 
-style keywordsStyle -> "Keywords :" ;
-style delimitersStyle -> "Delimiters :" ;
-style terminalStyle -> "Terminal symbols :" ;
-style integerStyle -> "Integer constants :" ;
-style characterStyle -> "Character constants :" ;
-style stringStyle -> "String constants :" ;
-style typeNameStyle -> "Type names (@...) :" ;
+style keywordsStyle -> "Keywords:" ;
+style delimitersStyle -> "Delimiters:" ;
+style terminalStyle -> "Terminal symbols:" ;
+style integerStyle -> "Integer constants:" ;
+style characterStyle -> "Character constants:" ;
+style stringStyle -> "String constants:" ;
+style typeNameStyle -> "Type names (@...):" ;
 
 # -------------------------- identifier or key word --------------------
 # keywords can be written in lower or upper case
