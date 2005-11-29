@@ -137,15 +137,20 @@ rule '\'' :
       enterCharacterIntoCharacter (charValue, '\0') ;
     when '\'' :
       enterCharacterIntoCharacter (charValue, '\'') ;
-    when '0' -> '9' :
-      repeat
-        enterHexDigitIntoASCIIcharacter (charValue, *) error ASCIIcodeTooLargeError, internalError ;
-      while '0' -> '9' :
-      end repeat ;
+    when 'x' | 'X' :
+      select
+      when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        repeat
+          enterHexDigitIntoASCIIcharacter (charValue, *) error ASCIIcodeTooLargeError, internalError ;
+        while '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        end repeat ;
+      default
+        error incorrectCharConstant ;
+      end select ;
     default
       error incorrectCharConstant ;
     end select ;
-  when ' ' -> '\255' :
+  when ' ' -> '\xFF' :
      enterCharacterIntoCharacter (charValue, *) ;
   default
     error incorrectCharConstant ;
@@ -231,7 +236,7 @@ rule '"' :
     default
       error incorrectCharConstant ;
     end select ;
-   while ' ' | '!' | '#'-> '\255' :
+   while ' ' | '!' | '#'-> '\xFF' :
     enterCharacterIntoString (tokenString, *) ;
   end repeat ;
   select
@@ -243,21 +248,14 @@ rule '"' :
 end rule ;
 
 # ------------------------------------ Comment ----------------------------
-message incorrectEndOfComment : "incorrect end of comment" ;
-
 rule '#' :
   repeat
-  while '\1' ->'\9' | '\11' | '\12' | '\14'-> '\255' :
+  while '\x1' -> '\x9' | '\xB' -> '\xFF' :
   end repeat ;
-  select
-  when '\n' | '\r' | '\0' :
-  default
-    error incorrectEndOfComment ;
-  end select ;
 end rule ;
 
 # --------------------- separators -----------------------------------------
-rule '\1' -> ' ' :
+rule '\x1' -> ' ' :
 end rule ;
 
 end lexique ;
