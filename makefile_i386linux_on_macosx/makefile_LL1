@@ -1,0 +1,40 @@
+#---------------------------------------------------------------*
+#                                                               *
+# MAKEFILE for building galgas_LL1 command line tools           *
+#                                                               *
+#---------------------------------------------------------------*
+
+#--- Release and debug versions of galgas
+EXECUTABLE := galgas
+EXECUTABLE_DEBUG := galgas_debug
+
+#---------------------------------------------------------------*
+
+RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE
+
+#---------------------------------------------------------------*
+
+#--- Linker libraries
+LINKER_OPTIONS :=
+
+#---------------------------------------------------------------*
+
+include ../common_files_for_make/makefile_LL1.mke
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Include i386 Linux gcc tools definitions for MAC OS X     *
+#                                                               *
+#---------------------------------------------------------------*
+
+include $(LIB_PM_PATH)/included_makefiles/i386linux_on_macosx_gcc_tools.mke
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Include makefile that performs actual work                *
+#                                                               *
+#---------------------------------------------------------------*
+
+include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke
+
+#---------------------------------------------------------------*
