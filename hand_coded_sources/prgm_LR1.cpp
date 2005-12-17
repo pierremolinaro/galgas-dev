@@ -30,7 +30,7 @@ void galgas_LR1_prgm::beforeParsing_ (void) {
   mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_empty () ;
   mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_empty () ;
   mOptionComponentsMap = GGS_M_optionComponents::constructor_empty () ;
-  mTerminalIO.mFileGenerationStartDir = mScanner_.sourceFileName ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT" ;
+  mTerminalIO.mFileGenerationStartDir = mScanner_.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = mTerminalIO.mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
     C_String errorMessage ;

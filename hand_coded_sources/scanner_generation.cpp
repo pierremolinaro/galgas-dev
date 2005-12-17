@@ -969,7 +969,7 @@ void generate_scanner (C_Lexique & inLexique,
 //--- Get version string
   const C_String GALGASversionString = inLexique.galgas_IO_Ptr ()->getCompilerVersion () ;
 //--- Create GALGAS_OUTPUT directory
-  const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT/" ;
+  const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
   if (ok) {
   //--- Generate header file

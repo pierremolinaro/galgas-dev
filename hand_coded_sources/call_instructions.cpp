@@ -195,16 +195,17 @@ bool cPtr_typeInstructionAppelMethodeListe
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_grammarInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & inLexiqueClassName,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+void cPtr_C_grammarInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & inLexiqueClassName,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "{ " << inLexiqueClassName << " scanner_ (lexique_var_.galgas_IO_Ptr ()) ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
+                 "#ifdef AZERTYAZERTY\n"
                  "  C_String sourceFileName ;\n"
                  "  if ((" ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
@@ -216,6 +217,11 @@ void cPtr_C_grammarInstruction
                  "  sourceFileName << " ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " ;\n"
+                 "#else\n"
+                 "  const C_String sourceFileName = lexique_var_.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
+    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ") ;\n"
+                 "#endif\n"
                  "  try{\n"
                  "    scanner_.resetAndLoadSourceFromFile (sourceFileName) ;\n"
                  "    grammar_.startParsing_" << mAltSymbol

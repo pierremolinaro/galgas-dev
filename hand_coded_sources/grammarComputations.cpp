@@ -468,7 +468,7 @@ analyzeGrammar (C_Lexique & inLexique,
   }
 
 //--- Create GALGAS_OUTPUT directory
-  const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT/" ;
+  const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
 
 //--- Depending of grammar class, fix operations to perform
