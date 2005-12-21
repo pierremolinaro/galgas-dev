@@ -205,23 +205,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     ioCppFile << "{ " << inLexiqueClassName << " scanner_ (lexique_var_.galgas_IO_Ptr ()) ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
-                 "#ifdef AZERTYAZERTY\n"
-                 "  C_String sourceFileName ;\n"
-                 "  if ((" ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".length () > 0) && (" ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << " (0 COMMA_HERE) != '/')) {\n"
-                 "    sourceFileName << lexique_var_.sourceFileName ().stringByDeletingLastPathComponent () << '/' ;\n"
-                 "  }\n"
-                 "  sourceFileName << " ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << " ;\n"
-                 "#else\n"
                  "  const C_String sourceFileName = lexique_var_.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ") ;\n"
-                 "#endif\n"
                  "  try{\n"
                  "    scanner_.resetAndLoadSourceFromFile (sourceFileName) ;\n"
                  "    grammar_.startParsing_" << mAltSymbol
