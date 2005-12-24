@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_LL1_prgm "version 1.2.2 (LL(1) grammar)" . "ggs" :
+program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" . "ggs" :
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
 #--- Start symbol arguments
   mLexiqueMapForUse ;
