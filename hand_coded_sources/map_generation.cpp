@@ -31,19 +31,10 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_C_mapToImplement::
-generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_C_mapToImplement::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
-  inHfile.writeTitleComment (C_String ("DECLARATIONS FOR MAP '") + aNomTable + "'") ;
-
+  inHfile.writeTitleComment (C_String ("Element of map '@") + aNomTable + "'") ;
 //--- Starting map element class declaration
   inHfile << "class e_" << aNomTable << " {\n" ;
 
@@ -59,10 +50,29 @@ generateHdeclarations (AC_OutputStream & inHfile,
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 
   inHfile << "} ;\n\n" ; //--- End of map element class declaration e_...
-
-//---------------------- map class declaration -----------------
-
   inHfile.writeHyphenLineComment () ;
+  inHfile << "class elementOf_GGS_" << aNomTable << " : public AC_galgas_map_element {\n"
+             "  //--- Constructor\n"
+             "    public : elementOf_GGS_" << aNomTable << " (const GGS_lstring & inKey,\n"
+             "                                      const sint32 inIndex,\n"
+             "                                      const e_" << aNomTable << " & inInfo) ;\n"
+             "  //--- Get pointers\n"
+             "    public : inline elementOf_GGS_" << aNomTable << " * nextObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mNextItem ; }\n"
+             "    public : inline elementOf_GGS_" << aNomTable << " * infObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mInfPtr ; }\n"
+             "    public : inline elementOf_GGS_" << aNomTable << " * supObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mSupPtr ; }\n"
+             "  //--- Data members\n"
+             "    public : e_" << aNomTable << " mInfo ;\n"
+             "} ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapToImplement::
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
+  inHfile.writeTitleComment (C_String ("Map '@") + aNomTable + "'") ;
+  inHfile << "class elementOf_GGS_" << aNomTable << " ;\n\n" ;
   inHfile << "class GGS_" << aNomTable << " : public AC_galgas_map {\n" ;
   GGS_stateMap::element_type * currentState = mStateMap.firstObject () ;
   if (currentState != NULL) {
@@ -75,19 +85,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
     }
     inHfile << "} enumForStates ;\n" ;
   }
-  inHfile << "//------------------------ Internal class for an element\n"
-             "  public : class element_type : public AC_galgas_map_element {\n"
-             "  //--- Constructor\n"
-             "    public : element_type (const GGS_lstring & inKey,\n"
-             "                           const sint32 inIndex,\n"
-             "                           const e_" << aNomTable << " & inInfo) ;\n"
-             "  //--- Get pointers\n"
-             "    public : inline element_type * nextObject (void) const { return (element_type *) mNextItem ; }\n"
-             "    public : inline element_type * infObject (void) const { return (element_type *) mInfPtr ; }\n"
-             "    public : inline element_type * supObject (void) const { return (element_type *) mSupPtr ; }\n"
-             "  //--- Data members\n"
-             "    public : e_" << aNomTable << " mInfo ;\n"
-             "  } ;\n"
+  inHfile << "//--- Element Class\n"
+             "  public : typedef elementOf_GGS_" << aNomTable << " element_type ;\n"
              "//--- Get pointers\n"
              "  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }\n"
              "  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }\n"
@@ -154,7 +153,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  protected : void insertElement (C_Lexique & inLexique,\n"
              "                                  const char * inErrorMessagesArray [],\n"
              "                                  const GGS_lstring & inKey,\n" ;
-  current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 index = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -209,8 +208,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeTitleComment (C_String ("class map '") + aNomTable + "'") ;
 
 //--- Constructor for type element
-  inCppFile << "GGS_" << aNomTable << "::element_type::\n"
-               "element_type (const GGS_lstring & inKey,\n"
+  inCppFile << "elementOf_GGS_" << aNomTable << "::\n"
+               "elementOf_GGS_" << aNomTable << " (const GGS_lstring & inKey,\n"
                "              const sint32 inIndex,\n"
                "              const e_" << aNomTable << " & inInfo) :\n"
                "AC_galgas_map_element (inKey, inIndex),\n"

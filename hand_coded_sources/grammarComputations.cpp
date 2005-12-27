@@ -439,7 +439,7 @@ analyzeGrammar (C_Lexique & inLexique,
                 GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
                 GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                 GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
-  GGS_stringset classesNamesSet ; // $
+  GGS_stringset classesNamesSet ;
   bool warningFlag = false ;
 
 //--- Fix info about terminal and nonterminal symbols

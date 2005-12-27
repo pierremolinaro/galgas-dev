@@ -1714,11 +1714,14 @@ routine handleReaderCall
     elsif [inMethodName value] == "count" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_uint new] ;
+    elsif [inMethodName value] == "allKeys" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+      outReturnedType := [@typeGalgas_stringset new] ;
     else
       error inMethodName : "this reader is not defined"
        -> outAccessorTypesList, outReturnedType ;
     end if ;
-  when @typeGalgas_stringset (...) ->
+  when @typeGalgas_stringset () ->
     if [inMethodName value] == "hasKey" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       @AC_galgasType keyType := [@typeGalgas_string new] ;
