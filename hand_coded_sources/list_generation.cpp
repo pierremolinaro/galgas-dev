@@ -25,25 +25,14 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement::
-generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_C_listTypeToImplement::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
-//----------------------- List class declaration ----------------  
-  inHfile.writeTitleComment (C_String ("class list '") + aNomListe + "'") ;
-
-  inHfile << "class GGS_" << aNomListe << " {\n" ;
-
+//----------------------- Element of list class declaration ----------------  
+  inHfile.writeTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
-  inHfile << "  public : class element_type {\n"
-           << "    private : element_type * mNextItem ;\n" ;
+  inHfile << "class elementOf_GGS_" << aNomListe << " {\n"
+          << "  private : elementOf_GGS_" << aNomListe << " * mNextItem ;\n" ;
 //--- Attributes
   GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.firstObject () ;
   while (attributCourant != NULL) {
@@ -55,7 +44,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //--- declaration des attributs externes
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 //--- declaration constructeur
-  inHfile << "    public : element_type (" ;
+  inHfile << "  public : elementOf_GGS_" << aNomListe << " (" ;
   attributCourant = mNonExternAttributesList.firstObject () ;
   bool premier = true ;
   while (attributCourant != NULL) {
@@ -71,26 +60,38 @@ generateHdeclarations (AC_OutputStream & inHfile,
     attributCourant = attributCourant->nextObject () ;
   }
   inHfile << ") ;\n\n"
-
 //--- Access to next item
-             "    public : inline element_type * nextObject (void) const { return mNextItem ; }\n"
+             "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return mNextItem ; }\n"
 
 //--- Declare copy constructor and assignment operator as private
-             "    private : element_type (const element_type &) ;\n"
-             "    private : void operator = (const element_type &) ;\n"
+             "  private : elementOf_GGS_" << aNomListe << " (const elementOf_GGS_" << aNomListe << " &) ;\n"
+             "  private : void operator = (const elementOf_GGS_" << aNomListe << " &) ;\n"
 
 //--- Destructor declaration
-             "    public : ~element_type (void) {}\n"
+             "  public : inline ~elementOf_GGS_" << aNomListe << " (void) {}\n"
 
 //--- Friend declaration
-             "    friend class GGS_" << aNomListe << " ;\n"
+             "  friend class GGS_" << aNomListe << " ;\n"
 
 //--- Fin de la declaration de la classe e_...
-             "  } ;\n\n"
+             "} ;\n\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_listTypeToImplement::
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) {
+//----------------------- List class declaration ----------------  
+  inHfile.writeTitleComment (C_String ("list '@") + aNomListe + "'") ;
+
+  inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
+             "\n"
+             "class GGS_" << aNomListe << " {\n"
+             "  public : typedef elementOf_GGS_" << aNomListe << " element_type ;\n"
              "  private : element_type * mFirstItem ;\n"
              "  private : element_type * mLastItem ;\n"
-             "  private : element_type * mCurrentItemPtr ;\n"
-             "  private : sint32 mCurrentItemIndex ;\n"
              "  private : sint32 mListLength ;\n"
              "  public : inline sint32 count (void) const {\n"
              "    return mListLength ;\n"
@@ -100,15 +101,14 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //--- Copy constructor and assignment operator declaration
              "  public : GGS_" << aNomListe << " (void) ; // Default Constructor\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " &) ; // Copy constructor\n"
-             "  public : void operator = (const "
-             "GGS_" << aNomListe << " &) ; // Assignment operator\n"
+             "  public : void operator = (const GGS_" << aNomListe << " &) ; // Assignment operator\n"
 
 //--- Destructor declaration
              "//--- Virtual destructor\n"
              "  public : virtual ~GGS_" << aNomListe << " (void) ;\n\n"
 
-//--- Declare constructor 'new'
-             "//--- Constructor 'new'\n"
+//--- Declare constructor 'empty'
+             "//--- Constructor 'empty'\n"
              "  public : static GGS_" << aNomListe << " constructor_empty (void) ;\n"
 
 //--- Get first item
@@ -186,10 +186,10 @@ void cPtr_C_listTypeToImplement
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
 //------------- Implementation de l'element de liste -----------------
-  inCppFile.writeTitleComment (C_String ("Class element of list '") + aNomListe + "'") ;
+  inCppFile.writeTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 
 //--- Engendrer le constructeur de l'element de liste
-  inCppFile << "GGS_" << aNomListe << "::element_type::\nelement_type (" ;
+  inCppFile << "elementOf_GGS_" << aNomListe << "::\nelementOf_GGS_" << aNomListe << " (" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint16 numeroVariable = 0 ;
   while (current != NULL) {
@@ -202,7 +202,7 @@ void cPtr_C_listTypeToImplement
     numeroVariable ++ ;
   }
   inCppFile << ") {\n" ; 
-  inCppFile << "  mNextItem = (element_type *) NULL ;\n" ;
+  inCppFile << "  mNextItem = (elementOf_GGS_" << aNomListe << " *) NULL ;\n" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -214,7 +214,7 @@ void cPtr_C_listTypeToImplement
   inCppFile << "}\n\n" ;
 
 // ------------- List Implementation -----------------
-  inCppFile.writeTitleComment (C_String ("class list '") + aNomListe + "'") ;
+  inCppFile.writeTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
 //--- Engendrer le constructeur par defaut
   inCppFile << "GGS_" << aNomListe << "\n"
@@ -222,8 +222,6 @@ void cPtr_C_listTypeToImplement
            << " (void) { // Default Constructor\n"
               "  mFirstItem = (element_type *) NULL ;\n"
               "  mLastItem = (element_type *) NULL ;\n"
-              "  mCurrentItemPtr = (element_type *) NULL ;\n"
-              "  mCurrentItemIndex = 0 ;\n"
               "  mListLength = 0 ;\n"
               "  mCountReference = (sint32 *) NULL ;\n"
               "}\n\n" ;
@@ -240,8 +238,6 @@ void cPtr_C_listTypeToImplement
             << " (const GGS_" << aNomListe << " & source) { // Copy constructor\n"
                "  mFirstItem = (element_type *) NULL ;\n"
                "  mLastItem = (element_type *) NULL ;\n"
-               "  mCurrentItemPtr = (element_type *) NULL ;\n"
-               "  mCurrentItemIndex = 0 ;\n"
                "  mListLength = 0 ;\n"
                "  mCountReference = (sint32 *) NULL ;\n"
                "  *this = source ;\n"
@@ -255,8 +251,6 @@ void cPtr_C_listTypeToImplement
                "    emptyList () ;\n"
                "    mFirstItem = source.mFirstItem ;\n"
                "    mLastItem = source.mLastItem ;\n"
-               "    mCurrentItemPtr = (element_type *) NULL ;\n"
-               "    mCurrentItemIndex = 0 ;\n"
                "    mListLength = source.mListLength ;\n"
                "    mCountReference = source.mCountReference ;\n"
                "    if (mCountReference != NULL) {\n"
@@ -270,8 +264,6 @@ void cPtr_C_listTypeToImplement
 //--- Engendrer la methode emptyList
   inCppFile << "void GGS_" << aNomListe << "\n"
                "::emptyList (void) {\n"
-               "  mCurrentItemPtr = (element_type *) NULL ;\n"
-               "  mCurrentItemIndex = 0 ;\n"
                "  mListLength = 0 ;\n"
                "  mLastItem = (element_type *) NULL ;\n"
                "  if (mCountReference != NULL) {\n"
@@ -388,8 +380,6 @@ void cPtr_C_listTypeToImplement
                "      mFirstItem = (element_type *)  NULL ;\n"
                "      mLastItem = (element_type *)  NULL ;\n"
                "      mListLength = 0 ;\n"
-               "      mCurrentItemPtr = (element_type *) NULL ;\n"
-               "      mCurrentItemIndex = 0 ;\n"
                "      while (p != NULL) {\n"
                "        macroValidPointer (p) ;\n"
                "        internalAppendItem (" ;
