@@ -9,7 +9,7 @@ EXECUTABLE := galgas
 EXECUTABLE_DEBUG := galgas_debug
 
 #--- Install directory (for "install" goal)
-INSTALL_DIR := /usr/bin
+INSTALL_DIR := /usr/local/bin
 
 #---------------------------------------------------------------*
 

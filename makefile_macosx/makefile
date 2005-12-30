@@ -25,3 +25,10 @@ install:
 
 #---------------------------------------------------------------*
 
+install_debug:
+	$(MAKE) -f makefile_LL1 install_debug
+	$(MAKE) -f makefile_SLR install_debug
+	$(MAKE) -f makefile_LR1 install_debug
+
+#---------------------------------------------------------------*
+
