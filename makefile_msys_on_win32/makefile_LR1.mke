@@ -27,7 +27,7 @@ include ../common_files_for_make/makefile_LR1.mke
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/mingw_on_win32.mke
+include $(LIB_PM_PATH)/included_makefiles/msys_on_win32.mke
 
 #---------------------------------------------------------------*
 #                                                               *
