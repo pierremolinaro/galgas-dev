@@ -89,6 +89,39 @@ bool cPtr_typeAndOperation
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeMinusOperation::generateExpression (AC_OutputStream & ioCppFile) {
+  ioCppFile << "((" ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ") - (" ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeMinusOperation
+::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) || 
+         mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeMinusOperation
+::isLexiqueFormalArgumentUsedForTest (void) const {
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest () || 
+         mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeOrOperation::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "((" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
