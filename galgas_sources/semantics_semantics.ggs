@@ -383,6 +383,13 @@ class @typeOrOperation extends @typeExpression {
  
 #---------------------------------------------------------------------------*
 
+class @typeMinusOperation extends @typeExpression {
+  @typeExpression mLeftExpression ;
+  @typeExpression mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
 class @typeConcatOperation extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
