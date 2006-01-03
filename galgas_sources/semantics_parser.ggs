@@ -39,6 +39,7 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -56,6 +57,7 @@ label parse
 
 rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsMapForUse
 label parse
 ;
@@ -85,6 +87,7 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -105,6 +108,7 @@ rule <import_headers_semantics_and_grammars>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label parse
@@ -121,19 +125,11 @@ label parse
 ;
 
 rule <attributes_definition_list>
+  !@attributeListModel outAttributeListModel
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
   !@L_nameWithType listeTypeeAttributsExternesCourants # definis dans la classe courante
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@stringset tableFichiersEnTetePourFichierH
-label parse
-;
-
-rule <attribute_definition>
-  ?!@typeSemanticAttributesMap tableAttributs
-  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
-  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@stringset tableFichiersEnTetePourFichierH
 label parse
@@ -325,14 +321,14 @@ label parse
 
 rule <ex_map_method>
   !@lstring nomMethode
-  !@L_stringList outMultiLingualMessage
+  !@string outMessage
 label parse
 ;
 
 rule <map_method>
   !@lstring methodName
   !@lstring getIndexMethodName
-  !@L_stringList outMessageStringList
+  !@string outMessage
 label parse
 ;
 
@@ -530,6 +526,7 @@ label importSyntax
   $semantics$ ;
   $;$ ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 :
   $semantics$ ;
@@ -540,6 +537,7 @@ label importSemantics
   enterBuiltinTypes ?componentSemanticsEntitiesMap ;
 
   <import_headers_semantics_and_grammars> importSemantics
+    !?ioModelMap
     !?componentSemanticsEntitiesMap
     !?ioSemanticsComponentsMap
   ;
@@ -550,6 +548,7 @@ label importSemantics
   repeat
   while
     <semantics_declaration> importSemantics
+      !?ioModelMap
       !?componentSemanticsEntitiesMap
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
@@ -630,6 +629,7 @@ rule <import_headers_semantics_and_grammars>
   ioOptionsComponentsMapForUse := [@M_optionComponents empty] ;
 #--- enter in semantics entities map the galgas types corresponding to keywords
   enterBuiltinTypes ?ioComponentSemanticsEntitiesMap ;
+  @ModelMap modelMap [empty] ;
 
 #--- Loop on import instructions
   repeat
@@ -722,6 +722,7 @@ rule <import_headers_semantics_and_grammars>
         @M_semanticsComponents semanticsComponentsMap [empty] ;
         <parse_semantics_component_for_importing> 
           !sourceFile
+          !?modelMap
           !?semanticsComponentsMap
         ;
         @M_semanticsEntitiesForUse importedEntities ;
@@ -739,6 +740,7 @@ rule <import_headers_semantics_and_grammars>
 #--- Check that every option component used by an imported component is declared here
   
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 :
@@ -787,6 +789,7 @@ label importSemantics
         @M_semanticsComponents semanticsComponentsMap [empty] ;
         <parse_semantics_component_for_importing> 
           !sourceFile
+          !?ioModelMap
           !?semanticsComponentsMap
         ;
         @M_semanticsEntitiesForUse importedEntities ;
@@ -882,6 +885,7 @@ rule <semantics_declaration>
     [!?tableRoutinesAimplementer insertKey !nomRoutine] ;
   end select ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -1048,7 +1052,9 @@ rule <semantics_declaration>
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeAttributsExternesCourants ;
+    @attributeListModel attributeListModel ;
     <attributes_definition_list>
+      ?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -1148,6 +1154,7 @@ rule <semantics_declaration>
     $}$ ;
   end select ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -1185,12 +1192,16 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeAttributsExternesCourants ;
     @stringset tableFichiersEnTetePourFichierH [empty] ;
-    <attributes_definition_list> !?tableAttributs
-                                 !?listeTousAttributsSemantiques
-                                 ?listeAttributsSemantiquesCourants
-                                 ?listeAttributsExternesCourants
-                                 !?ioComponentSemanticsEntitiesMap
-                                 !?tableFichiersEnTetePourFichierH ;
+    @attributeListModel attributeListModel ;
+    <attributes_definition_list>
+      ?attributeListModel
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+      !?tableFichiersEnTetePourFichierH
+    ;
     @bool estAbstraite := true ;
   #--- Declaration des methodes
     @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
@@ -1330,7 +1341,9 @@ rule <semantics_declaration>
 #------------------- list des attributs de la classe -------------------
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
+  @attributeListModel attributeListModel ;
   <attributes_definition_list>
+    ?attributeListModel
     !?tableAttributs
     !?listeTousAttributsSemantiques
     ?listeAttributsSemantiquesCourants
@@ -1426,6 +1439,7 @@ rule <semantics_declaration>
   listeEntitesAengendrer += !def ;
   $}$ ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -1468,12 +1482,16 @@ label importSemantics
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
   @stringset tableFichiersEnTetePourFichierH [empty] ;
-  <attributes_definition_list> !?tableAttributs
-                               !?listeTousAttributsSemantiques
-                               ?listeAttributsSemantiquesCourants
-                               ?listeTypeeAttributsExternesCourants
-                               !?ioComponentSemanticsEntitiesMap
-                               !?tableFichiersEnTetePourFichierH ;
+  @attributeListModel attributeListModel ;
+  <attributes_definition_list>
+    ?attributeListModel
+    !?tableAttributs
+    !?listeTousAttributsSemantiques
+    ?listeAttributsSemantiquesCourants
+    ?listeTypeeAttributsExternesCourants
+    !?ioComponentSemanticsEntitiesMap
+    !?tableFichiersEnTetePourFichierH
+  ;
   @bool estAbstraite := false ;
 #--------------------- Methodes de la classe ----------------------------
   @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
@@ -3563,23 +3581,23 @@ rule <semantics_declaration>
     while
       $insert$ ;
       @lstring nomMethode ;
-      @L_stringList listeMessagesErreur ;
-      <ex_map_method> ? nomMethode ? listeMessagesErreur ;
+      @string errorMessage ;
+      <ex_map_method> ? nomMethode ? errorMessage ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      insertMethodList += !nomMethode !listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
+      insertMethodList += !nomMethode ! errorMessage !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
     while 
       $search$ ;
       @lstring nomMethode ;
-      @L_stringList listeMessagesErreur ;
-      <ex_map_method> ? nomMethode ? listeMessagesErreur ;
+      @string errorMessage ;
+      <ex_map_method> ? nomMethode ? errorMessage ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      searchMethodList += !nomMethode !listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
+      searchMethodList += !nomMethode ! errorMessage !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -3621,12 +3639,16 @@ rule <semantics_declaration>
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    <attributes_definition_list> !?tableAttributs
-                                 !?listeTousAttributsSemantiques
-                                 ?listeAttributsSemantiquesCourants
-                                 ?listeTypeeAttributsExternesCourants
-                                 !?ioComponentSemanticsEntitiesMap
-                                 !?tableFichiersEnTetePourFichierH ;
+    @attributeListModel attributeListModel ;
+    <attributes_definition_list>
+      ?attributeListModel
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeTypeeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+      !?tableFichiersEnTetePourFichierH
+    ;
   #--- Build insert and search method map
     @mapMethodMap mapMethodMap [empty] ;
     @formalArgumentPassingMode inPassingMode [argumentIn] ;
@@ -3693,7 +3715,9 @@ rule <semantics_declaration>
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
+    @attributeListModel attributeListModel ;
     <attributes_definition_list>
+      ?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -3730,8 +3754,8 @@ rule <semantics_declaration>
       $insert$ ;
       @lstring methodName ;
       @lstring getIndexMethodName ;
-      @L_stringList errorMessagePattern ;
-      <map_method> ?methodName ?getIndexMethodName ?errorMessagePattern ;
+      @string errorMessage ;
+      <map_method> ?methodName ?getIndexMethodName ? errorMessage ;
       @string firstStateName ;
       @lastStateList emptyLastStateList ;
       @transitionStatusMap  transitionStatusMap [empty] ;
@@ -3744,7 +3768,7 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !methodName !methodSignature] ;
-      insertMethodList += !methodName !errorMessagePattern !firstStateName !emptyLastStateList !transitionStatusMap !false ;
+      insertMethodList += !methodName ! errorMessage !firstStateName !emptyLastStateList !transitionStatusMap !false ;
    #-- Insert And Get Index Method
       if [getIndexMethodName value] != "" then
         @L_signature getIndexMethodSignature [empty] ;
@@ -3754,14 +3778,14 @@ rule <semantics_declaration>
           getIndexMethodSignature += !kAttributType !inPassingMode ;      
         end foreach ;
         [!?mapMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        insertMethodList += !getIndexMethodName !errorMessagePattern !firstStateName !emptyLastStateList !transitionStatusMap !true ;
+        insertMethodList += !getIndexMethodName ! errorMessage !firstStateName !emptyLastStateList !transitionStatusMap !true ;
       end if ;
     while
       $search$ ;
       @lstring methodName ;
       @lstring getIndexMethodName ;
-      @L_stringList errorMessagePattern ;
-      <map_method> ?methodName ?getIndexMethodName ?errorMessagePattern ;
+      @string errorMessage ;
+      <map_method> ?methodName ?getIndexMethodName ? errorMessage ;
       @string firstStateName ;
       @lastStateList emptyLastStateList ;
       @transitionStatusMap  transitionStatusMap [empty] ;
@@ -3774,7 +3798,7 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !methodName !methodSignature] ;
-      searchMethodList += !methodName !errorMessagePattern !firstStateName !emptyLastStateList !transitionStatusMap !false ;
+      searchMethodList += !methodName ! errorMessage !firstStateName !emptyLastStateList !transitionStatusMap !false ;
     #--- Insert 'Get Index' search method in modifier map (if any)
       if [getIndexMethodName value] != "" then
         @L_signature getIndexMethodSignature [empty] ;
@@ -3784,7 +3808,7 @@ rule <semantics_declaration>
          getIndexMethodSignature += !kAttributType !outPassingMode ;      
         end foreach ;
         [!?mapMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        searchMethodList += !getIndexMethodName !errorMessagePattern !firstStateName !emptyLastStateList !transitionStatusMap !true ;
+        searchMethodList += !getIndexMethodName ! errorMessage !firstStateName !emptyLastStateList !transitionStatusMap !true ;
       end if ;
     end repeat ;
   #--- Check that insert method transition names correspond to search methods
@@ -3815,6 +3839,7 @@ rule <semantics_declaration>
     $}$ ;
   end select ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -3849,23 +3874,23 @@ label importSemantics
     while
       $insert$ ;
       @lstring nomMethode ;
-      @L_stringList listeMessagesErreur ;
-      <ex_map_method> ? nomMethode ? listeMessagesErreur ;
+      @string errorMessage ;
+      <ex_map_method> ? nomMethode ? errorMessage ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      insertMethodList += !nomMethode !listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
+      insertMethodList += !nomMethode ! errorMessage !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
     while 
       $search$ ;
       @lstring nomMethode ;
-      @L_stringList listeMessagesErreur ;
-      <ex_map_method> ? nomMethode ? listeMessagesErreur ;
+      @string errorMessage ;
+      <ex_map_method> ? nomMethode ? errorMessage ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      searchMethodList += !nomMethode !listeMessagesErreur !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
+      searchMethodList += !nomMethode ! errorMessage !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -3908,12 +3933,16 @@ label importSemantics
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
     @stringset tableFichiersEnTetePourFichierH [empty] ;
-    <attributes_definition_list> !?tableAttributs
-                                 !?listeTousAttributsSemantiques
-                                 ?listeAttributsSemantiquesCourants
-                                 ?listeTypeeAttributsExternesCourants
-                                 !?ioComponentSemanticsEntitiesMap
-                                 !?tableFichiersEnTetePourFichierH ;
+    @attributeListModel attributeListModel ;
+    <attributes_definition_list>
+      ?attributeListModel
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeTypeeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+      !?tableFichiersEnTetePourFichierH
+    ;
   #--- Build insert and search method map
     @mapMethodMap mapMethodMap [empty] ;
     @formalArgumentPassingMode inPassingMode [argumentIn] ;
@@ -3972,7 +4001,9 @@ label importSemantics
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
     @stringset tableFichiersEnTetePourFichierH [empty] ;
+    @attributeListModel attributeListModel ;
     <attributes_definition_list>
+      ?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -4004,8 +4035,8 @@ label importSemantics
       $insert$ ;
       @lstring methodName ;
       @lstring getIndexMethodName ;
-      @L_stringList errorMessagePattern ;
-      <map_method> ?methodName ?getIndexMethodName ?errorMessagePattern ;
+      @string errorMessage ;
+      <map_method> ?methodName ?getIndexMethodName ? errorMessage ;
       <parse_states> parse ;
       $;$ ;
     #--- Enter insert method in modifier map
@@ -4065,19 +4096,14 @@ end rule ;
 
 rule <ex_map_method>
   !@lstring nomMethode
-  !@L_stringList outMultiLingualMessageList
+  !@string outMessage
 :
   $identifier$ ? nomMethode ;
   $error$ ;
   $message$ ;
-  outMultiLingualMessageList := [@L_stringList empty] ;
-  repeat
-    @lstring messageText ;
-    $literal_string$ ? messageText ;
-    outMultiLingualMessageList += ![messageText value] ;
-  while
-    $,$ ;
-  end repeat ;
+  @lstring messageText ;
+  $literal_string$ ? messageText ;
+  outMessage := [messageText value] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -4085,7 +4111,7 @@ end rule ;
 rule <map_method>
   !@lstring methodName
   !@lstring getIndexMethodName
-  !@L_stringList outMessageList
+  !@string outMessage
 :
   $identifier$ ?methodName ;
   select
@@ -4096,7 +4122,9 @@ rule <map_method>
   end select ;
   $error$ ;
   $message$ ;
-  <message_pattern> ? outMessageList ;
+  @lstring errorMessage ;
+  $literal_string$ ? errorMessage ;
+  outMessage := [errorMessage value] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -4141,15 +4169,15 @@ rule <semantics_declaration>
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $list$ ;
-  @lstring nomListe ;
-  $type_name$ ? nomListe ;
+  @lstring listTypeName ;
+  $type_name$ ? listTypeName ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey ![nomListe value]] | [ioComponentSemanticsEntitiesMap hasKey ![nomListe value]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedListType new !nomListe] ;
-      [!?tableEnAvant insertKey !nomListe !t] ;
-      [!?tableEnAvantAimplementer insertKey !nomListe !t] ;
-      tableDeclAnticipeesClassePourFichierH += ![nomListe value] ;
+    if not ([tableEnAvant hasKey ![listTypeName value]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName value]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
+      [!?tableEnAvant insertKey ! listTypeName !t] ;
+      [!?tableEnAvantAimplementer insertKey ! listTypeName !t] ;
+      tableDeclAnticipeesClassePourFichierH += ![listTypeName value] ;
     end if ;
   or
     ${$ ;
@@ -4158,21 +4186,26 @@ rule <semantics_declaration>
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    <attributes_definition_list> !?tableAttributs
-                                 !?listeTousAttributsSemantiques
-                                 ?listeAttributsSemantiquesCourants
-                                 ?listeTypeeAttributsExternesCourants
-                                 !?ioComponentSemanticsEntitiesMap
-                                 !?tableFichiersEnTetePourFichierH ;
+    @attributeListModel attributeListModel ;
+    <attributes_definition_list>
+      ?attributeListModel
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeTypeeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+      !?tableFichiersEnTetePourFichierH
+    ;
   #--- Construction de l'attribut semantique
     $}$ ;
-    @AC_galgasType c := [@typeGalgasListType new !nomListe !listeTousAttributsSemantiques] ;
+    @AC_galgasType c := [@typeGalgasListType new ! listTypeName !listeTousAttributsSemantiques] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !nomListe !entite] ;
-    @typeEntityToGenerate def := [@C_listTypeToImplement new !nomListe !listeTousAttributsSemantiques !listeTypeeAttributsExternesCourants] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey ! listTypeName !entite] ;
+    @typeEntityToGenerate def := [@C_listTypeToImplement new ! listTypeName !listeTousAttributsSemantiques !listeTypeeAttributsExternesCourants] ;
     listeEntitesAengendrer += !def ;
   end select ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -4180,34 +4213,40 @@ label importSemantics
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $list$ ;
-  @lstring nomListe ;
-  $type_name$ ? nomListe ;
+  @lstring listTypeName ;
+  $type_name$ ? listTypeName ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey ![nomListe value]] | [ioComponentSemanticsEntitiesMap hasKey ![nomListe value]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedListType new !nomListe] ;
-      [!?tableEnAvant insertKey !nomListe !t] ;
-      [!?tableEnAvantAimplementer insertKey !nomListe !t] ;
+    if not ([tableEnAvant hasKey ![listTypeName value]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName value]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
+      [!?tableEnAvant insertKey ! listTypeName !t] ;
+      [!?tableEnAvantAimplementer insertKey ! listTypeName !t] ;
     end if ;
   or
     ${$ ;
   #-- Declaration des attributs de la list
+    @attributeListModel attributeListModel ;
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
     @stringset tableFichiersEnTetePourFichierH [empty] ;
-    <attributes_definition_list> !?tableAttributs
-                                 !?listeTousAttributsSemantiques
-                                 ?listeAttributsSemantiquesCourants
-                                 ?listeTypeeAttributsExternesCourants
-                                 !?ioComponentSemanticsEntitiesMap
-                                 !?tableFichiersEnTetePourFichierH ;
+    <attributes_definition_list>
+      ?attributeListModel
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeTypeeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+      !?tableFichiersEnTetePourFichierH
+    ;
   #--- Construction de l'attribut semantique
     $}$ ;
-    @AC_galgasType c := [@typeGalgasListType new !nomListe !listeTousAttributsSemantiques] ;
+    @AC_galgasType c := [@typeGalgasListType new ! listTypeName !listeTousAttributsSemantiques] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !nomListe !entite] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
+    @TypeModel t := [@ListModel new !attributeListModel] ;
+#    [!?ioModelMap insertKey !listTypeName !t] ;
   end select ;
 end rule ;
 
@@ -4218,47 +4257,38 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <attributes_definition_list>
+  !@attributeListModel outAttributeListModel
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
   !@L_nameWithType listeTypeeAttributsExternesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@stringset tableFichiersEnTetePourFichierH
+  ?!@stringset unused tableFichiersEnTetePourFichierH
 :
   listeTypeeAttributsExternesCourants := [@L_nameWithType empty] ;
   listeAttributsSemantiquesCourants := [@typeListeAttributsSemantiques empty] ;
+  outAttributeListModel := [@attributeListModel empty] ;
   repeat
   while
-    <attribute_definition> !?tableAttributs
-                           !?listeTousAttributsSemantiques
-                           !?listeAttributsSemantiquesCourants
-                           !?ioComponentSemanticsEntitiesMap
-                           !?tableFichiersEnTetePourFichierH ;
+  #--- Type name
+    @AC_galgasType definitionType ;
+    @lstring typeName ;
+    <type_parsing>
+      !?ioComponentSemanticsEntitiesMap
+      ?definitionType
+      ?typeName
+     ;
+  #--- Type can be used for instanciation ?
+    [definitionType typeCanBeUsedInObjectDeclaration] ;
+  #--- Formal argument
+    @lstring attributeName ;
+    $identifier$ ? attributeName ;
+    [!?tableAttributs insertKey ! attributeName !definitionType] ;
+    listeTousAttributsSemantiques += !definitionType ! attributeName ;
+    listeAttributsSemantiquesCourants += !definitionType ! attributeName ;
+    outAttributeListModel += !typeName !attributeName ;
     $;$ ;
   end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <attribute_definition>
-  ?!@typeSemanticAttributesMap tableAttributs
-  ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
-  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@stringset unused tableFichiersEnTetePourFichierH
-:
-#--- Type name
-  @AC_galgasType definitionType ;
-  @lstring typeName ;
-  <type_parsing> !?ioComponentSemanticsEntitiesMap ?definitionType ?typeName ;
-#--- Type can be used for instanciation ?
-  [definitionType typeCanBeUsedInObjectDeclaration] ;
-#--- Formal argument
-  @lstring nom ;
-  $identifier$ ? nom ;
-  [!?tableAttributs insertKey !nom !definitionType] ;
-  listeTousAttributsSemantiques += !definitionType !nom ;
-  listeAttributsSemantiquesCourants += !definitionType !nom ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -4407,6 +4437,7 @@ rule <semantics_declaration>
   $extern$ ;
   $;$ ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -4684,6 +4715,7 @@ rule <semantics_declaration>
   end select ;
   $;$ ;    
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -4793,6 +4825,7 @@ rule <semantics_declaration>
   @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !entity] ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant

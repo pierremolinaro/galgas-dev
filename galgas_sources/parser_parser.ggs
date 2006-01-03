@@ -39,6 +39,7 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -59,6 +60,7 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -100,6 +102,7 @@ rule <import_headers_semantics_and_grammars>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponents
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label parse
@@ -389,6 +392,7 @@ label importSyntax
   $syntax$ ;
   $;$ ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
 :
   $syntax$ ;

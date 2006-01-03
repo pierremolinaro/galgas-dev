@@ -230,25 +230,21 @@ template <typename INFO> class cGalgasVariablesMap {
   public : element_type * searchForReadOnlyAccess (C_Lexique & inLexique,
                                          const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                         const char * messageErreurRecherche,
                                          const char * messageErreurPhase) ;
 
   public : element_type * searchForDestructiveReadAccess (C_Lexique & inLexique,
                                                 const GGS_lstring & clef,
                                                 const GGS_location & inLocation,
-                                                const char * messageErreurRecherche,
                                                 const char * messageErreurPhase) ;
 
   public : element_type * searchForReadWriteAccess (C_Lexique & inLexique,
                                           const GGS_lstring & clef,
                                           const GGS_location & inLocation,
-                                          const char * messageErreurRecherche,
                                           const char * messageErreurPhase) ;
 
   public : element_type * searchForWriteAccess (C_Lexique & inLexique,
                                       const GGS_lstring & clef,
                                       const GGS_location & inLocation,
-                                      const char * messageErreurRecherche,
                                       const char * messageErreurPhase) ;
 
 //--- Methodes de bloc pour verifier l'etat des variables

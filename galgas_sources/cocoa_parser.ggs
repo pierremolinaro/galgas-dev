@@ -36,6 +36,7 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -88,7 +89,10 @@ rule <galgas_component>
     @lstring sourceFileName ;
     $literal_string$ ? sourceFileName ;
     grammarComponentsMap := [@M_grammarComponents empty] ;
-    <parse_grammar_component_for_importing> !sourceFileName !?grammarComponentsMap ;
+    <parse_grammar_component_for_importing>
+     !sourceFileName
+     !?grammarComponentsMap
+  ;
   end select ;
   @lstring lexiqueClassName ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
@@ -157,6 +161,7 @@ label importSyntax
   $cocoa$ ;
   $;$ ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
 :
   $cocoa$ ;

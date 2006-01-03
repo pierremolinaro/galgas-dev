@@ -123,8 +123,8 @@ map @typeAltProductionsMap {
   @typeInstructionsList mAllInstructionsList ;
   @L_ruleSyntaxSignature mSyntaxSignature ;
   @location mEndOfInstructionListLocation ;
-  insert insertKey error message "the '" . * . "' label has been already declared" ;
-  search searchKey error message "the '" . * . "' label is not declared" ;
+  insert insertKey error message "the '%K' label has been already declared" ;
+  search searchKey error message "the '%K' label is not declared" ;
 }
 
 

@@ -2,7 +2,7 @@
 #                                                                           *
 #  Common semantics definitions                                             *
 #                                                                           *
-#  Copyright (C) 1997-2005 Pierre Molinaro.                                 *
+#  Copyright (C) 1997-2006 Pierre Molinaro.                                 *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -17,6 +17,48 @@
 #---------------------------------------------------------------------------*
 
 semantics common_semantics :
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A T T R I B U T E    L I S T    M O D E L                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @attributeListModel {
+  @lstring mTypeName ;
+  @lstring mAttributeName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M O D E L                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @TypeModel {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L I S T    M O D E L                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @ListModel extends @TypeModel {
+  @attributeListModel mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D E L    M A P                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @ModelMap {
+  @TypeModel mType ;
+  insert insertKey error message "the '%K' type has been already declared" ;
+  search searchKey error message "the '%K' type is not declared" ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -208,8 +250,8 @@ list @L_actualParametersSignature {
 map @M_accessors_map {
   @L_signature mAccessorSignature ;
   @AC_galgasType mReturnedType ;
-  insert insertKey error message "the '" . * . "' accessor has been already declared" ;
-  search searchKey error message "the '" . * . "' accessor is not declared" ;
+  insert insertKey error message "the '%K' accessor has been already declared" ;
+  search searchKey error message "the '%K' accessor is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -674,8 +716,8 @@ class @typeGalgasUndefinedExternType extends @AC_galgasType {
 
 map @M_externTypeConstructorMap {
   @typeListeAttributsSemantiques aListeDesAttributs ;
-  insert insertKey error message "the '" . * . "' constructor is already declared" ;
-  search searchKey error message "the '" . * . "' constructor is not declared" ;
+  insert insertKey error message "the '%K' constructor is already declared" ;
+  search searchKey error message "the '%K' constructor is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -751,8 +793,8 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 map @M_terminalSymbolsMapForUse {
   @typeListeAttributsSemantiques aListeDesAttributs ;
-  insert insertKey error message "the terminal symbol '$" . * . "$' is already declared" ;
-  search searchKey error message "the terminal symbol '$" . * . "$' is not declared" ;
+  insert insertKey error message "the terminal symbol '$%K$' is already declared" ;
+  search searchKey error message "the terminal symbol '$%K$' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -763,8 +805,8 @@ map @M_terminalSymbolsMapForUse {
 
 map @M_lexiqueComponents {
   @M_terminalSymbolsMapForUse mTerminalSymbolMap ;
-  insert insertKey error message"the '" . * . "' lexique is already declared" ;
-  search searchKey error message"the '" . * . "' lexique is not defined" ;
+  insert insertKey error message"the '%K' lexique is already declared" ;
+  search searchKey error message"the '%K' lexique is not defined" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -775,8 +817,8 @@ map @M_lexiqueComponents {
 
 map @typeTableEnAvant {
   @AC_galgasType mType ;
-  insert insertKey error message "the type '" . * . "' is already declared" ;
-  search searchKey error message "the type '" . * . "' is not declared" ;
+  insert insertKey error message "the type '%K' is already declared" ;
+  search searchKey error message "the type '%K' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -787,8 +829,8 @@ map @typeTableEnAvant {
 
 map @M_nonterminalSymbolAlts {
   @L_signature mFormalParametersList ;
-  insert insertKey error message "the label '" . * . "' has been already declared" ;
-  search searchKey error message "the label '" . * . "' is not declared" ;
+  insert insertKey error message "the label '%K' has been already declared" ;
+  search searchKey error message "the label '%K' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -799,8 +841,8 @@ map @M_nonterminalSymbolAlts {
 
 map @M_externClassesDirectories {
   @lstring mDirectory ;
-  insert insertKey error message "the extern class '" . * . "' has been already declared" ;
-  search searchKey error message "the extern class '" . * . "' is not declared" ;
+  insert insertKey error message "the extern class '%K' has been already declared" ;
+  search searchKey error message "the extern class '%K' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -832,8 +874,8 @@ class @C_grammarForSemantics extends @AC_semanticsEntity {
 
 map @M_semanticsEntitiesForUse  {
   @AC_semanticsEntity aDefEntite ;
-  insert insertKey error message "a semantics entity named '" . * . "' is already declared" ;
-  search searchKey error message "there is no semantics entity named '" . * . "'" ;
+  insert insertKey error message "a semantics entity named '%K' is already declared" ;
+  search searchKey error message "there is no semantics entity named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -850,8 +892,8 @@ abstract class @AC_typeForGrammarComponent {
 
 map @M_typesForGrammarComponent {
   @AC_typeForGrammarComponent mType ;
-  insert insertKey error message "the '@" . * . "' type is already declared" ;
-  search searchKey error message "the '@" . * . "' type is not defined" ;
+  insert insertKey error message "the '@%K' type is already declared" ;
+  search searchKey error message "the '@%K' type is not defined" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -915,8 +957,8 @@ list @L_ruleSyntaxSignature {
 
 map @L_grammarsMap {
   @M_nonterminalSymbolAlts mStartSymbolParametersMap ;
-  insert insertKey error message "the '" . * . "' grammar is already defined" ;
-  search searchKey error message "the '" . * . "' grammar is not defined" ;
+  insert insertKey error message "the '%K' grammar is already defined" ;
+  search searchKey error message "the '%K' grammar is not defined" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -927,8 +969,8 @@ map @L_grammarsMap {
 
 map @M_nonterminalSymbolAltsForGrammar {
   @L_signature_ForGrammarComponent mFormalParametersList ;
-  insert insertKey error message "the rule label '" . * . "' has been already declared" ;
-  search searchKey error message "the rule label '" . * . "' is not declared" ;
+  insert insertKey error message "the rule label '%K' has been already declared" ;
+  search searchKey error message "the rule label '%K' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -966,8 +1008,8 @@ map @M_syntaxComponents {
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
   @lstring mLexiqueComponentName ;
   @stringset mClassesNamesSet ;
-  insert insertKey error message "a syntax component named '" . * . "' is already declared" ;
-  search searchKey error message "there is no syntax component named '" . * . "'" ;
+  insert insertKey error message "a syntax component named '%K' is already declared" ;
+  search searchKey error message "there is no syntax component named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1054,7 +1096,7 @@ list @L_identifiers {
 #---------------------------------------------------------------------------*
 
 map @typeSuperClassesMap {
-  insert insertKey error message "the class '" . * . "' is already a super class of the current class" ;
+  insert insertKey error message "the class '%K' is already a super class of the current class" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1064,8 +1106,8 @@ map @typeSuperClassesMap {
 #---------------------------------------------------------------------------*
 
 map @typeClassInheritedMessagesMap {
-  insert insertKey error message "the message '" . * . "' is already declared" ;
-  search searchKey error message "the message '" . * . "' is not declared" ;
+  insert insertKey error message "the message '%K' is already declared" ;
+  search searchKey error message "the message '%K' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1076,8 +1118,8 @@ map @typeClassInheritedMessagesMap {
 
 map @typeSemanticAttributesMap {
   @AC_galgasType mAttributType ;
-  insert insertKey error message "an attribut named '" . * . "' is already declared" ;
-  search searchKey error message "there is no attribut named '" . * . "'" ;
+  insert insertKey error message "an attribut named '%K' is already declared" ;
+  search searchKey error message "there is no attribut named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1103,14 +1145,14 @@ list @lastStateList  {
 map @transitionStatusMap {
   @lastStateEnum mStatus ;
   @L_stringList mMessageList ;
-  insert insertKey error message "a transition named '" . * . "' is already declared" ;
+  insert insertKey error message "a transition named '%K' is already declared" ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @insertOrSearchMethodList {
   @lstring mMethodName ;
-  @L_stringList mErrorMessageList ;
+  @string mErrorMessage ;
   @string mFirstState ;
   @lastStateList mLastStateList ;
   @transitionStatusMap  mTransitionStatusMap ;
@@ -1199,8 +1241,8 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 map @typeTableBlocsDeTable {
   @L_signature aSignatureDebut ;
   @L_signature aSignatureFin ;
-  insert insertKey error message "a block method named '" . * . "' is already declared" ;
-  search searchKey error message "there is no block method named '" . * . "'" ;
+  insert insertKey error message "a block method named '%K' is already declared" ;
+  search searchKey error message "there is no block method named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1224,8 +1266,8 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
 
 map @mapMethodMap {
   @L_signature mMethodSignature ;
-  insert insertKey error message "an insert or a search method named '" . * . "' is already declared" ;
-  search searchKey error message "there is no insert nor search method named '" . * . "'" ;
+  insert insertKey error message "an insert or a search method named '%K' is already declared" ;
+  search searchKey error message "there is no insert nor search method named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1387,16 +1429,16 @@ map @typeTableUtilisationsSemantiques {
 #---------------------------------------------------------------------------*
 
 map @typeEnumConstantesMap {
-  insert insertKey error message "the '" . * . "' constant is already declared" ;
-  search searchKey error message "the '" . * . "' constant is not declared" ;
+  insert insertKey error message "the '%K' constant is already declared" ;
+  search searchKey error message "the '%K' constant is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
 
 map @typeEnumMessageMap {
   @L_lstringList mMessageStringList ;
-  insert insertKey error message "the '" . * . "' message name is already declared" ;
-  search searchKey error message "the '" . * . "' message name is not declared" ;
+  insert insertKey error message "the '%K' message name is already declared" ;
+  search searchKey error message "the '%K' message name is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1531,8 +1573,8 @@ map @M_cli_options {
   @lstring mOptionString ;
   @lstring mComment ;
   @uint mDefaultValue ;
-  insert insertKey error message "the '" . * . "' command line option has been already declared" ;
-  search searchKey error message "the '" . * . "' command line option is not declared" ;
+  insert insertKey error message "the '%K' command line option has been already declared" ;
+  search searchKey error message "the '%K' command line option is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1544,8 +1586,8 @@ map @M_cli_options {
 map @M_optionComponents {
   @M_cli_options mBoolOptionsMap ;
   @M_cli_options mUintOptionsMap ;
-  insert insertKey error message "the '" . * . "' option component named is already declared" ;
-  search searchKey error message "there is no '" . * . "' option component" ;
+  insert insertKey error message "the '%K' option component named is already declared" ;
+  search searchKey error message "there is no '%K' option component" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1557,8 +1599,8 @@ map @M_optionComponents {
 map @M_semanticsComponents {
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
   @M_optionComponents mOptionsComponents ;
-  insert insertKey error message "a semantics component named '" . * . "' is already declared" ;
-  search searchKey error message "there is no semantics component named '" . * . "'" ;
+  insert insertKey error message "a semantics component named '%K' is already declared" ;
+  search searchKey error message "there is no semantics component named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1571,8 +1613,8 @@ map @M_grammarComponents {
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
   @lstring mLexiqueName ;
   @M_optionComponents mOptionsMap ;
-  insert insertKey error message "the '" . * . "' grammar component has been already declared" ;
-  search searchKey error message "the '" . * . "' grammar component is not declared" ;
+  insert insertKey error message "the '%K' grammar component has been already declared" ;
+  search searchKey error message "the '%K' grammar component is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
