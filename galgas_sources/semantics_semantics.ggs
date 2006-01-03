@@ -111,8 +111,8 @@ abstract class @typeExpression {
 
 map @typeClassMessagesMap {
   @lstring mMessage ;
-  insert insertKey error message "the message '" . * . "' is already declared" ;
-  search searchKey error message "the message '" . * . "' is not declared" ;
+  insert insertKey error message "the message '%K' is already declared" ;
+  search searchKey error message "the message '%K' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -144,14 +144,10 @@ map @typeVariablesMap
   insert insertInOutArgument error message "the variable '%' is already declared" ;
   insert insertUnusedInOutArgument error message "the variable '%' is already declared" ;
 #--- Searching
-  search searchForReadOnlyAccess error message "the variable '%' is not declared",
-             "the variable '%' cannot be accessed in read only mode" ;
-  search searchForDestructiveReadAccess error message "the variable '%' is not declared",
-             "the variable '%' cannot be accessed in destructive read mode" ;
-  search searchForReadWriteAccess error message "the variable '%' is not declared",
-             "the variable '%' cannot be accessed in read/write mode" ;
-  search searchForWriteAccess error message "the variable '%' is not declared",
-             "the variable '%' cannot be accessed in write mode" ;
+  search searchForReadOnlyAccess error message "the variable '%' cannot be accessed in read only mode" ;
+  search searchForDestructiveReadAccess error message "the variable '%' cannot be accessed in destructive read mode" ;
+  search searchForReadWriteAccess error message "the variable '%' cannot be accessed in read/write mode" ;
+  search searchForWriteAccess error message "the variable '%' cannot be accessed in write mode" ;
 #--- Blocks
   block  verifyVariableUsing : () : (?@location positionErreur) ;
   block  testBloc : () : () ;
@@ -582,7 +578,7 @@ class @C_if_instruction extends @typeInstruction {
 #---------------------------------------------------------------------------*
 
 map @typeTableRoutinesAimplementer {
-  insert insertKey error message "the routine '" . * . "' is already declared" ;
+  insert insertKey error message "the routine '%K' is already declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -594,8 +590,8 @@ map @typeTableRoutinesAimplementer {
 map @typeTableAttributsSemantiques {
   @typeCplusPlusName aNomCppAttribut ;
   @AC_galgasType mAttributType ;
-  insert insertKey error message "the attribute '" . * . "' is already declared" ;
-  search searchKey error message "the attribute '" . * . "' is not declared" ;
+  insert insertKey error message "the attribute '%K' is already declared" ;
+  search searchKey error message "the attribute '%K' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1025,7 +1021,7 @@ class @typeDropInstruction extends @typeInstruction {
 #---------------------------------------------------------------------------*
 
 map @typeTableNomRoutinesDeclarees {
-  insert insertKey error message "the routine '" . * . "' is already declared" ;
+  insert insertKey error message "the routine '%K' is already declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1078,8 +1074,8 @@ class @typeDefinitionTableAimplementer extends @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 map @stateMap {
-  insert insertKey error message "the '" . * . "' state is already declared"  ;
-  search searchKey error message "the '" . * . "' state is not declared" ;
+  insert insertKey error message "the '%K' state is already declared"  ;
+  search searchKey error message "the '%K' state is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1259,8 +1255,8 @@ end routine ;
 
 map @typeEnumCstMessageStringMap {
   @lstring mMessageString ;
-  insert insertKey error message "the message for '" . * . "' constant is already declared" ;
-  search searchKey error message "the message for '" . * . "' constant is not declared" ;
+  insert insertKey error message "the message for '%K' constant is already declared" ;
+  search searchKey error message "the message for '%K' constant is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

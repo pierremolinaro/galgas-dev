@@ -40,6 +40,7 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -59,6 +60,7 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -116,11 +118,15 @@ label importSyntax
     ;
   end repeat ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 :
   repeat
   while
-    <galgas_component> importSemantics !?ioSemanticsComponentsMap ;
+    <galgas_component> importSemantics
+      !?ioModelMap
+      !?ioSemanticsComponentsMap
+    ;
   end repeat ;
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap

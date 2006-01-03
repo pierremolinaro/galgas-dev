@@ -36,6 +36,7 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -213,6 +214,7 @@ label importSyntax
   $program$ ;
   $;$ ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
 :
   $program$ ;

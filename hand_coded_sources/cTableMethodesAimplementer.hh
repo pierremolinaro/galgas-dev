@@ -191,7 +191,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
     internalInsert (info, clef, numeroElement, true, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
-      inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef) ;
     }
   }
   return numeroElement ;
@@ -213,7 +213,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexiq
     internalInsert (info, clef, numeroElement, false, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
-      inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef) ;
     }
   }
   return numeroElement ;

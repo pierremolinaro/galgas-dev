@@ -41,6 +41,7 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -62,6 +63,7 @@ label parse
 
 rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsMapForUse
 label parse
 ;
@@ -111,6 +113,7 @@ label importSyntax
   $literal_string$ ? * ;
   $;$ ;
 label importSemantics
+  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
 :
   $compile$ ;
@@ -168,9 +171,11 @@ end rule ;
 
 rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsMapForUse
 :
   grammar galgas_LL1_grammar label importSemantics in inFileName
+    !?ioModelMap
     !?ioSemanticsMapForUse
   ;
 end rule ;

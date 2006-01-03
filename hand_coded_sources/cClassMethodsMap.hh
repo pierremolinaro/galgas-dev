@@ -187,7 +187,7 @@ sint32 cClassMethodsMap <INFO>::insertAbstract (C_Lexique & inLexique,
     numeroElement = internalInsert (info, clef, true, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
-      inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef) ;
     }
   }
   return numeroElement ;
@@ -209,7 +209,7 @@ sint32 cClassMethodsMap <INFO>::insertNotAbstract (C_Lexique & inInputOutput,
     numeroElement = internalInsert (info, clef, false, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
-      inLocation.semanticErrorForMap (inInputOutput, messageErreurInsertion, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inInputOutput, messageErreurInsertion, clef) ;
     }
   }
   return numeroElement ;
@@ -276,7 +276,7 @@ searchKey (C_Lexique & inLexique,
       }
     }
     if (result == NULL) { // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inLocation.semanticErrorForMap (inLexique, inSearchErrorMessage, inKey) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, inSearchErrorMessage, inKey) ;
     }
   }
   return result ;
@@ -308,7 +308,7 @@ searchForOverride (C_Lexique & inLexique,
       }
     }
     if (result == NULL) { // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inLocation.semanticErrorForMap (inLexique, inSearchErrorMessage, inKey) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, inSearchErrorMessage, inKey) ;
     }else{
       macroValidPointer (result) ;
       result->champEstAbstraite = false ; // La methode n'est plus abstraite

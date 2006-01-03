@@ -272,7 +272,7 @@ sint32 cGalgasVariablesMap <INFO>::insertKey (C_Lexique & inLexique,
     if (insertionOk) {
       resultat = mListLength - 1 ;
     }else{ // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inLocation.semanticErrorForMap (inLexique, messageErreurInsertion, inKey) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, inKey) ;
     }
   }
   return resultat ;
@@ -387,7 +387,7 @@ chercherInterne (C_Lexique & inLexique,
     }
   //--- Pas trouve : erreur de recherche
     if (resultat == NULL) {
-      clef.semanticErrorForMap (inLexique, messageErreurRecherche, clef) ;
+      clef.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurRecherche, clef) ;
     }else if (resultat->mIsDeclaredUnused) {  //--- Check the variable is not declared as unused
       C_String message ;
       message << "The '" << clef << "' entity has been declared as 'unused'" ;
@@ -403,16 +403,16 @@ cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForReadOnlyAccess (C_Lexique & inLexique,
                          const GGS_lstring & clef,
                          const GGS_location & inLocation,
-                         const char * messageErreurRecherche,
                          const char * messageErreurPhase) {
   element_type * resultat = (element_type *) NULL ;
+	const char * messageErreurRecherche = "the '%' variable is not declared" ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if (resultat->champEtat == etatValue) {
       resultat->champUtilise = true ;
     }else{
-      inLocation.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef) ;
     }
   }
   return resultat ;
@@ -425,8 +425,8 @@ cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForDestructiveReadAccess (C_Lexique & inLexique,
                                 const GGS_lstring & clef,
                                 const GGS_location & inLocation,
-                                const char * messageErreurRecherche,
                                 const char * messageErreurPhase) {
+	const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
   if (resultat != NULL) { // Symbole trouve
@@ -436,7 +436,7 @@ searchForDestructiveReadAccess (C_Lexique & inLexique,
       resultat->champEtat = etatDetruite ;
       resultat->champUtilise = true ;
     }else{
-      inLocation.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef) ;
     }
   }
   return resultat ;
@@ -449,8 +449,8 @@ cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForReadWriteAccess (C_Lexique & inLexique,
                           const GGS_lstring & clef,
                           const GGS_location & inLocation,
-                          const char * messageErreurRecherche,
                           const char * messageErreurPhase) {
+	const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
   if (resultat != NULL) { // Symbole trouve
@@ -459,7 +459,7 @@ searchForReadWriteAccess (C_Lexique & inLexique,
         && (resultat->champNature != enumConstanteLocale)) {
       resultat->champUtilise = true ;
     }else{
-      inLocation.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef) ;
     }
   }
   return resultat ;
@@ -472,8 +472,8 @@ cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForWriteAccess (C_Lexique & inLexique,
                       const GGS_lstring & clef,
                       const GGS_location & inLocation,
-                      const char * messageErreurRecherche,
                       const char * messageErreurPhase) {
+	const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
   if (resultat != NULL) { // Symbole trouve
@@ -486,7 +486,7 @@ searchForWriteAccess (C_Lexique & inLexique,
       resultat->champEtat = etatValue ;
       resultat->champUtilise = true ;
     }else{*/
-      inLocation.semanticErrorForMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef) ;
     }
   }
   return resultat ;
