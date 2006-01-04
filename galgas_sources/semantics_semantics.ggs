@@ -111,7 +111,7 @@ abstract class @typeExpression {
 
 map @typeClassMessagesMap {
   @lstring mMessage ;
-  insert insertKey error message "the message '%K' is already declared" ;
+  insert insertKey error message "the message '%K' is already declared in %L" ;
   search searchKey error message "the message '%K' is not declared" ;
 }
 
@@ -578,7 +578,7 @@ class @C_if_instruction extends @typeInstruction {
 #---------------------------------------------------------------------------*
 
 map @typeTableRoutinesAimplementer {
-  insert insertKey error message "the routine '%K' is already declared" ;
+  insert insertKey error message "the routine '%K' is already declared in %L" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -590,7 +590,7 @@ map @typeTableRoutinesAimplementer {
 map @typeTableAttributsSemantiques {
   @typeCplusPlusName aNomCppAttribut ;
   @AC_galgasType mAttributType ;
-  insert insertKey error message "the attribute '%K' is already declared" ;
+  insert insertKey error message "the attribute '%K' is already declared in %L" ;
   search searchKey error message "the attribute '%K' is not declared" ;
 }
 
@@ -1021,7 +1021,7 @@ class @typeDropInstruction extends @typeInstruction {
 #---------------------------------------------------------------------------*
 
 map @typeTableNomRoutinesDeclarees {
-  insert insertKey error message "the routine '%K' is already declared" ;
+  insert insertKey error message "the routine '%K' is already declared in %L" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1074,7 +1074,7 @@ class @typeDefinitionTableAimplementer extends @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 map @stateMap {
-  insert insertKey error message "the '%K' state is already declared"  ;
+  insert insertKey error message "the '%K' state is already declared in %L"  ;
   search searchKey error message "the '%K' state is not declared" ;
 }
 
@@ -1255,7 +1255,7 @@ end routine ;
 
 map @typeEnumCstMessageStringMap {
   @lstring mMessageString ;
-  insert insertKey error message "the message for '%K' constant is already declared" ;
+  insert insertKey error message "the message for '%K' constant is already declared in %L" ;
   search searchKey error message "the message for '%K' constant is not declared" ;
 }
 

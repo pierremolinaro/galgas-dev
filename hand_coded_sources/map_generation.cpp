@@ -242,7 +242,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  element_type * p = (element_type *) inPtr ;\n"
                "  bool extension = false ; // Unused here\n"
                "  sint32 index = -1 ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo, mRoot, extension, index) ;\n"
+               "  GGS_location existingKeyLocation ; // Unused here\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, mRoot, extension, index, existingKeyLocation) ;\n"
                "}\n\n" ;
 
 //--- 'insertElement' method
@@ -275,9 +276,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    bool extension = false ; // Unused here\n"
-               "    internalInsert (inKey, (void *) & info, mRoot, extension, index) ;\n"
+               "    GGS_location existingKeyLocation ;\n"
+               "    internalInsert (inKey, (void *) & info, mRoot, extension, index, existingKeyLocation) ;\n"
                "    if (index < 0) {\n"
-               "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage) ;\n"
+               "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation) ;\n"
                "     }\n"
                "  }\n"
                "  if (outIndex != NULL) {\n"
