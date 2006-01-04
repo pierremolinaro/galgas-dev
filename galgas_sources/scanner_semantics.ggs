@@ -24,7 +24,7 @@ import semantics common_semantics in "common_semantics.ggs" ;
 
 map @typeLexicalAttributesMap {
   @AC_galgasType attributType ;
-  insert insertKey error message "the lexical attribute '%K' is already declared" ;
+  insert insertKey error message "the lexical attribute '%K' is already declared in %L" ;
   search searchKey error message "the lexical attribute '%K' is not declared" ;
 }
 
@@ -42,7 +42,7 @@ map @lexicalTypeMap {
 
 map @typeTableMessagesErreurs {
   @lstring mErrorMessage ;
-  insert insertKey error message "the error message '%K' is already declared" ;
+  insert insertKey error message "the error message '%K' is already declared in %L" ;
   search searchKey, searchKeyGetIndex error message "the error message '%K' is not declared" ;
 }
 
@@ -52,7 +52,7 @@ map @typeTableMessagesErreurs {
 
 map @M_styles {
   @lstring mTitle ;
-  insert insertKey error message "the '%K' style is already declared" ;
+  insert insertKey error message "the '%K' style is already declared in %L" ;
   search searchKey, searchKeyGetIndex error message "the '%K' style is not declared" ;
 }
 
@@ -64,7 +64,7 @@ map @typeTableDefinitionTerminaux {
   @string mErrorMessage ;
   @typeListeAttributsSemantiques attributListeDesAttributs ;
   @luint mStyleIndex ;
-  insert insertKey error message "the terminal symbol '$%K$' is already declared" ;
+  insert insertKey error message "the terminal symbol '$%K$' is already declared in %L" ;
   search searchKey error message "the terminal symbol '$%K$' is not declared" ;
 }
 
@@ -74,7 +74,7 @@ map @typeTableDefinitionTerminaux {
 
 map @typeTableMotsReserves {
   @lstring attributNomTerminal ;
-  insert insertKey error message "the word '%K' is already declared" ;
+  insert insertKey error message "the word '%K' is already declared in %L" ;
   search searchKey error message "the word '%K' is not declared" ;
 }
 
@@ -82,7 +82,7 @@ map @typeTableMotsReserves {
 
 map @typeTableTablesDeMotsReserves {
   @typeTableMotsReserves attributSimpleTable ;
-  insert insertKey error message "the word map '%K' is already declared" ;
+  insert insertKey error message "the word map '%K' is already declared in %L" ;
   search searchKey error message "the mord map '%K' is not declared" ;
 }
 
