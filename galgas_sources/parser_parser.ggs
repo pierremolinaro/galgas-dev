@@ -39,7 +39,6 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
-  ?!@ModelMap ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -48,6 +47,7 @@ label importOptions
 ;
 
 rule <semantics_declaration>
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -60,7 +60,6 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
-  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -102,7 +101,6 @@ rule <import_headers_semantics_and_grammars>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponents
 label importSemantics
-  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label parse
@@ -305,6 +303,7 @@ rule <galgas_component>
   listeEntitesAengendrer := [@typeEntitiesToGenerateList empty] ;
   @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMap [empty] ;
   @L_productionRules_ForGrammarComponent productionRulesListForGrammar [empty] ;
+  @ModelMap modelMap [empty] ;
   repeat
   while
     <syntax_declaration>
@@ -319,6 +318,7 @@ rule <galgas_component>
     ;
   while
     <semantics_declaration>
+      !?modelMap
       !?entitiesMap
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
@@ -392,7 +392,6 @@ label importSyntax
   $syntax$ ;
   $;$ ;
 label importSemantics
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
 :
   $syntax$ ;

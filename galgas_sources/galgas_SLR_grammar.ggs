@@ -40,7 +40,6 @@ grammar galgas_SLR_grammar "SLR" :
   label importSyntax
     ?!@M_syntaxComponents ioSyntaxComponentsMap
   label importSemantics
-    ?!@ModelMap ioModelMap
     ?!@M_semanticsComponents ioSemanticsComponentsMap
   label importGrammarForSemantics
     ?!@M_grammarComponents ioGrammarComponentsMap

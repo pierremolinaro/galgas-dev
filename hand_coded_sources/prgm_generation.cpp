@@ -87,7 +87,10 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
       numero ++ ;
     }
     C_String grammarZone3 ;
-    grammarZone3 << "} ;\n\n" ;
+    grammarZone3 << "//--- Prologue and epilogue\n"
+										"  public : void _prologue (void) ;\n"
+										"  public : void _epilogue (void) ;\n"
+		                "} ;\n\n" ;
     inLexique.generateFile (C_String ("grammar_") + inProgramComponentName + currentGrammar->mGrammarPostfix.string () + ".h",
                             "\n\n", // User Zone 1
                             grammarZone2,
@@ -122,7 +125,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                             const C_String & inProgramComponentName,
                             const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList) {
 //--- Generate user includes
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2 << "#include \"utilities/F_DisplayException.h\"\n"
              "#include \"time/C_Timer.h\"\n"
              "#include \"generic_arraies/TC_UniqueArray.h\"\n"
@@ -142,69 +145,68 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2.writeHyphenLineComment () ;
 
 //--- Command line options for this program
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  generatedZone3 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
-             "//--- Constructor\n"
-             "  public : C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) ;\n"
-             "\n"
-             "//--- Included options\n"
-             "  private : C_builtin_CLI_Options mBuiltinOptions ;\n" ;
+  generatedZone2 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
+                    "//--- Constructor\n"
+                    "  public : C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) ;\n"
+                    "\n"
+                    "//--- Included options\n"
+                    "  private : C_builtin_CLI_Options mBuiltinOptions ;\n" ;
   currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
-    generatedZone3 << "  private : " << currentOptionComponent->mKey
+    generatedZone2 << "  private : " << currentOptionComponent->mKey
             << " mOptions_" << currentOptionComponent->mKey << "; \n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
-  generatedZone3 << "} ;\n\n" ;
+  generatedZone2 << "} ;\n\n" ;
 
 //--------------------------------------- Get bool options count
-  generatedZone3.writeTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
-  generatedZone3 << "C_options_for_" << inProgramComponentName  << "::\n"
+  generatedZone2.writeTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
+  generatedZone2 << "C_options_for_" << inProgramComponentName  << "::\n"
              "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption)\n"
              ":mBuiltinOptions (inAcceptsDebugOption) {\n"
              "  add (& mBuiltinOptions) ;\n" ;
   currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
-    generatedZone3 << "  add (& mOptions_" << currentOptionComponent->mKey << ") ;\n" ;
+    generatedZone2 << "  add (& mOptions_" << currentOptionComponent->mKey << ") ;\n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
-  generatedZone3 << "}\n\n" ;
+  generatedZone2 << "}\n\n" ;
 
   GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
   while (currentGrammar != NULL) {
     macroValidPointer (currentGrammar) ;
   //--- Constructor
-    generatedZone3.writeTitleComment ("C O N S T R U C T O R") ;
-    generatedZone3 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
+    generatedZone2.writeTitleComment ("C O N S T R U C T O R") ;
+    generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << "::\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << " (const C_galgas_io_parameters & inIOparameters) :\n"
                       "mScanner_ (& mTerminalIO), mTerminalIO (inIOparameters) {\n"
                       "  mSourceFileExtension_ = \""
                    << inSourceFileExtension << "\" ;\n"
                       "}\n\n" ;
-    generatedZone3.writeHyphenLineComment () ;
+    generatedZone2.writeHyphenLineComment () ;
   //--- 'doCompilation' method
-    generatedZone3 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "\n"
-               "::doCompilation (const C_String & inSourceFileName_,\n"
-               "                 sint16 & returnCode) {\n" ;
-    generatedZone3.incIndentation (+2) ;
-    generatedZone3 << "C_Timer timer ;\n"
+    generatedZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
+               "doCompilation (const C_String & inSourceFileName_,\n"
+               "               sint16 & returnCode) {\n" ;
+    generatedZone2.incIndentation (+2) ;
+    generatedZone2 << "C_Timer timer ;\n"
              "try{\n" ;
-    generatedZone3.incIndentation (+2) ;
-    generatedZone3 << "if (mTerminalIO.versionModeOn ()) {\n"
+    generatedZone2.incIndentation (+2) ;
+    generatedZone2 << "if (mTerminalIO.versionModeOn ()) {\n"
                       "  ::printf (\"Reading '%s'\\n\", inSourceFileName_.cString ()) ;\n"
                       "}\n"
                       "mScanner_.resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
-                      "beforeParsing_ () ;\n" ; //--- Give a chance to initialize program parameters
+                      "_beforeParsing () ;\n" ; //--- Give a chance to initialize program parameters
     GGS_typeListeAttributsAxiome::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     GGS_L_signature_ForGrammarComponent::element_type * p = currentGrammar->mStartSymbolSignature.firstObject () ;
     while ((p != NULL) && (nomCourant != NULL)) {
       macroValidPointer (nomCourant) ;
       macroValidPointer (p) ;
       if (p->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
-        generatedZone3 << "if (! " << nomCourant->aAttributAxiome << ".isBuilt ()) {\n"
+        generatedZone2 << "if (! " << nomCourant->aAttributAxiome << ".isBuilt ()) {\n"
                           "  C_String message ;\n"
                           "  message << \"the '\"\n"
                           "             \"" << nomCourant->aAttributAxiome << "\"\n"
@@ -216,24 +218,24 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       nomCourant = nomCourant->nextObject () ;
     }              
   //--- Call parser
-    generatedZone3 << currentGrammar->mGrammarName << " grammar_ ;\n"   
+    generatedZone2 << currentGrammar->mGrammarName << " grammar_ ;\n"   
                       "grammar_.startParsing_ (mScanner_" ;
     nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     while (nomCourant != NULL) {
       macroValidPointer (nomCourant) ;
-      generatedZone3 << ",\n                            "
+      generatedZone2 << ",\n                            "
                      << nomCourant->aAttributAxiome ;
       nomCourant = nomCourant->nextObject () ;
     }
-    generatedZone3 << ") ;\n"
+    generatedZone2 << ") ;\n"
                    "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
-                   "  afterParsing_ () ;\n"
+                   "  _afterParsing () ;\n"
                    "}\n"
                    "::printf (\"Analysis of '%s' completed. \","
                    " mScanner_.sourceFileName ().lastPathComponent ().cString ()) ;\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
-  generatedZone3 <<  "switch (mTerminalIO.getErrorTotalCount ()) {\n"
+  generatedZone2 <<  "switch (mTerminalIO.getErrorTotalCount ()) {\n"
                  "case 0 :\n"
                  "  ::printf (\"No error, \") ;\n"
                  "  break ;\n"
@@ -259,18 +261,18 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                 "}\n"
                 "timer.stopTimer () ;\n"
                 "  co << \" (\" << timer << \").\\n\" ;\n" ;
-  generatedZone3.incIndentation (-2) ;
-  generatedZone3 << "}catch (const C_TextReadException & inFileReadError) {\n"
+  generatedZone2.incIndentation (-2) ;
+  generatedZone2 << "}catch (const C_TextReadException & inFileReadError) {\n"
                  "  ::printf (\"Error : %s\\n\", inFileReadError.what ()) ; // Error when reading source file\n"
                  "  returnCode = 1 ;\n" ;
-  generatedZone3 << "}\n" ;
-  generatedZone3.incIndentation (-2) ;
-  generatedZone3 << "}\n\n" ;
-  generatedZone3.writeHyphenLineComment () ;
+  generatedZone2 << "}\n" ;
+  generatedZone2.incIndentation (-2) ;
+  generatedZone2 << "}\n\n" ;
+  generatedZone2.writeHyphenLineComment () ;
 
 //--- Generate 'mainForLIBPM' routine
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
-  generatedZone3 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
+  generatedZone2 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
              "  sint16 returnCode = 0 ; // No error\n"
              "//--- Input/output parameters\n"
              "  C_options_for_" << inProgramComponentName << " options ("
@@ -278,8 +280,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
           << ") ;\n"
              "  C_galgas_io_parameters IOparameters  (& options) ;\n"
              "  IOparameters.mCompilerVersion = " ;
-  generatedZone3.writeCstringConstant (inVersionString) ;
-  generatedZone3 << " ;\n"
+  generatedZone2.writeCstringConstant (inVersionString) ;
+  generatedZone2 << " ;\n"
              "  IOparameters.mMaxErrorsCount = "
           << inMaxErrorsCount
           << " ;\n"
@@ -295,9 +297,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "  #endif\n"
              "  F_Analyze_CLI_Options (argc, argv,\n"
              "                               " ;
-  generatedZone3.writeCstringConstant (inVersionString) ;
+  generatedZone2.writeCstringConstant (inVersionString) ;
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  generatedZone3 << ",\n"
+  generatedZone2 << ",\n"
              "                               options,\n"
              "                               sourceFilesArray,\n"
              "                               \""
@@ -307,9 +309,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "  " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
           << " compiler (IOparameters) ;\n"
              "  try{\n"
+					   "	    compiler._prologue () ;\n"
              "    for (sint32 i=0 ; (i<sourceFilesArray.count ()) && (returnCode == 0) ; i++) {\n"
              "      compiler.doCompilation (sourceFilesArray (i COMMA_HERE), returnCode) ;\n"
              "    }\n"
+					   "	    compiler._epilogue () ;\n"
              "  }catch (const M_STD_NAMESPACE exception & e) {\n"
              "    F_default_display_exception (e) ;\n"
              "    returnCode = 1 ; // Error code\n"
@@ -319,14 +323,26 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "  }\n"
              "  return returnCode ;\n"
              "}\n\n" ;
-  generatedZone3.writeHyphenLineComment () ;
-
+  generatedZone2.writeHyphenLineComment () ;
+//--- User Zone 2 : prologue and epilogue
+  C_String userZone2 ; 
+	userZone2 << "\n\n" ;
+	userZone2.writeTitleComment ("P R O L O G U E") ;
+	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
+	             "_prologue (void) {\n"
+							 "//--- ADD YOUR CODE HERE\n"
+							 "}\n\n" ;
+	userZone2.writeTitleComment ("E P I L O G U E") ;
+	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
+	             "_epilogue (void) {\n"
+							 "//--- ADD YOUR CODE HERE\n"
+							 "}\n\n" ;
 //--- Generate file
   inLexique.generateFile (inProgramComponentName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
-                          "\n\n", // User Zone 2
-                          generatedZone3) ;
+                          userZone2, // User Zone 2
+                          "\n") ;
 }
 
 //---------------------------------------------------------------------------*

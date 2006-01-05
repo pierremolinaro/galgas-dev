@@ -24,7 +24,7 @@
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_prgm::beforeParsing_ (void) {
+void galgas_LL1_prgm::_beforeParsing (void) {
   mLexiqueMapForUse = GGS_M_lexiqueComponents::constructor_empty () ;
   mSemanticsComponentsMap = GGS_M_semanticsComponents::constructor_empty () ;
   mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_empty () ;
@@ -41,7 +41,7 @@ void galgas_LL1_prgm::beforeParsing_ (void) {
 
 //--------------------------------------------------------------------------*
 
-void galgas_LL1_prgm::afterParsing_ (void) {
+void galgas_LL1_prgm::_afterParsing (void) {
   C_BDD::markAndSweepUnusedNodes () ;
   printf ("%lu checked line%s, %lu preserved line%s, %lu generated line%s for %lu file%s.\n",
           mScanner_.checkedLineCount (), (mScanner_.checkedLineCount () > 1) ? "s" : "",

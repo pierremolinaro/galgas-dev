@@ -35,7 +35,6 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -47,6 +46,7 @@ action generate_option_component
   ?!@lstring inOptionComponentName
   ?!@M_cli_options inBoolOptionMap
   ?!@M_cli_options inUintOptionMap
+  ?!@M_cli_options inStringOptionMap
 ;
 
 rule <import_headers_semantics_and_grammars>
@@ -61,7 +61,6 @@ rule <import_headers_semantics_and_grammars>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
 label importSemantics
-  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label parse
@@ -80,32 +79,13 @@ rule <galgas_component>
 :
   @M_cli_options boolOptionsMap [empty] ;
   @M_cli_options uintOptionsMap [empty] ;
+  @M_cli_options stringOptionsMap [empty] ;
+  @stringset optionNameSet [empty] ;
 #--- Option component header
   $option$ ;
   @lstring optionComponentName ;
   $identifier$ ? optionComponentName ;
   $:$ ;
-##--- Import semantics
-#  @typeTableEnAvant tableEnAvant ;
-#  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques := empty ;
-#  @stringset tableFichiersEnTetePourFichierH := empty ;
-#  @stringset tableFichiersEnTetePourFichierCPP := empty ;
-#  @M_optionComponents optionsComponentsMapForUse := empty ;
-#  @M_semanticsEntitiesForUse componentEntitiesMap ;
-#  @M_externClassesDirectories externClassesDirectoryMap ;
-#  @stringset classNamesSet := empty ;
-#  <import_headers_semantics_and_grammars>
-#    ?externClassesDirectoryMap
-#    ?componentEntitiesMap
-#    ?optionsComponentsMapForUse
-#    !?tableFichiersEnTetePourFichierCPP
-#    !?tableUtilisationsSemantiques
-#    ?tableEnAvant
-#    !?classNamesSet
-#    !?ioSemanticsComponentsMap
-#    !?ioGrammarComponentsMap
-#    !?ioOptionsComponentsMap
-#  ;
 #--- option declarations
   repeat
   while 
@@ -132,35 +112,34 @@ rule <galgas_component>
       $default$ ;
       if [typeName value] == "bool" then
         error here : "'default' construct is not allowed for a @bool option (allways false by default)" ;
+      elsif [typeName value] == "string" then
+        error here : "'default' construct is not allowed for a @string option (allways false by default)" ;
       end if ;
       @luint v ;
       $unsigned_literal_integer$ ? v ;
       defaultValue := [v value] ;
     end select ;
     $;$ ;
-    if [typeName value] == "bool" then
-      if [uintOptionsMap hasKey ![typeName value]] then
-        error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
-      else
-        [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
-      end if ;
+    if [optionNameSet hasKey ![optionName value]] then
+      error optionName : "the '" . [optionName value] . "' command line option has been already declared" ;
+    elsif [typeName value] == "bool" then
+      [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
     elsif [typeName value] == "uint" then
-      if [boolOptionsMap hasKey ![typeName value]] then
-        error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
-      else
-        [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
-      end if ;
+      [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+    elsif [typeName value] == "string" then
+      [!?stringOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
     else
-      error typeName : "only @bool or @uint types can be used here" ;
+      error typeName : "only @bool, @uint or @string types can be used here" ;
     end if ;
+    optionNameSet += ![typeName value] ;
   end repeat ;
   $end$ ;
   $option$ ;
   $;$ ;
 #--- Enter option component in option component map
-  [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
+  [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
 #--- Generate option component
-  action generate_option_component !?optionComponentName !?boolOptionsMap !?uintOptionsMap ;
+  action generate_option_component !?optionComponentName !?boolOptionsMap !?uintOptionsMap !?stringOptionsMap ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
 :
@@ -216,7 +195,6 @@ label importSyntax
   $option$ ;
   $;$ ;
 label importSemantics
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
 :
   $option$ ;
@@ -275,32 +253,13 @@ label importOptions
 :
   @M_cli_options boolOptionsMap [empty] ;
   @M_cli_options uintOptionsMap [empty] ;
+  @M_cli_options stringOptionsMap [empty] ;
+  @stringset optionNameSet [empty] ;
 #--- Option component header
   $option$ ;
   @lstring optionComponentName ;
   $identifier$ ? optionComponentName ;
   $:$ ;
-##--- Import semantics
-#  @typeTableEnAvant tableEnAvant ;
-#  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques := empty ;
-#  @stringset tableFichiersEnTetePourFichierH := empty ;
-#  @stringset tableFichiersEnTetePourFichierCPP := empty ;
-#  @M_optionComponents optionsComponentsMapForUse := empty ;
-#  @M_semanticsEntitiesForUse componentEntitiesMap ;
-#  @M_externClassesDirectories externClassesDirectoryMap ;
-#  @stringset classNamesSet := empty ;
-#  <import_headers_semantics_and_grammars>
-#    ?externClassesDirectoryMap
-#    ?componentEntitiesMap
-#    ?optionsComponentsMapForUse
-#    !?tableFichiersEnTetePourFichierCPP
-#    !?tableUtilisationsSemantiques
-#    ?tableEnAvant
-#    !?classNamesSet
-#    !?ioSemanticsComponentsMap
-#    !?ioGrammarComponentsMap
-#    !?ioOptionsComponentsMap
-#  ;
 #--- option declarations
   repeat
   while
@@ -333,26 +292,23 @@ label importOptions
       defaultValue := [v value] ;
     end select ;
     $;$ ;
-    if [typeName value] == "bool" then
-      if [uintOptionsMap hasKey ![typeName value]] then
-        error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
-      else
-        [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
-      end if ;
+    if [optionNameSet hasKey ![optionName value]] then
+      error optionName : "the '" . [optionName value] . "' command line option has been already declared" ;
+    elsif [typeName value] == "bool" then
+      [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
     elsif [typeName value] == "uint" then
-      if [boolOptionsMap hasKey ![typeName value]] then
-        error typeName : "the '" . [typeName value] . "' command line option has been already declared" ;
-      else
-        [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
-      end if ;
+      [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+    elsif [typeName value] == "string" then
+      [!?stringOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
     else
-      error typeName : "only @bool or @uint types can be used here" ;
+      error typeName : "only @bool, @uint or @string types can be used here" ;
     end if ;
+    optionNameSet += ![typeName value] ;
   end repeat ;
   $end$ ;
   $option$ ;
   $;$ ;
-  [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
+  [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
 end rule ;
 
 #-------------------------------------------------------------------*

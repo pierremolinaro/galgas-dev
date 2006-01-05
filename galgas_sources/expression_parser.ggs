@@ -829,7 +829,8 @@ rule <factor>
     $identifier$ ? optionComponentName ;
     @M_cli_options boolOptionsMap ;
     @M_cli_options uintOptionsMap ;
-    [!?ioOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+    @M_cli_options stringOptionsMap ;
+    [!?ioOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
     $.$ ;
     @lstring optionName ;
     $identifier$ ? optionName ;
@@ -838,6 +839,9 @@ rule <factor>
       outResultType := [@typeGalgas_bool new] ;
     elsif [uintOptionsMap hasKey ![optionName value]] then
       outExpression := [@typeUIntOption new !optionComponentName !optionName] ;
+      outResultType := [@typeGalgas_uint new] ;
+    elsif [stringOptionsMap hasKey ![optionName value]] then
+      outExpression := [@typeStringOption new !optionComponentName !optionName] ;
       outResultType := [@typeGalgas_uint new] ;
     else
       error optionName : "the '" . [optionComponentName value] . "' option component has no '" . [optionName value] . "' option" 

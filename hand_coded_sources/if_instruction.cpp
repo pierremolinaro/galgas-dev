@@ -823,6 +823,30 @@ bool cPtr_typeUIntOption
 }
 
 //---------------------------------------------------------------------------*
+
+void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) {
+  ioCppFile << "GGS_string (true, lexique_var_.stringOptionValueFromKeys (" ;
+  ioCppFile.writeCstringConstant (mOptionComponentName) ;
+  ioCppFile << ", " ;
+  ioCppFile.writeCstringConstant (mOptionName) ;
+  ioCppFile << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeStringOption::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeStringOption::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED

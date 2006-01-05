@@ -1586,6 +1586,7 @@ map @M_cli_options {
 map @M_optionComponents {
   @M_cli_options mBoolOptionsMap ;
   @M_cli_options mUintOptionsMap ;
+  @M_cli_options mStringOptionsMap ;
   insert insertKey error message "the '%K' option component named is already declared in %L" ;
   search searchKey error message "there is no '%K' option component" ;
 }

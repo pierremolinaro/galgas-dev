@@ -35,7 +35,6 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -124,8 +123,9 @@ rule <galgas_component>
       $identifier$ ? optionComponentName ;
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
+      @M_cli_options stringOptionsMap ;
       select
-        [!?ioOptionsComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+        [!?ioOptionsComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       or
         $in$ ;
         @lstring fileName ;
@@ -135,10 +135,10 @@ rule <galgas_component>
           !fileName
           !?importedOptionComponentsMap
         ;
-        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       end select ;
       $;$ ;
-      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
+      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
     or
       $syntax$ ;
       @lstring syntaxComponentName ;
@@ -346,7 +346,6 @@ label importSyntax
   $grammar$ ;
   $;$ ;
 label importSemantics
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
 :
   $grammar$ ;
@@ -413,8 +412,9 @@ label importGrammarForSemantics
       $identifier$ ? optionComponentName ;
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
+      @M_cli_options stringOptionsMap ;
       select
-        [!?optionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+        [!?optionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       or
         $in$ ;
         @lstring fileName ;
@@ -424,10 +424,10 @@ label importGrammarForSemantics
           !fileName
           !?importedOptionComponentsMap
         ;
-        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap] ;
+        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       end select ;
       $;$ ;
-      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap] ;
+      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
     or
       $syntax$ ;
       $identifier$ ? * ;

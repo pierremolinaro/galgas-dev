@@ -459,6 +459,13 @@ class @typeUIntOption extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+
+class @typeStringOption extends @typeExpression {
+  @lstring mOptionComponentName ;
+  @lstring mOptionName ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   S I M P L E    V A R I A B L E                                          *
 #---------------------------------------------------------------------------*
 
