@@ -250,7 +250,7 @@ end rule ;
 # ------------------------------------ Comment ----------------------------
 rule '#' :
   repeat
-  while '\x1' -> '\x9' | '\xB' -> '\xFF' :
+  while '\x1' -> '\x9' | '\xB' | '\xC' | '\xE' -> '\xFF' :
   end repeat ;
 end rule ;
 
