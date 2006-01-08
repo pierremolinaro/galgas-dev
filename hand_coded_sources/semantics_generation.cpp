@@ -32,6 +32,64 @@
 //---------------------------------------------------------------------------*
 
 void
+check_KL_escapeCharacters (C_Lexique & inLexique,
+                           GGS_lstring inString) {
+  if (inString.isBuilt ()) {
+  	bool gotPercent = false ;
+    const char * cString = inString.cString () ;
+    while ((*cString) != '\0') {
+      if (gotPercent) {
+        if (((*cString) != 'K') && ((*cString) != 'L') && ((*cString) != '%')) {
+          C_String errorMessage ;
+          errorMessage << "unknown escape sequence: only %K, %L and %% sequences are defined" ;
+          inString.semanticError (inLexique, errorMessage.cString ()) ;
+        }
+        gotPercent = false ;
+      }else if ((*cString) == '%') {
+        gotPercent = true ;
+      }
+      cString ++ ; 
+    }
+    if (gotPercent) {
+      C_String errorMessage ;
+      errorMessage << "string ends with a single %: only %K, %L and %% sequences are defined" ;
+      inString.semanticError (inLexique, errorMessage.cString ()) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void
+check_K_escapeCharacters (C_Lexique & inLexique,
+                          GGS_lstring inString) {
+  if (inString.isBuilt ()) {
+  	bool gotPercent = false ;
+    const char * cString = inString.cString () ;
+    while ((*cString) != '\0') {
+      if (gotPercent) {
+        if (((*cString) != 'K') && ((*cString) != '%')) {
+          C_String errorMessage ;
+          errorMessage << "unknown escape sequence: only %K and %% sequences are defined" ;
+          inString.semanticError (inLexique, errorMessage.cString ()) ;
+        }
+        gotPercent = false ;
+      }else if ((*cString) == '%') {
+        gotPercent = true ;
+      }
+      cString ++ ; 
+    }
+    if (gotPercent) {
+      C_String errorMessage ;
+      errorMessage << "string ends with a single %: only %K and %% sequences are defined" ;
+      inString.semanticError (inLexique, errorMessage.cString ()) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void
 buildFileNameWithPath (C_Lexique &,
                        GGS_lstring & outFileNameWithPath,
                        GGS_lstring inPath,
