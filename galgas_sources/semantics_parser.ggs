@@ -318,14 +318,14 @@ label parse
 
 rule <ex_map_method>
   !@lstring nomMethode
-  !@string outMessage
+  !@lstring outMessage
 label parse
 ;
 
 rule <map_method>
   !@lstring methodName
   !@lstring getIndexMethodName
-  !@string outMessage
+  !@lstring outMessage
 label parse
 ;
 
@@ -3577,23 +3577,23 @@ rule <semantics_declaration>
     while
       $insert$ ;
       @lstring nomMethode ;
-      @string errorMessage ;
-      <ex_map_method> ? nomMethode ? errorMessage ;
+      @lstring errorMessage ;
+      <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      insertMethodList += !nomMethode ! errorMessage !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
+      insertMethodList += !nomMethode ![errorMessage value] !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
     while 
       $search$ ;
       @lstring nomMethode ;
-      @string errorMessage ;
-      <ex_map_method> ? nomMethode ? errorMessage ;
+      @lstring errorMessage ;
+      <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      searchMethodList += !nomMethode ! errorMessage !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
+      searchMethodList += !nomMethode ![errorMessage value] !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -3750,8 +3750,9 @@ rule <semantics_declaration>
       $insert$ ;
       @lstring methodName ;
       @lstring getIndexMethodName ;
-      @string errorMessage ;
-      <map_method> ?methodName ?getIndexMethodName ? errorMessage ;
+      @lstring errorMessage ;
+      <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
+      action check_KL_escapeCharacters !errorMessage ;
       @string firstStateName ;
       @lastStateList emptyLastStateList ;
       @transitionStatusMap  transitionStatusMap [empty] ;
@@ -3764,7 +3765,7 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !methodName !methodSignature] ;
-      insertMethodList += !methodName ! errorMessage !firstStateName !emptyLastStateList !transitionStatusMap !false ;
+      insertMethodList += !methodName ![errorMessage value] !firstStateName !emptyLastStateList !transitionStatusMap !false ;
    #-- Insert And Get Index Method
       if [getIndexMethodName value] != "" then
         @L_signature getIndexMethodSignature [empty] ;
@@ -3774,14 +3775,15 @@ rule <semantics_declaration>
           getIndexMethodSignature += !kAttributType !inPassingMode ;      
         end foreach ;
         [!?mapMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        insertMethodList += !getIndexMethodName ! errorMessage !firstStateName !emptyLastStateList !transitionStatusMap !true ;
+        insertMethodList += !getIndexMethodName ![errorMessage value] !firstStateName !emptyLastStateList !transitionStatusMap !true ;
       end if ;
     while
       $search$ ;
       @lstring methodName ;
       @lstring getIndexMethodName ;
-      @string errorMessage ;
-      <map_method> ?methodName ?getIndexMethodName ? errorMessage ;
+      @lstring errorMessage ;
+      <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
+      action check_K_escapeCharacters !errorMessage ;
       @string firstStateName ;
       @lastStateList emptyLastStateList ;
       @transitionStatusMap  transitionStatusMap [empty] ;
@@ -3794,7 +3796,7 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !methodName !methodSignature] ;
-      searchMethodList += !methodName ! errorMessage !firstStateName !emptyLastStateList !transitionStatusMap !false ;
+      searchMethodList += !methodName ![errorMessage value] !firstStateName !emptyLastStateList !transitionStatusMap !false ;
     #--- Insert 'Get Index' search method in modifier map (if any)
       if [getIndexMethodName value] != "" then
         @L_signature getIndexMethodSignature [empty] ;
@@ -3804,7 +3806,7 @@ rule <semantics_declaration>
          getIndexMethodSignature += !kAttributType !outPassingMode ;      
         end foreach ;
         [!?mapMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        searchMethodList += !getIndexMethodName ! errorMessage !firstStateName !emptyLastStateList !transitionStatusMap !true ;
+        searchMethodList += !getIndexMethodName ![errorMessage value] !firstStateName !emptyLastStateList !transitionStatusMap !true ;
       end if ;
     end repeat ;
   #--- Check that insert method transition names correspond to search methods
@@ -3869,23 +3871,23 @@ label importSemantics
     while
       $insert$ ;
       @lstring nomMethode ;
-      @string errorMessage ;
-      <ex_map_method> ? nomMethode ? errorMessage ;
+      @lstring errorMessage ;
+      <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      insertMethodList += !nomMethode ! errorMessage !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
+      insertMethodList += !nomMethode ![errorMessage value] !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
     while 
       $search$ ;
       @lstring nomMethode ;
-      @string errorMessage ;
-      <ex_map_method> ? nomMethode ? errorMessage ;
+      @lstring errorMessage ;
+      <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
       @string emptyString := "" ;
       @lastStateList emptyLastStateList [empty] ;
       @transitionStatusMap  transitionStatusMap [empty] ;
-      searchMethodList += !nomMethode ! errorMessage !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
+      searchMethodList += !nomMethode ![errorMessage value] !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -4030,8 +4032,7 @@ label importSemantics
       $insert$ ;
       @lstring methodName ;
       @lstring getIndexMethodName ;
-      @string errorMessage ;
-      <map_method> ?methodName ?getIndexMethodName ? errorMessage ;
+      <map_method> ?methodName ?getIndexMethodName ?* ;
       <parse_states> parse ;
       $;$ ;
     #--- Enter insert method in modifier map
@@ -4091,14 +4092,12 @@ end rule ;
 
 rule <ex_map_method>
   !@lstring nomMethode
-  !@string outMessage
+  !@lstring outMessage
 :
   $identifier$ ? nomMethode ;
   $error$ ;
   $message$ ;
-  @lstring messageText ;
-  $literal_string$ ? messageText ;
-  outMessage := [messageText value] ;
+  $literal_string$ ? outMessage ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -4106,7 +4105,7 @@ end rule ;
 rule <map_method>
   !@lstring methodName
   !@lstring getIndexMethodName
-  !@string outMessage
+  !@lstring outMessage
 :
   $identifier$ ?methodName ;
   select
@@ -4117,9 +4116,7 @@ rule <map_method>
   end select ;
   $error$ ;
   $message$ ;
-  @lstring errorMessage ;
-  $literal_string$ ? errorMessage ;
-  outMessage := [errorMessage value] ;
+  $literal_string$ ? outMessage ;
 end rule ;
 
 #---------------------------------------------------------------------------*
