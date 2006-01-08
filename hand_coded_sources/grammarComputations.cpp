@@ -99,7 +99,7 @@ static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
                                C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<p><a name=\"identical_productions\"></a></p>") ;
-  inHTMLfile.writeTitleComment ("Step 2 : searching for identical productions", "title") ;
+  inHTMLfile.writeCTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
   for (sint32 i=0 ; i<productions.length () ; i++) {
     const cProduction & pi = productions (i COMMA_HERE) ;
@@ -168,7 +168,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
                  << "#define GRAMMAR_" << inTargetFileName << "_DEFINED\n\n" ;
 
 //--- Engendrer les inclusions --------------------------------------------------------------
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
   GGS_L_syntaxComponents_ForGrammar::element_type * component = inSyntaxComponentsList.firstObject () ;
   while (component != NULL) {
     macroValidPointer (component) ;
@@ -179,7 +179,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
 
 //--- Engendrer la classe de l'analyseur syntaxique ------------------------------------------
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  generatedZone3.writeHyphenLineComment () ;
+  generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "class " << inTargetFileName ;
   component = inSyntaxComponentsList.firstObject () ;
 //--- Liens d'heritage
@@ -242,11 +242,12 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- End of file
-  generatedZone3.writeHyphenLineComment () ;
+  generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  inLexique.generateFile (inTargetFileName + ".h",
+  inLexique.generateFile ("//",
+                          inTargetFileName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
@@ -542,7 +543,7 @@ analyzeGrammar (C_Lexique & inLexique,
 
 //--- Print original grammar in BNF file
   if ((errorFlag == 0) && (grammarClass != kGrammarClassError)) {
-    HTMLfile.writeTitleComment ("Original grammar", "title") ;
+    HTMLfile.writeCTitleComment ("Original grammar", "title") ;
     printOriginalGrammar (HTMLfile, inSyntaxComponentsList) ;
   }
 //--- Building pure BNF productions ---------------------------------------------------------------------
@@ -563,7 +564,7 @@ analyzeGrammar (C_Lexique & inLexique,
 
   //--- Print in bnf file the pure BNF productions
     HTMLfile.outputRawData ("<p></p>") ;
-    HTMLfile.writeTitleComment ("  Pure BNF productions list", "title") ;
+    HTMLfile.writeCTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (HTMLfile, vocabulary, pureBNFproductions) ;
     co << pureBNFproductions.length () << " productions.\n" ;
     co.flush () ;
@@ -757,7 +758,7 @@ analyzeGrammar (C_Lexique & inLexique,
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
     C_String s ; s << "ENDING ON ERROR, STEP" << ((uint16) errorFlag) ;
-    HTMLfile.writeTitleComment (s, "title") ;
+    HTMLfile.writeCTitleComment (s, "title") ;
     C_String errorMessage  ;
     if (HTMLfileName.length () > 0) {
       errorMessage << "errors have been raised when analyzing the grammar: see file"
@@ -781,7 +782,7 @@ analyzeGrammar (C_Lexique & inLexique,
       warningFlag >>= 1 ;
       i ++ ;
     }
-    HTMLfile.writeTitleComment (s, "title") ;
+    HTMLfile.writeCTitleComment (s, "title") ;
     C_String warningMessage  ;
     warningMessage << "warnings have been raised when analyzing the grammar: " ;
     if (HTMLfileName.length () > 0) {
@@ -791,7 +792,7 @@ analyzeGrammar (C_Lexique & inLexique,
     }
     errorLocation.signalSemanticWarning (inLexique, warningMessage) ;
   }else{
-    HTMLfile.writeTitleComment ("OK (no error, no warning)", "title") ;
+    HTMLfile.writeCTitleComment ("OK (no error, no warning)", "title") ;
   }
 }
 

@@ -43,7 +43,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     currentGrammar = currentGrammar->nextObject () ;
   }
   generatedZone2 << "#include \"galgas/C_galgas_terminal_io.h\"\n\n" ;
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
 
 //--- Generate class declaration for each grammar
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
@@ -91,7 +91,8 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
 										"  public : void _prologue (void) ;\n"
 										"  public : void _epilogue (void) ;\n"
 		                "} ;\n\n" ;
-    inLexique.generateFile (C_String ("grammar_") + inProgramComponentName + currentGrammar->mGrammarPostfix.string () + ".h",
+    inLexique.generateFile ("//",
+                            C_String ("grammar_") + inProgramComponentName + currentGrammar->mGrammarPostfix.string () + ".h",
                             "\n\n", // User Zone 1
                             grammarZone2,
                             "\n\n", // User Zone 2
@@ -101,11 +102,12 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
   }
 //--- Fin du fichier d'en tete
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (100) ;
-  generatedZone3.writeHyphenLineComment () ;
+  generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  inLexique.generateFile (inProgramComponentName + ".h",
+  inLexique.generateFile ("//",
+                          inProgramComponentName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
@@ -140,9 +142,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << '\n' ;
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 << "#include \"" << inProgramComponentName << ".h\"\n\n" ;
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
 
 //--- Command line options for this program
   generatedZone2 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
@@ -161,7 +163,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2 << "} ;\n\n" ;
 
 //--------------------------------------- Get bool options count
-  generatedZone2.writeTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
+  generatedZone2.writeCTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
   generatedZone2 << "C_options_for_" << inProgramComponentName  << "::\n"
              "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption)\n"
              ":mBuiltinOptions (inAcceptsDebugOption) {\n"
@@ -178,7 +180,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   while (currentGrammar != NULL) {
     macroValidPointer (currentGrammar) ;
   //--- Constructor
-    generatedZone2.writeTitleComment ("C O N S T R U C T O R") ;
+    generatedZone2.writeCTitleComment ("C O N S T R U C T O R") ;
     generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << "::\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << " (const C_galgas_io_parameters & inIOparameters) :\n"
@@ -186,7 +188,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "  mSourceFileExtension_ = \""
                    << inSourceFileExtension << "\" ;\n"
                       "}\n\n" ;
-    generatedZone2.writeHyphenLineComment () ;
+    generatedZone2.writeCHyphenLineComment () ;
   //--- 'doCompilation' method
     generatedZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
                "doCompilation (const C_String & inSourceFileName_,\n"
@@ -268,7 +270,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2 << "}\n" ;
   generatedZone2.incIndentation (-2) ;
   generatedZone2 << "}\n\n" ;
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
 
 //--- Generate 'mainForLIBPM' routine
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
@@ -323,22 +325,23 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "  }\n"
              "  return returnCode ;\n"
              "}\n\n" ;
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
 //--- User Zone 2 : prologue and epilogue
   C_String userZone2 ; 
 	userZone2 << "\n\n" ;
-	userZone2.writeTitleComment ("P R O L O G U E") ;
+	userZone2.writeCTitleComment ("P R O L O G U E") ;
 	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
 	             "_prologue (void) {\n"
 							 "//--- ADD YOUR CODE HERE\n"
 							 "}\n\n" ;
-	userZone2.writeTitleComment ("E P I L O G U E") ;
+	userZone2.writeCTitleComment ("E P I L O G U E") ;
 	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
 	             "_epilogue (void) {\n"
 							 "//--- ADD YOUR CODE HERE\n"
 							 "}\n\n" ;
 //--- Generate file
-  inLexique.generateFile (inProgramComponentName + ".cpp",
+  inLexique.generateFile ("//",
+                          inProgramComponentName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           userZone2, // User Zone 2
