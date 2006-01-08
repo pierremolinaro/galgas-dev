@@ -121,7 +121,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
 //--- Console display
   co << "  Nonterminal symbols followed by empty string... " ;
 //--- Print in BNF file
-  inHTMLfile.writeTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
+  inHTMLfile.writeCTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
 
 //--- Compute nonterminal symbols followed by empty 
   sint32 iterationsCount = 0 ;

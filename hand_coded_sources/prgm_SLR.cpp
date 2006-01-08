@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Program overrided methods for SLR GALGAS                                 *                                                               *
+//  Program overrided methods for SLR GALGAS                                 *
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *

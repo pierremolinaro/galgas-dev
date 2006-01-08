@@ -913,7 +913,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
 
 //--- Generate SLR analyze action table --------------------------------------
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  generatedZone3.writeTitleComment ("SLR analyzer action table") ;
+  generatedZone3.writeCTitleComment ("SLR analyzer action table") ;
   const sint32 rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
   const sint32 columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
@@ -975,7 +975,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
   }
   generatedZone3 << "\n} ;\n\n" ;
 //--- Generate state successor table -----------------------------------------
-  generatedZone3.writeTitleComment ("SLR states successors table") ;
+  generatedZone3.writeCTitleComment ("SLR states successors table") ;
 //--- Get successor count, by state
   TC_UniqueArray <sint32> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
   const sint32 transitionsCount = inTransitionList.length () ;
@@ -1033,7 +1033,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
 //--- Write for every production, its left non terminal, ---------------------
 //    and the size of right string
   const sint32 productionsCount = inProductionRules.length () ;
-  generatedZone3.writeTitleComment ("Production rules infos (left non terminal, size of right string)") ;
+  generatedZone3.writeCTitleComment ("Production rules infos (left non terminal, size of right string)") ;
   generatedZone3 << "static const sint16 gProductionsTable ["
           << productionsCount
           << " * 2] = {\n" ;
@@ -1051,7 +1051,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
   GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
-    generatedZone3.writeTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
+    generatedZone3.writeCTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
     GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (altForNonterminal != NULL) {
       macroValidPointer (altForNonterminal) ;
@@ -1096,7 +1096,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
-      generatedZone3.writeTitleComment ("Grammar start symbol implementation") ;
+      generatedZone3.writeCTitleComment ("Grammar start symbol implementation") ;
       GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (altForNonterminal != NULL) {
         macroValidPointer (altForNonterminal) ;
@@ -1140,7 +1140,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   for (sint32 ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
     if (inVocabulary.needToGenerateChoice (ts COMMA_HERE)) {
-      generatedZone3.writeTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
+      generatedZone3.writeCTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
               << inLexiqueName << " & lexique_var_) {\n"
@@ -1161,10 +1161,11 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
     }
   }
 //--- End of C++ file
-  generatedZone3.writeHyphenLineComment () ;
+  generatedZone3.writeCHyphenLineComment () ;
 
 //--- Generate file
-  inLexique.generateFile (inTargetFileName + ".cpp",
+  inLexique.generateFile ("//",
+                          inTargetFileName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
@@ -1235,7 +1236,7 @@ LR1_computations (C_Lexique & inLexique,
  co << "  Building LR(1) automaton... " ; co.flush () ;
 //--- Print in BNF file
   inHTMLfile.outputRawData ("<p></p>") ;
-  inHTMLfile.writeTitleComment ("Building LR(1) automaton", "title") ;
+  inHTMLfile.writeCTitleComment ("Building LR(1) automaton", "title") ;
 
 //--- Compute LR1 automaton
   c_LR1_items_sets_collection LR1_items_sets_collection ;
@@ -1274,7 +1275,7 @@ LR1_computations (C_Lexique & inLexique,
  co << "  Checking LR(1) condition... " ;
 //--- Print in BNF file
   inHTMLfile.outputRawData ("<p></p>") ;
-  inHTMLfile.writeTitleComment ("Checking LR(1) condition", "title") ;
+  inHTMLfile.writeCTitleComment ("Checking LR(1) condition", "title") ;
 
 //--- Build SLR table... detect if grammar is not SLR
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;

@@ -42,7 +42,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     n >>= 1 ;
   }
   
-  inHfile.writeTitleComment (C_String ("class for enumeration '") + mEnumTypeName + "'") ;
+  inHfile.writeCTitleComment (C_String ("class for enumeration '") + mEnumTypeName + "'") ;
   
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
@@ -117,7 +117,7 @@ void cPtr_enumGalgasType
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
-  inCppFile.writeTitleComment (C_String ("class for enumeration '") + mEnumTypeName + "'") ;
+  inCppFile.writeCTitleComment (C_String ("class for enumeration '") + mEnumTypeName + "'") ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -126,7 +126,7 @@ void cPtr_enumGalgasType
                "                   mValue == inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -135,7 +135,7 @@ void cPtr_enumGalgasType
                "                   mValue != inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -144,7 +144,7 @@ void cPtr_enumGalgasType
                "                   mValue <= inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -153,7 +153,7 @@ void cPtr_enumGalgasType
                "                   mValue >= inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -162,7 +162,7 @@ void cPtr_enumGalgasType
                "                   mValue < inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -173,7 +173,7 @@ void cPtr_enumGalgasType
 
   GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
-    inCppFile.writeHyphenLineComment () ;
+    inCppFile.writeCHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::"
                  "\n"
                  "reader_" << m->mKey << " (void) const {\n"

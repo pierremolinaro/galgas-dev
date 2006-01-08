@@ -183,7 +183,7 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
 //--- Console display
   co << "  Searching for nonterminal symbols deriving in empty string... " ;
 //--- Print in BNF file
-  inHTMLfile.writeTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
+  inHTMLfile.writeCTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
 
 //--- Compute BDD for nonterminal symbols having an empty derivation
   const C_BDD_Set1 nonTerminalHavingEmptyDerivation 

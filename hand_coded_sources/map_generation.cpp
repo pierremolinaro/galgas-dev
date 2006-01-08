@@ -34,7 +34,7 @@ void cPtr_C_mapToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) {
-  inHfile.writeTitleComment (C_String ("Element of map '@") + aNomTable + "'") ;
+  inHfile.writeCTitleComment (C_String ("Element of map '@") + aNomTable + "'") ;
 //--- Starting map element class declaration
   inHfile << "class e_" << aNomTable << " {\n" ;
 
@@ -50,7 +50,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 
   inHfile << "} ;\n\n" ; //--- End of map element class declaration e_...
-  inHfile.writeHyphenLineComment () ;
+  inHfile.writeCHyphenLineComment () ;
   inHfile << "class elementOf_GGS_" << aNomTable << " : public AC_galgas_map_element {\n"
              "  //--- Constructor\n"
              "    public : elementOf_GGS_" << aNomTable << " (const GGS_lstring & inKey,\n"
@@ -71,7 +71,7 @@ void cPtr_C_mapToImplement::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) {
-  inHfile.writeTitleComment (C_String ("Map '@") + aNomTable + "'") ;
+  inHfile.writeCTitleComment (C_String ("Map '@") + aNomTable + "'") ;
   inHfile << "class elementOf_GGS_" << aNomTable << " ;\n\n" ;
   inHfile << "class GGS_" << aNomTable << " : public AC_galgas_map {\n" ;
   GGS_stateMap::element_type * currentState = mStateMap.firstObject () ;
@@ -205,7 +205,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) {
-  inCppFile.writeTitleComment (C_String ("class map '") + aNomTable + "'") ;
+  inCppFile.writeCTitleComment (C_String ("class map '") + aNomTable + "'") ;
 
 //--- Constructor for type element
   inCppFile << "elementOf_GGS_" << aNomTable << "::\n"
@@ -217,7 +217,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- 'new_element' method
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
   inCppFile << "AC_galgas_map_element * GGS_" << aNomTable << "::\n"
                "new_element (const GGS_lstring & inKey, void * inInfo) {\n"
                "  MF_Assert (reinterpret_cast <e_" << aNomTable << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
@@ -228,7 +228,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- 'constructor_empty' static method
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
   inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (void) {\n"
                "  GGS_" << aNomTable << " result ;\n"
                "  macroMyNew (result.mReferenceCountPtr, sint32 (1)) ;\n"
@@ -236,7 +236,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- 'internalInsertForDuplication' method
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::internalInsertForDuplication (AC_galgas_map_element * inPtr) {\n"
                "  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  element_type * p = (element_type *) inPtr ;\n"
@@ -247,7 +247,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- 'insertElement' method
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
                "insertElement (C_Lexique & inLexique,\n"
                "               const char * inErrorMessage,\n"
@@ -288,7 +288,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- 'searchElement' method
-  inCppFile.writeHyphenLineComment () ;
+  inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
                "searchElement (C_Lexique & inLexique,\n"
                "               const char * inErrorMessage,\n"
@@ -339,7 +339,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   GGS_insertOrSearchMethodList::element_type * currentMethod = mSearchMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
-    inCppFile.writeHyphenLineComment () ;
+    inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" 
               << aNomTable << "::methode_" << currentMethod->mMethodName
               << " (C_Lexique & inLexique"
@@ -379,7 +379,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   currentMethod = mInsertMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
-    inCppFile.writeHyphenLineComment () ;
+    inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_"
               << aNomTable << "::methode_" << currentMethod->mMethodName
               << " (C_Lexique & lexique_var_"
@@ -436,7 +436,7 @@ void cPtr_typeDefinitionTableAimplementer::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) {
-  inHfile.writeTitleComment (C_String ("class map element 'e_") + aNomTable + "'") ;
+  inHfile.writeCTitleComment (C_String ("class map element 'e_") + aNomTable + "'") ;
 
 //--- Debut de la declaration de la classe table
   inHfile << "class e_" << aNomTable << " {\n" ;
@@ -455,7 +455,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "} ;\n\n" ; //--- Fin de la declaration de la classe e_...
 
 // ---------------------- declaration de la classe table -----------------
-  inHfile.writeTitleComment (C_String ("map '") + aNomTable + "'") ;
+  inHfile.writeCTitleComment (C_String ("map '") + aNomTable + "'") ;
 
   inHfile << "class GGS_" << aNomTable << " : public "  << aNomClasseGenerique
           << " <e_" << aNomTable << "> {\n"
@@ -567,7 +567,7 @@ void cPtr_typeDefinitionTableAimplementer
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) {
-  inCppFile.writeTitleComment (C_String ("class map element 'e_") + aNomTable + "'") ;
+  inCppFile.writeCTitleComment (C_String ("class map element 'e_") + aNomTable + "'") ;
 
 //--- Instanciate the template
   inCppFile << "template class "
@@ -575,7 +575,7 @@ void cPtr_typeDefinitionTableAimplementer
             << " <e_" << aNomTable << "> ;\n\n" ;
 
 //--------------------- ENGENDRER LA CLASSE TABLE ----------------------------
-  inCppFile.writeTitleComment (C_String ("Map '") + aNomTable + "'") ;
+  inCppFile.writeCTitleComment (C_String ("Map '") + aNomTable + "'") ;
 
   inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (void) {\n"
                "  GGS_" << aNomTable << " t ;\n"
@@ -587,7 +587,7 @@ void cPtr_typeDefinitionTableAimplementer
   GGS_insertOrSearchMethodList::element_type * currentMethod = mSearchMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
-    inCppFile.writeHyphenLineComment () ;
+    inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::methode_" 
               << currentMethod->mMethodName
               << " (C_Lexique & inLexique"
@@ -628,7 +628,7 @@ void cPtr_typeDefinitionTableAimplementer
     }
     inCppFile << "  }\n"
                  "}\n\n" ;
-    inCppFile.writeHyphenLineComment () ;
+    inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::methode_" 
               << currentMethod->mMethodName
               << "GetIndex (C_Lexique & inLexique"
@@ -678,7 +678,7 @@ void cPtr_typeDefinitionTableAimplementer
   currentMethod = mInsertMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
-    inCppFile.writeHyphenLineComment () ;
+    inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::methode_"
               << currentMethod->mMethodName
               << " (C_Lexique & lexique_var_"
@@ -707,7 +707,7 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
     inCppFile << ") ;\n"
               << "}\n\n" ;
-    inCppFile.writeHyphenLineComment () ;
+    inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::methode_"
               << currentMethod->mMethodName
               << "GetIndex (C_Lexique & lexique_var_"

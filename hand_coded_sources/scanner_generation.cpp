@@ -80,32 +80,36 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
                      AC_OutputStream & inCppFile) {
   bool premier = true ;
   GGS_typeListeTestsEtInstructions::element_type * courant = inList.firstObject () ;
-  while (courant != NULL) {
-    macroValidPointer (courant) ;
-    if (premier) {
-      premier = false ;
-    }else{
-      inCppFile << "}else " ;
-    }
-    inCppFile << "if (" ;
-    macroValidPointer (courant->attributListeConditions.firstObject ()) ;
-    GGS_typeListeConditionsLexicales::element_type * cond = courant->attributListeConditions.firstObject () ;
-    bool premiereCondition = true ;
-    while (cond != NULL) {
-      macroValidPointer (cond) ;
-      if (premiereCondition) {
-        premiereCondition = false ;
+  if (courant == NULL) {
+    inCppFile << "if (true) {\n" ;
+  }else{
+    while (courant != NULL) {
+      macroValidPointer (courant) ;
+      if (premier) {
+        premier = false ;
       }else{
-        inCppFile << " ||\n    " ;
+        inCppFile << "}else " ;
       }
-      cond->attributCondition(HERE)->generateLexicalCondition (inCppFile) ;
-      cond = cond->nextObject () ;
+      inCppFile << "if (" ;
+      macroValidPointer (courant->attributListeConditions.firstObject ()) ;
+      GGS_typeListeConditionsLexicales::element_type * cond = courant->attributListeConditions.firstObject () ;
+      bool premiereCondition = true ;
+      while (cond != NULL) {
+        macroValidPointer (cond) ;
+        if (premiereCondition) {
+          premiereCondition = false ;
+        }else{
+          inCppFile << " ||\n    " ;
+        }
+        cond->attributCondition(HERE)->generateLexicalCondition (inCppFile) ;
+        cond = cond->nextObject () ;
+      }
+      inCppFile << ") {\n" ;
+      inCppFile.incIndentation (+2) ;
+      generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inCppFile) ;
+      inCppFile.incIndentation (-2) ;
+      courant = courant->nextObject () ;
     }
-    inCppFile << ") {\n" ;
-    inCppFile.incIndentation (+2) ;
-    generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inCppFile) ;
-    inCppFile.incIndentation (-2) ;
-    courant = courant->nextObject () ;
   }
 }
 
@@ -195,7 +199,7 @@ generateKeyWordTableImplementation (const GGS_typeTableMotsReserves & inMap,
                                     const C_String & inLexiqueName,
                                     const C_String & nomTable,
                                     AC_OutputStream & inCppFile) {
-  inCppFile.writeTitleComment (C_String ("Key words table '") + nomTable + "'") ;
+  inCppFile.writeCTitleComment (C_String ("Key words table '") + nomTable + "'") ;
 // ---------------------------- Table size
   inCppFile << "const sint16 "
             << inLexiqueName
@@ -371,7 +375,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                           GGS_typeLexicalAttributesMap & table_attributs,
                           const GGS_typeListeTestsEtInstructions & programme_principal) {
 
-  inCppFile.writeTitleComment ("Get next token : method 'parseLexicalToken'") ;
+  inCppFile.writeCTitleComment ("Get next token : method 'parseLexicalToken'") ;
   inCppFile << "void "
            << inLexiqueClassName
            << "::\n"
@@ -428,7 +432,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                     "#include \"" << inLexiqueClassName << ".h\"\n\n" ;
 
 // --------------------------------------- Constructor
-  generatedZone2.writeTitleComment ("Constructor") ;
+  generatedZone2.writeCTitleComment ("Constructor") ;
   generatedZone2 << inLexiqueClassName << "::\n" << inLexiqueClassName
           << " (AC_galgas_io * inGalgasInputOutput)\n"
              ": C_Lexique (inGalgasInputOutput) {\n" ;
@@ -436,7 +440,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone2 << "}\n\n" ;
 
 //---------------------------------------- Generate error message list
-  generatedZone2.writeTitleComment ("Lexical error message list") ;
+  generatedZone2.writeCTitleComment ("Lexical error message list") ;
   GGS_typeTableMessagesErreurs::element_type * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
   sint32 messageNumber = 0 ;
   while (currentMessage != NULL) {
@@ -450,7 +454,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   }
   generatedZone2 << "\n" ;
 // --------------------------------------- Generate syntax error messages
-  generatedZone2.writeTitleComment ("Syntax error messages") ;
+  generatedZone2.writeCTitleComment ("Syntax error messages") ;
   C_String errorMessageList ;
 
   GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
@@ -467,7 +471,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
     currentTerminal = currentTerminal->nextObject () ;
   }
 
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 << "void "
            << inLexiqueClassName
            << "::\n"
@@ -488,11 +492,11 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                             table_attributs,
                             programme_principal) ;
 //---------------------------------------- Generate styles definition 
-  generatedZone2.writeTitleComment ("Styles definition") ;
+  generatedZone2.writeCTitleComment ("Styles definition") ;
   generatedZone2 <<  "sint32 " << inLexiqueClassName << "::getStylesCount (void) {\n"
 	      "  return " <<  inStylesMap.count () << " ;\n"
 	      "}\n\n" ;
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 <<  "const char * " << inLexiqueClassName << "::getStyleName (const sint32 inIndex) {\n"
 	            "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
   GGS_M_styles::element_type * style = inStylesMap.firstObject () ;
@@ -505,7 +509,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone2 << "NULL} ;\n"
              "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
 	           "} ;\n\n" ;
-  generatedZone2.writeHyphenLineComment () ;
+  generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 << "uint8 " << inLexiqueClassName << "::\n"
              "terminalStyleIndex (const sint32 inTerminal) {\n"
              "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.count () + 1) << "] = {0" ;
@@ -526,10 +530,11 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
              "}\n\n" ;
 
   C_String generatedZone3 ;
-  generatedZone3.writeHyphenLineComment () ;
+  generatedZone3.writeCHyphenLineComment () ;
 
 //--- Generate file
-  inLexique.generateFile (inLexiqueClassName + ".cpp",
+  inLexique.generateFile ("//",
+                          inLexiqueClassName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
@@ -855,7 +860,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
                     "#include \"galgas/C_Lexique.h\"\n\n" ;
 
 // --------------- Declaration de la classe de l'analyseur lexical  
-  generatedZone2.writeTitleComment ("Lexical scanner class") ;
+  generatedZone2.writeCTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class " << inLexiqueClassName << " : public C_Lexique {\n" ;
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   generatedZone3 << "//--- Terminal symbols enumeration\n"
@@ -891,11 +896,12 @@ generate_scanner_header_file (C_Lexique & inLexique,
               "  public : virtual uint8 terminalStyleIndex (const sint32 inTerminal) ;\n"
 	      "} ;\n\n" ;
 //--- End of ".h" file
-  generatedZone3.writeHyphenLineComment () ;
+  generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  inLexique.generateFile (inLexiqueClassName + ".h",
+  inLexique.generateFile ("//",
+                          inLexiqueClassName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2

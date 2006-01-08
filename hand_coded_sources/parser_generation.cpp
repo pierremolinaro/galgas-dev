@@ -162,7 +162,7 @@ void cPtr_typeProductionAengendrer
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) {
-  inCppFile.writeTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
+  inCppFile.writeCTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::element_type * currentAlt = mAltProductionMap.firstObject () ;
   bool first = true ;
@@ -172,7 +172,7 @@ void cPtr_typeProductionAengendrer
     if (first) {
       first = false ;
     }else{
-      inCppFile.writeHyphenLineComment () ;
+      inCppFile.writeCHyphenLineComment () ;
     }
     inCppFile << "void " << inTargetFileName
               << "::\n"
@@ -240,7 +240,7 @@ void cPtr_typeProductionAengendrer
     if (first) {
       first = false ;
     }else{
-      inCppFile.writeHyphenLineComment () ;
+      inCppFile.writeCHyphenLineComment () ;
     }
     inCppFile << "void " << inTargetFileName
               << "::\n"
@@ -297,7 +297,7 @@ engendrerDeclarationPrototypesReglesDeProduction (GGS_lstring & nomComposant,
                                                   GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                                   AC_OutputStream & inHfile) {
 //---  declarer une classe si il existe des regles de production a implementer
-  inHfile.writeTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
+  inHfile.writeCTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
   inHfile << "class " << nomComposant << " {\n"
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;
   GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;
