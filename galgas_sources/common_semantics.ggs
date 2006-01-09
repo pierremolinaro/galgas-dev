@@ -1598,6 +1598,7 @@ map @M_optionComponents {
 #---------------------------------------------------------------------------*
 
 map @M_semanticsComponents {
+  @ModelMap mModelMap ;
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
   @M_optionComponents mOptionsComponents ;
   insert insertKey error message "a semantics component named '%K' is already declared in %L" ;

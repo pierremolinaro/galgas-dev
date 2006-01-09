@@ -73,7 +73,6 @@ label parse
 ;
 
 rule <semantics_declaration>
-  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -472,7 +471,6 @@ rule <galgas_component>
   repeat
   while
     <semantics_declaration>
-      !?modelMap
       !?componentEntitiesMap
       !?listeEntitesAengendrer
       !?optionsComponentsMapForUse
@@ -487,7 +485,7 @@ rule <galgas_component>
     ;
   end repeat ;
 #--- Enter component entities in map
-  [!?ioSemanticsComponentsMap insertKey !componentName !componentEntitiesMap !optionsComponentsMapForUse] ;
+  [!?ioSemanticsComponentsMap insertKey !componentName !modelMap !componentEntitiesMap !optionsComponentsMapForUse] ;
 #--- End of file
   $end$ ;
   $semantics$ ;
@@ -542,6 +540,7 @@ label importSemantics
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
   @typeTableEnAvant tableEnAvantAimplementer [empty] ;
+  @ModelMap modelMap [empty] ;
   repeat
   while
     <semantics_declaration> importSemantics
@@ -554,7 +553,7 @@ label importSemantics
   end repeat ;
 #--- Enter component entities in map
   @M_optionComponents optionsComponentsMap [empty] ;
-  [!?ioSemanticsComponentsMap insertKey !componentName !componentSemanticsEntitiesMap !optionsComponentsMap] ;
+  [!?ioSemanticsComponentsMap insertKey !componentName !modelMap !componentSemanticsEntitiesMap !optionsComponentsMap] ;
   $end$ ;
   $semantics$ ;
   $;$ ;
@@ -696,7 +695,8 @@ rule <import_headers_semantics_and_grammars>
         if not [tableUtilisationsSemantiques hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
           @M_optionComponents importedOptionsComponentsMap ;
-          [!?ioSemanticsComponentsMap searchKey !componentName ?importedEntities ?importedOptionsComponentsMap] ;
+          @ModelMap modelMap ;
+          [!?ioSemanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?importedOptionsComponentsMap] ;
           foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
             if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
               [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -720,7 +720,8 @@ rule <import_headers_semantics_and_grammars>
           !?semanticsComponentsMap
         ;
         @M_semanticsEntitiesForUse importedEntities ;
-        [!?semanticsComponentsMap searchKey !componentName ?importedEntities ?*] ;
+        @ModelMap modelMap ;
+        [!?semanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?*] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -762,11 +763,12 @@ label importSemantics
     or
       $semantics$ ;
       @lstring componentName ;
-      $identifier$ ? componentName ;
+      $identifier$ ?componentName ;
       select
         if not [tableUtilisationsSemantiques hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
-          [!?ioSemanticsComponentsMap searchKey !componentName ?importedEntities ?*] ;
+          @ModelMap modelMap ;
+          [!?ioSemanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?*] ;
           foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
             if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
               [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -784,7 +786,8 @@ label importSemantics
           !?semanticsComponentsMap
         ;
         @M_semanticsEntitiesForUse importedEntities ;
-        [!?semanticsComponentsMap searchKey !componentName ?importedEntities ?*] ;
+        @ModelMap modelMap ;
+        [!?semanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?*] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -804,7 +807,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -998,7 +1000,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -1285,7 +1286,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -3531,7 +3531,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
@@ -4148,7 +4147,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
@@ -4193,11 +4191,9 @@ rule <semantics_declaration>
     $}$ ;
     @AC_galgasType c := [@typeGalgasListType new ! listTypeName !listeTousAttributsSemantiques] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey ! listTypeName !entite] ;
-    @typeEntityToGenerate def := [@C_listTypeToImplement new ! listTypeName !listeTousAttributsSemantiques !listeTypeeAttributsExternesCourants] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
+    @typeEntityToGenerate def := [@C_listTypeToImplement new !listTypeName !listeTousAttributsSemantiques !listeTypeeAttributsExternesCourants] ;
     listeEntitesAengendrer += !def ;
-    @TypeModel t := [@ListModel new !attributeListModel] ;
-    [!?ioModelMap insertKey !listTypeName !t] ;
   end select ;
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
@@ -4290,7 +4286,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
@@ -4667,7 +4662,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
@@ -4746,7 +4740,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@ModelMap unused ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
