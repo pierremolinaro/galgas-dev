@@ -47,7 +47,6 @@ label importOptions
 ;
 
 rule <semantics_declaration>
-  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -303,7 +302,6 @@ rule <galgas_component>
   listeEntitesAengendrer := [@typeEntitiesToGenerateList empty] ;
   @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMap [empty] ;
   @L_productionRules_ForGrammarComponent productionRulesListForGrammar [empty] ;
-  @ModelMap modelMap [empty] ;
   repeat
   while
     <syntax_declaration>
@@ -318,7 +316,6 @@ rule <galgas_component>
     ;
   while
     <semantics_declaration>
-      !?modelMap
       !?entitiesMap
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
