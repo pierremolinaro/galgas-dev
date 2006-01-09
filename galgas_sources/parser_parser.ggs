@@ -50,12 +50,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset tableDeclAnticipeesClassePourFichierH
   ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
@@ -63,7 +60,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
 label parse
 ;
@@ -238,17 +234,6 @@ action checkParseRewindSignatures
   ?!@L_parse_rewind_signature_list ioParseRewindSignature
  ;
 
-action engendrerComposant
-  ?!@lstring componentName
-  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
-  ?!@string defLexique
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@bool composantSyntaxique
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@stringset tableDeclAnticipeesClassePourFichierH
-;
-
 #------------------------------------------------------------------------------*
 #                                                                              *
 #                      COMPOSANT SYNTAXIQUE                                    *
@@ -262,13 +247,9 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
 :
-  @typeTableEnAvant tableEnAvantAimplementer [empty] ;
   @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
   @typeEntitiesToGenerateList listeEntitesAengendrer ;
-  @bool composantSyntaxique := true ;
-  @stringset tableFichiersEnTetePourFichierH  [empty] ;
   @stringset tableFichiersEnTetePourFichierCPP [empty] ;
-  @stringset tableDeclAnticipeesClassePourFichierH [empty] ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
   $syntax$ ;
@@ -327,12 +308,9 @@ rule <galgas_component>
       !?entitiesMap
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
-      !?tableFichiersEnTetePourFichierH
-      !?tableDeclAnticipeesClassePourFichierH
       !?tableFichiersEnTetePourFichierCPP
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
-      !?tableEnAvantAimplementer
       !?tableRoutinesAimplementer
       !?externClassesDirectoryMap
     ;
@@ -349,15 +327,12 @@ rule <galgas_component>
                                                     !productionRulesListForGrammar
                                                     !lexiqueName] ;
 #--- Generate component
-  action engendrerComposant
+  action generateSemanticsComponent
     !?componentName
     !?tableUtilisationsSemantiques
     !?defLexique
     !?listeEntitesAengendrer
-    !?composantSyntaxique
-    !?tableFichiersEnTetePourFichierH
     !?tableFichiersEnTetePourFichierCPP
-    !?tableDeclAnticipeesClassePourFichierH
   ;
 #--- Fin du fichier
   $end$ ;

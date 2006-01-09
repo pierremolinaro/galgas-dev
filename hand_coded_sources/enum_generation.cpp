@@ -25,7 +25,14 @@
 void cPtr_enumGalgasType::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
                          const C_String & /* inLexiqueClassName */,
-                         C_Lexique & /* inLexique */) {
+                         C_Lexique & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_enumGalgasType::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << mEnumTypeName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -33,7 +40,7 @@ generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
 void cPtr_enumGalgasType::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
+                       C_Lexique & /* inLexique */) const {
 //--- Compute bit count for BDDs (set operations)
   uint16 bitCount = 0 ;
   sint32 n = mConstantMap.count () ;
@@ -106,7 +113,7 @@ void cPtr_enumGalgasType
 ::generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) {
+                               sint32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -116,7 +123,7 @@ void cPtr_enumGalgasType
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
-                                  const bool /* inGenerateDebug */) {
+                                  const bool /* inGenerateDebug */) const {
   inCppFile.writeCTitleComment (C_String ("class for enumeration '") + mEnumTypeName + "'") ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName

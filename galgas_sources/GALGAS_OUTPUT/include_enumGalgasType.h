@@ -33,22 +33,24 @@ class cPtr_enumGalgasType : public cPtr_typeEntityToGenerate {
   private : typedef cPtr_typeEntityToGenerate inherited ;
 //--- START OF USER ZONE 2
 
+public : virtual void generatePredeclarations (AC_OutputStream & inHfile) const ;
+
 public : virtual void generateHdeclarations (AC_OutputStream & inHfile,
                                              const C_String & inLexiqueClassName,
-                                             C_Lexique & inLexique) ;
+                                             C_Lexique & inLexique) const ;
 public : virtual void generateHdeclarations_2 (AC_OutputStream & inHfile,
                                                const C_String & inLexiqueClassName,
-                                               C_Lexique & inLexique) ;
+                                               C_Lexique & inLexique) const ;
 public : virtual bool isCppClassNeeded (void) const ;
 public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile,
                                                    const C_String & inLexiqueClassName,
                                                    const C_String & inTargetFileName,
-                                                   sint32 & /* ioPrototypeIndex */) ;
+                                                   sint32 & /* ioPrototypeIndex */) const ;
 public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFile,
                                                   const C_String & inLexiqueClassName,
                                                   const C_String & inTargetFileName,
                                                   sint32 & ioPrototypeIndex,
-                                                  const bool inGenerateDebug) ;
+                                                  const bool inGenerateDebug) const ;
 
 //--- END OF USER ZONE 2
 

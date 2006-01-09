@@ -34,22 +34,24 @@
 class cPtr_typeEntityToGenerate : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
+public : virtual void generatePredeclarations (AC_OutputStream & inHfile) const = 0 ;
+
 public : virtual void generateHdeclarations (AC_OutputStream & inHfile,
                                              const C_String & inLexiqueClassName,
-                                             C_Lexique & inLexique) = 0 ;
+                                             C_Lexique & inLexique) const = 0 ;
 public : virtual void generateHdeclarations_2 (AC_OutputStream & inHfile,
                                                const C_String & inLexiqueClassName,
-                                               C_Lexique & inLexique) = 0 ;
+                                               C_Lexique & inLexique) const = 0 ;
 public : virtual bool isCppClassNeeded (void) const = 0 ;
 public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile,
                                                    const C_String & inLexiqueClassName,
                                                    const C_String & inTargetFileName,
-                                                   sint32 & ioPrototypeIndex) = 0 ;
+                                                   sint32 & ioPrototypeIndex) const = 0 ;
 public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFile,
                                                   const C_String & inLexiqueClassName,
                                                   const C_String & inTargetFileName,
                                                   sint32 & ioPrototypeIndex,
-                                                  const bool inGenerateDebug) = 0 ;
+                                                  const bool inGenerateDebug) const = 0 ;
 
 //--- END OF USER ZONE 2
 

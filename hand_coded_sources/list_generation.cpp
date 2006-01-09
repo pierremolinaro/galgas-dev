@@ -27,7 +27,7 @@
 void cPtr_C_listTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
-                         C_Lexique & /* inLexique */) {
+                         C_Lexique & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
@@ -80,9 +80,16 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << aNomListe << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_listTypeToImplement::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
+                       C_Lexique & /* inLexique */) const {
 //----------------------- List class declaration ----------------  
   inHfile.writeCTitleComment (C_String ("list '@") + aNomListe + "'") ;
 
@@ -174,7 +181,7 @@ void cPtr_C_listTypeToImplement
 ::generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) {
+                               sint32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -184,7 +191,7 @@ void cPtr_C_listTypeToImplement
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
-                                  const bool /* inGenerateDebug */) {
+                                  const bool /* inGenerateDebug */) const {
 //------------- Implementation de l'element de liste -----------------
   inCppFile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 

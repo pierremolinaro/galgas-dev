@@ -76,12 +76,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset tableDeclAnticipeesClassePourFichierH
   ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
@@ -89,7 +86,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
 label parse
 ;
@@ -131,7 +127,6 @@ rule <attributes_definition_list>
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
   !@L_nameWithType listeTypeeAttributsExternesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@stringset tableFichiersEnTetePourFichierH
 label parse
 ;
 
@@ -412,17 +407,6 @@ action buildFileNameWithPath
   ??@lstring inExtension
 ;
 
-action engendrerComposant
-  ?!@lstring componentName
-  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
-  ?!@string defLexique
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@bool composantSyntaxique
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@stringset tableDeclAnticipeesClassePourFichierH
-;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    S E M A N T I C S    C O M P O N E N T                                 *
@@ -437,7 +421,6 @@ rule <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
 :
   @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
-  @bool composantSyntaxique := false ;
   @lstring componentName ;
   $semantics$ ;
 #--- Obtenir le nom du component semantique
@@ -447,12 +430,10 @@ rule <galgas_component>
   @string defLexique := "" ;
 #--- Import semantics
   @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
-  @stringset tableFichiersEnTetePourFichierH [empty] ;
   @stringset tableFichiersEnTetePourFichierCPP [empty] ;
   @M_optionComponents optionsComponentsMapForUse [empty] ;
   @M_semanticsEntitiesForUse componentEntitiesMap ;
   @M_externClassesDirectories externClassesDirectoryMap ;
-  @typeTableEnAvant tableEnAvantAimplementer [empty] ;
   @stringset classNamesSet [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
   @stringset alreadyIncludedSemanticsComponents [empty] ;
@@ -474,7 +455,6 @@ rule <galgas_component>
     ?tableEnAvant
   ;
 #--- Semantics entities declarations
-  @stringset tableDeclAnticipeesClassePourFichierH [empty] ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
   @ModelMap modelMap [empty] ;
@@ -484,12 +464,9 @@ rule <galgas_component>
       !?componentEntitiesMap
       !?listeEntitesAengendrer
       !?optionsComponentsMapForUse
-      !?tableFichiersEnTetePourFichierH
-      !?tableDeclAnticipeesClassePourFichierH
       !?tableFichiersEnTetePourFichierCPP
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
-      !?tableEnAvantAimplementer
       !?tableRoutinesAimplementer
       !?externClassesDirectoryMap
     ;
@@ -508,15 +485,12 @@ rule <galgas_component>
     end if ;
   end foreach ;
 #--- Generate component
-  action engendrerComposant
+  action generateSemanticsComponent
     !?componentName
     !?tableUtilisationsSemantiques
     !?defLexique
     !?listeEntitesAengendrer
-    !?composantSyntaxique
-    !?tableFichiersEnTetePourFichierH
     !?tableFichiersEnTetePourFichierCPP
-    !?tableDeclAnticipeesClassePourFichierH
    ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
@@ -549,7 +523,6 @@ label importSemantics
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
-  @typeTableEnAvant tableEnAvantAimplementer [empty] ;
   @ModelMap modelMap [empty] ;
   repeat
   while
@@ -558,7 +531,6 @@ label importSemantics
       !?componentSemanticsEntitiesMap
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
-      !?tableEnAvantAimplementer
       !?tableRoutinesAimplementer
     ;
   end repeat ;
@@ -827,12 +799,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierH
-  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
   ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
@@ -900,7 +869,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
 :
   $routine$ ;
@@ -1021,12 +989,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset tableDeclAnticipeesClassePourFichierH
   ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
@@ -1040,8 +1005,6 @@ rule <semantics_declaration>
           [ioComponentSemanticsEntitiesMap hasKey ![nomClasseAbstraite value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
       [!?tableEnAvant insertKey !nomClasseAbstraite !t] ;
-      [!?tableEnAvantAimplementer insertKey !nomClasseAbstraite !t] ;
-      tableDeclAnticipeesClassePourFichierH += ![nomClasseAbstraite value] ;
     end if ;
     $;$ ;
   or
@@ -1071,7 +1034,7 @@ rule <semantics_declaration>
       ?listeAttributsSemantiquesCourants
       ?listeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
-      !?tableFichiersEnTetePourFichierH ;
+    ;
     @bool estAbstraite := true ;
   #--- Declaration des methodes
     @typeTableMethodesAimplementer tableMethodesAimplementer [empty] ;
@@ -1169,7 +1132,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $abstract$ ;
@@ -1182,7 +1144,6 @@ label importSemantics
             [ioComponentSemanticsEntitiesMap hasKey ![nomClasseAbstraite value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
       [!?tableEnAvant insertKey !nomClasseAbstraite !t] ;
-      [!?tableEnAvantAimplementer insertKey !nomClasseAbstraite !t] ;
     end if ;
     $;$ ;
   or
@@ -1202,7 +1163,6 @@ label importSemantics
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeAttributsExternesCourants ;
-    @stringset tableFichiersEnTetePourFichierH [empty] ;
     @attributeListModel attributeListModel ;
     <attributes_definition_list>
       ?attributeListModel
@@ -1211,7 +1171,6 @@ label importSemantics
       ?listeAttributsSemantiquesCourants
       ?listeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
-      !?tableFichiersEnTetePourFichierH
     ;
     @bool estAbstraite := true ;
   #--- Declaration des methodes
@@ -1308,12 +1267,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
   ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
@@ -1360,7 +1316,6 @@ rule <semantics_declaration>
     ?listeAttributsSemantiquesCourants
     ?listeTypeeAttributsExternesCourants
     !?ioComponentSemanticsEntitiesMap
-    !?tableFichiersEnTetePourFichierH 
   ;
   @bool estAbstraite := false ;
 #--------------------- Methodes de la classe ----------------------------
@@ -1454,7 +1409,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $class$ ;
@@ -1492,7 +1446,6 @@ label importSemantics
 #------------------- list des attributs de la classe -------------------
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
-  @stringset tableFichiersEnTetePourFichierH [empty] ;
   @attributeListModel attributeListModel ;
   <attributes_definition_list>
     ?attributeListModel
@@ -1501,7 +1454,6 @@ label importSemantics
     ?listeAttributsSemantiquesCourants
     ?listeTypeeAttributsExternesCourants
     !?ioComponentSemanticsEntitiesMap
-    !?tableFichiersEnTetePourFichierH
   ;
   @bool estAbstraite := false ;
 #--------------------- Methodes de la classe ----------------------------
@@ -3554,12 +3506,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset tableDeclAnticipeesClassePourFichierH
   ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
@@ -3572,8 +3521,6 @@ rule <semantics_declaration>
          | [ioComponentSemanticsEntitiesMap hasKey ![nomTable value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
       [!?tableEnAvant insertKey !nomTable !t] ;
-      [!?tableEnAvantAimplementer insertKey !nomTable !t] ;
-      tableDeclAnticipeesClassePourFichierH += ![nomTable value] ;
     end if ;
   or
   #--- map generique C++ utilisee
@@ -3583,7 +3530,6 @@ rule <semantics_declaration>
     $in$ ;
     @lstring path ;
     $literal_string$ ? path ; 
-    tableFichiersEnTetePourFichierH += ![path value] ;
     $,$ ;
     $literal_string$ ? path ; 
     tableFichiersEnTetePourFichierCPP += ![path value] ;
@@ -3662,7 +3608,6 @@ rule <semantics_declaration>
       ?listeAttributsSemantiquesCourants
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
-      !?tableFichiersEnTetePourFichierH
     ;
   #--- Build insert and search method map
     @mapMethodMap mapMethodMap [empty] ;
@@ -3738,7 +3683,6 @@ rule <semantics_declaration>
       ?listeAttributsSemantiquesCourants
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
-      !?tableFichiersEnTetePourFichierH
     ;
   #--- Declare state enumeration values
     @stateMap stateValues [empty] ;
@@ -3860,7 +3804,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $map$ ;
@@ -3871,7 +3814,6 @@ label importSemantics
     if not([tableEnAvant hasKey ![nomTable value]] | [ioComponentSemanticsEntitiesMap hasKey ![nomTable value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
       [!?tableEnAvant insertKey !nomTable !t] ;
-      [!?tableEnAvantAimplementer insertKey !nomTable !t] ;
     end if ;
   or
   #--- map generique C++ utilisee
@@ -3949,7 +3891,6 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @stringset tableFichiersEnTetePourFichierH [empty] ;
     @attributeListModel attributeListModel ;
     <attributes_definition_list>
       ?attributeListModel
@@ -3958,7 +3899,6 @@ label importSemantics
       ?listeAttributsSemantiquesCourants
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
-      !?tableFichiersEnTetePourFichierH
     ;
   #--- Build insert and search method map
     @mapMethodMap mapMethodMap [empty] ;
@@ -4017,7 +3957,6 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @stringset tableFichiersEnTetePourFichierH [empty] ;
     @attributeListModel attributeListModel ;
     <attributes_definition_list>
       ?attributeListModel
@@ -4026,7 +3965,6 @@ label importSemantics
       ?listeAttributsSemantiquesCourants
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
-      !?tableFichiersEnTetePourFichierH
     ;
   #--- States
     select
@@ -4171,12 +4109,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset tableDeclAnticipeesClassePourFichierH
   ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
@@ -4188,8 +4123,6 @@ rule <semantics_declaration>
     if not ([tableEnAvant hasKey ![listTypeName value]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
       [!?tableEnAvant insertKey ! listTypeName !t] ;
-      [!?tableEnAvantAimplementer insertKey ! listTypeName !t] ;
-      tableDeclAnticipeesClassePourFichierH += ![listTypeName value] ;
     end if ;
   or
     ${$ ;
@@ -4206,7 +4139,6 @@ rule <semantics_declaration>
       ?listeAttributsSemantiquesCourants
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
-      !?tableFichiersEnTetePourFichierH
     ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -4221,7 +4153,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $list$ ;
@@ -4232,7 +4163,6 @@ label importSemantics
     if not ([tableEnAvant hasKey ![listTypeName value]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName value]]) then
       @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
       [!?tableEnAvant insertKey ! listTypeName !t] ;
-      [!?tableEnAvantAimplementer insertKey ! listTypeName !t] ;
     end if ;
   or
     ${$ ;
@@ -4242,7 +4172,6 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @stringset tableFichiersEnTetePourFichierH [empty] ;
     <attributes_definition_list>
       ?attributeListModel
       !?tableAttributs
@@ -4250,7 +4179,6 @@ label importSemantics
       ?listeAttributsSemantiquesCourants
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
-      !?tableFichiersEnTetePourFichierH
     ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -4275,7 +4203,6 @@ rule <attributes_definition_list>
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
   !@L_nameWithType listeTypeeAttributsExternesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@stringset unused tableFichiersEnTetePourFichierH
 :
   listeTypeeAttributsExternesCourants := [@L_nameWithType empty] ;
   listeAttributsSemantiquesCourants := [@typeListeAttributsSemantiques empty] ;
@@ -4313,12 +4240,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierH
-  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
   ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
@@ -4334,7 +4258,6 @@ rule <semantics_declaration>
   $in$ ;
   @lstring path ;
   $literal_string$ ? path ; 
-  tableFichiersEnTetePourFichierH += ![path value] ;
   $;$ ;
 #--- Default behaviour : no operator, no method available
   @typeTableMethodes modifiersMap [empty] ;
@@ -4433,7 +4356,7 @@ rule <semantics_declaration>
     $;$ ;
   end repeat ;
 #--- enter the new type into the list of entities to be generated
-  @typeEntityToGenerate t := [@typeExternTypeToGenerate new !externTypeName !cppClassName] ;
+  @typeEntityToGenerate t := [@typeExternTypeToGenerate new !externTypeName !cppClassName !path] ;
   listeEntitesAengendrer += !t ;
 #--- Enter the new type in entities map
   @AC_galgasType c := [@typeGalgasExternType new !externTypeName
@@ -4453,7 +4376,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $extern$ ;
@@ -4690,12 +4612,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierH
-  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
   ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
@@ -4731,7 +4650,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $action$ ;
@@ -4769,12 +4687,9 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierH
-  ?!@stringset unused tableDeclAnticipeesClassePourFichierH
   ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
@@ -4841,7 +4756,6 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
-  ?!@typeTableEnAvant unused tableEnAvantAimplementer
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $enum$ ;

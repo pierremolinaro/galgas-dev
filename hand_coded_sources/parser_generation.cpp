@@ -30,9 +30,15 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate::
+generatePredeclarations (AC_OutputStream & /* inHfile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeNonterminalToGenerate::
 generateHdeclarations (AC_OutputStream & /* inHfile */,
                        const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
+                       C_Lexique & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -40,7 +46,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */,
 void cPtr_typeNonterminalToGenerate::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
                          const C_String & /* inLexiqueClassName */,
-                         C_Lexique & /* inLexique */) {
+                         C_Lexique & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -55,7 +61,7 @@ void cPtr_typeNonterminalToGenerate
 ::generateCppClassDeclaration (AC_OutputStream & inHfile,
                                const C_String & inLexiqueClassName,
                                const C_String & /* inTargetFileName */,
-                               sint32 & /* ioPrototypeIndex */) {
+                               sint32 & /* ioPrototypeIndex */) const {
   GGS_M_nonterminalSymbolAlts::element_type * currentAlt
         = mNonterminalSymbolParametersMap.firstObject () ;
   while (currentAlt != NULL) {
@@ -82,7 +88,13 @@ void cPtr_typeNonterminalToGenerate
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
-                                  const bool /* inGenerateDebug */) {
+                                  const bool /* inGenerateDebug */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeProductionAengendrer::
+generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -90,7 +102,7 @@ void cPtr_typeNonterminalToGenerate
 void cPtr_typeProductionAengendrer::
 generateHdeclarations (AC_OutputStream & /* inHfile */,
                        const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
+                       C_Lexique & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -98,7 +110,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */,
 void cPtr_typeProductionAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
                          const C_String & /* inLexiqueClassName */,
-                         C_Lexique & /* inLexique */) {
+                         C_Lexique & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -113,7 +125,7 @@ void cPtr_typeProductionAengendrer
 ::generateCppClassDeclaration (AC_OutputStream & inHfile,
                                const C_String & inLexiqueClassName,
                                const C_String & inTargetFileName,
-                               sint32 & ioPrototypeIndex) {
+                               sint32 & ioPrototypeIndex) const {
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::element_type * currentAlt = mAltProductionMap.firstObject () ;
   bool prototypesForSelectedAndRepeatNotDeclared = true ;
@@ -161,7 +173,7 @@ void cPtr_typeProductionAengendrer
                                   const C_String & inLexiqueClassName,
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
-                                  const bool inGenerateDebug) {
+                                  const bool inGenerateDebug) const {
   inCppFile.writeCTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::element_type * currentAlt = mAltProductionMap.firstObject () ;
