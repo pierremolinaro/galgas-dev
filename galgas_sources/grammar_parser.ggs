@@ -161,12 +161,10 @@ rule <galgas_component>
       @M_nonTerminalSymbolsForGrammar importedNonterminalSymbolsMap ;
       @L_productionRules_ForGrammarComponent importedProductionRulesList ;
       @lstring importedLexiqueComponentName ;
-      @stringset importedClassesNamesSet ;
       [!?syntaxComponentsMap searchKey !syntaxComponentName
         ?importedNonterminalSymbolsMap
         ?importedProductionRulesList
         ?importedLexiqueComponentName
-        ?importedClassesNamesSet
       ] ;
     #--- Verify lexical component name
       if [lexiqueName value] != [importedLexiqueComponentName value] then
@@ -175,7 +173,6 @@ rule <galgas_component>
     #--- Add syntax component to syntax components list
       syntaxComponentsList += !importedNonterminalSymbolsMap
                               !importedProductionRulesList
-                              !importedClassesNamesSet
                               !syntaxComponentName ;
     #--- Build nonterminal symbol map for grammar
       foreach importedNonterminalSymbolsMap (??@lstring ntSymbol ??@M_nonterminalSymbolAltsForGrammar importedAltSignaturesMap) :
