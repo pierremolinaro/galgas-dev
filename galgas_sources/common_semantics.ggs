@@ -1593,20 +1593,6 @@ map @M_optionComponents {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    Map of semantics components                                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @M_semanticsComponents {
-  @ModelMap mModelMap ;
-  @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
-  @M_optionComponents mOptionsComponents ;
-  insert insertKey error message "a semantics component named '%K' is already declared in %L" ;
-  search searchKey error message "there is no semantics component named '%K'" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #          Grammar component map                                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1617,6 +1603,20 @@ map @M_grammarComponents {
   @M_optionComponents mOptionsMap ;
   insert insertKey error message "the '%K' grammar component has been already declared in %L" ;
   search searchKey error message "the '%K' grammar component is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    Map of semantics components                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @M_semanticsComponents {
+  @ModelMap mModelMap ;
+  @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
+  @M_optionComponents mOptionsComponents ;
+  insert insertKey error message "a semantics component named '%K' is already declared in %L" ;
+  search searchKey error message "there is no semantics component named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*

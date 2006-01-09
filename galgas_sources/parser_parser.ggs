@@ -89,6 +89,13 @@ label parse
 ;
 
 rule <import_headers_semantics_and_grammars>
+  ?!@stringset ioAlreadyIncludedSemanticsComponents
+  ?!@stringset ioAlreadyIncludedOptionComponents
+  ?!@stringset ioAlreadyIncludedGrammarComponents
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponents
+
   !@M_externClassesDirectories outExternClassesDirectoryMap
   !@M_semanticsEntitiesForUse ioEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
@@ -96,9 +103,6 @@ rule <import_headers_semantics_and_grammars>
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
   ?!@stringset ioClassNamesSet
-  ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents ioOptionsComponents
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
@@ -287,7 +291,16 @@ rule <galgas_component>
   @M_semanticsEntitiesForUse entitiesMap ;
   @M_externClassesDirectories externClassesDirectoryMap ;
   @M_optionComponents ioOptionsComponentsMapForUse ;
+  @stringset alreadyIncludedSemanticsComponents [empty] ;
+  @stringset alreadyIncludedOptionComponents [empty] ;
+  @stringset alreadyIncludedGrammarComponents [empty] ;
   <import_headers_semantics_and_grammars>
+    !?alreadyIncludedSemanticsComponents
+    !?alreadyIncludedOptionComponents
+    !?alreadyIncludedGrammarComponents
+    !?ioSemanticsComponentsMap
+    !?ioGrammarComponentsMap
+    !?ioOptionsComponentsMap
     ?externClassesDirectoryMap
     ?entitiesMap
     ?ioOptionsComponentsMapForUse
@@ -295,9 +308,6 @@ rule <galgas_component>
     !?tableUtilisationsSemantiques
     ?tableEnAvant
     !?classNamesSet
-    !?ioSemanticsComponentsMap
-    !?ioGrammarComponentsMap
-    !?ioOptionsComponentsMap
   ;
   listeEntitesAengendrer := [@typeEntitiesToGenerateList empty] ;
   @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMap [empty] ;

@@ -94,6 +94,13 @@ label parse
 ;
 
 rule <import_headers_semantics_and_grammars>
+  ?!@stringset ioAlreadyIncludedSemanticsComponents
+  ?!@stringset ioAlreadyIncludedOptionComponents
+  ?!@stringset ioAlreadyIncludedGrammarComponents
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+
   !@M_externClassesDirectories outExternClassesDirectoryMap
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
@@ -101,9 +108,6 @@ rule <import_headers_semantics_and_grammars>
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
   ?!@stringset ioClassNamesSet
-  ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents ioOptionsComponentsMap
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
@@ -451,7 +455,16 @@ rule <galgas_component>
   @typeTableEnAvant tableEnAvantAimplementer [empty] ;
   @stringset classNamesSet [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
+  @stringset alreadyIncludedSemanticsComponents [empty] ;
+  @stringset alreadyIncludedOptionComponents [empty] ;
+  @stringset alreadyIncludedGrammarComponents [empty] ;
   <import_headers_semantics_and_grammars>
+    !?alreadyIncludedSemanticsComponents
+    !?alreadyIncludedOptionComponents
+    !?alreadyIncludedGrammarComponents
+    !?ioSemanticsComponentsMap
+    !?ioGrammarComponentsMap
+    !?ioOptionsComponentsMap
     ?externClassesDirectoryMap
     ?componentEntitiesMap
     ?optionsComponentsMapForUse
@@ -459,9 +472,6 @@ rule <galgas_component>
     !?tableUtilisationsSemantiques
     ?tableEnAvant
     !?classNamesSet
-    !?ioSemanticsComponentsMap
-    !?ioGrammarComponentsMap
-    !?ioOptionsComponentsMap
   ;
 #--- Semantics entities declarations
   @stringset tableDeclAnticipeesClassePourFichierH [empty] ;
@@ -608,6 +618,13 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <import_headers_semantics_and_grammars>
+  ?!@stringset ioImportedSemanticsComponents
+  ?!@stringset ioImportedOptionComponents
+  ?!@stringset ioImportedGrammarComponents
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+
   !@M_externClassesDirectories outExternClassesDirectoryMap
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
@@ -615,9 +632,6 @@ rule <import_headers_semantics_and_grammars>
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
   ?!@stringset unused ioClassNamesSet
-  ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents ioOptionsComponentsMap
 :
   tableEnAvant := [@typeTableEnAvant empty] ;
   outExternClassesDirectoryMap := [@M_externClassesDirectories empty] ;
@@ -632,6 +646,7 @@ rule <import_headers_semantics_and_grammars>
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
+      ioImportedOptionComponents += ![optionComponentName value] ;
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
       @M_cli_options stringOptionsMap ;
@@ -653,6 +668,7 @@ rule <import_headers_semantics_and_grammars>
       $grammar$ ;
       @lstring grammarComponentName ;
       $identifier$ ? grammarComponentName ;
+      ioImportedGrammarComponents += ![grammarComponentName value] ;
       @M_grammarComponents grammarComponentsMap ;
       select
         grammarComponentsMap := ioGrammarComponentsMap ;
@@ -691,6 +707,7 @@ rule <import_headers_semantics_and_grammars>
       $semantics$ ;
       @lstring componentName ;
       $identifier$ ? componentName ;
+      ioImportedSemanticsComponents += ![componentName value] ;
       select
         if not [tableUtilisationsSemantiques hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
