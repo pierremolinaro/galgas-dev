@@ -85,6 +85,7 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -107,7 +108,6 @@ rule <import_headers_semantics_and_grammars>
   ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
-  ?!@stringset ioClassNamesSet
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
@@ -465,13 +465,13 @@ rule <galgas_component>
     !?ioSemanticsComponentsMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
+
     ?externClassesDirectoryMap
     ?componentEntitiesMap
     ?optionsComponentsMapForUse
     !?tableFichiersEnTetePourFichierCPP
     !?tableUtilisationsSemantiques
     ?tableEnAvant
-    !?classNamesSet
   ;
 #--- Semantics entities declarations
   @stringset tableDeclAnticipeesClassePourFichierH [empty] ;
@@ -554,6 +554,7 @@ label importSemantics
   repeat
   while
     <semantics_declaration> importSemantics
+      !?modelMap
       !?componentSemanticsEntitiesMap
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
@@ -631,7 +632,6 @@ rule <import_headers_semantics_and_grammars>
   ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
-  ?!@stringset unused ioClassNamesSet
 :
   tableEnAvant := [@typeTableEnAvant empty] ;
   outExternClassesDirectoryMap := [@M_externClassesDirectories empty] ;
@@ -896,6 +896,7 @@ rule <semantics_declaration>
     [!?tableRoutinesAimplementer insertKey !nomRoutine] ;
   end select ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -1164,6 +1165,7 @@ rule <semantics_declaration>
     $}$ ;
   end select ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -1448,6 +1450,7 @@ rule <semantics_declaration>
   listeEntitesAengendrer += !def ;
   $}$ ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -3853,6 +3856,7 @@ rule <semantics_declaration>
     $}$ ;
   end select ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -4213,6 +4217,7 @@ rule <semantics_declaration>
     listeEntitesAengendrer += !def ;
   end select ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -4252,6 +4257,8 @@ label importSemantics
     @AC_galgasType c := [@typeGalgasListType new ! listTypeName !listeTousAttributsSemantiques] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
+    @TypeModel t := [@ListModel new !attributeListModel] ;
+    [!?ioModelMap insertKey !listTypeName !t] ;
   end select ;
 end rule ;
 
@@ -4442,6 +4449,7 @@ rule <semantics_declaration>
   $extern$ ;
   $;$ ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -4719,6 +4727,7 @@ rule <semantics_declaration>
   end select ;
   $;$ ;    
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -4828,6 +4837,7 @@ rule <semantics_declaration>
   @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !entity] ;
 label importSemantics
+  ?!@ModelMap ioModelMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
