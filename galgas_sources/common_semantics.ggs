@@ -1650,6 +1650,11 @@ routine handleReaderCall
     elsif [inMethodName value] == "stringByDeletingLastPathComponent" then
       outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
       outReturnedType := [@typeGalgas_string new] ;
+    elsif [inMethodName value] == "stringByReplacingStringByString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
+      outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
     else
       error inMethodName : "this reader is not defined"
        -> outAccessorTypesList, outReturnedType ;
@@ -1796,5 +1801,19 @@ routine handleReaderCall
        -> outAccessorTypesList, outReturnedType ;
   end extract ;
 end routine ;
+
+#---------------------------------------------------------------------------*
+
+action check_KL_escapeCharacters
+ ?@lstring inString
+;
+
+#---------------------------------------------------------------------------*
+
+action check_K_escapeCharacters
+ ?@lstring inString
+;
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

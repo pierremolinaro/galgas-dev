@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS scanner definition                                                *
 #                                                                           *
-#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  Copyright (C) 1997-2006 Pierre Molinaro.                                 *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -38,7 +38,7 @@ style typeNameStyle -> "Type names (@...):" ;
 
 $identifier$ ! tokenString error message "an identifier" ;
 
-list galgasKeyWordList error message "the '" . * . "' keyword" style keywordsStyle :
+list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
  "compile",    "extract",      "program",        "enum",
  "syntax",   "semantics",      "extends",      "reader",
  "extern",     "routine",      "foreach", "constructor", 
@@ -189,7 +189,7 @@ rule '$' :
 end rule ;
 
 # ----------------------------- Delimitors ---------------------------------------
-list galgasDelimitorsList error message "the '" . * . "' delimitor" style delimitersStyle :
+list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
   "*",     "|",    ",",      ".",     "<>",
   "::",    ">",    "<",      ";",      ":",
   "-",     "(",    ")",     "->",      "?",

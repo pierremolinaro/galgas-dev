@@ -520,20 +520,10 @@ rule <key_words_list_declaration>
 #--- Error message
   $error$ ;
   $message$ ;
-  @L_stringList errorMessageElementsList [empty] ;
-  repeat
-    select
-      $*$ ;
-      errorMessageElementsList += !"\1" ;
-    or
-      @lstring messageElement ;
-      $literal_string$ ? messageElement ;
-      errorMessageElementsList += ![messageElement value] ;
-    end select ;
-  while
-    $.$ ;
-  end repeat ;
-#--- Style
+  @lstring errorMessage ;
+  $literal_string$ ?errorMessage ;
+  action check_K_escapeCharacters !errorMessage ;
+ #--- Style
   @lstring styleName ;
   select
     styleName := [@lstring new !"" !here] ;
@@ -558,14 +548,7 @@ rule <key_words_list_declaration>
       terminalSymbolName := listEntry ;
     end select ;
   #--- Build error message
-    @string specificErrorMessageString := "" ;
-    foreach errorMessageElementsList (??@string element) :
-      if element == "\1" then
-        specificErrorMessageString := specificErrorMessageString . [terminalSymbolName value] ;
-      else
-        specificErrorMessageString := specificErrorMessageString . element ;
-      end if ;
-    end foreach ;
+    @string specificErrorMessageString := [[errorMessage value] stringByReplacingStringByString !"%K" ![terminalSymbolName value]] ;
   #--- Insert terminal in terminal symbols map
     [!?table_des_terminaux insertKey !terminalSymbolName !specificErrorMessageString
                                                          !attributesList
