@@ -33,7 +33,7 @@
 void cPtr_C_mapToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
-                         C_Lexique & /* inLexique */) {
+                         C_Lexique & /* inLexique */) const {
   inHfile.writeCTitleComment (C_String ("Element of map '@") + aNomTable + "'") ;
 //--- Starting map element class declaration
   inHfile << "class e_" << aNomTable << " {\n" ;
@@ -68,9 +68,16 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_mapToImplement::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << aNomTable << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapToImplement::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
+                       C_Lexique & /* inLexique */) const {
   inHfile.writeCTitleComment (C_String ("Map '@") + aNomTable + "'") ;
   inHfile << "class elementOf_GGS_" << aNomTable << " ;\n\n" ;
   inHfile << "class GGS_" << aNomTable << " : public AC_galgas_map {\n" ;
@@ -194,7 +201,7 @@ void cPtr_C_mapToImplement::
 generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                              const C_String & /* inLexiqueClassName */,
                              const C_String & /* inTargetFileName*/,
-                             sint32 & /* ioPrototypeIndex */) {
+                             sint32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -204,7 +211,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                 const C_String & /* inLexiqueClassName */,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
-                                const bool /* inGenerateDebug */) {
+                                const bool /* inGenerateDebug */) const {
   inCppFile.writeCTitleComment (C_String ("class map '") + aNomTable + "'") ;
 
 //--- Constructor for type element
@@ -427,7 +434,15 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 void cPtr_typeDefinitionTableAimplementer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
                          const C_String & /* inLexiqueClassName */,
-                         C_Lexique & /* inLexique */) {
+                         C_Lexique & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeDefinitionTableAimplementer::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << aNomTable << " ;\n"
+             "#include \"" << aNomClasseGenerique << ".h\"\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -435,7 +450,7 @@ generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
 void cPtr_typeDefinitionTableAimplementer::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
+                       C_Lexique & /* inLexique */) const {
   inHfile.writeCTitleComment (C_String ("class map element 'e_") + aNomTable + "'") ;
 
 //--- Debut de la declaration de la classe table
@@ -556,7 +571,7 @@ void cPtr_typeDefinitionTableAimplementer
 ::generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) {
+                               sint32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -566,7 +581,7 @@ void cPtr_typeDefinitionTableAimplementer
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
-                                  const bool /* inGenerateDebug */) {
+                                  const bool /* inGenerateDebug */) const {
   inCppFile.writeCTitleComment (C_String ("class map element 'e_") + aNomTable + "'") ;
 
 //--- Instanciate the template

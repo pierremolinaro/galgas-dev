@@ -110,9 +110,16 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseAbstraiteAimplementer::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << aNomClasse << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeDefClasseAbstraiteAimplementer::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
+                       C_Lexique & /* inLexique */) const {
 //--- Generate class forward declaration
   inHfile << "class cPtr_" << aNomClasse << " ;\n\n" ;
 
@@ -183,7 +190,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 void cPtr_typeDefClasseAbstraiteAimplementer::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
-                         C_Lexique & inLexique) {
+                         C_Lexique & inLexique) const {
   C_String generatedZone2 ;
   generatedZone2.writeCTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
@@ -277,7 +284,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 ::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) {
+                               sint32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -287,7 +294,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
-                                  const bool inGenerateDebug) {
+                                  const bool inGenerateDebug) const {
   inCppFile.writeCTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
@@ -459,9 +466,16 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseNonAbstraiteAimplementer::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << aNomClasse << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeDefClasseNonAbstraiteAimplementer::
 generateHdeclarations (AC_OutputStream & /* inHfile */,
                        const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) {
+                       C_Lexique & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -469,7 +483,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */,
 void cPtr_typeDefClasseNonAbstraiteAimplementer::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                         const C_String & /* inLexiqueClassName */,
-                        C_Lexique & inLexique) {
+                        C_Lexique & inLexique) const {
   inHfile.writeCTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
   C_String generatedZone2 ;
@@ -614,7 +628,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
 ::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) {
+                               sint32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -624,7 +638,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
-                                  const bool inGenerateDebug) {
+                                  const bool inGenerateDebug) const {
   inCppFile.writeCTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
 //--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere

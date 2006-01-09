@@ -1043,11 +1043,9 @@ abstract class @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 class @typeExternTypeToGenerate extends @typeEntityToGenerate {
-#--- Class name
-  @lstring mName ;
-
-#--- C++ class name
+  @lstring mGalgasName ;
   @lstring mCppClassName ;
+  @lstring mIncludePath ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1281,6 +1279,16 @@ action appendJokersIfNeeded
  ?@uint inEffectiveParametersCount
  ?@uint inFormalArgumentsCount
  ?@typeCplusPlusName inNullName
+;
+
+#---------------------------------------------------------------------------*
+
+action generateSemanticsComponent
+  ?!@lstring componentName
+  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  ?!@string defLexique
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@stringset tableFichiersEnTetePourFichierCPP
 ;
 
 #---------------------------------------------------------------------------*
