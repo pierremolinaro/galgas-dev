@@ -1285,16 +1285,4 @@ action appendJokersIfNeeded
 
 #---------------------------------------------------------------------------*
 
-action check_KL_escapeCharacters
- ?@lstring inString
-;
-
-#---------------------------------------------------------------------------*
-
-action check_K_escapeCharacters
- ?@lstring inString
-;
-
-#---------------------------------------------------------------------------*
-
 end semantics ;
