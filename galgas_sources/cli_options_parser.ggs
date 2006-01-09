@@ -49,23 +49,6 @@ action generate_option_component
   ?!@M_cli_options inStringOptionMap
 ;
 
-rule <import_headers_semantics_and_grammars>
-  !@M_externClassesDirectories outExternClassesDirectoryMap
-  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  !@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
-  !@typeTableEnAvant tableEnAvant
-  ?!@stringset ioClassNamesSet
-  ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents ioOptionsComponentsMap
-label importSemantics
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@M_semanticsComponents ioSemanticsComponentsMap
-label parse
-;
-
 #-------------------------------------------------------------------*
 #                   option component                                *
 #-------------------------------------------------------------------*
@@ -146,7 +129,6 @@ label importLexique
   $option$ ;
   $identifier$ ? * ;
   $:$ ;
-##  <import_headers_semantics_and_grammars> parse ;
   repeat
   while 
     $type_name$ ?*  ;
@@ -173,7 +155,6 @@ label importSyntax
   $option$ ;
   $identifier$ ? * ;
   $:$ ;
-##  <import_headers_semantics_and_grammars> parse ;
   repeat
   while 
     $type_name$ ?*  ;
@@ -200,7 +181,6 @@ label importSemantics
   $option$ ;
   $identifier$ ? * ;
   $:$ ;
-##  <import_headers_semantics_and_grammars> parse ;
   repeat
   while 
     $type_name$ ?*  ;
@@ -227,7 +207,6 @@ label importGrammarForSemantics
   $option$ ;
   $identifier$ ? * ;
   $:$ ;
-##  <import_headers_semantics_and_grammars> parse ;
   repeat
   while 
     $type_name$ ?*  ;
