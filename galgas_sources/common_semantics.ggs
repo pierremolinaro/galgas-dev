@@ -155,6 +155,30 @@ class @ExternTypeModel extends @TypeModel {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  C L A S S    M O D E L                                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @classMessageMap {
+  insert insertKey error message "the '%K' message is already declared in %L" ;
+  search searchKey error message "the '%K' message is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @ClassModel extends @TypeModel {
+  @bool mIsAbstract ;
+  @stringset mSuperClasses ;
+  @typeListModel mAttributeList ;
+  @classMessageMap mMessageMap ;
+#  @readerMap mReaderMap ;
+#  @modifierMap mModifierMap ;
+#  @typeListModel mAddAssignFormalInputArgumentList ; # List is empty if += operator is not defined
+}
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  M O D E L    M A P                                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
