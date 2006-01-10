@@ -117,11 +117,22 @@ rule <parent_class>
   !@typeTableMethodes tableDesMethodes
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
+label importSemantics
+  ?!@ModelMap ioModelMap
+  !@stringset outSuperClasses
+  !@typeListModel outAttributeList
+  !@classMessageMap outMessageMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@typeSemanticAttributesMap tableAttributs
+  !@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  !@typeTableMethodes tableDesMethodes
+  !@typeSuperClassesMap tableDesClassesAncetres
+  !@typeClassInheritedMessagesMap tableMessagesAbstraits
 label parse
 ;
 
 rule <attributes_definition_list>
-  !@typeListModel outAttributeListModel
+  ?!@typeListModel outAttributeListModel
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
@@ -454,22 +465,31 @@ rule <galgas_component>
     !?ioIncludesForHeader
     ?tableEnAvant
   ;
-#--- Semantics entities declarations
-  @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
-  @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
-  @ModelMap modelMap [empty] ;
-  repeat
-  while
-    <semantics_declaration>
-      !?componentEntitiesMap
-      !?listeEntitesAengendrer
-      !?optionsComponentsMapForUse
-      !?tableNomRoutinesDeclarees
-      !?tableEnAvant
-      !?tableRoutinesAimplementer
-      !?externClassesDirectoryMap
-    ;
-  end repeat ;
+  parse
+  #--- First pass on semantic declarations
+  start
+    repeat
+    while
+      <semantics_declaration> parse ;
+    end repeat ;
+  #--- Second pass on semantic declarations
+  rewind
+    @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
+    @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
+    @ModelMap modelMap [empty] ;
+    repeat
+    while
+      <semantics_declaration>
+        !?componentEntitiesMap
+        !?listeEntitesAengendrer
+        !?optionsComponentsMapForUse
+        !?tableNomRoutinesDeclarees
+        !?tableEnAvant
+        !?tableRoutinesAimplementer
+        !?externClassesDirectoryMap
+      ; 
+    end repeat ;
+  end parse ;
 #--- Enter component entities in map
   [!?ioSemanticsComponentsMap insertKey !componentName !modelMap !componentEntitiesMap !optionsComponentsMapForUse] ;
 #--- End of file
@@ -948,6 +968,27 @@ rule <parent_class>
   tableDesMethodes := [@typeTableMethodes empty] ;
   tableMessagesAbstraits := [@typeClassInheritedMessagesMap empty] ;
   tableAttributs := [@typeSemanticAttributesMap empty] ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  !@stringset outSuperClasses
+  !@typeListModel outAttributeList
+  !@classMessageMap outMessageMap
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  !@typeSemanticAttributesMap tableAttributs
+  !@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  !@typeTableMethodes tableDesMethodes
+  !@typeSuperClassesMap tableDesClassesAncetres
+  !@typeClassInheritedMessagesMap tableMessagesAbstraits
+:
+  listeTousAttributsSemantiques := [@typeListeAttributsSemantiques empty] ;
+  tableDesClassesAncetres := [@typeSuperClassesMap empty] ;
+  tableDesMethodes := [@typeTableMethodes empty] ;
+  tableMessagesAbstraits := [@typeClassInheritedMessagesMap empty] ;
+  tableAttributs := [@typeSemanticAttributesMap empty] ;
+#---
+  outMessageMap := [@classMessageMap empty] ;
+  outSuperClasses := [@stringset empty] ;
+  outAttributeList := [@typeListModel empty] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -979,6 +1020,55 @@ rule <parent_class>
              error superClassName : messageGalgasType ;
 #--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
   [!?tableDesClassesAncetres insertKey !superClassName] ;
+label importSemantics
+  ?!@ModelMap ioModelMap
+  !@stringset outSuperClasses
+  !@typeListModel outAttributeList
+  !@classMessageMap outMessageMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@typeSemanticAttributesMap tableAttributs
+  !@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  !@typeTableMethodes tableDesMethodes
+  !@typeSuperClassesMap tableDesClassesAncetres
+  !@typeClassInheritedMessagesMap tableMessagesAbstraits
+:
+#--- Parse super class name
+  $extends$ ;
+  @lstring superClassName ;
+  $type_name$ ? superClassName ;
+#--- Verifications semantiques sur le Parse super class name
+  @AC_galgasType typeUtilisateur ;
+  @AC_semanticsEntity entite ;
+  [!?ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
+  extract entite->@typeEntiteType (?typeUtilisateur) error superClassName : messageTypeEntite ;
+  extract typeUtilisateur->@typeGalgasClassType (?*
+                                    ?tableDesMethodes
+                                    ?listeTousAttributsSemantiques
+                                    ?tableDesClassesAncetres
+                                    ?tableMessagesAbstraits
+                                    ?tableAttributs
+                                    ?*)
+             error superClassName : messageGalgasType ;
+#--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
+  [!?tableDesClassesAncetres insertKey !superClassName] ;
+#---
+##  @TypeModel type ;
+#  [!?ioModelMap searchKey !superClassName ?type] ;
+#  extract type :
+#  when @ClassModel (??* ??@stringset superClasses ??@typeListModel attributeList ??@classMessageMap messageMap) ->
+#    outSuperClasses := superClasses ;
+#    outAttributeList := attributeList ;
+#    outMessageMap := messageMap ;
+#  else
+#    error superClassName: "the '@" . [superClassName value] . "' type is not a class"
+#     -> outSuperClasses, outAttributeList, outMessageMap ;
+#  end extract ;
+#  outSuperClasses += ![superClassName value] ;
+
+  outMessageMap := [@classMessageMap empty] ;
+  outSuperClasses := [@stringset empty] ;
+  outAttributeList := [@typeListModel empty] ;
+
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -999,13 +1089,13 @@ rule <semantics_declaration>
   $abstract$ ;
   $class$ ;
  #--- Abstract class name
-  @lstring nomClasseAbstraite ;
-  $type_name$ ? nomClasseAbstraite ;
+  @lstring abstractClassName ;
+  $type_name$ ? abstractClassName ;
   select
-    if not ([tableEnAvant hasKey ![nomClasseAbstraite value]] |
-          [ioComponentSemanticsEntitiesMap hasKey ![nomClasseAbstraite value]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
-      [!?tableEnAvant insertKey !nomClasseAbstraite !t] ;
+    if not ([tableEnAvant hasKey ![abstractClassName value]] |
+          [ioComponentSemanticsEntitiesMap hasKey ![abstractClassName value]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedClassType new !abstractClassName] ;
+      [!?tableEnAvant insertKey !abstractClassName !t] ;
     end if ;
     $;$ ;
   or
@@ -1027,9 +1117,9 @@ rule <semantics_declaration>
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeAttributsExternesCourants ;
-    @typeListModel attributeListModel ;
+    @typeListModel attributeListModel [empty] ;
     <attributes_definition_list>
-      ?attributeListModel
+      !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -1045,16 +1135,16 @@ rule <semantics_declaration>
     repeat
     while
       $message$ ;
-      @lstring nomMessage ;
-      $identifier$ ? nomMessage ;
+      @lstring messageName ;
+      $identifier$ ? messageName ;
     #--- Chaine definissant le message d'erreur
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![nomMessage value]] then
-        [!?messageMapForHeirs insertKey !nomMessage] ;
+      if not [inheritedMessageMap hasKey ![messageName value]] then
+        [!?messageMapForHeirs insertKey !messageName] ;
       end if ; 
-      [!?tableMessagesClasseConcrete insertKey !nomMessage !messageText] ;
+      [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ;
       $;$ ;
     while
       <abstract_method> !?listeAttributsSemantiquesCourants
@@ -1065,7 +1155,7 @@ rule <semantics_declaration>
                        !?tableEnAvant ;
     while
       <non_abstract_method>
-        !nomClasseAbstraite
+        !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
         !listeAttributsSemantiquesCourants
@@ -1082,7 +1172,7 @@ rule <semantics_declaration>
       ;
      while
       <overrided_method>
-        !nomClasseAbstraite
+        !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
         !listeAttributsSemantiquesCourants
@@ -1106,7 +1196,7 @@ rule <semantics_declaration>
   end foreach ;
   #--- Inserer dans la map des classes utilisables
     @AC_galgasType c := [@typeGalgasClassType new 
-                                            !nomClasseAbstraite
+                                            !abstractClassName
                                              !tableDesMethodes
                                              !listeTousAttributsSemantiques
                                              !tableDesClassesAncetres
@@ -1114,10 +1204,10 @@ rule <semantics_declaration>
                                              !tableAttributs
                                              !estAbstraite] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !nomClasseAbstraite !entite] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
   #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
     @typeEntityToGenerate def := [@typeDefClasseAbstraiteAimplementer new 
-                                            !nomClasseAbstraite
+                                            !abstractClassName
                                              !listeTousAttributsSemantiques
                                              !tableDesMethodes
                                              !tableMethodesAimplementer
@@ -1139,13 +1229,13 @@ label importSemantics
   $abstract$ ;
   $class$ ;
  #--- Abstract class name
-  @lstring nomClasseAbstraite ;
-  $type_name$ ? nomClasseAbstraite ;
+  @lstring abstractClassName ;
+  $type_name$ ? abstractClassName ;
   select
-    if not ([tableEnAvant hasKey ![nomClasseAbstraite value]] |
-            [ioComponentSemanticsEntitiesMap hasKey ![nomClasseAbstraite value]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedClassType new !nomClasseAbstraite] ;
-      [!?tableEnAvant insertKey !nomClasseAbstraite !t] ;
+    if not ([tableEnAvant hasKey ![abstractClassName value]] |
+            [ioComponentSemanticsEntitiesMap hasKey ![abstractClassName value]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedClassType new !abstractClassName] ;
+      [!?tableEnAvant insertKey !abstractClassName !t] ;
     end if ;
     $;$ ;
   or
@@ -1155,19 +1245,27 @@ label importSemantics
     @typeSuperClassesMap tableDesClassesAncetres ;
     @typeClassInheritedMessagesMap inheritedMessageMap ;
     @typeSemanticAttributesMap tableAttributs ;
-    <parent_class> !?ioComponentSemanticsEntitiesMap
-                   ?tableAttributs
-                   ?listeTousAttributsSemantiques
-                   ?ancestorClassMethodsMap
-                   ?tableDesClassesAncetres
-                   ?inheritedMessageMap ;
+    @stringset superClasses ;
+    @typeListModel attributeList ;
+    @classMessageMap messageMap ;
+    <parent_class> importSemantics
+      !?ioModelMap
+      ?superClasses
+      ?attributeList
+      ?messageMap
+      !?ioComponentSemanticsEntitiesMap
+      ?tableAttributs
+      ?listeTousAttributsSemantiques
+      ?ancestorClassMethodsMap
+      ?tableDesClassesAncetres
+      ?inheritedMessageMap
+    ;
     ${$ ;
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeAttributsExternesCourants ;
-    @typeListModel attributeListModel ;
     <attributes_definition_list>
-      ?attributeListModel
+      !?attributeList
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -1185,27 +1283,29 @@ label importSemantics
     repeat
     while
       $message$ ;
-      @lstring nomMessage ;
-      $identifier$ ? nomMessage ;
+      @lstring messageName ;
+      $identifier$ ? messageName ;
+####      [!?messageMap insertKey !messageName] ;
     #--- Chaine definissant le message d'erreur
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![nomMessage value]] then
-        [!?messageMapForHeirs insertKey !nomMessage] ;
+      if not [inheritedMessageMap hasKey ![messageName value]] then
+        [!?messageMapForHeirs insertKey !messageName] ;
       end if ; 
-      [!?tableMessagesClasseConcrete insertKey !nomMessage !messageText] ;
+      [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ;
       $;$ ;
     while
-      <abstract_method> !?listeAttributsSemantiquesCourants
-                       !?listeEntitesAengendrer
-                       !?ioComponentSemanticsEntitiesMap
-                       !?tableDesMethodes
-                       !?tableMethodesAimplementer
-                       !?tableEnAvant ;
+      <abstract_method>
+        !?listeAttributsSemantiquesCourants
+        !?listeEntitesAengendrer
+        !?ioComponentSemanticsEntitiesMap
+        !?tableDesMethodes
+        !?tableMethodesAimplementer
+        !?tableEnAvant ;
     while
       <non_abstract_method>
-        !nomClasseAbstraite
+        !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
         !listeAttributsSemantiquesCourants
@@ -1222,7 +1322,7 @@ label importSemantics
       ;
      while
       <overrided_method>
-        !nomClasseAbstraite
+        !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
         !listeAttributsSemantiquesCourants
@@ -1246,16 +1346,18 @@ label importSemantics
   end foreach ;
   #--- Inserer dans la map des classes utilisables
     @AC_galgasType c := [@typeGalgasClassType new 
-                                            !nomClasseAbstraite
+                                             !abstractClassName
                                              !tableDesMethodes
                                              !listeTousAttributsSemantiques
                                              !tableDesClassesAncetres
-                                            !messageMapForHeirs
+                                             !messageMapForHeirs
                                              !tableAttributs
                                              !estAbstraite] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !nomClasseAbstraite !entite] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
     $}$ ;
+    @TypeModel t := [@ClassModel new !true !superClasses !attributeList !messageMap] ;
+    [!?ioModelMap insertKey !abstractClassName !t] ;
   end select ;
 end rule ;
 
@@ -1276,11 +1378,11 @@ rule <semantics_declaration>
 :
   $class$ ;
 #--- Nom de la classe
-  @lstring nomClasseNonAbstraite ;
-  $type_name$ ? nomClasseNonAbstraite ;
+  @lstring concreteClassName ;
+  $type_name$ ? concreteClassName ;
 #--- Verifier que cette classe n'a pas ete predeclaree
-  if [tableEnAvant hasKey ![nomClasseNonAbstraite value]] then
-    error nomClasseNonAbstraite : "a non abstract class cannot be predeclared" ; 
+  if [tableEnAvant hasKey ![concreteClassName value]] then
+    error concreteClassName : "a non abstract class cannot be predeclared" ; 
   end if ;
 #--- Parse super class name
   $extends$ ;
@@ -1309,9 +1411,9 @@ rule <semantics_declaration>
 #------------------- list des attributs de la classe -------------------
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
-  @typeListModel attributeListModel ;
+  @typeListModel attributeListModel [empty] ;
   <attributes_definition_list>
-    ?attributeListModel
+    !?attributeListModel
     !?tableAttributs
     !?listeTousAttributsSemantiques
     ?listeAttributsSemantiquesCourants
@@ -1328,7 +1430,7 @@ rule <semantics_declaration>
     repeat
     while
       <overrided_method>
-        !nomClasseNonAbstraite
+        !concreteClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
         !listeAttributsSemantiquesCourants
@@ -1346,20 +1448,20 @@ rule <semantics_declaration>
     while
       $message$ ;
     #--- Nom du message
-      @lstring nomMessage ;
-      $identifier$ ? nomMessage ;
+      @lstring messageName ;
+      $identifier$ ? messageName ;
     #--- Chaine definissant le message d'erreur
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![nomMessage value]] then
-        [!?messageMapForHeirs insertKey !nomMessage] ;
+      if not [inheritedMessageMap hasKey ![messageName value]] then
+        [!?messageMapForHeirs insertKey !messageName] ;
       end if ; 
-      [!?tableMessagesClasseConcrete insertKey !nomMessage !messageText] ; 
+      [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ; 
       $;$ ;
     while
       <non_abstract_method>
-        !nomClasseNonAbstraite
+        !concreteClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
         !listeAttributsSemantiquesCourants
@@ -1384,7 +1486,7 @@ rule <semantics_declaration>
   end foreach ;
 #--- Insertion dans la tables des classes utilisables
   @AC_galgasType c := [@typeGalgasClassType new 
-                        !nomClasseNonAbstraite
+                        !concreteClassName
                         !tableDesMethodes
                         !listeTousAttributsSemantiques
                         !tableDesClassesAncetres
@@ -1392,10 +1494,10 @@ rule <semantics_declaration>
                         !tableAttributs
                         !estAbstraite] ;
   entite := [@typeEntiteType new !c] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !nomClasseNonAbstraite !entite] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !concreteClassName !entite] ;
 #--- Insertion dans la map des classes a implementer
   @typeEntityToGenerate def := [@typeDefClasseNonAbstraiteAimplementer new 
-                                                !nomClasseNonAbstraite
+                                                !concreteClassName
                                                 !listeTousAttributsSemantiques
                                                 !tableDesMethodes
                                                 !tableMethodesAimplementer
@@ -1415,16 +1517,35 @@ label importSemantics
 :
   $class$ ;
 #--- Nom de la classe
-  @lstring nomClasseNonAbstraite ;
-  $type_name$ ? nomClasseNonAbstraite ;
+  @lstring concreteClassName ;
+  $type_name$ ? concreteClassName ;
 #--- Verifier que cette classe n'a pas ete predeclaree
-  if [tableEnAvant hasKey ![nomClasseNonAbstraite value]] then
-    error nomClasseNonAbstraite : "a non abstract class cannot be predeclared" ; 
+  if [tableEnAvant hasKey ![concreteClassName value]] then
+    error concreteClassName : "a non abstract class cannot be predeclared" ; 
   end if ;
 #--- Parse super class name
   $extends$ ;
   @lstring superClassName ;
   $type_name$ ? superClassName ;
+#--- Get super class infos
+  @typeListModel attributeList ;
+  @classMessageMap messageMap ;
+  @stringset superClasses ;
+  attributeList := [@typeListModel  empty] ;
+  messageMap := [@classMessageMap empty] ;
+  superClasses := [@stringset empty] ;
+#  @TypeModel type ;
+#  [!?ioModelMap searchKey !superClassName ?type] ;
+#  extract type :
+#  when @ClassModel (??* ??@stringset kSuperClasses ??@typeListModel kAttributeList ??@classMessageMap kMessageMap) ->
+#    superClasses := kSuperClasses ;
+#    attributeList := kAttributeList ;
+#    messageMap := kMessageMap ;
+#  else
+#    error superClassName: "the '@" . [superClassName value] . "' type is not a class"
+#     -> superClasses, attributeList, messageMap ;
+#  end extract ;
+#  superClasses += ![superClassName value] ;
   ${$ ;
 #--- Check super class name
   @AC_galgasType definitionClasseMere ;
@@ -1448,9 +1569,9 @@ label importSemantics
 #------------------- list des attributs de la classe -------------------
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
-  @typeListModel attributeListModel ;
+  @typeListModel attributeListModel [empty] ;
   <attributes_definition_list>
-    ?attributeListModel
+    !?attributeListModel
     !?tableAttributs
     !?listeTousAttributsSemantiques
     ?listeAttributsSemantiquesCourants
@@ -1469,7 +1590,7 @@ label importSemantics
     while
       @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
       <overrided_method>
-        !nomClasseNonAbstraite
+        !concreteClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
         !listeAttributsSemantiquesCourants
@@ -1487,20 +1608,20 @@ label importSemantics
     while
       $message$ ;
     #--- Nom du message
-      @lstring nomMessage ;
-      $identifier$ ? nomMessage ;
+      @lstring messageName ;
+      $identifier$ ? messageName ;
       @lstring messageText ;
       $literal_string$ ?messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![nomMessage value]] then
-        [!?messageMapForHeirs insertKey !nomMessage] ;
+      if not [inheritedMessageMap hasKey ![messageName value]] then
+        [!?messageMapForHeirs insertKey !messageName] ;
       end if ; 
-      [!?tableMessagesClasseConcrete insertKey !nomMessage !messageText] ; 
+      [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ; 
       $;$ ;
     while
       @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
       <non_abstract_method>
-        !nomClasseNonAbstraite
+        !concreteClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
         !listeAttributsSemantiquesCourants
@@ -1525,7 +1646,7 @@ label importSemantics
   end foreach ;
 #--- Insertion dans la tables des classes utilisables
   @AC_galgasType c := [@typeGalgasClassType new 
-                        !nomClasseNonAbstraite
+                        !concreteClassName
                         !tableDesMethodes
                         !listeTousAttributsSemantiques
                         !tableDesClassesAncetres
@@ -1533,7 +1654,9 @@ label importSemantics
                         !tableAttributs
                         !estAbstraite] ;
   entite := [@typeEntiteType new !c] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !nomClasseNonAbstraite !entite] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !concreteClassName !entite] ;
+  @TypeModel t := [@ClassModel new !false !superClasses !attributeList !messageMap] ;
+  [!?ioModelMap insertKey !concreteClassName !t] ;
   $}$ ;
 end rule ;
 
@@ -2351,15 +2474,15 @@ rule <extract_instruction>
 #--- Verifier que la variable est d'une type contenant une location localisant l'error
   [errorExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
   $:$ ;
-  @lstring nomMessage ;
-  $identifier$ ? nomMessage ;
-  [!?tableMessagesAbstraits searchKey !nomMessage] ;
+  @lstring messageName ;
+  $identifier$ ? messageName ;
+  [!?tableMessagesAbstraits searchKey !messageName] ;
 #------------------------------------------------- Generate instruction
   outInstruction := [@typeSimpleExtractInstruction new !inSourceVarCppName
                                                        !nomClasse
                                                        !listeAffectationParametresEffectifs
                                                        !errorExpression
-                                                       !nomMessage] ;
+                                                       !messageName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -3595,9 +3718,9 @@ rule <semantics_declaration>
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @typeListModel attributeListModel ;
+    @typeListModel attributeListModel [empty] ;
     <attributes_definition_list>
-      ?attributeListModel
+      !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -3670,9 +3793,9 @@ rule <semantics_declaration>
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @typeListModel attributeListModel ;
+    @typeListModel attributeListModel [empty] ;
     <attributes_definition_list>
-      ?attributeListModel
+      !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -3883,9 +4006,9 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @typeListModel attributeListModel ;
+    @typeListModel attributeListModel [empty] ;
     <attributes_definition_list>
-      ?attributeListModel
+      !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -3949,9 +4072,9 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @typeListModel attributeListModel ;
+    @typeListModel attributeListModel [empty] ;
     <attributes_definition_list>
-      ?attributeListModel
+      !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -4122,9 +4245,9 @@ rule <semantics_declaration>
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
-    @typeListModel attributeListModel ;
+    @typeListModel attributeListModel [empty] ;
     <attributes_definition_list>
-      ?attributeListModel
+      !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -4159,13 +4282,13 @@ label importSemantics
   or
     ${$ ;
   #-- Declaration des attributs de la list
-    @typeListModel attributeListModel ;
+    @typeListModel attributeListModel [empty] ;
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [empty] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [empty] ;
     <attributes_definition_list>
-      ?attributeListModel
+      !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
@@ -4189,7 +4312,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <attributes_definition_list>
-  !@typeListModel outAttributeListModel
+  ?!@typeListModel outAttributeListModel
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
