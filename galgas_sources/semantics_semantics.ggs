@@ -133,7 +133,7 @@ list @typeSemanticsTypesList {
 #---------------------------------------------------------------------------*
 
 map @typeVariablesMap
-  class cGalgasVariablesMap in "cGalgasVariablesMap.h", "cGalgasVariablesMap.hh" ;
+  class cGalgasVariablesMap ;
 #--- Inserting
   insert insertInArgument error message "the variable '%' is already declared" ;
   insert insertConstInArgument error message "the variable '%' is already declared" ;
@@ -236,7 +236,7 @@ list @L_nameWithType {
 #---------------------------------------------------------------------------*
 
 map @typeTableMethodesAimplementer
-  class cTableMethodesAimplementer in "cTableMethodesAimplementer.h", "cTableMethodesAimplementer.hh" ;
+  class cTableMethodesAimplementer ;
   insert insertAbstract error message "the method '%' is already declared" ;
   insert insertNotAbstract error message "the method '%' is already declared" ;
   @L_signature aListeTypesParametres ;
@@ -1285,10 +1285,10 @@ action appendJokersIfNeeded
 
 action generateSemanticsComponent
   ?!@lstring componentName
-  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  ?!@stringset includesForHeaderFile
   ?!@string defLexique
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@stringset tableFichiersEnTetePourFichierCPP
+  ?!@stringset includesForImplementationFile
 ;
 
 #---------------------------------------------------------------------------*

@@ -50,7 +50,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
@@ -97,7 +96,7 @@ rule <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
   ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  ?!@stringset tableUtilisationsSemantiques
   !@typeTableEnAvant tableEnAvant
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
@@ -247,7 +246,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
 :
-  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
+  @stringset includesForHeaderFile [empty] ;
   @typeEntitiesToGenerateList listeEntitesAengendrer ;
   @stringset tableFichiersEnTetePourFichierCPP [empty] ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
@@ -285,7 +284,7 @@ rule <galgas_component>
     ?entitiesMap
     ?ioOptionsComponentsMapForUse
     !?tableFichiersEnTetePourFichierCPP
-    !?tableUtilisationsSemantiques
+    !?includesForHeaderFile
     ?tableEnAvant
   ;
   listeEntitesAengendrer := [@typeEntitiesToGenerateList empty] ;
@@ -308,7 +307,6 @@ rule <galgas_component>
       !?entitiesMap
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
-      !?tableFichiersEnTetePourFichierCPP
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
       !?tableRoutinesAimplementer
@@ -329,7 +327,7 @@ rule <galgas_component>
 #--- Generate component
   action generateSemanticsComponent
     !?componentName
-    !?tableUtilisationsSemantiques
+    !?includesForHeaderFile
     !?defLexique
     !?listeEntitesAengendrer
     !?tableFichiersEnTetePourFichierCPP

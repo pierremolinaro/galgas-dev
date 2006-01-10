@@ -76,7 +76,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
@@ -102,7 +101,7 @@ rule <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
   ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  ?!@stringset ioIncludesForHeader
   !@typeTableEnAvant tableEnAvant
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
@@ -429,7 +428,7 @@ rule <galgas_component>
 #--- No lexique
   @string defLexique := "" ;
 #--- Import semantics
-  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
+  @stringset ioIncludesForHeader [empty] ;
   @stringset tableFichiersEnTetePourFichierCPP [empty] ;
   @M_optionComponents optionsComponentsMapForUse [empty] ;
   @M_semanticsEntitiesForUse componentEntitiesMap ;
@@ -451,7 +450,7 @@ rule <galgas_component>
     ?componentEntitiesMap
     ?optionsComponentsMapForUse
     !?tableFichiersEnTetePourFichierCPP
-    !?tableUtilisationsSemantiques
+    !?ioIncludesForHeader
     ?tableEnAvant
   ;
 #--- Semantics entities declarations
@@ -464,7 +463,6 @@ rule <galgas_component>
       !?componentEntitiesMap
       !?listeEntitesAengendrer
       !?optionsComponentsMapForUse
-      !?tableFichiersEnTetePourFichierCPP
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
       !?tableRoutinesAimplementer
@@ -487,7 +485,7 @@ rule <galgas_component>
 #--- Generate component
   action generateSemanticsComponent
     !?componentName
-    !?tableUtilisationsSemantiques
+    !?ioIncludesForHeader
     !?defLexique
     !?listeEntitesAengendrer
     !?tableFichiersEnTetePourFichierCPP
@@ -602,7 +600,7 @@ rule <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@M_optionComponents ioOptionsComponentsMapForUse
   ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@typeTableUtilisationsSemantiques tableUtilisationsSemantiques
+  ?!@stringset ioIncludesForHeader
   !@typeTableEnAvant tableEnAvant
 :
   tableEnAvant := [@typeTableEnAvant empty] ;
@@ -681,7 +679,7 @@ rule <import_headers_semantics_and_grammars>
       $identifier$ ? componentName ;
       ioImportedSemanticsComponents += ![componentName value] ;
       select
-        if not [tableUtilisationsSemantiques hasKey ![componentName value]] then
+        if not [ioIncludesForHeader hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
           @M_optionComponents importedOptionsComponentsMap ;
           @ModelMap modelMap ;
@@ -691,7 +689,7 @@ rule <import_headers_semantics_and_grammars>
               [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
             end if ;
           end foreach ;
-          [!?tableUtilisationsSemantiques insertKey !componentName] ;
+          ioIncludesForHeader += ![componentName value] ;
         #--- Check that every used option component is already declared
           foreach importedOptionsComponentsMap (??@lstring optionComponentMap ...) :
             if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap value]] then
@@ -716,7 +714,7 @@ rule <import_headers_semantics_and_grammars>
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
-        [!?tableUtilisationsSemantiques insertKey !componentName] ;
+        ioIncludesForHeader += ![componentName value] ;
       end select ;
     end select ;
     $;$ ;
@@ -727,7 +725,7 @@ label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
 :
 #--- enter in semantics entities map the galgas types corresponding to keywords
-  @typeTableUtilisationsSemantiques tableUtilisationsSemantiques [empty] ;
+  @stringset includesForHeader [empty] ;
   repeat
   while
     $import$ ;
@@ -754,7 +752,7 @@ label importSemantics
       @lstring componentName ;
       $identifier$ ?componentName ;
       select
-        if not [tableUtilisationsSemantiques hasKey ![componentName value]] then
+        if not [includesForHeader hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
           @ModelMap modelMap ;
           [!?ioSemanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?*] ;
@@ -763,7 +761,7 @@ label importSemantics
               [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
             end if ;
           end foreach ;
-          [!?tableUtilisationsSemantiques insertKey !componentName] ;
+          includesForHeader += ![componentName value] ;
         end if ;
       or
         $in$ ;
@@ -782,7 +780,7 @@ label importSemantics
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
-        [!?tableUtilisationsSemantiques insertKey !componentName] ;
+        includesForHeader += ![componentName value] ;
       end select ;
     end select ;
     $;$ ;
@@ -799,7 +797,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
@@ -989,7 +986,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -1267,7 +1263,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -3506,7 +3501,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -3527,12 +3521,6 @@ rule <semantics_declaration>
     $class$ ;
     @lstring cppClassName ;
     $identifier$ ?cppClassName ;
-    $in$ ;
-    @lstring path ;
-    $literal_string$ ? path ; 
-    $,$ ;
-    $literal_string$ ? path ; 
-    tableFichiersEnTetePourFichierCPP += ![path value] ;
     $;$ ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [empty] ;
@@ -3820,10 +3808,6 @@ label importSemantics
     $class$ ;
     @lstring cppClassName ;
     $identifier$ ?cppClassName ;
-    $in$ ;
-    $literal_string$ ? * ; 
-    $,$ ;
-    $literal_string$ ? * ; 
     $;$ ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [empty] ;
@@ -4109,7 +4093,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -4240,7 +4223,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -4612,7 +4594,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -4637,13 +4618,6 @@ rule <semantics_declaration>
   [!?ioComponentSemanticsEntitiesMap insertKey !nomAction !entite] ;
   @typeEntityToGenerate ea := [@typeActionExterneAengendrer new !nomAction !listeDeTypes] ;
   listeEntitesAengendrer += !ea ;
-  select 
-  or
-    $in$ ;
-    @lstring fichierAinclure ;
-    $literal_string$ ?fichierAinclure ;
-    tableFichiersEnTetePourFichierCPP += ![fichierAinclure value] ;
-  end select ;
   $;$ ;    
 label importSemantics
   ?!@ModelMap ioModelMap
@@ -4669,11 +4643,6 @@ label importSemantics
   ;
   @AC_semanticsEntity entite := [@typeEntiteActionExterne new !listeDeTypes] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !nomAction !entite] ;
-  select 
-  or
-    $in$ ;
-    $literal_string$ ? * ;
-  end select ;
   $;$ ;    
 end rule ;
 
@@ -4687,7 +4656,6 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@stringset unused tableFichiersEnTetePourFichierCPP
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
