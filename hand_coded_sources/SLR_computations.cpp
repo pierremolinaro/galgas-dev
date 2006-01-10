@@ -850,7 +850,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
               << " (" << inLexiqueName << " & lexique_var_" ;
       const sint32 pureBNFleftNonterminalIndex = nonTerminal->mIndex ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_L_signature::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -893,7 +893,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
         generatedZone3 << "\nvoid " << inTargetFileName
                    << "::startParsing_" << altForNonterminal->mKey
                    << " (" << inLexiqueName << " & lexique_var_" ;
-        GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+        GGS_L_signature::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;

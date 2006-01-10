@@ -268,7 +268,7 @@ void cPtr_typeInstructionAppelActionExterne
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    GGS_L_signature::element_type * typeArgumentCourant = aListeTypesParametresFormels.firstObject () ;
+    GGS_L_EXsignature::element_type * typeArgumentCourant = aListeTypesParametresFormels.firstObject () ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     sint16 nombreArgumentsTestes = 0 ;
     while (typeArgumentCourant != NULL) {
@@ -289,7 +289,7 @@ void cPtr_typeInstructionAppelActionExterne
     if (nombreArgumentsTestes > 0) {
       ioCppFile << ") {\n  " ;
     }
-    ioCppFile << "::" << aNomAction << " (lexique_var_" ;
+    ioCppFile << "::routine_" << aNomAction << " (lexique_var_" ;
     argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;

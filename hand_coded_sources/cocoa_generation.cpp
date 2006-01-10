@@ -255,11 +255,11 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void 
-generateCocoaComponent (C_Lexique & inLexique,
-                        GGS_lstring & inCocoaComponentName,
-                        GGS_lstring & inCLIToolName,
-                        GGS_lstring & inLexiqueComponentName,
-                        GGS_M_optionComponents & inOptionComponentsMap) {
+routine_generateCocoaComponent (C_Lexique & inLexique,
+                                GGS_lstring & inCocoaComponentName,
+                                GGS_lstring & inCLIToolName,
+                                GGS_lstring & inLexiqueComponentName,
+                                GGS_M_optionComponents & inOptionComponentsMap) {
  generate_mm_file_for_cocoa (inLexique,
                              inCocoaComponentName,
                              inCLIToolName,

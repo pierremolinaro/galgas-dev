@@ -239,7 +239,7 @@ map @typeTableMethodesAimplementer
   class cTableMethodesAimplementer ;
   insert insertAbstract error message "the method '%' is already declared" ;
   insert insertNotAbstract error message "the method '%' is already declared" ;
-  @L_signature aListeTypesParametres ;
+  @L_EXsignature aListeTypesParametres ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
   @typeInstructionsList mInstructionsList ;
 }
@@ -756,7 +756,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine verifierCompatibiliteArgEffectifsSignature
-  ?@L_signature signatureReference
+  ?@L_EXsignature signatureReference
   ?@L_actualParametersSignature inEffectiveArgumentsSignature
   ??@location inErrorLocation
   ?!@typeInstructionsList ioInstructionsList
@@ -908,7 +908,7 @@ class @typeAppendInstructionWithAssignment extends @typeInstruction {
 class @typeInstructionAppelActionExterne extends @typeInstruction {
   @lstring aNomAction ;
   @typeExpressionList mExpressionsList ;
-  @L_signature aListeTypesParametresFormels ;
+  @L_EXsignature aListeTypesParametresFormels ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1151,7 +1151,7 @@ class @typeDefClasseNonAbstraiteAimplementer extends @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 class @typeEntiteActionExterne extends @AC_semanticsEntity {
-  @L_signature aSignature ;
+  @L_EXsignature aSignature ;
   message messageTypeEntite "an external action" ;
 }
 
@@ -1159,7 +1159,7 @@ class @typeEntiteActionExterne extends @AC_semanticsEntity {
 
 class @typeActionExterneAengendrer extends @typeEntityToGenerate {
   @lstring aNomAction ;
-  @L_signature aSignature ;
+  @L_EXsignature aSignature ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1268,7 +1268,7 @@ map @typeEnumCstMessageStringMap {
 
 class @enumGalgasType extends @typeEntityToGenerate {
   @lstring mEnumTypeName ;
-  @typeEnumConstantesMap mConstantMap ;
+  @enumConstantMap mConstantMap ;
   @typeEnumMessageMap mEnumMessageMap ;
 }
 

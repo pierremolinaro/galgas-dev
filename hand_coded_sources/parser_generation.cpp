@@ -69,7 +69,7 @@ void cPtr_typeNonterminalToGenerate
     inHfile << "  protected : virtual void "
                "nt_" << aNomNonTerminal << '_' << currentAlt->mKey
             << " (" << inLexiqueClassName << " &" ;
-    GGS_L_signature::element_type * currentArgument
+    GGS_L_EXsignature::element_type * currentArgument
                = currentAlt->mInfo.mFormalParametersList.firstObject () ;
     while (currentArgument != NULL) {
       inHfile << ",\n                                " ;

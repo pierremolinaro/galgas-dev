@@ -336,9 +336,10 @@ void generateTerminalSymbolCppName (const C_String & inValue,
 
 //---------------------------------------------------------------------------*
 
-void buildLexicalRulesFromList (C_Lexique & ioLexique, 
-                                GGS_typeTableMotsReserves & keyWordsMap,
-                                GGS_typeListeTestsEtInstructions & ioLexicalRulesList) {
+void
+routine_buildLexicalRulesFromList (C_Lexique & ioLexique, 
+                                   GGS_typeTableMotsReserves & keyWordsMap,
+                                   GGS_typeListeTestsEtInstructions & ioLexicalRulesList) {
 //--- First, find the longest string
   sint32 longestString = 0 ;
   GGS_typeTableMotsReserves::element_type * currentEntry = keyWordsMap.firstObject () ;
@@ -964,14 +965,15 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 
 //---------------------------------------------------------------------------*
 
-void generate_scanner (C_Lexique & inLexique,
-                       GGS_lstring & inLexiqueClassName,
-                       GGS_typeLexicalAttributesMap & table_attributs,
-                       GGS_typeTableDefinitionTerminaux & table_des_terminaux,
-                       GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
-                       GGS_typeListeTestsEtInstructions & programme_principal,
-                       GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
-                       GGS_M_styles & inStylesMap) {
+void 
+routine_generate_scanner (C_Lexique & inLexique,
+                          GGS_lstring & inLexiqueClassName,
+                          GGS_typeLexicalAttributesMap & table_attributs,
+                          GGS_typeTableDefinitionTerminaux & table_des_terminaux,
+                          GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
+                          GGS_typeListeTestsEtInstructions & programme_principal,
+                          GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
+                          GGS_M_styles & inStylesMap) {
 //--- Get version string
   const C_String GALGASversionString = inLexique.galgas_IO_Ptr ()->getCompilerVersion () ;
 //--- Create GALGAS_OUTPUT directory

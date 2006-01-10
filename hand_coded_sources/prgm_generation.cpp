@@ -74,7 +74,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                       "  public : void doCompilation (const C_String & inSourceFileName_,\n"
                       "                               sint16 & returnCode) ;\n" ;
   //--- Engendrer la declaration des attributs de l'axiome
-    GGS_L_signature_ForGrammarComponent::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.firstObject () ;
+    GGS_L_signature::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.firstObject () ;
     GGS_typeListeAttributsAxiome::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     sint16 numero = 1 ;
     while (parametreCourant != NULL && nomCourant != NULL) {
@@ -203,7 +203,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "mScanner_.resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
                       "_beforeParsing () ;\n" ; //--- Give a chance to initialize program parameters
     GGS_typeListeAttributsAxiome::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
-    GGS_L_signature_ForGrammarComponent::element_type * p = currentGrammar->mStartSymbolSignature.firstObject () ;
+    GGS_L_signature::element_type * p = currentGrammar->mStartSymbolSignature.firstObject () ;
     while ((p != NULL) && (nomCourant != NULL)) {
       macroValidPointer (nomCourant) ;
       macroValidPointer (p) ;
@@ -350,14 +350,15 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void generatePRGM (C_Lexique & inLexique,
-                   GGS_lstring & inProgramComponentName,
-                   GGS_lstring & inSourceFileExtension,
-                   GGS_lstring & inVersionString,
-                   GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
-                   GGS_luint & inMaxErrorsCount,
-                   GGS_luint & inMaxWarningsCount,
-                   GGS_M_optionComponents & inOptionComponentsMap) {
+void
+routine_generatePRGM (C_Lexique & inLexique,
+                      GGS_lstring & inProgramComponentName,
+                      GGS_lstring & inSourceFileExtension,
+                      GGS_lstring & inVersionString,
+                      GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
+                      GGS_luint & inMaxErrorsCount,
+                      GGS_luint & inMaxWarningsCount,
+                      GGS_M_optionComponents & inOptionComponentsMap) {
   generate_header_file_for_prgm (inLexique,
                                  inProgramComponentName,
                                  inOptionComponentsMap,

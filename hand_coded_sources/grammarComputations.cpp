@@ -205,7 +205,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
       generatedZone3 << "  public : virtual void "
                "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
             << " (" << inLexiqueName << " &" ;
-      GGS_L_signature_ForGrammarComponent::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
         generatedZone3 << ",\n                                " ;
@@ -431,15 +431,15 @@ createStyleFile (const C_String & inCurrentDirectory,
 //---------------------------------------------------------------------------*
 
 void
-analyzeGrammar (C_Lexique & inLexique,
-                GGS_lstring & inTargetFileName,
-                const GGS_lstring & inGrammarClass,
-                GGS_luint & inOriginalGrammarStartSymbol,
-                GGS_lstring & inLexiqueName,
-                const GGS_location & errorLocation,
-                GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
-                GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
-                GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
+routine_analyzeGrammar (C_Lexique & inLexique,
+                        GGS_lstring & inTargetFileName,
+                        const GGS_lstring & inGrammarClass,
+                        GGS_luint & inOriginalGrammarStartSymbol,
+                        GGS_lstring & inLexiqueName,
+                        const GGS_location & errorLocation,
+                        GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
+                        GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
+                        GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
   GGS_stringset classesNamesSet ;
   bool warningFlag = false ;
 

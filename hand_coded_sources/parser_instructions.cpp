@@ -156,8 +156,8 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 void
-checkLabelSignatures (C_Lexique & lexique_var_,
-                      GGS_typeAltProductionsMap & inAltProductionMap) {
+routine_checkLabelSignatures (C_Lexique & lexique_var_,
+                              GGS_typeAltProductionsMap & inAltProductionMap) {
   GGS_typeAltProductionsMap::element_type * current = inAltProductionMap.firstObject () ;
   macroValidPointer (current) ;
   GGS_L_ruleSyntaxSignature referenceSyntaxList = current->mInfo.mSyntaxSignature ;
@@ -175,8 +175,8 @@ checkLabelSignatures (C_Lexique & lexique_var_,
 //---------------------------------------------------------------------------*
 
 void
-checkParseRewindSignatures (C_Lexique & lexique_var_,
-                            GGS_L_parse_rewind_signature_list & inParseRewindSignatureList) {
+routine_checkParseRewindSignatures (C_Lexique & lexique_var_,
+                                    GGS_L_parse_rewind_signature_list & inParseRewindSignatureList) {
   GGS_L_parse_rewind_signature_list::element_type * current = inParseRewindSignatureList.firstObject () ;
   macroValidPointer (current) ;
   GGS_L_ruleSyntaxSignature referenceList = current->mSignature ;

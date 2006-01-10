@@ -503,7 +503,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       generatedZone3 << "\nvoid " << inTargetFileName
               << "::nt_" << nonTerminal->mKey << '_' << altForNonterminal->mKey
               << " (" << inLexiqueName << " & " << (existeProduction ? "lexique_var_" : "") ;
-      GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_L_signature::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -531,7 +531,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         generatedZone3 << "\nvoid " << inTargetFileName
                    << "::startParsing_"  << altForNonterminal->mKey
                     << " (" << inLexiqueName << " & lexique_var_" ;
-        GGS_L_signature_ForGrammarComponent::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+        GGS_L_signature::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
