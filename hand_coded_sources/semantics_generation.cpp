@@ -32,8 +32,8 @@
 //---------------------------------------------------------------------------*
 
 void
-check_KL_escapeCharacters (C_Lexique & inLexique,
-                           GGS_lstring inString) {
+routine_check_KL_escapeCharacters (C_Lexique & inLexique,
+                                   GGS_lstring inString) {
   if (inString.isBuilt ()) {
   	bool gotPercent = false ;
     const char * cString = inString.cString () ;
@@ -61,8 +61,8 @@ check_KL_escapeCharacters (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-check_K_escapeCharacters (C_Lexique & inLexique,
-                          GGS_lstring inString) {
+routine_check_K_escapeCharacters (C_Lexique & inLexique,
+                                  GGS_lstring inString) {
   if (inString.isBuilt ()) {
   	bool gotPercent = false ;
     const char * cString = inString.cString () ;
@@ -90,11 +90,11 @@ check_K_escapeCharacters (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-buildFileNameWithPath (C_Lexique &,
-                       GGS_lstring & outFileNameWithPath,
-                       GGS_lstring inPath,
-                       const GGS_lstring & inCppClassName,
-                       const GGS_lstring & inExtension) {
+routine_buildFileNameWithPath (C_Lexique &,
+                               GGS_lstring & outFileNameWithPath,
+                               GGS_lstring inPath,
+                               const GGS_lstring & inCppClassName,
+                               const GGS_lstring & inExtension) {
   C_String s ;
   if (inPath.length () > 0) {
     s << inPath << '/' ;
@@ -105,11 +105,12 @@ buildFileNameWithPath (C_Lexique &,
 
 //---------------------------------------------------------------------------*
 
-void appendJokersIfNeeded (C_Lexique &,
-                           GGS_typeCplusPlusNameList & ioVariablesList,
-                           GGS_uint inEffectiveArgumentsCount,
-                           GGS_uint inFormalParametersCount,
-                           GGS_typeCplusPlusName inNullName) {
+void
+routine_appendJokersIfNeeded (C_Lexique &,
+                              GGS_typeCplusPlusNameList & ioVariablesList,
+                              GGS_uint inEffectiveArgumentsCount,
+                              GGS_uint inFormalParametersCount,
+                              GGS_typeCplusPlusName inNullName) {
   const uint32 effectiveArgumentsCount = inEffectiveArgumentsCount.uintValue () ;
   const uint32 formalParametersCount = inFormalParametersCount.uintValue () ;
   for (unsigned i=effectiveArgumentsCount ; i<formalParametersCount ; i++) {
@@ -289,8 +290,8 @@ void cPtr_typeActionExterneAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) const {
-  inHfile << "void " << aNomAction << " (C_Lexique &" ;
-  GGS_L_signature::element_type * currentArgument = aSignature.firstObject () ;
+  inHfile << "void routine_" << aNomAction << " (C_Lexique &" ;
+  GGS_L_EXsignature::element_type * currentArgument = aSignature.firstObject () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
@@ -1387,12 +1388,12 @@ generate_cpp_file (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-generateSemanticsComponent (C_Lexique & inLexique,
-                            GGS_lstring & nomComposant,
-                            GGS_stringset & includesForHeaderFile,
-                            GGS_string & defLexique,
-                            GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
-                            GGS_stringset & tableFichiersEnTetePourFichierCPP) {
+routine_generateSemanticsComponent (C_Lexique & inLexique,
+                                    GGS_lstring & nomComposant,
+                                    GGS_stringset & includesForHeaderFile,
+                                    GGS_string & defLexique,
+                                    GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
+                                    GGS_stringset & tableFichiersEnTetePourFichierCPP) {
   if (inLexique.galgas_IO_Ptr ()->currentFileErrorsCount () == 0) {
     generate_header_file (inLexique,
                           nomComposant,

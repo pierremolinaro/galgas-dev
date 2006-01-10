@@ -49,7 +49,7 @@ list @typeListeChaines {
 list @L_grammarDescriptorForProgram {
   @string mGrammarPostfix ;
   @lstring mGrammarName ;
-  @L_signature_ForGrammarComponent mStartSymbolSignature ;
+  @L_signature mStartSymbolSignature ;
   @typeListeAttributsAxiome mStartSymbolAttributesList ;
   @lstring mLexiqueClassName ;
 }

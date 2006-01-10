@@ -20,48 +20,6 @@ semantics common_semantics :
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  A T T R I B U T E    L I S T    M O D E L                                *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @attributeListModel {
-  @lstring mTypeName ;
-  @lstring mAttributeName ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  T Y P E    M O D E L                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract class @TypeModel {
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  L I S T    M O D E L                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @ListModel extends @TypeModel {
-  @attributeListModel mAttributeList ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  M O D E L    M A P                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @ModelMap {
-  @TypeModel mType ;
-  insert insertKey error message "the '%K' type has been already declared in %L" ;
-  search searchKey error message "the '%K' type is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  A C T U A L    P A R A M E T E R S    P A S S I N G    M O D E S         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -95,11 +53,145 @@ enum @formalArgumentPassingMode {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   A C T I O N ,    M E T H O D    S I G N A T U R E                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @L_signature {
+  @formalArgumentPassingMode mFormalArgumentPassingMode ;
+  @lstring mGalgasTypeName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    L I S T    M O D E L                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @typeListModel {
+  @lstring mTypeName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M O D E L                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @TypeModel {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L I S T    M O D E L                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @ListModel extends @TypeModel {
+  @typeListModel mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  E N U M    M O D E L                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @enumConstantMap {
+  insert insertKey error message "the '%K' constant is already declared in %L" ;
+  search searchKey error message "the '%K' constant is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @enumMessageMap {
+  insert insertKey error message "the '%K' message name is already declared in %L" ;
+  search searchKey error message "the '%K' message name is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @EnumModel extends @TypeModel {
+  @enumConstantMap mEnumConstantesMap ; #--- Enumeration constants map
+  @enumMessageMap mMessagesMap ; #--- Messages map
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  E X T E R N    T Y P E    M O D E L                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @constructorMap {
+  @typeListModel mFormalInputArgumentList ;
+  insert insertKey error message "the '%K' constructor is already declared in %L" ;
+  search searchKey error message "the '%K' constructor is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @readerMap {
+  @L_signature mReaderFormalArgumentList ;
+  insert insertKey error message "the '%K' reader is already declared in %L" ;
+  search searchKey error message "the '%K' reader is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @modifierMap {
+  @L_signature mModifierFormalArgumentList ;
+  insert insertKey error message "the '%K' modifier is already declared in %L" ;
+  search searchKey error message "the '%K' modifier is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @ExternTypeModel extends @TypeModel {
+  @constructorMap mExternTypeConstructorMap ;
+  @readerMap mReaderMap ;
+  @modifierMap mModifierMap ;
+  @typeListModel mAddAssignFormalInputArgumentList ; # List is empty if += operator is not defined
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D E L    M A P                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @ModelMap {
+  @TypeModel mType ;
+  insert insertKey error message "the '%K' type has been already declared in %L" ;
+  search searchKey error message "the '%K' type is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  E X T E R N    A C T I O N    A N D    R O U T I N E    M A P            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @ActionMap {
+  @L_signature mSignature ;
+  @bool mIsExtern ; # true for extern action, false for routines
+  insert insertKey error message "the '%K' extern action has been already declared in %L" ;
+  search searchKey error message "the '%K' action is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    OLD STYLE DECLARATIONS                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   F O R W A R D    T Y P E     D E C L A R A T I O N S                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_signature ;
+list @L_EXsignature ;
 list @typeListeAttributsSemantiques ;
 
 #---------------------------------------------------------------------------*
@@ -142,7 +234,7 @@ abstract class @AC_galgasType {
 #--- By default, object does not accept modifier call
   reader handleModifierCall
     ??@lstring inModifierName
-    !@L_signature outModifierSignature
+    !@L_EXsignature outModifierSignature
   :
     error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -151,7 +243,7 @@ abstract class @AC_galgasType {
 #--- By default, class does not accept reader instruction call
   reader handleReaderInstructionCall
     ??@lstring inReaderName
-    !@L_signature outReaderSignature
+    !@L_EXsignature outReaderSignature
   :
     error inReaderName :
        "variables of this type do not support reader instruction"
@@ -225,7 +317,7 @@ list @typeTypesList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @L_signature {
+list @L_EXsignature {
   @AC_galgasType mType ;
   @formalArgumentPassingMode mFormalArgumentPassingMode ;
 }
@@ -248,7 +340,7 @@ list @L_actualParametersSignature {
 #---------------------------------------------------------------------------*
 
 map @M_accessors_map {
-  @L_signature mAccessorSignature ;
+  @L_EXsignature mAccessorSignature ;
   @AC_galgasType mReturnedType ;
   insert insertKey error message "the '%K' accessor has been already declared in %L" ;
   search searchKey error message "the '%K' accessor is not declared" ;
@@ -683,7 +775,7 @@ map @typeTableMethodes
   search searchForOverride error message "the reader '%' cannot be overriden : it is not declared in superclass" ;
 
   block definitionClasseNonAbstraite : () : () ;
-  @L_signature aListeTypesParametres ;
+  @L_EXsignature aListeTypesParametres ;
 }
 
 #---------------------------------------------------------------------------*
@@ -752,7 +844,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 #--- Handle modifier call : return modifier signature
   override reader handleModifierCall
     ??@lstring inModifierName
-    !@L_signature outModifierSignature
+    !@L_EXsignature outModifierSignature
   :
     @typeTableMethodes methodMap := mModifiersMap ;
     [!?methodMap searchKey !inModifierName ?outModifierSignature] ; 
@@ -761,7 +853,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 #--- By default, class does not accept reader instruction call
   override reader handleReaderInstructionCall
     ??@lstring inReaderName
-    !@L_signature outReaderSignature
+    !@L_EXsignature outReaderSignature
   :
     @typeTableMethodes methodMap := mReadersInInstructionMap ;
     [!?methodMap searchKey !inReaderName ?outReaderSignature] ; 
@@ -828,7 +920,7 @@ map @typeTableEnAvant {
 #---------------------------------------------------------------------------*
 
 map @M_nonterminalSymbolAlts {
-  @L_signature mFormalParametersList ;
+  @L_EXsignature mFormalParametersList ;
   insert insertKey error message "the label '%K' has been already declared in %L" ;
   search searchKey error message "the label '%K' is not declared" ;
 }
@@ -898,16 +990,9 @@ map @M_typesForGrammarComponent {
 
 #---------------------------------------------------------------------------*
 
-list @L_signature_ForGrammarComponent {
-  @formalArgumentPassingMode mFormalArgumentPassingMode ;
-  @lstring mGalgasTypeName ;
-}
-
-#---------------------------------------------------------------------------*
-
 routine checkSignature_ForGrammarComponent
-  ??@L_signature_ForGrammarComponent inFormalReferenceSignature
-  ??@L_signature_ForGrammarComponent inFormalTestedSignature
+  ??@L_signature inFormalReferenceSignature
+  ??@L_signature inFormalTestedSignature
   ??@location inEndOfListLocation
 :
   if [inFormalReferenceSignature length] < [inFormalTestedSignature length] then
@@ -968,7 +1053,7 @@ map @L_grammarsMap {
 #---------------------------------------------------------------------------*
 
 map @M_nonterminalSymbolAltsForGrammar {
-  @L_signature_ForGrammarComponent mFormalParametersList ;
+  @L_signature mFormalParametersList ;
   insert insertKey error message "the rule label '%K' has been already declared in %L" ;
   search searchKey error message "the rule label '%K' is not declared" ;
 }
@@ -1237,8 +1322,8 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #---------------------------------------------------------------------------*
 
 map @typeTableBlocsDeTable {
-  @L_signature aSignatureDebut ;
-  @L_signature aSignatureFin ;
+  @L_EXsignature aSignatureDebut ;
+  @L_EXsignature aSignatureFin ;
   insert insertKey error message "a block method named '%K' is already declared in %L" ;
   search searchKey error message "there is no block method named '%K'" ;
 }
@@ -1263,7 +1348,7 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 map @mapMethodMap {
-  @L_signature mMethodSignature ;
+  @L_EXsignature mMethodSignature ;
   insert insertKey error message "an insert or a search method named '%K' is already declared in %L" ;
   search searchKey error message "there is no insert nor search method named '%K'" ;
 }
@@ -1284,7 +1369,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   override
   reader handleModifierCall
     ??@lstring inModifierName
-    !@L_signature outModifierSignature
+    !@L_EXsignature outModifierSignature
   :
     @mapMethodMap methodMap := mMethodMap ;
     [!?methodMap searchKey !inModifierName ?outModifierSignature] ;
@@ -1370,7 +1455,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 #--- Handle method call : return method signature
   override reader handleReaderInstructionCall
     ??@lstring inMethodName
-    !@L_signature outMethodSignature
+    !@L_EXsignature outMethodSignature
   :
     @typeTableMethodes methodMap := mMethodsMap ;
     [!?methodMap searchKey !inMethodName ?outMethodSignature] ;
@@ -1405,7 +1490,7 @@ class @typeEntiteType extends @AC_semanticsEntity {
 #---------------------------------------------------------------------------*
 
 class @typeEntiteRoutine extends @AC_semanticsEntity {
-  @L_signature aListeArgumentsFormels ;
+  @L_EXsignature aListeArgumentsFormels ;
 
   message messageTypeEntite "a routine" ;
 }
@@ -1414,13 +1499,6 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
 #                                                                           *
 #  E N U M    T Y P E                                                       *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-map @typeEnumConstantesMap {
-  insert insertKey error message "the '%K' constant is already declared in %L" ;
-  search searchKey error message "the '%K' constant is not declared" ;
-}
-
 #---------------------------------------------------------------------------*
 
 map @typeEnumMessageMap {
@@ -1436,7 +1514,7 @@ class @typeGalgas_enum extends @AC_galgasType {
   @lstring mEnumTypeName ;
 
 #--- Enumeration constants map
-  @typeEnumConstantesMap mEnumConstantesMap ;
+  @enumConstantMap mEnumConstantesMap ;
 
 #--- Messages map
   @typeEnumMessageMap mMessagesMap ;
@@ -1451,7 +1529,7 @@ class @typeGalgas_enum extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    @typeEnumConstantesMap enumConstantesMap  := mEnumConstantesMap ;
+    @enumConstantMap enumConstantesMap  := mEnumConstantesMap ;
     [!?enumConstantesMap searchKey !inClassMethodName] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
   end reader ;
@@ -1530,8 +1608,8 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine verifierCompatibiliteSignatures
-  ?@L_signature signatureReference
-  ?@L_signature signatureTestee
+  ?@L_EXsignature signatureReference
+  ?@L_EXsignature signatureTestee
   ?@location ouSignalerErreur
 :
   if [signatureReference length] < [signatureTestee length] then

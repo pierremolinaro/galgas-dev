@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS cocoa component parser                                            *
 #                                                                           *
-#  Copyright (C) 2004 Pierre Molinaro.                                      *
+#  Copyright (C) 2004 - 2006 Pierre Molinaro.                               *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -100,7 +100,7 @@ rule <galgas_component>
                                                  ?lexiqueClassName
                                                  ?optionsComponentsMap] ;
   @lstring altName := [@lstring new !"" !here] ;
-  @L_signature_ForGrammarComponent startSymbolSignature ;
+  @L_signature startSymbolSignature ;
   [!?nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature] ;
   $;$ ;
 #--- Generate Cocoa c++ file

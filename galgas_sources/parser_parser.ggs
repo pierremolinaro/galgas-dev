@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS parser component parser definition                                *
 #                                                                           *
-#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  Copyright (C) 1997-2006 Pierre Molinaro.                                 *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -56,6 +56,7 @@ rule <semantics_declaration>
   ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
   ?!@ModelMap ioModelMap
+  ?!@ActionMap unused ioExternActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
@@ -145,7 +146,7 @@ label parse
 ;
 
 rule <actual_parameters_list>
-  ??@L_signature listeTypesParametresFormels
+  ??@L_EXsignature listeTypesParametresFormels
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -157,13 +158,13 @@ label parse
 
 rule <formal_arguments_list>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  !@L_signature listeDeTypes
+  !@L_EXsignature listeDeTypes
   ?!@typeVariablesMap tableArgumentsMethode
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeTableEnAvant tableEnAvant
-  !@L_signature_ForGrammarComponent outSignature
+  !@L_signature outSignature
 label importGrammarForSemantics
-  !@L_signature_ForGrammarComponent outSignature
+  !@L_signature outSignature
 label parse
 ;
 
@@ -200,20 +201,20 @@ rule <rule_declaration_or_implementation>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeVariablesMap tableVariablesMethode
-  ?@L_signature listeDeTypes
+  ?@L_EXsignature listeDeTypes
   ??@lstring inRuleName
   ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
-  ?@L_signature_ForGrammarComponent inSignatureForGrammar
+  ?@L_signature inSignatureForGrammar
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ??@lstring inSyntaxComponentName
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ??@lstring inNonterminalSymbolName
-  ??@L_signature_ForGrammarComponent inDefaultSignature
+  ??@L_signature inDefaultSignature
 label parse
 ;
 
@@ -510,8 +511,8 @@ rule <syntax_instruction>
   $.$ ;
   @lstring nomMethodeBloc ;
   $identifier$ ? nomMethodeBloc ;
-  @L_signature signatureDebut ;
-  @L_signature signatureFin ;
+  @L_EXsignature signatureDebut ;
+  @L_EXsignature signatureFin ;
   [!?tableMethodesBloc searchKey !nomMethodeBloc ?signatureDebut ?signatureFin] ;
 #--- Analyser la list d'arguments du prologue
   @typeExpressionList prologueExpressionList ;
@@ -604,10 +605,10 @@ rule <syntax_declaration>
   $<$ ;
   $identifier$ ? ruleName ;
   $>$ ;
-  @L_signature listeDeTypesFormels ;
+  @L_EXsignature listeDeTypesFormels ;
   @typeVariablesMap tableArgumentsMethode [empty] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature_ForGrammarComponent signatureForGrammar ;
+  @L_signature signatureForGrammar ;
   <formal_arguments_list>
     !?ioEntitiesMap
     ?listeDeTypesFormels 
@@ -640,7 +641,7 @@ label importSyntax
   @lstring nonterminalSymbolName ;
   $identifier$ ? nonterminalSymbolName ;
   $>$ ;
-  @L_signature_ForGrammarComponent signature ;
+  @L_signature signature ;
   <formal_arguments_list> importGrammarForSemantics ?signature ;
   <rule_declaration_or_implementation> importSyntax
     !?ioNonTerminalSymbolsMap
@@ -659,13 +660,13 @@ rule <rule_declaration_or_implementation>
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeVariablesMap unused ioVariablesMap
-  ?@L_signature listeDeTypes
+  ?@L_EXsignature listeDeTypes
   ??@lstring inRuleName
   ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
-  ?@L_signature_ForGrammarComponent inSignatureForGrammar
+  ?@L_signature inSignatureForGrammar
   ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
   ??@lstring unused inSyntaxComponentName
 :
@@ -679,18 +680,18 @@ rule <rule_declaration_or_implementation>
     $label$ ;
     select
       $parse$ ;
-      @L_signature listeDeTypesFormels [empty] ;
-      @L_signature_ForGrammarComponent signatureForGrammarComponent [empty] ;
+      @L_EXsignature listeDeTypesFormels [empty] ;
+      @L_signature signatureForGrammarComponent [empty] ;
       @lstring altName [new !"parse" !here] ;
       [!?parametersMap insertKey !altName !listeDeTypesFormels] ;
       [!?parametersMapForGrammar insertKey !altName !signatureForGrammarComponent] ;
      or
       @lstring altName ;
       $identifier$ ? altName ;
-      @L_signature listeDeTypesFormels ;
+      @L_EXsignature listeDeTypesFormels ;
       @typeVariablesMap tableArgumentsMethode [empty] ;
       @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-      @L_signature_ForGrammarComponent signatureForGrammarComponent ;
+      @L_signature signatureForGrammarComponent ;
       <formal_arguments_list>
         !?ioEntitiesMap
         ?listeDeTypesFormels 
@@ -713,7 +714,7 @@ label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
   ??@lstring inNonterminalSymbolName
-  ??@L_signature_ForGrammarComponent inDefaultSignature
+  ??@L_signature inDefaultSignature
 :
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap [empty] ;
   @lstring altName := [@lstring new !"" !here] ;
@@ -723,12 +724,12 @@ label importSyntax
     $label$ ;
     select
       $parse$ ;
-      @L_signature_ForGrammarComponent signature [empty] ;
+      @L_signature signature [empty] ;
       @lstring altName [new !"parse" !here] ;
       [!?nonterminalSymbolParametersMap insertKey !altName !signature] ;
     or
       $identifier$ ?altName ;
-      @L_signature_ForGrammarComponent signature ;
+      @L_signature signature ;
       <formal_arguments_list> importGrammarForSemantics ?signature ;
       [!?nonterminalSymbolParametersMap insertKey !altName !signature] ;
     end select ;
@@ -744,13 +745,13 @@ rule <rule_declaration_or_implementation>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeVariablesMap ioVariablesMap
-  ?@L_signature listeDeTypesFormels
+  ?@L_EXsignature listeDeTypesFormels
   ??@lstring inRuleName
   ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMap
-  ?@L_signature_ForGrammarComponent inSignatureForGrammar
+  ?@L_signature inSignatureForGrammar
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ??@lstring unused inSyntaxComponentName
 :
@@ -777,7 +778,7 @@ rule <rule_declaration_or_implementation>
   end select ;
   @location errorLocation := here ;
   $:$ ;
-  @L_signature signatureFournieParPrototype ;
+  @L_EXsignature signatureFournieParPrototype ;
   [!?nonterminalSymbolAltMap searchKey !altName ?signatureFournieParPrototype] ;
   verifierCompatibiliteSignatures
     !signatureFournieParPrototype
@@ -805,7 +806,7 @@ rule <rule_declaration_or_implementation>
     $label$ ;
     $identifier$ ?altName ;
     ioVariablesMap := [@typeVariablesMap empty] ;
-    @L_signature_ForGrammarComponent signatureForGrammarComponent ;
+    @L_signature signatureForGrammarComponent ;
     <formal_arguments_list>
       !?ioEntitiesMap
       ?listeDeTypesFormels 
@@ -816,7 +817,7 @@ rule <rule_declaration_or_implementation>
     ;
     @location errorLocation := here ;
     $:$ ;
-    @L_signature signatureFournieParPrototype ;
+    @L_EXsignature signatureFournieParPrototype ;
     [!?nonterminalSymbolAltMap searchKey !altName ?signatureFournieParPrototype] ;
     verifierCompatibiliteSignatures
       !signatureFournieParPrototype
@@ -844,7 +845,7 @@ rule <rule_declaration_or_implementation>
 #--- Check if all label rules have the same syntax signature
   action checkLabelSignatures !?altProductionsMap ;
 #--- Check that all label rules are implemented
-  foreach nonterminalSymbolAltMap (??@lstring nonTerminalAltName ??@L_signature altSignature) :
+  foreach nonterminalSymbolAltMap (??@lstring nonTerminalAltName ??@L_EXsignature altSignature) :
     if [nonTerminalAltName value] != "parse" & not [altProductionsMap hasKey ![nonTerminalAltName value]] then
       error here : "the '" . [nonTerminalAltName value] . "' label is not implemented within the rule" ;
     end if ;
@@ -861,7 +862,7 @@ label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ??@lstring inNonterminalSymbolName
-  ??@L_signature_ForGrammarComponent unused inDefaultSignature
+  ??@L_signature unused inDefaultSignature
 :
   select
   or
@@ -998,7 +999,7 @@ rule <syntax_instruction>
   [!?ioEntitiesMap searchKey !nonterminalSymbolName ?entite] ;
   @M_nonterminalSymbolAlts nonterminalSymbolAltMap ;
   extract entite->@typeEntiteNonTerminal (?nonterminalSymbolAltMap) error nonterminalSymbolName : messageTypeEntite ;
-  @L_signature signatureMethode ;
+  @L_EXsignature signatureMethode ;
   [!?nonterminalSymbolAltMap searchKey !altName ?signatureMethode] ;
 #--- Check if parse label is declared ?
   if inCheckNonTerminalsAreDeclaredWithParseLabel & ([altName value] != "parse") then

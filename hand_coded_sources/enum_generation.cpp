@@ -54,7 +54,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
              "  public : enum enumeration {kNotBuilt" ;
-  GGS_typeEnumConstantesMap::element_type * cst = mConstantMap.firstObject () ;
+  GGS_enumConstantMap::element_type * cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
     inHfile << ", enum_" << cst->mKey ;
     cst = cst->nextObject () ;

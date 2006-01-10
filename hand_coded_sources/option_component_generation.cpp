@@ -481,11 +481,11 @@ generate_option_cpp_file (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-generate_option_component (C_Lexique & inLexique,
-                           GGS_lstring & inOptionClassName,
-                           GGS_M_cli_options & inBoolOptionsMap,
-                           GGS_M_cli_options & inUintOptionsMap,
-                           GGS_M_cli_options & inStringOptionsMap) {
+routine_generate_option_component (C_Lexique & inLexique,
+                                   GGS_lstring & inOptionClassName,
+                                   GGS_M_cli_options & inBoolOptionsMap,
+                                   GGS_M_cli_options & inUintOptionsMap,
+                                   GGS_M_cli_options & inStringOptionsMap) {
 //--- Generate header file
   generate_option_header_file (inLexique,
                                inOptionClassName,
