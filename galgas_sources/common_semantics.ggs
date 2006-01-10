@@ -676,7 +676,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 map @typeTableMethodes
-  class cClassMethodsMap in "cClassMethodsMap.h", "cClassMethodsMap.hh" ;
+  class cClassMethodsMap ;
   insert insertAbstract error message "a reader named '%' is already declared" ;
   insert insertNotAbstract error message "a reader named '%' is already declared" ;
   search searchKey error message "there is no reader named '%'" ;
@@ -1408,16 +1408,6 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
   @L_signature aListeArgumentsFormels ;
 
   message messageTypeEntite "a routine" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#                   Table des utilisations semantiques                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @typeTableUtilisationsSemantiques {
-  insert insertKey error message "--- internal error ---" ;
 }
 
 #---------------------------------------------------------------------------*

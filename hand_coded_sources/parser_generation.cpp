@@ -304,9 +304,9 @@ void cPtr_typeProductionAengendrer
 //---------------------------------------------------------------------------*
 
 void
-engendrerDeclarationPrototypesReglesDeProduction (GGS_lstring & nomComposant,
+engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposant,
                                                   const C_String & inLexiqueName,
-                                                  GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
+                                                  const GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                                   AC_OutputStream & inHfile) {
 //---  declarer une classe si il existe des regles de production a implementer
   inHfile.writeCTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;

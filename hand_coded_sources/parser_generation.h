@@ -28,9 +28,9 @@ class AC_OutputStream ;
 //---------------------------------------------------------------------------*
 
 void
-engendrerDeclarationPrototypesReglesDeProduction (GGS_lstring & nomComposant,
+engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposant,
                                                   const C_String & inLexiqueName,
-                                                  GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
+                                                  const GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                                   AC_OutputStream & inHfile) ;
 
 //---------------------------------------------------------------------------*

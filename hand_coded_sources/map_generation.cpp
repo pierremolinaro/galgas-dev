@@ -584,6 +584,9 @@ void cPtr_typeDefinitionTableAimplementer
                                   const bool /* inGenerateDebug */) const {
   inCppFile.writeCTitleComment (C_String ("class map element 'e_") + aNomTable + "'") ;
 
+  inCppFile << "#include \"" << aNomClasseGenerique << ".hh\"\n\n" ;
+  inCppFile.writeCHyphenLineComment () ;
+
 //--- Instanciate the template
   inCppFile << "template class "
             << aNomClasseGenerique
