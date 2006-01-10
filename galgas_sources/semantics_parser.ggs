@@ -465,18 +465,44 @@ rule <galgas_component>
     !?ioIncludesForHeader
     ?tableEnAvant
   ;
+#-------------- Build entity maps
+  message "Semantic Components to include:\n" ;
+  foreach alreadyIncludedSemanticsComponents (??@string kKey) :
+    message "  " . kKey . "\n" ;
+  end foreach ;
+  message "Option Components to include:\n" ;
+  foreach alreadyIncludedOptionComponents (??@string kKey) :
+    message "  " . kKey . "\n" ;
+  end foreach ;
+  message "Grammar Components to include:\n" ;
+  foreach alreadyIncludedGrammarComponents (??@string kKey) :
+    message "  " . kKey . "\n" ;
+  end foreach ;
+#-------------- Semantic Declarations
   parse
   #--- First pass on semantic declarations
   start
+    @typeTableRoutinesAimplementer UNUSED_tableRoutinesAimplementer [empty] ;
+    @typeTableNomRoutinesDeclarees UNUSED_tableNomRoutinesDeclarees [empty] ;
+    @typeTableEnAvant UNUSED_tableEnAvant := tableEnAvant ;
+    @M_semanticsEntitiesForUse UNUSED_componentSemanticsEntitiesMap := componentEntitiesMap ;
+    @ModelMap modelMap [empty] ;
+    @ActionMap actionMap [empty] ;
     repeat
     while
-      <semantics_declaration> parse ;
+    <semantics_declaration> importSemantics
+      !?modelMap
+      !?actionMap
+      !?UNUSED_componentSemanticsEntitiesMap
+      !?UNUSED_tableNomRoutinesDeclarees
+      !?UNUSED_tableEnAvant
+      !?UNUSED_tableRoutinesAimplementer
+    ;
     end repeat ;
   #--- Second pass on semantic declarations
   rewind
     @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
     @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
-    @ModelMap modelMap [empty] ;
     repeat
     while
       <semantics_declaration>
@@ -543,12 +569,12 @@ label importSemantics
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
   @ModelMap modelMap [empty] ;
-  @ActionMap externActionMap [empty] ;
+  @ActionMap actionMap [empty] ;
   repeat
   while
     <semantics_declaration> importSemantics
       !?modelMap
-      !?externActionMap
+      !?actionMap
       !?componentSemanticsEntitiesMap
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
