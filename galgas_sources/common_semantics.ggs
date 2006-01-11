@@ -1702,9 +1702,12 @@ map @M_grammarComponents {
 #---------------------------------------------------------------------------*
 
 map @M_semanticsComponents {
-  @ModelMap mModelMap ;
-  @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
-  @M_optionComponents mOptionsComponents ;
+  @ModelMap mModelMap ; # The types and classes declared in this component
+  @ActionMap mActionMap ; # The routines and the extern actions declared in this component 
+  @stringset mImportedSemanticsComponents ; # The other semantics components imported in this component
+  @stringset mImportedOptionsComponents ; # The option components imported in this component
+  @M_optionComponents mOptionsComponents ; # The option components imported in this component (OLD STYLE)
+  @M_semanticsEntitiesForUse mSemanticsEntitiesMap ; # OLD STYLE MAP
   insert insertKey error message "a semantics component named '%K' is already declared in %L" ;
   search searchKey error message "there is no semantics component named '%K'" ;
 }
