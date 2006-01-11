@@ -86,9 +86,9 @@ label parse
 ;
 
 rule <import_headers_semantics_and_grammars>
-  ?!@stringset ioAlreadyIncludedSemanticsComponents
-  ?!@stringset ioAlreadyIncludedOptionComponents
-  ?!@stringset ioAlreadyIncludedGrammarComponents
+  !@stringset ioIncludedSemanticsComponents
+  !@stringset ioIncludedOptionComponents
+  !@stringset ioIncludedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponents
@@ -102,6 +102,8 @@ rule <import_headers_semantics_and_grammars>
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIcludedOptionComponents
 label parse
 ;
 
@@ -271,13 +273,13 @@ rule <galgas_component>
   @M_semanticsEntitiesForUse entitiesMap ;
   @M_externClassesDirectories externClassesDirectoryMap ;
   @M_optionComponents ioOptionsComponentsMapForUse ;
-  @stringset alreadyIncludedSemanticsComponents [empty] ;
-  @stringset alreadyIncludedOptionComponents [empty] ;
-  @stringset alreadyIncludedGrammarComponents [empty] ;
+  @stringset includedSemanticsComponents ;
+  @stringset includedOptionComponents ;
+  @stringset includedGrammarComponents ;
   <import_headers_semantics_and_grammars>
-    !?alreadyIncludedSemanticsComponents
-    !?alreadyIncludedOptionComponents
-    !?alreadyIncludedGrammarComponents
+    ?includedSemanticsComponents
+    ?includedOptionComponents
+    ?includedGrammarComponents
     !?ioSemanticsComponentsMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
@@ -322,9 +324,12 @@ rule <galgas_component>
     end if ;
   end foreach ;
 #--- Enter syntax component into syntax components map
-  [!?ioSyntaxComponentsMap insertKey !componentName !nonTerminalSymbolsMap
-                                                    !productionRulesListForGrammar
-                                                    !lexiqueName] ;
+  [!?ioSyntaxComponentsMap insertKey
+    !componentName
+    !nonTerminalSymbolsMap
+    !productionRulesListForGrammar
+    !lexiqueName
+  ] ;
 #--- Generate component
   action generateSemanticsComponent
     !?componentName

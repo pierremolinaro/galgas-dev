@@ -91,9 +91,9 @@ label parse
 ;
 
 rule <import_headers_semantics_and_grammars>
-  ?!@stringset ioAlreadyIncludedSemanticsComponents
-  ?!@stringset ioAlreadyIncludedOptionComponents
-  ?!@stringset ioAlreadyIncludedGrammarComponents
+  !@stringset ioIncludedSemanticsComponents
+  !@stringset ioIncludedOptionComponents
+  !@stringset ioIncludedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -107,6 +107,8 @@ rule <import_headers_semantics_and_grammars>
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIcludedOptionComponents
 label parse
 ;
 
@@ -431,10 +433,9 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
 :
-  @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
-  @lstring componentName ;
   $semantics$ ;
 #--- Obtenir le nom du component semantique
+  @lstring componentName ;
   $identifier$ ? componentName ;
   $:$ ;
 #--- No lexique
@@ -447,13 +448,13 @@ rule <galgas_component>
   @M_externClassesDirectories externClassesDirectoryMap ;
   @stringset classNamesSet [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
-  @stringset alreadyIncludedSemanticsComponents [empty] ;
-  @stringset alreadyIncludedOptionComponents [empty] ;
-  @stringset alreadyIncludedGrammarComponents [empty] ;
+  @stringset includedSemanticsComponents ;
+  @stringset includedOptionComponents ;
+  @stringset includedGrammarComponents ;
   <import_headers_semantics_and_grammars>
-    !?alreadyIncludedSemanticsComponents
-    !?alreadyIncludedOptionComponents
-    !?alreadyIncludedGrammarComponents
+    ?includedSemanticsComponents
+    ?includedOptionComponents
+    ?includedGrammarComponents
     !?ioSemanticsComponentsMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
@@ -466,18 +467,18 @@ rule <galgas_component>
     ?tableEnAvant
   ;
 #-------------- Build entity maps
-  message "Semantic Components to include:\n" ;
-  foreach alreadyIncludedSemanticsComponents (??@string kKey) :
-    message "  " . kKey . "\n" ;
-  end foreach ;
-  message "Option Components to include:\n" ;
-  foreach alreadyIncludedOptionComponents (??@string kKey) :
-    message "  " . kKey . "\n" ;
-  end foreach ;
-  message "Grammar Components to include:\n" ;
-  foreach alreadyIncludedGrammarComponents (??@string kKey) :
-    message "  " . kKey . "\n" ;
-  end foreach ;
+#  message "Semantic Components to include:\n" ;
+#  foreach alreadyIncludedSemanticsComponents (??@string kKey) :
+#    message "  " . kKey . "\n" ;
+#  end foreach ;
+#  message "Option Components to include:\n" ;
+#  foreach alreadyIncludedOptionComponents (??@string kKey) :
+#    message "  " . kKey . "\n" ;
+#  end foreach ;
+#  message "Grammar Components to include:\n" ;
+#  foreach alreadyIncludedGrammarComponents (??@string kKey) :
+#    message "  " . kKey . "\n" ;
+#  end foreach ;
 #-------------- Semantic Declarations
   parse
   #--- First pass on semantic declarations
@@ -503,6 +504,7 @@ rule <galgas_component>
   rewind
     @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
     @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
+    @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
     repeat
     while
       <semantics_declaration>
@@ -517,7 +519,15 @@ rule <galgas_component>
     end repeat ;
   end parse ;
 #--- Enter component entities in map
-  [!?ioSemanticsComponentsMap insertKey !componentName !modelMap !componentEntitiesMap !optionsComponentsMapForUse] ;
+  [!?ioSemanticsComponentsMap insertKey
+    !componentName
+    !modelMap
+    !actionMap
+    !includedSemanticsComponents
+    !includedOptionComponents
+    !optionsComponentsMapForUse
+    !componentEntitiesMap
+  ] ;
 #--- End of file
   $end$ ;
   $semantics$ ;
@@ -560,10 +570,14 @@ label importSemantics
   $:$ ;
   @M_semanticsEntitiesForUse componentSemanticsEntitiesMap ;
   enterBuiltinTypes ?componentSemanticsEntitiesMap ;
+  @stringset includedSemanticsComponents ;
+  @stringset includedOptionComponents ;
 
   <import_headers_semantics_and_grammars> importSemantics
     !?componentSemanticsEntitiesMap
     !?ioSemanticsComponentsMap
+    ?includedSemanticsComponents
+    ?includedOptionComponents
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
@@ -583,7 +597,15 @@ label importSemantics
   end repeat ;
 #--- Enter component entities in map
   @M_optionComponents optionsComponentsMap [empty] ;
-  [!?ioSemanticsComponentsMap insertKey !componentName !modelMap !componentSemanticsEntitiesMap !optionsComponentsMap] ;
+  [!?ioSemanticsComponentsMap insertKey
+    !componentName
+    !modelMap
+    !actionMap
+    !includedSemanticsComponents
+    !includedOptionComponents
+    !optionsComponentsMap
+    !componentSemanticsEntitiesMap
+  ] ;
   $end$ ;
   $semantics$ ;
   $;$ ;
@@ -638,9 +660,9 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <import_headers_semantics_and_grammars>
-  ?!@stringset ioImportedSemanticsComponents
-  ?!@stringset ioImportedOptionComponents
-  ?!@stringset ioImportedGrammarComponents
+  !@stringset ioImportedSemanticsComponents
+  !@stringset ioImportedOptionComponents
+  !@stringset ioImportedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -652,6 +674,9 @@ rule <import_headers_semantics_and_grammars>
   ?!@stringset ioIncludesForHeader
   !@typeTableEnAvant tableEnAvant
 :
+  ioImportedSemanticsComponents := [@stringset empty] ;
+  ioImportedOptionComponents := [@stringset empty] ;
+  ioImportedGrammarComponents := [@stringset empty] ;
   tableEnAvant := [@typeTableEnAvant empty] ;
   outExternClassesDirectoryMap := [@M_externClassesDirectories empty] ;
   ioOptionsComponentsMapForUse := [@M_optionComponents empty] ;
@@ -731,8 +756,7 @@ rule <import_headers_semantics_and_grammars>
         if not [ioIncludesForHeader hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
           @M_optionComponents importedOptionsComponentsMap ;
-          @ModelMap modelMap ;
-          [!?ioSemanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?importedOptionsComponentsMap] ;
+          [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?importedOptionsComponentsMap ?importedEntities] ;
           foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
             if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
               [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -756,8 +780,7 @@ rule <import_headers_semantics_and_grammars>
           !?semanticsComponentsMap
         ;
         @M_semanticsEntitiesForUse importedEntities ;
-        @ModelMap modelMap ;
-        [!?semanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?*] ;
+        [!?semanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -772,20 +795,29 @@ rule <import_headers_semantics_and_grammars>
 label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIcludedOptionComponents
 :
-#--- enter in semantics entities map the galgas types corresponding to keywords
-  @stringset includesForHeader [empty] ;
+  outIncludedSemanticsComponents := [@stringset empty] ;
+  outIcludedOptionComponents := [@stringset empty] ;
   repeat
   while
     $import$ ;
     select
       $option$ ;
-      $identifier$ ? * ;
+      @lstring optionComponentName ;
+      $identifier$ ? optionComponentName ;
+      outIcludedOptionComponents += ![optionComponentName value] ;
       select
       or
         $in$ ;
-        $literal_string$ ? * ;
-        <parse_option_component_for_importing> parse ;
+        @lstring fileName ;
+        $literal_string$ ? fileName ;
+        @M_optionComponents importedOptionComponentsMap [empty] ;
+        <parse_option_component_for_importing>
+          !fileName
+          !?importedOptionComponentsMap
+        ;
      end select ;
     or
       $grammar$ ;
@@ -800,17 +832,16 @@ label importSemantics
       $semantics$ ;
       @lstring componentName ;
       $identifier$ ?componentName ;
+      outIncludedSemanticsComponents += ![componentName value] ;
       select
-        if not [includesForHeader hasKey ![componentName value]] then
+        if not [ioSemanticsComponentsMap hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
-          @ModelMap modelMap ;
-          [!?ioSemanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?*] ;
+          [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
           foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
             if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
               [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
             end if ;
           end foreach ;
-          includesForHeader += ![componentName value] ;
         end if ;
       or
         $in$ ;
@@ -822,14 +853,12 @@ label importSemantics
           !?semanticsComponentsMap
         ;
         @M_semanticsEntitiesForUse importedEntities ;
-        @ModelMap modelMap ;
-        [!?semanticsComponentsMap searchKey !componentName ?modelMap ?importedEntities ?*] ;
+        [!?semanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
-        includesForHeader += ![componentName value] ;
       end select ;
     end select ;
     $;$ ;
