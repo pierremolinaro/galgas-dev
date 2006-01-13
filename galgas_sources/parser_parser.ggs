@@ -53,7 +53,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
-  ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap unused ioExternActionMap
@@ -92,18 +91,19 @@ rule <import_headers_semantics_and_grammars>
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponents
-
-  !@M_externClassesDirectories outExternClassesDirectoryMap
-  !@M_semanticsEntitiesForUse ioEntitiesMap
+  !@stringset outInclusionsForImplementationFile
+  !@stringset outInclusionsForHeaderFile
   !@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@stringset tableUtilisationsSemantiques
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+
+  !@M_semanticsEntitiesForUse ioEntitiesMap
   !@typeTableEnAvant tableEnAvant
 label importSemantics
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
   !@stringset outIcludedOptionComponents
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
 ;
 
@@ -249,9 +249,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
 :
-  @stringset includesForHeaderFile [empty] ;
   @typeEntitiesToGenerateList listeEntitesAengendrer ;
-  @stringset tableFichiersEnTetePourFichierCPP [empty] ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
   $syntax$ ;
@@ -268,14 +266,17 @@ rule <galgas_component>
     ?lexiqueName
   ;
   @string defLexique := [lexiqueName value] ;
-#--- Utilisations semantiques
+#--- Parse Inclusions
+  @stringset inclusionsForHeaderFile ;
+  @stringset inclusionsForImplementationFile ;
   @typeTableEnAvant tableEnAvant ;
   @M_semanticsEntitiesForUse entitiesMap ;
-  @M_externClassesDirectories externClassesDirectoryMap ;
   @M_optionComponents ioOptionsComponentsMapForUse ;
   @stringset includedSemanticsComponents ;
   @stringset includedOptionComponents ;
   @stringset includedGrammarComponents ;
+  @ModelMap modelMap ;
+  @ActionMap actionMap ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedOptionComponents
@@ -283,11 +284,12 @@ rule <galgas_component>
     !?ioSemanticsComponentsMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
-    ?externClassesDirectoryMap
-    ?entitiesMap
+    ?inclusionsForImplementationFile
+    ?inclusionsForHeaderFile
     ?ioOptionsComponentsMapForUse
-    !?tableFichiersEnTetePourFichierCPP
-    !?includesForHeaderFile
+    ?modelMap
+    ?actionMap
+    ?entitiesMap
     ?tableEnAvant
   ;
   listeEntitesAengendrer := [@typeEntitiesToGenerateList empty] ;
@@ -313,7 +315,6 @@ rule <galgas_component>
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
       !?tableRoutinesAimplementer
-      !?externClassesDirectoryMap
     ;
   end repeat ;
 #--- Check that all routines have been implemented
@@ -333,10 +334,10 @@ rule <galgas_component>
 #--- Generate component
   action generateSemanticsComponent
     !?componentName
-    !?includesForHeaderFile
+    !?inclusionsForHeaderFile
     !?defLexique
     !?listeEntitesAengendrer
-    !?tableFichiersEnTetePourFichierCPP
+    !?inclusionsForImplementationFile
   ;
 #--- Fin du fichier
   $end$ ;
