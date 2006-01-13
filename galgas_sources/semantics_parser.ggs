@@ -477,17 +477,27 @@ rule <galgas_component>
     @typeTableNomRoutinesDeclarees UNUSED_tableNomRoutinesDeclarees [empty] ;
     @typeTableEnAvant UNUSED_tableEnAvant := tableEnAvant ;
     @M_semanticsEntitiesForUse UNUSED_componentSemanticsEntitiesMap := componentEntitiesMap ;
+    @ModelMap localTypeMap [empty] ;
+    @ActionMap localActionMap [empty] ;
     repeat
     while
     <semantics_declaration> importSemantics
-      !?modelMap
-      !?actionMap
+      !?localTypeMap
+      !?localActionMap
       !?UNUSED_componentSemanticsEntitiesMap
       !?UNUSED_tableNomRoutinesDeclarees
       !?UNUSED_tableEnAvant
       !?UNUSED_tableRoutinesAimplementer
     ;
     end repeat ;
+  #--- add imported types
+    foreach localTypeMap (??@lstring kKey ??@TypeModel kType) :
+      [!?modelMap insertKey !kKey !kType] ;
+    end foreach ;
+  #--- add actions
+    foreach localActionMap (??@lstring kKey ??@L_signature kSignature ??@bool kIsExtern) :
+      [!?actionMap insertKey !kKey !kSignature !kIsExtern] ;
+    end foreach ;
   #--- Second pass on semantic declarations
   rewind
     @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
@@ -506,15 +516,17 @@ rule <galgas_component>
     end repeat ;
   end parse ;
 #--- Enter component entities in map
-  [!?ioSemanticsComponentsMap insertKey
-    !componentName
-    !modelMap
-    !actionMap
-    !includedSemanticsComponents
-    !includedOptionComponents
-    !optionsComponentsMapForUse
-    !componentEntitiesMap
-  ] ;
+  if not [ioSemanticsComponentsMap hasKey ![componentName value]] then
+    [!?ioSemanticsComponentsMap insertKey
+      !componentName
+      !localTypeMap
+      !localActionMap
+      !includedSemanticsComponents
+      !includedOptionComponents
+      !optionsComponentsMapForUse
+      !componentEntitiesMap
+    ] ;
+  end if ;
 #--- End of file
   $end$ ;
   $semantics$ ;
@@ -583,16 +595,18 @@ label importSemantics
     ;
   end repeat ;
 #--- Enter component entities in map
-  @M_optionComponents optionsComponentsMap [empty] ;
-  [!?ioSemanticsComponentsMap insertKey
-    !componentName
-    !modelMap
-    !actionMap
-    !includedSemanticsComponents
-    !includedOptionComponents
-    !optionsComponentsMap
-    !componentSemanticsEntitiesMap
-  ] ;
+  if not [ioSemanticsComponentsMap hasKey ![componentName value]] then
+    @M_optionComponents optionsComponentsMap [empty] ;
+    [!?ioSemanticsComponentsMap insertKey
+      !componentName
+      !modelMap
+      !actionMap
+      !includedSemanticsComponents
+      !includedOptionComponents
+      !optionsComponentsMap
+      !componentSemanticsEntitiesMap
+    ] ;
+  end if ;
   $end$ ;
   $semantics$ ;
   $;$ ;
@@ -716,6 +730,7 @@ rule <import_headers_semantics_and_grammars>
   [!?outModelMap insertKey !key !t] ;
 #--- enter in semantics entities map the galgas types corresponding to keywords
   enterBuiltinTypes ?ioComponentSemanticsEntitiesMap ;
+  @stringset alreadyImportedSemanticsComponents [empty] ;
 #--- Loop on import instructions
   repeat
   while
@@ -785,57 +800,43 @@ rule <import_headers_semantics_and_grammars>
       $semantics$ ;
       @lstring componentName ;
       $identifier$ ? componentName ;
-      outImportedSemanticsComponents += ![componentName value] ;
       select
-        if not [outImportedSemanticsComponents hasKey ![componentName value]] then
-          @M_semanticsEntitiesForUse importedEntities ;
-          @M_optionComponents importedOptionsComponentsMap ;
-          [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?importedOptionsComponentsMap ?importedEntities] ;
-          foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-            if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
-              [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
-            end if ;
-          end foreach ;
-          outInclusionsForHeaderFile += ![componentName value] ;
-        #--- Check that every used option component is already declared
-          foreach importedOptionsComponentsMap (??@lstring optionComponentMap ...) :
-            if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap value]] then
-              error here: "the '" . [optionComponentMap value] . "' option component must have been imported" ;
-            end if ;
-          end foreach ;
-        end if ;
       or
         $in$ ;
         @lstring sourceFile ;
-        $literal_string$ ? sourceFile ;
-        @M_semanticsComponents semanticsComponentsMap [empty] ;
+        $literal_string$ ?sourceFile ;
         <parse_semantics_component_for_importing> 
           !sourceFile
-          !?semanticsComponentsMap
+          !?ioSemanticsComponentsMap
         ;
+      end select ;
+      if not [outImportedSemanticsComponents hasKey ![componentName value]] then
         @M_semanticsEntitiesForUse importedEntities ;
-        [!?semanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
+        @M_optionComponents importedOptionsComponentsMap ;
+        [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?importedOptionsComponentsMap ?importedEntities] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
         outInclusionsForHeaderFile += ![componentName value] ;
-      end select ;
+      #--- Check that every used option component is already declared
+        foreach importedOptionsComponentsMap (??@lstring optionComponentMap ...) :
+          if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap value]] then
+            error here: "the '" . [optionComponentMap value] . "' option component must have been imported" ;
+          end if ;
+        end foreach ;
+      end if ;
+    #--- Import semantics component
+      importSemanticsComponent !?ioSemanticsComponentsMap !?outModelMap !?outActionMap !?alreadyImportedSemanticsComponents !componentName ;
+    #---
+      outInclusionsForHeaderFile += ![componentName value] ;
+      outImportedSemanticsComponents += ![componentName value] ;
     end select ;
     $;$ ;
   end repeat ;
-#-------------- Build Option Map for Use
-#  @M_optionComponents optionsComponentsMapForUse [empty] ;
-##  foreach includedOptionComponents (??@string kKey) :
-#    @lstring key [new !kKey !here] ;
-#    @M_cli_options boolOptionsMap ;
-#    @M_cli_options uintOptionsMap ;
-#    @M_cli_options stringOptionsMap ;
-#    [!?ioOptionsComponentsMap searchKey !key ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
-#    [!?optionsComponentsMapForUse insertKey !key !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
-#  end foreach ;
 #--- Check that every option component used by an imported component is declared here
+
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
@@ -873,30 +874,22 @@ label importSemantics
       $identifier$ ?componentName ;
       outIncludedSemanticsComponents += ![componentName value] ;
       select
-        @M_semanticsEntitiesForUse importedEntities ;
-        [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
-        foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
-            [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
-          end if ;
-        end foreach ;
       or
         $in$ ;
         @lstring sourceFile ;
         $literal_string$ ? sourceFile ;
-        @M_semanticsComponents semanticsComponentsMap [empty] ;
         <parse_semantics_component_for_importing> 
           !sourceFile
-          !?semanticsComponentsMap
+          !?ioSemanticsComponentsMap
         ;
-        @M_semanticsEntitiesForUse importedEntities ;
-        [!?semanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
-        foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
-            [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
-          end if ;
-        end foreach ;
       end select ;
+      @M_semanticsEntitiesForUse importedEntities ;
+      [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
+      foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
+        if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
+          [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
+        end if ;
+      end foreach ;
     end select ;
     $;$ ;
   end repeat ;
@@ -1140,7 +1133,7 @@ label importSemantics
                                     ?tableAttributs
                                     ?*)
              error superClassName : messageGalgasType ;
-#--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
+#--- The direct super class is last inserted one 
   [!?tableDesClassesAncetres insertKey !superClassName] ;
 #---
 ##  @TypeModel type ;

@@ -2024,4 +2024,47 @@ action check_K_escapeCharacters
 
 #---------------------------------------------------------------------------*
 
+routine importSemanticsComponent
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioActionMap
+  ?!@stringset ioAlreadyImportedSemanticsComponents
+  ?@lstring inSemanticsComponentName
+:
+  if not [ioAlreadyImportedSemanticsComponents hasKey ![inSemanticsComponentName value]] then
+    @ModelMap modelMap ; # The types and classes declared in this component
+    @ActionMap actionMap ; # The routines and the extern actions declared in this component 
+    @stringset importedSemanticsComponents ; # The other semantics components imported in this component
+    @stringset importedOptionsComponents ; # The option components imported in this component
+    [!?ioSemanticsComponentsMap searchKey
+      !inSemanticsComponentName
+      ?modelMap
+      ?actionMap
+      ?importedSemanticsComponents
+      ?importedOptionsComponents
+      ?* ?*
+    ] ;
+  #--- Recursively import other semantics components
+    foreach importedSemanticsComponents (??@string kKey) :
+      importSemanticsComponent
+        !?ioSemanticsComponentsMap
+        !?ioModelMap
+        !?ioActionMap
+        !?ioAlreadyImportedSemanticsComponents
+        ![@lstring new !kKey !here]
+      ;
+    end foreach ;
+  #--- Add imported types
+    foreach modelMap (??@lstring kKey ??@TypeModel kType) :
+      [!?ioModelMap insertKey !kKey !kType] ;
+    end foreach ;
+  #--- Add actions
+    foreach actionMap (??@lstring kKey ??@L_signature kSignature ??@bool kIsExtern) :
+      [!?ioActionMap insertKey !kKey !kSignature !kIsExtern] ;
+    end foreach ;
+  #--- Flag component as imported
+    ioAlreadyImportedSemanticsComponents += ![inSemanticsComponentName value] ;
+  end if ;
+end routine ;
+
 end semantics ;
