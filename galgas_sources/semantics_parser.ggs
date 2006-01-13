@@ -79,7 +79,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
-  ?!@M_externClassesDirectories ioExternClassesDirectoryMap
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap ioExternActionMap
@@ -91,24 +90,26 @@ label parse
 ;
 
 rule <import_headers_semantics_and_grammars>
-  !@stringset ioIncludedSemanticsComponents
-  !@stringset ioIncludedOptionComponents
-  !@stringset ioIncludedGrammarComponents
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIncludedOptionComponents
+  !@stringset outIncludedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-
-  !@M_externClassesDirectories outExternClassesDirectoryMap
-  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@stringset outInclusionsForImplementationFile
+  !@stringset outInclusionsForHeaderFile
   !@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@stringset ioIncludesForHeader
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
 label importSemantics
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
   !@stringset outIcludedOptionComponents
+
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
 ;
 
@@ -441,11 +442,12 @@ rule <galgas_component>
 #--- No lexique
   @string defLexique := "" ;
 #--- Import semantics
-  @stringset ioIncludesForHeader [empty] ;
-  @stringset tableFichiersEnTetePourFichierCPP [empty] ;
+  @ModelMap modelMap [empty] ;
+  @ActionMap actionMap [empty] ;
+  @stringset inclusionsForHeaderFile ;
+  @stringset inclusionsForImplementationFile ;
   @M_optionComponents optionsComponentsMapForUse [empty] ;
   @M_semanticsEntitiesForUse componentEntitiesMap ;
-  @M_externClassesDirectories externClassesDirectoryMap ;
   @stringset classNamesSet [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
   @stringset includedSemanticsComponents ;
@@ -458,27 +460,15 @@ rule <galgas_component>
     !?ioSemanticsComponentsMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
-
-    ?externClassesDirectoryMap
-    ?componentEntitiesMap
+    ?inclusionsForImplementationFile
+    ?inclusionsForHeaderFile
     ?optionsComponentsMapForUse
-    !?tableFichiersEnTetePourFichierCPP
-    !?ioIncludesForHeader
+    ?modelMap
+    ?actionMap
+
+    ?componentEntitiesMap
     ?tableEnAvant
   ;
-#-------------- Build entity maps
-#  message "Semantic Components to include:\n" ;
-#  foreach alreadyIncludedSemanticsComponents (??@string kKey) :
-#    message "  " . kKey . "\n" ;
-#  end foreach ;
-#  message "Option Components to include:\n" ;
-#  foreach alreadyIncludedOptionComponents (??@string kKey) :
-#    message "  " . kKey . "\n" ;
-#  end foreach ;
-#  message "Grammar Components to include:\n" ;
-#  foreach alreadyIncludedGrammarComponents (??@string kKey) :
-#    message "  " . kKey . "\n" ;
-#  end foreach ;
 #-------------- Semantic Declarations
   parse
   #--- First pass on semantic declarations
@@ -487,8 +477,6 @@ rule <galgas_component>
     @typeTableNomRoutinesDeclarees UNUSED_tableNomRoutinesDeclarees [empty] ;
     @typeTableEnAvant UNUSED_tableEnAvant := tableEnAvant ;
     @M_semanticsEntitiesForUse UNUSED_componentSemanticsEntitiesMap := componentEntitiesMap ;
-    @ModelMap modelMap [empty] ;
-    @ActionMap actionMap [empty] ;
     repeat
     while
     <semantics_declaration> importSemantics
@@ -514,7 +502,6 @@ rule <galgas_component>
         !?tableNomRoutinesDeclarees
         !?tableEnAvant
         !?tableRoutinesAimplementer
-        !?externClassesDirectoryMap
       ; 
     end repeat ;
   end parse ;
@@ -542,10 +529,10 @@ rule <galgas_component>
 #--- Generate component
   action generateSemanticsComponent
     !?componentName
-    !?ioIncludesForHeader
+    !?inclusionsForHeaderFile
     !?defLexique
     !?listeEntitesAengendrer
-    !?tableFichiersEnTetePourFichierCPP
+    !?inclusionsForImplementationFile
    ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
@@ -574,10 +561,10 @@ label importSemantics
   @stringset includedOptionComponents ;
 
   <import_headers_semantics_and_grammars> importSemantics
-    !?componentSemanticsEntitiesMap
     !?ioSemanticsComponentsMap
     ?includedSemanticsComponents
     ?includedOptionComponents
+    !?componentSemanticsEntitiesMap
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
@@ -660,26 +647,73 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <import_headers_semantics_and_grammars>
-  !@stringset ioImportedSemanticsComponents
-  !@stringset ioImportedOptionComponents
-  !@stringset ioImportedGrammarComponents
+  !@stringset outImportedSemanticsComponents
+  !@stringset outImportedOptionComponents
+  !@stringset outImportedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-
-  !@M_externClassesDirectories outExternClassesDirectoryMap
-  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@stringset outInclusionsForImplementationFile
+  !@stringset outInclusionsForHeaderFile
   !@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@stringset tableFichiersEnTetePourFichierCPP
-  ?!@stringset ioIncludesForHeader
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
 :
-  ioImportedSemanticsComponents := [@stringset empty] ;
-  ioImportedOptionComponents := [@stringset empty] ;
-  ioImportedGrammarComponents := [@stringset empty] ;
+  outActionMap := [@ActionMap empty] ;
+  outInclusionsForHeaderFile := [@stringset empty] ;
+  outInclusionsForImplementationFile := [@stringset empty] ;
+  outImportedSemanticsComponents := [@stringset empty] ;
+  outImportedOptionComponents := [@stringset empty] ;
+  outImportedGrammarComponents := [@stringset empty] ;
   tableEnAvant := [@typeTableEnAvant empty] ;
-  outExternClassesDirectoryMap := [@M_externClassesDirectories empty] ;
   ioOptionsComponentsMapForUse := [@M_optionComponents empty] ;
+#--- Create model map, and enter builtin types
+  outModelMap := [@ModelMap empty] ;
+  @lstring key [new !"char" ! here] ;
+  @TypeModel t := [@CharModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"string" ! here] ;
+  t := [@StringModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"uint" ! here] ;
+  t := [@UIntModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"sint" ! here] ;
+  t := [@SIntModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"bool" ! here] ;
+  t := [@BoolModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"double" ! here] ;
+  t := [@DoubleModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"lchar" ! here] ;
+  t := [@LCharModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"lstring" ! here] ;
+  t := [@LStringModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"luint" ! here] ;
+  t := [@LUIntModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"lsint" ! here] ;
+  t := [@LSIntModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"lbool" ! here] ;
+  t := [@LBoolModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"ldouble" ! here] ;
+  t := [@LDoubleModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"location" ! here] ;
+  t := [@LocationModel new] ;
+  [!?outModelMap insertKey !key !t] ;
+  key := [@lstring new !"stringset" ! here] ;
+  t := [@StringsetModel new] ;
+  [!?outModelMap insertKey !key !t] ;
 #--- enter in semantics entities map the galgas types corresponding to keywords
   enterBuiltinTypes ?ioComponentSemanticsEntitiesMap ;
 #--- Loop on import instructions
@@ -690,7 +724,7 @@ rule <import_headers_semantics_and_grammars>
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
-      ioImportedOptionComponents += ![optionComponentName value] ;
+      outImportedOptionComponents += ![optionComponentName value] ;
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
       @M_cli_options stringOptionsMap ;
@@ -712,7 +746,7 @@ rule <import_headers_semantics_and_grammars>
       $grammar$ ;
       @lstring grammarComponentName ;
       $identifier$ ? grammarComponentName ;
-      ioImportedGrammarComponents += ![grammarComponentName value] ;
+      outImportedGrammarComponents += ![grammarComponentName value] ;
       @M_grammarComponents grammarComponentsMap ;
       select
         grammarComponentsMap := ioGrammarComponentsMap ;
@@ -746,14 +780,14 @@ rule <import_headers_semantics_and_grammars>
       @lstring extension := [@lstring new !"h" !here] ;
       @lstring fileNameWithPath ;
       action buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
-      tableFichiersEnTetePourFichierCPP += ![fileNameWithPath value] ;
+      outInclusionsForImplementationFile += ![fileNameWithPath value] ;
     or
       $semantics$ ;
       @lstring componentName ;
       $identifier$ ? componentName ;
-      ioImportedSemanticsComponents += ![componentName value] ;
+      outImportedSemanticsComponents += ![componentName value] ;
       select
-        if not [ioIncludesForHeader hasKey ![componentName value]] then
+        if not [outImportedSemanticsComponents hasKey ![componentName value]] then
           @M_semanticsEntitiesForUse importedEntities ;
           @M_optionComponents importedOptionsComponentsMap ;
           [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?importedOptionsComponentsMap ?importedEntities] ;
@@ -762,7 +796,7 @@ rule <import_headers_semantics_and_grammars>
               [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
             end if ;
           end foreach ;
-          ioIncludesForHeader += ![componentName value] ;
+          outInclusionsForHeaderFile += ![componentName value] ;
         #--- Check that every used option component is already declared
           foreach importedOptionsComponentsMap (??@lstring optionComponentMap ...) :
             if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap value]] then
@@ -786,20 +820,30 @@ rule <import_headers_semantics_and_grammars>
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
-        ioIncludesForHeader += ![componentName value] ;
+        outInclusionsForHeaderFile += ![componentName value] ;
       end select ;
     end select ;
     $;$ ;
   end repeat ;
+#-------------- Build Option Map for Use
+#  @M_optionComponents optionsComponentsMapForUse [empty] ;
+##  foreach includedOptionComponents (??@string kKey) :
+#    @lstring key [new !kKey !here] ;
+#    @M_cli_options boolOptionsMap ;
+#    @M_cli_options uintOptionsMap ;
+#    @M_cli_options stringOptionsMap ;
+#    [!?ioOptionsComponentsMap searchKey !key ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+#    [!?optionsComponentsMapForUse insertKey !key !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
+#  end foreach ;
 #--- Check that every option component used by an imported component is declared here
 label importSemantics
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
-  !@stringset outIcludedOptionComponents
+  !@stringset outIncludedOptionComponents
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
   outIncludedSemanticsComponents := [@stringset empty] ;
-  outIcludedOptionComponents := [@stringset empty] ;
+  outIncludedOptionComponents := [@stringset empty] ;
   repeat
   while
     $import$ ;
@@ -807,17 +851,12 @@ label importSemantics
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
-      outIcludedOptionComponents += ![optionComponentName value] ;
+      outIncludedOptionComponents += ![optionComponentName value] ;
       select
       or
         $in$ ;
-        @lstring fileName ;
-        $literal_string$ ? fileName ;
-        @M_optionComponents importedOptionComponentsMap [empty] ;
-        <parse_option_component_for_importing>
-          !fileName
-          !?importedOptionComponentsMap
-        ;
+        $literal_string$ ? * ;
+        <parse_option_component_for_importing> parse ;
      end select ;
     or
       $grammar$ ;
@@ -834,15 +873,13 @@ label importSemantics
       $identifier$ ?componentName ;
       outIncludedSemanticsComponents += ![componentName value] ;
       select
-        if not [ioSemanticsComponentsMap hasKey ![componentName value]] then
-          @M_semanticsEntitiesForUse importedEntities ;
-          [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
-          foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-            if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
-              [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
-            end if ;
-          end foreach ;
-        end if ;
+        @M_semanticsEntitiesForUse importedEntities ;
+        [!?ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedEntities] ;
+        foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
+          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
+            [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
+          end if ;
+        end foreach ;
       or
         $in$ ;
         @lstring sourceFile ;
@@ -878,7 +915,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
-  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $routine$ ;
 #---- Nom de la routine -------------------------------------------------------
@@ -1139,7 +1175,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $abstract$ ;
   $class$ ;
@@ -1429,7 +1464,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $class$ ;
 #--- Nom de la classe
@@ -3689,7 +3723,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $map$ ;
   @lstring nomTable ;
@@ -4282,7 +4315,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $list$ ;
   @lstring listTypeName ;
@@ -4413,7 +4445,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $extern$ ;
 #--- Parse extern type name
@@ -4796,7 +4827,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $action$ ;
   @lstring nomAction ;
@@ -4860,7 +4890,6 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ?!@M_externClassesDirectories unused ioExternClassesDirectoryMap
 :
   $enum$ ;
 #--- Enum type name
