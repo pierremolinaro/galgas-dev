@@ -103,6 +103,9 @@ label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
   !@stringset outIcludedOptionComponents
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
 ;
