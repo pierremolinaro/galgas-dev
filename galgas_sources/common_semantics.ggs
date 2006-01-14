@@ -321,8 +321,8 @@ class @ClassModel extends @TypeModel {
 
 map @ModelMap {
   @TypeModel mType ;
-  insert insertKey error message "the '%K' type has been already declared in %L" ;
-  search searchKey error message "the '%K' type is not declared" ;
+  insert insertKey error message "the '@%K' type has been already declared in %L" ;
+  search searchKey error message "the '@%K' type is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
