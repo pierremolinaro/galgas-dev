@@ -108,6 +108,8 @@ label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
   !@stringset outIcludedOptionComponents
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
 
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
@@ -477,27 +479,17 @@ rule <galgas_component>
     @typeTableNomRoutinesDeclarees UNUSED_tableNomRoutinesDeclarees [empty] ;
     @typeTableEnAvant UNUSED_tableEnAvant := tableEnAvant ;
     @M_semanticsEntitiesForUse UNUSED_componentSemanticsEntitiesMap := componentEntitiesMap ;
-    @ModelMap localTypeMap [empty] ;
-    @ActionMap localActionMap [empty] ;
     repeat
     while
     <semantics_declaration> importSemantics
-      !?localTypeMap
-      !?localActionMap
+      !?modelMap
+      !?actionMap
       !?UNUSED_componentSemanticsEntitiesMap
       !?UNUSED_tableNomRoutinesDeclarees
       !?UNUSED_tableEnAvant
       !?UNUSED_tableRoutinesAimplementer
     ;
     end repeat ;
-  #--- add imported types
-    foreach localTypeMap (??@lstring kKey ??@TypeModel kType) :
-      [!?modelMap insertKey !kKey !kType] ;
-    end foreach ;
-  #--- add actions
-    foreach localActionMap (??@lstring kKey ??@L_signature kSignature ??@bool kIsExtern) :
-      [!?actionMap insertKey !kKey !kSignature !kIsExtern] ;
-    end foreach ;
   #--- Second pass on semantic declarations
   rewind
     @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
@@ -515,18 +507,6 @@ rule <galgas_component>
       ; 
     end repeat ;
   end parse ;
-#--- Enter component entities in map
-  if not [ioSemanticsComponentsMap hasKey ![componentName value]] then
-    [!?ioSemanticsComponentsMap insertKey
-      !componentName
-      !localTypeMap
-      !localActionMap
-      !includedSemanticsComponents
-      !includedOptionComponents
-      !optionsComponentsMapForUse
-      !componentEntitiesMap
-    ] ;
-  end if ;
 #--- End of file
   $end$ ;
   $semantics$ ;
@@ -571,23 +551,26 @@ label importSemantics
   enterBuiltinTypes ?componentSemanticsEntitiesMap ;
   @stringset includedSemanticsComponents ;
   @stringset includedOptionComponents ;
+  @ModelMap modelMap ;
+  @ActionMap actionMap ;
 
   <import_headers_semantics_and_grammars> importSemantics
     !?ioSemanticsComponentsMap
     ?includedSemanticsComponents
     ?includedOptionComponents
+    ?modelMap
+    ?actionMap
     !?componentSemanticsEntitiesMap
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
   @typeTableEnAvant tableEnAvant [empty] ;
-  @ModelMap modelMap [empty] ;
-  @ActionMap actionMap [empty] ;
   repeat
   while
     <semantics_declaration> importSemantics
       !?modelMap
       !?actionMap
+
       !?componentSemanticsEntitiesMap
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
@@ -841,10 +824,16 @@ label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
   !@stringset outIncludedOptionComponents
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
+  outActionMap := [@ActionMap empty] ;
+  outModelMap := [@ModelMap empty] ;
   outIncludedSemanticsComponents := [@stringset empty] ;
   outIncludedOptionComponents := [@stringset empty] ;
+  @stringset alreadyImportedSemanticsComponents [empty] ;
   repeat
   while
     $import$ ;
@@ -890,6 +879,8 @@ label importSemantics
           [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
         end if ;
       end foreach ;
+    #--- Import semantics component
+      importSemanticsComponent !?ioSemanticsComponentsMap !?outModelMap !?outActionMap !?alreadyImportedSemanticsComponents !componentName ;
     end select ;
     $;$ ;
   end repeat ;
@@ -1136,18 +1127,18 @@ label importSemantics
 #--- The direct super class is last inserted one 
   [!?tableDesClassesAncetres insertKey !superClassName] ;
 #---
-##  @TypeModel type ;
-#  [!?ioModelMap searchKey !superClassName ?type] ;
-#  extract type :
-#  when @ClassModel (??* ??@stringset superClasses ??@typeListModel attributeList ??@classMessageMap messageMap) ->
-#    outSuperClasses := superClasses ;
-#    outAttributeList := attributeList ;
-#    outMessageMap := messageMap ;
-#  else
-#    error superClassName: "the '@" . [superClassName value] . "' type is not a class"
-#     -> outSuperClasses, outAttributeList, outMessageMap ;
-#  end extract ;
-#  outSuperClasses += ![superClassName value] ;
+  @TypeModel type ;
+  [!?ioModelMap searchKey !superClassName ?type] ;
+  extract type :
+  when @ClassModel (??* ??@stringset superClasses ??@typeListModel attributeList ??@classMessageMap messageMap) ->
+    outSuperClasses := superClasses ;
+    outAttributeList := attributeList ;
+    outMessageMap := messageMap ;
+  else
+    error superClassName: "the '@" . [superClassName value] . "' type is not a class"
+     -> outSuperClasses, outAttributeList, outMessageMap ;
+  end extract ;
+  outSuperClasses += ![superClassName value] ;
 
   outMessageMap := [@classMessageMap empty] ;
   outSuperClasses := [@stringset empty] ;
@@ -3718,14 +3709,14 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $map$ ;
-  @lstring nomTable ;
-  $type_name$ ? nomTable ;
+  @lstring mapTypeName ;
+  $type_name$ ? mapTypeName ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey ![nomTable value]]
-         | [ioComponentSemanticsEntitiesMap hasKey ![nomTable value]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
-      [!?tableEnAvant insertKey !nomTable !t] ;
+    if not ([tableEnAvant hasKey ![mapTypeName value]]
+         | [ioComponentSemanticsEntitiesMap hasKey ![mapTypeName value]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedMapType new !mapTypeName] ;
+      [!?tableEnAvant insertKey !mapTypeName !t] ;
     end if ;
   or
   #--- map generique C++ utilisee
@@ -3851,14 +3842,14 @@ rule <semantics_declaration>
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
   #--- Insertion dans la map des entites utilisables
-    @AC_galgasType c := [@typeGalgasMapType new !nomTable
+    @AC_galgasType c := [@typeGalgasMapType new !mapTypeName
                                                 !listeTousAttributsSemantiques
                                                 !tableMethodesBloc
                                                 !mapMethodMap] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !nomTable !entite] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
   #--- Insertion dans la map des classes definies dans le fichier source courant
-    @typeEntityToGenerate def := [@typeDefinitionTableAimplementer new !nomTable
+    @typeEntityToGenerate def := [@typeDefinitionTableAimplementer new !mapTypeName
                                                                        !listeTousAttributsSemantiques
                                                                        !listeTypeeAttributsExternesCourants
                                                                        !cppClassName
@@ -3982,15 +3973,15 @@ rule <semantics_declaration>
       end foreach ;
     end if ;
   #--- Insertion dans la map des entites utilisables
-    @AC_galgasType c := [@typeGalgasMapType new !nomTable
+    @AC_galgasType c := [@typeGalgasMapType new !mapTypeName
                                                 !listeTousAttributsSemantiques
                                                 !tableMethodesBloc
                                                 !mapMethodMap] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !nomTable !entite] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
   #--- Insertion dans la map des classes definies dans le fichier source courant
     @typeEntityToGenerate def := [@C_mapToImplement new !stateValues
-                                                        !nomTable
+                                                        !mapTypeName
                                                         !listeTousAttributsSemantiques
                                                         !listeTypeeAttributsExternesCourants
                                                         !insertMethodList
@@ -4007,13 +3998,13 @@ label importSemantics
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
   $map$ ;
-  @lstring nomTable ;
-  $type_name$ ? nomTable ;
+  @lstring mapTypeName ;
+  $type_name$ ? mapTypeName ;
   select
     $;$ ;
-    if not([tableEnAvant hasKey ![nomTable value]] | [ioComponentSemanticsEntitiesMap hasKey ![nomTable value]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedMapType new !nomTable] ;
-      [!?tableEnAvant insertKey !nomTable !t] ;
+    if not([tableEnAvant hasKey ![mapTypeName value]] | [ioComponentSemanticsEntitiesMap hasKey ![mapTypeName value]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedMapType new !mapTypeName] ;
+      [!?tableEnAvant insertKey !mapTypeName !t] ;
     end if ;
   or
   #--- map generique C++ utilisee
@@ -4139,12 +4130,14 @@ label importSemantics
       [!?mapMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
   #--- Insertion dans la map des entites utilisables
-    @AC_galgasType c := [@typeGalgasMapType new !nomTable
+    @AC_galgasType c := [@typeGalgasMapType new !mapTypeName
                                                 !listeTousAttributsSemantiques
                                                 !tableMethodesBloc
                                                 !mapMethodMap] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !nomTable !entite] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
+    @TypeModel type := [@MapModel new ! attributeListModel] ;
+    [!?ioModelMap insertKey !mapTypeName !type] ;
     $}$ ;
   or
     ${$ ;
@@ -4232,12 +4225,14 @@ label importSemantics
       end if ;
     end repeat ;
   #--- Insertion dans la map des entites utilisables
-    @AC_galgasType c := [@typeGalgasMapType new !nomTable
+    @AC_galgasType c := [@typeGalgasMapType new !mapTypeName
                                                 !listeTousAttributsSemantiques
                                                 !tableMethodesBloc
                                                 !mapMethodMap] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !nomTable !entite] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
+    @TypeModel type := [@MapModel new ! attributeListModel] ;
+    [!?ioModelMap insertKey !mapTypeName !type] ;
     $}$ ;
   end select ;
 end rule ;

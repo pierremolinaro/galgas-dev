@@ -219,6 +219,16 @@ class @ListModel extends @TypeModel {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  M A P    M O D E L                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @MapModel extends @TypeModel {
+  @typeListModel mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  E N U M    M O D E L                                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -2056,11 +2066,15 @@ routine importSemanticsComponent
     end foreach ;
   #--- Add imported types
     foreach modelMap (??@lstring kKey ??@TypeModel kType) :
-      [!?ioModelMap insertKey !kKey !kType] ;
+      if not [ioModelMap hasKey ![kKey value]] then
+        [!?ioModelMap insertKey !kKey !kType] ;
+      end if ;
     end foreach ;
   #--- Add actions
     foreach actionMap (??@lstring kKey ??@L_signature kSignature ??@bool kIsExtern) :
-      [!?ioActionMap insertKey !kKey !kSignature !kIsExtern] ;
+      if not [ioActionMap hasKey ![kKey value]] then
+        [!?ioActionMap insertKey !kKey !kSignature !kIsExtern] ;
+      end if ;
     end foreach ;
   #--- Flag component as imported
     ioAlreadyImportedSemanticsComponents += ![inSemanticsComponentName value] ;
