@@ -507,6 +507,19 @@ rule <galgas_component>
       ; 
     end repeat ;
   end parse ;
+#--- Enter component entities in map
+  if not [ioSemanticsComponentsMap hasKey ![componentName value]] then
+    @M_optionComponents optionsComponentsMap [empty] ;
+    [!?ioSemanticsComponentsMap insertKey
+      !componentName
+      !modelMap
+      !actionMap
+      !includedSemanticsComponents
+      !includedOptionComponents
+      !optionsComponentsMap
+      !componentEntitiesMap
+    ] ;
+  end if ;
 #--- End of file
   $end$ ;
   $semantics$ ;
@@ -782,7 +795,7 @@ rule <import_headers_semantics_and_grammars>
     or
       $semantics$ ;
       @lstring componentName ;
-      $identifier$ ? componentName ;
+      $identifier$ ?componentName ;
       select
       or
         $in$ ;
