@@ -199,39 +199,41 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                  << "#define " << aNomClasse << "_DEFINED\n\n" ;
 
 //--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
-  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
+  GGS_typeSuperClassesMap::element_type * superClassName = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer l'en tete de la declaration de la classe abstraite
   generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 << "class cPtr_" << aNomClasse ;
-  if (mereDirecte == NULL) {
+  if (superClassName == NULL) {
     generatedZone2 << " : public C_GGS_Object {\n" ;
   }else{
-    macroValidPointer (mereDirecte) ;
-    generatedZone2 << " : public cPtr_" << mereDirecte->mKey << " {\n"
-                   << "  private : typedef cPtr_" << mereDirecte->mKey << " inherited ;\n" ;
+    macroValidPointer (superClassName) ;
+    generatedZone2 << " : public cPtr_" << superClassName->mKey << " {\n"
+                   << "  private : typedef cPtr_" << superClassName->mKey << " inherited ;\n" ;
   }
-
 
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (20000) ;
-//--- Engendrer la declaration du constructeur (uniquement si il y a des attributs)
+//--- Generate constructor
   GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
-  if (current != NULL) {
-    generatedZone3 << "  public : cPtr_" << aNomClasse << " (" ;
-    bool premier = true ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
-      if (premier) {
-        premier = false ;
-       }else{
-        generatedZone3 << ",\n                                " ;
-      }
-      generatedZone3 << "const " ;
-      current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
-      current = current->nextObject () ;
+  generatedZone3 << "  public : cPtr_" << aNomClasse << " (" ;
+  bool first = true ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (first) {
+      first = false ;
+    }else{
+      generatedZone3 << ",\n                                " ;
     }
-    generatedZone3 << ") ;\n" ;
+    generatedZone3 << "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
+    current = current->nextObject () ;
   }
+  if (first) {
+    generatedZone3 << "LOCATION_ARGS" ;
+  }else{
+    generatedZone3 << " COMMA_LOCATION_ARGS" ;
+  }
+  generatedZone3 << ") ;\n" ;
   
 //--- Engendrer la declaration des attributs
   current = aListeAttributsCourants.firstObject () ;
@@ -297,62 +299,64 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                                   const bool inGenerateDebug) const {
   inCppFile.writeCTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
-//--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
-  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
+//--- Super class (last inserted in ancestor map) : NULL if no super class
+  GGS_typeSuperClassesMap::element_type * superClassName = mAncestorClassesMap.lastObject () ;
 
-//--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
+//--- Generate Constructor
   GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
-  if (current != NULL) {
-    inCppFile << "cPtr_" << aNomClasse << "::\n"
-                 "cPtr_" << aNomClasse << " (" ;
-    sint16 numeroVariable = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
-      if (numeroVariable > 0) {
-        inCppFile << ",\n                                " ;
-      }
-      inCppFile << "const " ;
-      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "argument_" << numeroVariable ;
-      current = current->nextObject () ;
-      numeroVariable ++ ;
+  inCppFile << "cPtr_" << aNomClasse << "::\n"
+               "cPtr_" << aNomClasse << " (" ;
+  sint16 variableIndex = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (variableIndex > 0) {
+      inCppFile << ",\n                                " ;    
     }
-    numeroVariable = 0 ;
-    const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
-    current = aListeTousAttributsNonExternes.firstObject () ;
-    inCppFile << ")" ;
-    bool engendrerVirgule = false ;
-  //--- Appel du constructeur de la classe mere, si il y en a une
-    if (nombreArgumentsHerites > 0) {
-      macroValidPointer (mereDirecte) ;
-      inCppFile << "\n:"
-                   "cPtr_" << mereDirecte->mKey << " (" ;
-      for (sint32 i=0 ; i<nombreArgumentsHerites ; i++)  {
-        if (i != 0) {
-          inCppFile << ", " ;
-        }
-        inCppFile << "argument_" << numeroVariable ;
-        macroValidPointer (current) ;
-        current = current->nextObject () ;
-        numeroVariable ++ ;
-      }
-      inCppFile << ')' ;
-      engendrerVirgule = true ;
-    }
-    while (current != NULL) {
-      if (engendrerVirgule) {
-        inCppFile << ",\n" ;
-      }else{
-        inCppFile << "\n:" ;
-        engendrerVirgule = true ;
-      }
-      macroValidPointer (current) ;
-      inCppFile << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
-      numeroVariable ++ ;
-      current = current->nextObject () ;
-    }
-    inCppFile << " {\n}\n\n" ;
+    inCppFile << "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "argument_" << variableIndex ;
+    current = current->nextObject () ;
+    variableIndex ++ ;
   }
+  if (variableIndex > 0) {
+    inCppFile << " COMMA_LOCATION_ARGS" ;    
+  }else{
+    inCppFile << "LOCATION_ARGS" ;
+  }
+  inCppFile << ")" ;
+  const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
+//--- Call super class constructor
+  inCppFile << "\n:" ;
+  if (superClassName == NULL) {
+    inCppFile << "C_GGS_Object" ;
+  }else{
+    macroValidPointer (superClassName) ;
+    inCppFile << "cPtr_" << superClassName->mKey ;
+  }
+  inCppFile << " (" ;
+  variableIndex = 0 ;
+  for (sint32 i=0 ; i<nombreArgumentsHerites ; i++)  {
+    inCppFile << "argument_" << variableIndex ;
+    inCppFile << ", " ;
+    macroValidPointer (current) ;
+    current = current->nextObject () ;
+    variableIndex ++ ;
+  }
+  if (variableIndex == 0) {
+    inCppFile << "THERE" ;
+  }else{
+    inCppFile << " COMMA_THERE" ;
+  }
+  inCppFile << ")" ;
+  while (current != NULL) {
+    inCppFile << ",\n" ;
+    macroValidPointer (current) ;
+    inCppFile << current->aNomAttribut << " (argument_" << variableIndex << ")" ;
+    variableIndex ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << " {\n}\n\n" ;
 
 //--- Pour chaque methode non abstraite, engendrer son implementation
   generateClassMethodsImplementation (mMethodsMap, inCppFile, aNomClasse, inTargetFileName,
@@ -505,21 +509,23 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Engendrer la declaration du constructeur (uniquement si il y a des attributs)
   C_String generatedZone3 ;
   GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
-  if (current != NULL) {
-    generatedZone3 << "  public : cPtr_" << aNomClasse << " (" ;
-    bool premier = true ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
-      if (premier) {
-        premier = false ;
-       }else{
-        generatedZone3 << ",\n                                " ;
-      }
-      generatedZone3 << "const " ;
-      current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
-      current = current->nextObject () ;
+  generatedZone3 << "  public : cPtr_" << aNomClasse << " (" ;
+  bool first = true ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (first) {
+      first = false ;
+    }else{
+      generatedZone3 << ",\n                                " ;
     }
-    generatedZone3 << ") ;\n" ;
+    generatedZone3 << "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
+    current = current->nextObject () ;
+  }
+  if (first) {
+    generatedZone3 << "LOCATION_ARGS) ;\n" ;
+  }else{
+    generatedZone3 << " COMMA_LOCATION_ARGS) ;\n" ;
   }
   
 //--- Engendrer la declaration des attributs
@@ -567,47 +573,62 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "    public : static cPtr_" << aNomClasse
           << " * constructor_new (" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
-  sint32 numeroVariable = 0 ;
+  sint32 variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) {
+    if (variableIndex > 0) {
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
-    numeroVariable ++ ;
+    variableIndex ++ ;
+  }
+  if (variableIndex > 0) {
+    inHfile << " COMMA_LOCATION_ARGS" ;
+  }else{
+    inHfile << "LOCATION_ARGS" ;
   }
   inHfile << ") ;\n"
              "  #else\n"
              "    public : inline static cPtr_" << aNomClasse
           << " * constructor_new (" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
-  numeroVariable = 0 ;
+  variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) {
+    if (variableIndex > 0) {
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
-    numeroVariable ++ ;
+    variableIndex ++ ;
+  }
+  if (variableIndex > 0) {
+    inHfile << " COMMA_LOCATION_ARGS" ;
+  }else{
+    inHfile << "LOCATION_ARGS" ;
   }
   inHfile << ") {\n"
              "      return new cPtr_" << aNomClasse << "(" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
-  numeroVariable = 0 ;
+  variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) {
+    if (variableIndex > 0) {
       inHfile << ",\n                                " ;
     }
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
-    numeroVariable ++ ;
+    variableIndex ++ ;
+  }
+  if (variableIndex > 0) {
+    inHfile << " COMMA_THERE" ;
+  }else{
+    inHfile << "THERE" ;
   }
   inHfile << ") ;\n"
              "    }\n"
@@ -642,61 +663,59 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
   inCppFile.writeCTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
 //--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
-  GGS_typeSuperClassesMap::element_type * mereDirecte = mAncestorClassesMap.lastObject () ;
+  GGS_typeSuperClassesMap::element_type * superClassName = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
   GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
-  if (current != NULL) {
-    inCppFile << "cPtr_" << aNomClasse << "::cPtr_" << aNomClasse << " (" ;
-    sint16 numeroVariable = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
-      if (numeroVariable > 0) {
-        inCppFile << ",\n                                " ;
-      }
-      inCppFile << "const " ;
-      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "argument_" << numeroVariable ;
-      current = current->nextObject () ;
-      numeroVariable ++ ;
+  inCppFile << "cPtr_" << aNomClasse << "::cPtr_" << aNomClasse << " (" ;
+  sint32 variableIndex = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (variableIndex > 0) {
+      inCppFile << ",\n                                " ;
     }
-    numeroVariable = 0 ;
-    const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
-    current = aListeTousAttributsNonExternes.firstObject () ;
-    inCppFile << ")" ;
-    bool engendrerVirgule = false ;
-  //--- Appel du constructeur de la classe mere, si il y en a une
-    if (nombreArgumentsHerites > 0) {
-      macroValidPointer (mereDirecte) ;
-      inCppFile << "\n:"
-                   "cPtr_" << mereDirecte->mKey << " (" ;
-      for (sint32 i=0 ; i<nombreArgumentsHerites ; i++)  {
-        if (i != 0) {
-          inCppFile << ", " ;
-        }
-        inCppFile << "argument_" << numeroVariable ;
-        macroValidPointer (current) ;
-        current = current->nextObject () ;
-        numeroVariable ++ ;
-      }
-      inCppFile << ')' ;
-      engendrerVirgule = true ;
-    }
-    while (current != NULL) {
-      if (engendrerVirgule) {
-        inCppFile << ",\n" ;
-      }else{
-        inCppFile << "\n:" ;
-        engendrerVirgule = true ;
-      }
-      macroValidPointer (current) ;
-      inCppFile << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
-      numeroVariable ++ ;
-      current = current->nextObject () ;
-    }
-    inCppFile << " {\n"
-                 "}\n\n" ;
+    inCppFile << "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "argument_" << variableIndex ;
+    current = current->nextObject () ;
+    variableIndex ++ ;
   }
+  if (variableIndex == 0) {
+    inCppFile << "LOCATION_ARGS)" ;
+  }else{
+    inCppFile << " COMMA_LOCATION_ARGS)" ;
+  }
+  variableIndex = 0 ;
+  const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
+//--- Appel du constructeur de la classe mere, si il y en a une
+  macroValidPointer (superClassName) ;
+  inCppFile << "\n:"
+               "cPtr_" << superClassName->mKey << " (" ;
+  variableIndex = 0 ;
+  for (sint32 i=0 ; i<nombreArgumentsHerites ; i++)  {
+    if (variableIndex > 0) {
+      inCppFile << ", " ;
+    }
+    inCppFile << "argument_" << variableIndex ;
+    macroValidPointer (current) ;
+    current = current->nextObject () ;
+    variableIndex ++ ;
+  }
+  if (variableIndex > 0) {
+    inCppFile << " COMMA_THERE)" ;
+  }else{
+    inCppFile << "THERE)" ;
+  }
+  while (current != NULL) {
+    inCppFile << ",\n" ;
+    macroValidPointer (current) ;
+    inCppFile << current->aNomAttribut << " (argument_" << variableIndex << ")" ;
+    variableIndex ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << " {\n"
+               "}\n\n" ;
 
 //--- Pour chaque methode non abstraite, engendrer son implementation
   generateClassMethodsImplementation (mMethodsMap, inCppFile, aNomClasse, inTargetFileName,
@@ -738,32 +757,42 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
             << " * GGS_" << aNomClasse
             << "::\n    constructor_new (" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
-  sint32 numeroVariable = 0 ;
+  variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) {
+    if (variableIndex > 0) {
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
-    numeroVariable ++ ;
+    variableIndex ++ ;
+  }
+  if (variableIndex > 0) {
+    inCppFile << " COMMA_LOCATION_ARGS" ;
+  }else{
+    inCppFile << "LOCATION_ARGS" ;
   }
   inCppFile << ") {\n"
             << "    cPtr_" << aNomClasse
             << " * ptr_ = (cPtr_" << aNomClasse << " *) NULL ;\n"
                "    macroMyNew (ptr_, cPtr_" << aNomClasse << " (" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
-  numeroVariable = 0 ;
+  variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) {
+    if (variableIndex > 0) {
       inCppFile << ",\n                                " ;
     }
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
-    numeroVariable ++ ;
+    variableIndex ++ ;
+  }
+  if (variableIndex > 0) {
+    inCppFile << " COMMA_THERE" ;
+  }else{
+    inCppFile << "THERE" ;
   }
   inCppFile << ")) ;\n"
                "    return ptr_ ;\n"

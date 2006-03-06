@@ -105,8 +105,11 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  }\n"
              "  private : sint32 * mCountReference ;\n"
 
-//--- Copy constructor and assignment operator declaration
+//--- Constructors and assignment operator declaration
              "  public : GGS_" << aNomListe << " (void) ; // Default Constructor\n"
+             "  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+             "    public : GGS_" << aNomListe << " (LOCATION_ARGS) ; // Constructor for debug mode\n"
+             "  #endif\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " &) ; // Copy constructor\n"
              "  public : void operator = (const GGS_" << aNomListe << " &) ; // Assignment operator\n"
 
@@ -116,7 +119,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Declare constructor 'empty'
              "//--- Constructor 'empty'\n"
-             "  public : static GGS_" << aNomListe << " constructor_empty (void) ;\n"
+             "  public : static GGS_" << aNomListe << " constructor_empty (LOCATION_ARGS) ;\n"
 
 //--- Get first item
              "//--- Get first item\n"
@@ -223,7 +226,7 @@ void cPtr_C_listTypeToImplement
 // ------------- List Implementation -----------------
   inCppFile.writeCTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
-//--- Engendrer le constructeur par defaut
+//--- Generate default constructor
   inCppFile << "GGS_" << aNomListe << "\n"
                "::GGS_" << aNomListe
            << " (void) { // Default Constructor\n"
@@ -232,6 +235,19 @@ void cPtr_C_listTypeToImplement
               "  mListLength = 0 ;\n"
               "  mCountReference = (sint32 *) NULL ;\n"
               "}\n\n" ;
+  inCppFile.writeCHyphenLineComment () ;
+
+//--- Generate constructor for debug mode
+  inCppFile << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+               "  GGS_" << aNomListe << "\n"
+               "::GGS_" << aNomListe
+           << " (UNUSED_LOCATION_ARGS) {\n"
+              "    mFirstItem = (element_type *) NULL ;\n"
+              "    mLastItem = (element_type *) NULL ;\n"
+              "    mListLength = 0 ;\n"
+              "    mCountReference = (sint32 *) NULL ;\n"
+              "  }\n"
+              "#endif\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
 //--- Engendrer le destructeur
@@ -412,7 +428,7 @@ void cPtr_C_listTypeToImplement
 
 //--- Implement constructor 'new'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_empty (void) {\n"
+               "constructor_empty (UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  macroMyNew (result.mCountReference, sint32 (1)) ;\n"
                "  return result ;\n"

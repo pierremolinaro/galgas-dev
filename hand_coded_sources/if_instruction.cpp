@@ -401,7 +401,12 @@ generateExpression (AC_OutputStream & ioCppFile) {
     current->mExpression (HERE)->generateExpression (ioCppFile) ;
     current = current->nextObject () ;
   }
-  ioCppFile << ')' ;
+  if (first) {
+    ioCppFile << "HERE" ;
+  }else{
+    ioCppFile << " COMMA_HERE" ;
+  }
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*

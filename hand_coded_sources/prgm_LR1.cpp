@@ -25,11 +25,11 @@
 //---------------------------------------------------------------------------*
 
 void galgas_LR1_prgm::_beforeParsing (void) {
-  mLexiqueMapForUse = GGS_M_lexiqueComponents::constructor_empty () ;
-  mSemanticsComponentsMap = GGS_M_semanticsComponents::constructor_empty () ;
-  mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_empty () ;
-  mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_empty () ;
-  mOptionComponentsMap = GGS_M_optionComponents::constructor_empty () ;
+  mLexiqueMapForUse = GGS_M_lexiqueComponents::constructor_empty (HERE) ;
+  mSemanticsComponentsMap = GGS_M_semanticsComponents::constructor_empty (HERE) ;
+  mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_empty (HERE) ;
+  mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_empty (HERE) ;
+  mOptionComponentsMap = GGS_M_optionComponents::constructor_empty (HERE) ;
   mTerminalIO.mFileGenerationStartDir = mScanner_.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = mTerminalIO.mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
