@@ -103,7 +103,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Get object pointer (for method call)\n"
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "//--- 'empty' constructor\n"
-             "  public : static GGS_" << aNomTable << " constructor_empty (void) ;\n"
+             "  public : static GGS_" << aNomTable << " constructor_empty (LOCATION_ARGS) ;\n"
              "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n" ;
 //--- Declaring insert methods
@@ -236,7 +236,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- 'constructor_empty' static method
   inCppFile.writeCHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (void) {\n"
+  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomTable << " result ;\n"
                "  macroMyNew (result.mReferenceCountPtr, sint32 (1)) ;\n"
                "  return result ;\n"
@@ -249,7 +249,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  element_type * p = (element_type *) inPtr ;\n"
                "  bool extension = false ; // Unused here\n"
                "  sint32 index = -1 ; // Unused here\n"
-               "  GGS_location existingKeyLocation ; // Unused here\n"
+               "  GGS_location existingKeyLocation HERE_IN_PARENTHESIS ; // Unused here\n"
                "  internalInsert (p->mKey, (void *) & p->mInfo, mRoot, extension, index, existingKeyLocation) ;\n"
                "}\n\n" ;
 
@@ -283,14 +283,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    bool extension = false ; // Unused here\n"
-               "    GGS_location existingKeyLocation ;\n"
+               "    GGS_location existingKeyLocation HERE_IN_PARENTHESIS ;\n"
                "    internalInsert (inKey, (void *) & info, mRoot, extension, index, existingKeyLocation) ;\n"
                "    if (index < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation) ;\n"
                "     }\n"
                "  }\n"
                "  if (outIndex != NULL) {\n"
-               "    * outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
+               "    * outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey COMMA_HERE) ;\n"
                "  }\n"
                "}\n\n" ;
 
@@ -337,7 +337,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    if (outIndex != NULL) {\n"
-               "      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mIndex), inKey) ;\n"
+               "      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mIndex), inKey COMMA_HERE) ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;
@@ -477,7 +477,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Get object pointer\n"
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "//--- Handle 'empty' constructor\n"
-             "  public : static GGS_" << aNomTable << " constructor_empty (void) ;\n" ;
+             "  public : static GGS_" << aNomTable << " constructor_empty (LOCATION_ARGS) ;\n" ;
 
 //--- Declaring search methods
   GGS_insertOrSearchMethodList::element_type * currentMethod = mSearchMethodList.firstObject () ;
@@ -595,7 +595,7 @@ void cPtr_typeDefinitionTableAimplementer
 //--------------------- ENGENDRER LA CLASSE TABLE ----------------------------
   inCppFile.writeCTitleComment (C_String ("Map '") + aNomTable + "'") ;
 
-  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (void) {\n"
+  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomTable << " t ;\n"
                "  t.build () ;\n"
                "  return t ;\n"
@@ -686,7 +686,7 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "    outIndex = GGS_luint (GGS_uint (true, (uint32) info->mEntryIndex), inKey) ;\n"
+    inCppFile << "    outIndex = GGS_luint (GGS_uint (true, (uint32) info->mEntryIndex), inKey COMMA_HERE) ;\n"
                  "  }\n"
                  "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
@@ -754,7 +754,7 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile << "  const sint32 index = " << currentMethod->mMethodName << " (lexique_var_, info, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
     inCppFile << ") ;\n"
-              << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
+              << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey COMMA_HERE) ;\n"
               << "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
