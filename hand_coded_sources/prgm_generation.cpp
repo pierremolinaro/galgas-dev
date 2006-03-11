@@ -129,12 +129,13 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 //--- Generate user includes
   C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2 << "#include \"utilities/F_DisplayException.h\"\n"
-             "#include \"time/C_Timer.h\"\n"
-             "#include \"generic_arraies/TC_UniqueArray.h\"\n"
-             "#include \"command_line_interface/F_Analyze_CLI_Options.h\"\n"
-             "#include \"command_line_interface/mainForLIBPM.h\"\n"
-             "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
-             "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n" ;
+                    "#include \"utilities/MF_MemoryControl.h\"\n"
+                    "#include \"time/C_Timer.h\"\n"
+                    "#include \"generic_arraies/TC_UniqueArray.h\"\n"
+                    "#include \"command_line_interface/F_Analyze_CLI_Options.h\"\n"
+                    "#include \"command_line_interface/mainForLIBPM.h\"\n"
+                    "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
+                    "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n" ;
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
@@ -308,14 +309,20 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
           << inSourceFileExtension <<
              "\",\n"
              "                               IOparameters.mCocoaOutput) ;\n"
-             "  " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
-          << " compiler (IOparameters COMMA_HERE) ;\n"
              "  try{\n"
-					   "	    compiler._prologue () ;\n"
+             "    " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
+          << " * compiler = NULL ;\n"
+             "    macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
+          << " (IOparameters COMMA_HERE)) ;\n"
+					   "	  compiler->_prologue () ;\n"
              "    for (sint32 i=0 ; (i<sourceFilesArray.count ()) && (returnCode == 0) ; i++) {\n"
-             "      compiler.doCompilation (sourceFilesArray (i COMMA_HERE), returnCode) ;\n"
+             "      compiler->doCompilation (sourceFilesArray (i COMMA_HERE), returnCode) ;\n"
              "    }\n"
-					   "	    compiler._epilogue () ;\n"
+					   "	  compiler->_epilogue () ;\n"
+             "    macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << ") ;\n"
+             "	  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+             "      GGS_class::checkAllObjectsHaveBeenReleased () ;\n"
+             "    #endif\n"
              "  }catch (const M_STD_NAMESPACE exception & e) {\n"
              "    F_default_display_exception (e) ;\n"
              "    returnCode = 1 ; // Error code\n"
