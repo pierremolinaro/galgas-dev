@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeEntityToGenerate : public C_GGS_Object {
+class cPtr_typeEntityToGenerate : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual void generatePredeclarations (AC_OutputStream & inHfile) const = 0 ;

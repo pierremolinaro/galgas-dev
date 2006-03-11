@@ -70,7 +70,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     }
     grammarZone2 << "\n//--- Constructor\n"
                       "  public : " << inProgramComponentName  << currentGrammar->mGrammarPostfix.string ()
-                   << " (const C_galgas_io_parameters & inIOparameters) ;\n\n"
+                   << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) ;\n\n"
                       "  public : void doCompilation (const C_String & inSourceFileName_,\n"
                       "                               sint16 & returnCode) ;\n" ;
   //--- Engendrer la declaration des attributs de l'axiome
@@ -183,8 +183,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2.writeCTitleComment ("C O N S T R U C T O R") ;
     generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << "::\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
-                   << " (const C_galgas_io_parameters & inIOparameters) :\n"
-                      "mScanner_ (& mTerminalIO), mTerminalIO (inIOparameters) {\n"
+                   << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :\n"
+                      "mScanner_ (& mTerminalIO COMMA_THERE), mTerminalIO (inIOparameters) {\n"
                       "  mSourceFileExtension_ = \""
                    << inSourceFileExtension << "\" ;\n"
                       "}\n\n" ;
@@ -309,7 +309,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "\",\n"
              "                               IOparameters.mCocoaOutput) ;\n"
              "  " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
-          << " compiler (IOparameters) ;\n"
+          << " compiler (IOparameters COMMA_HERE) ;\n"
              "  try{\n"
 					   "	    compiler._prologue () ;\n"
              "    for (sint32 i=0 ; (i<sourceFilesArray.count ()) && (returnCode == 0) ; i++) {\n"

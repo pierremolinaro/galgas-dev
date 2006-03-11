@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeEmissionParDefaut : public C_GGS_Object {
+class cPtr_typeEmissionParDefaut : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual void generateDefaultToken (const C_String & inLexiqueName,

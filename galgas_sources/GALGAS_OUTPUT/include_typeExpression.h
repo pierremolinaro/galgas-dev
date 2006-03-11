@@ -23,7 +23,7 @@ class GGS_typeExpressionList ;
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeExpression : public C_GGS_Object {
+class cPtr_typeExpression : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual void generateExpression (AC_OutputStream & inCppFile) = 0 ;

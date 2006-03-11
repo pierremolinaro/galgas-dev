@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeConditionLexicale : public C_GGS_Object {
+class cPtr_typeConditionLexicale : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual void generateLexicalCondition (AC_OutputStream & inCppFile) = 0 ;

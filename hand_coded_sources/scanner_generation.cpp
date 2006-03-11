@@ -435,8 +435,8 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
 // --------------------------------------- Constructor
   generatedZone2.writeCTitleComment ("Constructor") ;
   generatedZone2 << inLexiqueClassName << "::\n" << inLexiqueClassName
-          << " (AC_galgas_io * inGalgasInputOutput)\n"
-             ": C_Lexique (inGalgasInputOutput) {\n" ;
+          << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS)\n"
+             ": C_Lexique (inGalgasInputOutput COMMA_THERE) {\n" ;
   generateAttributeInitialization (table_attributs, generatedZone2) ;
   generatedZone2 << "}\n\n" ;
 
@@ -885,7 +885,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
             "//--- Constructor\n"
             "  public : "
          << inLexiqueClassName
-         << " (AC_galgas_io * inGalgasInputOutput) ;\n" ;
+         << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS) ;\n" ;
   generateAttributeDeclaration (table_attributs, generatedZone3) ;
   generatedZone3 << "  public : virtual sint16 terminalVocabularyCount (void) const { return "
            << table_des_terminaux.count ()

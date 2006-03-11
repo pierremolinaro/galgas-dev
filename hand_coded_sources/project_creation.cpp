@@ -504,7 +504,7 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName) {
        "SOURCES += C_String.cpp\n"
        "SOURCES += C_Timer.cpp\n"
        "SOURCES += C_TextFileWrite.cpp\n"
-       "SOURCES += C_GGS_Object.cpp\n"
+       "SOURCES += GGS_class.cpp\n"
        "SOURCES += C_DateTime.cpp\n"
        "SOURCES += F_GetPrime.cpp\n"
        "SOURCES += AC_OutputStream.cpp\n"

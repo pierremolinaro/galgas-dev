@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeInstruction : public C_GGS_Object {
+class cPtr_typeInstruction : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual void generateInstruction (AC_OutputStream & inCppFile,

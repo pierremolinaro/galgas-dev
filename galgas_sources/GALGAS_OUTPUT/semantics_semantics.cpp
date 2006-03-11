@@ -29,7 +29,7 @@
 
 cPtr_typeCplusPlusName::
 cPtr_typeCplusPlusName (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -482,7 +482,7 @@ void GGS_typeCplusPlusNameList
 
 cPtr_typeExpression::
 cPtr_typeExpression (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1395,7 +1395,7 @@ void GGS_L_assignedVariables
 
 cPtr_typeCible::
 cPtr_typeCible (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1820,7 +1820,7 @@ void GGS_typeListeTypesEtNomsArgMethode
 
 cPtr_typeInstruction::
 cPtr_typeInstruction (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -5468,7 +5468,7 @@ void GGS_typeTableNomRoutinesDeclarees::methode_insertKey (C_Lexique & lexique_v
 
 cPtr_typeEntityToGenerate::
 cPtr_typeEntityToGenerate (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*

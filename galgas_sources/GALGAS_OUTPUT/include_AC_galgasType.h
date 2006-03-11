@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_AC_galgasType : public C_GGS_Object {
+class cPtr_AC_galgasType : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,

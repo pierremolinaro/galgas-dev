@@ -57,8 +57,8 @@ C_options_for_galgas_LL1_prgm (const bool inAcceptsDebugOption)
 
 
 galgas_LL1_prgm::
-galgas_LL1_prgm (const C_galgas_io_parameters & inIOparameters) :
-mScanner_ (& mTerminalIO), mTerminalIO (inIOparameters) {
+galgas_LL1_prgm (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :
+mScanner_ (& mTerminalIO COMMA_THERE), mTerminalIO (inIOparameters) {
   mSourceFileExtension_ = "ggs" ;
 }
 
@@ -175,7 +175,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                                sourceFilesArray,
                                "ggs",
                                IOparameters.mCocoaOutput) ;
-  galgas_LL1_prgm compiler (IOparameters) ;
+  galgas_LL1_prgm compiler (IOparameters COMMA_HERE) ;
   try{
 	    compiler._prologue () ;
     for (sint32 i=0 ; (i<sourceFilesArray.count ()) && (returnCode == 0) ; i++) {

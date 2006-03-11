@@ -149,6 +149,7 @@ label parse
 rule <lexical_send_or_error>
   !@typeEmissionParDefaut emissionParDefaut
   ?!@typeTableMessagesErreurs tableMessagesErreurs
+  ?!@typeTableDefinitionTerminaux table_des_terminaux
 label parse
 ;
 
@@ -954,7 +955,7 @@ end rule ;
 
 rule <lexical_send_instruction>
   !@typeInstructionLexicale instruction
-  ?!@typeTableDefinitionTerminaux unused table_des_terminaux
+  ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
@@ -977,7 +978,7 @@ rule <lexical_send_instruction>
     $search$ ;
   end repeat ;
   @typeEmissionParDefaut ee ;
-  <lexical_send_or_error> ? ee !?table_des_messages_erreur ;
+  <lexical_send_or_error> ? ee !?table_des_messages_erreur !?table_des_terminaux ;
   instruction := [@typeInstructionEmettre new !lr !ee] ;
 end rule ;
 
@@ -986,9 +987,11 @@ end rule ;
 rule <lexical_send_or_error>
   !@typeEmissionParDefaut emissionParDefaut
   ?!@typeTableMessagesErreurs unused tableMessagesErreurs
+  ?!@typeTableDefinitionTerminaux table_des_terminaux
 :
   @lstring nomTerminal ;
   $terminal$ ?nomTerminal ;
+  [!?table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
   emissionParDefaut := [@typeEmissionTerminalParDefaut new !nomTerminal] ;
 end rule ;
 
@@ -997,6 +1000,7 @@ end rule ;
 rule <lexical_send_or_error>
   !@typeEmissionParDefaut emissionParDefaut
   ?!@typeTableMessagesErreurs tableMessagesErreurs
+  ?!@typeTableDefinitionTerminaux unused table_des_terminaux
 :
   $error$ ;
   @lstring errorMessageName ;

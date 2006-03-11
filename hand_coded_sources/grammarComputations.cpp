@@ -421,7 +421,11 @@ static const char k_default_style [] = {
 static void
 createStyleFile (const C_String & inCurrentDirectory, 
                  const char * inStyleFileName) {
-  C_String f = inCurrentDirectory + '/' + inStyleFileName ;
+  C_String f = inCurrentDirectory ;
+  if (f.length () > 0) {
+    f << '/' ;
+  }
+  f << inStyleFileName ;
   if (! f.fileExists ()) {
     C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR COMMA_HERE) ;
     styleFile << k_default_style ;
@@ -509,10 +513,14 @@ routine_analyzeGrammar (C_Lexique & inLexique,
   }
 
 //--- If 'HTMLfileName' is the empty string, no file is created
+  C_String directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent () ;
+  if (directory.length () > 0) {
+    directory << '/' ;
+  }
   C_String s ;
   s << "'" << inTargetFileName << "' grammar" ;
   const C_String HTMLfileName = outputHTMLfile
-    ? (inLexique.sourceFileName ().stringByDeletingLastPathComponent () + "/" + inTargetFileName + ".html")
+    ? (directory + inTargetFileName + ".html")
     : C_String () ;
 //--- Create output HTML file (if file is the empty string, no file is created)
   C_HTML_FileWrite HTMLfile (HTMLfileName,
