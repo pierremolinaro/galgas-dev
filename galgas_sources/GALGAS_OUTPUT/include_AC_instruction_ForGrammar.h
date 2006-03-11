@@ -25,7 +25,7 @@ class cPureBNFproductionsList ;
 
 //---------------------------------------------------------------------------*
 
-class cPtr_AC_instruction_ForGrammar : public C_GGS_Object {
+class cPtr_AC_instruction_ForGrammar : public GGS_class {
 //--- START OF USER ZONE 2
 
   public : virtual bool isSameSyntaxInstructionThan (C_Lexique & lexique_var_,

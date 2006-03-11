@@ -203,7 +203,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "{ " << inLexiqueClassName << " scanner_ (lexique_var_.galgas_IO_Ptr ()) ;\n"
+    ioCppFile << "{ " << inLexiqueClassName << " scanner_ (lexique_var_.galgas_IO_Ptr () COMMA_HERE) ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
                  "  const C_String sourceFileName = lexique_var_.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;

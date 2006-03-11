@@ -934,7 +934,7 @@ void GGS_typeTableTablesDeMotsReserves::methode_insertKey (C_Lexique & lexique_v
 
 cPtr_typeConditionLexicale::
 cPtr_typeConditionLexicale (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1256,7 +1256,7 @@ void GGS_typeListeConditionsLexicales
 
 cPtr_typeInstructionLexicale::
 cPtr_typeInstructionLexicale (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1667,7 +1667,7 @@ void GGS_typeListeTestsEtInstructions
 
 cPtr_typeArgumentRoutineExterne::
 cPtr_typeArgumentRoutineExterne (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -2208,7 +2208,7 @@ void GGS_typeListeMessagesErreur
 
 cPtr_typeEmissionParDefaut::
 cPtr_typeEmissionParDefaut (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*

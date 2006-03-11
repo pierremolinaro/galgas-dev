@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeCible : public C_GGS_Object {
+class cPtr_typeCible : public GGS_class {
 //--- START OF USER ZONE 2
 
 

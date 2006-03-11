@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_AC_semanticsEntity : public C_GGS_Object {
+class cPtr_AC_semanticsEntity : public GGS_class {
 //--- START OF USER ZONE 2
 
 

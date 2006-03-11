@@ -493,7 +493,7 @@ void GGS_typeListModel
 
 cPtr_TypeModel::
 cPtr_TypeModel (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -2095,7 +2095,7 @@ operator > (const GGS_localConstantBuildStyleEnum inOperand) const {
 
 cPtr_AC_galgasType::
 cPtr_AC_galgasType (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -5273,7 +5273,7 @@ void GGS_M_nonterminalSymbolAlts::methode_insertKey (C_Lexique & lexique_var_,
 
 cPtr_AC_semanticsEntity::
 cPtr_AC_semanticsEntity (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -5527,7 +5527,7 @@ void GGS_M_semanticsEntitiesForUse::methode_insertKey (C_Lexique & lexique_var_,
 
 cPtr_AC_typeForGrammarComponent::
 cPtr_AC_typeForGrammarComponent (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -5779,7 +5779,7 @@ void routine_checkSignature_ForGrammarComponent (C_Lexique & lexique_var_,
 
 cPtr_AC_instruction_ForGrammar::
 cPtr_AC_instruction_ForGrammar (const GGS_location & argument_0 COMMA_LOCATION_ARGS)
-:C_GGS_Object (THERE),
+:GGS_class (THERE),
 mStartLocation (argument_0) {
 }
 
@@ -8247,7 +8247,7 @@ void GGS_insertOrSearchMethodList
 
 cPtr_typeDefEntiteUtilisable::
 cPtr_typeDefEntiteUtilisable (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*

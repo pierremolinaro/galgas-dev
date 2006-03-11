@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeCplusPlusName : public C_GGS_Object {
+class cPtr_typeCplusPlusName : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual enumVariableKind getVariableKind (void) const = 0 ;

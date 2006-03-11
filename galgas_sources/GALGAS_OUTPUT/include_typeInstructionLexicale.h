@@ -22,7 +22,7 @@
 
 //---------------------------------------------------------------------------*
 
-class cPtr_typeInstructionLexicale : public C_GGS_Object {
+class cPtr_typeInstructionLexicale : public GGS_class {
 //--- START OF USER ZONE 2
 
 public : virtual bool instruction__uses_loop_variable (void) const = 0 ;

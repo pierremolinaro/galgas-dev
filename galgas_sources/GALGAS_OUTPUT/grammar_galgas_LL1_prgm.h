@@ -37,7 +37,7 @@ class galgas_LL1_prgm : public C_defaultUserSemanticActions {
   protected : bool mOption_galgas_cli_options_generate_debug ;
 
 //--- Constructor
-  public : galgas_LL1_prgm (const C_galgas_io_parameters & inIOparameters) ;
+  public : galgas_LL1_prgm (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) ;
 
   public : void doCompilation (const C_String & inSourceFileName_,
                                sint16 & returnCode) ;

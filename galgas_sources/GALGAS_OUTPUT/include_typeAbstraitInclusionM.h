@@ -31,7 +31,7 @@
 
 #include "typeAbstraitInclusionM.h"
 
-class cPtr_typeAbstraitInclusionM : public C_GGS_Object {
+class cPtr_typeAbstraitInclusionM : public GGS_class {
 //--- START OF USER ZONE 2
 
 

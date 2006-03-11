@@ -205,7 +205,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 << "class cPtr_" << aNomClasse ;
   if (superClassName == NULL) {
-    generatedZone2 << " : public C_GGS_Object {\n" ;
+    generatedZone2 << " : public GGS_class {\n" ;
   }else{
     macroValidPointer (superClassName) ;
     generatedZone2 << " : public cPtr_" << superClassName->mKey << " {\n"
@@ -329,7 +329,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 //--- Call super class constructor
   inCppFile << "\n:" ;
   if (superClassName == NULL) {
-    inCppFile << "C_GGS_Object" ;
+    inCppFile << "GGS_class" ;
   }else{
     macroValidPointer (superClassName) ;
     inCppFile << "cPtr_" << superClassName->mKey ;
