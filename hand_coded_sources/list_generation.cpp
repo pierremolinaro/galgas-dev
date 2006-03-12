@@ -82,6 +82,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 void cPtr_C_listTypeToImplement::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomListe << " ;\n" ;
+  inHfile << "class GGG_" << aNomListe << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
