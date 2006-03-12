@@ -138,7 +138,8 @@ generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
 void cPtr_typeExternTypeToGenerate::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "#include \"" << mIncludePath << "\"\n"
-             "typedef " << mCppClassName << " GGS_" << mGalgasName << " ;\n" ;
+             "typedef " << mCppClassName << " GGS_" << mGalgasName << " ;\n"
+             "typedef " << mCppClassName << " GGG_" << mGalgasName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*

@@ -70,6 +70,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 void cPtr_C_mapToImplement::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomTable << " ;\n" ;
+  inHfile << "class GGG_" << aNomTable << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -441,7 +442,8 @@ generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
 
 void cPtr_typeDefinitionTableAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
-  inHfile << "class GGS_" << aNomTable << " ;\n"
+  inHfile << "class GGG_" << aNomTable << " ;\n"
+             "class GGS_" << aNomTable << " ;\n"
              "#include \"" << aNomClasseGenerique << ".h\"\n" ;
 }
 

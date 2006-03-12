@@ -112,6 +112,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
 void cPtr_typeDefClasseAbstraiteAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomClasse << " ;\n" ;
+  inHfile << "class GGG_" << aNomClasse << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -472,6 +473,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 void cPtr_typeDefClasseNonAbstraiteAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomClasse << " ;\n" ;
+  inHfile << "class GGG_" << aNomClasse << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
