@@ -171,6 +171,20 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- End of list class declaration
              "} ;\n\n" ;
+
+
+//------------------ NEW LIST DECLARATION
+  inHfile << "class GGG_" << aNomListe << " : public GGS_class {\n"
+
+//--- Protected constructor
+             "//--- Protected Constructor\n"
+             "  protected : GGG_" << aNomListe << " (LOCATION_ARGS) ;\n"
+
+//--- GALGAS 'empty' Constructor
+             "//--- GALGAS 'empty' Constructor\n"
+             "  public : static GGG_" << aNomListe << " * constructor_empty (LOCATION_ARGS) ;\n"
+//--- End of list class declaration
+             "} ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*

@@ -188,6 +188,12 @@ generateHdeclarations (AC_OutputStream & inHfile,
   }
   inHfile << "                                  GGS_luint * outIndex) ;\n" ;
   inHfile << "} ;\n\n" ;
+
+//--------------- NEW MAP DECLARATION
+  inHfile << "class GGG_" << aNomTable << " : public AC_galgas_map {\n" ;
+
+
+  inHfile << "} ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -472,7 +478,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "} ;\n\n" ; //--- Fin de la declaration de la classe e_...
 
 // ---------------------- declaration de la classe table -----------------
-  inHfile.writeCTitleComment (C_String ("map '") + aNomTable + "'") ;
+  inHfile.writeCTitleComment (C_String ("Map '") + aNomTable + "'") ;
 
   inHfile << "class GGS_" << aNomTable << " : public "  << aNomClasseGenerique
           << " <e_" << aNomTable << "> {\n"
@@ -558,6 +564,14 @@ generateHdeclarations (AC_OutputStream & inHfile,
     inHfile << ") ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
+  inHfile << "} ;\n\n" ;
+
+//---------------- NEW MAP DECLARATION
+  inHfile.writeCTitleComment (C_String ("Map '") + aNomTable + "'") ;
+
+  inHfile << "class GGG_" << aNomTable << " : public "  << aNomClasseGenerique
+          << " <e_" << aNomTable << "> {\n" ;
+
   inHfile << "} ;\n\n" ;
 }
 
