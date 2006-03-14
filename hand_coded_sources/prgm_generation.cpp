@@ -52,7 +52,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     macroValidPointer (currentGrammar) ;
     grammarZone2 << "class " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << " : public C_defaultUserSemanticActions {\n"
-                      "  protected : " << currentGrammar->mLexiqueClassName << " mScanner_ ;\n"
+                      "  protected : " << currentGrammar->mLexiqueClassName << " * mScannerPtr_ ;\n"
                       "  protected : C_galgas_terminal_io mTerminalIO ;\n"
                       "  protected : C_String mSourceFileExtension_ ;\n\n"
                       "//--- Command line options\n" ;
@@ -69,10 +69,10 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
       currentOptionComponent = currentOptionComponent->nextObject () ;
     }
     grammarZone2 << "\n//--- Constructor\n"
-                      "  public : " << inProgramComponentName  << currentGrammar->mGrammarPostfix.string ()
-                   << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) ;\n\n"
-                      "  public : void doCompilation (const C_String & inSourceFileName_,\n"
-                      "                               sint16 & returnCode) ;\n" ;
+                    "  public : " << inProgramComponentName  << currentGrammar->mGrammarPostfix.string ()
+                 << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) ;\n\n"
+                    "  public : void doCompilation (const C_String & inSourceFileName_,\n"
+                    "                               sint16 & returnCode) ;\n" ;
   //--- Engendrer la declaration des attributs de l'axiome
     GGS_L_signature::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.firstObject () ;
     GGS_typeListeAttributsAxiome::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
@@ -87,7 +87,9 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
       numero ++ ;
     }
     C_String grammarZone3 ;
-    grammarZone3 << "//--- Prologue and epilogue\n"
+    grammarZone3 << "//--- Destructor\n"
+                    "  public : virtual ~" << inProgramComponentName  << currentGrammar->mGrammarPostfix.string () << " (void) ;\n"
+                    "//--- Prologue and epilogue\n"
 										"  public : void _prologue (void) ;\n"
 										"  public : void _epilogue (void) ;\n"
 		                "} ;\n\n" ;
@@ -185,12 +187,19 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << "::\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :\n"
-                      "mScanner_ (& mTerminalIO COMMA_THERE), mTerminalIO (inIOparameters) {\n"
+                      "mScannerPtr_ (NULL), mTerminalIO (inIOparameters) {\n"
                       "  mSourceFileExtension_ = \""
                    << inSourceFileExtension << "\" ;\n"
+                      "  macroMyNew (mScannerPtr_, " << currentGrammar->mLexiqueClassName << " (& mTerminalIO COMMA_THERE)) ;\n"
                       "}\n\n" ;
-    generatedZone2.writeCHyphenLineComment () ;
+  //--- Destructor
+    generatedZone2.writeCTitleComment ("D E S T R U C T O R") ;
+    generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
+                   << "::\n~" << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << " (void) {\n"
+                      "  macroRelease (mScannerPtr_, NULL) ;\n"
+                      "}\n\n" ;
   //--- 'doCompilation' method
+    generatedZone2.writeCTitleComment ("D O    C O M P I L A T I O N") ;
     generatedZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
                "doCompilation (const C_String & inSourceFileName_,\n"
                "               sint16 & returnCode) {\n" ;
@@ -201,7 +210,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << "if (mTerminalIO.versionModeOn ()) {\n"
                       "  ::printf (\"Reading '%s'\\n\", inSourceFileName_.cString ()) ;\n"
                       "}\n"
-                      "mScanner_.resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
+                      "mScannerPtr_->resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
                       "_beforeParsing () ;\n" ; //--- Give a chance to initialize program parameters
     GGS_typeListeAttributsAxiome::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     GGS_L_signature::element_type * p = currentGrammar->mStartSymbolSignature.firstObject () ;
@@ -222,7 +231,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     }              
   //--- Call parser
     generatedZone2 << currentGrammar->mGrammarName << " grammar_ ;\n"   
-                      "grammar_.startParsing_ (mScanner_" ;
+                      "grammar_.startParsing_ (*mScannerPtr_" ;
     nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     while (nomCourant != NULL) {
       macroValidPointer (nomCourant) ;
@@ -235,7 +244,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                    "  _afterParsing () ;\n"
                    "}\n"
                    "::printf (\"Analysis of '%s' completed. \","
-                   " mScanner_.sourceFileName ().lastPathComponent ().cString ()) ;\n" ;
+                   " mScannerPtr_->sourceFileName ().lastPathComponent ().cString ()) ;\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
   generatedZone2 <<  "switch (mTerminalIO.getErrorTotalCount ()) {\n"
@@ -321,7 +330,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 					   "	  compiler->_epilogue () ;\n"
              "    macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << ") ;\n"
              "	  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
-             "      GGS_class::checkAllObjectsHaveBeenReleased () ;\n"
+             "      C_GGS_object::checkAllObjectsHaveBeenReleased () ;\n"
              "    #endif\n"
              "  }catch (const M_STD_NAMESPACE exception & e) {\n"
              "    F_default_display_exception (e) ;\n"

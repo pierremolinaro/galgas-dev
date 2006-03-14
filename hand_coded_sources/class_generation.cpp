@@ -210,7 +210,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }else{
     macroValidPointer (superClassName) ;
     generatedZone2 << " : public cPtr_" << superClassName->mKey << " {\n"
-                   << "  private : typedef cPtr_" << superClassName->mKey << " inherited ;\n" ;
+                      "  private : typedef cPtr_" << superClassName->mKey << " inherited ;\n" ;
   }
 
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (20000) ;
@@ -261,6 +261,43 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
 
 //--- End of Class Declaration
+  generatedZone3 << "} ;\n\n" ;
+  generatedZone3.writeCHyphenLineComment () ;
+
+//------------------ NEW CLASS DECLARATION
+  
+//--- En tete de la classe
+  generatedZone3 << "class GGG_" << aNomClasse ;
+  if (superClassName == NULL) {
+    generatedZone3 << " : public C_GGS_object {\n" ;
+  }else{
+    macroValidPointer (superClassName) ;
+    generatedZone3 << " : public GGG_" << superClassName->mKey << " {\n"
+                      "  private : typedef GGG_" << superClassName->mKey << " inherited ;\n" ;
+  }
+
+//--- Generate constructor
+  current = aListeTousAttributsNonExternes.firstObject () ;
+  generatedZone3 << "  public : GGG_" << aNomClasse << " (" ;
+  first = true ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (first) {
+      first = false ;
+    }else{
+      generatedZone3 << ",\n                                " ;
+    }
+    generatedZone3 << "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
+    current = current->nextObject () ;
+  }
+  if (first) {
+    generatedZone3 << "LOCATION_ARGS" ;
+  }else{
+    generatedZone3 << " COMMA_LOCATION_ARGS" ;
+  }
+  generatedZone3 << ") ;\n" ;
+  
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "#endif\n\n" ; 
@@ -505,8 +542,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- En tete de la classe
   generatedZone2 << "class cPtr_" << aNomClasse << " : public "
-             "cPtr_" << classeAncetre->mKey << " {\n"
-             "  private : typedef cPtr_" << classeAncetre->mKey << " inherited ;\n" ;
+                    "cPtr_" << classeAncetre->mKey << " {\n"
+                    "  private : typedef cPtr_" << classeAncetre->mKey << " inherited ;\n" ;
 
 //--- Engendrer la declaration du constructeur (uniquement si il y a des attributs)
   C_String generatedZone3 ;
@@ -554,6 +591,37 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
 
 //--- End of Class Declaration
+  generatedZone3 << "} ;\n\n" ;
+  generatedZone3.writeCHyphenLineComment () ;
+
+//------------------ NEW CLASS DECLARATION
+  
+//--- En tete de la classe
+  generatedZone3 << "class GGG_" << aNomClasse << " : public "
+                    "GGG_" << classeAncetre->mKey << " {\n"
+                    "  private : typedef GGG_" << classeAncetre->mKey << " inherited ;\n" ;
+  
+//--- Generate constructor declaration
+  current = aListeTousAttributsNonExternes.firstObject () ;
+  generatedZone3 << "  public : GGG_" << aNomClasse << " (" ;
+  first = true ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (first) {
+      first = false ;
+    }else{
+      generatedZone3 << ",\n                                " ;
+    }
+    generatedZone3 << "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
+    current = current->nextObject () ;
+  }
+  if (first) {
+    generatedZone3 << "LOCATION_ARGS) ;\n" ;
+  }else{
+    generatedZone3 << " COMMA_LOCATION_ARGS) ;\n" ;
+  }
+
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "#endif\n\n" ; 

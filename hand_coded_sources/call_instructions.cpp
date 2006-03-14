@@ -203,15 +203,16 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "{ " << inLexiqueClassName << " scanner_ (lexique_var_.galgas_IO_Ptr () COMMA_HERE) ;\n"
+    ioCppFile << "{ " << inLexiqueClassName << " * scanner_ = NULL ;\n"
+                 "  macroMyNew (scanner_, " << inLexiqueClassName << " (lexique_var_.galgas_IO_Ptr () COMMA_HERE)) ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
                  "  const C_String sourceFileName = lexique_var_.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ") ;\n"
                  "  try{\n"
-                 "    scanner_.resetAndLoadSourceFromFile (sourceFileName) ;\n"
+                 "    scanner_->resetAndLoadSourceFromFile (sourceFileName) ;\n"
                  "    grammar_.startParsing_" << mAltSymbol
-              << " (scanner_" ;
+              << " (*scanner_" ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -225,6 +226,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".signalSemanticError (lexique_var_, inFileReadError.what ()) ;\n"
                  "  }\n"
+                 "  macroRelease (scanner_, NULL) ;\n"
                  "}\n" ; 
   }
 }
