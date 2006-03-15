@@ -27,14 +27,24 @@ class cPtr_AC_galgasType : public GGS_class {
 
 public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
                                                     AC_OutputStream & inHfile) = 0 ;
+
 public : virtual void generateAttributeInitialization (const GGS_lstring & nom, \
                                                        AC_OutputStream & inCppFile) = 0 ;
-public : virtual void generatePublicDeclaration (AC_OutputStream & inHfile,
-                                                 const GGS_lstring & nomAttribut) ;
-public : virtual void generateFormalParameter (AC_OutputStream & fichier, const bool reference) ;
+
+public : virtual void generateCppClassNameEx (AC_OutputStream & fichier) const = 0 ;
+
 public : virtual void generateCppClassName (AC_OutputStream & fichier) const = 0 ;
 
 public : virtual bool isObject (void) const = 0 ;
+
+public : void generatePublicDeclarationEx (AC_OutputStream & inHfile,
+                                           const GGS_lstring & nomAttribut) ;
+
+public : void generatePublicAttributeDeclaration (AC_OutputStream & inHfile,
+                                                  const GGS_lstring & nomAttribut) ;
+public : void generateFormalParameterEx (AC_OutputStream & fichier, const bool reference) ;
+
+public : void generateConstFormalParameter (AC_OutputStream & fichier) ;
 
 //--- END OF USER ZONE 2
 

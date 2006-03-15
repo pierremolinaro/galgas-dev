@@ -28,9 +28,11 @@ public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
                                                     AC_OutputStream & inHfile) ;
 public : virtual void generateAttributeInitialization (const GGS_lstring & nom,
                                                        AC_OutputStream & inCppFile) ;
-public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
+public : virtual void generateCppClassNameEx (AC_OutputStream & fichier) const ;
 
-public : virtual bool isObject (void) const { return false ; }
+public : virtual bool isObject (void) const { return true ; }
+
+public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
 
 //--- END OF USER ZONE 2
 

@@ -676,20 +676,20 @@ generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
   macroValidPointer (inTypePtr) ;
   switch (inFormalArgumentPassingMode.enumValue ()) {
   case GGS_formalArgumentPassingMode::enum_argumentIn :
-    inTypePtr->generateCppClassName (inFile) ;
+    inTypePtr->generateCppClassNameEx (inFile) ;
     inFile << ' ' ;
     break ;
   case GGS_formalArgumentPassingMode::enum_argumentOut :
-    inTypePtr->generateCppClassName (inFile) ;
+    inTypePtr->generateCppClassNameEx (inFile) ;
     inFile << " &" ;
     break ;
   case GGS_formalArgumentPassingMode::enum_argumentInOut :
-    inTypePtr->generateCppClassName (inFile) ;
+    inTypePtr->generateCppClassNameEx (inFile) ;
     inFile << " &" ;
     break ;
   case GGS_formalArgumentPassingMode::enum_argumentConstantIn :
     inFile << "const " ;
-    inTypePtr->generateCppClassName (inFile) ;
+    inTypePtr->generateCppClassNameEx (inFile) ;
     inFile << " &" ;
     break ;
   case GGS_formalArgumentPassingMode::kNotBuilt :
@@ -707,9 +707,9 @@ generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
 //---------------------------------------------------------------------------*
 
 void cPtr_AC_galgasType::
-generateFormalParameter (AC_OutputStream & inFile,
-                         const bool engendrerReference) {
-  generateCppClassName (inFile) ;
+generateFormalParameterEx (AC_OutputStream & inFile,
+                           const bool engendrerReference) {
+  generateCppClassNameEx (inFile) ;
   if (engendrerReference) {
     inFile << '&' ;
   }
@@ -719,10 +719,39 @@ generateFormalParameter (AC_OutputStream & inFile,
 //---------------------------------------------------------------------------*
 
 void cPtr_AC_galgasType::
-generatePublicDeclaration (AC_OutputStream & inHfile,
+generateConstFormalParameter (AC_OutputStream & inFile) {
+  inFile << "const " ;
+  generateCppClassName (inFile) ;
+  if (isObject ()) {
+    inFile << " *" ;
+  }else{
+    inFile << " &" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_AC_galgasType::
+generatePublicDeclarationEx (AC_OutputStream & inHfile,
                            const GGS_lstring & nomAttribut) {
   inHfile << "  public : " ;
+  generateCppClassNameEx (inHfile) ;
+  inHfile << ' ' << nomAttribut << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_AC_galgasType::
+generatePublicAttributeDeclaration (AC_OutputStream & inHfile,
+                                    const GGS_lstring & nomAttribut) {
+  inHfile << "  public : " ;
+  if (isObject ()) {
+    inHfile << "const " ;
+  }
   generateCppClassName (inHfile) ;
+  if (isObject ()) {
+    inHfile << " *" ;
+  }
   inHfile << ' ' << nomAttribut << " ;\n" ;
 }
 
@@ -736,8 +765,15 @@ generatePublicDeclaration (AC_OutputStream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_enum::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mEnumTypeName ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_enum::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_" << mEnumTypeName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -760,6 +796,13 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_jokerInParameterList::
+generateCppClassNameEx (AC_OutputStream & inFile) const {
+  inFile << "??" ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -789,10 +832,18 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
   #pragma mark -
 #endif
 
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasExternType::
+generateCppClassNameEx (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mGalgasClassName ;
+}
+
+//---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasExternType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mGalgasClassName ;
+  inFile << "GGG_" << mGalgasClassName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -819,8 +870,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_bool::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_bool" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_bool::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_bool" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -847,8 +905,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_string::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_string" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_string::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_string" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -875,8 +940,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_double::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_double" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_double::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_double" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -903,8 +975,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_uint::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_uint " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_uint::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_uint " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -931,8 +1010,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_sint::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_sint " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_sint::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_sint " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -959,8 +1045,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_char::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_char" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_char::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_char" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -987,8 +1080,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedExternType::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mGalgasClassName ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedExternType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_" << mGalgasClassName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1015,8 +1115,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lbool::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_lbool " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lbool::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_lbool " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1029,8 +1136,15 @@ generateCppClassName (AC_OutputStream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lchar::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_lchar " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lchar::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_lchar " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1043,8 +1157,15 @@ generateCppClassName (AC_OutputStream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_luint::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_luint " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_luint::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_luint " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1057,8 +1178,15 @@ generateCppClassName (AC_OutputStream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lsint::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_lsint " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lsint::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_lsint " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1071,8 +1199,15 @@ generateCppClassName (AC_OutputStream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_ldouble::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_ldouble " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_ldouble::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_ldouble " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1085,8 +1220,15 @@ generateCppClassName (AC_OutputStream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lstring::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_lstring " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lstring::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_lstring " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1099,8 +1241,15 @@ generateCppClassName (AC_OutputStream & inFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_stringset::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_stringset " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_stringset::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_stringset " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1127,8 +1276,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_location::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_location " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_location::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_location " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1155,8 +1311,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasListType::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mListTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_" << mListTypeName << ' ' ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1183,8 +1346,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedListType::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mListTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedListType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_" << mListTypeName << ' ' ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1211,8 +1381,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasMapType::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mMapTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasMapType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_" << mMapTypeName << ' ' ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1239,8 +1416,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedMapType::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mMapTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedMapType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_" << mMapTypeName << ' ' ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1267,8 +1451,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasClassType::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_"  << mClassTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasClassType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_"  << mClassTypeName << ' ' ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1295,8 +1486,15 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedClassType::
-generateCppClassName (AC_OutputStream & inFile) const {
+generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mClassTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedClassType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_" << mClassTypeName << ' ' ;
 }
 
 //---------------------------------------------------------------------------*

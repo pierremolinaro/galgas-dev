@@ -73,7 +73,7 @@ void cPtr_C_declarationInstructionWithAssignment
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
   //--- Generate declaration
-    mVariableType (HERE)->generateCppClassName (ioCppFile) ;
+    mVariableType (HERE)->generateCppClassNameEx (ioCppFile) ;
     ioCppFile << ' ' ;
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " ;\n" ;

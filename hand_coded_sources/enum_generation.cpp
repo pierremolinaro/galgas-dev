@@ -85,7 +85,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Messages\n" ;
   GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
-    inHfile << "  public : GGG_string reader_" << m->mKey << " (void) const ;\n" ;
+    inHfile << "  public : GGG_string * reader_" << m->mKey << " (void) const ;\n" ;
     m = m->nextObject () ;
   }
   inHfile << "\n"
@@ -232,7 +232,7 @@ void cPtr_enumGalgasType
   GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
     inCppFile.writeCHyphenLineComment () ;
-    inCppFile << "GGG_string GGG_" << mEnumTypeName << "::"
+    inCppFile << "GGG_string * GGG_" << mEnumTypeName << "::"
                  "\n"
                  "reader_" << m->mKey << " (void) const {\n"
                  "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
@@ -243,7 +243,11 @@ void cPtr_enumGalgasType
       e = e->nextObject () ;
     } 
     inCppFile << "\n  } ;\n"
-                 "  return GGG_string (mValue > 0, kMessages [mValue]) ;\n"
+                 "  GGG_string * result = NULL ;\n"
+                 "  if (mValue > 0) {\n"
+                 "    macroMyNew (result, GGG_string (kMessages [mValue] COMMA_HERE)) ;\n"
+                 "  }\n"
+                 "  return result ;\n"
                  "}\n\n" ;
     m = m->nextObject () ;
   }
