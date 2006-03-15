@@ -55,7 +55,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       while (currentArgument != NULL) {
         macroValidPointer (currentArgument) ;
         inCppFile << ",\n                                " ;
-        currentArgument->mType (HERE)->generateFormalParameter (inCppFile, ! currentArgument->aModeIn.boolValue ()) ;
+        currentArgument->mType (HERE)->generateFormalParameterEx (inCppFile, ! currentArgument->aModeIn.boolValue ()) ;
         const bool variableUtilisee = formalArgumentIsUsedForList (current->mInfo.mInstructionsList, currentArgument->mCppName, true) ;
         if (! variableUtilisee) {
           inCppFile << "/* " ;
@@ -94,7 +94,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
-      currentArgument->mType (HERE)->generateFormalParameter (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
+      currentArgument->mType (HERE)->generateFormalParameterEx (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
       currentArgument = currentArgument->nextObject () ;
     }
   //--- Terminer la declaration
@@ -226,7 +226,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       generatedZone3 << ",\n                                " ;
     }
     generatedZone3 << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (generatedZone3, true) ;
     current = current->nextObject () ;
   }
   if (first) {
@@ -240,7 +240,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclarationEx (generatedZone3, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
 
@@ -288,7 +288,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       generatedZone3 << ",\n                                " ;
     }
     generatedZone3 << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (generatedZone3, true) ;
     current = current->nextObject () ;
   }
   if (first) {
@@ -351,7 +351,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
       inCppFile << ",\n                                " ;    
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
     inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -558,7 +558,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       generatedZone3 << ",\n                                " ;
     }
     generatedZone3 << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (generatedZone3, true) ;
     current = current->nextObject () ;
   }
   if (first) {
@@ -571,7 +571,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclarationEx (generatedZone3, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
 
@@ -613,7 +613,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       generatedZone3 << ",\n                                " ;
     }
     generatedZone3 << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (generatedZone3, true) ;
     current = current->nextObject () ;
   }
   if (first) {
@@ -650,7 +650,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inHfile, true) ;
     inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -672,7 +672,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inHfile, true) ;
     inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -745,7 +745,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
     inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -834,7 +834,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
     inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;

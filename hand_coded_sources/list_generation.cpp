@@ -31,20 +31,20 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
-  inHfile << "class elementOf_GGS_" << aNomListe << " {\n"
-          << "  private : elementOf_GGS_" << aNomListe << " * mNextItem ;\n" ;
+  inHfile << "class elementOf_GGG_" << aNomListe << " : public C_GGS_object {\n"
+             "//--- Attributes\n" ;
 //--- Attributes
   GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.firstObject () ;
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
-    inHfile << "  " ;
-    attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
+    attributCourant->mAttributType(HERE)->generatePublicAttributeDeclaration (inHfile, attributCourant->aNomAttribut) ;
     attributCourant = attributCourant->nextObject () ;
   }
 //--- declaration des attributs externes
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
-//--- declaration constructeur
-  inHfile << "  public : elementOf_GGS_" << aNomListe << " (" ;
+//--- Constructor Declaration
+  inHfile << "//--- Constructor\n"
+             "  public : elementOf_GGG_" << aNomListe << " (" ;
   attributCourant = mNonExternAttributesList.firstObject () ;
   bool premier = true ;
   while (attributCourant != NULL) {
@@ -55,8 +55,54 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     macroValidPointer (attributCourant) ;
+    attributCourant->mAttributType(HERE)->generateConstFormalParameter (inHfile) ;
+    attributCourant = attributCourant->nextObject () ;
+  }
+  inHfile << " COMMA_LOCATION_ARGS) ;\n\n"
+
+//--- Destructor declaration
+             "//--- Destructor\n"
+             "  public : inline ~elementOf_GGG_" << aNomListe << " (void) ;\n"
+
+//--- Access to next item
+             "//--- Access to next object\n"
+          << "  private : elementOf_GGG_" << aNomListe << " * mNextItem ;\n"
+             "  public : inline elementOf_GGG_" << aNomListe << " * nextObject (void) const { return mNextItem ; }\n"
+
+//--- Friend declaration
+             "//  friend class GGG_" << aNomListe << " ;\n"
+
+//--- End of class declaration
+             "} ;\n\n" ;
+
+//------------ PREVIOUS DECLARATION
+//--------- Declare internal element class ------------
+  inHfile << "class elementOf_GGS_" << aNomListe << " {\n"
+          << "  private : elementOf_GGS_" << aNomListe << " * mNextItem ;\n" ;
+//--- Attributes
+  attributCourant = mNonExternAttributesList.firstObject () ;
+  while (attributCourant != NULL) {
+    macroValidPointer (attributCourant) ;
+    inHfile << "  " ;
+    attributCourant->mAttributType(HERE)->generatePublicDeclarationEx (inHfile, attributCourant->aNomAttribut) ;
+    attributCourant = attributCourant->nextObject () ;
+  }
+//--- declaration des attributs externes
+  generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
+//--- declaration constructeur
+  inHfile << "  public : elementOf_GGS_" << aNomListe << " (" ;
+  attributCourant = mNonExternAttributesList.firstObject () ;
+  premier = true ;
+  while (attributCourant != NULL) {
+    macroValidPointer (attributCourant) ;
+    if (premier) {
+      premier = false ;
+    }else{
+      inHfile << ",\n                                " ;
+    }
+    macroValidPointer (attributCourant) ;
     inHfile << "const " ;
-    attributCourant->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    attributCourant->mAttributType(HERE)->generateFormalParameterEx (inHfile, true) ;
     attributCourant = attributCourant->nextObject () ;
   }
   inHfile << ") ;\n\n"
@@ -94,6 +140,20 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //----------------------- List class declaration ----------------  
   inHfile.writeCTitleComment (C_String ("list '@") + aNomListe + "'") ;
 
+  inHfile << "class GGG_" << aNomListe << " : public C_GGS_object {\n"
+
+//--- Protected constructor
+             "//--- Protected Constructor\n"
+             "  protected : GGG_" << aNomListe << " (LOCATION_ARGS) ;\n"
+
+//--- GALGAS 'empty' Constructor
+             "//--- GALGAS 'empty' Constructor\n"
+             "  public : static GGG_" << aNomListe << " * constructor_empty (LOCATION_ARGS) ;\n"
+//--- End of list class declaration
+             "} ;\n\n" ;
+
+//------------------ PREVIOUS LIST DECLARATION
+  inHfile.writeCHyphenLineComment () ;
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
              "class GGS_" << aNomListe << " {\n"
@@ -136,7 +196,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -149,7 +209,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     macroValidPointer (current) ;
     if (numeroVariable > 0) inHfile << ",\n                                " ;
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -169,20 +229,6 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "    return GGS_uint (mCountReference != NULL, (uint32) mListLength) ;\n"
              "  }\n"
 
-//--- End of list class declaration
-             "} ;\n\n" ;
-
-
-//------------------ NEW LIST DECLARATION
-  inHfile << "class GGG_" << aNomListe << " : public GGS_class {\n"
-
-//--- Protected constructor
-             "//--- Protected Constructor\n"
-             "  protected : GGG_" << aNomListe << " (LOCATION_ARGS) ;\n"
-
-//--- GALGAS 'empty' Constructor
-             "//--- GALGAS 'empty' Constructor\n"
-             "  public : static GGG_" << aNomListe << " * constructor_empty (LOCATION_ARGS) ;\n"
 //--- End of list class declaration
              "} ;\n\n" ;
 }
@@ -213,15 +259,61 @@ void cPtr_C_listTypeToImplement
 //------------- Implementation de l'element de liste -----------------
   inCppFile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 
-//--- Engendrer le constructeur de l'element de liste
-  inCppFile << "elementOf_GGS_" << aNomListe << "::\nelementOf_GGS_" << aNomListe << " (" ;
+//--- Generate Constructor
+  inCppFile << "elementOf_GGG_" << aNomListe << "::\nelementOf_GGG_" << aNomListe << " (" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-  sint16 numeroVariable = 0 ;
+  sint32 numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                                " ;
+    }
+    current->mAttributType(HERE)->generateConstFormalParameter (inCppFile) ;
+    inCppFile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << " COMMA_LOCATION_ARGS)\n"
+               ":C_GGS_object (THERE) {\n" 
+               "  mNextItem = (elementOf_GGG_" << aNomListe << " *) NULL ;\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "  " << current->aNomAttribut << " = argument_" << numeroVariable << " ;\n" ;
+    if (current->mAttributType(HERE)->isObject ()) {
+      inCppFile << "  retain (" << current->aNomAttribut << " COMMA_HERE) ;\n" ;
+    }
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << "}\n\n" ;
+
+//--- Generate Destructor
+  inCppFile.writeCHyphenLineComment () ;
+  inCppFile << "elementOf_GGG_" << aNomListe << "::\n~elementOf_GGG_" << aNomListe << " (void) {\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (current->mAttributType(HERE)->isObject ()) {
+      inCppFile << "  macroRelease (" << current->aNomAttribut << ", this) ;\n" ;
+    }
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << "}\n\n" ;
+
+//--- Engendrer le constructeur de l'element de liste
+  inCppFile.writeCHyphenLineComment () ;
+  inCppFile << "elementOf_GGS_" << aNomListe << "::\nelementOf_GGS_" << aNomListe << " (" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -332,7 +424,7 @@ void cPtr_C_listTypeToImplement
     macroValidPointer (current) ;
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
@@ -376,7 +468,7 @@ void cPtr_C_listTypeToImplement
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;

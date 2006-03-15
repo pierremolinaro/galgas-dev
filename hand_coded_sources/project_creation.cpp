@@ -484,7 +484,7 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName) {
        "\n" ;
   f.writeComment ("#", "Files from libpm") ;
   f << "SOURCES += AC_galgas_io.cpp\n"
-       "SOURCES += AC_galgas_map.cpp\n"
+       "SOURCES += AC_galgas_mapEx.cpp\n"
        "SOURCES += C_galgas_terminal_io.cpp\n"
        "SOURCES += MF_Assert.cpp\n"
        "SOURCES += MF_MemoryControl.cpp\n"
