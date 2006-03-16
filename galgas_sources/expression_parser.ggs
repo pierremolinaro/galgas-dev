@@ -808,9 +808,9 @@ rule <factor>
   #--- Class method name
     @lstring mClassMethodName ;
     $identifier$ ? mClassMethodName ;
-    @AC_semanticsEntity entity ;
-    [!?ioEntitiesMap searchKey !className ?entity] ;
-    extract entity->@typeEntiteType (?outResultType) error className : messageTypeEntite ;
+    @AC_semanticsEntity e ;
+    [!?ioEntitiesMap searchKey !className ?e] ;
+    extract e->@typeEntiteType (?outResultType) error className : messageTypeEntite ;
     @typeListeAttributsSemantiques listeAttributsSemantiques ;
     [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques] ;
   #--- Actual arguments

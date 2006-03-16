@@ -112,7 +112,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
 void cPtr_typeDefClasseAbstraiteAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomClasse << " ;\n" ;
-  inHfile << "class GGG_" << aNomClasse << " ;\n" ;
+  inHfile << "// class GGG_" << aNomClasse << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -206,7 +206,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 << "class cPtr_" << aNomClasse ;
   if (superClassName == NULL) {
-    generatedZone2 << " : public GGS_class {\n" ;
+    generatedZone2 << " : public C_GGS_Object {\n" ;
   }else{
     macroValidPointer (superClassName) ;
     generatedZone2 << " : public cPtr_" << superClassName->mKey << " {\n"
@@ -267,9 +267,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //------------------ NEW CLASS DECLARATION
   
 //--- En tete de la classe
-  generatedZone3 << "class GGG_" << aNomClasse ;
+  generatedZone3 << "/* class GGG_" << aNomClasse ;
   if (superClassName == NULL) {
-    generatedZone3 << " : public C_GGS_object {\n" ;
+    generatedZone3 << " : public C_GGS_Object {\n" ;
   }else{
     macroValidPointer (superClassName) ;
     generatedZone3 << " : public GGG_" << superClassName->mKey << " {\n"
@@ -298,7 +298,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
   generatedZone3 << ") ;\n" ;
   
-  generatedZone3 << "} ;\n\n" ;
+  generatedZone3 << "} ; */\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "#endif\n\n" ; 
  
@@ -367,7 +367,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 //--- Call super class constructor
   inCppFile << "\n:" ;
   if (superClassName == NULL) {
-    inCppFile << "GGS_class" ;
+    inCppFile << "C_GGS_Object" ;
   }else{
     macroValidPointer (superClassName) ;
     inCppFile << "cPtr_" << superClassName->mKey ;
@@ -437,7 +437,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
            << "::\nGGS_" << aNomClasse << " (const "
               "GGS_" << aNomClasse << " & inOperand) {\n"
               "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n"
-              "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
+              "  macroTransfertPointer (mPointer, inOperand.mPointer) ;\n"
               "}\n\n" ;
 
 //--- Implementer la declaration du destructeur
@@ -451,14 +451,14 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse << "::\n"
            << "operator = (const GGS_" << aNomClasse << " & inOperand) {\n"
-           << "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
+           << "  macroTransfertPointer (mPointer, inOperand.mPointer) ;\n"
            << "}\n\n" ;
 
 //--- Generate construction and assignment from pointer
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse
             << "::\noperator = (cPtr_" << aNomClasse << " * inSource) {\n"
-               "  macroAttachPointer (mPointer, inSource) ;\n"
+               "  macroTransfertPointer (mPointer, inSource) ;\n"
                "}\n\n" ;
 
   inCppFile.writeCHyphenLineComment () ;
@@ -466,7 +466,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
             << "::\nGGS_" << aNomClasse << " ("
                "cPtr_" << aNomClasse << " * inSource) {\n"
                "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n"
-               "  macroAttachPointer (mPointer, inSource) ;\n"
+               "  macroTransfertPointer (mPointer, inSource) ;\n"
                "}\n\n" ;
 
 //--- Engendrer la deeclaration de la surcharge de l'opeerateur ()
@@ -510,7 +510,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 void cPtr_typeDefClasseNonAbstraiteAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomClasse << " ;\n" ;
-  inHfile << "class GGG_" << aNomClasse << " ;\n" ;
+  inHfile << "// class GGG_" << aNomClasse << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -597,7 +597,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //------------------ NEW CLASS DECLARATION
   
 //--- En tete de la classe
-  generatedZone3 << "class GGG_" << aNomClasse << " : public "
+  generatedZone3 << "/* class GGG_" << aNomClasse << " : public "
                     "GGG_" << classeAncetre->mKey << " {\n"
                     "  private : typedef GGG_" << classeAncetre->mKey << " inherited ;\n" ;
   
@@ -622,7 +622,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     generatedZone3 << " COMMA_LOCATION_ARGS) ;\n" ;
   }
 
-  generatedZone3 << "} ;\n\n" ;
+  generatedZone3 << "} ; */\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "#endif\n\n" ; 
 

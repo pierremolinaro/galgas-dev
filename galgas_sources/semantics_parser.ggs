@@ -474,7 +474,7 @@ rule <galgas_component>
 #-------------- Semantic Declarations
   parse
   #--- First pass on semantic declarations
-  start
+  first
     @typeTableRoutinesAimplementer UNUSED_tableRoutinesAimplementer [empty] ;
     @typeTableNomRoutinesDeclarees UNUSED_tableNomRoutinesDeclarees [empty] ;
     @typeTableEnAvant UNUSED_tableEnAvant := tableEnAvant ;
@@ -777,16 +777,16 @@ rule <import_headers_semantics_and_grammars>
       foreach nonterminalSymbolParametersMap (??@lstring altName ??@L_signature signature) :
         @L_EXsignature formalParametersList [empty] ;
         foreach signature (??@formalArgumentPassingMode passingMode ??@lstring typeName) :
-          @AC_semanticsEntity entity ;
-          [!?ioComponentSemanticsEntitiesMap searchKey !typeName ?entity] ;
+          @AC_semanticsEntity e ;
+          [!?ioComponentSemanticsEntitiesMap searchKey !typeName ?e] ;
           @AC_galgasType type ;
-          extract entity->@typeEntiteType (?type) error typeName : messageTypeEntite ;
+          extract e->@typeEntiteType (?type) error typeName : messageTypeEntite ;
           formalParametersList += !type !passingMode ;
         end foreach ;
         [!?grammarAltMap insertKey !altName !formalParametersList] ;
       end foreach ;
-      @AC_semanticsEntity entity := [@C_grammarForSemantics new !grammarAltMap] ;
-      [!?ioComponentSemanticsEntitiesMap insertKey !grammarComponentName !entity] ;
+      @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap] ;
+      [!?ioComponentSemanticsEntitiesMap insertKey !grammarComponentName !e] ;
       @lstring path := [@lstring new !"" !here] ;
       @lstring extension := [@lstring new !"h" !here] ;
       @lstring fileNameWithPath ;
@@ -3187,10 +3187,10 @@ rule <semantic_instruction>
     !?ioComponentSemanticsEntitiesMap
   ;
 #--- Look for grammar
-  @AC_semanticsEntity entity  ;
-  [!?ioComponentSemanticsEntitiesMap searchKey !grammarName ?entity] ;
+  @AC_semanticsEntity e  ;
+  [!?ioComponentSemanticsEntitiesMap searchKey !grammarName ?e] ;
   @M_nonterminalSymbolAlts startSymbolAltMap ;
-  extract entity->@C_grammarForSemantics (?startSymbolAltMap) error grammarName : messageTypeEntite ;
+  extract e->@C_grammarForSemantics (?startSymbolAltMap) error grammarName : messageTypeEntite ;
   @L_EXsignature startSymbolSignature ;
   [!?startSymbolAltMap searchKey !altName ?startSymbolSignature] ;
 #--- Verifier la coherence avec la declaration
@@ -3647,7 +3647,7 @@ rule <parse_states>
 :
 #--- First state
   select
-    $firststate$ ;
+    $first$ ;
     @lstring firstStateName ;
     $identifier$ ? firstStateName ;
     [!?ioStateValues searchKey !firstStateName] ;
@@ -4567,8 +4567,8 @@ rule <semantics_declaration>
                                                  !readersInInstructionMap
                                                  !acceptAddAssignOperatorCall
                                                  !addAssignOperatorCallTypeList] ;
-  @AC_semanticsEntity entity := [@typeEntiteType new !c] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !externTypeName !entity] ;
+  @AC_semanticsEntity e := [@typeEntiteType new !c] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !externTypeName !e] ;
   $end$ ;
   $extern$ ;
   $;$ ;
@@ -4705,8 +4705,8 @@ label importSemantics
                                                  !readersInInstructionMap
                                                  !acceptAddAssignOperatorCall
                                                  !addAssignOperatorCallTypeList] ;
-  @AC_semanticsEntity entity := [@typeEntiteType new !c] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !externTypeName !entity] ;
+  @AC_semanticsEntity e := [@typeEntiteType new !c] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !externTypeName !e] ;
   @TypeModel t := [@ExternTypeModel new !constructorMap !readerMap !modifierMap !addAssignFormalInputArgumentList] ;
   [!? ioModelMap insertKey !externTypeName !t] ;
   $end$ ;
@@ -4948,8 +4948,8 @@ rule <semantics_declaration>
   listeEntitesAengendrer += !e ;
 #--- Enter enum type into semantic entities map
   @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !enumMessageMap] ;
-  @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !entity] ;
+  @AC_semanticsEntity ee := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !ee] ;
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap unused ioExternActionMap

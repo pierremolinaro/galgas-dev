@@ -31,7 +31,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
-  inHfile << "class elementOf_GGG_" << aNomListe << " : public C_GGS_object {\n"
+  inHfile << "/* class elementOf_GGG_" << aNomListe << " : public C_GGS_Object {\n"
              "//--- Attributes\n" ;
 //--- Attributes
   GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.firstObject () ;
@@ -73,7 +73,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//  friend class GGG_" << aNomListe << " ;\n"
 
 //--- End of class declaration
-             "} ;\n\n" ;
+             "} ; */\n\n" ;
 
 //------------ PREVIOUS DECLARATION
 //--------- Declare internal element class ------------
@@ -128,7 +128,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 void cPtr_C_listTypeToImplement::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomListe << " ;\n" ;
-  inHfile << "class GGG_" << aNomListe << " ;\n" ;
+  inHfile << "// class GGG_" << aNomListe << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -140,7 +140,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //----------------------- List class declaration ----------------  
   inHfile.writeCTitleComment (C_String ("list '@") + aNomListe + "'") ;
 
-  inHfile << "class GGG_" << aNomListe << " : public C_GGS_object {\n"
+  inHfile << "/* class GGG_" << aNomListe << " : public C_GGS_Object {\n"
 
 //--- Protected constructor
              "//--- Protected Constructor\n"
@@ -150,7 +150,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- GALGAS 'empty' Constructor\n"
              "  public : static GGG_" << aNomListe << " * constructor_empty (LOCATION_ARGS) ;\n"
 //--- End of list class declaration
-             "} ;\n\n" ;
+             "} ; */\n\n" ;
 
 //------------------ PREVIOUS LIST DECLARATION
   inHfile.writeCHyphenLineComment () ;
@@ -260,7 +260,7 @@ void cPtr_C_listTypeToImplement
   inCppFile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 
 //--- Generate Constructor
-  inCppFile << "elementOf_GGG_" << aNomListe << "::\nelementOf_GGG_" << aNomListe << " (" ;
+  inCppFile << "/* elementOf_GGG_" << aNomListe << "::\nelementOf_GGG_" << aNomListe << " (" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
@@ -274,7 +274,7 @@ void cPtr_C_listTypeToImplement
     numeroVariable ++ ;
   }
   inCppFile << " COMMA_LOCATION_ARGS)\n"
-               ":C_GGS_object (THERE) {\n" 
+               ":C_GGS_Object (THERE) {\n" 
                "  mNextItem = (elementOf_GGG_" << aNomListe << " *) NULL ;\n" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
@@ -287,11 +287,11 @@ void cPtr_C_listTypeToImplement
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "}\n\n" ;
+  inCppFile << "} */\n\n" ;
 
 //--- Generate Destructor
   inCppFile.writeCHyphenLineComment () ;
-  inCppFile << "elementOf_GGG_" << aNomListe << "::\n~elementOf_GGG_" << aNomListe << " (void) {\n" ;
+  inCppFile << "/* elementOf_GGG_" << aNomListe << "::\n~elementOf_GGG_" << aNomListe << " (void) {\n" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -302,7 +302,7 @@ void cPtr_C_listTypeToImplement
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "}\n\n" ;
+  inCppFile << "}*/\n\n" ;
 
 //--- Engendrer le constructeur de l'element de liste
   inCppFile.writeCHyphenLineComment () ;

@@ -198,7 +198,7 @@ rule <galgas_component>
   while
   end repeat ;
 #--- Grammar start symbol
-  $start$ ;
+  $root$ ;
   @lstring startSymbolName ;
   $<$ ;
   $identifier$ ? startSymbolName ;
@@ -281,7 +281,7 @@ label importLexique
     end select ;
   while
   end repeat ;
-  $start$ ;
+  $root$ ;
   $<$ ;
   $identifier$ ? * ;
   $>$ ;
@@ -328,7 +328,7 @@ label importSyntax
     end select ;
   while
   end repeat ;
-  $start$ ;
+  $root$ ;
   $<$ ;
   $identifier$ ? * ;
   $>$ ;
@@ -375,7 +375,7 @@ label importSemantics
     end select ;
   while
   end repeat ;
-  $start$ ;
+  $root$ ;
   $<$ ;
   $identifier$ ? * ;
   $>$ ;
@@ -438,7 +438,7 @@ label importGrammarForSemantics
     end select ;
   while
   end repeat ;
-  $start$ ;
+  $root$ ;
   $<$ ;
   $identifier$ ? * ;
   $>$ ;
@@ -489,7 +489,7 @@ label importOptions
     end select ;
   while
   end repeat ;
-  $start$ ;
+  $root$ ;
   $<$ ;
   $identifier$ ? * ;
   $>$ ;

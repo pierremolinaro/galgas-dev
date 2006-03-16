@@ -717,8 +717,8 @@ rule <rule_declaration_or_implementation>
   [!?ioNonTerminalSymbolsMap insertKey !inRuleName !parametersMapForGrammar] ;
   @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !inRuleName !parametersMap] ;
   listeEntitesAengendrer += !ea ;
-  @AC_semanticsEntity entity := [@typeEntiteNonTerminal new !parametersMap] ;
-  [!?ioEntitiesMap insertKey !inRuleName !entity] ;
+  @AC_semanticsEntity e := [@typeEntiteNonTerminal new !parametersMap] ;
+  [!?ioEntitiesMap insertKey !inRuleName !e] ;
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
@@ -1242,7 +1242,7 @@ rule <syntax_instruction>
   @typeInstruction instruction ;
   @L_parse_rewind_signature_list parse_rewind_signature_list [empty] ;
   select
-    $start$ ;
+    $first$ ;
     @location instructionStartLocation := here ;
     @typeListeBranchesInstructions branchList [empty] ;
   #--- First branch
@@ -1356,7 +1356,7 @@ label importSyntax
 :
   $parse$ ;
   select
-    $start$ ;
+    $first$ ;
     <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
     repeat
       $rewind$ ;

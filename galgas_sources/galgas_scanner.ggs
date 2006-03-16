@@ -47,16 +47,15 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
  "when",      "abstract",        "class",       "parse",
  "map",        "warning",     "modifier",       "state",
  "drop",      "override",       "select",   "laststate",
- "or",           "block",   "firststate",
- "false",         "true",   "transition",
- "rule",           "tag", #     "include",
- "start",          "end",          "not",
+ "or",           "block",        "first",         "not",
+ "false",         "true",   "transition",         "end",
+ "rule",           "tag",    "metamodel",      "entity",  
  "import",     "lexique",         "list",     "message",
  "repeat",       "while",        "error",      "search",
  "insert",          "in",         "send",      "action",
- "grammar",     "option",
- "unused",       "label",
- "style",        "cocoa" ;
+ "grammar",     "option",         "root",  "oppositeOf",
+ "unused",       "label",        "style",       "cocoa",
+ "attribute",      "ref" ;
 
 rule 'a'->'z' | 'A'->'Z' :
   repeat

@@ -190,13 +190,15 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "mScannerPtr_ (NULL), mTerminalIO (inIOparameters) {\n"
                       "  mSourceFileExtension_ = \""
                    << inSourceFileExtension << "\" ;\n"
+                      "  mScannerPtr_ = NULL ;\n"
                       "  macroMyNew (mScannerPtr_, " << currentGrammar->mLexiqueClassName << " (& mTerminalIO COMMA_THERE)) ;\n"
+                      "  C_GGS_Object::attachPointer (mScannerPtr_ COMMA_HERE) ;\n"
                       "}\n\n" ;
   //--- Destructor
     generatedZone2.writeCTitleComment ("D E S T R U C T O R") ;
     generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
                    << "::\n~" << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << " (void) {\n"
-                      "  macroRelease (mScannerPtr_, NULL) ;\n"
+                      "  macroDetachPointer (mScannerPtr_, " << currentGrammar->mLexiqueClassName << ") ;\n"
                       "}\n\n" ;
   //--- 'doCompilation' method
     generatedZone2.writeCTitleComment ("D O    C O M P I L A T I O N") ;
@@ -330,7 +332,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 					   "	  compiler->_epilogue () ;\n"
              "    macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << ") ;\n"
              "	  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
-             "      C_GGS_object::checkAllObjectsHaveBeenReleased () ;\n"
+             "      C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
              "    #endif\n"
              "  }catch (const M_STD_NAMESPACE exception & e) {\n"
              "    F_default_display_exception (e) ;\n"

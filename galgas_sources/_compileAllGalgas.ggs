@@ -29,6 +29,7 @@ compile "cli_options_parser.ggs" ;
 compile "galgas_cli_options.ggs" ;
 compile "grammar_parser.ggs" ;
 compile "scanner_parser.ggs" ;
+compile "metamodel_parser.ggs" ;
 compile "expression_parser.ggs" ;
 compile "parser_parser.ggs" ;
 compile "program_parser.ggs" ;
