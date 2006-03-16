@@ -400,7 +400,10 @@ map @entityMap {
 
 #---------------------------------------------------------------------------*
 
-action generate_metamodel ?!@entityMap ioEntityMap ;
+action generate_metamodel
+ ?!@entityMap ioEntityMap
+ ?@lstring inMetamodelComponentName
+;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

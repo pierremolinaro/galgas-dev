@@ -115,7 +115,10 @@ rule <galgas_component>
       [!?entityMap searchKey !kMultipleReferenceType ?* ?* ?* ?* ?* ?*] ;
     end foreach ;
   end foreach ;
-  action generate_metamodel !?entityMap ;
+  action generate_metamodel
+    !?entityMap
+    !metamodelName
+  ;
   $end$ ;
   $metamodel$ ;
   $;$ ;
