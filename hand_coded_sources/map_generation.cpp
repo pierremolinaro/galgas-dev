@@ -70,7 +70,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 void cPtr_C_mapToImplement::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomTable << " ;\n" ;
-  inHfile << "class GGG_" << aNomTable << " ;\n" ;
+  inHfile << "// class GGG_" << aNomTable << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -81,12 +81,12 @@ generateHdeclarations (AC_OutputStream & inHfile,
                        C_Lexique & /* inLexique */) const {
   inHfile.writeCTitleComment (C_String ("Map '@") + aNomTable + "'") ;
 
-  inHfile << "class GGG_" << aNomTable << " : public AC_galgas_map {\n"
+  inHfile << "/* class GGG_" << aNomTable << " : public AC_galgas_map {\n"
 //--- Constructor
              "//--- Constructor\n"
              "  public : GGG_" << aNomTable << " (LOCATION_ARGS) ;\n"
 
-             "} ;\n\n" ;
+             "} ; */\n\n" ;
 
 
 //--------------- PREVIOUS MAP DECLARATION
@@ -261,7 +261,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  element_type * p = (element_type *) inPtr ;\n"
                "  bool extension = false ; // Unused here\n"
                "  sint32 index = -1 ; // Unused here\n"
-               "  GGS_location existingKeyLocation HERE_IN_PARENTHESIS ; // Unused here\n"
+               "  GGS_location existingKeyLocation ; // Unused here\n"
                "  internalInsert (p->mKey, (void *) & p->mInfo, mRoot, extension, index, existingKeyLocation) ;\n"
                "}\n\n" ;
 
@@ -295,14 +295,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    bool extension = false ; // Unused here\n"
-               "    GGS_location existingKeyLocation HERE_IN_PARENTHESIS ;\n"
+               "    GGS_location existingKeyLocation ;\n"
                "    internalInsert (inKey, (void *) & info, mRoot, extension, index, existingKeyLocation) ;\n"
                "    if (index < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation) ;\n"
                "     }\n"
                "  }\n"
                "  if (outIndex != NULL) {\n"
-               "    * outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey COMMA_HERE) ;\n"
+               "    * outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
                "  }\n"
                "}\n\n" ;
 
@@ -349,7 +349,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    if (outIndex != NULL) {\n"
-               "      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mIndex), inKey COMMA_HERE) ;\n"
+               "      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mIndex), inKey) ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;
@@ -453,7 +453,7 @@ generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
 
 void cPtr_typeDefinitionTableAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
-  inHfile << "class GGG_" << aNomTable << " ;\n"
+  inHfile << "// class GGG_" << aNomTable << " ;\n"
              "class GGS_" << aNomTable << " ;\n"
              "#include \"" << aNomClasseGenerique << ".h\"\n" ;
 }
@@ -574,10 +574,10 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //---------------- NEW MAP DECLARATION
   inHfile.writeCTitleComment (C_String ("Map '") + aNomTable + "'") ;
 
-  inHfile << "class GGG_" << aNomTable << " : public "  << aNomClasseGenerique
+  inHfile << "/* class GGG_" << aNomTable << " : public "  << aNomClasseGenerique
           << " <e_" << aNomTable << "> {\n" ;
 
-  inHfile << "} ;\n\n" ;
+  inHfile << "} ; */\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -707,7 +707,7 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "    outIndex = GGS_luint (GGS_uint (true, (uint32) info->mEntryIndex), inKey COMMA_HERE) ;\n"
+    inCppFile << "    outIndex = GGS_luint (GGS_uint (true, (uint32) info->mEntryIndex), inKey) ;\n"
                  "  }\n"
                  "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
@@ -775,7 +775,7 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile << "  const sint32 index = " << currentMethod->mMethodName << " (lexique_var_, info, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
     inCppFile << ") ;\n"
-              << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey COMMA_HERE) ;\n"
+              << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
               << "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
   }

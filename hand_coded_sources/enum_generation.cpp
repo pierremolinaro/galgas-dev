@@ -51,7 +51,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   
   inHfile.writeCTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
   
-  inHfile << "class GGG_" << mEnumTypeName << " {\n"
+  inHfile << "/* class GGG_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
              "  public : enum enumeration {kNotBuilt" ;
   GGS_enumConstantMap::element_type * cst = mConstantMap.firstObject () ;
@@ -98,7 +98,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : GGG_bool operator >= (const GGG_" << mEnumTypeName << " inOperand) const ;\n"
              "  public : GGG_bool operator <  (const GGG_" << mEnumTypeName << " inOperand) const ;\n"
              "  public : GGG_bool operator >  (const GGG_" << mEnumTypeName << " inOperand) const ;\n"
-             "} ;\n\n" ;
+             "} ; */\n\n" ;
 
   inHfile.writeCTitleComment (C_String ("PREVIOUS class for enumeration '") + mEnumTypeName + "'") ;
   
@@ -177,62 +177,62 @@ void cPtr_enumGalgasType
                                   const bool /* inGenerateDebug */) const {
   inCppFile.writeCTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
 
-  inCppFile << "GGG_bool GGG_" << mEnumTypeName
+  inCppFile << "/* GGG_bool GGG_" << mEnumTypeName
             << "::\n"
                "operator == (const GGG_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGG_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue == inOperand.mValue) ;\n"
-               "}\n\n" ;
+               "} */\n\n" ;
 
   inCppFile.writeCHyphenLineComment () ;
 
-  inCppFile << "GGG_bool GGG_" << mEnumTypeName
+  inCppFile << "/* GGG_bool GGG_" << mEnumTypeName
             << "::\n"
                "operator != (const GGG_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGG_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue != inOperand.mValue) ;\n"
-               "}\n\n" ;
+               "} */\n\n" ;
 
   inCppFile.writeCHyphenLineComment () ;
 
-  inCppFile << "GGG_bool GGG_" << mEnumTypeName
+  inCppFile << "/* GGG_bool GGG_" << mEnumTypeName
             << "::\n"
                "operator <= (const GGG_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGG_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue <= inOperand.mValue) ;\n"
-               "}\n\n" ;
+               "} */\n\n" ;
 
   inCppFile.writeCHyphenLineComment () ;
 
-  inCppFile << "GGG_bool GGG_" << mEnumTypeName
+  inCppFile << "/* GGG_bool GGG_" << mEnumTypeName
             << "::\n"
                "operator >= (const GGG_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGG_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue >= inOperand.mValue) ;\n"
-               "}\n\n" ;
+               "} */\n\n" ;
 
   inCppFile.writeCHyphenLineComment () ;
 
-  inCppFile << "GGG_bool GGG_" << mEnumTypeName
+  inCppFile << "/* GGG_bool GGG_" << mEnumTypeName
             << "::\n"
                "operator < (const GGG_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGG_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue < inOperand.mValue) ;\n"
-               "}\n\n" ;
+               "} */\n\n" ;
 
   inCppFile.writeCHyphenLineComment () ;
 
-  inCppFile << "GGG_bool GGG_" << mEnumTypeName
+  inCppFile << "/* GGG_bool GGG_" << mEnumTypeName
             << "::\n"
                "operator > (const GGG_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGG_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue > inOperand.mValue) ;\n"
-               "}\n\n" ;
+               "} */\n\n" ;
 
   GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
     inCppFile.writeCHyphenLineComment () ;
-    inCppFile << "GGG_string * GGG_" << mEnumTypeName << "::"
+    inCppFile << "/* GGG_string * GGG_" << mEnumTypeName << "::"
                  "\n"
                  "reader_" << m->mKey << " (void) const {\n"
                  "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
@@ -248,7 +248,7 @@ void cPtr_enumGalgasType
                  "    macroMyNew (result, GGG_string (kMessages [mValue] COMMA_HERE)) ;\n"
                  "  }\n"
                  "  return result ;\n"
-                 "}\n\n" ;
+                 "} */\n\n" ;
     m = m->nextObject () ;
   }
 

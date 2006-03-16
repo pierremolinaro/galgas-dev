@@ -612,7 +612,7 @@ routine buildMapWithLocalConstants
   ?@bool inEllipsisFound
 :
   @bool mapStyle := inLocalConstantStyle != [@localConstantBuildStyleEnum listStyle] ;
-  @bool first := true ;
+  @bool firstOne := true ;
   foreach inLocalDeclarationsList (??@lstring typeNameInDeclaration ??@lstring cstName),
           inSemanticAttributsList (??@AC_galgasType type ??@lstring attributeName) :
     if [cstName value] != "" then
@@ -620,7 +620,7 @@ routine buildMapWithLocalConstants
       [type getTypeName ? typeName] ;
       if [typeNameInDeclaration value] == typeName then
         @typeCplusPlusName cppName ;
-        if (inLocalConstantStyle == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & first then
+        if (inLocalConstantStyle == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
           cppName := [@typeKeyName new !inLocation] ;
         else
           cppName := [@typeOperandName new !attributeName !inLocation !mapStyle] ;
@@ -631,7 +631,7 @@ routine buildMapWithLocalConstants
           . "' type, I was expected the '@" . typeName . "' type" ;
       end if ;
     end if ;
-    first := false ;
+    firstOne := false ;
   end foreach ;
 #--- Check effective parameters list length
   if ([inLocalDeclarationsList length] < [inSemanticAttributsList length]) & not inEllipsisFound then

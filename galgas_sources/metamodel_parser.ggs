@@ -1,0 +1,186 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS metamodel component parser definition                             *
+#                                                                           *
+#  Copyright (C) 2006 Pierre Molinaro.                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax metamodel_parser :
+
+import lexique galgas_scanner in "galgas_scanner.ggs" ;
+
+import semantics common_semantics in "common_semantics.ggs" ;
+
+#-------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+label importLexique
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+label importSyntax
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+label importGrammarForSemantics
+  ?!@M_grammarComponents ioGrammarComponentsMap
+label importOptions
+  ?!@M_optionComponents ioOptionsComponentsMap
+;
+
+#-------------------------------------------------------------------*
+
+rule <entity_declaration_list>
+label parse
+;
+
+#-------------------------------------------------------------------*
+
+rule <entity_declaration>
+label parse
+;
+
+#-------------------------------------------------------------------*
+#                   Lexical component                               *
+#-------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+#--- Metamodel header
+  $metamodel$ ;
+  @lstring metamodelName ;
+  $identifier$ ? metamodelName ;
+#--- Root entity
+  $root$ ;
+  @lstring rootEntityName ;
+  $type_name$ ? rootEntityName ;
+  $:$ ;
+  <entity_declaration_list> ;
+  $end$ ;
+  $metamodel$ ;
+  $;$ ;
+label importLexique
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+:
+  $metamodel$ ;
+  $identifier$ ?* ;
+  $root$ ;
+  $type_name$ ? * ;
+  $:$ ;
+  <entity_declaration_list> parse ;
+  $end$ ;
+  $metamodel$ ;
+  $;$ ;
+label importSyntax
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+:
+  $metamodel$ ;
+  $identifier$ ? * ;
+  $root$ ;
+  $type_name$ ? * ;
+  $:$ ;
+  <entity_declaration_list> parse ;
+  $end$ ;
+  $metamodel$ ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+:
+  $metamodel$ ;
+  $identifier$ ? * ;
+  $root$ ;
+  $type_name$ ? * ;
+  $:$ ;
+  <entity_declaration_list> parse ;
+  $end$ ;
+  $metamodel$ ;
+  $;$ ;
+label importGrammarForSemantics
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+:
+  $metamodel$ ;
+  $identifier$ ? * ;
+  $root$ ;
+  $type_name$ ? * ;
+  $:$ ;
+  <entity_declaration_list> parse ;
+  $end$ ;
+  $metamodel$ ;
+  $;$ ;
+label importOptions
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $metamodel$ ;
+  $identifier$ ? * ;
+  $root$ ;
+  $type_name$ ? * ;
+  $:$ ;
+  <entity_declaration_list> parse ;
+  $end$ ;
+  $metamodel$ ;
+  $;$ ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <entity_declaration_list> :
+  repeat
+  while
+    <entity_declaration> ;
+  end repeat ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <entity_declaration> :
+#--- Abstract ?
+  @bool isAbstract ;
+  select
+    isAbstract := false ;
+  or
+    $abstract$ ;
+    isAbstract := true ;
+  end select ;
+#--- Entity Name
+  $entity$ ;
+  @lstring entityName ;
+  $type_name$ ? entityName ;
+#--- Super class
+  @lstring superClass ;
+  select
+    superClass := [@lstring new !"" !here] ;
+  or
+    $extends$ ;
+    $type_name$ ? superClass ;
+  end select ;
+#--- Property declarations
+  ${$ ;
+  repeat
+  while
+    $;$ ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+end syntax ;

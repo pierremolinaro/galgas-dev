@@ -226,7 +226,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".signalSemanticError (lexique_var_, inFileReadError.what ()) ;\n"
                  "  }\n"
-                 "  macroRelease (scanner_, NULL) ;\n"
+                 "  macroMyDelete (scanner_, " << inLexiqueClassName << ") ;\n"
                  "}\n" ; 
   }
 }

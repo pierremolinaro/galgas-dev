@@ -35,11 +35,11 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 //--- Generate user includes
   C_String generatedZone2 ;
   generatedZone2 << "#import <Cocoa/Cocoa.h>\n\n"             
-             "#include \"F_CocoaWrapperForGalgas.h\"\n"
-             "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
-             "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
-             "#include \"galgas/C_galgas_null_io.h\"\n"
-             "#include \"" << inLexiqueComponentName << ".h\"\n" ;
+                    "#include \"F_CocoaWrapperForGalgas.h\"\n"
+                    "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
+                    "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
+                    "#include \"galgas/C_galgas_null_io.h\"\n"
+                    "#include \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
