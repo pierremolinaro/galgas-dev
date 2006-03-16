@@ -343,7 +343,7 @@ generate_header_file (C_Lexique & inLexique,
                  << "#define " << nomComposant << "_DEFINED\n"
                  << "\n#include <string.h>\n\n" ;
 
-//--- Inclure la declaration des types semantiques predefinis
+//--- Include declaration of predefined types
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
                     "#include \"galgas/AC_galgas_io.h\"\n"
                     "#include \"galgas/GGS_location.h\"\n"
@@ -354,7 +354,7 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_luint.h\"\n"
                     "#include \"galgas/GGS_lsint.h\"\n"
                     "#include \"galgas/GGS_stringset.h\"\n"
-                   "#include \"galgas/AC_galgas_map.h\"\n" ;
+                    "#include \"galgas/AC_galgas_map.h\"\n" ;
 
 //--- Generate lexique inclusion
   const C_String lexiqueName = inLexiqueName.string () ;
