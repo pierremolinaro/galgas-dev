@@ -307,9 +307,6 @@ class @ClassModel extends @TypeModel {
   @stringset mSuperClasses ;
   @typeListModel mAttributeList ;
   @classMessageMap mMessageMap ;
-#  @readerMap mReaderMap ;
-#  @modifierMap mModifierMap ;
-#  @typeListModel mAddAssignFormalInputArgumentList ; # List is empty if += operator is not defined
 }
 
 
@@ -340,13 +337,6 @@ map @ActionMap {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    OLD STYLE DECLARATIONS                                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   F O R W A R D    T Y P E     D E C L A R A T I O N S                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -359,6 +349,58 @@ list @typeListeAttributsSemantiques ;
 enum @localConstantBuildStyleEnum {
   listStyle, mapStyle, firstIsKeyOtherMapStyle ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E D    E N T I T Y    I N    M E T A M O D E L                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @entityAttributeAndReferenceMap {
+  insert insertKey error message "the '%K' attribute or reference has been already declared in %L" ;
+  search searchKey error message "the '%K' attribute or reference is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @entityAttributeMap {
+  @lstring mAttributeType ;
+  insert insertKey error message "the '%K' attribute has been already declared in %L" ;
+  search searchKey error message "the '%K' attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @entitySingleReferenceMap {
+  @lstring mSingleReferenceType ;
+  insert insertKey error message "the '%K' single reference has been already declared in %L" ;
+  search searchKey error message "the '%K' single reference is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @entityMultipleReferenceMap {
+  @lstring mMultipleReferenceType ;
+  insert insertKey error message "the '%K' multiple reference has been already declared in %L" ;
+  search searchKey error message "the '%K' multiple reference is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @entityMap {
+  @bool mIsAbstract ;
+  @lstring mSuperEntityName ;
+  @entityAttributeMap mEntityAttributeMap ;
+  @entitySingleReferenceMap mSingleReferenceMap ;
+  @entityMultipleReferenceMap mMultipleReferenceMap ;
+  @entityAttributeAndReferenceMap mAllAttributeAndReferenceMap ;
+  insert insertKey error message "the '@%K' entity has been already declared in %L" ;
+  search searchKey error message "the '@%K' entity is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+action generate_metamodel ?!@entityMap ioEntityMap ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

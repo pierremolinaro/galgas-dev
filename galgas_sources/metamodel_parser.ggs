@@ -45,12 +45,16 @@ label importOptions
 #-------------------------------------------------------------------*
 
 rule <entity_declaration_list>
+  !@entityMap ioEntityMap
+  ?!@stringset ioPrimitiveTypeAttributeNameSet
 label parse
 ;
 
 #-------------------------------------------------------------------*
 
 rule <entity_declaration>
+  ?!@entityMap ioEntityMap
+  ?!@stringset ioPrimitiveTypeAttributeNameSet
 label parse
 ;
 
@@ -69,12 +73,49 @@ rule <galgas_component>
   $metamodel$ ;
   @lstring metamodelName ;
   $identifier$ ? metamodelName ;
+#--- Build primitive attribute type name set
+  @stringset primitiveTypeAttributeNameSet [empty] ;
+  primitiveTypeAttributeNameSet += !"bool" ;
+  primitiveTypeAttributeNameSet += !"char" ;
+  primitiveTypeAttributeNameSet += !"uint" ;
+  primitiveTypeAttributeNameSet += !"sint" ;
+  primitiveTypeAttributeNameSet += !"double" ;
+  primitiveTypeAttributeNameSet += !"string" ;
+  primitiveTypeAttributeNameSet += !"lbool" ;
+  primitiveTypeAttributeNameSet += !"lchar" ;
+  primitiveTypeAttributeNameSet += !"luint" ;
+  primitiveTypeAttributeNameSet += !"lsint" ;
+  primitiveTypeAttributeNameSet += !"ldouble" ;
+  primitiveTypeAttributeNameSet += !"lstring" ;
+  primitiveTypeAttributeNameSet += !"location" ;
 #--- Root entity
   $root$ ;
   @lstring rootEntityName ;
   $type_name$ ? rootEntityName ;
   $:$ ;
-  <entity_declaration_list> ;
+  @entityMap entityMap [empty] ;
+  <entity_declaration_list> ?entityMap !?primitiveTypeAttributeNameSet ;
+  @bool isAbstract ;
+  [!?entityMap searchKey !rootEntityName ?isAbstract ?* ?* ?* ?* ?*] ;
+  if isAbstract then
+    error rootEntityName : "the root entity cannot be abstract" ;
+  end if ;
+#--- Check that reference entities are declared
+  foreach entityMap (??@lstring kEntityName
+                     ??*
+                     ??*
+                     ??@entityAttributeMap kEntityAttributeMap
+                     ??@entitySingleReferenceMap kSingleReferenceMap
+                     ??@entityMultipleReferenceMap kMultipleReferenceMap
+                     ??*) :
+    foreach kSingleReferenceMap (??* ??@lstring kSingleReferenceType) :
+      [!?entityMap searchKey !kSingleReferenceType ?* ?* ?* ?* ?* ?*] ;
+    end foreach ;
+    foreach kMultipleReferenceMap (??* ??@lstring kMultipleReferenceType) :
+      [!?entityMap searchKey !kMultipleReferenceType ?* ?* ?* ?* ?* ?*] ;
+    end foreach ;
+  end foreach ;
+  action generate_metamodel !?entityMap ;
   $end$ ;
   $metamodel$ ;
   $;$ ;
@@ -142,16 +183,26 @@ end rule ;
 
 #-------------------------------------------------------------------*
 
-rule <entity_declaration_list> :
+rule <entity_declaration_list>
+  !@entityMap outEntityMap
+  ?!@stringset ioPrimitiveTypeAttributeNameSet
+:
+  outEntityMap := [@entityMap empty] ;
   repeat
   while
-    <entity_declaration> ;
+    <entity_declaration>
+      !?outEntityMap
+      !?ioPrimitiveTypeAttributeNameSet
+    ;
   end repeat ;
 end rule ;
 
 #-------------------------------------------------------------------*
 
-rule <entity_declaration> :
+rule <entity_declaration>
+  ?!@entityMap ioEntityMap
+  ?!@stringset ioPrimitiveTypeAttributeNameSet
+:
 #--- Abstract ?
   @bool isAbstract ;
   select
@@ -164,21 +215,60 @@ rule <entity_declaration> :
   $entity$ ;
   @lstring entityName ;
   $type_name$ ? entityName ;
-#--- Super class
-  @lstring superClass ;
+#--- Super entity
+  @entityAttributeMap entityAttributeMap ;
+  @entitySingleReferenceMap singleReferenceMap ;
+  @entityMultipleReferenceMap multipleReferenceMap ;
+  @entityAttributeAndReferenceMap m ;
+  @lstring superEntity ;
   select
-    superClass := [@lstring new !"" !here] ;
+    superEntity := [@lstring new !"" !here] ;
+    entityAttributeMap := [@entityAttributeMap empty] ;
+    singleReferenceMap := [@entitySingleReferenceMap empty] ;
+    multipleReferenceMap := [@entityMultipleReferenceMap empty] ;
+    m := [@entityAttributeAndReferenceMap empty] ;
   or
     $extends$ ;
-    $type_name$ ? superClass ;
+    $type_name$ ? superEntity ;
+    [!?ioEntityMap searchKey !superEntity ?* ?* ?entityAttributeMap ?singleReferenceMap ?multipleReferenceMap ?m] ;
   end select ;
 #--- Property declarations
   ${$ ;
   repeat
   while
+    $attribute$ ;
+    @lstring attributeTypeName ;
+    $type_name$ ? attributeTypeName ;
+    if not [ioPrimitiveTypeAttributeNameSet hasKey ![attributeTypeName value]] then
+      error attributeTypeName : "the '@" . [attributeTypeName value] . "' is not a predefined attribute type" ;
+    end if ;
+    @lstring attributeName ;
+    $identifier$ ? attributeName ;
+    [!?m insertKey !attributeName] ;
+    [!?entityAttributeMap insertKey !attributeName !attributeTypeName] ;
+    $;$ ;
+  while
+    $ref$ ;
+    @lstring referenceEntityName ;
+    $type_name$ ? referenceEntityName ;
+    @lstring referenceName ;
+    $identifier$ ? referenceName ;
+    [!?m insertKey !referenceName] ;
+    [!?singleReferenceMap insertKey !referenceName !referenceEntityName] ;
+    $;$ ;
+  while
+    $list$ ;
+    @lstring entityName ;
+    $type_name$ ? entityName ;
+    @lstring referenceName ;
+    $identifier$ ? referenceName ;
+    [!?m insertKey !referenceName] ;
+    [!?multipleReferenceMap insertKey !referenceName !entityName] ;
     $;$ ;
   end repeat ;
   $}$ ;
+  [!?ioEntityMap insertKey !entityName !isAbstract !superEntity
+                           !entityAttributeMap !singleReferenceMap !multipleReferenceMap !m] ;
 end rule ;
 
 #-------------------------------------------------------------------*
