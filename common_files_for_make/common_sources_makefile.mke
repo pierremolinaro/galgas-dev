@@ -95,6 +95,7 @@ SOURCES += if_instruction.cpp
 SOURCES += call_instructions.cpp
 SOURCES += parser_instructions.cpp
 SOURCES += parser_generation.cpp
+SOURCES += metamodel_generation.cpp
 SOURCES += grammarComputations.cpp
 SOURCES += prgm_generation.cpp
 SOURCES += cVocabulary.cpp
