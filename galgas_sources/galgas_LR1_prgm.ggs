@@ -24,6 +24,7 @@ program galgas_LR1_prgm "version GALGAS_BETA_VERSION (LR(1) grammar)" . "ggs" :
   mSyntaxComponentsMap ;
   mGrammarsComponentsMap ;
   mOptionComponentsMap ;
+  mMetamodelComponentMap ;
 #--- max error and warning count
   error 100 ;
   warning 100 ;

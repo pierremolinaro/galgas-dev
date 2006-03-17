@@ -799,6 +799,41 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgas_entity::
+generateCppClassNameEx (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mEntityName ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_entity::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGG_" << mEntityName ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_entity::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_entity::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeGalgas_jokerInParameterList::
 generateCppClassNameEx (AC_OutputStream & inFile) const {
   inFile << "??" ;

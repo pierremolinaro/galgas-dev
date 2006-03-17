@@ -35,6 +35,7 @@ rule <galgas_start_symbol>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -45,6 +46,8 @@ label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label compileFile
 ;
 
@@ -54,6 +57,7 @@ rule <galgas_component>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -64,6 +68,8 @@ label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 #------------------------------------------------------------------------------*
@@ -74,31 +80,19 @@ rule <galgas_start_symbol>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
-#  parse
-#  when [option galgas_cli_options.documentation] :
-    repeat
-    while
-      <galgas_component>
-        !?ioLexiqueMapForUse
-        !?ioSemanticsComponentsMap
-        !?ioSyntaxComponentsMap
-        !?ioGrammarComponentsMap
-        !?ioOptionsComponentsMap
-      ;
-    end repeat ;
-#  else
-#    repeat
-#    while
-#      <galgas_component>
-#        !?ioLexiqueMapForUse
-#        !?ioSemanticsComponentsMap
-#        !?ioSyntaxComponentsMap
-#        !?ioGrammarComponentsMap
-#        !?ioOptionsComponentsMap
-#      ;
-#    end repeat ;
-#  end parse ;
+  repeat
+  while
+    <galgas_component>
+      !?ioLexiqueMapForUse
+      !?ioSemanticsComponentsMap
+      !?ioSyntaxComponentsMap
+      !?ioGrammarComponentsMap
+      !?ioOptionsComponentsMap
+      !?ioMetamodelComponentMap
+    ;
+  end repeat ;
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 :
@@ -140,6 +134,7 @@ label compileFile
   @M_syntaxComponents syntaxComponentsMap [empty] ;
   @M_grammarComponents grammarComponentsMap [empty] ;
   @M_optionComponents optionsComponentsMap [empty] ;
+  @M_metamodelsComponents metamodelComponentMap [empty] ;
   repeat
   while
     <galgas_component>
@@ -148,6 +143,7 @@ label compileFile
       !?syntaxComponentsMap
       !?grammarComponentsMap
       !?optionsComponentsMap
+      !?metamodelComponentMap
     ;
   end repeat ;
 label importOptions
@@ -156,6 +152,13 @@ label importOptions
   repeat
   while
     <galgas_component> importOptions !?ioOptionsComponentsMap ;
+  end repeat ;
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+:
+  repeat
+  while
+    <galgas_component> importMetamodels !?ioMetamodelComponentMap ;
   end repeat ;
 end rule ;
 

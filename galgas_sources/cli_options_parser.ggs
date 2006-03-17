@@ -30,6 +30,7 @@ rule <galgas_component>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -40,6 +41,8 @@ label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 action generate_option_component
@@ -59,6 +62,7 @@ rule <galgas_component>
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   @M_cli_options boolOptionsMap [empty] ;
   @M_cli_options uintOptionsMap [empty] ;
@@ -288,6 +292,32 @@ label importOptions
   $option$ ;
   $;$ ;
   [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
+label importMetamodels
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+:
+  $option$ ;
+  $identifier$ ? * ;
+  $:$ ;
+  repeat
+  while 
+    $type_name$ ?*  ;
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_char$ ? * ;
+    $,$ ;
+    $literal_string$ ? * ;
+    $->$ ;
+    $literal_string$ ? * ;
+    select
+    or
+      $default$ ;
+      $unsigned_literal_integer$ ? * ;
+    end select ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $option$ ;
+  $;$ ;
 end rule ;
 
 #-------------------------------------------------------------------*
