@@ -30,7 +30,8 @@ rule <galgas_component>
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -41,6 +42,8 @@ label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 rule <parse_grammar_component_for_importing>
@@ -72,6 +75,7 @@ rule <galgas_component>
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
 #--- Program header
   $program$ ;
@@ -295,14 +299,39 @@ label importOptions
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
-#--- Include header
-#--- Program attributes
   <program_attributes_declaration> parse ;
-#--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
   $;$ ;
-#--- Max warnings count
+  $warning$ ;
+  $unsigned_literal_integer$ ? * ;
+  $;$ ;
+  $end$ ;
+  $program$ ;
+  $;$ ;
+label importMetamodels
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+:
+  $program$ ;
+  $identifier$ ? * ;
+  $literal_string$ ? * ;
+  $.$ ;
+  $literal_string$ ? * ;
+  $:$ ;
+  $import$ ;
+  $grammar$ ;
+  $identifier$ ? * ;
+  select
+  or
+   $in$ ;
+   $literal_string$ ? * ;
+   <parse_grammar_component_for_importing> parse ;
+  end select ;
+  $;$ ;
+  <program_attributes_declaration> parse ;
+  $error$ ;
+  $unsigned_literal_integer$ ? * ;
+  $;$ ;
   $warning$ ;
   $unsigned_literal_integer$ ? * ;
   $;$ ;

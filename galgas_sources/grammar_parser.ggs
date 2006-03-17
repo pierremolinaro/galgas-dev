@@ -29,7 +29,8 @@ rule <galgas_component>
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -40,6 +41,8 @@ label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 rule <get_lexique_infos>
@@ -94,6 +97,7 @@ rule <galgas_component>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $grammar$ ;
 #--- Grammar name
@@ -458,6 +462,53 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $grammar$ ;
+  $identifier$ ? * ;
+  $literal_string$ ? * ;
+  $:$ ;
+  <get_lexique_infos> parse ;
+  repeat
+    $import$ ;
+    select
+      $option$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_option_component_for_importing> parse ;
+      end select ;
+      $;$ ;
+    or
+      $syntax$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_syntax_for_importing> parse ;
+      end select ;
+      $;$ ;
+    end select ;
+  while
+  end repeat ;
+  $root$ ;
+  $<$ ;
+  $identifier$ ? * ;
+  $>$ ;
+  repeat
+    <formal_arguments_list> parse ;
+  while
+    $label$ ;
+    $identifier$ ? * ;
+  end repeat ;
+  $;$ ;
+  $end$ ;
+  $grammar$ ;
+  $;$ ;
+label importMetamodels
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $grammar$ ;
   $identifier$ ? * ;

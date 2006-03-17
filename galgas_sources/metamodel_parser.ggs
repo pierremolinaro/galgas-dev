@@ -29,7 +29,8 @@ rule <galgas_component>
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -40,12 +41,21 @@ label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+;
+
+#-------------------------------------------------------------------*
+
+rule <parse_metamodel>
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label parse
 ;
 
 #-------------------------------------------------------------------*
 
 rule <entity_declaration_list>
-  !@entityMap ioEntityMap
+  !@entityToImplementMap ioEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
 label parse
 ;
@@ -53,7 +63,7 @@ label parse
 #-------------------------------------------------------------------*
 
 rule <entity_declaration>
-  ?!@entityMap ioEntityMap
+  ?!@entityToImplementMap ioEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
 label parse
 ;
@@ -68,6 +78,39 @@ rule <galgas_component>
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+:
+  <parse_metamodel> !?ioMetamodelComponentMap ;
+label importLexique
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+:
+  <parse_metamodel> parse ;
+label importSyntax
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+:
+  <parse_metamodel> parse ;
+label importSemantics
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+:
+  <parse_metamodel> parse ;
+label importGrammarForSemantics
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+:
+  <parse_metamodel> parse ;
+label importOptions
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  <parse_metamodel> parse ;
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+:
+  <parse_metamodel> !?ioMetamodelComponentMap ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <parse_metamodel>
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
 #--- Metamodel header
   $metamodel$ ;
@@ -93,92 +136,60 @@ rule <galgas_component>
   @lstring rootEntityName ;
   $type_name$ ? rootEntityName ;
   $:$ ;
-  @entityMap entityMap [empty] ;
+  @entityToImplementMap entityMap [empty] ;
   <entity_declaration_list> ?entityMap !?primitiveTypeAttributeNameSet ;
   @bool isAbstract ;
-  [!?entityMap searchKey !rootEntityName ?isAbstract ?* ?* ?* ?* ?*] ;
+  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
 #--- Check that reference entities are declared
+  @stringset multiReferencedEntities [empty] ;
   foreach entityMap (??@lstring kEntityName
                      ??*
                      ??*
-                     ??@entityAttributeMap kEntityAttributeMap
-                     ??@entitySingleReferenceMap kSingleReferenceMap
-                     ??@entityMultipleReferenceMap kMultipleReferenceMap
+                     ??@entityPropertyMap kEntityPropertiesMap
                      ??*) :
-    foreach kSingleReferenceMap (??* ??@lstring kSingleReferenceType) :
-      [!?entityMap searchKey !kSingleReferenceType ?* ?* ?* ?* ?* ?*] ;
-    end foreach ;
-    foreach kMultipleReferenceMap (??* ??@lstring kMultipleReferenceType) :
-      [!?entityMap searchKey !kMultipleReferenceType ?* ?* ?* ?* ?* ?*] ;
+    foreach kEntityPropertiesMap (??* ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+      if kKind == [@metamodelPropertyKind singleReferenceProperty] then
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?*] ;
+      elsif kKind == [@metamodelPropertyKind multipleReferenceProperty] then
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?*] ;
+        multiReferencedEntities += ![kTypeName value] ;
+      end if ;
     end foreach ;
   end foreach ;
   action generate_metamodel
     !?entityMap
     !metamodelName
+    !multiReferencedEntities
   ;
-  $end$ ;
-  $metamodel$ ;
-  $;$ ;
-label importLexique
-  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
-:
-  $metamodel$ ;
-  $identifier$ ?* ;
-  $root$ ;
-  $type_name$ ? * ;
-  $:$ ;
-  <entity_declaration_list> parse ;
-  $end$ ;
-  $metamodel$ ;
-  $;$ ;
-label importSyntax
-  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
-:
-  $metamodel$ ;
-  $identifier$ ? * ;
-  $root$ ;
-  $type_name$ ? * ;
-  $:$ ;
-  <entity_declaration_list> parse ;
-  $end$ ;
-  $metamodel$ ;
-  $;$ ;
-label importSemantics
-  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
-:
-  $metamodel$ ;
-  $identifier$ ? * ;
-  $root$ ;
-  $type_name$ ? * ;
-  $:$ ;
-  <entity_declaration_list> parse ;
-  $end$ ;
-  $metamodel$ ;
-  $;$ ;
-label importGrammarForSemantics
-  ?!@M_grammarComponents unused ioGrammarComponentsMap
-:
-  $metamodel$ ;
-  $identifier$ ? * ;
-  $root$ ;
-  $type_name$ ? * ;
-  $:$ ;
-  <entity_declaration_list> parse ;
-  $end$ ;
-  $metamodel$ ;
-  $;$ ;
-label importOptions
-  ?!@M_optionComponents unused ioOptionsComponentsMap
-:
-  $metamodel$ ;
-  $identifier$ ? * ;
-  $root$ ;
-  $type_name$ ? * ;
-  $:$ ;
-  <entity_declaration_list> parse ;
+#--- Build semantic entities map
+  @M_semanticsEntitiesForUse semanticsEntityMap [empty] ;
+  foreach entityMap (??@lstring kEntityName
+                     ??@entityPropertyMap kAllPropertiesMap
+                     ??@bool kIsAbstract
+                     ??@entityPropertyMap kEntityPropertiesMap
+                     ??@lstring kSuperEntityName) :
+    @AC_galgasType t := [@typeGalgas_entity new
+      !kEntityName
+      !kAllPropertiesMap
+      !kIsAbstract
+      !kEntityPropertiesMap
+      !kSuperEntityName
+    ] ;
+    @AC_semanticsEntity e := [@typeEntiteType new !t] ;
+    [!?semanticsEntityMap insertKey
+     !kEntityName
+     !e
+    ] ;
+  end foreach ;
+#--- Add metamodel to metamodel map
+  [!?ioMetamodelComponentMap insertKey
+    !metamodelName
+    !rootEntityName
+    !semanticsEntityMap
+  ] ;
   $end$ ;
   $metamodel$ ;
   $;$ ;
@@ -187,10 +198,10 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <entity_declaration_list>
-  !@entityMap outEntityMap
+  !@entityToImplementMap outEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
 :
-  outEntityMap := [@entityMap empty] ;
+  outEntityMap := [@entityToImplementMap empty] ;
   repeat
   while
     <entity_declaration>
@@ -203,7 +214,7 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <entity_declaration>
-  ?!@entityMap ioEntityMap
+  ?!@entityToImplementMap ioEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
 :
 #--- Abstract ?
@@ -219,59 +230,52 @@ rule <entity_declaration>
   @lstring entityName ;
   $type_name$ ? entityName ;
 #--- Super entity
-  @entityAttributeMap entityAttributeMap ;
-  @entitySingleReferenceMap singleReferenceMap ;
-  @entityMultipleReferenceMap multipleReferenceMap ;
-  @entityAttributeAndReferenceMap m ;
+  @entityPropertyMap allPropertyMap ;
   @lstring superEntity ;
   select
     superEntity := [@lstring new !"" !here] ;
-    entityAttributeMap := [@entityAttributeMap empty] ;
-    singleReferenceMap := [@entitySingleReferenceMap empty] ;
-    multipleReferenceMap := [@entityMultipleReferenceMap empty] ;
-    m := [@entityAttributeAndReferenceMap empty] ;
+    allPropertyMap := [@entityPropertyMap empty] ;
   or
     $extends$ ;
     $type_name$ ? superEntity ;
-    [!?ioEntityMap searchKey !superEntity ?* ?* ?entityAttributeMap ?singleReferenceMap ?multipleReferenceMap ?m] ;
+    [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?*] ;
   end select ;
 #--- Property declarations
+  @entityPropertyMap entityPropertyMap [empty] ;
   ${$ ;
   repeat
   while
-    $attribute$ ;
-    @lstring attributeTypeName ;
-    $type_name$ ? attributeTypeName ;
-    if not [ioPrimitiveTypeAttributeNameSet hasKey ![attributeTypeName value]] then
-      error attributeTypeName : "the '@" . [attributeTypeName value] . "' is not a predefined attribute type" ;
-    end if ;
+    @lstring propertyTypeName ;
+    $type_name$ ? propertyTypeName ;
+    @metamodelPropertyKind k ;
     @lstring attributeName ;
-    $identifier$ ? attributeName ;
-    [!?m insertKey !attributeName] ;
-    [!?entityAttributeMap insertKey !attributeName !attributeTypeName] ;
-    $;$ ;
-  while
-    $ref$ ;
-    @lstring referenceEntityName ;
-    $type_name$ ? referenceEntityName ;
-    @lstring referenceName ;
-    $identifier$ ? referenceName ;
-    [!?m insertKey !referenceName] ;
-    [!?singleReferenceMap insertKey !referenceName !referenceEntityName] ;
-    $;$ ;
-  while
-    $list$ ;
-    @lstring entityName ;
-    $type_name$ ? entityName ;
-    @lstring referenceName ;
-    $identifier$ ? referenceName ;
-    [!?m insertKey !referenceName] ;
-    [!?multipleReferenceMap insertKey !referenceName !entityName] ;
+    select
+    #--- Multiple reference
+      $[$ ;
+      $]$ ;
+      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName value]] then
+        error propertyTypeName : "the '@" . [propertyTypeName value]
+        . "' is not an entity name, but a predefined type name" ;
+      end if ;
+      $identifier$ ? attributeName ;
+      k := [@metamodelPropertyKind multipleReferenceProperty] ;
+    or
+      $identifier$ ? attributeName ;
+    #--- Single reference or attribute ?
+      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName value]] then
+      #--- Attribute
+        k := [@metamodelPropertyKind attributeProperty] ;
+      else 
+      #--- Single Reference
+        k := [@metamodelPropertyKind singleReferenceProperty] ;
+      end if ;
+    end select ;
+    [!?allPropertyMap insertKey !attributeName !k ! propertyTypeName] ;
+    [!?entityPropertyMap insertKey !attributeName !k ! propertyTypeName] ;
     $;$ ;
   end repeat ;
   $}$ ;
-  [!?ioEntityMap insertKey !entityName !isAbstract !superEntity
-                           !entityAttributeMap !singleReferenceMap !multipleReferenceMap !m] ;
+  [!?ioEntityMap insertKey !entityName !allPropertyMap !isAbstract !entityPropertyMap !superEntity] ;
 end rule ;
 
 #-------------------------------------------------------------------*

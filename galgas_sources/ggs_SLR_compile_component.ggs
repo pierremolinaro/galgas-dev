@@ -34,7 +34,8 @@ rule <galgas_component>
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -45,6 +46,14 @@ label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
+label importMetamodels
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+;
+
+rule <parse_metamodel_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label parse
 ;
 
 rule <parse_lexique_for_importing>
@@ -89,6 +98,7 @@ rule <galgas_component>
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $compile$ ;
   @lstring fileName ;
@@ -123,6 +133,12 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $compile$ ;
+  $literal_string$ ? * ;
+  $;$ ;
+label importMetamodels
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $compile$ ;
   $literal_string$ ? * ;
@@ -171,6 +187,21 @@ rule <parse_semantics_component_for_importing>
 :
   grammar galgas_SLR_grammar label importSemantics in inFileName
     !?ioSemanticsMapForUse
+  ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Parse metamodel component for importing                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <parse_metamodel_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+:
+  grammar galgas_SLR_grammar label importMetamodels in inFileName
+    !?ioMetamodelComponentMap
   ;
 end rule ;
 

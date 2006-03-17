@@ -30,6 +30,7 @@ void galgas_SLR_prgm::_beforeParsing (void) {
   mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_empty (HERE) ;
   mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_empty (HERE) ;
   mOptionComponentsMap = GGS_M_optionComponents::constructor_empty (HERE) ;
+  mMetamodelComponentMap = GGS_M_metamodelsComponents::constructor_empty (HERE) ;
   mTerminalIO.mFileGenerationStartDir = mScannerPtr_->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = mTerminalIO.mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {

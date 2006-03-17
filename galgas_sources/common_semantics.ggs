@@ -352,61 +352,6 @@ enum @localConstantBuildStyleEnum {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   P A R S E D    E N T I T Y    I N    M E T A M O D E L                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @entityAttributeAndReferenceMap {
-  insert insertKey error message "the '%K' attribute or reference has been already declared in %L" ;
-  search searchKey error message "the '%K' attribute or reference is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @entityAttributeMap {
-  @lstring mAttributeType ;
-  insert insertKey error message "the '%K' attribute has been already declared in %L" ;
-  search searchKey error message "the '%K' attribute is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @entitySingleReferenceMap {
-  @lstring mSingleReferenceType ;
-  insert insertKey error message "the '%K' single reference has been already declared in %L" ;
-  search searchKey error message "the '%K' single reference is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @entityMultipleReferenceMap {
-  @lstring mMultipleReferenceType ;
-  insert insertKey error message "the '%K' multiple reference has been already declared in %L" ;
-  search searchKey error message "the '%K' multiple reference is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @entityMap {
-  @bool mIsAbstract ;
-  @lstring mSuperEntityName ;
-  @entityAttributeMap mEntityAttributeMap ;
-  @entitySingleReferenceMap mSingleReferenceMap ;
-  @entityMultipleReferenceMap mMultipleReferenceMap ;
-  @entityAttributeAndReferenceMap mAllAttributeAndReferenceMap ;
-  insert insertKey error message "the '@%K' entity has been already declared in %L" ;
-  search searchKey error message "the '@%K' entity is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-action generate_metamodel
- ?!@entityMap ioEntityMap
- ?@lstring inMetamodelComponentName
-;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   G A L G A S    T Y P E    ( A B S T R A C T    C L A S S )              *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -494,6 +439,61 @@ abstract class @AC_galgasType {
 
 #--- Error message
   message messageGalgasType "any type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E D    E N T I T Y    I N    M E T A M O D E L                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @metamodelPropertyKind {
+  attributeProperty, singleReferenceProperty, multipleReferenceProperty ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @entityPropertyMap {
+  @metamodelPropertyKind mKind ;
+  @lstring mTypeName ;
+  insert insertKey error message "the '%K' attribute or reference has been already declared in %L" ;
+  search searchKey error message "the '%K' attribute or reference is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @entityToImplementMap {
+  @entityPropertyMap mAllPropertiesMap ;
+  @bool mIsAbstract ;
+  @entityPropertyMap mEntityPropertiesMap ;
+  @lstring mSuperEntityName ;
+  insert insertKey error message "the '@%K' entity has been already declared in %L" ;
+  search searchKey error message "the '@%K' entity is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+action generate_metamodel
+ ?!@entityToImplementMap ioEntityMap
+ ?@lstring inMetamodelComponentName
+ ?@stringset inMultiReferencedEntities
+;
+
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_entity extends @AC_galgasType {
+  @lstring mEntityName ;
+  @entityPropertyMap mAllPropertiesMap ;
+  @bool mIsAbstract ;
+  @entityPropertyMap mEntityPropertiesMap ;
+  @lstring mSuperEntityName ;
+#--- Get type name
+  override reader getTypeName !@string outTypeName :
+    outTypeName := [mEntityName  value] ;
+  end reader ;
+
+#--- Error message
+  message messageGalgasType "an entity" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1874,11 +1874,25 @@ map @M_semanticsComponents {
   @ModelMap mModelMap ; # The types and classes declared in this component
   @ActionMap mActionMap ; # The routines and the extern actions declared in this component 
   @stringset mImportedSemanticsComponents ; # The other semantics components imported in this component
+  @stringset mImportedMetamodelComponents ; # The metamodel components imported in this component
   @stringset mImportedOptionsComponents ; # The option components imported in this component
   @M_optionComponents mOptionsComponents ; # The option components imported in this component (OLD STYLE)
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ; # OLD STYLE MAP
   insert insertKey error message "a semantics component named '%K' is already declared in %L" ;
   search searchKey error message "there is no semantics component named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    Map of metamodels components                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @M_metamodelsComponents {
+  @lstring mRootEntity ;
+  @M_semanticsEntitiesForUse mSemanticsEntitiesMap ; # OLD STYLE MAP
+  insert insertKey error message "a metamodel component named '%K' is already declared in %L" ;
+  search searchKey error message "there is no metamodel component named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2096,8 +2110,10 @@ routine importSemanticsComponent
       ?modelMap
       ?actionMap
       ?importedSemanticsComponents
+      ?*
       ?importedOptionsComponents
-      ?* ?*
+      ?*
+      ?*
     ] ;
   #--- Recursively import other semantics components
     foreach importedSemanticsComponents (??@string kKey) :
