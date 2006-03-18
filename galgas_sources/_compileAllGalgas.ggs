@@ -18,6 +18,7 @@
 
 compile "common_semantics.ggs" ;
 compile "metamodel_parser.ggs" ;
+compile "parser_parser.ggs" ;
 compile "galgas_scanner.ggs" ;
 compile "scanner_semantics.ggs" ;
 compile "semantics_semantics.ggs" ;
@@ -31,7 +32,6 @@ compile "galgas_cli_options.ggs" ;
 compile "grammar_parser.ggs" ;
 compile "scanner_parser.ggs" ;
 compile "expression_parser.ggs" ;
-compile "parser_parser.ggs" ;
 compile "program_parser.ggs" ;
 compile "ggs_LL1_compile_component.ggs" ;
 compile "ggs_SLR_compile_component.ggs" ;

@@ -42,12 +42,11 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label compileFile
 ;
 
@@ -64,12 +63,11 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 #------------------------------------------------------------------------------*
@@ -111,11 +109,13 @@ label importSyntax
   end repeat ;
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
   repeat
   while
     <galgas_component> importSemantics
       !?ioSemanticsComponentsMap
+      !?ioMetamodelComponentMap
     ;
   end repeat ;
 label importGrammarForSemantics
@@ -152,13 +152,6 @@ label importOptions
   repeat
   while
     <galgas_component> importOptions !?ioOptionsComponentsMap ;
-  end repeat ;
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
-:
-  repeat
-  while
-    <galgas_component> importMetamodels !?ioMetamodelComponentMap ;
   end repeat ;
 end rule ;
 

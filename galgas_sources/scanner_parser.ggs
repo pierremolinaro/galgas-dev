@@ -37,12 +37,11 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 action buildLexicalRulesFromList
@@ -363,6 +362,7 @@ label importSyntax
   $;$ ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $lexique$ ;
   $identifier$ ? * ;
@@ -409,29 +409,6 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
-:
-  $lexique$ ;
-  $identifier$ ? * ;
-  $:$ ;
-  repeat
-  while 
-    <style_declaration> parse ;
-  while
-    <attribute_or_terminal_symbol_declaration> parse ;
-  while
-    <key_words_list_declaration> parse ;
-  while
-    <lexical_error_message_declaration> parse ;
-  while
-    $rule$ ;
-    <lexical_rule> parse ;
-    $;$ ;
-  end repeat ;
-  $end$ ;
-  $lexique$ ;
-  $;$ ;
-label importMetamodels
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $lexique$ ;
   $identifier$ ? * ;

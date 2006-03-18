@@ -38,12 +38,11 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 rule <parse_grammar_component_for_importing>
@@ -116,7 +115,8 @@ rule <galgas_component>
   [!?grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap  ?lexiqueClassName ?optionsComponentsMap] ;
   @lstring altName := [@lstring new !"" !here] ;
   @L_signature startSymbolSignature ;
-  [!?nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature] ;
+  @lstring returnedEntity ;
+  [!?nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
 #--- Liste des attributs
   listeDesAttributs := [@typeListeAttributsAxiome empty] ;
   <program_attributes_declaration> !?listeDesAttributs ;
@@ -218,6 +218,7 @@ label importSyntax
   $;$ ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $program$ ;
   $identifier$ ? * ;
@@ -282,35 +283,6 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
-:
-  $program$ ;
-  $identifier$ ? * ;
-  $literal_string$ ? * ;
-  $.$ ;
-  $literal_string$ ? * ;
-  $:$ ;
-  $import$ ;
-  $grammar$ ;
-  $identifier$ ? * ;
-  select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
-  <program_attributes_declaration> parse ;
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
-  $end$ ;
-  $program$ ;
-  $;$ ;
-label importMetamodels
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $program$ ;
   $identifier$ ? * ;

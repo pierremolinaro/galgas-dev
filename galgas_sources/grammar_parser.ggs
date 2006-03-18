@@ -37,12 +37,11 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 rule <get_lexique_infos>
@@ -183,15 +182,16 @@ rule <galgas_component>
         if [nonterminalSymbolsMapForGrammar hasKey ![ntSymbol value]] then
           @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
           [!?nonterminalSymbolsMapForGrammar searchKey !ntSymbol ?altSignatureMap] ;
-          foreach altSignatureMap (??@lstring altName ??@L_signature altSignature) :
+          foreach altSignatureMap (??@lstring altName ??@L_signature altSignature ??@lstring kReturnedEntity) :
             @M_nonterminalSymbolAltsForGrammar temp := importedAltSignaturesMap ;
             @L_signature importedAltSignature ;
-            [!?temp searchKey !altName ?importedAltSignature] ;
+            @lstring importedReturnedType ;
+            [!?temp searchKey !altName ?importedAltSignature ?importedReturnedType] ;
             checkSignature_ForGrammarComponent !importedAltSignature !altSignature ![altName location] ;
           end foreach ;
-          foreach importedAltSignaturesMap (??@lstring importedAltName ??@L_signature importedAltSignature) :
+          foreach importedAltSignaturesMap (??@lstring importedAltName ??@L_signature importedAltSignature ??*) :
             if [importedAltName value] != "parse" then
-              [!?altSignatureMap searchKey !importedAltName ?*] ;
+              [!?altSignatureMap searchKey !importedAltName ?* ?*] ;
             end if ;
           end foreach ;
         else
@@ -207,14 +207,21 @@ rule <galgas_component>
   $<$ ;
   $identifier$ ? startSymbolName ;
   $>$ ;
-
 #--- (added 8/13/2004)
   @M_nonterminalSymbolAltsForGrammar grammarAltMap [empty] ;
   @lstring altName [new !"" !here] ;
   repeat
     @L_signature signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
-    [!?grammarAltMap insertKey !altName !signature] ;
+  #--- Returned metamodel (March 18, 2006)
+    @lstring returnedMetamodel ;
+    select
+      returnedMetamodel := [@lstring new !"" !here] ;
+    or
+      $->$ ;
+      $identifier$ ? returnedMetamodel ;
+    end select ;
+    [!?grammarAltMap insertKey !altName !signature !returnedMetamodel] ;
   while
     $label$ ;
     $identifier$ ? altName ;
@@ -225,13 +232,14 @@ rule <galgas_component>
   @luint startSymbolIndex ;
   [!?nonterminalSymbolsMapForGrammar searchKeyGetIndex !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
 #--- Check signatures (added 8/13/2004)
-  foreach startSymbolAltMap (??@lstring cstAltName ??@L_signature cstAltMap) :
+  foreach startSymbolAltMap (??@lstring cstAltName ??@L_signature cstAltMap ??@lstring kReturnedEntity) :
     @L_signature altMap ;
-    [!?grammarAltMap searchKey !cstAltName ?altMap] ;
+    @lstring returnedEntity ;
+    [!?grammarAltMap searchKey !cstAltName ?altMap ?returnedEntity] ;
     checkSignature_ForGrammarComponent !cstAltMap !altMap !here ;
   end foreach ;
-  foreach grammarAltMap (??@lstring cstAltName ??*) :
-    [!?startSymbolAltMap searchKey !cstAltName ?*] ;
+  foreach grammarAltMap (??@lstring cstAltName ??* ??*) :
+    [!?startSymbolAltMap searchKey !cstAltName ?* ?*] ;
   end foreach ;
 #--- Analyze grammar
   @location endOfSourceFile := here ;
@@ -291,6 +299,11 @@ label importLexique
   $>$ ;
   repeat
     <formal_arguments_list> parse ;
+    select
+    or
+      $->$ ;
+      $identifier$ ? * ;
+    end select ;
   while
     $label$ ;
     $identifier$ ? * ;
@@ -338,6 +351,11 @@ label importSyntax
   $>$ ;
   repeat
     <formal_arguments_list> parse ;
+    select
+    or
+      $->$ ;
+      $identifier$ ? * ;
+    end select ;
   while
     $label$ ;
     $identifier$ ? * ;
@@ -348,6 +366,7 @@ label importSyntax
   $;$ ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $grammar$ ;
   $identifier$ ? * ;
@@ -385,6 +404,11 @@ label importSemantics
   $>$ ;
   repeat
     <formal_arguments_list> parse ;
+    select
+    or
+      $->$ ;
+      $identifier$ ? * ;
+    end select ;
   while
     $label$ ;
     $identifier$ ? * ;
@@ -450,7 +474,14 @@ label importGrammarForSemantics
   repeat
     @L_signature signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
-    [!?grammarAltMap insertKey !altName !signature] ;
+    @lstring returnedMetamodel ;
+    select
+      returnedMetamodel := [@lstring new !"" !here] ;
+    or
+      $->$ ;
+      $identifier$ ? returnedMetamodel ;
+    end select ;
+    [!?grammarAltMap insertKey !altName !signature !returnedMetamodel] ;
   while
     $label$ ;
     $identifier$ ? altName ;
@@ -499,53 +530,11 @@ label importOptions
   $>$ ;
   repeat
     <formal_arguments_list> parse ;
-  while
-    $label$ ;
-    $identifier$ ? * ;
-  end repeat ;
-  $;$ ;
-  $end$ ;
-  $grammar$ ;
-  $;$ ;
-label importMetamodels
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-:
-  $grammar$ ;
-  $identifier$ ? * ;
-  $literal_string$ ? * ;
-  $:$ ;
-  <get_lexique_infos> parse ;
-  repeat
-    $import$ ;
     select
-      $option$ ;
-      $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ? * ;
-        <parse_option_component_for_importing> parse ;
-      end select ;
-      $;$ ;
     or
-      $syntax$ ;
+      $->$ ;
       $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ? * ;
-        <parse_syntax_for_importing> parse ;
-      end select ;
-      $;$ ;
     end select ;
-  while
-  end repeat ;
-  $root$ ;
-  $<$ ;
-  $identifier$ ? * ;
-  $>$ ;
-  repeat
-    <formal_arguments_list> parse ;
   while
     $label$ ;
     $identifier$ ? * ;

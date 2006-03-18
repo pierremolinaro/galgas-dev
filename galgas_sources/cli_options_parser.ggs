@@ -37,12 +37,11 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 action generate_option_component
@@ -181,6 +180,7 @@ label importSyntax
   $;$ ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $option$ ;
   $identifier$ ? * ;
@@ -292,32 +292,6 @@ label importOptions
   $option$ ;
   $;$ ;
   [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
-label importMetamodels
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-:
-  $option$ ;
-  $identifier$ ? * ;
-  $:$ ;
-  repeat
-  while 
-    $type_name$ ?*  ;
-    $identifier$ ? * ;
-    $:$ ;
-    $literal_char$ ? * ;
-    $,$ ;
-    $literal_string$ ? * ;
-    $->$ ;
-    $literal_string$ ? * ;
-    select
-    or
-      $default$ ;
-      $unsigned_literal_integer$ ? * ;
-    end select ;
-    $;$ ;
-  end repeat ;
-  $end$ ;
-  $option$ ;
-  $;$ ;
 end rule ;
 
 #-------------------------------------------------------------------*

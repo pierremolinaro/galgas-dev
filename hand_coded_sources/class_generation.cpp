@@ -55,7 +55,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       while (currentArgument != NULL) {
         macroValidPointer (currentArgument) ;
         inCppFile << ",\n                                " ;
-        currentArgument->mType (HERE)->generateFormalParameterEx (inCppFile, ! currentArgument->aModeIn.boolValue ()) ;
+        currentArgument->mType (HERE)->generateFormalParameter (inCppFile, ! currentArgument->aModeIn.boolValue ()) ;
         const bool variableUtilisee = formalArgumentIsUsedForList (current->mInfo.mInstructionsList, currentArgument->mCppName, true) ;
         if (! variableUtilisee) {
           inCppFile << "/* " ;
@@ -94,7 +94,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
-      currentArgument->mType (HERE)->generateFormalParameterEx (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
+      currentArgument->mType (HERE)->generateFormalParameter (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
       currentArgument = currentArgument->nextObject () ;
     }
   //--- Terminer la declaration
@@ -112,7 +112,6 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
 void cPtr_typeDefClasseAbstraiteAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomClasse << " ;\n" ;
-  inHfile << "// class GGG_" << aNomClasse << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -166,6 +165,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Engendrer la declaration de la methode 'drop_operation'
               "  public : void drop_operation (void) ;\n"
+
+//--- Generate 'description' reader declaration
+              "  public : GGS_string reader_description (void) const ;\n"
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
               "  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
@@ -226,7 +228,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       generatedZone3 << ",\n                                " ;
     }
     generatedZone3 << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (generatedZone3, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
     current = current->nextObject () ;
   }
   if (first) {
@@ -240,7 +242,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType(HERE)->generatePublicDeclarationEx (generatedZone3, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
 
@@ -260,56 +262,23 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     messageCourant = messageCourant->nextObject () ;
   }
 
+//--- Method for 'description' reader
+  generatedZone3 << "  public : virtual void appendForDescription (C_String & ioString) const = 0 ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
-  generatedZone3.writeCHyphenLineComment () ;
-
-//------------------ NEW CLASS DECLARATION
-  
-//--- En tete de la classe
-  generatedZone3 << "/* class GGG_" << aNomClasse ;
-  if (superClassName == NULL) {
-    generatedZone3 << " : public C_GGS_Object {\n" ;
-  }else{
-    macroValidPointer (superClassName) ;
-    generatedZone3 << " : public GGG_" << superClassName->mKey << " {\n"
-                      "  private : typedef GGG_" << superClassName->mKey << " inherited ;\n" ;
-  }
-
-//--- Generate constructor
-  current = aListeTousAttributsNonExternes.firstObject () ;
-  generatedZone3 << "  public : GGG_" << aNomClasse << " (" ;
-  first = true ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (first) {
-      first = false ;
-    }else{
-      generatedZone3 << ",\n                                " ;
-    }
-    generatedZone3 << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (generatedZone3, true) ;
-    current = current->nextObject () ;
-  }
-  if (first) {
-    generatedZone3 << "LOCATION_ARGS" ;
-  }else{
-    generatedZone3 << " COMMA_LOCATION_ARGS" ;
-  }
-  generatedZone3 << ") ;\n" ;
-  
-  generatedZone3 << "} ; */\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;
   generatedZone3 << "#endif\n\n" ; 
  
 //--- Generate file
-  inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
   inLexique.generateFile ("//",
                           C_String ("include_") + aNomClasse + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
                           generatedZone3) ;
+
+  inHfile.writeCHyphenLineComment () ;
+  inHfile << "\n#include \"include_" << aNomClasse << ".h\"\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -351,7 +320,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
       inCppFile << ",\n                                " ;    
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -496,6 +465,21 @@ void cPtr_typeDefClasseAbstraiteAimplementer
             << "\n::drop_operation (void) {\n"
                "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
                "}\n\n" ; 
+
+//--- Generate 'description' reader implementation
+  inCppFile.writeCHyphenLineComment () ;
+  inCppFile << "GGS_string GGS_" << aNomClasse
+            << "\n::reader_description (void) const {\n"
+               "  C_String s ;\n"
+               "  s << \"<class @" << aNomClasse << "\" ;\n"
+               "  if (isBuilt ()) {\n"
+               "    mPointer->appendForDescription (s) ;\n"
+               "  }else{\n"
+               "    s << \" not built\" ;\n"
+               "  }\n"
+               "  return GGS_string (true, s) ;\n"
+               "}\n\n" ; 
+
 }
 
 //---------------------------------------------------------------------------*
@@ -510,7 +494,6 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 void cPtr_typeDefClasseNonAbstraiteAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << aNomClasse << " ;\n" ;
-  inHfile << "// class GGG_" << aNomClasse << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -558,7 +541,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       generatedZone3 << ",\n                                " ;
     }
     generatedZone3 << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (generatedZone3, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (generatedZone3, true) ;
     current = current->nextObject () ;
   }
   if (first) {
@@ -571,7 +554,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType(HERE)->generatePublicDeclarationEx (generatedZone3, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
 
@@ -590,43 +573,13 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     messageCourant = messageCourant->nextObject () ;
   }
 
+//--- Method for 'description' reader
+  generatedZone3 << "  public : virtual void appendForDescription (C_String & ioString) const ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
-  generatedZone3.writeCHyphenLineComment () ;
-
-//------------------ NEW CLASS DECLARATION
-  
-//--- En tete de la classe
-  generatedZone3 << "/* class GGG_" << aNomClasse << " : public "
-                    "GGG_" << classeAncetre->mKey << " {\n"
-                    "  private : typedef GGG_" << classeAncetre->mKey << " inherited ;\n" ;
-  
-//--- Generate constructor declaration
-  current = aListeTousAttributsNonExternes.firstObject () ;
-  generatedZone3 << "  public : GGG_" << aNomClasse << " (" ;
-  first = true ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (first) {
-      first = false ;
-    }else{
-      generatedZone3 << ",\n                                " ;
-    }
-    generatedZone3 << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (generatedZone3, true) ;
-    current = current->nextObject () ;
-  }
-  if (first) {
-    generatedZone3 << "LOCATION_ARGS) ;\n" ;
-  }else{
-    generatedZone3 << " COMMA_LOCATION_ARGS) ;\n" ;
-  }
-
-  generatedZone3 << "} ; */\n\n" ;
-  generatedZone3.writeCHyphenLineComment () ;
+  generatedZone3.writeCHyphenLineComment () ;  
   generatedZone3 << "#endif\n\n" ; 
 
-  inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
   inLexique.generateFile ("//",
                           C_String ("include_") + aNomClasse + ".h",
                           "\n\n", // User Zone 1
@@ -635,6 +588,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                           generatedZone3) ;
 
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
+  generatedZone3.writeCHyphenLineComment () ;  
+  inHfile << "\n#include \"include_" << aNomClasse << ".h\"\n\n" ;
   inHfile.writeCTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << aNomClasse << " {\n" ;
@@ -650,7 +605,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -672,7 +627,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (inHfile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -745,7 +700,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -819,6 +774,18 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
     messageCourant = messageCourant->nextObject () ;
   }
 
+//--- Method for 'description' reader
+  inCppFile.writeCHyphenLineComment () ;
+  inCppFile << "void cPtr_" << aNomClasse << "::appendForDescription (C_String & ioString) const {\n"
+               "  ioString << \"->@" << aNomClasse << ":\" ;\n" ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << current->aNomAttribut << ".reader_description ().string () ;\n" ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "}\n\n" ;
+
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeCTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
@@ -834,7 +801,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameterEx (inCppFile, true) ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
