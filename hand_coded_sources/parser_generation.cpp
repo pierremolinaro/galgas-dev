@@ -317,9 +317,9 @@ engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposa
   while (element != NULL) {
     macroValidPointer (element) ;
     element->mEntityToGenerate (HERE)->generateCppClassDeclaration (inHfile,
-                                                                inLexiqueName,
-                                                                nomComposant,
-                                                                select_repeat_production_index) ;
+                                                                    inLexiqueName,
+                                                                    nomComposant,
+                                                                    select_repeat_production_index) ;
     element = element->nextObject () ;
   }
   inHfile << "} ;\n\n" ;

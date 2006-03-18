@@ -37,12 +37,11 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 #-------------------------------------------------------------------*
@@ -91,8 +90,9 @@ label importSyntax
   <parse_metamodel> parse ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
-  <parse_metamodel> parse ;
+  <parse_metamodel> !?ioMetamodelComponentMap ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
 :
@@ -101,10 +101,6 @@ label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
 :
   <parse_metamodel> parse ;
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
-:
-  <parse_metamodel> !?ioMetamodelComponentMap ;
 end rule ;
 
 #-------------------------------------------------------------------*
@@ -171,12 +167,15 @@ rule <parse_metamodel>
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName) :
-    @AC_galgasType t := [@typeGalgas_entity new
+    @stringset superEntitySet [empty] ;
+    buildSuperEntitySet !?entityMap !kSuperEntityName !?superEntitySet ;
+    @AC_galgasType t := [@typeGalgas_singleEntity new
       !kEntityName
       !kAllPropertiesMap
       !kIsAbstract
       !kEntityPropertiesMap
       !kSuperEntityName
+      !superEntitySet
     ] ;
     @AC_semanticsEntity e := [@typeEntiteType new !t] ;
     [!?semanticsEntityMap insertKey
@@ -185,11 +184,14 @@ rule <parse_metamodel>
     ] ;
   end foreach ;
 #--- Add metamodel to metamodel map
-  [!?ioMetamodelComponentMap insertKey
-    !metamodelName
-    !rootEntityName
-    !semanticsEntityMap
-  ] ;
+  if not [ioMetamodelComponentMap hasKey ![metamodelName value]] then
+    [!?ioMetamodelComponentMap insertKey
+      !metamodelName
+      !rootEntityName
+      !semanticsEntityMap
+    ] ;
+  end if ;
+  message [ioMetamodelComponentMap description] ;
   $end$ ;
   $metamodel$ ;
   $;$ ;

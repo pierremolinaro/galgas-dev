@@ -481,12 +481,13 @@ action generate_metamodel
 
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_entity extends @AC_galgasType {
+class @typeGalgas_singleEntity extends @AC_galgasType {
   @lstring mEntityName ;
   @entityPropertyMap mAllPropertiesMap ;
   @bool mIsAbstract ;
   @entityPropertyMap mEntityPropertiesMap ;
   @lstring mSuperEntityName ;
+  @stringset mSuperEntitiesSet ;
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := [mEntityName  value] ;
@@ -494,6 +495,19 @@ class @typeGalgas_entity extends @AC_galgasType {
 
 #--- Error message
   message messageGalgasType "an entity" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_multipleEntity extends @AC_galgasType {
+  @lstring mEntityName ;
+#--- Get type name
+  override reader getTypeName !@string outTypeName :
+    outTypeName := "_listOf_" . [mEntityName  value] ;
+  end reader ;
+
+#--- Error message
+  message messageGalgasType "a list of entities" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1061,7 +1075,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
     !@L_EXsignature outReaderSignature
   :
     @typeTableMethodes methodMap := mReadersInInstructionMap ;
-    [!?methodMap searchKey !inReaderName ?outReaderSignature] ; 
+    [!?methodMap searchKey !inReaderName ?outReaderSignature] ;
   end reader ;
 
 #--- Handle operator "+=" call
@@ -1126,6 +1140,7 @@ map @typeTableEnAvant {
 
 map @M_nonterminalSymbolAlts {
   @L_EXsignature mFormalParametersList ;
+  @lstring mReturnedEntity ;
   insert insertKey error message "the label '%K' has been already declared in %L" ;
   search searchKey error message "the label '%K' is not declared" ;
 }
@@ -1247,6 +1262,7 @@ map @L_grammarsMap {
 
 map @M_nonterminalSymbolAltsForGrammar {
   @L_signature mFormalParametersList ;
+  @lstring mReturnedEntityTypeName ;
   insert insertKey error message "the rule label '%K' has been already declared in %L" ;
   search searchKey error message "the rule label '%K' is not declared" ;
 }
@@ -1907,176 +1923,181 @@ routine handleReaderCall
   !@typeListeAttributsSemantiques outAccessorTypesList
   !@AC_galgasType outReturnedType
 :
-  extract inReceiverType :
-  when @typeGalgas_string () ->
-   if [inMethodName value] == "fileExists" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_bool new] ;
-    elsif [inMethodName value] == "pathExtension" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    elsif [inMethodName value] == "lastPathComponent" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    elsif [inMethodName value] == "stringByDeletingPathExtension" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    elsif [inMethodName value] == "stringByCapitalizingFirstCharacter" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    elsif [inMethodName value] == "stringByDeletingLastPathComponent" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    elsif [inMethodName value] == "stringByReplacingStringByString" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-      outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
-      outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgas_uint () ->
-    if [inMethodName value] == "sint" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_sint new] ;
-    elsif [inMethodName value] == "string" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgas_lstring () ->
-    if [inMethodName value] == "value" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    elsif [inMethodName value] == "location" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_location new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgas_lchar () ->
-    if [inMethodName value] == "value" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_char new] ;
-    elsif [inMethodName value] == "location" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_location new] ;
-    elsif [inMethodName value] == "string" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgas_lbool () ->
-    if [inMethodName value] == "value" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_bool new] ;
-    elsif [inMethodName value] == "location" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_location new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgas_luint ()->
-    if [inMethodName value] == "value" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_uint new] ;
-    elsif [inMethodName value] == "location" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_location new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgas_lsint () ->
-    if [inMethodName value] == "value" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_sint new] ;
-    elsif [inMethodName value] == "string" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    elsif [inMethodName value] == "location" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_location new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgas_ldouble () ->
-    if [inMethodName value] == "value" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_double new] ;
-    elsif [inMethodName value] == "string" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_string new] ;
-    elsif [inMethodName value] == "location" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_location new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgasListType (...) ->
-    if [inMethodName value] == "length" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_uint new] ;
-    else
-      error inMethodName :
-         "list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgasMapType (...) ->
-    if [inMethodName value] == "hasKey" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      @AC_galgasType keyType := [@typeGalgas_string new] ;
-      outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
-      outReturnedType := [@typeGalgas_bool new] ;
-    elsif [inMethodName value] == "count" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_uint new] ;
-    elsif [inMethodName value] == "allKeys" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_stringset new] ;
-    elsif [inMethodName value] == "unreadKeys" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_stringset new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgas_stringset () ->
-    if [inMethodName value] == "hasKey" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      @AC_galgasType keyType := [@typeGalgas_string new] ;
-      outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
-      outReturnedType := [@typeGalgas_bool new] ;
-    elsif [inMethodName value] == "count" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-      outReturnedType := [@typeGalgas_uint new] ;
-    else
-      error inMethodName : "this reader is not defined"
-       -> outAccessorTypesList, outReturnedType ;
-    end if ;
-  when @typeGalgasClassType (??* ??* ??* ??* ??@typeClassInheritedMessagesMap kMessagesMap ??* ??*) ->
-    @typeClassInheritedMessagesMap messagesMap := kMessagesMap ;
-    [!?messagesMap searchKey !inMethodName] ;
+  if [inMethodName value] == "description" then
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-  when @typeGalgas_enum (??* ??* ??@typeEnumMessageMap kMessagesMap) ->
-    @typeEnumMessageMap messagesMap := kMessagesMap ;
-    [!?messagesMap searchKey !inMethodName ?*] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques empty] ; #--- No argument
-    outReturnedType := [@typeGalgas_string new] ;
   else
-    error inMethodName :
-       "variables of this type do not support reader call"
-       -> outAccessorTypesList, outReturnedType ;
-  end extract ;
+    extract inReceiverType :
+    when @typeGalgas_string () ->
+     if [inMethodName value] == "fileExists" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inMethodName value] == "pathExtension" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "lastPathComponent" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "stringByDeletingPathExtension" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "stringByCapitalizingFirstCharacter" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "stringByDeletingLastPathComponent" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "stringByReplacingStringByString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+        outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
+        outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_uint () ->
+      if [inMethodName value] == "sint" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_sint new] ;
+      elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_lstring () ->
+      if [inMethodName value] == "value" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_lchar () ->
+      if [inMethodName value] == "value" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_char new] ;
+      elsif [inMethodName value] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_lbool () ->
+      if [inMethodName value] == "value" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inMethodName value] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_luint ()->
+      if [inMethodName value] == "value" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inMethodName value] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_lsint () ->
+      if [inMethodName value] == "value" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_sint new] ;
+      elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_ldouble () ->
+      if [inMethodName value] == "value" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_double new] ;
+      elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgasListType (...) ->
+      if [inMethodName value] == "length" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      else
+        error inMethodName :
+           "list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgasMapType (...) ->
+      if [inMethodName value] == "hasKey" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        @AC_galgasType keyType := [@typeGalgas_string new] ;
+        outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inMethodName value] == "count" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inMethodName value] == "allKeys" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_stringset new] ;
+      elsif [inMethodName value] == "unreadKeys" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_stringset new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_stringset () ->
+      if [inMethodName value] == "hasKey" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        @AC_galgasType keyType := [@typeGalgas_string new] ;
+        outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inMethodName value] == "count" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgasClassType (??* ??* ??* ??* ??@typeClassInheritedMessagesMap kMessagesMap ??* ??*) ->
+      @typeClassInheritedMessagesMap messagesMap := kMessagesMap ;
+      [!?messagesMap searchKey !inMethodName] ;
+      outReturnedType := [@typeGalgas_string new] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+    when @typeGalgas_enum (??* ??* ??@typeEnumMessageMap kMessagesMap) ->
+      @typeEnumMessageMap messagesMap := kMessagesMap ;
+      [!?messagesMap searchKey !inMethodName ?*] ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ; #--- No argument
+      outReturnedType := [@typeGalgas_string new] ;
+    else
+      error inMethodName :
+         "variables of this type do not support reader call"
+         -> outAccessorTypesList, outReturnedType ;
+    end extract ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -2095,33 +2116,40 @@ action check_K_escapeCharacters
 
 routine importSemanticsComponent
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@ModelMap ioModelMap
   ?!@ActionMap ioActionMap
   ?!@stringset ioAlreadyImportedSemanticsComponents
+  ?!@stringset ioAlreadyImportedMetamodelComponents
   ?@lstring inSemanticsComponentName
 :
   if not [ioAlreadyImportedSemanticsComponents hasKey ![inSemanticsComponentName value]] then
     @ModelMap modelMap ; # The types and classes declared in this component
     @ActionMap actionMap ; # The routines and the extern actions declared in this component 
     @stringset importedSemanticsComponents ; # The other semantics components imported in this component
+    @stringset importedMetamodelComponents ; # The metamodel components imported in this component
     @stringset importedOptionsComponents ; # The option components imported in this component
     [!?ioSemanticsComponentsMap searchKey
       !inSemanticsComponentName
       ?modelMap
       ?actionMap
       ?importedSemanticsComponents
-      ?*
+      ?importedMetamodelComponents
       ?importedOptionsComponents
       ?*
       ?*
     ] ;
+  #--- Add Imported metamodels
+    ioAlreadyImportedMetamodelComponents := ioAlreadyImportedMetamodelComponents | importedMetamodelComponents ;
   #--- Recursively import other semantics components
     foreach importedSemanticsComponents (??@string kKey) :
       importSemanticsComponent
         !?ioSemanticsComponentsMap
+        !?ioMetamodelComponentMap
         !?ioModelMap
         !?ioActionMap
         !?ioAlreadyImportedSemanticsComponents
+        !?ioAlreadyImportedMetamodelComponents
         ![@lstring new !kKey !here]
       ;
     end foreach ;
@@ -2141,5 +2169,22 @@ routine importSemanticsComponent
     ioAlreadyImportedSemanticsComponents += ![inSemanticsComponentName value] ;
   end if ;
 end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine buildSuperEntitySet
+  ?!@entityToImplementMap ioEntityMap
+  ??@lstring inSuperEntityName
+  ?!@stringset ioSuperEntitySet
+:
+  if [inSuperEntityName value] != "" then
+    ioSuperEntitySet += ![inSuperEntityName value] ;
+    @lstring superEntityName ;
+    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName] ;
+    buildSuperEntitySet !?ioEntityMap !superEntityName !?ioSuperEntitySet ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

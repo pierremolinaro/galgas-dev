@@ -844,13 +844,14 @@ class @typeEntiteDest extends @typeCible {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#              Entite 'not-terminal'                                        *
+#      Map of non terminal symbols                                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeEntiteNonTerminal extends @AC_semanticsEntity {
+map @M_nonTerminalSymbolForSyntax {
   @M_nonterminalSymbolAlts mAltParametersMap ;
-  message messageTypeEntite "a nonterminal symbol" ;
+  insert insertKey error message "the '%K' non terminal symbol is already declared in %L"  ;
+  search searchKey error message "the '%K' non terminal symbol is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

@@ -41,12 +41,11 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-label importMetamodels
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 ;
 
 rule <parse_states>
@@ -60,18 +59,13 @@ label parse
 rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
 rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
-label parse
-;
-
-rule <parse_metamodel_component_for_importing>
-  ??@lstring inFileName
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
@@ -123,6 +117,7 @@ label importSemantics
   !@ActionMap outActionMap
 
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
@@ -571,6 +566,7 @@ label importSyntax
   $;$ ;
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
   $semantics$ ;
   @lstring componentName ;
@@ -591,6 +587,7 @@ label importSemantics
     ?modelMap
     ?actionMap
     !?componentSemanticsEntitiesMap
+    !?ioMetamodelComponentMap
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
@@ -654,20 +651,6 @@ label importGrammarForSemantics
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
-:
-  $semantics$ ;
-  $identifier$ ? * ;
-  $:$ ;
-  <import_headers_semantics_and_grammars> parse ;
-  repeat
-  while
-    <semantics_declaration> parse ;
-  end repeat ;
-  $end$ ;
-  $semantics$ ;
-  $;$ ;
-label importMetamodels
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -762,6 +745,7 @@ rule <import_headers_semantics_and_grammars>
 #--- enter in semantics entities map the galgas types corresponding to keywords
   enterBuiltinTypes ?ioComponentSemanticsEntitiesMap ;
   @stringset alreadyImportedSemanticsComponents [empty] ;
+  @stringset alreadyImportedMetamodelComponents [empty] ;
 #--- Loop on import instructions
   repeat
   while
@@ -809,7 +793,7 @@ rule <import_headers_semantics_and_grammars>
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
       [!?grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?* ?*] ;
       @M_nonterminalSymbolAlts grammarAltMap [empty] ;
-      foreach nonterminalSymbolParametersMap (??@lstring altName ??@L_signature signature) :
+      foreach nonterminalSymbolParametersMap (??@lstring altName ??@L_signature signature ??@lstring kReturnedEntity) :
         @L_EXsignature formalParametersList [empty] ;
         foreach signature (??@formalArgumentPassingMode passingMode ??@lstring typeName) :
           @AC_semanticsEntity e ;
@@ -818,7 +802,7 @@ rule <import_headers_semantics_and_grammars>
           extract e->@typeEntiteType (?type) error typeName : messageTypeEntite ;
           formalParametersList += !type !passingMode ;
         end foreach ;
-        [!?grammarAltMap insertKey !altName !formalParametersList] ;
+        [!?grammarAltMap insertKey !altName !formalParametersList !kReturnedEntity] ;
       end foreach ;
       @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap] ;
       [!?ioComponentSemanticsEntitiesMap insertKey !grammarComponentName !e] ;
@@ -839,6 +823,7 @@ rule <import_headers_semantics_and_grammars>
         <parse_semantics_component_for_importing> 
           !sourceFile
           !?ioSemanticsComponentsMap
+          !?ioMetamodelComponentMap
         ;
       end select ;
       if not [outImportedSemanticsComponents hasKey ![componentName value]] then
@@ -859,7 +844,15 @@ rule <import_headers_semantics_and_grammars>
         end foreach ;
       end if ;
     #--- Import semantics component
-      importSemanticsComponent !?ioSemanticsComponentsMap !?outModelMap !?outActionMap !?alreadyImportedSemanticsComponents !componentName ;
+      importSemanticsComponent
+        !?ioSemanticsComponentsMap
+        !?ioMetamodelComponentMap
+        !?outModelMap
+        !?outActionMap
+        !?alreadyImportedSemanticsComponents
+        !?alreadyImportedMetamodelComponents
+        !componentName
+      ;
     #---
       outInclusionsForHeaderFile += ![componentName value] ;
       outImportedSemanticsComponents += ![componentName value] ;
@@ -872,14 +865,15 @@ rule <import_headers_semantics_and_grammars>
         $in$ ;
         @lstring sourceFile ;
         $literal_string$ ?sourceFile ;
-        <parse_metamodel_component_for_importing>
+        <parse_semantics_component_for_importing> 
           !sourceFile
+          !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
         ;
       end select ;
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName value]] then
         @M_semanticsEntitiesForUse importedEntities ;
-        [!? ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities] ;
+        [!?ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -903,12 +897,14 @@ label importSemantics
   !@ActionMap outActionMap
 
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
   outActionMap := [@ActionMap empty] ;
   outModelMap := [@ModelMap empty] ;
   outIncludedSemanticsComponents := [@stringset empty] ;
   outIncludedOptionComponents := [@stringset empty] ;
   @stringset alreadyImportedSemanticsComponents [empty] ;
+  @stringset alreadyImportedMetamodelComponents [empty] ;
   repeat
   while
     $import$ ;
@@ -945,6 +941,7 @@ label importSemantics
         <parse_semantics_component_for_importing> 
           !sourceFile
           !?ioSemanticsComponentsMap
+          !?ioMetamodelComponentMap
         ;
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
@@ -955,16 +952,37 @@ label importSemantics
         end if ;
       end foreach ;
     #--- Import semantics component
-      importSemanticsComponent !?ioSemanticsComponentsMap !?outModelMap !?outActionMap !?alreadyImportedSemanticsComponents !componentName ;
+      importSemanticsComponent
+        !?ioSemanticsComponentsMap
+        !?ioMetamodelComponentMap
+        !?outModelMap
+        !?outActionMap
+        !?alreadyImportedSemanticsComponents
+        !?alreadyImportedMetamodelComponents
+        !componentName
+      ;
     or
       $metamodel$ ;
-      $identifier$ ?* ;
+      @lstring metamodelComponentName ;
+      $identifier$ ?metamodelComponentName ;
       select
       or
         $in$ ;
-        $literal_string$ ? * ;
-        <parse_metamodel_component_for_importing> parse ;
+        @lstring sourceFile ;
+        $literal_string$ ?sourceFile ;
+        <parse_semantics_component_for_importing> 
+          !sourceFile
+          !?ioSemanticsComponentsMap
+          !?ioMetamodelComponentMap
+        ;
       end select ;
+      @M_semanticsEntitiesForUse importedEntities ;
+      [!? ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities] ;
+      foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
+        if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
+          [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
+        end if ;
+      end foreach ;
     end select ;
     $;$ ;
   end repeat ;
@@ -3263,7 +3281,8 @@ rule <semantic_instruction>
   @M_nonterminalSymbolAlts startSymbolAltMap ;
   extract e->@C_grammarForSemantics (?startSymbolAltMap) error grammarName : messageTypeEntite ;
   @L_EXsignature startSymbolSignature ;
-  [!?startSymbolAltMap searchKey !altName ?startSymbolSignature] ;
+  @lstring returnedEntity ;
+  [!?startSymbolAltMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
 #--- Verifier la coherence avec la declaration
   verifierCompatibiliteArgEffectifsSignature 
     !startSymbolSignature

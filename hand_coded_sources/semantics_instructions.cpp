@@ -463,9 +463,15 @@ void cPtr_typeInstructionDeclarationVarLocale
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    aTypeVariable (HERE)->generateCppClassNameEx (ioCppFile) ;
+    aTypeVariable (HERE)->generateCppClassName (ioCppFile) ;
     ioCppFile << ' ' ;
+    if (aTypeVariable (HERE)->isObject ()) {
+      ioCppFile << "* " ;
+    }
     aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
+    if (aTypeVariable (HERE)->isObject ()) {
+      ioCppFile << " = NULL" ;
+    }
     ioCppFile << " ;\n" ;
   }
 }
