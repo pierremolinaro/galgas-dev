@@ -35,11 +35,13 @@ label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -68,6 +70,7 @@ label parse
 rule <parse_syntax_for_importing>
   ??@lstring inFileName
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
@@ -96,7 +99,7 @@ rule <galgas_component>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
   $grammar$ ;
 #--- Grammar name
@@ -157,6 +160,7 @@ rule <galgas_component>
         <parse_syntax_for_importing>
           !fileName
           !?syntaxComponentsMap
+          !?ioMetamodelComponentMap
         ;
       end select ;
       $;$ ;
@@ -207,21 +211,23 @@ rule <galgas_component>
   $<$ ;
   $identifier$ ? startSymbolName ;
   $>$ ;
-#--- (added 8/13/2004)
+#--- (added 8/13/2004, modified 3/19/2006)
   @M_nonterminalSymbolAltsForGrammar grammarAltMap [empty] ;
   @lstring altName [new !"" !here] ;
   repeat
     @L_signature signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
   #--- Returned metamodel (March 18, 2006)
-    @lstring returnedMetamodel ;
+    @lstring rootEntityName ;
     select
-      returnedMetamodel := [@lstring new !"" !here] ;
+      rootEntityName := [@lstring new !"" !here] ;
     or
       $->$ ;
-      $identifier$ ? returnedMetamodel ;
+      @lstring returnedMetamodelName ;
+      $identifier$ ?returnedMetamodelName ;
+      [!?ioMetamodelComponentMap searchKey !returnedMetamodelName ?rootEntityName ?*] ;
     end select ;
-    [!?grammarAltMap insertKey !altName !signature !returnedMetamodel] ;
+    [!?grammarAltMap insertKey !altName !signature !rootEntityName] ;
   while
     $label$ ;
     $identifier$ ? altName ;
@@ -237,6 +243,9 @@ rule <galgas_component>
     @lstring returnedEntity ;
     [!?grammarAltMap searchKey !cstAltName ?altMap ?returnedEntity] ;
     checkSignature_ForGrammarComponent !cstAltMap !altMap !here ;
+    if [returnedEntity value] != [kReturnedEntity value] then
+
+    end if ;
   end foreach ;
   foreach grammarAltMap (??@lstring cstAltName ??* ??*) :
     [!?startSymbolAltMap searchKey !cstAltName ?* ?*] ;
@@ -314,6 +323,7 @@ label importLexique
   $;$ ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $grammar$ ;
   $identifier$ ? * ;
@@ -419,6 +429,7 @@ label importSemantics
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $grammar$ ;
   @lstring grammarName ;
@@ -474,14 +485,17 @@ label importGrammarForSemantics
   repeat
     @L_signature signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
-    @lstring returnedMetamodel ;
+    @lstring rootEntityName ;
     select
-      returnedMetamodel := [@lstring new !"" !here] ;
+      rootEntityName := [@lstring new !"" !here] ;
     or
       $->$ ;
-      $identifier$ ? returnedMetamodel ;
+      @lstring returnedMetamodelName ;
+      $identifier$ ?returnedMetamodelName ;
+      rootEntityName := [@lstring new !"" !here] ;
+##      [!?ioMetamodelComponentMap searchKey !returnedMetamodelName ?rootEntityName ?*] ;
     end select ;
-    [!?grammarAltMap insertKey !altName !signature !returnedMetamodel] ;
+    [!?grammarAltMap insertKey !altName !signature !rootEntityName] ;
   while
     $label$ ;
     $identifier$ ? altName ;

@@ -39,11 +39,13 @@ label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -253,7 +255,7 @@ action checkParseRewindSignatures
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#                      COMPOSANT SYNTAXIQUE                                    *
+#                      SYNTAX COMPONENT                                        *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -366,6 +368,7 @@ rule <galgas_component>
   $;$ ;
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
   $syntax$ ;
   @lstring syntaxComponentName ;
@@ -374,7 +377,38 @@ label importSyntax
 #--- Lexique
   @lstring lexiqueName ;
   <get_lexique_infos> getLexiqueName ? lexiqueName ;
-  <import_headers_semantics_and_grammars> parse ;
+#--- Import Semantics, Metamodels
+  @M_semanticsComponents semanticsComponentsMap [empty] ;
+  @M_grammarComponents grammarComponentsMap [empty] ;
+  @M_optionComponents optionsComponentsMap [empty] ;  
+  @stringset inclusionsForHeaderFile ;
+  @stringset inclusionsForImplementationFile ;
+  @typeTableEnAvant tableEnAvant ;
+  @M_semanticsEntitiesForUse entitiesMap ;
+  @M_optionComponents ioOptionsComponentsMapForUse ;
+  @stringset includedSemanticsComponents ;
+  @stringset includedMetamodelComponents ;
+  @stringset includedOptionComponents ;
+  @stringset includedGrammarComponents ;
+  @ModelMap modelMap ;
+  @ActionMap actionMap ;
+  <import_headers_semantics_and_grammars>
+    ?includedSemanticsComponents
+    ?includedOptionComponents
+    ?includedMetamodelComponents
+    ?includedGrammarComponents
+    !?semanticsComponentsMap
+    !?ioMetamodelComponentMap
+    !?grammarComponentsMap
+    !?optionsComponentsMap
+    ?inclusionsForImplementationFile
+    ?inclusionsForHeaderFile
+    ?ioOptionsComponentsMapForUse
+    ?modelMap
+    ?actionMap
+    ?entitiesMap
+    ?tableEnAvant
+  ;
 #--- 
   @L_productionRules_ForGrammarComponent productionRulesListForGrammar [empty] ;
   @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMapForGrammar [empty] ;
@@ -431,6 +465,7 @@ label importLexique
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -1224,8 +1259,10 @@ label importSyntax
   select
   or
     $->$ ;
-    @lstring returnedEntity ;
-    $identifier$ ? returnedEntity ;
+    $identifier$ ? * ;
+  or
+    $+>$ ;
+    $identifier$ ? * ;
   end select ;
   $;$ ;
 end rule ;

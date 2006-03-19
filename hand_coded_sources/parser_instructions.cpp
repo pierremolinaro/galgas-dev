@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate parser instructions                                             *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999-2006 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -86,7 +86,17 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
       currentReferenceBranch = currentReferenceBranch->nextObject () ;
       currentOperandBranch = currentOperandBranch->nextObject () ;
     }
-    sameSignature = sameSignature && (currentReferenceBranch == NULL) && (currentOperandBranch == NULL) ;
+    if (sameSignature && (currentReferenceBranch == NULL) && (currentOperandBranch != NULL)) {
+      C_String errorMessage ;
+      errorMessage << "syntax signature error: the repeat instruction has more branches than the original one" ;
+      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+      sameSignature = false ;
+    }else if (sameSignature && (currentReferenceBranch != NULL) && (currentOperandBranch == NULL)) {
+      C_String errorMessage ;
+      errorMessage << "syntax signature error: the repeat instruction has less branches than the original one" ;
+      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+      sameSignature = false ;
+    }
   }
   return sameSignature ;
 }
@@ -101,7 +111,7 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
   bool sameSignature = p != NULL ;
   if (! sameSignature) {
     C_String errorMessage ;
-    errorMessage << "syntax signature error : a select instruction is expected here" ;
+    errorMessage << "syntax signature error: a select instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
   }else{
     GGS_L_branchList_ForGrammarComponent::element_type * currentReferenceBranch = mSelectList.firstObject () ;
@@ -114,9 +124,17 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
       currentReferenceBranch = currentReferenceBranch->nextObject () ;
       currentOperandBranch = currentOperandBranch->nextObject () ;
     }
-    sameSignature = sameSignature &&
-                   (currentReferenceBranch == NULL) &&
-                   (currentOperandBranch == NULL) ;
+    if (sameSignature && (currentReferenceBranch == NULL) && (currentOperandBranch != NULL)) {
+      C_String errorMessage ;
+      errorMessage << "syntax signature error: the select instruction has more branches than the original one" ;
+      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+      sameSignature = false ;
+    }else if (sameSignature && (currentReferenceBranch != NULL) && (currentOperandBranch == NULL)) {
+      C_String errorMessage ;
+      errorMessage << "syntax signature error: the select instruction has less branches than the original one" ;
+      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+      sameSignature = false ;
+    }
   }
   return sameSignature ;
 }

@@ -449,7 +449,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomTable << "::reader_description (void) const {\n"
                "  C_String s ;\n"
-               "  s << \"<map @" << aNomTable << "\" ;\n"
+               "  s << \"<map @" << aNomTable << " \" ;\n"
                "  if (isBuilt ()) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
                "    element_type * p = firstObject () ;\n"
