@@ -36,11 +36,13 @@ label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -48,6 +50,7 @@ label importOptions
 rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
@@ -66,7 +69,7 @@ rule <galgas_component>
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
   $cocoa$ ;
   @lstring cocoaComponentName ;
@@ -94,6 +97,7 @@ rule <galgas_component>
     <parse_grammar_component_for_importing>
      !sourceFileName
      !?grammarComponentsMap
+     !?ioMetamodelComponentMap
   ;
   end select ;
   @lstring lexiqueClassName ;
@@ -140,6 +144,7 @@ label importLexique
   $;$ ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $cocoa$ ;
   $identifier$ ? * ;
@@ -187,6 +192,7 @@ label importSemantics
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $cocoa$ ;
   $identifier$ ? * ;

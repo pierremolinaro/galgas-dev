@@ -40,11 +40,13 @@ label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -58,6 +60,7 @@ label parse
 rule <parse_syntax_for_importing>
   ??@lstring inFileName
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
@@ -71,6 +74,7 @@ label parse
 rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
@@ -109,6 +113,7 @@ label importLexique
   $;$ ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $compile$ ;
   $literal_string$ ? * ;
@@ -122,6 +127,7 @@ label importSemantics
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $compile$ ;
   $literal_string$ ? * ;
@@ -158,9 +164,11 @@ end rule ;
 rule <parse_syntax_for_importing>
   ??@lstring inFileName
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
   grammar galgas_SLR_grammar label importSyntax in inFileName
     !?ioSyntaxComponentsMap
+    !?ioMetamodelComponentMap
   ;
 end rule ;
 
@@ -190,9 +198,11 @@ end rule ;
 rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
   grammar galgas_SLR_grammar label importGrammarForSemantics in inFileName
     !?ioGrammarComponentsMap
+    !?ioMetamodelComponentMap
   ;
 end rule ;
 

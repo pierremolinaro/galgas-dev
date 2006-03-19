@@ -39,11 +39,13 @@ label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -66,6 +68,7 @@ label parse
 rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
@@ -552,6 +555,7 @@ rule <galgas_component>
    ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -637,6 +641,7 @@ label importLexique
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -788,6 +793,7 @@ rule <import_headers_semantics_and_grammars>
         <parse_grammar_component_for_importing> 
           !sourceFile
           !?grammarComponentsMap
+          !?ioMetamodelComponentMap
         ;
       end select ;
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;

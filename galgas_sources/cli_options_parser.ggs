@@ -35,11 +35,13 @@ label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -154,6 +156,7 @@ label importLexique
   $;$ ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $option$ ;
   $identifier$ ? * ;
@@ -207,6 +210,7 @@ label importSemantics
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
   $option$ ;
   $identifier$ ? * ;
