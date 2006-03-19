@@ -217,8 +217,8 @@ routine_checkParseRewindSignatures (C_Lexique & lexique_var_,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionVerifSyntaxique
-::generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
+void cPtr_typeInstructionVerifSyntaxique::
+generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
                                      const C_String & /* inLexiqueClassName */,
                                      const C_String & /* inTargetFileName */,
                                      sint32 & /* ioPrototypeIndex */,
@@ -227,8 +227,8 @@ void cPtr_typeInstructionVerifSyntaxique
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionVerifSyntaxique
-::generateInstruction (AC_OutputStream & inCppFile,
+void cPtr_typeInstructionVerifSyntaxique::
+generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & inLexiqueClassName,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -267,15 +267,15 @@ void cPtr_typeInstructionVerifSyntaxique
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionVerifSyntaxique
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeInstructionVerifSyntaxique::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionVerifSyntaxique
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeInstructionVerifSyntaxique::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool used = false ;
   GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.firstObject () ;
@@ -296,8 +296,8 @@ bool cPtr_typeInstructionVerifSyntaxique
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionAppelNonTerminal
-::generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
+void cPtr_typeInstructionAppelNonTerminal::
+generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
                                      const C_String & /* inLexiqueClassName */,
                                      const C_String & /* inTargetFileName */,
                                      sint32 & /* ioPrototypeIndex */,
@@ -306,13 +306,20 @@ void cPtr_typeInstructionAppelNonTerminal
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionAppelNonTerminal
-::generateInstruction (AC_OutputStream & inCppFile,
+void cPtr_typeInstructionAppelNonTerminal::
+generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions && (mReturnedEntityVarName.length () > 0)) {
+    if (mEntityTypeNameForMultipleReference.string ().length () > 0) {
+      inCppFile << "var_cas_" << mReturnedEntityVarName << ".add (" ;
+    }else{
+      inCppFile << "var_cas_" << mReturnedEntityVarName << " = " ;
+    }
+  }
   inCppFile << "nt_" << mNonterminalName << '_'
             << (inGenerateSemanticInstructions ? mAltName.cString () : "parse")
             << " (lexique_var_" ;
@@ -325,20 +332,23 @@ void cPtr_typeInstructionAppelNonTerminal
       argument = argument->nextObject () ;
     }
   }
+  if (inGenerateSemanticInstructions && (mEntityTypeNameForMultipleReference.string ().length () > 0)) {
+    inCppFile << ")" ;
+  }
   inCppFile << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionAppelNonTerminal
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeInstructionAppelNonTerminal::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionAppelNonTerminal
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeInstructionAppelNonTerminal::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   if (inGenerateSemanticInstructions) {
@@ -361,8 +371,8 @@ bool cPtr_typeInstructionAppelNonTerminal
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_select_instruction
-::generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+void cPtr_C_select_instruction::
+generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const C_String & inLexiqueClassName,
                                      const C_String & inTargetFileName,
                                      sint32 & ioPrototypeIndex,
@@ -388,8 +398,8 @@ void cPtr_C_select_instruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_select_instruction
-::generateInstruction (AC_OutputStream & inCppFile,
+void cPtr_C_select_instruction::
+generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
@@ -420,15 +430,15 @@ void cPtr_C_select_instruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_select_instruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_C_select_instruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_select_instruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_C_select_instruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::element_type * currentBranch = mIFbranchesList.firstObject () ;
@@ -449,8 +459,8 @@ bool cPtr_C_select_instruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_repeat_instruction
-::generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+void cPtr_C_repeat_instruction::
+generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const C_String & inLexiqueClassName,
                                      const C_String & inTargetFileName,
                                      sint32 & ioPrototypeIndex,
@@ -476,8 +486,8 @@ void cPtr_C_repeat_instruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_repeat_instruction
-::generateInstruction (AC_OutputStream & inCppFile,
+void cPtr_C_repeat_instruction::
+generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
@@ -521,15 +531,15 @@ void cPtr_C_repeat_instruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_repeat_instruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_C_repeat_instruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_repeat_instruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_C_repeat_instruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::element_type * currentBranch = aListesBranchesRepeter.firstObject () ;
@@ -550,8 +560,8 @@ bool cPtr_C_repeat_instruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_parse_rewind_instruction
-::generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+void cPtr_C_parse_rewind_instruction::
+generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const C_String & inLexiqueClassName,
                                      const C_String & inTargetFileName,
                                      sint32 & ioPrototypeIndex,
@@ -581,8 +591,8 @@ void cPtr_C_parse_rewind_instruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_parse_rewind_instruction
-::generateInstruction (AC_OutputStream & inCppFile,
+void cPtr_C_parse_rewind_instruction::
+generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
@@ -613,15 +623,15 @@ void cPtr_C_parse_rewind_instruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_parse_rewind_instruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_C_parse_rewind_instruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_parse_rewind_instruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_C_parse_rewind_instruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::element_type * currentBranch = mBranchList.firstObject () ;

@@ -842,15 +842,22 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
     generatedZone3.writeCTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
-    GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
-    while (altForNonterminal != NULL) {
-      macroValidPointer (altForNonterminal) ;
-      generatedZone3 << "\nvoid " << inTargetFileName
-              << "::nt_" << nonTerminal->mKey << '_' << altForNonterminal->mKey
-              << " (" << inLexiqueName << " & lexique_var_" ;
+    GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
+    while (currentAltForNonTerminal != NULL) {
+      macroValidPointer (currentAltForNonTerminal) ;
+      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                       << " * " ;      
+      }else{
+        generatedZone3 << "void " ;
+      }
+      generatedZone3 << inTargetFileName
+                     << "::\n"
+                     << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+                     << " (" << inLexiqueName << " & lexique_var_" ;
       const sint32 pureBNFleftNonterminalIndex = nonTerminal->mIndex ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      GGS_L_signature::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -862,7 +869,11 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
         parametre = parametre->nextObject () ;
         numeroParametre ++ ;
       }
-      generatedZone3 << ") {\n" ; 
+      generatedZone3 << ") {\n" ;
+      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+        generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                       << " * _outReturnedModelInstance = NULL ;\n" ;      
+      }
       generatedZone3 << "  switch (lexique_var_.nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
@@ -873,27 +884,37 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
           generatedZone3 << "  case " << ip << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
-                                                                      altForNonterminal->mKey,
+                                                                      currentAltForNonTerminal->mKey,
+                               currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0,
                                                                       generatedZone3) ;
           generatedZone3 << "    break ;\n" ;
         }
       }
       generatedZone3 << "  default :\n"
-                 "    lexique_var_.internalBottomUpParserError (HERE) ;\n"
-                 "  }\n"
-                 "}\n\n" ;
-      altForNonterminal = altForNonterminal->nextObject () ;
+                        "    lexique_var_.internalBottomUpParserError (HERE) ;\n"
+                        "  }\n" ;
+      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+        generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
+      }
+      generatedZone3 << "}\n\n" ;
+      currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
       generatedZone3.writeCTitleComment ("Grammar start symbol implementation") ;
-      GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
-      while (altForNonterminal != NULL) {
-        macroValidPointer (altForNonterminal) ;
-        generatedZone3 << "\nvoid " << inTargetFileName
-                   << "::startParsing_" << altForNonterminal->mKey
-                   << " (" << inLexiqueName << " & lexique_var_" ;
-        GGS_L_signature::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
+      while (currentAltForNonTerminal != NULL) {
+        macroValidPointer (currentAltForNonTerminal) ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                         << " * " ;      
+        }else{
+          generatedZone3 << "void " ;
+        }
+        generatedZone3 << inTargetFileName
+                       << "::startParsing_" << currentAltForNonTerminal->mKey
+                       << " (" << inLexiqueName << " & lexique_var_" ;
+        GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
@@ -904,13 +925,21 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") {\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                         << " * _outReturnedModelInstance = NULL ;\n" ;      
+        }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "  const bool ok = lexique_var_"
                    ".performBottomUpParsing (gActionTable, gActionTableIndex, gSuccessorTable, gProductionsTable) ;\n"
                    "  if (ok && ! lexique_var_.parseOnlyFlagOn ()) {\n"
-                   "    nt_" << nonTerminal->mKey << '_' << altForNonterminal->mKey
-                << " (lexique_var_" ;
-        parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+                   "    " ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "_outReturnedModelInstance = " ;      
+        }
+        generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+                       << " (lexique_var_" ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
@@ -919,9 +948,12 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
-                   "  }\n"
-                   "}\n\n" ;
-        altForNonterminal = altForNonterminal->nextObject () ;
+                          "  }\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
+        }
+        generatedZone3 << "}\n\n" ;
+        currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
       }
     }
     nonTerminal = nonTerminal->nextObject () ;

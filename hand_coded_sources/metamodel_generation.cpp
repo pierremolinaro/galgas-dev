@@ -75,6 +75,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                    << " (const GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << "&) ;\n"
                       "  private : void operator = "
                       " (const GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << "&) ;\n"
+                      "//--- Add an Object\n"
+                      "  public : void add (GGS_" << currentMultipleReferencedEntity->mKey.string () << " * inObject) ;\n"
                       "//--- Attributes\n"
                       "  public : GGS_" << currentMultipleReferencedEntity->mKey.string () << " * mFirstObject ;\n"
                       "  public : GGS_" << currentMultipleReferencedEntity->mKey.string () << " * mLastObject ;\n"
@@ -157,6 +159,9 @@ generate_metamodel_header_file (C_Lexique & inLexique,
       }
       currentProperty = currentProperty->nextObject () ;
     }
+  //--- Friend Declaration                 
+    generatedZone3 << "//--- Friend Class\n"
+                      "  friend class GGS__listOf_" << currentEntity->mKey << " ;\n" ;
   //--- End of Class Declaration                 
     generatedZone3 << "} ;\n\n" ;
     currentEntity = currentEntity->nextObject () ;
@@ -196,8 +201,23 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << " (void)\n"
                       ":mFirstObject (NULL), mLastObject (NULL) {\n"
                       "}\n\n" ;
+    generatedZone3.writeCHyphenLineComment () ;
+    generatedZone3 << " void GGS__listOf_" << currentMultipleReferencedEntity->mKey.string ()
+                   << "::\n"
+                      "add (GGS_" << currentMultipleReferencedEntity->mKey.string () << " * inObject) {\n"
+                      "  if (inObject != NULL) {\n"
+                      "    macroValidObject (inObject) ;\n"
+                      "    if (mFirstObject == NULL) {\n"
+                      "      mFirstObject = inObject ;\n"
+                      "    }else{\n"
+                      "      mLastObject->_mNextObject = inObject ;\n"
+                      "    }\n"
+                      "    mLastObject = inObject ;\n"
+                      "  }\n"
+                      "}\n\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
+
 
 //--- Generate Implementation of classes
   GGS_entityToImplementMap::element_type * currentEntity = ioEntityMap.firstObject () ;

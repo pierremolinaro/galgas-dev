@@ -65,8 +65,12 @@ void cProduction::
 engendrerAppelProduction (const sint16 nombreDeParametres,
                           const cVocabulary & inVocabulary,
                           const C_String & inAltName,
+                          const bool inReturnsEntityInstance,
                           AC_OutputStream & fichierCPP) const {
-  fichierCPP << "  pr_"
+  if (inReturnsEntityInstance) {
+    fichierCPP << "_outReturnedModelInstance = " ;
+  }
+  fichierCPP << "pr_"
              << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE)
              << '_'
              << mSourceFileName << '_' << aLigneDefinition
@@ -202,9 +206,15 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
     macroValidPointer (nonTerminal) ;
     GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
-      generatedZone3 << "  public : virtual void "
-               "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
-            << " (" << inLexiqueName << " &" ;
+      generatedZone3 << "  public : virtual " ;
+      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                       << " * " ;      
+      }else{
+        generatedZone3 << "void " ;
+      }
+      generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+                     << " (" << inLexiqueName << " &" ;
       GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -214,8 +224,15 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
       }
       generatedZone3 << ") ;\n" ; 
       if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
-        generatedZone3 << "  public : void startParsing_" << currentAltForNonTerminal->mKey 
-              << " (" << inLexiqueName << " &" ;
+        generatedZone3 << "  public : " ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                         << " * " ;      
+        }else{
+          generatedZone3 << "void " ;
+        }
+        generatedZone3 << "startParsing_" << currentAltForNonTerminal->mKey 
+                       << " (" << inLexiqueName << " &" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
