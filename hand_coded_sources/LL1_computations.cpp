@@ -241,19 +241,20 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
                                  const sint16 nombreDeParametres,
                                  const cPureBNFproductionsList & inPureBNFproductions,
                                  AC_OutputStream & fichierCPP,
+                                 const bool inReturnsEntityInstance,
                                  const C_String & inAltName) {
   const sint32 first = inPureBNFproductions.tableauIndicePremiereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
   if (first >= 0) { // Au moins une production
     const sint32 derniere = inPureBNFproductions.tableauIndiceDerniereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
     if (first == derniere) { // Une seule production, pas de conflit
       const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
-      inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
+      inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, inReturnsEntityInstance, fichierCPP) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
       fichierCPP << "  switch (lexique_var_.nextProductionIndex ()) {\n" ;
       for (sint32 j=first ; j<=derniere ; j++) {
         fichierCPP << "  case " << ((sint32)(j - first + 1)) << " :\n  " ;
         const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-        inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
+        inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, inReturnsEntityInstance, fichierCPP) ;
         fichierCPP << "    break ;\n" ;
       }
       fichierCPP << "  default :\n"
@@ -497,13 +498,21 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
     macroValidPointer (nonTerminal) ;
     generatedZone3.writeCTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal->mIndex COMMA_HERE) >= 0 ;
-    GGS_M_nonterminalSymbolAltsForGrammar::element_type * altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
-    while (altForNonterminal != NULL) {
-      macroValidPointer (altForNonterminal) ;
-      generatedZone3 << "\nvoid " << inTargetFileName
-              << "::nt_" << nonTerminal->mKey << '_' << altForNonterminal->mKey
-              << " (" << inLexiqueName << " & " << (existeProduction ? "lexique_var_" : "") ;
-      GGS_L_signature::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+    GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
+    while (currentAltForNonTerminal != NULL) {
+      macroValidPointer (currentAltForNonTerminal) ;
+      macroValidPointer (currentAltForNonTerminal) ;
+      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                       << " * " ;      
+      }else{
+        generatedZone3 << "void " ;
+      }
+      generatedZone3 << inTargetFileName
+                     << "::\n"
+                     << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+                     << " (" << inLexiqueName << " & " << (existeProduction ? "lexique_var_" : "") ;
+      GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -516,22 +525,37 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         numeroParametre ++ ;
       }
       generatedZone3 << ") {\n" ; 
+      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+        generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                       << " * _outReturnedModelInstance = NULL ;\n" ;      
+      }
       engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal->mIndex, numeroParametre,
                                        inPureBNFproductions, generatedZone3,
-                                       altForNonterminal->mKey) ;
+                                       currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0,
+                                       currentAltForNonTerminal->mKey) ;
+      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+        generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
+      }
       generatedZone3 << "}\n\n" ;
-      altForNonterminal = altForNonterminal->nextObject () ;
+      currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
     }
   //--- Generate 'startParsing' method ?
     if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
       generatedZone3.writeCTitleComment ("Grammar start symbol implementation") ;
-      altForNonterminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
-      while (altForNonterminal != NULL) {
-        macroValidPointer (altForNonterminal) ;
-        generatedZone3 << "\nvoid " << inTargetFileName
-                   << "::startParsing_"  << altForNonterminal->mKey
-                    << " (" << inLexiqueName << " & lexique_var_" ;
-        GGS_L_signature::element_type * parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+      currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
+      while (currentAltForNonTerminal != NULL) {
+        macroValidPointer (currentAltForNonTerminal) ;
+        generatedZone3 << "\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                         << " * " ;      
+        }else{
+          generatedZone3 << "void " ;
+        }
+        generatedZone3 << inTargetFileName
+                       << "::startParsing_"  << currentAltForNonTerminal->mKey
+                       << " (" << inLexiqueName << " & lexique_var_" ;
+        GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
@@ -542,6 +566,10 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") {\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                         << " * _outReturnedModelInstance = NULL ;\n" ;      
+        }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "  const bool ok = lexique_var_"
                    ".performTopDownParsing (gProductions, gProductionIndexes"
@@ -549,9 +577,13 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                 << productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE)
                 << ") ;\n"
                    "  if (ok && ! lexique_var_.parseOnlyFlagOn ()) {\n"
-                   "    nt_" << nonTerminal->mKey << '_' << altForNonterminal->mKey
-                << " (lexique_var_" ;
-        parametre = altForNonterminal->mInfo.mFormalParametersList.firstObject () ;
+                   "    " ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "_outReturnedModelInstance = " ;      
+        }
+        generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+                       << " (lexique_var_" ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
@@ -559,10 +591,16 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
           parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << ", _outReturnedModelInstance" ;      
+        }
         generatedZone3 << ") ;\n"
-                   "  }\n"
-                   "}\n\n" ;
-        altForNonterminal = altForNonterminal->nextObject () ;
+                          "  }\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
+        }
+        generatedZone3 << "}\n\n" ;
+        currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
       }
     }
     nonTerminal = nonTerminal->nextObject () ;

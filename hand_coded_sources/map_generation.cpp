@@ -63,7 +63,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Data member\n"
              "  public : e_" << aNomTable << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
-             "  public : void appendForDescription (C_String & ioString) const ;\n"
+             "  public : void appendForMapDescription (C_String & ioString) const ;\n"
              "} ;\n\n" ;
 }
 
@@ -232,7 +232,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Method for 'reader' element
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomTable << "::\n"
-               "appendForDescription (C_String & ioString) const {\n"
+               "appendForMapDescription (C_String & ioString) const {\n"
                "  ioString << \"[\"\n"
                "           << mKey.reader_description ().string () ;\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
@@ -455,7 +455,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "    element_type * p = firstObject () ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
-               "      p->appendForDescription (s) ;\n"
+               "      p->appendForMapDescription (s) ;\n"
                "      p = p->nextObject () ;\n"
                "    }\n"
                "  }else{\n"
@@ -511,7 +511,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 
   inHfile << "//--- Method for 'description' reader\n"
-             "  public : void appendForDescription (C_String & ioString) const ;\n"
+             "  public : void appendForMapDescription (C_String & ioString) const ;\n"
              "} ;\n\n" ; //--- Fin de la declaration de la classe e_...
 
 // ---------------------- declaration de la classe table -----------------

@@ -955,8 +955,14 @@ rule <rule_declaration_or_implementation>
     !?tableTerminaux
     !?syntaxSignature
   ;
-  @location endOfInstructionList := here ;
-  [!?altProductionsMap insertKey !altName !listeTypeEtNomsArguments !listeInstructions !syntaxSignature !endOfInstructionList] ;
+  [!?altProductionsMap insertKey
+    !altName
+    !listeTypeEtNomsArguments
+    !listeInstructions
+    !syntaxSignature
+    !here
+    ![inEffectiveReturnedEntity value]
+  ] ;
   repeat
   while
     $label$ ;
@@ -1006,8 +1012,14 @@ rule <rule_declaration_or_implementation>
       !?tableTerminaux
       !?syntaxSignature
     ;
-    @location endOfInstructionList := here ;
-    [!?altProductionsMap insertKey !altName !listeTypeEtNomsArguments !listeInstructions !syntaxSignature !endOfInstructionList] ;
+    [!?altProductionsMap insertKey
+      !altName
+      !listeTypeEtNomsArguments
+      !listeInstructions
+      !syntaxSignature
+      !here
+      ![returnedEntity value]
+    ] ;
   end repeat ;
   $end$ ;
   $rule$ ;
@@ -1198,7 +1210,7 @@ rule <syntax_instruction>
   ;
 #--- Parse returned value
   @lstring returnedEntityVariableName ;
-  @bool writeAccess := true ;
+  @bool isMultipleEntity := false ;
   select
     returnedEntityVariableName := [@lstring new !"" !here] ;
   or
@@ -1207,33 +1219,43 @@ rule <syntax_instruction>
   or
     $+>$ ;
     $identifier$ ? returnedEntityVariableName ;
-    writeAccess := false ;
+    isMultipleEntity := true ;
   end select ;
 #--- Check returned value
+  @string entityTypeNameForMultipleReference := "" ;
   if ([returnedEntityFromSignature value] == "") & ([returnedEntityVariableName value] != "") then
     error returnedEntityVariableName: "the non terminal symbol is declared with no returned entity" ;
   elsif ([returnedEntityFromSignature value] != "") & ([returnedEntityVariableName value] == "") then
     error returnedEntityVariableName: "the non terminal symbol is declared to return an instance of '@" .  [returnedEntityFromSignature  value] . "' entity" ;
   elsif ([returnedEntityFromSignature value] != "") & ([returnedEntityVariableName value] != "") then
   #--- Check type consistency
-    if writeAccess then
+    if isMultipleEntity then
+      @AC_galgasType type ;
+      [!?ioVariablesMap searchForReadWriteAccess !returnedEntityVariableName ?type ?*] ;
+      @lstring typeName ;
+      extract type->@typeGalgas_multipleEntity (? typeName) error returnedEntityVariableName : messageGalgasType ;
+      entityTypeNameForMultipleReference := [typeName value] ;
+    else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;
       extract type->@typeGalgas_singleEntity (...) error returnedEntityVariableName : messageGalgasType ;
-    else
-      @AC_galgasType type ;
-      [!?ioVariablesMap searchForReadWriteAccess !returnedEntityVariableName ?type ?*] ;
-      extract type->@typeGalgas_multipleEntity (?*) error returnedEntityVariableName : messageGalgasType ;
     end if ;
-
   end if ;
 #--- Generate instruction
   @typeInstruction instruction ;
-  instruction := [@typeInstructionAppelNonTerminal new !nonterminalSymbolName !parametersExpressionList !altName] ;
+  instruction := [@typeInstructionAppelNonTerminal new
+    !nonterminalSymbolName
+    !parametersExpressionList
+    !altName
+    !returnedEntityVariableName
+    !entityTypeNameForMultipleReference
+  ] ;
   ioInstructionsList += !instruction ;
-  @AC_instruction_ForGrammar i ;
-  @uint nonterminalSymbolIndex := 0 ;
-  i := [@T_nonterminalInstruction_forGrammarComponent new ![nonterminalSymbolName location] !nonterminalSymbolName !nonterminalSymbolIndex] ;
+  @AC_instruction_ForGrammar i := [@T_nonterminalInstruction_forGrammarComponent new
+    ![nonterminalSymbolName location]
+    !nonterminalSymbolName
+    !0
+  ] ;
   ioSyntaxSignature += !i ;
   $;$ ;
 label importSyntax

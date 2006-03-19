@@ -71,7 +71,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : inline ~elementOf_GGS_" << aNomListe << " (void) {}\n"
 
 //--- Method for list 'description' reader
-             "  public : void appendForDescription (C_String & ioString) const ;\n"
+             "  public : void appendForListDescription (C_String & ioString) const ;\n"
 
 //--- Friend declaration
              "  friend class GGS_" << aNomListe << " ;\n"
@@ -96,7 +96,6 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //----------------------- List class declaration ----------------  
   inHfile.writeCTitleComment (C_String ("list '@") + aNomListe + "'") ;
 
-  inHfile.writeCHyphenLineComment () ;
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
              "class GGS_" << aNomListe << " {\n"
@@ -233,7 +232,7 @@ void cPtr_C_listTypeToImplement
 
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-               "appendForDescription (C_String & ioString) const {\n"
+               "appendForListDescription (C_String & ioString) const {\n"
                "  ioString << \"[\" ;\n"  ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
@@ -467,7 +466,7 @@ void cPtr_C_listTypeToImplement
                "    element_type * p = mFirstItem ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
-               "      p->appendForDescription (s) ;\n"
+               "      p->appendForListDescription (s) ;\n"
                "      p = p->mNextItem ;\n"
                "    }\n"
                "  }else{\n"
