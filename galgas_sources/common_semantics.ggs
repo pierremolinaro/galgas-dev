@@ -477,6 +477,7 @@ action generate_metamodel
  ?!@entityToImplementMap ioEntityMap
  ?@lstring inMetamodelComponentName
  ?@stringset inMultiReferencedEntities
+ ?@lstring inRootEntityName
 ;
 
 #---------------------------------------------------------------------------*

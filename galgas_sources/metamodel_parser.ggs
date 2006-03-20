@@ -163,6 +163,7 @@ rule <parse_metamodel>
     !?entityMap
     !metamodelName
     !multiReferencedEntities
+    !rootEntityName
   ;
 #--- Build semantic entities map
   @M_semanticsEntitiesForUse semanticsEntityMap [empty] ;
