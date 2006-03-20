@@ -28,7 +28,8 @@ static void
 generate_metamodel_header_file (C_Lexique & inLexique,
                                 const GGS_entityToImplementMap & ioEntityMap,
                                 const GGS_lstring & inMetamodelComponentName,
-                                const GGS_stringset & inMultipleReferencedEntities) {
+                                const GGS_stringset & inMultipleReferencedEntities,
+                                const GGS_lstring & inRootEntityName) {
   C_String generatedZone2 ;
   generatedZone2 << "#ifndef " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
                  << "#define " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
@@ -60,7 +61,10 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     generatedZone3 << "class GGS__listOf_" << currentMultipleReferencedEntity->mKey << " ;\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
-  generatedZone3 << '\n' ;
+  generatedZone3 << "\n"
+                    "void _checkMetamodel" // << inMetamodelComponentName
+                 << " (GGS_" << inRootEntityName << " * inRootObject) ;\n"
+                    "\n" ;
   
 //--- Generate list of entities declarations
   currentMultipleReferencedEntity = inMultipleReferencedEntities.firstObject () ;
@@ -190,12 +194,22 @@ static void
 generate_metamodel_cpp_file (C_Lexique & inLexique,
                              const GGS_entityToImplementMap & ioEntityMap,
                              const GGS_lstring & inMetamodelComponentName,
-                             const GGS_stringset & inMultipleReferencedEntities) {
+                             const GGS_stringset & inMultipleReferencedEntities,
+                             const GGS_lstring & inRootEntityName) {
   C_String generatedZone2 ;
 //--- Include declaration of header file
   generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n" ;
   
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (200000) ;
+  
+  generatedZone3.writeCTitleComment ("Checking Metamodel") ;
+    generatedZone3 << "void _checkMetamodel" // << inMetamodelComponentName
+                   << " (GGS_" << inRootEntityName << " * inRootObject) {\n"
+                      "  if (inRootObject != NULL) {\n"
+                      "    macroValidPointer (inRootObject) ;\n"
+                      "  }\n"
+                      "}\n" ;
+
 //--- Generate Implementations of Lists
   GGS_stringset::element_type * currentMultipleReferencedEntity = inMultipleReferencedEntities.firstObject () ;
   while (currentMultipleReferencedEntity != NULL) {
@@ -315,12 +329,15 @@ void
 routine_generate_metamodel (C_Lexique & inLexique,
                             GGS_entityToImplementMap & ioEntityMap,
                             GGS_lstring inMetamodelComponentName,
-                            GGS_stringset inMultipleReferencedEntities) {
+                            GGS_stringset inMultipleReferencedEntities,
+                            GGS_lstring inRootEntityName) {
   if (inLexique.galgas_IO_Ptr ()->currentFileErrorsCount () == 0) {
   //--- Generate header file
-    generate_metamodel_header_file (inLexique, ioEntityMap, inMetamodelComponentName, inMultipleReferencedEntities) ;
+    generate_metamodel_header_file (inLexique, ioEntityMap, inMetamodelComponentName,
+                                    inMultipleReferencedEntities, inRootEntityName) ;
   //--- Generate implementation file
-    generate_metamodel_cpp_file (inLexique, ioEntityMap, inMetamodelComponentName, inMultipleReferencedEntities) ;
+    generate_metamodel_cpp_file (inLexique, ioEntityMap, inMetamodelComponentName,
+                                 inMultipleReferencedEntities, inRootEntityName) ;
   }
 }
 

@@ -779,7 +779,7 @@ void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << "))" ;
+  ioCppFile << ", true))" ;
 }
 
 //---------------------------------------------------------------------------*

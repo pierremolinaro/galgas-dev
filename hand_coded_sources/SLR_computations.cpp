@@ -948,6 +948,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
+                          "    _checkMetamodel (_outReturnedModelInstance) ;\n"
                           "  }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
