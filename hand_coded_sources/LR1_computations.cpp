@@ -1158,9 +1158,11 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
           parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << ") ;\n"
-                          "    _checkMetamodel (_outReturnedModelInstance) ;\n"
-                          "  }\n" ;
+        generatedZone3 << ") ;\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "    _checkMetamodel (_outReturnedModelInstance) ;\n" ;
+        }
+        generatedZone3 << "  }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
         }
