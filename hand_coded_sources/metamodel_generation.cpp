@@ -168,6 +168,9 @@ generate_metamodel_header_file (C_Lexique & inLexique,
       currentProperty = currentProperty->nextObject () ;
     }
   //--- Friend Declaration                 
+    generatedZone3 << "//--- 'description' reader\n"
+                      "  public : virtual void reader_description (void) const ;\n" ;
+  //--- Friend Declaration                 
     generatedZone3 << "//--- Friend Class\n"
                       "  friend class GGS__listOf_" << currentEntity->mKey << " ;\n" ;
   //--- End of Class Declaration                 
@@ -198,7 +201,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                              const GGS_lstring & inRootEntityName) {
   C_String generatedZone2 ;
 //--- Include declaration of header file
-  generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n" ;
+  generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n"
+                    "#include \"utilities/MF_MemoryControl.h\"\n" ;
   
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (200000) ;
   
@@ -207,6 +211,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                    << " (GGS_" << inRootEntityName << " * inRootObject) {\n"
                       "  if (inRootObject != NULL) {\n"
                       "    macroValidPointer (inRootObject) ;\n"
+                      "    const GGS_string s = inRootObject->reader_description () ;\n"
+                      "    printf (\"%s\\n\", s.string ().cString ()) ;\n"
                       "  }\n"
                       "}\n" ;
 
@@ -311,6 +317,10 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     }
     generatedZone3 << " {\n"
                       "}\n\n" ;
+    generatedZone3 << "void GGS_" << currentEntity->mKey << "::reader_description (void) const {\n"
+    
+                      "}\n\n" ;
+
     currentEntity = currentEntity->nextObject () ;
   }
   
