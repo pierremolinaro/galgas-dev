@@ -151,7 +151,7 @@ generateClassRegistering (AC_OutputStream & inCppfile,
   sint32 index = 0 ;
   while (currentClass != NULL) {
     macroValidPointer (currentClass) ;
-    inCppfile << "// " << index << " : " << currentClass->mKey.string () << '\n' ;
+    inCppfile << "// " << index << " : " << currentClass->mKey << '\n' ;
     index ++ ;
     currentClass = currentClass->nextObject () ;
   }

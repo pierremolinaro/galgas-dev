@@ -465,7 +465,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
     generateTerminalSymbolCppName (currentTerminal->mKey, constanteCname) ;
     generatedZone2 << "//--- Syntax error message for terminal '$" << currentTerminal->mKey << "$' :\n"
                "static const char * " << constanteCname << " = " ;
-    generatedZone2.writeCstringConstant (currentTerminal->mInfo.mErrorMessage.string ()) ;
+    generatedZone2.writeCstringConstant (currentTerminal->mInfo.mErrorMessage) ;
     generatedZone2 << " ;\n" ;
     errorMessageList << ",\n       gSyntaxErrorMessage_" ;
     generateTerminalSymbolCppName (currentTerminal->mKey, errorMessageList) ;

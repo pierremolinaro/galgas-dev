@@ -1123,7 +1123,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
         }
         generatedZone3 << inTargetFileName
                        << "::\n"
-                       << "::startParsing_" << currentAltForNonTerminal->mKey
+                       << "startParsing_" << currentAltForNonTerminal->mKey
                        << " (" << inLexiqueName << " & lexique_var_" ;
         GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;

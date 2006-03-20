@@ -781,7 +781,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
   current = aListeTousAttributsNonExternes.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << current->aNomAttribut << ".reader_description ().string () ;\n" ;
+    inCppFile << current->aNomAttribut << ".reader_description () ;\n" ;
     current = current->nextObject () ;
   }
   inCppFile << "}\n\n" ;

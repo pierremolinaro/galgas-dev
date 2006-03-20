@@ -35,7 +35,7 @@ void cPtr_typeForeachInstruction
     GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
-      ioCppFile << "GGS_" << enumeratedVariable->mCppTypeName.string ()
+      ioCppFile << "GGS_" << enumeratedVariable->mCppTypeName
                 << "::element_type * operand_" << enumeratedVariable->mLocationOffset.currentLocation () << " = " ;
       enumeratedVariable->mCppEnumeratedVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << ".firstObject () ;\n" ;

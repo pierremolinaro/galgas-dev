@@ -238,7 +238,7 @@ void cPtr_C_listTypeToImplement
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  ioString << " << current->aNomAttribut << ".reader_description ().string () ;\n" ;
+    inCppFile << "  ioString << " << current->aNomAttribut << ".reader_description () ;\n" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }

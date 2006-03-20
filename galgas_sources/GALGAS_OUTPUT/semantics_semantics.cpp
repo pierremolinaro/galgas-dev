@@ -126,7 +126,7 @@ mName (argument_0) {
 
 void cPtr_typeDirectName::appendForDescription (C_String & ioString) const {
   ioString << "->@typeDirectName:" ;
-mName.reader_description ().string () ;
+mName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -221,7 +221,7 @@ mName (argument_0) {
 
 void cPtr_typeAutomaticName::appendForDescription (C_String & ioString) const {
   ioString << "->@typeAutomaticName:" ;
-mName.reader_description ().string () ;
+mName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -254,7 +254,7 @@ mLocation (argument_0) {
 
 void cPtr_typeLocationAutomaticName::appendForDescription (C_String & ioString) const {
   ioString << "->@typeLocationAutomaticName:" ;
-mLocation.reader_description ().string () ;
+mLocation.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -291,9 +291,9 @@ mFieldKind (argument_2) {
 
 void cPtr_typeOperandName::appendForDescription (C_String & ioString) const {
   ioString << "->@typeOperandName:" ;
-mName.reader_description ().string () ;
-mLocationOffset.reader_description ().string () ;
-mFieldKind.reader_description ().string () ;
+mName.reader_description () ;
+mLocationOffset.reader_description () ;
+mFieldKind.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -330,7 +330,7 @@ mLocationOffset (argument_0) {
 
 void cPtr_typeKeyName::appendForDescription (C_String & ioString) const {
   ioString << "->@typeKeyName:" ;
-mLocationOffset.reader_description ().string () ;
+mLocationOffset.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -396,7 +396,7 @@ elementOf_GGS_typeCplusPlusNameList (const GGS_typeCplusPlusName & argument_0) {
 void elementOf_GGS_typeCplusPlusNameList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mCppName.reader_description ().string () ;
+  ioString << mCppName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -679,9 +679,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeClassMessagesMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mMessage.reader_description ().string () ;
+  ioString << mInfo.mMessage.reader_description () ;
   ioString << "]" ;
 }
 
@@ -831,8 +831,8 @@ elementOf_GGS_typeSemanticsTypesList (const GGS_AC_galgasType & argument_0,
 void elementOf_GGS_typeSemanticsTypesList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mType.reader_description ().string () ;
-  ioString << mGalgasVariableName.reader_description ().string () ;
+  ioString << mType.reader_description () ;
+  ioString << mGalgasVariableName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1416,8 +1416,8 @@ elementOf_GGS_L_assignedVariables (const GGS_typeCplusPlusName & argument_0,
 void elementOf_GGS_L_assignedVariables::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << aNomVariableCible.reader_description ().string () ;
-  ioString << aNomAttributSource.reader_description ().string () ;
+  ioString << aNomVariableCible.reader_description () ;
+  ioString << aNomAttributSource.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1703,7 +1703,7 @@ elementOf_GGS_typeListeCibles (const GGS_typeCible & argument_0) {
 void elementOf_GGS_typeListeCibles::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << aCible.reader_description ().string () ;
+  ioString << aCible.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1900,10 +1900,10 @@ elementOf_GGS_typeListeTypesEtNomsArgMethode (const GGS_AC_galgasType & argument
 void elementOf_GGS_typeListeTypesEtNomsArgMethode::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mType.reader_description ().string () ;
-  ioString << mFormalArgumentPassingMode.reader_description ().string () ;
-  ioString << mCppName.reader_description ().string () ;
-  ioString << aModeIn.reader_description ().string () ;
+  ioString << mType.reader_description () ;
+  ioString << mFormalArgumentPassingMode.reader_description () ;
+  ioString << mCppName.reader_description () ;
+  ioString << aModeIn.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2199,7 +2199,7 @@ elementOf_GGS_typeInstructionsList (const GGS_typeInstruction & argument_0) {
 void elementOf_GGS_typeInstructionsList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << aInstruction.reader_description ().string () ;
+  ioString << aInstruction.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2392,8 +2392,8 @@ elementOf_GGS_L_nameWithType (const GGS_lstring & argument_0,
 void elementOf_GGS_L_nameWithType::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mType.reader_description ().string () ;
-  ioString << mName.reader_description ().string () ;
+  ioString << mType.reader_description () ;
+  ioString << mName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2687,7 +2687,7 @@ elementOf_GGS_typeExpressionList (const GGS_typeExpression & argument_0) {
 void elementOf_GGS_typeExpressionList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mExpression.reader_description ().string () ;
+  ioString << mExpression.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2878,8 +2878,8 @@ mErrorMessageExpression (argument_1) {
 
 void cPtr_typeErrorInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeErrorInstruction:" ;
-mErrorLocationExpression.reader_description ().string () ;
-mErrorMessageExpression.reader_description ().string () ;
+mErrorLocationExpression.reader_description () ;
+mErrorMessageExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2916,8 +2916,8 @@ mWarningMessageExpression (argument_1) {
 
 void cPtr_typeWarningInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeWarningInstruction:" ;
-mWarningLocationExpression.reader_description ().string () ;
-mWarningMessageExpression.reader_description ().string () ;
+mWarningLocationExpression.reader_description () ;
+mWarningMessageExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2952,7 +2952,7 @@ mMessageExpression (argument_0) {
 
 void cPtr_typeMessageInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeMessageInstruction:" ;
-mMessageExpression.reader_description ().string () ;
+mMessageExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2989,9 +2989,9 @@ mExpressionsList (argument_2) {
 
 void cPtr_typeReaderCallInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeReaderCallInstruction:" ;
-aNomCppVariable.reader_description ().string () ;
-aNomMethodeSimple.reader_description ().string () ;
-mExpressionsList.reader_description ().string () ;
+aNomCppVariable.reader_description () ;
+aNomMethodeSimple.reader_description () ;
+mExpressionsList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3032,9 +3032,9 @@ mExpressionsList (argument_2) {
 
 void cPtr_typeModifierCallInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeModifierCallInstruction:" ;
-aNomCppVariable.reader_description ().string () ;
-aNomMethodeSimple.reader_description ().string () ;
-mExpressionsList.reader_description ().string () ;
+aNomCppVariable.reader_description () ;
+aNomMethodeSimple.reader_description () ;
+mExpressionsList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3075,9 +3075,9 @@ aListeNomsCppArguments (argument_2) {
 
 void cPtr_typeInstructionAppelMethodeListe::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionAppelMethodeListe:" ;
-aNomCppAttribut.reader_description ().string () ;
-aMethodeDeListe.reader_description ().string () ;
-aListeNomsCppArguments.reader_description ().string () ;
+aNomCppAttribut.reader_description () ;
+aMethodeDeListe.reader_description () ;
+aListeNomsCppArguments.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3116,8 +3116,8 @@ aTypeVariable (argument_1) {
 
 void cPtr_typeInstructionDeclarationVarLocale::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionDeclarationVarLocale:" ;
-aNomCppVariable.reader_description ().string () ;
-aTypeVariable.reader_description ().string () ;
+aNomCppVariable.reader_description () ;
+aTypeVariable.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3156,9 +3156,9 @@ mPrologueExpressionList (argument_2) {
 
 void cPtr_typeMapBlockPrologueInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeMapBlockPrologueInstruction:" ;
-aNomVariableTable.reader_description ().string () ;
-aNomMethodeBloc.reader_description ().string () ;
-mPrologueExpressionList.reader_description ().string () ;
+aNomVariableTable.reader_description () ;
+aNomMethodeBloc.reader_description () ;
+mPrologueExpressionList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3199,9 +3199,9 @@ mEpilogueExpressionList (argument_2) {
 
 void cPtr_typeMapBlockEpilogueInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeMapBlockEpilogueInstruction:" ;
-aNomVariableTable.reader_description ().string () ;
-aNomMethodeBloc.reader_description ().string () ;
-mEpilogueExpressionList.reader_description ().string () ;
+aNomVariableTable.reader_description () ;
+aNomMethodeBloc.reader_description () ;
+mEpilogueExpressionList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3242,9 +3242,9 @@ mExpressionList (argument_2) {
 
 void cPtr_typeReaderCallInExpression::appendForDescription (C_String & ioString) const {
   ioString << "->@typeReaderCallInExpression:" ;
-mExpressionValue.reader_description ().string () ;
-mReaderName.reader_description ().string () ;
-mExpressionList.reader_description ().string () ;
+mExpressionValue.reader_description () ;
+mReaderName.reader_description () ;
+mExpressionList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3283,8 +3283,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeAndOperation::appendForDescription (C_String & ioString) const {
   ioString << "->@typeAndOperation:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3321,8 +3321,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeOrOperation::appendForDescription (C_String & ioString) const {
   ioString << "->@typeOrOperation:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3359,8 +3359,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeMinusOperation::appendForDescription (C_String & ioString) const {
   ioString << "->@typeMinusOperation:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3397,8 +3397,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeConcatOperation::appendForDescription (C_String & ioString) const {
   ioString << "->@typeConcatOperation:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3495,7 +3495,7 @@ mLiteralString (argument_0) {
 
 void cPtr_typeLiteralStringExpression::appendForDescription (C_String & ioString) const {
   ioString << "->@typeLiteralStringExpression:" ;
-mLiteralString.reader_description ().string () ;
+mLiteralString.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3528,7 +3528,7 @@ mLiteralInt (argument_0) {
 
 void cPtr_typeLiteralUIntExpression::appendForDescription (C_String & ioString) const {
   ioString << "->@typeLiteralUIntExpression:" ;
-mLiteralInt.reader_description ().string () ;
+mLiteralInt.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3561,7 +3561,7 @@ mLiteralInt (argument_0) {
 
 void cPtr_typeLiteralSIntExpression::appendForDescription (C_String & ioString) const {
   ioString << "->@typeLiteralSIntExpression:" ;
-mLiteralInt.reader_description ().string () ;
+mLiteralInt.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3594,7 +3594,7 @@ mLiteralChar (argument_0) {
 
 void cPtr_typeLiteralCharExpression::appendForDescription (C_String & ioString) const {
   ioString << "->@typeLiteralCharExpression:" ;
-mLiteralChar.reader_description ().string () ;
+mLiteralChar.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3662,9 +3662,9 @@ mExpressionList (argument_2) {
 
 void cPtr_typeConstructorExpression::appendForDescription (C_String & ioString) const {
   ioString << "->@typeConstructorExpression:" ;
-mClassName.reader_description ().string () ;
-mClassMethodName.reader_description ().string () ;
-mExpressionList.reader_description ().string () ;
+mClassName.reader_description () ;
+mClassMethodName.reader_description () ;
+mExpressionList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3701,7 +3701,7 @@ mTest (argument_0) {
 
 void cPtr_typeTestComplement::appendForDescription (C_String & ioString) const {
   ioString << "->@typeTestComplement:" ;
-mTest.reader_description ().string () ;
+mTest.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3736,8 +3736,8 @@ mOptionName (argument_1) {
 
 void cPtr_typeBoolOption::appendForDescription (C_String & ioString) const {
   ioString << "->@typeBoolOption:" ;
-mOptionComponentName.reader_description ().string () ;
-mOptionName.reader_description ().string () ;
+mOptionComponentName.reader_description () ;
+mOptionName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3774,8 +3774,8 @@ mOptionName (argument_1) {
 
 void cPtr_typeUIntOption::appendForDescription (C_String & ioString) const {
   ioString << "->@typeUIntOption:" ;
-mOptionComponentName.reader_description ().string () ;
-mOptionName.reader_description ().string () ;
+mOptionComponentName.reader_description () ;
+mOptionName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3812,8 +3812,8 @@ mOptionName (argument_1) {
 
 void cPtr_typeStringOption::appendForDescription (C_String & ioString) const {
   ioString << "->@typeStringOption:" ;
-mOptionComponentName.reader_description ().string () ;
-mOptionName.reader_description ().string () ;
+mOptionComponentName.reader_description () ;
+mOptionName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3848,7 +3848,7 @@ mCppVarName (argument_0) {
 
 void cPtr_typeVarInExpression::appendForDescription (C_String & ioString) const {
   ioString << "->@typeVarInExpression:" ;
-mCppVarName.reader_description ().string () ;
+mCppVarName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3881,7 +3881,7 @@ mLocation (argument_0) {
 
 void cPtr_typeJokerInExpression::appendForDescription (C_String & ioString) const {
   ioString << "->@typeJokerInExpression:" ;
-mLocation.reader_description ().string () ;
+mLocation.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3916,8 +3916,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeEqualTest::appendForDescription (C_String & ioString) const {
   ioString << "->@typeEqualTest:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3954,8 +3954,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeNonEqualTest::appendForDescription (C_String & ioString) const {
   ioString << "->@typeNonEqualTest:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3992,8 +3992,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeStrictInfTest::appendForDescription (C_String & ioString) const {
   ioString << "->@typeStrictInfTest:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4030,8 +4030,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeInfOrEqualTest::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInfOrEqualTest:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4068,8 +4068,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeStrictSupTest::appendForDescription (C_String & ioString) const {
   ioString << "->@typeStrictSupTest:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4106,8 +4106,8 @@ mRightExpression (argument_1) {
 
 void cPtr_typeSupOrEqualTest::appendForDescription (C_String & ioString) const {
   ioString << "->@typeSupOrEqualTest:" ;
-mLeftExpression.reader_description ().string () ;
-mRightExpression.reader_description ().string () ;
+mLeftExpression.reader_description () ;
+mRightExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4146,9 +4146,9 @@ aNomCppClef (argument_2) {
 
 void cPtr_typeTextTableCall::appendForDescription (C_String & ioString) const {
   ioString << "->@typeTextTableCall:" ;
-mExpression.reader_description ().string () ;
-aNomMethodeTest.reader_description ().string () ;
-aNomCppClef.reader_description ().string () ;
+mExpression.reader_description () ;
+aNomMethodeTest.reader_description () ;
+aNomCppClef.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4187,8 +4187,8 @@ mSourceExpression (argument_1) {
 
 void cPtr_C_assignmentInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@C_assignmentInstruction:" ;
-mTargetVarCppName.reader_description ().string () ;
-mSourceExpression.reader_description ().string () ;
+mTargetVarCppName.reader_description () ;
+mSourceExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4227,9 +4227,9 @@ mSourceExpression (argument_2) {
 
 void cPtr_C_declarationInstructionWithAssignment::appendForDescription (C_String & ioString) const {
   ioString << "->@C_declarationInstructionWithAssignment:" ;
-mVariableType.reader_description ().string () ;
-mTargetVarCppName.reader_description ().string () ;
-mSourceExpression.reader_description ().string () ;
+mVariableType.reader_description () ;
+mTargetVarCppName.reader_description () ;
+mSourceExpression.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4270,8 +4270,8 @@ elementOf_GGS_L_expression_instructionsList_list (const GGS_typeExpression & arg
 void elementOf_GGS_L_expression_instructionsList_list::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mIFexpression.reader_description ().string () ;
-  ioString << mInstructionsList.reader_description ().string () ;
+  ioString << mIFexpression.reader_description () ;
+  ioString << mInstructionsList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -4467,8 +4467,8 @@ mElseInstructionsList (argument_1) {
 
 void cPtr_C_if_instruction::appendForDescription (C_String & ioString) const {
   ioString << "->@C_if_instruction:" ;
-mIFbranchesList.reader_description ().string () ;
-mElseInstructionsList.reader_description ().string () ;
+mIFbranchesList.reader_description () ;
+mElseInstructionsList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4507,7 +4507,7 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableRoutinesAimplementer::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "]" ;
 }
 
@@ -4638,10 +4638,10 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableAttributsSemantiques::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.aNomCppAttribut.reader_description ().string () ;
-  ioString << mInfo.mAttributType.reader_description ().string () ;
+  ioString << mInfo.aNomCppAttribut.reader_description () ;
+  ioString << mInfo.mAttributType.reader_description () ;
   ioString << "]" ;
 }
 
@@ -5155,9 +5155,9 @@ methode_verifierType (C_Lexique & lexique_var_,
 
 void cPtr_typeEntiteDest::appendForDescription (C_String & ioString) const {
   ioString << "->@typeEntiteDest:" ;
-aTypeVarDest.reader_description ().string () ;
-mCppName.reader_description ().string () ;
-aPositionVariableCible.reader_description ().string () ;
+aTypeVarDest.reader_description () ;
+mCppName.reader_description () ;
+aPositionVariableCible.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5198,9 +5198,9 @@ mInfo (inInfo) {
 void elementOf_GGS_M_nonTerminalSymbolForSyntax::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mAltParametersMap.reader_description ().string () ;
+  ioString << mInfo.mAltParametersMap.reader_description () ;
   ioString << "]" ;
 }
 
@@ -5352,10 +5352,10 @@ mAltSymbol (argument_3) {
 
 void cPtr_C_grammarInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@C_grammarInstruction:" ;
-mSourceFileCppName.reader_description ().string () ;
-mGrammarName.reader_description ().string () ;
-mExpressionsList.reader_description ().string () ;
-mAltSymbol.reader_description ().string () ;
+mSourceFileCppName.reader_description () ;
+mGrammarName.reader_description () ;
+mExpressionsList.reader_description () ;
+mAltSymbol.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5396,8 +5396,8 @@ mSourceExpressions (argument_1) {
 
 void cPtr_typeAppendInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeAppendInstruction:" ;
-mTargetVarCppName.reader_description ().string () ;
-mSourceExpressions.reader_description ().string () ;
+mTargetVarCppName.reader_description () ;
+mSourceExpressions.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5432,7 +5432,7 @@ mTargetVarCppName (argument_0) {
 
 void cPtr_typeIncrementInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeIncrementInstruction:" ;
-mTargetVarCppName.reader_description ().string () ;
+mTargetVarCppName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5469,9 +5469,9 @@ m_luint_TargetVarCppName (argument_2) {
 
 void cPtr_typeAppendInstructionWithAssignment::appendForDescription (C_String & ioString) const {
   ioString << "->@typeAppendInstructionWithAssignment:" ;
-mTargetVarCppName.reader_description ().string () ;
-mSourceExpressions.reader_description ().string () ;
-m_luint_TargetVarCppName.reader_description ().string () ;
+mTargetVarCppName.reader_description () ;
+mSourceExpressions.reader_description () ;
+m_luint_TargetVarCppName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5512,9 +5512,9 @@ aListeTypesParametresFormels (argument_2) {
 
 void cPtr_typeInstructionAppelActionExterne::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionAppelActionExterne:" ;
-aNomAction.reader_description ().string () ;
-mExpressionsList.reader_description ().string () ;
-aListeTypesParametresFormels.reader_description ().string () ;
+aNomAction.reader_description () ;
+mExpressionsList.reader_description () ;
+aListeTypesParametresFormels.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5557,9 +5557,9 @@ elementOf_GGS_L_matchInstructionCasesList (const GGS_lstring & argument_0,
 void elementOf_GGS_L_matchInstructionCasesList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mCase1_name.reader_description ().string () ;
-  ioString << mCase2_name.reader_description ().string () ;
-  ioString << mInstructionsList.reader_description ().string () ;
+  ioString << mCase1_name.reader_description () ;
+  ioString << mCase2_name.reader_description () ;
+  ioString << mInstructionsList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -5776,16 +5776,16 @@ mElseInstructionsList (argument_9) {
 
 void cPtr_typeMatchInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeMatchInstruction:" ;
-aIndicatif1.reader_description ().string () ;
-aIndicatif2.reader_description ().string () ;
-aNomCppVariable1.reader_description ().string () ;
-aNomCppVariable2.reader_description ().string () ;
-aNomTypeBase1.reader_description ().string () ;
-aNomTypeBase2.reader_description ().string () ;
-mOperand1_isEnumeration.reader_description ().string () ;
-mOperand2_isEnumeration.reader_description ().string () ;
-aListeCas.reader_description ().string () ;
-mElseInstructionsList.reader_description ().string () ;
+aIndicatif1.reader_description () ;
+aIndicatif2.reader_description () ;
+aNomCppVariable1.reader_description () ;
+aNomCppVariable2.reader_description () ;
+aNomTypeBase1.reader_description () ;
+aNomTypeBase2.reader_description () ;
+mOperand1_isEnumeration.reader_description () ;
+mOperand2_isEnumeration.reader_description () ;
+aListeCas.reader_description () ;
+mElseInstructionsList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5842,9 +5842,9 @@ elementOf_GGS_foreachEnumerationList (const GGS_typeCplusPlusName & argument_0,
 void elementOf_GGS_foreachEnumerationList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mCppEnumeratedVariableName.reader_description ().string () ;
-  ioString << mLocationOffset.reader_description ().string () ;
-  ioString << mCppTypeName.reader_description ().string () ;
+  ioString << mCppEnumeratedVariableName.reader_description () ;
+  ioString << mLocationOffset.reader_description () ;
+  ioString << mCppTypeName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -6047,9 +6047,9 @@ mInstructionsList (argument_2) {
 
 void cPtr_typeForeachInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeForeachInstruction:" ;
-mForeachEnumerationList.reader_description ().string () ;
-mWhileExpression.reader_description ().string () ;
-mInstructionsList.reader_description ().string () ;
+mForeachEnumerationList.reader_description () ;
+mWhileExpression.reader_description () ;
+mInstructionsList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6094,11 +6094,11 @@ aNomMessage (argument_4) {
 
 void cPtr_typeSimpleExtractInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeSimpleExtractInstruction:" ;
-aNomVariable.reader_description ().string () ;
-aNomClasse.reader_description ().string () ;
-aListeAffectationParametresEffectifs.reader_description ().string () ;
-mErrorLocationExpression.reader_description ().string () ;
-aNomMessage.reader_description ().string () ;
+aNomVariable.reader_description () ;
+aNomClasse.reader_description () ;
+aListeAffectationParametresEffectifs.reader_description () ;
+mErrorLocationExpression.reader_description () ;
+aNomMessage.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6147,10 +6147,10 @@ elementOf_GGS_typeStructuredExtractCasesList (const GGS_lstring & argument_0,
 void elementOf_GGS_typeStructuredExtractCasesList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mClassName.reader_description ().string () ;
-  ioString << mResultVarID.reader_description ().string () ;
-  ioString << mInstructionsList.reader_description ().string () ;
-  ioString << mNoUsedParameter.reader_description ().string () ;
+  ioString << mClassName.reader_description () ;
+  ioString << mResultVarID.reader_description () ;
+  ioString << mInstructionsList.reader_description () ;
+  ioString << mNoUsedParameter.reader_description () ;
   ioString << "]" ;
 }
 
@@ -6358,9 +6358,9 @@ mElseInstructionList (argument_2) {
 
 void cPtr_typeStructuredExtractInstructionWithElse::appendForDescription (C_String & ioString) const {
   ioString << "->@typeStructuredExtractInstructionWithElse:" ;
-mVariableName.reader_description ().string () ;
-mCasesList.reader_description ().string () ;
-mElseInstructionList.reader_description ().string () ;
+mVariableName.reader_description () ;
+mCasesList.reader_description () ;
+mElseInstructionList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6399,8 +6399,8 @@ mExpressionsList (argument_1) {
 
 void cPtr_typeRoutineCallInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeRoutineCallInstruction:" ;
-aNomRoutine.reader_description ().string () ;
-mExpressionsList.reader_description ().string () ;
+aNomRoutine.reader_description () ;
+mExpressionsList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6435,7 +6435,7 @@ aVariableConsommee (argument_0) {
 
 void cPtr_typeDropInstruction::appendForDescription (C_String & ioString) const {
   ioString << "->@typeDropInstruction:" ;
-aVariableConsommee.reader_description ().string () ;
+aVariableConsommee.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6472,7 +6472,7 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableNomRoutinesDeclarees::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "]" ;
 }
 
@@ -6693,9 +6693,9 @@ mIncludePath (argument_2) {
 
 void cPtr_typeExternTypeToGenerate::appendForDescription (C_String & ioString) const {
   ioString << "->@typeExternTypeToGenerate:" ;
-mGalgasName.reader_description ().string () ;
-mCppClassName.reader_description ().string () ;
-mIncludePath.reader_description ().string () ;
+mGalgasName.reader_description () ;
+mCppClassName.reader_description () ;
+mIncludePath.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6736,9 +6736,9 @@ mInstructionsList (argument_2) {
 
 void cPtr_typeRoutineAengendrer::appendForDescription (C_String & ioString) const {
   ioString << "->@typeRoutineAengendrer:" ;
-aNomRoutine.reader_description ().string () ;
-aListeTypeEtNomsArguments.reader_description ().string () ;
-mInstructionsList.reader_description ().string () ;
+aNomRoutine.reader_description () ;
+aListeTypeEtNomsArguments.reader_description () ;
+mInstructionsList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6779,9 +6779,9 @@ mExternAttributesList (argument_2) {
 
 void cPtr_C_listTypeToImplement::appendForDescription (C_String & ioString) const {
   ioString << "->@C_listTypeToImplement:" ;
-aNomListe.reader_description ().string () ;
-mNonExternAttributesList.reader_description ().string () ;
-mExternAttributesList.reader_description ().string () ;
+aNomListe.reader_description () ;
+mNonExternAttributesList.reader_description () ;
+mExternAttributesList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6830,13 +6830,13 @@ aTableMethodesSurcharger (argument_6) {
 
 void cPtr_typeDefinitionTableAimplementer::appendForDescription (C_String & ioString) const {
   ioString << "->@typeDefinitionTableAimplementer:" ;
-aNomTable.reader_description ().string () ;
-mNonExternAttributesList.reader_description ().string () ;
-mExternAttributesList.reader_description ().string () ;
-aNomClasseGenerique.reader_description ().string () ;
-mInsertMethodList.reader_description ().string () ;
-mSearchMethodList.reader_description ().string () ;
-aTableMethodesSurcharger.reader_description ().string () ;
+aNomTable.reader_description () ;
+mNonExternAttributesList.reader_description () ;
+mExternAttributesList.reader_description () ;
+aNomClasseGenerique.reader_description () ;
+mInsertMethodList.reader_description () ;
+mSearchMethodList.reader_description () ;
+aTableMethodesSurcharger.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6885,7 +6885,7 @@ mInfo (inInfo) {
 void elementOf_GGS_stateMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "]" ;
 }
 
@@ -7032,12 +7032,12 @@ mSearchMethodList (argument_5) {
 
 void cPtr_C_mapToImplement::appendForDescription (C_String & ioString) const {
   ioString << "->@C_mapToImplement:" ;
-mStateMap.reader_description ().string () ;
-aNomTable.reader_description ().string () ;
-mNonExternAttributesList.reader_description ().string () ;
-mExternAttributesList.reader_description ().string () ;
-mInsertMethodList.reader_description ().string () ;
-mSearchMethodList.reader_description ().string () ;
+mStateMap.reader_description () ;
+aNomTable.reader_description () ;
+mNonExternAttributesList.reader_description () ;
+mExternAttributesList.reader_description () ;
+mInsertMethodList.reader_description () ;
+mSearchMethodList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7094,14 +7094,14 @@ mMessagesMap (argument_7) {
 
 void cPtr_typeDefClasseAbstraiteAimplementer::appendForDescription (C_String & ioString) const {
   ioString << "->@typeDefClasseAbstraiteAimplementer:" ;
-aNomClasse.reader_description ().string () ;
-aListeTousAttributsNonExternes.reader_description ().string () ;
-aTableToutesMethodes.reader_description ().string () ;
-mMethodsMap.reader_description ().string () ;
-aListeAttributsCourants.reader_description ().string () ;
-aListeExternesCourants.reader_description ().string () ;
-mAncestorClassesMap.reader_description ().string () ;
-mMessagesMap.reader_description ().string () ;
+aNomClasse.reader_description () ;
+aListeTousAttributsNonExternes.reader_description () ;
+aTableToutesMethodes.reader_description () ;
+mMethodsMap.reader_description () ;
+aListeAttributsCourants.reader_description () ;
+aListeExternesCourants.reader_description () ;
+mAncestorClassesMap.reader_description () ;
+mMessagesMap.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7162,14 +7162,14 @@ mMessagesMap (argument_7) {
 
 void cPtr_typeDefClasseNonAbstraiteAimplementer::appendForDescription (C_String & ioString) const {
   ioString << "->@typeDefClasseNonAbstraiteAimplementer:" ;
-aNomClasse.reader_description ().string () ;
-aListeTousAttributsNonExternes.reader_description ().string () ;
-aTableToutesMethodes.reader_description ().string () ;
-mMethodsMap.reader_description ().string () ;
-aListeAttributsCourants.reader_description ().string () ;
-aListeExternesCourants.reader_description ().string () ;
-mAncestorClassesMap.reader_description ().string () ;
-mMessagesMap.reader_description ().string () ;
+aNomClasse.reader_description () ;
+aListeTousAttributsNonExternes.reader_description () ;
+aTableToutesMethodes.reader_description () ;
+mMethodsMap.reader_description () ;
+aListeAttributsCourants.reader_description () ;
+aListeExternesCourants.reader_description () ;
+mAncestorClassesMap.reader_description () ;
+mMessagesMap.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7225,7 +7225,7 @@ const char * cPtr_typeEntiteActionExterne::static_string_message_messageTypeEnti
 
 void cPtr_typeEntiteActionExterne::appendForDescription (C_String & ioString) const {
   ioString << "->@typeEntiteActionExterne:" ;
-aSignature.reader_description ().string () ;
+aSignature.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7260,8 +7260,8 @@ aSignature (argument_1) {
 
 void cPtr_typeActionExterneAengendrer::appendForDescription (C_String & ioString) const {
   ioString << "->@typeActionExterneAengendrer:" ;
-aNomAction.reader_description ().string () ;
-aSignature.reader_description ().string () ;
+aNomAction.reader_description () ;
+aSignature.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7298,7 +7298,7 @@ elementOf_GGS_typeEntitiesToGenerateList (const GGS_typeEntityToGenerate & argum
 void elementOf_GGS_typeEntitiesToGenerateList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mEntityToGenerate.reader_description ().string () ;
+  ioString << mEntityToGenerate.reader_description () ;
   ioString << "]" ;
 }
 
@@ -7561,9 +7561,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeEnumCstMessageStringMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mMessageString.reader_description ().string () ;
+  ioString << mInfo.mMessageString.reader_description () ;
   ioString << "]" ;
 }
 
@@ -7713,9 +7713,9 @@ mEnumMessageMap (argument_2) {
 
 void cPtr_enumGalgasType::appendForDescription (C_String & ioString) const {
   ioString << "->@enumGalgasType:" ;
-mEnumTypeName.reader_description ().string () ;
-mConstantMap.reader_description ().string () ;
-mEnumMessageMap.reader_description ().string () ;
+mEnumTypeName.reader_description () ;
+mConstantMap.reader_description () ;
+mEnumMessageMap.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*

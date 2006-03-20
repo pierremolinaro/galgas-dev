@@ -220,8 +220,8 @@ elementOf_GGS_L_signature (const GGS_formalArgumentPassingMode& argument_0,
 void elementOf_GGS_L_signature::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mFormalArgumentPassingMode.reader_description ().string () ;
-  ioString << mGalgasTypeName.reader_description ().string () ;
+  ioString << mFormalArgumentPassingMode.reader_description () ;
+  ioString << mGalgasTypeName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -417,7 +417,7 @@ elementOf_GGS_typeListModel (const GGS_lstring & argument_0) {
 void elementOf_GGS_typeListModel::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mTypeName.reader_description ().string () ;
+  ioString << mTypeName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1130,7 +1130,7 @@ mAttributeList (argument_0) {
 
 void cPtr_ListModel::appendForDescription (C_String & ioString) const {
   ioString << "->@ListModel:" ;
-mAttributeList.reader_description ().string () ;
+mAttributeList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1163,7 +1163,7 @@ mAttributeList (argument_0) {
 
 void cPtr_MapModel::appendForDescription (C_String & ioString) const {
   ioString << "->@MapModel:" ;
-mAttributeList.reader_description ().string () ;
+mAttributeList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1200,7 +1200,7 @@ mInfo (inInfo) {
 void elementOf_GGS_enumConstantMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1341,7 +1341,7 @@ mInfo (inInfo) {
 void elementOf_GGS_enumMessageMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1480,8 +1480,8 @@ mMessagesMap (argument_1) {
 
 void cPtr_EnumModel::appendForDescription (C_String & ioString) const {
   ioString << "->@EnumModel:" ;
-mEnumConstantesMap.reader_description ().string () ;
-mMessagesMap.reader_description ().string () ;
+mEnumConstantesMap.reader_description () ;
+mMessagesMap.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1520,9 +1520,9 @@ mInfo (inInfo) {
 void elementOf_GGS_constructorMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mFormalInputArgumentList.reader_description ().string () ;
+  ioString << mInfo.mFormalInputArgumentList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1672,9 +1672,9 @@ mInfo (inInfo) {
 void elementOf_GGS_readerMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mReaderFormalArgumentList.reader_description ().string () ;
+  ioString << mInfo.mReaderFormalArgumentList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1824,9 +1824,9 @@ mInfo (inInfo) {
 void elementOf_GGS_modifierMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mModifierFormalArgumentList.reader_description ().string () ;
+  ioString << mInfo.mModifierFormalArgumentList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1978,10 +1978,10 @@ mAddAssignFormalInputArgumentList (argument_3) {
 
 void cPtr_ExternTypeModel::appendForDescription (C_String & ioString) const {
   ioString << "->@ExternTypeModel:" ;
-mExternTypeConstructorMap.reader_description ().string () ;
-mReaderMap.reader_description ().string () ;
-mModifierMap.reader_description ().string () ;
-mAddAssignFormalInputArgumentList.reader_description ().string () ;
+mExternTypeConstructorMap.reader_description () ;
+mReaderMap.reader_description () ;
+mModifierMap.reader_description () ;
+mAddAssignFormalInputArgumentList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2024,7 +2024,7 @@ mInfo (inInfo) {
 void elementOf_GGS_classMessageMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2167,10 +2167,10 @@ mMessageMap (argument_3) {
 
 void cPtr_ClassModel::appendForDescription (C_String & ioString) const {
   ioString << "->@ClassModel:" ;
-mIsAbstract.reader_description ().string () ;
-mSuperClasses.reader_description ().string () ;
-mAttributeList.reader_description ().string () ;
-mMessageMap.reader_description ().string () ;
+mIsAbstract.reader_description () ;
+mSuperClasses.reader_description () ;
+mAttributeList.reader_description () ;
+mMessageMap.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2213,9 +2213,9 @@ mInfo (inInfo) {
 void elementOf_GGS_ModelMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mType.reader_description ().string () ;
+  ioString << mInfo.mType.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2365,10 +2365,10 @@ mInfo (inInfo) {
 void elementOf_GGS_ActionMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mSignature.reader_description ().string () ;
-  ioString << mInfo.mIsExtern.reader_description ().string () ;
+  ioString << mInfo.mSignature.reader_description () ;
+  ioString << mInfo.mIsExtern.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2872,10 +2872,10 @@ mInfo (inInfo) {
 void elementOf_GGS_entityPropertyMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mKind.reader_description ().string () ;
-  ioString << mInfo.mTypeName.reader_description ().string () ;
+  ioString << mInfo.mKind.reader_description () ;
+  ioString << mInfo.mTypeName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -3034,12 +3034,12 @@ mInfo (inInfo) {
 void elementOf_GGS_entityToImplementMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mAllPropertiesMap.reader_description ().string () ;
-  ioString << mInfo.mIsAbstract.reader_description ().string () ;
-  ioString << mInfo.mEntityPropertiesMap.reader_description ().string () ;
-  ioString << mInfo.mSuperEntityName.reader_description ().string () ;
+  ioString << mInfo.mAllPropertiesMap.reader_description () ;
+  ioString << mInfo.mIsAbstract.reader_description () ;
+  ioString << mInfo.mEntityPropertiesMap.reader_description () ;
+  ioString << mInfo.mSuperEntityName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -3239,12 +3239,12 @@ const char * cPtr_typeGalgas_singleEntity::static_string_message_messageGalgasTy
 
 void cPtr_typeGalgas_singleEntity::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgas_singleEntity:" ;
-mEntityName.reader_description ().string () ;
-mAllPropertiesMap.reader_description ().string () ;
-mIsAbstract.reader_description ().string () ;
-mEntityPropertiesMap.reader_description ().string () ;
-mSuperEntityName.reader_description ().string () ;
-mSuperEntitiesSet.reader_description ().string () ;
+mEntityName.reader_description () ;
+mAllPropertiesMap.reader_description () ;
+mIsAbstract.reader_description () ;
+mEntityPropertiesMap.reader_description () ;
+mSuperEntityName.reader_description () ;
+mSuperEntitiesSet.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3304,7 +3304,7 @@ const char * cPtr_typeGalgas_multipleEntity::static_string_message_messageGalgas
 
 void cPtr_typeGalgas_multipleEntity::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgas_multipleEntity:" ;
-mEntityName.reader_description ().string () ;
+mEntityName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3341,8 +3341,8 @@ elementOf_GGS_typeListeAttributsSemantiques (const GGS_AC_galgasType & argument_
 void elementOf_GGS_typeListeAttributsSemantiques::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mAttributType.reader_description ().string () ;
-  ioString << aNomAttribut.reader_description ().string () ;
+  ioString << mAttributType.reader_description () ;
+  ioString << aNomAttribut.reader_description () ;
   ioString << "]" ;
 }
 
@@ -3540,8 +3540,8 @@ elementOf_GGS_typeTypesList (const GGS_AC_galgasType & argument_0,
 void elementOf_GGS_typeTypesList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mType.reader_description ().string () ;
-  ioString << mEndOfExpressionLocation.reader_description ().string () ;
+  ioString << mType.reader_description () ;
+  ioString << mEndOfExpressionLocation.reader_description () ;
   ioString << "]" ;
 }
 
@@ -3739,8 +3739,8 @@ elementOf_GGS_L_EXsignature (const GGS_AC_galgasType & argument_0,
 void elementOf_GGS_L_EXsignature::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mType.reader_description ().string () ;
-  ioString << mFormalArgumentPassingMode.reader_description ().string () ;
+  ioString << mType.reader_description () ;
+  ioString << mFormalArgumentPassingMode.reader_description () ;
   ioString << "]" ;
 }
 
@@ -3938,8 +3938,8 @@ elementOf_GGS_L_actualParametersSignature (const GGS_AC_galgasType & argument_0,
 void elementOf_GGS_L_actualParametersSignature::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mType.reader_description ().string () ;
-  ioString << mFormalArgumentPassingMode.reader_description ().string () ;
+  ioString << mType.reader_description () ;
+  ioString << mFormalArgumentPassingMode.reader_description () ;
   ioString << "]" ;
 }
 
@@ -4137,10 +4137,10 @@ mInfo (inInfo) {
 void elementOf_GGS_M_accessors_map::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mAccessorSignature.reader_description ().string () ;
-  ioString << mInfo.mReturnedType.reader_description ().string () ;
+  ioString << mInfo.mAccessorSignature.reader_description () ;
+  ioString << mInfo.mReturnedType.reader_description () ;
   ioString << "]" ;
 }
 
@@ -4297,7 +4297,7 @@ elementOf_GGS_L_stringList (const GGS_string& argument_0) {
 void elementOf_GGS_L_stringList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mErrorMessageElement.reader_description ().string () ;
+  ioString << mErrorMessageElement.reader_description () ;
   ioString << "]" ;
 }
 
@@ -4488,7 +4488,7 @@ elementOf_GGS_L_lstringList (const GGS_lstring & argument_0) {
 void elementOf_GGS_L_lstringList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mString.reader_description ().string () ;
+  ioString << mString.reader_description () ;
   ioString << "]" ;
 }
 
@@ -5902,8 +5902,8 @@ const char * cPtr_typeGalgasUndefinedExternType::static_string_message_messageGa
 
 void cPtr_typeGalgasUndefinedExternType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgasUndefinedExternType:" ;
-mGalgasClassName.reader_description ().string () ;
-mCppClassName.reader_description ().string () ;
+mGalgasClassName.reader_description () ;
+mCppClassName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5942,9 +5942,9 @@ mInfo (inInfo) {
 void elementOf_GGS_M_externTypeConstructorMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.aListeDesAttributs.reader_description ().string () ;
+  ioString << mInfo.aListeDesAttributs.reader_description () ;
   ioString << "]" ;
 }
 
@@ -6157,13 +6157,13 @@ const char * cPtr_typeGalgasExternType::static_string_message_messageGalgasType 
 
 void cPtr_typeGalgasExternType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgasExternType:" ;
-mGalgasClassName.reader_description ().string () ;
-mCppClassName.reader_description ().string () ;
-mConstructorMap.reader_description ().string () ;
-mModifiersMap.reader_description ().string () ;
-mReadersInInstructionMap.reader_description ().string () ;
-mAcceptAddAssignOperatorCall.reader_description ().string () ;
-mAddAssignOperatorCallTypeList.reader_description ().string () ;
+mGalgasClassName.reader_description () ;
+mCppClassName.reader_description () ;
+mConstructorMap.reader_description () ;
+mModifiersMap.reader_description () ;
+mReadersInInstructionMap.reader_description () ;
+mAcceptAddAssignOperatorCall.reader_description () ;
+mAddAssignOperatorCallTypeList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6212,9 +6212,9 @@ mInfo (inInfo) {
 void elementOf_GGS_M_terminalSymbolsMapForUse::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.aListeDesAttributs.reader_description ().string () ;
+  ioString << mInfo.aListeDesAttributs.reader_description () ;
   ioString << "]" ;
 }
 
@@ -6364,9 +6364,9 @@ mInfo (inInfo) {
 void elementOf_GGS_M_lexiqueComponents::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mTerminalSymbolMap.reader_description ().string () ;
+  ioString << mInfo.mTerminalSymbolMap.reader_description () ;
   ioString << "]" ;
 }
 
@@ -6516,9 +6516,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableEnAvant::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mType.reader_description ().string () ;
+  ioString << mInfo.mType.reader_description () ;
   ioString << "]" ;
 }
 
@@ -6668,10 +6668,10 @@ mInfo (inInfo) {
 void elementOf_GGS_M_nonterminalSymbolAlts::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mFormalParametersList.reader_description ().string () ;
-  ioString << mInfo.mReturnedEntity.reader_description ().string () ;
+  ioString << mInfo.mFormalParametersList.reader_description () ;
+  ioString << mInfo.mReturnedEntity.reader_description () ;
   ioString << "]" ;
 }
 
@@ -6945,7 +6945,7 @@ const char * cPtr_C_grammarForSemantics::static_string_message_messageTypeEntite
 
 void cPtr_C_grammarForSemantics::appendForDescription (C_String & ioString) const {
   ioString << "->@C_grammarForSemantics:" ;
-mGrammarAltMap.reader_description ().string () ;
+mGrammarAltMap.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6982,9 +6982,9 @@ mInfo (inInfo) {
 void elementOf_GGS_M_semanticsEntitiesForUse::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.aDefEntite.reader_description ().string () ;
+  ioString << mInfo.aDefEntite.reader_description () ;
   ioString << "]" ;
 }
 
@@ -7244,9 +7244,9 @@ mInfo (inInfo) {
 void elementOf_GGS_M_typesForGrammarComponent::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mType.reader_description ().string () ;
+  ioString << mInfo.mType.reader_description () ;
   ioString << "]" ;
 }
 
@@ -7518,7 +7518,7 @@ elementOf_GGS_L_ruleSyntaxSignature (const GGS_AC_instruction_ForGrammar & argum
 void elementOf_GGS_L_ruleSyntaxSignature::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mInstruction.reader_description ().string () ;
+  ioString << mInstruction.reader_description () ;
   ioString << "]" ;
 }
 
@@ -7711,9 +7711,9 @@ mInfo (inInfo) {
 void elementOf_GGS_L_grammarsMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mStartSymbolParametersMap.reader_description ().string () ;
+  ioString << mInfo.mStartSymbolParametersMap.reader_description () ;
   ioString << "]" ;
 }
 
@@ -7863,10 +7863,10 @@ mInfo (inInfo) {
 void elementOf_GGS_M_nonterminalSymbolAltsForGrammar::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mFormalParametersList.reader_description ().string () ;
-  ioString << mInfo.mReturnedEntityTypeName.reader_description ().string () ;
+  ioString << mInfo.mFormalParametersList.reader_description () ;
+  ioString << mInfo.mReturnedEntityTypeName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -8027,9 +8027,9 @@ elementOf_GGS_L_productionRules_ForGrammarComponent (const GGS_lstring & argumen
 void elementOf_GGS_L_productionRules_ForGrammarComponent::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mLeftNonterminalSymbol.reader_description ().string () ;
-  ioString << mLeftNonterminalSymbolIndex.reader_description ().string () ;
-  ioString << mInstructionsList.reader_description ().string () ;
+  ioString << mLeftNonterminalSymbol.reader_description () ;
+  ioString << mLeftNonterminalSymbolIndex.reader_description () ;
+  ioString << mInstructionsList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -8232,9 +8232,9 @@ mInfo (inInfo) {
 void elementOf_GGS_M_nonTerminalSymbolsForGrammar::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mNonterminalSymbolParametersMap.reader_description ().string () ;
+  ioString << mInfo.mNonterminalSymbolParametersMap.reader_description () ;
   ioString << "]" ;
 }
 
@@ -8397,11 +8397,11 @@ mInfo (inInfo) {
 void elementOf_GGS_M_syntaxComponents::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mNonterminalSymbolsMap.reader_description ().string () ;
-  ioString << mInfo.mProductionRulesList.reader_description ().string () ;
-  ioString << mInfo.mLexiqueComponentName.reader_description ().string () ;
+  ioString << mInfo.mNonterminalSymbolsMap.reader_description () ;
+  ioString << mInfo.mProductionRulesList.reader_description () ;
+  ioString << mInfo.mLexiqueComponentName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -8568,9 +8568,9 @@ mTerminalSymbolIndex (argument_2) {
 
 void cPtr_T_terminalInstruction_forGrammarComponent::appendForDescription (C_String & ioString) const {
   ioString << "->@T_terminalInstruction_forGrammarComponent:" ;
-mStartLocation.reader_description ().string () ;
-mTerminalSymbolName.reader_description ().string () ;
-mTerminalSymbolIndex.reader_description ().string () ;
+mStartLocation.reader_description () ;
+mTerminalSymbolName.reader_description () ;
+mTerminalSymbolIndex.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8610,9 +8610,9 @@ mNonterminalSymbolIndex (argument_2) {
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::appendForDescription (C_String & ioString) const {
   ioString << "->@T_nonterminalInstruction_forGrammarComponent:" ;
-mStartLocation.reader_description ().string () ;
-mNonterminalSymbolName.reader_description ().string () ;
-mNonterminalSymbolIndex.reader_description ().string () ;
+mStartLocation.reader_description () ;
+mNonterminalSymbolName.reader_description () ;
+mNonterminalSymbolIndex.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8651,7 +8651,7 @@ elementOf_GGS_L_branchList_ForGrammarComponent (const GGS_L_ruleSyntaxSignature 
 void elementOf_GGS_L_branchList_ForGrammarComponent::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mInstructionsList.reader_description ().string () ;
+  ioString << mInstructionsList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -8843,9 +8843,9 @@ mAddedNonterminalmSymbolIndex (argument_2) {
 
 void cPtr_T_selectInstruction_forGrammarComponent::appendForDescription (C_String & ioString) const {
   ioString << "->@T_selectInstruction_forGrammarComponent:" ;
-mStartLocation.reader_description ().string () ;
-mSelectList.reader_description ().string () ;
-mAddedNonterminalmSymbolIndex.reader_description ().string () ;
+mStartLocation.reader_description () ;
+mSelectList.reader_description () ;
+mAddedNonterminalmSymbolIndex.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8885,9 +8885,9 @@ mAddedNonterminalmSymbolIndex (argument_2) {
 
 void cPtr_T_repeatInstruction_forGrammarComponent::appendForDescription (C_String & ioString) const {
   ioString << "->@T_repeatInstruction_forGrammarComponent:" ;
-mStartLocation.reader_description ().string () ;
-mRepeatList.reader_description ().string () ;
-mAddedNonterminalmSymbolIndex.reader_description ().string () ;
+mStartLocation.reader_description () ;
+mRepeatList.reader_description () ;
+mAddedNonterminalmSymbolIndex.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8930,9 +8930,9 @@ elementOf_GGS_L_syntaxComponents_ForGrammar (const GGS_M_nonTerminalSymbolsForGr
 void elementOf_GGS_L_syntaxComponents_ForGrammar::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mNonterminalSymbolsMap.reader_description ().string () ;
-  ioString << mProductionRulesList.reader_description ().string () ;
-  ioString << mSyntaxComponentName.reader_description ().string () ;
+  ioString << mNonterminalSymbolsMap.reader_description () ;
+  ioString << mProductionRulesList.reader_description () ;
+  ioString << mSyntaxComponentName.reader_description () ;
   ioString << "]" ;
 }
 
@@ -9133,7 +9133,7 @@ elementOf_GGS_L_identifiers (const GGS_lstring & argument_0) {
 void elementOf_GGS_L_identifiers::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << aIdentificateur.reader_description ().string () ;
+  ioString << aIdentificateur.reader_description () ;
   ioString << "]" ;
 }
 
@@ -9326,7 +9326,7 @@ mInfo (inInfo) {
 void elementOf_GGS_typeSuperClassesMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "]" ;
 }
 
@@ -9457,7 +9457,7 @@ mInfo (inInfo) {
 void elementOf_GGS_typeClassInheritedMessagesMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "]" ;
 }
 
@@ -9598,9 +9598,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeSemanticAttributesMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mAttributType.reader_description ().string () ;
+  ioString << mInfo.mAttributType.reader_description () ;
   ioString << "]" ;
 }
 
@@ -9828,9 +9828,9 @@ elementOf_GGS_lastStateList (const GGS_lstring & argument_0,
 void elementOf_GGS_lastStateList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mLastState.reader_description ().string () ;
-  ioString << mStatus.reader_description ().string () ;
-  ioString << mMessageList.reader_description ().string () ;
+  ioString << mLastState.reader_description () ;
+  ioString << mStatus.reader_description () ;
+  ioString << mMessageList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -10033,10 +10033,10 @@ mInfo (inInfo) {
 void elementOf_GGS_transitionStatusMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mStatus.reader_description ().string () ;
-  ioString << mInfo.mMessageList.reader_description ().string () ;
+  ioString << mInfo.mStatus.reader_description () ;
+  ioString << mInfo.mMessageList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -10189,12 +10189,12 @@ elementOf_GGS_insertOrSearchMethodList (const GGS_lstring & argument_0,
 void elementOf_GGS_insertOrSearchMethodList::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mMethodName.reader_description ().string () ;
-  ioString << mErrorMessage.reader_description ().string () ;
-  ioString << mFirstState.reader_description ().string () ;
-  ioString << mLastStateList.reader_description ().string () ;
-  ioString << mTransitionStatusMap.reader_description ().string () ;
-  ioString << mIsGetIndexMethod.reader_description ().string () ;
+  ioString << mMethodName.reader_description () ;
+  ioString << mErrorMessage.reader_description () ;
+  ioString << mFirstState.reader_description () ;
+  ioString << mLastStateList.reader_description () ;
+  ioString << mTransitionStatusMap.reader_description () ;
+  ioString << mIsGetIndexMethod.reader_description () ;
   ioString << "]" ;
 }
 
@@ -10535,7 +10535,7 @@ const char * cPtr_typeGalgasUndefinedListType::static_string_message_messageGalg
 
 void cPtr_typeGalgasUndefinedListType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgasUndefinedListType:" ;
-mListTypeName.reader_description ().string () ;
+mListTypeName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10613,8 +10613,8 @@ const char * cPtr_typeGalgasListType::static_string_message_messageGalgasType (v
 
 void cPtr_typeGalgasListType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgasListType:" ;
-mListTypeName.reader_description ().string () ;
-mNonExternAttributesList.reader_description ().string () ;
+mListTypeName.reader_description () ;
+mNonExternAttributesList.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10653,10 +10653,10 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableBlocsDeTable::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.aSignatureDebut.reader_description ().string () ;
-  ioString << mInfo.aSignatureFin.reader_description ().string () ;
+  ioString << mInfo.aSignatureDebut.reader_description () ;
+  ioString << mInfo.aSignatureFin.reader_description () ;
   ioString << "]" ;
 }
 
@@ -10828,7 +10828,7 @@ const char * cPtr_typeGalgasUndefinedMapType::static_string_message_messageGalga
 
 void cPtr_typeGalgasUndefinedMapType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgasUndefinedMapType:" ;
-mMapTypeName.reader_description ().string () ;
+mMapTypeName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10865,9 +10865,9 @@ mInfo (inInfo) {
 void elementOf_GGS_mapMethodMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mMethodSignature.reader_description ().string () ;
+  ioString << mInfo.mMethodSignature.reader_description () ;
   ioString << "]" ;
 }
 
@@ -11071,10 +11071,10 @@ const char * cPtr_typeGalgasMapType::static_string_message_messageGalgasType (vo
 
 void cPtr_typeGalgasMapType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgasMapType:" ;
-mMapTypeName.reader_description ().string () ;
-mNonExternAttributesList.reader_description ().string () ;
-aTableMethodesSurcharger.reader_description ().string () ;
-mMethodMap.reader_description ().string () ;
+mMapTypeName.reader_description () ;
+mNonExternAttributesList.reader_description () ;
+aTableMethodesSurcharger.reader_description () ;
+mMethodMap.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11130,7 +11130,7 @@ const char * cPtr_typeGalgasUndefinedClassType::static_string_message_messageGal
 
 void cPtr_typeGalgasUndefinedClassType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgasUndefinedClassType:" ;
-mClassTypeName.reader_description ().string () ;
+mClassTypeName.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11218,13 +11218,13 @@ const char * cPtr_typeGalgasClassType::static_string_message_messageGalgasType (
 
 void cPtr_typeGalgasClassType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgasClassType:" ;
-mClassTypeName.reader_description ().string () ;
-mMethodsMap.reader_description ().string () ;
-mNonExternAttributesList.reader_description ().string () ;
-mAncestorClassesMap.reader_description ().string () ;
-mMessagesMap.reader_description ().string () ;
-mNonExternAttributesMap.reader_description ().string () ;
-mClassIsAbstract.reader_description ().string () ;
+mClassTypeName.reader_description () ;
+mMethodsMap.reader_description () ;
+mNonExternAttributesList.reader_description () ;
+mAncestorClassesMap.reader_description () ;
+mMessagesMap.reader_description () ;
+mNonExternAttributesMap.reader_description () ;
+mClassIsAbstract.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11278,7 +11278,7 @@ const char * cPtr_typeEntiteType::static_string_message_messageTypeEntite (void)
 
 void cPtr_typeEntiteType::appendForDescription (C_String & ioString) const {
   ioString << "->@typeEntiteType:" ;
-aDefType.reader_description ().string () ;
+aDefType.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11320,7 +11320,7 @@ const char * cPtr_typeEntiteRoutine::static_string_message_messageTypeEntite (vo
 
 void cPtr_typeEntiteRoutine::appendForDescription (C_String & ioString) const {
   ioString << "->@typeEntiteRoutine:" ;
-aListeArgumentsFormels.reader_description ().string () ;
+aListeArgumentsFormels.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11357,9 +11357,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeEnumMessageMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mMessageStringList.reader_description ().string () ;
+  ioString << mInfo.mMessageStringList.reader_description () ;
   ioString << "]" ;
 }
 
@@ -11538,9 +11538,9 @@ const char * cPtr_typeGalgas_enum::static_string_message_messageGalgasType (void
 
 void cPtr_typeGalgas_enum::appendForDescription (C_String & ioString) const {
   ioString << "->@typeGalgas_enum:" ;
-mEnumTypeName.reader_description ().string () ;
-mEnumConstantesMap.reader_description ().string () ;
-mMessagesMap.reader_description ().string () ;
+mEnumTypeName.reader_description () ;
+mEnumConstantesMap.reader_description () ;
+mMessagesMap.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11739,12 +11739,12 @@ mInfo (inInfo) {
 void elementOf_GGS_M_cli_options::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mOptionChar.reader_description ().string () ;
-  ioString << mInfo.mOptionString.reader_description ().string () ;
-  ioString << mInfo.mComment.reader_description ().string () ;
-  ioString << mInfo.mDefaultValue.reader_description ().string () ;
+  ioString << mInfo.mOptionChar.reader_description () ;
+  ioString << mInfo.mOptionString.reader_description () ;
+  ioString << mInfo.mComment.reader_description () ;
+  ioString << mInfo.mDefaultValue.reader_description () ;
   ioString << "]" ;
 }
 
@@ -11921,11 +11921,11 @@ mInfo (inInfo) {
 void elementOf_GGS_M_optionComponents::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mBoolOptionsMap.reader_description ().string () ;
-  ioString << mInfo.mUintOptionsMap.reader_description ().string () ;
-  ioString << mInfo.mStringOptionsMap.reader_description ().string () ;
+  ioString << mInfo.mBoolOptionsMap.reader_description () ;
+  ioString << mInfo.mUintOptionsMap.reader_description () ;
+  ioString << mInfo.mStringOptionsMap.reader_description () ;
   ioString << "]" ;
 }
 
@@ -12093,11 +12093,11 @@ mInfo (inInfo) {
 void elementOf_GGS_M_grammarComponents::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mNonterminalSymbolParametersMap.reader_description ().string () ;
-  ioString << mInfo.mLexiqueName.reader_description ().string () ;
-  ioString << mInfo.mOptionsMap.reader_description ().string () ;
+  ioString << mInfo.mNonterminalSymbolParametersMap.reader_description () ;
+  ioString << mInfo.mLexiqueName.reader_description () ;
+  ioString << mInfo.mOptionsMap.reader_description () ;
   ioString << "]" ;
 }
 
@@ -12265,15 +12265,15 @@ mInfo (inInfo) {
 void elementOf_GGS_M_semanticsComponents::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mModelMap.reader_description ().string () ;
-  ioString << mInfo.mActionMap.reader_description ().string () ;
-  ioString << mInfo.mImportedSemanticsComponents.reader_description ().string () ;
-  ioString << mInfo.mImportedMetamodelComponents.reader_description ().string () ;
-  ioString << mInfo.mImportedOptionsComponents.reader_description ().string () ;
-  ioString << mInfo.mOptionsComponents.reader_description ().string () ;
-  ioString << mInfo.mSemanticsEntitiesMap.reader_description ().string () ;
+  ioString << mInfo.mModelMap.reader_description () ;
+  ioString << mInfo.mActionMap.reader_description () ;
+  ioString << mInfo.mImportedSemanticsComponents.reader_description () ;
+  ioString << mInfo.mImportedMetamodelComponents.reader_description () ;
+  ioString << mInfo.mImportedOptionsComponents.reader_description () ;
+  ioString << mInfo.mOptionsComponents.reader_description () ;
+  ioString << mInfo.mSemanticsEntitiesMap.reader_description () ;
   ioString << "]" ;
 }
 
@@ -12477,10 +12477,10 @@ mInfo (inInfo) {
 void elementOf_GGS_M_metamodelsComponents::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mRootEntity.reader_description ().string () ;
-  ioString << mInfo.mSemanticsEntitiesMap.reader_description ().string () ;
+  ioString << mInfo.mRootEntity.reader_description () ;
+  ioString << mInfo.mSemanticsEntitiesMap.reader_description () ;
   ioString << "]" ;
 }
 

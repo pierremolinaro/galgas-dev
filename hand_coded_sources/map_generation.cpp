@@ -234,14 +234,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "void elementOf_GGS_" << aNomTable << "::\n"
                "appendForMapDescription (C_String & ioString) const {\n"
                "  ioString << \"[\"\n"
-               "           << mKey.reader_description ().string () ;\n" ;
+               "           << mKey.reader_description () ;\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   if (current != NULL) {
     inCppFile << "  ioString << \"->\" ;\n" ;
   }
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  ioString << mInfo." << current->aNomAttribut << ".reader_description ().string () ;\n" ;
+    inCppFile << "  ioString << mInfo." << current->aNomAttribut << ".reader_description () ;\n" ;
     current = current->nextObject () ;
   }
   inCppFile << "  ioString << \"]\" ;\n"
@@ -391,7 +391,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << ") {\n" ;
     inCppFile << "  searchElement (inLexique,\n"
                  "                 " ;
-    inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
+    inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ",\n"
                  "                 inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
@@ -431,7 +431,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << ") {\n"
                  "  insertElement (lexique_var_,\n"
                  "                 " ;
-    inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
+    inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ",\n"
                  "                 inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
@@ -672,7 +672,7 @@ void cPtr_typeDefinitionTableAimplementer
   //--- Inserer les messages d'erreur
     inCppFile << "  GGS_" << aNomTable << "::element_type * info = "
               << currentMethod->mMethodName << " (inLexique, inKey, inKey, " ;
-    inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
+    inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ") ;\n"
                  "  if (info == NULL) {\n" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -713,7 +713,7 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile << ") {\n" ;
     inCppFile << "  GGS_" << aNomTable << "::element_type * info = "
               << currentMethod->mMethodName << " (inLexique, inKey, inKey, " ;
-    inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
+    inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ") ;\n"
                  "  if (info == NULL) {\n" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -770,7 +770,7 @@ void cPtr_typeDefinitionTableAimplementer
       current = current->nextObject () ;
     }
     inCppFile << "  " << currentMethod->mMethodName << " (lexique_var_, info, inKey, inKey, " ;
-    inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
+    inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ") ;\n"
               << "}\n\n" ;
     inCppFile.writeCHyphenLineComment () ;
@@ -800,7 +800,7 @@ void cPtr_typeDefinitionTableAimplementer
       current = current->nextObject () ;
     }
     inCppFile << "  const sint32 index = " << currentMethod->mMethodName << " (lexique_var_, info, inKey, inKey, " ;
-    inCppFile.writeCstringConstant (currentMethod->mErrorMessage.string ()) ;
+    inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ") ;\n"
               << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
               << "}\n\n" ;

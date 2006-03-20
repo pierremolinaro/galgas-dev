@@ -40,9 +40,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeLexicalAttributesMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.attributType.reader_description ().string () ;
+  ioString << mInfo.attributType.reader_description () ;
   ioString << "]" ;
 }
 
@@ -192,9 +192,9 @@ mInfo (inInfo) {
 void elementOf_GGS_lexicalTypeMap::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mAttributType.reader_description ().string () ;
+  ioString << mInfo.mAttributType.reader_description () ;
   ioString << "]" ;
 }
 
@@ -344,9 +344,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableMessagesErreurs::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mErrorMessage.reader_description ().string () ;
+  ioString << mInfo.mErrorMessage.reader_description () ;
   ioString << "]" ;
 }
 
@@ -509,9 +509,9 @@ mInfo (inInfo) {
 void elementOf_GGS_M_styles::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mTitle.reader_description ().string () ;
+  ioString << mInfo.mTitle.reader_description () ;
   ioString << "]" ;
 }
 
@@ -674,11 +674,11 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableDefinitionTerminaux::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.mErrorMessage.reader_description ().string () ;
-  ioString << mInfo.attributListeDesAttributs.reader_description ().string () ;
-  ioString << mInfo.mStyleIndex.reader_description ().string () ;
+  ioString << mInfo.mErrorMessage.reader_description () ;
+  ioString << mInfo.attributListeDesAttributs.reader_description () ;
+  ioString << mInfo.mStyleIndex.reader_description () ;
   ioString << "]" ;
 }
 
@@ -846,9 +846,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableMotsReserves::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.attributNomTerminal.reader_description ().string () ;
+  ioString << mInfo.attributNomTerminal.reader_description () ;
   ioString << "]" ;
 }
 
@@ -998,9 +998,9 @@ mInfo (inInfo) {
 void elementOf_GGS_typeTableTablesDeMotsReserves::
 appendForMapDescription (C_String & ioString) const {
   ioString << "["
-           << mKey.reader_description ().string () ;
+           << mKey.reader_description () ;
   ioString << "->" ;
-  ioString << mInfo.attributSimpleTable.reader_description ().string () ;
+  ioString << mInfo.attributSimpleTable.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1236,7 +1236,7 @@ attributChaine (argument_0) {
 
 void cPtr_typeConditionChaine::appendForDescription (C_String & ioString) const {
   ioString << "->@typeConditionChaine:" ;
-attributChaine.reader_description ().string () ;
+attributChaine.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1269,7 +1269,7 @@ attributCaractere (argument_0) {
 
 void cPtr_typeConditionCaractere::appendForDescription (C_String & ioString) const {
   ioString << "->@typeConditionCaractere:" ;
-attributCaractere.reader_description ().string () ;
+attributCaractere.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1304,8 +1304,8 @@ attributBorneSup (argument_1) {
 
 void cPtr_typeConditionIntervalle::appendForDescription (C_String & ioString) const {
   ioString << "->@typeConditionIntervalle:" ;
-attributBorneInf.reader_description ().string () ;
-attributBorneSup.reader_description ().string () ;
+attributBorneInf.reader_description () ;
+attributBorneSup.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1342,7 +1342,7 @@ elementOf_GGS_typeListeConditionsLexicales (const GGS_typeConditionLexicale & ar
 void elementOf_GGS_typeListeConditionsLexicales::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << attributCondition.reader_description ().string () ;
+  ioString << attributCondition.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1623,7 +1623,7 @@ elementOf_GGS_tListeInstructionsLexicales (const GGS_typeInstructionLexicale & a
 void elementOf_GGS_tListeInstructionsLexicales::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << attributInstruction.reader_description ().string () ;
+  ioString << attributInstruction.reader_description () ;
   ioString << "]" ;
 }
 
@@ -1816,8 +1816,8 @@ elementOf_GGS_typeListeTestsEtInstructions (const GGS_typeListeConditionsLexical
 void elementOf_GGS_typeListeTestsEtInstructions::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << attributListeConditions.reader_description ().string () ;
-  ioString << attributListeInstructions.reader_description ().string () ;
+  ioString << attributListeConditions.reader_description () ;
+  ioString << attributListeInstructions.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2103,7 +2103,7 @@ elementOf_GGS_typeListeArgumentsRoutExterne (const GGS_typeArgumentRoutineExtern
 void elementOf_GGS_typeListeArgumentsRoutExterne::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << attributArgument.reader_description ().string () ;
+  ioString << attributArgument.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2294,8 +2294,8 @@ attributTypeAttribut (argument_1) {
 
 void cPtr_typeArgumentAttribut::appendForDescription (C_String & ioString) const {
   ioString << "->@typeArgumentAttribut:" ;
-attributNom.reader_description ().string () ;
-attributTypeAttribut.reader_description ().string () ;
+attributNom.reader_description () ;
+attributTypeAttribut.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2330,7 +2330,7 @@ attributCaractere (argument_0) {
 
 void cPtr_typeArgumentCaractere::appendForDescription (C_String & ioString) const {
   ioString << "->@typeArgumentCaractere:" ;
-attributCaractere.reader_description ().string () ;
+attributCaractere.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2394,7 +2394,7 @@ attributValeur (argument_0) {
 
 void cPtr_typeArgumentEntier::appendForDescription (C_String & ioString) const {
   ioString << "->@typeArgumentEntier:" ;
-attributValeur.reader_description ().string () ;
+attributValeur.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2429,8 +2429,8 @@ attributListeArguments (argument_1) {
 
 void cPtr_typeArgumentRoutine::appendForDescription (C_String & ioString) const {
   ioString << "->@typeArgumentRoutine:" ;
-attributNomRoutine.reader_description ().string () ;
-attributListeArguments.reader_description ().string () ;
+attributNomRoutine.reader_description () ;
+attributListeArguments.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2467,7 +2467,7 @@ elementOf_GGS_typeListeMessagesErreur (const GGS_luint & argument_0) {
 void elementOf_GGS_typeListeMessagesErreur::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mErrorMessageIndex.reader_description ().string () ;
+  ioString << mErrorMessageIndex.reader_description () ;
   ioString << "]" ;
 }
 
@@ -2746,7 +2746,7 @@ attributNomTerminal (argument_0) {
 
 void cPtr_typeEmissionTerminalParDefaut::appendForDescription (C_String & ioString) const {
   ioString << "->@typeEmissionTerminalParDefaut:" ;
-attributNomTerminal.reader_description ().string () ;
+attributNomTerminal.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2779,7 +2779,7 @@ mErrorMessageIndex (argument_0) {
 
 void cPtr_typeEmissionErreurParDefaut::appendForDescription (C_String & ioString) const {
   ioString << "->@typeEmissionErreurParDefaut:" ;
-mErrorMessageIndex.reader_description ().string () ;
+mErrorMessageIndex.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2816,8 +2816,8 @@ elementOf_GGS_typeListeRecherche (const GGS_lstring & argument_0,
 void elementOf_GGS_typeListeRecherche::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << attributNomAttribut.reader_description ().string () ;
-  ioString << attributNomTable.reader_description ().string () ;
+  ioString << attributNomAttribut.reader_description () ;
+  ioString << attributNomTable.reader_description () ;
   ioString << "]" ;
 }
 
@@ -3015,9 +3015,9 @@ attributListeMessageErreur (argument_2) {
 
 void cPtr_typeInstructionActionExterne::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionActionExterne:" ;
-attributNomRoutineExterne.reader_description ().string () ;
-attributListeArguments.reader_description ().string () ;
-attributListeMessageErreur.reader_description ().string () ;
+attributNomRoutineExterne.reader_description () ;
+attributListeArguments.reader_description () ;
+attributListeMessageErreur.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3056,8 +3056,8 @@ attributListeBranches (argument_1) {
 
 void cPtr_typeInstructionRepetitionLexicale::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionRepetitionLexicale:" ;
-attributListeInstructionsDebut.reader_description ().string () ;
-attributListeBranches.reader_description ().string () ;
+attributListeInstructionsDebut.reader_description () ;
+attributListeBranches.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3094,8 +3094,8 @@ attributBrancheSinon (argument_1) {
 
 void cPtr_typeInstructionSiLexical::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionSiLexical:" ;
-attributListeBranches.reader_description ().string () ;
-attributBrancheSinon.reader_description ().string () ;
+attributListeBranches.reader_description () ;
+attributBrancheSinon.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3130,7 +3130,7 @@ attributTerminal (argument_0) {
 
 void cPtr_typeInstructionEmettreSimple::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionEmettreSimple:" ;
-attributTerminal.reader_description ().string () ;
+attributTerminal.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3165,8 +3165,8 @@ attributEmissionParDefaut (argument_1) {
 
 void cPtr_typeInstructionEmettre::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionEmettre:" ;
-attributListeRecherches.reader_description ().string () ;
-attributEmissionParDefaut.reader_description ().string () ;
+attributListeRecherches.reader_description () ;
+attributEmissionParDefaut.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3201,7 +3201,7 @@ mErrorMessageIndex (argument_0) {
 
 void cPtr_typeInstructionErreurLexicale::appendForDescription (C_String & ioString) const {
   ioString << "->@typeInstructionErreurLexicale:" ;
-mErrorMessageIndex.reader_description ().string () ;
+mErrorMessageIndex.reader_description () ;
 }
 
 //---------------------------------------------------------------------------*
