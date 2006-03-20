@@ -50,7 +50,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
   while (currentGrammar != NULL) {
     C_String grammarZone2 ; grammarZone2.setAllocationExtra (2000) ;
     macroValidPointer (currentGrammar) ;
-    grammarZone2 << "class " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
+    grammarZone2 << "class " << inProgramComponentName << currentGrammar->mGrammarPostfix
                    << " : public C_defaultUserSemanticActions {\n"
                       "  protected : " << currentGrammar->mLexiqueClassName << " * mScannerPtr_ ;\n"
                       "  protected : C_galgas_terminal_io mTerminalIO ;\n"
@@ -69,7 +69,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
       currentOptionComponent = currentOptionComponent->nextObject () ;
     }
     grammarZone2 << "\n//--- Constructor\n"
-                    "  public : " << inProgramComponentName  << currentGrammar->mGrammarPostfix.string ()
+                    "  public : " << inProgramComponentName  << currentGrammar->mGrammarPostfix
                  << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) ;\n\n"
                     "  public : void doCompilation (const C_String & inSourceFileName_,\n"
                     "                               sint16 & returnCode) ;\n" ;
@@ -88,18 +88,18 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     }
     C_String grammarZone3 ;
     grammarZone3 << "//--- Destructor\n"
-                    "  public : virtual ~" << inProgramComponentName  << currentGrammar->mGrammarPostfix.string () << " (void) ;\n"
+                    "  public : virtual ~" << inProgramComponentName  << currentGrammar->mGrammarPostfix << " (void) ;\n"
                     "//--- Prologue and epilogue\n"
 										"  public : void _prologue (void) ;\n"
 										"  public : void _epilogue (void) ;\n"
 		                "} ;\n\n" ;
     inLexique.generateFile ("//",
-                            C_String ("grammar_") + inProgramComponentName + currentGrammar->mGrammarPostfix.string () + ".h",
+                            C_String ("grammar_") + inProgramComponentName + currentGrammar->mGrammarPostfix + ".h",
                             "\n\n", // User Zone 1
                             grammarZone2,
                             "\n\n", // User Zone 2
                             grammarZone3) ;
-    generatedZone2 << "#include \"grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << ".h\"\n\n" ;
+    generatedZone2 << "#include \"grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << ".h\"\n\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
 //--- Fin du fichier d'en tete
@@ -184,8 +184,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     macroValidPointer (currentGrammar) ;
   //--- Constructor
     generatedZone2.writeCTitleComment ("C O N S T R U C T O R") ;
-    generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
-                   << "::\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
+    generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
+                   << "::\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
                    << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :\n"
                       "mScannerPtr_ (NULL), mTerminalIO (inIOparameters) {\n"
                       "  mSourceFileExtension_ = \""
@@ -196,13 +196,13 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "}\n\n" ;
   //--- Destructor
     generatedZone2.writeCTitleComment ("D E S T R U C T O R") ;
-    generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
-                   << "::\n~" << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << " (void) {\n"
+    generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
+                   << "::\n~" << inProgramComponentName << currentGrammar->mGrammarPostfix << " (void) {\n"
                       "  macroDetachPointer (mScannerPtr_, " << currentGrammar->mLexiqueClassName << ") ;\n"
                       "}\n\n" ;
   //--- 'doCompilation' method
     generatedZone2.writeCTitleComment ("D O    C O M P I L A T I O N") ;
-    generatedZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
+    generatedZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
                "doCompilation (const C_String & inSourceFileName_,\n"
                "               sint16 & returnCode) {\n" ;
     generatedZone2.incIndentation (+2) ;
@@ -321,16 +321,16 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "\",\n"
              "                               IOparameters.mCocoaOutput) ;\n"
              "  try{\n"
-             "    " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
+             "    " << inProgramComponentName << currentGrammar->mGrammarPostfix
           << " * compiler = NULL ;\n"
-             "    macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix.string ()
+             "    macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix
           << " (IOparameters COMMA_HERE)) ;\n"
 					   "	  compiler->_prologue () ;\n"
              "    for (sint32 i=0 ; (i<sourceFilesArray.count ()) && (returnCode == 0) ; i++) {\n"
              "      compiler->doCompilation (sourceFilesArray (i COMMA_HERE), returnCode) ;\n"
              "    }\n"
 					   "	  compiler->_epilogue () ;\n"
-             "    macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << ") ;\n"
+             "    macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
              "	  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
              "      C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
              "    #endif\n"
@@ -348,12 +348,12 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   C_String userZone2 ; 
 	userZone2 << "\n\n" ;
 	userZone2.writeCTitleComment ("P R O L O G U E") ;
-	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
+	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
 	             "_prologue (void) {\n"
 							 "//--- ADD YOUR CODE HERE\n"
 							 "}\n\n" ;
 	userZone2.writeCTitleComment ("E P I L O G U E") ;
-	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix.string () << "::\n"
+	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
 	             "_epilogue (void) {\n"
 							 "//--- ADD YOUR CODE HERE\n"
 							 "}\n\n" ;

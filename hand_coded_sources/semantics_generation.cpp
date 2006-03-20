@@ -357,7 +357,7 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/AC_galgas_map.h\"\n" ;
 
 //--- Generate lexique inclusion
-  const C_String lexiqueName = inLexiqueName.string () ;
+  const C_String lexiqueName = inLexiqueName ;
   generatedZone2 << "#include \""
         << ((lexiqueName.length () == 0) ? C_String ("galgas/C_Lexique") : lexiqueName)
         << ".h\"\n\n" ;
@@ -368,7 +368,7 @@ generate_header_file (C_Lexique & inLexique,
     while (fichierCourant != NULL) {
       generatedZone2 << "#include \"" ;
       macroValidPointer (fichierCourant) ;
-      generatedZone2 << fichierCourant->mKey.string () ;
+      generatedZone2 << fichierCourant->mKey ;
       generatedZone2 << ".h\"\n" ;
       fichierCourant = fichierCourant->nextObject () ;
     }
@@ -1402,7 +1402,7 @@ generate_cpp_file (C_Lexique & inLexique,
   }
   while (currentInclude != NULL) {
     macroValidPointer (currentInclude) ;
-    generatedZone2 << "#include \"" << currentInclude->mKey.string () << "\"\n" ;
+    generatedZone2 << "#include \"" << currentInclude->mKey << "\"\n" ;
     currentInclude = currentInclude->nextObject () ;
   }
   generatedZone2 << '\n' ;
@@ -1460,7 +1460,7 @@ routine_generateSemanticsComponent (C_Lexique & inLexique,
                           listeEntitesAengendrer) ;
     generate_cpp_file (inLexique,
                        nomComposant,
-                       defLexique.string (),
+                       defLexique,
                        listeEntitesAengendrer,
                        tableFichiersEnTetePourFichierCPP) ;
   }

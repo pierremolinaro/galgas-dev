@@ -38,7 +38,7 @@ elementOf_GGS_typeListeAttributsAxiome (const GGS_lstring & argument_0) {
 void elementOf_GGS_typeListeAttributsAxiome::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << aAttributAxiome.reader_description ().string () ;
+  ioString << aAttributAxiome.reader_description () ;
   ioString << "]" ;
 }
 
@@ -229,7 +229,7 @@ elementOf_GGS_typeListeChaines (const GGS_lstring & argument_0) {
 void elementOf_GGS_typeListeChaines::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << attributChaine.reader_description ().string () ;
+  ioString << attributChaine.reader_description () ;
   ioString << "]" ;
 }
 
@@ -428,11 +428,11 @@ elementOf_GGS_L_grammarDescriptorForProgram (const GGS_string& argument_0,
 void elementOf_GGS_L_grammarDescriptorForProgram::
 appendForListDescription (C_String & ioString) const {
   ioString << "[" ;
-  ioString << mGrammarPostfix.reader_description ().string () ;
-  ioString << mGrammarName.reader_description ().string () ;
-  ioString << mStartSymbolSignature.reader_description ().string () ;
-  ioString << mStartSymbolAttributesList.reader_description ().string () ;
-  ioString << mLexiqueClassName.reader_description ().string () ;
+  ioString << mGrammarPostfix.reader_description () ;
+  ioString << mGrammarName.reader_description () ;
+  ioString << mStartSymbolSignature.reader_description () ;
+  ioString << mStartSymbolAttributesList.reader_description () ;
+  ioString << mLexiqueClassName.reader_description () ;
   ioString << "]" ;
 }
 

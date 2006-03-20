@@ -314,7 +314,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions && (mReturnedEntityVarName.length () > 0)) {
-    if (mEntityTypeNameForMultipleReference.string ().length () > 0) {
+    if (mReturnedEntityShouldInsertedInList.boolValue ()) {
       inCppFile << "var_cas_" << mReturnedEntityVarName << ".add (" ;
     }else{
       inCppFile << "var_cas_" << mReturnedEntityVarName << " = " ;
@@ -332,7 +332,7 @@ generateInstruction (AC_OutputStream & inCppFile,
       argument = argument->nextObject () ;
     }
   }
-  if (inGenerateSemanticInstructions && (mEntityTypeNameForMultipleReference.string ().length () > 0)) {
+  if (inGenerateSemanticInstructions && mReturnedEntityShouldInsertedInList.boolValue ()) {
     inCppFile << ")" ;
   }
   inCppFile << ") ;\n" ;

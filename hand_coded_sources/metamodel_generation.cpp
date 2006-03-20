@@ -57,7 +57,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
   GGS_stringset::element_type * currentMultipleReferencedEntity = inMultipleReferencedEntities.firstObject () ;
   while (currentMultipleReferencedEntity != NULL) {
     macroValidPointer (currentMultipleReferencedEntity) ;
-    generatedZone3 << "class GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << " ;\n" ;
+    generatedZone3 << "class GGS__listOf_" << currentMultipleReferencedEntity->mKey << " ;\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
   generatedZone3 << '\n' ;
@@ -66,20 +66,24 @@ generate_metamodel_header_file (C_Lexique & inLexique,
   currentMultipleReferencedEntity = inMultipleReferencedEntities.firstObject () ;
   while (currentMultipleReferencedEntity != NULL) {
     macroValidPointer (currentMultipleReferencedEntity) ;
-    generatedZone3.writeCTitleComment (C_String ("Declaration of GGS__listOf_") + currentMultipleReferencedEntity->mKey.string () + " Class") ;
-    generatedZone3 << "class GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << " {\n"
+    generatedZone3.writeCTitleComment (C_String ("Declaration of GGS__listOf_") + currentMultipleReferencedEntity->mKey + " Class") ;
+    generatedZone3 << "class GGS__listOf_" << currentMultipleReferencedEntity->mKey << " {\n"
                       "//--- Default Constructor\n"
-                      "  public : GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << " (void) ;\n"
+                      "  public : GGS__listOf_" << currentMultipleReferencedEntity->mKey << " (void) ;\n"
                       "//--- No Copy\n"
-                      "  private : GGS__listOf_" << currentMultipleReferencedEntity->mKey.string ()
-                   << " (const GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << "&) ;\n"
+                      "  private : GGS__listOf_" << currentMultipleReferencedEntity->mKey
+                   << " (const GGS__listOf_" << currentMultipleReferencedEntity->mKey << "&) ;\n"
                       "  private : void operator = "
-                      " (const GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << "&) ;\n"
+                      " (const GGS__listOf_" << currentMultipleReferencedEntity->mKey << "&) ;\n"
                       "//--- Add an Object\n"
-                      "  public : void add (GGS_" << currentMultipleReferencedEntity->mKey.string () << " * inObject) ;\n"
+                      "  public : void add (GGS_" << currentMultipleReferencedEntity->mKey << " * inObject) ;\n"
                       "//--- Attributes\n"
-                      "  public : GGS_" << currentMultipleReferencedEntity->mKey.string () << " * mFirstObject ;\n"
-                      "  public : GGS_" << currentMultipleReferencedEntity->mKey.string () << " * mLastObject ;\n"
+                      "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * mFirstObject ;\n"
+                      "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * mLastObject ;\n"
+                      "//--- List access\n"
+                      "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * firstObject (void) {\n"
+                      "    return mFirstObject ;\n"
+                      "  }\n"
                       "} ;\n\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
@@ -196,15 +200,15 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
   GGS_stringset::element_type * currentMultipleReferencedEntity = inMultipleReferencedEntities.firstObject () ;
   while (currentMultipleReferencedEntity != NULL) {
     macroValidPointer (currentMultipleReferencedEntity) ;
-    generatedZone3.writeCTitleComment (C_String ("Implementation of GGS__listOf_") + currentMultipleReferencedEntity->mKey.string () + " Class") ;
-    generatedZone3 << "GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << "::\n"
-                      "GGS__listOf_" << currentMultipleReferencedEntity->mKey.string () << " (void)\n"
+    generatedZone3.writeCTitleComment (C_String ("Implementation of GGS__listOf_") + currentMultipleReferencedEntity->mKey + " Class") ;
+    generatedZone3 << "GGS__listOf_" << currentMultipleReferencedEntity->mKey << "::\n"
+                      "GGS__listOf_" << currentMultipleReferencedEntity->mKey << " (void)\n"
                       ":mFirstObject (NULL), mLastObject (NULL) {\n"
                       "}\n\n" ;
     generatedZone3.writeCHyphenLineComment () ;
-    generatedZone3 << " void GGS__listOf_" << currentMultipleReferencedEntity->mKey.string ()
+    generatedZone3 << " void GGS__listOf_" << currentMultipleReferencedEntity->mKey
                    << "::\n"
-                      "add (GGS_" << currentMultipleReferencedEntity->mKey.string () << " * inObject) {\n"
+                      "add (GGS_" << currentMultipleReferencedEntity->mKey << " * inObject) {\n"
                       "  if (inObject != NULL) {\n"
                       "    macroValidObject (inObject) ;\n"
                       "    if (mFirstObject == NULL) {\n"

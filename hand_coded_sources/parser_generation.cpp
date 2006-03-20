@@ -140,8 +140,8 @@ void cPtr_typeProductionAengendrer
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
     inHfile << "  protected : " ;
     macroValidPointer (currentAltForNonTerminal) ;
-    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.string ().length () > 0) {
-      inHfile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.string ()
+    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+      inHfile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << " * " ;      
     }else{
       inHfile << "void " ;
@@ -201,8 +201,8 @@ void cPtr_typeProductionAengendrer
       inCppFile.writeCHyphenLineComment () ;
     }
     macroValidPointer (currentAltForNonTerminal) ;
-    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.string ().length () > 0) {
-      inCppFile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.string ()
+    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+      inCppFile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << " * " ;      
     }else{
       inCppFile << "void " ;
@@ -249,7 +249,7 @@ void cPtr_typeProductionAengendrer
       }else{
         inCppFile << "\"" << currentAltForNonTerminal->mKey << "\", " ;
       }
-      inCppFile.writeCstringConstant (mProductionTagName.string ()) ;
+      inCppFile.writeCstringConstant (mProductionTagName) ;
       inCppFile << ") ;\n"
                    "  #endif\n" ;
     }
@@ -262,8 +262,40 @@ void cPtr_typeProductionAengendrer
                    "  #endif\n";
     }
   //--- Build returned entity instance
-    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.string ().length () > 0) {
-      inCppFile << "  return NULL ;\n" ;
+    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+      inCppFile << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " * _entityInstance = NULL ;\n"
+                   "  macroMyNew (_entityInstance, GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " (" ;
+      GGS_entityPropertyMap::element_type * currentProperty = currentAltForNonTerminal->mInfo.mAllPropertiesMap.firstObject () ;
+      bool first = true ;
+      while (currentProperty != NULL) {
+        macroValidPointer (currentProperty) ;
+        if (first) {
+          first = false ;
+        }else{
+          inCppFile << ", " ;
+        }
+        switch (currentProperty->mInfo.mKind.enumValue ()) {
+        case GGS_metamodelPropertyKind::enum_attributeProperty:
+          inCppFile << "var_cas_" << currentProperty->mKey ;
+          break ;
+        case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+          inCppFile << "var_cas_" << currentProperty->mKey ;
+          break ;
+        case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+          inCppFile << "var_cas_" << currentProperty->mKey << ".firstObject ()" ;
+          break ;
+        case GGS_metamodelPropertyKind::kNotBuilt:
+          break ;
+        }
+        currentProperty = currentProperty->nextObject () ;
+      }
+      if (first) {
+        inCppFile << "HERE" ;
+      }else{
+        inCppFile << " COMMA_HERE" ;
+      }
+      inCppFile << ")) ;\n"
+                   "  return _entityInstance ;\n" ;
     }  
   //--- End of function
     inCppFile << "}\n\n" ;
@@ -307,7 +339,7 @@ void cPtr_typeProductionAengendrer
       }else{
         inCppFile << "\"" << firstLabelDef->mKey << "\", " ;
       }
-      inCppFile.writeCstringConstant (mProductionTagName.string ()) ;
+      inCppFile.writeCstringConstant (mProductionTagName) ;
       inCppFile << ") ;\n"
                    "  #endif\n" ;
     }

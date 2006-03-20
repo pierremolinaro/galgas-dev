@@ -36,7 +36,7 @@ class @typeInstructionAppelNonTerminal extends @typeParserInstruction {
   @typeExpressionList mParametersExpressionList ;
   @lstring mAltName ;
   @lstring mReturnedEntityVarName ;
-  @string mEntityTypeNameForMultipleReference ;
+  @bool mReturnedEntityShouldInsertedInList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -126,6 +126,7 @@ map @typeAltProductionsMap {
   @L_ruleSyntaxSignature mSyntaxSignature ;
   @location mEndOfInstructionListLocation ;
   @string mReturnedEntityTypeName ;
+  @entityPropertyMap mAllPropertiesMap ;
   insert insertKey error message "the '%K' label has been already declared in %L" ;
   search searchKey error message "the '%K' label is not declared" ;
 }

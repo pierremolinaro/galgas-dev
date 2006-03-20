@@ -914,12 +914,12 @@ rule <rule_declaration_or_implementation>
   end if ;
 #--- Insert in variable map attributes for returned entity
   @typeInstructionsList listeInstructions [empty] ;
+  @entityPropertyMap allPropertiesMap [empty] ;
   if [inEffectiveReturnedEntity value] != "" then
     @AC_semanticsEntity e ;
     [!?ioEntitiesMap searchKey !inEffectiveReturnedEntity ?e] ;
     @AC_galgasType type ;
     extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
-    @entityPropertyMap allPropertiesMap ;
     extract type->@typeGalgas_singleEntity (?* ? allPropertiesMap ...) error inEffectiveReturnedEntity : messageGalgasType ;
     foreach allPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
     #--- Type name
@@ -962,6 +962,7 @@ rule <rule_declaration_or_implementation>
     !syntaxSignature
     !here
     ![inEffectiveReturnedEntity value]
+    !allPropertiesMap
   ] ;
   repeat
   while
@@ -978,6 +979,7 @@ rule <rule_declaration_or_implementation>
       ?signatureForGrammarComponent # unused
     ;
     @lstring returnedEntity ;
+    @entityPropertyMap allPropertiesMap [empty] ;
     select
       returnedEntity := [@lstring new !"" !here] ;
     or
@@ -987,7 +989,7 @@ rule <rule_declaration_or_implementation>
       [!?ioEntitiesMap searchKey !returnedEntity ?e] ;
       @AC_galgasType type ;
       extract e->@typeEntiteType (?type) error returnedEntity : messageTypeEntite ;
-      extract type->@typeGalgas_singleEntity (...) error returnedEntity : messageGalgasType ;
+      extract type->@typeGalgas_singleEntity (?* ?allPropertiesMap ...) error returnedEntity : messageGalgasType ;
     end select ;
     @location errorLocation := here ;
     $:$ ;
@@ -1019,6 +1021,7 @@ rule <rule_declaration_or_implementation>
       !syntaxSignature
       !here
       ![returnedEntity value]
+      !allPropertiesMap
     ] ;
   end repeat ;
   $end$ ;
@@ -1033,13 +1036,20 @@ rule <rule_declaration_or_implementation>
     end if ;
   end foreach ;
 #--- Generate production
-  @typeEntityToGenerate ea := [@typeProductionAengendrer new !inRuleName !altProductionsMap !productionTagName !hasParseLabel] ;
+  @typeEntityToGenerate ea := [@typeProductionAengendrer new
+    !inRuleName
+    !altProductionsMap
+    !productionTagName
+    !hasParseLabel
+  ] ;
   listeEntitesAengendrer += !ea ;
 #--- Generate list for grammar component
   @uint ruleIndex := 0 ;
-  ioProductionRulesListForGrammar += !inRuleName
-                                     !ruleIndex
-                                     !syntaxSignature ;
+  ioProductionRulesListForGrammar +=
+   !inRuleName
+   !ruleIndex
+   !syntaxSignature
+  ;
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
@@ -1222,7 +1232,6 @@ rule <syntax_instruction>
     isMultipleEntity := true ;
   end select ;
 #--- Check returned value
-  @string entityTypeNameForMultipleReference := "" ;
   if ([returnedEntityFromSignature value] == "") & ([returnedEntityVariableName value] != "") then
     error returnedEntityVariableName: "the non terminal symbol is declared with no returned entity" ;
   elsif ([returnedEntityFromSignature value] != "") & ([returnedEntityVariableName value] == "") then
@@ -1234,7 +1243,6 @@ rule <syntax_instruction>
       [!?ioVariablesMap searchForReadWriteAccess !returnedEntityVariableName ?type ?*] ;
       @lstring typeName ;
       extract type->@typeGalgas_multipleEntity (? typeName) error returnedEntityVariableName : messageGalgasType ;
-      entityTypeNameForMultipleReference := [typeName value] ;
     else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;
@@ -1248,7 +1256,7 @@ rule <syntax_instruction>
     !parametersExpressionList
     !altName
     !returnedEntityVariableName
-    !entityTypeNameForMultipleReference
+    !isMultipleEntity
   ] ;
   ioInstructionsList += !instruction ;
   @AC_instruction_ForGrammar i := [@T_nonterminalInstruction_forGrammarComponent new
