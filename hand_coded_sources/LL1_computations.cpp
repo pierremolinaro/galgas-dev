@@ -594,9 +594,11 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << ", _outReturnedModelInstance" ;      
         }
-        generatedZone3 << ") ;\n"
-                          "    _checkMetamodel (_outReturnedModelInstance) ;\n"
-                          "  }\n" ;
+        generatedZone3 << ") ;\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "    _checkMetamodel (_outReturnedModelInstance) ;\n" ;
+        }
+        generatedZone3 << "  }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
         }
