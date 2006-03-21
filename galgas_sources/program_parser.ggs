@@ -20,10 +20,16 @@ syntax program_parser :
 
 import lexique galgas_scanner in "galgas_scanner.ggs" ;
 
-import semantics grammar_semantics in "grammar_semantics.ggs" ;
 import semantics common_semantics in "common_semantics.ggs" ;
 
 #--------------------------------------------------------------------------------*
+
+rule <parse_semantics_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_semanticsComponents ioSemanticsMapForUse
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label parse
+;
 
 rule <galgas_component>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
@@ -73,7 +79,7 @@ action generatePRGM
 
 rule <galgas_component>
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
-  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
@@ -116,14 +122,33 @@ rule <galgas_component>
     ;
   end select ;
   $;$ ;
+  select
+  or
+    $import$ ;
+    $metamodel$ ;
+    @lstring metamodelComponentName ;
+    $identifier$ ? metamodelComponentName ;
+    select
+    or
+      $in$ ;
+      @lstring sourceFile ;
+      $literal_string$ ?sourceFile ;
+      <parse_semantics_component_for_importing> 
+        !sourceFile
+        !?ioSemanticsComponentsMap
+        !?ioMetamodelComponentMap
+      ;
+    end select ;
+    $;$ ;
+  end select ;
   @lstring lexiqueClassName ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
   @M_optionComponents optionsComponentsMap ;
   [!?grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap  ?lexiqueClassName ?optionsComponentsMap] ;
   @lstring altName := [@lstring new !"" !here] ;
   @L_signature startSymbolSignature ;
-  @lstring returnedEntity ;
-  [!?nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedEntity ?*] ;
+  @lstring returnedMetamodel ;
+  [!?nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedMetamodel] ;
 #--- Liste des attributs
   listeDesAttributs := [@typeListeAttributsAxiome empty] ;
   <program_attributes_declaration> !?listeDesAttributs ;
@@ -134,7 +159,31 @@ rule <galgas_component>
     error here : "too much parameters" ;
   end if ;
   @string postfix := "" ;
-  grammarDescriptorForProgramList += !postfix !grammarName !startSymbolSignature !listeDesAttributs !lexiqueClassName ;
+#--- Metamodel ?
+  @lstring metamodelName ;
+  @lstring rootEntityName ;
+  select
+    metamodelName := [@lstring new !"" !here] ;
+    rootEntityName := [@lstring new !"" !here] ;
+  or
+    $metamodel$ ;
+    $identifier$ ? metamodelName ;
+    $;$ ;
+    if [metamodelName value] != [returnedMetamodel value] then
+      error metamodelName: "the '" . [returnedMetamodel value] . "' metamodel was expected here" ;
+    end if ;
+    [!?ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?*] ;
+  end select ;
+#--- Send grammar descriptor
+  grammarDescriptorForProgramList +=
+    !postfix
+    !grammarName
+    !startSymbolSignature
+    !listeDesAttributs
+    !lexiqueClassName
+    !returnedMetamodel
+    !rootEntityName
+  ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? nombreMaxErreurs ;
@@ -177,8 +226,27 @@ label importLexique
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+  select
+  or
+    $import$ ;
+    $metamodel$ ;
+    $identifier$ ? * ;
+    select
+    or
+      $in$ ;
+      $literal_string$ ?* ;
+      <parse_semantics_component_for_importing> parse ;
+    end select ;
+    $;$ ;
+  end select ;
 #--- Program attributes
   <program_attributes_declaration> parse ;
+  select
+  or
+    $metamodel$ ;
+    $identifier$ ? * ;
+    $;$ ;
+  end select ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -211,8 +279,27 @@ label importSyntax
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+  select
+  or
+    $import$ ;
+    $metamodel$ ;
+    $identifier$ ? * ;
+    select
+    or
+      $in$ ;
+      $literal_string$ ?* ;
+      <parse_semantics_component_for_importing> parse ;
+    end select ;
+    $;$ ;
+  end select ;
 #--- Program attributes
   <program_attributes_declaration> parse ;
+  select
+  or
+    $metamodel$ ;
+    $identifier$ ? * ;
+    $;$ ;
+  end select ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -244,8 +331,27 @@ label importSemantics
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+  select
+  or
+    $import$ ;
+    $metamodel$ ;
+    $identifier$ ? * ;
+    select
+    or
+      $in$ ;
+      $literal_string$ ?* ;
+      <parse_semantics_component_for_importing> parse ;
+    end select ;
+    $;$ ;
+  end select ;
 #--- Program attributes
   <program_attributes_declaration> parse ;
+  select
+  or
+    $metamodel$ ;
+    $identifier$ ? * ;
+    $;$ ;
+  end select ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -277,8 +383,27 @@ label importGrammarForSemantics
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+  select
+  or
+    $import$ ;
+    $metamodel$ ;
+    $identifier$ ? * ;
+    select
+    or
+      $in$ ;
+      $literal_string$ ?* ;
+      <parse_semantics_component_for_importing> parse ;
+    end select ;
+    $;$ ;
+  end select ;
 #--- Program attributes
   <program_attributes_declaration> parse ;
+  select
+  or
+    $metamodel$ ;
+    $identifier$ ? * ;
+    $;$ ;
+  end select ;
 #--- Max errors count
   $error$ ;
   $unsigned_literal_integer$ ? * ;
@@ -309,7 +434,26 @@ label importOptions
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+  select
+  or
+    $import$ ;
+    $metamodel$ ;
+    $identifier$ ? * ;
+    select
+    or
+      $in$ ;
+      $literal_string$ ?* ;
+      <parse_semantics_component_for_importing> parse ;
+    end select ;
+    $;$ ;
+  end select ;
   <program_attributes_declaration> parse ;
+  select
+  or
+    $metamodel$ ;
+    $identifier$ ? * ;
+    $;$ ;
+  end select ;
   $error$ ;
   $unsigned_literal_integer$ ? * ;
   $;$ ;

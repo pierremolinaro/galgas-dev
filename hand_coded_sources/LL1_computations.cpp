@@ -391,7 +391,8 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                                const C_String & inLexiqueName,
                                const GGS_stringset & inClassesNamesSet,
                                const cVocabulary & inVocabulary,
-                               const cPureBNFproductionsList & inPureBNFproductions) {
+                               const cPureBNFproductionsList & inPureBNFproductions,
+                               GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
 //--- Generate header file inclusion --------------------------------------------------------------
   C_String generatedZone2 ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
@@ -596,8 +597,13 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         }
         generatedZone3 << ") ;\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "    _checkMetamodel_"
-                         << currentAltForNonTerminal->mInfo.mReturnedMetamodelName
+          GGS_lstring entityName ;
+          GGS_lstring metamodelName ;
+          inStartSymbolEntityAndMetamodelMap.methode_searchKey (inLexique,
+                                                                currentAltForNonTerminal->mKey,
+                                                                entityName,
+                                                                metamodelName) ;
+          generatedZone3 << "    _checkMetamodel_" << metamodelName
                          << " (_outReturnedModelInstance) ;\n" ;
         }
         generatedZone3 << "  }\n" ;
@@ -649,7 +655,8 @@ LL1_computations (C_Lexique & inLexique,
                   const C_String & inTargetFileName,
                   const C_String & inLexiqueName,
                   const GGS_stringset & inClassesNamesSet,
-                  bool & outOk) {
+                  bool & outOk,
+                  GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
 //--- Console display
   co << "  Checking LL(1) condition... " ;
 
@@ -673,7 +680,8 @@ LL1_computations (C_Lexique & inLexique,
                                    inLexiqueName,
                                    inClassesNamesSet,
                                    inVocabulary,
-                                   inPureBNFproductions) ;
+                                   inPureBNFproductions,
+                                   inStartSymbolEntityAndMetamodelMap) ;
   }
 }
 

@@ -232,8 +232,12 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       nomCourant = nomCourant->nextObject () ;
     }              
   //--- Call parser
-    generatedZone2 << currentGrammar->mGrammarName << " grammar_ ;\n"   
-                      "grammar_.startParsing_ (*mScannerPtr_" ;
+    generatedZone2 << currentGrammar->mGrammarName << " grammar_ ;\n" ;
+    if (currentGrammar->mReturnedRootEntityName.length () > 0) {
+      generatedZone2 << "GGS_" << currentGrammar->mReturnedRootEntityName 
+                     << " * _rootEntity = " ;
+    }
+    generatedZone2 << "grammar_.startParsing_ (*mScannerPtr_" ;
     nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     while (nomCourant != NULL) {
       macroValidPointer (nomCourant) ;
@@ -241,12 +245,16 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                      << nomCourant->aAttributAxiome ;
       nomCourant = nomCourant->nextObject () ;
     }
-    generatedZone2 << ") ;\n"
-                   "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
-                   "  _afterParsing () ;\n"
-                   "}\n"
-                   "::printf (\"Analysis of '%s' completed. \","
-                   " mScannerPtr_->sourceFileName ().lastPathComponent ().cString ()) ;\n" ;
+    generatedZone2 << ") ;\n" ;
+    if (currentGrammar->mReturnedRootEntityName.length () > 0) {
+      generatedZone2 << "// printf (\"%s\", _rootEntity->reader_description ().cString ()) ;\n"
+                        "macroMyDelete (_rootEntity, GGS_" << currentGrammar->mReturnedRootEntityName << ") ;\n" ;
+    }
+    generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
+                      "  _afterParsing () ;\n"
+                      "}\n"
+                      "::printf (\"Analysis of '%s' completed. \","
+                      " mScannerPtr_->sourceFileName ().lastPathComponent ().cString ()) ;\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
   generatedZone2 <<  "switch (mTerminalIO.getErrorTotalCount ()) {\n"

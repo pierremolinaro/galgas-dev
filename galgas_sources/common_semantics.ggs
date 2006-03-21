@@ -1264,7 +1264,6 @@ map @L_grammarsMap {
 map @M_nonterminalSymbolAltsForGrammar {
   @L_signature mFormalParametersList ;
   @lstring mReturnedEntityTypeName ;
-  @lstring mReturnedMetamodelName ;
   insert insertKey error message "the rule label '%K' has been already declared in %L" ;
   search searchKey error message "the rule label '%K' is not declared" ;
 }
@@ -1371,6 +1370,19 @@ list @L_syntaxComponents_ForGrammar {
   @M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMap ;
   @L_productionRules_ForGrammarComponent mProductionRulesList ;
   @lstring mSyntaxComponentName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#              Map of entities and metamodels for start symbol labels       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @M_startSymbolEntityAndMetamodel {
+  @lstring mReturnedEntityName ;
+  @lstring mReturnedMetamodelName ;
+  insert insertKey error message "the label '%K' has been already declared in %L" ;
+  search searchKey error message "the label '%K' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1911,6 +1923,32 @@ map @M_metamodelsComponents {
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ; # OLD STYLE MAP
   insert insertKey error message "a metamodel component named '%K' is already declared in %L" ;
   search searchKey error message "there is no metamodel component named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#              Liste des attributs de l'axiome                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @typeListeAttributsAxiome {
+  @lstring aAttributAxiome ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#              Grammar descriptor (for program component)                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @L_grammarDescriptorForProgram {
+  @string mGrammarPostfix ;
+  @lstring mGrammarName ;
+  @L_signature mStartSymbolSignature ;
+  @typeListeAttributsAxiome mStartSymbolAttributesList ;
+  @lstring mLexiqueClassName ;
+  @lstring mReturnedMetamodelName ;
+  @lstring mReturnedRootEntityName ;
 }
 
 #---------------------------------------------------------------------------*

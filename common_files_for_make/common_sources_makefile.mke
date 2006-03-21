@@ -122,7 +122,6 @@ SOURCES += metamodel_parser.cpp
 SOURCES += parser_semantics.cpp
 SOURCES += parser_parser.cpp
 SOURCES += expression_parser.cpp
-SOURCES += grammar_semantics.cpp
 SOURCES += grammar_parser.cpp
 SOURCES += program_parser.cpp
 SOURCES += galgas_start.cpp

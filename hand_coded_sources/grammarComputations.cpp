@@ -460,7 +460,8 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                         const GGS_location & errorLocation,
                         GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
                         GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
-                        GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
+                        GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+                        GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
   GGS_stringset classesNamesSet ;
   bool warningFlag = false ;
 
@@ -717,7 +718,8 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                       inTargetFileName,
                       inLexiqueName,
                       classesNamesSet,
-                      ok) ;
+                      ok,
+                      inStartSymbolEntityAndMetamodelMap) ;
     if (! ok) {
       errorFlag = kGrammarNotLL1 ;
     }
@@ -737,7 +739,8 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                       inTargetFileName,
                       inLexiqueName,
                       classesNamesSet,
-                      ok) ;
+                      ok,
+                      inStartSymbolEntityAndMetamodelMap) ;
     if (ok) {
       errorFlag = kNoError ;
     }else{
@@ -761,7 +764,8 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                       inTargetFileName,
                       inLexiqueName,
                       classesNamesSet,
-                      ok) ;
+                      ok,
+                      inStartSymbolEntityAndMetamodelMap) ;
     if (ok) {
       errorFlag = kNoError ;
     }else{

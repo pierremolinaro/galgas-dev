@@ -768,7 +768,6 @@ rule <rule_declaration_or_implementation>
     !emptyId
     !inSignatureForGrammar
     !inReturnedEntity
-    ![@lstring new !"" !here] # No Metamodel Name
   ] ;
   repeat
   while
@@ -783,7 +782,6 @@ rule <rule_declaration_or_implementation>
         !altName
         !signatureForGrammarComponent
         ![@lstring new !"" !here]
-        ![@lstring new !"" !here] # No Metamodel Name
       ] ;
     or
       @lstring altName ;
@@ -817,7 +815,6 @@ rule <rule_declaration_or_implementation>
         !altName
         !signatureForGrammarComponent
         !returnedEntity
-        ![@lstring new !"" !here] # No Metamodel Name
       ] ;
     end select ;
   end repeat ;
@@ -839,7 +836,6 @@ label importSyntax
     !altName
     !inDefaultSignature
     !inReturnedEntity
-    ![@lstring new !"" !here] # No Metamodel Name
   ] ;
   repeat
   while
@@ -853,7 +849,6 @@ label importSyntax
         !altName
         !signature
         !noReturnedEntity
-        ![@lstring new !"" !here] # No Metamodel Name
       ] ;
     or
       $identifier$ ?altName ;
@@ -870,7 +865,6 @@ label importSyntax
         !altName
         !signature
         !returnedEntity
-        ![@lstring new !"" !here] # No Metamodel Name
       ] ;
     end select ;
   end repeat ;

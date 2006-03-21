@@ -21,7 +21,6 @@ syntax ggs_LL1_compile_component :
 import lexique galgas_scanner in "galgas_scanner.ggs" ;
 
 import semantics semantics_semantics in "semantics_semantics.ggs" ;
-import semantics grammar_semantics in "grammar_semantics.ggs" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
 
 #------------------------------------------------------------------------------*
