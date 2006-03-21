@@ -20,7 +20,6 @@ syntax cocoa_parser :
 
 import lexique galgas_scanner in "galgas_scanner.ggs" ;
 
-import semantics grammar_semantics in "grammar_semantics.ggs" ;
 import semantics common_semantics in "common_semantics.ggs" ;
 
 #--------------------------------------------------------------------------------*
@@ -107,7 +106,7 @@ rule <galgas_component>
                                                  ?lexiqueClassName
                                                  ?optionsComponentsMap] ;
   @lstring altName := [@lstring new !"" !here] ;
-  [!?nonterminalSymbolParametersMap searchKey !altName ?* ?* ?*] ;
+  [!?nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
   $;$ ;
 #--- Generate Cocoa c++ file
   action generateCocoaComponent

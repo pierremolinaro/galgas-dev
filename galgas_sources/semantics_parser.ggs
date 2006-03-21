@@ -799,7 +799,7 @@ rule <import_headers_semantics_and_grammars>
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
       [!?grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?* ?*] ;
       @M_nonterminalSymbolAlts grammarAltMap [empty] ;
-      foreach nonterminalSymbolParametersMap (??@lstring altName ??@L_signature signature ??@lstring kReturnedEntity ??*) :
+      foreach nonterminalSymbolParametersMap (??@lstring altName ??@L_signature signature ??@lstring kReturnedEntity) :
         @L_EXsignature formalParametersList [empty] ;
         foreach signature (??@formalArgumentPassingMode passingMode ??@lstring typeName) :
           @AC_semanticsEntity e ;
