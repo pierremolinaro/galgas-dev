@@ -1160,7 +1160,9 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
         }
         generatedZone3 << ") ;\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "    _checkMetamodel (_outReturnedModelInstance) ;\n" ;
+          generatedZone3 << "    _checkMetamodel_"
+                         << currentAltForNonTerminal->mInfo.mReturnedMetamodelName
+                         << " (_outReturnedModelInstance) ;\n" ;
         }
         generatedZone3 << "  }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {

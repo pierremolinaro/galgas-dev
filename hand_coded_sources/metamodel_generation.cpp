@@ -62,7 +62,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
   generatedZone3 << "\n"
-                    "void _checkMetamodel" // << inMetamodelComponentName
+                    "void _checkMetamodel_" << inMetamodelComponentName
                  << " (GGS_" << inRootEntityName << " * inRootObject) ;\n"
                     "\n" ;
   
@@ -88,6 +88,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * firstObject (void) {\n"
                       "    return mFirstObject ;\n"
                       "  }\n"
+                      "//--- 'description' reader\n"
+                      "  public : GGS_string reader_description (void) const ;\n"
                       "} ;\n\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
@@ -167,9 +169,11 @@ generate_metamodel_header_file (C_Lexique & inLexique,
       }
       currentProperty = currentProperty->nextObject () ;
     }
-  //--- Friend Declaration                 
+  //--- 'description' reader                 
     generatedZone3 << "//--- 'description' reader\n"
-                      "  public : virtual void reader_description (void) const ;\n" ;
+                      "  public : virtual GGS_string reader_description (void) const"
+                   << (currentEntity->mInfo.mIsAbstract.boolValue () ? " = 0" : "")
+                   << " ;\n" ;
   //--- Friend Declaration                 
     generatedZone3 << "//--- Friend Class\n"
                       "  friend class GGS__listOf_" << currentEntity->mKey << " ;\n" ;
@@ -207,12 +211,12 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (200000) ;
   
   generatedZone3.writeCTitleComment ("Checking Metamodel") ;
-    generatedZone3 << "void _checkMetamodel" // << inMetamodelComponentName
+    generatedZone3 << "void _checkMetamodel_" << inMetamodelComponentName
                    << " (GGS_" << inRootEntityName << " * inRootObject) {\n"
                       "  if (inRootObject != NULL) {\n"
                       "    macroValidPointer (inRootObject) ;\n"
                       "    const GGS_string s = inRootObject->reader_description () ;\n"
-                      "    printf (\"%s\\n\", s.string ().cString ()) ;\n"
+                      "    printf (\"%s\\n\", s.cString ()) ;\n"
                       "  }\n"
                       "}\n" ;
 
@@ -238,6 +242,20 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "    }\n"
                       "    mLastObject = inObject ;\n"
                       "  }\n"
+                      "}\n\n" ;
+    generatedZone3.writeCHyphenLineComment () ;
+    generatedZone3 << "GGS_string GGS__listOf_" << currentMultipleReferencedEntity->mKey
+                   << "::\n"
+                      "reader_description (void) const {\n"
+                      "  C_String s ;\n"
+                      "  s << \"<list @" << currentMultipleReferencedEntity->mKey << " \" ;\n"
+                      "  GGS_" << currentMultipleReferencedEntity->mKey << " * p = mFirstObject ;\n"
+                      "  while (p != NULL) {\n"
+                      "    s << p->reader_description () ;\n"
+                      "    p = p->_mNextObject ;\n"
+                      "  }\n"
+                      "  s << \">\" ;\n"
+                      "  return GGS_string (true, s) ;\n"
                       "}\n\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
@@ -317,10 +335,33 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     }
     generatedZone3 << " {\n"
                       "}\n\n" ;
-    generatedZone3 << "void GGS_" << currentEntity->mKey << "::reader_description (void) const {\n"
-    
-                      "}\n\n" ;
-
+    if (! currentEntity->mInfo.mIsAbstract.boolValue ()) {
+      generatedZone3.writeCHyphenLineComment () ;
+      generatedZone3 << "GGS_string GGS_" << currentEntity->mKey << "::reader_description (void) const {\n"
+                        "  C_String s ;\n"
+                        "  s << \"<@" << currentEntity->mKey << " {\" ;\n" ;
+      currentProperty = currentEntity->mInfo.mEntityPropertiesMap.firstObject () ;
+      while (currentProperty != NULL) {
+        macroValidPointer (currentProperty) ;
+        switch (currentProperty->mInfo.mKind.enumValue ()) {
+        case GGS_metamodelPropertyKind::enum_attributeProperty:
+          generatedZone3 << "    s << " << currentProperty->mKey << ".reader_description () ;\n" ;
+          break ;
+        case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+          generatedZone3 << "    s << " << currentProperty->mKey << "->reader_description () ;\n" ;
+          break ;
+        case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+          generatedZone3 << "    s << " << currentProperty->mKey << ".reader_description () ;\n" ;
+          break ;
+        case GGS_metamodelPropertyKind::kNotBuilt:
+          break ;
+        }
+        currentProperty = currentProperty->nextObject () ;
+      }
+      generatedZone3 << "  s << \"}>\" ;\n"
+                        "  return GGS_string (true, s) ;\n"
+                        "}\n\n" ;
+    }
     currentEntity = currentEntity->nextObject () ;
   }
   

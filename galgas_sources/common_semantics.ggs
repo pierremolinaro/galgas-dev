@@ -1264,6 +1264,7 @@ map @L_grammarsMap {
 map @M_nonterminalSymbolAltsForGrammar {
   @L_signature mFormalParametersList ;
   @lstring mReturnedEntityTypeName ;
+  @lstring mReturnedMetamodelName ;
   insert insertKey error message "the rule label '%K' has been already declared in %L" ;
   search searchKey error message "the rule label '%K' is not declared" ;
 }
