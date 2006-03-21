@@ -107,7 +107,7 @@ rule <galgas_component>
                                                  ?lexiqueClassName
                                                  ?optionsComponentsMap] ;
   @lstring altName := [@lstring new !"" !here] ;
-  [!?nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
+  [!?nonterminalSymbolParametersMap searchKey !altName ?* ?* ?*] ;
   $;$ ;
 #--- Generate Cocoa c++ file
   action generateCocoaComponent

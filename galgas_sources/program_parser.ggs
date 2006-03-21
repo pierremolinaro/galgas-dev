@@ -123,7 +123,7 @@ rule <galgas_component>
   @lstring altName := [@lstring new !"" !here] ;
   @L_signature startSymbolSignature ;
   @lstring returnedEntity ;
-  [!?nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
+  [!?nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedEntity ?*] ;
 #--- Liste des attributs
   listeDesAttributs := [@typeListeAttributsAxiome empty] ;
   <program_attributes_declaration> !?listeDesAttributs ;
