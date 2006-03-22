@@ -46,22 +46,21 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-#-------------------------------------------------------------------*
-
 rule <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
-#-------------------------------------------------------------------*
+rule <property_path>
+  !@L_propertyPath outPath
+label parse
+;
 
 rule <entity_declaration_list>
   !@entityToImplementMap ioEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
 label parse
 ;
-
-#-------------------------------------------------------------------*
 
 rule <entity_declaration>
   ?!@entityToImplementMap ioEntityMap
@@ -70,7 +69,7 @@ label parse
 ;
 
 #-------------------------------------------------------------------*
-#                   Lexical component                               *
+#                   Metamodel component                             *
 #-------------------------------------------------------------------*
 
 rule <galgas_component>
@@ -139,7 +138,7 @@ rule <parse_metamodel>
   @entityToImplementMap entityMap [empty] ;
   <entity_declaration_list> ?entityMap !?primitiveTypeAttributeNameSet ;
   @bool isAbstract ;
-  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?*] ;
+  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -149,12 +148,13 @@ rule <parse_metamodel>
                      ??*
                      ??*
                      ??@entityPropertyMap kEntityPropertiesMap
+                     ??*
                      ??*) :
     foreach kEntityPropertiesMap (??* ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
       if kKind == [@metamodelPropertyKind singleReferenceProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?*] ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
       elsif kKind == [@metamodelPropertyKind multipleReferenceProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?*] ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kTypeName value] ;
       end if ;
     end foreach ;
@@ -171,7 +171,8 @@ rule <parse_metamodel>
                      ??@entityPropertyMap kAllPropertiesMap
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
-                     ??@lstring kSuperEntityName) :
+                     ??@lstring kSuperEntityName
+                     ??*) :
     @stringset superEntitySet [empty] ;
     buildSuperEntitySet !?entityMap !kSuperEntityName !?superEntitySet ;
     @AC_galgasType t := [@typeGalgas_singleEntity new
@@ -244,10 +245,11 @@ rule <entity_declaration>
   or
     $extends$ ;
     $type_name$ ? superEntity ;
-    [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?*] ;
+    [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?* ?*] ;
   end select ;
 #--- Property declarations
   @entityPropertyMap entityPropertyMap [empty] ;
+  @mapPropertyMap mapPropertyMap [empty] ;
   ${$ ;
   repeat
   while
@@ -279,9 +281,68 @@ rule <entity_declaration>
     [!?allPropertyMap insertKey !attributeName !k ! propertyTypeName] ;
     [!?entityPropertyMap insertKey !attributeName !k ! propertyTypeName] ;
     $;$ ;
+  while
+    $map$ ;
+    @lstring entityName ;
+    $type_name$ ? entityName ;
+    @lstring mapPropertyName ;
+    $identifier$ ? mapPropertyName ;
+    @metamodelPropertyKind k [mapProperty] ;
+    [!?allPropertyMap insertKey !mapPropertyName !k !entityName] ;
+    [!?entityPropertyMap insertKey !mapPropertyName !k !entityName] ;
+    ${$ ;
+    @L_ListOfPropertyPathes listOfPropertyPathes [empty] ;
+    repeat
+      @L_propertyPath path ;
+      <property_path> ?path ;
+      listOfPropertyPathes += !path ;
+    while 
+      $,$ ;
+    end repeat ;
+    $}$ ;
+    $insert$ ;
+    $error$ ;
+    $message$ ;
+    @lstring insertErrorMessage ;
+    $literal_string$ ? insertErrorMessage ;
+    $search$ ;
+    $error$ ;
+    $message$ ;
+    @lstring searchErrorMessage ;
+    $literal_string$ ? searchErrorMessage ;
+    $;$ ;
+    [!?mapPropertyMap insertKey
+      !mapPropertyName
+      !entityName
+      !listOfPropertyPathes
+      !insertErrorMessage
+      !searchErrorMessage
+    ] ;
   end repeat ;
   $}$ ;
-  [!?ioEntityMap insertKey !entityName !allPropertyMap !isAbstract !entityPropertyMap !superEntity] ;
+  [!?ioEntityMap insertKey
+    !entityName
+    !allPropertyMap
+    !isAbstract
+    !entityPropertyMap
+    !superEntity
+    !mapPropertyMap
+   ] ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <property_path>
+  !@L_propertyPath outPath
+:
+  outPath := [@L_propertyPath empty] ;
+  repeat
+    @lstring pathElement ;
+    $identifier$ ? pathElement ;
+    outPath += !pathElement ;
+  while
+    $.$ ;
+  end repeat ;
 end rule ;
 
 #-------------------------------------------------------------------*

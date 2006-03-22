@@ -959,11 +959,17 @@ rule <rule_declaration_or_implementation>
       if kKind == [@metamodelPropertyKind multipleReferenceProperty] then
         definitionType := [@typeGalgas_multipleEntity new ! kTypeName] ;
          [!?ioVariablesMap insertInArgument !nomVariable !definitionType !nomCppVariable] ;
-      else
-         [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+        listeInstructions += !instruction ;
+      elsif kKind == [@metamodelPropertyKind attributeProperty] then
+        [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+        listeInstructions += !instruction ;
+      elsif kKind == [@metamodelPropertyKind singleReferenceProperty] then
+        [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+        listeInstructions += !instruction ;
       end if ;
-      @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-      listeInstructions += !instruction ;
     end foreach ;
   end if ;
 #--- Parse instructions list

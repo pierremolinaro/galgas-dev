@@ -90,7 +90,7 @@ rule '0'->'9' :
   end select ;
 end rule ;
 
-# -------------------------- Extern C++ name -----------------------------
+# -------------------------- Type Name -----------------------------
 
 $type_name$ ! tokenString error message "a type name (@...)" style typeNameStyle ;
 
