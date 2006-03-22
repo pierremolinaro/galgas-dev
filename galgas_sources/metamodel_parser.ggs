@@ -284,6 +284,22 @@ rule <entity_declaration>
   $entity$ ;
   @lstring entityName ;
   $type_name$ ? entityName ;
+#--- Context properties
+  @contextPropertyMap contextPropertyMap [empty] ;
+  select
+  or
+    $($ ;
+    repeat
+      @lstring entityName ;
+      $type_name$ ? entityName ;
+      @lstring contextPropertyName ;
+      $identifier$ ? contextPropertyName ;
+      [!?contextPropertyMap insertKey !contextPropertyName !entityName] ;
+    while
+      $,$ ;
+    end repeat ;
+    $)$ ;
+  end select ;
 #--- Super entity
   @entityPropertyMap allPropertyMap ;
   @lstring superEntity ;
@@ -295,8 +311,21 @@ rule <entity_declaration>
     $type_name$ ? superEntity ;
     [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?* ?*] ;
   end select ;
-#--- Property declarations
+#--- Enter context properties
   @entityPropertyMap entityPropertyMap [empty] ;
+  foreach contextPropertyMap (??@lstring kContextPropertyName ??@lstring kEntityName) :
+    [!?allPropertyMap insertKey
+      !kContextPropertyName
+      ![@metamodelPropertyKind contextProperty]
+      !kEntityName
+    ] ;
+    [!?entityPropertyMap insertKey
+      !kContextPropertyName
+      ![@metamodelPropertyKind contextProperty]
+      !kEntityName
+    ] ;
+  end foreach ;
+#--- Property declarations
   @mapPropertyMap mapPropertyMap [empty] ;
   ${$ ;
   repeat
@@ -325,6 +354,21 @@ rule <entity_declaration>
       #--- Single Reference
         k := [@metamodelPropertyKind singleReferenceProperty] ;
       end if ;
+    end select ;
+    select
+    or
+      $in$ ;
+      @L_propertyPath path ;
+      <property_path> ?path ;
+    or
+      $($ ;
+      select
+        $self$ ;
+      or
+        @L_propertyPath path ;
+        <property_path> ?path ;
+      end select ;
+      $)$ ;
     end select ;
     [!?allPropertyMap insertKey !attributeName !k ! propertyTypeName] ;
     [!?entityPropertyMap insertKey !attributeName !k ! propertyTypeName] ;

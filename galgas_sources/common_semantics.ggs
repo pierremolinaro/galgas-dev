@@ -449,7 +449,7 @@ abstract class @AC_galgasType {
 
 enum @metamodelPropertyKind {
   attributeProperty, singleReferenceProperty, multipleReferenceProperty,
-  mapProperty ;
+  mapProperty, contextProperty ;
 }
 
 #---------------------------------------------------------------------------*
@@ -459,6 +459,14 @@ map @entityPropertyMap {
   @lstring mTypeName ;
   insert insertKey error message "the '%K' property has been already declared in %L" ;
   search searchKey error message "the '%K' property is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @contextPropertyMap {
+  @lstring mTypeName ;
+  insert insertKey error message "the '%K' context property has been already declared in %L" ;
+  search searchKey error message "the '%K' context property is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
