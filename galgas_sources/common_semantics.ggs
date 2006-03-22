@@ -454,9 +454,23 @@ enum @metamodelPropertyKind {
 
 #---------------------------------------------------------------------------*
 
+list @L_propertyPath {
+  @lstring mPathElement ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @L_ListOfPropertyPathes {
+  @L_propertyPath mPath ;
+  @location mEndOfPathLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @entityPropertyMap {
   @metamodelPropertyKind mKind ;
   @lstring mTypeName ;
+  @L_ListOfPropertyPathes mPropertyOptionPathes ;
   insert insertKey error message "the '%K' property has been already declared in %L" ;
   search searchKey error message "the '%K' property is not declared" ;
 }
@@ -467,19 +481,6 @@ map @contextPropertyMap {
   @lstring mTypeName ;
   insert insertKey error message "the '%K' context property has been already declared in %L" ;
   search searchKey error message "the '%K' context property is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @L_propertyPath {
-  @lstring mPathElement ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @L_ListOfPropertyPathes {
-  @L_propertyPath mPath ;
-  @location mEndOfPathLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -501,6 +502,8 @@ map @entityToImplementMap {
   @entityPropertyMap mEntityPropertiesMap ;
   @lstring mSuperEntityName ;
   @mapPropertyMap mMapOfPropertyMaps ;
+  @contextPropertyMap mContextAttributes ;
+  @contextPropertyMap mAllContextAttributes ;
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
 }
@@ -2251,10 +2254,10 @@ routine buildSuperEntitySet
   ??@lstring inSuperEntityName
   ?!@stringset ioSuperEntitySet
 :
-  if [inSuperEntityName value] != "" then
+  if ([inSuperEntityName value] != "") & not [ioSuperEntitySet hasKey ![inSuperEntityName value]] then
     ioSuperEntitySet += ![inSuperEntityName value] ;
     @lstring superEntityName ;
-    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?*] ;
+    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?*] ;
     buildSuperEntitySet !?ioEntityMap !superEntityName !?ioSuperEntitySet ;
   end if ;
 end routine ;

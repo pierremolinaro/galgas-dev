@@ -259,15 +259,21 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 
 void 
 routine_generateCocoaComponent (C_Lexique & inLexique,
-                                GGS_lstring & inCocoaComponentName,
+                                GGS_lstring & inGUIcomponentName,
+                                GGS_lstring & inGUIkindName,
                                 GGS_lstring & inCLIToolName,
                                 GGS_lstring & inLexiqueComponentName,
                                 GGS_M_optionComponents & inOptionComponentsMap) {
- generate_mm_file_for_cocoa (inLexique,
-                             inCocoaComponentName,
-                             inCLIToolName,
-                             inLexiqueComponentName,
-                             inOptionComponentsMap) ;
+  if (inGUIkindName == "cocoa") {
+    generate_mm_file_for_cocoa (inLexique,
+                                inGUIcomponentName,
+                                inCLIToolName,
+                                inLexiqueComponentName,
+                                inOptionComponentsMap) ;
+  }else{
+    inGUIkindName.semanticError (inLexique,
+                                 "only the \"cocoa\" gui is supported") ;
+  }
 }
 
 //---------------------------------------------------------------------------*

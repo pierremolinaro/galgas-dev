@@ -138,7 +138,7 @@ rule <parse_metamodel>
   @entityToImplementMap entityMap [empty] ;
   <entity_declaration_list> ?entityMap !?primitiveTypeAttributeNameSet ;
   @bool isAbstract ;
-  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?*] ;
+  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -149,6 +149,8 @@ rule <parse_metamodel>
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName
+                     ??*
+                     ??*
                      ??*) :
     @stringset superEntitySet [empty] ;
     buildSuperEntitySet !?entityMap !kSuperEntityName !?superEntitySet ;
@@ -173,13 +175,43 @@ rule <parse_metamodel>
                      ??*
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??*
+                     ??* 
+                     ??*
                      ??*) :
-    foreach kEntityPropertiesMap (??* ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
-      if kKind == [@metamodelPropertyKind singleReferenceProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
-      elsif kKind == [@metamodelPropertyKind multipleReferenceProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
+    foreach kEntityPropertiesMap (??@lstring kAttributeName
+                                  ??@metamodelPropertyKind kKind
+                                  ??@lstring kTypeName
+                                  ??@L_ListOfPropertyPathes kPropertyOptionPathes) :
+      if (kKind == [@metamodelPropertyKind singleReferenceProperty]) |
+         (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
+        @contextPropertyMap contextPropertyMap ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?contextPropertyMap] ;
         multiReferencedEntities += ![kTypeName value] ;
+      #--- Check context options
+        if [kPropertyOptionPathes length] != [contextPropertyMap count] then
+          error kAttributeName: "this reference has "
+          . [[kPropertyOptionPathes length] string] . " context parameter(s), while corresponding entity has "
+          . [[contextPropertyMap count] string] . " context attribute(s)" ;
+        else
+          foreach kPropertyOptionPathes (??@L_propertyPath kPath ??@location kEndPofPathLocation),
+                  contextPropertyMap (??@lstring kContextAttributeName ??@lstring kContextAttributeEntityName) :
+            @entityPropertyMap currentMap := kEntityPropertiesMap ;
+            @lstring typeName := kEntityName ;
+            foreach kPath (??@lstring kPathElement) :
+              @metamodelPropertyKind kind  ;
+              [!?currentMap searchKey !kPathElement ?kind ?typeName ?*] ;
+              [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?*] ;
+            end foreach ;
+          #--- Check entity type name
+            if [typeName value] != [kContextAttributeEntityName value] then
+              error kEndPofPathLocation: "the path entity is '@"
+              . [typeName value] . "', but its entity should be '@"
+              . [kContextAttributeEntityName value] . "'" ;
+            end if ;
+          end foreach ;
+        end if ;
+      elsif kKind == [@metamodelPropertyKind contextProperty] then
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?*] ;
       end if ;
     end foreach ;
   end foreach ;
@@ -189,7 +221,9 @@ rule <parse_metamodel>
                      ??*
                      ??*
                      ??*
-                     ??@mapPropertyMap kMapPropertyMap) :
+                     ??@mapPropertyMap kMapPropertyMap
+                     ??*
+                     ??*) :
     foreach kMapPropertyMap (??@lstring kMapName
                              ??@lstring kEntityName
                              ??@L_ListOfPropertyPathes kListOfPropertyPathes
@@ -201,16 +235,16 @@ rule <parse_metamodel>
         foreach kPath (??@lstring kPathElement) :
           @metamodelPropertyKind kind ;
           @lstring typeName ;
-          [!?currentMap searchKey !kPathElement ?kind ?typeName] ;
+          [!?currentMap searchKey !kPathElement ?kind ?typeName ?*] ;
           if kind == [@metamodelPropertyKind attributeProperty] then
             returnedTypeName := [typeName value] ;
             currentMap := [@entityPropertyMap empty] ;
           elsif kind == [@metamodelPropertyKind singleReferenceProperty] then
             lastEntityName := typeName ;
-            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?*] ;
+            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?*] ;
           elsif kind == [@metamodelPropertyKind multipleReferenceProperty] then
             lastEntityName := typeName ;
-            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?*] ;
+            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?*] ;
           elsif kind == [@metamodelPropertyKind mapProperty] then
             error kPathElement : "A map property can be named in a property path" ;
             currentMap := [@entityPropertyMap empty] ;
@@ -285,7 +319,7 @@ rule <entity_declaration>
   @lstring entityName ;
   $type_name$ ? entityName ;
 #--- Context properties
-  @contextPropertyMap contextPropertyMap [empty] ;
+  @contextPropertyMap currentClassContextPropertyMap [empty] ;
   select
   or
     $($ ;
@@ -294,35 +328,43 @@ rule <entity_declaration>
       $type_name$ ? entityName ;
       @lstring contextPropertyName ;
       $identifier$ ? contextPropertyName ;
-      [!?contextPropertyMap insertKey !contextPropertyName !entityName] ;
+      [!? currentClassContextPropertyMap insertKey !contextPropertyName !entityName] ;
     while
       $,$ ;
     end repeat ;
     $)$ ;
   end select ;
 #--- Super entity
+  @contextPropertyMap allContextPropertyMap ;
   @entityPropertyMap allPropertyMap ;
   @lstring superEntity ;
   select
     superEntity := [@lstring new !"" !here] ;
     allPropertyMap := [@entityPropertyMap empty] ;
+    allContextPropertyMap := [@contextPropertyMap empty] ;
   or
     $extends$ ;
     $type_name$ ? superEntity ;
-    [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?* ?*] ;
+    [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?* ?* ?* ?allContextPropertyMap] ;
   end select ;
 #--- Enter context properties
   @entityPropertyMap entityPropertyMap [empty] ;
-  foreach contextPropertyMap (??@lstring kContextPropertyName ??@lstring kEntityName) :
+  foreach currentClassContextPropertyMap (??@lstring kContextPropertyName ??@lstring kEntityName) :
+    [!?allContextPropertyMap insertKey
+       !kContextPropertyName
+       !kEntityName
+    ] ;
     [!?allPropertyMap insertKey
       !kContextPropertyName
       ![@metamodelPropertyKind contextProperty]
       !kEntityName
+      ![@L_ListOfPropertyPathes empty]
     ] ;
     [!?entityPropertyMap insertKey
       !kContextPropertyName
       ![@metamodelPropertyKind contextProperty]
       !kEntityName
+      ![@L_ListOfPropertyPathes empty]
     ] ;
   end foreach ;
 #--- Property declarations
@@ -355,23 +397,33 @@ rule <entity_declaration>
         k := [@metamodelPropertyKind singleReferenceProperty] ;
       end if ;
     end select ;
+  #--- Path options
+    @L_ListOfPropertyPathes propertyOptionPathes [empty] ;
     select
     or
       $in$ ;
       @L_propertyPath path ;
       <property_path> ?path ;
+      propertyOptionPathes += !path !here ; 
     or
       $($ ;
-      select
-        $self$ ;
-      or
-        @L_propertyPath path ;
-        <property_path> ?path ;
-      end select ;
+      repeat
+        select
+          $self$ ;
+          @L_propertyPath path [empty] ;
+          propertyOptionPathes += !path !here ;
+        or
+          @L_propertyPath path ;
+          <property_path> ?path ;
+          propertyOptionPathes += !path !here ;
+        end select ;
+      while
+        $,$ ;
+      end repeat ;
       $)$ ;
     end select ;
-    [!?allPropertyMap insertKey !attributeName !k ! propertyTypeName] ;
-    [!?entityPropertyMap insertKey !attributeName !k ! propertyTypeName] ;
+    [!?allPropertyMap insertKey !attributeName !k !propertyTypeName !propertyOptionPathes] ;
+    [!?entityPropertyMap insertKey !attributeName !k !propertyTypeName !propertyOptionPathes] ;
     $;$ ;
   while
     $map$ ;
@@ -380,8 +432,18 @@ rule <entity_declaration>
     @lstring mapPropertyName ;
     $identifier$ ? mapPropertyName ;
     @metamodelPropertyKind k [mapProperty] ;
-    [!?allPropertyMap insertKey !mapPropertyName !k !entityName] ;
-    [!?entityPropertyMap insertKey !mapPropertyName !k !entityName] ;
+    [!?allPropertyMap insertKey
+      !mapPropertyName
+      !k
+      !entityName
+      ![@L_ListOfPropertyPathes empty]
+    ] ;
+    [!?entityPropertyMap insertKey
+      !mapPropertyName
+      !k
+      !entityName
+      ![@L_ListOfPropertyPathes empty]
+    ] ;
     ${$ ;
     @L_ListOfPropertyPathes listOfPropertyPathes [empty] ;
     repeat
@@ -419,6 +481,8 @@ rule <entity_declaration>
     !entityPropertyMap
     !superEntity
     !mapPropertyMap
+    !currentClassContextPropertyMap
+    !allContextPropertyMap
    ] ;
 end rule ;
 

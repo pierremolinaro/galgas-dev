@@ -55,6 +55,7 @@ label parse
 
 action generateCocoaComponent
   ?!@lstring nomPRGMprincipal
+  ?!@lstring inGUIkindName
   ?!@lstring inCLIToolName
   ?!@lstring inLexiqueClassName
   ?!@M_optionComponents inOptionsComponents
@@ -70,10 +71,12 @@ rule <galgas_component>
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
-  $cocoa$ ;
-  @lstring cocoaComponentName ;
+  $gui$ ;
 #--- Definition du programme
-  $identifier$ ? cocoaComponentName ;
+  @lstring guiComponentName ;
+  $identifier$ ? guiComponentName ;
+  @lstring guiKindName ;
+  $literal_string$ ? guiKindName ;
   $:$ ;
 #--- Command line tool
   $program$ ;
@@ -110,19 +113,21 @@ rule <galgas_component>
   $;$ ;
 #--- Generate Cocoa c++ file
   action generateCocoaComponent
-    !?cocoaComponentName
+    !?guiComponentName
+    !?guiKindName
     !?cliToolName
     !?lexiqueClassName
     !?optionsComponentsMap
   ;
   $end$ ;
-  $cocoa$ ;
+  $gui$ ;
   $;$ ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
 :
-  $cocoa$ ;
+  $gui$ ;
   $identifier$ ? * ;
+  $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
   $program$ ;
@@ -139,14 +144,15 @@ label importLexique
   end select ;
   $;$ ;
   $end$ ;
-  $cocoa$ ;
+  $gui$ ;
   $;$ ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
-  $cocoa$ ;
+  $gui$ ;
   $identifier$ ? * ;
+  $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
   $program$ ;
@@ -163,14 +169,15 @@ label importSyntax
   end select ;
   $;$ ;
   $end$ ;
-  $cocoa$ ;
+  $gui$ ;
   $;$ ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
-  $cocoa$ ;
+  $gui$ ;
   $identifier$ ? * ;
+  $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
   $program$ ;
@@ -187,14 +194,15 @@ label importSemantics
   end select ;
   $;$ ;
   $end$ ;
-  $cocoa$ ;
+  $gui$ ;
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
 :
-  $cocoa$ ;
+  $gui$ ;
   $identifier$ ? * ;
+  $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
   $program$ ;
@@ -211,13 +219,14 @@ label importGrammarForSemantics
   end select ;
   $;$ ;
   $end$ ;
-  $cocoa$ ;
+  $gui$ ;
   $;$ ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
 :
-  $cocoa$ ;
+  $gui$ ;
   $identifier$ ? * ;
+  $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
   $program$ ;
@@ -234,7 +243,7 @@ label importOptions
   end select ;
   $;$ ;
   $end$ ;
-  $cocoa$ ;
+  $gui$ ;
   $;$ ;
 end rule ;
 
