@@ -471,6 +471,7 @@ list @L_propertyPath {
 
 list @L_ListOfPropertyPathes {
   @L_propertyPath mPath ;
+  @location mEndOfPathLocation ;
 }
 
 #---------------------------------------------------------------------------*

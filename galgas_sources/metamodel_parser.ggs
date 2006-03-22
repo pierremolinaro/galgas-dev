@@ -142,29 +142,6 @@ rule <parse_metamodel>
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
-#--- Check that reference entities are declared
-  @stringset multiReferencedEntities [empty] ;
-  foreach entityMap (??@lstring kEntityName
-                     ??*
-                     ??*
-                     ??@entityPropertyMap kEntityPropertiesMap
-                     ??*
-                     ??*) :
-    foreach kEntityPropertiesMap (??* ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
-      if kKind == [@metamodelPropertyKind singleReferenceProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
-      elsif kKind == [@metamodelPropertyKind multipleReferenceProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
-        multiReferencedEntities += ![kTypeName value] ;
-      end if ;
-    end foreach ;
-  end foreach ;
-  action generate_metamodel
-    !?entityMap
-    !metamodelName
-    !multiReferencedEntities
-    !rootEntityName
-  ;
 #--- Build semantic entities map
   @M_semanticsEntitiesForUse semanticsEntityMap [empty] ;
   foreach entityMap (??@lstring kEntityName
@@ -189,6 +166,77 @@ rule <parse_metamodel>
      !e
     ] ;
   end foreach ;
+#--- Check that reference entities are declared
+  @stringset multiReferencedEntities [empty] ;
+  foreach entityMap (??@lstring kEntityName
+                     ??*
+                     ??*
+                     ??@entityPropertyMap kEntityPropertiesMap
+                     ??*
+                     ??*) :
+    foreach kEntityPropertiesMap (??* ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+      if kKind == [@metamodelPropertyKind singleReferenceProperty] then
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
+      elsif kKind == [@metamodelPropertyKind multipleReferenceProperty] then
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
+        multiReferencedEntities += ![kTypeName value] ;
+      end if ;
+    end foreach ;
+  end foreach ;
+#--- Check map definitions
+  foreach entityMap (??@lstring kCurrentEntity
+                     ??@entityPropertyMap kAllPropertiesMap
+                     ??*
+                     ??*
+                     ??*
+                     ??@mapPropertyMap kMapPropertyMap) :
+    foreach kMapPropertyMap (??@lstring kMapName
+                             ??@lstring kEntityName
+                             ??@L_ListOfPropertyPathes kListOfPropertyPathes
+                             ...) :
+      foreach kListOfPropertyPathes (??@L_propertyPath kPath ??@location kEndOfPathLocation):
+        @entityPropertyMap currentMap := kAllPropertiesMap ;
+        @lstring lastEntityName := kCurrentEntity ;
+        @string returnedTypeName := "" ;
+        foreach kPath (??@lstring kPathElement) :
+          @metamodelPropertyKind kind ;
+          @lstring typeName ;
+          [!?currentMap searchKey !kPathElement ?kind ?typeName] ;
+          if kind == [@metamodelPropertyKind attributeProperty] then
+            returnedTypeName := [typeName value] ;
+            currentMap := [@entityPropertyMap empty] ;
+          elsif kind == [@metamodelPropertyKind singleReferenceProperty] then
+            lastEntityName := typeName ;
+            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?*] ;
+          elsif kind == [@metamodelPropertyKind multipleReferenceProperty] then
+            lastEntityName := typeName ;
+            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?*] ;
+          elsif kind == [@metamodelPropertyKind mapProperty] then
+            error kPathElement : "A map property can be named in a property path" ;
+            currentMap := [@entityPropertyMap empty] ;
+          end if ;
+        end foreach ;
+        if returnedTypeName != "lstring" then
+          error kEndOfPathLocation: "the path does not specify an @lstring attribute" ;
+        end if ;
+        @stringset superEntitySet [empty] ;
+        buildSuperEntitySet !?entityMap !lastEntityName !?superEntitySet ;
+        if not [superEntitySet hasKey ![kEntityName value]] then
+          error kEndOfPathLocation:
+            "the path names an attribute whose owner entity ('@" .
+            [lastEntityName value] . "') does not inherit from '@" . 
+            [kEntityName value] . "'" ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  end foreach ;
+#--- Generate C++ code
+  action generate_metamodel
+    !?entityMap
+    !metamodelName
+    !multiReferencedEntities
+    !rootEntityName
+  ;
 #--- Add metamodel to metamodel map
   if not [ioMetamodelComponentMap hasKey ![metamodelName value]] then
     [!?ioMetamodelComponentMap insertKey
@@ -295,7 +343,7 @@ rule <entity_declaration>
     repeat
       @L_propertyPath path ;
       <property_path> ?path ;
-      listOfPropertyPathes += !path ;
+      listOfPropertyPathes += !path !here ;
     while 
       $,$ ;
     end repeat ;

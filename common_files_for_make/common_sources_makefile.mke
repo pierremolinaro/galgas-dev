@@ -69,6 +69,7 @@ SOURCES += C_Timer.cpp
 SOURCES += C_TextFileWrite.cpp
 SOURCES += C_HTML_FileWrite.cpp
 SOURCES += C_GGS_Object.cpp
+SOURCES += C_GGS_entityMap.cpp
 SOURCES += C_DateTime.cpp
 SOURCES += F_GetPrime.cpp
 SOURCES += AC_OutputStream.cpp
