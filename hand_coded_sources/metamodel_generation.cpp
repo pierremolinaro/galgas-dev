@@ -122,23 +122,35 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     bool first = true ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
-      if (first) {
-        first = false ;
-      }else{
-        generatedZone3 << ",\n                             " ;
-      }
       switch (currentProperty->mInfo.mKind.enumValue ()) {
       case GGS_metamodelPropertyKind::enum_attributeProperty:
+        if (first) {
+          first = false ;
+        }else{
+          generatedZone3 << ",\n                             " ;
+        }
         generatedZone3 << "const GGS_" << currentProperty->mInfo.mTypeName
                        << " & _in_" << currentProperty->mKey ;
         break ;
       case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+        if (first) {
+          first = false ;
+        }else{
+          generatedZone3 << ",\n                             " ;
+        }
         generatedZone3 << "const GGS_" << currentProperty->mInfo.mTypeName
                        << " * _in_" << currentProperty->mKey ;
         break ;
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+        if (first) {
+          first = false ;
+        }else{
+          generatedZone3 << ",\n                             " ;
+        }
         generatedZone3 << "GGS__listOf_" << currentProperty->mInfo.mTypeName
                        << " & _in_" << currentProperty->mKey ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
@@ -173,6 +185,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
         generatedZone3 << "  protected : const GGS__listOf_" << currentProperty->mInfo.mTypeName
                        << " " << currentProperty->mKey << " ;\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
@@ -311,23 +325,35 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     bool first = true ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
-      if (first) {
-        first = false ;
-      }else{
-        generatedZone3 << ",\n                             " ;
-      }
       switch (currentProperty->mInfo.mKind.enumValue ()) {
       case GGS_metamodelPropertyKind::enum_attributeProperty:
+        if (first) {
+          first = false ;
+        }else{
+          generatedZone3 << ",\n                             " ;
+        }
         generatedZone3 << "const GGS_" << currentProperty->mInfo.mTypeName
                        << " & _in_" << currentProperty->mKey ;
         break ;
       case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+        if (first) {
+          first = false ;
+        }else{
+          generatedZone3 << ",\n                             " ;
+        }
         generatedZone3 << "const GGS_" << currentProperty->mInfo.mTypeName
                        << " * _in_" << currentProperty->mKey ;
         break ;
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+        if (first) {
+          first = false ;
+        }else{
+          generatedZone3 << ",\n                             " ;
+        }
         generatedZone3 << "GGS__listOf_" << currentProperty->mInfo.mTypeName
                        << " & _in_" << currentProperty->mKey ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
@@ -369,7 +395,21 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     currentProperty = currentEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
-      generatedZone3 << ",\n" << currentProperty->mKey << " (_in_" << currentProperty->mKey << ")" ;
+      switch (currentProperty->mInfo.mKind.enumValue ()) {
+      case GGS_metamodelPropertyKind::enum_attributeProperty:
+        generatedZone3 << ",\n" << currentProperty->mKey << " (_in_" << currentProperty->mKey << ")" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+        generatedZone3 << ",\n" << currentProperty->mKey << " (_in_" << currentProperty->mKey << ")" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+        generatedZone3 << ",\n" << currentProperty->mKey << " (_in_" << currentProperty->mKey << ")" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
+        break ;
+      case GGS_metamodelPropertyKind::kNotBuilt:
+        break ;
+      }
       currentProperty = currentProperty->nextObject () ;
     }
     generatedZone3 << " {\n"
@@ -387,6 +427,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         generatedZone3 << "  delete " << currentProperty->mKey << " ;\n" ;
         break ;
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
@@ -410,6 +452,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         break ;
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
         generatedZone3 << "  " << currentProperty->mKey << ".buildOwnerLinks (this) ;\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
@@ -435,6 +479,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
           break ;
         case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
           generatedZone3 << "    s << " << currentProperty->mKey << ".reader_description () ;\n" ;
+          break ;
+        case GGS_metamodelPropertyKind::enum_mapProperty:
           break ;
         case GGS_metamodelPropertyKind::kNotBuilt:
           break ;
