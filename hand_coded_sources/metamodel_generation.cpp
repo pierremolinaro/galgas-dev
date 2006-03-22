@@ -387,15 +387,28 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     currentProperty = currentEntity->mInfo.mAllPropertiesMap.firstObject () ;
     const sint32 inheritedPropertyCount = currentEntity->mInfo.mAllPropertiesMap.count ()
                                         - currentEntity->mInfo.mEntityPropertiesMap.count () ;
+    first = true ;
     for (sint32 i=0 ; i<inheritedPropertyCount ; i++) {
       macroValidPointer (currentProperty) ;
-      if (i > 0) {
-        generatedZone3 << ",\n                             " ;
+      switch (currentProperty->mInfo.mKind.enumValue ()) {
+      case GGS_metamodelPropertyKind::enum_attributeProperty:
+      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+        if (first) {
+          first = false ;
+        }else{
+          generatedZone3 << ",\n                             " ;
+        }
+        generatedZone3 << "_in_" << currentProperty->mKey ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
+      case GGS_metamodelPropertyKind::enum_contextProperty:
+      case GGS_metamodelPropertyKind::kNotBuilt:
+        break ;
       }
-      generatedZone3 << "_in_" << currentProperty->mKey ;
       currentProperty = currentProperty->nextObject () ;
     }
-    if (inheritedPropertyCount == 0) {
+    if (first) {
       generatedZone3 << "THERE" ;
     }else{
       generatedZone3 << "\n                             "
@@ -484,7 +497,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
               for (sint32 i=1 ; i<pathLength ; i++) {
                 GGS_metamodelPropertyKind var_cas_kind ;
                 GGS_lstring  var_cas_typeName ;
-                currentPropertyMap.methode_searchKey (inLexique, currentPath->mPathElement, var_cas_kind, var_cas_typeName) ;
+                GGS_L_ListOfPropertyPathes pathes ;
+                currentPropertyMap.methode_searchKey (inLexique, currentPath->mPathElement, var_cas_kind, var_cas_typeName, pathes) ;
                 switch (var_cas_kind.enumValue ()) {
                 case GGS_metamodelPropertyKind::enum_attributeProperty:
                   break ;
@@ -503,7 +517,11 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                     GGS_entityPropertyMap  var_cas_7577 ;
                     GGS_lstring  var_cas_7580 ;
                     GGS_mapPropertyMap  var_cas_7583 ;
-                    ioEntityMap.methode_searchKey (inLexique, var_cas_typeName, currentPropertyMap, var_cas_7574, var_cas_7577, var_cas_7580, var_cas_7583) ;
+                    GGS_contextPropertyMap contextPropertyMap ;
+                    GGS_contextPropertyMap allContextPropertyMap ;
+                    ioEntityMap.methode_searchKey (inLexique, var_cas_typeName, currentPropertyMap,
+                                                   var_cas_7574, var_cas_7577, var_cas_7580, var_cas_7583,
+                                                   contextPropertyMap, allContextPropertyMap) ;
                   }
                   break ;
                 case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
@@ -523,7 +541,11 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                     GGS_entityPropertyMap  var_cas_7577 ;
                     GGS_lstring  var_cas_7580 ;
                     GGS_mapPropertyMap  var_cas_7583 ;
-                    ioEntityMap.methode_searchKey (inLexique, var_cas_typeName, currentPropertyMap, var_cas_7574, var_cas_7577, var_cas_7580, var_cas_7583) ;
+                    GGS_contextPropertyMap contextPropertyMap ;
+                    GGS_contextPropertyMap allContextPropertyMap ;
+                    ioEntityMap.methode_searchKey (inLexique, var_cas_typeName, currentPropertyMap,
+                                                   var_cas_7574, var_cas_7577, var_cas_7580, var_cas_7583,
+                                                   contextPropertyMap, allContextPropertyMap) ;
                   }
                   break ;
                 case GGS_metamodelPropertyKind::enum_mapProperty:

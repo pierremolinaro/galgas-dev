@@ -16,12 +16,12 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-cocoa cocoaGalgas :
+gui cocoaGalgas "cocoa" :
 
 program "galgasLL1" ;
 
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
 
-end cocoa ;
+end gui ;
 
 #--------------------------------------------------------------------------------*

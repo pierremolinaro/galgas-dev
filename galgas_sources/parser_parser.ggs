@@ -945,7 +945,7 @@ rule <rule_declaration_or_implementation>
     @AC_galgasType type ;
     extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
     extract type->@typeGalgas_singleEntity (?* ? allPropertiesMap ...) error inEffectiveReturnedEntity : messageGalgasType ;
-    foreach allPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+    foreach allPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName ??*) :
     #--- Type name
       @AC_semanticsEntity entite ;
       [!?ioEntitiesMap searchKey !kTypeName ?entite] ;
