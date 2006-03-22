@@ -510,6 +510,8 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName) {
   f.writeComment ("#", "Files from libpm") ;
   f << "SOURCES += AC_galgas_io.cpp\n"
        "SOURCES += AC_galgas_map.cpp\n"
+       "SOURCES += C_GGS_Object.cpp\n"
+       "SOURCES += C_GGS_entityMap.cpp\n"
        "SOURCES += C_galgas_terminal_io.cpp\n"
        "SOURCES += MF_Assert.cpp\n"
        "SOURCES += MF_MemoryControl.cpp\n"
@@ -529,7 +531,6 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName) {
        "SOURCES += C_String.cpp\n"
        "SOURCES += C_Timer.cpp\n"
        "SOURCES += C_TextFileWrite.cpp\n"
-       "SOURCES += C_GGS_Object.cpp\n"
        "SOURCES += C_DateTime.cpp\n"
        "SOURCES += F_GetPrime.cpp\n"
        "SOURCES += AC_OutputStream.cpp\n"
