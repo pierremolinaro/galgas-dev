@@ -449,7 +449,7 @@ abstract class @AC_galgasType {
 
 enum @metamodelPropertyKind {
   attributeProperty, singleReferenceProperty, multipleReferenceProperty,
-  mapProperty, contextProperty ;
+  mapProperty, contextProperty, fetchedProperty ;
 }
 
 #---------------------------------------------------------------------------*
@@ -485,6 +485,17 @@ map @contextPropertyMap {
 
 #---------------------------------------------------------------------------*
 
+map @fetchedPropertyMap {
+  @lstring mTypeName ;
+  @lstring mAttributeName ;
+  @L_propertyPath mPath ;
+  @location mEndOfPathLocation ;
+  insert insertKey error message "the '%K' fetched property has been already declared in %L" ;
+  search searchKey error message "the '%K' fetched property is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @mapPropertyMap {
   @lstring mEntityName ;
   @L_ListOfPropertyPathes mListOfPropertyPathes ;
@@ -502,8 +513,9 @@ map @entityToImplementMap {
   @entityPropertyMap mEntityPropertiesMap ;
   @lstring mSuperEntityName ;
   @mapPropertyMap mMapOfPropertyMaps ;
-  @contextPropertyMap mContextAttributes ;
   @contextPropertyMap mAllContextAttributes ;
+  @fetchedPropertyMap mFetchedPropertyMap ;
+  @fetchedPropertyMap mAllFetchedPropertyMap ;
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
 }
@@ -2257,7 +2269,7 @@ routine buildSuperEntitySet
   if ([inSuperEntityName value] != "") & not [ioSuperEntitySet hasKey ![inSuperEntityName value]] then
     ioSuperEntitySet += ![inSuperEntityName value] ;
     @lstring superEntityName ;
-    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?*] ;
+    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?* ?*] ;
     buildSuperEntitySet !?ioEntityMap !superEntityName !?ioSuperEntitySet ;
   end if ;
 end routine ;

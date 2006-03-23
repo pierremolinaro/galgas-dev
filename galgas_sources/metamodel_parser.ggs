@@ -138,7 +138,7 @@ rule <parse_metamodel>
   @entityToImplementMap entityMap [empty] ;
   <entity_declaration_list> ?entityMap !?primitiveTypeAttributeNameSet ;
   @bool isAbstract ;
-  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?*] ;
+  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -149,6 +149,7 @@ rule <parse_metamodel>
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName
+                     ??*
                      ??*
                      ??*
                      ??*) :
@@ -168,14 +169,15 @@ rule <parse_metamodel>
      !e
     ] ;
   end foreach ;
-#--- Check that reference entities are declared
+#--- Check properties
   @stringset multiReferencedEntities [empty] ;
   foreach entityMap (??@lstring kEntityName
-                     ??*
+                     ??@entityPropertyMap kAllPropertiesMap
                      ??*
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??*
                      ??* 
+                     ??*
                      ??*
                      ??*) :
     foreach kEntityPropertiesMap (??@lstring kAttributeName
@@ -185,7 +187,7 @@ rule <parse_metamodel>
       if (kKind == [@metamodelPropertyKind singleReferenceProperty]) |
          (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
         @contextPropertyMap contextPropertyMap ;
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?contextPropertyMap] ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?contextPropertyMap ?* ?*] ;
         multiReferencedEntities += ![kTypeName value] ;
       #--- Check context options
         if [kPropertyOptionPathes length] != [contextPropertyMap count] then
@@ -200,7 +202,7 @@ rule <parse_metamodel>
             foreach kPath (??@lstring kPathElement) :
               @metamodelPropertyKind kind  ;
               [!?currentMap searchKey !kPathElement ?kind ?typeName ?*] ;
-              [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?*] ;
+              [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?* ?*] ;
             end foreach ;
           #--- Check entity type name
             if [typeName value] != [kContextAttributeEntityName value] then
@@ -211,7 +213,63 @@ rule <parse_metamodel>
           end foreach ;
         end if ;
       elsif kKind == [@metamodelPropertyKind contextProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?*] ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?* ?*] ;
+      elsif kKind == [@metamodelPropertyKind fetchedProperty] then
+        foreach kPropertyOptionPathes (??@L_propertyPath kPath ??@location kEndPofPathLocation):
+          @entityPropertyMap currentMap := kAllPropertiesMap ;
+          @lstring typeName := kEntityName ;
+          @metamodelPropertyKind kind [attributeProperty] ;
+          foreach kPath (??@lstring kPathElement) :
+            [!?currentMap searchKey !kPathElement ?kind ?typeName ?*] ;
+            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?* ?*] ;
+          end foreach ;
+          message [typeName description] . [kind description] ;
+          if kind != [@metamodelPropertyKind mapProperty] then
+            error kEndPofPathLocation: "this path does define a map property" ;
+          end if ;
+        end foreach ;
+      end if ;
+    end foreach ;
+  end foreach ;
+#--- Check fetched properties
+  foreach entityMap (??@lstring kCurrentEntity
+                     ??@entityPropertyMap kAllPropertiesMap
+                     ??*
+                     ??*
+                     ??*
+                     ??*
+                     ??*
+                     ??@fetchedPropertyMap kFetchedPropertyMap
+                     ??*) :
+    @entityPropertyMap allPropertiesMap := kAllPropertiesMap ;
+    foreach kFetchedPropertyMap (??@lstring kFetchedPropertyName
+                                 ??@lstring kFetchedEntityName
+                                 ??@lstring kAttributeName
+                                 ??@L_propertyPath kPath
+                                 ??@location kEndOfPathLocation) :
+    #--- Check designated attribute in an @lstring
+      @metamodelPropertyKind kind ;
+      @lstring attributeTypeName ;
+      [!?allPropertiesMap searchKey !kAttributeName ?kind ?attributeTypeName ?*] ;
+      if kind != [@metamodelPropertyKind attributeProperty] then
+        error kAttributeName: "this property is not an attribute" ;
+      elsif [attributeTypeName value] != "lstring" then
+        error kAttributeName: "this attribute should be an '@lstring' attribute" ;
+      end if ;
+    #--- Check path
+      @entityPropertyMap currentMap := kAllPropertiesMap ;
+      @lstring typeName := kCurrentEntity ;
+      kind := [@metamodelPropertyKind attributeProperty] ;
+      foreach kPath (??@lstring kPathElement) :
+        [!?currentMap searchKey !kPathElement ?kind ?typeName ?*] ;
+        [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?* ?*] ;
+      end foreach ;
+      if kind != [@metamodelPropertyKind mapProperty] then
+        error kEndOfPathLocation: "this path does not designate a map property" ;
+      elsif [kFetchedEntityName value] != [typeName value] then
+        error kAttributeName: "this property has '@"
+        . [kFetchedEntityName value]
+        . "', while '@" . [typeName value] . "' was expected" ;
       end if ;
     end foreach ;
   end foreach ;
@@ -222,6 +280,7 @@ rule <parse_metamodel>
                      ??*
                      ??*
                      ??@mapPropertyMap kMapPropertyMap
+                     ??*
                      ??*
                      ??*) :
     foreach kMapPropertyMap (??@lstring kMapName
@@ -241,10 +300,10 @@ rule <parse_metamodel>
             currentMap := [@entityPropertyMap empty] ;
           elsif kind == [@metamodelPropertyKind singleReferenceProperty] then
             lastEntityName := typeName ;
-            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?*] ;
+            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?* ?*] ;
           elsif kind == [@metamodelPropertyKind multipleReferenceProperty] then
             lastEntityName := typeName ;
-            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?*] ;
+            [!?entityMap searchKey !typeName ?currentMap ?* ?* ?* ?* ?* ?* ?*] ;
           elsif kind == [@metamodelPropertyKind mapProperty] then
             error kPathElement : "A map property can be named in a property path" ;
             currentMap := [@entityPropertyMap empty] ;
@@ -319,55 +378,59 @@ rule <entity_declaration>
   @lstring entityName ;
   $type_name$ ? entityName ;
 #--- Context properties, or super entity (or nothing)
-  @contextPropertyMap allContextPropertyMap ;
+  @entityPropertyMap entityPropertyMap [empty] ;
+  @fetchedPropertyMap allFetchedPropertyMap ;
+  @contextPropertyMap allContextPropertyMap [empty] ;
   @entityPropertyMap allPropertyMap ;
   @lstring superEntity ;
-  @contextPropertyMap currentClassContextPropertyMap [empty] ;
   select
     superEntity := [@lstring new !"" !here] ;
     allPropertyMap := [@entityPropertyMap empty] ;
-    allContextPropertyMap := [@contextPropertyMap empty] ;
+    allFetchedPropertyMap := [@fetchedPropertyMap empty] ;
   or
     $extends$ ;
     $type_name$ ? superEntity ;
-    [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?* ?* ?* ?allContextPropertyMap] ;
+    [!?ioEntityMap searchKey
+      !superEntity
+      ?*
+      ?*
+      ?allPropertyMap
+      ?*
+      ?*
+      ?allContextPropertyMap
+      ?*
+      ?allFetchedPropertyMap
+    ] ;
   or
     superEntity := [@lstring new !"" !here] ;
     allPropertyMap := [@entityPropertyMap empty] ;
-    allContextPropertyMap := [@contextPropertyMap empty] ;
+    allFetchedPropertyMap := [@fetchedPropertyMap empty] ;
     $($ ;
     repeat
       @lstring entityName ;
       $type_name$ ? entityName ;
       @lstring contextPropertyName ;
       $identifier$ ? contextPropertyName ;
-      [!? currentClassContextPropertyMap insertKey !contextPropertyName !entityName] ;
+      [!?allContextPropertyMap insertKey !contextPropertyName !entityName] ;
+      [!?allPropertyMap insertKey
+        !contextPropertyName
+        ![@metamodelPropertyKind contextProperty]
+        !entityName
+        ![@L_ListOfPropertyPathes empty]
+      ] ;
+      [!?entityPropertyMap insertKey
+        !contextPropertyName
+        ![@metamodelPropertyKind contextProperty]
+        !entityName
+        ![@L_ListOfPropertyPathes empty]
+      ] ;
     while
       $,$ ;
     end repeat ;
     $)$ ;
   end select ;
-#--- Enter context properties
-  @entityPropertyMap entityPropertyMap [empty] ;
-  foreach currentClassContextPropertyMap (??@lstring kContextPropertyName ??@lstring kEntityName) :
-    [!?allContextPropertyMap insertKey
-       !kContextPropertyName
-       !kEntityName
-    ] ;
-    [!?allPropertyMap insertKey
-      !kContextPropertyName
-      ![@metamodelPropertyKind contextProperty]
-      !kEntityName
-      ![@L_ListOfPropertyPathes empty]
-    ] ;
-    [!?entityPropertyMap insertKey
-      !kContextPropertyName
-      ![@metamodelPropertyKind contextProperty]
-      !kEntityName
-      ![@L_ListOfPropertyPathes empty]
-    ] ;
-  end foreach ;
 #--- Property declarations
+  @fetchedPropertyMap fetchedPropertyMap [empty] ;
   @mapPropertyMap mapPropertyMap [empty] ;
   ${$ ;
   repeat
@@ -400,16 +463,31 @@ rule <entity_declaration>
   #--- Path options
     @L_ListOfPropertyPathes propertyOptionPathes [empty] ;
     select
+      #--- No option
     or
-      $in$ ;
-      if [propertyTypeName value] != "lstring" then
-        error here: "only an '@lstring' attribute accepts the 'in' option" ;
+      $search$ ;
+      if k != [@metamodelPropertyKind singleReferenceProperty] then
+        error here: "attribute property or multiple reference property cannot accept 'search' construct" ;
       end if ;
+      k := [@metamodelPropertyKind fetchedProperty] ;
+      @lstring fetchedAttributeName ;
+      $identifier$ ? fetchedAttributeName ;
+      $in$ ;
       @L_propertyPath path ;
       <property_path> ?path ;
-      propertyOptionPathes += !path !here ;
+      [!?fetchedPropertyMap insertKey
+        !attributeName
+        !propertyTypeName
+        !fetchedAttributeName
+        !path
+        !here
+      ] ;
     or
       $($ ;
+      if (k != [@metamodelPropertyKind singleReferenceProperty])
+       & (k != [@metamodelPropertyKind multipleReferenceProperty]) then
+        error here:"only a reference property accepts context parameters" ;
+      end if ;
       repeat
         select
           $self$ ;
@@ -484,8 +562,9 @@ rule <entity_declaration>
     !entityPropertyMap
     !superEntity
     !mapPropertyMap
-    !currentClassContextPropertyMap
     !allContextPropertyMap
+    !fetchedPropertyMap
+    !allFetchedPropertyMap
    ] ;
 end rule ;
 
