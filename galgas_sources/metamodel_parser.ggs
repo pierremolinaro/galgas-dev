@@ -318,10 +318,23 @@ rule <entity_declaration>
   $entity$ ;
   @lstring entityName ;
   $type_name$ ? entityName ;
-#--- Context properties
+#--- Context properties, or super entity (or nothing)
+  @contextPropertyMap allContextPropertyMap ;
+  @entityPropertyMap allPropertyMap ;
+  @lstring superEntity ;
   @contextPropertyMap currentClassContextPropertyMap [empty] ;
   select
+    superEntity := [@lstring new !"" !here] ;
+    allPropertyMap := [@entityPropertyMap empty] ;
+    allContextPropertyMap := [@contextPropertyMap empty] ;
   or
+    $extends$ ;
+    $type_name$ ? superEntity ;
+    [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?* ?* ?* ?allContextPropertyMap] ;
+  or
+    superEntity := [@lstring new !"" !here] ;
+    allPropertyMap := [@entityPropertyMap empty] ;
+    allContextPropertyMap := [@contextPropertyMap empty] ;
     $($ ;
     repeat
       @lstring entityName ;
@@ -333,19 +346,6 @@ rule <entity_declaration>
       $,$ ;
     end repeat ;
     $)$ ;
-  end select ;
-#--- Super entity
-  @contextPropertyMap allContextPropertyMap ;
-  @entityPropertyMap allPropertyMap ;
-  @lstring superEntity ;
-  select
-    superEntity := [@lstring new !"" !here] ;
-    allPropertyMap := [@entityPropertyMap empty] ;
-    allContextPropertyMap := [@contextPropertyMap empty] ;
-  or
-    $extends$ ;
-    $type_name$ ? superEntity ;
-    [!?ioEntityMap searchKey !superEntity ?* ?* ?allPropertyMap ?* ?* ?* ?allContextPropertyMap] ;
   end select ;
 #--- Enter context properties
   @entityPropertyMap entityPropertyMap [empty] ;
@@ -402,9 +402,12 @@ rule <entity_declaration>
     select
     or
       $in$ ;
+      if [propertyTypeName value] != "lstring" then
+        error here: "only an '@lstring' attribute accepts the 'in' option" ;
+      end if ;
       @L_propertyPath path ;
       <property_path> ?path ;
-      propertyOptionPathes += !path !here ; 
+      propertyOptionPathes += !path !here ;
     or
       $($ ;
       repeat
