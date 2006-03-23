@@ -295,9 +295,8 @@ void cPtr_typeProductionAengendrer
           inCppFile << "var_cas_" << currentProperty->mKey ;
           break ;
         case GGS_metamodelPropertyKind::enum_mapProperty:
-          break ;
         case GGS_metamodelPropertyKind::enum_contextProperty:
-          break ;
+        case GGS_metamodelPropertyKind::enum_fetchedProperty:
         case GGS_metamodelPropertyKind::kNotBuilt:
           break ;
         }
