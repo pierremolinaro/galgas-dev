@@ -2033,6 +2033,9 @@ routine handleReaderCall
       elsif [inMethodName value] == "stringByCapitalizingFirstCharacter" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "firstCharacterOrNul" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_char new] ;
       elsif [inMethodName value] == "stringByDeletingLastPathComponent" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_string new] ;
@@ -2272,6 +2275,49 @@ routine buildSuperEntitySet
     [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?* ?*] ;
     buildSuperEntitySet !?ioEntityMap !superEntityName !?ioSuperEntitySet ;
   end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine checkPath
+  ?!@entityToImplementMap ioEntityMap
+  ?@entityPropertyMap inAllPropertiesOfCurrentEntity
+  ?@lstring inCurrentEntityName
+  ?@L_propertyPath inPath
+  !@metamodelPropertyKind outKind
+  !@lstring outTypeName
+  !@lstring outLastEntityTypeName
+:
+   @entityPropertyMap currentMap := inAllPropertiesOfCurrentEntity ;
+   outTypeName := inCurrentEntityName ;
+   outLastEntityTypeName := inCurrentEntityName ;
+   outKind := [@metamodelPropertyKind  singleReferenceProperty] ;
+   foreach inPath (??@lstring kPathElement) :
+     @string entityTypeName := [[kPathElement value] pathExtension] ;
+     if entityTypeName != "" then
+       @stringset superEntitySet [empty] ;
+       @lstring actualEntityName := [@lstring new !entityTypeName ![kPathElement location]] ;
+       buildSuperEntitySet
+        !?ioEntityMap 
+        !actualEntityName
+        !?superEntitySet
+       ;
+       if not [superEntitySet hasKey ![outTypeName value]] then
+         error kPathElement: "this entity is not a descendant of '@"
+         . [outTypeName value] . "' entity" ;
+       end if ;
+       outLastEntityTypeName := outTypeName ;
+       outTypeName := actualEntityName ;
+       outKind := [@metamodelPropertyKind singleReferenceProperty] ;
+       [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?*] ;
+     else
+       outLastEntityTypeName := outTypeName ;
+       [!?currentMap searchKey !kPathElement ?outKind ?outTypeName ?*] ;
+       if outKind != [@metamodelPropertyKind attributeProperty] then
+         [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?*] ;
+       end if ;
+     end if ;
+   end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*
