@@ -192,10 +192,14 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                        << " " << currentProperty->mKey << " ;\n" ;
         break ;
       case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-      case GGS_metamodelPropertyKind::enum_fetchedProperty:
       case GGS_metamodelPropertyKind::enum_contextProperty:
         generatedZone3 << "  public : GGS_" << currentProperty->mInfo.mTypeName
                        << " * " << currentProperty->mKey << " ;\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_fetchedProperty:
+        generatedZone3 << "  public : GGS_" << currentProperty->mInfo.mTypeName
+                       << " * " << currentProperty->mKey << " ;\n"
+                       << "  public : uint32 _indexOf_" << currentProperty->mKey << " ;\n"  ;
         break ;
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
         generatedZone3 << "  public : GGS__listOf_" << currentProperty->mInfo.mTypeName
@@ -543,7 +547,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
           generatedZone3 << ") ;\n" ;
           break ;
         case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-          generatedZone3 << "  GGS_" << currentProperty->mInfo.mTypeName << " * _p_" << currentProperty->mKey << " = " << currentProperty->mKey << ".mFirstObject ;\n"
+          generatedZone3 << "  GGS_" << currentProperty->mInfo.mTypeName << " * _p_" << currentProperty->mKey
+                         << " = " << currentProperty->mKey << ".mFirstObject ;\n"
                             "  while (_p_" << currentProperty->mKey << " != NULL) {\n"
                             "    _p_" << currentProperty->mKey << "->buildOwnerLinksAndMaps (_inLexique, this, _ioOk" ;
           while (currentPathList != NULL) {
@@ -560,96 +565,6 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                             "  }\n" ;
           break ;
         case GGS_metamodelPropertyKind::enum_mapProperty:
-          generatedZone3 << "//--- Build '" << currentProperty->mKey << "' map\n" ;
-          { GGS_mapPropertyMap::element_type * currentMap = currentEntity->mInfo.mMapOfPropertyMaps.firstObject () ;
-            while (currentMap != NULL) {
-              macroValidPointer (currentMap) ;
-              GGS_L_ListOfPropertyPathes::element_type * currentPathList = currentMap->mInfo.mListOfPropertyPathes.firstObject () ;
-              while (currentPathList != NULL) {
-                macroValidPointer (currentPathList) ;
-                C_String epilogueString ;
-                GGS_L_propertyPath::element_type * currentPath = currentPathList->mPath.firstObject () ;
-                GGS_entityPropertyMap currentPropertyMap = currentEntity->mInfo.mAllPropertiesMap ;
-                const sint32 pathLength = currentPathList->mPath.count () ;
-                for (sint32 i=1 ; i<pathLength ; i++) {
-                  GGS_metamodelPropertyKind var_cas_kind ;
-                  GGS_lstring  var_cas_typeName ;
-                  GGS_L_ListOfPropertyPathes pathes ;
-                  currentPropertyMap.methode_searchKey (inLexique, currentPath->mPathElement, var_cas_kind, var_cas_typeName, pathes) ;
-                  switch (var_cas_kind.enumValue ()) {
-                  case GGS_metamodelPropertyKind::enum_attributeProperty:
-                    break ;
-                  case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-                    { generatedZone3.appendSpaces (i + i) ;
-                      generatedZone3 << "GGS_" << var_cas_typeName << " * _current_" << i << " = " << currentPath->mPathElement << ".firstObject () ;\n" ;
-                      generatedZone3.appendSpaces (i + i) ;
-                      generatedZone3 << "if (_current_" << i << " != NULL) {\n" ;
-                      generatedZone3.appendSpaces (i + i + 2) ;
-                      generatedZone3 << "macroValidObject (_current_" << i << ") ;\n" ;
-                      C_String s ;
-                      s.appendSpaces (i + i) ;
-                      s << "}\n" ;
-                      epilogueString = s + epilogueString ;
-                      GGS_bool var_cas_7574 ;
-                      GGS_entityPropertyMap  var_cas_7577 ;
-                      GGS_lstring  var_cas_7580 ;
-                      GGS_mapPropertyMap  var_cas_7583 ;
-                      GGS_contextPropertyMap allContextPropertyMap ;
-                      GGS_fetchedPropertyMap fetchedPropertyMap ;
-                      GGS_fetchedPropertyMap allFetchedPropertyMap ;
-                      ioEntityMap.methode_searchKey (inLexique, var_cas_typeName, currentPropertyMap,
-                                                     var_cas_7574, var_cas_7577, var_cas_7580, var_cas_7583,
-                                                     allContextPropertyMap,
-                                                     fetchedPropertyMap, allFetchedPropertyMap) ;
-                    }
-                    break ;
-                  case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-                    { generatedZone3.appendSpaces (i + i) ;
-                      generatedZone3 << "GGS_" << var_cas_typeName << " * _current_" << i << " = " << currentPath->mPathElement << ".firstObject () ;\n" ;
-                      generatedZone3.appendSpaces (i + i) ;
-                      generatedZone3 << "while (_current_" << i << " != NULL) {\n" ;
-                      generatedZone3.appendSpaces (i + i + 2) ;
-                      generatedZone3 << "macroValidObject (_current_" << i << ") ;\n" ;
-                      C_String s ;
-                      s.appendSpaces (i + i + 2) ;
-                      s << "_current_" << i << " = _current_" << i << "->_mNextObject ;\n" ;
-                      s.appendSpaces (i + i) ;
-                      s << "}\n" ;
-                      epilogueString = s + epilogueString ;
-                      GGS_bool var_cas_7574 ;
-                      GGS_entityPropertyMap  var_cas_7577 ;
-                      GGS_lstring  var_cas_7580 ;
-                      GGS_mapPropertyMap  var_cas_7583 ;
-                      GGS_contextPropertyMap contextPropertyMap ;
-                      GGS_contextPropertyMap allContextPropertyMap ;
-                      GGS_fetchedPropertyMap fetchedPropertyMap ;
-                      GGS_fetchedPropertyMap allFetchedPropertyMap ;
-                      ioEntityMap.methode_searchKey (inLexique, var_cas_typeName, currentPropertyMap,
-                                                     var_cas_7574, var_cas_7577, var_cas_7580, var_cas_7583,
-                                                     allContextPropertyMap,
-                                                     fetchedPropertyMap, allFetchedPropertyMap) ;
-                    }
-                    break ;
-                  case GGS_metamodelPropertyKind::enum_contextProperty:
-                  case GGS_metamodelPropertyKind::enum_mapProperty:
-                  case GGS_metamodelPropertyKind::enum_fetchedProperty:
-                  case GGS_metamodelPropertyKind::kNotBuilt:
-                    break ;
-                  }
-                  currentPath = currentPath->nextObject () ;
-                }
-                generatedZone3.appendSpaces (pathLength + pathLength) ;
-                generatedZone3 << currentProperty->mKey << ".insertObject (_inLexique, _current_"
-                               << (pathLength - 1) << "->" << currentPath->mPathElement
-                               << ", _current_" << (pathLength - 1)
-                               << ", _ioOk) ;\n"
-                               << epilogueString ;
-                currentPathList = currentPathList->nextObject () ;
-              }
-              currentMap = currentMap->nextObject () ;
-            }
-          }
-          break ;
         case GGS_metamodelPropertyKind::enum_contextProperty:
         case GGS_metamodelPropertyKind::enum_fetchedProperty:
         case GGS_metamodelPropertyKind::kNotBuilt:
@@ -657,20 +572,130 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         }
         currentProperty = currentProperty->nextObject () ;
       }
+      GGS_mapPropertyMap::element_type * currentMap = currentEntity->mInfo.mMapOfPropertyMaps.firstObject () ;
+      sint32 index = 0 ;
+      while (currentMap != NULL) {
+        index ++ ;
+        macroValidPointer (currentMap) ;
+        generatedZone3 << "//--- Build '" << currentMap->mKey << "' map\n" ;
+        GGS_L_ListOfPropertyPathes::element_type * currentPathList = currentMap->mInfo.mListOfPropertyPathes.firstObject () ;
+        while (currentPathList != NULL) {
+          macroValidPointer (currentPathList) ;
+          C_String epilogueString ;
+          GGS_L_propertyPath::element_type * currentPath = currentPathList->mPath.firstObject () ;
+          GGS_entityPropertyMap currentPropertyMap = currentEntity->mInfo.mAllPropertiesMap ;
+          const sint32 pathLength = currentPathList->mPath.count () ;
+          for (sint32 i=1 ; i<pathLength ; i++) {
+            GGS_metamodelPropertyKind var_cas_kind ;
+            GGS_lstring  var_cas_typeName ;
+            GGS_L_ListOfPropertyPathes pathes ;
+            if (currentPath->mPathElement.readCharOrNul (0 COMMA_HERE) == '.') {
+              const C_String typeName = currentPath->mPathElement.pathExtension () ;
+              generatedZone3.appendSpaces (i + i) ;
+              generatedZone3 << "GGS_" << typeName << " * _current_" << index << "_" << i
+                             << " = dynamic_cast <GGS_" << typeName << " *> (" ;
+              if (i > 1) {
+                generatedZone3 << "_current_" << index << "_" << (i-1) ;
+              }else{
+                generatedZone3 << "this" ;
+              }
+              generatedZone3 << ") ;\n" ;
+              generatedZone3.appendSpaces (i + i) ;
+              generatedZone3 << "if (_current_" << index << "_" << i << " != NULL) {\n" ;
+              C_String s ;
+              s.appendSpaces (i + i) ;
+              s << "}\n" ;
+              epilogueString = s + epilogueString ;                  
+            }else{
+              currentPropertyMap.methode_searchKey (inLexique, currentPath->mPathElement, var_cas_kind, var_cas_typeName, pathes) ;
+              switch (var_cas_kind.enumValue ()) {
+              case GGS_metamodelPropertyKind::enum_attributeProperty:
+                break ;
+              case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+                { generatedZone3.appendSpaces (i + i) ;
+                  generatedZone3 << "GGS_" << var_cas_typeName << " * _current_" << index << "_" << i << " = " << currentPath->mPathElement << ".firstObject () ;\n" ;
+                  generatedZone3.appendSpaces (i + i) ;
+                  generatedZone3 << "if (_current_" << index << "_" << i << " != NULL) {\n" ;
+                  generatedZone3.appendSpaces (i + i + 2) ;
+                  generatedZone3 << "macroValidObject (_current_" << index << "_" << i << ") ;\n" ;
+                  C_String s ;
+                  s.appendSpaces (i + i) ;
+                  s << "}\n" ;
+                  epilogueString = s + epilogueString ;
+                  GGS_bool var_cas_7574 ;
+                  GGS_entityPropertyMap  var_cas_7577 ;
+                  GGS_lstring  var_cas_7580 ;
+                  GGS_mapPropertyMap  var_cas_7583 ;
+                  GGS_contextPropertyMap allContextPropertyMap ;
+                  GGS_fetchedPropertyMap fetchedPropertyMap ;
+                  GGS_fetchedPropertyMap allFetchedPropertyMap ;
+                  ioEntityMap.methode_searchKey (inLexique, var_cas_typeName, currentPropertyMap,
+                                                 var_cas_7574, var_cas_7577, var_cas_7580, var_cas_7583,
+                                                 allContextPropertyMap,
+                                                 fetchedPropertyMap, allFetchedPropertyMap) ;
+                }
+                break ;
+              case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+                { generatedZone3.appendSpaces (i + i) ;
+                  generatedZone3 << "GGS_" << var_cas_typeName << " * _current_" << index << "_" << i << " = " << currentPath->mPathElement << ".firstObject () ;\n" ;
+                  generatedZone3.appendSpaces (i + i) ;
+                  generatedZone3 << "while (_current_" << index << "_" << i << " != NULL) {\n" ;
+                  generatedZone3.appendSpaces (i + i + 2) ;
+                  generatedZone3 << "macroValidObject (_current_" << index << "_" << i << ") ;\n" ;
+                  C_String s ;
+                  s.appendSpaces (i + i + 2) ;
+                  s << "_current_" << index << "_" << i << " = _current_" << index << "_" << i << "->_mNextObject ;\n" ;
+                  s.appendSpaces (i + i) ;
+                  s << "}\n" ;
+                  epilogueString = s + epilogueString ;
+                  GGS_bool var_cas_7574 ;
+                  GGS_entityPropertyMap  var_cas_7577 ;
+                  GGS_lstring  var_cas_7580 ;
+                  GGS_mapPropertyMap  var_cas_7583 ;
+                  GGS_contextPropertyMap contextPropertyMap ;
+                  GGS_contextPropertyMap allContextPropertyMap ;
+                  GGS_fetchedPropertyMap fetchedPropertyMap ;
+                  GGS_fetchedPropertyMap allFetchedPropertyMap ;
+                  ioEntityMap.methode_searchKey (inLexique, var_cas_typeName, currentPropertyMap,
+                                                 var_cas_7574, var_cas_7577, var_cas_7580, var_cas_7583,
+                                                 allContextPropertyMap,
+                                                 fetchedPropertyMap, allFetchedPropertyMap) ;
+                }
+                break ;
+              case GGS_metamodelPropertyKind::enum_contextProperty:
+              case GGS_metamodelPropertyKind::enum_mapProperty:
+              case GGS_metamodelPropertyKind::enum_fetchedProperty:
+              case GGS_metamodelPropertyKind::kNotBuilt:
+                break ;
+              }
+            }
+            currentPath = currentPath->nextObject () ;
+          }
+          generatedZone3.appendSpaces (pathLength + pathLength) ;
+          generatedZone3 << currentMap->mKey << ".insertObject (_inLexique, _current_" << index << "_"
+                         << (pathLength - 1) << "->" << currentPath->mPathElement
+                         << ", _current_" << index << "_" << (pathLength - 1)
+                         << ", _ioOk) ;\n"
+                         << epilogueString ;
+          currentPathList = currentPathList->nextObject () ;
+        }
+        currentMap = currentMap->nextObject () ;
+      }
     //--- Fetched properties
     GGS_fetchedPropertyMap::element_type * fetchedProperty = currentEntity->mInfo.mFetchedPropertyMap.firstObject () ;
     while (fetchedProperty != NULL) {
-      macroValidObject (fetchedProperty) ;
+      macroValidPointer (fetchedProperty) ;
       generatedZone3 << "  " << fetchedProperty->mKey << " = (GGS_" << fetchedProperty->mInfo.mTypeName << " *) " ;
       GGS_L_propertyPath::element_type * pathElement = fetchedProperty->mInfo.mPath.firstObject () ;
       bool first = true ;
       while (pathElement != NULL) {
-        macroValidObject (pathElement) ;
+        macroValidPointer (pathElement) ;
         if (first) { first = false ; }else{ generatedZone3 << "->" ; }
         generatedZone3 << pathElement->mPathElement ;
         pathElement = pathElement->nextObject () ;
       }
-      generatedZone3 << ".searchKey (_inLexique, " << fetchedProperty->mInfo.mAttributeName << ", _ioOk) ;\n" ;
+      generatedZone3 << ".searchKey (_inLexique, " << fetchedProperty->mInfo.mAttributeName
+                     << ", _indexOf_" << fetchedProperty->mKey << ", _ioOk) ;\n" ;
       fetchedProperty = fetchedProperty->nextObject () ;
     }
     generatedZone3 << "}\n\n" ;
