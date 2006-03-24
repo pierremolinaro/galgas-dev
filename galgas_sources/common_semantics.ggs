@@ -449,7 +449,7 @@ abstract class @AC_galgasType {
 
 enum @metamodelPropertyKind {
   attributeProperty, singleReferenceProperty, multipleReferenceProperty,
-  mapProperty, contextProperty, fetchedProperty ;
+  mapProperty, contextProperty, fetchedProperty, relationProperty ;
 }
 
 #---------------------------------------------------------------------------*
@@ -492,6 +492,66 @@ map @fetchedPropertyMap {
   @location mEndOfPathLocation ;
   insert insertKey error message "the '%K' fetched property has been already declared in %L" ;
   search searchKey error message "the '%K' fetched property is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @relationVarMap {
+  @L_propertyPath mPath ;
+  insert insertKey error message "the '%K' relation variable has been already declared in %L" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' relation variable is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @metamodelRelationExpression {
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelRelationAnd extends @metamodelRelationExpression {
+  @metamodelRelationExpression mLeftOperand ;
+  @metamodelRelationExpression mRightOperand ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelRelationOr extends @metamodelRelationExpression {
+  @metamodelRelationExpression mLeftOperand ;
+  @metamodelRelationExpression mRightOperand ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelRelationNot extends @metamodelRelationExpression {
+  @metamodelRelationExpression mOperand ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelRelationTrue extends @metamodelRelationExpression {
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelRelationFalse extends @metamodelRelationExpression {
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelRelationPrimary extends @metamodelRelationExpression {
+  @lstring mVariable ;
+  @luint mVariableIndex ;
+  @L_propertyPath mPath ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @relationMap {
+  @relationVarMap mRelationVarMap ;
+  @metamodelRelationExpression mExpression ;
+  insert insertKey error message "the '%K' relation property has been already declared in %L" ;
+  search searchKey error message "the '%K' relation property is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

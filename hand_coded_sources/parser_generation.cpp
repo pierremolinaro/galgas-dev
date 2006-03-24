@@ -297,6 +297,7 @@ void cPtr_typeProductionAengendrer
         case GGS_metamodelPropertyKind::enum_mapProperty:
         case GGS_metamodelPropertyKind::enum_contextProperty:
         case GGS_metamodelPropertyKind::enum_fetchedProperty:
+        case GGS_metamodelPropertyKind::enum_relationProperty:
         case GGS_metamodelPropertyKind::kNotBuilt:
           break ;
         }

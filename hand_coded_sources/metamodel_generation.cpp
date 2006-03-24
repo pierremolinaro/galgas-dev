@@ -152,6 +152,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
       case GGS_metamodelPropertyKind::enum_fetchedProperty:
       case GGS_metamodelPropertyKind::enum_mapProperty:
       case GGS_metamodelPropertyKind::enum_contextProperty:
+      case GGS_metamodelPropertyKind::enum_relationProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
       }
@@ -210,6 +211,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                        << currentProperty->mKey << " ;\n" ;
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
+      case GGS_metamodelPropertyKind::enum_relationProperty:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
@@ -373,6 +375,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       case GGS_metamodelPropertyKind::enum_contextProperty:
       case GGS_metamodelPropertyKind::enum_fetchedProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
+      case GGS_metamodelPropertyKind::enum_relationProperty:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
@@ -410,6 +413,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       case GGS_metamodelPropertyKind::enum_mapProperty:
       case GGS_metamodelPropertyKind::enum_contextProperty:
       case GGS_metamodelPropertyKind::enum_fetchedProperty:
+      case GGS_metamodelPropertyKind::enum_relationProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
       }
@@ -439,6 +443,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       case GGS_metamodelPropertyKind::enum_mapProperty:
       case GGS_metamodelPropertyKind::enum_fetchedProperty:
       case GGS_metamodelPropertyKind::enum_contextProperty:
+      case GGS_metamodelPropertyKind::enum_relationProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
       }
@@ -472,6 +477,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       case GGS_metamodelPropertyKind::enum_mapProperty:
       case GGS_metamodelPropertyKind::enum_fetchedProperty:
       case GGS_metamodelPropertyKind::enum_contextProperty:
+      case GGS_metamodelPropertyKind::enum_relationProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
       }
@@ -521,6 +527,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
         case GGS_metamodelPropertyKind::enum_mapProperty:
         case GGS_metamodelPropertyKind::enum_fetchedProperty:
+        case GGS_metamodelPropertyKind::enum_relationProperty:
         case GGS_metamodelPropertyKind::kNotBuilt:
           break ;
         }
@@ -567,6 +574,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         case GGS_metamodelPropertyKind::enum_mapProperty:
         case GGS_metamodelPropertyKind::enum_contextProperty:
         case GGS_metamodelPropertyKind::enum_fetchedProperty:
+        case GGS_metamodelPropertyKind::enum_relationProperty:
         case GGS_metamodelPropertyKind::kNotBuilt:
           break ;
         }
@@ -665,6 +673,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
               case GGS_metamodelPropertyKind::enum_contextProperty:
               case GGS_metamodelPropertyKind::enum_mapProperty:
               case GGS_metamodelPropertyKind::enum_fetchedProperty:
+              case GGS_metamodelPropertyKind::enum_relationProperty:
               case GGS_metamodelPropertyKind::kNotBuilt:
                 break ;
               }
@@ -721,6 +730,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         case GGS_metamodelPropertyKind::enum_mapProperty:
         case GGS_metamodelPropertyKind::enum_fetchedProperty:
         case GGS_metamodelPropertyKind::enum_contextProperty:
+        case GGS_metamodelPropertyKind::enum_relationProperty:
         case GGS_metamodelPropertyKind::kNotBuilt:
           break ;
         }

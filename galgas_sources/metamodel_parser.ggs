@@ -69,18 +69,26 @@ label parse
 ;
 
 rule <entity_relation_expression>
+  ?!@relationVarMap ioRelationVariableMap
+  !@metamodelRelationExpression outExpression
 label parse 
 ;
 
 rule <entity_relation_term>
+  ?!@relationVarMap ioRelationVariableMap
+  !@metamodelRelationExpression outExpression
 label parse 
 ;
 
 rule <entity_relation_factor>
+  ?!@relationVarMap ioRelationVariableMap
+  !@metamodelRelationExpression outExpression
 label parse 
 ;
 
 rule <entity_relation_primary>
+  ?!@relationVarMap ioRelationVariableMap
+  !@metamodelRelationExpression outExpression
 label parse 
 ;
 
@@ -448,6 +456,7 @@ rule <entity_declaration>
 #--- Property declarations
   @fetchedPropertyMap fetchedPropertyMap [empty] ;
   @mapPropertyMap mapPropertyMap [empty] ;
+  @relationMap relationMap [empty] ;
   ${$ ;
   repeat
   while
@@ -556,11 +565,13 @@ rule <entity_declaration>
     $message$ ;
     @lstring insertErrorMessage ;
     $literal_string$ ? insertErrorMessage ;
+    action check_KL_escapeCharacters !insertErrorMessage ;
     $search$ ;
     $error$ ;
     $message$ ;
     @lstring searchErrorMessage ;
     $literal_string$ ? searchErrorMessage ;
+    action check_K_escapeCharacters !searchErrorMessage ;
     $;$ ;
     [!?mapPropertyMap insertKey
       !mapPropertyName
@@ -574,19 +585,23 @@ rule <entity_declaration>
     @lstring relationIdentifier ;
     $identifier$ ? relationIdentifier ;
     $[$ ;
+    @relationVarMap relationVarMap [empty] ;
     repeat
       @lstring localVar ;
       $identifier$ ? localVar ;
       $:$ ;
       @L_propertyPath path ;
       <property_path> ?path ;
+      [!?relationVarMap insertKey !localVar !path] ;
     while
       $,$ ;
     end repeat ;
     $]$ ;
     $:=$ ;
-    <entity_relation_expression> ;
+    @metamodelRelationExpression e ;
+    <entity_relation_expression> !?relationVarMap ?e ;
     $;$ ;
+    [!?relationMap insertKey !relationIdentifier !relationVarMap!e] ;
   end repeat ;
   $}$ ;
   [!?ioEntityMap insertKey
@@ -625,76 +640,98 @@ end rule ;
 
 #-------------------------------------------------------------------*
 
-rule <entity_relation_expression> :
-  <entity_relation_term> ;
+rule <entity_relation_expression>
+  ?!@relationVarMap ioRelationVariableMap
+  !@metamodelRelationExpression outExpression
+:
+  <entity_relation_term> !?ioRelationVariableMap ?outExpression ;
   repeat
   while
     $|$ ;
-    <entity_relation_term> ;
+    @metamodelRelationExpression e ;
+    <entity_relation_term> !?ioRelationVariableMap ?e ;
+    outExpression := [@metamodelRelationOr new !outExpression !e] ;
   end repeat ;
 end rule ;
 
 #-------------------------------------------------------------------*
 
-rule <entity_relation_term> :
-  <entity_relation_factor> ;
+rule <entity_relation_term>
+  ?!@relationVarMap ioRelationVariableMap
+  !@metamodelRelationExpression outExpression
+:
+  <entity_relation_factor> !?ioRelationVariableMap ?outExpression ;
   repeat
   while
     $&$ ;
-    <entity_relation_factor> ;
+    @metamodelRelationExpression e ;
+    <entity_relation_factor> !?ioRelationVariableMap ?e ;
+    outExpression := [@metamodelRelationOr new !outExpression !e] ;
   end repeat ;
 end rule ;
 
 #-------------------------------------------------------------------*
 
-rule <entity_relation_factor> :
+rule <entity_relation_factor>
+  ?!@relationVarMap ioRelationVariableMap
+  !@metamodelRelationExpression outExpression
+:
   select
-    <entity_relation_primary> ;
+    <entity_relation_primary> !?ioRelationVariableMap ?outExpression ;
   or
     $not$ ;
-    <entity_relation_primary> ;
+    <entity_relation_primary> !?ioRelationVariableMap ?outExpression ;
+    outExpression := [@metamodelRelationNot new !outExpression] ;
   end select ;
 end rule ;
 
 #-------------------------------------------------------------------*
 
-rule <entity_relation_primary> :
+rule <entity_relation_primary>
+  ?!@relationVarMap ioRelationVariableMap
+  !@metamodelRelationExpression outExpression
+:
   select
     $true$ ;
+    outExpression := [@metamodelRelationTrue new] ;
   or
     $false$ ;
+    outExpression := [@metamodelRelationFalse new] ;
   or
     $($ ;
-    <entity_relation_expression> ;
+    <entity_relation_expression> !?ioRelationVariableMap ?outExpression ;
     $)$ ;
   or
     ${$ ;
     @lstring localVar ;
     $identifier$ ? localVar ;
+    @luint variableIndex ;
+    [!?ioRelationVariableMap searchKeyAndGetIndex !localVar ?variableIndex ?*] ;
     $==$ ;
     @L_propertyPath path ;
     <property_path> ?path ;
     $}$ ;
-  or
-   $do$ ;
-    $($ ;
-     @L_propertyPath path ;
-     <property_path> ?path ;
-    $[$ ;
-    repeat
-      @lstring parameter ;
-      $identifier$ ? parameter ;
-    while
-      $,$ ;
-    end repeat ;
-    $]$ ;
-    $:$ ;
-    select
-      $|$ ;
-    or
-      $&$ ;
-    end select ;
-    $)$ ;
+    outExpression := [@metamodelRelationPrimary new !localVar !variableIndex !path] ;
+#  or
+#   $do$ ;
+#    $($ ;
+#     @L_propertyPath path ;
+#     <property_path> ?path ;
+#    $[$ ;
+#    repeat
+#      @lstring parameter ;
+#      $identifier$ ? parameter ;
+#    while
+#      $,$ ;
+#    end repeat ;
+#    $]$ ;
+#    $:$ ;
+#    select
+#      $|$ ;
+#    or
+#      $&$ ;
+#    end select ;
+#    $)$ ;
   end select ;
 end rule ;
 
