@@ -496,6 +496,21 @@ map @fetchedPropertyMap {
 
 #---------------------------------------------------------------------------*
 
+map @insertionMap {
+  insert insertKey error message "the attribute is already inserted in the '%K' map" ;
+#  search searchKey error message "the '%K' inserted attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @insertedPropertyMap {
+  @insertionMap mMaps ;
+  insert insertKey error message "the '%K' inserted attribute has been already declared in %L" ;
+#  search searchKey error message "the '%K' inserted attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @relationVarMap {
   @L_propertyPath mPath ;
   insert insertKey error message "the '%K' relation variable has been already declared in %L" ;
@@ -568,6 +583,7 @@ map @mapEntityMap {
 
 map @mapAndEntityUniqueMap {
   insert insertKey error message "the '%K' entity or map has been already declared in %L" ;
+  search searchKey error message "the '%K' entity or map is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -580,6 +596,8 @@ map @entityToImplementMap {
   @contextPropertyMap mAllContextAttributes ;
   @fetchedPropertyMap mFetchedPropertyMap ;
   @fetchedPropertyMap mAllFetchedPropertyMap ;
+  @insertedPropertyMap mInsertedPropertyMap ;
+  @insertedPropertyMap mAllInsertedPropertyMap ;
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
 }
@@ -2337,7 +2355,7 @@ routine buildSuperEntitySet
   if ([inSuperEntityName value] != "") & not [ioSuperEntitySet hasKey ![inSuperEntityName value]] then
     ioSuperEntitySet += ![inSuperEntityName value] ;
     @lstring superEntityName ;
-    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?*] ;
+    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?* ?* ?*] ;
     buildSuperEntitySet !?ioEntityMap !superEntityName !?ioSuperEntitySet ;
   end if ;
 end routine ;
@@ -2346,6 +2364,7 @@ end routine ;
 
 routine checkPath
   ?!@entityToImplementMap ioEntityMap
+  ?!@mapEntityMap ioMapEntityMap
   ?@entityPropertyMap inAllPropertiesOfCurrentEntity
   ?@lstring inCurrentEntityName
   ?@L_propertyPath inPath
@@ -2374,12 +2393,22 @@ routine checkPath
        outLastEntityTypeName := outTypeName ;
        outTypeName := actualEntityName ;
        outKind := [@metamodelPropertyKind singleReferenceProperty] ;
-       [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?*] ;
+       [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
      else
        outLastEntityTypeName := outTypeName ;
        [!?currentMap searchKey !kPathElement ?outKind ?outTypeName ?*] ;
-       if outKind != [@metamodelPropertyKind attributeProperty] then
-         [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?*] ;
+       if outKind == [@metamodelPropertyKind mapProperty] then
+         @lstring elementEntity ;
+         [!?ioMapEntityMap searchKey !outTypeName ?elementEntity ?* ?*] ;
+         [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+       elsif outKind != [@metamodelPropertyKind attributeProperty] then
+         if [ioMapEntityMap hasKey ![outTypeName value]] then
+           @lstring elementEntity ;
+           [!?ioMapEntityMap searchKey !outTypeName ?elementEntity ?* ?*] ;
+           [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+         else
+           [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+         end if ;
        end if ;
      end if ;
    end foreach ;
