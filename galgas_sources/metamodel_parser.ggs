@@ -178,7 +178,7 @@ rule <parse_metamodel>
     !?mapAndEntityUniqueMap
   ;
   @bool isAbstract ;
-  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?*] ;
+  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -189,6 +189,8 @@ rule <parse_metamodel>
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName
+                     ??*
+                     ??*
                      ??*
                      ??*
                      ??*) :
@@ -216,6 +218,8 @@ rule <parse_metamodel>
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??*
                      ??* 
+                     ??* 
+                     ??*
                      ??*
                      ??*) :
     foreach kEntityPropertiesMap (??@lstring kAttributeName
@@ -225,7 +229,7 @@ rule <parse_metamodel>
       if (kKind == [@metamodelPropertyKind singleReferenceProperty]) |
          (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
         @contextPropertyMap contextPropertyMap ;
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?contextPropertyMap ?* ?*] ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?contextPropertyMap ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kTypeName value] ;
       #--- Check context options
         if [kPropertyOptionPathes length] != [contextPropertyMap count] then
@@ -238,6 +242,7 @@ rule <parse_metamodel>
             @lstring typeName ;
             checkPath
               !?entityMap
+              !?mapEntityMap
               !kAllPropertiesMap
               !kEntityName
               !kPath
@@ -254,13 +259,14 @@ rule <parse_metamodel>
           end foreach ;
         end if ;
       elsif kKind == [@metamodelPropertyKind contextProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?*] ;
+        [!?mapAndEntityUniqueMap searchKey !kTypeName] ;
       elsif kKind == [@metamodelPropertyKind fetchedProperty] then
         foreach kPropertyOptionPathes (??@L_propertyPath kPath ??@location kEndPofPathLocation):
           @lstring typeName ;
           @metamodelPropertyKind kind ;
           checkPath
             !?entityMap
+            !?mapEntityMap
             !kAllPropertiesMap
             !kEntityName
             !kPath
@@ -283,6 +289,8 @@ rule <parse_metamodel>
                      ??*
                      ??*
                      ??@fetchedPropertyMap kFetchedPropertyMap
+                     ??*
+                     ??*
                      ??*) :
     @entityPropertyMap allPropertiesMap := kAllPropertiesMap ;
     foreach kFetchedPropertyMap (??@lstring kFetchedPropertyName
@@ -303,6 +311,7 @@ rule <parse_metamodel>
       @lstring typeName ;
       checkPath
         !?entityMap
+        !?mapEntityMap
         !kAllPropertiesMap
         !kCurrentEntity
         !kPath
@@ -317,6 +326,37 @@ rule <parse_metamodel>
         . [kFetchedEntityName value]
         . "', while '@" . [typeName value] . "' was expected" ;
       end if ;
+    end foreach ;
+  end foreach ;
+#--- Check inserted properties
+  foreach entityMap (??@lstring kCurrentEntity
+                     ??@entityPropertyMap kAllPropertiesMap
+                     ??*
+                     ??*
+                     ??*
+                     ??*
+                     ??*
+                     ??*
+                     ??@insertedPropertyMap kInsertedPropertyMap
+                     ??*) :
+    @entityPropertyMap allPropertiesMap := kAllPropertiesMap ;
+    foreach kInsertedPropertyMap (??@lstring kInsertedAttributeName
+                                  ??@insertionMap kInsertionMap) :
+      foreach kInsertionMap (??@lstring kInsertionMapName) :
+        @lstring mapTypeName ;
+        @metamodelPropertyKind kind ;
+        [!?allPropertiesMap searchKey !kInsertionMapName ?kind ?mapTypeName ?*] ;
+        if not [mapEntityMap hasKey ![mapTypeName value]] then
+           error kInsertionMapName: "this reference does not designate a map" ;
+         else
+           @lstring elementEntity ;
+           [!?mapEntityMap searchKey !mapTypeName ?elementEntity ?* ?*] ;
+           if [elementEntity value] != [kCurrentEntity value] then
+             error kInsertionMapName : "the type of the map is '@" . [kCurrentEntity value]
+             . "', but should be '@" . [elementEntity value] . "'" ;
+           end if ;
+        end if ;
+      end foreach ;
     end foreach ;
   end foreach ;
 #--- Generate C++ code
@@ -424,12 +464,14 @@ rule <entity_declaration>
   @entityPropertyMap entityPropertyMap [empty] ;
   @fetchedPropertyMap allFetchedPropertyMap ;
   @contextPropertyMap allContextPropertyMap [empty] ;
+  @insertedPropertyMap allInsertedPropertyMap ;
   @entityPropertyMap allPropertyMap ;
   @lstring superEntity ;
   select
     superEntity := [@lstring new !"" !here] ;
     allPropertyMap := [@entityPropertyMap empty] ;
     allFetchedPropertyMap := [@fetchedPropertyMap empty] ;
+    allInsertedPropertyMap := [@insertedPropertyMap  empty] ;
   or
     $extends$ ;
     $type_name$ ? superEntity ;
@@ -442,11 +484,14 @@ rule <entity_declaration>
       ?allContextPropertyMap
       ?*
       ?allFetchedPropertyMap
+      ?*
+      ?allInsertedPropertyMap
     ] ;
   or
     superEntity := [@lstring new !"" !here] ;
     allPropertyMap := [@entityPropertyMap empty] ;
     allFetchedPropertyMap := [@fetchedPropertyMap empty] ;
+    allInsertedPropertyMap := [@insertedPropertyMap  empty] ;
     $($ ;
     repeat
       @lstring entityName ;
@@ -474,6 +519,7 @@ rule <entity_declaration>
 #--- Property declarations
   @fetchedPropertyMap fetchedPropertyMap [empty] ;
   @relationMap relationMap [empty] ;
+  @insertedPropertyMap insertedPropertyMap [empty] ;
   ${$ ;
   repeat
   while
@@ -516,6 +562,21 @@ rule <entity_declaration>
     @L_ListOfPropertyPathes propertyOptionPathes [empty] ;
     select
       #--- No option
+    or
+      $insert$ ;
+      if [propertyTypeName value] != "lstring" then
+        error here: "only an @lstring attribute can be inserted in a map" ;
+      end if ;
+      @insertionMap maps [empty] ;
+      repeat
+        @lstring mapName ;
+        $identifier$ ? mapName ;
+        [!?maps insertKey !mapName] ;
+      while
+        $,$ ;
+      end repeat ;
+      [!?insertedPropertyMap insertKey !attributeName !maps] ;
+      [!?allInsertedPropertyMap insertKey !attributeName !maps] ;
     or
       $search$ ;
       if k != [@metamodelPropertyKind singleReferenceProperty] then
@@ -591,6 +652,8 @@ rule <entity_declaration>
     !allContextPropertyMap
     !fetchedPropertyMap
     !allFetchedPropertyMap
+    !insertedPropertyMap
+    !allInsertedPropertyMap
    ] ;
 end rule ;
 
