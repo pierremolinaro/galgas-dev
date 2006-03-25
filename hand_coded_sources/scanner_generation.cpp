@@ -339,7 +339,8 @@ void generateTerminalSymbolCppName (const C_String & inValue,
 void
 routine_buildLexicalRulesFromList (C_Lexique & ioLexique, 
                                    GGS_typeTableMotsReserves & keyWordsMap,
-                                   GGS_typeListeTestsEtInstructions & ioLexicalRulesList) {
+                                   GGS_typeListeTestsEtInstructions & ioLexicalRulesList
+                                   COMMA_LOCATION_ARGS) {
 //--- First, find the longest string
   sint32 longestString = 0 ;
   GGS_typeTableMotsReserves::element_type * currentEntry = keyWordsMap.firstObject () ;
@@ -361,7 +362,7 @@ routine_buildLexicalRulesFromList (C_Lexique & ioLexique,
         ::routine_appendToLexicalInstructionList (ioLexique,
                                           ioLexicalRulesList,
                                           currentEntry->mKey,
-                                          currentEntry->mInfo.attributNomTerminal) ;
+                                          currentEntry->mInfo.attributNomTerminal COMMA_THERE) ;
       }
       currentEntry = currentEntry->nextObject () ;
     }
@@ -395,7 +396,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   inCppFile << "}else if (testForInputChar ('\\0')) { // End of source text ? \n"
               "  mCurrentTokenCode = " << inLexiqueClassName << "_1_ ; // Empty string code\n"
               "}else{ // Unknown input character\n"
-              "  lexicalError (\"Unknown character\") ;\n"
+              "  lexicalError (\"Unknown character\" LINE_AND_SOURCE_FILE) ;\n"
               "}\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}catch (const C_lexicalErrorException &) {\n"
@@ -430,7 +431,12 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2 << "#include <ctype.h>\n"
                     "#include <string.h>\n\n"
-                    "#include \"" << inLexiqueClassName << ".h\"\n\n" ;
+                    "#include \"" << inLexiqueClassName << ".h\"\n\n"
+                    "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+                    "  #define LINE_AND_SOURCE_FILE , sourceText ()->sourceFileName ().cString (), currentLineNumber ()\n"
+                    "#else\n"
+                    "  #define LINE_AND_SOURCE_FILE\n"
+                    "#endif\n\n" ;
 
 // --------------------------------------- Constructor
   generatedZone2.writeCTitleComment ("Constructor") ;
@@ -745,7 +751,7 @@ generateDefaultToken (const C_String & inLexiqueName,
 void cPtr_typeEmissionErreurParDefaut::
 generateDefaultToken (const C_String &,
                       AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << ") ;\n" ;
+  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " LINE_AND_SOURCE_FILE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -761,7 +767,7 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionErreurLexicale::
 generate_scanner_instruction (const C_String &, // inLexiqueName
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << ") ;\n" ;
+  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " LINE_AND_SOURCE_FILE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -973,7 +979,8 @@ routine_generate_scanner (C_Lexique & inLexique,
                           GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
                           GGS_typeListeTestsEtInstructions & programme_principal,
                           GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
-                          GGS_M_styles & inStylesMap) {
+                          GGS_M_styles & inStylesMap
+                          COMMA_LOCATION_ARGS) {
 //--- Get version string
   const C_String GALGASversionString = inLexique.galgas_IO_Ptr ()->getCompilerVersion () ;
 //--- Create GALGAS_OUTPUT directory
@@ -995,7 +1002,7 @@ routine_generate_scanner (C_Lexique & inLexique,
   }else{
     C_String errorMessage ;
     errorMessage << "cannot create directory " << GALGAS_OUTPUT_directory ;
-    inLexique.galgas_IO_Ptr ()->printFileErrorMessage (inLexique.sourceFileName (), errorMessage.cString ()) ;
+    inLexique.galgas_IO_Ptr ()->printFileErrorMessage (inLexique.sourceFileName (), errorMessage.cString () COMMA_THERE) ;
   }
 }
 

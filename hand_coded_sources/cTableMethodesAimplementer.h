@@ -101,14 +101,16 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : sint32 insertAbstract (C_Lexique & inLexique,
                                   const INFO & info,
                                   const GGS_lstring & clef,
-                                         const GGS_location & inLocation,
-                                  const char * messageErreurInsertion) ;
+                                  const GGS_location & inLocation,
+                                  const char * messageErreurInsertion
+                                  COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertNotAbstract (C_Lexique & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
-                                         const GGS_location & inLocation,
-                                     const char * messageErreurInsertion) ;
+                                     const GGS_location & inLocation,
+                                     const char * messageErreurInsertion
+                                     COMMA_LOCATION_ARGS) ;
 
   private : void internalInsert (const INFO & info,
                                  const GGS_lstring & clef,

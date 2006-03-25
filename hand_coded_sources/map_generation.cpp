@@ -131,7 +131,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       currentAttribute = currentAttribute->nextObject () ;
     }
-    inHfile << ") ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
 //--- Declaring search methods
@@ -156,7 +156,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ") ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
   inHfile << "//--- Internal method for inserting an element\n"
@@ -173,7 +173,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
     index ++ ;
     current = current->nextObject () ;
   }
-  inHfile << "                                  GGS_luint * outIndex) ;\n" ;
+  inHfile << "                                  GGS_luint * outIndex\n"
+             "                                  COMMA_LOCATION_ARGS) ;\n" ;
   inHfile << "//--- Internal method for searching for an element\n"
              "  protected : void searchElement (C_Lexique & inLexique,\n"
              "                                  const char * inErrorMessage,\n"
@@ -188,7 +189,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
     index ++ ;
     current = current->nextObject () ;
   }
-  inHfile << "                                  GGS_luint * outIndex) ;\n"
+  inHfile << "                                  GGS_luint * outIndex\n"
+             "                                  COMMA_LOCATION_ARGS) ;\n"
 //--- Generate 'description' reader declaration
               "  public : GGS_string reader_description (void) const ;\n"
 //--- End of class Declaration
@@ -293,7 +295,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     index ++ ;
     current = current->nextObject () ;
   }
-  inCppFile << "               GGS_luint * outIndex) {\n"
+  inCppFile << "               GGS_luint * outIndex\n"
+               "               COMMA_LOCATION_ARGS) {\n"
                "  sint32 index = - 1 ;\n"
                "  if (isBuilt () && inKey.isBuilt ()) {\n"
                "    insulateMap () ;\n"
@@ -310,7 +313,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "    GGS_location existingKeyLocation ;\n"
                "    internalInsert (inKey, (void *) & info, mRoot, extension, index, existingKeyLocation) ;\n"
                "    if (index < 0) {\n"
-               "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation) ;\n"
+               "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "     }\n"
                "  }\n"
                "  if (outIndex != NULL) {\n"
@@ -334,14 +337,15 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     index ++ ;
     current = current->nextObject () ;
   }
-  inCppFile << "               GGS_luint * outIndex) {\n"
+  inCppFile << "               GGS_luint * outIndex\n"
+               "               COMMA_LOCATION_ARGS) {\n"
                "  element_type * node = NULL  ;\n"
                "  if (isBuilt () && inKey.isBuilt ()) {\n"
                "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (element_type *) p ;\n"
                "    if (node == NULL) {\n"
-               "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage) ;\n"
+               "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
                "  if (node == NULL) {\n" ;
@@ -388,7 +392,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ") {\n" ;
+    inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
     inCppFile << "  searchElement (inLexique,\n"
                  "                 " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
@@ -398,11 +402,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       inCppFile << "                 outParameter" << i << ",\n" ;
     }
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
-      inCppFile << "                 & outIndex) ;\n" ;
+      inCppFile << "                 & outIndex\n" ;
     }else{
-      inCppFile << "                 NULL) ;\n" ;
+      inCppFile << "                 NULL\n" ;
     }
-    inCppFile << "}\n\n" ;
+    inCppFile << "                 COMMA_THERE) ;\n"
+                 "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
 
@@ -412,7 +417,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (currentMethod) ;
     inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_"
-              << aNomTable << "::methode_" << currentMethod->mMethodName
+              << aNomTable << "::\n"
+                 "methode_" << currentMethod->mMethodName
               << " (C_Lexique & lexique_var_"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
@@ -428,7 +434,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ") {\n"
+    inCppFile << " COMMA_LOCATION_ARGS) {\n"
                  "  insertElement (lexique_var_,\n"
                  "                 " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
@@ -438,15 +444,17 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       inCppFile << "                 inParameter" << i << ",\n" ;
     }
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
-      inCppFile << "                 & outIndex) ;\n" ;
+      inCppFile << "                 & outIndex\n" ;
     }else{
-      inCppFile << "                 NULL) ;\n" ;
+      inCppFile << "                 NULL\n" ;
     }
-    inCppFile << "}\n\n" ;
+    inCppFile << "                 COMMA_THERE) ;\n"
+                 "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
 
 //--- Implement reader 'description'
+  inCppFile.writeCHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomTable << "::reader_description (void) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
@@ -543,7 +551,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ") ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     inHfile << "public : void methode_" 
             << currentMethod->mMethodName
             << "GetIndex (C_Lexique & inLexique"
@@ -559,7 +567,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ") ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
 
@@ -582,7 +590,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ") ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     inHfile << "public : void methode_"
             << currentMethod->mMethodName
             << "GetIndex (C_Lexique & inLexique" 
@@ -598,7 +606,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << ") ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
 //--- Generate 'description' reader declaration
@@ -668,12 +676,12 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ") {\n" ;
+    inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
   //--- Inserer les messages d'erreur
     inCppFile << "  GGS_" << aNomTable << "::element_type * info = "
               << currentMethod->mMethodName << " (inLexique, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
-    inCppFile << ") ;\n"
+    inCppFile << " COMMA_THERE) ;\n"
                  "  if (info == NULL) {\n" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
@@ -710,11 +718,11 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ") {\n" ;
+    inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
     inCppFile << "  GGS_" << aNomTable << "::element_type * info = "
               << currentMethod->mMethodName << " (inLexique, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
-    inCppFile << ") ;\n"
+    inCppFile << " COMMA_THERE) ;\n"
                  "  if (info == NULL) {\n" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
@@ -759,7 +767,7 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ") {\n" ;
+    inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
     inCppFile << "  e_" << aNomTable << " info ;\n" ;
     current = mNonExternAttributesList.firstObject () ;
     sint32 numeroVariable = 0 ;
@@ -771,7 +779,7 @@ void cPtr_typeDefinitionTableAimplementer
     }
     inCppFile << "  " << currentMethod->mMethodName << " (lexique_var_, info, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
-    inCppFile << ") ;\n"
+    inCppFile << " COMMA_THERE) ;\n"
               << "}\n\n" ;
     inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::methode_"
@@ -789,7 +797,7 @@ void cPtr_typeDefinitionTableAimplementer
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << ") {\n" ;
+    inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
     inCppFile << "  e_" << aNomTable << " info ;\n" ;
     current = mNonExternAttributesList.firstObject () ;
     numeroVariable = 0 ;
@@ -801,7 +809,7 @@ void cPtr_typeDefinitionTableAimplementer
     }
     inCppFile << "  const sint32 index = " << currentMethod->mMethodName << " (lexique_var_, info, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
-    inCppFile << ") ;\n"
+    inCppFile << " COMMA_THERE) ;\n"
               << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
               << "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;

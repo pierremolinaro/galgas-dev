@@ -36,7 +36,7 @@ void galgas_LR1_prgm::_beforeParsing (void) {
   if (! ok) {
     C_String errorMessage ;
     errorMessage << "cannot create directory '" << mTerminalIO.mFileGenerationStartDir << "'" ;
-    mScannerPtr_->galgas_IO_Ptr ()->printFileErrorMessage (mScannerPtr_->sourceFileName (), errorMessage.cString ()) ;
+    mScannerPtr_->galgas_IO_Ptr ()->printFileErrorMessage (mScannerPtr_->sourceFileName (), errorMessage.cString () COMMA_HERE) ;
   }
 }
 

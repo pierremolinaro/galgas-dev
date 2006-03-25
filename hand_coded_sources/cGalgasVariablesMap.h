@@ -176,104 +176,117 @@ template <typename INFO> class cGalgasVariablesMap {
                                   const INFO & info,
                                   const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                  const char * messageErreurInsertion) ;
+                                  const char * messageErreurInsertion
+                                  COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertInOutArgument (C_Lexique & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                     const char * messageErreurInsertion) ;
+                                     const char * messageErreurInsertion
+                                     COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertUnusedInOutArgument (C_Lexique & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                           const char * messageErreurInsertion) ;
+                                           const char * messageErreurInsertion
+                                           COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertOutArgument (C_Lexique & inLexique,
                                    const INFO & info,
                                    const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                   const char * messageErreurInsertion) ;
+                                   const char * messageErreurInsertion
+                                   COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertConstInArgument (C_Lexique & inLexique,
                                        const INFO & info,
                                        const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                       const char * messageErreurInsertion) ;
+                                       const char * messageErreurInsertion
+                                       COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertUsedConstInArgument (C_Lexique & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                           const char * messageErreurInsertion) ;
+                                           const char * messageErreurInsertion
+                                           COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertUnusedConstInArgument (C_Lexique & inLexique,
                                              const INFO & info,
                                              const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                             const char * messageErreurInsertion) ;
+                                             const char * messageErreurInsertion
+                                             COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertLocalVariable (C_Lexique & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                       const GGS_location & inLocation,
-                                     const char * messageErreurInsertion) ;
+                                     const char * messageErreurInsertion
+                                     COMMA_LOCATION_ARGS) ;
 
 
 //--- Search methods
   private : void chercherInterne (C_Lexique & inLexique,
                                   element_type * & resultat,
                                   const GGS_lstring & clef,
-                                  const char * messageErreurRecherche) ;
+                                  const char * messageErreurRecherche
+                                  COMMA_LOCATION_ARGS) ;
 
   public : element_type * searchForReadOnlyAccess (C_Lexique & inLexique,
                                          const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                         const char * messageErreurPhase) ;
+                                         const char * messageErreurPhase
+                                         COMMA_LOCATION_ARGS) ;
 
   public : element_type * searchForDestructiveReadAccess (C_Lexique & inLexique,
                                                 const GGS_lstring & clef,
                                                 const GGS_location & inLocation,
-                                                const char * messageErreurPhase) ;
+                                                const char * messageErreurPhase
+                                                COMMA_LOCATION_ARGS) ;
 
   public : element_type * searchForReadWriteAccess (C_Lexique & inLexique,
                                           const GGS_lstring & clef,
                                           const GGS_location & inLocation,
-                                          const char * messageErreurPhase) ;
+                                          const char * messageErreurPhase
+                                          COMMA_LOCATION_ARGS) ;
 
   public : element_type * searchForWriteAccess (C_Lexique & inLexique,
                                       const GGS_lstring & clef,
                                       const GGS_location & inLocation,
-                                      const char * messageErreurPhase) ;
+                                      const char * messageErreurPhase
+                                      COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour verifier l'etat des variables
-  public : void prologue_verifyVariableUsing (C_Lexique &) ;
+  public : void prologue_verifyVariableUsing (C_Lexique & COMMA_LOCATION_ARGS) ;
   public : void epilogue_verifyVariableUsing (C_Lexique &,
-                                              const GGS_location &) ;
+                                              const GGS_location & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour l'instruction test et choix
-  public : void prologue_testBloc (C_Lexique &) ;
-  public : void epilogue_testBloc (C_Lexique &) ;
+  public : void prologue_testBloc (C_Lexique & COMMA_LOCATION_ARGS) ;
+  public : void epilogue_testBloc (C_Lexique & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour chaque branche de l'instruction test et choix
-  public : void prologue_testPart (C_Lexique &) ;
+  public : void prologue_testPart (C_Lexique & COMMA_LOCATION_ARGS) ;
   public : void epilogue_testPart (C_Lexique &,
-                                   const GGS_location &) ;
+                                   const GGS_location & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour chaque instruction repeter
-  public : void prologue_repeatBlock (C_Lexique &) ;
-  public : void epilogue_repeatBlock (C_Lexique &) ;
+  public : void prologue_repeatBlock (C_Lexique & COMMA_LOCATION_ARGS) ;
+  public : void epilogue_repeatBlock (C_Lexique & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour chaque branche de l'instruction repeter
-  public : void prologue_repeatPart (C_Lexique &) ;
+  public : void prologue_repeatPart (C_Lexique & COMMA_LOCATION_ARGS) ;
   public : void epilogue_repeatPart (C_Lexique &,
-                                     const GGS_location &) ;
+                                     const GGS_location & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour chaque branche d'une methode double
-  public : void prologue_blocTestMethodeDouble (C_Lexique &) ;
+  public : void prologue_blocTestMethodeDouble (C_Lexique & COMMA_LOCATION_ARGS) ;
   public : void epilogue_blocTestMethodeDouble (C_Lexique &,
-                                                const GGS_location &) ;
+                                                const GGS_location & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes internes privees
   private : sint32 insertKey (C_Lexique & inLexique,
@@ -284,7 +297,8 @@ template <typename INFO> class cGalgasVariablesMap {
                          const bool inUsed,
                          const GGS_lstring & clef,
                          const GGS_location & inLocation,
-                         const char * messageErreurInsertion) ;
+                         const char * messageErreurInsertion
+                         COMMA_LOCATION_ARGS) ;
 
   private : void internalInsert (bool & insertionOk ,
                                  const INFO & info,
@@ -298,7 +312,8 @@ template <typename INFO> class cGalgasVariablesMap {
 
   private : void verificationRecursiveConsommation (C_Lexique & inLexique,
                                                     element_type * element,
-                                                    const GGS_location & positionErreur) ;
+                                                    const GGS_location & positionErreur
+                                                    COMMA_LOCATION_ARGS) ;
   
   private : void remettreVariablesDansEtatInitial (element_type * element) ;
   

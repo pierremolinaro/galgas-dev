@@ -170,8 +170,9 @@ sint32 cGalgasVariablesMap <INFO>::insertInArgument (C_Lexique & inLexique,
                                                         const INFO & inInfo,
                                                         const GGS_lstring & clef,
                                                         const GGS_location & inLocation,
-                                                        const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumParametreIn, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
+                                                        const char * messageErreurInsertion
+                                                        COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumParametreIn, etatValue, false, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -181,8 +182,9 @@ sint32 cGalgasVariablesMap <INFO>::insertInOutArgument (C_Lexique & inLexique,
                                                            const INFO & inInfo,
                                                            const GGS_lstring & clef,
                                                            const GGS_location & inLocation,
-                                                           const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
+                                                           const char * messageErreurInsertion
+                                                           COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -192,8 +194,9 @@ sint32 cGalgasVariablesMap <INFO>::insertUnusedInOutArgument (C_Lexique & inLexi
                                                                  const INFO & inInfo,
                                                                  const GGS_lstring & clef,
                                                                  const GGS_location & inLocation,
-                                                                 const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, true, false, clef, inLocation, messageErreurInsertion) ;
+                                                                 const char * messageErreurInsertion
+                                                                 COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, true, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -203,8 +206,9 @@ template <typename INFO>
                                                           const INFO & inInfo,
                                                           const GGS_lstring & clef,
                                                           const GGS_location & inLocation,
-                                                          const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumParametreOut, etatNonValue, false, false, clef, inLocation, messageErreurInsertion) ;
+                                                          const char * messageErreurInsertion
+                                                          COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumParametreOut, etatNonValue, false, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -214,8 +218,9 @@ sint32 cGalgasVariablesMap <INFO>::insertLocalVariable (C_Lexique & inLexique,
                                                            const INFO & inInfo,
                                                            const GGS_lstring & clef,
                                                            const GGS_location & inLocation,
-                                                           const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumVariableLocale, etatNonValue, false, false, clef, inLocation, messageErreurInsertion) ;
+                                                           const char * messageErreurInsertion
+                                                           COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumVariableLocale, etatNonValue, false, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -225,8 +230,9 @@ sint32 cGalgasVariablesMap <INFO>::insertConstInArgument (C_Lexique & inLexique,
                                                              const INFO & inInfo,
                                                              const GGS_lstring & clef,
                                                              const GGS_location & inLocation,
-                                                             const char * messageErreurInsertion) {
-  return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, false, clef, inLocation, messageErreurInsertion) ;
+                                                             const char * messageErreurInsertion
+                                                             COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -236,8 +242,9 @@ sint32 cGalgasVariablesMap <INFO>::insertUsedConstInArgument (C_Lexique & lexiqu
                                                              const INFO & inInfo,
                                                              const GGS_lstring & clef,
                                                              const GGS_location & inLocation,
-                                                             const char * messageErreurInsertion) {
-  return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, false, true, clef, inLocation, messageErreurInsertion) ;
+                                                             const char * messageErreurInsertion
+                                                             COMMA_LOCATION_ARGS) {
+  return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, false, true, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -247,8 +254,9 @@ sint32 cGalgasVariablesMap <INFO>::insertUnusedConstInArgument (C_Lexique & lexi
                                                                    const INFO & inInfo,
                                                                    const GGS_lstring & clef,
                                                                    const GGS_location & inLocation,
-                                                                   const char * messageErreurInsertion) {
-  return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, true, false, clef, inLocation, messageErreurInsertion) ;
+                                                                   const char * messageErreurInsertion
+                                                                   COMMA_LOCATION_ARGS) {
+  return insertKey (lexique_var_, inInfo, enumConstanteLocale, etatValue, true, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -262,7 +270,8 @@ sint32 cGalgasVariablesMap <INFO>::insertKey (C_Lexique & inLexique,
                                               const bool inUsed,
                                               const GGS_lstring & inKey,
                                               const GGS_location & inLocation,
-                                              const char * messageErreurInsertion) {
+                                              const char * messageErreurInsertion
+                                              COMMA_LOCATION_ARGS) {
   sint32 resultat = -1 ; // Erreur 'insertion incorrecte'
   if (isBuilt () && inKey.isBuilt ()) {
   //--- Realiser l'insertion
@@ -272,7 +281,7 @@ sint32 cGalgasVariablesMap <INFO>::insertKey (C_Lexique & inLexique,
     if (insertionOk) {
       resultat = mListLength - 1 ;
     }else{ // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, inKey) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, inKey COMMA_THERE) ;
     }
   }
   return resultat ;
@@ -350,7 +359,8 @@ void cGalgasVariablesMap <INFO>::
 chercherInterne (C_Lexique & inLexique,
                  element_type * & resultat,
                  const GGS_lstring & clef,
-                 const char * messageErreurRecherche) {
+                 const char * messageErreurRecherche
+                 COMMA_LOCATION_ARGS) {
   if (clef.isBuilt ()) {
   //--- Chercher d'abord dans la table designee par la racine
     resultat = mRoot ;
@@ -387,11 +397,11 @@ chercherInterne (C_Lexique & inLexique,
     }
   //--- Pas trouve : erreur de recherche
     if (resultat == NULL) {
-      clef.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurRecherche, clef) ;
+      clef.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurRecherche, clef COMMA_THERE) ;
     }else if (resultat->mIsDeclaredUnused) {  //--- Check the variable is not declared as unused
       C_String message ;
       message << "The '" << clef << "' entity has been declared as 'unused'" ;
-      clef.signalSemanticWarning (inLexique, message) ;
+      clef.signalSemanticWarning (inLexique, message COMMA_THERE) ;
     }
   }
 }
@@ -403,16 +413,17 @@ cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForReadOnlyAccess (C_Lexique & inLexique,
                          const GGS_lstring & clef,
                          const GGS_location & inLocation,
-                         const char * messageErreurPhase) {
+                         const char * messageErreurPhase
+                         COMMA_LOCATION_ARGS) {
   element_type * resultat = (element_type *) NULL ;
 	const char * messageErreurRecherche = "the '%' variable is not declared" ;
-  chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
+  chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if (resultat->champEtat == etatValue) {
       resultat->champUtilise = true ;
     }else{
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef COMMA_THERE) ;
     }
   }
   return resultat ;
@@ -425,10 +436,11 @@ cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForDestructiveReadAccess (C_Lexique & inLexique,
                                 const GGS_lstring & clef,
                                 const GGS_location & inLocation,
-                                const char * messageErreurPhase) {
+                                const char * messageErreurPhase
+                                COMMA_LOCATION_ARGS) {
 	const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
-  chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
+  chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if ((resultat->champEtat == etatValue) 
@@ -436,7 +448,7 @@ searchForDestructiveReadAccess (C_Lexique & inLexique,
       resultat->champEtat = etatDetruite ;
       resultat->champUtilise = true ;
     }else{
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef COMMA_THERE) ;
     }
   }
   return resultat ;
@@ -449,17 +461,18 @@ cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForReadWriteAccess (C_Lexique & inLexique,
                           const GGS_lstring & clef,
                           const GGS_location & inLocation,
-                          const char * messageErreurPhase) {
+                          const char * messageErreurPhase
+                          COMMA_LOCATION_ARGS) {
 	const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
-  chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
+  chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if ((resultat->champEtat == etatValue)
         && (resultat->champNature != enumConstanteLocale)) {
       resultat->champUtilise = true ;
     }else{
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef COMMA_THERE) ;
     }
   }
   return resultat ;
@@ -472,10 +485,11 @@ cElementTableControlePhase <INFO> * cGalgasVariablesMap <INFO>::
 searchForWriteAccess (C_Lexique & inLexique,
                       const GGS_lstring & clef,
                       const GGS_location & inLocation,
-                      const char * messageErreurPhase) {
+                      const char * messageErreurPhase
+                      COMMA_LOCATION_ARGS) {
 	const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
-  chercherInterne (inLexique, resultat, clef, messageErreurRecherche) ;
+  chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
     if (resultat->champNature != enumConstanteLocale) {
@@ -486,7 +500,7 @@ searchForWriteAccess (C_Lexique & inLexique,
       resultat->champEtat = etatValue ;
       resultat->champUtilise = true ;
     }else{*/
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurPhase, clef COMMA_THERE) ;
     }
   }
   return resultat ;
@@ -495,15 +509,16 @@ searchForWriteAccess (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::prologue_verifyVariableUsing (C_Lexique &) {
+void cGalgasVariablesMap <INFO>::prologue_verifyVariableUsing (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::epilogue_verifyVariableUsing (C_Lexique & inLexique,
-                                                                    const GGS_location & positionErreur) {
-  verificationRecursiveConsommation (inLexique, mRoot, positionErreur) ;
+                                                                    const GGS_location & positionErreur
+                                                                    COMMA_LOCATION_ARGS) {
+  verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -511,56 +526,57 @@ void cGalgasVariablesMap <INFO>::epilogue_verifyVariableUsing (C_Lexique & inLex
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::verificationRecursiveConsommation (C_Lexique & inLexique,
                                                                          element_type * element,
-                                                                         const GGS_location & positionErreur) {
+                                                                         const GGS_location & positionErreur
+                                                                         COMMA_LOCATION_ARGS) {
   if (element != NULL) {
     macroValidPointer (element) ;
-    verificationRecursiveConsommation (inLexique, element->mInfPtr, positionErreur) ;
+    verificationRecursiveConsommation (inLexique, element->mInfPtr, positionErreur COMMA_THERE) ;
     switch (element->champNature) {
     case enumParametreIn :  // Parametre formel en entree : doit etre consommee
      /* if (element->champEtat != etatDetruite) {
         C_String message ;
         message << "le parametre formel d'entree '" << element->mKey << "' n'est pas consomme a l'issue de la liste d'instructions precedente" ;
-        positionErreur.signalSemanticWarning (inLexique, message) ;
+        positionErreur.signalSemanticWarning (inLexique, message COMMA_THERE) ;
       } */
       break ;
     case enumVariableLocale : // variable locale : doit etre consommee
       /* if (element->champEtat == etatValue) {
         C_String message ;
         message << "la variable locale '" << element->mKey << "' n'est pas consomme a l'issue de la liste d'instructions precedente" ;
-        positionErreur.signalSemanticWarning (inLexique, message) ;
+        positionErreur.signalSemanticWarning (inLexique, message COMMA_THERE) ;
       }else */ if (element->champEtat == etatNonValue) {
         C_String message ;
         message << "la variable locale '" << element->mKey << "' n'est pas utilisee dans la liste d'instructions precedente" ;
-        positionErreur.signalSemanticWarning (inLexique, message) ;
+        positionErreur.signalSemanticWarning (inLexique, message COMMA_THERE) ;
       }
       break ;
     case enumConstanteLocale : // local constant : only verify a constant not declared as unused is effectivly used
       if ((! element-> mIsDeclaredUnused) && (! element->champUtilise)) {
         C_String message ;
         message << "la constante locale '" << element->mKey << "' n'est pas utilisee et n'a pas ete declaree 'unused'" ;
-        element->mKey.signalSemanticWarning (inLexique, message) ;
+        element->mKey.signalSemanticWarning (inLexique, message COMMA_THERE) ;
       }
       break ;
     case enumParametreInOut : // Parametre formel en entree/sorie : doit etre valuee
       if (element->champEtat != etatValue) {
         C_String message ;
         message << "le parametre formel d'entree/sortie '" << element->mKey << "' n'est pas value a l'issue de la liste d'instructions precedente" ;
-        positionErreur.signalSemanticError (inLexique, message) ;
+        positionErreur.signalSemanticError (inLexique, message COMMA_HERE) ;
       }else if ((! element-> mIsDeclaredUnused) && (! element->champUtilise)) {
         C_String message ;
         message << "le parametre formel d'entree/sortie '" << element->mKey << "' n'est pas utilise et n'a pas ete declare 'unused'" ;
-        element->mKey.signalSemanticWarning (inLexique, message) ;
+        element->mKey.signalSemanticWarning (inLexique, message COMMA_THERE) ;
       }
       break ;
     case enumParametreOut : // Parametre formel de sortie : doit etre valuee
       if (element->champEtat != etatValue) {
         C_String message ;
         message << "le parametre formel de sortie '" << element->mKey << "' n'est pas value a l'issue de la liste d'instructions precedente" ;
-        positionErreur.signalSemanticError (inLexique, message) ;
+        positionErreur.signalSemanticError (inLexique, message COMMA_HERE) ;
       }
       break ;
     }
-    verificationRecursiveConsommation (inLexique, element->mSupPtr, positionErreur) ;
+    verificationRecursiveConsommation (inLexique, element->mSupPtr, positionErreur COMMA_THERE) ;
   }
 }
 
@@ -651,7 +667,7 @@ void cGalgasVariablesMap <INFO>::verifierChampEtatApres (C_Lexique & inLexique,
     if (element->champChainageEtat->champEtatApres != element->champEtat) {
       C_String message ;
       message << message1 << element->mKey << message2 ;
-      positionErreur.signalSemanticError (inLexique, message) ;
+      positionErreur.signalSemanticError (inLexique, message COMMA_HERE) ;
     }
     element->champEtat = element->champChainageEtat->champEtatAvant ;
     verifierChampEtatApres (inLexique, element->mSupPtr, positionErreur, message1, message2) ;
@@ -661,7 +677,7 @@ void cGalgasVariablesMap <INFO>::verifierChampEtatApres (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Lexique &) {
+void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {
   typeSurchargeTable * tempo = (typeSurchargeTable *) NULL ;
   macroMyNew (tempo, typeSurchargeTable) ;
   tempo->mNextItem = aListeSurcharges ;
@@ -680,7 +696,7 @@ void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Lexique &) {
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_Lexique &) {
+void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {
   typeSurchargeTable * surchargeCourante = aListeSurcharges ;
   while (surchargeCourante != NULL) {
     macroValidPointer (surchargeCourante) ;
@@ -697,7 +713,7 @@ void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_Lexique &) {
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::prologue_testPart (C_Lexique &) {
+void cGalgasVariablesMap <INFO>::prologue_testPart (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {
   macroValidPointer (aListeSurcharges) ;
 }
 
@@ -705,8 +721,8 @@ void cGalgasVariablesMap <INFO>::prologue_testPart (C_Lexique &) {
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::epilogue_testPart (C_Lexique & inLexique,
-                                                         const GGS_location & positionErreur) {
-  verificationRecursiveConsommation (inLexique, mRoot, positionErreur) ;
+                                                    const GGS_location & positionErreur COMMA_LOCATION_ARGS) {
+  verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
   macroMyDelete (mRoot, element_type) ;
 //--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
@@ -734,24 +750,24 @@ void cGalgasVariablesMap <INFO>::epilogue_testPart (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::prologue_repeatBlock (C_Lexique & lexique) {
-  prologue_testBloc (lexique) ;
-  prologue_testPart (lexique) ;
+void cGalgasVariablesMap <INFO>::prologue_repeatBlock (C_Lexique & lexique COMMA_LOCATION_ARGS) {
+  prologue_testBloc (lexique COMMA_THERE) ;
+  prologue_testPart (lexique COMMA_THERE) ;
   GGS_location sansImportance ;
-  epilogue_testPart (lexique, sansImportance) ;
+  epilogue_testPart (lexique, sansImportance COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::epilogue_repeatBlock (C_Lexique & lexique) {
-  epilogue_testBloc (lexique) ;
+void cGalgasVariablesMap <INFO>::epilogue_repeatBlock (C_Lexique & lexique COMMA_LOCATION_ARGS) {
+  epilogue_testBloc (lexique COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::prologue_repeatPart (C_Lexique &) {
+void cGalgasVariablesMap <INFO>::prologue_repeatPart (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {
   macroValidPointer (aListeSurcharges) ;
 }
 
@@ -759,8 +775,8 @@ void cGalgasVariablesMap <INFO>::prologue_repeatPart (C_Lexique &) {
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::epilogue_repeatPart (C_Lexique & inLexique,
-                                                           const GGS_location & positionErreur) {
-  verificationRecursiveConsommation (inLexique, mRoot, positionErreur) ;
+                                                           const GGS_location & positionErreur COMMA_LOCATION_ARGS) {
+  verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
   macroMyDelete (mRoot, element_type) ;
 //--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
@@ -778,7 +794,7 @@ void cGalgasVariablesMap <INFO>::epilogue_repeatPart (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::prologue_blocTestMethodeDouble (C_Lexique &) {
+void cGalgasVariablesMap <INFO>::prologue_blocTestMethodeDouble (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {
   macroVoidPointer (aListeSurcharges) ;
   macroMyNew (aListeSurcharges, typeSurchargeTable) ;
   aListeSurcharges->champTable = mRoot ;
@@ -789,9 +805,9 @@ void cGalgasVariablesMap <INFO>::prologue_blocTestMethodeDouble (C_Lexique &) {
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::epilogue_blocTestMethodeDouble (C_Lexique & inLexique,
-                                                                      const GGS_location & positionErreur) {
+                                                                      const GGS_location & positionErreur COMMA_LOCATION_ARGS) {
   macroValidPointer (aListeSurcharges) ;
-  verificationRecursiveConsommation (inLexique, aListeSurcharges->champTable, positionErreur) ;
+  verificationRecursiveConsommation (inLexique, aListeSurcharges->champTable, positionErreur COMMA_THERE) ;
   macroMyDelete (mRoot, element_type) ;
   mRoot = aListeSurcharges->champTable ;
   macroMyDelete (aListeSurcharges, typeSurchargeTable) ;

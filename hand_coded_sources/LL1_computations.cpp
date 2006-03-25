@@ -397,6 +397,14 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   C_String generatedZone2 ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
+  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2 << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+                    "  static const char gGGSsourceFile [] = \"" << inTargetFileName << ".cpp\" ;\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
+                    "#else\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \n"
+                    "#endif\n\n" ;
+
 //--- Generate LL(1) tables
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   const sint32 productionsCount = inPureBNFproductions.length () ;
@@ -602,7 +610,8 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
           inStartSymbolEntityAndMetamodelMap.methode_searchKey (inLexique,
                                                                 currentAltForNonTerminal->mKey,
                                                                 entityName,
-                                                                metamodelName) ;
+                                                                metamodelName
+                                                                COMMA_HERE) ;
           generatedZone3 << "    _checkMetamodel_" << metamodelName
                          << " (lexique_var_, _outReturnedModelInstance) ;\n" ;
         }

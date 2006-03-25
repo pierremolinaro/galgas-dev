@@ -261,6 +261,7 @@ list @typeExpressionList {
 class @typeErrorInstruction extends @typeInstruction {
   @typeExpression mErrorLocationExpression ;
   @typeExpression mErrorMessageExpression ;
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -272,6 +273,7 @@ class @typeErrorInstruction extends @typeInstruction {
 class @typeWarningInstruction extends @typeInstruction {
   @typeExpression mWarningLocationExpression ;
   @typeExpression mWarningMessageExpression ;
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*

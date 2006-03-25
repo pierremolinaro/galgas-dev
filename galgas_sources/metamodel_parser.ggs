@@ -46,6 +46,12 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
+rule <metamodel_map_declaration>
+  ?!@mapEntityMap ioMapEntityMap
+  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
+label parse
+;
+
 rule <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
@@ -57,14 +63,17 @@ label parse
 ;
 
 rule <entity_declaration_list>
-  !@entityToImplementMap ioEntityMap
+  ?!@entityToImplementMap ioEntityMap
+  ?!@mapEntityMap ioMapEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
+  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 label parse
 ;
 
 rule <entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
+  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 label parse
 ;
 
@@ -160,9 +169,16 @@ rule <parse_metamodel>
   $type_name$ ? rootEntityName ;
   $:$ ;
   @entityToImplementMap entityMap [empty] ;
-  <entity_declaration_list> ?entityMap !?primitiveTypeAttributeNameSet ;
+  @mapEntityMap mapEntityMap [empty] ;
+  @mapAndEntityUniqueMap mapAndEntityUniqueMap [empty] ;
+  <entity_declaration_list>
+    !?entityMap
+    !?mapEntityMap
+    !?primitiveTypeAttributeNameSet
+    !?mapAndEntityUniqueMap
+  ;
   @bool isAbstract ;
-  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?*] ;
+  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -173,7 +189,6 @@ rule <parse_metamodel>
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName
-                     ??*
                      ??*
                      ??*
                      ??*) :
@@ -202,7 +217,6 @@ rule <parse_metamodel>
                      ??*
                      ??* 
                      ??*
-                     ??*
                      ??*) :
     foreach kEntityPropertiesMap (??@lstring kAttributeName
                                   ??@metamodelPropertyKind kKind
@@ -211,7 +225,7 @@ rule <parse_metamodel>
       if (kKind == [@metamodelPropertyKind singleReferenceProperty]) |
          (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
         @contextPropertyMap contextPropertyMap ;
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?contextPropertyMap ?* ?*] ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?contextPropertyMap ?* ?*] ;
         multiReferencedEntities += ![kTypeName value] ;
       #--- Check context options
         if [kPropertyOptionPathes length] != [contextPropertyMap count] then
@@ -240,7 +254,7 @@ rule <parse_metamodel>
           end foreach ;
         end if ;
       elsif kKind == [@metamodelPropertyKind contextProperty] then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?* ?*] ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?*] ;
       elsif kKind == [@metamodelPropertyKind fetchedProperty] then
         foreach kPropertyOptionPathes (??@L_propertyPath kPath ??@location kEndPofPathLocation):
           @lstring typeName ;
@@ -264,7 +278,6 @@ rule <parse_metamodel>
 #--- Check fetched properties
   foreach entityMap (??@lstring kCurrentEntity
                      ??@entityPropertyMap kAllPropertiesMap
-                     ??*
                      ??*
                      ??*
                      ??*
@@ -306,53 +319,13 @@ rule <parse_metamodel>
       end if ;
     end foreach ;
   end foreach ;
-#--- Check map definitions
-  foreach entityMap (??@lstring kCurrentEntity
-                     ??@entityPropertyMap kAllPropertiesMap
-                     ??*
-                     ??*
-                     ??*
-                     ??@mapPropertyMap kMapPropertyMap
-                     ??*
-                     ??*
-                     ??*) :
-    foreach kMapPropertyMap (??@lstring kMapName
-                             ??@lstring kEntityName
-                             ??@L_ListOfPropertyPathes kListOfPropertyPathes
-                             ...) :
-      foreach kListOfPropertyPathes (??@L_propertyPath kPath ??@location kEndOfPathLocation):
-        @lstring typeName ;
-        @metamodelPropertyKind kind ;
-        @lstring lastEntityTypeName ;
-        checkPath
-          !?entityMap
-          !kAllPropertiesMap
-          !kEntityName
-          !kPath
-          ?kind
-          ?typeName
-          ?lastEntityTypeName
-        ;
-        if [typeName value] != "lstring" then
-          error kEndOfPathLocation: "the path does not specify an @lstring attribute" ;
-        end if ;
-        @stringset superEntitySet [empty] ;
-        buildSuperEntitySet !?entityMap !lastEntityTypeName !?superEntitySet ;
-        if not [superEntitySet hasKey ![kEntityName value]] then
-          error kEndOfPathLocation:
-            "the path names an attribute whose owner entity ('@" .
-            [lastEntityTypeName value] . "') does not inherit from '@" . 
-            [kEntityName value] . "'" ;
-        end if ;
-      end foreach ;
-    end foreach ;
-  end foreach ;
 #--- Generate C++ code
   action generate_metamodel
     !?entityMap
     !metamodelName
     !multiReferencedEntities
     !rootEntityName
+    !?mapEntityMap
   ;
 #--- Add metamodel to metamodel map
   if not [ioMetamodelComponentMap hasKey ![metamodelName value]] then
@@ -370,17 +343,61 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <entity_declaration_list>
-  !@entityToImplementMap outEntityMap
+  ?!@entityToImplementMap outEntityMap
+  ?!@mapEntityMap ioMapEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
+  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 :
-  outEntityMap := [@entityToImplementMap empty] ;
   repeat
+  while
+    <metamodel_map_declaration>
+      !?ioMapEntityMap
+      !?ioMapAndEntityUniqueMap
+    ;
   while
     <entity_declaration>
       !?outEntityMap
       !?ioPrimitiveTypeAttributeNameSet
+      !?ioMapAndEntityUniqueMap
     ;
   end repeat ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <metamodel_map_declaration>
+  ?!@mapEntityMap ioMapEntityMap
+  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
+:
+  $map$ ;
+  @lstring mapIdentifier ;
+  $type_name$ ? mapIdentifier ;
+  [!?ioMapAndEntityUniqueMap insertKey !mapIdentifier] ;
+  $of$ ;
+  @lstring mapElementIdentifier ;
+  $type_name$ ? mapElementIdentifier ;
+  ${$ ;
+  $insert$ ;
+  $error$ ;
+  $message$ ;
+  @lstring insertErrorMessage ;
+  $literal_string$ ? insertErrorMessage ;
+  action check_KL_escapeCharacters !insertErrorMessage ;
+  $;$ ;
+  $search$ ;
+  $error$ ;
+  $message$ ;
+  @lstring searchErrorMessage ;
+  $literal_string$ ? searchErrorMessage ;
+  action check_K_escapeCharacters !searchErrorMessage ;
+  $;$ ;
+  $}$ ;
+  [!?ioMapEntityMap insertKey
+    !mapIdentifier
+    !mapElementIdentifier
+    !insertErrorMessage
+    !searchErrorMessage
+  ] ;
 end rule ;
 
 #-------------------------------------------------------------------*
@@ -388,6 +405,7 @@ end rule ;
 rule <entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
+  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 :
 #--- Abstract ?
   @bool isAbstract ;
@@ -401,6 +419,7 @@ rule <entity_declaration>
   $entity$ ;
   @lstring entityName ;
   $type_name$ ? entityName ;
+  [!?ioMapAndEntityUniqueMap insertKey !entityName] ;
 #--- Context properties, or super entity (or nothing)
   @entityPropertyMap entityPropertyMap [empty] ;
   @fetchedPropertyMap allFetchedPropertyMap ;
@@ -419,7 +438,6 @@ rule <entity_declaration>
       ?*
       ?*
       ?allPropertyMap
-      ?*
       ?*
       ?allContextPropertyMap
       ?*
@@ -455,7 +473,6 @@ rule <entity_declaration>
   end select ;
 #--- Property declarations
   @fetchedPropertyMap fetchedPropertyMap [empty] ;
-  @mapPropertyMap mapPropertyMap [empty] ;
   @relationMap relationMap [empty] ;
   ${$ ;
   repeat
@@ -474,6 +491,16 @@ rule <entity_declaration>
       end if ;
       $identifier$ ? attributeName ;
       k := [@metamodelPropertyKind multipleReferenceProperty] ;
+    or
+    #--- Map reference
+      $<$ ;
+      $>$ ;
+      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName value]] then
+        error propertyTypeName : "the '@" . [propertyTypeName value]
+        . "' is not an entity name, but a predefined type name" ;
+      end if ;
+      $identifier$ ? attributeName ;
+      k := [@metamodelPropertyKind mapProperty] ;
     or
       $identifier$ ? attributeName ;
     #--- Single reference or attribute ?
@@ -532,55 +559,6 @@ rule <entity_declaration>
     [!?entityPropertyMap insertKey !attributeName !k !propertyTypeName !propertyOptionPathes] ;
     $;$ ;
   while
-    $map$ ;
-    @lstring entityName ;
-    $type_name$ ? entityName ;
-    @lstring mapPropertyName ;
-    $identifier$ ? mapPropertyName ;
-    @metamodelPropertyKind k [mapProperty] ;
-    [!?allPropertyMap insertKey
-      !mapPropertyName
-      !k
-      !entityName
-      ![@L_ListOfPropertyPathes empty]
-    ] ;
-    [!?entityPropertyMap insertKey
-      !mapPropertyName
-      !k
-      !entityName
-      ![@L_ListOfPropertyPathes empty]
-    ] ;
-    ${$ ;
-    @L_ListOfPropertyPathes listOfPropertyPathes [empty] ;
-    repeat
-      @L_propertyPath path ;
-      <property_path> ?path ;
-      listOfPropertyPathes += !path !here ;
-    while 
-      $,$ ;
-    end repeat ;
-    $}$ ;
-    $insert$ ;
-    $error$ ;
-    $message$ ;
-    @lstring insertErrorMessage ;
-    $literal_string$ ? insertErrorMessage ;
-    action check_KL_escapeCharacters !insertErrorMessage ;
-    $search$ ;
-    $error$ ;
-    $message$ ;
-    @lstring searchErrorMessage ;
-    $literal_string$ ? searchErrorMessage ;
-    action check_K_escapeCharacters !searchErrorMessage ;
-    $;$ ;
-    [!?mapPropertyMap insertKey
-      !mapPropertyName
-      !entityName
-      !listOfPropertyPathes
-      !insertErrorMessage
-      !searchErrorMessage
-    ] ;
-  while
     $relation$ ;
     @lstring relationIdentifier ;
     $identifier$ ? relationIdentifier ;
@@ -610,7 +588,6 @@ rule <entity_declaration>
     !isAbstract
     !entityPropertyMap
     !superEntity
-    !mapPropertyMap
     !allContextPropertyMap
     !fetchedPropertyMap
     !allFetchedPropertyMap
