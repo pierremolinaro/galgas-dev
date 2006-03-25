@@ -29,7 +29,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                                 const GGS_entityToImplementMap & ioEntityMap,
                                 const GGS_lstring & inMetamodelComponentName,
                                 const GGS_stringset & inMultipleReferencedEntities,
-                                const GGS_lstring & inRootEntityName) {
+                                const GGS_lstring & inRootEntityName,
+                                const GGS_mapEntityMap & inMapEntityMap) {
   C_String generatedZone2 ;
   generatedZone2 << "#ifndef " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
                  << "#define " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
@@ -56,6 +57,12 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     generatedZone3 << "class GGS_" << currentEntity->mKey << " ;\n" ;
     currentEntity = currentEntity->nextObject () ;
   }
+  GGS_mapEntityMap::element_type * currentMap = inMapEntityMap.firstObject () ;
+  while (currentMap != NULL) {
+    macroValidPointer (currentMap) ;
+    generatedZone3 << "class GGS_" << currentMap->mKey << " ;\n" ;
+    currentMap = currentMap->nextObject () ;
+  }
   GGS_stringset::element_type * currentMultipleReferencedEntity = inMultipleReferencedEntities.firstObject () ;
   while (currentMultipleReferencedEntity != NULL) {
     macroValidPointer (currentMultipleReferencedEntity) ;
@@ -66,6 +73,20 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                     "void _checkMetamodel_" << inMetamodelComponentName
                  << " (C_Lexique & _inLexique, GGS_" << inRootEntityName << " * & ioRootObject) ;\n"
                     "\n" ;
+  
+//--- Generate map of entities declarations
+  currentMap = inMapEntityMap.firstObject () ;
+  while (currentMap != NULL) {
+    macroValidPointer (currentMap) ;
+    generatedZone3.writeCTitleComment (C_String ("Declaration of GGS_") + currentMap->mKey + " Map") ;
+    generatedZone3 << "class GGS_" << currentMap->mKey << " : public C_GGS_entityMap {\n"
+                      "//--- Default Constructor\n"
+                      "  public : GGS_" << currentMap->mKey << " (void) ;\n"
+                      "//--- First object accessor\n"
+                      "  public : GGS_" << currentMap->mInfo.mElementEntityName << " * firstObject (void) ;\n"
+                      "} ;\n\n" ;
+    currentMap = currentMap->nextObject () ;
+  }
   
 //--- Generate list of entities declarations
   currentMultipleReferencedEntity = inMultipleReferencedEntities.firstObject () ;
@@ -249,12 +270,20 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                              GGS_entityToImplementMap & ioEntityMap,
                              const GGS_lstring & inMetamodelComponentName,
                              const GGS_stringset & inMultipleReferencedEntities,
-                             const GGS_lstring & inRootEntityName) {
+                             const GGS_lstring & inRootEntityName,
+                             const GGS_mapEntityMap & inMapEntityMap) {
   C_String generatedZone2 ;
 //--- Include declaration of header file
   generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n"
-                    "#include \"utilities/MF_MemoryControl.h\"\n" ;
-  
+                    "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
+  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2 << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+                    "  static const char gGGSsourceFile [] = \"" << inMetamodelComponentName << ".cpp\" ;\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
+                    "#else\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \n"
+                    "#endif\n\n" ;
+
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (200000) ;
   
   generatedZone3.writeCTitleComment ("Checking Metamodel") ;
@@ -271,7 +300,27 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "      macroMyDelete (ioRootObject, GGS_" << inRootEntityName << ") ;\n"
                       "    }\n"
                       "  }\n"
-                      "}\n" ;
+                      "}\n\n" ;
+
+//--- Generate map of entities declarations
+  GGS_mapEntityMap::element_type * currentMap = inMapEntityMap.firstObject () ;
+  while (currentMap != NULL) {
+    macroValidPointer (currentMap) ;
+    generatedZone3.writeCTitleComment (C_String ("Implementation of GGS_") + currentMap->mKey + " Map") ;
+    generatedZone3 << "GGS_" << currentMap->mKey << "::GGS_" << currentMap->mKey << " (void) {\n"
+                   << "  setErrorMessages (" ;
+    generatedZone3.writeCstringConstant (currentMap->mInfo.mInsertErrorMessage) ;
+    generatedZone3 << ",\n"
+                      "                    " ;
+    generatedZone3.writeCstringConstant (currentMap->mInfo.mSearchErrorMessage) ;      
+    generatedZone3 << ") ;\n"
+                      "}\n\n" ;
+    generatedZone3.writeCHyphenLineComment () ;
+    generatedZone3 << "GGS_" << currentMap->mInfo.mElementEntityName << " * GGS_" << currentMap->mKey << "::firstObject (void) {\n"
+                      "  return (GGS_" << currentMap->mInfo.mElementEntityName << " *) mFirstItem ;\n"
+                      "}\n\n" ;
+    currentMap = currentMap->nextObject () ;
+  }
 
 //--- Generate Implementations of Lists
   GGS_stringset::element_type * currentMultipleReferencedEntity = inMultipleReferencedEntities.firstObject () ;
@@ -450,7 +499,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       currentProperty = currentProperty->nextObject () ;
     }
     generatedZone3 << " {\n" ;
-    GGS_mapPropertyMap::element_type * currentMapProperty = currentEntity->mInfo.mMapOfPropertyMaps.firstObject () ;
+/*    GGS_mapPropertyMap::element_type * currentMapProperty = currentEntity->mInfo.mMapOfPropertyMaps.firstObject () ;
     while (currentMapProperty != NULL) {
       macroValidPointer (currentMapProperty) ;
       generatedZone3 << " " << currentMapProperty->mKey << ".setErrorMessages (" ;
@@ -459,7 +508,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       generatedZone3.writeCstringConstant (currentMapProperty->mInfo.mSearchErrorMessage) ;      
       generatedZone3 << ") ;\n" ;
       currentMapProperty = currentMapProperty->nextObject () ;
-    }
+    }*/
     generatedZone3 << "}\n\n" ;
 
     generatedZone3.writeCHyphenLineComment () ;
@@ -580,7 +629,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         }
         currentProperty = currentProperty->nextObject () ;
       }
-      GGS_mapPropertyMap::element_type * currentMap = currentEntity->mInfo.mMapOfPropertyMaps.firstObject () ;
+/*      GGS_mapPropertyMap::element_type * currentMap = currentEntity->mInfo.mMapOfPropertyMaps.firstObject () ;
       sint32 index = 0 ;
       while (currentMap != NULL) {
         index ++ ;
@@ -689,7 +738,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
           currentPathList = currentPathList->nextObject () ;
         }
         currentMap = currentMap->nextObject () ;
-      }
+      }*/
     //--- Fetched properties
     GGS_fetchedPropertyMap::element_type * fetchedProperty = currentEntity->mInfo.mFetchedPropertyMap.firstObject () ;
     while (fetchedProperty != NULL) {
@@ -759,14 +808,18 @@ routine_generate_metamodel (C_Lexique & inLexique,
                             GGS_entityToImplementMap & ioEntityMap,
                             GGS_lstring inMetamodelComponentName,
                             GGS_stringset inMultipleReferencedEntities,
-                            GGS_lstring inRootEntityName) {
+                            GGS_lstring inRootEntityName,
+                            GGS_mapEntityMap & ioMapEntityMap
+                            COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.galgas_IO_Ptr ()->currentFileErrorsCount () == 0) {
   //--- Generate header file
     generate_metamodel_header_file (inLexique, ioEntityMap, inMetamodelComponentName,
-                                    inMultipleReferencedEntities, inRootEntityName) ;
+                                    inMultipleReferencedEntities, inRootEntityName,
+                                    ioMapEntityMap) ;
   //--- Generate implementation file
     generate_metamodel_cpp_file (inLexique, ioEntityMap, inMetamodelComponentName,
-                                 inMultipleReferencedEntities, inRootEntityName) ;
+                                 inMultipleReferencedEntities, inRootEntityName,
+                                 ioMapEntityMap) ;
   }
 }
 

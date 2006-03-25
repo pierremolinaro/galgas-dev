@@ -47,16 +47,19 @@ instructionsListHaveSameSyntaxSignatures (C_Lexique & lexique_var_,
       currentInstruction = inOtherList.firstObject () ;
       if (currentInstruction == NULL) {
         inEndOfInstructionListLocation.signalSemanticError (lexique_var_, 
-                                "syntax signature error : the branch from this point is too short") ;
+                                "syntax signature error : the branch from this point is too short"
+                                COMMA_HERE) ;
       }else{
         currentInstruction->mInstruction (HERE)->mStartLocation.signalSemanticError (lexique_var_, 
-                                "syntax signature error : the branch from this point is too short") ;
+                                "syntax signature error : the branch from this point is too short"
+                                COMMA_HERE) ;
       }
       sameSignature = false ;
     }else if (currentInstruction != NULL) {
       currentInstruction = inOtherList.firstObject () ;
       currentInstruction->mInstruction (HERE)->mStartLocation.signalSemanticError (lexique_var_, 
-                                       "syntax signature error : the branch from this point is too long") ;
+                                        "syntax signature error : the branch from this point is too long"
+                                        COMMA_HERE) ;
       sameSignature = false ;
     }
   }
@@ -74,7 +77,7 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
   if (! sameSignature) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : a repeat instruction is expected here" ;
-    inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+    inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage COMMA_HERE) ;
   }else{
     GGS_L_branchList_ForGrammarComponent::element_type * currentReferenceBranch = mRepeatList.firstObject () ;
     GGS_L_branchList_ForGrammarComponent::element_type * currentOperandBranch = p->mRepeatList.firstObject () ;
@@ -89,12 +92,12 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
     if (sameSignature && (currentReferenceBranch == NULL) && (currentOperandBranch != NULL)) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the repeat instruction has more branches than the original one" ;
-      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage COMMA_HERE) ;
       sameSignature = false ;
     }else if (sameSignature && (currentReferenceBranch != NULL) && (currentOperandBranch == NULL)) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the repeat instruction has less branches than the original one" ;
-      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage COMMA_HERE) ;
       sameSignature = false ;
     }
   }
@@ -112,7 +115,7 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
   if (! sameSignature) {
     C_String errorMessage ;
     errorMessage << "syntax signature error: a select instruction is expected here" ;
-    inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+    inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage COMMA_HERE) ;
   }else{
     GGS_L_branchList_ForGrammarComponent::element_type * currentReferenceBranch = mSelectList.firstObject () ;
     GGS_L_branchList_ForGrammarComponent::element_type * currentOperandBranch = p->mSelectList.firstObject () ;
@@ -127,12 +130,12 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
     if (sameSignature && (currentReferenceBranch == NULL) && (currentOperandBranch != NULL)) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the select instruction has more branches than the original one" ;
-      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage COMMA_HERE) ;
       sameSignature = false ;
     }else if (sameSignature && (currentReferenceBranch != NULL) && (currentOperandBranch == NULL)) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the select instruction has less branches than the original one" ;
-      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+      inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage COMMA_HERE) ;
       sameSignature = false ;
     }
   }
@@ -149,7 +152,7 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
   if ((p == NULL) || (p->mNonterminalSymbolName.compare (mNonterminalSymbolName) != 0)) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : <" << mNonterminalSymbolName << "> non terminal is expected here" ;
-    inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+    inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage COMMA_HERE) ;
     p = NULL ;
   }
   return p != NULL ;
@@ -165,7 +168,7 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
   if ((p == NULL) || (p->mTerminalSymbolName.compare (mTerminalSymbolName) != 0)) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : $" << mTerminalSymbolName << "$ terminal is expected here" ;
-    inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage) ;
+    inInstruction->mStartLocation.signalSemanticError (lexique_var_, errorMessage COMMA_HERE) ;
     p = NULL ;
   }
   return p != NULL ;
@@ -175,7 +178,8 @@ isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
 
 void
 routine_checkLabelSignatures (C_Lexique & lexique_var_,
-                              GGS_typeAltProductionsMap & inAltProductionMap) {
+                              GGS_typeAltProductionsMap & inAltProductionMap
+                              COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeAltProductionsMap::element_type * current = inAltProductionMap.firstObject () ;
   macroValidPointer (current) ;
   GGS_L_ruleSyntaxSignature referenceSyntaxList = current->mInfo.mSyntaxSignature ;
@@ -194,7 +198,8 @@ routine_checkLabelSignatures (C_Lexique & lexique_var_,
 
 void
 routine_checkParseRewindSignatures (C_Lexique & lexique_var_,
-                                    GGS_L_parse_rewind_signature_list & inParseRewindSignatureList) {
+                                    GGS_L_parse_rewind_signature_list & inParseRewindSignatureList
+                                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_L_parse_rewind_signature_list::element_type * current = inParseRewindSignatureList.firstObject () ;
   macroValidPointer (current) ;
   GGS_L_ruleSyntaxSignature referenceList = current->mSignature ;

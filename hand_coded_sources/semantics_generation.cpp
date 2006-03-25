@@ -33,7 +33,8 @@
 
 void
 routine_check_KL_escapeCharacters (C_Lexique & inLexique,
-                                   GGS_lstring inString) {
+                                   GGS_lstring inString
+                                   COMMA_LOCATION_ARGS) {
   if (inString.isBuilt ()) {
   	bool gotPercent = false ;
     const char * cString = inString.cString () ;
@@ -42,7 +43,7 @@ routine_check_KL_escapeCharacters (C_Lexique & inLexique,
         if (((*cString) != 'K') && ((*cString) != 'L') && ((*cString) != '%')) {
           C_String errorMessage ;
           errorMessage << "unknown escape sequence: only %K, %L and %% sequences are defined" ;
-          inString.semanticError (inLexique, errorMessage.cString ()) ;
+          inString.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
         }
         gotPercent = false ;
       }else if ((*cString) == '%') {
@@ -53,7 +54,7 @@ routine_check_KL_escapeCharacters (C_Lexique & inLexique,
     if (gotPercent) {
       C_String errorMessage ;
       errorMessage << "string ends with a single %: only %K, %L and %% sequences are defined" ;
-      inString.semanticError (inLexique, errorMessage.cString ()) ;
+      inString.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
     }
   }
 }
@@ -62,7 +63,8 @@ routine_check_KL_escapeCharacters (C_Lexique & inLexique,
 
 void
 routine_check_K_escapeCharacters (C_Lexique & inLexique,
-                                  GGS_lstring inString) {
+                                  GGS_lstring inString
+                                  COMMA_LOCATION_ARGS) {
   if (inString.isBuilt ()) {
   	bool gotPercent = false ;
     const char * cString = inString.cString () ;
@@ -71,7 +73,7 @@ routine_check_K_escapeCharacters (C_Lexique & inLexique,
         if (((*cString) != 'K') && ((*cString) != '%')) {
           C_String errorMessage ;
           errorMessage << "unknown escape sequence: only %K and %% sequences are defined" ;
-          inString.semanticError (inLexique, errorMessage.cString ()) ;
+          inString.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
         }
         gotPercent = false ;
       }else if ((*cString) == '%') {
@@ -82,7 +84,7 @@ routine_check_K_escapeCharacters (C_Lexique & inLexique,
     if (gotPercent) {
       C_String errorMessage ;
       errorMessage << "string ends with a single %: only %K and %% sequences are defined" ;
-      inString.semanticError (inLexique, errorMessage.cString ()) ;
+      inString.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
     }
   }
 }
@@ -94,7 +96,8 @@ routine_buildFileNameWithPath (C_Lexique &,
                                GGS_lstring & outFileNameWithPath,
                                GGS_lstring inPath,
                                const GGS_lstring & inCppClassName,
-                               const GGS_lstring & inExtension) {
+                               const GGS_lstring & inExtension
+                               COMMA_UNUSED_LOCATION_ARGS) {
   C_String s ;
   if (inPath.length () > 0) {
     s << inPath << '/' ;
@@ -110,7 +113,8 @@ routine_appendJokersIfNeeded (C_Lexique &,
                               GGS_typeCplusPlusNameList & ioVariablesList,
                               GGS_uint inEffectiveArgumentsCount,
                               GGS_uint inFormalParametersCount,
-                              GGS_typeCplusPlusName inNullName) {
+                              GGS_typeCplusPlusName inNullName
+                              COMMA_UNUSED_LOCATION_ARGS) {
   const uint32 effectiveArgumentsCount = inEffectiveArgumentsCount.uintValue () ;
   const uint32 formalParametersCount = inFormalParametersCount.uintValue () ;
   for (unsigned i=effectiveArgumentsCount ; i<formalParametersCount ; i++) {
@@ -209,7 +213,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
     currentArgument = currentArgument->nextObject () ;
   }
-  inHfile << ") ;\n\n" ;
+  inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -255,7 +259,7 @@ void cPtr_typeRoutineAengendrer
     }
     currentArgument = currentArgument->nextObject () ;
   }
-  inCppFile << ") {\n" ;
+  inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n" ;
 //--- Engendrer la liste d'instructions
   generateInstructionListForList (mInstructionsList, inCppFile,
                                   inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
@@ -298,7 +302,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
     currentArgument = currentArgument->nextObject () ;
   }
-  inHfile << ") ;\n\n" ;
+  inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1395,6 +1399,14 @@ generate_cpp_file (C_Lexique & inLexique,
                     "#include \"files/C_TextFileWrite.h\"\n"
                     "#include \"" << nomComposant << ".h\"\n\n";
 
+  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2 << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+                    "  static const char gGGSsourceFile [] = \"" << nomComposant << ".cpp\" ;\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
+                    "#else\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \n"
+                    "#endif\n\n" ;
+
 //--- Engendrer les fichiers d'inclusion correspondant aux methodes externes
   GGS_stringset::element_type * currentInclude = tableFichiersEnTetePourFichierCPP.firstObject () ;
   if (currentInclude != NULL) {
@@ -1451,7 +1463,8 @@ routine_generateSemanticsComponent (C_Lexique & inLexique,
                                     GGS_stringset & includesForHeaderFile,
                                     GGS_string & defLexique,
                                     GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
-                                    GGS_stringset & tableFichiersEnTetePourFichierCPP) {
+                                    GGS_stringset & tableFichiersEnTetePourFichierCPP
+                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.galgas_IO_Ptr ()->currentFileErrorsCount () == 0) {
     generate_header_file (inLexique,
                           nomComposant,

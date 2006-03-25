@@ -946,29 +946,31 @@ rule <rule_declaration_or_implementation>
     extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
     extract type->@typeGalgas_singleEntity (?* ? allPropertiesMap ...) error inEffectiveReturnedEntity : messageGalgasType ;
     foreach allPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName ??*) :
-    #--- Type name
-      @AC_semanticsEntity entite ;
-      [!?ioEntitiesMap searchKey !kTypeName ?entite] ;
-      @AC_galgasType definitionType ;
-      extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
-    #--- Type can be used for instanciation ?
-      [definitionType typeCanBeUsedInObjectDeclaration] ;
-    #--- Variable name
-      @lstring nomVariable := [@lstring new ![kKey value] ![inEffectiveReturnedEntity location]] ;
-      @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-      if kKind == [@metamodelPropertyKind multipleReferenceProperty] then
-        definitionType := [@typeGalgas_multipleEntity new ! kTypeName] ;
-         [!?ioVariablesMap insertInArgument !nomVariable !definitionType !nomCppVariable] ;
-        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-        listeInstructions += !instruction ;
-      elsif kKind == [@metamodelPropertyKind attributeProperty] then
-        [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
-        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-        listeInstructions += !instruction ;
-      elsif kKind == [@metamodelPropertyKind singleReferenceProperty] then
-        [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
-        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-        listeInstructions += !instruction ;
+      if not (kKind == [@metamodelPropertyKind mapProperty]) then
+      #--- Type name
+        @AC_semanticsEntity entite ;
+        [!?ioEntitiesMap searchKey !kTypeName ?entite] ;
+        @AC_galgasType definitionType ;
+        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
+      #--- Type can be used for instanciation ?
+        [definitionType typeCanBeUsedInObjectDeclaration] ;
+      #--- Variable name
+        @lstring nomVariable := [@lstring new ![kKey value] ![inEffectiveReturnedEntity location]] ;
+        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+        if kKind == [@metamodelPropertyKind multipleReferenceProperty] then
+          definitionType := [@typeGalgas_multipleEntity new ! kTypeName] ;
+           [!?ioVariablesMap insertInArgument !nomVariable !definitionType !nomCppVariable] ;
+          @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+          listeInstructions += !instruction ;
+        elsif kKind == [@metamodelPropertyKind attributeProperty] then
+          [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+          @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+          listeInstructions += !instruction ;
+        elsif kKind == [@metamodelPropertyKind singleReferenceProperty] then
+          [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+          @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+          listeInstructions += !instruction ;
+        end if ;
       end if ;
     end foreach ;
   end if ;

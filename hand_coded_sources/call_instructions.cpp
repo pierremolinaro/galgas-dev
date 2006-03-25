@@ -108,7 +108,9 @@ void cPtr_typeModifierCallInstruction
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << ") ;\n" ;
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << aNomMethodeSimple.currentLineNumber ()
+              << ")) ;\n" ;
   }
 }
 
@@ -224,7 +226,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "  }catch (const C_TextReadException & inFileReadError) {\n"
                  "    " ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".signalSemanticError (lexique_var_, inFileReadError.what ()) ;\n"
+    ioCppFile << ".signalSemanticError (lexique_var_, inFileReadError.what () SOURCE_FILE_AT_LINE ("
+              << mGrammarName.currentLineNumber ()
+              << ")) ;\n"
                  "  }\n"
                  "  macroMyDelete (scanner_, " << inLexiqueClassName << ") ;\n"
                  "}\n" ; 
@@ -299,7 +303,9 @@ void cPtr_typeInstructionAppelActionExterne
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << ") ;\n" ; 
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << aNomAction.currentLineNumber ()
+              << ")) ;\n" ; 
     if (nombreArgumentsTestes > 0) {
       ioCppFile << "}\n" ;
     }
@@ -353,7 +359,9 @@ void cPtr_typeRoutineCallInstruction
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << ") ;\n" ; 
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << aNomRoutine.currentLineNumber ()
+              << ")) ;\n" ; 
   }
 }
 

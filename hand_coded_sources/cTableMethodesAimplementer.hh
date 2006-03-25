@@ -38,7 +38,7 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//        classe element table 'cElementTableMethodesAimplementer'            *
+//        classe element table 'cElementTableMethodesAimplementer'           *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -182,7 +182,8 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                          const char * messageErreurInsertion) {
+                                          const char * messageErreurInsertion
+                                          COMMA_LOCATION_ARGS) {
   sint32 numeroElement = -1 ;
   if (isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
@@ -191,7 +192,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
     internalInsert (info, clef, numeroElement, true, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;
     }
   }
   return numeroElement ;
@@ -204,7 +205,8 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexiq
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                          const GGS_location & inLocation,
-                                          const char * messageErreurInsertion) {
+                                          const char * messageErreurInsertion
+                                          COMMA_LOCATION_ARGS) {
   sint32 numeroElement = -1 ;
   if (isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
@@ -213,7 +215,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexiq
     internalInsert (info, clef, numeroElement, false, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;
     }
   }
   return numeroElement ;

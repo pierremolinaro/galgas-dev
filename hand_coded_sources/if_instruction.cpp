@@ -28,9 +28,9 @@
 
 void cPtr_typeTestComplement::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "(! " ;
+  ioCppFile << "(! (" ;
   mTest (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ')' ;
+  ioCppFile << "))" ;
 }
 
 //---------------------------------------------------------------------------*

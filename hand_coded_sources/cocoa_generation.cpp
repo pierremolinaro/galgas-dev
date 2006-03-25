@@ -263,7 +263,8 @@ routine_generateCocoaComponent (C_Lexique & inLexique,
                                 GGS_lstring & inGUIkindName,
                                 GGS_lstring & inCLIToolName,
                                 GGS_lstring & inLexiqueComponentName,
-                                GGS_M_optionComponents & inOptionComponentsMap) {
+                                GGS_M_optionComponents & inOptionComponentsMap
+                                COMMA_UNUSED_LOCATION_ARGS) {
   if (inGUIkindName == "cocoa") {
     generate_mm_file_for_cocoa (inLexique,
                                 inGUIcomponentName,
@@ -272,7 +273,8 @@ routine_generateCocoaComponent (C_Lexique & inLexique,
                                 inOptionComponentsMap) ;
   }else{
     inGUIkindName.semanticError (inLexique,
-                                 "only the \"cocoa\" gui is supported") ;
+                                 "only the \"cocoa\" gui is supported"
+                                 COMMA_HERE) ;
   }
 }
 

@@ -3080,7 +3080,7 @@ rule <semantic_instruction>
   extract warningMessageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
 #--- Generate instruction
   @typeInstruction instruction ;
-  instruction := [@typeWarningInstruction new !errorExpression !warningMessageExpression] ;
+  instruction := [@typeWarningInstruction new !errorExpression !warningMessageExpression !here] ;
   ioInstructionsList += !instruction ;
   $;$ ;
 end rule ;
@@ -3124,7 +3124,7 @@ rule <semantic_instruction>
 #--- Check that error message is a @string instance
   extract errorMessageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
 #--- Build instruction and append it to instructions list
-  @typeInstruction instruction := [@typeErrorInstruction new !errorLocationExpression !errorMessageExpression] ;
+  @typeInstruction instruction := [@typeErrorInstruction new !errorLocationExpression !errorMessageExpression !here] ;
   ioInstructionsList += !instruction ;
 #--- Valuations fictives
   select

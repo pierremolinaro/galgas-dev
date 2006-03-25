@@ -324,7 +324,7 @@ fixInfos (cInfo & inInfo,
   GGS_luint index ;
   GGS_M_nonterminalSymbolAltsForGrammar unusedParameter ;
   inInfo.mNonterminalSymbolsMapForGrammar.methode_searchKeyGetIndex (inLexique, mNonterminalSymbolName,
-                                            index, unusedParameter) ;
+                                            index, unusedParameter COMMA_HERE) ;
   mNonterminalSymbolIndex.mValue = index.uintValue () ;
 }
 
@@ -461,7 +461,8 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                         GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
                         GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                         GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                        GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                        GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap
+                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_stringset classesNamesSet ;
   bool warningFlag = false ;
 
@@ -478,7 +479,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
       GGS_luint index ;
       GGS_M_nonterminalSymbolAltsForGrammar unused ;
       inNonterminalSymbolsMapForGrammar.methode_searchKeyGetIndex (inLexique, currentRule->mLeftNonterminalSymbol,
-                                                index, unused) ;
+                                                index, unused COMMA_HERE) ;
       currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
     //--- Fix, for each rule, left nonterminal symbol index
       fixInfoForInstructionsList (currentRule->mInstructionsList,
@@ -506,7 +507,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
   }else if (inGrammarClass.compare ("LR1") == 0) { // Force LR (1) grammar
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
-    inGrammarClass.signalSemanticError (inLexique, "Unknown grammar class") ;
+    inGrammarClass.signalSemanticError (inLexique, "Unknown grammar class" COMMA_HERE) ;
   }
 
 //--- Error flag
@@ -523,7 +524,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
   if (! optionExists) {
     C_String warningMessage ;
     warningMessage << galgas_cli_component << ".@" << outputHTMLgrammarFile << " option does not exist." ;
-    inLexique.onTheFlySemanticWarning (warningMessage) ;
+    inLexique.onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
   }
 //--- Create "style.css" file if it does not exist
   if (outputHTMLfile) {
@@ -799,7 +800,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging" ;
 
     }
-    errorLocation.signalSemanticError (inLexique, errorMessage) ;
+    errorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }else if (warningFlag) {
     C_String s ;
     s << "OK ; no error, but warning(s) step(s)" ;
@@ -819,7 +820,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
     }else{
       warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName << ".html' file" ;
     }
-    errorLocation.signalSemanticWarning (inLexique, warningMessage) ;
+    errorLocation.signalSemanticWarning (inLexique, warningMessage COMMA_HERE) ;
   }else{
     HTMLfile.writeCTitleComment ("OK (no error, no warning)", "title") ;
   }

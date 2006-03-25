@@ -178,7 +178,8 @@ sint32 cClassMethodsMap <INFO>::insertAbstract (C_Lexique & inLexique,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                           const GGS_location & inLocation,
-                                          const char * messageErreurInsertion) {
+                                          const char * messageErreurInsertion
+                                          COMMA_LOCATION_ARGS) {
   sint32 numeroElement = -1 ;
   if (mReferenceCountPtr != NULL) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
@@ -187,7 +188,7 @@ sint32 cClassMethodsMap <INFO>::insertAbstract (C_Lexique & inLexique,
     numeroElement = internalInsert (info, clef, true, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;
     }
   }
   return numeroElement ;
@@ -200,7 +201,8 @@ sint32 cClassMethodsMap <INFO>::insertNotAbstract (C_Lexique & inInputOutput,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                           const GGS_location & inLocation,
-                                          const char * messageErreurInsertion) {
+                                          const char * messageErreurInsertion
+                                          COMMA_LOCATION_ARGS) {
   sint32 numeroElement = -1 ;
   if (mReferenceCountPtr != NULL) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
@@ -209,7 +211,7 @@ sint32 cClassMethodsMap <INFO>::insertNotAbstract (C_Lexique & inInputOutput,
     numeroElement = internalInsert (info, clef, false, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
-      inLocation.oldStyleSemanticErrorForGenericMap (inInputOutput, messageErreurInsertion, clef) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inInputOutput, messageErreurInsertion, clef COMMA_THERE) ;
     }
   }
   return numeroElement ;
@@ -259,7 +261,8 @@ cElementTableMethodesUtilisables <INFO> * cClassMethodsMap <INFO>::
 searchKey (C_Lexique & inLexique,
            const GGS_lstring & inKey,
            const GGS_location & inLocation,
-           const char * inSearchErrorMessage) {
+           const char * inSearchErrorMessage
+           COMMA_LOCATION_ARGS) {
   element_type * result = (element_type *) NULL ;
   if (isBuilt () && inKey.isBuilt ()) {
     result = mRoot ;
@@ -276,7 +279,7 @@ searchKey (C_Lexique & inLexique,
       }
     }
     if (result == NULL) { // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, inSearchErrorMessage, inKey) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, inSearchErrorMessage, inKey COMMA_THERE) ;
     }
   }
   return result ;
@@ -289,7 +292,8 @@ cElementTableMethodesUtilisables <INFO> * cClassMethodsMap <INFO>::
 searchForOverride (C_Lexique & inLexique,
                    const GGS_lstring & inKey,
                    const GGS_location & inLocation,
-                   const char * inSearchErrorMessage) {
+                   const char * inSearchErrorMessage
+                   COMMA_LOCATION_ARGS) {
   element_type * result = (element_type *) NULL ;
   if (isBuilt () && inKey.isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
@@ -308,7 +312,7 @@ searchForOverride (C_Lexique & inLexique,
       }
     }
     if (result == NULL) { // Rechercher une occurrence '%%', afin de la remplacer par la clef
-      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, inSearchErrorMessage, inKey) ;
+      inLocation.oldStyleSemanticErrorForGenericMap (inLexique, inSearchErrorMessage, inKey COMMA_THERE) ;
     }else{
       macroValidPointer (result) ;
       result->champEstAbstraite = false ; // La methode n'est plus abstraite
@@ -320,14 +324,14 @@ searchForOverride (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cClassMethodsMap <INFO>::epilogue_definitionClasseNonAbstraite (C_Lexique & lexique) {
+void cClassMethodsMap <INFO>::epilogue_definitionClasseNonAbstraite (C_Lexique & lexique COMMA_LOCATION_ARGS) {
   cElementTableMethodesUtilisables <INFO> * p = mFirstItem ;
   while (p != NULL) {
     macroValidPointer (p) ;
     if (p->champEstAbstraite) {
       C_String message ;
       message << "la methode abstraite '" << p->mKey << "' n'a pas ete surchargee" ;
-      lexique.onTheFlySemanticError (message) ;
+      lexique.onTheFlySemanticError (message COMMA_THERE) ;
     }
     p = p->mNextItem ;
   }

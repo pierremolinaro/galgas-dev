@@ -384,7 +384,8 @@ routine_generatePRGM (C_Lexique & inLexique,
                       GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
                       GGS_luint & inMaxErrorsCount,
                       GGS_luint & inMaxWarningsCount,
-                      GGS_M_optionComponents & inOptionComponentsMap) {
+                      GGS_M_optionComponents & inOptionComponentsMap
+                      COMMA_UNUSED_LOCATION_ARGS) {
   generate_header_file_for_prgm (inLexique,
                                  inProgramComponentName,
                                  inOptionComponentsMap,

@@ -109,23 +109,28 @@ template <typename INFO> class cClassMethodsMap {
   public : element_type * searchKey (C_Lexique & inLexique,
                                   const GGS_lstring & inKey,
                                   const GGS_location & inLocation,
-                                  const char * inSearchErrorMessage) ;
+                                  const char * inSearchErrorMessage
+                                  COMMA_LOCATION_ARGS) ;
+
   public : element_type * searchForOverride (C_Lexique & inLexique,
                                   const GGS_lstring & inKey,
                                   const GGS_location & inLocation,
-                                  const char * inSearchErrorMessage) ;
+                                  const char * inSearchErrorMessage
+                                  COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertAbstract (C_Lexique & inLexique,
                                   const INFO & info,
                                   const GGS_lstring & clef,
                                   const GGS_location & inLocation,
-                                  const char * messageErreurInsertion) ;
+                                  const char * messageErreurInsertion
+                                  COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertNotAbstract (C_Lexique & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                      const GGS_location & inLocation,
-                                     const char * messageErreurInsertion) ;
+                                     const char * messageErreurInsertion
+                                     COMMA_LOCATION_ARGS) ;
 
   protected : void insulateMap (void) ;
 
@@ -135,8 +140,8 @@ template <typename INFO> class cClassMethodsMap {
                                    element_type * & racine) ;
 
 //--- Methodes de bloc
-  public : void prologue_definitionClasseNonAbstraite (C_Lexique &) {}
-  public : void epilogue_definitionClasseNonAbstraite (C_Lexique &) ;
+  public : void prologue_definitionClasseNonAbstraite (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {}
+  public : void epilogue_definitionClasseNonAbstraite (C_Lexique & COMMA_LOCATION_ARGS) ;
 } ;
 
 //---------------------------------------------------------------------------*

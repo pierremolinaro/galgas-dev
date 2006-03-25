@@ -55,7 +55,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
  "insert",          "in",         "send",      "action",
  "grammar",     "option",         "root",  "oppositeOf",
  "unused",       "label",        "style",         "gui",
- "do",            "self",     "relation" ;
+ "do",            "self",     "relation",          "of" ;
 
 rule 'a'->'z' | 'A'->'Z' :
   repeat
@@ -189,7 +189,7 @@ end rule ;
 
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
-  "*",     "|",    ",",      ".",     "<>",
+  "*",     "|",    ",",      ".",
   "::",    ">",    "<",      ";",      ":",
   "-",     "(",    ")",     "->",      "?",
   "==",   "??",    "!",     ":=",      "...",

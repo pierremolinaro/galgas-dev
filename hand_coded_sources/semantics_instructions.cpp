@@ -155,7 +155,8 @@ void cPtr_typeSimpleExtractInstruction
     ioCppFile << " (HERE)->message_" << aNomMessage << " () ;\n" 
                  "      " ;
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".signalExtractError (lexique_var_, message1_, message2_) ;\n"
+    ioCppFile << ".signalExtractError (lexique_var_, message1_, message2_ SOURCE_FILE_AT_LINE ("
+              << aNomMessage.currentLineNumber () << ")) ;\n"
                  "    }\n"
                  "  }else{\n" ;
     ioCppFile.incIndentation (4) ;
@@ -347,7 +348,9 @@ void cPtr_typeErrorInstruction
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".reader_location ().signalGGSSemanticError (lexique_var_, " ;
     mErrorMessageExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ") ;\n" ;
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << mLocation.currentLineNumber ()
+              << ")) ;\n" ;
   }
 }
 
@@ -388,7 +391,9 @@ void cPtr_typeWarningInstruction
     mWarningLocationExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".reader_location ().signalGGSSemanticWarning (lexique_var_, " ;
     mWarningMessageExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ") ;\n" ;
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << mLocation.currentLineNumber ()
+              << ")) ;\n" ;
   }
 }
 
@@ -788,7 +793,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
       current->mExpression (HERE)->generateExpression (ioCppFile) ;
       current = current->nextObject () ;
     }
-    ioCppFile << ") ;\n" ;
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << aNomMethodeBloc.currentLineNumber ()
+              << ")) ;\n" ;
   }
 }
 
@@ -840,7 +847,9 @@ void cPtr_typeMapBlockEpilogueInstruction
       current->mExpression (HERE)->generateExpression (ioCppFile) ;
       current = current->nextObject () ;
     }
-    ioCppFile << ") ;\n" ;
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << aNomMethodeBloc.currentLineNumber ()
+              << ")) ;\n" ;
   }
 }
 
