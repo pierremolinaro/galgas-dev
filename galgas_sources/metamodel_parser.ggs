@@ -296,35 +296,27 @@ rule <parse_metamodel>
     foreach kFetchedPropertyMap (??@lstring kFetchedPropertyName
                                  ??@lstring kFetchedEntityName
                                  ??@lstring kAttributeName
-                                 ??@L_propertyPath kPath
-                                 ??@location kEndOfPathLocation) :
+                                 ??@lstring kMapAttributeName) :
     #--- Check designated attribute in an @lstring
       @metamodelPropertyKind kind ;
-      @lstring attributeTypeName ;
-      [!?allPropertiesMap searchKey !kAttributeName ?kind ?attributeTypeName ?*] ;
+      @lstring propertyTypeName ;
+      [!?allPropertiesMap searchKey !kAttributeName ?kind ?propertyTypeName ?*] ;
       if kind != [@metamodelPropertyKind attributeProperty] then
         error kAttributeName: "this property is not an attribute" ;
-      elsif [attributeTypeName value] != "lstring" then
+      elsif [propertyTypeName value] != "lstring" then
         error kAttributeName: "this attribute should be an '@lstring' attribute" ;
       end if ;
-    #--- Check path
-      @lstring typeName ;
-      checkPath
-        !?entityMap
-        !?mapEntityMap
-        !kAllPropertiesMap
-        !kCurrentEntity
-        !kPath
-        ?kind
-        ?typeName
-        ?*
-      ;
-      if kind != [@metamodelPropertyKind mapProperty] then
-        error kEndOfPathLocation: "this path does not designate a map property" ;
-      elsif [kFetchedEntityName value] != [typeName value] then
-        error kAttributeName: "this property has '@"
-        . [kFetchedEntityName value]
-        . "', while '@" . [typeName value] . "' was expected" ;
+      [!?allPropertiesMap searchKey !kMapAttributeName ?kind ?propertyTypeName ?*] ;
+      if kind != [@metamodelPropertyKind contextProperty] then
+        error kAttributeName: "this path does not designate a context property" ;
+      else
+        @lstring elementTypeName ;
+        [!?mapEntityMap searchKey !propertyTypeName ?elementTypeName ?* ?*] ;
+        if [kFetchedEntityName value] != [elementTypeName value] then
+          error kMapAttributeName: "this property has '@"
+          . [kFetchedEntityName value]
+          . "', while '@" . [elementTypeName value] . "' was expected" ;
+        end if ;
       end if ;
     end foreach ;
   end foreach ;
@@ -586,14 +578,13 @@ rule <entity_declaration>
       @lstring fetchedAttributeName ;
       $identifier$ ? fetchedAttributeName ;
       $in$ ;
-      @L_propertyPath path ;
-      <property_path> ?path ;
+      @lstring mapPropertyName ;
+      $identifier$ ? mapPropertyName ;
       [!?fetchedPropertyMap insertKey
         !attributeName
         !propertyTypeName
         !fetchedAttributeName
-        !path
-        !here
+        !mapPropertyName
       ] ;
     or
       $($ ;

@@ -488,8 +488,7 @@ map @contextPropertyMap {
 map @fetchedPropertyMap {
   @lstring mTypeName ;
   @lstring mAttributeName ;
-  @L_propertyPath mPath ;
-  @location mEndOfPathLocation ;
+  @lstring mMapAttributeName ;
   insert insertKey error message "the '%K' fetched property has been already declared in %L" ;
   search searchKey error message "the '%K' fetched property is not declared" ;
 }

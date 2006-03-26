@@ -284,6 +284,7 @@ class @typeWarningInstruction extends @typeInstruction {
 
 class @typeMessageInstruction extends @typeInstruction {
   @typeExpression mMessageExpression ;
+  @location mInstructionLocation ;
 }
 
 #---------------------------------------------------------------------------*
