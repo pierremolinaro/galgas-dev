@@ -187,8 +187,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     }
     generatedZone3 << ") ;\n"
                       "//--- Destructor\n"
-                      "  public : virtual ~GGS_" << currentEntity->mKey << " (void) ;\n" ;
-    generatedZone3 << "//--- Build Owner links and Maps\n"
+                      "  public : virtual ~GGS_" << currentEntity->mKey << " (void) ;\n"
+                      "//--- Build Owner links and Maps\n"
                       "  public : virtual void buildOwnerLinksAndMaps (C_Lexique & _inLexique,\n"
                       "                                                C_GGS_Object * _inOwner,\n"
                       "                                                bool & _ioOk" ;
@@ -204,7 +204,10 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     generatedZone3 << ") ;\n" ;
 
   //--- Attributes                 
-    generatedZone3 << "//--- Properties\n" ;
+    generatedZone3 << "//--- Fetch properties\n"
+                      "  public : virtual void fetchProperties (C_Lexique & _inLexique,\n"
+                      "                                         bool & _ioOk) ;\n"
+                      "//--- Properties\n" ;
     currentProperty = currentEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
@@ -296,6 +299,9 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "  //--- Build owner links\n"
                       "    bool ok = true ;\n"
                       "    ioRootObject->buildOwnerLinksAndMaps (_inLexique, NULL, ok) ;\n"
+                      "    if (ok) {\n"
+                      "      ioRootObject->fetchProperties (_inLexique, ok) ;\n"
+                      "    }\n"
                       "    if (! ok) {\n"
                       "      macroMyDelete (ioRootObject, GGS_" << inRootEntityName << ") ;\n"
                       "    }\n"
@@ -655,21 +661,51 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         }
         currentInsertedProperty = currentInsertedProperty->nextObject () ;
       }
-    //--- Fetched properties
+    generatedZone3 << "}\n\n" ;
+
+  //--- fetchProperties
+    generatedZone3.writeCHyphenLineComment () ;
+    generatedZone3 << "void GGS_" << currentEntity->mKey << "::\n"
+                      "fetchProperties (C_Lexique & _inLexique,\n"
+                      "                 bool & _ioOk) {\n" ;
+    if (currentEntity->mInfo.mSuperEntityName != "") {
+      generatedZone3 << "  GGS_" << currentEntity->mInfo.mSuperEntityName << "::fetchProperties (_inLexique, _ioOk) ;\n" ;
+    }
+    currentProperty = currentEntity->mInfo.mEntityPropertiesMap.firstObject () ;
+    while (currentProperty != NULL) {
+      macroValidPointer (currentProperty) ;
+      switch (currentProperty->mInfo.mKind.enumValue ()) {
+      case GGS_metamodelPropertyKind::enum_attributeProperty:
+        break ;
+      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+        generatedZone3 << "  " << currentProperty->mKey << "->fetchProperties (_inLexique, _ioOk) ;\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+        generatedZone3 << "  GGS_" << currentProperty->mInfo.mTypeName << " * _p_" << currentProperty->mKey
+                       << " = " << currentProperty->mKey << ".mFirstObject ;\n"
+                          "  while (_p_" << currentProperty->mKey << " != NULL) {\n"
+                          "    _p_" << currentProperty->mKey << "->fetchProperties (_inLexique, _ioOk) ;\n"
+                          "    _p_" << currentProperty->mKey << " = _p_" << currentProperty->mKey << "->_mNextObject ;\n"
+                          "  }\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
+      case GGS_metamodelPropertyKind::enum_contextProperty:
+      case GGS_metamodelPropertyKind::enum_fetchedProperty:
+      case GGS_metamodelPropertyKind::enum_relationProperty:
+      case GGS_metamodelPropertyKind::kNotBuilt:
+        break ;
+      }
+      currentProperty = currentProperty->nextObject () ;
+    }
     GGS_fetchedPropertyMap::element_type * fetchedProperty = currentEntity->mInfo.mFetchedPropertyMap.firstObject () ;
     while (fetchedProperty != NULL) {
       macroValidPointer (fetchedProperty) ;
-      generatedZone3 << "  " << fetchedProperty->mKey << " = (GGS_" << fetchedProperty->mInfo.mTypeName << " *) " ;
-      GGS_L_propertyPath::element_type * pathElement = fetchedProperty->mInfo.mPath.firstObject () ;
-      bool first = true ;
-      while (pathElement != NULL) {
-        macroValidPointer (pathElement) ;
-        if (first) { first = false ; }else{ generatedZone3 << "->" ; }
-        generatedZone3 << pathElement->mPathElement ;
-        pathElement = pathElement->nextObject () ;
-      }
-      generatedZone3 << ".searchKey (_inLexique, " << fetchedProperty->mInfo.mAttributeName
-                     << ", _indexOf_" << fetchedProperty->mKey << ", _ioOk) ;\n" ;
+      generatedZone3 << "  " << fetchedProperty->mKey << " = (GGS_" << fetchedProperty->mInfo.mTypeName << " *) "
+                     << fetchedProperty->mInfo.mMapAttributeName
+                     << "->searchKey (_inLexique, " << fetchedProperty->mInfo.mAttributeName
+                     << ", _indexOf_" << fetchedProperty->mKey << ", _ioOk SOURCE_FILE_AT_LINE ("
+                     << fetchedProperty->mKey.currentLineNumber ()
+                     << ")) ;\n" ;
       fetchedProperty = fetchedProperty->nextObject () ;
     }
     generatedZone3 << "}\n\n" ;

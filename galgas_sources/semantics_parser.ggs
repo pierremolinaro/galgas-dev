@@ -3155,6 +3155,7 @@ rule <semantic_instruction>
   ?!@typeInstructionsList ioInstructionsList
 :
   $message$ ;
+  @location instructionLocation := here ;
 #--- Message
   @typeExpression messageExpression ;
   @AC_galgasType messageExpressionType ;
@@ -3168,7 +3169,7 @@ rule <semantic_instruction>
 #--- Check that error message is a @string instance
   extract messageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
 #--- Construire l'instruction
-  @typeInstruction instruction := [@typeMessageInstruction new !messageExpression] ;
+  @typeInstruction instruction := [@typeMessageInstruction new !messageExpression !instructionLocation] ;
   ioInstructionsList += !instruction ;
   $;$ ;
 end rule ;

@@ -432,7 +432,9 @@ void cPtr_typeMessageInstruction
   if (inGenerateSemanticInstructions) {
     ioCppFile << "lexique_var_.printMessage (" ;
     mMessageExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ") ;\n" ;
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.currentLineNumber ()
+              << ")) ;\n" ;
   }
 }
 
