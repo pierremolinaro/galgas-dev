@@ -37,7 +37,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                  << "\n#include <string.h>\n\n" ;
 
 //--- Include declaration of predefined types
-  generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
+  generatedZone2 << "#include \"bdd/C_BDD.h\"\n"
+                    "#include \"galgas/C_GGS_Object.h\"\n"
                     "#include \"galgas/C_GGS_entityMap.h\"\n"
                     "#include \"galgas/AC_galgas_io.h\"\n"
                     "#include \"galgas/GGS_location.h\"\n"
@@ -207,6 +208,9 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     generatedZone3 << "//--- Fetch properties\n"
                       "  public : virtual void fetchProperties (C_Lexique & _inLexique,\n"
                       "                                         bool & _ioOk) ;\n"
+                      "//--- Build relations\n"
+                      "  public : virtual void buildRelations (C_Lexique & _inLexique,\n"
+                      "                                         bool & _ioOk) ;\n"
                       "//--- Properties\n" ;
     currentProperty = currentEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
@@ -223,8 +227,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
         break ;
       case GGS_metamodelPropertyKind::enum_fetchedProperty:
         generatedZone3 << "  public : GGS_" << currentProperty->mInfo.mTypeName
-                       << " * " << currentProperty->mKey << " ;\n"
-                       << "  public : uint32 _indexOf_" << currentProperty->mKey << " ;\n"  ;
+                       << " * " << currentProperty->mKey << " ;\n"  ;
         break ;
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
         generatedZone3 << "  public : GGS__listOf_" << currentProperty->mInfo.mTypeName
@@ -234,11 +237,19 @@ generate_metamodel_header_file (C_Lexique & inLexique,
         generatedZone3 << "  public : GGS_" << currentProperty->mInfo.mTypeName
                        << " * " << currentProperty->mKey << " ;\n" ;
         break ;
-      case GGS_metamodelPropertyKind::kNotBuilt:
       case GGS_metamodelPropertyKind::enum_relationProperty:
+        generatedZone3 << "  public : C_BDD " << currentProperty->mKey << " ;\n" ;
+      case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
+    }
+    generatedZone3 << "//--- Indexes\n" ;
+    GGS_indexMap::element_type * currentIndex = currentEntity->mInfo.mIndexMap.firstObject () ;
+    while (currentIndex != NULL) {
+      macroValidPointer (currentIndex) ;
+      generatedZone3 << "  public : uint32 " << currentIndex->mKey << " ;\n" ;
+      currentIndex = currentIndex->nextObject () ;
     }
   //--- 'description' reader                 
     generatedZone3 << "//--- 'description' reader\n"
@@ -301,6 +312,9 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "    ioRootObject->buildOwnerLinksAndMaps (_inLexique, NULL, ok) ;\n"
                       "    if (ok) {\n"
                       "      ioRootObject->fetchProperties (_inLexique, ok) ;\n"
+                      "    }\n"
+                      "    if (ok) {\n"
+                      "      ioRootObject->buildRelations (_inLexique, ok) ;\n"
                       "    }\n"
                       "    if (! ok) {\n"
                       "      macroMyDelete (ioRootObject, GGS_" << inRootEntityName << ") ;\n"
@@ -703,13 +717,58 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       generatedZone3 << "  " << fetchedProperty->mKey << " = (GGS_" << fetchedProperty->mInfo.mTypeName << " *) "
                      << fetchedProperty->mInfo.mMapAttributeName
                      << "->searchKey (_inLexique, " << fetchedProperty->mInfo.mAttributeName
-                     << ", _indexOf_" << fetchedProperty->mKey << ", _ioOk SOURCE_FILE_AT_LINE ("
+                     << ", " << fetchedProperty->mInfo.mIndexName << ", _ioOk SOURCE_FILE_AT_LINE ("
                      << fetchedProperty->mKey.currentLineNumber ()
                      << ")) ;\n" ;
       fetchedProperty = fetchedProperty->nextObject () ;
     }
     generatedZone3 << "}\n\n" ;
     
+  //--- buildRelations
+    generatedZone3.writeCHyphenLineComment () ;
+    generatedZone3 << "void GGS_" << currentEntity->mKey << "::\n"
+                      "buildRelations (C_Lexique & _inLexique,\n"
+                      "                 bool & _ioOk) {\n" ;
+    if (currentEntity->mInfo.mSuperEntityName != "") {
+      generatedZone3 << "  GGS_" << currentEntity->mInfo.mSuperEntityName << "::buildRelations (_inLexique, _ioOk) ;\n" ;
+    }
+    currentProperty = currentEntity->mInfo.mEntityPropertiesMap.firstObject () ;
+    while (currentProperty != NULL) {
+      macroValidPointer (currentProperty) ;
+      switch (currentProperty->mInfo.mKind.enumValue ()) {
+      case GGS_metamodelPropertyKind::enum_attributeProperty:
+        break ;
+      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+        generatedZone3 << "  " << currentProperty->mKey << "->fetchProperties (_inLexique, _ioOk) ;\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+        generatedZone3 << "  GGS_" << currentProperty->mInfo.mTypeName << " * _p_" << currentProperty->mKey
+                       << " = " << currentProperty->mKey << ".mFirstObject ;\n"
+                          "  while (_p_" << currentProperty->mKey << " != NULL) {\n"
+                          "    _p_" << currentProperty->mKey << "->buildRelations (_inLexique, _ioOk) ;\n"
+                          "    _p_" << currentProperty->mKey << " = _p_" << currentProperty->mKey << "->_mNextObject ;\n"
+                          "  }\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_mapProperty:
+      case GGS_metamodelPropertyKind::enum_contextProperty:
+      case GGS_metamodelPropertyKind::enum_fetchedProperty:
+      case GGS_metamodelPropertyKind::enum_relationProperty:
+      case GGS_metamodelPropertyKind::kNotBuilt:
+        break ;
+      }
+      currentProperty = currentProperty->nextObject () ;
+    }
+    GGS_relationMap::element_type * currentRelation = currentEntity->mInfo.mRelationMap.firstObject () ;
+    while (currentRelation != NULL) {
+      macroValidPointer (currentRelation) ;
+      generatedZone3 << "  " << currentRelation->mKey << " = " ;
+      currentRelation->mInfo.mExpression (HERE)->generateCodeForRelation (generatedZone3) ;
+      generatedZone3 << " ;\n" ;
+      currentRelation = currentRelation->nextObject () ;
+    }
+    generatedZone3 << "}\n\n" ;
+    
+//--- reader_description
     if (! currentEntity->mInfo.mIsAbstract.boolValue ()) {
       generatedZone3.writeCHyphenLineComment () ;
       generatedZone3 << "GGS_string GGS_" << currentEntity->mKey << "::reader_description (void) const {\n"
@@ -773,6 +832,77 @@ routine_generate_metamodel (C_Lexique & inLexique,
                                  inMultipleReferencedEntities, inRootEntityName,
                                  ioMapEntityMap) ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelRelationAnd::
+generateCodeForRelation (C_String & ioCPPFile) const {
+  ioCPPFile << "((" ;
+  mLeftOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
+  ioCPPFile << ") & (" ;
+  mRightOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
+  ioCPPFile << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelRelationOr::
+generateCodeForRelation (C_String & ioCPPFile) const {
+  ioCPPFile << "((" ;
+  mLeftOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
+  ioCPPFile << ") | (" ;
+  mRightOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
+  ioCPPFile << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelRelationNot::
+generateCodeForRelation (C_String & ioCPPFile) const {
+  ioCPPFile << "( ~ (" ;
+  mOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
+  ioCPPFile << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelRelationFalse::
+generateCodeForRelation (C_String & ioCPPFile) const {
+  ioCPPFile << "C_BDD ()" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelRelationTrue::
+generateCodeForRelation (C_String & ioCPPFile) const {
+  ioCPPFile << "(~C_BDD ())" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelRelationPrimary::
+generateCodeForRelation (C_String & ioCPPFile) const {
+  ioCPPFile << "(C_BDD::varCompareConst (0" ;
+  GGS_relationVarMap::element_type * currentVar = mRelationVariableMap.firstObject () ;
+  uint32 index = 0 ;
+  while ((currentVar != NULL) && (index < mVariableIndex.uintValue ())) {
+    ioCPPFile << " + " << currentVar->mInfo.mDomainVariableName << "->bitCount ()" ;
+    index ++ ;
+    currentVar = currentVar->nextObject () ;
+  }
+  ioCPPFile << ", "
+            << mDomainName
+            << "->bitCount (), C_BDD::kEqual, "
+            << mVariableMap
+            << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelRelationDo::
+generateCodeForRelation (C_String & ioCPPFile) const {
+  ioCPPFile << "(~C_BDD ())" ;
 }
 
 //---------------------------------------------------------------------------*

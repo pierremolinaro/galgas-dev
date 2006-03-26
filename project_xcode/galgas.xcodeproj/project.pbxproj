@@ -1643,6 +1643,54 @@
 		CFD2205D0913ED2D0011F11E /* grammar_galgas_LR1_prgm.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD220450913ED2D0011F11E /* grammar_galgas_LR1_prgm.h */; };
 		CFD2205E0913ED2D0011F11E /* grammar_galgas_SLR_prgm.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD220460913ED2D0011F11E /* grammar_galgas_SLR_prgm.h */; };
 		CFD2205F0913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD220470913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h */; };
+		CFD567E609D6C37600349459 /* include_metamodelRelationAnd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */; };
+		CFD567E709D6C37600349459 /* include_metamodelRelationExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */; };
+		CFD567E809D6C37600349459 /* include_metamodelRelationFalse.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */; };
+		CFD567E909D6C37600349459 /* include_metamodelRelationNot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */; };
+		CFD567EA09D6C37600349459 /* include_metamodelRelationOr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */; };
+		CFD567EB09D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */; };
+		CFD567EC09D6C37600349459 /* include_metamodelRelationTrue.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */; };
+		CFD567ED09D6C37600349459 /* include_metamodelRelationAnd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */; };
+		CFD567EE09D6C37600349459 /* include_metamodelRelationExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */; };
+		CFD567EF09D6C37600349459 /* include_metamodelRelationFalse.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */; };
+		CFD567F009D6C37600349459 /* include_metamodelRelationNot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */; };
+		CFD567F109D6C37600349459 /* include_metamodelRelationOr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */; };
+		CFD567F209D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */; };
+		CFD567F309D6C37600349459 /* include_metamodelRelationTrue.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */; };
+		CFD567F409D6C37600349459 /* include_metamodelRelationAnd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */; };
+		CFD567F509D6C37600349459 /* include_metamodelRelationExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */; };
+		CFD567F609D6C37600349459 /* include_metamodelRelationFalse.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */; };
+		CFD567F709D6C37600349459 /* include_metamodelRelationNot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */; };
+		CFD567F809D6C37600349459 /* include_metamodelRelationOr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */; };
+		CFD567F909D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */; };
+		CFD567FA09D6C37600349459 /* include_metamodelRelationTrue.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */; };
+		CFD567FB09D6C37600349459 /* include_metamodelRelationAnd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */; };
+		CFD567FC09D6C37600349459 /* include_metamodelRelationExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */; };
+		CFD567FD09D6C37600349459 /* include_metamodelRelationFalse.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */; };
+		CFD567FE09D6C37600349459 /* include_metamodelRelationNot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */; };
+		CFD567FF09D6C37600349459 /* include_metamodelRelationOr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */; };
+		CFD5680009D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */; };
+		CFD5680109D6C37600349459 /* include_metamodelRelationTrue.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */; };
+		CFD5680209D6C37600349459 /* include_metamodelRelationAnd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */; };
+		CFD5680309D6C37600349459 /* include_metamodelRelationExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */; };
+		CFD5680409D6C37600349459 /* include_metamodelRelationFalse.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */; };
+		CFD5680509D6C37600349459 /* include_metamodelRelationNot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */; };
+		CFD5680609D6C37600349459 /* include_metamodelRelationOr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */; };
+		CFD5680709D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */; };
+		CFD5680809D6C37600349459 /* include_metamodelRelationTrue.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */; };
+		CFD5680909D6C37600349459 /* include_metamodelRelationAnd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */; };
+		CFD5680A09D6C37600349459 /* include_metamodelRelationExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */; };
+		CFD5680B09D6C37600349459 /* include_metamodelRelationFalse.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */; };
+		CFD5680C09D6C37600349459 /* include_metamodelRelationNot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */; };
+		CFD5680D09D6C37600349459 /* include_metamodelRelationOr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */; };
+		CFD5680E09D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */; };
+		CFD5680F09D6C37600349459 /* include_metamodelRelationTrue.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */; };
+		CFD568C409D6FE5200349459 /* include_metamodelRelationDo.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */; };
+		CFD568C509D6FE5200349459 /* include_metamodelRelationDo.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */; };
+		CFD568C609D6FE5200349459 /* include_metamodelRelationDo.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */; };
+		CFD568C709D6FE5200349459 /* include_metamodelRelationDo.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */; };
+		CFD568C809D6FE5200349459 /* include_metamodelRelationDo.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */; };
+		CFD568C909D6FE5200349459 /* include_metamodelRelationDo.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */; };
 		CFD6CC7E08519D4C0000FA6E /* C_galgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0B905877B62000D2F8C /* C_galgas_bdd.h */; };
 		CFD6CC8008519D4C0000FA6E /* C_galgas_terminal_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CF86365105862B0600B23462 /* C_galgas_terminal_io.h */; };
 		CFD6CC8108519D4C0000FA6E /* C_galgas_uint_array.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0BD05877B62000D2F8C /* C_galgas_uint_array.h */; };
@@ -2490,6 +2538,14 @@
 		CFD220450913ED2D0011F11E /* grammar_galgas_LR1_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_galgas_LR1_prgm.h; sourceTree = "<group>"; };
 		CFD220460913ED2D0011F11E /* grammar_galgas_SLR_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_galgas_SLR_prgm.h; sourceTree = "<group>"; };
 		CFD220470913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_jokerInParameterList.h; sourceTree = "<group>"; };
+		CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationAnd.h; sourceTree = "<group>"; };
+		CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationExpression.h; sourceTree = "<group>"; };
+		CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationFalse.h; sourceTree = "<group>"; };
+		CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationNot.h; sourceTree = "<group>"; };
+		CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationOr.h; sourceTree = "<group>"; };
+		CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationPrimary.h; sourceTree = "<group>"; };
+		CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationTrue.h; sourceTree = "<group>"; };
+		CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationDo.h; sourceTree = "<group>"; };
 		CFD6CD1508519D4C0000FA6E /* galgasLR1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasLR1; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD6CD1808519DB90000FA6E /* galgas_LR1_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_LR1_grammar.cpp; sourceTree = "<group>"; };
 		CFD6CD1908519DB90000FA6E /* galgas_LR1_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_LR1_grammar.h; sourceTree = "<group>"; };
@@ -2783,6 +2839,14 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */,
+				CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */,
+				CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */,
+				CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */,
+				CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */,
+				CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */,
+				CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */,
+				CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */,
 				CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */,
 				CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */,
 				CF446B6609C9C50D005CBDC8 /* include_TypeModel.h */,
@@ -3695,6 +3759,14 @@
 				CF03D56F09CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h in Headers */,
 				CF03D58209CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h in Headers */,
 				CFEB5FD609D15D9F003FF985 /* C_GGS_entityMap.h in Headers */,
+				CFD5680909D6C37600349459 /* include_metamodelRelationAnd.h in Headers */,
+				CFD5680A09D6C37600349459 /* include_metamodelRelationExpression.h in Headers */,
+				CFD5680B09D6C37600349459 /* include_metamodelRelationFalse.h in Headers */,
+				CFD5680C09D6C37600349459 /* include_metamodelRelationNot.h in Headers */,
+				CFD5680D09D6C37600349459 /* include_metamodelRelationOr.h in Headers */,
+				CFD5680E09D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */,
+				CFD5680F09D6C37600349459 /* include_metamodelRelationTrue.h in Headers */,
+				CFD568C909D6FE5200349459 /* include_metamodelRelationDo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3949,6 +4021,14 @@
 				CF03D56A09CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h in Headers */,
 				CF03D57D09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h in Headers */,
 				CFEB5FD809D15D9F003FF985 /* C_GGS_entityMap.h in Headers */,
+				CFD567E609D6C37600349459 /* include_metamodelRelationAnd.h in Headers */,
+				CFD567E709D6C37600349459 /* include_metamodelRelationExpression.h in Headers */,
+				CFD567E809D6C37600349459 /* include_metamodelRelationFalse.h in Headers */,
+				CFD567E909D6C37600349459 /* include_metamodelRelationNot.h in Headers */,
+				CFD567EA09D6C37600349459 /* include_metamodelRelationOr.h in Headers */,
+				CFD567EB09D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */,
+				CFD567EC09D6C37600349459 /* include_metamodelRelationTrue.h in Headers */,
+				CFD568C409D6FE5200349459 /* include_metamodelRelationDo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4202,6 +4282,14 @@
 				CF03D56B09CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h in Headers */,
 				CF03D57E09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h in Headers */,
 				CFEB5FDA09D15D9F003FF985 /* C_GGS_entityMap.h in Headers */,
+				CFD567ED09D6C37600349459 /* include_metamodelRelationAnd.h in Headers */,
+				CFD567EE09D6C37600349459 /* include_metamodelRelationExpression.h in Headers */,
+				CFD567EF09D6C37600349459 /* include_metamodelRelationFalse.h in Headers */,
+				CFD567F009D6C37600349459 /* include_metamodelRelationNot.h in Headers */,
+				CFD567F109D6C37600349459 /* include_metamodelRelationOr.h in Headers */,
+				CFD567F209D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */,
+				CFD567F309D6C37600349459 /* include_metamodelRelationTrue.h in Headers */,
+				CFD568C509D6FE5200349459 /* include_metamodelRelationDo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4456,6 +4544,14 @@
 				CF03D56D09CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h in Headers */,
 				CF03D58009CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h in Headers */,
 				CFEB5FDC09D15D9F003FF985 /* C_GGS_entityMap.h in Headers */,
+				CFD567FB09D6C37600349459 /* include_metamodelRelationAnd.h in Headers */,
+				CFD567FC09D6C37600349459 /* include_metamodelRelationExpression.h in Headers */,
+				CFD567FD09D6C37600349459 /* include_metamodelRelationFalse.h in Headers */,
+				CFD567FE09D6C37600349459 /* include_metamodelRelationNot.h in Headers */,
+				CFD567FF09D6C37600349459 /* include_metamodelRelationOr.h in Headers */,
+				CFD5680009D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */,
+				CFD5680109D6C37600349459 /* include_metamodelRelationTrue.h in Headers */,
+				CFD568C709D6FE5200349459 /* include_metamodelRelationDo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4709,6 +4805,14 @@
 				CF03D56C09CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h in Headers */,
 				CF03D57F09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h in Headers */,
 				CFEB5FDE09D15D9F003FF985 /* C_GGS_entityMap.h in Headers */,
+				CFD567F409D6C37600349459 /* include_metamodelRelationAnd.h in Headers */,
+				CFD567F509D6C37600349459 /* include_metamodelRelationExpression.h in Headers */,
+				CFD567F609D6C37600349459 /* include_metamodelRelationFalse.h in Headers */,
+				CFD567F709D6C37600349459 /* include_metamodelRelationNot.h in Headers */,
+				CFD567F809D6C37600349459 /* include_metamodelRelationOr.h in Headers */,
+				CFD567F909D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */,
+				CFD567FA09D6C37600349459 /* include_metamodelRelationTrue.h in Headers */,
+				CFD568C609D6FE5200349459 /* include_metamodelRelationDo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4963,6 +5067,14 @@
 				CF03D56E09CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h in Headers */,
 				CF03D58109CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h in Headers */,
 				CFEB5FE009D15D9F003FF985 /* C_GGS_entityMap.h in Headers */,
+				CFD5680209D6C37600349459 /* include_metamodelRelationAnd.h in Headers */,
+				CFD5680309D6C37600349459 /* include_metamodelRelationExpression.h in Headers */,
+				CFD5680409D6C37600349459 /* include_metamodelRelationFalse.h in Headers */,
+				CFD5680509D6C37600349459 /* include_metamodelRelationNot.h in Headers */,
+				CFD5680609D6C37600349459 /* include_metamodelRelationOr.h in Headers */,
+				CFD5680709D6C37600349459 /* include_metamodelRelationPrimary.h in Headers */,
+				CFD5680809D6C37600349459 /* include_metamodelRelationTrue.h in Headers */,
+				CFD568C809D6FE5200349459 /* include_metamodelRelationDo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

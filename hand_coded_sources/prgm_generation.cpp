@@ -248,7 +248,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << ") ;\n" ;
     if (currentGrammar->mReturnedRootEntityName.length () > 0) {
       generatedZone2 << "// printf (\"%s\", _rootEntity->reader_description ().cString ()) ;\n"
-                        "macroMyDelete (_rootEntity, GGS_" << currentGrammar->mReturnedRootEntityName << ") ;\n" ;
+                        "macroMyDelete (_rootEntity, GGS_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
+                        "  C_BDD::markAndSweepUnusedNodes () ;\n" ;
     }
     generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
                       "  _afterParsing () ;\n"

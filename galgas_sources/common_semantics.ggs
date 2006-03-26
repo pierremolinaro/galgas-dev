@@ -489,6 +489,7 @@ map @fetchedPropertyMap {
   @lstring mTypeName ;
   @lstring mAttributeName ;
   @lstring mMapAttributeName ;
+  @lstring mIndexName ;
   insert insertKey error message "the '%K' fetched property has been already declared in %L" ;
   search searchKey error message "the '%K' fetched property is not declared" ;
 }
@@ -496,8 +497,17 @@ map @fetchedPropertyMap {
 #---------------------------------------------------------------------------*
 
 map @insertionMap {
+  @lstring mIndexName ;
   insert insertKey error message "the attribute is already inserted in the '%K' map" ;
 #  search searchKey error message "the '%K' inserted attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @indexMap {
+  @lstring mMapReferenceName ;
+  insert insertKey error message "the index '%K' is already defined in %L" ;
+  search searchKey error message "there is no '%K' index" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -511,7 +521,7 @@ map @insertedPropertyMap {
 #---------------------------------------------------------------------------*
 
 map @relationVarMap {
-  @L_propertyPath mPath ;
+  @lstring mDomainVariableName ;
   insert insertKey error message "the '%K' relation variable has been already declared in %L" ;
   search searchKey, searchKeyAndGetIndex error message "the '%K' relation variable is not declared" ;
 }
@@ -554,9 +564,26 @@ class @metamodelRelationFalse extends @metamodelRelationExpression {
 #---------------------------------------------------------------------------*
 
 class @metamodelRelationPrimary extends @metamodelRelationExpression {
+  @relationVarMap mRelationVariableMap ;
   @lstring mVariable ;
   @luint mVariableIndex ;
+  @lstring mVariableMap ;
+  @lstring mDomainName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @metamodelRelationParameterList {
+  @lstring mParameter ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelRelationDo extends @metamodelRelationExpression {
+  @relationVarMap mRelationVariableMap ;
+  @metamodelRelationParameterList mParameterList ;
   @L_propertyPath mPath ;
+  @bool mOperationIsAnd ; # Otherwise, is 'or'
 }
 
 #---------------------------------------------------------------------------*
@@ -597,6 +624,10 @@ map @entityToImplementMap {
   @fetchedPropertyMap mAllFetchedPropertyMap ;
   @insertedPropertyMap mInsertedPropertyMap ;
   @insertedPropertyMap mAllInsertedPropertyMap ;
+  @relationMap mRelationMap ;
+  @relationMap mAllRelationMap ;
+  @indexMap mIndexMap ;
+  @indexMap mAllIndexMap ;
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
 }
@@ -2354,7 +2385,7 @@ routine buildSuperEntitySet
   if ([inSuperEntityName value] != "") & not [ioSuperEntitySet hasKey ![inSuperEntityName value]] then
     ioSuperEntitySet += ![inSuperEntityName value] ;
     @lstring superEntityName ;
-    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?* ?* ?*] ;
+    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
     buildSuperEntitySet !?ioEntityMap !superEntityName !?ioSuperEntitySet ;
   end if ;
 end routine ;
@@ -2392,21 +2423,21 @@ routine checkPath
        outLastEntityTypeName := outTypeName ;
        outTypeName := actualEntityName ;
        outKind := [@metamodelPropertyKind singleReferenceProperty] ;
-       [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+       [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
      else
        outLastEntityTypeName := outTypeName ;
        [!?currentMap searchKey !kPathElement ?outKind ?outTypeName ?*] ;
        if outKind == [@metamodelPropertyKind mapProperty] then
          @lstring elementEntity ;
          [!?ioMapEntityMap searchKey !outTypeName ?elementEntity ?* ?*] ;
-         [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+         [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
        elsif outKind != [@metamodelPropertyKind attributeProperty] then
          if [ioMapEntityMap hasKey ![outTypeName value]] then
            @lstring elementEntity ;
            [!?ioMapEntityMap searchKey !outTypeName ?elementEntity ?* ?*] ;
-           [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+           [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
          else
-           [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+           [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
          end if ;
        end if ;
      end if ;
