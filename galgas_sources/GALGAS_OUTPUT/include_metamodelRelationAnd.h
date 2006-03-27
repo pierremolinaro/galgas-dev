@@ -24,7 +24,11 @@ class cPtr_metamodelRelationAnd : public cPtr_metamodelRelationExpression {
   private : typedef cPtr_metamodelRelationExpression inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual void generateCodeForRelation (C_String & ioCPPFile) const ;
+  public : virtual void generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const ;
 
 //--- END OF USER ZONE 2
 

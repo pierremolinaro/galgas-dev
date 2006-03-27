@@ -575,6 +575,8 @@ class @metamodelRelationPrimary extends @metamodelRelationExpression {
 
 list @metamodelRelationParameterList {
   @lstring mParameter ;
+  @luint mParameterIndex ;
+  @lstring mDomainVariable ;
 }
 
 #---------------------------------------------------------------------------*
@@ -583,7 +585,7 @@ class @metamodelRelationDo extends @metamodelRelationExpression {
   @relationVarMap mRelationVariableMap ;
   @metamodelRelationParameterList mParameterList ;
   @L_propertyPath mPath ;
-  @bool mOperationIsAnd ; # Otherwise, is 'or'
+  @lbool mOperationIsAnd ; # Otherwise, is 'or'
 }
 
 #---------------------------------------------------------------------------*

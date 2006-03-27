@@ -24,6 +24,43 @@
 
 //---------------------------------------------------------------------------*
 
+static GGS_lstring
+entityForProperty (C_Lexique & inLexique,
+                   GGS_entityToImplementMap & ioEntityMap,
+                   const GGS_lstring & inEntityName,
+                   const GGS_lstring & inPropertyName) {
+  GGS_entityPropertyMap  entityPropertyMap ;
+  GGS_bool var_cas_8635 ;
+  GGS_entityPropertyMap  allPropertiesMap ;
+  GGS_lstring  var_cas_8641 ;
+  GGS_contextPropertyMap var_cas_contextPropertyMap ;
+  GGS_fetchedPropertyMap  var_cas_8664 ;
+  GGS_fetchedPropertyMap  var_cas_8667 ;
+  GGS_insertedPropertyMap  var_cas_8670 ;
+  GGS_insertedPropertyMap  var_cas_8673 ;
+  GGS_relationMap  var_cas_8676 ;
+  GGS_relationMap  var_cas_8679 ;
+  GGS_indexMap  var_cas_8682 ;
+  GGS_indexMap  var_cas_8685 ;
+  ioEntityMap.methode_searchKey (inLexique, inEntityName, entityPropertyMap,
+                                  var_cas_8635, allPropertiesMap, var_cas_8641,
+                                  var_cas_contextPropertyMap, var_cas_8664,
+                                  var_cas_8667, var_cas_8670, var_cas_8673,
+                                  var_cas_8676, var_cas_8679, var_cas_8682,
+                                  var_cas_8685 COMMA_HERE) ;
+//---
+  GGS_metamodelPropertyKind var_cas_kind ;
+  GGS_lstring  var_cas_propertyTypeName ;
+  GGS_L_ListOfPropertyPathes  var_cas_11785 ;
+  allPropertiesMap.methode_searchKey (inLexique, inPropertyName, var_cas_kind,
+                                      var_cas_propertyTypeName, var_cas_11785
+                                      COMMA_HERE) ;
+//---
+  return var_cas_propertyTypeName ;
+}
+
+//---------------------------------------------------------------------------*
+
 static void
 generate_metamodel_header_file (C_Lexique & inLexique,
                                 const GGS_entityToImplementMap & ioEntityMap,
@@ -761,9 +798,14 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     GGS_relationMap::element_type * currentRelation = currentEntity->mInfo.mRelationMap.firstObject () ;
     while (currentRelation != NULL) {
       macroValidPointer (currentRelation) ;
-      generatedZone3 << "  " << currentRelation->mKey << " = " ;
-      currentRelation->mInfo.mExpression (HERE)->generateCodeForRelation (generatedZone3) ;
-      generatedZone3 << " ;\n" ;
+      C_String s ;
+      s << "  " << currentRelation->mKey << " = " ;
+      currentRelation->mInfo.mExpression (HERE)->generateCodeForRelation (inLexique,
+                                                                          ioEntityMap,
+                                                                          currentEntity->mKey,
+                                                                          s, generatedZone3) ;
+      s << " ;\n" ;
+      generatedZone3 << s ;
       currentRelation = currentRelation->nextObject () ;
     }
     generatedZone3 << "}\n\n" ;
@@ -837,61 +879,85 @@ routine_generate_metamodel (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationAnd::
-generateCodeForRelation (C_String & ioCPPFile) const {
-  ioCPPFile << "((" ;
-  mLeftOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
-  ioCPPFile << ") & (" ;
-  mRightOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
-  ioCPPFile << "))" ;
+generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const {
+  ioBufferString << "((" ;
+  mLeftOperand (HERE)->generateCodeForRelation (inLexique, ioEntityMap, inCurrentEntityName, ioBufferString, ioCPPFile) ;
+  ioBufferString << ") & (" ;
+  mRightOperand (HERE)->generateCodeForRelation (inLexique, ioEntityMap, inCurrentEntityName, ioBufferString, ioCPPFile) ;
+  ioBufferString << "))" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationOr::
-generateCodeForRelation (C_String & ioCPPFile) const {
-  ioCPPFile << "((" ;
-  mLeftOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
-  ioCPPFile << ") | (" ;
-  mRightOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
-  ioCPPFile << "))" ;
+generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const {
+  ioBufferString << "((" ;
+  mLeftOperand (HERE)->generateCodeForRelation (inLexique, ioEntityMap, inCurrentEntityName, ioBufferString, ioCPPFile) ;
+  ioBufferString << ") | (" ;
+  mRightOperand (HERE)->generateCodeForRelation (inLexique, ioEntityMap, inCurrentEntityName, ioBufferString, ioCPPFile) ;
+  ioBufferString << "))" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationNot::
-generateCodeForRelation (C_String & ioCPPFile) const {
-  ioCPPFile << "( ~ (" ;
-  mOperand (HERE)->generateCodeForRelation (ioCPPFile) ;
-  ioCPPFile << "))" ;
+generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const {
+  ioBufferString << "( ~ (" ;
+  mOperand (HERE)->generateCodeForRelation (inLexique, ioEntityMap, inCurrentEntityName, ioBufferString, ioCPPFile) ;
+  ioBufferString << "))" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationFalse::
-generateCodeForRelation (C_String & ioCPPFile) const {
-  ioCPPFile << "C_BDD ()" ;
+generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const {
+  ioBufferString << "C_BDD ()" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationTrue::
-generateCodeForRelation (C_String & ioCPPFile) const {
-  ioCPPFile << "(~C_BDD ())" ;
+generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const {
+  ioBufferString << "(~C_BDD ())" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationPrimary::
-generateCodeForRelation (C_String & ioCPPFile) const {
-  ioCPPFile << "(C_BDD::varCompareConst (0" ;
+generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const {
+  ioBufferString << "(C_BDD::varCompareConst (0" ;
   GGS_relationVarMap::element_type * currentVar = mRelationVariableMap.firstObject () ;
   uint32 index = 0 ;
   while ((currentVar != NULL) && (index < mVariableIndex.uintValue ())) {
-    ioCPPFile << " + " << currentVar->mInfo.mDomainVariableName << "->bitCount ()" ;
+    ioBufferString << " + " << currentVar->mInfo.mDomainVariableName << "->bitCount ()" ;
     index ++ ;
     currentVar = currentVar->nextObject () ;
   }
-  ioCPPFile << ", "
+  ioBufferString << ", "
             << mDomainName
             << "->bitCount (), C_BDD::kEqual, "
             << mVariableMap
@@ -901,8 +967,87 @@ generateCodeForRelation (C_String & ioCPPFile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationDo::
-generateCodeForRelation (C_String & ioCPPFile) const {
-  ioCPPFile << "(~C_BDD ())" ;
+generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const {
+  ioBufferString << "_relation_" << mOperationIsAnd.currentLocation () ;
+  ioCPPFile << "  C_BDD _relation_" << mOperationIsAnd.currentLocation () << " ;\n" ;
+  if (mOperationIsAnd.boolValue ()) {
+    ioCPPFile << "   _relation_" << mOperationIsAnd.currentLocation () << ".setToTrue () ;\n" ;
+  }
+  const sint32 pathLength = mPath.count () ;
+  GGS_L_propertyPath::element_type * currentPathElement = mPath.firstObject () ;
+  GGS_lstring entityName = inCurrentEntityName ;
+  GGS_lstring propertyEntityName = currentPathElement->mPathElement ;
+  C_String epilogue ;
+  for (sint32 i=1 ; i<pathLength ; i++) {
+    ioCPPFile.appendSpaces (i + i) ;
+    propertyEntityName = entityForProperty (inLexique,
+                                            ioEntityMap,
+                                            entityName,
+                                            propertyEntityName) ;
+    ioCPPFile << "GGS_" << propertyEntityName << " * _p_" << i << "_" << mOperationIsAnd.currentLocation ()
+              << " = " << currentPathElement->mPathElement << ".mFirstObject ;\n" ;
+    ioCPPFile.appendSpaces (i + i) ;
+    ioCPPFile << "while (_p_" << i << "_" << mOperationIsAnd.currentLocation () << " != NULL) {\n" ;
+    C_String endCode ;
+    endCode.appendSpaces (i + i + 2) ;
+    endCode << "_p_" << i << "_" << mOperationIsAnd.currentLocation ()
+            << " = _p_" << i << "_" << mOperationIsAnd.currentLocation () << "->_mNextObject ;\n" ;
+    endCode.appendSpaces (i + i) ;
+    endCode << "}\n" ;
+    epilogue = endCode + epilogue ;
+    currentPathElement = currentPathElement->nextObject () ;
+  }
+  ioCPPFile.appendSpaces (pathLength + pathLength) ;
+  ioCPPFile << "_relation_" << mOperationIsAnd.currentLocation () << " " ;
+  if (mOperationIsAnd.boolValue ()) {
+    ioCPPFile << "&=" ;
+  }else{
+    ioCPPFile << "|=" ;
+  }
+  ioCPPFile << " _p_" << (pathLength - 1) << "_" << mOperationIsAnd.currentLocation ()
+            << "->" << currentPathElement->mPathElement
+            << " ;\n"
+            << epilogue ;
+  bool needVariableTranslation = false ;
+  GGS_metamodelRelationParameterList::element_type * currentParameter = mParameterList.firstObject () ;
+  uint32 i = 0 ;
+  while ((currentParameter != NULL) && ! needVariableTranslation) {
+    needVariableTranslation = currentParameter->mParameterIndex.uintValue () != i ;
+    currentParameter = currentParameter->nextObject () ;
+    i ++ ;
+  }
+  if (needVariableTranslation) {
+    ioCPPFile << "  { //--- Translation\n" ;
+    GGS_relationVarMap::element_type * currentVar = mRelationVariableMap.firstObject () ;
+    ioCPPFile << "    const uint16 _finalDomain [] = {" ;
+    while (currentVar != NULL) {
+      ioCPPFile << currentVar->mInfo.mDomainVariableName
+                << "->bitCount ()"
+                << ",\n                                    " ;
+      currentVar = currentVar->nextObject () ;
+    }
+    ioCPPFile << "0\n"
+                 "    } ;\n"
+                 "    const uint16 _sourceDomain [] = {" ;
+    currentParameter = mParameterList.firstObject () ;
+    i = 0 ;
+    while (currentParameter != NULL) {
+      ioCPPFile << ((i > 0) ? ", " : "") << currentParameter->mParameterIndex.uintValue () ;
+      currentParameter = currentParameter->nextObject () ;
+      i ++ ;
+    }
+    ioCPPFile << "} ;\n"
+                 "     C_GGS_entityMap::translate (_finalDomain, "
+              << mRelationVariableMap.count ()
+              << ", _sourceDomain, "
+              << mParameterList.count ()
+              << ", _relation_" << mOperationIsAnd.currentLocation () << ") ;\n"
+                 "  }\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
