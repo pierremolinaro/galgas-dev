@@ -25,7 +25,11 @@
 class cPtr_metamodelRelationExpression : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
-  public : virtual void generateCodeForRelation (C_String & ioCPPFile) const = 0 ;
+  public : virtual void generateCodeForRelation (C_Lexique & inLexique,
+                         GGS_entityToImplementMap & ioEntityMap,
+                         const GGS_lstring & inCurrentEntityName,
+                         C_String & ioBufferString,
+                         C_String & ioCPPFile) const = 0 ;
 
 //--- END OF USER ZONE 2
 
