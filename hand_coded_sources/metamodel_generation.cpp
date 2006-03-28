@@ -922,33 +922,33 @@ generateCodeForRelation (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationFalse::
-generateCodeForRelation (C_Lexique & inLexique,
-                         GGS_entityToImplementMap & ioEntityMap,
-                         const GGS_lstring & inCurrentEntityName,
+generateCodeForRelation (C_Lexique & /* inLexique */,
+                         GGS_entityToImplementMap & /* ioEntityMap */,
+                         const GGS_lstring & /* inCurrentEntityName */,
                          C_String & ioBufferString,
-                         C_String & ioCPPFile) const {
+                         C_String & /* ioCPPFile */) const {
   ioBufferString << "C_BDD ()" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationTrue::
-generateCodeForRelation (C_Lexique & inLexique,
-                         GGS_entityToImplementMap & ioEntityMap,
-                         const GGS_lstring & inCurrentEntityName,
+generateCodeForRelation (C_Lexique & /* inLexique */,
+                         GGS_entityToImplementMap & /* ioEntityMap */,
+                         const GGS_lstring & /* inCurrentEntityName */,
                          C_String & ioBufferString,
-                         C_String & ioCPPFile) const {
+                         C_String & /* ioCPPFile */) const {
   ioBufferString << "(~C_BDD ())" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationPrimary::
-generateCodeForRelation (C_Lexique & inLexique,
-                         GGS_entityToImplementMap & ioEntityMap,
-                         const GGS_lstring & inCurrentEntityName,
+generateCodeForRelation (C_Lexique & /* inLexique */,
+                         GGS_entityToImplementMap & /* ioEntityMap */,
+                         const GGS_lstring & /* inCurrentEntityName */,
                          C_String & ioBufferString,
-                         C_String & ioCPPFile) const {
+                         C_String & /* ioCPPFile */) const {
   ioBufferString << "(C_BDD::varCompareConst (0" ;
   GGS_relationVarMap::element_type * currentVar = mRelationVariableMap.firstObject () ;
   uint32 index = 0 ;
