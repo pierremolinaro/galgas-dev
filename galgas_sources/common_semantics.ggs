@@ -448,8 +448,7 @@ abstract class @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 enum @metamodelPropertyKind {
-  attributeProperty, singleReferenceProperty, multipleReferenceProperty,
-  mapProperty, contextProperty, fetchedProperty, relationProperty ;
+  attributeProperty, singleReferenceProperty, multipleReferenceProperty ;
 }
 
 #---------------------------------------------------------------------------*
@@ -470,7 +469,6 @@ list @L_ListOfPropertyPathes {
 map @entityPropertyMap {
   @metamodelPropertyKind mKind ;
   @lstring mTypeName ;
-  @L_ListOfPropertyPathes mPropertyOptionPathes ;
   insert insertKey error message "the '%K' property has been already declared in %L" ;
   search searchKey error message "the '%K' property is not declared" ;
 }
@@ -479,6 +477,7 @@ map @entityPropertyMap {
 
 map @contextPropertyMap {
   @lstring mTypeName ;
+  @bool mIsMap ; # true : map property, false : single reference
   insert insertKey error message "the '%K' context property has been already declared in %L" ;
   search searchKey error message "the '%K' context property is not declared" ;
 }
@@ -621,15 +620,6 @@ map @entityToImplementMap {
   @bool mIsAbstract ;
   @entityPropertyMap mEntityPropertiesMap ;
   @lstring mSuperEntityName ;
-  @contextPropertyMap mAllContextAttributes ;
-  @fetchedPropertyMap mFetchedPropertyMap ;
-  @fetchedPropertyMap mAllFetchedPropertyMap ;
-  @insertedPropertyMap mInsertedPropertyMap ;
-  @insertedPropertyMap mAllInsertedPropertyMap ;
-  @relationMap mRelationMap ;
-  @relationMap mAllRelationMap ;
-  @indexMap mIndexMap ;
-  @indexMap mAllIndexMap ;
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
 }
@@ -641,7 +631,6 @@ action generate_metamodel
  ?@lstring inMetamodelComponentName
  ?@stringset inMultiReferencedEntities
  ?@lstring inRootEntityName
- ?!@mapEntityMap ioMapEntityMap
 ;
 
 #---------------------------------------------------------------------------*
@@ -2084,7 +2073,8 @@ map @M_semanticsComponents {
 
 map @M_metamodelsComponents {
   @lstring mRootEntity ;
-  @M_semanticsEntitiesForUse mSemanticsEntitiesMap ; # OLD STYLE MAP
+  @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
+  @entityToImplementMap mEntityMap ;
   insert insertKey error message "a metamodel component named '%K' is already declared in %L" ;
   search searchKey error message "there is no metamodel component named '%K'" ;
 }
@@ -2387,7 +2377,7 @@ routine buildSuperEntitySet
   if ([inSuperEntityName value] != "") & not [ioSuperEntitySet hasKey ![inSuperEntityName value]] then
     ioSuperEntitySet += ![inSuperEntityName value] ;
     @lstring superEntityName ;
-    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+    [!?ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName] ;
     buildSuperEntitySet !?ioEntityMap !superEntityName !?ioSuperEntitySet ;
   end if ;
 end routine ;
@@ -2425,21 +2415,17 @@ routine checkPath
        outLastEntityTypeName := outTypeName ;
        outTypeName := actualEntityName ;
        outKind := [@metamodelPropertyKind singleReferenceProperty] ;
-       [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+       [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?*] ;
      else
        outLastEntityTypeName := outTypeName ;
-       [!?currentMap searchKey !kPathElement ?outKind ?outTypeName ?*] ;
-       if outKind == [@metamodelPropertyKind mapProperty] then
-         @lstring elementEntity ;
-         [!?ioMapEntityMap searchKey !outTypeName ?elementEntity ?* ?*] ;
-         [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
-       elsif outKind != [@metamodelPropertyKind attributeProperty] then
+       [!?currentMap searchKey !kPathElement ?outKind ?outTypeName] ;
+       if outKind != [@metamodelPropertyKind attributeProperty] then
          if [ioMapEntityMap hasKey ![outTypeName value]] then
            @lstring elementEntity ;
            [!?ioMapEntityMap searchKey !outTypeName ?elementEntity ?* ?*] ;
-           [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+           [!?ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?*] ;
          else
-           [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+           [!?ioEntityMap searchKey !outTypeName ?currentMap ?* ?* ?*] ;
          end if ;
        end if ;
      end if ;

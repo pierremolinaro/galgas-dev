@@ -1,0 +1,540 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS constraint component parser definition                            *
+#                                                                           *
+#  Copyright (C) 2006 Pierre Molinaro.                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax constraint_parser :
+
+import lexique galgas_scanner in "galgas_scanner.ggs" ;
+
+import semantics common_semantics in "common_semantics.ggs" ;
+
+#-------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label importLexique
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+label importSyntax
+  ?!@M_syntaxComponents ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label importGrammarForSemantics
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label importOptions
+  ?!@M_optionComponents ioOptionsComponentsMap
+;
+
+rule <parse_semantics_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_semanticsComponents ioSemanticsMapForUse
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label parse
+;
+
+rule <constraint_map_declaration>
+  ?!@entityToImplementMap ioEntityMap
+  ?!@mapEntityMap ioMapEntityMap
+label parse
+;
+
+rule <parse_constraint_document>
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+label parse
+;
+
+rule <property_path_for_constraint>
+  !@L_propertyPath outPath
+label parse
+;
+
+rule <constraints_on_entity_declaration>
+  ?!@entityToImplementMap ioEntityMap
+  ?!@mapEntityMap ioMapEntityMap
+label parse
+;
+
+rule <constraint_relation_expression>
+  ?!@relationVarMap ioRelationVariableMap
+  ?!@indexMap ioIndexMap
+  !@metamodelRelationExpression outExpression
+label parse 
+;
+
+rule <constraint_relation_term>
+  ?!@relationVarMap ioRelationVariableMap
+  ?!@indexMap ioIndexMap
+  !@metamodelRelationExpression outExpression
+label parse 
+;
+
+rule <constraint_relation_factor>
+  ?!@relationVarMap ioRelationVariableMap
+  ?!@indexMap ioIndexMap
+  !@metamodelRelationExpression outExpression
+label parse 
+;
+
+rule <constraint_relation_primary>
+  ?!@relationVarMap ioRelationVariableMap
+  ?!@indexMap ioIndexMap
+  !@metamodelRelationExpression outExpression
+label parse 
+;
+
+#-------------------------------------------------------------------*
+#                   Metamodel component                             *
+#-------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+:
+  <parse_constraint_document> !?ioMetamodelComponentMap ;
+label importLexique
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+:
+  <parse_constraint_document> parse ;
+label importSyntax
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+:
+  <parse_constraint_document> !?ioMetamodelComponentMap ;
+label importSemantics
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+:
+  <parse_constraint_document> !?ioMetamodelComponentMap ;
+label importGrammarForSemantics
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+:
+  <parse_constraint_document> !?ioMetamodelComponentMap ;
+label importOptions
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  <parse_constraint_document> parse ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <parse_constraint_document>
+  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+:
+#--- Constraint component header
+  $constraint$ ;
+  @lstring constraintName ;
+  $identifier$ ? constraintName ;
+  $:$ ;
+#--- Imported Metamodel
+  $import$ ;
+  $metamodel$ ;
+  @lstring metamodelName ;
+  $identifier$ ? metamodelName ;
+  $in$ ;
+  @lstring fileName ;
+  $literal_string$ ? fileName ;
+  $;$ ;  
+  @M_semanticsComponents unusedSemanticsMapForUse [empty] ;
+  @M_metamodelsComponents metamodelComponentMap [empty] ;
+  <parse_semantics_component_for_importing>
+    !fileName
+    !?unusedSemanticsMapForUse
+    !?metamodelComponentMap
+  ;
+#--- Search imported metamodel
+  @lstring rootEntity ;
+  @M_semanticsEntitiesForUse semanticsEntitiesMap ;
+  @entityToImplementMap entityMap ;
+  [!?metamodelComponentMap searchKey
+    !metamodelName
+    ?rootEntity
+    ?semanticsEntitiesMap
+    ?entityMap
+  ] ;
+#--- Parse Map Declarations
+  @mapEntityMap mapEntityMap [empty] ;
+  @mapAndEntityUniqueMap mapAndEntityUniqueMap [empty] ;
+  repeat
+  while
+    <constraint_map_declaration>
+      !?entityMap
+      !?mapEntityMap
+    ;
+  end repeat ;
+#--- Parse constraint declarations
+  repeat
+  while
+    <constraints_on_entity_declaration>
+      !?entityMap
+      !?mapEntityMap
+    ;
+  end repeat ;
+#--- Generate C++ code
+#  action generate_metamodel
+#    !?entityMap
+#    !constraintName
+#    !multiReferencedEntities
+#    !rootEntityName
+#    !?mapEntityMap
+#  ;
+  $end$ ;
+  $constraint$ ;
+  $;$ ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <constraint_map_declaration>
+  ?!@entityToImplementMap ioEntityMap
+  ?!@mapEntityMap ioMapEntityMap
+:
+  $map$ ;
+  @lstring mapIdentifier ;
+  $type_name$ ? mapIdentifier ;
+  if [ioEntityMap hasKey ![mapIdentifier value]] then
+    error mapIdentifier: "An entity has been declared with this name" ;
+  end if ;
+  $of$ ;
+  @lstring mapElementIdentifier ;
+  $type_name$ ? mapElementIdentifier ;
+  ${$ ;
+  $insert$ ;
+  $error$ ;
+  $message$ ;
+  @lstring insertErrorMessage ;
+  $literal_string$ ? insertErrorMessage ;
+  action check_KL_escapeCharacters !insertErrorMessage ;
+  $;$ ;
+  $search$ ;
+  $error$ ;
+  $message$ ;
+  @lstring searchErrorMessage ;
+  $literal_string$ ? searchErrorMessage ;
+  action check_K_escapeCharacters !searchErrorMessage ;
+  $;$ ;
+  $}$ ;
+  [!?ioMapEntityMap insertKey
+    !mapIdentifier
+    !mapElementIdentifier
+    !insertErrorMessage
+    !searchErrorMessage
+  ] ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <constraints_on_entity_declaration>
+  ?!@entityToImplementMap ioEntityMap
+  ?!@mapEntityMap ioMapEntityMap
+:
+#--- Entity Name
+  $constraint$ ;
+  @lstring entityName ;
+  $type_name$ ? entityName ;
+#--- Get entity properties
+  @lstring superEntity ;
+  @entityPropertyMap allPropertyMap ;
+  [!?ioEntityMap searchKey
+    !entityName
+    ?allPropertyMap
+    ?*
+    ?*
+    ?superEntity
+   ] ;
+#--- Context properties
+  @contextPropertyMap contextPropertyMap [empty] ;
+  select
+  or
+    $($ ;
+    repeat
+      @lstring entityName ;
+      $type_name$ ? entityName ;
+      @lstring contextPropertyName ;
+      $identifier$ ?contextPropertyName ;
+      @bool isMap ;
+      if [ioMapEntityMap hasKey![contextPropertyName value]] then
+        isMap := true ;
+      elsif [ioEntityMap hasKey![contextPropertyName value]] then
+        isMap := false ;
+      else
+        error contextPropertyName : "this type is not defined" -> isMap ;
+      end if ;
+      [!?contextPropertyMap insertKey !contextPropertyName !entityName !isMap] ;
+    while
+      $,$ ;
+    end repeat ;
+    $)$ ;
+  end select ;
+#--- Property declarations
+  @indexMap indexMap [empty] ;
+  @fetchedPropertyMap fetchedPropertyMap [empty] ;
+  @relationMap relationMap [empty] ;
+  @insertedPropertyMap insertedPropertyMap [empty] ;
+  ${$ ;
+  repeat
+  while
+    $insert$ ;
+    @lstring attributeName ;
+    $identifier$ ? attributeName ;
+    $in$ ;
+    @lstring mapPropertyName ;
+    $identifier$ ? mapPropertyName ;
+    select
+    or
+      $<$ ;
+      @lstring indexName ;
+      $identifier$ ? indexName ;
+      $>$ ;
+    end select ;
+    $;$ ;
+  while
+    $context$ ;
+    @lstring referencePropertyName ;
+    $identifier$ ? referencePropertyName ;
+    $:$ ;
+    repeat
+      @lstring contextPropertyName ;
+      $identifier$ ? contextPropertyName ;
+    while
+      $,$ ;
+    end repeat ;
+    $;$ ;
+  while
+    @lstring propertyTypeName ;
+    $type_name$ ? propertyTypeName ;
+    @lstring attributeName ;
+    $identifier$ ? attributeName ;
+    select
+    #--- Map
+    or
+    #--- fetched property
+      $search$ ;
+      @lstring fetchedAttributeName ;
+      $identifier$ ? fetchedAttributeName ;
+      $in$ ;
+      @lstring mapPropertyName ;
+      $identifier$ ? mapPropertyName ;
+      @lstring indexName ;
+      select
+         indexName := [@lstring new !"" !here] ;
+      or
+        $<$ ;
+        $identifier$ ? indexName ;
+        [!?indexMap insertKey !indexName !mapPropertyName] ;
+        $>$ ;
+      end select ;
+      [!?fetchedPropertyMap insertKey
+        !attributeName
+        !propertyTypeName
+        !fetchedAttributeName
+        !mapPropertyName
+        !indexName
+      ] ;
+    end select ;
+    $;$ ;
+  while
+    $relation$ ;
+    @lstring relationIdentifier ;
+    $identifier$ ? relationIdentifier ;
+    $[$ ;
+    @relationVarMap relationVarMap [empty] ;
+    repeat
+      @lstring localVar ;
+      $identifier$ ? localVar ;
+      $:$ ;
+      @lstring domainVariable ;
+      $identifier$ ? domainVariable ;
+      [!?relationVarMap insertKey !localVar !domainVariable] ;
+    while
+      $,$ ;
+    end repeat ;
+    $]$ ;
+    $:=$ ;
+    @metamodelRelationExpression e ;
+    <constraint_relation_expression> !?relationVarMap !?indexMap ?e ;
+    $;$ ;
+    [!?relationMap insertKey !relationIdentifier !relationVarMap!e] ;
+  while
+    $override$ ;
+    $relation$ ;
+    @lstring relationIdentifier ;
+    $identifier$ ? relationIdentifier ;
+    @relationVarMap relationVarMap ;
+    [!?relationMap searchKey !relationIdentifier ?relationVarMap ?*] ;
+    $:=$ ;
+    @metamodelRelationExpression e ;
+    <constraint_relation_expression> !?relationVarMap  !?indexMap ?e ;
+    $;$ ;
+    [!?relationMap insertKey !relationIdentifier !relationVarMap!e] ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <property_path_for_constraint>
+  !@L_propertyPath outPath
+:
+  outPath := [@L_propertyPath empty] ;
+  repeat
+    select
+      @lstring pathElement ;
+      $identifier$ ? pathElement ;
+      outPath += !pathElement ;
+    or
+      @lstring pathElement ;
+      $type_name$ ? pathElement ;
+      outPath += ![@lstring new !".". [pathElement value] ![pathElement location]] ;
+    end select ;
+  while
+    $.$ ;
+  end repeat ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <constraint_relation_expression>
+  ?!@relationVarMap ioRelationVariableMap
+  ?!@indexMap ioIndexMap
+  !@metamodelRelationExpression outExpression
+:
+  <constraint_relation_term> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
+  repeat
+  while
+    $|$ ;
+    @metamodelRelationExpression e ;
+    <constraint_relation_term> !?ioRelationVariableMap !?ioIndexMap ?e ;
+    outExpression := [@metamodelRelationOr new !outExpression !e] ;
+  end repeat ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <constraint_relation_term>
+  ?!@relationVarMap ioRelationVariableMap
+  ?!@indexMap ioIndexMap
+  !@metamodelRelationExpression outExpression
+:
+  <constraint_relation_factor> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
+  repeat
+  while
+    $&$ ;
+    @metamodelRelationExpression e ;
+    <constraint_relation_factor> !?ioRelationVariableMap !?ioIndexMap ?e ;
+    outExpression := [@metamodelRelationOr new !outExpression !e] ;
+  end repeat ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <constraint_relation_factor>
+  ?!@relationVarMap ioRelationVariableMap
+  ?!@indexMap ioIndexMap
+  !@metamodelRelationExpression outExpression
+:
+  select
+    <constraint_relation_primary> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
+  or
+    $not$ ;
+    <constraint_relation_primary> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
+    outExpression := [@metamodelRelationNot new !outExpression] ;
+  end select ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <constraint_relation_primary>
+  ?!@relationVarMap ioRelationVariableMap
+  ?!@indexMap ioIndexMap
+  !@metamodelRelationExpression outExpression
+:
+  select
+    $true$ ;
+    outExpression := [@metamodelRelationTrue new] ;
+  or
+    $false$ ;
+    outExpression := [@metamodelRelationFalse new] ;
+  or
+    $($ ;
+    <constraint_relation_expression> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
+    $)$ ;
+  or
+    ${$ ;
+    @lstring localVar ;
+    $identifier$ ? localVar ;
+    @luint variableIndex ;
+    @lstring domainVariable ;
+    [!?ioRelationVariableMap searchKeyAndGetIndex !localVar ?variableIndex ?domainVariable] ;
+    $==$ ;
+    @lstring indexVariableName ;
+    $identifier$ ? indexVariableName ;
+    @lstring domainVariableFromIndex ;
+    [!?ioIndexMap searchKey !indexVariableName ?domainVariableFromIndex] ;
+    if [domainVariable value] != [domainVariableFromIndex value] then
+      error indexVariableName: "this index refers to the '" . [domainVariableFromIndex value]
+      . "' domain, while '" . [localVar  value] . "' relation variable refers to the '"
+      . [domainVariable value] . "' domain" ;
+    end if ;
+    $}$ ;
+    outExpression := [@metamodelRelationPrimary new !ioRelationVariableMap !localVar !variableIndex !indexVariableName !domainVariable] ;
+  or
+   $do$ ;
+    $($ ;
+     @L_propertyPath path ;
+     <property_path_for_constraint> ?path ;
+    $[$ ;
+    @metamodelRelationParameterList parameterList [empty] ;
+    repeat
+      @lstring parameter ;
+      $identifier$ ? parameter ;
+      @luint parameterIndex ;
+      @lstring domainVariable ;
+      [!?ioRelationVariableMap searchKeyAndGetIndex !parameter ?parameterIndex ?domainVariable] ;
+      parameterList += !parameter !parameterIndex !domainVariable ;
+    while
+      $,$ ;
+    end repeat ;
+    $]$ ;
+    $:$ ;
+    @lbool operationIsAnd ;
+    select
+      $|$ ;
+      operationIsAnd := [@lbool new !false !here] ;
+    or
+      $&$ ;
+      operationIsAnd := [@lbool new !true !here] ;
+    end select ;
+    $)$ ;
+    outExpression := [@metamodelRelationDo new !ioRelationVariableMap !parameterList !path !operationIsAnd] ;
+  end select ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+end syntax ;
