@@ -28,6 +28,7 @@ grammar galgas_LR1_grammar "LR1" :
   import syntax grammar_parser in "grammar_parser.ggs" ;
   import syntax program_parser in "program_parser.ggs" ;
   import syntax metamodel_parser in "metamodel_parser.ggs" ;
+  import syntax constraint_parser in "constraint_parser.ggs" ;
   import syntax ggs_LR1_compile_component in "ggs_LR1_compile_component.ggs" ;
   import syntax galgas_start in "galgas_start.ggs" ;
   root <galgas_start_symbol>

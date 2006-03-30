@@ -879,7 +879,7 @@ rule <import_headers_semantics_and_grammars>
       end select ;
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName value]] then
         @M_semanticsEntitiesForUse importedEntities ;
-        [!?ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities] ;
+        [!?ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?*] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -983,7 +983,7 @@ label importSemantics
         ;
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
-      [!? ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities] ;
+      [!?ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?*] ;
       foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
         if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
           [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;

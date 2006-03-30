@@ -172,7 +172,7 @@ rule <galgas_component>
     if [metamodelName value] != [returnedMetamodel value] then
       error metamodelName: "the '" . [returnedMetamodel value] . "' metamodel was expected here" ;
     end if ;
-    [!?ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?*] ;
+    [!?ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?*] ;
   end select ;
 #--- Send grammar descriptor
   grammarDescriptorForProgramList +=

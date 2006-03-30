@@ -46,25 +46,13 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-rule <metamodel_map_declaration>
-  ?!@mapEntityMap ioMapEntityMap
-  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
-label parse
-;
-
 rule <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
-rule <property_path>
-  !@L_propertyPath outPath
-label parse
-;
-
 rule <entity_declaration_list>
   ?!@entityToImplementMap ioEntityMap
-  ?!@mapEntityMap ioMapEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 label parse
@@ -75,34 +63,6 @@ rule <entity_declaration>
   ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 label parse
-;
-
-rule <entity_relation_expression>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-label parse 
-;
-
-rule <entity_relation_term>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-label parse 
-;
-
-rule <entity_relation_factor>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-label parse 
-;
-
-rule <entity_relation_primary>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-label parse 
 ;
 
 #-------------------------------------------------------------------*
@@ -173,16 +133,14 @@ rule <parse_metamodel>
   $type_name$ ? rootEntityName ;
   $:$ ;
   @entityToImplementMap entityMap [empty] ;
-  @mapEntityMap mapEntityMap [empty] ;
   @mapAndEntityUniqueMap mapAndEntityUniqueMap [empty] ;
   <entity_declaration_list>
     !?entityMap
-    !?mapEntityMap
     !?primitiveTypeAttributeNameSet
     !?mapAndEntityUniqueMap
   ;
   @bool isAbstract ;
-  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -192,16 +150,7 @@ rule <parse_metamodel>
                      ??@entityPropertyMap kAllPropertiesMap
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
-                     ??@lstring kSuperEntityName
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*) :
+                     ??@lstring kSuperEntityName) :
     @stringset superEntitySet [empty] ;
     buildSuperEntitySet !?entityMap !kSuperEntityName !?superEntitySet ;
     @AC_galgasType t := [@typeGalgas_singleEntity new
@@ -224,174 +173,15 @@ rule <parse_metamodel>
                      ??@entityPropertyMap kAllPropertiesMap
                      ??*
                      ??@entityPropertyMap kEntityPropertiesMap
-                     ??*
-                     ??* 
-                     ??* 
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
                      ??*) :
     foreach kEntityPropertiesMap (??@lstring kAttributeName
                                   ??@metamodelPropertyKind kKind
-                                  ??@lstring kTypeName
-                                  ??@L_ListOfPropertyPathes kPropertyOptionPathes) :
+                                  ??@lstring kTypeName) :
       if (kKind == [@metamodelPropertyKind singleReferenceProperty]) |
          (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
-        @contextPropertyMap contextPropertyMap ;
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?* ?contextPropertyMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+        [!?entityMap searchKey !kTypeName ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kTypeName value] ;
-      #--- Check context options
-        if [kPropertyOptionPathes length] != [contextPropertyMap count] then
-          error kAttributeName: "this reference has "
-          . [[kPropertyOptionPathes length] string] . " context parameter(s), while corresponding entity has "
-          . [[contextPropertyMap count] string] . " context attribute(s)" ;
-        else
-          foreach kPropertyOptionPathes (??@L_propertyPath kPath ??@location kEndPofPathLocation),
-                  contextPropertyMap (??@lstring kContextAttributeName ??@lstring kContextAttributeEntityName) :
-            @lstring typeName ;
-            checkPath
-              !?entityMap
-              !?mapEntityMap
-              !kAllPropertiesMap
-              !kEntityName
-              !kPath
-              ?*
-              ?typeName
-              ?*
-            ;
-          #--- Check entity type name
-            if [typeName value] != [kContextAttributeEntityName value] then
-              error kEndPofPathLocation: "the path entity is '@"
-              . [typeName value] . "', but its entity should be '@"
-              . [kContextAttributeEntityName value] . "'" ;
-            end if ;
-          end foreach ;
-        end if ;
-      elsif kKind == [@metamodelPropertyKind contextProperty] then
-        [!?mapAndEntityUniqueMap searchKey !kTypeName] ;
-      elsif kKind == [@metamodelPropertyKind fetchedProperty] then
-        foreach kPropertyOptionPathes (??@L_propertyPath kPath ??@location kEndPofPathLocation):
-          @lstring typeName ;
-          @metamodelPropertyKind kind ;
-          checkPath
-            !?entityMap
-            !?mapEntityMap
-            !kAllPropertiesMap
-            !kEntityName
-            !kPath
-            ?kind
-            ?typeName
-            ?*
-          ;
-          if kind != [@metamodelPropertyKind mapProperty] then
-            error kEndPofPathLocation: "this path does define a map property" ;
-          end if ;
-        end foreach ;
       end if ;
-    end foreach ;
-  end foreach ;
-#--- Check fetched properties
-  foreach entityMap (??@lstring kCurrentEntity
-                     ??@entityPropertyMap kAllPropertiesMap
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??@fetchedPropertyMap kFetchedPropertyMap
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*) :
-    @entityPropertyMap allPropertiesMap := kAllPropertiesMap ;
-    foreach kFetchedPropertyMap (??@lstring kFetchedPropertyName
-                                 ??@lstring kFetchedEntityName
-                                 ??@lstring kAttributeName
-                                 ??@lstring kMapAttributeName
-                                 ??*) :
-    #--- Check designated attribute in an @lstring
-      @metamodelPropertyKind kind ;
-      @lstring propertyTypeName ;
-      [!?allPropertiesMap searchKey !kAttributeName ?kind ?propertyTypeName ?*] ;
-      if kind != [@metamodelPropertyKind attributeProperty] then
-        error kAttributeName: "this property is not an attribute" ;
-      elsif [propertyTypeName value] != "lstring" then
-        error kAttributeName: "this attribute should be an '@lstring' attribute" ;
-      end if ;
-      [!?allPropertiesMap searchKey !kMapAttributeName ?kind ?propertyTypeName ?*] ;
-      if kind != [@metamodelPropertyKind contextProperty] then
-        error kAttributeName: "this path does not designate a context property" ;
-      else
-        @lstring elementTypeName ;
-        [!?mapEntityMap searchKey !propertyTypeName ?elementTypeName ?* ?*] ;
-        if [kFetchedEntityName value] != [elementTypeName value] then
-          error kMapAttributeName: "this property has '@"
-          . [kFetchedEntityName value]
-          . "', while '@" . [elementTypeName value] . "' was expected" ;
-        end if ;
-      end if ;
-    end foreach ;
-  end foreach ;
-#--- Check inserted properties
-  foreach entityMap (??@lstring kCurrentEntity
-                     ??@entityPropertyMap kAllPropertiesMap
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??@insertedPropertyMap kInsertedPropertyMap
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*) :
-    @entityPropertyMap allPropertiesMap := kAllPropertiesMap ;
-    foreach kInsertedPropertyMap (??@lstring kInsertedAttributeName
-                                  ??@insertionMap kInsertionMap) :
-      foreach kInsertionMap (??@lstring kInsertionMapName ??*) :
-        @lstring mapTypeName ;
-        @metamodelPropertyKind kind ;
-        [!?allPropertiesMap searchKey !kInsertionMapName ?kind ?mapTypeName ?*] ;
-        if not [mapEntityMap hasKey ![mapTypeName value]] then
-           error kInsertionMapName: "this reference does not designate a map" ;
-         else
-           @lstring elementEntity ;
-           [!?mapEntityMap searchKey !mapTypeName ?elementEntity ?* ?*] ;
-           if [elementEntity value] != [kCurrentEntity value] then
-             error kInsertionMapName : "the type of the map is '@" . [kCurrentEntity value]
-             . "', but should be '@" . [elementEntity value] . "'" ;
-           end if ;
-        end if ;
-      end foreach ;
-    end foreach ;
-  end foreach ;
-#--- Check relation domains
-  foreach entityMap (??@lstring kCurrentEntity
-                     ??@entityPropertyMap kAllPropertiesMap
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??@relationMap kRelationMap
-                     ??*
-                     ??*
-                     ??*) :
-    @entityPropertyMap allPropertiesMap := kAllPropertiesMap ;
-    foreach kRelationMap (??* ??@relationVarMap kRelationVarMap ??*) :
-      foreach kRelationVarMap (??* ??@lstring kDomainVariableName) :
-        [!?allPropertiesMap searchKey !kDomainVariableName ?* ?* ?*] ;
-      end foreach ;
     end foreach ;
   end foreach ;
 #--- Generate C++ code
@@ -400,7 +190,6 @@ rule <parse_metamodel>
     !metamodelName
     !multiReferencedEntities
     !rootEntityName
-    !?mapEntityMap
   ;
 #--- Add metamodel to metamodel map
   if not [ioMetamodelComponentMap hasKey ![metamodelName value]] then
@@ -408,6 +197,7 @@ rule <parse_metamodel>
       !metamodelName
       !rootEntityName
       !semanticsEntityMap
+      !entityMap
     ] ;
   end if ;
   $end$ ;
@@ -419,16 +209,10 @@ end rule ;
 
 rule <entity_declaration_list>
   ?!@entityToImplementMap outEntityMap
-  ?!@mapEntityMap ioMapEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 :
   repeat
-  while
-    <metamodel_map_declaration>
-      !?ioMapEntityMap
-      !?ioMapAndEntityUniqueMap
-    ;
   while
     <entity_declaration>
       !?outEntityMap
@@ -436,43 +220,6 @@ rule <entity_declaration_list>
       !?ioMapAndEntityUniqueMap
     ;
   end repeat ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <metamodel_map_declaration>
-  ?!@mapEntityMap ioMapEntityMap
-  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
-:
-  $map$ ;
-  @lstring mapIdentifier ;
-  $type_name$ ? mapIdentifier ;
-  [!?ioMapAndEntityUniqueMap insertKey !mapIdentifier] ;
-  $of$ ;
-  @lstring mapElementIdentifier ;
-  $type_name$ ? mapElementIdentifier ;
-  ${$ ;
-  $insert$ ;
-  $error$ ;
-  $message$ ;
-  @lstring insertErrorMessage ;
-  $literal_string$ ? insertErrorMessage ;
-  action check_KL_escapeCharacters !insertErrorMessage ;
-  $;$ ;
-  $search$ ;
-  $error$ ;
-  $message$ ;
-  @lstring searchErrorMessage ;
-  $literal_string$ ? searchErrorMessage ;
-  action check_K_escapeCharacters !searchErrorMessage ;
-  $;$ ;
-  $}$ ;
-  [!?ioMapEntityMap insertKey
-    !mapIdentifier
-    !mapElementIdentifier
-    !insertErrorMessage
-    !searchErrorMessage
-  ] ;
 end rule ;
 
 #-------------------------------------------------------------------*
@@ -496,19 +243,11 @@ rule <entity_declaration>
   $type_name$ ? entityName ;
   [!?ioMapAndEntityUniqueMap insertKey !entityName] ;
 #--- Context properties, or super entity (or nothing)
-  @entityPropertyMap entityPropertyMap [empty] ;
-  @fetchedPropertyMap allFetchedPropertyMap ;
-  @contextPropertyMap allContextPropertyMap [empty] ;
-  @insertedPropertyMap allInsertedPropertyMap ;
   @entityPropertyMap allPropertyMap ;
-  @relationMap allRelationMap [empty] ;
   @lstring superEntity ;
-  @indexMap allIndexMap [empty] ;
   select
     superEntity := [@lstring new !"" !here] ;
     allPropertyMap := [@entityPropertyMap empty] ;
-    allFetchedPropertyMap := [@fetchedPropertyMap empty] ;
-    allInsertedPropertyMap := [@insertedPropertyMap  empty] ;
   or
     $extends$ ;
     $type_name$ ? superEntity ;
@@ -518,50 +257,10 @@ rule <entity_declaration>
       ?*
       ?allPropertyMap
       ?*
-      ?allContextPropertyMap
-      ?*
-      ?allFetchedPropertyMap
-      ?*
-      ?allInsertedPropertyMap
-      ?*
-      ?allRelationMap
-      ?*
-      ?allIndexMap
     ] ;
-  or
-    superEntity := [@lstring new !"" !here] ;
-    allPropertyMap := [@entityPropertyMap empty] ;
-    allFetchedPropertyMap := [@fetchedPropertyMap empty] ;
-    allInsertedPropertyMap := [@insertedPropertyMap  empty] ;
-    $($ ;
-    repeat
-      @lstring entityName ;
-      $type_name$ ? entityName ;
-      @lstring contextPropertyName ;
-      $identifier$ ? contextPropertyName ;
-      [!?allContextPropertyMap insertKey !contextPropertyName !entityName] ;
-      [!?allPropertyMap insertKey
-        !contextPropertyName
-        ![@metamodelPropertyKind contextProperty]
-        !entityName
-        ![@L_ListOfPropertyPathes empty]
-      ] ;
-      [!?entityPropertyMap insertKey
-        !contextPropertyName
-        ![@metamodelPropertyKind contextProperty]
-        !entityName
-        ![@L_ListOfPropertyPathes empty]
-      ] ;
-    while
-      $,$ ;
-    end repeat ;
-    $)$ ;
   end select ;
 #--- Property declarations
-  @indexMap indexMap [empty] ;
-  @fetchedPropertyMap fetchedPropertyMap [empty] ;
-  @relationMap relationMap [empty] ;
-  @insertedPropertyMap insertedPropertyMap [empty] ;
+  @entityPropertyMap entityPropertyMap [empty] ;
   ${$ ;
   repeat
   while
@@ -580,16 +279,6 @@ rule <entity_declaration>
       $identifier$ ? attributeName ;
       k := [@metamodelPropertyKind multipleReferenceProperty] ;
     or
-    #--- Map reference
-      $<$ ;
-      $>$ ;
-      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName value]] then
-        error propertyTypeName : "the '@" . [propertyTypeName value]
-        . "' is not an entity name, but a predefined type name" ;
-      end if ;
-      $identifier$ ? attributeName ;
-      k := [@metamodelPropertyKind mapProperty] ;
-    or
       $identifier$ ? attributeName ;
     #--- Single reference or attribute ?
       if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName value]] then
@@ -600,131 +289,9 @@ rule <entity_declaration>
         k := [@metamodelPropertyKind singleReferenceProperty] ;
       end if ;
     end select ;
-  #--- Path options
-    @L_ListOfPropertyPathes propertyOptionPathes [empty] ;
-    select
-      #--- No option
-    or
-      $insert$ ;
-      if [propertyTypeName value] != "lstring" then
-        error here: "only an @lstring attribute can be inserted in a map" ;
-      end if ;
-      @insertionMap maps [empty] ;
-      repeat
-        @lstring mapName ;
-        $identifier$ ? mapName ;
-        @lstring indexName ;
-        select
-           indexName := [@lstring new !"" !here] ;
-        or
-          $<$ ;
-          $identifier$ ? indexName ;
-          [!?indexMap insertKey !indexName !mapName] ;
-          [!?allIndexMap insertKey !indexName !mapName] ;
-          $>$ ;
-        end select ;
-        [!?maps insertKey !mapName !indexName] ;
-      while
-        $,$ ;
-      end repeat ;
-      [!?insertedPropertyMap insertKey !attributeName !maps] ;
-      [!?allInsertedPropertyMap insertKey !attributeName !maps] ;
-    or
-      $search$ ;
-      if k != [@metamodelPropertyKind singleReferenceProperty] then
-        error here: "attribute property or multiple reference property cannot accept 'search' construct" ;
-      end if ;
-      k := [@metamodelPropertyKind fetchedProperty] ;
-      @lstring fetchedAttributeName ;
-      $identifier$ ? fetchedAttributeName ;
-      $in$ ;
-      @lstring mapPropertyName ;
-      $identifier$ ? mapPropertyName ;
-      @lstring indexName ;
-      select
-         indexName := [@lstring new !"" !here] ;
-      or
-        $<$ ;
-        $identifier$ ? indexName ;
-        [!?indexMap insertKey !indexName !mapPropertyName] ;
-        $>$ ;
-      end select ;
-      [!?fetchedPropertyMap insertKey
-        !attributeName
-        !propertyTypeName
-        !fetchedAttributeName
-        !mapPropertyName
-        !indexName
-      ] ;
-    or
-      $($ ;
-      if (k != [@metamodelPropertyKind singleReferenceProperty])
-       & (k != [@metamodelPropertyKind multipleReferenceProperty]) then
-        error here:"only a reference property accepts context parameters" ;
-      end if ;
-      repeat
-        select
-          $self$ ;
-          @L_propertyPath path [empty] ;
-          propertyOptionPathes += !path !here ;
-        or
-          @L_propertyPath path ;
-          <property_path> ?path ;
-          propertyOptionPathes += !path !here ;
-        end select ;
-      while
-        $,$ ;
-      end repeat ;
-      $)$ ;
-    end select ;
-    [!?allPropertyMap insertKey !attributeName !k !propertyTypeName !propertyOptionPathes] ;
-    [!?entityPropertyMap insertKey !attributeName !k !propertyTypeName !propertyOptionPathes] ;
+    [!?entityPropertyMap insertKey !attributeName !k !propertyTypeName] ; 
+    [!?allPropertyMap insertKey !attributeName !k !propertyTypeName] ; 
     $;$ ;
-  while
-    $relation$ ;
-    @lstring relationIdentifier ;
-    $identifier$ ? relationIdentifier ;
-    $[$ ;
-    @relationVarMap relationVarMap [empty] ;
-    repeat
-      @lstring localVar ;
-      $identifier$ ? localVar ;
-      $:$ ;
-      @lstring domainVariable ;
-      $identifier$ ? domainVariable ;
-      [!?relationVarMap insertKey !localVar !domainVariable] ;
-    while
-      $,$ ;
-    end repeat ;
-    $]$ ;
-    $:=$ ;
-    @metamodelRelationExpression e ;
-    <entity_relation_expression> !?relationVarMap !?indexMap ?e ;
-    $;$ ;
-    [!?relationMap insertKey !relationIdentifier !relationVarMap!e] ;
-    [!?allRelationMap insertKey !relationIdentifier !relationVarMap!e] ;
-    @metamodelPropertyKind k [relationProperty] ;
-    @lstring noPropertyTypeName [new !"" !here] ;
-    @L_ListOfPropertyPathes propertyOptionPathes [empty] ;
-    [!?allPropertyMap insertKey !relationIdentifier !k !noPropertyTypeName !propertyOptionPathes] ;
-    [!?entityPropertyMap insertKey !relationIdentifier !k !noPropertyTypeName !propertyOptionPathes] ;
-  while
-    $override$ ;
-    $relation$ ;
-    @lstring relationIdentifier ;
-    $identifier$ ? relationIdentifier ;
-    @relationVarMap relationVarMap ;
-    [!?allRelationMap searchKey !relationIdentifier ?relationVarMap ?*] ;
-    $:=$ ;
-    @metamodelRelationExpression e ;
-    <entity_relation_expression> !?relationVarMap  !?indexMap ?e ;
-    $;$ ;
-    [!?relationMap insertKey !relationIdentifier !relationVarMap!e] ;
-    @metamodelPropertyKind k [relationProperty] ;
-    @lstring noPropertyTypeName [new !"" !here] ;
-    @L_ListOfPropertyPathes propertyOptionPathes [empty] ;
-    [!?allPropertyMap searchKey !relationIdentifier ?* ?* ?*] ;
-    [!?entityPropertyMap insertKey !relationIdentifier !k !noPropertyTypeName !propertyOptionPathes] ;
   end repeat ;
   $}$ ;
   [!?ioEntityMap insertKey
@@ -733,155 +300,7 @@ rule <entity_declaration>
     !isAbstract
     !entityPropertyMap
     !superEntity
-    !allContextPropertyMap
-    !fetchedPropertyMap
-    !allFetchedPropertyMap
-    !insertedPropertyMap
-    !allInsertedPropertyMap
-    !relationMap
-    !allRelationMap
-    !indexMap
-    !allIndexMap
    ] ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <property_path>
-  !@L_propertyPath outPath
-:
-  outPath := [@L_propertyPath empty] ;
-  repeat
-    select
-      @lstring pathElement ;
-      $identifier$ ? pathElement ;
-      outPath += !pathElement ;
-    or
-      @lstring pathElement ;
-      $type_name$ ? pathElement ;
-      outPath += ![@lstring new !".". [pathElement value] ![pathElement location]] ;
-    end select ;
-  while
-    $.$ ;
-  end repeat ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <entity_relation_expression>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-:
-  <entity_relation_term> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-  repeat
-  while
-    $|$ ;
-    @metamodelRelationExpression e ;
-    <entity_relation_term> !?ioRelationVariableMap !?ioIndexMap ?e ;
-    outExpression := [@metamodelRelationOr new !outExpression !e] ;
-  end repeat ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <entity_relation_term>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-:
-  <entity_relation_factor> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-  repeat
-  while
-    $&$ ;
-    @metamodelRelationExpression e ;
-    <entity_relation_factor> !?ioRelationVariableMap !?ioIndexMap ?e ;
-    outExpression := [@metamodelRelationOr new !outExpression !e] ;
-  end repeat ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <entity_relation_factor>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-:
-  select
-    <entity_relation_primary> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-  or
-    $not$ ;
-    <entity_relation_primary> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-    outExpression := [@metamodelRelationNot new !outExpression] ;
-  end select ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <entity_relation_primary>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-:
-  select
-    $true$ ;
-    outExpression := [@metamodelRelationTrue new] ;
-  or
-    $false$ ;
-    outExpression := [@metamodelRelationFalse new] ;
-  or
-    $($ ;
-    <entity_relation_expression> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-    $)$ ;
-  or
-    ${$ ;
-    @lstring localVar ;
-    $identifier$ ? localVar ;
-    @luint variableIndex ;
-    @lstring domainVariable ;
-    [!?ioRelationVariableMap searchKeyAndGetIndex !localVar ?variableIndex ?domainVariable] ;
-    $==$ ;
-    @lstring indexVariableName ;
-    $identifier$ ? indexVariableName ;
-    @lstring domainVariableFromIndex ;
-    [!?ioIndexMap searchKey !indexVariableName ?domainVariableFromIndex] ;
-    if [domainVariable value] != [domainVariableFromIndex value] then
-      error indexVariableName: "this index refers to the '" . [domainVariableFromIndex value]
-      . "' domain, while '" . [localVar  value] . "' relation variable refers to the '"
-      . [domainVariable value] . "' domain" ;
-    end if ;
-    $}$ ;
-    outExpression := [@metamodelRelationPrimary new !ioRelationVariableMap !localVar !variableIndex !indexVariableName !domainVariable] ;
-  or
-   $do$ ;
-    $($ ;
-     @L_propertyPath path ;
-     <property_path> ?path ;
-    $[$ ;
-    @metamodelRelationParameterList parameterList [empty] ;
-    repeat
-      @lstring parameter ;
-      $identifier$ ? parameter ;
-      @luint parameterIndex ;
-      @lstring domainVariable ;
-      [!?ioRelationVariableMap searchKeyAndGetIndex !parameter ?parameterIndex ?domainVariable] ;
-      parameterList += !parameter !parameterIndex !domainVariable ;
-    while
-      $,$ ;
-    end repeat ;
-    $]$ ;
-    $:$ ;
-    @lbool operationIsAnd ;
-    select
-      $|$ ;
-      operationIsAnd := [@lbool new !false !here] ;
-    or
-      $&$ ;
-      operationIsAnd := [@lbool new !true !here] ;
-    end select ;
-    $)$ ;
-    outExpression := [@metamodelRelationDo new !ioRelationVariableMap !parameterList !path !operationIsAnd] ;
-  end select ;
 end rule ;
 
 #-------------------------------------------------------------------*
