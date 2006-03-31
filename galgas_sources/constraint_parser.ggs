@@ -72,6 +72,8 @@ label parse
 rule <constraints_on_entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@mapEntityMap ioMapEntityMap
+  ?!@constrainedEntityMap ioConstrainedEntityMap
+  ?!@constraintToImplementMap ioConstraintToImplementMap
 label parse
 ;
 
@@ -188,11 +190,15 @@ rule <parse_constraint_document>
     ;
   end repeat ;
 #--- Parse constraint declarations
+  @constrainedEntityMap constrainedEntityMap [empty] ;
+  @constraintToImplementMap constraintToImplementMap [empty] ;
   repeat
   while
     <constraints_on_entity_declaration>
       !?entityMap
       !?mapEntityMap
+      !?constrainedEntityMap
+      !?constraintToImplementMap
     ;
   end repeat ;
 #--- Generate C++ code
@@ -252,6 +258,8 @@ end rule ;
 rule <constraints_on_entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@mapEntityMap ioMapEntityMap
+  ?!@constrainedEntityMap ioConstrainedEntityMap
+  ?!@constraintToImplementMap ioConstraintToImplementMap
 :
 #--- Entity Name
   $constraint$ ;
@@ -275,26 +283,38 @@ rule <constraints_on_entity_declaration>
     repeat
       @lstring entityName ;
       $type_name$ ? entityName ;
-      @lstring contextPropertyName ;
-      $identifier$ ?contextPropertyName ;
       @bool isMap ;
-      if [ioMapEntityMap hasKey![contextPropertyName value]] then
+      if [ioMapEntityMap hasKey![entityName value]] then
         isMap := true ;
-      elsif [ioEntityMap hasKey![contextPropertyName value]] then
+      elsif [ioEntityMap hasKey![entityName value]] then
         isMap := false ;
       else
-        error contextPropertyName : "this type is not defined" -> isMap ;
+        error entityName : "this type is not defined" -> isMap ;
       end if ;
+      @lstring contextPropertyName ;
+      $identifier$ ?contextPropertyName ;
       [!?contextPropertyMap insertKey !contextPropertyName !entityName !isMap] ;
     while
       $,$ ;
     end repeat ;
     $)$ ;
   end select ;
+#--- Get inherited properties from super class constraints
+  @relationMap allRelationMap [empty] ;
+  if [superEntity value] != "" then
+    if [ioConstrainedEntityMap hasKey ![superEntity value]] then
+      [!?ioConstrainedEntityMap searchKey
+        !superEntity
+        ?allRelationMap
+      ] ;
+    else
+      error entityName:"constraints for super entity ('@" . [superEntity value] . "') should be previously defined" ;
+    end if ;
+  end if ;
 #--- Property declarations
+  @relationMap relationToImplementMap [empty] ;
   @indexMap indexMap [empty] ;
   @fetchedPropertyMap fetchedPropertyMap [empty] ;
-  @relationMap relationMap [empty] ;
   @insertedPropertyMap insertedPropertyMap [empty] ;
   ${$ ;
   repeat
@@ -310,6 +330,7 @@ rule <constraints_on_entity_declaration>
       $<$ ;
       @lstring indexName ;
       $identifier$ ? indexName ;
+      [!?indexMap insertKey !indexName !mapPropertyName] ;
       $>$ ;
     end select ;
     $;$ ;
@@ -379,21 +400,30 @@ rule <constraints_on_entity_declaration>
     @metamodelRelationExpression e ;
     <constraint_relation_expression> !?relationVarMap !?indexMap ?e ;
     $;$ ;
-    [!?relationMap insertKey !relationIdentifier !relationVarMap!e] ;
+    [!?allRelationMap insertKey !relationIdentifier !relationVarMap!e] ;
+    [!?relationToImplementMap insertKey !relationIdentifier !relationVarMap!e] ;
   while
     $override$ ;
     $relation$ ;
     @lstring relationIdentifier ;
     $identifier$ ? relationIdentifier ;
     @relationVarMap relationVarMap ;
-    [!?relationMap searchKey !relationIdentifier ?relationVarMap ?*] ;
+    [!? allRelationMap searchKey !relationIdentifier ?relationVarMap ?*] ;
     $:=$ ;
     @metamodelRelationExpression e ;
     <constraint_relation_expression> !?relationVarMap  !?indexMap ?e ;
     $;$ ;
-    [!?relationMap insertKey !relationIdentifier !relationVarMap!e] ;
+    [!?relationToImplementMap insertKey !relationIdentifier !relationVarMap!e] ;
   end repeat ;
   $}$ ;
+  [!?ioConstrainedEntityMap insertKey
+    !entityName
+    !allRelationMap
+  ] ;
+  [!?ioConstraintToImplementMap insertKey
+    !entityName
+    !relationToImplementMap
+  ] ;
 end rule ;
 
 #-------------------------------------------------------------------*

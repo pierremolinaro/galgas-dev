@@ -626,6 +626,22 @@ map @entityToImplementMap {
 
 #---------------------------------------------------------------------------*
 
+map @constraintToImplementMap {
+  @relationMap mRelationMap ;
+  insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
+  search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @constrainedEntityMap {
+  @relationMap mAllRelationMap ;
+  insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
+  search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
+}
+
+#---------------------------------------------------------------------------*
+
 action generate_metamodel
  ?!@entityToImplementMap ioEntityMap
  ?@lstring inMetamodelComponentName
