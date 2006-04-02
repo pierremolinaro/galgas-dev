@@ -31,6 +31,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -39,9 +40,11 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -50,6 +53,7 @@ rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -61,6 +65,7 @@ label parse
 
 rule <parse_constraint_document>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -106,7 +111,7 @@ label parse
 ;
 
 #-------------------------------------------------------------------*
-#                   Metamodel component                             *
+#                   Constraint component                            *
 #-------------------------------------------------------------------*
 
 rule <galgas_component>
@@ -116,8 +121,12 @@ rule <galgas_component>
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
-  <parse_constraint_document> !?ioMetamodelComponentMap ;
+  <parse_constraint_document>
+    !?ioMetamodelComponentMap
+    !?ioConstraintComponentMap
+  ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
 :
@@ -126,17 +135,29 @@ label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
-  <parse_constraint_document> !?ioMetamodelComponentMap ;
+  @M_constraintComponents constraintComponentMap [empty] ;
+  <parse_constraint_document>
+    !?ioMetamodelComponentMap
+    !?constraintComponentMap
+  ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
-  <parse_constraint_document> !?ioMetamodelComponentMap ;
+  <parse_constraint_document>
+    !?ioMetamodelComponentMap
+    !?ioConstraintComponentMap
+  ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
-  <parse_constraint_document> !?ioMetamodelComponentMap ;
+  <parse_constraint_document>
+    !?ioMetamodelComponentMap
+    !?ioConstraintComponentMap
+  ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
 :
@@ -147,6 +168,7 @@ end rule ;
 
 rule <parse_constraint_document>
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
 #--- Constraint component header
   $constraint$ ;
@@ -168,16 +190,19 @@ rule <parse_constraint_document>
     !fileName
     !?unusedSemanticsMapForUse
     !?metamodelComponentMap
+    !?ioConstraintComponentMap
   ;
 #--- Search imported metamodel
   @lstring rootEntity ;
   @M_semanticsEntitiesForUse semanticsEntitiesMap ;
   @entityToImplementMap entityMap ;
+  @stringset multiReferencedEntities ;
   [!?metamodelComponentMap searchKey
     !metamodelName
     ?rootEntity
     ?semanticsEntitiesMap
     ?entityMap
+    ?multiReferencedEntities
   ] ;
 #--- Parse Map Declarations
   @mapEntityMap mapEntityMap [empty] ;
@@ -202,13 +227,16 @@ rule <parse_constraint_document>
     ;
   end repeat ;
 #--- Generate C++ code
-#  action generate_metamodel
-#    !?entityMap
-#    !constraintName
-#    !multiReferencedEntities
-#    !rootEntityName
-#    !?mapEntityMap
-#  ;
+  action generate_constraints
+      !?entityMap
+      !?mapEntityMap
+      !metamodelName
+      !constraintName
+      !?constrainedEntityMap
+      !?constraintToImplementMap
+      !multiReferencedEntities
+      !rootEntity
+  ;
   $end$ ;
   $constraint$ ;
   $;$ ;
@@ -306,6 +334,7 @@ rule <constraints_on_entity_declaration>
       [!?ioConstrainedEntityMap searchKey
         !superEntity
         ?allRelationMap
+        ?*
       ] ;
     else
       error entityName:"constraints for super entity ('@" . [superEntity value] . "') should be previously defined" ;
@@ -419,10 +448,12 @@ rule <constraints_on_entity_declaration>
   [!?ioConstrainedEntityMap insertKey
     !entityName
     !allRelationMap
+    !superEntity
   ] ;
   [!?ioConstraintToImplementMap insertKey
     !entityName
     !relationToImplementMap
+    !superEntity
   ] ;
 end rule ;
 

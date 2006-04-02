@@ -31,6 +31,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -39,9 +40,11 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -101,6 +104,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $grammar$ ;
 #--- Grammar name
@@ -192,7 +196,7 @@ rule <galgas_component>
             @L_signature importedAltSignature ;
             @lstring importedReturnedType ;
             [!?temp searchKey !altName ?importedAltSignature ?importedReturnedType] ;
-            checkSignature_ForGrammarComponent !importedAltSignature !altSignature ![altName location] ;
+            checkSignature_ForGrammarComponent !importedAltSignature !altSignature ![ntSymbol location] ![altName location] ;
           end foreach ;
           foreach importedAltSignaturesMap (??@lstring importedAltName ??@L_signature importedAltSignature ??*) :
             if [importedAltName value] != "parse" then
@@ -227,7 +231,7 @@ rule <galgas_component>
       $->$ ;
       @lstring returnedMetamodelName ;
       $identifier$ ?returnedMetamodelName ;
-      [!?ioMetamodelComponentMap searchKey !returnedMetamodelName ?returnedEntityName ?* ?*] ;
+      [!?ioMetamodelComponentMap searchKey !returnedMetamodelName ?returnedEntityName ?* ?* ?*] ;
       [!?startSymbolEntityAndMetamodelMap insertKey !altName !returnedEntityName !returnedMetamodelName] ;
     end select ;
     [!?grammarAltMap insertKey !altName !signature !returnedEntityName] ;
@@ -245,7 +249,7 @@ rule <galgas_component>
     @L_signature altMap ;
     @lstring returnedEntity ;
     [!?grammarAltMap searchKey !cstAltName ?altMap ?returnedEntity] ;
-    checkSignature_ForGrammarComponent !cstAltMap !altMap !here ;
+    checkSignature_ForGrammarComponent !cstAltMap !altMap !here ![cstAltName location] ;
     if [returnedEntity value] != [kReturnedEntity value] then
 
     end if ;
@@ -383,6 +387,7 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $grammar$ ;
   $identifier$ ? * ;
@@ -436,6 +441,7 @@ label importSemantics
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $grammar$ ;
   @lstring grammarName ;

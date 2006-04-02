@@ -28,6 +28,7 @@ rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -38,6 +39,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -46,9 +48,11 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -57,6 +61,7 @@ rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -84,6 +89,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
 #--- Program header
   $program$ ;
@@ -119,6 +125,7 @@ rule <galgas_component>
       !sourceFileName
       !?grammarComponentsMap
       !?ioMetamodelComponentMap
+      !?ioConstraintComponentMap
     ;
   end select ;
   $;$ ;
@@ -137,9 +144,31 @@ rule <galgas_component>
         !sourceFile
         !?ioSemanticsComponentsMap
         !?ioMetamodelComponentMap
+        !?ioConstraintComponentMap
       ;
     end select ;
     $;$ ;
+  #--- Import constraints
+    repeat
+    while
+      $import$ ;
+      $constraint$ ;
+      @lstring constraintComponentName ;
+      $identifier$ ? constraintComponentName ;
+      select
+      or
+        $in$ ;
+        @lstring sourceFile ;
+        $literal_string$ ?sourceFile ;
+#      <parse_semantics_component_for_importing> 
+#        !sourceFile
+#        !?ioSemanticsComponentsMap
+#        !?ioMetamodelComponentMap
+#        !?ioConstraintComponentMap
+#      ;
+      end select ;
+      $;$ ;
+    end repeat ;
   end select ;
   @lstring lexiqueClassName ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
@@ -168,11 +197,22 @@ rule <galgas_component>
   or
     $metamodel$ ;
     $identifier$ ? metamodelName ;
+    select
+    or
+      $($ ;
+      repeat
+        @lstring constraintComponentName ;
+        $identifier$ ? constraintComponentName ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
     $;$ ;
     if [metamodelName value] != [returnedMetamodel value] then
       error metamodelName: "the '" . [returnedMetamodel value] . "' metamodel was expected here" ;
     end if ;
-    [!?ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?*] ;
+    [!?ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?* ?*] ;
   end select ;
 #--- Send grammar descriptor
   grammarDescriptorForProgramList +=
@@ -238,6 +278,18 @@ label importLexique
       <parse_semantics_component_for_importing> parse ;
     end select ;
     $;$ ;
+    repeat
+    while
+      $import$ ;
+      $constraint$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ?* ;
+      end select ;
+      $;$ ;
+    end repeat ;
   end select ;
 #--- Program attributes
   <program_attributes_declaration> parse ;
@@ -245,6 +297,16 @@ label importLexique
   or
     $metamodel$ ;
     $identifier$ ? * ;
+    select
+    or
+      $($ ;
+      repeat
+        $identifier$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
     $;$ ;
   end select ;
 #--- Max errors count
@@ -291,6 +353,18 @@ label importSyntax
       <parse_semantics_component_for_importing> parse ;
     end select ;
     $;$ ;
+    repeat
+    while
+      $import$ ;
+      $constraint$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ?* ;
+      end select ;
+      $;$ ;
+    end repeat ;
   end select ;
 #--- Program attributes
   <program_attributes_declaration> parse ;
@@ -298,6 +372,16 @@ label importSyntax
   or
     $metamodel$ ;
     $identifier$ ? * ;
+    select
+    or
+      $($ ;
+      repeat
+        $identifier$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
     $;$ ;
   end select ;
 #--- Max errors count
@@ -314,6 +398,7 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $program$ ;
   $identifier$ ? * ;
@@ -343,6 +428,18 @@ label importSemantics
       <parse_semantics_component_for_importing> parse ;
     end select ;
     $;$ ;
+    repeat
+    while
+      $import$ ;
+      $constraint$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ?* ;
+      end select ;
+      $;$ ;
+    end repeat ;
   end select ;
 #--- Program attributes
   <program_attributes_declaration> parse ;
@@ -350,6 +447,16 @@ label importSemantics
   or
     $metamodel$ ;
     $identifier$ ? * ;
+    select
+    or
+      $($ ;
+      repeat
+        $identifier$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
     $;$ ;
   end select ;
 #--- Max errors count
@@ -366,6 +473,7 @@ label importSemantics
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $program$ ;
   $identifier$ ? * ;
@@ -395,6 +503,18 @@ label importGrammarForSemantics
       <parse_semantics_component_for_importing> parse ;
     end select ;
     $;$ ;
+    repeat
+    while
+      $import$ ;
+      $constraint$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ?* ;
+      end select ;
+      $;$ ;
+    end repeat ;
   end select ;
 #--- Program attributes
   <program_attributes_declaration> parse ;
@@ -402,6 +522,16 @@ label importGrammarForSemantics
   or
     $metamodel$ ;
     $identifier$ ? * ;
+    select
+    or
+      $($ ;
+      repeat
+        $identifier$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
     $;$ ;
   end select ;
 #--- Max errors count
@@ -446,12 +576,34 @@ label importOptions
       <parse_semantics_component_for_importing> parse ;
     end select ;
     $;$ ;
+    repeat
+    while
+      $import$ ;
+      $constraint$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ?* ;
+      end select ;
+      $;$ ;
+    end repeat ;
   end select ;
   <program_attributes_declaration> parse ;
   select
   or
     $metamodel$ ;
     $identifier$ ? * ;
+    select
+    or
+      $($ ;
+      repeat
+        $identifier$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
     $;$ ;
   end select ;
   $error$ ;

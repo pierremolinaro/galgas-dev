@@ -38,6 +38,7 @@ grammar galgas_LR1_grammar "LR1" :
     ?!@M_grammarComponents ioGrammarComponentsMap
     ?!@M_optionComponents ioOptionsComponentsMap
     ?!@M_metamodelsComponents ioMetamodelComponentMap
+    ?!@M_constraintComponents ioConstraintComponentMap
   label importLexique
     ?!@M_lexiqueComponents ioLexiqueMapForUse
   label importSyntax
@@ -46,9 +47,11 @@ grammar galgas_LR1_grammar "LR1" :
   label importSemantics
     ?!@M_semanticsComponents ioSemanticsComponentsMap
     ?!@M_metamodelsComponents ioMetamodelComponentMap
+    ?!@M_constraintComponents ioConstraintComponentMap
   label importGrammarForSemantics
     ?!@M_grammarComponents ioGrammarComponentsMap
     ?!@M_metamodelsComponents ioMetamodelComponentMap
+    ?!@M_constraintComponents ioConstraintComponentMap
   label importOptions
     ?!@M_optionComponents ioOptionsComponentsMap
   label compileFile

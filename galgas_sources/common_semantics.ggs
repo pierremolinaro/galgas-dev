@@ -628,6 +628,7 @@ map @entityToImplementMap {
 
 map @constraintToImplementMap {
   @relationMap mRelationMap ;
+  @lstring mSuperEntityName ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
 }
@@ -636,6 +637,7 @@ map @constraintToImplementMap {
 
 map @constrainedEntityMap {
   @relationMap mAllRelationMap ;
+  @lstring mSuperEntityName ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
 }
@@ -645,6 +647,19 @@ map @constrainedEntityMap {
 action generate_metamodel
  ?!@entityToImplementMap ioEntityMap
  ?@lstring inMetamodelComponentName
+ ?@stringset inMultiReferencedEntities
+ ?@lstring inRootEntityName
+;
+
+#---------------------------------------------------------------------------*
+
+action generate_constraints
+ ?!@entityToImplementMap ioEntityMap
+ ?!@mapEntityMap ioMapEntityMap
+ ?@lstring inMetamodelComponentName
+ ?@lstring inConstraintComponentName
+ ?!@constrainedEntityMap ioConstrainedEntityMap
+ ?!@constraintToImplementMap ioConstraintToImplementMap
  ?@stringset inMultiReferencedEntities
  ?@lstring inRootEntityName
 ;
@@ -1371,12 +1386,13 @@ map @M_typesForGrammarComponent {
 routine checkSignature_ForGrammarComponent
   ??@L_signature inFormalReferenceSignature
   ??@L_signature inFormalTestedSignature
-  ??@location inEndOfListLocation
+  ??@location inFormalTestedLocation
+  ??@location inFormalReferenceLocation
 :
   if [inFormalReferenceSignature length] < [inFormalTestedSignature length] then
-    error inEndOfListLocation : "too much formal parameters" ;
+    error inFormalTestedLocation : "too much formal parameters (from prototype in " . [inFormalReferenceLocation locationString] . ")" ;
   elsif [inFormalReferenceSignature length] > [inFormalTestedSignature length] then
-    error inEndOfListLocation : "one or more formal parameters missing" ;
+    error inFormalTestedLocation : "too much formal parameters (from prototype in " . [inFormalReferenceLocation locationString] . ")" ;
   else
     foreach inFormalReferenceSignature (??@formalArgumentPassingMode passingMode1 ??@lstring kType1),
             inFormalTestedSignature (??@formalArgumentPassingMode passingMode2 ??@lstring kType2) :
@@ -2091,8 +2107,21 @@ map @M_metamodelsComponents {
   @lstring mRootEntity ;
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
   @entityToImplementMap mEntityMap ;
+  @stringset mMultiReferencedEntities ;
   insert insertKey error message "a metamodel component named '%K' is already declared in %L" ;
   search searchKey error message "there is no metamodel component named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    Map of constraints components                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @M_constraintComponents {
+  @lstring mMetamodel ;
+  insert insertKey error message "a constraint component named '%K' is already declared in %L" ;
+  search searchKey error message "there is no constraint component named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2169,6 +2198,14 @@ routine handleReaderCall
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
+    when @typeGalgas_location () ->
+      if [inMethodName value] == "locationString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when @typeGalgas_uint () ->
       if [inMethodName value] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
@@ -2187,6 +2224,9 @@ routine handleReaderCall
       elsif [inMethodName value] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_location new] ;
+      elsif [inMethodName value] == "locationString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
       else
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -2199,6 +2239,9 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_location new] ;
       elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2223,6 +2266,9 @@ routine handleReaderCall
       elsif [inMethodName value] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_location new] ;
+      elsif [inMethodName value] == "locationString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
       else
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -2237,6 +2283,9 @@ routine handleReaderCall
       elsif [inMethodName value] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_location new] ;
+      elsif [inMethodName value] == "locationString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
       else
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -2251,6 +2300,9 @@ routine handleReaderCall
       elsif [inMethodName value] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_location new] ;
+      elsif [inMethodName value] == "locationString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
       else
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
