@@ -1400,7 +1400,7 @@ generate_cpp_file (C_Lexique & inLexique,
                     "#include \"" << nomComposant << ".h\"\n\n";
 
   generatedZone2.writeCHyphenLineComment () ;
-  generatedZone2 << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+  generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  static const char gGGSsourceFile [] = \"" << inLexique.sourceFileName ().lastPathComponent () << "\" ;\n"
                     "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
                     "#else\n"

@@ -279,7 +279,7 @@ createMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   f << "LINKER_OPTIONS :=\n"
        "\n" ;
   f.writeComment ("#---", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeComment ("#---", "Include source file list") ;
   f << "include ../common_files_for_make/makefile.mke\n"
@@ -319,7 +319,7 @@ create_i386LinuxOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName)
   f << "LINKER_OPTIONS :=\n"
        "\n" ;
   f.writeComment ("#---", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeComment ("#---", "Include source file list") ;
   f << "include ../common_files_for_make/makefile.mke\n"
@@ -356,7 +356,7 @@ createMinGWOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   f << "LINKER_OPTIONS := -lcomdlg32\n"
        "\n" ;
   f.writeComment ("#---", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeComment ("#---", "Include source file list") ;
   f << "include ../common_files_for_make/makefile.mke\n"
@@ -393,7 +393,7 @@ createMSYSOnWin32makefileFile (const C_String & inCreatedProjectPathName) {
   f << "LINKER_OPTIONS := -lcomdlg32\n"
        "\n" ;
   f.writeComment ("#---", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeComment ("#---", "Include source file list") ;
   f << "include ../common_files_for_make/makefile.mke\n"
@@ -430,7 +430,7 @@ createUnixMakefileFile (const C_String & inCreatedProjectPathName) {
   f << "LINKER_OPTIONS := \n"
        "\n" ;
   f.writeComment ("#---", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeComment ("#---", "Include source file list") ;
   f << "include ../common_files_for_make/makefile.mke\n"

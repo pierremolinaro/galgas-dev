@@ -170,7 +170,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
               "  public : GGS_string reader_description (void) const ;\n"
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
-              "  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+              "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
               "    public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n"
               "  #else\n"
               "    public : inline cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const { return mPointer ; }\n"
@@ -440,7 +440,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 
 //--- Engendrer la deeclaration de la surcharge de l'opeerateur ()
   inCppFile.writeCHyphenLineComment () ;
-  inCppFile << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+  inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                "  cPtr_" << aNomClasse << " * GGS_" << aNomClasse
             << "\n::operator () (LOCATION_ARGS) const {\n"
                "    macroValidPointerThere (mPointer) ;\n"
@@ -594,7 +594,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
   inHfile << "class GGS_" << aNomClasse << " {\n" ;
 //--- Generate 'constructor_new' method declaration
-  inHfile << "  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"  
+  inHfile << "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"  
              "    public : static cPtr_" << aNomClasse
           << " * constructor_new (" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
@@ -789,7 +789,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeCTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
-  inCppFile << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"  
+  inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"  
                "  cPtr_" << aNomClasse
             << " * GGS_" << aNomClasse
             << "::\n    constructor_new (" ;

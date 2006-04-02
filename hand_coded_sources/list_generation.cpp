@@ -110,7 +110,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Constructors and assignment operator declaration
              "  public : GGS_" << aNomListe << " (void) ; // Default Constructor\n"
-             "  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+             "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "    public : GGS_" << aNomListe << " (LOCATION_ARGS) ; // Constructor for debug mode\n"
              "  #endif\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " &) ; // Copy constructor\n"
@@ -260,7 +260,7 @@ void cPtr_C_listTypeToImplement
   inCppFile.writeCHyphenLineComment () ;
 
 //--- Generate constructor for debug mode
-  inCppFile << "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+  inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                "  GGS_" << aNomListe << "\n"
                "::GGS_" << aNomListe
            << " (UNUSED_LOCATION_ARGS) {\n"

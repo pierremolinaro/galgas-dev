@@ -432,7 +432,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone2 << "#include <ctype.h>\n"
                     "#include <string.h>\n\n"
                     "#include \"" << inLexiqueClassName << ".h\"\n\n"
-                    "#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+                    "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  #define LINE_AND_SOURCE_FILE , sourceText ()->sourceFileName ().cString (), currentLineNumber ()\n"
                     "#else\n"
                     "  #define LINE_AND_SOURCE_FILE\n"

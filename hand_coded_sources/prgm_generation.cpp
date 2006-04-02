@@ -296,30 +296,36 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 //--- Generate 'mainForLIBPM' routine
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
   generatedZone2 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
-             "  sint16 returnCode = 0 ; // No error\n"
-             "//--- Input/output parameters\n"
-             "  C_options_for_" << inProgramComponentName << " options ("
-          << (generateDebug ? "true" : "false")
-          << ") ;\n"
-             "  C_galgas_io_parameters IOparameters  (& options) ;\n"
-             "  IOparameters.mCompilerVersion = " ;
+                    "  sint16 returnCode = 0 ; // No error\n"
+                    "//--- Input/output parameters\n"
+                    "  C_options_for_" << inProgramComponentName << " options ("
+                 << (generateDebug ? "true" : "false")
+                 << ") ;\n"
+                    "  C_galgas_io_parameters IOparameters  (& options) ;\n"
+                    "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "    IOparameters.mCompilerVersion = " ;
+  generatedZone2.writeCstringConstant (inVersionString) ;
+  generatedZone2 << " \" [debug]\" ;\n"
+                    "  #else\n"
+                    "    IOparameters.mCompilerVersion = " ;
   generatedZone2.writeCstringConstant (inVersionString) ;
   generatedZone2 << " ;\n"
-             "  IOparameters.mMaxErrorsCount = "
-          << inMaxErrorsCount
-          << " ;\n"
-             "  IOparameters.mMaxWarningsCount = "
-          << inMaxWarningsCount
-          << " ;\n"
-             "  TC_UniqueArray <C_String> sourceFilesArray ;\n"
-             "  #ifdef TARGET_API_MAC_CARBON\n"
-             "    printf (\"%s\\n\", IOparameters.mCompilerVersion.cString ()) ;\n"
-             "  #endif\n"
-             "  #ifdef COMPILE_FOR_WIN32\n"
-             "    printf (\"%s\\n\", IOparameters.mCompilerVersion.cString ()) ;\n"
-             "  #endif\n"
-             "  F_Analyze_CLI_Options (argc, argv,\n"
-             "                               " ;
+                    "  #endif\n"
+                    "  IOparameters.mMaxErrorsCount = "
+                 << inMaxErrorsCount
+                 << " ;\n"
+                    "  IOparameters.mMaxWarningsCount = "
+                 << inMaxWarningsCount
+                 << " ;\n"
+                    "  TC_UniqueArray <C_String> sourceFilesArray ;\n"
+                    "  #ifdef TARGET_API_MAC_CARBON\n"
+                    "    printf (\"%s\\n\", IOparameters.mCompilerVersion.cString ()) ;\n"
+                    "  #endif\n"
+                    "  #ifdef COMPILE_FOR_WIN32\n"
+                    "    printf (\"%s\\n\", IOparameters.mCompilerVersion.cString ()) ;\n"
+                    "  #endif\n"
+                    "  F_Analyze_CLI_Options (argc, argv,\n"
+                    "                               " ;
   generatedZone2.writeCstringConstant (inVersionString) ;
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
   generatedZone2 << ",\n"
@@ -340,7 +346,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "    }\n"
 					   "	  compiler->_epilogue () ;\n"
              "    macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
-             "	  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE\n"
+             "	  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "      C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
              "    #endif\n"
              "  }catch (const M_STD_NAMESPACE exception & e) {\n"

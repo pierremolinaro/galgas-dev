@@ -16,7 +16,7 @@
 
 #include "galgas_scanner.h"
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   #define LINE_AND_SOURCE_FILE , sourceText ()->sourceFileName ().cString (), currentLineNumber ()
 #else
   #define LINE_AND_SOURCE_FILE

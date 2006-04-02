@@ -81,7 +81,7 @@ class GGS_typeParserInstruction {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeParserInstruction * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeParserInstruction * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -106,7 +106,7 @@ class GGS_typeListeBranchesInstructions {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeBranchesInstructions (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeBranchesInstructions (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeBranchesInstructions (const GGS_typeListeBranchesInstructions &) ; // Copy constructor
@@ -151,7 +151,7 @@ class GGS_L_parse_rewind_signature_list {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_parse_rewind_signature_list (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_parse_rewind_signature_list (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_parse_rewind_signature_list (const GGS_L_parse_rewind_signature_list &) ; // Copy constructor
@@ -269,7 +269,7 @@ class GGS_typeAltProductionsMap : public AC_galgas_map {
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionAppelNonTerminal {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeInstructionAppelNonTerminal * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeExpressionList & argument_1,
                                 const GGS_lstring & argument_2,
@@ -306,7 +306,7 @@ class GGS_typeInstructionAppelNonTerminal {
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionVerifSyntaxique {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeInstructionVerifSyntaxique * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_L_assignedVariables & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -353,7 +353,7 @@ class elementOf_GGS_typeListeBranchesInstructions {
 //---------------------------------------------------------------------------*
 
 class GGS_C_select_instruction {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_C_select_instruction * constructor_new (const GGS_typeListeBranchesInstructions & argument_0,
                                 const GGS_location & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -381,7 +381,7 @@ class GGS_C_select_instruction {
 //---------------------------------------------------------------------------*
 
 class GGS_C_repeat_instruction {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_C_repeat_instruction * constructor_new (const GGS_typeListeBranchesInstructions & argument_0,
                                 const GGS_location & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -430,7 +430,7 @@ class elementOf_GGS_L_parse_rewind_signature_list {
 //---------------------------------------------------------------------------*
 
 class GGS_C_parse_rewind_instruction {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_C_parse_rewind_instruction * constructor_new (const GGS_location & argument_0,
                                 const GGS_typeListeBranchesInstructions & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -458,7 +458,7 @@ class GGS_C_parse_rewind_instruction {
 //---------------------------------------------------------------------------*
 
 class GGS_C_parse_when_else_instruction {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_C_parse_when_else_instruction * constructor_new (const GGS_L_expression_instructionsList_list & argument_0,
                                 const GGS_typeInstructionsList & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -486,7 +486,7 @@ class GGS_C_parse_when_else_instruction {
 //---------------------------------------------------------------------------*
 
 class GGS_typeNonterminalToGenerate {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeNonterminalToGenerate * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_M_nonterminalSymbolAlts & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -546,7 +546,7 @@ class elementOf_GGS_typeAltProductionsMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_typeProductionAengendrer {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeProductionAengendrer * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeAltProductionsMap & argument_1,
                                 const GGS_string& argument_2,

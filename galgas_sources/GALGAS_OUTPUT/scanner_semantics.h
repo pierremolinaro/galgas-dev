@@ -456,7 +456,7 @@ class GGS_typeConditionLexicale {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeConditionLexicale * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeConditionLexicale * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -481,7 +481,7 @@ class GGS_typeListeConditionsLexicales {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeConditionsLexicales (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeConditionsLexicales (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeConditionsLexicales (const GGS_typeListeConditionsLexicales &) ; // Copy constructor
@@ -533,7 +533,7 @@ class GGS_typeInstructionLexicale {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeInstructionLexicale * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeInstructionLexicale * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -558,7 +558,7 @@ class GGS_tListeInstructionsLexicales {
   }
   private : sint32 * mCountReference ;
   public : GGS_tListeInstructionsLexicales (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_tListeInstructionsLexicales (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_tListeInstructionsLexicales (const GGS_tListeInstructionsLexicales &) ; // Copy constructor
@@ -603,7 +603,7 @@ class GGS_typeListeTestsEtInstructions {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeTestsEtInstructions (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeTestsEtInstructions (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeTestsEtInstructions (const GGS_typeListeTestsEtInstructions &) ; // Copy constructor
@@ -657,7 +657,7 @@ class GGS_typeArgumentRoutineExterne {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeArgumentRoutineExterne * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeArgumentRoutineExterne * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -682,7 +682,7 @@ class GGS_typeListeArgumentsRoutExterne {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeArgumentsRoutExterne (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeArgumentsRoutExterne (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeArgumentsRoutExterne (const GGS_typeListeArgumentsRoutExterne &) ; // Copy constructor
@@ -727,7 +727,7 @@ class GGS_typeListeMessagesErreur {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeMessagesErreur (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeMessagesErreur (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeMessagesErreur (const GGS_typeListeMessagesErreur &) ; // Copy constructor
@@ -779,7 +779,7 @@ class GGS_typeEmissionParDefaut {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeEmissionParDefaut * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeEmissionParDefaut * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -804,7 +804,7 @@ class GGS_typeListeRecherche {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeRecherche (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeRecherche (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeRecherche (const GGS_typeListeRecherche &) ; // Copy constructor
@@ -1050,7 +1050,7 @@ class elementOf_GGS_typeTableTablesDeMotsReserves : public AC_galgas_map_element
 //---------------------------------------------------------------------------*
 
 class GGS_typeConditionChaine {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeConditionChaine * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeConditionChaine * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
@@ -1075,7 +1075,7 @@ class GGS_typeConditionChaine {
 //---------------------------------------------------------------------------*
 
 class GGS_typeConditionCaractere {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeConditionCaractere * constructor_new (const GGS_lchar & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeConditionCaractere * constructor_new (const GGS_lchar & argument_0 COMMA_LOCATION_ARGS) {
@@ -1100,7 +1100,7 @@ class GGS_typeConditionCaractere {
 //---------------------------------------------------------------------------*
 
 class GGS_typeConditionIntervalle {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeConditionIntervalle * constructor_new (const GGS_lchar & argument_0,
                                 const GGS_lchar & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -1216,7 +1216,7 @@ class elementOf_GGS_typeListeArgumentsRoutExterne {
 //---------------------------------------------------------------------------*
 
 class GGS_typeArgumentAttribut {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeArgumentAttribut * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_AC_galgasType & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -1244,7 +1244,7 @@ class GGS_typeArgumentAttribut {
 //---------------------------------------------------------------------------*
 
 class GGS_typeArgumentCaractere {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeArgumentCaractere * constructor_new (const GGS_lchar & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeArgumentCaractere * constructor_new (const GGS_lchar & argument_0 COMMA_LOCATION_ARGS) {
@@ -1269,7 +1269,7 @@ class GGS_typeArgumentCaractere {
 //---------------------------------------------------------------------------*
 
 class GGS_typeArgumentCaractereCourant {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeArgumentCaractereCourant * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeArgumentCaractereCourant * constructor_new (LOCATION_ARGS) {
@@ -1294,7 +1294,7 @@ class GGS_typeArgumentCaractereCourant {
 //---------------------------------------------------------------------------*
 
 class GGS_typeArgumentEntier {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeArgumentEntier * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeArgumentEntier * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
@@ -1319,7 +1319,7 @@ class GGS_typeArgumentEntier {
 //---------------------------------------------------------------------------*
 
 class GGS_typeArgumentRoutine {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeArgumentRoutine * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeListeArgumentsRoutExterne & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -1371,7 +1371,7 @@ class elementOf_GGS_typeListeMessagesErreur {
 //---------------------------------------------------------------------------*
 
 class GGS_typeEmissionTerminalParDefaut {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeEmissionTerminalParDefaut * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeEmissionTerminalParDefaut * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
@@ -1396,7 +1396,7 @@ class GGS_typeEmissionTerminalParDefaut {
 //---------------------------------------------------------------------------*
 
 class GGS_typeEmissionErreurParDefaut {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeEmissionErreurParDefaut * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeEmissionErreurParDefaut * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
@@ -1442,7 +1442,7 @@ class elementOf_GGS_typeListeRecherche {
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionActionExterne {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeInstructionActionExterne * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeListeArgumentsRoutExterne & argument_1,
                                 const GGS_typeListeMessagesErreur & argument_2 COMMA_LOCATION_ARGS) ;
@@ -1473,7 +1473,7 @@ class GGS_typeInstructionActionExterne {
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionRepetitionLexicale {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeInstructionRepetitionLexicale * constructor_new (const GGS_tListeInstructionsLexicales & argument_0,
                                 const GGS_typeListeTestsEtInstructions & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -1501,7 +1501,7 @@ class GGS_typeInstructionRepetitionLexicale {
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionSiLexical {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeInstructionSiLexical * constructor_new (const GGS_typeListeTestsEtInstructions & argument_0,
                                 const GGS_tListeInstructionsLexicales & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -1529,7 +1529,7 @@ class GGS_typeInstructionSiLexical {
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionEmettreSimple {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeInstructionEmettreSimple * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeInstructionEmettreSimple * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
@@ -1554,7 +1554,7 @@ class GGS_typeInstructionEmettreSimple {
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionEmettre {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeInstructionEmettre * constructor_new (const GGS_typeListeRecherche & argument_0,
                                 const GGS_typeEmissionParDefaut & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -1582,7 +1582,7 @@ class GGS_typeInstructionEmettre {
 //---------------------------------------------------------------------------*
 
 class GGS_typeInstructionErreurLexicale {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeInstructionErreurLexicale * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeInstructionErreurLexicale * constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
