@@ -316,7 +316,7 @@ class GGS_L_signature {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_signature (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_signature (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_signature (const GGS_L_signature &) ; // Copy constructor
@@ -363,7 +363,7 @@ class GGS_typeListModel {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListModel (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListModel (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListModel (const GGS_typeListModel &) ; // Copy constructor
@@ -415,7 +415,7 @@ class GGS_TypeModel {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_TypeModel * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_TypeModel * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -879,7 +879,7 @@ class GGS_AC_galgasType {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_AC_galgasType * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_AC_galgasType * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -961,7 +961,7 @@ class GGS_L_propertyPath {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_propertyPath (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_propertyPath (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_propertyPath (const GGS_L_propertyPath &) ; // Copy constructor
@@ -1006,7 +1006,7 @@ class GGS_L_ListOfPropertyPathes {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_ListOfPropertyPathes (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_ListOfPropertyPathes (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_ListOfPropertyPathes (const GGS_L_ListOfPropertyPathes &) ; // Copy constructor
@@ -1413,7 +1413,7 @@ class GGS_metamodelRelationExpression {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_metamodelRelationExpression * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_metamodelRelationExpression * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -1438,7 +1438,7 @@ class GGS_metamodelRelationParameterList {
   }
   private : sint32 * mCountReference ;
   public : GGS_metamodelRelationParameterList (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_metamodelRelationParameterList (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_metamodelRelationParameterList (const GGS_metamodelRelationParameterList &) ; // Copy constructor
@@ -1801,7 +1801,7 @@ class GGS_typeListeAttributsSemantiques {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeAttributsSemantiques (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeAttributsSemantiques (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeAttributsSemantiques (const GGS_typeListeAttributsSemantiques &) ; // Copy constructor
@@ -1848,7 +1848,7 @@ class GGS_typeTypesList {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeTypesList (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeTypesList (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeTypesList (const GGS_typeTypesList &) ; // Copy constructor
@@ -1895,7 +1895,7 @@ class GGS_L_EXsignature {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_EXsignature (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_EXsignature (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_EXsignature (const GGS_L_EXsignature &) ; // Copy constructor
@@ -1942,7 +1942,7 @@ class GGS_L_actualParametersSignature {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_actualParametersSignature (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_actualParametersSignature (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_actualParametersSignature (const GGS_L_actualParametersSignature &) ; // Copy constructor
@@ -2041,7 +2041,7 @@ class GGS_L_stringList {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_stringList (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_stringList (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_stringList (const GGS_L_stringList &) ; // Copy constructor
@@ -2086,7 +2086,7 @@ class GGS_L_lstringList {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_lstringList (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_lstringList (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_lstringList (const GGS_L_lstringList &) ; // Copy constructor
@@ -2138,7 +2138,7 @@ class GGS_C_galgasPrimitiveType {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_C_galgasPrimitiveType * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_C_galgasPrimitiveType * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -2473,7 +2473,7 @@ class GGS_AC_semanticsEntity {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_AC_semanticsEntity * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_AC_semanticsEntity * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -2554,7 +2554,7 @@ class GGS_AC_typeForGrammarComponent {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_AC_typeForGrammarComponent * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_AC_typeForGrammarComponent * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -2640,7 +2640,7 @@ class GGS_AC_instruction_ForGrammar {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_AC_instruction_ForGrammar * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_AC_instruction_ForGrammar * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -2665,7 +2665,7 @@ class GGS_L_ruleSyntaxSignature {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_ruleSyntaxSignature (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_ruleSyntaxSignature (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_ruleSyntaxSignature (const GGS_L_ruleSyntaxSignature &) ; // Copy constructor
@@ -2810,7 +2810,7 @@ class GGS_L_productionRules_ForGrammarComponent {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_productionRules_ForGrammarComponent (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_productionRules_ForGrammarComponent (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_productionRules_ForGrammarComponent (const GGS_L_productionRules_ForGrammarComponent &) ; // Copy constructor
@@ -2968,7 +2968,7 @@ class GGS_L_branchList_ForGrammarComponent {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_branchList_ForGrammarComponent (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_branchList_ForGrammarComponent (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_branchList_ForGrammarComponent (const GGS_L_branchList_ForGrammarComponent &) ; // Copy constructor
@@ -3013,7 +3013,7 @@ class GGS_L_syntaxComponents_ForGrammar {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_syntaxComponents_ForGrammar (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_syntaxComponents_ForGrammar (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_syntaxComponents_ForGrammar (const GGS_L_syntaxComponents_ForGrammar &) ; // Copy constructor
@@ -3114,7 +3114,7 @@ class GGS_L_identifiers {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_identifiers (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_identifiers (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_identifiers (const GGS_L_identifiers &) ; // Copy constructor
@@ -3348,7 +3348,7 @@ class GGS_lastStateList {
   }
   private : sint32 * mCountReference ;
   public : GGS_lastStateList (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_lastStateList (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_lastStateList (const GGS_lastStateList &) ; // Copy constructor
@@ -3444,7 +3444,7 @@ class GGS_insertOrSearchMethodList {
   }
   private : sint32 * mCountReference ;
   public : GGS_insertOrSearchMethodList (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_insertOrSearchMethodList (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_insertOrSearchMethodList (const GGS_insertOrSearchMethodList &) ; // Copy constructor
@@ -3506,7 +3506,7 @@ class GGS_typeDefEntiteUtilisable {
   }
   public : void drop_operation (void) ;
   public : GGS_string reader_description (void) const ;
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : cPtr_typeDefEntiteUtilisable * operator () (LOCATION_ARGS) const ;
   #else
     public : inline cPtr_typeDefEntiteUtilisable * operator () (LOCATION_ARGS) const { return mPointer ; }
@@ -3990,7 +3990,7 @@ class GGS_typeListeAttributsAxiome {
   }
   private : sint32 * mCountReference ;
   public : GGS_typeListeAttributsAxiome (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_typeListeAttributsAxiome (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_typeListeAttributsAxiome (const GGS_typeListeAttributsAxiome &) ; // Copy constructor
@@ -4035,7 +4035,7 @@ class GGS_L_grammarDescriptorForProgram {
   }
   private : sint32 * mCountReference ;
   public : GGS_L_grammarDescriptorForProgram (void) ; // Default Constructor
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : GGS_L_grammarDescriptorForProgram (LOCATION_ARGS) ; // Constructor for debug mode
   #endif
   public : GGS_L_grammarDescriptorForProgram (const GGS_L_grammarDescriptorForProgram &) ; // Copy constructor
@@ -4171,7 +4171,7 @@ class elementOf_GGS_typeListModel {
 //---------------------------------------------------------------------------*
 
 class GGS_BoolModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_BoolModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_BoolModel * constructor_new (LOCATION_ARGS) {
@@ -4196,7 +4196,7 @@ class GGS_BoolModel {
 //---------------------------------------------------------------------------*
 
 class GGS_CharModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_CharModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_CharModel * constructor_new (LOCATION_ARGS) {
@@ -4221,7 +4221,7 @@ class GGS_CharModel {
 //---------------------------------------------------------------------------*
 
 class GGS_UIntModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_UIntModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_UIntModel * constructor_new (LOCATION_ARGS) {
@@ -4246,7 +4246,7 @@ class GGS_UIntModel {
 //---------------------------------------------------------------------------*
 
 class GGS_SIntModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_SIntModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_SIntModel * constructor_new (LOCATION_ARGS) {
@@ -4271,7 +4271,7 @@ class GGS_SIntModel {
 //---------------------------------------------------------------------------*
 
 class GGS_DoubleModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_DoubleModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_DoubleModel * constructor_new (LOCATION_ARGS) {
@@ -4296,7 +4296,7 @@ class GGS_DoubleModel {
 //---------------------------------------------------------------------------*
 
 class GGS_StringModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_StringModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_StringModel * constructor_new (LOCATION_ARGS) {
@@ -4321,7 +4321,7 @@ class GGS_StringModel {
 //---------------------------------------------------------------------------*
 
 class GGS_LBoolModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_LBoolModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_LBoolModel * constructor_new (LOCATION_ARGS) {
@@ -4346,7 +4346,7 @@ class GGS_LBoolModel {
 //---------------------------------------------------------------------------*
 
 class GGS_LCharModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_LCharModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_LCharModel * constructor_new (LOCATION_ARGS) {
@@ -4371,7 +4371,7 @@ class GGS_LCharModel {
 //---------------------------------------------------------------------------*
 
 class GGS_LUIntModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_LUIntModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_LUIntModel * constructor_new (LOCATION_ARGS) {
@@ -4396,7 +4396,7 @@ class GGS_LUIntModel {
 //---------------------------------------------------------------------------*
 
 class GGS_LSIntModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_LSIntModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_LSIntModel * constructor_new (LOCATION_ARGS) {
@@ -4421,7 +4421,7 @@ class GGS_LSIntModel {
 //---------------------------------------------------------------------------*
 
 class GGS_LDoubleModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_LDoubleModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_LDoubleModel * constructor_new (LOCATION_ARGS) {
@@ -4446,7 +4446,7 @@ class GGS_LDoubleModel {
 //---------------------------------------------------------------------------*
 
 class GGS_LStringModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_LStringModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_LStringModel * constructor_new (LOCATION_ARGS) {
@@ -4471,7 +4471,7 @@ class GGS_LStringModel {
 //---------------------------------------------------------------------------*
 
 class GGS_StringsetModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_StringsetModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_StringsetModel * constructor_new (LOCATION_ARGS) {
@@ -4496,7 +4496,7 @@ class GGS_StringsetModel {
 //---------------------------------------------------------------------------*
 
 class GGS_LocationModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_LocationModel * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_LocationModel * constructor_new (LOCATION_ARGS) {
@@ -4521,7 +4521,7 @@ class GGS_LocationModel {
 //---------------------------------------------------------------------------*
 
 class GGS_ListModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_ListModel * constructor_new (const GGS_typeListModel & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_ListModel * constructor_new (const GGS_typeListModel & argument_0 COMMA_LOCATION_ARGS) {
@@ -4546,7 +4546,7 @@ class GGS_ListModel {
 //---------------------------------------------------------------------------*
 
 class GGS_MapModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_MapModel * constructor_new (const GGS_typeListModel & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_MapModel * constructor_new (const GGS_typeListModel & argument_0 COMMA_LOCATION_ARGS) {
@@ -4623,7 +4623,7 @@ class elementOf_GGS_enumMessageMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_EnumModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_EnumModel * constructor_new (const GGS_enumConstantMap & argument_0,
                                 const GGS_enumMessageMap & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -4732,7 +4732,7 @@ class elementOf_GGS_modifierMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_ExternTypeModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_ExternTypeModel * constructor_new (const GGS_constructorMap & argument_0,
                                 const GGS_readerMap & argument_1,
                                 const GGS_modifierMap & argument_2,
@@ -4792,7 +4792,7 @@ class elementOf_GGS_classMessageMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_ClassModel {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_ClassModel * constructor_new (const GGS_bool& argument_0,
                                 const GGS_stringset & argument_1,
                                 const GGS_typeListModel & argument_2,
@@ -5125,7 +5125,7 @@ class elementOf_GGS_relationVarMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_metamodelRelationAnd {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_metamodelRelationAnd * constructor_new (const GGS_metamodelRelationExpression & argument_0,
                                 const GGS_metamodelRelationExpression & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -5153,7 +5153,7 @@ class GGS_metamodelRelationAnd {
 //---------------------------------------------------------------------------*
 
 class GGS_metamodelRelationOr {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_metamodelRelationOr * constructor_new (const GGS_metamodelRelationExpression & argument_0,
                                 const GGS_metamodelRelationExpression & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -5181,7 +5181,7 @@ class GGS_metamodelRelationOr {
 //---------------------------------------------------------------------------*
 
 class GGS_metamodelRelationNot {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_metamodelRelationNot * constructor_new (const GGS_metamodelRelationExpression & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_metamodelRelationNot * constructor_new (const GGS_metamodelRelationExpression & argument_0 COMMA_LOCATION_ARGS) {
@@ -5206,7 +5206,7 @@ class GGS_metamodelRelationNot {
 //---------------------------------------------------------------------------*
 
 class GGS_metamodelRelationTrue {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_metamodelRelationTrue * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_metamodelRelationTrue * constructor_new (LOCATION_ARGS) {
@@ -5231,7 +5231,7 @@ class GGS_metamodelRelationTrue {
 //---------------------------------------------------------------------------*
 
 class GGS_metamodelRelationFalse {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_metamodelRelationFalse * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_metamodelRelationFalse * constructor_new (LOCATION_ARGS) {
@@ -5256,7 +5256,7 @@ class GGS_metamodelRelationFalse {
 //---------------------------------------------------------------------------*
 
 class GGS_metamodelRelationPrimary {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_metamodelRelationPrimary * constructor_new (const GGS_relationVarMap & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_luint & argument_2,
@@ -5316,7 +5316,7 @@ class elementOf_GGS_metamodelRelationParameterList {
 //---------------------------------------------------------------------------*
 
 class GGS_metamodelRelationDo {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_metamodelRelationDo * constructor_new (const GGS_relationVarMap & argument_0,
                                 const GGS_metamodelRelationParameterList & argument_1,
                                 const GGS_L_propertyPath & argument_2,
@@ -5517,7 +5517,7 @@ class elementOf_GGS_constrainedEntityMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_singleEntity {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_singleEntity * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_entityPropertyMap & argument_1,
                                 const GGS_bool& argument_2,
@@ -5557,7 +5557,7 @@ class GGS_typeGalgas_singleEntity {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_multipleEntity {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_multipleEntity * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_multipleEntity * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
@@ -5732,7 +5732,7 @@ class elementOf_GGS_L_lstringList {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_jokerInParameterList {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_jokerInParameterList * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_jokerInParameterList * constructor_new (LOCATION_ARGS) {
@@ -5757,7 +5757,7 @@ class GGS_typeGalgas_jokerInParameterList {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_bool {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_bool * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_bool * constructor_new (LOCATION_ARGS) {
@@ -5782,7 +5782,7 @@ class GGS_typeGalgas_bool {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_string {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_string * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_string * constructor_new (LOCATION_ARGS) {
@@ -5807,7 +5807,7 @@ class GGS_typeGalgas_string {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_sint {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_sint * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_sint * constructor_new (LOCATION_ARGS) {
@@ -5832,7 +5832,7 @@ class GGS_typeGalgas_sint {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_uint {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_uint * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_uint * constructor_new (LOCATION_ARGS) {
@@ -5857,7 +5857,7 @@ class GGS_typeGalgas_uint {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_char {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_char * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_char * constructor_new (LOCATION_ARGS) {
@@ -5882,7 +5882,7 @@ class GGS_typeGalgas_char {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_double {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_double * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_double * constructor_new (LOCATION_ARGS) {
@@ -5912,7 +5912,7 @@ class GGS_typeGalgas_double {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_location {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_location * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_location * constructor_new (LOCATION_ARGS) {
@@ -5937,7 +5937,7 @@ class GGS_typeGalgas_location {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_lstring {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_lstring * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_lstring * constructor_new (LOCATION_ARGS) {
@@ -5962,7 +5962,7 @@ class GGS_typeGalgas_lstring {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_lchar {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_lchar * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_lchar * constructor_new (LOCATION_ARGS) {
@@ -5987,7 +5987,7 @@ class GGS_typeGalgas_lchar {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_lbool {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_lbool * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_lbool * constructor_new (LOCATION_ARGS) {
@@ -6012,7 +6012,7 @@ class GGS_typeGalgas_lbool {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_luint {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_luint * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_luint * constructor_new (LOCATION_ARGS) {
@@ -6037,7 +6037,7 @@ class GGS_typeGalgas_luint {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_lsint {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_lsint * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_lsint * constructor_new (LOCATION_ARGS) {
@@ -6062,7 +6062,7 @@ class GGS_typeGalgas_lsint {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_ldouble {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_ldouble * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_ldouble * constructor_new (LOCATION_ARGS) {
@@ -6087,7 +6087,7 @@ class GGS_typeGalgas_ldouble {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_stringset {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_stringset * constructor_new (LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgas_stringset * constructor_new (LOCATION_ARGS) {
@@ -6112,7 +6112,7 @@ class GGS_typeGalgas_stringset {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgasUndefinedExternType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgasUndefinedExternType * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -6167,7 +6167,7 @@ class elementOf_GGS_M_externTypeConstructorMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgasExternType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgasExternType * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_M_externTypeConstructorMap & argument_2,
@@ -6324,7 +6324,7 @@ class elementOf_GGS_M_nonterminalSymbolAlts : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_C_grammarForSemantics {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_C_grammarForSemantics * constructor_new (const GGS_M_nonterminalSymbolAlts & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_C_grammarForSemantics * constructor_new (const GGS_M_nonterminalSymbolAlts & argument_0 COMMA_LOCATION_ARGS) {
@@ -6566,7 +6566,7 @@ class elementOf_GGS_M_syntaxComponents : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_T_terminalInstruction_forGrammarComponent {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_T_terminalInstruction_forGrammarComponent * constructor_new (const GGS_location & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_uint & argument_2 COMMA_LOCATION_ARGS) ;
@@ -6597,7 +6597,7 @@ class GGS_T_terminalInstruction_forGrammarComponent {
 //---------------------------------------------------------------------------*
 
 class GGS_T_nonterminalInstruction_forGrammarComponent {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_T_nonterminalInstruction_forGrammarComponent * constructor_new (const GGS_location & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_uint & argument_2 COMMA_LOCATION_ARGS) ;
@@ -6647,7 +6647,7 @@ class elementOf_GGS_L_branchList_ForGrammarComponent {
 //---------------------------------------------------------------------------*
 
 class GGS_T_selectInstruction_forGrammarComponent {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_T_selectInstruction_forGrammarComponent * constructor_new (const GGS_location & argument_0,
                                 const GGS_L_branchList_ForGrammarComponent & argument_1,
                                 const GGS_uint & argument_2 COMMA_LOCATION_ARGS) ;
@@ -6678,7 +6678,7 @@ class GGS_T_selectInstruction_forGrammarComponent {
 //---------------------------------------------------------------------------*
 
 class GGS_T_repeatInstruction_forGrammarComponent {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_T_repeatInstruction_forGrammarComponent * constructor_new (const GGS_location & argument_0,
                                 const GGS_L_branchList_ForGrammarComponent & argument_1,
                                 const GGS_uint & argument_2 COMMA_LOCATION_ARGS) ;
@@ -6943,7 +6943,7 @@ class elementOf_GGS_insertOrSearchMethodList {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgasUndefinedListType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgasUndefinedListType * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgasUndefinedListType * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
@@ -6968,7 +6968,7 @@ class GGS_typeGalgasUndefinedListType {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgasListType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgasListType * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeListeAttributsSemantiques & argument_1 COMMA_LOCATION_ARGS) ;
   #else
@@ -7024,7 +7024,7 @@ class elementOf_GGS_typeTableBlocsDeTable : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgasUndefinedMapType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgasUndefinedMapType * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgasUndefinedMapType * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
@@ -7076,7 +7076,7 @@ class elementOf_GGS_mapMethodMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgasMapType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgasMapType * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeListeAttributsSemantiques & argument_1,
                                 const GGS_typeTableBlocsDeTable & argument_2,
@@ -7110,7 +7110,7 @@ class GGS_typeGalgasMapType {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgasUndefinedClassType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgasUndefinedClassType * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeGalgasUndefinedClassType * constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
@@ -7135,7 +7135,7 @@ class GGS_typeGalgasUndefinedClassType {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgasClassType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgasClassType * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeTableMethodes & argument_1,
                                 const GGS_typeListeAttributsSemantiques & argument_2,
@@ -7178,7 +7178,7 @@ class GGS_typeGalgasClassType {
 //---------------------------------------------------------------------------*
 
 class GGS_typeEntiteType {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeEntiteType * constructor_new (const GGS_AC_galgasType & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeEntiteType * constructor_new (const GGS_AC_galgasType & argument_0 COMMA_LOCATION_ARGS) {
@@ -7203,7 +7203,7 @@ class GGS_typeEntiteType {
 //---------------------------------------------------------------------------*
 
 class GGS_typeEntiteRoutine {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeEntiteRoutine * constructor_new (const GGS_L_EXsignature & argument_0 COMMA_LOCATION_ARGS) ;
   #else
     public : inline static cPtr_typeEntiteRoutine * constructor_new (const GGS_L_EXsignature & argument_0 COMMA_LOCATION_ARGS) {
@@ -7255,7 +7255,7 @@ class elementOf_GGS_typeEnumMessageMap : public AC_galgas_map_element {
 //---------------------------------------------------------------------------*
 
 class GGS_typeGalgas_enum {
-  #ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     public : static cPtr_typeGalgas_enum * constructor_new (const GGS_lstring & argument_0,
                                 const GGS_enumConstantMap & argument_1,
                                 const GGS_typeEnumMessageMap & argument_2 COMMA_LOCATION_ARGS) ;

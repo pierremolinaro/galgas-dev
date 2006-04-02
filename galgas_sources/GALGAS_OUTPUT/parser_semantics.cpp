@@ -17,7 +17,7 @@
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   static const char gGGSsourceFile [] = "parser_semantics.ggs" ;
   #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line
 #else
@@ -91,7 +91,7 @@ GGS_typeParserInstruction (cPtr_typeParserInstruction * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeParserInstruction * GGS_typeParserInstruction
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -156,7 +156,7 @@ mReturnedEntityShouldInsertedInList.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionAppelNonTerminal * GGS_typeInstructionAppelNonTerminal::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeExpressionList & argument_1,
@@ -200,7 +200,7 @@ aListeTypeEffectifs.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionVerifSyntaxique * GGS_typeInstructionVerifSyntaxique::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_L_assignedVariables & argument_1 COMMA_LOCATION_ARGS) {
@@ -248,7 +248,7 @@ GGS_typeListeBranchesInstructions
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeListeBranchesInstructions
 ::GGS_typeListeBranchesInstructions (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -429,7 +429,7 @@ aPositionDebut.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_select_instruction * GGS_C_select_instruction::
     constructor_new (const GGS_typeListeBranchesInstructions & argument_0,
                                 const GGS_location & argument_1 COMMA_LOCATION_ARGS) {
@@ -467,7 +467,7 @@ aPositionDebut.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_repeat_instruction * GGS_C_repeat_instruction::
     constructor_new (const GGS_typeListeBranchesInstructions & argument_0,
                                 const GGS_location & argument_1 COMMA_LOCATION_ARGS) {
@@ -518,7 +518,7 @@ GGS_L_parse_rewind_signature_list
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_parse_rewind_signature_list
 ::GGS_L_parse_rewind_signature_list (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -704,7 +704,7 @@ mBranchList.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_parse_rewind_instruction * GGS_C_parse_rewind_instruction::
     constructor_new (const GGS_location & argument_0,
                                 const GGS_typeListeBranchesInstructions & argument_1 COMMA_LOCATION_ARGS) {
@@ -742,7 +742,7 @@ mElseInstructionsList.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_parse_when_else_instruction * GGS_C_parse_when_else_instruction::
     constructor_new (const GGS_L_expression_instructionsList_list & argument_0,
                                 const GGS_typeInstructionsList & argument_1 COMMA_LOCATION_ARGS) {
@@ -780,7 +780,7 @@ mNonterminalSymbolParametersMap.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeNonterminalToGenerate * GGS_typeNonterminalToGenerate::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_M_nonterminalSymbolAlts & argument_1 COMMA_LOCATION_ARGS) {
@@ -1033,7 +1033,7 @@ mHasParseLabel.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeProductionAengendrer * GGS_typeProductionAengendrer::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeAltProductionsMap & argument_1,

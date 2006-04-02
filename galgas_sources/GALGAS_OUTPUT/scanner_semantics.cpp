@@ -17,7 +17,7 @@
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   static const char gGGSsourceFile [] = "scanner_semantics.ggs" ;
   #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line
 #else
@@ -1252,7 +1252,7 @@ GGS_typeConditionLexicale (cPtr_typeConditionLexicale * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeConditionLexicale * GGS_typeConditionLexicale
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -1305,7 +1305,7 @@ attributChaine.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeConditionChaine * GGS_typeConditionChaine::
     constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeConditionChaine * ptr_ = (cPtr_typeConditionChaine *) NULL ;
@@ -1338,7 +1338,7 @@ attributCaractere.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeConditionCaractere * GGS_typeConditionCaractere::
     constructor_new (const GGS_lchar & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeConditionCaractere * ptr_ = (cPtr_typeConditionCaractere *) NULL ;
@@ -1374,7 +1374,7 @@ attributBorneSup.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeConditionIntervalle * GGS_typeConditionIntervalle::
     constructor_new (const GGS_lchar & argument_0,
                                 const GGS_lchar & argument_1 COMMA_LOCATION_ARGS) {
@@ -1422,7 +1422,7 @@ GGS_typeListeConditionsLexicales
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeListeConditionsLexicales
 ::GGS_typeListeConditionsLexicales (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -1637,7 +1637,7 @@ GGS_typeInstructionLexicale (cPtr_typeInstructionLexicale * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionLexicale * GGS_typeInstructionLexicale
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -1703,7 +1703,7 @@ GGS_tListeInstructionsLexicales
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_tListeInstructionsLexicales
 ::GGS_tListeInstructionsLexicales (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -1897,7 +1897,7 @@ GGS_typeListeTestsEtInstructions
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeListeTestsEtInstructions
 ::GGS_typeListeTestsEtInstructions (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -2117,7 +2117,7 @@ GGS_typeArgumentRoutineExterne (cPtr_typeArgumentRoutineExterne * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeArgumentRoutineExterne * GGS_typeArgumentRoutineExterne
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -2183,7 +2183,7 @@ GGS_typeListeArgumentsRoutExterne
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeListeArgumentsRoutExterne
 ::GGS_typeListeArgumentsRoutExterne (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -2364,7 +2364,7 @@ attributTypeAttribut.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeArgumentAttribut * GGS_typeArgumentAttribut::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_AC_galgasType & argument_1 COMMA_LOCATION_ARGS) {
@@ -2399,7 +2399,7 @@ attributCaractere.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeArgumentCaractere * GGS_typeArgumentCaractere::
     constructor_new (const GGS_lchar & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeArgumentCaractere * ptr_ = (cPtr_typeArgumentCaractere *) NULL ;
@@ -2430,7 +2430,7 @@ void cPtr_typeArgumentCaractereCourant::appendForDescription (C_String & ioStrin
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeArgumentCaractereCourant * GGS_typeArgumentCaractereCourant::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeArgumentCaractereCourant * ptr_ = (cPtr_typeArgumentCaractereCourant *) NULL ;
@@ -2463,7 +2463,7 @@ attributValeur.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeArgumentEntier * GGS_typeArgumentEntier::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeArgumentEntier * ptr_ = (cPtr_typeArgumentEntier *) NULL ;
@@ -2499,7 +2499,7 @@ attributListeArguments.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeArgumentRoutine * GGS_typeArgumentRoutine::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeListeArgumentsRoutExterne & argument_1 COMMA_LOCATION_ARGS) {
@@ -2547,7 +2547,7 @@ GGS_typeListeMessagesErreur
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeListeMessagesErreur
 ::GGS_typeListeMessagesErreur (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -2762,7 +2762,7 @@ GGS_typeEmissionParDefaut (cPtr_typeEmissionParDefaut * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeEmissionParDefaut * GGS_typeEmissionParDefaut
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -2815,7 +2815,7 @@ attributNomTerminal.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeEmissionTerminalParDefaut * GGS_typeEmissionTerminalParDefaut::
     constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeEmissionTerminalParDefaut * ptr_ = (cPtr_typeEmissionTerminalParDefaut *) NULL ;
@@ -2848,7 +2848,7 @@ mErrorMessageIndex.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeEmissionErreurParDefaut * GGS_typeEmissionErreurParDefaut::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeEmissionErreurParDefaut * ptr_ = (cPtr_typeEmissionErreurParDefaut *) NULL ;
@@ -2897,7 +2897,7 @@ GGS_typeListeRecherche
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_typeListeRecherche
 ::GGS_typeListeRecherche (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -3086,7 +3086,7 @@ attributListeMessageErreur.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionActionExterne * GGS_typeInstructionActionExterne::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_typeListeArgumentsRoutExterne & argument_1,
@@ -3126,7 +3126,7 @@ attributListeBranches.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionRepetitionLexicale * GGS_typeInstructionRepetitionLexicale::
     constructor_new (const GGS_tListeInstructionsLexicales & argument_0,
                                 const GGS_typeListeTestsEtInstructions & argument_1 COMMA_LOCATION_ARGS) {
@@ -3164,7 +3164,7 @@ attributBrancheSinon.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionSiLexical * GGS_typeInstructionSiLexical::
     constructor_new (const GGS_typeListeTestsEtInstructions & argument_0,
                                 const GGS_tListeInstructionsLexicales & argument_1 COMMA_LOCATION_ARGS) {
@@ -3199,7 +3199,7 @@ attributTerminal.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionEmettreSimple * GGS_typeInstructionEmettreSimple::
     constructor_new (const GGS_lstring & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeInstructionEmettreSimple * ptr_ = (cPtr_typeInstructionEmettreSimple *) NULL ;
@@ -3235,7 +3235,7 @@ attributEmissionParDefaut.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionEmettre * GGS_typeInstructionEmettre::
     constructor_new (const GGS_typeListeRecherche & argument_0,
                                 const GGS_typeEmissionParDefaut & argument_1 COMMA_LOCATION_ARGS) {
@@ -3270,7 +3270,7 @@ mErrorMessageIndex.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeInstructionErreurLexicale * GGS_typeInstructionErreurLexicale::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeInstructionErreurLexicale * ptr_ = (cPtr_typeInstructionErreurLexicale *) NULL ;

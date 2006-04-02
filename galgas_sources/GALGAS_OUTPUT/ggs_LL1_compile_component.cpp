@@ -17,7 +17,7 @@
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   static const char gGGSsourceFile [] = "ggs_LL1_compile_component.ggs" ;
   #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line
 #else

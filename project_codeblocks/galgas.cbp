@@ -20,7 +20,7 @@
 					<Add option="-O"/>
 					<Add option="-W"/>
 					<Add option="-Wall"/>
-					<Add option="-DDO_NOT_GENERATE_MEMORY_CHECK_CODE"/>
+					<Add option="-DDO_NOT_GENERATE_CHECK_CODE"/>
 				</Compiler>
 				<Linker>
 					<Add option="-s"/>
@@ -52,7 +52,7 @@
 					<Add option="-O"/>
 					<Add option="-W"/>
 					<Add option="-Wall"/>
-					<Add option="-DDO_NOT_GENERATE_MEMORY_CHECK_CODE"/>
+					<Add option="-DDO_NOT_GENERATE_CHECK_CODE"/>
 				</Compiler>
 				<Linker>
 					<Add option="-s"/>
@@ -83,7 +83,7 @@
 					<Add option="-O"/>
 					<Add option="-W"/>
 					<Add option="-Wall"/>
-					<Add option="-DDO_NOT_GENERATE_MEMORY_CHECK_CODE"/>
+					<Add option="-DDO_NOT_GENERATE_CHECK_CODE"/>
 				</Compiler>
 				<Linker>
 					<Add option="-s"/>
@@ -107,7 +107,7 @@
 			<Add option="-I../../libpm"/>
 			<Add option="-I../galgas_sources/GALGAS_OUTPUT"/>
 			<Add option="-I../hand_coded_sources"/>
-			<Add option="-DDO_NOT_GENERATE_MEMORY_CHECK_CODE"/>
+			<Add option="-DDO_NOT_GENERATE_CHECK_CODE"/>
 		</Compiler>
 		<Linker>
 			<Add library="stdc++"/>
