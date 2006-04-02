@@ -35,6 +35,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -43,9 +44,11 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -62,6 +65,7 @@ rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -69,6 +73,7 @@ rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -102,6 +107,7 @@ rule <import_headers_semantics_and_grammars>
   !@stringset outIncludedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -118,9 +124,9 @@ label importSemantics
   !@stringset outIcludedOptionComponents
   !@ModelMap outModelMap
   !@ActionMap outActionMap
-
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -445,6 +451,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
   $semantics$ ;
 #--- Obtenir le nom du component semantique
@@ -473,6 +480,7 @@ rule <galgas_component>
     ?includedGrammarComponents
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
+    !?ioConstraintComponentMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
     ?inclusionsForImplementationFile
@@ -571,6 +579,7 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
   $semantics$ ;
   @lstring componentName ;
@@ -592,6 +601,7 @@ label importSemantics
     ?actionMap
     !?componentSemanticsEntitiesMap
     !?ioMetamodelComponentMap
+    !?ioConstraintComponentMap
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [empty] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [empty] ;
@@ -642,6 +652,7 @@ label importLexique
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -683,6 +694,7 @@ rule <import_headers_semantics_and_grammars>
   !@stringset outImportedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -794,6 +806,7 @@ rule <import_headers_semantics_and_grammars>
           !sourceFile
           !?grammarComponentsMap
           !?ioMetamodelComponentMap
+          !?ioConstraintComponentMap
         ;
       end select ;
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
@@ -830,6 +843,7 @@ rule <import_headers_semantics_and_grammars>
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
+          !?ioConstraintComponentMap
         ;
       end select ;
       if not [outImportedSemanticsComponents hasKey ![componentName value]] then
@@ -875,11 +889,12 @@ rule <import_headers_semantics_and_grammars>
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
+          !?ioConstraintComponentMap
         ;
       end select ;
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName value]] then
         @M_semanticsEntitiesForUse importedEntities ;
-        [!?ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?*] ;
+        [!?ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?* ?*] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -904,6 +919,7 @@ label importSemantics
 
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
   outActionMap := [@ActionMap empty] ;
   outModelMap := [@ModelMap empty] ;
@@ -948,6 +964,7 @@ label importSemantics
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
+          !?ioConstraintComponentMap
         ;
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
@@ -980,10 +997,11 @@ label importSemantics
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
+          !?ioConstraintComponentMap
         ;
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
-      [!?ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?*] ;
+      [!?ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?* ?*] ;
       foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
         if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
           [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;

@@ -36,6 +36,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -44,9 +45,11 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -68,6 +71,7 @@ rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -75,6 +79,7 @@ rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -97,6 +102,7 @@ rule <galgas_component>
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $compile$ ;
   @lstring fileName ;
@@ -121,6 +127,7 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $compile$ ;
   $literal_string$ ? * ;
@@ -128,6 +135,7 @@ label importSemantics
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $compile$ ;
   $literal_string$ ? * ;
@@ -182,10 +190,12 @@ rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
   grammar galgas_LR1_grammar label importSemantics in inFileName
     !?ioSemanticsMapForUse
     !?ioMetamodelComponentMap
+    !?ioConstraintComponentMap
   ;
 end rule ;
 
@@ -199,10 +209,12 @@ rule <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_constraintComponents ioConstraintComponentMap
 :
   grammar galgas_LR1_grammar label importGrammarForSemantics in inFileName
     !?ioGrammarComponentsMap
     !?ioMetamodelComponentMap
+    !?ioConstraintComponentMap
   ;
 end rule ;
 

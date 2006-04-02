@@ -31,6 +31,7 @@ void galgas_LL1_prgm::_beforeParsing (void) {
   mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_empty (HERE) ;
   mOptionComponentsMap = GGS_M_optionComponents::constructor_empty (HERE) ;
   mMetamodelComponentMap = GGS_M_metamodelsComponents::constructor_empty (HERE) ;
+  mConstraintComponentMap = GGS_M_constraintComponents::constructor_empty (HERE) ;
   mTerminalIO.mFileGenerationStartDir = mScannerPtr_->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = mTerminalIO.mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
