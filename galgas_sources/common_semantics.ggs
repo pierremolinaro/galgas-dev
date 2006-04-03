@@ -20,6 +20,16 @@ semantics common_semantics :
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   L I S T    O F    L S T R I N G S                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @L_lstringList {
+  @lstring mString ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  A C T U A L    P A R A M E T E R S    P A S S I N G    M O D E S         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -484,6 +494,14 @@ map @contextPropertyMap {
 
 #---------------------------------------------------------------------------*
 
+map @contextParameterMap {
+  @L_lstringList mContextParameterList ;
+  insert insertKey error message "context parameter are already defined for the '%K' property" ;
+#  search searchKey error message "the '%K' context property is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @fetchedPropertyMap {
   @lstring mTypeName ;
   @lstring mAttributeName ;
@@ -491,6 +509,14 @@ map @fetchedPropertyMap {
   @lstring mIndexName ;
   insert insertKey error message "the '%K' fetched property has been already declared in %L" ;
   search searchKey error message "the '%K' fetched property is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @mapPropertyMap {
+  @lstring mTypeName ;
+  insert insertKey error message "the '%K' map property has been already declared in %L" ;
+  search searchKey error message "the '%K' map property is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -626,20 +652,13 @@ map @entityToImplementMap {
 
 #---------------------------------------------------------------------------*
 
-map @constraintToImplementMap {
-  @relationMap mRelationMap ;
-  @lstring mSuperEntityName ;
-  @entityPropertyMap mEntityPropertiesMap ;
-  insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
-  search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
-}
-
-#---------------------------------------------------------------------------*
-
 map @constrainedEntityMap {
   @relationMap mAllRelationMap ;
   @lstring mSuperEntityName ;
   @entityPropertyMap mEntityPropertiesMap ;
+  @contextPropertyMap mContextPropertyMap ;
+  @mapPropertyMap mMapPropertyMap ;
+  @contextParameterMap mContextParameterMap ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
 }
@@ -661,7 +680,6 @@ action generate_constraints
  ?@lstring inMetamodelComponentName
  ?@lstring inConstraintComponentName
  ?!@constrainedEntityMap ioConstrainedEntityMap
- ?!@constraintToImplementMap ioConstraintToImplementMap
  ?@stringset inMultiReferencedEntities
  ?@lstring inRootEntityName
 ;
@@ -760,16 +778,6 @@ map @M_accessors_map {
 
 list @L_stringList {
   @string mErrorMessageElement ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   L I S T    O F    L S T R I N G S                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @L_lstringList {
-  @lstring mString ;
 }
 
 #---------------------------------------------------------------------------*

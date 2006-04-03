@@ -55,7 +55,6 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                                 const GGS_lstring & inMetamodelComponentName,
                                 const GGS_lstring & inConstraintComponentName,
                                 const GGS_constrainedEntityMap & inConstrainedEntityMap,
-                                const GGS_constraintToImplementMap & inConstraintToImplementMap,
                                 const GGS_stringset & inMultipleReferencedEntities,
                                 const GGS_lstring & inRootEntityName) {
   C_String generatedZone2 ;
@@ -156,7 +155,16 @@ generate_metamodel_header_file (C_Lexique & inLexique,
   //--- Constructor
     generatedZone3 << "//--- Constructor\n"
                       "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << " (GGS_"
-                   << currentConstrainedEntity->mKey << " * _inMetamodelObject COMMA_LOCATION_ARGS) ; \n" ;
+                   << currentConstrainedEntity->mKey << " * _inMetamodelObject" ;
+    GGS_contextPropertyMap::element_type * currentContextParameter = currentConstrainedEntity->mInfo.mContextPropertyMap.firstObject () ;
+    while (currentContextParameter != NULL) {
+      macroValidPointer (currentContextParameter) ;
+      generatedZone3 << ",\n"
+                        "                               GGS_"
+                     << currentContextParameter->mInfo.mTypeName << " * _inContext_" << currentContextParameter->mKey ;
+      currentContextParameter = currentContextParameter->nextObject () ;
+    }
+    generatedZone3 << " COMMA_LOCATION_ARGS) ; \n" ;
     generatedZone3 << "//--- Destructor\n"
                       "  public : virtual ~GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << " (void) ;\n"
                       "//--- Build Owner links and Maps\n"
@@ -201,6 +209,14 @@ generate_metamodel_header_file (C_Lexique & inLexique,
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
+    }
+    generatedZone3 << "//--- Maps\n" ;
+    GGS_mapPropertyMap::element_type * currentMap = currentConstrainedEntity->mInfo.mMapPropertyMap.firstObject () ;
+    while (currentMap != NULL) {
+      macroValidPointer (currentMap) ;
+      generatedZone3 << "  public : GGS_" << currentMap->mInfo.mTypeName
+                       << " " << currentMap->mKey << " ;\n" ;
+      currentMap = currentMap->nextObject () ;
     }
 /*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
@@ -276,7 +292,6 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                              const GGS_lstring & inMetamodelComponentName,
                              const GGS_lstring & inConstraintComponentName,
                              const GGS_constrainedEntityMap & inConstrainedEntityMap,
-                             const GGS_constraintToImplementMap & inConstraintToImplementMap,
                              const GGS_stringset & inMultipleReferencedEntities,
                              const GGS_lstring & inRootEntityName) {
   C_String generatedZone2 ;
@@ -307,12 +322,12 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                     "    macroMyNew (ioRootObjectConstraint, GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " (inRootObject COMMA_HERE)) ;\n"
                     "  //--- Build owner links\n"
                     "    bool ok = true ;\n"
-                    "//    inRootObject->buildMaps (_inLexique, NULL, ok) ;\n"
+                    "    ioRootObjectConstraint->buildMaps (_inLexique, ok) ;\n"
                     "    if (ok) {\n"
-                    "//      inRootObject->fetchProperties (_inLexique, ok) ;\n"
+                    "//      ioRootObjectConstraint->fetchProperties (_inLexique, ok) ;\n"
                     "    }\n"
                     "    if (ok) {\n"
-                    "//      inRootObject->buildRelations (_inLexique, ok) ;\n"
+                    "//      ioRootObjectConstraint->buildRelations (_inLexique, ok) ;\n"
                     "    }\n"
                     "    if (! ok) {\n"
                     "      macroMyDelete (ioRootObjectConstraint, GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << ") ;\n"
@@ -406,13 +421,29 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     generatedZone3.writeCTitleComment (C_String ("Implementation of GGS__") + inConstraintComponentName + "_ConstraintOn_" + currentConstrainedEntity->mKey + " Class") ;
     generatedZone3 << "GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentConstrainedEntity->mKey << "::\n"
                       "GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentConstrainedEntity->mKey << " (GGS_"
-                   << currentConstrainedEntity->mKey << " * _inMetamodelObject COMMA_LOCATION_ARGS)\n"
+                   << currentConstrainedEntity->mKey << " * _inMetamodelObject" ;
+    GGS_contextPropertyMap::element_type * currentContextParameter = currentConstrainedEntity->mInfo.mContextPropertyMap.firstObject () ;
+    while (currentContextParameter != NULL) {
+      macroValidPointer (currentContextParameter) ;
+      generatedZone3 << ",\n"
+                        "                               GGS_"
+                     << currentContextParameter->mInfo.mTypeName << " * _inContext_" << currentContextParameter->mKey ;
+      currentContextParameter = currentContextParameter->nextObject () ;
+    }
+    generatedZone3 << " COMMA_LOCATION_ARGS)\n"
                       ":" ;
     if (currentConstrainedEntity->mInfo.mSuperEntityName.length () == 0) {
       generatedZone3 << "C_GGS_Object (THERE), _mNextObject (NULL)" ;
     }else{
       generatedZone3 << "GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mInfo.mSuperEntityName
-                     << "(_inMetamodelObject COMMA_HERE)" ;
+                     << "(_inMetamodelObject" ;
+      currentContextParameter = currentConstrainedEntity->mInfo.mContextPropertyMap.firstObject () ;
+      while (currentContextParameter != NULL) {
+        macroValidPointer (currentContextParameter) ;
+        generatedZone3 << ", _inContext_" << currentContextParameter->mKey ;
+        currentContextParameter = currentContextParameter->nextObject () ;
+      }
+      generatedZone3 << " COMMA_HERE)" ;
     }
     generatedZone3 << ", _mMetamodelObject (_inMetamodelObject) {\n" ;
     GGS_entityPropertyMap::element_type * currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
@@ -708,6 +739,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
 //    }
     currentConstrainedEntity = currentConstrainedEntity->nextObject () ;
   }
+
+  generatedZone3.writeCHyphenLineComment () ;
   
 //--- Generate file
   inLexique.generateFile ("//",
@@ -727,7 +760,6 @@ routine_generate_constraints (C_Lexique & inLexique,
                               GGS_lstring inMetamodelComponentName,
                               GGS_lstring inConstraintComponentName,
                               GGS_constrainedEntityMap & inConstrainedEntityMap,
-                              GGS_constraintToImplementMap & ioConstraintToImplementMap,
                               GGS_stringset inMultipleReferencedEntities,
                               GGS_lstring inRootEntityName
                               COMMA_UNUSED_LOCATION_ARGS) {
@@ -735,12 +767,12 @@ routine_generate_constraints (C_Lexique & inLexique,
   //--- Generate header file
     generate_metamodel_header_file (inLexique, ioEntityMap, ioMapEntityMap,
                                     inMetamodelComponentName, inConstraintComponentName,
-                                    inConstrainedEntityMap, ioConstraintToImplementMap,
+                                    inConstrainedEntityMap,
                                     inMultipleReferencedEntities, inRootEntityName) ;
   //--- Generate implementation file
     generate_metamodel_cpp_file (inLexique, ioEntityMap, ioMapEntityMap,
                                  inMetamodelComponentName, inConstraintComponentName,
-                                 inConstrainedEntityMap, ioConstraintToImplementMap,
+                                 inConstrainedEntityMap,
                                  inMultipleReferencedEntities, inRootEntityName) ;
   }
 }

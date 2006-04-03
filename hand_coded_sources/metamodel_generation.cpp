@@ -87,10 +87,6 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "//--- Attributes\n"
                       "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * mFirstObject ;\n"
                       "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * mLastObject ;\n"
-                      "//--- List access\n"
-                      "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * firstObject (void) {\n"
-                      "    return mFirstObject ;\n"
-                      "  }\n"
                       "//--- 'description' reader\n"
                       "  public : GGS_string reader_description (void) const ;\n"
                       "} ;\n\n" ;

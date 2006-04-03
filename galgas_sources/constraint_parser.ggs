@@ -78,7 +78,6 @@ rule <constraints_on_entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@constrainedEntityMap ioConstrainedEntityMap
-  ?!@constraintToImplementMap ioConstraintToImplementMap
 label parse
 ;
 
@@ -216,14 +215,12 @@ rule <parse_constraint_document>
   end repeat ;
 #--- Parse constraint declarations
   @constrainedEntityMap constrainedEntityMap [empty] ;
-  @constraintToImplementMap constraintToImplementMap [empty] ;
   repeat
   while
     <constraints_on_entity_declaration>
       !?entityMap
       !?mapEntityMap
       !?constrainedEntityMap
-      !?constraintToImplementMap
     ;
   end repeat ;
 #--- Generate C++ code
@@ -233,7 +230,6 @@ rule <parse_constraint_document>
       !metamodelName
       !constraintName
       !?constrainedEntityMap
-      !?constraintToImplementMap
       !multiReferencedEntities
       !rootEntity
   ;
@@ -287,7 +283,6 @@ rule <constraints_on_entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@constrainedEntityMap ioConstrainedEntityMap
-  ?!@constraintToImplementMap ioConstraintToImplementMap
 :
 #--- Entity Name
   $constraint$ ;
@@ -337,6 +332,9 @@ rule <constraints_on_entity_declaration>
         ?allRelationMap
         ?*
         ?*
+        ?contextPropertyMap
+        ?*
+        ?*
       ] ;
     else
       error entityName:"constraints for super entity ('@" . [superEntity value] . "') should be previously defined" ;
@@ -347,6 +345,8 @@ rule <constraints_on_entity_declaration>
   @indexMap indexMap [empty] ;
   @fetchedPropertyMap fetchedPropertyMap [empty] ;
   @insertedPropertyMap insertedPropertyMap [empty] ;
+  @mapPropertyMap mapPropertyMap [empty] ;
+  @contextParameterMap contextParameterMap [empty] ;
   ${$ ;
   repeat
   while
@@ -370,12 +370,15 @@ rule <constraints_on_entity_declaration>
     @lstring referencePropertyName ;
     $identifier$ ? referencePropertyName ;
     $:$ ;
+    @L_lstringList contextParameterList [empty] ;
     repeat
       @lstring contextPropertyName ;
       $identifier$ ? contextPropertyName ;
+      contextParameterList += !contextPropertyName ;
     while
       $,$ ;
     end repeat ;
+    [!?contextParameterMap insertKey !referencePropertyName !contextParameterList] ;
     $;$ ;
   while
     @lstring propertyTypeName ;
@@ -384,6 +387,8 @@ rule <constraints_on_entity_declaration>
     $identifier$ ? attributeName ;
     select
     #--- Map
+      [!?ioMapEntityMap searchKey !propertyTypeName ?* ?* ?*] ;
+      [!?mapPropertyMap insertKey !attributeName !propertyTypeName] ;
     or
     #--- fetched property
       $search$ ;
@@ -452,12 +457,9 @@ rule <constraints_on_entity_declaration>
     !allRelationMap
     !superEntity
     !propertyMap
-  ] ;
-  [!?ioConstraintToImplementMap insertKey
-    !entityName
-    !relationToImplementMap
-    !superEntity
-    !propertyMap
+    !contextPropertyMap
+    !mapPropertyMap
+    !contextParameterMap
   ] ;
 end rule ;
 
