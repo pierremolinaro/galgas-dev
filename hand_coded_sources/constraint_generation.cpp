@@ -126,14 +126,10 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "  private : void operator = "
                       " (GGS__listOfConstraint_" << currentMultipleReferencedEntity->mKey << "&) ;\n"
                       "//--- Add an Object\n"
-                      "  public : void add (GGS_" << currentMultipleReferencedEntity->mKey << " * inObject) ;\n"
+                      "  public : void add (GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * inObject) ;\n"
                       "//--- Attributes\n"
-                      "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * mFirstObject ;\n"
-                      "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * mLastObject ;\n"
-                      "//--- List access\n"
-                      "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * firstObject (void) {\n"
-                      "    return mFirstObject ;\n"
-                      "  }\n"
+                      "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * mFirstObject ;\n"
+                      "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * mLastObject ;\n"
                       "//--- 'description' reader\n"
                       "  public : GGS_string reader_description (void) const ;\n"
                       "} ;\n\n" ;
@@ -159,55 +155,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     }
   //--- Constructor
     generatedZone3 << "//--- Constructor\n"
-                      "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << " (" ;
-    bool first = true ;
-/*    GGS_entityPropertyMap::element_type * currentProperty = currentConstrainedEntity->mInfo.mAllPropertiesMap.firstObject () ;
-    while (currentProperty != NULL) {
-      macroValidPointer (currentProperty) ;
-      switch (currentProperty->mInfo.mKind.enumValue ()) {
-      case GGS_metamodelPropertyKind::enum_attributeProperty:
-        if (first) {
-          first = false ;
-        }else{
-          generatedZone3 << ",\n                             " ;
-        }
-        generatedZone3 << "GGS_" << currentProperty->mInfo.mTypeName
-                       << " & _in_" << currentProperty->mKey ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-        if (first) {
-          first = false ;
-        }else{
-          generatedZone3 << ",\n                             " ;
-        }
-        generatedZone3 << "GGS_" << currentProperty->mInfo.mTypeName
-                       << " * _in_" << currentProperty->mKey ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-        if (first) {
-          first = false ;
-        }else{
-          generatedZone3 << ",\n                             " ;
-        }
-        generatedZone3 << "GGS__listOfConstraint_" << currentProperty->mInfo.mTypeName
-                       << " & _in_" << currentProperty->mKey ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_fetchedProperty:
-      case GGS_metamodelPropertyKind::enum_mapProperty:
-      case GGS_metamodelPropertyKind::enum_contextProperty:
-      case GGS_metamodelPropertyKind::enum_relationProperty:
-      case GGS_metamodelPropertyKind::kNotBuilt:
-        break ;
-      }
-      currentProperty = currentProperty->nextObject () ;
-    }*/
-    if (first) {
-      generatedZone3 << "LOCATION_ARGS" ;
-    }else{
-      generatedZone3 << "\n                             "
-                        "COMMA_LOCATION_ARGS" ;
-    }
-    generatedZone3 << ") ;\n" ;
+                      "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << " (GGS_"
+                   << currentConstrainedEntity->mKey << " * _inMetamodelObject COMMA_LOCATION_ARGS) ; \n" ;
     generatedZone3 << "//--- Destructor\n"
                       "  public : virtual ~GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << " (void) ;\n"
                       "//--- Build Owner links and Maps\n"
@@ -231,7 +180,28 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "//--- Build relations\n"
                       "  public : virtual void buildRelations (C_Lexique & _inLexique,\n"
                       "                                         bool & _ioOk) ;\n"
+                      "//--- Pointer to metamodel Object\n"
+                      "  private : const GGS_"
+                   << currentConstrainedEntity->mKey << " * _mMetamodelObject ;\n"
                       "//--- Properties\n" ;
+    GGS_entityPropertyMap::element_type * currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
+    while (currentProperty != NULL) {
+      macroValidPointer (currentProperty) ;
+      switch (currentProperty->mInfo.mKind.enumValue ()) {
+      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+        generatedZone3 << "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentProperty->mInfo.mTypeName
+                       << " * _constraintFor_" << currentProperty->mKey << " ;\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+        generatedZone3 << "  public : GGS__listOfConstraint_" << currentProperty->mInfo.mTypeName
+                       << " _constraintFor_" << currentProperty->mKey << " ;\n" ;
+        break ;
+      case GGS_metamodelPropertyKind::enum_attributeProperty:
+      case GGS_metamodelPropertyKind::kNotBuilt:
+        break ;
+      }
+      currentProperty = currentProperty->nextObject () ;
+    }
 /*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
@@ -334,7 +304,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                     "    // const GGS_string s = inRootObject->reader_description () ;\n"
                     "    // printf (\"%s\\n\", s.cString ()) ;\n"
                     "  //--- Build object tree\n"
-                    "    macroMyNew (ioRootObjectConstraint, GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " (HERE)) ;\n"
+                    "    macroMyNew (ioRootObjectConstraint, GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " (inRootObject COMMA_HERE)) ;\n"
                     "  //--- Build owner links\n"
                     "    bool ok = true ;\n"
                     "//    inRootObject->buildMaps (_inLexique, NULL, ok) ;\n"
@@ -392,15 +362,15 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     generatedZone3 << "GGS__listOfConstraint_" << currentMultipleReferencedEntity->mKey << "::\n"
                       "~GGS__listOfConstraint_" << currentMultipleReferencedEntity->mKey << " (void) {\n"
                       "  while (mFirstObject != NULL) {\n"
-                      "    GGS_" << currentMultipleReferencedEntity->mKey << " * p = mFirstObject->_mNextObject ;\n"
+                      "    GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * _p = mFirstObject->_mNextObject ;\n"
                       "    delete mFirstObject ;\n"
-                      "    mFirstObject = p ;\n"
+                      "    mFirstObject = _p ;\n"
                       "  }\n"
                       "}\n\n" ;
     generatedZone3.writeCHyphenLineComment () ;
     generatedZone3 << " void GGS__listOfConstraint_" << currentMultipleReferencedEntity->mKey
                    << "::\n"
-                      "add (GGS_" << currentMultipleReferencedEntity->mKey << " * inObject) {\n"
+                      "add (GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * inObject) {\n"
                       "  if (inObject != NULL) {\n"
                       "    macroValidObject (inObject) ;\n"
                       "    if (mFirstObject == NULL) {\n"
@@ -417,10 +387,10 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "reader_description (void) const {\n"
                       "  C_String s ;\n"
                       "  s << \"<list @" << currentMultipleReferencedEntity->mKey << " \" ;\n"
-                      "  GGS_" << currentMultipleReferencedEntity->mKey << " * p = mFirstObject ;\n"
-                      "  while (p != NULL) {\n"
-                      "    s << p->reader_description () ;\n"
-                      "    p = p->_mNextObject ;\n"
+                      "  const GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * _p = mFirstObject ;\n"
+                      "  while (_p != NULL) {\n"
+                      "    s << _p->reader_description () ;\n"
+                      "    _p = _p->_mNextObject ;\n"
                       "  }\n"
                       "  s << \">\" ;\n"
                       "  return GGS_string (true, s) ;\n"
@@ -434,168 +404,63 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
   while (currentConstrainedEntity != NULL) {
     macroValidPointer (currentConstrainedEntity) ;
     generatedZone3.writeCTitleComment (C_String ("Implementation of GGS__") + inConstraintComponentName + "_ConstraintOn_" + currentConstrainedEntity->mKey + " Class") ;
-    const C_String superClass = currentConstrainedEntity->mInfo.mSuperEntityName ;
     generatedZone3 << "GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentConstrainedEntity->mKey << "::\n"
-                      "GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentConstrainedEntity->mKey << " (" ;
-//    GGS_entityPropertyMap::element_type * currentProperty = currentConstrainedEntity->mInfo.mAllPropertiesMap.firstObject () ;
-    bool first = true ;
-/*    while (currentProperty != NULL) {
-      macroValidPointer (currentProperty) ;
-      switch (currentProperty->mInfo.mKind.enumValue ()) {
-      case GGS_metamodelPropertyKind::enum_attributeProperty:
-        if (first) {
-          first = false ;
-        }else{
-          generatedZone3 << ",\n                             " ;
-        }
-        generatedZone3 << "GGS_" << currentProperty->mInfo.mTypeName
-                       << " & _in_" << currentProperty->mKey ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-        if (first) {
-          first = false ;
-        }else{
-          generatedZone3 << ",\n                             " ;
-        }
-        generatedZone3 << "GGS_" << currentProperty->mInfo.mTypeName
-                       << " * _in_" << currentProperty->mKey ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-        if (first) {
-          first = false ;
-        }else{
-          generatedZone3 << ",\n                             " ;
-        }
-        generatedZone3 << "GGS__listOfConstraint_" << currentProperty->mInfo.mTypeName
-                       << " & _in_" << currentProperty->mKey ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_mapProperty:
-      case GGS_metamodelPropertyKind::enum_contextProperty:
-      case GGS_metamodelPropertyKind::enum_fetchedProperty:
-      case GGS_metamodelPropertyKind::kNotBuilt:
-      case GGS_metamodelPropertyKind::enum_relationProperty:
-        break ;
-      }
-      currentProperty = currentProperty->nextObject () ;
-    }*/
-    if (first) {
-      generatedZone3 << "LOCATION_ARGS" ;
-    }else{
-      generatedZone3 << "\n                             "
-                        "COMMA_LOCATION_ARGS" ;
-    }
-    generatedZone3 << ")\n:" ;
-    if (superClass.length () == 0) {
-      generatedZone3 << "C_GGS_Object" ;
-    }else{
-      generatedZone3 << "GGS__" << inConstraintComponentName << "_ConstraintOn_" << superClass ;
-    }
-    generatedZone3 << " (" ;
-/*    currentProperty = currentConstrainedEntity->mInfo.mAllPropertiesMap.firstObject () ;
-    const sint32 inheritedPropertyCount = currentConstrainedEntity->mInfo.mAllPropertiesMap.count ()
-                                        - currentConstrainedEntitycurrentConstrainedEntity->mInfo.mEntityPropertiesMap.count () ;
-    first = true ;
-    for (sint32 i=0 ; i<inheritedPropertyCount ; i++) {
-      macroValidPointer (currentProperty) ;
-      switch (currentProperty->mInfo.mKind.enumValue ()) {
-      case GGS_metamodelPropertyKind::enum_attributeProperty:
-      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-        if (first) {
-          first = false ;
-        }else{
-          generatedZone3 << ",\n                             " ;
-        }
-        generatedZone3 << "_in_" << currentProperty->mKey ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_mapProperty:
-      case GGS_metamodelPropertyKind::enum_contextProperty:
-      case GGS_metamodelPropertyKind::enum_fetchedProperty:
-      case GGS_metamodelPropertyKind::enum_relationProperty:
-      case GGS_metamodelPropertyKind::kNotBuilt:
-        break ;
-      }
-      currentProperty = currentProperty->nextObject () ;
-    }*/
-    if (first) {
-      generatedZone3 << "THERE" ;
-    }else{
-      generatedZone3 << "\n                             "
-                        "COMMA_THERE" ;
-    }
-    generatedZone3 << ")" ;
+                      "GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentConstrainedEntity->mKey << " (GGS_"
+                   << currentConstrainedEntity->mKey << " * _inMetamodelObject COMMA_LOCATION_ARGS)\n"
+                      ":" ;
     if (currentConstrainedEntity->mInfo.mSuperEntityName.length () == 0) {
-      generatedZone3 << ",\n"    
-                        "_mNextObject (NULL)" ;
+      generatedZone3 << "C_GGS_Object (THERE), _mNextObject (NULL)" ;
+    }else{
+      generatedZone3 << "GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mInfo.mSuperEntityName
+                     << "(_inMetamodelObject COMMA_HERE)" ;
     }
-/*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
+    generatedZone3 << ", _mMetamodelObject (_inMetamodelObject) {\n" ;
+    GGS_entityPropertyMap::element_type * currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
       switch (currentProperty->mInfo.mKind.enumValue ()) {
-      case GGS_metamodelPropertyKind::enum_attributeProperty:
-        generatedZone3 << ",\n" << currentProperty->mKey << " (_in_" << currentProperty->mKey << ")" ;
+      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+        generatedZone3 << "  GGS_" << currentProperty->mInfo.mTypeName << " * _p_" << currentProperty->mKey.currentLocation ()
+                       << " = _inMetamodelObject->" << currentProperty->mKey << ".mFirstObject ;\n"
+                       << " while (_p_" << currentProperty->mKey.currentLocation () << " != NULL) {\n"
+                          "    GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentProperty->mInfo.mTypeName << " * _p = NULL ;\n"
+                          "    macroMyNew (_p, GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentProperty->mInfo.mTypeName
+                       << " (_p_" << currentProperty->mKey.currentLocation () << " COMMA_HERE)) ;\n"
+                          "    _constraintFor_" << currentProperty->mKey << ".add (_p) ;\n"
+                          "    _p_" << currentProperty->mKey.currentLocation () << " = _p_" << currentProperty->mKey.currentLocation () << "->_mNextObject ;\n"
+                          "  }\n" ;
         break ;
       case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-        generatedZone3 << ",\n" << currentProperty->mKey << " (_in_" << currentProperty->mKey << ")" ;
+        generatedZone3 << "  _constraintFor_"  << currentProperty->mInfo.mTypeName << " = NULL ;\n"
+                          "  macroMyNew (_p, GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentProperty->mInfo.mTypeName
+                       << " (_inMetamodelObject->" << currentProperty->mKey.currentLocation () << " COMMA_HERE)) ;\n" ;
         break ;
-      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-        generatedZone3 << ",\n" << currentProperty->mKey << " (_in_" << currentProperty->mKey << ")" ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_mapProperty:
-        generatedZone3 << ",\n" << currentProperty->mKey << " (NULL)" ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_fetchedProperty:
-      case GGS_metamodelPropertyKind::enum_contextProperty:
-      case GGS_metamodelPropertyKind::enum_relationProperty:
+      case GGS_metamodelPropertyKind::enum_attributeProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
-    }*/
-    generatedZone3 << " {\n" ;
-/*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
-    while (currentProperty != NULL) {
-      macroValidPointer (currentProperty) ;
-      switch (currentProperty->mInfo.mKind.enumValue ()) {
-      case GGS_metamodelPropertyKind::enum_mapProperty:
-        generatedZone3 << "  macroMyNew (" << currentProperty->mKey
-                       << ", GGS_" << currentProperty->mInfo.mTypeName << " (HERE)) ;\n" ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_fetchedProperty:
-      case GGS_metamodelPropertyKind::enum_contextProperty:
-      case GGS_metamodelPropertyKind::enum_relationProperty:
-      case GGS_metamodelPropertyKind::enum_attributeProperty:
-      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-      case GGS_metamodelPropertyKind::kNotBuilt:
-        break ;
-      }
-      currentProperty = currentProperty->nextObject () ;
-    }*/
+    }
     generatedZone3 << "}\n\n" ;
 
     generatedZone3.writeCHyphenLineComment () ;
     generatedZone3 << "GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << "::\n"
                       "~GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << " (void) {\n" ;
-/*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
+    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
       switch (currentProperty->mInfo.mKind.enumValue ()) {
       case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-      case GGS_metamodelPropertyKind::enum_mapProperty:
-        generatedZone3 << "  macroMyDelete (" << currentProperty->mKey
-                       << ", GGS_" << currentProperty->mInfo.mTypeName << ") ;\n" ;
+        generatedZone3 << "  macroMyDelete (_p, GGS__" << inConstraintComponentName << "_ConstraintOn_"  << currentProperty->mInfo.mTypeName
+                       << ") ;\n" ;
         break ;
-      case GGS_metamodelPropertyKind::enum_attributeProperty:
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-      case GGS_metamodelPropertyKind::enum_fetchedProperty:
-      case GGS_metamodelPropertyKind::enum_contextProperty:
-      case GGS_metamodelPropertyKind::enum_relationProperty:
+      case GGS_metamodelPropertyKind::enum_attributeProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
-    }*/
+    }
     generatedZone3 << "}\n\n" ;
 
     generatedZone3.writeCHyphenLineComment () ;

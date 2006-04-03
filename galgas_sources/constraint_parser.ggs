@@ -296,11 +296,12 @@ rule <constraints_on_entity_declaration>
 #--- Get entity properties
   @lstring superEntity ;
   @entityPropertyMap allPropertyMap ;
+  @entityPropertyMap propertyMap ;
   [!?ioEntityMap searchKey
     !entityName
     ?allPropertyMap
     ?*
-    ?*
+    ?propertyMap
     ?superEntity
    ] ;
 #--- Context properties
@@ -334,6 +335,7 @@ rule <constraints_on_entity_declaration>
       [!?ioConstrainedEntityMap searchKey
         !superEntity
         ?allRelationMap
+        ?*
         ?*
       ] ;
     else
@@ -449,11 +451,13 @@ rule <constraints_on_entity_declaration>
     !entityName
     !allRelationMap
     !superEntity
+    !propertyMap
   ] ;
   [!?ioConstraintToImplementMap insertKey
     !entityName
     !relationToImplementMap
     !superEntity
+    !propertyMap
   ] ;
 end rule ;
 
