@@ -629,6 +629,7 @@ map @entityToImplementMap {
 map @constraintToImplementMap {
   @relationMap mRelationMap ;
   @lstring mSuperEntityName ;
+  @entityPropertyMap mEntityPropertiesMap ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
 }
@@ -638,6 +639,7 @@ map @constraintToImplementMap {
 map @constrainedEntityMap {
   @relationMap mAllRelationMap ;
   @lstring mSuperEntityName ;
+  @entityPropertyMap mEntityPropertiesMap ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
 }
@@ -2148,6 +2150,7 @@ list @L_grammarDescriptorForProgram {
   @lstring mLexiqueClassName ;
   @lstring mReturnedMetamodelName ;
   @lstring mReturnedRootEntityName ;
+  @L_lstringList mConstraintsForMetamodel ;
 }
 
 #---------------------------------------------------------------------------*
