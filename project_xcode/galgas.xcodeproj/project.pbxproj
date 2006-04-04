@@ -6294,38 +6294,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CF0DA690085630E800F38E67 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgas;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
 		CF0DA691085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6338,13 +6306,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
 				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = galgas;
 				WARNING_CFLAGS = (
@@ -6356,31 +6318,6 @@
 			};
 			name = Default;
 		};
-		CF0DA693085630E800F38E67 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasDebug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
-			name = Deployment;
-		};
 		CF0DA694085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6389,11 +6326,6 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -6403,38 +6335,6 @@
 				WARNING_CFLAGS = "-Wmost";
 			};
 			name = Default;
-		};
-		CF0DA696085630E800F38E67 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgasLR1;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
 		};
 		CF0DA697085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
@@ -6448,13 +6348,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
 				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = galgasLR1;
 				WARNING_CFLAGS = (
@@ -6466,31 +6360,6 @@
 			};
 			name = Default;
 		};
-		CF0DA699085630E800F38E67 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasLR1Debug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
-			name = Deployment;
-		};
 		CF0DA69A085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6499,12 +6368,6 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -6513,38 +6376,6 @@
 				WARNING_CFLAGS = "-Wmost";
 			};
 			name = Default;
-		};
-		CF0DA69C085630E800F38E67 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgasSLR;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
 		};
 		CF0DA69D085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
@@ -6558,13 +6389,6 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = galgasSLR;
 				WARNING_CFLAGS = (
@@ -6576,31 +6400,6 @@
 			};
 			name = Default;
 		};
-		CF0DA69F085630E800F38E67 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasSLRDebug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
-			name = Deployment;
-		};
 		CF0DA6A0085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6609,12 +6408,6 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -6623,60 +6416,6 @@
 				WARNING_CFLAGS = "-Wmost";
 			};
 			name = Default;
-		};
-		CF0DA6A2085630E800F38E67 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_CPP_RTTI = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 2;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
-				GCC_SHORT_ENUMS = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = NO;
-				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = NO;
-				GCC_WARN_UNUSED_LABEL = NO;
-				GCC_WARN_UNUSED_PARAMETER = NO;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = "";
-				OTHER_CFLAGS = "-Wall";
-				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = cocoaGalgas;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = app;
-			};
-			name = Deployment;
 		};
 		CF0DA6A3085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
@@ -6732,20 +6471,20 @@
 			};
 			name = Default;
 		};
-		CF0DA6A5085630E800F38E67 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = ppc;
-				MACOSX_DEPLOYMENT_TARGET = "";
-				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-			};
-			name = Deployment;
-		};
 		CF0DA6A6085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = ppc;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				HEADER_SEARCH_PATHS = (
+					../galgas_sources/GALGAS_OUTPUT,
+					../hand_coded_sources,
+					../../libpm,
+				);
+				INSTALL_PATH = /usr/local/bin;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PREBINDING = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
@@ -6758,7 +6497,6 @@
 		CF0DA68F085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool LL1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF0DA690085630E800F38E67 /* Deployment */,
 				CF0DA691085630E800F38E67 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6767,7 +6505,6 @@
 		CF0DA692085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool LL1 debug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF0DA693085630E800F38E67 /* Deployment */,
 				CF0DA694085630E800F38E67 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6776,7 +6513,6 @@
 		CF0DA695085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool LR1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF0DA696085630E800F38E67 /* Deployment */,
 				CF0DA697085630E800F38E67 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6785,7 +6521,6 @@
 		CF0DA698085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool LR1 debug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF0DA699085630E800F38E67 /* Deployment */,
 				CF0DA69A085630E800F38E67 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6794,7 +6529,6 @@
 		CF0DA69B085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool SLR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF0DA69C085630E800F38E67 /* Deployment */,
 				CF0DA69D085630E800F38E67 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6803,7 +6537,6 @@
 		CF0DA69E085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS tool SLR debug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF0DA69F085630E800F38E67 /* Deployment */,
 				CF0DA6A0085630E800F38E67 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6812,7 +6545,6 @@
 		CF0DA6A1085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS Cocoa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF0DA6A2085630E800F38E67 /* Deployment */,
 				CF0DA6A3085630E800F38E67 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6821,7 +6553,6 @@
 		CF0DA6A4085630E800F38E67 /* Build configuration list for PBXProject "galgas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF0DA6A5085630E800F38E67 /* Deployment */,
 				CF0DA6A6085630E800F38E67 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
