@@ -6307,7 +6307,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				INSTALL_PATH = "$(HOME)/bin";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-s";
 				PRODUCT_NAME = galgas;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -6349,7 +6349,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				INSTALL_PATH = "$(HOME)/bin";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-s";
 				PRODUCT_NAME = galgasLR1;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -6389,7 +6389,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-s";
 				PRODUCT_NAME = galgasSLR;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -6479,6 +6479,7 @@
 					ppc,
 					i386,
 				);
+				DEAD_CODE_STRIPPING = YES;
 				HEADER_SEARCH_PATHS = (
 					../galgas_sources/GALGAS_OUTPUT,
 					../hand_coded_sources,
