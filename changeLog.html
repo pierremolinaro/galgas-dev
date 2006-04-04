@@ -8,12 +8,16 @@
 <body>
 <p><b>GALGAS ChangeLog</b></p>
 <p><br></p>
-<p>1.2.5</p>
+<p>1.2.5beta1</p>
+  <li><b>This is an unstable release</b></li>
   <li>new keywords: 'root', 'entity', 'metamodel';</li>
   <li>suppressed keyword: 'start';</li>
   <li>grammar component change: now 'root' keyword is used instead of 'start' keyword for name the start symbol;</li>
   <li>fixed a lexique component bug: 'send' instruction did not check the terminal symbol to be declared;</li>
   <li>fixed a grammar component bug: output HTML file was not generated when the source file was written in command line without any path;</li>
+  <li>fixed a bug when linking on MSYS/MinGW: now strip is called, instead of mingw32-strip;</li>
+  <li>fixed a bug under linux (?): building GALGAS was failing on a makefile error;</li>
+  <li>Linux tool now includes static librairies, and does not depend any more from libstdc++.so.6.</li>
 <ul>
 </ul>
 <p>1.2.4</p>
@@ -21,8 +25,8 @@
   <li>added --create option for creating ready-to-use project.</li>
   <li>galgas tutorial compiles now correctly.</li>
   <li>added allKeys and unreadKeys readers to maps.</li>
-  <li>added union, intersection and difference operators to @stringset.</li>
-  <li>compilation by makefile under Win32 now needs MSYS;</li>
+  <li>added union, intersection and difference operators to @stringset;</li>
+  <li>compilation by makefile under Win32 now needs MSYS.</li>
 </ul>
 <p>1.2.3</p>
 <ul>
