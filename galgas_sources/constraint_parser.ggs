@@ -335,6 +335,9 @@ rule <constraints_on_entity_declaration>
         ?contextPropertyMap
         ?*
         ?*
+        ?*
+        ?*
+        ?*
       ] ;
     else
       error entityName:"constraints for super entity ('@" . [superEntity value] . "') should be previously defined" ;
@@ -344,7 +347,7 @@ rule <constraints_on_entity_declaration>
   @relationMap relationToImplementMap [empty] ;
   @indexMap indexMap [empty] ;
   @fetchedPropertyMap fetchedPropertyMap [empty] ;
-  @insertedPropertyMap insertedPropertyMap [empty] ;
+  @insertionList insertionList [empty] ;
   @mapPropertyMap mapPropertyMap [empty] ;
   @contextParameterMap contextParameterMap [empty] ;
   ${$ ;
@@ -356,14 +359,16 @@ rule <constraints_on_entity_declaration>
     $in$ ;
     @lstring mapPropertyName ;
     $identifier$ ? mapPropertyName ;
+    @lstring indexName ;
     select
+      indexName := [@lstring new !"" !here] ;
     or
       $<$ ;
-      @lstring indexName ;
       $identifier$ ? indexName ;
       [!?indexMap insertKey !indexName !mapPropertyName] ;
       $>$ ;
     end select ;
+    insertionList += !attributeName !mapPropertyName !indexName ;
     $;$ ;
   while
     $context$ ;
@@ -460,6 +465,9 @@ rule <constraints_on_entity_declaration>
     !contextPropertyMap
     !mapPropertyMap
     !contextParameterMap
+    !insertionList
+    !indexMap
+    !fetchedPropertyMap
   ] ;
 end rule ;
 

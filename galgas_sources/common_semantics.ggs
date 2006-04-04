@@ -497,18 +497,7 @@ map @contextPropertyMap {
 map @contextParameterMap {
   @L_lstringList mContextParameterList ;
   insert insertKey error message "context parameter are already defined for the '%K' property" ;
-#  search searchKey error message "the '%K' context property is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @fetchedPropertyMap {
-  @lstring mTypeName ;
-  @lstring mAttributeName ;
-  @lstring mMapAttributeName ;
-  @lstring mIndexName ;
-  insert insertKey error message "the '%K' fetched property has been already declared in %L" ;
-  search searchKey error message "the '%K' fetched property is not declared" ;
+  search searchKey error message "the '%K' context property is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -533,14 +522,6 @@ map @indexMap {
   @lstring mMapReferenceName ;
   insert insertKey error message "the index '%K' is already defined in %L" ;
   search searchKey error message "there is no '%K' index" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @insertedPropertyMap {
-  @insertionMap mMaps ;
-  insert insertKey error message "the '%K' inserted attribute has been already declared in %L" ;
-#  search searchKey error message "the '%K' inserted attribute is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -652,6 +633,25 @@ map @entityToImplementMap {
 
 #---------------------------------------------------------------------------*
 
+list @insertionList {
+  @lstring mInsertedAttributeName ;
+  @lstring mMapName ;
+  @lstring mIndexName ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @fetchedPropertyMap {
+  @lstring mTypeName ;
+  @lstring mAttributeName ;
+  @lstring mMapAttributeName ;
+  @lstring mIndexName ;
+  insert insertKey error message "the '%K' fetched property has been already declared in %L" ;
+  search searchKey error message "the '%K' fetched property is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @constrainedEntityMap {
   @relationMap mAllRelationMap ;
   @lstring mSuperEntityName ;
@@ -659,6 +659,9 @@ map @constrainedEntityMap {
   @contextPropertyMap mContextPropertyMap ;
   @mapPropertyMap mMapPropertyMap ;
   @contextParameterMap mContextParameterMap ;
+  @insertionList mInsertionList ;
+  @indexMap mIndexMap ;
+  @fetchedPropertyMap mFetchedPropertyMap ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
 }
