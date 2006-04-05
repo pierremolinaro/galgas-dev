@@ -268,8 +268,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                        << " (*mScannerPtr_, _rootEntity, _rootObjectConstraint" << currentConstraint->mString << ") ;\n" ;
         currentConstraint = currentConstraint->nextObject () ;
       }
-      generatedZone2 << "// printf (\"%s\", _rootEntity->reader_description ().cString ()) ;\n"
-                        "macroMyDelete (_rootEntity, GGS_" << currentGrammar->mReturnedRootEntityName << ") ;\n" ;
+      generatedZone2 << "// printf (\"%s\", _rootEntity->reader_description ().cString ()) ;\n" ;
       currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
       while (currentConstraint != NULL) {
         macroValidPointer (currentConstraint) ;
@@ -278,7 +277,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                        << ") ;\n" ;
         currentConstraint = currentConstraint->nextObject () ;
       }
-      generatedZone2 << "  C_BDD::markAndSweepUnusedNodes () ;\n" ;
+      generatedZone2 << "  macroMyDelete (_rootEntity, GGS_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
+                        "  C_BDD::markAndSweepUnusedNodes () ;\n" ;
     }
     generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
                       "  _afterParsing () ;\n"

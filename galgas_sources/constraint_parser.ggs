@@ -299,6 +299,8 @@ rule <constraints_on_entity_declaration>
     ?propertyMap
     ?superEntity
    ] ;
+  @stringset descendantEntitySet [empty] ;
+  computeDescendantSet !?ioEntityMap !entityName !?descendantEntitySet ;
 #--- Context properties
   @contextPropertyMap contextPropertyMap [empty] ;
   select
@@ -333,6 +335,7 @@ rule <constraints_on_entity_declaration>
         ?*
         ?*
         ?contextPropertyMap
+        ?*
         ?*
         ?*
         ?*
@@ -468,6 +471,7 @@ rule <constraints_on_entity_declaration>
     !insertionList
     !indexMap
     !fetchedPropertyMap
+    !descendantEntitySet
   ] ;
 end rule ;
 

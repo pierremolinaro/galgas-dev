@@ -419,6 +419,9 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       macroValidPointer (currentProperty) ;
       switch (currentProperty->mInfo.mKind.enumValue ()) {
       case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+        generatedZone3 << "  macroMyDelete (" << currentProperty->mKey
+                       << ", GGS_" << currentProperty->mInfo.mTypeName << ") ;\n" ;
+        break ;
       case GGS_metamodelPropertyKind::enum_attributeProperty:
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
