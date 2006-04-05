@@ -662,6 +662,7 @@ map @constrainedEntityMap {
   @insertionList mInsertionList ;
   @indexMap mIndexMap ;
   @fetchedPropertyMap mFetchedPropertyMap ;
+  @stringset mDescendantEntitySet ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
 }
@@ -2512,6 +2513,21 @@ routine checkPath
        end if ;
      end if ;
    end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine computeDescendantSet
+  ?!@entityToImplementMap ioEntityMap
+  ?@lstring inEntityName
+  ?!@stringset ioDescendantEntitySet
+:
+  foreach ioEntityMap (??@lstring kEntityName ??* ??* ??* ??@lstring kSuperEntityName) :
+    if ([kSuperEntityName value] == [inEntityName value]) & not [ioDescendantEntitySet hasKey ![inEntityName value]] then
+      ioDescendantEntitySet += ![kEntityName value] ;
+      computeDescendantSet !?ioEntityMap !kEntityName !?ioDescendantEntitySet ;
+    end if ;
+  end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*
