@@ -50,7 +50,7 @@ entityForProperty (C_Lexique & inLexique,
 
 static void
 generate_metamodel_header_file (C_Lexique & inLexique,
-                                const GGS_entityToImplementMap & inEntityMap,
+                                const GGS_entityToImplementMap & /* inEntityMap */,
                                 const GGS_mapEntityMap & inMapEntityMap,
                                 const GGS_lstring & inMetamodelComponentName,
                                 const GGS_lstring & inConstraintComponentName,
@@ -339,9 +339,9 @@ generate_constraint_object_creation (C_Lexique & inLexique,
 
 static void
 generate_metamodel_cpp_file (C_Lexique & inLexique,
-                             const GGS_entityToImplementMap & inEntityMap,
+                             const GGS_entityToImplementMap & /* inEntityMap */,
                              const GGS_mapEntityMap & inMapEntityMap,
-                             const GGS_lstring & inMetamodelComponentName,
+                             const GGS_lstring & /* inMetamodelComponentName */,
                              const GGS_lstring & inConstraintComponentName,
                              GGS_constrainedEntityMap & inConstrainedEntityMap,
                              const GGS_stringset & inMultipleReferencedEntities,
