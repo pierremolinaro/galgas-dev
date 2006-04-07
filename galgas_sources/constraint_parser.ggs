@@ -78,6 +78,7 @@ rule <constraints_on_entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@constrainedEntityMap ioConstrainedEntityMap
+  ?!@passMap ioPassMap
 label parse
 ;
 
@@ -173,6 +174,20 @@ rule <parse_constraint_document>
   $constraint$ ;
   @lstring constraintName ;
   $identifier$ ? constraintName ;
+#--- Pass declaration
+  @passMap passMap [empty] ;
+  select
+  or
+    $($ ;
+    repeat
+     @lstring passName ;
+     $identifier$ ? passName ;
+     [!?passMap insertKey !passName] ;
+    while
+     $,$ ;
+    end repeat ;
+    $)$ ;
+  end select ;
   $:$ ;
 #--- Imported Metamodel
   $import$ ;
@@ -221,10 +236,42 @@ rule <parse_constraint_document>
       !?entityMap
       !?mapEntityMap
       !?constrainedEntityMap
+      !?passMap
     ;
   end repeat ;
+  $end$ ;
+#--- Check a constraint on root entity is defined
+  @bool constraintOnRootEntity := [constrainedEntityMap hasKey ![rootEntity value]] ;
+  if not constraintOnRootEntity then
+    error here:"no constraint is defined on metamodel root entity" ;
+  end if ;
+#--- Check constraint on root entity defines all passes
+  if constraintOnRootEntity then
+    @constrainedEntityPassMap constrainedEntityPassMapForRootEntity ;
+    @location endOfConstraintLocation ;
+    [!?constrainedEntityMap searchKey
+      !rootEntity
+      ?*
+      ?constrainedEntityPassMapForRootEntity
+      ?*
+      ?*
+      ?*
+      ?*
+      ?*
+      ?*
+      ?*
+      ?*
+      ?*
+      ?*
+      ?endOfConstraintLocation
+    ] ;
+    if [constrainedEntityPassMapForRootEntity count] != [passMap count] then
+      error endOfConstraintLocation: "the root entity constraint should define all passes" ;
+    end if ;
+  end if ;
 #--- Generate C++ code
   action generate_constraints
+      !?passMap
       !?entityMap
       !?mapEntityMap
       !metamodelName
@@ -233,7 +280,6 @@ rule <parse_constraint_document>
       !multiReferencedEntities
       !rootEntity
   ;
-  $end$ ;
   $constraint$ ;
   $;$ ;
 end rule ;
@@ -283,6 +329,7 @@ rule <constraints_on_entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@constrainedEntityMap ioConstrainedEntityMap
+  ?!@passMap ioPassMap
 :
 #--- Entity Name
   $constraint$ ;
@@ -327,14 +374,18 @@ rule <constraints_on_entity_declaration>
   end select ;
 #--- Get inherited properties from super class constraints
   @relationMap allRelationMap [empty] ;
+  @stringset passesDefinedByInheritanceTreeRootEntity [empty] ;
   if [superEntity value] != "" then
     if [ioConstrainedEntityMap hasKey ![superEntity value]] then
       [!?ioConstrainedEntityMap searchKey
         !superEntity
+        ?passesDefinedByInheritanceTreeRootEntity
+        ?*
         ?allRelationMap
         ?*
         ?*
         ?contextPropertyMap
+        ?*
         ?*
         ?*
         ?*
@@ -459,9 +510,46 @@ rule <constraints_on_entity_declaration>
     $;$ ;
     [!?relationToImplementMap insertKey !relationIdentifier !relationVarMap!e] ;
   end repeat ;
+#--- Passes
+  @constrainedEntityPassMap constrainedEntityPassMap [empty] ;
+  @uint currentIndex := 0 ;
+  repeat
+  while
+    $on$ ;
+    @lstring passName ;
+    $identifier$ ? passName ;
+    @luint index ;
+    [!?ioPassMap searchKeyAndGetIndex !passName ?index] ;
+    [!?constrainedEntityPassMap insertKey !passName] ;
+    if [index value] < currentIndex then
+      error passName:"the pass order is incorrect" ;
+    end if ;
+    currentIndex := [index value] ;
+    $:$ ;
+  end repeat ;
   $}$ ;
+#--- If the entity has no super entity, define the set of defined passes
+  if [superEntity value] == "" then
+    foreach constrainedEntityPassMap (??@lstring kPassName) :
+      passesDefinedByInheritanceTreeRootEntity += ![kPassName value] ;
+    end foreach ;
+  end if ;
+#--- If the entity has super entity, check that only passes defined by
+#    inheritance tree root entity are defined
+  if [superEntity value] != "" then
+    foreach constrainedEntityPassMap (??@lstring kPassName) :
+      if not [passesDefinedByInheritanceTreeRootEntity hasKey ![kPassName value]] then
+       error here: "pass '" . [kPassName value]
+       . "' cannot be defined because it is not defined by the constraint on '@"
+       . [superEntity value] . "' entity" ;
+      end if ;
+    end foreach ;
+  end if ;
+#--- Enter constraint in constraint map 
   [!?ioConstrainedEntityMap insertKey
     !entityName
+    !passesDefinedByInheritanceTreeRootEntity
+    !constrainedEntityPassMap
     !allRelationMap
     !superEntity
     !propertyMap
@@ -472,6 +560,7 @@ rule <constraints_on_entity_declaration>
     !indexMap
     !fetchedPropertyMap
     !descendantEntitySet
+    !here
   ] ;
 end rule ;
 
