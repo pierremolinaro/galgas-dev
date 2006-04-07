@@ -652,7 +652,23 @@ map @fetchedPropertyMap {
 
 #---------------------------------------------------------------------------*
 
+map @passMap {
+  insert insertKey error message "the '%K' pass name has been already declared in %L" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' pass name is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @constrainedEntityPassMap {
+  insert insertKey error message "the '%K' pass name has been already declared in %L" ;
+  search searchKey error message "the '%K' pass name is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @constrainedEntityMap {
+  @stringset mPassesDefinedByInheritanceTreeRootEntity ;
+  @constrainedEntityPassMap mConstrainedEntityPassMap ;
   @relationMap mAllRelationMap ;
   @lstring mSuperEntityName ;
   @entityPropertyMap mEntityPropertiesMap ;
@@ -663,6 +679,7 @@ map @constrainedEntityMap {
   @indexMap mIndexMap ;
   @fetchedPropertyMap mFetchedPropertyMap ;
   @stringset mDescendantEntitySet ;
+  @location mEndOfConstraintLocation ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
 }
@@ -679,6 +696,7 @@ action generate_metamodel
 #---------------------------------------------------------------------------*
 
 action generate_constraints
+ ?!@passMap ioPassMap
  ?!@entityToImplementMap ioEntityMap
  ?!@mapEntityMap ioMapEntityMap
  ?@lstring inMetamodelComponentName

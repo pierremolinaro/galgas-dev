@@ -269,6 +269,8 @@ generate_constraint_object_creation (C_Lexique & inLexique,
                                      const C_String & inCurrentVariableName,
                                      const C_String & inDestinationVar,
                                      AC_OutputStream & ioGeneratedZone3) {
+             GGS_stringset passesDefinedByInheritanceTreeRootEntity ;
+             GGS_constrainedEntityPassMap constrainedEntityPassMap ;
              GGS_relationMap allRelationMap ;
              GGS_lstring superEntityName ;
              GGS_entityPropertyMap entityPropertiesMap ;
@@ -279,8 +281,11 @@ generate_constraint_object_creation (C_Lexique & inLexique,
              GGS_indexMap indexMap ;
              GGS_fetchedPropertyMap fetchedPropertyMap ;
              GGS_stringset allDescendant ;
+             GGS_location endOfConstraintLocation ;
              inConstrainedEntityMap.methode_searchKey (inLexique,
                                                        inCurrentProperty->mInfo.mTypeName,
+                                                       passesDefinedByInheritanceTreeRootEntity,
+                                                       constrainedEntityPassMap,
                                                        allRelationMap,
                                                        superEntityName,
                                                        entityPropertiesMap,
@@ -290,7 +295,8 @@ generate_constraint_object_creation (C_Lexique & inLexique,
                                                        insertionList,
                                                        indexMap,
                                                        fetchedPropertyMap,
-                                                       allDescendant
+                                                       allDescendant,
+                                                       endOfConstraintLocation
                                                        COMMA_HERE) ;
              GGS_stringset::element_type * currentDescendant = allDescendant.firstObject () ;
              bool first = true ;
@@ -824,6 +830,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
 
 void
 routine_generate_constraints (C_Lexique & inLexique,
+                              GGS_passMap & ioPassMap,
                               GGS_entityToImplementMap & ioEntityMap,
                               GGS_mapEntityMap & ioMapEntityMap,
                               GGS_lstring inMetamodelComponentName,
