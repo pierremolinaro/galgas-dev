@@ -26,11 +26,12 @@ lexique galgas_scanner :
 
 style keywordsStyle -> "Keywords:" ;
 style delimitersStyle -> "Delimiters:" ;
-style terminalStyle -> "Terminal symbols:" ;
-style integerStyle -> "Integer constants:" ;
-style characterStyle -> "Character constants:" ;
-style stringStyle -> "String constants:" ;
-style typeNameStyle -> "Type names (@...):" ;
+style terminalStyle -> "Terminal Symbols:" ;
+style integerStyle -> "Integer Constants:" ;
+style float_csts -> "Floating Point Constants:" ;
+style characterStyle -> "Character Constants:" ;
+style stringStyle -> "String Sonstants:" ;
+style typeNameStyle -> "Type Names (@...):" ;
 
 # -------------------------- identifier or key word --------------------
 # keywords can be written in lower or upper case
@@ -67,12 +68,14 @@ rule 'a'->'z' | 'A'->'Z' :
   send search identifierString in galgasKeyWordList default $identifier$ ;
 end rule ;
 
-#------------------------------- Decimal number ------------------
+#------------------------------- Integer, flating Point Constant ------------------
+@ldouble floatValue ;
+$literal_double$ !floatValue !tokenString error message "a float number" style float_csts ;
 $unsigned_literal_integer$ ! ulongValue error message "a decimal number" style integerStyle ;
 $signed_literal_integer$ ! longValue error message "a signed decimal number" style integerStyle ;
 
 message decimalNumberTooLarge : "decimal number too large" ;
-
+message floatNumberConversionError : "invalid float number" ;
 message internalError : "internal error" ;
 
 rule '0'->'9' :
@@ -80,16 +83,56 @@ rule '0'->'9' :
   repeat
   while '0'->'9' :
     enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;
+    enterCharacterIntoString (tokenString, *) ;
   while '_' :
   end repeat ;
   select
   when 'S' | 's' :
     convertUlongToLong (longValue, ulongValue) error decimalNumberTooLarge ;
     send $signed_literal_integer$ ;
+  when '.' :
+    enterCharacterIntoString (tokenString, '.') ;
+    repeat
+    while '0'->'9' :
+      enterCharacterIntoString (tokenString, *) ;
+    while '_' :
+    end repeat ;
+    convertStringToDouble (tokenString, floatValue) error floatNumberConversionError ;
+    send $literal_double$ ;
   default
     send $unsigned_literal_integer$ ;
   end select ;
 end rule ;
+
+
+#------------------------------- Floating point Number ------------------
+$.$ error message "the '.' delimitor" style delimitersStyle ;
+$...$ error message "the '...' delimitor" style delimitersStyle ;
+
+#--- Floating Point constant begining with a dot
+rule '.' :
+  select
+  when '0'->'9' :
+    enterCharacterIntoString (tokenString, '0') ;
+    enterCharacterIntoString (tokenString, '.') ;
+    enterCharacterIntoString (tokenString, *) ;
+    repeat
+    while '0'->'9' :
+      enterCharacterIntoString (tokenString, *) ;
+    while '_' :
+    end repeat ;
+    convertStringToDouble (tokenString, floatValue) error floatNumberConversionError ;
+    send $literal_double$ ;
+  default
+    select
+    when ".." :
+      send $...$ ;
+    default
+      send $.$ ;
+    end select ;
+  end select ;
+end rule ;
+
 
 # -------------------------- Type Name -----------------------------
 
@@ -190,10 +233,10 @@ end rule ;
 
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
-  "*",     "|",    ",",      ".",
+  "*",     "|",    ",",
   "::",    ">",    "<",      ";",      ":",
   "-",     "(",    ")",     "->",      "?",
-  "==",   "??",    "!",     ":=",      "...",
+  "==",   "??",    "!",     ":=",
   "[",     "]",   "+=",     "?!",      "!?",
   "/",    "!=",   "<=",     ">=",       "&",
   "++",    "{",    "}",     "+>" ;

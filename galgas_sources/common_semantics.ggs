@@ -2271,9 +2271,6 @@ routine handleReaderCall
       elsif [inMethodName value] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName value] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-        outReturnedType := [@typeGalgas_string new] ;
       elsif [inMethodName value] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_string new] ;
