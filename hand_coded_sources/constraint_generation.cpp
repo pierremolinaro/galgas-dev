@@ -234,12 +234,15 @@ generate_metamodel_header_file (C_Lexique & inLexique,
 
   //--- 'description' reader                 
     generatedZone3 << "//--- 'description' reader\n"
-                      "  public : virtual GGS_string reader_description (void) const"
-//                   << (currentEntity->mInfo.mIsAbstract.boolValue () ? " = 0" : "")
-                   << " ;\n" ;
-  //--- Friend Declaration                 
-//    generatedZone3 << "//--- Friend Class\n"
-//                      "  friend class GGS__listOfConstraint_" << currentEntity->mKey << " ;\n" ;
+                      "  public : virtual GGS_string reader_description (void) const ;\n" ;
+  //--- Phase methods                 
+    generatedZone3 << "//--- Phases\n" ;
+    GGS_constrainedEntityPassMap::element_type * currentPhase = currentConstrainedEntity->mInfo.mConstrainedEntityPassMap.firstObject () ;
+    while (currentPhase != NULL) {
+      macroValidPointer (currentPhase) ;
+      generatedZone3 << "  public : virtual void _phase_" << currentPhase->mKey << " (C_Lexique & _inLexique, bool & _ioOk) ;\n" ;
+      currentPhase = currentPhase->nextObject() ;
+    }
   //--- End of Class Declaration                 
     generatedZone3 << "} ;\n\n" ;
     currentConstrainedEntity = currentConstrainedEntity->nextObject () ;
@@ -345,6 +348,7 @@ generate_constraint_object_creation (C_Lexique & inLexique,
 
 static void
 generate_metamodel_cpp_file (C_Lexique & inLexique,
+                             const GGS_passMap & inPassMap,
                              const GGS_entityToImplementMap & /* inEntityMap */,
                              const GGS_mapEntityMap & inMapEntityMap,
                              const GGS_lstring & /* inMetamodelComponentName */,
@@ -365,6 +369,10 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                     "#endif\n\n" ;
 
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (200000) ;
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Main Routine
+#endif
   
   generatedZone3.writeCTitleComment ("Adding Constraints To Metamodel") ;
   generatedZone3 << "void _addConstraintsTo_" << inConstraintComponentName
@@ -383,11 +391,16 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                     "    ioRootObjectConstraint->buildMaps (_inLexique, ok) ;\n"
                     "    if (ok) {\n"
                     "      ioRootObjectConstraint->fetchProperties (_inLexique, ok) ;\n"
-                    "    }\n"
-                    "    if (ok) {\n"
-                    "//      ioRootObjectConstraint->buildRelations (_inLexique, ok) ;\n"
-                    "    }\n"
-                    "    if (! ok) {\n"
+                    "    }\n" ;
+  GGS_passMap::element_type * currentPass = inPassMap.firstObject () ;
+  while (currentPass != NULL) {
+    macroValidPointer (currentPass) ;
+    generatedZone3 << "    if (ok) {\n"
+                      "      ioRootObjectConstraint->_phase_" << currentPass->mKey << " (_inLexique, ok) ;\n"
+                      "    }\n" ;
+    currentPass = currentPass->nextObject () ;
+  }
+  generatedZone3 << "    if (! ok) {\n"
                     "      macroMyDelete (ioRootObjectConstraint, GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << ") ;\n"
                     "    }\n"
                     "  }\n"
@@ -812,9 +825,25 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                         "  return GGS_string (true, s) ;\n"
                         "}\n\n" ;
 //    }
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Phase Methods
+#endif
+
+  //--- Phase methods                 
+    GGS_constrainedEntityPassMap::element_type * currentPhase = currentConstrainedEntity->mInfo.mConstrainedEntityPassMap.firstObject () ;
+    while (currentPhase != NULL) {
+      macroValidPointer (currentPhase) ;
+      generatedZone3.writeCHyphenLineComment () ;
+      generatedZone3 << "void GGS__" << inConstraintComponentName << "_ConstraintOn_"
+                     << currentConstrainedEntity->mKey << "::\n"
+                     << "_phase_" << currentPhase->mKey << " (C_Lexique & _inLexique, bool & _ioOk) {\n"
+                        "}\n\n" ;
+      currentPhase = currentPhase->nextObject () ;
+    }
+
     currentConstrainedEntity = currentConstrainedEntity->nextObject () ;
   }
-
   generatedZone3.writeCHyphenLineComment () ;
   
 //--- Generate file
@@ -846,7 +875,7 @@ routine_generate_constraints (C_Lexique & inLexique,
                                     inConstrainedEntityMap,
                                     inMultipleReferencedEntities, inRootEntityName) ;
   //--- Generate implementation file
-    generate_metamodel_cpp_file (inLexique, ioEntityMap, ioMapEntityMap,
+    generate_metamodel_cpp_file (inLexique, ioPassMap, ioEntityMap, ioMapEntityMap,
                                  inMetamodelComponentName, inConstraintComponentName,
                                  inConstrainedEntityMap,
                                  inMultipleReferencedEntities, inRootEntityName) ;
