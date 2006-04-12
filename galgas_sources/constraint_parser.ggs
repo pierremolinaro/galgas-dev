@@ -525,7 +525,12 @@ rule <constraints_on_entity_declaration>
       error passName:"the pass order is incorrect" ;
     end if ;
     currentIndex := [index value] ;
-    $:$ ;
+  #--- Properties
+    ${$ ;
+    $}$ ;
+  #--- Instructions
+    ${$ ;
+    $}$ ;
   end repeat ;
   $}$ ;
 #--- If the entity has no super entity, define the set of defined passes
