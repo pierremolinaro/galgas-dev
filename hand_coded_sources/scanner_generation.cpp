@@ -381,7 +381,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   inCppFile << "void "
            << inLexiqueClassName
            << "::\n"
-              "parseLexicalToken (const bool inPropagateLexicaleErrorException) {\n" ;
+              "parseLexicalToken (const bool inPropagateLexicalErrorException) {\n" ;
    if (instructions_list_uses_loop_variable (programme_principal)) {
      inCppFile << "  bool loop_ = true ;\n" ;
    }
@@ -402,7 +402,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   inCppFile << "}catch (const C_lexicalErrorException &) {\n"
              "  mCurrentTokenCode = -1 ; // No token\n"
              "  advance () ; // ... go throught unknown character\n"
-             "  if (inPropagateLexicaleErrorException) {\n"
+             "  if (inPropagateLexicalErrorException) {\n"
              "    throw ;\n"
              "  }\n"
              "}\n" ;
@@ -884,7 +884,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
   }
   generatedZone3 << "} ;\n\n" ;
   generateTerminalSymbolsTableDeclaration (table_tables_mots_reserves, inLexiqueClassName, generatedZone3) ;
-  generatedZone3 << "  protected : virtual void parseLexicalToken (const bool inPropagateLexicaleErrorException) ;\n"
+  generatedZone3 << "  protected : virtual void parseLexicalToken (const bool inPropagateLexicalErrorException) ;\n"
             "  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,\n"
             "                                                              C_String & messageErreur) ;\n"
             "\n"

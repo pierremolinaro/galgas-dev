@@ -35,15 +35,16 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 //--- Generate user includes
   C_String generatedZone2 ;
   generatedZone2 << "#import <Cocoa/Cocoa.h>\n\n"             
-                    "#include \"F_CocoaWrapperForGalgas.h\"\n"
-                    "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
-                    "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
-                    "#include \"galgas/C_galgas_null_io.h\"\n"
-                    "#include \"" << inLexiqueComponentName << ".h\"\n" ;
+                    "#import \"F_CocoaWrapperForGalgas.h\"\n"
+                    "#import \"C_sourceTextForCocoa.h\"\n"
+                    "#import \"command_line_interface/C_CLI_OptionGroup.h\"\n"
+                    "#import \"command_line_interface/C_builtin_CLI_Options.h\"\n"
+                    "#import \"galgas/C_galgas_null_io.h\"\n"
+                    "#import \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
-    generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
+    generatedZone2 << "#import \"" << currentOptionComponent->mKey << ".h\"\n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << "#ifdef USER_DEFAULT_COLORS_DEFINED\n"
@@ -189,7 +190,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "  return " << inLexiqueComponentName << "::getStyleName (inIndex) ;\n"
              "}\n"
              "\n"
-             "void scanThenGetStyledRangeArray (const char * inSourceString,\n"
+             "void scanThenGetStyledRangeArray (NSString * inSourceString,\n"
              "                                  const char * inSourceFileName,\n"
              "                                  TC_UniqueArray <C_styledRange> & ioStyledRangeArray,\n"
              "                                  const sint32 inAffectedRangeLocation,\n"
@@ -202,7 +203,12 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "  if (gScannerPtr == NULL) {\n"
              "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (& gNullIO)) ;\n"
              "  }\n"
-             "  gScannerPtr->resetAndLoadSourceFromText (inSourceString, inSourceFileName) ;\n"
+             "  AC_sourceText * sourceTextPtr = NULL ;\n"
+             "  macroMyNew (sourceTextPtr,\n"
+             "              C_sourceTextForCocoa (inSourceString,\n"
+             "                                    inSourceFileName\n"
+             "                                    COMMA_HERE)) ;\n"
+             "  gScannerPtr->resetAndLoadSourceFromText (sourceTextPtr) ;\n"
              "  gScannerPtr->scanThenGetStyledRangeArray (ioStyledRangeArray,\n"
              "                                            inAffectedRangeLocation,\n"
              "                                            inAffectedRangeLength,\n"

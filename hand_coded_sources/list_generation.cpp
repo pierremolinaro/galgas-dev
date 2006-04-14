@@ -389,16 +389,7 @@ void cPtr_C_listTypeToImplement
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  if (isBuilt ()" ;
-  current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-/* § while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "\n                 && argument_" << numeroVariable << ".isBuilt ()" ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }*/
-  inCppFile << ") {\n"
+               "  if (isBuilt ()) {\n"
                "    insulateList () ;\n"
                "    internalAppendItem (" ;
   current = mNonExternAttributesList.firstObject () ;
