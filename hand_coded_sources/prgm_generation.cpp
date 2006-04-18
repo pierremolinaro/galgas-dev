@@ -137,7 +137,16 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "#include \"command_line_interface/F_Analyze_CLI_Options.h\"\n"
                     "#include \"command_line_interface/mainForLIBPM.h\"\n"
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
-                    "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n" ;
+                    "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
+                    "#ifdef TARGET_API_MAC_CARBON\n"
+                    "  #include <SIOUX.H>\n"
+                    "#endif\n"
+                    "\n"
+                    "#ifdef COMPILE_FOR_WIN32\n"
+                    "  #ifdef __MWERKS__\n"
+                    "    #include <WINSIOUX.H>\n"
+                    "  #endif\n"
+                    "#endif\n" ;
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
@@ -347,12 +356,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                  << inMaxWarningsCount
                  << " ;\n"
                     "  TC_UniqueArray <C_String> sourceFilesArray ;\n"
-                    "  #ifdef TARGET_API_MAC_CARBON\n"
-                    "    printf (\"%s\\n\", IOparameters.mCompilerVersion.cString ()) ;\n"
-                    "  #endif\n"
-                    "  #ifdef COMPILE_FOR_WIN32\n"
-                    "    printf (\"%s\\n\", IOparameters.mCompilerVersion.cString ()) ;\n"
-                    "  #endif\n"
                     "  F_Analyze_CLI_Options (argc, argv,\n"
                     "                               " ;
   generatedZone2.writeCstringConstant (inVersionString) ;
@@ -364,6 +367,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
           << inSourceFileExtension <<
              "\",\n"
              "                               IOparameters.mCocoaOutput) ;\n"
+             "  #ifdef SIOUX_IS_IMPLEMENTED\n"
+             "    SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
+             "                                                                      ASK_TO_SAVE_ON_CLOSE,\n"
+             "                                                                      false) ;\n"
+             "  #endif\n"
              "  try{\n"
              "    " << inProgramComponentName << currentGrammar->mGrammarPostfix
           << " * compiler = NULL ;\n"
