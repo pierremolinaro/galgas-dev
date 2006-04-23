@@ -407,8 +407,8 @@ void cPtr_C_listTypeToImplement
   inCppFile.writeCHyphenLineComment () ;
 
 //--- Engendrer la methode insulateList
-  inCppFile << "void GGS_" << aNomListe << "\n"
-               "::insulateList (void) {\n"
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "insulateList (void) {\n"
                "  if (mCountReference != NULL) {\n"
                "    macroValidPointer (mCountReference) ;\n"
                "    if ((*mCountReference) > 1) {\n"
@@ -453,7 +453,7 @@ void cPtr_C_listTypeToImplement
                "  C_String s ;\n"
                "  s << \"<list @" << aNomListe << "\" ;\n"
                "  if (isBuilt ()) {\n"
-               "    s << mListLength << \" object\" << ((mListLength > 1) ? \"s \" : \" \") ;\n"
+               "    s << \" \" << mListLength << \" object\" << ((mListLength > 1) ? \"s \" : \" \") ;\n"
                "    element_type * p = mFirstItem ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"

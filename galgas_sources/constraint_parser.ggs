@@ -20,7 +20,7 @@ syntax constraint_parser :
 
 import lexique galgas_scanner in "galgas_scanner.ggs" ;
 
-import semantics common_semantics in "common_semantics.ggs" ;
+import semantics semantics_semantics in "semantics_semantics.ggs" ;
 
 #-------------------------------------------------------------------*
 
@@ -108,6 +108,20 @@ rule <constraint_relation_primary>
   ?!@indexMap ioIndexMap
   !@metamodelRelationExpression outExpression
 label parse 
+;
+
+rule <semantic_instructions_list>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionsList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
+label parse
 ;
 
 #-------------------------------------------------------------------*
@@ -245,7 +259,7 @@ rule <parse_constraint_document>
   if not constraintOnRootEntity then
     error here:"no constraint is defined on metamodel root entity" ;
   end if ;
-#--- Check constraint on root entity defines all passes
+#--- Check constraint on root entity
   if constraintOnRootEntity then
     @constrainedEntityPassMap constrainedEntityPassMapForRootEntity ;
     @location endOfConstraintLocation ;
@@ -256,19 +270,81 @@ rule <parse_constraint_document>
       ?*
       ?*
       ?*
-      ?*
-      ?*
-      ?*
-      ?*
-      ?*
-      ?*
-      ?*
       ?endOfConstraintLocation
+      ?*
+      ?*
     ] ;
+  #--- Check root entity constraint defines all passes
     if [constrainedEntityPassMapForRootEntity count] != [passMap count] then
       error endOfConstraintLocation: "the root entity constraint should define all passes" ;
     end if ;
+  #--- Check root entity constraint passes have no shared property
+    foreach constrainedEntityPassMapForRootEntity (??@lstring kPassName ??* ??@sharedPropertyList kSharedPropertyList ...) :
+      if [kSharedPropertyList length] != 0 then
+        error kPassName:"a pass of the root entity constraint should not define any shared prperty" ;
+      end if ;
+    end foreach ;
   end if ;
+#--- Check all constraints
+  foreach constrainedEntityMap (??@lstring kEntityName ??* ??@constrainedEntityPassMap kConstrainedEntityPassMap ??* ??@entityPropertyMap kEntityPropertiesMap ...) :
+    @stringset definedPassSet := [kConstrainedEntityPassMap allKeys] ;
+    foreach kEntityPropertiesMap (??@lstring kPropertyName ??@metamodelPropertyKind kKind  ??@lstring kPropertyEntityName) :
+      if kKind != [@metamodelPropertyKind attributeProperty] then
+        @constrainedEntityPassMap referencePropertyConstrainedEntityPassMap ;
+        [!?constrainedEntityMap searchKey !kPropertyEntityName ?* ?referencePropertyConstrainedEntityPassMap ?* ?* ?* ?* ?* ?*] ;
+        foreach referencePropertyConstrainedEntityPassMap (??@lstring kReferencePropertyPassName ??* ??* ??* ??*) :
+          if not [kConstrainedEntityPassMap hasKey ![kReferencePropertyPassName value]] then
+            error kEntityName:"this constraint should define the '" . [kReferencePropertyPassName value]
+            . "' pass (due to '" . [kPropertyName value] . "' reference)" ;
+          end if ;
+        end foreach ;
+        @stringset referencePassSet := [referencePropertyConstrainedEntityPassMap allKeys] ;
+#message "---------------\n" ;
+#message [kPropertyName description] ;
+#message [referencePassSet description] ;
+        foreach kConstrainedEntityPassMap (??@lstring kPassName
+                                           ??*
+                                           ??*
+                                           ??@stringset kDefinedAttributeSet
+                                           ??@callInstructionSharedPropertySignatureMap kCallInstructionSharedPropertySignatureMap) :
+        #--- Check if shared property is correctly initialized
+          if [kDefinedAttributeSet hasKey ![kPropertyName value]] & not [referencePassSet hasKey ![kPassName value]] then
+            error kPassName:"this pass should not define the '" . [kPropertyName value] . "' property" ;
+          elsif (not [kDefinedAttributeSet hasKey ![kPropertyName value]]) & [referencePassSet hasKey ![kPassName value]] then
+            error kPassName:"this pass should define the '" . [kPropertyName value] . "' property" ;
+          end if ;
+        #--- check if shared properties in call instructions are correctly passed as parameters
+          if [kCallInstructionSharedPropertySignatureMap hasKey ![kPropertyName value]] then
+            @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap := kCallInstructionSharedPropertySignatureMap ;
+            @sharedPropertyList signature ;
+            @location signatureLocation ;
+            [!?callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?signature ?signatureLocation] ;
+            @sharedPropertyList sharedPropertyList ;
+            [!?referencePropertyConstrainedEntityPassMap searchKey !kPassName ?* ?sharedPropertyList ?* ?*] ;
+            if [sharedPropertyList length] == [signature length] then
+              foreach sharedPropertyList (??@lstring kTypeName ??@lstring kParameterName),
+                      signature (??@lstring kSignatureTypeName ??@lstring kSignatureParameterName) :
+                if [kTypeName value] != [kSignatureTypeName value] then
+                  error kSignatureParameterName:"the type of the parameter is '@" . [kSignatureTypeName value] . "', while a '@"
+                  . [kTypeName value] . "' type is expected" ;
+                end if ;
+              end foreach ;
+            else
+              error signatureLocation:" this instruction names " . [[signature length] string]
+              . " shared property(ies) as parameters, while the constraint definition requires "
+              . [[sharedPropertyList length] string] ;
+            end if ;
+#message "1---------------\n" ;
+#message [kPassName description] ;
+#message "2---------------\n" ;
+#message [signature description] ;
+#message "3---------------\n" ;
+#message [sharedPropertyList description] ;
+          end if ;
+        end foreach ;
+      end if ;
+    end foreach ;
+  end foreach ;
 #--- Generate C++ code
   action generate_constraints
       !?passMap
@@ -332,7 +408,7 @@ rule <constraints_on_entity_declaration>
   ?!@passMap ioPassMap
 :
 #--- Entity Name
-  $constraint$ ;
+  $on$ ;
   @lstring entityName ;
   $type_name$ ? entityName ;
 #--- Get entity properties
@@ -348,201 +424,134 @@ rule <constraints_on_entity_declaration>
    ] ;
   @stringset descendantEntitySet [empty] ;
   computeDescendantSet !?ioEntityMap !entityName !?descendantEntitySet ;
-#--- Context properties
-  @contextPropertyMap contextPropertyMap [empty] ;
-  select
-  or
-    $($ ;
-    repeat
-      @lstring entityName ;
-      $type_name$ ? entityName ;
-      @bool isMap ;
-      if [ioMapEntityMap hasKey![entityName value]] then
-        isMap := true ;
-      elsif [ioEntityMap hasKey![entityName value]] then
-        isMap := false ;
-      else
-        error entityName : "this type is not defined" -> isMap ;
-      end if ;
-      @lstring contextPropertyName ;
-      $identifier$ ?contextPropertyName ;
-      [!?contextPropertyMap insertKey !contextPropertyName !entityName !isMap] ;
-    while
-      $,$ ;
-    end repeat ;
-    $)$ ;
-  end select ;
 #--- Get inherited properties from super class constraints
-  @relationMap allRelationMap [empty] ;
+  @mapAsConstraintPropertyMap  allMapsAsConstraintPropertyMap [empty] ;
+  @constrainedEntityPassMap inheritedConstrainedEntityPassMap [empty] ;
   @stringset passesDefinedByInheritanceTreeRootEntity [empty] ;
   if [superEntity value] != "" then
     if [ioConstrainedEntityMap hasKey ![superEntity value]] then
       [!?ioConstrainedEntityMap searchKey
         !superEntity
         ?passesDefinedByInheritanceTreeRootEntity
-        ?*
-        ?allRelationMap
-        ?*
-        ?*
-        ?contextPropertyMap
+        ?inheritedConstrainedEntityPassMap
         ?*
         ?*
         ?*
         ?*
         ?*
-        ?*
-        ?*
+        ?allMapsAsConstraintPropertyMap
       ] ;
     else
-      error entityName:"constraints for super entity ('@" . [superEntity value] . "') should be previously defined" ;
+      error entityName:
+        "constraints for super entity ('@" . [superEntity value] . "') should be previously defined" ;
     end if ;
   end if ;
-#--- Property declarations
-  @relationMap relationToImplementMap [empty] ;
-  @indexMap indexMap [empty] ;
-  @fetchedPropertyMap fetchedPropertyMap [empty] ;
-  @insertionList insertionList [empty] ;
-  @mapPropertyMap mapPropertyMap [empty] ;
-  @contextParameterMap contextParameterMap [empty] ;
-  ${$ ;
-  repeat
-  while
-    $insert$ ;
-    @lstring attributeName ;
-    $identifier$ ? attributeName ;
-    $in$ ;
-    @lstring mapPropertyName ;
-    $identifier$ ? mapPropertyName ;
-    @lstring indexName ;
-    select
-      indexName := [@lstring new !"" !here] ;
-    or
-      $<$ ;
-      $identifier$ ? indexName ;
-      [!?indexMap insertKey !indexName !mapPropertyName] ;
-      $>$ ;
-    end select ;
-    insertionList += !attributeName !mapPropertyName !indexName ;
-    $;$ ;
-  while
-    $context$ ;
-    @lstring referencePropertyName ;
-    $identifier$ ? referencePropertyName ;
-    $:$ ;
-    @L_lstringList contextParameterList [empty] ;
-    repeat
-      @lstring contextPropertyName ;
-      $identifier$ ? contextPropertyName ;
-      contextParameterList += !contextPropertyName ;
-    while
-      $,$ ;
-    end repeat ;
-    [!?contextParameterMap insertKey !referencePropertyName !contextParameterList] ;
-    $;$ ;
-  while
-    @lstring propertyTypeName ;
-    $type_name$ ? propertyTypeName ;
-    @lstring attributeName ;
-    $identifier$ ? attributeName ;
-    select
-    #--- Map
-      [!?ioMapEntityMap searchKey !propertyTypeName ?* ?* ?*] ;
-      [!?mapPropertyMap insertKey !attributeName !propertyTypeName] ;
-    or
-    #--- fetched property
-      $search$ ;
-      @lstring fetchedAttributeName ;
-      $identifier$ ? fetchedAttributeName ;
-      $in$ ;
-      @lstring mapPropertyName ;
-      $identifier$ ? mapPropertyName ;
-      @lstring indexName ;
-      select
-         indexName := [@lstring new !"" !here] ;
-      or
-        $<$ ;
-        $identifier$ ? indexName ;
-        [!?indexMap insertKey !indexName !mapPropertyName] ;
-        $>$ ;
-      end select ;
-      [!?fetchedPropertyMap insertKey
-        !attributeName
-        !propertyTypeName
-        !fetchedAttributeName
-        !mapPropertyName
-        !indexName
-      ] ;
-    end select ;
-    $;$ ;
-  while
-    $relation$ ;
-    @lstring relationIdentifier ;
-    $identifier$ ? relationIdentifier ;
-    $[$ ;
-    @relationVarMap relationVarMap [empty] ;
-    repeat
-      @lstring localVar ;
-      $identifier$ ? localVar ;
-      $:$ ;
-      @lstring domainVariable ;
-      $identifier$ ? domainVariable ;
-      [!?relationVarMap insertKey !localVar !domainVariable] ;
-    while
-      $,$ ;
-    end repeat ;
-    $]$ ;
-    $:=$ ;
-    @metamodelRelationExpression e ;
-    <constraint_relation_expression> !?relationVarMap !?indexMap ?e ;
-    $;$ ;
-    [!?allRelationMap insertKey !relationIdentifier !relationVarMap!e] ;
-    [!?relationToImplementMap insertKey !relationIdentifier !relationVarMap!e] ;
-  while
-    $override$ ;
-    $relation$ ;
-    @lstring relationIdentifier ;
-    $identifier$ ? relationIdentifier ;
-    @relationVarMap relationVarMap ;
-    [!? allRelationMap searchKey !relationIdentifier ?relationVarMap ?*] ;
-    $:=$ ;
-    @metamodelRelationExpression e ;
-    <constraint_relation_expression> !?relationVarMap  !?indexMap ?e ;
-    $;$ ;
-    [!?relationToImplementMap insertKey !relationIdentifier !relationVarMap!e] ;
-  end repeat ;
 #--- Passes
+  @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [empty] ;
+  ${$ ;
   @constrainedEntityPassMap constrainedEntityPassMap [empty] ;
   @uint currentIndex := 0 ;
   repeat
   while
-    $on$ ;
     @lstring passName ;
     $identifier$ ? passName ;
     @luint index ;
     [!?ioPassMap searchKeyAndGetIndex !passName ?index] ;
-    [!?constrainedEntityPassMap insertKey !passName] ;
     if [index value] < currentIndex then
       error passName:"the pass order is incorrect" ;
     end if ;
     currentIndex := [index value] ;
+    @sharedPropertyList sharedPropertyList [empty] ;
+  #--- Properties from owner
+    select
+      if [superEntity value] != "" then
+        [!?inheritedConstrainedEntityPassMap searchKey !passName ?* ?sharedPropertyList ?* ?*] ;
+      end if ;
+    or
+      $($ ;
+      if [superEntity value] != "" then
+        error here: "as the '@" . [entityName value]
+        . "' entity has a super entity, you cannot define any shared property" ;
+      end if ;
+      repeat
+        @lstring typeName ;
+        $type_name$ ? typeName ;
+        @lstring propertyName ;
+        $identifier$ ? propertyName ;
+        if [ioMapEntityMap hasKey ![typeName value]] then 
+          @lstring elementTypeName ;
+          [!?ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
+          [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !true] ;
+          [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !true] ;
+          sharedPropertyList += !typeName !propertyName ;
+        else
+          error typeName:"unhandled type name" ;
+        end if ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
   #--- Properties
     ${$ ;
+    repeat
+    while
+      @lstring typeName ;
+      $type_name$ ? typeName ;
+      @lstring propertyName ;
+      $identifier$ ? propertyName ;
+      if [ioMapEntityMap hasKey ![typeName value]] then 
+        @lstring elementTypeName ;
+        [!?ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
+        [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !false] ;
+        [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !false] ;
+      else
+        error typeName:"unhandled type name" ;
+      end if ;
+      $;$ ;
+    end repeat ;
     $}$ ;
   #--- Instructions
     ${$ ;
+    @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [empty] ;
+    @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+    @M_optionComponents optionsComponentsMapForUse [empty] ;
+    @typeVariablesMap variablesMap [empty] ;
+    @typeInstructionList instructionsList [empty] ;
+    @stringset constraintPropertyDefinitionSet [empty] ;
+    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [empty] ;
+    <semantic_instructions_list>
+      !?componentSemanticsEntitiesMap
+      !?listeEntitesAengendrer
+      !?optionsComponentsMapForUse
+      !?variablesMap
+      !?instructionsList
+      ![passName value]
+      !?propertyMap
+      !?mapAsConstraintPropertyMap
+      !?constraintPropertyDefinitionSet
+      !?callInstructionSharedPropertySignatureMap
+    ;
     $}$ ;
+    [!?constrainedEntityPassMap insertKey
+      !passName
+      !instructionsList 
+      !sharedPropertyList
+      !constraintPropertyDefinitionSet
+      !callInstructionSharedPropertySignatureMap
+    ] ;
   end repeat ;
   $}$ ;
 #--- If the entity has no super entity, define the set of defined passes
   if [superEntity value] == "" then
-    foreach constrainedEntityPassMap (??@lstring kPassName) :
+    foreach constrainedEntityPassMap (??@lstring kPassName ??* ??* ??* ??*) :
       passesDefinedByInheritanceTreeRootEntity += ![kPassName value] ;
     end foreach ;
   end if ;
 #--- If the entity has super entity, check that only passes defined by
 #    inheritance tree root entity are defined
   if [superEntity value] != "" then
-    foreach constrainedEntityPassMap (??@lstring kPassName) :
+    foreach constrainedEntityPassMap (??@lstring kPassName ??* ??* ??* ??*) :
       if not [passesDefinedByInheritanceTreeRootEntity hasKey ![kPassName value]] then
        error here: "pass '" . [kPassName value]
        . "' cannot be defined because it is not defined by the constraint on '@"
@@ -555,17 +564,12 @@ rule <constraints_on_entity_declaration>
     !entityName
     !passesDefinedByInheritanceTreeRootEntity
     !constrainedEntityPassMap
-    !allRelationMap
     !superEntity
     !propertyMap
-    !contextPropertyMap
-    !mapPropertyMap
-    !contextParameterMap
-    !insertionList
-    !indexMap
-    !fetchedPropertyMap
     !descendantEntitySet
     !here
+    !mapAsConstraintPropertyMap
+    !allMapsAsConstraintPropertyMap
   ] ;
 end rule ;
 

@@ -244,7 +244,7 @@ bool cPtr_typeFalseBool
 
 void cPtr_typeHereExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_location (lexique_var_)" ;
+  ioCppFile << "GGS_location (_inLexique)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -775,7 +775,7 @@ bool cPtr_typeTextTableCall
 //---------------------------------------------------------------------------*
 
 void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_bool (true, lexique_var_.boolOptionValueFromKeys (" ;
+  ioCppFile << "GGS_bool (true, _inLexique.boolOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
@@ -806,7 +806,7 @@ bool cPtr_typeBoolOption
 //---------------------------------------------------------------------------*
 
 void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_uint (true, lexique_var_.uintOptionValueFromKeys (" ;
+  ioCppFile << "GGS_uint (true, _inLexique.uintOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
@@ -830,7 +830,7 @@ bool cPtr_typeUIntOption
 //---------------------------------------------------------------------------*
 
 void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_string (true, lexique_var_.stringOptionValueFromKeys (" ;
+  ioCppFile << "GGS_string (true, _inLexique.stringOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
@@ -880,7 +880,7 @@ void cPtr_C_if_instruction
       ioCppFile << "if ((" ;
       currentBranch->mIFexpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << ").isBuiltAndTrue ()) {\n" ;
-      generateInstructionListForList (currentBranch->mInstructionsList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+      generateInstructionListForList (currentBranch->mInstructionList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, true) ;
       currentBranch = currentBranch->nextObject () ;
     }
@@ -902,7 +902,7 @@ bool cPtr_C_if_instruction
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
     used = currentBranch->mIFexpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
-       || isLexiqueFormalArgumentUsedForList (currentBranch->mInstructionsList, inGenerateSemanticInstructions) ;
+       || isLexiqueFormalArgumentUsedForList (currentBranch->mInstructionList, inGenerateSemanticInstructions) ;
     currentBranch = currentBranch->nextObject () ;
   }
   return used ;
@@ -918,7 +918,7 @@ bool cPtr_C_if_instruction
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
     used = currentBranch->mIFexpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
-      || formalArgumentIsUsedForList (currentBranch->mInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
+      || formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch = currentBranch->nextObject () ;
   }
   return used ;

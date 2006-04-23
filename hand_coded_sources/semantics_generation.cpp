@@ -241,14 +241,14 @@ void cPtr_typeRoutineAengendrer
                                   const bool inGenerateDebug) const {
   inCppFile.writeCTitleComment (C_String ("Implementation of routine \"") + aNomRoutine + '"') ;
   inCppFile << "void routine_" << aNomRoutine << " (C_Lexique &" ;
-  if (isLexiqueFormalArgumentUsedForList (mInstructionsList, true)) {
-    inCppFile << " lexique_var_" ;
+  if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
+    inCppFile << " _inLexique" ;
   }
   GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
   while (currentArgument != NULL) {
     inCppFile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
-    const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionsList, currentArgument->mCppName, true) ;
+    const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument->mCppName, true) ;
     inCppFile << ' ' ;
     if (! variableUtilisee) {
       inCppFile << "/* " ;
@@ -261,7 +261,7 @@ void cPtr_typeRoutineAengendrer
   }
   inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n" ;
 //--- Engendrer la liste d'instructions
-  generateInstructionListForList (mInstructionsList, inCppFile,
+  generateInstructionListForList (mInstructionList, inCppFile,
                                   inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, true) ;
 //--- Fin de la fonction

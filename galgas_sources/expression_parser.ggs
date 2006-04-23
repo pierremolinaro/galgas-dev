@@ -229,12 +229,13 @@ routine comparison_types_check
   ??@AC_galgasType inRightExpressionType
 :
   match inLeftExpressionType :: inRightExpressionType :
-  when @typeGalgas_bool () :: @typeGalgas_bool () :
-  when @typeGalgas_char () :: @typeGalgas_char () :
-  when @typeGalgas_uint () :: @typeGalgas_uint () :
-  when @typeGalgas_sint () :: @typeGalgas_sint () :
-  when @typeGalgas_double () :: @typeGalgas_double () :
-  when @typeGalgas_string () :: @typeGalgas_string () :
+  when @typeGalgas_stringset () :: @typeGalgas_stringset () :
+  when @typeGalgas_bool ()      :: @typeGalgas_bool () :
+  when @typeGalgas_char ()      :: @typeGalgas_char () :
+  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+  when @typeGalgas_sint ()      :: @typeGalgas_sint () :
+  when @typeGalgas_double ()    :: @typeGalgas_double () :
+  when @typeGalgas_string ()    :: @typeGalgas_string () :
   when @typeGalgas_enum (??@lstring inTypeName1 ??* ??*) :: @typeGalgas_enum (??@lstring inTypeName2 ??* ??*) :
     if [inTypeName1 value] != [inTypeName2 value] then
       error here : "comparison between a '@" . [inTypeName1 value] .

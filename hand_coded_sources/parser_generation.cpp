@@ -176,7 +176,7 @@ void cPtr_typeProductionAengendrer
             << '_' << aNomProduction.currentLineNumber ()
             << '_' << aNomProduction.currentColumnNumber ()
             << "_parse ("
-            << inLexiqueClassName << " & lexique_var_) ;\n\n" ;
+            << inLexiqueClassName << " & _inLexique) ;\n\n" ;
   }
 }
 
@@ -221,7 +221,7 @@ void cPtr_typeProductionAengendrer
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
     }
-    inCppFile << "lexique_var_" ;
+    inCppFile << "_inLexique" ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << " */" ;
     }
@@ -243,7 +243,7 @@ void cPtr_typeProductionAengendrer
   //--- Engendrer la liste d'instructions
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-                   "    lexique_var_.enterProduction (\"<" << aNomProduction << ">\", " ;
+                   "    _inLexique.enterProduction (\"<" << aNomProduction << ">\", " ;
       if (currentAltForNonTerminal->mKey.length () == 0) {
         inCppFile << "NULL, " ;
       }else{
@@ -258,7 +258,7 @@ void cPtr_typeProductionAengendrer
                                     inGenerateDebug, true) ;
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-                   "    lexique_var_.exitProduction () ;\n"
+                   "    _inLexique.exitProduction () ;\n"
                    "  #endif\n";
     }
   //--- Build returned entity instance
@@ -335,7 +335,7 @@ void cPtr_typeProductionAengendrer
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
     }
-    inCppFile << "lexique_var_" ;
+    inCppFile << "_inLexique" ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << " */" ;
     }
@@ -343,7 +343,7 @@ void cPtr_typeProductionAengendrer
   //--- Engendrer la liste d'instructions
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-                   "    lexique_var_.enterProduction (\"<" << aNomProduction << ">\", " ;
+                   "    _inLexique.enterProduction (\"<" << aNomProduction << ">\", " ;
       if (firstLabelDef->mKey.length () == 0) {
         inCppFile << "NULL, " ;
       }else{
@@ -358,7 +358,7 @@ void cPtr_typeProductionAengendrer
                                     inGenerateDebug, false) ;
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-                   "    lexique_var_.exitProduction () ;\n"
+                   "    _inLexique.exitProduction () ;\n"
                    "  #endif\n";
     }
   //--- Fin de la fonction

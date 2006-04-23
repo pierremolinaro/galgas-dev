@@ -75,7 +75,7 @@ engendrerAppelProduction (const sint16 nombreDeParametres,
              << '_'
              << mSourceFileName << '_' << aLigneDefinition
              << '_' << aColonneDefinition << '_' << inAltName
-             << " (lexique_var_" ;
+             << " (_inLexique" ;
   for (sint16 i=1 ; i<nombreDeParametres ; i++) {
     fichierCPP << ',' ;
     if ((i % 5) == 4) {
@@ -294,7 +294,7 @@ fixInfos (cInfo & inInfo,
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    fixInfoForInstructionsList (currentBranch->mInstructionsList,
+    fixInfoForInstructionsList (currentBranch->mInstructionList,
                                 inInfo,
                                 inLexique) ;
     currentBranch = currentBranch->nextObject () ;
@@ -309,7 +309,7 @@ fixInfos (cInfo & inInfo,
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    fixInfoForInstructionsList (currentBranch->mInstructionsList,
+    fixInfoForInstructionsList (currentBranch->mInstructionList,
                                 inInfo,
                                 inLexique) ;
     currentBranch = currentBranch->nextObject () ;
@@ -482,7 +482,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                                                 index, unused COMMA_HERE) ;
       currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
     //--- Fix, for each rule, left nonterminal symbol index
-      fixInfoForInstructionsList (currentRule->mInstructionsList,
+      fixInfoForInstructionsList (currentRule->mInstructionList,
                                   symbolsInfo,
                                   inLexique) ;
     //--- Next rule

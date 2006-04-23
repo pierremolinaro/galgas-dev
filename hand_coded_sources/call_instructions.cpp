@@ -44,7 +44,7 @@ void cPtr_typeReaderCallInstruction
       aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE)->" ;
     }  
-    ioCppFile << "methode_" << aNomMethodeSimple << " (lexique_var_"  ;
+    ioCppFile << "methode_" << aNomMethodeSimple << " (_inLexique"  ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -100,7 +100,7 @@ void cPtr_typeModifierCallInstruction
 
   if (inGenerateSemanticInstructions) {
     aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".methode_" << aNomMethodeSimple << " (lexique_var_"  ;
+    ioCppFile << ".methode_" << aNomMethodeSimple << " (_inLexique"  ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -154,7 +154,7 @@ void cPtr_typeInstructionAppelMethodeListe
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aNomCppAttribut (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".methode_" << aMethodeDeListe << " (lexique_var_" ;
+    ioCppFile << ".methode_" << aMethodeDeListe << " (_inLexique" ;
     GGS_typeCplusPlusNameList::element_type * current = aListeNomsCppArguments.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -206,9 +206,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "{ " << inLexiqueClassName << " * scanner_ = NULL ;\n"
-                 "  macroMyNew (scanner_, " << inLexiqueClassName << " (lexique_var_.galgas_IO_Ptr () COMMA_HERE)) ;\n"
+                 "  macroMyNew (scanner_, " << inLexiqueClassName << " (_inLexique.galgas_IO_Ptr () COMMA_HERE)) ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
-                 "  const C_String sourceFileName = lexique_var_.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
+                 "  const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ") ;\n"
                  "  try{\n"
@@ -226,7 +226,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "  }catch (const C_TextReadException & inFileReadError) {\n"
                  "    " ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".signalSemanticError (lexique_var_, inFileReadError.what () SOURCE_FILE_AT_LINE ("
+    ioCppFile << ".signalSemanticError (_inLexique, inFileReadError.what () SOURCE_FILE_AT_LINE ("
               << mGrammarName.currentLineNumber ()
               << ")) ;\n"
                  "  }\n"
@@ -295,7 +295,7 @@ void cPtr_typeInstructionAppelActionExterne
     if (nombreArgumentsTestes > 0) {
       ioCppFile << ") {\n  " ;
     }
-    ioCppFile << "::routine_" << aNomAction << " (lexique_var_" ;
+    ioCppFile << "::routine_" << aNomAction << " (_inLexique" ;
     argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -351,7 +351,7 @@ void cPtr_typeRoutineCallInstruction
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "::routine_" << aNomRoutine << " (lexique_var_" ;
+    ioCppFile << "::routine_" << aNomRoutine << " (_inLexique" ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -385,6 +385,74 @@ bool cPtr_typeRoutineCallInstruction
     argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_callInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & inTargetFileName,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    GGS_L_lstringList::element_type * currentParameter = mParameterList.firstObject () ;
+    switch (mPropertyKind.enumValue ()) {
+    case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
+      ioCppFile << "macroValidPointer (_constraintFor_" << mCalledPropertyName << ") ;\n"
+                   "_constraintFor_" << mCalledPropertyName << "->_phase_" << mCurrentPassName
+                << " (_inLexique, " ;
+      while (currentParameter != NULL) {
+        macroValidPointer (currentParameter) ;
+        ioCppFile << currentParameter->mString << ", " ;
+        currentParameter = currentParameter->nextObject () ;
+      }
+      ioCppFile << "_ioOk) ;\n" ;
+      break ;
+    case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+      ioCppFile << "{ GGS__" << inTargetFileName << "_ConstraintOn_" << mPropertyTypeName
+                << " * _ptr = _constraintFor_" << mCalledPropertyName << ".mFirstObject ;\n"
+                << "  while (_ptr != NULL) {\n"
+                   "    macroValidPointer (_ptr) ;\n"
+                   "    _ptr->_phase_" << mCurrentPassName
+                << " (_inLexique, " ;
+      while (currentParameter != NULL) {
+        macroValidPointer (currentParameter) ;
+        ioCppFile << currentParameter->mString << ", " ;
+        currentParameter = currentParameter->nextObject () ;
+      }
+      ioCppFile << "_ioOk) ;\n"
+                   "    _ptr = _ptr->_mNextObject ;\n"
+                   "  }\n"
+                   "}\n" ;
+      break ;
+    default:
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_callInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_callInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & /* inArgumentCppName */,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return false ;
 }
 
 //---------------------------------------------------------------------------*

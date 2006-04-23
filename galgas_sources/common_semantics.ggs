@@ -633,75 +633,9 @@ map @entityToImplementMap {
 
 #---------------------------------------------------------------------------*
 
-list @insertionList {
-  @lstring mInsertedAttributeName ;
-  @lstring mMapName ;
-  @lstring mIndexName ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @fetchedPropertyMap {
-  @lstring mTypeName ;
-  @lstring mAttributeName ;
-  @lstring mMapAttributeName ;
-  @lstring mIndexName ;
-  insert insertKey error message "the '%K' fetched property has been already declared in %L" ;
-  search searchKey error message "the '%K' fetched property is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @passMap {
-  insert insertKey error message "the '%K' pass name has been already declared in %L" ;
-  search searchKey, searchKeyAndGetIndex error message "the '%K' pass name is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @constrainedEntityPassMap {
-  insert insertKey error message "the '%K' pass name has been already declared in %L" ;
-  search searchKey error message "the '%K' pass name is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @constrainedEntityMap {
-  @stringset mPassesDefinedByInheritanceTreeRootEntity ;
-  @constrainedEntityPassMap mConstrainedEntityPassMap ;
-  @relationMap mAllRelationMap ;
-  @lstring mSuperEntityName ;
-  @entityPropertyMap mEntityPropertiesMap ;
-  @contextPropertyMap mContextPropertyMap ;
-  @mapPropertyMap mMapPropertyMap ;
-  @contextParameterMap mContextParameterMap ;
-  @insertionList mInsertionList ;
-  @indexMap mIndexMap ;
-  @fetchedPropertyMap mFetchedPropertyMap ;
-  @stringset mDescendantEntitySet ;
-  @location mEndOfConstraintLocation ;
-  insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
-  search searchKey error message "no constraint has beeb defined for the '@%K' entity" ;
-}
-
-#---------------------------------------------------------------------------*
-
 action generate_metamodel
  ?!@entityToImplementMap ioEntityMap
  ?@lstring inMetamodelComponentName
- ?@stringset inMultiReferencedEntities
- ?@lstring inRootEntityName
-;
-
-#---------------------------------------------------------------------------*
-
-action generate_constraints
- ?!@passMap ioPassMap
- ?!@entityToImplementMap ioEntityMap
- ?!@mapEntityMap ioMapEntityMap
- ?@lstring inMetamodelComponentName
- ?@lstring inConstraintComponentName
- ?!@constrainedEntityMap ioConstrainedEntityMap
  ?@stringset inMultiReferencedEntities
  ?@lstring inRootEntityName
 ;
@@ -1494,7 +1428,7 @@ map @M_nonterminalSymbolAltsForGrammar {
 list @L_productionRules_ForGrammarComponent {
   @lstring mLeftNonterminalSymbol ;
   @uint mLeftNonterminalSymbolIndex ;
-  @L_ruleSyntaxSignature mInstructionsList ;
+  @L_ruleSyntaxSignature mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1552,7 +1486,7 @@ class @T_nonterminalInstruction_forGrammarComponent extends @AC_instruction_ForG
 #---------------------------------------------------------------------------*
 
 list @L_branchList_ForGrammarComponent {
-  @L_ruleSyntaxSignature mInstructionsList ;
+  @L_ruleSyntaxSignature mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2357,9 +2291,6 @@ routine handleReaderCall
       elsif [inMethodName value] == "allKeys" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_stringset new] ;
-#      elsif [inMethodName value] == "unreadKeys" then
-#        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
-#        outReturnedType := [@typeGalgas_stringset new] ;
       else
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;

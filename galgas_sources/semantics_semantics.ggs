@@ -196,7 +196,7 @@ list @typeListeTypesEtNomsArgMethode {
   @AC_galgasType mType ;
   @formalArgumentPassingMode mFormalArgumentPassingMode ;
   @typeCplusPlusName mCppName ;
-  @bool aModeIn ;
+  @bool mModeIn ;
 }
 
 #---------------------------------------------------------------------------*
@@ -214,8 +214,8 @@ abstract class @typeInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @typeInstructionsList {
-  @typeInstruction aInstruction ;
+list @typeInstructionList {
+  @typeInstruction mInstruction ;
 }
 
 #---------------------------------------------------------------------------*
@@ -241,7 +241,7 @@ map @typeTableMethodesAimplementer
   insert insertNotAbstract error message "the method '%' is already declared" ;
   @L_EXsignature aListeTypesParametres ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
-  @typeInstructionsList mInstructionsList ;
+  @typeInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -571,14 +571,14 @@ class @C_declarationInstructionWithAssignment extends @typeInstruction {
 
 list @L_expression_instructionsList_list {
   @typeExpression mIFexpression ;
-  @typeInstructionsList mInstructionsList ;
+  @typeInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @C_if_instruction extends @typeInstruction {
   @L_expression_instructionsList_list mIFbranchesList ;
-  @typeInstructionsList mElseInstructionsList ;
+  @typeInstructionList mElseInstructionsList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -762,7 +762,7 @@ routine verifierCompatibiliteArgEffectifsSignature
   ?@L_EXsignature signatureReference
   ?@L_actualParametersSignature inEffectiveArgumentsSignature
   ??@location inErrorLocation
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionsList
   ?!@typeExpressionList ioExpressionList
 :
   if [signatureReference length] > [inEffectiveArgumentsSignature length] then
@@ -924,7 +924,7 @@ class @typeInstructionAppelActionExterne extends @typeInstruction {
 list @L_matchInstructionCasesList {
   @lstring mCase1_name ;
   @lstring mCase2_name ;
-  @typeInstructionsList mInstructionsList ;
+  @typeInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -943,7 +943,7 @@ class @typeMatchInstruction extends @typeInstruction {
   @bool mOperand1_isEnumeration ;
   @bool mOperand2_isEnumeration ;
   @L_matchInstructionCasesList aListeCas ;
-  @typeInstructionsList mElseInstructionsList ;
+  @typeInstructionList mElseInstructionsList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -966,7 +966,7 @@ list @foreachEnumerationList  {
 class @typeForeachInstruction extends @typeInstruction {
   @foreachEnumerationList mForeachEnumerationList ;
   @typeExpression mWhileExpression ;
-  @typeInstructionsList mInstructionsList ;
+  @typeInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -992,7 +992,7 @@ class @typeSimpleExtractInstruction extends @typeInstruction {
 list @typeStructuredExtractCasesList {
   @lstring mClassName ;
   @location mResultVarID ;
-  @typeInstructionsList mInstructionsList ;
+  @typeInstructionList mInstructionList ;
   @bool mNoUsedParameter ;
 }
 
@@ -1001,7 +1001,7 @@ list @typeStructuredExtractCasesList {
 class @typeStructuredExtractInstructionWithElse extends @typeInstruction {
   @typeCplusPlusName mVariableName ;
   @typeStructuredExtractCasesList mCasesList ;
-  @typeInstructionsList mElseInstructionList ;
+  @typeInstructionList mElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1057,7 +1057,7 @@ class @typeExternTypeToGenerate extends @typeEntityToGenerate {
 class @typeRoutineAengendrer extends @typeEntityToGenerate {
   @lstring aNomRoutine ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
-  @typeInstructionsList mInstructionsList ;
+  @typeInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1294,6 +1294,122 @@ action generateSemanticsComponent
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@stringset includesForImplementationFile
 ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O N S T R A I N T     C O M P O N E N T                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @mapAsConstraintPropertyMap {
+  @lstring mMapTypeName ;
+  @lstring mElementTypeName ;
+  @uint mPassIndex ;
+  @string mPassName ;
+  @bool mIsShared ;
+  insert insertKey error message "the '%K' map property has been already declared in %L" ;
+  search searchKey error message "the '%K' map property is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @passMap {
+  insert insertKey error message "the '%K' pass name has been already declared in %L" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' pass name is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @sharedPropertyList {
+  @lstring mSharedPropertyTypeName ;
+  @lstring mSharedPropertyName ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @callInstructionSharedPropertySignatureMap {
+  @sharedPropertyList mSignature ;
+  @location mSignatureLocation ;
+  insert insertKey error message "internal error: the '%K' property has been already declared in %L" ;
+  search searchKey error message "internal error: the '%K' property is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @constrainedEntityPassMap {
+  @typeInstructionList mInstructionList ;
+  @sharedPropertyList mSharedPropertyList ;
+  @stringset mConstraintPropertyDefinitionSet ;
+  @callInstructionSharedPropertySignatureMap mCallInstructionSharedPropertySignatureMap ;
+  insert insertKey error message "the '%K' pass name has been already declared in %L" ;
+  search searchKey error message "the '%K' pass name is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @constrainedEntityMap {
+  @stringset mPassesDefinedByInheritanceTreeRootEntity ;
+  @constrainedEntityPassMap mConstrainedEntityPassMap ;
+  @lstring mSuperEntityName ;
+  @entityPropertyMap mEntityPropertiesMap ;
+  @stringset mDescendantEntitySet ;
+  @location mEndOfConstraintLocation ;
+  @mapAsConstraintPropertyMap mMapAsConstraintPropertyCurrentMap ;
+  @mapAsConstraintPropertyMap  mAllMapsAsConstraintPropertyMap ;
+  insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
+  search searchKey error message "no constraint has been defined for the '@%K' entity" ;
+}
+
+#---------------------------------------------------------------------------*
+
+action generate_constraints
+ ?!@passMap ioPassMap
+ ?!@entityToImplementMap ioEntityMap
+ ?!@mapEntityMap ioMapEntityMap
+ ?@lstring inMetamodelComponentName
+ ?@lstring inConstraintComponentName
+ ?!@constrainedEntityMap ioConstrainedEntityMap
+ ?@stringset inMultiReferencedEntities
+ ?@lstring inRootEntityName
+;
+
+#---------------------------------------------------------------------------*
+
+class @callInstruction extends @typeInstruction {
+  @string mCurrentPassName ;
+  @lstring mCalledPropertyName ;
+  @metamodelPropertyKind mPropertyKind ;
+  @lstring mPropertyTypeName ;
+  @L_lstringList mParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine displayConstraintDefinitionErrors
+  ?@stringset inFirstBranchconstraintDefinitionSet
+  ?@stringset inCurrentBranchconstraintDefinitionSet
+:
+  @stringset missingDefinition := inFirstBranchconstraintDefinitionSet - inCurrentBranchconstraintDefinitionSet ;
+  foreach missingDefinition (??@string kMissingDef) :
+   error here: "the '" . kMissingDef . "' property is initialized by first branch, but not by this one" ;
+  end foreach ;
+  @stringset unexpectedDefinition := inCurrentBranchconstraintDefinitionSet  - inFirstBranchconstraintDefinitionSet ;
+  foreach unexpectedDefinition (??@string kUnexpectedDef) :
+   error here: "the '" . kUnexpectedDef . "' property is not initialized by first branch, but by this one" ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine displayConstraintDefinitionErrorsNoElse
+  ?@stringset inFirstBranchConstraintDefinitionSet
+  ?@stringset inInheritedConstraintDefinitionSet
+:
+  @stringset missingDefinition := inFirstBranchConstraintDefinitionSet - inInheritedConstraintDefinitionSet ;
+  foreach missingDefinition (??@string kMissingDef) :
+   error here: "the '" . kMissingDef . "' property is initialized by first branch, but there is no else branch" ;
+  end foreach ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
