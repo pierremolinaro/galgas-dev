@@ -60,7 +60,7 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    fixNewNonterminalSymbolsForList (currentBranch->mInstructionsList,
+    fixNewNonterminalSymbolsForList (currentBranch->mInstructionList,
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
@@ -85,7 +85,7 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    fixNewNonterminalSymbolsForList (currentBranch->mInstructionsList,
+    fixNewNonterminalSymbolsForList (currentBranch->mInstructionList,
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
@@ -150,7 +150,7 @@ buildRightDerivation (const sint32 inTerminalSymbolsCount,
                       TC_UniqueArray <sint16> & ioInstructionsList) {
   GGS_L_branchList_ForGrammarComponent::element_type * firstBranch = mRepeatList.firstObject () ;
   macroValidPointer (firstBranch) ;
-  GGS_L_ruleSyntaxSignature::element_type * instruction = firstBranch->mInstructionsList.firstObject () ;
+  GGS_L_ruleSyntaxSignature::element_type * instruction = firstBranch->mInstructionList.firstObject () ;
   while (instruction != NULL) {
     instruction->mInstruction (HERE)->buildRightDerivation (inTerminalSymbolsCount, ioInstructionsList) ;
     instruction = instruction->nextObject () ;
@@ -184,7 +184,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     TC_UniqueArray <sint16> derivation ;
-    GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionsList.firstObject () ;
+    GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionList.firstObject () ;
     while (instruction != NULL) {
        instruction->mInstruction (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
        instruction = instruction->nextObject () ;
@@ -203,7 +203,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
   currentBranch = mSelectList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionsList.firstObject () ;
+    GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionList.firstObject () ;
     while (instruction != NULL) {
       instruction->mInstruction (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                                                      inSyntaxComponentName,
@@ -251,13 +251,13 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
     macroValidPointer (currentBranch) ;
     TC_UniqueArray <sint16> derivation ;
   //--- insert branch instructions
-    GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionsList.firstObject () ;
+    GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionList.firstObject () ;
     while (instruction != NULL) {
        instruction->mInstruction (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
        instruction = instruction->nextObject () ;
     }
   //--- insert sequence from X
-    instruction = firstBranch->mInstructionsList.firstObject () ;
+    instruction = firstBranch->mInstructionList.firstObject () ;
     while (instruction != NULL) {
       instruction->mInstruction (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
       instruction = instruction->nextObject () ;
@@ -278,7 +278,7 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
   currentBranch = mRepeatList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionsList.firstObject () ;
+    GGS_L_ruleSyntaxSignature::element_type * instruction = currentBranch->mInstructionList.firstObject () ;
     while (instruction != NULL) {
       macroValidPointer (instruction) ;
       instruction->mInstruction (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
@@ -327,7 +327,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
     sint32 count = 0 ;
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
-      fixNewNonterminalSymbolsForList (currentRule->mInstructionsList,
+      fixNewNonterminalSymbolsForList (currentRule->mInstructionList,
                                        ioVocabulary,
                                        currentComponent->mSyntaxComponentName,
                                        count) ;
@@ -345,7 +345,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
       TC_UniqueArray <sint16> derivation ;
-      GGS_L_ruleSyntaxSignature::element_type * instruction = currentRule->mInstructionsList.firstObject () ;
+      GGS_L_ruleSyntaxSignature::element_type * instruction = currentRule->mInstructionList.firstObject () ;
       while (instruction != NULL) {
         macroValidPointer (instruction) ;
         instruction->mInstruction (HERE)->buildRightDerivation (terminalSymbolsCount, derivation) ;
@@ -371,7 +371,7 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
     GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentComponent->mProductionRulesList.firstObject () ;
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
-      GGS_L_ruleSyntaxSignature::element_type * instruction = currentRule->mInstructionsList.firstObject () ;
+      GGS_L_ruleSyntaxSignature::element_type * instruction = currentRule->mInstructionList.firstObject () ;
       while (instruction != NULL) {
         macroValidPointer (instruction) ;
         instruction->mInstruction (HERE)->buildSelectAndRepeatProductions (terminalSymbolsCount,

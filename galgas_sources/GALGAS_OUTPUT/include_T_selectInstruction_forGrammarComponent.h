@@ -24,7 +24,7 @@ class cPtr_T_selectInstruction_forGrammarComponent : public cPtr_AC_instruction_
   private : typedef cPtr_AC_instruction_ForGrammar inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual bool isSameSyntaxInstructionThan (C_Lexique & lexique_var_,
+  public : virtual bool isSameSyntaxInstructionThan (C_Lexique & _inLexique,
                             cPtr_AC_instruction_ForGrammar * inInstruction,
                             const GGS_location & inEndOfInstructionListLocation) const ;
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) ;

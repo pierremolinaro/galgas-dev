@@ -419,7 +419,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_"
               << aNomTable << "::\n"
                  "methode_" << currentMethod->mMethodName
-              << " (C_Lexique & lexique_var_"
+              << " (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
@@ -435,7 +435,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       current = current->nextObject () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n"
-                 "  insertElement (lexique_var_,\n"
+                 "  insertElement (_inLexique,\n"
                  "                 " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ",\n"
@@ -755,7 +755,7 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::methode_"
               << currentMethod->mMethodName
-              << " (C_Lexique & lexique_var_"
+              << " (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 index = 0 ;
@@ -777,14 +777,14 @@ void cPtr_typeDefinitionTableAimplementer
       numeroVariable ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "  " << currentMethod->mMethodName << " (lexique_var_, info, inKey, inKey, " ;
+    inCppFile << "  " << currentMethod->mMethodName << " (_inLexique, info, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << " COMMA_THERE) ;\n"
               << "}\n\n" ;
     inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::methode_"
               << currentMethod->mMethodName
-              << "GetIndex (C_Lexique & lexique_var_"
+              << "GetIndex (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey"
                  ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -807,7 +807,7 @@ void cPtr_typeDefinitionTableAimplementer
       numeroVariable ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "  const sint32 index = " << currentMethod->mMethodName << " (lexique_var_, info, inKey, inKey, " ;
+    inCppFile << "  const sint32 index = " << currentMethod->mMethodName << " (_inLexique, info, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << " COMMA_THERE) ;\n"
               << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"

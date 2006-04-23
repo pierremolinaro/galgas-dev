@@ -16,15 +16,15 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+compile "semantics_semantics.ggs" ;
+compile "constraint_parser.ggs" ;
+compile "semantics_parser.ggs" ;
 compile "common_semantics.ggs" ;
 compile "metamodel_parser.ggs" ;
-compile "constraint_parser.ggs" ;
 compile "parser_parser.ggs" ;
 compile "galgas_scanner.ggs" ;
 compile "scanner_semantics.ggs" ;
-compile "semantics_semantics.ggs" ;
 compile "parser_semantics.ggs" ;
-compile "semantics_parser.ggs" ;
 compile "cocoa_parser.ggs" ;
 compile "galgas_cocoa.ggs" ;
 compile "cli_options_parser.ggs" ;

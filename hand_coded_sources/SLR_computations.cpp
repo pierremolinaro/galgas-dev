@@ -863,8 +863,8 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
       generatedZone3 << inTargetFileName
                      << "::\n"
                      << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
-                     << " (" << inLexiqueName << " & lexique_var_" ;
-      const sint32 pureBNFleftNonterminalIndex = nonTerminal->mIndex ;
+                     << " (" << inLexiqueName << " & _inLexique" ;
+      const sint32 pureBNFleftNonterminalIndex = (sint32) nonTerminal->mIndex ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
@@ -883,7 +883,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
         generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * _outReturnedModelInstance = NULL ;\n" ;      
       }
-      generatedZone3 << "  switch (lexique_var_.nextProductionIndex ()) {\n" ;
+      generatedZone3 << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
         const sint32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
@@ -900,7 +900,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
         }
       }
       generatedZone3 << "  default :\n"
-                        "    lexique_var_.internalBottomUpParserError (HERE) ;\n"
+                        "    _inLexique.internalBottomUpParserError (HERE) ;\n"
                         "  }\n" ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
         generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
@@ -922,7 +922,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
         }
         generatedZone3 << inTargetFileName
                        << "::startParsing_" << currentAltForNonTerminal->mKey
-                       << " (" << inLexiqueName << " & lexique_var_" ;
+                       << " (" << inLexiqueName << " & _inLexique" ;
         GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
@@ -939,15 +939,15 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
                          << " * _outReturnedModelInstance = NULL ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
-        generatedZone3 << "  const bool ok = lexique_var_"
+        generatedZone3 << "  const bool ok = _inLexique"
                    ".performBottomUpParsing (gActionTable, gActionTableIndex, gSuccessorTable, gProductionsTable) ;\n"
-                   "  if (ok && ! lexique_var_.parseOnlyFlagOn ()) {\n"
+                   "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"
                    "    " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "_outReturnedModelInstance = " ;      
         }
         generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
-                       << " (lexique_var_" ;
+                       << " (_inLexique" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         numeroParametre = 1 ;
         while (parametre != NULL) {
@@ -966,7 +966,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
                                                                 metamodelName
                                                                 COMMA_HERE) ;
           generatedZone3 << "    _checkMetamodel_" << metamodelName
-                         << " (lexique_var_, _outReturnedModelInstance) ;\n" ;
+                         << " (_inLexique, _outReturnedModelInstance) ;\n" ;
         }
         generatedZone3 << "  }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
@@ -986,7 +986,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
       generatedZone3.writeCTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) +"' non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
-              << inLexiqueName << " & lexique_var_"
+              << inLexiqueName << " & _inLexique"
               << ") {\n" ;
       generatedZone3 << "// Productions numbers :" ;
 
@@ -998,7 +998,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
         generatedZone3 << ' ' << inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
       }
       generatedZone3 << "\n"
-                 "  return (sint16) (lexique_var_.nextProductionIndex () - "
+                 "  return (sint16) (_inLexique.nextProductionIndex () - "
               << ((sint32)(first - 1))
               << ") ;\n"
                  "}\n\n" ;

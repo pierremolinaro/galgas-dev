@@ -57,7 +57,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
       inHTMLfile.outputRawData ("</span>") ;
     }
     inHTMLfile.outputRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch->mInstructionsList, inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch->mInstructionList, inHTMLfile) ;
     inHTMLfile.outputRawData ("</span>") ;
     currentBranch = currentBranch->nextObject () ;
   }
@@ -86,7 +86,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
       inHTMLfile.outputRawData ("</span>") ;
     }
     inHTMLfile.outputRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch->mInstructionsList, inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch->mInstructionList, inHTMLfile) ;
     inHTMLfile.outputRawData ("</span>") ;
     currentBranch = currentBranch->nextObject () ;
   }
@@ -156,7 +156,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                 << "', line "
                 << currentRule->mLeftNonterminalSymbol.currentLineNumber () ;
       inHTMLfile.outputRawData ("</td><td><code>") ;
-      printInstructionsListForGrammar (currentRule->mInstructionsList,
+      printInstructionsListForGrammar (currentRule->mInstructionList,
                                        inHTMLfile) ;
       inHTMLfile.outputRawData ("</code></td></tr>") ;
     //--- Next rule

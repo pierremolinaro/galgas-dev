@@ -64,7 +64,7 @@ void cPtr_typeForeachInstruction
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
     C_String inutilise ;
-    generateInstructionListForList (mInstructionsList, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+    generateInstructionListForList (mInstructionList, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
@@ -80,7 +80,7 @@ void cPtr_typeForeachInstruction
 
 bool cPtr_typeForeachInstruction
 ::isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
-  return isLexiqueFormalArgumentUsedForList (mInstructionsList, inGenerateSemanticInstructions)
+  return isLexiqueFormalArgumentUsedForList (mInstructionList, inGenerateSemanticInstructions)
     || mWhileExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
@@ -89,7 +89,7 @@ bool cPtr_typeForeachInstruction
 bool cPtr_typeForeachInstruction
 ::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
-  bool used = formalArgumentIsUsedForList (mInstructionsList, inArgumentCppName, true)
+  bool used = formalArgumentIsUsedForList (mInstructionList, inArgumentCppName, true)
     || mWhileExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {

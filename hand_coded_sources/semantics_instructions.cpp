@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------*
 
 void
-generateInstructionListForList (const GGS_typeInstructionsList & inList,
+generateInstructionListForList (const GGS_typeInstructionList & inList,
                                 AC_OutputStream & ioCppFile,
                                 const C_String & inLexiqueClassName,
                                 const C_String & inTargetFileName,
@@ -35,11 +35,11 @@ generateInstructionListForList (const GGS_typeInstructionsList & inList,
                                 const bool inGenerateDebug,
                                 const bool inGenerateSemanticInstructions) {
   ioCppFile.incIndentation (+2) ;
-  GGS_typeInstructionsList::element_type * current = inList.firstObject () ;
+  GGS_typeInstructionList::element_type * current = inList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (inGenerateSemanticInstructions || current->aInstruction(HERE)->isSyntacticInstruction ()) {
-      current->aInstruction(HERE)->generateInstruction (ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+    if (inGenerateSemanticInstructions || current->mInstruction(HERE)->isSyntacticInstruction ()) {
+      current->mInstruction(HERE)->generateInstruction (ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                                     inGenerateDebug, inGenerateSemanticInstructions) ;
     }
     current = current->nextObject () ;
@@ -50,16 +50,16 @@ generateInstructionListForList (const GGS_typeInstructionsList & inList,
 //---------------------------------------------------------------------------*
 
 void
-generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionsList & inList,
+generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionList & inList,
                                           AC_OutputStream & inHfile,
                                           const C_String & inLexiqueClassName,
                                           const C_String & inTargetFileName,
                                           sint32 & ioPrototypeIndex,
                                           const bool inNotDeclared) {
-  GGS_typeInstructionsList::element_type * current = inList.firstObject () ;
+  GGS_typeInstructionList::element_type * current = inList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->aInstruction(HERE)->generateSelectAndRepeatPrototypes (inHfile,
+    current->mInstruction(HERE)->generateSelectAndRepeatPrototypes (inHfile,
                                                                 inLexiqueClassName,
                                                                 inTargetFileName,
                                                                 ioPrototypeIndex,
@@ -71,14 +71,14 @@ generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionsList & inLis
 //---------------------------------------------------------------------------*
 
 bool
-isLexiqueFormalArgumentUsedForList (const GGS_typeInstructionsList & inList,
+isLexiqueFormalArgumentUsedForList (const GGS_typeInstructionList & inList,
                                     const bool inGenerateSemanticInstructions) {
-  GGS_typeInstructionsList::element_type * current = inList.firstObject () ;
+  GGS_typeInstructionList::element_type * current = inList.firstObject () ;
   bool formalArgumentIsUsed = false ;
   while ((current != NULL) && ! formalArgumentIsUsed) {
     macroValidPointer (current) ;
-    if (inGenerateSemanticInstructions || current->aInstruction(HERE)->isSyntacticInstruction ()) {
-      formalArgumentIsUsed = current->aInstruction(HERE)->isLexiqueFormalArgumentUsed (inGenerateSemanticInstructions) ;
+    if (inGenerateSemanticInstructions || current->mInstruction(HERE)->isSyntacticInstruction ()) {
+      formalArgumentIsUsed = current->mInstruction(HERE)->isLexiqueFormalArgumentUsed (inGenerateSemanticInstructions) ;
     }
     current = current->nextObject () ;
   }
@@ -88,15 +88,15 @@ isLexiqueFormalArgumentUsedForList (const GGS_typeInstructionsList & inList,
 //---------------------------------------------------------------------------*
 
 bool
-formalArgumentIsUsedForList (const GGS_typeInstructionsList & inList,
+formalArgumentIsUsedForList (const GGS_typeInstructionList & inList,
                              const GGS_typeCplusPlusName & inArgumentCppName,
                              const bool inGenerateSemanticInstructions) {
-  GGS_typeInstructionsList::element_type * current = inList.firstObject () ;
+  GGS_typeInstructionList::element_type * current = inList.firstObject () ;
   bool formalArgumentIsUsed = false ;
   while (current != NULL && ! formalArgumentIsUsed) {
     macroValidPointer (current) ;
-    if (inGenerateSemanticInstructions || current->aInstruction(HERE)->isSyntacticInstruction ()) {
-      formalArgumentIsUsed = current->aInstruction(HERE)->formalArgumentIsUsed (inArgumentCppName, inGenerateSemanticInstructions) ;
+    if (inGenerateSemanticInstructions || current->mInstruction(HERE)->isSyntacticInstruction ()) {
+      formalArgumentIsUsed = current->mInstruction(HERE)->formalArgumentIsUsed (inArgumentCppName, inGenerateSemanticInstructions) ;
     }
     current = current->nextObject () ;
   }
@@ -155,7 +155,7 @@ void cPtr_typeSimpleExtractInstruction
     ioCppFile << " (HERE)->message_" << aNomMessage << " () ;\n" 
                  "      " ;
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".signalExtractError (lexique_var_, message1_, message2_ SOURCE_FILE_AT_LINE ("
+    ioCppFile << ".signalExtractError (_inLexique, message1_, message2_ SOURCE_FILE_AT_LINE ("
               << aNomMessage.currentLineNumber () << ")) ;\n"
                  "    }\n"
                  "  }else{\n" ;
@@ -243,7 +243,7 @@ void cPtr_typeStructuredExtractInstructionWithElse
                   << p->mResultVarID.currentLocation ()
                   << ") ; \n" ;
       }
-      generateInstructionListForList (p->mInstructionsList, ioCppFile,
+      generateInstructionListForList (p->mInstructionList, ioCppFile,
                                       inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
       p = p->nextObject () ;
@@ -268,7 +268,7 @@ bool cPtr_typeStructuredExtractInstructionWithElse
   GGS_typeStructuredExtractCasesList::element_type * p = mCasesList.firstObject () ;
   while ((p != NULL) && ! used) {
     macroValidPointer (p) ;
-    used = isLexiqueFormalArgumentUsedForList (p->mInstructionsList, inGenerateSemanticInstructions) ;
+    used = isLexiqueFormalArgumentUsedForList (p->mInstructionList, inGenerateSemanticInstructions) ;
     p = p->nextObject () ;
   }
   return used ;
@@ -284,7 +284,7 @@ bool cPtr_typeStructuredExtractInstructionWithElse
   GGS_typeStructuredExtractCasesList::element_type * p = mCasesList.firstObject () ;
   while ((p != NULL) && ! used) {
     macroValidPointer (p) ;
-    used = formalArgumentIsUsedForList (p->mInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
+    used = formalArgumentIsUsedForList (p->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
     p = p->nextObject () ;
   }
   return used ;
@@ -346,7 +346,7 @@ void cPtr_typeErrorInstruction
   if (inGenerateSemanticInstructions) {
     ioCppFile << "  " ;
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".reader_location ().signalGGSSemanticError (lexique_var_, " ;
+    ioCppFile << ".reader_location ().signalGGSSemanticError (_inLexique, " ;
     mErrorMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mLocation.currentLineNumber ()
@@ -389,7 +389,7 @@ void cPtr_typeWarningInstruction
   if (inGenerateSemanticInstructions) {
     ioCppFile << "  " ;
     mWarningLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".reader_location ().signalGGSSemanticWarning (lexique_var_, " ;
+    ioCppFile << ".reader_location ().signalGGSSemanticWarning (_inLexique, " ;
     mWarningMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mLocation.currentLineNumber ()
@@ -430,7 +430,7 @@ void cPtr_typeMessageInstruction
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "lexique_var_.printMessage (" ;
+    ioCppFile << "_inLexique.printMessage (" ;
     mMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
@@ -564,7 +564,7 @@ void cPtr_typeMatchInstruction
         ioCppFile << "operand_" << aIndicatif2.currentLocation () << " != NULL" ;
       }
       ioCppFile << ")) {\n" ;
-      generateInstructionListForList (casCourant->mInstructionsList, ioCppFile,
+      generateInstructionListForList (casCourant->mInstructionList, ioCppFile,
                                       inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
       ioCppFile << "}else{\n" ;
@@ -602,7 +602,7 @@ bool cPtr_typeMatchInstruction
   GGS_L_matchInstructionCasesList::element_type * casCourant = aListeCas.firstObject () ;
   while ((! isUsed) && (casCourant != NULL)) {
     macroValidPointer (casCourant) ;
-    isUsed = formalArgumentIsUsedForList (casCourant->mInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
+    isUsed = formalArgumentIsUsedForList (casCourant->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
     casCourant = casCourant->nextObject () ;
   }
   return isUsed ;
@@ -787,7 +787,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aNomVariableTable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".prologue_" << aNomMethodeBloc << " (lexique_var_" ;
+    ioCppFile << ".prologue_" << aNomMethodeBloc << " (_inLexique" ;
     GGS_typeExpressionList::element_type * current = mPrologueExpressionList.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -841,7 +841,7 @@ void cPtr_typeMapBlockEpilogueInstruction
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aNomVariableTable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".epilogue_" << aNomMethodeBloc << " (lexique_var_" ;
+    ioCppFile << ".epilogue_" << aNomMethodeBloc << " (_inLexique" ;
     GGS_typeExpressionList::element_type * current = mEpilogueExpressionList.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;

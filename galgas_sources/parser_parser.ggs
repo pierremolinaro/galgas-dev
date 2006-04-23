@@ -127,7 +127,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inCurrentPass
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
@@ -138,11 +143,11 @@ rule <syntax_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
 ;
 
@@ -169,7 +174,7 @@ rule <actual_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
 
 label parse
 ;
@@ -193,11 +198,11 @@ rule <syntax_instructions_list>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
 ;
  
@@ -208,11 +213,11 @@ rule <syntax_instructions_list_no_verif>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
 ;
 
@@ -568,7 +573,7 @@ rule <syntax_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
@@ -597,7 +602,7 @@ rule <syntax_instruction>
     !?ioVariablesMap
     !?ioOptionsComponentsMapForUse
     !?ioEntitiesMap
-    !?ioInstructionsList
+    !?ioInstructionList
   ;
   $)$ ;
 #--- Generate prologue instruction
@@ -605,7 +610,7 @@ rule <syntax_instruction>
   instruction := [@typeMapBlockPrologueInstruction new !nomCppVariableTable
                                                       !nomMethodeBloc
                                                       !prologueExpressionList] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 #--- Liste d'instructions incluses
   $:$ ;
   <syntax_instructions_list_no_verif>
@@ -615,7 +620,7 @@ rule <syntax_instruction>
     !?listeEntitesAengendrer
     !?ioOptionsComponentsMapForUse
     !?ioVariablesMap
-    !?ioInstructionsList
+    !?ioInstructionList
     !?tableTerminaux
     !?ioSyntaxSignature
   ;
@@ -630,7 +635,7 @@ rule <syntax_instruction>
     !?ioVariablesMap
     !?ioOptionsComponentsMapForUse
     !?ioEntitiesMap
-    !?ioInstructionsList
+    !?ioInstructionList
   ;
   $)$ ;
 #--- Verifier que la map est toujours accessible en lecture/ecriture
@@ -639,10 +644,10 @@ rule <syntax_instruction>
   instruction := [@typeMapBlockEpilogueInstruction new !nomCppVariableTable
                                                       !nomMethodeBloc
                                                       !epilogueExpressionList] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   $;$ ;
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 :
   $block$ ;
   $identifier$ ? * ;
@@ -652,7 +657,7 @@ label importSyntax
   <actual_parameters_list> parse ;
   $)$ ;
   $:$ ;
-  <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
+  <syntax_instructions_list_no_verif> importSyntax !?ioInstructionList ;
   $end$ ;
   $block$ ;
   $($ ;
@@ -947,7 +952,7 @@ rule <rule_declaration_or_implementation>
     end if ;
   end if ;
 #--- Insert in variable map attributes for returned entity
-  @typeInstructionsList listeInstructions [empty] ;
+  @typeInstructionList listeInstructions [empty] ;
   @entityPropertyMap allPropertiesMap [empty] ;
   if [inEffectiveReturnedEntity value] != "" then
     @AC_semanticsEntity e ;
@@ -1043,7 +1048,7 @@ rule <rule_declaration_or_implementation>
       !listeDeTypesFormels
       !errorLocation
     ;
-    @typeInstructionsList listeInstructions [empty] ;
+    @typeInstructionList listeInstructions [empty] ;
     @L_ruleSyntaxSignature syntaxSignature [empty] ;
     <syntax_instructions_list>
       !?ioNonTerminalSymbolMapForSyntax
@@ -1140,7 +1145,7 @@ rule <syntax_instructions_list>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
@@ -1152,16 +1157,16 @@ rule <syntax_instructions_list>
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
-      !?ioInstructionsList
+      !?ioInstructionList
       !?tableTerminaux
       !?ioSyntaxSignature
     ;
     @location positionErreur := here ;
   end block (!positionErreur) ;
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 :
-  <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
+  <syntax_instructions_list_no_verif> importSyntax !?ioInstructionList ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -1175,7 +1180,7 @@ rule <syntax_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
@@ -1193,13 +1198,13 @@ rule <syntax_instruction>
   ;
   @typeInstruction instruction ;
   instruction := [@typeInstructionVerifSyntaxique new !terminalSymbolName !listeTypeEffectifs] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   @uint terminalSymbolIndex := 0 ;
   @AC_instruction_ForGrammar i := [@T_terminalInstruction_forGrammarComponent new ![terminalSymbolName location] !terminalSymbolName !terminalSymbolIndex] ;
   ioSyntaxSignature += !i ;
   $;$ ;
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 :
   @lstring terminalSymbolName ;
   $terminal$ ? terminalSymbolName ;
@@ -1207,7 +1212,7 @@ label importSyntax
   @AC_instruction_ForGrammar i ;
   @uint terminalSymbolIndex := 0 ;
   i := [@T_terminalInstruction_forGrammarComponent new ![terminalSymbolName location] !terminalSymbolName !terminalSymbolIndex] ;
-  ioInstructionsList += !i ;
+  ioInstructionList += !i ;
   $;$ ;
 end rule ;
 
@@ -1222,7 +1227,7 @@ rule <syntax_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
@@ -1258,7 +1263,7 @@ rule <syntax_instruction>
     !?ioVariablesMap
     !?ioOptionsComponentsMapForUse
     !?ioEntitiesMap
-    !?ioInstructionsList
+    !?ioInstructionList
   ;
 #--- Parse returned value
   @lstring returnedEntityVariableName ;
@@ -1300,7 +1305,7 @@ rule <syntax_instruction>
     !returnedEntityVariableName
     !isMultipleEntity
   ] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   @AC_instruction_ForGrammar i := [@T_nonterminalInstruction_forGrammarComponent new
     ![nonterminalSymbolName location]
     !nonterminalSymbolName
@@ -1309,7 +1314,7 @@ rule <syntax_instruction>
   ioSyntaxSignature += !i ;
   $;$ ;
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 :
   $<$ ;
   @lstring nonterminalSymbolName ;
@@ -1327,7 +1332,7 @@ label importSyntax
   i := [@T_nonterminalInstruction_forGrammarComponent new ![nonterminalSymbolName location]
                                                           !nonterminalSymbolName
                                                           !nonterminalSymbolIndex] ;
-  ioInstructionsList += !i ;
+  ioInstructionList += !i ;
   select
   or
     $->$ ;
@@ -1350,7 +1355,7 @@ rule <syntax_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
@@ -1361,7 +1366,7 @@ rule <syntax_instruction>
   block ioVariablesMap.testBloc () :
     repeat
       block ioVariablesMap.testPart () :
-        @typeInstructionsList listeInstructionsBrancheChoix [empty] ;
+        @typeInstructionList listeInstructionsBrancheChoix [empty] ;
         @L_ruleSyntaxSignature syntaxSignature [empty] ;
         <syntax_instructions_list_no_verif>
           !?ioNonTerminalSymbolMapForSyntax
@@ -1386,13 +1391,13 @@ rule <syntax_instruction>
   end block () ;
 #--- Engendrer l'instruction
   @typeInstruction instruction := [@C_select_instruction new !listeBranchesChoix !positionDebut] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   @AC_instruction_ForGrammar i ;
   @uint v := 0 ;
   i := [@T_selectInstruction_forGrammarComponent new !positionDebut !selectList !v] ;
   ioSyntaxSignature += !i ;
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 :
   $select$ ;
   @location positionDebut := here ;
@@ -1410,7 +1415,7 @@ label importSyntax
   @AC_instruction_ForGrammar i ;
   @uint v := 0 ;
   i := [@T_selectInstruction_forGrammarComponent new !positionDebut !selectList !v] ;
-  ioInstructionsList += !i ;
+  ioInstructionList += !i ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -1424,7 +1429,7 @@ rule <syntax_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
@@ -1433,7 +1438,7 @@ rule <syntax_instruction>
   @typeListeBranchesInstructions listeBranchesRepeter [empty] ;
   @L_branchList_ForGrammarComponent whileList [empty] ;
   block ioVariablesMap.repeatBlock () :
-    @typeInstructionsList listeInstructionsPremiereBranche [empty] ;
+    @typeInstructionList listeInstructionsPremiereBranche [empty] ;
     @L_ruleSyntaxSignature repeatBranchInstructionsList [empty] ;
     block ioVariablesMap.repeatPart () :
       @L_ruleSyntaxSignature syntaxSignature [empty] ;
@@ -1455,7 +1460,7 @@ rule <syntax_instruction>
     $while$ ;
     repeat
       block ioVariablesMap.repeatPart () :
-        @typeInstructionsList listeInstructionsBrancheRepeter [empty];
+        @typeInstructionList listeInstructionsBrancheRepeter [empty];
         @L_ruleSyntaxSignature syntaxSignature [empty] ;
         <syntax_instructions_list_no_verif>
           !?ioNonTerminalSymbolMapForSyntax
@@ -1480,13 +1485,13 @@ rule <syntax_instruction>
   $;$ ;
 #--- Engendrer l'instruction
   @typeInstruction instruction := [@C_repeat_instruction new !listeBranchesRepeter !positionDebut] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   @AC_instruction_ForGrammar i ;
   @uint v := 0 ;
   i := [@T_repeatInstruction_forGrammarComponent new !positionDebut !whileList !v] ;
   ioSyntaxSignature += !i ;
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 :
   $repeat$ ;
   @location positionDebut := here ;
@@ -1508,7 +1513,7 @@ label importSyntax
   @AC_instruction_ForGrammar i ;
   @uint v := 0 ;
   i := [@T_repeatInstruction_forGrammarComponent new !positionDebut !repeatList !v] ;
-  ioInstructionsList += !i ;
+  ioInstructionList += !i ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -1523,7 +1528,7 @@ rule <syntax_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
@@ -1536,7 +1541,7 @@ rule <syntax_instruction>
     @typeListeBranchesInstructions branchList [empty] ;
   #--- First branch
     @L_branchList_ForGrammarComponent whileList [empty] ;
-    @typeInstructionsList firstBranchInstructionsList [empty] ;
+    @typeInstructionList firstBranchInstructionsList [empty] ;
     @L_ruleSyntaxSignature firstBranchSyntaxSignature [empty] ;
     <syntax_instructions_list_no_verif>
       !?ioNonTerminalSymbolMapForSyntax
@@ -1558,7 +1563,7 @@ rule <syntax_instruction>
     repeat
       $rewind$ ;
       @location branchStartLocation := here ;
-      @typeInstructionsList instructionsList [empty] ;
+      @typeInstructionList instructionsList [empty] ;
       @L_ruleSyntaxSignature syntaxSignature [empty] ;
       <syntax_instructions_list_no_verif>
         !?ioNonTerminalSymbolMapForSyntax
@@ -1595,7 +1600,7 @@ rule <syntax_instruction>
           ;
           $:$ ;
           @location branchStartLocation := here ;
-          @typeInstructionsList instructionsList [empty] ;
+          @typeInstructionList instructionsList [empty] ;
           @L_ruleSyntaxSignature syntaxSignature [empty] ;
           <syntax_instructions_list_no_verif>
             !?ioNonTerminalSymbolMapForSyntax
@@ -1616,7 +1621,7 @@ rule <syntax_instruction>
       $else$ ;
       block ioVariablesMap.testPart () :
         @location branchStartLocation := here ;
-        @typeInstructionsList elseInstructionsList [empty] ;
+        @typeInstructionList elseInstructionsList [empty] ;
         @L_ruleSyntaxSignature syntaxSignature [empty] ;
         <syntax_instructions_list_no_verif>
           !?ioNonTerminalSymbolMapForSyntax
@@ -1641,16 +1646,16 @@ rule <syntax_instruction>
   $parse$ ;
   $;$ ;
 #--- Generate instruction
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 #--- Check all branches have the same syntax signature
   action checkParseRewindSignatures !?parse_rewind_signature_list ;
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 :
   $parse$ ;
   select
     $do$ ;
-    <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
+    <syntax_instructions_list_no_verif> importSyntax !?ioInstructionList ;
     repeat
       $rewind$ ;
       <syntax_instructions_list_no_verif> parse ;
@@ -1665,7 +1670,7 @@ label importSyntax
     while
     end repeat ;
     $else$ ;
-    <syntax_instructions_list_no_verif> importSyntax !?ioInstructionsList ;
+    <syntax_instructions_list_no_verif> importSyntax !?ioInstructionList ;
   end select ;
   $end$ ;
   $parse$ ;
@@ -1681,10 +1686,15 @@ rule <syntax_instructions_list_no_verif>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
+  @string currentConstraintPassName := "" ;
+  @entityPropertyMap propertyMap [empty] ;
+  @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [empty] ;
+  @stringset constraintPropertyDefinitionSet [empty] ;
+  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [empty] ;
   repeat
   while
     <syntax_instruction>
@@ -1694,7 +1704,7 @@ rule <syntax_instructions_list_no_verif>
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
-      !?ioInstructionsList
+      !?ioInstructionList
       !?tableTerminaux
       !?ioSyntaxSignature
     ;
@@ -1704,15 +1714,20 @@ rule <syntax_instructions_list_no_verif>
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
-      !?ioInstructionsList
+      !?ioInstructionList
+      !currentConstraintPassName
+      !?propertyMap
+      !?mapAsConstraintPropertyMap
+      !?constraintPropertyDefinitionSet
+      !?callInstructionSharedPropertySignatureMap
     ;
   end repeat ;
 label importSyntax
-  ?!@L_ruleSyntaxSignature ioInstructionsList
+  ?!@L_ruleSyntaxSignature ioInstructionList
 :
   repeat
   while
-    <syntax_instruction> importSyntax !?ioInstructionsList ;
+    <syntax_instruction> importSyntax !?ioInstructionList ;
   while
     <semantic_instruction> parse ;
   end repeat ;

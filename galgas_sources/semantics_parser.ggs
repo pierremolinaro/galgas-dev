@@ -182,7 +182,7 @@ rule <parse_method>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableEnAvant tableEnAvant
   !@lstring outMethodName
-  !@typeInstructionsList outInstructionsList
+  !@typeInstructionList outInstructionsList
   !@L_EXsignature outMethodSignature
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -240,7 +240,12 @@ rule <semantic_instructions_list>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
@@ -249,7 +254,12 @@ rule <semantic_instructions_list_no_verif>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
@@ -258,7 +268,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
@@ -271,6 +286,11 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@typeInstruction outInstruction
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
@@ -297,7 +317,7 @@ rule <actual_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
 label parse
 ;
 
@@ -327,7 +347,7 @@ label parse
 rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
@@ -339,7 +359,7 @@ rule <optional_assignment>
   ??@typeCplusPlusName inVariableCppName
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
@@ -398,7 +418,7 @@ rule <drop_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
 label parse
 ;
 
@@ -1067,13 +1087,22 @@ rule <semantics_declaration>
   or
    $:$ ;
   #--- Instructions
-    @typeInstructionsList ioInstructionsList [empty] ;
+    @typeInstructionList ioInstructionList [empty] ;
+    @entityPropertyMap propertyMap [empty] ;
+    @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [empty] ;
+    @stringset constraintPropertyDefinitionSet [empty] ;
+    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [empty] ;
     <semantic_instructions_list>
       !?ioComponentSemanticsEntitiesMap
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
       !?tableArgumentsMethode
-      !?ioInstructionsList
+      !?ioInstructionList
+      !""
+      !?propertyMap
+      !?mapAsConstraintPropertyMap
+      !?constraintPropertyDefinitionSet
+      !?callInstructionSharedPropertySignatureMap
     ;
     $end$ ;
     $routine$ ;
@@ -1081,7 +1110,7 @@ rule <semantics_declaration>
   #--- Inserer la routine dans la map des routines a implementer
     @typeEntityToGenerate ea := [@typeRoutineAengendrer new ! routineName
                                                               !listeTypeEtNomsArguments
-                                                              !ioInstructionsList] ;
+                                                              !ioInstructionList] ;
     listeEntitesAengendrer += !ea ;
     [!?tableRoutinesAimplementer insertKey ! routineName] ;
   end select ;
@@ -1136,14 +1165,23 @@ label importSemantics
   or
    $:$ ;
   #--- Instructions
-    @typeInstructionsList ioInstructionsList [empty] ;
+    @typeInstructionList ioInstructionList [empty] ;
     @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+    @entityPropertyMap propertyMap [empty] ;
+    @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [empty] ;
+    @stringset constraintPropertyDefinitionSet [empty] ;
+    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [empty] ;
     <semantic_instructions_list>
       !?ioComponentSemanticsEntitiesMap
       !?listeEntitesAengendrer
       !?optionsComponentsMapForUse
       !?tableArgumentsMethode
-      !?ioInstructionsList
+      !?ioInstructionList
+      !""
+      !?propertyMap
+      !?mapAsConstraintPropertyMap
+      !?constraintPropertyDefinitionSet
+      !?callInstructionSharedPropertySignatureMap
     ;
     $end$ ;
     $routine$ ;
@@ -1888,7 +1926,7 @@ rule <abstract_method>
     ?signatureForGrammarComponent
   ;
   [!?tableDesMethodes insertAbstract !nomMethode !listeDeTypes] ;
-  @typeInstructionsList listeInstructions [empty] ;
+  @typeInstructionList listeInstructions [empty] ;
   [!?tableMethodesAimplementer insertAbstract !nomMethode !listeDeTypes !listeTypeEtNomsArguments !listeInstructions] ;
   $;$ ;
 end rule ;
@@ -1909,7 +1947,7 @@ rule <parse_method>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableEnAvant tableEnAvant
   !@lstring outMethodName
-  !@typeInstructionsList outInstructionsList
+  !@typeInstructionList outInstructionsList
   !@L_EXsignature outMethodSignature
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@M_optionComponents ioOptionsComponentsMapForUse
@@ -1959,13 +1997,22 @@ rule <parse_method>
     [!?methodLocalVariablesMap insertUsedConstInArgument !nomAttribut !typeAttribut !nomCpp] ;
   end foreach ;
 #--- Parse reader instruction list
-  outInstructionsList := [@typeInstructionsList empty] ;
+  outInstructionsList := [@typeInstructionList empty] ;
+  @entityPropertyMap propertyMap [empty] ;
+  @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [empty] ;
+  @stringset constraintPropertyDefinitionSet [empty] ;
+  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [empty] ;
   <semantic_instructions_list>
     !?ioComponentSemanticsEntitiesMap
     !?listeEntitesAengendrer
     !?ioOptionsComponentsMapForUse
     !?methodLocalVariablesMap
     !?outInstructionsList
+    !""
+    !?propertyMap
+    !?mapAsConstraintPropertyMap
+    !?constraintPropertyDefinitionSet
+    !?callInstructionSharedPropertySignatureMap
   ;
 end rule ;
 
@@ -1989,7 +2036,7 @@ rule <non_abstract_method>
 :
   $reader$ ;
   @lstring methodName ;
-  @typeInstructionsList instructionsList ;
+  @typeInstructionList instructionsList ;
   @L_EXsignature methodSignature ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
   <parse_method>
@@ -2039,7 +2086,7 @@ rule <overrided_method>
   $override$ ;
   $reader$ ;
   @lstring methodName ;
-  @typeInstructionsList instructionsList ;
+  @typeInstructionList instructionsList ;
   @L_EXsignature methodSignature ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
   <parse_method>
@@ -2256,7 +2303,7 @@ end rule ;
 rule <instruction_beginning_with_identifier>
   ?@lstring inTargetVarName
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
@@ -2279,7 +2326,7 @@ rule <instruction_beginning_with_identifier>
   checkAssignmentTypesCompatibility !targetVarType !sourceType !here ;
 #--- Generate instruction
   @typeInstruction instruction := [@C_assignmentInstruction new !targetVarCppName !sourceExpression] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -2370,7 +2417,7 @@ end rule ;
 rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
@@ -2426,7 +2473,7 @@ rule <instruction_beginning_with_identifier>
   or
     instruction := [@typeAppendInstruction new !nomCppVariableSource !expressionList] ;
   end select ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -2440,7 +2487,7 @@ end rule ;
 rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
 :
@@ -2453,7 +2500,7 @@ rule <instruction_beginning_with_identifier>
   [targetVariableType handleIncrementOperatorCall !here] ;
 #--- Generate instruction
   @typeInstruction instruction := [@typeIncrementInstruction new !nomCppVariableSource] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -2466,7 +2513,7 @@ rule <actual_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
 :
   @L_actualParametersSignature listeTypesParametresEffectifs ;
   <parse_parameters_list>
@@ -2481,7 +2528,7 @@ rule <actual_parameters_list>
     !listeTypesParametresFormels
     !listeTypesParametresEffectifs
     !here
-    !?ioInstructionsList
+    !?ioInstructionList
     !?outExpressionList
   ;
 end rule ;
@@ -2556,7 +2603,12 @@ rule <semantic_instructions_list>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   block ioVariablesMap.verifyVariableUsing () :
     <semantic_instructions_list_no_verif>
@@ -2564,9 +2616,95 @@ rule <semantic_instructions_list>
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
-      !?ioInstructionsList
+      !?ioInstructionList
+      !inConstraintCurrentPassName
+      !?ioPropertyMap
+      !?ioMapAsConstraintPropertyMap
+      !?ioConstraintPropertyDefinitionSet
+      !?ioCallInstructionSharedPropertySignatureMap
     ;
   end block (!here) ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      call instruction                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap unused ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
+:
+  $call$ ;
+#--- Called property
+  @lstring calledPropertyName ;
+  $identifier$ ?calledPropertyName ;
+  @metamodelPropertyKind kind ;
+  @lstring typeName ;
+  [!?ioPropertyMap searchKey !calledPropertyName ?kind ?typeName] ;
+  if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName value]] then
+    error calledPropertyName: "this property has been already initialized" ;
+  else
+    ioConstraintPropertyDefinitionSet += ![calledPropertyName value] ;
+  end if ;
+#--- Effective parameters
+  @L_lstringList parameterList [empty] ;
+  @sharedPropertyList parameterTypeList [empty] ;
+  select
+  or
+    $($ ;
+    repeat
+      @lstring propertyArgumentName ;
+      $identifier$ ?propertyArgumentName ;
+      @lstring propertyTypeName ;
+      [!?ioMapAsConstraintPropertyMap searchKey !propertyArgumentName ?propertyTypeName ?* ?* ?* ?*] ;
+      parameterList += !propertyArgumentName ;
+      parameterTypeList += !propertyTypeName !propertyArgumentName ;
+    while
+      $,$ ;
+    end repeat ;
+    $)$ ;
+  end select ;
+#--- Check parameter type list
+  if [ioCallInstructionSharedPropertySignatureMap hasKey ![calledPropertyName value]] then
+    @sharedPropertyList previousParameterTypeList ;
+    @location previousParameterTypeListLocation ;
+    [!?ioCallInstructionSharedPropertySignatureMap searchKey !calledPropertyName ?previousParameterTypeList ?previousParameterTypeListLocation] ;
+    if [previousParameterTypeList length] == [parameterTypeList length] then
+      foreach previousParameterTypeList (??@lstring kPreviousTypeName ??*),
+              parameterTypeList (??@lstring kCurrentTypeName ??@lstring kCurrentPropertyName) :
+        if [kPreviousTypeName value] != [kCurrentTypeName value] then
+          error kCurrentPropertyName: "this shared property has '@" . [kCurrentTypeName value]
+          . "' type, while a previous call has named an attribute of type '@" . [kPreviousTypeName value] . "'" ;
+        end if ;
+      end foreach ;
+    else
+     error previousParameterTypeListLocation:"this instruction names " . [[parameterTypeList length] string]
+     . " shared parameter(s), while a previous call has named "  . [[previousParameterTypeList length] string]
+     . " parameter(s)" ;
+    end if ;
+  else
+    [!?ioCallInstructionSharedPropertySignatureMap insertKey !calledPropertyName !parameterTypeList !here] ;
+  end if ;
+  $;$ ;
+#--- Generate instruction
+  @typeInstruction instruction := [@callInstruction new
+    !inConstraintCurrentPassName
+    !calledPropertyName
+    !kind
+    !typeName
+    !parameterList
+  ] ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -2580,9 +2718,14 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
- $extract$ ;
+  $extract$ ;
 #--- Source variable
   @AC_galgasType typeVarSource ;
   @typeCplusPlusName sourceVarCppName ;
@@ -2605,8 +2748,13 @@ rule <semantic_instruction>
     !nomTypeSource
     !tableMessagesAbstraits
     ?instruction
+    !inConstraintCurrentPassName
+    !?ioPropertyMap
+    !?ioMapAsConstraintPropertyMap
+    !?ioConstraintPropertyDefinitionSet
+    !?ioCallInstructionSharedPropertySignatureMap
   ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
 
@@ -2623,6 +2771,11 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@typeInstruction outInstruction
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
 #--- Nom de la classe pour la conversion
   $->$ ;
@@ -2697,6 +2850,11 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@typeInstruction outInstruction
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   @typeStructuredExtractCasesList casesList [empty] ;
   $:$ ;
@@ -2768,13 +2926,18 @@ rule <extract_instruction>
         ;
       #--- Liste des instructions
         $->$ ;
-        @typeInstructionsList instructionsList [empty] ;
+        @typeInstructionList instructionsList [empty] ;
         <semantic_instructions_list>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !?ioOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
+          !inConstraintCurrentPassName
+          !?ioPropertyMap
+          !?ioMapAsConstraintPropertyMap
+          !?ioConstraintPropertyDefinitionSet
+          !?ioCallInstructionSharedPropertySignatureMap
         ;
         casesList += !nomType1 !indicatif1 !instructionsList !noUsedParameter ;
       end block (!here) ;
@@ -2784,13 +2947,18 @@ rule <extract_instruction>
   #---------------------  Default error -----------------------
     block ioVariablesMap.testPart () :
       $else$ ;
-      @typeInstructionsList elseInstructionList [empty] ;
+      @typeInstructionList elseInstructionList [empty] ;
       <semantic_instructions_list>
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
         !?ioOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elseInstructionList
+        !inConstraintCurrentPassName
+        !?ioPropertyMap
+        !?ioMapAsConstraintPropertyMap
+        !?ioConstraintPropertyDefinitionSet
+        !?ioCallInstructionSharedPropertySignatureMap
       ;
       outInstruction := [@typeStructuredExtractInstructionWithElse new
         !inSourceVarCppName !casesList !elseInstructionList
@@ -2812,7 +2980,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
 #--- Type name
   @AC_galgasType definitionType ;
@@ -2832,7 +3005,7 @@ rule <semantic_instruction>
     !nomCppVariable
     !definitionType
     !?ioVariablesMap
-    !?ioInstructionsList
+    !?ioInstructionList
     !?ioOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
   ;
@@ -2850,14 +3023,19 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $drop$ ;
   <drop_instruction>
     !?ioComponentSemanticsEntitiesMap
     !?listeEntitesAengendrer
     !?ioVariablesMap
-    !?ioInstructionsList
+    !?ioInstructionList
   ;
 end rule ;
 
@@ -2867,7 +3045,7 @@ rule <drop_instruction>
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
 :
   repeat
     @lstring nom ;
@@ -2875,7 +3053,7 @@ rule <drop_instruction>
     @typeCplusPlusName nomCppVar ;
     [!?ioVariablesMap searchForDestructiveReadAccess !nom ?* ?nomCppVar] ;
     @typeInstruction instruction := [@typeDropInstruction new !nomCppVar] ;
-    ioInstructionsList += !instruction ;
+    ioInstructionList += !instruction ;
   while
     $,$ ;
   end repeat ;
@@ -2893,7 +3071,7 @@ end rule ;
 rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
@@ -2910,11 +3088,11 @@ rule <instruction_beginning_with_identifier>
     !?ioVariablesMap
     !?ioOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
-    !?ioInstructionsList
+    !?ioInstructionList
   ;
 #--- Generate instruction
   @typeInstruction instruction := [@typeRoutineCallInstruction new !nomVarDest !expressionsList] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -2930,7 +3108,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
 #--- Action name
   $action$ ;
@@ -2949,7 +3132,7 @@ rule <semantic_instruction>
     !?ioVariablesMap
     !?ioOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
-    !?ioInstructionsList
+    !?ioInstructionList
   ;
   $;$ ;
 #--- Generate instruction
@@ -2958,7 +3141,7 @@ rule <semantic_instruction>
                                                !expressionsList
                                                !listeTypesParametresFormels] ;
 
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -2976,7 +3159,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $[$ ;
 #--- Get source identity characteristics
@@ -2998,7 +3186,7 @@ rule <semantic_instruction>
       !?ioVariablesMap
       !?ioOptionsComponentsMapForUse
       !?ioComponentSemanticsEntitiesMap
-      !?ioInstructionsList
+      !?ioInstructionList
     ;
   #--- Generate instruction
     instruction := [@typeReaderCallInstruction new !cppVariableName !methodName !expressionsList] ;
@@ -3022,12 +3210,12 @@ rule <semantic_instruction>
       !?ioVariablesMap
       !?ioOptionsComponentsMapForUse
       !?ioComponentSemanticsEntitiesMap
-      !?ioInstructionsList
+      !?ioInstructionList
     ;
   #--- Generate instruction
     instruction := [@typeModifierCallInstruction new !cppVariableName !methodName !expressionsList] ;
   end select ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   $]$ ;
   $;$ ;
 end rule ;
@@ -3044,14 +3232,19 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   @lstring nomVarDest ;
   $identifier$ ? nomVarDest ;
   <instruction_beginning_with_identifier>
     !nomVarDest
     !?ioVariablesMap 
-    !?ioInstructionsList
+    !?ioInstructionList
     !?ioOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
   ;
@@ -3069,7 +3262,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $warning$ ;
   @typeExpression errorExpression ;
@@ -3099,7 +3297,7 @@ rule <semantic_instruction>
 #--- Generate instruction
   @typeInstruction instruction ;
   instruction := [@typeWarningInstruction new !errorExpression !warningMessageExpression !here] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
 
@@ -3114,7 +3312,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $error$ ;
   @typeExpression errorLocationExpression ;
@@ -3143,7 +3346,7 @@ rule <semantic_instruction>
   extract errorMessageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
 #--- Build instruction and append it to instructions list
   @typeInstruction instruction := [@typeErrorInstruction new !errorLocationExpression !errorMessageExpression !here] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 #--- Valuations fictives
   select
   or
@@ -3170,7 +3373,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $message$ ;
   @location instructionLocation := here ;
@@ -3188,7 +3396,7 @@ rule <semantic_instruction>
   extract messageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
 #--- Construire l'instruction
   @typeInstruction instruction := [@typeMessageInstruction new !messageExpression !instructionLocation] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
 
@@ -3203,9 +3411,16 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $if$ ;
+  @stringset startConstraintPropertyDefinitionSet := ioConstraintPropertyDefinitionSet ;
+  @bool firstBranch := true ;
   @L_expression_instructionsList_list listeBranchesTest [empty] ;
   block ioVariablesMap.testBloc () :
     repeat
@@ -3221,32 +3436,56 @@ rule <semantic_instruction>
         ;
         extract resultType ->@typeGalgas_bool () error here : messageGalgasType ;
         $then$ ;
-        @typeInstructionsList listeInstructionsBrancheTest [empty] ;
+        @typeInstructionList listeInstructionsBrancheTest [empty] ;
+        @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !?ioOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheTest
+          !inConstraintCurrentPassName
+          !?ioPropertyMap
+          !?ioMapAsConstraintPropertyMap
+          !?constraintPropertyDefinitionSet
+          !?ioCallInstructionSharedPropertySignatureMap
         ;
+        if firstBranch then
+          ioConstraintPropertyDefinitionSet := constraintPropertyDefinitionSet ;
+          firstBranch := false ;
+        elsif ioConstraintPropertyDefinitionSet != constraintPropertyDefinitionSet then
+          displayConstraintDefinitionErrors !ioConstraintPropertyDefinitionSet !constraintPropertyDefinitionSet ; 
+        end if ;
         listeBranchesTest += !testBranche !listeInstructionsBrancheTest ;
       end block (!here) ;
     while
       $elsif$ ;
     end repeat ;
-    @typeInstructionsList listeInstructionsBrancheAutre [empty] ;
+    @typeInstructionList listeInstructionsBrancheAutre [empty] ;
     block ioVariablesMap.testPart () :
       select
+        if ioConstraintPropertyDefinitionSet != startConstraintPropertyDefinitionSet then
+          displayConstraintDefinitionErrorsNoElse !ioConstraintPropertyDefinitionSet !startConstraintPropertyDefinitionSet ; 
+       end if ;
       or
         $else$ ;
+        @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !?ioOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheAutre
+          !inConstraintCurrentPassName
+          !?ioPropertyMap
+          !?ioMapAsConstraintPropertyMap
+          !?constraintPropertyDefinitionSet
+          !?ioCallInstructionSharedPropertySignatureMap
         ;
-      end select ; 
+        if ioConstraintPropertyDefinitionSet != constraintPropertyDefinitionSet then
+          displayConstraintDefinitionErrors !ioConstraintPropertyDefinitionSet !constraintPropertyDefinitionSet ; 
+       end if ;
+     end select ; 
     end block (!here) ;
     $end$ ;
     $if$ ;
@@ -3254,7 +3493,7 @@ rule <semantic_instruction>
 #--- Engendrer l'instruction
   @typeInstruction instruction ;
   instruction := [@C_if_instruction new !listeBranchesTest !listeInstructionsBrancheAutre] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
 
@@ -3269,7 +3508,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $grammar$ ;
 #--- Nom du fichier is
@@ -3313,7 +3557,7 @@ rule <semantic_instruction>
     !startSymbolSignature
     !listeTypesParametresEffectifs
     !here
-    !?ioInstructionsList
+    !?ioInstructionList
     !?expressionsList
   ;
 #--- Engendrer l'instruction
@@ -3322,7 +3566,7 @@ rule <semantic_instruction>
                                            !grammarName
                                            !expressionsList
                                            !altName] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
 
@@ -3337,7 +3581,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $foreach$ ;
   @typeInstruction instruction ;
@@ -3393,13 +3642,18 @@ rule <semantic_instruction>
     #--- Repeated instruction list
       $:$ ;
     #--- Liste d'instructions
-      @typeInstructionsList instructionList [empty] ;
+      @typeInstructionList instructionList [empty] ;
       <semantic_instructions_list_no_verif>
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
         !?ioOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList
+        !inConstraintCurrentPassName
+        !?ioPropertyMap
+        !?ioMapAsConstraintPropertyMap
+        !?ioConstraintPropertyDefinitionSet
+        !?ioCallInstructionSharedPropertySignatureMap
       ;
     end block (!here) ;
   end block () ;
@@ -3411,7 +3665,7 @@ rule <semantic_instruction>
   $end$ ;
   $foreach$ ;
   $;$ ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -3534,7 +3788,12 @@ rule <semantic_instruction>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $match$ ;
 #--- Get first operand
@@ -3600,13 +3859,18 @@ rule <semantic_instruction>
         ;
       #--- Instructions list
         $:$ ;
-        @typeInstructionsList instructionsList [empty] ;
+        @typeInstructionList instructionsList [empty] ;
         <semantic_instructions_list>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !?ioOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
+          !inConstraintCurrentPassName
+          !?ioPropertyMap
+          !?ioMapAsConstraintPropertyMap
+          !?ioConstraintPropertyDefinitionSet
+          !?ioCallInstructionSharedPropertySignatureMap
         ;
         casesList += !case1_name !case2_name !instructionsList ;
       end block (!here) ;
@@ -3614,13 +3878,18 @@ rule <semantic_instruction>
   #---------------------  E L S E    P A R T -----------------------
     block ioVariablesMap.testPart () :
       $else$ ;
-      @typeInstructionsList elsePartInstructionsList [empty] ;
+      @typeInstructionList elsePartInstructionsList [empty] ;
       <semantic_instructions_list>
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
         !?ioOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elsePartInstructionsList
+        !inConstraintCurrentPassName
+        !?ioPropertyMap
+        !?ioMapAsConstraintPropertyMap
+        !?ioConstraintPropertyDefinitionSet
+        !?ioCallInstructionSharedPropertySignatureMap
       ;
     end block (!here) ;
   end block () ;
@@ -3638,7 +3907,7 @@ rule <semantic_instruction>
                                                              !operand2_isEnumeration
                                                              !casesList
                                                              !elsePartInstructionsList] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -3648,7 +3917,12 @@ rule <semantic_instructions_list_no_verif>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   repeat
   while
@@ -3657,7 +3931,12 @@ rule <semantic_instructions_list_no_verif>
       !?listeEntitesAengendrer
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
-      !?ioInstructionsList
+      !?ioInstructionList
+      !inConstraintCurrentPassName
+      !?ioPropertyMap
+      !?ioMapAsConstraintPropertyMap
+      !?ioConstraintPropertyDefinitionSet
+      !?ioCallInstructionSharedPropertySignatureMap
     ;
   end repeat ;
 end rule ;
@@ -3672,12 +3951,12 @@ rule <optional_assignment>
   ??@typeCplusPlusName inVariableCppName
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap unused ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
 :
   @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !inVariableCppName !inVariableType] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -3688,7 +3967,7 @@ rule <optional_assignment>
   ??@typeCplusPlusName inTargetVariableCppName
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
@@ -3709,7 +3988,7 @@ rule <optional_assignment>
   checkAssignmentTypesCompatibility !inVariableType !sourceType !here ;
 #--- Generate instruction
   @typeInstruction instruction := [@C_declarationInstructionWithAssignment new !inVariableType !inTargetVariableCppName !sourceExpression] ;
-  ioInstructionsList += !instruction ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -3720,7 +3999,7 @@ rule <optional_assignment>
   ??@typeCplusPlusName inTargetVariableCppName
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionsList ioInstructionsList
+  ?!@typeInstructionList ioInstructionList
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
@@ -3745,7 +4024,7 @@ rule <optional_assignment>
 #--- Generate instruction
   @typeExpression  e := [@typeConstructorExpression new !inTypeName !constructorName !expressionList] ;
   @typeInstruction i := [@C_declarationInstructionWithAssignment new !inVariableType !inTargetVariableCppName !e] ;
-  ioInstructionsList += !i ;
+  ioInstructionList += !i ;
 end rule ;
 
 #---------------------------------------------------------------------------*

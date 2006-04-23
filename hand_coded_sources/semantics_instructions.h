@@ -27,7 +27,7 @@
 
 //---------------------------------------------------------------------------*
 
-class GGS_typeInstructionsList ;
+class GGS_typeInstructionList ;
 class AC_OutputStream ;
 class C_String ;
 class GGS_typeCplusPlusName ;
@@ -37,7 +37,7 @@ class cPtr_AC_galgasType ;
 //---------------------------------------------------------------------------*
 
 void
-generateInstructionListForList (const GGS_typeInstructionsList & inList,
+generateInstructionListForList (const GGS_typeInstructionList & inList,
                                 AC_OutputStream & ioCppFile,
                                 const C_String & inLexiqueClassName,
                                 const C_String & inTargetFileName,
@@ -46,7 +46,7 @@ generateInstructionListForList (const GGS_typeInstructionsList & inList,
                                 const bool inGenerateSemanticInstructions) ;
 
 void
-generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionsList & inList,
+generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionList & inList,
                                           AC_OutputStream & inHfile,
                                           const C_String & inLexiqueClassName,
                                           const C_String & inTargetFileName,
@@ -54,11 +54,11 @@ generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionsList & inLis
                                           const bool inNotDeclared) ;
 
 bool
-isLexiqueFormalArgumentUsedForList (const GGS_typeInstructionsList & inList,
+isLexiqueFormalArgumentUsedForList (const GGS_typeInstructionList & inList,
                                     const bool inGenerateSemanticInstructions) ;
 
 bool
-formalArgumentIsUsedForList (const GGS_typeInstructionsList & inList,
+formalArgumentIsUsedForList (const GGS_typeInstructionList & inList,
                              const GGS_typeCplusPlusName & inArgumentCppName,
                              const bool inGenerateSemanticInstructions) ;
 

@@ -250,7 +250,7 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
       const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
       inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, inReturnsEntityInstance, fichierCPP) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
-      fichierCPP << "  switch (lexique_var_.nextProductionIndex ()) {\n" ;
+      fichierCPP << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
       for (sint32 j=first ; j<=derniere ; j++) {
         fichierCPP << "  case " << ((sint32)(j - first + 1)) << " :\n  " ;
         const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
@@ -520,7 +520,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       generatedZone3 << inTargetFileName
                      << "::\n"
                      << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
-                     << " (" << inLexiqueName << " & " << (existeProduction ? "lexique_var_" : "") ;
+                     << " (" << inLexiqueName << " & " << (existeProduction ? "_inLexique" : "") ;
       GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
@@ -563,7 +563,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         }
         generatedZone3 << inTargetFileName
                        << "::startParsing_"  << currentAltForNonTerminal->mKey
-                       << " (" << inLexiqueName << " & lexique_var_" ;
+                       << " (" << inLexiqueName << " & _inLexique" ;
         GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
@@ -580,18 +580,18 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                          << " * _outReturnedModelInstance = NULL ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
-        generatedZone3 << "  const bool ok = lexique_var_"
+        generatedZone3 << "  const bool ok = _inLexique"
                    ".performTopDownParsing (gProductions, gProductionIndexes"
                    ",\n                                gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                 << productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE)
                 << ") ;\n"
-                   "  if (ok && ! lexique_var_.parseOnlyFlagOn ()) {\n"
+                   "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"
                    "    " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "_outReturnedModelInstance = " ;      
         }
         generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
-                       << " (lexique_var_" ;
+                       << " (_inLexique" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         numeroParametre = 1 ;
         while (parametre != NULL) {
@@ -613,7 +613,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                                                                 metamodelName
                                                                 COMMA_HERE) ;
           generatedZone3 << "    _checkMetamodel_" << metamodelName
-                         << " (lexique_var_, _outReturnedModelInstance) ;\n" ;
+                         << " (_inLexique, _outReturnedModelInstance) ;\n" ;
         }
         generatedZone3 << "  }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
@@ -632,8 +632,8 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       generatedZone3.writeCTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
-              << " (" << inLexiqueName << " & lexique_var_) {\n"
-                 "  return lexique_var_.nextProductionIndex () ;\n"
+              << " (" << inLexiqueName << " & _inLexique) {\n"
+                 "  return _inLexique.nextProductionIndex () ;\n"
                  "}\n\n" ;
     }
   }

@@ -42,11 +42,11 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
                 << "::\n"
                    "methode_" << current->mKey << " (C_Lexique &" ;
     //--- L'argument lexique est-il utilise ?
-      const bool lexiqueUtilise = isLexiqueFormalArgumentUsedForList (current->mInfo.mInstructionsList, true) ;
+      const bool lexiqueUtilise = isLexiqueFormalArgumentUsedForList (current->mInfo.mInstructionList, true) ;
       if (! lexiqueUtilise) {
         inCppFile << " /*" ;
       }
-      inCppFile << " lexique_var_" ;
+      inCppFile << " _inLexique" ;
       if (! lexiqueUtilise) {
         inCppFile << " */" ;
       }
@@ -55,8 +55,8 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       while (currentArgument != NULL) {
         macroValidPointer (currentArgument) ;
         inCppFile << ",\n                                " ;
-        currentArgument->mType (HERE)->generateFormalParameter (inCppFile, ! currentArgument->aModeIn.boolValue ()) ;
-        const bool variableUtilisee = formalArgumentIsUsedForList (current->mInfo.mInstructionsList, currentArgument->mCppName, true) ;
+        currentArgument->mType (HERE)->generateFormalParameter (inCppFile, ! currentArgument->mModeIn.boolValue ()) ;
+        const bool variableUtilisee = formalArgumentIsUsedForList (current->mInfo.mInstructionList, currentArgument->mCppName, true) ;
         if (! variableUtilisee) {
           inCppFile << "/* " ;
         }
@@ -71,7 +71,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
     //--- Engendrer la liste d'instructions
       C_String inutilise ;
       sint32 prototypeIndex = 0 ; // Non used here
-      generateInstructionListForList (current->mInfo.mInstructionsList, inCppFile,
+      generateInstructionListForList (current->mInfo.mInstructionList, inCppFile,
                                       inutilise, inTargetFileName, prototypeIndex,
                                       inGenerateDebug, true) ; 
       inCppFile << "}\n\n" ;
@@ -94,7 +94,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
-      currentArgument->mType (HERE)->generateFormalParameter (inHfile, ! currentArgument->aModeIn.boolValue ()) ;
+      currentArgument->mType (HERE)->generateFormalParameter (inHfile, ! currentArgument->mModeIn.boolValue ()) ;
       currentArgument = currentArgument->nextObject () ;
     }
   //--- Terminer la declaration
@@ -406,7 +406,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
            << "::\nGGS_" << aNomClasse << " (const "
               "GGS_" << aNomClasse << " & inOperand) {\n"
               "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n"
-              "  macroTransfertPointer (mPointer, inOperand.mPointer) ;\n"
+              "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
               "}\n\n" ;
 
 //--- Implementer la declaration du destructeur
@@ -420,14 +420,14 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse << "::\n"
            << "operator = (const GGS_" << aNomClasse << " & inOperand) {\n"
-           << "  macroTransfertPointer (mPointer, inOperand.mPointer) ;\n"
+           << "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
            << "}\n\n" ;
 
 //--- Generate construction and assignment from pointer
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse
             << "::\noperator = (cPtr_" << aNomClasse << " * inSource) {\n"
-               "  macroTransfertPointer (mPointer, inSource) ;\n"
+               "  macroAttachPointer (mPointer, inSource) ;\n"
                "}\n\n" ;
 
   inCppFile.writeCHyphenLineComment () ;
@@ -435,7 +435,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
             << "::\nGGS_" << aNomClasse << " ("
                "cPtr_" << aNomClasse << " * inSource) {\n"
                "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n"
-               "  macroTransfertPointer (mPointer, inSource) ;\n"
+               "  macroAttachPointer (mPointer, inSource) ;\n"
                "}\n\n" ;
 
 //--- Engendrer la deeclaration de la surcharge de l'opeerateur ()
