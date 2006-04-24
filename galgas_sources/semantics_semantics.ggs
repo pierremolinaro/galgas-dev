@@ -485,6 +485,15 @@ class @typeJokerInExpression extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+#   A D D I T I O N    O P E R A T I O N                                    *
+#---------------------------------------------------------------------------*
+
+class @typeAddOperation extends @typeExpression {
+  @typeExpression mLeftExpression ;
+  @typeExpression mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   C O M P A R E    O P E R A T I O N S                                    *
 #---------------------------------------------------------------------------*
 

@@ -637,6 +637,39 @@ bool cPtr_typeStrictSupTest
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeAddOperation::generateExpression (AC_OutputStream & ioCppFile) {
+  ioCppFile << "(" ;
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ") + (" ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeAddOperation::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeAddOperation::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeReaderCallInExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
