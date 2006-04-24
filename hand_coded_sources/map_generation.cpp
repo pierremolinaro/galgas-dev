@@ -84,17 +84,6 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
   inHfile << "class elementOf_GGS_" << aNomTable << " ;\n\n" ;
   inHfile << "class GGS_" << aNomTable << " : public AC_galgas_map {\n" ;
-  GGS_stateMap::element_type * currentState = mStateMap.firstObject () ;
-  if (currentState != NULL) {
-    inHfile << "//--- Enumeration for states\n"
-               "  public : typedef enum {enum_" << currentState->mKey ;
-    currentState = currentState->nextObject () ;
-    while (currentState != NULL) {
-      inHfile << ", enum_" << currentState->mKey ;
-      currentState = currentState->nextObject () ;
-    }
-    inHfile << "} enumForStates ;\n" ;
-  }
   inHfile << "//--- Element Class\n"
              "  public : typedef elementOf_GGS_" << aNomTable << " element_type ;\n"
              "//--- Get pointers\n"

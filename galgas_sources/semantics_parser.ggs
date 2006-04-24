@@ -53,14 +53,6 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-rule <parse_states>
-  ?!@stateMap ioStateValues
-  !@string outFirstStateName
-  !@lastStateList outLastStateList
-  !@transitionStatusMap  outTransitionStatusMap
-label parse
-;
-
 rule <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
@@ -1434,7 +1426,7 @@ rule <semantics_declaration>
   end foreach ;
   #--- Inserer dans la map des classes utilisables
     @AC_galgasType c := [@typeGalgasClassType new 
-                                            !abstractClassName
+                                             !abstractClassName
                                              !tableDesMethodes
                                              !listeTousAttributsSemantiques
                                              !tableDesClassesAncetres
@@ -1663,58 +1655,56 @@ rule <semantics_declaration>
   @typeClassMessagesMap tableMessagesClasseConcrete [empty] ;
   @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
   @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
-  block tableDesMethodes.definitionClasseNonAbstraite () :
-    repeat
-    while
-      <overrided_method>
-        !concreteClassName
-        !ancestorClassMethodsMap
-        !listeTousAttributsSemantiques
-        !listeAttributsSemantiquesCourants
-        !?tableDesMethodes
-        !tableDesClassesAncetres
-        !messageMapForHeirs
-        !tableAttributs
-        !estAbstraite
-        !?listeEntitesAengendrer
-        !?ioComponentSemanticsEntitiesMap
-        !?tableMethodesAimplementer
-        !?tableEnAvant
-        !?ioOptionsComponentsMapForUse
-      ;
-    while
-      $message$ ;
-    #--- Nom du message
-      @lstring messageName ;
-      $identifier$ ? messageName ;
-    #--- Chaine definissant le message d'erreur
-      @lstring messageText ;
-      $literal_string$ ? messageText ;
-    #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![messageName value]] then
-        [!?messageMapForHeirs insertKey !messageName] ;
-      end if ; 
-      [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ; 
-      $;$ ;
-    while
-      <non_abstract_method>
-        !concreteClassName
-        !ancestorClassMethodsMap
-        !listeTousAttributsSemantiques
-        !listeAttributsSemantiquesCourants
-        !?tableDesMethodes
-        !tableDesClassesAncetres
-        !messageMapForHeirs
-        !tableAttributs
-        !estAbstraite
-        !?listeEntitesAengendrer
-        !?ioComponentSemanticsEntitiesMap
-        !?tableMethodesAimplementer
-        !?tableEnAvant
-        !?ioOptionsComponentsMapForUse
-      ;
-    end repeat ;
-  end block () ;
+  repeat
+  while
+    <overrided_method>
+      !concreteClassName
+      !ancestorClassMethodsMap
+      !listeTousAttributsSemantiques
+      !listeAttributsSemantiquesCourants
+      !?tableDesMethodes
+      !tableDesClassesAncetres
+      !messageMapForHeirs
+      !tableAttributs
+      !estAbstraite
+      !?listeEntitesAengendrer
+      !?ioComponentSemanticsEntitiesMap
+      !?tableMethodesAimplementer
+      !?tableEnAvant
+      !?ioOptionsComponentsMapForUse
+    ;
+  while
+    $message$ ;
+  #--- Nom du message
+    @lstring messageName ;
+    $identifier$ ? messageName ;
+  #--- Chaine definissant le message d'erreur
+    @lstring messageText ;
+    $literal_string$ ? messageText ;
+  #--- Entrer le message dans la map
+    if not [inheritedMessageMap hasKey ![messageName value]] then
+      [!?messageMapForHeirs insertKey !messageName] ;
+    end if ; 
+    [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ; 
+    $;$ ;
+  while
+    <non_abstract_method>
+      !concreteClassName
+      !ancestorClassMethodsMap
+      !listeTousAttributsSemantiques
+      !listeAttributsSemantiquesCourants
+      !?tableDesMethodes
+      !tableDesClassesAncetres
+      !messageMapForHeirs
+      !tableAttributs
+      !estAbstraite
+      !?listeEntitesAengendrer
+      !?ioComponentSemanticsEntitiesMap
+      !?tableMethodesAimplementer
+      !?tableEnAvant
+      !?ioOptionsComponentsMapForUse
+    ;
+  end repeat ;
 #--- Verify that all inherited messages are defined
   foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
     if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
@@ -1822,59 +1812,57 @@ label importSemantics
   @typeClassInheritedMessagesMap messageMapForHeirs [empty] ;
   @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
   @M_optionComponents optionsComponentsMapForUse [empty] ;
-  block tableDesMethodes.definitionClasseNonAbstraite () :
-    repeat
-    while
-      @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
-      <overrided_method>
-        !concreteClassName
-        !ancestorClassMethodsMap
-        !listeTousAttributsSemantiques
-        !listeAttributsSemantiquesCourants
-        !?tableDesMethodes
-        !tableDesClassesAncetres
-        !messageMapForHeirs
-        !tableAttributs
-        !estAbstraite
-        !?listeEntitesAengendrer
-        !?ioComponentSemanticsEntitiesMap
-        !?tableMethodesAimplementer
-        !?tableEnAvant
-        !?optionsComponentsMapForUse
-      ;
-    while
-      $message$ ;
-    #--- Nom du message
-      @lstring messageName ;
-      $identifier$ ? messageName ;
-      @lstring messageText ;
-      $literal_string$ ?messageText ;
-    #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![messageName value]] then
-        [!?messageMapForHeirs insertKey !messageName] ;
-      end if ; 
-      [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ; 
-      $;$ ;
-    while
-      @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
-      <non_abstract_method>
-        !concreteClassName
-        !ancestorClassMethodsMap
-        !listeTousAttributsSemantiques
-        !listeAttributsSemantiquesCourants
-        !?tableDesMethodes
-        !tableDesClassesAncetres
-        !messageMapForHeirs
-        !tableAttributs
-        !estAbstraite
-        !?listeEntitesAengendrer
-        !?ioComponentSemanticsEntitiesMap
-        !?tableMethodesAimplementer
-        !?tableEnAvant
-        !?optionsComponentsMapForUse
-      ;
-    end repeat ;
-  end block () ;
+  repeat
+  while
+    @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+    <overrided_method>
+      !concreteClassName
+      !ancestorClassMethodsMap
+      !listeTousAttributsSemantiques
+      !listeAttributsSemantiquesCourants
+      !?tableDesMethodes
+      !tableDesClassesAncetres
+      !messageMapForHeirs
+      !tableAttributs
+      !estAbstraite
+      !?listeEntitesAengendrer
+      !?ioComponentSemanticsEntitiesMap
+      !?tableMethodesAimplementer
+      !?tableEnAvant
+      !?optionsComponentsMapForUse
+    ;
+  while
+    $message$ ;
+  #--- Nom du message
+    @lstring messageName ;
+    $identifier$ ? messageName ;
+    @lstring messageText ;
+    $literal_string$ ?messageText ;
+  #--- Entrer le message dans la map
+    if not [inheritedMessageMap hasKey ![messageName value]] then
+      [!?messageMapForHeirs insertKey !messageName] ;
+    end if ; 
+    [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ; 
+    $;$ ;
+  while
+    @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
+    <non_abstract_method>
+      !concreteClassName
+      !ancestorClassMethodsMap
+      !listeTousAttributsSemantiques
+      !listeAttributsSemantiquesCourants
+      !?tableDesMethodes
+      !tableDesClassesAncetres
+      !messageMapForHeirs
+      !tableAttributs
+      !estAbstraite
+      !?listeEntitesAengendrer
+      !?ioComponentSemanticsEntitiesMap
+      !?tableMethodesAimplementer
+      !?tableEnAvant
+      !?optionsComponentsMapForUse
+    ;
+  end repeat ;
 #--- Verify that all inherited messages are defined
   foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
     if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
@@ -1925,7 +1913,7 @@ rule <abstract_method>
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-  [!?tableDesMethodes insertAbstract !nomMethode !listeDeTypes] ;
+  [!?tableDesMethodes insertKey !nomMethode !listeDeTypes] ;
   @typeInstructionList listeInstructions [empty] ;
   [!?tableMethodesAimplementer insertAbstract !nomMethode !listeDeTypes !listeTypeEtNomsArguments !listeInstructions] ;
   $;$ ;
@@ -2058,7 +2046,7 @@ rule <non_abstract_method>
     ?listeTypeEtNomsArguments
     !?ioOptionsComponentsMapForUse
  ;
-  [!?tableDesMethodes insertNotAbstract !methodName !methodSignature] ;
+  [!?tableDesMethodes insertKey !methodName !methodSignature] ;
   [!?tableMethodesAimplementer insertNotAbstract !methodName !methodSignature !listeTypeEtNomsArguments !instructionsList] ;
   $end$ ;
   $reader$ ;
@@ -2110,7 +2098,7 @@ rule <overrided_method>
   ;
 #--- Verify reader signature is compatible with overriden reader signature
   @L_EXsignature listeDeTypesMethodeOriginale ;
-  [!?tableDesMethodes searchForOverride !methodName ?listeDeTypesMethodeOriginale] ;
+  [!?tableDesMethodes searchKey !methodName ?listeDeTypesMethodeOriginale] ;
   verifierCompatibiliteSignatures
     !listeDeTypesMethodeOriginale 
     !methodSignature
@@ -4029,80 +4017,6 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   M A P    T Y P E    D E C L A R A T I O N                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <parse_states>
-  ?!@stateMap ioStateValues
-  !@string outFirstStateName
-  !@lastStateList outLastStateList
-  !@transitionStatusMap  outTransitionStatusMap
-:
-#--- First state
-  select
-    $firststate$ ;
-    @lstring firstStateName ;
-    $identifier$ ? firstStateName ;
-    [!?ioStateValues searchKey !firstStateName] ;
-    outFirstStateName := [firstStateName value] ;
-  or
-    outFirstStateName := "" ;
-    if [ioStateValues count] != 0 then 
-      error here : "since you have declared states, you must define a first state" ;
-    end if ;
-  end select ;
-#--- Transitions
-  outTransitionStatusMap := [@transitionStatusMap  empty] ;
-  repeat
-  while
-    $transition$ ;
-    @lstring transitionName ;
-    $identifier$ ? transitionName ;
-    @lastStateEnum status ;
-    @L_stringList messageList ;
-    select
-      status := [@lastStateEnum acceptedState] ;
-      messageList := [@L_stringList empty] ;
-    or
-      $warning$ ;
-      status := [@lastStateEnum warningState] ;
-      <message_pattern> ? messageList ;
-    or
-      $error$ ;
-      status := [@lastStateEnum errorState] ;
-      <message_pattern> ? messageList ;
-    end select ;
-    [!?outTransitionStatusMap insertKey !transitionName !status !messageList] ;
-  end repeat ;
-#--- Last state(s)
-  outLastStateList := [@lastStateList empty] ;
-  repeat
-  while
-    $laststate$ ;
-    @lstring lastStateName ;
-    $identifier$ ? lastStateName ;
-    [!?ioStateValues searchKey !lastStateName] ;
-    @lastStateEnum status ;
-    @L_stringList messageList ;
-    select
-      status := [@lastStateEnum acceptedState] ;
-      messageList := [@L_stringList empty] ;
-    or
-      $warning$ ;
-      status := [@lastStateEnum warningState] ;
-      <message_pattern> ? messageList ;
-    or
-      $error$ ;
-      status := [@lastStateEnum errorState] ;
-      <message_pattern> ? messageList ;
-    end select ;
-    outLastStateList += !lastStateName !status !messageList ;
-  end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  M A P    D E C L A R A T I O N                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -4130,6 +4044,7 @@ rule <semantics_declaration>
     $class$ ;
     @lstring cppClassName ;
     $identifier$ ?cppClassName ;
+    warning cppClassName: "old style map definition" ;
     $;$ ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [empty] ;
@@ -4142,20 +4057,14 @@ rule <semantics_declaration>
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      @string emptyString := "" ;
-      @lastStateList emptyLastStateList [empty] ;
-      @transitionStatusMap  transitionStatusMap [empty] ;
-      insertMethodList += !nomMethode ![errorMessage value] !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
+      insertMethodList += !nomMethode ![errorMessage value] !true ; # Last parameter has any value
     while 
       $search$ ;
       @lstring nomMethode ;
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      @string emptyString := "" ;
-      @lastStateList emptyLastStateList [empty] ;
-      @transitionStatusMap  transitionStatusMap [empty] ;
-      searchMethodList += !nomMethode ![errorMessage value] !emptyString !emptyLastStateList !transitionStatusMap !true ; # Last parameter has any value
+      searchMethodList += !nomMethode ![errorMessage value] !true ; # Last parameter has any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -4281,20 +4190,6 @@ rule <semantics_declaration>
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
-  #--- Declare state enumeration values
-    @stateMap stateValues [empty] ;
-    select
-    or
-      $state$ ;
-      repeat
-        @lstring idf ;
-        $identifier$ ? idf ;
-        [!?stateValues insertKey !idf] ;
-      while
-        $,$ ;
-      end repeat ;
-      $;$ ; 
-    end select ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [empty] ;
     @insertOrSearchMethodList searchMethodList [empty] ;
@@ -4313,10 +4208,6 @@ rule <semantics_declaration>
       @lstring errorMessage ;
       <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
       action check_KL_escapeCharacters !errorMessage ;
-      @string firstStateName ;
-      @lastStateList emptyLastStateList ;
-      @transitionStatusMap  transitionStatusMap [empty] ;
-      <parse_states> !?stateValues ?firstStateName ?emptyLastStateList ?transitionStatusMap  ;
       $;$ ;
     #--- Insert method
       @L_EXsignature methodSignature [empty] ;
@@ -4325,7 +4216,7 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !methodName !methodSignature] ;
-      insertMethodList += !methodName ![errorMessage value] !firstStateName !emptyLastStateList !transitionStatusMap !false ;
+      insertMethodList += !methodName ![errorMessage value] !false ;
    #-- Insert And Get Index Method
       if [getIndexMethodName value] != "" then
         @L_EXsignature getIndexMethodSignature [empty] ;
@@ -4335,7 +4226,7 @@ rule <semantics_declaration>
           getIndexMethodSignature += !kAttributType !inPassingMode ;      
         end foreach ;
         [!?mapMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        insertMethodList += !getIndexMethodName ![errorMessage value] !firstStateName !emptyLastStateList !transitionStatusMap !true ;
+        insertMethodList += !getIndexMethodName ![errorMessage value] !true ;
       end if ;
     while
       $search$ ;
@@ -4344,10 +4235,6 @@ rule <semantics_declaration>
       @lstring errorMessage ;
       <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
       action check_K_escapeCharacters !errorMessage ;
-      @string firstStateName ;
-      @lastStateList emptyLastStateList ;
-      @transitionStatusMap  transitionStatusMap [empty] ;
-      <parse_states> !?stateValues ?firstStateName ?emptyLastStateList ?transitionStatusMap;
       $;$ ;
     #--- Insert search method in modifier map
       @L_EXsignature methodSignature [empty] ;
@@ -4356,7 +4243,7 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapMethodMap insertKey !methodName !methodSignature] ;
-      searchMethodList += !methodName ![errorMessage value] !firstStateName !emptyLastStateList !transitionStatusMap !false ;
+      searchMethodList += !methodName ![errorMessage value] !false ;
     #--- Insert 'Get Index' search method in modifier map (if any)
       if [getIndexMethodName value] != "" then
         @L_EXsignature getIndexMethodSignature [empty] ;
@@ -4366,19 +4253,9 @@ rule <semantics_declaration>
          getIndexMethodSignature += !kAttributType !outPassingMode ;      
         end foreach ;
         [!?mapMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        searchMethodList += !getIndexMethodName ![errorMessage value] !firstStateName !emptyLastStateList !transitionStatusMap !true ;
+        searchMethodList += !getIndexMethodName ![errorMessage value] !true ;
       end if ;
     end repeat ;
-  #--- Check that insert method transition names correspond to search methods
-    if [stateValues count] > 0 then
-      foreach insertMethodList (??@lstring kInsertMethod ??* ??* ??* ??@transitionStatusMap kTransitionStatusMap ...) :
-        foreach insertMethodList (??@lstring kSearchMethod ...) :
-          if not [kTransitionStatusMap hasKey ![kSearchMethod value]] then
-            error kInsertMethod : "This insert method does not define the '" . [kSearchMethod value] . "' transition" ;
-          end if ;
-        end foreach ;
-      end foreach ;
-    end if ;
   #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new !mapTypeName
                                                 !listeTousAttributsSemantiques
@@ -4387,8 +4264,7 @@ rule <semantics_declaration>
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
   #--- Insertion dans la map des classes definies dans le fichier source courant
-    @typeEntityToGenerate def := [@C_mapToImplement new !stateValues
-                                                        !mapTypeName
+    @typeEntityToGenerate def := [@C_mapToImplement new !mapTypeName
                                                         !listeTousAttributsSemantiques
                                                         !listeTypeeAttributsExternesCourants
                                                         !insertMethodList
@@ -4430,20 +4306,14 @@ label importSemantics
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      @string emptyString := "" ;
-      @lastStateList emptyLastStateList [empty] ;
-      @transitionStatusMap  transitionStatusMap [empty] ;
-      insertMethodList += !nomMethode ![errorMessage value] !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
+      insertMethodList += !nomMethode ![errorMessage value] !true ; #last parameter can have any value
     while 
       $search$ ;
       @lstring nomMethode ;
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      @string emptyString := "" ;
-      @lastStateList emptyLastStateList [empty] ;
-      @transitionStatusMap  transitionStatusMap [empty] ;
-      searchMethodList += !nomMethode ![errorMessage value] !emptyString !emptyLastStateList !transitionStatusMap !true ; #last parameter can have any value
+      searchMethodList += !nomMethode ![errorMessage value] !true ; #last parameter can have any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -4562,17 +4432,6 @@ label importSemantics
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
-  #--- States
-    select
-    or
-      $state$ ;
-      repeat
-        $identifier$ ? * ;
-      while
-        $,$ ;
-      end repeat ;
-      $;$ ; 
-    end select ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @typeTableBlocsDeTable tableMethodesBloc [empty] ;
   #--- Build insert and search method map
@@ -4587,7 +4446,6 @@ label importSemantics
       @lstring methodName ;
       @lstring getIndexMethodName ;
       <map_method> ?methodName ?getIndexMethodName ?* ;
-      <parse_states> parse ;
       $;$ ;
     #--- Enter insert method in modifier map
       @L_EXsignature methodSignature [empty] ;
@@ -4611,7 +4469,6 @@ label importSemantics
       @lstring methodName ;
       @lstring getIndexMethodName ;
       <map_method> ?methodName ?getIndexMethodName ?* ;
-      <parse_states> parse ;
       $;$ ;
     #--- Enter search method in modifier map
       @L_EXsignature methodSignature [empty] ;
@@ -4903,7 +4760,7 @@ rule <semantics_declaration>
       ?signatureForGrammarComponent
     ;
     $;$ ;
-    [!?readersInInstructionMap insertNotAbstract !methodName !listeDeTypes] ;
+    [!?readersInInstructionMap insertKey !methodName !listeDeTypes] ;
   while
     $modifier$ ;
     select
@@ -4923,7 +4780,7 @@ rule <semantics_declaration>
         !?tableEnAvant
         ?signatureForGrammarComponent
       ;
-      [!?modifiersMap insertNotAbstract !methodName !listeDeTypes] ;
+      [!?modifiersMap insertKey !methodName !listeDeTypes] ;
     or
       $+=$ ;
       @location errorLocation := here ;
@@ -5042,7 +4899,7 @@ label importSemantics
       ?signature
     ;
     $;$ ;
-    [!?readersInInstructionMap insertNotAbstract ! readerName !listeDeTypes] ;
+    [!?readersInInstructionMap insertKey ! readerName !listeDeTypes] ;
     [!?readerMap insertKey !readerName !signature] ;
   while
     $modifier$ ;
@@ -5063,7 +4920,7 @@ label importSemantics
         !?tableEnAvant
         ?signature
       ;
-      [!?EXmodifiersMap insertNotAbstract ! modifierName !listeDeTypes] ;
+      [!?EXmodifiersMap insertKey ! modifierName !listeDeTypes] ;
       [!?modifierMap insertKey !modifierName !signature] ;
     or
       $+=$ ;

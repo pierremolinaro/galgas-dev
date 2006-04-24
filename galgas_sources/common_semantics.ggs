@@ -1137,15 +1137,10 @@ class @typeGalgas_stringset extends @AC_galgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @typeTableMethodes
-  class cClassMethodsMap ;
-  insert insertAbstract error message "a reader named '%' is already declared" ;
-  insert insertNotAbstract error message "a reader named '%' is already declared" ;
-  search searchKey error message "there is no reader named '%'" ;
-  search searchForOverride error message "the reader '%' cannot be overriden : it is not declared in superclass" ;
-
-  block definitionClasseNonAbstraite : () : () ;
+map @typeTableMethodes {
   @L_EXsignature aListeTypesParametres ;
+  insert insertKey error message "a reader named '%K' is already declared" ;
+  search searchKey error message "there is no reader named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1585,34 +1580,9 @@ map @typeSemanticAttributesMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-enum @lastStateEnum {
-  acceptedState, warningState, errorState ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @lastStateList  {
-  @lstring mLastState ;
-  @lastStateEnum mStatus ;
-  @L_stringList mMessageList ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @transitionStatusMap {
-  @lastStateEnum mStatus ;
-  @L_stringList mMessageList ;
-  insert insertKey error message "a transition named '%K' is already declared in %L" ;
-}
-
-#---------------------------------------------------------------------------*
-
 list @insertOrSearchMethodList {
   @lstring mMethodName ;
   @string mErrorMessage ;
-  @string mFirstState ;
-  @lastStateList mLastStateList ;
-  @transitionStatusMap  mTransitionStatusMap ;
   @bool mIsGetIndexMethod ;
 }
 
@@ -1800,8 +1770,8 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
-#--- class methods map
-  @typeTableMethodes mMethodsMap ;  
+#--- class reader map
+  @typeTableMethodes mReaderMap ;
 
 #--- Attributes list (those from inherited classes, followed by those from current class)
   @typeListeAttributsSemantiques mNonExternAttributesList ;  
@@ -1831,7 +1801,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
     ??@lstring inMethodName
     !@L_EXsignature outMethodSignature
   :
-    @typeTableMethodes methodMap := mMethodsMap ;
+    @typeTableMethodes methodMap := mReaderMap ;
     [!?methodMap searchKey !inMethodName ?outMethodSignature] ;
   end reader ;
 
