@@ -1091,15 +1091,7 @@ class @typeDefinitionTableAimplementer extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
-map @stateMap {
-  insert insertKey error message "the '%K' state is already declared in %L"  ;
-  search searchKey error message "the '%K' state is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @C_mapToImplement extends @typeEntityToGenerate {
-  @stateMap mStateMap ;
   @lstring aNomTable ;
   @typeListeAttributsSemantiques mNonExternAttributesList ;
   @L_nameWithType mExternAttributesList ;
