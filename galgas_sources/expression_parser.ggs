@@ -514,6 +514,24 @@ rule <relation_factor>
   end select ;
 end rule ;
 
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C H E C K    A D D I T I O N    O P E R A T O R                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine addition_types_check
+  ??@AC_galgasType inLeftExpressionType
+  ??@AC_galgasType inRightExpressionType
+:
+  match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+  else
+    error here : "addition between " . [inLeftExpressionType messageGalgasType] .
+           " and " . [inRightExpressionType messageGalgasType] . " is not valid"  ;
+  end match ;
+end routine ;
+
 #------------------------------------------------------------------------------*
 #                                                                              *
 #   S I M P L E    E X P R E S S I O N                                         *
@@ -534,6 +552,24 @@ rule <simple_expression>
     ?outExpression
     ?outResultType
   ;
+  repeat
+  while 
+    $+$ ;
+    @typeExpression leftExpression := outExpression ;
+    @AC_galgasType leftType := outResultType ;
+    @typeExpression rightExpression ;
+    @AC_galgasType rightType ;
+    <term>
+      !?ioEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?rightExpression
+      ?rightType
+    ;
+    addition_types_check !leftType !rightType ;
+    outExpression := [@typeAddOperation new !leftExpression !rightExpression] ;
+    outResultType := [@typeGalgas_uint new] ;
+  end repeat ;
 end rule ;
 
 #------------------------------------------------------------------------------*

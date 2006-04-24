@@ -1364,6 +1364,24 @@ rule <syntax_instruction>
   @typeListeBranchesInstructions listeBranchesChoix [empty] ;
   @L_branchList_ForGrammarComponent selectList [empty] ;
   block ioVariablesMap.testBloc () :
+    block ioVariablesMap.testPart () :
+      @typeInstructionList listeInstructionsBrancheChoix [empty] ;
+      @L_ruleSyntaxSignature syntaxSignature [empty] ;
+      <syntax_instructions_list_no_verif>
+        !?ioNonTerminalSymbolMapForSyntax
+        !inCheckNonTerminalsAreDeclaredWithParseLabel
+        !?ioEntitiesMap
+        !?listeEntitesAengendrer
+        !?ioOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?listeInstructionsBrancheChoix
+        !?tableTerminaux
+        !?syntaxSignature
+      ;
+      listeBranchesChoix += !listeInstructionsBrancheChoix ;
+      selectList += !syntaxSignature ;
+    end block (!here) ;
+    $or$ ;
     repeat
       block ioVariablesMap.testPart () :
         @typeInstructionList listeInstructionsBrancheChoix [empty] ;
@@ -1402,10 +1420,14 @@ label importSyntax
   $select$ ;
   @location positionDebut := here ;
   @L_branchList_ForGrammarComponent selectList [empty] ;
+  @L_ruleSyntaxSignature syntaxSignature [empty] ;
+  <syntax_instructions_list_no_verif> importSyntax !?syntaxSignature ;
+  selectList += !syntaxSignature ;
+  $or$ ;
   repeat
-    @L_ruleSyntaxSignature syntaxSignature [empty] ;
-    <syntax_instructions_list_no_verif> importSyntax !?syntaxSignature ;
-    selectList += !syntaxSignature ;
+    @L_ruleSyntaxSignature syntaxSignature2 [empty] ;
+    <syntax_instructions_list_no_verif> importSyntax !?syntaxSignature2 ;
+    selectList += !syntaxSignature2 ;
   while
     $or$ ;
   end repeat ;
