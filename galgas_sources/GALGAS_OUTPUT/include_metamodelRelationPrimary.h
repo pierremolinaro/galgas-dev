@@ -42,7 +42,7 @@ class cPtr_metamodelRelationPrimary : public cPtr_metamodelRelationExpression {
   public : GGS_luint  mVariableIndex ;
   public : GGS_lstring  mVariableMap ;
   public : GGS_lstring  mDomainName ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

@@ -30,7 +30,7 @@ public : virtual void generateLexicalCondition (AC_OutputStream & inCppFile) ;
 
   public : cPtr_typeConditionChaine (const GGS_lstring &  COMMA_LOCATION_ARGS) ;
   public : GGS_lstring  attributChaine ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

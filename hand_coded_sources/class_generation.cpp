@@ -167,7 +167,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
               "  public : void drop_operation (void) ;\n"
 
 //--- Generate 'description' reader declaration
-              "  public : GGS_string reader_description (void) const ;\n"
+              "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
               "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
@@ -180,7 +180,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
-    inHfile << "  public : GGS_string reader_" << messageCourant->mKey << " (void) const ;\n" ;
+    inHfile << "  public : GGS_string reader_" << messageCourant->mKey << " (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     messageCourant = messageCourant->nextObject () ;
   }
 
@@ -263,7 +263,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
 
 //--- Method for 'description' reader
-  generatedZone3 << "  public : virtual void appendForDescription (C_String & ioString) const = 0 ;\n" ;
+  generatedZone3 << "  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const = 0 ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;
@@ -453,7 +453,9 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inCppFile.writeCHyphenLineComment () ;
-    inCppFile << "GGS_string GGS_" << aNomClasse << "::reader_" << messageCourant->mKey << " (void) const {\n"
+    inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
+                 "reader_" << messageCourant->mKey << " (C_Lexique & /* _inLexique */\n"
+                 "                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  return GGS_string (mPointer != NULL, C_String ((mPointer == NULL) ? \"\" : mPointer->message_" << messageCourant->mKey << " ())) ;\n"
                  "}\n\n" ;
     messageCourant = messageCourant->nextObject () ;
@@ -469,11 +471,11 @@ void cPtr_typeDefClasseAbstraiteAimplementer
 //--- Generate 'description' reader implementation
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomClasse
-            << "\n::reader_description (void) const {\n"
+            << "\n::reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
                "  s << \"<class @" << aNomClasse << "\" ;\n"
                "  if (isBuilt ()) {\n"
-               "    mPointer->appendForDescription (s) ;\n"
+               "    mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;\n"
                "  }else{\n"
                "    s << \" not built\" ;\n"
                "  }\n"
@@ -574,7 +576,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
 
 //--- Method for 'description' reader
-  generatedZone3 << "  public : virtual void appendForDescription (C_String & ioString) const ;\n" ;
+  generatedZone3 << "  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;  
@@ -776,12 +778,16 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
 
 //--- Method for 'description' reader
   inCppFile.writeCHyphenLineComment () ;
-  inCppFile << "void cPtr_" << aNomClasse << "::appendForDescription (C_String & ioString) const {\n"
-               "  ioString << \"->@" << aNomClasse << ":\" ;\n" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
+  inCppFile << "void cPtr_" << aNomClasse << "::appendForDescription (C_Lexique & "
+            << ((current == NULL) ? "/* _inLexique */" : "_inLexique")
+            << ", C_String & ioString "
+            << ((current == NULL) ? "COMMA_UNUSED_LOCATION_ARGS" : "COMMA_LOCATION_ARGS")
+            << ") const {\n"
+               "  ioString << \"->@" << aNomClasse << ":\" ;\n" ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << current->aNomAttribut << ".reader_description () ;\n" ;
+    inCppFile << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE) ;\n" ;
     current = current->nextObject () ;
   }
   inCppFile << "}\n\n" ;

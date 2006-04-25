@@ -46,7 +46,7 @@ class cPtr_T_nonterminalInstruction_forGrammarComponent : public cPtr_AC_instruc
                                 const GGS_uint &  COMMA_LOCATION_ARGS) ;
   public : GGS_lstring  mNonterminalSymbolName ;
   public : GGS_uint  mNonterminalSymbolIndex ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

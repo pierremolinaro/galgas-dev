@@ -32,7 +32,7 @@ public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const ;
 
   public : cPtr_typeKeyName (const GGS_location &  COMMA_LOCATION_ARGS) ;
   public : GGS_location  mLocationOffset ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

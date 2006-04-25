@@ -29,7 +29,7 @@ class cPtr_TypeModel : public C_GGS_Object {
 //--- END OF USER ZONE 2
 
   public : cPtr_TypeModel (LOCATION_ARGS) ;
-  public : virtual void appendForDescription (C_String & ioString) const = 0 ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const = 0 ;
 } ;
 
 //---------------------------------------------------------------------------*

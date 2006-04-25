@@ -31,7 +31,7 @@ class cPtr_typeEntiteType : public cPtr_AC_semanticsEntity {
   public : GGS_AC_galgasType  aDefType ;
   public : virtual const char * message_messageTypeEntite (void) const ;
   public : static const char * static_string_message_messageTypeEntite (void) ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

@@ -42,7 +42,7 @@ public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgu
   public : GGS_typeCplusPlusName  aNomCppAttribut ;
   public : GGS_lstring  aMethodeDeListe ;
   public : GGS_typeCplusPlusNameList  aListeNomsCppArguments ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

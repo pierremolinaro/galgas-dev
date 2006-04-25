@@ -40,7 +40,7 @@ class cPtr_metamodelRelationDo : public cPtr_metamodelRelationExpression {
   public : GGS_metamodelRelationParameterList  mParameterList ;
   public : GGS_L_propertyPath  mPath ;
   public : GGS_lbool  mOperationIsAnd ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

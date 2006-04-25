@@ -131,7 +131,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * mFirstObject ;\n"
                       "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * mLastObject ;\n"
                       "//--- 'description' reader\n"
-                      "  public : GGS_string reader_description (void) const ;\n"
+                      "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
                       "} ;\n\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
@@ -202,7 +202,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     }
   //--- 'description' reader                 
     generatedZone3 << "//--- 'description' reader\n"
-                      "  public : virtual GGS_string reader_description (void) const ;\n" ;
+                      "  public : virtual GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
   //--- Phase methods                 
     generatedZone3 << "//--- Phases\n" ;
     GGS_constrainedEntityPassMap::element_type * currentPhase = currentConstrainedEntity->mInfo.mConstrainedEntityPassMap.firstObject () ;
@@ -338,7 +338,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                     "  macroMyDelete (ioRootObjectConstraint, GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << ") ;\n"
                     "  if (inRootObject != NULL) {\n"
                     "    macroValidPointer (inRootObject) ;\n"
-                    "    // const GGS_string s = inRootObject->reader_description () ;\n"
+                    "    // const GGS_string s = inRootObject->reader_description  (_inLexique COMMA_THERE) ;\n"
                     "    // printf (\"%s\\n\", s.cString ()) ;\n"
                     "  //--- Build object tree\n"
                     "    macroMyNew (ioRootObjectConstraint, GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " (inRootObject COMMA_HERE)) ;\n"
@@ -434,12 +434,12 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     generatedZone3.writeCHyphenLineComment () ;
     generatedZone3 << "GGS_string GGS__listOfConstraint_" << currentMultipleReferencedEntity->mKey
                    << "::\n"
-                      "reader_description (void) const {\n"
+                      "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                       "  C_String s ;\n"
                       "  s << \"<list @" << currentMultipleReferencedEntity->mKey << " \" ;\n"
                       "  const GGS__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * _p = mFirstObject ;\n"
                       "  while (_p != NULL) {\n"
-                      "    s << _p->reader_description () ;\n"
+                      "    s << _p->reader_description  (_inLexique COMMA_THERE) ;\n"
                       "    _p = _p->_mNextObject ;\n"
                       "  }\n"
                       "  s << \">\" ;\n"
@@ -703,12 +703,12 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     }*/
     generatedZone3 << "}\n\n" ;
     
-//--- reader_description
+//--- reader_description (C_Lexique & inLexique COMMA_LOCATION_ARGS)
 //    if (! currentConstrainedEntity->mInfo.mIsAbstract.boolValue ()) {
       generatedZone3.writeCHyphenLineComment () ;
       generatedZone3 << "GGS_string GGS__" << inConstraintComponentName << "_ConstraintOn_"
                      << currentConstrainedEntity->mKey << "::\n"
-                        "reader_description (void) const {\n"
+                        "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                         "  C_String s ;\n"
                         "  s << \"<" << inConstraintComponentName << " constraint for @" << currentConstrainedEntity->mKey << " {\"\n" ;
 /*      currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
@@ -716,13 +716,13 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         macroValidPointer (currentProperty) ;
         switch (currentProperty->mInfo.mKind.enumValue ()) {
         case GGS_metamodelPropertyKind::enum_attributeProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description ()\n" ;
+          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE)\n" ;
           break ;
         case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << "->reader_description ()\n" ;
+          generatedZone3 << "    << " << currentProperty->mKey << "->reader_description  (_inLexique COMMA_THERE)\n" ;
           break ;
         case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description ()\n" ;
+          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE)\n" ;
           break ;
         case GGS_metamodelPropertyKind::enum_mapProperty:
         case GGS_metamodelPropertyKind::enum_fetchedProperty:

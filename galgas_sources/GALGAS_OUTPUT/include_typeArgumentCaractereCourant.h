@@ -29,7 +29,7 @@ public : virtual void generateExternArgument (AC_OutputStream & inCppFile) const
 //--- END OF USER ZONE 2
 
   public : cPtr_typeArgumentCaractereCourant (LOCATION_ARGS) ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

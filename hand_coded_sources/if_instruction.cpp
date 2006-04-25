@@ -772,9 +772,9 @@ void cPtr_typeModuloOperation::generateExpression (AC_OutputStream & ioCppFile) 
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ".modulo_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
-              << ")) ;\n" ;
+  ioCppFile << " SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.currentLineNumber ()
+            << ")) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -804,19 +804,16 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeReaderCallInExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".reader_" << mReaderName << " (" ;
+  ioCppFile << ".reader_" << mReaderName << " (_inLexique" ;
   GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
-  bool first = true ;
   while (e != NULL) {
-    if (first) {
-      first = false ;
-    }else{
-      ioCppFile << ", " ;
-    }
+    ioCppFile << ", " ;
     e->mExpression (HERE)->generateExpression (ioCppFile) ;
     e = e->nextObject () ;
   }
-  ioCppFile << ")" ;
+  ioCppFile << " SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.currentLineNumber ()
+            << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -836,13 +833,7 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 
 bool cPtr_typeReaderCallInExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  bool used = false ;
-  GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
-  while ((e != NULL) && ! used) {
-    used = e->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
-    e = e->nextObject () ;
-  }
-  return used ;
+  return true ;
 }
 
 //---------------------------------------------------------------------------*

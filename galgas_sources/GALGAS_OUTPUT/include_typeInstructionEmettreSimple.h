@@ -32,7 +32,7 @@ public : virtual void generate_scanner_instruction (const C_String & inLexiqueNa
 
   public : cPtr_typeInstructionEmettreSimple (const GGS_lstring &  COMMA_LOCATION_ARGS) ;
   public : GGS_lstring  attributTerminal ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

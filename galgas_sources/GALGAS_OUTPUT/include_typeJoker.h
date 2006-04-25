@@ -33,7 +33,7 @@ class cPtr_typeJoker : public cPtr_typeCible {
                                 GGS_lstring & ,
                                 GGS_L_assignedVariables & ,
                                 GGS_typeCplusPlusNameList & ) ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

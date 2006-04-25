@@ -32,7 +32,7 @@ public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName &
 
   public : cPtr_typeVarInExpression (const GGS_typeCplusPlusName &  COMMA_LOCATION_ARGS) ;
   public : GGS_typeCplusPlusName  mCppVarName ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

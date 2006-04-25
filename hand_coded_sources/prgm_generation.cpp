@@ -277,7 +277,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                        << " (*mScannerPtr_, _rootEntity, _rootObjectConstraint" << currentConstraint->mString << ") ;\n" ;
         currentConstraint = currentConstraint->nextObject () ;
       }
-      generatedZone2 << "// printf (\"%s\", _rootEntity->reader_description ().cString ()) ;\n" ;
+      generatedZone2 << "// printf (\"%s\", _rootEntity->reader_description  (_inLexique COMMA_THERE).cString ()) ;\n" ;
       currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
       while (currentConstraint != NULL) {
         macroValidPointer (currentConstraint) ;

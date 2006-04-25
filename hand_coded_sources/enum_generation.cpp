@@ -85,12 +85,12 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Messages\n" ;
   GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
-    inHfile << "  public : GGS_string reader_" << m->mKey << " (void) const ;\n" ;
+    inHfile << "  public : GGS_string reader_" << m->mKey << " (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     m = m->nextObject () ;
   }
   inHfile << "\n"
              "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (void) const ;\n\n"
+             "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n\n"
              "//--- Drop operation\n"
              "  public : inline void drop_operation (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
@@ -185,7 +185,8 @@ void cPtr_enumGalgasType
     inCppFile.writeCHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::"
                  "\n"
-                 "reader_" << m->mKey << " (void) const {\n"
+                 "reader_" << m->mKey << " (C_Lexique & /* _inLexique */\n"
+                 "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
     GGS_L_lstringList::element_type * e = m->mInfo.mMessageStringList.firstObject () ;
     while (e != NULL) {
@@ -203,7 +204,8 @@ void cPtr_enumGalgasType
 
   inCppFile << "GGS_string GGS_" << mEnumTypeName
             << "::\n"
-               "reader_description (void) const {\n"
+               "reader_description (C_Lexique & /* _inLexique */\n"
+               "                    COMMA_UNUSED_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
                "  s << \"<enum @" << mEnumTypeName << "\" ;\n"
                "  switch (mValue) {\n" ;

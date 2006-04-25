@@ -49,7 +49,7 @@ public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFil
                                 const GGS_M_nonterminalSymbolAlts &  COMMA_LOCATION_ARGS) ;
   public : GGS_lstring  aNomNonTerminal ;
   public : GGS_M_nonterminalSymbolAlts  mNonterminalSymbolParametersMap ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

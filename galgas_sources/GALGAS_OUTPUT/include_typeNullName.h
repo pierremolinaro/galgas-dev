@@ -31,7 +31,7 @@ public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const ;
 //--- END OF USER ZONE 2
 
   public : cPtr_typeNullName (LOCATION_ARGS) ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

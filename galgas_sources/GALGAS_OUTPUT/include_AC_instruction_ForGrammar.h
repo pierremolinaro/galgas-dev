@@ -47,7 +47,7 @@ class cPtr_AC_instruction_ForGrammar : public C_GGS_Object {
 
   public : cPtr_AC_instruction_ForGrammar (const GGS_location &  COMMA_LOCATION_ARGS) ;
   public : GGS_location  mStartLocation ;
-  public : virtual void appendForDescription (C_String & ioString) const = 0 ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const = 0 ;
 } ;
 
 //---------------------------------------------------------------------------*

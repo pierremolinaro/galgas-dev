@@ -35,7 +35,7 @@ class cPtr_ExternTypeModel : public cPtr_TypeModel {
   public : GGS_readerMap  mReaderMap ;
   public : GGS_modifierMap  mModifierMap ;
   public : GGS_typeListModel  mAddAssignFormalInputArgumentList ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*
