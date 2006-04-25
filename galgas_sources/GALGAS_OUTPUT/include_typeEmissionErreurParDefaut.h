@@ -31,7 +31,7 @@ public : virtual void generateDefaultToken (const C_String & inLexiqueName,
 
   public : cPtr_typeEmissionErreurParDefaut (const GGS_luint &  COMMA_LOCATION_ARGS) ;
   public : GGS_luint  mErrorMessageIndex ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

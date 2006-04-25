@@ -31,7 +31,7 @@ class cPtr_typeDefEntiteUtilisable : public C_GGS_Object {
   public : cPtr_typeDefEntiteUtilisable (LOCATION_ARGS) ;
   public : virtual const char * message_messageTypeEntite (void) const ;
   public : static const char * static_string_message_messageTypeEntite (void) ;
-  public : virtual void appendForDescription (C_String & ioString) const = 0 ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const = 0 ;
 } ;
 
 //---------------------------------------------------------------------------*

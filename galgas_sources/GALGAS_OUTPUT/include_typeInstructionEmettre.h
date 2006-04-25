@@ -34,7 +34,7 @@ public : virtual void generate_scanner_instruction (const C_String & inLexiqueNa
                                 const GGS_typeEmissionParDefaut &  COMMA_LOCATION_ARGS) ;
   public : GGS_typeListeRecherche  attributListeRecherches ;
   public : GGS_typeEmissionParDefaut  attributEmissionParDefaut ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

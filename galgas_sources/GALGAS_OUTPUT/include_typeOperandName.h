@@ -36,7 +36,7 @@ public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const ;
   public : GGS_lstring  mName ;
   public : GGS_location  mLocationOffset ;
   public : GGS_bool mFieldKind ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

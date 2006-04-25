@@ -346,7 +346,7 @@ void cPtr_typeErrorInstruction
   if (inGenerateSemanticInstructions) {
     ioCppFile << "  " ;
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".reader_location ().signalGGSSemanticError (_inLexique, " ;
+    ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, " ;
     mErrorMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mLocation.currentLineNumber ()
@@ -389,7 +389,7 @@ void cPtr_typeWarningInstruction
   if (inGenerateSemanticInstructions) {
     ioCppFile << "  " ;
     mWarningLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".reader_location ().signalGGSSemanticWarning (_inLexique, " ;
+    ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticWarning (_inLexique, " ;
     mWarningMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mLocation.currentLineNumber ()

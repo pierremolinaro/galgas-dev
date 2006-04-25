@@ -73,7 +73,7 @@ public : void generateFormalParameter (AC_OutputStream & fichier, const bool ref
   public : virtual void methode_typeCanBeUsedInObjectDeclaration (C_Lexique &) ;
   public : virtual const char * message_messageGalgasType (void) const ;
   public : static const char * static_string_message_messageGalgasType (void) ;
-  public : virtual void appendForDescription (C_String & ioString) const = 0 ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const = 0 ;
 } ;
 
 //---------------------------------------------------------------------------*

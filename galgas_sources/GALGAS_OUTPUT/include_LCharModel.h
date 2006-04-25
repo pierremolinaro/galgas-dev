@@ -28,7 +28,7 @@ class cPtr_LCharModel : public cPtr_TypeModel {
 //--- END OF USER ZONE 2
 
   public : cPtr_LCharModel (LOCATION_ARGS) ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

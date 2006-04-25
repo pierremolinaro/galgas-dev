@@ -51,7 +51,7 @@ public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfi
   public : GGS_lstring  mAltName ;
   public : GGS_lstring  mReturnedEntityVarName ;
   public : GGS_bool mReturnedEntityShouldInsertedInList ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

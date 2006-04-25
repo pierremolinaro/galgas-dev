@@ -45,7 +45,7 @@ public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfi
                                 const GGS_typeInstructionList &  COMMA_LOCATION_ARGS) ;
   public : GGS_L_expression_instructionsList_list  mIFbranchesList ;
   public : GGS_typeInstructionList  mElseInstructionsList ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

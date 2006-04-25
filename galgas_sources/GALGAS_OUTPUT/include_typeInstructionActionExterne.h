@@ -36,7 +36,7 @@ public : virtual void generate_scanner_instruction (const C_String & inLexiqueNa
   public : GGS_lstring  attributNomRoutineExterne ;
   public : GGS_typeListeArgumentsRoutExterne  attributListeArguments ;
   public : GGS_typeListeMessagesErreur  attributListeMessageErreur ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

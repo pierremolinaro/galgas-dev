@@ -40,7 +40,7 @@ public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgu
                                 const GGS_typeExpressionList &  COMMA_LOCATION_ARGS) ;
   public : GGS_lstring  aNomRoutine ;
   public : GGS_typeExpressionList  mExpressionsList ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

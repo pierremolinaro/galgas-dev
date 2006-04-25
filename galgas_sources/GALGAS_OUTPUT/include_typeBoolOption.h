@@ -34,7 +34,7 @@ public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName &
                                 const GGS_lstring &  COMMA_LOCATION_ARGS) ;
   public : GGS_lstring  mOptionComponentName ;
   public : GGS_lstring  mOptionName ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

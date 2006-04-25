@@ -1010,7 +1010,7 @@ rule <factor>
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
     ;
-    outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList] ;
+    outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !here] ;
   or
   #--- Class name
     @lstring className ;

@@ -38,7 +38,7 @@ public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgu
 
   public : cPtr_typeDropInstruction (const GGS_typeCplusPlusName &  COMMA_LOCATION_ARGS) ;
   public : GGS_typeCplusPlusName  aVariableConsommee ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

@@ -42,7 +42,7 @@ public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgu
   public : GGS_typeExpression  mErrorLocationExpression ;
   public : GGS_typeExpression  mErrorMessageExpression ;
   public : GGS_location  mLocation ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

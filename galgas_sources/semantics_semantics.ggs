@@ -362,6 +362,7 @@ class @typeReaderCallInExpression extends @typeExpression {
   @typeExpression mExpressionValue ;
   @lstring mReaderName ;
   @typeExpressionList mExpressionList ;
+  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*

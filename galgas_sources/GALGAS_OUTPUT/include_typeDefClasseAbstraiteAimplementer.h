@@ -61,7 +61,7 @@ public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFil
   public : GGS_L_nameWithType  aListeExternesCourants ;
   public : GGS_typeSuperClassesMap  mAncestorClassesMap ;
   public : GGS_typeClassMessagesMap  mMessagesMap ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

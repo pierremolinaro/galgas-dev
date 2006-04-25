@@ -31,7 +31,7 @@ class cPtr_EnumModel : public cPtr_TypeModel {
                                 const GGS_enumMessageMap &  COMMA_LOCATION_ARGS) ;
   public : GGS_enumConstantMap  mEnumConstantesMap ;
   public : GGS_enumMessageMap  mMessagesMap ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*

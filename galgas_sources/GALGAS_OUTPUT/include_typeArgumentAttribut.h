@@ -32,7 +32,7 @@ public : virtual void generateExternArgument (AC_OutputStream & inCppFile) const
                                 const GGS_AC_galgasType &  COMMA_LOCATION_ARGS) ;
   public : GGS_lstring  attributNom ;
   public : GGS_AC_galgasType  attributTypeAttribut ;
-  public : virtual void appendForDescription (C_String & ioString) const ;
+  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*
