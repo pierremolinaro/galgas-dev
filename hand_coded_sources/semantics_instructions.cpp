@@ -681,31 +681,72 @@ bool cPtr_typeAppendInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeIncrementInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+void cPtr_typeIncrementInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".increment_operation () ;\n" ;
+    ioCppFile << ".increment_operation (_inLexique SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.currentLineNumber ()
+              << ")) ;\n" ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeIncrementInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return false ;
+bool cPtr_typeIncrementInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeIncrementInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeIncrementInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return mTargetVarCppName.isEqualTo (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeDecrementInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ".decrement_operation (_inLexique SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.currentLineNumber ()
+              << ")) ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeDecrementInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeDecrementInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName) ;
 }
 

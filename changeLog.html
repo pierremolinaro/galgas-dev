@@ -8,10 +8,17 @@
 <body>
 <p><b>GALGAS ChangeLog</b></p>
 <p><br></p>
-<p>1.2.6</p>
-  <li>fixed bug of allkeys reader of maps;</li>
-  <li>added 'object ++ ;' incrementation instruction on @uint objects;</li>
-  <li>added + operator on @uint operand objects, that returns an @uint object sum of operand values;</li>
+<p>1.3.0</p>
+  <li>fixed bug on 'allkeys reader' of map objects;</li>
+  <li>added 'object ++ ;' incrementation instruction on @uint and @sint objects;</li>
+  <li>added 'object -- ;' decrementation instruction on @uint and @sint objects;</li>
+  <li>added +, -, *, /, % diadic operators on @uint objects, that return an @uint object;</li>
+  <li>added +, -, *, /, % diadic operators on @sint objects, that return an @sint object;</li>
+  <li>added - monoadic operator on @sint object, that returns an @sint object;</li>
+  <li>added 'uint' reader on @sint object, that returns an @uint object with the same value;</li>
+  <li>added 'string' reader on @sint object, that returns an @string object with the string value of the receiver;</li>
+  <li>added 'min' constructor on @sint object, that returns an @sint object with value equal to -217483648;</li>
+  <li>added 'max' constructor on @sint object, that returns an @sint object with value equal to 217483647;</li>
 <ul>
 </ul>
 <p>1.2.5beta2</p>

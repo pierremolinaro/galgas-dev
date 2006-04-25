@@ -382,13 +382,6 @@ class @typeOrOperation extends @typeExpression {
  
 #---------------------------------------------------------------------------*
 
-class @typeMinusOperation extends @typeExpression {
-  @typeExpression mLeftExpression ;
-  @typeExpression mRightExpression ;
-}
- 
-#---------------------------------------------------------------------------*
-
 class @typeConcatOperation extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
@@ -491,10 +484,60 @@ class @typeJokerInExpression extends @typeExpression {
 class @typeAddOperation extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
+  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*
-#   C O M P A R E    O P E R A T I O N S                                    *
+#   S U B S T R A C T I O N    O P E R A T I O N                            *
+#---------------------------------------------------------------------------*
+
+class @typeSubOperation extends @typeExpression {
+  @typeExpression mLeftExpression ;
+  @typeExpression mRightExpression ;
+  @location mInstructionLocation ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   M U L T I P L I C A T I O N    O P E R A T I O N                        *
+#---------------------------------------------------------------------------*
+
+class @typeMultiplyOperation extends @typeExpression {
+  @typeExpression mLeftExpression ;
+  @typeExpression mRightExpression ;
+  @location mInstructionLocation ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   D I V I S I O N    O P E R A T I O N                                    *
+#---------------------------------------------------------------------------*
+
+class @typeDivideOperation extends @typeExpression {
+  @typeExpression mLeftExpression ;
+  @typeExpression mRightExpression ;
+  @location mInstructionLocation ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   M O D U L O    O P E R A T I O N                                        *
+#---------------------------------------------------------------------------*
+
+class @typeModuloOperation extends @typeExpression {
+  @typeExpression mLeftExpression ;
+  @typeExpression mRightExpression ;
+  @location mInstructionLocation ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   U N A R Y   -    O P E R A T I O N                                      *
+#---------------------------------------------------------------------------*
+
+class @typeUnaryMinusOperation extends @typeExpression {
+  @typeExpression mExpression ;
+  @location mInstructionLocation ;
+}
+ 
+#---------------------------------------------------------------------------*
+#  ==    O P E R A T I O N                                                  *
 #---------------------------------------------------------------------------*
 
 class @typeEqualTest extends @typeExpression {
@@ -898,6 +941,18 @@ class @typeAppendInstruction extends @typeInstruction {
 
 class @typeIncrementInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
+  @location mInstructionLocation ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#          -- instruction                                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeDecrementInstruction extends @typeInstruction {
+  @typeCplusPlusName mTargetVarCppName ;
+  @location mInstructionLocation ;
 }
 
 #---------------------------------------------------------------------------*

@@ -164,27 +164,6 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   M A T C H    -    O P E R A T O R                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine matchMinusOperator
-  ??@AC_galgasType inLeftExpressionType
-  ??@AC_galgasType inRightExpressionType
-  !@AC_galgasType outResultType
-:
-  match inLeftExpressionType :: inRightExpressionType :
-  when @typeGalgas_stringset () :: @typeGalgas_stringset () :
-    outResultType := inLeftExpressionType ;
-  else
-    error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
-           " | " . [inRightExpressionType messageGalgasType] . ") is not valid" 
-           -> outResultType ;
-  end match ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   M A T C H    .    O P E R A T O R                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -326,25 +305,6 @@ rule <concatenation_term>
     ;
     outExpression := [@typeOrOperation new !leftOperand !rightOperand] ;
     matchOrOperator
-      !firstOperandType
-      !secondOperandType
-      ?outResultType
-     ;
-  while
-    $-$ ;
-    @typeExpression leftOperand := outExpression ;
-    @typeExpression rightOperand ;
-    @AC_galgasType firstOperandType := outResultType ;
-    @AC_galgasType secondOperandType ;
-    <relation_term>
-      !?ioEntitiesMap
-      !?ioOptionsComponentsMapForUse
-      !?ioVariablesMap
-      ?rightOperand
-      ?secondOperandType
-    ;
-    outExpression := [@typeMinusOperation new !leftOperand !rightOperand] ;
-    matchMinusOperator
       !firstOperandType
       !secondOperandType
       ?outResultType
@@ -523,13 +483,138 @@ end rule ;
 routine addition_types_check
   ??@AC_galgasType inLeftExpressionType
   ??@AC_galgasType inRightExpressionType
+  !@AC_galgasType outResultType
 :
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+    outResultType := [@typeGalgas_uint new] ;
+  when @typeGalgas_sint ()      :: @typeGalgas_sint () :
+    outResultType := [@typeGalgas_sint new] ;
   else
-    error here : "addition between " . [inLeftExpressionType messageGalgasType] .
-           " and " . [inRightExpressionType messageGalgasType] . " is not valid"  ;
+    error here : "addition between " . [inLeftExpressionType messageGalgasType]
+      ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
+      -> outResultType
+    ;
   end match ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C H E C K    S U B S T R A C T I O N    O P E R A T O R                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine substraction_types_check
+  ??@AC_galgasType inLeftExpressionType
+  ??@AC_galgasType inRightExpressionType
+  !@AC_galgasType outResultType
+:
+  match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+    outResultType := [@typeGalgas_uint new] ;
+  when @typeGalgas_sint ()      :: @typeGalgas_sint () :
+    outResultType := [@typeGalgas_sint new] ;
+  when @typeGalgas_stringset ()      :: @typeGalgas_stringset () :
+    outResultType := [@typeGalgas_stringset new] ;
+  else
+    error here : "substraction between " . [inLeftExpressionType messageGalgasType]
+      ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
+      -> outResultType
+    ;
+  end match ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C H E C K    M U L T I P L Y    O P E R A T O R                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine multiply_types_check
+  ??@AC_galgasType inLeftExpressionType
+  ??@AC_galgasType inRightExpressionType
+  !@AC_galgasType outResultType
+:
+  match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+    outResultType := [@typeGalgas_uint new] ;
+  when @typeGalgas_sint ()      :: @typeGalgas_sint () :
+    outResultType := [@typeGalgas_sint new] ;
+  else
+    error here : "multiplication between " . [inLeftExpressionType messageGalgasType]
+      ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
+      -> outResultType
+    ;
+  end match ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C H E C K    D I V I D E    O P E R A T O R                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine divide_types_check
+  ??@AC_galgasType inLeftExpressionType
+  ??@AC_galgasType inRightExpressionType
+  !@AC_galgasType outResultType
+:
+  match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+    outResultType := [@typeGalgas_uint new] ;
+  when @typeGalgas_sint ()      :: @typeGalgas_sint () :
+    outResultType := [@typeGalgas_sint new] ;
+  else
+    error here : "division between " . [inLeftExpressionType messageGalgasType]
+      ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
+      -> outResultType
+    ;
+  end match ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C H E C K    M O D U L O    O P E R A T O R                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine modulo_types_check
+  ??@AC_galgasType inLeftExpressionType
+  ??@AC_galgasType inRightExpressionType
+  !@AC_galgasType outResultType
+:
+  match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+    outResultType := [@typeGalgas_uint new] ;
+  when @typeGalgas_sint ()      :: @typeGalgas_sint () :
+    outResultType := [@typeGalgas_sint new] ;
+  else
+    error here : "modulo between " . [inLeftExpressionType messageGalgasType]
+      ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
+      -> outResultType
+    ;
+  end match ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C H E C K    U N A R Y    M I N U S    O P E R A T O R                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine unary_minus_type_check
+  ??@AC_galgasType inExpressionType
+  !@AC_galgasType outResultType
+:
+  extract inExpressionType :
+  when @typeGalgas_sint ()->
+    outResultType := [@typeGalgas_sint new] ;
+  else
+    error here : "unary minus for " . [inExpressionType messageGalgasType]
+      . " is not valid"
+      -> outResultType
+    ;
+  end extract ;
 end routine ;
 
 #------------------------------------------------------------------------------*
@@ -566,9 +651,23 @@ rule <simple_expression>
       ?rightExpression
       ?rightType
     ;
-    addition_types_check !leftType !rightType ;
-    outExpression := [@typeAddOperation new !leftExpression !rightExpression] ;
-    outResultType := [@typeGalgas_uint new] ;
+    addition_types_check !leftType !rightType ?outResultType ;
+    outExpression := [@typeAddOperation new !leftExpression !rightExpression !here] ;
+  while 
+    $-$ ;
+    @typeExpression leftExpression := outExpression ;
+    @AC_galgasType leftType := outResultType ;
+    @typeExpression rightExpression ;
+    @AC_galgasType rightType ;
+    <term>
+      !?ioEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?rightExpression
+      ?rightType
+    ;
+    substraction_types_check !leftType !rightType ?outResultType ;
+    outExpression := [@typeSubOperation new !leftExpression !rightExpression !here] ;
   end repeat ;
 end rule ;
 
@@ -592,6 +691,80 @@ rule <term>
     ?outExpression
     ?outResultType
   ;
+  repeat
+  while 
+    $*$ ;
+    @typeExpression leftExpression := outExpression ;
+    @AC_galgasType leftType := outResultType ;
+    @typeExpression rightExpression ;
+    @AC_galgasType rightType ;
+    <factor>
+      !?ioEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?rightExpression
+      ?rightType
+    ;
+    multiply_types_check !leftType !rightType ?outResultType ;
+    outExpression := [@typeMultiplyOperation new !leftExpression !rightExpression !here] ;
+  while 
+    $/$ ;
+    @typeExpression leftExpression := outExpression ;
+    @AC_galgasType leftType := outResultType ;
+    @typeExpression rightExpression ;
+    @AC_galgasType rightType ;
+    <factor>
+      !?ioEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?rightExpression
+      ?rightType
+    ;
+    divide_types_check !leftType !rightType ?outResultType ;
+    outExpression := [@typeDivideOperation new !leftExpression !rightExpression !here] ;
+  while 
+    $%$ ;
+    @typeExpression leftExpression := outExpression ;
+    @AC_galgasType leftType := outResultType ;
+    @typeExpression rightExpression ;
+    @AC_galgasType rightType ;
+    <factor>
+      !?ioEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?rightExpression
+      ?rightType
+    ;
+    modulo_types_check !leftType !rightType ?outResultType ;
+    outExpression := [@typeModuloOperation new !leftExpression !rightExpression !here] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    - factor                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  $-$ ;
+  @typeExpression expression ;
+  @AC_galgasType type ;
+  <factor>
+    !?ioEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?expression
+    ?type
+  ;
+  unary_minus_type_check !type ?outResultType ;
+  outExpression := [@typeUnaryMinusOperation new !expression !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*

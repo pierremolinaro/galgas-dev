@@ -437,6 +437,14 @@ abstract class @AC_galgasType {
        "variables of this type do not support call of '++' operator" ;
   end reader ;
 
+#--- By default, class does not accept "--" operator
+  reader handleDecrementOperatorCall 
+    ??@location inErrorLocation
+  :
+    error inErrorLocation :
+       "variables of this type do not support call of '--' operator" ;
+  end reader ;
+
 #--- By default, class does not accept to be silently converted to @location
   reader checkAbilityToBeSilentlyConvertedToLocation 
   :
@@ -765,7 +773,7 @@ class @typeGalgas_bool extends @AC_galgasType {
   end reader ;
 
 #--- Error message
-  message messageGalgasType "a bool type" ;
+  message messageGalgasType "a '@bool' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -777,7 +785,7 @@ class @typeGalgas_string extends @AC_galgasType {
   end reader ;
 
 #--- Error message
-  message messageGalgasType "a 'string' type" ;
+  message messageGalgasType "a '@string' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -788,8 +796,34 @@ class @typeGalgas_sint extends @AC_galgasType {
     outTypeName := "sint" ;
   end reader ;
 
+#--- This class accepts "++" operator
+  override reader handleIncrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end reader ;
+
+#--- This class accepts "--" operator
+  override reader handleDecrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end reader ;
+
+#--- Class accepts constructors 'min' and 'max'
+  override reader handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName value] == "min" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+    elsif [inClassMethodName value] == "max" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
 #--- Error message
-  message messageGalgasType "a 'sint' type" ;
+  message messageGalgasType "a '@sint' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -806,7 +840,13 @@ class @typeGalgas_uint extends @AC_galgasType {
   :
   end reader ;
 
-#--- Class accepts class method call 'max'
+#--- This class accepts "--" operator
+  override reader handleDecrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end reader ;
+
+#--- Class accepts constructor 'max'
   override reader handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
@@ -819,7 +859,7 @@ class @typeGalgas_uint extends @AC_galgasType {
   end reader ;
 
 #--- Error message
-  message messageGalgasType "a 'uint' type" ;
+  message messageGalgasType "a '@uint' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -831,7 +871,7 @@ class @typeGalgas_char extends @AC_galgasType {
   end reader ;
 
 #--- Error message
-  message messageGalgasType "a 'char' type" ;
+  message messageGalgasType "a '@char' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -843,7 +883,7 @@ class @typeGalgas_double extends @AC_galgasType {
   end reader ;
 
 #--- Error message
-  message messageGalgasType "a double type" ;
+  message messageGalgasType "a '@double' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -876,7 +916,7 @@ class @typeGalgas_location extends @C_galgasPrimitiveType {
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "'location' type" ;
+  message messageGalgasType "a '@location' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -911,7 +951,7 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "a 'lstring' type" ;
+  message messageGalgasType "a '@lstring' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -942,7 +982,7 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "a 'lchar' type" ;
+  message messageGalgasType "a '@lchar' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -973,7 +1013,7 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "a 'lbool' type" ;
+  message messageGalgasType "a '@lbool' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1008,7 +1048,7 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "a 'luint' type" ;
+  message messageGalgasType "a '@luint' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1043,7 +1083,7 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "a 'lsint' type" ;
+  message messageGalgasType "a '@lsint' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1074,7 +1114,7 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
 
-  message messageGalgasType "a 'ldouble' type" ;
+  message messageGalgasType "a '@ldouble' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1128,7 +1168,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
   end reader ;
 
 #--- Error message
-  message messageGalgasType "a 'stringset' type" ;
+  message messageGalgasType "a '@stringset' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1610,7 +1650,7 @@ class @typeGalgasUndefinedListType extends @AC_galgasType {
     outTypeName := [mListTypeName value] ;
   end reader ;
 
-  message messageGalgasType "undefined 'list' type" ;
+  message messageGalgasType "an undefined list type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1656,7 +1696,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     end if ;
   end reader ;
 
-  message messageGalgasType "'list' type" ;
+  message messageGalgasType "a list type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1686,7 +1726,7 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
     outTypeName := [mMapTypeName value] ;
   end reader ;
 
-  message messageGalgasType "undefined 'map' type" ;
+  message messageGalgasType "an undefined map type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1747,7 +1787,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     end if ;
   end reader ;
   
-  message messageGalgasType "'map' type" ;
+  message messageGalgasType "a map type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1764,7 +1804,7 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType {
     outTypeName := [mClassTypeName value] ;
   end reader ;
 
-  message messageGalgasType "undefined 'class' type" ;
+  message messageGalgasType "an undefined class type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1820,7 +1860,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
   end reader ;
 
 #--- Error message
-  message messageGalgasType "'class' type" ;
+  message messageGalgasType "a class type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1878,7 +1918,7 @@ class @typeGalgas_enum extends @AC_galgasType {
     outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
   end reader ;
 
-  message messageGalgasType "a 'enum' type" ;
+  message messageGalgasType "an enum type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2147,6 +2187,17 @@ routine handleReaderCall
       if [inMethodName value] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_sint new] ;
+      elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_sint () ->
+      if [inMethodName value] == "uint" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
+        outReturnedType := [@typeGalgas_uint new] ;
       elsif [inMethodName value] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques empty] ;
         outReturnedType := [@typeGalgas_string new] ;
