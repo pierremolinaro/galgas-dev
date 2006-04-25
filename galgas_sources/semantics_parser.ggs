@@ -2487,7 +2487,34 @@ rule <instruction_beginning_with_identifier>
 #--- Does the variable class accept the ++ operator ?
   [targetVariableType handleIncrementOperatorCall !here] ;
 #--- Generate instruction
-  @typeInstruction instruction := [@typeIncrementInstruction new !nomCppVariableSource] ;
+  @typeInstruction instruction := [@typeIncrementInstruction new !nomCppVariableSource !here] ;
+  ioInstructionList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   D E C R E M E N T    I N S T R U C T I O N                              *
+#                                                                           *
+#  variable -- ;                                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <instruction_beginning_with_identifier>
+  ?@lstring nomVarDest
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+:
+  $--$ ;
+#--- Perform an io access for target variable
+  @AC_galgasType targetVariableType ;
+  @typeCplusPlusName nomCppVariableSource ;
+  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetVariableType ?nomCppVariableSource] ;
+#--- Does the variable class accept the ++ operator ?
+  [targetVariableType handleDecrementOperatorCall !here] ;
+#--- Generate instruction
+  @typeInstruction instruction := [@typeDecrementInstruction new !nomCppVariableSource !here] ;
   ioInstructionList += !instruction ;
 end rule ;
 

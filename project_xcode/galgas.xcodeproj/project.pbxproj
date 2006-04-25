@@ -716,6 +716,54 @@
 		CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA7ADBD058DB57E009AC1FE /* AC_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53872057A558F00854C83 /* AC_galgas_io.cpp */; };
 		CFA7ADD7058DB5DF009AC1FE /* C_galgas_null_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86361A0586289600B23462 /* C_galgas_null_io.cpp */; };
+		CFC1767309FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
+		CFC1767409FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
+		CFC1767509FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
+		CFC1767609FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */; };
+		CFC1767709FE1CD30026596C /* include_typeSubOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767209FE1CD30026596C /* include_typeSubOperation.h */; };
+		CFC1767809FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
+		CFC1767909FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
+		CFC1767A09FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
+		CFC1767B09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */; };
+		CFC1767C09FE1CD30026596C /* include_typeSubOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767209FE1CD30026596C /* include_typeSubOperation.h */; };
+		CFC1767D09FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
+		CFC1767E09FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
+		CFC1767F09FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
+		CFC1768009FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */; };
+		CFC1768109FE1CD30026596C /* include_typeSubOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767209FE1CD30026596C /* include_typeSubOperation.h */; };
+		CFC1768209FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
+		CFC1768309FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
+		CFC1768409FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
+		CFC1768509FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */; };
+		CFC1768609FE1CD30026596C /* include_typeSubOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767209FE1CD30026596C /* include_typeSubOperation.h */; };
+		CFC1768709FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
+		CFC1768809FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
+		CFC1768909FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
+		CFC1768A09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */; };
+		CFC1768B09FE1CD30026596C /* include_typeSubOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767209FE1CD30026596C /* include_typeSubOperation.h */; };
+		CFC1768C09FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
+		CFC1768D09FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
+		CFC1768E09FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
+		CFC1768F09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */; };
+		CFC1769009FE1CD30026596C /* include_typeSubOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767209FE1CD30026596C /* include_typeSubOperation.h */; };
+		CFC1769109FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
+		CFC1769209FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
+		CFC1769309FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
+		CFC1769409FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */; };
+		CFC1769509FE1CD30026596C /* include_typeSubOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767209FE1CD30026596C /* include_typeSubOperation.h */; };
+		CFC1769609FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
+		CFC1769709FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
+		CFC1769809FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
+		CFC1769909FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */; };
+		CFC1769A09FE1CD30026596C /* include_typeSubOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767209FE1CD30026596C /* include_typeSubOperation.h */; };
+		CFC1774209FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
+		CFC1774309FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
+		CFC1774409FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
+		CFC1774509FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
+		CFC1774609FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
+		CFC1774709FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
+		CFC1774809FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
+		CFC1774909FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CFCF14FB085C4101003AD24E /* galgasDebug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgasDebug */; };
 		CFCF14FC085C410E003AD24E /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgas */; };
@@ -1316,6 +1364,12 @@
 		CFA313A709FD3EFB006B55E7 /* scanner_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = scanner_generation.h; sourceTree = "<group>"; };
 		CFA313B009FD3F0A006B55E7 /* semantics_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_generation.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
+		CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
+		CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDivideOperation.h; sourceTree = "<group>"; };
+		CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeModuloOperation.h; sourceTree = "<group>"; };
+		CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMultiplyOperation.h; sourceTree = "<group>"; };
+		CFC1767209FE1CD30026596C /* include_typeSubOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeSubOperation.h; sourceTree = "<group>"; };
+		CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUnaryMinusOperation.h; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CFCAABC709BCD3FF0042E80C /* include_BoolModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_BoolModel.h; sourceTree = "<group>"; };
 		CFCAABC809BCD3FF0042E80C /* include_CharModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_CharModel.h; sourceTree = "<group>"; };
@@ -1821,6 +1875,12 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */,
+				CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */,
+				CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */,
+				CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */,
+				CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */,
+				CFC1767209FE1CD30026596C /* include_typeSubOperation.h */,
 				CFD1939909FCFC0300920886 /* include_typeAddOperation.h */,
 				CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */,
 				CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */,
@@ -2395,27 +2455,36 @@
 				CFD7D4900910C6AD00B72461 /* GGS_stringset.h */,
 				CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */,
 				CFA1415E060DB7CB00601791 /* AC_galgas_map.h */,
-				CFF283330864369A0055D7B6 /* GGS_double.cpp */,
-				CFF283340864369A0055D7B6 /* GGS_double.h */,
-				CFF283350864369A0055D7B6 /* GGS_ldouble.cpp */,
-				CFF283360864369A0055D7B6 /* GGS_ldouble.h */,
-				CF8259F608536AC20077AEAF /* C_Lexique.cpp */,
-				CF8259F708536AC20077AEAF /* C_Lexique.h */,
-				CF6E112F06269BEC001B909F /* GGS_lsint.cpp */,
-				CF6E113006269BEC001B909F /* GGS_lsint.h */,
-				CF6E113106269BEC001B909F /* GGS_sint.cpp */,
-				CF6E113206269BEC001B909F /* GGS_sint.h */,
 				CFF53872057A558F00854C83 /* AC_galgas_io.cpp */,
 				CFF5387B057A558F00854C83 /* C_galgas_uint_array.cpp */,
+				CF8259F608536AC20077AEAF /* C_Lexique.cpp */,
+				CF8259F708536AC20077AEAF /* C_Lexique.h */,
+				CFF283330864369A0055D7B6 /* GGS_double.cpp */,
+				CFF283340864369A0055D7B6 /* GGS_double.h */,
+				CF6E113106269BEC001B909F /* GGS_sint.cpp */,
+				CF6E113206269BEC001B909F /* GGS_sint.h */,
 				CFF53881057A558F00854C83 /* GGS_bool.cpp */,
+				CF3FF0C105877B62000D2F8C /* GGS_bool.h */,
 				CFF53883057A558F00854C83 /* GGS_char.cpp */,
-				CFF53889057A558F00854C83 /* GGS_lbool.cpp */,
-				CFF5388B057A558F00854C83 /* GGS_lchar.cpp */,
-				CFF5388F057A558F00854C83 /* GGS_location.cpp */,
-				CFF53891057A558F00854C83 /* GGS_lstring.cpp */,
-				CFF53893057A558F00854C83 /* GGS_luint.cpp */,
+				CF3FF0C205877B62000D2F8C /* GGS_char.h */,
 				CFF53895057A558F00854C83 /* GGS_string.cpp */,
+				CF3FF0CA05877B62000D2F8C /* GGS_string.h */,
 				CFF53897057A558F00854C83 /* GGS_uint.cpp */,
+				CF3FF0CB05877B62000D2F8C /* GGS_uint.h */,
+				CFF5388F057A558F00854C83 /* GGS_location.cpp */,
+				CF3FF0C705877B62000D2F8C /* GGS_location.h */,
+				CFF283350864369A0055D7B6 /* GGS_ldouble.cpp */,
+				CFF283360864369A0055D7B6 /* GGS_ldouble.h */,
+				CF6E112F06269BEC001B909F /* GGS_lsint.cpp */,
+				CF6E113006269BEC001B909F /* GGS_lsint.h */,
+				CFF53889057A558F00854C83 /* GGS_lbool.cpp */,
+				CF3FF0C405877B62000D2F8C /* GGS_lbool.h */,
+				CFF5388B057A558F00854C83 /* GGS_lchar.cpp */,
+				CF3FF0C505877B62000D2F8C /* GGS_lchar.h */,
+				CFF53891057A558F00854C83 /* GGS_lstring.cpp */,
+				CF3FF0C805877B62000D2F8C /* GGS_lstring.h */,
+				CFF53893057A558F00854C83 /* GGS_luint.cpp */,
+				CF3FF0C905877B62000D2F8C /* GGS_luint.h */,
 				CF9041F0057F687D007362F4 /* C_galgas_cocoa_io.h */,
 				CF86365005862B0600B23462 /* C_galgas_terminal_io.cpp */,
 				CF86365105862B0600B23462 /* C_galgas_terminal_io.h */,
@@ -2427,15 +2496,6 @@
 				CF3FF0B905877B62000D2F8C /* C_galgas_bdd.h */,
 				CF3FF0BD05877B62000D2F8C /* C_galgas_uint_array.h */,
 				CF3FF0C005877B62000D2F8C /* galgas_header.h */,
-				CF3FF0C105877B62000D2F8C /* GGS_bool.h */,
-				CF3FF0C205877B62000D2F8C /* GGS_char.h */,
-				CF3FF0C405877B62000D2F8C /* GGS_lbool.h */,
-				CF3FF0C505877B62000D2F8C /* GGS_lchar.h */,
-				CF3FF0C705877B62000D2F8C /* GGS_location.h */,
-				CF3FF0C805877B62000D2F8C /* GGS_lstring.h */,
-				CF3FF0C905877B62000D2F8C /* GGS_luint.h */,
-				CF3FF0CA05877B62000D2F8C /* GGS_string.h */,
-				CF3FF0CB05877B62000D2F8C /* GGS_uint.h */,
 			);
 			path = galgas;
 			sourceTree = "<group>";
@@ -2523,6 +2583,12 @@
 				CFA313A809FD3EFB006B55E7 /* scanner_generation.h in Headers */,
 				CFA313B209FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313B309FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
+				CFC1767309FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
+				CFC1767409FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
+				CFC1767509FE1CD30026596C /* include_typeModuloOperation.h in Headers */,
+				CFC1767609FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
+				CFC1767709FE1CD30026596C /* include_typeSubOperation.h in Headers */,
+				CFC1774209FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2549,6 +2615,12 @@
 				CFA313AE09FD3EFB006B55E7 /* scanner_generation.h in Headers */,
 				CFA313BE09FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
+				CFC1769109FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
+				CFC1769209FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
+				CFC1769309FE1CD30026596C /* include_typeModuloOperation.h in Headers */,
+				CFC1769409FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
+				CFC1769509FE1CD30026596C /* include_typeSubOperation.h in Headers */,
+				CFC1774809FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2575,6 +2647,12 @@
 				CFA313AF09FD3EFB006B55E7 /* scanner_generation.h in Headers */,
 				CFA313C009FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
+				CFC1769609FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
+				CFC1769709FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
+				CFC1769809FE1CD30026596C /* include_typeModuloOperation.h in Headers */,
+				CFC1769909FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
+				CFC1769A09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
+				CFC1774909FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2609,6 +2687,12 @@
 				CFA313A909FD3EFB006B55E7 /* scanner_generation.h in Headers */,
 				CFA313B409FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313B509FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
+				CFC1767809FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
+				CFC1767909FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
+				CFC1767A09FE1CD30026596C /* include_typeModuloOperation.h in Headers */,
+				CFC1767B09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
+				CFC1767C09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
+				CFC1774309FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2635,6 +2719,12 @@
 				CFA313AA09FD3EFB006B55E7 /* scanner_generation.h in Headers */,
 				CFA313B609FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313B709FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
+				CFC1767D09FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
+				CFC1767E09FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
+				CFC1767F09FE1CD30026596C /* include_typeModuloOperation.h in Headers */,
+				CFC1768009FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
+				CFC1768109FE1CD30026596C /* include_typeSubOperation.h in Headers */,
+				CFC1774409FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2661,6 +2751,12 @@
 				CFA313AB09FD3EFB006B55E7 /* scanner_generation.h in Headers */,
 				CFA313B809FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313B909FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
+				CFC1768209FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
+				CFC1768309FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
+				CFC1768409FE1CD30026596C /* include_typeModuloOperation.h in Headers */,
+				CFC1768509FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
+				CFC1768609FE1CD30026596C /* include_typeSubOperation.h in Headers */,
+				CFC1774509FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2687,6 +2783,12 @@
 				CFA313AC09FD3EFB006B55E7 /* scanner_generation.h in Headers */,
 				CFA313BA09FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313BB09FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
+				CFC1768709FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
+				CFC1768809FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
+				CFC1768909FE1CD30026596C /* include_typeModuloOperation.h in Headers */,
+				CFC1768A09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
+				CFC1768B09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
+				CFC1774609FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2713,6 +2815,12 @@
 				CFA313AD09FD3EFB006B55E7 /* scanner_generation.h in Headers */,
 				CFA313BC09FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313BD09FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
+				CFC1768C09FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
+				CFC1768D09FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
+				CFC1768E09FE1CD30026596C /* include_typeModuloOperation.h in Headers */,
+				CFC1768F09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
+				CFC1769009FE1CD30026596C /* include_typeSubOperation.h in Headers */,
+				CFC1774709FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
