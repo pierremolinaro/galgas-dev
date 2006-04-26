@@ -936,6 +936,17 @@ class @typeAppendInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#          -= instruction                                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeRemoveInstruction extends @typeInstruction {
+  @typeCplusPlusName mTargetVarCppName ;
+  @typeExpressionList mSourceExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #          ++ instruction                                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*

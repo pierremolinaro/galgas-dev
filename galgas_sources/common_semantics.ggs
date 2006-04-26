@@ -418,6 +418,17 @@ abstract class @AC_galgasType {
     error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
   end reader ;
 
+#--- By default, class does not accept operator "-=" call
+  reader handleMinusAssignOperatorCall 
+    ??@location inErrorLocation
+    !@typeListeAttributsSemantiques outParametersList
+  :
+    error inErrorLocation :
+       "variables of this type do not support call of '-=' operator"
+       -> outParametersList ;
+  end reader ;
+
+
 #--- By default, class does not accept operator "+=" call
   reader handleAddAssignOperatorCall 
     ??@location inErrorLocation
@@ -1152,6 +1163,17 @@ class @typeGalgas_stringset extends @AC_galgasType {
     @AC_galgasType t := [@typeGalgas_string new] ;
     outParametersList += !t ![@lstring new !""! here] ;
     outAccept_uint_assignment := true ;
+  end reader ;
+
+#--- stringset accepts operator "-=" call
+  override
+  reader handleMinusAssignOperatorCall
+    ??@location unused inErrorLocation
+    !@typeListeAttributsSemantiques outParametersList
+  :
+    outParametersList := [@typeListeAttributsSemantiques empty] ;
+    @AC_galgasType t := [@typeGalgas_string new] ;
+    outParametersList += !t ![@lstring new !""! here] ;
   end reader ;
 
 #--- stringset object accepts to be enumerated (foreach instruction)

@@ -91,6 +91,14 @@
 		CF446B6009C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */; };
 		CF446B6209C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */; };
 		CF446B6409C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */; };
+		CF4CBBC009FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
+		CF4CBBC109FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
+		CF4CBBC209FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
+		CF4CBBC309FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
+		CF4CBBC409FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
+		CF4CBBC509FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
+		CF4CBBC609FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
+		CF4CBBC709FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
 		CF5E74F607B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF5E74F807B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF6702F905C073220065267C /* cocoaGalgas.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF6702F805C073220065267C /* cocoaGalgas.mm */; };
@@ -1234,6 +1242,7 @@
 		CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_parser.cpp; sourceTree = "<group>"; };
 		CF446B5909C9C4F0005CBDC8 /* metamodel_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodel_parser.h; sourceTree = "<group>"; };
 		CF446B6609C9C50D005CBDC8 /* include_TypeModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_TypeModel.h; sourceTree = "<group>"; };
+		CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
 		CF5E74F407B00EA600858338 /* common_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = common_semantics.cpp; sourceTree = "<group>"; };
 		CF5E74F507B00EA600858338 /* common_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = common_semantics.h; sourceTree = "<group>"; };
 		CF6702F805C073220065267C /* cocoaGalgas.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = cocoaGalgas.mm; sourceTree = "<group>"; };
@@ -1875,6 +1884,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */,
 				CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */,
 				CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */,
 				CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */,
@@ -2589,6 +2599,7 @@
 				CFC1767609FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
 				CFC1767709FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774209FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
+				CF4CBBC009FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2621,6 +2632,7 @@
 				CFC1769409FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
 				CFC1769509FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774809FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
+				CF4CBBC609FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2653,6 +2665,7 @@
 				CFC1769909FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
 				CFC1769A09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774909FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
+				CF4CBBC709FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2693,6 +2706,7 @@
 				CFC1767B09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
 				CFC1767C09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774309FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
+				CF4CBBC109FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2725,6 +2739,7 @@
 				CFC1768009FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
 				CFC1768109FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774409FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
+				CF4CBBC209FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2757,6 +2772,7 @@
 				CFC1768509FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
 				CFC1768609FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774509FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
+				CF4CBBC309FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2789,6 +2805,7 @@
 				CFC1768A09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
 				CFC1768B09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774609FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
+				CF4CBBC409FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2821,6 +2838,7 @@
 				CFC1768F09FE1CD30026596C /* include_typeMultiplyOperation.h in Headers */,
 				CFC1769009FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774709FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
+				CF4CBBC509FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -239,7 +239,7 @@ list galgasDelimitorsList error message "the '%K' delimitor" style delimitersSty
   "==",   "??",    "!",     ":=",     "++",
   "[",     "]",   "+=",     "?!",     "!?",
   "/",    "!=",   "<=",     ">=",      "&",
-  "{",     "}",   "+>",      "%" ;
+  "{",     "}",   "+>",      "%",     "-=" ;
 
 rule list galgasDelimitorsList ;
 
