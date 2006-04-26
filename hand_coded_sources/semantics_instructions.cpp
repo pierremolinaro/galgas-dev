@@ -617,70 +617,6 @@ bool cPtr_typeMatchInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeAppendInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
-  if (inGenerateSemanticInstructions) {
-    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".addAssign_operation (" ;
-    GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
-    bool first = true ;
-    while (exp != NULL) {
-      macroValidPointer (exp) ;
-      if (first) {
-        first = false ;
-      }else{
-        ioCppFile << ", " ;
-      }
-      exp->mExpression (HERE)->generateExpression (ioCppFile) ;
-      exp = exp->nextObject () ;
-    }
-    ioCppFile << ") ;\n" ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeAppendInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  bool used = false ;
-  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
-    exp = exp->nextObject () ;
-  }
-  return used ;    
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeAppendInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
-  bool used = mTargetVarCppName.isEqualTo (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    exp = exp->nextObject () ;
-  }
-  return used ;    
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeIncrementInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inLexiqueClassName */,
@@ -759,13 +695,77 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeAppendInstructionWithAssignment
-::generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+void cPtr_typeAppendInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ".addAssign_operation (" ;
+    GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+    bool first = true ;
+    while (exp != NULL) {
+      macroValidPointer (exp) ;
+      if (first) {
+        first = false ;
+      }else{
+        ioCppFile << ", " ;
+      }
+      exp->mExpression (HERE)->generateExpression (ioCppFile) ;
+      exp = exp->nextObject () ;
+    }
+    ioCppFile << ") ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeAppendInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  bool used = false ;
+  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeAppendInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  bool used = mTargetVarCppName.isEqualTo (inArgumentCppName) ;
+  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeAppendInstructionWithAssignment::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".addAssign_operation (" ;
@@ -789,18 +789,82 @@ void cPtr_typeAppendInstructionWithAssignment
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeAppendInstructionWithAssignment
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeAppendInstructionWithAssignment::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeAppendInstructionWithAssignment
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeAppendInstructionWithAssignment::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
   bool used = mTargetVarCppName.isEqualTo (inArgumentCppName)
     || m_luint_TargetVarCppName.isEqualTo (inArgumentCppName) ;
+  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeRemoveInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ".minusAssign_operation (" ;
+    GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+    bool first = true ;
+    while (exp != NULL) {
+      macroValidPointer (exp) ;
+      if (first) {
+        first = false ;
+      }else{
+        ioCppFile << ", " ;
+      }
+      exp->mExpression (HERE)->generateExpression (ioCppFile) ;
+      exp = exp->nextObject () ;
+    }
+    ioCppFile << ") ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeRemoveInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  bool used = false ;
+  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeRemoveInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  bool used = mTargetVarCppName.isEqualTo (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
   while ((exp != NULL) && ! used) {
     macroValidPointer (exp) ;

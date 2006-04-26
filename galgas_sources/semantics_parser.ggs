@@ -2396,7 +2396,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   A D D    I N S T R U C T I O N                                          *
+#   + =    I N S T R U C T I O N                                            *
 #                                                                           *
 #  variable += !source_exp !... !source_exp ;                               *
 #                                                                           *
@@ -2448,6 +2448,7 @@ rule <instruction_beginning_with_identifier>
   @typeInstruction instruction ;
   select
     $?$ ;
+    warning here:"obsolete construction" ;
     @lstring uint_assigned_var ;
     $identifier$ ? uint_assigned_var ;
     if not accept_uint_assignment then
@@ -2461,6 +2462,60 @@ rule <instruction_beginning_with_identifier>
   or
     instruction := [@typeAppendInstruction new !nomCppVariableSource !expressionList] ;
   end select ;
+  ioInstructionList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   - =    I N S T R U C T I O N                                            *
+#                                                                           *
+#  variable -= !source_exp !... !source_exp ;                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <instruction_beginning_with_identifier>
+  ?@lstring nomVarDest
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+:
+  $-=$ ;
+#--- Perform an io access for target variable
+  @AC_galgasType targetVariableType ;
+  @typeCplusPlusName nomCppVariableSource ;
+  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetVariableType ?nomCppVariableSource] ;
+#--- Does the variable class accept the += operator ?
+  @typeListeAttributsSemantiques formalParametersList ;
+  [targetVariableType handleMinusAssignOperatorCall !here ?formalParametersList] ;
+#--- Parse argument list
+  @typeTypesList typeList := [@typeTypesList empty] ;
+  @typeExpressionList expressionList [empty] ;
+  repeat
+    $!$ ;
+    @typeExpression expression ;
+    @AC_galgasType resultType ;
+    <expression> 
+      !?ioComponentSemanticsEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?expression
+      ?resultType
+    ;
+    typeList += !resultType !here ;
+    expressionList += !expression ;
+  while
+  end repeat ;
+#--- Check expression types list against formal parameter list
+  if [formalParametersList length] != [typeList length] then
+    error here : [[typeList length] string] . " argument(s), while " . [[formalParametersList length] string] . " are needed" ;
+  else
+    foreach formalParametersList (??@AC_galgasType formalType ??@lstring formalName),
+            typeList (??@AC_galgasType effectiveType ??@location kErrorLocation) :
+      verifierCompatibiliteTypesSemantiques !formalType !effectiveType !kErrorLocation ;
+    end foreach ;
+  end if ;
+  @typeInstruction instruction := [@typeRemoveInstruction new !nomCppVariableSource !expressionList] ;
   ioInstructionList += !instruction ;
 end rule ;
 
