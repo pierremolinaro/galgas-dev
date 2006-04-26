@@ -1425,7 +1425,6 @@
 		CFD214B10913BE2E0011F11E /* include_typeActionExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeActionExterneAengendrer.h; sourceTree = "<group>"; };
 		CFD214B20913BE2E0011F11E /* include_typeAndOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAndOperation.h; sourceTree = "<group>"; };
 		CFD214B30913BE2E0011F11E /* include_typeAppendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAppendInstruction.h; sourceTree = "<group>"; };
-		CFD214B40913BE2E0011F11E /* include_typeAppendInstructionWithAssignment.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAppendInstructionWithAssignment.h; sourceTree = "<group>"; };
 		CFD214B50913BE2E0011F11E /* include_typeArgumentAttribut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentAttribut.h; sourceTree = "<group>"; };
 		CFD214B60913BE2E0011F11E /* include_typeArgumentCaractere.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentCaractere.h; sourceTree = "<group>"; };
 		CFD214B70913BE2E0011F11E /* include_typeArgumentCaractereCourant.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentCaractereCourant.h; sourceTree = "<group>"; };
@@ -1953,7 +1952,6 @@
 				CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */,
 				CFD214B20913BE2E0011F11E /* include_typeAndOperation.h */,
 				CFD214B30913BE2E0011F11E /* include_typeAppendInstruction.h */,
-				CFD214B40913BE2E0011F11E /* include_typeAppendInstructionWithAssignment.h */,
 				CFD214B50913BE2E0011F11E /* include_typeArgumentAttribut.h */,
 				CFD214B60913BE2E0011F11E /* include_typeArgumentCaractere.h */,
 				CFD214B70913BE2E0011F11E /* include_typeArgumentCaractereCourant.h */,
@@ -2461,14 +2459,14 @@
 				CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */,
 				CFF8611D09C0ACF600F90D05 /* C_GGS_Object.h */,
 				CF41F6650912856100B3F397 /* PP_GalgasPrefix.pch */,
-				CFD7D48F0910C6AD00B72461 /* GGS_stringset.cpp */,
-				CFD7D4900910C6AD00B72461 /* GGS_stringset.h */,
 				CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */,
 				CFA1415E060DB7CB00601791 /* AC_galgas_map.h */,
 				CFF53872057A558F00854C83 /* AC_galgas_io.cpp */,
 				CFF5387B057A558F00854C83 /* C_galgas_uint_array.cpp */,
 				CF8259F608536AC20077AEAF /* C_Lexique.cpp */,
 				CF8259F708536AC20077AEAF /* C_Lexique.h */,
+				CFD7D48F0910C6AD00B72461 /* GGS_stringset.cpp */,
+				CFD7D4900910C6AD00B72461 /* GGS_stringset.h */,
 				CFF283330864369A0055D7B6 /* GGS_double.cpp */,
 				CFF283340864369A0055D7B6 /* GGS_double.h */,
 				CF6E113106269BEC001B909F /* GGS_sint.cpp */,

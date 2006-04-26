@@ -969,18 +969,6 @@ class @typeDecrementInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#          += instruction (with luint assignment)                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeAppendInstructionWithAssignment extends @typeInstruction {
-  @typeCplusPlusName mTargetVarCppName ;
-  @typeExpressionList mSourceExpressions ;
-  @typeCplusPlusName m_luint_TargetVarCppName ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #                Instruction d'appel d'action extern                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
