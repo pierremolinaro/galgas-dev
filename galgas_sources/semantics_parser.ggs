@@ -2445,23 +2445,7 @@ rule <instruction_beginning_with_identifier>
       verifierCompatibiliteTypesSemantiques !formalType !effectiveType !kErrorLocation ;
     end foreach ;
   end if ;
-  @typeInstruction instruction ;
-  select
-    $?$ ;
-    warning here:"obsolete construction" ;
-    @lstring uint_assigned_var ;
-    $identifier$ ? uint_assigned_var ;
-    if not accept_uint_assignment then
-      error nomVarDest : "The type of target object does not accept '?' parameter" ;
-    end if ;
-    @AC_galgasType targetVariableType ;
-    @typeCplusPlusName uint_assigned_cppVarName ;
-    [!?ioVariablesMap searchForWriteAccess !uint_assigned_var ?targetVariableType ?uint_assigned_cppVarName] ;
-    extract targetVariableType->@typeGalgas_uint () error uint_assigned_var : messageGalgasType ;
-    instruction := [@typeAppendInstructionWithAssignment new !nomCppVariableSource !expressionList !uint_assigned_cppVarName] ;
-  or
-    instruction := [@typeAppendInstruction new !nomCppVariableSource !expressionList] ;
-  end select ;
+  @typeInstruction instruction := [@typeAppendInstruction new !nomCppVariableSource !expressionList] ;
   ioInstructionList += !instruction ;
 end rule ;
 
