@@ -87,9 +87,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "//--- Element Class\n"
              "  public : typedef elementOf_GGS_" << aNomTable << " element_type ;\n"
              "//--- Get pointers\n"
-             "  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }\n"
-             "  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }\n"
-             "  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }\n"
+             "  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }\n"
+             "  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }\n"
+             "  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }\n"
              "//--- Create a new element\n"
              "  protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;\n"
              "//--- Get object pointer (for method call)\n"
@@ -253,7 +253,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomTable << " result ;\n"
-               "  macroMyNew (result.mReferenceCountPtr, sint32 (1)) ;\n"
+               "  macroMyNew (result.mSharedMapRoot, cMapRoot) ;\n"
                "  return result ;\n"
                "}\n\n" ;
 
@@ -265,7 +265,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  bool extension = false ; // Unused here\n"
                "  sint32 index = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo, mRoot, extension, index, existingKeyLocation) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->mRoot, extension, index, existingKeyLocation) ;\n"
                "}\n\n" ;
 
 //--- 'insertElement' method
@@ -300,7 +300,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "    bool extension = false ; // Unused here\n"
                "    GGS_location existingKeyLocation ;\n"
-               "    internalInsert (inKey, (void *) & info, mRoot, extension, index, existingKeyLocation) ;\n"
+               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, extension, index, existingKeyLocation) ;\n"
                "    if (index < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "     }\n"

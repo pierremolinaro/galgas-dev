@@ -89,9 +89,9 @@ class GGS_typeLexicalAttributesMap : public AC_galgas_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeLexicalAttributesMap element_type ;
 //--- Get pointers
-  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;
 //--- Get object pointer (for method call)
@@ -137,9 +137,9 @@ class GGS_lexicalTypeMap : public AC_galgas_map {
 //--- Element Class
   public : typedef elementOf_GGS_lexicalTypeMap element_type ;
 //--- Get pointers
-  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;
 //--- Get object pointer (for method call)
@@ -185,9 +185,9 @@ class GGS_typeTableMessagesErreurs : public AC_galgas_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeTableMessagesErreurs element_type ;
 //--- Get pointers
-  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;
 //--- Get object pointer (for method call)
@@ -238,9 +238,9 @@ class GGS_M_styles : public AC_galgas_map {
 //--- Element Class
   public : typedef elementOf_GGS_M_styles element_type ;
 //--- Get pointers
-  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;
 //--- Get object pointer (for method call)
@@ -291,9 +291,9 @@ class GGS_typeTableDefinitionTerminaux : public AC_galgas_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeTableDefinitionTerminaux element_type ;
 //--- Get pointers
-  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;
 //--- Get object pointer (for method call)
@@ -347,9 +347,9 @@ class GGS_typeTableMotsReserves : public AC_galgas_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeTableMotsReserves element_type ;
 //--- Get pointers
-  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;
 //--- Get object pointer (for method call)
@@ -395,9 +395,9 @@ class GGS_typeTableTablesDeMotsReserves : public AC_galgas_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeTableTablesDeMotsReserves element_type ;
 //--- Get pointers
-  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;
 //--- Get object pointer (for method call)
