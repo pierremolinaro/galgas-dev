@@ -836,7 +836,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 GGS_typeAltProductionsMap GGS_typeAltProductionsMap::constructor_empty (UNUSED_LOCATION_ARGS) {
   GGS_typeAltProductionsMap result ;
-  macroMyNew (result.mReferenceCountPtr, sint32 (1)) ;
+  macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
 }
 
@@ -848,7 +848,7 @@ void GGS_typeAltProductionsMap::internalInsertForDuplication (AC_galgas_map_elem
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mRoot, extension, index, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->mRoot, extension, index, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -877,7 +877,7 @@ insertElement (C_Lexique & inLexique,
     info.mAllPropertiesMap = inParameter5 ;
     bool extension = false ; // Unused here
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mRoot, extension, index, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, extension, index, existingKeyLocation) ;
     if (index < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
      }

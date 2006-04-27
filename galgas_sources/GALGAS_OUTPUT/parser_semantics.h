@@ -194,9 +194,9 @@ class GGS_typeAltProductionsMap : public AC_galgas_map {
 //--- Element Class
   public : typedef elementOf_GGS_typeAltProductionsMap element_type ;
 //--- Get pointers
-  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;
 //--- Get object pointer (for method call)
