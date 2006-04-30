@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS semantics component semantics definition                          *
 #                                                                           *
-#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  Copyright (C) 1997-2006 Pierre Molinaro.                                 *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -846,7 +846,7 @@ routine verifierCompatibiliteArgEffectifsSignature
     end foreach ;
   #--- Build expression list
     @typeExpressionList expressionList := ioExpressionList ;
-    ioExpressionList := [@typeExpressionList empty] ;
+    ioExpressionList := [@typeExpressionList emptyList] ;
     foreach signatureReference (??@AC_galgasType attSignatureType ??*),
             expressionList (??@typeExpression attExpressionType) :
       extract attExpressionType :
@@ -1239,7 +1239,7 @@ list @typeEntitiesToGenerateList {
 #---------------------------------------------------------------------------*
 
 routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap :
-  ioComponentSemanticsEntitiesMap := [@M_semanticsEntitiesForUse empty] ;
+  ioComponentSemanticsEntitiesMap := [@M_semanticsEntitiesForUse emptyMap] ;
 
   @lstring name := [@lstring new !"lstring" !here] ;
   @AC_galgasType t := [@typeGalgas_lstring new] ;

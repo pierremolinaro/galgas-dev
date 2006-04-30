@@ -323,7 +323,7 @@ fixInfos (cInfo & inInfo,
           C_Lexique & inLexique) {
   GGS_luint index ;
   GGS_M_nonterminalSymbolAltsForGrammar unusedParameter ;
-  inInfo.mNonterminalSymbolsMapForGrammar.methode_searchKeyGetIndex (inLexique, mNonterminalSymbolName,
+  inInfo.mNonterminalSymbolsMapForGrammar.method_searchKeyGetIndex (inLexique, mNonterminalSymbolName,
                                             index, unusedParameter COMMA_HERE) ;
   mNonterminalSymbolIndex.mValue = index.uintValue () ;
 }
@@ -478,7 +478,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
       macroValidPointer (currentRule) ;
       GGS_luint index ;
       GGS_M_nonterminalSymbolAltsForGrammar unused ;
-      inNonterminalSymbolsMapForGrammar.methode_searchKeyGetIndex (inLexique, currentRule->mLeftNonterminalSymbol,
+      inNonterminalSymbolsMapForGrammar.method_searchKeyGetIndex (inLexique, currentRule->mLeftNonterminalSymbol,
                                                 index, unused COMMA_HERE) ;
       currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
     //--- Fix, for each rule, left nonterminal symbol index

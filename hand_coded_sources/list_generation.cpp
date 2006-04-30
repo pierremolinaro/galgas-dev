@@ -100,39 +100,54 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "\n"
              "class GGS_" << aNomListe << " {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " element_type ;\n"
-             "  private : element_type * mFirstItem ;\n"
-             "  private : element_type * mLastItem ;\n"
-             "  private : sint32 mListLength ;\n"
-             "  public : inline sint32 count (void) const {\n"
-             "    return mListLength ;\n"
-             "  }\n"
-             "  private : sint32 * mCountReference ;\n"
+//--- Embedded class for list root
+             "//--- Embedded class for list root\n"
+             "  protected : class cRootList {\n"
+             "    public : element_type * mFirstItem ;\n"
+             "    public : element_type * mLastItem ;\n"
+             "    public : sint32 mListLength ;\n"
+             "    public : sint32 mCountReference ;\n"
+             "  //--- Default constructor\n"
+             "    public : cRootList (void) ;\n"
+             "  //--- Destructor\n"
+             "    public : ~cRootList (void) ;\n"
+             "  //--- No Copy\n"
+             "    private : cRootList (const cRootList &) ;\n"
+             "    private : void operator = (const cRootList &) ;\n"
+             "  } ;\n"
+             "//--- Private attribute\n"
+             "  private : cRootList * mRoot ;\n"
 
 //--- Constructors and assignment operator declaration
-             "  public : GGS_" << aNomListe << " (void) ; // Default Constructor\n"
-             "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-             "    public : GGS_" << aNomListe << " (LOCATION_ARGS) ; // Constructor for debug mode\n"
-             "  #endif\n"
-             "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " &) ; // Copy constructor\n"
-             "  public : void operator = (const GGS_" << aNomListe << " &) ; // Assignment operator\n"
+             "//--- Default Constructor\n"
+             "  public : GGS_" << aNomListe << " (void) ;\n"
+             "//--- Copy Constructor\n"
+             "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " & inSource) ;\n"
+             "//--- Assignment Operator\n"
+             "  public : void operator = (const GGS_" << aNomListe << " & inSource) ;\n"
 
 //--- Destructor declaration
-             "//--- Virtual destructor\n"
-             "  public : virtual ~GGS_" << aNomListe << " (void) ;\n\n"
+             "//--- Destructor\n"
+             "  public : ~GGS_" << aNomListe << " (void) ;\n\n"
 
-//--- Declare constructor 'empty'
-             "//--- Constructor 'empty'\n"
-             "  public : static GGS_" << aNomListe << " constructor_empty (LOCATION_ARGS) ;\n"
+//--- Declare constructor 'emptyList'
+             "//--- Constructor 'emptyList'\n"
+             "  public : static GGS_" << aNomListe << " constructor_emptyList (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
+
+//--- 'count'
+             "//--- Function 'count'\n"
+             "  public : sint32 count (void) const ;\n"
 
 //--- Declare reader 'description'
              "//--- Reader 'description'\n"
              "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Get first item
-             "//--- Get first item\n"
-             "  public : inline element_type * firstObject (void) const { return mFirstItem ; }\n"
+             "//--- Get first object\n"
+             "  public : element_type * firstObject (void) const ;\n"
 
 //--- Append a new value
+             "//--- Handling '+=' GALGAS operator\n"
              "  public : void addAssign_operation (" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
@@ -148,6 +163,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
+             "//--- Internal Methods\n"
               "  protected : void internalAppendItem (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
@@ -161,20 +177,20 @@ generateHdeclarations (AC_OutputStream & inHfile,
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
-             "  public : void insulateList (void) ;\n"
-             "  public : void emptyList (void) ;\n"
+             "  protected : void insulateList (void) ;\n"
+             "//--- 'isBuilt' method\n"
              "  public : inline bool isBuilt (void) const {\n"
-             "    return mCountReference != NULL ;\n"
+             "    return mRoot != NULL ;\n"
              "  }\n"
   
 //--- Generate declaration of 'drop_operation' method
+             "//--- Handling GALGAS 'drop' instruction\n"
              "  public : void drop_operation (void) ;\n"
 
-//--- Generate declaration and implementation of 'length' reader
-             "  public : inline GGS_uint reader_length (C_Lexique & /* inLexique */\n"
-             "                                          COMMA_UNUSED_LOCATION_ARGS)  const {\n"
-             "    return GGS_uint (mCountReference != NULL, (uint32) mListLength) ;\n"
-             "  }\n"
+//--- Generate declaration of 'length' reader
+             "//--- Handling GALGAS 'length' reader\n"
+             "  public : GGS_uint reader_length (C_Lexique & /* inLexique */\n"
+             "                                   COMMA_UNUSED_LOCATION_ARGS) const ;\n"
 
 //--- End of list class declaration
              "} ;\n\n" ;
@@ -207,7 +223,8 @@ void cPtr_C_listTypeToImplement
   inCppFile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 
 //--- Engendrer le constructeur de l'element de liste
-  inCppFile << "elementOf_GGS_" << aNomListe << "::\nelementOf_GGS_" << aNomListe << " (" ;
+  inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
+               "elementOf_GGS_" << aNomListe << " (" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
@@ -219,17 +236,18 @@ void cPtr_C_listTypeToImplement
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ") {\n" ; 
-  inCppFile << "  mNextItem = (elementOf_GGS_" << aNomListe << " *) NULL ;\n" ;
+  inCppFile << "):\n"
+               "mNextItem (NULL)" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  " << current->aNomAttribut << " = argument_" << numeroVariable << " ;\n" ;
+    inCppFile << ",\n" << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "}\n\n" ;
+  inCppFile << " {\n"
+               "}\n\n" ;
 
   inCppFile.writeCHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
@@ -249,96 +267,82 @@ void cPtr_C_listTypeToImplement
 // ------------- List Implementation -----------------
   inCppFile.writeCTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
-//--- Generate default constructor
-  inCppFile << "GGS_" << aNomListe << "\n"
-               "::GGS_" << aNomListe
-           << " (void) { // Default Constructor\n"
-              "  mFirstItem = (element_type *) NULL ;\n"
-              "  mLastItem = (element_type *) NULL ;\n"
-              "  mListLength = 0 ;\n"
-              "  mCountReference = (sint32 *) NULL ;\n"
-              "}\n\n" ;
+//--- Generate root default constructor
+  inCppFile << "GGS_" << aNomListe
+            << "::cRootList::cRootList (void):\n"
+               "mFirstItem (NULL),\n"
+               "mLastItem (NULL),\n"
+               "mListLength (0),\n"
+               "mCountReference (1) {\n"
+               "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
-//--- Generate constructor for debug mode
-  inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-               "  GGS_" << aNomListe << "\n"
-               "::GGS_" << aNomListe
-           << " (UNUSED_LOCATION_ARGS) {\n"
-              "    mFirstItem = (element_type *) NULL ;\n"
-              "    mLastItem = (element_type *) NULL ;\n"
-              "    mListLength = 0 ;\n"
-              "    mCountReference = (sint32 *) NULL ;\n"
-              "  }\n"
-              "#endif\n\n" ;
+//--- Generate root destructor
+  inCppFile << "GGS_" << aNomListe
+            << "::cRootList::~cRootList (void) {\n"
+               "  while (mFirstItem != NULL) {\n"
+               "    element_type * p = mFirstItem->nextObject () ;\n"
+               "    macroMyDelete (mFirstItem, element_type) ;\n"
+               "    mFirstItem = p ;\n"
+               "  }\n"
+               "}\n\n" ;
+  inCppFile.writeCHyphenLineComment () ;
+
+//--- Generate default constructor
+  inCppFile << "GGS_" << aNomListe
+            << "::GGS_" << aNomListe
+            << " (void) { // Default Constructor\n"
+               "  mRoot = NULL ;\n"
+               "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
 //--- Engendrer le destructeur
   inCppFile << "GGS_" << aNomListe << "::~GGS_" << aNomListe << " (void) {\n"
-           << "  emptyList () ;\n"
+           << "  drop_operation () ;\n"
            << "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
 //--- Engendrer le constructeur de recopie
-  inCppFile << "GGS_" << aNomListe << "::GGS_" << aNomListe
-            << " (const GGS_" << aNomListe << " & source) { // Copy constructor\n"
-               "  mFirstItem = (element_type *) NULL ;\n"
-               "  mLastItem = (element_type *) NULL ;\n"
-               "  mListLength = 0 ;\n"
-               "  mCountReference = (sint32 *) NULL ;\n"
-               "  *this = source ;\n"
+  inCppFile << "GGS_" << aNomListe << "::\n"
+               "GGS_" << aNomListe
+            << " (const GGS_" << aNomListe << " & inSource) {\n"
+               "  mRoot = inSource.mRoot ;\n"
+               "  if (mRoot != NULL) {\n"
+               "    macroValidPointer (mRoot) ;\n"
+               "    mRoot->mCountReference ++ ;\n"
+               "  }\n"
                "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
 //--- Engendrer l'operateur d'affectation
-  inCppFile << "void GGS_" << aNomListe << "\n"
-               "::operator = (const GGS_" << aNomListe << " & source) { // Assignment operator\n"
-               "  if (this != & source) {\n"
-               "    emptyList () ;\n"
-               "    mFirstItem = source.mFirstItem ;\n"
-               "    mLastItem = source.mLastItem ;\n"
-               "    mListLength = source.mListLength ;\n"
-               "    mCountReference = source.mCountReference ;\n"
-               "    if (mCountReference != NULL) {\n"
-               "      macroValidPointer (mCountReference) ;\n"
-               "      (*mCountReference) ++ ;\n"
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "operator = (const GGS_" << aNomListe << " & inSource) {\n"
+               "  if (this != & inSource) {\n"
+               "    drop_operation () ;\n"
+               "    mRoot = inSource.mRoot ;\n"
+               "    if (mRoot != NULL) {\n"
+               "      macroValidPointer (mRoot) ;\n"
+               "      mRoot->mCountReference ++ ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
-//--- Engendrer la methode emptyList
-  inCppFile << "void GGS_" << aNomListe << "\n"
-               "::emptyList (void) {\n"
-               "  mListLength = 0 ;\n"
-               "  mLastItem = (element_type *) NULL ;\n"
-               "  if (mCountReference != NULL) {\n"
-               "    macroValidPointer (mCountReference) ;\n"
-               "    if ((*mCountReference) == 1) {\n"
-               "      macroMyDelete (mCountReference, sint32) ;\n"
-               "      while (mFirstItem != NULL) {\n"
-               "        macroValidPointer (mFirstItem) ;\n"
-               "        mLastItem = mFirstItem->mNextItem ;\n"
-               "        macroMyDelete (mFirstItem, element_type) ;\n"
-               "        mFirstItem = mLastItem ;\n"
-               "      }\n"
-               "    }else{\n"
-               "      mFirstItem = (element_type *) NULL ;\n"
-               "      (*mCountReference) -- ;\n"
-               "      mCountReference = (sint32 *) NULL ;\n"
-               "    }\n"
-               "  }\n"
+//--- Engendrer la methode 'emptyList'
+  inCppFile << "GGS_" << aNomListe << "::element_type * GGS_" << aNomListe << "::\n"
+               "firstObject (void) const {\n"
+               "  return (mRoot == NULL) ? NULL : mRoot->mFirstItem ;\n"
                "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
 //--- Engendrer la methode internalAppendItem
-  inCppFile << "void GGS_" << aNomListe << "::"
-               "\ninternalAppendItem (" ;
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "internalAppendItem (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    if (numeroVariable > 0) inCppFile << ",\n                    " ;
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
@@ -360,22 +364,23 @@ void cPtr_C_listTypeToImplement
   inCppFile << ")) ;\n" 
                "  if (nouvelElement != NULL) {\n" 
                "    macroValidPointer (nouvelElement) ;\n" 
-               "    if (mLastItem == NULL) {\n" 
-               "      mFirstItem = nouvelElement ;\n" 
+               "    if (mRoot->mLastItem == NULL) {\n" 
+               "      mRoot->mFirstItem = nouvelElement ;\n" 
                "    }else{\n" 
-               "      macroValidPointer (mLastItem) ;\n" 
-               "      mLastItem->mNextItem = nouvelElement ;\n" 
+               "      macroValidPointer (mRoot->mLastItem) ;\n" 
+               "      mRoot->mLastItem->mNextItem = nouvelElement ;\n" 
                "    }\n" 
-               "    mLastItem = nouvelElement ;\n" 
+               "    mRoot->mLastItem = nouvelElement ;\n" 
                "    nouvelElement = (element_type *) NULL ;\n" 
-               "    mListLength ++ ;\n" 
+               "    mRoot->mListLength ++ ;\n" 
                "  }\n" 
                "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
 
 //--- Generate addAssign_operation
-  inCppFile << "void GGS_" << aNomListe << "::\naddAssign_operation (" ;
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "addAssign_operation (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -410,13 +415,13 @@ void cPtr_C_listTypeToImplement
 //--- Engendrer la methode insulateList
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "insulateList (void) {\n"
-               "  if (mCountReference != NULL) {\n"
-               "    macroValidPointer (mCountReference) ;\n"
-               "    if ((*mCountReference) > 1) {\n"
-               "      element_type * p = mFirstItem ;\n"
-               "      mFirstItem = (element_type *)  NULL ;\n"
-               "      mLastItem = (element_type *)  NULL ;\n"
-               "      mListLength = 0 ;\n"
+               "  if (mRoot != NULL) {\n"
+               "    macroValidPointer (mRoot) ;\n"
+               "    if (mRoot->mCountReference > 1) {\n"
+               "      element_type * p = mRoot->mFirstItem ;\n"
+               "      mRoot->mCountReference -- ;\n"
+               "      mRoot = NULL ;\n"
+               "      macroMyNew (mRoot, cRootList) ;\n"
                "      while (p != NULL) {\n"
                "        macroValidPointer (p) ;\n"
                "        internalAppendItem (" ;
@@ -432,30 +437,35 @@ void cPtr_C_listTypeToImplement
   inCppFile << ") ;\n"
                "        p = p->mNextItem ;\n"
                "      }\n"
-               "      (*mCountReference) -- ;\n"
-               "      mCountReference = (sint32 *) NULL ;\n"
-               "      macroMyNew (mCountReference, sint32 (1)) ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
-//--- Implement constructor 'empty'
+//--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_empty (UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  macroMyNew (result.mCountReference, sint32 (1)) ;\n"
+               "  macroMyNew (result.mRoot, cRootList) ;\n"
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.writeCHyphenLineComment () ;
 
+//--- Implement 'count' function
+  inCppFile << "sint32 GGS_" << aNomListe << "::\n"
+               "count (void) const {\n"
+               "  return (mRoot == NULL) ? 0 : mRoot->mListLength ;\n"
+               "}\n\n" ;
+  inCppFile.writeCHyphenLineComment () ;
+
 //--- Implement reader 'description'
-  inCppFile << "GGS_string GGS_" << aNomListe << "::reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
+  inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
+               "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
                "  s << \"<list @" << aNomListe << "\" ;\n"
                "  if (isBuilt ()) {\n"
-               "    s << \" \" << mListLength << \" object\" << ((mListLength > 1) ? \"s \" : \" \") ;\n"
-               "    element_type * p = mFirstItem ;\n"
+               "    s << \" \" << mRoot->mListLength << \" object\" << ((mRoot->mListLength > 1) ? \"s \" : \" \") ;\n"
+               "    element_type * p = mRoot->mFirstItem ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
                "      p->appendForListDescription (_inLexique, s COMMA_THERE) ;\n"
@@ -467,11 +477,29 @@ void cPtr_C_listTypeToImplement
                "  s << \">\\n\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
+  inCppFile.writeCHyphenLineComment () ;
+
+//--- Generate implementation of 'length' reader
+  inCppFile << "GGS_uint GGS_" << aNomListe << "::\n"
+               "reader_length (C_Lexique & /* inLexique */\n"
+               "               COMMA_UNUSED_LOCATION_ARGS) const {\n"
+               "  return GGS_uint (mRoot != NULL,\n"
+               "                   (mRoot == NULL) ? 0 : (uint32) mRoot->mListLength) ;\n"
+               "}\n\n" ;
+  inCppFile.writeCHyphenLineComment () ;
 
 //--- Engendrer la declaration de la methode 'drop_operation'
-  inCppFile << "void GGS_" << aNomListe << "\n"
-               "::drop_operation (void) {\n"
-               "  emptyList () ;\n"
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "drop_operation (void) {\n"
+               "  if (mRoot != NULL) {\n"
+               "    macroValidPointer (mRoot) ;\n"
+               "    if (mRoot->mCountReference == 1) {\n"
+               "      macroMyDelete (mRoot, cRootList) ;\n"
+               "    }else{\n"
+               "      mRoot->mCountReference -- ;\n"
+               "      mRoot = NULL ;\n"
+               "    }\n"
+               "  }\n"
                "}\n\n" ;
 }
 

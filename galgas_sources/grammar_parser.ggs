@@ -122,10 +122,10 @@ rule <galgas_component>
     ?lexiqueName
   ;
 #--- Parse syntax components references
-  @stringset classesNamesSet [empty] ;
-  @L_syntaxComponents_ForGrammar syntaxComponentsList [empty] ;
-  @M_nonTerminalSymbolsForGrammar nonterminalSymbolsMapForGrammar [empty] ;
-  @M_optionComponents optionComponentsMap [empty] ;
+  @stringset classesNamesSet [emptySet] ;
+  @L_syntaxComponents_ForGrammar syntaxComponentsList [emptyList] ;
+  @M_nonTerminalSymbolsForGrammar nonterminalSymbolsMapForGrammar [emptyMap] ;
+  @M_optionComponents optionComponentsMap [emptyMap] ;
   repeat
     $import$ ;
     select
@@ -136,17 +136,17 @@ rule <galgas_component>
       @M_cli_options uintOptionsMap ;
       @M_cli_options stringOptionsMap ;
       select
-        [!?ioOptionsComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+        [ioOptionsComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       or
         $in$ ;
         @lstring fileName ;
         $literal_string$ ? fileName ;
-        @M_optionComponents importedOptionComponentsMap [empty] ;
+        @M_optionComponents importedOptionComponentsMap [emptyMap] ;
         <parse_option_component_for_importing>
           !fileName
           !?importedOptionComponentsMap
         ;
-        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+        [importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       end select ;
       $;$ ;
       [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
@@ -161,7 +161,7 @@ rule <galgas_component>
         $in$ ;
         @lstring fileName ;
         $literal_string$ ? fileName ;
-        syntaxComponentsMap := [@M_syntaxComponents empty] ;
+        syntaxComponentsMap := [@M_syntaxComponents emptyMap] ;
         <parse_syntax_for_importing>
           !fileName
           !?syntaxComponentsMap
@@ -173,7 +173,7 @@ rule <galgas_component>
       @M_nonTerminalSymbolsForGrammar importedNonterminalSymbolsMap ;
       @L_productionRules_ForGrammarComponent importedProductionRulesList ;
       @lstring importedLexiqueComponentName ;
-      [!?syntaxComponentsMap searchKey !syntaxComponentName
+      [syntaxComponentsMap searchKey !syntaxComponentName
         ?importedNonterminalSymbolsMap
         ?importedProductionRulesList
         ?importedLexiqueComponentName
@@ -190,17 +190,17 @@ rule <galgas_component>
       foreach importedNonterminalSymbolsMap (??@lstring ntSymbol ??@M_nonterminalSymbolAltsForGrammar importedAltSignaturesMap) :
         if [nonterminalSymbolsMapForGrammar hasKey ![ntSymbol value]] then
           @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
-          [!?nonterminalSymbolsMapForGrammar searchKey !ntSymbol ?altSignatureMap] ;
+          [nonterminalSymbolsMapForGrammar searchKey !ntSymbol ?altSignatureMap] ;
           foreach altSignatureMap (??@lstring altName ??@L_signature altSignature ??@lstring kReturnedEntity) :
             @M_nonterminalSymbolAltsForGrammar temp := importedAltSignaturesMap ;
             @L_signature importedAltSignature ;
             @lstring importedReturnedType ;
-            [!?temp searchKey !altName ?importedAltSignature ?importedReturnedType] ;
+            [temp searchKey !altName ?importedAltSignature ?importedReturnedType] ;
             checkSignature_ForGrammarComponent !importedAltSignature !altSignature ![ntSymbol location] ![altName location] ;
           end foreach ;
           foreach importedAltSignaturesMap (??@lstring importedAltName ??@L_signature importedAltSignature ??*) :
             if [importedAltName value] != "parse" then
-              [!?altSignatureMap searchKey !importedAltName ?* ?*] ;
+              [altSignatureMap searchKey !importedAltName ?* ?*] ;
             end if ;
           end foreach ;
         else
@@ -217,8 +217,8 @@ rule <galgas_component>
   $identifier$ ? startSymbolName ;
   $>$ ;
 #--- (added 8/13/2004, modified 3/19/2006)
-  @M_nonterminalSymbolAltsForGrammar grammarAltMap [empty] ;
-  @M_startSymbolEntityAndMetamodel startSymbolEntityAndMetamodelMap [empty] ;
+  @M_nonterminalSymbolAltsForGrammar grammarAltMap [emptyMap] ;
+  @M_startSymbolEntityAndMetamodel startSymbolEntityAndMetamodelMap [emptyMap] ;
   @lstring altName [new !"" !here] ;
   repeat
     @L_signature signature ;
@@ -231,7 +231,7 @@ rule <galgas_component>
       $->$ ;
       @lstring returnedMetamodelName ;
       $identifier$ ?returnedMetamodelName ;
-      [!?ioMetamodelComponentMap searchKey !returnedMetamodelName ?returnedEntityName ?* ?* ?*] ;
+      [ioMetamodelComponentMap searchKey !returnedMetamodelName ?returnedEntityName ?* ?* ?*] ;
       [!?startSymbolEntityAndMetamodelMap insertKey !altName !returnedEntityName !returnedMetamodelName] ;
     end select ;
     [!?grammarAltMap insertKey !altName !signature !returnedEntityName] ;
@@ -243,19 +243,19 @@ rule <galgas_component>
 #--- Search start symbol in non terminal map
   @M_nonterminalSymbolAltsForGrammar startSymbolAltMap ;
   @luint startSymbolIndex ;
-  [!?nonterminalSymbolsMapForGrammar searchKeyGetIndex !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
+  [nonterminalSymbolsMapForGrammar searchKeyGetIndex !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
 #--- Check signatures (added 8/13/2004)
   foreach startSymbolAltMap (??@lstring cstAltName ??@L_signature cstAltMap ??@lstring kReturnedEntity) :
     @L_signature altMap ;
     @lstring returnedEntity ;
-    [!?grammarAltMap searchKey !cstAltName ?altMap ?returnedEntity] ;
+    [grammarAltMap searchKey !cstAltName ?altMap ?returnedEntity] ;
     checkSignature_ForGrammarComponent !cstAltMap !altMap !here ![cstAltName location] ;
     if [returnedEntity value] != [kReturnedEntity value] then
 
     end if ;
   end foreach ;
   foreach grammarAltMap (??@lstring cstAltName ??* ??*) :
-    [!?startSymbolAltMap searchKey !cstAltName ?* ?*] ;
+    [startSymbolAltMap searchKey !cstAltName ?* ?*] ;
   end foreach ;
 #--- Analyze grammar
   action analyzeGrammar
@@ -450,8 +450,8 @@ label importGrammarForSemantics
   $:$ ;
    @lstring lexiqueName ;
   <get_lexique_infos> getLexiqueName ?lexiqueName ;
-  @M_nonterminalSymbolAltsForGrammar grammarAltMap [empty] ;
-  @M_optionComponents optionComponentsMap [empty] ;
+  @M_nonterminalSymbolAltsForGrammar grammarAltMap [emptyMap] ;
+  @M_optionComponents optionComponentsMap [emptyMap] ;
   repeat
     $import$ ;
     select
@@ -462,17 +462,17 @@ label importGrammarForSemantics
       @M_cli_options uintOptionsMap ;
       @M_cli_options stringOptionsMap ;
       select
-        [!?optionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+        [optionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       or
         $in$ ;
         @lstring fileName ;
         $literal_string$ ? fileName ;
-        @M_optionComponents importedOptionComponentsMap [empty] ;
+        @M_optionComponents importedOptionComponentsMap [emptyMap] ;
         <parse_option_component_for_importing>
           !fileName
           !?importedOptionComponentsMap
         ;
-        [!?importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+        [importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       end select ;
       $;$ ;
       [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;

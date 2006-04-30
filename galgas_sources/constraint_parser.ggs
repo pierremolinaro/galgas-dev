@@ -149,7 +149,7 @@ label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
-  @M_constraintComponents constraintComponentMap [empty] ;
+  @M_constraintComponents constraintComponentMap [emptyMap] ;
   <parse_constraint_document>
     !?ioMetamodelComponentMap
     !?constraintComponentMap
@@ -189,7 +189,7 @@ rule <parse_constraint_document>
   @lstring constraintName ;
   $identifier$ ? constraintName ;
 #--- Pass declaration
-  @passMap passMap [empty] ;
+  @passMap passMap [emptyMap] ;
   select
   or
     $($ ;
@@ -212,8 +212,8 @@ rule <parse_constraint_document>
   @lstring fileName ;
   $literal_string$ ? fileName ;
   $;$ ;  
-  @M_semanticsComponents unusedSemanticsMapForUse [empty] ;
-  @M_metamodelsComponents metamodelComponentMap [empty] ;
+  @M_semanticsComponents unusedSemanticsMapForUse [emptyMap] ;
+  @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
   <parse_semantics_component_for_importing>
     !fileName
     !?unusedSemanticsMapForUse
@@ -225,7 +225,7 @@ rule <parse_constraint_document>
   @M_semanticsEntitiesForUse semanticsEntitiesMap ;
   @entityToImplementMap entityMap ;
   @stringset multiReferencedEntities ;
-  [!?metamodelComponentMap searchKey
+  [metamodelComponentMap searchKey
     !metamodelName
     ?rootEntity
     ?semanticsEntitiesMap
@@ -233,8 +233,8 @@ rule <parse_constraint_document>
     ?multiReferencedEntities
   ] ;
 #--- Parse Map Declarations
-  @mapEntityMap mapEntityMap [empty] ;
-  @mapAndEntityUniqueMap mapAndEntityUniqueMap [empty] ;
+  @mapEntityMap mapEntityMap [emptyMap] ;
+  @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
   repeat
   while
     <constraint_map_declaration>
@@ -243,7 +243,7 @@ rule <parse_constraint_document>
     ;
   end repeat ;
 #--- Parse constraint declarations
-  @constrainedEntityMap constrainedEntityMap [empty] ;
+  @constrainedEntityMap constrainedEntityMap [emptyMap] ;
   repeat
   while
     <constraints_on_entity_declaration>
@@ -263,7 +263,7 @@ rule <parse_constraint_document>
   if constraintOnRootEntity then
     @constrainedEntityPassMap constrainedEntityPassMapForRootEntity ;
     @location endOfConstraintLocation ;
-    [!?constrainedEntityMap searchKey
+    [constrainedEntityMap searchKey
       !rootEntity
       ?*
       ?constrainedEntityPassMapForRootEntity
@@ -291,7 +291,7 @@ rule <parse_constraint_document>
     foreach kEntityPropertiesMap (??@lstring kPropertyName ??@metamodelPropertyKind kKind  ??@lstring kPropertyEntityName) :
       if kKind != [@metamodelPropertyKind attributeProperty] then
         @constrainedEntityPassMap referencePropertyConstrainedEntityPassMap ;
-        [!?constrainedEntityMap searchKey !kPropertyEntityName ?* ?referencePropertyConstrainedEntityPassMap ?* ?* ?* ?* ?* ?*] ;
+        [constrainedEntityMap searchKey !kPropertyEntityName ?* ?referencePropertyConstrainedEntityPassMap ?* ?* ?* ?* ?* ?*] ;
         foreach referencePropertyConstrainedEntityPassMap (??@lstring kReferencePropertyPassName ??* ??* ??* ??*) :
           if not [kConstrainedEntityPassMap hasKey ![kReferencePropertyPassName value]] then
             error kEntityName:"this constraint should define the '" . [kReferencePropertyPassName value]
@@ -299,9 +299,6 @@ rule <parse_constraint_document>
           end if ;
         end foreach ;
         @stringset referencePassSet := [referencePropertyConstrainedEntityPassMap allKeys] ;
-#message "---------------\n" ;
-#message [kPropertyName description] ;
-#message [referencePassSet description] ;
         foreach kConstrainedEntityPassMap (??@lstring kPassName
                                            ??*
                                            ??*
@@ -318,9 +315,9 @@ rule <parse_constraint_document>
             @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap := kCallInstructionSharedPropertySignatureMap ;
             @sharedPropertyList signature ;
             @location signatureLocation ;
-            [!?callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?signature ?signatureLocation] ;
+            [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?signature ?signatureLocation] ;
             @sharedPropertyList sharedPropertyList ;
-            [!?referencePropertyConstrainedEntityPassMap searchKey !kPassName ?* ?sharedPropertyList ?* ?*] ;
+            [referencePropertyConstrainedEntityPassMap searchKey !kPassName ?* ?sharedPropertyList ?* ?*] ;
             if [sharedPropertyList length] == [signature length] then
               foreach sharedPropertyList (??@lstring kTypeName ??@lstring kParameterName),
                       signature (??@lstring kSignatureTypeName ??@lstring kSignatureParameterName) :
@@ -334,12 +331,6 @@ rule <parse_constraint_document>
               . " shared property(ies) as parameters, while the constraint definition requires "
               . [[sharedPropertyList length] string] ;
             end if ;
-#message "1---------------\n" ;
-#message [kPassName description] ;
-#message "2---------------\n" ;
-#message [signature description] ;
-#message "3---------------\n" ;
-#message [sharedPropertyList description] ;
           end if ;
         end foreach ;
       end if ;
@@ -415,22 +406,22 @@ rule <constraints_on_entity_declaration>
   @lstring superEntity ;
   @entityPropertyMap allPropertyMap ;
   @entityPropertyMap propertyMap ;
-  [!?ioEntityMap searchKey
+  [ioEntityMap searchKey
     !entityName
     ?allPropertyMap
     ?*
     ?propertyMap
     ?superEntity
    ] ;
-  @stringset descendantEntitySet [empty] ;
+  @stringset descendantEntitySet [emptySet] ;
   computeDescendantSet !?ioEntityMap !entityName !?descendantEntitySet ;
 #--- Get inherited properties from super class constraints
-  @mapAsConstraintPropertyMap  allMapsAsConstraintPropertyMap [empty] ;
-  @constrainedEntityPassMap inheritedConstrainedEntityPassMap [empty] ;
-  @stringset passesDefinedByInheritanceTreeRootEntity [empty] ;
+  @mapAsConstraintPropertyMap  allMapsAsConstraintPropertyMap [emptyMap] ;
+  @constrainedEntityPassMap inheritedConstrainedEntityPassMap [emptyMap] ;
+  @stringset passesDefinedByInheritanceTreeRootEntity [emptySet] ;
   if [superEntity value] != "" then
     if [ioConstrainedEntityMap hasKey ![superEntity value]] then
-      [!?ioConstrainedEntityMap searchKey
+      [ioConstrainedEntityMap searchKey
         !superEntity
         ?passesDefinedByInheritanceTreeRootEntity
         ?inheritedConstrainedEntityPassMap
@@ -447,25 +438,25 @@ rule <constraints_on_entity_declaration>
     end if ;
   end if ;
 #--- Passes
-  @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [empty] ;
+  @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [emptyMap] ;
   ${$ ;
-  @constrainedEntityPassMap constrainedEntityPassMap [empty] ;
+  @constrainedEntityPassMap constrainedEntityPassMap [emptyMap] ;
   @uint currentIndex := 0 ;
   repeat
   while
     @lstring passName ;
     $identifier$ ? passName ;
     @luint index ;
-    [!?ioPassMap searchKeyAndGetIndex !passName ?index] ;
+    [ioPassMap searchKeyAndGetIndex !passName ?index] ;
     if [index value] < currentIndex then
       error passName:"the pass order is incorrect" ;
     end if ;
     currentIndex := [index value] ;
-    @sharedPropertyList sharedPropertyList [empty] ;
+    @sharedPropertyList sharedPropertyList [emptyList] ;
   #--- Properties from owner
     select
       if [superEntity value] != "" then
-        [!?inheritedConstrainedEntityPassMap searchKey !passName ?* ?sharedPropertyList ?* ?*] ;
+        [inheritedConstrainedEntityPassMap searchKey !passName ?* ?sharedPropertyList ?* ?*] ;
       end if ;
     or
       $($ ;
@@ -480,7 +471,7 @@ rule <constraints_on_entity_declaration>
         $identifier$ ? propertyName ;
         if [ioMapEntityMap hasKey ![typeName value]] then 
           @lstring elementTypeName ;
-          [!?ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
+          [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
           [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !true] ;
           [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !true] ;
           sharedPropertyList += !typeName !propertyName ;
@@ -502,7 +493,7 @@ rule <constraints_on_entity_declaration>
       $identifier$ ? propertyName ;
       if [ioMapEntityMap hasKey ![typeName value]] then 
         @lstring elementTypeName ;
-        [!?ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
+        [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
         [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !false] ;
         [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !false] ;
       else
@@ -513,13 +504,13 @@ rule <constraints_on_entity_declaration>
     $}$ ;
   #--- Instructions
     ${$ ;
-    @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [empty] ;
-    @typeEntitiesToGenerateList listeEntitesAengendrer [empty] ;
-    @M_optionComponents optionsComponentsMapForUse [empty] ;
-    @typeVariablesMap variablesMap [empty] ;
-    @typeInstructionList instructionsList [empty] ;
-    @stringset constraintPropertyDefinitionSet [empty] ;
-    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [empty] ;
+    @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
+    @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
+    @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+    @typeVariablesMap variablesMap [emptyMap] ;
+    @typeInstructionList instructionsList [emptyList] ;
+    @stringset constraintPropertyDefinitionSet [emptySet] ;
+    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
     <semantic_instructions_list>
       !?componentSemanticsEntitiesMap
       !?listeEntitesAengendrer
@@ -578,7 +569,7 @@ end rule ;
 rule <property_path_for_constraint>
   !@L_propertyPath outPath
 :
-  outPath := [@L_propertyPath empty] ;
+  outPath := [@L_propertyPath emptyList] ;
   repeat
     select
       @lstring pathElement ;
@@ -667,12 +658,12 @@ rule <constraint_relation_primary>
     $identifier$ ? localVar ;
     @luint variableIndex ;
     @lstring domainVariable ;
-    [!?ioRelationVariableMap searchKeyAndGetIndex !localVar ?variableIndex ?domainVariable] ;
+    [ioRelationVariableMap searchKeyAndGetIndex !localVar ?variableIndex ?domainVariable] ;
     $==$ ;
     @lstring indexVariableName ;
     $identifier$ ? indexVariableName ;
     @lstring domainVariableFromIndex ;
-    [!?ioIndexMap searchKey !indexVariableName ?domainVariableFromIndex] ;
+    [ioIndexMap searchKey !indexVariableName ?domainVariableFromIndex] ;
     if [domainVariable value] != [domainVariableFromIndex value] then
       error indexVariableName: "this index refers to the '" . [domainVariableFromIndex value]
       . "' domain, while '" . [localVar  value] . "' relation variable refers to the '"
@@ -686,13 +677,13 @@ rule <constraint_relation_primary>
      @L_propertyPath path ;
      <property_path_for_constraint> ?path ;
     $[$ ;
-    @metamodelRelationParameterList parameterList [empty] ;
+    @metamodelRelationParameterList parameterList [emptyList] ;
     repeat
       @lstring parameter ;
       $identifier$ ? parameter ;
       @luint parameterIndex ;
       @lstring domainVariable ;
-      [!?ioRelationVariableMap searchKeyAndGetIndex !parameter ?parameterIndex ?domainVariable] ;
+      [ioRelationVariableMap searchKeyAndGetIndex !parameter ?parameterIndex ?domainVariable] ;
       parameterList += !parameter !parameterIndex !domainVariable ;
     while
       $,$ ;

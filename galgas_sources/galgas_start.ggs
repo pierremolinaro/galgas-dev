@@ -149,13 +149,13 @@ label importGrammarForSemantics
   end repeat ;
 label compileFile
 :
-  @M_lexiqueComponents lexiqueMapForUse [empty] ;
-  @M_semanticsComponents semanticsComponentsMap [empty] ;
-  @M_syntaxComponents syntaxComponentsMap [empty] ;
-  @M_grammarComponents grammarComponentsMap [empty] ;
-  @M_optionComponents optionsComponentsMap [empty] ;
-  @M_metamodelsComponents metamodelComponentMap [empty] ;
-  @M_constraintComponents constraintComponentMap [empty] ;
+  @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+  @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+  @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+  @M_grammarComponents grammarComponentsMap [emptyMap] ;
+  @M_optionComponents optionsComponentsMap [emptyMap] ;
+  @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
+  @M_constraintComponents constraintComponentMap [emptyMap] ;
   repeat
   while
     <galgas_component>

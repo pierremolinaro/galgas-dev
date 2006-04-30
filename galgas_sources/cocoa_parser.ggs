@@ -100,7 +100,7 @@ rule <galgas_component>
     $in$ ;
     @lstring sourceFileName ;
     $literal_string$ ? sourceFileName ;
-    grammarComponentsMap := [@M_grammarComponents empty] ;
+    grammarComponentsMap := [@M_grammarComponents emptyMap] ;
     <parse_grammar_component_for_importing>
      !sourceFileName
      !?grammarComponentsMap
@@ -111,11 +111,11 @@ rule <galgas_component>
   @lstring lexiqueClassName ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
   @M_optionComponents optionsComponentsMap ;
-  [!?grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap
+  [grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap
                                                  ?lexiqueClassName
                                                  ?optionsComponentsMap] ;
   @lstring altName := [@lstring new !"" !here] ;
-  [!?nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
+  [nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
   $;$ ;
 #--- Generate Cocoa c++ file
   action generateCocoaComponent

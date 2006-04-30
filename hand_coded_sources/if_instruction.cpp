@@ -387,31 +387,21 @@ bool cPtr_typeLiteralCharExpression
 
 void cPtr_typeConstructorExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_" << mClassName << "::constructor_" << mClassMethodName << " (" ;
+  ioCppFile << "GGS_" << mClassName << "::constructor_" << mClassMethodName << " (_inLexique" ;
   GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
-  bool first = true ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (first) {
-      first = false ;
-    }else{
-      ioCppFile << ", " ;
-    }
+    ioCppFile << ", " ;
     current->mExpression (HERE)->generateExpression (ioCppFile) ;
     current = current->nextObject () ;
   }
-  if (first) {
-    ioCppFile << "HERE" ;
-  }else{
-    ioCppFile << " COMMA_HERE" ;
-  }
-  ioCppFile << ")" ;
+  ioCppFile << " COMMA_HERE)" ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeConstructorExpression
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeConstructorExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   bool isUsed = false ;
   GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
   while ((current != NULL) && ! isUsed) {
@@ -424,16 +414,9 @@ bool cPtr_typeConstructorExpression
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeConstructorExpression
-::isLexiqueFormalArgumentUsedForTest (void) const {
-  bool isUsed = false ;
-  GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
-  while ((current != NULL) && ! isUsed) {
-    macroValidPointer (current) ;
-    isUsed = current->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
-    current = current->nextObject () ;
-  }
-  return isUsed ;
+bool cPtr_typeConstructorExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
 }
 
 //---------------------------------------------------------------------------*
