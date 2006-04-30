@@ -34,15 +34,15 @@ entityForProperty (C_Lexique & inLexique,
   GGS_bool var_cas_8635 ;
   GGS_entityPropertyMap  allPropertiesMap ;
   GGS_lstring  var_cas_8641 ;
-  inEntityMap.methode_searchKey (inLexique, inEntityName, entityPropertyMap,
-                                 var_cas_8635, allPropertiesMap, var_cas_8641
-                                 COMMA_HERE) ;
+  inEntityMap.method_searchKey (inLexique, inEntityName, entityPropertyMap,
+                                var_cas_8635, allPropertiesMap, var_cas_8641
+                                COMMA_HERE) ;
 //---
   GGS_metamodelPropertyKind var_cas_kind ;
   GGS_lstring  var_cas_propertyTypeName ;
-  allPropertiesMap.methode_searchKey (inLexique, inPropertyName, var_cas_kind,
-                                      var_cas_propertyTypeName
-                                      COMMA_HERE) ;
+  allPropertiesMap.method_searchKey (inLexique, inPropertyName, var_cas_kind,
+                                     var_cas_propertyTypeName
+                                     COMMA_HERE) ;
 //---
   return var_cas_propertyTypeName ;
 }
@@ -256,17 +256,17 @@ generate_constraint_object_creation (C_Lexique & inLexique,
   GGS_location endOfConstraintLocation ;
   GGS_mapAsConstraintPropertyMap currentMapAsConstraintPropertyMap ;
   GGS_mapAsConstraintPropertyMap allMapAsConstraintPropertyMap ;
-  inConstrainedEntityMap.methode_searchKey (inLexique,
-                                            inCurrentProperty->mInfo.mTypeName,
-                                            passesDefinedByInheritanceTreeRootEntity,
-                                            constrainedEntityPassMap,
-                                            superEntityName,
-                                            entityPropertiesMap,
-                                            allDescendant,
-                                            endOfConstraintLocation,
-                                            currentMapAsConstraintPropertyMap,
-                                            allMapAsConstraintPropertyMap
-                                            COMMA_HERE) ;
+  inConstrainedEntityMap.method_searchKey (inLexique,
+                                           inCurrentProperty->mInfo.mTypeName,
+                                           passesDefinedByInheritanceTreeRootEntity,
+                                           constrainedEntityPassMap,
+                                           superEntityName,
+                                           entityPropertiesMap,
+                                           allDescendant,
+                                           endOfConstraintLocation,
+                                           currentMapAsConstraintPropertyMap,
+                                           allMapAsConstraintPropertyMap
+                                           COMMA_HERE) ;
    GGS_stringset::element_type * currentDescendant = allDescendant.firstObject () ;
    bool first = true ;
    while (currentDescendant != NULL) {

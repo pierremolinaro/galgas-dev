@@ -1019,7 +1019,7 @@ rule <factor>
     @lstring mClassMethodName ;
     $identifier$ ? mClassMethodName ;
     @AC_semanticsEntity e ;
-    [!?ioEntitiesMap searchKey !className ?e] ;
+    [ioEntitiesMap searchKey !className ?e] ;
     extract e->@typeEntiteType (?outResultType) error className : messageTypeEntite ;
     @typeListeAttributsSemantiques listeAttributsSemantiques ;
     [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques] ;
@@ -1040,7 +1040,7 @@ rule <factor>
     @M_cli_options boolOptionsMap ;
     @M_cli_options uintOptionsMap ;
     @M_cli_options stringOptionsMap ;
-    [!?ioOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+    [ioOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
     $.$ ;
     @lstring optionName ;
     $identifier$ ? optionName ;
@@ -1090,8 +1090,8 @@ rule <output_expression_list>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
 :
-  @typeTypesList effectiveTypesList [empty] ;
-  outExpressionList := [@typeExpressionList empty] ;
+  @typeTypesList effectiveTypesList [emptyList] ;
+  outExpressionList := [@typeExpressionList emptyList] ;
   repeat
   while
     $!$ ;
@@ -1135,7 +1135,7 @@ rule <parse_effective_input_parameters_list>
   ?@localConstantBuildStyleEnum inLocalConstantStyle
 :
   $($ ;
-  @L_nameWithType argumentsList [empty] ;
+  @L_nameWithType argumentsList [emptyList] ;
   repeat
   while
     $??$ ;

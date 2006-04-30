@@ -40,7 +40,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       inCppFile.writeCHyphenLineComment () ;
       inCppFile << "void cPtr_" << inClassName
                 << "::\n"
-                   "methode_" << current->mKey << " (C_Lexique &" ;
+                   "method_" << current->mKey << " (C_Lexique &" ;
     //--- L'argument lexique est-il utilise ?
       const bool lexiqueUtilise = isLexiqueFormalArgumentUsedForList (current->mInfo.mInstructionList, true) ;
       if (! lexiqueUtilise) {
@@ -67,7 +67,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
         currentArgument = currentArgument->nextObject () ;
       }
     //--- Terminer la declaration
-      inCppFile << ") {\n" ;
+      inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n" ;
     //--- Engendrer la liste d'instructions
       C_String inutilise ;
       sint32 prototypeIndex = 0 ; // Non used here
@@ -88,7 +88,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
   GGS_typeTableMethodesAimplementer::element_type * current = inMap.mFirstItem ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << "  public : virtual void methode_" << current->mKey << " (C_Lexique &" ;
+    inHfile << "  public : virtual void method_" << current->mKey << " (C_Lexique &" ;
   //--- Engendrer les arguments formels declares par l'utilisateur
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
     while (currentArgument != NULL) {
@@ -99,9 +99,9 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
     }
   //--- Terminer la declaration
     if (current->champEstAbstraite) {
-      inHfile << ") = 0 ;\n" ;
+      inHfile << " COMMA_LOCATION_ARGS) = 0 ;\n" ;
     }else{
-      inHfile << ") ;\n" ;
+      inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     }
     current = current->nextObject () ;
   }
@@ -598,48 +598,34 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Generate 'constructor_new' method declaration
   inHfile << "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"  
              "    public : static cPtr_" << aNomClasse
-          << " * constructor_new (" ;
+          << " * constructor_new (C_Lexique & inLexique" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   sint32 variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (variableIndex > 0) {
-      inHfile << ",\n                                " ;
-    }
-    inHfile << "const " ;
+    inHfile << ",\n                                "
+               "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
   }
-  if (variableIndex > 0) {
-    inHfile << " COMMA_LOCATION_ARGS" ;
-  }else{
-    inHfile << "LOCATION_ARGS" ;
-  }
-  inHfile << ") ;\n"
+  inHfile << " COMMA_LOCATION_ARGS) ;\n"
              "  #else\n"
              "    public : inline static cPtr_" << aNomClasse
-          << " * constructor_new (" ;
+          << " * constructor_new (C_Lexique & /* inLexique */" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (variableIndex > 0) {
-      inHfile << ",\n                                " ;
-    }
-    inHfile << "const " ;
+    inHfile << ",\n                                "
+               "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
   }
-  if (variableIndex > 0) {
-    inHfile << " COMMA_LOCATION_ARGS" ;
-  }else{
-    inHfile << "LOCATION_ARGS" ;
-  }
-  inHfile << ") {\n"
+  inHfile << " COMMA_LOCATION_ARGS) {\n"
              "      return new cPtr_" << aNomClasse << "(" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   variableIndex = 0 ;
@@ -797,27 +783,20 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
 
   inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"  
                "  cPtr_" << aNomClasse
-            << " * GGS_" << aNomClasse
-            << "::\n    constructor_new (" ;
+            << " * GGS_" << aNomClasse << "::\n"
+               "constructor_new (C_Lexique & /* inLexique */" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (variableIndex > 0) {
-      inCppFile << ",\n                                " ;
-    }
-    inCppFile << "const " ;
+    inCppFile << ",\n                                "
+                 "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << variableIndex ;
     current = current->nextObject () ;
     variableIndex ++ ;
   }
-  if (variableIndex > 0) {
-    inCppFile << " COMMA_LOCATION_ARGS" ;
-  }else{
-    inCppFile << "LOCATION_ARGS" ;
-  }
-  inCppFile << ") {\n"
+  inCppFile << " COMMA_LOCATION_ARGS) {\n"
             << "    cPtr_" << aNomClasse
             << " * ptr_ = (cPtr_" << aNomClasse << " *) NULL ;\n"
                "    macroMyNew (ptr_, cPtr_" << aNomClasse << " (" ;

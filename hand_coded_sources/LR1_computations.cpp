@@ -1171,11 +1171,11 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           GGS_lstring entityName ;
           GGS_lstring metamodelName ;
-          inStartSymbolEntityAndMetamodelMap.methode_searchKey (inLexique,
-                                                                currentAltForNonTerminal->mKey,
-                                                                entityName,
-                                                                metamodelName
-                                                                COMMA_HERE) ;
+          inStartSymbolEntityAndMetamodelMap.method_searchKey (inLexique,
+                                                               currentAltForNonTerminal->mKey,
+                                                               entityName,
+                                                               metamodelName
+                                                               COMMA_HERE) ;
           generatedZone3 << "    _checkMetamodel_" << metamodelName
                          << " (_inLexique, _outReturnedModelInstance) ;\n" ;
         }

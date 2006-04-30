@@ -76,7 +76,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
     inHfile << "  public : static inline GGS_" << mEnumTypeName
-            << " constructor_" << cst->mKey << " (UNUSED_LOCATION_ARGS) {\n"
+            << " constructor_" << cst->mKey << " (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "    return GGS_" << mEnumTypeName << " (enum_" << cst->mKey << ") ;\n"
                "  }\n" ;
     cst = cst->nextObject () ;

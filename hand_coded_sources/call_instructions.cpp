@@ -44,7 +44,7 @@ void cPtr_typeReaderCallInstruction
       aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE)->" ;
     }  
-    ioCppFile << "methode_" << aNomMethodeSimple << " (_inLexique"  ;
+    ioCppFile << "method_" << aNomMethodeSimple << " (_inLexique"  ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -52,7 +52,9 @@ void cPtr_typeReaderCallInstruction
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << ") ;\n" ;
+    ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << aNomMethodeSimple.currentLineNumber ()
+              << ")) ;\n" ;
     if (ifGenerated) {
       ioCppFile << "}\n" ;
     }
@@ -100,7 +102,7 @@ void cPtr_typeModifierCallInstruction
 
   if (inGenerateSemanticInstructions) {
     aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".methode_" << aNomMethodeSimple << " (_inLexique"  ;
+    ioCppFile << ".method_" << aNomMethodeSimple << " (_inLexique"  ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -154,7 +156,7 @@ void cPtr_typeInstructionAppelMethodeListe
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aNomCppAttribut (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".methode_" << aMethodeDeListe << " (_inLexique" ;
+    ioCppFile << ".method_" << aMethodeDeListe << " (_inLexique" ;
     GGS_typeCplusPlusNameList::element_type * current = aListeNomsCppArguments.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;

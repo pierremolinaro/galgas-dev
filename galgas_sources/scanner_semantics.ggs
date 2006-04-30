@@ -227,13 +227,13 @@ routine appendToLexicalInstructionList
   ?!@lstring ioTerminalSymbolName
 :
 #--- Build "Compare lstring" lexical condition
-  @typeListeConditionsLexicales lexicalConditionsList [empty] ;
+  @typeListeConditionsLexicales lexicalConditionsList [emptyList] ;
   @typeConditionLexicale c := [@typeConditionChaine new !ioDefinitionString] ;
   lexicalConditionsList += !c ;
 #--- Build "simple send instruction"
   @typeInstructionLexicale lexicalInstruction
                           := [@typeInstructionEmettreSimple new !ioTerminalSymbolName] ;
-  @tListeInstructionsLexicales instructionList [empty] ;
+  @tListeInstructionsLexicales instructionList [emptyList] ;
   instructionList += !lexicalInstruction ;
 #--- Append to list of rules
   ioLexicalRulesList += !lexicalConditionsList !instructionList ;

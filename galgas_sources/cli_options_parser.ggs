@@ -69,10 +69,10 @@ rule <galgas_component>
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_constraintComponents unused ioConstraintComponentMap
 :
-  @M_cli_options boolOptionsMap [empty] ;
-  @M_cli_options uintOptionsMap [empty] ;
-  @M_cli_options stringOptionsMap [empty] ;
-  @stringset optionNameSet [empty] ;
+  @M_cli_options boolOptionsMap [emptyMap] ;
+  @M_cli_options uintOptionsMap [emptyMap] ;
+  @M_cli_options stringOptionsMap [emptyMap] ;
+  @stringset optionNameSet [emptySet] ;
 #--- Option component header
   $option$ ;
   @lstring optionComponentName ;
@@ -244,10 +244,10 @@ label importGrammarForSemantics
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 :
-  @M_cli_options boolOptionsMap [empty] ;
-  @M_cli_options uintOptionsMap [empty] ;
-  @M_cli_options stringOptionsMap [empty] ;
-  @stringset optionNameSet [empty] ;
+  @M_cli_options boolOptionsMap [emptyMap] ;
+  @M_cli_options uintOptionsMap [emptyMap] ;
+  @M_cli_options stringOptionsMap [emptyMap] ;
+  @stringset optionNameSet [emptySet] ;
 #--- Option component header
   $option$ ;
   @lstring optionComponentName ;

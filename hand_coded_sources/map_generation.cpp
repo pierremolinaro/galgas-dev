@@ -94,8 +94,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;\n"
              "//--- Get object pointer (for method call)\n"
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
-             "//--- 'empty' constructor\n"
-             "  public : static GGS_" << aNomTable << " constructor_empty (LOCATION_ARGS) ;\n"
+             "//--- 'emptyMap' constructor\n"
+             "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
              "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n" ;
 //--- Declaring insert methods
@@ -103,7 +103,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "//--- '" << currentMethod->mMethodName << "' Insert Method\n" ;
-    inHfile <<    "  public : void methode_"
+    inHfile <<    "  public : void method_"
             << currentMethod->mMethodName
             << " (C_Lexique & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
@@ -128,7 +128,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "//--- '" << currentMethod->mMethodName << "' Search Method\n"
-               "  public : void methode_" 
+               "  public : void method_" 
             << currentMethod->mMethodName
             << " (C_Lexique & inLexique"
             << ",\n                                const GGS_lstring & inKey" ;
@@ -145,7 +145,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) const ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
   inHfile << "//--- Internal method for inserting an element\n"
@@ -179,9 +179,16 @@ generateHdeclarations (AC_OutputStream & inHfile,
     current = current->nextObject () ;
   }
   inHfile << "                                  GGS_luint * outIndex\n"
-             "                                  COMMA_LOCATION_ARGS) ;\n"
+             "                                  COMMA_LOCATION_ARGS) const ;\n"
 //--- Generate 'description' reader declaration
               "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
+//--- Generate 'mapWithMapToOverride' constructor declaration
+              "  public : static GGS_" << aNomTable << " constructor_mapWithMapToOverride (C_Lexique & inLexique,\n"
+              "                                            const GGS_" << aNomTable << " & inMapToOverride\n"
+              "                                            COMMA_LOCATION_ARGS) ;\n"
+//--- Generate 'overriddenMap' reader declaration
+              "  public : GGS_" << aNomTable << " reader_overriddenMap (C_Lexique & inLexique\n"
+              "                                            COMMA_LOCATION_ARGS) const ;\n"
 //--- End of class Declaration
               "} ;\n\n" ;
 }
@@ -245,13 +252,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  MF_Assert (reinterpret_cast <e_" << aNomTable << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  AC_galgas_map_element * p = NULL ;\n"
                "  e_" << aNomTable << " * info = (e_" << aNomTable << " *) inInfo ;\n"
-               "  macroMyNew (p, element_type (inKey, count (), * info)) ;\n"
+               "  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;\n"
                "  return p ;\n"
                "}\n\n" ;
 
-//--- 'constructor_empty' static method
+//--- 'constructor_emptyMap' static method
   inCppFile.writeCHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (UNUSED_LOCATION_ARGS) {\n"
+  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
+               "constructor_emptyMap (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomTable << " result ;\n"
                "  macroMyNew (result.mSharedMapRoot, cMapRoot) ;\n"
                "  return result ;\n"
@@ -327,7 +335,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "               GGS_luint * outIndex\n"
-               "               COMMA_LOCATION_ARGS) {\n"
+               "               COMMA_LOCATION_ARGS) const {\n"
                "  element_type * node = NULL  ;\n"
                "  if (isBuilt () && inKey.isBuilt ()) {\n"
                "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
@@ -365,7 +373,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (currentMethod) ;
     inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_" 
-              << aNomTable << "::methode_" << currentMethod->mMethodName
+              << aNomTable << "::method_" << currentMethod->mMethodName
               << " (C_Lexique & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
@@ -381,7 +389,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
+    inCppFile << " COMMA_LOCATION_ARGS) const {\n" ;
     inCppFile << "  searchElement (inLexique,\n"
                  "                 " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
@@ -407,7 +415,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCHyphenLineComment () ;
     inCppFile << "void GGS_"
               << aNomTable << "::\n"
-                 "methode_" << currentMethod->mMethodName
+                 "method_" << currentMethod->mMethodName
               << " (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
@@ -441,6 +449,42 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
+
+//--- Implement 'mapWithMapToOverride' constructor
+  inCppFile.writeCHyphenLineComment () ;
+  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
+               "constructor_mapWithMapToOverride (C_Lexique & /* inLexique */,\n"
+               "                                  const GGS_" << aNomTable << " & inMapToOverride\n"
+               "                                  COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  GGS_" << aNomTable << " result ; // Not Built\n"
+               "  if (inMapToOverride.mSharedMapRoot != NULL) {\n"
+               "    macroValidPointer (inMapToOverride.mSharedMapRoot) ;\n"
+               "    macroMyNew (result.mSharedMapRoot, cMapRoot) ;\n"
+               "    result.mSharedMapRoot->mNextMap = inMapToOverride.mSharedMapRoot ;\n"
+               "    inMapToOverride.mSharedMapRoot->mReferenceCount ++ ;\n"
+               "    result.mSharedMapRoot->mNextIndex = inMapToOverride.mSharedMapRoot->mNextIndex ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+
+//--- Implement reader 'overriddenMap'
+  inCppFile.writeCHyphenLineComment () ;
+  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
+               "reader_overriddenMap (C_Lexique & /* inLexique */\n"
+               "                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
+               "  GGS_" << aNomTable << " result ; // Not Built\n"
+               "  if (mSharedMapRoot != NULL) {\n"
+               "    macroValidPointer (mSharedMapRoot) ;\n"
+               "    result.mSharedMapRoot = mSharedMapRoot->mNextMap ;\n"
+               "    if (result.mSharedMapRoot != NULL) {\n"
+               "      macroValidPointer (result.mSharedMapRoot) ;\n"
+               "      result.mSharedMapRoot->mReferenceCount ++ ;\n"
+               "    }else{\n"
+               "      macroMyNew (result.mSharedMapRoot, cMapRoot) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
 
 //--- Implement reader 'description'
   inCppFile.writeCHyphenLineComment () ;
@@ -518,15 +562,15 @@ generateHdeclarations (AC_OutputStream & inHfile,
           << " <e_" << aNomTable << "> {\n"
              "//--- Get object pointer\n"
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
-             "//--- Handle 'empty' constructor\n"
-             "  public : static GGS_" << aNomTable << " constructor_empty (LOCATION_ARGS) ;\n" ;
+             "//--- Handle 'emptyMap' constructor\n"
+             "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n" ;
 
 //--- Declaring search methods
   GGS_insertOrSearchMethodList::element_type * currentMethod = mSearchMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "//--- '" << currentMethod->mMethodName << "' search method\n"
-               "public : void methode_" 
+               "public : void method_" 
             << currentMethod->mMethodName
             << " (C_Lexique & inLexique"
                ",\n                                const GGS_lstring & inKey" ;
@@ -541,7 +585,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       current = current->nextObject () ;
     }
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
-    inHfile << "public : void methode_" 
+    inHfile << "public : void method_" 
             << currentMethod->mMethodName
             << "GetIndex (C_Lexique & inLexique"
                ",\n                                const GGS_lstring & inKey"
@@ -565,7 +609,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "//---\n"
-               "public : void methode_"
+               "public : void method_"
             << currentMethod->mMethodName
             << " (C_Lexique & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
@@ -580,7 +624,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
       current = current->nextObject () ;
     }
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
-    inHfile << "public : void methode_"
+    inHfile << "public : void method_"
             << currentMethod->mMethodName
             << "GetIndex (C_Lexique & inLexique" 
                ",\n                                const GGS_lstring & inKey"
@@ -640,7 +684,8 @@ void cPtr_typeDefinitionTableAimplementer
 //--------------------- ENGENDRER LA CLASSE TABLE ----------------------------
   inCppFile.writeCTitleComment (C_String ("Map '") + aNomTable + "'") ;
 
-  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::constructor_empty (UNUSED_LOCATION_ARGS) {\n"
+  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
+               "constructor_emptyMap (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomTable << " t ;\n"
                "  t.build () ;\n"
                "  return t ;\n"
@@ -651,7 +696,7 @@ void cPtr_typeDefinitionTableAimplementer
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inCppFile.writeCHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomTable << "::methode_" 
+    inCppFile << "void GGS_" << aNomTable << "::method_" 
               << currentMethod->mMethodName
               << " (C_Lexique & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
@@ -692,7 +737,7 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile << "  }\n"
                  "}\n\n" ;
     inCppFile.writeCHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomTable << "::methode_" 
+    inCppFile << "void GGS_" << aNomTable << "::method_" 
               << currentMethod->mMethodName
               << "GetIndex (C_Lexique & inLexique"
                  ",\n                                const GGS_lstring & inKey"
@@ -742,7 +787,7 @@ void cPtr_typeDefinitionTableAimplementer
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inCppFile.writeCHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomTable << "::methode_"
+    inCppFile << "void GGS_" << aNomTable << "::method_"
               << currentMethod->mMethodName
               << " (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
@@ -771,7 +816,7 @@ void cPtr_typeDefinitionTableAimplementer
     inCppFile << " COMMA_THERE) ;\n"
               << "}\n\n" ;
     inCppFile.writeCHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomTable << "::methode_"
+    inCppFile << "void GGS_" << aNomTable << "::method_"
               << currentMethod->mMethodName
               << "GetIndex (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey"

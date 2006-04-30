@@ -185,7 +185,7 @@ action generate_scanner
   ?!@M_styles stylesMap
 ;
 routine buildLexicalTypeMap !@lexicalTypeMap lexicalTypeMap :
-  lexicalTypeMap := [@lexicalTypeMap empty] ;
+  lexicalTypeMap := [@lexicalTypeMap emptyMap] ;
   @AC_galgasType t := [@typeGalgas_lstring new] ;
   @lstring typeName := [@lstring new !"lstring" !here] ;
   [!?lexicalTypeMap insertKey !typeName !t] ;
@@ -229,18 +229,18 @@ rule <galgas_component>
   $identifier$ ? lexiqueName ;
   $:$ ;
 #--- Errors messages, key words, attributes, terminal symbols and rules
-  @M_terminalSymbolsMapForUse terminalSymbolsMapForUse [empty] ;
-  @typeLexicalAttributesMap table_attributs [empty] ;
-  @typeTableDefinitionTerminaux table_des_terminaux [empty] ;
-  @typeTableMessagesErreurs table_messages [empty] ;
-  @typeTableTablesDeMotsReserves table_tables_mots_reserves [empty] ;
-  @typeListeTestsEtInstructions lexicalRulesList [empty] ;
+  @M_terminalSymbolsMapForUse terminalSymbolsMapForUse [emptyMap] ;
+  @typeLexicalAttributesMap table_attributs [emptyMap] ;
+  @typeTableDefinitionTerminaux table_des_terminaux [emptyMap] ;
+  @typeTableMessagesErreurs table_messages [emptyMap] ;
+  @typeTableTablesDeMotsReserves table_tables_mots_reserves [emptyMap] ;
+  @typeListeTestsEtInstructions lexicalRulesList [emptyList] ;
 #--- Define lexical types
   @lexicalTypeMap lexicalTypeMap ;
   buildLexicalTypeMap ?lexicalTypeMap ;
 
 #-- Styles map
-  @M_styles stylesMap [empty] ;
+  @M_styles stylesMap [emptyMap] ;
   @lstring defaultStyleName [new !"Default style" !here] ;
   @lstring defaultStringIdentifier [new !"" !here] ;
   [!?stylesMap insertKey !defaultStringIdentifier !defaultStyleName] ;
@@ -299,17 +299,17 @@ label importLexique
   @lstring lexiqueName ;
   $identifier$ ? lexiqueName ;
   $:$ ;
-  @M_terminalSymbolsMapForUse terminalSymbolsMapForUse [empty] ;
-  @typeLexicalAttributesMap table_attributs [empty] ;
-  @typeTableDefinitionTerminaux table_des_terminaux [empty] ;
-  @typeTableMessagesErreurs table_messages [empty] ;
-  @typeTableTablesDeMotsReserves table_tables_mots_reserves [empty] ;
-  @typeListeTestsEtInstructions lexicalRulesList [empty] ;
+  @M_terminalSymbolsMapForUse terminalSymbolsMapForUse [emptyMap] ;
+  @typeLexicalAttributesMap table_attributs [emptyMap] ;
+  @typeTableDefinitionTerminaux table_des_terminaux [emptyMap] ;
+  @typeTableMessagesErreurs table_messages [emptyMap] ;
+  @typeTableTablesDeMotsReserves table_tables_mots_reserves [emptyMap] ;
+  @typeListeTestsEtInstructions lexicalRulesList [emptyList] ;
 #--- Define lexical types
   @lexicalTypeMap lexicalTypeMap ;
   buildLexicalTypeMap ?lexicalTypeMap ;
 #-- Styles map
-  @M_styles stylesMap [empty] ;
+  @M_styles stylesMap [emptyMap] ;
   @lstring defaultStyleName [new !"Default style" !here] ;
   @lstring defaultStringIdentifier [new !"" !here] ;
   [!?stylesMap insertKey !defaultStringIdentifier !defaultStyleName] ;
@@ -478,7 +478,7 @@ rule <attribute_or_terminal_symbol_declaration>
     @lstring typeName ;
     $type_name$ ? typeName ;
     @AC_galgasType attributeType ;
-    [!?inLexicalTypeMap searchKey !typeName ?attributeType] ;
+    [inLexicalTypeMap searchKey !typeName ?attributeType] ;
     @lstring attributeName ;
     $identifier$ ?attributeName ;
     [!?table_des_attributs insertKey !attributeName !attributeType] ;
@@ -486,14 +486,14 @@ rule <attribute_or_terminal_symbol_declaration>
   or
     @lstring nomTerminal ;
     $terminal$ ? nomTerminal ;
-    @typeListeAttributsSemantiques l [empty];
+    @typeListeAttributsSemantiques l [emptyList];
     repeat
     while
       $!$ ;
       @lstring idf ;
       $identifier$ ? idf ;
       @AC_galgasType t ;
-      [!?table_des_attributs searchKey !idf ?t] ;
+      [table_des_attributs searchKey !idf ?t] ;
       l += !t !idf ;
     end repeat ;
     @lstring errorMessage ;
@@ -510,7 +510,7 @@ rule <attribute_or_terminal_symbol_declaration>
       $identifier$ ? styleName ;
     end select ;
     @luint styleIndex ;
-    [!?ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
+    [ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
     @string errorMessageString := [errorMessage value] ;
     [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !l !styleIndex] ;
   end select ;
@@ -528,7 +528,7 @@ rule <key_words_list_declaration>
   ?!@M_styles ioStylesMap
 :
   $list$ ;
-  @typeTableMotsReserves entriesMap [empty] ;
+  @typeTableMotsReserves entriesMap [emptyMap] ;
 #--- List name
   @lstring listName ;
   $identifier$ ? listName ;
@@ -547,10 +547,10 @@ rule <key_words_list_declaration>
     $identifier$ ? styleName ;
   end select ;
   @luint styleIndex ;
-  [!?ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
+  [ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
 #--- List of entries
   $:$ ;
-  @typeListeAttributsSemantiques attributesList [empty] ; # Always empty
+  @typeListeAttributsSemantiques attributesList [emptyList] ; # Always empty
   repeat
     @lstring listEntry ;
     $literal_string$ ?listEntry ;
@@ -604,7 +604,7 @@ rule <while_branches_list>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
 :
-  liste_tests_et_instructions := [@typeListeTestsEtInstructions empty] ;
+  liste_tests_et_instructions := [@typeListeTestsEtInstructions emptyList] ;
   $while$ ;
   repeat
     @typeListeConditionsLexicales lcl ;
@@ -627,7 +627,7 @@ end rule ;
 rule <lexical_test_expression>
  !@typeListeConditionsLexicales liste_test
 :
-  liste_test := [@typeListeConditionsLexicales empty] ;
+  liste_test := [@typeListeConditionsLexicales emptyList] ;
   repeat
     @typeConditionLexicale c ;
     <lexical_test_term> ?c ;
@@ -711,7 +711,7 @@ rule <lexical_rule>
   $identifier$ ?listName ;
 #--- Search list name
   @typeTableMotsReserves keyWordsMap ;
-  [!?table_tables_mots_reserves searchKey !listName ?keyWordsMap] ;
+  [table_tables_mots_reserves searchKey !listName ?keyWordsMap] ;
 #--- Build lexical analyser rules
   action buildLexicalRulesFromList !?keyWordsMap !?ioLexicalRulesList ;
 end rule ;
@@ -725,14 +725,14 @@ rule <lexical_instructions_list>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
 :
-  li := [@tListeInstructionsLexicales empty] ;
+  li := [@tListeInstructionsLexicales emptyList] ;
   repeat
   while
     @lstring nom_routine_externe ;
     $identifier$ ? nom_routine_externe ;
     @typeListeArgumentsRoutExterne lare ;
     <lexical_parameters_non_empty_list> ? lare !?table_attributs ;
-    @typeListeMessagesErreur lme [empty] ;
+    @typeListeMessagesErreur lme [emptyList] ;
     <lexical_error_messages_list> !?lme !?table_des_messages_erreur ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionActionExterne new !nom_routine_externe !lare !lme] ;
@@ -792,7 +792,7 @@ rule <lexical_instructions_list>
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
-    [!?table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
+    [table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionErreurLexicale new !errorMessageIndex] ;
     li += !e ;
@@ -818,7 +818,7 @@ rule <lexical_error_messages_list>
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
-    [!?table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
+    [table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
     lme += !errorMessageIndex ;
   while
     $,$ ;
@@ -832,7 +832,7 @@ rule <lexical_parameters_non_empty_list>
   ?!@typeLexicalAttributesMap table_attributs
 :
   $($ ;
-  laf := [@typeListeArgumentsRoutExterne empty] ;
+  laf := [@typeListeArgumentsRoutExterne emptyList] ;
   repeat
     @typeArgumentRoutineExterne a ;
     <lexical_parameter> ?a !?table_attributs ;
@@ -885,7 +885,7 @@ rule <lexical_parameter>
   $identifier$ ? nom ; # an attribute or function call
   select
     @AC_galgasType t ;
-    [!?table_attributs searchKey !nom ?t] ;
+    [table_attributs searchKey !nom ?t] ;
     a := [@typeArgumentAttribut new !nom !t] ;
   or
     @typeListeArgumentsRoutExterne lare ;
@@ -903,7 +903,7 @@ rule <lexical_when_branches_list>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
 :
-  lbs := [@typeListeTestsEtInstructions empty] ;
+  lbs := [@typeListeTestsEtInstructions emptyList] ;
   $when$ ;
   repeat
     @typeListeConditionsLexicales lcl ;
@@ -930,7 +930,7 @@ rule <lexical_default_branch>
   ?!@typeLexicalAttributesMap unused table_attributs
   ?!@typeTableTablesDeMotsReserves unused table_tables_mots_reserves
 :
-  liste_instructions_sinon := [@tListeInstructionsLexicales empty] ;
+  liste_instructions_sinon := [@tListeInstructionsLexicales emptyList] ;
 end rule ;
 
 #-------------------------------------------------------------------*
@@ -961,7 +961,7 @@ rule <lexical_send_instruction>
 :
   @lstring nomTerminal ;
   $terminal$ ?nomTerminal ;
-  [!?table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
+  [table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
   instruction := [@typeInstructionEmettreSimple new !nomTerminal] ;
 end rule ;
 
@@ -975,17 +975,17 @@ rule <lexical_send_instruction>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
 :
   $search$ ;
-  @typeListeRecherche lr [empty] ;
+  @typeListeRecherche lr [emptyList] ;
   repeat
     @lstring nomAttribut ;
     $identifier$ ?nomAttribut ; # nom d'attribut
     @AC_galgasType natureAttribut ;
-    [!?table_attributs searchKey !nomAttribut ?natureAttribut] ;
+    [table_attributs searchKey !nomAttribut ?natureAttribut] ;
     extract natureAttribut->@typeGalgas_lstring () error nomAttribut : messageGalgasType ;
     $in$ ;
     @lstring listName ;
     $identifier$ ?listName ;
-    [!?table_tables_mots_reserves searchKey !listName ?*] ;
+    [table_tables_mots_reserves searchKey !listName ?*] ;
     $default$ ;
     lr += !nomAttribut !listName ;
   while
@@ -1005,7 +1005,7 @@ rule <lexical_send_or_error>
 :
   @lstring nomTerminal ;
   $terminal$ ?nomTerminal ;
-  [!?table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
+  [table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
   emissionParDefaut := [@typeEmissionTerminalParDefaut new !nomTerminal] ;
 end rule ;
 
@@ -1020,7 +1020,7 @@ rule <lexical_send_or_error>
   @lstring errorMessageName ;
   $identifier$ ?errorMessageName ;
   @luint errorMessageIndex ;
-  [!?tableMessagesErreurs searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
+  [tableMessagesErreurs searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
   emissionParDefaut := [@typeEmissionErreurParDefaut new !errorMessageIndex] ;
 end rule ;
 

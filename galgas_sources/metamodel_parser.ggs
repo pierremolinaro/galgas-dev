@@ -119,7 +119,7 @@ rule <parse_metamodel>
   @lstring metamodelName ;
   $identifier$ ? metamodelName ;
 #--- Build primitive attribute type name set
-  @stringset primitiveTypeAttributeNameSet [empty] ;
+  @stringset primitiveTypeAttributeNameSet [emptySet] ;
   primitiveTypeAttributeNameSet += !"bool" ;
   primitiveTypeAttributeNameSet += !"char" ;
   primitiveTypeAttributeNameSet += !"uint" ;
@@ -138,26 +138,26 @@ rule <parse_metamodel>
   @lstring rootEntityName ;
   $type_name$ ? rootEntityName ;
   $:$ ;
-  @entityToImplementMap entityMap [empty] ;
-  @mapAndEntityUniqueMap mapAndEntityUniqueMap [empty] ;
+  @entityToImplementMap entityMap [emptyMap] ;
+  @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
   <entity_declaration_list>
     !?entityMap
     !?primitiveTypeAttributeNameSet
     !?mapAndEntityUniqueMap
   ;
   @bool isAbstract ;
-  [!?entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?*] ;
+  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
 #--- Build semantic entities map
-  @M_semanticsEntitiesForUse semanticsEntityMap [empty] ;
+  @M_semanticsEntitiesForUse semanticsEntityMap [emptyMap] ;
   foreach entityMap (??@lstring kEntityName
                      ??@entityPropertyMap kAllPropertiesMap
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName) :
-    @stringset superEntitySet [empty] ;
+    @stringset superEntitySet [emptySet] ;
     buildSuperEntitySet !?entityMap !kSuperEntityName !?superEntitySet ;
     @AC_galgasType t := [@typeGalgas_singleEntity new
       !kEntityName
@@ -174,7 +174,7 @@ rule <parse_metamodel>
     ] ;
   end foreach ;
 #--- Check properties
-  @stringset multiReferencedEntities [empty] ;
+  @stringset multiReferencedEntities [emptySet] ;
   foreach entityMap (??@lstring kEntityName
                      ??@entityPropertyMap kAllPropertiesMap
                      ??*
@@ -185,7 +185,7 @@ rule <parse_metamodel>
                                   ??@lstring kTypeName) :
       if (kKind == [@metamodelPropertyKind singleReferenceProperty]) |
          (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
-        [!?entityMap searchKey !kTypeName ?* ?* ?* ?*] ;
+        [entityMap searchKey !kTypeName ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kTypeName value] ;
       end if ;
     end foreach ;
@@ -254,11 +254,11 @@ rule <entity_declaration>
   @lstring superEntity ;
   select
     superEntity := [@lstring new !"" !here] ;
-    allPropertyMap := [@entityPropertyMap empty] ;
+    allPropertyMap := [@entityPropertyMap emptyMap] ;
   or
     $extends$ ;
     $type_name$ ? superEntity ;
-    [!?ioEntityMap searchKey
+    [ioEntityMap searchKey
       !superEntity
       ?*
       ?*
@@ -267,7 +267,7 @@ rule <entity_declaration>
     ] ;
   end select ;
 #--- Property declarations
-  @entityPropertyMap entityPropertyMap [empty] ;
+  @entityPropertyMap entityPropertyMap [emptyMap] ;
   ${$ ;
   repeat
   while

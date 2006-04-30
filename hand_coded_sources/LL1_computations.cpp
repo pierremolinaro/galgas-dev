@@ -607,7 +607,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           GGS_lstring entityName ;
           GGS_lstring metamodelName ;
-          inStartSymbolEntityAndMetamodelMap.methode_searchKey (inLexique,
+          inStartSymbolEntityAndMetamodelMap.method_searchKey (inLexique,
                                                                 currentAltForNonTerminal->mKey,
                                                                 entityName,
                                                                 metamodelName

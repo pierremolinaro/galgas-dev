@@ -25,13 +25,13 @@
 //---------------------------------------------------------------------------*
 
 void galgas_SLR_prgm::_beforeParsing (void) {
-  mLexiqueMapForUse = GGS_M_lexiqueComponents::constructor_empty (HERE) ;
-  mSemanticsComponentsMap = GGS_M_semanticsComponents::constructor_empty (HERE) ;
-  mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_empty (HERE) ;
-  mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_empty (HERE) ;
-  mOptionComponentsMap = GGS_M_optionComponents::constructor_empty (HERE) ;
-  mMetamodelComponentMap = GGS_M_metamodelsComponents::constructor_empty (HERE) ;
-  mConstraintComponentMap = GGS_M_constraintComponents::constructor_empty (HERE) ;
+  mLexiqueMapForUse = GGS_M_lexiqueComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
+  mSemanticsComponentsMap = GGS_M_semanticsComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
+  mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
+  mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
+  mOptionComponentsMap = GGS_M_optionComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
+  mMetamodelComponentMap = GGS_M_metamodelsComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
+  mConstraintComponentMap = GGS_M_constraintComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
   mTerminalIO.mFileGenerationStartDir = mScannerPtr_->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = mTerminalIO.mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
