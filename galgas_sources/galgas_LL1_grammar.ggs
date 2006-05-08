@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  GALGAS grammar definition                                                *
+#  GALGAS grammar definition (LL 1 grammar)                                 *
 #                                                                           *
 #  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
@@ -55,7 +55,7 @@ grammar galgas_LL1_grammar "LL1" :
   label importOptions
     ?!@M_optionComponents ioOptionsComponentsMap
   label compileFile
-  ;
+  ; # LL1
 end grammar ;
 
 #---------------------------------------------------------------------------*

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,23 +9,33 @@
 <p><b>GALGAS ChangeLog</b></p>
 <p><br></p>
 <p>1.3.0</p>
-  <li>fixed bug on 'allkeys reader' of map objects;</li>
-  <li>added 'object ++ ;' incrementation instruction on @uint and @sint objects;</li>
-  <li>added 'object -- ;' decrementation instruction on @uint and @sint objects;</li>
-  <li>added +, -, *, /, % diadic operators on @uint objects, that return an @uint object;</li>
-  <li>added +, -, *, /, % diadic operators on @sint objects, that return an @sint object;</li>
-  <li>added - monoadic operator on @sint object, that returns an @sint object;</li>
-  <li>added 'uint' reader on @sint object, that returns an @uint object with the same value;</li>
-  <li>added 'string' reader on @sint object, that returns an @string object with the string value of the receiver;</li>
-  <li>added 'min' constructor on @sint object, that returns an @sint object with value equal to -217483648;</li>
-  <li>added 'max' constructor on @sint object, that returns an @sint object with value equal to 217483647;</li>
-  <li>added '-=' operator on @stringset object, that removes a string from a string set;</li>
-  <li>added 'setWithString' constructor on @stringset type, that creates a new string set containing a string;</li>
-  <li>suppressed 'empty' constructor on @stringset type: use 'emptySet' constructor instead;</li>
-  <li>suppressed 'empty' constructor on list types: use 'emptyList' constructor instead;</li>
-  <li>suppressed 'empty' constructor on map types: use 'emptyMap' constructor instead;</li>
-<ul>
-</ul>
+<dl>
+  <dt>on @uint type:</dt>
+    <dd type="disc">added 'object ++ ;' incrementation instruction on @uint objects;</dd>
+    <dd>added 'object -- ;' decrementation instruction on @uint objects;</dd>
+    <dd>added +, -, *, /, % diadic operators on @uint objects, that return an @uint object;</dd>
+  <dt>on @sint type:</dt>
+    <dd>added 'object ++ ;' incrementation instruction on @sint objects;</dd>
+    <dd>added 'object -- ;' decrementation instruction on @sint objects;</dd>
+    <dd>added +, -, *, /, % diadic operators on @sint objects, that return an @sint object;</dd>
+    <dd>added - monoadic operator on @sint object, that returns an @sint object;</dd>
+    <dd>added 'uint' reader on @sint object, that returns an @uint object with the same value;</dd>
+    <dd>added 'min' constructor on @sint object, that returns an @sint object with value equal to -217483648;</dd>
+    <dd>added 'max' constructor on @sint object, that returns an @sint object with value equal to 217483647;</dd>
+    <dd>added 'string' reader on @sint object, that returns an @string object with the string value of the receiver;</dd>
+  <dt>on @stringset type:</dt>
+    <dd>suppressed 'empty' constructor on @stringset type: use 'emptySet' constructor instead;</dd>
+    <dd>added 'setWithString' constructor on @stringset type, that creates a new string set containing a string;</dd>
+    <dd>added '-=' operator on @stringset object, that removes a string from a string set;</dd>
+  <dt>on user defined map type:</dt>
+    <dd>fixed bug on 'allkeys reader' of map objects;</dd>
+    <dd>suppressed 'empty' constructor on map types: use 'emptyMap' constructor instead;</dd>
+    <dd>search methods on map are now <i>readers</i> (instead of <i>modifiers</i>): calls them <tt>[<i>map_expression search_reader</i> ...]</tt> instead of <tt>[!?<i>map_expression search_modifier</i> ...]</tt>;</dd>
+    <dd>added 'mapWithMapToOverride' constructor on map type, that creates an empty map that overrides an other map;</dd>
+    <dd>added 'overridenMap' reader on map type, that returns the overriden map;</dd>
+  <dt>on user defined list type:</dt>
+    <dd>suppressed 'empty' constructor on list types: use 'emptyList' constructor instead;</dd>
+</dl>
 <p>1.2.5beta2</p>
 <ul>
   <li><b>This is an unstable release</b></li>

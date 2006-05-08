@@ -55,5 +55,5 @@ grammar galgas_LR1_grammar "LR1" :
   label importOptions
     ?!@M_optionComponents ioOptionsComponentsMap
   label compileFile
-  ;
+  ; # LR1
 end grammar ;

@@ -55,5 +55,5 @@ grammar galgas_SLR_grammar "SLR" :
   label importOptions
     ?!@M_optionComponents ioOptionsComponentsMap
   label compileFile
-  ;
+  ; # SLR
 end grammar ;
