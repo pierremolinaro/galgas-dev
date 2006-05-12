@@ -4781,7 +4781,6 @@ rule <semantics_declaration>
 #--- Parse extern type name
   @lstring externTypeName ;
   $type_name$ ? externTypeName ;
-  $:$ ;
 #--- Parse C++ class name
   $class$ ;
   @lstring cppClassName ;
@@ -4789,7 +4788,7 @@ rule <semantics_declaration>
   $in$ ;
   @lstring path ;
   $literal_string$ ? path ; 
-  $;$ ;
+  ${$ ;
 #--- Default behaviour : no operator, no method available
   @typeTableMethodes modifiersMap [emptyMap] ;
   @typeTableMethodes readersInInstructionMap [emptyMap] ;
@@ -4803,6 +4802,9 @@ rule <semantics_declaration>
     @lstring constructorName ;
     $identifier$ ? constructorName ;
     @typeListeAttributsSemantiques constructorArgumentTypesList [emptyList] ;
+    $($ ;
+    $lexique$ ;
+    $)$ ;
     repeat
     while
       $?$ ;
@@ -4825,6 +4827,9 @@ rule <semantics_declaration>
   #--- Method name
     @lstring methodName ;
     $identifier$ ? methodName ;
+    $($ ;
+    $lexique$ ;
+    $)$ ;
   #--- Formal parameters
     @L_EXsignature listeDeTypes ;
     @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -4846,6 +4851,9 @@ rule <semantics_declaration>
     #--- Method name
       @lstring methodName ;
       $identifier$ ? methodName ;
+      $($ ;
+      $lexique$ ;
+      $)$ ;
     #--- Formal parameters
       @L_EXsignature listeDeTypes ;
       @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -4862,6 +4870,9 @@ rule <semantics_declaration>
       [!?modifiersMap insertKey !methodName !listeDeTypes] ;
     or
       $+=$ ;
+      $($ ;
+      $lexique$ ;
+      $)$ ;
       @location errorLocation := here ;
       repeat
       while
@@ -4899,9 +4910,7 @@ rule <semantics_declaration>
                                                  !addAssignOperatorCallTypeList] ;
   @AC_semanticsEntity e := [@typeEntiteType new !c] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !externTypeName !e] ;
-  $end$ ;
-  $extern$ ;
-  $;$ ;
+  $}$ ;
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap unused ioExternActionMap
@@ -4914,14 +4923,13 @@ label importSemantics
 #--- Parse extern type name
   @lstring externTypeName ;
   $type_name$ ? externTypeName ;
-  $:$ ;
 #--- Parse C++ class name
   $class$ ;
   @lstring cppClassName ;
   $identifier$ ? cppClassName ;
   $in$ ;
   $literal_string$ ? * ; 
-  $;$ ;
+  ${$ ;
 #--- Default behaviour : no operator, no method available
   @typeTableMethodes EXmodifiersMap [emptyMap] ;
   @typeTableMethodes readersInInstructionMap [emptyMap] ;
@@ -4940,6 +4948,9 @@ label importSemantics
     $identifier$ ? constructorName ;
     @typeListeAttributsSemantiques constructorArgumentTypesList [emptyList] ;
     @typeListModel formalInputArgumentList [emptyList] ;
+    $($ ;
+    $lexique$ ;
+    $)$ ;
     repeat
     while
       $?$ ;
@@ -4964,6 +4975,9 @@ label importSemantics
   #--- Reader name
     @lstring readerName ;
     $identifier$ ? readerName ;
+    $($ ;
+    $lexique$ ;
+    $)$ ;
   #--- Formal parameters
     @L_EXsignature listeDeTypes ;
     @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -4986,6 +5000,9 @@ label importSemantics
     #--- Method name
       @lstring modifierName ;
       $identifier$ ? modifierName ;
+      $($ ;
+      $lexique$ ;
+      $)$ ;
     #--- Formal parameters
       @L_EXsignature listeDeTypes ;
       @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -5003,6 +5020,9 @@ label importSemantics
       [!?modifierMap insertKey !modifierName !signature] ;
     or
       $+=$ ;
+      $($ ;
+      $lexique$ ;
+      $)$ ;
       if [addAssignFormalInputArgumentList length] > 0 then
         error here : "'+=' operator is already defined" ;
       else
@@ -5039,9 +5059,7 @@ label importSemantics
   [!?ioComponentSemanticsEntitiesMap insertKey !externTypeName !e] ;
   @TypeModel t := [@ExternTypeModel new !constructorMap !readerMap !modifierMap !addAssignFormalInputArgumentList] ;
   [!? ioModelMap insertKey !externTypeName !t] ;
-  $end$ ;
-  $extern$ ;
-  $;$ ;
+  $}$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
