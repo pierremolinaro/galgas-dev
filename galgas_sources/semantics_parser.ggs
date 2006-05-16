@@ -4802,9 +4802,6 @@ rule <semantics_declaration>
     @lstring constructorName ;
     $identifier$ ? constructorName ;
     @typeListeAttributsSemantiques constructorArgumentTypesList [emptyList] ;
-    $($ ;
-    $lexique$ ;
-    $)$ ;
     repeat
     while
       $?$ ;
@@ -4827,9 +4824,6 @@ rule <semantics_declaration>
   #--- Method name
     @lstring methodName ;
     $identifier$ ? methodName ;
-    $($ ;
-    $lexique$ ;
-    $)$ ;
   #--- Formal parameters
     @L_EXsignature listeDeTypes ;
     @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -4851,9 +4845,6 @@ rule <semantics_declaration>
     #--- Method name
       @lstring methodName ;
       $identifier$ ? methodName ;
-      $($ ;
-      $lexique$ ;
-      $)$ ;
     #--- Formal parameters
       @L_EXsignature listeDeTypes ;
       @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -4870,9 +4861,6 @@ rule <semantics_declaration>
       [!?modifiersMap insertKey !methodName !listeDeTypes] ;
     or
       $+=$ ;
-      $($ ;
-      $lexique$ ;
-      $)$ ;
       @location errorLocation := here ;
       repeat
       while
@@ -4948,9 +4936,6 @@ label importSemantics
     $identifier$ ? constructorName ;
     @typeListeAttributsSemantiques constructorArgumentTypesList [emptyList] ;
     @typeListModel formalInputArgumentList [emptyList] ;
-    $($ ;
-    $lexique$ ;
-    $)$ ;
     repeat
     while
       $?$ ;
@@ -4975,9 +4960,6 @@ label importSemantics
   #--- Reader name
     @lstring readerName ;
     $identifier$ ? readerName ;
-    $($ ;
-    $lexique$ ;
-    $)$ ;
   #--- Formal parameters
     @L_EXsignature listeDeTypes ;
     @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -5000,9 +4982,6 @@ label importSemantics
     #--- Method name
       @lstring modifierName ;
       $identifier$ ? modifierName ;
-      $($ ;
-      $lexique$ ;
-      $)$ ;
     #--- Formal parameters
       @L_EXsignature listeDeTypes ;
       @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -5020,9 +4999,6 @@ label importSemantics
       [!?modifierMap insertKey !modifierName !signature] ;
     or
       $+=$ ;
-      $($ ;
-      $lexique$ ;
-      $)$ ;
       if [addAssignFormalInputArgumentList length] > 0 then
         error here : "'+=' operator is already defined" ;
       else
