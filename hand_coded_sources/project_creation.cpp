@@ -38,6 +38,12 @@
 
 //---------------------------------------------------------------------------*
 
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 static bool
 createDirectory (const C_String & inDirectoryToCreate) {
   const bool ok = inDirectoryToCreate.makeDirectoryIfDoesNotExists () ;
@@ -259,6 +265,12 @@ createCompileAllFile (const C_String & inCreatedProjectPathName) {
   }
   return ok ;
 }
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Makefiles
+#endif
 
 //---------------------------------------------------------------------------*
 
@@ -522,10 +534,14 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName) {
        "SOURCES += GGS_char.cpp\n"
        "SOURCES += GGS_string.cpp\n"
        "SOURCES += GGS_uint.cpp\n"
+       "SOURCES += GGS_sint.cpp\n"
+       "SOURCES += GGS_double.cpp\n"
        "SOURCES += GGS_lbool.cpp\n"
        "SOURCES += GGS_lchar.cpp\n"
        "SOURCES += GGS_lstring.cpp\n"
        "SOURCES += GGS_luint.cpp\n"
+       "SOURCES += GGS_lsint.cpp\n"
+       "SOURCES += GGS_ldouble.cpp\n"
        "SOURCES += GGS_stringset.cpp\n"
        "SOURCES += GGS_location.cpp\n"
        "SOURCES += C_BDD.cpp\n"
@@ -563,6 +579,324 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName) {
   }
   return ok ;
 }
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Code::Block Project File
+#endif
+
+//---------------------------------------------------------------------------*
+
+static bool
+createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
+                            const C_String & inCodeBlockDirectory) {
+  const char * releaseTarget = "Release" ;
+  const char * debugTarget = "Debug" ;
+  const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
+  const C_String fileName = inCreatedProjectPathName + inCodeBlockDirectory + "/" + projectName + ".cbp" ;
+  C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
+  f << "<?xml version=\"1.0\"?>\n"
+       "<!DOCTYPE CodeBlocks_project_file>\n"
+       "<CodeBlocks_project_file>\n"
+       "	<FileVersion major=\"1\" minor=\"1\"/>\n"
+       "	<Project>\n"
+       "		<Option title=\"" << projectName << "\"/>\n"
+       "		<Option makefile=\"Makefile\"/>\n"
+       "		<Option makefile_is_custom=\"0\"/>\n"
+       "		<Option compiler=\"0\"/>\n"
+       "		<Build>\n"
+       "			<Target title=\"" << releaseTarget << "\">\n"
+       "				<Option output=\"" << projectName << ".exe\"/>\n"
+       "				<Option working_dir=\".\"/>\n"
+       "				<Option object_output=\"objects\"/>\n"
+       "				<Option deps_output=\".deps\"/>\n"
+       "				<Option type=\"1\"/>\n"
+       "				<Option compiler=\"0\"/>\n"
+       "				<Option projectResourceIncludeDirsRelation=\"1\"/>\n"
+       "				<Compiler>\n"
+       "					<Add option=\"-O\"/>\n"
+       "					<Add option=\"-W\"/>\n"
+       "					<Add option=\"-Wall\"/>\n"
+       "					<Add option=\"-DDO_NOT_GENERATE_CHECKINGS\"/>\n"
+       "				</Compiler>\n"
+       "				<Linker>\n"
+       "					<Add option=\"-s\"/>\n"
+       "				</Linker>\n"
+       "			</Target>\n"
+       "			<Target title=\"" << debugTarget << "\">\n"
+       "				<Option output=\"" << projectName << "_debug.exe\"/>\n"
+       "				<Option working_dir=\".\"/>\n"
+       "				<Option object_output=\"objects_debug\"/>\n"
+       "				<Option deps_output=\".deps_debug\"/>\n"
+       "				<Option type=\"1\"/>\n"
+       "				<Option compiler=\"0\"/>\n"
+       "				<Option projectResourceIncludeDirsRelation=\"1\"/>\n"
+       "				<Compiler>\n"
+       "					<Add option=\"-O\"/>\n"
+       "					<Add option=\"-W\"/>\n"
+       "					<Add option=\"-Wall\"/>\n"
+       "				</Compiler>\n"
+       "			</Target>\n"
+       "		</Build>\n"
+       "		<Compiler>\n"
+       "			<Add option=\"-I../../libpm\"/>\n"
+       "			<Add option=\"-I../galgas_sources/GALGAS_OUTPUT\"/>\n"
+       "			<Add option=\"-I../hand_coded_sources\"/>\n"
+       "		</Compiler>\n"
+       "		<Linker>\n"
+       "			<Add library=\"stdc++\"/>\n"
+       "			<Add library=\"m\"/>\n"
+       "			<Add library=\"comdlg32\"/>\n"
+       "		</Linker>\n"
+       "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_lexique.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_metamodel.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_semantics.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_syntax.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_grammar.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_program.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\bdd\\C_BDD.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\bdd\\C_Display_BDD.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\AC_galgas_io.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\AC_galgas_map.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\C_GGS_object.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\C_GGS_entityMap.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\C_galgas_terminal_io.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\C_Lexique.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_bool.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_char.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_string.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_uint.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_sint.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_double.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_location.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_lbool.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_lchar.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_lstring.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_luint.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_lsint.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_double.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\GGS_stringset.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\cache\\C_PrimeCache2.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\cache\\C_PrimeCache3.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\command_line_interface\\AC_CLI_Options.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\command_line_interface\\F_Analyze_CLI_Options.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\command_line_interface\\C_CLI_OptionGroup.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\command_line_interface\\C_builtin_CLI_Options.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\command_line_interface\\F_main.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\files\\C_TextFileWrite.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\streams\\AC_OutputStream.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\streams\\C_ConsoleOut.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\time\\C_Timer.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\time\\C_DateTime.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\utilities\\MF_Assert.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\utilities\\MF_MemoryControl.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\utilities\\F_DisplayException.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\utilities\\C_Exception.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\utilities\\C_String.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\utilities\\F_GetPrime.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "	</Project>\n"
+       "</CodeBlocks_project_file>\n"
+       "\n" ;
+
+  const bool ok = f.close () ;
+  if (ok) {
+    printf ("Created '%s' file.\n", fileName.cString ()) ;
+  }else{
+    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+  }
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Project Creation
+#endif
 
 //---------------------------------------------------------------------------*
 
@@ -666,8 +1000,14 @@ createProject (C_Lexique & /* inLexique */,
     if (ok) {
       ok = createCleanBatFile (inCreatedProjectPathName) ;
     }
+  //--- Codeblock Project
+    if (ok) {
+      ok = createDirectory (inCreatedProjectPathName + "/project_codeblocks") ;
+    }
+    if (ok) {
+      ok = createCodeBlockProjectFile (inCreatedProjectPathName, "/project_codeblocks") ;
+    }
 	}
-
 }
 
 //---------------------------------------------------------------------------*
