@@ -168,6 +168,11 @@ template <typename INFO> class cGalgasVariablesMap {
   public : void drop_operation (void) ;
   public : void build (void) ;
 
+//--- Reader 'hasKey"
+  public : GGS_bool reader_hasKey (C_Lexique & inLexique,
+                                   const GGS_string & inKey
+                                   COMMA_LOCATION_ARGS) const ;
+
 //--- This kind of map is always built
   public : inline bool isBuilt (void) const { return true ; }
 
@@ -185,6 +190,13 @@ template <typename INFO> class cGalgasVariablesMap {
                                          const GGS_location & inLocation,
                                      const char * messageErreurInsertion
                                      COMMA_LOCATION_ARGS) ;
+
+  public : sint32 insertUsedInOutArgument (C_Lexique & inLexique,
+                                           const INFO & info,
+                                           const GGS_lstring & clef,
+                                           const GGS_location & inLocation,
+                                           const char * messageErreurInsertion
+                                           COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertUnusedInOutArgument (C_Lexique & inLexique,
                                            const INFO & info,

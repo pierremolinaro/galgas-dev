@@ -462,13 +462,13 @@ bool cPtr_typeMessageInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionDeclarationVarLocale
-::generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+void cPtr_typeInstructionDeclarationVarLocale::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aTypeVariable (HERE)->generateCppClassName (ioCppFile) ;
     ioCppFile << ' ' ;
@@ -485,16 +485,16 @@ void cPtr_typeInstructionDeclarationVarLocale
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionDeclarationVarLocale
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeInstructionDeclarationVarLocale::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionDeclarationVarLocale
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeInstructionDeclarationVarLocale::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
   return aNomCppVariable.isEqualTo (inArgumentCppName) ;
 }
 

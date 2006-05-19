@@ -583,7 +583,7 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName) {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Code::Block Project File
+  #pragma mark Code::Blocks Project File
 #endif
 
 //---------------------------------------------------------------------------*

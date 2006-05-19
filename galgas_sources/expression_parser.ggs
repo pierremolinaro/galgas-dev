@@ -780,9 +780,8 @@ rule <factor>
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
-  @lstring nomEntite ;
   @typeCplusPlusName nomCppEntite1 ;
-  <read_access> ?nomEntite ?nomCppEntite1 ?outResultType !?ioVariablesMap ;
+  <read_access> ?* ?nomCppEntite1 ?outResultType !?ioVariablesMap ;
   outExpression := [@typeVarInExpression new !nomCppEntite1] ;
 end rule ;
 
@@ -1075,6 +1074,28 @@ rule <read_access>
 :
   $identifier$ ? nomVariable ;
   [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ; 
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E A D    A C C E S S    T O    S E L F                                   *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <read_access>
+  !@lstring nomVariable
+  !@typeCplusPlusName nomCppEntite
+  !@AC_galgasType typeEntite
+  ?!@typeVariablesMap ioVariablesMap
+:
+  $self$ ;
+  if [ioVariablesMap hasKey !"self"] then
+    nomVariable := [@lstring new !"self" !here] ;
+    [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ;
+  else
+    error here: "'self' is not defined in this context"
+     -> nomVariable, nomCppEntite, typeEntite ;
+  end if ;
 end rule ;
 
 #------------------------------------------------------------------------------*
