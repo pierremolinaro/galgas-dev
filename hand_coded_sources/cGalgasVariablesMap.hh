@@ -95,6 +95,32 @@ void cGalgasVariablesMap <INFO>::drop_operation (void) {
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
+GGS_bool cGalgasVariablesMap <INFO>::
+reader_hasKey (C_Lexique & /* inLexique */,
+               const GGS_string & inKey
+               COMMA_UNUSED_LOCATION_ARGS) const {
+  const bool allBuilt = isBuilt () && inKey.isBuilt() ;
+  bool found = false ;
+  if (allBuilt) {
+    element_type * current = mRoot ;
+    while ((current != NULL) && ! found) {
+      macroValidPointer (current) ;
+      const sint32 comparaison = current->mKey.compareStringByLength (inKey) ;
+      if (comparaison > 0) {
+        current = current->mInfPtr ;
+      }else if (comparaison < 0) {
+        current = current->mSupPtr ;
+      }else{
+        found = true ;
+      }
+    }
+  }
+  return GGS_bool (allBuilt, found) ; 
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
 void cGalgasVariablesMap <INFO>::operator = (const cGalgasVariablesMap <INFO> & inOperand) {
   if (inOperand.mListLength > 0) {
     printf ("--- FATAL ERROR AT LINE %d, SOURCE %s ---\n", __LINE__, __FILE__) ;
@@ -178,13 +204,27 @@ sint32 cGalgasVariablesMap <INFO>::insertInArgument (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::insertInOutArgument (C_Lexique & inLexique,
-                                                           const INFO & inInfo,
-                                                           const GGS_lstring & clef,
-                                                           const GGS_location & inLocation,
-                                                           const char * messageErreurInsertion
-                                                           COMMA_LOCATION_ARGS) {
+sint32 cGalgasVariablesMap <INFO>::
+insertInOutArgument (C_Lexique & inLexique,
+                     const INFO & inInfo,
+                     const GGS_lstring & clef,
+                     const GGS_location & inLocation,
+                     const char * messageErreurInsertion
+                     COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::
+insertUsedInOutArgument (C_Lexique & inLexique,
+                         const INFO & inInfo,
+                         const GGS_lstring & clef,
+                         const GGS_location & inLocation,
+                         const char * messageErreurInsertion
+                         COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, true, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*

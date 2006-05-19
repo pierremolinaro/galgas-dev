@@ -142,6 +142,7 @@ map @typeVariablesMap
   insert insertLocalVariable error message "the variable '%' is already declared" ;
   insert insertOutArgument error message "the variable '%' is already declared" ;
   insert insertInOutArgument error message "the variable '%' is already declared" ;
+  insert insertUsedInOutArgument error message "the variable '%' is already declared" ;
   insert insertUnusedInOutArgument error message "the variable '%' is already declared" ;
 #--- Searching
   search searchForReadOnlyAccess error message "the variable '%' cannot be accessed in read only mode" ;

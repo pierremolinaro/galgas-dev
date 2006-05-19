@@ -4974,7 +4974,7 @@ label importSemantics
       ?signature
     ;
     $;$ ;
-    [!?readersInInstructionMap insertKey ! readerName !listeDeTypes] ;
+    [!?readersInInstructionMap insertKey !readerName !listeDeTypes] ;
     [!?readerMap insertKey !readerName !signature] ;
   while
     $modifier$ ;

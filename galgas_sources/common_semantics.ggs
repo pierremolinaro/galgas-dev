@@ -1,3 +1,4 @@
+
 #---------------------------------------------------------------------------*
 #                                                                           *
 #  Common semantics definitions                                             *
@@ -669,7 +670,7 @@ class @typeGalgas_singleEntity extends @AC_galgasType {
   @stringset mSuperEntitiesSet ;
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := [mEntityName  value] ;
+    outTypeName := [mEntityName value] ;
   end reader ;
 
 #--- Error message
@@ -1914,6 +1915,61 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   E N T I T Y    T Y P E    I N    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_entityInInstruction extends @AC_galgasType {
+  @string mEntityName ;
+#--- Get type name
+  override reader getTypeName !@string outTypeName :
+    outTypeName := mEntityName ;
+  end reader ;
+
+#--- Error message
+  message messageGalgasType "an entity" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   M A P    E N T I T Y    T Y P E    I N    I N S T R U C T I O N         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
+  @string mEntityName ;
+  @string mElementTypeName ;
+#--- Get type name
+  override
+  reader getTypeName !@string outTypeName :
+    outTypeName := mEntityName ;
+  end reader ;
+
+#--- Handle modifiers
+  override
+  reader handleModifierCall
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName value] == "insertKey" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      @AC_galgasType t := [@typeGalgas_lstring new] ;
+      outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+      t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
+      outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+    else
+      error inModifierName : "variables of this type only accept 'insertKey' modifier call"
+       -> outModifierSignature ;
+    end if ;
+  end reader ;
+
+
+#--- Error message
+  message messageGalgasType "a map entity" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  E N U M    T Y P E                                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1982,34 +2038,41 @@ routine verifierCompatibiliteTypesSemantiques
 
   when @typeGalgasUndefinedListType (??@lstring attNomType1) :: @typeGalgasUndefinedListType (??@lstring attNomType2) :
     if [attNomType1 value] != [attNomType2 value] then
-      error inErrorLocation : "I was expecting the list type '" . [attNomType1 value] .
-                                "', I have got the list type '" . [attNomType2 value] . "\"" ;
+      error inErrorLocation : "I was expecting the list type '@" . [attNomType1 value] .
+                                "', I have got the list type '@" . [attNomType2 value] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedMapType (??@lstring attNomType1) :: @typeGalgasUndefinedMapType (??@lstring attNomType2) :
     if [attNomType1 value] != [attNomType2 value] then
-      error inErrorLocation : "I was expecting the map type '" . [attNomType1 value] .
-                              "', I have got the map type '" . [attNomType2 value] . "\"" ;
+      error inErrorLocation : "I was expecting the map type '@" . [attNomType1 value] .
+                              "', I have got the map type '@" . [attNomType2 value] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedClassType (??@lstring attNomType1) :: @typeGalgasUndefinedClassType (??@lstring attNomType2) :
     if [attNomType1 value] != [attNomType2 value] then
-      error inErrorLocation : "I was expecting the class type '" . [attNomType1 value] .
-                                "', I have got the class type '" . [attNomType2 value] . "\"" ;
+      error inErrorLocation : "I was expecting the class type '@" . [attNomType1 value] .
+                                "', I have got the class type '@" . [attNomType2 value] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedExternType (??@lstring attNomType1 ??@lstring attCppClassName1)
     :: @typeGalgasUndefinedExternType (??@lstring attNomType2 ??@lstring attCppClassName2) :
     if [attNomType1 value] != [attNomType2 value] then
-      error inErrorLocation : "I was expecting an extern variable of extern '" . [attNomType1 value] .
-                                "' type variable, and I got an extern '" . [attNomType2 value] . "' type variable" ;
+      error inErrorLocation : "I was expecting an extern variable of extern '@" . [attNomType1 value] .
+                                "' type variable, and I got an extern '@" . [attNomType2 value] . "' type variable" ;
     end if ;
 
   when @typeGalgas_enum (??@lstring aTypeName1 ??* ??*)
     :: @typeGalgas_enum (??@lstring aTypeName2 ??* ??*) :
     if [aTypeName1 value] != [aTypeName2 value] then
-      error inErrorLocation : "I was expecting an enum variable of  '" . [aTypeName1 value] .
-                                "' type variable, and I got an enum '" . [aTypeName2 value] . "' type variable" ;
+      error inErrorLocation : "I was expecting an enum variable of  '@" . [aTypeName1 value] .
+                                "' type variable, and I got an enum '@" . [aTypeName2 value] . "' type variable" ;
+    end if ;
+
+  when @typeGalgas_entityInInstruction (??@string kTypeName1)
+    :: @typeGalgas_entityInInstruction (??@string kTypeName2) :
+    if kTypeName1 != kTypeName2 then
+      error inErrorLocation : "I was expecting an entity instance of  '@" . kTypeName1 .
+                              "' type variable, and I got an entity instance of type '@" . kTypeName2 . "'" ;
     end if ;
 
   else

@@ -441,17 +441,17 @@ rule <constraints_on_entity_declaration>
   @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [emptyMap] ;
   ${$ ;
   @constrainedEntityPassMap constrainedEntityPassMap [emptyMap] ;
-  @uint currentIndex := 0 ;
+  @uint currentPassIndex := 0 ;
   repeat
   while
     @lstring passName ;
     $identifier$ ? passName ;
     @luint index ;
     [ioPassMap searchKeyAndGetIndex !passName ?index] ;
-    if [index value] < currentIndex then
+    if [index value] < currentPassIndex then
       error passName:"the pass order is incorrect" ;
     end if ;
-    currentIndex := [index value] ;
+    currentPassIndex := [index value] ;
     @sharedPropertyList sharedPropertyList [emptyList] ;
   #--- Properties from owner
     select
@@ -472,8 +472,8 @@ rule <constraints_on_entity_declaration>
         if [ioMapEntityMap hasKey ![typeName value]] then 
           @lstring elementTypeName ;
           [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
-          [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !true] ;
-          [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !true] ;
+          [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentPassIndex ![passName value] !true] ;
+          [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentPassIndex ![passName value] !true] ;
           sharedPropertyList += !typeName !propertyName ;
         else
           error typeName:"unhandled type name" ;
@@ -494,20 +494,79 @@ rule <constraints_on_entity_declaration>
       if [ioMapEntityMap hasKey ![typeName value]] then 
         @lstring elementTypeName ;
         [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
-        [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !false] ;
-        [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentIndex ![passName value] !false] ;
+        [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentPassIndex ![passName value] !false] ;
+        [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentPassIndex ![passName value] !false] ;
       else
         error typeName:"unhandled type name" ;
       end if ;
       $;$ ;
     end repeat ;
     $}$ ;
-  #--- Instructions
     ${$ ;
+  #--- Enter attributes metamodels as constants
+    @typeVariablesMap variablesMap [emptyMap] ;
+    foreach allPropertyMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+      if kKind == [@metamodelPropertyKind  attributeProperty] then
+        # message "attribute '" . [kKey value] . "' has type '@" . [kTypeName value] . "'\n" ;
+        @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey value] ![kKey location]]] ;
+        if [kTypeName value] == "lstring" then
+          @AC_galgasType t := [@typeGalgas_lstring new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "string" then
+          @AC_galgasType t := [@typeGalgas_string new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "lchar" then
+          @AC_galgasType t := [@typeGalgas_lchar new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "char" then
+          @AC_galgasType t := [@typeGalgas_char new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "luint" then
+          @AC_galgasType t := [@typeGalgas_luint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "uint" then
+          @AC_galgasType t := [@typeGalgas_uint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "lsint" then
+          @AC_galgasType t := [@typeGalgas_lsint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "sint" then
+          @AC_galgasType t := [@typeGalgas_sint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "lbool" then
+          @AC_galgasType t := [@typeGalgas_lbool new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "bool" then
+          @AC_galgasType t := [@typeGalgas_bool new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName value] == "location" then
+          @AC_galgasType t := [@typeGalgas_location new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        else
+          error here : "internal error (@" . [kTypeName value] . " type not handled" ;
+        end if ;
+      end if ;
+    end foreach ;
+  #--- Enter attributes from previous passes as constants
+    foreach allMapsAsConstraintPropertyMap (??@lstring kPropertyName ??@lstring kTypeName ??@lstring kElementTypeName ??@uint kPassIndex ...) :
+      # message "Map " . [kPropertyName value] . " of type @" . [kTypeName value] . " defined in pass " . [kPassIndex string] . "\n" ;
+      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName value] . ")" !here]] ;
+      #@typeCplusPlusName cppName := [@typeDirectName new !kPropertyName] ;
+      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kTypeName value] ![kElementTypeName value]] ;
+      if kPassIndex < currentPassIndex then
+        [!?variablesMap insertUsedConstInArgument !kPropertyName !t !cppName] ;
+      else
+        [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
+      end if ;
+    end foreach ;
+  #--- Add "self" variable
+    @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
+    @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName value]] ;
+    [!?variablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !t !cppName] ;
+  #--- Instructions
     @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
     @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
     @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
-    @typeVariablesMap variablesMap [emptyMap] ;
     @typeInstructionList instructionsList [emptyList] ;
     @stringset constraintPropertyDefinitionSet [emptySet] ;
     @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
