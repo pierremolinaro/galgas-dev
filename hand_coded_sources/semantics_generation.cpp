@@ -739,6 +739,33 @@ generatePublicDeclaration (AC_OutputStream & inHfile,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgas_entityInInstruction::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mEntityName << " *" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_mapEntityInInstruction::
+generateCppClassName (AC_OutputStream & /* inFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeGalgas_enum::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mEnumTypeName ;

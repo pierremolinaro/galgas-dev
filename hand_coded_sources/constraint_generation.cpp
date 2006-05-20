@@ -106,6 +106,13 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "  public : GGS_" << currentMap->mKey << " (LOCATION_ARGS) ;\n"
                       "//--- First object accessor\n"
                       "  public : GGS_" << currentMap->mInfo.mElementEntityName << " * firstObject (void) ;\n"
+                      "//--- Operator ()\n"
+                      "  public : inline const GGS_" << currentMap->mKey << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
+                      "//--- Reader 'searchKey'\n"
+                      "  public : void method_readKey (C_Lexique & inLexique,\n"
+                      "                                const GGS_lstring & inKey,\n"
+                      "                                GGS_" << currentMap->mInfo.mElementEntityName << " * & outInfo\n"
+                      "                                COMMA_LOCATION_ARGS) const ;\n"
                       "} ;\n\n" ;
     currentMap = currentMap->nextObject () ;
   }
@@ -383,6 +390,15 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     generatedZone3.writeCHyphenLineComment () ;
     generatedZone3 << "GGS_" << currentMap->mInfo.mElementEntityName << " * GGS_" << currentMap->mKey << "::firstObject (void) {\n"
                       "  return (GGS_" << currentMap->mInfo.mElementEntityName << " *) mFirstItem ;\n"
+                      "}\n\n" ;
+    generatedZone3.writeCHyphenLineComment () ;
+    generatedZone3 << "void GGS_" << currentMap->mKey << "::\n"
+                      "method_readKey (C_Lexique & inLexique,\n"
+                      "                const GGS_lstring & inKey,\n"
+                      "                GGS_" << currentMap->mInfo.mElementEntityName << " * & outInfo\n"
+                      "                COMMA_LOCATION_ARGS) const {\n"
+                      "  uint32 unusedIndex ;\n"
+                      "  outInfo = (GGS_" << currentMap->mInfo.mElementEntityName << " *) internalSearch (inLexique, inKey, unusedIndex COMMA_THERE) ;\n"
                       "}\n\n" ;
     currentMap = currentMap->nextObject () ;
   }

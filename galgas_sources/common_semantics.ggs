@@ -1963,6 +1963,24 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
     end if ;
   end reader ;
 
+#--- Handle reader instruction call
+  override
+  reader handleReaderInstructionCall
+    ??@lstring inReaderName
+    !@L_EXsignature outReaderSignature
+  :
+    if [inReaderName value] != "searchKey" then
+      outReaderSignature := [@L_EXsignature emptyList] ;
+      @AC_galgasType t := [@typeGalgas_lstring new] ;
+      outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+      t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
+      outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
+    else
+      error inReaderName :
+       "variables of this type  only accept 'searchKey' reader call"
+       -> outReaderSignature ;
+    end if ;
+  end reader ;
 
 #--- Error message
   message messageGalgasType "a map entity" ;
