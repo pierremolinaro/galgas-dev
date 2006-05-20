@@ -28,7 +28,7 @@ public : virtual void generateAttributeDeclaration (const GGS_lstring & /* nom *
                                                     AC_OutputStream & /* inHfile */) {}
 public : virtual void generateAttributeInitialization (const GGS_lstring & /* nom */,
                                                        AC_OutputStream & /* inCppFile */) {}
-public : virtual void generateCppClassName (AC_OutputStream & /* fichier */) const {}
+public : virtual void generateCppClassName (AC_OutputStream & inFile) const ;
 
 public : virtual bool isObject (void) const { return false ; }
 
