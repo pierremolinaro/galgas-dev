@@ -411,13 +411,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
     case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
       ioCppFile << "macroValidPointer (_constraintFor_" << mCalledPropertyName << ") ;\n"
                    "_constraintFor_" << mCalledPropertyName << "->_phase_" << mCurrentPassName
-                << " (_inLexique, " ;
+                << " (_inLexique" ;
       while (currentParameter != NULL) {
         macroValidPointer (currentParameter) ;
-        ioCppFile << currentParameter->mString << ", " ;
+        ioCppFile  << ", " << currentParameter->mString ;
         currentParameter = currentParameter->nextObject () ;
       }
-      ioCppFile << "_ioOk) ;\n" ;
+      ioCppFile << ") ;\n" ;
       break ;
     case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
       ioCppFile << "{ GGS__" << inTargetFileName << "_ConstraintOn_" << mPropertyTypeName
@@ -425,13 +425,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
                 << "  while (_ptr != NULL) {\n"
                    "    macroValidPointer (_ptr) ;\n"
                    "    _ptr->_phase_" << mCurrentPassName
-                << " (_inLexique, " ;
+                << " (_inLexique" ;
       while (currentParameter != NULL) {
         macroValidPointer (currentParameter) ;
-        ioCppFile << currentParameter->mString << ", " ;
+        ioCppFile  << ", "<< currentParameter->mString ;
         currentParameter = currentParameter->nextObject () ;
       }
-      ioCppFile << "_ioOk) ;\n"
+      ioCppFile << ") ;\n"
                    "    _ptr = _ptr->_mNextObject ;\n"
                    "  }\n"
                    "}\n" ;
