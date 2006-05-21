@@ -141,6 +141,7 @@ map @typeVariablesMap
   insert insertUnusedConstInArgument error message "the variable '%' is already declared" ;
   insert insertLocalVariable error message "the variable '%' is already declared" ;
   insert insertOutArgument error message "the variable '%' is already declared" ;
+  insert insertOutProperty error message "the variable '%' is already declared" ;
   insert insertInOutArgument error message "the variable '%' is already declared" ;
   insert insertUsedInOutArgument error message "the variable '%' is already declared" ;
   insert insertUnusedInOutArgument error message "the variable '%' is already declared" ;
@@ -1404,6 +1405,21 @@ map @constrainedEntityPassMap {
 
 #---------------------------------------------------------------------------*
 
+map @constraintAllPropertiesMap {
+  insert insertKey error message "the '%K' constraint attribute has been already declared in %L" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @indexMap {
+  @lstring mMapTypeName ;
+  @uint mPassIndex ;
+  insert insertKey error message "the '%K' constraint attribute is already defined" ;
+  search searchKey error message "the '%K' constraint attribute is not defined" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @constrainedEntityMap {
   @stringset mPassesDefinedByInheritanceTreeRootEntity ;
   @constrainedEntityPassMap mConstrainedEntityPassMap ;
@@ -1412,7 +1428,10 @@ map @constrainedEntityMap {
   @stringset mDescendantEntitySet ;
   @location mEndOfConstraintLocation ;
   @mapAsConstraintPropertyMap mMapAsConstraintPropertyCurrentMap ;
-  @mapAsConstraintPropertyMap  mAllMapsAsConstraintPropertyMap ;
+  @mapAsConstraintPropertyMap mAllMapsAsConstraintPropertyMap ;
+  @constraintAllPropertiesMap mConstraintAllPropertiesMap ;
+  @indexMap mCurrentIndexMap ;
+  @indexMap mInheritedIndexMap ;
   insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
   search searchKey error message "no constraint has been defined for the '@%K' entity" ;
 }
@@ -1420,14 +1439,14 @@ map @constrainedEntityMap {
 #---------------------------------------------------------------------------*
 
 action generate_constraints
- ?!@passMap ioPassMap
- ?!@entityToImplementMap ioEntityMap
- ?!@mapEntityMap ioMapEntityMap
- ?@lstring inMetamodelComponentName
- ?@lstring inConstraintComponentName
- ?!@constrainedEntityMap ioConstrainedEntityMap
- ?@stringset inMultiReferencedEntities
- ?@lstring inRootEntityName
+  ?@passMap inPassMap
+  ?@entityToImplementMap inEntityMap
+  ?@mapEntityMap inMapEntityMap
+  ?@lstring inMetamodelComponentName
+  ?@lstring inConstraintComponentName
+  ?@constrainedEntityMap inConstrainedEntityMap
+  ?@stringset inMultiReferencedEntities
+  ?@lstring inRootEntityName
 ;
 
 #---------------------------------------------------------------------------*

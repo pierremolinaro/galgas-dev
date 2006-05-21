@@ -739,6 +739,20 @@ generatePublicDeclaration (AC_OutputStream & inHfile,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgas_mapIndexInInstruction::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "C_GGS_MapIndex" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeGalgas_entityInInstruction::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mEntityName << " *" ;
