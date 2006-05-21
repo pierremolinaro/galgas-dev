@@ -3291,7 +3291,7 @@
 			<Option target="galgasLR1_debug"/>
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
-		<Unit filename="..\..\libpm\galgas\C_galgas_bdd.cpp">
+		<Unit filename="..\..\libpm\galgas\C_GGS_entityMap.cpp">
 			<Option compilerVar="CC"/>
 			<Option target="galgas"/>
 			<Option target="galgas_debug"/>
@@ -3300,10 +3300,8 @@
 			<Option target="galgasLR1_debug"/>
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
-		<Unit filename="..\..\libpm\galgas\C_galgas_bdd.h">
+		<Unit filename="..\..\libpm\galgas\C_GGS_MapIndex.cpp">
 			<Option compilerVar="CC"/>
-			<Option compile="0"/>
-			<Option link="0"/>
 			<Option target="galgas"/>
 			<Option target="galgas_debug"/>
 			<Option target="galgas_SLR"/>
@@ -3341,26 +3339,6 @@
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
 		<Unit filename="..\..\libpm\galgas\C_galgas_terminal_io.h">
-			<Option compilerVar="CC"/>
-			<Option compile="0"/>
-			<Option link="0"/>
-			<Option target="galgas"/>
-			<Option target="galgas_debug"/>
-			<Option target="galgas_SLR"/>
-			<Option target="galgasLR1"/>
-			<Option target="galgasLR1_debug"/>
-			<Option target="galgas_SLR_debug"/>
-		</Unit>
-		<Unit filename="..\..\libpm\galgas\C_galgas_uint_array.cpp">
-			<Option compilerVar="CC"/>
-			<Option target="galgas"/>
-			<Option target="galgas_debug"/>
-			<Option target="galgas_SLR"/>
-			<Option target="galgasLR1"/>
-			<Option target="galgasLR1_debug"/>
-			<Option target="galgas_SLR_debug"/>
-		</Unit>
-		<Unit filename="..\..\libpm\galgas\C_galgas_uint_array.h">
 			<Option compilerVar="CC"/>
 			<Option compile="0"/>
 			<Option link="0"/>
