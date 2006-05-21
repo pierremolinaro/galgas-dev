@@ -21,5 +21,6 @@ option galgas_cli_options :
   @bool outputHTMLgrammarFile: 'H', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
   @bool parse_only           : 'p', "parseonly" -> "Parse only input files" ;
   @bool generate_debug       : 'g', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols " ;
-  @string generate_project   : '\0', "create" -> "Create a new GALGAS Project" ;
+  @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
+  @string create_mda_project : '\0', "create-mda-project" -> "Create a new GALGAS Project, MDA style" ;
 end option ;

@@ -28,9 +28,14 @@
 
 //---------------------------------------------------------------------------*
 
+typedef enum {kClassicProject, kMDAproject} enumProjectStyle ;
+
+//---------------------------------------------------------------------------*
+
 void
 createProject (C_Lexique & inLexique,
-               const C_String & inStringForProjectCreation) ;
+               const C_String & inStringForProjectCreation,
+               const enumProjectStyle inProjectStyle) ;
 
 //---------------------------------------------------------------------------*
 
