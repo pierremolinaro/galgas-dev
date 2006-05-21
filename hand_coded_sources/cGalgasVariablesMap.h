@@ -2,7 +2,8 @@
 //                                                                           *
 //  Generic map used for GALGAS variables (handles read/write access)        *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -39,7 +40,8 @@ enum enumNatureEntite {enumParametreIn,  // Parametre formel en entree
                        enumConstanteLocale, // constante locale (non modifiable)
                        enumVariableLocale, // variable locale
                        enumParametreInOut, // Parametre formel en entree/sorie
-                       enumParametreOut} ; // Parametre formel de sortie
+                       enumParametreOut, // Parametre formel de sortie
+                       enumPropertyOut} ; // Propriete devant etre definie
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -178,11 +180,18 @@ template <typename INFO> class cGalgasVariablesMap {
 
 //--- Insertion Methods
   public : sint32 insertInArgument (C_Lexique & inLexique,
-                                  const INFO & info,
-                                  const GGS_lstring & clef,
-                                         const GGS_location & inLocation,
-                                  const char * messageErreurInsertion
-                                  COMMA_LOCATION_ARGS) ;
+                                    const INFO & info,
+                                    const GGS_lstring & clef,
+                                    const GGS_location & inLocation,
+                                    const char * messageErreurInsertion
+                                    COMMA_LOCATION_ARGS) ;
+
+  public : sint32 insertOutProperty (C_Lexique & inLexique,
+                                     const INFO & info,
+                                     const GGS_lstring & clef,
+                                     const GGS_location & inLocation,
+                                     const char * messageErreurInsertion
+                                     COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertInOutArgument (C_Lexique & inLexique,
                                      const INFO & info,

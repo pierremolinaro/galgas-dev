@@ -50,14 +50,14 @@ entityForProperty (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_metamodel_header_file (C_Lexique & inLexique,
-                                const GGS_entityToImplementMap & /* inEntityMap */,
-                                const GGS_mapEntityMap & inMapEntityMap,
-                                const GGS_lstring & inMetamodelComponentName,
-                                const GGS_lstring & inConstraintComponentName,
-                                const GGS_constrainedEntityMap & inConstrainedEntityMap,
-                                const GGS_stringset & inMultipleReferencedEntities,
-                                const GGS_lstring & inRootEntityName) {
+generate_constraint_header_file (C_Lexique & inLexique,
+                                 const GGS_entityToImplementMap & /* inEntityMap */,
+                                 const GGS_mapEntityMap & inMapEntityMap,
+                                 const GGS_lstring & inMetamodelComponentName,
+                                 const GGS_lstring & inConstraintComponentName,
+                                 const GGS_constrainedEntityMap & inConstrainedEntityMap,
+                                 const GGS_stringset & inMultipleReferencedEntities,
+                                 const GGS_lstring & inRootEntityName) {
   C_String generatedZone2 ;
   generatedZone2 << "#ifndef " << inConstraintComponentName << "_CONSTRAINTS_DEFINED\n"
                  << "#define " << inConstraintComponentName << "_CONSTRAINTS_DEFINED\n"
@@ -66,6 +66,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
 //--- Include declaration of predefined types
   generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n"
                     "#include \"galgas/C_GGS_entityMap.h\"\n"
+                    "#include \"galgas/C_GGS_MapIndex.h\"\n"
                     "\n" ;
   
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (20000) ;
@@ -89,8 +90,9 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     generatedZone3 << "class GGS__listOfConstraint_" << currentMultipleReferencedEntity->mKey << " ;\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
-  generatedZone3 << "\n"
-                    "void _addConstraintsTo_" << inConstraintComponentName
+  generatedZone3 << "\n" ;
+  generatedZone3.writeCTitleComment ("Main Routine") ;
+  generatedZone3 << "void _addConstraintsTo_" << inConstraintComponentName
                  << " (C_Lexique & _inLexique,\n"
                     "                  GGS_" << inRootEntityName << " * inRootObject,\n"
                     "                  GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " * & ioRootObjectConstraint) ;\n"
@@ -109,10 +111,16 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "//--- Operator ()\n"
                       "  public : inline const GGS_" << currentMap->mKey << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
                       "//--- Reader 'searchKey'\n"
-                      "  public : void method_readKey (C_Lexique & inLexique,\n"
-                      "                                const GGS_lstring & inKey,\n"
-                      "                                GGS_" << currentMap->mInfo.mElementEntityName << " * & outInfo\n"
-                      "                                COMMA_LOCATION_ARGS) const ;\n"
+                      "  public : void method_searchKey (C_Lexique & inLexique,\n"
+                      "                                  const GGS_lstring & inKey,\n"
+                      "                                  GGS_" << currentMap->mInfo.mElementEntityName << " * & outInfo\n"
+                      "                                  COMMA_LOCATION_ARGS) const ;\n"
+                      "//--- Reader 'searchKeyAndGetIndex'\n"
+                      "  public : void method_searchKeyAndGetIndex (C_Lexique & inLexique,\n"
+                      "                                             const GGS_lstring & inKey,\n"
+                      "                                             GGS_" << currentMap->mInfo.mElementEntityName << " * & outInfo,\n"
+                      "                                             C_GGS_MapIndex & outIndex\n"
+                      "                                             COMMA_LOCATION_ARGS) const ;\n"
                       "} ;\n\n" ;
     currentMap = currentMap->nextObject () ;
   }
@@ -189,13 +197,26 @@ generate_metamodel_header_file (C_Lexique & inLexique,
       }
       currentProperty = currentProperty->nextObject () ;
     }
-    generatedZone3 << "//--- Maps\n" ;
     GGS_mapAsConstraintPropertyMap::element_type * currentMap = currentConstrainedEntity->mInfo.mMapAsConstraintPropertyCurrentMap.firstObject () ;
-    while (currentMap != NULL) {
-      macroValidPointer (currentMap) ;
-      generatedZone3 << "  public : GGS_" << currentMap->mInfo.mMapTypeName
-                       << " * " << currentMap->mKey << " ;\n" ;
-      currentMap = currentMap->nextObject () ;
+    if (currentMap != NULL) {
+      generatedZone3 << "//--- Maps\n" ;
+      while (currentMap != NULL) {
+        macroValidPointer (currentMap) ;
+        generatedZone3 << "  public : GGS_" << currentMap->mInfo.mMapTypeName
+                         << " * " << currentMap->mKey << " ;\n" ;
+        currentMap = currentMap->nextObject () ;
+      }
+      generatedZone3 << "\n" ;
+    }
+    GGS_indexMap::element_type * currentIndex = currentConstrainedEntity->mInfo.mCurrentIndexMap.firstObject () ;
+    if (currentIndex != NULL) {
+      generatedZone3 << "//--- Indexes\n" ;
+      while (currentIndex != NULL) {
+        macroValidPointer (currentIndex) ;
+        generatedZone3 << "  public : C_GGS_MapIndex " << currentIndex->mKey << " ;\n" ;
+        currentIndex = currentIndex->nextObject () ;
+      }
+      generatedZone3 << "\n" ;
     }
   //--- 'description' reader                 
     generatedZone3 << "//--- 'description' reader\n"
@@ -240,8 +261,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
 static void
 generate_constraint_object_creation (C_Lexique & inLexique,
                                      const GGS_lstring & inConstraintComponentName,
-                                     GGS_constrainedEntityMap & inConstrainedEntityMap,
-                                     GGS_entityPropertyMap::element_type * inCurrentProperty,
+                                     const GGS_constrainedEntityMap & inConstrainedEntityMap,
+                                     const GGS_entityPropertyMap::element_type * inCurrentProperty,
                                      const C_String & inCurrentVariableName,
                                      const C_String & inDestinationVar,
                                      AC_OutputStream & ioGeneratedZone3) {
@@ -253,6 +274,9 @@ generate_constraint_object_creation (C_Lexique & inLexique,
   GGS_location endOfConstraintLocation ;
   GGS_mapAsConstraintPropertyMap currentMapAsConstraintPropertyMap ;
   GGS_mapAsConstraintPropertyMap allMapAsConstraintPropertyMap ;
+  GGS_constraintAllPropertiesMap constraintAllPropertiesMap ;
+  GGS_indexMap currentIndexes ;
+  GGS_indexMap allIndexes ;
   inConstrainedEntityMap.method_searchKey (inLexique,
                                            inCurrentProperty->mInfo.mTypeName,
                                            passesDefinedByInheritanceTreeRootEntity,
@@ -262,7 +286,10 @@ generate_constraint_object_creation (C_Lexique & inLexique,
                                            allDescendant,
                                            endOfConstraintLocation,
                                            currentMapAsConstraintPropertyMap,
-                                           allMapAsConstraintPropertyMap
+                                           allMapAsConstraintPropertyMap,
+                                           constraintAllPropertiesMap,
+                                           currentIndexes,
+                                           allIndexes
                                            COMMA_HERE) ;
    GGS_stringset::element_type * currentDescendant = allDescendant.firstObject () ;
    bool first = true ;
@@ -300,15 +327,15 @@ generate_constraint_object_creation (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_metamodel_cpp_file (C_Lexique & inLexique,
-                             const GGS_passMap & inPassMap,
-                             const GGS_entityToImplementMap & /* inEntityMap */,
-                             const GGS_mapEntityMap & inMapEntityMap,
-                             const GGS_lstring & /* inMetamodelComponentName */,
-                             const GGS_lstring & inConstraintComponentName,
-                             GGS_constrainedEntityMap & inConstrainedEntityMap,
-                             const GGS_stringset & inMultipleReferencedEntities,
-                             const GGS_lstring & inRootEntityName) {
+generate_constraint_cpp_file (C_Lexique & inLexique,
+                              const GGS_passMap & inPassMap,
+                              const GGS_entityToImplementMap & /* inEntityMap */,
+                              const GGS_mapEntityMap & inMapEntityMap,
+                              const GGS_lstring & /* inMetamodelComponentName */,
+                              const GGS_lstring & inConstraintComponentName,
+                              const GGS_constrainedEntityMap & inConstrainedEntityMap,
+                              const GGS_stringset & inMultipleReferencedEntities,
+                              const GGS_lstring & inRootEntityName) {
   C_String generatedZone2 ;
 //--- Include declaration of header file
   generatedZone2 << "#include \"" << inConstraintComponentName << ".h\"\n"
@@ -375,12 +402,23 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "}\n\n" ;
     generatedZone3.writeCHyphenLineComment () ;
     generatedZone3 << "void GGS_" << currentMap->mKey << "::\n"
-                      "method_readKey (C_Lexique & inLexique,\n"
-                      "                const GGS_lstring & inKey,\n"
-                      "                GGS_" << currentMap->mInfo.mElementEntityName << " * & outInfo\n"
-                      "                COMMA_LOCATION_ARGS) const {\n"
+                      "method_searchKey (C_Lexique & inLexique,\n"
+                      "                  const GGS_lstring & inKey,\n"
+                      "                  GGS_" << currentMap->mInfo.mElementEntityName << " * & outInfo\n"
+                      "                  COMMA_LOCATION_ARGS) const {\n"
                       "  uint32 unusedIndex ;\n"
                       "  outInfo = (GGS_" << currentMap->mInfo.mElementEntityName << " *) internalSearch (inLexique, inKey, unusedIndex COMMA_THERE) ;\n"
+                      "}\n\n" ;
+    generatedZone3.writeCHyphenLineComment () ;
+    generatedZone3 << "void GGS_" << currentMap->mKey << "::\n"
+                      "method_searchKeyAndGetIndex (C_Lexique & inLexique,\n"
+                      "                             const GGS_lstring & inKey,\n"
+                      "                             GGS_" << currentMap->mInfo.mElementEntityName << " * & outInfo,\n"
+                      "                             C_GGS_MapIndex & outIndex\n"
+                      "                             COMMA_LOCATION_ARGS) const {\n"
+                      "  uint32 index ;\n"
+                      "  outInfo = (GGS_" << currentMap->mInfo.mElementEntityName << " *) internalSearch (inLexique, inKey, index COMMA_THERE) ;\n"
+                      "  outIndex = C_GGS_MapIndex (index) ;\n"
                       "}\n\n" ;
     currentMap = currentMap->nextObject () ;
   }
@@ -673,26 +711,26 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
 
 void
 routine_generate_constraints (C_Lexique & inLexique,
-                              GGS_passMap & ioPassMap,
-                              GGS_entityToImplementMap & ioEntityMap,
-                              GGS_mapEntityMap & ioMapEntityMap,
+                              GGS_passMap inPassMap,
+                              GGS_entityToImplementMap inEntityMap,
+                              GGS_mapEntityMap inMapEntityMap,
                               GGS_lstring inMetamodelComponentName,
                               GGS_lstring inConstraintComponentName,
-                              GGS_constrainedEntityMap & inConstrainedEntityMap,
+                              GGS_constrainedEntityMap inConstrainedEntityMap,
                               GGS_stringset inMultipleReferencedEntities,
                               GGS_lstring inRootEntityName
                               COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.galgas_IO_Ptr ()->currentFileErrorsCount () == 0) {
   //--- Generate header file
-    generate_metamodel_header_file (inLexique, ioEntityMap, ioMapEntityMap,
-                                    inMetamodelComponentName, inConstraintComponentName,
-                                    inConstrainedEntityMap,
-                                    inMultipleReferencedEntities, inRootEntityName) ;
+    generate_constraint_header_file (inLexique, inEntityMap, inMapEntityMap,
+                                     inMetamodelComponentName, inConstraintComponentName,
+                                     inConstrainedEntityMap,
+                                     inMultipleReferencedEntities, inRootEntityName) ;
   //--- Generate implementation file
-    generate_metamodel_cpp_file (inLexique, ioPassMap, ioEntityMap, ioMapEntityMap,
-                                 inMetamodelComponentName, inConstraintComponentName,
-                                 inConstrainedEntityMap,
-                                 inMultipleReferencedEntities, inRootEntityName) ;
+    generate_constraint_cpp_file (inLexique, inPassMap, inEntityMap, inMapEntityMap,
+                                  inMetamodelComponentName, inConstraintComponentName,
+                                  inConstrainedEntityMap,
+                                  inMultipleReferencedEntities, inRootEntityName) ;
   }
 }
 

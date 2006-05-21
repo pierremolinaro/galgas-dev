@@ -3203,7 +3203,7 @@ end rule ;
 #               [object reader_method !... !?... ?...] ;                    *
 #                                                                           *
 #    M O D I F I E R    C A L L   I N S T R U C T I O N                     *
-#               [!?var modifier_method !... !?... ?...] ;                   *
+#               [!?object modifier_method !... !?... ?...] ;                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -3223,14 +3223,14 @@ rule <semantic_instruction>
 #--- Get source identity characteristics
   @typeInstruction instruction ;
   select
-    @lstring variableName ;
+    @lstring readObjectName ;
     @AC_galgasType variableType ;
     @typeCplusPlusName cppVariableName ;
-    <read_access> ?variableName ?cppVariableName ?variableType !?ioVariablesMap ;
+    <read_access> ?readObjectName ?cppVariableName ?variableType !?ioVariablesMap ;
     @lstring methodName ;
     $identifier$ ? methodName ;
     @L_EXsignature methodSignature ;
-    [variableType handleReaderInstructionCall !methodName ?methodSignature] ;
+    [variableType handleReaderInstructionCall !readObjectName !methodName ?methodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
     <actual_parameters_list>
@@ -3245,16 +3245,16 @@ rule <semantic_instruction>
     instruction := [@typeReaderCallInstruction new !cppVariableName !methodName !expressionsList] ;
   or
     $!?$ ;
-    @lstring variableName ;
-    $identifier$ ? variableName ;
+    @lstring modifiedObjectName ;
+    $identifier$ ? modifiedObjectName ;
     @AC_galgasType variableType ;
     @typeCplusPlusName cppVariableName ;
-    [!?ioVariablesMap searchForReadWriteAccess !variableName ?variableType ?cppVariableName] ; 
+    [!?ioVariablesMap searchForReadWriteAccess !modifiedObjectName ?variableType ?cppVariableName] ; 
   #--- Get method name
     @lstring methodName ;
     $identifier$ ? methodName ;
     @L_EXsignature methodSignature ;
-    [variableType handleModifierCall !methodName ?methodSignature] ;
+    [variableType handleModifierCall !modifiedObjectName !methodName ?methodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
     <actual_parameters_list>

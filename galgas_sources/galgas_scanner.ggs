@@ -57,7 +57,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
  "grammar",     "option",         "root",          "on",
  "unused",       "label",        "style",         "gui",
  "do",        "relation",           "of",        "self",
- "constraint", "context",         "call" ;
+ "constraint", "context",         "call",    "mapindex" ;
 
 rule 'a'->'z' | 'A'->'Z' :
   repeat

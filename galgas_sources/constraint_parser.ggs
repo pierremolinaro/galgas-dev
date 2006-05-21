@@ -232,19 +232,16 @@ rule <parse_constraint_document>
     ?entityMap
     ?multiReferencedEntities
   ] ;
-#--- Parse Map Declarations
+#--- Parse Declarations
   @mapEntityMap mapEntityMap [emptyMap] ;
   @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
+  @constrainedEntityMap constrainedEntityMap [emptyMap] ;
   repeat
   while
     <constraint_map_declaration>
       !?entityMap
       !?mapEntityMap
     ;
-  end repeat ;
-#--- Parse constraint declarations
-  @constrainedEntityMap constrainedEntityMap [emptyMap] ;
-  repeat
   while
     <constraints_on_entity_declaration>
       !?entityMap
@@ -273,6 +270,9 @@ rule <parse_constraint_document>
       ?endOfConstraintLocation
       ?*
       ?*
+      ?*
+      ?*
+      ?*
     ] ;
   #--- Check root entity constraint defines all passes
     if [constrainedEntityPassMapForRootEntity count] != [passMap count] then
@@ -291,7 +291,7 @@ rule <parse_constraint_document>
     foreach kEntityPropertiesMap (??@lstring kPropertyName ??@metamodelPropertyKind kKind  ??@lstring kPropertyEntityName) :
       if kKind != [@metamodelPropertyKind attributeProperty] then
         @constrainedEntityPassMap referencePropertyConstrainedEntityPassMap ;
-        [constrainedEntityMap searchKey !kPropertyEntityName ?* ?referencePropertyConstrainedEntityPassMap ?* ?* ?* ?* ?* ?*] ;
+        [constrainedEntityMap searchKey !kPropertyEntityName ?* ?referencePropertyConstrainedEntityPassMap ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
         foreach referencePropertyConstrainedEntityPassMap (??@lstring kReferencePropertyPassName ??* ??* ??* ??*) :
           if not [kConstrainedEntityPassMap hasKey ![kReferencePropertyPassName value]] then
             error kEntityName:"this constraint should define the '" . [kReferencePropertyPassName value]
@@ -338,12 +338,12 @@ rule <parse_constraint_document>
   end foreach ;
 #--- Generate C++ code
   action generate_constraints
-      !?passMap
-      !?entityMap
-      !?mapEntityMap
+      !passMap
+      !entityMap
+      !mapEntityMap
       !metamodelName
       !constraintName
-      !?constrainedEntityMap
+      !constrainedEntityMap
       !multiReferencedEntities
       !rootEntity
   ;
@@ -419,6 +419,8 @@ rule <constraints_on_entity_declaration>
   @mapAsConstraintPropertyMap  allMapsAsConstraintPropertyMap [emptyMap] ;
   @constrainedEntityPassMap inheritedConstrainedEntityPassMap [emptyMap] ;
   @stringset passesDefinedByInheritanceTreeRootEntity [emptySet] ;
+  @constraintAllPropertiesMap constraintAllPropertiesMap [emptyMap] ;
+  @indexMap allIndexMap [emptyMap] ;
   if [superEntity value] != "" then
     if [ioConstrainedEntityMap hasKey ![superEntity value]] then
       [ioConstrainedEntityMap searchKey
@@ -431,6 +433,9 @@ rule <constraints_on_entity_declaration>
         ?*
         ?*
         ?allMapsAsConstraintPropertyMap
+        ?constraintAllPropertiesMap
+        ?*
+        ?allIndexMap
       ] ;
     else
       error entityName:
@@ -438,6 +443,7 @@ rule <constraints_on_entity_declaration>
     end if ;
   end if ;
 #--- Passes
+  @indexMap indexMap [emptyMap] ;
   @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [emptyMap] ;
   ${$ ;
   @constrainedEntityPassMap constrainedEntityPassMap [emptyMap] ;
@@ -469,6 +475,7 @@ rule <constraints_on_entity_declaration>
         $type_name$ ? typeName ;
         @lstring propertyName ;
         $identifier$ ? propertyName ;
+        [!?constraintAllPropertiesMap insertKey !propertyName] ;
         if [ioMapEntityMap hasKey ![typeName value]] then 
           @lstring elementTypeName ;
           [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
@@ -491,6 +498,7 @@ rule <constraints_on_entity_declaration>
       $type_name$ ? typeName ;
       @lstring propertyName ;
       $identifier$ ? propertyName ;
+      [!?constraintAllPropertiesMap insertKey !propertyName] ;
       if [ioMapEntityMap hasKey ![typeName value]] then 
         @lstring elementTypeName ;
         [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
@@ -499,6 +507,18 @@ rule <constraints_on_entity_declaration>
       else
         error typeName:"unhandled type name" ;
       end if ;
+      $;$ ;
+    while
+      $mapindex$ ;
+      @lstring propertyName ;
+      $identifier$ ? propertyName ;
+      [!?constraintAllPropertiesMap insertKey !propertyName] ;
+      $on$ ;
+      @lstring mapPropertyName ;
+      $identifier$ ? mapPropertyName ;
+      [allMapsAsConstraintPropertyMap searchKey !mapPropertyName ?* ?* ?* ?* ?*] ;
+      [!?indexMap insertKey !propertyName !mapPropertyName !currentPassIndex] ;
+      [!?allIndexMap insertKey !propertyName !mapPropertyName !currentPassIndex] ;
       $;$ ;
     end repeat ;
     $}$ ;
@@ -551,12 +571,21 @@ rule <constraints_on_entity_declaration>
     foreach allMapsAsConstraintPropertyMap (??@lstring kPropertyName ??@lstring kTypeName ??@lstring kElementTypeName ??@uint kPassIndex ...) :
       # message "Map " . [kPropertyName value] . " of type @" . [kTypeName value] . " defined in pass " . [kPassIndex string] . "\n" ;
       @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName value] . ")" !here]] ;
-      #@typeCplusPlusName cppName := [@typeDirectName new !kPropertyName] ;
       @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kTypeName value] ![kElementTypeName value]] ;
-      if kPassIndex < currentPassIndex then
-        [!?variablesMap insertUsedConstInArgument !kPropertyName !t !cppName] ;
-      else
+      if (kPassIndex == currentPassIndex) & [mapAsConstraintPropertyMap hasKey ![kPropertyName value]] then
         [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
+      else
+        [!?variablesMap insertUsedConstInArgument !kPropertyName !t !cppName] ;
+      end if ;
+    end foreach ;
+  #--- Enter indexes
+    foreach allIndexMap (??@lstring kIndexName ??@lstring kMapTypeName ??@uint kPassIndex) :
+      @typeCplusPlusName cppName := [@typeDirectName new !kIndexName] ;
+      @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapTypeName value]] ;
+      if (kPassIndex == currentPassIndex) & [indexMap hasKey ![kIndexName value]] then
+        [!?variablesMap insertOutProperty !kIndexName !t !cppName] ;
+      else
+        [!?variablesMap insertUsedConstInArgument !kIndexName !t !cppName] ;
       end if ;
     end foreach ;
   #--- Add "self" variable
@@ -620,6 +649,9 @@ rule <constraints_on_entity_declaration>
     !here
     !mapAsConstraintPropertyMap
     !allMapsAsConstraintPropertyMap
+    !constraintAllPropertiesMap
+    !indexMap
+    !allIndexMap
   ] ;
 end rule ;
 
@@ -722,7 +754,7 @@ rule <constraint_relation_primary>
     @lstring indexVariableName ;
     $identifier$ ? indexVariableName ;
     @lstring domainVariableFromIndex ;
-    [ioIndexMap searchKey !indexVariableName ?domainVariableFromIndex] ;
+    [ioIndexMap searchKey !indexVariableName ?domainVariableFromIndex ?*] ;
     if [domainVariable value] != [domainVariableFromIndex value] then
       error indexVariableName: "this index refers to the '" . [domainVariableFromIndex value]
       . "' domain, while '" . [localVar  value] . "' relation variable refers to the '"

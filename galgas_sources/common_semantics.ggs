@@ -394,6 +394,7 @@ abstract class @AC_galgasType {
 
 #--- By default, object does not accept modifier call
   reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -403,6 +404,7 @@ abstract class @AC_galgasType {
 
 #--- By default, class does not accept reader instruction call
   reader handleReaderInstructionCall
+    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -533,14 +535,6 @@ map @insertionMap {
   @lstring mIndexName ;
   insert insertKey error message "the attribute is already inserted in the '%K' map" ;
 #  search searchKey error message "the '%K' inserted attribute is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @indexMap {
-  @lstring mMapReferenceName ;
-  insert insertKey error message "the index '%K' is already defined in %L" ;
-  search searchKey error message "there is no '%K' index" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1273,6 +1267,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 #--- Handle modifier call : return modifier signature
   override reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1281,6 +1276,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 #--- By default, class does not accept reader instruction call
   override reader handleReaderInstructionCall
+    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -1776,6 +1772,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Modifiers are insert methods and (when map defines automaton) search methods
   override
   reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1785,6 +1782,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Readers are search methods (when map defines no automaton)
   override
   reader handleReaderInstructionCall
+    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -1873,6 +1871,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 
 #--- Handle method call : return method signature
   override reader handleReaderInstructionCall
+    ??@lstring unused inReadObjectName
     ??@lstring inMethodName
     !@L_EXsignature outMethodSignature
   :
@@ -1932,6 +1931,23 @@ class @typeGalgas_entityInInstruction extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   M A P    I N D E X    T Y P E    I N    I N S T R U C T I O N           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_mapIndexInInstruction extends @AC_galgasType {
+  @string mMapTypeName ;
+#--- Get type name
+  override
+  reader getTypeName !@string outTypeName :
+    outTypeName := "" ;
+  end reader ;
+#--- Error message
+  message messageGalgasType "a map index" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   M A P    E N T I T Y    T Y P E    I N    I N S T R U C T I O N         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1948,6 +1964,7 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
 #--- Handle modifiers
   override
   reader handleModifierCall
+    ??@lstring inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1957,8 +1974,16 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
       t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+    elsif [inModifierName value] == "insertKeyAndGetIndex" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      @AC_galgasType t := [@typeGalgas_lstring new] ;
+      outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+      t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
+      outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+      t := [@typeGalgas_mapIndexInInstruction new ![inModifiedObjectName value]] ;
+      outModifierSignature += !t ![@formalArgumentPassingMode argumentOut] ;
     else
-      error inModifierName : "variables of this type only accept 'insertKey' modifier call"
+      error inModifierName : "variables of this type only accept 'insertKey' and 'insertKey' modifier calls"
        -> outModifierSignature ;
     end if ;
   end reader ;
@@ -1966,18 +1991,27 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
 #--- Handle reader instruction call
   override
   reader handleReaderInstructionCall
+    ??@lstring inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
-    if [inReaderName value] != "searchKey" then
+    if [inReaderName value] == "searchKey" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
       t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
+    elsif [inReaderName value] == "searchKeyAndGetIndex" then
+      outReaderSignature := [@L_EXsignature emptyList] ;
+      @AC_galgasType t := [@typeGalgas_lstring new] ;
+      outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
+      t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
+      outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
+      t := [@typeGalgas_mapIndexInInstruction new ![inReadObjectName value]] ;
+      outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
     else
-      error inReaderName :
-       "variables of this type  only accept 'searchKey' reader call"
+      error inReadObjectName :
+       "variables of this type  only accept 'searchKey'  'searchKeyAndGetIndex' reader calls"
        -> outReaderSignature ;
     end if ;
   end reader ;
@@ -2091,6 +2125,13 @@ routine verifierCompatibiliteTypesSemantiques
     if kTypeName1 != kTypeName2 then
       error inErrorLocation : "I was expecting an entity instance of  '@" . kTypeName1 .
                               "' type variable, and I got an entity instance of type '@" . kTypeName2 . "'" ;
+    end if ;
+
+  when @typeGalgas_mapIndexInInstruction (??@string kPropertyName1)
+    :: @typeGalgas_mapIndexInInstruction (??@string kPropertyName2) :
+    if kPropertyName1 != kPropertyName2 then
+      error inErrorLocation : "I was expecting a map index of  '" . kPropertyName1 .
+                              "' map property, and I got a map index of '" . kPropertyName2 . "' map property" ;
     end if ;
 
   else
