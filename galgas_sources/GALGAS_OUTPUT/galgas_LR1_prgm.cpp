@@ -250,10 +250,17 @@ int mainForLIBPM  (const int argc, const char * argv []) {
 //--- START OF USER ZONE 2
 
 void galgas_LR1_prgm::_prologue (void) {
-	mScannerPtr_->mPerformGeneration = ! mScannerPtr_->boolOptionValueFromKeys ("galgas_cli_options", "doNotGenerateFiles", false) ;
-	const C_String stringForProjectCreation = mScannerPtr_->stringOptionValueFromKeys ("galgas_cli_options", "generate_project", false) ;
-	if (stringForProjectCreation.length () > 0) {
-	  createProject (* mScannerPtr_, stringForProjectCreation) ;
+	mScannerPtr_->mPerformGeneration = ! mScannerPtr_->boolOptionValueFromKeys ("galgas_cli_options", "doNotGenerateFiles", true) ;
+	mScannerPtr_->mParseOnlyFlag = mScannerPtr_->boolOptionValueFromKeys ("galgas_cli_options", "parse_only", true) ;
+//--- Classic Project Creation
+	const C_String stringForClassicProjectCreation = mScannerPtr_->stringOptionValueFromKeys ("galgas_cli_options", "create_project", true) ;
+	if (stringForClassicProjectCreation.length () > 0) {
+	  createProject (* mScannerPtr_, stringForClassicProjectCreation, kClassicProject) ;
+	}
+//--- MDA Project Creation
+	const C_String stringForMDAProjectCreation = mScannerPtr_->stringOptionValueFromKeys ("galgas_cli_options", "create_mda_project", true) ;
+	if (stringForMDAProjectCreation.length () > 0) {
+	  createProject (* mScannerPtr_, stringForMDAProjectCreation, kMDAproject) ;
 	}
 }
 
