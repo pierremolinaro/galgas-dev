@@ -25,11 +25,14 @@
 class cPtr_AC_galgasType : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
-public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
-                                                    AC_OutputStream & inHfile) = 0 ;
+public : virtual void generateAttributeGetLexicalValue (const C_String & inAttributeName,
+                                                        AC_OutputStream & inCppFile) const = 0 ;
 
-public : virtual void generateAttributeInitialization (const GGS_lstring & nom, \
-                                                       AC_OutputStream & inCppFile) = 0 ;
+public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
+                                                    AC_OutputStream & inHfile) const = 0 ;
+
+public : virtual void generateAttributeInitialization (const GGS_lstring & nom,
+                                                       AC_OutputStream & inCppFile) const = 0 ;
 
 public : virtual void generateCppClassName (AC_OutputStream & fichier) const = 0 ;
 
