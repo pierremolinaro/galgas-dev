@@ -25,9 +25,11 @@ class cPtr_typeGalgasExternType : public cPtr_typeGalgasUndefinedExternType {
 //--- START OF USER ZONE 2
 
 public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
-                                                    AC_OutputStream & inHfile) ;
+                                                    AC_OutputStream & inHfile) const ;
+
 public : virtual void generateAttributeInitialization (const GGS_lstring & nom,
-                                                       AC_OutputStream & inCppFile) ;
+                                                       AC_OutputStream & inCppFile) const ;
+
 public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
 
 //--- END OF USER ZONE 2

@@ -565,9 +565,12 @@ rule <key_words_list_declaration>
   #--- Build error message
     @string specificErrorMessageString := [[errorMessage value] stringByReplacingStringByString !"%K" ![terminalSymbolName value]] ;
   #--- Insert terminal in terminal symbols map
-    [!?table_des_terminaux insertKey !terminalSymbolName !specificErrorMessageString
-                                                         !attributesList
-                                                         !styleIndex] ;
+    [!?table_des_terminaux insertKey
+       !terminalSymbolName
+       !specificErrorMessageString
+       !attributesList
+       !styleIndex
+    ] ;
     [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributesList] ;
   #--- Insert entry in the entries map
     [!?entriesMap insertKey !listEntry !terminalSymbolName] ;
