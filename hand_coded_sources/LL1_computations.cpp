@@ -288,7 +288,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
       inVocabulary.printInFile (title, p.aNumeroNonTerminalGauche COMMA_HERE) ;
       title << ", in file '" 
             << p.mSourceFileName
-            << "', line "
+            << ".ggs', line "
             << p.aLigneDefinition ;
       inCppFile << "// At index "
                 <<  ioProductionIndex
@@ -414,31 +414,47 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
 
   generatedZone3.writeCTitleComment ("L L ( 1 )    P R O D U C T I O N    R U L E S") ;
   generatedZone3 << "#define TERMINAL(t)     ((t)+1)\n"
-             "#define NONTERMINAL(nt) ((-nt)-1)\n"
-             "#define END_PRODUCTION  (0)\n\n"
-             "static const sint16 gProductions [] = {\n" ;
+                    "#define NONTERMINAL(nt) ((-nt)-1)\n"
+                    "#define END_PRODUCTION  (0)\n\n"
+                    "static const sint16 gProductions [] = {\n" ;
   GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   sint16 productionIndex = 0 ;
   bool first = true ;
   while (nonTerminal != NULL) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
                       nonTerminal->mIndex, productionIndex, first,
-                      productionRulesIndex, productionRulesTitle, firstProductionRuleIndex, generatedZone3) ;
+                      productionRulesIndex, productionRulesTitle,
+                      firstProductionRuleIndex, generatedZone3) ;
     nonTerminal = nonTerminal->nextObject () ;
   }
   generatedZone3 << "//---- Added productions from 'select' and 'repeat' instructions\n" ;  
   for (sint32 i=inVocabulary.getTerminalSymbolsCount () + inNonterminalSymbolsMapForGrammar.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
-                      i - inVocabulary.getTerminalSymbolsCount (), productionIndex, first,
-                      productionRulesIndex, productionRulesTitle, firstProductionRuleIndex, generatedZone3) ;
+                      i - inVocabulary.getTerminalSymbolsCount (),
+                      productionIndex, first,
+                      productionRulesIndex, productionRulesTitle,
+                      firstProductionRuleIndex, generatedZone3) ;
+  }
+  generatedZone3 << "} ;\n\n" ;
+
+//--- Generate productions names table
+  generatedZone3.writeCTitleComment ("P R O D U C T I O N    N A M E S") ;
+  generatedZone3 << "static const char * gProductionNames ["
+                 << productionRulesIndex.count ()
+                 << "] = {\n" ;
+  for (sint32 p=0 ; p<productionRulesIndex.count () ; p++) {
+    generatedZone3 << " \"" << productionRulesTitle (p COMMA_HERE)
+                   << "\""
+                   << ((p == (productionsCount-1)) ? "" : ",")
+                   << " // at index " << p << "\n" ;
   }
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate productions indexes table
   generatedZone3.writeCTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
   generatedZone3 << "static const sint16 gProductionIndexes ["
-          << productionRulesIndex.count ()
-          << "] = {\n" ;
+                 << productionRulesIndex.count ()
+                 << "] = {\n" ;
   for (sint32 p=0 ; p<productionRulesIndex.count () ; p++) {
     generatedZone3 << productionRulesIndex (p COMMA_HERE)
             << ((p == (productionsCount-1)) ? "" : ",")
@@ -463,7 +479,6 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   } 
   generatedZone3 << "0} ;\n\n" ;
   
-
 //--- Generate decision tables  
   TC_UniqueArray <sint16> productionDecisionIndex (500 COMMA_HERE) ;
   generatedZone3.writeCTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
@@ -581,8 +596,8 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "  const bool ok = _inLexique"
-                   ".performTopDownParsing (gProductions, gProductionIndexes"
-                   ",\n                                gFirstProductionIndexes, gDecision, gDecisionIndexes, "
+                   ".performTopDownParsing (gProductions, gProductionNames, gProductionIndexes"
+                   ",\n                     gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                 << productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE)
                 << ") ;\n"
                    "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"

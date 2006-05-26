@@ -1414,7 +1414,7 @@ map @constraintAllPropertiesMap {
 map @indexMap {
   @lstring mMapTypeName ;
   @uint mPassIndex ;
-  insert insertKey error message "the '%K' constraint attribute is already defined" ;
+  insert insertKey error message "the '%K' constraint attribute is already defined in %L" ;
   search searchKey error message "the '%K' constraint attribute is not defined" ;
 }
 

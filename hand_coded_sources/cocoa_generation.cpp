@@ -39,6 +39,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "#import \"C_sourceTextForCocoa.h\"\n"
                     "#import \"command_line_interface/C_CLI_OptionGroup.h\"\n"
                     "#import \"command_line_interface/C_builtin_CLI_Options.h\"\n"
+                    "#import \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#import \"galgas/C_galgas_null_io.h\"\n"
                     "#import \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
@@ -59,8 +60,9 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
   sint32 index = 0 ;
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
   generatedZone3 << "static C_builtin_CLI_Options gGenericOptions ("
-          << (generateDebug ? "true" : "false")
-          << ") ;\n" ;
+                 << (generateDebug ? "true" : "false")
+                 << ") ;\n"
+                 << "static C_galgas_CLI_Options gGalgasOptions ;\n" ;
   currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
@@ -68,7 +70,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
     currentOptionComponent = currentOptionComponent->nextObject () ;
     index ++ ;
   }
-  generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, " ;
+  generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, & gGalgasOptions, " ;
   index = 0 ;
   currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {

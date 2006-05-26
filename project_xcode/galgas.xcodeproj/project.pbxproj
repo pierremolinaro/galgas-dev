@@ -107,6 +107,24 @@
 		CF4CBBC709FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
 		CF5E74F607B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF5E74F807B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
+		CF6556DA0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6556DB0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */; };
+		CF6556DC0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6556DD0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */; };
+		CF6556DE0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6556DF0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */; };
+		CF6556E00A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6556E10A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */; };
+		CF6556E20A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6556E30A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */; };
+		CF6556E40A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6556E50A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */; };
+		CF6556E60A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6556E70A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */; };
+		CF6556E80A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6556E90A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */; };
+		CF6557310A25E85C00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
+		CF6557320A25E85F00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
 		CF6702F905C073220065267C /* cocoaGalgas.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF6702F805C073220065267C /* cocoaGalgas.mm */; };
 		CF6DF12609E3F23700506859 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF6DF12709E3F23700506859 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
@@ -1121,17 +1139,6 @@
 		CFF8612A09C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildStyle section */
-		CFA7AB90058DAD29009AC1FE /* Deployment */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-			};
-			name = Deployment;
-		};
-/* End PBXBuildStyle section */
-
 /* Begin PBXContainerItemProxy section */
 		CF1A40BB09D5919200B4C36C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1267,6 +1274,8 @@
 		CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
 		CF5E74F407B00EA600858338 /* common_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = common_semantics.cpp; sourceTree = "<group>"; };
 		CF5E74F507B00EA600858338 /* common_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = common_semantics.h; sourceTree = "<group>"; };
+		CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_CLI_Options.cpp; sourceTree = "<group>"; };
+		CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_galgas_CLI_Options.h; sourceTree = "<group>"; };
 		CF6702F805C073220065267C /* cocoaGalgas.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = cocoaGalgas.mm; sourceTree = "<group>"; };
 		CF6DF18F09E3F23700506859 /* galgasPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasPPC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6DF20509E3F30400506859 /* galgasDebugPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebugPPC; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2395,12 +2404,12 @@
 		CFF5380A057A53B900854C83 /* Galgas LL1 */ = {
 			isa = PBXGroup;
 			children = (
-				CFD6CF110851A0B90000FA6E /* galgas_LL1_grammar.h */,
-				CFD6CF120851A0B90000FA6E /* ggs_LL1_compile_component.h */,
 				CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */,
+				CFD6CF110851A0B90000FA6E /* galgas_LL1_grammar.h */,
 				CFF5380D057A53D600854C83 /* galgas_LL1_prgm.cpp */,
 				CF82944F0587AE820058E762 /* galgas_LL1_prgm.h */,
 				CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */,
+				CFD6CF120851A0B90000FA6E /* ggs_LL1_compile_component.h */,
 			);
 			name = "Galgas LL1";
 			sourceTree = "<group>";
@@ -2482,6 +2491,8 @@
 		CFF53871057A555E00854C83 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */,
+				CF6556D90A25E35E00979050 /* C_galgas_CLI_Options.h */,
 				CFEC85330A20D8F5007AE469 /* C_GGS_MapIndex.cpp */,
 				CFEC85340A20D8F5007AE469 /* C_GGS_MapIndex.h */,
 				CFEB5FD309D15D9F003FF985 /* C_GGS_entityMap.cpp */,
@@ -2492,6 +2503,7 @@
 				CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */,
 				CFA1415E060DB7CB00601791 /* AC_galgas_map.h */,
 				CFF53872057A558F00854C83 /* AC_galgas_io.cpp */,
+				CF3FF0B705877B62000D2F8C /* AC_galgas_io.h */,
 				CF8259F608536AC20077AEAF /* C_Lexique.cpp */,
 				CF8259F708536AC20077AEAF /* C_Lexique.h */,
 				CFD7D48F0910C6AD00B72461 /* GGS_stringset.cpp */,
@@ -2528,7 +2540,6 @@
 				CF904220057F6B8D007362F4 /* C_galgas_cocoa_io.cpp */,
 				CF86361A0586289600B23462 /* C_galgas_null_io.cpp */,
 				CF86361B0586289600B23462 /* C_galgas_null_io.h */,
-				CF3FF0B705877B62000D2F8C /* AC_galgas_io.h */,
 				CF3FF0C005877B62000D2F8C /* galgas_header.h */,
 			);
 			path = galgas;
@@ -2628,6 +2639,7 @@
 				CFDDACCF0A1E5A1600174E02 /* include_typeGalgas_mapEntityInInstruction.h in Headers */,
 				CF3B9EDB0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */,
 				CFEC85360A20D8F5007AE469 /* C_GGS_MapIndex.h in Headers */,
+				CF6556DB0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2665,6 +2677,7 @@
 				CFDDACD50A1E5A1600174E02 /* include_typeGalgas_mapEntityInInstruction.h in Headers */,
 				CF3B9EE10A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */,
 				CFEC85420A20D8F5007AE469 /* C_GGS_MapIndex.h in Headers */,
+				CF6556E70A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2702,6 +2715,7 @@
 				CFDDACD60A1E5A1600174E02 /* include_typeGalgas_mapEntityInInstruction.h in Headers */,
 				CF3B9EE20A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */,
 				CFEC85440A20D8F5007AE469 /* C_GGS_MapIndex.h in Headers */,
+				CF6556E90A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2747,6 +2761,7 @@
 				CFDDACD00A1E5A1600174E02 /* include_typeGalgas_mapEntityInInstruction.h in Headers */,
 				CF3B9EDC0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */,
 				CFEC85380A20D8F5007AE469 /* C_GGS_MapIndex.h in Headers */,
+				CF6556DD0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2784,6 +2799,7 @@
 				CFDDACD10A1E5A1600174E02 /* include_typeGalgas_mapEntityInInstruction.h in Headers */,
 				CF3B9EDD0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */,
 				CFEC853A0A20D8F5007AE469 /* C_GGS_MapIndex.h in Headers */,
+				CF6556DF0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2821,6 +2837,7 @@
 				CFDDACD20A1E5A1600174E02 /* include_typeGalgas_mapEntityInInstruction.h in Headers */,
 				CF3B9EDE0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */,
 				CFEC853C0A20D8F5007AE469 /* C_GGS_MapIndex.h in Headers */,
+				CF6556E10A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2858,6 +2875,7 @@
 				CFDDACD30A1E5A1600174E02 /* include_typeGalgas_mapEntityInInstruction.h in Headers */,
 				CF3B9EDF0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */,
 				CFEC853E0A20D8F5007AE469 /* C_GGS_MapIndex.h in Headers */,
+				CF6556E30A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2895,6 +2913,7 @@
 				CFDDACD40A1E5A1600174E02 /* include_typeGalgas_mapEntityInInstruction.h in Headers */,
 				CF3B9EE00A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */,
 				CFEC85400A20D8F5007AE469 /* C_GGS_MapIndex.h in Headers */,
+				CF6556E50A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2912,58 +2931,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_CPP_RTTI = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
-				GCC_SHORT_ENUMS = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = NO;
-				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = NO;
-				GCC_WARN_UNUSED_LABEL = NO;
-				GCC_WARN_UNUSED_PARAMETER = NO;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-DDO_NOT_GENERATE_MEMORY_CHECK_CODE",
-				);
-				OTHER_LDFLAGS = "";
-				PREBINDING = YES;
-				PRODUCT_NAME = cocoaGalgas;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = app;
-			};
 			dependencies = (
 				CF269C3C090FFFAB00B5D659 /* PBXTargetDependency */,
 				CF1A40BC09D5919200B4C36C /* PBXTargetDependency */,
@@ -2990,32 +2957,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgasLL1;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
 			dependencies = (
 			);
 			name = "GALGAS tool LL1 (universal)";
@@ -3036,32 +2977,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgasLL1;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
 			dependencies = (
 			);
 			name = "GALGAS tool LL1 (ppc)";
@@ -3079,25 +2994,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasLL1Debug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
 			dependencies = (
 			);
 			name = "GALGAS tool LL1 debug (ppc)";
@@ -3116,58 +3012,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_CPP_RTTI = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
-				GCC_SHORT_ENUMS = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = NO;
-				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = NO;
-				GCC_WARN_UNUSED_LABEL = NO;
-				GCC_WARN_UNUSED_PARAMETER = NO;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-DDO_NOT_GENERATE_MEMORY_CHECK_CODE",
-				);
-				OTHER_LDFLAGS = "";
-				PREBINDING = YES;
-				PRODUCT_NAME = cocoaGalgas;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = app;
-			};
 			dependencies = (
 				CF6DF25909E3F3C400506859 /* PBXTargetDependency */,
 				CF6DF25B09E3F3C400506859 /* PBXTargetDependency */,
@@ -3187,25 +3031,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasLL1Debug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
 			dependencies = (
 			);
 			name = "GALGAS tool LL1 debug (universal)";
@@ -3225,32 +3050,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgasLR1;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
 			dependencies = (
 			);
 			name = "GALGAS tool LR1 (universal)";
@@ -3268,25 +3067,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasLR1Debug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
 			dependencies = (
 			);
 			name = "GALGAS tool LR1 debug (universal)";
@@ -3306,32 +3086,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = galgasSLR;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
 			dependencies = (
 			);
 			name = "GALGAS tool SLR (universal)";
@@ -3349,25 +3103,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = galgasSLRDebug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
 			dependencies = (
 			);
 			name = "GALGAS tool SLR debug (universal)";
@@ -3381,13 +3116,6 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = CF0DA6A4085630E800F38E67 /* Build configuration list for PBXProject "galgas" */;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
-			};
-			buildStyles = (
-				CFA7AB90058DAD29009AC1FE /* Deployment */,
-			);
 			hasScannedForEncodings = 1;
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* essai_cocoa */;
 			projectDirPath = "";
@@ -3512,6 +3240,7 @@
 				CF9F4E86092A74410055C8C3 /* C_builtin_CLI_Options.cpp in Sources */,
 				CFF8612A09C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */,
 				CF33792509EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */,
+				CF6557310A25E85C00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3617,6 +3346,7 @@
 				CF0196E409DC082D0000AD72 /* constraint_parser.cpp in Sources */,
 				CF01970B09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CFEC85350A20D8F5007AE469 /* C_GGS_MapIndex.cpp in Sources */,
+				CF6556DA0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3722,6 +3452,7 @@
 				CF6DF18709E3F23700506859 /* constraint_parser.cpp in Sources */,
 				CF6DF18809E3F23700506859 /* constraint_generation.cpp in Sources */,
 				CFEC85410A20D8F5007AE469 /* C_GGS_MapIndex.cpp in Sources */,
+				CF6556E60A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3828,6 +3559,7 @@
 				CF6DF20109E3F30400506859 /* constraint_parser.cpp in Sources */,
 				CF6DF20209E3F30400506859 /* constraint_generation.cpp in Sources */,
 				CFEC85430A20D8F5007AE469 /* C_GGS_MapIndex.cpp in Sources */,
+				CF6556E80A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3858,6 +3590,7 @@
 				CF6DF24F09E3F3A700506859 /* C_builtin_CLI_Options.cpp in Sources */,
 				CF6DF25009E3F3A700506859 /* C_GGS_Object.cpp in Sources */,
 				CF33792309EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */,
+				CF6557320A25E85F00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3964,6 +3697,7 @@
 				CF0196E609DC082D0000AD72 /* constraint_parser.cpp in Sources */,
 				CF01970C09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CFEC85370A20D8F5007AE469 /* C_GGS_MapIndex.cpp in Sources */,
+				CF6556DC0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4069,6 +3803,7 @@
 				CF0196E809DC082D0000AD72 /* constraint_parser.cpp in Sources */,
 				CF01970D09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CFEC85390A20D8F5007AE469 /* C_GGS_MapIndex.cpp in Sources */,
+				CF6556DE0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4175,6 +3910,7 @@
 				CF0196EA09DC082D0000AD72 /* constraint_parser.cpp in Sources */,
 				CF01970E09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CFEC853B0A20D8F5007AE469 /* C_GGS_MapIndex.cpp in Sources */,
+				CF6556E00A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4280,6 +4016,7 @@
 				CF0196EC09DC082D0000AD72 /* constraint_parser.cpp in Sources */,
 				CF01970F09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CFEC853D0A20D8F5007AE469 /* C_GGS_MapIndex.cpp in Sources */,
+				CF6556E20A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4386,6 +4123,7 @@
 				CF0196EE09DC082D0000AD72 /* constraint_parser.cpp in Sources */,
 				CF01971009DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CFEC853F0A20D8F5007AE469 /* C_GGS_MapIndex.cpp in Sources */,
+				CF6556E40A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

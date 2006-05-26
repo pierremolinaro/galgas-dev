@@ -43,10 +43,9 @@ class cVocabulary {
   public : virtual ~cVocabulary (void) ;
 
 //--- Build vocabulary from original grammar
-  public : void build (
-    const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
-    const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-    const uint32 inOriginalGrammarStartSymbol) ;
+  public : void build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
+                       const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+                       const uint32 inOriginalGrammarStartSymbol) ;
 
 //--- Add a new non terminal symbol
   public : void addNonTerminalSymbol (const char * inPrefix,
@@ -76,7 +75,7 @@ class cVocabulary {
 
 //--- Get symbol
   public : C_String getSymbol (const sint32 symbolIndex
-                                   COMMA_LOCATION_ARGS) const ;
+                               COMMA_LOCATION_ARGS) const ;
 
 //--- Get start symbol
   public : sint32 getStartSymbol (void) const ;

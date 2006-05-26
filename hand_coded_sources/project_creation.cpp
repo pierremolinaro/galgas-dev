@@ -48,7 +48,7 @@ static bool
 createDirectory (const C_String & inDirectoryToCreate) {
   const bool ok = inDirectoryToCreate.makeDirectoryIfDoesNotExists () ;
   if (ok) {
-    printf ("Created '%s' directory.\n", inDirectoryToCreate.cString ()) ;
+    printf ("  Created '%s' directory.\n", inDirectoryToCreate.cString ()) ;
   }else{
     printf ("** Cannot create '%s' directory.\n", inDirectoryToCreate.cString ()) ;
   }
@@ -64,7 +64,7 @@ createBuildCommandFile (const C_String & inFileName) {
        "cd `dirname $0` && time make all\n" ;
   bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", inFileName.cString ()) ;
+    printf ("  Created '%s' file.\n", inFileName.cString ()) ;
     #ifndef COMPILE_FOR_WIN32
       const sint32 newPerms = inFileName.filePosixPermissions () | S_IXUSR | S_IXGRP | S_IXOTH ;
       const sint32 actualNewPerms = inFileName.setFilePosixPermissions (newPerms) ;
@@ -88,7 +88,7 @@ createCleanCommandFile (const C_String & inFileName) {
        "cd `dirname $0` && time make clean\n" ;
   bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", inFileName.cString ()) ;
+    printf ("  Created '%s' file.\n", inFileName.cString ()) ;
     #ifndef COMPILE_FOR_WIN32
       const sint32 newPerms = inFileName.filePosixPermissions () | S_IXUSR | S_IXGRP | S_IXOTH ;
       const sint32 actualNewPerms = inFileName.setFilePosixPermissions (newPerms) ;
@@ -117,7 +117,7 @@ createLexiqueFile (const C_String & inCreatedProjectPathName) {
        "end lexique ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -132,13 +132,35 @@ createSemanticsFile (const C_String & inCreatedProjectPathName) {
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_semantics.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "semantics " << projectName << "_semantics :\n"
+       "  import option " << projectName << "_options in \"" << projectName << "_options.ggs\" ;\n"
        "\n"
        "# ADD YOUR CODE HERE\n"
        "\n"
        "end semantics ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+  }else{
+    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+  }
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+
+static bool
+createOptionFile (const C_String & inCreatedProjectPathName) {
+  const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
+  const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_options.ggs" ;
+  C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
+  f << "option " << projectName << "_options :\n"
+       "\n"
+       "# ADD YOUR CODE HERE\n"
+       "\n"
+       "end option ;\n" ;
+  const bool ok = f.close () ;
+  if (ok) {
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -162,7 +184,7 @@ createMetamodelFile (const C_String & inCreatedProjectPathName) {
        "end metamodel ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -191,7 +213,7 @@ createParserFile (const C_String & inCreatedProjectPathName) {
        "end syntax ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -214,7 +236,7 @@ createGrammarFile (const C_String & inCreatedProjectPathName) {
        "end grammar ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -236,7 +258,7 @@ createProgramFile (const C_String & inCreatedProjectPathName) {
        "end program ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -255,14 +277,38 @@ createCompileAllFile (const C_String & inCreatedProjectPathName,
   if (inProjectStyle == kMDAproject) {
     f << "compile \"" << projectName << "_metamodel.ggs\" ;\n" ;
   }
-  f << "compile \"" << projectName << "_semantics.ggs\" ;\n"
+  f << "compile \"" << projectName << "_options.ggs\" ;\n"
+       "compile \"" << projectName << "_semantics.ggs\" ;\n"
        "compile \"" << projectName << "_syntax.ggs\" ;\n"
        "compile \"" << projectName << "_grammar.ggs\" ;\n"
        "compile \"" << projectName << "_program.ggs\" ;\n"
        "\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+  }else{
+    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+  }
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+
+static bool
+createCppComputationsFile (const C_String & inCreatedProjectPathName) {
+  const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
+  const C_String fileName = inCreatedProjectPathName + "/hand_coded_sources/" + projectName + "_computations.cpp" ;
+  C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
+  f.writeFileHeaderComment ("//", projectName + " Project", "GALGAS Project Creation", false) ;
+  f << "#include \"" << projectName << "_semantics.h\"\n"
+       "\n" ;
+  f.writeHyphenLineComment ("//") ;
+  f << "// ADD YOUR CODE HERE\n"
+       "\n" ;
+  f.writeHyphenLineComment ("//") ;
+  const bool ok = f.close () ;
+  if (ok) {
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -308,7 +354,7 @@ createMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -348,7 +394,7 @@ create_i386LinuxOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName)
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -385,7 +431,7 @@ createMinGWOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -422,7 +468,7 @@ createMSYSOnWin32makefileFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -459,7 +505,7 @@ createUnixMakefileFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -476,7 +522,7 @@ createBuildBatFile (const C_String & inCreatedProjectPathName) {
        "sh -c \"make -f makefile.mke\"\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -493,7 +539,7 @@ createCleanBatFile (const C_String & inCreatedProjectPathName) {
        "sh -c \"make -f makefile.mke clean\"\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -536,6 +582,7 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
        "SOURCES += MF_MemoryControl.cpp\n"
        "SOURCES += F_DisplayException.cpp\n"
        "SOURCES += C_Exception.cpp\n"
+       "SOURCES += C_galgas_CLI_Options.cpp\n"
        "SOURCES += C_Lexique.cpp\n"
        "SOURCES += GGS_bool.cpp\n"
        "SOURCES += GGS_char.cpp\n"
@@ -566,13 +613,15 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
        "SOURCES += F_main.cpp\n"
        "SOURCES += AC_CLI_Options.cpp\n"
        "SOURCES += C_CLI_OptionGroup.cpp\n"
-       "SOURCES += C_builtin_CLI_Options.cpp\n" ;
+       "SOURCES += C_builtin_CLI_Options.cpp\n"
+       "SOURCES += " << projectName << "_computations.cpp\n" ;
   f.writeComment ("#", "Files generated by GALGAS") ;
   f << "SOURCES += " << projectName << "_lexique.cpp\n" ;
   if (inProjectStyle == kMDAproject) {
     f << "SOURCES += " << projectName << "_metamodel.cpp\n" ;
   }
-  f << "SOURCES += " << projectName << "_semantics.cpp\n"
+  f << "SOURCES += " << projectName << "_options.cpp\n"
+       "SOURCES += " << projectName << "_semantics.cpp\n"
        "SOURCES += " << projectName << "_syntax.cpp\n"
        "SOURCES += " << projectName << "_grammar.cpp\n"
        "SOURCES += " << projectName << "_program.cpp\n" ;
@@ -582,7 +631,7 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -671,7 +720,12 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
          "			<Option target=\"" << debugTarget << "\"/>\n"
          "		</Unit>\n" ;
   }
-  f << "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_semantics.cpp\">\n"
+  f << "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_options.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_semantics.cpp\">\n"
        "			<Option compilerVar=\"CC\"/>\n"
        "			<Option target=\"" << releaseTarget << "\"/>\n"
        "			<Option target=\"" << debugTarget << "\"/>\n"
@@ -687,6 +741,11 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
        "			<Option target=\"" << debugTarget << "\"/>\n"
        "		</Unit>\n"
        "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_program.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\hand_coded_sources\\" << projectName << "_computations.cpp\">\n"
        "			<Option compilerVar=\"CC\"/>\n"
        "			<Option target=\"" << releaseTarget << "\"/>\n"
        "			<Option target=\"" << debugTarget << "\"/>\n"
@@ -729,6 +788,11 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
          "		</Unit>\n" ;
   }
   f << "		<Unit filename=\"..\\..\\libpm\\galgas\\C_galgas_terminal_io.cpp\">\n"
+       "			<Option compilerVar=\"CC\"/>\n"
+       "			<Option target=\"" << releaseTarget << "\"/>\n"
+       "			<Option target=\"" << debugTarget << "\"/>\n"
+       "		</Unit>\n"
+       "		<Unit filename=\"..\\..\\libpm\\galgas\\C_galgas_CLI_Options.cpp\">\n"
        "			<Option compilerVar=\"CC\"/>\n"
        "			<Option target=\"" << releaseTarget << "\"/>\n"
        "			<Option target=\"" << debugTarget << "\"/>\n"
@@ -904,7 +968,7 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
 
   const bool ok = f.close () ;
   if (ok) {
-    printf ("Created '%s' file.\n", fileName.cString ()) ;
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
   }else{
     printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
   }
@@ -927,6 +991,7 @@ createProject (C_Lexique & /* inLexique */,
   if (inCreatedProjectPathName.isDirectory ()) {
 	  printf ("** Cannot create GALGAS project: '%s' directory already exists.\n", inCreatedProjectPathName.cString ()) ;
 	}else{
+    printf ("*** PERFORM PROJECT CREATION (--create-project=%s option) ***\n", inCreatedProjectPathName.cString ()) ;
 	//--- Create directories
 	  bool ok = createDirectory (inCreatedProjectPathName) ;
     if (ok) {
@@ -981,6 +1046,9 @@ createProject (C_Lexique & /* inLexique */,
       ok = createMetamodelFile (inCreatedProjectPathName) ;
     }
     if (ok) {
+      ok = createOptionFile (inCreatedProjectPathName) ;
+    }
+    if (ok) {
       ok = createSemanticsFile (inCreatedProjectPathName) ;
     }
     if (ok) {
@@ -994,6 +1062,9 @@ createProject (C_Lexique & /* inLexique */,
     }
     if (ok) {
       ok = createCompileAllFile (inCreatedProjectPathName, inProjectStyle) ;
+    }
+    if (ok) {
+      ok = createCppComputationsFile (inCreatedProjectPathName) ;
     }
   //--- Create makefile files
     if (ok) {
@@ -1027,6 +1098,7 @@ createProject (C_Lexique & /* inLexique */,
     if (ok) {
       ok = createCodeBlockProjectFile (inCreatedProjectPathName, "/project_codeblocks", inProjectStyle) ;
     }
+    printf ("*** END OF PROJECT CREATION ***\n") ;
 	}
 }
 

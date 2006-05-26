@@ -262,7 +262,10 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
             << "::\n"
                "getCurrentTokenString (void) const {\n"
                "  C_String s ;\n"
-               "  switch (mCurrentTokenCode) {\n" ;
+               "  switch (mCurrentTokenCode) {\n"
+               "  case  " << inLexiqueName << "_1_:\n"
+               "    s << \"$$\" ;\n"
+               "    break ;\n" ;
   GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     macroValidPointer (currentTerminal) ;    
