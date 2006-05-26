@@ -138,6 +138,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "#include \"command_line_interface/mainForLIBPM.h\"\n"
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
                     "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
+                    "#include \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#ifdef TARGET_API_MAC_CARBON\n"
                     "  #include <SIOUX.H>\n"
                     "#endif\n"
@@ -176,7 +177,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "  public : C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) ;\n"
                     "\n"
                     "//--- Included options\n"
-                    "  private : C_builtin_CLI_Options mBuiltinOptions ;\n" ;
+                    "  private : C_builtin_CLI_Options mBuiltinOptions ;\n"
+                    "  private : C_galgas_CLI_Options mGalgasOptions ;\n" ;
   currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
@@ -189,9 +191,10 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 //--------------------------------------- Get bool options count
   generatedZone2.writeCTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
   generatedZone2 << "C_options_for_" << inProgramComponentName  << "::\n"
-             "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption)\n"
-             ":mBuiltinOptions (inAcceptsDebugOption) {\n"
-             "  add (& mBuiltinOptions) ;\n" ;
+                    "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption)\n"
+                    ":mBuiltinOptions (inAcceptsDebugOption) {\n"
+                    "  add (& mBuiltinOptions) ;\n"
+                    "  add (& mGalgasOptions) ;\n" ;
   currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;

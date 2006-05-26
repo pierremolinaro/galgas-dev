@@ -710,21 +710,33 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
                     "#endif\n\n" ;
 
-//--- Generate SLR analyze action table --------------------------------------
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  generatedZone3.writeCTitleComment ("SLR analyzer action table") ;
+
+//--- Print non-terminal symbols --------------------------------------
+  generatedZone3.writeCTitleComment ("N O N    T E R M I N A L    N A M E S") ;
+  generatedZone3 << "static const char * gNonTerminalNames ["
+                 << inVocabulary.getNonTerminalSymbolsCount () << "] = {\n" ;
+  for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+    generatedZone3 << "  \"<" << inVocabulary.getSymbol (i COMMA_HERE) << ">\""
+                   << (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "")
+                   << "// Index " << (i - inVocabulary.getTerminalSymbolsCount ()) << "\n" ;
+  }
+  generatedZone3 << "} ;\n\n" ;
+
+//--- Generate SLR analyze action table --------------------------------------
+  generatedZone3.writeCTitleComment ("S L R    A N A L Y Z E R    A C T I O N    T A B L E") ;
   const sint32 rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
   const sint32 columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
   TC_UniqueArray <sint32> startIndexArray (rowsCount COMMA_HERE) ;
   generatedZone3 << "// Action tables handle shift and reduce actions ;\n"
-             "//  - a shift action is (terminal_symbol, SHIFT (n)) : if shifts to state n ;\n"
-             "//  - the accept action is (terminal_symbol, ACCEPT) ;\n"
-             "//  - a reduce action is (terminal_symbol, REDUCE (n)) ; if reduces to state n.\n\n"
-             "#define SHIFT(a) ((a) + 2)\n"
-             "#define REDUCE(a) (-(a) - 1)\n"
-             "#define ACCEPT (1)\n"
-             "#define END (-1)\n\n" ;
+                    "//  - a shift action is (terminal_symbol, SHIFT (n)) : if shifts to state n ;\n"
+                    "//  - the accept action is (terminal_symbol, ACCEPT) ;\n"
+                    "//  - a reduce action is (terminal_symbol, REDUCE (n)) ; if reduces to state n.\n\n"
+                    "#define SHIFT(a) ((a) + 2)\n"
+                    "#define REDUCE(a) (-(a) - 1)\n"
+                    "#define ACCEPT (1)\n"
+                    "#define END (-1)\n\n" ;
   generatedZone3 << "static const sint16 gActionTable [] = {" ;
   bool first = true ;
   sint32 startIndex = 0 ;
@@ -759,18 +771,17 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
     startIndex ++ ;
   }
   generatedZone3 << "} ;\n\n"
-             "static const uint16 gActionTableIndex [" << rowsCount << "] = {" ;
+                    "static const uint16 gActionTableIndex [" << rowsCount << "] = {" ;
   first = true ;
-  { for (sint32 i=0 ; i<rowsCount ; i++) {
-      generatedZone3 << '\n' ;
-      if (first) {
-        first = false ;
-        generatedZone3 << "  " ;
-      }else{
-        generatedZone3 << ", " ;
-      }
-      generatedZone3 << startIndexArray (i COMMA_HERE) << "  // S" << i ;
+  for (sint32 i=0 ; i<rowsCount ; i++) {
+    generatedZone3 << '\n' ;
+    if (first) {
+      first = false ;
+      generatedZone3 << "  " ;
+    }else{
+      generatedZone3 << ", " ;
     }
+    generatedZone3 << startIndexArray (i COMMA_HERE) << "  // S" << i ;
   }
   generatedZone3 << "\n} ;\n\n" ;
 //--- Generate state successor table -----------------------------------------
@@ -778,16 +789,15 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
 //--- Get successor count, by state
   TC_UniqueArray <sint32> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
   const sint32 transitionsCount = inTransitionList.length () ;
-  { for (sint32 i=0 ; i<transitionsCount ; i++) {
-      if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
-        stateSuccessorsCount (inTransitionList (i COMMA_HERE).mSourceState COMMA_HERE) ++ ;
-      }
+  for (sint32 i=0 ; i<transitionsCount ; i++) {
+    if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
+      stateSuccessorsCount (inTransitionList (i COMMA_HERE).mSourceState COMMA_HERE) ++ ;
     }
   }
 
 //--- Write successor table, state by state ----------------------------------
   generatedZone3 << "// Successor tables handle non terminal successors ;\n"
-          << "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
+                    "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
   sint32 currentSourceState = -1 ; // No state
   for (sint32 t=0 ; t<transitionsCount ; t++) {
     const sint32 nonterminal =  inTransitionList (t COMMA_HERE).mAction - columnsCount ; 
@@ -939,10 +949,11 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
                          << " * _outReturnedModelInstance = NULL ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
-        generatedZone3 << "  const bool ok = _inLexique"
-                   ".performBottomUpParsing (gActionTable, gActionTableIndex, gSuccessorTable, gProductionsTable) ;\n"
-                   "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"
-                   "    " ;
+        generatedZone3 << "  const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
+                          "                                                     gActionTableIndex, gSuccessorTable,\n"
+                          "                                                     gProductionsTable) ;\n"
+                          "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"
+                          "    " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "_outReturnedModelInstance = " ;      
         }
@@ -1097,10 +1108,10 @@ SLR_computations (C_Lexique & inLexique,
   for (sint32 i=0 ; i<transitionList.length () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
     inHTMLfile << "  S" << transitionList (i COMMA_HERE).mSourceState
-              << " |- " ;
+               << " |- " ;
     inVocabulary.printInFile (inHTMLfile, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
     inHTMLfile << " -> S"
-              << transitionList (i COMMA_HERE).mTargetState ;
+               << transitionList (i COMMA_HERE).mTargetState ;
     inHTMLfile.outputRawData ("</code></td></tr>") ;
   }
   inHTMLfile.outputRawData ("</table><p></p>") ;
@@ -1126,12 +1137,9 @@ SLR_computations (C_Lexique & inLexique,
       const sint32 targetState = transitionList (index COMMA_HERE).mTargetState ;
       const sint32 terminal = transitionList (index COMMA_HERE).mAction ;
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
-      inHTMLfile << "Action [S"
-                << sourceState
-                << ", " ;
+      inHTMLfile << "Action [S" << sourceState << ", " ;
       inVocabulary.printInFile (inHTMLfile, terminal COMMA_HERE) ;
-      inHTMLfile << "] : shift "
-                << targetState ;
+      inHTMLfile << "] : shift, goto S" << targetState ;
       SLRdecisionTable (sourceState, terminal COMMA_HERE) = cLR0_decisionTableElement::shiftDecision (targetState) ;
       shiftActions ++ ;
       inHTMLfile.outputRawData ("</code></td></tr>") ;
@@ -1175,8 +1183,8 @@ SLR_computations (C_Lexique & inLexique,
                   << state
                   << ", " ;
         inVocabulary.printInFile (inHTMLfile, terminal COMMA_HERE) ;
-        inHTMLfile << "] : reduce by production "
-                  << productionIndex ;
+        inHTMLfile << "] : reduce by " ;
+        inVocabulary.printInFile (inHTMLfile, leftNonTerminal COMMA_HERE) ;
         inHTMLfile.outputRawData ("</code>") ;
         if (! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
           inHTMLfile.outputRawData ("<span class=\"error\">") ;

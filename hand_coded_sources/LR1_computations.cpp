@@ -920,9 +920,21 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
                     "#endif\n\n" ;
 
-//--- Generate SLR analyze action table --------------------------------------
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  generatedZone3.writeCTitleComment ("SLR analyzer action table") ;
+
+//--- Print non-terminal symbols --------------------------------------
+  generatedZone3.writeCTitleComment ("N O N    T E R M I N A L    N A M E S") ;
+  generatedZone3 << "static const char * gNonTerminalNames ["
+                 << inVocabulary.getNonTerminalSymbolsCount () << "] = {\n" ;
+  for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+    generatedZone3 << "  \"<" << inVocabulary.getSymbol (i COMMA_HERE) << ">\""
+                   << (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "")
+                   << "// Index " << (i - inVocabulary.getTerminalSymbolsCount ()) << "\n" ;
+  }
+  generatedZone3 << "} ;\n\n" ;
+
+//--- Generate SLR analyze action table --------------------------------------
+  generatedZone3.writeCTitleComment ("L R ( 1 )    A N A L Y Z E R    A C T I O N    T A B L E") ;
   const sint32 rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
   const sint32 columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
@@ -1150,10 +1162,11 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                          << " * _outReturnedModelInstance = NULL ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
-        generatedZone3 << "  const bool ok = _inLexique"
-                   ".performBottomUpParsing (gActionTable, gActionTableIndex, gSuccessorTable, gProductionsTable) ;\n"
-                   "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"
-                   "    " ;
+        generatedZone3 << "  const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
+                          "                                                     gActionTableIndex, gSuccessorTable,\n"
+                          "                                                     gProductionsTable) ;\n"
+                          "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"
+                          "    " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "_outReturnedModelInstance = " ;      
         }
@@ -1347,12 +1360,9 @@ LR1_computations (C_Lexique & inLexique,
       const sint32 targetState = transitionList (index COMMA_HERE).mTargetState ;
       const sint32 terminal = transitionList (index COMMA_HERE).mAction ;
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
-      inHTMLfile << "Action [S"
-                << sourceState
-                << ", " ;
+      inHTMLfile << "Action [S" << sourceState << ", " ;
       inVocabulary.printInFile (inHTMLfile, terminal COMMA_HERE) ;
-      inHTMLfile << "] : shift "
-                << targetState ;
+      inHTMLfile << "] : shift, goto S" << targetState ;
       inHTMLfile.outputRawData ("</code></td></tr>") ;
       SLRdecisionTable (sourceState, terminal COMMA_HERE) = cLR1_decisionTableElement::shiftDecision (targetState) ;
       shiftActions ++ ;
@@ -1396,11 +1406,11 @@ LR1_computations (C_Lexique & inLexique,
         const sint32 terminal = terminalArray (p COMMA_HERE) ;
         inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
         inHTMLfile << "Action [S"
-                  << state
-                  << ", " ;
+                   << state
+                   << ", " ;
         inVocabulary.printInFile (inHTMLfile, terminal COMMA_HERE) ;
-        inHTMLfile << "] : reduce by production "
-                  << productionIndex ;
+        inHTMLfile << "] : reduce by " ;
+        inVocabulary.printInFile (inHTMLfile, leftNonTerminal COMMA_HERE) ;
         inHTMLfile.outputRawData ("</code>") ;
         if (! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
           inHTMLfile.outputRawData ("<span class=\"error\">") ;

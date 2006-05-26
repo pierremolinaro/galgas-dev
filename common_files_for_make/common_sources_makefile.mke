@@ -62,6 +62,7 @@ SOURCES += GGS_luint.cpp
 SOURCES += GGS_lsint.cpp
 SOURCES += GGS_stringset.cpp
 SOURCES += AC_galgas_map.cpp
+SOURCES += C_galgas_CLI_Options.cpp
 SOURCES += C_Lexique.cpp
 SOURCES += GGS_location.cpp
 SOURCES += C_String.cpp
