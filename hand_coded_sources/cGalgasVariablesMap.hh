@@ -211,6 +211,19 @@ insertInArgument (C_Lexique & inLexique,
 
 template <typename INFO>
 sint32 cGalgasVariablesMap <INFO>::
+insertUnusedInArgument (C_Lexique & inLexique,
+                        const INFO & inInfo,
+                        const GGS_lstring & clef,
+                        const GGS_location & inLocation,
+                        const char * messageErreurInsertion
+                        COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumParametreIn, etatValue, true, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::
 insertInOutArgument (C_Lexique & inLexique,
                      const INFO & inInfo,
                      const GGS_lstring & clef,
@@ -218,6 +231,19 @@ insertInOutArgument (C_Lexique & inLexique,
                      const char * messageErreurInsertion
                      COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::
+insertListOfEntitiesLocalVariable (C_Lexique & inLexique,
+                                   const INFO & inInfo,
+                                   const GGS_lstring & clef,
+                                   const GGS_location & inLocation,
+                                   const char * messageErreurInsertion
+                                   COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumListOfEntities, etatValue, false, false, clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -257,6 +283,34 @@ insertOutArgument (C_Lexique & inLexique,
                    const char * messageErreurInsertion
                    COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreOut, etatNonValue, false, false,
+                    clef, inLocation, messageErreurInsertion COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::
+insertSingleEntityLocalVariable (C_Lexique & inLexique,
+                                 const INFO & inInfo,
+                                 const GGS_lstring & clef,
+                                 const GGS_location & inLocation,
+                                 const char * messageErreurInsertion
+                                 COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumSingleEntity, etatNonValue, false, false,
+                    clef, inLocation, messageErreurInsertion COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::
+insertEntityAttributeLocalVariable (C_Lexique & inLexique,
+                                    const INFO & inInfo,
+                                    const GGS_lstring & clef,
+                                    const GGS_location & inLocation,
+                                    const char * messageErreurInsertion
+                                    COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumEntityAttribute, etatNonValue, false, false,
                     clef, inLocation, messageErreurInsertion COMMA_THERE) ;
 }
 
@@ -605,18 +659,29 @@ verificationRecursiveConsommation (C_Lexique & inLexique,
     verificationRecursiveConsommation (inLexique, element->mInfPtr, positionErreur COMMA_THERE) ;
     switch (element->champNature) {
     case enumParametreIn : 
+      if ((! element-> mIsDeclaredUnused) && (! element->champUtilise)) {
+        C_String message ;
+        message << "the '" << element->mKey << "' input argument is not used and has not been declared as 'unused'" ;
+        element->mKey.signalSemanticWarning (inLexique, message COMMA_THERE) ;
+      }
       break ;
     case enumVariableLocale :
-      if (element->champEtat == etatNonValue) {
-        C_String message ;
-        message << "the '" << element->mKey << "' constant is not used" ;
-        positionErreur.signalSemanticWarning (inLexique, message COMMA_THERE) ;
-      }
       break ;
     case enumConstanteLocale : // local constant : only verify a constant not declared as unused is effectivly used
       if ((! element-> mIsDeclaredUnused) && (! element->champUtilise)) {
         C_String message ;
         message << "the '" << element->mKey << "' constant is not used and has not been declared as 'unused'" ;
+        element->mKey.signalSemanticWarning (inLexique, message COMMA_THERE) ;
+      }
+      break ;
+    case enumListOfEntities : // List of entities : doit etre value
+      if (element->champEtat != etatValue) {
+        C_String message ;
+        message << "the '" << element->mKey << "' list of entity instances variable should be valuated by instruction list" ;
+        positionErreur.signalSemanticError (inLexique, message COMMA_HERE) ;
+      }else if (! element->champUtilise) {
+        C_String message ;
+        message << "the '" << element->mKey << "' list of entity instances variable is not used" ;
         element->mKey.signalSemanticWarning (inLexique, message COMMA_THERE) ;
       }
       break ;
@@ -635,6 +700,20 @@ verificationRecursiveConsommation (C_Lexique & inLexique,
       if (element->champEtat != etatValue) {
         C_String message ;
         message << "the '" << element->mKey << "' output formal parameter should be valuated by instruction list" ;
+        positionErreur.signalSemanticError (inLexique, message COMMA_HERE) ;
+      }
+      break ;
+    case enumEntityAttribute: // Idem Parametre formel de sortie : doit etre value
+      if (element->champEtat != etatValue) {
+        C_String message ;
+        message << "the '" << element->mKey << "' attribute entity instance should be valuated by instruction list" ;
+        positionErreur.signalSemanticError (inLexique, message COMMA_HERE) ;
+      }
+      break ;
+    case enumSingleEntity : // Idem Parametre formel de sortie : doit etre value
+      if (element->champEtat != etatValue) {
+        C_String message ;
+        message << "the '" << element->mKey << "' single entity instance should be valuated by instruction list" ;
         positionErreur.signalSemanticError (inLexique, message COMMA_HERE) ;
       }
       break ;
@@ -668,8 +747,17 @@ remettreVariablesDansEtatInitial (element_type * element) {
     case enumConstanteLocale : // constante locale (non modifiable) : il ne doit pas en avoir
       MF_Assert (false, "Presence d'une constante locale !", 0, 0) ;
       break ;
+    case enumListOfEntities:
+      element->champEtat = etatValue ;
+      break ;
     case enumParametreInOut : // Parametre formel en entree/sorie : doit etre mis a value
       element->champEtat = etatValue ;
+      break ;
+    case enumEntityAttribute:
+      element->champEtat = etatNonValue ;
+      break ;
+    case enumSingleEntity :
+      element->champEtat = etatNonValue ;
       break ;
     case enumParametreOut : // Parametre formel de sortie : doit etre mis a non value
       element->champEtat = etatNonValue ;

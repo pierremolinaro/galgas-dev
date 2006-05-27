@@ -135,7 +135,11 @@ list @typeSemanticsTypesList {
 map @typeVariablesMap
   class cGalgasVariablesMap ;
 #--- Inserting
+  insert insertListOfEntitiesLocalVariable error message "the variable '%' is already declared" ;
+  insert insertSingleEntityLocalVariable error message "the variable '%' is already declared" ;
+  insert insertEntityAttributeLocalVariable error message "the variable '%' is already declared" ;
   insert insertInArgument error message "the variable '%' is already declared" ;
+  insert insertUnusedInArgument error message "the variable '%' is already declared" ;
   insert insertConstInArgument error message "the variable '%' is already declared" ;
   insert insertUsedConstInArgument error message "the variable '%' is already declared" ;
   insert insertUnusedConstInArgument error message "the variable '%' is already declared" ;
@@ -873,7 +877,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 class @typeJoker extends @typeCible {
-  override reader verifierType ?@AC_galgasType typeArgumentFormel
+  override reader verifierType ?@AC_galgasType unused typeArgumentFormel
                                ?!@lstring unused nomAttributSource
                                ?!@L_assignedVariables unused listeAffectations
                                ?!@typeCplusPlusNameList outAllVariablesList :

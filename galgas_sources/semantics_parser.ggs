@@ -2156,7 +2156,7 @@ rule <formal_arguments_list>
       [!?tableArgumentsMethode insertConstInArgument !nomArgument !type_semantique !natureNom] ;
     end select ;
   while
-    $?$ ; # '?'  : input formal parameter (must be dropped)
+    $?$ ; # '?'  : input formal parameter
     @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
@@ -2168,12 +2168,20 @@ rule <formal_arguments_list>
     ;
     listeDeTypes += !type_semantique !passingMode ;
     outSignatureForGrammar += !passingMode !galgasTypeName ;
-    @lstring nomArgument ;
-    $identifier$ ? nomArgument ;
-    @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
-    @bool modeIn := true ;
-    listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
-    [!?tableArgumentsMethode insertInArgument !nomArgument !type_semantique !natureNom] ;
+    select
+      $unused$ ;
+      @lstring nomArgument ;
+      $identifier$ ? nomArgument ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !true ;
+      [!?tableArgumentsMethode insertUnusedInArgument !nomArgument !type_semantique !natureNom] ;
+    or
+      @lstring nomArgument ;
+      $identifier$ ? nomArgument ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !true ;
+      [!?tableArgumentsMethode insertInArgument !nomArgument !type_semantique !natureNom] ;
+    end select ;
   while
     $?!$ ; # '?!' : input/output formal parameter
     @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
@@ -2187,18 +2195,17 @@ rule <formal_arguments_list>
     ;
     listeDeTypes += !type_semantique !passingMode ;
     outSignatureForGrammar += !passingMode !galgasTypeName ;
-    @bool modeIn := false ;
     @lstring nomArgument ;
     select
       $unused$ ;
       $identifier$ ? nomArgument ;
       @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
-      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !false ;
       [!?tableArgumentsMethode insertUnusedInOutArgument !nomArgument !type_semantique !natureNom] ;
     or
       $identifier$ ? nomArgument ;
       @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
-      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !false ;
       [!?tableArgumentsMethode insertInOutArgument !nomArgument !type_semantique !natureNom] ;
     end select ;
   while
@@ -2244,7 +2251,12 @@ label importGrammarForSemantics
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
-    $identifier$ ? * ;
+    select
+      $unused$ ;
+      $identifier$ ? * ;
+    or
+      $identifier$ ? * ;
+    end select ;
   while
     $?!$ ;
     @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
@@ -2824,7 +2836,7 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@typeInstruction outInstruction
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -2901,7 +2913,7 @@ rule <extract_instruction>
   ?!@typeVariablesMap ioVariablesMap
   ?@typeCplusPlusName inSourceVarCppName
   ?@lstring nomTypeSource
-  ?@typeClassInheritedMessagesMap tableMessagesAbstraits
+  ?@typeClassInheritedMessagesMap unused tableMessagesAbstraits
   !@typeInstruction outInstruction
   ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
@@ -3034,7 +3046,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3077,7 +3089,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3162,7 +3174,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3213,7 +3225,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3286,7 +3298,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3316,7 +3328,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3366,7 +3378,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3427,7 +3439,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3562,7 +3574,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
+  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
@@ -3771,7 +3783,7 @@ rule <parse_match_case>
   ?@lstring inTypeName
   ?@location inVarLocation
   ?@bool inIsEnumeration
-  ?@enumConstantMap inEnumMessageMap
+  ?@enumConstantMap unused inEnumMessageMap
   !@lstring outTypeName
 :
 #--- Nom du type 1
@@ -3819,7 +3831,7 @@ rule <parse_match_case>
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ?!@typeVariablesMap unused ioVariablesMap
   ?@lstring inTypeName
-  ?@location inVarLocation
+  ?@location unused inVarLocation
   ?@bool inIsEnumeration
   ?@enumConstantMap inEnumMessageMap
   !@lstring outEnumConstantName
