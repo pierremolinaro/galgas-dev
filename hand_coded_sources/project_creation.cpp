@@ -174,9 +174,9 @@ createMetamodelFile (const C_String & inCreatedProjectPathName) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_metamodel.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
-  f << "metamodel " << projectName << "_metamodel root @" << projectName << "Root :\n"
+  f << "metamodel " << projectName << "_metamodel root @" << projectName << "_root :\n"
        "\n"
-       "entity @" << projectName << "Root {\n"
+       "entity @" << projectName << "_root {\n"
        "}\n"
        "\n"
        "# ADD YOUR CODE HERE\n"
@@ -194,19 +194,61 @@ createMetamodelFile (const C_String & inCreatedProjectPathName) {
 //---------------------------------------------------------------------------*
 
 static bool
-createParserFile (const C_String & inCreatedProjectPathName) {
+createContraintsFile (const C_String & inCreatedProjectPathName) {
+  const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
+  const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_constraints.ggs" ;
+  C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
+  f << "constraint " << projectName << "_constraints (firstPass) :\n"
+       "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n"
+       "\n"
+       "# ADD YOUR CODE HERE\n"
+       "\n"
+       "on @" << projectName << "_root {\n"
+       "  firstPass {\n"
+       "  }{\n"
+       "  }\n"
+       "}\n"
+       "\n"
+       "# ADD YOUR CODE HERE\n"
+       "\n"
+       "end constraint ;\n" ;
+  const bool ok = f.close () ;
+  if (ok) {
+    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+  }else{
+    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+  }
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+
+static bool
+createParserFile (const C_String & inCreatedProjectPathName,
+                  const enumProjectStyle inProjectStyle) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_syntax.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "syntax " << projectName << "_syntax :\n"
        "import lexique " << projectName << "_lexique in \"" << projectName << "_lexique.ggs\" ;\n"
-       "import semantics " << projectName << "_semantics in \"" << projectName << "_semantics.ggs\" ;\n"
-       "\n"
+       "import semantics " << projectName << "_semantics in \"" << projectName << "_semantics.ggs\" ;\n" ;
+  if (inProjectStyle == kMDAproject) {
+    f << "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n" ;
+  }
+  f << "\n"
        "# ADD YOUR CODE HERE\n"
        "\n"
-       "rule <start_symbol> ;\n"
+       "rule <start_symbol>" ;
+  if (inProjectStyle == kMDAproject) {
+    f << " -> @" << projectName << "_root" ;
+  }
+  f << " ;\n"
        "\n"
-       "rule <start_symbol>:\n"
+       "rule <start_symbol>" ;
+  if (inProjectStyle == kMDAproject) {
+    f << " -> @" << projectName << "_root" ;
+  }
+  f << " :\n"
        "# ADD YOUR CODE HERE\n"
        "end rule ;\n"
        "\n"
@@ -223,7 +265,8 @@ createParserFile (const C_String & inCreatedProjectPathName) {
 //---------------------------------------------------------------------------*
 
 static bool
-createGrammarFile (const C_String & inCreatedProjectPathName) {
+createGrammarFile (const C_String & inCreatedProjectPathName,
+                   const enumProjectStyle inProjectStyle) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_grammar.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
@@ -231,7 +274,11 @@ createGrammarFile (const C_String & inCreatedProjectPathName) {
        "import lexique " << projectName << "_lexique in \"" << projectName << "_lexique.ggs\" ;\n"
        "import syntax " << projectName << "_syntax in \"" << projectName << "_syntax.ggs\" ;\n"
        "\n"
-       "root <start_symbol> ;\n"
+       "root <start_symbol>" ;
+  if (inProjectStyle == kMDAproject) {
+    f << " -> " << projectName << "_metamodel" ;
+  }
+  f << " ;\n"
        "\n"
        "end grammar ;\n" ;
   const bool ok = f.close () ;
@@ -246,13 +293,20 @@ createGrammarFile (const C_String & inCreatedProjectPathName) {
 //---------------------------------------------------------------------------*
 
 static bool
-createProgramFile (const C_String & inCreatedProjectPathName) {
+createProgramFile (const C_String & inCreatedProjectPathName,
+                   const enumProjectStyle inProjectStyle) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_program.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "program " << projectName << "_program \"version 1.0.0\" . \"???\":\n"
-       "import grammar " << projectName << "_grammar in \"" << projectName << "_grammar.ggs\" ;\n"
-       "#--- max error and warning count\n"
+       "import grammar " << projectName << "_grammar in \"" << projectName << "_grammar.ggs\" ;\n" ;
+  if (inProjectStyle == kMDAproject) {
+    f << "#--- WARNING : metamodel handling will change in future releases\n"
+         "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n"
+         "import constraint " << projectName << "_constraints in \"" << projectName << "_constraints.ggs\" ;\n"
+         "metamodel " << projectName << "_metamodel (" << projectName << "_constraints) ;\n" ;
+  }
+  f << "#--- max error and warning count\n"
        "error 100 ;\n"
        "warning 100 ;\n"
        "end program ;\n" ;
@@ -644,7 +698,8 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
   f.writeComment ("#", "Files generated by GALGAS") ;
   f << "SOURCES += " << projectName << "_lexique.cpp\n" ;
   if (inProjectStyle == kMDAproject) {
-    f << "SOURCES += " << projectName << "_metamodel.cpp\n" ;
+    f << "SOURCES += " << projectName << "_metamodel.cpp\n"
+         "SOURCES += " << projectName << "_constraints.cpp\n" ;
   }
   f << "SOURCES += " << projectName << "_options.cpp\n"
        "SOURCES += " << projectName << "_semantics.cpp\n"
@@ -741,6 +796,11 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
        "		</Unit>\n" ;
   if (inProjectStyle == kMDAproject) {
     f << "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_metamodel.cpp\">\n"
+         "			<Option compilerVar=\"CC\"/>\n"
+         "			<Option target=\"" << releaseTarget << "\"/>\n"
+         "			<Option target=\"" << debugTarget << "\"/>\n"
+         "		</Unit>\n"
+         "		<Unit filename=\"..\\galgas_sources\\GALGAS_OUTPUT\\" << projectName << "_constraints.cpp\">\n"
          "			<Option compilerVar=\"CC\"/>\n"
          "			<Option target=\"" << releaseTarget << "\"/>\n"
          "			<Option target=\"" << debugTarget << "\"/>\n"
@@ -1071,6 +1131,9 @@ createProject (C_Lexique & /* inLexique */,
     if (ok && (inProjectStyle == kMDAproject)) {
       ok = createMetamodelFile (inCreatedProjectPathName) ;
     }
+    if (ok && (inProjectStyle == kMDAproject)) {
+      ok = createContraintsFile (inCreatedProjectPathName) ;
+    }
     if (ok) {
       ok = createOptionFile (inCreatedProjectPathName) ;
     }
@@ -1078,13 +1141,13 @@ createProject (C_Lexique & /* inLexique */,
       ok = createSemanticsFile (inCreatedProjectPathName) ;
     }
     if (ok) {
-      ok = createParserFile (inCreatedProjectPathName) ;
+      ok = createParserFile (inCreatedProjectPathName, inProjectStyle) ;
     }
     if (ok) {
-      ok = createGrammarFile (inCreatedProjectPathName) ;
+      ok = createGrammarFile (inCreatedProjectPathName, inProjectStyle) ;
     }
     if (ok) {
-      ok = createProgramFile (inCreatedProjectPathName) ;
+      ok = createProgramFile (inCreatedProjectPathName, inProjectStyle) ;
     }
     if (ok) {
       ok = createCompileAllFile (inCreatedProjectPathName, inProjectStyle) ;
