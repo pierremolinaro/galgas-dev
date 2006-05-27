@@ -30,6 +30,41 @@ DEBUG_OBJECTS_DIR := debug_objects
 
 #---------------------------------------------------------------*
 #                                                               *
+#     Compiler Options                                          *
+#                                                               *
+#---------------------------------------------------------------*
+
+#--- Options for all compilers
+COMPILER_OPTIONS := -Wall -Werror -Wreturn-type
+
+#--- Options for release mode 
+COMPILER_OPTIONS_RELEASE := -O1 -fomit-frame-pointer  -DDO_NOT_GENERATE_CHECKINGS
+
+#--- Options for debug mode 
+COMPILER_OPTIONS_DEBUG := -g
+
+#--- Options for C compiling (.c extension)
+C_COMPILER_OPTIONS :=
+
+#--- Options for C++ compiling (.cpp extension)
+CPP_COMPILER_OPTIONS := -Woverloaded-virtual -Wsign-promo
+
+#--- Options for Objective-C compiling (.m extension)
+OC_COMPILER_OPTIONS := 
+
+#--- Options for Objective-C++ compiling (.mm extension)
+OCPP_COMPILER_OPTIONS := 
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Linker Options                                            *
+#                                                               *
+#---------------------------------------------------------------*
+
+LINKER_OPTIONS :=
+
+#---------------------------------------------------------------*
+#                                                               *
 #     Source files names list (without their actual path)       *
 #                                                               *
 #---------------------------------------------------------------*

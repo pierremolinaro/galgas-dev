@@ -329,26 +329,26 @@ createMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   const C_String fileName = inCreatedProjectPathName + "/makefile_macosx/makefile" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
   f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" command line tools for Mac OS X") ;
-  f.writeComment ("#---", "Executables") ;
+  f.writeTitleComment ("#", "Executables") ;
   f << "EXECUTABLE := " << projectName << "\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug\n"
        "\n" ;
-  f.writeComment ("#---", "Install directory (for \"install\" goal)") ;
+  f.writeTitleComment ("#", "Install directory (for \"install\" goal)") ;
   f << "INSTALL_DIR := /usr/local/bin\n"
        "\n" ;
-  f.writeComment ("#---", "Link Options") ;
-  f << "LINKER_OPTIONS :=\n"
+  f.writeTitleComment ("#", "Linker Options for Mac OS X") ;
+  f << "PLATFORM_LINKER_OPTIONS :=\n"
        "\n" ;
-  f.writeComment ("#---", "Release version compile options") ;
+  f.writeTitleComment ("#", "Release version compile options") ;
   f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
-  f.writeComment ("#---", "Include source file list") ;
+  f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include gcc tools for MAC OS X") ;
+  f.writeTitleComment ("#", "Include gcc tools for MAC OS X") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include makefile that performs actual work") ;
+  f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
        "\n" ;
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
@@ -369,26 +369,26 @@ create_i386LinuxOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName)
   const C_String fileName = inCreatedProjectPathName + "/makefile_i386linux_on_macosx/makefile" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
   f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" command line tools for i386 Linux, built on Mac OS X") ;
-  f.writeComment ("#---", "Executables") ;
+  f.writeTitleComment ("#", "Executables") ;
   f << "EXECUTABLE := " << projectName << "\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug\n"
        "\n" ;
-  f.writeComment ("#---", "Install directory (for \"install\" goal)") ;
+  f.writeTitleComment ("#", "Install directory (for \"install\" goal)") ;
   f << "INSTALL_DIR := /usr/local/bin\n"
        "\n" ;
-  f.writeComment ("#---", "Link Options") ;
-  f << "LINKER_OPTIONS :=\n"
+  f.writeTitleComment ("#", "Link Options for i386 Linux") ;
+  f << "PLATFORM_LINKER_OPTIONS :=\n"
        "\n" ;
-  f.writeComment ("#---", "Release version compile options") ;
+  f.writeTitleComment ("#", "Release version compile options") ;
   f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
-  f.writeComment ("#---", "Include source file list") ;
+  f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include i386 Linux tools for MAC OS X") ;
+  f.writeTitleComment ("#", "Include i386 Linux tools for MAC OS X") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/i386linux_on_macosx_gcc_tools.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include makefile that performs actual work") ;
+  f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
        "\n" ;
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
@@ -409,23 +409,23 @@ createMinGWOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   const C_String fileName = inCreatedProjectPathName + "/makefile_mingw_on_macosx/makefile" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
   f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" command line tools for Win32, built on Mac OS X") ;
-  f.writeComment ("#---", "Executables") ;
+  f.writeTitleComment ("#", "Executables") ;
   f << "EXECUTABLE := " << projectName << ".exe\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug.exe\n"
        "\n" ;
-  f.writeComment ("#---", "Link Options") ;
-  f << "LINKER_OPTIONS := -lcomdlg32\n"
+  f.writeTitleComment ("#", "Linker Options for Win32") ;
+  f << "PLATFORM_LINKER_OPTIONS := -lcomdlg32\n"
        "\n" ;
-  f.writeComment ("#---", "Release version compile options") ;
+  f.writeTitleComment ("#", "Release version compile options") ;
   f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
-  f.writeComment ("#---", "Include source file list") ;
+  f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include MinGW tools for MAC OS X") ;
+  f.writeTitleComment ("#", "Include MinGW tools for MAC OS X") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/mingw_on_macosx_gcc_tools.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include makefile that performs actual work") ;
+  f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
        "\n" ;
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
@@ -446,23 +446,23 @@ createMSYSOnWin32makefileFile (const C_String & inCreatedProjectPathName) {
   const C_String fileName = inCreatedProjectPathName + "/makefile_msys_on_win32/makefile.mke" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
   f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" command line tools for Win32, built with MSYS") ;
-  f.writeComment ("#---", "Executables") ;
+  f.writeTitleComment ("#", "Executables") ;
   f << "EXECUTABLE := " << projectName << ".exe\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug.exe\n"
        "\n" ;
-  f.writeComment ("#---", "Link Options") ;
-  f << "LINKER_OPTIONS := -lcomdlg32\n"
+  f.writeTitleComment ("#", "Linker Options for Win32") ;
+  f << "PLATFORM_LINKER_OPTIONS := -lcomdlg32\n"
        "\n" ;
-  f.writeComment ("#---", "Release version compile options") ;
+  f.writeTitleComment ("#", "Release version compile options") ;
   f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
-  f.writeComment ("#---", "Include source file list") ;
+  f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include MinGW tools for MSYS") ;
+  f.writeTitleComment ("#", "Include MinGW tools for MSYS") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/msys_on_win32.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include makefile that performs actual work") ;
+  f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
        "\n" ;
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
@@ -483,23 +483,23 @@ createUnixMakefileFile (const C_String & inCreatedProjectPathName) {
   const C_String fileName = inCreatedProjectPathName + "/makefile_unix/makefile" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
   f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" command line tools for Unix") ;
-  f.writeComment ("#---", "Executables") ;
+  f.writeTitleComment ("#", "Executables") ;
   f << "EXECUTABLE := " << projectName << "\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug\n"
        "\n" ;
-  f.writeComment ("#---", "Link Options") ;
-  f << "LINKER_OPTIONS := \n"
+  f.writeTitleComment ("#", "Linker Options for Unix") ;
+  f << "PLATFORM_LINKER_OPTIONS := \n"
        "\n" ;
-  f.writeComment ("#---", "Release version compile options") ;
+  f.writeTitleComment ("#", "Release version compile options") ;
   f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
-  f.writeComment ("#---", "Include source file list") ;
+  f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include Unix tools") ;
+  f.writeTitleComment ("#", "Include Unix tools") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools.mke\n"
        "\n" ;
-  f.writeComment ("#---", "Include makefile that performs actual work") ;
+  f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
        "\n" ;
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
@@ -555,18 +555,44 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
   const C_String fileName = inCreatedProjectPathName + "/common_files_for_make/makefile.mke" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
   f.writeTitleComment ("#", "This file is included by every platform makefile") ;
-  f.writeComment ("#---", "LIBPM path") ;
+  f.writeTitleComment ("#", "LIBPM path") ;
   f << "LIB_PM_PATH := ../../libpm\n"
        "\n" ;
-  f.writeComment ("#---", "Project source files directories") ;
+  f.writeTitleComment ("#", "Project source files directories") ;
   f << "SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT\n"
        "SOURCES_DIR += ../hand_coded_sources\n"
        "\n" ;
-  f.writeComment ("#---", "Object files directories") ;
+  f.writeTitleComment ("#", "Object files directories") ;
   f << "OBJECTS_DIR       := objects\n"
        "DEBUG_OBJECTS_DIR := debug_objects\n"
        "\n" ;
-  f.writeComment ("#---", "Source files names list (without their actual path)") ;
+  f.writeTitleComment ("#", "Compiler Options") ;
+  f << "#--- Options for all compilers\n"
+       "COMPILER_OPTIONS := -Wall -Werror -Wreturn-type -Wsign-promo\n"
+       "\n"
+       "#--- Options for release mode\n"
+       "COMPILER_OPTIONS_RELEASE := -O1 -fomit-frame-pointer  -DDO_NOT_GENERATE_CHECKINGS\n"
+       "\n"
+       "#--- Options for debug mode\n"
+       "COMPILER_OPTIONS_DEBUG := -g\n"
+       "\n"
+       "#--- Options for C compiling (.c extension)\n"
+       "C_COMPILER_OPTIONS :=\n"
+       "\n"
+       "#--- Options for C++ compiling (.cpp extension)\n"
+       "CPP_COMPILER_OPTIONS := -Woverloaded-virtual\n"
+       "\n"
+       "#--- Options for Objective-C compiling (.m extension)\n"
+       "OC_COMPILER_OPTIONS :=\n"
+       "\n"
+       "#--- Options for Objective-C++ compiling (.mm extension)\n"
+       "OCPP_COMPILER_OPTIONS :=\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Linker Options") ;
+  f << "#--- Options for all platforms \n"
+       "LINKER_OPTIONS :=\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Source files names list (without their actual path)") ;
   f << "SOURCES :=\n"
        "\n" ;
   f.writeComment ("#", "Files from libpm") ;
