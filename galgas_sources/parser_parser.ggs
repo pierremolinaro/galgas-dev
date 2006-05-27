@@ -767,7 +767,7 @@ rule <rule_declaration_or_implementation>
   ?@L_EXsignature listeDeTypes
   ??@lstring inRuleName
   ??@lstring inReturnedEntity
-  ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
+  ?@typeListeTypesEtNomsArgMethode unused listeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMapForGrammar
@@ -904,7 +904,7 @@ rule <rule_declaration_or_implementation>
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMapForGrammar
-  ?@L_signature inSignatureForGrammar
+  ?@L_signature unused inSignatureForGrammar
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ??@lstring unused inSyntaxComponentName
 :
@@ -974,15 +974,15 @@ rule <rule_declaration_or_implementation>
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
         if kKind == [@metamodelPropertyKind multipleReferenceProperty] then
           definitionType := [@typeGalgas_multipleEntity new ! kTypeName] ;
-           [!?ioVariablesMap insertInArgument !nomVariable !definitionType !nomCppVariable] ;
+           [!?ioVariablesMap insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
           @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
           listeInstructions += !instruction ;
         elsif kKind == [@metamodelPropertyKind attributeProperty] then
-          [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+          [!?ioVariablesMap insertEntityAttributeLocalVariable !nomVariable !definitionType !nomCppVariable] ;
           @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
           listeInstructions += !instruction ;
         elsif kKind == [@metamodelPropertyKind singleReferenceProperty] then
-          [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+          [!?ioVariablesMap insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
           @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
           listeInstructions += !instruction ;
         end if ;
@@ -1175,7 +1175,7 @@ end rule ;
 
 rule <syntax_instruction>
   ?!@M_nonTerminalSymbolForSyntax unused ioNonTerminalSymbolMapForSyntax
-  ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
+  ?@bool unused inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse unused ioEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse

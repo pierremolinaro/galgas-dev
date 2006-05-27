@@ -41,7 +41,10 @@ enum enumNatureEntite {enumParametreIn,  // Parametre formel en entree
                        enumVariableLocale, // variable locale
                        enumParametreInOut, // Parametre formel en entree/sorie
                        enumParametreOut, // Parametre formel de sortie
-                       enumPropertyOut} ; // Propriete devant etre definie
+                       enumPropertyOut, // Propriete devant etre definie
+                       enumEntityAttribute, // An instance of entity attribute
+                       enumSingleEntity, // An instance of entity
+                       enumListOfEntities} ; // An instance of a list of entity instances
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -179,12 +182,40 @@ template <typename INFO> class cGalgasVariablesMap {
   public : inline bool isBuilt (void) const { return true ; }
 
 //--- Insertion Methods
+  public : sint32 insertEntityAttributeLocalVariable (C_Lexique & inLexique,
+                                                      const INFO & info,
+                                                      const GGS_lstring & clef,
+                                                      const GGS_location & inLocation,
+                                                      const char * messageErreurInsertion
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public : sint32 insertSingleEntityLocalVariable (C_Lexique & inLexique,
+                                                   const INFO & info,
+                                                   const GGS_lstring & clef,
+                                                   const GGS_location & inLocation,
+                                                   const char * messageErreurInsertion
+                                                   COMMA_LOCATION_ARGS) ;
+
+  public : sint32 insertListOfEntitiesLocalVariable (C_Lexique & inLexique,
+                                                     const INFO & info,
+                                                     const GGS_lstring & clef,
+                                                     const GGS_location & inLocation,
+                                                     const char * messageErreurInsertion
+                                                     COMMA_LOCATION_ARGS) ;
+
   public : sint32 insertInArgument (C_Lexique & inLexique,
                                     const INFO & info,
                                     const GGS_lstring & clef,
                                     const GGS_location & inLocation,
                                     const char * messageErreurInsertion
                                     COMMA_LOCATION_ARGS) ;
+
+  public : sint32 insertUnusedInArgument (C_Lexique & inLexique,
+                                          const INFO & info,
+                                          const GGS_lstring & clef,
+                                          const GGS_location & inLocation,
+                                          const char * messageErreurInsertion
+                                          COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertOutProperty (C_Lexique & inLexique,
                                      const INFO & info,
