@@ -24,6 +24,10 @@
 
 //---------------------------------------------------------------------------*
 
+#include <ctype.h>
+
+//---------------------------------------------------------------------------*
+
 #ifdef __MWERKS__
   #include <stat.h>
 #endif
@@ -329,7 +333,8 @@ createCompileAllFile (const C_String & inCreatedProjectPathName,
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "compile \"" << projectName << "_lexique.ggs\" ;\n" ;
   if (inProjectStyle == kMDAproject) {
-    f << "compile \"" << projectName << "_metamodel.ggs\" ;\n" ;
+    f << "compile \"" << projectName << "_metamodel.ggs\" ;\n"
+         "compile \"" << projectName << "_constraints.ggs\" ;\n" ;
   }
   f << "compile \"" << projectName << "_options.ggs\" ;\n"
        "compile \"" << projectName << "_semantics.ggs\" ;\n"
@@ -1073,11 +1078,22 @@ void
 createProject (C_Lexique & /* inLexique */,
                const C_String & inCreatedProjectPathName,
                const enumProjectStyle inProjectStyle) {
+  printf ("*** PERFORM PROJECT CREATION (--create-project=%s option) ***\n", inCreatedProjectPathName.cString ()) ;
+//--- First check the project name is correct (not empty, only letters, digits and '_')
+  const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
+  bool projectNameIsCorrect = true ;
+  for (sint32 i=0 ; (i<projectName.length ()) && projectNameIsCorrect ; i++) {
+    const char c = projectName (i COMMA_HERE) ;
+    projectNameIsCorrect = isalnum (c) || (c == '_') ;
+  }
+  if (projectName.length () == 0) {
+	  printf ("** Cannot create GALGAS project: the project name is empty.\n") ;
+  }else if (! projectNameIsCorrect) {
+	  printf ("** Cannot create GALGAS project: the project name should contain only letters, digits and underscore character.\n") ;
 //--- if creation directory exists, emit an error and do nothing
-  if (inCreatedProjectPathName.isDirectory ()) {
+  }else if (inCreatedProjectPathName.isDirectory ()) {
 	  printf ("** Cannot create GALGAS project: '%s' directory already exists.\n", inCreatedProjectPathName.cString ()) ;
 	}else{
-    printf ("*** PERFORM PROJECT CREATION (--create-project=%s option) ***\n", inCreatedProjectPathName.cString ()) ;
 	//--- Create directories
 	  bool ok = createDirectory (inCreatedProjectPathName) ;
     if (ok) {
@@ -1187,8 +1203,8 @@ createProject (C_Lexique & /* inLexique */,
     if (ok) {
       ok = createCodeBlockProjectFile (inCreatedProjectPathName, "/project_codeblocks", inProjectStyle) ;
     }
-    printf ("*** END OF PROJECT CREATION ***\n") ;
 	}
+  printf ("*** END OF PROJECT CREATION ***\n") ;
 }
 
 //---------------------------------------------------------------------------*

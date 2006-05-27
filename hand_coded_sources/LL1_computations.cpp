@@ -615,9 +615,6 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
           parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << ", _outReturnedModelInstance" ;      
-        }
         generatedZone3 << ") ;\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           GGS_lstring entityName ;
