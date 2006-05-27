@@ -57,11 +57,11 @@ bool cPtr_typeNonterminalToGenerate::isCppClassNeeded (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeNonterminalToGenerate
-::generateCppClassDeclaration (AC_OutputStream & inHfile,
-                               const C_String & inLexiqueClassName,
-                               const C_String & /* inTargetFileName */,
-                               sint32 & /* ioPrototypeIndex */) const {
+void cPtr_typeNonterminalToGenerate::
+generateCppClassDeclaration (AC_OutputStream & inHfile,
+                             const C_String & inLexiqueClassName,
+                             const C_String & /* inTargetFileName */,
+                             sint32 & /* ioPrototypeIndex */) const {
   GGS_M_nonterminalSymbolAlts::element_type * currentAltForNonTerminal
         = mNonterminalSymbolParametersMap.firstObject () ;
   while (currentAltForNonTerminal != NULL) {
@@ -89,12 +89,12 @@ void cPtr_typeNonterminalToGenerate
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeNonterminalToGenerate
-::generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
-                                  const C_String & /* inLexiqueClassName */,
-                                  const C_String & /* inTargetFileName */,
-                                  sint32 & /* ioPrototypeIndex */,
-                                  const bool /* inGenerateDebug */) const {
+void cPtr_typeNonterminalToGenerate::
+generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
+                                const C_String & /* inLexiqueClassName */,
+                                const C_String & /* inTargetFileName */,
+                                sint32 & /* ioPrototypeIndex */,
+                                const bool /* inGenerateDebug */) const {
 }
 
 //---------------------------------------------------------------------------*
