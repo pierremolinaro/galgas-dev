@@ -54,7 +54,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "class elementOf_GGS_" << aNomTable << " : public AC_galgas_map_element {\n"
              "//--- Constructor\n"
              "  public : elementOf_GGS_" << aNomTable << " (const GGS_lstring & inKey,\n"
-             "                                    const sint32 inIndex,\n"
+             "                                     const sint32 inIndex,\n"
              "                                     const e_" << aNomTable << " & inInfo) ;\n"
              "//--- Get pointers\n"
              "  public : inline elementOf_GGS_" << aNomTable << " * nextObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mNextItem ; }\n"
@@ -94,6 +94,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;\n"
              "//--- Get object pointer (for method call)\n"
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
+             "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "//--- 'emptyMap' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
              "//--- Method used for duplicate a map\n"
@@ -562,6 +563,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
           << " <e_" << aNomTable << "> {\n"
              "//--- Get object pointer\n"
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
+             "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "//--- Handle 'emptyMap' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n" ;
 
