@@ -197,15 +197,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   C_String generatedZone2 ;
   generatedZone2.writeCTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
-//--- Generate #indef ... # define directives
-  generatedZone2 << "#ifndef " << aNomClasse << "_DEFINED\n"
-                 << "#define " << aNomClasse << "_DEFINED\n\n" ;
-
 //--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
   GGS_typeSuperClassesMap::element_type * superClassName = mAncestorClassesMap.lastObject () ;
 
 //--- Engendrer l'en tete de la declaration de la classe abstraite
-  generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 << "class cPtr_" << aNomClasse ;
   if (superClassName == NULL) {
     generatedZone2 << " : public C_GGS_Object {\n" ;
@@ -267,7 +262,6 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;
-  generatedZone3 << "#endif\n\n" ; 
  
 //--- Generate file
   inLexique.generateFile ("//",
@@ -517,10 +511,6 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   C_String generatedZone2 ;
   generatedZone2.writeCTitleComment (C_String ("class 'cPtr_") + aNomClasse + "'") ;
 
-//--- Generate #indef ... # define directives
-  generatedZone2 << "#ifndef " << aNomClasse << "_DEFINED\n"
-                 << "#define " << aNomClasse << "_DEFINED\n\n" ;
-
 //--- Classe mere (dernier insere dans la table des ancetres)
   GGS_typeSuperClassesMap::element_type * classeAncetre = mAncestorClassesMap.lastObject () ;
   macroValidPointer (classeAncetre) ;
@@ -580,7 +570,6 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCHyphenLineComment () ;  
-  generatedZone3 << "#endif\n\n" ; 
 
   inLexique.generateFile ("//",
                           C_String ("include_") + aNomClasse + ".h",

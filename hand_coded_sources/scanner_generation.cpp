@@ -439,7 +439,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   inCppFile << "}else if (testForInputChar ('\\0')) { // End of source text ? \n"
               "  mCurrentTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
               "}else{ // Unknown input character\n"
-              "  lexicalError (\"Unknown character\" LINE_AND_SOURCE_FILE) ;\n"
+              "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
               "}\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}catch (const C_lexicalErrorException &) {\n"
@@ -476,9 +476,11 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                     "#include <string.h>\n\n"
                     "#include \"" << inLexiqueName << ".h\"\n\n"
                     "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  #define LINE_AND_SOURCE_FILE , sourceText ()->sourceFileName ().cString (), currentLineNumber ()\n"
+                    "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), currentLineNumber ()\n"
+                    "  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE\n"
                     "#else\n"
                     "  #define LINE_AND_SOURCE_FILE\n"
+                    "  #define COMMA_LINE_AND_SOURCE_FILE\n"
                     "#endif\n\n" ;
 
 // --------------------------------------- Constructor
@@ -797,7 +799,7 @@ generateDefaultToken (const C_String & inLexiqueName,
 void cPtr_typeEmissionErreurParDefaut::
 generateDefaultToken (const C_String &,
                       AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " LINE_AND_SOURCE_FILE) ;\n" ;
+  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -813,7 +815,7 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionErreurLexicale::
 generate_scanner_instruction (const C_String &, // inLexiqueName
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " LINE_AND_SOURCE_FILE) ;\n" ;
+  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
