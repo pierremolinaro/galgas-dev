@@ -436,7 +436,8 @@ static const char k_default_style [] = {
 //---------------------------------------------------------------------------*
 
 static void
-createStyleFile (const C_String & inCurrentDirectory, 
+createStyleFile (C_Lexique & inLexique,
+                 const C_String & inCurrentDirectory, 
                  const char * inStyleFileName) {
   C_String f = inCurrentDirectory ;
   if (f.length () > 0) {
@@ -444,8 +445,13 @@ createStyleFile (const C_String & inCurrentDirectory,
   }
   f << inStyleFileName ;
   if (! f.fileExists ()) {
-    C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR COMMA_HERE) ;
-    styleFile << k_default_style ;
+    if (inLexique.mPerformGeneration) {
+      C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR COMMA_HERE) ;
+      styleFile << k_default_style ;
+      inLexique.galgas_IO_Ptr ()->ggs_printSuccess ((C_String ("Written '") + f + "'.\n").cString ()) ;
+    }else{
+      inLexique.galgas_IO_Ptr ()->ggs_printWarning ((C_String ("Need to write '") + f + "'.\n").cString ()) ;
+    }
   }
 }
 
@@ -528,7 +534,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
   }
 //--- Create "style.css" file if it does not exist
   if (outputHTMLfile) {
-    createStyleFile (inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css") ;
+    createStyleFile (inLexique, inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css") ;
   }
 
 //--- If 'HTMLfileName' is the empty string, no file is created
@@ -538,15 +544,16 @@ routine_analyzeGrammar (C_Lexique & inLexique,
   }
   C_String s ;
   s << "'" << inTargetFileName << "' grammar" ;
-  const C_String HTMLfileName = outputHTMLfile
-    ? (directory + inTargetFileName + ".html")
-    : C_String () ;
+  const C_String HTMLfileName = directory + inTargetFileName + ".html" ;
+
 //--- Create output HTML file (if file is the empty string, no file is created)
-  C_HTML_FileWrite HTMLfile (HTMLfileName,
-                              s,
-                              "style.css"
-                              COMMA_SAFARI_CREATOR
-                              COMMA_HERE) ;
+  C_HTML_FileWrite HTMLfile (((outputHTMLfile && inLexique.mPerformGeneration)
+                                ? HTMLfileName
+                                : C_String ()),
+                             s,
+                             "style.css"
+                             COMMA_SAFARI_CREATOR
+                             COMMA_HERE) ;
 
 //--- HTML title
   HTMLfile.outputRawData ("<h1>") ;
@@ -823,6 +830,13 @@ routine_analyzeGrammar (C_Lexique & inLexique,
     errorLocation.signalSemanticWarning (inLexique, warningMessage COMMA_HERE) ;
   }else{
     HTMLfile.writeCTitleComment ("OK (no error, no warning)", "title") ;
+  }
+  if (outputHTMLfile) {
+    if (inLexique.mPerformGeneration) {
+      inLexique.galgas_IO_Ptr ()->ggs_printSuccess ((C_String ("Written '") + HTMLfileName + "'.\n").cString ()) ;
+    }else{
+      inLexique.galgas_IO_Ptr ()->ggs_printWarning ((C_String ("Need to write '") + HTMLfileName + "'.\n").cString ()) ;
+    }
   }
 }
 
