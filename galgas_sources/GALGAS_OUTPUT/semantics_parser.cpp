@@ -1252,7 +1252,7 @@ pr_semantics_declaration_semantics_parser_1311_29_ (galgas_scanner & _inLexique,
   var_cas_abstractClassName.defineAttribute (_inLexique.tokenString, _inLexique) ;
   switch (select_semantics_parser_8 (_inLexique)) {
     case 1 : {
-      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_abstractClassName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1325)) SOURCE_FILE_AT_LINE (1325))) || (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_abstractClassName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1326)) SOURCE_FILE_AT_LINE (1326))))))).isBuiltAndTrue ()) {
+      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_abstractClassName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1325)) SOURCE_FILE_AT_LINE (1325))) | (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_abstractClassName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1326)) SOURCE_FILE_AT_LINE (1326))))))).isBuiltAndTrue ()) {
         GGS_AC_galgasType  var_cas_t ;
         var_cas_t = GGS_typeGalgasUndefinedClassType::constructor_new (_inLexique, var_cas_abstractClassName COMMA_HERE) ;
         var_cas_tableEnAvant.method_insertKey (_inLexique, var_cas_abstractClassName, var_cas_t SOURCE_FILE_AT_LINE (1328)) ;
@@ -1355,7 +1355,7 @@ pr_semantics_declaration_semantics_parser_1311_29_importSemantics (galgas_scanne
   var_cas_abstractClassName.defineAttribute (_inLexique.tokenString, _inLexique) ;
   switch (select_semantics_parser_8 (_inLexique)) {
     case 1 : {
-      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_abstractClassName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1465)) SOURCE_FILE_AT_LINE (1465))) || (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_abstractClassName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1466)) SOURCE_FILE_AT_LINE (1466))))))).isBuiltAndTrue ()) {
+      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_abstractClassName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1465)) SOURCE_FILE_AT_LINE (1465))) | (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_abstractClassName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1466)) SOURCE_FILE_AT_LINE (1466))))))).isBuiltAndTrue ()) {
         GGS_AC_galgasType  var_cas_t ;
         var_cas_t = GGS_typeGalgasUndefinedClassType::constructor_new (_inLexique, var_cas_abstractClassName COMMA_HERE) ;
         var_cas_tableEnAvant.method_insertKey (_inLexique, var_cas_abstractClassName, var_cas_t SOURCE_FILE_AT_LINE (1468)) ;
@@ -2446,7 +2446,7 @@ pr_input_parameters_list_semantics_parser_2336_29_ (galgas_scanner & _inLexique,
   }
   if (((var_cas_listeAttributsSemantiques.reader_length (_inLexique SOURCE_FILE_AT_LINE (2358))) < (var_cas_listeCibles.reader_length (_inLexique SOURCE_FILE_AT_LINE (2358)))).isBuiltAndTrue ()) {
       GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((((((GGS_string (true, "too much arguments: ")) + (var_cas_listeAttributsSemantiques.reader_length (_inLexique SOURCE_FILE_AT_LINE (2359)).reader_string (_inLexique SOURCE_FILE_AT_LINE (2359))))) + (GGS_string (true, " expected, ")))) + (var_cas_listeCibles.reader_length (_inLexique SOURCE_FILE_AT_LINE (2360)).reader_string (_inLexique SOURCE_FILE_AT_LINE (2360))))) + (GGS_string (true, " found"))) SOURCE_FILE_AT_LINE (2360)) ;
-  }else if (((((var_cas_listeAttributsSemantiques.reader_length (_inLexique SOURCE_FILE_AT_LINE (2362))) > (var_cas_listeCibles.reader_length (_inLexique SOURCE_FILE_AT_LINE (2362)))) && ((! (var_cas_ellipsis))))).isBuiltAndTrue ()) {
+  }else if (((((var_cas_listeAttributsSemantiques.reader_length (_inLexique SOURCE_FILE_AT_LINE (2362))) > (var_cas_listeCibles.reader_length (_inLexique SOURCE_FILE_AT_LINE (2362)))) & ((! (var_cas_ellipsis))))).isBuiltAndTrue ()) {
       GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((((((GGS_string (true, "argument(s) missing: ")) + (var_cas_listeAttributsSemantiques.reader_length (_inLexique SOURCE_FILE_AT_LINE (2363)).reader_string (_inLexique SOURCE_FILE_AT_LINE (2363))))) + (GGS_string (true, " expected, ")))) + (var_cas_listeCibles.reader_length (_inLexique SOURCE_FILE_AT_LINE (2364)).reader_string (_inLexique SOURCE_FILE_AT_LINE (2364))))) + (GGS_string (true, " found"))) SOURCE_FILE_AT_LINE (2365)) ;
   }else{
     var_cas_listeAffectationParametresEffectifs = GGS_L_assignedVariables::constructor_emptyList (_inLexique COMMA_HERE) ;
@@ -4990,7 +4990,7 @@ pr_semantics_declaration_semantics_parser_4209_29_ (galgas_scanner & _inLexique,
   switch (select_semantics_parser_38 (_inLexique)) {
     case 1 : {
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_mapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4222)) SOURCE_FILE_AT_LINE (4222))) || (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_mapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4223)) SOURCE_FILE_AT_LINE (4223))))))).isBuiltAndTrue ()) {
+      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_mapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4222)) SOURCE_FILE_AT_LINE (4222))) | (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_mapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4223)) SOURCE_FILE_AT_LINE (4223))))))).isBuiltAndTrue ()) {
         GGS_AC_galgasType  var_cas_t ;
         var_cas_t = GGS_typeGalgasUndefinedMapType::constructor_new (_inLexique, var_cas_mapTypeName COMMA_HERE) ;
         var_cas_tableEnAvant.method_insertKey (_inLexique, var_cas_mapTypeName, var_cas_t SOURCE_FILE_AT_LINE (4225)) ;
@@ -5285,7 +5285,7 @@ pr_semantics_declaration_semantics_parser_4209_29_importSemantics (galgas_scanne
   switch (select_semantics_parser_38 (_inLexique)) {
     case 1 : {
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_mapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4480)) SOURCE_FILE_AT_LINE (4480))) || (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_mapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4480)) SOURCE_FILE_AT_LINE (4480))))))).isBuiltAndTrue ()) {
+      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_mapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4480)) SOURCE_FILE_AT_LINE (4480))) | (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_mapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4480)) SOURCE_FILE_AT_LINE (4480))))))).isBuiltAndTrue ()) {
         GGS_AC_galgasType  var_cas_t ;
         var_cas_t = GGS_typeGalgasUndefinedMapType::constructor_new (_inLexique, var_cas_mapTypeName COMMA_HERE) ;
         var_cas_tableEnAvant.method_insertKey (_inLexique, var_cas_mapTypeName, var_cas_t SOURCE_FILE_AT_LINE (4482)) ;
@@ -5797,7 +5797,7 @@ pr_semantics_declaration_semantics_parser_4762_29_ (galgas_scanner & _inLexique,
   switch (select_semantics_parser_44 (_inLexique)) {
     case 1 : {
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_listTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4775)) SOURCE_FILE_AT_LINE (4775))) || (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_listTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4775)) SOURCE_FILE_AT_LINE (4775))))))).isBuiltAndTrue ()) {
+      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_listTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4775)) SOURCE_FILE_AT_LINE (4775))) | (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_listTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4775)) SOURCE_FILE_AT_LINE (4775))))))).isBuiltAndTrue ()) {
         GGS_AC_galgasType  var_cas_t ;
         var_cas_t = GGS_typeGalgasUndefinedListType::constructor_new (_inLexique, var_cas_listTypeName COMMA_HERE) ;
         var_cas_tableEnAvant.method_insertKey (_inLexique, var_cas_listTypeName, var_cas_t SOURCE_FILE_AT_LINE (4777)) ;
@@ -5847,7 +5847,7 @@ pr_semantics_declaration_semantics_parser_4762_29_importSemantics (galgas_scanne
   switch (select_semantics_parser_44 (_inLexique)) {
     case 1 : {
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_listTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4816)) SOURCE_FILE_AT_LINE (4816))) || (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_listTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4816)) SOURCE_FILE_AT_LINE (4816))))))).isBuiltAndTrue ()) {
+      if (((! (((var_cas_tableEnAvant.reader_hasKey (_inLexique, var_cas_listTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4816)) SOURCE_FILE_AT_LINE (4816))) | (var_cas_ioComponentSemanticsEntitiesMap.reader_hasKey (_inLexique, var_cas_listTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (4816)) SOURCE_FILE_AT_LINE (4816))))))).isBuiltAndTrue ()) {
         GGS_AC_galgasType  var_cas_t ;
         var_cas_t = GGS_typeGalgasUndefinedListType::constructor_new (_inLexique, var_cas_listTypeName COMMA_HERE) ;
         var_cas_tableEnAvant.method_insertKey (_inLexique, var_cas_listTypeName, var_cas_t SOURCE_FILE_AT_LINE (4818)) ;

@@ -88,11 +88,11 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 
 bool cPtr_C_while_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                      const bool /* inGenerateSemanticInstructions */) const {
-  return formalArgumentIsUsedForList (mInstructionList1, inArgumentCppName, true)
+                      const bool inGenerateSemanticInstructions) const {
+  return formalArgumentIsUsedForList (mInstructionList1, inArgumentCppName, inGenerateSemanticInstructions)
     || mVariantExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
     || mWhileExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
-    || formalArgumentIsUsedForList (mInstructionList2, inArgumentCppName, true) ;
+    || formalArgumentIsUsedForList (mInstructionList2, inArgumentCppName, inGenerateSemanticInstructions) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -168,8 +168,8 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 
 bool cPtr_typeForeachInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                      const bool /* inGenerateSemanticInstructions */) const {
-  bool used = formalArgumentIsUsedForList (mInstructionList, inArgumentCppName, true)
+                      const bool inGenerateSemanticInstructions) const {
+  bool used = formalArgumentIsUsedForList (mInstructionList, inArgumentCppName, inGenerateSemanticInstructions)
     || mWhileExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {
