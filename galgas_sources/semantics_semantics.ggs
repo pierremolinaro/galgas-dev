@@ -264,10 +264,17 @@ list @typeExpressionList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+list @varToDropList {
+  @typeCplusPlusName mVarToDrop ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeErrorInstruction extends @typeInstruction {
   @typeExpression mErrorLocationExpression ;
   @typeExpression mErrorMessageExpression ;
   @location mLocation ;
+  @varToDropList mVarToDropList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -948,6 +948,7 @@ rule <rule_declaration_or_implementation>
     @stringset superEntityStringSet ;
     extract type->@typeGalgas_singleEntity (?* ?* ?* ?* ?* ?superEntityStringSet) error inEffectiveReturnedEntity : messageGalgasType ;
     if not [superEntityStringSet hasKey ![formalReturnedEntity value]] then
+      message "superEntityStringSet : " . [superEntityStringSet description] ;
       error inEffectiveReturnedEntity: "the '@" . [formalReturnedEntity value] . "' entity or one of its inherited entities is expected here" ;
     end if ;
   end if ;

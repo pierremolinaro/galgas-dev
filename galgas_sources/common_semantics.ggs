@@ -2576,7 +2576,9 @@ routine buildSuperEntitySet
   ??@lstring inSuperEntityName
   ?!@stringset ioSuperEntitySet
 :
-  if ([inSuperEntityName value] != "") & not [inEntityMap hasKey ![inSuperEntityName value]] then
+  if ([inSuperEntityName value] != "")
+    & [inEntityMap hasKey ![inSuperEntityName value]]
+    & not [ioSuperEntitySet hasKey ![inSuperEntityName value]] then
     ioSuperEntitySet += ![inSuperEntityName value] ;
     @lstring superEntityName ;
     [inEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName] ;

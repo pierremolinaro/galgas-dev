@@ -3420,22 +3420,30 @@ rule <semantic_instruction>
   ;
 #--- Check that error message is a @string instance
   extract errorMessageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
-#--- Build instruction and append it to instructions list
-  @typeInstruction instruction := [@typeErrorInstruction new !errorLocationExpression !errorMessageExpression !here] ;
-  ioInstructionList += !instruction ;
 #--- Valuations fictives
+  @varToDropList variablesToDrop [emptyList] ;
   select
   or
     $->$ ;
     repeat
       @lstring nomVariable ;
       $identifier$ ? nomVariable ;
-      [!?ioVariablesMap searchForWriteAccess !nomVariable ?* ?*] ;
+      @typeCplusPlusName varCppName ;
+      [!?ioVariablesMap searchForWriteAccess !nomVariable ?* ?varCppName] ;
+      variablesToDrop += !varCppName ;
     while
       $,$ ;
    end repeat ;
   end select ;
   $;$ ;
+#--- Build instruction and append it to instructions list
+  @typeInstruction instruction := [@typeErrorInstruction new
+    !errorLocationExpression
+    !errorMessageExpression
+    !here
+    !variablesToDrop
+  ] ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
