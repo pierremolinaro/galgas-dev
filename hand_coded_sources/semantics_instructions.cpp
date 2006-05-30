@@ -299,13 +299,13 @@ bool cPtr_typeStructuredExtractInstructionWithElse
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeDropInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+void cPtr_typeDropInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aVariableConsommee (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".drop_operation () ;\n" ;
@@ -314,15 +314,15 @@ void cPtr_typeDropInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeDropInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeDropInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeDropInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeDropInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return aVariableConsommee.isEqualTo (inArgumentCppName) ;
 }
@@ -336,38 +336,51 @@ bool cPtr_typeDropInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeErrorInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeErrorInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "  " ;
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, " ;
     mErrorMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mLocation.currentLineNumber ()
               << ")) ;\n" ;
+    GGS_varToDropList::element_type * currentVarToDrop = mVarToDropList.firstObject () ;
+    while (currentVarToDrop != NULL) {
+      macroValidPointer (currentVarToDrop) ;
+      currentVarToDrop->mVarToDrop (HERE)->generateCplusPlusName (ioCppFile) ;
+      ioCppFile << ".drop_operation () ;\n" ;
+      currentVarToDrop = currentVarToDrop->nextObject () ;
+    }
   }
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeErrorInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeErrorInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeErrorInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
-  return mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
-      || mErrorMessageExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+bool cPtr_typeErrorInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  bool isUsed = mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+             || mErrorMessageExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  GGS_varToDropList::element_type * currentVarToDrop = mVarToDropList.firstObject () ;
+  while ((currentVarToDrop != NULL) && ! isUsed) {
+    macroValidPointer (currentVarToDrop) ;
+    isUsed = currentVarToDrop->mVarToDrop.isEqualTo (inArgumentCppName)  ;
+    currentVarToDrop = currentVarToDrop->nextObject () ;
+  }
+  return isUsed ;
 }
 
 //---------------------------------------------------------------------------*
@@ -379,15 +392,14 @@ bool cPtr_typeErrorInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeWarningInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+void cPtr_typeWarningInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "  " ;
     mWarningLocationExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticWarning (_inLexique, " ;
     mWarningMessageExpression (HERE)->generateExpression (ioCppFile) ;
@@ -399,15 +411,15 @@ void cPtr_typeWarningInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeWarningInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeWarningInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeWarningInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeWarningInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return mWarningLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mWarningMessageExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
