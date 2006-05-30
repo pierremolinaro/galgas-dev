@@ -2572,15 +2572,15 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine buildSuperEntitySet
-  ?!@entityToImplementMap ioEntityMap
+  ??@entityToImplementMap inEntityMap
   ??@lstring inSuperEntityName
   ?!@stringset ioSuperEntitySet
 :
-  if ([inSuperEntityName value] != "") & not [ioSuperEntitySet hasKey ![inSuperEntityName value]] then
+  if ([inSuperEntityName value] != "") & not [inEntityMap hasKey ![inSuperEntityName value]] then
     ioSuperEntitySet += ![inSuperEntityName value] ;
     @lstring superEntityName ;
-    [ioEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName] ;
-    buildSuperEntitySet !?ioEntityMap !superEntityName !?ioSuperEntitySet ;
+    [inEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName] ;
+    buildSuperEntitySet !inEntityMap !superEntityName !?ioSuperEntitySet ;
   end if ;
 end routine ;
 
@@ -2606,7 +2606,7 @@ routine checkPath
        @stringset superEntitySet [emptySet] ;
        @lstring actualEntityName := [@lstring new !entityTypeName ![kPathElement location]] ;
        buildSuperEntitySet
-        !?ioEntityMap 
+        !ioEntityMap 
         !actualEntityName
         !?superEntitySet
        ;
@@ -2637,14 +2637,14 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine computeDescendantSet
-  ?!@entityToImplementMap ioEntityMap
+  ??@entityToImplementMap inEntityMap
   ?@lstring inEntityName
   ?!@stringset ioDescendantEntitySet
 :
-  foreach ioEntityMap (??@lstring kEntityName ??* ??* ??* ??@lstring kSuperEntityName) :
+  foreach inEntityMap (??@lstring kEntityName ??* ??* ??* ??@lstring kSuperEntityName) :
     if ([kSuperEntityName value] == [inEntityName value]) & not [ioDescendantEntitySet hasKey ![inEntityName value]] then
       ioDescendantEntitySet += ![kEntityName value] ;
-      computeDescendantSet !?ioEntityMap !kEntityName !?ioDescendantEntitySet ;
+      computeDescendantSet !inEntityMap !kEntityName !?ioDescendantEntitySet ;
     end if ;
   end foreach ;
 end routine ;

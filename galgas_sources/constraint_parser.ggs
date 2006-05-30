@@ -414,7 +414,7 @@ rule <constraints_on_entity_declaration>
     ?superEntity
    ] ;
   @stringset descendantEntitySet [emptySet] ;
-  computeDescendantSet !?ioEntityMap !entityName !?descendantEntitySet ;
+  computeDescendantSet !ioEntityMap !entityName !?descendantEntitySet ;
 #--- Get inherited properties from super class constraints
   @mapAsConstraintPropertyMap  allMapsAsConstraintPropertyMap [emptyMap] ;
   @constrainedEntityPassMap inheritedConstrainedEntityPassMap [emptyMap] ;

@@ -31,7 +31,7 @@ generateExpression (AC_OutputStream & ioCppFile) {
   mExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ".unary_minus_operation (_inLexique SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
-              << ")) ;\n" ;
+              << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -625,7 +625,7 @@ void cPtr_typeAddOperation::generateExpression (AC_OutputStream & ioCppFile) {
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
-              << ")) ;\n" ;
+              << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -658,7 +658,7 @@ void cPtr_typeSubOperation::generateExpression (AC_OutputStream & ioCppFile) {
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
-              << ")) ;\n" ;
+              << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -691,7 +691,7 @@ void cPtr_typeMultiplyOperation::generateExpression (AC_OutputStream & ioCppFile
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
-              << ")) ;\n" ;
+              << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -724,7 +724,7 @@ void cPtr_typeDivideOperation::generateExpression (AC_OutputStream & ioCppFile) 
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
-              << ")) ;\n" ;
+              << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -757,7 +757,7 @@ void cPtr_typeModuloOperation::generateExpression (AC_OutputStream & ioCppFile) 
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " SOURCE_FILE_AT_LINE ("
             << mInstructionLocation.currentLineNumber ()
-            << ")) ;\n" ;
+            << "))" ;
 }
 
 //---------------------------------------------------------------------------*

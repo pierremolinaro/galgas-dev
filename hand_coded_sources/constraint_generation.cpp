@@ -598,40 +598,15 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
 
     generatedZone3.writeCHyphenLineComment () ;
         
-//--- reader_description (C_Lexique & inLexique COMMA_LOCATION_ARGS)
-//    if (! currentConstrainedEntity->mInfo.mIsAbstract.boolValue ()) {
-      generatedZone3.writeCHyphenLineComment () ;
-      generatedZone3 << "GGS_string GGS__" << inConstraintComponentName << "_ConstraintOn_"
-                     << currentConstrainedEntity->mKey << "::\n"
-                        "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
-                        "  C_String s ;\n"
-                        "  s << \"<" << inConstraintComponentName << " constraint for @" << currentConstrainedEntity->mKey << " {\"\n" ;
-/*      currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
-      while (currentProperty != NULL) {
-        macroValidPointer (currentProperty) ;
-        switch (currentProperty->mInfo.mKind.enumValue ()) {
-        case GGS_metamodelPropertyKind::enum_attributeProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE)\n" ;
-          break ;
-        case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << "->reader_description  (_inLexique COMMA_THERE)\n" ;
-          break ;
-        case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE)\n" ;
-          break ;
-        case GGS_metamodelPropertyKind::enum_mapProperty:
-        case GGS_metamodelPropertyKind::enum_fetchedProperty:
-        case GGS_metamodelPropertyKind::enum_contextProperty:
-        case GGS_metamodelPropertyKind::enum_relationProperty:
-        case GGS_metamodelPropertyKind::kNotBuilt:
-          break ;
-        }
-        currentProperty = currentProperty->nextObject () ;
-      }*/
-      generatedZone3 << "    << \"}>\" ;\n"
-                        "  return GGS_string (true, s) ;\n"
-                        "}\n\n" ;
-//    }
+    generatedZone3.writeCHyphenLineComment () ;
+    generatedZone3 << "GGS_string GGS__" << inConstraintComponentName << "_ConstraintOn_"
+                   << currentConstrainedEntity->mKey << "::\n"
+                      "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
+                      "  C_String s ;\n"
+                      "  s << \"<" << inConstraintComponentName << " constraint for @" << currentConstrainedEntity->mKey << " {\"\n" ;
+    generatedZone3 << "    << \"}>\" ;\n"
+                      "  return GGS_string (true, s) ;\n"
+                      "}\n\n" ;
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Phase Methods

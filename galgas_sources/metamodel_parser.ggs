@@ -158,7 +158,7 @@ rule <parse_metamodel>
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName) :
     @stringset superEntitySet [emptySet] ;
-    buildSuperEntitySet !?entityMap !kSuperEntityName !?superEntitySet ;
+    buildSuperEntitySet !entityMap !kSuperEntityName !?superEntitySet ;
     @AC_galgasType t := [@typeGalgas_singleEntity new
       !kEntityName
       !kAllPropertiesMap
