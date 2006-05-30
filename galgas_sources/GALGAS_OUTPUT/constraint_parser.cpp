@@ -257,9 +257,9 @@ pr_parse_constraint_document_constraint_parser_183_33_ (galgas_scanner & _inLexi
         GGS_constrainedEntityPassMap::element_type * operand_10682 = operand_9504->mInfo.mConstrainedEntityPassMap.firstObject () ;
         while ((operand_10682 != NULL)) {
           macroValidPointer (operand_10682) ;
-          if ((((operand_10682->mInfo.mConstraintPropertyDefinitionSet.reader_hasKey (_inLexique, operand_9743->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (308)) SOURCE_FILE_AT_LINE (308))) && ((! (var_cas_referencePassSet.reader_hasKey (_inLexique, operand_10682->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (308)) SOURCE_FILE_AT_LINE (308))))))).isBuiltAndTrue ()) {
+          if ((((operand_10682->mInfo.mConstraintPropertyDefinitionSet.reader_hasKey (_inLexique, operand_9743->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (308)) SOURCE_FILE_AT_LINE (308))) & ((! (var_cas_referencePassSet.reader_hasKey (_inLexique, operand_10682->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (308)) SOURCE_FILE_AT_LINE (308))))))).isBuiltAndTrue ()) {
               operand_10682->mKey.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "this pass should not define the '")) + (operand_9743->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (309))))) + (GGS_string (true, "' property"))) SOURCE_FILE_AT_LINE (309)) ;
-          }else if (((((! (operand_10682->mInfo.mConstraintPropertyDefinitionSet.reader_hasKey (_inLexique, operand_9743->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (310)) SOURCE_FILE_AT_LINE (310))))) && (var_cas_referencePassSet.reader_hasKey (_inLexique, operand_10682->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (310)) SOURCE_FILE_AT_LINE (310))))).isBuiltAndTrue ()) {
+          }else if (((((! (operand_10682->mInfo.mConstraintPropertyDefinitionSet.reader_hasKey (_inLexique, operand_9743->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (310)) SOURCE_FILE_AT_LINE (310))))) & (var_cas_referencePassSet.reader_hasKey (_inLexique, operand_10682->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (310)) SOURCE_FILE_AT_LINE (310))))).isBuiltAndTrue ()) {
               operand_10682->mKey.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "this pass should define the '")) + (operand_9743->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (311))))) + (GGS_string (true, "' property"))) SOURCE_FILE_AT_LINE (311)) ;
           }
           if ((operand_10682->mInfo.mCallInstructionSharedPropertySignatureMap.reader_hasKey (_inLexique, operand_9743->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (314)) SOURCE_FILE_AT_LINE (314))).isBuiltAndTrue ()) {
@@ -693,7 +693,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
             var_cas_cppName = GGS_typeDirectName::constructor_new (_inLexique, GGS_lstring::constructor_new (_inLexique, ((((GGS_string (true, "(* ")) + (operand_21918->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (573))))) + (GGS_string (true, ")"))), GGS_location (_inLexique) COMMA_HERE) COMMA_HERE) ;
             GGS_AC_galgasType  var_cas_t ;
             var_cas_t = GGS_typeGalgas_mapEntityInInstruction::constructor_new (_inLexique, operand_21918->mInfo.mMapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (574)), operand_21918->mInfo.mElementTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (574)) COMMA_HERE) ;
-            if (((((operand_21918->mInfo.mPassIndex) == (var_cas_currentPassIndex)) && (var_cas_mapAsConstraintPropertyMap.reader_hasKey (_inLexique, operand_21918->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (575)) SOURCE_FILE_AT_LINE (575))))).isBuiltAndTrue ()) {
+            if (((((operand_21918->mInfo.mPassIndex) == (var_cas_currentPassIndex)) & (var_cas_mapAsConstraintPropertyMap.reader_hasKey (_inLexique, operand_21918->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (575)) SOURCE_FILE_AT_LINE (575))))).isBuiltAndTrue ()) {
               var_cas_variablesMap.method_insertUsedInOutArgument (_inLexique, operand_21918->mKey, var_cas_t, var_cas_cppName SOURCE_FILE_AT_LINE (576)) ;
             }else{
               var_cas_variablesMap.method_insertUsedConstInArgument (_inLexique, operand_21918->mKey, var_cas_t, var_cas_cppName SOURCE_FILE_AT_LINE (578)) ;
@@ -707,7 +707,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
             var_cas_cppName = GGS_typeDirectName::constructor_new (_inLexique, operand_22742->mKey COMMA_HERE) ;
             GGS_AC_galgasType  var_cas_t ;
             var_cas_t = GGS_typeGalgas_mapIndexInInstruction::constructor_new (_inLexique, operand_22742->mInfo.mMapTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (584)) COMMA_HERE) ;
-            if (((((operand_22742->mInfo.mPassIndex) == (var_cas_currentPassIndex)) && (var_cas_indexMap.reader_hasKey (_inLexique, operand_22742->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (585)) SOURCE_FILE_AT_LINE (585))))).isBuiltAndTrue ()) {
+            if (((((operand_22742->mInfo.mPassIndex) == (var_cas_currentPassIndex)) & (var_cas_indexMap.reader_hasKey (_inLexique, operand_22742->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (585)) SOURCE_FILE_AT_LINE (585))))).isBuiltAndTrue ()) {
               var_cas_variablesMap.method_insertOutProperty (_inLexique, operand_22742->mKey, var_cas_t, var_cas_cppName SOURCE_FILE_AT_LINE (586)) ;
             }else{
               var_cas_variablesMap.method_insertUsedConstInArgument (_inLexique, operand_22742->mKey, var_cas_t, var_cas_cppName SOURCE_FILE_AT_LINE (588)) ;

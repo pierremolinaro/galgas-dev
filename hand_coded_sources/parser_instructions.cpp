@@ -545,7 +545,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 
 bool cPtr_C_repeat_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool inGenerateSemanticInstructions) const {
+                      const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::element_type * currentBranch = aListesBranchesRepeter.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
@@ -637,7 +637,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 
 bool cPtr_C_parse_rewind_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool inGenerateSemanticInstructions) const {
+                      const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::element_type * currentBranch = mBranchList.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
@@ -754,7 +754,7 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 
 bool cPtr_C_parse_when_else_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool inGenerateSemanticInstructions) const {
+                      const bool inGenerateSemanticInstructions) const {
   bool used = formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {

@@ -171,7 +171,7 @@ pr_parse_metamodel_metamodel_parser_114_23_ (galgas_scanner & _inLexique,
     GGS_entityPropertyMap::element_type * operand_7109 = operand_6876->mInfo.mEntityPropertiesMap.firstObject () ;
     while ((operand_7109 != NULL)) {
       macroValidPointer (operand_7109) ;
-      if (((((operand_7109->mInfo.mKind) == (GGS_metamodelPropertyKind::constructor_singleReferenceProperty (_inLexique COMMA_HERE))) || ((operand_7109->mInfo.mKind) == (GGS_metamodelPropertyKind::constructor_multipleReferenceProperty (_inLexique COMMA_HERE))))).isBuiltAndTrue ()) {
+      if (((((operand_7109->mInfo.mKind) == (GGS_metamodelPropertyKind::constructor_singleReferenceProperty (_inLexique COMMA_HERE))) | ((operand_7109->mInfo.mKind) == (GGS_metamodelPropertyKind::constructor_multipleReferenceProperty (_inLexique COMMA_HERE))))).isBuiltAndTrue ()) {
         GGS_entityPropertyMap  var_cas_7449 ;
         GGS_bool var_cas_7452 ;
         GGS_entityPropertyMap  var_cas_7455 ;

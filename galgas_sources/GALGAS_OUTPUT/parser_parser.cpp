@@ -926,7 +926,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
     var_cas_nonterminalSymbolAltMap (HERE)->method_searchKey (_inLexique, var_cas_altName, var_cas_signatureFournieParPrototype, var_cas_formalReturnedEntity SOURCE_FILE_AT_LINE (935)) ;
   }
   ::routine_verifierCompatibiliteSignatures (_inLexique,  var_cas_signatureFournieParPrototype,  var_cas_listeDeTypesFormels,  var_cas_errorLocation SOURCE_FILE_AT_LINE (937)) ;
-  if (((((var_cas_formalReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (941))) == (GGS_string (true, ""))) && ((var_cas_inEffectiveReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (941))) != (GGS_string (true, ""))))).isBuiltAndTrue ()) {
+  if (((((var_cas_formalReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (941))) == (GGS_string (true, ""))) & ((var_cas_inEffectiveReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (941))) != (GGS_string (true, ""))))).isBuiltAndTrue ()) {
       var_cas_inEffectiveReturnedEntity.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "the non terminal declaration does not name any returned entity") SOURCE_FILE_AT_LINE (942)) ;
   }else if (((var_cas_inEffectiveReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (943))) != (var_cas_formalReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (943)))).isBuiltAndTrue ()) {
     GGS_AC_semanticsEntity  var_cas_e ;
@@ -1156,7 +1156,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
   GGS_M_nonterminalSymbolAlts::element_type * operand_38591 = var_cas_nonterminalSymbolAltMap.firstObject () ;
   while ((operand_38591 != NULL)) {
     macroValidPointer (operand_38591) ;
-    if (((((operand_38591->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (1081))) != (GGS_string (true, "parse"))) && ((! (var_cas_altProductionsMap.reader_hasKey (_inLexique, operand_38591->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (1081)) SOURCE_FILE_AT_LINE (1081))))))).isBuiltAndTrue ()) {
+    if (((((operand_38591->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (1081))) != (GGS_string (true, "parse"))) & ((! (var_cas_altProductionsMap.reader_hasKey (_inLexique, operand_38591->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (1081)) SOURCE_FILE_AT_LINE (1081))))))).isBuiltAndTrue ()) {
         GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "the '")) + (operand_38591->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (1082))))) + (GGS_string (true, "' label is not implemented within the rule"))) SOURCE_FILE_AT_LINE (1082)) ;
     }
     operand_38591 = operand_38591->nextObject () ;
@@ -1429,7 +1429,7 @@ pr_syntax_instruction_parser_parser_1223_26_ (galgas_scanner & _inLexique,
   if (var_cas_nonterminalSymbolAltMap.isBuilt ()) {
     var_cas_nonterminalSymbolAltMap (HERE)->method_searchKey (_inLexique, var_cas_altName, var_cas_signatureMethode, var_cas_returnedEntityFromSignature SOURCE_FILE_AT_LINE (1251)) ;
   }
-  if ((((var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel) && ((var_cas_altName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1253))) != (GGS_string (true, "parse"))))).isBuiltAndTrue ()) {
+  if ((((var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel) & ((var_cas_altName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1253))) != (GGS_string (true, "parse"))))).isBuiltAndTrue ()) {
     if (((! (var_cas_nonterminalSymbolAltMap.reader_hasKey (_inLexique, GGS_string (true, "parse") SOURCE_FILE_AT_LINE (1254))))).isBuiltAndTrue ()) {
         GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "As current rule has 'parse' label, every invoked non terminal symbol must be declared with 'parse' label") SOURCE_FILE_AT_LINE (1255)) ;
     }
@@ -1457,11 +1457,11 @@ pr_syntax_instruction_parser_parser_1223_26_ (galgas_scanner & _inLexique,
     default :
       break ;
   }
-  if (((((var_cas_returnedEntityFromSignature.reader_value (_inLexique SOURCE_FILE_AT_LINE (1282))) == (GGS_string (true, ""))) && ((var_cas_returnedEntityVariableName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1282))) != (GGS_string (true, ""))))).isBuiltAndTrue ()) {
+  if (((((var_cas_returnedEntityFromSignature.reader_value (_inLexique SOURCE_FILE_AT_LINE (1282))) == (GGS_string (true, ""))) & ((var_cas_returnedEntityVariableName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1282))) != (GGS_string (true, ""))))).isBuiltAndTrue ()) {
       var_cas_returnedEntityVariableName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "the non terminal symbol is declared with no returned entity") SOURCE_FILE_AT_LINE (1283)) ;
-  }else if (((((var_cas_returnedEntityFromSignature.reader_value (_inLexique SOURCE_FILE_AT_LINE (1284))) != (GGS_string (true, ""))) && ((var_cas_returnedEntityVariableName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1284))) == (GGS_string (true, ""))))).isBuiltAndTrue ()) {
+  }else if (((((var_cas_returnedEntityFromSignature.reader_value (_inLexique SOURCE_FILE_AT_LINE (1284))) != (GGS_string (true, ""))) & ((var_cas_returnedEntityVariableName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1284))) == (GGS_string (true, ""))))).isBuiltAndTrue ()) {
       var_cas_returnedEntityVariableName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "the non terminal symbol is declared to return an instance of '@")) + (var_cas_returnedEntityFromSignature.reader_value (_inLexique SOURCE_FILE_AT_LINE (1285))))) + (GGS_string (true, "' entity"))) SOURCE_FILE_AT_LINE (1285)) ;
-  }else if (((((var_cas_returnedEntityFromSignature.reader_value (_inLexique SOURCE_FILE_AT_LINE (1286))) != (GGS_string (true, ""))) && ((var_cas_returnedEntityVariableName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1286))) != (GGS_string (true, ""))))).isBuiltAndTrue ()) {
+  }else if (((((var_cas_returnedEntityFromSignature.reader_value (_inLexique SOURCE_FILE_AT_LINE (1286))) != (GGS_string (true, ""))) & ((var_cas_returnedEntityVariableName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1286))) != (GGS_string (true, ""))))).isBuiltAndTrue ()) {
     if ((var_cas_isMultipleEntity).isBuiltAndTrue ()) {
       GGS_AC_galgasType  var_cas_type ;
       GGS_typeCplusPlusName  var_cas_46603 ;
