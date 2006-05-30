@@ -235,6 +235,7 @@ createParserFile (const C_String & inCreatedProjectPathName,
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "syntax " << projectName << "_syntax :\n"
        "import lexique " << projectName << "_lexique in \"" << projectName << "_lexique.ggs\" ;\n"
+       "import option " << projectName << "_option in \"" << projectName << "_option.ggs\" ;\n"
        "import semantics " << projectName << "_semantics in \"" << projectName << "_semantics.ggs\" ;\n" ;
   if (inProjectStyle == kMDAproject) {
     f << "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n" ;
@@ -276,6 +277,7 @@ createGrammarFile (const C_String & inCreatedProjectPathName,
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "grammar " << projectName << "_grammar \"LL1\":\n"
        "import lexique " << projectName << "_lexique in \"" << projectName << "_lexique.ggs\" ;\n"
+       "import option " << projectName << "_option in \"" << projectName << "_option.ggs\" ;\n"
        "import syntax " << projectName << "_syntax in \"" << projectName << "_syntax.ggs\" ;\n"
        "\n"
        "root <start_symbol>" ;

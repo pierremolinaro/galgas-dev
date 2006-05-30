@@ -624,6 +624,20 @@ class @C_declarationInstructionWithAssignment extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   " W H I L E "   I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @C_while_instruction extends @typeInstruction {
+  @typeExpression mVariantExpression ;
+  @typeInstructionList mInstructionList1 ;
+  @typeExpression mWhileExpression ;
+  @typeInstructionList mInstructionList2 ;
+  @location mLocation ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   " I F "   I N S T R U C T I O N                                         *
 #                                                                           *
 #---------------------------------------------------------------------------*

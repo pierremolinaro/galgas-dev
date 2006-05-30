@@ -771,7 +771,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
     startIndex ++ ;
   }
   generatedZone3 << "} ;\n\n"
-                    "static const uint16 gActionTableIndex [" << rowsCount << "] = {" ;
+                    "static const uint32 gActionTableIndex [" << rowsCount << "] = {" ;
   first = true ;
   for (sint32 i=0 ; i<rowsCount ; i++) {
     generatedZone3 << '\n' ;

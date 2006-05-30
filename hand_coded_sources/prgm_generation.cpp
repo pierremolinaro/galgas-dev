@@ -376,16 +376,20 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "                                                                      false) ;\n"
              "  #endif\n"
              "  try{\n"
-             "    " << inProgramComponentName << currentGrammar->mGrammarPostfix
+             "    for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
+             "      " << inProgramComponentName << currentGrammar->mGrammarPostfix
           << " * compiler = NULL ;\n"
-             "    macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix
+             "      macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix
           << " (IOparameters COMMA_HERE)) ;\n"
-					   "	  compiler->_prologue () ;\n"
-             "    for (sint32 i=0 ; (i<sourceFilesArray.count ()) && (returnCode == 0) ; i++) {\n"
-             "      compiler->doCompilation (sourceFilesArray (i COMMA_HERE), returnCode) ;\n"
+					   "	    compiler->_prologue () ;\n"
+             "      sint16 r = 0 ;\n"
+             "      compiler->doCompilation (sourceFilesArray (i COMMA_HERE), r) ;\n"
+             "      if (r != 0) {\n"
+             "        returnCode = r ;\n"
+             "      }\n"
+					   "	    compiler->_epilogue () ;\n"
+             "      macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
              "    }\n"
-					   "	  compiler->_epilogue () ;\n"
-             "    macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
              "	  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "      C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
              "    #endif\n"

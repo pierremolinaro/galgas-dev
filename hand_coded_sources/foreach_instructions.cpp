@@ -23,14 +23,94 @@
 #include "utilities/MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
-void cPtr_typeForeachInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
-                       const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
-                       const bool inGenerateDebug,
-                       const bool inGenerateSemanticInstructions) const {
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_while_instruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & inTargetFileName,
+                     sint32 & ioPrototypeIndex,
+                     const bool inGenerateDebug,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+  //--- 'condition' variable
+    C_String variableCondition ;
+    variableCondition << "_condition_" << mLocation.currentLocation () ;
+  //--- 'variant' variable
+    C_String variantVariable ;
+    variantVariable << "_variant_" << mLocation.currentLocation () ;
+  //--- Loop header
+    ioCppFile << "GGS_uint " << variantVariable << " = " ;
+    mVariantExpression (HERE)->generateExpression (ioCppFile) ;
+    ioCppFile << " ;\n"
+                 "GGS_bool " << variableCondition << " (" << variantVariable << ".isBuilt (), true) ;\n"
+                 "while (" << variableCondition << ".isBuiltAndTrue ()) {\n"
+                 "  if (" << variantVariable << ".uintValue () == 0) {\n"
+                 "    _inLexique.onTheFlyRunTimeError (\"loop variant error\" SOURCE_FILE_AT_LINE ("
+              << mLocation.currentLineNumber ()
+              << ")) ;\n"
+                 "    " << variableCondition << " = GGS_bool (true, false) ;\n"
+                 "  }else{\n" 
+                 "    " << variantVariable << ".decrement_operation (_inLexique COMMA_HERE) ;\n" ;
+    ioCppFile.incIndentation (+2) ;
+  //--- First instruction list
+    C_String inutilise ;
+    generateInstructionListForList (mInstructionList1, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+  //--- Condition
+    ioCppFile << "  " << variableCondition << " = " ;
+    mWhileExpression (HERE)->generateExpression (ioCppFile) ;
+    ioCppFile << "  ;\n" ;
+  //--- Second instruction list
+    ioCppFile << "  if (" << variableCondition << ".isBuiltAndTrue ()) {\n" ;
+    ioCppFile.incIndentation (+2) ;
+    generateInstructionListForList (mInstructionList1, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+    ioCppFile.incIndentation (-4) ;
+    ioCppFile << "    }\n"
+                 "  }\n"
+                 "}\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_while_instruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_while_instruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return formalArgumentIsUsedForList (mInstructionList1, inArgumentCppName, true)
+    || mVariantExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+    || mWhileExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+    || formalArgumentIsUsedForList (mInstructionList2, inArgumentCppName, true) ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeForeachInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & inTargetFileName,
+                     sint32 & ioPrototypeIndex,
+                     const bool inGenerateDebug,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
@@ -78,17 +158,17 @@ void cPtr_typeForeachInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeForeachInstruction
-::isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+bool cPtr_typeForeachInstruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   return isLexiqueFormalArgumentUsedForList (mInstructionList, inGenerateSemanticInstructions)
     || mWhileExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeForeachInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeForeachInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
   bool used = formalArgumentIsUsedForList (mInstructionList, inArgumentCppName, true)
     || mWhileExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;

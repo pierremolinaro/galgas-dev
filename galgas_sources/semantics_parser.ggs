@@ -2612,6 +2612,7 @@ rule <parse_parameters_list>
 :
   outExpressionList := [@typeExpressionList emptyList] ;
   listeTypesParametresEffectifs := [@L_actualParametersSignature emptyList] ;
+  @stringset exclusiveVariables [emptySet] ;
   repeat
   while
     $!$ ;
@@ -2644,6 +2645,11 @@ rule <parse_parameters_list>
       listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
       @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
       outExpressionList += !e ;
+      if [exclusiveVariables hasKey ![nomArgument value]] then
+        error nomArgument: "this object is already named as input or output/input effectif argument of current instruction" ;
+      else
+         exclusiveVariables += ![nomArgument value] ;
+      end if ;
     end select ;
   while
     $!?$ ;
@@ -2656,6 +2662,11 @@ rule <parse_parameters_list>
     listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
     @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
     outExpressionList += !e ;
+      if [exclusiveVariables hasKey ![nomArgument value]] then
+        error nomArgument: "this object is already named as input or output/input effectif argument of current instruction" ;
+      else
+         exclusiveVariables += ![nomArgument value] ;
+      end if ;
   end repeat ;
 end rule ;
 
@@ -3564,6 +3575,101 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   Instruction 'while ... do ... end while ;'                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ?@string inConstraintCurrentPassName
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
+:
+  $loop$ ;
+#--- Variant expression
+  @typeExpression variantExpression ;
+  @AC_galgasType variantResultType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?variantExpression
+    ?variantResultType
+  ;
+  extract variantResultType ->@typeGalgas_uint () error here : messageGalgasType ;
+  $:$ ;
+#--- Repeated instruction list
+  @typeInstructionList instructionList1 [emptyList] ;
+  block ioVariablesMap.repeatBlock () :
+    block ioVariablesMap.repeatPart () :
+    #--- Liste d'instructions
+      <semantic_instructions_list_no_verif>
+        !?ioComponentSemanticsEntitiesMap
+        !?listeEntitesAengendrer
+        !?ioOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?instructionList1
+        !inConstraintCurrentPassName
+        !?ioPropertyMap
+        !?ioMapAsConstraintPropertyMap
+        !?ioConstraintPropertyDefinitionSet
+        !?ioCallInstructionSharedPropertySignatureMap
+      ;
+    end block (!here) ;
+  end block () ;
+  $while$ ;
+#--- Conditionnal expression
+  @typeExpression conditionalExpression ;
+  @AC_galgasType resultType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?conditionalExpression
+    ?resultType
+  ;
+  extract resultType ->@typeGalgas_bool () error here : messageGalgasType ;
+  $do$ ;
+#--- Repeated instruction list
+  @typeInstructionList instructionList2 [emptyList] ;
+  block ioVariablesMap.repeatBlock () :
+    block ioVariablesMap.repeatPart () :
+    #--- Liste d'instructions
+      <semantic_instructions_list_no_verif>
+        !?ioComponentSemanticsEntitiesMap
+        !?listeEntitesAengendrer
+        !?ioOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?instructionList2
+        !inConstraintCurrentPassName
+        !?ioPropertyMap
+        !?ioMapAsConstraintPropertyMap
+        !?ioConstraintPropertyDefinitionSet
+        !?ioCallInstructionSharedPropertySignatureMap
+      ;
+    end block (!here) ;
+  end block () ;
+  @typeInstruction  instruction := [@C_while_instruction new
+    !variantExpression
+    !instructionList1
+    !conditionalExpression
+    !instructionList2
+    !here
+  ] ;
+  $end$ ;
+  $loop$ ;
+  $;$ ;
+  ioInstructionList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    G R A M M A R    I N S T R U C T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3661,22 +3767,24 @@ rule <semantic_instruction>
       @foreachEnumerationList foreachEnumerationList [emptyList] ;
       repeat
       #--- Enumerated variable
-        @lstring variableName ;
-        @typeCplusPlusName cppName ;
-        @AC_galgasType variableType ;
+        @lstring enumeratedVariableName ;
+        @typeCplusPlusName enumeratedVariableCPPName ;
+        @AC_galgasType enumeratedVariableType ;
         <read_access>
-          ?variableName
-          ?cppName
-          ?variableType
+          ?enumeratedVariableName
+          ?enumeratedVariableCPPName
+          ?enumeratedVariableType
           !?ioVariablesMap
         ;
+      #--- Insert iterated variable as local constant
+        [!?ioVariablesMap insertUsedConstInArgument !enumeratedVariableName !enumeratedVariableType !enumeratedVariableCPPName] ;
       #--- Check this variable can be enumerated
         @typeListeAttributsSemantiques formalEnumerationList ;
         @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
-        [variableType acceptForeachInstruction !variableName ?formalEnumerationList ?localConstantBuildStyleEnum] ;
+        [enumeratedVariableType acceptForeachInstruction !enumeratedVariableName ?formalEnumerationList ?localConstantBuildStyleEnum] ;
       #--- Extract type name
         @string typeName ;
-        [variableType getTypeName ?typeName] ;
+        [enumeratedVariableType getTypeName ?typeName] ;
       #--- Parse effective input attribute list
         @location magicNumber := here ;
         <parse_effective_input_parameters_list>
@@ -3685,7 +3793,7 @@ rule <semantic_instruction>
           !magicNumber
           !localConstantBuildStyleEnum
         ;
-        foreachEnumerationList += !cppName !magicNumber !typeName ;
+        foreachEnumerationList += !enumeratedVariableCPPName !magicNumber !typeName ;
       while
         $,$ ;
       end repeat ;
