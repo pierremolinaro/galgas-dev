@@ -9,39 +9,31 @@
 <p><b>GALGAS ChangeLog</b></p>
 <p><br></p>
 <p>1.3.0</p>
-<dl>
-  <dt>on @bool type:</dt>
-    <dd>added ^ (exclusive or) diadic operator on @bool objects, that returns an @uint object;</dd>
-  <dt>on @uint type:</dt>
-    <dd type="disc">added 'object ++ ;' incrementation instruction on @uint objects;</dd>
-    <dd>added 'object -- ;' decrementation instruction on @uint objects;</dd>
-    <dd>added + (addition) , - (subtraction), * (multiplication) , / (division), % (modulo), &amp; (bit wide and), | (bit wide or), ^ (bit wide exclusive or) diadic operators on @uint objects, that return an @uint object;</dd>
-  <dt>on @sint type:</dt>
-    <dd>added 'object ++ ;' incrementation instruction on @sint objects;</dd>
-    <dd>added 'object -- ;' decrementation instruction on @sint objects;</dd>
-    <dd>added +, -, *, /, % diadic operators on @sint objects, that return an @sint object;</dd>
-    <dd>added - monoadic operator on @sint object, that returns an @sint object;</dd>
-    <dd>added 'uint' reader on @sint object, that returns an @uint object with the same value;</dd>
-    <dd>added 'min' constructor on @sint object, that returns an @sint object with value equal to -217483648;</dd>
-    <dd>added 'max' constructor on @sint object, that returns an @sint object with value equal to 217483647;</dd>
-    <dd>added 'string' reader on @sint object, that returns an @string object with the string value of the receiver;</dd>
-  <dt>on @stringset type:</dt>
-    <dd>suppressed 'empty' constructor on @stringset type: use 'emptySet' constructor instead;</dd>
-    <dd>added 'setWithString' constructor on @stringset type, that creates a new string set containing a string;</dd>
-    <dd>added '-=' operator on @stringset object, that removes a string from a string set;</dd>
-  <dt>on user defined map type:</dt>
-    <dd>fixed bug on 'allkeys reader' of map objects;</dd>
-    <dd>suppressed 'empty' constructor on map types: use 'emptyMap' constructor instead;</dd>
-    <dd>search methods on map are now <i>readers</i> (instead of <i>modifiers</i>): calls them <tt>[<i>map_expression search_method</i> ...]</tt> instead of <tt>[!?<i>map_expression search_method</i> ...]</tt>;</dd>
-    <dd>added 'mapWithMapToOverride' constructor on map type, that creates an empty map that overrides an other map;</dd>
-    <dd>added 'overridenMap' reader on map type, that returns the overriden map;</dd>
-  <dt>on user defined list type:</dt>
-    <dd>suppressed 'empty' constructor on list types: use 'emptyList' constructor instead;</dd>
-  <dt>--create-project Command Line Option replaces --create Command Line Option:</dt>
-    <dd>now generates Win32 Code::Blocks project;</dd>
-  <dt>New Keyword:</dt>
-    <dd><tt>mapindex</tt>;</dd>
-</dl>
+<ul>
+  <li>on @bool type: added ^ (exclusive or) diadic operator on @bool objects, that returns an @uint object;</li>
+  <li>on @uint type: added 'object ++ ;' incrementation instruction on @uint objects;</li>
+  <li>on @uint type: added 'object -- ;' decrementation instruction on @uint objects;</li>
+  <li>on @uint type: added + (addition) , - (subtraction), * (multiplication) , / (division), % (modulo), &amp; (bit wide and), | (bit wide or), ^ (bit wide exclusive or) diadic operators on @uint objects, that return an @uint object;</li>
+  <li>on @sint type: added 'object ++ ;' incrementation instruction on @sint objects;</li>
+  <li>on @sint type: added 'object -- ;' decrementation instruction on @sint objects;</li>
+  <li>on @sint type: added +, -, *, /, % diadic operators on @sint objects, that return an @sint object;</li>
+  <li>on @sint type: added - monoadic operator on @sint object, that returns an @sint object;</li>
+  <li>on @sint type: added 'uint' reader on @sint object, that returns an @uint object with the same value;</li>
+  <li>on @sint type: added 'min' constructor on @sint object, that returns an @sint object with value equal to -217483648;</li>
+  <li>on @sint type: added 'max' constructor on @sint object, that returns an @sint object with value equal to 217483647;</li>
+  <li>on @sint type: added 'string' reader on @sint object, that returns an @string object with the string value of the receiver;</li>
+  <li>on @stringset type: suppressed 'empty' constructor: use 'emptySet' constructor instead;</li>
+  <li>on @stringset type: added 'setWithString' constructor, that creates a new string set containing a string;</li>
+  <li>on @stringset type: added '-=' operator, that removes a string from a string set;</li>
+  <li>on user defined map type: fixed bug on 'allkeys accessor' of map objects;</li>
+  <li>on user defined map type: suppressed 'empty' constructor: use 'emptyMap' constructor instead;</li>
+  <li>on user defined map type: search methods on map are now <i>readers</i> (instead of <i>modifiers</i>): calls them <tt>[<i>map_expression search_method</i> ...]</tt> instead of <tt>[!?<i>map_expression search_method</i> ...]</tt>;</li>
+  <li>on user defined map type: added 'mapWithMapToOverride' constructor, that creates an empty map that overrides an other map;</li>
+  <li>on user defined map type: added 'overridenMap' reader, that returns the overriden map;</li>
+  <li>on user defined list type: suppressed 'empty' constructor on list types: use 'emptyList' constructor instead;</li>
+  <li>--create-project Command Line Option replaces --create Command Line Option: now generates Win32 Code::Blocks project;</li>
+  <li>New Keyword:<tt>mapindex</tt>;</li>
+</ul>
 <p>1.2.5beta2</p>
 <ul>
   <li><b>This is an unstable release</b></li>
