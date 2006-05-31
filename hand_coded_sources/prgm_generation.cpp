@@ -34,7 +34,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
 //--- Write includes
   C_String generatedZone2 ;
   generatedZone2 << "#ifndef INTERFACE_" << inProgramComponentName << "_DEFINED\n"
-           "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
+                    "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
   GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
   while (currentGrammar != NULL) {
     macroValidPointer (currentGrammar) ;
@@ -42,7 +42,18 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                       "#include \"" << currentGrammar->mLexiqueClassName << ".h\"\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
-  generatedZone2 << "#include \"galgas/C_galgas_terminal_io.h\"\n\n" ;
+  generatedZone2 << "#include \"galgas/C_galgas_terminal_io.h\"\n"
+                    "#include \"galgas/C_galgas_CLI_Options.h\"\n"
+                    "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
+                    "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n" ;
+
+  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
+  while (currentOptionComponent != NULL) {
+    macroValidPointer (currentOptionComponent) ;
+    generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
+  }
+  generatedZone2 << "\n" ;
   generatedZone2.writeCHyphenLineComment () ;
 
 //--- Generate class declaration for each grammar
@@ -56,7 +67,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                       "  protected : C_galgas_terminal_io mTerminalIO ;\n"
                       "  protected : C_String mSourceFileExtension_ ;\n\n"
                       "//--- Command line options\n" ;
-    GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
+    currentOptionComponent = inOptionComponentsMap.firstObject () ;
     while (currentOptionComponent != NULL) {
       macroValidPointer (currentOptionComponent) ;
       GGS_M_cli_options::element_type * currentOption = currentOptionComponent->mInfo.mBoolOptionsMap.firstObject () ;
@@ -102,6 +113,29 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << "#include \"grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << ".h\"\n\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
+//--- Command line options for this program
+  generatedZone2 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
+                    "//--- Constructor\n"
+                    "  public : C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) ;\n"
+                    "\n"
+                    "//--- Included options\n"
+                    "  private : C_builtin_CLI_Options mBuiltinOptions ;\n"
+                    "  private : C_galgas_CLI_Options mGalgasOptions ;\n" ;
+  currentOptionComponent = inOptionComponentsMap.firstObject () ;
+  while (currentOptionComponent != NULL) {
+    macroValidPointer (currentOptionComponent) ;
+    generatedZone2 << "  private : " << currentOptionComponent->mKey
+            << " mOptions_" << currentOptionComponent->mKey << "; \n" ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
+  }
+  generatedZone2 << "} ;\n\n" ;
+
+  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & inOptions) ;\n"
+                    "\n"
+                    "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & inOptions) ;\n"
+                    "\n\n" ;
+  generatedZone2.writeCHyphenLineComment () ;
 //--- Fin du fichier d'en tete
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (100) ;
   generatedZone3.writeCHyphenLineComment () ;
@@ -136,9 +170,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "#include \"generic_arraies/TC_UniqueArray.h\"\n"
                     "#include \"command_line_interface/F_Analyze_CLI_Options.h\"\n"
                     "#include \"command_line_interface/mainForLIBPM.h\"\n"
-                    "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n"
-                    "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
-                    "#include \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#ifdef TARGET_API_MAC_CARBON\n"
                     "  #include <SIOUX.H>\n"
                     "#endif\n"
@@ -148,12 +179,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "    #include <WINSIOUX.H>\n"
                     "  #endif\n"
                     "#endif\n" ;
-  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
-  while (currentOptionComponent != NULL) {
-    macroValidPointer (currentOptionComponent) ;
-    generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
-    currentOptionComponent = currentOptionComponent->nextObject () ;
-  }
   GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
   while (currentGrammar != NULL) {
     macroValidPointer (currentGrammar) ;
@@ -169,24 +194,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 
   generatedZone2.writeCHyphenLineComment () ;
   generatedZone2 << "#include \"" << inProgramComponentName << ".h\"\n\n" ;
-  generatedZone2.writeCHyphenLineComment () ;
-
-//--- Command line options for this program
-  generatedZone2 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
-                    "//--- Constructor\n"
-                    "  public : C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) ;\n"
-                    "\n"
-                    "//--- Included options\n"
-                    "  private : C_builtin_CLI_Options mBuiltinOptions ;\n"
-                    "  private : C_galgas_CLI_Options mGalgasOptions ;\n" ;
-  currentOptionComponent = inOptionComponentsMap.firstObject () ;
-  while (currentOptionComponent != NULL) {
-    macroValidPointer (currentOptionComponent) ;
-    generatedZone2 << "  private : " << currentOptionComponent->mKey
-            << " mOptions_" << currentOptionComponent->mKey << "; \n" ;
-    currentOptionComponent = currentOptionComponent->nextObject () ;
-  }
-  generatedZone2 << "} ;\n\n" ;
 
 //--------------------------------------- Get bool options count
   generatedZone2.writeCTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
@@ -195,7 +202,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     ":mBuiltinOptions (inAcceptsDebugOption) {\n"
                     "  add (& mBuiltinOptions) ;\n"
                     "  add (& mGalgasOptions) ;\n" ;
-  currentOptionComponent = inOptionComponentsMap.firstObject () ;
+  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
     generatedZone2 << "  add (& mOptions_" << currentOptionComponent->mKey << ") ;\n" ;
@@ -376,30 +383,22 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "                                                                      false) ;\n"
              "  #endif\n"
              "  try{\n"
-             "    if (sourceFilesArray.count () == 0) {\n"
+             "    " << inProgramComponentName << "_prologue (options) ;\n"
+             "    for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
              "      " << inProgramComponentName << currentGrammar->mGrammarPostfix
           << " * compiler = NULL ;\n"
              "      macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix
           << " (IOparameters COMMA_HERE)) ;\n"
-					   "	    compiler->_prologue () ;\n"
-					   "	    compiler->_epilogue () ;\n"
-             "      macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
-             "    }else{\n"
-             "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
-             "        " << inProgramComponentName << currentGrammar->mGrammarPostfix
-          << " * compiler = NULL ;\n"
-             "        macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix
-          << " (IOparameters COMMA_HERE)) ;\n"
-					   "	      compiler->_prologue () ;\n"
-             "        sint16 r = 0 ;\n"
-             "        compiler->doCompilation (sourceFilesArray (i COMMA_HERE), r) ;\n"
-             "        if (r != 0) {\n"
-             "          returnCode = r ;\n"
-             "        }\n"
-					   "	      compiler->_epilogue () ;\n"
-             "        macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
+					   "      compiler->_prologue () ;\n"
+             "      sint16 r = 0 ;\n"
+             "      compiler->doCompilation (sourceFilesArray (i COMMA_HERE), r) ;\n"
+             "      if (r != 0) {\n"
+             "        returnCode = r ;\n"
              "      }\n"
+					   "      compiler->_epilogue () ;\n"
+             "      macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
              "    }\n"
+             "    " << inProgramComponentName << "_epilogue (options) ;\n"
              "	  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "      C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
              "    #endif\n"
@@ -414,18 +413,26 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "}\n\n" ;
   generatedZone2.writeCHyphenLineComment () ;
 //--- User Zone 2 : prologue and epilogue
-  C_String userZone2 ; 
+  C_String userZone2 ; userZone2.setAllocationExtra (1000) ;
 	userZone2 << "\n\n" ;
+	userZone2.writeCTitleComment ("P R O G R A M    P R O L O G U E") ;
+  userZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
+               "// ADD YOUR CODE HERE\n"
+               "}\n" ;
+	userZone2.writeCTitleComment ("P R O G R A M    E P I L O G U E") ;
+  userZone2 << "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
+               "// ADD YOUR CODE HERE\n"
+               "}\n" ;
 	userZone2.writeCTitleComment ("P R O L O G U E") ;
 	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
 	             "_prologue (void) {\n"
 							 "//--- ADD YOUR CODE HERE\n"
-							 "}\n\n" ;
+							 "}\n" ;
 	userZone2.writeCTitleComment ("E P I L O G U E") ;
 	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
 	             "_epilogue (void) {\n"
 							 "//--- ADD YOUR CODE HERE\n"
-							 "}\n\n" ;
+							 "}\n" ;
 //--- Generate file
   inLexique.generateFile ("//",
                           inProgramComponentName + ".cpp",
