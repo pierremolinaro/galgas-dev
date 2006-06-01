@@ -2071,6 +2071,7 @@ routine verifierCompatibiliteTypesSemantiques
   ??@AC_galgasType inFormalType
   ??@AC_galgasType inEffectiveType
   ??@location inErrorLocation
+  ??@bool inAcceptPolymorphisme
 :
   match inFormalType :: inEffectiveType :
   when @typeGalgas_stringset ():: @typeGalgas_stringset () :
@@ -2100,17 +2101,29 @@ routine verifierCompatibiliteTypesSemantiques
                               "', I have got the map type '@" . [attNomType2 value] . "\"" ;
     end if ;
 
+  when @typeGalgasUndefinedClassType (??@lstring kNomType1)
+    :: @typeGalgasClassType (??@lstring kNomType2 ??* ??* ??@typeSuperClassesMap kAncestorClassesMap ...) :
+    @bool accept := [kNomType1 value] == [kNomType2 value] ;
+    if (not accept) & inAcceptPolymorphisme then
+      accept := [kAncestorClassesMap hasKey ![kNomType1 value]] ;
+    end if ;
+    if not accept then
+      error inErrorLocation : "I was expecting the class type '@" . [kNomType1 value] .
+                              "', I have got the class type '@" . [kNomType2 value] . "\"" ;
+    end if ;
+
   when @typeGalgasUndefinedClassType (??@lstring attNomType1) :: @typeGalgasUndefinedClassType (??@lstring attNomType2) :
+    @bool accept := [attNomType1 value] != [attNomType2 value] ;
     if [attNomType1 value] != [attNomType2 value] then
       error inErrorLocation : "I was expecting the class type '@" . [attNomType1 value] .
-                                "', I have got the class type '@" . [attNomType2 value] . "\"" ;
+                              "', I have got the class type '@" . [attNomType2 value] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedExternType (??@lstring attNomType1 ??@lstring attCppClassName1)
     :: @typeGalgasUndefinedExternType (??@lstring attNomType2 ??@lstring attCppClassName2) :
     if [attNomType1 value] != [attNomType2 value] then
       error inErrorLocation : "I was expecting an extern variable of extern '@" . [attNomType1 value] .
-                                "' type variable, and I got an extern '@" . [attNomType2 value] . "' type variable" ;
+                               "' type variable, and I got an extern '@" . [attNomType2 value] . "' type variable" ;
     end if ;
 
   when @typeGalgas_enum (??@lstring aTypeName1 ??* ??*)
@@ -2146,9 +2159,9 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine verifierCompatibiliteSignatures
-  ?@L_EXsignature signatureReference
-  ?@L_EXsignature signatureTestee
-  ?@location ouSignalerErreur
+  ??@L_EXsignature signatureReference
+  ??@L_EXsignature signatureTestee
+  ??@location ouSignalerErreur
 :
   if [signatureReference length] < [signatureTestee length] then
     error ouSignalerErreur : "there are too much parameters" ;
@@ -2157,7 +2170,12 @@ routine verifierCompatibiliteSignatures
   else 
     foreach signatureReference (??@AC_galgasType attTypeG ??@formalArgumentPassingMode passingMode1),
             signatureTestee (??@AC_galgasType attTypeD ??@formalArgumentPassingMode passingMode2) :
-      verifierCompatibiliteTypesSemantiques !attTypeG !attTypeD !ouSignalerErreur ;
+      verifierCompatibiliteTypesSemantiques
+         !attTypeG
+         !attTypeD
+         !ouSignalerErreur
+         !false
+      ;
       if passingMode1 != passingMode2 then
         error ouSignalerErreur : [passingMode2 formalArgumentMessage] . " is not compatible with " .
                                 [passingMode2 formalArgumentMessage] ;

@@ -77,39 +77,37 @@ generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inLi
 static void
 generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
                      const C_String & inLexiqueName,
-                     AC_OutputStream & inCppFile) {
+                     AC_OutputStream & inCppFile,
+                     bool & outNonEmptyList) {
   bool premier = true ;
   GGS_typeListeTestsEtInstructions::element_type * courant = inList.firstObject () ;
-  if (courant == NULL) {
-    inCppFile << "if (true) {\n" ;
-  }else{
-    while (courant != NULL) {
-      macroValidPointer (courant) ;
-      if (premier) {
-        premier = false ;
-      }else{
-        inCppFile << "}else " ;
-      }
-      inCppFile << "if (" ;
-      macroValidPointer (courant->attributListeConditions.firstObject ()) ;
-      GGS_typeListeConditionsLexicales::element_type * cond = courant->attributListeConditions.firstObject () ;
-      bool premiereCondition = true ;
-      while (cond != NULL) {
-        macroValidPointer (cond) ;
-        if (premiereCondition) {
-          premiereCondition = false ;
-        }else{
-          inCppFile << " ||\n    " ;
-        }
-        cond->attributCondition(HERE)->generateLexicalCondition (inCppFile) ;
-        cond = cond->nextObject () ;
-      }
-      inCppFile << ") {\n" ;
-      inCppFile.incIndentation (+2) ;
-      generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inCppFile) ;
-      inCppFile.incIndentation (-2) ;
-      courant = courant->nextObject () ;
+  outNonEmptyList = courant != NULL ;
+  while (courant != NULL) {
+    macroValidPointer (courant) ;
+    if (premier) {
+      premier = false ;
+    }else{
+      inCppFile << "}else " ;
     }
+    inCppFile << "if (" ;
+    macroValidPointer (courant->attributListeConditions.firstObject ()) ;
+    GGS_typeListeConditionsLexicales::element_type * cond = courant->attributListeConditions.firstObject () ;
+    bool premiereCondition = true ;
+    while (cond != NULL) {
+      macroValidPointer (cond) ;
+      if (premiereCondition) {
+        premiereCondition = false ;
+      }else{
+        inCppFile << " ||\n    " ;
+      }
+      cond->attributCondition(HERE)->generateLexicalCondition (inCppFile) ;
+      cond = cond->nextObject () ;
+    }
+    inCppFile << ") {\n" ;
+    inCppFile.incIndentation (+2) ;
+    generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inCppFile) ;
+    inCppFile.incIndentation (-2) ;
+    courant = courant->nextObject () ;
   }
 }
 
@@ -435,8 +433,12 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   inCppFile << "mCurrentTokenStartLocation = currentLocation () ;\n"
               "try{\n" ;
   inCppFile.incIndentation (+2) ;
-  generateScannerCode (programme_principal, inLexiqueName, inCppFile) ;
-  inCppFile << "}else if (testForInputChar ('\\0')) { // End of source text ? \n"
+  bool nonEmptyList ;
+  generateScannerCode (programme_principal, inLexiqueName, inCppFile, nonEmptyList) ;
+  if (nonEmptyList) {
+    inCppFile << "}else " ;
+  }
+  inCppFile << "if (testForInputChar ('\\0')) { // End of source text ? \n"
               "  mCurrentTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
               "}else{ // Unknown input character\n"
               "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
@@ -492,24 +494,29 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone2 << "}\n\n" ;
 
 //---------------------------------------- Generate error message list
-  generatedZone2.writeCTitleComment ("Lexical error message list") ;
   GGS_typeTableMessagesErreurs::element_type * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
-  sint32 messageNumber = 0 ;
-  while (currentMessage != NULL) {
-    macroValidPointer (currentMessage) ;
-    generatedZone2 << "//--- Message " << messageNumber << " (" << currentMessage->mKey << ") :\n"
-               "static const char * gErrorMessage_" << messageNumber << " = " ;
-    generatedZone2.writeCstringConstant (currentMessage->mInfo.mErrorMessage) ;
-    generatedZone2 << " ;\n" ;
-    currentMessage = currentMessage->nextObject () ;
-    messageNumber ++ ;
+  if (currentMessage != NULL) {
+    generatedZone2.writeCTitleComment ("Lexical error message list") ;
+    sint32 messageNumber = 0 ;
+    while (currentMessage != NULL) {
+      macroValidPointer (currentMessage) ;
+      generatedZone2 << "//--- Message " << messageNumber << " (" << currentMessage->mKey << ") :\n"
+                        "static const char * gErrorMessage_" << messageNumber << " = " ;
+      generatedZone2.writeCstringConstant (currentMessage->mInfo.mErrorMessage) ;
+      generatedZone2 << " ;\n" ;
+      currentMessage = currentMessage->nextObject () ;
+      messageNumber ++ ;
+    }
+    generatedZone2 << "\n" ;
   }
-  generatedZone2 << "\n" ;
+
 // --------------------------------------- Generate syntax error messages
-  generatedZone2.writeCTitleComment ("Syntax error messages") ;
   C_String errorMessageList ;
 
   GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
+  if (currentTerminal != NULL) {
+    generatedZone2.writeCTitleComment ("Syntax error messages") ;
+  }
   while (currentTerminal != NULL) {
     C_String constanteCname ;
     constanteCname << "gSyntaxErrorMessage_" ;
@@ -517,13 +524,13 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
     generatedZone2 << "//--- Syntax error message for terminal '$" << currentTerminal->mKey << "$' :\n"
                "static const char * " << constanteCname << " = " ;
     generatedZone2.writeCstringConstant (currentTerminal->mInfo.mErrorMessage) ;
-    generatedZone2 << " ;\n" ;
+    generatedZone2 << " ;\n\n" ;
     errorMessageList << ",\n       gSyntaxErrorMessage_" ;
     generateTerminalSymbolCppName (currentTerminal->mKey, errorMessageList) ;
     currentTerminal = currentTerminal->nextObject () ;
   }
 
-  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2.writeCTitleComment ("appendTerminalMessageToSyntaxErrorMessage") ;
   generatedZone2 << "void "
            << inLexiqueName
            << "::\n"
@@ -696,10 +703,15 @@ generate_scanner_instruction (const C_String & inLexiqueName,
   inCppFile << "do {\n" ;
   inCppFile.incIndentation (+2) ;
   generate_scanner_instructions_list (attributListeInstructionsDebut, inLexiqueName, inCppFile) ;
-  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile) ;
-  inCppFile << "}else{\n"
-              "  loop_ = false ;\n"
-              "}\n" ;
+  bool nonEmptyList = true ;
+  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, nonEmptyList) ;
+  if (nonEmptyList) {
+    inCppFile << "}else{\n"
+                "  loop_ = false ;\n"
+                "}\n" ;
+  }else{
+    inCppFile << "  loop_ = false ;\n" ;
+  }
   inCppFile.incIndentation (-2) ;
   inCppFile << "}while (loop_) ;\n"
                "loop_ = true ;\n" ;
@@ -718,14 +730,21 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionSiLexical::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) const {
-  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile) ;
-  if (attributBrancheSinon.firstObject () != NULL) {
-    inCppFile << "}else{\n" ;
-    inCppFile.incIndentation (+2) ;
-    generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inCppFile) ;
-    inCppFile.incIndentation (-2) ;
-  }
-  inCppFile << "}\n" ;
+  bool nonEmptyList = true ;
+  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, nonEmptyList) ;
+  if (nonEmptyList) {
+    if (attributBrancheSinon.firstObject () != NULL) {
+      inCppFile << "}else{\n" ;
+      inCppFile.incIndentation (+2) ;
+      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inCppFile) ;
+      inCppFile.incIndentation (-2) ;
+    }
+    inCppFile << "}\n" ;
+  }else if (attributBrancheSinon.firstObject () != NULL) {
+      inCppFile.incIndentation (+2) ;
+      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inCppFile) ;
+      inCppFile.incIndentation (-2) ;
+    }
 }
 
 //---------------------------------------------------------------------------*
