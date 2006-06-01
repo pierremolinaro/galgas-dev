@@ -1184,7 +1184,7 @@ rule <output_expression_list>
   else
     foreach inFormalAttributesList (??@AC_galgasType kFormalType ??@lstring kFormalParameterName),
             effectiveTypesList (??@AC_galgasType kEffectiveType ??@location kErrorLocation) :
-      verifierCompatibiliteTypesSemantiques !kFormalType !kEffectiveType !kErrorLocation ;
+      verifierCompatibiliteTypesSemantiques !kFormalType !kEffectiveType !kErrorLocation !true ;
     end foreach ;
   end if ;
 end rule ;

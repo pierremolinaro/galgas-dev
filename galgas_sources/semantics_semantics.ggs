@@ -180,10 +180,12 @@ list @L_assignedVariables  {
 #---------------------------------------------------------------------------*
 
 abstract class @typeCible {
-  abstract reader verifierType ?@AC_galgasType typeArgumentFormel
-                               ?!@lstring nomAttributSource
-                               ?!@L_assignedVariables listeAffectations
-                               ?!@typeCplusPlusNameList outAllVariablesList ;
+  abstract reader verifierType
+    ??@AC_galgasType typeArgumentFormel
+    ?!@lstring nomAttributSource
+    ?!@L_assignedVariables listeAffectations
+    ?!@typeCplusPlusNameList outAllVariablesList
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -823,8 +825,8 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine verifierCompatibiliteTypes
-  ?@typeSemanticsTypesList t1
-  ?@typeListeAttributsSemantiques t2
+  ??@typeSemanticsTypesList t1
+  ??@typeListeAttributsSemantiques t2
   ??@location inErrorLocation
 :
   if [t1 length] < [t2 length] then
@@ -834,7 +836,12 @@ routine verifierCompatibiliteTypes
   else
     foreach t1 (??@AC_galgasType attTypeEffectif ??@lstring attNomVariableEffectif),
             t2 (??@AC_galgasType attTypeAttributFormel ??@lstring attNomAttributFormel) :
-      verifierCompatibiliteTypesSemantiques !attTypeEffectif !attTypeAttributFormel ![attNomVariableEffectif location] ;
+      verifierCompatibiliteTypesSemantiques
+        !attTypeEffectif
+        !attTypeAttributFormel
+        ![attNomVariableEffectif location]
+        !false
+      ;
     end foreach ;
   end if ;
 end routine ;
@@ -846,8 +853,8 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine verifierCompatibiliteArgEffectifsSignature
-  ?@L_EXsignature signatureReference
-  ?@L_actualParametersSignature inEffectiveArgumentsSignature
+  ??@L_EXsignature signatureReference
+  ??@L_actualParametersSignature inEffectiveArgumentsSignature
   ??@location inErrorLocation
   ?!@typeInstructionList ioInstructionsList
   ?!@typeExpressionList ioExpressionList
@@ -862,16 +869,16 @@ routine verifierCompatibiliteArgEffectifsSignature
             inEffectiveArgumentsSignature (??@AC_galgasType attEffectiveType ??@actualParametersPassingMode parameterPassingMode) :
       match formalArgPassingMode::parameterPassingMode :
       when argumentConstantIn :: parameterOut :
-        verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation ;
+        verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation !true ;
       when argumentIn :: parameterOut :
-        verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation ;
+        verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation !false ;
       when argumentInOut :: parameterOutIn :
-        verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation ;
+        verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation !false ;
       when argumentOut :: parameterIn :
         extract attEffectiveType :
         when @typeGalgas_jokerInParameterList () ->
         else
-          verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation ;
+          verifierCompatibiliteTypesSemantiques !attSignatureType !attEffectiveType !inErrorLocation !false ;
         end extract ;
       else
         error inErrorLocation : [parameterPassingMode actualArgumentMessage] . " is not compatible with " .
@@ -905,10 +912,12 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 class @typeJoker extends @typeCible {
-  override reader verifierType ?@AC_galgasType unused typeArgumentFormel
-                               ?!@lstring unused nomAttributSource
-                               ?!@L_assignedVariables unused listeAffectations
-                               ?!@typeCplusPlusNameList outAllVariablesList :
+  override reader verifierType
+    ??@AC_galgasType unused typeArgumentFormel
+    ?!@lstring unused nomAttributSource
+    ?!@L_assignedVariables unused listeAffectations
+    ?!@typeCplusPlusNameList outAllVariablesList
+  :
     @typeCplusPlusName nullName := [@typeNullName new] ;
     outAllVariablesList += !nullName ;
   end reader ;
@@ -921,14 +930,20 @@ class @typeEntiteDest extends @typeCible {
   @typeCplusPlusName mCppName ;
   @location aPositionVariableCible ;
 
-  override reader verifierType ?@AC_galgasType typeArgumentFormel
-                               ?!@lstring nomAttributSource
-                               ?!@L_assignedVariables listeAffectations
-                               ?!@typeCplusPlusNameList outAllVariablesList :
-    @location positionErreur := aPositionVariableCible ;
-    verifierCompatibiliteTypesSemantiques !aTypeVarDest !typeArgumentFormel !positionErreur ;
+  override reader verifierType
+    ??@AC_galgasType typeArgumentFormel
+    ?!@lstring nomAttributSource
+    ?!@L_assignedVariables listeAffectations
+    ?!@typeCplusPlusNameList ioAllVariablesList
+  :
+    verifierCompatibiliteTypesSemantiques
+       !aTypeVarDest
+       !typeArgumentFormel
+       !aPositionVariableCible
+       !false
+    ;
     listeAffectations += !mCppName !nomAttributSource ;
-    outAllVariablesList += !mCppName ;
+    ioAllVariablesList += !mCppName ;
   end reader ;
 }
 

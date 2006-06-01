@@ -1177,7 +1177,7 @@ end rule ;
 rule <syntax_instruction>
   ?!@M_nonTerminalSymbolForSyntax unused ioNonTerminalSymbolMapForSyntax
   ?@bool unused inCheckNonTerminalsAreDeclaredWithParseLabel
-  ?!@M_semanticsEntitiesForUse unused ioEntitiesMap
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
