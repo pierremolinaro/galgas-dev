@@ -237,7 +237,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "  if (ioRootObject != NULL) {\n"
                       "    macroValidPointer (ioRootObject) ;\n"
                       "    // const GGS_string s = ioRootObject->reader_description  (_inLexique COMMA_THERE) ;\n"
-                      "    // printf (\"%s\\n\", s.cString ()) ;\n"
+                      "    // co << s << \"\\n\" ;\n"
                       "  }\n"
                       "}\n\n" ;
 

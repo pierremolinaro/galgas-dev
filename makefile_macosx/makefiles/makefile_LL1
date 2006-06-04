@@ -1,6 +1,6 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building galgas command line tools               *
+# MAKEFILE for building galgas_LL1 command line tools           *
 #                                                               *
 #---------------------------------------------------------------*
 
@@ -8,17 +8,17 @@
 EXECUTABLE := galgas
 EXECUTABLE_DEBUG := galgas_debug
 
+#--- Install directory (for "install" goal)
+INSTALL_DIR := /usr/local/bin
+
 #---------------------------------------------------------------*
 #                                                               *
 #     Object files directory                                    *
 #                                                               *
 #---------------------------------------------------------------*
 
-OBJECTS_DIR := objects
-DEBUG_OBJECTS_DIR := debug_objects
-
-#--- Install directory (for "install" goal)
-INSTALL_DIR := /usr/local/bin
+OBJECTS_DIR := makefiles/objects
+DEBUG_OBJECTS_DIR := makefiles/debug_objects
 
 #---------------------------------------------------------------*
 
@@ -31,11 +31,11 @@ include ../common_files_for_make/makefile_LL1.mke
 
 #---------------------------------------------------------------*
 #                                                               *
-#     Include gcc tools for Unix                                *
+#     Include gcc tools for MAC OS X                            *
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_32.mke
+include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_32.mke
 
 #---------------------------------------------------------------*
 #                                                               *

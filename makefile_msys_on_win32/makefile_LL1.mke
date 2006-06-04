@@ -11,6 +11,15 @@ EXECUTABLE_DEBUG := galgas_debug.exe
 #--- Install directory (for "install" goal)
 INSTALL_DIR := /C/WINDOWS/system32
 
+#---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := objects
+DEBUG_OBJECTS_DIR := debug_objects
+
 #--- Linker Options for this platform
 PLATFORM_LINKER_OPTIONS := -lcomdlg32
 

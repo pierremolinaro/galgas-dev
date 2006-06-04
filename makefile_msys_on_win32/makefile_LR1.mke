@@ -9,6 +9,15 @@ EXECUTABLE := galgas_lr1.exe
 EXECUTABLE_DEBUG := galgas_lr1_debug.exe
 
 #---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := objects
+DEBUG_OBJECTS_DIR := debug_objects
+
+#---------------------------------------------------------------*
 
 #--- Linker Options for this platform
 PLATFORM_LINKER_OPTIONS := -lcomdlg32

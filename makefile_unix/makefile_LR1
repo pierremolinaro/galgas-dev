@@ -8,8 +8,17 @@
 EXECUTABLE := galgas_lr1
 EXECUTABLE_DEBUG := galgas_lr1_debug
 
+#---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := objects
+DEBUG_OBJECTS_DIR := debug_objects
+
 #--- Install directory (for "install" goal)
-INSTALL_DIR := /usr/bin
+INSTALL_DIR := /usr/local/bin
 
 #---------------------------------------------------------------*
 
@@ -26,7 +35,7 @@ include ../common_files_for_make/makefile_LR1.mke
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools.mke
+include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_32.mke
 
 #---------------------------------------------------------------*
 #                                                               *

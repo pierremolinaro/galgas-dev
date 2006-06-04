@@ -25,3 +25,10 @@ install:
 
 #---------------------------------------------------------------*
 
+uninstall:
+	$(MAKE) -f makefile_LL1 uninstall
+	$(MAKE) -f makefile_SLR uninstall
+	$(MAKE) -f makefile_LR1 uninstall
+
+#---------------------------------------------------------------*
+

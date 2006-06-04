@@ -52,9 +52,9 @@ static bool
 createDirectory (const C_String & inDirectoryToCreate) {
   const bool ok = inDirectoryToCreate.makeDirectoryIfDoesNotExists () ;
   if (ok) {
-    printf ("  Created '%s' directory.\n", inDirectoryToCreate.cString ()) ;
+    co << "  Created '" << inDirectoryToCreate << "' directory.\n" ;
   }else{
-    printf ("** Cannot create '%s' directory.\n", inDirectoryToCreate.cString ()) ;
+    co << "** Cannot create '" << inDirectoryToCreate << "' directory.\n" ;
   }
   return ok ;
 }
@@ -62,47 +62,27 @@ createDirectory (const C_String & inDirectoryToCreate) {
 //---------------------------------------------------------------------------*
 
 static bool
-createBuildCommandFile (const C_String & inFileName) {
+createCommandFile (const C_String & inFileName,
+                   const char * inMakeArguments) {
   C_TextFileWrite f (inFileName COMMA_TEACH_TEXT_CREATOR COMMA_HERE) ; 
   f << "#!/bin/sh\n"
-       "cd `dirname $0` && time make all\n" ;
+       "cd `dirname $0` && time make --warn-undefined-variables " << inMakeArguments << "\n" ;
   bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", inFileName.cString ()) ;
+    co << "  Created '" << inFileName << "' file.\n" ;
     #ifndef COMPILE_FOR_WIN32
       const sint32 newPerms = inFileName.filePosixPermissions () | S_IXUSR | S_IXGRP | S_IXOTH ;
       const sint32 actualNewPerms = inFileName.setFilePosixPermissions (newPerms) ;
       if (actualNewPerms < 0) {
-        printf ("** Cannot set permissions 0x%lX for '%s' file.\n", newPerms, inFileName.cString ()) ;
+        co << "** Cannot set permissions 0x"
+           << kHEX_ONCE 
+           << newPerms
+           << " for '" << inFileName << "' file.\n" ;
         ok = false ;
       }
     #endif
   }else{
-    printf ("** Cannot create '%s' file.\n", inFileName.cString ()) ;
-  }
-  return ok ;
-}
-
-//---------------------------------------------------------------------------*
-
-static bool
-createCleanCommandFile (const C_String & inFileName) {
-  C_TextFileWrite f (inFileName COMMA_TEACH_TEXT_CREATOR COMMA_HERE) ; 
-  f << "#!/bin/sh\n"
-       "cd `dirname $0` && time make clean\n" ;
-  bool ok = f.close () ;
-  if (ok) {
-    printf ("  Created '%s' file.\n", inFileName.cString ()) ;
-    #ifndef COMPILE_FOR_WIN32
-      const sint32 newPerms = inFileName.filePosixPermissions () | S_IXUSR | S_IXGRP | S_IXOTH ;
-      const sint32 actualNewPerms = inFileName.setFilePosixPermissions (newPerms) ;
-      if (actualNewPerms < 0) {
-        printf ("** Cannot set permissions 0x%lX for '%s' file.\n", newPerms, inFileName.cString ()) ;
-        ok = false ;
-      }
-    #endif
-  }else{
-    printf ("** Cannot create '%s' file.\n", inFileName.cString ()) ;
+    co << "  Cannot create '" << inFileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -121,9 +101,9 @@ createLexiqueFile (const C_String & inCreatedProjectPathName) {
        "end lexique ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -143,9 +123,9 @@ createSemanticsFile (const C_String & inCreatedProjectPathName) {
        "end semantics ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -164,9 +144,9 @@ createOptionFile (const C_String & inCreatedProjectPathName) {
        "end option ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -188,9 +168,9 @@ createMetamodelFile (const C_String & inCreatedProjectPathName) {
        "end metamodel ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -218,9 +198,9 @@ createContraintsFile (const C_String & inCreatedProjectPathName) {
        "end constraint ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -260,9 +240,9 @@ createParserFile (const C_String & inCreatedProjectPathName,
        "end syntax ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -289,9 +269,9 @@ createGrammarFile (const C_String & inCreatedProjectPathName,
        "end grammar ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -318,9 +298,9 @@ createProgramFile (const C_String & inCreatedProjectPathName,
        "end program ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -346,9 +326,9 @@ createCompileAllFile (const C_String & inCreatedProjectPathName,
        "\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -370,9 +350,9 @@ createCppComputationsFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineComment ("//") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -390,10 +370,14 @@ createMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/makefile_macosx/makefile" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
-  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" command line tools for Mac OS X") ;
+  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" 32-bits command line tools for Mac OS X") ;
   f.writeTitleComment ("#", "Executables") ;
   f << "EXECUTABLE := " << projectName << "\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Object files directories") ;
+  f << "OBJECTS_DIR       := objects\n"
+       "DEBUG_OBJECTS_DIR := debug_objects\n"
        "\n" ;
   f.writeTitleComment ("#", "Install directory (for \"install\" goal)") ;
   f << "INSTALL_DIR := /usr/local/bin\n"
@@ -401,14 +385,11 @@ createMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   f.writeTitleComment ("#", "Linker Options for Mac OS X") ;
   f << "PLATFORM_LINKER_OPTIONS :=\n"
        "\n" ;
-  f.writeTitleComment ("#", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
-       "\n" ;
   f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
   f.writeTitleComment ("#", "Include gcc tools for MAC OS X") ;
-  f << "include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools.mke\n"
+  f << "include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_32.mke\n"
        "\n" ;
   f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
@@ -416,9 +397,9 @@ createMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -426,29 +407,30 @@ createMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
 //---------------------------------------------------------------------------*
 
 static bool
-create_i386LinuxOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
+createMacOSXmakefile64File (const C_String & inCreatedProjectPathName) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
-  const C_String fileName = inCreatedProjectPathName + "/makefile_i386linux_on_macosx/makefile" ;
+  const C_String fileName = inCreatedProjectPathName + "/makefile_macosx/makefile64" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
-  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" command line tools for i386 Linux, built on Mac OS X") ;
+  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" 64-bits command line tools for Mac OS X") ;
   f.writeTitleComment ("#", "Executables") ;
-  f << "EXECUTABLE := " << projectName << "\n"
-       "EXECUTABLE_DEBUG := " << projectName << "_debug\n"
+  f << "EXECUTABLE := " << projectName << "64\n"
+       "EXECUTABLE_DEBUG := " << projectName << "64_debug\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Object files directories") ;
+  f << "OBJECTS_DIR       := objects64\n"
+       "DEBUG_OBJECTS_DIR := debug_objects64\n"
        "\n" ;
   f.writeTitleComment ("#", "Install directory (for \"install\" goal)") ;
   f << "INSTALL_DIR := /usr/local/bin\n"
        "\n" ;
-  f.writeTitleComment ("#", "Link Options for i386 Linux") ;
+  f.writeTitleComment ("#", "Linker Options for Mac OS X") ;
   f << "PLATFORM_LINKER_OPTIONS :=\n"
-       "\n" ;
-  f.writeTitleComment ("#", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
-  f.writeTitleComment ("#", "Include i386 Linux tools for MAC OS X") ;
-  f << "include $(LIB_PM_PATH)/included_makefiles/i386linux_on_macosx_gcc_tools.mke\n"
+  f.writeTitleComment ("#", "Include gcc tools for MAC OS X") ;
+  f << "include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_64.mke\n"
        "\n" ;
   f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
@@ -456,13 +438,95 @@ create_i386LinuxOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName)
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
 
+//---------------------------------------------------------------------------*
+
+static bool
+create_ix86LinuxOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
+  const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
+  const C_String fileName = inCreatedProjectPathName + "/makefile_x86linux_on_macosx/makefile" ;
+  C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
+  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" 32-bit command line tools for x86 Linux, built on Mac OS X") ;
+  f.writeTitleComment ("#", "Executables") ;
+  f << "EXECUTABLE := " << projectName << "\n"
+       "EXECUTABLE_DEBUG := " << projectName << "_debug\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Object files directories") ;
+  f << "OBJECTS_DIR       := objects\n"
+       "DEBUG_OBJECTS_DIR := debug_objects\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Install directory (for \"install\" goal)") ;
+  f << "INSTALL_DIR := /usr/local/bin\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Link Options for i386 Linux") ;
+  f << "PLATFORM_LINKER_OPTIONS :=\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include Common Definitions") ;
+  f << "include ../common_files_for_make/makefile.mke\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include i386 Linux tools for MAC OS X") ;
+  f << "include $(LIB_PM_PATH)/included_makefiles/x86linux_on_macosx_gcc_tools_32.mke\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include makefile that performs actual work") ;
+  f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
+       "\n" ;
+  f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
+  const bool ok = f.close () ;
+  if (ok) {
+    co << "  Created '" << fileName << "' file.\n" ;
+  }else{
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
+  }
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+
+/*static bool
+create_ix86LinuxOnMacOSXmakefile64File (const C_String & inCreatedProjectPathName) {
+  const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
+  const C_String fileName = inCreatedProjectPathName + "/makefile_x86linux_on_macosx/makefile64" ;
+  C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
+  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" 64-bit command line tools for x86 Linux, built on Mac OS X") ;
+  f.writeTitleComment ("#", "Executables") ;
+  f << "EXECUTABLE := " << projectName << "64\n"
+       "EXECUTABLE_DEBUG := " << projectName << "64_debug\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Object files directories") ;
+  f << "OBJECTS_DIR       := objects64\n"
+       "DEBUG_OBJECTS_DIR := debug_objects64\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Install directory (for \"install\" goal)") ;
+  f << "INSTALL_DIR := /usr/local/bin\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Link Options for i386 Linux") ;
+  f << "PLATFORM_LINKER_OPTIONS :=\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include Common Definitions") ;
+  f << "include ../common_files_for_make/makefile.mke\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include i386 Linux tools for MAC OS X") ;
+  f << "include $(LIB_PM_PATH)/included_makefiles/x86linux_on_macosx_gcc_tools_64.mke\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include makefile that performs actual work") ;
+  f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
+       "\n" ;
+  f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
+  const bool ok = f.close () ;
+  if (ok) {
+    co << "  Created '" << fileName << "' file.\n" ;
+  }else{
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
+  }
+  return ok ;
+}
+*/
 //---------------------------------------------------------------------------*
 
 static bool
@@ -475,17 +539,18 @@ createMinGWOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   f << "EXECUTABLE := " << projectName << ".exe\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug.exe\n"
        "\n" ;
+  f.writeTitleComment ("#", "Object files directories") ;
+  f << "OBJECTS_DIR       := objects\n"
+       "DEBUG_OBJECTS_DIR := debug_objects\n"
+       "\n" ;
   f.writeTitleComment ("#", "Linker Options for Win32") ;
   f << "PLATFORM_LINKER_OPTIONS := -lcomdlg32\n"
-       "\n" ;
-  f.writeTitleComment ("#", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
   f.writeTitleComment ("#", "Include MinGW tools for MAC OS X") ;
-  f << "include $(LIB_PM_PATH)/included_makefiles/mingw_on_macosx_gcc_tools.mke\n"
+  f << "include $(LIB_PM_PATH)/included_makefiles/mingw_on_macosx_gcc_tools_32.mke\n"
        "\n" ;
   f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
@@ -493,9 +558,9 @@ createMinGWOnMacOSXmakefileFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -512,11 +577,12 @@ createMSYSOnWin32makefileFile (const C_String & inCreatedProjectPathName) {
   f << "EXECUTABLE := " << projectName << ".exe\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug.exe\n"
        "\n" ;
+  f.writeTitleComment ("#", "Object files directories") ;
+  f << "OBJECTS_DIR       := objects\n"
+       "DEBUG_OBJECTS_DIR := debug_objects\n"
+       "\n" ;
   f.writeTitleComment ("#", "Linker Options for Win32") ;
   f << "PLATFORM_LINKER_OPTIONS := -lcomdlg32\n"
-       "\n" ;
-  f.writeTitleComment ("#", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
@@ -530,9 +596,9 @@ createMSYSOnWin32makefileFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -544,22 +610,23 @@ createUnixMakefileFile (const C_String & inCreatedProjectPathName) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/makefile_unix/makefile" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
-  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" command line tools for Unix") ;
+  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" 32-bit command line tools for Unix") ;
   f.writeTitleComment ("#", "Executables") ;
   f << "EXECUTABLE := " << projectName << "\n"
        "EXECUTABLE_DEBUG := " << projectName << "_debug\n"
        "\n" ;
+  f.writeTitleComment ("#", "Object files directories") ;
+  f << "OBJECTS_DIR       := objects\n"
+       "DEBUG_OBJECTS_DIR := debug_objects\n"
+       "\n" ;
   f.writeTitleComment ("#", "Linker Options for Unix") ;
   f << "PLATFORM_LINKER_OPTIONS := \n"
-       "\n" ;
-  f.writeTitleComment ("#", "Release version compile options") ;
-  f << "RELEASE_OPTIONS := -DDO_NOT_GENERATE_CHECKINGS\n"
        "\n" ;
   f.writeTitleComment ("#", "Include Common Definitions") ;
   f << "include ../common_files_for_make/makefile.mke\n"
        "\n" ;
   f.writeTitleComment ("#", "Include Unix tools") ;
-  f << "include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools.mke\n"
+  f << "include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_32.mke\n"
        "\n" ;
   f.writeTitleComment ("#", "Include makefile that performs actual work") ;
   f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
@@ -567,9 +634,47 @@ createUnixMakefileFile (const C_String & inCreatedProjectPathName) {
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
+  }
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+
+static bool
+createUnixMakefile64File (const C_String & inCreatedProjectPathName) {
+  const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
+  const C_String fileName = inCreatedProjectPathName + "/makefile_unix/makefile64" ;
+  C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
+  f.writeTitleComment ("#", C_String ("MAKEFILE for building \"") + projectName + "\" 64-bit command line tools for Unix") ;
+  f.writeTitleComment ("#", "Executables") ;
+  f << "EXECUTABLE := " << projectName << "64\n"
+       "EXECUTABLE_DEBUG := " << projectName << "64_debug\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Object files directories") ;
+  f << "OBJECTS_DIR       := objects64\n"
+       "DEBUG_OBJECTS_DIR := debug_objects64\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Linker Options for Unix") ;
+  f << "PLATFORM_LINKER_OPTIONS := \n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include Common Definitions") ;
+  f << "include ../common_files_for_make/makefile.mke\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include Unix tools") ;
+  f << "include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_64.mke\n"
+       "\n" ;
+  f.writeTitleComment ("#", "Include makefile that performs actual work") ;
+  f << "include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke\n"
+       "\n" ;
+  f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
+  const bool ok = f.close () ;
+  if (ok) {
+    co << "  Created '" << fileName << "' file.\n" ;
+  }else{
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -580,13 +685,13 @@ static bool
 createBuildBatFile (const C_String & inCreatedProjectPathName) {
   const C_String fileName = inCreatedProjectPathName + "/makefile_msys_on_win32/build.bat" ;
   C_TextFileWrite f (fileName COMMA_TEACH_TEXT_CREATOR COMMA_HERE) ;
-  f << "PATH=%PATH%;C:\\msys\\1.0\\bin;C:\\MinGW\\bin\n"
-       "sh -c \"make -f makefile.mke\"\n" ;
+  f << "PATH=C:\\msys\\1.0\\bin;C:\\MinGW\\bin;%PATH%\n"
+       "sh -c \"make -f makefile.mke --warn-undefined-variables\"\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -597,13 +702,30 @@ static bool
 createCleanBatFile (const C_String & inCreatedProjectPathName) {
   const C_String fileName = inCreatedProjectPathName + "/makefile_msys_on_win32/clean.bat" ;
   C_TextFileWrite f (fileName COMMA_TEACH_TEXT_CREATOR COMMA_HERE) ;
-  f << "PATH=%PATH%;C:\\msys\\1.0\\bin;C:\\MinGW\\bin\n"
-       "sh -c \"make -f makefile.mke clean\"\n" ;
+  f << "PATH=C:\\msys\\1.0\\bin;C:\\MinGW\\bin;%PATH%\n"
+       "sh -c \"make -f makefile.mke clean --warn-undefined-variables\"\n" ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
+  }
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+
+static bool
+createInstallBatFile (const C_String & inCreatedProjectPathName) {
+  const C_String fileName = inCreatedProjectPathName + "/makefile_msys_on_win32/install.bat" ;
+  C_TextFileWrite f (fileName COMMA_TEACH_TEXT_CREATOR COMMA_HERE) ;
+  f << "PATH=C:\\msys\\1.0\\bin;C:\\MinGW\\bin;%PATH%\n"
+       "sh -c \"make -f makefile.mke install --warn-undefined-variables\"\n" ;
+  const bool ok = f.close () ;
+  if (ok) {
+    co << "  Created '" << fileName << "' file.\n" ;
+  }else{
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -624,84 +746,18 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
   f << "SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT\n"
        "SOURCES_DIR += ../hand_coded_sources\n"
        "\n" ;
-  f.writeTitleComment ("#", "Object files directories") ;
-  f << "OBJECTS_DIR       := objects\n"
-       "DEBUG_OBJECTS_DIR := debug_objects\n"
-       "\n" ;
-  f.writeTitleComment ("#", "Compiler Options") ;
-  f << "#--- Options for all compilers\n"
-       "COMPILER_OPTIONS := -Wall -Werror -Wreturn-type -Wsign-promo\n"
-       "\n"
-       "#--- Options for release mode\n"
-       "COMPILER_OPTIONS_RELEASE := -O1 -fomit-frame-pointer  -DDO_NOT_GENERATE_CHECKINGS\n"
-       "\n"
-       "#--- Options for debug mode\n"
-       "COMPILER_OPTIONS_DEBUG := -g\n"
-       "\n"
-       "#--- Options for C compiling (.c extension)\n"
-       "C_COMPILER_OPTIONS :=\n"
-       "\n"
-       "#--- Options for C++ compiling (.cpp extension)\n"
-       "CPP_COMPILER_OPTIONS := -Woverloaded-virtual\n"
-       "\n"
-       "#--- Options for Objective-C compiling (.m extension)\n"
-       "OC_COMPILER_OPTIONS :=\n"
-       "\n"
-       "#--- Options for Objective-C++ compiling (.mm extension)\n"
-       "OCPP_COMPILER_OPTIONS :=\n"
-       "\n" ;
-  f.writeTitleComment ("#", "Linker Options") ;
-  f << "#--- Options for all platforms \n"
-       "LINKER_OPTIONS :=\n"
+  f.writeTitleComment ("#", "Default build Options") ;
+  f << "include $(LIB_PM_PATH)/included_makefiles/default_build_options.mke\n"
        "\n" ;
   f.writeTitleComment ("#", "Source files names list (without their actual path)") ;
   f << "SOURCES :=\n"
        "\n" ;
   f.writeComment ("#", "Files from libpm") ;
-  f << "SOURCES += AC_galgas_io.cpp\n"
-       "SOURCES += AC_galgas_map.cpp\n"
-       "SOURCES += C_GGS_Object.cpp\n" ;
+  f << "include $(LIB_PM_PATH)/galgas/galgas_sources_for_makefile.mke\n" ;
   if (inProjectStyle == kMDAproject) {
-    f << "SOURCES += C_GGS_entityMap.cpp\n"
-         "SOURCES += C_GGS_MapIndex.cpp\n" ;
+    f << "include $(LIB_PM_PATH)/galgas/galgas_mda_sources_for_makefile.mke\n" ;
   }
-  f << "SOURCES += C_galgas_terminal_io.cpp\n"
-       "SOURCES += MF_Assert.cpp\n"
-       "SOURCES += MF_MemoryControl.cpp\n"
-       "SOURCES += F_DisplayException.cpp\n"
-       "SOURCES += C_Exception.cpp\n"
-       "SOURCES += C_galgas_CLI_Options.cpp\n"
-       "SOURCES += C_Lexique.cpp\n"
-       "SOURCES += GGS_bool.cpp\n"
-       "SOURCES += GGS_char.cpp\n"
-       "SOURCES += GGS_string.cpp\n"
-       "SOURCES += GGS_uint.cpp\n"
-       "SOURCES += GGS_sint.cpp\n"
-       "SOURCES += GGS_double.cpp\n"
-       "SOURCES += GGS_lbool.cpp\n"
-       "SOURCES += GGS_lchar.cpp\n"
-       "SOURCES += GGS_lstring.cpp\n"
-       "SOURCES += GGS_luint.cpp\n"
-       "SOURCES += GGS_lsint.cpp\n"
-       "SOURCES += GGS_ldouble.cpp\n"
-       "SOURCES += GGS_stringset.cpp\n"
-       "SOURCES += GGS_location.cpp\n"
-       "SOURCES += C_BDD.cpp\n"
-       "SOURCES += C_Display_BDD.cpp\n"
-       "SOURCES += C_PrimeCache2.cpp\n"
-       "SOURCES += C_PrimeCache3.cpp\n"
-       "SOURCES += C_String.cpp\n"
-       "SOURCES += C_Timer.cpp\n"
-       "SOURCES += C_TextFileWrite.cpp\n"
-       "SOURCES += C_DateTime.cpp\n"
-       "SOURCES += F_GetPrime.cpp\n"
-       "SOURCES += AC_OutputStream.cpp\n"
-       "SOURCES += C_ConsoleOut.cpp\n"
-       "SOURCES += F_Analyze_CLI_Options.cpp\n"
-       "SOURCES += F_main.cpp\n"
-       "SOURCES += AC_CLI_Options.cpp\n"
-       "SOURCES += C_CLI_OptionGroup.cpp\n"
-       "SOURCES += C_builtin_CLI_Options.cpp\n" ;
+  f << "\n" ;
   f.writeComment ("#", "Files generated by GALGAS") ;
   f << "SOURCES += " << projectName << "_lexique.cpp\n" ;
   if (inProjectStyle == kMDAproject) {
@@ -712,16 +768,17 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
        "SOURCES += " << projectName << "_semantics.cpp\n"
        "SOURCES += " << projectName << "_syntax.cpp\n"
        "SOURCES += " << projectName << "_grammar.cpp\n"
-       "SOURCES += " << projectName << "_program.cpp\n" ;
+       "SOURCES += " << projectName << "_program.cpp\n"
+       "\n" ;
   f.writeComment ("#", "Hand-coded files") ;
   f << "SOURCES += " << projectName << "_computations.cpp\n"
        "\n" ;
   f.writeHyphenLineCommentWithoutExtraBlankLine ("#") ;
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -1061,9 +1118,9 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
 
   const bool ok = f.close () ;
   if (ok) {
-    printf ("  Created '%s' file.\n", fileName.cString ()) ;
+    co << "  Created '" << fileName << "' file.\n" ;
   }else{
-    printf ("** Cannot create '%s' file.\n", fileName.cString ()) ;
+    co << "  Cannot Create '" << fileName << "' file.\n" ;
   }
   return ok ;
 }
@@ -1079,7 +1136,7 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
 void
 createProject (const C_String & inCreatedProjectPathName,
                const enumProjectStyle inProjectStyle) {
-  printf ("*** PERFORM PROJECT CREATION (--create-project=%s option) ***\n", inCreatedProjectPathName.cString ()) ;
+  co << "*** PERFORM PROJECT CREATION (--create-project=" << inCreatedProjectPathName << " option) ***\n" ;
 //--- First check the project name is correct (not empty, only letters, digits and '_')
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   bool projectNameIsCorrect = true ;
@@ -1088,12 +1145,12 @@ createProject (const C_String & inCreatedProjectPathName,
     projectNameIsCorrect = isalnum (c) || (c == '_') ;
   }
   if (projectName.length () == 0) {
-	  printf ("** Cannot create GALGAS project: the project name is empty.\n") ;
+	  co << "** Cannot create GALGAS project: the project name is empty.\n" ;
   }else if (! projectNameIsCorrect) {
-	  printf ("** Cannot create GALGAS project: the project name should contain only letters, digits and underscore character.\n") ;
+	  co << "** Cannot create GALGAS project: the project name should contain only letters, digits and underscore character.\n" ;
 //--- if creation directory exists, emit an error and do nothing
   }else if (inCreatedProjectPathName.isDirectory ()) {
-	  printf ("** Cannot create GALGAS project: '%s' directory already exists.\n", inCreatedProjectPathName.cString ()) ;
+	  co << "** Cannot create GALGAS project: '" << inCreatedProjectPathName << "' directory already exists.\n" ;
 	}else{
 	//--- Create directories
 	  bool ok = createDirectory (inCreatedProjectPathName) ;
@@ -1107,7 +1164,7 @@ createProject (const C_String & inCreatedProjectPathName,
       ok = createDirectory (inCreatedProjectPathName + "/hand_coded_sources") ;
     }
     if (ok) {
-      ok = createDirectory (inCreatedProjectPathName + "/makefile_i386linux_on_macosx") ;
+      ok = createDirectory (inCreatedProjectPathName + "/makefile_x86linux_on_macosx") ;
     }
     if (ok) {
       ok = createDirectory (inCreatedProjectPathName + "/makefile_macosx") ;
@@ -1123,23 +1180,37 @@ createProject (const C_String & inCreatedProjectPathName,
     }
   //--- Create build.command files
     if (ok) {
-      ok = createBuildCommandFile (inCreatedProjectPathName + "/makefile_i386linux_on_macosx/build.command") ;
+      ok = createCommandFile (inCreatedProjectPathName + "/makefile_x86linux_on_macosx/build.command", "all") ;
     }
     if (ok) {
-      ok = createBuildCommandFile (inCreatedProjectPathName + "/makefile_macosx/build.command") ;
+      ok = createCommandFile (inCreatedProjectPathName + "/makefile_macosx/build.command", "all") ;
     }
     if (ok) {
-      ok = createBuildCommandFile (inCreatedProjectPathName + "/makefile_mingw_on_macosx/build.command") ;
+      ok = createCommandFile (inCreatedProjectPathName + "/makefile_mingw_on_macosx/build.command", "all") ;
+    }
+  //--- Create build64.command files
+//    if (ok) {
+//      ok = createCommandFile (inCreatedProjectPathName + "/makefile_x86linux_on_macosx/build64.command", "-f makefile64 all") ;
+//    }
+    if (ok) {
+      ok = createCommandFile (inCreatedProjectPathName + "/makefile_macosx/build64.command", "-f makefile64 all") ;
     }
   //--- Create clean.command files
     if (ok) {
-      ok = createCleanCommandFile (inCreatedProjectPathName + "/makefile_i386linux_on_macosx/clean.command") ;
+      ok = createCommandFile (inCreatedProjectPathName + "/makefile_x86linux_on_macosx/clean.command", "clean") ;
     }
     if (ok) {
-      ok = createCleanCommandFile (inCreatedProjectPathName + "/makefile_macosx/clean.command") ;
+      ok = createCommandFile (inCreatedProjectPathName + "/makefile_macosx/clean.command", "clean") ;
     }
     if (ok) {
-      ok = createCleanCommandFile (inCreatedProjectPathName + "/makefile_mingw_on_macosx/clean.command") ;
+      ok = createCommandFile (inCreatedProjectPathName + "/makefile_mingw_on_macosx/clean.command", "clean") ;
+    }
+  //--- Create clean64.command files
+//    if (ok) {
+//      ok = createCommandFile (inCreatedProjectPathName + "/makefile_x86linux_on_macosx/clean64.command", "-f makefile64 clean") ;
+//    }
+    if (ok) {
+      ok = createCommandFile (inCreatedProjectPathName + "/makefile_macosx/clean64.command", "-f makefile64 clean") ;
     }
   //--- Create GALGAS sources
     if (ok) {
@@ -1180,11 +1251,20 @@ createProject (const C_String & inCreatedProjectPathName,
       ok = createUnixMakefileFile (inCreatedProjectPathName) ;
     }
     if (ok) {
+      ok = createUnixMakefile64File (inCreatedProjectPathName) ;
+    }
+    if (ok) {
       ok = createMacOSXmakefileFile (inCreatedProjectPathName) ;
     }
     if (ok) {
-      ok = create_i386LinuxOnMacOSXmakefileFile (inCreatedProjectPathName) ;
+      ok = createMacOSXmakefile64File (inCreatedProjectPathName) ;
     }
+    if (ok) {
+      ok = create_ix86LinuxOnMacOSXmakefileFile (inCreatedProjectPathName) ;
+    }
+//    if (ok) {
+//      ok = create_ix86LinuxOnMacOSXmakefile64File (inCreatedProjectPathName) ;
+//    }
     if (ok) {
       ok = createMinGWOnMacOSXmakefileFile (inCreatedProjectPathName) ;
     }
@@ -1193,6 +1273,9 @@ createProject (const C_String & inCreatedProjectPathName,
     }
     if (ok) {
       ok = createBuildBatFile (inCreatedProjectPathName) ;
+    }
+    if (ok) {
+      ok = createInstallBatFile (inCreatedProjectPathName) ;
     }
     if (ok) {
       ok = createCleanBatFile (inCreatedProjectPathName) ;
@@ -1205,7 +1288,7 @@ createProject (const C_String & inCreatedProjectPathName,
       ok = createCodeBlockProjectFile (inCreatedProjectPathName, "/project_codeblocks", inProjectStyle) ;
     }
 	}
-  printf ("*** END OF PROJECT CREATION ***\n") ;
+  co << "*** END OF PROJECT CREATION ***\n" ;
 }
 
 //---------------------------------------------------------------------------*
