@@ -1,12 +1,12 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building galgas command line tools               *
+# MAKEFILE for building galgas_LR1 command line tools           *
 #                                                               *
 #---------------------------------------------------------------*
 
-#--- Release and debug versions of common_sources_makefile.mke
-EXECUTABLE := galgas
-EXECUTABLE_DEBUG := galgas_debug
+#--- Release and debug versions of galgas
+EXECUTABLE := galgas64_lr1
+EXECUTABLE_DEBUG := galgas64_lr1_debug
 
 #---------------------------------------------------------------*
 #                                                               *
@@ -14,8 +14,8 @@ EXECUTABLE_DEBUG := galgas_debug
 #                                                               *
 #---------------------------------------------------------------*
 
-OBJECTS_DIR := objects
-DEBUG_OBJECTS_DIR := debug_objects
+OBJECTS_DIR := objects64
+DEBUG_OBJECTS_DIR := debug_objects64
 
 #--- Install directory (for "install" goal)
 INSTALL_DIR := /usr/local/bin
@@ -27,7 +27,7 @@ PLATFORM_LINKER_OPTIONS :=
 
 #---------------------------------------------------------------*
 
-include ../common_files_for_make/makefile_LL1.mke
+include ../common_files_for_make/makefile_LR1.mke
 
 #---------------------------------------------------------------*
 #                                                               *
@@ -35,7 +35,7 @@ include ../common_files_for_make/makefile_LL1.mke
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_32.mke
+include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_64.mke
 
 #---------------------------------------------------------------*
 #                                                               *

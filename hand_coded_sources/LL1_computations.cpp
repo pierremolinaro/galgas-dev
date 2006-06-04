@@ -316,7 +316,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                       << "$\n" ;
           }else{
             inCppFile << "NONTERMINAL ("
-                      << (v - inVocabulary.getTerminalSymbolsCount ())
+                      << ((sint32) (v - inVocabulary.getTerminalSymbolsCount ()))
                       << ") // <"
                       << inVocabulary.getSymbol (v COMMA_HERE) 
                       << ">\n" ;        

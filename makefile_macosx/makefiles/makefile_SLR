@@ -1,15 +1,24 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building galgas_LR1 command line tools           *
+# MAKEFILE for building galgas_SLR command line tools           *
 #                                                               *
 #---------------------------------------------------------------*
 
-#--- Release and debug versions of galgas
-EXECUTABLE := galgas_lr1
-EXECUTABLE_DEBUG := galgas_lr1_debug
+#--- Release and debug versions of common_sources_makefile.mke
+EXECUTABLE := galgas_slr
+EXECUTABLE_DEBUG := galgas_slr_debug
 
 #--- Install directory (for "install" goal)
 INSTALL_DIR := /usr/local/bin
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := makefiles/objects
+DEBUG_OBJECTS_DIR := makefiles/debug_objects
 
 #---------------------------------------------------------------*
 
@@ -18,7 +27,7 @@ PLATFORM_LINKER_OPTIONS :=
 
 #---------------------------------------------------------------*
 
-include ../common_files_for_make/makefile_LR1.mke
+include ../common_files_for_make/makefile_SLR.mke
 
 #---------------------------------------------------------------*
 #                                                               *
@@ -26,7 +35,7 @@ include ../common_files_for_make/makefile_LR1.mke
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools.mke
+include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_32.mke
 
 #---------------------------------------------------------------*
 #                                                               *

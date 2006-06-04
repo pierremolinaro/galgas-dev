@@ -45,11 +45,20 @@ void galgas_LR1_prgm::_beforeParsing (void) {
 
 void galgas_LR1_prgm::_afterParsing (void) {
   C_BDD::markAndSweepUnusedNodes () ;
-  printf ("%lu checked line%s, %lu preserved line%s, %lu generated line%s for %lu file%s.\n",
-          mScannerPtr_->checkedLineCount (), (mScannerPtr_->checkedLineCount () > 1) ? "s" : "",
-          mScannerPtr_->preservedLineCount (), (mScannerPtr_->preservedLineCount () > 1) ? "s" : "",
-          mScannerPtr_->generatedLineCount (), (mScannerPtr_->generatedLineCount () > 1) ? "s" : "",
-          mScannerPtr_->generatedFileCount (), (mScannerPtr_->generatedFileCount () > 1) ? "s" : "") ;
+  co << mScannerPtr_->checkedLineCount () << " checked line"
+     << ((mScannerPtr_->checkedLineCount () > 1) ? "s" : "")
+     << ", " << mScannerPtr_->preservedLineCount ()
+     << " preserved line"
+     << ((mScannerPtr_->preservedLineCount () > 1) ? "s" : "")
+     << ", "
+     << mScannerPtr_->generatedLineCount ()
+     << " generated line"
+     << ((mScannerPtr_->generatedLineCount () > 1) ? "s" : "")
+     << " for "
+     << mScannerPtr_->generatedFileCount ()
+     << " file"
+     << ((mScannerPtr_->generatedFileCount () > 1) ? "s" : "")
+     << ".\n" ;
 }
 
 //---------------------------------------------------------------------------*

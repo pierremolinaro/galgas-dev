@@ -363,7 +363,7 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                     "  if (inRootObject != NULL) {\n"
                     "    macroValidPointer (inRootObject) ;\n"
                     "    // const GGS_string s = inRootObject->reader_description  (_inLexique COMMA_THERE) ;\n"
-                    "    // printf (\"%s\\n\", s.cString ()) ;\n"
+                    "    // co << s << \"\\n\" ;\n"
                     "  //--- Build object tree\n"
                     "    macroMyNew (ioRootObjectConstraint, GGS__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " (inRootObject COMMA_HERE)) ;\n" ;
   GGS_passMap::element_type * currentPass = inPassMap.firstObject () ;
@@ -816,26 +816,26 @@ generateCodeForRelation (C_Lexique & inLexique,
   GGS_lstring propertyEntityName = currentPathElement->mPathElement ;
   C_String epilogue ;
   for (sint32 i=1 ; i<pathLength ; i++) {
-    ioCPPFile.appendSpaces (i + i) ;
+    ioCPPFile << spaces (i + i) ;
     propertyEntityName = entityForProperty (inLexique,
                                             inEntityMap,
                                             entityName,
                                             propertyEntityName) ;
     ioCPPFile << "GGS_" << propertyEntityName << " * _p_" << i << "_" << mOperationIsAnd.currentLocation ()
-              << " = " << currentPathElement->mPathElement << ".mFirstObject ;\n" ;
-    ioCPPFile.appendSpaces (i + i) ;
-    ioCPPFile << "while (_p_" << i << "_" << mOperationIsAnd.currentLocation () << " != NULL) {\n" ;
+              << " = " << currentPathElement->mPathElement << ".mFirstObject ;\n"
+              << spaces (i + i)
+              << "while (_p_" << i << "_" << mOperationIsAnd.currentLocation () << " != NULL) {\n" ;
     C_String endCode ;
-    endCode.appendSpaces (i + i + 2) ;
-    endCode << "_p_" << i << "_" << mOperationIsAnd.currentLocation ()
-            << " = _p_" << i << "_" << mOperationIsAnd.currentLocation () << "->_mNextObject ;\n" ;
-    endCode.appendSpaces (i + i) ;
-    endCode << "}\n" ;
+    endCode << spaces (i + i + 2)
+            << "_p_" << i << "_" << mOperationIsAnd.currentLocation ()
+            << " = _p_" << i << "_" << mOperationIsAnd.currentLocation () << "->_mNextObject ;\n"
+            << spaces (i + i)
+            << "}\n" ;
     epilogue = endCode + epilogue ;
     currentPathElement = currentPathElement->nextObject () ;
   }
-  ioCPPFile.appendSpaces (pathLength + pathLength) ;
-  ioCPPFile << "_relation_" << mOperationIsAnd.currentLocation () << " " ;
+  ioCPPFile << spaces (pathLength + pathLength)
+            << "_relation_" << mOperationIsAnd.currentLocation () << " " ;
   if (mOperationIsAnd.boolValue ()) {
     ioCPPFile << "&=" ;
   }else{

@@ -241,7 +241,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "try{\n" ;
     generatedZone2.incIndentation (+2) ;
     generatedZone2 << "if (mTerminalIO.versionModeOn ()) {\n"
-                      "  ::printf (\"Reading '%s'\\n\", inSourceFileName_.cString ()) ;\n"
+                      "  co << \"Reading '\" << inSourceFileName_ << \"'\\n\" ;\n"
                       "}\n"
                       "mScannerPtr_->resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
                       "_beforeParsing () ;\n" ; //--- Give a chance to initialize program parameters
@@ -287,7 +287,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                        << " (*mScannerPtr_, _rootEntity, _rootObjectConstraint" << currentConstraint->mString << ") ;\n" ;
         currentConstraint = currentConstraint->nextObject () ;
       }
-      generatedZone2 << "// printf (\"%s\", _rootEntity->reader_description  (_inLexique COMMA_THERE).cString ()) ;\n" ;
+      generatedZone2 << "// co << _rootEntity->reader_description  (_inLexique COMMA_THERE) ;\n" ;
       currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
       while (currentConstraint != NULL) {
         macroValidPointer (currentConstraint) ;
@@ -302,39 +302,38 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
                       "  _afterParsing () ;\n"
                       "}\n"
-                      "::printf (\"Analysis of '%s' completed. \","
-                      " mScannerPtr_->sourceFileName ().lastPathComponent ().cString ()) ;\n" ;
+                      "co << \"Analysis of '\" << mScannerPtr_->sourceFileName ().lastPathComponent () << \"' completed. \" ;\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
   generatedZone2 <<  "switch (mTerminalIO.getErrorTotalCount ()) {\n"
                  "case 0 :\n"
-                 "  ::printf (\"No error, \") ;\n"
+                 "  co << \"No error, \" ;\n"
                  "  break ;\n"
                  "case 1 :\n"
-                 "  ::printf (\"1 error, \") ;\n"
+                 "  co << \"1 error, \" ;\n"
                  "  returnCode = 1 ; // Error code\n"
                  "  break ;\n"
                  "default :\n"
-                 "  ::printf (\"%ld errors, \", mTerminalIO.getErrorTotalCount ()) ;\n"
+                 "  co << mTerminalIO.getErrorTotalCount () << \" errors, \" ;\n"
                  "  returnCode = 1 ; // Error code\n"
                  "  break ;\n"
                  "}\n"
                  "switch (mTerminalIO.getWarningsCount ()) {\n"
                  "case 0 :\n"
-                 "  ::printf (\"no warning\") ;\n"
+                 "  co << \"no warning\" ;\n"
                  "  break ;\n"
                  "case 1 :\n"
-                 "  ::printf (\"1 warning\") ;\n"
+                 "  co << \"1 warning\" ;\n"
                  "  break ;\n"
                  "default :\n"
-                 "  ::printf (\"%ld warnings\", mTerminalIO.getWarningsCount ()) ;\n"
+                 "  co << mTerminalIO.getWarningsCount () << \" warnings\" ;\n"
                  "  break ;\n"
                 "}\n"
                 "timer.stopTimer () ;\n"
                 "  co << \" (\" << timer << \").\\n\" ;\n" ;
   generatedZone2.incIndentation (-2) ;
   generatedZone2 << "}catch (const C_TextReadException & inFileReadError) {\n"
-                 "  ::printf (\"Error : %s\\n\", inFileReadError.what ()) ; // Error when reading source file\n"
+                 "  co << \"Error: \" << inFileReadError.what () << \"\\n\" ; // Error when reading source file\n"
                  "  returnCode = 1 ;\n" ;
   generatedZone2 << "}\n" ;
   generatedZone2.incIndentation (-2) ;

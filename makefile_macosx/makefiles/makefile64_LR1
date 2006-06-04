@@ -1,12 +1,15 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building galgas command line tools               *
+# MAKEFILE for building galgas_LR1 command line tools           *
 #                                                               *
 #---------------------------------------------------------------*
 
-#--- Release and debug versions of common_sources_makefile.mke
-EXECUTABLE := galgas
-EXECUTABLE_DEBUG := galgas_debug
+#--- Release and debug versions of galgas
+EXECUTABLE := galgas64_lr1
+EXECUTABLE_DEBUG := galgas64_lr1_debug
+
+#--- Install directory (for "install" goal)
+INSTALL_DIR := /usr/local/bin
 
 #---------------------------------------------------------------*
 #                                                               *
@@ -14,11 +17,8 @@ EXECUTABLE_DEBUG := galgas_debug
 #                                                               *
 #---------------------------------------------------------------*
 
-OBJECTS_DIR := objects
-DEBUG_OBJECTS_DIR := debug_objects
-
-#--- Install directory (for "install" goal)
-INSTALL_DIR := /usr/local/bin
+OBJECTS_DIR := makefiles/objects64
+DEBUG_OBJECTS_DIR := makefiles/debug_objects64
 
 #---------------------------------------------------------------*
 
@@ -27,15 +27,15 @@ PLATFORM_LINKER_OPTIONS :=
 
 #---------------------------------------------------------------*
 
-include ../common_files_for_make/makefile_LL1.mke
+include ../common_files_for_make/makefile_LR1.mke
 
 #---------------------------------------------------------------*
 #                                                               *
-#     Include gcc tools for Unix                                *
+#     Include gcc tools for MAC OS X                            *
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_32.mke
+include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_64.mke
 
 #---------------------------------------------------------------*
 #                                                               *

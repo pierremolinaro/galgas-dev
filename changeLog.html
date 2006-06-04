@@ -10,6 +10,9 @@
 <p><br></p>
 <p>1.3.2</p>
 <ul>
+  <li>first attempt to provide galgas and libpm code 64-bit clean: now, makefiles build both 32-bit and 64-bit tools;</li>
+  <li>consequently, the <tt>makefile_i386linux_on_macosx</tt> directory is now named <tt>makefile_x86linux_on_macosx</tt>;</li>
+  <li>makefiles are now invoked with --warn-undefined-variables command line option (strangely, compilation under MSYS on Windows warns that '^' variable is not defined)</li>
   <li>ouput effective arguments now support polymorphic assignment;</li>
   <li>an empty lexical analyzer now raises lexical errors on every character until the end of source file (on previous versions, it runs indefinitly);</li>
 </ul>
