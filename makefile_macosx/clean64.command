@@ -1,2 +1,2 @@
 #!/bin/sh
-cd `dirname $0` && time make -f makefiles/makefile64 --warn-undefined-variables clean
+cd `dirname $0` && time make -f makefile64 --warn-undefined-variables clean

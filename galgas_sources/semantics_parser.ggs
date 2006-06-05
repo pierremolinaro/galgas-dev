@@ -729,48 +729,42 @@ rule <import_headers_semantics_and_grammars>
   ioOptionsComponentsMapForUse := [@M_optionComponents emptyMap] ;
 #--- Create model map, and enter builtin types
   outModelMap := [@ModelMap emptyMap] ;
-  @lstring key [new !"char" ! here] ;
-  @TypeModel t := [@CharModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"string" ! here] ;
-  t := [@StringModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"uint" ! here] ;
-  t := [@UIntModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"sint" ! here] ;
-  t := [@SIntModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"bool" ! here] ;
-  t := [@BoolModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"double" ! here] ;
-  t := [@DoubleModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"lchar" ! here] ;
-  t := [@LCharModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"lstring" ! here] ;
-  t := [@LStringModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"luint" ! here] ;
-  t := [@LUIntModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"lsint" ! here] ;
-  t := [@LSIntModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"lbool" ! here] ;
-  t := [@LBoolModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"ldouble" ! here] ;
-  t := [@LDoubleModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"location" ! here] ;
-  t := [@LocationModel new] ;
-  [!?outModelMap insertKey !key !t] ;
-  key := [@lstring new !"stringset" ! here] ;
-  t := [@StringsetModel new] ;
-  [!?outModelMap insertKey !key !t] ;
+
+  [!?outModelMap insertKey ![@lstring new !"char" ! here] ![@CharModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"string" ! here] ![@StringModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"uint" ! here] ![@UIntModel new]] ;
+ 
+  [!?outModelMap insertKey ![@lstring new !"sint" ! here] ![@SIntModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"uint64" ! here] ![@UInt64Model new]] ;
+ 
+  [!?outModelMap insertKey ![@lstring new !"sint64" ! here] ![@SInt64Model new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"bool" ! here] ![@BoolModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"double" ! here] ![@DoubleModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"lchar" ! here] ![@LCharModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"lstring" ! here] ![@LStringModel new] ] ;
+
+  [!?outModelMap insertKey ![@lstring new !"luint" ! here] ![@LUIntModel new] ] ;
+
+  [!?outModelMap insertKey ![@lstring new !"lsint" ! here] ![@LSIntModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"luint64" ! here] ![@LUInt64Model new] ] ;
+
+  [!?outModelMap insertKey ![@lstring new !"lsint64" ! here] ![@LSInt64Model new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"lbool" ! here] ![@LBoolModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"ldouble" ! here] ![@LDoubleModel new] ] ;
+
+  [!?outModelMap insertKey ![@lstring new !"location" ! here] ![@LocationModel new]] ;
+
+  [!?outModelMap insertKey ![@lstring new !"stringset" ! here] ![@StringsetModel new]] ;
 #--- enter in semantics entities map the galgas types corresponding to keywords
   enterBuiltinTypes ?ioComponentSemanticsEntitiesMap ;
   @stringset alreadyImportedSemanticsComponents [emptySet] ;

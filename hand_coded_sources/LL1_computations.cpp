@@ -392,7 +392,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                                const GGS_stringset & inClassesNamesSet,
                                const cVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions,
-                               GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                               const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
 //--- Generate header file inclusion --------------------------------------------------------------
   C_String generatedZone2 ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
@@ -677,7 +677,7 @@ LL1_computations (C_Lexique & inLexique,
                   const C_String & inLexiqueName,
                   const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
-                  GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
 //--- Console display
   co << "  Checking LL(1) condition... " ;
 

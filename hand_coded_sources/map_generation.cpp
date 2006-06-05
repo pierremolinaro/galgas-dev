@@ -296,7 +296,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "               GGS_luint * outIndex\n"
                "               COMMA_LOCATION_ARGS) {\n"
                "  sint32 index = - 1 ;\n"
-               "  if (isBuilt () && inKey.isBuilt ()) {\n"
+               "  if (isBuilt ()\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  index = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "   && inParameter" << index << ".isBuilt ()\n" ;
+    index ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile<<  "   && inKey.isBuilt ()) {\n"
                "    insulateMap () ;\n"
                "    e_" << aNomTable << " info  ;\n" ;
   current = mNonExternAttributesList.firstObject () ;

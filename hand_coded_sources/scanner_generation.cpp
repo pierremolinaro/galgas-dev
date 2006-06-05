@@ -415,7 +415,7 @@ routine_buildLexicalRulesFromList (C_Lexique & ioLexique,
 static void
 generate_scanning_method (AC_OutputStream & inCppFile,
                           const C_String & inLexiqueName,
-                          GGS_typeLexicalAttributesMap & table_attributs,
+                          const GGS_typeLexicalAttributesMap & table_attributs,
                           const GGS_typeListeTestsEtInstructions & programme_principal) {
 
   inCppFile.writeCTitleComment ("Get next token : method 'parseLexicalToken'") ;
@@ -426,10 +426,11 @@ generate_scanning_method (AC_OutputStream & inCppFile,
    if (instructions_list_uses_loop_variable (programme_principal)) {
      inCppFile << "  bool loop_ = true ;\n" ;
    }
-  inCppFile << "  mCurrentTokenCode = -1 ;\n" ;
+  inCppFile.incIndentation (+2) ;
+  inCppFile << "mCurrentTokenCode = -1 ;\n"
+               "while (mCurrentTokenCode < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
-  inCppFile << "  while (mCurrentTokenCode < 0) {\n" ;
-  inCppFile.incIndentation (+4) ;
+  inCppFile.incIndentation (+2) ;
   inCppFile << "mCurrentTokenStartLocation = currentLocation () ;\n"
               "try{\n" ;
   inCppFile.incIndentation (+2) ;
@@ -466,12 +467,13 @@ generate_scanning_method (AC_OutputStream & inCppFile,
 static void
 generate_scanner_cpp_file (C_Lexique & inLexique,
                            const C_String & inLexiqueName,
-                           GGS_typeLexicalAttributesMap & table_attributs,
-                           GGS_typeTableDefinitionTerminaux & table_des_terminaux,
-                           GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
-                           GGS_typeListeTestsEtInstructions & programme_principal,
-                           GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
-                           GGS_M_styles & inStylesMap) {
+                           const GGS_typeLexicalAttributesMap & table_attributs,
+                           const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
+                           const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
+                           const GGS_typeListeTestsEtInstructions & programme_principal,
+                           const GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
+                           const GGS_stringset & inUsedErrorMessageSet,
+                           const GGS_M_styles & inStylesMap) {
 // --------------------------------------- Engendrer les inclusions
   C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2 << "#include <ctype.h>\n"
@@ -500,8 +502,14 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
     sint32 messageNumber = 0 ;
     while (currentMessage != NULL) {
       macroValidPointer (currentMessage) ;
-      generatedZone2 << "//--- Message " << messageNumber << " (" << currentMessage->mKey << ") :\n"
-                        "static const char * gErrorMessage_" << messageNumber << " = " ;
+      const bool used = inUsedErrorMessageSet.hasKey (currentMessage->mKey) ;
+      if (used) {
+        generatedZone2 << "//--- Message " << messageNumber << "\n" ;
+      }else{
+        generatedZone2 << "//--- Message " << messageNumber << " (not used)\n"
+                          "// " ;      
+      }
+      generatedZone2 << "static const char * gErrorMessage_" << messageNumber << " = " ;
       generatedZone2.writeCstringConstant (currentMessage->mInfo.mErrorMessage) ;
       generatedZone2 << " ;\n" ;
       currentMessage = currentMessage->nextObject () ;
@@ -907,7 +915,23 @@ generateAttributeInitialization (const GGS_lstring & nom,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgas_luint64::
+generateAttributeInitialization (const GGS_lstring & nom,
+                                 AC_OutputStream & inCppFile) const {
+  inCppFile << "  " << nom << " = 0 ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeGalgas_lsint::
+generateAttributeInitialization (const GGS_lstring & nom,
+                                 AC_OutputStream & inCppFile) const {
+  inCppFile << "  " << nom << " = 0 ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lsint64::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
   inCppFile << "  " << nom << " = 0 ;\n" ;
@@ -929,10 +953,10 @@ generateAttributeInitialization (const GGS_lstring & nom,
 
 static void
 generate_scanner_header_file (C_Lexique & inLexique,
-                              GGS_lstring & inLexiqueName,
-                              GGS_typeLexicalAttributesMap & table_attributs,
-                              GGS_typeTableDefinitionTerminaux & table_des_terminaux,
-                              GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves) {
+                              const GGS_lstring & inLexiqueName,
+                              const GGS_typeLexicalAttributesMap & table_attributs,
+                              const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
+                              const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves) {
 //--- Write #ifndef, ..., #include, ...
   C_String generatedZone2 ;
   generatedZone2 << "#ifndef " << inLexiqueName << "_0_DEFINED\n"
@@ -1036,10 +1060,28 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgas_luint64::
+generateAttributeDeclaration (const GGS_lstring & nom,
+                              AC_OutputStream & H_file) const {
+  H_file << "  public : uint64 " << nom
+         << " ; // user defined attribute\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeGalgas_lsint::
 generateAttributeDeclaration (const GGS_lstring & nom,
                               AC_OutputStream & H_file) const {
   H_file << "  public : sint32 " << nom
+         << " ; // user defined attribute\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lsint64::
+generateAttributeDeclaration (const GGS_lstring & nom,
+                              AC_OutputStream & H_file) const {
+  H_file << "  public : sint64 " << nom
          << " ; // user defined attribute\n" ;
 }
 
@@ -1078,14 +1120,6 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_lsint::
-generateAttributeGetLexicalValue (const C_String & inAttributeName,
-                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeGalgas_lbool::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
@@ -1095,6 +1129,30 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_luint::
+generateAttributeGetLexicalValue (const C_String & inAttributeName,
+                                  AC_OutputStream & inCppFile) const {
+  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_luint64::
+generateAttributeGetLexicalValue (const C_String & inAttributeName,
+                                  AC_OutputStream & inCppFile) const {
+  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lsint::
+generateAttributeGetLexicalValue (const C_String & inAttributeName,
+                                  AC_OutputStream & inCppFile) const {
+  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lsint64::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
@@ -1118,36 +1176,40 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 
 void 
 routine_generate_scanner (C_Lexique & inLexique,
-                          GGS_lstring & inLexiqueName,
-                          GGS_typeLexicalAttributesMap & table_attributs,
-                          GGS_typeTableDefinitionTerminaux & table_des_terminaux,
-                          GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
-                          GGS_typeListeTestsEtInstructions & programme_principal,
-                          GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
-                          GGS_M_styles & inStylesMap
+                          const GGS_lstring & inLexiqueName,
+                          const GGS_typeLexicalAttributesMap & table_attributs,
+                          const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
+                          const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
+                          const GGS_typeListeTestsEtInstructions & programme_principal,
+                          const GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
+                          const GGS_M_styles & inStylesMap,
+                          const GGS_stringset & inUsedErrorMessageSet
                           COMMA_LOCATION_ARGS) {
-//--- Get version string
-  const C_String GALGASversionString = inLexique.galgas_IO_Ptr ()->getCompilerVersion () ;
-//--- Create GALGAS_OUTPUT directory
-  const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
-  const bool ok = GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
-  if (ok) {
-  //--- Generate header file
-    generate_scanner_header_file (inLexique,
-                                  inLexiqueName,
-                                  table_attributs, table_des_terminaux,
-                                  table_tables_mots_reserves) ;
-  //--- Generate implementation file
-    generate_scanner_cpp_file (inLexique,
-                               inLexiqueName,
-                               table_attributs, table_des_terminaux,
-                               table_tables_mots_reserves, programme_principal,
-                               inLexicalErrorsMessageMap,
-                               inStylesMap) ;
-  }else{
-    C_String errorMessage ;
-    errorMessage << "cannot create directory " << GALGAS_OUTPUT_directory ;
-    inLexique.galgas_IO_Ptr ()->printFileErrorMessage (inLexique.sourceFileName (), errorMessage.cString () COMMA_THERE) ;
+  if (inLexique.currentFileErrorsCount() == 0) {
+  //--- Get version string
+    const C_String GALGASversionString = inLexique.galgas_IO_Ptr ()->getCompilerVersion () ;
+  //--- Create GALGAS_OUTPUT directory
+    const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
+    const bool ok = GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
+    if (ok) {
+    //--- Generate header file
+      generate_scanner_header_file (inLexique,
+                                    inLexiqueName,
+                                    table_attributs, table_des_terminaux,
+                                    table_tables_mots_reserves) ;
+    //--- Generate implementation file
+      generate_scanner_cpp_file (inLexique,
+                                 inLexiqueName,
+                                 table_attributs, table_des_terminaux,
+                                 table_tables_mots_reserves, programme_principal,
+                                 inLexicalErrorsMessageMap,
+                                 inUsedErrorMessageSet,
+                                 inStylesMap) ;
+    }else{
+      C_String errorMessage ;
+      errorMessage << "cannot create directory " << GALGAS_OUTPUT_directory ;
+      inLexique.galgas_IO_Ptr ()->printFileErrorMessage (inLexique.sourceFileName (), errorMessage.cString () COMMA_THERE) ;
+    }
   }
 }
 

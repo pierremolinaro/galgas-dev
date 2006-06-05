@@ -5,8 +5,8 @@
 #---------------------------------------------------------------*
 
 #--- Release and debug versions of common_sources_makefile.mke
-EXECUTABLE := galgas
-EXECUTABLE_DEBUG := galgas_debug
+EXECUTABLE := galgas64
+EXECUTABLE_DEBUG := galgas64_debug
 
 #--- Install directory (for "install" goal)
 INSTALL_DIR := /usr/local/bin
@@ -17,8 +17,8 @@ INSTALL_DIR := /usr/local/bin
 #                                                               *
 #---------------------------------------------------------------*
 
-OBJECTS_DIR := makefiles/objects
-DEBUG_OBJECTS_DIR := makefiles/debug_objects
+OBJECTS_DIR := allObjects/objects64
+DEBUG_OBJECTS_DIR := allObjects/debug_objects64
 
 #---------------------------------------------------------------*
 
@@ -35,7 +35,7 @@ include ../common_files_for_make/makefile_LL1.mke
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_32.mke
+include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_64.mke
 
 #---------------------------------------------------------------*
 #                                                               *

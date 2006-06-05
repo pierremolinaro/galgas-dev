@@ -17,8 +17,8 @@ INSTALL_DIR := /usr/local/bin
 #                                                               *
 #---------------------------------------------------------------*
 
-OBJECTS_DIR := makefiles/objects64
-DEBUG_OBJECTS_DIR := makefiles/debug_objects64
+OBJECTS_DIR := allObjects/objects64
+DEBUG_OBJECTS_DIR := allObjects/debug_objects64
 
 #---------------------------------------------------------------*
 

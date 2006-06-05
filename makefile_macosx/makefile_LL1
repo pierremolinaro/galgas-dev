@@ -1,12 +1,12 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building galgas_SLR command line tools           *
+# MAKEFILE for building galgas_LL1 command line tools           *
 #                                                               *
 #---------------------------------------------------------------*
 
 #--- Release and debug versions of common_sources_makefile.mke
-EXECUTABLE := galgas_slr
-EXECUTABLE_DEBUG := galgas_slr_debug
+EXECUTABLE := galgas
+EXECUTABLE_DEBUG := galgas_debug
 
 #--- Install directory (for "install" goal)
 INSTALL_DIR := /usr/local/bin
@@ -17,8 +17,8 @@ INSTALL_DIR := /usr/local/bin
 #                                                               *
 #---------------------------------------------------------------*
 
-OBJECTS_DIR := makefiles/objects
-DEBUG_OBJECTS_DIR := makefiles/debug_objects
+OBJECTS_DIR := allObjects/objects
+DEBUG_OBJECTS_DIR := allObjects/debug_objects
 
 #---------------------------------------------------------------*
 
@@ -27,7 +27,7 @@ PLATFORM_LINKER_OPTIONS :=
 
 #---------------------------------------------------------------*
 
-include ../common_files_for_make/makefile_SLR.mke
+include ../common_files_for_make/makefile_LL1.mke
 
 #---------------------------------------------------------------*
 #                                                               *
