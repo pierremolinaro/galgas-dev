@@ -33,7 +33,7 @@ map @typeLexicalAttributesMap {
 map @lexicalTypeMap {
   @AC_galgasType mAttributType ;
   insert insertKey error message "--- internal error ---" ;
-  search searchKey error message "there is no type named '%K'" ;
+  search searchKey error message "there is no type named '@%K'" ;
 }
 
 #------------------------------------------------------------------*

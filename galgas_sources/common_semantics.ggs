@@ -130,6 +130,24 @@ class @SIntModel extends @TypeModel {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  U I N T 6 4    M O D E L                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @UInt64Model extends @TypeModel {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S I N T 6 4    M O D E L                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @SInt64Model extends @TypeModel {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  D O U B L E    M O D E L                                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -180,6 +198,24 @@ class @LUIntModel extends @TypeModel {
 #---------------------------------------------------------------------------*
 
 class @LSIntModel extends @TypeModel {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L U I N T 6 4    M O D E L                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @LUInt64Model extends @TypeModel {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L S I N T 6 4    M O D E L                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @LSInt64Model extends @TypeModel {
 }
 
 #---------------------------------------------------------------------------*
@@ -833,6 +869,44 @@ class @typeGalgas_sint extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 
+class @typeGalgas_sint64 extends @AC_galgasType {
+#--- Get type name
+  override reader getTypeName !@string outTypeName :
+    outTypeName := "sint64" ;
+  end reader ;
+
+#--- This class accepts "++" operator
+  override reader handleIncrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end reader ;
+
+#--- This class accepts "--" operator
+  override reader handleDecrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end reader ;
+
+#--- Class accepts constructors 'min' and 'max'
+  override reader handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName value] == "min" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName value] == "max" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
+#--- Error message
+  message messageGalgasType "a '@sint64' type" ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgas_uint extends @AC_galgasType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
@@ -865,6 +939,42 @@ class @typeGalgas_uint extends @AC_galgasType {
 
 #--- Error message
   message messageGalgasType "a '@uint' type" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_uint64 extends @AC_galgasType {
+#--- Get type name
+  override reader getTypeName !@string outTypeName :
+    outTypeName := "uint64" ;
+  end reader ;
+
+#--- This class accepts "++" operator
+  override reader handleIncrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end reader ;
+
+#--- This class accepts "--" operator
+  override reader handleDecrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end reader ;
+
+#--- Class accepts constructor 'max'
+  override reader handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName value] == "max" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
+#--- Error message
+  message messageGalgasType "a '@uint64' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1058,6 +1168,41 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
 
 #---------------------------------------------------------------------------*
 
+class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
+#--- Get type name
+  override reader getTypeName !@string outTypeName :
+    outTypeName := "luint64" ;
+  end reader ;
+
+#--- Class accepts class method call 'new'
+  override reader handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName value] == "new" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @AC_galgasType t := [@typeGalgas_uint new] ;
+      outAccessorTypesList += !t ![@lstring new !"" !here] ;
+      t := [@typeGalgas_location new] ;
+      outAccessorTypesList += !t ![@lstring new !"" !here] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
+#--- This class accepts to be a key for map
+  override reader acceptToBeKeyForMap :
+  end reader ;
+
+#--- Class accepts to be silently converted to @location
+  override reader checkAbilityToBeSilentlyConvertedToLocation :
+  end reader ;
+
+  message messageGalgasType "a '@luint64' type" ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgas_lsint extends @C_galgasPrimitiveType {
 #--- Get type name
   override reader getTypeName !@string outTypeName :
@@ -1089,6 +1234,41 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
   end reader ;
 
   message messageGalgasType "a '@lsint' type" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
+#--- Get type name
+  override reader getTypeName !@string outTypeName :
+    outTypeName := "lsint64" ;
+  end reader ;
+
+#--- Class accepts class method call 'new'
+  override reader handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName value] == "new" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @AC_galgasType t := [@typeGalgas_sint new] ;
+      outAccessorTypesList += !t ![@lstring new !"" !here] ;
+      t := [@typeGalgas_location new] ;
+      outAccessorTypesList += !t ![@lstring new !"" !here] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
+#--- This class accepts to be a key for map
+  override reader acceptToBeKeyForMap :
+  end reader ;
+
+#--- Class accepts to be silently converted to @location
+  override reader checkAbilityToBeSilentlyConvertedToLocation :
+  end reader ;
+
+  message messageGalgasType "a '@lsint64' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2077,6 +2257,8 @@ routine verifierCompatibiliteTypesSemantiques
   when @typeGalgas_stringset ():: @typeGalgas_stringset () :
   when @typeGalgas_uint ()     :: @typeGalgas_uint () :
   when @typeGalgas_sint ()     :: @typeGalgas_sint () :
+  when @typeGalgas_uint64 ()   :: @typeGalgas_uint64 () :
+  when @typeGalgas_sint64 ()   :: @typeGalgas_sint64 () :
   when @typeGalgas_char ()     :: @typeGalgas_char () :
   when @typeGalgas_string ()   :: @typeGalgas_string () :
   when @typeGalgas_bool ()     :: @typeGalgas_bool () :
@@ -2085,6 +2267,8 @@ routine verifierCompatibiliteTypesSemantiques
   when @typeGalgas_lchar ()    :: @typeGalgas_lchar () :
   when @typeGalgas_luint ()    :: @typeGalgas_luint () :
   when @typeGalgas_lsint ()    :: @typeGalgas_lsint () :
+  when @typeGalgas_luint64 ()  :: @typeGalgas_luint64 () :
+  when @typeGalgas_lsint64 ()  :: @typeGalgas_lsint64 () :
   when @typeGalgas_ldouble ()  :: @typeGalgas_ldouble () :
   when @typeGalgas_lstring ()  :: @typeGalgas_lstring () :
   when @typeGalgas_location () :: @typeGalgas_location () :
@@ -2366,10 +2550,32 @@ routine handleReaderCall
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
+    when @typeGalgas_uint64 () ->
+      if [inMethodName value] == "sint64" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_sint64 new] ;
+      elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when @typeGalgas_sint () ->
       if [inMethodName value] == "uint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_sint64 () ->
+      if [inMethodName value] == "uint64" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint64 new] ;
       elsif [inMethodName value] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
@@ -2430,10 +2636,41 @@ routine handleReaderCall
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
+    when @typeGalgas_luint64 ()->
+      if [inMethodName value] == "value" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint64 new] ;
+      elsif [inMethodName value] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      elsif [inMethodName value] == "locationString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when @typeGalgas_lsint () ->
       if [inMethodName value] == "value" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
+      elsif [inMethodName value] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName value] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      elsif [inMethodName value] == "locationString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_lsint64 () ->
+      if [inMethodName value] == "value" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_sint64 new] ;
       elsif [inMethodName value] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;

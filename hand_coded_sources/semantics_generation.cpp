@@ -357,6 +357,8 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_ldouble.h\"\n"
                     "#include \"galgas/GGS_luint.h\"\n"
                     "#include \"galgas/GGS_lsint.h\"\n"
+                    "#include \"galgas/GGS_luint64.h\"\n"
+                    "#include \"galgas/GGS_lsint64.h\"\n"
                     "#include \"galgas/GGS_stringset.h\"\n"
                     "#include \"galgas/AC_galgas_map.h\"\n" ;
 
@@ -1032,6 +1034,34 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgas_uint64::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_uint64 " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_uint64::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_uint64::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeGalgas_sint::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_sint " ;
@@ -1047,6 +1077,34 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_sint::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_sint64::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_sint64 " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_sint64::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_sint64::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
                                  AC_OutputStream & /* inCppFile */) const {
 }
@@ -1158,9 +1216,37 @@ generateCppClassName (AC_OutputStream & inFile) const {
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgas_luint64::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_luint64 " ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeGalgas_lsint::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_lsint " ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lsint64::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_lsint64 " ;
 }
 
 //---------------------------------------------------------------------------*

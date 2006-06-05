@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS scanner component parser definition                               *
 #                                                                           *
-#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  Copyright (C) 1997, ..., 2006 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -86,6 +86,7 @@ rule <while_branches_list>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
@@ -95,6 +96,7 @@ rule <lexical_rule>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
@@ -104,6 +106,7 @@ rule <lexical_instructions_list>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
@@ -113,6 +116,7 @@ rule <lexical_when_branches_list>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
@@ -122,6 +126,7 @@ rule <lexical_default_branch>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
@@ -150,6 +155,7 @@ label parse
 rule <lexical_error_messages_list>
   ?!@typeListeMessagesErreur listeMessagesErreur
   ?!@typeTableMessagesErreurs tableMessagesErreurs
+  ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
@@ -157,6 +163,7 @@ rule <lexical_send_or_error>
   !@typeEmissionParDefaut emissionParDefaut
   ?!@typeTableMessagesErreurs tableMessagesErreurs
   ?!@typeTableDefinitionTerminaux table_des_terminaux
+  ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
@@ -172,42 +179,39 @@ rule <lexical_send_instruction>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
 action generate_scanner
-  ?!@lstring lexiqueName 
-  ?!@typeLexicalAttributesMap table_attributs
-  ?!@typeTableDefinitionTerminaux table_des_terminaux
-  ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
-  ?!@typeListeTestsEtInstructions lexicalRulesList
-  ?!@typeTableMessagesErreurs table_messages
-  ?!@M_styles stylesMap
+  ??@lstring lexiqueName 
+  ??@typeLexicalAttributesMap table_attributs
+  ??@typeTableDefinitionTerminaux table_des_terminaux
+  ??@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ??@typeListeTestsEtInstructions lexicalRulesList
+  ??@typeTableMessagesErreurs table_messages
+  ??@M_styles stylesMap
+  ??@stringset inUsedErrorMessageSet
 ;
-routine buildLexicalTypeMap !@lexicalTypeMap lexicalTypeMap :
-  lexicalTypeMap := [@lexicalTypeMap emptyMap] ;
-  @AC_galgasType t := [@typeGalgas_lstring new] ;
-  @lstring typeName := [@lstring new !"lstring" !here] ;
-  [!?lexicalTypeMap insertKey !typeName !t] ;
-  t := [@typeGalgas_lchar new] ;
-  typeName := [@lstring new !"lchar" !here] ;
-  [!?lexicalTypeMap insertKey !typeName !t] ;
 
-  t := [@typeGalgas_luint new] ;
-  typeName := [@lstring new !"luint" !here] ;
-  [!?lexicalTypeMap insertKey !typeName !t] ;
+routine buildLexicalTypeMap !@lexicalTypeMap outLexicalTypeMap :
+  outLexicalTypeMap := [@lexicalTypeMap emptyMap] ;
 
-  t := [@typeGalgas_lsint new] ;
-  typeName := [@lstring new !"lsint" !here] ;
-  [!?lexicalTypeMap insertKey !typeName !t] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"lstring" !here] ![@typeGalgas_lstring new]] ;
 
-  t := [@typeGalgas_lbool new] ;
-  typeName := [@lstring new !"lbool" !here] ;
-  [!?lexicalTypeMap insertKey !typeName !t] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"lchar" !here] ![@typeGalgas_lchar new]] ;
 
-  t := [@typeGalgas_ldouble new] ;
-  typeName := [@lstring new !"ldouble" !here] ;
-  [!?lexicalTypeMap insertKey !typeName !t] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"luint" !here] ![@typeGalgas_luint new]] ;
+
+  [!?outLexicalTypeMap insertKey ![@lstring new !"lsint" !here] ![@typeGalgas_lsint new]] ;
+
+  [!?outLexicalTypeMap insertKey ![@lstring new !"luint64" !here] ![@typeGalgas_luint64 new]] ;
+
+  [!?outLexicalTypeMap insertKey ![@lstring new !"lsint64" !here] ![@typeGalgas_lsint64 new]] ;
+
+  [!?outLexicalTypeMap insertKey ![@lstring new !"lbool" !here] ![@typeGalgas_lbool new]] ;
+
+  [!?outLexicalTypeMap insertKey ![@lstring new !"ldouble" !here] ![@typeGalgas_ldouble new]] ;
 end routine ;
 
 #-------------------------------------------------------------------*
@@ -235,6 +239,8 @@ rule <galgas_component>
   @typeTableMessagesErreurs table_messages [emptyMap] ;
   @typeTableTablesDeMotsReserves table_tables_mots_reserves [emptyMap] ;
   @typeListeTestsEtInstructions lexicalRulesList [emptyList] ;
+  @stringset usedErrorMessageSet [emptySet] ;
+
 #--- Define lexical types
   @lexicalTypeMap lexicalTypeMap ;
   buildLexicalTypeMap ?lexicalTypeMap ;
@@ -274,23 +280,31 @@ rule <galgas_component>
       !?table_messages
       !?table_attributs
       !?table_tables_mots_reserves
+      !?usedErrorMessageSet
     ;
     $;$ ;
   end repeat ;
   $end$ ;
   $lexique$ ;
   $;$ ;
+#--- Warn unused error messages
+  foreach table_messages (??@lstring kKey ??*) :
+    if not [usedErrorMessageSet hasKey ![kKey value]] then
+      warning kKey:"this error message is not used" ;
+    end if ;
+  end foreach ;
 #--- Enter lexique in lexique map
   [!?ioLexiqueMapForUse insertKey !lexiqueName !terminalSymbolsMapForUse] ;
 #--- Generate scanner
   action generate_scanner
-    !?lexiqueName 
-    !?table_attributs
-    !?table_des_terminaux
-    !?table_tables_mots_reserves
-    !?lexicalRulesList
-    !?table_messages
-    !?stylesMap
+    !lexiqueName 
+    !table_attributs
+    !table_des_terminaux
+    !table_tables_mots_reserves
+    !lexicalRulesList
+    !table_messages
+    !stylesMap
+    !usedErrorMessageSet
   ;
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
@@ -606,6 +620,7 @@ rule <while_branches_list>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 :
   liste_tests_et_instructions := [@typeListeTestsEtInstructions emptyList] ;
   $while$ ;
@@ -614,11 +629,14 @@ rule <while_branches_list>
     <lexical_test_expression> ? lcl ;
     $:$ ;
     @tListeInstructionsLexicales li ;
-    <lexical_instructions_list> ?li
-                        !?table_des_terminaux
-                        !?table_des_messages_erreur
-                        !?table_attributs
-                        !?table_tables_mots_reserves ;
+    <lexical_instructions_list>
+      ?li
+      !?table_des_terminaux
+      !?table_des_messages_erreur
+      !?table_attributs
+      !?table_tables_mots_reserves
+      !?ioUsedErrorMessageSet
+    ;
     liste_tests_et_instructions += !lcl !li ;
   while
     $while$ ;
@@ -684,16 +702,20 @@ rule <lexical_rule>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 :
   @typeListeConditionsLexicales lcl ;
   <lexical_test_expression> ? lcl ;
   $:$ ;
   @tListeInstructionsLexicales li ;
-  <lexical_instructions_list> ?li
-                      !?table_des_terminaux
-                      !?table_des_messages_erreur
-                      !?table_attributs
-                      !?table_tables_mots_reserves ;
+  <lexical_instructions_list>
+    ?li
+    !?table_des_terminaux
+    !?table_des_messages_erreur
+    !?table_attributs
+    !?table_tables_mots_reserves
+    !?ioUsedErrorMessageSet
+  ;
   ioLexicalRulesList += !lcl !li ;
   $end$ ;
   $rule$ ;
@@ -707,6 +729,7 @@ rule <lexical_rule>
   ?!@typeTableMessagesErreurs unused table_des_messages_erreur
   ?!@typeLexicalAttributesMap unused table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset unused ioUsedErrorMessageSet
 :
   $list$ ;
 #--- Get list name
@@ -727,6 +750,7 @@ rule <lexical_instructions_list>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 :
   li := [@tListeInstructionsLexicales emptyList] ;
   repeat
@@ -736,24 +760,34 @@ rule <lexical_instructions_list>
     @typeListeArgumentsRoutExterne lare ;
     <lexical_parameters_non_empty_list> ? lare !?table_attributs ;
     @typeListeMessagesErreur lme [emptyList] ;
-    <lexical_error_messages_list> !?lme !?table_des_messages_erreur ;
+    <lexical_error_messages_list>
+      !?lme
+      !?table_des_messages_erreur
+      !?ioUsedErrorMessageSet
+    ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionActionExterne new !nom_routine_externe !lare !lme] ;
     li += !e ;
   while
     $select$ ;
     @typeListeTestsEtInstructions list_branches_si ;
-    <lexical_when_branches_list> ?list_branches_si
-                       !?table_des_terminaux
-                       !?table_des_messages_erreur
-                       !?table_attributs
-                       !?table_tables_mots_reserves ;
+    <lexical_when_branches_list> 
+      ?list_branches_si
+      !?table_des_terminaux
+      !?table_des_messages_erreur
+      !?table_attributs
+      !?table_tables_mots_reserves
+      !?ioUsedErrorMessageSet
+    ;
     @tListeInstructionsLexicales liste_instructions_sinon ;
-    <lexical_default_branch> ?liste_instructions_sinon
-                   !?table_des_terminaux
-                   !?table_des_messages_erreur
-                   !?table_attributs
-                   !?table_tables_mots_reserves ;
+    <lexical_default_branch>
+       ?liste_instructions_sinon
+       !?table_des_terminaux
+       !?table_des_messages_erreur
+       !?table_attributs
+       !?table_tables_mots_reserves
+       !?ioUsedErrorMessageSet
+    ;
     $end$ ;
     $select$ ;
     $;$ ;
@@ -763,17 +797,23 @@ rule <lexical_instructions_list>
   while
     $repeat$ ;
     @tListeInstructionsLexicales lii ;
-    <lexical_instructions_list> ?lii
-                        !?table_des_terminaux
-                        !?table_des_messages_erreur
-                        !?table_attributs
-                        !?table_tables_mots_reserves ;
+    <lexical_instructions_list>
+      ?lii
+      !?table_des_terminaux
+      !?table_des_messages_erreur
+      !?table_attributs
+      !?table_tables_mots_reserves
+      !?ioUsedErrorMessageSet
+    ;
     @typeListeTestsEtInstructions ltq ;
-    <while_branches_list> ?ltq
-                             !?table_des_terminaux
-                             !?table_des_messages_erreur
-                             !?table_attributs
-                             !?table_tables_mots_reserves ;
+    <while_branches_list>
+      ?ltq
+      !?table_des_terminaux
+      !?table_des_messages_erreur
+      !?table_attributs
+      !?table_tables_mots_reserves
+      !?ioUsedErrorMessageSet
+    ;
     $end$ ;
     $repeat$ ;
     $;$ ;
@@ -783,11 +823,14 @@ rule <lexical_instructions_list>
   while
     $send$ ;
     @typeInstructionLexicale e ;
-    <lexical_send_instruction> ?e
-                         !?table_des_terminaux
-                         !?table_des_messages_erreur
-                         !?table_attributs
-                         !?table_tables_mots_reserves ;
+    <lexical_send_instruction>
+      ?e
+      !?table_des_terminaux
+      !?table_des_messages_erreur
+      !?table_attributs
+      !?table_tables_mots_reserves
+      !?ioUsedErrorMessageSet
+    ;
     $;$ ;
     li += !e ;
   while
@@ -796,6 +839,7 @@ rule <lexical_instructions_list>
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
     [table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
+    ioUsedErrorMessageSet += ![errorMessageName value] ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionErreurLexicale new !errorMessageIndex] ;
     li += !e ;
@@ -807,6 +851,7 @@ end rule ;
 rule <lexical_error_messages_list>
   ?!@typeListeMessagesErreur unused lme
   ?!@typeTableMessagesErreurs unused table_des_messages_erreur
+  ?!@stringset unused ioUsedErrorMessageSet
 :
 end rule ;
 
@@ -815,6 +860,7 @@ end rule ;
 rule <lexical_error_messages_list>
   ?!@typeListeMessagesErreur lme
   ?!@typeTableMessagesErreurs table_des_messages_erreur
+  ?!@stringset ioUsedErrorMessageSet
 :
   $error$ ;
   repeat
@@ -823,6 +869,7 @@ rule <lexical_error_messages_list>
     @luint errorMessageIndex ;
     [table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
     lme += !errorMessageIndex ;
+    ioUsedErrorMessageSet += ![errorMessageName value] ;
   while
     $,$ ;
   end repeat ;
@@ -905,6 +952,7 @@ rule <lexical_when_branches_list>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 :
   lbs := [@typeListeTestsEtInstructions emptyList] ;
   $when$ ;
@@ -913,11 +961,14 @@ rule <lexical_when_branches_list>
     <lexical_test_expression> ? lcl ;
     $:$ ;
     @tListeInstructionsLexicales li ;
-    <lexical_instructions_list> ?li
-                        !?table_des_terminaux
-                        !?table_des_messages_erreur
-                        !?table_attributs
-                        !?table_tables_mots_reserves ;
+    <lexical_instructions_list>
+      ?li
+      !?table_des_terminaux
+      !?table_des_messages_erreur
+      !?table_attributs
+      !?table_tables_mots_reserves
+      !?ioUsedErrorMessageSet
+    ;
     lbs += !lcl !li ;
   while
     $when$ ;
@@ -932,6 +983,7 @@ rule <lexical_default_branch>
   ?!@typeTableMessagesErreurs unused table_des_messages_erreur
   ?!@typeLexicalAttributesMap unused table_attributs
   ?!@typeTableTablesDeMotsReserves unused table_tables_mots_reserves
+  ?!@stringset unused ioUsedErrorMessageSet
 :
   liste_instructions_sinon := [@tListeInstructionsLexicales emptyList] ;
 end rule ;
@@ -944,13 +996,17 @@ rule <lexical_default_branch>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 :
   $default$ ;
-  <lexical_instructions_list> ?liste_instructions_sinon
-                      !?table_des_terminaux
-                      !?table_des_messages_erreur
-                      !?table_attributs
-                      !?table_tables_mots_reserves ;
+  <lexical_instructions_list>
+    ?liste_instructions_sinon
+    !?table_des_terminaux
+    !?table_des_messages_erreur
+    !?table_attributs
+    !?table_tables_mots_reserves 
+    !?ioUsedErrorMessageSet
+  ;
 end rule ;
 
 #-------------------------------------------------------------------*
@@ -961,6 +1017,7 @@ rule <lexical_send_instruction>
   ?!@typeTableMessagesErreurs unused table_des_messages_erreur
   ?!@typeLexicalAttributesMap unused table_attributs
   ?!@typeTableTablesDeMotsReserves unused table_tables_mots_reserves
+  ?!@stringset unused ioUsedErrorMessageSet
 :
   @lstring nomTerminal ;
   $terminal$ ?nomTerminal ;
@@ -976,6 +1033,7 @@ rule <lexical_send_instruction>
   ?!@typeTableMessagesErreurs table_des_messages_erreur
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@stringset ioUsedErrorMessageSet
 :
   $search$ ;
   @typeListeRecherche lr [emptyList] ;
@@ -995,7 +1053,12 @@ rule <lexical_send_instruction>
     $search$ ;
   end repeat ;
   @typeEmissionParDefaut ee ;
-  <lexical_send_or_error> ? ee !?table_des_messages_erreur !?table_des_terminaux ;
+  <lexical_send_or_error>
+    ?ee
+    !?table_des_messages_erreur
+    !?table_des_terminaux
+    !?ioUsedErrorMessageSet
+  ;
   instruction := [@typeInstructionEmettre new !lr !ee] ;
 end rule ;
 
@@ -1005,6 +1068,7 @@ rule <lexical_send_or_error>
   !@typeEmissionParDefaut emissionParDefaut
   ?!@typeTableMessagesErreurs unused tableMessagesErreurs
   ?!@typeTableDefinitionTerminaux table_des_terminaux
+  ?!@stringset unused ioUsedErrorMessageSet
 :
   @lstring nomTerminal ;
   $terminal$ ?nomTerminal ;
@@ -1018,12 +1082,14 @@ rule <lexical_send_or_error>
   !@typeEmissionParDefaut emissionParDefaut
   ?!@typeTableMessagesErreurs tableMessagesErreurs
   ?!@typeTableDefinitionTerminaux unused table_des_terminaux
+  ?!@stringset ioUsedErrorMessageSet
 :
   $error$ ;
   @lstring errorMessageName ;
   $identifier$ ?errorMessageName ;
   @luint errorMessageIndex ;
   [tableMessagesErreurs searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
+  ioUsedErrorMessageSet += ![errorMessageName value] ;
   emissionParDefaut := [@typeEmissionErreurParDefaut new !errorMessageIndex] ;
 end rule ;
 

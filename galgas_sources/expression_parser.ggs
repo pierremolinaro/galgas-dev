@@ -132,6 +132,8 @@ routine matchAndOperator
     outResultType := inLeftExpressionType ;
   when @typeGalgas_uint () :: @typeGalgas_uint () :
     outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 () :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_stringset () :: @typeGalgas_stringset () :
     outResultType := inLeftExpressionType ;
   else
@@ -157,6 +159,8 @@ routine matchOrOperator
     outResultType := inLeftExpressionType ;
   when @typeGalgas_uint () :: @typeGalgas_uint () :
     outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 () :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_stringset () :: @typeGalgas_stringset () :
     outResultType := inLeftExpressionType ;
   else
@@ -181,6 +185,8 @@ routine matchXorOperator
   when @typeGalgas_bool () :: @typeGalgas_bool () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_uint () :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 () :: @typeGalgas_uint64 () :
     outResultType := inLeftExpressionType ;
   else
     error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
@@ -240,6 +246,8 @@ routine comparison_types_check
   when @typeGalgas_char ()      :: @typeGalgas_char () :
   when @typeGalgas_uint ()      :: @typeGalgas_uint () :
   when @typeGalgas_sint ()      :: @typeGalgas_sint () :
+  when @typeGalgas_uint64 ()    :: @typeGalgas_uint64 () :
+  when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
   when @typeGalgas_double ()    :: @typeGalgas_double () :
   when @typeGalgas_string ()    :: @typeGalgas_string () :
   when @typeGalgas_enum (??@lstring inTypeName1 ??* ??*) :: @typeGalgas_enum (??@lstring inTypeName2 ??* ??*) :
@@ -533,9 +541,13 @@ routine addition_types_check
 :
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_uint ()      :: @typeGalgas_uint () :
-    outResultType := [@typeGalgas_uint new] ;
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_sint ()      :: @typeGalgas_sint () :
-    outResultType := [@typeGalgas_sint new] ;
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 ()    :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "addition between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
@@ -557,11 +569,15 @@ routine substraction_types_check
 :
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_uint ()      :: @typeGalgas_uint () :
-    outResultType := [@typeGalgas_uint new] ;
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_sint ()      :: @typeGalgas_sint () :
-    outResultType := [@typeGalgas_sint new] ;
-  when @typeGalgas_stringset ()      :: @typeGalgas_stringset () :
-    outResultType := [@typeGalgas_stringset new] ;
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 ()    :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_stringset () :: @typeGalgas_stringset () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "substraction between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
@@ -583,9 +599,13 @@ routine multiply_types_check
 :
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_uint ()      :: @typeGalgas_uint () :
-    outResultType := [@typeGalgas_uint new] ;
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_sint ()      :: @typeGalgas_sint () :
-    outResultType := [@typeGalgas_sint new] ;
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 ()    :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "multiplication between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
@@ -607,9 +627,13 @@ routine divide_types_check
 :
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_uint ()      :: @typeGalgas_uint () :
-    outResultType := [@typeGalgas_uint new] ;
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_sint ()      :: @typeGalgas_sint () :
-    outResultType := [@typeGalgas_sint new] ;
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 ()    :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "division between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
@@ -631,9 +655,13 @@ routine modulo_types_check
 :
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_uint ()      :: @typeGalgas_uint () :
-    outResultType := [@typeGalgas_uint new] ;
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_sint ()      :: @typeGalgas_sint () :
-    outResultType := [@typeGalgas_sint new] ;
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 ()    :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "modulo between " . [inLeftExpressionType messageGalgasType]
       ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
@@ -654,7 +682,9 @@ routine unary_minus_type_check
 :
   extract inExpressionType :
   when @typeGalgas_sint ()->
-    outResultType := [@typeGalgas_sint new] ;
+    outResultType := inExpressionType ;
+  when @typeGalgas_sint64 ()->
+    outResultType := inExpressionType ;
   else
     error here : "unary minus for " . [inExpressionType messageGalgasType]
       . " is not valid"

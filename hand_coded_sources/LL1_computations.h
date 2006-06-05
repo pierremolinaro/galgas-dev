@@ -51,7 +51,7 @@ LL1_computations (C_Lexique & inLexique,
                   const C_String & inLexiqueName,
                   const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
-                  GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) ;
+                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) ;
 
 //---------------------------------------------------------------------------*
 

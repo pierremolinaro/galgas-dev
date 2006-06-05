@@ -71,7 +71,7 @@ end rule ;
 #------------------------------- Integer, flating Point Constant ------------------
 @ldouble floatValue ;
 $literal_double$ !floatValue !tokenString error message "a float number" style float_csts ;
-$unsigned_literal_integer$ ! ulongValue error message "a decimal number" style integerStyle ;
+$unsigned_literal_integer$ ! ulongValue error message "a unsigned decimal number" style integerStyle ;
 $signed_literal_integer$ ! longValue error message "a signed decimal number" style integerStyle ;
 
 message decimalNumberTooLarge : "decimal number too large" ;

@@ -457,18 +457,17 @@ createStyleFile (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void
-routine_analyzeGrammar (C_Lexique & inLexique,
-                        GGS_lstring & inTargetFileName,
-                        const GGS_lstring & inGrammarClass,
-                        GGS_luint & inOriginalGrammarStartSymbol,
-                        GGS_lstring & inLexiqueName,
-                        const GGS_location & errorLocation,
-                        GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
-                        GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
-                        GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                        GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap
-                        COMMA_UNUSED_LOCATION_ARGS) {
+static void
+analyzeGrammar (C_Lexique & inLexique,
+                const GGS_lstring & inTargetFileName,
+                const GGS_lstring & inGrammarClass,
+                const GGS_luint & inOriginalGrammarStartSymbol,
+                const GGS_lstring & inLexiqueName,
+                const GGS_location & errorLocation,
+                const GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
+                const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
+                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+                const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
   GGS_stringset classesNamesSet ;
   bool warningFlag = false ;
 
@@ -837,6 +836,34 @@ routine_analyzeGrammar (C_Lexique & inLexique,
     }else{
       inLexique.galgas_IO_Ptr ()->ggs_printWarning ((C_String ("Need to write '") + HTMLfileName + "'.\n").cString ()) ;
     }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void
+routine_analyzeGrammar (C_Lexique & inLexique,
+                        GGS_lstring & inTargetFileName,
+                        const GGS_lstring & inGrammarClass,
+                        GGS_luint & inOriginalGrammarStartSymbol,
+                        GGS_lstring & inLexiqueName,
+                        const GGS_location & errorLocation,
+                        GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
+                        GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
+                        GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
+                        GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap
+                        COMMA_UNUSED_LOCATION_ARGS) {
+  if (inLexique.currentFileErrorsCount() == 0) {
+    analyzeGrammar (inLexique,
+                    inTargetFileName,
+                    inGrammarClass,
+                    inOriginalGrammarStartSymbol,
+                    inLexiqueName,
+                    errorLocation,
+                    ioTerminalSymbolMap,
+                    inSyntaxComponentsList,
+                    inNonterminalSymbolsMapForGrammar,
+                    inStartSymbolEntityAndMetamodelMap) ;
   }
 }
 
