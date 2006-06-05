@@ -8,7 +8,7 @@
 <body>
 <p><b>GALGAS ChangeLog</b></p>
 <p><br></p>
-<p>1.3.2</p>
+<p>1.4.0</p>
 <ul>
   <li>first attempt to provide galgas and libpm code 64-bit clean: now, makefiles build both 32-bit and 64-bit tools;</li>
   <li>consequently, the <tt>makefile_i386linux_on_macosx</tt> directory is now named <tt>makefile_x86linux_on_macosx</tt>;</li>
@@ -19,29 +19,20 @@
 <p>1.3.1</p>
 <ul>
   <li><b>Version 1.3.0 has been deleted</b>; --create-project option did not work;</li>
-  <li>on @bool type: added ^ (exclusive or) diadic operator on @bool objects, that returns an @uint object;</li>
-  <li>on @uint type: added 'object ++ ;' incrementation instruction on @uint objects;</li>
-  <li>on @uint type: added 'object -- ;' decrementation instruction on @uint objects;</li>
-  <li>on @uint type: added + (addition) , - (subtraction), * (multiplication) , / (division), % (modulo), &amp; (bit wide and), | (bit wide or), ^ (bit wide exclusive or) diadic operators on @uint objects, that return an @uint object;</li>
-  <li>on @sint type: added 'object ++ ;' incrementation instruction on @sint objects;</li>
-  <li>on @sint type: added 'object -- ;' decrementation instruction on @sint objects;</li>
-  <li>on @sint type: added +, -, *, /, % diadic operators on @sint objects, that return an @sint object;</li>
-  <li>on @sint type: added - monoadic operator on @sint object, that returns an @sint object;</li>
-  <li>on @sint type: added 'uint' reader on @sint object, that returns an @uint object with the same value;</li>
-  <li>on @sint type: added 'min' constructor on @sint object, that returns an @sint object with value equal to -217483648;</li>
-  <li>on @sint type: added 'max' constructor on @sint object, that returns an @sint object with value equal to 217483647;</li>
-  <li>on @sint type: added 'string' reader on @sint object, that returns an @string object with the string value of the receiver;</li>
-  <li>on @stringset type: suppressed 'empty' constructor: use 'emptySet' constructor instead;</li>
-  <li>on @stringset type: added 'setWithString' constructor, that creates a new string set containing a string;</li>
-  <li>on @stringset type: added '-=' operator, that removes a string from a string set;</li>
-  <li>on user defined map type: fixed bug on 'allkeys accessor' of map objects;</li>
-  <li>on user defined map type: suppressed 'empty' constructor: use 'emptyMap' constructor instead;</li>
-  <li>on user defined map type: search methods on map are now <i>readers</i> (instead of <i>modifiers</i>): calls them <tt>[<i>map_expression search_method</i> ...]</tt> instead of <tt>[!?<i>map_expression search_method</i> ...]</tt>;</li>
-  <li>on user defined map type: added 'mapWithMapToOverride' constructor, that creates an empty map that overrides an other map;</li>
-  <li>on user defined map type: added 'overridenMap' reader, that returns the overriden map;</li>
-  <li>on user defined list type: suppressed 'empty' constructor on list types: use 'emptyList' constructor instead;</li>
+  <li>on @bool type: added ^ (exclusive or) diadic operator;</li>
+  <li>on @uint type: added 'object ++ ;' incrementation instruction, 'object -- ;' decrementation instruction,
+      + (addition) , - (subtraction), * (multiplication) , / (division), % (modulo), &amp; (bit wide and),
+      | (bit wide or), ^ (bit wide exclusive or) diadic operators;</li>
+  <li>on @sint type: added 'object ++ ;' incrementation instruction, 'object -- ;' decrementation instruction,
+      +, -, *, /, % diadic operators, - monoadic operator, 'uint' and 'string' readers,
+      'min' and 'max' constructors;</li>
+  <li>on @stringset type: suppressed 'empty' constructor (use 'emptySet' constructor instead),
+      added 'setWithString' constructor, added '-=' operator (that removes a string from a string set);</li>
+  <li>on user defined map type: fixed bug on 'allkeys accessor',
+      suppressed 'empty' constructor (use 'emptyMap' constructor instead),
+      search methods on map are now <i>readers</i> (instead of <i>modifiers</i>);</li>
+  <li>on user defined list type: suppressed 'empty' constructor  (use 'emptyList' constructor instead)</li>
   <li>--create-project Command Line Option replaces --create Command Line Option: now generates Win32 Code::Blocks project;</li>
-  <li>New Keyword:<tt>mapindex</tt>;</li>
 </ul>
 <p>1.2.5beta2</p>
 <ul>

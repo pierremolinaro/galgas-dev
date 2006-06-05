@@ -7,7 +7,7 @@
 all:
 	$(MAKE) -f makefiles/makefile_LL1 all
 	$(MAKE) -f makefiles/makefile_SLR all
-	$(MAKE) -f makefiles/ makefile_LR1 all
+	$(MAKE) -f makefiles/makefile_LR1 all
 
 #---------------------------------------------------------------*
 
