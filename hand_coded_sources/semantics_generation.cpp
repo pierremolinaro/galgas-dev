@@ -162,8 +162,8 @@ bool cPtr_typeExternTypeToGenerate::isCppClassNeeded (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeExternTypeToGenerate
-::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+void cPtr_typeExternTypeToGenerate::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -171,8 +171,8 @@ void cPtr_typeExternTypeToGenerate
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeExternTypeToGenerate
-::generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
+void cPtr_typeExternTypeToGenerate::
+generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
@@ -224,8 +224,8 @@ bool cPtr_typeRoutineAengendrer::isCppClassNeeded (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeRoutineAengendrer
-::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+void cPtr_typeRoutineAengendrer::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inLexiqueClassName*/,
                                const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -233,8 +233,8 @@ void cPtr_typeRoutineAengendrer
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeRoutineAengendrer
-::generateCppClassImplementation (AC_OutputStream & inCppFile,
+void cPtr_typeRoutineAengendrer::
+generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const C_String & inLexiqueClassName,
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
@@ -313,8 +313,8 @@ bool cPtr_typeActionExterneAengendrer::isCppClassNeeded (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeActionExterneAengendrer
-::generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+void cPtr_typeActionExterneAengendrer::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -322,8 +322,8 @@ void cPtr_typeActionExterneAengendrer
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeActionExterneAengendrer
-::generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
+void cPtr_typeActionExterneAengendrer::
+generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
@@ -459,43 +459,43 @@ generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeDirectName
-::generateCplusPlusName (AC_OutputStream & inFile) const {
+void cPtr_typeDirectName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << mName ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeAutomaticName
-::generateCplusPlusName (AC_OutputStream & inFile) const {
+void cPtr_typeAutomaticName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "var_cas_" << mName ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeLocationAutomaticName
-::generateCplusPlusName (AC_OutputStream & inFile) const {
+void cPtr_typeLocationAutomaticName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "var_cas_" << mLocation.currentLocation () ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeCppThisName
-::generateCplusPlusName (AC_OutputStream & inFile) const {
+void cPtr_typeCppThisName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "(*this)" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeCppInheritedName
-::generateCplusPlusName (AC_OutputStream & inFile) const {
+void cPtr_typeCppInheritedName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "(*this)" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeOperandName
-::generateCplusPlusName (AC_OutputStream & inFile) const {
+void cPtr_typeOperandName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "operand_" << mLocationOffset.currentLocation () << "->"
          << (mFieldKind.boolValue () ? "mInfo." : "")
          << mName ;
@@ -503,15 +503,15 @@ void cPtr_typeOperandName
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeKeyName
-::generateCplusPlusName (AC_OutputStream & inFile) const {
+void cPtr_typeKeyName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "operand_" << mLocationOffset.currentLocation () << "->mKey" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeNullName
-::generateCplusPlusName (AC_OutputStream & /* inFile */) const {
+void cPtr_typeNullName::
+generateCplusPlusName (AC_OutputStream & /* inFile */) const {
   throw C_Exception ("Internal error", 0, 0 COMMA_HERE) ;
 }
 
@@ -524,43 +524,43 @@ void cPtr_typeNullName
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeDirectName
-::generateVariableAddress (AC_OutputStream & inFile) const {
+void cPtr_typeDirectName::
+generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& " << mName ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeAutomaticName
-::generateVariableAddress (AC_OutputStream & inFile) const {
+void cPtr_typeAutomaticName::
+generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& var_cas_" << mName ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeLocationAutomaticName
-::generateVariableAddress (AC_OutputStream & inFile) const {
+void cPtr_typeLocationAutomaticName::
+generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& var_cas_" << mLocation.currentLocation () ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeCppThisName
-::generateVariableAddress (AC_OutputStream & inFile) const {
+void cPtr_typeCppThisName::
+generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "this" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeCppInheritedName
-::generateVariableAddress (AC_OutputStream & inFile) const {
+void cPtr_typeCppInheritedName::
+generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "this" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeOperandName
-::generateVariableAddress (AC_OutputStream & inFile) const {
+void cPtr_typeOperandName::
+generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& operand_" << mLocationOffset.currentLocation () << "->"
          << (mFieldKind.boolValue () ? "mInfo." : "")
          << mName ;
@@ -568,15 +568,15 @@ void cPtr_typeOperandName
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeKeyName
-::generateVariableAddress (AC_OutputStream & inFile) const {
+void cPtr_typeKeyName::
+generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& operand_" << mLocationOffset.currentLocation () << "->mKey" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeNullName
-::generateVariableAddress (AC_OutputStream & inFile) const {
+void cPtr_typeNullName::
+generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "NULL";
 }
 

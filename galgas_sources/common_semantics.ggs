@@ -500,10 +500,6 @@ abstract class @AC_galgasType {
     error here : "variables of this type cannot be silently converted to @location value" ;
   end reader ;
 
-#--- By default, this class can be used in object declaration
-  reader typeCanBeUsedInObjectDeclaration : 
-  end reader ;
-
 #--- Error message
   message messageGalgasType "any type" ;
 }
@@ -2040,14 +2036,6 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 
 #--- La classe est-elle abstract ?
   @bool mClassIsAbstract ;
-
-#--- Only abstract class can be used in object declaration
-  override reader typeCanBeUsedInObjectDeclaration : 
-    if not mClassIsAbstract then
-      error here : "non abstract class object cannot be declared (only instancied by 'new')" ;
-    end if ;
-  end reader ;
-
 
 #--- Handle method call : return method signature
   override reader handleReaderInstructionCall

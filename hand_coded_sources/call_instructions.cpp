@@ -23,8 +23,8 @@
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeReaderCallInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeReaderCallInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -63,15 +63,15 @@ void cPtr_typeReaderCallInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeReaderCallInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeReaderCallInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeReaderCallInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeReaderCallInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool import = aNomCppVariable.isEqualTo (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
@@ -92,8 +92,8 @@ bool cPtr_typeReaderCallInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeModifierCallInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeModifierCallInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -118,15 +118,15 @@ void cPtr_typeModifierCallInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeModifierCallInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeModifierCallInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeModifierCallInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeModifierCallInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool import = aNomCppVariable.isEqualTo (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
@@ -147,8 +147,8 @@ bool cPtr_typeModifierCallInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionAppelMethodeListe
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeInstructionAppelMethodeListe::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -170,15 +170,15 @@ void cPtr_typeInstructionAppelMethodeListe
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionAppelMethodeListe
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeInstructionAppelMethodeListe::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionAppelMethodeListe
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeInstructionAppelMethodeListe::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomCppAttribut.isEqualTo (inArgumentCppName) ;
   GGS_typeCplusPlusNameList::element_type * argCourant = aListeNomsCppArguments.firstObject () ;
@@ -240,15 +240,15 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_grammarInstruction
-::isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+bool cPtr_C_grammarInstruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   return inGenerateSemanticInstructions ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_grammarInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_C_grammarInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
    bool isUsed = mSourceFileCppName.isEqualTo (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
@@ -269,8 +269,8 @@ bool cPtr_C_grammarInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionAppelActionExterne
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeInstructionAppelActionExterne::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const  C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -317,15 +317,15 @@ void cPtr_typeInstructionAppelActionExterne
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionAppelActionExterne
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeInstructionAppelActionExterne::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionAppelActionExterne
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeInstructionAppelActionExterne::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = false ;
   GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
@@ -346,8 +346,8 @@ bool cPtr_typeInstructionAppelActionExterne
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeRoutineCallInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeRoutineCallInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -370,15 +370,15 @@ void cPtr_typeRoutineCallInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeRoutineCallInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeRoutineCallInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeRoutineCallInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeRoutineCallInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = false ;
   GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;

@@ -105,8 +105,8 @@ formalArgumentIsUsedForList (const GGS_typeInstructionList & inList,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstruction
-::generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
+void cPtr_typeInstruction::
+generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
                                      const C_String & /* inLexiqueClassName */,
                                      const C_String & /* inTargetFileName */,
                                      sint32 & /* ioPrototypeIndex */,
@@ -122,8 +122,8 @@ void cPtr_typeInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeSimpleExtractInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeSimpleExtractInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -176,15 +176,15 @@ void cPtr_typeSimpleExtractInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeSimpleExtractInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeSimpleExtractInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeSimpleExtractInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeSimpleExtractInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomVariable.isEqualTo (inArgumentCppName)
     || mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -206,8 +206,8 @@ bool cPtr_typeSimpleExtractInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeStructuredExtractInstructionWithElse
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeStructuredExtractInstructionWithElse::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
@@ -262,8 +262,8 @@ void cPtr_typeStructuredExtractInstructionWithElse
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeStructuredExtractInstructionWithElse
-::isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+bool cPtr_typeStructuredExtractInstructionWithElse::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionList, inGenerateSemanticInstructions) ;
   GGS_typeStructuredExtractCasesList::element_type * p = mCasesList.firstObject () ;
   while ((p != NULL) && ! used) {
@@ -276,8 +276,8 @@ bool cPtr_typeStructuredExtractInstructionWithElse
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeStructuredExtractInstructionWithElse
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeStructuredExtractInstructionWithElse::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = mVariableName.isEqualTo (inArgumentCppName)
         || formalArgumentIsUsedForList (mElseInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
@@ -434,8 +434,8 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeMessageInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeMessageInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -452,15 +452,15 @@ void cPtr_typeMessageInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeMessageInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeMessageInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeMessageInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeMessageInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return mMessageExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
@@ -519,8 +519,8 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeMatchInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeMatchInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
@@ -598,15 +598,15 @@ void cPtr_typeMatchInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeMatchInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeMatchInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeMatchInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeMatchInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool isUsed = aNomCppVariable1.isEqualTo (inArgumentCppName)
    || aNomCppVariable2.isEqualTo (inArgumentCppName)
@@ -860,15 +860,15 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeMapBlockPrologueInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeMapBlockPrologueInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeMapBlockPrologueInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeMapBlockPrologueInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomVariableTable.isEqualTo (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * argCourant = mPrologueExpressionList.firstObject () ;
@@ -889,8 +889,8 @@ bool cPtr_typeMapBlockPrologueInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeMapBlockEpilogueInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_typeMapBlockEpilogueInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -914,15 +914,15 @@ void cPtr_typeMapBlockEpilogueInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeMapBlockEpilogueInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_typeMapBlockEpilogueInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeMapBlockEpilogueInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_typeMapBlockEpilogueInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomVariableTable.isEqualTo (inArgumentCppName)  ;
   GGS_typeExpressionList::element_type * argCourant = mEpilogueExpressionList.firstObject () ;

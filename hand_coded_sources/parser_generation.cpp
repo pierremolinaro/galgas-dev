@@ -127,8 +127,8 @@ bool cPtr_typeProductionAengendrer::isCppClassNeeded (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeProductionAengendrer
-::generateCppClassDeclaration (AC_OutputStream & inHfile,
+void cPtr_typeProductionAengendrer::
+generateCppClassDeclaration (AC_OutputStream & inHfile,
                                const C_String & inLexiqueClassName,
                                const C_String & inTargetFileName,
                                sint32 & ioPrototypeIndex) const {
@@ -182,8 +182,8 @@ void cPtr_typeProductionAengendrer
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeProductionAengendrer
-::generateCppClassImplementation (AC_OutputStream & inCppFile,
+void cPtr_typeProductionAengendrer::
+generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const C_String & inLexiqueClassName,
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
