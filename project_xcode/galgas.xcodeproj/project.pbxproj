@@ -675,6 +675,54 @@
 		CF825AED08536F5D0077AEAF /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CF825AEE08536F610077AEAF /* AC_OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */; };
 		CF825AEF08536F6A0077AEAF /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
+		CF89D55C0A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
+		CF89D55D0A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
+		CF89D55E0A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
+		CF89D55F0A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */; };
+		CF89D5600A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */; };
+		CF89D5610A359BEA0042BDEC /* include_UInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */; };
+		CF89D5620A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
+		CF89D5630A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
+		CF89D5640A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
+		CF89D5650A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */; };
+		CF89D5660A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */; };
+		CF89D5670A359BEA0042BDEC /* include_UInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */; };
+		CF89D5680A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
+		CF89D5690A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
+		CF89D56A0A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
+		CF89D56B0A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */; };
+		CF89D56C0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */; };
+		CF89D56D0A359BEA0042BDEC /* include_UInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */; };
+		CF89D56E0A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
+		CF89D56F0A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
+		CF89D5700A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
+		CF89D5710A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */; };
+		CF89D5720A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */; };
+		CF89D5730A359BEA0042BDEC /* include_UInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */; };
+		CF89D5740A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
+		CF89D5750A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
+		CF89D5760A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
+		CF89D5770A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */; };
+		CF89D5780A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */; };
+		CF89D5790A359BEA0042BDEC /* include_UInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */; };
+		CF89D57A0A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
+		CF89D57B0A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
+		CF89D57C0A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
+		CF89D57D0A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */; };
+		CF89D57E0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */; };
+		CF89D57F0A359BEA0042BDEC /* include_UInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */; };
+		CF89D5800A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
+		CF89D5810A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
+		CF89D5820A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
+		CF89D5830A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */; };
+		CF89D5840A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */; };
+		CF89D5850A359BEA0042BDEC /* include_UInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */; };
+		CF89D5860A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
+		CF89D5870A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
+		CF89D5880A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
+		CF89D5890A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */; };
+		CF89D58A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */; };
+		CF89D58B0A359BEA0042BDEC /* include_UInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */; };
 		CF8D86E30A2C73BF009115FE /* include_typeXorOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */; };
 		CF8D86E40A2C73BF009115FE /* include_typeXorOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */; };
 		CF8D86E50A2C73BF009115FE /* include_typeXorOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */; };
@@ -1508,6 +1556,12 @@
 		CF86361B0586289600B23462 /* C_galgas_null_io.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = C_galgas_null_io.h; sourceTree = "<group>"; };
 		CF86365005862B0600B23462 /* C_galgas_terminal_io.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_terminal_io.cpp; sourceTree = "<group>"; };
 		CF86365105862B0600B23462 /* C_galgas_terminal_io.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = C_galgas_terminal_io.h; sourceTree = "<group>"; };
+		CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_LSInt64Model.h; sourceTree = "<group>"; };
+		CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_LUInt64Model.h; sourceTree = "<group>"; };
+		CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_SInt64Model.h; sourceTree = "<group>"; };
+		CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralSInt64Expression.h; sourceTree = "<group>"; };
+		CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralUInt64Expression.h; sourceTree = "<group>"; };
+		CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_UInt64Model.h; sourceTree = "<group>"; };
 		CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeXorOperation.h; sourceTree = "<group>"; };
 		CF9040E6057F270E007362F4 /* grammar_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = grammar_parser.cpp; sourceTree = "<group>"; };
 		CF9041F0057F687D007362F4 /* C_galgas_cocoa_io.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = C_galgas_cocoa_io.h; sourceTree = "<group>"; };
@@ -2061,6 +2115,12 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */,
+				CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */,
+				CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */,
+				CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */,
+				CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */,
+				CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */,
 				CF546DC00A3481C80076D39C /* include_typeGalgas_lsint64.h */,
 				CF546DC10A3481C80076D39C /* include_typeGalgas_luint64.h */,
 				CF546DC20A3481C80076D39C /* include_typeGalgas_sint64.h */,
@@ -2812,6 +2872,12 @@
 				CF546DC50A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */,
 				CF546DC60A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */,
 				CF546DC70A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */,
+				CF89D55C0A359BEA0042BDEC /* include_LSInt64Model.h in Headers */,
+				CF89D55D0A359BEA0042BDEC /* include_LUInt64Model.h in Headers */,
+				CF89D55E0A359BEA0042BDEC /* include_SInt64Model.h in Headers */,
+				CF89D55F0A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */,
+				CF89D5600A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */,
+				CF89D5610A359BEA0042BDEC /* include_UInt64Model.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2861,6 +2927,12 @@
 				CF546DDD0A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */,
 				CF546DDE0A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */,
 				CF546DDF0A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */,
+				CF89D5800A359BEA0042BDEC /* include_LSInt64Model.h in Headers */,
+				CF89D5810A359BEA0042BDEC /* include_LUInt64Model.h in Headers */,
+				CF89D5820A359BEA0042BDEC /* include_SInt64Model.h in Headers */,
+				CF89D5830A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */,
+				CF89D5840A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */,
+				CF89D5850A359BEA0042BDEC /* include_UInt64Model.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2910,6 +2982,12 @@
 				CF546DE10A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */,
 				CF546DE20A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */,
 				CF546DE30A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */,
+				CF89D5860A359BEA0042BDEC /* include_LSInt64Model.h in Headers */,
+				CF89D5870A359BEA0042BDEC /* include_LUInt64Model.h in Headers */,
+				CF89D5880A359BEA0042BDEC /* include_SInt64Model.h in Headers */,
+				CF89D5890A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */,
+				CF89D58A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */,
+				CF89D58B0A359BEA0042BDEC /* include_UInt64Model.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2967,6 +3045,12 @@
 				CF546DC90A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */,
 				CF546DCA0A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */,
 				CF546DCB0A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */,
+				CF89D5620A359BEA0042BDEC /* include_LSInt64Model.h in Headers */,
+				CF89D5630A359BEA0042BDEC /* include_LUInt64Model.h in Headers */,
+				CF89D5640A359BEA0042BDEC /* include_SInt64Model.h in Headers */,
+				CF89D5650A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */,
+				CF89D5660A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */,
+				CF89D5670A359BEA0042BDEC /* include_UInt64Model.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3016,6 +3100,12 @@
 				CF546DCD0A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */,
 				CF546DCE0A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */,
 				CF546DCF0A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */,
+				CF89D5680A359BEA0042BDEC /* include_LSInt64Model.h in Headers */,
+				CF89D5690A359BEA0042BDEC /* include_LUInt64Model.h in Headers */,
+				CF89D56A0A359BEA0042BDEC /* include_SInt64Model.h in Headers */,
+				CF89D56B0A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */,
+				CF89D56C0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */,
+				CF89D56D0A359BEA0042BDEC /* include_UInt64Model.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3065,6 +3155,12 @@
 				CF546DD10A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */,
 				CF546DD20A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */,
 				CF546DD30A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */,
+				CF89D56E0A359BEA0042BDEC /* include_LSInt64Model.h in Headers */,
+				CF89D56F0A359BEA0042BDEC /* include_LUInt64Model.h in Headers */,
+				CF89D5700A359BEA0042BDEC /* include_SInt64Model.h in Headers */,
+				CF89D5710A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */,
+				CF89D5720A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */,
+				CF89D5730A359BEA0042BDEC /* include_UInt64Model.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3114,6 +3210,12 @@
 				CF546DD50A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */,
 				CF546DD60A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */,
 				CF546DD70A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */,
+				CF89D5740A359BEA0042BDEC /* include_LSInt64Model.h in Headers */,
+				CF89D5750A359BEA0042BDEC /* include_LUInt64Model.h in Headers */,
+				CF89D5760A359BEA0042BDEC /* include_SInt64Model.h in Headers */,
+				CF89D5770A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */,
+				CF89D5780A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */,
+				CF89D5790A359BEA0042BDEC /* include_UInt64Model.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3163,6 +3265,12 @@
 				CF546DD90A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */,
 				CF546DDA0A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */,
 				CF546DDB0A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */,
+				CF89D57A0A359BEA0042BDEC /* include_LSInt64Model.h in Headers */,
+				CF89D57B0A359BEA0042BDEC /* include_LUInt64Model.h in Headers */,
+				CF89D57C0A359BEA0042BDEC /* include_SInt64Model.h in Headers */,
+				CF89D57D0A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h in Headers */,
+				CF89D57E0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h in Headers */,
+				CF89D57F0A359BEA0042BDEC /* include_UInt64Model.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

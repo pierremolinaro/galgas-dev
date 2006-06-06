@@ -397,7 +397,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   C_String generatedZone2 ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
-  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  static const char gGGSsourceFile [] = \"" << inLexique.sourceFileName ().lastPathComponent () << "\" ;\n"
                     "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
@@ -412,7 +412,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   TC_UniqueArray <sint16> firstProductionRuleIndex (500 COMMA_HERE) ;
   TC_UniqueArray <C_String> productionRulesTitle (500 COMMA_HERE) ;
 
-  generatedZone3.writeCTitleComment ("L L ( 1 )    P R O D U C T I O N    R U L E S") ;
+  generatedZone3.writeCppTitleComment ("L L ( 1 )    P R O D U C T I O N    R U L E S") ;
   generatedZone3 << "#define TERMINAL(t)     ((t)+1)\n"
                     "#define NONTERMINAL(nt) ((-nt)-1)\n"
                     "#define END_PRODUCTION  (0)\n\n"
@@ -438,7 +438,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate productions names table
-  generatedZone3.writeCTitleComment ("P R O D U C T I O N    N A M E S") ;
+  generatedZone3.writeCppTitleComment ("P R O D U C T I O N    N A M E S") ;
   generatedZone3 << "static const char * gProductionNames ["
                  << productionRulesIndex.count ()
                  << "] = {\n" ;
@@ -451,7 +451,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate productions indexes table
-  generatedZone3.writeCTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
+  generatedZone3.writeCppTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
   generatedZone3 << "static const sint16 gProductionIndexes ["
                  << productionRulesIndex.count ()
                  << "] = {\n" ;
@@ -466,7 +466,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   productionRulesTitle.clear () ;
 
 //--- Generate decision tables indexes
-  generatedZone3.writeCTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
+  generatedZone3.writeCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
   generatedZone3 << "static const sint16 gFirstProductionIndexes ["
           << ((sint32)(firstProductionRuleIndex.count () + 1))
           << "] = {\n" ;
@@ -481,7 +481,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   
 //--- Generate decision tables  
   TC_UniqueArray <sint16> productionDecisionIndex (500 COMMA_HERE) ;
-  generatedZone3.writeCTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
+  generatedZone3.writeCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
   generatedZone3 << "static const sint16 gDecision [] = {\n" ;
   sint16 decisionTableIndex = 0 ;
   nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
@@ -502,7 +502,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   generatedZone3 << "0} ;\n\n" ;
 
 //--- Generate decision tables indexes
-  generatedZone3.writeCTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S") ;
+  generatedZone3.writeCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S") ;
   generatedZone3 << "static const sint16 gDecisionIndexes ["
           << ((sint32)(productionDecisionIndex.count () + 1))
           << "] = {\n" ;
@@ -520,7 +520,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
-    generatedZone3.writeCTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
+    generatedZone3.writeCppTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal->mIndex COMMA_HERE) >= 0 ;
     GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
@@ -565,7 +565,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
     }
   //--- Generate 'startParsing' method ?
     if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
-      generatedZone3.writeCTitleComment ("Grammar start symbol implementation") ;
+      generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
       currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (currentAltForNonTerminal != NULL) {
         macroValidPointer (currentAltForNonTerminal) ;
@@ -641,7 +641,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
 //--- Implement non terminal from 'select' and 'repeat' instructions
   for (sint32 nt=inVocabulary.getTerminalSymbolsCount () ; nt<inVocabulary.getAllSymbolsCount () ; nt++) {
     if (inVocabulary.needToGenerateChoice (nt COMMA_HERE)) {
-      generatedZone3.writeCTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
+      generatedZone3.writeCppTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
               << " (" << inLexiqueName << " & _inLexique) {\n"
@@ -650,7 +650,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
     }
   }
 //--- Fin du fichier ---------------------------------
-  generatedZone3.writeCHyphenLineComment () ;
+  generatedZone3.writeCppHyphenLineComment () ;
 
 //--- Generate file
   inLexique.generateFile ("//",
@@ -682,7 +682,7 @@ LL1_computations (C_Lexique & inLexique,
   co << "  Checking LL(1) condition... " ;
 
 //--- Print in BNF file
-  inHTMLfile.writeCTitleComment ("Checking LL(1) condition", "title") ;
+  inHTMLfile.writeCppTitleComment ("Checking LL(1) condition", "title") ;
 
 //--- Check LL(1) condition
   outOk = check_LL1_condition (inPureBNFproductions,

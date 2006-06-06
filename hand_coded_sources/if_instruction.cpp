@@ -334,20 +334,48 @@ bool cPtr_typeLiteralStringExpression
 
 void cPtr_typeLiteralSIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_sint (true, " << mLiteralInt.sintValue () << "L)" ;
+  ioCppFile << "GGS_sint (true, " << mLiteralInt.sintValue () << ")" ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLiteralSIntExpression
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeLiteralSIntExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLiteralSIntExpression
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeLiteralSIntExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLiteralSInt64Expression::
+generateExpression (AC_OutputStream & ioCppFile) {
+  ioCppFile << "GGS_sint64 (true, " << mLiteralInt.sint64Value () << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralSInt64Expression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralSInt64Expression::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
 
@@ -362,20 +390,48 @@ bool cPtr_typeLiteralSIntExpression
 
 void cPtr_typeLiteralUIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_uint (true, " << mLiteralInt.uintValue () << "UL)" ;
+  ioCppFile << "GGS_uint (true, " << mLiteralInt.uintValue () << ")" ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLiteralUIntExpression
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeLiteralUIntExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLiteralUIntExpression
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeLiteralUIntExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLiteralUInt64Expression::
+generateExpression (AC_OutputStream & ioCppFile) {
+  ioCppFile << "GGS_uint64 (true, " << mLiteralInt.uint64Value () << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralUInt64Expression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralUInt64Expression::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
 

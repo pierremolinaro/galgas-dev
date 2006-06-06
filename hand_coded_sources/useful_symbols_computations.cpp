@@ -122,7 +122,7 @@ useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproduction
 //--- Console display
   co << "  Searching for useful nonterminal symbols... " ;
 //--- Print in BNF file
-  inHTMLfile.writeCTitleComment ("Useful terminal and nonterminal symbols", "title") ;
+  inHTMLfile.writeCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   sint32 iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,
                         outUsefulSymbols,

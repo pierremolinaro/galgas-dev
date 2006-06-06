@@ -188,7 +188,7 @@ void cPtr_typeProductionAengendrer
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) const {
-  inCppFile.writeCTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::element_type * currentAltForNonTerminal = mAltProductionMap.firstObject () ;
   bool first = true ;
@@ -198,7 +198,7 @@ void cPtr_typeProductionAengendrer
     if (first) {
       first = false ;
     }else{
-      inCppFile.writeCHyphenLineComment () ;
+      inCppFile.writeCppHyphenLineComment () ;
     }
     macroValidPointer (currentAltForNonTerminal) ;
     if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
@@ -321,7 +321,7 @@ void cPtr_typeProductionAengendrer
     if (first) {
       first = false ;
     }else{
-      inCppFile.writeCHyphenLineComment () ;
+      inCppFile.writeCppHyphenLineComment () ;
     }
     inCppFile << "void " << inTargetFileName
               << "::\n"
@@ -378,7 +378,7 @@ engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposa
                                                   const GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                                   AC_OutputStream & inHfile) {
 //---  declarer une classe si il existe des regles de production a implementer
-  inHfile.writeCTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
+  inHfile.writeCppTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
   inHfile << "class " << nomComposant << " {\n"
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;
   GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;

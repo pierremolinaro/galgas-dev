@@ -29,7 +29,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
-  inHfile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
+  inHfile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
   inHfile << "class elementOf_GGS_" << aNomListe << " {\n"
           << "  private : elementOf_GGS_" << aNomListe << " * mNextItem ;\n" ;
@@ -94,7 +94,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) const {
 //----------------------- List class declaration ----------------  
-  inHfile.writeCTitleComment (C_String ("list '@") + aNomListe + "'") ;
+  inHfile.writeCppTitleComment (C_String ("list '@") + aNomListe + "'") ;
 
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
@@ -220,7 +220,7 @@ void cPtr_C_listTypeToImplement
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
 //------------- Implementation de l'element de liste -----------------
-  inCppFile.writeCTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
@@ -249,7 +249,7 @@ void cPtr_C_listTypeToImplement
   inCppFile << " {\n"
                "}\n\n" ;
 
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                "appendForListDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const {\n"
                "  ioString << \"[\" ;\n"  ;
@@ -265,7 +265,7 @@ void cPtr_C_listTypeToImplement
                "}\n\n" ;
 
 // ------------- List Implementation -----------------
-  inCppFile.writeCTitleComment (C_String ("List '@") + aNomListe + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
 //--- Generate root default constructor
   inCppFile << "GGS_" << aNomListe
@@ -275,7 +275,7 @@ void cPtr_C_listTypeToImplement
                "mListLength (0),\n"
                "mCountReference (1) {\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Generate root destructor
   inCppFile << "GGS_" << aNomListe
@@ -286,7 +286,7 @@ void cPtr_C_listTypeToImplement
                "    mFirstItem = p ;\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Generate default constructor
   inCppFile << "GGS_" << aNomListe
@@ -294,13 +294,13 @@ void cPtr_C_listTypeToImplement
             << " (void) { // Default Constructor\n"
                "  mRoot = NULL ;\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer le destructeur
   inCppFile << "GGS_" << aNomListe << "::~GGS_" << aNomListe << " (void) {\n"
            << "  drop_operation () ;\n"
            << "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer le constructeur de recopie
   inCppFile << "GGS_" << aNomListe << "::\n"
@@ -312,7 +312,7 @@ void cPtr_C_listTypeToImplement
                "    mRoot->mCountReference ++ ;\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer l'operateur d'affectation
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -326,14 +326,14 @@ void cPtr_C_listTypeToImplement
                "    }\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer la methode 'emptyList'
   inCppFile << "GGS_" << aNomListe << "::element_type * GGS_" << aNomListe << "::\n"
                "firstObject (void) const {\n"
                "  return (mRoot == NULL) ? NULL : mRoot->mFirstItem ;\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer la methode internalAppendItem
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -375,7 +375,7 @@ void cPtr_C_listTypeToImplement
                "    mRoot->mListLength ++ ;\n" 
                "  }\n" 
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 
 //--- Generate addAssign_operation
@@ -410,7 +410,7 @@ void cPtr_C_listTypeToImplement
   inCppFile << ") ;\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer la methode insulateList
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -440,7 +440,7 @@ void cPtr_C_listTypeToImplement
                "    }\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
@@ -449,14 +449,14 @@ void cPtr_C_listTypeToImplement
                "  macroMyNew (result.mRoot, cRootList) ;\n"
                "  return result ;\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Implement 'count' function
   inCppFile << "sint32 GGS_" << aNomListe << "::\n"
                "count (void) const {\n"
                "  return (mRoot == NULL) ? 0 : mRoot->mListLength ;\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
@@ -477,7 +477,7 @@ void cPtr_C_listTypeToImplement
                "  s << \">\\n\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Generate implementation of 'length' reader
   inCppFile << "GGS_uint GGS_" << aNomListe << "::\n"
@@ -486,7 +486,7 @@ void cPtr_C_listTypeToImplement
                "  return GGS_uint (mRoot != NULL,\n"
                "                   (mRoot == NULL) ? 0 : (uint32) mRoot->mListLength) ;\n"
                "}\n\n" ;
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer la declaration de la methode 'drop_operation'
   inCppFile << "void GGS_" << aNomListe << "::\n"
