@@ -55,7 +55,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 
 //--- Global static variables
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
-  generatedZone3.writeCTitleComment ("Global static variables") ;
+  generatedZone3.writeCppTitleComment ("Global static variables") ;
   generatedZone3 << "\n" ;
   sint32 index = 0 ;
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
@@ -86,7 +86,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "static NSMutableArray * gColorArray ;\n\n" ;
 
 //--- Bool options routines             
-  generatedZone3.writeCTitleComment ("B O O L   O P T I O N S   R O U T I N E S") ;
+  generatedZone3.writeCppTitleComment ("B O O L   O P T I O N S   R O U T I N E S") ;
   generatedZone3 << "\n"
              "sint32 getBoolOptionsCount (void) {\n"
              "  return gCommandLineOptions.getBoolOptionsCount () ;\n"
@@ -114,7 +114,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "\n" ;
 
 //--- unsigned integer options routines             
-  generatedZone3.writeCTitleComment ("U N S I G N E D   I N T E G E R   O P T I O N S   R O U T I N E S") ;
+  generatedZone3.writeCppTitleComment ("U N S I G N E D   I N T E G E R   O P T I O N S   R O U T I N E S") ;
   generatedZone3 << "\n"
              "sint32 getUIntOptionsCount (void) {\n"
              "  return gCommandLineOptions.getUintOptionsCount () ;\n"
@@ -146,7 +146,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "\n" ;
 
 //--- unsigned integer options routines             
-  generatedZone3.writeCTitleComment ("S T R I N G   O P T I O N S   R O U T I N E S") ;
+  generatedZone3.writeCppTitleComment ("S T R I N G   O P T I O N S   R O U T I N E S") ;
   generatedZone3 << "\n"
              "sint32 getStringOptionsCount (void) {\n"
              "  return gCommandLineOptions.getStringOptionsCount () ;\n"
@@ -174,7 +174,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "\n" ;
 
 //--- Command line tool             
-  generatedZone3.writeCTitleComment ("Command line tool") ;
+  generatedZone3.writeCppTitleComment ("Command line tool") ;
   generatedZone3 << "\n"
              "const char * getCommandLineInterfaceToolName (void) {\n"
              "  return \"" << inCLIToolName << "\" ;\n"
@@ -182,7 +182,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "\n" ;
 
 //--- Lexique interface           
-  generatedZone3.writeCTitleComment ("Lexique interface") ;
+  generatedZone3.writeCppTitleComment ("Lexique interface") ;
   generatedZone3 << "\n"
              "sint32 getStylesCount (void) {\n"
              "  return " << inLexiqueComponentName << "::getStylesCount () ;\n"
@@ -252,7 +252,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "  [gColorArray replaceObjectAtIndex: inIndex withObject: inNewColor] ;\n"
              "}\n"
              "\n" ;
-  generatedZone3.writeCHyphenLineComment () ;
+  generatedZone3.writeCppHyphenLineComment () ;
 
 //--- Generate file
   inLexique.generateFile ("//",

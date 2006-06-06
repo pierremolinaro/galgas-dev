@@ -54,7 +54,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << "\n" ;
-  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Generate class declaration for each grammar
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
@@ -130,15 +130,15 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
   }
   generatedZone2 << "} ;\n\n" ;
 
-  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & inOptions) ;\n"
                     "\n"
                     "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & inOptions) ;\n"
                     "\n\n" ;
-  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2.writeCppHyphenLineComment () ;
 //--- Fin du fichier d'en tete
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (100) ;
-  generatedZone3.writeCHyphenLineComment () ;
+  generatedZone3.writeCppHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
@@ -192,11 +192,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   }
   generatedZone2 << '\n' ;
 
-  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inProgramComponentName << ".h\"\n\n" ;
 
 //--------------------------------------- Get bool options count
-  generatedZone2.writeCTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
+  generatedZone2.writeCppTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
   generatedZone2 << "C_options_for_" << inProgramComponentName  << "::\n"
                     "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption)\n"
                     ":mBuiltinOptions (inAcceptsDebugOption) {\n"
@@ -214,7 +214,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   while (currentGrammar != NULL) {
     macroValidPointer (currentGrammar) ;
   //--- Constructor
-    generatedZone2.writeCTitleComment ("C O N S T R U C T O R") ;
+    generatedZone2.writeCppTitleComment ("C O N S T R U C T O R") ;
     generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
                    << "::\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
                    << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :\n"
@@ -226,13 +226,13 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "  C_GGS_Object::attachPointer (mScannerPtr_ COMMA_HERE) ;\n"
                       "}\n\n" ;
   //--- Destructor
-    generatedZone2.writeCTitleComment ("D E S T R U C T O R") ;
+    generatedZone2.writeCppTitleComment ("D E S T R U C T O R") ;
     generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
                    << "::\n~" << inProgramComponentName << currentGrammar->mGrammarPostfix << " (void) {\n"
                       "  macroDetachPointer (mScannerPtr_, " << currentGrammar->mLexiqueClassName << ") ;\n"
                       "}\n\n" ;
   //--- 'doCompilation' method
-    generatedZone2.writeCTitleComment ("D O    C O M P I L A T I O N") ;
+    generatedZone2.writeCppTitleComment ("D O    C O M P I L A T I O N") ;
     generatedZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
                "doCompilation (const C_String & inSourceFileName_,\n"
                "               sint16 & returnCode) {\n" ;
@@ -338,7 +338,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2 << "}\n" ;
   generatedZone2.incIndentation (-2) ;
   generatedZone2 << "}\n\n" ;
-  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Generate 'mainForLIBPM' routine
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
@@ -410,24 +410,24 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "  }\n"
              "  return returnCode ;\n"
              "}\n\n" ;
-  generatedZone2.writeCHyphenLineComment () ;
+  generatedZone2.writeCppHyphenLineComment () ;
 //--- User Zone 2 : prologue and epilogue
   C_String userZone2 ; userZone2.setAllocationExtra (1000) ;
 	userZone2 << "\n\n" ;
-	userZone2.writeCTitleComment ("P R O G R A M    P R O L O G U E") ;
+	userZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
   userZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
                "// ADD YOUR CODE HERE\n"
                "}\n" ;
-	userZone2.writeCTitleComment ("P R O G R A M    E P I L O G U E") ;
+	userZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
   userZone2 << "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
                "// ADD YOUR CODE HERE\n"
                "}\n" ;
-	userZone2.writeCTitleComment ("P R O L O G U E") ;
+	userZone2.writeCppTitleComment ("P R O L O G U E") ;
 	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
 	             "_prologue (void) {\n"
 							 "//--- ADD YOUR CODE HERE\n"
 							 "}\n" ;
-	userZone2.writeCTitleComment ("E P I L O G U E") ;
+	userZone2.writeCppTitleComment ("E P I L O G U E") ;
 	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
 	             "_epilogue (void) {\n"
 							 "//--- ADD YOUR CODE HERE\n"

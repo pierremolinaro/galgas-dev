@@ -179,7 +179,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
   co << "  Computing the FIRST sets... " ;
 //--- Print in BNF file
   inHTMLfile.outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
-  inHTMLfile.writeCTitleComment ("FIRST set", "title") ;
+  inHTMLfile.writeCppTitleComment ("FIRST set", "title") ;
 
 //--- Compute FIRST sets
   sint32 iterationsCount = 0 ;

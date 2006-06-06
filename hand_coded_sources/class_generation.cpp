@@ -37,7 +37,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
   while (current != NULL) {
     macroValidPointer (current) ;
     if (! current->champEstAbstraite) {
-      inCppFile.writeCHyphenLineComment () ;
+      inCppFile.writeCppHyphenLineComment () ;
       inCppFile << "void cPtr_" << inClassName
                 << "::\n"
                    "method_" << current->mKey << " (C_Lexique &" ;
@@ -124,7 +124,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "class cPtr_" << aNomClasse << " ;\n\n" ;
 
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  inHfile.writeCTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inHfile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << aNomClasse << " {\n"
 
@@ -195,7 +195,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & inLexique) const {
   C_String generatedZone2 ;
-  generatedZone2.writeCTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
+  generatedZone2.writeCppTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
   GGS_typeSuperClassesMap::element_type * superClassName = mAncestorClassesMap.lastObject () ;
@@ -261,7 +261,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone3 << "  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const = 0 ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
-  generatedZone3.writeCHyphenLineComment () ;
+  generatedZone3.writeCppHyphenLineComment () ;
  
 //--- Generate file
   inLexique.generateFile ("//",
@@ -271,7 +271,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                           "\n\n", // User Zone 2
                           generatedZone3) ;
 
-  inHfile.writeCHyphenLineComment () ;
+  inHfile.writeCppHyphenLineComment () ;
   inHfile << "\n#include \"include_" << aNomClasse << ".h\"\n\n" ;
 }
 
@@ -298,7 +298,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                                   const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) const {
-  inCppFile.writeCTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Super class (last inserted in ancestor map) : NULL if no super class
   GGS_typeSuperClassesMap::element_type * superClassName = mAncestorClassesMap.lastObject () ;
@@ -367,7 +367,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
-    inCppFile.writeCHyphenLineComment () ;
+    inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "const char * cPtr_" << aNomClasse
               << "\n::static_string_message_" << messageCourant->mKey
               << " (void) {\n"
@@ -375,7 +375,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
     inCppFile.writeCstringConstant (messageCourant->mInfo.mMessage) ;
     inCppFile << " ;\n"
                  "}\n\n" ;
-    inCppFile.writeCHyphenLineComment () ;
+    inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
                  "message_" << messageCourant->mKey << " (void) const {\n"
                  "  return " ;
@@ -386,7 +386,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   }
 
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  inCppFile.writeCTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
 //--- Implementer la declaration du constructeur par defaut
   inCppFile << "GGS_" << aNomClasse << "::\n"
@@ -395,7 +395,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                "}\n\n" ;
 
 //--- Implementer la declaration du constructeur de recopie
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomClasse
            << "::\nGGS_" << aNomClasse << " (const "
               "GGS_" << aNomClasse << " & inOperand) {\n"
@@ -404,27 +404,27 @@ void cPtr_typeDefClasseAbstraiteAimplementer
               "}\n\n" ;
 
 //--- Implementer la declaration du destructeur
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomClasse
             << "::\n~GGS_" << aNomClasse << " (void) {\n"
                "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
                "}\n\n" ;
 
 //--- Implementer la declaration de la redefinition de l'operateur =
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse << "::\n"
            << "operator = (const GGS_" << aNomClasse << " & inOperand) {\n"
            << "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
            << "}\n\n" ;
 
 //--- Generate construction and assignment from pointer
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse
             << "::\noperator = (cPtr_" << aNomClasse << " * inSource) {\n"
                "  macroAttachPointer (mPointer, inSource) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomClasse
             << "::\nGGS_" << aNomClasse << " ("
                "cPtr_" << aNomClasse << " * inSource) {\n"
@@ -433,7 +433,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
                "}\n\n" ;
 
 //--- Engendrer la deeclaration de la surcharge de l'opeerateur ()
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                "  cPtr_" << aNomClasse << " * GGS_" << aNomClasse
             << "\n::operator () (LOCATION_ARGS) const {\n"
@@ -446,7 +446,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
-    inCppFile.writeCHyphenLineComment () ;
+    inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
                  "reader_" << messageCourant->mKey << " (C_Lexique & /* _inLexique */\n"
                  "                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
@@ -456,14 +456,14 @@ void cPtr_typeDefClasseAbstraiteAimplementer
   }
 
 //--- Engendrer la declaration de la methode 'drop_operation'
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomClasse
             << "\n::drop_operation (void) {\n"
                "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
                "}\n\n" ; 
 
 //--- Generate 'description' reader implementation
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomClasse
             << "\n::reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
@@ -506,10 +506,10 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                         const C_String & /* inLexiqueClassName */,
                         C_Lexique & inLexique) const {
-  inHfile.writeCTitleComment (C_String ("class '") + aNomClasse + "'") ;
+  inHfile.writeCppTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
   C_String generatedZone2 ;
-  generatedZone2.writeCTitleComment (C_String ("class 'cPtr_") + aNomClasse + "'") ;
+  generatedZone2.writeCppTitleComment (C_String ("class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Classe mere (dernier insere dans la table des ancetres)
   GGS_typeSuperClassesMap::element_type * classeAncetre = mAncestorClassesMap.lastObject () ;
@@ -569,7 +569,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone3 << "  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
-  generatedZone3.writeCHyphenLineComment () ;  
+  generatedZone3.writeCppHyphenLineComment () ;  
 
   inLexique.generateFile ("//",
                           C_String ("include_") + aNomClasse + ".h",
@@ -579,9 +579,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                           generatedZone3) ;
 
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  generatedZone3.writeCHyphenLineComment () ;  
+  generatedZone3.writeCppHyphenLineComment () ;  
   inHfile << "\n#include \"include_" << aNomClasse << ".h\"\n\n" ;
-  inHfile.writeCTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inHfile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << aNomClasse << " {\n" ;
 //--- Generate 'constructor_new' method declaration
@@ -662,7 +662,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
                                   const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) const {
-  inCppFile.writeCTitleComment (C_String ("class '") + aNomClasse + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("class '") + aNomClasse + "'") ;
 
 //--- Classe mere (dernier insere dans la table des ancetres) : NULL si pas de classe mere
   GGS_typeSuperClassesMap::element_type * superClassName = mAncestorClassesMap.lastObject () ;
@@ -752,7 +752,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
   }
 
 //--- Method for 'description' reader
-  inCppFile.writeCHyphenLineComment () ;
+  inCppFile.writeCppHyphenLineComment () ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "void cPtr_" << aNomClasse << "::appendForDescription (C_Lexique & "
             << ((current == NULL) ? "/* _inLexique */" : "_inLexique")
@@ -768,7 +768,7 @@ void cPtr_typeDefClasseNonAbstraiteAimplementer
   inCppFile << "}\n\n" ;
 
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  inCppFile.writeCTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
   inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"  
                "  cPtr_" << aNomClasse

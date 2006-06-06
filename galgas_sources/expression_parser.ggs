@@ -969,7 +969,7 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    an unsigned literal integer value                      *
+#   F A C T O R    :    a 32-bit unsigned literal integer value                *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -988,7 +988,7 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a signed literal integer value                         *
+#   F A C T O R    :    a 32-bit signed literal integer value                  *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -1003,6 +1003,44 @@ rule <factor>
   $signed_literal_integer$ ?literalInt ;
   outExpression := [@typeLiteralSIntExpression new !literalInt] ;
   outResultType := [@typeGalgas_sint new] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a 64-bit unsigned literal integer value                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ?!@M_semanticsEntitiesForUse unused ioEntitiesMap
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap unused ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  @luint64 literalInt ;
+  $unsigned_literal_integer64$ ?literalInt ;
+  outExpression := [@typeLiteralUInt64Expression new !literalInt] ;
+  outResultType := [@typeGalgas_uint64 new] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    a 64-bit signed literal integer value                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ?!@M_semanticsEntitiesForUse unused ioEntitiesMap
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap unused ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  @lsint64 literalInt ;
+  $signed_literal_integer64$ ?literalInt ;
+  outExpression := [@typeLiteralSInt64Expression new !literalInt] ;
+  outResultType := [@typeGalgas_sint64 new] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -1214,7 +1252,7 @@ rule <output_expression_list>
   else
     foreach inFormalAttributesList (??@AC_galgasType kFormalType ??@lstring kFormalParameterName),
             effectiveTypesList (??@AC_galgasType kEffectiveType ??@location kErrorLocation) :
-      verifierCompatibiliteTypesSemantiques !kFormalType !kEffectiveType !kErrorLocation !true ;
+      checkAssignmentTypesCompatibility !kFormalType !kEffectiveType !kErrorLocation !true ;
     end foreach ;
   end if ;
 end rule ;
