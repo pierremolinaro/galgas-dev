@@ -510,7 +510,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "      p = p->nextObject () ;\n"
                "    }\n"
                "  }else{\n"
-               "    s << \" not built\" ;\n"
+               "    s << \"not built\" ;\n"
                "  }\n"
                "  s << \">\\n\" ;\n"
                "  return GGS_string (true, s) ;\n"
@@ -666,8 +666,8 @@ bool cPtr_typeDefinitionTableAimplementer::isCppClassNeeded (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeDefinitionTableAimplementer
-::generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
+void cPtr_typeDefinitionTableAimplementer::
+generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -675,8 +675,8 @@ void cPtr_typeDefinitionTableAimplementer
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeDefinitionTableAimplementer
-::generateCppClassImplementation (AC_OutputStream & inCppFile,
+void cPtr_typeDefinitionTableAimplementer::
+generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,

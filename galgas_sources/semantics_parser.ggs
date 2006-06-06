@@ -129,6 +129,7 @@ rule <parent_class>
   !@typeTableMethodes tableDesMethodes
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@lstring outSuperClassName
 label importSemantics
   ?!@ModelMap ioModelMap
   !@stringset outSuperClasses
@@ -1187,12 +1188,14 @@ rule <parent_class>
   !@typeTableMethodes tableDesMethodes
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@lstring outSuperClassName
 :
   listeTousAttributsSemantiques := [@typeListeAttributsSemantiques emptyList] ;
   tableDesClassesAncetres := [@typeSuperClassesMap emptyMap] ;
   tableDesMethodes := [@typeTableMethodes emptyMap] ;
   tableMessagesAbstraits := [@typeClassInheritedMessagesMap emptyMap] ;
   tableAttributs := [@typeSemanticAttributesMap emptyMap] ;
+  outSuperClassName := [@lstring new !"" !here] ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
   !@stringset outSuperClasses
@@ -1225,16 +1228,16 @@ rule <parent_class>
   !@typeTableMethodes tableDesMethodes
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@lstring outSuperClassName
 :
 #--- Parse super class name
   $extends$ ;
-  @lstring superClassName ;
-  $type_name$ ? superClassName ;
+  $type_name$ ? outSuperClassName ;
 #--- Verifications semantiques sur le Parse super class name
   @AC_galgasType typeUtilisateur ;
   @AC_semanticsEntity entite ;
-  [ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
-  extract entite->@typeEntiteType (?typeUtilisateur) error superClassName : messageTypeEntite ;
+  [ioComponentSemanticsEntitiesMap searchKey ! outSuperClassName ?entite] ;
+  extract entite->@typeEntiteType (?typeUtilisateur) error outSuperClassName : messageTypeEntite ;
   extract typeUtilisateur->@typeGalgasClassType (?*
                                     ?tableDesMethodes
                                     ?listeTousAttributsSemantiques
@@ -1242,9 +1245,9 @@ rule <parent_class>
                                     ?tableMessagesAbstraits
                                     ?tableAttributs
                                     ?*)
-             error superClassName : messageGalgasType ;
+             error outSuperClassName : messageGalgasType ;
 #--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
-  [!?tableDesClassesAncetres insertKey !superClassName] ;
+  [!?tableDesClassesAncetres insertKey ! outSuperClassName] ;
 label importSemantics
   ?!@ModelMap ioModelMap
   !@stringset outSuperClasses
@@ -1258,13 +1261,13 @@ label importSemantics
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
 :
 #--- Parse super class name
-  $extends$ ;
   @lstring superClassName ;
+  $extends$ ;
   $type_name$ ? superClassName ;
 #--- Verifications semantiques sur le Parse super class name
   @AC_galgasType typeUtilisateur ;
   @AC_semanticsEntity entite ;
-  [ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
+  [ioComponentSemanticsEntitiesMap searchKey ! superClassName ?entite] ;
   extract entite->@typeEntiteType (?typeUtilisateur) error superClassName : messageTypeEntite ;
   extract typeUtilisateur->@typeGalgasClassType (?*
                                     ?tableDesMethodes
@@ -1275,10 +1278,10 @@ label importSemantics
                                     ?*)
              error superClassName : messageGalgasType ;
 #--- The direct super class is last inserted one 
-  [!?tableDesClassesAncetres insertKey !superClassName] ;
+  [!?tableDesClassesAncetres insertKey ! superClassName] ;
 #---
   @TypeModel type ;
-  [ioModelMap searchKey !superClassName ?type] ;
+  [ioModelMap searchKey ! superClassName ?type] ;
   extract type :
   when @ClassModel (??* ??@stringset superClasses ??@typeListModel attributeList ??@classMessageMap messageMap) ->
     outSuperClasses := superClasses ;
@@ -1336,6 +1339,7 @@ rule <semantics_declaration>
       ?ancestorClassMethodsMap
       ?tableDesClassesAncetres
       ?inheritedMessageMap
+      ?*
     ;
     ${$ ;
   #--- Attributs de la classe
@@ -1607,30 +1611,46 @@ rule <semantics_declaration>
   if [tableEnAvant hasKey ![concreteClassName value]] then
     error concreteClassName : "a non abstract class cannot be predeclared" ; 
   end if ;
-#--- Parse super class name
-  $extends$ ;
-  @lstring superClassName ;
-  $type_name$ ? superClassName ;
-  ${$ ;
-#--- Verifications semantiques sur le Parse super class name
-  @AC_galgasType definitionClasseMere ;
-  @AC_semanticsEntity entite ;
-  [ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
-  extract entite->@typeEntiteType (?definitionClasseMere) error superClassName : messageTypeEntite ;
-  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
-  @typeSuperClassesMap tableDesClassesAncetres ;  
+#--- Super class
   @typeTableMethodes ancestorClassMethodsMap ;
+  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
+  @typeSuperClassesMap tableDesClassesAncetres ;
   @typeClassInheritedMessagesMap inheritedMessageMap ;
   @typeSemanticAttributesMap tableAttributs ;
-  extract definitionClasseMere->@typeGalgasClassType (?*
-                                    ?ancestorClassMethodsMap
-                                    ?listeTousAttributsSemantiques
-                                    ?tableDesClassesAncetres
-                                    ?inheritedMessageMap
-                                    ?tableAttributs
-                                    ?*)
-           error superClassName : messageGalgasType ;
-  [!?tableDesClassesAncetres insertKey !superClassName] ;
+  <parent_class>
+    !?ioComponentSemanticsEntitiesMap
+    ?tableAttributs
+    ?listeTousAttributsSemantiques
+    ?ancestorClassMethodsMap
+    ?tableDesClassesAncetres
+    ?inheritedMessageMap
+    ?*
+  ;
+
+#--- Parse super class name
+#  $extends$ ;
+#  @lstring superClassName ;
+#  $type_name$ ? superClassName ;
+  ${$ ;
+#--- Verifications semantiques sur le Parse super class name
+#  @AC_galgasType definitionClasseMere ;
+#  @AC_semanticsEntity entite ;
+#  [ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
+#  extract entite->@typeEntiteType (?definitionClasseMere) error superClassName : messageTypeEntite ;
+#  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
+#  @typeSuperClassesMap tableDesClassesAncetres ;  
+#  @typeTableMethodes ancestorClassMethodsMap ;
+#  @typeClassInheritedMessagesMap inheritedMessageMap ;
+#  @typeSemanticAttributesMap tableAttributs ;
+ # extract definitionClasseMere->@typeGalgasClassType (?*
+#                                    ?ancestorClassMethodsMap
+#                                    ?listeTousAttributsSemantiques
+#                                    ?tableDesClassesAncetres
+#                                    ?inheritedMessageMap
+#                                    ?tableAttributs
+#                                    ?*)
+ #          error superClassName : messageGalgasType ;
+#  [!?tableDesClassesAncetres insertKey !superClassName] ;
 #------------------- list des attributs de la classe -------------------
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
@@ -1714,8 +1734,7 @@ rule <semantics_declaration>
                         !messageMapForHeirs
                         !tableAttributs
                         !estAbstraite] ;
-  entite := [@typeEntiteType new !c] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !concreteClassName !entite] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !concreteClassName ![@typeEntiteType new !c]] ;
 #--- Insertion dans la map des classes a implementer
   @typeEntityToGenerate def := [@typeDefClasseNonAbstraiteAimplementer new 
                                                 !concreteClassName
@@ -1744,49 +1763,70 @@ label importSemantics
   if [tableEnAvant hasKey ![concreteClassName value]] then
     error concreteClassName : "a non abstract class cannot be predeclared" ; 
   end if ;
-#--- Parse super class name
-  $extends$ ;
-  @lstring superClassName ;
-  $type_name$ ? superClassName ;
-#--- Get super class infos
-  @typeListModel attributeList ;
-  @classMessageMap messageMap ;
-  @stringset superClasses ;
-  attributeList := [@typeListModel  emptyList] ;
-  messageMap := [@classMessageMap emptyMap] ;
-  superClasses := [@stringset emptySet] ;
-#  @TypeModel type ;
-#  [ioModelMap searchKey !superClassName ?type] ;
-#  extract type :
-#  when @ClassModel (??* ??@stringset kSuperClasses ??@typeListModel kAttributeList ??@classMessageMap kMessageMap) ->
-#    superClasses := kSuperClasses ;
-#    attributeList := kAttributeList ;
-#    messageMap := kMessageMap ;
-#  else
-#    error superClassName: "the '@" . [superClassName value] . "' type is not a class"
-#     -> superClasses, attributeList, messageMap ;
-#  end extract ;
-#  superClasses += ![superClassName value] ;
-  ${$ ;
-#--- Check super class name
-  @AC_galgasType definitionClasseMere ;
-  @AC_semanticsEntity entite ;
-  [ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
-  extract entite->@typeEntiteType (?definitionClasseMere) error superClassName : messageTypeEntite ;
-  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
-  @typeSuperClassesMap tableDesClassesAncetres ;  
+#--- Super class
   @typeTableMethodes ancestorClassMethodsMap ;
+  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
+  @typeSuperClassesMap tableDesClassesAncetres ;
   @typeClassInheritedMessagesMap inheritedMessageMap ;
   @typeSemanticAttributesMap tableAttributs ;
-  extract definitionClasseMere->@typeGalgasClassType (?*
-                                    ?ancestorClassMethodsMap
-                                    ?listeTousAttributsSemantiques
-                                    ?tableDesClassesAncetres
-                                    ?inheritedMessageMap
-                                    ?tableAttributs
-                                    ?*)
-           error superClassName : messageGalgasType ;
-  [!?tableDesClassesAncetres insertKey !superClassName] ;
+  @lstring superClassName ;
+  <parent_class>
+    !?ioComponentSemanticsEntitiesMap
+    ?tableAttributs
+    ?listeTousAttributsSemantiques
+    ?ancestorClassMethodsMap
+    ?tableDesClassesAncetres
+    ?inheritedMessageMap
+    ?superClassName
+  ;
+
+
+
+#--- Parse super class name
+#  $extends$ ;
+#  @lstring superClassName ;
+#  $type_name$ ? superClassName ;
+#--- Get super class infos
+#  @typeListModel attributeList ;
+#  @classMessageMap messageMap ;
+#  @stringset superClasses ;
+  @typeListModel attributeList [ emptyList] ;
+  @classMessageMap messageMap [emptyMap] ;
+  @stringset superClasses [emptySet] ;
+  if [superClassName value] != "" then
+    @TypeModel type ;
+    [ioModelMap searchKey !superClassName ?type] ;
+    extract type :
+    when @ClassModel (??* ??@stringset kSuperClasses ??@typeListModel kAttributeList ??@classMessageMap kMessageMap) ->
+      superClasses := kSuperClasses ;
+      attributeList := kAttributeList ;
+      messageMap := kMessageMap ;
+    else
+      error superClassName: "the '@" . [superClassName value] . "' type is not a class"
+       -> superClasses, attributeList, messageMap ;
+    end extract ;
+    superClasses += ![superClassName value] ;
+  end if ;
+  ${$ ;
+#--- Check super class name
+#  @AC_galgasType definitionClasseMere ;
+#  @AC_semanticsEntity entite ;
+#  [ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
+#  extract entite->@typeEntiteType (?definitionClasseMere) error superClassName : messageTypeEntite ;
+#  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
+#  @typeSuperClassesMap tableDesClassesAncetres ;  
+ # @typeTableMethodes ancestorClassMethodsMap ;
+#  @typeClassInheritedMessagesMap inheritedMessageMap ;
+#  @typeSemanticAttributesMap tableAttributs ;
+#  extract definitionClasseMere->@typeGalgasClassType (?*
+#                                    ?ancestorClassMethodsMap
+#                                    ?listeTousAttributsSemantiques
+#                                    ?tableDesClassesAncetres
+#                                    ?inheritedMessageMap
+#                                    ?tableAttributs
+#                                    ?*)
+#           error superClassName : messageGalgasType ;
+#  [!?tableDesClassesAncetres insertKey !superClassName] ;
 #------------------- list des attributs de la classe -------------------
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
@@ -1872,8 +1912,7 @@ label importSemantics
                         !messageMapForHeirs
                         !tableAttributs
                         !estAbstraite] ;
-  entite := [@typeEntiteType new !c] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !concreteClassName !entite] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !concreteClassName ![@typeEntiteType new !c]] ;
   @TypeModel t := [@ClassModel new !false !superClasses !attributeList !messageMap] ;
   [!?ioModelMap insertKey !concreteClassName !t] ;
   $}$ ;
@@ -3071,8 +3110,6 @@ rule <semantic_instruction>
   @AC_galgasType definitionType ;
   @lstring typeName ;
   <type_parsing> !?ioComponentSemanticsEntitiesMap ?definitionType ?typeName ;
-#--- Type can be used for instanciation ?
-  [definitionType typeCanBeUsedInObjectDeclaration] ;
 #--- Variable name
   @lstring nomVariable ;
   $identifier$ ? nomVariable ;
@@ -4882,8 +4919,6 @@ rule <attributes_definition_list>
       ?definitionType
       ?typeName
      ;
-  #--- Type can be used for instanciation ?
-    [definitionType typeCanBeUsedInObjectDeclaration] ;
   #--- Formal argument
     @lstring attributeName ;
     $identifier$ ? attributeName ;

@@ -204,8 +204,8 @@ bool cPtr_C_listTypeToImplement::isCppClassNeeded (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_listTypeToImplement
-::generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
+void cPtr_C_listTypeToImplement::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -213,8 +213,8 @@ void cPtr_C_listTypeToImplement
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_listTypeToImplement
-::generateCppClassImplementation (AC_OutputStream & inCppFile,
+void cPtr_C_listTypeToImplement::
+generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
@@ -472,7 +472,7 @@ void cPtr_C_listTypeToImplement
                "      p = p->mNextItem ;\n"
                "    }\n"
                "  }else{\n"
-               "    s << \" not built\" ;\n"
+               "    s << \"not built\" ;\n"
                "  }\n"
                "  s << \">\\n\" ;\n"
                "  return GGS_string (true, s) ;\n"

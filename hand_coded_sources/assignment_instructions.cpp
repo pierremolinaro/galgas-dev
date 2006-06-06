@@ -24,8 +24,8 @@
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_assignmentInstruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_C_assignmentInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const  C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -41,15 +41,15 @@ void cPtr_C_assignmentInstruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_assignmentInstruction
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_C_assignmentInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_assignmentInstruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_C_assignmentInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName)
       || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
@@ -64,8 +64,8 @@ bool cPtr_C_assignmentInstruction
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_declarationInstructionWithAssignment
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_C_declarationInstructionWithAssignment::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const  C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
@@ -87,15 +87,15 @@ void cPtr_C_declarationInstructionWithAssignment
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_declarationInstructionWithAssignment
-::isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+bool cPtr_C_declarationInstructionWithAssignment::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_declarationInstructionWithAssignment
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_C_declarationInstructionWithAssignment::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName)
       || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;

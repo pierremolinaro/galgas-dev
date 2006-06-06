@@ -111,8 +111,8 @@ bool cPtr_enumGalgasType::isCppClassNeeded (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_enumGalgasType
-::generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
+void cPtr_enumGalgasType::
+generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                                const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -120,8 +120,8 @@ void cPtr_enumGalgasType
 
 //---------------------------------------------------------------------------*
 
-void cPtr_enumGalgasType
-::generateCppClassImplementation (AC_OutputStream & inCppFile,
+void cPtr_enumGalgasType::
+generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,

@@ -197,16 +197,16 @@ void cPtr_typeConcatOperation::generateExpression (AC_OutputStream & ioCppFile) 
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeConcatOperation
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeConcatOperation::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) || 
          mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeConcatOperation
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeConcatOperation::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest () || 
          mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
@@ -226,15 +226,15 @@ void cPtr_typeTrueBool::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeTrueBool
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeTrueBool::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeTrueBool
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeTrueBool::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
 
@@ -253,15 +253,15 @@ void cPtr_typeFalseBool::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeFalseBool
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeFalseBool::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeFalseBool
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeFalseBool::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
 
@@ -281,15 +281,15 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeHereExpression
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeHereExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeHereExpression
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeHereExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
 
@@ -311,15 +311,15 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLiteralStringExpression
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeLiteralStringExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLiteralStringExpression
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeLiteralStringExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
 
@@ -390,7 +390,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralUIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_uint (true, " << mLiteralInt.uintValue () << ")" ;
+  ioCppFile << "GGS_uint (true, " << mLiteralInt.uintValue () << "U)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -418,7 +418,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralUInt64Expression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_uint64 (true, " << mLiteralInt.uint64Value () << ")" ;
+  ioCppFile << "GGS_uint64 (true, " << mLiteralInt.uint64Value () << "U)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -453,15 +453,15 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLiteralCharExpression
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeLiteralCharExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLiteralCharExpression
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeLiteralCharExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
 
@@ -527,16 +527,16 @@ void cPtr_typeEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeEqualTest
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeEqualTest::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeEqualTest
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeEqualTest::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
@@ -560,16 +560,16 @@ void cPtr_typeNonEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeNonEqualTest
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeNonEqualTest::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeNonEqualTest
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeNonEqualTest::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
@@ -586,16 +586,16 @@ void cPtr_typeInfOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInfOrEqualTest
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeInfOrEqualTest::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInfOrEqualTest
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeInfOrEqualTest::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
@@ -619,16 +619,16 @@ void cPtr_typeStrictInfTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeStrictInfTest
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeStrictInfTest::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeStrictInfTest
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeStrictInfTest::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
@@ -652,16 +652,16 @@ void cPtr_typeSupOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeSupOrEqualTest
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeSupOrEqualTest::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeSupOrEqualTest
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeSupOrEqualTest::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
@@ -685,16 +685,16 @@ void cPtr_typeStrictSupTest::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeStrictSupTest
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeStrictSupTest::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeStrictSupTest
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeStrictSupTest::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
@@ -923,15 +923,15 @@ void cPtr_typeVarInExpression::generateExpression (AC_OutputStream & ioCppFile) 
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeVarInExpression
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeVarInExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mCppVarName.isEqualTo (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeVarInExpression
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeVarInExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
 
@@ -949,15 +949,15 @@ void cPtr_typeJokerInExpression::generateExpression (AC_OutputStream & /* ioCppF
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeJokerInExpression
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeJokerInExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeJokerInExpression
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeJokerInExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
 
@@ -979,16 +979,16 @@ void cPtr_typeTextTableCall::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeTextTableCall
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+bool cPtr_typeTextTableCall::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || aNomCppClef.isEqualTo (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeTextTableCall
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeTextTableCall::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
@@ -1011,15 +1011,15 @@ void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeBoolOption
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeBoolOption::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeBoolOption
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeBoolOption::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
 
@@ -1042,15 +1042,15 @@ void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeUIntOption
-::formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+bool cPtr_typeUIntOption::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeUIntOption
-::isLexiqueFormalArgumentUsedForTest (void) const {
+bool cPtr_typeUIntOption::
+isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
 
@@ -1087,8 +1087,8 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_if_instruction
-::generateInstruction (AC_OutputStream & ioCppFile,
+void cPtr_C_if_instruction::
+generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
@@ -1122,8 +1122,8 @@ void cPtr_C_if_instruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_if_instruction
-::isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+bool cPtr_C_if_instruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionsList, inGenerateSemanticInstructions) ;
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
@@ -1137,8 +1137,8 @@ bool cPtr_C_if_instruction
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_C_if_instruction
-::formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+bool cPtr_C_if_instruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;

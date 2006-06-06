@@ -968,8 +968,6 @@ rule <rule_declaration_or_implementation>
         [ioEntitiesMap searchKey !kTypeName ?entite] ;
         @AC_galgasType definitionType ;
         extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
-      #--- Type can be used for instanciation ?
-        [definitionType typeCanBeUsedInObjectDeclaration] ;
       #--- Variable name
         @lstring nomVariable := [@lstring new ![kKey value] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;

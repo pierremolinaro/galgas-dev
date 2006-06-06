@@ -2461,7 +2461,6 @@
 				CFF5378D057A50FF00854C83 /* Semantics Component */,
 				CFF537B5057A51D300854C83 /* Parser Component */,
 				CFF537C7057A524B00854C83 /* Grammar Component */,
-				CFF537FB057A530200854C83 /* Program Component */,
 				CFF53819057A542700854C83 /* Galgas LL1 */,
 				CFD6CF240851A2110000FA6E /* Galgas LR1 */,
 				CFD6CF250851A21E0000FA6E /* Galgas SLR */,
@@ -2529,6 +2528,7 @@
 				CFF537A4057A518B00854C83 /* semantics_instructions.cpp */,
 				CFF537A2057A518B00854C83 /* semantics_generation.cpp */,
 				CFA313B009FD3F0A006B55E7 /* semantics_generation.h */,
+				CFF537FB057A530200854C83 /* Program Component */,
 			);
 			name = "Semantics Component";
 			sourceTree = "<group>";
