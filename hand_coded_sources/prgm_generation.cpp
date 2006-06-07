@@ -170,6 +170,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "#include \"generic_arraies/TC_UniqueArray.h\"\n"
                     "#include \"command_line_interface/F_Analyze_CLI_Options.h\"\n"
                     "#include \"command_line_interface/mainForLIBPM.h\"\n"
+                    "#include \"utilities/MF_MemoryControl.h\"\n"
+                    "\n"
                     "#ifdef TARGET_API_MAC_CARBON\n"
                     "  #include <SIOUX.H>\n"
                     "#endif\n"
@@ -365,6 +367,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                  << inMaxWarningsCount
                  << " ;\n"
                     "  TC_UniqueArray <C_String> sourceFilesArray ;\n"
+                    "//--- Analyze Command Line Options\n"
                     "  F_Analyze_CLI_Options (argc, argv,\n"
                     "                               " ;
   generatedZone2.writeCstringConstant (inVersionString) ;
@@ -376,10 +379,21 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
           << inSourceFileExtension <<
              "\",\n"
              "                               IOparameters.mCocoaOutput) ;\n"
+             "//--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
              "  #ifdef SIOUX_IS_IMPLEMENTED\n"
              "    SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
              "                                                                      ASK_TO_SAVE_ON_CLOSE,\n"
              "                                                                      false) ;\n"
+             "  #endif\n"
+             "//--- Enable 64 bit alloc debug ? Only if compiled in 64 bit and in debug mode\n"
+             "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+             "    #ifdef __LP64__\n"
+             "      if (options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
+             "                                           \"enable_allocation_debugging\",\n"
+             "                                           false)) {\n"
+             "        enableAllocDebugFor64BitTool () ;\n"
+             "      }\n"
+             "    #endif\n"
              "  #endif\n"
              "  try{\n"
              "    " << inProgramComponentName << "_prologue (options) ;\n"
