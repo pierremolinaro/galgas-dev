@@ -71,7 +71,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Bit count for bdd\n"
              "  public : static inline uint16 bitCount (void) { return " << bitCount << " ; }\n\n"
              "//--- Is built ?\n"
-             "  public : inline bool isBuilt (void) const { return mValue > kNotBuilt ; }\n\n"
+             "  public : inline bool _isBuilt (void) const { return mValue > kNotBuilt ; }\n\n"
              "//--- Construction from GALGAS constructor\n" ;
   cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
@@ -92,7 +92,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- 'description' reader\n"
              "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n\n"
              "//--- Drop operation\n"
-             "  public : inline void drop_operation (void) { mValue = kNotBuilt ; }\n\n"
+             "  public : inline void _drop_operation (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
              "  public : GGS_bool operator == (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
              "  public : GGS_bool operator != (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
@@ -131,7 +131,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "operator == (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue == inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -140,7 +140,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "operator != (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue != inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -149,7 +149,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "operator <= (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue <= inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -158,7 +158,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "operator >= (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue >= inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -167,7 +167,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "operator < (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue < inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -176,7 +176,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "operator > (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue > inOperand.mValue) ;\n"
                "}\n\n" ;
 

@@ -83,22 +83,22 @@ pr_galgas_component_cocoa_parser_70_24_ (galgas_scanner & _inLexique,
   GGS_lstring  var_cas_lexiqueClassName ;
   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_nonterminalSymbolParametersMap ;
   GGS_M_optionComponents  var_cas_optionsComponentsMap ;
-  if (var_cas_grammarComponentsMap.isBuilt ()) {
+  if (var_cas_grammarComponentsMap._isBuilt ()) {
     var_cas_grammarComponentsMap (HERE)->method_searchKey (_inLexique, var_cas_grammarName, var_cas_nonterminalSymbolParametersMap, var_cas_lexiqueClassName, var_cas_optionsComponentsMap SOURCE_FILE_AT_LINE (114)) ;
   }
   GGS_lstring  var_cas_altName ;
   var_cas_altName = GGS_lstring::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE) ;
   GGS_L_signature  var_cas_4719 ;
   GGS_lstring  var_cas_4722 ;
-  if (var_cas_nonterminalSymbolParametersMap.isBuilt ()) {
+  if (var_cas_nonterminalSymbolParametersMap._isBuilt ()) {
     var_cas_nonterminalSymbolParametersMap (HERE)->method_searchKey (_inLexique, var_cas_altName, var_cas_4719, var_cas_4722 SOURCE_FILE_AT_LINE (118)) ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-  if (var_cas_guiComponentName.isBuilt () &&
-      var_cas_guiKindName.isBuilt () &&
-      var_cas_cliToolName.isBuilt () &&
-      var_cas_lexiqueClassName.isBuilt () &&
-      var_cas_optionsComponentsMap.isBuilt ()) {
+  if (var_cas_guiComponentName._isBuilt () &&
+      var_cas_guiKindName._isBuilt () &&
+      var_cas_cliToolName._isBuilt () &&
+      var_cas_lexiqueClassName._isBuilt () &&
+      var_cas_optionsComponentsMap._isBuilt ()) {
     ::routine_generateCocoaComponent (_inLexique,  var_cas_guiComponentName,  var_cas_guiKindName,  var_cas_cliToolName,  var_cas_lexiqueClassName,  var_cas_optionsComponentsMap SOURCE_FILE_AT_LINE (122)) ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;

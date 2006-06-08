@@ -68,7 +68,7 @@ template <typename INFO>
 cGalgasVariablesMap <INFO>::
 cGalgasVariablesMap (void) {
   aListeSurcharges = (typeSurchargeTable *) NULL ;
-  mRoot = (element_type *) NULL ;
+  _mRoot = (element_type *) NULL ;
   mListLength = 0 ;
 }
 
@@ -77,7 +77,7 @@ cGalgasVariablesMap (void) {
 template <typename INFO>
 cGalgasVariablesMap <INFO>::
 ~cGalgasVariablesMap (void) {
-  drop_operation () ;
+  _drop_operation () ;
   macroVoidPointer (aListeSurcharges) ;
 }
 
@@ -85,15 +85,15 @@ cGalgasVariablesMap <INFO>::
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::build (void) {
-  drop_operation () ;
+  _drop_operation () ;
 }
 
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::drop_operation (void) {
+void cGalgasVariablesMap <INFO>::_drop_operation (void) {
   mListLength = 0 ;
-  macroMyDelete (mRoot, element_type) ;
+  macroMyDelete (_mRoot, element_type) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -103,10 +103,10 @@ GGS_bool cGalgasVariablesMap <INFO>::
 reader_hasKey (C_Lexique & /* inLexique */,
                const GGS_string & inKey
                COMMA_UNUSED_LOCATION_ARGS) const {
-  const bool allBuilt = isBuilt () && inKey.isBuilt() ;
+  const bool allBuilt = _isBuilt () && inKey._isBuilt() ;
   bool found = false ;
   if (allBuilt) {
-    element_type * current = mRoot ;
+    element_type * current = _mRoot ;
     while ((current != NULL) && ! found) {
       macroValidPointer (current) ;
       const sint32 comparaison = current->mKey.compareStringByLength (inKey) ;
@@ -131,7 +131,7 @@ operator = (const cGalgasVariablesMap <INFO> & inOperand) {
     printf ("--- FATAL ERROR AT LINE %d, SOURCE %s ---\n", __LINE__, __FILE__) ;
     exit (1) ;
   }
-  drop_operation () ;
+  _drop_operation () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -144,7 +144,7 @@ cGalgasVariablesMap (const cGalgasVariablesMap <INFO> & inOperand) {
     exit (1) ;
   }
   aListeSurcharges = (typeSurchargeTable *) NULL ;
-  mRoot = (element_type *) NULL ;
+  _mRoot = (element_type *) NULL ;
   mListLength = 0 ;
 }
 
@@ -395,11 +395,11 @@ insertKey (C_Lexique & inLexique,
            const char * messageErreurInsertion
            COMMA_LOCATION_ARGS) {
   sint32 resultat = -1 ; // Erreur 'insertion incorrecte'
-  if (isBuilt () && inKey.isBuilt ()) {
+  if (_isBuilt () && inKey._isBuilt ()) {
   //--- Realiser l'insertion
     bool insertionOk = false ;
     bool extension ;
-    internalInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, inKey, mRoot, extension) ;
+    internalInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, inKey, _mRoot, extension) ;
     if (insertionOk) {
       resultat = mListLength - 1 ;
     }else{ // Rechercher une occurrence '%%', afin de la remplacer par la clef
@@ -484,9 +484,9 @@ chercherInterne (C_Lexique & inLexique,
                  const GGS_lstring & clef,
                  const char * messageErreurRecherche
                  COMMA_LOCATION_ARGS) {
-  if (clef.isBuilt ()) {
+  if (clef._isBuilt ()) {
   //--- Chercher d'abord dans la table designee par la racine
-    resultat = mRoot ;
+    resultat = _mRoot ;
     bool found = false ;
     while ((resultat != NULL) && ! found) {
       macroValidPointer (resultat) ;
@@ -643,7 +643,7 @@ void cGalgasVariablesMap <INFO>::
 epilogue_verifyVariableUsing (C_Lexique & inLexique,
                               const GGS_location & positionErreur
                               COMMA_LOCATION_ARGS) {
-  verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
+  verificationRecursiveConsommation (inLexique, _mRoot, positionErreur COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -845,8 +845,8 @@ void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Lexique & COMMA_UNUSED_LOC
   typeSurchargeTable * tempo = (typeSurchargeTable *) NULL ;
   macroMyNew (tempo, typeSurchargeTable) ;
   tempo->mNextItem = aListeSurcharges ;
-  tempo->champTable = mRoot ;
-  mRoot = (element_type *) NULL ;
+  tempo->champTable = _mRoot ;
+  _mRoot = (element_type *) NULL ;
   aListeSurcharges = tempo ;
 
   typeSurchargeTable * surchargeCourante = aListeSurcharges ;
@@ -868,7 +868,7 @@ void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_Lexique & COMMA_UNUSED_LOC
     surchargeCourante = surchargeCourante->mNextItem ;
   }
   macroValidPointer (aListeSurcharges) ;
-  mRoot = aListeSurcharges->champTable ;
+  _mRoot = aListeSurcharges->champTable ;
   typeSurchargeTable * tempo = aListeSurcharges->mNextItem ;
   macroMyDelete (aListeSurcharges, typeSurchargeTable) ;
   aListeSurcharges = tempo ;
@@ -888,8 +888,8 @@ void cGalgasVariablesMap <INFO>::
 epilogue_testPart (C_Lexique & inLexique,
                    const GGS_location & positionErreur
                    COMMA_LOCATION_ARGS) {
-  verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
-  macroMyDelete (mRoot, element_type) ;
+  verificationRecursiveConsommation (inLexique, _mRoot, positionErreur COMMA_THERE) ;
+  macroMyDelete (_mRoot, element_type) ;
 //--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
   aListeSurcharges->champCompteur ++ ;
@@ -947,8 +947,8 @@ void cGalgasVariablesMap <INFO>::
 epilogue_repeatPart (C_Lexique & inLexique,
                      const GGS_location & positionErreur
                      COMMA_LOCATION_ARGS) {
-  verificationRecursiveConsommation (inLexique, mRoot, positionErreur COMMA_THERE) ;
-  macroMyDelete (mRoot, element_type) ;
+  verificationRecursiveConsommation (inLexique, _mRoot, positionErreur COMMA_THERE) ;
+  macroMyDelete (_mRoot, element_type) ;
 //--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
   aListeSurcharges->champCompteur ++ ;
@@ -970,8 +970,8 @@ prologue_blocTestMethodeDouble (C_Lexique &
                                 COMMA_UNUSED_LOCATION_ARGS) {
   macroVoidPointer (aListeSurcharges) ;
   macroMyNew (aListeSurcharges, typeSurchargeTable) ;
-  aListeSurcharges->champTable = mRoot ;
-  mRoot = (element_type *) NULL ;
+  aListeSurcharges->champTable = _mRoot ;
+  _mRoot = (element_type *) NULL ;
 }
 
 //---------------------------------------------------------------------------*
@@ -983,10 +983,10 @@ epilogue_blocTestMethodeDouble (C_Lexique & inLexique,
                                 COMMA_LOCATION_ARGS) {
   macroValidPointer (aListeSurcharges) ;
   verificationRecursiveConsommation (inLexique, aListeSurcharges->champTable, positionErreur COMMA_THERE) ;
-  macroMyDelete (mRoot, element_type) ;
-  mRoot = aListeSurcharges->champTable ;
+  macroMyDelete (_mRoot, element_type) ;
+  _mRoot = aListeSurcharges->champTable ;
   macroMyDelete (aListeSurcharges, typeSurchargeTable) ;
-  remettreVariablesDansEtatInitial (mRoot) ;
+  remettreVariablesDansEtatInitial (_mRoot) ;
 }
 
 //---------------------------------------------------------------------------*

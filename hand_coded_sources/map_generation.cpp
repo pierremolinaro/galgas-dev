@@ -274,7 +274,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  bool extension = false ; // Unused here\n"
                "  sint32 index = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->mRoot, extension, index, existingKeyLocation) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->_mRoot, extension, index, existingKeyLocation) ;\n"
                "}\n\n" ;
 
 //--- 'insertElement' method
@@ -296,16 +296,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "               GGS_luint * outIndex\n"
                "               COMMA_LOCATION_ARGS) {\n"
                "  sint32 index = - 1 ;\n"
-               "  if (isBuilt ()\n" ;
+               "  if (_isBuilt ()\n" ;
   current = mNonExternAttributesList.firstObject () ;
   index = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "   && inParameter" << index << ".isBuilt ()\n" ;
+    inCppFile << "   && inParameter" << index << "._isBuilt ()\n" ;
     index ++ ;
     current = current->nextObject () ;
   }
-  inCppFile<<  "   && inKey.isBuilt ()) {\n"
+  inCppFile<<  "   && inKey._isBuilt ()) {\n"
                "    insulateMap () ;\n"
                "    e_" << aNomTable << " info  ;\n" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -318,7 +318,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "    bool extension = false ; // Unused here\n"
                "    GGS_location existingKeyLocation ;\n"
-               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, extension, index, existingKeyLocation) ;\n"
+               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, extension, index, existingKeyLocation) ;\n"
                "    if (index < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "     }\n"
@@ -347,7 +347,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "               GGS_luint * outIndex\n"
                "               COMMA_LOCATION_ARGS) const {\n"
                "  element_type * node = NULL  ;\n"
-               "  if (isBuilt () && inKey.isBuilt ()) {\n"
+               "  if (_isBuilt () && inKey._isBuilt ()) {\n"
                "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (element_type *) p ;\n"
@@ -357,10 +357,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  }\n"
                "  if (node == NULL) {\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "    outParameter" << i << ".drop_operation () ;\n" ;
+      inCppFile << "    outParameter" << i << "._drop_operation () ;\n" ;
     }
     inCppFile << "    if (outIndex != NULL) {\n"
-                 "      outIndex->drop_operation () ;\n"
+                 "      outIndex->_drop_operation () ;\n"
                  "     }\n"
                  "  }else{\n" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -501,7 +501,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_string GGS_" << aNomTable << "::reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
-               "  if (isBuilt ()) {\n"
+               "  if (_isBuilt ()) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
                "    element_type * p = firstObject () ;\n"
                "    while (p != NULL) {\n"
@@ -732,7 +732,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     index = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << index << ".drop_operation () ;\n" ;
+      inCppFile << "    outParameter" << index << "._drop_operation () ;\n" ;
       index ++ ;
       current = current->nextObject () ;
     }
@@ -773,11 +773,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     index = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << index << ".drop_operation () ;\n" ;
+      inCppFile << "    outParameter" << index << "._drop_operation () ;\n" ;
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "    outIndex.drop_operation () ;\n"
+    inCppFile << "    outIndex._drop_operation () ;\n"
                  "  }else{\n" ;
     current = mNonExternAttributesList.firstObject () ;
     index = 0 ;
@@ -865,7 +865,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_string GGS_" << aNomTable << "::reader_description (C_Lexique & /* _inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
-               "  if (isBuilt ()) {\n"
+               "  if (_isBuilt ()) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s\" : \"\") ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"

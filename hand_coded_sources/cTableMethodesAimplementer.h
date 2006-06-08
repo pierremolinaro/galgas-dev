@@ -75,7 +75,7 @@ template <typename INFO> class cElementTableMethodesAimplementer {
 
 template <typename INFO> class cTableMethodesAimplementer {
   public : typedef cElementTableMethodesAimplementer <INFO> element_type ;
-  public : cElementTableMethodesAimplementer <INFO> * mRoot ;
+  public : cElementTableMethodesAimplementer <INFO> * _mRoot ;
   public : cElementTableMethodesAimplementer <INFO> * mFirstItem ;
   public : cElementTableMethodesAimplementer <INFO> * mLastItem ;
   private : sint32 mListLength ;
@@ -91,11 +91,11 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> &) ; // Copy constructor
   public : void operator = (const cTableMethodesAimplementer <INFO> &) ; // Assignment operator
 
-  public : inline virtual bool isBuilt (void) const {
+  public : inline virtual bool _isBuilt (void) const {
     return mReferenceCountPtr != NULL ;
   }
   public : void build (void) ;
-  public : void drop_operation (void) ;
+  public : void _drop_operation (void) ;
   protected : void insulateMap (void) ;
 
   public : sint32 insertAbstract (C_Lexique & inLexique,

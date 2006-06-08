@@ -159,9 +159,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : void operator = (const GGS_" << aNomClasse << " &) ;\n" ;
 
   if (superClassName.length () == 0) {
-//--- Engendrer la declaration de la methode 'isBuilt'
-    inHfile << "//--- isBuilt\n"
-               "  public : inline bool isBuilt (void) const { return mPointer != NULL ; }\n"
+//--- Engendrer la declaration de la methode '_isBuilt'
+    inHfile << "//--- _isBuilt\n"
+               "  public : inline bool _isBuilt (void) const { return mPointer != NULL ; }\n"
 
 //--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
                "//--- isEqualTo\n"
@@ -176,9 +176,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
                "    return mPointer ;\n"
                "  }\n"
 
-//--- Engendrer la declaration de la methode 'drop_operation'
+//--- Engendrer la declaration de la methode '_drop_operation'
                "//--- drop\n"
-               "  public : void drop_operation (void) ;\n" ;
+               "  public : void _drop_operation (void) ;\n" ;
   }
 
 //--- Generate 'description' reader declaration
@@ -501,11 +501,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     messageCourant = messageCourant->nextObject () ;
   }
 
-//--- Engendrer la declaration de la methode 'drop_operation'
+//--- Engendrer la declaration de la methode '_drop_operation'
   if (superClassName.length () == 0) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomClasse << "::\n"
-              << "drop_operation (void) {\n"
+              << "_drop_operation (void) {\n"
                  "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
                  "}\n\n" ; 
   }
@@ -516,7 +516,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
             << "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
                "  s << \"<class @" << aNomClasse << "\" ;\n"
-               "  if (isBuilt ()) {\n"
+               "  if (_isBuilt ()) {\n"
                "    mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"
@@ -576,9 +576,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
                "  public : GGS_" << aNomClasse << " (const GGS_" << aNomClasse << " & inSource) ;\n"
                "//--- Assignment operator\n"
                "  public : void operator = (const GGS_" << aNomClasse << " & inSource) ;\n"
-//--- Engendrer la declaration de la methode 'isBuilt'
-               "//--- isBuilt\n"
-               "  public : inline bool isBuilt (void) const { return mPointer != NULL ; }\n"
+//--- Engendrer la declaration de la methode '_isBuilt'
+               "//--- _isBuilt\n"
+               "  public : inline bool _isBuilt (void) const { return mPointer != NULL ; }\n"
 
 //--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
                "//--- isEqualTo\n"
@@ -593,9 +593,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
                "    return mPointer ;\n"
                "  }\n"
 
-//--- Engendrer la declaration de la methode 'drop_operation'
+//--- Engendrer la declaration de la methode '_drop_operation'
                "//--- drop\n"
-               "  public : void drop_operation (void) ;\n" ;
+               "  public : void _drop_operation (void) ;\n" ;
   }
 
   inHfile << "//--- 'description' reader\n"
@@ -1008,11 +1008,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "  }\n"
                "#endif\n\n" ;
 
-//--- Engendrer la declaration de la methode 'drop_operation'
+//--- Engendrer la declaration de la methode '_drop_operation'
   if (superClassName.length () == 0) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomClasse << "::\n"
-              << "drop_operation (void) {\n"
+              << "_drop_operation (void) {\n"
                  "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
                  "}\n\n" ; 
   }
@@ -1023,7 +1023,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
             << "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
                "  s << \"<class @" << aNomClasse << "\" ;\n"
-               "  if (isBuilt ()) {\n"
+               "  if (_isBuilt ()) {\n"
                "    mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"

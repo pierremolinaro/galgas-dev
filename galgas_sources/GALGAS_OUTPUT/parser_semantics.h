@@ -172,7 +172,7 @@ class GGS_typeListeBranchesInstructions {
     private : void operator = (const cRootList &) ;
   } ;
 //--- Private attribute
-  private : cRootList * mRoot ;
+  private : cRootList * _mRoot ;
 //--- Default Constructor
   public : GGS_typeListeBranchesInstructions (void) ;
 //--- Copy Constructor
@@ -191,16 +191,16 @@ class GGS_typeListeBranchesInstructions {
 //--- Get first object
   public : element_type * firstObject (void) const ;
 //--- Handling '+=' GALGAS operator
-  public : void addAssign_operation (const GGS_typeInstructionList & argument_0) ;
+  public : void _addAssign_operation (const GGS_typeInstructionList & argument_0) ;
 //--- Internal Methods
-  protected : void internalAppendItem (const GGS_typeInstructionList & argument_0) ;
-  protected : void insulateList (void) ;
-//--- 'isBuilt' method
-  public : inline bool isBuilt (void) const {
-    return mRoot != NULL ;
+  protected : void _internalAppendItem (const GGS_typeInstructionList & argument_0) ;
+  protected : void _insulateList (void) ;
+//--- '_isBuilt' method
+  public : inline bool _isBuilt (void) const {
+    return _mRoot != NULL ;
   }
 //--- Handling GALGAS 'drop' instruction
-  public : void drop_operation (void) ;
+  public : void _drop_operation (void) ;
 //--- Handling GALGAS 'length' reader
   public : GGS_uint reader_length (C_Lexique & /* inLexique */
                                    COMMA_UNUSED_LOCATION_ARGS) const ;
@@ -281,7 +281,7 @@ class GGS_L_parse_rewind_signature_list {
     private : void operator = (const cRootList &) ;
   } ;
 //--- Private attribute
-  private : cRootList * mRoot ;
+  private : cRootList * _mRoot ;
 //--- Default Constructor
   public : GGS_L_parse_rewind_signature_list (void) ;
 //--- Copy Constructor
@@ -300,18 +300,18 @@ class GGS_L_parse_rewind_signature_list {
 //--- Get first object
   public : element_type * firstObject (void) const ;
 //--- Handling '+=' GALGAS operator
-  public : void addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
+  public : void _addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1) ;
 //--- Internal Methods
-  protected : void internalAppendItem (const GGS_L_ruleSyntaxSignature & argument_0,
+  protected : void _internalAppendItem (const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1) ;
-  protected : void insulateList (void) ;
-//--- 'isBuilt' method
-  public : inline bool isBuilt (void) const {
-    return mRoot != NULL ;
+  protected : void _insulateList (void) ;
+//--- '_isBuilt' method
+  public : inline bool _isBuilt (void) const {
+    return _mRoot != NULL ;
   }
 //--- Handling GALGAS 'drop' instruction
-  public : void drop_operation (void) ;
+  public : void _drop_operation (void) ;
 //--- Handling GALGAS 'length' reader
   public : GGS_uint reader_length (C_Lexique & /* inLexique */
                                    COMMA_UNUSED_LOCATION_ARGS) const ;

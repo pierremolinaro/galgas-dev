@@ -35,7 +35,7 @@ void
 routine_check_KL_escapeCharacters (C_Lexique & inLexique,
                                    GGS_lstring inString
                                    COMMA_LOCATION_ARGS) {
-  if (inString.isBuilt ()) {
+  if (inString._isBuilt ()) {
   	bool gotPercent = false ;
     const char * cString = inString.cString () ;
     while ((*cString) != '\0') {
@@ -65,7 +65,7 @@ void
 routine_check_K_escapeCharacters (C_Lexique & inLexique,
                                   GGS_lstring inString
                                   COMMA_LOCATION_ARGS) {
-  if (inString.isBuilt ()) {
+  if (inString._isBuilt ()) {
   	bool gotPercent = false ;
     const char * cString = inString.cString () ;
     while ((*cString) != '\0') {
@@ -118,7 +118,7 @@ routine_appendJokersIfNeeded (C_Lexique &,
   const uint32 effectiveArgumentsCount = inEffectiveArgumentsCount.uintValue () ;
   const uint32 formalParametersCount = inFormalParametersCount.uintValue () ;
   for (unsigned i=effectiveArgumentsCount ; i<formalParametersCount ; i++) {
-    ioVariablesList.addAssign_operation (inNullName) ;
+    ioVariablesList._addAssign_operation (inNullName) ;
   }
 }
 

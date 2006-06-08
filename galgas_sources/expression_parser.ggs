@@ -136,6 +136,10 @@ routine matchAndOperator
     outResultType := inLeftExpressionType ;
   when @typeGalgas_stringset () :: @typeGalgas_stringset () :
     outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint () :: @typeGalgas_sint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 () :: @typeGalgas_sint64 () :
+    outResultType := inLeftExpressionType ;
   else
     error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
            " & " . [inRightExpressionType messageGalgasType] . ") is not valid" 
@@ -160,6 +164,10 @@ routine matchOrOperator
   when @typeGalgas_uint () :: @typeGalgas_uint () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_uint64 () :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint () :: @typeGalgas_sint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 () :: @typeGalgas_sint64 () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_stringset () :: @typeGalgas_stringset () :
     outResultType := inLeftExpressionType ;
@@ -187,6 +195,10 @@ routine matchXorOperator
   when @typeGalgas_uint () :: @typeGalgas_uint () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_uint64 () :: @typeGalgas_uint64 () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint () :: @typeGalgas_sint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 () :: @typeGalgas_sint64 () :
     outResultType := inLeftExpressionType ;
   else
     error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
@@ -228,6 +240,32 @@ routine checkNotOperator
 :
   extract inOperandType -> @typeGalgas_bool () error here : messageGalgasType ;
   outResultType := inOperandType ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C H E C K    ~    O P E R A T O R                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine checkLogicalNegateOperator
+  ??@AC_galgasType inOperandType
+  !@AC_galgasType outResultType
+:
+  extract inOperandType :
+  when @typeGalgas_uint () ->
+    outResultType := inOperandType ;
+  when @typeGalgas_sint () ->
+    outResultType := inOperandType ;
+  when @typeGalgas_uint64 () ->
+    outResultType := inOperandType ;
+  when @typeGalgas_sint64 () ->
+    outResultType := inOperandType ;
+  else
+    error here : "the ~ operator is not defined for an "
+    . [inOperandType messageGalgasType] . " object"
+    -> outResultType ;
+  end extract ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -530,6 +568,34 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   C H E C K    S H I F T    O P E R A T O R                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine shift_types_check
+  ??@AC_galgasType inLeftExpressionType
+  ??@AC_galgasType inRightExpressionType
+  !@AC_galgasType outResultType
+:
+  match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint ()      :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 ()    :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 ()    :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  else
+    error here : "shift between " . [inLeftExpressionType messageGalgasType]
+      ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
+      -> outResultType
+    ;
+  end match ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   C H E C K    A D D I T I O N    O P E R A T O R                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -714,6 +780,36 @@ rule <simple_expression>
     ?outResultType
   ;
   repeat
+  while 
+    $<<$ ;
+    @typeExpression leftExpression := outExpression ;
+    @AC_galgasType leftType := outResultType ;
+    @typeExpression rightExpression ;
+    @AC_galgasType rightType ;
+    <term>
+      !?ioEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?rightExpression
+      ?rightType
+    ;
+    shift_types_check !leftType !rightType ?outResultType ;
+    outExpression := [@typeLeftShiftOperation new !leftExpression !rightExpression !here] ;
+  while 
+    $>>$ ;
+    @typeExpression leftExpression := outExpression ;
+    @AC_galgasType leftType := outResultType ;
+    @typeExpression rightExpression ;
+    @AC_galgasType rightType ;
+    <term>
+      !?ioEntitiesMap
+      !?ioOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?rightExpression
+      ?rightType
+    ;
+    shift_types_check !leftType !rightType ?outResultType ;
+    outExpression := [@typeRightShiftOperation new !leftExpression !rightExpression !here] ;
   while 
     $+$ ;
     @typeExpression leftExpression := outExpression ;
@@ -910,6 +1006,33 @@ rule <factor>
   ;
   outExpression := [@typeTestComplement new !ifCondition] ;
   checkNotOperator !operandType ?outResultType ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    ~ FACTOR                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ?!@M_semanticsEntitiesForUse ioEntitiesMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  $~$ ;
+  @typeExpression ifCondition ;
+  @AC_galgasType operandType ;
+  <factor>
+    !?ioEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?ifCondition
+    ?operandType
+  ;
+  outExpression := [@typeLogicalNegate new !ifCondition] ;
+  checkLogicalNegateOperator !operandType ?outResultType ;
 end rule ;
 
 #------------------------------------------------------------------------------*

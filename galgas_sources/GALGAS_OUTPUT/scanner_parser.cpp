@@ -131,14 +131,14 @@ pr_galgas_component_scanner_parser_221_24_ (galgas_scanner & _inLexique,
     operand_10105 = operand_10105->nextObject () ;
   }
   var_cas_ioLexiqueMapForUse.method_insertKey (_inLexique, var_cas_lexiqueName, var_cas_terminalSymbolsMapForUse SOURCE_FILE_AT_LINE (297)) ;
-  if (var_cas_lexiqueName.isBuilt () &&
-      var_cas_table_attributs.isBuilt () &&
-      var_cas_table_des_terminaux.isBuilt () &&
-      var_cas_table_tables_mots_reserves.isBuilt () &&
-      var_cas_lexicalRulesList.isBuilt () &&
-      var_cas_table_messages.isBuilt () &&
-      var_cas_stylesMap.isBuilt () &&
-      var_cas_usedErrorMessageSet.isBuilt ()) {
+  if (var_cas_lexiqueName._isBuilt () &&
+      var_cas_table_attributs._isBuilt () &&
+      var_cas_table_des_terminaux._isBuilt () &&
+      var_cas_table_tables_mots_reserves._isBuilt () &&
+      var_cas_lexicalRulesList._isBuilt () &&
+      var_cas_table_messages._isBuilt () &&
+      var_cas_stylesMap._isBuilt () &&
+      var_cas_usedErrorMessageSet._isBuilt ()) {
     ::routine_generate_scanner (_inLexique,  var_cas_lexiqueName,  var_cas_table_attributs,  var_cas_table_des_terminaux,  var_cas_table_tables_mots_reserves,  var_cas_lexicalRulesList,  var_cas_table_messages,  var_cas_stylesMap,  var_cas_usedErrorMessageSet SOURCE_FILE_AT_LINE (300)) ;
   }
 }
@@ -449,7 +449,7 @@ pr_attribute_or_terminal_symbol_declaration_scanner_parser_483_48_ (galgas_scann
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_type_5Fname) ;
       var_cas_typeName.defineAttribute (_inLexique.tokenString, _inLexique) ;
       GGS_AC_galgasType  var_cas_attributeType ;
-      if (var_cas_inLexicalTypeMap.isBuilt ()) {
+      if (var_cas_inLexicalTypeMap._isBuilt ()) {
         var_cas_inLexicalTypeMap (HERE)->method_searchKey (_inLexique, var_cas_typeName, var_cas_attributeType SOURCE_FILE_AT_LINE (495)) ;
       }
       GGS_lstring  var_cas_attributeName ;
@@ -472,10 +472,10 @@ pr_attribute_or_terminal_symbol_declaration_scanner_parser_483_48_ (galgas_scann
               _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
               var_cas_idf.defineAttribute (_inLexique.tokenString, _inLexique) ;
               GGS_AC_galgasType  var_cas_t ;
-              if (var_cas_table_des_attributs.isBuilt ()) {
+              if (var_cas_table_des_attributs._isBuilt ()) {
                 var_cas_table_des_attributs (HERE)->method_searchKey (_inLexique, var_cas_idf, var_cas_t SOURCE_FILE_AT_LINE (510)) ;
               }
-              var_cas_l.addAssign_operation (var_cas_t, var_cas_idf) ;
+              var_cas_l._addAssign_operation (var_cas_t, var_cas_idf) ;
               } break ;
             default :
               syntaxRepeat = false ;
@@ -504,7 +504,7 @@ pr_attribute_or_terminal_symbol_declaration_scanner_parser_483_48_ (galgas_scann
       }
       GGS_luint  var_cas_styleIndex ;
       GGS_lstring  var_cas_16286 ;
-      if (var_cas_ioStylesMap.isBuilt ()) {
+      if (var_cas_ioStylesMap._isBuilt ()) {
         var_cas_ioStylesMap (HERE)->method_searchKeyGetIndex (_inLexique, var_cas_styleName, var_cas_styleIndex, var_cas_16286 SOURCE_FILE_AT_LINE (527)) ;
       }
       GGS_string var_cas_errorMessageString ;
@@ -585,7 +585,7 @@ pr_key_words_list_declaration_scanner_parser_538_34_ (galgas_scanner & _inLexiqu
   GGS_lstring  var_cas_errorMessage ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_literal_5Fstring) ;
   var_cas_errorMessage.defineAttribute (_inLexique.tokenString, _inLexique) ;
-  if (var_cas_errorMessage.isBuilt ()) {
+  if (var_cas_errorMessage._isBuilt ()) {
     ::routine_check_K_escapeCharacters (_inLexique,  var_cas_errorMessage SOURCE_FILE_AT_LINE (554)) ;
   }
   GGS_lstring  var_cas_styleName ;
@@ -603,7 +603,7 @@ pr_key_words_list_declaration_scanner_parser_538_34_ (galgas_scanner & _inLexiqu
   }
   GGS_luint  var_cas_styleIndex ;
   GGS_lstring  var_cas_17432 ;
-  if (var_cas_ioStylesMap.isBuilt ()) {
+  if (var_cas_ioStylesMap._isBuilt ()) {
     var_cas_ioStylesMap (HERE)->method_searchKeyGetIndex (_inLexique, var_cas_styleName, var_cas_styleIndex, var_cas_17432 SOURCE_FILE_AT_LINE (564)) ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
@@ -749,7 +749,7 @@ pr_while_branches_list_scanner_parser_617_27_ (galgas_scanner & _inLexique,
         _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
         GGS_tListeInstructionsLexicales  var_cas_li ;
         nt_lexical_instructions_list_ (_inLexique, var_cas_li, var_cas_table_des_terminaux, var_cas_table_des_messages_erreur, var_cas_table_attributs, var_cas_table_tables_mots_reserves, var_cas_ioUsedErrorMessageSet) ;
-        var_cas_liste_tests_et_instructions.addAssign_operation (var_cas_lcl, var_cas_li) ;
+        var_cas_liste_tests_et_instructions._addAssign_operation (var_cas_lcl, var_cas_li) ;
       switch (select_repeat_scanner_parser_8 (_inLexique)) {
         case 2 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_while) ;
@@ -799,7 +799,7 @@ pr_lexical_test_expression_scanner_parser_648_31_ (galgas_scanner & _inLexique,
     while (syntaxRepeat) {
         GGS_typeConditionLexicale  var_cas_c ;
         nt_lexical_test_term_ (_inLexique, var_cas_c) ;
-        var_cas_liste_test.addAssign_operation (var_cas_c) ;
+        var_cas_liste_test._addAssign_operation (var_cas_c) ;
       switch (select_repeat_scanner_parser_9 (_inLexique)) {
         case 2 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__7C) ;
@@ -941,7 +941,7 @@ pr_lexical_rule_scanner_parser_699_20_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
   GGS_tListeInstructionsLexicales  var_cas_li ;
   nt_lexical_instructions_list_ (_inLexique, var_cas_li, var_cas_table_des_terminaux, var_cas_table_des_messages_erreur, var_cas_table_attributs, var_cas_table_tables_mots_reserves, var_cas_ioUsedErrorMessageSet) ;
-  var_cas_ioLexicalRulesList.addAssign_operation (var_cas_lcl, var_cas_li) ;
+  var_cas_ioLexicalRulesList._addAssign_operation (var_cas_lcl, var_cas_li) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_rule) ;
 }
@@ -977,11 +977,11 @@ pr_lexical_rule_scanner_parser_726_20_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
   var_cas_listName.defineAttribute (_inLexique.tokenString, _inLexique) ;
   GGS_typeTableMotsReserves  var_cas_keyWordsMap ;
-  if (var_cas_table_tables_mots_reserves.isBuilt ()) {
+  if (var_cas_table_tables_mots_reserves._isBuilt ()) {
     var_cas_table_tables_mots_reserves (HERE)->method_searchKey (_inLexique, var_cas_listName, var_cas_keyWordsMap SOURCE_FILE_AT_LINE (740)) ;
   }
-  if (var_cas_keyWordsMap.isBuilt () &&
-      var_cas_ioLexicalRulesList.isBuilt ()) {
+  if (var_cas_keyWordsMap._isBuilt () &&
+      var_cas_ioLexicalRulesList._isBuilt ()) {
     ::routine_buildLexicalRulesFromList (_inLexique,  var_cas_keyWordsMap,  var_cas_ioLexicalRulesList SOURCE_FILE_AT_LINE (742)) ;
   }
 }
@@ -1025,7 +1025,7 @@ pr_lexical_instructions_list_scanner_parser_747_33_ (galgas_scanner & _inLexique
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
           GGS_typeInstructionLexicale  var_cas_e ;
           var_cas_e = GGS_typeInstructionActionExterne::constructor_new (_inLexique, var_cas_nom_routine_externe, var_cas_lare, var_cas_lme COMMA_HERE) ;
-          var_cas_li.addAssign_operation (var_cas_e) ;
+          var_cas_li._addAssign_operation (var_cas_e) ;
           } break ;
         case 3 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_select) ;
@@ -1038,7 +1038,7 @@ pr_lexical_instructions_list_scanner_parser_747_33_ (galgas_scanner & _inLexique
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
           GGS_typeInstructionLexicale  var_cas_e ;
           var_cas_e = GGS_typeInstructionSiLexical::constructor_new (_inLexique, var_cas_list_branches_si, var_cas_liste_instructions_sinon COMMA_HERE) ;
-          var_cas_li.addAssign_operation (var_cas_e) ;
+          var_cas_li._addAssign_operation (var_cas_e) ;
           } break ;
         case 4 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_repeat) ;
@@ -1051,14 +1051,14 @@ pr_lexical_instructions_list_scanner_parser_747_33_ (galgas_scanner & _inLexique
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
           GGS_typeInstructionLexicale  var_cas_e ;
           var_cas_e = GGS_typeInstructionRepetitionLexicale::constructor_new (_inLexique, var_cas_lii, var_cas_ltq COMMA_HERE) ;
-          var_cas_li.addAssign_operation (var_cas_e) ;
+          var_cas_li._addAssign_operation (var_cas_e) ;
           } break ;
         case 5 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_send) ;
           GGS_typeInstructionLexicale  var_cas_e ;
           nt_lexical_send_instruction_ (_inLexique, var_cas_e, var_cas_table_des_terminaux, var_cas_table_des_messages_erreur, var_cas_table_attributs, var_cas_table_tables_mots_reserves, var_cas_ioUsedErrorMessageSet) ;
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-          var_cas_li.addAssign_operation (var_cas_e) ;
+          var_cas_li._addAssign_operation (var_cas_e) ;
           } break ;
         case 6 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_error) ;
@@ -1067,14 +1067,14 @@ pr_lexical_instructions_list_scanner_parser_747_33_ (galgas_scanner & _inLexique
           var_cas_errorMessageName.defineAttribute (_inLexique.tokenString, _inLexique) ;
           GGS_luint  var_cas_errorMessageIndex ;
           GGS_lstring  var_cas_25352 ;
-          if (var_cas_table_des_messages_erreur.isBuilt ()) {
+          if (var_cas_table_des_messages_erreur._isBuilt ()) {
             var_cas_table_des_messages_erreur (HERE)->method_searchKeyGetIndex (_inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, var_cas_25352 SOURCE_FILE_AT_LINE (841)) ;
           }
-          var_cas_ioUsedErrorMessageSet.addAssign_operation (var_cas_errorMessageName.reader_value (_inLexique SOURCE_FILE_AT_LINE (842))) ;
+          var_cas_ioUsedErrorMessageSet._addAssign_operation (var_cas_errorMessageName.reader_value (_inLexique SOURCE_FILE_AT_LINE (842))) ;
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
           GGS_typeInstructionLexicale  var_cas_e ;
           var_cas_e = GGS_typeInstructionErreurLexicale::constructor_new (_inLexique, var_cas_errorMessageIndex COMMA_HERE) ;
-          var_cas_li.addAssign_operation (var_cas_e) ;
+          var_cas_li._addAssign_operation (var_cas_e) ;
           } break ;
         default :
           syntaxRepeat = false ;
@@ -1171,11 +1171,11 @@ pr_lexical_error_messages_list_scanner_parser_860_35_ (galgas_scanner & _inLexiq
         var_cas_errorMessageName.defineAttribute (_inLexique.tokenString, _inLexique) ;
         GGS_luint  var_cas_errorMessageIndex ;
         GGS_lstring  var_cas_26267 ;
-        if (var_cas_table_des_messages_erreur.isBuilt ()) {
+        if (var_cas_table_des_messages_erreur._isBuilt ()) {
           var_cas_table_des_messages_erreur (HERE)->method_searchKeyGetIndex (_inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, var_cas_26267 SOURCE_FILE_AT_LINE (870)) ;
         }
-        var_cas_lme.addAssign_operation (var_cas_errorMessageIndex) ;
-        var_cas_ioUsedErrorMessageSet.addAssign_operation (var_cas_errorMessageName.reader_value (_inLexique SOURCE_FILE_AT_LINE (872))) ;
+        var_cas_lme._addAssign_operation (var_cas_errorMessageIndex) ;
+        var_cas_ioUsedErrorMessageSet._addAssign_operation (var_cas_errorMessageName.reader_value (_inLexique SOURCE_FILE_AT_LINE (872))) ;
       switch (select_repeat_scanner_parser_12 (_inLexique)) {
         case 2 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__2C) ;
@@ -1225,7 +1225,7 @@ pr_lexical_parameters_non_empty_list_scanner_parser_880_41_ (galgas_scanner & _i
     while (syntaxRepeat) {
         GGS_typeArgumentRoutineExterne  var_cas_a ;
         nt_lexical_parameter_ (_inLexique, var_cas_a, var_cas_table_attributs) ;
-        var_cas_laf.addAssign_operation (var_cas_a) ;
+        var_cas_laf._addAssign_operation (var_cas_a) ;
       switch (select_repeat_scanner_parser_13 (_inLexique)) {
         case 2 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__2C) ;
@@ -1347,7 +1347,7 @@ pr_lexical_parameter_scanner_parser_930_25_ (galgas_scanner & _inLexique,
   switch (select_scanner_parser_14 (_inLexique)) {
     case 1 : {
       GGS_AC_galgasType  var_cas_t ;
-      if (var_cas_table_attributs.isBuilt ()) {
+      if (var_cas_table_attributs._isBuilt ()) {
         var_cas_table_attributs (HERE)->method_searchKey (_inLexique, var_cas_nom, var_cas_t SOURCE_FILE_AT_LINE (938)) ;
       }
       var_cas_a = GGS_typeArgumentAttribut::constructor_new (_inLexique, var_cas_nom, var_cas_t COMMA_HERE) ;
@@ -1402,7 +1402,7 @@ pr_lexical_when_branches_list_scanner_parser_949_34_ (galgas_scanner & _inLexiqu
         _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
         GGS_tListeInstructionsLexicales  var_cas_li ;
         nt_lexical_instructions_list_ (_inLexique, var_cas_li, var_cas_table_des_terminaux, var_cas_table_des_messages_erreur, var_cas_table_attributs, var_cas_table_tables_mots_reserves, var_cas_ioUsedErrorMessageSet) ;
-        var_cas_lbs.addAssign_operation (var_cas_lcl, var_cas_li) ;
+        var_cas_lbs._addAssign_operation (var_cas_lcl, var_cas_li) ;
       switch (select_repeat_scanner_parser_15 (_inLexique)) {
         case 2 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_when) ;
@@ -1509,7 +1509,7 @@ pr_lexical_send_instruction_scanner_parser_1014_32_ (galgas_scanner & _inLexique
   GGS_string var_cas_30841 ;
   GGS_typeListeAttributsSemantiques  var_cas_30844 ;
   GGS_luint  var_cas_30847 ;
-  if (var_cas_table_des_terminaux.isBuilt ()) {
+  if (var_cas_table_des_terminaux._isBuilt ()) {
     var_cas_table_des_terminaux (HERE)->method_searchKey (_inLexique, var_cas_nomTerminal, var_cas_30841, var_cas_30844, var_cas_30847 SOURCE_FILE_AT_LINE (1024)) ;
   }
   var_cas_instruction = GGS_typeInstructionEmettreSimple::constructor_new (_inLexique, var_cas_nomTerminal COMMA_HERE) ;
@@ -1546,7 +1546,7 @@ pr_lexical_send_instruction_scanner_parser_1030_32_ (galgas_scanner & _inLexique
         _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
         var_cas_nomAttribut.defineAttribute (_inLexique.tokenString, _inLexique) ;
         GGS_AC_galgasType  var_cas_natureAttribut ;
-        if (var_cas_table_attributs.isBuilt ()) {
+        if (var_cas_table_attributs._isBuilt ()) {
           var_cas_table_attributs (HERE)->method_searchKey (_inLexique, var_cas_nomAttribut, var_cas_natureAttribut SOURCE_FILE_AT_LINE (1044)) ;
         }
         { cPtr_typeGalgas_lstring * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_lstring *> (var_cas_natureAttribut.getPtr ()) ;
@@ -1567,11 +1567,11 @@ pr_lexical_send_instruction_scanner_parser_1030_32_ (galgas_scanner & _inLexique
         _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
         var_cas_listName.defineAttribute (_inLexique.tokenString, _inLexique) ;
         GGS_typeTableMotsReserves  var_cas_31776 ;
-        if (var_cas_table_tables_mots_reserves.isBuilt ()) {
+        if (var_cas_table_tables_mots_reserves._isBuilt ()) {
           var_cas_table_tables_mots_reserves (HERE)->method_searchKey (_inLexique, var_cas_listName, var_cas_31776 SOURCE_FILE_AT_LINE (1049)) ;
         }
         _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_default) ;
-        var_cas_lr.addAssign_operation (var_cas_nomAttribut, var_cas_listName) ;
+        var_cas_lr._addAssign_operation (var_cas_nomAttribut, var_cas_listName) ;
       switch (select_repeat_scanner_parser_16 (_inLexique)) {
         case 2 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_search) ;
@@ -1630,7 +1630,7 @@ pr_lexical_send_or_error_scanner_parser_1067_29_ (galgas_scanner & _inLexique,
   GGS_string var_cas_32495 ;
   GGS_typeListeAttributsSemantiques  var_cas_32498 ;
   GGS_luint  var_cas_32501 ;
-  if (var_cas_table_des_terminaux.isBuilt ()) {
+  if (var_cas_table_des_terminaux._isBuilt ()) {
     var_cas_table_des_terminaux (HERE)->method_searchKey (_inLexique, var_cas_nomTerminal, var_cas_32495, var_cas_32498, var_cas_32501 SOURCE_FILE_AT_LINE (1075)) ;
   }
   var_cas_emissionParDefaut = GGS_typeEmissionTerminalParDefaut::constructor_new (_inLexique, var_cas_nomTerminal COMMA_HERE) ;
@@ -1662,10 +1662,10 @@ pr_lexical_send_or_error_scanner_parser_1081_29_ (galgas_scanner & _inLexique,
   var_cas_errorMessageName.defineAttribute (_inLexique.tokenString, _inLexique) ;
   GGS_luint  var_cas_errorMessageIndex ;
   GGS_lstring  var_cas_33074 ;
-  if (var_cas_tableMessagesErreurs.isBuilt ()) {
+  if (var_cas_tableMessagesErreurs._isBuilt ()) {
     var_cas_tableMessagesErreurs (HERE)->method_searchKeyGetIndex (_inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, var_cas_33074 SOURCE_FILE_AT_LINE (1091)) ;
   }
-  var_cas_ioUsedErrorMessageSet.addAssign_operation (var_cas_errorMessageName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1092))) ;
+  var_cas_ioUsedErrorMessageSet._addAssign_operation (var_cas_errorMessageName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1092))) ;
   var_cas_emissionParDefaut = GGS_typeEmissionErreurParDefaut::constructor_new (_inLexique, var_cas_errorMessageIndex COMMA_HERE) ;
 }
 

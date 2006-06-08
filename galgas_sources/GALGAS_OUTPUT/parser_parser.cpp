@@ -104,11 +104,11 @@ pr_galgas_component_parser_parser_271_24_ (galgas_scanner & _inLexique,
     operand_13437 = operand_13437->nextObject () ;
   }
   var_cas_ioSyntaxComponentsMap.method_insertKey (_inLexique, var_cas_componentName, var_cas_nonTerminalSymbolsMapForGrammar, var_cas_productionRulesListForGrammar, var_cas_lexiqueName SOURCE_FILE_AT_LINE (363)) ;
-  if (var_cas_componentName.isBuilt () &&
-      var_cas_inclusionsForHeaderFile.isBuilt () &&
-      var_cas_defLexique.isBuilt () &&
-      var_cas_listeEntitesAengendrer.isBuilt () &&
-      var_cas_inclusionsForImplementationFile.isBuilt ()) {
+  if (var_cas_componentName._isBuilt () &&
+      var_cas_inclusionsForHeaderFile._isBuilt () &&
+      var_cas_defLexique._isBuilt () &&
+      var_cas_listeEntitesAengendrer._isBuilt () &&
+      var_cas_inclusionsForImplementationFile._isBuilt ()) {
     ::routine_generateSemanticsComponent (_inLexique,  var_cas_componentName,  var_cas_inclusionsForHeaderFile,  var_cas_defLexique,  var_cas_listeEntitesAengendrer,  var_cas_inclusionsForImplementationFile SOURCE_FILE_AT_LINE (370)) ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
@@ -336,7 +336,7 @@ pr_get_lexique_infos_parser_parser_524_25_ (galgas_scanner & _inLexique,
       break ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-  if (var_cas_lexiqueComponentsMap.isBuilt ()) {
+  if (var_cas_lexiqueComponentsMap._isBuilt ()) {
     var_cas_lexiqueComponentsMap (HERE)->method_searchKey (_inLexique, var_cas_outLexiqueName, var_cas_tableTerminaux SOURCE_FILE_AT_LINE (549)) ;
   }
 }
@@ -414,7 +414,7 @@ pr_syntax_instruction_parser_parser_569_26_ (galgas_scanner & _inLexique,
   GGS_typeTableBlocsDeTable  var_cas_tableMethodesBloc ;
   { cPtr_typeGalgasMapType * ptrExtraire_ = dynamic_cast <cPtr_typeGalgasMapType *> (var_cas_typeEntite.getPtr ()) ;
     if (ptrExtraire_ == NULL) {
-      var_cas_tableMethodesBloc.drop_operation () ;
+      var_cas_tableMethodesBloc._drop_operation () ;
       if (var_cas_typeEntite.getPtr () != NULL) {
         TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
         C_String message2_ ;
@@ -433,7 +433,7 @@ pr_syntax_instruction_parser_parser_569_26_ (galgas_scanner & _inLexique,
   var_cas_nomMethodeBloc.defineAttribute (_inLexique.tokenString, _inLexique) ;
   GGS_L_EXsignature  var_cas_signatureDebut ;
   GGS_L_EXsignature  var_cas_signatureFin ;
-  if (var_cas_tableMethodesBloc.isBuilt ()) {
+  if (var_cas_tableMethodesBloc._isBuilt ()) {
     var_cas_tableMethodesBloc (HERE)->method_searchKey (_inLexique, var_cas_nomMethodeBloc, var_cas_signatureDebut, var_cas_signatureFin SOURCE_FILE_AT_LINE (595)) ;
   }
   GGS_typeExpressionList  var_cas_prologueExpressionList ;
@@ -442,7 +442,7 @@ pr_syntax_instruction_parser_parser_569_26_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__29) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeMapBlockPrologueInstruction::constructor_new (_inLexique, var_cas_nomCppVariableTable, var_cas_nomMethodeBloc, var_cas_prologueExpressionList COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
   nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_ioInstructionList, var_cas_tableTerminaux, var_cas_ioSyntaxSignature) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
@@ -455,7 +455,7 @@ pr_syntax_instruction_parser_parser_569_26_ (galgas_scanner & _inLexique,
   GGS_typeCplusPlusName  var_cas_22081 ;
   var_cas_ioVariablesMap.method_searchForReadWriteAccess (_inLexique, var_cas_nomTable, var_cas_22078, var_cas_22081 SOURCE_FILE_AT_LINE (642)) ;
   var_cas_instruction = GGS_typeMapBlockEpilogueInstruction::constructor_new (_inLexique, var_cas_nomCppVariableTable, var_cas_nomMethodeBloc, var_cas_epilogueExpressionList COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
 }
 
@@ -543,13 +543,13 @@ pr_syntax_declaration_parser_parser_673_26_ (galgas_scanner & _inLexique,
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_type_5Fname) ;
       var_cas_returnedEntity.defineAttribute (_inLexique.tokenString, _inLexique) ;
       GGS_AC_semanticsEntity  var_cas_e ;
-      if (var_cas_ioEntitiesMap.isBuilt ()) {
+      if (var_cas_ioEntitiesMap._isBuilt ()) {
         var_cas_ioEntitiesMap (HERE)->method_searchKey (_inLexique, var_cas_returnedEntity, var_cas_e SOURCE_FILE_AT_LINE (708)) ;
       }
       GGS_AC_galgasType  var_cas_type ;
       { cPtr_typeEntiteType * ptrExtraire_ = dynamic_cast <cPtr_typeEntiteType *> (var_cas_e.getPtr ()) ;
         if (ptrExtraire_ == NULL) {
-          var_cas_type.drop_operation () ;
+          var_cas_type._drop_operation () ;
           if (var_cas_e.getPtr () != NULL) {
             TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
             C_String message2_ ;
@@ -704,13 +704,13 @@ pr_rule_declaration_or_implementation_parser_parser_761_42_ (galgas_scanner & _i
                   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_type_5Fname) ;
                   var_cas_returnedEntity.defineAttribute (_inLexique.tokenString, _inLexique) ;
                   GGS_AC_semanticsEntity  var_cas_e ;
-                  if (var_cas_ioEntitiesMap.isBuilt ()) {
+                  if (var_cas_ioEntitiesMap._isBuilt ()) {
                     var_cas_ioEntitiesMap (HERE)->method_searchKey (_inLexique, var_cas_returnedEntity, var_cas_e SOURCE_FILE_AT_LINE (823)) ;
                   }
                   GGS_AC_galgasType  var_cas_type ;
                   { cPtr_typeEntiteType * ptrExtraire_ = dynamic_cast <cPtr_typeEntiteType *> (var_cas_e.getPtr ()) ;
                     if (ptrExtraire_ == NULL) {
-                      var_cas_type.drop_operation () ;
+                      var_cas_type._drop_operation () ;
                       if (var_cas_e.getPtr () != NULL) {
                         TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
                         C_String message2_ ;
@@ -758,7 +758,7 @@ pr_rule_declaration_or_implementation_parser_parser_761_42_ (galgas_scanner & _i
   var_cas_ioNonTerminalSymbolMapForSyntax.method_insertKey (_inLexique, var_cas_inRuleName, var_cas_parametersMap SOURCE_FILE_AT_LINE (838)) ;
   GGS_typeEntityToGenerate  var_cas_ea ;
   var_cas_ea = GGS_typeNonterminalToGenerate::constructor_new (_inLexique, var_cas_inRuleName, var_cas_parametersMap COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_ea) ;
+  var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_ea) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -891,7 +891,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
                                 GGS_L_productionRules_ForGrammarComponent  &var_cas_ioProductionRulesListForGrammar,
                                 const GGS_lstring  &/* var_cas_inSyntaxComponentName */) {
   GGS_M_nonterminalSymbolAlts  var_cas_nonterminalSymbolAltMap ;
-  if (var_cas_ioNonTerminalSymbolMapForSyntax.isBuilt ()) {
+  if (var_cas_ioNonTerminalSymbolMapForSyntax._isBuilt ()) {
     var_cas_ioNonTerminalSymbolMapForSyntax (HERE)->method_searchKey (_inLexique, var_cas_inRuleName, var_cas_nonterminalSymbolAltMap SOURCE_FILE_AT_LINE (913)) ;
   }
   GGS_typeAltProductionsMap  var_cas_altProductionsMap ;
@@ -922,7 +922,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
   GGS_L_EXsignature  var_cas_signatureFournieParPrototype ;
   GGS_lstring  var_cas_formalReturnedEntity ;
-  if (var_cas_nonterminalSymbolAltMap.isBuilt ()) {
+  if (var_cas_nonterminalSymbolAltMap._isBuilt ()) {
     var_cas_nonterminalSymbolAltMap (HERE)->method_searchKey (_inLexique, var_cas_altName, var_cas_signatureFournieParPrototype, var_cas_formalReturnedEntity SOURCE_FILE_AT_LINE (935)) ;
   }
   ::routine_verifierCompatibiliteSignatures (_inLexique,  var_cas_signatureFournieParPrototype,  var_cas_listeDeTypesFormels,  var_cas_errorLocation SOURCE_FILE_AT_LINE (937)) ;
@@ -930,13 +930,13 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
     var_cas_inEffectiveReturnedEntity.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "the non terminal declaration does not name any returned entity") SOURCE_FILE_AT_LINE (943)) ;
   }else if (((var_cas_inEffectiveReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (943))) != (var_cas_formalReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (943)))).isBuiltAndTrue ()) {
     GGS_AC_semanticsEntity  var_cas_e ;
-    if (var_cas_ioEntitiesMap.isBuilt ()) {
+    if (var_cas_ioEntitiesMap._isBuilt ()) {
       var_cas_ioEntitiesMap (HERE)->method_searchKey (_inLexique, var_cas_inEffectiveReturnedEntity, var_cas_e SOURCE_FILE_AT_LINE (945)) ;
     }
     GGS_AC_galgasType  var_cas_type ;
     { cPtr_typeEntiteType * ptrExtraire_ = dynamic_cast <cPtr_typeEntiteType *> (var_cas_e.getPtr ()) ;
       if (ptrExtraire_ == NULL) {
-        var_cas_type.drop_operation () ;
+        var_cas_type._drop_operation () ;
         if (var_cas_e.getPtr () != NULL) {
           TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
           C_String message2_ ;
@@ -952,7 +952,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
     GGS_stringset  var_cas_superEntityStringSet ;
     { cPtr_typeGalgas_singleEntity * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_singleEntity *> (var_cas_type.getPtr ()) ;
       if (ptrExtraire_ == NULL) {
-        var_cas_superEntityStringSet.drop_operation () ;
+        var_cas_superEntityStringSet._drop_operation () ;
         if (var_cas_type.getPtr () != NULL) {
           TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
           C_String message2_ ;
@@ -976,13 +976,13 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
   var_cas_allPropertiesMap = GGS_entityPropertyMap::constructor_emptyMap (_inLexique COMMA_HERE) ;
   if (((var_cas_inEffectiveReturnedEntity.reader_value (_inLexique SOURCE_FILE_AT_LINE (958))) != (GGS_string (true, ""))).isBuiltAndTrue ()) {
     GGS_AC_semanticsEntity  var_cas_e ;
-    if (var_cas_ioEntitiesMap.isBuilt ()) {
+    if (var_cas_ioEntitiesMap._isBuilt ()) {
       var_cas_ioEntitiesMap (HERE)->method_searchKey (_inLexique, var_cas_inEffectiveReturnedEntity, var_cas_e SOURCE_FILE_AT_LINE (960)) ;
     }
     GGS_AC_galgasType  var_cas_type ;
     { cPtr_typeEntiteType * ptrExtraire_ = dynamic_cast <cPtr_typeEntiteType *> (var_cas_e.getPtr ()) ;
       if (ptrExtraire_ == NULL) {
-        var_cas_type.drop_operation () ;
+        var_cas_type._drop_operation () ;
         if (var_cas_e.getPtr () != NULL) {
           TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
           C_String message2_ ;
@@ -997,7 +997,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
     }
     { cPtr_typeGalgas_singleEntity * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_singleEntity *> (var_cas_type.getPtr ()) ;
       if (ptrExtraire_ == NULL) {
-        var_cas_allPropertiesMap.drop_operation () ;
+        var_cas_allPropertiesMap._drop_operation () ;
         if (var_cas_type.getPtr () != NULL) {
           TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
           C_String message2_ ;
@@ -1015,13 +1015,13 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
       macroValidPointer (operand_34097) ;
       if ((var_cas_ioEntitiesMap.reader_hasKey (_inLexique, operand_34097->mInfo.mTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (965)) SOURCE_FILE_AT_LINE (965))).isBuiltAndTrue ()) {
         GGS_AC_semanticsEntity  var_cas_entite ;
-        if (var_cas_ioEntitiesMap.isBuilt ()) {
+        if (var_cas_ioEntitiesMap._isBuilt ()) {
           var_cas_ioEntitiesMap (HERE)->method_searchKey (_inLexique, operand_34097->mInfo.mTypeName, var_cas_entite SOURCE_FILE_AT_LINE (968)) ;
         }
         GGS_AC_galgasType  var_cas_definitionType ;
         { cPtr_typeEntiteType * ptrExtraire_ = dynamic_cast <cPtr_typeEntiteType *> (var_cas_entite.getPtr ()) ;
           if (ptrExtraire_ == NULL) {
-            var_cas_definitionType.drop_operation () ;
+            var_cas_definitionType._drop_operation () ;
             if (var_cas_entite.getPtr () != NULL) {
               TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
               C_String message2_ ;
@@ -1043,17 +1043,17 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
           var_cas_ioVariablesMap.method_insertListOfEntitiesLocalVariable (_inLexique, var_cas_nomVariable, var_cas_definitionType, var_cas_nomCppVariable SOURCE_FILE_AT_LINE (976)) ;
           GGS_typeInstruction  var_cas_instruction ;
           var_cas_instruction = GGS_typeInstructionDeclarationVarLocale::constructor_new (_inLexique, var_cas_nomCppVariable, var_cas_definitionType COMMA_HERE) ;
-          var_cas_listeInstructions.addAssign_operation (var_cas_instruction) ;
+          var_cas_listeInstructions._addAssign_operation (var_cas_instruction) ;
         }else if (((operand_34097->mInfo.mKind) == (GGS_metamodelPropertyKind::constructor_attributeProperty (_inLexique COMMA_HERE))).isBuiltAndTrue ()) {
           var_cas_ioVariablesMap.method_insertEntityAttributeLocalVariable (_inLexique, var_cas_nomVariable, var_cas_definitionType, var_cas_nomCppVariable SOURCE_FILE_AT_LINE (980)) ;
           GGS_typeInstruction  var_cas_instruction ;
           var_cas_instruction = GGS_typeInstructionDeclarationVarLocale::constructor_new (_inLexique, var_cas_nomCppVariable, var_cas_definitionType COMMA_HERE) ;
-          var_cas_listeInstructions.addAssign_operation (var_cas_instruction) ;
+          var_cas_listeInstructions._addAssign_operation (var_cas_instruction) ;
         }else if (((operand_34097->mInfo.mKind) == (GGS_metamodelPropertyKind::constructor_singleReferenceProperty (_inLexique COMMA_HERE))).isBuiltAndTrue ()) {
           var_cas_ioVariablesMap.method_insertSingleEntityLocalVariable (_inLexique, var_cas_nomVariable, var_cas_definitionType, var_cas_nomCppVariable SOURCE_FILE_AT_LINE (984)) ;
           GGS_typeInstruction  var_cas_instruction ;
           var_cas_instruction = GGS_typeInstructionDeclarationVarLocale::constructor_new (_inLexique, var_cas_nomCppVariable, var_cas_definitionType COMMA_HERE) ;
-          var_cas_listeInstructions.addAssign_operation (var_cas_instruction) ;
+          var_cas_listeInstructions._addAssign_operation (var_cas_instruction) ;
         }
       }
       operand_34097 = operand_34097->nextObject () ;
@@ -1085,13 +1085,13 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
               _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_type_5Fname) ;
               var_cas_returnedEntity.defineAttribute (_inLexique.tokenString, _inLexique) ;
               GGS_AC_semanticsEntity  var_cas_e ;
-              if (var_cas_ioEntitiesMap.isBuilt ()) {
+              if (var_cas_ioEntitiesMap._isBuilt ()) {
                 var_cas_ioEntitiesMap (HERE)->method_searchKey (_inLexique, var_cas_returnedEntity, var_cas_e SOURCE_FILE_AT_LINE (1035)) ;
               }
               GGS_AC_galgasType  var_cas_type ;
               { cPtr_typeEntiteType * ptrExtraire_ = dynamic_cast <cPtr_typeEntiteType *> (var_cas_e.getPtr ()) ;
                 if (ptrExtraire_ == NULL) {
-                  var_cas_type.drop_operation () ;
+                  var_cas_type._drop_operation () ;
                   if (var_cas_e.getPtr () != NULL) {
                     TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
                     C_String message2_ ;
@@ -1106,7 +1106,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
               }
               { cPtr_typeGalgas_singleEntity * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_singleEntity *> (var_cas_type.getPtr ()) ;
                 if (ptrExtraire_ == NULL) {
-                  var_cas_allPropertiesMap.drop_operation () ;
+                  var_cas_allPropertiesMap._drop_operation () ;
                   if (var_cas_type.getPtr () != NULL) {
                     TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
                     C_String message2_ ;
@@ -1128,7 +1128,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
           GGS_L_EXsignature  var_cas_signatureFournieParPrototype ;
           GGS_lstring  var_cas_returnedEntityFromPrototype ;
-          if (var_cas_nonterminalSymbolAltMap.isBuilt ()) {
+          if (var_cas_nonterminalSymbolAltMap._isBuilt ()) {
             var_cas_nonterminalSymbolAltMap (HERE)->method_searchKey (_inLexique, var_cas_altName, var_cas_signatureFournieParPrototype, var_cas_returnedEntityFromPrototype SOURCE_FILE_AT_LINE (1044)) ;
           }
           ::routine_verifierCompatibiliteSignatures (_inLexique,  var_cas_signatureFournieParPrototype,  var_cas_listeDeTypesFormels,  var_cas_errorLocation SOURCE_FILE_AT_LINE (1046)) ;
@@ -1148,7 +1148,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_rule) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-  if (var_cas_altProductionsMap.isBuilt ()) {
+  if (var_cas_altProductionsMap._isBuilt ()) {
     ::routine_checkLabelSignatures (_inLexique,  var_cas_altProductionsMap SOURCE_FILE_AT_LINE (1077)) ;
   }
   GGS_M_nonterminalSymbolAlts::element_type * operand_38562 = var_cas_nonterminalSymbolAltMap.firstObject () ;
@@ -1161,10 +1161,10 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_ (galgas_scanner & _i
   }
   GGS_typeEntityToGenerate  var_cas_ea ;
   var_cas_ea = GGS_typeProductionAengendrer::constructor_new (_inLexique, var_cas_inRuleName, var_cas_altProductionsMap, var_cas_productionTagName, var_cas_hasParseLabel COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_ea) ;
+  var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_ea) ;
   GGS_uint  var_cas_ruleIndex ;
   var_cas_ruleIndex = GGS_uint (true, 0U) ;
-  var_cas_ioProductionRulesListForGrammar.addAssign_operation (var_cas_inRuleName, var_cas_ruleIndex, var_cas_syntaxSignature) ;
+  var_cas_ioProductionRulesListForGrammar._addAssign_operation (var_cas_inRuleName, var_cas_ruleIndex, var_cas_syntaxSignature) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1219,7 +1219,7 @@ pr_rule_declaration_or_implementation_parser_parser_894_42_importSyntax (galgas_
   }
   GGS_uint  var_cas_leftNonterminalSymbolIndex ;
   var_cas_leftNonterminalSymbolIndex = GGS_uint (true, 0U) ;
-  var_cas_ioProductionRulesListForGrammar.addAssign_operation (var_cas_inNonterminalSymbolName, var_cas_leftNonterminalSymbolIndex, var_cas_instructionsList) ;
+  var_cas_ioProductionRulesListForGrammar._addAssign_operation (var_cas_inNonterminalSymbolName, var_cas_leftNonterminalSymbolIndex, var_cas_instructionsList) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_rule) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
@@ -1335,7 +1335,7 @@ pr_syntax_instruction_parser_parser_1175_26_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_terminal) ;
   var_cas_terminalSymbolName.defineAttribute (_inLexique.tokenString, _inLexique) ;
   GGS_typeListeAttributsSemantiques  var_cas_listeDesAttributsFormels ;
-  if (var_cas_tableTerminaux.isBuilt ()) {
+  if (var_cas_tableTerminaux._isBuilt ()) {
     var_cas_tableTerminaux (HERE)->method_searchKey (_inLexique, var_cas_terminalSymbolName, var_cas_listeDesAttributsFormels SOURCE_FILE_AT_LINE (1189)) ;
   }
   GGS_L_assignedVariables  var_cas_listeTypeEffectifs ;
@@ -1343,12 +1343,12 @@ pr_syntax_instruction_parser_parser_1175_26_ (galgas_scanner & _inLexique,
   nt_input_parameters_list_ (_inLexique, var_cas_listeTypeEffectifs, var_cas_allVariablesList, var_cas_listeDesAttributsFormels, var_cas_ioVariablesMap) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeInstructionVerifSyntaxique::constructor_new (_inLexique, var_cas_terminalSymbolName, var_cas_listeTypeEffectifs COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
   GGS_uint  var_cas_terminalSymbolIndex ;
   var_cas_terminalSymbolIndex = GGS_uint (true, 0U) ;
   GGS_AC_instruction_ForGrammar  var_cas_i ;
   var_cas_i = GGS_T_terminalInstruction_forGrammarComponent::constructor_new (_inLexique, var_cas_terminalSymbolName.reader_location (_inLexique SOURCE_FILE_AT_LINE (1202)), var_cas_terminalSymbolName, var_cas_terminalSymbolIndex COMMA_HERE) ;
-  var_cas_ioSyntaxSignature.addAssign_operation (var_cas_i) ;
+  var_cas_ioSyntaxSignature._addAssign_operation (var_cas_i) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
 }
 
@@ -1366,7 +1366,7 @@ pr_syntax_instruction_parser_parser_1175_26_importSyntax (galgas_scanner & _inLe
   GGS_uint  var_cas_terminalSymbolIndex ;
   var_cas_terminalSymbolIndex = GGS_uint (true, 0U) ;
   var_cas_i = GGS_T_terminalInstruction_forGrammarComponent::constructor_new (_inLexique, var_cas_terminalSymbolName.reader_location (_inLexique SOURCE_FILE_AT_LINE (1213)), var_cas_terminalSymbolName, var_cas_terminalSymbolIndex COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_i) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_i) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
 }
 
@@ -1419,12 +1419,12 @@ pr_syntax_instruction_parser_parser_1222_26_ (galgas_scanner & _inLexique,
       break ;
   }
   GGS_M_nonterminalSymbolAlts  var_cas_nonterminalSymbolAltMap ;
-  if (var_cas_ioNonTerminalSymbolMapForSyntax.isBuilt ()) {
+  if (var_cas_ioNonTerminalSymbolMapForSyntax._isBuilt ()) {
     var_cas_ioNonTerminalSymbolMapForSyntax (HERE)->method_searchKey (_inLexique, var_cas_nonterminalSymbolName, var_cas_nonterminalSymbolAltMap SOURCE_FILE_AT_LINE (1247)) ;
   }
   GGS_L_EXsignature  var_cas_signatureMethode ;
   GGS_lstring  var_cas_returnedEntityFromSignature ;
-  if (var_cas_nonterminalSymbolAltMap.isBuilt ()) {
+  if (var_cas_nonterminalSymbolAltMap._isBuilt ()) {
     var_cas_nonterminalSymbolAltMap (HERE)->method_searchKey (_inLexique, var_cas_altName, var_cas_signatureMethode, var_cas_returnedEntityFromSignature SOURCE_FILE_AT_LINE (1250)) ;
   }
   if ((((var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel) & ((var_cas_altName.reader_value (_inLexique SOURCE_FILE_AT_LINE (1252))) != (GGS_string (true, "parse"))))).isBuiltAndTrue ()) {
@@ -1467,7 +1467,7 @@ pr_syntax_instruction_parser_parser_1222_26_ (galgas_scanner & _inLexique,
       GGS_lstring  var_cas_typeName ;
       { cPtr_typeGalgas_multipleEntity * ptrExtraire_ = dynamic_cast <cPtr_typeGalgas_multipleEntity *> (var_cas_type.getPtr ()) ;
         if (ptrExtraire_ == NULL) {
-          var_cas_typeName.drop_operation () ;
+          var_cas_typeName._drop_operation () ;
           if (var_cas_type.getPtr () != NULL) {
             TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;
             C_String message2_ ;
@@ -1501,10 +1501,10 @@ pr_syntax_instruction_parser_parser_1222_26_ (galgas_scanner & _inLexique,
   }
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeInstructionAppelNonTerminal::constructor_new (_inLexique, var_cas_nonterminalSymbolName, var_cas_parametersExpressionList, var_cas_altName, var_cas_returnedEntityVariableName, var_cas_isMultipleEntity COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
   GGS_AC_instruction_ForGrammar  var_cas_i ;
   var_cas_i = GGS_T_nonterminalInstruction_forGrammarComponent::constructor_new (_inLexique, var_cas_nonterminalSymbolName.reader_location (_inLexique SOURCE_FILE_AT_LINE (1309)), var_cas_nonterminalSymbolName, GGS_uint (true, 0U) COMMA_HERE) ;
-  var_cas_ioSyntaxSignature.addAssign_operation (var_cas_i) ;
+  var_cas_ioSyntaxSignature._addAssign_operation (var_cas_i) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
 }
 
@@ -1536,7 +1536,7 @@ pr_syntax_instruction_parser_parser_1222_26_importSyntax (galgas_scanner & _inLe
   GGS_uint  var_cas_nonterminalSymbolIndex ;
   var_cas_nonterminalSymbolIndex = GGS_uint (true, 0U) ;
   var_cas_i = GGS_T_nonterminalInstruction_forGrammarComponent::constructor_new (_inLexique, var_cas_nonterminalSymbolName.reader_location (_inLexique SOURCE_FILE_AT_LINE (1331)), var_cas_nonterminalSymbolName, var_cas_nonterminalSymbolIndex COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_i) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_i) ;
   switch (select_parser_parser_10 (_inLexique)) {
     case 1 : {
       } break ;
@@ -1623,8 +1623,8 @@ pr_syntax_instruction_parser_parser_1350_26_ (galgas_scanner & _inLexique,
   GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
   var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
   nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_listeInstructionsBrancheChoix, var_cas_tableTerminaux, var_cas_syntaxSignature) ;
-  var_cas_listeBranchesChoix.addAssign_operation (var_cas_listeInstructionsBrancheChoix) ;
-  var_cas_selectList.addAssign_operation (var_cas_syntaxSignature) ;
+  var_cas_listeBranchesChoix._addAssign_operation (var_cas_listeInstructionsBrancheChoix) ;
+  var_cas_selectList._addAssign_operation (var_cas_syntaxSignature) ;
   var_cas_ioVariablesMap.epilogue_testPart (_inLexique, GGS_location (_inLexique) SOURCE_FILE_AT_LINE (1366)) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_or) ;
   { bool syntaxRepeat = true ;
@@ -1635,8 +1635,8 @@ pr_syntax_instruction_parser_parser_1350_26_ (galgas_scanner & _inLexique,
         GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
         var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
         nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_listeInstructionsBrancheChoix, var_cas_tableTerminaux, var_cas_syntaxSignature) ;
-        var_cas_listeBranchesChoix.addAssign_operation (var_cas_listeInstructionsBrancheChoix) ;
-        var_cas_selectList.addAssign_operation (var_cas_syntaxSignature) ;
+        var_cas_listeBranchesChoix._addAssign_operation (var_cas_listeInstructionsBrancheChoix) ;
+        var_cas_selectList._addAssign_operation (var_cas_syntaxSignature) ;
         var_cas_ioVariablesMap.epilogue_testPart (_inLexique, GGS_location (_inLexique) SOURCE_FILE_AT_LINE (1385)) ;
       switch (select_repeat_parser_parser_11 (_inLexique)) {
         case 2 : {
@@ -1654,12 +1654,12 @@ pr_syntax_instruction_parser_parser_1350_26_ (galgas_scanner & _inLexique,
   var_cas_ioVariablesMap.epilogue_testBloc (_inLexique SOURCE_FILE_AT_LINE (1365)) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_select_instruction::constructor_new (_inLexique, var_cas_listeBranchesChoix, var_cas_positionDebut COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
   GGS_AC_instruction_ForGrammar  var_cas_i ;
   GGS_uint  var_cas_v ;
   var_cas_v = GGS_uint (true, 0U) ;
   var_cas_i = GGS_T_selectInstruction_forGrammarComponent::constructor_new (_inLexique, var_cas_positionDebut, var_cas_selectList, var_cas_v COMMA_HERE) ;
-  var_cas_ioSyntaxSignature.addAssign_operation (var_cas_i) ;
+  var_cas_ioSyntaxSignature._addAssign_operation (var_cas_i) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1676,14 +1676,14 @@ pr_syntax_instruction_parser_parser_1350_26_importSyntax (galgas_scanner & _inLe
   GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
   var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
   nt_syntax_instructions_list_no_verif_importSyntax (_inLexique, var_cas_syntaxSignature) ;
-  var_cas_selectList.addAssign_operation (var_cas_syntaxSignature) ;
+  var_cas_selectList._addAssign_operation (var_cas_syntaxSignature) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_or) ;
   { bool syntaxRepeat = true ;
     while (syntaxRepeat) {
         GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature2 ;
         var_cas_syntaxSignature2 = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
         nt_syntax_instructions_list_no_verif_importSyntax (_inLexique, var_cas_syntaxSignature2) ;
-        var_cas_selectList.addAssign_operation (var_cas_syntaxSignature2) ;
+        var_cas_selectList._addAssign_operation (var_cas_syntaxSignature2) ;
       switch (select_repeat_parser_parser_11 (_inLexique)) {
         case 2 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_or) ;
@@ -1701,7 +1701,7 @@ pr_syntax_instruction_parser_parser_1350_26_importSyntax (galgas_scanner & _inLe
   GGS_uint  var_cas_v ;
   var_cas_v = GGS_uint (true, 0U) ;
   var_cas_i = GGS_T_selectInstruction_forGrammarComponent::constructor_new (_inLexique, var_cas_positionDebut, var_cas_selectList, var_cas_v COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_i) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_i) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1763,8 +1763,8 @@ pr_syntax_instruction_parser_parser_1446_26_ (galgas_scanner & _inLexique,
   GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
   var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
   nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_listeInstructionsPremiereBranche, var_cas_tableTerminaux, var_cas_repeatBranchInstructionsList) ;
-  var_cas_listeBranchesRepeter.addAssign_operation (var_cas_listeInstructionsPremiereBranche) ;
-  var_cas_whileList.addAssign_operation (var_cas_repeatBranchInstructionsList) ;
+  var_cas_listeBranchesRepeter._addAssign_operation (var_cas_listeInstructionsPremiereBranche) ;
+  var_cas_whileList._addAssign_operation (var_cas_repeatBranchInstructionsList) ;
   GGS_location  var_cas_positionErreurPremiereBranche ;
   var_cas_positionErreurPremiereBranche = GGS_location (_inLexique) ;
   var_cas_ioVariablesMap.epilogue_repeatPart (_inLexique, var_cas_positionErreurPremiereBranche SOURCE_FILE_AT_LINE (1464)) ;
@@ -1777,8 +1777,8 @@ pr_syntax_instruction_parser_parser_1446_26_ (galgas_scanner & _inLexique,
         GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
         var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
         nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_listeInstructionsBrancheRepeter, var_cas_tableTerminaux, var_cas_syntaxSignature) ;
-        var_cas_listeBranchesRepeter.addAssign_operation (var_cas_listeInstructionsBrancheRepeter) ;
-        var_cas_whileList.addAssign_operation (var_cas_syntaxSignature) ;
+        var_cas_listeBranchesRepeter._addAssign_operation (var_cas_listeInstructionsBrancheRepeter) ;
+        var_cas_whileList._addAssign_operation (var_cas_syntaxSignature) ;
         var_cas_ioVariablesMap.epilogue_repeatPart (_inLexique, GGS_location (_inLexique) SOURCE_FILE_AT_LINE (1483)) ;
       switch (select_repeat_parser_parser_12 (_inLexique)) {
         case 2 : {
@@ -1796,12 +1796,12 @@ pr_syntax_instruction_parser_parser_1446_26_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_repeat_instruction::constructor_new (_inLexique, var_cas_listeBranchesRepeter, var_cas_positionDebut COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
   GGS_AC_instruction_ForGrammar  var_cas_i ;
   GGS_uint  var_cas_v ;
   var_cas_v = GGS_uint (true, 0U) ;
   var_cas_i = GGS_T_repeatInstruction_forGrammarComponent::constructor_new (_inLexique, var_cas_positionDebut, var_cas_whileList, var_cas_v COMMA_HERE) ;
-  var_cas_ioSyntaxSignature.addAssign_operation (var_cas_i) ;
+  var_cas_ioSyntaxSignature._addAssign_operation (var_cas_i) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1818,13 +1818,13 @@ pr_syntax_instruction_parser_parser_1446_26_importSyntax (galgas_scanner & _inLe
   GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
   var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
   nt_syntax_instructions_list_no_verif_importSyntax (_inLexique, var_cas_syntaxSignature) ;
-  var_cas_repeatList.addAssign_operation (var_cas_syntaxSignature) ;
+  var_cas_repeatList._addAssign_operation (var_cas_syntaxSignature) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_while) ;
   { bool syntaxRepeat = true ;
     while (syntaxRepeat) {
         var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
         nt_syntax_instructions_list_no_verif_importSyntax (_inLexique, var_cas_syntaxSignature) ;
-        var_cas_repeatList.addAssign_operation (var_cas_syntaxSignature) ;
+        var_cas_repeatList._addAssign_operation (var_cas_syntaxSignature) ;
       switch (select_repeat_parser_parser_12 (_inLexique)) {
         case 2 : {
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_while) ;
@@ -1842,7 +1842,7 @@ pr_syntax_instruction_parser_parser_1446_26_importSyntax (galgas_scanner & _inLe
   GGS_uint  var_cas_v ;
   var_cas_v = GGS_uint (true, 0U) ;
   var_cas_i = GGS_T_repeatInstruction_forGrammarComponent::constructor_new (_inLexique, var_cas_positionDebut, var_cas_repeatList, var_cas_v COMMA_HERE) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_i) ;
+  var_cas_ioInstructionList._addAssign_operation (var_cas_i) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1906,12 +1906,12 @@ pr_syntax_instruction_parser_parser_1545_26_ (galgas_scanner & _inLexique,
       GGS_L_ruleSyntaxSignature  var_cas_firstBranchSyntaxSignature ;
       var_cas_firstBranchSyntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
       nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_firstBranchInstructionsList, var_cas_tableTerminaux, var_cas_firstBranchSyntaxSignature) ;
-      var_cas_branchList.addAssign_operation (var_cas_firstBranchInstructionsList) ;
-      var_cas_parse_rewind_signature_list.addAssign_operation (var_cas_firstBranchSyntaxSignature, var_cas_instructionStartLocation) ;
+      var_cas_branchList._addAssign_operation (var_cas_firstBranchInstructionsList) ;
+      var_cas_parse_rewind_signature_list._addAssign_operation (var_cas_firstBranchSyntaxSignature, var_cas_instructionStartLocation) ;
       GGS_L_ruleSyntaxSignature::element_type * operand_57149 = var_cas_firstBranchSyntaxSignature.firstObject () ;
       while ((operand_57149 != NULL)) {
         macroValidPointer (operand_57149) ;
-        var_cas_ioSyntaxSignature.addAssign_operation (operand_57149->mInstruction) ;
+        var_cas_ioSyntaxSignature._addAssign_operation (operand_57149->mInstruction) ;
         operand_57149 = operand_57149->nextObject () ;
       }
       { bool syntaxRepeat = true ;
@@ -1924,8 +1924,8 @@ pr_syntax_instruction_parser_parser_1545_26_ (galgas_scanner & _inLexique,
             GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
             var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
             nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_instructionsList, var_cas_tableTerminaux, var_cas_syntaxSignature) ;
-            var_cas_branchList.addAssign_operation (var_cas_instructionsList) ;
-            var_cas_parse_rewind_signature_list.addAssign_operation (var_cas_syntaxSignature, var_cas_branchStartLocation) ;
+            var_cas_branchList._addAssign_operation (var_cas_instructionsList) ;
+            var_cas_parse_rewind_signature_list._addAssign_operation (var_cas_syntaxSignature, var_cas_branchStartLocation) ;
           switch (select_repeat_parser_parser_14 (_inLexique)) {
             case 2 : {
               } break ;
@@ -1956,8 +1956,8 @@ pr_syntax_instruction_parser_parser_1545_26_ (galgas_scanner & _inLexique,
             GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
             var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
             nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_instructionsList, var_cas_tableTerminaux, var_cas_syntaxSignature) ;
-            var_cas_branchList.addAssign_operation (var_cas_expression, var_cas_instructionsList) ;
-            var_cas_parse_rewind_signature_list.addAssign_operation (var_cas_syntaxSignature, var_cas_branchStartLocation) ;
+            var_cas_branchList._addAssign_operation (var_cas_expression, var_cas_instructionsList) ;
+            var_cas_parse_rewind_signature_list._addAssign_operation (var_cas_syntaxSignature, var_cas_branchStartLocation) ;
             var_cas_ioVariablesMap.epilogue_testPart (_inLexique, GGS_location (_inLexique) SOURCE_FILE_AT_LINE (1611)) ;
           switch (select_repeat_parser_parser_15 (_inLexique)) {
             case 2 : {
@@ -1977,11 +1977,11 @@ pr_syntax_instruction_parser_parser_1545_26_ (galgas_scanner & _inLexique,
       GGS_L_ruleSyntaxSignature  var_cas_syntaxSignature ;
       var_cas_syntaxSignature = GGS_L_ruleSyntaxSignature::constructor_emptyList (_inLexique COMMA_HERE) ;
       nt_syntax_instructions_list_no_verif_ (_inLexique, var_cas_ioNonTerminalSymbolMapForSyntax, var_cas_inCheckNonTerminalsAreDeclaredWithParseLabel, var_cas_ioEntitiesMap, var_cas_listeEntitesAengendrer, var_cas_ioOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_elseInstructionsList, var_cas_tableTerminaux, var_cas_syntaxSignature) ;
-      var_cas_parse_rewind_signature_list.addAssign_operation (var_cas_syntaxSignature, var_cas_branchStartLocation) ;
+      var_cas_parse_rewind_signature_list._addAssign_operation (var_cas_syntaxSignature, var_cas_branchStartLocation) ;
       GGS_L_ruleSyntaxSignature::element_type * operand_60081 = var_cas_syntaxSignature.firstObject () ;
       while ((operand_60081 != NULL)) {
         macroValidPointer (operand_60081) ;
-        var_cas_ioSyntaxSignature.addAssign_operation (operand_60081->mInstruction) ;
+        var_cas_ioSyntaxSignature._addAssign_operation (operand_60081->mInstruction) ;
         operand_60081 = operand_60081->nextObject () ;
       }
       var_cas_ioVariablesMap.epilogue_testPart (_inLexique, GGS_location (_inLexique) SOURCE_FILE_AT_LINE (1643)) ;
@@ -1994,8 +1994,8 @@ pr_syntax_instruction_parser_parser_1545_26_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_parse) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
-  if (var_cas_parse_rewind_signature_list.isBuilt ()) {
+  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  if (var_cas_parse_rewind_signature_list._isBuilt ()) {
     ::routine_checkParseRewindSignatures (_inLexique,  var_cas_parse_rewind_signature_list SOURCE_FILE_AT_LINE (1672)) ;
   }
 }

@@ -115,19 +115,19 @@ pr_parse_metamodel_metamodel_parser_114_23_ (galgas_scanner & _inLexique,
   var_cas_metamodelName.defineAttribute (_inLexique.tokenString, _inLexique) ;
   GGS_stringset  var_cas_primitiveTypeAttributeNameSet ;
   var_cas_primitiveTypeAttributeNameSet = GGS_stringset::constructor_emptySet (_inLexique COMMA_HERE) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "bool")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "char")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "uint")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "sint")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "double")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "string")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "lbool")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "lchar")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "luint")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "lsint")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "ldouble")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "lstring")) ;
-  var_cas_primitiveTypeAttributeNameSet.addAssign_operation (GGS_string (true, "location")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "bool")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "char")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "uint")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "sint")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "double")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "string")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "lbool")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "lchar")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "luint")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "lsint")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "ldouble")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "lstring")) ;
+  var_cas_primitiveTypeAttributeNameSet._addAssign_operation (GGS_string (true, "location")) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_root) ;
   GGS_lstring  var_cas_rootEntityName ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_type_5Fname) ;
@@ -142,7 +142,7 @@ pr_parse_metamodel_metamodel_parser_114_23_ (galgas_scanner & _inLexique,
   GGS_entityPropertyMap  var_cas_5855 ;
   GGS_entityPropertyMap  var_cas_5870 ;
   GGS_lstring  var_cas_5873 ;
-  if (var_cas_entityMap.isBuilt ()) {
+  if (var_cas_entityMap._isBuilt ()) {
     var_cas_entityMap (HERE)->method_searchKey (_inLexique, var_cas_rootEntityName, var_cas_5855, var_cas_isAbstract, var_cas_5870, var_cas_5873 SOURCE_FILE_AT_LINE (149)) ;
   }
   if ((var_cas_isAbstract).isBuiltAndTrue ()) {
@@ -176,19 +176,19 @@ pr_parse_metamodel_metamodel_parser_114_23_ (galgas_scanner & _inLexique,
         GGS_bool var_cas_7452 ;
         GGS_entityPropertyMap  var_cas_7455 ;
         GGS_lstring  var_cas_7458 ;
-        if (var_cas_entityMap.isBuilt ()) {
+        if (var_cas_entityMap._isBuilt ()) {
           var_cas_entityMap (HERE)->method_searchKey (_inLexique, operand_7109->mInfo.mTypeName, var_cas_7449, var_cas_7452, var_cas_7455, var_cas_7458 SOURCE_FILE_AT_LINE (188)) ;
         }
-        var_cas_multiReferencedEntities.addAssign_operation (operand_7109->mInfo.mTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (189))) ;
+        var_cas_multiReferencedEntities._addAssign_operation (operand_7109->mInfo.mTypeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (189))) ;
       }
       operand_7109 = operand_7109->nextObject () ;
     }
     operand_6876 = operand_6876->nextObject () ;
   }
-  if (var_cas_entityMap.isBuilt () &&
-      var_cas_metamodelName.isBuilt () &&
-      var_cas_multiReferencedEntities.isBuilt () &&
-      var_cas_rootEntityName.isBuilt ()) {
+  if (var_cas_entityMap._isBuilt () &&
+      var_cas_metamodelName._isBuilt () &&
+      var_cas_multiReferencedEntities._isBuilt () &&
+      var_cas_rootEntityName._isBuilt ()) {
     ::routine_generate_metamodel (_inLexique,  var_cas_entityMap,  var_cas_metamodelName,  var_cas_multiReferencedEntities,  var_cas_rootEntityName SOURCE_FILE_AT_LINE (195)) ;
   }
   if (((! (var_cas_ioMetamodelComponentMap.reader_hasKey (_inLexique, var_cas_metamodelName.reader_value (_inLexique SOURCE_FILE_AT_LINE (201)) SOURCE_FILE_AT_LINE (201))))).isBuiltAndTrue ()) {
@@ -301,7 +301,7 @@ pr_entity_declaration_metamodel_parser_234_26_ (galgas_scanner & _inLexique,
       GGS_entityPropertyMap  var_cas_9283 ;
       GGS_bool var_cas_9292 ;
       GGS_lstring  var_cas_9323 ;
-      if (var_cas_ioEntityMap.isBuilt ()) {
+      if (var_cas_ioEntityMap._isBuilt ()) {
         var_cas_ioEntityMap (HERE)->method_searchKey (_inLexique, var_cas_superEntity, var_cas_9283, var_cas_9292, var_cas_allPropertyMap, var_cas_9323 SOURCE_FILE_AT_LINE (262)) ;
       }
       } break ;

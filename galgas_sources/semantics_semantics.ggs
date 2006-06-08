@@ -472,7 +472,13 @@ class @typeConstructorExpression extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeTestComplement extends @typeExpression {
-  @typeExpression mTest ;
+  @typeExpression mExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @typeLogicalNegate extends @typeExpression {
+  @typeExpression mExpression ;
 }
  
 #---------------------------------------------------------------------------*
@@ -613,6 +619,22 @@ class @typeStrictSupTest extends @typeExpression {
 class @typeSupOrEqualTest extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @typeLeftShiftOperation extends @typeExpression {
+  @typeExpression mLeftExpression ;
+  @typeExpression mRightExpression ;
+  @location mInstructionLocation ;
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @typeRightShiftOperation extends @typeExpression {
+  @typeExpression mLeftExpression ;
+  @typeExpression mRightExpression ;
+  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*

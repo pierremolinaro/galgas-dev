@@ -144,14 +144,14 @@ pr_galgas_component_program_parser_85_24_ (galgas_scanner & _inLexique,
   GGS_lstring  var_cas_lexiqueClassName ;
   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_nonterminalSymbolParametersMap ;
   GGS_M_optionComponents  var_cas_optionsComponentsMap ;
-  if (var_cas_grammarComponentsMap.isBuilt ()) {
+  if (var_cas_grammarComponentsMap._isBuilt ()) {
     var_cas_grammarComponentsMap (HERE)->method_searchKey (_inLexique, var_cas_grammarName, var_cas_nonterminalSymbolParametersMap, var_cas_lexiqueClassName, var_cas_optionsComponentsMap SOURCE_FILE_AT_LINE (176)) ;
   }
   GGS_lstring  var_cas_altName ;
   var_cas_altName = GGS_lstring::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE) ;
   GGS_L_signature  var_cas_startSymbolSignature ;
   GGS_lstring  var_cas_returnedMetamodel ;
-  if (var_cas_nonterminalSymbolParametersMap.isBuilt ()) {
+  if (var_cas_nonterminalSymbolParametersMap._isBuilt ()) {
     var_cas_nonterminalSymbolParametersMap (HERE)->method_searchKey (_inLexique, var_cas_altName, var_cas_startSymbolSignature, var_cas_returnedMetamodel SOURCE_FILE_AT_LINE (180)) ;
   }
   var_cas_listeDesAttributs = GGS_typeListeAttributsAxiome::constructor_emptyList (_inLexique COMMA_HERE) ;
@@ -186,7 +186,7 @@ pr_galgas_component_program_parser_85_24_ (galgas_scanner & _inLexique,
                 GGS_lstring  var_cas_constraintComponentName ;
                 _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
                 var_cas_constraintComponentName.defineAttribute (_inLexique.tokenString, _inLexique) ;
-                var_cas_contraintListForMetamodel.addAssign_operation (var_cas_constraintComponentName) ;
+                var_cas_contraintListForMetamodel._addAssign_operation (var_cas_constraintComponentName) ;
               switch (select_repeat_program_parser_7 (_inLexique)) {
                 case 2 : {
                   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__2C) ;
@@ -209,14 +209,14 @@ pr_galgas_component_program_parser_85_24_ (galgas_scanner & _inLexique,
       GGS_M_semanticsEntitiesForUse  var_cas_7804 ;
       GGS_entityToImplementMap  var_cas_7807 ;
       GGS_stringset  var_cas_7810 ;
-      if (var_cas_ioMetamodelComponentMap.isBuilt ()) {
+      if (var_cas_ioMetamodelComponentMap._isBuilt ()) {
         var_cas_ioMetamodelComponentMap (HERE)->method_searchKey (_inLexique, var_cas_metamodelName, var_cas_rootEntityName, var_cas_7804, var_cas_7807, var_cas_7810 SOURCE_FILE_AT_LINE (217)) ;
       }
       } break ;
     default :
       break ;
   }
-  var_cas_grammarDescriptorForProgramList.addAssign_operation (var_cas_postfix, var_cas_grammarName, var_cas_startSymbolSignature, var_cas_listeDesAttributs, var_cas_lexiqueClassName, var_cas_returnedMetamodel, var_cas_rootEntityName, var_cas_contraintListForMetamodel) ;
+  var_cas_grammarDescriptorForProgramList._addAssign_operation (var_cas_postfix, var_cas_grammarName, var_cas_startSymbolSignature, var_cas_listeDesAttributs, var_cas_lexiqueClassName, var_cas_returnedMetamodel, var_cas_rootEntityName, var_cas_contraintListForMetamodel) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_error) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_unsigned_5Fliteral_5Finteger) ;
   var_cas_nombreMaxErreurs.defineAttribute (_inLexique.uint32value, _inLexique) ;
@@ -225,13 +225,13 @@ pr_galgas_component_program_parser_85_24_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_unsigned_5Fliteral_5Finteger) ;
   var_cas_nombreMaxAlertes.defineAttribute (_inLexique.uint32value, _inLexique) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
-  if (var_cas_nomPRGMprincipal.isBuilt () &&
-      var_cas_extensionSource.isBuilt () &&
-      var_cas_versionString.isBuilt () &&
-      var_cas_grammarDescriptorForProgramList.isBuilt () &&
-      var_cas_nombreMaxErreurs.isBuilt () &&
-      var_cas_nombreMaxAlertes.isBuilt () &&
-      var_cas_optionsComponentsMap.isBuilt ()) {
+  if (var_cas_nomPRGMprincipal._isBuilt () &&
+      var_cas_extensionSource._isBuilt () &&
+      var_cas_versionString._isBuilt () &&
+      var_cas_grammarDescriptorForProgramList._isBuilt () &&
+      var_cas_nombreMaxErreurs._isBuilt () &&
+      var_cas_nombreMaxAlertes._isBuilt () &&
+      var_cas_optionsComponentsMap._isBuilt ()) {
     ::routine_generatePRGM (_inLexique,  var_cas_nomPRGMprincipal,  var_cas_extensionSource,  var_cas_versionString,  var_cas_grammarDescriptorForProgramList,  var_cas_nombreMaxErreurs,  var_cas_nombreMaxAlertes,  var_cas_optionsComponentsMap SOURCE_FILE_AT_LINE (240)) ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_end) ;
@@ -866,7 +866,7 @@ pr_program_attributes_declaration_program_parser_625_38_ (galgas_scanner & _inLe
           GGS_lstring  var_cas_texte ;
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
           var_cas_texte.defineAttribute (_inLexique.tokenString, _inLexique) ;
-          var_cas_listeDesAttributs.addAssign_operation (var_cas_texte) ;
+          var_cas_listeDesAttributs._addAssign_operation (var_cas_texte) ;
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
           } break ;
         default :
