@@ -164,7 +164,7 @@ pr_parse_constraint_document_constraint_parser_183_33_ (galgas_scanner & _inLexi
   GGS_M_semanticsEntitiesForUse  var_cas_semanticsEntitiesMap ;
   GGS_entityToImplementMap  var_cas_entityMap ;
   GGS_stringset  var_cas_multiReferencedEntities ;
-  if (var_cas_metamodelComponentMap.isBuilt ()) {
+  if (var_cas_metamodelComponentMap._isBuilt ()) {
     var_cas_metamodelComponentMap (HERE)->method_searchKey (_inLexique, var_cas_metamodelName, var_cas_rootEntity, var_cas_semanticsEntitiesMap, var_cas_entityMap, var_cas_multiReferencedEntities SOURCE_FILE_AT_LINE (229)) ;
   }
   GGS_mapEntityMap  var_cas_mapEntityMap ;
@@ -206,7 +206,7 @@ pr_parse_constraint_document_constraint_parser_183_33_ (galgas_scanner & _inLexi
     GGS_constraintAllPropertiesMap  var_cas_8796 ;
     GGS_indexMap  var_cas_8805 ;
     GGS_indexMap  var_cas_8814 ;
-    if (var_cas_constrainedEntityMap.isBuilt ()) {
+    if (var_cas_constrainedEntityMap._isBuilt ()) {
       var_cas_constrainedEntityMap (HERE)->method_searchKey (_inLexique, var_cas_rootEntity, var_cas_8666, var_cas_constrainedEntityPassMapForRootEntity, var_cas_8720, var_cas_8729, var_cas_8738, var_cas_endOfConstraintLocation, var_cas_8778, var_cas_8787, var_cas_8796, var_cas_8805, var_cas_8814 SOURCE_FILE_AT_LINE (264)) ;
     }
     if (((var_cas_constrainedEntityPassMapForRootEntity.reader_count (_inLexique SOURCE_FILE_AT_LINE (278))) != (var_cas_passMap.reader_count (_inLexique SOURCE_FILE_AT_LINE (278)))).isBuiltAndTrue ()) {
@@ -241,7 +241,7 @@ pr_parse_constraint_document_constraint_parser_183_33_ (galgas_scanner & _inLexi
         GGS_constraintAllPropertiesMap  var_cas_10107 ;
         GGS_indexMap  var_cas_10110 ;
         GGS_indexMap  var_cas_10113 ;
-        if (var_cas_constrainedEntityMap.isBuilt ()) {
+        if (var_cas_constrainedEntityMap._isBuilt ()) {
           var_cas_constrainedEntityMap (HERE)->method_searchKey (_inLexique, operand_9743->mInfo.mTypeName, var_cas_10043, var_cas_referencePropertyConstrainedEntityPassMap, var_cas_10089, var_cas_10092, var_cas_10095, var_cas_10098, var_cas_10101, var_cas_10104, var_cas_10107, var_cas_10110, var_cas_10113 SOURCE_FILE_AT_LINE (294)) ;
         }
         GGS_constrainedEntityPassMap::element_type * operand_10174 = var_cas_referencePropertyConstrainedEntityPassMap.firstObject () ;
@@ -267,14 +267,14 @@ pr_parse_constraint_document_constraint_parser_183_33_ (galgas_scanner & _inLexi
             var_cas_callInstructionSharedPropertySignatureMap = operand_10682->mInfo.mCallInstructionSharedPropertySignatureMap ;
             GGS_sharedPropertyList  var_cas_signature ;
             GGS_location  var_cas_signatureLocation ;
-            if (var_cas_callInstructionSharedPropertySignatureMap.isBuilt ()) {
+            if (var_cas_callInstructionSharedPropertySignatureMap._isBuilt ()) {
               var_cas_callInstructionSharedPropertySignatureMap (HERE)->method_searchKey (_inLexique, operand_9743->mKey, var_cas_signature, var_cas_signatureLocation SOURCE_FILE_AT_LINE (318)) ;
             }
             GGS_sharedPropertyList  var_cas_sharedPropertyList ;
             GGS_typeInstructionList  var_cas_12211 ;
             GGS_stringset  var_cas_12234 ;
             GGS_callInstructionSharedPropertySignatureMap  var_cas_12237 ;
-            if (var_cas_referencePropertyConstrainedEntityPassMap.isBuilt ()) {
+            if (var_cas_referencePropertyConstrainedEntityPassMap._isBuilt ()) {
               var_cas_referencePropertyConstrainedEntityPassMap (HERE)->method_searchKey (_inLexique, operand_10682->mKey, var_cas_12211, var_cas_sharedPropertyList, var_cas_12234, var_cas_12237 SOURCE_FILE_AT_LINE (320)) ;
             }
             if (((var_cas_sharedPropertyList.reader_length (_inLexique SOURCE_FILE_AT_LINE (321))) == (var_cas_signature.reader_length (_inLexique SOURCE_FILE_AT_LINE (321)))).isBuiltAndTrue ()) {
@@ -301,14 +301,14 @@ pr_parse_constraint_document_constraint_parser_183_33_ (galgas_scanner & _inLexi
     }
     operand_9504 = operand_9504->nextObject () ;
   }
-  if (var_cas_passMap.isBuilt () &&
-      var_cas_entityMap.isBuilt () &&
-      var_cas_mapEntityMap.isBuilt () &&
-      var_cas_metamodelName.isBuilt () &&
-      var_cas_constraintName.isBuilt () &&
-      var_cas_constrainedEntityMap.isBuilt () &&
-      var_cas_multiReferencedEntities.isBuilt () &&
-      var_cas_rootEntity.isBuilt ()) {
+  if (var_cas_passMap._isBuilt () &&
+      var_cas_entityMap._isBuilt () &&
+      var_cas_mapEntityMap._isBuilt () &&
+      var_cas_metamodelName._isBuilt () &&
+      var_cas_constraintName._isBuilt () &&
+      var_cas_constrainedEntityMap._isBuilt () &&
+      var_cas_multiReferencedEntities._isBuilt () &&
+      var_cas_rootEntity._isBuilt ()) {
     ::routine_generate_constraints (_inLexique,  var_cas_passMap,  var_cas_entityMap,  var_cas_mapEntityMap,  var_cas_metamodelName,  var_cas_constraintName,  var_cas_constrainedEntityMap,  var_cas_multiReferencedEntities,  var_cas_rootEntity SOURCE_FILE_AT_LINE (341)) ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_constraint) ;
@@ -401,7 +401,7 @@ pr_constraint_map_declaration_constraint_parser_356_34_ (galgas_scanner & _inLex
   GGS_lstring  var_cas_insertErrorMessage ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_literal_5Fstring) ;
   var_cas_insertErrorMessage.defineAttribute (_inLexique.tokenString, _inLexique) ;
-  if (var_cas_insertErrorMessage.isBuilt ()) {
+  if (var_cas_insertErrorMessage._isBuilt ()) {
     ::routine_check_KL_escapeCharacters (_inLexique,  var_cas_insertErrorMessage SOURCE_FILE_AT_LINE (375)) ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
@@ -411,7 +411,7 @@ pr_constraint_map_declaration_constraint_parser_356_34_ (galgas_scanner & _inLex
   GGS_lstring  var_cas_searchErrorMessage ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_literal_5Fstring) ;
   var_cas_searchErrorMessage.defineAttribute (_inLexique.tokenString, _inLexique) ;
-  if (var_cas_searchErrorMessage.isBuilt ()) {
+  if (var_cas_searchErrorMessage._isBuilt ()) {
     ::routine_check_K_escapeCharacters (_inLexique,  var_cas_searchErrorMessage SOURCE_FILE_AT_LINE (382)) ;
   }
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
@@ -462,7 +462,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
   GGS_entityPropertyMap  var_cas_allPropertyMap ;
   GGS_entityPropertyMap  var_cas_propertyMap ;
   GGS_bool var_cas_14967 ;
-  if (var_cas_ioEntityMap.isBuilt ()) {
+  if (var_cas_ioEntityMap._isBuilt ()) {
     var_cas_ioEntityMap (HERE)->method_searchKey (_inLexique, var_cas_entityName, var_cas_allPropertyMap, var_cas_14967, var_cas_propertyMap, var_cas_superEntity SOURCE_FILE_AT_LINE (410)) ;
   }
   GGS_stringset  var_cas_descendantEntitySet ;
@@ -486,7 +486,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
       GGS_location  var_cas_15808 ;
       GGS_mapAsConstraintPropertyMap  var_cas_15819 ;
       GGS_indexMap  var_cas_15906 ;
-      if (var_cas_ioConstrainedEntityMap.isBuilt ()) {
+      if (var_cas_ioConstrainedEntityMap._isBuilt ()) {
         var_cas_ioConstrainedEntityMap (HERE)->method_searchKey (_inLexique, var_cas_superEntity, var_cas_passesDefinedByInheritanceTreeRootEntity, var_cas_inheritedConstrainedEntityPassMap, var_cas_15775, var_cas_15786, var_cas_15797, var_cas_15808, var_cas_15819, var_cas_allMapsAsConstraintPropertyMap, var_cas_constraintAllPropertiesMap, var_cas_15906, var_cas_allIndexMap SOURCE_FILE_AT_LINE (427)) ;
       }
     }else{
@@ -510,7 +510,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
           _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
           var_cas_passName.defineAttribute (_inLexique.tokenString, _inLexique) ;
           GGS_luint  var_cas_index ;
-          if (var_cas_ioPassMap.isBuilt ()) {
+          if (var_cas_ioPassMap._isBuilt ()) {
             var_cas_ioPassMap (HERE)->method_searchKeyAndGetIndex (_inLexique, var_cas_passName, var_cas_index SOURCE_FILE_AT_LINE (456)) ;
           }
           if (((var_cas_index.reader_value (_inLexique SOURCE_FILE_AT_LINE (457))) < (var_cas_currentPassIndex)).isBuiltAndTrue ()) {
@@ -525,7 +525,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
                 GGS_typeInstructionList  var_cas_16819 ;
                 GGS_stringset  var_cas_16842 ;
                 GGS_callInstructionSharedPropertySignatureMap  var_cas_16845 ;
-                if (var_cas_inheritedConstrainedEntityPassMap.isBuilt ()) {
+                if (var_cas_inheritedConstrainedEntityPassMap._isBuilt ()) {
                   var_cas_inheritedConstrainedEntityPassMap (HERE)->method_searchKey (_inLexique, var_cas_passName, var_cas_16819, var_cas_sharedPropertyList, var_cas_16842, var_cas_16845 SOURCE_FILE_AT_LINE (465)) ;
                 }
               }
@@ -548,12 +548,12 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
                       GGS_lstring  var_cas_elementTypeName ;
                       GGS_lstring  var_cas_17442 ;
                       GGS_lstring  var_cas_17445 ;
-                      if (var_cas_ioMapEntityMap.isBuilt ()) {
+                      if (var_cas_ioMapEntityMap._isBuilt ()) {
                         var_cas_ioMapEntityMap (HERE)->method_searchKey (_inLexique, var_cas_typeName, var_cas_elementTypeName, var_cas_17442, var_cas_17445 SOURCE_FILE_AT_LINE (481)) ;
                       }
                       var_cas_mapAsConstraintPropertyMap.method_insertKey (_inLexique, var_cas_propertyName, var_cas_typeName, var_cas_elementTypeName, var_cas_currentPassIndex, var_cas_passName.reader_value (_inLexique SOURCE_FILE_AT_LINE (482)), GGS_bool (true, true) SOURCE_FILE_AT_LINE (482)) ;
                       var_cas_allMapsAsConstraintPropertyMap.method_insertKey (_inLexique, var_cas_propertyName, var_cas_typeName, var_cas_elementTypeName, var_cas_currentPassIndex, var_cas_passName.reader_value (_inLexique SOURCE_FILE_AT_LINE (483)), GGS_bool (true, true) SOURCE_FILE_AT_LINE (483)) ;
-                      var_cas_sharedPropertyList.addAssign_operation (var_cas_typeName, var_cas_propertyName) ;
+                      var_cas_sharedPropertyList._addAssign_operation (var_cas_typeName, var_cas_propertyName) ;
                     }else{
                       var_cas_typeName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "unhandled type name") SOURCE_FILE_AT_LINE (487)) ;
                     }
@@ -588,7 +588,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
                     GGS_lstring  var_cas_elementTypeName ;
                     GGS_lstring  var_cas_18326 ;
                     GGS_lstring  var_cas_18329 ;
-                    if (var_cas_ioMapEntityMap.isBuilt ()) {
+                    if (var_cas_ioMapEntityMap._isBuilt ()) {
                       var_cas_ioMapEntityMap (HERE)->method_searchKey (_inLexique, var_cas_typeName, var_cas_elementTypeName, var_cas_18326, var_cas_18329 SOURCE_FILE_AT_LINE (504)) ;
                     }
                     var_cas_mapAsConstraintPropertyMap.method_insertKey (_inLexique, var_cas_propertyName, var_cas_typeName, var_cas_elementTypeName, var_cas_currentPassIndex, var_cas_passName.reader_value (_inLexique SOURCE_FILE_AT_LINE (505)), GGS_bool (true, false) SOURCE_FILE_AT_LINE (505)) ;
@@ -613,7 +613,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
                   GGS_uint  var_cas_19008 ;
                   GGS_string var_cas_19011 ;
                   GGS_bool var_cas_19014 ;
-                  if (var_cas_allMapsAsConstraintPropertyMap.isBuilt ()) {
+                  if (var_cas_allMapsAsConstraintPropertyMap._isBuilt ()) {
                     var_cas_allMapsAsConstraintPropertyMap (HERE)->method_searchKey (_inLexique, var_cas_mapPropertyName, var_cas_19002, var_cas_19005, var_cas_19008, var_cas_19011, var_cas_19014 SOURCE_FILE_AT_LINE (519)) ;
                   }
                   var_cas_indexMap.method_insertKey (_inLexique, var_cas_propertyName, var_cas_mapPropertyName, var_cas_currentPassIndex SOURCE_FILE_AT_LINE (520)) ;
@@ -746,7 +746,7 @@ pr_constraints_on_entity_declaration_constraint_parser_395_41_ (galgas_scanner &
     GGS_constrainedEntityPassMap::element_type * operand_24740 = var_cas_constrainedEntityPassMap.firstObject () ;
     while ((operand_24740 != NULL)) {
       macroValidPointer (operand_24740) ;
-      var_cas_passesDefinedByInheritanceTreeRootEntity.addAssign_operation (operand_24740->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (627))) ;
+      var_cas_passesDefinedByInheritanceTreeRootEntity._addAssign_operation (operand_24740->mKey.reader_value (_inLexique SOURCE_FILE_AT_LINE (627))) ;
       operand_24740 = operand_24740->nextObject () ;
     }
   }
@@ -853,13 +853,13 @@ pr_property_path_for_constraint_constraint_parser_660_36_ (galgas_scanner & _inL
             GGS_lstring  var_cas_pathElement ;
             _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
             var_cas_pathElement.defineAttribute (_inLexique.tokenString, _inLexique) ;
-            var_cas_outPath.addAssign_operation (var_cas_pathElement) ;
+            var_cas_outPath._addAssign_operation (var_cas_pathElement) ;
             } break ;
           case 2 : {
             GGS_lstring  var_cas_pathElement ;
             _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_type_5Fname) ;
             var_cas_pathElement.defineAttribute (_inLexique.tokenString, _inLexique) ;
-            var_cas_outPath.addAssign_operation (GGS_lstring::constructor_new (_inLexique, ((GGS_string (true, ".")) + (var_cas_pathElement.reader_value (_inLexique SOURCE_FILE_AT_LINE (672)))), var_cas_pathElement.reader_location (_inLexique SOURCE_FILE_AT_LINE (672)) COMMA_HERE)) ;
+            var_cas_outPath._addAssign_operation (GGS_lstring::constructor_new (_inLexique, ((GGS_string (true, ".")) + (var_cas_pathElement.reader_value (_inLexique SOURCE_FILE_AT_LINE (672)))), var_cas_pathElement.reader_location (_inLexique SOURCE_FILE_AT_LINE (672)) COMMA_HERE)) ;
             } break ;
           default :
             break ;
@@ -1080,7 +1080,7 @@ pr_constraint_relation_primary_constraint_parser_731_35_ (galgas_scanner & _inLe
       var_cas_localVar.defineAttribute (_inLexique.tokenString, _inLexique) ;
       GGS_luint  var_cas_variableIndex ;
       GGS_lstring  var_cas_domainVariable ;
-      if (var_cas_ioRelationVariableMap.isBuilt ()) {
+      if (var_cas_ioRelationVariableMap._isBuilt ()) {
         var_cas_ioRelationVariableMap (HERE)->method_searchKeyAndGetIndex (_inLexique, var_cas_localVar, var_cas_variableIndex, var_cas_domainVariable SOURCE_FILE_AT_LINE (752)) ;
       }
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3D_3D) ;
@@ -1089,7 +1089,7 @@ pr_constraint_relation_primary_constraint_parser_731_35_ (galgas_scanner & _inLe
       var_cas_indexVariableName.defineAttribute (_inLexique.tokenString, _inLexique) ;
       GGS_lstring  var_cas_domainVariableFromIndex ;
       GGS_uint  var_cas_28804 ;
-      if (var_cas_ioIndexMap.isBuilt ()) {
+      if (var_cas_ioIndexMap._isBuilt ()) {
         var_cas_ioIndexMap (HERE)->method_searchKey (_inLexique, var_cas_indexVariableName, var_cas_domainVariableFromIndex, var_cas_28804 SOURCE_FILE_AT_LINE (757)) ;
       }
       if (((var_cas_domainVariable.reader_value (_inLexique SOURCE_FILE_AT_LINE (758))) != (var_cas_domainVariableFromIndex.reader_value (_inLexique SOURCE_FILE_AT_LINE (758)))).isBuiltAndTrue ()) {
@@ -1113,10 +1113,10 @@ pr_constraint_relation_primary_constraint_parser_731_35_ (galgas_scanner & _inLe
             var_cas_parameter.defineAttribute (_inLexique.tokenString, _inLexique) ;
             GGS_luint  var_cas_parameterIndex ;
             GGS_lstring  var_cas_domainVariable ;
-            if (var_cas_ioRelationVariableMap.isBuilt ()) {
+            if (var_cas_ioRelationVariableMap._isBuilt ()) {
               var_cas_ioRelationVariableMap (HERE)->method_searchKeyAndGetIndex (_inLexique, var_cas_parameter, var_cas_parameterIndex, var_cas_domainVariable SOURCE_FILE_AT_LINE (777)) ;
             }
-            var_cas_parameterList.addAssign_operation (var_cas_parameter, var_cas_parameterIndex, var_cas_domainVariable) ;
+            var_cas_parameterList._addAssign_operation (var_cas_parameter, var_cas_parameterIndex, var_cas_domainVariable) ;
           switch (select_repeat_constraint_parser_13 (_inLexique)) {
             case 2 : {
               _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__2C) ;

@@ -101,7 +101,7 @@ GGS_string GGS_typeParserInstruction::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @typeParserInstruction" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;
@@ -192,7 +192,7 @@ GGS_string GGS_typeInstructionAppelNonTerminal::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @typeInstructionAppelNonTerminal" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;
@@ -268,7 +268,7 @@ GGS_string GGS_typeInstructionVerifSyntaxique::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @typeInstructionVerifSyntaxique" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;
@@ -324,23 +324,23 @@ GGS_typeListeBranchesInstructions::cRootList::~cRootList (void) {
 //---------------------------------------------------------------------------*
 
 GGS_typeListeBranchesInstructions::GGS_typeListeBranchesInstructions (void) { // Default Constructor
-  mRoot = NULL ;
+  _mRoot = NULL ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_typeListeBranchesInstructions::~GGS_typeListeBranchesInstructions (void) {
-  drop_operation () ;
+  _drop_operation () ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_typeListeBranchesInstructions::
 GGS_typeListeBranchesInstructions (const GGS_typeListeBranchesInstructions & inSource) {
-  mRoot = inSource.mRoot ;
-  if (mRoot != NULL) {
-    macroValidPointer (mRoot) ;
-    mRoot->mCountReference ++ ;
+  _mRoot = inSource._mRoot ;
+  if (_mRoot != NULL) {
+    macroValidPointer (_mRoot) ;
+    _mRoot->mCountReference ++ ;
   }
 }
 
@@ -349,11 +349,11 @@ GGS_typeListeBranchesInstructions (const GGS_typeListeBranchesInstructions & inS
 void GGS_typeListeBranchesInstructions::
 operator = (const GGS_typeListeBranchesInstructions & inSource) {
   if (this != & inSource) {
-    drop_operation () ;
-    mRoot = inSource.mRoot ;
-    if (mRoot != NULL) {
-      macroValidPointer (mRoot) ;
-      mRoot->mCountReference ++ ;
+    _drop_operation () ;
+    _mRoot = inSource._mRoot ;
+    if (_mRoot != NULL) {
+      macroValidPointer (_mRoot) ;
+      _mRoot->mCountReference ++ ;
     }
   }
 }
@@ -362,53 +362,53 @@ operator = (const GGS_typeListeBranchesInstructions & inSource) {
 
 GGS_typeListeBranchesInstructions::element_type * GGS_typeListeBranchesInstructions::
 firstObject (void) const {
-  return (mRoot == NULL) ? NULL : mRoot->mFirstItem ;
+  return (_mRoot == NULL) ? NULL : _mRoot->mFirstItem ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-internalAppendItem (const GGS_typeInstructionList & argument_0) {
+_internalAppendItem (const GGS_typeInstructionList & argument_0) {
   element_type * nouvelElement = (element_type *) NULL ;
   macroMyNew (nouvelElement, element_type (argument_0)) ;
   if (nouvelElement != NULL) {
     macroValidPointer (nouvelElement) ;
-    if (mRoot->mLastItem == NULL) {
-      mRoot->mFirstItem = nouvelElement ;
+    if (_mRoot->mLastItem == NULL) {
+      _mRoot->mFirstItem = nouvelElement ;
     }else{
-      macroValidPointer (mRoot->mLastItem) ;
-      mRoot->mLastItem->mNextItem = nouvelElement ;
+      macroValidPointer (_mRoot->mLastItem) ;
+      _mRoot->mLastItem->mNextItem = nouvelElement ;
     }
-    mRoot->mLastItem = nouvelElement ;
+    _mRoot->mLastItem = nouvelElement ;
     nouvelElement = (element_type *) NULL ;
-    mRoot->mListLength ++ ;
+    _mRoot->mListLength ++ ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-addAssign_operation (const GGS_typeInstructionList & argument_0) {
-  if (isBuilt ()) {
-    insulateList () ;
-    internalAppendItem (argument_0) ;
+_addAssign_operation (const GGS_typeInstructionList & argument_0) {
+  if (_isBuilt ()) {
+    _insulateList () ;
+    _internalAppendItem (argument_0) ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-insulateList (void) {
-  if (mRoot != NULL) {
-    macroValidPointer (mRoot) ;
-    if (mRoot->mCountReference > 1) {
-      element_type * p = mRoot->mFirstItem ;
-      mRoot->mCountReference -- ;
-      mRoot = NULL ;
-      macroMyNew (mRoot, cRootList) ;
+_insulateList (void) {
+  if (_mRoot != NULL) {
+    macroValidPointer (_mRoot) ;
+    if (_mRoot->mCountReference > 1) {
+      element_type * p = _mRoot->mFirstItem ;
+      _mRoot->mCountReference -- ;
+      _mRoot = NULL ;
+      macroMyNew (_mRoot, cRootList) ;
       while (p != NULL) {
         macroValidPointer (p) ;
-        internalAppendItem (p->mInstructionList) ;
+        _internalAppendItem (p->mInstructionList) ;
         p = p->mNextItem ;
       }
     }
@@ -420,7 +420,7 @@ insulateList (void) {
 GGS_typeListeBranchesInstructions  GGS_typeListeBranchesInstructions::
 constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeListeBranchesInstructions result ;
-  macroMyNew (result.mRoot, cRootList) ;
+  macroMyNew (result._mRoot, cRootList) ;
   return result ;
 }
 
@@ -428,7 +428,7 @@ constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
 
 sint32 GGS_typeListeBranchesInstructions::
 count (void) const {
-  return (mRoot == NULL) ? 0 : mRoot->mListLength ;
+  return (_mRoot == NULL) ? 0 : _mRoot->mListLength ;
 }
 
 //---------------------------------------------------------------------------*
@@ -437,9 +437,9 @@ GGS_string GGS_typeListeBranchesInstructions::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<list @typeListeBranchesInstructions" ;
-  if (isBuilt ()) {
-    s << " " << mRoot->mListLength << " object" << ((mRoot->mListLength > 1) ? "s " : " ") ;
-    element_type * p = mRoot->mFirstItem ;
+  if (_isBuilt ()) {
+    s << " " << _mRoot->mListLength << " object" << ((_mRoot->mListLength > 1) ? "s " : " ") ;
+    element_type * p = _mRoot->mFirstItem ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForListDescription (_inLexique, s COMMA_THERE) ;
@@ -457,21 +457,21 @@ reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
 GGS_uint GGS_typeListeBranchesInstructions::
 reader_length (C_Lexique & /* inLexique */
                COMMA_UNUSED_LOCATION_ARGS) const {
-  return GGS_uint (mRoot != NULL,
-                   (mRoot == NULL) ? 0 : (uint32) mRoot->mListLength) ;
+  return GGS_uint (_mRoot != NULL,
+                   (_mRoot == NULL) ? 0 : (uint32) _mRoot->mListLength) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-drop_operation (void) {
-  if (mRoot != NULL) {
-    macroValidPointer (mRoot) ;
-    if (mRoot->mCountReference == 1) {
-      macroMyDelete (mRoot, cRootList) ;
+_drop_operation (void) {
+  if (_mRoot != NULL) {
+    macroValidPointer (_mRoot) ;
+    if (_mRoot->mCountReference == 1) {
+      macroMyDelete (_mRoot, cRootList) ;
     }else{
-      mRoot->mCountReference -- ;
-      mRoot = NULL ;
+      _mRoot->mCountReference -- ;
+      _mRoot = NULL ;
     }
   }
 }
@@ -543,7 +543,7 @@ GGS_string GGS_C_select_instruction::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @C_select_instruction" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;
@@ -619,7 +619,7 @@ GGS_string GGS_C_repeat_instruction::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @C_repeat_instruction" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;
@@ -678,23 +678,23 @@ GGS_L_parse_rewind_signature_list::cRootList::~cRootList (void) {
 //---------------------------------------------------------------------------*
 
 GGS_L_parse_rewind_signature_list::GGS_L_parse_rewind_signature_list (void) { // Default Constructor
-  mRoot = NULL ;
+  _mRoot = NULL ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_L_parse_rewind_signature_list::~GGS_L_parse_rewind_signature_list (void) {
-  drop_operation () ;
+  _drop_operation () ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_L_parse_rewind_signature_list::
 GGS_L_parse_rewind_signature_list (const GGS_L_parse_rewind_signature_list & inSource) {
-  mRoot = inSource.mRoot ;
-  if (mRoot != NULL) {
-    macroValidPointer (mRoot) ;
-    mRoot->mCountReference ++ ;
+  _mRoot = inSource._mRoot ;
+  if (_mRoot != NULL) {
+    macroValidPointer (_mRoot) ;
+    _mRoot->mCountReference ++ ;
   }
 }
 
@@ -703,11 +703,11 @@ GGS_L_parse_rewind_signature_list (const GGS_L_parse_rewind_signature_list & inS
 void GGS_L_parse_rewind_signature_list::
 operator = (const GGS_L_parse_rewind_signature_list & inSource) {
   if (this != & inSource) {
-    drop_operation () ;
-    mRoot = inSource.mRoot ;
-    if (mRoot != NULL) {
-      macroValidPointer (mRoot) ;
-      mRoot->mCountReference ++ ;
+    _drop_operation () ;
+    _mRoot = inSource._mRoot ;
+    if (_mRoot != NULL) {
+      macroValidPointer (_mRoot) ;
+      _mRoot->mCountReference ++ ;
     }
   }
 }
@@ -716,39 +716,39 @@ operator = (const GGS_L_parse_rewind_signature_list & inSource) {
 
 GGS_L_parse_rewind_signature_list::element_type * GGS_L_parse_rewind_signature_list::
 firstObject (void) const {
-  return (mRoot == NULL) ? NULL : mRoot->mFirstItem ;
+  return (_mRoot == NULL) ? NULL : _mRoot->mFirstItem ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-internalAppendItem (const GGS_L_ruleSyntaxSignature & argument_0,
+_internalAppendItem (const GGS_L_ruleSyntaxSignature & argument_0,
                     const GGS_location & argument_1) {
   element_type * nouvelElement = (element_type *) NULL ;
   macroMyNew (nouvelElement, element_type (argument_0,
                                 argument_1)) ;
   if (nouvelElement != NULL) {
     macroValidPointer (nouvelElement) ;
-    if (mRoot->mLastItem == NULL) {
-      mRoot->mFirstItem = nouvelElement ;
+    if (_mRoot->mLastItem == NULL) {
+      _mRoot->mFirstItem = nouvelElement ;
     }else{
-      macroValidPointer (mRoot->mLastItem) ;
-      mRoot->mLastItem->mNextItem = nouvelElement ;
+      macroValidPointer (_mRoot->mLastItem) ;
+      _mRoot->mLastItem->mNextItem = nouvelElement ;
     }
-    mRoot->mLastItem = nouvelElement ;
+    _mRoot->mLastItem = nouvelElement ;
     nouvelElement = (element_type *) NULL ;
-    mRoot->mListLength ++ ;
+    _mRoot->mListLength ++ ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
+_addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1) {
-  if (isBuilt ()) {
-    insulateList () ;
-    internalAppendItem (argument_0,
+  if (_isBuilt ()) {
+    _insulateList () ;
+    _internalAppendItem (argument_0,
                                 argument_1) ;
   }
 }
@@ -756,17 +756,17 @@ addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-insulateList (void) {
-  if (mRoot != NULL) {
-    macroValidPointer (mRoot) ;
-    if (mRoot->mCountReference > 1) {
-      element_type * p = mRoot->mFirstItem ;
-      mRoot->mCountReference -- ;
-      mRoot = NULL ;
-      macroMyNew (mRoot, cRootList) ;
+_insulateList (void) {
+  if (_mRoot != NULL) {
+    macroValidPointer (_mRoot) ;
+    if (_mRoot->mCountReference > 1) {
+      element_type * p = _mRoot->mFirstItem ;
+      _mRoot->mCountReference -- ;
+      _mRoot = NULL ;
+      macroMyNew (_mRoot, cRootList) ;
       while (p != NULL) {
         macroValidPointer (p) ;
-        internalAppendItem (p->mSignature,
+        _internalAppendItem (p->mSignature,
                                 p->mErrorLocation) ;
         p = p->mNextItem ;
       }
@@ -779,7 +779,7 @@ insulateList (void) {
 GGS_L_parse_rewind_signature_list  GGS_L_parse_rewind_signature_list::
 constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_L_parse_rewind_signature_list result ;
-  macroMyNew (result.mRoot, cRootList) ;
+  macroMyNew (result._mRoot, cRootList) ;
   return result ;
 }
 
@@ -787,7 +787,7 @@ constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
 
 sint32 GGS_L_parse_rewind_signature_list::
 count (void) const {
-  return (mRoot == NULL) ? 0 : mRoot->mListLength ;
+  return (_mRoot == NULL) ? 0 : _mRoot->mListLength ;
 }
 
 //---------------------------------------------------------------------------*
@@ -796,9 +796,9 @@ GGS_string GGS_L_parse_rewind_signature_list::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<list @L_parse_rewind_signature_list" ;
-  if (isBuilt ()) {
-    s << " " << mRoot->mListLength << " object" << ((mRoot->mListLength > 1) ? "s " : " ") ;
-    element_type * p = mRoot->mFirstItem ;
+  if (_isBuilt ()) {
+    s << " " << _mRoot->mListLength << " object" << ((_mRoot->mListLength > 1) ? "s " : " ") ;
+    element_type * p = _mRoot->mFirstItem ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForListDescription (_inLexique, s COMMA_THERE) ;
@@ -816,21 +816,21 @@ reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
 GGS_uint GGS_L_parse_rewind_signature_list::
 reader_length (C_Lexique & /* inLexique */
                COMMA_UNUSED_LOCATION_ARGS) const {
-  return GGS_uint (mRoot != NULL,
-                   (mRoot == NULL) ? 0 : (uint32) mRoot->mListLength) ;
+  return GGS_uint (_mRoot != NULL,
+                   (_mRoot == NULL) ? 0 : (uint32) _mRoot->mListLength) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-drop_operation (void) {
-  if (mRoot != NULL) {
-    macroValidPointer (mRoot) ;
-    if (mRoot->mCountReference == 1) {
-      macroMyDelete (mRoot, cRootList) ;
+_drop_operation (void) {
+  if (_mRoot != NULL) {
+    macroValidPointer (_mRoot) ;
+    if (_mRoot->mCountReference == 1) {
+      macroMyDelete (_mRoot, cRootList) ;
     }else{
-      mRoot->mCountReference -- ;
-      mRoot = NULL ;
+      _mRoot->mCountReference -- ;
+      _mRoot = NULL ;
     }
   }
 }
@@ -902,7 +902,7 @@ GGS_string GGS_C_parse_rewind_instruction::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @C_parse_rewind_instruction" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;
@@ -978,7 +978,7 @@ GGS_string GGS_C_parse_when_else_instruction::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @C_parse_when_else_instruction" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;
@@ -1054,7 +1054,7 @@ GGS_string GGS_typeNonterminalToGenerate::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @typeNonterminalToGenerate" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;
@@ -1121,7 +1121,7 @@ void GGS_typeAltProductionsMap::internalInsertForDuplication (AC_galgas_map_elem
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->mRoot, extension, index, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->_mRoot, extension, index, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1139,14 +1139,14 @@ insertElement (C_Lexique & inLexique,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) {
   sint32 index = - 1 ;
-  if (isBuilt ()
-   && inParameter0.isBuilt ()
-   && inParameter1.isBuilt ()
-   && inParameter2.isBuilt ()
-   && inParameter3.isBuilt ()
-   && inParameter4.isBuilt ()
-   && inParameter5.isBuilt ()
-   && inKey.isBuilt ()) {
+  if (_isBuilt ()
+   && inParameter0._isBuilt ()
+   && inParameter1._isBuilt ()
+   && inParameter2._isBuilt ()
+   && inParameter3._isBuilt ()
+   && inParameter4._isBuilt ()
+   && inParameter5._isBuilt ()
+   && inKey._isBuilt ()) {
     insulateMap () ;
     e_typeAltProductionsMap info  ;
     info.aListeDeTypesEffectifs = inParameter0 ;
@@ -1157,7 +1157,7 @@ insertElement (C_Lexique & inLexique,
     info.mAllPropertiesMap = inParameter5 ;
     bool extension = false ; // Unused here
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, extension, index, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, extension, index, existingKeyLocation) ;
     if (index < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
      }
@@ -1182,7 +1182,7 @@ searchElement (C_Lexique & inLexique,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
   element_type * node = NULL  ;
-  if (isBuilt () && inKey.isBuilt ()) {
+  if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
@@ -1191,14 +1191,14 @@ searchElement (C_Lexique & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0.drop_operation () ;
-    outParameter1.drop_operation () ;
-    outParameter2.drop_operation () ;
-    outParameter3.drop_operation () ;
-    outParameter4.drop_operation () ;
-    outParameter5.drop_operation () ;
+    outParameter0._drop_operation () ;
+    outParameter1._drop_operation () ;
+    outParameter2._drop_operation () ;
+    outParameter3._drop_operation () ;
+    outParameter4._drop_operation () ;
+    outParameter5._drop_operation () ;
     if (outIndex != NULL) {
-      outIndex->drop_operation () ;
+      outIndex->_drop_operation () ;
      }
   }else{
     outParameter0 = node->mInfo.aListeDeTypesEffectifs ;
@@ -1301,7 +1301,7 @@ reader_overriddenMap (C_Lexique & /* inLexique */
 GGS_string GGS_typeAltProductionsMap::reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<map @typeAltProductionsMap " ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
     element_type * p = firstObject () ;
     while (p != NULL) {
@@ -1393,7 +1393,7 @@ GGS_string GGS_typeProductionAengendrer::
 reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {
   C_String s ;
   s << "<class @typeProductionAengendrer" ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
     mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;
   }else{
     s << "not built" ;

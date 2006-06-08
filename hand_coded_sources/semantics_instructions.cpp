@@ -140,7 +140,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       macroValidPointer (affectationCourante) ;
       ioCppFile << "    " ;
       affectationCourante->aNomVariableCible (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << ".drop_operation () ;\n" ;
+      ioCppFile << "._drop_operation () ;\n" ;
       affectationCourante = affectationCourante->nextObject () ;
     }
     ioCppFile << "    if (" ;
@@ -216,7 +216,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     ioCppFile << "if (" ;
     mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".isBuilt ()) {\n" ;
+    ioCppFile << "._isBuilt ()) {\n" ;
     ioCppFile.incIndentation (+2) ;
     bool first = true ;
     sint32 branchCount = 0 ;
@@ -250,7 +250,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       branchCount ++ ;
     }
     ioCppFile << "}else{ // Else part\n" ;
-  //--- Generate drop_operation instructions
+  //--- Generate _drop_operation instructions
     generateInstructionListForList (mElseInstructionList, ioCppFile,
                                     inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -308,7 +308,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aVariableConsommee (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".drop_operation () ;\n" ;
+    ioCppFile << "._drop_operation () ;\n" ;
   }
 }
 
@@ -354,7 +354,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     while (currentVarToDrop != NULL) {
       macroValidPointer (currentVarToDrop) ;
       currentVarToDrop->mVarToDrop (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << ".drop_operation () ;\n" ;
+      ioCppFile << "._drop_operation () ;\n" ;
       currentVarToDrop = currentVarToDrop->nextObject () ;
     }
   }
@@ -529,9 +529,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     ioCppFile << "if (" ;
     aNomCppVariable1 (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".isBuilt () && " ;
+    ioCppFile << "._isBuilt () && " ;
     aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".isBuilt ()) {\n" ;
+    ioCppFile << "._isBuilt ()) {\n" ;
     ioCppFile.incIndentation (+2) ;
     if (! mOperand1_isEnumeration.boolValue ()) {
       ioCppFile << "cPtr_" << aNomTypeBase1 << " * ptr_" << aIndicatif1.currentLocation () << " = " ;
@@ -638,7 +638,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".increment_operation (_inLexique SOURCE_FILE_AT_LINE ("
+    ioCppFile << "._increment_operation (_inLexique SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
               << ")) ;\n" ;
   }
@@ -677,7 +677,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".decrement_operation (_inLexique SOURCE_FILE_AT_LINE ("
+    ioCppFile << "._decrement_operation (_inLexique SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
               << ")) ;\n" ;
   }
@@ -716,7 +716,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".addAssign_operation (" ;
+    ioCppFile << "._addAssign_operation (" ;
     GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
     bool first = true ;
     while (exp != NULL) {

@@ -92,49 +92,49 @@ doCompilation (const C_String & inSourceFileName_,
     }
     mScannerPtr_->resetAndLoadSourceFromFile (inSourceFileName_) ;
     _beforeParsing () ;
-    if (! mLexiqueMapForUse.isBuilt ()) {
+    if (! mLexiqueMapForUse._isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mLexiqueMapForUse"
                  "' program parameter has not been initialized" ;
       throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
-    if (! mSemanticsComponentsMap.isBuilt ()) {
+    if (! mSemanticsComponentsMap._isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mSemanticsComponentsMap"
                  "' program parameter has not been initialized" ;
       throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
-    if (! mSyntaxComponentsMap.isBuilt ()) {
+    if (! mSyntaxComponentsMap._isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mSyntaxComponentsMap"
                  "' program parameter has not been initialized" ;
       throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
-    if (! mGrammarsComponentsMap.isBuilt ()) {
+    if (! mGrammarsComponentsMap._isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mGrammarsComponentsMap"
                  "' program parameter has not been initialized" ;
       throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
-    if (! mOptionComponentsMap.isBuilt ()) {
+    if (! mOptionComponentsMap._isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mOptionComponentsMap"
                  "' program parameter has not been initialized" ;
       throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
-    if (! mMetamodelComponentMap.isBuilt ()) {
+    if (! mMetamodelComponentMap._isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mMetamodelComponentMap"
                  "' program parameter has not been initialized" ;
       throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
-    if (! mConstraintComponentMap.isBuilt ()) {
+    if (! mConstraintComponentMap._isBuilt ()) {
       C_String message ;
       message << "the '"
                  "mConstraintComponentMap"

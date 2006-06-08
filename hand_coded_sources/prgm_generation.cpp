@@ -253,7 +253,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       macroValidPointer (nomCourant) ;
       macroValidPointer (p) ;
       if (p->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
-        generatedZone2 << "if (! " << nomCourant->aAttributAxiome << ".isBuilt ()) {\n"
+        generatedZone2 << "if (! " << nomCourant->aAttributAxiome << "._isBuilt ()) {\n"
                           "  C_String message ;\n"
                           "  message << \"the '\"\n"
                           "             \"" << nomCourant->aAttributAxiome << "\"\n"

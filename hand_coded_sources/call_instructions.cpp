@@ -40,7 +40,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ifGenerated = true ;
       ioCppFile << "if (" ;
       aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << ".isBuilt ()) {\n  " ;
+      ioCppFile << "._isBuilt ()) {\n  " ;
       aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE)->" ;
     }  
@@ -289,7 +289,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
           ioCppFile << " &&\n    " ;
         }
         argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
-        ioCppFile << ".isBuilt ()" ;
+        ioCppFile << "._isBuilt ()" ;
         nombreArgumentsTestes ++ ;
       }
       typeArgumentCourant = typeArgumentCourant->nextObject () ;

@@ -72,7 +72,7 @@ cElementTableMethodesAimplementer <INFO>::~cElementTableMethodesAimplementer (vo
 
 template <typename INFO>
 cTableMethodesAimplementer <INFO>::cTableMethodesAimplementer (void) {
-  mRoot = (element_type *) NULL ;
+  _mRoot = (element_type *) NULL ;
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
   mListLength = 0 ;
@@ -83,7 +83,7 @@ cTableMethodesAimplementer <INFO>::cTableMethodesAimplementer (void) {
 
 template <typename INFO>
 cTableMethodesAimplementer <INFO>::~cTableMethodesAimplementer (void) {
-  drop_operation () ;
+  _drop_operation () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -91,7 +91,7 @@ cTableMethodesAimplementer <INFO>::~cTableMethodesAimplementer (void) {
 template <typename INFO>
 cTableMethodesAimplementer <INFO>
             ::cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> & source) {
-  mRoot = (element_type *) NULL ;
+  _mRoot = (element_type *) NULL ;
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
   mListLength = 0 ;
@@ -105,8 +105,8 @@ template <typename INFO>
 void cTableMethodesAimplementer <INFO>
             ::operator = (const cTableMethodesAimplementer <INFO> & source) {
   if (this != & source) {
-    drop_operation () ;
-    mRoot = source.mRoot ;
+    _drop_operation () ;
+    _mRoot = source._mRoot ;
     mFirstItem = source.mFirstItem ;
     mLastItem = source.mLastItem ;
     mListLength = source.mListLength ;
@@ -120,17 +120,17 @@ void cTableMethodesAimplementer <INFO>
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO> void cTableMethodesAimplementer <INFO>::drop_operation (void) {
+template <typename INFO> void cTableMethodesAimplementer <INFO>::_drop_operation (void) {
   mFirstItem = (element_type *) NULL ;
   mLastItem = (element_type *) NULL ;
   mListLength = 0 ;
   if (mReferenceCountPtr != NULL) {
     macroValidPointer (mReferenceCountPtr) ;
     if ((*mReferenceCountPtr) == 1) {
-      macroMyDelete (mRoot, element_type) ;
+      macroMyDelete (_mRoot, element_type) ;
       macroMyDelete (mReferenceCountPtr, sint32) ;
     }else{
-      mRoot = (element_type *) NULL ;
+      _mRoot = (element_type *) NULL ;
       (*mReferenceCountPtr) -- ;
       mReferenceCountPtr = (sint32 *) NULL ;
     }
@@ -145,7 +145,7 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::drop_operation 
 
 template <typename INFO>
 void cTableMethodesAimplementer <INFO>::build (void) {
-  drop_operation () ;
+  _drop_operation () ;
   macroMyNew (mReferenceCountPtr, sint32 (1)) ;
 }
 
@@ -163,12 +163,12 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (vo
       cElementTableMethodesAimplementer <INFO> * p = mFirstItem ;
       mLastItem = (element_type *) NULL ;
       mFirstItem = (element_type *) NULL ;
-      mRoot = (element_type *) NULL ;
+      _mRoot = (element_type *) NULL ;
       mListLength = 0 ;
       while (p != NULL) {
         macroValidPointer (p) ;
         sint32 numeroElement ;
-        internalInsert (p->mInfo, p->mKey, numeroElement, p->champEstAbstraite, mRoot) ;
+        internalInsert (p->mInfo, p->mKey, numeroElement, p->champEstAbstraite, _mRoot) ;
         p = p->mNextItem ;
       }
     }
@@ -185,11 +185,11 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) {
   sint32 numeroElement = -1 ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
   //--- Realiser l'insertion
-    internalInsert (info, clef, numeroElement, true, mRoot) ;
+    internalInsert (info, clef, numeroElement, true, _mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;
@@ -208,11 +208,11 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexiq
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) {
   sint32 numeroElement = -1 ;
-  if (isBuilt ()) {
+  if (_isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
   //--- Realiser l'insertion
-    internalInsert (info, clef, numeroElement, false, mRoot) ;
+    internalInsert (info, clef, numeroElement, false, _mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;

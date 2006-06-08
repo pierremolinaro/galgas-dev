@@ -22,7 +22,9 @@ class cPtr_typeDivideOperation : public cPtr_typeExpression {
 //--- START OF USER ZONE 2
 
 public : virtual void generateExpression (AC_OutputStream & inCppFile) ;
+
 public : virtual bool isLexiqueFormalArgumentUsedForTest (void) const  ;
+
 public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const ;
 
 //--- END OF USER ZONE 2

@@ -49,7 +49,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << "GGS_uint " << variantVariable << " = " ;
     mVariantExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n"
-                 "GGS_bool " << variableCondition << " (" << variantVariable << ".isBuilt (), true) ;\n"
+                 "GGS_bool " << variableCondition << " (" << variantVariable << "._isBuilt (), true) ;\n"
                  "while (" << variableCondition << ".isBuiltAndTrue ()) {\n"
                  "  if (" << variantVariable << ".uintValue () == 0) {\n"
                  "    _inLexique.onTheFlyRunTimeError (\"loop variant error\" SOURCE_FILE_AT_LINE ("
@@ -57,7 +57,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
               << ")) ;\n"
                  "    " << variableCondition << " = GGS_bool (true, false) ;\n"
                  "  }else{\n" 
-                 "    " << variantVariable << ".decrement_operation (_inLexique COMMA_HERE) ;\n" ;
+                 "    " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
     ioCppFile.incIndentation (+2) ;
   //--- First instruction list
     C_String inutilise ;

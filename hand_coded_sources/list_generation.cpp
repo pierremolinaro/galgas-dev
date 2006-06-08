@@ -116,7 +116,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "    private : void operator = (const cRootList &) ;\n"
              "  } ;\n"
              "//--- Private attribute\n"
-             "  private : cRootList * mRoot ;\n"
+             "  private : cRootList * _mRoot ;\n"
 
 //--- Constructors and assignment operator declaration
              "//--- Default Constructor\n"
@@ -148,7 +148,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Append a new value
              "//--- Handling '+=' GALGAS operator\n"
-             "  public : void addAssign_operation (" ;
+             "  public : void _addAssign_operation (" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
@@ -164,7 +164,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   }
   inHfile << ") ;\n"
              "//--- Internal Methods\n"
-              "  protected : void internalAppendItem (" ;
+              "  protected : void _internalAppendItem (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -177,15 +177,15 @@ generateHdeclarations (AC_OutputStream & inHfile,
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
-             "  protected : void insulateList (void) ;\n"
-             "//--- 'isBuilt' method\n"
-             "  public : inline bool isBuilt (void) const {\n"
-             "    return mRoot != NULL ;\n"
+             "  protected : void _insulateList (void) ;\n"
+             "//--- '_isBuilt' method\n"
+             "  public : inline bool _isBuilt (void) const {\n"
+             "    return _mRoot != NULL ;\n"
              "  }\n"
   
-//--- Generate declaration of 'drop_operation' method
+//--- Generate declaration of '_drop_operation' method
              "//--- Handling GALGAS 'drop' instruction\n"
-             "  public : void drop_operation (void) ;\n"
+             "  public : void _drop_operation (void) ;\n"
 
 //--- Generate declaration of 'length' reader
              "//--- Handling GALGAS 'length' reader\n"
@@ -292,13 +292,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_" << aNomListe
             << "::GGS_" << aNomListe
             << " (void) { // Default Constructor\n"
-               "  mRoot = NULL ;\n"
+               "  _mRoot = NULL ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer le destructeur
   inCppFile << "GGS_" << aNomListe << "::~GGS_" << aNomListe << " (void) {\n"
-           << "  drop_operation () ;\n"
+           << "  _drop_operation () ;\n"
            << "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -306,10 +306,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_" << aNomListe << "::\n"
                "GGS_" << aNomListe
             << " (const GGS_" << aNomListe << " & inSource) {\n"
-               "  mRoot = inSource.mRoot ;\n"
-               "  if (mRoot != NULL) {\n"
-               "    macroValidPointer (mRoot) ;\n"
-               "    mRoot->mCountReference ++ ;\n"
+               "  _mRoot = inSource._mRoot ;\n"
+               "  if (_mRoot != NULL) {\n"
+               "    macroValidPointer (_mRoot) ;\n"
+               "    _mRoot->mCountReference ++ ;\n"
                "  }\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
@@ -318,11 +318,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "operator = (const GGS_" << aNomListe << " & inSource) {\n"
                "  if (this != & inSource) {\n"
-               "    drop_operation () ;\n"
-               "    mRoot = inSource.mRoot ;\n"
-               "    if (mRoot != NULL) {\n"
-               "      macroValidPointer (mRoot) ;\n"
-               "      mRoot->mCountReference ++ ;\n"
+               "    _drop_operation () ;\n"
+               "    _mRoot = inSource._mRoot ;\n"
+               "    if (_mRoot != NULL) {\n"
+               "      macroValidPointer (_mRoot) ;\n"
+               "      _mRoot->mCountReference ++ ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;
@@ -331,13 +331,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Engendrer la methode 'emptyList'
   inCppFile << "GGS_" << aNomListe << "::element_type * GGS_" << aNomListe << "::\n"
                "firstObject (void) const {\n"
-               "  return (mRoot == NULL) ? NULL : mRoot->mFirstItem ;\n"
+               "  return (_mRoot == NULL) ? NULL : _mRoot->mFirstItem ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Engendrer la methode internalAppendItem
+//--- Engendrer la methode _internalAppendItem
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "internalAppendItem (" ;
+               "_internalAppendItem (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -364,23 +364,23 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << ")) ;\n" 
                "  if (nouvelElement != NULL) {\n" 
                "    macroValidPointer (nouvelElement) ;\n" 
-               "    if (mRoot->mLastItem == NULL) {\n" 
-               "      mRoot->mFirstItem = nouvelElement ;\n" 
+               "    if (_mRoot->mLastItem == NULL) {\n" 
+               "      _mRoot->mFirstItem = nouvelElement ;\n" 
                "    }else{\n" 
-               "      macroValidPointer (mRoot->mLastItem) ;\n" 
-               "      mRoot->mLastItem->mNextItem = nouvelElement ;\n" 
+               "      macroValidPointer (_mRoot->mLastItem) ;\n" 
+               "      _mRoot->mLastItem->mNextItem = nouvelElement ;\n" 
                "    }\n" 
-               "    mRoot->mLastItem = nouvelElement ;\n" 
+               "    _mRoot->mLastItem = nouvelElement ;\n" 
                "    nouvelElement = (element_type *) NULL ;\n" 
-               "    mRoot->mListLength ++ ;\n" 
+               "    _mRoot->mListLength ++ ;\n" 
                "  }\n" 
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
 
-//--- Generate addAssign_operation
+//--- Generate _addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "addAssign_operation (" ;
+               "_addAssign_operation (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -395,9 +395,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  if (isBuilt ()) {\n"
-               "    insulateList () ;\n"
-               "    internalAppendItem (" ;
+               "  if (_isBuilt ()) {\n"
+               "    _insulateList () ;\n"
+               "    _internalAppendItem (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -412,19 +412,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Engendrer la methode insulateList
+//--- Engendrer la methode _insulateList
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "insulateList (void) {\n"
-               "  if (mRoot != NULL) {\n"
-               "    macroValidPointer (mRoot) ;\n"
-               "    if (mRoot->mCountReference > 1) {\n"
-               "      element_type * p = mRoot->mFirstItem ;\n"
-               "      mRoot->mCountReference -- ;\n"
-               "      mRoot = NULL ;\n"
-               "      macroMyNew (mRoot, cRootList) ;\n"
+               "_insulateList (void) {\n"
+               "  if (_mRoot != NULL) {\n"
+               "    macroValidPointer (_mRoot) ;\n"
+               "    if (_mRoot->mCountReference > 1) {\n"
+               "      element_type * p = _mRoot->mFirstItem ;\n"
+               "      _mRoot->mCountReference -- ;\n"
+               "      _mRoot = NULL ;\n"
+               "      macroMyNew (_mRoot, cRootList) ;\n"
                "      while (p != NULL) {\n"
                "        macroValidPointer (p) ;\n"
-               "        internalAppendItem (" ;
+               "        _internalAppendItem (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -446,7 +446,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
                "constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  macroMyNew (result.mRoot, cRootList) ;\n"
+               "  macroMyNew (result._mRoot, cRootList) ;\n"
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
@@ -454,7 +454,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Implement 'count' function
   inCppFile << "sint32 GGS_" << aNomListe << "::\n"
                "count (void) const {\n"
-               "  return (mRoot == NULL) ? 0 : mRoot->mListLength ;\n"
+               "  return (_mRoot == NULL) ? 0 : _mRoot->mListLength ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -463,9 +463,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
                "  C_String s ;\n"
                "  s << \"<list @" << aNomListe << "\" ;\n"
-               "  if (isBuilt ()) {\n"
-               "    s << \" \" << mRoot->mListLength << \" object\" << ((mRoot->mListLength > 1) ? \"s \" : \" \") ;\n"
-               "    element_type * p = mRoot->mFirstItem ;\n"
+               "  if (_isBuilt ()) {\n"
+               "    s << \" \" << _mRoot->mListLength << \" object\" << ((_mRoot->mListLength > 1) ? \"s \" : \" \") ;\n"
+               "    element_type * p = _mRoot->mFirstItem ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
                "      p->appendForListDescription (_inLexique, s COMMA_THERE) ;\n"
@@ -483,21 +483,21 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_uint GGS_" << aNomListe << "::\n"
                "reader_length (C_Lexique & /* inLexique */\n"
                "               COMMA_UNUSED_LOCATION_ARGS) const {\n"
-               "  return GGS_uint (mRoot != NULL,\n"
-               "                   (mRoot == NULL) ? 0 : (uint32) mRoot->mListLength) ;\n"
+               "  return GGS_uint (_mRoot != NULL,\n"
+               "                   (_mRoot == NULL) ? 0 : (uint32) _mRoot->mListLength) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Engendrer la declaration de la methode 'drop_operation'
+//--- Engendrer la declaration de la methode '_drop_operation'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "drop_operation (void) {\n"
-               "  if (mRoot != NULL) {\n"
-               "    macroValidPointer (mRoot) ;\n"
-               "    if (mRoot->mCountReference == 1) {\n"
-               "      macroMyDelete (mRoot, cRootList) ;\n"
+               "_drop_operation (void) {\n"
+               "  if (_mRoot != NULL) {\n"
+               "    macroValidPointer (_mRoot) ;\n"
+               "    if (_mRoot->mCountReference == 1) {\n"
+               "      macroMyDelete (_mRoot, cRootList) ;\n"
                "    }else{\n"
-               "      mRoot->mCountReference -- ;\n"
-               "      mRoot = NULL ;\n"
+               "      _mRoot->mCountReference -- ;\n"
+               "      _mRoot = NULL ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;

@@ -116,7 +116,7 @@ pr_galgas_component_cli_options_parser_63_24_ (galgas_scanner & _inLexique,
           }else{
             var_cas_typeName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "only @bool, @uint or @string types can be used here") SOURCE_FILE_AT_LINE (125)) ;
           }
-          var_cas_optionNameSet.addAssign_operation (var_cas_typeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (126))) ;
+          var_cas_optionNameSet._addAssign_operation (var_cas_typeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (126))) ;
           } break ;
         default :
           syntaxRepeat = false ;
@@ -128,10 +128,10 @@ pr_galgas_component_cli_options_parser_63_24_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_option) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
   var_cas_ioOptionsComponentsMap.method_insertKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap SOURCE_FILE_AT_LINE (132)) ;
-  if (var_cas_optionComponentName.isBuilt () &&
-      var_cas_boolOptionsMap.isBuilt () &&
-      var_cas_uintOptionsMap.isBuilt () &&
-      var_cas_stringOptionsMap.isBuilt ()) {
+  if (var_cas_optionComponentName._isBuilt () &&
+      var_cas_boolOptionsMap._isBuilt () &&
+      var_cas_uintOptionsMap._isBuilt () &&
+      var_cas_stringOptionsMap._isBuilt ()) {
     ::routine_generate_option_component (_inLexique,  var_cas_optionComponentName,  var_cas_boolOptionsMap,  var_cas_uintOptionsMap,  var_cas_stringOptionsMap SOURCE_FILE_AT_LINE (134)) ;
   }
 }
@@ -391,7 +391,7 @@ pr_galgas_component_cli_options_parser_63_24_importOptions (galgas_scanner & _in
           }else{
             var_cas_typeName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "only @bool, @uint or @string types can be used here") SOURCE_FILE_AT_LINE (298)) ;
           }
-          var_cas_optionNameSet.addAssign_operation (var_cas_typeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (299))) ;
+          var_cas_optionNameSet._addAssign_operation (var_cas_typeName.reader_value (_inLexique SOURCE_FILE_AT_LINE (299))) ;
           } break ;
         default :
           syntaxRepeat = false ;

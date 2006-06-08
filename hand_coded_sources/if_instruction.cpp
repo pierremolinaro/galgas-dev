@@ -29,7 +29,7 @@
 void cPtr_typeUnaryMinusOperation::
 generateExpression (AC_OutputStream & ioCppFile) {
   mExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".unary_minus_operation (_inLexique SOURCE_FILE_AT_LINE ("
+  ioCppFile << "._unary_minus_operation (_inLexique SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
               << "))" ;
 }
@@ -61,7 +61,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeTestComplement::
 generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(! (" ;
-  mTest (HERE)->generateExpression (ioCppFile) ;
+  mExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "))" ;
 }
 
@@ -69,14 +69,44 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeTestComplement::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mTest (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeTestComplement::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return mTest (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLogicalNegate::
+generateExpression (AC_OutputStream & ioCppFile) {
+  ioCppFile << "(~ (" ;
+  mExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLogicalNegate::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLogicalNegate::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -334,7 +364,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralSIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_sint (true, " << mLiteralInt.sintValue () << ")" ;
+  ioCppFile << "GGS_sint (true, " << mLiteralInt.sintValue () << "L)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -362,7 +392,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralSInt64Expression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_sint64 (true, " << mLiteralInt.sint64Value () << ")" ;
+  ioCppFile << "GGS_sint64 (true, " << mLiteralInt.sint64Value () << "LL)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -418,7 +448,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralUInt64Expression::
 generateExpression (AC_OutputStream & ioCppFile) {
-  ioCppFile << "GGS_uint64 (true, " << mLiteralInt.uint64Value () << "U)" ;
+  ioCppFile << "GGS_uint64 (true, " << mLiteralInt.uint64Value () << "LLU)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -710,7 +740,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeAddOperation::generateExpression (AC_OutputStream & ioCppFile) {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".add_operation (_inLexique, " ;
+  ioCppFile << "._add_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
@@ -743,7 +773,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeSubOperation::generateExpression (AC_OutputStream & ioCppFile) {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".substract_operation (_inLexique, " ;
+  ioCppFile << "._substract_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
@@ -776,7 +806,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeMultiplyOperation::generateExpression (AC_OutputStream & ioCppFile) {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".multiply_operation (_inLexique, " ;
+  ioCppFile << "._multiply_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
@@ -809,7 +839,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeDivideOperation::generateExpression (AC_OutputStream & ioCppFile) {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".divide_operation (_inLexique, " ;
+  ioCppFile << "._divide_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
@@ -842,7 +872,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeModuloOperation::generateExpression (AC_OutputStream & ioCppFile) {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".modulo_operation (_inLexique, " ;
+  ioCppFile << "._modulo_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " SOURCE_FILE_AT_LINE ("
             << mInstructionLocation.currentLineNumber ()
@@ -860,6 +890,74 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeModuloOperation::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLeftShiftOperation::
+generateExpression (AC_OutputStream & ioCppFile) {
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << "._left_shift_operation (_inLexique, " ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << " SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.currentLineNumber ()
+            << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLeftShiftOperation::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLeftShiftOperation::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeRightShiftOperation::
+generateExpression (AC_OutputStream & ioCppFile) {
+  mLeftExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << "._left_shift_operation (_inLexique, " ;
+  mRightExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << " SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.currentLineNumber ()
+            << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeRightShiftOperation::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+      || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeRightShiftOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }

@@ -154,7 +154,7 @@ template <typename INFO> class classeSurchargeTableControlePhase {
 template <typename INFO> class cGalgasVariablesMap {
   public : typedef cElementTableControlePhase <INFO> element_type ;
   public : typedef classeSurchargeTableControlePhase <INFO> typeSurchargeTable ;
-  public : element_type * mRoot ;
+  public : element_type * _mRoot ;
   public : typeSurchargeTable * aListeSurcharges ;
   private : sint32 mListLength ;
   public : inline sint32 count (void) const {
@@ -170,7 +170,7 @@ template <typename INFO> class cGalgasVariablesMap {
   public : virtual ~cGalgasVariablesMap (void) ;
 
 //--- Drop operation
-  public : void drop_operation (void) ;
+  public : void _drop_operation (void) ;
   public : void build (void) ;
 
 //--- Reader 'hasKey"
@@ -179,7 +179,7 @@ template <typename INFO> class cGalgasVariablesMap {
                                    COMMA_LOCATION_ARGS) const ;
 
 //--- This kind of map is always built
-  public : inline bool isBuilt (void) const { return true ; }
+  public : inline bool _isBuilt (void) const { return true ; }
 
 //--- Insertion Methods
   public : sint32 insertEntityAttributeLocalVariable (C_Lexique & inLexique,
