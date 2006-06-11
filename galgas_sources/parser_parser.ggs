@@ -293,7 +293,7 @@ rule <galgas_component>
     !?ioLexiqueMapForUse
     ?lexiqueName
   ;
-  @string defLexique := [lexiqueName value] ;
+  @string defLexique := [lexiqueName string] ;
 #--- Parse Inclusions
   @stringset inclusionsForHeaderFile ;
   @stringset inclusionsForImplementationFile ;
@@ -353,8 +353,8 @@ rule <galgas_component>
   end repeat ;
 #--- Check that all routines have been implemented
   foreach tableNomRoutinesDeclarees (??@lstring nomRoutine) :
-    if not [tableRoutinesAimplementer hasKey ![nomRoutine value]] then
-      error nomRoutine : "the routine '" . [nomRoutine value] .
+    if not [tableRoutinesAimplementer hasKey ![nomRoutine string]] then
+      error nomRoutine : "the routine '" . [nomRoutine string] .
                          "' is not implemented within the component" ;
     end if ;
   end foreach ;
@@ -925,7 +925,7 @@ rule <rule_declaration_or_implementation>
     $tag$ ;
     @lstring tagName ;
     $literal_string$ ? tagName ;
-    productionTagName := [tagName value] ;
+    productionTagName := [tagName string] ;
   end select ;
   @location errorLocation := here ;
   $:$ ;
@@ -938,38 +938,38 @@ rule <rule_declaration_or_implementation>
     !listeDeTypesFormels
     !errorLocation
   ;
-  if ([formalReturnedEntity value] == "") & ([inEffectiveReturnedEntity value] != "") then
+  if ([formalReturnedEntity string] == "") & ([inEffectiveReturnedEntity string] != "") then
     error inEffectiveReturnedEntity: "the non terminal declaration does not name any returned entity" ;
-  elsif [inEffectiveReturnedEntity value] != [formalReturnedEntity value] then
+  elsif [inEffectiveReturnedEntity string] != [formalReturnedEntity string] then
     @AC_semanticsEntity e ;
     [ioEntitiesMap searchKey !inEffectiveReturnedEntity ?e] ;
     @AC_galgasType type ;
     extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
     @stringset superEntityStringSet ;
     extract type->@typeGalgas_singleEntity (?* ?* ?* ?* ?* ?superEntityStringSet) error inEffectiveReturnedEntity : messageGalgasType ;
-    if not [superEntityStringSet hasKey ![formalReturnedEntity value]] then
+    if not [superEntityStringSet hasKey ![formalReturnedEntity string]] then
       message "superEntityStringSet : " . [superEntityStringSet description] ;
-      error inEffectiveReturnedEntity: "the '@" . [formalReturnedEntity value] . "' entity or one of its inherited entities is expected here" ;
+      error inEffectiveReturnedEntity: "the '@" . [formalReturnedEntity string] . "' entity or one of its inherited entities is expected here" ;
     end if ;
   end if ;
 #--- Insert in variable map attributes for returned entity
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
-  if [inEffectiveReturnedEntity value] != "" then
+  if [inEffectiveReturnedEntity string] != "" then
     @AC_semanticsEntity e ;
     [ioEntitiesMap searchKey !inEffectiveReturnedEntity ?e] ;
     @AC_galgasType type ;
     extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
     extract type->@typeGalgas_singleEntity (?* ? allPropertiesMap ...) error inEffectiveReturnedEntity : messageGalgasType ;
     foreach allPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
-      if [ioEntitiesMap hasKey ![kTypeName value]] then
+      if [ioEntitiesMap hasKey ![kTypeName string]] then
       #--- Type name
         @AC_semanticsEntity entite ;
         [ioEntitiesMap searchKey !kTypeName ?entite] ;
         @AC_galgasType definitionType ;
         extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
       #--- Variable name
-        @lstring nomVariable := [@lstring new ![kKey value] ![inEffectiveReturnedEntity location]] ;
+        @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
         if kKind == [@metamodelPropertyKind multipleReferenceProperty] then
           definitionType := [@typeGalgas_multipleEntity new ! kTypeName] ;
@@ -1007,7 +1007,7 @@ rule <rule_declaration_or_implementation>
     !listeInstructions
     !syntaxSignature
     !here
-    ![inEffectiveReturnedEntity value]
+    ![inEffectiveReturnedEntity string]
     !allPropertiesMap
   ] ;
   repeat
@@ -1066,7 +1066,7 @@ rule <rule_declaration_or_implementation>
       !listeInstructions
       !syntaxSignature
       !here
-      ![returnedEntity value]
+      ![returnedEntity string]
       !allPropertiesMap
     ] ;
   end repeat ;
@@ -1077,8 +1077,8 @@ rule <rule_declaration_or_implementation>
   action checkLabelSignatures !?altProductionsMap ;
 #--- Check that all label rules are implemented
   foreach nonterminalSymbolAltMap (??@lstring nonTerminalAltName ??@L_EXsignature altSignature ??@lstring kReturnedEntity) :
-    if [nonTerminalAltName value] != "parse" & not [altProductionsMap hasKey ![nonTerminalAltName value]] then
-      error here : "the '" . [nonTerminalAltName value] . "' label is not implemented within the rule" ;
+    if [nonTerminalAltName string] != "parse" & not [altProductionsMap hasKey ![nonTerminalAltName string]] then
+      error here : "the '" . [nonTerminalAltName string] . "' label is not implemented within the rule" ;
     end if ;
   end foreach ;
 #--- Generate production
@@ -1249,7 +1249,7 @@ rule <syntax_instruction>
   @lstring returnedEntityFromSignature ;
   [nonterminalSymbolAltMap searchKey !altName ?signatureMethode ?returnedEntityFromSignature] ;
 #--- Check if parse label is declared ?
-  if inCheckNonTerminalsAreDeclaredWithParseLabel & ([altName value] != "parse") then
+  if inCheckNonTerminalsAreDeclaredWithParseLabel & ([altName string] != "parse") then
     if not [nonterminalSymbolAltMap hasKey !"parse"] then
       error here : "As current rule has 'parse' label, every invoked non terminal symbol must be declared with 'parse' label" ;
     end if ;
@@ -1278,11 +1278,11 @@ rule <syntax_instruction>
     isMultipleEntity := true ;
   end select ;
 #--- Check returned value
-  if ([returnedEntityFromSignature value] == "") & ([returnedEntityVariableName value] != "") then
+  if ([returnedEntityFromSignature string] == "") & ([returnedEntityVariableName string] != "") then
     error returnedEntityVariableName: "the non terminal symbol is declared with no returned entity" ;
-  elsif ([returnedEntityFromSignature value] != "") & ([returnedEntityVariableName value] == "") then
-    error returnedEntityVariableName: "the non terminal symbol is declared to return an instance of '@" .  [returnedEntityFromSignature  value] . "' entity" ;
-  elsif ([returnedEntityFromSignature value] != "") & ([returnedEntityVariableName value] != "") then
+  elsif ([returnedEntityFromSignature string] != "") & ([returnedEntityVariableName string] == "") then
+    error returnedEntityVariableName: "the non terminal symbol is declared to return an instance of '@" .  [returnedEntityFromSignature  string] . "' entity" ;
+  elsif ([returnedEntityFromSignature string] != "") & ([returnedEntityVariableName string] != "") then
   #--- Check type consistency
     if isMultipleEntity then
       @AC_galgasType type ;

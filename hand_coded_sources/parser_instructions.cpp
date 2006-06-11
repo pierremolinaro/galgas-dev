@@ -248,7 +248,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     while (argument != NULL) {
       macroValidPointer (argument) ;
       argument->aNomVariableCible (HERE)->generateCplusPlusName (inCppFile) ;
-      inCppFile << ".defineAttribute (_inLexique."
+      inCppFile << ".defineAttributeFromScanner (_inLexique."
                << argument->aNomAttributSource << ", _inLexique) ;\n" ;
       argument = argument->nextObject () ;
     }

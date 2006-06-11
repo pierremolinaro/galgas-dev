@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Pure BNF grammar vocabulary                                              *                                                               *
+//  Pure BNF grammar vocabulary                                              *
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *

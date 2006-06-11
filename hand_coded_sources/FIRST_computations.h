@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Perform FIRST computations for pure BNF grammar.                         *                                                               *
+//  Perform FIRST computations for pure BNF grammar.                         *
 //                                                                           *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *

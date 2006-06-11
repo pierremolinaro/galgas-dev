@@ -70,7 +70,7 @@ rule 'a'->'z' | 'A'->'Z' :
   send search identifierString in galgasKeyWordList default $identifier$ ;
 end rule ;
 
-#------------------------------- Integer, flating Point Constant ------------------
+#------------------------------- Integer, floating Point Constant ------------------
 @ldouble floatValue ;
 $literal_double$ !floatValue !tokenString error message "a float number" style float_csts ;
 $unsigned_literal_integer$ ! uint32value error message "a 32-bit unsigned decimal number" style integerStyle ;

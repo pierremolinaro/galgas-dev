@@ -542,7 +542,7 @@ rule <galgas_component>
     end repeat ;
   end parse ;
 #--- Enter component entities in map
-  if not [ioSemanticsComponentsMap hasKey ![componentName value]] then
+  if not [ioSemanticsComponentsMap hasKey ![componentName string]] then
     @M_optionComponents optionsComponentsMap [emptyMap] ;
     [!?ioSemanticsComponentsMap insertKey
       !componentName
@@ -561,8 +561,8 @@ rule <galgas_component>
   $;$ ;
 #--- Check that all routines have been implemented
   foreach tableNomRoutinesDeclarees (??@lstring nomRoutine) :
-    if not [tableRoutinesAimplementer hasKey ![nomRoutine value]] then
-      error nomRoutine : "the routine '" . [nomRoutine value] .
+    if not [tableRoutinesAimplementer hasKey ![nomRoutine string]] then
+      error nomRoutine : "the routine '" . [nomRoutine string] .
                          "' is not implemented within the component" ;
     end if ;
   end foreach ;
@@ -632,7 +632,7 @@ label importSemantics
     ;
   end repeat ;
 #--- Enter component entities in map
-  if not [ioSemanticsComponentsMap hasKey ![componentName value]] then
+  if not [ioSemanticsComponentsMap hasKey ![componentName string]] then
     @M_optionComponents optionsComponentsMap [emptyMap] ;
     [!?ioSemanticsComponentsMap insertKey
       !componentName
@@ -778,7 +778,7 @@ rule <import_headers_semantics_and_grammars>
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
-      outImportedOptionComponents += ![optionComponentName value] ;
+      outImportedOptionComponents += ![optionComponentName string] ;
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
       @M_cli_options stringOptionsMap ;
@@ -800,7 +800,7 @@ rule <import_headers_semantics_and_grammars>
       $grammar$ ;
       @lstring grammarComponentName ;
       $identifier$ ? grammarComponentName ;
-      outImportedGrammarComponents += ![grammarComponentName value] ;
+      outImportedGrammarComponents += ![grammarComponentName string] ;
       @M_grammarComponents grammarComponentsMap ;
       select
         grammarComponentsMap := ioGrammarComponentsMap ;
@@ -836,7 +836,7 @@ rule <import_headers_semantics_and_grammars>
       @lstring extension := [@lstring new !"h" !here] ;
       @lstring fileNameWithPath ;
       action buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
-      outInclusionsForImplementationFile += ![fileNameWithPath value] ;
+      outInclusionsForImplementationFile += ![fileNameWithPath string] ;
     or
       $semantics$ ;
       @lstring componentName ;
@@ -853,20 +853,20 @@ rule <import_headers_semantics_and_grammars>
           !?ioConstraintComponentMap
         ;
       end select ;
-      if not [outImportedSemanticsComponents hasKey ![componentName value]] then
+      if not [outImportedSemanticsComponents hasKey ![componentName string]] then
         @M_semanticsEntitiesForUse importedEntities ;
         @M_optionComponents importedOptionsComponentsMap ;
         [ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedOptionsComponentsMap ?importedEntities] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
+          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
-        outInclusionsForHeaderFile += ![componentName value] ;
+        outInclusionsForHeaderFile += ![componentName string] ;
       #--- Check that every used option component is already declared
         foreach importedOptionsComponentsMap (??@lstring optionComponentMap ...) :
-          if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap value]] then
-            error here: "the '" . [optionComponentMap value] . "' option component must have been imported" ;
+          if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap string]] then
+            error here: "the '" . [optionComponentMap string] . "' option component must have been imported" ;
           end if ;
         end foreach ;
       end if ;
@@ -881,8 +881,8 @@ rule <import_headers_semantics_and_grammars>
         !componentName
       ;
     #---
-      outInclusionsForHeaderFile += ![componentName value] ;
-      outImportedSemanticsComponents += ![componentName value] ;
+      outInclusionsForHeaderFile += ![componentName string] ;
+      outImportedSemanticsComponents += ![componentName string] ;
     or
       $metamodel$ ;
       @lstring metamodelComponentName ;
@@ -899,19 +899,19 @@ rule <import_headers_semantics_and_grammars>
           !?ioConstraintComponentMap
         ;
       end select ;
-      if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName value]] then
+      if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName string]] then
         @M_semanticsEntitiesForUse importedEntities ;
         [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?* ?*] ;
         foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
+          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
-        outInclusionsForHeaderFile += ![metamodelComponentName value] ;
+        outInclusionsForHeaderFile += ![metamodelComponentName string] ;
       end if ;
     #---
-      outInclusionsForHeaderFile += ![metamodelComponentName value] ;
-      outIncludedMetamodelComponents += ![metamodelComponentName value] ;
+      outInclusionsForHeaderFile += ![metamodelComponentName string] ;
+      outIncludedMetamodelComponents += ![metamodelComponentName string] ;
     end select ;
     $;$ ;
   end repeat ;
@@ -941,7 +941,7 @@ label importSemantics
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
-      outIncludedOptionComponents += ![optionComponentName value] ;
+      outIncludedOptionComponents += ![optionComponentName string] ;
       select
       or
         $in$ ;
@@ -961,7 +961,7 @@ label importSemantics
       $semantics$ ;
       @lstring componentName ;
       $identifier$ ?componentName ;
-      outIncludedSemanticsComponents += ![componentName value] ;
+      outIncludedSemanticsComponents += ![componentName string] ;
       select
       or
         $in$ ;
@@ -977,7 +977,7 @@ label importSemantics
       @M_semanticsEntitiesForUse importedEntities ;
       [ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?* ?importedEntities] ;
       foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-        if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
+        if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
           [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
         end if ;
       end foreach ;
@@ -1010,7 +1010,7 @@ label importSemantics
       @M_semanticsEntitiesForUse importedEntities ;
       [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?* ?*] ;
       foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
-        if not [ioComponentSemanticsEntitiesMap hasKey ![entityName value]] then
+        if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
           [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
         end if ;
       end foreach ;
@@ -1052,7 +1052,7 @@ rule <semantics_declaration>
   ;
 #--- Inserer dans la map des routines utilisables, -------------------------
 #    or verifier la coherence de la signature
- if [ioComponentSemanticsEntitiesMap hasKey ![routineName value]] then
+ if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
     @L_EXsignature listeDeTypesPrecedenteDeclaration ;
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey ! routineName ?entite] ;
@@ -1130,7 +1130,7 @@ label importSemantics
   [!?ioExternActionMap insertKey !routineName !signature !false] ;
 #--- Inserer dans la map des routines utilisables, -------------------------
 #    or verifier la coherence de la signature
- if [ioComponentSemanticsEntitiesMap hasKey ![routineName value]] then
+ if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
     @L_EXsignature listeDeTypesPrecedenteDeclaration ;
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey ! routineName ?entite] ;
@@ -1288,10 +1288,10 @@ label importSemantics
     outAttributeList := attributeList ;
     outMessageMap := messageMap ;
   else
-    error superClassName: "the '@" . [superClassName value] . "' type is not a class"
+    error superClassName: "the '@" . [superClassName string] . "' type is not a class"
      -> outSuperClasses, outAttributeList, outMessageMap ;
   end extract ;
-  outSuperClasses += ![superClassName value] ;
+  outSuperClasses += ![superClassName string] ;
 
   outMessageMap := [@classMessageMap emptyMap] ;
   outSuperClasses := [@stringset emptySet] ;
@@ -1319,8 +1319,8 @@ rule <semantics_declaration>
   @lstring abstractClassName ;
   $type_name$ ? abstractClassName ;
   select
-    if not ([tableEnAvant hasKey ![abstractClassName value]] |
-          [ioComponentSemanticsEntitiesMap hasKey ![abstractClassName value]]) then
+    if not ([tableEnAvant hasKey ![abstractClassName string]] |
+          [ioComponentSemanticsEntitiesMap hasKey ![abstractClassName string]]) then
       @AC_galgasType t := [@typeGalgasUndefinedClassType new !abstractClassName] ;
       [!?tableEnAvant insertKey !abstractClassName !t] ;
     end if ;
@@ -1369,7 +1369,7 @@ rule <semantics_declaration>
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![messageName value]] then
+      if not [inheritedMessageMap hasKey ![messageName string]] then
         [!?messageMapForHeirs insertKey !messageName] ;
       end if ; 
       [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ;
@@ -1418,8 +1418,8 @@ rule <semantics_declaration>
     end repeat ;
   #--- Verify that all inherited messages are defined
     foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
-      if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
-        error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
+      if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
+        error here : "the message '" . [nomMessageAbstrait string] . "' is not defined" ;
       end if ;
   end foreach ;
   #--- Inserer dans la map des classes utilisables
@@ -1460,8 +1460,8 @@ label importSemantics
   @lstring abstractClassName ;
   $type_name$ ? abstractClassName ;
   select
-    if not ([tableEnAvant hasKey ![abstractClassName value]] |
-            [ioComponentSemanticsEntitiesMap hasKey ![abstractClassName value]]) then
+    if not ([tableEnAvant hasKey ![abstractClassName string]] |
+            [ioComponentSemanticsEntitiesMap hasKey ![abstractClassName string]]) then
       @AC_galgasType t := [@typeGalgasUndefinedClassType new !abstractClassName] ;
       [!?tableEnAvant insertKey !abstractClassName !t] ;
     end if ;
@@ -1518,7 +1518,7 @@ label importSemantics
       @lstring messageText ;
       $literal_string$ ? messageText ;
     #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![messageName value]] then
+      if not [inheritedMessageMap hasKey ![messageName string]] then
         [!?messageMapForHeirs insertKey !messageName] ;
       end if ; 
       [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ;
@@ -1568,8 +1568,8 @@ label importSemantics
     end repeat ;
   #--- Verify that all inherited messages are defined
     foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
-      if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
-        error here : "the message '" .  [nomMessageAbstrait value] . "' is not defined" ;
+      if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
+        error here : "the message '" .  [nomMessageAbstrait string] . "' is not defined" ;
       end if ;
   end foreach ;
   #--- Inserer dans la map des classes utilisables
@@ -1608,7 +1608,7 @@ rule <semantics_declaration>
   @lstring concreteClassName ;
   $type_name$ ? concreteClassName ;
 #--- Verifier que cette classe n'a pas ete predeclaree
-  if [tableEnAvant hasKey ![concreteClassName value]] then
+  if [tableEnAvant hasKey ![concreteClassName string]] then
     error concreteClassName : "a non abstract class cannot be predeclared" ; 
   end if ;
 #--- Super class
@@ -1696,7 +1696,7 @@ rule <semantics_declaration>
     @lstring messageText ;
     $literal_string$ ? messageText ;
   #--- Entrer le message dans la map
-    if not [inheritedMessageMap hasKey ![messageName value]] then
+    if not [inheritedMessageMap hasKey ![messageName string]] then
       [!?messageMapForHeirs insertKey !messageName] ;
     end if ; 
     [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ; 
@@ -1721,8 +1721,8 @@ rule <semantics_declaration>
   end repeat ;
 #--- Verify that all inherited messages are defined
   foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
-    if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
-      error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
+    if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
+      error here : "the message '" . [nomMessageAbstrait string] . "' is not defined" ;
     end if ;
   end foreach ;
 #--- Insertion dans la tables des classes utilisables
@@ -1760,7 +1760,7 @@ label importSemantics
   @lstring concreteClassName ;
   $type_name$ ? concreteClassName ;
 #--- Verifier que cette classe n'a pas ete predeclaree
-  if [tableEnAvant hasKey ![concreteClassName value]] then
+  if [tableEnAvant hasKey ![concreteClassName string]] then
     error concreteClassName : "a non abstract class cannot be predeclared" ; 
   end if ;
 #--- Super class
@@ -1793,7 +1793,7 @@ label importSemantics
   @typeListModel attributeList [ emptyList] ;
   @classMessageMap messageMap [emptyMap] ;
   @stringset superClasses [emptySet] ;
-  if [superClassName value] != "" then
+  if [superClassName string] != "" then
     @TypeModel type ;
     [ioModelMap searchKey !superClassName ?type] ;
     extract type :
@@ -1802,10 +1802,10 @@ label importSemantics
       attributeList := kAttributeList ;
       messageMap := kMessageMap ;
     else
-      error superClassName: "the '@" . [superClassName value] . "' type is not a class"
+      error superClassName: "the '@" . [superClassName string] . "' type is not a class"
        -> superClasses, attributeList, messageMap ;
     end extract ;
-    superClasses += ![superClassName value] ;
+    superClasses += ![superClassName string] ;
   end if ;
   ${$ ;
 #--- Check super class name
@@ -1873,7 +1873,7 @@ label importSemantics
     @lstring messageText ;
     $literal_string$ ?messageText ;
   #--- Entrer le message dans la map
-    if not [inheritedMessageMap hasKey ![messageName value]] then
+    if not [inheritedMessageMap hasKey ![messageName string]] then
       [!?messageMapForHeirs insertKey !messageName] ;
     end if ; 
     [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ; 
@@ -1899,8 +1899,8 @@ label importSemantics
   end repeat ;
 #--- Verify that all inherited messages are defined
   foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
-    if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait value]] then
-      error here : "the message '" . [nomMessageAbstrait value] . "' is not defined" ;
+    if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
+      error here : "the message '" . [nomMessageAbstrait string] . "' is not defined" ;
     end if ;
   end foreach ;
 #--- Insertion dans la tables des classes utilisables
@@ -2688,10 +2688,10 @@ rule <parse_parameters_list>
       listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
       @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
       outExpressionList += !e ;
-      if [exclusiveVariables hasKey ![nomArgument value]] then
+      if [exclusiveVariables hasKey ![nomArgument string]] then
         error nomArgument: "this object is already named as input or output/input effectif argument of current instruction" ;
       else
-         exclusiveVariables += ![nomArgument value] ;
+         exclusiveVariables += ![nomArgument string] ;
       end if ;
     end select ;
   while
@@ -2705,10 +2705,10 @@ rule <parse_parameters_list>
     listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
     @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
     outExpressionList += !e ;
-      if [exclusiveVariables hasKey ![nomArgument value]] then
+      if [exclusiveVariables hasKey ![nomArgument string]] then
         error nomArgument: "this object is already named as input or output/input effectif argument of current instruction" ;
       else
-         exclusiveVariables += ![nomArgument value] ;
+         exclusiveVariables += ![nomArgument string] ;
       end if ;
   end repeat ;
 end rule ;
@@ -2770,10 +2770,10 @@ rule <semantic_instruction>
   @metamodelPropertyKind kind ;
   @lstring typeName ;
   [ioPropertyMap searchKey !calledPropertyName ?kind ?typeName] ;
-  if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName value]] then
+  if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName string]] then
     error calledPropertyName: "this property has been already initialized" ;
   else
-    ioConstraintPropertyDefinitionSet += ![calledPropertyName value] ;
+    ioConstraintPropertyDefinitionSet += ![calledPropertyName string] ;
   end if ;
 #--- Effective parameters
   @L_lstringList parameterList [emptyList] ;
@@ -2794,16 +2794,16 @@ rule <semantic_instruction>
     $)$ ;
   end select ;
 #--- Check parameter type list
-  if [ioCallInstructionSharedPropertySignatureMap hasKey ![calledPropertyName value]] then
+  if [ioCallInstructionSharedPropertySignatureMap hasKey ![calledPropertyName string]] then
     @sharedPropertyList previousParameterTypeList ;
     @location previousParameterTypeListLocation ;
     [ioCallInstructionSharedPropertySignatureMap searchKey !calledPropertyName ?previousParameterTypeList ?previousParameterTypeListLocation] ;
     if [previousParameterTypeList length] == [parameterTypeList length] then
       foreach previousParameterTypeList (??@lstring kPreviousTypeName ??*),
               parameterTypeList (??@lstring kCurrentTypeName ??@lstring kCurrentPropertyName) :
-        if [kPreviousTypeName value] != [kCurrentTypeName value] then
-          error kCurrentPropertyName: "this shared property has '@" . [kCurrentTypeName value]
-          . "' type, while a previous call has named an attribute of type '@" . [kPreviousTypeName value] . "'" ;
+        if [kPreviousTypeName string] != [kCurrentTypeName string] then
+          error kCurrentPropertyName: "this shared property has '@" . [kCurrentTypeName string]
+          . "' type, while a previous call has named an attribute of type '@" . [kPreviousTypeName string] . "'" ;
         end if ;
       end foreach ;
     else
@@ -2917,8 +2917,8 @@ rule <extract_instruction>
                 ?*)
              error nomClasse : messageGalgasType ;
 #--- Verify class is an heir of variable type
-  if not [tableDesClassesAncetres hasKey ![nomTypeSource value]] then
-    error nomClasse : "This class does not inherit from '@" . [nomTypeSource value] . "'" ;
+  if not [tableDesClassesAncetres hasKey ![nomTypeSource string]] then
+    error nomClasse : "This class does not inherit from '@" . [nomTypeSource string] . "'" ;
   end if ;
 #--- Arguments
   @L_assignedVariables listeAffectationParametresEffectifs ;
@@ -3003,8 +3003,8 @@ rule <extract_instruction>
                    ?*)
               error nomType1 : messageGalgasType ;
       #--- Verify class is an heir of variable type
-        if not [tableDesClassesAncetresType1 hasKey ![nomTypeSource value]] then
-          error nomType1 : "This class does not inherit from '@" . [nomTypeSource value] . "'" ;
+        if not [tableDesClassesAncetresType1 hasKey ![nomTypeSource string]] then
+          error nomType1 : "This class does not inherit from '@" . [nomTypeSource string] . "'" ;
         end if ;
       #--- Arguments du type 1
         $($ ;
@@ -3969,9 +3969,9 @@ rule <parse_match_case>
   end if ;
 #--- Verify class is an heir of variable type
   if inIsEnumeration then
-    error outTypeName : "a constant of '@" . [inTypeName value] . "' enumeration type is expected here" ;
-  elsif not [tableDesClassesAncetresType1 hasKey ![inTypeName value]] then
-    error outTypeName : "This type does not inherit from '" . [inTypeName value] . "'" ;
+    error outTypeName : "a constant of '@" . [inTypeName string] . "' enumeration type is expected here" ;
+  elsif not [tableDesClassesAncetresType1 hasKey ![inTypeName string]] then
+    error outTypeName : "This type does not inherit from '" . [inTypeName string] . "'" ;
   end if ;
 #--- Arguments
   <parse_effective_input_parameters_list>
@@ -3999,7 +3999,7 @@ rule <parse_match_case>
   if inIsEnumeration then
     [inEnumMessageMap searchKey !outEnumConstantName] ;
   else
-    error outEnumConstantName : "a class that inherit from '@" . [inTypeName value] . "' abstract class is expected here" ;
+    error outEnumConstantName : "a class that inherit from '@" . [inTypeName string] . "' abstract class is expected here" ;
   end if ;
 end rule ;
 
@@ -4268,8 +4268,8 @@ rule <semantics_declaration>
   $type_name$ ? mapTypeName ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey ![mapTypeName value]]
-         | [ioComponentSemanticsEntitiesMap hasKey ![mapTypeName value]]) then
+    if not ([tableEnAvant hasKey ![mapTypeName string]]
+         | [ioComponentSemanticsEntitiesMap hasKey ![mapTypeName string]]) then
       @AC_galgasType t := [@typeGalgasUndefinedMapType new !mapTypeName] ;
       [!?tableEnAvant insertKey !mapTypeName !t] ;
     end if ;
@@ -4291,14 +4291,14 @@ rule <semantics_declaration>
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      insertMethodList += !nomMethode ![errorMessage value] !true ; # Last parameter has any value
+      insertMethodList += !nomMethode ![errorMessage string] !true ; # Last parameter has any value
     while 
       $search$ ;
       @lstring nomMethode ;
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      searchMethodList += !nomMethode ![errorMessage value] !true ; # Last parameter has any value
+      searchMethodList += !nomMethode ![errorMessage string] !true ; # Last parameter has any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -4370,7 +4370,7 @@ rule <semantics_declaration>
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+      @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
     foreach searchMethodList (??@lstring kKey ...) :
@@ -4388,7 +4388,7 @@ rule <semantics_declaration>
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+      @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
   #--- Insertion dans la map des entites utilisables
@@ -4454,9 +4454,9 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
-      insertMethodList += !methodName ![errorMessage value] !false ;
+      insertMethodList += !methodName ![errorMessage string] !false ;
    #-- Insert And Get Index Method
-      if [getIndexMethodName value] != "" then
+      if [getIndexMethodName string] != "" then
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
@@ -4464,7 +4464,7 @@ rule <semantics_declaration>
           getIndexMethodSignature += !kAttributType !inPassingMode ;      
         end foreach ;
         [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        insertMethodList += !getIndexMethodName ![errorMessage value] !true ;
+        insertMethodList += !getIndexMethodName ![errorMessage string] !true ;
       end if ;
     while
       $search$ ;
@@ -4481,9 +4481,9 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
-      searchMethodList += !methodName ![errorMessage value] !false ;
+      searchMethodList += !methodName ![errorMessage string] !false ;
     #--- Insert 'Get Index' search method in modifier map (if any)
-      if [getIndexMethodName value] != "" then
+      if [getIndexMethodName string] != "" then
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
@@ -4491,7 +4491,7 @@ rule <semantics_declaration>
          getIndexMethodSignature += !kAttributType !outPassingMode ;      
         end foreach ;
         [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        searchMethodList += !getIndexMethodName ![errorMessage value] !true ;
+        searchMethodList += !getIndexMethodName ![errorMessage string] !true ;
       end if ;
     end repeat ;
   #--- Insertion dans la map des entites utilisables
@@ -4526,7 +4526,7 @@ label importSemantics
   $type_name$ ? mapTypeName ;
   select
     $;$ ;
-    if not([tableEnAvant hasKey ![mapTypeName value]] | [ioComponentSemanticsEntitiesMap hasKey ![mapTypeName value]]) then
+    if not([tableEnAvant hasKey ![mapTypeName string]] | [ioComponentSemanticsEntitiesMap hasKey ![mapTypeName string]]) then
       @AC_galgasType t := [@typeGalgasUndefinedMapType new !mapTypeName] ;
       [!?tableEnAvant insertKey !mapTypeName !t] ;
     end if ;
@@ -4547,14 +4547,14 @@ label importSemantics
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      insertMethodList += !nomMethode ![errorMessage value] !true ; #last parameter can have any value
+      insertMethodList += !nomMethode ![errorMessage string] !true ; #last parameter can have any value
     while 
       $search$ ;
       @lstring nomMethode ;
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      searchMethodList += !nomMethode ![errorMessage value] !true ; #last parameter can have any value
+      searchMethodList += !nomMethode ![errorMessage string] !true ; #last parameter can have any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -4626,7 +4626,7 @@ label importSemantics
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+      @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
     foreach searchMethodList (??@lstring kKey ...) :
@@ -4644,7 +4644,7 @@ label importSemantics
       foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
-      @lstring insertKeyAndGetIndexName [new ![kKey value] . "GetIndex" ![kKey location]] ;
+      @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
   #--- Insertion dans la map des entites utilisables
@@ -4700,7 +4700,7 @@ label importSemantics
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
     #--- Enter 'GetIndex' insert method in modifier map (if any)
-      if [getIndexMethodName value] != "" then
+      if [getIndexMethodName string] != "" then
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
@@ -4723,7 +4723,7 @@ label importSemantics
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
     #--- Enter 'Get Index' search method in modifier map (if any)
-      if [getIndexMethodName value] != "" then
+      if [getIndexMethodName string] != "" then
         @L_EXsignature getIndexMethodSignature := [@L_EXsignature emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ; # Key
         getIndexMethodSignature += !luintType !outPassingMode ; # Returned Index
@@ -4790,8 +4790,8 @@ rule <message_pattern>
     select
       @lstring messageText ;
       $literal_string$ ? messageText ;
-      if [messageText value] != "" then
-        outMessageList += ![messageText value] ;
+      if [messageText string] != "" then
+        outMessageList += ![messageText string] ;
       end if ;
     or
       $*$ ;
@@ -4821,7 +4821,7 @@ rule <semantics_declaration>
   $type_name$ ? listTypeName ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey ![listTypeName value]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName value]]) then
+    if not ([tableEnAvant hasKey ![listTypeName string]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName string]]) then
       @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
       [!?tableEnAvant insertKey ! listTypeName !t] ;
     end if ;
@@ -4862,7 +4862,7 @@ label importSemantics
   $type_name$ ? listTypeName ;
   select
     $;$ ;
-    if not ([tableEnAvant hasKey ![listTypeName value]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName value]]) then
+    if not ([tableEnAvant hasKey ![listTypeName string]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName string]]) then
       @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
       [!?tableEnAvant insertKey ! listTypeName !t] ;
     end if ;
@@ -5216,7 +5216,7 @@ rule <formal_argument_type>
   !@lstring outGalgasTypeName 
 :
   $type_name$ ? outGalgasTypeName ;
-  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName value]] then
+  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName string]] then
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
@@ -5239,7 +5239,7 @@ rule <formal_argument_type>
 :
   $list$ ;
   $type_name$ ? outGalgasTypeName ;
-  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName value]] then
+  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName string]] then
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
@@ -5264,7 +5264,7 @@ rule <formal_argument_type>
 :
   $map$ ;
   $type_name$ ? outGalgasTypeName ;
-  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName value]] then
+  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName string]] then
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
@@ -5290,7 +5290,7 @@ rule <formal_argument_type>
   $abstract$ ;
   $class$ ;
   $identifier$ ? outGalgasTypeName ;
-  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName value]] then
+  if [ioComponentSemanticsEntitiesMap hasKey ![outGalgasTypeName string]] then
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
@@ -5422,7 +5422,7 @@ rule <semantics_declaration>
   #--- Build message string list
     @L_lstringList messageStringList [emptyList] ;
     foreach constantMap (??@lstring constantName) :
-      @lstring name := [@lstring new ![constantName value] !here] ; #--- For best error location
+      @lstring name := [@lstring new ![constantName string] !here] ; #--- For best error location
       @lstring cstString ;
       [cstMessageStringMap searchKey !name ?cstString] ;
       messageStringList += !cstString ;
