@@ -423,11 +423,6 @@ abstract class @AC_galgasType {
        "variables of this type cannot be enumerated by in 'foreach' instruction" -> outForeachList, outStyle ;
   end reader ;
 
-#--- By default, object does not accept to be a key for map
-  reader acceptToBeKeyForMap :
-    error here : "this type cannot be a key for map" ;
-  end reader ;
-
 #--- By default, object does not accept modifier call
   reader handleModifierCall
     ??@lstring unused inModifiedObjectName
@@ -696,7 +691,7 @@ class @typeGalgas_singleEntity extends @AC_galgasType {
   @stringset mSuperEntitiesSet ;
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := [mEntityName value] ;
+    outTypeName := [mEntityName string] ;
   end reader ;
 
 #--- Error message
@@ -709,7 +704,7 @@ class @typeGalgas_multipleEntity extends @AC_galgasType {
   @lstring mEntityName ;
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := "_listOf_" . [mEntityName  value] ;
+    outTypeName := "_listOf_" . [mEntityName  string] ;
   end reader ;
 
 #--- Error message
@@ -850,9 +845,9 @@ class @typeGalgas_sint extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "min" then
+    if [inClassMethodName string] == "min" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName value] == "max" then
+    elsif [inClassMethodName string] == "max" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -888,9 +883,9 @@ class @typeGalgas_sint64 extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "min" then
+    if [inClassMethodName string] == "min" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName value] == "max" then
+    elsif [inClassMethodName string] == "max" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -926,7 +921,7 @@ class @typeGalgas_uint extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "max" then
+    if [inClassMethodName string] == "max" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -962,7 +957,7 @@ class @typeGalgas_uint64 extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "max" then
+    if [inClassMethodName string] == "max" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -1043,19 +1038,32 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "new" then
+    if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      @AC_galgasType t := [@typeGalgas_string new] ;
-      outAccessorTypesList += !t ![@lstring new !""! here] ;
-      t := [@typeGalgas_location new] ;
-      outAccessorTypesList += !t ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_location new] ![@lstring new !""! here] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end reader ;
 
-#--- This class accepts to be a key for map
-  override reader acceptToBeKeyForMap :
+#--- Modifiers
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setString" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setLocation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "variables of this type do not support modifier call"
+       -> outModifierSignature ;
+    end if ;
   end reader ;
 
 #--- Class accepts to be silently converted to @location
@@ -1078,7 +1086,7 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "new" then
+    if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @AC_galgasType t := [@typeGalgas_char new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
@@ -1086,6 +1094,25 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
+#--- Modifiers
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setChar" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_char new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setLocation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "variables of this type do not support modifier call"
+       -> outModifierSignature ;
     end if ;
   end reader ;
 
@@ -1109,7 +1136,7 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "new" then
+    if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @AC_galgasType t := [@typeGalgas_bool new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
@@ -1120,6 +1147,24 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
     end if ;
   end reader ;
 
+#--- Modifiers
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setBool" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_bool new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setLocation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "variables of this type do not support modifier call"
+       -> outModifierSignature ;
+    end if ;
+  end reader ;
 #--- Class accepts to be silently converted to @location
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
@@ -1140,7 +1185,7 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "new" then
+    if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @AC_galgasType t := [@typeGalgas_uint new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
@@ -1151,10 +1196,24 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
     end if ;
   end reader ;
 
-#--- This class accepts to be a key for map
-  override reader acceptToBeKeyForMap :
+#--- Modifiers
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setUint" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setLocation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "variables of this type do not support modifier call"
+       -> outModifierSignature ;
+    end if ;
   end reader ;
-
 #--- Class accepts to be silently converted to @location
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
@@ -1175,9 +1234,9 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "new" then
+    if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      @AC_galgasType t := [@typeGalgas_uint new] ;
+      @AC_galgasType t := [@typeGalgas_uint64 new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
@@ -1186,10 +1245,24 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
     end if ;
   end reader ;
 
-#--- This class accepts to be a key for map
-  override reader acceptToBeKeyForMap :
+#--- Modifiers
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setUint64" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setLocation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "variables of this type do not support modifier call"
+       -> outModifierSignature ;
+    end if ;
   end reader ;
-
 #--- Class accepts to be silently converted to @location
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
@@ -1210,7 +1283,7 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "new" then
+    if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @AC_galgasType t := [@typeGalgas_sint new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
@@ -1221,10 +1294,24 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
     end if ;
   end reader ;
 
-#--- This class accepts to be a key for map
-  override reader acceptToBeKeyForMap :
+#--- Modifiers
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setSint" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_sint new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setLocation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "variables of this type do not support modifier call"
+       -> outModifierSignature ;
+    end if ;
   end reader ;
-
 #--- Class accepts to be silently converted to @location
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
@@ -1245,9 +1332,9 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "new" then
+    if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      @AC_galgasType t := [@typeGalgas_sint new] ;
+      @AC_galgasType t := [@typeGalgas_sint64 new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
       t := [@typeGalgas_location new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
@@ -1256,10 +1343,24 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
     end if ;
   end reader ;
 
-#--- This class accepts to be a key for map
-  override reader acceptToBeKeyForMap :
+#--- Modifiers
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setSint64" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_sint64 new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setLocation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "variables of this type do not support modifier call"
+       -> outModifierSignature ;
+    end if ;
   end reader ;
-
 #--- Class accepts to be silently converted to @location
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
@@ -1280,7 +1381,7 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "new" then
+    if [inClassMethodName string] == "new" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @AC_galgasType t := [@typeGalgas_double new] ;
       outAccessorTypesList += !t ![@lstring new !"" !here] ;
@@ -1291,6 +1392,24 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
     end if ;
   end reader ;
 
+#--- Modifiers
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setDouble" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_double new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setLocation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "variables of this type do not support modifier call"
+       -> outModifierSignature ;
+    end if ;
+  end reader ;
 #--- Class accepts to be silently converted to @location
   override reader checkAbilityToBeSilentlyConvertedToLocation :
   end reader ;
@@ -1315,13 +1434,13 @@ class @typeGalgas_stringset extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "emptySet" then
+    if [inClassMethodName string] == "emptySet" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName value] == "setWithString" then
+    elsif [inClassMethodName string] == "setWithString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @AC_galgasType t := [@typeGalgas_string new] ;
       outAccessorTypesList += !t ![@lstring new !""! here] ;
-    elsif [inClassMethodName value] == "empty" then
+    elsif [inClassMethodName string] == "empty" then
       error inClassMethodName : "in GALGAS 1.3.0 and later, use 'emptySet' constructor instead of 'empty' constructor" -> outAccessorTypesList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -1394,7 +1513,7 @@ class @typeGalgasUndefinedExternType extends @AC_galgasType {
 
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := [mGalgasClassName value] ;
+    outTypeName := [mGalgasClassName string] ;
   end reader ;
 
 #--- Message
@@ -1594,8 +1713,8 @@ routine checkSignature_ForGrammarComponent
         error kType2 : "Prototype has " . [passingMode1 formalArgumentMessage] .
                        ", and " . [passingMode1 formalArgumentMessage] . " has been found" ;
       end if ;
-      if [kType1 value] != [kType2 value] then
-        error kType2 :  "I was expecting the '@" . [kType1 value] . "' type, I have got the '@" . [kType2 value] . "' type" ;
+      if [kType1 string] != [kType2 string] then
+        error kType2 :  "I was expecting the '@" . [kType1 string] . "' type, I have got the '@" . [kType2 string] . "' type" ;
       end if ;
     end foreach ;
   end if ;
@@ -1840,7 +1959,7 @@ class @typeGalgasUndefinedListType extends @AC_galgasType {
 
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := [mListTypeName value] ;
+    outTypeName := [mListTypeName string] ;
   end reader ;
 
   message messageGalgasType "an undefined list type" ;
@@ -1880,9 +1999,9 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "emptyList" then
+    if [inClassMethodName string] == "emptyList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName value] == "empty" then
+    elsif [inClassMethodName string] == "empty" then
       error inClassMethodName : "in GALGAS 1.3.0 and later, use 'emptyList' constructor instead of 'empty' constructor" -> outAccessorTypesList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -1916,7 +2035,7 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
 
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := [mMapTypeName value] ;
+    outTypeName := [mMapTypeName string] ;
   end reader ;
 
   message messageGalgasType "an undefined map type" ;
@@ -1987,9 +2106,9 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName value] == "emptyMap" then
+    if [inClassMethodName string] == "emptyMap" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName value] == "empty" then
+    elsif [inClassMethodName string] == "empty" then
       error inClassMethodName : "in GALGAS 1.3.0 and later, use 'emptyMap' constructor instead of 'empty' constructor" -> outAccessorTypesList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -2010,7 +2129,7 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType {
 
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := [mClassTypeName value] ;
+    outTypeName := [mClassTypeName string] ;
   end reader ;
 
   message messageGalgasType "an undefined class type" ;
@@ -2053,7 +2172,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
   :
     if mClassIsAbstract then
       error inClassMethodName : "an abstract class cannot be instancied" -> outAccessorTypesList ;
-    elsif [inClassMethodName value] == "new" then
+    elsif [inClassMethodName string] == "new" then
       outAccessorTypesList := mNonExternAttributesList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -2136,19 +2255,19 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
-    if [inModifierName value] == "insertKey" then
+    if [inModifierName string] == "insertKey" then
       outModifierSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
       t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-    elsif [inModifierName value] == "insertKeyAndGetIndex" then
+    elsif [inModifierName string] == "insertKeyAndGetIndex" then
       outModifierSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
       t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_mapIndexInInstruction new ![inModifiedObjectName value]] ;
+      t := [@typeGalgas_mapIndexInInstruction new ![inModifiedObjectName string]] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentOut] ;
     else
       error inModifierName : "variables of this type only accept 'insertKey' and 'insertKey' modifier calls"
@@ -2163,19 +2282,19 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
-    if [inReaderName value] == "searchKey" then
+    if [inReaderName string] == "searchKey" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
       t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
-    elsif [inReaderName value] == "searchKeyAndGetIndex" then
+    elsif [inReaderName string] == "searchKeyAndGetIndex" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
       t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
-      t := [@typeGalgas_mapIndexInInstruction new ![inReadObjectName value]] ;
+      t := [@typeGalgas_mapIndexInInstruction new ![inReadObjectName string]] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
     else
       error inReadObjectName :
@@ -2214,7 +2333,7 @@ class @typeGalgas_enum extends @AC_galgasType {
 
 #--- Get type name
   override reader getTypeName !@string outTypeName :
-    outTypeName := [mEnumTypeName value] ;
+    outTypeName := [mEnumTypeName string] ;
   end reader ;
 
 #--- Class accepts class method with constant names
@@ -2262,47 +2381,46 @@ routine checkAssignmentTypesCompatibility
   when @typeGalgas_location () :: @typeGalgas_location () :
 
   when @typeGalgasUndefinedListType (??@lstring attNomType1) :: @typeGalgasUndefinedListType (??@lstring attNomType2) :
-    if [attNomType1 value] != [attNomType2 value] then
-      error inErrorLocation : "I was expecting the list type '@" . [attNomType1 value] .
-                                "', I have got the list type '@" . [attNomType2 value] . "\"" ;
+    if [attNomType1 string] != [attNomType2 string] then
+      error inErrorLocation : "I was expecting the list type '@" . [attNomType1 string] .
+                                "', I have got the list type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedMapType (??@lstring attNomType1) :: @typeGalgasUndefinedMapType (??@lstring attNomType2) :
-    if [attNomType1 value] != [attNomType2 value] then
-      error inErrorLocation : "I was expecting the map type '@" . [attNomType1 value] .
-                              "', I have got the map type '@" . [attNomType2 value] . "\"" ;
+    if [attNomType1 string] != [attNomType2 string] then
+      error inErrorLocation : "I was expecting the map type '@" . [attNomType1 string] .
+                              "', I have got the map type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedClassType (??@lstring kNomType1)
     :: @typeGalgasClassType (??@lstring kNomType2 ??* ??* ??@typeSuperClassesMap kAncestorClassesMap ...) :
-    @bool accept := [kNomType1 value] == [kNomType2 value] ;
+    @bool accept := [kNomType1 string] == [kNomType2 string] ;
     if (not accept) & inAcceptPolymorphism then
-      accept := [kAncestorClassesMap hasKey ![kNomType1 value]] ;
+      accept := [kAncestorClassesMap hasKey ![kNomType1 string]] ;
     end if ;
     if not accept then
-      error inErrorLocation : "I was expecting the class type '@" . [kNomType1 value] .
-                              "', I have got the class type '@" . [kNomType2 value] . "\"" ;
+      error inErrorLocation : "I was expecting the class type '@" . [kNomType1 string] .
+                              "', I have got the class type '@" . [kNomType2 string] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedClassType (??@lstring attNomType1) :: @typeGalgasUndefinedClassType (??@lstring attNomType2) :
-    @bool accept := [attNomType1 value] != [attNomType2 value] ;
-    if [attNomType1 value] != [attNomType2 value] then
-      error inErrorLocation : "I was expecting the class type '@" . [attNomType1 value] .
-                              "', I have got the class type '@" . [attNomType2 value] . "\"" ;
+    if [attNomType1 string] != [attNomType2 string] then
+      error inErrorLocation : "I was expecting the class type '@" . [attNomType1 string] .
+                              "', I have got the class type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedExternType (??@lstring attNomType1 ??@lstring attCppClassName1)
     :: @typeGalgasUndefinedExternType (??@lstring attNomType2 ??@lstring attCppClassName2) :
-    if [attNomType1 value] != [attNomType2 value] then
-      error inErrorLocation : "I was expecting an extern variable of extern '@" . [attNomType1 value] .
-                               "' type variable, and I got an extern '@" . [attNomType2 value] . "' type variable" ;
+    if [attNomType1 string] != [attNomType2 string] then
+      error inErrorLocation : "I was expecting an extern variable of extern '@" . [attNomType1 string] .
+                               "' type variable, and I got an extern '@" . [attNomType2 string] . "' type variable" ;
     end if ;
 
   when @typeGalgas_enum (??@lstring aTypeName1 ??* ??*)
     :: @typeGalgas_enum (??@lstring aTypeName2 ??* ??*) :
-    if [aTypeName1 value] != [aTypeName2 value] then
-      error inErrorLocation : "I was expecting an enum variable of  '@" . [aTypeName1 value] .
-                                "' type variable, and I got an enum '@" . [aTypeName2 value] . "' type variable" ;
+    if [aTypeName1 string] != [aTypeName2 string] then
+      error inErrorLocation : "I was expecting an enum variable of  '@" . [aTypeName1 string] .
+                                "' type variable, and I got an enum '@" . [aTypeName2 string] . "' type variable" ;
     end if ;
 
   when @typeGalgas_entityInInstruction (??@string kTypeName1)
@@ -2483,34 +2601,34 @@ routine handleReaderCall
   !@typeListeAttributsSemantiques outAccessorTypesList
   !@AC_galgasType outReturnedType
 :
-  if [inMethodName value] == "description" then
+  if [inMethodName string] == "description" then
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   else
     extract inReceiverType :
     when @typeGalgas_string () ->
-     if [inMethodName value] == "fileExists" then
+     if [inMethodName string] == "fileExists" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inMethodName value] == "pathExtension" then
+      elsif [inMethodName string] == "pathExtension" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "lastPathComponent" then
+      elsif [inMethodName string] == "lastPathComponent" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "stringByDeletingPathExtension" then
+      elsif [inMethodName string] == "stringByDeletingPathExtension" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "stringByCapitalizingFirstCharacter" then
+      elsif [inMethodName string] == "stringByCapitalizingFirstCharacter" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "firstCharacterOrNul" then
+      elsif [inMethodName string] == "firstCharacterOrNul" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_char new] ;
-      elsif [inMethodName value] == "stringByDeletingLastPathComponent" then
+      elsif [inMethodName string] == "stringByDeletingLastPathComponent" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "stringByReplacingStringByString" then
+      elsif [inMethodName string] == "stringByReplacingStringByString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
         outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
@@ -2520,7 +2638,7 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_location () ->
-      if [inMethodName value] == "locationString" then
+      if [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2528,16 +2646,16 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_uint () ->
-      if [inMethodName value] == "sint" then
+      if [inMethodName string] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inMethodName value] == "uint64" then
+      elsif [inMethodName string] == "uint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inMethodName value] == "sint64" then
+      elsif [inMethodName string] == "sint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint64 new] ;
-      elsif [inMethodName value] == "string" then
+      elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2545,16 +2663,16 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_uint64 () ->
-      if [inMethodName value] == "sint64" then
+      if [inMethodName string] == "sint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint64 new] ;
-      elsif [inMethodName value] == "sint" then
+      elsif [inMethodName string] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inMethodName value] == "uint" then
+      elsif [inMethodName string] == "uint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inMethodName value] == "string" then
+      elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2562,16 +2680,16 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_sint () ->
-      if [inMethodName value] == "uint" then
+      if [inMethodName string] == "uint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inMethodName value] == "uint64" then
+      elsif [inMethodName string] == "uint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inMethodName value] == "sint64" then
+      elsif [inMethodName string] == "sint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint64 new] ;
-      elsif [inMethodName value] == "string" then
+      elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2579,16 +2697,16 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_sint64 () ->
-      if [inMethodName value] == "uint64" then
+      if [inMethodName string] == "uint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inMethodName value] == "uint" then
+      elsif [inMethodName string] == "uint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inMethodName value] == "sint" then
+      elsif [inMethodName string] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inMethodName value] == "string" then
+      elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2596,13 +2714,17 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_lstring () ->
-      if [inMethodName value] == "value" then
+      if [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "location" then
+      elsif [inMethodName string] == "value" then
+        warning inMethodName:"in GALGAS 1.4.1 and later, the 'value' reader of @lstring type is deprecated; use 'string' instead" ;
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName value] == "locationString" then
+      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2610,13 +2732,17 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_lchar () ->
-      if [inMethodName value] == "value" then
+      if [inMethodName string] == "char" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_char new] ;
-      elsif [inMethodName value] == "location" then
+      elsif [inMethodName string] == "value" then
+        warning inMethodName:"in GALGAS 1.4.1 and later, the 'value' reader of @lchar type  is deprecated; use 'char' instead" ;
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_char new] ;
+      elsif [inMethodName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName value] == "locationString" then
+      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2624,10 +2750,14 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_lbool () ->
-      if [inMethodName value] == "value" then
+      if [inMethodName string] == "bool" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inMethodName value] == "location" then
+      elsif [inMethodName string] == "value" then
+        warning inMethodName:"in GALGAS 1.4.1 and later, the 'value' reader of @lbool type  is deprecated; use 'bool' instead" ;
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inMethodName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
       else
@@ -2635,13 +2765,17 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_luint ()->
-      if [inMethodName value] == "value" then
+      if [inMethodName string] == "uint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inMethodName value] == "location" then
+      elsif [inMethodName string] == "value" then
+        warning inMethodName:"in GALGAS 1.4.1 and later, the 'value' of @luint type  reader is deprecated; use 'uint' instead" ;
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inMethodName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName value] == "locationString" then
+      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2649,13 +2783,13 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_luint64 ()->
-      if [inMethodName value] == "value" then
+      if [inMethodName string] == "uint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
-      elsif [inMethodName value] == "location" then
+      elsif [inMethodName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName value] == "locationString" then
+      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2663,16 +2797,20 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_lsint () ->
-      if [inMethodName value] == "value" then
+      if [inMethodName string] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inMethodName value] == "string" then
+      elsif [inMethodName string] == "value" then
+        warning inMethodName:"in GALGAS 1.4.1 and later, the 'value' reader of @lsint type  is deprecated; use 'sint' instead" ;
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_sint new] ;
+      elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "location" then
+      elsif [inMethodName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName value] == "locationString" then
+      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2680,16 +2818,16 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_lsint64 () ->
-      if [inMethodName value] == "value" then
+      if [inMethodName string] == "sint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint64 new] ;
-      elsif [inMethodName value] == "string" then
+      elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "location" then
+      elsif [inMethodName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName value] == "locationString" then
+      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2697,16 +2835,20 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_ldouble () ->
-      if [inMethodName value] == "value" then
+      if [inMethodName string] == "double" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_double new] ;
-      elsif [inMethodName value] == "string" then
+      elsif [inMethodName string] == "value" then
+        warning inMethodName:"in GALGAS 1.4.1 and later, the 'value' reader of @ldouble type  is deprecated; use 'double' instead" ;
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_double new] ;
+      elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName value] == "location" then
+      elsif [inMethodName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName value] == "locationString" then
+      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
@@ -2714,7 +2856,7 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgasListType (...) ->
-      if [inMethodName value] == "length" then
+      if [inMethodName string] == "length" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       else
@@ -2722,15 +2864,15 @@ routine handleReaderCall
            "list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgasMapType (...) ->
-      if [inMethodName value] == "hasKey" then
+      if [inMethodName string] == "hasKey" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         @AC_galgasType keyType := [@typeGalgas_string new] ;
         outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inMethodName value] == "count" then
+      elsif [inMethodName string] == "count" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inMethodName value] == "allKeys" then
+      elsif [inMethodName string] == "allKeys" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_stringset new] ;
       else
@@ -2738,12 +2880,12 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgas_stringset () ->
-      if [inMethodName value] == "hasKey" then
+      if [inMethodName string] == "hasKey" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         @AC_galgasType keyType := [@typeGalgas_string new] ;
         outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inMethodName value] == "count" then
+      elsif [inMethodName string] == "count" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       else
@@ -2789,7 +2931,7 @@ routine importSemanticsComponent
   ?!@stringset ioAlreadyImportedMetamodelComponents
   ?@lstring inSemanticsComponentName
 :
-  if not [ioAlreadyImportedSemanticsComponents hasKey ![inSemanticsComponentName value]] then
+  if not [ioAlreadyImportedSemanticsComponents hasKey ![inSemanticsComponentName string]] then
     @ModelMap modelMap ; # The types and classes declared in this component
     @ActionMap actionMap ; # The routines and the extern actions declared in this component 
     @stringset importedSemanticsComponents ; # The other semantics components imported in this component
@@ -2821,18 +2963,18 @@ routine importSemanticsComponent
     end foreach ;
   #--- Add imported types
     foreach modelMap (??@lstring kKey ??@TypeModel kType) :
-      if not [ioModelMap hasKey ![kKey value]] then
+      if not [ioModelMap hasKey ![kKey string]] then
         [!?ioModelMap insertKey !kKey !kType] ;
       end if ;
     end foreach ;
   #--- Add actions
     foreach actionMap (??@lstring kKey ??@L_signature kSignature ??@bool kIsExtern) :
-      if not [ioActionMap hasKey ![kKey value]] then
+      if not [ioActionMap hasKey ![kKey string]] then
         [!?ioActionMap insertKey !kKey !kSignature !kIsExtern] ;
       end if ;
     end foreach ;
   #--- Flag component as imported
-    ioAlreadyImportedSemanticsComponents += ![inSemanticsComponentName value] ;
+    ioAlreadyImportedSemanticsComponents += ![inSemanticsComponentName string] ;
   end if ;
 end routine ;
 
@@ -2843,10 +2985,10 @@ routine buildSuperEntitySet
   ??@lstring inSuperEntityName
   ?!@stringset ioSuperEntitySet
 :
-  if ([inSuperEntityName value] != "")
-    & [inEntityMap hasKey ![inSuperEntityName value]]
-    & not [ioSuperEntitySet hasKey ![inSuperEntityName value]] then
-    ioSuperEntitySet += ![inSuperEntityName value] ;
+  if ([inSuperEntityName string] != "")
+    & [inEntityMap hasKey ![inSuperEntityName string]]
+    & not [ioSuperEntitySet hasKey ![inSuperEntityName string]] then
+    ioSuperEntitySet += ![inSuperEntityName string] ;
     @lstring superEntityName ;
     [inEntityMap searchKey !inSuperEntityName ?* ?* ?* ?superEntityName] ;
     buildSuperEntitySet !inEntityMap !superEntityName !?ioSuperEntitySet ;
@@ -2870,7 +3012,7 @@ routine checkPath
    outLastEntityTypeName := inCurrentEntityName ;
    outKind := [@metamodelPropertyKind  singleReferenceProperty] ;
    foreach inPath (??@lstring kPathElement) :
-     @string entityTypeName := [[kPathElement value] pathExtension] ;
+     @string entityTypeName := [[kPathElement string] pathExtension] ;
      if entityTypeName != "" then
        @stringset superEntitySet [emptySet] ;
        @lstring actualEntityName := [@lstring new !entityTypeName ![kPathElement location]] ;
@@ -2879,9 +3021,9 @@ routine checkPath
         !actualEntityName
         !?superEntitySet
        ;
-       if not [superEntitySet hasKey ![outTypeName value]] then
+       if not [superEntitySet hasKey ![outTypeName string]] then
          error kPathElement: "this entity is not a descendant of '@"
-         . [outTypeName value] . "' entity" ;
+         . [outTypeName string] . "' entity" ;
        end if ;
        outLastEntityTypeName := outTypeName ;
        outTypeName := actualEntityName ;
@@ -2891,7 +3033,7 @@ routine checkPath
        outLastEntityTypeName := outTypeName ;
        [currentMap searchKey !kPathElement ?outKind ?outTypeName] ;
        if outKind != [@metamodelPropertyKind attributeProperty] then
-         if [ioMapEntityMap hasKey ![outTypeName value]] then
+         if [ioMapEntityMap hasKey ![outTypeName string]] then
            @lstring elementEntity ;
            [ioMapEntityMap searchKey !outTypeName ?elementEntity ?* ?*] ;
            [ioEntityMap searchKey !elementEntity ?currentMap ?* ?* ?*] ;
@@ -2911,8 +3053,8 @@ routine computeDescendantSet
   ?!@stringset ioDescendantEntitySet
 :
   foreach inEntityMap (??@lstring kEntityName ??* ??* ??* ??@lstring kSuperEntityName) :
-    if ([kSuperEntityName value] == [inEntityName value]) & not [ioDescendantEntitySet hasKey ![inEntityName value]] then
-      ioDescendantEntitySet += ![kEntityName value] ;
+    if ([kSuperEntityName string] == [inEntityName string]) & not [ioDescendantEntitySet hasKey ![inEntityName string]] then
+      ioDescendantEntitySet += ![kEntityName string] ;
       computeDescendantSet !inEntityMap !kEntityName !?ioDescendantEntitySet ;
     end if ;
   end foreach ;

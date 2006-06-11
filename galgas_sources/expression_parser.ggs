@@ -289,9 +289,9 @@ routine comparison_types_check
   when @typeGalgas_double ()    :: @typeGalgas_double () :
   when @typeGalgas_string ()    :: @typeGalgas_string () :
   when @typeGalgas_enum (??@lstring inTypeName1 ??* ??*) :: @typeGalgas_enum (??@lstring inTypeName2 ??* ??*) :
-    if [inTypeName1 value] != [inTypeName2 value] then
-      error here : "comparison between a '@" . [inTypeName1 value] .
-             "' enumeration and a '@" . [inTypeName2 value] . "' is not valid"  ;
+    if [inTypeName1 string] != [inTypeName2 string] then
+      error here : "comparison between a '@" . [inTypeName1 string] .
+             "' enumeration and a '@" . [inTypeName2 string] . "' is not valid"  ;
     end if ;
   else
     error here : "comparison between " . [inLeftExpressionType messageGalgasType] .
@@ -1187,6 +1187,25 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
+#   F A C T O R    :    a double value                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ?!@M_semanticsEntitiesForUse unused ioEntitiesMap
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap unused ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  @ldouble literalDouble ;
+  $literal_double$ ? literalDouble ?* ;
+  outExpression := [@typeLiteralDoubleExpression new !literalDouble] ;
+  outResultType := [@typeGalgas_double new] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
 #   F A C T O R    :    here                                                   *
 #                                                                              *
 #------------------------------------------------------------------------------*
@@ -1280,17 +1299,17 @@ rule <factor>
     $.$ ;
     @lstring optionName ;
     $identifier$ ? optionName ;
-    if [boolOptionsMap hasKey ![optionName value]] then
+    if [boolOptionsMap hasKey ![optionName string]] then
       outExpression := [@typeBoolOption new !optionComponentName !optionName] ;
       outResultType := [@typeGalgas_bool new] ;
-    elsif [uintOptionsMap hasKey ![optionName value]] then
+    elsif [uintOptionsMap hasKey ![optionName string]] then
       outExpression := [@typeUIntOption new !optionComponentName !optionName] ;
       outResultType := [@typeGalgas_uint new] ;
-    elsif [stringOptionsMap hasKey ![optionName value]] then
+    elsif [stringOptionsMap hasKey ![optionName string]] then
       outExpression := [@typeStringOption new !optionComponentName !optionName] ;
       outResultType := [@typeGalgas_uint new] ;
     else
-      error optionName : "the '" . [optionComponentName value] . "' option component has no '" . [optionName value] . "' option" 
+      error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
         -> outExpression, outResultType ;
     end if ;
   end select ;

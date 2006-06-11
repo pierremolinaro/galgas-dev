@@ -458,6 +458,12 @@ class @typeLiteralCharExpression extends @typeExpression {
  
 #---------------------------------------------------------------------------*
 
+class @typeLiteralDoubleExpression extends @typeExpression {
+  @ldouble mLiteralDouble ;
+}
+ 
+#---------------------------------------------------------------------------*
+
 class @typeHereExpression extends @typeExpression {
 }
  
@@ -741,10 +747,10 @@ routine buildMapWithLocalConstants
   @bool firstOne := true ;
   foreach inLocalDeclarationsList (??@lstring typeNameInDeclaration ??@lstring cstName),
           inSemanticAttributsList (??@AC_galgasType type ??@lstring attributeName) :
-    if [cstName value] != "" then
+    if [cstName string] != "" then
       @string typeName ;
       [type getTypeName ? typeName] ;
-      if [typeNameInDeclaration value] == typeName then
+      if [typeNameInDeclaration string] == typeName then
         @typeCplusPlusName cppName ;
         if (inLocalConstantStyle == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
           cppName := [@typeKeyName new !inLocation] ;
@@ -753,7 +759,7 @@ routine buildMapWithLocalConstants
         end if ;
         [!?ioVariablesMap insertUsedConstInArgument !cstName !type !cppName] ;
       else
-        error typeNameInDeclaration : "I have found the '@" . [typeNameInDeclaration value]
+        error typeNameInDeclaration : "I have found the '@" . [typeNameInDeclaration string]
           . "' type, I was expected the '@" . typeName . "' type" ;
       end if ;
     end if ;

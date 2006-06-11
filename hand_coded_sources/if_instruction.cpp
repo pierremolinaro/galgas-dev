@@ -504,6 +504,36 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeLiteralDoubleExpression::
+generateExpression (AC_OutputStream & ioCppFile) {
+  ioCppFile << "GGS_double (true, "
+            << mLiteralDouble.doubleValue ()
+            << ')' ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralDoubleExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralDoubleExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeConstructorExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_" << mClassName << "::constructor_" << mClassMethodName << " (_inLexique" ;

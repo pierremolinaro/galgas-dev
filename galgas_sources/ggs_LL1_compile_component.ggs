@@ -109,7 +109,7 @@ rule <galgas_component>
   $literal_string$ ? fileName ;
   $;$ ;
 #--- Console message
-  message "------ Compile file '" . [fileName value] . "'\n" ;
+  message "------ Compile file '" . [fileName string] . "'\n" ;
   grammar galgas_LL1_grammar label compileFile in fileName ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse

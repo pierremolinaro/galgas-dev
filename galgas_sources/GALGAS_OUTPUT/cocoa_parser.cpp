@@ -49,21 +49,21 @@ pr_galgas_component_cocoa_parser_70_24_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_gui) ;
   GGS_lstring  var_cas_guiComponentName ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
-  var_cas_guiComponentName.defineAttribute (_inLexique.tokenString, _inLexique) ;
+  var_cas_guiComponentName.defineAttributeFromScanner (_inLexique.tokenString, _inLexique) ;
   GGS_lstring  var_cas_guiKindName ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_literal_5Fstring) ;
-  var_cas_guiKindName.defineAttribute (_inLexique.tokenString, _inLexique) ;
+  var_cas_guiKindName.defineAttributeFromScanner (_inLexique.tokenString, _inLexique) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3A) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_program) ;
   GGS_lstring  var_cas_cliToolName ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_literal_5Fstring) ;
-  var_cas_cliToolName.defineAttribute (_inLexique.tokenString, _inLexique) ;
+  var_cas_cliToolName.defineAttributeFromScanner (_inLexique.tokenString, _inLexique) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1__3B) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_import) ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_grammar) ;
   GGS_lstring  var_cas_grammarName ;
   _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_identifier) ;
-  var_cas_grammarName.defineAttribute (_inLexique.tokenString, _inLexique) ;
+  var_cas_grammarName.defineAttributeFromScanner (_inLexique.tokenString, _inLexique) ;
   GGS_M_grammarComponents  var_cas_grammarComponentsMap ;
   switch (select_cocoa_parser_0 (_inLexique)) {
     case 1 : {
@@ -73,7 +73,7 @@ pr_galgas_component_cocoa_parser_70_24_ (galgas_scanner & _inLexique,
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_in) ;
       GGS_lstring  var_cas_sourceFileName ;
       _inLexique.acceptTerminal (galgas_scanner::galgas_scanner_1_literal_5Fstring) ;
-      var_cas_sourceFileName.defineAttribute (_inLexique.tokenString, _inLexique) ;
+      var_cas_sourceFileName.defineAttributeFromScanner (_inLexique.tokenString, _inLexique) ;
       var_cas_grammarComponentsMap = GGS_M_grammarComponents::constructor_emptyMap (_inLexique COMMA_HERE) ;
       nt_parse_grammar_component_for_importing_ (_inLexique, var_cas_sourceFileName, var_cas_grammarComponentsMap, var_cas_ioMetamodelComponentMap, var_cas_ioConstraintComponentMap) ;
       } break ;

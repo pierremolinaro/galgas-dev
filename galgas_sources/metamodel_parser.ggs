@@ -186,7 +186,7 @@ rule <parse_metamodel>
       if (kKind == [@metamodelPropertyKind singleReferenceProperty]) |
          (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
         [entityMap searchKey !kTypeName ?* ?* ?* ?*] ;
-        multiReferencedEntities += ![kTypeName value] ;
+        multiReferencedEntities += ![kTypeName string] ;
       end if ;
     end foreach ;
   end foreach ;
@@ -198,7 +198,7 @@ rule <parse_metamodel>
     !rootEntityName
   ;
 #--- Add metamodel to metamodel map
-  if not [ioMetamodelComponentMap hasKey ![metamodelName value]] then
+  if not [ioMetamodelComponentMap hasKey ![metamodelName string]] then
     [!?ioMetamodelComponentMap insertKey
       !metamodelName
       !rootEntityName
@@ -279,8 +279,8 @@ rule <entity_declaration>
     #--- Multiple reference
       $[$ ;
       $]$ ;
-      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName value]] then
-        error propertyTypeName : "the '@" . [propertyTypeName value]
+      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName string]] then
+        error propertyTypeName : "the '@" . [propertyTypeName string]
         . "' is not an entity name, but a predefined type name" ;
       end if ;
       $identifier$ ? attributeName ;
@@ -288,7 +288,7 @@ rule <entity_declaration>
     or
       $identifier$ ? attributeName ;
     #--- Single reference or attribute ?
-      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName value]] then
+      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName string]] then
       #--- Attribute
         k := [@metamodelPropertyKind attributeProperty] ;
       else 

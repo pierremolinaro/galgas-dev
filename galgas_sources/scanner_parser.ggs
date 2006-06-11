@@ -289,7 +289,7 @@ rule <galgas_component>
   $;$ ;
 #--- Warn unused error messages
   foreach table_messages (??@lstring kKey ??*) :
-    if not [usedErrorMessageSet hasKey ![kKey value]] then
+    if not [usedErrorMessageSet hasKey ![kKey string]] then
       warning kKey:"this error message is not used" ;
     end if ;
   end foreach ;
@@ -525,7 +525,7 @@ rule <attribute_or_terminal_symbol_declaration>
     end select ;
     @luint styleIndex ;
     [ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
-    @string errorMessageString := [errorMessage value] ;
+    @string errorMessageString := [errorMessage string] ;
     [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !l !styleIndex] ;
   end select ;
   $;$ ;
@@ -577,7 +577,7 @@ rule <key_words_list_declaration>
       terminalSymbolName := listEntry ;
     end select ;
   #--- Build error message
-    @string specificErrorMessageString := [[errorMessage value] stringByReplacingStringByString !"%K" ![terminalSymbolName value]] ;
+    @string specificErrorMessageString := [[errorMessage string] stringByReplacingStringByString !"%K" ![terminalSymbolName string]] ;
   #--- Insert terminal in terminal symbols map
     [!?table_des_terminaux insertKey
        !terminalSymbolName
@@ -839,7 +839,7 @@ rule <lexical_instructions_list>
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
     [table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
-    ioUsedErrorMessageSet += ![errorMessageName value] ;
+    ioUsedErrorMessageSet += ![errorMessageName string] ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionErreurLexicale new !errorMessageIndex] ;
     li += !e ;
@@ -869,7 +869,7 @@ rule <lexical_error_messages_list>
     @luint errorMessageIndex ;
     [table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
     lme += !errorMessageIndex ;
-    ioUsedErrorMessageSet += ![errorMessageName value] ;
+    ioUsedErrorMessageSet += ![errorMessageName string] ;
   while
     $,$ ;
   end repeat ;
@@ -1089,7 +1089,7 @@ rule <lexical_send_or_error>
   $identifier$ ?errorMessageName ;
   @luint errorMessageIndex ;
   [tableMessagesErreurs searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
-  ioUsedErrorMessageSet += ![errorMessageName value] ;
+  ioUsedErrorMessageSet += ![errorMessageName string] ;
   emissionParDefaut := [@typeEmissionErreurParDefaut new !errorMessageIndex] ;
 end rule ;
 

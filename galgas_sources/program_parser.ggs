@@ -211,8 +211,8 @@ rule <galgas_component>
       $)$ ;
     end select ;
     $;$ ;
-    if [metamodelName value] != [returnedMetamodel value] then
-      error metamodelName: "the '" . [returnedMetamodel value] . "' metamodel was expected here" ;
+    if [metamodelName string] != [returnedMetamodel string] then
+      error metamodelName: "the '" . [returnedMetamodel string] . "' metamodel was expected here" ;
     end if ;
     [ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?* ?*] ;
   end select ;
