@@ -2137,6 +2137,13 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 
+class @typeGalgasNewClassType extends @typeGalgasUndefinedClassType {
+#--- Super classes
+  @typeSuperClassesMap mSuperClassMap ;  
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 #--- class reader map
   @typeTableMethodes mReaderMap ;
@@ -2157,7 +2164,8 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
   @bool mClassIsAbstract ;
 
 #--- Handle method call : return method signature
-  override reader handleReaderInstructionCall
+  override
+  reader handleReaderInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inMethodName
     !@L_EXsignature outMethodSignature

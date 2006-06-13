@@ -108,6 +108,70 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
 }
 
 //---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_classToImplement::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << mClassName << " ;\n"
+             "class cPtr_" << mClassName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_classToImplement::
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_classToImplement::
+generateHdeclarations_2 (AC_OutputStream & inHfile,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_classToImplement::
+isCppClassNeeded (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_classToImplement::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                             const C_String & /* inLexiqueClassName */,
+                             const C_String & /* inTargetFileName*/,
+                             sint32 & /* ioPrototypeIndex */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_classToImplement::
+generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                const C_String & /* inLexiqueClassName */,
+                                const C_String & inTargetFileName,
+                                sint32 & /* ioPrototypeIndex */,
+                                const bool inGenerateDebug) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
 
 void cPtr_typeDefClasseAbstraiteAimplementer::
 generatePredeclarations (AC_OutputStream & inHfile) const {
