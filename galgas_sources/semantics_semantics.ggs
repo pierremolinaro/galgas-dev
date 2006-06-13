@@ -1165,6 +1165,15 @@ class @C_mapToImplement extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
+class @C_classToImplement extends @typeEntityToGenerate {
+#--- Class Name
+  @lstring mClassName ;
+#--- Table des classes ancetre de la classe courante
+  @typeSuperClassesMap mAncestorClassesMap ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeDefClasseAbstraiteAimplementer extends @typeEntityToGenerate {
   @lstring aNomClasse ;
 

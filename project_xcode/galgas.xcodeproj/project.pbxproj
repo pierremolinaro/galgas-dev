@@ -755,6 +755,14 @@
 		CF8D86E80A2C73BF009115FE /* include_typeXorOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */; };
 		CF8D86E90A2C73BF009115FE /* include_typeXorOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */; };
 		CF8D86EA0A2C73BF009115FE /* include_typeXorOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */; };
+		CF907E3C0A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
+		CF907E3E0A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
+		CF907E400A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
+		CF907E420A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
+		CF907E440A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
+		CF907E460A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
+		CF907E480A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
+		CF907E4A0A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
 		CF93AC4705B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF93AC4805B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
@@ -1601,6 +1609,7 @@
 		CF9040E6057F270E007362F4 /* grammar_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = grammar_parser.cpp; sourceTree = "<group>"; };
 		CF9041F0057F687D007362F4 /* C_galgas_cocoa_io.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = C_galgas_cocoa_io.h; sourceTree = "<group>"; };
 		CF904220057F6B8D007362F4 /* C_galgas_cocoa_io.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_cocoa_io.cpp; sourceTree = "<group>"; };
+		CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_classToImplement.h; sourceTree = "<group>"; };
 		CF93AC4605B483DC0089AD65 /* enum_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = enum_generation.cpp; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
@@ -2151,6 +2160,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */,
 				CFD648AB0A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h */,
 				CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */,
 				CF43CD570A3852A600B057BA /* include_typeLeftShiftOperation.h */,
@@ -2922,6 +2932,7 @@
 				CF43CD5A0A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */,
 				CF85E4B20A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */,
 				CFD648AC0A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h in Headers */,
+				CF907E3C0A3F3D28007D2341 /* include_C_classToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2981,6 +2992,7 @@
 				CF43CD660A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */,
 				CF85E4B80A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */,
 				CFD648B20A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h in Headers */,
+				CF907E480A3F3D28007D2341 /* include_C_classToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3040,6 +3052,7 @@
 				CF43CD680A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */,
 				CF85E4B90A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */,
 				CFD648B30A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h in Headers */,
+				CF907E4A0A3F3D28007D2341 /* include_C_classToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3107,6 +3120,7 @@
 				CF43CD5C0A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */,
 				CF85E4B30A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */,
 				CFD648AD0A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h in Headers */,
+				CF907E3E0A3F3D28007D2341 /* include_C_classToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3166,6 +3180,7 @@
 				CF43CD5E0A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */,
 				CF85E4B40A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */,
 				CFD648AE0A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h in Headers */,
+				CF907E400A3F3D28007D2341 /* include_C_classToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3225,6 +3240,7 @@
 				CF43CD600A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */,
 				CF85E4B50A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */,
 				CFD648AF0A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h in Headers */,
+				CF907E420A3F3D28007D2341 /* include_C_classToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3284,6 +3300,7 @@
 				CF43CD620A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */,
 				CF85E4B60A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */,
 				CFD648B00A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h in Headers */,
+				CF907E440A3F3D28007D2341 /* include_C_classToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3343,6 +3360,7 @@
 				CF43CD640A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */,
 				CF85E4B70A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */,
 				CFD648B10A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h in Headers */,
+				CF907E460A3F3D28007D2341 /* include_C_classToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

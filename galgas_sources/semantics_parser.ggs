@@ -1178,6 +1178,122 @@ label importSemantics
 end rule ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  C L A S S    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+:
+#--- Abstract class ?
+  @bool isAbstract ;
+  select
+    $abstrac$ ;
+    isAbstract := true ;
+  or
+    isAbstract := false ;
+  end select ;
+#--- Class name
+  $clas$ ;
+  @lstring className ;
+  $type_name$ ? className ;
+  select
+    if not ([tableEnAvant hasKey ![className string]] |
+          [ioComponentSemanticsEntitiesMap hasKey ![className string]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedClassType new !className] ;
+      [!?tableEnAvant insertKey !className !t] ;
+    end if ;
+    $;$ ;
+  or
+  #--- Parse super class name
+    @typeSuperClassesMap superClassesMap ;
+    select
+      superClassesMap := [@typeSuperClassesMap emptyMap] ;
+    or
+      @lstring superClassName ;
+      $extends$ ;
+      $type_name$ ? superClassName ;
+      @AC_semanticsEntity semanticsEntity ;
+      [ioComponentSemanticsEntitiesMap searchKey !superClassName ?semanticsEntity] ;
+      @AC_galgasType userType ;
+      extract semanticsEntity->@typeEntiteType (?userType) error superClassName : messageTypeEntite ;
+      extract userType->@typeGalgasNewClassType (?* ?superClassesMap)
+               error superClassName : messageGalgasType ;
+    #--- Insert super class in super class map
+      [!?superClassesMap insertKey ! superClassName] ;
+    end select ;
+    ${$ ;
+    $}$ ; 
+  #--- Inserer dans la map des classes utilisables
+    @AC_galgasType c := [@typeGalgasNewClassType new 
+       !className
+       !superClassesMap
+    ] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !className ![@typeEntiteType new !c]] ;
+  #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
+    @typeEntityToGenerate def := [@C_classToImplement new 
+       !className
+       !superClassesMap
+    ] ;
+    listeEntitesAengendrer += !def ;
+  end select ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+:
+#--- Abstract class ?
+  @bool isAbstract ;
+  select
+    $abstrac$ ;
+    isAbstract := true ;
+  or
+    isAbstract := false ;
+  end select ;
+#--- Class name
+  $clas$ ;
+  @lstring className ;
+  $type_name$ ? className ;
+  select
+    if not ([tableEnAvant hasKey ![className string]] |
+          [ioComponentSemanticsEntitiesMap hasKey ![className string]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedClassType new !className] ;
+      [!?tableEnAvant insertKey !className !t] ;
+    end if ;
+    $;$ ;
+  or
+  #--- Parse super class name
+    @typeSuperClassesMap superClassesMap ;
+    select
+      superClassesMap := [@typeSuperClassesMap emptyMap] ;
+    or
+      @lstring superClassName ;
+      $extends$ ;
+      $type_name$ ? superClassName ;
+      @AC_semanticsEntity semanticsEntity ;
+      [ioComponentSemanticsEntitiesMap searchKey !superClassName ?semanticsEntity] ;
+      @AC_galgasType userType ;
+      extract semanticsEntity->@typeEntiteType (?userType) error superClassName : messageTypeEntite ;
+      extract userType->@typeGalgasNewClassType (?* ?superClassesMap)
+               error superClassName : messageGalgasType ;
+    #--- Insert super class in super class map
+      [!? superClassesMap insertKey ! superClassName] ;
+    end select ;
+    ${$ ;
+    $}$ ; 
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
 #                        ANALYSE D'UNE CLASSE MERE                          *
 #---------------------------------------------------------------------------*
 
