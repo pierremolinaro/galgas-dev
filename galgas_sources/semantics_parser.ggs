@@ -1186,21 +1186,21 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
 #--- Abstract class ?
   @bool isAbstract ;
   select
-    $abstrac$ ;
+    $abstract__$ ;
     isAbstract := true ;
   or
     isAbstract := false ;
   end select ;
 #--- Class name
-  $clas$ ;
+  $class__$ ;
   @lstring className ;
   $type_name$ ? className ;
   select
@@ -1245,22 +1245,22 @@ rule <semantics_declaration>
   end select ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
-  ?!@ActionMap ioExternActionMap
+  ?!@ActionMap unused ioExternActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
 #--- Abstract class ?
   @bool isAbstract ;
   select
-    $abstrac$ ;
+    $abstract__$ ;
     isAbstract := true ;
   or
     isAbstract := false ;
   end select ;
 #--- Class name
-  $clas$ ;
+  $class__$ ;
   @lstring className ;
   $type_name$ ? className ;
   select
