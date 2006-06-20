@@ -125,7 +125,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_classToImplement::
-generateHdeclarations (AC_OutputStream & inHfile,
+generateHdeclarations (AC_OutputStream & /* inHfile */,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) const {
 }
@@ -133,7 +133,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_classToImplement::
-generateHdeclarations_2 (AC_OutputStream & inHfile,
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 }
@@ -157,11 +157,11 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_classToImplement::
-generateCppClassImplementation (AC_OutputStream & inCppFile,
+generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
                                 const C_String & /* inLexiqueClassName */,
-                                const C_String & inTargetFileName,
+                                const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
-                                const bool inGenerateDebug) const {
+                                const bool /* inGenerateDebug */) const {
 }
 
 //---------------------------------------------------------------------------*
