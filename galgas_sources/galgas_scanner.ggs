@@ -32,7 +32,7 @@ style terminalStyle -> "Terminal Symbols:" ;
 style integerStyle -> "Integer Constants:" ;
 style float_csts -> "Floating Point Constants:" ;
 style characterStyle -> "Character Constants:" ;
-style stringStyle -> "String Sonstants:" ;
+style stringStyle -> "String Constants:" ;
 style typeNameStyle -> "Type Names (@...):" ;
 
 # -------------------------- identifier or key word --------------------
