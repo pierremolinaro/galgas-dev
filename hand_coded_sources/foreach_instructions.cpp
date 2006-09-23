@@ -69,7 +69,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   //--- Second instruction list
     ioCppFile << "  if (" << variableCondition << ".isBuiltAndTrue ()) {\n" ;
     ioCppFile.incIndentation (+2) ;
-    generateInstructionListForList (mInstructionList1, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+    generateInstructionListForList (mInstructionList2, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
     ioCppFile.incIndentation (-4) ;
     ioCppFile << "    }\n"
                  "  }\n"
