@@ -239,7 +239,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       macroMyDelete (compiler, galgas_SLR_prgm) ;
     }
     galgas_SLR_prgm_epilogue (options) ;
-	  #ifndef DO_NOT_GENERATE_CHECKINGS
+    #ifndef DO_NOT_GENERATE_CHECKINGS
       C_GGS_Object::checkAllObjectsHaveBeenReleased () ;
     #endif
   }catch (const M_STD_NAMESPACE exception & e) {
@@ -259,16 +259,17 @@ int mainForLIBPM  (const int argc, const char * argv []) {
 //---------------------------------------------------------------------------*
 
 void galgas_SLR_prgm_prologue (const C_options_for_galgas_SLR_prgm & inOptions) {
+  const C_String libpmLocation = inOptions.stringOptionValueFromKeys ("galgas_cli_options", "libpm", NULL) ;
 //--- Classic Project Creation
-	const C_String stringForClassicProjectCreation = inOptions.stringOptionValueFromKeys ("galgas_cli_options", "create_project", NULL) ;
-	if (stringForClassicProjectCreation.length () > 0) {
-	  createProject (stringForClassicProjectCreation, kClassicProject) ;
-	}
+  const C_String stringForClassicProjectCreation = inOptions.stringOptionValueFromKeys ("galgas_cli_options", "create_project", NULL) ;
+  if (stringForClassicProjectCreation.length () > 0) {
+    createProject (stringForClassicProjectCreation, libpmLocation, kClassicProject) ;
+  }
 //--- MDA Project Creation
-	const C_String stringForMDAProjectCreation = inOptions.stringOptionValueFromKeys ("galgas_cli_options", "create_mda_project", NULL) ;
-	if (stringForMDAProjectCreation.length () > 0) {
-	  createProject (stringForMDAProjectCreation, kMDAproject) ;
-	}
+  const C_String stringForMDAProjectCreation = inOptions.stringOptionValueFromKeys ("galgas_cli_options", "create_mda_project", NULL) ;
+  if (stringForMDAProjectCreation.length () > 0) {
+    createProject (stringForMDAProjectCreation, libpmLocation, kMDAproject) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -279,7 +280,7 @@ void galgas_SLR_prgm_epilogue (const C_options_for_galgas_SLR_prgm & /* inOption
 //---------------------------------------------------------------------------*
 
 void galgas_SLR_prgm::_prologue (void) {
-	mScannerPtr_->mPerformGeneration = ! mScannerPtr_->boolOptionValueFromKeys ("galgas_cli_options", "doNotGenerateFiles", true) ;
+  mScannerPtr_->mPerformGeneration = ! mScannerPtr_->boolOptionValueFromKeys ("galgas_cli_options", "doNotGenerateFiles", true) ;
 }
 
 //---------------------------------------------------------------------------*

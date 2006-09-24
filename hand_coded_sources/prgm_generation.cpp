@@ -101,9 +101,9 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     grammarZone3 << "//--- Destructor\n"
                     "  public : virtual ~" << inProgramComponentName  << currentGrammar->mGrammarPostfix << " (void) ;\n"
                     "//--- Prologue and epilogue\n"
-										"  public : void _prologue (void) ;\n"
-										"  public : void _epilogue (void) ;\n"
-		                "} ;\n\n" ;
+                    "  public : void _prologue (void) ;\n"
+                    "  public : void _epilogue (void) ;\n"
+                    "} ;\n\n" ;
     inLexique.generateFile ("//",
                             C_String ("grammar_") + inProgramComponentName + currentGrammar->mGrammarPostfix + ".h",
                             "\n\n", // User Zone 1
@@ -402,17 +402,17 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
           << " * compiler = NULL ;\n"
              "      macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix
           << " (IOparameters COMMA_HERE)) ;\n"
-					   "      compiler->_prologue () ;\n"
+             "      compiler->_prologue () ;\n"
              "      sint16 r = 0 ;\n"
              "      compiler->doCompilation (sourceFilesArray (i COMMA_HERE), r) ;\n"
              "      if (r != 0) {\n"
              "        returnCode = r ;\n"
              "      }\n"
-					   "      compiler->_epilogue () ;\n"
+             "      compiler->_epilogue () ;\n"
              "      macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
              "    }\n"
              "    " << inProgramComponentName << "_epilogue (options) ;\n"
-             "	  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+             "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "      C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
              "    #endif\n"
              "  }catch (const M_STD_NAMESPACE exception & e) {\n"
@@ -427,25 +427,25 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2.writeCppHyphenLineComment () ;
 //--- User Zone 2 : prologue and epilogue
   C_String userZone2 ; userZone2.setAllocationExtra (1000) ;
-	userZone2 << "\n\n" ;
-	userZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
+  userZone2 << "\n\n" ;
+  userZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
   userZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
                "// ADD YOUR CODE HERE\n"
                "}\n" ;
-	userZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
+  userZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
   userZone2 << "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
                "// ADD YOUR CODE HERE\n"
                "}\n" ;
-	userZone2.writeCppTitleComment ("P R O L O G U E") ;
-	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
-	             "_prologue (void) {\n"
-							 "//--- ADD YOUR CODE HERE\n"
-							 "}\n" ;
-	userZone2.writeCppTitleComment ("E P I L O G U E") ;
-	userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
-	             "_epilogue (void) {\n"
-							 "//--- ADD YOUR CODE HERE\n"
-							 "}\n" ;
+  userZone2.writeCppTitleComment ("P R O L O G U E") ;
+  userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
+               "_prologue (void) {\n"
+               "//--- ADD YOUR CODE HERE\n"
+               "}\n" ;
+  userZone2.writeCppTitleComment ("E P I L O G U E") ;
+  userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
+               "_epilogue (void) {\n"
+               "//--- ADD YOUR CODE HERE\n"
+               "}\n" ;
 //--- Generate file
   inLexique.generateFile ("//",
                           inProgramComponentName + ".cpp",

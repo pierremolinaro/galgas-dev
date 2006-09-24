@@ -367,7 +367,7 @@ generate_option_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeCppTitleComment ("G E T    S T R I N G    O P T I O N S    C O U N T") ;
   generatedZone3 << "sint32 " << inOptionClassName << "::\n"
                  "getStringOptionsCount (void) const {\n"
-								 "  return " << inStringOptionsMap.count () << " ;\n"
+                 "  return " << inStringOptionsMap.count () << " ;\n"
                  "}\n\n" ;
 
 //--------------------------------------- Get string options value
@@ -382,8 +382,8 @@ generate_option_cpp_file (C_Lexique & inLexique,
   generatedZone3 << "void " << inOptionClassName << "::\n"
              "setStringOptionValue (const sint32 inIndex, const C_String & inValue) {\n"
              "  if ((inIndex >= 0) && (inIndex < " << inStringOptionsMap.count () << ")) {\n"
-						 "     mStringOptionValues [inIndex] = inValue ;\n"
-						 "  }\n"
+             "     mStringOptionValues [inIndex] = inValue ;\n"
+             "  }\n"
              "}\n\n" ;
 
 //--------------------------------------- Get string option char
@@ -422,7 +422,7 @@ generate_option_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeCppTitleComment ("G E T    S T R I N G    O P T I O N    D E S C R I P T I O N") ;
   generatedZone3 << "const char * " << inOptionClassName << "::\n"
                     "getStringOptionDescription (const sint32 inIndex) const {\n"
-								 << "  static const char * kDescriptionArray ["<< (inStringOptionsMap.count () + 1) << "] = {" ;
+                 << "  static const char * kDescriptionArray ["<< (inStringOptionsMap.count () + 1) << "] = {" ;
   currentOption = inStringOptionsMap.firstObject () ;
   while (currentOption != NULL) {
     generatedZone3.writeCstringConstant (currentOption->mInfo.mComment) ;
@@ -492,13 +492,13 @@ routine_generate_option_component (C_Lexique & inLexique,
                                inOptionClassName,
                                inBoolOptionsMap,
                                inUintOptionsMap,
-															 inStringOptionsMap) ;
+                               inStringOptionsMap) ;
 //--- Generate implementation file
   generate_option_cpp_file (inLexique,
                             inOptionClassName,
                             inBoolOptionsMap,
                             inUintOptionsMap,
-														inStringOptionsMap) ;
+                            inStringOptionsMap) ;
 }
 
 //---------------------------------------------------------------------------*
