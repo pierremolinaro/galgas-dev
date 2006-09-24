@@ -515,12 +515,17 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implementer la declaration du constructeur de recopie
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomClasse
-           << "::\nGGS_" << aNomClasse << " (const "
-              "GGS_" << aNomClasse << " & inOperand) {\n"
-              "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n"
-              "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
-              "}\n\n" ;
+  inCppFile << "GGS_" << aNomClasse << "::\n"
+               "GGS_" << aNomClasse << " (const GGS_" << aNomClasse << " & inOperand)" ;
+  if (superClassName.length () == 0) {
+     inCppFile << " {\n"
+                  "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n" ;
+  }else{
+     inCppFile << "\n"
+                  ":GGS_" << superClassName << " () {\n" ;
+  }
+  inCppFile << "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
+               "}\n\n" ;
 
 //--- Implementer la declaration du destructeur
   inCppFile.writeCppHyphenLineComment () ;
