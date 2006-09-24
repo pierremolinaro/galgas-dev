@@ -539,7 +539,7 @@ searchForReadOnlyAccess (C_Lexique & inLexique,
                          const char * messageErreurPhase
                          COMMA_LOCATION_ARGS) {
   element_type * resultat = (element_type *) NULL ;
-	const char * messageErreurRecherche = "the '%' variable is not declared" ;
+  const char * messageErreurRecherche = "the '%' variable is not declared" ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
@@ -561,7 +561,7 @@ searchForDestructiveReadAccess (C_Lexique & inLexique,
                                 const GGS_location & inLocation,
                                 const char * messageErreurPhase
                                 COMMA_LOCATION_ARGS) {
-	const char * messageErreurRecherche = "the '%' variable is not declared" ;
+  const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
@@ -586,7 +586,7 @@ searchForReadWriteAccess (C_Lexique & inLexique,
                           const GGS_location & inLocation,
                           const char * messageErreurPhase
                           COMMA_LOCATION_ARGS) {
-	const char * messageErreurRecherche = "the '%' variable is not declared" ;
+  const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
@@ -610,7 +610,7 @@ searchForWriteAccess (C_Lexique & inLexique,
                       const GGS_location & inLocation,
                       const char * messageErreurPhase
                       COMMA_LOCATION_ARGS) {
-	const char * messageErreurRecherche = "the '%' variable is not declared" ;
+  const char * messageErreurRecherche = "the '%' variable is not declared" ;
   element_type * resultat = (element_type *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve

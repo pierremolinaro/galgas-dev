@@ -564,11 +564,11 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
 //---------------------------------------- Generate styles definition 
   generatedZone2.writeCppTitleComment ("Styles definition") ;
   generatedZone2 <<  "sint32 " << inLexiqueName << "::getStylesCount (void) {\n"
-	      "  return " <<  inStylesMap.count () << " ;\n"
-	      "}\n\n" ;
+        "  return " <<  inStylesMap.count () << " ;\n"
+        "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleName (const sint32 inIndex) {\n"
-	            "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
+              "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
   GGS_M_styles::element_type * style = inStylesMap.firstObject () ;
   while (style != NULL) {
     macroValidPointer (style) ;
@@ -578,7 +578,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   }
   generatedZone2 << "NULL} ;\n"
              "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
-	           "} ;\n\n" ;
+             "} ;\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "uint8 " << inLexiqueName << "::\n"
              "terminalStyleIndex (const sint32 inTerminal) {\n"
@@ -999,10 +999,10 @@ generate_scanner_header_file (C_Lexique & inLexique,
 //--- Styles definition 
                     "//--- Style Definition\n"
                     "  public : static sint32 getStylesCount (void) ;\n"
-	                  "  public : static const char * getStyleName (const sint32 inIndex) ;\n"
+                    "  public : static const char * getStyleName (const sint32 inIndex) ;\n"
                     "//--- Virtual method called getting terminal style index\n"
                     "  public : virtual uint8 terminalStyleIndex (const sint32 inTerminal) ;\n"
-	      "} ;\n\n" ;
+        "} ;\n\n" ;
 //--- End of ".h" file
   generatedZone3.writeCppHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
@@ -1028,7 +1028,7 @@ void cPtr_typeGalgas_lstring::
 generateAttributeDeclaration (const GGS_lstring & nom,
                               AC_OutputStream & H_file) const {
   H_file << "  public : C_String " << nom
-	 << " ; // user defined attribute\n" ;
+   << " ; // user defined attribute\n" ;
 }
 
 //---------------------------------------------------------------------------*

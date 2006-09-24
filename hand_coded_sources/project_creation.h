@@ -34,6 +34,7 @@ typedef enum {kClassicProject, kMDAproject} enumProjectStyle ;
 
 void
 createProject (const C_String & inStringForProjectCreation,
+               const C_String & inLIBPMlocation,
                const enumProjectStyle inProjectStyle) ;
 
 //---------------------------------------------------------------------------*
