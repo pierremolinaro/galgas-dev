@@ -77,7 +77,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_BDD_Set2 & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
-                     C_HTML_FileWrite & inHTMLfile) {
+                     C_HTML_FileWrite & inHTMLfile,
+                     const bool inVerboseOptionOn) {
 //--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
 // et verifier l'absence de conflit.
   inHTMLfile.outputRawData ("<p>") ;
@@ -169,7 +170,10 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
     inHTMLfile.outputRawData ("<span class=\"success\">") ;
     inHTMLfile << "No conflict : the grammar is LL (1).\n" ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "ok.\n" ;
+    if (inVerboseOptionOn) {
+      co << "ok.\n" ;
+      co.flush () ;
+    }
   }else{
     inHTMLfile.outputRawData ("<span class=\"error\">") ;
     inHTMLfile << "The grammar is not  LL (1) : "
@@ -178,10 +182,12 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                << ((nombreDeConflits > 1) ? "s" : "")
                << "." ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "error.\n" ;
+    if (inVerboseOptionOn) {
+      co << "error.\n" ;
+      co.flush () ;
+    }
   }
   inHTMLfile.outputRawData ("</p>") ;
-  co.flush () ;
   return nombreDeConflits == 0 ;
 }
 
@@ -677,10 +683,13 @@ LL1_computations (C_Lexique & inLexique,
                   const C_String & inLexiqueName,
                   const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
-                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap,
+                  const bool inVerboseOptionOn) {
 //--- Console display
-  co << "  Checking LL(1) condition... " ;
-
+  if (inVerboseOptionOn) {
+    co << "  Checking LL(1) condition... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.writeCppTitleComment ("Checking LL(1) condition", "title") ;
 
@@ -690,7 +699,8 @@ LL1_computations (C_Lexique & inLexique,
                                inFOLLOWsets,
                                inVocabularyDerivingToEmpty_Array,
                                inVocabulary,
-                               inHTMLfile) ;
+                               inHTMLfile,
+                               inVerboseOptionOn) ;
 
 //--- Generate C++ file
   if (outOk) {

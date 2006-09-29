@@ -108,8 +108,9 @@ rule <galgas_component>
   @lstring fileName ;
   $literal_string$ ? fileName ;
   $;$ ;
-#--- Console message
-  message "------ Compile file '" . [fileName string] . "'\n" ;
+  if [option .verbose_output] then
+    message "------ Compile file '" . [fileName string] . "'\n" ;
+  end if ;
   grammar galgas_SLR_grammar label compileFile in fileName  ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse

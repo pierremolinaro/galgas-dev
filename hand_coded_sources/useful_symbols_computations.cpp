@@ -63,7 +63,8 @@ static bool
 displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
                         C_HTML_FileWrite & inHTMLfile,
                         const cVocabulary & inVocabulary,
-                        const sint32 nombreIterations) {
+                        const sint32 nombreIterations,
+                        const bool inVerboseOptionOn) {
   bool warning = false ;
   inHTMLfile.outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
   inHTMLfile << "Calculus completed in "
@@ -86,7 +87,9 @@ displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
     inHTMLfile.outputRawData ("<span class=\"success\">") ;
     inHTMLfile << "All terminal and nonterminal symbols are useful.\n\n" ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "all, ok.\n" ;
+    if (inVerboseOptionOn) {
+      co << "all, ok.\n" ;
+    }
   }else{
     inHTMLfile.outputRawData ("<span class=\"warning\">") ;
     inHTMLfile << "The vocabulary has "
@@ -103,7 +106,10 @@ displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
       }
     }
     inHTMLfile.outputRawData ("</code></span>") ;
-    co << "warning.\n" ;
+    if (inVerboseOptionOn) {
+      co << "warning.\n" ;
+      co.flush () ;
+    }
     warning = true ;
   }
   inHTMLfile.outputRawData ("</p>") ;
@@ -118,9 +124,13 @@ useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproduction
                              const cVocabulary & inVocabulary,
                              C_HTML_FileWrite & inHTMLfile,
                              C_BDD_Set1 & outUsefulSymbols,
-                             bool & outWarningFlag) {
+                             bool & outWarningFlag,
+                             const bool inVerboseOptionOn) {
 //--- Console display
-  co << "  Searching for useful nonterminal symbols... " ;
+  if (inVerboseOptionOn) {
+    co << "  Searching for useful nonterminal symbols... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.writeCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   sint32 iterationsCount = 0 ;
@@ -131,7 +141,8 @@ useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproduction
   const bool warning = displayUnusefulSymbols (outUsefulSymbols,
                                                inHTMLfile,
                                                inVocabulary,
-                                               iterationsCount) ;
+                                               iterationsCount,
+                                               inVerboseOptionOn) ;
   
   outWarningFlag |= warning ;
 }

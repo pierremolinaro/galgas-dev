@@ -83,6 +83,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                     "  public : " << inProgramComponentName  << currentGrammar->mGrammarPostfix
                  << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) ;\n\n"
                     "  public : void doCompilation (const C_String & inSourceFileName_,\n"
+                    "                               const bool inVerboseOptionOn,\n"
                     "                               sint16 & returnCode) ;\n" ;
   //--- Engendrer la declaration des attributs de l'axiome
     GGS_L_signature::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.firstObject () ;
@@ -237,10 +238,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2.writeCppTitleComment ("D O    C O M P I L A T I O N") ;
     generatedZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
                "doCompilation (const C_String & inSourceFileName_,\n"
+               "               const bool inVerboseOptionOn,\n"
                "               sint16 & returnCode) {\n" ;
     generatedZone2.incIndentation (+2) ;
     generatedZone2 << "C_Timer timer ;\n"
-             "try{\n" ;
+                      "try{\n" ;
     generatedZone2.incIndentation (+2) ;
     generatedZone2 << "if (mTerminalIO.versionModeOn ()) {\n"
                       "  co << \"Reading '\" << inSourceFileName_ << \"'\\n\" ;\n"
@@ -302,14 +304,18 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                         "  C_BDD::markAndSweepUnusedNodes () ;\n" ;
     }
     generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
-                      "  _afterParsing () ;\n"
+                      "  _afterParsing (inVerboseOptionOn) ;\n"
                       "}\n"
-                      "co << \"Analysis of '\" << mScannerPtr_->sourceFileName ().lastPathComponent () << \"' completed. \" ;\n" ;
+                      "if (inVerboseOptionOn || ((mTerminalIO.getErrorTotalCount () + mTerminalIO.getWarningsCount ()) > 0)) {\n"
+                      "  co << \"Analysis of '\" << mScannerPtr_->sourceFileName ().lastPathComponent () << \"' completed. \" ;\n"
+                      "}\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
   generatedZone2 <<  "switch (mTerminalIO.getErrorTotalCount ()) {\n"
                  "case 0 :\n"
-                 "  co << \"No error, \" ;\n"
+                 "  if (inVerboseOptionOn) {\n"
+                 "    co << \"No error, \" ;\n"
+                 "  }\n"
                  "  break ;\n"
                  "case 1 :\n"
                  "  co << \"1 error, \" ;\n"
@@ -322,7 +328,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                  "}\n"
                  "switch (mTerminalIO.getWarningsCount ()) {\n"
                  "case 0 :\n"
-                 "  co << \"no warning\" ;\n"
+                 "  if (inVerboseOptionOn) {\n"
+                 "    co << \"no warning\" ;\n"
+                 "  }\n"
                  "  break ;\n"
                  "case 1 :\n"
                  "  co << \"1 warning\" ;\n"
@@ -332,7 +340,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                  "  break ;\n"
                 "}\n"
                 "timer.stopTimer () ;\n"
-                "  co << \" (\" << timer << \").\\n\" ;\n" ;
+                "if (inVerboseOptionOn || ((mTerminalIO.getErrorTotalCount () + mTerminalIO.getWarningsCount ()) > 0)) {\n"
+                "  co << \" (\" << timer << \").\\n\" ;\n"
+                "}\n" ;
   generatedZone2.incIndentation (-2) ;
   generatedZone2 << "}catch (const C_TextReadException & inFileReadError) {\n"
                  "  co << \"Error: \" << inFileReadError.what () << \"\\n\" ; // Error when reading source file\n"
@@ -396,6 +406,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "    #endif\n"
              "  #endif\n"
              "  try{\n"
+             "    const bool verboseOptionOn = options.boolOptionValueFromKeys (\"generic_galgas_cli_options\",\n"
+             "                                                              \"verbose_output\",\n"
+             "                                                              false) ;\n"
              "    " << inProgramComponentName << "_prologue (options) ;\n"
              "    for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
              "      " << inProgramComponentName << currentGrammar->mGrammarPostfix
@@ -404,7 +417,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
           << " (IOparameters COMMA_HERE)) ;\n"
              "      compiler->_prologue () ;\n"
              "      sint16 r = 0 ;\n"
-             "      compiler->doCompilation (sourceFilesArray (i COMMA_HERE), r) ;\n"
+             "      compiler->doCompilation (sourceFilesArray (i COMMA_HERE), verboseOptionOn, r) ;\n"
              "      if (r != 0) {\n"
              "        returnCode = r ;\n"
              "      }\n"
@@ -415,6 +428,22 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
              "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "      C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
              "    #endif\n"
+             "    if (verboseOptionOn) {\n"
+             "      #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+             "        const uint64 maxUsedMemorySize = getMaxUsedMemorySize () ;\n"
+             "        const uint64 oneMegaByte = 1 << 20 ;\n"
+             "        const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;\n"
+             "        const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;\n"
+             "        co << getCreatedDynamicObjectsTotalCount ()\n"
+             "           << \" C++ objects have been created (\"\n"
+             "           << megaBytes << \".\" << widthWithZeroFill (3) << fraction\n"
+             "           << \" MB).\\n\" ;\n"
+             "        deactivateMemoryControl () ;\n"
+             "        if ((getAllocationBalance () != 0) && (returnCode == 0)) {\n"
+             "          display_pointers () ;\n"
+             "        }\n"
+             "      #endif\n"
+             "    }\n"
              "  }catch (const M_STD_NAMESPACE exception & e) {\n"
              "    F_default_display_exception (e) ;\n"
              "    returnCode = 1 ; // Error code\n"

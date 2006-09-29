@@ -77,7 +77,8 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
                           const C_BDD_Set1 & inUsefulSymbols,
                           const C_BDD_Set2 & inFIRSTsets,
                           TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
-                          const sint32 inIterationsCount) {
+                          const sint32 inIterationsCount,
+                          const bool inVerboseOptionOn) {
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
   C_BDD_Set1 temp (inVocabularyDerivingInEmptyString) ;
   temp.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; ;
@@ -135,8 +136,10 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
     inHTMLfile.outputRawData ("<span class=\"success\">") ;
     inHTMLfile << "All FIRST are correct.\n\n" ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "ok.\n" ;
-    co.flush () ;
+    if (inVerboseOptionOn) {
+      co << "ok.\n" ;
+      co.flush () ;
+    }
   }else{
     inHTMLfile.outputRawData ("<span class=\"error\">") ;
     inHTMLfile << "Error : "
@@ -155,8 +158,10 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
     }
     inHTMLfile.outputRawData ("</code>") ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "error.\n" ;
-    co.flush () ;
+    if (inVerboseOptionOn) {
+      co << "error.\n" ;
+      co.flush () ;
+    }
   }
   inHTMLfile.outputRawData ("</p>") ;
   return ntInErrorCount == 0L ; 
@@ -174,9 +179,13 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     C_BDD_Set2 & outFIRSTsets,
                     TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
                     const C_BDD_Descriptor & inDescriptor,
-                    bool & outOk) {
+                    bool & outOk,
+                    const bool inVerboseOptionOn) {
 //--- Console display
-  co << "  Computing the FIRST sets... " ;
+  if (inVerboseOptionOn) {
+    co << "  Computing the FIRST sets... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
   inHTMLfile.writeCppTitleComment ("FIRST set", "title") ;
@@ -196,7 +205,8 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                                    inUsefulSymbols,
                                    outFIRSTsets,
                                    outFIRSTarray,
-                                   iterationsCount) ;
+                                   iterationsCount,
+                                   inVerboseOptionOn) ;
 }
 
 //---------------------------------------------------------------------------*

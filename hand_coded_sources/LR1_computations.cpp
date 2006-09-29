@@ -1298,9 +1298,13 @@ LR1_computations (C_Lexique & inLexique,
                   const C_String & inLexiqueName,
                   const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
-                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap,
+                  const bool inVerboseOptionOn) {
 //--- Console display
- co << "  Building LR(1) automaton... " ; co.flush () ;
+  if (inVerboseOptionOn) {
+    co << "  Building LR(1) automaton... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.outputRawData ("<p></p>") ;
   inHTMLfile.writeCppTitleComment ("Building LR(1) automaton", "title") ;
@@ -1314,9 +1318,11 @@ LR1_computations (C_Lexique & inLexique,
                           LR1_items_sets_collection,
                           inVocabularyDerivingToEmpty_Array,
                           transitionList) ;
-  co << LR1_items_sets_collection.getStatesCount () << " states, "
-               << transitionList.length () << " transitions.\n" ;
-
+  if (inVerboseOptionOn) {
+    co << LR1_items_sets_collection.getStatesCount () << " states, "
+        << transitionList.length () << " transitions.\n" ;
+    co.flush () ;
+  }
 //--- Display automaton states
   inHTMLfile.outputRawData ("<p></p><table class=\"result\">"
                             "<tr class=\"result_line\"><td colspan=\"2\">") ;
@@ -1339,7 +1345,10 @@ LR1_computations (C_Lexique & inLexique,
   inHTMLfile.outputRawData ("</table>") ;
 
 //--- Console display
- co << "  Checking LR(1) condition... " ;
+  if (inVerboseOptionOn) {
+    co << "  Checking LR(1) condition... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.outputRawData ("<p></p>") ;
   inHTMLfile.writeCppTitleComment ("Checking LR(1) condition", "title") ;
@@ -1442,20 +1451,23 @@ LR1_computations (C_Lexique & inLexique,
   inHTMLfile.outputRawData ("</table><p>") ;
 
   inHTMLfile << "LR1 automaton has "
-            << LR1_items_sets_collection.getStatesCount ()
-            << " states and "
-            << transitionList.length ()
-            << " transitions.\n\n"
-               "Analyze table has "
-            << shiftActions << " shift actions, "
-            << reduceActions << " reduce actions, and "
-            << successorEntries << " state successor entries.\n\n" ;
+             << LR1_items_sets_collection.getStatesCount ()
+             << " states and "
+             << transitionList.length ()
+             << " transitions.\n\n"
+                "Analyze table has "
+             << shiftActions << " shift actions, "
+             << reduceActions << " reduce actions, and "
+             << successorEntries << " state successor entries.\n\n" ;
   inHTMLfile.outputRawData ("</p><p>") ;
   if (conflictCount == 0) {
     inHTMLfile.outputRawData ("<span class=\"success\">") ;
     inHTMLfile << "No conflict : grammar is LR (1)." ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "ok.\n" ;
+    if (inVerboseOptionOn) {
+      co << "ok.\n" ;
+      co.flush () ;
+    }
     outOk = true ; // No error
   }else{
     inHTMLfile.outputRawData ("<span class=\"error\">") ;
@@ -1464,10 +1476,12 @@ LR1_computations (C_Lexique & inLexique,
               << ((conflictCount > 1) ? "s" : "")
               << " : grammar is not LR (1)." ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "error.\n" ;
+    if (inVerboseOptionOn) {
+      co << "error.\n" ;
+      co.flush () ;
+    }
     outOk = false ; // Error, grammar is not LR (1)
   }
-  co.flush () ;
   inHTMLfile.outputRawData ("</p>") ;
 //--- Generate C++ file
   if (conflictCount == 0) {

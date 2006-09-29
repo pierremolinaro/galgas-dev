@@ -166,7 +166,8 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
                  const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
                  const cVocabulary & inVocabulary,
                  const C_BDD_Set1 & inUsefulSymbols,
-                 const C_BDD_Set2 & inFOLLOWsets) {
+                 const C_BDD_Set2 & inFOLLOWsets,
+                 const bool inVerboseOptionOn) {
 
 //--- Construire le BDD des non-terminaux pouvant etre suivis du vide
   C_BDD_Set1 temp1 (inUsefulSymbols) ;
@@ -178,7 +179,7 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
 
 //--- Verifier les suivants
   inHTMLfile.outputRawData ("<p>") ;
-  inHTMLfile << "Every useful nonterminal symbol must :"
+  inHTMLfile << "Every useful nonterminal symbol should:"
                 " either have a non empty FOLLOW,"
                 " either can be followed by the empty string,"
                 " either both."
@@ -198,8 +199,10 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
     inHTMLfile.outputRawData ("<p><span class=\"success\">") ;
     inHTMLfile << "All FOLLOW are correct." ;
     inHTMLfile.outputRawData ("</span></p>") ;
-    co << "ok.\n" ;
-    co.flush () ;
+    if (inVerboseOptionOn) {
+      co << "ok.\n" ;
+      co.flush () ;
+    }
   }else{
     inHTMLfile.outputRawData ("<p><span class=\"error\">") ;
     inHTMLfile << "Error : "
@@ -220,8 +223,10 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
       }
     }
     inHTMLfile.outputRawData ("</table>") ;
-    co << "error.\n" ;
-    co.flush () ;
+    if (inVerboseOptionOn) {
+      co << "error.\n" ;
+      co.flush () ;
+    }
   }
   return n == 0L ; 
 }
@@ -238,14 +243,16 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
                      C_BDD_Set2 & outFOLLOWsets,
                      TC_UniqueArray <TC_UniqueArray <sint32> > & outFOLLOWarray,
-                     bool & outOk) {
+                     bool & outOk,
+                     const bool inVerboseOptionOn) {
 //--- Console display
-  co << "  Computing the FOLLOW sets... " ;
-
+  if (inVerboseOptionOn) {
+    co << "  Computing the FOLLOW sets... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.outputRawData ("<p></p>") ;
   inHTMLfile.writeCppTitleComment ("Computing the FOLLOW sets", "title") ;
-
 //--- Compute FOLLOW (with BDD)
   sint32 iterationsCount = 0 ;
   computeFOLLOWsets (inPureBNFproductions,
@@ -271,7 +278,8 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                            inNonterminalSymbolsFollowedByEmpty,
                            inVocabulary,
                            inUsefulSymbols,
-                           outFOLLOWsets) ;
+                           outFOLLOWsets,
+                           inVerboseOptionOn) ;
 }
 
 //---------------------------------------------------------------------------*

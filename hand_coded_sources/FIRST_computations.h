@@ -46,7 +46,8 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     C_BDD_Set2 & outFIRSTsets,
                     TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
                     const C_BDD_Descriptor & inDescriptor,
-                    bool & outOk) ;
+                    bool & outOk,
+                    const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------*
 
