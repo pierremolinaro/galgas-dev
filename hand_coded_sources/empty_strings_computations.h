@@ -40,7 +40,8 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
                             C_HTML_FileWrite & inHTMLfile,
                             const cVocabulary & inVocabulary,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                            C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD) ;
+                            C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD,
+                            const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------*
 

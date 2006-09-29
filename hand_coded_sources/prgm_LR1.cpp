@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Program overrided methods for LR(1) GALGAS                               *
+//  Hand-coded file for LR(1) GALGAS compiler                                *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999-2006 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -43,22 +43,24 @@ void galgas_LR1_prgm::_beforeParsing (void) {
 
 //--------------------------------------------------------------------------*
 
-void galgas_LR1_prgm::_afterParsing (void) {
+void galgas_LR1_prgm::_afterParsing (const bool inVerboseOptionOn) {
   C_BDD::markAndSweepUnusedNodes () ;
-  co << mScannerPtr_->checkedLineCount () << " checked line"
-     << ((mScannerPtr_->checkedLineCount () > 1) ? "s" : "")
-     << ", " << mScannerPtr_->preservedLineCount ()
-     << " preserved line"
-     << ((mScannerPtr_->preservedLineCount () > 1) ? "s" : "")
-     << ", "
-     << mScannerPtr_->generatedLineCount ()
-     << " generated line"
-     << ((mScannerPtr_->generatedLineCount () > 1) ? "s" : "")
-     << " for "
-     << mScannerPtr_->generatedFileCount ()
-     << " file"
-     << ((mScannerPtr_->generatedFileCount () > 1) ? "s" : "")
-     << ".\n" ;
+  if (inVerboseOptionOn) {
+    co << mScannerPtr_->checkedLineCount () << " checked line"
+       << ((mScannerPtr_->checkedLineCount () > 1) ? "s" : "")
+       << ", " << mScannerPtr_->preservedLineCount ()
+       << " preserved line"
+       << ((mScannerPtr_->preservedLineCount () > 1) ? "s" : "")
+       << ", "
+       << mScannerPtr_->generatedLineCount ()
+       << " generated line"
+       << ((mScannerPtr_->generatedLineCount () > 1) ? "s" : "")
+       << " for "
+       << mScannerPtr_->generatedFileCount ()
+       << " file"
+       << ((mScannerPtr_->generatedFileCount () > 1) ? "s" : "")
+       << ".\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*

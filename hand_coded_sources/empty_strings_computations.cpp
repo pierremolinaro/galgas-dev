@@ -135,7 +135,8 @@ printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingTo
                                        const C_BDD_Set1 & inNonTerminalHavingEmptyDerivation,
                                        C_HTML_FileWrite & inHTMLfile,
                                        const cVocabulary & inVocabulary,
-                                       const sint32 inIterationsCount) { 
+                                       const sint32 inIterationsCount,
+                                       const bool inVerboseOptionOn) { 
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile << "Nonterminal symbols deriving indirectly in empty string : calculus in "
              << inIterationsCount
@@ -168,8 +169,10 @@ printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingTo
     }
     inHTMLfile.outputRawData ("</table>") ;
   }
-  co << t << ".\n" ;
-  co.flush () ;
+  if (inVerboseOptionOn) {
+    co << t << ".\n" ;
+    co.flush () ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -179,9 +182,13 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
                             C_HTML_FileWrite & inHTMLfile,
                             const cVocabulary & inVocabulary,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                            C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD) {
+                            C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD,
+                            const bool inVerboseOptionOn) {
 //--- Console display
-  co << "  Searching for nonterminal symbols deriving in empty string... " ;
+  if (inVerboseOptionOn) {
+    co << "  Searching for nonterminal symbols deriving in empty string... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.writeCppTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
 
@@ -205,7 +212,8 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
                                          nonTerminalHavingEmptyDerivation,
                                          inHTMLfile,
                                          inVocabulary,
-                                         iterationCount) ;
+                                         iterationCount,
+                                         inVerboseOptionOn) ;
 }
 
 //---------------------------------------------------------------------------*

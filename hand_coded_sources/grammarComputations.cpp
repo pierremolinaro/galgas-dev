@@ -519,6 +519,10 @@ analyzeGrammar (C_Lexique & inLexique,
   typedef enum {kNoError, kError, kGrammarNotLL1, kGrammarNotSLR, kGrammarNotLR1} enumErrorKind ;
   enumErrorKind errorFlag = kNoError ;
 
+//--- Verbose Output
+  const bool verboseOptionOn = inLexique.galgas_IO_Ptr ()->boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                                    "verbose_output",
+                                                                                    NULL) ;
 //--- Output a HTML file ?
   bool optionExists = false ;
   const char * galgas_cli_component = "galgas_cli_options" ;
@@ -583,8 +587,9 @@ analyzeGrammar (C_Lexique & inLexique,
   cVocabulary vocabulary ;
   cPureBNFproductionsList pureBNFproductions ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
-    co << "  Building pure BNF productions... " ;
-
+    if (verboseOptionOn) {
+      co << "  Building pure BNF productions... " ;
+    }
   //--- Build vocabulary
     vocabulary.build (ioTerminalSymbolMap,
                       inNonterminalSymbolsMapForGrammar,
@@ -599,8 +604,10 @@ analyzeGrammar (C_Lexique & inLexique,
     HTMLfile.outputRawData ("<p></p>") ;
     HTMLfile.writeCppTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (HTMLfile, vocabulary, pureBNFproductions) ;
-    co << pureBNFproductions.length () << " productions.\n" ;
-    co.flush () ;
+    if (verboseOptionOn) {
+      co << pureBNFproductions.length () << " productions.\n" ;
+      co.flush () ;
+    }
   }
 
 //--- Define vocabulary BDD sets descriptor
@@ -608,12 +615,19 @@ analyzeGrammar (C_Lexique & inLexique,
 
 //--- Search for identical productions -----------------------------------------------------------
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
-    co << "  Searching for identical productions... " ;
+    if (verboseOptionOn) {
+      co << "  Searching for identical productions... " ;
+    }
     const bool step2ok = searchForIdenticalProductions (pureBNFproductions, HTMLfile) ;
     if (! step2ok) {
       errorFlag = kError ;
+      if (! verboseOptionOn) {
+        co << "  Searching for identical productions... " ;
+      }
+      co << "error.\n" ;
+    }else if (verboseOptionOn) {
+      co << "none, ok.\n" ;
     }
-    co << (step2ok ? "none, ok.\n" : "error.\n") ;
   }
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
   //--- Enregistrer les caracteristiques de la grammaire
@@ -647,7 +661,8 @@ analyzeGrammar (C_Lexique & inLexique,
                                  vocabulary,
                                  HTMLfile,
                                  usefulSymbols,
-                                 warningFlag) ;
+                                 warningFlag,
+                                 verboseOptionOn) ;
   }
 //--- Calculer l'ensemble des non terminaux pouvant se deriver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
@@ -657,7 +672,8 @@ analyzeGrammar (C_Lexique & inLexique,
                                 HTMLfile,
                                 vocabulary,
                                 vocabularyDerivingToEmpty_Array,
-                                vocabularyDerivingToEmpty_BDD) ;
+                                vocabularyDerivingToEmpty_BDD,
+                                verboseOptionOn) ;
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
   C_BDD_Set2 FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
@@ -673,7 +689,8 @@ analyzeGrammar (C_Lexique & inLexique,
                         FIRSTsets,
                         FIRSTarray,
                         vocabularyDescriptor,
-                        ok) ;
+                        ok,
+                        verboseOptionOn) ;
     if (! ok) {
       errorFlag = kError ;
     }
@@ -685,7 +702,8 @@ analyzeGrammar (C_Lexique & inLexique,
                                   HTMLfile,
                                   vocabulary,
                                   vocabularyDerivingToEmpty_Array,
-                                  nonTerminalSymbolsFollowedByEmpty) ;
+                                  nonTerminalSymbolsFollowedByEmpty,
+                                  verboseOptionOn) ;
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
   C_BDD_Set2 FOLLOWsets (vocabularyDescriptor, vocabularyDescriptor) ;
@@ -703,7 +721,8 @@ analyzeGrammar (C_Lexique & inLexique,
                          nonTerminalSymbolsFollowedByEmpty,
                          FOLLOWsets,
                          FOLLOWarray,
-                         ok) ;
+                         ok,
+                         verboseOptionOn) ;
     if (! ok) {
       errorFlag = kError ;
     }
@@ -726,7 +745,8 @@ analyzeGrammar (C_Lexique & inLexique,
                       inLexiqueName,
                       classesNamesSet,
                       ok,
-                      inStartSymbolEntityAndMetamodelMap) ;
+                      inStartSymbolEntityAndMetamodelMap,
+                      verboseOptionOn) ;
     if (! ok) {
       errorFlag = kGrammarNotLL1 ;
     }
@@ -747,7 +767,8 @@ analyzeGrammar (C_Lexique & inLexique,
                       inLexiqueName,
                       classesNamesSet,
                       ok,
-                      inStartSymbolEntityAndMetamodelMap) ;
+                      inStartSymbolEntityAndMetamodelMap,
+                      verboseOptionOn) ;
     if (ok) {
       errorFlag = kNoError ;
     }else{
@@ -772,7 +793,8 @@ analyzeGrammar (C_Lexique & inLexique,
                       inLexiqueName,
                       classesNamesSet,
                       ok,
-                      inStartSymbolEntityAndMetamodelMap) ;
+                      inStartSymbolEntityAndMetamodelMap,
+                      verboseOptionOn) ;
     if (ok) {
       errorFlag = kNoError ;
     }else{

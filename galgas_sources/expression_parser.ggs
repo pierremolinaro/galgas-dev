@@ -1290,28 +1290,39 @@ rule <factor>
     outExpression := [@typeConstructorExpression new !className !mClassMethodName !expressionList] ;
   or
     $option$ ;
-    @lstring optionComponentName ;
-    $identifier$ ? optionComponentName ;
-    @M_cli_options boolOptionsMap ;
-    @M_cli_options uintOptionsMap ;
-    @M_cli_options stringOptionsMap ;
-    [ioOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
-    $.$ ;
-    @lstring optionName ;
-    $identifier$ ? optionName ;
-    if [boolOptionsMap hasKey ![optionName string]] then
-      outExpression := [@typeBoolOption new !optionComponentName !optionName] ;
-      outResultType := [@typeGalgas_bool new] ;
-    elsif [uintOptionsMap hasKey ![optionName string]] then
-      outExpression := [@typeUIntOption new !optionComponentName !optionName] ;
-      outResultType := [@typeGalgas_uint new] ;
-    elsif [stringOptionsMap hasKey ![optionName string]] then
-      outExpression := [@typeStringOption new !optionComponentName !optionName] ;
-      outResultType := [@typeGalgas_uint new] ;
-    else
-      error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
-        -> outExpression, outResultType ;
-    end if ;
+    select
+      $.$ ;
+      @lstring optionName ;
+      $identifier$ ?optionName ;
+      if ([optionName string] != "verbose_output") then
+        error optionName: "this option name does not correspond to a builtin option" ;
+      end if ;
+       outExpression := [@typeBoolOption new !"generic_galgas_cli_options" !optionName] ;
+       outResultType := [@typeGalgas_bool new] ;
+    or
+      @lstring optionComponentName ;
+      $identifier$ ? optionComponentName ;
+      @M_cli_options boolOptionsMap ;
+      @M_cli_options uintOptionsMap ;
+      @M_cli_options stringOptionsMap ;
+      [ioOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+      $.$ ;
+      @lstring optionName ;
+      $identifier$ ?optionName ;
+      if [boolOptionsMap hasKey ![optionName string]] then
+        outExpression := [@typeBoolOption new ![optionComponentName string] !optionName] ;
+        outResultType := [@typeGalgas_bool new] ;
+      elsif [uintOptionsMap hasKey ![optionName string]] then
+        outExpression := [@typeUIntOption new ![optionComponentName string] !optionName] ;
+        outResultType := [@typeGalgas_uint new] ;
+      elsif [stringOptionsMap hasKey ![optionName string]] then
+       outExpression := [@typeStringOption new ![optionComponentName string] !optionName] ;
+        outResultType := [@typeGalgas_uint new] ;
+      else
+        error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
+          -> outExpression, outResultType ;
+      end if ;
+    end select ;
   end select ;
   $]$ ;
 end rule ;

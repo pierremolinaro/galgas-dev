@@ -47,7 +47,8 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_BDD_Set1 & nonTerminauxPouvantEtreSuivisDuVide,
                      C_BDD_Set2 & outFOLLOWsets,
                      TC_UniqueArray <TC_UniqueArray <sint32> > & outFOLLOWarray,
-                     bool & outOk) ;
+                     bool & outOk,
+                     const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------*
 

@@ -81,7 +81,8 @@ static void
 displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowedByEmpty_BDD,
                                           C_HTML_FileWrite & inHTMLfile,
                                           const cVocabulary & inVocabulary,
-                                          const sint32 inIterationsCount) { 
+                                          const sint32 inIterationsCount,
+                                          const bool inVerboseOptionOn) { 
   inHTMLfile.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
   inHTMLfile << "Calculus completed in "
              << inIterationsCount
@@ -106,8 +107,10 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
     }
   }
   inHTMLfile.outputRawData ("</table>") ;
-  co << n << ".\n" ;
-  co.flush () ;
+  if (inVerboseOptionOn) {
+    co << n << ".\n" ;
+    co.flush () ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -117,9 +120,13 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               C_HTML_FileWrite & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                              C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD) {
+                              C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
+                              const bool inVerboseOptionOn) {
 //--- Console display
-  co << "  Nonterminal symbols followed by empty string... " ;
+  if (inVerboseOptionOn) {
+    co << "  Nonterminal symbols followed by empty string... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.writeCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
 
@@ -135,7 +142,8 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
  displayNonterminalSymbolsFollowedByEmpty (outVocabularyFollowedByEmpty_BDD,
                                            inHTMLfile,
                                            inVocabulary,
-                                           iterationsCount) ; 
+                                           iterationsCount,
+                                           inVerboseOptionOn) ; 
 }
 
 //---------------------------------------------------------------------------*

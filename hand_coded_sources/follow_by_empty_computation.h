@@ -40,7 +40,8 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               C_HTML_FileWrite & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                              C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD) ;
+                              C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
+                              const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------*
 

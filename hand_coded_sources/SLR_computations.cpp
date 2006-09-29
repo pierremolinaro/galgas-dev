@@ -1077,9 +1077,13 @@ SLR_computations (C_Lexique & inLexique,
                   const C_String & inLexiqueName,
                   const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
-                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap,
+                  const bool inVerboseOptionOn) {
 //--- Console display
- co << "  Building SLR automaton... " ;
+  if (inVerboseOptionOn) {
+    co << "  Building SLR automaton... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.writeCppTitleComment ("Building SLR automaton", "title") ;
   inHTMLfile.outputRawData ("<p></p>") ;
@@ -1091,9 +1095,11 @@ SLR_computations (C_Lexique & inLexique,
                           inVocabulary,
                           LR0_items_sets_collection,
                           transitionList) ;
-  co << LR0_items_sets_collection.getStatesCount () << " states, "
-               << transitionList.length () << " transitions.\n" ;
-
+  if (inVerboseOptionOn) {
+    co << LR0_items_sets_collection.getStatesCount () << " states, "
+       << transitionList.length () << " transitions.\n" ;
+    co.flush () ;
+  }
 //--- Display automaton states
   inHTMLfile.outputRawData ("<table class=\"result\">"
                             "<tr><td class=\"result_title\" colspan=\"2\">") ;
@@ -1117,7 +1123,10 @@ SLR_computations (C_Lexique & inLexique,
   inHTMLfile.outputRawData ("</table><p></p>") ;
 
 //--- Console display
- co << "  Checking SLR condition... " ;
+  if (inVerboseOptionOn) {
+    co << "  Checking SLR condition... " ;
+    co.flush () ;
+  }
 //--- Print in BNF file
   inHTMLfile.writeCppTitleComment ("Checking SLR condition", "title") ;
 
@@ -1227,7 +1236,10 @@ SLR_computations (C_Lexique & inLexique,
     inHTMLfile.outputRawData ("<span class=\"success\">") ;
     inHTMLfile << "No conflict : grammar is SLR (1)." ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "ok.\n" ;
+    if (inVerboseOptionOn) {
+      co << "ok.\n" ;
+      co.flush () ;
+    }
     outOk = true ; // No error
   }else{
     inHTMLfile.outputRawData ("<span class=\"error\">") ;
@@ -1236,10 +1248,12 @@ SLR_computations (C_Lexique & inLexique,
               << ((conflictCount > 1) ? "s" : "")
               << " : grammar is not SLR (1)." ;
     inHTMLfile.outputRawData ("</span>") ;
-    co << "error.\n" ;
+    if (inVerboseOptionOn) {
+      co << "error.\n" ;
+      co.flush () ;
+    }
     outOk = false ; // Error, grammar is not SRL (1)
   }
-  co.flush () ;
   inHTMLfile.outputRawData ("</p>") ;
 //--- Generate C++ file
   if (conflictCount == 0) {
