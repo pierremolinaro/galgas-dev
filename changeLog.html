@@ -8,6 +8,13 @@
 <body>
 <p><b>GALGAS ChangeLog</b></p>
 <p><br></p>
+<p>1.4.3</p>
+<ul>
+  <li>Added two new lexical actions (thanks to Mika&euml;l Briday): <tt>enterBinDigitIntoUInt</tt> and <tt>enterBinDigitIntoUInt64</tt> that enable building an 32-bit and 64-bit unsigned value from binary string;</li>
+  <li>In Cocoa GALGAS Applications (and Cocoa GALGAS generated applications), the ruler thickness is now adjusted to display 5 digit line numbers.</li>
+  <li>From now, GALGAS compilers (and GALGAS generated tools) run silently without any message on success (of course, warnings and errors are still displayed);</li>
+  <li>From now, GALGAS compilers (and GALGAS generated tools) have a new command line option <tt>--verbose</tt> (shortly <tt>-v</tt>) that enables message displaying, as for previous releases.</li>
+</ul>
 <p>1.4.2</p>
 <ul>
   <li>added <tt>--libpm</tt> command line option for defining libpm path on project creation</li>
@@ -27,14 +34,14 @@
 <ul>
   <li>first attempt to provide galgas and libpm code 64-bit clean: now, makefiles build both 32-bit and 64-bit tools;</li>
   <li>consequently, the <tt>makefile_i386linux_on_macosx</tt> directory is now named <tt>makefile_x86linux_on_macosx</tt>;</li>
-  <li>makefiles are now invoked with --warn-undefined-variables command line option (strangely, compilation under MSYS on Windows warns that '^' variable is not defined)</li>
+  <li>makefiles are now invoked with <tt>--warn-undefined-variables</tt> command line option (strangely, compilation under MSYS on Windows warns that '^' variable is not defined)</li>
   <li>ouput effective arguments now support polymorphic assignment;</li>
   <li>an empty lexical analyzer now raises lexical errors on every character until the end of source file (on previous versions, it runs indefinitly);</li>
   <li>many limitations on class handling have been relaxed (see Release notes);</li>
 </ul>
 <p>1.3.1</p>
 <ul>
-  <li><b>Version 1.3.0 has been deleted</b>; --create-project option did not work;</li>
+  <li><b>Version 1.3.0 has been deleted</b>; <tt>--create-project</tt> option did not work;</li>
   <li>on @bool type: added ^ (exclusive or) diadic operator;</li>
   <li>on @uint type: added 'object ++ ;' incrementation instruction, 'object -- ;' decrementation instruction,
       + (addition) , - (subtraction), * (multiplication) , / (division), % (modulo), &amp; (bit wide and),
@@ -56,9 +63,9 @@
   <li>new keywords: 'root', 'entity', 'metamodel';</li>
   <li>suppressed keyword: 'start';</li>
   <li>grammar component change: now 'root' keyword is used instead of 'start' keyword for name the start symbol;</li>
-  <li>fixed a lexique component bug: 'send' instruction did not check the terminal symbol to be declared;</li>
+  <li>fixed a lexique component bug: 'send' instruction now checks the terminal symbol is actually declared;</li>
   <li>fixed a grammar component bug: output HTML file was not generated when the source file was written in command line without any path;</li>
-  <li>fixed a bug when linking on MSYS/MinGW: now strip is called, instead of mingw32-strip;</li>
+  <li>fixed a bug when linking on MSYS/MinGW: now <tt>strip</tt> is called, instead of <tt>mingw32-strip</tt>;</li>
 </ul>
 <p>1.2.4</p>
 <ul>
