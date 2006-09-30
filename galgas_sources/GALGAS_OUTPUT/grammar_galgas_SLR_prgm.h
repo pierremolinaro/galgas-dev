@@ -38,7 +38,7 @@ class galgas_SLR_prgm : public C_defaultUserSemanticActions {
 
   public : virtual void _beforeParsing (void) ;
 
-  public : virtual void _afterParsing (void) ;
+  public : virtual void _afterParsing (const bool inVerboseOptionOn) ;
 
 //--- END OF USER ZONE 2
 

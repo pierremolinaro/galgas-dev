@@ -184,83 +184,99 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 //--- Lexique interface           
   generatedZone3.writeCppTitleComment ("Lexique interface") ;
   generatedZone3 << "\n"
-             "sint32 getStylesCount (void) {\n"
-             "  return " << inLexiqueComponentName << "::getStylesCount () ;\n"
-             "}\n"
-             "\n"
-             "const char * getStyleName (const sint32 inIndex) {\n"
-             "  return " << inLexiqueComponentName << "::getStyleName (inIndex) ;\n"
-             "}\n"
-             "\n"
-             "void scanThenGetStyledRangeArray (NSString * inSourceString,\n"
-             "                                  const char * inSourceFileName,\n"
-             "                                  TC_UniqueArray <C_styledRange> & ioStyledRangeArray,\n"
-             "                                  const sint32 inAffectedRangeLocation,\n"
-             "                                  const sint32 inAffectedRangeLength,\n"
-             "                                  const sint32 inReplacementStringLength,\n"
-             "                                  sint32 & outFirstIndexToRedraw,\n"
-             "                                  sint32 & outLastIndexToRedraw,\n"
-             "                                  sint32 & outEraseRangeStart,\n"
-             "                                  sint32 & outEraseRangeEnd) {\n"
-             "  if (gScannerPtr == NULL) {\n"
-             "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (& gNullIO)) ;\n"
-             "  }\n"
-             "  AC_sourceText * sourceTextPtr = NULL ;\n"
-             "  macroMyNew (sourceTextPtr,\n"
-             "              C_sourceTextForCocoa (inSourceString,\n"
-             "                                    inSourceFileName\n"
-             "                                    COMMA_HERE)) ;\n"
-             "  gScannerPtr->resetAndLoadSourceFromText (sourceTextPtr) ;\n"
-             "  gScannerPtr->scanThenGetStyledRangeArray (ioStyledRangeArray,\n"
-             "                                            inAffectedRangeLocation,\n"
-             "                                            inAffectedRangeLength,\n"
-             "                                            inReplacementStringLength,\n"
-             "                                            outFirstIndexToRedraw,\n"
-             "                                            outLastIndexToRedraw,\n"
-             "                                            outEraseRangeStart,\n"
-             "                                            outEraseRangeEnd) ;\n"
-             "}\n"
-             "\n"
-             "void initializeTextColors (NSString * inGGS_colors) {\n"
-             "  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;\n"
-             "   gColorArray = [NSMutableArray arrayWithCapacity:getStylesCount ()] ;\n"
-             "  [gColorArray retain] ;\n"
-             "  for (int i=0 ; i<getStylesCount () ; i++) {\n"
-             "    NSString * name = [NSString stringWithFormat:inGGS_colors, i] ;\n"
-             "    NSData * colorData = [defaults dataForKey:name] ;\n"
-             "    if (colorData != nil) {\n"
-             "      NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData: colorData] ;\n"
-             "      [gColorArray addObject:color] ;\n"
-             "    }else{\n"
-             "      #ifdef USER_DEFAULT_COLORS_DEFINED\n"
-             "        NSColor * newColor = getDefaultUserColor (i) ;\n"
-             "      #else\n"
-             "        NSColor * newColor = [NSColor blackColor] ;\n"
-             "      #endif\n"
-             "        [gColorArray addObject:newColor] ;\n"
-             "        colorData = [NSArchiver archivedDataWithRootObject:newColor] ;\n"
-             "        [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:name] ;\n"
-             "    }\n"
-             "  }\n"
-             "}\n"
-             "\n"
-             "NSColor * getColor (const sint32 inIndex) {\n"
-             "  return [gColorArray objectAtIndex: inIndex] ;\n"
-             "}\n"
-             "\n"
-             "void changeColor (const sint32 inIndex, NSColor * inNewColor) {\n"
-             "  [gColorArray replaceObjectAtIndex: inIndex withObject: inNewColor] ;\n"
-             "}\n"
-             "\n" ;
+                    "sint32 getStylesCount (void) {\n"
+                    "  return " << inLexiqueComponentName << "::getStylesCount () ;\n"
+                    "}\n\n" ;
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "const char * getStyleName (const sint32 inIndex) {\n"
+                    "  return " << inLexiqueComponentName << "::getStyleName (inIndex) ;\n"
+                    "}\n\n" ;
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "const char * getStyleIdentifier (const sint32 inIndex) {\n"
+                    "  return " << inLexiqueComponentName << "::getStyleIdentifier (inIndex) ;\n"
+                    "}\n\n" ;
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "void scanThenGetStyledRangeArray (NSString * inSourceString,\n"
+                    "                                  const char * inSourceFileName,\n"
+                    "                                  TC_UniqueArray <C_styledRange> & ioStyledRangeArray,\n"
+                    "                                  const sint32 inAffectedRangeLocation,\n"
+                    "                                  const sint32 inAffectedRangeLength,\n"
+                    "                                  const sint32 inReplacementStringLength,\n"
+                    "                                  sint32 & outFirstIndexToRedraw,\n"
+                    "                                  sint32 & outLastIndexToRedraw,\n"
+                    "                                  sint32 & outEraseRangeStart,\n"
+                    "                                  sint32 & outEraseRangeEnd) {\n"
+                    "  if (gScannerPtr == NULL) {\n"
+                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (& gNullIO)) ;\n"
+                    "  }\n"
+                    "  AC_sourceText * sourceTextPtr = NULL ;\n"
+                    "  macroMyNew (sourceTextPtr,\n"
+                    "              C_sourceTextForCocoa (inSourceString,\n"
+                    "                                    inSourceFileName\n"
+                    "                                    COMMA_HERE)) ;\n"
+                    "  gScannerPtr->resetAndLoadSourceFromText (sourceTextPtr) ;\n"
+                    "  gScannerPtr->scanThenGetStyledRangeArray (ioStyledRangeArray,\n"
+                    "                                            inAffectedRangeLocation,\n"
+                    "                                            inAffectedRangeLength,\n"
+                    "                                            inReplacementStringLength,\n"
+                    "                                            outFirstIndexToRedraw,\n"
+                    "                                            outLastIndexToRedraw,\n"
+                    "                                            outEraseRangeStart,\n"
+                    "                                            outEraseRangeEnd) ;\n"
+                    "}\n\n" ;
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "void\n"
+                    "initializeTextColors (NSString * inGGS_indexed_color,\n"
+                    "                      NSString * inGGS_named_color) {\n"
+                    "  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;\n"
+                    "  gColorArray = [NSMutableArray arrayWithCapacity:getStylesCount ()] ;\n"
+                    "  [gColorArray retain] ;\n"
+                    "  for (int i=0 ; i<getStylesCount () ; i++) {\n"
+                    "    NSString * name = [NSString stringWithFormat:inGGS_indexed_color, getStyleIdentifier (i)] ;\n"
+                    "    NSData * colorData = [defaults dataForKey:name] ;\n"
+                    "    if (colorData == nil) {\n"
+                    "      NSString * indexedName = [NSString stringWithFormat:inGGS_indexed_color, i] ;\n"
+                    "      colorData = [defaults dataForKey:indexedName] ;\n"
+                    "      [defaults setObject:colorData forKey:name] ;\n"
+                    "      [defaults setObject:nil forKey:indexedName] ;\n"
+                    "    }\n"
+                    "    if (colorData != nil) {\n"
+                    "      NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData: colorData] ;\n"
+                    "      [gColorArray addObject:color] ;\n"
+                    "    }else{\n"
+                    "      #ifdef USER_DEFAULT_COLORS_DEFINED\n"
+                    "        NSColor * newColor = getDefaultUserColor (i) ;\n"
+                    "      #else\n"
+                    "        NSColor * newColor = [NSColor blackColor] ;\n"
+                    "      #endif\n"
+                    "        [gColorArray addObject:newColor] ;\n"
+                    "        colorData = [NSArchiver archivedDataWithRootObject:newColor] ;\n"
+                    "        [defaults setObject:colorData forKey:name] ;\n"
+                    "    }\n"
+                    "  }\n"
+                    "}\n\n" ;
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "NSColor * getColor (const sint32 inIndex) {\n"
+                    "  return [gColorArray objectAtIndex: inIndex] ;\n"
+                    "}\n\n" ;
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 <<  "void changeColor (const sint32 inIndex, NSColor * inNewColor) {\n"
+                     "  [gColorArray replaceObjectAtIndex: inIndex withObject: inNewColor] ;\n"
+                    "}\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
 
 //--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
   inLexique.generateFile ("//",
                           inCocoaComponentName + ".mm",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3) ;
+                          generatedZone3,
+                          verboseOptionOn,
+                          false) ;
 }
 
 //---------------------------------------------------------------------------*

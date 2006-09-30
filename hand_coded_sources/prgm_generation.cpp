@@ -105,12 +105,17 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                     "  public : void _prologue (void) ;\n"
                     "  public : void _epilogue (void) ;\n"
                     "} ;\n\n" ;
+    const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                    "verbose_output",
+                                                                    false) ;
     inLexique.generateFile ("//",
                             C_String ("grammar_") + inProgramComponentName + currentGrammar->mGrammarPostfix + ".h",
                             "\n\n", // User Zone 1
                             grammarZone2,
                             "\n\n", // User Zone 2
-                            grammarZone3) ;
+                            grammarZone3,
+                            verboseOptionOn,
+                            false) ;
     generatedZone2 << "#include \"grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << ".h\"\n\n" ;
     currentGrammar = currentGrammar->nextObject () ;
   }
@@ -143,12 +148,17 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
   inLexique.generateFile ("//",
                           inProgramComponentName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3) ;
+                          generatedZone3,
+                          verboseOptionOn,
+                          false) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -244,9 +254,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << "C_Timer timer ;\n"
                       "try{\n" ;
     generatedZone2.incIndentation (+2) ;
-    generatedZone2 << "if (mTerminalIO.versionModeOn ()) {\n"
+    generatedZone2 << "/* if (mTerminalIO.versionModeOn ()) {\n"
                       "  co << \"Reading '\" << inSourceFileName_ << \"'\\n\" ;\n"
-                      "}\n"
+                      "} */\n"
                       "mScannerPtr_->resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
                       "_beforeParsing () ;\n" ; //--- Give a chance to initialize program parameters
     GGS_typeListeAttributsAxiome::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
@@ -476,12 +486,17 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                "//--- ADD YOUR CODE HERE\n"
                "}\n" ;
 //--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
   inLexique.generateFile ("//",
                           inProgramComponentName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           userZone2, // User Zone 2
-                          "\n") ;
+                          "\n",
+                          verboseOptionOn,
+                          false) ;
 }
 
 //---------------------------------------------------------------------------*
