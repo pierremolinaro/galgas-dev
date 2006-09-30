@@ -564,8 +564,8 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
 //---------------------------------------- Generate styles definition 
   generatedZone2.writeCppTitleComment ("Styles definition") ;
   generatedZone2 <<  "sint32 " << inLexiqueName << "::getStylesCount (void) {\n"
-        "  return " <<  inStylesMap.count () << " ;\n"
-        "}\n\n" ;
+                     "  return " <<  inStylesMap.count () << " ;\n"
+                     "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleName (const sint32 inIndex) {\n"
               "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
@@ -580,35 +580,53 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
              "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
              "} ;\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleIdentifier (const sint32 inIndex) {\n"
+              "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
+  style = inStylesMap.firstObject () ;
+  while (style != NULL) {
+    macroValidPointer (style) ;
+    generatedZone2.writeCstringConstant (style->mKey) ;
+    generatedZone2 << ", " ;
+    style = style->nextObject () ;
+  }
+  generatedZone2 << "NULL} ;\n"
+                    "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
+                    "} ;\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "uint8 " << inLexiqueName << "::\n"
-             "terminalStyleIndex (const sint32 inTerminal) {\n"
-             "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.count () + 1) << "] = {0" ;
+                    "terminalStyleIndex (const sint32 inTerminal) {\n"
+                    "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.count () + 1) << "] = {0" ;
 
   currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     generatedZone2 << ",\n    "
-            << currentTerminal->mInfo.mStyleIndex.uintValue ()
-            << " /* "
-            << inLexiqueName
-            << "_1_" ;
+                   << currentTerminal->mInfo.mStyleIndex.uintValue ()
+                   << " /* "
+                   << inLexiqueName
+                   << "_1_" ;
     generateTerminalSymbolCppName (currentTerminal->mKey, generatedZone2) ;
     generatedZone2 << " */" ;
     currentTerminal = currentTerminal->nextObject () ;
   }
   generatedZone2 << "\n  } ;\n"
-             "  return kTerminalSymbolStyles [inTerminal] ;\n"
-             "}\n\n" ;
+                    "  return kTerminalSymbolStyles [inTerminal] ;\n"
+                    "}\n\n" ;
 
   C_String generatedZone3 ;
   generatedZone3.writeCppHyphenLineComment () ;
 
 //--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
   inLexique.generateFile ("//",
                           inLexiqueName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3) ;
+                          generatedZone3,
+                          verboseOptionOn,
+                          false) ;
 }
 
 
@@ -1000,6 +1018,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
                     "//--- Style Definition\n"
                     "  public : static sint32 getStylesCount (void) ;\n"
                     "  public : static const char * getStyleName (const sint32 inIndex) ;\n"
+                    "  public : static const char * getStyleIdentifier (const sint32 inIndex) ;\n"
                     "//--- Virtual method called getting terminal style index\n"
                     "  public : virtual uint8 terminalStyleIndex (const sint32 inTerminal) ;\n"
         "} ;\n\n" ;
@@ -1008,12 +1027,17 @@ generate_scanner_header_file (C_Lexique & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
   inLexique.generateFile ("//",
                           inLexiqueName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3) ;
+                          generatedZone3,
+                          verboseOptionOn,
+                          false) ;
 }
 
 //---------------------------------------------------------------------------*

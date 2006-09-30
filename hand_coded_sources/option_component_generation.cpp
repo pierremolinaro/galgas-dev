@@ -95,12 +95,17 @@ generate_option_header_file (C_Lexique & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
   inLexique.generateFile ("//",
                           inOptionClassName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3) ;
+                          generatedZone3,
+                          verboseOptionOn,
+                          false) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -470,12 +475,17 @@ generate_option_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeCppHyphenLineComment () ;
 
 //--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
   inLexique.generateFile ("//",
                           inOptionClassName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3) ;
+                          generatedZone3,
+                          verboseOptionOn,
+                          false) ;
 }
 
 //---------------------------------------------------------------------------*
