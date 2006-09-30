@@ -232,7 +232,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "  gColorArray = [NSMutableArray arrayWithCapacity:getStylesCount ()] ;\n"
                     "  [gColorArray retain] ;\n"
                     "  for (int i=0 ; i<getStylesCount () ; i++) {\n"
-                    "    NSString * name = [NSString stringWithFormat:inGGS_indexed_color, getStyleIdentifier (i)] ;\n"
+                    "    NSString * name = [NSString stringWithFormat:inGGS_named_color, getStyleIdentifier (i)] ;\n"
                     "    NSData * colorData = [defaults dataForKey:name] ;\n"
                     "    if (colorData == nil) {\n"
                     "      NSString * indexedName = [NSString stringWithFormat:inGGS_indexed_color, i] ;\n"
