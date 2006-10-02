@@ -58,11 +58,12 @@ label parse
 ;
 
 action generateCocoaComponent
-  ?!@lstring nomPRGMprincipal
-  ?!@lstring inGUIkindName
-  ?!@lstring inCLIToolName
-  ?!@lstring inLexiqueClassName
-  ?!@M_optionComponents inOptionsComponents
+  ?@lstring nomPRGMprincipal
+  ?@lstring inGUIkindName
+  ?@lstring inCLIToolName
+  ?@L_GUIAttributeList inGUIAttributeList
+  ?@lstring inLexiqueClassName
+  ?@M_optionComponents inOptionsComponents
 ;
 
 #--------------------------------------------------------------------------------*
@@ -117,13 +118,31 @@ rule <galgas_component>
   @lstring altName := [@lstring new !"" !here] ;
   [nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
   $;$ ;
+#--- Assignment list
+  @L_GUIAttributeList guiAttributeList [emptyList] ;
+  @stringset keySet [emptySet] ;
+  keySet += !"nibAndMainClass" ;
+  repeat
+  while
+    @lstring targetName ;
+    $identifier$ ? targetName ;
+    if not [keySet hasKey ![targetName string]] then
+      error targetName: "unkown key" ;
+    end if ;
+    $:$ ;
+    @lstring sourceExpression ;
+    $literal_string$ ? sourceExpression ;
+    guiAttributeList += !targetName !sourceExpression ;
+    $;$ ;
+  end repeat ;
 #--- Generate Cocoa c++ file
   action generateCocoaComponent
-    !?guiComponentName
-    !?guiKindName
-    !?cliToolName
-    !?lexiqueClassName
-    !?optionsComponentsMap
+    !guiComponentName
+    !guiKindName
+    !cliToolName
+    !guiAttributeList
+    !lexiqueClassName
+    !optionsComponentsMap
   ;
   $end$ ;
   $gui$ ;
@@ -149,6 +168,14 @@ label importLexique
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+#--- Assignment list
+  repeat
+  while
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   $end$ ;
   $gui$ ;
   $;$ ;
@@ -174,6 +201,14 @@ label importSyntax
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+#--- Assignment list
+  repeat
+  while
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   $end$ ;
   $gui$ ;
   $;$ ;
@@ -200,6 +235,14 @@ label importSemantics
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+#--- Assignment list
+  repeat
+  while
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   $end$ ;
   $gui$ ;
   $;$ ;
@@ -226,6 +269,13 @@ label importGrammarForSemantics
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+  repeat
+  while
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   $end$ ;
   $gui$ ;
   $;$ ;
@@ -250,6 +300,14 @@ label importOptions
    <parse_grammar_component_for_importing> parse ;
   end select ;
   $;$ ;
+#--- Assignment list
+  repeat
+  while
+    $identifier$ ? * ;
+    $:$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   $end$ ;
   $gui$ ;
   $;$ ;
