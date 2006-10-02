@@ -30,6 +30,7 @@ static void
 generate_mm_file_for_cocoa (C_Lexique & inLexique,
                             const C_String & inCocoaComponentName,
                             const GGS_lstring & inCLIToolName,
+                            const GGS_L_GUIAttributeList & inGUIAttributeList,
                             const C_String & inLexiqueComponentName,
                             const GGS_M_optionComponents & inOptionComponentsMap) {
 //--- Generate user includes
@@ -47,6 +48,16 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
     macroValidPointer (currentOptionComponent) ;
     generatedZone2 << "#import \"" << currentOptionComponent->mKey << ".h\"\n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
+  }
+  GGS_L_GUIAttributeList::element_type * currentNib = inGUIAttributeList.firstObject () ;
+  while (currentNib != NULL) {
+    macroValidPointer (currentNib) ;
+    if (currentNib->mKey == "nibAndMainClass") {
+      TC_UniqueArray <C_String> result ;
+      currentNib->mValue.componentsSeparatedByString (".", result) ;
+      generatedZone2 << "#import \"" << result (1 COMMA_HERE) << ".h\"\n" ;
+    }
+    currentNib = currentNib->nextObject () ;
   }
   generatedZone2 << "#ifdef USER_DEFAULT_COLORS_DEFINED\n"
                     "  #import \"user_default_colors.h\"\n"
@@ -85,10 +96,28 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
              "static NSMutableArray * gColorArray ;\n\n" ;
 
+//--- NIB and main class
+  generatedZone3.writeCppTitleComment ("N I B S   A N D   T H E I R   M A I N   C L A S S E S") ;
+  generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
+                    "  return [NSArray arrayWithObjects:\n" ;
+  currentNib = inGUIAttributeList.firstObject () ;
+  while (currentNib != NULL) {
+    macroValidPointer (currentNib) ;
+    if (currentNib->mKey == "nibAndMainClass") {
+      TC_UniqueArray <C_String> result ;
+      currentNib->mValue.componentsSeparatedByString (".", result) ;
+      generatedZone3 << "    [NSArray arrayWithObjects:@\"" << result (0 COMMA_HERE)
+                     << "\", [" << result (1 COMMA_HERE) << " class], nil],\n" ;
+    }
+    currentNib = currentNib->nextObject () ;
+  }
+  generatedZone3 << "    nil\n"
+                    "  ] ;\n"
+                    "}\n\n" ;
+
 //--- Bool options routines             
   generatedZone3.writeCppTitleComment ("B O O L   O P T I O N S   R O U T I N E S") ;
-  generatedZone3 << "\n"
-             "sint32 getBoolOptionsCount (void) {\n"
+  generatedZone3 << "sint32 getBoolOptionsCount (void) {\n"
              "  return gCommandLineOptions.getBoolOptionsCount () ;\n"
              "}\n"
              "\n"
@@ -283,21 +312,23 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 
 void 
 routine_generateCocoaComponent (C_Lexique & inLexique,
-                                GGS_lstring & inGUIcomponentName,
-                                GGS_lstring & inGUIkindName,
-                                GGS_lstring & inCLIToolName,
-                                GGS_lstring & inLexiqueComponentName,
-                                GGS_M_optionComponents & inOptionComponentsMap
+                                GGS_lstring inGUIcomponentName,
+                                GGS_lstring inGUIkindName,
+                                GGS_lstring inCLIToolName,
+                                GGS_L_GUIAttributeList inGUIAttributeList,
+                                GGS_lstring inLexiqueComponentName,
+                                GGS_M_optionComponents inOptionComponentsMap
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (inGUIkindName == "cocoa") {
     generate_mm_file_for_cocoa (inLexique,
                                 inGUIcomponentName,
                                 inCLIToolName,
+                                inGUIAttributeList,
                                 inLexiqueComponentName,
                                 inOptionComponentsMap) ;
   }else{
     inGUIkindName.semanticError (inLexique,
-                                 "only the \"cocoa\" gui is supported"
+                                 "only the \"cocoa\" gui is currenly supported"
                                  COMMA_HERE) ;
   }
 }
