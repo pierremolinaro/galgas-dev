@@ -144,7 +144,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <sint32> > & inFOLLOWarray
   const sint32 symbolsToDisplayCount = inFOLLOWarray.count () - 1 ;
   for (sint32 i=0 ; i<symbolsToDisplayCount ; i++) {
     if (i != inVocabulary.getEmptyStringTerminalSymbolIndex ()) { // Don't print follower of empty string
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inVocabulary.printInFile (inHTMLfile, i COMMA_HERE) ;
       inHTMLfile.outputRawData ("</code></td><td><code>") ;
       TC_UniqueArray <sint32> & s = inFOLLOWarray (i COMMA_HERE) ;
@@ -217,7 +217,7 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
     const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
     for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
       if (array (symbol COMMA_HERE)) {
-        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
         inHTMLfile.outputRawData ("</code></td></tr>") ;
       }

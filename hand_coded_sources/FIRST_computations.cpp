@@ -101,7 +101,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
   FIRST_with_empty.getArray (outFIRSTarray) ;
   inHTMLfile.outputRawData ("<table class=\"result\">") ;
   for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
     inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
     inHTMLfile.outputRawData ("</code></td><td><code>") ;
     const sint32 length = outFIRSTarray (symbol COMMA_HERE).count () ;

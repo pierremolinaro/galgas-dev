@@ -101,7 +101,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
   inHTMLfile.outputRawData ("<table class=\"result\">") ;
   for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
     if (array (symbol COMMA_HERE)) {
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
       inHTMLfile.outputRawData ("</code></td></tr>") ;
     }

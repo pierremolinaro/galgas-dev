@@ -422,23 +422,27 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
   inHTMLfile.outputRawData ("</p>\n<table class=\"result\">") ;
   for (sint32 i=0 ; i<productionsCount ; i++) {
     const cProduction & p = inProductions (i COMMA_HERE) ;
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
+    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile.outputRawData ("<a name=\"pure_bnf_") ;
     inHTMLfile << i ;
     inHTMLfile.outputRawData ("\">") ;
     inHTMLfile << i ;
-    inHTMLfile.outputRawData ("</a></td><td>") ;
+    inHTMLfile.outputRawData ("</a></td><td class=\"result_line\">") ;
     inHTMLfile << "rule " ;
     inHTMLfile.outputRawData ("<code>") ;
     inVocabulary.printInFile (inHTMLfile, p.aNumeroNonTerminalGauche COMMA_HERE) ;
-    inHTMLfile.outputRawData ("</code><br>") ;
+    inHTMLfile.outputRawData ("</code>") ;
     if (i == (productionsCount - 1)) {
-      inHTMLfile << " (added production)\n" ;
+      inHTMLfile.outputRawData ("<br>") ;
+      inHTMLfile << "(added production)" ;
     }else{
+      inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile << "file '"
-                << p.mSourceFileName
-                << "', line "
-                << p.aLigneDefinition ;
+                 << p.mSourceFileName
+                 << "'" ;
+      inHTMLfile.outputRawData ("<br>") ;
+      inHTMLfile << "line "
+                 << p.aLigneDefinition ;
     }
     inHTMLfile.outputRawData ("</td><td><code>") ;
     for (sint32 d=0 ; d<p.aDerivation.count () ; d++) {
@@ -456,7 +460,7 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
   inHTMLfile << "Vocabulary" ;
   inHTMLfile.outputRawData ("</td></tr>\n") ;
   for (sint32 s=0 ; s<inVocabulary.getAllSymbolsCount () ; s++) {
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
+    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile << s ;
     inHTMLfile.outputRawData ("</td><td><code>") ;
     inVocabulary.printInFile (inHTMLfile, s COMMA_HERE) ;
