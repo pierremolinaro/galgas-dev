@@ -41,6 +41,8 @@
   <string>GGSX</string>
   <key>CFBundleVersion</key>
   <string>BUILD_AND_LIBPM</string>
+  <key>CFBundleShortVersionString</key>
+  <string>VERSION_GALGAS</string>
   <key>NSMainNibFile</key>
   <string>MainMenu</string>
   <key>NSPrincipalClass</key>
