@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------*
 
 #import "GGSUpdateCocoaGalgas.h"
+#import "OC_GGS_PreferencesController.h"
 
 //--------------------------------------------------------------------------*
 
@@ -16,7 +17,12 @@
 //--------------------------------------------------------------------------*
 
 - (void) awakeFromNib {
-  NSBeep () ;
+  NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
+  NSTabViewItem * updateTabViewItem = [[NSTabViewItem alloc] init] ;
+  [updateTabViewItem setView:mUpdateView] ;
+  [updateTabViewItem setLabel:@"Update"] ;
+  [prefsTabView addTabViewItem:updateTabViewItem] ;
+  [updateTabViewItem release] ;
 }
 
 //--------------------------------------------------------------------------*
