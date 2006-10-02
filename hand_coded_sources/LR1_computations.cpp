@@ -753,7 +753,7 @@ display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
          C_HTML_FileWrite & inHTMLfile) {
   for (sint32 i=0 ; i<m_LR1_items_sets_array.count () ; i++) {
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
+    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile << "S" << i ;
     inHTMLfile.outputRawData ("</td><td><code>") ;
     m_LR1_items_sets_array (i COMMA_HERE).display (inProductionRules, inVocabulary, inHTMLfile) ;
@@ -1330,7 +1330,7 @@ LR1_computations (C_Lexique & inLexique,
   }
 //--- Display automaton states
   inHTMLfile.outputRawData ("<p></p><table class=\"result\">"
-                            "<tr class=\"result_line\"><td colspan=\"2\">") ;
+                            "<tr class=\"result_line\"><td  class=\"result_line\" colspan=\"2\">") ;
   inHTMLfile << "LR1 automaton states" ;
   LR1_items_sets_collection.display (inProductionRules, inVocabulary, inHTMLfile) ;
   inHTMLfile.outputRawData ("</table>") ;
@@ -1339,7 +1339,7 @@ LR1_computations (C_Lexique & inLexique,
   inHTMLfile << "LR1 automaton transitions" ;
   inHTMLfile.outputRawData ("</td></tr>") ;
   for (sint32 i=0 ; i<transitionList.length () ; i++) {
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
     inHTMLfile << "S" << transitionList (i COMMA_HERE).mSourceState
               << " |- " ;
     inVocabulary.printInFile (inHTMLfile, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
@@ -1373,7 +1373,7 @@ LR1_computations (C_Lexique & inLexique,
       const sint32 sourceState = transitionList (index COMMA_HERE).mSourceState ;
       const sint32 targetState = transitionList (index COMMA_HERE).mTargetState ;
       const sint32 terminal = transitionList (index COMMA_HERE).mAction ;
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inHTMLfile << "Action [S" << sourceState << ", " ;
       inVocabulary.printInFile (inHTMLfile, terminal COMMA_HERE) ;
       inHTMLfile << "] : shift, goto S" << targetState ;
@@ -1396,7 +1396,7 @@ LR1_computations (C_Lexique & inLexique,
                                                                   acceptCondition) ;
     if (acceptCondition) {
       const sint32 terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inHTMLfile << "Action [S"
                 << state
                 << ", " ;
@@ -1418,7 +1418,7 @@ LR1_computations (C_Lexique & inLexique,
       const sint32 leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
       if (leftNonTerminal != (inVocabulary.getAllSymbolsCount () - 1)) {
         const sint32 terminal = terminalArray (p COMMA_HERE) ;
-        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         inHTMLfile << "Action [S"
                    << state
                    << ", " ;
@@ -1442,7 +1442,7 @@ LR1_computations (C_Lexique & inLexique,
 //--- Successors
   for (sint32 tr=0 ; tr<transitionList.length () ; tr++) {
     if (transitionList (tr COMMA_HERE).mAction >= terminalSymbolsCount) {
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><code>") ;
+      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inHTMLfile << "Successor [S"
                 << transitionList (tr COMMA_HERE).mSourceState
                 << ", " ;

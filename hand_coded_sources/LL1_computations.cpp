@@ -109,7 +109,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
         inHTMLfile.outputRawData ("</code></td></tr>") ;
         for (sint32 j=first ; j<=derniere ; j++) {
           const sint32 numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-          inHTMLfile.outputRawData ("<tr class=\"result_line\"><td><a href=\"#pure_bnf_") ;
+          inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
           inHTMLfile << numeroProduction ;
           inHTMLfile.outputRawData ("\">") ;
           inHTMLfile << numeroProduction ;

@@ -66,7 +66,7 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_BDD_Set1 & inNonterminalSy
     sint32 index = 0 ;
     for (sint32 i=0 ; i<nonTerminalArray.count () ; i++) {
       if (nonTerminalArray (i COMMA_HERE)) {
-        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
+        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
         inHTMLfile << index ;
         index ++ ;
         inHTMLfile.outputRawData ("</td><td><code>") ;
@@ -159,7 +159,7 @@ printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingTo
     inHTMLfile.outputRawData ("<table class=\"result\">") ;
     for (sint32 i=0 ; i<nonTerminalArray.count () ; i++) {
       if (nonTerminalArray (i COMMA_HERE)) {
-        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
+        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
         inHTMLfile << index ;
         index ++ ;
         inHTMLfile.outputRawData ("</td><td><code>") ;

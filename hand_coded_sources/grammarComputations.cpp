@@ -375,23 +375,29 @@ static const char k_default_style [] = {
   "\n"
   "table.title {\n"
   "  width: 100% ;\n"
-  "  border: 1px solid #999999 ;\n"
+  "  border: 1px solid #666666 ;\n"
   "  background-color: yellow ;\n"
   "  font-weight: bold ;\n"
   "  text-align: center ;\n"
   "}\n"
   "\n"
   "table.result {\n"
-  "  border: 1px solid #999999 ;\n"
+  "  border: 2px solid #666666 ;\n"
+  "  border-collapse: collapse ;\n"
   "}\n"
   "\n"
   "td.result_title {\n"
   "  font-weight: bold ;\n"
   "  text-align: center ;\n"
+  "  border-top: 2px solid #666666 ;\n"
   "}\n"
   "\n"
   "tr.result_line {\n"
   "  background-color: #EEEEEE ;\n"
+  "  border-top: 1px solid #999999 ;\n"
+  "}\n"
+  "td.result_line {\n"
+  "  border-right: 1px solid #999999 ;\n"
   "}\n"
   "\n"
   "span.error {\n"
@@ -443,7 +449,8 @@ static const char k_default_style [] = {
 static void
 createStyleFile (C_Lexique & inLexique,
                  const C_String & inCurrentDirectory, 
-                 const char * inStyleFileName) {
+                 const char * inStyleFileName,
+                 const bool inVerboseOptionOn) {
   C_String f = inCurrentDirectory ;
   if (f.length () > 0) {
     f << '/' ;
@@ -453,7 +460,9 @@ createStyleFile (C_Lexique & inLexique,
     if (inLexique.mPerformGeneration) {
       C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR COMMA_HERE) ;
       styleFile << k_default_style ;
-      inLexique.galgas_IO_Ptr ()->ggs_printSuccess ((C_String ("Written '") + f + "'.\n").cString ()) ;
+      if (inVerboseOptionOn) {
+        inLexique.galgas_IO_Ptr ()->ggs_printSuccess ((C_String ("Written '") + f + "'.\n").cString ()) ;
+      }
     }else{
       inLexique.galgas_IO_Ptr ()->ggs_printWarning ((C_String ("Need to write '") + f + "'.\n").cString ()) ;
     }
@@ -542,7 +551,7 @@ analyzeGrammar (C_Lexique & inLexique,
   }
 //--- Create "style.css" file if it does not exist
   if (outputHTMLfile) {
-    createStyleFile (inLexique, inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css") ;
+    createStyleFile (inLexique, inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css", verboseOptionOn) ;
   }
 
 //--- If 'HTMLfileName' is the empty string, no file is created
@@ -859,7 +868,9 @@ analyzeGrammar (C_Lexique & inLexique,
   }
   if (outputHTMLfile) {
     if (inLexique.mPerformGeneration) {
-      inLexique.galgas_IO_Ptr ()->ggs_printSuccess ((C_String ("Written '") + HTMLfileName + "'.\n").cString ()) ;
+      if (verboseOptionOn) {
+        inLexique.galgas_IO_Ptr ()->ggs_printSuccess ((C_String ("Written '") + HTMLfileName + "'.\n").cString ()) ;
+      }
     }else{
       inLexique.galgas_IO_Ptr ()->ggs_printWarning ((C_String ("Need to write '") + HTMLfileName + "'.\n").cString ()) ;
     }

@@ -143,18 +143,20 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
     GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td>") ;
+      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule
       inHTMLfile << "rule " ;
       inHTMLfile.outputRawData ("<code>") ;
       inHTMLfile << "<"
                  << currentRule->mLeftNonterminalSymbol
                  << ">" ;
-      inHTMLfile.outputRawData ("</code>") ;
-      inHTMLfile << " file '" 
-                << currentSyntaxComponent->mSyntaxComponentName.sourceFileName ()
-                << "', line "
-                << currentRule->mLeftNonterminalSymbol.currentLineNumber () ;
+      inHTMLfile.outputRawData ("</code><br>") ;
+      inHTMLfile << "file '" 
+                 << currentSyntaxComponent->mSyntaxComponentName.sourceFileName ()
+                 << "'" ;
+      inHTMLfile.outputRawData ("<br>") ;
+      inHTMLfile << "line "
+                 << currentRule->mLeftNonterminalSymbol.currentLineNumber () ;
       inHTMLfile.outputRawData ("</td><td><code>") ;
       printInstructionsListForGrammar (currentRule->mInstructionList,
                                        inHTMLfile) ;
