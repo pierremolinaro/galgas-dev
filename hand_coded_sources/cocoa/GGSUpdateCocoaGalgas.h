@@ -14,7 +14,19 @@
 @interface GGSUpdateCocoaGalgas : NSObject {
 
   @private IBOutlet NSView * mUpdateView ;
+  
+  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox ;
+  
+  @private IBOutlet NSTextField * mLastCheckDateTextField ;
+  
+  @private IBOutlet NSTextField * mLIBPMStatusTextField ;
+  
+  @private IBOutlet NSTextField * mLIBPMpathTextField ;
 }
+
+- (IBAction) setLIPMpathAction: (id) inSender ;
+
+- (IBAction) checkForNewVersion: (id) inSender ;
 
 @end
 

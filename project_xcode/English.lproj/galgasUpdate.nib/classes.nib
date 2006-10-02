@@ -2,9 +2,16 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
+            ACTIONS = {checkForNewVersion = id; setLIPMpathAction = id; }; 
             CLASS = GGSUpdateCocoaGalgas; 
             LANGUAGE = ObjC; 
-            OUTLETS = {mUpdateView = NSView; }; 
+            OUTLETS = {
+                mCheckUpdateAtStartUpCheckBox = NSButton; 
+                mLIBPMStatusTextField = NSTextField; 
+                mLIBPMpathTextField = NSTextField; 
+                mLastCheckDateTextField = NSTextField; 
+                mUpdateView = NSView; 
+            }; 
             SUPERCLASS = NSObject; 
         }
     ); 
