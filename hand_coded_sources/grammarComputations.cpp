@@ -281,11 +281,12 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
 static void
 fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList,
                             cInfo & inInfo,
-                            C_Lexique & inLexique) {
+                            C_Lexique & inLexique,
+                            bool & ioOk) {
   GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
-    currentInstruction->mInstruction (HERE)->fixInfos (inInfo, inLexique) ;
+    currentInstruction->mInstruction (HERE)->fixInfos (inInfo, inLexique, ioOk) ;
 
     currentInstruction = currentInstruction->nextObject () ;
   }
@@ -295,13 +296,15 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & inLexique) {
+          C_Lexique & inLexique,
+          bool & ioOk) {
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     fixInfoForInstructionsList (currentBranch->mInstructionList,
                                 inInfo,
-                                inLexique) ;
+                                inLexique,
+                                ioOk) ;
     currentBranch = currentBranch->nextObject () ;
   }
 }
@@ -310,13 +313,15 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_selectInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & inLexique) {
+          C_Lexique & inLexique,
+          bool & ioOk) {
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     fixInfoForInstructionsList (currentBranch->mInstructionList,
                                 inInfo,
-                                inLexique) ;
+                                inLexique,
+                                ioOk) ;
     currentBranch = currentBranch->nextObject () ;
   }
 }
@@ -325,11 +330,15 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & inLexique) {
+          C_Lexique & inLexique,
+          bool & ioOk) {
   GGS_luint index ;
   GGS_M_nonterminalSymbolAltsForGrammar unusedParameter ;
   inInfo.mNonterminalSymbolsMapForGrammar.method_searchKeyGetIndex (inLexique, mNonterminalSymbolName,
                                             index, unusedParameter COMMA_HERE) ;
+  if (! index._isBuilt ()) {
+    ioOk = false ;
+  }
   mNonterminalSymbolIndex.mValue = index.uintValue () ;
 }
 
@@ -337,10 +346,15 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & /*inLexique */) {
-  const sint32 index = inInfo.mTerminalSymbolMap.indexOfKey (mTerminalSymbolName) ;
-  MF_Assert (index >= 0, "index (%ld) must be >=0 ", index, 0) ;
-  mTerminalSymbolIndex.mValue = (uint32) index ;
+          C_Lexique & inLexique,
+          bool & ioOk) {
+  GGS_luint index ;
+  GGS_typeListeAttributsSemantiques unusedArg ;
+  inInfo.mTerminalSymbolMap.method_searchKeyGetIndex (inLexique, mTerminalSymbolName, index, unusedArg COMMA_HERE) ;
+  if (! index._isBuilt ()) {
+    ioOk = false ;
+  }
+  mTerminalSymbolIndex.mValue = index.uintValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -484,31 +498,6 @@ analyzeGrammar (C_Lexique & inLexique,
                 const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
   GGS_stringset classesNamesSet ;
   bool warningFlag = false ;
-
-//--- Fix info about terminal and nonterminal symbols
-  cInfo symbolsInfo ;
-  symbolsInfo.mTerminalSymbolMap = ioTerminalSymbolMap ;
-  symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
-  GGS_L_syntaxComponents_ForGrammar::element_type * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
-  while (currentSyntaxComponent != NULL) {
-    macroValidPointer (currentSyntaxComponent) ;
-    GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
-    while (currentRule != NULL) {
-      macroValidPointer (currentRule) ;
-      GGS_luint index ;
-      GGS_M_nonterminalSymbolAltsForGrammar unused ;
-      inNonterminalSymbolsMapForGrammar.method_searchKeyGetIndex (inLexique, currentRule->mLeftNonterminalSymbol,
-                                                index, unused COMMA_HERE) ;
-      currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
-    //--- Fix, for each rule, left nonterminal symbol index
-      fixInfoForInstructionsList (currentRule->mInstructionList,
-                                  symbolsInfo,
-                                  inLexique) ;
-    //--- Next rule
-      currentRule = currentRule->nextObject () ;
-    }
-    currentSyntaxComponent = currentSyntaxComponent->nextObject () ;
-  }
 
 //--- Create GALGAS_OUTPUT directory
   const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
@@ -892,16 +881,44 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                         GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap
                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorsCount() == 0) {
-    analyzeGrammar (inLexique,
-                    inTargetFileName,
-                    inGrammarClass,
-                    inOriginalGrammarStartSymbol,
-                    inLexiqueName,
-                    errorLocation,
-                    ioTerminalSymbolMap,
-                    inSyntaxComponentsList,
-                    inNonterminalSymbolsMapForGrammar,
-                    inStartSymbolEntityAndMetamodelMap) ;
+   //--- Fix info about terminal and nonterminal symbols
+    bool ok = true ;
+    cInfo symbolsInfo ;
+    symbolsInfo.mTerminalSymbolMap = ioTerminalSymbolMap ;
+    symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
+    GGS_L_syntaxComponents_ForGrammar::element_type * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
+    while (currentSyntaxComponent != NULL) {
+      macroValidPointer (currentSyntaxComponent) ;
+      GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
+      while (currentRule != NULL) {
+        macroValidPointer (currentRule) ;
+        GGS_luint index ;
+        GGS_M_nonterminalSymbolAltsForGrammar unused ;
+        inNonterminalSymbolsMapForGrammar.method_searchKeyGetIndex (inLexique, currentRule->mLeftNonterminalSymbol,
+                                                  index, unused COMMA_HERE) ;
+        currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
+      //--- Fix, for each rule, left nonterminal symbol index
+        fixInfoForInstructionsList (currentRule->mInstructionList,
+                                    symbolsInfo,
+                                    inLexique,
+                                    ok) ;
+      //--- Next rule
+        currentRule = currentRule->nextObject () ;
+      }
+      currentSyntaxComponent = currentSyntaxComponent->nextObject () ;
+    }
+    if (ok) {
+      analyzeGrammar (inLexique,
+                      inTargetFileName,
+                      inGrammarClass,
+                      inOriginalGrammarStartSymbol,
+                      inLexiqueName,
+                      errorLocation,
+                      ioTerminalSymbolMap,
+                      inSyntaxComponentsList,
+                      inNonterminalSymbolsMapForGrammar,
+                      inStartSymbolEntityAndMetamodelMap) ;
+    }
   }
 }
 

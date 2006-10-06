@@ -36,7 +36,8 @@ class cPtr_AC_instruction_ForGrammar : public C_GGS_Object {
                                            const C_String & inSyntaxComponentName,
                                            cPureBNFproductionsList & ioProductions) = 0 ;
   public : virtual void fixInfos (class cInfo & inInfo,
-                                  C_Lexique & inLexique) = 0 ;
+                                  C_Lexique & inLexique,
+                                  bool & ioOk) = 0 ;
 
 //--- END OF USER ZONE 2
 
