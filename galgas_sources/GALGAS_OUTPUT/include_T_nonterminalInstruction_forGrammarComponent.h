@@ -34,7 +34,8 @@ class cPtr_T_nonterminalInstruction_forGrammarComponent : public cPtr_AC_instruc
                                            const C_String & inSyntaxComponentName,
                                            cPureBNFproductionsList & ioProductions) ;
   public : virtual void fixInfos (cInfo & inInfo,
-                                  C_Lexique & inLexique) ;
+                                  C_Lexique & inLexique,
+                                  bool & ioOk) ;
 
 //--- END OF USER ZONE 2
 
