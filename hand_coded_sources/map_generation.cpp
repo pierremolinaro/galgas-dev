@@ -441,8 +441,21 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       index ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << " COMMA_LOCATION_ARGS) {\n"
-                 "  insertElement (_inLexique,\n"
+    inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
+    if (currentMethod->mShadowErrorMessage.length () > 0) {
+      inCppFile << "  const bool _shadowExists = internal_search_in_overridden_maps (inKey) != NULL ;\n"
+                   "  if (_shadowExists) {\n"
+                   "    emitMapSemanticErrorMessage (_inLexique, inKey, " ;
+      inCppFile.writeCstringConstant (currentMethod->mShadowErrorMessage) ;
+      inCppFile << " COMMA_THERE) ;\n" ;
+      if (currentMethod->mIsGetIndexMethod.boolValue ()) {
+        inCppFile << "    outIndex._drop_operation () ;\n" ;
+      }
+      inCppFile << "  }else{\n" ;
+      inCppFile.incIndentation (2) ;
+    
+    }
+    inCppFile << "  insertElement (_inLexique,\n"
                  "                 " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ",\n"
@@ -455,8 +468,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     }else{
       inCppFile << "                 NULL\n" ;
     }
-    inCppFile << "                 COMMA_THERE) ;\n"
-                 "}\n\n" ;
+    inCppFile << "                 COMMA_THERE) ;\n" ;
+    if (currentMethod->mShadowErrorMessage.length () > 0) {
+      inCppFile.incIndentation (-2) ;
+      inCppFile << "  }\n" ;
+    }
+    inCppFile << "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
 
