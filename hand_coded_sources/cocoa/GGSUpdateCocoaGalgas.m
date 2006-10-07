@@ -18,6 +18,24 @@
 
 //---------------------------------------------------------------------------*
 
+- (NSString *) libpmArchiveName {
+  return @"libpm-lf.tar.bz2" ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) galgasUpdaterArchiveName {
+  return @"cocoa_galgas_updater.app.tar.bz2" ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) galgasArchiveName {
+  return @"cocoaGalgas.app.tar.bz2" ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSString *) serverHTTPPath {
   return @"http://galgas.rts-software.org/download/TEMPORAIRE" ;
 }
@@ -31,7 +49,19 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) galgasHTTPPathForVersion: (NSString *) inVersionString {
-  return [NSString stringWithFormat:@"%@/%@/cocoaGalgas.tar.bz2", [self serverHTTPPath], inVersionString] ;
+  return [NSString stringWithFormat:@"%@/%@/%@", [self serverHTTPPath], inVersionString, [self galgasArchiveName]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) libpmHTTPPathForVersion: (NSString *) inVersionString {
+  return [NSString stringWithFormat:@"%@/%@/%@", [self serverHTTPPath], inVersionString, [self libpmArchiveName]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) galgasUpdaterHTTPPath {
+  return [NSString stringWithFormat:@"%@/%@", [self serverHTTPPath], [self galgasUpdaterArchiveName]] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -43,7 +73,19 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) temporaryPathForGALGASArchive {
-  return [[self temporaryDir] stringByAppendingString:@"/cocoaGalgas.tar.bz2"] ;
+  return [NSString stringWithFormat:@"%@/%@", [self temporaryDir], [self galgasArchiveName]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) temporaryPathForLIBPMArchive {
+  return [NSString stringWithFormat:@"%@/%@", [self temporaryDir], [self libpmArchiveName]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) temporaryPathForGalgasUpdaterArchive {
+  return [NSString stringWithFormat:@"%@/%@", [self temporaryDir], [self galgasUpdaterArchiveName]] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -329,8 +371,93 @@
 
 //--------------------------------------------------------------------------*
 
-- (void) downloadNewVersionOfGALGASDidEnd: (PMDownloadFile *) inDownloader {
-
+- (void) downloadHasBeenCancelled {
+  [[mCancelButton window] orderOut:nil] ;
 }
+
+//--------------------------------------------------------------------------*
+
+- (void) downloadDidFinishOnError: (NSError *) inError {
+  [[mCancelButton window] orderOut:nil] ;
+  [NSApp presentError:inError] ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) downloadNewVersionOfGALGASDidEnd: (PMDownloadFile *) inDownloader {
+  if ([inDownloader downloadHasBeenCancelled]) {
+    [self downloadHasBeenCancelled] ;
+  }else{
+    NSError * downloadError = [inDownloader downloadError] ;
+    if (downloadError != NULL) {
+      [self downloadDidFinishOnError:downloadError] ;
+    }else{
+    //--- Start download LIBPM
+      NSString * lastAvailableVersion = [inDownloader userInfo] ;
+      [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading libpm for GALGAS %@...", lastAvailableVersion]] ;
+      [[PMDownloadFile alloc] initWithURLString:[self libpmHTTPPathForVersion:lastAvailableVersion]
+         destinationFileName:[self temporaryPathForLIBPMArchive]
+         downloadDelegate:self
+         downloadDidEndSelector:@selector (downloadNewVersionOfLIBPMDidEnd:)
+         cancelButton:mCancelButton
+         subtitle:mDownloadSubTitle
+         progressIndicator:mDownloadProgressIndicator
+         userInfo:lastAvailableVersion
+      ] ;
+    }  
+  }
+  [inDownloader release] ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) downloadNewVersionOfLIBPMDidEnd: (PMDownloadFile *) inDownloader {
+  if ([inDownloader downloadHasBeenCancelled]) {
+    [self downloadHasBeenCancelled] ;
+  }else{
+    NSError * downloadError = [inDownloader downloadError] ;
+    if (downloadError != NULL) {
+      [self downloadDidFinishOnError:downloadError] ;
+    }else{
+    //--- Start download cocoa galgas updater
+      NSString * lastAvailableVersion = [inDownloader userInfo] ;
+      [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading Cocoa Galgas Updater..."]] ;
+      [[PMDownloadFile alloc] initWithURLString:[self galgasUpdaterHTTPPath]
+         destinationFileName:[self temporaryPathForGalgasUpdaterArchive]
+         downloadDelegate:self
+         downloadDidEndSelector:@selector (downloadGalgasUpdaterDidEnd:)
+         cancelButton:mCancelButton
+         subtitle:mDownloadSubTitle
+         progressIndicator:mDownloadProgressIndicator
+         userInfo:lastAvailableVersion
+      ] ;
+    }  
+  }
+  [inDownloader release] ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) downloadGalgasUpdaterDidEnd: (PMDownloadFile *) inDownloader {
+  if ([inDownloader downloadHasBeenCancelled]) {
+    [self downloadHasBeenCancelled] ;
+  }else{
+    NSError * downloadError = [inDownloader downloadError] ;
+    if (downloadError != NULL) {
+      [self downloadDidFinishOnError:downloadError] ;
+    }else{
+      [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Uncompressing archives..."]] ;
+      [mDownloadProgressIndicator setIndeterminate:YES] ;
+      [mDownloadProgressIndicator startAnimation:nil] ;
+      [mDownloadSubTitle setStringValue:[NSString stringWithFormat:@"Uncompressing cocoa GALGAS"]] ;
+      [[mCancelButton window] displayIfNeeded] ;
+
+  //    [[mCancelButton window] orderOut:nil] ;
+    }  
+  }
+  [inDownloader release] ;
+}
+
+//--------------------------------------------------------------------------*
 
 @end
