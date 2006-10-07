@@ -4407,14 +4407,14 @@ rule <semantics_declaration>
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      insertMethodList += !nomMethode ![errorMessage string] !true ; # Last parameter has any value
+      insertMethodList += !nomMethode ![errorMessage string] !true !"" ; # Bool parameter has any value
     while 
       $search$ ;
       @lstring nomMethode ;
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      searchMethodList += !nomMethode ![errorMessage string] !true ; # Last parameter has any value
+      searchMethodList += !nomMethode ![errorMessage string] !true !"" ; # Bool parameter has any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -4562,6 +4562,16 @@ rule <semantics_declaration>
       @lstring errorMessage ;
       <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
       action check_KL_escapeCharacters !errorMessage ;
+      @string shadowErrorMessage ;
+      select
+        shadowErrorMessage := "" ;
+      or
+        $,$ ;
+        @lstring shadowErrorMessageString ;
+        $literal_string$ ? shadowErrorMessageString ;
+        action check_KL_escapeCharacters !shadowErrorMessageString ;
+        shadowErrorMessage := [shadowErrorMessageString string] ;
+      end select ;
       $;$ ;
     #--- Insert method
       @L_EXsignature methodSignature [emptyList] ;
@@ -4570,7 +4580,7 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
-      insertMethodList += !methodName ![errorMessage string] !false ;
+      insertMethodList += !methodName ![errorMessage string] !false !shadowErrorMessage ;
    #-- Insert And Get Index Method
       if [getIndexMethodName string] != "" then
         @L_EXsignature getIndexMethodSignature [emptyList] ;
@@ -4580,7 +4590,7 @@ rule <semantics_declaration>
           getIndexMethodSignature += !kAttributType !inPassingMode ;      
         end foreach ;
         [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        insertMethodList += !getIndexMethodName ![errorMessage string] !true ;
+        insertMethodList += !getIndexMethodName ![errorMessage string] !true !shadowErrorMessage ;
       end if ;
     while
       $search$ ;
@@ -4597,7 +4607,7 @@ rule <semantics_declaration>
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
-      searchMethodList += !methodName ![errorMessage string] !false ;
+      searchMethodList += !methodName ![errorMessage string] !false !"" ;
     #--- Insert 'Get Index' search method in modifier map (if any)
       if [getIndexMethodName string] != "" then
         @L_EXsignature getIndexMethodSignature [emptyList] ;
@@ -4607,7 +4617,7 @@ rule <semantics_declaration>
          getIndexMethodSignature += !kAttributType !outPassingMode ;      
         end foreach ;
         [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
-        searchMethodList += !getIndexMethodName ![errorMessage string] !true ;
+        searchMethodList += !getIndexMethodName ![errorMessage string] !true !"" ;
       end if ;
     end repeat ;
   #--- Insertion dans la map des entites utilisables
@@ -4663,14 +4673,14 @@ label importSemantics
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      insertMethodList += !nomMethode ![errorMessage string] !true ; #last parameter can have any value
+      insertMethodList += !nomMethode ![errorMessage string] !true !"" ; #bool parameter can have any value
     while 
       $search$ ;
       @lstring nomMethode ;
       @lstring errorMessage ;
       <ex_map_method> ?nomMethode ?errorMessage ;
       $;$ ;
-      searchMethodList += !nomMethode ![errorMessage string] !true ; #last parameter can have any value
+      searchMethodList += !nomMethode ![errorMessage string] !true !"" ; #bool parameter can have any value
     while
       $block$ ;
       @lstring nomMethode ;
@@ -4807,6 +4817,11 @@ label importSemantics
       @lstring methodName ;
       @lstring getIndexMethodName ;
       <map_method> ?methodName ?getIndexMethodName ?* ;
+      select
+      or
+        $,$ ;
+        $literal_string$ ? * ;
+      end select ;
       $;$ ;
     #--- Enter insert method in modifier map
       @L_EXsignature methodSignature [emptyList] ;

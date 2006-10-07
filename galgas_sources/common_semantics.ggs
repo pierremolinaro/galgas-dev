@@ -1936,6 +1936,7 @@ list @insertOrSearchMethodList {
   @lstring mMethodName ;
   @string mErrorMessage ;
   @bool mIsGetIndexMethod ;
+  @string mShadowErrorMessage ;
 }
 
 #---------------------------------------------------------------------------*
