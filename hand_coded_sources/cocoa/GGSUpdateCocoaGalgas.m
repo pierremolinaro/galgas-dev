@@ -10,6 +10,7 @@
 #import "GGSUpdateCocoaGalgas.h"
 #import "OC_GGS_PreferencesController.h"
 #import "PMDownloadData.h"
+#import "PMDownloadFile.h"
 
 //--------------------------------------------------------------------------*
 
@@ -18,13 +19,19 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) serverHTTPPath {
-  return @"http://galgas.rts-software.org/download" ;
+  return @"http://galgas.rts-software.org/download/TEMPORAIRE" ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (NSString *) lastReleaseHTTPPath {
   return [[self serverHTTPPath] stringByAppendingString:@"/lastRelease.php"] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) galgasHTTPPathForVersion: (NSString *) inVersionString {
+  return [NSString stringWithFormat:@"%@/%@/cocoaGalgas.tar.bz2", [self serverHTTPPath], inVersionString] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -299,7 +306,7 @@
   if (inReturnCode == YES) {
   //--- Remove temporary dir if it exists
     NSFileManager * fm = [NSFileManager defaultManager] ;
-    if (! [fm fileExistsAtPath:[self temporaryDir]) {
+    if (! [fm fileExistsAtPath:[self temporaryDir]]) {
       [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
     }
   //--- Create temporary dir
@@ -307,16 +314,17 @@
   //--- Start download GALGAS
     [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading GALGAS %@...", lastAvailableVersion]] ;
     [[mCancelButton window] makeKeyAndOrderFront:nil] ;
-    [[PMDownloadFile alloc] initWithURLString: (NSString *) inURLString
+    [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:lastAvailableVersion]
        destinationFileName:[self temporaryPathForGALGASArchive]
        downloadDelegate:self
        downloadDidEndSelector:@selector (downloadNewVersionOfGALGASDidEnd:)
        cancelButton:mCancelButton
        subtitle:mDownloadSubTitle
        progressIndicator:mDownloadProgressIndicator
-       userInfo: (id) inUserInfo {
+       userInfo:lastAvailableVersion
     ] ;
   }
+  [lastAvailableVersion release] ;
 }
 
 //--------------------------------------------------------------------------*
