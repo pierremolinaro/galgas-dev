@@ -6,7 +6,11 @@
             CLASS = GGSUpdateCocoaGalgas; 
             LANGUAGE = ObjC; 
             OUTLETS = {
+                mCancelButton = NSButton; 
                 mCheckUpdateAtStartUpCheckBox = NSButton; 
+                mDownloadProgressIndicator = NSProgressIndicator; 
+                mDownloadSubTitle = NSTextField; 
+                mDownloadTitle = NSTextField; 
                 mLIBPMStatusTextField = NSTextField; 
                 mLIBPMpathTextField = NSTextField; 
                 mLastCheckDateTextField = NSTextField; 

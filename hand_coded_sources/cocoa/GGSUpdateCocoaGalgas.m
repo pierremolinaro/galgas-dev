@@ -17,6 +17,30 @@
 
 //---------------------------------------------------------------------------*
 
+- (NSString *) serverHTTPPath {
+  return @"http://galgas.rts-software.org/download" ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) lastReleaseHTTPPath {
+  return [[self serverHTTPPath] stringByAppendingString:@"/lastRelease.php"] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) temporaryDir {
+  return @"/tmp/TEMPORARY_DIR_FOR_GALGAS" ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) temporaryPathForGALGASArchive {
+  return [[self temporaryDir] stringByAppendingString:@"/cocoaGalgas.tar.bz2"] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSComparisonResult) compareVersionString: (NSString *) inVersionString
                        withVersionString: (NSString *) inOtherVersionString {
   NSComparisonResult result = [inVersionString compare:inOtherVersionString] ;
@@ -172,7 +196,7 @@
 - (IBAction) checkForNewVersion: (id) inSender {
 //  [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastCheckDate"] ;
   [[PMDownloadData alloc]
-    initWithURLString:@"http://galgas.rts-software.org/download/lastRelease.php"
+    initWithURLString:[self lastReleaseHTTPPath]
     delegate:self
     downloadDidEndSelector:@selector (downloadAllAvailableGalgasVersion:)
     userInfo:nil
@@ -192,16 +216,16 @@
       informativeTextWithFormat:@"Reason: '%@'.", errorString
     ] ;
     [alert
-      beginSheetModalForWindow:[mLIBPMpathTextField window]
+      beginSheetModalForWindow:nil
       modalDelegate:nil
       didEndSelector:NULL
       contextInfo:NULL
     ] ;
   }else{
-    NSString * s = [[NSString alloc] initWithData:[inDownloader downloadedData] encoding:NSASCIIStringEncoding] ;
-    //NSLog (@"downloadedData %@", s) ;
+    NSString * lastAvailableVersion = [[NSString alloc] initWithData:[inDownloader downloadedData] encoding:NSASCIIStringEncoding] ;
+    NSLog (@"Last Available Version: '%@'", lastAvailableVersion) ;
   //--- Check Response
-    NSScanner * scanner = [NSScanner scannerWithString:s] ;
+    NSScanner * scanner = [NSScanner scannerWithString:lastAvailableVersion] ;
     const BOOL ok = [scanner scanInt:NULL]
                  && [scanner scanString:@"." intoString:NULL]
                  && [scanner scanInt:NULL]
@@ -214,17 +238,48 @@
       NSDictionary * infoDictionary = [mainBundle infoDictionary] ;
       NSString * galgasVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"] ;
       NSLog (@"galgasVersion '%@'", galgasVersion) ;
-
+      galgasVersion = @"1.2.3" ;
+      NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:lastAvailableVersion] ;
+      if (r == NSOrderedAscending) {
+        NSAlert * alert = [NSAlert
+          alertWithMessageText:@"A new version of GALGAS is available."
+          defaultButton:@"Download and Install"
+          alternateButton:@"Cancel"
+          otherButton:nil
+          informativeTextWithFormat:@"Current version is %@; the %@ version can be downloaded.", galgasVersion, lastAvailableVersion
+        ] ;
+	[lastAvailableVersion retain] ;
+        [alert
+          beginSheetModalForWindow:nil
+          modalDelegate:self
+          didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
+          contextInfo:lastAvailableVersion
+        ] ;
+      }else{
+        NSAlert * alert = [NSAlert
+          alertWithMessageText:@"GALGAS is up to date."
+          defaultButton:@"Ok"
+          alternateButton:nil
+          otherButton:nil
+          informativeTextWithFormat:@"There is no new version at this time."
+        ] ;
+        [alert
+          beginSheetModalForWindow:nil
+          modalDelegate:nil
+          didEndSelector:NULL
+          contextInfo:NULL
+        ] ;
+      }
     }else{
       NSAlert * alert = [NSAlert
         alertWithMessageText:@"Cannot get last release number."
         defaultButton:@"Ok"
         alternateButton:nil
         otherButton:nil
-        informativeTextWithFormat:@"The server answered in an incomprehensible way: '%@'.", s
+        informativeTextWithFormat:@"The server answered in an incomprehensible way: '%@'.", lastAvailableVersion
       ] ;
       [alert
-        beginSheetModalForWindow:[mLIBPMpathTextField window]
+        beginSheetModalForWindow:nil
         modalDelegate:nil
         didEndSelector:NULL
         contextInfo:NULL
@@ -235,5 +290,39 @@
 }
 
 //--------------------------------------------------------------------------*
+
+- (void) newVersionIsAvailableAlertDidEnd:(NSAlert *) alert
+         returnCode:(int) inReturnCode
+	 contextInfo:(void  *) inContextInfo {
+  NSString * lastAvailableVersion = (NSString *) inContextInfo ;
+  // NSLog (@"inReturnCode %d", inReturnCode) ;
+  if (inReturnCode == YES) {
+  //--- Remove temporary dir if it exists
+    NSFileManager * fm = [NSFileManager defaultManager] ;
+    if (! [fm fileExistsAtPath:[self temporaryDir]) {
+      [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
+    }
+  //--- Create temporary dir
+    [fm createDirectoryAtPath:[self temporaryDir] attributes:nil] ;
+  //--- Start download GALGAS
+    [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading GALGAS %@...", lastAvailableVersion]] ;
+    [[mCancelButton window] makeKeyAndOrderFront:nil] ;
+    [[PMDownloadFile alloc] initWithURLString: (NSString *) inURLString
+       destinationFileName:[self temporaryPathForGALGASArchive]
+       downloadDelegate:self
+       downloadDidEndSelector:@selector (downloadNewVersionOfGALGASDidEnd:)
+       cancelButton:mCancelButton
+       subtitle:mDownloadSubTitle
+       progressIndicator:mDownloadProgressIndicator
+       userInfo: (id) inUserInfo {
+    ] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) downloadNewVersionOfGALGASDidEnd: (PMDownloadFile *) inDownloader {
+
+}
 
 @end

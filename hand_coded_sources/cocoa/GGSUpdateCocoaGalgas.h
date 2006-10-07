@@ -22,6 +22,11 @@
   @private IBOutlet NSTextField * mLIBPMStatusTextField ;
   
   @private IBOutlet NSTextField * mLIBPMpathTextField ;
+
+  @private IBOutlet NSTextField * mDownloadTitle ;
+  @private IBOutlet NSProgressIndicator * mDownloadProgressIndicator ;
+  @private IBOutlet NSTextField * mDownloadSubTitle ;
+  @private IBOutlet NSButton * mCancelButton ;
 }
 
 - (IBAction) setLIPMpathAction: (id) inSender ;
