@@ -279,7 +279,7 @@
     }
   }else{
     NSString * lastAvailableVersion = [[NSString alloc] initWithData:[inDownloader downloadedData] encoding:NSASCIIStringEncoding] ;
-    //NSLog (@"Last Available Version: '%@'", lastAvailableVersion) ;
+    NSLog (@"Last Available Version: '%@'", lastAvailableVersion) ;
   //--- Check Response
     NSScanner * scanner = [NSScanner scannerWithString:lastAvailableVersion] ;
     const BOOL ok = [scanner scanInt:NULL]
@@ -293,7 +293,7 @@
       NSBundle * mainBundle = [NSBundle mainBundle] ;
       NSDictionary * infoDictionary = [mainBundle infoDictionary] ;
       NSString * galgasVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"] ;
-      //NSLog (@"galgasVersion '%@'", galgasVersion) ;
+      NSLog (@"galgasVersion '%@'", galgasVersion) ;
       //galgasVersion = @"1.2.3" ;
       NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:lastAvailableVersion] ;
       if (r == NSOrderedAscending) {
