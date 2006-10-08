@@ -167,12 +167,6 @@
     withKeyPath:@"checkUpdateAtStartUp"
     options:nil
   ] ;
-  [mLastCheckDateTextField
-    bind:@"value"
-    toObject:ud
-    withKeyPath:@"lastCheckDate"
-    options:nil
-  ] ;
   [mLIBPMpathTextField
     bind:@"value"
     toObject:ud
@@ -188,6 +182,10 @@
   ] ;
 //--- Update status
   [self updateLIBPMstatus] ;
+//--- Search for upDates ?
+  if ([ud boolForKey:@"checkUpdateAtStartUp"]) {
+    [self checkForNewVersion:nil] ;
+  }
 }
 
 //--------------------------------------------------------------------------*
@@ -237,12 +235,18 @@
 }
 
 //--------------------------------------------------------------------------*
+
+#pragma mark Check for new version
+
+//--------------------------------------------------------------------------*
 //                                                                          *
 //            Check for new version                                         *
 //                                                                          *
 //--------------------------------------------------------------------------*
 
 - (IBAction) checkForNewVersion: (id) inSender {
+  mSearchForUpdatesInBackground = inSender == nil ;
+  [mCheckNowButton setEnabled:NO] ;
 //  [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastCheckDate"] ;
   [[PMDownloadData alloc]
     initWithURLString:[self lastReleaseHTTPPath]
@@ -255,24 +259,27 @@
 //--------------------------------------------------------------------------*
 
 - (void) downloadAllAvailableGalgasVersion: (PMDownloadData *) inDownloader {
+  [mCheckNowButton setEnabled:YES] ;
   NSString * errorString = [inDownloader downloadErrorString] ;
   if (errorString != nil) {
-    NSAlert * alert = [NSAlert
-      alertWithMessageText:@"Cannot connect to the server."
-      defaultButton:@"Ok"
-      alternateButton:nil
-      otherButton:nil
-      informativeTextWithFormat:@"Reason: '%@'.", errorString
-    ] ;
-    [alert
-      beginSheetModalForWindow:nil
-      modalDelegate:nil
-      didEndSelector:NULL
-      contextInfo:NULL
-    ] ;
+    if (! mSearchForUpdatesInBackground) {
+      NSAlert * alert = [NSAlert
+        alertWithMessageText:@"Cannot connect to the server."
+        defaultButton:@"Ok"
+        alternateButton:nil
+        otherButton:nil
+        informativeTextWithFormat:@"Reason: '%@'.", errorString
+      ] ;
+      [alert
+        beginSheetModalForWindow:nil
+        modalDelegate:nil
+        didEndSelector:NULL
+        contextInfo:NULL
+      ] ;
+    }
   }else{
     NSString * lastAvailableVersion = [[NSString alloc] initWithData:[inDownloader downloadedData] encoding:NSASCIIStringEncoding] ;
-    NSLog (@"Last Available Version: '%@'", lastAvailableVersion) ;
+    //NSLog (@"Last Available Version: '%@'", lastAvailableVersion) ;
   //--- Check Response
     NSScanner * scanner = [NSScanner scannerWithString:lastAvailableVersion] ;
     const BOOL ok = [scanner scanInt:NULL]
@@ -286,8 +293,8 @@
       NSBundle * mainBundle = [NSBundle mainBundle] ;
       NSDictionary * infoDictionary = [mainBundle infoDictionary] ;
       NSString * galgasVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"] ;
-      NSLog (@"galgasVersion '%@'", galgasVersion) ;
-      galgasVersion = @"1.2.3" ;
+      //NSLog (@"galgasVersion '%@'", galgasVersion) ;
+      //galgasVersion = @"1.2.3" ;
       NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:lastAvailableVersion] ;
       if (r == NSOrderedAscending) {
         NSAlert * alert = [NSAlert
@@ -304,7 +311,8 @@
           didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
           contextInfo:lastAvailableVersion
         ] ;
-      }else{
+        [mCheckNowButton setEnabled:NO] ;
+      }else if (! mSearchForUpdatesInBackground) {
         NSAlert * alert = [NSAlert
           alertWithMessageText:@"GALGAS is up to date."
           defaultButton:@"Ok"
@@ -319,7 +327,7 @@
           contextInfo:NULL
         ] ;
       }
-    }else{
+    }else if (! mSearchForUpdatesInBackground) {
       NSAlert * alert = [NSAlert
         alertWithMessageText:@"Cannot get last release number."
         defaultButton:@"Ok"
@@ -348,7 +356,7 @@
   if (inReturnCode == YES) {
   //--- Remove temporary dir if it exists
     NSFileManager * fm = [NSFileManager defaultManager] ;
-    if (! [fm fileExistsAtPath:[self temporaryDir]]) {
+    if ([fm fileExistsAtPath:[self temporaryDir]]) {
       [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
     }
   //--- Create temporary dir
@@ -365,6 +373,8 @@
        progressIndicator:mDownloadProgressIndicator
        userInfo:lastAvailableVersion
     ] ;
+  }else{
+    [mCheckNowButton setEnabled:YES] ;
   }
   [lastAvailableVersion release] ;
 }
@@ -373,13 +383,19 @@
 
 - (void) downloadHasBeenCancelled {
   [[mCancelButton window] orderOut:nil] ;
+  [mCheckNowButton setEnabled:YES] ;
+//--- Remove temporary dir if it exists
+  NSFileManager * fm = [NSFileManager defaultManager] ;
+  if ([fm fileExistsAtPath:[self temporaryDir]]) {
+    [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
+  }
 }
 
 //--------------------------------------------------------------------------*
 
 - (void) downloadDidFinishOnError: (NSError *) inError {
-  [[mCancelButton window] orderOut:nil] ;
   [NSApp presentError:inError] ;
+  [self downloadHasBeenCancelled] ;
 }
 
 //--------------------------------------------------------------------------*
@@ -438,6 +454,41 @@
 
 //--------------------------------------------------------------------------*
 
+- (int) uncompressArchive: (NSString *) inArchivePath {
+  NSArray * arguments = [NSArray arrayWithObjects:
+    @"-d",
+    inArchivePath,
+    nil
+  ] ;
+  NSTask * task = [[NSTask alloc] init] ;
+  [task setLaunchPath:@"/usr/bin/bzip2"] ;
+  [task setArguments:arguments] ;
+  [task launch] ;
+  [task waitUntilExit] ;
+  int status = [task terminationStatus] ;
+  [task release] ;
+  if (status == 0) {
+    task = [[NSTask alloc] init] ;
+    [task setLaunchPath:@"/usr/bin/tar"] ;
+    arguments = [NSArray arrayWithObjects:
+      @"-x",
+      @"-C",
+      [self temporaryDir],
+      @"-f",
+      [inArchivePath stringByDeletingPathExtension],
+      nil
+    ] ;
+    [task setArguments:arguments] ;
+    [task launch] ;
+    [task waitUntilExit] ;
+    status = [task terminationStatus] ;
+    [task release] ;
+  }
+  return status ;
+}
+
+//--------------------------------------------------------------------------*
+
 - (void) downloadGalgasUpdaterDidEnd: (PMDownloadFile *) inDownloader {
   if ([inDownloader downloadHasBeenCancelled]) {
     [self downloadHasBeenCancelled] ;
@@ -449,13 +500,85 @@
       [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Uncompressing archives..."]] ;
       [mDownloadProgressIndicator setIndeterminate:YES] ;
       [mDownloadProgressIndicator startAnimation:nil] ;
-      [mDownloadSubTitle setStringValue:[NSString stringWithFormat:@"Uncompressing cocoa GALGAS"]] ;
+    //--- Uncompressing Archives
+      [mDownloadSubTitle setStringValue:[NSString stringWithFormat:@"Uncompressing cocoa GALGAS archive"]] ;
       [[mCancelButton window] displayIfNeeded] ;
-
-  //    [[mCancelButton window] orderOut:nil] ;
+      int status = [self uncompressArchive:[self temporaryPathForGALGASArchive]] ;
+      if (status == 0) {
+        [mDownloadSubTitle setStringValue:[NSString stringWithFormat:@"Uncompressing libpm archive"]] ;
+        [[mCancelButton window] displayIfNeeded] ;
+        status = [self uncompressArchive:[self temporaryPathForLIBPMArchive]] ;
+      }
+      if (status == 0) {
+        [mDownloadSubTitle setStringValue:[NSString stringWithFormat:@"Uncompressing cocoa Galgas Updater archive"]] ;
+        [[mCancelButton window] displayIfNeeded] ;
+        status = [self uncompressArchive:[self temporaryPathForGalgasUpdaterArchive]] ;
+      }
+      if (status == 0) {
+	NSString * filePath = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", [self temporaryDir]] ;
+        NSString * cocoaGalgasPath = [[NSBundle mainBundle] bundlePath] ;
+        status = ! [cocoaGalgasPath writeToFile:filePath atomically:YES encoding:NSASCIIStringEncoding error:NULL] ;
+      }
+      if (status == 0) {
+        NSAlert * alert = [NSAlert
+          alertWithMessageText:@"Ready to Install the new GALGAS version."
+          defaultButton:@"Install and Launch"
+          alternateButton:@"Cancel"
+          otherButton:nil
+          informativeTextWithFormat:@""
+        ] ;
+        [alert
+          beginSheetModalForWindow:nil
+          modalDelegate:self
+          didEndSelector:@selector (lauchGalgasUpdaterAlertDidEnd:returnCode:contextInfo:)
+          contextInfo:NULL
+        ] ;
+      }else{
+        NSAlert * alert = [NSAlert
+          alertWithMessageText:@"Cannot uncompress archive."
+          defaultButton:@"Ok"
+          alternateButton:nil
+          otherButton:nil
+          informativeTextWithFormat:@"An error occurs during uncompressing (code %d).", status
+        ] ;
+        [alert
+          beginSheetModalForWindow:nil
+          modalDelegate:nil
+          didEndSelector:NULL
+          contextInfo:NULL
+        ] ;
+      }
+      [[mCancelButton window] orderOut:nil] ;
     }  
   }
   [inDownloader release] ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) lauchGalgasUpdaterAlertDidEnd:(NSAlert *) alert
+         returnCode:(int) inReturnCode
+	 contextInfo:(void  *) inContextInfo {
+  if (inReturnCode == YES) {
+    NSString * galgasUpdaterApp = [[[self temporaryPathForGalgasUpdaterArchive] stringByDeletingPathExtension] stringByDeletingPathExtension] ;
+    NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
+    BOOL ok = [ws launchApplication:galgasUpdaterApp] ;
+    if (ok) {
+      [NSApp terminate:nil] ;
+    }else{
+      NSAlert * alert = [NSAlert
+        alertWithMessageText:@"Cannot Install New Version of Galgas"
+        defaultButton:@"Ok"
+        alternateButton:nil
+        otherButton:nil
+        informativeTextWithFormat:@"Cannot launch Galgas Updater."
+      ] ;
+      [alert runModal] ;
+      [self downloadHasBeenCancelled] ;
+    }
+  }else{
+    [self downloadHasBeenCancelled] ;
+  }
 }
 
 //--------------------------------------------------------------------------*

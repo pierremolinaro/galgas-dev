@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = PMApplicationDelegate; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mStatusTextField = NSTextField; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = PMCocoaGalgasUpdaterWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }
+    ); 
+    IBVersion = 1; 
+}

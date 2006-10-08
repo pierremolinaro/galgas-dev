@@ -17,7 +17,7 @@
   
   @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox ;
   
-  @private IBOutlet NSTextField * mLastCheckDateTextField ;
+  @private IBOutlet NSButton * mCheckNowButton ;
   
   @private IBOutlet NSTextField * mLIBPMStatusTextField ;
   
@@ -27,6 +27,8 @@
   @private IBOutlet NSProgressIndicator * mDownloadProgressIndicator ;
   @private IBOutlet NSTextField * mDownloadSubTitle ;
   @private IBOutlet NSButton * mCancelButton ;
+  
+  @private BOOL mSearchForUpdatesInBackground ;
 }
 
 - (IBAction) setLIPMpathAction: (id) inSender ;
