@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) libpmArchiveName {
-  return @"libpm-lf.tar.bz2" ;
+  return @"libpm-lf.tar.bz22" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -43,7 +43,7 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) lastReleaseHTTPPath {
-  return [[self serverHTTPPath] stringByAppendingString:@"/lastRelease2.php"] ;
+  return [[self serverHTTPPath] stringByAppendingString:@"/lastRelease.php"] ;
 }
 
 //---------------------------------------------------------------------------*
