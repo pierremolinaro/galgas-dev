@@ -14,12 +14,17 @@
 
 //--------------------------------------------------------------------------*
 
+//--- Only for debugging !!!
+//#define FORCED_GALGAS_VERSION @"1.2.3"
+
+//--------------------------------------------------------------------------*
+
 @implementation GGSUpdateCocoaGalgas
 
 //---------------------------------------------------------------------------*
 
 - (NSString *) libpmArchiveName {
-  return @"libpm-lf.tar.bz22" ;
+  return @"libpm-lf.tar.bz2" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -301,7 +306,10 @@
       NSDictionary * infoDictionary = [mainBundle infoDictionary] ;
       NSString * galgasVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"] ;
       // NSLog (@"galgasVersion '%@'", galgasVersion) ;
-      //galgasVersion = @"1.2.3" ;
+      #ifdef FORCED_GALGAS_VERSION
+        galgasVersion = FORCED_GALGAS_VERSION ;
+        NSLog (@"Forced GALGAS version: %@", galgasVersion) ;
+      #endif
       NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:lastAvailableVersion] ;
       if (r == NSOrderedAscending) {
         NSAlert * alert = [NSAlert
@@ -402,13 +410,15 @@
 
 - (void) downloadDidFinishOnError: (NSError *) inError {
 //--- Note : presentError is not available on 10.3.9 and earlier
-  NSString * domain = [inError domain] ;
+ // NSString * domain = [inError domain] ;
+  NSDictionary * userInfo = [inError userInfo] ;
+  //NSLog (@"userInfo %@", userInfo) ;
   NSAlert * alert = [NSAlert
     alertWithMessageText:@"Download error."
     defaultButton:@"Ok"
     alternateButton:nil
     otherButton:nil
-    informativeTextWithFormat:@"The following error occurs: %@.", domain
+    informativeTextWithFormat:@"The following error occurs: %@.", [userInfo objectForKey:@"NSLocalizedDescription"]
   ] ;
   [alert
      beginSheetModalForWindow:nil
