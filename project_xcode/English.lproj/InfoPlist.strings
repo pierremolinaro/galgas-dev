@@ -1,7 +1,7 @@
 /* Localized versions of Info.plist keys */
 
 CFBundleName = "CocoaGalgas";
-CFBundleShortVersionString = "VERSION_GALGAS";
+CFBundleShortVersionString = "GALGAS_BETA_VERSION";
 CFBundleGetInfoString = "CocoaGalgas version GALGAS_BETA_VERSION, Copyright 2005, 2006 Pierre Molinaro.";
 NSHumanReadableCopyright = "Copyright 2005, 2006 Pierre Molinaro.";
 LSMinimumSystemVersion = "10.3.9";
