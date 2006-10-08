@@ -503,8 +503,6 @@
 		CF6DF24F09E3F3A700506859 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
 		CF6DF25009E3F3A700506859 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
 		CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		CF6DF26709E3FD3200506859 /* galgasDebugPPC in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF20509E3F30400506859 /* galgasDebugPPC */; };
-		CF6DF26809E3FD3600506859 /* galgasPPC in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF18F09E3F23700506859 /* galgasPPC */; };
 		CF6E113306269BEC001B909F /* GGS_lsint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E112F06269BEC001B909F /* GGS_lsint.cpp */; };
 		CF6E113506269BEC001B909F /* GGS_sint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E113106269BEC001B909F /* GGS_sint.cpp */; };
 		CF6E113706269BEC001B909F /* GGS_lsint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E112F06269BEC001B909F /* GGS_lsint.cpp */; };
@@ -777,6 +775,15 @@
 		CF907E4A0A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
 		CF93AC4705B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF93AC4805B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
+		CF976F020AD994FF00D81E5D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
+		CF976F090AD9953D00D81E5D /* galgasPPC in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF18F09E3F23700506859 /* galgasPPC */; };
+		CF976F0A0AD9953F00D81E5D /* galgasDebugPPC in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF20509E3F30400506859 /* galgasDebugPPC */; };
+		CF976F0B0AD9954600D81E5D /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgas */; };
+		CF976F0C0AD9954800D81E5D /* galgasLR1 in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CD1508519D4C0000FA6E /* galgasLR1 */; };
+		CF976F0D0AD9954B00D81E5D /* galgasDebug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgasDebug */; };
+		CF976F0E0AD9954C00D81E5D /* galgasLR1Debug in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CDB708519DD00000FA6E /* galgasLR1Debug */; };
+		CF976F0F0AD9954D00D81E5D /* galgasSLR in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CE5708519E080000FA6E /* galgasSLR */; };
+		CF976F100AD9954E00D81E5D /* galgasSLRDebug in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CEF908519E740000FA6E /* galgasSLRDebug */; };
 		CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
 		CF9F4E22092A71C60055C8C3 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
 		CF9F4E23092A71C60055C8C3 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
@@ -3658,6 +3665,12 @@
 				CF82599008536A1F0077AEAF /* MainMenu.nib in Resources */,
 				CF82599108536A1F0077AEAF /* OC_GGS_Document.nib in Resources */,
 				CF1EF67F0AD15BB70091DDE8 /* galgasUpdate.nib in Resources */,
+				CF976F0B0AD9954600D81E5D /* galgas in Resources */,
+				CF976F0C0AD9954800D81E5D /* galgasLR1 in Resources */,
+				CF976F0D0AD9954B00D81E5D /* galgasDebug in Resources */,
+				CF976F0E0AD9954C00D81E5D /* galgasLR1Debug in Resources */,
+				CF976F0F0AD9954D00D81E5D /* galgasSLR in Resources */,
+				CF976F100AD9954E00D81E5D /* galgasSLRDebug in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3675,10 +3688,11 @@
 				CF6DF23109E3F3A700506859 /* I_Window.png in Resources */,
 				CF6DF23209E3F3A700506859 /* MainMenu.nib in Resources */,
 				CF6DF23309E3F3A700506859 /* OC_GGS_Document.nib in Resources */,
-				CF6DF26709E3FD3200506859 /* galgasDebugPPC in Resources */,
-				CF6DF26809E3FD3600506859 /* galgasPPC in Resources */,
 				CFEDB1A909E434C700701490 /* InfoPPC.plist in Resources */,
 				CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */,
+				CF976F020AD994FF00D81E5D /* Info.plist in Resources */,
+				CF976F090AD9953D00D81E5D /* galgasPPC in Resources */,
+				CF976F0A0AD9953F00D81E5D /* galgasDebugPPC in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
