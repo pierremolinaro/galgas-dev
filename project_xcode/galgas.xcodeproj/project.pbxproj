@@ -32,7 +32,6 @@
 		CF19AF7F0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
 		CF1EF67F0AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
-		CF1EF69D0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h in Headers */ = {isa = PBXBuildFile; fileRef = CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */; };
 		CF1EF69E0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */; };
 		CF1EF69F0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h in Headers */ = {isa = PBXBuildFile; fileRef = CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */; };
 		CF1EF6A00AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */; };
@@ -88,7 +87,6 @@
 		CF33792309EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
 		CF33792409EFA7DE00EC41F6 /* C_SourceTextForCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */; };
 		CF33792509EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
-		CF33792609EFA7DE00EC41F6 /* C_SourceTextForCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */; };
 		CF3B8A81058CD05D00D682D2 /* AC_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53872057A558F00854C83 /* AC_galgas_io.cpp */; };
 		CF3B8A9C058CD21900D682D2 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
 		CF3B9EDB0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3B9EDA0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h */; };
@@ -965,7 +963,6 @@
 		CFA7ADD7058DB5DF009AC1FE /* C_galgas_null_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86361A0586289600B23462 /* C_galgas_null_io.cpp */; };
 		CFBC766A0AC694C200443ACA /* OC_GGS_BuildResultTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */; };
 		CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
-		CFBC766C0AC694C200443ACA /* OC_GGS_BuildResultTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */; };
 		CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
 		CFC1767309FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
 		CFC1767409FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
@@ -1293,9 +1290,7 @@
 		CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
 		CFDAE70B0AD19F3E00713406 /* PMDownloadFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */; };
 		CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
-		CFDAE70D0AD19F3E00713406 /* PMDownloadData.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDAE7050AD19F3E00713406 /* PMDownloadData.h */; };
 		CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
-		CFDAE70F0AD19F3E00713406 /* PMDownloadFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */; };
 		CFDAE7100AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
 		CFDDACAC0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
 		CFDDACAE0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
@@ -2885,11 +2880,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF33792609EFA7DE00EC41F6 /* C_SourceTextForCocoa.h in Headers */,
-				CFBC766C0AC694C200443ACA /* OC_GGS_BuildResultTextView.h in Headers */,
-				CF1EF69D0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h in Headers */,
-				CFDAE70D0AD19F3E00713406 /* PMDownloadData.h in Headers */,
-				CFDAE70F0AD19F3E00713406 /* PMDownloadFile.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
