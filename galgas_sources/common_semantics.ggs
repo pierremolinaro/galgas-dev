@@ -2109,6 +2109,9 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   :
     if [inClassMethodName string] == "emptyMap" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "mapWithMapToOverride" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgasUndefinedMapType new !mMapTypeName] ![@lstring new !"???" !here] ; # Unused second argument
     elsif [inClassMethodName string] == "empty" then
       error inClassMethodName : "in GALGAS 1.3.0 and later, use 'emptyMap' constructor instead of 'empty' constructor" -> outAccessorTypesList ;
     else
