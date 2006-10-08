@@ -7,13 +7,13 @@
             LANGUAGE = ObjC; 
             OUTLETS = {
                 mCancelButton = NSButton; 
+                mCheckNowButton = NSButton; 
                 mCheckUpdateAtStartUpCheckBox = NSButton; 
                 mDownloadProgressIndicator = NSProgressIndicator; 
                 mDownloadSubTitle = NSTextField; 
                 mDownloadTitle = NSTextField; 
                 mLIBPMStatusTextField = NSTextField; 
                 mLIBPMpathTextField = NSTextField; 
-                mLastCheckDateTextField = NSTextField; 
                 mUpdateView = NSView; 
             }; 
             SUPERCLASS = NSObject; 
