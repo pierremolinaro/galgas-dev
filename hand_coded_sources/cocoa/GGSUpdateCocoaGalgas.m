@@ -150,6 +150,11 @@
 //--------------------------------------------------------------------------*
 
 - (void) awakeFromNib {
+//--- Remove tempary dir, if it exists
+  NSFileManager * fm = [NSFileManager defaultManager] ;
+  if ([fm fileExistsAtPath:[self temporaryDir]]) {
+    [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
+  }
 //--- Add Update Tab view
   NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
   NSTabViewItem * updateTabViewItem = [[NSTabViewItem alloc] init] ;
