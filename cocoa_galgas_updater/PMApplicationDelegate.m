@@ -161,7 +161,7 @@
   //NSLog (@"cocoaGalgasUpdaterDirectory '%@'", cocoaGalgasUpdaterDirectory) ;
 //--- Get path for Cocoa Galgas Application
   NSString * currentCanariApplicationPathDescriptorFile = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", cocoaGalgasUpdaterDirectory] ;
-  mCurrentCocoaGalgasApplicationPath = [NSString stringWithContentsOfFile:currentCanariApplicationPathDescriptorFile encoding:NSASCIIStringEncoding error:NULL] ;
+  mCurrentCocoaGalgasApplicationPath = [NSString stringWithContentsOfFile:currentCanariApplicationPathDescriptorFile] ;
   [mCurrentCocoaGalgasApplicationPath retain] ;
   //NSLog (@"mCurrentCocoaGalgasApplicationPath '%@'", mCurrentCocoaGalgasApplicationPath) ;
   BOOL ok = mCurrentCocoaGalgasApplicationPath != nil ;

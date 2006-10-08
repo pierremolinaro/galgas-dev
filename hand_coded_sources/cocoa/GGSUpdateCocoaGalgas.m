@@ -43,7 +43,7 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) lastReleaseHTTPPath {
-  return [[self serverHTTPPath] stringByAppendingString:@"/lastRelease.php"] ;
+  return [[self serverHTTPPath] stringByAppendingString:@"/lastRelease2.php"] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -140,8 +140,6 @@
   }else{
     NSString * version = [NSString
       stringWithContentsOfFile:libpmVersionFilePath
-      encoding:NSASCIIStringEncoding
-      error:nil
     ] ;
     NSString * s = [NSString stringWithFormat:@"libpm build number: %@", version] ;
     [mLIBPMStatusTextField setStringValue:s] ;
@@ -398,7 +396,21 @@
 //--------------------------------------------------------------------------*
 
 - (void) downloadDidFinishOnError: (NSError *) inError {
-  [NSApp presentError:inError] ;
+//--- Note : presentError is not available on 10.3.9 and earlier
+  NSString * domain = [inError domain] ;
+  NSAlert * alert = [NSAlert
+    alertWithMessageText:@"Download error."
+    defaultButton:@"Ok"
+    alternateButton:nil
+    otherButton:nil
+    informativeTextWithFormat:@"The following error occurs: %@.", domain
+  ] ;
+  [alert
+     beginSheetModalForWindow:nil
+     modalDelegate:nil
+     didEndSelector:NULL
+     contextInfo:NULL
+  ] ;
   [self downloadHasBeenCancelled] ;
 }
 
@@ -521,7 +533,7 @@
       if (status == 0) {
 	NSString * filePath = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", [self temporaryDir]] ;
         NSString * cocoaGalgasPath = [[NSBundle mainBundle] bundlePath] ;
-        status = ! [cocoaGalgasPath writeToFile:filePath atomically:YES encoding:NSASCIIStringEncoding error:NULL] ;
+        status = ! [cocoaGalgasPath writeToFile:filePath atomically:YES] ;
       }
       if (status == 0) {
         NSAlert * alert = [NSAlert
