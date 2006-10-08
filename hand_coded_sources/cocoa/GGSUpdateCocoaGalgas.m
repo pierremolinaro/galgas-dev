@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) serverHTTPPath {
-  return @"http://galgas.rts-software.org/download/TEMPORAIRE" ;
+  return @"http://galgas.rts-software.org/download" ;
 }
 
 //---------------------------------------------------------------------------*

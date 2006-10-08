@@ -1707,7 +1707,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#     N O T    A B S T R A C T    C L A S S                                 *
+#     C O N C R E T E    C L A S S                                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1742,31 +1742,8 @@ rule <semantics_declaration>
     ?inheritedMessageMap
     ?*
   ;
-
-#--- Parse super class name
-#  $extends$ ;
-#  @lstring superClassName ;
-#  $type_name$ ? superClassName ;
+  #message "Classe " . [concreteClassName string] . ", tableAttributs " . [tableAttributs description] . "\n" ;
   ${$ ;
-#--- Verifications semantiques sur le Parse super class name
-#  @AC_galgasType definitionClasseMere ;
-#  @AC_semanticsEntity entite ;
-#  [ioComponentSemanticsEntitiesMap searchKey !superClassName ?entite] ;
-#  extract entite->@typeEntiteType (?definitionClasseMere) error superClassName : messageTypeEntite ;
-#  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
-#  @typeSuperClassesMap tableDesClassesAncetres ;  
-#  @typeTableMethodes ancestorClassMethodsMap ;
-#  @typeClassInheritedMessagesMap inheritedMessageMap ;
-#  @typeSemanticAttributesMap tableAttributs ;
- # extract definitionClasseMere->@typeGalgasClassType (?*
-#                                    ?ancestorClassMethodsMap
-#                                    ?listeTousAttributsSemantiques
-#                                    ?tableDesClassesAncetres
-#                                    ?inheritedMessageMap
-#                                    ?tableAttributs
-#                                    ?*)
- #          error superClassName : messageGalgasType ;
-#  [!?tableDesClassesAncetres insertKey !superClassName] ;
 #------------------- list des attributs de la classe -------------------
   @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
   @L_nameWithType listeTypeeAttributsExternesCourants ;
@@ -2078,7 +2055,7 @@ rule <parse_method>
   ??@typeTableMethodes tableDesMethodes
   ??@typeSuperClassesMap tableDesClassesAncetres
   ??@typeClassInheritedMessagesMap messageMapForHeirs
-  ??@typeSemanticAttributesMap tableAttributs
+  ??@typeSemanticAttributesMap tableAttributsHerites
   ??@bool inClassIsAbstract
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
@@ -2093,6 +2070,10 @@ rule <parse_method>
   $identifier$ ? outMethodName ;
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
+  foreach tableAttributsHerites (??@lstring kKey ??@AC_galgasType kType) :
+    @typeCplusPlusName nomCpp := [@typeDirectName new !kKey] ;
+    [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
+  end foreach ;
 #--- Insert the predefined "self" variable
   @lstring me_Constant := [@lstring new !"self" !here] ;
   @typeCplusPlusName me_constantCppName := [@typeCppThisName new] ;
@@ -2102,7 +2083,7 @@ rule <parse_method>
            !listeTousAttributsSemantiques
            !tableDesClassesAncetres
            !messageMapForHeirs
-           !tableAttributs
+           !tableAttributsHerites
            !inClassIsAbstract] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument !me_Constant !typeDefinition !me_constantCppName] ;
 #--- Insert the predefined "super" variable
@@ -2114,7 +2095,7 @@ rule <parse_method>
            !listeTousAttributsSemantiques
            !tableDesClassesAncetres
            !messageMapForHeirs
-           !tableAttributs
+           !tableAttributsHerites
            !inClassIsAbstract] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument !super_Constant !typeDefinition !super_constantCppName] ;
 #--- Parse formal arguments
@@ -2130,8 +2111,8 @@ rule <parse_method>
   $:$ ;
 #--- Build local attributes table
   foreach listeAttributsSemantiquesCourants (??@AC_galgasType typeAttribut ??@lstring nomAttribut) :
-    @typeCplusPlusName nomCpp := [@typeDirectName new !nomAttribut] ;
-    [!?methodLocalVariablesMap insertUsedConstInArgument !nomAttribut !typeAttribut !nomCpp] ;
+#    @typeCplusPlusName nomCpp := [@typeDirectName new !nomAttribut] ;
+#    [!?methodLocalVariablesMap insertUsedConstInArgument !nomAttribut !typeAttribut !nomCpp] ;
   end foreach ;
 #--- Parse reader instruction list
   outInstructionsList := [@typeInstructionList emptyList] ;
