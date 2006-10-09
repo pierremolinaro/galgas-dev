@@ -436,24 +436,17 @@
 
 //---------------------------------------------------------------------------*
 
-- (BOOL)panel:(id)sender shouldShowFilename:(NSString *)filename {
-  // NSLog (@"panel:shouldShowFilename: '%@'", filename) ;
-  return [[filename lastPathComponent] isEqualToString:@"libpm"] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) openLIBPMsavePanel: (NSString *) inDirectory {
-  NSOpenPanel * saveLibpmPanel = [NSOpenPanel openPanel] ;
-  [saveLibpmPanel setMessage:@"Select a folder named 'libpm'."] ;
-  [saveLibpmPanel setDelegate:self] ;
-  [saveLibpmPanel setCanCreateDirectories:YES] ;
-  [saveLibpmPanel setCanChooseDirectories:YES] ;
-  [saveLibpmPanel setAllowsMultipleSelection:NO] ;
-  [saveLibpmPanel setCanChooseFiles:NO] ;
-  [saveLibpmPanel setCanSelectHiddenExtension:YES] ;
-  [saveLibpmPanel setTreatsFilePackagesAsDirectories:NO] ;
-  [saveLibpmPanel
+  NSOpenPanel * libpmOpenPanel = [NSOpenPanel openPanel] ;
+  [libpmOpenPanel setMessage:@"Select a folder named 'libpm'."] ;
+  [libpmOpenPanel setDelegate:self] ;
+  [libpmOpenPanel setCanCreateDirectories:YES] ;
+  [libpmOpenPanel setCanChooseDirectories:YES] ;
+  [libpmOpenPanel setAllowsMultipleSelection:NO] ;
+  [libpmOpenPanel setCanChooseFiles:NO] ;
+  [libpmOpenPanel setCanSelectHiddenExtension:YES] ;
+  [libpmOpenPanel setTreatsFilePackagesAsDirectories:NO] ;
+  [libpmOpenPanel
     beginSheetForDirectory:inDirectory
     file:nil
     types: [NSArray array]

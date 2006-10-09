@@ -33,6 +33,8 @@
 
 - (IBAction) setLIPMpathAction: (id) inSender ;
 
+- (IBAction) resetLIPMpathAction: (id) inSender ;
+
 - (IBAction) checkForNewVersion: (id) inSender ;
 
 @end
