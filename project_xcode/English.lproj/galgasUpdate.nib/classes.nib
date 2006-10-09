@@ -2,7 +2,7 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            ACTIONS = {checkForNewVersion = id; setLIPMpathAction = id; }; 
+            ACTIONS = {checkForNewVersion = id; resetLIPMpathAction = id; setLIPMpathAction = id; }; 
             CLASS = GGSUpdateCocoaGalgas; 
             LANGUAGE = ObjC; 
             OUTLETS = {

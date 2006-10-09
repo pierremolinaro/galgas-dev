@@ -217,12 +217,23 @@
 //                                                                          *
 //--------------------------------------------------------------------------*
 
+- (IBAction) resetLIPMpathAction: (id) inSender {
+  [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"libpmPath"] ;
+}
+
+//--------------------------------------------------------------------------*
+
 - (IBAction) setLIPMpathAction: (id) inSender {
-  NSOpenPanel * op = [NSOpenPanel openPanel] ;
-  [op setCanChooseDirectories:YES] ;
-  [op setCanChooseFiles:NO] ;
-  [op setAllowsMultipleSelection:NO] ;
-  [op
+  NSOpenPanel * libpmOpenPanel = [NSOpenPanel openPanel] ;
+  [libpmOpenPanel setMessage:@"Select a folder named 'libpm'."] ;
+  [libpmOpenPanel setDelegate:self] ;
+  [libpmOpenPanel setCanCreateDirectories:YES] ;
+  [libpmOpenPanel setCanChooseDirectories:YES] ;
+  [libpmOpenPanel setAllowsMultipleSelection:NO] ;
+  [libpmOpenPanel setCanChooseFiles:NO] ;
+  [libpmOpenPanel setCanSelectHiddenExtension:YES] ;
+  [libpmOpenPanel setTreatsFilePackagesAsDirectories:NO] ;
+  [libpmOpenPanel
     beginSheetForDirectory:[[NSUserDefaults standardUserDefaults] stringForKey:@"libpmPath"]
     file:@""
     types:nil
@@ -244,6 +255,17 @@
     NSString * newPath = [[inPanel filenames] objectAtIndex:0] ;
     [[NSUserDefaults standardUserDefaults] setObject:newPath forKey:@"libpmPath"] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) panel:(id)sender isValidFilename:(NSString *)filename {
+  // NSLog (@"panel:isValidFilename: '%@'", filename) ;
+  const BOOL ok = [[filename lastPathComponent] isEqualToString:@"libpm"] ;
+  if (! ok) {
+    NSBeep () ;
+  }
+  return ok ;
 }
 
 //--------------------------------------------------------------------------*
