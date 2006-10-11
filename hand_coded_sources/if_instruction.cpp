@@ -705,7 +705,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeSupOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ") <= (" ;
+  ioCppFile << ") >= (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ")" ;
 }
@@ -970,7 +970,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeRightShiftOperation::
 generateExpression (AC_OutputStream & ioCppFile) {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._left_shift_operation (_inLexique, " ;
+  ioCppFile << "._right_shift_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " SOURCE_FILE_AT_LINE ("
             << mInstructionLocation.currentLineNumber ()
