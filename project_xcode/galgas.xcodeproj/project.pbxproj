@@ -775,7 +775,6 @@
 		CF907E4A0A3F3D28007D2341 /* include_C_classToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */; };
 		CF93AC4705B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF93AC4805B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
-		CF976F020AD994FF00D81E5D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CF976F090AD9953D00D81E5D /* galgasPPC in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF18F09E3F23700506859 /* galgasPPC */; };
 		CF976F0A0AD9953F00D81E5D /* galgasDebugPPC in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF20509E3F30400506859 /* galgasDebugPPC */; };
 		CF976F0B0AD9954600D81E5D /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgas */; };
@@ -1679,7 +1678,7 @@
 		CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMultiplyOperation.h; sourceTree = "<group>"; };
 		CFC1767209FE1CD30026596C /* include_typeSubOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeSubOperation.h; sourceTree = "<group>"; };
 		CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUnaryMinusOperation.h; sourceTree = "<group>"; };
-		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		CFCAABC709BCD3FF0042E80C /* include_BoolModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_BoolModel.h; sourceTree = "<group>"; };
 		CFCAABC809BCD3FF0042E80C /* include_CharModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_CharModel.h; sourceTree = "<group>"; };
 		CFCAABC909BCD3FF0042E80C /* include_ClassModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_ClassModel.h; sourceTree = "<group>"; };
@@ -1892,7 +1891,7 @@
 		CFEC15F509CA026700204242 /* metamodel_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_generation.cpp; sourceTree = "<group>"; };
 		CFEC85330A20D8F5007AE469 /* C_GGS_MapIndex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_MapIndex.cpp; sourceTree = "<group>"; };
 		CFEC85340A20D8F5007AE469 /* C_GGS_MapIndex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_MapIndex.h; sourceTree = "<group>"; };
-		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InfoPPC.plist; sourceTree = "<group>"; };
+		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
 		CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_parser.cpp; sourceTree = "<group>"; };
 		CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_generation.cpp; sourceTree = "<group>"; };
 		CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cli_options_parser.cpp; sourceTree = "<group>"; };
@@ -3690,7 +3689,6 @@
 				CF6DF23309E3F3A700506859 /* OC_GGS_Document.nib in Resources */,
 				CFEDB1A909E434C700701490 /* InfoPPC.plist in Resources */,
 				CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */,
-				CF976F020AD994FF00D81E5D /* Info.plist in Resources */,
 				CF976F090AD9953D00D81E5D /* galgasPPC in Resources */,
 				CF976F0A0AD9953F00D81E5D /* galgasDebugPPC in Resources */,
 			);
@@ -4752,7 +4750,7 @@
 				2A37F4BAFDCFA73011CA2CEA /* English */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */ = {
 			isa = PBXVariantGroup;
@@ -5063,7 +5061,7 @@
 					../hand_coded_sources,
 					../../libpm,
 				);
-				INFOPLIST_FILE = /Volumes/developpements/mes_prgms/galgas/project_xcode/InfoPPC.plist;
+				INFOPLIST_FILE = InfoPPC.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = "";
