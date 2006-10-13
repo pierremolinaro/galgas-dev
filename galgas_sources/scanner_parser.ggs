@@ -69,6 +69,7 @@ label parse
 
 rule <key_words_list_declaration>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@typeLexicalAttributesMap table_des_attributs
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
   ?!@M_styles ioStylesMap
@@ -263,7 +264,8 @@ rule <galgas_component>
     ;
   while
     <key_words_list_declaration>
-      !? table_tables_mots_reserves
+      !?table_tables_mots_reserves
+      !? table_attributs
       !?table_des_terminaux
       !?terminalSymbolsMapForUse
       !?stylesMap
@@ -341,6 +343,7 @@ label importLexique
   while
     <key_words_list_declaration>
       !? table_tables_mots_reserves
+      !?table_attributs
       !?table_des_terminaux
       !?terminalSymbolsMapForUse
       !?stylesMap
@@ -500,7 +503,7 @@ rule <attribute_or_terminal_symbol_declaration>
   or
     @lstring nomTerminal ;
     $terminal$ ? nomTerminal ;
-    @typeListeAttributsSemantiques l [emptyList];
+    @typeListeAttributsSemantiques attributeList [emptyList];
     repeat
     while
       $!$ ;
@@ -508,13 +511,13 @@ rule <attribute_or_terminal_symbol_declaration>
       $identifier$ ? idf ;
       @AC_galgasType t ;
       [table_des_attributs searchKey !idf ?t] ;
-      l += !t !idf ;
+      attributeList += !t !idf ;
     end repeat ;
     @lstring errorMessage ;
     $error$ ;
     $message$ ;
     $literal_string$ ? errorMessage ;
-    [!?ioTerminalSymbolsMapForUse insertKey !nomTerminal !l] ;
+    [!?ioTerminalSymbolsMapForUse insertKey !nomTerminal ! attributeList] ;
   #--- Style ?
     @lstring styleName ;
     select
@@ -526,7 +529,7 @@ rule <attribute_or_terminal_symbol_declaration>
     @luint styleIndex ;
     [ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
     @string errorMessageString := [errorMessage string] ;
-    [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !l !styleIndex] ;
+    [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !attributeList !styleIndex] ;
   end select ;
   $;$ ;
 end rule ;
@@ -537,6 +540,7 @@ end rule ;
 
 rule <key_words_list_declaration>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
+  ?!@typeLexicalAttributesMap table_des_attributs
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
   ?!@M_styles ioStylesMap
@@ -546,6 +550,17 @@ rule <key_words_list_declaration>
 #--- List name
   @lstring listName ;
   $identifier$ ? listName ;
+#--- Attribute List
+  @typeListeAttributsSemantiques attributeList [emptyList];
+  repeat
+  while
+    $!$ ;
+    @lstring idf ;
+    $identifier$ ? idf ;
+    @AC_galgasType t ;
+    [table_des_attributs searchKey !idf ?t] ;
+    attributeList += !t !idf ;
+  end repeat ;
 #--- Error message
   $error$ ;
   $message$ ;
@@ -564,7 +579,6 @@ rule <key_words_list_declaration>
   [ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
 #--- List of entries
   $:$ ;
-  @typeListeAttributsSemantiques attributesList [emptyList] ; # Always empty
   repeat
     @lstring listEntry ;
     $literal_string$ ?listEntry ;
@@ -582,10 +596,10 @@ rule <key_words_list_declaration>
     [!?table_des_terminaux insertKey
        !terminalSymbolName
        !specificErrorMessageString
-       !attributesList
+       !attributeList
        !styleIndex
     ] ;
-    [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributesList] ;
+    [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributeList] ;
   #--- Insert entry in the entries map
     [!?entriesMap insertKey !listEntry !terminalSymbolName] ;
   while

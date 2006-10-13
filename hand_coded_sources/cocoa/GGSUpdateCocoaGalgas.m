@@ -14,6 +14,10 @@
 
 //--------------------------------------------------------------------------*
 
+#import <WebKit/WebKit.h>
+
+//--------------------------------------------------------------------------*
+
 //--- Only for debugging !!!
 //#define FORCED_GALGAS_VERSION @"1.2.3"
 
@@ -170,6 +174,12 @@
 //--- Add bindings
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   [mCheckUpdateAtStartUpCheckBox
+    bind:@"value"
+    toObject:ud
+    withKeyPath:@"checkUpdateAtStartUp"
+    options:nil
+  ] ;
+  [mCheckUpdateAtStartUpCheckBox2
     bind:@"value"
     toObject:ud
     withKeyPath:@"checkUpdateAtStartUp"
@@ -334,16 +344,25 @@
       #endif
       NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:lastAvailableVersion] ;
       if (r == NSOrderedAscending) {
-        NSAlert * alert = [NSAlert
-          alertWithMessageText:@"A new version of GALGAS is available."
-          defaultButton:@"Download and Install"
-          alternateButton:@"Cancel"
-          otherButton:nil
-          informativeTextWithFormat:@"Current version is %@; the %@ version can be downloaded.", galgasVersion, lastAvailableVersion
+      //--- Display change log in Web View
+        NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
+        [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
+        [mChangeLogWebView makeTextSmaller:nil] ;
+        NSString * s = [NSString stringWithFormat:
+          @"Current version is %@; the %@ version can be downloaded.",
+          galgasVersion,
+          lastAvailableVersion
         ] ;
-	[lastAvailableVersion retain] ;
-        [alert
-          beginSheetModalForWindow:nil
+        [mNewVersionTextField setStringValue:s] ;
+        s = [NSString stringWithFormat:
+          @"Install and Launch Version %@",
+          lastAvailableVersion
+        ] ;
+        [mPerformUpdateButton setTitle:s] ;
+        [lastAvailableVersion retain] ;
+        [NSApp
+          beginSheet:mNewAvailableVersionPanel
+          modalForWindow:nil
           modalDelegate:self
           didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
           contextInfo:lastAvailableVersion
@@ -385,7 +404,7 @@
 
 //--------------------------------------------------------------------------*
 
-- (void) newVersionIsAvailableAlertDidEnd:(NSAlert *) alert
+- (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
          returnCode:(int) inReturnCode
 	 contextInfo:(void  *) inContextInfo {
   NSString * lastAvailableVersion = (NSString *) inContextInfo ;
@@ -568,7 +587,7 @@
         status = [self uncompressArchive:[self temporaryPathForGalgasUpdaterArchive]] ;
       }
       if (status == 0) {
-	NSString * filePath = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", [self temporaryDir]] ;
+  NSString * filePath = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", [self temporaryDir]] ;
         NSString * cocoaGalgasPath = [[NSBundle mainBundle] bundlePath] ;
         status = ! [cocoaGalgasPath writeToFile:filePath atomically:YES] ;
       }

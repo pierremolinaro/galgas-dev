@@ -103,6 +103,16 @@
 		CF3E6288096EE4BA00419EBB /* project_creation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3E6280096EE4BA00419EBB /* project_creation.cpp */; };
 		CF3E628A096EE4BA00419EBB /* project_creation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3E6280096EE4BA00419EBB /* project_creation.cpp */; };
 		CF3E628C096EE4BA00419EBB /* project_creation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3E6280096EE4BA00419EBB /* project_creation.cpp */; };
+		CF4397F80ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */; };
+		CF4397F90ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */; };
+		CF4397FA0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */; };
+		CF4397FB0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
+		CF4397FC0ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */; };
+		CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */; };
+		CF4397FE0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */; };
+		CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
+		CF4398040ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
+		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
 		CF43CD590A3852A600B057BA /* include_typeLeftShiftOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF43CD570A3852A600B057BA /* include_typeLeftShiftOperation.h */; };
 		CF43CD5A0A3852A600B057BA /* include_typeRightShiftOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF43CD580A3852A600B057BA /* include_typeRightShiftOperation.h */; };
 		CF43CD5B0A3852A600B057BA /* include_typeLeftShiftOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF43CD570A3852A600B057BA /* include_typeLeftShiftOperation.h */; };
@@ -1508,6 +1518,11 @@
 		CF3FF0CB05877B62000D2F8C /* GGS_uint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GGS_uint.h; sourceTree = "<group>"; };
 		CF41F6650912856100B3F397 /* PP_GalgasPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PP_GalgasPrefix.pch; sourceTree = "<group>"; };
 		CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
+		CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMCancelButtonForPanel.h; sourceTree = "<group>"; };
+		CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMCancelButtonForPanel.m; sourceTree = "<group>"; };
+		CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMOkButtonForPanel.h; sourceTree = "<group>"; };
+		CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMOkButtonForPanel.m; sourceTree = "<group>"; };
+		CF4398030ADFE1900085F47C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		CF43CD570A3852A600B057BA /* include_typeLeftShiftOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLeftShiftOperation.h; sourceTree = "<group>"; };
 		CF43CD580A3852A600B057BA /* include_typeRightShiftOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRightShiftOperation.h; sourceTree = "<group>"; };
 		CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_parser.cpp; sourceTree = "<group>"; };
@@ -1962,6 +1977,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				CF4398040ADFE1900085F47C /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1986,6 +2002,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */,
+				CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2019,6 +2036,7 @@
 		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF4398030ADFE1900085F47C /* WebKit.framework */,
 				CF3B8A9B058CD21900D682D2 /* libstdc++.a */,
 				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
 				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
@@ -2454,6 +2472,10 @@
 		CFDAE7040AD19F3E00713406 /* cocoa_utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */,
+				CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */,
+				CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */,
+				CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */,
 				CFDAE7050AD19F3E00713406 /* PMDownloadData.h */,
 				CFDAE7060AD19F3E00713406 /* PMDownloadData.m */,
 				CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */,
@@ -2928,6 +2950,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF4397F80ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */,
+				CF4397FA0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3123,6 +3147,8 @@
 				CF1EF69F0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h in Headers */,
 				CFDAE7090AD19F3E00713406 /* PMDownloadData.h in Headers */,
 				CFDAE70B0AD19F3E00713406 /* PMDownloadFile.h in Headers */,
+				CF4397FC0ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */,
+				CF4397FE0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3760,6 +3786,8 @@
 				CF1EF69E0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m in Sources */,
 				CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */,
 				CFDAE7100AD19F3E00713406 /* PMDownloadFile.m in Sources */,
+				CF4397F90ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
+				CF4397FB0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4129,6 +4157,8 @@
 				CF1EF6A00AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m in Sources */,
 				CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */,
 				CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */,
+				CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
+				CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

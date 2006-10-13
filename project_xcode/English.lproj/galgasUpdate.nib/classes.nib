@@ -7,17 +7,24 @@
             LANGUAGE = ObjC; 
             OUTLETS = {
                 mCancelButton = NSButton; 
+                mChangeLogWebView = WebView; 
                 mCheckNowButton = NSButton; 
                 mCheckUpdateAtStartUpCheckBox = NSButton; 
+                mCheckUpdateAtStartUpCheckBox2 = NSButton; 
                 mDownloadProgressIndicator = NSProgressIndicator; 
                 mDownloadSubTitle = NSTextField; 
                 mDownloadTitle = NSTextField; 
                 mLIBPMStatusTextField = NSTextField; 
                 mLIBPMpathTextField = NSTextField; 
+                mNewAvailableVersionPanel = NSPanel; 
+                mNewVersionTextField = NSTextField; 
+                mPerformUpdateButton = NSButton; 
                 mUpdateView = NSView; 
             }; 
             SUPERCLASS = NSObject; 
-        }
+        }, 
+        {CLASS = PMCancelButtonForPanel; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
+        {CLASS = PMOkButtonForPanel; LANGUAGE = ObjC; SUPERCLASS = NSButton; }
     ); 
     IBVersion = 1; 
 }

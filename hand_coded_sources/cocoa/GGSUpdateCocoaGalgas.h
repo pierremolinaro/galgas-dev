@@ -11,8 +11,18 @@
 
 //--------------------------------------------------------------------------*
 
-@interface GGSUpdateCocoaGalgas : NSObject {
+@class WebView ;
 
+//--------------------------------------------------------------------------*
+
+@interface GGSUpdateCocoaGalgas : NSObject {
+//--- In New Available Panel
+  @private IBOutlet NSPanel * mNewAvailableVersionPanel ;
+  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox2 ;
+  @private IBOutlet NSButton * mPerformUpdateButton ;
+  @private IBOutlet NSTextField * mNewVersionTextField ;
+  @private IBOutlet WebView * mChangeLogWebView ;
+  
   @private IBOutlet NSView * mUpdateView ;
   
   @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox ;
