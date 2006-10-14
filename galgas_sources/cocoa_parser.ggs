@@ -61,7 +61,8 @@ action generateCocoaComponent
   ?@lstring nomPRGMprincipal
   ?@lstring inGUIkindName
   ?@lstring inCLIToolName
-  ?@L_GUIAttributeList inGUIAttributeList
+  ?@L_nibAndClassList inNIBandClassList
+  ?@string inBlockComment
   ?@lstring inLexiqueClassName
   ?@M_optionComponents inOptionsComponents
 ;
@@ -119,20 +120,29 @@ rule <galgas_component>
   [nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
   $;$ ;
 #--- Assignment list
-  @L_GUIAttributeList guiAttributeList [emptyList] ;
-  @stringset keySet [emptySet] ;
-  keySet += !"nibAndMainClass" ;
+  @L_nibAndClassList nibAndClassList [emptyList] ;
+  @string blockComment := "" ; # Means undefined
   repeat
   while
     @lstring targetName ;
     $identifier$ ? targetName ;
-    if not [keySet hasKey ![targetName string]] then
-      error targetName: "unkown key" ;
-    end if ;
     $:$ ;
     @lstring sourceExpression ;
     $literal_string$ ? sourceExpression ;
-    guiAttributeList += !targetName !sourceExpression ;
+    if [sourceExpression string] == "" then
+      error sourceExpression: "this string should not be empty" ;
+    end if ;
+    if [targetName string] == "nibAndMainClass" then
+      nibAndClassList += !sourceExpression ;
+    elsif [targetName string] == "blockComment" then
+      if blockComment != "" then
+        error targetName: "this key is already defined" ;
+      else
+        blockComment := [sourceExpression string] ;
+      end if ;
+    else
+      error targetName: "unkown key" ;
+    end if ;
     $;$ ;
   end repeat ;
 #--- Generate Cocoa c++ file
@@ -140,7 +150,8 @@ rule <galgas_component>
     !guiComponentName
     !guiKindName
     !cliToolName
-    !guiAttributeList
+    !nibAndClassList
+    !blockComment
     !lexiqueClassName
     !optionsComponentsMap
   ;

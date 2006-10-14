@@ -2,7 +2,7 @@
 #                                                                           *
 #  Cocoa component for GALGAS                                               *
 #                                                                           *
-#  Copyright (C) 2004 Pierre Molinaro.                                      *
+#  Copyright (C) 2004, ..., 2006 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -23,6 +23,8 @@ program "galgasLL1" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
 
 nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
+
+blockComment : "#" ;
 
 end gui ;
 
