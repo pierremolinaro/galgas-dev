@@ -234,9 +234,7 @@ rule <semantic_instructions_list>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
@@ -248,9 +246,7 @@ rule <semantic_instructions_list_no_verif>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
@@ -262,9 +258,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
@@ -279,9 +273,7 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@typeInstruction outInstruction
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
@@ -1076,7 +1068,6 @@ rule <semantics_declaration>
   #--- Instructions
     @typeInstructionList ioInstructionList [emptyList] ;
     @entityPropertyMap propertyMap [emptyMap] ;
-    @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [emptyMap] ;
     @stringset constraintPropertyDefinitionSet [emptySet] ;
     @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
     <semantic_instructions_list>
@@ -1085,9 +1076,7 @@ rule <semantics_declaration>
       !?ioOptionsComponentsMapForUse
       !?tableArgumentsMethode
       !?ioInstructionList
-      !""
       !?propertyMap
-      !?mapAsConstraintPropertyMap
       !?constraintPropertyDefinitionSet
       !?callInstructionSharedPropertySignatureMap
     ;
@@ -1155,7 +1144,6 @@ label importSemantics
     @typeInstructionList ioInstructionList [emptyList] ;
     @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
     @entityPropertyMap propertyMap [emptyMap] ;
-    @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [emptyMap] ;
     @stringset constraintPropertyDefinitionSet [emptySet] ;
     @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
     <semantic_instructions_list>
@@ -1164,9 +1152,7 @@ label importSemantics
       !?optionsComponentsMapForUse
       !?tableArgumentsMethode
       !?ioInstructionList
-      !""
       !?propertyMap
-      !?mapAsConstraintPropertyMap
       !?constraintPropertyDefinitionSet
       !?callInstructionSharedPropertySignatureMap
     ;
@@ -1174,122 +1160,6 @@ label importSemantics
     $routine$ ;
     $;$ ;
     [!?tableRoutinesAimplementer insertKey !routineName] ;
-  end select ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  C L A S S    D E C L A R A T I O N                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantics_declaration>
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
-  ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-:
-#--- Abstract class ?
-  @bool isAbstract ;
-  select
-    $abstract__$ ;
-    isAbstract := true ;
-  or
-    isAbstract := false ;
-  end select ;
-#--- Class name
-  $class__$ ;
-  @lstring className ;
-  $type_name$ ? className ;
-  select
-    if not ([tableEnAvant hasKey ![className string]] |
-          [ioComponentSemanticsEntitiesMap hasKey ![className string]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedClassType new !className] ;
-      [!?tableEnAvant insertKey !className !t] ;
-    end if ;
-    $;$ ;
-  or
-  #--- Parse super class name
-    @typeSuperClassesMap superClassesMap ;
-    select
-      superClassesMap := [@typeSuperClassesMap emptyMap] ;
-    or
-      @lstring superClassName ;
-      $extends$ ;
-      $type_name$ ? superClassName ;
-      @AC_semanticsEntity semanticsEntity ;
-      [ioComponentSemanticsEntitiesMap searchKey !superClassName ?semanticsEntity] ;
-      @AC_galgasType userType ;
-      extract semanticsEntity->@typeEntiteType (?userType) error superClassName : messageTypeEntite ;
-      extract userType->@typeGalgasNewClassType (?* ?superClassesMap)
-               error superClassName : messageGalgasType ;
-    #--- Insert super class in super class map
-      [!?superClassesMap insertKey ! superClassName] ;
-    end select ;
-    ${$ ;
-    $}$ ; 
-  #--- Inserer dans la map des classes utilisables
-    @AC_galgasType c := [@typeGalgasNewClassType new 
-       !className
-       !superClassesMap
-    ] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey !className ![@typeEntiteType new !c]] ;
-  #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
-    @typeEntityToGenerate def := [@C_classToImplement new 
-       !className
-       !superClassesMap
-    ] ;
-    listeEntitesAengendrer += !def ;
-  end select ;
-label importSemantics
-  ?!@ModelMap unused ioModelMap
-  ?!@ActionMap unused ioExternActionMap
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
-  ?!@typeTableEnAvant tableEnAvant
-  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-:
-#--- Abstract class ?
-  @bool isAbstract ;
-  select
-    $abstract__$ ;
-    isAbstract := true ;
-  or
-    isAbstract := false ;
-  end select ;
-#--- Class name
-  $class__$ ;
-  @lstring className ;
-  $type_name$ ? className ;
-  select
-    if not ([tableEnAvant hasKey ![className string]] |
-          [ioComponentSemanticsEntitiesMap hasKey ![className string]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedClassType new !className] ;
-      [!?tableEnAvant insertKey !className !t] ;
-    end if ;
-    $;$ ;
-  or
-  #--- Parse super class name
-    @typeSuperClassesMap superClassesMap ;
-    select
-      superClassesMap := [@typeSuperClassesMap emptyMap] ;
-    or
-      @lstring superClassName ;
-      $extends$ ;
-      $type_name$ ? superClassName ;
-      @AC_semanticsEntity semanticsEntity ;
-      [ioComponentSemanticsEntitiesMap searchKey !superClassName ?semanticsEntity] ;
-      @AC_galgasType userType ;
-      extract semanticsEntity->@typeEntiteType (?userType) error superClassName : messageTypeEntite ;
-      extract userType->@typeGalgasNewClassType (?* ?superClassesMap)
-               error superClassName : messageGalgasType ;
-    #--- Insert super class in super class map
-      [!? superClassesMap insertKey ! superClassName] ;
-    end select ;
-    ${$ ;
-    $}$ ; 
   end select ;
 end rule ;
 
@@ -2117,7 +1987,6 @@ rule <parse_method>
 #--- Parse reader instruction list
   outInstructionsList := [@typeInstructionList emptyList] ;
   @entityPropertyMap propertyMap [emptyMap] ;
-  @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
   @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
   <semantic_instructions_list>
@@ -2126,9 +1995,7 @@ rule <parse_method>
     !?ioOptionsComponentsMapForUse
     !?methodLocalVariablesMap
     !?outInstructionsList
-    !""
     !?propertyMap
-    !?mapAsConstraintPropertyMap
     !?constraintPropertyDefinitionSet
     !?callInstructionSharedPropertySignatureMap
   ;
@@ -2820,9 +2687,7 @@ rule <semantic_instructions_list>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -2833,9 +2698,7 @@ rule <semantic_instructions_list>
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
-      !inConstraintCurrentPassName
       !?ioPropertyMap
-      !?ioMapAsConstraintPropertyMap
       !?ioConstraintPropertyDefinitionSet
       !?ioCallInstructionSharedPropertySignatureMap
     ;
@@ -2854,9 +2717,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -2881,10 +2742,10 @@ rule <semantic_instruction>
     repeat
       @lstring propertyArgumentName ;
       $identifier$ ?propertyArgumentName ;
-      @lstring propertyTypeName ;
-      [ioMapAsConstraintPropertyMap searchKey !propertyArgumentName ?propertyTypeName ?* ?* ?* ?*] ;
+  #    @lstring propertyTypeName ;
+  #    [ioMapAsConstraintPropertyMap searchKey !propertyArgumentName ?propertyTypeName ?* ?* ?* ?*] ;
       parameterList += !propertyArgumentName ;
-      parameterTypeList += !propertyTypeName !propertyArgumentName ;
+  #    parameterTypeList += !propertyTypeName !propertyArgumentName ;
     while
       $,$ ;
     end repeat ;
@@ -2914,7 +2775,6 @@ rule <semantic_instruction>
   $;$ ;
 #--- Generate instruction
   @typeInstruction instruction := [@callInstruction new
-    !inConstraintCurrentPassName
     !calledPropertyName
     !kind
     !typeName
@@ -2935,9 +2795,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -2964,9 +2822,7 @@ rule <semantic_instruction>
     !nomTypeSource
     !tableMessagesAbstraits
     ?instruction
-    !inConstraintCurrentPassName
     !?ioPropertyMap
-    !?ioMapAsConstraintPropertyMap
     !?ioConstraintPropertyDefinitionSet
     !?ioCallInstructionSharedPropertySignatureMap
   ;
@@ -2987,9 +2843,7 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@typeInstruction outInstruction
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3066,9 +2920,7 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap unused tableMessagesAbstraits
   !@typeInstruction outInstruction
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -3149,9 +3001,7 @@ rule <extract_instruction>
           !?ioOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
-          !inConstraintCurrentPassName
           !?ioPropertyMap
-          !?ioMapAsConstraintPropertyMap
           !?ioConstraintPropertyDefinitionSet
           !?ioCallInstructionSharedPropertySignatureMap
         ;
@@ -3170,9 +3020,7 @@ rule <extract_instruction>
         !?ioOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elseInstructionList
-        !inConstraintCurrentPassName
         !?ioPropertyMap
-        !?ioMapAsConstraintPropertyMap
         !?ioConstraintPropertyDefinitionSet
         !?ioCallInstructionSharedPropertySignatureMap
       ;
@@ -3197,9 +3045,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3238,9 +3084,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3323,9 +3167,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3374,9 +3216,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3447,9 +3287,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3477,9 +3315,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3527,9 +3363,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3596,9 +3430,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3634,9 +3466,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -3666,9 +3496,7 @@ rule <semantic_instruction>
           !?ioOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheTest
-          !inConstraintCurrentPassName
           !?ioPropertyMap
-          !?ioMapAsConstraintPropertyMap
           !?constraintPropertyDefinitionSet
           !?ioCallInstructionSharedPropertySignatureMap
         ;
@@ -3698,9 +3526,7 @@ rule <semantic_instruction>
           !?ioOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheAutre
-          !inConstraintCurrentPassName
           !?ioPropertyMap
-          !?ioMapAsConstraintPropertyMap
           !?constraintPropertyDefinitionSet
           !?ioCallInstructionSharedPropertySignatureMap
         ;
@@ -3731,9 +3557,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -3761,9 +3585,7 @@ rule <semantic_instruction>
         !?ioOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList1
-        !inConstraintCurrentPassName
         !?ioPropertyMap
-        !?ioMapAsConstraintPropertyMap
         !?ioConstraintPropertyDefinitionSet
         !?ioCallInstructionSharedPropertySignatureMap
       ;
@@ -3793,9 +3615,7 @@ rule <semantic_instruction>
         !?ioOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList2
-        !inConstraintCurrentPassName
         !?ioPropertyMap
-        !?ioMapAsConstraintPropertyMap
         !?ioConstraintPropertyDefinitionSet
         !?ioCallInstructionSharedPropertySignatureMap
       ;
@@ -3826,9 +3646,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string unused inConstraintCurrentPassName
   ?!@entityPropertyMap unused ioPropertyMap
-  ?!@mapAsConstraintPropertyMap unused ioMapAsConstraintPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
@@ -3899,9 +3717,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -3968,9 +3784,7 @@ rule <semantic_instruction>
         !?ioOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList
-        !inConstraintCurrentPassName
         !?ioPropertyMap
-        !?ioMapAsConstraintPropertyMap
         !?ioConstraintPropertyDefinitionSet
         !?ioCallInstructionSharedPropertySignatureMap
       ;
@@ -4108,9 +3922,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -4185,9 +3997,7 @@ rule <semantic_instruction>
           !?ioOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
-          !inConstraintCurrentPassName
           !?ioPropertyMap
-          !?ioMapAsConstraintPropertyMap
           !?ioConstraintPropertyDefinitionSet
           !?ioCallInstructionSharedPropertySignatureMap
         ;
@@ -4204,9 +4014,7 @@ rule <semantic_instruction>
         !?ioOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elsePartInstructionsList
-        !inConstraintCurrentPassName
         !?ioPropertyMap
-        !?ioMapAsConstraintPropertyMap
         !?ioConstraintPropertyDefinitionSet
         !?ioCallInstructionSharedPropertySignatureMap
       ;
@@ -4237,9 +4045,7 @@ rule <semantic_instructions_list_no_verif>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inConstraintCurrentPassName
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
@@ -4251,9 +4057,7 @@ rule <semantic_instructions_list_no_verif>
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
-      !inConstraintCurrentPassName
       !?ioPropertyMap
-      !?ioMapAsConstraintPropertyMap
       !?ioConstraintPropertyDefinitionSet
       !?ioCallInstructionSharedPropertySignatureMap
     ;

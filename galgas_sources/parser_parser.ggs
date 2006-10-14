@@ -128,9 +128,7 @@ rule <semantic_instruction>
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?@string inCurrentPass
   ?!@entityPropertyMap ioPropertyMap
-  ?!@mapAsConstraintPropertyMap ioMapAsConstraintPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
   ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
@@ -1711,9 +1709,7 @@ rule <syntax_instructions_list_no_verif>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
 :
-  @string currentConstraintPassName := "" ;
   @entityPropertyMap propertyMap [emptyMap] ;
-  @mapAsConstraintPropertyMap mapAsConstraintPropertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
   @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
   repeat
@@ -1736,9 +1732,7 @@ rule <syntax_instructions_list_no_verif>
       !?ioOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
-      !currentConstraintPassName
       !?propertyMap
-      !?mapAsConstraintPropertyMap
       !?constraintPropertyDefinitionSet
       !?callInstructionSharedPropertySignatureMap
     ;

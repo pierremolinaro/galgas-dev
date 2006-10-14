@@ -1359,28 +1359,18 @@ action generateSemanticsComponent
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @mapAsConstraintPropertyMap {
-  @lstring mMapTypeName ;
-  @lstring mElementTypeName ;
-  @uint mPassIndex ;
-  @string mPassName ;
-  @bool mIsShared ;
-  insert insertKey error message "the '%K' map property has been already declared in %L" ;
-  search searchKey error message "the '%K' map property is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @passMap {
-  insert insertKey error message "the '%K' pass name has been already declared in %L" ;
-  search searchKey, searchKeyAndGetIndex error message "the '%K' pass name is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
 list @sharedPropertyList {
   @lstring mSharedPropertyTypeName ;
   @lstring mSharedPropertyName ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @representativeEntityMap {
+  @lstring mRepresentativeEntityName ;
+  @stringset mSuperEntitySet ;
+  insert insertKey error message "internal error: the '%K' entity has been already declared in %L" ;
+  search searchKey error message "internal error: the '%K' entity is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1394,23 +1384,6 @@ map @callInstructionSharedPropertySignatureMap {
 
 #---------------------------------------------------------------------------*
 
-map @constrainedEntityPassMap {
-  @typeInstructionList mInstructionList ;
-  @sharedPropertyList mSharedPropertyList ;
-  @stringset mConstraintPropertyDefinitionSet ;
-  @callInstructionSharedPropertySignatureMap mCallInstructionSharedPropertySignatureMap ;
-  insert insertKey error message "the '%K' pass name has been already declared in %L" ;
-  search searchKey error message "the '%K' pass name is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @constraintAllPropertiesMap {
-  insert insertKey error message "the '%K' constraint attribute has been already declared in %L" ;
-}
-
-#---------------------------------------------------------------------------*
-
 map @indexMap {
   @lstring mMapTypeName ;
   @uint mPassIndex ;
@@ -1420,39 +1393,20 @@ map @indexMap {
 
 #---------------------------------------------------------------------------*
 
-map @constrainedEntityMap {
-  @stringset mPassesDefinedByInheritanceTreeRootEntity ;
-  @constrainedEntityPassMap mConstrainedEntityPassMap ;
-  @lstring mSuperEntityName ;
-  @entityPropertyMap mEntityPropertiesMap ;
-  @stringset mDescendantEntitySet ;
-  @location mEndOfConstraintLocation ;
-  @mapAsConstraintPropertyMap mMapAsConstraintPropertyCurrentMap ;
-  @mapAsConstraintPropertyMap mAllMapsAsConstraintPropertyMap ;
-  @constraintAllPropertiesMap mConstraintAllPropertiesMap ;
-  @indexMap mCurrentIndexMap ;
-  @indexMap mInheritedIndexMap ;
-  insert insertKey error message "constraints for '@%K' entity has been already declared in %L" ;
-  search searchKey error message "no constraint has been defined for the '@%K' entity" ;
-}
-
-#---------------------------------------------------------------------------*
-
 action generate_constraints
-  ?@passMap inPassMap
   ?@entityToImplementMap inEntityMap
   ?@mapEntityMap inMapEntityMap
   ?@lstring inMetamodelComponentName
   ?@lstring inConstraintComponentName
-  ?@constrainedEntityMap inConstrainedEntityMap
+  ?@entityToImplementMap inConstrainedEntityMap
   ?@stringset inMultiReferencedEntities
   ?@lstring inRootEntityName
+  ?@representativeEntityMap inRepresentativeEntityMap
 ;
 
 #---------------------------------------------------------------------------*
 
 class @callInstruction extends @typeInstruction {
-  @string mCurrentPassName ;
   @lstring mCalledPropertyName ;
   @metamodelPropertyKind mPropertyKind ;
   @lstring mPropertyTypeName ;

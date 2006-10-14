@@ -30,7 +30,8 @@ static void
 generate_mm_file_for_cocoa (C_Lexique & inLexique,
                             const C_String & inCocoaComponentName,
                             const GGS_lstring & inCLIToolName,
-                            const GGS_L_GUIAttributeList & inGUIAttributeList,
+                            const GGS_L_nibAndClassList & inNibAndClassList,
+                            const GGS_string & inBlockComment,
                             const C_String & inLexiqueComponentName,
                             const GGS_M_optionComponents & inOptionComponentsMap) {
 //--- Generate user includes
@@ -49,14 +50,12 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
     generatedZone2 << "#import \"" << currentOptionComponent->mKey << ".h\"\n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
-  GGS_L_GUIAttributeList::element_type * currentNib = inGUIAttributeList.firstObject () ;
+  GGS_L_nibAndClassList::element_type * currentNib = inNibAndClassList.firstObject () ;
   while (currentNib != NULL) {
     macroValidPointer (currentNib) ;
-    if (currentNib->mKey == "nibAndMainClass") {
-      TC_UniqueArray <C_String> result ;
-      currentNib->mValue.componentsSeparatedByString (".", result) ;
-      generatedZone2 << "#import \"" << result (1 COMMA_HERE) << ".h\"\n" ;
-    }
+    TC_UniqueArray <C_String> result ;
+    currentNib->mValue.componentsSeparatedByString (".", result) ;
+    generatedZone2 << "#import \"" << result (1 COMMA_HERE) << ".h\"\n" ;
     currentNib = currentNib->nextObject () ;
   }
   generatedZone2 << "#ifdef USER_DEFAULT_COLORS_DEFINED\n"
@@ -91,28 +90,34 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
     index ++ ;
   }
   generatedZone3 << "NULL) ;\n"
-             "static C_galgas_io_parameters IOparameters (& gCommandLineOptions) ;\n"
-             "static C_galgas_null_io gNullIO (IOparameters) ;\n"
-             "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
-             "static NSMutableArray * gColorArray ;\n\n" ;
+                    "static C_galgas_io_parameters IOparameters (& gCommandLineOptions) ;\n"
+                    "static C_galgas_null_io gNullIO (IOparameters) ;\n"
+                    "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
+                    "static NSMutableArray * gColorArray ;\n\n" ;
 
 //--- NIB and main class
   generatedZone3.writeCppTitleComment ("N I B S   A N D   T H E I R   M A I N   C L A S S E S") ;
   generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
                     "  return [NSArray arrayWithObjects:\n" ;
-  currentNib = inGUIAttributeList.firstObject () ;
+  currentNib = inNibAndClassList.firstObject () ;
   while (currentNib != NULL) {
     macroValidPointer (currentNib) ;
-    if (currentNib->mKey == "nibAndMainClass") {
-      TC_UniqueArray <C_String> result ;
-      currentNib->mValue.componentsSeparatedByString (".", result) ;
-      generatedZone3 << "    [NSArray arrayWithObjects:@\"" << result (0 COMMA_HERE)
-                     << "\", [" << result (1 COMMA_HERE) << " class], nil],\n" ;
-    }
+    TC_UniqueArray <C_String> result ;
+    currentNib->mValue.componentsSeparatedByString (".", result) ;
+    generatedZone3 << "    [NSArray arrayWithObjects:@\"" << result (0 COMMA_HERE)
+                   << "\", [" << result (1 COMMA_HERE) << " class], nil],\n" ;
     currentNib = currentNib->nextObject () ;
   }
   generatedZone3 << "    nil\n"
                     "  ] ;\n"
+                    "}\n\n" ;
+
+//--- Block Comment
+  generatedZone3.writeCppTitleComment ("B L O C K    C O M M E N T") ;
+  generatedZone3 << "NSString * blockComment (void) {\n"
+                    "  return @" ;
+  generatedZone3.writeCstringConstant (inBlockComment) ;
+  generatedZone3 << " ;\n"
                     "}\n\n" ;
 
 //--- Bool options routines             
@@ -315,7 +320,8 @@ routine_generateCocoaComponent (C_Lexique & inLexique,
                                 GGS_lstring inGUIcomponentName,
                                 GGS_lstring inGUIkindName,
                                 GGS_lstring inCLIToolName,
-                                GGS_L_GUIAttributeList inGUIAttributeList,
+                                GGS_L_nibAndClassList inNibAndClassList,
+                                GGS_string inBlockComment,
                                 GGS_lstring inLexiqueComponentName,
                                 GGS_M_optionComponents inOptionComponentsMap
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -323,7 +329,8 @@ routine_generateCocoaComponent (C_Lexique & inLexique,
     generate_mm_file_for_cocoa (inLexique,
                                 inGUIcomponentName,
                                 inCLIToolName,
-                                inGUIAttributeList,
+                                inNibAndClassList,
+                                inBlockComment,
                                 inLexiqueComponentName,
                                 inOptionComponentsMap) ;
   }else{
