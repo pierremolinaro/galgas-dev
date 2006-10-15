@@ -661,12 +661,31 @@ map @mapAndEntityUniqueMap {
 
 #---------------------------------------------------------------------------*
 
+list @constrainedPropertyList {
+  @lstring mPropertyTypeName ;
+  @lstring mPropertyName ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @entityToImplementMap {
+#--- All properties, those defined in super entities and defined in current entity 
   @entityPropertyMap mAllPropertiesMap ;
+#--- Entity is abstract ?
   @bool mIsAbstract ;
+#--- Only properties defined in current entity
   @entityPropertyMap mEntityPropertiesMap ;
+#--- 
   @lstring mSuperEntityName ;
+#---
   @stringset mSuperClassSet ;
+#--- Defined implicitly (by constraint) ?
+  @bool mIsImplicitlyDefined ;
+#--- Only properties defined as attribute in current constraint
+  @constrainedPropertyList mConstrainedAttributePropertyToImplementList ;
+#--- Only properties defined as parameter in current constraint
+  @constrainedPropertyList mConstrainedParameterPropertyToImplementList ;
+#--- Access methods
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
 }
@@ -3016,7 +3035,7 @@ routine computeRepresentativeEntityName
       outRepresentativeEntityName := searchedEntity ;
     else
       @lstring superEntity ;
-      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?*] ;
+      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?* ?* ?* ?*] ;
       searchedEntity := superEntity ;
     end if ;
   end loop ;

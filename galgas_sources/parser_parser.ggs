@@ -969,20 +969,21 @@ rule <rule_declaration_or_implementation>
       #--- Variable name
         @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        if kKind == [@metamodelPropertyKind multipleReferenceProperty] then
+        switch kKind
+        when multipleReferenceProperty :
           definitionType := [@typeGalgas_multipleEntity new ! kTypeName] ;
            [!?ioVariablesMap insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
           @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
           listeInstructions += !instruction ;
-        elsif kKind == [@metamodelPropertyKind attributeProperty] then
+        when attributeProperty :
           [!?ioVariablesMap insertEntityAttributeLocalVariable !nomVariable !definitionType !nomCppVariable] ;
           @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
           listeInstructions += !instruction ;
-        elsif kKind == [@metamodelPropertyKind singleReferenceProperty] then
+        when singleReferenceProperty :
           [!?ioVariablesMap insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
           @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
           listeInstructions += !instruction ;
-        end if ;
+        end switch ;
       end if ;
     end foreach ;
   end if ;

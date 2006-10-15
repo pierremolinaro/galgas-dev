@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate map declaration and implementation                              *
 //                                                                           *
-//  Copyright (C) 1999-2005 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -63,7 +63,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Data member\n"
              "  public : e_" << aNomTable << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
-             "  public : void appendForMapDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;\n"
+             "  public : void appendForMapDescription (C_Lexique & _inLexique,\n"
+             "                                         C_String & ioString,\n"
+             "                                         const sint32 inIndentation\n"
+             "                                         COMMA_LOCATION_ARGS) const ;\n"
              "} ;\n\n" ;
 }
 
@@ -182,7 +185,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "                                  GGS_luint * outIndex\n"
              "                                  COMMA_LOCATION_ARGS) const ;\n"
 //--- Generate 'description' reader declaration
-              "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "                                          COMMA_LOCATION_ARGS,\n"
+             "                                          const sint32 inIndentation = 0) const ;\n"
 //--- Generate 'mapWithMapToOverride' constructor declaration
               "  public : static GGS_" << aNomTable << " constructor_mapWithMapToOverride (C_Lexique & inLexique,\n"
               "                                            const GGS_" << aNomTable << " & inMapToOverride\n"
@@ -231,16 +236,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Method for 'reader' element
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomTable << "::\n"
-               "appendForMapDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const {\n"
+               "appendForMapDescription (C_Lexique & _inLexique,\n"
+               "                         C_String & ioString,\n"
+               "                         const sint32 inIndentation\n"
+               "                         COMMA_LOCATION_ARGS) const {\n"
                "  ioString << \"[\"\n"
-               "           << mKey.reader_description  (_inLexique COMMA_THERE) ;\n" ;
+               "           << mKey.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   if (current != NULL) {
     inCppFile << "  ioString << \"->\" ;\n" ;
   }
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  ioString << mInfo." << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE) ;\n" ;
+    inCppFile << "  ioString << mInfo." << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
     current = current->nextObject () ;
   }
   inCppFile << "  ioString << \"]\" ;\n"
@@ -515,7 +523,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement reader 'description'
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_string GGS_" << aNomTable << "::reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
+  inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
+               "reader_description (C_Lexique & _inLexique\n"
+               "                    COMMA_LOCATION_ARGS,\n"
+               "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
                "  if (_isBuilt ()) {\n"
@@ -523,7 +534,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "    element_type * p = firstObject () ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
-               "      p->appendForMapDescription (_inLexique, s COMMA_THERE) ;\n"
+               "      s << \"\\n\" ;\n"
+               "      s.writeSpaces (inIndentation + 1) ;\n"
+               "      p->appendForMapDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
                "      p = p->nextObject () ;\n"
                "    }\n"
                "  }else{\n"
@@ -579,7 +592,10 @@ generateHdeclarations (AC_OutputStream & inHfile,
   generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 
   inHfile << "//--- Method for 'description' reader\n"
-             "  public : void appendForMapDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;\n"
+             "  public : void appendForMapDescription (C_Lexique & _inLexique,\n"
+             "                                         C_String & ioString,\n"
+             "                                         const sint32 inIndentation\n"
+             "                                         COMMA_LOCATION_ARGS) const ;\n"
              "} ;\n\n" ; //--- Fin de la declaration de la classe e_...
 
 // ---------------------- declaration de la classe table -----------------
@@ -671,7 +687,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
     currentMethod = currentMethod->nextObject () ;
   }
 //--- Generate 'description' reader declaration
-  inHfile << "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
+  inHfile << "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "                                          COMMA_LOCATION_ARGS,\n"
+             "                                          const sint32 inIndentation = 0) const ;\n"
              "} ;\n\n" ;
 }
 
@@ -879,7 +897,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement reader 'description'
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_string GGS_" << aNomTable << "::reader_description (C_Lexique & /* _inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
+               "reader_description (C_Lexique & /* _inLexique */\n"
+               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
+               "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
                "  if (_isBuilt ()) {\n"

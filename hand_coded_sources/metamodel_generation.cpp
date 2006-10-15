@@ -88,7 +88,9 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * mFirstObject ;\n"
                       "  public : GGS_" << currentMultipleReferencedEntity->mKey << " * mLastObject ;\n"
                       "//--- 'description' reader\n"
-                      "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
+                      "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+                      "                                          COMMA_LOCATION_ARGS,\n"
+                      "                                          const sint32 inIndentation = 0) const ;\n"
                       "} ;\n\n" ;
     currentMultipleReferencedEntity = currentMultipleReferencedEntity->nextObject () ;
   }
@@ -185,7 +187,9 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     }
   //--- 'description' reader                 
     generatedZone3 << "//--- 'description' reader\n"
-                      "  public : virtual GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const"
+                      "  public : virtual GGS_string reader_description (C_Lexique & _inLexique\n"
+                      "                                                  COMMA_LOCATION_ARGS,\n"
+                      "                                                  const sint32 inIndentation = 0) const"
                    << (currentEntity->mInfo.mIsAbstract.boolValue () ? " = 0" : "")
                    << " ;\n" ;
   //--- Friend Declaration                 
@@ -241,7 +245,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                    << " (C_Lexique & _inLexique, GGS_" << inRootEntityName << " * & ioRootObject) {\n"
                       "  if (ioRootObject != NULL) {\n"
                       "    macroValidPointer (ioRootObject) ;\n"
-                      "    // const GGS_string s = ioRootObject->reader_description  (_inLexique COMMA_THERE) ;\n"
+                      "    // const GGS_string s = ioRootObject->reader_description  (_inLexique COMMA_THERE, 0) ;\n"
                       "    // co << s << \"\\n\" ;\n"
                       "  }\n"
                       "}\n\n" ;
@@ -289,12 +293,16 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     generatedZone3.writeCppHyphenLineComment () ;
     generatedZone3 << "GGS_string GGS__listOf_" << currentMultipleReferencedEntity->mKey
                    << "::\n"
-                      "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
+                      "reader_description (C_Lexique & _inLexique\n"
+                      "                    COMMA_LOCATION_ARGS,\n"
+                      "                    const sint32 inIndentation) const {\n"
                       "  C_String s ;\n"
                       "  s << \"<list @" << currentMultipleReferencedEntity->mKey << " \" ;\n"
                       "  GGS_" << currentMultipleReferencedEntity->mKey << " * p = mFirstObject ;\n"
                       "  while (p != NULL) {\n"
-                      "    s << p->reader_description  (_inLexique COMMA_THERE) ;\n"
+                      "    s << \"\\n\" ;\n"
+                      "    s.writeSpaces (inIndentation + 1) ;\n"
+                      "    s << p->reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n"
                       "    p = p->_mNextObject ;\n"
                       "  }\n"
                       "  s << \">\" ;\n"
@@ -439,7 +447,10 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
 //--- reader_description (C_Lexique & inLexique COMMA_LOCATION_ARGS)
     if (! currentEntity->mInfo.mIsAbstract.boolValue ()) {
       generatedZone3.writeCppHyphenLineComment () ;
-      generatedZone3 << "GGS_string GGS_" << currentEntity->mKey << "::reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
+      generatedZone3 << "GGS_string GGS_" << currentEntity->mKey << "::\n"
+                        "reader_description (C_Lexique & _inLexique\n"
+                        "                    COMMA_LOCATION_ARGS,\n"
+                        "                    const sint32 inIndentation) const {\n"
                         "  C_String s ;\n"
                         "  s << \"<@" << currentEntity->mKey << " {\"\n" ;
       currentProperty = currentEntity->mInfo.mEntityPropertiesMap.firstObject () ;
@@ -447,13 +458,13 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         macroValidPointer (currentProperty) ;
         switch (currentProperty->mInfo.mKind.enumValue ()) {
         case GGS_metamodelPropertyKind::enum_attributeProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE)\n" ;
+          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)\n" ;
           break ;
         case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << "->reader_description  (_inLexique COMMA_THERE)\n" ;
+          generatedZone3 << "    << " << currentProperty->mKey << "->reader_description  (_inLexique COMMA_THERE, inIndentation + 1)\n" ;
           break ;
         case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE)\n" ;
+          generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)\n" ;
           break ;
         case GGS_metamodelPropertyKind::kNotBuilt:
           break ;
