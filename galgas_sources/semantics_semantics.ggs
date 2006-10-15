@@ -712,6 +712,25 @@ class @C_if_instruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   " S W I T C H "   I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @L_switchBranchlist {
+  @stringset mConstantSet ;
+  @typeInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @C_switch_instruction extends @typeInstruction {
+  @typeExpression mSwitchExpression ;
+  @lstring mEnumTypeName ;
+  @L_switchBranchlist mBranchList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #      Definition de la map des routines a implementer                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1359,13 +1378,6 @@ action generateSemanticsComponent
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @sharedPropertyList {
-  @lstring mSharedPropertyTypeName ;
-  @lstring mSharedPropertyName ;
-}
-
-#---------------------------------------------------------------------------*
-
 map @representativeEntityMap {
   @lstring mRepresentativeEntityName ;
   @stringset mSuperEntitySet ;
@@ -1376,7 +1388,7 @@ map @representativeEntityMap {
 #---------------------------------------------------------------------------*
 
 map @callInstructionSharedPropertySignatureMap {
-  @sharedPropertyList mSignature ;
+  @constrainedPropertyList mSignature ;
   @location mSignatureLocation ;
   insert insertKey error message "internal error: the '%K' property has been already declared in %L" ;
   search searchKey error message "internal error: the '%K' property is not declared" ;

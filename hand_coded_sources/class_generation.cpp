@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate GALGAS class declaration and implementation                     *
 //                                                                           *
-//  Copyright (C) 1999-2005 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -247,7 +247,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Generate 'description' reader declaration
   inHfile << "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "                                          COMMA_LOCATION_ARGS,\n"
+             "                                          const sint32 inIndentation = 0) const ;\n"
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
              "//--- operator ()\n"
@@ -347,7 +349,11 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
 
 //--- Method for 'description' reader
-  generatedZone3 << "//--- Method for 'description' reader\n""  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;\n" ;
+  generatedZone3 << "//--- Method for 'description' reader\n"
+                    "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
+                    "                                              C_String & ioString,\n"
+                    "                                              const sint32 inIndentation\n"
+                    "                                              COMMA_LOCATION_ARGS) const ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
@@ -468,7 +474,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "appendForDescription (C_Lexique & "
             << ((current == NULL) ? "/* _inLexique */" : "_inLexique")
             << ",\n"
-               "                      C_String & ioString\n"
+               "                      C_String & ioString,\n"
+               "                      const sint32 "
+            << ((current == NULL) ? "/* inIndentation */" : "inIndentation")
+            << "\n"
                "                      " ;
   if (current == NULL) {
     inCppFile << "COMMA_UNUSED_LOCATION_ARGS" ;
@@ -481,7 +490,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (current) ;
     inCppFile << "\n"
                  "           << " << current->aNomAttribut
-              << ".reader_description  (_inLexique COMMA_THERE)" ;
+              << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)" ;
     current = current->nextObject () ;
   }
   inCppFile << " ;\n"
@@ -587,11 +596,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Generate 'description' reader implementation
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
-            << "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
+            << "reader_description (C_Lexique & _inLexique\n"
+               "                    COMMA_LOCATION_ARGS,\n"
+               "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<class @" << aNomClasse << "\" ;\n"
                "  if (_isBuilt ()) {\n"
-               "    mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;\n"
+               "    mPointer->appendForDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"
                "  }\n"
@@ -673,7 +684,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
   }
 
   inHfile << "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "                                          COMMA_LOCATION_ARGS,\n"
+             "                                          const sint32 inIndentation = 0) const ;\n"
              "//--- 'new' constructor\n"
              "  public : static GGS_" << aNomClasse
           << " constructor_new (C_Lexique & inLexique" ;
@@ -778,7 +791,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Generate 'description' reader declaration
   generatedZone3 << "//--- Method for 'description' reader\n"
-                    "  public : virtual void appendForDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;\n" ;
+                    "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
+                    "                                              C_String & ioString,\n"
+                    "                                              const sint32 inIndentation\n"
+                    "                                              COMMA_LOCATION_ARGS) const ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;  
@@ -975,7 +991,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "appendForDescription (C_Lexique & "
             << ((current == NULL) ? "/* _inLexique */" : "_inLexique")
             << ",\n"
-               "                      C_String & ioString\n"
+               "                      C_String & ioString,\n"
+               "                      const sint32 "
+            << ((current == NULL) ? "/* inIndentation */" : "inIndentation")
+            << "\n"
                "                      " ;
   if (current == NULL) {
     inCppFile << "COMMA_UNUSED_LOCATION_ARGS" ;
@@ -988,7 +1007,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (current) ;
     inCppFile << "\n"
                  "           << " << current->aNomAttribut
-              << ".reader_description  (_inLexique COMMA_THERE)" ;
+              << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)" ;
     current = current->nextObject () ;
   }
   inCppFile << " ;\n"
@@ -1099,11 +1118,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Generate 'description' reader implementation
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
-            << "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
+            << "reader_description (C_Lexique & _inLexique\n"
+               "                    COMMA_LOCATION_ARGS,\n"
+               "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<class @" << aNomClasse << "\" ;\n"
                "  if (_isBuilt ()) {\n"
-               "    mPointer->appendForDescription (_inLexique, s COMMA_THERE) ;\n"
+               "    mPointer->appendForDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"
                "  }\n"

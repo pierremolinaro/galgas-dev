@@ -146,7 +146,7 @@ rule <parse_metamodel>
     !?mapAndEntityUniqueMap
   ;
   @bool isAbstract ;
-  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?*] ;
+  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -157,7 +157,10 @@ rule <parse_metamodel>
                      ??@bool kIsAbstract
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName
-                     ??@stringset kSuperEntitySet) :
+                     ??@stringset kSuperEntitySet
+                     ??*
+                     ??*
+                     ??*) :
      @AC_galgasType t := [@typeGalgas_singleEntity new
       !kEntityName
       !kAllPropertiesMap
@@ -179,15 +182,19 @@ rule <parse_metamodel>
                      ??*
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??*
+                     ??*
+                     ??*
+                     ??*
                      ??*) :
     foreach kEntityPropertiesMap (??@lstring kAttributeName
                                   ??@metamodelPropertyKind kKind
                                   ??@lstring kTypeName) :
-      if (kKind == [@metamodelPropertyKind singleReferenceProperty]) |
-         (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
-        [entityMap searchKey !kTypeName ?* ?* ?* ?* ?*] ;
+      switch kKind 
+      when attributeProperty :
+      when singleReferenceProperty, multipleReferenceProperty :
+        [entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kTypeName string] ;
-      end if ;
+      end switch ;
     end foreach ;
   end foreach ;
 #--- Generate C++ code
@@ -267,6 +274,9 @@ rule <entity_declaration>
       ?allPropertyMap
       ?*
       ?superEntitySet
+      ?*
+      ?*
+      ?*
     ] ;
     superEntitySet += ![superEntity string] ;
   end select ;
@@ -312,6 +322,9 @@ rule <entity_declaration>
     !entityPropertyMap
     !superEntity
     !superEntitySet
+    !false # is not defined implicitly
+    ![@constrainedPropertyList emptyList]
+    ![@constrainedPropertyList emptyList]
    ] ;
 end rule ;
 

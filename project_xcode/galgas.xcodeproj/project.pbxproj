@@ -2490,7 +2490,6 @@
 				CFEC15F509CA026700204242 /* metamodel_generation.cpp */,
 			);
 			name = "Metamodel Component";
-			path = ../../hand_coded_sources;
 			sourceTree = "<group>";
 		};
 		CFEEBE6505C0569F009FE498 /* Cocoa Component */ = {
@@ -2558,7 +2557,6 @@
 				CFF13E370597308C00C43F5E /* Option Component */,
 				CFF5376A057A504000854C83 /* Scanner Component */,
 				CFF53780057A50B300854C83 /* Semantics Component */,
-				CFEC15F109CA021000204242 /* Metamodel Component */,
 				CFF537AA057A51A000854C83 /* Parser Component */,
 				CFEEBE6505C0569F009FE498 /* Cocoa Component */,
 				CF9040E3057F26B5007362F4 /* Grammar Component */,
@@ -2579,6 +2577,7 @@
 				CFA3131609FD3B95006B55E7 /* cGalgasVariablesMap.hh */,
 				CFA3131709FD3B95006B55E7 /* cTableMethodesAimplementer.h */,
 				CFA3131809FD3B95006B55E7 /* cTableMethodesAimplementer.hh */,
+				CFEC15F109CA021000204242 /* Metamodel Component */,
 				CF01970009DC28010000AD72 /* Constraint Component */,
 				CF3E627C096EE48300419EBB /* Project Creation */,
 				CFEEBE6905C056DD009FE498 /* Cocoa Component */,

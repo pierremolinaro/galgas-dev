@@ -1210,7 +1210,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark IF instruction
 #endif
 
 //---------------------------------------------------------------------------*
@@ -1274,6 +1274,77 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
     macroValidPointer (currentBranch) ;
     used = currentBranch->mIFexpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
+    currentBranch = currentBranch->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark SWITCH instruction
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_switch_instruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & inLexiqueClassName,
+                       const C_String & inTargetFileName,
+                       sint32 & ioPrototypeIndex,
+                       const bool inGenerateDebug,
+                       const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    ioCppFile << "switch (" ;
+    mSwitchExpression (HERE)->generateExpression (ioCppFile) ;
+    ioCppFile << ".enumValue ()) {\n" ;
+    GGS_L_switchBranchlist::element_type * currentBranch = mBranchList.firstObject () ;
+    while (currentBranch != NULL) {
+      macroValidPointer (currentBranch) ;
+      GGS_stringset::element_type * currentConstant = currentBranch->mConstantSet.firstObject () ;
+      while (currentConstant != NULL) {
+        macroValidPointer (currentConstant) ;
+        ioCppFile << "case GGS_" << mEnumTypeName << "::enum_" << currentConstant->mKey << ":\n" ;
+        currentConstant = currentConstant->nextObject () ;
+      }
+      ioCppFile << "  {\n" ;
+      generateInstructionListForList (currentBranch->mInstructionList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+                                      inGenerateDebug, true) ;
+      ioCppFile << "  }\n"
+                   "  break ;\n" ;
+      currentBranch = currentBranch->nextObject () ;
+    }
+    ioCppFile << "case GGS_" << mEnumTypeName << "::kNotBuilt:\n"
+                 "  break ;\n"
+                 "}\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_switch_instruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+  bool used = mSwitchExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  GGS_L_switchBranchlist::element_type * currentBranch = mBranchList.firstObject () ;
+  while ((! used) && (currentBranch != NULL)) {
+    macroValidPointer (currentBranch) ;
+    used = isLexiqueFormalArgumentUsedForList (currentBranch->mInstructionList, inGenerateSemanticInstructions) ;
+    currentBranch = currentBranch->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_switch_instruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool inGenerateSemanticInstructions) const {
+  bool used = mSwitchExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  GGS_L_switchBranchlist::element_type * currentBranch = mBranchList.firstObject () ;
+  while ((! used) && (currentBranch != NULL)) {
+    macroValidPointer (currentBranch) ;
+    used = formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch = currentBranch->nextObject () ;
   }
   return used ;

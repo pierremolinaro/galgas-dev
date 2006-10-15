@@ -77,7 +77,7 @@ label parse
 rule <constraints_on_entity_declaration>
   ?@entityToImplementMap inEntityMap
   ?!@mapEntityMap ioMapEntityMap
-  ?!@entityToImplementMap ioConstainedEntityMap
+  ?!@entityToImplementMap ioConstrainedEntityMap
 label parse
 ;
 
@@ -256,7 +256,7 @@ rule <parse_constraint_document>
 #      ?*
 #    ] ;
 #  #--- Check root entity constraint passes have no shared property
-#    foreach constrainedEntityPassMapForRootEntity (??@lstring kPassName ??* ??@sharedPropertyList kSharedPropertyList ...) :
+#    foreach constrainedEntityPassMapForRootEntity (??@lstring kPassName ??* ??@constrainedPropertyList kSharedPropertyList ...) :
 #      if [kSharedPropertyList length] != 0 then
 #        error kPassName:"a pass of the root entity constraint should not define any shared prperty" ;
 #      end if ;
@@ -290,10 +290,10 @@ rule <parse_constraint_document>
 #        #--- check if shared properties in call instructions are correctly passed as parameters
 #          if [kCallInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
 #            @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap := kCallInstructionSharedPropertySignatureMap ;
-#            @sharedPropertyList signature ;
+#            @constrainedPropertyList signature ;
 #            @location signatureLocation ;
 #            [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?signature ?signatureLocation] ;
-#            @sharedPropertyList sharedPropertyList ;
+#            @constrainedPropertyList sharedPropertyList ;
 #            [referencePropertyConstrainedEntityPassMap searchKey !kPassName ?* ?sharedPropertyList ?* ?*] ;
 #            if [sharedPropertyList length] == [signature length] then
 #              foreach sharedPropertyList (??@lstring kTypeName ??@lstring kParameterName),
@@ -319,7 +319,7 @@ rule <parse_constraint_document>
   end if ;
 #--- Build representative entity map
   @representativeEntityMap representativeEntityMap [emptyMap] ;
-  foreach metamodelEntityMap (??@lstring kEntityName ??* ??* ??* ??* ??@stringset kSuperEntitySet) :
+  foreach metamodelEntityMap (??@lstring kEntityName ??* ??* ??* ??* ??@stringset kSuperEntitySet ??* ??* ??*) :
     @lstring representativeTypeName ;
     computeRepresentativeEntityName
       !metamodelEntityMap
@@ -335,7 +335,17 @@ rule <parse_constraint_document>
   while performLoop do
     performLoop := false ;
     @entityToImplementMap temporaryEntityMap := constrainedEntityMap ;
-    foreach temporaryEntityMap (??@lstring kEntityName ??* ??* ??* ??@lstring kSuperEntityName ??*) :
+    foreach temporaryEntityMap (
+      ??@lstring kEntityName
+      ??*
+      ??*
+      ??*
+      ??@lstring kSuperEntityName
+      ??*
+      ??*
+      ??*
+      ??@constrainedPropertyList kConstrainedParameterPropertyToImplementList
+    ) :
       if ([kSuperEntityName string] != "") & not [constrainedEntityMap hasKey ![kSuperEntityName string]] then
         performLoop := true ;
         @entityPropertyMap allPropertiesMap ;
@@ -343,6 +353,7 @@ rule <parse_constraint_document>
         @entityPropertyMap entityPropertiesMap ;
         @lstring superEntityName ;
         @stringset superClassSet ;
+        @constrainedPropertyList constrainedParameterPropertyToImplementList ;
         [metamodelEntityMap searchKey
           !kSuperEntityName
           ?allPropertiesMap
@@ -350,6 +361,9 @@ rule <parse_constraint_document>
           ?entityPropertiesMap
           ?superEntityName
           ?superClassSet
+          ?*
+          ?*
+          ?constrainedParameterPropertyToImplementList
         ] ;
         [!?constrainedEntityMap insertKey
           !kSuperEntityName
@@ -358,6 +372,9 @@ rule <parse_constraint_document>
           !entityPropertiesMap
           !superEntityName
           !superClassSet
+          !true # Is implicitly defined
+          ![@constrainedPropertyList emptyList]
+          !kConstrainedParameterPropertyToImplementList
         ] ;
       end if ;
     end foreach ;
@@ -372,13 +389,50 @@ rule <parse_constraint_document>
     ??@entityPropertyMap kEntityPropertiesMap
     ??@lstring kSuperEntityName
     ??@stringset kSuperClassSet
+    ??@bool kIsImplicitlyDefined
+    ??@constrainedPropertyList kConstrainedAttributePropertyToImplementList
+    ??@constrainedPropertyList kConstrainedParameterPropertyToImplementList
   ) :
+  #--- Check constrained parameters of super entity (should be the same)
+    if [kSuperEntityName string] != "" then
+      @bool superEntityIsImplicitlyDefined ;
+      @constrainedPropertyList superEntityConstrainedParameterPropertyToImplementList ;
+      [constrainedEntityMap searchKey
+        !kSuperEntityName
+        ?*
+        ?*
+        ?*
+        ?*
+        ?*
+        ?superEntityIsImplicitlyDefined
+        ?*
+        ?superEntityConstrainedParameterPropertyToImplementList
+      ] ;
+      @bool identical := [kConstrainedParameterPropertyToImplementList length] == [superEntityConstrainedParameterPropertyToImplementList length] ;
+      foreach kConstrainedParameterPropertyToImplementList (??@lstring kPropertyType1 ??@lstring kPropertyName1),
+              superEntityConstrainedParameterPropertyToImplementList (??@lstring kPropertyType2 ??@lstring kPropertyName2)
+      while identical :
+         identical := ([kPropertyType1 string] == [kPropertyType2 string]) & ([kPropertyName1 string] == [kPropertyName2 string]) ;
+      end foreach ;
+      if not identical then
+        @string m := "parameter error: the '@" . [kEntityName string] . "' entity" ;
+        if kIsImplicitlyDefined then
+          m := m . " (implicitly defined)" ;
+        end if ;
+        m := m . " should have the same parameters as '@" . [kSuperEntityName string] . "' entity" ;
+        if superEntityIsImplicitlyDefined then
+          m := m . " (implicitly defined)" ;
+        end if ;
+        error here: m ;
+      end if ;
+    end if ;
   #---
    @entityPropertyMap newAllPropertiesMap [emptyMap] ;
     foreach kAllPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
-      if kKind == [@metamodelPropertyKind attributeProperty] then
+      switch kKind 
+      when attributeProperty :
         [!?newAllPropertiesMap insertKey !kKey !kKind !kTypeName] ;
-      elsif (kKind == [@metamodelPropertyKind singleReferenceProperty]) | (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
+      when singleReferenceProperty, multipleReferenceProperty :
         @lstring representativeTypeName ;
         computeRepresentativeEntityName
           !metamodelEntityMap
@@ -390,13 +444,14 @@ rule <parse_constraint_document>
           [!?newAllPropertiesMap insertKey !kKey !kKind !representativeTypeName] ;
           multiReferencedEntities += ![representativeTypeName string] ;
         end if ;
-      end if ;
+      end switch ;
     end foreach ;
     @entityPropertyMap newPropertiesMap [emptyMap] ;
     foreach kEntityPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
-      if kKind == [@metamodelPropertyKind attributeProperty] then
+      switch kKind 
+      when attributeProperty :
         [!?newPropertiesMap insertKey !kKey !kKind !kTypeName] ;
-      elsif (kKind == [@metamodelPropertyKind singleReferenceProperty]) | (kKind == [@metamodelPropertyKind multipleReferenceProperty]) then
+      when singleReferenceProperty, multipleReferenceProperty :
         @lstring representativeTypeName ;
         computeRepresentativeEntityName
           !metamodelEntityMap
@@ -408,7 +463,7 @@ rule <parse_constraint_document>
           [!?newPropertiesMap insertKey !kKey !kKind !representativeTypeName] ;
           multiReferencedEntities += ![representativeTypeName string] ;
         end if ;
-      end if ;
+      end switch ;
     end foreach ;
     [!?actualConstrainedEntityMap insertKey
       !kEntityName
@@ -417,6 +472,9 @@ rule <parse_constraint_document>
       !newPropertiesMap
       !kSuperEntityName
       !kSuperClassSet
+      !kIsImplicitlyDefined
+      !kConstrainedAttributePropertyToImplementList
+      !kConstrainedParameterPropertyToImplementList
     ] ;
   end foreach ;
 #--- Generate C++ code
@@ -477,8 +535,8 @@ end rule ;
 
 rule <constraints_on_entity_declaration>
   ?@entityToImplementMap inEntityMap
-  ?!@mapEntityMap unused ioMapEntityMap
-  ?!@entityToImplementMap ioConstainedEntityMap
+  ?!@mapEntityMap ioMapEntityMap
+  ?!@entityToImplementMap ioConstrainedEntityMap
 :
 #--- Entity Name
   $on$ ;
@@ -497,6 +555,9 @@ rule <constraints_on_entity_declaration>
     ?propertyMap
     ?superEntity
     ?superClassSet
+    ?*
+    ?*
+    ?*
    ] ;
 #  @stringset descendantEntitySet [emptySet] ;
 #  computeDescendantSet !ioEntityMap !entityName !?descendantEntitySet ;
@@ -532,8 +593,8 @@ rule <constraints_on_entity_declaration>
 #  @constrainedEntityPassMap constrainedEntityPassMap [emptyMap] ;
 #    @uint currentPassIndex := 0 ;
 #    @lstring passName [new !"premiere_passe" !here] ;
-#    @sharedPropertyList sharedPropertyList [emptyList] ;
-  #--- Properties from owner
+    @constrainedPropertyList constrainedParameterPropertyToImplementList [emptyList] ;
+  #--- Properties as parameters
     select
 #      if [superEntity string] != "" then
 #        [inheritedConstrainedEntityPassMap searchKey !passName ?* ?sharedPropertyList ?* ?*] ;
@@ -550,21 +611,22 @@ rule <constraints_on_entity_declaration>
         @lstring propertyName ;
         $identifier$ ? propertyName ;
 #        [!?constraintAllPropertiesMap insertKey !propertyName] ;
-#        if [ioMapEntityMap hasKey ![typeName string]] then 
+        if [ioMapEntityMap hasKey ![typeName string]] then 
 #          @lstring elementTypeName ;
 #          [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
 #          [!?mapAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentPassIndex ![passName string] !true] ;
 #          [!?allMapsAsConstraintPropertyMap insertKey !propertyName !typeName !elementTypeName !currentPassIndex ![passName string] !true] ;
-#          sharedPropertyList += !typeName !propertyName ;
-#        else
-#          error typeName:"unhandled type name" ;
-#        end if ;
+          constrainedParameterPropertyToImplementList += !typeName !propertyName ;
+        else
+          error typeName:"unhandled type name" ;
+        end if ;
       while
         $,$ ;
       end repeat ;
       $)$ ;
     end select ;
-  #--- Properties
+  #--- Properties as attributes
+    @constrainedPropertyList constrainedAttributePropertyToImplementList [emptyList] ;
     ${$ ;
     repeat
     while
@@ -572,6 +634,7 @@ rule <constraints_on_entity_declaration>
       $type_name$ ? typeName ;
       @lstring propertyName ;
       $identifier$ ? propertyName ;
+      constrainedAttributePropertyToImplementList += !typeName !propertyName ;
 #      [!?constraintAllPropertiesMap insertKey !propertyName] ;
 #      if [ioMapEntityMap hasKey ![typeName string]] then 
 #        @lstring elementTypeName ;
@@ -724,13 +787,16 @@ rule <constraints_on_entity_declaration>
 #    !allIndexMap
 #  ] ;
 #--- Enter in constraint entity map
-  [!?ioConstainedEntityMap insertKey
+  [!?ioConstrainedEntityMap insertKey
     !entityName
     !allPropertyMap
     !isAbstract
     !propertyMap
     !superEntity
     !superClassSet
+    !false # Is not implicitly defined
+    !constrainedAttributePropertyToImplementList
+    !constrainedParameterPropertyToImplementList
   ] ;
 end rule ;
 

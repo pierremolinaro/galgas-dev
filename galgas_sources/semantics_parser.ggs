@@ -2735,7 +2735,7 @@ rule <semantic_instruction>
   end if ;
 #--- Effective parameters
   @L_lstringList parameterList [emptyList] ;
-  @sharedPropertyList parameterTypeList [emptyList] ;
+  @constrainedPropertyList parameterTypeList [emptyList] ;
   select
   or
     $($ ;
@@ -2753,7 +2753,7 @@ rule <semantic_instruction>
   end select ;
 #--- Check parameter type list
   if [ioCallInstructionSharedPropertySignatureMap hasKey ![calledPropertyName string]] then
-    @sharedPropertyList previousParameterTypeList ;
+    @constrainedPropertyList previousParameterTypeList ;
     @location previousParameterTypeListLocation ;
     [ioCallInstructionSharedPropertySignatureMap searchKey !calledPropertyName ?previousParameterTypeList ?previousParameterTypeListLocation] ;
     if [previousParameterTypeList length] == [parameterTypeList length] then
@@ -3542,6 +3542,100 @@ rule <semantic_instruction>
   @typeInstruction instruction ;
   instruction := [@C_if_instruction new !listeBranchesTest !listeInstructionsBrancheAutre] ;
   ioInstructionList += !instruction ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Instruction                                                             *
+#     'switch exp when cst, cst: ...instructions... when ... end switch ;'  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ?!@entityPropertyMap ioPropertyMap
+  ?!@stringset ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
+:
+  $switch$ ;
+#--- Expression
+  @typeExpression switchExpression ;
+  @AC_galgasType resultType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !?ioOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?switchExpression
+    ?resultType
+  ;
+#--- Check expression type in an enum type
+  @lstring enumTypeName ;
+  @enumConstantMap enumConstantesMap ;
+  extract resultType->@typeGalgas_enum (?enumTypeName ?enumConstantesMap ?*) error here : messageGalgasType ;
+#---- When branches
+  @stringset startConstraintPropertyDefinitionSet := ioConstraintPropertyDefinitionSet ;
+  @bool firstBranch := true ;
+  @stringset allBranchConstantSet [emptySet] ;
+  @L_switchBranchlist switchBranchlist [emptyList] ;
+  block ioVariablesMap.testBloc () :
+    $when$ ;
+    repeat
+    #--- Parse constant list
+      @stringset branchConstantSet [emptySet] ;
+      repeat
+        @lstring enumConstantName ;
+        $identifier$ ? enumConstantName ;
+        branchConstantSet += ![enumConstantName string] ;
+        [enumConstantesMap searchKey !enumConstantName] ;
+        if [allBranchConstantSet hasKey ![enumConstantName string]] then
+          error enumConstantName: "this constant is already used in current switch instruction" ;
+        end if ;
+      while
+        $,$ ;
+      end repeat ;
+      $:$ ;
+      allBranchConstantSet := allBranchConstantSet | branchConstantSet ;
+      block ioVariablesMap.testPart () :
+        @typeInstructionList branchInstructionList [emptyList] ;
+        @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
+        <semantic_instructions_list_no_verif>
+          !?ioComponentSemanticsEntitiesMap
+          !?listeEntitesAengendrer
+          !?ioOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?branchInstructionList
+          !?ioPropertyMap
+          !?constraintPropertyDefinitionSet
+          !?ioCallInstructionSharedPropertySignatureMap
+        ;
+        switchBranchlist += !branchConstantSet !branchInstructionList ;
+        if firstBranch then
+          ioConstraintPropertyDefinitionSet := constraintPropertyDefinitionSet ;
+          firstBranch := false ;
+        elsif ioConstraintPropertyDefinitionSet != constraintPropertyDefinitionSet then
+          displayConstraintDefinitionErrors !ioConstraintPropertyDefinitionSet !constraintPropertyDefinitionSet ; 
+        end if ;
+      end block (!here) ;
+    while
+      $when$ ;
+    end repeat ;
+  end block () ;
+#--- Check all constant are named
+  @stringset missingConstants := [enumConstantesMap allKeys] - allBranchConstantSet ;
+  foreach missingConstants (??@string kConstant) :
+    error here: "the '" . kConstant . "' is not used in switch instruction" ;
+  end foreach ;
+#--- Generate instruction
+  @typeInstruction instruction ;
+  instruction := [@C_switch_instruction new !switchExpression !enumTypeName !switchBranchlist] ;
+  ioInstructionList += !instruction ;
+  $end$ ;
+  $switch$ ;
   $;$ ;
 end rule ;
 

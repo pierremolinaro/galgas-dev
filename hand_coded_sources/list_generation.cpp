@@ -71,7 +71,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : inline ~elementOf_GGS_" << aNomListe << " (void) {}\n"
 
 //--- Method for list 'description' reader
-             "  public : void appendForListDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const ;\n"
+             "  public : void appendForListDescription (C_Lexique & _inLexique,\n"
+             "                                          C_String & ioString,\n"
+             "                                          const sint32 inIndentation\n"
+             "                                          COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Friend declaration
              "  friend class GGS_" << aNomListe << " ;\n"
@@ -140,7 +143,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Declare reader 'description'
              "//--- Reader 'description'\n"
-             "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "                                          COMMA_LOCATION_ARGS,\n"
+             "                                          const sint32 inIndentation = 0) const ;\n"
 
 //--- Get first item
              "//--- Get first object\n"
@@ -251,13 +256,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-               "appendForListDescription (C_Lexique & _inLexique, C_String & ioString COMMA_LOCATION_ARGS) const {\n"
+               "appendForListDescription (C_Lexique & _inLexique,\n"
+               "                          C_String & ioString,\n"
+               "                          const sint32 inIndentation\n"
+               "                          COMMA_LOCATION_ARGS) const {\n"
                "  ioString << \"[\" ;\n"  ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE) ;\n" ;
+    inCppFile << "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -460,7 +468,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
-               "reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const {\n"
+               "reader_description (C_Lexique & _inLexique\n"
+               "                    COMMA_LOCATION_ARGS,\n"
+               "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<list @" << aNomListe << "\" ;\n"
                "  if (_isBuilt ()) {\n"
@@ -468,7 +478,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "    element_type * p = _mRoot->mFirstItem ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
-               "      p->appendForListDescription (_inLexique, s COMMA_THERE) ;\n"
+               "      s << \"\\n\" ;\n"
+               "      s.writeSpaces (inIndentation + 1) ;\n"
+               "      p->appendForListDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
                "      p = p->mNextItem ;\n"
                "    }\n"
                "  }else{\n"

@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate enum class                                                      *
 //                                                                           *
-//  Copyright (C) 2004-2004 Pierre Molinaro.                                 *
+//  Copyright (C) 2004, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -90,7 +90,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
   }
   inHfile << "\n"
              "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n\n"
+             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "                                          COMMA_LOCATION_ARGS,\n"
+             "                                          const sint32 inIndentation = 0) const ;\n\n"
              "//--- Drop operation\n"
              "  public : inline void _drop_operation (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
@@ -205,7 +207,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_string GGS_" << mEnumTypeName
             << "::\n"
                "reader_description (C_Lexique & /* _inLexique */\n"
-               "                    COMMA_UNUSED_LOCATION_ARGS) const {\n"
+               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
+               "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<enum @" << mEnumTypeName << "\" ;\n"
                "  switch (mValue) {\n" ;
