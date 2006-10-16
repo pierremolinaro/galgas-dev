@@ -35,8 +35,8 @@ list @L_lstringList {
 #---------------------------------------------------------------------------*
 
 enum @actualParametersPassingMode {
-  parameterOut, parameterOutIn, parameterIn ;
- 
+  parameterOut, parameterOutIn, parameterIn
+}{
   message actualArgumentMessage :
     parameterOutIn -> "an output/input (!?) actual parameter" ;
     parameterIn -> "an input (?) actual parameter" ;
@@ -51,8 +51,8 @@ enum @actualParametersPassingMode {
 #---------------------------------------------------------------------------*
 
 enum @formalArgumentPassingMode {
-  argumentIn, argumentOut, argumentInOut, argumentConstantIn ;
- 
+  argumentIn, argumentOut, argumentInOut, argumentConstantIn
+}{
   message formalArgumentMessage :
     argumentConstantIn -> "a constant input (??) formal argument" ;
     argumentIn -> "an input (?) formal argument" ;
@@ -393,7 +393,8 @@ list @typeListeAttributsSemantiques ;
 #---------------------------------------------------------------------------*
 
 enum @localConstantBuildStyleEnum {
-  listStyle, mapStyle, firstIsKeyOtherMapStyle ;
+  listStyle, mapStyle, firstIsKeyOtherMapStyle
+}{
 }
 
 #---------------------------------------------------------------------------*
@@ -505,7 +506,8 @@ abstract class @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 enum @metamodelPropertyKind {
-  attributeProperty, singleReferenceProperty, multipleReferenceProperty ;
+  attributeProperty, singleReferenceProperty, multipleReferenceProperty
+}{
 }
 
 #---------------------------------------------------------------------------*
