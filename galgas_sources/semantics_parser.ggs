@@ -2728,6 +2728,12 @@ rule <semantic_instruction>
   @metamodelPropertyKind kind ;
   @lstring typeName ;
   [ioPropertyMap searchKey !calledPropertyName ?kind ?typeName] ;
+  switch kind
+  when attributeProperty:
+    error calledPropertyName:"only a reference can used used here" ;
+  when singleReferenceProperty, multipleReferenceProperty:
+    # Ok
+  end switch ;
   if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName string]] then
     error calledPropertyName: "this property has been already initialized" ;
   else
@@ -2742,7 +2748,7 @@ rule <semantic_instruction>
     repeat
       @lstring propertyArgumentName ;
       $identifier$ ?propertyArgumentName ;
-      [ioPropertyMap searchKey !propertyArgumentName ?* ?*] ;
+#      [ioPropertyMap searchKey !propertyArgumentName ?* ?*] ;
 #      @lstring propertyTypeName ;
 #      [ioMapAsConstraintPropertyMap searchKey !propertyArgumentName ?propertyTypeName ?* ?* ?* ?*] ;
 #      parameterList += !propertyArgumentName ;
