@@ -5409,7 +5409,8 @@ rule <semantics_declaration>
   while
     $,$ ;
   end repeat ;
-  $;$ ;
+  $}$ ;
+  ${$ ;
 #--- Enum messages
   repeat
   while
@@ -5473,7 +5474,8 @@ label importSemantics
   while
     $,$ ;
   end repeat ;
-  $;$ ;
+  $}$ ;
+  ${$ ;
 #--- Messages map
   @typeEnumMessageMap exEnumMessageMap [emptyMap] ;
   @enumMessageMap enumMessageMap [emptyMap] ;
