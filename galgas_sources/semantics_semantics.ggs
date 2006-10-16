@@ -1405,6 +1405,16 @@ map @indexMap {
 
 #---------------------------------------------------------------------------*
 
+map @constraintInstructionListMap {
+  @typeInstructionList instructionsList ;
+  @callInstructionSharedPropertySignatureMap mCallInstructionSharedPropertySignatureMap ;
+#  @location mEndOfInstructionListLocation ;
+  insert insertKey error message "the instruction list of '%K' entity constraint  is already defined in %L" ;
+  search searchKey error message "the instruction list of '%K' constraint entity is not defined" ;
+}
+
+#---------------------------------------------------------------------------*
+
 action generate_constraints
   ?@entityToImplementMap inEntityMap
   ?@mapEntityMap inMapEntityMap
@@ -1414,6 +1424,7 @@ action generate_constraints
   ?@stringset inMultiReferencedEntities
   ?@lstring inRootEntityName
   ?@representativeEntityMap inRepresentativeEntityMap
+  ?@constraintInstructionListMap inConstraintInstructionListMap
 ;
 
 #---------------------------------------------------------------------------*

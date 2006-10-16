@@ -2742,10 +2742,11 @@ rule <semantic_instruction>
     repeat
       @lstring propertyArgumentName ;
       $identifier$ ?propertyArgumentName ;
-  #    @lstring propertyTypeName ;
-  #    [ioMapAsConstraintPropertyMap searchKey !propertyArgumentName ?propertyTypeName ?* ?* ?* ?*] ;
-      parameterList += !propertyArgumentName ;
-  #    parameterTypeList += !propertyTypeName !propertyArgumentName ;
+      [ioPropertyMap searchKey !propertyArgumentName ?* ?*] ;
+#      @lstring propertyTypeName ;
+#      [ioMapAsConstraintPropertyMap searchKey !propertyArgumentName ?propertyTypeName ?* ?* ?* ?*] ;
+#      parameterList += !propertyArgumentName ;
+#      parameterTypeList += !propertyTypeName !propertyArgumentName ;
     while
       $,$ ;
     end repeat ;
@@ -3625,6 +3626,7 @@ rule <semantic_instruction>
       $when$ ;
     end repeat ;
   end block () ;
+  $end$ ;
 #--- Check all constant are named
   @stringset missingConstants := [enumConstantesMap allKeys] - allBranchConstantSet ;
   foreach missingConstants (??@string kConstant) :
@@ -3634,7 +3636,6 @@ rule <semantic_instruction>
   @typeInstruction instruction ;
   instruction := [@C_switch_instruction new !switchExpression !enumTypeName !switchBranchlist] ;
   ioInstructionList += !instruction ;
-  $end$ ;
   $switch$ ;
   $;$ ;
 end rule ;

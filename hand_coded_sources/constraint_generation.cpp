@@ -793,7 +793,8 @@ routine_generate_constraints (C_Lexique & inLexique,
                               GGS_entityToImplementMap inConstrainedEntityMap,
                               GGS_stringset inMultipleReferencedEntities,
                               GGS_lstring inRootEntityName,
-                              GGS_representativeEntityMap inRepresentativeEntityMap
+                              GGS_representativeEntityMap inRepresentativeEntityMap,
+                              GGS_constraintInstructionListMap inConstraintInstructionListMap
                               COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.galgas_IO_Ptr ()->currentFileErrorsCount () == 0) {
   //--- Generate header file

@@ -78,6 +78,7 @@ rule <constraints_on_entity_declaration>
   ?@entityToImplementMap inEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@entityToImplementMap ioConstrainedEntityMap
+  ?!@constraintInstructionListMap ioConstraintInstructionListMap
 label parse
 ;
 
@@ -218,6 +219,7 @@ rule <parse_constraint_document>
   @mapEntityMap mapEntityMap [emptyMap] ;
   @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
   @entityToImplementMap constrainedEntityMap [emptyMap] ;
+  @constraintInstructionListMap constraintInstructionListMap [emptyMap] ;
   repeat
   while
     <constraint_map_declaration>
@@ -229,6 +231,7 @@ rule <parse_constraint_document>
       !metamodelEntityMap
       !?mapEntityMap
       !?constrainedEntityMap
+      !?constraintInstructionListMap
     ;
   end repeat ;
   $end$ ;
@@ -477,16 +480,62 @@ rule <parse_constraint_document>
       !kConstrainedParameterPropertyToImplementList
     ] ;
   end foreach ;
+#--- Check call instructions
+  foreach actualConstrainedEntityMap (
+    ??@lstring kEntityName
+    ??*
+    ??*
+    ??@entityPropertyMap kEntityPropertiesMap
+    ??*
+    ??*
+    ??*
+    ??*
+    ??@constrainedPropertyList kConstrainedParameterPropertyToImplementList
+  ) :
+  #--- loop throught properties
+    foreach kEntityPropertiesMap (??@lstring kPropertyName ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+      switch kKind
+      when attributeProperty:
+      when singleReferenceProperty, multipleReferenceProperty:
+        @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+        if [constraintInstructionListMap hasKey ![kEntityName string]] then
+          [constraintInstructionListMap searchKey !kEntityName ?* ?callInstructionSharedPropertySignatureMap] ;
+        end if ;
+        if [actualConstrainedEntityMap hasKey ![kTypeName string]] then
+          if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
+            warning kEntityName:"checking 'call " . [kPropertyName string] . "' instruction..." ;
+          else
+            error kEntityName:"the instruction list should have a 'call " . [kPropertyName string] . "' instruction" ;
+          end if ;
+        else
+          if [callInstructionSharedPropertySignatureMap hasKey ![kTypeName string]] then
+            error kEntityName:"the instruction list should not have a 'call " . [kPropertyName string] . "' instruction" ;
+          #else
+            #--- OK
+          end if ;
+        end if ;
+      end switch ;
+    end foreach ;
+  end foreach ;
+  foreach constraintInstructionListMap (
+    ??@lstring kEntityName
+    ??*
+    ??@callInstructionSharedPropertySignatureMap kCallInstructionSharedPropertySignatureMap
+  ) :
+    message "kEntityName: " . [kEntityName string] ;
+    message "kCallInstructionSharedPropertySignatureMap: " . [kCallInstructionSharedPropertySignatureMap description] ;
+  end foreach ;
 #--- Generate C++ code
   action generate_constraints
-      !metamodelEntityMap
-      !mapEntityMap
-      !metamodelName
-      !constraintName
-      !actualConstrainedEntityMap
-      !multiReferencedEntities
-      !rootEntity
-      !representativeEntityMap
+    !metamodelEntityMap
+    !mapEntityMap
+    !metamodelName
+    !constraintName
+    !actualConstrainedEntityMap
+    !multiReferencedEntities
+    !rootEntity
+    !representativeEntityMap
+    !constraintInstructionListMap
   ;
   $constraint$ ;
   $;$ ;
@@ -537,6 +586,7 @@ rule <constraints_on_entity_declaration>
   ?@entityToImplementMap inEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@entityToImplementMap ioConstrainedEntityMap
+  ?!@constraintInstructionListMap ioConstraintInstructionListMap
 :
 #--- Entity Name
   $on$ ;
@@ -662,58 +712,61 @@ rule <constraints_on_entity_declaration>
     ${$ ;
 #  #--- Enter attributes metamodels as constants
     @typeVariablesMap variablesMap [emptyMap] ;
-#    foreach allPropertyMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
-#      if kKind == [@metamodelPropertyKind  attributeProperty] then
-#        # message "attribute '" . [kKey value] . "' has type '@" . [kTypeName value] . "'\n" ;
-#        @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey string] ![kKey location]]] ;
-#        if [kTypeName string] == "lstring" then
-#          @AC_galgasType t := [@typeGalgas_lstring new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "string" then
-#          @AC_galgasType t := [@typeGalgas_string new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "lchar" then
-#          @AC_galgasType t := [@typeGalgas_lchar new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "char" then
-#          @AC_galgasType t := [@typeGalgas_char new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "luint" then
-#          @AC_galgasType t := [@typeGalgas_luint new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "uint" then
-#          @AC_galgasType t := [@typeGalgas_uint new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "lsint" then
-#          @AC_galgasType t := [@typeGalgas_lsint new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "sint" then
-#          @AC_galgasType t := [@typeGalgas_sint new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "lbool" then
-#          @AC_galgasType t := [@typeGalgas_lbool new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "bool" then
-#          @AC_galgasType t := [@typeGalgas_bool new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "location" then
-#          @AC_galgasType t := [@typeGalgas_location new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        else
-#          error here : "internal error (@" . [kTypeName string] . " type not handled" ;
-#        end if ;
-#      end if ;
-#    end foreach ;
-#  #--- Enter attributes from previous passes as constants
-#    foreach allMapsAsConstraintPropertyMap (??@lstring kPropertyName ??@lstring kTypeName ??@lstring kElementTypeName ??@uint kPassIndex ...) :
-#      # message "Map " . [kPropertyName value] . " of type @" . [kTypeName value] . " defined in pass " . [kPassIndex string] . "\n" ;
+    foreach allPropertyMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+      switch kKind 
+      when  attributeProperty:
+        # message "attribute '" . [kKey value] . "' has type '@" . [kTypeName value] . "'\n" ;
+        @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey string] ![kKey location]]] ;
+        if [kTypeName string] == "lstring" then
+          @AC_galgasType t := [@typeGalgas_lstring new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "string" then
+          @AC_galgasType t := [@typeGalgas_string new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "lchar" then
+          @AC_galgasType t := [@typeGalgas_lchar new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "char" then
+          @AC_galgasType t := [@typeGalgas_char new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "luint" then
+          @AC_galgasType t := [@typeGalgas_luint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "uint" then
+          @AC_galgasType t := [@typeGalgas_uint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "lsint" then
+          @AC_galgasType t := [@typeGalgas_lsint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "sint" then
+          @AC_galgasType t := [@typeGalgas_sint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "lbool" then
+          @AC_galgasType t := [@typeGalgas_lbool new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "bool" then
+          @AC_galgasType t := [@typeGalgas_bool new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kTypeName string] == "location" then
+          @AC_galgasType t := [@typeGalgas_location new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        else
+          error here : "internal error (@" . [kTypeName string] . " type not handled" ;
+        end if ;
+      when singleReferenceProperty, multipleReferenceProperty:
+      end switch ;
+    end foreach ;
+  #--- Enter constraint attribute properties of current constraint
+#    foreach constrainedAttributePropertyToImplementList (??@lstring kPropertyTypeName ??@lstring kPropertyName) :
 #      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
-#      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kTypeName string] ![kElementTypeName string]] ;
-#      if (kPassIndex == currentPassIndex) & [mapAsConstraintPropertyMap hasKey ![kPropertyName string]] then
-#        [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
-#      else
-#        [!?variablesMap insertUsedConstInArgument !kPropertyName !t !cppName] ;
-#      end if ;
+#      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kTypeName string] ![kPropertyTypeName string]] ;
+#      [!?variablesMap insertUsedConstInArgument !kPropertyName !t !cppName] ;
+#    end foreach ;
+#  #--- Enter constraint parameter properties of current constraint
+#    foreach constrainedParameterPropertyToImplementList (??@lstring kPropertyTypeName ??@lstring kPropertyName) :
+#      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
+#      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kTypeName string] ![kPropertyTypeName string]] ;
+#      [!?variablesMap insertUsedConstInArgument !kPropertyName !t !cppName] ;
 #    end foreach ;
 #  #--- Enter indexes
 #    foreach allIndexMap (??@lstring kIndexName ??@lstring kMapTypeName ??@uint kPassIndex) :
@@ -725,28 +778,33 @@ rule <constraints_on_entity_declaration>
 #        [!?variablesMap insertUsedConstInArgument !kIndexName !t !cppName] ;
 #      end if ;
 #    end foreach ;
-#  #--- Add "self" variable
-#    @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
-#    @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string]] ;
-#    [!?variablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !t !cppName] ;
-  #--- Instructions
-    @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
-    @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
-    @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
-    @typeInstructionList instructionsList [emptyList] ;
-    @stringset constraintPropertyDefinitionSet [emptySet] ;
-    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-    <semantic_instructions_list>
-      !?componentSemanticsEntitiesMap
-      !?listeEntitesAengendrer
-      !?optionsComponentsMapForUse
-      !?variablesMap
-      !?instructionsList
-      !?propertyMap
-      !?constraintPropertyDefinitionSet
-      !?callInstructionSharedPropertySignatureMap
-    ;
-    $}$ ;
+#--- Add "self" variable
+  @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
+  @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string]] ;
+  [!?variablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !t !cppName] ;
+#--- Instructions
+  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
+  @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
+  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+  @typeInstructionList instructionsList [emptyList] ;
+  @stringset constraintPropertyDefinitionSet [emptySet] ;
+  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+  <semantic_instructions_list>
+    !?componentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !?optionsComponentsMapForUse
+    !?variablesMap
+    !?instructionsList
+    !?propertyMap
+    !?constraintPropertyDefinitionSet
+    !?callInstructionSharedPropertySignatureMap
+  ;
+  [!?ioConstraintInstructionListMap insertKey
+    !entityName
+    !instructionsList
+    !callInstructionSharedPropertySignatureMap
+  ] ;
+  $}$ ;
 #    [!?constrainedEntityPassMap insertKey
 #      !passName
 #      !instructionsList 
@@ -771,21 +829,6 @@ rule <constraints_on_entity_declaration>
 #      end if ;
 #    end foreach ;
 #  end if ;
-##--- Enter constraint in constraint map 
-#  [!?ioConstrainedEntityMap insertKey
-#    !entityName
-#    !passesDefinedByInheritanceTreeRootEntity
-#    !constrainedEntityPassMap
-#    !superEntity
-#    !propertyMap
-#    !descendantEntitySet
-#    !here
-#    !mapAsConstraintPropertyMap
-#    !allMapsAsConstraintPropertyMap
-#    !constraintAllPropertiesMap
-#    !indexMap
-#    !allIndexMap
-#  ] ;
 #--- Enter in constraint entity map
   [!?ioConstrainedEntityMap insertKey
     !entityName
