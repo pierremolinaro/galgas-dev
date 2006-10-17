@@ -2660,7 +2660,6 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                GCC_WARN_MISSING_PARENTHESES = YES;\n"
        "                                GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;\n"
        "                                GCC_WARN_PEDANTIC = NO;\n"
-       "                                GCC_WARN_SHADOW = YES;\n"
        "                                GCC_WARN_SIGN_COMPARE = YES;\n"
        "                                GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;\n"
        "                                GCC_WARN_UNINITIALIZED_AUTOS = YES;\n"
