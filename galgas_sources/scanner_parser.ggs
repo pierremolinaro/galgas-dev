@@ -342,7 +342,7 @@ label importLexique
     ;
   while
     <key_words_list_declaration>
-      !? table_tables_mots_reserves
+      !?table_tables_mots_reserves
       !?table_attributs
       !?table_des_terminaux
       !?terminalSymbolsMapForUse
