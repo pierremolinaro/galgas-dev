@@ -1388,7 +1388,7 @@ map @representativeEntityMap {
 #---------------------------------------------------------------------------*
 
 map @callInstructionSharedPropertySignatureMap {
-  @constrainedPropertyList mSignature ;
+  @L_lstringList mEffectiveArgumentList ;
   @location mSignatureLocation ;
   insert insertKey error message "internal error: the '%K' property has been already declared in %L" ;
   search searchKey error message "internal error: the '%K' property is not declared" ;

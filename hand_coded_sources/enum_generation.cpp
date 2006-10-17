@@ -215,15 +215,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   GGS_enumConstantMap::element_type * cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
     inCppFile << "case enum_" << cst->mKey << ":\n"
-                 "  s << \" "  << cst->mKey << "\" ;\n"
+                 "  s << \" "  << cst->mKey << ">\" ;\n"
                  "    break ;\n" ;
     cst = cst->nextObject () ;
   } 
   inCppFile << "  case kNotBuilt:\n"
-               "    s << \" (not built)\" ;\n"
+               "    s << \" (not built)>\" ;\n"
                "    break ;\n"
                "  }\n"
-               "  s << \">\\n\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
 

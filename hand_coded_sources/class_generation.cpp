@@ -606,6 +606,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  }else{\n"
                "    s << \"not built\" ;\n"
                "  }\n"
+               "  s << \"\\n\" ;\n"
+               "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
                "  s << \">\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ; 
@@ -1002,12 +1004,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "COMMA_LOCATION_ARGS" ;
   }
   inCppFile << ") const {\n"
-               "  ioString << \"->@" << aNomClasse << ":\"" ;
+               "  ioString << \" ->@" << aNomClasse << ":\" ;" ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "\n"
-                 "           << " << current->aNomAttribut
-              << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)" ;
+                 "  ioString << \"\\n\" ;\n"
+                 "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+                 "  ioString << " << current->aNomAttribut
+              << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;" ;
     current = current->nextObject () ;
   }
   inCppFile << " ;\n"
@@ -1128,6 +1132,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  }else{\n"
                "    s << \"not built\" ;\n"
                "  }\n"
+               "  s << \"\\n\" ;\n"
+               "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
                "  s << \">\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ; 
