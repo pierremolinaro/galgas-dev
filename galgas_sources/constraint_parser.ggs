@@ -481,6 +481,7 @@ rule <parse_constraint_document>
     ] ;
   end foreach ;
 #--- Check call instructions
+message "constraintInstructionListMap : " . [constraintInstructionListMap description] . "\n" ;
   foreach actualConstrainedEntityMap (
     ??@lstring kEntityName
     ??*
@@ -494,25 +495,26 @@ rule <parse_constraint_document>
   ) :
   #--- loop throught properties
     foreach kEntityPropertiesMap (??@lstring kPropertyName ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+      @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+      if [constraintInstructionListMap hasKey ![kEntityName string]] then
+        [constraintInstructionListMap searchKey !kEntityName ?* ?callInstructionSharedPropertySignatureMap] ;
+      end if ;
       switch kKind
       when attributeProperty:
-      when singleReferenceProperty, multipleReferenceProperty:
-        @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-        if [constraintInstructionListMap hasKey ![kEntityName string]] then
-          [constraintInstructionListMap searchKey !kEntityName ?* ?callInstructionSharedPropertySignatureMap] ;
+        if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
+          @location instructionLocation ;
+          [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?* ?instructionLocation] ;
+          error instructionLocation: "an attribute cannot be named here in a call instruction" ;
         end if ;
+      when singleReferenceProperty, multipleReferenceProperty:
         if [actualConstrainedEntityMap hasKey ![kTypeName string]] then
           if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
             warning kEntityName:"checking 'call " . [kPropertyName string] . "' instruction..." ;
           else
             error kEntityName:"the instruction list should have a 'call " . [kPropertyName string] . "' instruction" ;
           end if ;
-        else
-          if [callInstructionSharedPropertySignatureMap hasKey ![kTypeName string]] then
-            error kEntityName:"the instruction list should not have a 'call " . [kPropertyName string] . "' instruction" ;
-          #else
-            #--- OK
-          end if ;
+        elsif [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
+          error kEntityName:"the instruction list should not have a 'call " . [kPropertyName string] . "' instruction" ;
         end if ;
       end switch ;
     end foreach ;
@@ -522,8 +524,8 @@ rule <parse_constraint_document>
     ??*
     ??@callInstructionSharedPropertySignatureMap kCallInstructionSharedPropertySignatureMap
   ) :
-    message "kEntityName: " . [kEntityName string] ;
-    message "kCallInstructionSharedPropertySignatureMap: " . [kCallInstructionSharedPropertySignatureMap description] ;
+    message "kEntityName: " . [kEntityName string] . "\n" ;
+    message "kCallInstructionSharedPropertySignatureMap: " . [kCallInstructionSharedPropertySignatureMap description] . "\n" ;
   end foreach ;
 #--- Generate C++ code
   action generate_constraints

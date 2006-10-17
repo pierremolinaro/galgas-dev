@@ -269,7 +269,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "  ioString << \"]\" ;\n"
+  inCppFile << "  ioString << \"\\n\" ;\n"
+               "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+               "  ioString << \"]\" ;\n"
                "}\n\n" ;
 
 // ------------- List Implementation -----------------
@@ -476,17 +478,22 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  if (_isBuilt ()) {\n"
                "    s << \" \" << _mRoot->mListLength << \" object\" << ((_mRoot->mListLength > 1) ? \"s \" : \" \") ;\n"
                "    element_type * p = _mRoot->mFirstItem ;\n"
+               "    sint32 elementIndex = 0 ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
                "      s << \"\\n\" ;\n"
-               "      s.writeSpaces (inIndentation + 1) ;\n"
+               "      s.writeStringMultiple (\"| \", inIndentation) ;\n"
+               "      s << \"|-at \" << elementIndex << \" \" ;\n"
                "      p->appendForListDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
                "      p = p->mNextItem ;\n"
+               "      elementIndex ++ ;\n"
                "    }\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"
                "  }\n"
-               "  s << \">\\n\" ;\n"
+               "  s << \"\\n\" ;\n"
+               "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
+               "  s << \">\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;

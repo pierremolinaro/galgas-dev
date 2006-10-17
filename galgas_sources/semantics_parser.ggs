@@ -2741,18 +2741,13 @@ rule <semantic_instruction>
   end if ;
 #--- Effective parameters
   @L_lstringList parameterList [emptyList] ;
-  @constrainedPropertyList parameterTypeList [emptyList] ;
   select
   or
     $($ ;
     repeat
       @lstring propertyArgumentName ;
       $identifier$ ?propertyArgumentName ;
-#      [ioPropertyMap searchKey !propertyArgumentName ?* ?*] ;
-#      @lstring propertyTypeName ;
-#      [ioMapAsConstraintPropertyMap searchKey !propertyArgumentName ?propertyTypeName ?* ?* ?* ?*] ;
-#      parameterList += !propertyArgumentName ;
-#      parameterTypeList += !propertyTypeName !propertyArgumentName ;
+      parameterList += !propertyArgumentName ;
     while
       $,$ ;
     end repeat ;
@@ -2760,24 +2755,23 @@ rule <semantic_instruction>
   end select ;
 #--- Check parameter type list
   if [ioCallInstructionSharedPropertySignatureMap hasKey ![calledPropertyName string]] then
-    @constrainedPropertyList previousParameterTypeList ;
+    @L_lstringList previousParameterList ;
     @location previousParameterTypeListLocation ;
-    [ioCallInstructionSharedPropertySignatureMap searchKey !calledPropertyName ?previousParameterTypeList ?previousParameterTypeListLocation] ;
-    if [previousParameterTypeList length] == [parameterTypeList length] then
-      foreach previousParameterTypeList (??@lstring kPreviousTypeName ??*),
-              parameterTypeList (??@lstring kCurrentTypeName ??@lstring kCurrentPropertyName) :
-        if [kPreviousTypeName string] != [kCurrentTypeName string] then
-          error kCurrentPropertyName: "this shared property has '@" . [kCurrentTypeName string]
-          . "' type, while a previous call has named an attribute of type '@" . [kPreviousTypeName string] . "'" ;
-        end if ;
-      end foreach ;
+    [ioCallInstructionSharedPropertySignatureMap searchKey !calledPropertyName ?previousParameterList ?previousParameterTypeListLocation] ;
+    if [previousParameterList length] == [parameterList length] then
+#      foreach previousParameterList (??@lstring kPreviousTypeName), parameterTypeList (??@lstring kCurrentTypeName) :
+#        if [kPreviousTypeName string] != [kCurrentTypeName string] then
+#          error kCurrentPropertyName: "this shared property has '@" . [kCurrentTypeName string]
+#          . "' type, while a previous call has named an attribute of type '@" . [kPreviousTypeName string] . "'" ;
+#        end if ;
+#      end foreach ;
     else
-     error previousParameterTypeListLocation:"this instruction names " . [[parameterTypeList length] string]
-     . " shared parameter(s), while a previous call has named "  . [[previousParameterTypeList length] string]
+     error previousParameterTypeListLocation:"this instruction names " . [[parameterList length] string]
+     . " shared parameter(s), while a previous call has named "  . [[previousParameterList length] string]
      . " parameter(s)" ;
     end if ;
   else
-    [!?ioCallInstructionSharedPropertySignatureMap insertKey !calledPropertyName !parameterTypeList !here] ;
+    [!?ioCallInstructionSharedPropertySignatureMap insertKey !calledPropertyName !parameterList !here] ;
   end if ;
   $;$ ;
 #--- Generate instruction

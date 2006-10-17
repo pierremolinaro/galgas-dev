@@ -64,6 +64,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : e_" << aNomTable << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
              "  public : void appendForMapDescription (C_Lexique & _inLexique,\n"
+             "                                         const sint32 inElementIndex,\n"
              "                                         C_String & ioString,\n"
              "                                         const sint32 inIndentation\n"
              "                                         COMMA_LOCATION_ARGS) const ;\n"
@@ -237,22 +238,22 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomTable << "::\n"
                "appendForMapDescription (C_Lexique & _inLexique,\n"
+               "                         const sint32 inElementIndex,\n"
                "                         C_String & ioString,\n"
                "                         const sint32 inIndentation\n"
                "                         COMMA_LOCATION_ARGS) const {\n"
-               "  ioString << \"[\"\n"
-               "           << mKey.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+               "  ioString << \"\\n\" ;\n"
+               "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+               "  ioString << \"|-key \" << inElementIndex << \":\" << mKey.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-  if (current != NULL) {
-    inCppFile << "  ioString << \"->\" ;\n" ;
-  }
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  ioString << mInfo." << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+    inCppFile << "  ioString << \"\\n\" ;\n"
+                 "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+                 "  ioString << \"|-value \" << inElementIndex << \":\" << mInfo." << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
     current = current->nextObject () ;
   }
-  inCppFile << "  ioString << \"]\" ;\n"
-               "}\n\n" ;
+  inCppFile << "}\n\n" ;
 
 //--- 'new_element' method
   inCppFile.writeCppHyphenLineComment () ;
@@ -532,17 +533,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  if (_isBuilt ()) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
                "    element_type * p = firstObject () ;\n"
+               "    sint32 elementIndex = 0 ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
-               "      s << \"\\n\" ;\n"
-               "      s.writeSpaces (inIndentation + 1) ;\n"
-               "      p->appendForMapDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
+               "      p->appendForMapDescription (_inLexique, elementIndex, s, inIndentation COMMA_THERE) ;\n"
                "      p = p->nextObject () ;\n"
+               "      elementIndex ++ ;\n"
                "    }\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"
                "  }\n"
-               "  s << \">\\n\" ;\n"
+               "  s << \"\\n\" ;\n"
+               "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
+               "  s << \">\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
 }
