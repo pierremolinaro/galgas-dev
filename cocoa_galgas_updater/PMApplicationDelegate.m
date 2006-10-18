@@ -147,10 +147,6 @@
 
 //---------------------------------------------------------------------------*
 
-#pragma mark Get Installation Privileges
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Start Up
 
 //---------------------------------------------------------------------------*
@@ -212,7 +208,87 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) installCocoaGalgas {
+- (BOOL) installFromDirectory: (NSString *) inSourceFullPath 
+         toDirectory: (NSString *) inFinalFullPath
+         withTemporayDirectory: (NSString *) inTemporaryDir
+         usingAuthorization: (AuthorizationRef) inAuthorizationRef {
+//--- Installer has write permission on destination dir ?
+  NSFileManager * fm = [NSFileManager defaultManager] ;
+  NSDictionary * fileAttributes = [fm fileAttributesAtPath:[inFinalFullPath stringByDeletingLastPathComponent] traverseLink:YES] ;
+  const unsigned long posixPermissions = [[fileAttributes objectForKey:NSFilePosixPermissions] unsignedLongValue] ;
+  const BOOL isWritable = (posixPermissions & S_IWUSR) != 0 ;
+  BOOL ok = NO ;
+  if (isWritable) {
+    ok = [fm
+      copyPath:inSourceFullPath
+      toPath:inTemporaryDir
+      handler:nil
+    ] ;
+    if (ok) {
+      [fm removeFileAtPath:inFinalFullPath handler:nil] ;
+    }
+    if (ok) {
+      ok = [fm
+        movePath:inTemporaryDir
+        toPath:inFinalFullPath
+        handler:nil
+      ] ;
+    }
+  }else{
+//--- Copy application
+    OSStatus myStatus = 0 ;
+    { const char * copyDirArguments [] = {"-r", [inSourceFullPath cString], [inTemporaryDir cString], NULL} ;
+      FILE * myCommunicationPipe = NULL ;
+      myStatus = AuthorizationExecuteWithPrivileges (inAuthorizationRef,
+                                                     "/bin/cp", 
+                                                     kAuthorizationFlagDefaults,
+                                                     copyDirArguments, 
+                                                     & myCommunicationPipe) ; 
+      if (myStatus == 0) { // Wait until tool exit
+        char unusedBuffer [128] ;
+        while (fread (unusedBuffer, 1, 128, myCommunicationPipe) > 0) {}    
+      }
+      // NSLog (@"Copy returns %d", myStatus) ;
+    }
+  //--- Suppress current application
+    if (myStatus == 0) {
+      const char * const removeDirArguments [] = {"-fr", [inFinalFullPath cString], NULL} ;
+      FILE * myCommunicationPipe = NULL ;
+      myStatus = AuthorizationExecuteWithPrivileges (inAuthorizationRef,
+                                                     "/bin/rm", 
+                                                     kAuthorizationFlagDefaults,
+                                                     removeDirArguments, 
+                                                     & myCommunicationPipe) ; 
+      if (myStatus == 0) { // Wait until tool exit
+         char unusedBuffer [100] ;
+         while (fread (unusedBuffer, 1, 100, myCommunicationPipe) > 0) {}    
+      }
+      // NSLog (@"Suppressing current returns %d", myStatus) ;
+    }
+  //--- Rename new application
+    if (myStatus == 0) {
+      const char * const renameDirArguments [] = {[inTemporaryDir cString], [inFinalFullPath cString], NULL} ;
+      FILE * myCommunicationPipe = NULL ;
+      myStatus = AuthorizationExecuteWithPrivileges (inAuthorizationRef,
+                                                     "/bin/mv", 
+                                                     kAuthorizationFlagDefaults,
+                                                     renameDirArguments, 
+                                                     & myCommunicationPipe) ; 
+      if (myStatus == 0) { // Wait until tool exit
+         char unusedBuffer [100] ;
+         while (fread (unusedBuffer, 1, 100, myCommunicationPipe) > 0) {}    
+      }
+      // NSLog (@"Renaming returns %d", myStatus) ;
+    }
+    ok = myStatus == 0 ;
+  }
+  // NSLog (@"Installing method returns ok=%d", ok) ;
+  return ok ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) installCocoaGalgasWithAuthorization: (AuthorizationRef) inAuthorizationRef {
   NSFileManager * fm = [NSFileManager defaultManager] ;
   NSString * cocoaGalgasUpdaterDirectory = [[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] ;
   NSString * currentPath = [mCurrentCocoaGalgasApplicationPath stringByDeletingLastPathComponent] ;
@@ -226,30 +302,21 @@
     i ++ ;
     temporaryNewName = [NSString stringWithFormat:@"cocoa-galgas-temp-%u.app", i] ;
   }
-//--- Copy Application under a new temporary name
-  BOOL ok = [fm
-    copyPath:[NSString stringWithFormat:@"%@/%@", cocoaGalgasUpdaterDirectory, @"cocoaGalgas.app"]
-    toPath:[NSString stringWithFormat:@"%@/%@", currentPath, temporaryNewName]
-    handler:nil
+//--- Install
+  NSString * applicationSourceFullPath = [NSString stringWithFormat:@"%@/%@", cocoaGalgasUpdaterDirectory, @"cocoaGalgas.app"] ;
+  NSString * applicationTempDestPath = [NSString stringWithFormat:@"%@/%@", currentPath, temporaryNewName] ;
+  const BOOL ok = [self
+    installFromDirectory:applicationSourceFullPath
+    toDirectory:mCurrentCocoaGalgasApplicationPath
+    withTemporayDirectory:applicationTempDestPath
+    usingAuthorization:inAuthorizationRef
   ] ;
-//--- Suppress current Cocoa Galgas application
-  if (ok) {
-    [fm removeFileAtPath:mCurrentCocoaGalgasApplicationPath handler:nil] ;
-  }
-//--- Rename new Cocoa Galgas application
-  if (ok) {
-    ok = [fm
-      movePath:[NSString stringWithFormat:@"%@/%@", currentPath, temporaryNewName]
-      toPath:mCurrentCocoaGalgasApplicationPath
-      handler:nil
-    ] ;
-  }
 //---
   if (ok) {
     [mStatusTextField setStringValue:@"Done"] ;
     [self installationDidSucceed] ;
   }else{
-    [mStatusTextField setStringValue:@"Failed: cannot copy new Cocoa Galgas application"] ;
+    [mStatusTextField setStringValue:[NSString stringWithFormat:@"cannot copy Cocoa Application."]] ;
     [mStatusTextField setTextColor:[NSColor redColor]] ;
     [self installationDidFail] ;
   }
@@ -272,25 +339,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) authorizationError: (OSStatus) inStatus
-         forOperation: (NSString *) inOperation {
-    NSAlert * alert = [NSAlert
-      alertWithMessageText:inOperation
-      defaultButton:@"Ok"
-      alternateButton:nil
-      otherButton:nil
-      informativeTextWithFormat:@"Returned error: %d", inStatus
-    ] ;
-    [alert
-      beginSheetModalForWindow:[mStatusTextField window]
-      modalDelegate:nil
-      didEndSelector:NULL
-      contextInfo:NULL
-    ] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) installCocoaGalgasAndLIBPMAtPath: (NSString *) inLIBPMpath {
   NSFileManager * fm = [NSFileManager defaultManager] ;
   NSString * cocoaGalgasUpdaterDirectory = [[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] ;
@@ -298,13 +346,10 @@
 //--- Get Authorization
   AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
   AuthorizationRef myAuthorizationRef ; 
-  OSStatus myStatus = AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, 
-                                           myFlags, & myAuthorizationRef) ; 
-  if (myStatus != errAuthorizationSuccess) {
-    AuthorizationFree (myAuthorizationRef, myFlags) ;
-    myAuthorizationRef = NULL ;
-    [self authorizationError:myStatus forOperation:@"Authorization Failure"] ;
-  }
+  const OSStatus status = AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, 
+                                      myFlags, & myAuthorizationRef) ; 
+  BOOL ok = status == 0 ;
+  // NSLog (@"AuthorizationCreate returns %d", status) ;
 //--- Find a temporary unique name for cocoa Galgas
   unsigned i = 0 ;
   NSString * temporaryNewName = @"libpm-temp" ;
@@ -315,59 +360,27 @@
 //--- Signal Installing
   [mStatusTextField setStringValue:@"Installing LIBPM..."] ;
   [mStatusTextField displayIfNeeded] ;
-//--- Copy libpm under a new temporary name
+//--- Install LIBPM
   NSString * libpmSourceFullPath = [NSString stringWithFormat:@"%@/%@", cocoaGalgasUpdaterDirectory, @"libpm"] ;
   NSString * libpmTempDestFullPath = [NSString stringWithFormat:@"%@/%@", libpmDirectory, temporaryNewName] ;
-//--- Create temp dest dir
-  const char * createDirArguments [] = {[libpmTempDestFullPath cString], NULL} ;
-  myStatus = AuthorizationExecuteWithPrivileges (myAuthorizationRef,
-                                                 "/usr/bin/mkdir", 
-                                                 kAuthorizationFlagDefaults,
-                                                 createDirArguments, 
-                                                 NULL) ; 
-  BOOL ok = myStatus == 0 ;
-  if (! ok) {
-    [self authorizationError:myStatus forOperation:@"Cannot Create libpm"] ;
-  }
-//--- Copy libpm
   if (ok) {
-    const char * const copyDirArguments [] = {"-r", [libpmSourceFullPath cString], [libpmTempDestFullPath cString], NULL} ;
-    myStatus = AuthorizationExecuteWithPrivileges (myAuthorizationRef,
-                                                   "/usr/bin/cp", 
-                                                   kAuthorizationFlagDefaults,
-                                                   copyDirArguments, 
-                                                   NULL) ; 
-    ok = myStatus == 0 ;
-    if (! ok) {
-      [self authorizationError:myStatus forOperation:@"Cannot Copy libpm"] ;
-    }
-  }
-/*  BOOL ok = [fm
-    copyPath:libpmSourceFullPath
-    toPath:libpmTempDestFullPath
-    handler:nil
-  ] ;*/
-//--- Suppress current libpm directory
-  if (ok) {
-    [fm removeFileAtPath:inLIBPMpath handler:nil] ;
-  }
-//--- Rename new Cocoa Galgas application
-  if (ok) {
-    ok = [fm
-      movePath:[NSString stringWithFormat:@"%@/%@", libpmDirectory, temporaryNewName]
-      toPath:inLIBPMpath
-      handler:nil
+    ok = [self
+      installFromDirectory:libpmSourceFullPath
+      toDirectory:inLIBPMpath
+      withTemporayDirectory:libpmTempDestFullPath
+      usingAuthorization:myAuthorizationRef
     ] ;
   }
 //--- If Ok, install cocoaGALGAS
   if (ok) {
     [self writeLIBPMpathInCocoaGalgasPreferences:inLIBPMpath] ;
-    [self installCocoaGalgas] ;
+    [self installCocoaGalgasWithAuthorization:myAuthorizationRef] ;
   }else{
-    [mStatusTextField setStringValue:@"Failed: cannot copy libpm."] ;
+    [mStatusTextField setStringValue:[NSString stringWithFormat:@"cannot copy libpm."]] ;
     [mStatusTextField setTextColor:[NSColor redColor]] ;
     [self installationDidFail] ;
   }
+  AuthorizationFree (myAuthorizationRef, myFlags) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -440,7 +453,7 @@
          returnCode:(int) inReturnCode
 	 contextInfo:(void  *) inContextInfo {
   NSString * libpmPath = (NSString *) inContextInfo ;
-  NSLog (@"inReturnCode %d", inReturnCode) ;
+  // NSLog (@"inReturnCode %d", inReturnCode) ;
   if (inReturnCode == 1) {
     [self installCocoaGalgasAndLIBPMAtPath:libpmPath] ;
   }else if (inReturnCode == -1) {
@@ -477,19 +490,16 @@
 
 //---------------------------------------------------------------------------*
 
+#pragma mark Open Panel for LIBPM
+
+//---------------------------------------------------------------------------*
+
 - (BOOL) panel:(id)sender isValidFilename:(NSString *)filename {
   // NSLog (@"panel:isValidFilename: '%@'", filename) ;
   const BOOL ok = [[filename lastPathComponent] isEqualToString:@"libpm"] ;
   if (! ok) {
     NSBeep () ;
-/*    NSAlert * alert = [NSAlert
-      alertWithMessageText:@"Only a folder named 'libpm' is valid."
-      defaultButton:@"Ok"
-      alternateButton:nil
-      otherButton:nil
-      informativeTextWithFormat:@"You haved selected the '%@' folder.", filename
-    ] ;
-    [alert runModal] ;*/
+    [sender setMessage:@"Select a folder named 'libpm': only a folder named 'libpm' is valid."] ;
   }
   return ok ;
 }
@@ -497,6 +507,16 @@
 //---------------------------------------------------------------------------*
 
 - (void) openLIBPMsavePanel: (NSString *) inDirectory {
+/*  AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
+  AuthorizationRef myAuthorizationRef ; 
+  OSStatus status = AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, 
+                                         myFlags, & myAuthorizationRef) ; 
+  NSLog (@"AuthorizationCreate returns %d", status) ;
+  AuthorizationItem myItems = {kAuthorizationRightExecute, 0, NULL, 0} ;
+  AuthorizationRights myRights = {1, & myItems} ;
+  status = AuthorizationCopyRights (myAuthorizationRef, & myRights, NULL, myFlags, NULL) ; 
+  NSLog (@"AuthorizationCopyRights returns %d", status) ;*/
+  
   NSOpenPanel * libpmOpenPanel = [NSOpenPanel openPanel] ;
   [libpmOpenPanel setMessage:@"Select a folder named 'libpm'."] ;
   [libpmOpenPanel setDelegate:self] ;
