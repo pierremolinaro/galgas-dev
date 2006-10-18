@@ -8,6 +8,7 @@
 //---------------------------------------------------------------------------*
 
 #import "PMApplicationDelegate.h"
+#import <Security/Security.h>
 
 //---------------------------------------------------------------------------*
 
@@ -146,6 +147,10 @@
 
 //---------------------------------------------------------------------------*
 
+#pragma mark Get Installation Privileges
+
+//---------------------------------------------------------------------------*
+
 #pragma mark Start Up
 
 //---------------------------------------------------------------------------*
@@ -267,10 +272,39 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) authorizationError: (OSStatus) inStatus
+         forOperation: (NSString *) inOperation {
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:inOperation
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@"Returned error: %d", inStatus
+    ] ;
+    [alert
+      beginSheetModalForWindow:[mStatusTextField window]
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) installCocoaGalgasAndLIBPMAtPath: (NSString *) inLIBPMpath {
   NSFileManager * fm = [NSFileManager defaultManager] ;
   NSString * cocoaGalgasUpdaterDirectory = [[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] ;
   NSString * libpmDirectory = [inLIBPMpath stringByDeletingLastPathComponent] ;
+//--- Get Authorization
+  AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
+  AuthorizationRef myAuthorizationRef ; 
+  OSStatus myStatus = AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, 
+                                           myFlags, & myAuthorizationRef) ; 
+  if (myStatus != errAuthorizationSuccess) {
+    AuthorizationFree (myAuthorizationRef, myFlags) ;
+    myAuthorizationRef = NULL ;
+    [self authorizationError:myStatus forOperation:@"Authorization Failure"] ;
+  }
 //--- Find a temporary unique name for cocoa Galgas
   unsigned i = 0 ;
   NSString * temporaryNewName = @"libpm-temp" ;
@@ -281,13 +315,39 @@
 //--- Signal Installing
   [mStatusTextField setStringValue:@"Installing LIBPM..."] ;
   [mStatusTextField displayIfNeeded] ;
-//--- Copy Application under a new temporary name
-  BOOL ok = [fm
-    copyPath:[NSString stringWithFormat:@"%@/%@", cocoaGalgasUpdaterDirectory, @"libpm"]
-    toPath:[NSString stringWithFormat:@"%@/%@", libpmDirectory, temporaryNewName]
+//--- Copy libpm under a new temporary name
+  NSString * libpmSourceFullPath = [NSString stringWithFormat:@"%@/%@", cocoaGalgasUpdaterDirectory, @"libpm"] ;
+  NSString * libpmTempDestFullPath = [NSString stringWithFormat:@"%@/%@", libpmDirectory, temporaryNewName] ;
+//--- Create temp dest dir
+  const char * createDirArguments [] = {[libpmTempDestFullPath cString], NULL} ;
+  myStatus = AuthorizationExecuteWithPrivileges (myAuthorizationRef,
+                                                 "/usr/bin/mkdir", 
+                                                 kAuthorizationFlagDefaults,
+                                                 createDirArguments, 
+                                                 NULL) ; 
+  BOOL ok = myStatus == 0 ;
+  if (! ok) {
+    [self authorizationError:myStatus forOperation:@"Cannot Create libpm"] ;
+  }
+//--- Copy libpm
+  if (ok) {
+    const char * const copyDirArguments [] = {"-r", [libpmSourceFullPath cString], [libpmTempDestFullPath cString], NULL} ;
+    myStatus = AuthorizationExecuteWithPrivileges (myAuthorizationRef,
+                                                   "/usr/bin/cp", 
+                                                   kAuthorizationFlagDefaults,
+                                                   copyDirArguments, 
+                                                   NULL) ; 
+    ok = myStatus == 0 ;
+    if (! ok) {
+      [self authorizationError:myStatus forOperation:@"Cannot Copy libpm"] ;
+    }
+  }
+/*  BOOL ok = [fm
+    copyPath:libpmSourceFullPath
+    toPath:libpmTempDestFullPath
     handler:nil
-  ] ;
-//--- Suppress current Cocoa Galgas application
+  ] ;*/
+//--- Suppress current libpm directory
   if (ok) {
     [fm removeFileAtPath:inLIBPMpath handler:nil] ;
   }

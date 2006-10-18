@@ -11,6 +11,7 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		CF32A5030AE6713C005C5C38 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF32A5020AE6713C005C5C38 /* Security.framework */; };
 		CF9BD8480A97AE93003070D1 /* PMApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BD8470A97AE93003070D1 /* PMApplicationDelegate.m */; };
 		CFD066CB0AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD066C90AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m */; };
 		CFD066D00AD8FAE2005659A8 /* cocoa_galgas_updater.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFD066CF0AD8FAE2005659A8 /* cocoa_galgas_updater.icns */; };
@@ -26,6 +27,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* cocoa_galgas_updater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoa_galgas_updater.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF32A5020AE6713C005C5C38 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		CF9BD8460A97AE93003070D1 /* PMApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMApplicationDelegate.h; sourceTree = "<group>"; };
 		CF9BD8470A97AE93003070D1 /* PMApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMApplicationDelegate.m; sourceTree = "<group>"; };
 		CFD066C80AD8FA66005659A8 /* cocoa_galgas_updater_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cocoa_galgas_updater_Prefix.pch; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				CF32A5030AE6713C005C5C38 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +71,7 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF32A5020AE6713C005C5C38 /* Security.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
