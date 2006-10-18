@@ -52,8 +52,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CFD066C90AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m */,
 				CFD066CA0AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.h */,
+				CFD066C90AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m */,
 				CF9BD8460A97AE93003070D1 /* PMApplicationDelegate.h */,
 				CF9BD8470A97AE93003070D1 /* PMApplicationDelegate.m */,
 			);

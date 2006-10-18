@@ -28,7 +28,6 @@
   if (self) {
     [self setBackgroundColor: [NSColor clearColor]];
     [self setOpaque:NO] ;
-    [self setLevel:NSStatusWindowLevel] ;
   }
   return self ;
 }
