@@ -151,11 +151,27 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Get first object\n"
              "  public : element_type * firstObject (void) const ;\n"
 
+//--- Declare method 'first'
+             "//--- Method 'first'\n"
+             "  public : void method_first (C_Lexique & _inLexique" ;
+  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  sint32 numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << ",\n                                " ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "& _out_" << numeroVariable ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inHfile << "\n                                "
+             "COMMA_LOCATION_ARGS) const ;\n"
+
 //--- Append a new value
              "//--- Handling '+=' GALGAS operator\n"
              "  public : void _addAssign_operation (" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-  sint32 numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     if (numeroVariable > 0) {
@@ -496,6 +512,25 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  s << \">\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+//--- Implement method 'first'
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "method_first (C_Lexique & _inLexique" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << ",\n              " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "& _out_" << numeroVariable ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "\n              "
+               "COMMA_LOCATION_ARGS) const {\n"
+               "}\n\n" ;
+
   inCppFile.writeCppHyphenLineComment () ;
 
 //--- Generate implementation of 'length' reader
