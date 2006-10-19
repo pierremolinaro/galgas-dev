@@ -1404,42 +1404,42 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DD76F620486A84900D96B5E /* GALGAS tool LL1 (universal) */;
+			remoteGlobalIDString = 8DD76F620486A84900D96B5E;
 			remoteInfo = "GALGAS tool LL1 (universal)";
 		};
 		CFDE59A90AE6909F000AFF56 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 debug (universal) */;
+			remoteGlobalIDString = CF7A1402058CEFE2007126C1;
 			remoteInfo = "GALGAS tool LL1 debug (universal)";
 		};
 		CFDE59AB0AE6909F000AFF56 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD6CC7B08519D4C0000FA6E /* GALGAS tool LR1 (universal) */;
+			remoteGlobalIDString = CFD6CC7B08519D4C0000FA6E;
 			remoteInfo = "GALGAS tool LR1 (universal)";
 		};
 		CFDE59AD0AE6909F000AFF56 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD6CD2008519DD00000FA6E /* GALGAS tool LR1 debug (universal) */;
+			remoteGlobalIDString = CFD6CD2008519DD00000FA6E;
 			remoteInfo = "GALGAS tool LR1 debug (universal)";
 		};
 		CFDE59AF0AE6909F000AFF56 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD6CDBD08519E080000FA6E /* GALGAS tool SLR (universal) */;
+			remoteGlobalIDString = CFD6CDBD08519E080000FA6E;
 			remoteInfo = "GALGAS tool SLR (universal)";
 		};
 		CFDE59B10AE6909F000AFF56 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CFD6CE6208519E740000FA6E /* GALGAS tool SLR debug (universal) */;
+			remoteGlobalIDString = CFD6CE6208519E740000FA6E;
 			remoteInfo = "GALGAS tool SLR debug (universal)";
 		};
 /* End PBXContainerItemProxy section */
