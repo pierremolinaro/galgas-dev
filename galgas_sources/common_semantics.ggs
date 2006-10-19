@@ -1996,6 +1996,8 @@ class @typeGalgasUndefinedListType extends @AC_galgasType {
 class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- List of all attributes
   @typeListeAttributsSemantiques mNonExternAttributesList ;
+#--- Methods signature (for 'first', 'last')
+  @L_EXsignature mSignature ;
 
 #--- list object accepts to be enumerated (foreach instruction)
   override
@@ -2008,6 +2010,19 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end reader ;
   
+#--- List accept 'first' and last' reader in instruction
+  override
+  reader handleReaderInstructionCall
+    ??@lstring unused inReadObjectName
+    ??@lstring inReaderName
+    !@L_EXsignature outReaderSignature
+  :
+    if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
+      error inReaderName: "a list accepts only 'first' and 'last' readers" ;
+    end if ;
+    outReaderSignature := mSignature ;
+  end reader ;
+
 #--- list accepts operator "+=" call
   override reader handleAddAssignOperatorCall
     ??@location unused inErrorLocation

@@ -54,7 +54,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
  "false",         "true",          "end",      "switch",
  "rule",           "tag",    "metamodel",      "entity",  
  "import",     "lexique",         "list",     "message",
- "repeat",       "error",      "search",
+ "repeat",       "error",      "search",          "log",
  "insert",          "in",         "send",      "action",
  "grammar",     "option",         "root",          "on",
  "unused",       "label",        "style",         "gui",

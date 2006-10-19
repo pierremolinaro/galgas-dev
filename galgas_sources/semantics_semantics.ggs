@@ -1109,6 +1109,17 @@ class @typeRoutineCallInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#                    'log ...' instruction                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeLogInstruction extends @typeInstruction {
+  @lstring mGalgasVariableName ;
+  @typeCplusPlusName mLoggedVariable ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #                    'drop ...' instruction                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*

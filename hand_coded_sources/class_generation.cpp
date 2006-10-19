@@ -588,7 +588,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   if (superClassName.length () == 0) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomClasse << "::\n"
-              << "_drop_operation (void) {\n"
+                 "_drop_operation (void) {\n"
                  "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
                  "}\n\n" ; 
   }

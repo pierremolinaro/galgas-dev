@@ -399,14 +399,6 @@ label importGrammarForSemantics
 label parse
 ;
 
-rule <drop_instruction>
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionList ioInstructionList
-label parse
-;
-
 rule <parse_match_operand>
   ?!@typeVariablesMap ioVariablesMap
   !@typeCplusPlusName outCppName
@@ -3075,13 +3067,43 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#                    Instruction log variableName, ... ;                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
+  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ?!@entityPropertyMap unused ioPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
+  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
+:
+  $log$ ;
+  repeat
+    @lstring galgasVariableName ;
+    $identifier$ ? galgasVariableName ;
+    @typeCplusPlusName nomCppVar ;
+    [!?ioVariablesMap searchForReadOnlyAccess !galgasVariableName ?* ?nomCppVar] ;
+    @typeInstruction instruction := [@typeLogInstruction new !galgasVariableName !nomCppVar] ;
+    ioInstructionList += !instruction ;
+  while
+    $,$ ;
+  end repeat ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #                    Instruction drop nomVariable, ... ;                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_optionComponents unused ioOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -3090,22 +3112,6 @@ rule <semantic_instruction>
   ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $drop$ ;
-  <drop_instruction>
-    !?ioComponentSemanticsEntitiesMap
-    !?listeEntitesAengendrer
-    !?ioVariablesMap
-    !?ioInstructionList
-  ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <drop_instruction>
-  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
-  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionList ioInstructionList
-:
   repeat
     @lstring nom ;
     $identifier$ ? nom ;
@@ -4852,9 +4858,13 @@ rule <semantics_declaration>
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
+    @L_EXsignature readerSignature [emptyList] ;
+    foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
+      readerSignature += ! kAttributType ![@formalArgumentPassingMode argumentOut] ;
+    end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
-    @AC_galgasType c := [@typeGalgasListType new ! listTypeName !listeTousAttributsSemantiques] ;
+    @AC_galgasType c := [@typeGalgasListType new !listTypeName !listeTousAttributsSemantiques !readerSignature] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
     @typeEntityToGenerate def := [@C_listTypeToImplement new !listTypeName !listeTousAttributsSemantiques !listeTypeeAttributsExternesCourants] ;
@@ -4893,9 +4903,13 @@ label importSemantics
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
+    @L_EXsignature readerSignature [emptyList] ;
+    foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
+      readerSignature += ! kAttributType ![@formalArgumentPassingMode argumentOut] ;
+    end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
-    @AC_galgasType c := [@typeGalgasListType new ! listTypeName !listeTousAttributsSemantiques] ;
+    @AC_galgasType c := [@typeGalgasListType new !listTypeName !listeTousAttributsSemantiques !readerSignature] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
     @TypeModel t := [@ListModel new !attributeListModel] ;
