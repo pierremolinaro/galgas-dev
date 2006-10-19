@@ -336,6 +336,48 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeLogInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    ioCppFile << "_inLexique.printMessage (C_String (\""
+              << mGalgasVariableName << ": \") + " ;
+    mLoggedVariable (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile  << ".reader_description (_inLexique COMMA_HERE) + \"\\n\""
+                 " SOURCE_FILE_AT_LINE ("
+              << mGalgasVariableName.currentLineNumber ()
+              << ")) ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLogInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLogInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return mLoggedVariable.isEqualTo (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeErrorInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,

@@ -158,14 +158,46 @@ generateHdeclarations (AC_OutputStream & inHfile,
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
+    inHfile << ",\n                              " ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "_out_" << numeroVariable ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inHfile << "\n                              "
+             "COMMA_LOCATION_ARGS) const ;\n"
+
+//--- Declare method 'last'
+             "//--- Method 'last'\n"
+             "  public : void method_last (C_Lexique & _inLexique" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << ",\n                             " ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "_out_" << numeroVariable ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inHfile << "\n                             "
+             "COMMA_LOCATION_ARGS) const ;\n"
+
+//--- Declare method 'popLast'
+             "//--- Method 'popLast'\n"
+             "  public : void method_popLast (C_Lexique & _inLexique" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
     inHfile << ",\n                                " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "& _out_" << numeroVariable ;
+    inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
   inHfile << "\n                                "
-             "COMMA_LOCATION_ARGS) const ;\n"
+             "COMMA_LOCATION_ARGS) ;\n"
 
 //--- Append a new value
              "//--- Handling '+=' GALGAS operator\n"
@@ -523,12 +555,137 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (current) ;
     inCppFile << ",\n              " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "& _out_" << numeroVariable ;
+    inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
   inCppFile << "\n              "
                "COMMA_LOCATION_ARGS) const {\n"
+               "  bool _ok = _isBuilt () ;\n"
+               "  if (_ok) {\n"
+               "    _ok = _mRoot->mFirstItem != NULL ;\n"
+               "    if (! _ok) {\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  if (_ok) {\n" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _out_" << numeroVariable << " = _mRoot->mFirstItem->" << current->aNomAttribut << " ;\n" ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "  }else{\n" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "  }\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+
+
+//--- Implement method 'last'
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "method_last (C_Lexique & _inLexique" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << ",\n             " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "_out_" << numeroVariable ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "\n             "
+               "COMMA_LOCATION_ARGS) const {\n"
+               "  bool _ok = _isBuilt () ;\n"
+               "  if (_ok) {\n"
+               "    _ok = _mRoot->mLastItem != NULL ;\n"
+               "    if (! _ok) {\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'last' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  if (_ok) {\n" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _out_" << numeroVariable << " = _mRoot->mLastItem->" << current->aNomAttribut << " ;\n" ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "  }else{\n" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "  }\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+
+//--- Implement method 'popLast'
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "method_popLast (C_Lexique & _inLexique" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << ",\n                " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "_out_" << numeroVariable ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "\n                "
+               "COMMA_LOCATION_ARGS) {\n"
+               "  bool _ok = _isBuilt () ;\n"
+               "  if (_ok) {\n"
+               "    _ok = _mRoot->mLastItem != NULL ;\n"
+               "    if (! _ok) {\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'popLast' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  if (_ok) {\n" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _out_" << numeroVariable << " = _mRoot->mLastItem->" << current->aNomAttribut << " ;\n" ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "    _insulateList () ;\n"
+               "    element_type * _p = _mRoot->mLastItem ;\n"
+               "    _mRoot->mLastItem = _mRoot->mLastItem->mNextItem ;\n"
+               "    if (_mRoot->mLastItem == NULL) {\n"
+               "      _mRoot->mFirstItem = NULL ;\n"
+               "    }\n"
+               "    _mRoot->mListLength -- ;\n"
+               "    macroMyDelete (_p, element_type) ;\n"
+               "  }else{\n" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "  }\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
