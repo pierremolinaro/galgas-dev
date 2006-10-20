@@ -12,6 +12,8 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		CF32A5030AE6713C005C5C38 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF32A5020AE6713C005C5C38 /* Security.framework */; };
+		CF3780350AE9357F00D69EDB /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3780320AE9357F00D69EDB /* PMCancelButtonForPanel.m */; };
+		CF3780360AE9357F00D69EDB /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3780340AE9357F00D69EDB /* PMOkButtonForPanel.m */; };
 		CF9BD8480A97AE93003070D1 /* PMApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BD8470A97AE93003070D1 /* PMApplicationDelegate.m */; };
 		CFD066CB0AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD066C90AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m */; };
 		CFD066D00AD8FAE2005659A8 /* cocoa_galgas_updater.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFD066CF0AD8FAE2005659A8 /* cocoa_galgas_updater.icns */; };
@@ -28,6 +30,10 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* cocoa_galgas_updater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoa_galgas_updater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF32A5020AE6713C005C5C38 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		CF3780310AE9357F00D69EDB /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = PMCancelButtonForPanel.h; path = cocoa_utilities/PMCancelButtonForPanel.h; sourceTree = "<group>"; };
+		CF3780320AE9357F00D69EDB /* PMCancelButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; name = PMCancelButtonForPanel.m; path = cocoa_utilities/PMCancelButtonForPanel.m; sourceTree = "<group>"; };
+		CF3780330AE9357F00D69EDB /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = PMOkButtonForPanel.h; path = cocoa_utilities/PMOkButtonForPanel.h; sourceTree = "<group>"; };
+		CF3780340AE9357F00D69EDB /* PMOkButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; name = PMOkButtonForPanel.m; path = cocoa_utilities/PMOkButtonForPanel.m; sourceTree = "<group>"; };
 		CF9BD8460A97AE93003070D1 /* PMApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMApplicationDelegate.h; sourceTree = "<group>"; };
 		CF9BD8470A97AE93003070D1 /* PMApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMApplicationDelegate.m; sourceTree = "<group>"; };
 		CFD066C80AD8FA66005659A8 /* cocoa_galgas_updater_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cocoa_galgas_updater_Prefix.pch; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 		29B97314FDCFA39411CA2CEA /* canari_updater */ = {
 			isa = PBXGroup;
 			children = (
+				CF37802F0AE9353500D69EDB /* libpm */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -126,6 +133,26 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF37802F0AE9353500D69EDB /* libpm */ = {
+			isa = PBXGroup;
+			children = (
+				CF3780300AE9354000D69EDB /* Cocoa Utilities */,
+			);
+			name = libpm;
+			path = ../../libpm;
+			sourceTree = "<group>";
+		};
+		CF3780300AE9354000D69EDB /* Cocoa Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CF3780310AE9357F00D69EDB /* PMCancelButtonForPanel.h */,
+				CF3780320AE9357F00D69EDB /* PMCancelButtonForPanel.m */,
+				CF3780330AE9357F00D69EDB /* PMOkButtonForPanel.h */,
+				CF3780340AE9357F00D69EDB /* PMOkButtonForPanel.m */,
+			);
+			name = "Cocoa Utilities";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +212,8 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				CF9BD8480A97AE93003070D1 /* PMApplicationDelegate.m in Sources */,
 				CFD066CB0AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m in Sources */,
+				CF3780350AE9357F00D69EDB /* PMCancelButtonForPanel.m in Sources */,
+				CF3780360AE9357F00D69EDB /* PMOkButtonForPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

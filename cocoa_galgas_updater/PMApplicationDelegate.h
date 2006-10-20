@@ -18,6 +18,11 @@
   @protected IBOutlet NSView * mAccessoryViewForOpenPanel ;
   @protected NSOpenPanel * mLIBPMOpenPanel ;
   @protected AuthorizationRef mAuthorizationRef ;
+  
+  @protected IBOutlet NSPanel * mNewFolderPanel ;
+  @protected IBOutlet NSTextField * mNewFolderTextField ;
+  @protected IBOutlet NSButton * mCreateNewFolderButton ;
+  @protected NSString * mNewFolderName ;
 }
 
 - (IBAction) newFolderAction: (id) inSender ;
