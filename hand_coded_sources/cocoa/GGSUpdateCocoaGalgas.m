@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------*
 
 //--- Only for debugging !!!
-#define FORCED_GALGAS_VERSION @"1.2.3"
+//#define FORCED_GALGAS_VERSION @"1.2.3"
 
 //--------------------------------------------------------------------------*
 
@@ -34,8 +34,11 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) galgasUpdaterArchiveName {
-//  return @"cocoa_galgas_updater.app.tar.bz2" ;
-  return @"cocoagalgasupdater.app.tar.bz2" ;
+  #ifdef FORCED_GALGAS_VERSION
+    return @"cocoagalgasupdater.app.tar.bz2" ;
+  #else
+    return @"cocoa_galgas_updater.app.tar.bz2" ;
+  #endif
 }
 
 //---------------------------------------------------------------------------*

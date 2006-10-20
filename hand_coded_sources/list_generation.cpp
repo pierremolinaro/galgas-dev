@@ -32,7 +32,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
   inHfile << "class elementOf_GGS_" << aNomListe << " {\n"
-          << "  private : elementOf_GGS_" << aNomListe << " * mNextItem ;\n" ;
+          << "  private : elementOf_GGS_" << aNomListe << " * mNextItem ;\n"
+          << "  private : elementOf_GGS_" << aNomListe << " * mPreviousItem ;\n" ;
 //--- Attributes
   GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.firstObject () ;
   while (attributCourant != NULL) {
@@ -62,6 +63,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << ") ;\n\n"
 //--- Access to next item
              "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return mNextItem ; }\n"
+             "  public : inline elementOf_GGS_" << aNomListe << " * previousObject (void) const { return mPreviousItem ; }\n"
 
 //--- Declare copy constructor and assignment operator as private
              "  private : elementOf_GGS_" << aNomListe << " (const elementOf_GGS_" << aNomListe << " &) ;\n"
@@ -133,9 +135,25 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Destructor\n"
              "  public : ~GGS_" << aNomListe << " (void) ;\n\n"
 
-//--- Declare constructor 'emptyList'
+//--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
              "  public : static GGS_" << aNomListe << " constructor_emptyList (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
+
+//--- Constructor 'listWithValue'
+             "  public : static GGS_" << aNomListe << " constructor_listWithValue (C_Lexique & _inLexique" ;
+  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  sint32 numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << ",\n                                "
+               "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inHfile << "\n                                "
+             "COMMA_LOCATION_ARGS) ;\n"
 
 //--- 'count'
              "//--- Function 'count'\n"
@@ -147,15 +165,23 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 
-//--- Get first item
+//--- Get first inserted object
              "//--- Get first object\n"
              "  public : element_type * firstObject (void) const ;\n"
+
+//--- Get last inserted object
+             "//--- Get last object\n"
+             "  public : element_type * lastObject (void) const ;\n"
+
+//--- operators () for method call
+             "//--- Operators () used for method call\n"
+             "  public : const GGS_" << aNomListe << " * operator () (UNUSED_LOCATION_ARGS) const { return this ;} \n"
 
 //--- Declare method 'first'
              "//--- Method 'first'\n"
              "  public : void method_first (C_Lexique & _inLexique" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-  sint32 numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << ",\n                              " ;
@@ -199,6 +225,22 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
 
+//--- Declare method 'popFirst'
+             "//--- Method 'popFirst'\n"
+             "  public : void method_popFirst (C_Lexique & _inLexique" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << ",\n                                 " ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "_out_" << numeroVariable ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inHfile << "\n                                 "
+             "COMMA_LOCATION_ARGS) ;\n"
+
 //--- Append a new value
              "//--- Handling '+=' GALGAS operator\n"
              "  public : void _addAssign_operation (" ;
@@ -216,8 +258,43 @@ generateHdeclarations (AC_OutputStream & inHfile,
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
+
+//--- List concatenation
+             "//--- Handling '.' GALGAS operator\n"
+             "  public : GGS_" << aNomListe << " operator + (const GGS_" << aNomListe << " & inOperand) const ;\n"
+
+//--- Prepend a new value
+             "  public : void method_prependValue (C_Lexique & _inLexique" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << ",\n                                "
+               "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inHfile << "\n                                "
+             "COMMA_LOCATION_ARGS) ;\n"
              "//--- Internal Methods\n"
               "  protected : void _internalAppendItem (" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) {
+      inHfile << ",\n                                " ;
+    }
+    inHfile << "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inHfile << ") ;\n"
+              "  protected : void _internalPrependItem (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -242,8 +319,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Generate declaration of 'length' reader
              "//--- Handling GALGAS 'length' reader\n"
-             "  public : GGS_uint reader_length (C_Lexique & /* inLexique */\n"
-             "                                   COMMA_UNUSED_LOCATION_ARGS) const ;\n"
+             "  public : GGS_uint reader_length (C_Lexique & inLexique\n"
+             "                                   COMMA_LOCATION_ARGS) const ;\n"
 
 //--- End of list class declaration
              "} ;\n\n" ;
@@ -290,7 +367,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << "):\n"
-               "mNextItem (NULL)" ;
+               "mNextItem (NULL),\n"
+               "mPreviousItem (NULL)" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -307,20 +385,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "appendForListDescription (C_Lexique & _inLexique,\n"
                "                          C_String & ioString,\n"
                "                          const sint32 inIndentation\n"
-               "                          COMMA_LOCATION_ARGS) const {\n"
-               "  ioString << \"[\" ;\n"  ;
+               "                          COMMA_LOCATION_ARGS) const {\n" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+    inCppFile << "  ioString << \"\\n\" ;\n"
+                 "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+                 "  ioString << \"|-\" ;\n"
+                 "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "  ioString << \"\\n\" ;\n"
-               "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
-               "  ioString << \"]\" ;\n"
-               "}\n\n" ;
+  inCppFile << "}\n\n" ;
 
 // ------------- List Implementation -----------------
   inCppFile.writeCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
@@ -386,10 +463,17 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Engendrer la methode 'emptyList'
+//--- Engendrer la methode 'firstObject'
   inCppFile << "GGS_" << aNomListe << "::element_type * GGS_" << aNomListe << "::\n"
                "firstObject (void) const {\n"
                "  return (_mRoot == NULL) ? NULL : _mRoot->mFirstItem ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+//--- Engendrer la methode 'lastObject'
+  inCppFile << "GGS_" << aNomListe << "::element_type * GGS_" << aNomListe << "::\n"
+               "lastObject (void) const {\n"
+               "  return (_mRoot == NULL) ? NULL : _mRoot->mLastItem ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -426,15 +510,57 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "      _mRoot->mFirstItem = nouvelElement ;\n" 
                "    }else{\n" 
                "      macroValidPointer (_mRoot->mLastItem) ;\n" 
-               "      _mRoot->mLastItem->mNextItem = nouvelElement ;\n" 
+               "      _mRoot->mLastItem->mNextItem = nouvelElement ;\n"
+               "      nouvelElement->mPreviousItem = _mRoot->mLastItem ;\n"
                "    }\n" 
                "    _mRoot->mLastItem = nouvelElement ;\n" 
-               "    nouvelElement = (element_type *) NULL ;\n" 
                "    _mRoot->mListLength ++ ;\n" 
                "  }\n" 
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
+
+//--- Engendrer la methode _internalPrependItem
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "_internalPrependItem (" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) inCppFile << ",\n                    " ;
+    inCppFile << "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << ") {\n"
+               "  element_type * nouvelElement = (element_type *) NULL ;\n" 
+               "  macroMyNew (nouvelElement, element_type (" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    inCppFile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << ")) ;\n" 
+               "  if (nouvelElement != NULL) {\n" 
+               "    macroValidPointer (nouvelElement) ;\n" 
+               "    if (_mRoot->mFirstItem == NULL) {\n" 
+               "      _mRoot->mLastItem = nouvelElement ;\n" 
+               "    }else{\n" 
+               "      macroValidPointer (_mRoot->mFirstItem) ;\n" 
+               "      _mRoot->mFirstItem->mPreviousItem = nouvelElement ;\n"
+               "      nouvelElement->mNextItem = _mRoot->mFirstItem ;\n"
+               "    }\n" 
+               "    _mRoot->mFirstItem = nouvelElement ;\n" 
+               "    _mRoot->mListLength ++ ;\n" 
+               "  }\n" 
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Generate _addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -456,6 +582,92 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  if (_isBuilt ()) {\n"
                "    _insulateList () ;\n"
                "    _internalAppendItem (" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    inCppFile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << ") ;\n"
+               "  }\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
+               "operator + (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "  GGS_" << aNomListe << " result ;\n"
+               "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
+               "    if (count () == 0) {\n"
+               "      result = inOperand ;\n"
+               "    }else{\n"
+               "      result = * this ;\n"
+               "      if (inOperand.count () > 0) {\n"
+               "        result._insulateList () ;\n"
+               "        elementOf_GGS_" << aNomListe << " * p = inOperand.firstObject () ;\n"
+               "        while (p != NULL) {\n"
+               "          macroValidPointer (p) ;\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "          " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " p_" << numeroVariable << " = p->" << current->aNomAttribut << " ;\n" ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << "          result._internalAppendItem (" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) {
+      inCppFile << ", " ;
+    }
+    inCppFile << "p_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << ") ;\n"
+               "          p = p->nextObject () ;\n"
+               "        }\n"
+               "      }\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+//--- Generate 'prepend' method
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "method_prependValue (C_Lexique & /* inLexique */" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << ",\n                     "
+                 "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << "\n                     "
+               "COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  if (_isBuilt ()\n" ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << " && argument_" << numeroVariable << "._isBuilt ()" ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << ") {\n"
+               "    _insulateList () ;\n"
+               "    _internalPrependItem (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -505,6 +717,41 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  macroMyNew (result._mRoot, cRootList) ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+//--- Implement constructor 'emptyList'
+  inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
+               "constructor_listWithValue (C_Lexique & /* _inLexique */" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << ",\n                           "
+                "const " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << "\n                           "
+               "COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  GGS_" << aNomListe << " result ;\n"
+               "  macroMyNew (result._mRoot, cRootList) ;\n"
+               "  result._addAssign_operation (" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) {
+      inCppFile << ", " ;
+    }
+    inCppFile << "argument_" << numeroVariable ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << ") ;\n"
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
@@ -637,6 +884,60 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile.writeCppHyphenLineComment () ;
 
+//--- Implement method 'popFirst'
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "method_popFirst (C_Lexique & _inLexique" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << ",\n                 " ;
+    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "_out_" << numeroVariable ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "\n                 "
+               "COMMA_LOCATION_ARGS) {\n"
+               "  bool _ok = _isBuilt () ;\n"
+               "  if (_ok) {\n"
+               "    _ok = _mRoot->mFirstItem != NULL ;\n"
+               "    if (! _ok) {\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'popFirst' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  if (_ok) {\n" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _out_" << numeroVariable << " = _mRoot->mFirstItem->" << current->aNomAttribut << " ;\n" ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "    _insulateList () ;\n"
+               "    element_type * _p = _mRoot->mFirstItem ;\n"
+               "    _mRoot->mFirstItem = _mRoot->mFirstItem->mNextItem ;\n"
+               "    if (_mRoot->mFirstItem == NULL) {\n"
+               "      _mRoot->mLastItem = NULL ;\n"
+               "    }else{\n"
+               "      _mRoot->mFirstItem->mPreviousItem = NULL ;\n"
+               "    }\n"
+               "    _mRoot->mListLength -- ;\n"
+               "    macroMyDelete (_p, element_type) ;\n"
+               "  }else{\n" ;
+  numeroVariable = 0 ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    numeroVariable ++ ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "  }\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
 //--- Implement method 'popLast'
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "method_popLast (C_Lexique & _inLexique" ;
@@ -670,9 +971,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "    _insulateList () ;\n"
                "    element_type * _p = _mRoot->mLastItem ;\n"
-               "    _mRoot->mLastItem = _mRoot->mLastItem->mNextItem ;\n"
+               "    _mRoot->mLastItem = _mRoot->mLastItem->mPreviousItem ;\n"
                "    if (_mRoot->mLastItem == NULL) {\n"
                "      _mRoot->mFirstItem = NULL ;\n"
+               "    }else{\n"
+               "      _mRoot->mLastItem->mNextItem = NULL ;\n"
                "    }\n"
                "    _mRoot->mListLength -- ;\n"
                "    macroMyDelete (_p, element_type) ;\n"
@@ -687,7 +990,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "  }\n"
                "}\n\n" ;
-
   inCppFile.writeCppHyphenLineComment () ;
 
 //--- Generate implementation of 'length' reader

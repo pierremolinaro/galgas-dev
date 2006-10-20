@@ -4858,13 +4858,20 @@ rule <semantics_declaration>
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
-    @L_EXsignature readerSignature [emptyList] ;
+    @L_EXsignature extractSignature [emptyList] ;
+    @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
-      readerSignature += ! kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
-    @AC_galgasType c := [@typeGalgasListType new !listTypeName !listeTousAttributsSemantiques !readerSignature] ;
+    @AC_galgasType c := [@typeGalgasListType new
+      !listTypeName
+      !listeTousAttributsSemantiques
+      !extractSignature
+      !inputSignature
+    ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
     @typeEntityToGenerate def := [@C_listTypeToImplement new !listTypeName !listeTousAttributsSemantiques !listeTypeeAttributsExternesCourants] ;
@@ -4903,13 +4910,20 @@ label importSemantics
       ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
-    @L_EXsignature readerSignature [emptyList] ;
+    @L_EXsignature extractSignature [emptyList] ;
+    @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
-      readerSignature += ! kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
-    @AC_galgasType c := [@typeGalgasListType new !listTypeName !listeTousAttributsSemantiques !readerSignature] ;
+    @AC_galgasType c := [@typeGalgasListType new
+      !listTypeName
+      !listeTousAttributsSemantiques
+      !extractSignature
+      !inputSignature
+    ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
     @TypeModel t := [@ListModel new !attributeListModel] ;

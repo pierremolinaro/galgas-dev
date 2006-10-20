@@ -1996,8 +1996,10 @@ class @typeGalgasUndefinedListType extends @AC_galgasType {
 class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- List of all attributes
   @typeListeAttributsSemantiques mNonExternAttributesList ;
-#--- Methods signature (for 'first', 'last')
-  @L_EXsignature mSignature ;
+#--- Extract Methods signature (for 'first', 'last', 'popFirst', 'popLast')
+  @L_EXsignature mExtractSignature ;
+#--- Input Methods signature (for 'prependValue')
+  @L_EXsignature mInputSignature ;
 
 #--- list object accepts to be enumerated (foreach instruction)
   override
@@ -2010,6 +2012,23 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end reader ;
   
+#--- Modifiers are 'popFirst' and 'popLast' methods
+  override
+  reader handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "prependValue" then
+      outModifierSignature := mInputSignature ;
+    elsif ([inModifierName string] == "popFirst") | ([inModifierName string] == "popLast") then
+      outModifierSignature := mExtractSignature ;
+    else
+      error inModifierName: "a list accepts only 'popFirst' and 'popLast' modifiers" -> outModifierSignature ;
+    end if ;
+  end reader ;
+
+
 #--- List accept 'first' and last' reader in instruction
   override
   reader handleReaderInstructionCall
@@ -2020,7 +2039,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
       error inReaderName: "a list accepts only 'first' and 'last' readers" ;
     end if ;
-    outReaderSignature := mSignature ;
+    outReaderSignature := mExtractSignature ;
   end reader ;
 
 #--- list accepts operator "+=" call
@@ -2031,15 +2050,15 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     outParametersList := mNonExternAttributesList ;
   end reader ;
 
-#--- A list accepts 'emptyList' constructor
+#--- A list accepts 'emptyList' and 'listWithValue' constructors
   override reader handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     if [inClassMethodName string] == "emptyList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName string] == "empty" then
-      error inClassMethodName : "in GALGAS 1.3.0 and later, use 'emptyList' constructor instead of 'empty' constructor" -> outAccessorTypesList ;
+    elsif [inClassMethodName string] == "listWithValue" then
+      outAccessorTypesList := mNonExternAttributesList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;

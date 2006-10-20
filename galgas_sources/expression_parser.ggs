@@ -221,9 +221,15 @@ routine matchConcatOperator
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_string () :: @typeGalgas_string () :
     outResultType := inLeftExpressionType ;
+  when @typeGalgasUndefinedListType (??@lstring kListType1) :: @typeGalgasUndefinedListType (??@lstring kListType2) :
+    if [kListType1 string] != [kListType2 string] then
+      error here:"concatenation operator error: lists should have the same type (here '@" 
+        . [kListType1 string] . "' and '@" . [kListType2 string] . "')" ;
+    end if ;
+    outResultType := inLeftExpressionType ;
   else
-    error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
-           " . " . [inRightExpressionType messageGalgasType] . ") is not valid" 
+    error here : "concatenation operator error: " . [inLeftExpressionType messageGalgasType] .
+           " . " . [inRightExpressionType messageGalgasType] . ") cannot be concatened" 
            -> outResultType ;
   end match ;
 end routine ;
