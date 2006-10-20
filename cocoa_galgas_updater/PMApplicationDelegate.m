@@ -150,10 +150,48 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) applicationDidFinishLaunching:(NSNotification *) inUnusedNotification {
+- (void) awakeFromNib {
   [mStatusTextField setStringValue:@""] ;
   [mStatusTextField setTextColor:[NSColor blackColor]] ;
+//--- Binding option (note : NSContinuouslyUpdatesValueBindingOption only for >= 10.4.0)
+  NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
+    [NSNumber numberWithBool:YES], @"NSContinuouslyUpdatesValue",
+    nil
+  ] ;
+  [mNewFolderTextField
+    bind:@"value"
+    toObject:self
+    withKeyPath:@"mNewFolderName"
+    options:d
+  ] ;
+  [self
+    addObserver:self
+    forKeyPath:@"mNewFolderName"
+    options:0
+    context:NULL
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) observeValueForKeyPath:(NSString *) inKeyPath
+         ofObject: (id) inObject
+         change: (NSDictionary *)change
+         context: (void *)context {
+  if ((inObject == self) && [inKeyPath isEqualToString:@"mNewFolderName"]) {
+    NSString * newValue = [self valueForKey:@"mNewFolderName"] ;
+    [mCreateNewFolderButton setEnabled:[newValue length] > 0] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) applicationDidFinishLaunching:(NSNotification *) inUnusedNotification {
   NSFileManager * fm = [NSFileManager defaultManager] ;
+//--- Create an empty Authorization
+  AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
+  AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & mAuthorizationRef) ; 
+//--- Update user interface
   [mStatusTextField setStringValue:@"Retrieving Installation Configuration File..."] ;
   [mStatusTextField displayIfNeeded] ;
 //--- Get Cocoa Galgas Updater directory
@@ -240,7 +278,7 @@
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
                                                      "/bin/cp", 
                                                      kAuthorizationFlagDefaults,
-                                                     copyDirArguments, 
+                                                     (char * *) copyDirArguments, 
                                                      & myCommunicationPipe) ; 
       if (myStatus == 0) { // Wait until tool exit
         char unusedBuffer [128] ;
@@ -255,7 +293,7 @@
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
                                                      "/bin/rm", 
                                                      kAuthorizationFlagDefaults,
-                                                     removeDirArguments, 
+                                                     (char * *) removeDirArguments, 
                                                      & myCommunicationPipe) ; 
       if (myStatus == 0) { // Wait until tool exit
          char unusedBuffer [100] ;
@@ -270,7 +308,7 @@
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
                                                      "/bin/mv", 
                                                      kAuthorizationFlagDefaults,
-                                                     renameDirArguments, 
+                                                     (char * *) renameDirArguments, 
                                                      & myCommunicationPipe) ; 
       if (myStatus == 0) { // Wait until tool exit
          char unusedBuffer [100] ;
@@ -340,11 +378,6 @@
   NSFileManager * fm = [NSFileManager defaultManager] ;
   NSString * cocoaGalgasUpdaterDirectory = [[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] ;
   NSString * libpmDirectory = [inLIBPMpath stringByDeletingLastPathComponent] ;
-//--- Get Authorization
-  AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
-  const OSStatus status = AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, 
-                                      myFlags, & mAuthorizationRef) ; 
-  BOOL ok = status == 0 ;
   // NSLog (@"AuthorizationCreate returns %d", status) ;
 //--- Find a temporary unique name for cocoa Galgas
   unsigned i = 0 ;
@@ -359,13 +392,11 @@
 //--- Install LIBPM
   NSString * libpmSourceFullPath = [NSString stringWithFormat:@"%@/%@", cocoaGalgasUpdaterDirectory, @"libpm"] ;
   NSString * libpmTempDestFullPath = [NSString stringWithFormat:@"%@/%@", libpmDirectory, temporaryNewName] ;
-  if (ok) {
-    ok = [self
-      installFromDirectory:libpmSourceFullPath
-      toDirectory:inLIBPMpath
-      withTemporayDirectory:libpmTempDestFullPath
-    ] ;
-  }
+  BOOL ok = [self
+    installFromDirectory:libpmSourceFullPath
+    toDirectory:inLIBPMpath
+    withTemporayDirectory:libpmTempDestFullPath
+  ] ;
 //--- If Ok, install cocoaGALGAS
   if (ok) {
     [self writeLIBPMpathInCocoaGalgasPreferences:inLIBPMpath] ;
@@ -375,7 +406,7 @@
     [mStatusTextField setTextColor:[NSColor redColor]] ;
     [self installationDidFail] ;
   }
-  AuthorizationFree (mAuthorizationRef, myFlags) ;
+//  AuthorizationFree (mAuthorizationRef, myFlags) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -490,9 +521,52 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) newFolderAction: (id) inSender {
-  NSString * currentDirectory = [mLIBPMOpenPanel directory] ;
+  [self setValue:@"libpm" forKey:@"mNewFolderName"] ;
+  [NSApp
+    beginSheet:mNewFolderPanel
+    modalForWindow:nil
+    modalDelegate:self
+    didEndSelector:@selector (newFolderPanelDidEnd:returnCode:contextInfo:)
+    contextInfo:NULL
+  ] ;
+}
 
+//---------------------------------------------------------------------------*
 
+- (void) newFolderPanelDidEnd:(NSWindow *)sheet
+         returnCode:(int) inReturnCode
+         contextInfo:(void  *) contextInfo {
+  //NSLog (@"inReturnCode: %d", inReturnCode) ;
+  if (inReturnCode == YES) {
+    NSString * currentDirectory = [mLIBPMOpenPanel directory] ;
+    NSString * newFolderName = [self valueForKey:@"mNewFolderName"] ;
+    NSString * newDirectory = [NSString stringWithFormat:@"%@/%@", currentDirectory, newFolderName] ;
+    [newDirectory retain] ;
+    NSFileManager * fm = [NSFileManager defaultManager] ;
+    NSDictionary * fileAttributes = [fm fileAttributesAtPath:currentDirectory traverseLink:YES] ;
+    const unsigned long posixPermissions = [[fileAttributes objectForKey:NSFilePosixPermissions] unsignedLongValue] ;
+    const BOOL isWritable = (posixPermissions & S_IWUSR) != 0 ;
+    if (isWritable) {
+      [fm
+        createDirectoryAtPath:newDirectory
+        attributes:nil
+      ] ;
+    }else{
+      const char * const createDirArguments [] = {[newDirectory cString], NULL} ;
+      FILE * myCommunicationPipe = NULL ;
+      OSStatus myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
+                                                              "/bin/mkdir", 
+                                                              kAuthorizationFlagDefaults,
+                                                              (char * *) createDirArguments, 
+                                                              & myCommunicationPipe) ; 
+      if (myStatus == 0) { // Wait until tool exit
+         char unusedBuffer [100] ;
+         while (fread (unusedBuffer, 1, 100, myCommunicationPipe) > 0) {}    
+      }
+    }
+    [mLIBPMOpenPanel setDirectory:currentDirectory] ;
+    [newDirectory release] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -510,11 +584,12 @@
 //---------------------------------------------------------------------------*
 
 - (void) openLIBPMsavePanel: (NSString *) inDirectory {
-  mLIBPMOpenPanel = [NSOpenPanel openPanel] ;
+  [mLIBPMOpenPanel release] ;
+  mLIBPMOpenPanel = [[NSOpenPanel openPanel] retain] ;
   [mLIBPMOpenPanel setAccessoryView:mAccessoryViewForOpenPanel] ;
   [mLIBPMOpenPanel setMessage:@"Select a folder named 'libpm'."] ;
   [mLIBPMOpenPanel setDelegate:self] ;
-  [mLIBPMOpenPanel setCanCreateDirectories:YES] ;
+//  [mLIBPMOpenPanel setCanCreateDirectories:YES] ;
   [mLIBPMOpenPanel setCanChooseDirectories:YES] ;
   [mLIBPMOpenPanel setAllowsMultipleSelection:NO] ;
   [mLIBPMOpenPanel setCanChooseFiles:NO] ;

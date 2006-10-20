@@ -5,10 +5,18 @@
             ACTIONS = {newFolderAction = id; }; 
             CLASS = PMApplicationDelegate; 
             LANGUAGE = ObjC; 
-            OUTLETS = {mAccessoryViewForOpenPanel = NSView; mStatusTextField = NSTextField; }; 
+            OUTLETS = {
+                mAccessoryViewForOpenPanel = NSView; 
+                mCreateNewFolderButton = NSButton; 
+                mNewFolderPanel = NSPanel; 
+                mNewFolderTextField = NSTextField; 
+                mStatusTextField = NSTextField; 
+            }; 
             SUPERCLASS = NSObject; 
         }, 
-        {CLASS = PMCocoaGalgasUpdaterWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }
+        {CLASS = PMCancelButtonForPanel; LANGUAGE = ObjC; SUPERCLASS = NSButton; }, 
+        {CLASS = PMCocoaGalgasUpdaterWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {CLASS = PMOkButtonForPanel; LANGUAGE = ObjC; SUPERCLASS = NSButton; }
     ); 
     IBVersion = 1; 
 }
