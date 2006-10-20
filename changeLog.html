@@ -8,9 +8,16 @@
  <body>
   <div style="font-face: Verdana; font-size:small;">
    <p><b>GALGAS ChangeLog</b></p>
+   <p>1.4.7</p>
+   <ul>
+     <li>Added two lexical actions (thanks to Mika&euml;l Briday [<a href="http://galgas.rts-software.org/trac/ticket/9">9</a>]): escape sequences in strings were not recognized if they occur at the end of the string;</li>
+     <li>Added many features on list types (see <a href="http://galgas.rts-software.org/doku.php?id=1.4.7">1.4.7 release notes</a>): escape sequences in strings were not recognized if they occur at the end of the string;</li>
+     <li>Added a new <tt><b>log</b></tt> instruction;</li>
+     <li>Reader <tt><b>description</b></tt> now display variable value in an indented form;</li>
+   </ul>
    <p>1.4.6</p>
    <ul>
-     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/8">8</a>]: escape sequences in strings were not recognized if they occur at the end of the string;</li>
+     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/8">8</a>]: <tt><b>enterOctDigitIntoUInt</b></tt> and  <tt><b>enterOctDigitIntoUInt64</b></tt>;</li>
      <li>In GALGAS generated XCode projects, the <tt><b>-Wshadow</b></tt> flag is not set any more [<a href="http://galgas.rts-software.org/trac/ticket/7">7</a>];</li>
      <li>Added a feature that enables getting key word spelling in syntax;</li>
      <li>Added in Cocoa Galgas two menu items: "Block Comment", for commenting out several lines in one time, and "Block Uncomment", the reverse operation;</li>
