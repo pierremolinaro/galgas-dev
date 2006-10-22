@@ -18,6 +18,7 @@
   @protected IBOutlet NSView * mAccessoryViewForOpenPanel ;
   @protected NSOpenPanel * mLIBPMOpenPanel ;
   @protected AuthorizationRef mAuthorizationRef ;
+  @protected NSString * mCurrentOperation ;
   
   @protected IBOutlet NSPanel * mNewFolderPanel ;
   @protected IBOutlet NSTextField * mNewFolderTextField ;

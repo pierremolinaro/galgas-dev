@@ -113,6 +113,7 @@ rule <parse_effective_input_parameters_list>
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
   ?@localConstantBuildStyleEnum inLocalConstantStyle
+  !@bool outNoUsedParameter
 label parse
 ;
 
@@ -1427,7 +1428,9 @@ rule <parse_effective_input_parameters_list>
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
   ?@localConstantBuildStyleEnum inLocalConstantStyle
+  !@bool outNoUsedParameter
 :
+  outNoUsedParameter := true ;
   $($ ;
   @L_nameWithType argumentsList [emptyList] ;
   repeat
@@ -1436,6 +1439,7 @@ rule <parse_effective_input_parameters_list>
     @lstring typeName ;
     @lstring constantName ;
     select
+      outNoUsedParameter := false ;
       $type_name$ ? typeName ;
       $identifier$ ? constantName ;
     or

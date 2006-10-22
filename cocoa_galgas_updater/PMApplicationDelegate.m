@@ -36,7 +36,7 @@
   [[NSRunLoop currentRunLoop]
     performSelector: @selector (installationHasBeenCancelledDeferredAction:)
     target:self
-    argument:@"Installation did fail."
+    argument:[NSString stringWithFormat:@"Installation did fail (during %@).", mCurrentOperation]
     order:0
     modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
   ] ;
@@ -255,15 +255,18 @@
   const BOOL isWritable = (posixPermissions & S_IWUSR) != 0 ;
   BOOL ok = NO ;
   if (isWritable) {
+    mCurrentOperation = @"copy" ;
     ok = [fm
       copyPath:inSourceFullPath
       toPath:inTemporaryDir
       handler:nil
     ] ;
     if (ok) {
+      mCurrentOperation = @"remove previous" ;
       [fm removeFileAtPath:inFinalFullPath handler:nil] ;
     }
     if (ok) {
+      mCurrentOperation = @"move new" ;
       ok = [fm
         movePath:inTemporaryDir
         toPath:inFinalFullPath
@@ -275,6 +278,7 @@
     OSStatus myStatus = 0 ;
     { const char * copyDirArguments [] = {"-r", [inSourceFullPath cString], [inTemporaryDir cString], NULL} ;
       FILE * myCommunicationPipe = NULL ;
+      mCurrentOperation = @"copy with privileges" ;
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
                                                      "/bin/cp", 
                                                      kAuthorizationFlagDefaults,
@@ -290,6 +294,7 @@
     if (myStatus == 0) {
       const char * const removeDirArguments [] = {"-fr", [inFinalFullPath cString], NULL} ;
       FILE * myCommunicationPipe = NULL ;
+      mCurrentOperation = @"remove previous with privileges" ;
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
                                                      "/bin/rm", 
                                                      kAuthorizationFlagDefaults,
@@ -305,6 +310,7 @@
     if (myStatus == 0) {
       const char * const renameDirArguments [] = {[inTemporaryDir cString], [inFinalFullPath cString], NULL} ;
       FILE * myCommunicationPipe = NULL ;
+      mCurrentOperation = @"move new with privileges" ;
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
                                                      "/bin/mv", 
                                                      kAuthorizationFlagDefaults,
