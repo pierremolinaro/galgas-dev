@@ -425,6 +425,7 @@ rule <parse_effective_input_parameters_list>
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
   ?@localConstantBuildStyleEnum inLocalConstantStyle
+  !@bool outNoUsedParameter
 label parse
 ;
 
@@ -2949,41 +2950,13 @@ rule <extract_instruction>
           error nomType1 : "This class does not inherit from '@" . [nomTypeSource string] . "'" ;
         end if ;
       #--- Arguments du type 1
-        $($ ;
-        @L_nameWithType elementsList [emptyList] ;
-        @bool noUsedParameter := true ;
-        repeat
-        while
-          $??$ ;
-          @lstring typeName ;
-          @lstring constantName ;
-          select
-            noUsedParameter := false ;
-            $type_name$ ? typeName ;
-            $identifier$ ? constantName ;
-          or
-            $*$ ;
-            typeName := [@lstring new !"" !here] ;
-            constantName := [@lstring new !"" !here] ;
-          end select ;
-          elementsList += ! typeName ! constantName ;
-        end repeat ;
-      #--- Ellipsis ?
-        @bool ellipsisFound ;
-        select
-          ellipsisFound := false ;
-        or
-          $...$ ;
-          ellipsisFound := true ;
-        end select ;
-        $)$ ;
-        buildMapWithLocalConstants
-          !elementsList
-          !listeAttributs1
+       @bool noUsedParameter ;
+        <parse_effective_input_parameters_list>
           !?ioVariablesMap
+          !listeAttributs1
           !indicatif1
           ![@localConstantBuildStyleEnum listStyle]
-          !ellipsisFound
+          ?noUsedParameter
         ;
       #--- Liste des instructions
         $->$ ;
@@ -3855,6 +3828,7 @@ rule <semantic_instruction>
           !formalEnumerationList
           !magicNumber
           !localConstantBuildStyleEnum
+          ?*
         ;
         foreachEnumerationList += !enumeratedVariableCPPName !magicNumber !typeName ;
       while
@@ -3991,6 +3965,7 @@ rule <parse_match_case>
     !listeAttributs1
     !inVarLocation
     ![@localConstantBuildStyleEnum listStyle]
+    ?*
   ;
 end rule ;
 
