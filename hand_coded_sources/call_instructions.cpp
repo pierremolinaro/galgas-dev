@@ -410,9 +410,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
     GGS_L_lstringList::element_type * currentParameter = mParameterList.firstObject () ;
     switch (mPropertyKind.enumValue ()) {
     case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-      ioCppFile << "macroValidPointer (_constraintFor_" << mCalledPropertyName << ") ;\n"
-                   "_constraintFor_" << mCalledPropertyName << "->_phase_??"
-                << " (_inLexique" ;
+      ioCppFile << "macroValidPointer (" << mCalledPropertyName << ") ;\n"
+                << mCalledPropertyName << "->_performTreeWalking (_inLexique" ;
       while (currentParameter != NULL) {
         macroValidPointer (currentParameter) ;
         ioCppFile  << ", " << currentParameter->mString ;
@@ -422,11 +421,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
       break ;
     case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
       ioCppFile << "{ GGS__" << inTargetFileName << "_ConstraintOn_" << mPropertyTypeName
-                << " * _ptr = _constraintFor_" << mCalledPropertyName << ".mFirstObject ;\n"
+                << " * _ptr = " << mCalledPropertyName << ".mFirstObject ;\n"
                 << "  while (_ptr != NULL) {\n"
                    "    macroValidPointer (_ptr) ;\n"
-                   "    _ptr->_phase_??"
-                << " (_inLexique" ;
+                   "    _ptr->_performTreeWalking (_inLexique" ;
       while (currentParameter != NULL) {
         macroValidPointer (currentParameter) ;
         ioCppFile  << ", "<< currentParameter->mString ;

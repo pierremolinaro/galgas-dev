@@ -148,6 +148,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                        << " & _in_" << currentProperty->mKey ;
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
+      case GGS_metamodelPropertyKind::enum_entityMapProperty:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
@@ -181,6 +182,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                        << " * " << currentProperty->mKey << " ;\n" ;
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
+      case GGS_metamodelPropertyKind::enum_entityMapProperty:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
@@ -353,6 +355,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                        << " & _in_" << currentProperty->mKey ;
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
+      case GGS_metamodelPropertyKind::enum_entityMapProperty:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
@@ -388,6 +391,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         generatedZone3 << "_in_" << currentProperty->mKey ;
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
+      case GGS_metamodelPropertyKind::enum_entityMapProperty:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
@@ -417,6 +421,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         generatedZone3 << ",\n" << currentProperty->mKey << " (_in_" << currentProperty->mKey << ")" ;
         break ;
       case GGS_metamodelPropertyKind::kNotBuilt:
+      case GGS_metamodelPropertyKind::enum_entityMapProperty:
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
@@ -437,6 +442,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
         break ;
       case GGS_metamodelPropertyKind::enum_attributeProperty:
       case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
+      case GGS_metamodelPropertyKind::enum_entityMapProperty:
       case GGS_metamodelPropertyKind::kNotBuilt:
         break ;
       }
@@ -467,6 +473,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
           generatedZone3 << "    << " << currentProperty->mKey << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)\n" ;
           break ;
         case GGS_metamodelPropertyKind::kNotBuilt:
+        case GGS_metamodelPropertyKind::enum_entityMapProperty:
           break ;
         }
         currentProperty = currentProperty->nextObject () ;

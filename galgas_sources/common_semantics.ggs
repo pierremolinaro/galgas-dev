@@ -506,7 +506,8 @@ abstract class @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 enum @metamodelPropertyKind {
-  attributeProperty, singleReferenceProperty, multipleReferenceProperty
+  attributeProperty, singleReferenceProperty, multipleReferenceProperty,
+  entityMapProperty
 }{
 }
 
@@ -670,6 +671,14 @@ list @constrainedPropertyList {
 
 #---------------------------------------------------------------------------*
 
+map @indexMap {
+  @lstring mMapAttributeName ;
+  insert insertKey error message "the '%K' map index is already defined in %L" ;
+  search searchKey error message "the '%K' map index attribute is not defined" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @entityToImplementMap {
 #--- All properties, those defined in super entities and defined in current entity 
   @entityPropertyMap mAllPropertiesMap ;
@@ -687,6 +696,10 @@ map @entityToImplementMap {
   @constrainedPropertyList mConstrainedAttributePropertyToImplementList ;
 #--- Only properties defined as parameter in current constraint
   @constrainedPropertyList mConstrainedParameterPropertyToImplementList ;
+#--- All map indexes
+  @indexMap mAllIndexes ;
+#--- Only indexes defined in current constraint
+  @indexMap mCurrentIndexes ;
 #--- Access methods
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
@@ -3071,7 +3084,7 @@ routine computeRepresentativeEntityName
       outRepresentativeEntityName := searchedEntity ;
     else
       @lstring superEntity ;
-      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?* ?* ?* ?*] ;
+      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?* ?* ?* ?* ?* ?*] ;
       searchedEntity := superEntity ;
     end if ;
   end loop ;
