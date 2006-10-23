@@ -1407,19 +1407,9 @@ map @callInstructionSharedPropertySignatureMap {
 
 #---------------------------------------------------------------------------*
 
-map @indexMap {
-  @lstring mMapTypeName ;
-  @uint mPassIndex ;
-  insert insertKey error message "the '%K' constraint attribute is already defined in %L" ;
-  search searchKey error message "the '%K' constraint attribute is not defined" ;
-}
-
-#---------------------------------------------------------------------------*
-
 map @constraintInstructionListMap {
   @typeInstructionList instructionsList ;
   @callInstructionSharedPropertySignatureMap mCallInstructionSharedPropertySignatureMap ;
-#  @location mEndOfInstructionListLocation ;
   insert insertKey error message "the instruction list of '%K' entity constraint  is already defined in %L" ;
   search searchKey error message "the instruction list of '%K' constraint entity is not defined" ;
 }

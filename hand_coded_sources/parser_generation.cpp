@@ -294,6 +294,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
           }
           inCppFile << "var_cas_" << currentProperty->mKey ;
           break ;
+        case GGS_metamodelPropertyKind::enum_entityMapProperty:
         case GGS_metamodelPropertyKind::kNotBuilt:
           break ;
         }

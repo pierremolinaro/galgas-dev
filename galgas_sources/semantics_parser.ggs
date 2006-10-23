@@ -2722,7 +2722,7 @@ rule <semantic_instruction>
   @lstring typeName ;
   [ioPropertyMap searchKey !calledPropertyName ?kind ?typeName] ;
   switch kind
-  when attributeProperty:
+  when attributeProperty, entityMapProperty:
     error calledPropertyName:"only a reference can used used here" ;
   when singleReferenceProperty, multipleReferenceProperty:
     # Ok

@@ -146,7 +146,7 @@ rule <parse_metamodel>
     !?mapAndEntityUniqueMap
   ;
   @bool isAbstract ;
-  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?*] ;
+  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -158,6 +158,8 @@ rule <parse_metamodel>
                      ??@entityPropertyMap kEntityPropertiesMap
                      ??@lstring kSuperEntityName
                      ??@stringset kSuperEntitySet
+                     ??*
+                     ??*
                      ??*
                      ??*
                      ??*) :
@@ -185,14 +187,16 @@ rule <parse_metamodel>
                      ??*
                      ??*
                      ??*
+                     ??*
+                     ??*
                      ??*) :
     foreach kEntityPropertiesMap (??@lstring kAttributeName
                                   ??@metamodelPropertyKind kKind
                                   ??@lstring kTypeName) :
       switch kKind 
-      when attributeProperty :
+      when attributeProperty, entityMapProperty :
       when singleReferenceProperty, multipleReferenceProperty :
-        [entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?* ?*] ;
+        [entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kTypeName string] ;
       end switch ;
     end foreach ;
@@ -277,6 +281,8 @@ rule <entity_declaration>
       ?*
       ?*
       ?*
+      ?*
+      ?*
     ] ;
     superEntitySet += ![superEntity string] ;
   end select ;
@@ -325,6 +331,8 @@ rule <entity_declaration>
     !false # is not defined implicitly
     ![@constrainedPropertyList emptyList]
     ![@constrainedPropertyList emptyList]
+    ![@indexMap emptyMap]
+    ![@indexMap emptyMap]
    ] ;
 end rule ;
 

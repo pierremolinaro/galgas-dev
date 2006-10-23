@@ -970,6 +970,7 @@ rule <rule_declaration_or_implementation>
         @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
         switch kKind
+        when entityMapProperty:
         when multipleReferenceProperty :
           definitionType := [@typeGalgas_multipleEntity new ! kTypeName] ;
            [!?ioVariablesMap insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
