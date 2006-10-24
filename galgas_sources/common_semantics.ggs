@@ -850,6 +850,36 @@ class @typeGalgas_string extends @AC_galgasType {
     outTypeName := "string" ;
   end reader ;
 
+#--- By default, class does not accept reader instruction call
+  override
+  reader handleReaderInstructionCall
+    ??@lstring unused inReadObjectName
+    ??@lstring inReaderName
+    !@L_EXsignature outReaderSignature
+  :
+    if [inReaderName string] == "writeToFile" then
+      outReaderSignature := [@L_EXsignature emptyList] ;
+      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inReaderName: "this reader is not defined" -> outReaderSignature ;
+    end if ;
+  end reader ;
+
+#--- string accepts constructor 'stringWithSourceFilePath'
+  override reader handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "stringWithSourceFilePath" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "stringWithContentsOfFile" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end reader ;
+
 #--- Error message
   message messageGalgasType "a '@string' type" ;
 }

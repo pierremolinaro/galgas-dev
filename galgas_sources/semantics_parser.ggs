@@ -165,7 +165,6 @@ rule <parse_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
-  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
   ??@typeTableMethodes tableDesMethodes
   ??@typeSuperClassesMap tableDesClassesAncetres
   ??@typeClassInheritedMessagesMap messageMapForHeirs
@@ -186,7 +185,6 @@ rule <overrided_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
-  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
   ?!@typeTableMethodes tableDesMethodes
   ??@typeSuperClassesMap tableDesClassesAncetres
   ??@typeClassInheritedMessagesMap messageMapForHeirs
@@ -204,7 +202,6 @@ rule <non_abstract_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
-  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
   ?!@typeTableMethodes tableDesMethodes
   ??@typeSuperClassesMap tableDesClassesAncetres
   ??@typeClassInheritedMessagesMap messageMapForHeirs
@@ -1365,7 +1362,6 @@ rule <semantics_declaration>
         !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
-        !listeAttributsSemantiquesCourants
         !?tableDesMethodes
         !tableDesClassesAncetres
         !messageMapForHeirs
@@ -1382,7 +1378,6 @@ rule <semantics_declaration>
         !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
-        !listeAttributsSemantiquesCourants
         !?tableDesMethodes
         !tableDesClassesAncetres
         !messageMapForHeirs
@@ -1403,13 +1398,13 @@ rule <semantics_declaration>
   end foreach ;
   #--- Inserer dans la map des classes utilisables
     @AC_galgasType c := [@typeGalgasClassType new 
-                                             !abstractClassName
-                                             !tableDesMethodes
-                                             !listeTousAttributsSemantiques
-                                             !tableDesClassesAncetres
-                                             !messageMapForHeirs
-                                             !tableAttributs
-                                             !estAbstraite] ;
+      !abstractClassName
+      !tableDesMethodes
+      !listeTousAttributsSemantiques
+      !tableDesClassesAncetres
+      !messageMapForHeirs
+      !tableAttributs
+      !estAbstraite] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
   #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
@@ -1515,7 +1510,6 @@ label importSemantics
         !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
-        !listeAttributsSemantiquesCourants
         !?tableDesMethodes
         !tableDesClassesAncetres
         !messageMapForHeirs
@@ -1532,7 +1526,6 @@ label importSemantics
         !abstractClassName
         !ancestorClassMethodsMap
         !listeTousAttributsSemantiques
-        !listeAttributsSemantiquesCourants
         !?tableDesMethodes
         !tableDesClassesAncetres
         !messageMapForHeirs
@@ -1631,7 +1624,6 @@ rule <semantics_declaration>
       !concreteClassName
       !ancestorClassMethodsMap
       !listeTousAttributsSemantiques
-      !listeAttributsSemantiquesCourants
       !?tableDesMethodes
       !tableDesClassesAncetres
       !messageMapForHeirs
@@ -1662,7 +1654,6 @@ rule <semantics_declaration>
       !concreteClassName
       !ancestorClassMethodsMap
       !listeTousAttributsSemantiques
-      !listeAttributsSemantiquesCourants
       !?tableDesMethodes
       !tableDesClassesAncetres
       !messageMapForHeirs
@@ -1809,7 +1800,6 @@ label importSemantics
       !concreteClassName
       !ancestorClassMethodsMap
       !listeTousAttributsSemantiques
-      !listeAttributsSemantiquesCourants
       !?tableDesMethodes
       !tableDesClassesAncetres
       !messageMapForHeirs
@@ -1840,7 +1830,6 @@ label importSemantics
       !concreteClassName
       !ancestorClassMethodsMap
       !listeTousAttributsSemantiques
-      !listeAttributsSemantiquesCourants
       !?tableDesMethodes
       !tableDesClassesAncetres
       !messageMapForHeirs
@@ -1914,7 +1903,6 @@ rule <parse_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
-  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
   ??@typeTableMethodes tableDesMethodes
   ??@typeSuperClassesMap tableDesClassesAncetres
   ??@typeClassInheritedMessagesMap messageMapForHeirs
@@ -1972,18 +1960,17 @@ rule <parse_method>
     ?signatureForGrammarComponent
   ;
   $:$ ;
-#--- Build local attributes table
-  foreach listeAttributsSemantiquesCourants (??@AC_galgasType typeAttribut ??@lstring nomAttribut) :
-#    @typeCplusPlusName nomCpp := [@typeDirectName new !nomAttribut] ;
-#    [!?methodLocalVariablesMap insertUsedConstInArgument !nomAttribut !typeAttribut !nomCpp] ;
-  end foreach ;
+#--- Add current class definition
+  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap := ioComponentSemanticsEntitiesMap ;
+  @AC_semanticsEntity entite := [@typeEntiteType new ! typeDefinition] ;
+  [!?componentSemanticsEntitiesMap insertKey !inCurrentClassName !entite] ;
 #--- Parse reader instruction list
   outInstructionsList := [@typeInstructionList emptyList] ;
   @entityPropertyMap propertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
   @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
   <semantic_instructions_list>
-    !?ioComponentSemanticsEntitiesMap
+    !?componentSemanticsEntitiesMap
     !?listeEntitesAengendrer
     !?ioOptionsComponentsMapForUse
     !?methodLocalVariablesMap
@@ -2000,7 +1987,6 @@ rule <non_abstract_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
-  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
   ?!@typeTableMethodes tableDesMethodes
   ??@typeSuperClassesMap tableDesClassesAncetres
   ??@typeClassInheritedMessagesMap messageMapForHeirs
@@ -2021,7 +2007,6 @@ rule <non_abstract_method>
     !inCurrentClassName
     !inAncestorClassMethodsMap
     !listeTousAttributsSemantiques
-    !listeAttributsSemantiquesCourants
     !tableDesMethodes
     !tableDesClassesAncetres
     !messageMapForHeirs
@@ -2049,7 +2034,6 @@ rule <overrided_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
-  ??@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
   ?!@typeTableMethodes tableDesMethodes
   ??@typeSuperClassesMap tableDesClassesAncetres
   ??@typeClassInheritedMessagesMap messageMapForHeirs
@@ -2071,7 +2055,6 @@ rule <overrided_method>
     !inCurrentClassName
     !inAncestorClassMethodsMap
     !listeTousAttributsSemantiques
-    !listeAttributsSemantiquesCourants
     !tableDesMethodes
     !tableDesClassesAncetres
     !messageMapForHeirs
