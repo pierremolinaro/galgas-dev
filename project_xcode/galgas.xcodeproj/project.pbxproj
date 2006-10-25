@@ -2927,8 +2927,8 @@
 				CF86361A0586289600B23462 /* C_galgas_null_io.cpp */,
 				CF86361B0586289600B23462 /* C_galgas_null_io.h */,
 				CF3FF0C005877B62000D2F8C /* galgas_header.h */,
-				CF7B06240AEE387C00E94B20 /* AC_galgas_list.h */,
 				CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */,
+				CF7B06240AEE387C00E94B20 /* AC_galgas_list.h */,
 			);
 			path = galgas;
 			sourceTree = "<group>";
