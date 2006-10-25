@@ -360,7 +360,8 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_luint64.h\"\n"
                     "#include \"galgas/GGS_lsint64.h\"\n"
                     "#include \"galgas/GGS_stringset.h\"\n"
-                    "#include \"galgas/AC_galgas_map.h\"\n" ;
+                    "#include \"galgas/AC_galgas_map.h\"\n"
+                    "#include \"galgas/AC_galgas_list.h\"\n" ;
 
 //--- Generate lexique inclusion
   const C_String lexiqueName = inLexiqueName ;
