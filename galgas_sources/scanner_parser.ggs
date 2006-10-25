@@ -290,7 +290,7 @@ rule <galgas_component>
   $lexique$ ;
   $;$ ;
 #--- Warn unused error messages
-  foreach table_messages (??@lstring kKey ??*) :
+  foreach table_messages (@lstring kKey *) :
     if not [usedErrorMessageSet hasKey ![kKey string]] then
       warning kKey:"this error message is not used" ;
     end if ;

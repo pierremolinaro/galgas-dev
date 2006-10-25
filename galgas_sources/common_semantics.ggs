@@ -872,6 +872,8 @@ class @typeGalgas_string extends @AC_galgasType {
   :
     if [inClassMethodName string] == "stringWithSourceFilePath" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "stringWithMainFirstArgument" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "stringWithContentsOfFile" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
@@ -1771,8 +1773,8 @@ routine checkSignature_ForGrammarComponent
   elsif [inFormalReferenceSignature length] > [inFormalTestedSignature length] then
     error inFormalTestedLocation : "too much formal parameters (from prototype in " . [inFormalReferenceLocation locationString] . ")" ;
   else
-    foreach inFormalReferenceSignature (??@formalArgumentPassingMode passingMode1 ??@lstring kType1),
-            inFormalTestedSignature (??@formalArgumentPassingMode passingMode2 ??@lstring kType2) :
+    foreach inFormalReferenceSignature (@formalArgumentPassingMode passingMode1 @lstring kType1),
+            inFormalTestedSignature  (@formalArgumentPassingMode passingMode2 @lstring kType2) :
       if passingMode1 != passingMode2 then
         error kType2 : "Prototype has " . [passingMode1 formalArgumentMessage] .
                        ", and " . [passingMode1 formalArgumentMessage] . " has been found" ;
@@ -2194,7 +2196,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     @AC_galgasType keyType := [@typeGalgas_lstring new] ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += !keyType ![@lstring new !"???" !here] ; # Unused second argument
-    foreach mNonExternAttributesList (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
+    foreach mNonExternAttributesList (@AC_galgasType kAttributType @lstring kNomAttribut) :
       outForeachList += !kAttributType !kNomAttribut ;
     end foreach ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
@@ -2490,20 +2492,20 @@ routine checkAssignmentTypesCompatibility
   when @typeGalgas_lstring ()  :: @typeGalgas_lstring () :
   when @typeGalgas_location () :: @typeGalgas_location () :
 
-  when @typeGalgasUndefinedListType (??@lstring attNomType1) :: @typeGalgasUndefinedListType (??@lstring attNomType2) :
+  when @typeGalgasUndefinedListType (@lstring attNomType1) :: @typeGalgasUndefinedListType (@lstring attNomType2) :
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting the list type '@" . [attNomType1 string] .
                                 "', I have got the list type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
-  when @typeGalgasUndefinedMapType (??@lstring attNomType1) :: @typeGalgasUndefinedMapType (??@lstring attNomType2) :
+  when @typeGalgasUndefinedMapType (@lstring attNomType1) :: @typeGalgasUndefinedMapType (@lstring attNomType2) :
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting the map type '@" . [attNomType1 string] .
                               "', I have got the map type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
-  when @typeGalgasUndefinedClassType (??@lstring kNomType1)
-    :: @typeGalgasClassType (??@lstring kNomType2 ??* ??* ??@typeSuperClassesMap kAncestorClassesMap ...) :
+  when @typeGalgasUndefinedClassType (@lstring kNomType1)
+    :: @typeGalgasClassType (@lstring kNomType2 * * @typeSuperClassesMap kAncestorClassesMap ...) :
     @bool accept := [kNomType1 string] == [kNomType2 string] ;
     if (not accept) & inAcceptPolymorphism then
       accept := [kAncestorClassesMap hasKey ![kNomType1 string]] ;
@@ -2513,35 +2515,35 @@ routine checkAssignmentTypesCompatibility
                               "', I have got the class type '@" . [kNomType2 string] . "\"" ;
     end if ;
 
-  when @typeGalgasUndefinedClassType (??@lstring attNomType1) :: @typeGalgasUndefinedClassType (??@lstring attNomType2) :
+  when @typeGalgasUndefinedClassType (@lstring attNomType1) :: @typeGalgasUndefinedClassType (@lstring attNomType2) :
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting the class type '@" . [attNomType1 string] .
                               "', I have got the class type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
-  when @typeGalgasUndefinedExternType (??@lstring attNomType1 ??@lstring attCppClassName1)
-    :: @typeGalgasUndefinedExternType (??@lstring attNomType2 ??@lstring attCppClassName2) :
+  when @typeGalgasUndefinedExternType (@lstring attNomType1 @lstring attCppClassName1)
+    :: @typeGalgasUndefinedExternType (@lstring attNomType2 @lstring attCppClassName2) :
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting an extern variable of extern '@" . [attNomType1 string] .
                                "' type variable, and I got an extern '@" . [attNomType2 string] . "' type variable" ;
     end if ;
 
-  when @typeGalgas_enum (??@lstring aTypeName1 ??* ??*)
-    :: @typeGalgas_enum (??@lstring aTypeName2 ??* ??*) :
+  when @typeGalgas_enum (@lstring aTypeName1 * *)
+    :: @typeGalgas_enum (@lstring aTypeName2 * *) :
     if [aTypeName1 string] != [aTypeName2 string] then
       error inErrorLocation : "I was expecting an enum variable of  '@" . [aTypeName1 string] .
                                 "' type variable, and I got an enum '@" . [aTypeName2 string] . "' type variable" ;
     end if ;
 
-  when @typeGalgas_entityInInstruction (??@string kTypeName1)
-    :: @typeGalgas_entityInInstruction (??@string kTypeName2) :
+  when @typeGalgas_entityInInstruction (@string kTypeName1)
+    :: @typeGalgas_entityInInstruction (@string kTypeName2) :
     if kTypeName1 != kTypeName2 then
       error inErrorLocation : "I was expecting an entity instance of  '@" . kTypeName1 .
                               "' type variable, and I got an entity instance of type '@" . kTypeName2 . "'" ;
     end if ;
 
-  when @typeGalgas_mapIndexInInstruction (??@string kPropertyName1)
-    :: @typeGalgas_mapIndexInInstruction (??@string kPropertyName2) :
+  when @typeGalgas_mapIndexInInstruction (@string kPropertyName1)
+    :: @typeGalgas_mapIndexInInstruction (@string kPropertyName2) :
     if kPropertyName1 != kPropertyName2 then
       error inErrorLocation : "I was expecting a map index of  '" . kPropertyName1 .
                               "' map property, and I got a map index of '" . kPropertyName2 . "' map property" ;
@@ -2568,8 +2570,8 @@ routine verifierCompatibiliteSignatures
   elsif [signatureReference length] > [signatureTestee length] then
     error ouSignalerErreur : "one or more parameters missing" ;
   else 
-    foreach signatureReference (??@AC_galgasType attTypeG ??@formalArgumentPassingMode passingMode1),
-            signatureTestee (??@AC_galgasType attTypeD ??@formalArgumentPassingMode passingMode2) :
+    foreach signatureReference (@AC_galgasType attTypeG @formalArgumentPassingMode passingMode1),
+            signatureTestee (@AC_galgasType attTypeD @formalArgumentPassingMode passingMode2) :
       checkAssignmentTypesCompatibility
          !attTypeG
          !attTypeD
@@ -3012,11 +3014,11 @@ routine handleReaderCall
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgasClassType (??* ??* ??* ??* ??@typeClassInheritedMessagesMap kMessagesMap ??* ??*) ->
+    when @typeGalgasClassType (* * * * @typeClassInheritedMessagesMap kMessagesMap * *) ->
       [kMessagesMap searchKey !inMethodName] ;
       outReturnedType := [@typeGalgas_string new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    when @typeGalgas_enum (??* ??* ??@typeEnumMessageMap kMessagesMap) ->
+    when @typeGalgas_enum (* * @typeEnumMessageMap kMessagesMap) ->
       [kMessagesMap searchKey !inMethodName ?*] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ; #--- No argument
       outReturnedType := [@typeGalgas_string new] ;
@@ -3070,7 +3072,7 @@ routine importSemanticsComponent
   #--- Add Imported metamodels
     ioAlreadyImportedMetamodelComponents := ioAlreadyImportedMetamodelComponents | importedMetamodelComponents ;
   #--- Recursively import other semantics components
-    foreach importedSemanticsComponents (??@string kKey) :
+    foreach importedSemanticsComponents (@string kKey) :
       importSemanticsComponent
         !?ioSemanticsComponentsMap
         !?ioMetamodelComponentMap
@@ -3082,13 +3084,13 @@ routine importSemanticsComponent
       ;
     end foreach ;
   #--- Add imported types
-    foreach modelMap (??@lstring kKey ??@TypeModel kType) :
+    foreach modelMap (@lstring kKey @TypeModel kType) :
       if not [ioModelMap hasKey ![kKey string]] then
         [!?ioModelMap insertKey !kKey !kType] ;
       end if ;
     end foreach ;
   #--- Add actions
-    foreach actionMap (??@lstring kKey ??@L_signature kSignature ??@bool kIsExtern) :
+    foreach actionMap (@lstring kKey @L_signature kSignature @bool kIsExtern) :
       if not [ioActionMap hasKey ![kKey string]] then
         [!?ioActionMap insertKey !kKey !kSignature !kIsExtern] ;
       end if ;
