@@ -248,29 +248,26 @@
 - (BOOL) isFinalPathWritable: (NSString *) inFinalFullPath {
   NSFileManager * fm = [NSFileManager defaultManager] ;
 //--- Final path dir is writable
-  NSDictionary * fileAttributes = [fm fileAttributesAtPath:[inFinalFullPath stringByDeletingLastPathComponent] traverseLink:YES] ;
-  unsigned long posixPermissions = [[fileAttributes objectForKey:NSFilePosixPermissions] unsignedLongValue] ;
-  BOOL isWritable = (posixPermissions & S_IWUSR) != 0 ;
-  NSLog (@"'%@' is writable:%@", [inFinalFullPath stringByDeletingLastPathComponent], isWritable ? @"YES" : @"NO") ;
-//--- Destination dir is writable
-  if (isWritable) {
-    fileAttributes = [fm fileAttributesAtPath:inFinalFullPath traverseLink:YES] ;
-    posixPermissions = [[fileAttributes objectForKey:NSFilePosixPermissions] unsignedLongValue] ;
-    isWritable = (posixPermissions & S_IWUSR) != 0 ;
-    NSLog (@"'%@' is writable:%@", inFinalFullPath, isWritable ? @"YES" : @"NO") ;
-  }
-//--- All sub directories are writable
-  NSDirectoryEnumerator * enumerator = [fm enumeratorAtPath:inFinalFullPath] ;
-  NSString * partialPath = nil ;
-  while (isWritable && ((partialPath = [enumerator nextObject]))) {
-    NSString * fullPath = [inFinalFullPath stringByAppendingPathComponent:partialPath] ;
-    fileAttributes = [fm fileAttributesAtPath:fullPath traverseLink:YES] ;
-    posixPermissions = [[fileAttributes objectForKey:NSFilePosixPermissions] unsignedLongValue] ;
-    isWritable = (posixPermissions & S_IWUSR) != 0 ;
-    NSLog (@"'%@' is writable:%@", fullPath, isWritable ? @"YES" : @"NO") ;
+  BOOL isWritable = [fm isWritableFileAtPath:[inFinalFullPath stringByDeletingLastPathComponent]] ;
+  // NSLog (@"'%@' is writable:%@", [inFinalFullPath stringByDeletingLastPathComponent], isWritable ? @"YES" : @"NO") ;
+//--- Destination file exists ? If YES, check permissions
+  if ([fm fileExistsAtPath:inFinalFullPath]) {
+  //--- Destination dir is writable
+    if (isWritable) {
+      isWritable = [fm isWritableFileAtPath:inFinalFullPath] ;
+      // NSLog (@"'%@' is writable:%@", inFinalFullPath, isWritable ? @"YES" : @"NO") ;
+    }
+  //--- All sub directories are writable
+    NSDirectoryEnumerator * enumerator = [fm enumeratorAtPath:inFinalFullPath] ;
+    NSString * partialPath = nil ;
+    while (isWritable && ((partialPath = [enumerator nextObject]))) {
+      NSString * fullPath = [inFinalFullPath stringByAppendingPathComponent:partialPath] ;
+      isWritable = [fm isWritableFileAtPath:fullPath] ;
+      // NSLog (@"'%@' is writable:%@", fullPath, isWritable ? @"YES" : @"NO") ;
+    }
   }
 //---
-  NSLog (@"FINAL writable:%@", isWritable ? @"YES" : @"NO") ;
+  // NSLog (@"FINAL writable:%@", isWritable ? @"YES" : @"NO") ;
   return isWritable ;
 }
 
