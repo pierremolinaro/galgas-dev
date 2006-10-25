@@ -542,7 +542,7 @@ rule <galgas_component>
   $semantics$ ;
   $;$ ;
 #--- Check that all routines have been implemented
-  foreach tableNomRoutinesDeclarees (??@lstring nomRoutine) :
+  foreach tableNomRoutinesDeclarees (@lstring nomRoutine) :
     if not [tableRoutinesAimplementer hasKey ![nomRoutine string]] then
       error nomRoutine : "the routine '" . [nomRoutine string] .
                          "' is not implemented within the component" ;
@@ -801,9 +801,9 @@ rule <import_headers_semantics_and_grammars>
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
       [grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?* ?*] ;
       @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
-      foreach nonterminalSymbolParametersMap (??@lstring altName ??@L_signature signature ??@lstring kReturnedEntity) :
+      foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature @lstring kReturnedEntity) :
         @L_EXsignature formalParametersList [emptyList] ;
-        foreach signature (??@formalArgumentPassingMode passingMode ??@lstring typeName) :
+        foreach signature (@formalArgumentPassingMode passingMode @lstring typeName) :
           @AC_semanticsEntity e ;
           [ioComponentSemanticsEntitiesMap searchKey !typeName ?e] ;
           @AC_galgasType type ;
@@ -839,14 +839,14 @@ rule <import_headers_semantics_and_grammars>
         @M_semanticsEntitiesForUse importedEntities ;
         @M_optionComponents importedOptionsComponentsMap ;
         [ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedOptionsComponentsMap ?importedEntities] ;
-        foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
+        foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
         outInclusionsForHeaderFile += ![componentName string] ;
       #--- Check that every used option component is already declared
-        foreach importedOptionsComponentsMap (??@lstring optionComponentMap ...) :
+        foreach importedOptionsComponentsMap (@lstring optionComponentMap ...) :
           if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap string]] then
             error here: "the '" . [optionComponentMap string] . "' option component must have been imported" ;
           end if ;
@@ -884,7 +884,7 @@ rule <import_headers_semantics_and_grammars>
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName string]] then
         @M_semanticsEntitiesForUse importedEntities ;
         [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?* ?*] ;
-        foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
+        foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
@@ -958,7 +958,7 @@ label importSemantics
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
       [ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?* ?importedEntities] ;
-      foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
+      foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) :
         if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
           [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
         end if ;
@@ -991,7 +991,7 @@ label importSemantics
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
       [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?* ?*] ;
-      foreach importedEntities (??@lstring entityName ??@AC_semanticsEntity entityType) :
+      foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) :
         if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
           [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
         end if ;
@@ -1259,7 +1259,7 @@ label importSemantics
   @TypeModel type ;
   [ioModelMap searchKey ! superClassName ?type] ;
   extract type :
-  when @ClassModel (??* ??@stringset superClasses ??@typeListModel attributeList ??@classMessageMap messageMap) ->
+  when @ClassModel (* @stringset superClasses @typeListModel attributeList @classMessageMap messageMap) ->
     outSuperClasses := superClasses ;
     outAttributeList := attributeList ;
     outMessageMap := messageMap ;
@@ -1391,7 +1391,7 @@ rule <semantics_declaration>
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
-    foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
+    foreach inheritedMessageMap (@lstring nomMessageAbstrait) :
       if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
         error here : "the message '" . [nomMessageAbstrait string] . "' is not defined" ;
       end if ;
@@ -1539,7 +1539,7 @@ label importSemantics
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
-    foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
+    foreach inheritedMessageMap (@lstring nomMessageAbstrait) :
       if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
         error here : "the message '" .  [nomMessageAbstrait string] . "' is not defined" ;
       end if ;
@@ -1667,7 +1667,7 @@ rule <semantics_declaration>
     ;
   end repeat ;
 #--- Verify that all inherited messages are defined
-  foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
+  foreach inheritedMessageMap (@lstring nomMessageAbstrait) :
     if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
       error here : "the message '" . [nomMessageAbstrait string] . "' is not defined" ;
     end if ;
@@ -1744,7 +1744,7 @@ label importSemantics
     @TypeModel type ;
     [ioModelMap searchKey !superClassName ?type] ;
     extract type :
-    when @ClassModel (??* ??@stringset kSuperClasses ??@typeListModel kAttributeList ??@classMessageMap kMessageMap) ->
+    when @ClassModel (* @stringset kSuperClasses @typeListModel kAttributeList @classMessageMap kMessageMap) ->
       superClasses := kSuperClasses ;
       attributeList := kAttributeList ;
       messageMap := kMessageMap ;
@@ -1843,7 +1843,7 @@ label importSemantics
     ;
   end repeat ;
 #--- Verify that all inherited messages are defined
-  foreach inheritedMessageMap (??@lstring nomMessageAbstrait) :
+  foreach inheritedMessageMap (@lstring nomMessageAbstrait) :
     if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
       error here : "the message '" . [nomMessageAbstrait string] . "' is not defined" ;
     end if ;
@@ -1921,7 +1921,7 @@ rule <parse_method>
   $identifier$ ? outMethodName ;
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
-  foreach tableAttributsHerites (??@lstring kKey ??@AC_galgasType kType) :
+  foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType) :
     @typeCplusPlusName nomCpp := [@typeDirectName new !kKey] ;
     [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
   end foreach ;
@@ -2339,8 +2339,8 @@ rule <input_parameters_list>
   else
     listeAffectationParametresEffectifs := [@L_assignedVariables emptyList] ;
     outAllVariablesList := [@typeCplusPlusNameList emptyList] ;
-    foreach listeAttributsSemantiques (??@AC_galgasType attTypeAttribut ??@lstring attNomAttribut),
-            listeCibles (??@typeCible attCible) :
+    foreach listeAttributsSemantiques (@AC_galgasType attTypeAttribut @lstring attNomAttribut),
+            listeCibles (@typeCible attCible) :
       @lstring nomAttributSource := attNomAttribut ;
       [attCible verifierType !attTypeAttribut !?nomAttributSource !?listeAffectationParametresEffectifs !?outAllVariablesList] ;
     end foreach ;
@@ -2424,8 +2424,8 @@ rule <instruction_beginning_with_identifier>
   if [formalParametersList length] != [typeList length] then
     error here : [[typeList length] string] . " argument(s), while " . [[formalParametersList length] string] . " are needed" ;
   else
-    foreach formalParametersList (??@AC_galgasType formalType ??@lstring formalName),
-            typeList (??@AC_galgasType effectiveType ??@location kErrorLocation) :
+    foreach formalParametersList (@AC_galgasType formalType @lstring formalName),
+            typeList (@AC_galgasType effectiveType @location kErrorLocation) :
       checkAssignmentTypesCompatibility
         !formalType
         !effectiveType
@@ -2483,8 +2483,8 @@ rule <instruction_beginning_with_identifier>
   if [formalParametersList length] != [typeList length] then
     error here : [[typeList length] string] . " argument(s), while " . [[formalParametersList length] string] . " are needed" ;
   else
-    foreach formalParametersList (??@AC_galgasType formalType ??@lstring formalName),
-            typeList (??@AC_galgasType effectiveType ??@location kErrorLocation) :
+    foreach formalParametersList (@AC_galgasType formalType @lstring formalName),
+            typeList (@AC_galgasType effectiveType @location kErrorLocation) :
       checkAssignmentTypesCompatibility
         !formalType
         !effectiveType
@@ -3591,7 +3591,7 @@ rule <semantic_instruction>
   $end$ ;
 #--- Check all constant are named
   @stringset missingConstants := [enumConstantesMap allKeys] - allBranchConstantSet ;
-  foreach missingConstants (??@string kConstant) :
+  foreach missingConstants (@string kConstant) :
     error here: "the '" . kConstant . "' is not used in switch instruction" ;
   end foreach ;
 #--- Generate instruction
@@ -3883,11 +3883,11 @@ rule <parse_match_operand>
   ;
   outVarLocation := here ;
   extract type :
-  when @typeGalgasClassType (??@lstring baseTypeName ??* ??* ??* ??* ??* ??*) ->
+  when @typeGalgasClassType (@lstring baseTypeName * * * * * *) ->
     outBaseTypeName := baseTypeName ;
     outIsEnumeration := false ;
     outEnumMessageMap := [@enumConstantMap emptyMap] ;
-  when @typeGalgas_enum (??@lstring typeName ??@enumConstantMap enumMessageMap ??*) ->
+  when @typeGalgas_enum (@lstring typeName @enumConstantMap enumMessageMap *) ->
     outBaseTypeName := typeName ;
     outIsEnumeration := true ;
     outEnumMessageMap := enumMessageMap ;
@@ -4315,11 +4315,11 @@ rule <semantics_declaration>
     @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
-    foreach insertMethodList (??@lstring kKey ...) :
+    foreach insertMethodList (@lstring kKey ...) :
     #--- Insert Methods
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !kKey !methodSignature] ;
@@ -4327,17 +4327,17 @@ rule <semantics_declaration>
       methodSignature := [@L_EXsignature emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
-    foreach searchMethodList (??@lstring kKey ...) :
+    foreach searchMethodList (@lstring kKey ...) :
    #--- insert method
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !kKey !methodSignature] ;
@@ -4345,7 +4345,7 @@ rule <semantics_declaration>
       methodSignature := [@L_EXsignature emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
@@ -4420,7 +4420,7 @@ rule <semantics_declaration>
     #--- Insert method
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
@@ -4430,7 +4430,7 @@ rule <semantics_declaration>
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
           getIndexMethodSignature += !kAttributType !inPassingMode ;      
         end foreach ;
         [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
@@ -4447,7 +4447,7 @@ rule <semantics_declaration>
     #--- Insert search method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
@@ -4457,7 +4457,7 @@ rule <semantics_declaration>
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
          getIndexMethodSignature += !kAttributType !outPassingMode ;      
         end foreach ;
         [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
@@ -4581,11 +4581,11 @@ label importSemantics
     @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
-    foreach insertMethodList (??@lstring kKey ...) :
+    foreach insertMethodList (@lstring kKey ...) :
     #--- Insert Methods
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !kKey !methodSignature] ;
@@ -4593,17 +4593,17 @@ label importSemantics
       methodSignature := [@L_EXsignature emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
       [!?mapModifierMethodMap insertKey !insertKeyAndGetIndexName !methodSignature] ;
     end foreach ;
-    foreach searchMethodList (??@lstring kKey ...) :
+    foreach searchMethodList (@lstring kKey ...) :
     #--- Search Methods
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !kKey !methodSignature] ;
@@ -4611,7 +4611,7 @@ label importSemantics
       methodSignature := [@L_EXsignature emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
       methodSignature += !luintType !outPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       @lstring insertKeyAndGetIndexName [new ![kKey string] . "GetIndex" ![kKey location]] ;
@@ -4670,7 +4670,7 @@ label importSemantics
     #--- Enter insert method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ;
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !inPassingMode ;      
       end foreach ;
       [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
@@ -4679,7 +4679,7 @@ label importSemantics
         @L_EXsignature getIndexMethodSignature [emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ;
         getIndexMethodSignature += !luintType !outPassingMode ;
-        foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
           getIndexMethodSignature += !kAttributType !inPassingMode ;      
         end foreach ;
         [!?mapModifierMethodMap insertKey !getIndexMethodName ! getIndexMethodSignature] ;
@@ -4693,7 +4693,7 @@ label importSemantics
     #--- Enter search method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
       methodSignature += !lstringType !inPassingMode ; # Key
-      foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
         methodSignature += !kAttributType !outPassingMode ;      
       end foreach ;
       [!?mapReaderMethodMap insertKey !methodName !methodSignature] ;
@@ -4702,7 +4702,7 @@ label importSemantics
         @L_EXsignature getIndexMethodSignature := [@L_EXsignature emptyList] ;
         getIndexMethodSignature += !lstringType !inPassingMode ; # Key
         getIndexMethodSignature += !luintType !outPassingMode ; # Returned Index
-        foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ...) :
+        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
           getIndexMethodSignature += !kAttributType !outPassingMode ;      
         end foreach ;
         [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
@@ -4818,7 +4818,7 @@ rule <semantics_declaration>
     ;
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
-    foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
+    foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) :
       extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
       inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
     end foreach ;
@@ -4870,7 +4870,7 @@ label importSemantics
     ;
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
-    foreach listeTousAttributsSemantiques (??@AC_galgasType kAttributType ??@lstring kNomAttribut) :
+    foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) :
       extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
       inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
     end foreach ;
@@ -5419,7 +5419,7 @@ rule <semantics_declaration>
     $end$ ;
   #--- Build message string list
     @L_lstringList messageStringList [emptyList] ;
-    foreach constantMap (??@lstring constantName) :
+    foreach constantMap (@lstring constantName) :
       @lstring name := [@lstring new ![constantName string] !here] ; #--- For best error location
       @lstring cstString ;
       [cstMessageStringMap searchKey !name ?cstString] ;

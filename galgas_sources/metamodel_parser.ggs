@@ -152,17 +152,17 @@ rule <parse_metamodel>
   end if ;
 #--- Build semantic entities map
   @M_semanticsEntitiesForUse semanticsEntityMap [emptyMap] ;
-  foreach entityMap (??@lstring kEntityName
-                     ??@entityPropertyMap kAllPropertiesMap
-                     ??@bool kIsAbstract
-                     ??@entityPropertyMap kEntityPropertiesMap
-                     ??@lstring kSuperEntityName
-                     ??@stringset kSuperEntitySet
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*) :
+  foreach entityMap (@lstring kEntityName
+                     @entityPropertyMap kAllPropertiesMap
+                     @bool kIsAbstract
+                     @entityPropertyMap kEntityPropertiesMap
+                     @lstring kSuperEntityName
+                     @stringset kSuperEntitySet
+                     *
+                     *
+                     *
+                     *
+                     *) :
      @AC_galgasType t := [@typeGalgas_singleEntity new
       !kEntityName
       !kAllPropertiesMap
@@ -179,20 +179,20 @@ rule <parse_metamodel>
   end foreach ;
 #--- Check properties
   @stringset multiReferencedEntities [emptySet] ;
-  foreach entityMap (??@lstring kEntityName
-                     ??@entityPropertyMap kAllPropertiesMap
-                     ??*
-                     ??@entityPropertyMap kEntityPropertiesMap
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*
-                     ??*) :
-    foreach kEntityPropertiesMap (??@lstring kAttributeName
-                                  ??@metamodelPropertyKind kKind
-                                  ??@lstring kTypeName) :
+  foreach entityMap (@lstring kEntityName
+                     @entityPropertyMap kAllPropertiesMap
+                     *
+                     @entityPropertyMap kEntityPropertiesMap
+                     *
+                     *
+                     *
+                     *
+                     *
+                     *
+                     *) :
+    foreach kEntityPropertiesMap (@lstring kAttributeName
+                                  @metamodelPropertyKind kKind
+                                  @lstring kTypeName) :
       switch kKind 
       when attributeProperty, entityMapProperty :
       when singleReferenceProperty, multipleReferenceProperty :

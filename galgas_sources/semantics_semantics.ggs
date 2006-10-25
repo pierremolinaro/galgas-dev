@@ -764,8 +764,8 @@ routine buildMapWithLocalConstants
 :
   @bool mapStyle := inLocalConstantStyle != [@localConstantBuildStyleEnum listStyle] ;
   @bool firstOne := true ;
-  foreach inLocalDeclarationsList (??@lstring typeNameInDeclaration ??@lstring cstName),
-          inSemanticAttributsList (??@AC_galgasType type ??@lstring attributeName) :
+  foreach inLocalDeclarationsList (@lstring typeNameInDeclaration @lstring cstName),
+          inSemanticAttributsList (@AC_galgasType type @lstring attributeName) :
     if [cstName string] != "" then
       @string typeName ;
       [type getTypeName ? typeName] ;
@@ -813,8 +813,8 @@ routine verifierCompatibiliteTypes
   elsif [t1 length] > [t2 length] then
     error inErrorLocation : "too much identifiers" ;
   else
-    foreach t1 (??@AC_galgasType attTypeEffectif ??@lstring attNomVariableEffectif),
-            t2 (??@AC_galgasType attTypeAttributFormel ??@lstring attNomAttributFormel) :
+    foreach t1 (@AC_galgasType attTypeEffectif @lstring attNomVariableEffectif),
+            t2 (@AC_galgasType attTypeAttributFormel @lstring attNomAttributFormel) :
       checkAssignmentTypesCompatibility
         !attTypeEffectif
         !attTypeAttributFormel
@@ -844,8 +844,8 @@ routine verifierCompatibiliteArgEffectifsSignature
     error inErrorLocation : "too much arguments" ;
   else
   #--- Check signatures
-    foreach signatureReference (??@AC_galgasType attSignatureType ??@formalArgumentPassingMode formalArgPassingMode),
-            inEffectiveArgumentsSignature (??@AC_galgasType attEffectiveType ??@actualParametersPassingMode parameterPassingMode) :
+    foreach signatureReference (@AC_galgasType attSignatureType @formalArgumentPassingMode formalArgPassingMode),
+            inEffectiveArgumentsSignature (@AC_galgasType attEffectiveType @actualParametersPassingMode parameterPassingMode) :
       match formalArgPassingMode::parameterPassingMode :
       when argumentConstantIn :: parameterOut :
         checkAssignmentTypesCompatibility !attSignatureType !attEffectiveType !inErrorLocation !true ;
@@ -867,10 +867,10 @@ routine verifierCompatibiliteArgEffectifsSignature
   #--- Build expression list
     @typeExpressionList expressionList := ioExpressionList ;
     ioExpressionList := [@typeExpressionList emptyList] ;
-    foreach signatureReference (??@AC_galgasType attSignatureType ??*),
-            expressionList (??@typeExpression attExpressionType) :
+    foreach signatureReference (@AC_galgasType attSignatureType *),
+            expressionList (@typeExpression attExpressionType) :
       extract attExpressionType :
-      when @typeJokerInExpression (??@location kLocation) ->
+      when @typeJokerInExpression (@location kLocation) ->
         @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !kLocation] ;
         @typeExpression e := [@typeVarInExpression new ! cppVarName] ;
         ioExpressionList += !e ;
@@ -1444,11 +1444,11 @@ routine displayConstraintDefinitionErrors
   ?@stringset inCurrentBranchconstraintDefinitionSet
 :
   @stringset missingDefinition := inFirstBranchconstraintDefinitionSet - inCurrentBranchconstraintDefinitionSet ;
-  foreach missingDefinition (??@string kMissingDef) :
+  foreach missingDefinition (@string kMissingDef) :
    error here: "the '" . kMissingDef . "' property is initialized by first branch, but not by this one" ;
   end foreach ;
   @stringset unexpectedDefinition := inCurrentBranchconstraintDefinitionSet  - inFirstBranchconstraintDefinitionSet ;
-  foreach unexpectedDefinition (??@string kUnexpectedDef) :
+  foreach unexpectedDefinition (@string kUnexpectedDef) :
    error here: "the '" . kUnexpectedDef . "' property is not initialized by first branch, but by this one" ;
   end foreach ;
 end routine ;
@@ -1460,7 +1460,7 @@ routine displayConstraintDefinitionErrorsNoElse
   ?@stringset inInheritedConstraintDefinitionSet
 :
   @stringset missingDefinition := inFirstBranchConstraintDefinitionSet - inInheritedConstraintDefinitionSet ;
-  foreach missingDefinition (??@string kMissingDef) :
+  foreach missingDefinition (@string kMissingDef) :
    error here: "the '" . kMissingDef . "' property is initialized by first branch, but there is no else branch" ;
   end foreach ;
 end routine ;

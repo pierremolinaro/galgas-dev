@@ -222,7 +222,7 @@ routine matchConcatOperator
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_string () :: @typeGalgas_string () :
     outResultType := inLeftExpressionType ;
-  when @typeGalgasUndefinedListType (??@lstring kListType1) :: @typeGalgasUndefinedListType (??@lstring kListType2) :
+  when @typeGalgasUndefinedListType (@lstring kListType1) :: @typeGalgasUndefinedListType (@lstring kListType2) :
     if [kListType1 string] != [kListType2 string] then
       error here:"concatenation operator error: lists should have the same type (here '@" 
         . [kListType1 string] . "' and '@" . [kListType2 string] . "')" ;
@@ -295,7 +295,7 @@ routine comparison_types_check
   when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
   when @typeGalgas_double ()    :: @typeGalgas_double () :
   when @typeGalgas_string ()    :: @typeGalgas_string () :
-  when @typeGalgas_enum (??@lstring inTypeName1 ??* ??*) :: @typeGalgas_enum (??@lstring inTypeName2 ??* ??*) :
+  when @typeGalgas_enum (@lstring inTypeName1 * *) :: @typeGalgas_enum (@lstring inTypeName2 * *) :
     if [inTypeName1 string] != [inTypeName2 string] then
       error here : "comparison between a '@" . [inTypeName1 string] .
              "' enumeration and a '@" . [inTypeName2 string] . "' is not valid"  ;
@@ -1410,8 +1410,8 @@ rule <output_expression_list>
   elsif [inFormalAttributesList length] > [effectiveTypesList length] then
     error endOfListLocation : "one or more expressions missing" ;
   else
-    foreach inFormalAttributesList (??@AC_galgasType kFormalType ??@lstring kFormalParameterName),
-            effectiveTypesList (??@AC_galgasType kEffectiveType ??@location kErrorLocation) :
+    foreach inFormalAttributesList (@AC_galgasType kFormalType @lstring kFormalParameterName),
+            effectiveTypesList (@AC_galgasType kEffectiveType @location kErrorLocation) :
       checkAssignmentTypesCompatibility !kFormalType !kEffectiveType !kErrorLocation !true ;
     end foreach ;
   end if ;
@@ -1433,9 +1433,17 @@ rule <parse_effective_input_parameters_list>
   outNoUsedParameter := true ;
   $($ ;
   @L_nameWithType argumentsList [emptyList] ;
+  @bool foundDeprecatedSyntax := false ;
   repeat
   while
-    $??$ ;
+    select
+    or
+      if not foundDeprecatedSyntax then
+        foundDeprecatedSyntax := true ;
+        warning here: "deprecated syntax:'??' is no longer needed here" ;
+      end if ;
+      $??$ ;
+    end select ;
     @lstring typeName ;
     @lstring constantName ;
     select

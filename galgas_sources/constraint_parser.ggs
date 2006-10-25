@@ -241,7 +241,7 @@ rule <parse_constraint_document>
   end if ;
 #--- Build representative entity map
   @representativeEntityMap representativeEntityMap [emptyMap] ;
-  foreach metamodelEntityMap (??@lstring kEntityName ??* ??* ??* ??* ??@stringset kSuperEntitySet ??* ??* ??* ??* ??*) :
+  foreach metamodelEntityMap (@lstring kEntityName * * * * @stringset kSuperEntitySet * * * * *) :
     @lstring representativeTypeName ;
     computeRepresentativeEntityName
       !metamodelEntityMap
@@ -256,17 +256,17 @@ rule <parse_constraint_document>
   @entityToImplementMap actualConstrainedEntityMap [emptyMap] ;
   @stringset multiReferencedEntities [emptySet] ;
   foreach constrainedEntityMap (
-    ??@lstring kEntityName
-    ??@entityPropertyMap kAllPropertiesMap
-    ??@bool kIsAbstract
-    ??@entityPropertyMap kEntityPropertiesMap
-    ??@lstring kSuperEntityName
-    ??@stringset kSuperClassSet
-    ??@bool kIsImplicitlyDefined
-    ??@constrainedPropertyList kConstrainedAttributePropertyToImplementList
-    ??@constrainedPropertyList kConstrainedParameterPropertyToImplementList
-    ??@indexMap kAllIndexMap
-    ??@indexMap kCurrentIndexMap
+    @lstring kEntityName
+    @entityPropertyMap kAllPropertiesMap
+    @bool kIsAbstract
+    @entityPropertyMap kEntityPropertiesMap
+    @lstring kSuperEntityName
+    @stringset kSuperClassSet
+    @bool kIsImplicitlyDefined
+    @constrainedPropertyList kConstrainedAttributePropertyToImplementList
+    @constrainedPropertyList kConstrainedParameterPropertyToImplementList
+    @indexMap kAllIndexMap
+    @indexMap kCurrentIndexMap
   ) :
   #--- Check constrained parameters of super entity (should be the same)
     if [kSuperEntityName string] != "" then
@@ -286,8 +286,8 @@ rule <parse_constraint_document>
         ?*
       ] ;
       @bool identical := [kConstrainedParameterPropertyToImplementList length] == [superEntityConstrainedParameterPropertyToImplementList length] ;
-      foreach kConstrainedParameterPropertyToImplementList (??@lstring kPropertyType1 ??@lstring kPropertyName1),
-              superEntityConstrainedParameterPropertyToImplementList (??@lstring kPropertyType2 ??@lstring kPropertyName2)
+      foreach kConstrainedParameterPropertyToImplementList (@lstring kPropertyType1 @lstring kPropertyName1),
+              superEntityConstrainedParameterPropertyToImplementList (@lstring kPropertyType2 @lstring kPropertyName2)
       while identical :
          identical := ([kPropertyType1 string] == [kPropertyType2 string]) & ([kPropertyName1 string] == [kPropertyName2 string]) ;
       end foreach ;
@@ -305,7 +305,7 @@ rule <parse_constraint_document>
     end if ;
   #---
    @entityPropertyMap newAllPropertiesMap [emptyMap] ;
-    foreach kAllPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+    foreach kAllPropertiesMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
       switch kKind 
       when attributeProperty, entityMapProperty :
         [!?newAllPropertiesMap insertKey !kKey !kKind !kTypeName] ;
@@ -324,7 +324,7 @@ rule <parse_constraint_document>
       end switch ;
     end foreach ;
     @entityPropertyMap newPropertiesMap [emptyMap] ;
-    foreach kEntityPropertiesMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+    foreach kEntityPropertiesMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
       switch kKind 
       when attributeProperty, entityMapProperty :
         [!?newPropertiesMap insertKey !kKey !kKind !kTypeName] ;
@@ -358,20 +358,20 @@ rule <parse_constraint_document>
   end foreach ;
 #--- Check call instructions
   foreach actualConstrainedEntityMap (
-    ??@lstring kEntityName
-    ??*
-    ??*
-    ??@entityPropertyMap kEntityPropertiesMap
-    ??*
-    ??*
-    ??*
-    ??*
-    ??@constrainedPropertyList kConstrainedParameterPropertyToImplementList
-    ??*
-    ??*
+    @lstring kEntityName
+    *
+    *
+    @entityPropertyMap kEntityPropertiesMap
+    *
+    *
+    *
+    *
+    @constrainedPropertyList kConstrainedParameterPropertyToImplementList
+    *
+    *
   ) :
   #--- loop throught properties
-    foreach kEntityPropertiesMap (??@lstring kPropertyName ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+    foreach kEntityPropertiesMap (@lstring kPropertyName @metamodelPropertyKind kKind @lstring kTypeName) :
       @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
       if [constraintInstructionListMap hasKey ![kEntityName string]] then
         [constraintInstructionListMap searchKey !kEntityName ?* ?callInstructionSharedPropertySignatureMap] ;
@@ -564,7 +564,7 @@ rule <constraints_on_entity_declaration>
     ${$ ;
 #  #--- Enter attributes metamodels as constants
     @typeVariablesMap variablesMap [emptyMap] ;
-    foreach allPropertyMap (??@lstring kKey ??@metamodelPropertyKind kKind ??@lstring kTypeName) :
+    foreach allPropertyMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
       switch kKind 
       when entityMapProperty:
       when  attributeProperty:
@@ -610,19 +610,19 @@ rule <constraints_on_entity_declaration>
       end switch ;
     end foreach ;
   #--- Enter constraint attribute properties of current constraint
-    foreach constrainedAttributePropertyToImplementList (??@lstring kPropertyTypeName ??@lstring kPropertyName) :
+    foreach constrainedAttributePropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
       @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
       @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kPropertyName string] ![kPropertyTypeName string]] ;
       [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
     end foreach ;
   #--- Enter constraint parameter properties of current constraint
-    foreach constrainedParameterPropertyToImplementList (??@lstring kPropertyTypeName ??@lstring kPropertyName) :
+    foreach constrainedParameterPropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
       @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
       @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kPropertyName string] ![kPropertyTypeName string]] ;
       [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
     end foreach ;
   #--- Enter indexes
-    foreach allIndexes (??@lstring kIndexName ??@lstring kMapTypeName) :
+    foreach allIndexes (@lstring kIndexName @lstring kMapTypeName) :
       @typeCplusPlusName cppName := [@typeDirectName new !kIndexName] ;
       @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapTypeName string]] ;
       if [currentIndexMap hasKey ![kIndexName string]] then
