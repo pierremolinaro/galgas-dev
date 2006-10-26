@@ -348,6 +348,12 @@ generate_header_file (C_Lexique & inLexique,
                  << "\n#include <string.h>\n\n" ;
 
 //--- Include declaration of predefined types
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"Try to compile with an other version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
                     "#include \"galgas/AC_galgas_io.h\"\n"
                     "#include \"galgas/GGS_location.h\"\n"
@@ -361,7 +367,8 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_lsint64.h\"\n"
                     "#include \"galgas/GGS_stringset.h\"\n"
                     "#include \"galgas/AC_galgas_map.h\"\n"
-                    "#include \"galgas/AC_galgas_list.h\"\n" ;
+                    "#include \"galgas/AC_galgas_list.h\"\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Generate lexique inclusion
   const C_String lexiqueName = inLexiqueName ;

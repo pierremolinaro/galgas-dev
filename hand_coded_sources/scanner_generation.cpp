@@ -980,6 +980,12 @@ generate_scanner_header_file (C_Lexique & inLexique,
   generatedZone2 << "#ifndef " << inLexiqueName << "_0_DEFINED\n"
                     "#define " << inLexiqueName << "_0_DEFINED\n"
                     "#include \"galgas/C_Lexique.h\"\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"Try to compile with an other version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
 
 // --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;

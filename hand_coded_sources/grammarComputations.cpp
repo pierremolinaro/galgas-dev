@@ -2,7 +2,7 @@
 //                                                                           *
 //  This file handles all computations performed on grammars                 *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ...2006 Pierre Molinaro.                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -170,6 +170,12 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
   C_String generatedZone2 ;
   generatedZone2 << "#ifndef GRAMMAR_" << inTargetFileName << "_DEFINED\n"
                  << "#define GRAMMAR_" << inTargetFileName << "_DEFINED\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"Try to compile with an other version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Engendrer les inclusions --------------------------------------------------------------
   generatedZone2.writeCppHyphenLineComment () ;
