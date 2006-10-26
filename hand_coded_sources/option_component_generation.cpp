@@ -46,7 +46,7 @@ generate_option_header_file (C_Lexique & inLexique,
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-                    "  #error \"Try to compile with an other version of libpm\"\n"
+                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 
