@@ -241,7 +241,7 @@ rule <parse_constraint_document>
   end if ;
 #--- Build representative entity map
   @representativeEntityMap representativeEntityMap [emptyMap] ;
-  foreach metamodelEntityMap (@lstring kEntityName * * * * @stringset kSuperEntitySet * * * * *) :
+  foreach metamodelEntityMap (@lstring kEntityName * * * * * @stringset kSuperEntitySet ...) :
     @lstring representativeTypeName ;
     computeRepresentativeEntityName
       !metamodelEntityMap
@@ -252,64 +252,72 @@ rule <parse_constraint_document>
     [!?representativeEntityMap insertKey !kEntityName !representativeTypeName !kSuperEntitySet] ;
   end foreach ;
 #--- Redefine the super classes not redefined by user
-#--- Build actual constraint entity map
-  @entityToImplementMap actualConstrainedEntityMap [emptyMap] ;
+##--- Build actual constraint entity map
+#  @entityToImplementMap actualConstrainedEntityMap [emptyMap] ;
   @stringset multiReferencedEntities [emptySet] ;
   foreach constrainedEntityMap (
     @lstring kEntityName
-    @entityPropertyMap kAllPropertiesMap
+    @entityPropertyMap kAllMetamodelPropertyMap
     @bool kIsAbstract
-    @entityPropertyMap kEntityPropertiesMap
+    @entityPropertyMap kCurrentMetamodelPropertyMap
     @lstring kSuperEntityName
+    @entityPropertyMap kCurrentContraintsPropertyMap
     @stringset kSuperClassSet
+    @entityPropertyMap kAllContraintsPropertyMap
     @bool kIsImplicitlyDefined
-    @constrainedPropertyList kConstrainedAttributePropertyToImplementList
-    @constrainedPropertyList kConstrainedParameterPropertyToImplementList
-    @indexMap kAllIndexMap
-    @indexMap kCurrentIndexMap
+    @entityPropertyMap kAllAvailablePropertyMap
   ) :
-  #--- Check constrained parameters of super entity (should be the same)
-    if [kSuperEntityName string] != "" then
-      @bool superEntityIsImplicitlyDefined ;
-      @constrainedPropertyList superEntityConstrainedParameterPropertyToImplementList ;
-      [constrainedEntityMap searchKey
-        !kSuperEntityName
-        ?*
-        ?*
-        ?*
-        ?*
-        ?*
-        ?superEntityIsImplicitlyDefined
-        ?*
-        ?superEntityConstrainedParameterPropertyToImplementList
-        ?*
-        ?*
-      ] ;
-      @bool identical := [kConstrainedParameterPropertyToImplementList length] == [superEntityConstrainedParameterPropertyToImplementList length] ;
-      foreach kConstrainedParameterPropertyToImplementList (@lstring kPropertyType1 @lstring kPropertyName1),
-              superEntityConstrainedParameterPropertyToImplementList (@lstring kPropertyType2 @lstring kPropertyName2)
-      while identical :
-         identical := ([kPropertyType1 string] == [kPropertyType2 string]) & ([kPropertyName1 string] == [kPropertyName2 string]) ;
-      end foreach ;
-      if not identical then
-        @string m := "parameter error: the '@" . [kEntityName string] . "' entity" ;
-        if kIsImplicitlyDefined then
-          m := m . " (implicitly defined)" ;
-        end if ;
-        m := m . " should have the same parameters as '@" . [kSuperEntityName string] . "' entity" ;
-        if superEntityIsImplicitlyDefined then
-          m := m . " (implicitly defined)" ;
-        end if ;
-        error here: m ;
-      end if ;
-    end if ;
-  #---
-   @entityPropertyMap newAllPropertiesMap [emptyMap] ;
-    foreach kAllPropertiesMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
-      switch kKind 
-      when attributeProperty, entityMapProperty :
-        [!?newAllPropertiesMap insertKey !kKey !kKind !kTypeName] ;
-      when singleReferenceProperty, multipleReferenceProperty :
+#  #--- Check constrained parameters of super entity (should be the same)
+#    if [kSuperEntityName string] != "" then
+#      @bool superEntityIsImplicitlyDefined ;
+#      @constrainedPropertyList superEntityConstrainedParameterPropertyToImplementList ;
+#      [constrainedEntityMap searchKey
+#        !kSuperEntityName
+#        ?*
+#        ?*
+#        ?*
+#        ?*
+#        ?*
+#        ?superEntityIsImplicitlyDefined
+#        ?*
+#        ?superEntityConstrainedParameterPropertyToImplementList
+#        ?*
+#        ?*
+#      ] ;
+#      @bool identical := [kConstrainedParameterPropertyToImplementList length] == [superEntityConstrainedParameterPropertyToImplementList length] ;
+#      foreach kConstrainedParameterPropertyToImplementList (@lstring kPropertyType1 @lstring kPropertyName1),
+#              superEntityConstrainedParameterPropertyToImplementList (@lstring kPropertyType2 @lstring kPropertyName2)
+#      while identical :
+#         identical := ([kPropertyType1 string] == [kPropertyType2 string]) & ([kPropertyName1 string] == [kPropertyName2 string]) ;
+#      end foreach ;
+#      if not identical then
+#        @string m := "parameter error: the '@" . [kEntityName string] . "' entity" ;
+#        if kIsImplicitlyDefined then
+#          m := m . " (implicitly defined)" ;
+#        end if ;
+#        m := m . " should have the same parameters as '@" . [kSuperEntityName string] . "' entity" ;
+#        if superEntityIsImplicitlyDefined then
+#          m := m . " (implicitly defined)" ;
+#        end if ;
+#        error here: m ;
+#      end if ;
+#    end if ;
+#  #---
+#   @entityPropertyMap newAllPropertiesMap [emptyMap] ;
+    foreach kAllMetamodelPropertyMap (@lstring kKey @metamodelProperty kProperty) :
+      extract kProperty :
+#      when @metamodelSingleReferenceProperty (@lstring kTypeName) :
+#        @lstring representativeTypeName ;
+#        computeRepresentativeEntityName
+#          !metamodelEntityMap
+#          !constrainedEntityMap
+#          !kTypeName
+#          ?representativeTypeName
+#        ;
+#        if [representativeTypeName string] != "" then
+#          multiReferencedEntities += ![representativeTypeName string] ;
+#        end if ;
+      when @metamodelMultipleReferenceProperty (@lstring kTypeName) ->
         @lstring representativeTypeName ;
         computeRepresentativeEntityName
           !metamodelEntityMap
@@ -318,99 +326,100 @@ rule <parse_constraint_document>
           ?representativeTypeName
         ;
         if [representativeTypeName string] != "" then
-          [!?newAllPropertiesMap insertKey !kKey !kKind !representativeTypeName] ;
           multiReferencedEntities += ![representativeTypeName string] ;
         end if ;
-      end switch ;
+      else
+      end extract ;
     end foreach ;
-    @entityPropertyMap newPropertiesMap [emptyMap] ;
-    foreach kEntityPropertiesMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
-      switch kKind 
-      when attributeProperty, entityMapProperty :
-        [!?newPropertiesMap insertKey !kKey !kKind !kTypeName] ;
-      when singleReferenceProperty, multipleReferenceProperty :
-        @lstring representativeTypeName ;
-        computeRepresentativeEntityName
-          !metamodelEntityMap
-          !constrainedEntityMap
-          !kTypeName
-          ?representativeTypeName
-        ;
-        if [representativeTypeName string] != "" then
-          [!?newPropertiesMap insertKey !kKey !kKind !representativeTypeName] ;
-          multiReferencedEntities += ![representativeTypeName string] ;
-        end if ;
-      end switch ;
-    end foreach ;
-    [!?actualConstrainedEntityMap insertKey
-      !kEntityName
-      !newAllPropertiesMap
-      !kIsAbstract
-      !newPropertiesMap
-      !kSuperEntityName
-      !kSuperClassSet
-      !kIsImplicitlyDefined
-      !kConstrainedAttributePropertyToImplementList
-      !kConstrainedParameterPropertyToImplementList
-      !kAllIndexMap
-      !kCurrentIndexMap
-    ] ;
+#    @entityPropertyMap newPropertiesMap [emptyMap] ;
+#    foreach kEntityPropertiesMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
+#      switch kKind 
+#      when attributeProperty, entityMapProperty :
+#        [!?newPropertiesMap insertKey !kKey !kKind !kTypeName] ;
+#      when singleReferenceProperty, multipleReferenceProperty :
+#        @lstring representativeTypeName ;
+#        computeRepresentativeEntityName
+#          !metamodelEntityMap
+#          !constrainedEntityMap
+#          !kTypeName
+#          ?representativeTypeName
+#        ;
+#        if [representativeTypeName string] != "" then
+#          [!?newPropertiesMap insertKey !kKey !kKind !representativeTypeName] ;
+#          multiReferencedEntities += ![representativeTypeName string] ;
+#        end if ;
+#      end switch ;
+#    end foreach ;
+#    [!?actualConstrainedEntityMap insertKey
+#      !kEntityName
+#      !newAllPropertiesMap
+#      !kIsAbstract
+#      !newPropertiesMap
+#      !kSuperEntityName
+#      !kSuperClassSet
+#      !kIsImplicitlyDefined
+#      !kConstrainedAttributePropertyToImplementList
+#      !kConstrainedParameterPropertyToImplementList
+#      !kAllIndexMap
+#      !kCurrentIndexMap
+#    ] ;
   end foreach ;
-#--- Check call instructions
-  foreach actualConstrainedEntityMap (
-    @lstring kEntityName
-    *
-    *
-    @entityPropertyMap kEntityPropertiesMap
-    *
-    *
-    *
-    *
-    @constrainedPropertyList kConstrainedParameterPropertyToImplementList
-    *
-    *
-  ) :
-  #--- loop throught properties
-    foreach kEntityPropertiesMap (@lstring kPropertyName @metamodelPropertyKind kKind @lstring kTypeName) :
-      @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-      if [constraintInstructionListMap hasKey ![kEntityName string]] then
-        [constraintInstructionListMap searchKey !kEntityName ?* ?callInstructionSharedPropertySignatureMap] ;
-      end if ;
-      switch kKind
-      when entityMapProperty :
-      when attributeProperty:
-        if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
-          @location instructionLocation ;
-          [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?* ?instructionLocation] ;
-          error instructionLocation: "an attribute cannot be named here in a call instruction" ;
-        end if ;
-      when singleReferenceProperty, multipleReferenceProperty:
-        if [actualConstrainedEntityMap hasKey ![kTypeName string]] then
-          if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
-#            warning kEntityName:"checking 'call " . [kPropertyName string] . "' instruction..." ;
-#            @L_lstringList effectiveArgumentList ;
-#            @location signatureLocation ;
-#            [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?effectiveArgumentList ?signatureLocation] ;
-#            foreach effectiveArgumentList (??@lstring kInstructionParameterName) :
-#              @metamodelPropertyKind property ;
-#              [newAllPropertiesMap searchKey !kInstructionParameterName ?propertyKind ?*] ;
-#            end foreach ;
-          else
-            error kEntityName:"the instruction list should have a 'call " . [kPropertyName string] . "' instruction" ;
-          end if ;
-        elsif [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
-          error kEntityName:"the instruction list should not have a 'call " . [kPropertyName string] . "' instruction" ;
-        end if ;
-      end switch ;
-    end foreach ;
-  end foreach ;
+##--- Check call instructions
+#  foreach actualConstrainedEntityMap (
+#    @lstring kEntityName
+#    *
+#    *
+#    @entityPropertyMap kEntityPropertiesMap
+#    *
+#    *
+#    *
+#    *
+#    @constrainedPropertyList kConstrainedParameterPropertyToImplementList
+#    *
+#    *
+#  ) :
+#  #--- loop throught properties
+#    foreach kEntityPropertiesMap (@lstring kPropertyName @metamodelPropertyKind kKind @lstring kTypeName) :
+#      @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+#      if [constraintInstructionListMap hasKey ![kEntityName string]] then
+#        [constraintInstructionListMap searchKey !kEntityName ?* ?callInstructionSharedPropertySignatureMap] ;
+#      end if ;
+#      switch kKind
+#      when entityMapProperty :
+#      when attributeProperty:
+#        if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
+#          @location instructionLocation ;
+#          [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?* ?instructionLocation] ;
+#          error instructionLocation: "an attribute cannot be named here in a call instruction" ;
+#        end if ;
+#      when singleReferenceProperty, multipleReferenceProperty:
+#        if [actualConstrainedEntityMap hasKey ![kTypeName string]] then
+#          if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
+##            warning kEntityName:"checking 'call " . [kPropertyName string] . "' instruction..." ;
+##            @L_lstringList effectiveArgumentList ;
+##            @location signatureLocation ;
+##            [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?effectiveArgumentList ?signatureLocation] ;
+##            foreach effectiveArgumentList (??@lstring kInstructionParameterName) :
+##              @metamodelPropertyKind property ;
+##              [newAllPropertiesMap searchKey !kInstructionParameterName ?propertyKind ?*] ;
+##            end foreach ;
+#          else
+#            error kEntityName:"the instruction list should have a 'call " . [kPropertyName string] . "' instruction" ;
+#          end if ;
+#        elsif [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
+#          error kEntityName:"the instruction list should not have a 'call " . [kPropertyName string] . "' instruction" ;
+#        end if ;
+#      end switch ;
+#    end foreach ;
+#  end foreach ;
 #--- Generate C++ code
   action generate_constraints
     !metamodelEntityMap
     !mapEntityMap
     !metamodelName
     !constraintName
-    !actualConstrainedEntityMap
+    !constrainedEntityMap
+#    !actualConstrainedEntityMap
     !multiReferencedEntities
     !rootEntity
     !representativeEntityMap
@@ -463,9 +472,9 @@ end rule ;
 
 rule <constraints_on_entity_declaration>
   ?@entityToImplementMap inEntityMap
-  ?!@mapEntityMap ioMapEntityMap
+  ?!@mapEntityMap unused ioMapEntityMap
   ?!@entityToImplementMap ioConstrainedEntityMap
-  ?!@constraintInstructionListMap ioConstraintInstructionListMap
+  ?!@constraintInstructionListMap unused ioConstraintInstructionListMap
 :
 #--- Entity Name
   $on$ ;
@@ -473,190 +482,190 @@ rule <constraints_on_entity_declaration>
   $type_name$ ? entityName ;
 #--- Get entity properties
   @lstring superEntity ;
-  @bool isAbstract ;
-  @entityPropertyMap allPropertyMap ;
+  @entityPropertyMap allMetamodelPropertyMap ;
   @stringset superClassSet ;
-  @entityPropertyMap propertyMap [emptyMap] ;
+  @entityPropertyMap currentMetamodelPropertyMap ;
+  @entityPropertyMap currentConstraintPropertyMap ;
+  @entityPropertyMap allConstraintPropertyMap ;
+  @entityPropertyMap allAvailablePropertyMap ;
   [inEntityMap searchKey
     !entityName
-    ?allPropertyMap
-    ?isAbstract
-    ?propertyMap
+    ?allMetamodelPropertyMap
+    ?* # Abstract
+    ?currentMetamodelPropertyMap
     ?superEntity
+    ?currentConstraintPropertyMap
     ?superClassSet
-    ?*
-    ?*
-    ?*
-    ?*
-    ?*
+    ?allConstraintPropertyMap
+    ?* # Implicitly defined ?
+    ?allAvailablePropertyMap
    ] ;
 #--- Get inherited properties from super class constraints
-  @constrainedPropertyList constrainedParameterPropertyToImplementList [emptyList] ;
-  @indexMap allIndexes [emptyMap] ;
-  if [superEntity string] != "" then
-    if [ioConstrainedEntityMap hasKey ![superEntity string]] then
-      [ioConstrainedEntityMap searchKey
-        !superEntity
-        ?allPropertyMap
-        ?*
-        ?*
-        ?*
-        ?*
-        ?*
-        ?*
-        ?constrainedParameterPropertyToImplementList
-        ?allIndexes
-        ?*
-      ] ;
-    else
-      error entityName:
+#  @constrainedPropertyList constrainedParameterPropertyToImplementList [emptyList] ;
+#  @indexMap allIndexes [emptyMap] ;
+  if [superEntity string] == "" then
+
+  elsif [ioConstrainedEntityMap hasKey ![superEntity string]] then
+    [ioConstrainedEntityMap searchKey
+      !superEntity
+      ?allMetamodelPropertyMap
+      ?* # Abstract
+      ?currentMetamodelPropertyMap
+      ?* # Super entity
+      ?currentConstraintPropertyMap
+      ?* # Super Class set
+      ?allConstraintPropertyMap
+      ?* # Implicitly defined ?
+      ?allAvailablePropertyMap
+    ] ;
+  else
+    error entityName:
         "constraints for super entity ('@" . [superEntity string] . "') should be previously defined" ;
-    end if ;
   end if ;
-  #--- Properties as parameters
-    select
-    or
-      $($ ;
-      if [superEntity string] != "" then
-        error here: "as the '@" . [entityName string]
-        . "' entity has a super entity, you cannot define any shared property" ;
-      end if ;
-      repeat
-        @lstring typeName ;
-        $type_name$ ? typeName ;
-        [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
-        @lstring propertyName ;
-        $identifier$ ? propertyName ;
-        [!?allPropertyMap insertKey !propertyName ![@metamodelPropertyKind entityMapProperty] !typeName] ;
-        constrainedParameterPropertyToImplementList += !typeName !propertyName ;
-      while
-        $,$ ;
-      end repeat ;
-      $)$ ;
-    end select ;
+#--- Properties as parameters
+#    select
+#    or
+#      $($ ;
+#      if [superEntity string] != "" then
+#        error here: "as the '@" . [entityName string]
+#        . "' entity has a super entity, you cannot define any shared property" ;
+#      end if ;
+#      repeat
+#        @lstring typeName ;
+#        $type_name$ ? typeName ;
+#        [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
+#        @lstring propertyName ;
+#        $identifier$ ? propertyName ;
+#        [!?allPropertyMap insertKey !propertyName ![@metamodelPropertyKind entityMapProperty] !typeName] ;
+#        constrainedParameterPropertyToImplementList += !typeName !propertyName ;
+#      while
+#        $,$ ;
+#      end repeat ;
+#      $)$ ;
+#    end select ;
   #--- Properties as attributes
     @constrainedPropertyList constrainedAttributePropertyToImplementList [emptyList] ;
     @indexMap currentIndexMap [emptyMap] ;
     ${$ ;
-    repeat
-    while
-      @lstring typeName ;
-      $type_name$ ? typeName ;
-      [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
-      @lstring propertyName ;
-      $identifier$ ? propertyName ;
-      constrainedAttributePropertyToImplementList += !typeName !propertyName ;
-      $;$ ;
-    while
-      $mapindex$ ;
-      @lstring mapIndexName ;
-      $identifier$ ? mapIndexName ;
-#      [!?constraintAllPropertiesMap insertKey ! mapIndexName] ;
-      $on$ ;
-      @lstring mapAttributeName ;
-      $identifier$ ? mapAttributeName ;
-#      [allMapsAsConstraintPropertyMap searchKey !mapPropertyName ?* ?* ?* ?* ?*] ;
-      [!?currentIndexMap insertKey !mapIndexName !mapAttributeName] ;
-      [!?allIndexes insertKey !mapIndexName !mapAttributeName] ;
-      $;$ ;
-    end repeat ;
+#    repeat
+#    while
+#      @lstring typeName ;
+#      $type_name$ ? typeName ;
+#      [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
+#      @lstring propertyName ;
+#      $identifier$ ? propertyName ;
+#      constrainedAttributePropertyToImplementList += !typeName !propertyName ;
+#      $;$ ;
+#    while
+#      $mapindex$ ;
+#      @lstring mapIndexName ;
+#      $identifier$ ? mapIndexName ;
+##      [!?constraintAllPropertiesMap insertKey ! mapIndexName] ;
+#      $on$ ;
+#      @lstring mapAttributeName ;
+#      $identifier$ ? mapAttributeName ;
+##      [allMapsAsConstraintPropertyMap searchKey !mapPropertyName ?* ?* ?* ?* ?*] ;
+#      [!?currentIndexMap insertKey !mapIndexName !mapAttributeName] ;
+#      [!?allIndexes insertKey !mapIndexName !mapAttributeName] ;
+#      $;$ ;
+#    end repeat ;
     $}$ ;
     ${$ ;
 #  #--- Enter attributes metamodels as constants
-    @typeVariablesMap variablesMap [emptyMap] ;
-    foreach allPropertyMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
-      switch kKind 
-      when entityMapProperty:
-      when  attributeProperty:
-        # message "attribute '" . [kKey value] . "' has type '@" . [kTypeName value] . "'\n" ;
-        @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey string] ![kKey location]]] ;
-        if [kTypeName string] == "lstring" then
-          @AC_galgasType t := [@typeGalgas_lstring new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "string" then
-          @AC_galgasType t := [@typeGalgas_string new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "lchar" then
-          @AC_galgasType t := [@typeGalgas_lchar new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "char" then
-          @AC_galgasType t := [@typeGalgas_char new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "luint" then
-          @AC_galgasType t := [@typeGalgas_luint new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "uint" then
-          @AC_galgasType t := [@typeGalgas_uint new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "lsint" then
-          @AC_galgasType t := [@typeGalgas_lsint new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "sint" then
-          @AC_galgasType t := [@typeGalgas_sint new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "lbool" then
-          @AC_galgasType t := [@typeGalgas_lbool new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "bool" then
-          @AC_galgasType t := [@typeGalgas_bool new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kTypeName string] == "location" then
-          @AC_galgasType t := [@typeGalgas_location new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        else
-          error here : "internal error (@" . [kTypeName string] . " type not handled" ;
-        end if ;
-      when singleReferenceProperty, multipleReferenceProperty:
-      end switch ;
-    end foreach ;
-  #--- Enter constraint attribute properties of current constraint
-    foreach constrainedAttributePropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
-      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
-      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kPropertyName string] ![kPropertyTypeName string]] ;
-      [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
-    end foreach ;
-  #--- Enter constraint parameter properties of current constraint
-    foreach constrainedParameterPropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
-      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
-      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kPropertyName string] ![kPropertyTypeName string]] ;
-      [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
-    end foreach ;
-  #--- Enter indexes
-    foreach allIndexes (@lstring kIndexName @lstring kMapTypeName) :
-      @typeCplusPlusName cppName := [@typeDirectName new !kIndexName] ;
-      @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapTypeName string]] ;
-      if [currentIndexMap hasKey ![kIndexName string]] then
-        [!?variablesMap insertOutProperty !kIndexName !t !cppName] ;
-      else
-        [!?variablesMap insertUsedConstInArgument !kIndexName !t !cppName] ;
-      end if ;
-    end foreach ;
-#--- Add "self" variable
-  @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
-  @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string]] ;
-  [!?variablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !t !cppName] ;
-#--- Instructions
-  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
-  @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
-  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
-  @typeInstructionList instructionsList [emptyList] ;
-  @stringset constraintPropertyDefinitionSet [emptySet] ;
-  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-  <semantic_instructions_list>
-    !?componentSemanticsEntitiesMap
-    !?listeEntitesAengendrer
-    !?optionsComponentsMapForUse
-    !?variablesMap
-    !?instructionsList
-    !?propertyMap
-    !?constraintPropertyDefinitionSet
-    !?callInstructionSharedPropertySignatureMap
-  ;
-  [!?ioConstraintInstructionListMap insertKey
-    !entityName
-    !instructionsList
-    !callInstructionSharedPropertySignatureMap
-  ] ;
+#    @typeVariablesMap variablesMap [emptyMap] ;
+#    foreach allPropertyMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
+#      switch kKind 
+#      when entityMapProperty:
+#      when  attributeProperty:
+#        # message "attribute '" . [kKey value] . "' has type '@" . [kTypeName value] . "'\n" ;
+#        @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey string] ![kKey location]]] ;
+#        if [kTypeName string] == "lstring" then
+#          @AC_galgasType t := [@typeGalgas_lstring new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "string" then
+#          @AC_galgasType t := [@typeGalgas_string new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "lchar" then
+#          @AC_galgasType t := [@typeGalgas_lchar new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "char" then
+#          @AC_galgasType t := [@typeGalgas_char new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "luint" then
+#          @AC_galgasType t := [@typeGalgas_luint new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "uint" then
+#          @AC_galgasType t := [@typeGalgas_uint new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "lsint" then
+#          @AC_galgasType t := [@typeGalgas_lsint new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "sint" then
+#          @AC_galgasType t := [@typeGalgas_sint new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "lbool" then
+#          @AC_galgasType t := [@typeGalgas_lbool new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "bool" then
+#          @AC_galgasType t := [@typeGalgas_bool new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        elsif [kTypeName string] == "location" then
+#          @AC_galgasType t := [@typeGalgas_location new] ;
+#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+#        else
+#          error here : "internal error (@" . [kTypeName string] . " type not handled" ;
+#        end if ;
+#      when singleReferenceProperty, multipleReferenceProperty:
+#      end switch ;
+#    end foreach ;
+#  #--- Enter constraint attribute properties of current constraint
+#    foreach constrainedAttributePropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
+#      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
+#      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kPropertyName string] ![kPropertyTypeName string]] ;
+#      [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
+#    end foreach ;
+#  #--- Enter constraint parameter properties of current constraint
+#    foreach constrainedParameterPropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
+#      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
+#      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kPropertyName string] ![kPropertyTypeName string]] ;
+#      [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
+#    end foreach ;
+#  #--- Enter indexes
+#    foreach allIndexes (@lstring kIndexName @lstring kMapTypeName) :
+#      @typeCplusPlusName cppName := [@typeDirectName new !kIndexName] ;
+#      @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapTypeName string]] ;
+#      if [currentIndexMap hasKey ![kIndexName string]] then
+#        [!?variablesMap insertOutProperty !kIndexName !t !cppName] ;
+#      else
+#        [!?variablesMap insertUsedConstInArgument !kIndexName !t !cppName] ;
+#      end if ;
+#    end foreach ;
+##--- Add "self" variable
+#  @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
+#  @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string]] ;
+#  [!?variablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !t !cppName] ;
+##--- Instructions
+#  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
+#  @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
+#  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+#  @typeInstructionList instructionsList [emptyList] ;
+#  @stringset constraintPropertyDefinitionSet [emptySet] ;
+#  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+#  <semantic_instructions_list>
+#    !?componentSemanticsEntitiesMap
+#    !?listeEntitesAengendrer
+#    !?optionsComponentsMapForUse
+#    !?variablesMap
+#    !?instructionsList
+#    !?propertyMap
+#    !?constraintPropertyDefinitionSet
+#    !?callInstructionSharedPropertySignatureMap
+#  ;
+#  [!?ioConstraintInstructionListMap insertKey
+#    !entityName
+#    !instructionsList
+#    !callInstructionSharedPropertySignatureMap
+#  ] ;
   $}$ ;
 #    [!?constrainedEntityPassMap insertKey
 #      !passName
@@ -685,16 +694,15 @@ rule <constraints_on_entity_declaration>
 #--- Enter in constraint entity map
   [!?ioConstrainedEntityMap insertKey
     !entityName
-    !allPropertyMap
-    !isAbstract
-    !propertyMap
+    !allMetamodelPropertyMap
+    !false # Is not abstract
+    !currentMetamodelPropertyMap
     !superEntity
+    !currentConstraintPropertyMap
     !superClassSet
+    !allConstraintPropertyMap
     !false # Is not implicitly defined
-    !constrainedAttributePropertyToImplementList
-    !constrainedParameterPropertyToImplementList
-    !allIndexes
-    !currentIndexMap
+    !allAvailablePropertyMap
   ] ;
 end rule ;
 

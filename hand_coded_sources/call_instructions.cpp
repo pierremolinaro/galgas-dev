@@ -407,37 +407,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    GGS_L_lstringList::element_type * currentParameter = mParameterList.firstObject () ;
-    switch (mPropertyKind.enumValue ()) {
-    case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-      ioCppFile << "macroValidPointer (" << mCalledPropertyName << ") ;\n"
-                << mCalledPropertyName << "->_performTreeWalking (_inLexique" ;
-      while (currentParameter != NULL) {
-        macroValidPointer (currentParameter) ;
-        ioCppFile  << ", " << currentParameter->mString ;
-        currentParameter = currentParameter->nextObject () ;
-      }
-      ioCppFile << ") ;\n" ;
-      break ;
-    case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-      ioCppFile << "{ GGS__" << inTargetFileName << "_ConstraintOn_" << mPropertyTypeName
-                << " * _ptr = " << mCalledPropertyName << ".mFirstObject ;\n"
-                << "  while (_ptr != NULL) {\n"
-                   "    macroValidPointer (_ptr) ;\n"
-                   "    _ptr->_performTreeWalking (_inLexique" ;
-      while (currentParameter != NULL) {
-        macroValidPointer (currentParameter) ;
-        ioCppFile  << ", "<< currentParameter->mString ;
-        currentParameter = currentParameter->nextObject () ;
-      }
-      ioCppFile << ") ;\n"
-                   "    _ptr = _ptr->_mNextObject ;\n"
-                   "  }\n"
-                   "}\n" ;
-      break ;
-    default:
-      break ;
-    }
+    mProperty (HERE)->generateCallInstruction (ioCppFile, mCalledPropertyName, inTargetFileName, mParameterList) ;
   }
 }
 

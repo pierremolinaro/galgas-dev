@@ -505,10 +505,42 @@ abstract class @AC_galgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-enum @metamodelPropertyKind {
-  attributeProperty, singleReferenceProperty, multipleReferenceProperty,
-  entityMapProperty
-}{
+abstract class @metamodelProperty {
+#--- Error message
+  message messageProperty "any property" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelAttributeProperty extends @metamodelProperty {
+  @lstring mAttributeTypeName ;
+#  @AC_galgasType mAttributeType ;
+#--- Error message
+  message messageProperty "an attribute property" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelSingleReferenceProperty extends @metamodelProperty {
+  @lstring mReferenceEntityName ;
+#--- Error message
+  message messageProperty "a single reference property" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelMultipleReferenceProperty extends @metamodelProperty {
+  @lstring mReferenceEntityName ;
+#--- Error message
+  message messageProperty "a multiple reference property" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @metamodelMapProperty extends @metamodelProperty {
+  @lstring mMapTypeName ;
+#--- Error message
+  message messageProperty "a map property" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -527,8 +559,7 @@ list @L_ListOfPropertyPathes {
 #---------------------------------------------------------------------------*
 
 map @entityPropertyMap {
-  @metamodelPropertyKind mKind ;
-  @lstring mTypeName ;
+  @metamodelProperty mProperty ;
   insert insertKey error message "the '%K' property has been already declared in %L" ;
   search searchKey error message "the '%K' property is not declared" ;
 }
@@ -681,25 +712,31 @@ map @indexMap {
 
 map @entityToImplementMap {
 #--- All properties, those defined in super entities and defined in current entity 
-  @entityPropertyMap mAllPropertiesMap ;
+  @entityPropertyMap mAllMetamodelPropertyMap ;
 #--- Entity is abstract ?
   @bool mIsAbstract ;
 #--- Only properties defined in current entity
-  @entityPropertyMap mEntityPropertiesMap ;
+  @entityPropertyMap mCurrentMetamodelPropertyMap ;
 #--- 
   @lstring mSuperEntityName ;
+#--- Only constraints defined in current constraint
+  @entityPropertyMap mCurrentConstraintPropertyMap ;
 #---
-  @stringset mSuperClassSet ;
+  @stringset mSuperEntitySet ;
+#--- Constraints defined in current constraint and super constraints
+  @entityPropertyMap mAllConstraintPropertyMap ;
 #--- Defined implicitly (by constraint) ?
   @bool mIsImplicitlyDefined ;
-#--- Only properties defined as attribute in current constraint
-  @constrainedPropertyList mConstrainedAttributePropertyToImplementList ;
-#--- Only properties defined as parameter in current constraint
-  @constrainedPropertyList mConstrainedParameterPropertyToImplementList ;
-#--- All map indexes
-  @indexMap mAllIndexes ;
-#--- Only indexes defined in current constraint
-  @indexMap mCurrentIndexes ;
+#--- All Available properties
+  @entityPropertyMap mAllAvailablePropertyMap ;
+##--- Only properties defined as attribute in current constraint
+#  @constrainedPropertyList mConstrainedAttributePropertyToImplementList ;
+##--- Only properties defined as parameter in current constraint
+#  @constrainedPropertyList mConstrainedParameterPropertyToImplementList ;
+##--- All map indexes
+#  @indexMap mAllIndexes ;
+##--- Only indexes defined in current constraint
+#  @indexMap mCurrentIndexes ;
 #--- Access methods
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
@@ -987,7 +1024,9 @@ class @typeGalgas_uint extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName string] == "max" then
+    if ([inClassMethodName string] == "max") |
+       ([inClassMethodName string] == "errorCount") |  
+       ([inClassMethodName string] == "warningCount") then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -3116,7 +3155,7 @@ routine computeRepresentativeEntityName
       outRepresentativeEntityName := searchedEntity ;
     else
       @lstring superEntity ;
-      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?* ?* ?* ?* ?* ?*] ;
+      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?* ?* ?* ?* ?*] ;
       searchedEntity := superEntity ;
     end if ;
   end loop ;

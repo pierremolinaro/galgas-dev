@@ -1323,8 +1323,8 @@ rule <factor>
         outExpression := [@typeUIntOption new ![optionComponentName string] !optionName] ;
         outResultType := [@typeGalgas_uint new] ;
       elsif [stringOptionsMap hasKey ![optionName string]] then
-       outExpression := [@typeStringOption new ![optionComponentName string] !optionName] ;
-        outResultType := [@typeGalgas_uint new] ;
+        outExpression := [@typeStringOption new ![optionComponentName string] !optionName] ;
+        outResultType := [@typeGalgas_string new] ;
       else
         error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
           -> outExpression, outResultType ;

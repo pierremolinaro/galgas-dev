@@ -146,28 +146,27 @@ rule <parse_metamodel>
     !?mapAndEntityUniqueMap
   ;
   @bool isAbstract ;
-  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?* ?* ?*] ;
+  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
 #--- Build semantic entities map
   @M_semanticsEntitiesForUse semanticsEntityMap [emptyMap] ;
   foreach entityMap (@lstring kEntityName
-                     @entityPropertyMap kAllPropertiesMap
+                     @entityPropertyMap kAllMetamodelPropertyMap
                      @bool kIsAbstract
-                     @entityPropertyMap kEntityPropertiesMap
+                     @entityPropertyMap kCurrentMetamodelPropertyMap
                      @lstring kSuperEntityName
+                     *
                      @stringset kSuperEntitySet
-                     *
-                     *
                      *
                      *
                      *) :
      @AC_galgasType t := [@typeGalgas_singleEntity new
       !kEntityName
-      !kAllPropertiesMap
+      !kAllMetamodelPropertyMap
       !kIsAbstract
-      !kEntityPropertiesMap
+      !kCurrentMetamodelPropertyMap
       !kSuperEntityName
       !kSuperEntitySet
     ] ;
@@ -188,17 +187,15 @@ rule <parse_metamodel>
                      *
                      *
                      *
-                     *
                      *) :
     foreach kEntityPropertiesMap (@lstring kAttributeName
-                                  @metamodelPropertyKind kKind
-                                  @lstring kTypeName) :
-      switch kKind 
-      when attributeProperty, entityMapProperty :
-      when singleReferenceProperty, multipleReferenceProperty :
-        [entityMap searchKey !kTypeName ?* ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
-        multiReferencedEntities += ![kTypeName string] ;
-      end switch ;
+                                  @metamodelProperty kProperty) :
+      extract kProperty :
+      when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName) ->
+        [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+        multiReferencedEntities += ![kReferenceEntityName string] ;
+      else
+      end extract ;
     end foreach ;
   end foreach ;
 #--- Generate C++ code
@@ -261,25 +258,24 @@ rule <entity_declaration>
   $type_name$ ? entityName ;
   [!?ioMapAndEntityUniqueMap insertKey !entityName] ;
 #--- Context properties, or super entity (or nothing)
-  @entityPropertyMap allPropertyMap ;
+  @entityPropertyMap allMetamodelPropertyMap ;
   @lstring superEntity ;
   @stringset superEntitySet ;
   select
     superEntity := [@lstring new !"" !here] ;
-    allPropertyMap := [@entityPropertyMap emptyMap] ;
+    allMetamodelPropertyMap := [@entityPropertyMap emptyMap] ;
     superEntitySet := [@stringset emptySet] ;
   or
     $extends$ ;
     $type_name$ ? superEntity ;
     [ioEntityMap searchKey
       !superEntity
+      ?allMetamodelPropertyMap
       ?*
       ?*
-      ?allPropertyMap
+      ?*
       ?*
       ?superEntitySet
-      ?*
-      ?*
       ?*
       ?*
       ?*
@@ -287,13 +283,13 @@ rule <entity_declaration>
     superEntitySet += ![superEntity string] ;
   end select ;
 #--- Property declarations
-  @entityPropertyMap entityPropertyMap [emptyMap] ;
+  @entityPropertyMap currentEntityPropertyMap [emptyMap] ;
   ${$ ;
   repeat
   while
     @lstring propertyTypeName ;
     $type_name$ ? propertyTypeName ;
-    @metamodelPropertyKind k ;
+    @metamodelProperty k ;
     @lstring attributeName ;
     select
     #--- Multiple reference
@@ -304,35 +300,34 @@ rule <entity_declaration>
         . "' is not an entity name, but a predefined type name" ;
       end if ;
       $identifier$ ? attributeName ;
-      k := [@metamodelPropertyKind multipleReferenceProperty] ;
+      k := [@metamodelMultipleReferenceProperty new !propertyTypeName] ;
     or
       $identifier$ ? attributeName ;
     #--- Single reference or attribute ?
       if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName string]] then
       #--- Attribute
-        k := [@metamodelPropertyKind attributeProperty] ;
+        k := [@metamodelAttributeProperty new !propertyTypeName] ;
       else 
       #--- Single Reference
-        k := [@metamodelPropertyKind singleReferenceProperty] ;
+        k := [@metamodelSingleReferenceProperty new !propertyTypeName] ;
       end if ;
     end select ;
-    [!?entityPropertyMap insertKey !attributeName !k !propertyTypeName] ; 
-    [!?allPropertyMap insertKey !attributeName !k !propertyTypeName] ; 
+    [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
+    [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
     $;$ ;
   end repeat ;
   $}$ ;
   [!?ioEntityMap insertKey
     !entityName
-    !allPropertyMap
+    !allMetamodelPropertyMap
     !isAbstract
-    !entityPropertyMap
+    !currentEntityPropertyMap
     !superEntity
+    ![@entityPropertyMap emptyMap] # Current constraints
     !superEntitySet
+    ![@entityPropertyMap emptyMap] # Current and super constraints
     !false # is not defined implicitly
-    ![@constrainedPropertyList emptyList]
-    ![@constrainedPropertyList emptyList]
-    ![@indexMap emptyMap]
-    ![@indexMap emptyMap]
+    !allMetamodelPropertyMap
    ] ;
 end rule ;
 
