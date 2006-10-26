@@ -269,34 +269,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       bool first = true ;
       while (currentProperty != NULL) {
         macroValidPointer (currentProperty) ;
-        switch (currentProperty->mInfo.mKind.enumValue ()) {
-        case GGS_metamodelPropertyKind::enum_attributeProperty:
+        if (currentProperty->mInfo.mProperty (HERE)->isMetamodelDefined ()) {
           if (first) {
             first = false ;
           }else{
             inCppFile << ", " ;
           }
           inCppFile << "var_cas_" << currentProperty->mKey ;
-          break ;
-        case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-          if (first) {
-            first = false ;
-          }else{
-            inCppFile << ", " ;
-          }
-          inCppFile << "var_cas_" << currentProperty->mKey ;
-          break ;
-        case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-          if (first) {
-            first = false ;
-          }else{
-            inCppFile << ", " ;
-          }
-          inCppFile << "var_cas_" << currentProperty->mKey ;
-          break ;
-        case GGS_metamodelPropertyKind::enum_entityMapProperty:
-        case GGS_metamodelPropertyKind::kNotBuilt:
-          break ;
         }
         currentProperty = currentProperty->nextObject () ;
       }

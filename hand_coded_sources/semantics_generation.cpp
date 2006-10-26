@@ -1603,7 +1603,7 @@ routine_generateSemanticsComponent (C_Lexique & inLexique,
                                     GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                     GGS_stringset & tableFichiersEnTetePourFichierCPP
                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (inLexique.galgas_IO_Ptr ()->currentFileErrorsCount () == 0) {
+  if (inLexique.galgas_IO_Ptr ()->currentFileErrorCount () == 0) {
     generate_header_file (inLexique,
                           nomComposant,
                           includesForHeaderFile,

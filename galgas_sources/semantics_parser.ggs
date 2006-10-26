@@ -2701,20 +2701,24 @@ rule <semantic_instruction>
 #--- Called property
   @lstring calledPropertyName ;
   $identifier$ ?calledPropertyName ;
-  @metamodelPropertyKind kind ;
-  @lstring typeName ;
-  [ioPropertyMap searchKey !calledPropertyName ?kind ?typeName] ;
-  switch kind
-  when attributeProperty, entityMapProperty:
-    error calledPropertyName:"only a reference can used used here" ;
-  when singleReferenceProperty, multipleReferenceProperty:
-    # Ok
-  end switch ;
-  if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName string]] then
-    error calledPropertyName: "this property has been already initialized" ;
+  @metamodelProperty property ;
+  [ioPropertyMap searchKey !calledPropertyName ?property] ;
+  extract property :
+  when @metamodelSingleReferenceProperty (*) -> #@lstring kEntityName) ->
+    if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName string]] then
+      error calledPropertyName: "this property has been already initialized" ;
+    else
+      ioConstraintPropertyDefinitionSet += ![calledPropertyName string] ;
+    end if ;
+  when @metamodelMultipleReferenceProperty (*) -> #@lstring kEntityName) ->
+    if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName string]] then
+      error calledPropertyName: "this property has been already initialized" ;
+    else
+      ioConstraintPropertyDefinitionSet += ![calledPropertyName string] ;
+    end if ;
   else
-    ioConstraintPropertyDefinitionSet += ![calledPropertyName string] ;
-  end if ;
+    error calledPropertyName: "this property should be a single or a multiple reference" ;
+  end extract ;
 #--- Effective parameters
   @L_lstringList parameterList [emptyList] ;
   select
@@ -2753,8 +2757,7 @@ rule <semantic_instruction>
 #--- Generate instruction
   @typeInstruction instruction := [@callInstruction new
     !calledPropertyName
-    !kind
-    !typeName
+    !property
     !parameterList
   ] ;
   ioInstructionList += !instruction ;

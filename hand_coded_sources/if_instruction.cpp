@@ -1165,7 +1165,7 @@ void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << "))" ;
+  ioCppFile << ", true))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1183,13 +1183,20 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 }
 
 //---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
 
 void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile << "GGS_string (true, _inLexique.stringOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << "))" ;
+  ioCppFile << ", true))" ;
 }
 
 //---------------------------------------------------------------------------*

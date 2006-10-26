@@ -1209,7 +1209,7 @@ routine_generate_scanner (C_Lexique & inLexique,
                           const GGS_M_styles & inStylesMap,
                           const GGS_stringset & inUsedErrorMessageSet
                           COMMA_LOCATION_ARGS) {
-  if (inLexique.currentFileErrorsCount() == 0) {
+  if (inLexique.currentFileErrorCount() == 0) {
   //--- Get version string
     const C_String GALGASversionString = inLexique.galgas_IO_Ptr ()->getCompilerVersion () ;
   //--- Create GALGAS_OUTPUT directory

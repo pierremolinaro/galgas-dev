@@ -182,15 +182,13 @@ createContraintsFile (const C_String & inCreatedProjectPathName) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_constraints.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
-  f << "constraint " << projectName << "_constraints (firstPass) :\n"
+  f << "constraint " << projectName << "_constraints:\n"
        "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n"
        "\n"
        "# ADD YOUR CODE HERE\n"
        "\n"
        "on @" << projectName << "_root {\n"
-       "  firstPass {\n"
-       "  }{\n"
-       "  }\n"
+       "}{\n"
        "}\n"
        "\n"
        "# ADD YOUR CODE HERE\n"

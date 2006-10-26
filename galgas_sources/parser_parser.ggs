@@ -959,33 +959,40 @@ rule <rule_declaration_or_implementation>
     @AC_galgasType type ;
     extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
     extract type->@typeGalgas_singleEntity (?* ? allPropertiesMap ...) error inEffectiveReturnedEntity : messageGalgasType ;
-    foreach allPropertiesMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
-      if [ioEntitiesMap hasKey ![kTypeName string]] then
-      #--- Type name
+    foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
+      extract kProperty :
+      when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
         @AC_semanticsEntity entite ;
-        [ioEntitiesMap searchKey !kTypeName ?entite] ;
+        [ioEntitiesMap searchKey !kAttributeTypeName ?entite] ;
         @AC_galgasType definitionType ;
         extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
-      #--- Variable name
         @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        switch kKind
-        when entityMapProperty:
-        when multipleReferenceProperty :
-          definitionType := [@typeGalgas_multipleEntity new ! kTypeName] ;
-           [!?ioVariablesMap insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
-          @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-          listeInstructions += !instruction ;
-        when attributeProperty :
-          [!?ioVariablesMap insertEntityAttributeLocalVariable !nomVariable !definitionType !nomCppVariable] ;
-          @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-          listeInstructions += !instruction ;
-        when singleReferenceProperty :
-          [!?ioVariablesMap insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
-          @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-          listeInstructions += !instruction ;
-        end switch ;
-      end if ;
+        [!?ioVariablesMap insertEntityAttributeLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+        listeInstructions += !instruction ;
+      when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
+        @AC_semanticsEntity entite ;
+        [ioEntitiesMap searchKey !kReferenceEntityName ?entite] ;
+        @AC_galgasType definitionType ;
+        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
+        @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
+        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+        [!?ioVariablesMap insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+        listeInstructions += !instruction ;
+      when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName) ->
+        @AC_semanticsEntity entite ;
+        [ioEntitiesMap searchKey !kReferenceEntityName ?entite] ;
+        @AC_galgasType definitionType ;
+        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
+        @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
+        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+        [!?ioVariablesMap insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+        listeInstructions += !instruction ;
+      else
+      end extract ;
     end foreach ;
   end if ;
 #--- Parse instructions list

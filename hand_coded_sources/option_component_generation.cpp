@@ -442,8 +442,8 @@ generate_option_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeCppTitleComment ("G E T    S T R I N G    O P T I O N    V A L U E   F R O M   K E Y S") ;
   generatedZone3 << "C_String " << inOptionClassName << "::\n"
              "stringOptionValueFromKeys (const char * inModuleName,\n"
-             "                              const char * inOptionName,\n"
-             "                              bool * outFound) const {\n"
+             "                           const char * inOptionName,\n"
+             "                           bool * outFound) const {\n"
           << "  static const char * kKeyArray ["<< (inStringOptionsMap.count () + 1) << "] = {" ;
   currentOption = inStringOptionsMap.firstObject () ;
   while (currentOption != NULL) {

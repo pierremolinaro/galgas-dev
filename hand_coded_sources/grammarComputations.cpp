@@ -880,7 +880,7 @@ routine_analyzeGrammar (C_Lexique & inLexique,
                         GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                         GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap
                         COMMA_UNUSED_LOCATION_ARGS) {
-  if (inLexique.currentFileErrorsCount() == 0) {
+  if (inLexique.currentFileErrorCount() == 0) {
    //--- Fix info about terminal and nonterminal symbols
     bool ok = true ;
     cInfo symbolsInfo ;
