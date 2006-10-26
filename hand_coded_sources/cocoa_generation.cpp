@@ -36,6 +36,11 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                             const GGS_M_optionComponents & inOptionComponentsMap) {
 //--- Generate user includes
   C_String generatedZone2 ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"Try to compile with an other version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#import <Cocoa/Cocoa.h>\n\n"             
                     "#import \"F_CocoaWrapperForGalgas.h\"\n"
                     "#import \"C_sourceTextForCocoa.h\"\n"

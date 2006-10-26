@@ -80,6 +80,12 @@ generate_constraint_header_file (C_Lexique & inLexique,
                     "\n" ;
 
 //--- Include declaration of predefined types
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"Try to compile with an other version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n"
                     "#include \"galgas/C_GGS_entityMap.h\"\n"
                     "#include \"galgas/C_GGS_MapIndex.h\"\n"

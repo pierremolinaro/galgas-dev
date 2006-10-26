@@ -41,8 +41,14 @@ generate_option_header_file (C_Lexique & inLexique,
 //--- Write #ifndef, ..., #include, ...
   C_String generatedZone2 ;
   generatedZone2 << "#ifndef " << inOptionClassName << "_0_DEFINED\n"
-            "#define " << inOptionClassName << "_0_DEFINED\n"
-            "#include \"command_line_interface/AC_CLI_Options.h\"\n\n" ;
+                    "#define " << inOptionClassName << "_0_DEFINED\n"
+                    "#include \"command_line_interface/AC_CLI_Options.h\"\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"Try to compile with an other version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
 
   C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
   generatedZone3.writeCppTitleComment ("Command Line Options definitions class") ;
