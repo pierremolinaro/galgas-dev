@@ -71,13 +71,11 @@ label parse
 ;
 
 action generatePRGM
-  ?!@lstring nomPRGMprincipal
-  ?!@lstring extensionSource
-  ?!@lstring versionString
-  ?!@L_grammarDescriptorForProgram inGrammarDescriptorForProgramList
-  ?!@luint nombreMaxErreurs
-  ?!@luint nombreMaxAlertes
-  ?!@M_optionComponents inOptionsComponents
+  ?@lstring nomPRGMprincipal
+  ?@lstring versionString
+  ?@L_grammarDescriptorForProgram inGrammarDescriptorForProgramList
+  ?@luint nombreMaxErreurs
+  ?@luint nombreMaxAlertes
 ;
 
 #--------------------------------------------------------------------------------*
@@ -93,158 +91,315 @@ rule <galgas_component>
 :
 #--- Program header
   $program$ ;
-  @lstring nomPRGMprincipal ; # nom fichier programme principal
-  @lstring extensionSource ; # extension fichiers source
-  @typeListeAttributsAxiome listeDesAttributs ; # list des noms des attributs de l'axiome
-  @luint nombreMaxErreurs ; # Nombre maximum d'erreurs
-  @luint nombreMaxAlertes ; # Nombre maximum d'alertes
 #--- Get program name
+  @lstring nomPRGMprincipal ; # nom fichier programme principal
   $identifier$ ? nomPRGMprincipal ;
 #--- Title
   @lstring versionString ;
   $literal_string$ ? versionString ;
-#--- Source file extension definition
-  $.$ ;
-  $literal_string$ ? extensionSource ;
-  $:$ ;
-#--- Grammaire
-  @L_grammarDescriptorForProgram grammarDescriptorForProgramList [emptyList] ;
-  $import$ ;
-  $grammar$ ;
-  @lstring grammarName ;
-  $identifier$ ? grammarName ;
-  @M_grammarComponents grammarComponentsMap ;
+#----------------------------- HANDLE DEPRECATED FEATURES
   select
-    grammarComponentsMap := ioGrammarComponentsMap ;
-  or
-    $in$ ;
-    @lstring sourceFileName ;
-    $literal_string$ ? sourceFileName ;
-    grammarComponentsMap := [@M_grammarComponents emptyMap] ;
-    <parse_grammar_component_for_importing>
-      !sourceFileName
-      !?grammarComponentsMap
-      !?ioMetamodelComponentMap
-      !?ioConstraintComponentMap
-    ;
-  end select ;
-  $;$ ;
-  select
-  or
+    @typeListeAttributsAxiome listeDesAttributs ; # list des noms des attributs de l'axiome
+    @luint nombreMaxErreurs ; # Nombre maximum d'erreurs
+    @luint nombreMaxAlertes ; # Nombre maximum d'alertes
+    @lstring extensionSource ; # extension fichiers source
+  #--- Source file extension definition
+    $.$ ;
+    $literal_string$ ? extensionSource ;
+    $:$ ;
+    warning here: "Deprecated syntax in GALGAS 1.4.9 and later; see release notes at http://galgas.rts-software.org/doku.php?id=1.4.9" ;
+  #--- Grammaire
+    @L_grammarDescriptorForProgram grammarDescriptorForProgramList [emptyList] ;
     $import$ ;
-    $metamodel$ ;
-    @lstring metamodelComponentName ;
-    $identifier$ ? metamodelComponentName ;
+    $grammar$ ;
+    @lstring grammarName ;
+    $identifier$ ? grammarName ;
+    @M_grammarComponents grammarComponentsMap ;
     select
+      grammarComponentsMap := ioGrammarComponentsMap ;
     or
       $in$ ;
-      @lstring sourceFile ;
-      $literal_string$ ?sourceFile ;
-      <parse_semantics_component_for_importing> 
-        !sourceFile
-        !?ioSemanticsComponentsMap
+      @lstring sourceFileName ;
+      $literal_string$ ? sourceFileName ;
+      grammarComponentsMap := [@M_grammarComponents emptyMap] ;
+      <parse_grammar_component_for_importing>
+        !sourceFileName
+        !?grammarComponentsMap
         !?ioMetamodelComponentMap
         !?ioConstraintComponentMap
       ;
     end select ;
     $;$ ;
-  #--- Import constraints
-    repeat
-    while
+    select
+    or
       $import$ ;
-      $constraint$ ;
-      @lstring constraintComponentName ;
-      $identifier$ ? constraintComponentName ;
+      $metamodel$ ;
+      @lstring metamodelComponentName ;
+      $identifier$ ? metamodelComponentName ;
       select
       or
         $in$ ;
         @lstring sourceFile ;
         $literal_string$ ?sourceFile ;
-#      <parse_semantics_component_for_importing> 
-#        !sourceFile
-#        !?ioSemanticsComponentsMap
-#        !?ioMetamodelComponentMap
-#        !?ioConstraintComponentMap
-#      ;
+        <parse_semantics_component_for_importing> 
+          !sourceFile
+          !?ioSemanticsComponentsMap
+          !?ioMetamodelComponentMap
+          !?ioConstraintComponentMap
+        ;
       end select ;
       $;$ ;
-    end repeat ;
-  end select ;
-  @lstring lexiqueClassName ;
-  @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
-  @M_optionComponents optionsComponentsMap ;
-  [grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap  ?lexiqueClassName ?optionsComponentsMap] ;
-  @lstring altName := [@lstring new !"" !here] ;
-  @L_signature startSymbolSignature ;
-  @lstring returnedMetamodel ;
-  [nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedMetamodel] ;
-#--- Liste des attributs
-  listeDesAttributs := [@typeListeAttributsAxiome emptyList] ;
-  <program_attributes_declaration> !?listeDesAttributs ;
-#--- Verifier que le nombre d'attributs est correct
-  if [listeDesAttributs length] < [startSymbolSignature length] then
-    error here : "one or more parameters missing" ;
-  elsif [listeDesAttributs length] > [startSymbolSignature length] then
-    error here : "too much parameters" ;
-  end if ;
-  @string postfix := "" ;
-#--- Metamodel ?
-  @lstring metamodelName ;
-  @lstring rootEntityName ;
-  @L_lstringList contraintListForMetamodel [emptyList] ;
-  select
-    metamodelName := [@lstring new !"" !here] ;
-    rootEntityName := [@lstring new !"" !here] ;
-  or
-    $metamodel$ ;
-    $identifier$ ? metamodelName ;
-    select
-    or
-      $($ ;
+    #--- Import constraints
       repeat
+      while
+        $import$ ;
+        $constraint$ ;
         @lstring constraintComponentName ;
         $identifier$ ? constraintComponentName ;
-        contraintListForMetamodel += !constraintComponentName ;
-      while
-        $,$ ;
+        select
+        or
+          $in$ ;
+          @lstring sourceFile ;
+          $literal_string$ ?sourceFile ;
+#        <parse_semantics_component_for_importing> 
+#          !sourceFile
+#          !?ioSemanticsComponentsMap
+#          !?ioMetamodelComponentMap
+#          !?ioConstraintComponentMap
+#        ;
+        end select ;
+        $;$ ;
       end repeat ;
-      $)$ ;
     end select ;
-    $;$ ;
-    if [metamodelName string] != [returnedMetamodel string] then
-      error metamodelName: "the '" . [returnedMetamodel string] . "' metamodel was expected here" ;
+    @lstring lexiqueClassName ;
+    @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
+    @M_optionComponents optionsComponentsMap ;
+    [grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap  ?lexiqueClassName ?optionsComponentsMap] ;
+    @lstring altName := [@lstring new !"" !here] ;
+    @L_signature startSymbolSignature ;
+    @lstring returnedMetamodel ;
+    [nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedMetamodel] ;
+  #--- Liste des attributs
+    listeDesAttributs := [@typeListeAttributsAxiome emptyList] ;
+    <program_attributes_declaration> !?listeDesAttributs ;
+  #--- Verifier que le nombre d'attributs est correct
+    if [listeDesAttributs length] < [startSymbolSignature length] then
+      error here : "one or more parameters missing" ;
+    elsif [listeDesAttributs length] > [startSymbolSignature length] then
+      error here : "too much parameters" ;
     end if ;
-    [ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?* ?*] ;
+    @string postfix := "" ;
+  #--- Metamodel ?
+    @lstring metamodelName ;
+    @lstring rootEntityName ;
+    @L_lstringList contraintListForMetamodel [emptyList] ;
+    select
+      metamodelName := [@lstring new !"" !here] ;
+      rootEntityName := [@lstring new !"" !here] ;
+    or
+      $metamodel$ ;
+      $identifier$ ? metamodelName ;
+      select
+      or
+        $($ ;
+        repeat
+          @lstring constraintComponentName ;
+          $identifier$ ? constraintComponentName ;
+          contraintListForMetamodel += !constraintComponentName ;
+        while
+          $,$ ;
+        end repeat ;
+        $)$ ;
+      end select ;
+      $;$ ;
+      if [metamodelName string] != [returnedMetamodel string] then
+        error metamodelName: "the '" . [returnedMetamodel string] . "' metamodel was expected here" ;
+       end if ;
+      [ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?* ?*] ;
+    end select ;
+  #--- Send grammar descriptor
+    grammarDescriptorForProgramList +=
+      !postfix
+      !grammarName
+      !startSymbolSignature
+      !listeDesAttributs
+      !lexiqueClassName
+      !returnedMetamodel
+      !rootEntityName
+      !contraintListForMetamodel
+      !extensionSource
+      !optionsComponentsMap
+    ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? nombreMaxErreurs ;
+    $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? nombreMaxAlertes ;
+    $;$ ;
+  #--- Engendrer le programme principal
+    action generatePRGM
+      !nomPRGMprincipal
+      !versionString
+      !grammarDescriptorForProgramList
+      !nombreMaxErreurs
+      !nombreMaxAlertes
+    ;
+#------------------------------ NEW FEATURES
+  or
+    $:$ ;
+  #--- Import clauses
+    @M_grammarComponents grammarComponentsMap := ioGrammarComponentsMap ;
+    $import$ ;
+    repeat
+      select
+        $grammar$ ;
+        @lstring grammarName ;
+        $identifier$ ? grammarName ;
+        select
+        or
+          $in$ ;
+          @lstring sourceFileName ;
+          $literal_string$ ? sourceFileName ;
+          <parse_grammar_component_for_importing>
+            !sourceFileName
+            !?grammarComponentsMap
+            !?ioMetamodelComponentMap
+            !?ioConstraintComponentMap
+          ;
+        end select ;
+        $;$ ;
+      or
+        $metamodel$ ;
+        @lstring metamodelComponentName ;
+        $identifier$ ? metamodelComponentName ;
+        select
+        or
+          $in$ ;
+          @lstring sourceFile ;
+          $literal_string$ ?sourceFile ;
+          <parse_semantics_component_for_importing> 
+            !sourceFile
+            !?ioSemanticsComponentsMap
+            !?ioMetamodelComponentMap
+            !?ioConstraintComponentMap
+          ;
+        end select ;
+        $;$ ;
+      or
+        $constraint$ ;
+        @lstring constraintComponentName ;
+        $identifier$ ? constraintComponentName ;
+        select
+        or
+          $in$ ;
+          @lstring sourceFile ;
+          $literal_string$ ?sourceFile ;
+#          <parse_semantics_component_for_importing> 
+#            !sourceFile
+#            !?ioSemanticsComponentsMap
+#            !?ioMetamodelComponentMap
+#            !?ioConstraintComponentMap
+#          ;
+        end select ;
+        $;$ ;
+      end select ;
+    while
+      $import$ ;
+    end repeat ;
+  #--- Max errors count
+    $error$ ;
+    @luint nombreMaxErreurs ; # Nombre maximum d'erreurs
+    $unsigned_literal_integer$ ? nombreMaxErreurs ;
+    $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    @luint nombreMaxAlertes ; # Nombre maximum d'alertes
+    $unsigned_literal_integer$ ? nombreMaxAlertes ;
+    $;$ ;
+  #--- WHEN clauses
+    @L_grammarDescriptorForProgram grammarDescriptorForProgramList [emptyList] ;
+    $when$ ;
+    repeat
+    #--- Source file extension definition
+      $.$ ;
+      @lstring extensionSource ; # extension fichiers source
+      $literal_string$ ? extensionSource ;
+      $:$ ;
+      @lstring grammarName ;
+      $identifier$ ? grammarName ;
+      @lstring lexiqueClassName ;
+      @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
+      @M_optionComponents optionsComponentsMap ;
+      [grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap  ?lexiqueClassName ?optionsComponentsMap] ;
+      @lstring altName := [@lstring new !"" !here] ;
+      @L_signature startSymbolSignature ;
+      @lstring returnedMetamodel ;
+      [nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedMetamodel] ;
+    #--- Liste des attributs
+      @typeListeAttributsAxiome listeDesAttributs [emptyList] ;
+      <program_attributes_declaration> !?listeDesAttributs ;
+    #--- Verifier que le nombre d'attributs est correct
+      if [listeDesAttributs length] < [startSymbolSignature length] then
+        error here : "one or more parameters missing" ;
+      elsif [listeDesAttributs length] > [startSymbolSignature length] then
+        error here : "too much parameters" ;
+      end if ;
+      @string postfix := "" ;
+    #--- Metamodel ?
+      @lstring metamodelName ;
+      @lstring rootEntityName ;
+      @L_lstringList contraintListForMetamodel [emptyList] ;
+      select
+        metamodelName := [@lstring new !"" !here] ;
+        rootEntityName := [@lstring new !"" !here] ;
+      or
+        $metamodel$ ;
+        $identifier$ ? metamodelName ;
+        select
+        or
+          $($ ;
+          repeat
+            @lstring constraintComponentName ;
+            $identifier$ ? constraintComponentName ;
+            contraintListForMetamodel += !constraintComponentName ;
+          while
+            $,$ ;
+          end repeat ;
+          $)$ ;
+        end select ;
+        if [metamodelName string] != [returnedMetamodel string] then
+          error metamodelName: "the '" . [returnedMetamodel string] . "' metamodel was expected here" ;
+         end if ;
+        [ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?* ?*] ;
+      end select ;
+      $;$ ;
+    #--- Send grammar descriptor
+      grammarDescriptorForProgramList +=
+        !postfix
+        !grammarName
+        !startSymbolSignature
+        !listeDesAttributs
+        !lexiqueClassName
+        !returnedMetamodel
+        !rootEntityName
+        !contraintListForMetamodel
+        !extensionSource
+        !optionsComponentsMap
+      ;
+    while
+      $when$ ;
+    end repeat ;
+  #--- Engendrer le programme principal
+    action generatePRGM
+      !nomPRGMprincipal
+      !versionString
+      !grammarDescriptorForProgramList
+      !nombreMaxErreurs
+      !nombreMaxAlertes
+    ;
   end select ;
-#--- Send grammar descriptor
-  grammarDescriptorForProgramList +=
-    !postfix
-    !grammarName
-    !startSymbolSignature
-    !listeDesAttributs
-    !lexiqueClassName
-    !returnedMetamodel
-    !rootEntityName
-    !contraintListForMetamodel
-  ;
-#--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? nombreMaxErreurs ;
-  $;$ ;
-#--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? nombreMaxAlertes ;
-  $;$ ;
-#--- Engendrer le programme principal
-  action generatePRGM
-    !?nomPRGMprincipal
-    !?extensionSource
-    !?versionString
-    !?grammarDescriptorForProgramList
-    !?nombreMaxErreurs
-    !?nombreMaxAlertes
-    !?optionsComponentsMap
-  ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -255,71 +410,147 @@ label importLexique
   $program$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $.$ ;
-  $literal_string$ ? * ;
-  $:$ ;
-#--- Grammar definitiuon
-  $import$ ;
-  $grammar$ ;
-  $identifier$ ? * ;
   select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
-  select
-  or
+    $.$ ;
+    $literal_string$ ? * ;
+    $:$ ;
+  #--- Grammar definitiuon
     $import$ ;
-    $metamodel$ ;
+    $grammar$ ;
     $identifier$ ? * ;
     select
     or
       $in$ ;
-      $literal_string$ ?* ;
-      <parse_semantics_component_for_importing> parse ;
+     $literal_string$ ? * ;
+     <parse_grammar_component_for_importing> parse ;
     end select ;
     $;$ ;
-    repeat
-    while
+    select
+    or
       $import$ ;
-      $constraint$ ;
+      $metamodel$ ;
       $identifier$ ? * ;
       select
       or
         $in$ ;
         $literal_string$ ?* ;
+        <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    end repeat ;
-  end select ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
-  select
-  or
-    $metamodel$ ;
-    $identifier$ ? * ;
+      repeat
+      while
+        $import$ ;
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end repeat ;
+    end select ;
+  #--- Program attributes
+    <program_attributes_declaration> parse ;
     select
     or
-      $($ ;
-      repeat
-        $identifier$ ? * ;
-      while
-        $,$ ;
-      end repeat ;
-      $)$ ;
+      $metamodel$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $($ ;
+        repeat
+          $identifier$ ? * ;
+        while
+          $,$ ;
+        end repeat ;
+        $)$ ;
+      end select ;
+      $;$ ;
     end select ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
     $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+    $:$ ;
+  #--- Grammar definitiuon
+    $import$ ;
+    repeat
+      select
+        $grammar$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ? * ;
+         <parse_grammar_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+          or
+          $in$ ;
+          $literal_string$ ?* ;
+          <parse_semantics_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end select ;
+    while
+      $import$ ;
+    end repeat ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- when clauses
+    $when$ ;
+    repeat
+    #--- Source file extension definition
+      $.$ ;
+      $literal_string$ ? * ; # Source file extension
+      $:$ ;
+      $identifier$ ? * ; # Grammar name
+      <program_attributes_declaration> parse ;
+      select
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $($ ;
+          repeat
+            $identifier$ ? * ;
+          while
+            $,$ ;
+          end repeat ;
+          $)$ ;
+        end select ;
+      end select ;
+      $;$ ;
+    while
+      $when$ ;
+    end repeat ;
   end select ;
-#--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
-#--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
 #--- End program
   $end$ ;
   $program$ ;
@@ -331,70 +562,147 @@ label importSyntax
   $program$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $.$ ;
-  $literal_string$ ? * ;
-  $:$ ;
-  $import$ ;
-  $grammar$ ;
-  $identifier$ ? * ;
   select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
-  select
-  or
+    $.$ ;
+    $literal_string$ ? * ;
+    $:$ ;
+  #--- Grammar definitiuon
     $import$ ;
-    $metamodel$ ;
+    $grammar$ ;
     $identifier$ ? * ;
     select
     or
       $in$ ;
-      $literal_string$ ?* ;
-      <parse_semantics_component_for_importing> parse ;
+     $literal_string$ ? * ;
+     <parse_grammar_component_for_importing> parse ;
     end select ;
     $;$ ;
-    repeat
-    while
+    select
+    or
       $import$ ;
-      $constraint$ ;
+      $metamodel$ ;
       $identifier$ ? * ;
       select
       or
         $in$ ;
         $literal_string$ ?* ;
+        <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    end repeat ;
-  end select ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
-  select
-  or
-    $metamodel$ ;
-    $identifier$ ? * ;
+      repeat
+      while
+        $import$ ;
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end repeat ;
+    end select ;
+  #--- Program attributes
+    <program_attributes_declaration> parse ;
     select
     or
-      $($ ;
-      repeat
-        $identifier$ ? * ;
-      while
-        $,$ ;
-      end repeat ;
-      $)$ ;
+      $metamodel$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $($ ;
+        repeat
+          $identifier$ ? * ;
+        while
+          $,$ ;
+        end repeat ;
+        $)$ ;
+      end select ;
+      $;$ ;
     end select ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
     $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+    $:$ ;
+  #--- Grammar definitiuon
+    $import$ ;
+    repeat
+      select
+        $grammar$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ? * ;
+         <parse_grammar_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+          or
+          $in$ ;
+          $literal_string$ ?* ;
+          <parse_semantics_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end select ;
+    while
+      $import$ ;
+    end repeat ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- when clauses
+    $when$ ;
+    repeat
+    #--- Source file extension definition
+      $.$ ;
+      $literal_string$ ? * ; # Source file extension
+      $:$ ;
+      $identifier$ ? * ; # Grammar name
+      <program_attributes_declaration> parse ;
+      select
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $($ ;
+          repeat
+            $identifier$ ? * ;
+          while
+            $,$ ;
+          end repeat ;
+          $)$ ;
+        end select ;
+      end select ;
+      $;$ ;
+    while
+      $when$ ;
+    end repeat ;
   end select ;
-#--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
-#--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -406,70 +714,147 @@ label importSemantics
   $program$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $.$ ;
-  $literal_string$ ? * ;
-  $:$ ;
-  $import$ ;
-  $grammar$ ;
-  $identifier$ ? * ;
   select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
-  select
-  or
+    $.$ ;
+    $literal_string$ ? * ;
+    $:$ ;
+  #--- Grammar definitiuon
     $import$ ;
-    $metamodel$ ;
+    $grammar$ ;
     $identifier$ ? * ;
     select
     or
       $in$ ;
-      $literal_string$ ?* ;
-      <parse_semantics_component_for_importing> parse ;
+     $literal_string$ ? * ;
+     <parse_grammar_component_for_importing> parse ;
     end select ;
     $;$ ;
-    repeat
-    while
+    select
+    or
       $import$ ;
-      $constraint$ ;
+      $metamodel$ ;
       $identifier$ ? * ;
       select
       or
         $in$ ;
         $literal_string$ ?* ;
+        <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    end repeat ;
-  end select ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
-  select
-  or
-    $metamodel$ ;
-    $identifier$ ? * ;
+      repeat
+      while
+        $import$ ;
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end repeat ;
+    end select ;
+  #--- Program attributes
+    <program_attributes_declaration> parse ;
     select
     or
-      $($ ;
-      repeat
-        $identifier$ ? * ;
-      while
-        $,$ ;
-      end repeat ;
-      $)$ ;
+      $metamodel$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $($ ;
+        repeat
+          $identifier$ ? * ;
+        while
+          $,$ ;
+        end repeat ;
+        $)$ ;
+      end select ;
+      $;$ ;
     end select ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
     $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+    $:$ ;
+  #--- Grammar definitiuon
+    $import$ ;
+    repeat
+      select
+        $grammar$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ? * ;
+         <parse_grammar_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+          or
+          $in$ ;
+          $literal_string$ ?* ;
+          <parse_semantics_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end select ;
+    while
+      $import$ ;
+    end repeat ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- when clauses
+    $when$ ;
+    repeat
+    #--- Source file extension definition
+      $.$ ;
+      $literal_string$ ? * ; # Source file extension
+      $:$ ;
+      $identifier$ ? * ; # Grammar name
+      <program_attributes_declaration> parse ;
+      select
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $($ ;
+          repeat
+            $identifier$ ? * ;
+          while
+            $,$ ;
+          end repeat ;
+          $)$ ;
+        end select ;
+      end select ;
+      $;$ ;
+    while
+      $when$ ;
+    end repeat ;
   end select ;
-#--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
-#--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -481,70 +866,147 @@ label importGrammarForSemantics
   $program$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $.$ ;
-  $literal_string$ ? * ;
-  $:$ ;
-  $import$ ;
-  $grammar$ ;
-  $identifier$ ? * ;
   select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
-  select
-  or
+    $.$ ;
+    $literal_string$ ? * ;
+    $:$ ;
+  #--- Grammar definitiuon
     $import$ ;
-    $metamodel$ ;
+    $grammar$ ;
     $identifier$ ? * ;
     select
     or
       $in$ ;
-      $literal_string$ ?* ;
-      <parse_semantics_component_for_importing> parse ;
+     $literal_string$ ? * ;
+     <parse_grammar_component_for_importing> parse ;
     end select ;
     $;$ ;
-    repeat
-    while
+    select
+    or
       $import$ ;
-      $constraint$ ;
+      $metamodel$ ;
       $identifier$ ? * ;
       select
       or
         $in$ ;
         $literal_string$ ?* ;
+        <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    end repeat ;
-  end select ;
-#--- Program attributes
-  <program_attributes_declaration> parse ;
-  select
-  or
-    $metamodel$ ;
-    $identifier$ ? * ;
+      repeat
+      while
+        $import$ ;
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end repeat ;
+    end select ;
+  #--- Program attributes
+    <program_attributes_declaration> parse ;
     select
     or
-      $($ ;
-      repeat
-        $identifier$ ? * ;
-      while
-        $,$ ;
-      end repeat ;
-      $)$ ;
+      $metamodel$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $($ ;
+        repeat
+          $identifier$ ? * ;
+        while
+          $,$ ;
+        end repeat ;
+        $)$ ;
+      end select ;
+      $;$ ;
     end select ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
     $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+    $:$ ;
+  #--- Grammar definitiuon
+    $import$ ;
+    repeat
+      select
+        $grammar$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ? * ;
+         <parse_grammar_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+          or
+          $in$ ;
+          $literal_string$ ?* ;
+          <parse_semantics_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end select ;
+    while
+      $import$ ;
+    end repeat ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- when clauses
+    $when$ ;
+    repeat
+    #--- Source file extension definition
+      $.$ ;
+      $literal_string$ ? * ; # Source file extension
+      $:$ ;
+      $identifier$ ? * ; # Grammar name
+      <program_attributes_declaration> parse ;
+      select
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $($ ;
+          repeat
+            $identifier$ ? * ;
+          while
+            $,$ ;
+          end repeat ;
+          $)$ ;
+        end select ;
+      end select ;
+      $;$ ;
+    while
+      $when$ ;
+    end repeat ;
   end select ;
-#--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
-#--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -554,67 +1016,147 @@ label importOptions
   $program$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $.$ ;
-  $literal_string$ ? * ;
-  $:$ ;
-  $import$ ;
-  $grammar$ ;
-  $identifier$ ? * ;
   select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
-  select
-  or
+    $.$ ;
+    $literal_string$ ? * ;
+    $:$ ;
+  #--- Grammar definitiuon
     $import$ ;
-    $metamodel$ ;
+    $grammar$ ;
     $identifier$ ? * ;
     select
     or
       $in$ ;
-      $literal_string$ ?* ;
-      <parse_semantics_component_for_importing> parse ;
+     $literal_string$ ? * ;
+     <parse_grammar_component_for_importing> parse ;
     end select ;
     $;$ ;
-    repeat
-    while
+    select
+    or
       $import$ ;
-      $constraint$ ;
+      $metamodel$ ;
       $identifier$ ? * ;
       select
       or
         $in$ ;
         $literal_string$ ?* ;
+        <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    end repeat ;
-  end select ;
-  <program_attributes_declaration> parse ;
-  select
-  or
-    $metamodel$ ;
-    $identifier$ ? * ;
+      repeat
+      while
+        $import$ ;
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end repeat ;
+    end select ;
+  #--- Program attributes
+    <program_attributes_declaration> parse ;
     select
     or
-      $($ ;
-      repeat
-        $identifier$ ? * ;
-      while
-        $,$ ;
-      end repeat ;
-      $)$ ;
+      $metamodel$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $($ ;
+        repeat
+          $identifier$ ? * ;
+        while
+          $,$ ;
+        end repeat ;
+        $)$ ;
+      end select ;
+      $;$ ;
     end select ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
     $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+    $:$ ;
+  #--- Grammar definitiuon
+    $import$ ;
+    repeat
+      select
+        $grammar$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ? * ;
+         <parse_grammar_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+          or
+          $in$ ;
+          $literal_string$ ?* ;
+          <parse_semantics_component_for_importing> parse ;
+        end select ;
+        $;$ ;
+      or
+        $constraint$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $in$ ;
+          $literal_string$ ?* ;
+        end select ;
+        $;$ ;
+      end select ;
+    while
+      $import$ ;
+    end repeat ;
+  #--- Max errors count
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- Max warnings count
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  #--- when clauses
+    $when$ ;
+    repeat
+    #--- Source file extension definition
+      $.$ ;
+      $literal_string$ ? * ; # Source file extension
+      $:$ ;
+      $identifier$ ? * ; # Grammar name
+      <program_attributes_declaration> parse ;
+      select
+      or
+        $metamodel$ ;
+        $identifier$ ? * ;
+        select
+        or
+          $($ ;
+          repeat
+            $identifier$ ? * ;
+          while
+            $,$ ;
+          end repeat ;
+          $)$ ;
+        end select ;
+      end select ;
+      $;$ ;
+    while
+      $when$ ;
+    end repeat ;
   end select ;
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
   $end$ ;
   $program$ ;
   $;$ ;
@@ -625,14 +1167,18 @@ end rule ;
 rule <program_attributes_declaration>
   ?!@typeListeAttributsAxiome listeDesAttributs
 :
-  repeat
-  while
-    @lstring texte ;
-    $identifier$ ? texte ;
-    listeDesAttributs += !texte ;
-    $;$ ;
-  end repeat ;
-
+  select
+  or
+    $($ ;
+    repeat
+      @lstring texte ;
+      $identifier$ ? texte ;
+      listeDesAttributs += !texte ;
+    while
+      $,$ ;
+    end repeat ;
+    $)$ ;
+  end select ;
 end rule ;
 
 #--------------------------------------------------------------------------------*

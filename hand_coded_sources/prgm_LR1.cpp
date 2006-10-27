@@ -25,40 +25,47 @@
 //---------------------------------------------------------------------------*
 
 void galgas_LR1_prgm::_beforeParsing (void) {
-  mLexiqueMapForUse = GGS_M_lexiqueComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
-  mSemanticsComponentsMap = GGS_M_semanticsComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
-  mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
-  mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
-  mOptionComponentsMap = GGS_M_optionComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
-  mMetamodelComponentMap = GGS_M_metamodelsComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
-  mConstraintComponentMap = GGS_M_constraintComponents::constructor_emptyMap (*mScannerPtr_ COMMA_HERE) ;
-  mTerminalIO.mFileGenerationStartDir = mScannerPtr_->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
+  mLexiqueMapForUse = GGS_M_lexiqueComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
+  mSemanticsComponentsMap = GGS_M_semanticsComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
+  mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
+  mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
+  mOptionComponentsMap = GGS_M_optionComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
+  mMetamodelComponentMap = GGS_M_metamodelsComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
+  mConstraintComponentMap = GGS_M_constraintComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
+  mTerminalIO.mFileGenerationStartDir = _mScannerPtr->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = mTerminalIO.mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
     C_String errorMessage ;
     errorMessage << "cannot create directory '" << mTerminalIO.mFileGenerationStartDir << "'" ;
-    mScannerPtr_->galgas_IO_Ptr ()->printFileErrorMessage (mScannerPtr_->sourceFileName (), errorMessage.cString () COMMA_HERE) ;
+    _mScannerPtr->galgas_IO_Ptr ()->printFileErrorMessage (_mScannerPtr->sourceFileName (), errorMessage.cString () COMMA_HERE) ;
   }
 }
 
 //--------------------------------------------------------------------------*
 
 void galgas_LR1_prgm::_afterParsing (const bool inVerboseOptionOn) {
+  if (_mScannerPtr->boolOptionValueFromKeys ("galgas_cli_options", "warningsAsError", true) &&
+     (_mScannerPtr->totalErrorCount () == 0) &&
+     (_mScannerPtr->totalWarningCount () > 0)) {
+    C_String message ;
+    message << "warnings are treated as errors" ;
+    _mScannerPtr->onTheFlySemanticError (message COMMA_HERE) ;
+  }
   C_BDD::markAndSweepUnusedNodes () ;
   if (inVerboseOptionOn) {
-    co << mScannerPtr_->checkedLineCount () << " checked line"
-       << ((mScannerPtr_->checkedLineCount () > 1) ? "s" : "")
-       << ", " << mScannerPtr_->preservedLineCount ()
+    co << _mScannerPtr->checkedLineCount () << " checked line"
+       << ((_mScannerPtr->checkedLineCount () > 1) ? "s" : "")
+       << ", " << _mScannerPtr->preservedLineCount ()
        << " preserved line"
-       << ((mScannerPtr_->preservedLineCount () > 1) ? "s" : "")
+       << ((_mScannerPtr->preservedLineCount () > 1) ? "s" : "")
        << ", "
-       << mScannerPtr_->generatedLineCount ()
+       << _mScannerPtr->generatedLineCount ()
        << " generated line"
-       << ((mScannerPtr_->generatedLineCount () > 1) ? "s" : "")
+       << ((_mScannerPtr->generatedLineCount () > 1) ? "s" : "")
        << " for "
-       << mScannerPtr_->generatedFileCount ()
+       << _mScannerPtr->generatedFileCount ()
        << " file"
-       << ((mScannerPtr_->generatedFileCount () > 1) ? "s" : "")
+       << ((_mScannerPtr->generatedFileCount () > 1) ? "s" : "")
        << ".\n" ;
   }
 }

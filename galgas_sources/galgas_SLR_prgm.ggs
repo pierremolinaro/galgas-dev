@@ -16,19 +16,19 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_SLR_prgm "version GALGAS_BETA_VERSION (SLR grammar)" . "ggs" :
+program galgas_SLR_prgm "version GALGAS_BETA_VERSION (SLR grammar)":
   import grammar galgas_SLR_grammar in "galgas_SLR_grammar.ggs" ;
-#--- Start symbol arguments
-  mLexiqueMapForUse ;
-  mSemanticsComponentsMap ;
-  mSyntaxComponentsMap ;
-  mGrammarsComponentsMap ;
-  mOptionComponentsMap ;
-  mMetamodelComponentMap ;
-  mConstraintComponentMap ;
-#--- max error and warning count
   error 100 ;
   warning 100 ;
+  when . "ggs": galgas_SLR_grammar (
+    mLexiqueMapForUse,
+    mSemanticsComponentsMap,
+    mSyntaxComponentsMap,
+    mGrammarsComponentsMap,
+    mOptionComponentsMap,
+    mMetamodelComponentMap,
+    mConstraintComponentMap)
+  ;
 end program ;
 
 #---------------------------------------------------------------------------*

@@ -16,19 +16,19 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" . "ggs" :
+program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
-#--- Start symbol arguments
-  mLexiqueMapForUse ;
-  mSemanticsComponentsMap ;
-  mSyntaxComponentsMap ;
-  mGrammarsComponentsMap ;
-  mOptionComponentsMap ;
-  mMetamodelComponentMap ;
-  mConstraintComponentMap ;
-#--- max error and warning count
   error 100 ;
   warning 100 ;
+  when . "ggs": galgas_LL1_grammar (
+    mLexiqueMapForUse,
+    mSemanticsComponentsMap,
+    mSyntaxComponentsMap,
+    mGrammarsComponentsMap,
+    mOptionComponentsMap,
+    mMetamodelComponentMap,
+    mConstraintComponentMap)
+  ;
 end program ;
 
 #---------------------------------------------------------------------------*

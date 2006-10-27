@@ -284,7 +284,7 @@ void cPtr_typeDefClasseAbstraiteAimplementer::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & inLexique) const {
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2.writeCppTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Super class name (empty if no super class)
@@ -729,7 +729,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile.writeCppTitleComment (C_String ("class '") + aNomClasse + "'") ;
   inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
 
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2.writeCppTitleComment (C_String ("class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Super class name (empty if no super class)
