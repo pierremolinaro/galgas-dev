@@ -282,7 +282,7 @@ createProgramFile (const C_String & inCreatedProjectPathName,
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_program.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
-  f << "program " << projectName << "_program \"version 1.0.0\" . \"???\":\n"
+  f << "program " << projectName << "_program \"version 1.0.0\":\n"
        "import grammar " << projectName << "_grammar in \"" << projectName << "_grammar.ggs\" ;\n" ;
   if (inProjectStyle == kMDAproject) {
     f << "#--- WARNING : metamodel handling will change in future releases\n"
@@ -293,6 +293,7 @@ createProgramFile (const C_String & inCreatedProjectPathName,
   f << "#--- max error and warning count\n"
        "error 100 ;\n"
        "warning 100 ;\n"
+       "when . \"" << projectName << "\":" << projectName << "_grammar ;\n"
        "end program ;\n" ;
   const bool ok = f.close () ;
   if (ok) {

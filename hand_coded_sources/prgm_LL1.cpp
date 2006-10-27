@@ -24,7 +24,7 @@
 
 //---------------------------------------------------------------------------*
 
-void galgas_LL1_prgm::_beforeParsing (void) {
+void grammar_galgas_LL1_prgm::_beforeParsing (void) {
   mLexiqueMapForUse = GGS_M_lexiqueComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
   mSemanticsComponentsMap = GGS_M_semanticsComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
   mSyntaxComponentsMap = GGS_M_syntaxComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
@@ -43,7 +43,7 @@ void galgas_LL1_prgm::_beforeParsing (void) {
 
 //--------------------------------------------------------------------------*
 
-void galgas_LL1_prgm::_afterParsing (const bool inVerboseOptionOn) {
+void grammar_galgas_LL1_prgm::_afterParsing (const bool inVerboseOptionOn) {
   if (_mScannerPtr->boolOptionValueFromKeys ("galgas_cli_options", "warningsAsError", true) &&
      (_mScannerPtr->totalErrorCount () == 0) &&
      (_mScannerPtr->totalWarningCount () > 0)) {
