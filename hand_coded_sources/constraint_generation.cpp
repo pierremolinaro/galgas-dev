@@ -71,7 +71,7 @@ generate_constraint_header_file (C_Lexique & inLexique,
                                  const GGS_entityToImplementMap & inConstrainedEntityMap,
                                  const GGS_stringset & inMultipleReferencedEntities,
                                  const GGS_lstring & inRootEntityName) {
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2 << "#ifndef " << inConstraintComponentName << "_CONSTRAINTS_DEFINED\n"
                  << "#define " << inConstraintComponentName << "_CONSTRAINTS_DEFINED\n"
                     "\n"
@@ -80,11 +80,6 @@ generate_constraint_header_file (C_Lexique & inLexique,
                     "\n" ;
 
 //--- Include declaration of predefined types
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include \"version_libpm.h\"\n"
-                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
-                    "#endif\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n"
                     "#include \"galgas/C_GGS_entityMap.h\"\n"
@@ -335,7 +330,12 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                               const GGS_lstring & inRootEntityName,
                               const GGS_representativeEntityMap & inRepresentativeEntityMap,
                               const GGS_constraintInstructionListMap & inConstraintInstructionListMap) {
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
+                    "#endif\n\n" ;
 //--- Include declaration of header file
   generatedZone2 << "#include \"" << inConstraintComponentName << ".h\"\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n\n" ;

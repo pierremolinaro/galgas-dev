@@ -476,6 +476,12 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                            const GGS_M_styles & inStylesMap) {
 // --------------------------------------- Engendrer les inclusions
   C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include <ctype.h>\n"
                     "#include <string.h>\n\n"
                     "#include \"" << inLexiqueName << ".h\"\n\n"
@@ -976,16 +982,10 @@ generate_scanner_header_file (C_Lexique & inLexique,
                               const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
                               const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves) {
 //--- Write #ifndef, ..., #include, ...
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2 << "#ifndef " << inLexiqueName << "_0_DEFINED\n"
                     "#define " << inLexiqueName << "_0_DEFINED\n"
                     "#include \"galgas/C_Lexique.h\"\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include \"version_libpm.h\"\n"
-                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
-                    "#endif\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
 
 // --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;

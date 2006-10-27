@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS Command Line Option Definition                                    *
 #                                                                           *
-#  Copyright (C) 2004 Pierre Molinaro.                                      *
+#  Copyright (C) 2004, ..., 2006 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -17,7 +17,8 @@
 #---------------------------------------------------------------------------*
 
 option galgas_cli_options :
-  @bool doNotGenerateFiles   : 'n', "no_file_generation" -> "Do not generate any file" ;
+  @bool warningsAsError      : 'W', "Werror" -> "Treat warnings as errors" ;
+  @bool doNotGenerateFiles   : 'n', "no-file-generation" -> "Do not generate any file" ;
   @bool outputHTMLgrammarFile: 'H', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
   @bool generate_debug       : 'g', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols " ;
   @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;

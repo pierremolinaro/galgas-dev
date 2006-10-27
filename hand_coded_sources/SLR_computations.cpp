@@ -699,7 +699,13 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
                                const GGS_stringset & inClassesNamesSet,
                                const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
 //--- Generate header file inclusion -----------------------------------------
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;

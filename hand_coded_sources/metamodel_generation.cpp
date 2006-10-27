@@ -30,17 +30,12 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                                 const GGS_lstring & inMetamodelComponentName,
                                 const GGS_stringset & inMultipleReferencedEntities,
                                 const GGS_lstring & inRootEntityName) {
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2 << "#ifndef " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
                  << "#define " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
                  << "\n#include <string.h>\n\n" ;
 
 //--- Include declaration of predefined types
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include \"version_libpm.h\"\n"
-                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
-                    "#endif\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"bdd/C_BDD.h\"\n"
                     "#include \"galgas/C_GGS_Object.h\"\n"
@@ -192,8 +187,13 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                              const GGS_lstring & inMetamodelComponentName,
                              const GGS_stringset & inMultipleReferencedEntities,
                              const GGS_lstring & inRootEntityName) {
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
 //--- Include declaration of header file
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
+                    "#endif\n\n" ;
   generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;

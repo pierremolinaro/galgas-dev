@@ -167,16 +167,10 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
                            const uint32 inOriginalGrammarStartSymbol,
                            const C_String & inTargetFileName,
                            const cVocabulary & inVocabulary) {
-  C_String generatedZone2 ;
-  generatedZone2 << "#ifndef GRAMMAR_" << inTargetFileName << "_DEFINED\n"
-                 << "#define GRAMMAR_" << inTargetFileName << "_DEFINED\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include \"version_libpm.h\"\n"
-                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
-                    "#endif\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
-
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  generatedZone2 << "#ifndef GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n"
+                    "#define GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n\n" ;
+  
 //--- Engendrer les inclusions --------------------------------------------------------------
   generatedZone2.writeCppHyphenLineComment () ;
   GGS_L_syntaxComponents_ForGrammar::element_type * component = inSyntaxComponentsList.firstObject () ;

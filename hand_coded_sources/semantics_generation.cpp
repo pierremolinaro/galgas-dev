@@ -342,17 +342,12 @@ generate_header_file (C_Lexique & inLexique,
                       const GGS_stringset & inIncludesForHeaderFile,
                       const GGS_string & inLexiqueName,
                       const GGS_typeEntitiesToGenerateList & listeEntitesAengendrer) {
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2 << "#ifndef " << nomComposant << "_DEFINED\n"
                  << "#define " << nomComposant << "_DEFINED\n"
                  << "\n#include <string.h>\n\n" ;
 
 //--- Include declaration of predefined types
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include \"version_libpm.h\"\n"
-                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
-                    "#endif\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
                     "#include \"galgas/AC_galgas_io.h\"\n"
@@ -1534,7 +1529,13 @@ generate_cpp_file (C_Lexique & inLexique,
                    GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                    GGS_stringset & tableFichiersEnTetePourFichierCPP) {
 //--- Write file header
-  C_String generatedZone2 ;
+  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"files/C_TextFileWrite.h\"\n"
                     "#include \"" << nomComposant << ".h\"\n\n";
