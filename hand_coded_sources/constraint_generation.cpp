@@ -328,8 +328,8 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                               const GGS_entityToImplementMap & inConstrainedEntityMap,
                               const GGS_stringset & inMultipleReferencedEntities,
                               const GGS_lstring & inRootEntityName,
-                              const GGS_representativeEntityMap & inRepresentativeEntityMap,
-                              const GGS_constraintInstructionListMap & inConstraintInstructionListMap) {
+                              const GGS_representativeEntityMap & /*inRepresentativeEntityMap */,
+                              const GGS_constraintInstructionListMap & /* inConstraintInstructionListMap */) {
   C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -886,11 +886,11 @@ generateCodeForRelation (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelRelationDo::
-generateCodeForRelation (C_Lexique & inLexique,
-                         GGS_entityToImplementMap & inEntityMap,
-                         const GGS_lstring & inCurrentEntityName,
-                         C_String & ioBufferString,
-                         C_String & ioCPPFile) const {
+generateCodeForRelation (C_Lexique & /* inLexique */,
+                         GGS_entityToImplementMap & /* inEntityMap */,
+                         const GGS_lstring & /* inCurrentEntityName */,
+                         C_String & /* ioBufferString */,
+                         C_String & /* ioCPPFile */) const {
 /*  ioBufferString << "_relation_" << mOperationIsAnd.currentLocation () ;
   ioCPPFile << "  C_BDD _relation_" << mOperationIsAnd.currentLocation () << " ;\n" ;
   if (mOperationIsAnd.boolValue ()) {

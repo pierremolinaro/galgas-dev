@@ -60,14 +60,14 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
 
 //--- Generate class declaration for each grammar
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
+  sint32 grammarIndex = 0 ;
+  C_String grammarSuffix ;
   while (currentGrammar != NULL) {
+    C_String grammarClassName ;
+    grammarClassName << "grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << grammarSuffix ;
     C_String grammarZone2 ; grammarZone2.setAllocationExtra (2000) ;
     macroValidPointer (currentGrammar) ;
-    grammarZone2 << "#ifndef CLASS_" << inProgramComponentName << currentGrammar->mGrammarPostfix << "_DEFINED\n"
-                    "#define CLASS_" << inProgramComponentName << currentGrammar->mGrammarPostfix << "_DEFINED\n\n" ;
-    grammarZone2.writeCppHyphenLineComment () ;
-    grammarZone2 << "class " << inProgramComponentName << currentGrammar->mGrammarPostfix
-                 << " : public C_defaultUserSemanticActions {\n"
+    grammarZone2 << "class " << grammarClassName << " : public C_defaultUserSemanticActions {\n"
                     "  protected : " << currentGrammar->mLexiqueClassName << " * _mScannerPtr ;\n"
                     "  protected : C_galgas_terminal_io mTerminalIO ;\n"
                     "//--- Command line options\n" ;
@@ -88,7 +88,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
       currentOptionComponent = currentOptionComponent->nextObject () ;
     }
     grammarZone2 << "\n//--- Constructor\n"
-                    "  public : " << inProgramComponentName  << currentGrammar->mGrammarPostfix
+                    "  public : " << grammarClassName
                  << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) ;\n\n"
                     "  public : void doCompilation (const C_String & inSourceFileName_,\n"
                     "                               const bool inVerboseOptionOn,\n"
@@ -108,26 +108,33 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     }
     C_String grammarZone3 ;
     grammarZone3 << "//--- Destructor\n"
-                    "  public : virtual ~" << inProgramComponentName  << currentGrammar->mGrammarPostfix << " (void) ;\n"
-                    "//--- Prologue and epilogue\n"
-                    "  public : void _prologue (void) ;\n"
-                    "  public : void _epilogue (void) ;\n"
+                    "  public : virtual ~" << grammarClassName << " (void) ;\n"
                     "} ;\n\n" ;
     grammarZone3.writeCppHyphenLineComment () ;
-    grammarZone3 << "#endif\n" ;
+
+    C_String userZone2 ; 
+    userZone2 << "\n"
+                 "//--- Prologue and epilogue\n"
+                 "  public : inline void _prologue (void) {}\n"
+                 "  public : inline void _epilogue (void) {}\n"
+                 "\n" ;
+
     const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
                                                                     "verbose_output",
                                                                     false) ;
     inLexique.generateFile ("//",
-                            C_String ("grammar_") + inProgramComponentName + currentGrammar->mGrammarPostfix + ".h",
+                            grammarClassName + ".h",
                             "\n\n", // User Zone 1
                             grammarZone2,
-                            "\n\n", // User Zone 2
+                            userZone2, // User Zone 2
                             grammarZone3,
                             verboseOptionOn,
                             false) ;
-    generatedZone2 << "#include \"grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << ".h\"\n\n" ;
+    generatedZone2 << "#include \"" << grammarClassName << ".h\"\n\n" ;
     currentGrammar = currentGrammar->nextObject () ;
+    grammarIndex ++ ;
+    grammarSuffix = "" ;
+    grammarSuffix << "_" << grammarIndex ;
   }
 //--- Command line options for this program
   generatedZone2 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
@@ -253,27 +260,30 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2 << "}\n\n" ;
 
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
+  sint32 grammarIndex = 0 ;
+  C_String grammarSuffix ;
   while (currentGrammar != NULL) {
     macroValidPointer (currentGrammar) ;
+    C_String grammarClassName ;
+    grammarClassName << "grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << grammarSuffix ;
   //--- Constructor
     generatedZone2.writeCppTitleComment ("C O N S T R U C T O R") ;
-    generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
-                   << "::\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
+    generatedZone2 << "\n" << grammarClassName
+                   << "::\n" << grammarClassName
                    << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :\n"
                       "_mScannerPtr (NULL), mTerminalIO (inIOparameters) {\n"
-                      "  _mScannerPtr = NULL ;\n"
                       "  macroMyNew (_mScannerPtr, " << currentGrammar->mLexiqueClassName << " (& mTerminalIO COMMA_THERE)) ;\n"
                       "  C_GGS_Object::attachPointer (_mScannerPtr COMMA_HERE) ;\n"
                       "}\n\n" ;
   //--- Destructor
     generatedZone2.writeCppTitleComment ("D E S T R U C T O R") ;
-    generatedZone2 << "\n" << inProgramComponentName << currentGrammar->mGrammarPostfix
-                   << "::\n~" << inProgramComponentName << currentGrammar->mGrammarPostfix << " (void) {\n"
+    generatedZone2 << "\n" << grammarClassName
+                   << "::\n~" << grammarClassName << " (void) {\n"
                       "  macroDetachPointer (_mScannerPtr, " << currentGrammar->mLexiqueClassName << ") ;\n"
                       "}\n\n" ;
   //--- 'doCompilation' method
     generatedZone2.writeCppTitleComment ("D O    C O M P I L A T I O N") ;
-    generatedZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
+    generatedZone2 << "void " << grammarClassName << "::\n"
                       "doCompilation (const C_String & inSourceFileName_,\n"
                       "               const bool inVerboseOptionOn,\n"
                       "               sint16 & returnCode) {\n" ;
@@ -387,6 +397,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << "}\n\n" ;
     generatedZone2.writeCppHyphenLineComment () ;
     currentGrammar = currentGrammar->nextObject () ;
+    grammarIndex ++ ;
+    grammarSuffix = "" ;
+    grammarSuffix << "_" << grammarIndex ;
   }
 
 //--- Generate 'mainForLIBPM' routine
@@ -418,79 +431,98 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "    TC_UniqueArray <C_String> sourceFilesArray ;\n"
                     "  //--- Analyze Command Line Options\n"
                     "    F_Analyze_CLI_Options (argc, argv,\n"
-                    "                               " ;
+                    "                           " ;
   generatedZone2.writeCstringConstant (inVersionString) ;
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
   generatedZone2 << ",\n"
                     "                           options,\n"
                     "                           sourceFilesArray,\n"
-                    "                           \"\",\n"
-                  "                             IOparameters.mCocoaOutput) ;\n"
-                  "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
-                  "    #ifdef SIOUX_IS_IMPLEMENTED\n"
-                  "      SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
-                  "                                                                             ASK_TO_SAVE_ON_CLOSE,\n"
-                  "                                                                             false) ;\n"
-                  "    #endif\n"
-                  "  //--- Enable 64 bit alloc debug ? Only if compiled in 64 bit and in debug mode\n"
-                  "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                  "      #ifdef __LP64__\n"
-                  "        if (options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
-                  "                                             \"enable_allocation_debugging\",\n"
-                  "                                             false)) {\n"
-                  "          enableAllocDebugFor64BitTool () ;\n"
-                  "        }\n"
-                  "      #endif\n"
-                  "    #endif\n"
-                  "    try{\n"
-                  "      verboseOptionOn = options.boolOptionValueFromKeys (\"generic_galgas_cli_options\",\n"
-                  "                                                         \"verbose_output\",\n"
-                  "                                                         false) ;\n"
-                  "      " << inProgramComponentName << "_prologue (options) ;\n"
-                  "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
-                  "        " << inProgramComponentName << currentGrammar->mGrammarPostfix
-               << " * compiler = NULL ;\n"
-                  "        macroMyNew (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix
-               << " (IOparameters COMMA_HERE)) ;\n"
-                  "        compiler->_prologue () ;\n"
-                  "        sint16 r = 0 ;\n"
-                  "        compiler->doCompilation (sourceFilesArray (i COMMA_HERE), verboseOptionOn, r) ;\n"
-                  "        if (r != 0) {\n"
-                  "          returnCode = r ;\n"
-                  "        }\n"
-                  "        compiler->_epilogue () ;\n"
-                  "        macroMyDelete (compiler, " << inProgramComponentName << currentGrammar->mGrammarPostfix << ") ;\n"
-                  "      }\n"
-                  "      " << inProgramComponentName << "_epilogue (options) ;\n"
-                  "    }catch (const M_STD_NAMESPACE exception & e) {\n"
-                  "      F_default_display_exception (e) ;\n"
-                  "      returnCode = 1 ; // Error code\n"
-                  "    }catch (...) {\n"
-                  "      F_default_display_unknown_exception () ;\n"
-                  "      returnCode = 2 ; // Error code\n"
-                  "    }\n"
-                  "  }\n"
-                  "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                  "    C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
-                  "  #endif\n"
-                  "  if (verboseOptionOn) {\n"
-                  "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                  "      const uint64 maxUsedMemorySize = getMaxUsedMemorySize () ;\n"
-                  "      const uint64 oneMegaByte = 1 << 20 ;\n"
-                  "      const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;\n"
-                  "      const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;\n"
-                  "      co << getCreatedDynamicObjectsTotalCount ()\n"
-                  "         << \" C++ objects have been created (\"\n"
-                  "         << megaBytes << \".\" << widthWithZeroFill (3) << fraction\n"
-                  "         << \" MB).\\n\" ;\n"
-                  "      deactivateMemoryControl () ;\n"
-                  "      if ((getAllocationBalance () != 0) && (returnCode == 0)) {\n"
-                  "        display_pointers () ;\n"
-                  "      }\n"
-                  "    #endif\n"
-                  "  }\n"
-                  "  return returnCode ;\n"
-                  "}\n\n" ;
+                    "                           IOparameters.mCocoaOutput) ;\n"
+                    "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
+                    "    #ifdef SIOUX_IS_IMPLEMENTED\n"
+                    "      SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
+                    "                                                                             ASK_TO_SAVE_ON_CLOSE,\n"
+                    "                                                                             false) ;\n"
+                    "    #endif\n"
+                    "  //--- Enable 64 bit alloc debug ? Only if compiled in 64 bit and in debug mode\n"
+                    "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "      #ifdef __LP64__\n"
+                    "        if (options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
+                    "                                             \"enable_allocation_debugging\",\n"
+                    "                                             false)) {\n"
+                    "          enableAllocDebugFor64BitTool () ;\n"
+                    "        }\n"
+                    "      #endif\n"
+                    "    #endif\n"
+                    "    try{\n"
+                    "      verboseOptionOn = options.boolOptionValueFromKeys (\"generic_galgas_cli_options\",\n"
+                    "                                                         \"verbose_output\",\n"
+                    "                                                         false) ;\n"
+                    "      " << inProgramComponentName << "_prologue (options) ;\n"
+                    "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
+                    "        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
+                    "        sint16 r = 0 ;\n" ;
+  currentGrammar = inGrammarDescriptorsList.firstObject () ;
+  grammarIndex = 0 ;
+  grammarSuffix = "" ;
+  while (currentGrammar != NULL) {
+    macroValidPointer (currentGrammar) ;
+    C_String grammarClassName ;
+    grammarClassName << "grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << grammarSuffix ;
+    generatedZone2 << "        " ;
+    if (grammarIndex > 0) {
+      generatedZone2 << "}else " ;
+    }
+    generatedZone2 << "if (fileExtension.compare (\"" << currentGrammar->mSourceExtension << "\") == 0) {\n"
+                      "          " << grammarClassName << " * compiler = NULL ;\n"
+                      "          macroMyNew (compiler, " << grammarClassName << " (IOparameters COMMA_HERE)) ;\n"
+                      "          compiler->_prologue () ;\n"
+                      "          compiler->doCompilation (sourceFilesArray (i COMMA_HERE), verboseOptionOn, r) ;\n"
+                      "          compiler->_epilogue () ;\n"
+                      "          macroMyDelete (compiler, " << grammarClassName << ") ;\n" ;
+    currentGrammar = currentGrammar->nextObject () ;
+    grammarIndex ++ ;
+    grammarSuffix = "" ;
+    grammarSuffix << "_" << grammarIndex ;
+  }
+  generatedZone2 << "        }else{\n"
+                    "          printf (\"*** Error: unhandled extension for file '%s' ***\\n\", sourceFilesArray (i COMMA_HERE).cString ()) ;\n"
+                    "          r = 1 ;\n"
+                    "        }\n"
+                    "        if (r != 0) {\n"
+                    "          returnCode = r ;\n"
+                    "        }\n"
+                    "      }\n"
+                    "      " << inProgramComponentName << "_epilogue (options) ;\n"
+                    "    }catch (const M_STD_NAMESPACE exception & e) {\n"
+                    "      F_default_display_exception (e) ;\n"
+                    "      returnCode = 1 ; // Error code\n"
+                    "    }catch (...) {\n"
+                    "      F_default_display_unknown_exception () ;\n"
+                    "      returnCode = 2 ; // Error code\n"
+                    "    }\n"
+                    "  }\n"
+                    "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "    C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
+                    "  #endif\n"
+                    "  if (verboseOptionOn) {\n"
+                    "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "      const uint64 maxUsedMemorySize = getMaxUsedMemorySize () ;\n"
+                    "      const uint64 oneMegaByte = 1 << 20 ;\n"
+                    "      const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;\n"
+                    "      const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;\n"
+                    "      co << getCreatedDynamicObjectsTotalCount ()\n"
+                    "         << \" C++ objects have been created (\"\n"
+                    "         << megaBytes << \".\" << widthWithZeroFill (3) << fraction\n"
+                    "         << \" MB).\\n\" ;\n"
+                    "      deactivateMemoryControl () ;\n"
+                    "      if ((getAllocationBalance () != 0) && (returnCode == 0)) {\n"
+                    "        display_pointers () ;\n"
+                    "      }\n"
+                    "    #endif\n"
+                    "  }\n"
+                    "  return returnCode ;\n"
+                    "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 //--- User Zone 2 : prologue and epilogue
   C_String userZone2 ; userZone2.setAllocationExtra (1000) ;
@@ -502,17 +534,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   userZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
   userZone2 << "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
                "// ADD YOUR CODE HERE\n"
-               "}\n" ;
-  userZone2.writeCppTitleComment ("P R O L O G U E") ;
-  userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
-               "_prologue (void) {\n"
-               "//--- ADD YOUR CODE HERE\n"
-               "}\n" ;
-  userZone2.writeCppTitleComment ("E P I L O G U E") ;
-  userZone2 << "void " << inProgramComponentName << currentGrammar->mGrammarPostfix << "::\n"
-               "_epilogue (void) {\n"
-               "//--- ADD YOUR CODE HERE\n"
-               "}\n" ;
+               "}\n\n" ;
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
                                                                   "verbose_output",
