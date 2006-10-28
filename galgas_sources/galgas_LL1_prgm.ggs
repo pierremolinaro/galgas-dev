@@ -20,7 +20,9 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
   error 100 ;
   warning 100 ;
-  when . "ggs": galgas_LL1_grammar (
+  when . "ggs":
+    message "a GALGAS source file"
+    grammar galgas_LL1_grammar (
     mLexiqueMapForUse,
     mSemanticsComponentsMap,
     mSyntaxComponentsMap,

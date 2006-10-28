@@ -287,13 +287,18 @@ createProgramFile (const C_String & inCreatedProjectPathName,
   if (inProjectStyle == kMDAproject) {
     f << "#--- WARNING : metamodel handling will change in future releases\n"
          "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n"
-         "import constraint " << projectName << "_constraints in \"" << projectName << "_constraints.ggs\" ;\n"
-         "metamodel " << projectName << "_metamodel (" << projectName << "_constraints) ;\n" ;
+         "import constraint " << projectName << "_constraints in \"" << projectName << "_constraints.ggs\" ;\n" ;
   }
   f << "#--- max error and warning count\n"
        "error 100 ;\n"
        "warning 100 ;\n"
-       "when . \"" << projectName << "\":" << projectName << "_grammar ;\n"
+       "when . \"" << projectName << "\":\n"
+       "  message \"a source text file with the ." << projectName << " extension\"\n"
+       "  grammar " << projectName << "_grammar\n" ;
+  if (inProjectStyle == kMDAproject) {
+    f << "  metamodel " << projectName << "_metamodel (" << projectName << "_constraints)\n" ;
+  }
+  f << "  ;\n"
        "end program ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
