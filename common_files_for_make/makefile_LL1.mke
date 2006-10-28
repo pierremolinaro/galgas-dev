@@ -18,6 +18,5 @@ include ../common_files_for_make/common_sources_makefile.mke
 SOURCES += galgas_LL1_grammar.cpp
 SOURCES += ggs_LL1_compile_component.cpp
 SOURCES += galgas_LL1_prgm.cpp
-SOURCES += prgm_LL1.cpp
 
 #---------------------------------------------------------------*

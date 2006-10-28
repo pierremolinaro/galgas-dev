@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------*
 
 //--- Only for debugging !!!
-//#define FORCED_GALGAS_VERSION @"1.2.3"
+#define FORCED_GALGAS_VERSION @"1.2.3"
 
 //--------------------------------------------------------------------------*
 
@@ -351,7 +351,7 @@
       //--- Display change log in Web View
         NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
         [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-        [mChangeLogWebView makeTextSmaller:nil] ;
+        [mChangeLogWebView setPolicyDelegate:self] ;
         NSString * s = [NSString stringWithFormat:
           @"Current version is %@; the %@ version can be downloaded.",
           galgasVersion,
@@ -404,6 +404,20 @@
     }
   }
   [inDownloader release] ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (void)webView:(WebView *)sender
+        decidePolicyForNavigationAction:(NSDictionary *)actionInformation
+        request:(NSURLRequest *)request
+        frame:(WebFrame *)frame
+        decisionListener:(id<WebPolicyDecisionListener>)listener {
+  [listener ignore] ;
+  NSURL * requestedURL = [request URL] ;
+//  NSLog (@"requestedURL: '%@'", requestedURL) ;
+  NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
+  [ws openURL:requestedURL] ;
 }
 
 //--------------------------------------------------------------------------*

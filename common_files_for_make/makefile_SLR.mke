@@ -18,6 +18,5 @@ include ../common_files_for_make/common_sources_makefile.mke
 SOURCES += galgas_SLR_grammar.cpp
 SOURCES += ggs_SLR_compile_component.cpp
 SOURCES += galgas_SLR_prgm.cpp
-SOURCES += prgm_SLR.cpp
 
 #---------------------------------------------------------------*

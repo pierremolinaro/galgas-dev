@@ -173,9 +173,35 @@ rule <galgas_component>
    repeat
   #--- Source file extension definition
     $.$ ;
-    @lstring extensionSource ; # extension fichiers source
-    $literal_string$ ? extensionSource ;
+    @lstring sourceExtension ;
+    $literal_string$ ? sourceExtension ;
+  #--- Check source extension
+    if [[sourceExtension string] length] == 0 then
+      error sourceExtension: "the source extension should not be empty" ;
+    else
+      @uint index := 0 ;
+      @bool ok := true ;
+      loop [[sourceExtension string] length] + 1 :
+      while (index < [[sourceExtension string] length]) & ok do
+        @char c := [[sourceExtension string] characterAtIndex !index] ;
+        ok := ((c >= 'a') & (c <= 'z')) | ((c >= 'A') & (c <= 'Z')) | ((c >= '0') & (c <= '9')) | (c == '_') ;
+        index ++ ;
+      end loop ;
+      if not ok then
+        error sourceExtension: "the source extension should contains only lower case letters, upper case letters, digits and underscore characters" ;
+      end if ;
+    end if ;
     $:$ ;
+    @string helpMessage ;
+    select
+      helpMessage := "" ;
+    or
+      $message$ ;
+      @lstring messageString ;
+      $literal_string$ ? messageString ;
+      helpMessage := [messageString string] ;
+    end select ;
+    $grammar$ ;
     @lstring grammarName ;
     $identifier$ ? grammarName ;
     @lstring lexiqueClassName ;
@@ -234,7 +260,8 @@ rule <galgas_component>
       !returnedMetamodel
       !rootEntityName
       !contraintListForMetamodel
-      !extensionSource
+      !sourceExtension
+      !helpMessage
       !optionsComponentsMap
     ;
   while
@@ -310,6 +337,12 @@ label importLexique
     $.$ ;
     $literal_string$ ? * ; # Source file extension
     $:$ ;
+    select
+    or
+      $message$ ;
+      $literal_string$ ? * ;
+    end select ;
+    $grammar$ ;
     $identifier$ ? * ; # Grammar name
     <program_attributes_declaration> parse ;
     select
@@ -394,6 +427,12 @@ label importSyntax
     $.$ ;
     $literal_string$ ? * ; # Source file extension
     $:$ ;
+    select
+    or
+      $message$ ;
+      $literal_string$ ? * ;
+    end select ;
+    $grammar$ ;
     $identifier$ ? * ; # Grammar name
     <program_attributes_declaration> parse ;
     select
@@ -477,6 +516,12 @@ label importSemantics
     $.$ ;
     $literal_string$ ? * ; # Source file extension
     $:$ ;
+    select
+    or
+      $message$ ;
+      $literal_string$ ? * ;
+    end select ;
+    $grammar$ ;
     $identifier$ ? * ; # Grammar name
     <program_attributes_declaration> parse ;
     select
@@ -560,6 +605,12 @@ label importGrammarForSemantics
     $.$ ;
     $literal_string$ ? * ; # Source file extension
     $:$ ;
+    select
+    or
+      $message$ ;
+      $literal_string$ ? * ;
+    end select ;
+    $grammar$ ;
     $identifier$ ? * ; # Grammar name
     <program_attributes_declaration> parse ;
     select
@@ -641,6 +692,12 @@ label importOptions
     $.$ ;
     $literal_string$ ? * ; # Source file extension
     $:$ ;
+    select
+    or
+      $message$ ;
+      $literal_string$ ? * ;
+    end select ;
+    $grammar$ ;
     $identifier$ ? * ; # Grammar name
     <program_attributes_declaration> parse ;
     select

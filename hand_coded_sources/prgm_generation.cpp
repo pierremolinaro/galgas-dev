@@ -428,6 +428,23 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "    IOparameters.mMaxWarningsCount = "
                  << inMaxWarningsCount
                  << " ;\n"
+                 << "    const char * extensions [] = {" ;
+  currentGrammar = inGrammarDescriptorsList.firstObject () ;
+  while (currentGrammar != NULL) {
+    macroValidPointer (currentGrammar) ;
+    generatedZone2 << "\"" << currentGrammar->mSourceExtension << "\", " ;
+    currentGrammar = currentGrammar->nextObject () ;
+  }
+  generatedZone2 << "NULL} ;\n"
+                 << "    const char * helpMessages [] = {" ;
+  currentGrammar = inGrammarDescriptorsList.firstObject () ;
+  while (currentGrammar != NULL) {
+    macroValidPointer (currentGrammar) ;
+    generatedZone2.writeCstringConstant (currentGrammar->mHelpMessage) ;
+    generatedZone2 << ", " ;
+    currentGrammar = currentGrammar->nextObject () ;
+  }
+  generatedZone2 << "NULL} ;\n"
                     "    TC_UniqueArray <C_String> sourceFilesArray ;\n"
                     "  //--- Analyze Command Line Options\n"
                     "    F_Analyze_CLI_Options (argc, argv,\n"
@@ -437,12 +454,14 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2 << ",\n"
                     "                           options,\n"
                     "                           sourceFilesArray,\n"
+                    "                           extensions,\n"
+                    "                           helpMessages,\n"
                     "                           IOparameters.mCocoaOutput) ;\n"
                     "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
                     "    #ifdef SIOUX_IS_IMPLEMENTED\n"
                     "      SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
-                    "                                                                             ASK_TO_SAVE_ON_CLOSE,\n"
-                    "                                                                             false) ;\n"
+                    "                                                                        ASK_TO_SAVE_ON_CLOSE,\n"
+                    "                                                                        false) ;\n"
                     "    #endif\n"
                     "  //--- Enable 64 bit alloc debug ? Only if compiled in 64 bit and in debug mode\n"
                     "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
