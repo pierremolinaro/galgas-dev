@@ -2826,6 +2826,15 @@
 			<Option target="galgasLR1_debug"/>
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
+		<Unit filename="..\hand_coded_sources\metamodel_methods.cpp">
+			<Option compilerVar="CPP"/>
+			<Option target="galgas"/>
+			<Option target="galgas_debug"/>
+			<Option target="galgas_SLR"/>
+			<Option target="galgas_SLR_debug"/>
+			<Option target="galgasLR1"/>
+			<Option target="galgasLR1_debug"/>
+		</Unit>
 		<Unit filename="..\hand_coded_sources\option_component_generation.cpp">
 			<Option compilerVar="CC"/>
 			<Option target="galgas"/>
@@ -3227,15 +3236,6 @@
 			<Option target="galgasLR1_debug"/>
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
-		<Unit filename="..\..\libpm\galgas\C_galgas_CLI_Options.cpp">
-			<Option compilerVar="CC"/>
-			<Option target="galgas"/>
-			<Option target="galgas_debug"/>
-			<Option target="galgas_SLR"/>
-			<Option target="galgasLR1"/>
-			<Option target="galgasLR1_debug"/>
-			<Option target="galgas_SLR_debug"/>
-		</Unit>
 		<Unit filename="..\..\libpm\galgas\AC_galgas_io.cpp">
 			<Option compilerVar="CC"/>
 			<Option target="galgas"/>
@@ -3296,6 +3296,15 @@
 			<Option target="galgasLR1_debug"/>
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
+		<Unit filename="..\..\libpm\galgas\C_GGS_MapIndex.cpp">
+			<Option compilerVar="CC"/>
+			<Option target="galgas"/>
+			<Option target="galgas_debug"/>
+			<Option target="galgas_SLR"/>
+			<Option target="galgasLR1"/>
+			<Option target="galgasLR1_debug"/>
+			<Option target="galgas_SLR_debug"/>
+		</Unit>
 		<Unit filename="..\..\libpm\galgas\C_GGS_Object.cpp">
 			<Option compilerVar="CC"/>
 			<Option target="galgas"/>
@@ -3314,7 +3323,7 @@
 			<Option target="galgasLR1_debug"/>
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
-		<Unit filename="..\..\libpm\galgas\C_GGS_MapIndex.cpp">
+		<Unit filename="..\..\libpm\galgas\C_galgas_CLI_Options.cpp">
 			<Option compilerVar="CC"/>
 			<Option target="galgas"/>
 			<Option target="galgas_debug"/>
@@ -3423,6 +3432,26 @@
 			<Option target="galgasLR1_debug"/>
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
+		<Unit filename="..\..\libpm\galgas\GGS_double.cpp">
+			<Option compilerVar="CC"/>
+			<Option target="galgas"/>
+			<Option target="galgas_debug"/>
+			<Option target="galgas_SLR"/>
+			<Option target="galgasLR1"/>
+			<Option target="galgasLR1_debug"/>
+			<Option target="galgas_SLR_debug"/>
+		</Unit>
+		<Unit filename="..\..\libpm\galgas\GGS_double.h">
+			<Option compilerVar="CC"/>
+			<Option compile="0"/>
+			<Option link="0"/>
+			<Option target="galgas"/>
+			<Option target="galgas_debug"/>
+			<Option target="galgas_SLR"/>
+			<Option target="galgasLR1"/>
+			<Option target="galgasLR1_debug"/>
+			<Option target="galgas_SLR_debug"/>
+		</Unit>
 		<Unit filename="..\..\libpm\galgas\GGS_lbool.cpp">
 			<Option compilerVar="CC"/>
 			<Option target="galgas"/>
@@ -3453,6 +3482,26 @@
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
 		<Unit filename="..\..\libpm\galgas\GGS_lchar.h">
+			<Option compilerVar="CC"/>
+			<Option compile="0"/>
+			<Option link="0"/>
+			<Option target="galgas"/>
+			<Option target="galgas_debug"/>
+			<Option target="galgas_SLR"/>
+			<Option target="galgasLR1"/>
+			<Option target="galgasLR1_debug"/>
+			<Option target="galgas_SLR_debug"/>
+		</Unit>
+		<Unit filename="..\..\libpm\galgas\GGS_ldouble.cpp">
+			<Option compilerVar="CC"/>
+			<Option target="galgas"/>
+			<Option target="galgas_debug"/>
+			<Option target="galgas_SLR"/>
+			<Option target="galgasLR1"/>
+			<Option target="galgasLR1_debug"/>
+			<Option target="galgas_SLR_debug"/>
+		</Unit>
+		<Unit filename="..\..\libpm\galgas\GGS_ldouble.h">
 			<Option compilerVar="CC"/>
 			<Option compile="0"/>
 			<Option link="0"/>
@@ -3653,46 +3702,6 @@
 			<Option target="galgas_SLR_debug"/>
 		</Unit>
 		<Unit filename="..\..\libpm\galgas\GGS_stringset.h">
-			<Option compilerVar="CC"/>
-			<Option compile="0"/>
-			<Option link="0"/>
-			<Option target="galgas"/>
-			<Option target="galgas_debug"/>
-			<Option target="galgas_SLR"/>
-			<Option target="galgasLR1"/>
-			<Option target="galgasLR1_debug"/>
-			<Option target="galgas_SLR_debug"/>
-		</Unit>
-		<Unit filename="..\..\libpm\galgas\GGS_double.cpp">
-			<Option compilerVar="CC"/>
-			<Option target="galgas"/>
-			<Option target="galgas_debug"/>
-			<Option target="galgas_SLR"/>
-			<Option target="galgasLR1"/>
-			<Option target="galgasLR1_debug"/>
-			<Option target="galgas_SLR_debug"/>
-		</Unit>
-		<Unit filename="..\..\libpm\galgas\GGS_double.h">
-			<Option compilerVar="CC"/>
-			<Option compile="0"/>
-			<Option link="0"/>
-			<Option target="galgas"/>
-			<Option target="galgas_debug"/>
-			<Option target="galgas_SLR"/>
-			<Option target="galgasLR1"/>
-			<Option target="galgasLR1_debug"/>
-			<Option target="galgas_SLR_debug"/>
-		</Unit>
-		<Unit filename="..\..\libpm\galgas\GGS_ldouble.cpp">
-			<Option compilerVar="CC"/>
-			<Option target="galgas"/>
-			<Option target="galgas_debug"/>
-			<Option target="galgas_SLR"/>
-			<Option target="galgasLR1"/>
-			<Option target="galgasLR1_debug"/>
-			<Option target="galgas_SLR_debug"/>
-		</Unit>
-		<Unit filename="..\..\libpm\galgas\GGS_ldouble.h">
 			<Option compilerVar="CC"/>
 			<Option compile="0"/>
 			<Option link="0"/>
