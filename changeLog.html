@@ -11,11 +11,13 @@
    <p>1.4.9</p>
    <ul>
     <li><font color="#FF0000"><b>WARNING: INCOMPATIBILITY ISSUE;</b></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.4.9">1.4.9 release notes</a>];</li>
-    <li>New command line option: <tt><b>-W</b></tt> or <tt><b>%%--%%Werror</b></tt>, that treats warnings as errors (similar to <tt><b>-Werror</b></tt> gcc command line option);</li>
+    <li>New command line option: <tt><b>-W</b></tt> or <tt><b>--Werror</b></tt>, that treats warnings as errors (similar to <tt><b>-Werror</b></tt> gcc command line option);</li>
     <li>Improved list generated code: GALGAS generates smaller code size, using a common super class: <tt><b>AC_galgas_list</b></tt>;</li>
     <li>new <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#characteratindex"><tt><b>characterAtIndex</b></tt></a> that returns the character at index given by argument value;</li>
     <li>new <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#length"><tt><b>length</b></tt></a> that returns the number of characters;</li>
     <li>new <tt><b>@string</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithcurrentdirectory"><tt><b>stringWithCurrentDirectory</b></tt></a> that returns the current directory;</li>
+    <li>new <tt><b>@uint</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#errorcount"><tt><b>errorCount</b></tt></a> that returns the number of errors;</li>
+    <li>new <tt><b>@uint</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#warningcount"><tt><b>warningCount</b></tt></a> that returns the number of warnings;</li>
     <li>GALGAS generated code now contains checkings for detecting GALGAS version mismatch against <tt><b>libpm</b></tt> library version;
    </ul>
    <p>1.4.8</p>
