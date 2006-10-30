@@ -290,6 +290,11 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
     bool first = true ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
+      if (first) {
+        first = false ;
+      }else{
+        generatedZone3 << ",\n                             " ;
+      }
       currentProperty->mInfo.mProperty (HERE)->generateFormalParameter (generatedZone3, currentProperty->mKey) ;
       currentProperty = currentProperty->nextObject () ;
     }

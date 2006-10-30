@@ -984,11 +984,12 @@ rule <rule_declaration_or_implementation>
       when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName) ->
         @AC_semanticsEntity entite ;
         [ioEntitiesMap searchKey !kReferenceEntityName ?entite] ;
-        @AC_galgasType definitionType ;
-        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
+        @AC_galgasType definitionType := [@typeGalgas_multipleEntity new ! kReferenceEntityName] ;
+#        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
         @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
         [!?ioVariablesMap insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        #log nomVariable, definitionType, nomCppVariable ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
         listeInstructions += !instruction ;
       else
@@ -1295,7 +1296,7 @@ rule <syntax_instruction>
       @AC_galgasType type ;
       [!?ioVariablesMap searchForReadWriteAccess !returnedEntityVariableName ?type ?*] ;
       @lstring typeName ;
-      extract type->@typeGalgas_multipleEntity (? typeName) error returnedEntityVariableName : messageGalgasType ;
+      extract type->@typeGalgas_multipleEntity (...) error returnedEntityVariableName : messageGalgasType ;
     else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;

@@ -335,11 +335,6 @@ template <typename INFO> class cGalgasVariablesMap {
   public : void epilogue_repeatPart (C_Lexique &,
                                      const GGS_location & COMMA_LOCATION_ARGS) ;
 
-//--- Methodes de bloc pour chaque branche d'une methode double
-  public : void prologue_blocTestMethodeDouble (C_Lexique & COMMA_LOCATION_ARGS) ;
-  public : void epilogue_blocTestMethodeDouble (C_Lexique &,
-                                                const GGS_location & COMMA_LOCATION_ARGS) ;
-
 //--- Methodes internes privees
   private : sint32 insertKey (C_Lexique & inLexique,
                          const INFO & info,
