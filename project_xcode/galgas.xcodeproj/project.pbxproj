@@ -1980,7 +1980,7 @@
 		CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelMultipleReferenceProperty.h; sourceTree = "<group>"; };
 		CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelProperty.h; sourceTree = "<group>"; };
 		CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelSingleReferenceProperty.h; sourceTree = "<group>"; };
-		CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = metamodel_methods.cpp; path = ../hand_coded_sources/metamodel_methods.cpp; sourceTree = SOURCE_ROOT; };
+		CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_methods.cpp; sourceTree = "<group>"; };
 		CFEB5FD309D15D9F003FF985 /* C_GGS_entityMap.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_entityMap.cpp; sourceTree = "<group>"; };
 		CFEB5FD409D15D9F003FF985 /* C_GGS_entityMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_entityMap.h; sourceTree = "<group>"; };
 		CFEC15F509CA026700204242 /* metamodel_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_generation.cpp; sourceTree = "<group>"; };
@@ -2254,7 +2254,6 @@
 			children = (
 				CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */,
 				CF446B5909C9C4F0005CBDC8 /* metamodel_parser.h */,
-				CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */,
 			);
 			name = "Metamodel Component";
 			sourceTree = "<group>";
@@ -2558,6 +2557,7 @@
 		CFEC15F109CA021000204242 /* Metamodel Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */,
 				CFEC15F509CA026700204242 /* metamodel_generation.cpp */,
 			);
 			name = "Metamodel Component";

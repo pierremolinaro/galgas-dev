@@ -842,6 +842,7 @@ verifierChampEtatApres (C_Lexique & inLexique,
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {
+  // printf ("cGalgasVariablesMap <INFO>::prologue_testBloc\n") ;
   typeSurchargeTable * tempo = (typeSurchargeTable *) NULL ;
   macroMyNew (tempo, typeSurchargeTable) ;
   tempo->mNextItem = aListeSurcharges ;
@@ -861,6 +862,7 @@ void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Lexique & COMMA_UNUSED_LOC
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::epilogue_testBloc (C_Lexique & COMMA_UNUSED_LOCATION_ARGS) {
+  // printf ("cGalgasVariablesMap <INFO>::epilogue_testBloc\n") ;
   typeSurchargeTable * surchargeCourante = aListeSurcharges ;
   while (surchargeCourante != NULL) {
     macroValidPointer (surchargeCourante) ;
@@ -960,33 +962,6 @@ epilogue_repeatPart (C_Lexique & inLexique,
                  "la branche precedente change l'etat de la variable '", "'") ;
     surchargeCourante = surchargeCourante->mNextItem ;
   }
-}
-
-//---------------------------------------------------------------------------*
-
-template <typename INFO>
-void cGalgasVariablesMap <INFO>::
-prologue_blocTestMethodeDouble (C_Lexique &
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  macroVoidPointer (aListeSurcharges) ;
-  macroMyNew (aListeSurcharges, typeSurchargeTable) ;
-  aListeSurcharges->champTable = _mRoot ;
-  _mRoot = (element_type *) NULL ;
-}
-
-//---------------------------------------------------------------------------*
-
-template <typename INFO>
-void cGalgasVariablesMap <INFO>::
-epilogue_blocTestMethodeDouble (C_Lexique & inLexique,
-                                const GGS_location & positionErreur
-                                COMMA_LOCATION_ARGS) {
-  macroValidPointer (aListeSurcharges) ;
-  verificationRecursiveConsommation (inLexique, aListeSurcharges->champTable, positionErreur COMMA_THERE) ;
-  macroMyDelete (_mRoot, element_type) ;
-  _mRoot = aListeSurcharges->champTable ;
-  macroMyDelete (aListeSurcharges, typeSurchargeTable) ;
-  remettreVariablesDansEtatInitial (_mRoot) ;
 }
 
 //---------------------------------------------------------------------------*

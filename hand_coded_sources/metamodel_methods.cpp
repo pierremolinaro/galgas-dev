@@ -181,8 +181,8 @@ generateFormalParameter (AC_OutputStream & inHFile,
 void cPtr_metamodelMultipleReferenceProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS_" << mReferenceEntityName
-          << " * _in_" << inPropertyName ;
+  inHFile << "GGS__listOf_" << mReferenceEntityName
+          << " & _in_" << inPropertyName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -190,8 +190,8 @@ generateFormalParameter (AC_OutputStream & inHFile,
 void cPtr_metamodelSingleReferenceProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS__listOf_" << mReferenceEntityName
-          << " & _in_" << inPropertyName ;
+  inHFile << "GGS_" << mReferenceEntityName
+          << " * & _in_" << inPropertyName ;
 }
 
 //---------------------------------------------------------------------------*

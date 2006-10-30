@@ -146,7 +146,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << "    if (" ;
     aNomVariable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".getPtr () != NULL) {\n"
-                 "      TC_UniqueArray <C_String> message1_ (1 COMMA_HERE) ;\n"
+                 "      TC_UniqueArray <C_String> message1_ (1, \"\" COMMA_HERE) ;\n"
                  "      C_String message2_ ;\n"
                  "      message1_ (0 COMMA_HERE) << "
                  "cPtr_" << aNomClasse << "::static_string_message_" << aNomMessage << " () ;\n"
