@@ -220,12 +220,18 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Engendrer la declaration de la redefinition de l'operateur =
              "//--- Assignment operator\n"
-             "  public : void operator = (const GGS_" << aNomClasse << " &) ;\n" ;
+             "  public : void operator = (const GGS_" << aNomClasse << " &) ;\n"
+
+//--- Comparison
+             "//--- Comparison methods\n"
+             "  public : GGS_bool operator == (const GGS_" << aNomClasse << " & inOperand) const ;\n"
+             "  public : GGS_bool operator != (const GGS_" << aNomClasse << " & inOperand) const ;\n" ;
 
   if (superClassName.length () == 0) {
 //--- Engendrer la declaration de la methode '_isBuilt'
     inHfile << "//--- _isBuilt\n"
                "  public : inline bool _isBuilt (void) const { return mPointer != NULL ; }\n"
+
 
 //--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
                "//--- isEqualTo\n"
@@ -353,7 +359,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
                     "                                              C_String & ioString,\n"
                     "                                              const sint32 inIndentation\n"
-                    "                                              COMMA_LOCATION_ARGS) const ;\n" ;
+                    "                                              COMMA_LOCATION_ARGS) const ;\n"
+                    "//--- Comparison\n"
+                    "  public : virtual bool isEqualToObject (const C_GGS_Object * inOperand) const = 0 ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
@@ -593,6 +601,27 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "}\n\n" ; 
   }
 
+//--- Generate comparison operators
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
+               "operator == (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "  bool equal = mPointer == inOperand.mPointer ;\n"
+               "  if (_isBuilt () && inOperand._isBuilt () && ! equal) {\n"
+               "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
+               "  }\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), equal) ;\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
+               "operator != (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "  bool equal = mPointer == inOperand.mPointer ;\n"
+               "  if (_isBuilt () && inOperand._isBuilt () && ! equal) {\n"
+               "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
+               "  }\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! equal) ;\n"
+               "}\n\n" ;
+
 //--- Generate 'description' reader implementation
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
@@ -689,6 +718,11 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
+//--- Comparison
+             "//--- Comparison methods\n"
+             "  public : GGS_bool operator == (const GGS_" << aNomClasse << " & inOperand) const ;\n"
+             "  public : GGS_bool operator != (const GGS_" << aNomClasse << " & inOperand) const ;\n"
+//--- 'new' constructor
              "//--- 'new' constructor\n"
              "  public : static GGS_" << aNomClasse
           << " constructor_new (C_Lexique & inLexique" ;
@@ -796,7 +830,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
                     "                                              C_String & ioString,\n"
                     "                                              const sint32 inIndentation\n"
-                    "                                              COMMA_LOCATION_ARGS) const ;\n" ;
+                    "                                              COMMA_LOCATION_ARGS) const ;\n"
+                    "//--- Comparison\n"
+                    "  public : virtual bool isEqualToObject (const C_GGS_Object * inOperand) const ;\n" ;
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;  
@@ -901,58 +937,35 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << " {\n"
                "}\n\n" ;
 
-//--- Engendrer le constructeur de la classe (uniquement si il y a des attributs)
-/*  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
-  inCppFile << "cPtr_" << aNomClasse << "::cPtr_" << aNomClasse << " (" ;
-  sint32 variableIndex = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (variableIndex > 0) {
-      inCppFile << ",\n                                " ;
-    }
-    inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << variableIndex ;
-    current = current->nextObject () ;
-    variableIndex ++ ;
-  }
-  if (variableIndex == 0) {
-    inCppFile << "LOCATION_ARGS)" ;
-  }else{
-    inCppFile << " COMMA_LOCATION_ARGS)" ;
-  }
-  variableIndex = 0 ;
-  const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
+  inCppFile.writeCppHyphenLineComment () ;
   current = aListeTousAttributsNonExternes.firstObject () ;
-//--- Appel du constructeur de la classe mere, si il y en a une
-  if (superClassName.length () > 0) {
-    inCppFile << "\n:"
-                 "cPtr_" << superClassName << " (" ;
-    variableIndex = 0 ;
-    for (sint32 i=0 ; i<nombreArgumentsHerites ; i++)  {
-      if (variableIndex > 0) {
-        inCppFile << ", " ;
-      }
-      inCppFile << "argument_" << variableIndex ;
-      macroValidPointer (current) ;
-      current = current->nextObject () ;
-      variableIndex ++ ;
-    }
-    if (variableIndex > 0) {
-      inCppFile << " COMMA_THERE)" ;
-    }else{
-      inCppFile << "THERE)" ;
-    }
+  inCppFile << "bool cPtr_" << aNomClasse << "::\n"
+               "isEqualToObject (const C_GGS_Object * inOperand) const {\n" ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
+  if (current == NULL) {
+    inCppFile << "  return typeid (this) == typeid (inOperand) ;\n" ;
+  }else{
+    inCppFile << "  bool equal = typeid (this) == typeid (inOperand) ;\n"
+                 "  if (equal) {\n"
+                 "    const cPtr_" << aNomClasse << " * _p = dynamic_cast <const cPtr_" << aNomClasse << " *> (inOperand) ;\n"
+                 "    macroValidPointer (_p) ;\n"
+                 "    equal = " ;
+    bool first = true ;
     while (current != NULL) {
-      inCppFile << ",\n" ;
       macroValidPointer (current) ;
-      inCppFile << current->aNomAttribut << " (argument_" << variableIndex << ")" ;
-      variableIndex ++ ;
+      if (first) {
+        first = false ;
+      }else{
+        inCppFile << "\n         && " ;
+      }
+      inCppFile << "(" << current->aNomAttribut << " == _p->" << current->aNomAttribut << ").boolValue ()" ;
       current = current->nextObject () ;
     }
+    inCppFile << " ;\n"
+                 "  }\n"
+                 "  return equal ;\n" ;
   }
-  inCppFile << " {\n"
-               "}\n\n" ;*/
+  inCppFile << "}\n\n" ;
 
 //--- Pour chaque methode non abstraite, engendrer son implementation
   generateClassMethodsImplementation (mMethodsMap, inCppFile, aNomClasse, inTargetFileName,
@@ -1109,6 +1122,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "  }\n"
                "#endif\n\n" ;
+
+//--- Generate comparison operators
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
+               "operator == (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), mPointer == inOperand.mPointer) ;\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
+               "operator != (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), mPointer != inOperand.mPointer) ;\n"
+               "}\n\n" ;
 
 //--- Engendrer la declaration de la methode '_drop_operation'
   if (superClassName.length () == 0) {

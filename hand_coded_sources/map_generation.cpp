@@ -60,6 +60,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : inline elementOf_GGS_" << aNomTable << " * nextObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mNextItem ; }\n"
              "  public : inline elementOf_GGS_" << aNomTable << " * infObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mInfPtr ; }\n"
              "  public : inline elementOf_GGS_" << aNomTable << " * supObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mSupPtr ; }\n"
+             "//--- Comparison\n"
+             "  protected : virtual bool isEqualToMapElement (const AC_galgas_map_element * inOperand) const ;\n"
              "//--- Data member\n"
              "  public : e_" << aNomTable << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
@@ -94,6 +96,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : inline element_type * rootObject (void) const { return (element_type *) internalRootObject () ; }\n"
              "  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }\n"
              "  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }\n"
+             "//--- Comparison methods\n"
+             "  public : GGS_bool operator == (const GGS_" << aNomTable << " & inOperand) const ;\n"
+             "  public : GGS_bool operator != (const GGS_" << aNomTable << " & inOperand) const ;\n"
              "//--- Create a new element\n"
              "  protected : virtual AC_galgas_map_element * new_element (const GGS_lstring & inKey, void * inInfo) ;\n"
              "//--- Get object pointer (for method call)\n"
@@ -257,6 +262,33 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- 'new_element' method
   inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "bool elementOf_GGS_" << aNomTable << "::\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  if (current == NULL) {
+    inCppFile << "isEqualToMapElement (const AC_galgas_map_element * /* inOperand */) const {\n"
+                 "  return true ;\n" ;
+  }else{
+    inCppFile << "isEqualToMapElement (const AC_galgas_map_element * inOperand) const {\n"
+                 "  const elementOf_GGS_" << aNomTable << " * _p = dynamic_cast <const elementOf_GGS_" << aNomTable << " *> (inOperand) ;\n"
+                 "  macroValidPointer (_p) ;\n"
+                 "  return " ;
+    bool first = true ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      if (first) {
+        first = false ;
+      }else{
+        inCppFile << "\n           && " ;
+      }
+      inCppFile << "(mInfo." << current->aNomAttribut << " == _p->mInfo." << current->aNomAttribut << ").boolValue ()" ;
+      current = current->nextObject () ;
+    }
+    inCppFile << " ;\n" ;
+  }
+  inCppFile << "}\n\n" ;
+
+//--- 'new_element' method
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "AC_galgas_map_element * GGS_" << aNomTable << "::\n"
                "new_element (const GGS_lstring & inKey, void * inInfo) {\n"
                "  MF_Assert (reinterpret_cast <e_" << aNomTable << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
@@ -275,9 +307,23 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  return result ;\n"
                "}\n\n" ;
 
+//--- Generate comparison
+  inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
+               "operator == (const GGS_" << aNomTable << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToMap (inOperand)) ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+  inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
+               "operator != (const GGS_" << aNomTable << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToMap (inOperand)) ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
 //--- 'internalInsertForDuplication' method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << aNomTable << "::internalInsertForDuplication (AC_galgas_map_element * inPtr) {\n"
+  inCppFile << "void GGS_" << aNomTable << "::\n"
+               "internalInsertForDuplication (AC_galgas_map_element * inPtr) {\n"
                "  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  element_type * p = (element_type *) inPtr ;\n"
                "  bool extension = false ; // Unused here\n"
@@ -609,6 +655,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "//--- Get object pointer\n"
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
+             "//--- Comparison methods\n"
+             "  public : GGS_bool operator == (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true, true) ; }\n"
+             "  public : GGS_bool operator != (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true, true) ; }\n"
              "//--- Handle 'emptyMap' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n" ;
 
