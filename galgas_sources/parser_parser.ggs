@@ -958,7 +958,7 @@ rule <rule_declaration_or_implementation>
     [ioEntitiesMap searchKey !inEffectiveReturnedEntity ?e] ;
     @AC_galgasType type ;
     extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
-    extract type->@typeGalgas_singleEntity (?* ? allPropertiesMap ...) error inEffectiveReturnedEntity : messageGalgasType ;
+    extract type->@typeGalgas_singleEntity (?* ?allPropertiesMap ...) error inEffectiveReturnedEntity : messageGalgasType ;
     foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
       when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
@@ -984,7 +984,7 @@ rule <rule_declaration_or_implementation>
       when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName) ->
         @AC_semanticsEntity entite ;
         [ioEntitiesMap searchKey !kReferenceEntityName ?entite] ;
-        @AC_galgasType definitionType := [@typeGalgas_multipleEntity new ! kReferenceEntityName] ;
+        @AC_galgasType definitionType := [@typeGalgas_multipleEntity new !kReferenceEntityName] ;
 #        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
         @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;

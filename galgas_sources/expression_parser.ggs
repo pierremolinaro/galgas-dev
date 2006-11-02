@@ -902,7 +902,7 @@ rule <term>
     divide_types_check !leftType !rightType ?outResultType ;
     outExpression := [@typeDivideOperation new !leftExpression !rightExpression !here] ;
   while 
-    $%$ ;
+    $mod$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
     @typeExpression rightExpression ;

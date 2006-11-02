@@ -437,13 +437,13 @@ rule <constraint_map_declaration>
 :
   $map$ ;
   @lstring mapIdentifier ;
-  $type_name$ ? mapIdentifier ;
+  $mda_type_name$ ? mapIdentifier ;
   if [inMetamodelEntityMap hasKey ![mapIdentifier string]] then
     error mapIdentifier: "An entity has been declared with this name" ;
   end if ;
   $of$ ;
   @lstring mapElementIdentifier ;
-  $type_name$ ? mapElementIdentifier ;
+  $mda_type_name$ ? mapElementIdentifier ;
   ${$ ;
   $insert$ ;
   $error$ ;
@@ -479,7 +479,7 @@ rule <constraints_on_entity_declaration>
 #--- Entity Name
   $on$ ;
   @lstring entityName ;
-  $type_name$ ? entityName ;
+  $mda_type_name$ ? entityName ;
 #--- Get entity properties
   @lstring superEntity ;
   @entityPropertyMap allMetamodelPropertyMap ;

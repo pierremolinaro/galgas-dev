@@ -745,7 +745,7 @@ map @entityToImplementMap {
 #---------------------------------------------------------------------------*
 
 action generate_metamodel
- ?!@entityToImplementMap ioEntityMap
+ ?@entityToImplementMap inEntityMap
  ?@lstring inMetamodelComponentName
  ?@stringset inMultiReferencedEntities
  ?@lstring inRootEntityName

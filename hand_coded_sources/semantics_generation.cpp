@@ -820,7 +820,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgas_singleEntity::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mEntityName ;
+  inFile << "GGM_" << mEntityName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -848,7 +848,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgas_multipleEntity::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS__listOf_" << mEntityName ;
+  inFile << "GGM__listOf_" << mEntityName ;
 }
 
 //---------------------------------------------------------------------------*
