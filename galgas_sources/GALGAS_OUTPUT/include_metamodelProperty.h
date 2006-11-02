@@ -27,6 +27,10 @@ class cPtr_metamodelProperty : public C_GGS_Object {
                            const C_String & inPropertyName) const ;
 
   public : virtual void
+  generateMultiplicityConstraintChecking (AC_OutputStream & ioHFile,
+                                          const C_String & inPropertyName) const ;
+
+  public : virtual void
   releasePropertyInDestructor (AC_OutputStream & ioHFile,
                                const C_String & inPropertyName) const ;
 

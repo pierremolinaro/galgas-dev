@@ -531,6 +531,8 @@ class @metamodelSingleReferenceProperty extends @metamodelProperty {
 
 class @metamodelMultipleReferenceProperty extends @metamodelProperty {
   @lstring mReferenceEntityName ;
+  @luint mLowerBound ;
+  @luint mHigherBound ; # 0 means no bound
 #--- Error message
   message messageProperty "a multiple reference property" ;
 }
