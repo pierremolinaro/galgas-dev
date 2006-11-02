@@ -67,7 +67,7 @@ void cPtr_metamodelSingleReferenceProperty::
 releasePropertyInDestructor (AC_OutputStream & inHFile,
                              const C_String & inPropertyName) const {
   inHFile << "  macroMyDelete (" << inPropertyName
-          << ", GGS_" << mReferenceEntityName << ") ;\n" ;
+          << ", GGM_" << mReferenceEntityName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -100,7 +100,7 @@ void cPtr_metamodelSingleReferenceProperty::
 generateAttributeInConstraint (AC_OutputStream & inHFile ,
                                const C_String & inConstraintComponentName,
                                const C_String & inPropertyName) const {
-  inHFile << "  public : GGS__" << inConstraintComponentName << "_ConstraintOn_" << mReferenceEntityName
+  inHFile << "  public : GGM__" << inConstraintComponentName << "_ConstraintOn_" << mReferenceEntityName
           << " * " << inPropertyName << " ;\n" ;
 }
 
@@ -110,7 +110,7 @@ void cPtr_metamodelMultipleReferenceProperty::
 generateAttributeInConstraint (AC_OutputStream & inHFile ,
                                const C_String & /* inConstraintComponentName */,
                                const C_String & inPropertyName) const {
-  inHFile << "  public : GGS__listOfConstraint_" << mReferenceEntityName
+  inHFile << "  public : GGM__listOfConstraint_" << mReferenceEntityName
           << " " << inPropertyName << " ;\n" ;
 }
 
@@ -141,7 +141,7 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile ,
 void cPtr_metamodelSingleReferenceProperty::
 generateAttributeInMetamodel (AC_OutputStream & inHFile ,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGS_" << mReferenceEntityName
+  inHFile << "  public : GGM_" << mReferenceEntityName
           << " * " << inPropertyName << " ;\n" ;
 }
 
@@ -150,7 +150,7 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile ,
 void cPtr_metamodelMultipleReferenceProperty::
 generateAttributeInMetamodel (AC_OutputStream & inHFile ,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGS__listOf_" << mReferenceEntityName
+  inHFile << "  public : GGM__listOf_" << mReferenceEntityName
           << " " << inPropertyName << " ;\n" ;
 }
 
@@ -172,7 +172,7 @@ generateFormalParameter (AC_OutputStream & /* inHFile */,
 void cPtr_metamodelAttributeProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS_" << mAttributeTypeName
+  inHFile << "const GGS_" << mAttributeTypeName
           << " & _in_" << inPropertyName ;
 }
 
@@ -181,7 +181,7 @@ generateFormalParameter (AC_OutputStream & inHFile,
 void cPtr_metamodelMultipleReferenceProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS__listOf_" << mReferenceEntityName
+  inHFile << "GGM__listOf_" << mReferenceEntityName
           << " & _in_" << inPropertyName ;
 }
 
@@ -190,7 +190,7 @@ generateFormalParameter (AC_OutputStream & inHFile,
 void cPtr_metamodelSingleReferenceProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS_" << mReferenceEntityName
+  inHFile << "GGM_" << mReferenceEntityName
           << " * & _in_" << inPropertyName ;
 }
 

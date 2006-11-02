@@ -136,7 +136,7 @@ rule <parse_metamodel>
 #--- Root entity
   $root$ ;
   @lstring rootEntityName ;
-  $type_name$ ? rootEntityName ;
+  $mda_type_name$ ? rootEntityName ;
   $:$ ;
   @entityToImplementMap entityMap [emptyMap] ;
   @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
@@ -191,6 +191,8 @@ rule <parse_metamodel>
     foreach kEntityPropertiesMap (@lstring kAttributeName
                                   @metamodelProperty kProperty) :
       extract kProperty :
+      when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
+        [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
       when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName) ->
         [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kReferenceEntityName string] ;
@@ -200,7 +202,7 @@ rule <parse_metamodel>
   end foreach ;
 #--- Generate C++ code
   action generate_metamodel
-    !?entityMap
+    !entityMap
     !metamodelName
     !multiReferencedEntities
     !rootEntityName
@@ -253,9 +255,9 @@ rule <entity_declaration>
     isAbstract := true ;
   end select ;
 #--- Entity Name
-  $entity$ ;
+  $class$ ;
   @lstring entityName ;
-  $type_name$ ? entityName ;
+  $mda_type_name$ ? entityName ;
   [!?ioMapAndEntityUniqueMap insertKey !entityName] ;
 #--- Context properties, or super entity (or nothing)
   @entityPropertyMap allMetamodelPropertyMap ;
@@ -267,7 +269,7 @@ rule <entity_declaration>
     superEntitySet := [@stringset emptySet] ;
   or
     $extends$ ;
-    $type_name$ ? superEntity ;
+    $mda_type_name$ ? superEntity ;
     [ioEntityMap searchKey
       !superEntity
       ?allMetamodelPropertyMap
@@ -289,28 +291,31 @@ rule <entity_declaration>
   while
     @lstring propertyTypeName ;
     $type_name$ ? propertyTypeName ;
+    if not [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName string]] then
+      error propertyTypeName : "the '@" . [propertyTypeName string]
+      . "' is not a predefined type name" ;
+    end if ;
+    @lstring attributeName ;
+    $identifier$ ? attributeName ;
+    @metamodelProperty k := [@metamodelAttributeProperty new !propertyTypeName] ;
+    [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
+    [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
+    $;$ ;
+  while
+    @lstring propertyTypeName ;
+    $mda_type_name$ ? propertyTypeName ;
     @metamodelProperty k ;
     @lstring attributeName ;
     select
     #--- Multiple reference
       $[$ ;
       $]$ ;
-      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName string]] then
-        error propertyTypeName : "the '@" . [propertyTypeName string]
-        . "' is not an entity name, but a predefined type name" ;
-      end if ;
       $identifier$ ? attributeName ;
       k := [@metamodelMultipleReferenceProperty new !propertyTypeName] ;
     or
+    #--- Single Reference
       $identifier$ ? attributeName ;
-    #--- Single reference or attribute ?
-      if [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName string]] then
-      #--- Attribute
-        k := [@metamodelAttributeProperty new !propertyTypeName] ;
-      else 
-      #--- Single Reference
-        k := [@metamodelSingleReferenceProperty new !propertyTypeName] ;
-      end if ;
+      k := [@metamodelSingleReferenceProperty new !propertyTypeName] ;
     end select ;
     [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
     [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 

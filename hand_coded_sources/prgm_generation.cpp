@@ -316,7 +316,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   //--- Call parser
     generatedZone2 << currentGrammar->mGrammarName << " grammar_ ;\n" ;
     if (currentGrammar->mReturnedRootEntityName.length () > 0) {
-      generatedZone2 << "GGS_" << currentGrammar->mReturnedRootEntityName 
+      generatedZone2 << "GGM_" << currentGrammar->mReturnedRootEntityName 
                      << " * _rootEntity = " ;
     }
     generatedZone2 << "grammar_.startParsing_ (*_mScannerPtr" ;
@@ -332,7 +332,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       GGS_L_lstringList::element_type * currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
       while (currentConstraint != NULL) {
         macroValidPointer (currentConstraint) ;
-        generatedZone2 << "GGS__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
+        generatedZone2 << "GGM__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
                        << " * _rootObjectConstraint" << currentConstraint->mString << " = NULL ;\n"
                        << "_addConstraintsTo_" << currentConstraint->mString
                        << " (*_mScannerPtr, _rootEntity, _rootObjectConstraint" << currentConstraint->mString << ") ;\n" ;
@@ -343,11 +343,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       while (currentConstraint != NULL) {
         macroValidPointer (currentConstraint) ;
         generatedZone2 << "macroMyDelete (_rootObjectConstraint" << currentConstraint->mString
-                       << ", GGS__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
+                       << ", GGM__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
                        << ") ;\n" ;
         currentConstraint = currentConstraint->nextObject () ;
       }
-      generatedZone2 << "  macroMyDelete (_rootEntity, GGS_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
+      generatedZone2 << "  macroMyDelete (_rootEntity, GGM_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
                         "  C_BDD::markAndSweepUnusedNodes () ;\n" ;
     }
     generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"

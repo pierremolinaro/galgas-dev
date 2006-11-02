@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//     Routines for SLR (1) grammar computations                             *
+//     Routines for SLR grammar computations                                 *
 //                                                                           *
-//  Copyright (C) 2002 Pierre Molinaro.                                      *
+//  Copyright (C) 2002, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -871,7 +871,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
     while (currentAltForNonTerminal != NULL) {
       macroValidPointer (currentAltForNonTerminal) ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+        generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * " ;      
       }else{
         generatedZone3 << "void " ;
@@ -896,7 +896,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
       }
       generatedZone3 << ") {\n" ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+        generatedZone3 << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * _outReturnedModelInstance = NULL ;\n" ;      
       }
       generatedZone3 << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
@@ -931,7 +931,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
       while (currentAltForNonTerminal != NULL) {
         macroValidPointer (currentAltForNonTerminal) ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+          generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " * " ;      
         }else{
           generatedZone3 << "void " ;
@@ -951,7 +951,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
         }
         generatedZone3 << ") {\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+          generatedZone3 << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " * _outReturnedModelInstance = NULL ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;

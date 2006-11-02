@@ -2,7 +2,7 @@
 //                                                                           *
 //  Routines for checking LL(1) condition                                    *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1994, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -539,7 +539,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       macroValidPointer (currentAltForNonTerminal) ;
       macroValidPointer (currentAltForNonTerminal) ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+        generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * " ;      
       }else{
         generatedZone3 << "void " ;
@@ -562,7 +562,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       }
       generatedZone3 << ") {\n" ; 
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+        generatedZone3 << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * _outReturnedModelInstance = NULL ;\n" ;      
       }
       engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal->mIndex, numeroParametre,
@@ -583,7 +583,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         macroValidPointer (currentAltForNonTerminal) ;
         generatedZone3 << "\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+          generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " * " ;      
         }else{
           generatedZone3 << "void " ;
@@ -603,7 +603,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         }
         generatedZone3 << ") {\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+          generatedZone3 << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " * _outReturnedModelInstance = NULL ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
