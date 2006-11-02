@@ -981,11 +981,10 @@ rule <rule_declaration_or_implementation>
         [!?ioVariablesMap insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
         listeInstructions += !instruction ;
-      when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName) ->
+      when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName * *) ->
         @AC_semanticsEntity entite ;
         [ioEntitiesMap searchKey !kReferenceEntityName ?entite] ;
         @AC_galgasType definitionType := [@typeGalgas_multipleEntity new !kReferenceEntityName] ;
-#        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
         @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
         [!?ioVariablesMap insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;

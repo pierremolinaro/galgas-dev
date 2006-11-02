@@ -471,7 +471,7 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                       "                    COMMA_LOCATION_ARGS,\n"
                       "                    const sint32 inIndentation) const {\n"
                       "  C_String s ;\n"
-                      "  s << \"<list @" << currentMultipleReferencedEntity->mKey << " \" ;\n"
+                      "  s << \"<list %" << currentMultipleReferencedEntity->mKey << " \" ;\n"
                       "  const GGM__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * _p = mFirstObject ;\n"
                       "  while (_p != NULL) {\n"
                       "    s << \"\\n\" ;\n"
@@ -655,7 +655,7 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                       "                    COMMA_LOCATION_ARGS,\n"
                       "                    const sint32 inIndentation) const {\n"
                       "  C_String s ;\n"
-                      "  s << \"<" << inConstraintComponentName << " constraint for @" << currentConstrainedEntity->mKey << "\\n\" ;\n" ;
+                      "  s << \"<" << inConstraintComponentName << " constraint for %" << currentConstrainedEntity->mKey << "\\n\" ;\n" ;
 /*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;

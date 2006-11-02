@@ -217,7 +217,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << '_' << aNomProduction.currentColumnNumber ()
               << '_' << currentAltForNonTerminal->mKey << " ("
               << inLexiqueClassName << " & " ;
-    const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, true) ;
+    const bool lexiqueFormalArgumentUsed = (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0)
+      || isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, true) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
     }
@@ -264,27 +265,17 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   //--- Build returned entity instance
     if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
       inCppFile << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " * _entityInstance = NULL ;\n"
-                   "  macroMyNew (_entityInstance, GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " (" ;
+                   "  macroMyNew (_entityInstance, GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                << " (_inLexique" ;
       GGS_entityPropertyMap::element_type * currentProperty = currentAltForNonTerminal->mInfo.mAllPropertiesMap.firstObject () ;
-      bool first = true ;
       while (currentProperty != NULL) {
         macroValidPointer (currentProperty) ;
         if (currentProperty->mInfo.mProperty (HERE)->isMetamodelDefined ()) {
-          if (first) {
-            first = false ;
-          }else{
-            inCppFile << ", " ;
-          }
-          inCppFile << "var_cas_" << currentProperty->mKey ;
+          inCppFile << ", var_cas_" << currentProperty->mKey ;
         }
         currentProperty = currentProperty->nextObject () ;
       }
-      if (first) {
-        inCppFile << "HERE" ;
-      }else{
-        inCppFile << " COMMA_HERE" ;
-      }
-      inCppFile << ")) ;\n"
+      inCppFile << " COMMA_HERE)) ;\n"
                    "  return _entityInstance ;\n" ;
     }  
   //--- End of function

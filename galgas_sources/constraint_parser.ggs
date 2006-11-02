@@ -317,7 +317,7 @@ rule <parse_constraint_document>
 #        if [representativeTypeName string] != "" then
 #          multiReferencedEntities += ![representativeTypeName string] ;
 #        end if ;
-      when @metamodelMultipleReferenceProperty (@lstring kTypeName) ->
+      when @metamodelMultipleReferenceProperty (@lstring kTypeName * *) ->
         @lstring representativeTypeName ;
         computeRepresentativeEntityName
           !metamodelEntityMap

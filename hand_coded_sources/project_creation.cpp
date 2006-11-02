@@ -158,9 +158,9 @@ createMetamodelFile (const C_String & inCreatedProjectPathName) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_metamodel.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
-  f << "metamodel " << projectName << "_metamodel root @" << projectName << "_root :\n"
+  f << "metamodel " << projectName << "_metamodel root %" << projectName << "_root :\n"
        "\n"
-       "class @" << projectName << "_root {\n"
+       "class %" << projectName << "_root {\n"
        "}\n"
        "\n"
        "# ADD YOUR CODE HERE\n"
@@ -187,7 +187,7 @@ createContraintsFile (const C_String & inCreatedProjectPathName) {
        "\n"
        "# ADD YOUR CODE HERE\n"
        "\n"
-       "on @" << projectName << "_root {\n"
+       "on %" << projectName << "_root {\n"
        "}{\n"
        "}\n"
        "\n"

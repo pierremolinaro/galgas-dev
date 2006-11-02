@@ -2710,7 +2710,7 @@ rule <semantic_instruction>
     else
       ioConstraintPropertyDefinitionSet += ![calledPropertyName string] ;
     end if ;
-  when @metamodelMultipleReferenceProperty (*) -> #@lstring kEntityName) ->
+  when @metamodelMultipleReferenceProperty (* * *) -> #@lstring kEntityName) ->
     if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName string]] then
       error calledPropertyName: "this property has been already initialized" ;
     else

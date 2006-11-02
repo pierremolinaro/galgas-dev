@@ -193,7 +193,7 @@ rule <parse_metamodel>
       extract kProperty :
       when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
         [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
-      when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName) ->
+      when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName * *) ->
         [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kReferenceEntityName string] ;
       else
@@ -308,10 +308,37 @@ rule <entity_declaration>
     @lstring attributeName ;
     select
     #--- Multiple reference
+      @luint lowerBound ;
+      @luint higherBound ;
       $[$ ;
+      select
+        $unsigned_literal_integer$ ? lowerBound ;
+        select
+          $,$ ;
+          select
+            $unsigned_literal_integer$ ? higherBound ;
+            if ([lowerBound uint] == 0) & ([higherBound uint] == 0) then
+              error lowerBound: "if lower bound is zero, higher bound should be greater than zero" ;
+            elsif ([lowerBound uint] > 0) & ([higherBound uint] < [lowerBound uint]) then
+              error lowerBound: "higher bound should be greater or equal than lower bound" ;
+            end if ;
+          or
+            $*$ ;
+            higherBound := [@luint new !0 !here] ;            
+          end select ;
+        or
+          higherBound := lowerBound ;
+          if [lowerBound uint] == 0 then
+            error lowerBound: "if higher bound is implicit, lower bound should be greater than zero" ;
+          end if ;
+        end select ;
+      or
+        lowerBound := [@luint new !0 !here] ;
+        higherBound := [@luint new !0 !here] ;
+      end select ;
       $]$ ;
       $identifier$ ? attributeName ;
-      k := [@metamodelMultipleReferenceProperty new !propertyTypeName] ;
+      k := [@metamodelMultipleReferenceProperty new !propertyTypeName !lowerBound !higherBound] ;
     or
     #--- Single Reference
       $identifier$ ? attributeName ;

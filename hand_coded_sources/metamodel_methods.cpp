@@ -253,6 +253,34 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
 
 //---------------------------------------------------------------------------*
 
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark generateMultiplicityConstraintChecking
+#endif
 
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateMultiplicityConstraintChecking (AC_OutputStream & /* ioCppFile */,
+                                        const C_String & /* inCalledPropertyName */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelMultipleReferenceProperty::
+generateMultiplicityConstraintChecking (AC_OutputStream & ioCppFile,
+                                        const C_String & inCalledPropertyName) const {
+  ioCppFile << "//--- Checking multiplicity of '" << inCalledPropertyName
+            << "': [" << mLowerBound.uintValue () << ", " ;
+  if (mHigherBound.uintValue () == 0) {
+    ioCppFile << "*" ;
+  }else{
+    ioCppFile << mHigherBound.uintValue () ;
+  }
+  ioCppFile << "]\n"
+            << " _inLexique.metamodelMultiplicityChecking (\"" << inCalledPropertyName << "\", "
+            << inCalledPropertyName << ".count (), "
+            << mLowerBound.uintValue () << ", "
+            << mHigherBound.uintValue () << " COMMA_THERE) ;\n" ;
+}
 
 //---------------------------------------------------------------------------*
