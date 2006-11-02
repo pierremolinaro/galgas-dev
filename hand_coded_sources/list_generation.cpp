@@ -66,6 +66,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Access to previous\n"
              "  public : inline elementOf_GGS_" << aNomListe << " * previousObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalPreviousItem () ; }\n"
 
+//--- Element comparison
+             "//--- Element comparison\n"
+             "  protected : bool isEqualToElement (const cListElement * inOperand) const ;\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void appendForListDescription (C_Lexique & _inLexique,\n"
@@ -105,8 +108,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : GGS_" << aNomListe << " (void) ;\n"
              "//--- Copy Constructor\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " & inSource) ;\n"
-             "//--- Assignment Operator\n"
-             "//  public : void operator = (const GGS_" << aNomListe << " & inSource) ;\n"
+             "//--- Comparison Operators\n"
+             "  public : GGS_bool operator == (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_bool operator != (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
@@ -342,6 +346,31 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << " {\n"
                "}\n\n" ;
 
+//--- Element comparison
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n"
+               "isEqualToElement (const cListElement * inOperand) const {\n"
+               "  bool equal = inOperand == this ;\n"
+               "  if (! equal) {\n"
+               "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
+               "    macroValidPointer (_p) ;\n"
+               "    equal = " ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) {
+      inCppFile << "\n         && " ;
+    }
+    inCppFile << "(" << current->aNomAttribut << " == _p->"  << current->aNomAttribut << ").boolValue ()" ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << " ;\n"
+               "  }\n"
+               "  return equal ;\n"
+               "}\n\n" ;
+
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                "appendForListDescription (C_Lexique & _inLexique,\n"
@@ -378,18 +407,17 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Engendrer l'operateur d'affectation
-  inCppFile << "/*void GGS_" << aNomListe << "::\n"
-               "operator = (const GGS_" << aNomListe << " & inSource) {\n"
-               "  if (this != & inSource) {\n"
-               "    _drop_operation () ;\n"
-               "    _mRoot = inSource._mRoot ;\n"
-               "    if (_mRoot != NULL) {\n"
-               "      macroValidPointer (_mRoot) ;\n"
-               "      _mRoot->mCountReference ++ ;\n"
-               "    }\n"
-               "  }\n"
-               "}*/\n\n" ;
+//--- Generate comparison
+  inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
+               "operator == (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToList (inOperand)) ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+  inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
+               "operator != (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToList (inOperand)) ;\n"
+               "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer la methode _internalAppendValues

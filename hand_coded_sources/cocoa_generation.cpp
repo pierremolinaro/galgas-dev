@@ -330,7 +330,7 @@ routine_generateCocoaComponent (C_Lexique & inLexique,
                                 GGS_lstring inLexiqueComponentName,
                                 GGS_M_optionComponents inOptionComponentsMap
                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (inGUIkindName == "cocoa") {
+  if (inGUIkindName.string () == "cocoa") {
     generate_mm_file_for_cocoa (inLexique,
                                 inGUIcomponentName,
                                 inCLIToolName,

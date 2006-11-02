@@ -1536,7 +1536,8 @@ generate_cpp_file (C_Lexique & inLexique,
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n"
+  generatedZone2 << "#include <typeinfo>\n"
+                    "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"files/C_TextFileWrite.h\"\n"
                     "#include \"" << nomComposant << ".h\"\n\n";
 
