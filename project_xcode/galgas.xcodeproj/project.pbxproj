@@ -246,6 +246,14 @@
 		CF546DE10A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF546DC10A3481C80076D39C /* include_typeGalgas_luint64.h */; };
 		CF546DE20A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF546DC20A3481C80076D39C /* include_typeGalgas_sint64.h */; };
 		CF546DE30A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */; };
+		CF55F8760AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
+		CF55F8770AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
+		CF55F8780AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
+		CF55F8790AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
+		CF55F87A0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
+		CF55F87B0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
+		CF55F87C0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
+		CF55F87D0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
 		CF5E74F607B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF5E74F807B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF6556DA0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
@@ -1614,6 +1622,7 @@
 		CF546DC10A3481C80076D39C /* include_typeGalgas_luint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_luint64.h; sourceTree = "<group>"; };
 		CF546DC20A3481C80076D39C /* include_typeGalgas_sint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_sint64.h; sourceTree = "<group>"; };
 		CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint64.h; sourceTree = "<group>"; };
+		CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelSharedMapProperty.h; sourceTree = "<group>"; };
 		CF5E74F407B00EA600858338 /* common_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = common_semantics.cpp; sourceTree = "<group>"; };
 		CF5E74F507B00EA600858338 /* common_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = common_semantics.h; sourceTree = "<group>"; };
 		CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_CLI_Options.cpp; sourceTree = "<group>"; };
@@ -2299,10 +2308,11 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */,
+				CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */,
 				CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */,
 				CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */,
 				CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */,
-				CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */,
 				CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */,
 				CFD9E63B0AE7F07300A9D72A /* include_C_switch_instruction.h */,
 				CFD9E63C0AE7F07300A9D72A /* include_typeLogInstruction.h */,
@@ -3082,6 +3092,7 @@
 				CFE837B30AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
 				CFE837B40AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
 				CFE837B50AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
+				CF55F8760AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3151,6 +3162,7 @@
 				CFE837D70AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
 				CFE837D80AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
 				CFE837D90AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
+				CF55F87C0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3220,6 +3232,7 @@
 				CFE837DD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
 				CFE837DE0AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
 				CFE837DF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
+				CF55F87D0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3303,6 +3316,7 @@
 				CFE837B90AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
 				CFE837BA0AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
 				CFE837BB0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
+				CF55F8770AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3372,6 +3386,7 @@
 				CFE837BF0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
 				CFE837C00AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
 				CFE837C10AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
+				CF55F8780AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3441,6 +3456,7 @@
 				CFE837C50AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
 				CFE837C60AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
 				CFE837C70AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
+				CF55F8790AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3510,6 +3526,7 @@
 				CFE837CB0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
 				CFE837CC0AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
 				CFE837CD0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
+				CF55F87A0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3579,6 +3596,7 @@
 				CFE837D10AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
 				CFE837D20AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
 				CFE837D30AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
+				CF55F87B0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

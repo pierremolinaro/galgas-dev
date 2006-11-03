@@ -547,6 +547,14 @@ class @metamodelMapProperty extends @metamodelProperty {
 
 #---------------------------------------------------------------------------*
 
+class @metamodelSharedMapProperty extends @metamodelProperty {
+  @lstring mMapTypeName ;
+#--- Error message
+  message messageProperty "a shared map property" ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @L_propertyPath {
   @lstring mPathElement ;
 }

@@ -483,7 +483,6 @@ rule <constraints_on_entity_declaration>
   @entityPropertyMap allMetamodelPropertyMap ;
   @stringset superClassSet ;
   @entityPropertyMap currentMetamodelPropertyMap ;
-  @entityPropertyMap currentConstraintPropertyMap ;
   @entityPropertyMap allConstraintPropertyMap ;
   @entityPropertyMap allAvailablePropertyMap ;
   [inEntityMap searchKey
@@ -492,7 +491,7 @@ rule <constraints_on_entity_declaration>
     ?* # Abstract
     ?currentMetamodelPropertyMap
     ?superEntity
-    ?currentConstraintPropertyMap
+    ?* # currentConstraintPropertyMap
     ?superClassSet
     ?allConstraintPropertyMap
     ?* # Implicitly defined ?
@@ -510,7 +509,7 @@ rule <constraints_on_entity_declaration>
       ?* # Abstract
       ?currentMetamodelPropertyMap
       ?* # Super entity
-      ?currentConstraintPropertyMap
+      ?* #currentConstraintPropertyMap
       ?* # Super Class set
       ?allConstraintPropertyMap
       ?* # Implicitly defined ?
@@ -520,27 +519,30 @@ rule <constraints_on_entity_declaration>
     error entityName:
         "constraints for super entity ('@" . [superEntity string] . "') should be previously defined" ;
   end if ;
-##--- Properties as parameters
-#    select
-#    or
-#      $($ ;
-#      if [superEntity string] != "" then
-#        error here: "as the '@" . [entityName string]
-#        . "' entity has a super entity, you cannot define any shared property" ;
-#      end if ;
-#      repeat
-#        @lstring typeName ;
-#        $type_name$ ? typeName ;
-#        [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
-#        @lstring propertyName ;
-#        $identifier$ ? propertyName ;
-#        [!?allPropertyMap insertKey !propertyName ![@metamodelPropertyKind entityMapProperty] !typeName] ;
-#        constrainedParameterPropertyToImplementList += !typeName !propertyName ;
-#      while
-#        $,$ ;
-#      end repeat ;
-#      $)$ ;
-#    end select ;
+  @entityPropertyMap currentConstraintPropertyMap [emptyMap] ;
+#--- Properties as parameters
+    select
+    or
+      $($ ;
+      if [superEntity string] != "" then
+        error here: "as the '@" . [entityName string]
+        . "' entity has a super entity, you cannot define any shared property" ;
+      end if ;
+      repeat
+        @lstring typeName ;
+        $mda_type_name$ ? typeName ;
+        [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
+        @metamodelProperty property := [@metamodelSharedMapProperty new !typeName] ;
+        @lstring propertyName ;
+        $identifier$ ? propertyName ;
+        [!?currentConstraintPropertyMap insertKey !propertyName !property] ;
+        [!?allConstraintPropertyMap insertKey !propertyName !property] ;
+        [!?allAvailablePropertyMap insertKey !propertyName !property] ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
   #--- Properties as attributes
     @indexMap currentIndexMap [emptyMap] ;
     ${$ ;
@@ -553,7 +555,7 @@ rule <constraints_on_entity_declaration>
       @lstring propertyName ;
       $identifier$ ? propertyName ;
       [!?currentConstraintPropertyMap insertKey !propertyName !property] ;
-      [!? allConstraintPropertyMap insertKey !propertyName !property] ;
+      [!?allConstraintPropertyMap insertKey !propertyName !property] ;
       [!?allAvailablePropertyMap insertKey !propertyName !property] ;
       $;$ ;
 #    while
@@ -571,53 +573,52 @@ rule <constraints_on_entity_declaration>
     end repeat ;
     $}$ ;
     ${$ ;
-#  #--- Enter attributes metamodels as constants
-#    @typeVariablesMap variablesMap [emptyMap] ;
-#    foreach allPropertyMap (@lstring kKey @metamodelPropertyKind kKind @lstring kTypeName) :
-#      switch kKind 
-#      when entityMapProperty:
-#      when  attributeProperty:
-#        # message "attribute '" . [kKey value] . "' has type '@" . [kTypeName value] . "'\n" ;
-#        @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey string] ![kKey location]]] ;
-#        if [kTypeName string] == "lstring" then
-#          @AC_galgasType t := [@typeGalgas_lstring new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "string" then
-#          @AC_galgasType t := [@typeGalgas_string new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "lchar" then
-#          @AC_galgasType t := [@typeGalgas_lchar new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "char" then
-#          @AC_galgasType t := [@typeGalgas_char new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "luint" then
-#          @AC_galgasType t := [@typeGalgas_luint new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "uint" then
-#          @AC_galgasType t := [@typeGalgas_uint new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "lsint" then
-#          @AC_galgasType t := [@typeGalgas_lsint new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "sint" then
-#          @AC_galgasType t := [@typeGalgas_sint new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "lbool" then
-#          @AC_galgasType t := [@typeGalgas_lbool new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "bool" then
-#          @AC_galgasType t := [@typeGalgas_bool new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        elsif [kTypeName string] == "location" then
-#          @AC_galgasType t := [@typeGalgas_location new] ;
-#          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-#        else
-#          error here : "internal error (@" . [kTypeName string] . " type not handled" ;
-#        end if ;
-#      when singleReferenceProperty, multipleReferenceProperty:
-#      end switch ;
-#    end foreach ;
+  #--- Enter attributes metamodels as constants
+    @typeVariablesMap variablesMap [emptyMap] ;
+    foreach allAvailablePropertyMap (@lstring kKey @metamodelProperty kProperty) :
+      extract kProperty :
+      when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
+        # message "attribute '" . [kKey value] . "' has type '@" . [kAttributeTypeName value] . "'\n" ;
+        @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey string] ![kKey location]]] ;
+        if [kAttributeTypeName string] == "lstring" then
+          @AC_galgasType t := [@typeGalgas_lstring new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "string" then
+          @AC_galgasType t := [@typeGalgas_string new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "lchar" then
+          @AC_galgasType t := [@typeGalgas_lchar new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "char" then
+          @AC_galgasType t := [@typeGalgas_char new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "luint" then
+          @AC_galgasType t := [@typeGalgas_luint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "uint" then
+          @AC_galgasType t := [@typeGalgas_uint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "lsint" then
+          @AC_galgasType t := [@typeGalgas_lsint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "sint" then
+          @AC_galgasType t := [@typeGalgas_sint new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "lbool" then
+          @AC_galgasType t := [@typeGalgas_lbool new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "bool" then
+          @AC_galgasType t := [@typeGalgas_bool new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        elsif [kAttributeTypeName string] == "location" then
+          @AC_galgasType t := [@typeGalgas_location new] ;
+          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
+        else
+          error here : "internal error (@" . [kAttributeTypeName string] . " type not handled" ;
+        end if ;
+      else
+      end extract ;
+    end foreach ;
 #  #--- Enter constraint attribute properties of current constraint
 #    foreach constrainedAttributePropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
 #      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
@@ -640,27 +641,27 @@ rule <constraints_on_entity_declaration>
 #        [!?variablesMap insertUsedConstInArgument !kIndexName !t !cppName] ;
 #      end if ;
 #    end foreach ;
-##--- Add "self" variable
-#  @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
-#  @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string]] ;
-#  [!?variablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !t !cppName] ;
-##--- Instructions
-#  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
-#  @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
-#  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
-#  @typeInstructionList instructionsList [emptyList] ;
-#  @stringset constraintPropertyDefinitionSet [emptySet] ;
-#  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-#  <semantic_instructions_list>
-#    !?componentSemanticsEntitiesMap
-#    !?listeEntitesAengendrer
-#    !?optionsComponentsMapForUse
-#    !?variablesMap
-#    !?instructionsList
-#    !?propertyMap
-#    !?constraintPropertyDefinitionSet
-#    !?callInstructionSharedPropertySignatureMap
-#  ;
+#--- Add "self" variable
+  @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
+  @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string]] ;
+  [!?variablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !t !cppName] ;
+#--- Instructions
+  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
+  @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
+  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+  @typeInstructionList instructionsList [emptyList] ;
+  @stringset constraintPropertyDefinitionSet [emptySet] ;
+  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+  <semantic_instructions_list>
+    !?componentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !?optionsComponentsMapForUse
+    !?variablesMap
+    !?instructionsList
+    !?allAvailablePropertyMap
+    !?constraintPropertyDefinitionSet
+    !?callInstructionSharedPropertySignatureMap
+  ;
 #  [!?ioConstraintInstructionListMap insertKey
 #    !entityName
 #    !instructionsList
