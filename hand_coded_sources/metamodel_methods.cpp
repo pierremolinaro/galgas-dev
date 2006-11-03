@@ -73,60 +73,6 @@ releasePropertyInDestructor (AC_OutputStream & inHFile,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateAttributeInConstraint
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateAttributeInConstraint (AC_OutputStream & /* inHFile */,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelAttributeProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGS_" << mAttributeTypeName
-          << " " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSingleReferenceProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
-                               const C_String & inConstraintComponentName,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM__" << inConstraintComponentName << "_ConstraintOn_" << mReferenceEntityName
-          << " * " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMultipleReferenceProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM__listOfConstraint_" << mReferenceEntityName
-          << " " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMapProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM_" << mMapTypeName
-          << " * " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark generateAttributeInMetamodel
 #endif
 
@@ -318,6 +264,15 @@ generateInitInConstraintConstructor (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_metamodelSharedMapProperty::
+generateInitInConstraintConstructor (AC_OutputStream & inHFile,
+                                     const C_String & /* inConstraintComponentName */,
+                                     const C_String & inPropertyName) const {
+  inHFile << ",\n" << inPropertyName << " (NULL)" ;
+}
+
+//---------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark generateCreateInConstraintConstructor
 #endif
@@ -346,6 +301,70 @@ generateCreateInConstraintConstructor (AC_OutputStream & inHFile,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark generateAttributeInConstraint
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateAttributeInConstraint (AC_OutputStream & /* inHFile */,
+                               const C_String & /* inConstraintComponentName */,
+                               const C_String & /* inPropertyName */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelAttributeProperty::
+generateAttributeInConstraint (AC_OutputStream & inHFile ,
+                               const C_String & /* inConstraintComponentName */,
+                               const C_String & inPropertyName) const {
+  inHFile << "  public : GGS_" << mAttributeTypeName
+          << " " << inPropertyName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelSingleReferenceProperty::
+generateAttributeInConstraint (AC_OutputStream & inHFile ,
+                               const C_String & inConstraintComponentName,
+                               const C_String & inPropertyName) const {
+  inHFile << "  public : GGM__" << inConstraintComponentName << "_ConstraintOn_" << mReferenceEntityName
+          << " * " << inPropertyName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelMultipleReferenceProperty::
+generateAttributeInConstraint (AC_OutputStream & inHFile ,
+                               const C_String & /* inConstraintComponentName */,
+                               const C_String & inPropertyName) const {
+  inHFile << "  public : GGM__listOfConstraint_" << mReferenceEntityName
+          << " " << inPropertyName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelMapProperty::
+generateAttributeInConstraint (AC_OutputStream & inHFile ,
+                               const C_String & /* inConstraintComponentName */,
+                               const C_String & inPropertyName) const {
+  inHFile << "  public : GGM_" << mMapTypeName
+          << " * " << inPropertyName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelSharedMapProperty::
+generateAttributeInConstraint (AC_OutputStream & inHFile ,
+                               const C_String & /* inConstraintComponentName */,
+                               const C_String & inPropertyName) const {
+  inHFile << "  public : GGM_" << mMapTypeName
+          << " * " << inPropertyName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark generateDeleteInConstraintDestructor
 #endif
 
@@ -364,6 +383,87 @@ generateDeleteInConstraintDestructor (AC_OutputStream & inHFile,
                                       const C_String & /* inConstraintComponentName */,
                                       const C_String & inPropertyName) const {
   inHFile << "  macroDetachPointer (" << inPropertyName << ", GGM_" << mMapTypeName << ") ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelSharedMapProperty::
+generateDeleteInConstraintDestructor (AC_OutputStream & inHFile,
+                                      const C_String & /* inConstraintComponentName */,
+                                      const C_String & inPropertyName) const {
+  inHFile << "  macroDetachPointer (" << inPropertyName << ", GGM_" << mMapTypeName << ") ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark generateTreeWalkingFormalParameter
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateTreeWalkingFormalParameter (AC_OutputStream & /* inHFile */,
+                                    const C_String & /* inConstraintComponentName */,
+                                    const C_String & /* inPropertyName */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelSharedMapProperty::
+generateTreeWalkingFormalParameter (AC_OutputStream & inHFile,
+                                    const C_String & /* inConstraintComponentName */,
+                                    const C_String & inPropertyName) const {
+ inHFile << ",\n"
+            "                     GGM_"
+         << mMapTypeName << " * _inParameter_" << inPropertyName ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark generateTreeWalkingEffectiveArgument
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateTreeWalkingEffectiveArgument (AC_OutputStream & /* inHFile */,
+                                      const C_String & /* inConstraintComponentName */,
+                                      const C_String & /* inPropertyName */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelSharedMapProperty::
+generateTreeWalkingEffectiveArgument (AC_OutputStream & inHFile,
+                                      const C_String & /* inConstraintComponentName */,
+                                      const C_String & inPropertyName) const {
+ inHFile << ", _inParameter_" << inPropertyName ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark generateTreeWalkingAttributAttachment
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateTreeWalkingAttributAttachment (AC_OutputStream & /* inHFile */,
+                                       const C_String & /* inConstraintComponentName */,
+                                       const C_String & /* inPropertyName */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelSharedMapProperty::
+generateTreeWalkingAttributAttachment (AC_OutputStream & inHFile,
+                                       const C_String & /* inConstraintComponentName */,
+                                       const C_String & inPropertyName) const {
+ inHFile << "  macroAttachPointer (" << inPropertyName
+         << ", _inParameter_" << inPropertyName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*

@@ -234,17 +234,15 @@ generate_constraint_header_file (C_Lexique & inLexique,
         generatedZone3 << "//--- 'description' reader\n"
                           "  public : virtual GGS_string reader_description (C_Lexique & _inLexique\n"
                           "                                                  COMMA_LOCATION_ARGS,\n"
-                          "                                                  const sint32 inIndentation = 0) const ;\n" ;
-        generatedZone3 << "//--- Build Transformed tree\n"
+                          "                                                  const sint32 inIndentation = 0) const ;\n"
+                          "//--- Walk throught new tree\n"
                           "  public : virtual void _performTreeWalking (C_Lexique & _inLexique" ;
-/*        GGS_constrainedPropertyList::element_type * currentParameterProperty = currentConstrainedEntity->mInfo.mConstrainedParameterPropertyToImplementList.firstObject () ;
-        while (currentParameterProperty != NULL) {
-          macroValidPointer (currentParameterProperty) ;
-          generatedZone3 << ",\n"
-                            "                  GGM_"
-                         << currentParameterProperty->mPropertyTypeName << " * _inParameter_" << currentParameterProperty->mPropertyName ;
-          currentParameterProperty = currentParameterProperty->nextObject () ;
-        }*/
+        currentProperty = currentConstrainedEntity->mInfo.mAllConstraintPropertyMap.firstObject () ;
+        while (currentProperty != NULL) {
+          macroValidPointer (currentProperty) ;
+          currentProperty->mInfo.mProperty (HERE)->generateTreeWalkingFormalParameter (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
+          currentProperty = currentProperty->nextObject () ;
+        }
         generatedZone3 << ") ;\n" ;
       //--- End of Class Declaration                 
         generatedZone3 << "} ;\n\n" ;
@@ -501,7 +499,7 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
       generatedZone3 << "C_GGS_Object (THERE), _mNextObject (NULL)" ;
     }else{
       generatedZone3 << "GGM__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mInfo.mSuperEntityName
-                     << "(_inMetamodelObject COMMA_HERE)" ;
+                     << "(_inMetamodelObject COMMA_THERE)" ;
     }
     GGS_entityPropertyMap::element_type * currentProperty = currentConstrainedEntity->mInfo.mCurrentConstraintPropertyMap.firstObject () ;
     while (currentProperty != NULL) {
@@ -588,35 +586,6 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
       currentProperty->mInfo.mProperty (HERE)->generateDeleteInConstraintDestructor (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
       currentProperty = currentProperty->nextObject () ;
     }
-/*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
-    while (currentProperty != NULL) {
-      macroValidPointer (currentProperty) ;
-      switch (currentProperty->mInfo.mKind.enumValue ()) {
-      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-        generatedZone3 << "  macroMyDelete (" << currentProperty->mKey
-                       << ", GGM__" << inConstraintComponentName << "_ConstraintOn_"
-                       << currentProperty->mInfo.mTypeName
-                       << ") ;\n" ;
-        break ;
-      case GGS_metamodelPropertyKind::enum_entityMapProperty:
-      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-      case GGS_metamodelPropertyKind::enum_attributeProperty:
-      case GGS_metamodelPropertyKind::kNotBuilt:
-        break ;
-      }
-      currentProperty = currentProperty->nextObject () ;
-    }*/
-/*    if (! currentConstrainedEntity->mInfo.mIsImplicitlyDefined.boolValue ()) {
-      GGS_constrainedPropertyList::element_type * currentParameterProperty = currentConstrainedEntity->mInfo.mConstrainedParameterPropertyToImplementList.firstObject () ;
-      while (currentParameterProperty != NULL) {
-        macroValidPointer (currentParameterProperty) ;
-        generatedZone3 << "  macroDetachPointer ("
-                       << currentParameterProperty->mPropertyName
-                       << ", GGM_"
-                       << currentParameterProperty->mPropertyTypeName << ") ;\n" ;
-        currentParameterProperty = currentParameterProperty->nextObject () ;
-      }
-    }*/
     generatedZone3 << "}\n\n" ;
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -666,31 +635,29 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
   #pragma mark Perform Tree Walking
 #endif
 
-//--- Build Transformed Tree
-  generatedZone3.writeCppHyphenLineComment () ;
-  generatedZone3 << "void GGM__" << inConstraintComponentName << "_ConstraintOn_"
-                 << currentConstrainedEntity->mKey << "::\n"
-                 << "_performTreeWalking (C_Lexique & _inLexique" ;
-/*  GGS_constrainedPropertyList::element_type * currentParameterProperty = currentConstrainedEntity->mInfo.mConstrainedParameterPropertyToImplementList.firstObject () ;
-  while (currentParameterProperty != NULL) {
-    macroValidPointer (currentParameterProperty) ;
-    generatedZone3 << ",\n"
-                      "                  GGM_"
-                   << currentParameterProperty->mPropertyTypeName << " * _inParameter_" << currentParameterProperty->mPropertyName ;
-    currentParameterProperty = currentParameterProperty->nextObject () ;
-  }*/
-  generatedZone3 << ") {\n" ;
+  //--- Build Transformed Tree
+    generatedZone3.writeCppHyphenLineComment () ;
+    generatedZone3 << "void GGM__" << inConstraintComponentName << "_ConstraintOn_"
+                   << currentConstrainedEntity->mKey << "::\n"
+                   << "_performTreeWalking (C_Lexique & _inLexique" ;
+    currentProperty = currentConstrainedEntity->mInfo.mAllConstraintPropertyMap.firstObject () ;
+    while (currentProperty != NULL) {
+      macroValidPointer (currentProperty) ;
+      currentProperty->mInfo.mProperty (HERE)->generateTreeWalkingFormalParameter (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
+      currentProperty = currentProperty->nextObject () ;
+    }
+    generatedZone3 << ") {\n" ;
   //--- Calling super method
     if (currentConstrainedEntity->mInfo.mSuperEntityName.length () > 0) {
       generatedZone3 << "//--- Invoke super method\n"
                         "  GGM__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mInfo.mSuperEntityName
                      << "::_performTreeWalking (_inLexique" ;
-/*      currentParameterProperty = currentConstrainedEntity->mInfo.mConstrainedParameterPropertyToImplementList.firstObject () ;
-      while (currentParameterProperty != NULL) {
-        macroValidPointer (currentParameterProperty) ;
-        generatedZone3 << ", _inParameter_" << currentParameterProperty->mPropertyName ;
-        currentParameterProperty = currentParameterProperty->nextObject () ;
-      }*/
+      currentProperty = currentConstrainedEntity->mInfo.mAllConstraintPropertyMap.firstObject () ;
+      while (currentProperty != NULL) {
+        macroValidPointer (currentProperty) ;
+        currentProperty->mInfo.mProperty (HERE)->generateTreeWalkingEffectiveArgument (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
+        currentProperty = currentProperty->nextObject () ;
+      }
       generatedZone3 << ") ;\n" ;
     }
     generatedZone3 << "  #ifdef DEBUG_TREE_WALKING\n"
@@ -699,15 +666,12 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                       "  #endif\n" ;
     if (! currentConstrainedEntity->mInfo.mIsImplicitlyDefined.boolValue ()) {
       generatedZone3 << "//--- Attach Parameters\n" ;
-/*      GGS_constrainedPropertyList::element_type * currentParameterProperty = currentConstrainedEntity->mInfo.mConstrainedParameterPropertyToImplementList.firstObject () ;
-      while (currentParameterProperty != NULL) {
-        macroValidPointer (currentParameterProperty) ;
-        generatedZone3 << "  macroAttachPointer ("
-                       << currentParameterProperty->mPropertyName
-                       << ", _inParameter_" << currentParameterProperty->mPropertyName
-                       << ") ;\n" ;
-        currentParameterProperty = currentParameterProperty->nextObject () ;
-      }*/
+      currentProperty = currentConstrainedEntity->mInfo.mCurrentConstraintPropertyMap.firstObject () ;
+      while (currentProperty != NULL) {
+        macroValidPointer (currentProperty) ;
+        currentProperty->mInfo.mProperty (HERE)->generateTreeWalkingAttributAttachment (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
+        currentProperty = currentProperty->nextObject () ;
+      }
     }
 /*    GGS_typeInstructionList instructionList ;
     GGS_callInstructionSharedPropertySignatureMap unused1 ;
