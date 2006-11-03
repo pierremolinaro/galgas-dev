@@ -110,6 +110,7 @@ rule <import_headers_semantics_and_grammars>
 
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
+  !@entityToImplementMap outAllMetamodelClassMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
@@ -468,6 +469,7 @@ rule <galgas_component>
   @stringset includedOptionComponents ;
   @stringset includedMetamodelComponents ;
   @stringset includedGrammarComponents ;
+  @entityToImplementMap allMetamodelClassMap ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedMetamodelComponents
@@ -486,6 +488,7 @@ rule <galgas_component>
 
     ?componentEntitiesMap
     ?tableEnAvant
+    ?allMetamodelClassMap
   ;
 #-------------- Semantic Declarations
   parse
@@ -700,7 +703,9 @@ rule <import_headers_semantics_and_grammars>
 
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
+  !@entityToImplementMap outAllMetamodelClassMap
 :
+  outAllMetamodelClassMap := [@entityToImplementMap emptyMap] ;
   outActionMap := [@ActionMap emptyMap] ;
   outInclusionsForHeaderFile := [@stringset emptySet] ;
   outInclusionsForImplementationFile := [@stringset emptySet] ;
@@ -882,12 +887,30 @@ rule <import_headers_semantics_and_grammars>
         ;
       end select ;
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName string]] then
-        @M_semanticsEntitiesForUse importedEntities ;
-        [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?* ?*] ;
-        foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) :
-          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
-            [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
-          end if ;
+        @entityToImplementMap metamodelClassMap ;
+        [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?metamodelClassMap ?*] ;
+        foreach metamodelClassMap (@lstring kMetamodelClassName
+                                   @entityPropertyMap kAllMetamodelPropertyMap
+                                   @bool kIsAbstract
+                                   @entityPropertyMap kCurrentMetamodelPropertyMap
+                                   @lstring kSuperEntityName
+                                   @entityPropertyMap kCurrentConstraintPropertyMap
+                                   @stringset kSuperEntitySet
+                                   @entityPropertyMap kAllConstraintPropertyMap
+                                   @bool kIsImplicitlyDefined
+                                   @entityPropertyMap kAllAvailablePropertyMap) :
+        [!?outAllMetamodelClassMap insertKey
+          !kMetamodelClassName
+          !kAllMetamodelPropertyMap
+          !kIsAbstract
+          !kCurrentMetamodelPropertyMap
+          !kSuperEntityName
+          !kCurrentConstraintPropertyMap
+          !kSuperEntitySet
+          !kAllConstraintPropertyMap
+          !kIsImplicitlyDefined
+          !kAllAvailablePropertyMap
+        ] ;
         end foreach ;
         outInclusionsForHeaderFile += ![metamodelComponentName string] ;
       end if ;
@@ -989,13 +1012,7 @@ label importSemantics
           !?ioConstraintComponentMap
         ;
       end select ;
-      @M_semanticsEntitiesForUse importedEntities ;
-      [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?importedEntities ?* ?*] ;
-      foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) :
-        if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
-          [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
-        end if ;
-      end foreach ;
+      [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?* ?*] ;
     end select ;
     $;$ ;
   end repeat ;

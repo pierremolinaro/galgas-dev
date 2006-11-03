@@ -80,6 +80,7 @@ rule <syntax_declaration>
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ?@lstring inSyntaxComponentName
+  ?@entityToImplementMap inAllMetamodelClassMap
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
@@ -110,6 +111,7 @@ rule <import_headers_semantics_and_grammars>
 
   !@M_semanticsEntitiesForUse ioEntitiesMap
   !@typeTableEnAvant tableEnAvant
+  !@entityToImplementMap outAllMetamodelClassMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
@@ -144,6 +146,7 @@ rule <syntax_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -199,6 +202,7 @@ rule <syntax_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -214,6 +218,7 @@ rule <syntax_instructions_list_no_verif>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -235,6 +240,7 @@ rule <rule_declaration_or_implementation>
   ?@L_signature inSignatureForGrammar
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ??@lstring inSyntaxComponentName
+  ??@entityToImplementMap inAllMetamodelClassMap
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
@@ -304,6 +310,7 @@ rule <galgas_component>
   @stringset includedGrammarComponents ;
   @ModelMap modelMap ;
   @ActionMap actionMap ;
+  @entityToImplementMap allMetamodelClassMap ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedOptionComponents
@@ -321,6 +328,7 @@ rule <galgas_component>
     ?actionMap
     ?entitiesMap
     ?tableEnAvant
+    ?allMetamodelClassMap
   ;
   listeEntitesAengendrer := [@typeEntitiesToGenerateList emptyList] ;
   @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMapForGrammar [emptyMap] ;
@@ -338,6 +346,7 @@ rule <galgas_component>
       !?nonTerminalSymbolsMapForGrammar
       !?productionRulesListForGrammar
       !componentName
+      !allMetamodelClassMap
     ;
   while
     <semantics_declaration>
@@ -402,6 +411,7 @@ label importSyntax
   @stringset includedGrammarComponents ;
   @ModelMap modelMap ;
   @ActionMap actionMap ;
+  @entityToImplementMap allMetamodelClassMap ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedOptionComponents
@@ -419,6 +429,7 @@ label importSyntax
     ?actionMap
     ?entitiesMap
     ?tableEnAvant
+    ?allMetamodelClassMap
   ;
 #--- 
   @L_productionRules_ForGrammarComponent productionRulesListForGrammar [emptyList] ;
@@ -433,9 +444,12 @@ label importSyntax
     <semantics_declaration> parse ;
   end repeat ;
 #--- Enter syntax component into syntax components map
-  [!?ioSyntaxComponentsMap insertKey !syntaxComponentName !nonTerminalSymbolsMapForGrammar
-                                                          !productionRulesListForGrammar
-                                                          !lexiqueName] ;
+  [!?ioSyntaxComponentsMap insertKey
+    !syntaxComponentName
+    !nonTerminalSymbolsMapForGrammar
+    !productionRulesListForGrammar
+    !lexiqueName
+  ] ;
   $end$ ;
   $syntax$ ;
   $;$ ;
@@ -574,6 +588,7 @@ rule <syntax_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 :
   $block$ ;
 #--- Nom de la map
@@ -621,6 +636,7 @@ rule <syntax_instruction>
     !?ioInstructionList
     !?tableTerminaux
     !?ioSyntaxSignature
+    !inAllMetamodelClassMap
   ;
   $end$ ;
   $block$ ;
@@ -678,6 +694,7 @@ rule <syntax_declaration>
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ?@lstring inSyntaxComponentName
+  ?@entityToImplementMap inAllMetamodelClassMap
 :
   $rule$ ;
   @lstring ruleName ;
@@ -701,12 +718,8 @@ rule <syntax_declaration>
     returnedEntity := [@lstring new !"" !here] ;
   or
     $->$ ;
-    $type_name$ ? returnedEntity ;
-    @AC_semanticsEntity e ;
-    [ioEntitiesMap searchKey !returnedEntity ?e] ;
-    @AC_galgasType type ;
-    extract e->@typeEntiteType (?type) error returnedEntity : messageTypeEntite ;
-    extract type->@typeGalgas_singleEntity (...) error returnedEntity : messageGalgasType ;
+    $mda_type_name$ ? returnedEntity ;
+    [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
   end select ;
   <rule_declaration_or_implementation>
     !?ioNonTerminalSymbolMapForSyntax
@@ -724,6 +737,7 @@ rule <syntax_declaration>
     !signatureForGrammar
     !?ioProductionRulesListForGrammar
     !inSyntaxComponentName
+    !inAllMetamodelClassMap
   ;
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
@@ -741,7 +755,7 @@ label importSyntax
     returnedEntity := [@lstring new !"" !here] ;
   or
     $->$ ;
-    $type_name$ ? returnedEntity ;
+    $mda_type_name$ ? returnedEntity ;
   end select ;
   <rule_declaration_or_implementation> importSyntax
     !?ioNonTerminalSymbolsMap
@@ -772,6 +786,7 @@ rule <rule_declaration_or_implementation>
   ?@L_signature inSignatureForGrammar
   ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
   ??@lstring unused inSyntaxComponentName
+  ??@entityToImplementMap unused inAllMetamodelClassMap
 :
   @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
   @M_nonterminalSymbolAltsForGrammar parametersMapForGrammar [emptyMap] ;
@@ -816,7 +831,7 @@ rule <rule_declaration_or_implementation>
         returnedEntity := [@lstring new !"" !here] ;
       or
         $->$ ;
-        $type_name$ ? returnedEntity ;
+        $mda_type_name$ ? returnedEntity ;
         @AC_semanticsEntity e ;
         [ioEntitiesMap searchKey !returnedEntity ?e] ;
         @AC_galgasType type ;
@@ -872,7 +887,7 @@ label importSyntax
         returnedEntity := [@lstring new !"" !here] ;
       or
         $->$ ;
-        $type_name$ ? returnedEntity ;
+        $mda_type_name$ ? returnedEntity ;
       end select ;
       [!?nonterminalSymbolParametersMap insertKey
         !altName
@@ -905,6 +920,7 @@ rule <rule_declaration_or_implementation>
   ?@L_signature unused inSignatureForGrammar
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ??@lstring unused inSyntaxComponentName
+  ??@entityToImplementMap inAllMetamodelClassMap
 :
 #--- Search non terminal symbol definition
   @M_nonterminalSymbolAlts nonterminalSymbolAltMap ;
@@ -939,14 +955,10 @@ rule <rule_declaration_or_implementation>
   if ([formalReturnedEntity string] == "") & ([inEffectiveReturnedEntity string] != "") then
     error inEffectiveReturnedEntity: "the non terminal declaration does not name any returned entity" ;
   elsif [inEffectiveReturnedEntity string] != [formalReturnedEntity string] then
-    @AC_semanticsEntity e ;
-    [ioEntitiesMap searchKey !inEffectiveReturnedEntity ?e] ;
-    @AC_galgasType type ;
-    extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
     @stringset superEntityStringSet ;
-    extract type->@typeGalgas_singleEntity (?* ?* ?* ?* ?* ?superEntityStringSet) error inEffectiveReturnedEntity : messageGalgasType ;
+    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?* ?* ?* ?* ?* ?superEntityStringSet ?* ?* ?*] ;
     if not [superEntityStringSet hasKey ![formalReturnedEntity string]] then
-      message "superEntityStringSet : " . [superEntityStringSet description] ;
+      # message "superEntityStringSet : " . [superEntityStringSet description] ;
       error inEffectiveReturnedEntity: "the '@" . [formalReturnedEntity string] . "' entity or one of its inherited entities is expected here" ;
     end if ;
   end if ;
@@ -954,11 +966,7 @@ rule <rule_declaration_or_implementation>
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
   if [inEffectiveReturnedEntity string] != "" then
-    @AC_semanticsEntity e ;
-    [ioEntitiesMap searchKey !inEffectiveReturnedEntity ?e] ;
-    @AC_galgasType type ;
-    extract e->@typeEntiteType (?type) error inEffectiveReturnedEntity : messageTypeEntite ;
-    extract type->@typeGalgas_singleEntity (?* ?allPropertiesMap ...) error inEffectiveReturnedEntity : messageGalgasType ;
+    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?allPropertiesMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
     foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
       when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
@@ -972,18 +980,13 @@ rule <rule_declaration_or_implementation>
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
         listeInstructions += !instruction ;
       when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
-        @AC_semanticsEntity entite ;
-        [ioEntitiesMap searchKey !kReferenceEntityName ?entite] ;
-        @AC_galgasType definitionType ;
-        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
+        @AC_galgasType definitionType := [@typeGalgas_singleEntity new !kReferenceEntityName] ;
         @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
         [!?ioVariablesMap insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
         listeInstructions += !instruction ;
       when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName * *) ->
-        @AC_semanticsEntity entite ;
-        [ioEntitiesMap searchKey !kReferenceEntityName ?entite] ;
         @AC_galgasType definitionType := [@typeGalgas_multipleEntity new !kReferenceEntityName] ;
         @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
@@ -1007,6 +1010,7 @@ rule <rule_declaration_or_implementation>
     !?listeInstructions
     !?tableTerminaux
     !?syntaxSignature
+    !inAllMetamodelClassMap
   ;
   [!?altProductionsMap insertKey
     !altName
@@ -1038,11 +1042,7 @@ rule <rule_declaration_or_implementation>
     or
       $->$ ;
       $type_name$ ? returnedEntity ;
-      @AC_semanticsEntity e ;
-      [ioEntitiesMap searchKey !returnedEntity ?e] ;
-      @AC_galgasType type ;
-      extract e->@typeEntiteType (?type) error returnedEntity : messageTypeEntite ;
-      extract type->@typeGalgas_singleEntity (?* ?allPropertiesMap ...) error returnedEntity : messageGalgasType ;
+      [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
     end select ;
     @location errorLocation := here ;
     $:$ ;
@@ -1066,6 +1066,7 @@ rule <rule_declaration_or_implementation>
       !?listeInstructions
       !?tableTerminaux
       !?syntaxSignature
+      !inAllMetamodelClassMap
     ;
     [!?altProductionsMap insertKey
       !altName
@@ -1154,6 +1155,7 @@ rule <syntax_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 :
   block ioVariablesMap.verifyVariableUsing () :
     <syntax_instructions_list_no_verif>
@@ -1166,6 +1168,7 @@ rule <syntax_instructions_list>
       !?ioInstructionList
       !?tableTerminaux
       !?ioSyntaxSignature
+      !inAllMetamodelClassMap
     ;
     @location positionErreur := here ;
   end block (!positionErreur) ;
@@ -1189,6 +1192,7 @@ rule <syntax_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap unused inAllMetamodelClassMap
 :
   @lstring terminalSymbolName ;
   $terminal$ ? terminalSymbolName ;
@@ -1236,6 +1240,7 @@ rule <syntax_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap unused inAllMetamodelClassMap
 :
   $<$ ;
   @lstring nonterminalSymbolName ;
@@ -1364,6 +1369,7 @@ rule <syntax_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 :
   $select$ ;
   @location positionDebut := here ;
@@ -1383,6 +1389,7 @@ rule <syntax_instruction>
         !?listeInstructionsBrancheChoix
         !?tableTerminaux
         !?syntaxSignature
+        !inAllMetamodelClassMap
       ;
       listeBranchesChoix += !listeInstructionsBrancheChoix ;
       selectList += !syntaxSignature ;
@@ -1402,6 +1409,7 @@ rule <syntax_instruction>
           !?listeInstructionsBrancheChoix
           !?tableTerminaux
           !?syntaxSignature
+          !inAllMetamodelClassMap
         ;
         listeBranchesChoix += !listeInstructionsBrancheChoix ;
         selectList += !syntaxSignature ;
@@ -1460,6 +1468,7 @@ rule <syntax_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 :
   $repeat$ ;
   @location positionDebut := here ;
@@ -1480,6 +1489,7 @@ rule <syntax_instruction>
         !?listeInstructionsPremiereBranche
         !?tableTerminaux
         !?repeatBranchInstructionsList
+        !inAllMetamodelClassMap
        ;
       listeBranchesRepeter += !listeInstructionsPremiereBranche ;
       whileList += !repeatBranchInstructionsList ;
@@ -1500,6 +1510,7 @@ rule <syntax_instruction>
           !?listeInstructionsBrancheRepeter
           !?tableTerminaux
           !?syntaxSignature
+          !inAllMetamodelClassMap
         ;
         listeBranchesRepeter += !listeInstructionsBrancheRepeter ;
         whileList += !syntaxSignature ;
@@ -1559,6 +1570,7 @@ rule <syntax_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 :
   $parse$ ;
   @typeInstruction instruction ;
@@ -1581,6 +1593,7 @@ rule <syntax_instruction>
       !?firstBranchInstructionsList
       !?tableTerminaux
       !?firstBranchSyntaxSignature
+      !inAllMetamodelClassMap
     ;
     branchList += !firstBranchInstructionsList ;
     parse_rewind_signature_list += !firstBranchSyntaxSignature !instructionStartLocation ;
@@ -1603,6 +1616,7 @@ rule <syntax_instruction>
         !?instructionsList
         !?tableTerminaux
         !?syntaxSignature
+        !inAllMetamodelClassMap
       ;
       branchList += !instructionsList ;
       parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
@@ -1640,6 +1654,7 @@ rule <syntax_instruction>
             !?instructionsList
             !?tableTerminaux
             !?syntaxSignature
+            !inAllMetamodelClassMap
           ;
           branchList += !expression !instructionsList ;
           parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
@@ -1661,6 +1676,7 @@ rule <syntax_instruction>
           !?elseInstructionsList
           !?tableTerminaux
           !?syntaxSignature
+          !inAllMetamodelClassMap
         ;
         parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
         foreach syntaxSignature (@AC_instruction_ForGrammar grammarInstruction) :
@@ -1717,6 +1733,7 @@ rule <syntax_instructions_list_no_verif>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
+  ??@entityToImplementMap inAllMetamodelClassMap
 :
   @entityPropertyMap propertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
@@ -1733,6 +1750,7 @@ rule <syntax_instructions_list_no_verif>
       !?ioInstructionList
       !?tableTerminaux
       !?ioSyntaxSignature
+      !inAllMetamodelClassMap
     ;
   while
     <semantic_instruction>

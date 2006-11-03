@@ -697,13 +697,6 @@ map @mapAndEntityUniqueMap {
 
 #---------------------------------------------------------------------------*
 
-list @constrainedPropertyList {
-  @lstring mPropertyTypeName ;
-  @lstring mPropertyName ;
-}
-
-#---------------------------------------------------------------------------*
-
 map @indexMap {
   @lstring mMapAttributeName ;
   insert insertKey error message "the '%K' map index is already defined in %L" ;
@@ -731,14 +724,6 @@ map @entityToImplementMap {
   @bool mIsImplicitlyDefined ;
 #--- All Available properties
   @entityPropertyMap mAllAvailablePropertyMap ;
-##--- Only properties defined as attribute in current constraint
-#  @constrainedPropertyList mConstrainedAttributePropertyToImplementList ;
-##--- Only properties defined as parameter in current constraint
-#  @constrainedPropertyList mConstrainedParameterPropertyToImplementList ;
-##--- All map indexes
-#  @indexMap mAllIndexes ;
-##--- Only indexes defined in current constraint
-#  @indexMap mCurrentIndexes ;
 #--- Access methods
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey error message "the '@%K' entity is not declared" ;
@@ -757,11 +742,6 @@ action generate_metamodel
 
 class @typeGalgas_singleEntity extends @AC_galgasType {
   @lstring mEntityName ;
-  @entityPropertyMap mAllPropertiesMap ;
-  @bool mIsAbstract ;
-  @entityPropertyMap mEntityPropertiesMap ;
-  @lstring mSuperEntityName ;
-  @stringset mSuperEntitiesSet ;
 #--- Get type name
   override reader getTypeName !@string outTypeName :
     outTypeName := [mEntityName string] ;
@@ -2698,7 +2678,6 @@ map @M_semanticsComponents {
 
 map @M_metamodelsComponents {
   @lstring mRootEntity ;
-  @M_semanticsEntitiesForUse mSemanticsEntitiesMap ;
   @entityToImplementMap mEntityMap ;
   @stringset mMultiReferencedEntities ;
   insert insertKey error message "a metamodel component named '%K' is already declared in %L" ;
