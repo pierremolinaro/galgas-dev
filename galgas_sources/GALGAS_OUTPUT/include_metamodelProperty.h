@@ -48,10 +48,25 @@ class cPtr_metamodelProperty : public C_GGS_Object {
                                  const C_String & inPropertyName) const ;
 
   public : virtual void
+  generateInitInConstraintConstructor (AC_OutputStream & ioHFile,
+                             const C_String & inConstraintComponentName,
+                             const C_String & inPropertyName) const ;
+
+  public : virtual void
   generateCallInstruction (AC_OutputStream & ioCppFile,
                            const C_String & inCalledPropertyName,
                            const C_String & inTargetFileName,
                            const GGS_L_lstringList & inParameterList) const ;
+
+  public : virtual void
+  generateCreateInConstraintConstructor (AC_OutputStream & ioHFile,
+                                         const C_String & inConstraintComponentName,
+                                         const C_String & inPropertyName) const ;
+
+  public : virtual void
+  generateDeleteInConstraintDestructor (AC_OutputStream & ioHFile,
+                                        const C_String & inConstraintComponentName,
+                                        const C_String & inPropertyName) const ;
 
 //--- END OF USER ZONE 2
 

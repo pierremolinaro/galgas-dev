@@ -116,6 +116,16 @@ generateAttributeInConstraint (AC_OutputStream & inHFile ,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_metamodelMapProperty::
+generateAttributeInConstraint (AC_OutputStream & inHFile ,
+                               const C_String & /* inConstraintComponentName */,
+                               const C_String & inPropertyName) const {
+  inHFile << "  public : GGM_" << mMapTypeName
+          << " * " << inPropertyName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark generateAttributeInMetamodel
 #endif
@@ -281,6 +291,79 @@ generateMultiplicityConstraintChecking (AC_OutputStream & ioCppFile,
             << inCalledPropertyName << ".count (), "
             << mLowerBound.uintValue () << ", "
             << mHigherBound.uintValue () << " COMMA_THERE) ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark generateInitInConstraintConstructor
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateInitInConstraintConstructor (AC_OutputStream & /* inHFile */,
+                                     const C_String & /* inConstraintComponentName */,
+                                     const C_String & /* inPropertyName */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelMapProperty::
+generateInitInConstraintConstructor (AC_OutputStream & inHFile,
+                                     const C_String & /* inConstraintComponentName */,
+                                     const C_String & inPropertyName) const {
+  inHFile << ",\n" << inPropertyName << " (NULL)" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark generateCreateInConstraintConstructor
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateCreateInConstraintConstructor (AC_OutputStream & /* inHFile */,
+                                       const C_String & /* inConstraintComponentName */,
+                                       const C_String & /* inPropertyName */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelMapProperty::
+generateCreateInConstraintConstructor (AC_OutputStream & inHFile,
+                                       const C_String & /* inConstraintComponentName */,
+                                       const C_String & inPropertyName) const {
+  inHFile << "  GGM_" << mMapTypeName << " * _p_" << inPropertyName << " = NULL ;\n"
+             "  macroMyNew (_p_" << inPropertyName << ", GGM_" << mMapTypeName << " (HERE)) ;\n"
+             "  macroAttachPointer ("
+          << inPropertyName
+          << ", _p_" << inPropertyName << ") ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark generateDeleteInConstraintDestructor
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateDeleteInConstraintDestructor (AC_OutputStream & /* inHFile */,
+                                      const C_String & /* inConstraintComponentName */,
+                                      const C_String & /* inPropertyName */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelMapProperty::
+generateDeleteInConstraintDestructor (AC_OutputStream & inHFile,
+                                      const C_String & /* inConstraintComponentName */,
+                                      const C_String & inPropertyName) const {
+  inHFile << "  macroDetachPointer (" << inPropertyName << ", GGM_" << mMapTypeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*

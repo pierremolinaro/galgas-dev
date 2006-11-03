@@ -21,6 +21,25 @@ class cPtr_metamodelMapProperty : public cPtr_metamodelProperty {
   private : typedef cPtr_metamodelProperty inherited ;
 //--- START OF USER ZONE 2
 
+  public : virtual void
+  generateAttributeInConstraint (AC_OutputStream & ioHFile,
+                                 const C_String & inConstraintComponentName,
+                                 const C_String & inPropertyName) const ;
+
+  public : virtual void
+  generateInitInConstraintConstructor (AC_OutputStream & ioHFile,
+                                       const C_String & inConstraintComponentName,
+                                       const C_String & inPropertyName) const ;
+
+  public : virtual void
+  generateCreateInConstraintConstructor (AC_OutputStream & ioHFile,
+                                         const C_String & inConstraintComponentName,
+                                         const C_String & inPropertyName) const ;
+
+  public : virtual void
+  generateDeleteInConstraintDestructor (AC_OutputStream & ioHFile,
+                                        const C_String & inConstraintComponentName,
+                                        const C_String & inPropertyName) const ;
 
 //--- END OF USER ZONE 2
 

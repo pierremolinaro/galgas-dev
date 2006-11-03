@@ -206,12 +206,10 @@ rule <parse_constraint_document>
   ;
 #--- Search imported metamodel
   @lstring rootEntity ;
-  @M_semanticsEntitiesForUse semanticsEntitiesMap ;
   @entityToImplementMap metamodelEntityMap ;
   [metamodelComponentMap searchKey
     !metamodelName
     ?rootEntity
-    ?semanticsEntitiesMap
     ?metamodelEntityMap
     ?*
   ] ;
@@ -472,7 +470,7 @@ end rule ;
 
 rule <constraints_on_entity_declaration>
   ?@entityToImplementMap inEntityMap
-  ?!@mapEntityMap unused ioMapEntityMap
+  ?!@mapEntityMap ioMapEntityMap
   ?!@entityToImplementMap ioConstrainedEntityMap
   ?!@constraintInstructionListMap unused ioConstraintInstructionListMap
 :
@@ -522,7 +520,7 @@ rule <constraints_on_entity_declaration>
     error entityName:
         "constraints for super entity ('@" . [superEntity string] . "') should be previously defined" ;
   end if ;
-#--- Properties as parameters
+##--- Properties as parameters
 #    select
 #    or
 #      $($ ;
@@ -544,18 +542,20 @@ rule <constraints_on_entity_declaration>
 #      $)$ ;
 #    end select ;
   #--- Properties as attributes
-    @constrainedPropertyList constrainedAttributePropertyToImplementList [emptyList] ;
     @indexMap currentIndexMap [emptyMap] ;
     ${$ ;
-#    repeat
-#    while
-#      @lstring typeName ;
-#      $type_name$ ? typeName ;
-#      [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
-#      @lstring propertyName ;
-#      $identifier$ ? propertyName ;
-#      constrainedAttributePropertyToImplementList += !typeName !propertyName ;
-#      $;$ ;
+    repeat
+    while
+      @lstring typeName ;
+      $mda_type_name$ ? typeName ;
+      [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
+      @metamodelProperty property := [@metamodelMapProperty new !typeName] ;
+      @lstring propertyName ;
+      $identifier$ ? propertyName ;
+      [!?currentConstraintPropertyMap insertKey !propertyName !property] ;
+      [!? allConstraintPropertyMap insertKey !propertyName !property] ;
+      [!?allAvailablePropertyMap insertKey !propertyName !property] ;
+      $;$ ;
 #    while
 #      $mapindex$ ;
 #      @lstring mapIndexName ;
@@ -568,7 +568,7 @@ rule <constraints_on_entity_declaration>
 #      [!?currentIndexMap insertKey !mapIndexName !mapAttributeName] ;
 #      [!?allIndexes insertKey !mapIndexName !mapAttributeName] ;
 #      $;$ ;
-#    end repeat ;
+    end repeat ;
     $}$ ;
     ${$ ;
 #  #--- Enter attributes metamodels as constants

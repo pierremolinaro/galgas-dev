@@ -210,13 +210,6 @@ generate_constraint_header_file (C_Lexique & inLexique,
           currentProperty->mInfo.mProperty (HERE)->generateAttributeInConstraint (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
           currentProperty = currentProperty->nextObject () ;
         }
-/*        GGS_constrainedPropertyList::element_type * currentSharedProperty = currentConstrainedEntity->mInfo.mConstrainedAttributePropertyToImplementList.firstObject () ;
-        while (currentSharedProperty != NULL) {
-          macroValidPointer (currentSharedProperty) ;
-          generatedZone3 << "  public : GGM_" << currentSharedProperty->mPropertyTypeName
-                         << " * " << currentSharedProperty->mPropertyName << " ;\n" ;
-          currentSharedProperty = currentSharedProperty->nextObject () ;
-        }*/
 /*        if (! currentConstrainedEntity->mInfo.mIsImplicitlyDefined.boolValue ()) {
           GGS_constrainedPropertyList::element_type * currentParameterProperty = currentConstrainedEntity->mInfo.mConstrainedParameterPropertyToImplementList.firstObject () ;
           while (currentParameterProperty != NULL) {
@@ -510,21 +503,12 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
       generatedZone3 << "GGM__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mInfo.mSuperEntityName
                      << "(_inMetamodelObject COMMA_HERE)" ;
     }
-/*    GGS_entityPropertyMap::element_type * currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
+    GGS_entityPropertyMap::element_type * currentProperty = currentConstrainedEntity->mInfo.mCurrentConstraintPropertyMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
-      switch (currentProperty->mInfo.mKind.enumValue ()) {
-      case GGS_metamodelPropertyKind::enum_singleReferenceProperty:
-        generatedZone3 << ",\n" << currentProperty->mKey << " (NULL)" ;
-        break ;      
-      case GGS_metamodelPropertyKind::enum_multipleReferenceProperty:
-      case GGS_metamodelPropertyKind::enum_attributeProperty:
-      case GGS_metamodelPropertyKind::enum_entityMapProperty:
-      case GGS_metamodelPropertyKind::kNotBuilt:
-        break ;
-      }
+      currentProperty->mInfo.mProperty (HERE)->generateInitInConstraintConstructor (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
       currentProperty = currentProperty->nextObject () ;
-    }*/
+    }
 /*    GGS_constrainedPropertyList::element_type * currentSharedProperty = currentConstrainedEntity->mInfo.mConstrainedAttributePropertyToImplementList.firstObject () ;
     while (currentSharedProperty != NULL) {
       macroValidPointer (currentSharedProperty) ;
@@ -544,19 +528,12 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
     }*/
     generatedZone3 << " {\n" 
                       "  macroValidPointer (_inMetamodelObject) ;\n" ;
-/*    currentSharedProperty = currentConstrainedEntity->mInfo.mConstrainedAttributePropertyToImplementList.firstObject () ;
-    while (currentSharedProperty != NULL) {
-      macroValidPointer (currentSharedProperty) ;
-      generatedZone3 << "  GGM_"
-                     << currentSharedProperty->mPropertyTypeName
-                     << " * _p_" << currentSharedProperty->mPropertyTypeName << " = NULL ;\n"
-                        "  macroMyNew (_p_" << currentSharedProperty->mPropertyTypeName << ", GGM_"
-                     << currentSharedProperty->mPropertyTypeName << " (HERE)) ;\n"
-                        "  macroAttachPointer ("
-                     << currentSharedProperty->mPropertyName
-                     << ", _p_" << currentSharedProperty->mPropertyTypeName << ") ;\n" ;
-      currentSharedProperty = currentSharedProperty->nextObject () ;
-    }*/
+    currentProperty = currentConstrainedEntity->mInfo.mCurrentConstraintPropertyMap.firstObject () ;
+    while (currentProperty != NULL) {
+      macroValidPointer (currentProperty) ;
+      currentProperty->mInfo.mProperty (HERE)->generateCreateInConstraintConstructor (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
+      currentProperty = currentProperty->nextObject () ;
+    }
 /*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
@@ -605,6 +582,12 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
     generatedZone3.writeCppHyphenLineComment () ;
     generatedZone3 << "GGM__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << "::\n"
                       "~GGM__" << inConstraintComponentName << "_ConstraintOn_" << currentConstrainedEntity->mKey << " (void) {\n" ;
+    currentProperty = currentConstrainedEntity->mInfo.mCurrentConstraintPropertyMap.firstObject () ;
+    while (currentProperty != NULL) {
+      macroValidPointer (currentProperty) ;
+      currentProperty->mInfo.mProperty (HERE)->generateDeleteInConstraintDestructor (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
+      currentProperty = currentProperty->nextObject () ;
+    }
 /*    currentProperty = currentConstrainedEntity->mInfo.mEntityPropertiesMap.firstObject () ;
     while (currentProperty != NULL) {
       macroValidPointer (currentProperty) ;
@@ -622,14 +605,6 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
         break ;
       }
       currentProperty = currentProperty->nextObject () ;
-    }*/
-/*    currentSharedProperty = currentConstrainedEntity->mInfo.mConstrainedAttributePropertyToImplementList.firstObject () ;
-    while (currentSharedProperty != NULL) {
-      macroValidPointer (currentSharedProperty) ;
-      generatedZone3 << "  macroDetachPointer ("
-                     << currentSharedProperty->mPropertyName << ", GGM_"
-                     << currentSharedProperty->mPropertyTypeName << ") ;\n" ;
-      currentSharedProperty = currentSharedProperty->nextObject () ;
     }*/
 /*    if (! currentConstrainedEntity->mInfo.mIsImplicitlyDefined.boolValue ()) {
       GGS_constrainedPropertyList::element_type * currentParameterProperty = currentConstrainedEntity->mInfo.mConstrainedParameterPropertyToImplementList.firstObject () ;

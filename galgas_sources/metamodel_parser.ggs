@@ -150,32 +150,6 @@ rule <parse_metamodel>
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
-#--- Build semantic entities map
-  @M_semanticsEntitiesForUse semanticsEntityMap [emptyMap] ;
-  foreach entityMap (@lstring kEntityName
-                     @entityPropertyMap kAllMetamodelPropertyMap
-                     @bool kIsAbstract
-                     @entityPropertyMap kCurrentMetamodelPropertyMap
-                     @lstring kSuperEntityName
-                     *
-                     @stringset kSuperEntitySet
-                     *
-                     *
-                     *) :
-     @AC_galgasType t := [@typeGalgas_singleEntity new
-      !kEntityName
-      !kAllMetamodelPropertyMap
-      !kIsAbstract
-      !kCurrentMetamodelPropertyMap
-      !kSuperEntityName
-      !kSuperEntitySet
-    ] ;
-    @AC_semanticsEntity e := [@typeEntiteType new !t] ;
-    [!?semanticsEntityMap insertKey
-     !kEntityName
-     !e
-    ] ;
-  end foreach ;
 #--- Check properties
   @stringset multiReferencedEntities [emptySet] ;
   foreach entityMap (@lstring kEntityName
@@ -212,7 +186,6 @@ rule <parse_metamodel>
     [!?ioMetamodelComponentMap insertKey
       !metamodelName
       !rootEntityName
-      !semanticsEntityMap
       !entityMap
       !multiReferencedEntities
     ] ;
