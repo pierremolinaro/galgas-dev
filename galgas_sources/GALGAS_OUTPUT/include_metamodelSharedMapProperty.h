@@ -51,6 +51,11 @@ class cPtr_metamodelSharedMapProperty : public cPtr_metamodelProperty {
                                          const C_String & inConstraintComponentName,
                                          const C_String & inPropertyName) const ;
 
+  public : virtual void
+  generateDescription (AC_OutputStream & ioHFile,
+                       const C_String & inConstraintComponentName,
+                       const C_String & inPropertyName) const ;
+
 //--- END OF USER ZONE 2
 
   public : cPtr_metamodelSharedMapProperty (const GGS_lstring &  COMMA_LOCATION_ARGS) ;

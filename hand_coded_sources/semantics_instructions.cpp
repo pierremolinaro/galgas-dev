@@ -226,23 +226,18 @@ generateInstruction (AC_OutputStream & ioCppFile,
       if (first) {
         first = false ;
       }else{
-        ioCppFile << "}else " ;
+        ioCppFile << "}else{\n" ;
+        ioCppFile.incIndentation (+2) ;
       }
-      ioCppFile << "if (dynamic_cast <"
-                   "cPtr_" << p->mClassName << " *> (" ;
+      ioCppFile << "cPtr_" << p->mClassName << " * operand_"
+                << p->mResultVarID.currentLocation ()
+                << " = dynamic_cast <cPtr_" << p->mClassName << " *> (" ;
       mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << ".getPtr ()) != NULL) {\n" ;
-      if (! p->mNoUsedParameter.boolValue ()) {
-        ioCppFile << "  cPtr_" << p->mClassName << " * operand_"
-                  << p->mResultVarID.currentLocation ()
-                  << " = dynamic_cast <"
-                     "cPtr_" << p->mClassName << " *> (" ;
-        mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
-        ioCppFile << ".getPtr ()) ;\n"
-                     "  macroValidPointer (operand_"
-                  << p->mResultVarID.currentLocation ()
-                  << ") ; \n" ;
-      }
+      ioCppFile << ".getPtr ()) ;\n"
+                   "if (operand_" << p->mResultVarID.currentLocation () << " != NULL) {\n"
+                   "  macroValidPointer (operand_"
+                << p->mResultVarID.currentLocation ()
+                << ") ; \n" ;
       generateInstructionListForList (p->mInstructionList, ioCppFile,
                                       inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -254,8 +249,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
     generateInstructionListForList (mElseInstructionList, ioCppFile,
                                     inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
-    ioCppFile << "}\n" ;
-    ioCppFile.incIndentation (-2) ;
+    for (sint32 i=0 ; i<branchCount ; i++) {
+      ioCppFile << "}\n" ;
+      ioCppFile.incIndentation (-2) ;
+    }
     ioCppFile << "}\n" ;
   }
 }

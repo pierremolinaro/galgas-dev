@@ -1410,6 +1410,7 @@ map @callInstructionSharedPropertySignatureMap {
 map @constraintInstructionListMap {
   @typeInstructionList instructionsList ;
   @callInstructionSharedPropertySignatureMap mCallInstructionSharedPropertySignatureMap ;
+  @location mEndOfInstructionList ;
   insert insertKey error message "the instruction list of '%K' entity constraint  is already defined in %L" ;
   search searchKey error message "the instruction list of '%K' constraint entity is not defined" ;
 }

@@ -178,6 +178,82 @@ end rule ;
 
 #-------------------------------------------------------------------*
 
+routine checkCallInstruction 
+  ??@entityToImplementMap inConstrainedEntityMap
+  ??@lstring inTestedReferenceName
+  ??@callInstructionSharedPropertySignatureMap inCallInstructionSharedPropertySignatureMap
+  ??@lstring inTestedPropertyName
+  ??@entityPropertyMap inAllAvailablePropertiesMap
+  ??@location inEndOfInstructionList
+:
+  if [inConstrainedEntityMap hasKey ![inTestedReferenceName string]] then
+    if [inCallInstructionSharedPropertySignatureMap hasKey ![inTestedPropertyName string]] then
+      # warning endOfInstructionList:"checking 'call " . [inTestedPropertyName string] . "' instruction..." ;
+    #--- Build formal parameter type list
+      @entityPropertyMap allContraintsPropertyMap ;
+      [inConstrainedEntityMap searchKey ! inTestedReferenceName ?* ?* ?* ?* ?* ?* ?allContraintsPropertyMap ?* ?*] ;
+      @metamodelPropertyList formalParameterTypeList [emptyList] ;
+      foreach allContraintsPropertyMap (* @metamodelProperty property) :
+        extract property :
+        when @metamodelSharedMapProperty (@lstring kMapTypeName) ->
+          formalParameterTypeList += !property ;
+          #formalParameterTypeList += ![@metamodelMapProperty new !kMapTypeName] ;
+        else
+        end extract ;
+      end foreach ;
+    #--- Build effective argument type list
+      @L_lstringList effectiveArgumentList ;
+      @location endOfCallInstruction ;
+      [inCallInstructionSharedPropertySignatureMap searchKey ! inTestedPropertyName ?effectiveArgumentList ?endOfCallInstruction] ;
+      @metamodelPropertyList effectiveArgumentTypeList [emptyList] ;
+      foreach effectiveArgumentList (@lstring kEffectiveArgumentName) :
+        @metamodelProperty property ;
+        [inAllAvailablePropertiesMap searchKey !kEffectiveArgumentName ?property] ;
+         effectiveArgumentTypeList += !property ;
+      end foreach ;
+    #--- Check types
+      if [formalParameterTypeList length] != [effectiveArgumentTypeList length] then
+        error endOfCallInstruction: "the call instruction names "
+          . [[effectiveArgumentTypeList length] string] . " argument(s) instead of "
+          . [[formalParameterTypeList length] string] ;
+      else
+        @uint argumentIndex := 0 ;
+        foreach formalParameterTypeList (@metamodelProperty kFormalProperty), effectiveArgumentTypeList (@metamodelProperty kEffectiveProperty) :
+          argumentIndex ++ ;
+          match kFormalProperty :: kEffectiveProperty :
+          when @metamodelSharedMapProperty (@lstring kFormalTypeName) :: @metamodelMapProperty (@lstring kEffectiveTypeName) :
+            if [kFormalTypeName string] != [kEffectiveTypeName string] then
+              error endOfCallInstruction: "for argument " . [argumentIndex string]
+                 . ", the effective argument map type (" . [kEffectiveTypeName string]
+                 . ") is incompatible with formal parameter map type (" . [kFormalTypeName string]
+                 . ")" ;
+            end if ;
+          when @metamodelSharedMapProperty (@lstring kFormalTypeName) :: @metamodelSharedMapProperty (@lstring kEffectiveTypeName) :
+            if [kFormalTypeName string] != [kEffectiveTypeName string] then
+              error endOfCallInstruction: "for argument " . [argumentIndex string]
+                 . ", the effective argument map type (" . [kEffectiveTypeName string]
+                 . ") is incompatible with formal parameter map type (" . [kFormalTypeName string]
+                 . ")" ;
+            end if ;
+          else
+            error endOfCallInstruction: "for argument " . [argumentIndex string]
+               . ", the effective argument type (" . [kEffectiveProperty messageProperty]
+               . ") is incompatible with formal parameter type (" . [kFormalProperty messageProperty]
+               . ")" ;
+          end match ;
+        end foreach ;
+      end if ; 
+      #log effectiveArgumentList, allContraintsPropertyMap, effectiveArgumentTypeList, formalParameterTypeList ;
+    else
+      error inEndOfInstructionList:"the instruction list should have a 'call " . [inTestedPropertyName string] . "' instruction" ;
+    end if ;
+  elsif [inCallInstructionSharedPropertySignatureMap hasKey ![inTestedPropertyName string]] then
+    error inEndOfInstructionList:"the instruction list should not have a 'call " . [inTestedPropertyName string] . "' instruction" ;
+  end if ;
+end routine ;
+
+#-------------------------------------------------------------------*
+
 rule <parse_constraint_document>
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_constraintComponents ioConstraintComponentMap
@@ -247,7 +323,9 @@ rule <parse_constraint_document>
       !kEntityName
       ?representativeTypeName
     ;
-    [!?representativeEntityMap insertKey !kEntityName !representativeTypeName !kSuperEntitySet] ;
+    @stringset superEntitySet := kSuperEntitySet ;
+    superEntitySet += ![kEntityName string] ;
+    [!?representativeEntityMap insertKey !kEntityName !representativeTypeName !superEntitySet] ;
   end foreach ;
 #--- Redefine the super classes not redefined by user
 ##--- Build actual constraint entity map
@@ -362,54 +440,47 @@ rule <parse_constraint_document>
 #      !kCurrentIndexMap
 #    ] ;
   end foreach ;
-##--- Check call instructions
-#  foreach actualConstrainedEntityMap (
-#    @lstring kEntityName
-#    *
-#    *
-#    @entityPropertyMap kEntityPropertiesMap
-#    *
-#    *
-#    *
-#    *
-#    @constrainedPropertyList kConstrainedParameterPropertyToImplementList
-#    *
-#    *
-#  ) :
-#  #--- loop throught properties
-#    foreach kEntityPropertiesMap (@lstring kPropertyName @metamodelPropertyKind kKind @lstring kTypeName) :
-#      @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-#      if [constraintInstructionListMap hasKey ![kEntityName string]] then
-#        [constraintInstructionListMap searchKey !kEntityName ?* ?callInstructionSharedPropertySignatureMap] ;
-#      end if ;
-#      switch kKind
-#      when entityMapProperty :
-#      when attributeProperty:
-#        if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
-#          @location instructionLocation ;
-#          [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?* ?instructionLocation] ;
-#          error instructionLocation: "an attribute cannot be named here in a call instruction" ;
-#        end if ;
-#      when singleReferenceProperty, multipleReferenceProperty:
-#        if [actualConstrainedEntityMap hasKey ![kTypeName string]] then
-#          if [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
-##            warning kEntityName:"checking 'call " . [kPropertyName string] . "' instruction..." ;
-##            @L_lstringList effectiveArgumentList ;
-##            @location signatureLocation ;
-##            [callInstructionSharedPropertySignatureMap searchKey !kPropertyName ?effectiveArgumentList ?signatureLocation] ;
-##            foreach effectiveArgumentList (??@lstring kInstructionParameterName) :
-##              @metamodelPropertyKind property ;
-##              [newAllPropertiesMap searchKey !kInstructionParameterName ?propertyKind ?*] ;
-##            end foreach ;
-#          else
-#            error kEntityName:"the instruction list should have a 'call " . [kPropertyName string] . "' instruction" ;
-#          end if ;
-#        elsif [callInstructionSharedPropertySignatureMap hasKey ![kPropertyName string]] then
-#          error kEntityName:"the instruction list should not have a 'call " . [kPropertyName string] . "' instruction" ;
-#        end if ;
-#      end switch ;
-#    end foreach ;
-#  end foreach ;
+#--- Check call instructions
+  foreach constrainedEntityMap (
+    @lstring kEntityName
+    *
+    *
+    @entityPropertyMap kEntityPropertiesMap
+    *
+    *
+    *
+    *
+    *
+    @entityPropertyMap kAllAvailablePropertiesMap
+  ) :
+  #--- loop throught properties
+    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap ; # [emptyMap] ;
+    @location endOfInstructionList ;
+    [constraintInstructionListMap searchKey !kEntityName ?* ?callInstructionSharedPropertySignatureMap ?endOfInstructionList] ;
+    foreach kEntityPropertiesMap (@lstring kPropertyName @metamodelProperty kProperty) :
+      extract kProperty :
+      when @metamodelSingleReferenceProperty (@lstring kSingleReferenceTypeName) ->
+        checkCallInstruction 
+          !constrainedEntityMap
+          !kSingleReferenceTypeName
+          !callInstructionSharedPropertySignatureMap
+          !kPropertyName
+          !kAllAvailablePropertiesMap
+          !endOfInstructionList
+        ;
+      when @metamodelMultipleReferenceProperty (@lstring kMultipleReferenceTypeName * *) ->
+        checkCallInstruction 
+          !constrainedEntityMap
+          !kMultipleReferenceTypeName
+          !callInstructionSharedPropertySignatureMap
+          !kPropertyName
+          !kAllAvailablePropertiesMap
+          !endOfInstructionList
+        ;
+      else
+      end extract ;
+    end foreach ;
+  end foreach ;
 #--- Generate C++ code
   action generate_constraints
     !metamodelEntityMap
@@ -417,7 +488,6 @@ rule <parse_constraint_document>
     !metamodelName
     !constraintName
     !constrainedEntityMap
-#    !actualConstrainedEntityMap
     !multiReferencedEntities
     !rootEntity
     !representativeEntityMap
@@ -472,7 +542,7 @@ rule <constraints_on_entity_declaration>
   ?@entityToImplementMap inEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@entityToImplementMap ioConstrainedEntityMap
-  ?!@constraintInstructionListMap unused ioConstraintInstructionListMap
+  ?!@constraintInstructionListMap ioConstraintInstructionListMap
 :
 #--- Entity Name
   $on$ ;
@@ -503,18 +573,22 @@ rule <constraints_on_entity_declaration>
   if [superEntity string] == "" then
 
   elsif [ioConstrainedEntityMap hasKey ![superEntity string]] then
+    @entityPropertyMap inheritedConstraintPropertyMap ;
     [ioConstrainedEntityMap searchKey
       !superEntity
-      ?allMetamodelPropertyMap
+      ?* #allMetamodelPropertyMap
       ?* # Abstract
-      ?currentMetamodelPropertyMap
+      ?* #currentMetamodelPropertyMap
       ?* # Super entity
-      ?* #currentConstraintPropertyMap
+      ?inheritedConstraintPropertyMap
       ?* # Super Class set
       ?allConstraintPropertyMap
       ?* # Implicitly defined ?
-      ?allAvailablePropertyMap
+      ?* #allAvailablePropertyMap
     ] ;
+    foreach inheritedConstraintPropertyMap (@lstring kKey @metamodelProperty kProperty) :
+      [!?allAvailablePropertyMap insertKey !kKey !kProperty] ;
+    end foreach ;
   else
     error entityName:
         "constraints for super entity ('@" . [superEntity string] . "') should be previously defined" ;
@@ -662,12 +736,13 @@ rule <constraints_on_entity_declaration>
     !?constraintPropertyDefinitionSet
     !?callInstructionSharedPropertySignatureMap
   ;
-#  [!?ioConstraintInstructionListMap insertKey
-#    !entityName
-#    !instructionsList
-#    !callInstructionSharedPropertySignatureMap
-#  ] ;
   $}$ ;
+  [!?ioConstraintInstructionListMap insertKey
+    !entityName
+    !instructionsList
+    !callInstructionSharedPropertySignatureMap
+    !here
+  ] ;
 #    [!?constrainedEntityPassMap insertKey
 #      !passName
 #      !instructionsList 

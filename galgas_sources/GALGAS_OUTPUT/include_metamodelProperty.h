@@ -8,6 +8,8 @@
 
 //--- START OF USER ZONE 1
 
+class GGS_representativeEntityMap ;
+class GGS_entityToImplementMap ;
 
 //--- END OF USER ZONE 1
 
@@ -53,6 +55,11 @@ class cPtr_metamodelProperty : public C_GGS_Object {
                              const C_String & inPropertyName) const ;
 
   public : virtual void
+  generateDescription (AC_OutputStream & ioHFile,
+                       const C_String & inConstraintComponentName,
+                       const C_String & inPropertyName) const ;
+
+  public : virtual void
   generateCallInstruction (AC_OutputStream & ioCppFile,
                            const C_String & inCalledPropertyName,
                            const C_String & inTargetFileName,
@@ -60,8 +67,10 @@ class cPtr_metamodelProperty : public C_GGS_Object {
 
   public : virtual void
   generateCreateInConstraintConstructor (AC_OutputStream & ioHFile,
-                                         const C_String & inConstraintComponentName,
-                                         const C_String & inPropertyName) const ;
+                                         const GGS_lstring & inConstraintComponentName,
+                                         const GGS_lstring & inPropertyName,
+                                         const GGS_representativeEntityMap & inRepresentativeEntityMap,
+                                         const GGS_entityToImplementMap & inConstrainedEntityMap) const ;
 
   public : virtual void
   generateDeleteInConstraintDestructor (AC_OutputStream & ioHFile,

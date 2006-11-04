@@ -512,6 +512,12 @@ abstract class @metamodelProperty {
 
 #---------------------------------------------------------------------------*
 
+list @metamodelPropertyList {
+  @metamodelProperty mProperty ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @metamodelAttributeProperty extends @metamodelProperty {
   @lstring mAttributeTypeName ;
 #  @AC_galgasType mAttributeType ;
