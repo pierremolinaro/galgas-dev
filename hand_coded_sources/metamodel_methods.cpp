@@ -242,6 +242,40 @@ generateMultiplicityConstraintChecking (AC_OutputStream & ioCppFile,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark metamodelObjectIsNeeded
+#endif
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelProperty::
+metamodelObjectIsNeeded (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelAttributeProperty::
+metamodelObjectIsNeeded (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelSingleReferenceProperty::
+metamodelObjectIsNeeded (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelMultipleReferenceProperty::
+metamodelObjectIsNeeded (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark generateInitInConstraintConstructor
 #endif
 
@@ -571,6 +605,74 @@ generateTreeWalkingAttributAttachment (AC_OutputStream & inHFile,
                                        const C_String & inPropertyName) const {
  inHFile << "  macroAttachPointer (" << inPropertyName
          << ", _inParameter_" << inPropertyName << ") ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark metamodelObjectIsNeeded
+#endif
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelProperty::
+readerDescriptionNeedsLexique (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelAttributeProperty::
+readerDescriptionNeedsLexique (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelMultipleReferenceProperty::
+readerDescriptionNeedsLexique (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelSingleReferenceProperty::
+readerDescriptionNeedsLexique (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark descriptionReaderCallImplementationNeedsLexique
+#endif
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelProperty::
+descriptionReaderCallImplementationNeedsLexique (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelAttributeProperty::
+descriptionReaderCallImplementationNeedsLexique (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelMultipleReferenceProperty::
+descriptionReaderCallImplementationNeedsLexique (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_metamodelSingleReferenceProperty::
+descriptionReaderCallImplementationNeedsLexique (void) const {
+  return true ;
 }
 
 //---------------------------------------------------------------------------*
