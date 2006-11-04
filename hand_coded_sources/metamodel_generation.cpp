@@ -207,7 +207,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                  << " (C_Lexique & _inLexique,\n"
                     "                          const GGM_" << inRootEntityName << " * inRootObject\n"
                     "                          COMMA_LOCATION_ARGS) {\n"
-                    "  co << \"<" << inMetamodelComponentName << " metamodel:\" ;\n"
+                    "  co << \"LOGGING " << inMetamodelComponentName << " metamodel: <\" ;\n"
                     "  if (inRootObject == NULL) {\n"
                     "    co << \"NULL\" ;\n"
                     "  }else{\n"

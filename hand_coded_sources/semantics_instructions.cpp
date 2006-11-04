@@ -341,7 +341,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "_inLexique.printMessage (C_String (\""
+    ioCppFile << "_inLexique.printMessage (C_String (\"LOGGING "
               << mGalgasVariableName << ": \") + " ;
     mLoggedVariable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile  << ".reader_description (_inLexique COMMA_HERE) + \"\\n\""

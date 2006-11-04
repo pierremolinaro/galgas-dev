@@ -114,6 +114,12 @@ generate_constraint_header_file (C_Lexique & inLexique,
                     "                  GGM_" << inRootEntityName << " * inRootObject,\n"
                     "                  GGM__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " * & ioRootObjectConstraint) ;\n"
                     "\n" ;
+  generatedZone3.writeCppTitleComment ("Logging Data structure") ;
+  generatedZone3 << "void _logConstraint_" << inConstraintComponentName<< "_on_" << inMetamodelComponentName
+                 << " (C_Lexique & _inLexique,\n"
+                    "                  const GGM__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " * inRootObjectConstraint\n"
+                    "                  COMMA_LOCATION_ARGS) ;\n"
+                    "\n" ;
   
 //--- Generate map of entities declarations
   currentMap = inMapEntityMap.firstObject () ;
@@ -281,7 +287,7 @@ static void
 generate_constraint_cpp_file (C_Lexique & inLexique,
                               const GGS_entityToImplementMap & /* inEntityMap */,
                               const GGS_mapEntityMap & inMapEntityMap,
-                              const GGS_lstring & /* inMetamodelComponentName */,
+                              const GGS_lstring & inMetamodelComponentName,
                               const GGS_lstring & inConstraintComponentName,
                               const GGS_entityToImplementMap & inConstrainedEntityMap,
                               const GGS_stringset & inMultipleReferencedEntities,
@@ -314,23 +320,30 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeCppTitleComment ("Adding Constraints To Metamodel") ;
   generatedZone3 << "void _addConstraintsTo_" << inConstraintComponentName
                  << " (C_Lexique & _inLexique,\n"
-                    "                  GGM_" << inRootEntityName << " * inRootObject,\n"
+                    "                  GGM_" << inRootEntityName << " * inMetamodelRootObject,\n"
                     "                  GGM__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " * & ioRootObjectConstraint) {\n"
                     "  macroMyDelete (ioRootObjectConstraint, GGM__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << ") ;\n"
-                    "  if (inRootObject != NULL) {\n"
-                    "    macroValidPointer (inRootObject) ;\n"
-                    "    // const GGS_string s = inRootObject->reader_description  (_inLexique COMMA_HERE, 0) ;\n"
-                    "    // co << s << \"\\n\" ;\n"
+                    "  if (inMetamodelRootObject != NULL) {\n"
+                    "    macroValidPointer (inMetamodelRootObject) ;\n"
                     "  //--- Build object tree\n"
-                    "    macroMyNew (ioRootObjectConstraint, GGM__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " (inRootObject COMMA_HERE)) ;\n"
+                    "    macroMyNew (ioRootObjectConstraint, GGM__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " (inMetamodelRootObject COMMA_HERE)) ;\n"
                     "  //--- Perform Tree Walking\n"
                     "    ioRootObjectConstraint->_performTreeWalking (_inLexique) ;\n"
-                    "    const GGS_string s = ioRootObjectConstraint->reader_description (_inLexique COMMA_HERE, 0) ;\n"
-                    "    co << s << \"\\n\" ;\n"
-                    "//    if (! ok) {\n"
-                    "//      macroMyDelete (ioRootObjectConstraint, GGM__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << ") ;\n"
-                    "//    }\n"
                     "  }\n"
+                    "}\n\n" ;
+
+  generatedZone3.writeCppTitleComment ("Logging Data structure") ;
+  generatedZone3 << "void _logConstraint_" << inConstraintComponentName<< "_on_" << inMetamodelComponentName
+                 << " (C_Lexique & _inLexique,\n"
+                    "                  const GGM__" << inConstraintComponentName << "_ConstraintOn_" << inRootEntityName << " * inRootObjectConstraint\n"
+                    "                  COMMA_LOCATION_ARGS) {\n"
+                    "  co << \"LOGGING " << inConstraintComponentName << " constraint: <\" ;\n"
+                    "  if (inRootObjectConstraint == NULL) {\n"
+                    "    co << \"NULL\" ;\n"
+                    "  }else{\n"
+                    "    co << inRootObjectConstraint->reader_description (_inLexique COMMA_THERE, 0) ;\n"
+                    "  }\n"
+                    "  co << \">\\n\" ;\n"
                     "}\n\n" ;
 
 //--- Generate map of entities declarations

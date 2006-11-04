@@ -23,13 +23,14 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   when . "ggs":
     message "a GALGAS source file"
     grammar galgas_LL1_grammar (
-    mLexiqueMapForUse,
-    mSemanticsComponentsMap,
-    mSyntaxComponentsMap,
-    mGrammarsComponentsMap,
-    mOptionComponentsMap,
-    mMetamodelComponentMap,
-    mConstraintComponentMap)
+      mLexiqueMapForUse,
+      mSemanticsComponentsMap,
+      mSyntaxComponentsMap,
+      mGrammarsComponentsMap,
+      mOptionComponentsMap,
+      mMetamodelComponentMap,
+      mConstraintComponentMap
+    )
   ;
 end program ;
 

@@ -29,7 +29,6 @@
 static void
 generate_mm_file_for_cocoa (C_Lexique & inLexique,
                             const C_String & inCocoaComponentName,
-                            const GGS_lstring & inCLIToolName,
                             const GGS_L_nibAndClassList & inNibAndClassList,
                             const GGS_string & inBlockComment,
                             const C_String & inLexiqueComponentName,
@@ -212,14 +211,6 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
              "}\n"
              "\n" ;
 
-//--- Command line tool             
-  generatedZone3.writeCppTitleComment ("Command line tool") ;
-  generatedZone3 << "\n"
-             "const char * getCommandLineInterfaceToolName (void) {\n"
-             "  return \"" << inCLIToolName << "\" ;\n"
-             "}\n"
-             "\n" ;
-
 //--- Lexique interface           
   generatedZone3.writeCppTitleComment ("Lexique interface") ;
   generatedZone3 << "\n"
@@ -324,7 +315,6 @@ void
 routine_generateCocoaComponent (C_Lexique & inLexique,
                                 GGS_lstring inGUIcomponentName,
                                 GGS_lstring inGUIkindName,
-                                GGS_lstring inCLIToolName,
                                 GGS_L_nibAndClassList inNibAndClassList,
                                 GGS_string inBlockComment,
                                 GGS_lstring inLexiqueComponentName,
@@ -333,7 +323,6 @@ routine_generateCocoaComponent (C_Lexique & inLexique,
   if (inGUIkindName.string () == "cocoa") {
     generate_mm_file_for_cocoa (inLexique,
                                 inGUIcomponentName,
-                                inCLIToolName,
                                 inNibAndClassList,
                                 inBlockComment,
                                 inLexiqueComponentName,
