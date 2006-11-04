@@ -24,12 +24,24 @@ class cPtr_metamodelSingleReferenceProperty : public cPtr_metamodelProperty {
   public : virtual bool isMetamodelDefined (void) const { return true ; }
 
   public : virtual void
-  descriptionReaderCall (AC_OutputStream & ioHFile,
-                         const C_String & inPropertyName) const ;
+  generateCreateInConstraintConstructor (AC_OutputStream & ioHFile,
+                                         const GGS_lstring & inConstraintComponentName,
+                                         const GGS_lstring & inPropertyName,
+                                         const GGS_representativeEntityMap & inRepresentativeEntityMap,
+                                         const GGS_entityToImplementMap & inConstrainedEntityMap) const ;
+
+  public : virtual void
+  generateDeleteInConstraintDestructor (AC_OutputStream & ioHFile,
+                                        const C_String & inConstraintComponentName,
+                                        const C_String & inPropertyName) const ;
 
   public : virtual void
   releasePropertyInDestructor (AC_OutputStream & ioHFile,
                                const C_String & inPropertyName) const ;
+
+  public : virtual void
+  descriptionReaderCall (AC_OutputStream & ioHFile,
+                         const C_String & inPropertyName) const ;
 
   public : virtual void
   generateAttributeInConstraint (AC_OutputStream & ioHFile,
@@ -49,6 +61,11 @@ class cPtr_metamodelSingleReferenceProperty : public cPtr_metamodelProperty {
                            const C_String & inCalledPropertyName,
                            const C_String & inTargetFileName,
                            const GGS_L_lstringList & inParameterList) const ;
+
+  public : virtual void
+  generateDescription (AC_OutputStream & ioHFile,
+                       const C_String & inConstraintComponentName,
+                       const C_String & inPropertyName) const ;
 
 //--- END OF USER ZONE 2
 
