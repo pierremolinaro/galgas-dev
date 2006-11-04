@@ -1194,8 +1194,6 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                                                                entityName,
                                                                metamodelName
                                                                COMMA_HERE) ;
-          generatedZone3 << "    _checkMetamodel_" << metamodelName
-                         << " (_inLexique, _outReturnedModelInstance) ;\n" ;
         }
         generatedZone3 << "  }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {

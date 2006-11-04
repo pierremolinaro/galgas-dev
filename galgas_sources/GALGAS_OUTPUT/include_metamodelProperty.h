@@ -22,6 +22,12 @@ class GGS_entityToImplementMap ;
 class cPtr_metamodelProperty : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
+  public : virtual bool descriptionReaderCallImplementationNeedsLexique (void) const ;
+
+  public : virtual bool metamodelObjectIsNeeded (void) const ;
+
+  public : virtual bool readerDescriptionNeedsLexique (void) const ;
+
   public : virtual bool isMetamodelDefined (void) const { return false ; }
  
   public : virtual void
