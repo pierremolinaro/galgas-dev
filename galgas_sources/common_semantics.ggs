@@ -2712,36 +2712,6 @@ map @M_constraintComponents {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#              Liste des attributs de l'axiome                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @typeListeAttributsAxiome {
-  @lstring aAttributAxiome ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#              Grammar descriptor (for program component)                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @L_grammarDescriptorForProgram {
-  @string mGrammarPostfix ;
-  @lstring mGrammarName ;
-  @L_signature mStartSymbolSignature ;
-  @typeListeAttributsAxiome mStartSymbolAttributesList ;
-  @lstring mLexiqueClassName ;
-  @lstring mReturnedMetamodelName ;
-  @lstring mReturnedRootEntityName ;
-  @L_lstringList mConstraintsForMetamodel ;
-  @lstring mSourceExtension ;
-  @string mHelpMessage ;
-  @M_optionComponents mOptionsComponentsMap ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #              List of attributes for GUI description                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3167,6 +3137,61 @@ routine computeRepresentativeEntityName
     end if ;
   end loop ;
 end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   L O G G I N G    O B J E C T S    I N    P R O G R A M                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @loggableObject {
+}
+
+#---------------------------------------------------------------------------*
+
+class @loggableMetamodel extends @loggableObject {
+  @lstring mMetamodelName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @loggableAttribute extends @loggableObject {
+  @lstring mAttributeName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @loggableConstraint extends @loggableObject {
+  @lstring mMetamodelName ;
+  @lstring mConstraintName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @loggableObjectList {
+  @loggableObject mLoggableObject ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#              Grammar descriptor (for program component)                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @L_grammarDescriptorForProgram {
+  @string mGrammarPostfix ;
+  @lstring mGrammarName ;
+  @L_signature mStartSymbolSignature ;
+  @L_lstringList mStartSymbolAttributesList ;
+  @lstring mLexiqueClassName ;
+  @lstring mReturnedMetamodelName ;
+  @lstring mReturnedRootEntityName ;
+  @L_lstringList mConstraintsForMetamodel ;
+  @lstring mSourceExtension ;
+  @string mHelpMessage ;
+  @M_optionComponents mOptionsComponentsMap ;
+  @loggableObjectList mLoggableObjectList ;
+}
 
 #---------------------------------------------------------------------------*
 

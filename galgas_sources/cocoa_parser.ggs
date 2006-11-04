@@ -60,7 +60,6 @@ label parse
 action generateCocoaComponent
   ?@lstring nomPRGMprincipal
   ?@lstring inGUIkindName
-  ?@lstring inCLIToolName
   ?@L_nibAndClassList inNIBandClassList
   ?@string inBlockComment
   ?@lstring inLexiqueClassName
@@ -86,10 +85,13 @@ rule <galgas_component>
   $literal_string$ ? guiKindName ;
   $:$ ;
 #--- Command line tool
-  $program$ ;
-  @lstring cliToolName ;
-  $literal_string$ ? cliToolName ;
-  $;$ ;
+  select
+    $program$ ;
+    warning here: "obsolete construct in GALGAS 1.4.10 and later" ; 
+    $literal_string$ ?* ;
+    $;$ ;
+  or
+  end select ;
 #--- Grammar
   $import$ ;
   $grammar$ ;
@@ -149,7 +151,6 @@ rule <galgas_component>
   action generateCocoaComponent
     !guiComponentName
     !guiKindName
-    !cliToolName
     !nibAndClassList
     !blockComment
     !lexiqueClassName
@@ -166,9 +167,12 @@ label importLexique
   $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
-  $program$ ;
-  $literal_string$ ? * ;
-  $;$ ;
+  select
+    $program$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  or
+  end select ;
   $import$ ;
   $grammar$ ;
   $identifier$ ? * ;
@@ -199,9 +203,12 @@ label importSyntax
   $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
-  $program$ ;
-  $literal_string$ ? * ;
-  $;$ ;
+  select
+    $program$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  or
+  end select ;
   $import$ ;
   $grammar$ ;
   $identifier$ ? * ;
@@ -233,9 +240,12 @@ label importSemantics
   $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
-  $program$ ;
-  $literal_string$ ? * ;
-  $;$ ;
+  select
+    $program$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  or
+  end select ;
   $import$ ;
   $grammar$ ;
   $identifier$ ? * ;
@@ -267,9 +277,12 @@ label importGrammarForSemantics
   $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
-  $program$ ;
-  $literal_string$ ? * ;
-  $;$ ;
+  select
+    $program$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  or
+  end select ;
   $import$ ;
   $grammar$ ;
   $identifier$ ? * ;
@@ -298,9 +311,12 @@ label importOptions
   $literal_string$ ? * ;
   $:$ ;
 #--- Command line tool
-  $program$ ;
-  $literal_string$ ? * ;
-  $;$ ;
+  select
+    $program$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  or
+  end select ;
   $import$ ;
   $grammar$ ;
   $identifier$ ? * ;

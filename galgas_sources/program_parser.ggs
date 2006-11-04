@@ -66,7 +66,8 @@ label parse
 ;
 
 rule <program_attributes_declaration>
-  ?!@typeListeAttributsAxiome listeDesAttributs
+  !@L_lstringList outAttributeList
+  !@stringset outAttributeSet
 label parse
 ;
 
@@ -145,12 +146,6 @@ rule <galgas_component>
         $in$ ;
         @lstring sourceFile ;
         $literal_string$ ?sourceFile ;
-#         <parse_semantics_component_for_importing> 
-#            !sourceFile
-#            !?ioSemanticsComponentsMap
-#            !?ioMetamodelComponentMap
-#            !?ioConstraintComponentMap
-#          ;
       end select ;
       $;$ ;
     end select ;
@@ -213,12 +208,16 @@ rule <galgas_component>
     @lstring returnedMetamodel ;
     [nonterminalSymbolParametersMap searchKey !altName ?startSymbolSignature ?returnedMetamodel] ;
   #--- Liste des attributs
-    @typeListeAttributsAxiome listeDesAttributs [emptyList] ;
-    <program_attributes_declaration> !?listeDesAttributs ;
+    @L_lstringList grammarAttributeList ;
+    @stringset grammarAttributeSet ;
+    <program_attributes_declaration>
+      ?grammarAttributeList
+      ?grammarAttributeSet
+    ;
   #--- Verifier que le nombre d'attributs est correct
-    if [listeDesAttributs length] < [startSymbolSignature length] then
+    if [grammarAttributeList length] < [startSymbolSignature length] then
       error here : "one or more parameters missing" ;
-    elsif [listeDesAttributs length] > [startSymbolSignature length] then
+    elsif [grammarAttributeList length] > [startSymbolSignature length] then
       error here : "too much parameters" ;
     end if ;
     @string postfix := "" ;
@@ -226,6 +225,7 @@ rule <galgas_component>
     @lstring metamodelName ;
     @lstring rootEntityName ;
     @L_lstringList contraintListForMetamodel [emptyList] ;
+    @stringset contraintStringsetForMetamodel [emptySet] ;
     select
       metamodelName := [@lstring new !"" !here] ;
       rootEntityName := [@lstring new !"" !here] ;
@@ -239,6 +239,7 @@ rule <galgas_component>
           @lstring constraintComponentName ;
           $identifier$ ? constraintComponentName ;
           contraintListForMetamodel += !constraintComponentName ;
+          contraintStringsetForMetamodel += ![constraintComponentName string] ;
         while
           $,$ ;
         end repeat ;
@@ -249,13 +250,29 @@ rule <galgas_component>
        end if ;
       [ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?*] ;
     end select ;
+    @loggableObjectList loggableObjectList [emptyList] ;
+    repeat
+    while
+      $log$ ;
+      @lstring loggedObjectName ;
+      $identifier$ ? loggedObjectName ;
+      if [metamodelName string] == [loggedObjectName string] then
+        loggableObjectList += ![@loggableMetamodel new !loggedObjectName] ; 
+      elsif [contraintStringsetForMetamodel hasKey ![loggedObjectName string]] then
+        loggableObjectList += ![@loggableConstraint new !metamodelName !loggedObjectName] ; 
+      elsif [grammarAttributeSet hasKey ![loggedObjectName string]] then
+        loggableObjectList += ![@loggableAttribute new !loggedObjectName] ; 
+      else
+       error loggedObjectName:"this object cannot be logged" ;
+      end if ;
+    end repeat ;
     $;$ ;
   #--- Send grammar descriptor
     grammarDescriptorForProgramList +=
       !postfix
       !grammarName
       !startSymbolSignature
-      !listeDesAttributs
+      !grammarAttributeList
       !lexiqueClassName
       !returnedMetamodel
       !rootEntityName
@@ -263,6 +280,7 @@ rule <galgas_component>
       !sourceExtension
       !helpMessage
       !optionsComponentsMap
+      !loggableObjectList
     ;
   while
     $when$ ;
@@ -360,6 +378,11 @@ label importLexique
         $)$ ;
       end select ;
     end select ;
+    repeat
+    while
+      $log$ ;
+      $identifier$ ?* ;
+    end repeat ;
     $;$ ;
   while
     $when$ ;
@@ -450,6 +473,11 @@ label importSyntax
         $)$ ;
       end select ;
     end select ;
+    repeat
+    while
+      $log$ ;
+      $identifier$ ?* ;
+    end repeat ;
     $;$ ;
   while
     $when$ ;
@@ -539,6 +567,11 @@ label importSemantics
         $)$ ;
       end select ;
     end select ;
+    repeat
+    while
+      $log$ ;
+      $identifier$ ?* ;
+    end repeat ;
     $;$ ;
   while
     $when$ ;
@@ -628,6 +661,11 @@ label importGrammarForSemantics
         $)$ ;
       end select ;
     end select ;
+    repeat
+    while
+      $log$ ;
+      $identifier$ ?* ;
+    end repeat ;
     $;$ ;
   while
     $when$ ;
@@ -715,6 +753,11 @@ label importOptions
         $)$ ;
       end select ;
     end select ;
+    repeat
+    while
+      $log$ ;
+      $identifier$ ?* ;
+    end repeat ;
     $;$ ;
   while
     $when$ ;
@@ -727,15 +770,19 @@ end rule ;
 #--------------------------------------------------------------------------------*
 
 rule <program_attributes_declaration>
-  ?!@typeListeAttributsAxiome listeDesAttributs
+  !@L_lstringList outAttributeList
+  !@stringset outAttributeSet
 :
+  outAttributeList := [@L_lstringList emptyList] ;
+  outAttributeSet := [@stringset emptySet] ;
   select
   or
     $($ ;
     repeat
-      @lstring texte ;
-      $identifier$ ? texte ;
-      listeDesAttributs += !texte ;
+      @lstring attributeName ;
+      $identifier$ ? attributeName ;
+      outAttributeList += ! attributeName ;
+      outAttributeSet += ![attributeName string] ;
     while
       $,$ ;
     end repeat ;

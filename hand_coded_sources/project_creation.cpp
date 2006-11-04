@@ -317,7 +317,6 @@ createCocoaFile (const C_String & inCreatedProjectPathName) {
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_cocoa.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "gui " << projectName << "_cocoa \"cocoa\":\n"
-       "program \"" << projectName << "\" ;\n"
        "import grammar " << projectName << "_grammar in \"" << projectName << "_grammar.ggs\" ;\n"
        "end gui ;\n" ;
   const bool ok = f.close () ;

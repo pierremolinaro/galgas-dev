@@ -95,13 +95,13 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                     "                               sint16 & returnCode) ;\n" ;
   //--- Engendrer la declaration des attributs de l'axiome
     GGS_L_signature::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.firstObject () ;
-    GGS_typeListeAttributsAxiome::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
+    GGS_L_lstringList::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     sint16 numero = 1 ;
     while ((parametreCourant != NULL) && (nomCourant != NULL)) {
       macroValidPointer (parametreCourant) ;
       macroValidPointer (nomCourant) ;
       grammarZone2 << "  protected : GGS_" << parametreCourant->mGalgasTypeName
-                     << ' ' << nomCourant->aAttributAxiome << " ; // start symbol attribute #" << numero << "\n" ;
+                     << ' ' << nomCourant->mString << " ; // start symbol attribute #" << numero << "\n" ;
       parametreCourant = parametreCourant->nextObject () ;
       nomCourant = nomCourant->nextObject () ;
       numero ++ ;
@@ -235,6 +235,14 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inProgramComponentName << ".h\"\n\n" ;
 
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "  static const char gGGSsourceFile [] = \"" << inLexique.sourceFileName ().lastPathComponent () << "\" ;\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
+                    "#else\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \n"
+                    "#endif\n\n" ;
+
 //--------------------------------------- Get bool options count
   generatedZone2.writeCppTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
   generatedZone2 << "C_options_for_" << inProgramComponentName  << "::\n"
@@ -296,16 +304,16 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "} */\n"
                       "_mScannerPtr->resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
                       "_beforeParsing () ;\n" ; //--- Give a chance to initialize program parameters
-    GGS_typeListeAttributsAxiome::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
+    GGS_L_lstringList::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     GGS_L_signature::element_type * p = currentGrammar->mStartSymbolSignature.firstObject () ;
     while ((p != NULL) && (nomCourant != NULL)) {
       macroValidPointer (nomCourant) ;
       macroValidPointer (p) ;
       if (p->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
-        generatedZone2 << "if (! " << nomCourant->aAttributAxiome << "._isBuilt ()) {\n"
+        generatedZone2 << "if (! " << nomCourant->mString << "._isBuilt ()) {\n"
                           "  C_String message ;\n"
                           "  message << \"the '\"\n"
-                          "             \"" << nomCourant->aAttributAxiome << "\"\n"
+                          "             \"" << nomCourant->mString << "\"\n"
                           "             \"' program parameter has not been initialized\" ;\n"
                           "  throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;\n"
                           "}\n" ;
@@ -317,38 +325,47 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << currentGrammar->mGrammarName << " grammar_ ;\n" ;
     if (currentGrammar->mReturnedRootEntityName.length () > 0) {
       generatedZone2 << "GGM_" << currentGrammar->mReturnedRootEntityName 
-                     << " * _rootEntity = " ;
+                     << " * _metamodelRootObject = " ;
     }
     generatedZone2 << "grammar_.startParsing_ (*_mScannerPtr" ;
     nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     while (nomCourant != NULL) {
       macroValidPointer (nomCourant) ;
       generatedZone2 << ",\n                            "
-                     << nomCourant->aAttributAxiome ;
+                     << nomCourant->mString ;
       nomCourant = nomCourant->nextObject () ;
     }
     generatedZone2 << ") ;\n" ;
     if (currentGrammar->mReturnedRootEntityName.length () > 0) {
-      GGS_L_lstringList::element_type * currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
+      GGS_L_lstringList::element_type * currentConstraint = currentGrammar->mConstraintsForMetamodel.firstObject () ;
       while (currentConstraint != NULL) {
         macroValidPointer (currentConstraint) ;
         generatedZone2 << "GGM__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
-                       << " * _rootObjectConstraint" << currentConstraint->mString << " = NULL ;\n"
+                       << " * _rootObjectConstraint_" << currentConstraint->mString << " = NULL ;\n"
                        << "_addConstraintsTo_" << currentConstraint->mString
-                       << " (*_mScannerPtr, _rootEntity, _rootObjectConstraint" << currentConstraint->mString << ") ;\n" ;
+                       << " (*_mScannerPtr, _metamodelRootObject, _rootObjectConstraint_" << currentConstraint->mString << ") ;\n" ;
         currentConstraint = currentConstraint->nextObject () ;
       }
-      generatedZone2 << "// co << _rootEntity->reader_description  (_inLexique COMMA_THERE) ;\n" ;
-      currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
+    }
+ //--- Log objects
+    GGS_loggableObjectList::element_type * currentLoggedObject = currentGrammar->mLoggableObjectList.firstObject () ;
+    while (currentLoggedObject != NULL) {
+      macroValidPointer (currentLoggedObject) ;
+      currentLoggedObject->mLoggableObject (HERE)->generateLogInstructions (generatedZone2) ;
+      currentLoggedObject = currentLoggedObject->nextObject () ;
+    }
+   //--- Delete objects
+    if (currentGrammar->mReturnedRootEntityName.length () > 0) {
+      GGS_L_lstringList::element_type * currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
       while (currentConstraint != NULL) {
         macroValidPointer (currentConstraint) ;
-        generatedZone2 << "macroMyDelete (_rootObjectConstraint" << currentConstraint->mString
+        generatedZone2 << "macroMyDelete (_rootObjectConstraint_" << currentConstraint->mString
                        << ", GGM__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
                        << ") ;\n" ;
         currentConstraint = currentConstraint->nextObject () ;
       }
-      generatedZone2 << "  macroMyDelete (_rootEntity, GGM_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
-                        "  C_BDD::markAndSweepUnusedNodes () ;\n" ;
+      generatedZone2 << "macroMyDelete (_metamodelRootObject, GGM_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
+                        "C_BDD::markAndSweepUnusedNodes () ;\n" ;
     }
     generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
                       "  _afterParsing (inVerboseOptionOn) ;\n"
@@ -587,6 +604,36 @@ routine_generatePRGM (C_Lexique & inLexique,
                               inVersionString,
                               inProgramComponentName,
                               inGrammarDescriptorsList) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_loggableMetamodel::
+generateLogInstructions (AC_OutputStream & inCppFile) const {
+  inCppFile << "_logMetamodel_" << mMetamodelName << " (*_mScannerPtr, _metamodelRootObject SOURCE_FILE_AT_LINE ("
+            << mMetamodelName.currentLineNumber ()
+            << ")) ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_loggableAttribute::
+generateLogInstructions (AC_OutputStream & inCppFile) const {
+  inCppFile << "co << \"LOGGING " << mAttributeName << ": \"\n"
+               "   << " << mAttributeName << ".reader_description (*_mScannerPtr SOURCE_FILE_AT_LINE ("
+            << mAttributeName.currentLineNumber ()
+            << "))\n"
+               "  << \"\\n\" ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_loggableConstraint::
+generateLogInstructions (AC_OutputStream & inCppFile) const {
+  inCppFile << "_logConstraint_" << mConstraintName << "_on_"
+            << mMetamodelName << " (*_mScannerPtr, _rootObjectConstraint_" << mConstraintName << " SOURCE_FILE_AT_LINE ("
+            << mConstraintName.currentLineNumber ()
+            << ")) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
