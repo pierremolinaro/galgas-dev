@@ -642,14 +642,12 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                       "    printf (\"GGM__" << inConstraintComponentName << "_ConstraintOn_"
                    << currentConstrainedEntity->mKey << "::_performTreeWalking\\n\") ;\n"
                       "  #endif\n" ;
-    if (! currentConstrainedEntity->mInfo.mIsImplicitlyDefined.boolValue ()) {
-      generatedZone3 << "//--- Attach Parameters\n" ;
-      currentProperty = currentConstrainedEntity->mInfo.mCurrentConstraintPropertyMap.firstObject () ;
-      while (currentProperty != NULL) {
-        macroValidPointer (currentProperty) ;
-        currentProperty->mInfo.mProperty (HERE)->generateTreeWalkingAttributAttachment (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
-        currentProperty = currentProperty->nextObject () ;
-      }
+    generatedZone3 << "//--- Attach Parameters\n" ;
+    currentProperty = currentConstrainedEntity->mInfo.mCurrentConstraintPropertyMap.firstObject () ;
+    while (currentProperty != NULL) {
+      macroValidPointer (currentProperty) ;
+      currentProperty->mInfo.mProperty (HERE)->generateTreeWalkingAttributAttachment (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
+      currentProperty = currentProperty->nextObject () ;
     }
     generateInstructionListForList (instructionList,
                                     generatedZone3,

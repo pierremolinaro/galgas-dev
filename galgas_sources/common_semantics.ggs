@@ -734,8 +734,6 @@ map @entityToImplementMap {
   @stringset mSuperEntitySet ;
 #--- Constraints defined in current constraint and super constraints
   @entityPropertyMap mAllConstraintPropertyMap ;
-#--- Defined implicitly (by constraint) ?
-  @bool mIsImplicitlyDefined ;
 #--- All Available properties
   @entityPropertyMap mAllAvailablePropertyMap ;
 #--- Access methods
@@ -3132,7 +3130,7 @@ routine computeRepresentativeEntityName
       outRepresentativeEntityName := searchedEntity ;
     else
       @lstring superEntity ;
-      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?* ?* ?* ?* ?*] ;
+      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?* ?* ?* ?*] ;
       searchedEntity := superEntity ;
     end if ;
   end loop ;

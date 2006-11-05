@@ -719,7 +719,7 @@ rule <syntax_declaration>
   or
     $->$ ;
     $mda_type_name$ ? returnedEntity ;
-    [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+    [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?* ?* ?* ?*] ;
   end select ;
   <rule_declaration_or_implementation>
     !?ioNonTerminalSymbolMapForSyntax
@@ -956,7 +956,7 @@ rule <rule_declaration_or_implementation>
     error inEffectiveReturnedEntity: "the non terminal declaration does not name any returned entity" ;
   elsif [inEffectiveReturnedEntity string] != [formalReturnedEntity string] then
     @stringset superEntityStringSet ;
-    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?* ?* ?* ?* ?* ?superEntityStringSet ?* ?* ?*] ;
+    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?* ?* ?* ?* ?* ?superEntityStringSet ?* ?*] ;
     if not [superEntityStringSet hasKey ![formalReturnedEntity string]] then
       # message "superEntityStringSet : " . [superEntityStringSet description] ;
       error inEffectiveReturnedEntity: "the '@" . [formalReturnedEntity string] . "' entity or one of its inherited entities is expected here" ;
@@ -966,7 +966,7 @@ rule <rule_declaration_or_implementation>
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
   if [inEffectiveReturnedEntity string] != "" then
-    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?allPropertiesMap ?* ?* ?* ?* ?* ?* ?* ?*] ;
+    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?allPropertiesMap ?* ?* ?* ?* ?* ?* ?*] ;
     foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
       when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
@@ -1042,7 +1042,7 @@ rule <rule_declaration_or_implementation>
     or
       $->$ ;
       $type_name$ ? returnedEntity ;
-      [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+      [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?* ?* ?* ?*] ;
     end select ;
     @location errorLocation := here ;
     $:$ ;
