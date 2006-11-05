@@ -57,6 +57,13 @@ rule <parse_semantics_component_for_importing>
 label parse
 ;
 
+rule <constraint_class_override_declarations>
+  ?@lstring inRootClass
+  ?@entityToImplementMap inOriginalMetamodelEntityMap 
+  !@entityToImplementMap outMetamodelEntityMap
+label parse
+;
+
 rule <constraint_map_declaration>
   ?@entityToImplementMap inMetamodelEntityMap
   ?!@mapEntityMap ioMapEntityMap
@@ -191,7 +198,7 @@ routine checkCallInstruction
       # warning endOfInstructionList:"checking 'call " . [inTestedPropertyName string] . "' instruction..." ;
     #--- Build formal parameter type list
       @entityPropertyMap allContraintsPropertyMap ;
-      [inConstrainedEntityMap searchKey ! inTestedReferenceName ?* ?* ?* ?* ?* ?* ?allContraintsPropertyMap ?* ?*] ;
+      [inConstrainedEntityMap searchKey !inTestedReferenceName ?* ?* ?* ?* ?* ?* ?allContraintsPropertyMap ?*] ;
       @metamodelPropertyList formalParameterTypeList [emptyList] ;
       foreach allContraintsPropertyMap (* @metamodelProperty property) :
         extract property :
@@ -282,31 +289,40 @@ rule <parse_constraint_document>
   ;
 #--- Search imported metamodel
   @lstring rootEntity ;
-  @entityToImplementMap metamodelEntityMap ;
+  @entityToImplementMap originalMetamodelEntityMap ;
   [metamodelComponentMap searchKey
     !metamodelName
     ?rootEntity
-    ?metamodelEntityMap
+    ?originalMetamodelEntityMap
     ?*
   ] ;
-#--- Parse Declarations
+#--- -1- Parse override declarations
+  @entityToImplementMap metamodelEntityMap ;
+  <constraint_class_override_declarations>
+    !rootEntity
+    !originalMetamodelEntityMap 
+    ?metamodelEntityMap
+  ;
+#--- -2- Parse map declarations
   @mapEntityMap mapEntityMap [emptyMap] ;
-  @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
-  @entityToImplementMap constrainedEntityMap [emptyMap] ;
-  @constraintInstructionListMap constraintInstructionListMap [emptyMap] ;
   repeat
   while
     <constraint_map_declaration>
       !metamodelEntityMap
       !?mapEntityMap
     ;
-  while
+  end repeat ;
+#--- -3- Parse constraint implementation
+  @entityToImplementMap constrainedEntityMap [emptyMap] ;
+  @constraintInstructionListMap constraintInstructionListMap [emptyMap] ;
+  repeat
     <constraints_on_entity_declaration>
       !metamodelEntityMap
       !?mapEntityMap
       !?constrainedEntityMap
       !?constraintInstructionListMap
     ;
+  while
   end repeat ;
   $end$ ;
 #--- Root entity is defined ?
@@ -340,7 +356,6 @@ rule <parse_constraint_document>
     @entityPropertyMap kCurrentContraintsPropertyMap
     @stringset kSuperClassSet
     @entityPropertyMap kAllContraintsPropertyMap
-    @bool kIsImplicitlyDefined
     @entityPropertyMap kAllAvailablePropertyMap
   ) :
 #  #--- Check constrained parameters of super entity (should be the same)
@@ -450,7 +465,6 @@ rule <parse_constraint_document>
     *
     *
     *
-    *
     @entityPropertyMap kAllAvailablePropertiesMap
   ) :
   #--- loop throught properties
@@ -545,7 +559,7 @@ rule <constraints_on_entity_declaration>
   ?!@constraintInstructionListMap ioConstraintInstructionListMap
 :
 #--- Entity Name
-  $on$ ;
+  $class$ ;
   @lstring entityName ;
   $mda_type_name$ ? entityName ;
 #--- Get entity properties
@@ -564,7 +578,6 @@ rule <constraints_on_entity_declaration>
     ?* # currentConstraintPropertyMap
     ?superClassSet
     ?allConstraintPropertyMap
-    ?* # Implicitly defined ?
     ?allAvailablePropertyMap
    ] ;
 #--- Get inherited properties from super class constraints
@@ -583,7 +596,6 @@ rule <constraints_on_entity_declaration>
       ?inheritedConstraintPropertyMap
       ?* # Super Class set
       ?allConstraintPropertyMap
-      ?* # Implicitly defined ?
       ?* #allAvailablePropertyMap
     ] ;
     foreach inheritedConstraintPropertyMap (@lstring kKey @metamodelProperty kProperty) :
@@ -777,7 +789,6 @@ rule <constraints_on_entity_declaration>
     !currentConstraintPropertyMap
     !superClassSet
     !allConstraintPropertyMap
-    !false # Is not implicitly defined
     !allAvailablePropertyMap
   ] ;
 end rule ;
@@ -922,6 +933,155 @@ rule <constraint_relation_primary>
     $)$ ;
     outExpression := [@metamodelRelationDo new !ioRelationVariableMap !parameterList !path !operationIsAnd] ;
   end select ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+routine buildUsefullPropertyMap
+ ??@entityPropertyMap inInputPropertyMap
+ ??@stringset inUsefullClassSet
+ !@entityPropertyMap outOutputPropertyMap
+:
+  outOutputPropertyMap := [@entityPropertyMap emptyMap] ;
+  foreach inInputPropertyMap (@lstring kPropertyName @metamodelProperty kProperty) :
+    extract kProperty:
+    when @metamodelSingleReferenceProperty (@lstring kReferenceClassName)->
+      if [inUsefullClassSet hasKey ![kReferenceClassName string]] then
+        [!?outOutputPropertyMap insertKey !kPropertyName !kProperty] ;
+      end if ;
+    when @metamodelMultipleReferenceProperty (@lstring kReferenceClassName * *)->
+      if [inUsefullClassSet hasKey ![kReferenceClassName string]] then
+        [!?outOutputPropertyMap insertKey !kPropertyName !kProperty] ;
+      end if ;
+    else
+      [!?outOutputPropertyMap insertKey !kPropertyName !kProperty] ;
+    end extract ;
+  end foreach ;
+end routine ;
+
+#-------------------------------------------------------------------*
+
+rule <constraint_class_override_declarations>
+  ?@lstring inRootClass
+  ?@entityToImplementMap inOriginalMetamodelEntityMap 
+  !@entityToImplementMap outMetamodelEntityMap
+:
+#--- Parse override class declarations
+  @stringset overriddenClassSet [emptySet] ;
+  repeat
+    $override$ ;
+    @lstring metamodelClass ;
+    $mda_type_name$ ? metamodelClass ;
+    [inOriginalMetamodelEntityMap searchKey !metamodelClass ?* ?* ?* ?* ?* ?* ?* ?*] ;
+    if [overriddenClassSet hasKey ![metamodelClass string]] then
+      error metamodelClass:"this class is already declared as overridden" ;
+    else
+      overriddenClassSet += ![metamodelClass string] ;
+    end if ;
+    $;$ ;
+  while
+  end repeat ;
+#--- Check root class is declared as overridden
+  if not [overriddenClassSet hasKey ![inRootClass string]] then
+    error here:"the '%" . [inRootClass string] . "' root class should be declared as overridden" ;
+  end if ;
+#--- Build useful class set
+  @stringset usefulClassSet [setWithString ![inRootClass string]] ;
+  @bool continue := true ;
+  loop [inOriginalMetamodelEntityMap count] + 1 :
+  while continue do
+    continue := false ;
+    foreach overriddenClassSet (@string kClassName) :
+      @entityPropertyMap allAvailablePropertyMap ;
+      @lstring superEntityName ;
+      [inOriginalMetamodelEntityMap searchKey
+        ![@lstring new !kClassName !here]
+        ?*
+        ?*
+        ?*
+        ?superEntityName
+        ?*
+        ?*
+        ?*
+        ?allAvailablePropertyMap
+      ] ;
+    #--- If super class is usefull and class is overriden, class is usefull
+      if [usefulClassSet hasKey ![superEntityName string]] & not [usefulClassSet hasKey !kClassName] then
+        continue := true ;
+        usefulClassSet += !kClassName ;
+      end if ;
+      if [usefulClassSet hasKey !kClassName] then
+      #--- If a class is usefull, its super class is also usefull
+        if ([superEntityName string] != "") & not [usefulClassSet hasKey ![superEntityName string]] then
+          continue := true ;
+          usefulClassSet += ![superEntityName string] ;
+        end if ;
+        foreach allAvailablePropertyMap (* @metamodelProperty kProperty) :
+          extract kProperty:
+          when @metamodelSingleReferenceProperty (@lstring kReferenceClassName)->
+            if [overriddenClassSet hasKey ![kReferenceClassName string]] & not [usefulClassSet hasKey ![kReferenceClassName string]] then
+              continue := true ;
+              usefulClassSet += ![kReferenceClassName string] ;
+            end if ;
+          when @metamodelMultipleReferenceProperty (@lstring kReferenceClassName * *)->
+            if [overriddenClassSet hasKey ![kReferenceClassName string]] & not [usefulClassSet hasKey ![kReferenceClassName string]] then
+              continue := true ;
+              usefulClassSet += ![kReferenceClassName string] ;
+            end if ;
+          else
+          end extract ;
+        end foreach ;
+      end if ;
+    end foreach ;
+  end loop ;
+#  log usefulClassSet ;
+#--- Check for missing classes
+  @stringset missingClasses := usefulClassSet - overriddenClassSet ;
+  foreach missingClasses (@string kMissingClassName) :
+    error here: "the '%" . kMissingClassName . "' class should be overriden" ;
+  end foreach ;
+#--- Warn for useless classes
+  @stringset uselessClasses := overriddenClassSet - usefulClassSet ;
+  foreach uselessClasses (@string kUselessClassName) :
+    error here: "it is useless to override '%" . kUselessClassName . "' class" ;
+  end foreach ;
+#--- Build new metamodel class map : filter out useless properties
+  outMetamodelEntityMap := [@entityToImplementMap emptyMap] ;
+  foreach inOriginalMetamodelEntityMap (
+    @lstring kClassName
+    @entityPropertyMap kAllMetamodelPropertyMap
+    @bool kIsAbstract
+    @entityPropertyMap kCurrentMetamodelPropertyMap
+    @lstring kSuperEntityName
+    @entityPropertyMap kCurrentConstraintPropertyMap
+    @stringset kSuperEntitySet
+    @entityPropertyMap kAllConstraintPropertyMap
+    @entityPropertyMap kAllAvailablePropertyMap
+  ) :
+    if [usefulClassSet hasKey ![kClassName string]] then
+      @entityPropertyMap allMetamodelPropertyMap ;
+      buildUsefullPropertyMap !kAllMetamodelPropertyMap !usefulClassSet ?allMetamodelPropertyMap ;
+      @entityPropertyMap currentMetamodelPropertyMap ;
+      buildUsefullPropertyMap !kCurrentMetamodelPropertyMap !usefulClassSet ?currentMetamodelPropertyMap ;
+      @entityPropertyMap currentConstraintPropertyMap ;
+      buildUsefullPropertyMap !kCurrentConstraintPropertyMap !usefulClassSet ?currentConstraintPropertyMap ;
+      @entityPropertyMap allConstraintPropertyMap ;
+      buildUsefullPropertyMap !kAllConstraintPropertyMap !usefulClassSet ?allConstraintPropertyMap ;
+      @entityPropertyMap allAvailablePropertyMap ;
+      buildUsefullPropertyMap !kAllAvailablePropertyMap !usefulClassSet ?allAvailablePropertyMap ;
+      [!?outMetamodelEntityMap insertKey
+        !kClassName
+        !allMetamodelPropertyMap
+        !kIsAbstract
+        !currentMetamodelPropertyMap
+        !kSuperEntityName
+        !currentConstraintPropertyMap
+        !kSuperEntitySet
+        !allConstraintPropertyMap
+        !allAvailablePropertyMap
+      ] ;
+    end if ;
+  end foreach ;
 end rule ;
 
 #-------------------------------------------------------------------*

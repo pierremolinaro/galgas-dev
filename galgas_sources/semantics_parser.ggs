@@ -897,7 +897,6 @@ rule <import_headers_semantics_and_grammars>
                                    @entityPropertyMap kCurrentConstraintPropertyMap
                                    @stringset kSuperEntitySet
                                    @entityPropertyMap kAllConstraintPropertyMap
-                                   @bool kIsImplicitlyDefined
                                    @entityPropertyMap kAllAvailablePropertyMap) :
         [!?outAllMetamodelClassMap insertKey
           !kMetamodelClassName
@@ -908,7 +907,6 @@ rule <import_headers_semantics_and_grammars>
           !kCurrentConstraintPropertyMap
           !kSuperEntitySet
           !kAllConstraintPropertyMap
-          !kIsImplicitlyDefined
           !kAllAvailablePropertyMap
         ] ;
         end foreach ;

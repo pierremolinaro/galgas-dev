@@ -146,7 +146,7 @@ rule <parse_metamodel>
     !?mapAndEntityUniqueMap
   ;
   @bool isAbstract ;
-  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?* ?*] ;
+  [entityMap searchKey !rootEntityName ?* ?isAbstract ?* ?* ?* ?* ?* ?*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -160,15 +160,14 @@ rule <parse_metamodel>
                      *
                      *
                      *
-                     *
                      *) :
     foreach kEntityPropertiesMap (@lstring kAttributeName
                                   @metamodelProperty kProperty) :
       extract kProperty :
       when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
-        [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+        [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?*] ;
       when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName * *) ->
-        [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?* ?*] ;
+        [entityMap searchKey !kReferenceEntityName ?* ?* ?* ?* ?* ?* ?* ?*] ;
         multiReferencedEntities += ![kReferenceEntityName string] ;
       else
       end extract ;
@@ -253,7 +252,6 @@ rule <entity_declaration>
       ?superEntitySet
       ?*
       ?*
-      ?*
     ] ;
     superEntitySet += ![superEntity string] ;
   end select ;
@@ -331,7 +329,6 @@ rule <entity_declaration>
     ![@entityPropertyMap emptyMap] # Current constraints
     !superEntitySet
     ![@entityPropertyMap emptyMap] # Current and super constraints
-    !false # is not defined implicitly
     !allMetamodelPropertyMap
    ] ;
 end rule ;
