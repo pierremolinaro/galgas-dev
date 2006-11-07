@@ -56,7 +56,7 @@ label importOptions
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
@@ -73,7 +73,7 @@ label parse
 rule <syntax_declaration>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -127,7 +127,7 @@ label parse
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -141,7 +141,7 @@ rule <syntax_instruction>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -154,7 +154,7 @@ label parse
 
 rule <expression>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -173,7 +173,7 @@ rule <actual_parameters_list>
   ??@L_EXsignature listeTypesParametresFormels
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeInstructionList ioInstructionList
 
@@ -197,7 +197,7 @@ rule <syntax_instructions_list>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -213,7 +213,7 @@ rule <syntax_instructions_list_no_verif>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -227,7 +227,7 @@ label parse
 rule <rule_declaration_or_implementation>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeVariablesMap tableVariablesMethode
   ?@L_EXsignature listeDeTypes
@@ -339,7 +339,7 @@ rule <galgas_component>
     <syntax_declaration>
       !?nonTerminalSymbolsMapForSyntax
       !?entitiesMap
-      !?ioOptionsComponentsMapForUse
+      !ioOptionsComponentsMapForUse
       !?tableEnAvant
       !?listeEntitesAengendrer
       !?tableTerminaux
@@ -352,7 +352,7 @@ rule <galgas_component>
     <semantics_declaration>
       !?entitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      !ioOptionsComponentsMapForUse
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
       !?tableRoutinesAimplementer
@@ -583,7 +583,7 @@ rule <syntax_instruction>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -613,7 +613,7 @@ rule <syntax_instruction>
     !signatureDebut
     ?prologueExpressionList
     !?ioVariablesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioEntitiesMap
     !?ioInstructionList
   ;
@@ -631,7 +631,7 @@ rule <syntax_instruction>
     !inCheckNonTerminalsAreDeclaredWithParseLabel
     !?ioEntitiesMap
     !?listeEntitesAengendrer
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     !?ioInstructionList
     !?tableTerminaux
@@ -647,7 +647,7 @@ rule <syntax_instruction>
     !signatureFin
     ?epilogueExpressionList
     !?ioVariablesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioEntitiesMap
     !?ioInstructionList
   ;
@@ -687,7 +687,7 @@ end rule ;
 rule <syntax_declaration>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -724,7 +724,7 @@ rule <syntax_declaration>
   <rule_declaration_or_implementation>
     !?ioNonTerminalSymbolMapForSyntax
     !?ioEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?tableEnAvant
     !?tableArgumentsMethode
     !listeDeTypesFormels
@@ -773,7 +773,7 @@ end rule ;
 rule <rule_declaration_or_implementation>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeVariablesMap unused ioVariablesMap
   ?@L_EXsignature listeDeTypes
@@ -907,7 +907,7 @@ end rule ;
 rule <rule_declaration_or_implementation>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeVariablesMap ioVariablesMap
   ?@L_EXsignature listeDeTypesFormels
@@ -1005,7 +1005,7 @@ rule <rule_declaration_or_implementation>
     !checkNonTerminalsAreDeclaredWithParseLabel
     !?ioEntitiesMap
     !?listeEntitesAengendrer
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     !?listeInstructions
     !?tableTerminaux
@@ -1061,7 +1061,7 @@ rule <rule_declaration_or_implementation>
       !false
       !?ioEntitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?listeInstructions
       !?tableTerminaux
@@ -1150,7 +1150,7 @@ rule <syntax_instructions_list>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -1163,7 +1163,7 @@ rule <syntax_instructions_list>
       !inCheckNonTerminalsAreDeclaredWithParseLabel
       !?ioEntitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
       !?tableTerminaux
@@ -1187,7 +1187,7 @@ rule <syntax_instruction>
   ?@bool unused inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse unused ioEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -1235,7 +1235,7 @@ rule <syntax_instruction>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
@@ -1272,7 +1272,7 @@ rule <syntax_instruction>
     !signatureMethode
     ?parametersExpressionList
     !?ioVariablesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioEntitiesMap
     !?ioInstructionList
   ;
@@ -1364,7 +1364,7 @@ rule <syntax_instruction>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -1384,7 +1384,7 @@ rule <syntax_instruction>
         !inCheckNonTerminalsAreDeclaredWithParseLabel
         !?ioEntitiesMap
         !?listeEntitesAengendrer
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?listeInstructionsBrancheChoix
         !?tableTerminaux
@@ -1404,7 +1404,7 @@ rule <syntax_instruction>
           !inCheckNonTerminalsAreDeclaredWithParseLabel
           !?ioEntitiesMap
           !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheChoix
           !?tableTerminaux
@@ -1463,7 +1463,7 @@ rule <syntax_instruction>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -1484,7 +1484,7 @@ rule <syntax_instruction>
         !inCheckNonTerminalsAreDeclaredWithParseLabel
         !?ioEntitiesMap
         !?listeEntitesAengendrer
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?listeInstructionsPremiereBranche
         !?tableTerminaux
@@ -1505,7 +1505,7 @@ rule <syntax_instruction>
           !inCheckNonTerminalsAreDeclaredWithParseLabel
           !?ioEntitiesMap
           !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheRepeter
           !?tableTerminaux
@@ -1565,7 +1565,7 @@ rule <syntax_instruction>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -1588,7 +1588,7 @@ rule <syntax_instruction>
       !inCheckNonTerminalsAreDeclaredWithParseLabel
       !?ioEntitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?firstBranchInstructionsList
       !?tableTerminaux
@@ -1611,7 +1611,7 @@ rule <syntax_instruction>
         !inCheckNonTerminalsAreDeclaredWithParseLabel
         !?ioEntitiesMap
         !?listeEntitesAengendrer
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionsList
         !?tableTerminaux
@@ -1635,7 +1635,7 @@ rule <syntax_instruction>
           @AC_galgasType resultType ;
           <expression>
             !?ioEntitiesMap
-            !?ioOptionsComponentsMapForUse
+            !inOptionsComponentsMapForUse
             !?ioVariablesMap
             ?expression
             ?resultType
@@ -1649,7 +1649,7 @@ rule <syntax_instruction>
             !inCheckNonTerminalsAreDeclaredWithParseLabel
             !?ioEntitiesMap
             !?listeEntitesAengendrer
-            !?ioOptionsComponentsMapForUse
+            !inOptionsComponentsMapForUse
             !?ioVariablesMap
             !?instructionsList
             !?tableTerminaux
@@ -1671,7 +1671,7 @@ rule <syntax_instruction>
           !inCheckNonTerminalsAreDeclaredWithParseLabel
           !?ioEntitiesMap
           !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?elseInstructionsList
           !?tableTerminaux
@@ -1728,7 +1728,7 @@ rule <syntax_instructions_list_no_verif>
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -1745,7 +1745,7 @@ rule <syntax_instructions_list_no_verif>
       !inCheckNonTerminalsAreDeclaredWithParseLabel
       !?ioEntitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
       !?tableTerminaux
@@ -1756,7 +1756,7 @@ rule <syntax_instructions_list_no_verif>
     <semantic_instruction>
       !?ioEntitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      ! inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
       !?propertyMap
