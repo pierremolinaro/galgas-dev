@@ -120,7 +120,7 @@ label parse
 rule <semantic_instructions_list>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionsList
   ?!@entityPropertyMap ioPropertyMap
@@ -741,7 +741,7 @@ rule <constraints_on_entity_declaration>
   <semantic_instructions_list>
     !?componentSemanticsEntitiesMap
     !?listeEntitesAengendrer
-    !?optionsComponentsMapForUse
+    !optionsComponentsMapForUse
     !?variablesMap
     !?instructionsList
     !?allAvailablePropertyMap

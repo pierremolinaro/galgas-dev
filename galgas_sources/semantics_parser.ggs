@@ -78,7 +78,7 @@ label parse
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
@@ -178,7 +178,7 @@ rule <parse_method>
   !@typeInstructionList outInstructionsList
   !@L_EXsignature outMethodSignature
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
 label parse
 ;
 
@@ -195,7 +195,7 @@ rule <overrided_method>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
   ?!@typeTableEnAvant tableEnAvant
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
 label parse
 ;
 
@@ -212,7 +212,7 @@ rule <non_abstract_method>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
   ?!@typeTableEnAvant tableEnAvant
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
 label parse
 ;
 
@@ -229,7 +229,7 @@ label parse
 rule <semantic_instructions_list>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -241,7 +241,7 @@ label parse
 rule <semantic_instructions_list_no_verif>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -253,7 +253,7 @@ label parse
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -265,7 +265,7 @@ label parse
 rule <extract_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?@typeCplusPlusName inSourceVarCppName
   ?@lstring nomTypeSource
@@ -279,7 +279,7 @@ label parse
 
 rule <expression>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -298,7 +298,7 @@ rule <actual_parameters_list>
   ??@L_EXsignature listeTypesParametresFormels
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeInstructionList ioInstructionList
 label parse
@@ -308,7 +308,7 @@ rule <parse_parameters_list>
   !@L_actualParametersSignature listeTypesParametresEffectifs
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
 ;
@@ -331,7 +331,7 @@ rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
 ;
@@ -343,7 +343,7 @@ rule <optional_assignment>
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
 ;
@@ -382,7 +382,7 @@ rule <output_expression_list>
   !@typeExpressionList outExpressionList 
   ??@typeListeAttributsSemantiques inAttributesList
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
 label parse
 ;
@@ -519,7 +519,7 @@ rule <galgas_component>
       <semantics_declaration>
         !?componentEntitiesMap
         !?listeEntitesAengendrer
-        !?optionsComponentsMapForUse
+        !optionsComponentsMapForUse
         !?tableNomRoutinesDeclarees
         !?tableEnAvant
         !?tableRoutinesAimplementer
@@ -609,7 +609,6 @@ label importSemantics
     <semantics_declaration> importSemantics
       !?modelMap
       !?actionMap
-
       !?componentSemanticsEntitiesMap
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
@@ -1025,7 +1024,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
@@ -1078,7 +1077,7 @@ rule <semantics_declaration>
     <semantic_instructions_list>
       !?ioComponentSemanticsEntitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?tableArgumentsMethode
       !?ioInstructionList
       !?propertyMap
@@ -1112,7 +1111,6 @@ label importSemantics
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
   @L_signature signature ;
-  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
   <formal_arguments_list>
     !?ioComponentSemanticsEntitiesMap
     ?listeDeTypes
@@ -1146,25 +1144,11 @@ label importSemantics
   or
    $:$ ;
   #--- Instructions
-    @typeInstructionList ioInstructionList [emptyList] ;
-    @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
-    @entityPropertyMap propertyMap [emptyMap] ;
-    @stringset constraintPropertyDefinitionSet [emptySet] ;
-    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-    <semantic_instructions_list>
-      !?ioComponentSemanticsEntitiesMap
-      !?listeEntitesAengendrer
-      !?optionsComponentsMapForUse
-      !?tableArgumentsMethode
-      !?ioInstructionList
-      !?propertyMap
-      !?constraintPropertyDefinitionSet
-      !?callInstructionSharedPropertySignatureMap
-    ;
+    <semantic_instructions_list> parse ;
     $end$ ;
+    [!?tableRoutinesAimplementer insertKey !routineName] ;
     $routine$ ;
     $;$ ;
-    [!?tableRoutinesAimplementer insertKey !routineName] ;
   end select ;
 end rule ;
 
@@ -1299,7 +1283,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -1386,7 +1370,7 @@ rule <semantics_declaration>
         !?ioComponentSemanticsEntitiesMap
         !?tableMethodesAimplementer
         !?tableEnAvant
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
       ;
      while
       <overrided_method>
@@ -1402,7 +1386,7 @@ rule <semantics_declaration>
         !?ioComponentSemanticsEntitiesMap
         !?tableMethodesAimplementer
         !?tableEnAvant
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
@@ -1502,7 +1486,6 @@ label importSemantics
       $message$ ;
       @lstring messageName ;
       $identifier$ ? messageName ;
-####      [!?messageMap insertKey !messageName] ;
     #--- Chaine definissant le message d'erreur
       @lstring messageText ;
       $literal_string$ ? messageText ;
@@ -1534,7 +1517,7 @@ label importSemantics
         !?ioComponentSemanticsEntitiesMap
         !?tableMethodesAimplementer
         !?tableEnAvant
-        !?optionsComponentsMapForUse
+        !optionsComponentsMapForUse
       ;
      while
       <overrided_method>
@@ -1550,7 +1533,7 @@ label importSemantics
         !?ioComponentSemanticsEntitiesMap
         !?tableMethodesAimplementer
         !?tableEnAvant
-        !?optionsComponentsMapForUse
+        !optionsComponentsMapForUse
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
@@ -1585,7 +1568,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -1648,7 +1631,7 @@ rule <semantics_declaration>
       !?ioComponentSemanticsEntitiesMap
       !?tableMethodesAimplementer
       !?tableEnAvant
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
     ;
   while
     $message$ ;
@@ -1678,7 +1661,7 @@ rule <semantics_declaration>
       !?ioComponentSemanticsEntitiesMap
       !?tableMethodesAimplementer
       !?tableEnAvant
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
     ;
   end repeat ;
 #--- Verify that all inherited messages are defined
@@ -1824,7 +1807,7 @@ label importSemantics
       !?ioComponentSemanticsEntitiesMap
       !?tableMethodesAimplementer
       !?tableEnAvant
-      !?optionsComponentsMapForUse
+      !optionsComponentsMapForUse
     ;
   while
     $message$ ;
@@ -1854,7 +1837,7 @@ label importSemantics
       !?ioComponentSemanticsEntitiesMap
       !?tableMethodesAimplementer
       !?tableEnAvant
-      !?optionsComponentsMapForUse
+      !optionsComponentsMapForUse
     ;
   end repeat ;
 #--- Verify that all inherited messages are defined
@@ -1930,7 +1913,7 @@ rule <parse_method>
   !@typeInstructionList outInstructionsList
   !@L_EXsignature outMethodSignature
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
 :
 #--- Get reader name
   $identifier$ ? outMethodName ;
@@ -1987,7 +1970,7 @@ rule <parse_method>
   <semantic_instructions_list>
     !?componentSemanticsEntitiesMap
     !?listeEntitesAengendrer
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?methodLocalVariablesMap
     !?outInstructionsList
     !?propertyMap
@@ -2011,7 +1994,7 @@ rule <non_abstract_method>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
   ?!@typeTableEnAvant tableEnAvant
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
 :
   $reader$ ;
   @lstring methodName ;
@@ -2034,7 +2017,7 @@ rule <non_abstract_method>
     ?instructionsList
     ?methodSignature
     ?listeTypeEtNomsArguments
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
  ;
   [!?tableDesMethodes insertKey !methodName !methodSignature] ;
   [!?tableMethodesAimplementer insertNotAbstract !methodName !methodSignature !listeTypeEtNomsArguments !instructionsList] ;
@@ -2058,7 +2041,7 @@ rule <overrided_method>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
   ?!@typeTableEnAvant tableEnAvant
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
 :
   $override$ ;
   $reader$ ;
@@ -2082,7 +2065,7 @@ rule <overrided_method>
     ?instructionsList
     ?methodSignature
     ?listeTypeEtNomsArguments
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
   ;
 #--- Verify reader signature is compatible with overriden reader signature
   @L_EXsignature listeDeTypesMethodeOriginale ;
@@ -2292,7 +2275,7 @@ rule <instruction_beginning_with_identifier>
   ?@lstring inTargetVarName
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
   $:=$ ;
@@ -2301,7 +2284,7 @@ rule <instruction_beginning_with_identifier>
   @AC_galgasType sourceType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?sourceExpression
     ?sourceType
@@ -2406,7 +2389,7 @@ rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
   $+=$ ;
@@ -2426,7 +2409,7 @@ rule <instruction_beginning_with_identifier>
     @AC_galgasType resultType ;
     <expression> 
       !?ioComponentSemanticsEntitiesMap
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?expression
       ?resultType
@@ -2465,7 +2448,7 @@ rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
   $-=$ ;
@@ -2485,7 +2468,7 @@ rule <instruction_beginning_with_identifier>
     @AC_galgasType resultType ;
     <expression> 
       !?ioComponentSemanticsEntitiesMap
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?expression
       ?resultType
@@ -2524,7 +2507,7 @@ rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
 :
   $++$ ;
@@ -2551,7 +2534,7 @@ rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
 :
   $--$ ;
@@ -2574,7 +2557,7 @@ rule <actual_parameters_list>
   ??@L_EXsignature listeTypesParametresFormels
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeInstructionList ioInstructionList
 :
@@ -2583,7 +2566,7 @@ rule <actual_parameters_list>
     ?listeTypesParametresEffectifs
     ?outExpressionList
     !?ioVariablesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
   ;
 #--- Verifier la correction des arguments effectifs
@@ -2605,7 +2588,7 @@ rule <parse_parameters_list>
   !@L_actualParametersSignature listeTypesParametresEffectifs
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
   outExpressionList := [@typeExpressionList emptyList] ;
@@ -2618,7 +2601,7 @@ rule <parse_parameters_list>
     @typeExpression expressionValue ;
     <expression>
       !?ioComponentSemanticsEntitiesMap
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?expressionValue
       ?expressionType ;
@@ -2675,7 +2658,7 @@ end rule ;
 rule <semantic_instructions_list>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -2686,7 +2669,7 @@ rule <semantic_instructions_list>
     <semantic_instructions_list_no_verif>
       !?ioComponentSemanticsEntitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
       !?ioPropertyMap
@@ -2705,7 +2688,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -2787,7 +2770,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -2811,7 +2794,7 @@ rule <semantic_instruction>
   <extract_instruction>
     !?ioComponentSemanticsEntitiesMap
     !?listeEntitesAengendrer
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     !sourceVarCppName
     !nomTypeSource
@@ -2832,7 +2815,7 @@ end rule ;
 rule <extract_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?@typeCplusPlusName inSourceVarCppName
   ?@lstring nomTypeSource
@@ -2883,7 +2866,7 @@ rule <extract_instruction>
   @AC_galgasType errorExpressionType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?errorExpression
     ?errorExpressionType
@@ -2909,7 +2892,7 @@ end rule ;
 rule <extract_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?@typeCplusPlusName inSourceVarCppName
   ?@lstring nomTypeSource
@@ -2965,7 +2948,7 @@ rule <extract_instruction>
         <semantic_instructions_list>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
           !?ioPropertyMap
@@ -2984,7 +2967,7 @@ rule <extract_instruction>
       <semantic_instructions_list>
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elseInstructionList
         !?ioPropertyMap
@@ -3009,7 +2992,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3033,7 +3016,7 @@ rule <semantic_instruction>
     !definitionType
     !?ioVariablesMap
     !?ioInstructionList
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
   ;
   $;$ ;
@@ -3048,7 +3031,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3078,7 +3061,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3111,7 +3094,7 @@ rule <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
 #--- Verifier que le nom est bien un nom de routine
@@ -3125,7 +3108,7 @@ rule <instruction_beginning_with_identifier>
     !signatureRoutine
     ?expressionsList
     !?ioVariablesMap
-    !?ioOptionsComponentsMapForUse
+    ! inOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
     !?ioInstructionList
   ;
@@ -3145,7 +3128,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3167,7 +3150,7 @@ rule <semantic_instruction>
     !listeTypesParametresFormels
     ?expressionsList
     !?ioVariablesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
     !?ioInstructionList
   ;
@@ -3194,7 +3177,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3219,7 +3202,7 @@ rule <semantic_instruction>
       !methodSignature
       ?expressionsList
       !?ioVariablesMap
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioComponentSemanticsEntitiesMap
       !?ioInstructionList
     ;
@@ -3243,7 +3226,7 @@ rule <semantic_instruction>
       !methodSignature
       ?expressionsList
       !?ioVariablesMap
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioComponentSemanticsEntitiesMap
       !?ioInstructionList
     ;
@@ -3265,7 +3248,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3278,7 +3261,7 @@ rule <semantic_instruction>
     !nomVarDest
     !?ioVariablesMap 
     !?ioInstructionList
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
   ;
   $;$ ;
@@ -3293,7 +3276,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3305,7 +3288,7 @@ rule <semantic_instruction>
   @AC_galgasType errorExpressionType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?errorExpression
     ?errorExpressionType
@@ -3318,7 +3301,7 @@ rule <semantic_instruction>
   @AC_galgasType warningMessageExpressionType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?warningMessageExpression
     ?warningMessageExpressionType
@@ -3341,7 +3324,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3353,7 +3336,7 @@ rule <semantic_instruction>
   @AC_galgasType errorLocationExpressionType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?errorLocationExpression
     ?errorLocationExpressionType
@@ -3366,7 +3349,7 @@ rule <semantic_instruction>
   @AC_galgasType errorMessageExpressionType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?errorMessageExpression
     ?errorMessageExpressionType
@@ -3408,7 +3391,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3422,7 +3405,7 @@ rule <semantic_instruction>
   @AC_galgasType messageExpressionType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?messageExpression
     ?messageExpressionType
@@ -3444,7 +3427,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -3462,7 +3445,7 @@ rule <semantic_instruction>
         @AC_galgasType resultType ;
         <expression>
           !?ioComponentSemanticsEntitiesMap
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           ?testBranche
           ?resultType
@@ -3474,7 +3457,7 @@ rule <semantic_instruction>
         <semantic_instructions_list_no_verif>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheTest
           !?ioPropertyMap
@@ -3504,7 +3487,7 @@ rule <semantic_instruction>
         <semantic_instructions_list_no_verif>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheAutre
           !?ioPropertyMap
@@ -3536,7 +3519,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -3549,7 +3532,7 @@ rule <semantic_instruction>
   @AC_galgasType resultType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?switchExpression
     ?resultType
@@ -3587,7 +3570,7 @@ rule <semantic_instruction>
         <semantic_instructions_list_no_verif>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?branchInstructionList
           !?ioPropertyMap
@@ -3629,7 +3612,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -3642,7 +3625,7 @@ rule <semantic_instruction>
   @AC_galgasType variantResultType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?variantExpression
     ?variantResultType
@@ -3657,7 +3640,7 @@ rule <semantic_instruction>
       <semantic_instructions_list_no_verif>
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList1
         !?ioPropertyMap
@@ -3672,7 +3655,7 @@ rule <semantic_instruction>
   @AC_galgasType resultType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?conditionalExpression
     ?resultType
@@ -3687,7 +3670,7 @@ rule <semantic_instruction>
       <semantic_instructions_list_no_verif>
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList2
         !?ioPropertyMap
@@ -3718,7 +3701,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
@@ -3751,7 +3734,7 @@ rule <semantic_instruction>
     ?listeTypesParametresEffectifs
     ?expressionsList
     !?ioVariablesMap
-    !?ioOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioComponentSemanticsEntitiesMap
   ;
 #--- Look for grammar
@@ -3789,7 +3772,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -3844,7 +3827,7 @@ rule <semantic_instruction>
         @AC_galgasType resultType ;
         <expression>
           !?ioComponentSemanticsEntitiesMap
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           ?whileExpression
           ?resultType
@@ -3857,7 +3840,7 @@ rule <semantic_instruction>
       <semantic_instructions_list_no_verif>
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList
         !?ioPropertyMap
@@ -3996,7 +3979,7 @@ end rule ;
 rule <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -4071,7 +4054,7 @@ rule <semantic_instruction>
         <semantic_instructions_list>
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
-          !?ioOptionsComponentsMapForUse
+          !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
           !?ioPropertyMap
@@ -4088,7 +4071,7 @@ rule <semantic_instruction>
       <semantic_instructions_list>
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
-        !?ioOptionsComponentsMapForUse
+        !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elsePartInstructionsList
         !?ioPropertyMap
@@ -4119,7 +4102,7 @@ end rule ;
 rule <semantic_instructions_list_no_verif>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
@@ -4131,7 +4114,7 @@ rule <semantic_instructions_list_no_verif>
     <semantic_instruction>
       !?ioComponentSemanticsEntitiesMap
       !?listeEntitesAengendrer
-      !?ioOptionsComponentsMapForUse
+      !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
       !?ioPropertyMap
@@ -4152,7 +4135,7 @@ rule <optional_assignment>
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap unused ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
 :
   @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !inVariableCppName !inVariableType] ;
@@ -4168,7 +4151,7 @@ rule <optional_assignment>
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
   $:=$ ;
@@ -4179,7 +4162,7 @@ rule <optional_assignment>
   @AC_galgasType sourceType ;
   <expression>
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    ! inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?sourceExpression
     ?sourceType
@@ -4200,7 +4183,7 @@ rule <optional_assignment>
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
 #--- Indicate variable is written
@@ -4217,7 +4200,7 @@ rule <optional_assignment>
     ?expressionList
     !listeAttributsSemantiques
     !?ioComponentSemanticsEntitiesMap
-    !?ioOptionsComponentsMapForUse
+    ! inOptionsComponentsMapForUse
     !?ioVariablesMap
   ;
   $]$ ;
@@ -4236,7 +4219,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -4804,7 +4787,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -4954,7 +4937,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -5330,7 +5313,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -5393,7 +5376,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_optionComponents unused ioOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer

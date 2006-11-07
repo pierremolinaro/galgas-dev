@@ -17,7 +17,6 @@
 #---------------------------------------------------------------------------*
 
 semantics scanner_semantics :
-
 import semantics common_semantics in "common_semantics.ggs" ;
 
 #------------------------------------------------------------------*
