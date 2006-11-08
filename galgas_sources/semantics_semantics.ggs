@@ -180,7 +180,7 @@ list @L_assignedVariables  {
 #---------------------------------------------------------------------------*
 
 abstract class @typeCible {
-  abstract reader verifierType
+  abstract method verifierType
     ??@AC_galgasType typeArgumentFormel
     ?!@lstring nomAttributSource
     ?!@L_assignedVariables listeAffectations
@@ -891,7 +891,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 class @typeJoker extends @typeCible {
-  override reader verifierType
+  override method verifierType
     ??@AC_galgasType unused typeArgumentFormel
     ?!@lstring unused nomAttributSource
     ?!@L_assignedVariables unused listeAffectations
@@ -899,7 +899,7 @@ class @typeJoker extends @typeCible {
   :
     @typeCplusPlusName nullName := [@typeNullName new] ;
     outAllVariablesList += !nullName ;
-  end reader ;
+  end method ;
 }
 
 #---------------------------------------------------------------------------*
@@ -909,7 +909,7 @@ class @typeEntiteDest extends @typeCible {
   @typeCplusPlusName mCppName ;
   @location aPositionVariableCible ;
 
-  override reader verifierType
+  override method verifierType
     ??@AC_galgasType typeArgumentFormel
     ?!@lstring nomAttributSource
     ?!@L_assignedVariables listeAffectations
@@ -923,7 +923,7 @@ class @typeEntiteDest extends @typeCible {
     ;
     listeAffectations += !mCppName !nomAttributSource ;
     ioAllVariablesList += !mCppName ;
-  end reader ;
+  end method ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1253,7 +1253,9 @@ class @typeDefClasseNonAbstraiteAimplementer extends @typeEntityToGenerate {
   @typeSuperClassesMap mAncestorClassesMap ;  
 
 #--- Table des messages concrets de la classe courante
-  @typeClassMessagesMap mMessagesMap ;  
+  @typeClassMessagesMap mMessagesMap ;
+
+#--- Method map 
 }
 
 #---------------------------------------------------------------------------*
