@@ -405,36 +405,36 @@ enum @localConstantBuildStyleEnum {
 
 abstract class @AC_galgasType {
 #--- Get type name
-  abstract reader getTypeName !@string outTypeName ;
+  abstract method getTypeName !@string outTypeName ;
 
 #--- By default, object does not accept assignment from 'here'
-  reader acceptAssignmentFromHere ??@lstring inErrorLocation :
+  method acceptAssignmentFromHere ??@lstring inErrorLocation :
     error inErrorLocation :
        "assignment from 'here' is not allowed for variables of this type" ;
-  end reader ;
+  end method ;
 
 #--- By default, object does not accept to be enumerated (foreach instruction)
-  reader acceptForeachInstruction
+  method acceptForeachInstruction
     ??@lstring inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
     error inErrorLocation :
        "variables of this type cannot be enumerated by in 'foreach' instruction" -> outForeachList, outStyle ;
-  end reader ;
+  end method ;
 
 #--- By default, object does not accept modifier call
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
     error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
-  end reader ;
+  end method ;
 
 #--- By default, class does not accept reader instruction call
-  reader handleReaderInstructionCall
+  method handleReaderInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -442,58 +442,58 @@ abstract class @AC_galgasType {
     error inReaderName :
        "variables of this type do not support reader instruction"
        -> outReaderSignature ;
-  end reader ;
+  end method ;
 
 #--- By default, class does not accept class method call
-  reader handleConstructorCall
+  method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
-  end reader ;
+  end method ;
 
 #--- By default, class does not accept operator "-=" call
-  reader handleMinusAssignOperatorCall 
+  method handleMinusAssignOperatorCall 
     ??@location inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
     error inErrorLocation :
        "variables of this type do not support call of '-=' operator"
        -> outParametersList ;
-  end reader ;
+  end method ;
 
 
 #--- By default, class does not accept operator "+=" call
-  reader handleAddAssignOperatorCall 
+  method handleAddAssignOperatorCall 
     ??@location inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
     error inErrorLocation :
        "variables of this type do not support call of '+=' operator"
        -> outParametersList ;
-  end reader ;
+  end method ;
 
 #--- By default, class does not accept "++" operator
-  reader handleIncrementOperatorCall 
+  method handleIncrementOperatorCall 
     ??@location inErrorLocation
   :
     error inErrorLocation :
        "variables of this type do not support call of '++' operator" ;
-  end reader ;
+  end method ;
 
 #--- By default, class does not accept "--" operator
-  reader handleDecrementOperatorCall 
+  method handleDecrementOperatorCall 
     ??@location inErrorLocation
   :
     error inErrorLocation :
        "variables of this type do not support call of '--' operator" ;
-  end reader ;
+  end method ;
 
 #--- By default, class does not accept to be silently converted to @location
-  reader checkAbilityToBeSilentlyConvertedToLocation 
+  method checkAbilityToBeSilentlyConvertedToLocation 
   :
     error here : "variables of this type cannot be silently converted to @location value" ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "any type" ;
@@ -755,9 +755,9 @@ action generate_metamodel
 class @typeGalgas_singleEntity extends @AC_galgasType {
   @lstring mEntityName ;
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := [mEntityName string] ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "an entity" ;
@@ -768,9 +768,9 @@ class @typeGalgas_singleEntity extends @AC_galgasType {
 class @typeGalgas_multipleEntity extends @AC_galgasType {
   @lstring mEntityName ;
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "_listOf_" . [mEntityName  string] ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a list of entities" ;
@@ -849,9 +849,9 @@ list @L_stringList {
 
 class @typeGalgas_jokerInParameterList extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "" ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "??" ;
@@ -865,9 +865,9 @@ class @typeGalgas_jokerInParameterList extends @AC_galgasType {
 
 class @typeGalgas_bool extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "bool" ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@bool' type" ;
@@ -877,13 +877,13 @@ class @typeGalgas_bool extends @AC_galgasType {
 
 class @typeGalgas_string extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "string" ;
-  end reader ;
+  end method ;
 
 #--- By default, class does not accept reader instruction call
   override
-  reader handleReaderInstructionCall
+  method handleReaderInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -894,10 +894,10 @@ class @typeGalgas_string extends @AC_galgasType {
     else
       error inReaderName: "this reader is not defined" -> outReaderSignature ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- string accepts constructors
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -913,7 +913,7 @@ class @typeGalgas_string extends @AC_galgasType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@string' type" ;
@@ -923,24 +923,24 @@ class @typeGalgas_string extends @AC_galgasType {
 
 class @typeGalgas_sint extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "sint" ;
-  end reader ;
+  end method ;
 
 #--- This class accepts "++" operator
-  override reader handleIncrementOperatorCall 
+  override method handleIncrementOperatorCall 
     ??@location unused inErrorLocation
   :
-  end reader ;
+  end method ;
 
 #--- This class accepts "--" operator
-  override reader handleDecrementOperatorCall 
+  override method handleDecrementOperatorCall 
     ??@location unused inErrorLocation
   :
-  end reader ;
+  end method ;
 
 #--- Class accepts constructors 'min' and 'max'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -951,7 +951,7 @@ class @typeGalgas_sint extends @AC_galgasType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@sint' type" ;
@@ -961,24 +961,24 @@ class @typeGalgas_sint extends @AC_galgasType {
 
 class @typeGalgas_sint64 extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "sint64" ;
-  end reader ;
+  end method ;
 
 #--- This class accepts "++" operator
-  override reader handleIncrementOperatorCall 
+  override method handleIncrementOperatorCall 
     ??@location unused inErrorLocation
   :
-  end reader ;
+  end method ;
 
 #--- This class accepts "--" operator
-  override reader handleDecrementOperatorCall 
+  override method handleDecrementOperatorCall 
     ??@location unused inErrorLocation
   :
-  end reader ;
+  end method ;
 
 #--- Class accepts constructors 'min' and 'max'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -989,7 +989,7 @@ class @typeGalgas_sint64 extends @AC_galgasType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@sint64' type" ;
@@ -999,24 +999,24 @@ class @typeGalgas_sint64 extends @AC_galgasType {
 
 class @typeGalgas_uint extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "uint" ;
-  end reader ;
+  end method ;
 
 #--- This class accepts "++" operator
-  override reader handleIncrementOperatorCall 
+  override method handleIncrementOperatorCall 
     ??@location unused inErrorLocation
   :
-  end reader ;
+  end method ;
 
 #--- This class accepts "--" operator
-  override reader handleDecrementOperatorCall 
+  override method handleDecrementOperatorCall 
     ??@location unused inErrorLocation
   :
-  end reader ;
+  end method ;
 
 #--- Class accepts constructor 'max'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1027,7 +1027,7 @@ class @typeGalgas_uint extends @AC_galgasType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@uint' type" ;
@@ -1037,24 +1037,24 @@ class @typeGalgas_uint extends @AC_galgasType {
 
 class @typeGalgas_uint64 extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "uint64" ;
-  end reader ;
+  end method ;
 
 #--- This class accepts "++" operator
-  override reader handleIncrementOperatorCall 
+  override method handleIncrementOperatorCall 
     ??@location unused inErrorLocation
   :
-  end reader ;
+  end method ;
 
 #--- This class accepts "--" operator
-  override reader handleDecrementOperatorCall 
+  override method handleDecrementOperatorCall 
     ??@location unused inErrorLocation
   :
-  end reader ;
+  end method ;
 
 #--- Class accepts constructor 'max'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1063,7 +1063,7 @@ class @typeGalgas_uint64 extends @AC_galgasType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@uint64' type" ;
@@ -1073,9 +1073,9 @@ class @typeGalgas_uint64 extends @AC_galgasType {
 
 class @typeGalgas_char extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "char" ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@char' type" ;
@@ -1085,9 +1085,9 @@ class @typeGalgas_char extends @AC_galgasType {
 
 class @typeGalgas_double extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "double" ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@double' type" ;
@@ -1111,17 +1111,17 @@ abstract class @C_galgasPrimitiveType extends @AC_galgasType {
 
 class @typeGalgas_location extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "location" ;
-  end reader ;
+  end method ;
 
 #--- Objects of this class accept assignment from 'here' keyword
-  override reader acceptAssignmentFromHere ??@lstring unused inErrorLocation :
-  end reader ;
+  override method acceptAssignmentFromHere ??@lstring unused inErrorLocation :
+  end method ;
 
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@location' type" ;
 }
@@ -1130,12 +1130,12 @@ class @typeGalgas_location extends @C_galgasPrimitiveType {
 
 class @typeGalgas_lstring extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "lstring" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1146,11 +1146,11 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -1165,11 +1165,11 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@lstring' type" ;
 }
@@ -1178,12 +1178,12 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
 
 class @typeGalgas_lchar extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "lchar" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1196,11 +1196,11 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -1215,11 +1215,11 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@lchar' type" ;
 }
@@ -1228,12 +1228,12 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
 
 class @typeGalgas_lbool extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "lbool" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1246,11 +1246,11 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -1265,10 +1265,10 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@lbool' type" ;
 }
@@ -1277,12 +1277,12 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
 
 class @typeGalgas_luint extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "luint" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1295,11 +1295,11 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -1314,10 +1314,10 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@luint' type" ;
 }
@@ -1326,12 +1326,12 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
 
 class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "luint64" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1344,11 +1344,11 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -1363,10 +1363,10 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@luint64' type" ;
 }
@@ -1375,12 +1375,12 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
 
 class @typeGalgas_lsint extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "lsint" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1393,11 +1393,11 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -1412,10 +1412,10 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@lsint' type" ;
 }
@@ -1424,12 +1424,12 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
 
 class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "lsint64" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1442,11 +1442,11 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -1461,10 +1461,10 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@lsint64' type" ;
 }
@@ -1473,12 +1473,12 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
 
 class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "ldouble" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1491,11 +1491,11 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -1510,10 +1510,10 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 #--- Class accepts to be silently converted to @location
-  override reader checkAbilityToBeSilentlyConvertedToLocation :
-  end reader ;
+  override method checkAbilityToBeSilentlyConvertedToLocation :
+  end method ;
 
   message messageGalgasType "a '@ldouble' type" ;
 }
@@ -1526,12 +1526,12 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
 
 class @typeGalgas_stringset extends @AC_galgasType {
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := "stringset" ;
-  end reader ;
+  end method ;
 
 #--- Class accepts constructor call 'emptySet'
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -1546,33 +1546,33 @@ class @typeGalgas_stringset extends @AC_galgasType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- stringset accepts operator "+=" call
   override
-  reader handleAddAssignOperatorCall
+  method handleAddAssignOperatorCall
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
     outParametersList := [@typeListeAttributsSemantiques emptyList] ;
     @AC_galgasType t := [@typeGalgas_string new] ;
     outParametersList += !t ![@lstring new !""! here] ;
-  end reader ;
+  end method ;
 
 #--- stringset accepts operator "-=" call
   override
-  reader handleMinusAssignOperatorCall
+  method handleMinusAssignOperatorCall
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
     outParametersList := [@typeListeAttributsSemantiques emptyList] ;
     @AC_galgasType t := [@typeGalgas_string new] ;
     outParametersList += !t ![@lstring new !""! here] ;
-  end reader ;
+  end method ;
 
 #--- stringset object accepts to be enumerated (foreach instruction)
   override
-  reader acceptForeachInstruction
+  method acceptForeachInstruction
     ??@lstring unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
@@ -1581,7 +1581,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += !keyType ![@lstring new !"mKey" !here] ; # Unused second argument
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a '@stringset' type" ;
@@ -1613,9 +1613,9 @@ class @typeGalgasUndefinedExternType extends @AC_galgasType {
   @lstring mCppClassName ;
 
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := [mGalgasClassName string] ;
-  end reader ;
+  end method ;
 
 #--- Message
   message messageGalgasType "an undefined extern type" ;
@@ -1654,33 +1654,33 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
   @typeListeAttributsSemantiques mAddAssignOperatorCallTypeList ;
 
 #--- Constructors
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     [mConstructorMap searchKey !inClassMethodName ?outAccessorTypesList] ;
-  end reader ;
+  end method ;
 
 #--- Handle modifier call : return modifier signature
-  override reader handleModifierCall
+  override method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
     [mModifiersMap searchKey !inModifierName ?outModifierSignature] ; 
-  end reader ;
+  end method ;
 
 #--- By default, class does not accept reader instruction call
-  override reader handleReaderInstructionCall
+  override method handleReaderInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
     [mReadersInInstructionMap searchKey !inReaderName ?outReaderSignature] ;
-  end reader ;
+  end method ;
 
 #--- Handle operator "+=" call
-  override reader handleAddAssignOperatorCall
+  override method handleAddAssignOperatorCall
     ??@location inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
@@ -1689,7 +1689,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
     else
       outParametersList := mAddAssignOperatorCallTypeList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Message
   message messageGalgasType "an extern type" ;
@@ -2060,9 +2060,9 @@ class @typeGalgasUndefinedListType extends @AC_galgasType {
   @lstring mListTypeName ;
 
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := [mListTypeName string] ;
-  end reader ;
+  end method ;
 
   message messageGalgasType "an undefined list type" ;
 }
@@ -2083,18 +2083,18 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 
 #--- list object accepts to be enumerated (foreach instruction)
   override
-  reader acceptForeachInstruction
+  method acceptForeachInstruction
     ??@lstring unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
     outForeachList := mNonExternAttributesList ;
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
-  end reader ;
+  end method ;
   
 #--- Modifiers are 'popFirst' and 'popLast' methods
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -2106,12 +2106,12 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     else
       error inModifierName: "a list accepts only 'popFirst' and 'popLast' modifiers" -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 
 
 #--- List accept 'first' and last' reader in instruction
   override
-  reader handleReaderInstructionCall
+  method handleReaderInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -2120,18 +2120,18 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
       error inReaderName: "a list accepts only 'first' and 'last' readers" ;
     end if ;
     outReaderSignature := mExtractSignature ;
-  end reader ;
+  end method ;
 
 #--- list accepts operator "+=" call
-  override reader handleAddAssignOperatorCall
+  override method handleAddAssignOperatorCall
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
     outParametersList := mNonExternAttributesList ;
-  end reader ;
+  end method ;
 
 #--- A list accepts 'emptyList' and 'listWithValue' constructors
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -2142,7 +2142,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
   message messageGalgasType "a list type" ;
 }
@@ -2170,9 +2170,9 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
   @lstring mMapTypeName ;
 
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := [mMapTypeName string] ;
-  end reader ;
+  end method ;
 
   message messageGalgasType "an undefined map type" ;
 }
@@ -2202,28 +2202,28 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 
 #--- Modifiers are insert methods and (when map defines automaton) search methods
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
     [mModifierMethodMap searchKey !inModifierName ?outModifierSignature] ;
-  end reader ;
+  end method ;
 
 #--- Readers are search methods (when map defines no automaton)
   override
-  reader handleReaderInstructionCall
+  method handleReaderInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
     [mReaderMethodMap searchKey !inReaderName ? outReaderSignature] ;
-  end reader ;
+  end method ;
 
 
 #--- table object accepts to be enumerated (foreach instruction)
   override
-  reader acceptForeachInstruction
+  method acceptForeachInstruction
     ??@lstring unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
@@ -2235,10 +2235,10 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
       outForeachList += !kAttributType !kNomAttribut ;
     end foreach ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
-  end reader ;
+  end method ;
 
 #--- A map accepts 'emptyMap' constructor
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -2252,7 +2252,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
   
   message messageGalgasType "a map type" ;
 }
@@ -2267,9 +2267,9 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType {
   @lstring mClassTypeName ;
 
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := [mClassTypeName string] ;
-  end reader ;
+  end method ;
 
   message messageGalgasType "an undefined class type" ;
 }
@@ -2304,16 +2304,16 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 
 #--- Handle method call : return method signature
   override
-  reader handleReaderInstructionCall
+  method handleReaderInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inMethodName
     !@L_EXsignature outMethodSignature
   :
     [mReaderMap searchKey !inMethodName ?outMethodSignature] ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method call 'new' if it is not abstract
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
@@ -2324,7 +2324,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a class type" ;
@@ -2355,9 +2355,9 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
 class @typeGalgas_entityInInstruction extends @AC_galgasType {
   @string mEntityName ;
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := mEntityName ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "an entity" ;
@@ -2373,9 +2373,9 @@ class @typeGalgas_mapIndexInInstruction extends @AC_galgasType {
   @string mMapTypeName ;
 #--- Get type name
   override
-  reader getTypeName !@string outTypeName :
+  method getTypeName !@string outTypeName :
     outTypeName := "" ;
-  end reader ;
+  end method ;
 #--- Error message
   message messageGalgasType "a map index" ;
 }
@@ -2391,13 +2391,13 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
   @string mElementTypeName ;
 #--- Get type name
   override
-  reader getTypeName !@string outTypeName :
+  method getTypeName !@string outTypeName :
     outTypeName := mEntityName ;
-  end reader ;
+  end method ;
 
 #--- Handle modifiers
   override
-  reader handleModifierCall
+  method handleModifierCall
     ??@lstring inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
@@ -2420,11 +2420,11 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
       error inModifierName : "variables of this type only accept 'insertKey' and 'insertKey' modifier calls"
        -> outModifierSignature ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Handle reader instruction call
   override
-  reader handleReaderInstructionCall
+  method handleReaderInstructionCall
     ??@lstring inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -2448,7 +2448,7 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
        "variables of this type  only accept 'searchKey'  'searchKeyAndGetIndex' reader calls"
        -> outReaderSignature ;
     end if ;
-  end reader ;
+  end method ;
 
 #--- Error message
   message messageGalgasType "a map entity" ;
@@ -2479,18 +2479,18 @@ class @typeGalgas_enum extends @AC_galgasType {
   @typeEnumMessageMap mMessagesMap ;
 
 #--- Get type name
-  override reader getTypeName !@string outTypeName :
+  override method getTypeName !@string outTypeName :
     outTypeName := [mEnumTypeName string] ;
-  end reader ;
+  end method ;
 
 #--- Class accepts class method with constant names
-  override reader handleConstructorCall
+  override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     [mEnumConstantesMap searchKey !inClassMethodName] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-  end reader ;
+  end method ;
 
   message messageGalgasType "an enum type" ;
 }
@@ -3028,10 +3028,20 @@ routine handleReaderCall
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgasClassType (* * * * @typeClassInheritedMessagesMap kMessagesMap * *) ->
-      [kMessagesMap searchKey !inMethodName] ;
+    when @typeGalgasClassType (* * @typeListeAttributsSemantiques kNonExternAttributesList * @typeClassInheritedMessagesMap kMessagesMap * *) ->
       outReturnedType := [@typeGalgas_string new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      if not [kMessagesMap hasKey ![inMethodName string]] then
+      #--- Search for attribute
+        @bool found := false ;
+        foreach kNonExternAttributesList (@AC_galgasType kAttributType @lstring kNomAttribut) while not found :
+          outReturnedType := kAttributType ;
+          found := [inMethodName string] == [kNomAttribut string] ;
+        end foreach ;
+        if not found then
+          error inMethodName: "this reader is not defined (you can name as class reader class attributes and class messages)" ;
+        end if ;
+      end if ;
     when @typeGalgas_enum (* * @typeEnumMessageMap kMessagesMap) ->
       [kMessagesMap searchKey !inMethodName ?*] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ; #--- No argument
