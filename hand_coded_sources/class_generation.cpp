@@ -259,7 +259,18 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
              "//--- operator ()\n"
-             "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+//--- Implicitly declared Readers
+             "//--- Readers\n" ;
+  GGS_typeListeAttributsSemantiques::element_type * current = aListeAttributsCourants.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << "  public : " ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    inHfile << " reader_" << current->aNomAttribut
+            << " (C_Lexique & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    current = current->nextObject () ;
+  }
+  inHfile << "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "    public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n"
              "  #else\n"
              "    public : inline cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const {\n"
@@ -592,6 +603,33 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     messageCourant = messageCourant->nextObject () ;
   }
 
+//--- For every attribute, generate a reader
+  current = aListeAttributsCourants.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " GGS_" << aNomClasse << "::\n"
+                 "reader_" << current->aNomAttribut
+              << " (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+                 "  " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << "  result ;\n"
+                 "  if (mPointer != NULL) {\n"
+                 "    macroValidPointer (mPointer) ;\n" ;
+    if (superClassName.length () == 0) {
+      inCppFile << "    result = mPointer->" << current->aNomAttribut << " ;\n" ;
+   }else{
+      inCppFile << "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
+                   "               \"dynamic cast error\", 0, 0) ;\n"
+                   "    result = ((cPtr_" << aNomClasse << " *) mPointer)->" << current->aNomAttribut << " ;\n" ;
+    }
+    inCppFile << "  }\n"
+                 "  return result ;\n"
+                 "}\n\n" ;
+    current = current->nextObject () ;
+  }
+
 //--- Engendrer la declaration de la methode '_drop_operation'
   if (superClassName.length () == 0) {
     inCppFile.writeCppHyphenLineComment () ;
@@ -738,7 +776,18 @@ generateHdeclarations (AC_OutputStream & inHfile,
     variableIndex ++ ;
   }
   inHfile << " COMMA_LOCATION_ARGS) ;\n"
-             "//--- operator ()\n"
+//--- Implicitly declared Readers
+             "//--- Readers\n" ;
+  current = aListeAttributsCourants.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << "  public : " ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    inHfile << " reader_" << current->aNomAttribut
+            << " (C_Lexique & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    current = current->nextObject () ;
+  }
+  inHfile << "//--- operator ()\n"
              "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "    public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n"
              "  #else\n"
@@ -1058,7 +1107,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
   }
 
-//--- Virtual Desctructor
+//--- Virtual Destructor
   if (superClassName.length () == 0) {
     inCppFile << "GGS_" << aNomClasse << "::\n"
               << "~GGS_" << aNomClasse << " (void) {\n"
@@ -1106,6 +1155,29 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  macroAttachPointer (result.mPointer, _ptr) ;\n"
                "  return result ;\n"
                "}\n\n" ;
+
+//--- For every attribute, generate a reader
+  current = aListeAttributsCourants.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " GGS_" << aNomClasse << "::\n"
+                 "reader_" << current->aNomAttribut
+              << " (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+                 "  " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << "  result ;\n"
+                 "  if (mPointer != NULL) {\n"
+                 "    macroValidPointer (mPointer) ;\n"
+                 "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
+                 "               \"dynamic cast error\", 0, 0) ;\n"
+                 "    result = ((cPtr_" << aNomClasse << " *) mPointer)->" << current->aNomAttribut << " ;\n"
+                 "  }\n"
+                 "  return result ;\n"
+                 "}\n\n" ;
+    current = current->nextObject () ;
+  }
 
 //--- Engendrer la declaration de la surcharge de l'opeerateur ()
   inCppFile.writeCppHyphenLineComment () ;
