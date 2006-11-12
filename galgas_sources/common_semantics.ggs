@@ -2722,6 +2722,56 @@ list @L_nibAndClassList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   H A N D L E    @ S T R I N G    R E A D E R    C A L L                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine handleStringReaderCall
+  ??@lstring inMethodName
+  !@typeListeAttributsSemantiques outAccessorTypesList
+  !@AC_galgasType outReturnedType
+:
+  if [inMethodName string] == "length" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_uint new] ;
+  elsif [inMethodName string] == "fileExists" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_bool new] ;
+  elsif [inMethodName string] == "characterAtIndex" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
+    outReturnedType := [@typeGalgas_char new] ;
+  elsif [inMethodName string] == "pathExtension" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inMethodName string] == "lastPathComponent" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inMethodName string] == "stringByDeletingPathExtension" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inMethodName string] == "stringByCapitalizingFirstCharacter" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inMethodName string] == "firstCharacterOrNul" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_char new] ;
+  elsif [inMethodName string] == "stringByDeletingLastPathComponent" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inMethodName string] == "stringByReplacingStringByString" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
+    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
+  else
+    error inMethodName : "this reader is not defined"
+     -> outAccessorTypesList, outReturnedType ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   H A N D L E    R E A D E R    C A L L    I N    E X P R E S S I O N     *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -2738,42 +2788,19 @@ routine handleReaderCall
   else
     extract inReceiverType :
     when @typeGalgas_string () ->
-      if [inMethodName string] == "length" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inMethodName string] == "fileExists" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inMethodName string] == "characterAtIndex" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
-        outReturnedType := [@typeGalgas_char new] ;
-      elsif [inMethodName string] == "pathExtension" then
+      handleStringReaderCall !inMethodName ?outAccessorTypesList ?outReturnedType ;
+    when @typeGalgas_lstring () ->
+      if [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName string] == "lastPathComponent" then
+      elsif [inMethodName string] == "location" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_location new] ;
+      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName string] == "stringByDeletingPathExtension" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName string] == "stringByCapitalizingFirstCharacter" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName string] == "firstCharacterOrNul" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_char new] ;
-      elsif [inMethodName string] == "stringByDeletingLastPathComponent" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName string] == "stringByReplacingStringByString" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-        outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
-        outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
-      else
-        error inMethodName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
+      else # Inherited @ string reader ?
+        handleStringReaderCall !inMethodName ?outAccessorTypesList ?outReturnedType ;
       end if ;
     when @typeGalgas_location () ->
       if [inMethodName string] == "locationString" then
@@ -2845,24 +2872,6 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
       elsif [inMethodName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      else
-        error inMethodName : "this reader is not defined"
-         -> outAccessorTypesList, outReturnedType ;
-      end if ;
-    when @typeGalgas_lstring () ->
-      if [inMethodName string] == "string" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName string] == "value" then
-        warning inMethodName:"in GALGAS 1.4.1 and later, the 'value' reader of @lstring type is deprecated; use 'string' instead" ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_string new] ;
-      elsif [inMethodName string] == "location" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_location new] ;
-      elsif [inMethodName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
