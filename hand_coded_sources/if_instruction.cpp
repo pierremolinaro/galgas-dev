@@ -1004,6 +1004,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeReaderCallInExpression::
 generateExpression (AC_OutputStream & ioCppFile) {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
+  if (mConversionMethod.length () > 0) {
+    ioCppFile << "." << mConversionMethod << " ()" ;
+  }
   ioCppFile << ".reader_" << mReaderName << " (_inLexique" ;
   GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
   while (e != NULL) {
