@@ -222,6 +222,8 @@ routine matchConcatOperator
   match inLeftExpressionType :: inRightExpressionType :
   when @typeGalgas_string () :: @typeGalgas_string () :
     outResultType := inLeftExpressionType ;
+  when @typeGalgas_string () :: @typeGalgas_lstring () :
+    outResultType := inLeftExpressionType ;
   when @typeGalgasUndefinedListType (@lstring kListType1) :: @typeGalgasUndefinedListType (@lstring kListType2) :
     if [kListType1 string] != [kListType2 string] then
       error here:"concatenation operator error: lists should have the same type (here '@" 
