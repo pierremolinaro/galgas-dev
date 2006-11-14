@@ -1322,7 +1322,8 @@ rule <factor>
     $identifier$ ? methodName ;
   #--- Search reader for getting formal parameters list
     @typeListeAttributsSemantiques accessorsTypeList ;
-    handleReaderCall !expressionType !methodName ?accessorsTypeList ?outResultType ;
+    @string conversionMethod ;
+    handleReaderCall !expressionType !methodName ?accessorsTypeList ?outResultType ?conversionMethod ;
   #--- Actual parameters
     @typeExpressionList expressionList ;
     <output_expression_list>
@@ -1332,7 +1333,7 @@ rule <factor>
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
     ;
-    outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !here] ;
+    outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !here !conversionMethod] ;
   or
   #--- Class name
     @lstring className ;
