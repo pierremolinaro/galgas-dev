@@ -11,10 +11,12 @@
 #import "OC_GGS_PreferencesController.h"
 #import "PMDownloadData.h"
 #import "PMDownloadFile.h"
+#import "OC_GGS_PreferencesController.h"
 
 //--------------------------------------------------------------------------*
 
 #import <WebKit/WebKit.h>
+#import <Security/Security.h>
 
 //--------------------------------------------------------------------------*
 
@@ -195,6 +197,16 @@
     bind:@"value"
     toObject:ud
     withKeyPath:@"libpmPath"
+    options:nil
+  ] ;
+//--- Installation Path
+  if ([ud objectForKey:@"cliInstallationPath"] == nil) {
+    [ud setObject:@"/usr/local/bin/" forKey:@"cliInstallationPath"] ;
+  }
+  [mCLIToolInstallationPath
+    bind:@"value"
+    toObject:ud
+    withKeyPath:@"cliInstallationPath"
     options:nil
   ] ;
 //--- Add observers
@@ -610,7 +622,7 @@
         status = [self uncompressArchive:[self temporaryPathForGalgasUpdaterArchive]] ;
       }
       if (status == 0) {
-  NSString * filePath = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", [self temporaryDir]] ;
+        NSString * filePath = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", [self temporaryDir]] ;
         NSString * cocoaGalgasPath = [[NSBundle mainBundle] bundlePath] ;
         status = ! [cocoaGalgasPath writeToFile:filePath atomically:YES] ;
       }
@@ -673,6 +685,103 @@
     }
   }else{
     [self downloadHasBeenCancelled] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+#pragma mark Installing CLI tools
+
+//--------------------------------------------------------------------------*
+//                                                                          *
+//            Installing CLI tools                                          *
+//                                                                          *
+//--------------------------------------------------------------------------*
+
+- (OSStatus) privilegedOperation: (AuthorizationRef) inAutorizationRef
+             commandPath: (const char *) inCommandPath
+             arguments: (char * *) inArguments {
+  FILE * myCommunicationPipe = NULL ;
+  OSStatus myStatus = AuthorizationExecuteWithPrivileges (inAutorizationRef,
+                                                          inCommandPath, 
+                                                          kAuthorizationFlagDefaults,
+                                                          inArguments, 
+                                                          & myCommunicationPipe) ; 
+  if (myStatus == 0) { // Wait until tool exit
+    char unusedBuffer [128] ;
+    while (fread (unusedBuffer, 1, 128, myCommunicationPipe) > 0) {}    
+  }
+  return myStatus ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (IBAction) performCLIToolInstallation: (id) inSender {
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  NSString * installationPath = [ud objectForKey:@"cliInstallationPath"] ;
+  if ([installationPath length] == 0) {
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Cannot Perform Command Line Interface Tools Installation."
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@"The installation path is empty."
+    ] ;
+    [alert
+      beginSheetModalForWindow:[mCLIToolInstallationPath window]
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
+  }else{
+    OSStatus myStatus = 0 ;
+  //--- Create an empty Authorization
+    const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
+    AuthorizationRef authorizationRef = 0 ;
+    AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & authorizationRef) ; 
+    NSFileManager * fm = [NSFileManager defaultManager] ;
+    if (! [fm fileExistsAtPath:installationPath]) {
+      const char * createDirArgs [] = {"-p", [installationPath cString], NULL} ;
+      myStatus = [self
+        privilegedOperation:authorizationRef
+        commandPath:"/bin/mkdir"
+        arguments: (char * *) createDirArgs
+      ] ;
+    }
+  //--- Bundle path
+    NSString * bundlePath = [[NSBundle mainBundle] bundlePath] ;
+    //NSLog (@"BUNDLE PATH '%@'", bundlePath) ;
+    NSString * resourcePath = [bundlePath stringByAppendingString:@"/Contents/Resources/"] ;
+  //--- Tools
+    NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
+   // NSLog (@"TOOL NAME ARRAY '%@'", toolNameArray) ;
+  //--- Installing tools
+    unsigned i ;
+    for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
+      NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i]] ;
+      const char * copyArgs [] = {[toolSourcePath cString], [installationPath cString], NULL} ;
+      myStatus = [self
+        privilegedOperation:authorizationRef
+        commandPath:"/bin/cp"
+        arguments: (char * *) copyArgs
+      ] ;
+    }
+  //--- Error ?
+    if (myStatus != 0) {
+      NSAlert * alert = [NSAlert
+        alertWithMessageText:@"Cannot Perform Command Line Interface Tools Installation."
+        defaultButton:@"Ok"
+        alternateButton:nil
+        otherButton:nil
+        informativeTextWithFormat:@"Operation returns error %d.", myStatus
+      ] ;
+      [alert
+        beginSheetModalForWindow:[mCLIToolInstallationPath window]
+        modalDelegate:nil
+        didEndSelector:NULL
+        contextInfo:NULL
+      ] ;
+    }
   }
 }
 

@@ -22,6 +22,8 @@
 		CF01970E09DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
 		CF01970F09DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
 		CF01971009DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
+		CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
+		CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF19AF780A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
 		CF19AF790A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
 		CF19AF7A0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
@@ -1607,6 +1609,7 @@
 		CF01970A09DC288E0000AD72 /* constraint_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = constraint_generation.cpp; sourceTree = "<group>"; };
 		CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleEntity.h; sourceTree = "<group>"; };
 		CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_multipleEntity.h; sourceTree = "<group>"; };
+		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_while_instruction.h; sourceTree = "<group>"; };
 		CF1EF67E0AD15BB70091DDE8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/galgasUpdate.nib; sourceTree = "<group>"; };
 		CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
@@ -2102,6 +2105,7 @@
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				CF4398040ADFE1900085F47C /* WebKit.framework in Frameworks */,
+				CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2127,6 +2131,7 @@
 			files = (
 				CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */,
 				CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */,
+				CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2152,6 +2157,7 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF04216C0B0B51AA00BB53E5 /* Security.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
