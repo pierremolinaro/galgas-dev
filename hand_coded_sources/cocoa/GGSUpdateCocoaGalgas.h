@@ -37,7 +37,11 @@
   @private IBOutlet NSProgressIndicator * mDownloadProgressIndicator ;
   @private IBOutlet NSTextField * mDownloadSubTitle ;
   @private IBOutlet NSButton * mCancelButton ;
-  
+
+//--- Install CLI tool
+  @private IBOutlet NSTextField * mCLIToolInstallationPath ;
+
+//---  
   @private BOOL mSearchForUpdatesInBackground ;
 }
 
@@ -46,6 +50,8 @@
 - (IBAction) resetLIPMpathAction: (id) inSender ;
 
 - (IBAction) checkForNewVersion: (id) inSender ;
+
+- (IBAction) performCLIToolInstallation: (id) inSender ;
 
 @end
 

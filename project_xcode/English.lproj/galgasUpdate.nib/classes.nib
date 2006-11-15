@@ -2,10 +2,16 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            ACTIONS = {checkForNewVersion = id; resetLIPMpathAction = id; setLIPMpathAction = id; }; 
+            ACTIONS = {
+                checkForNewVersion = id; 
+                performCLIToolInstallation = id; 
+                resetLIPMpathAction = id; 
+                setLIPMpathAction = id; 
+            }; 
             CLASS = GGSUpdateCocoaGalgas; 
             LANGUAGE = ObjC; 
             OUTLETS = {
+                mCLIToolInstallationPath = NSTextField; 
                 mCancelButton = NSButton; 
                 mChangeLogWebView = WebView; 
                 mCheckNowButton = NSButton; 
