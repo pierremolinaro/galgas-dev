@@ -34,7 +34,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                             const C_String & inLexiqueComponentName,
                             const GGS_M_optionComponents & inOptionComponentsMap) {
 //--- Generate user includes
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
@@ -68,7 +68,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "\n" ;
 
 //--- Global static variables
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3.writeCppTitleComment ("Global static variables") ;
   generatedZone3 << "\n" ;
   sint32 index = 0 ;

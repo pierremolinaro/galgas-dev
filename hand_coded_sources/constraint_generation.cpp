@@ -71,7 +71,7 @@ generate_constraint_header_file (C_Lexique & inLexique,
                                  const GGS_entityToImplementMap & inConstrainedEntityMap,
                                  const GGS_stringset & inMultipleReferencedEntities,
                                  const GGS_lstring & inRootEntityName) {
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef " << inConstraintComponentName << "_CONSTRAINTS_DEFINED\n"
                  << "#define " << inConstraintComponentName << "_CONSTRAINTS_DEFINED\n"
                     "\n"
@@ -86,7 +86,7 @@ generate_constraint_header_file (C_Lexique & inLexique,
                     "#include \"galgas/C_GGS_MapIndex.h\"\n"
                     "\n" ;
   
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (20000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (20000) ;
 //--- Generate entities predeclarations
   generatedZone3.writeCppTitleComment ("Class Predeclarations") ;
   GGS_entityToImplementMap::element_type * currentConstrainedEntity = inConstrainedEntityMap.firstObject () ;
@@ -294,7 +294,7 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                               const GGS_lstring & inRootEntityName,
                               const GGS_representativeEntityMap & inRepresentativeEntityMap,
                               const GGS_constraintInstructionListMap & inConstraintInstructionListMap) {
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
@@ -311,7 +311,7 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
                     "#endif\n\n" ;
 
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (200000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (200000) ;
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Main Routine

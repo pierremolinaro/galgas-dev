@@ -167,7 +167,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
                            const uint32 inOriginalGrammarStartSymbol,
                            const C_String & inTargetFileName,
                            const cVocabulary & inVocabulary) {
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n"
                     "#define GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n\n" ;
   
@@ -182,7 +182,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
   generatedZone2 << '\n' ;
 
 //--- Engendrer la classe de l'analyseur syntaxique ------------------------------------------
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3.writeCppHyphenLineComment () ;
   generatedZone3 << "class " << inTargetFileName ;
   component = inSyntaxComponentsList.firstObject () ;
