@@ -30,7 +30,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                                 const GGS_lstring & inMetamodelComponentName,
                                 const GGS_stringset & inMultipleReferencedEntities,
                                 const GGS_lstring & inRootEntityName) {
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
                  << "#define " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
                  << "\n#include <string.h>\n\n" ;
@@ -48,7 +48,7 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_luint.h\"\n"
                     "#include \"galgas/GGS_lsint.h\"\n\n" ;
   
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (20000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (20000) ;
 //--- Generate entities predeclarations
   generatedZone3.writeCppTitleComment ("Class Predeclarations") ;
   GGS_entityToImplementMap::element_type * currentEntity = ioEntityMap.firstObject () ;
@@ -183,7 +183,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                              const GGS_lstring & inMetamodelComponentName,
                              const GGS_stringset & inMultipleReferencedEntities,
                              const GGS_lstring & inRootEntityName) {
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
 //--- Include declaration of header file
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -200,7 +200,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
                     "#endif\n\n" ;
 
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (200000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (200000) ;
   
   generatedZone3.writeCppTitleComment ("Logging Metamodel") ;
   generatedZone3 << "void _logMetamodel_" << inMetamodelComponentName

@@ -400,7 +400,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                                const cPureBNFproductionsList & inPureBNFproductions,
                                const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
 //--- Generate header file inclusion --------------------------------------------------------------
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
@@ -418,7 +418,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                     "#endif\n\n" ;
 
 //--- Generate LL(1) tables
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   const sint32 productionsCount = inPureBNFproductions.length () ;
   TC_UniqueArray <sint16> productionRulesIndex (500 COMMA_HERE);
   TC_UniqueArray <sint16> firstProductionRuleIndex (500 COMMA_HERE) ;

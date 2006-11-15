@@ -33,7 +33,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                                const C_String & inProgramComponentName,
                                const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList) {
 //--- Write includes
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef INTERFACE_" << inProgramComponentName << "_DEFINED\n"
                     "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
@@ -65,7 +65,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
   while (currentGrammar != NULL) {
     C_String grammarClassName ;
     grammarClassName << "grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << grammarSuffix ;
-    C_String grammarZone2 ; grammarZone2.setAllocationExtra (2000) ;
+    C_String grammarZone2 ; grammarZone2.setCapacity (2000) ;
     macroValidPointer (currentGrammar) ;
     grammarZone2 << "class " << grammarClassName << " : public C_defaultUserSemanticActions {\n"
                     "  protected : " << currentGrammar->mLexiqueClassName << " * _mScannerPtr ;\n"
@@ -168,7 +168,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                     "\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 //--- Fin du fichier d'en tete
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (100) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (100) ;
   generatedZone3.writeCppHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
 
@@ -196,7 +196,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                             const C_String & inProgramComponentName,
                             const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList) {
 //--- Generate user includes
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
@@ -561,7 +561,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 //--- User Zone 2 : prologue and epilogue
-  C_String userZone2 ; userZone2.setAllocationExtra (1000) ;
+  C_String userZone2 ; userZone2.setCapacity (1000) ;
   userZone2 << "\n\n" ;
   userZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
   userZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"

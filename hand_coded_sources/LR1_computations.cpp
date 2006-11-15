@@ -909,7 +909,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                                const GGS_stringset & inClassesNamesSet,
                   const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
 //--- Generate header file inclusion -----------------------------------------
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
@@ -925,7 +925,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
                     "#endif\n\n" ;
 
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
 
 //--- Print non-terminal symbols --------------------------------------
   generatedZone3.writeCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;

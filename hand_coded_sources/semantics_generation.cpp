@@ -342,7 +342,7 @@ generate_header_file (C_Lexique & inLexique,
                       const GGS_stringset & inIncludesForHeaderFile,
                       const GGS_string & inLexiqueName,
                       const GGS_typeEntitiesToGenerateList & listeEntitesAengendrer) {
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef " << nomComposant << "_DEFINED\n"
                  << "#define " << nomComposant << "_DEFINED\n"
                  << "\n#include <string.h>\n\n" ;
@@ -384,7 +384,7 @@ generate_header_file (C_Lexique & inLexique,
     generatedZone2 << '\n' ;
   }
 
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (200000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (200000) ;
 //--- Generate classes declarations
   GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;
   generatedZone3.writeCppTitleComment ("Class Predeclarations") ;
@@ -1529,7 +1529,7 @@ generate_cpp_file (C_Lexique & inLexique,
                    GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                    GGS_stringset & tableFichiersEnTetePourFichierCPP) {
 //--- Write file header
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
@@ -1568,7 +1568,7 @@ generate_cpp_file (C_Lexique & inLexique,
   }
                  
 //--- Engendrer les implementations
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {

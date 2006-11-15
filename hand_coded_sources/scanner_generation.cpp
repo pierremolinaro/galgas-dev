@@ -475,7 +475,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                            const GGS_stringset & inUsedErrorMessageSet,
                            const GGS_M_styles & inStylesMap) {
 // --------------------------------------- Engendrer les inclusions
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
@@ -982,7 +982,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
                               const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
                               const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves) {
 //--- Write #ifndef, ..., #include, ...
-  C_String generatedZone2 ; generatedZone2.setAllocationExtra (200000) ;
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef " << inLexiqueName << "_0_DEFINED\n"
                     "#define " << inLexiqueName << "_0_DEFINED\n"
                     "#include \"galgas/C_Lexique.h\"\n\n" ;
@@ -990,7 +990,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
 // --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n" ;
-  C_String generatedZone3 ; generatedZone3.setAllocationExtra (2000000) ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3 << "//--- Terminal symbols enumeration\n"
                     "  public : enum {" ;
   generatedZone3 <<  inLexiqueName << "_1_" ;
