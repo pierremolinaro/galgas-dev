@@ -2764,6 +2764,9 @@ routine handleStringReaderCall
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
+  elsif [inMethodName string] == "uppercaseString" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
   else
     error inMethodName : "this reader is not defined"
      -> outAccessorTypesList, outReturnedType ;
