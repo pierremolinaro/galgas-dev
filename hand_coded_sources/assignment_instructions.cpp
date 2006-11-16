@@ -125,7 +125,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".dotAssign_operation (" ;
+    ioCppFile << "._dotAssign_operation (" ;
     mSourceExpression (HERE)->generateExpression (ioCppFile) ;
     if (mSourceExpressionConverter.length () > 0) {
       ioCppFile << "." << mSourceExpressionConverter << " ()" ;

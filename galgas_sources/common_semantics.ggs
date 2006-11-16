@@ -2,7 +2,7 @@
 #                                                                           *
 #  Common semantics definitions                                             *
 #                                                                           *
-#  Copyright (C) 1997-2006 Pierre Molinaro.                                 *
+#  Copyright (C) 1997? ..., 2006 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -970,6 +970,17 @@ class @typeGalgas_string extends @AC_galgasType {
        -> outModifierSignature ;
     end if ;
   end method ;
+
+#--- By default, class does not accept operator "+=" call
+  override
+  method handleAddAssignOperatorCall 
+    ??@location unused inErrorLocation
+    !@typeListeAttributsSemantiques outParametersList
+  :
+    outParametersList := [@typeListeAttributsSemantiques emptyList] ;
+    outParametersList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+  end method ;
+
 #--- Error message
   message messageGalgasType "a '@string' type" ;
 }
@@ -1572,8 +1583,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
     !@typeListeAttributsSemantiques outParametersList
   :
     outParametersList := [@typeListeAttributsSemantiques emptyList] ;
-    @AC_galgasType t := [@typeGalgas_string new] ;
-    outParametersList += !t ![@lstring new !""! here] ;
+    outParametersList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
   end method ;
 
 #--- stringset accepts operator "-=" call
