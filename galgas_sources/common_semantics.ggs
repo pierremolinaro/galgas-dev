@@ -971,16 +971,6 @@ class @typeGalgas_string extends @AC_galgasType {
     end if ;
   end method ;
 
-#--- By default, class does not accept operator "+=" call
-  override
-  method handleAddAssignOperatorCall 
-    ??@location unused inErrorLocation
-    !@typeListeAttributsSemantiques outParametersList
-  :
-    outParametersList := [@typeListeAttributsSemantiques emptyList] ;
-    outParametersList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
-  end method ;
-
 #--- Error message
   message messageGalgasType "a '@string' type" ;
 }
