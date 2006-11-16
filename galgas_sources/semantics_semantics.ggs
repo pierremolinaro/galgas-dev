@@ -667,6 +667,18 @@ class @C_assignmentInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   . =    I N S T R U C T I O N                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @C_dotEqualInstruction extends @typeInstruction {
+  @typeCplusPlusName mTargetVarCppName ;
+  @typeExpression mSourceExpression ;
+  @string mSourceExpressionConverter ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   D E C L A R A T I O N    I N S T R U C T I O N                          *
 #                                                                           *
 #   W I T H    A S S I G N M E N T                                          *

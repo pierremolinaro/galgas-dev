@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate assignment instructions                                         *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -19,8 +19,14 @@
 //---------------------------------------------------------------------------*
 
 #include "files/C_TextFileWrite.h"
-
 #include "semantics_semantics.h"
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Assignment
+#endif
 
 //---------------------------------------------------------------------------*
 
@@ -50,7 +56,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 
 bool cPtr_C_assignmentInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
+                      const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName)
       || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
 }
@@ -59,18 +65,18 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark Declaration with assignment
 #endif
 
 //---------------------------------------------------------------------------*
 
 void cPtr_C_declarationInstructionWithAssignment::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const  C_String & /* inLexiqueClassName */,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+                    const  C_String & /* inLexiqueClassName */,
+                    const C_String & /* inTargetFileName */,
+                    sint32 & /* ioPrototypeIndex */,
+                    const bool /* inGenerateDebug */,
+                    const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
   //--- Generate declaration
     mVariableType (HERE)->generateCppClassName (ioCppFile) ;
@@ -96,7 +102,50 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 
 bool cPtr_C_declarationInstructionWithAssignment::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return mTargetVarCppName.isEqualTo (inArgumentCppName)
+      || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark '.=' Instruction
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_dotEqualInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const  C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ".dotAssign_operation (" ;
+    mSourceExpression (HERE)->generateExpression (ioCppFile) ;
+    if (mSourceExpressionConverter.length () > 0) {
+      ioCppFile << "." << mSourceExpressionConverter << " ()" ;
+    }
+    ioCppFile << ") ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_dotEqualInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_dotEqualInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName)
       || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
 }

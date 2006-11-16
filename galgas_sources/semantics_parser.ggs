@@ -2426,6 +2426,55 @@ rule <instruction_beginning_with_identifier>
 end rule ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  . =     I N S T R U C T I O N     idf .= ... ;                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <instruction_beginning_with_identifier>
+  ?@lstring inTargetVarName
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+:
+  $.=$ ;
+#--- Parse source expression
+  @typeExpression sourceExpression ;
+  @AC_galgasType sourceType ;
+  <expression>
+    !?ioComponentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    !?ioVariablesMap
+    ?sourceExpression
+    ?sourceType
+  ;
+#--- Get target entity infos
+  @AC_galgasType targetVarType ;
+  @typeCplusPlusName targetVarCppName ;
+  [!?ioVariablesMap searchForWriteAccess !inTargetVarName ?targetVarType ?targetVarCppName] ;
+#--- Match target and source types
+  @string sourceExpressionConverter ;
+  match targetVarType :: sourceType :
+  when @typeGalgas_string () :: @typeGalgas_string () :
+    sourceExpressionConverter := "" ;
+  when @typeGalgas_string () :: @typeGalgas_lstring () :
+    sourceExpressionConverter := "ggs_string" ;
+  else
+    error here: "for '.=' operator, " . [targetVarType messageGalgasType]
+    . " target object type is not compatible with " . [sourceType messageGalgasType]
+    . " source expression type" -> sourceExpressionConverter ;
+  end match ;
+#--- Generate instruction
+  @typeInstruction instruction := [@C_dotEqualInstruction new
+    !targetVarCppName
+    !sourceExpression
+    !sourceExpressionConverter
+  ] ;
+  ioInstructionList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
 #        Liste d'arguments effectifs en entree : ( ?<entite dest> ? * ...)  *
 #---------------------------------------------------------------------------*
 

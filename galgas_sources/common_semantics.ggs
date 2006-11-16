@@ -875,6 +875,44 @@ class @typeGalgas_bool extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 
+class @typeGalgas_uint extends @AC_galgasType {
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := "uint" ;
+  end method ;
+
+#--- This class accepts "++" operator
+  override method handleIncrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end method ;
+
+#--- This class accepts "--" operator
+  override method handleDecrementOperatorCall 
+    ??@location unused inErrorLocation
+  :
+  end method ;
+
+#--- Class accepts constructor 'max'
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if ([inClassMethodName string] == "max") |
+       ([inClassMethodName string] == "errorCount") |  
+       ([inClassMethodName string] == "warningCount") then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end method ;
+
+#--- Error message
+  message messageGalgasType "a '@uint' type" ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgas_string extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -917,6 +955,21 @@ class @typeGalgas_string extends @AC_galgasType {
     end if ;
   end method ;
 
+#--- string accepts modifier call
+  override
+  method handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setCapacity" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "this modifier is not defined"
+       -> outModifierSignature ;
+    end if ;
+  end method ;
 #--- Error message
   message messageGalgasType "a '@string' type" ;
 }
@@ -995,44 +1048,6 @@ class @typeGalgas_sint64 extends @AC_galgasType {
 
 #--- Error message
   message messageGalgasType "a '@sint64' type" ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeGalgas_uint extends @AC_galgasType {
-#--- Get type name
-  override method getTypeName !@string outTypeName :
-    outTypeName := "uint" ;
-  end method ;
-
-#--- This class accepts "++" operator
-  override method handleIncrementOperatorCall 
-    ??@location unused inErrorLocation
-  :
-  end method ;
-
-#--- This class accepts "--" operator
-  override method handleDecrementOperatorCall 
-    ??@location unused inErrorLocation
-  :
-  end method ;
-
-#--- Class accepts constructor 'max'
-  override method handleConstructorCall
-    ??@lstring inClassMethodName
-    !@typeListeAttributsSemantiques outAccessorTypesList
-  :
-    if ([inClassMethodName string] == "max") |
-       ([inClassMethodName string] == "errorCount") |  
-       ([inClassMethodName string] == "warningCount") then
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    else
-      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
-    end if ;
-  end method ;
-
-#--- Error message
-  message messageGalgasType "a '@uint' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2732,6 +2747,9 @@ routine handleStringReaderCall
   !@AC_galgasType outReturnedType
 :
   if [inMethodName string] == "length" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_uint new] ;
+  elsif [inMethodName string] == "capacity" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_uint new] ;
   elsif [inMethodName string] == "fileExists" then
