@@ -56,10 +56,10 @@ class @typeAutomaticName extends @typeCplusPlusName {
 }
 
 #---------------------------------------------------------------------------*
-# C++ name is 'var_cas_' followed by the value of location
+# C++ name is 'var_cas_' followed by the value of an unique sequence number
 
 class @typeLocationAutomaticName extends @typeCplusPlusName {
-  @location mLocation ;
+  @uint mSequenceNumber ;
 }
 
 #---------------------------------------------------------------------------*
@@ -522,7 +522,6 @@ class @typeVarInExpression extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeJokerInExpression extends @typeExpression {
-  @location mLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -883,9 +882,9 @@ routine verifierCompatibiliteArgEffectifsSignature
     foreach signatureReference (@AC_galgasType attSignatureType *),
             expressionList (@typeExpression attExpressionType) :
       extract attExpressionType :
-      when @typeJokerInExpression (@location kLocation) ->
-        @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !kLocation] ;
-        @typeExpression e := [@typeVarInExpression new ! cppVarName] ;
+      when @typeJokerInExpression () ->
+        @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new ![@uint sequenceNumber]] ;
+        @typeExpression e := [@typeVarInExpression new !cppVarName] ;
         ioExpressionList += !e ;
         @typeInstruction i := [@typeInstructionDeclarationVarLocale new !cppVarName !attSignatureType] ;
         ioInstructionsList += !i ;
@@ -910,8 +909,7 @@ class @typeJoker extends @typeCible {
     ?!@L_assignedVariables unused listeAffectations
     ?!@typeCplusPlusNameList outAllVariablesList
   :
-    @typeCplusPlusName nullName := [@typeNullName new] ;
-    outAllVariablesList += !nullName ;
+    outAllVariablesList += ![@typeNullName new] ;
   end method ;
 }
 

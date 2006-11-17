@@ -483,7 +483,7 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeLocationAutomaticName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "var_cas_" << mLocation.currentLocation () ;
+  inFile << "automatic_var_" << mSequenceNumber.uintValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -548,7 +548,7 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 
 void cPtr_typeLocationAutomaticName::
 generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& var_cas_" << mLocation.currentLocation () ;
+  inFile << "& automatic_var_" << mSequenceNumber.uintValue () ;
 }
 
 //---------------------------------------------------------------------------*
