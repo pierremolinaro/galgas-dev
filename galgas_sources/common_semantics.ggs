@@ -2847,6 +2847,9 @@ routine handleReaderCall
       elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName string] == "hexString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
       else
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -2862,6 +2865,9 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       elsif [inMethodName string] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inMethodName string] == "hexString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
