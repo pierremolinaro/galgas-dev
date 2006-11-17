@@ -74,9 +74,8 @@ createCommandFile (const C_String & inFileName,
       const sint32 newPerms = inFileName.filePosixPermissions () | S_IXUSR | S_IXGRP | S_IXOTH ;
       const sint32 actualNewPerms = inFileName.setFilePosixPermissions (newPerms) ;
       if (actualNewPerms < 0) {
-        co << "** Cannot set permissions 0x"
-           << kHEX_ONCE 
-           << newPerms
+        co << "** Cannot set permissions "
+           << uintInHex (newPerms)
            << " for '" << inFileName << "' file.\n" ;
         ok = false ;
       }
