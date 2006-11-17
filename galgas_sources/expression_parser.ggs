@@ -1494,29 +1494,29 @@ rule <parse_effective_input_parameters_list>
   outNoUsedParameter := true ;
   $($ ;
   @L_nameWithType argumentsList [emptyList] ;
-  @bool foundDeprecatedSyntax := false ;
   repeat
   while
-    select
-    or
-      if not foundDeprecatedSyntax then
-        foundDeprecatedSyntax := true ;
-        warning here: "deprecated syntax:'??' is no longer needed here" ;
-      end if ;
-      $??$ ;
-    end select ;
-    @lstring typeName ;
-    @lstring constantName ;
-    select
+     select
       outNoUsedParameter := false ;
+      @lstring typeName ;
       $type_name$ ? typeName ;
+      @lstring constantName ;
       $identifier$ ? constantName ;
+      argumentsList += !typeName !constantName ;
     or
       $*$ ;
-      typeName := [@lstring new !"" !here] ;
-      constantName := [@lstring new !"" !here] ;
+      argumentsList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
+    or
+      @luint jokerCountWithLocation ;
+      $unsigned_literal_integer$ ? jokerCountWithLocation ;
+      $*$ ;
+      @uint jokerCount := [jokerCountWithLocation uint] ;
+      loop jokerCount + 1 :
+      while jokerCount > 0 do
+        argumentsList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
+        jokerCount -- ;
+      end loop ;
     end select ;
-    argumentsList += !typeName !constantName ;
   end repeat ;
 #--- Ellipsis ?
   @bool ellipsisFound ;

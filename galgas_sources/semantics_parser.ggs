@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS semantics component parser definition                             *
 #                                                                           *
-#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  Copyright (C) 1997, ..., 2006 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -310,12 +310,6 @@ rule <parse_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-label parse
-;
-
-rule <target_entity>
-  !@typeCible typeEntiteDestination
-  ?!@typeVariablesMap ioVariablesMap
 label parse
 ;
 
@@ -2043,106 +2037,6 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <non_abstract_method>
-  ??@lstring inCurrentClassName
-  ??@typeTableMethodes inAncestorClassMethodsMap
-  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
-  ?!@typeTableMethodes tableDesMethodes
-  ??@typeSuperClassesMap tableDesClassesAncetres
-  ??@typeClassInheritedMessagesMap messageMapForHeirs
-  ??@typeSemanticAttributesMap tableAttributs
-  ??@bool inClassIsAbstract
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@typeTableMethodesAimplementer tableMethodesAimplementer
-  ?!@typeTableEnAvant tableEnAvant
-  ??@M_optionComponents inOptionsComponentsMapForUse
-:
-#--- Get reader name
-  $reader__$ ;
-  @lstring methodName ;
-  $identifier$ ? methodName ;
-#--- Create local variable map
-  @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
-  foreach tableAttributs (@lstring kKey @AC_galgasType kType) :
-    @typeCplusPlusName nomCpp := [@typeDirectName new !kKey] ;
-    [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
-  end foreach ;
-#--- Insert the predefined "self" variable
-  @lstring me_Constant := [@lstring new !"self" !here] ;
-  @typeCplusPlusName me_constantCppName := [@typeCppThisName new] ;
-  @AC_galgasType typeDefinition := [@typeGalgasClassType new 
-           !inCurrentClassName
-           !tableDesMethodes
-           !listeTousAttributsSemantiques
-           !tableDesClassesAncetres
-           !messageMapForHeirs
-           !tableAttributs
-           !inClassIsAbstract] ;
-  [!?methodLocalVariablesMap insertUsedConstInArgument !me_Constant !typeDefinition !me_constantCppName] ;
-#--- Insert the predefined "super" variable
-  @lstring super_Constant := [@lstring new !"super" !here] ;
-  @typeCplusPlusName super_constantCppName := [@typeCppInheritedName new] ;
-  typeDefinition := [@typeGalgasClassType new 
-           !inCurrentClassName
-           !inAncestorClassMethodsMap
-           !listeTousAttributsSemantiques
-           !tableDesClassesAncetres
-           !messageMapForHeirs
-           !tableAttributs
-           !inClassIsAbstract] ;
-  [!?methodLocalVariablesMap insertUsedConstInArgument !super_Constant !typeDefinition !super_constantCppName] ;
-#--- Parse formal output argument
-  @L_EXsignature methodSignature [emptyList] ;
-  @L_signature signatureForGrammarComponent [emptyList] ;
-  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments [emptyList] ;
-  $!$ ; # '!' : output formal parameter
-  @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
-  @AC_galgasType type_semantique ;
-  @lstring galgasTypeName ;
-  <formal_argument_type>
-    !?ioComponentSemanticsEntitiesMap
-    ?type_semantique
-    !?tableEnAvant
-    ?galgasTypeName
-  ;
-  methodSignature += !type_semantique !passingMode ;
-  signatureForGrammarComponent += !passingMode !galgasTypeName ;
-  @lstring nomArgument ;
-  $identifier$ ? nomArgument ;
-  @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
-  @bool modeIn := false ;
-  listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
-  [!?methodLocalVariablesMap insertOutArgument !nomArgument !type_semantique !natureNom] ;
-  $:$ ;
-#--- Add current class definition
-  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap := ioComponentSemanticsEntitiesMap ;
-  @AC_semanticsEntity entite := [@typeEntiteType new ! typeDefinition] ;
-  [!?componentSemanticsEntitiesMap insertKey !inCurrentClassName !entite] ;
-#--- Parse reader instruction list
-  @typeInstructionList instructionsList [emptyList] ;
-  @entityPropertyMap propertyMap [emptyMap] ;
-  @stringset constraintPropertyDefinitionSet [emptySet] ;
-  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-  <semantic_instructions_list>
-    !?componentSemanticsEntitiesMap
-    !?listeEntitesAengendrer
-    !inOptionsComponentsMapForUse
-    !?methodLocalVariablesMap
-    !?instructionsList
-    !?propertyMap
-    !?constraintPropertyDefinitionSet
-    !?callInstructionSharedPropertySignatureMap
-  ;
-  [!?tableDesMethodes insertKey !methodName !methodSignature] ;
-  [!?tableMethodesAimplementer insertNotAbstract !methodName !methodSignature !listeTypeEtNomsArguments !instructionsList] ;
-  $end$ ;
-  $reader__$ ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
 rule <overrided_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
@@ -2488,9 +2382,27 @@ rule <input_parameters_list>
   repeat
   while
     $?$ ;
-    @typeCible typeEntiteDestination ;
-    <target_entity> ?typeEntiteDestination !?ioVariablesMap ;
-    listeCibles += !typeEntiteDestination ;
+    select
+      @lstring nomVariableDest ;
+      $identifier$ ? nomVariableDest ;
+      @AC_galgasType typeVarDest ;
+      @typeCplusPlusName nomCppDest ;
+      [!?ioVariablesMap searchForWriteAccess !nomVariableDest ?typeVarDest ?nomCppDest] ;
+      listeCibles += ![@typeEntiteDest new !typeVarDest !nomCppDest !here] ;
+    or
+      $*$ ;
+      listeCibles += ![@typeJoker new] ;
+    or
+      @luint jokerCountWithLocation ;
+      $unsigned_literal_integer$ ? jokerCountWithLocation ;
+      $*$ ;
+      @uint jokerCount := [jokerCountWithLocation uint] ;
+      loop jokerCount + 1 :
+      while jokerCount > 0 do
+        listeCibles += ![@typeJoker new] ;
+        jokerCount -- ;
+      end loop ;
+    end select ;
   end repeat ;
   @bool ellipsis ;
   select
@@ -2525,30 +2437,6 @@ rule <input_parameters_list>
    ![listeAttributsSemantiques length]
    !nullName
   ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <target_entity>
-  !@typeCible typeEntiteDestination
-  ?!@typeVariablesMap ioVariablesMap
-:
-  @lstring nomVariableDest ;
-  $identifier$ ? nomVariableDest ;
-  @AC_galgasType typeVarDest ;
-  @typeCplusPlusName nomCppDest ;
-  [!?ioVariablesMap searchForWriteAccess !nomVariableDest ?typeVarDest ?nomCppDest] ;
-  typeEntiteDestination := [@typeEntiteDest new !typeVarDest !nomCppDest !here] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <target_entity>
-  !@typeCible typeEntiteDestination
-  ?!@typeVariablesMap unused ioVariablesMap
-:
-  $*$ ;
-  typeEntiteDestination := [@typeJoker new] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -2787,10 +2675,19 @@ rule <parse_parameters_list>
     @actualParametersPassingMode parameterPassingMode := [@actualParametersPassingMode parameterIn] ;
     select
       $*$ ;
-      @AC_galgasType typeArgument := [@typeGalgas_jokerInParameterList new] ;
-      listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
-      @typeExpression e := [@typeJokerInExpression new !here] ;
-      outExpressionList += !e ;
+      listeTypesParametresEffectifs += ![@typeGalgas_jokerInParameterList new] !parameterPassingMode ;
+      outExpressionList += ![@typeJokerInExpression new !here] ;
+    or
+      @luint jokerCountWithLocation ;
+      $unsigned_literal_integer$ ? jokerCountWithLocation ;
+      $*$ ;
+      @uint jokerCount := [jokerCountWithLocation uint] ;
+      loop jokerCount + 1 :
+      while jokerCount > 0 do
+        listeTypesParametresEffectifs += ![@typeGalgas_jokerInParameterList new] !parameterPassingMode ;
+        outExpressionList += ![@typeJokerInExpression new !here] ;
+        jokerCount -- ;
+      end loop ;
     or
       @AC_galgasType typeArgument ;
       @typeCplusPlusName nomCppArgument ;
