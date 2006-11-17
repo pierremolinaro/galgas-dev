@@ -836,7 +836,7 @@ rule <import_headers_semantics_and_grammars>
       if not [outImportedSemanticsComponents hasKey ![componentName string]] then
         @M_semanticsEntitiesForUse importedEntities ;
         @M_optionComponents importedOptionsComponentsMap ;
-        [ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?importedOptionsComponentsMap ?importedEntities] ;
+        [ioSemanticsComponentsMap searchKey !componentName ?5* ?importedOptionsComponentsMap ?importedEntities] ;
         foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) :
           if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -971,7 +971,7 @@ label importSemantics
         ;
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
-      [ioSemanticsComponentsMap searchKey !componentName ?* ?* ?* ?* ?* ?* ?importedEntities] ;
+      [ioSemanticsComponentsMap searchKey !componentName ?5* ?* ?importedEntities] ;
       foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) :
         if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
           [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
@@ -2429,7 +2429,7 @@ rule <input_parameters_list>
       [attCible verifierType !attTypeAttribut !?nomAttributSource !?listeAffectationParametresEffectifs !?outAllVariablesList] ;
     end foreach ;
   end if ;
-#--- Append Jojker if needed
+#--- Append Joker if needed
   @typeCplusPlusName nullName := [@typeNullName new] ;
   action appendJokersIfNeeded
    !?outAllVariablesList
@@ -2676,7 +2676,7 @@ rule <parse_parameters_list>
     select
       $*$ ;
       listeTypesParametresEffectifs += ![@typeGalgas_jokerInParameterList new] !parameterPassingMode ;
-      outExpressionList += ![@typeJokerInExpression new !here] ;
+      outExpressionList += ![@typeJokerInExpression new] ;
     or
       @luint jokerCountWithLocation ;
       $unsigned_literal_integer$ ? jokerCountWithLocation ;
@@ -2685,7 +2685,7 @@ rule <parse_parameters_list>
       loop jokerCount + 1 :
       while jokerCount > 0 do
         listeTypesParametresEffectifs += ![@typeGalgas_jokerInParameterList new] !parameterPassingMode ;
-        outExpressionList += ![@typeJokerInExpression new !here] ;
+        outExpressionList += ![@typeJokerInExpression new] ;
         jokerCount -- ;
       end loop ;
     or

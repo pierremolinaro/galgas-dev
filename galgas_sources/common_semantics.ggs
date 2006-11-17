@@ -899,6 +899,7 @@ class @typeGalgas_uint extends @AC_galgasType {
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     if ([inClassMethodName string] == "max") |
+       ([inClassMethodName string] == "sequenceNumber") |  
        ([inClassMethodName string] == "errorCount") |  
        ([inClassMethodName string] == "warningCount") then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
