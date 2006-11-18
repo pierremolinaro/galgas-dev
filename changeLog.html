@@ -9,12 +9,13 @@
   <div style="font-face: Verdana; font-size:small;">
    <p><b>GALGAS ChangeLog</b></p>
    <p>1.5.3</p>
-    <li>New <tt><b>@uint</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#sequencenumber"><tt><b>sequenceNumber</b></tt></a> that returns an unique value;</li>
    <ul>
+    <li>New <tt><b>@uint</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#sequencenumber"><tt><b>sequenceNumber</b></tt></a> that returns an unique value;</li>
+    <li>New command line option: <tt><b>-S</b></tt> or <tt><b>--Wshadow</b></tt>, that warns when a variable declaration shadows a previously declared variable;</li>
    </ul>
    <p>1.5.2</p>
    <ul>
-    <li>New <tt><b>@string</b></tt> modifier: <a href="http://galgas.rts-software.org/doku.php?id=string_type#setcapacity"><tt><b>setcapacity</b></tt></a> that sets the receiver capacity;</li>
+    <li>New <tt><b>@string</b></tt> modifier: <a href="http://galgas.rts-software.org/doku.php?id=string_type#setcapacity"><tt><b>setCapacity</b></tt></a> that sets the receiver capacity;</li>
     <li>New <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#capacity"><tt><b>capacity</b></tt></a> that returns the receiver current capacity;</li>
     <li>New <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#uppercasestring_reader"><tt><b>uppercaseString</b></tt></a> that returns an uppercased representation of the receiver;</li>
     <li>New <tt><b>@uint</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#hexstring"><tt><b>hexString</b></tt></a> that returns hexadecimal representation of the receiver;</li>
@@ -43,11 +44,11 @@
     <li><font color="#FF0000"><b>WARNING: INCOMPATIBILITY ISSUE;</b></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.4.9">1.4.9 release notes</a>];</li>
     <li>New command line option: <tt><b>-W</b></tt> or <tt><b>--Werror</b></tt>, that treats warnings as errors (similar to <tt><b>-Werror</b></tt> gcc command line option);</li>
     <li>Improved list generated code: GALGAS generates smaller code size, using a common super class: <tt><b>AC_galgas_list</b></tt>;</li>
-    <li>new <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#characteratindex"><tt><b>characterAtIndex</b></tt></a> that returns the character at index given by argument value;</li>
-    <li>new <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#length"><tt><b>length</b></tt></a> that returns the number of characters;</li>
-    <li>new <tt><b>@string</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithcurrentdirectory"><tt><b>stringWithCurrentDirectory</b></tt></a> that returns the current directory;</li>
-    <li>new <tt><b>@uint</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#errorcount"><tt><b>errorCount</b></tt></a> that returns the number of errors;</li>
-    <li>new <tt><b>@uint</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#warningcount"><tt><b>warningCount</b></tt></a> that returns the number of warnings;</li>
+    <li>New <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#characteratindex"><tt><b>characterAtIndex</b></tt></a> that returns the character at index given by argument value;</li>
+    <li>New <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#length"><tt><b>length</b></tt></a> that returns the number of characters;</li>
+    <li>New <tt><b>@string</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithcurrentdirectory"><tt><b>stringWithCurrentDirectory</b></tt></a> that returns the current directory;</li>
+    <li>New <tt><b>@uint</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#errorcount"><tt><b>errorCount</b></tt></a> that returns the number of errors;</li>
+    <li>New <tt><b>@uint</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#warningcount"><tt><b>warningCount</b></tt></a> that returns the number of warnings;</li>
     <li>GALGAS generated code now contains checkings for detecting GALGAS version mismatch against <tt><b>libpm</b></tt> library version;</li>
    </ul>
    <p>1.4.8</p>
@@ -97,27 +98,27 @@
    </ul>
    <p>1.4.2</p>
    <ul>
-     <li>added <tt><b>--libpm</b></tt> command line option for defining libpm path on project creation</li>
-     <li>fixed a bug in Cocoa application that prevents vertical text view ruler to be updated on text font change;</li>
-     <li>fixed a bug in <tt><b>loop</b></tt> instruction generation.</li>
+     <li>Added <tt><b>--libpm</b></tt> command line option for defining libpm path on project creation</li>
+     <li>Fixed a bug in Cocoa application that prevents vertical text view ruler to be updated on text font change;</li>
+     <li>Fixed a bug in <tt><b>loop</b></tt> instruction generation.</li>
    </ul>
    <p>1.4.1</p>
    <ul>
-     <li>new 64-bit integer types <tt><b>@uint64</b></tt> and <tt><b>@sint64</b></tt>;</li>
-     <li>new 64-bit integer types with location <tt><b>@luint64</b></tt> and <tt><b>@lsint64</b></tt>;</li>
+     <li>New 64-bit integer types <tt><b>@uint64</b></tt> and <tt><b>@sint64</b></tt>;</li>
+     <li>New 64-bit integer types with location <tt><b>@luint64</b></tt> and <tt><b>@lsint64</b></tt>;</li>
      <li><tt><b>value</b></tt> accessor of types with location is deprecated; use instead <tt><b>bool</b></tt> accessor for <tt><b>@lbool</b></tt> type, ... (see release notes);</li>
-     <li>types with location now accept modifiers;</li>
-     <li>project creation options now create Mac OS X Xcode project;</li>
+     <li>Types with location now accept modifiers;</li>
+     <li>Project creation options now create Mac OS X Xcode project;</li>
      <li>GALGAS and libpm can be now considered as 64-bit clean.</li>
    </ul>
    <p>1.4.0</p>
    <ul>
-     <li>first attempt to provide galgas and libpm code 64-bit clean: now, makefiles build both 32-bit and 64-bit tools;</li>
-     <li>consequently, the <tt><b>makefile_i386linux_on_macosx</b></tt> directory is now named <tt><b>makefile_x86linux_on_macosx</b></tt>;</li>
+     <li>First attempt to provide galgas and libpm code 64-bit clean: now, makefiles build both 32-bit and 64-bit tools;</li>
+     <li>Consequently, the <tt><b>makefile_i386linux_on_macosx</b></tt> directory is now named <tt><b>makefile_x86linux_on_macosx</b></tt>;</li>
      <li>makefiles are now invoked with <tt><b>--warn-undefined-variables</b></tt> command line option (strangely, compilation under MSYS on Windows warns that '^' variable is not defined)</li>
-     <li>ouput effective arguments now support polymorphic assignment;</li>
-     <li>an empty lexical analyzer now raises lexical errors on every character until the end of source file (on previous versions, it runs indefinitly);</li>
-     <li>many limitations on class handling have been relaxed (see Release notes);</li>
+     <li>Ouput effective arguments now support polymorphic assignment;</li>
+     <li>An empty lexical analyzer now raises lexical errors on every character until the end of source file (on previous versions, it runs indefinitly);</li>
+     <li>Many limitations on class handling have been relaxed (see Release notes);</li>
    </ul>
    <p>1.3.1</p>
    <ul>

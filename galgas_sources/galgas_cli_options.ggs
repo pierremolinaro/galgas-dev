@@ -18,6 +18,7 @@
 
 option galgas_cli_options :
   @bool warningsAsError      : 'W', "Werror" -> "Treat warnings as errors" ;
+  @bool warnsShadows         : 'S', "Wshadow" -> "Warns on shadow variables" ;
   @bool doNotGenerateFiles   : 'n', "no-file-generation" -> "Do not generate any file" ;
   @bool outputHTMLgrammarFile: 'H', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
   @bool generate_debug       : 'g', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols " ;
