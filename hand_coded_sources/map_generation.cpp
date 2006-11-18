@@ -108,12 +108,13 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
              "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n" ;
-//--- Declaring insert methods
-  GGS_insertOrSearchMethodList::element_type * currentMethod = mInsertMethodList.firstObject () ;
+
+//--- Declaring remove methods
+  GGS_insertOrSearchMethodList::element_type * currentMethod = mRemoveMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
-    inHfile << "//--- '" << currentMethod->mMethodName << "' Insert Method\n" ;
-    inHfile <<    "  public : void method_"
+    inHfile << "//--- '" << currentMethod->mMethodName << "' Remove Modifier\n" ;
+    inHfile <<    "  public : void modifier_"
             << currentMethod->mMethodName
             << " (C_Lexique & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
@@ -121,13 +122,38 @@ generateHdeclarations (AC_OutputStream & inHfile,
       inHfile << ",\n                                GGS_luint & outIndex" ;
     }
     GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mNonExternAttributesList.firstObject () ;
-    sint32 index = 0 ;
+    sint32 attributeIndex = 0 ;
+    while (currentAttribute != NULL) {
+      macroValidPointer (currentAttribute) ;
+      inHfile << ",\n                                " ;
+      currentAttribute->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+      inHfile << "outParameter" << attributeIndex ;
+      attributeIndex ++ ;
+      currentAttribute = currentAttribute->nextObject () ;
+    }
+    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
+    currentMethod = currentMethod->nextObject () ;
+  }
+//--- Declaring insert methods
+  currentMethod = mInsertMethodList.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+    inHfile << "//--- '" << currentMethod->mMethodName << "' Insert Modifier\n" ;
+    inHfile <<    "  public : void modifier_"
+            << currentMethod->mMethodName
+            << " (C_Lexique & inLexique" 
+               ",\n                                const GGS_lstring & inKey" ;
+    if (currentMethod->mIsGetIndexMethod.boolValue ()) {
+      inHfile << ",\n                                GGS_luint & outIndex" ;
+    }
+    GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mNonExternAttributesList.firstObject () ;
+    sint32 attributeIndex = 0 ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
       inHfile << ",\n                                const " ;
       currentAttribute->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << " inParameter" << index ;
-      index ++ ;
+      inHfile << " inParameter" << attributeIndex ;
+      attributeIndex ++ ;
       currentAttribute = currentAttribute->nextObject () ;
     }
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
@@ -146,50 +172,71 @@ generateHdeclarations (AC_OutputStream & inHfile,
       inHfile <<  ",\n                                GGS_luint & outIndex" ;
     }
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-    sint32 index = 0 ;
+    sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                " ;
       current->mAttributType(HERE)->generateFormalParameter (inHfile, false) ;
-      inHfile << " & outParameter" << index ;
-      index ++ ;
+      inHfile << " & outParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inHfile << " COMMA_LOCATION_ARGS) const ;\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
+
+  if (mRemoveMethodList.firstObject () != NULL) {
+    inHfile << "//--- Internal method for removing an element\n"
+               "  protected : void _removeElement (C_Lexique & inLexique,\n"
+               "                                   const char * inErrorMessage,\n"
+               "                                   const GGS_lstring & inKey,\n" ;
+    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    sint32 attributeIndex = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inHfile << "                                   " ;
+      current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+      inHfile << "outParameter" << attributeIndex << ",\n" ;
+      attributeIndex ++ ;
+      current = current->nextObject () ;
+    }
+    inHfile << "                                   GGS_luint * outIndex\n"
+               "                                   COMMA_LOCATION_ARGS) ;\n" ;
+  }
+
   inHfile << "//--- Internal method for inserting an element\n"
-             "  protected : void insertElement (C_Lexique & inLexique,\n"
-             "                                  const char * inErrorMessage,\n"
-             "                                  const GGS_lstring & inKey,\n" ;
+             "  protected : void _insertElement (C_Lexique & inLexique,\n"
+             "                                   const char * inErrorMessage,\n"
+             "                                   const GGS_lstring & inKey,\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-  sint32 index = 0 ;
+  sint32 attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << "                                  const " ;
+    inHfile << "                                   const " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << "& inParameter" << index << ",\n" ;
-    index ++ ;
+    inHfile << "& inParameter" << attributeIndex << ",\n" ;
+    attributeIndex ++ ;
     current = current->nextObject () ;
   }
-  inHfile << "                                  GGS_luint * outIndex\n"
-             "                                  COMMA_LOCATION_ARGS) ;\n" ;
+  inHfile << "                                   GGS_luint * outIndex\n"
+             "                                   COMMA_LOCATION_ARGS) ;\n" ;
+  
   inHfile << "//--- Internal method for searching for an element\n"
-             "  protected : void searchElement (C_Lexique & inLexique,\n"
-             "                                  const char * inErrorMessage,\n"
-             "                                  const GGS_lstring & inKey,\n" ;
+             "  protected : void _searchElement (C_Lexique & inLexique,\n"
+             "                                   const char * inErrorMessage,\n"
+             "                                   const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
-  index = 0 ;
+  attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << "                                  " ;
+    inHfile << "                                   " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << "& outParameter" << index << ",\n" ;
-    index ++ ;
+    inHfile << "& outParameter" << attributeIndex << ",\n" ;
+    attributeIndex ++ ;
     current = current->nextObject () ;
   }
-  inHfile << "                                  GGS_luint * outIndex\n"
-             "                                  COMMA_LOCATION_ARGS) const ;\n"
+  inHfile << "                                   GGS_luint * outIndex\n"
+             "                                   COMMA_LOCATION_ARGS) const ;\n"
 //--- Generate 'description' reader declaration
              "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
@@ -308,17 +355,17 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- Generate comparison
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
                "operator == (const GGS_" << aNomTable << " & inOperand) const {\n"
                "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
 
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
                "operator != (const GGS_" << aNomTable << " & inOperand) const {\n"
                "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
 
 //--- 'internalInsertForDuplication' method
   inCppFile.writeCppHyphenLineComment () ;
@@ -327,76 +374,130 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  element_type * p = (element_type *) inPtr ;\n"
                "  bool extension = false ; // Unused here\n"
-               "  sint32 index = -1 ; // Unused here\n"
+               "  sint32 attributeIndex = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->_mRoot, extension, index, existingKeyLocation) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->_mRoot, extension, attributeIndex, existingKeyLocation) ;\n"
                "}\n\n" ;
 
-//--- 'insertElement' method
+//--- 'removeElement' method
+  if (mRemoveMethodList.firstObject () != NULL) {
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << aNomTable << "::\n"
+                 "_removeElement (C_Lexique & inLexique,\n"
+                 "                const char * inErrorMessage,\n"
+                 "                const GGS_lstring & inKey,\n" ;
+    current = mNonExternAttributesList.firstObject () ;
+    sint32 attributeIndex = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << "                " ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+      inCppFile << "outParameter" << attributeIndex << ",\n" ;
+      attributeIndex ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << "                GGS_luint * outIndex\n"
+                 "                COMMA_LOCATION_ARGS) {\n"
+                 "  AC_galgas_map_element * removedElement = NULL ;\n"
+                 "  sint32 elementIndex = - 1 ;\n"
+                 "  if (_isBuilt () && inKey._isBuilt ()) {\n"
+                 "    bool unused ;\n"
+                 "    _internalRemove (mSharedMapRoot->_mRoot, inKey, removedElement, unused) ;\n"
+                 "    if (removedElement == NULL) {\n"
+                 "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n" ;
+    current = mNonExternAttributesList.firstObject () ;
+    attributeIndex = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << "      outParameter" << attributeIndex << "._drop_operation () ;\n" ;
+      attributeIndex ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << "    }else{\n"
+                 "      element_type * _p = (element_type *) removedElement ;\n"
+                 "      elementIndex = _p->mIndex ;\n" ;
+    current = mNonExternAttributesList.firstObject () ;
+    attributeIndex = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << "      outParameter" << attributeIndex << " = _p->mInfo." << current->aNomAttribut << " ;\n" ;
+      attributeIndex ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << "    }\n"
+                 "  }\n"
+                 "  if (outIndex != NULL) {\n"
+                 "    * outIndex = GGS_luint (GGS_uint (elementIndex >= 0, (uint32) elementIndex), inKey) ;\n"
+                 "  }\n"
+                 "  macroMyDelete (removedElement, element_type) ;\n"
+                 "}\n\n" ;
+  }
+
+//--- '_insertElement' method
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
-               "insertElement (C_Lexique & inLexique,\n"
-               "               const char * inErrorMessage,\n"
-               "               const GGS_lstring & inKey,\n" ;
+               "_insertElement (C_Lexique & inLexique,\n"
+               "                const char * inErrorMessage,\n"
+               "                const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
-  sint32 index = 0 ;
+  sint32 attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "               const " ;
+    inCppFile << "                const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << " inParameter" << index << ",\n" ;
-    index ++ ;
+    inCppFile << "inParameter" << attributeIndex << ",\n" ;
+    attributeIndex ++ ;
     current = current->nextObject () ;
   }
-  inCppFile << "               GGS_luint * outIndex\n"
-               "               COMMA_LOCATION_ARGS) {\n"
-               "  sint32 index = - 1 ;\n"
+  inCppFile << "                GGS_luint * outIndex\n"
+               "                COMMA_LOCATION_ARGS) {\n"
+               "  sint32 elementIndex = - 1 ;\n"
                "  if (_isBuilt ()\n" ;
   current = mNonExternAttributesList.firstObject () ;
-  index = 0 ;
+  attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "   && inParameter" << index << "._isBuilt ()\n" ;
-    index ++ ;
+    inCppFile << "   && inParameter" << attributeIndex << "._isBuilt ()\n" ;
+    attributeIndex ++ ;
     current = current->nextObject () ;
   }
   inCppFile<<  "   && inKey._isBuilt ()) {\n"
                "    insulateMap () ;\n"
                "    e_" << aNomTable << " info  ;\n" ;
   current = mNonExternAttributesList.firstObject () ;
-  index = 0 ;
+  attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    info." << current->aNomAttribut << " = inParameter" << index << " ;\n" ;
-    index ++ ;
+    inCppFile << "    info." << current->aNomAttribut << " = inParameter" << attributeIndex << " ;\n" ;
+    attributeIndex ++ ;
     current = current->nextObject () ;
   }
   inCppFile << "    bool extension = false ; // Unused here\n"
                "    GGS_location existingKeyLocation ;\n"
-               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, extension, index, existingKeyLocation) ;\n"
-               "    if (index < 0) {\n"
+               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, extension, elementIndex, existingKeyLocation) ;\n"
+               "    if (elementIndex < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
-               "     }\n"
+               "    }\n"
                "  }\n"
                "  if (outIndex != NULL) {\n"
-               "    * outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
+               "    * outIndex = GGS_luint (GGS_uint (elementIndex >= 0, (uint32) elementIndex), inKey) ;\n"
                "  }\n"
                "}\n\n" ;
 
-//--- 'searchElement' method
+//--- '_searchElement' method
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
-               "searchElement (C_Lexique & inLexique,\n"
+               "_searchElement (C_Lexique & inLexique,\n"
                "               const char * inErrorMessage,\n"
                "               const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
-  index = 0 ;
+  attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "               " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, false) ;
-    inCppFile << " & outParameter" << index << ",\n" ;
-    index ++ ;
+    inCppFile << " & outParameter" << attributeIndex << ",\n" ;
+    attributeIndex ++ ;
     current = current->nextObject () ;
   }
   inCppFile << "               GGS_luint * outIndex\n"
@@ -419,11 +520,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "     }\n"
                  "  }else{\n" ;
   current = mNonExternAttributesList.firstObject () ;
-  index = 0 ;
+  attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    outParameter" << index << " = node->mInfo." << current->aNomAttribut << " ;\n" ;
-    index ++ ;
+    inCppFile << "    outParameter" << attributeIndex << " = node->mInfo." << current->aNomAttribut << " ;\n" ;
+    attributeIndex ++ ;
     current = current->nextObject () ;
   }
   inCppFile << "    if (outIndex != NULL) {\n"
@@ -438,37 +539,80 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" 
-              << aNomTable << "::method_" << currentMethod->mMethodName
+              << aNomTable << "::\n"
+              << "method_" << currentMethod->mMethodName
               << " (C_Lexique & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
     }
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-    sint32 index = 0 ;
+    sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
       current->mAttributType(HERE)->generateFormalParameter (inCppFile, false) ;
-      inCppFile << " & outParameter" << index ;
-      index ++ ;
+      inCppFile << " & outParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) const {\n" ;
-    inCppFile << "  searchElement (inLexique,\n"
-                 "                 " ;
+    inCppFile << "  _searchElement (inLexique,\n"
+                 "                  " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ",\n"
-                 "                 inKey,\n" ;
+                 "                  inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "                 outParameter" << i << ",\n" ;
+      inCppFile << "                  outParameter" << i << ",\n" ;
     }
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
-      inCppFile << "                 & outIndex\n" ;
+      inCppFile << "                  & outIndex\n" ;
     }else{
-      inCppFile << "                 NULL\n" ;
+      inCppFile << "                  NULL\n" ;
     }
-    inCppFile << "                 COMMA_THERE) ;\n"
+    inCppFile << "                  COMMA_THERE) ;\n"
+                 "}\n\n" ;
+    currentMethod = currentMethod->nextObject () ;
+  }
+
+//--- Implement remove methods
+  currentMethod = mRemoveMethodList.firstObject () ;
+  while (currentMethod != NULL) {
+    macroValidPointer (currentMethod) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "void GGS_"
+              << aNomTable << "::\n"
+                 "modifier_" << currentMethod->mMethodName
+              << " (C_Lexique & _inLexique"
+                 ",\n                                const GGS_lstring & inKey" ;
+    if (currentMethod->mIsGetIndexMethod.boolValue ()) {
+      inCppFile << ",\n                                GGS_luint & outIndex" ;
+    }
+    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    sint32 attributeIndex = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << ",\n                                " ;
+      current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+      inCppFile << "outParameter" << attributeIndex ;
+      attributeIndex ++ ;
+      current = current->nextObject () ;
+    }
+    inCppFile << " COMMA_LOCATION_ARGS) {\n"
+                 "  _removeElement (_inLexique,\n"
+                 "                  " ;
+    inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
+    inCppFile << ",\n"
+                 "                  inKey,\n" ;
+    for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
+      inCppFile << "                  outParameter" << i << ",\n" ;
+    }
+    if (currentMethod->mIsGetIndexMethod.boolValue ()) {
+      inCppFile << "                  & outIndex\n" ;
+    }else{
+      inCppFile << "                  NULL\n" ;
+    }
+    inCppFile << "                  COMMA_THERE) ;\n"
                  "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
   }
@@ -480,20 +624,20 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_"
               << aNomTable << "::\n"
-                 "method_" << currentMethod->mMethodName
+                 "modifier_" << currentMethod->mMethodName
               << " (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
     }
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-    sint32 index = 0 ;
+    sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                const " ;
       current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "inParameter" << index ;
-      index ++ ;
+      inCppFile << "inParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
@@ -510,7 +654,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       inCppFile.incIndentation (2) ;
     
     }
-    inCppFile << "  insertElement (_inLexique,\n"
+    inCppFile << "  _insertElement (_inLexique,\n"
                  "                 " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << ",\n"
@@ -544,7 +688,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "    macroMyNew (result.mSharedMapRoot, cMapRoot) ;\n"
                "    result.mSharedMapRoot->mNextMap = inMapToOverride.mSharedMapRoot ;\n"
                "    inMapToOverride.mSharedMapRoot->mReferenceCount ++ ;\n"
-               "    result.mSharedMapRoot->mNextIndex = inMapToOverride.mSharedMapRoot->mNextIndex ;\n"
+               "    result.mSharedMapRoot->mSequenceNumber = inMapToOverride.mSharedMapRoot->mSequenceNumber ;\n"
                "  }\n"
                "  return result ;\n"
                "}\n\n" ;
@@ -666,18 +810,18 @@ generateHdeclarations (AC_OutputStream & inHfile,
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "//--- '" << currentMethod->mMethodName << "' search method\n"
-               "public : void method_" 
+               "public : void modifier_" 
             << currentMethod->mMethodName
             << " (C_Lexique & inLexique"
                ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-    sint32 index = 0 ;
+    sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                " ;
       current->mAttributType(HERE)->generateFormalParameter (inHfile, false) ;
-      inHfile << " & outParameter" << index ;
-      index ++ ;
+      inHfile << " & outParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
@@ -687,13 +831,13 @@ generateHdeclarations (AC_OutputStream & inHfile,
                ",\n                                const GGS_lstring & inKey"
                ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
-    index = 0 ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                " ;
       current->mAttributType(HERE)->generateFormalParameter (inHfile, false) ;
-      inHfile << " & outParameter" << index ;
-      index ++ ;
+      inHfile << " & outParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
@@ -705,34 +849,34 @@ generateHdeclarations (AC_OutputStream & inHfile,
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "//---\n"
-               "public : void method_"
+               "public : void modifier_"
             << currentMethod->mMethodName
             << " (C_Lexique & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-    sint32 index = 0 ;
+    sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                const " ;
       current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << " inParameter" << index ;
-      index ++ ;
+      inHfile << " inParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
-    inHfile << "public : void method_"
+    inHfile << "public : void modifier_"
             << currentMethod->mMethodName
             << "GetIndex (C_Lexique & inLexique" 
                ",\n                                const GGS_lstring & inKey"
                ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
-    index = 0 ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                const " ;
       current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << " inParameter" << index ;
-      index ++ ;
+      inHfile << " inParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
@@ -794,18 +938,18 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomTable << "::method_" 
+    inCppFile << "void GGS_" << aNomTable << "::modifier_" 
               << currentMethod->mMethodName
               << " (C_Lexique & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-    sint32 index = 0 ;
+    sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
       current->mAttributType(HERE)->generateFormalParameter (inCppFile, false) ;
-      inCppFile << " & outParameter" << index ;
-      index ++ ;
+      inCppFile << " & outParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
@@ -816,20 +960,20 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << " COMMA_THERE) ;\n"
                  "  if (info == NULL) {\n" ;
     current = mNonExternAttributesList.firstObject () ;
-    index = 0 ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << index << "._drop_operation () ;\n" ;
-      index ++ ;
+      inCppFile << "    outParameter" << attributeIndex << "._drop_operation () ;\n" ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << "  }else{\n" ;
     current = mNonExternAttributesList.firstObject () ;
-    index = 0 ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << index << " = info->mInfo." << current->aNomAttribut << " ;\n" ;
-      index ++ ;
+      inCppFile << "    outParameter" << attributeIndex << " = info->mInfo." << current->aNomAttribut << " ;\n" ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << "  }\n"
@@ -841,13 +985,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  ",\n                                const GGS_lstring & inKey"
                  ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
-    index = 0 ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
       current->mAttributType(HERE)->generateFormalParameter (inCppFile, false) ;
-      inCppFile << " & outParameter" << index ;
-      index ++ ;
+      inCppFile << " & outParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
@@ -857,21 +1001,21 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << " COMMA_THERE) ;\n"
                  "  if (info == NULL) {\n" ;
     current = mNonExternAttributesList.firstObject () ;
-    index = 0 ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << index << "._drop_operation () ;\n" ;
-      index ++ ;
+      inCppFile << "    outParameter" << attributeIndex << "._drop_operation () ;\n" ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << "    outIndex._drop_operation () ;\n"
                  "  }else{\n" ;
     current = mNonExternAttributesList.firstObject () ;
-    index = 0 ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << index << " = info->mInfo." << current->aNomAttribut << " ;\n" ;
-      index ++ ;
+      inCppFile << "    outParameter" << attributeIndex << " = info->mInfo." << current->aNomAttribut << " ;\n" ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << "    outIndex = GGS_luint (GGS_uint (true, (uint32) info->mEntryIndex), inKey) ;\n"
@@ -885,18 +1029,18 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomTable << "::method_"
+    inCppFile << "void GGS_" << aNomTable << "::modifier_"
               << currentMethod->mMethodName
               << " (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
-    sint32 index = 0 ;
+    sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                const " ;
       current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << " inParameter" << index ;
-      index ++ ;
+      inCppFile << " inParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
@@ -914,19 +1058,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << " COMMA_THERE) ;\n"
               << "}\n\n" ;
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomTable << "::method_"
+    inCppFile << "void GGS_" << aNomTable << "::modifier_"
               << currentMethod->mMethodName
               << "GetIndex (C_Lexique & _inLexique"
                  ",\n                                const GGS_lstring & inKey"
                  ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
-    index = 0 ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                const " ;
       current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << " inParameter" << index ;
-      index ++ ;
+      inCppFile << " inParameter" << attributeIndex ;
+      attributeIndex ++ ;
       current = current->nextObject () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
@@ -939,10 +1083,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       numeroVariable ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "  const sint32 index = " << currentMethod->mMethodName << " (_inLexique, info, inKey, inKey, " ;
+    inCppFile << "  const sint32 attributeIndex = " << currentMethod->mMethodName << " (_inLexique, info, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << " COMMA_THERE) ;\n"
-              << "  outIndex = GGS_luint (GGS_uint (index >= 0, (uint32) index), inKey) ;\n"
+              << "  outIndex = GGS_luint (GGS_uint (attributeIndex >= 0, (uint32) attributeIndex), inKey) ;\n"
               << "}\n\n" ;
     currentMethod = currentMethod->nextObject () ;
   }

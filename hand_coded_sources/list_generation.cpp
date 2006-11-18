@@ -182,7 +182,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Declare method 'popLast'
              "//--- Method 'popLast'\n"
-             "  public : void method_popLast (C_Lexique & _inLexique" ;
+             "  public : void modifier_popLast (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -198,7 +198,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 //--- Declare method 'popFirst'
              "//--- Method 'popFirst'\n"
-             "  public : void method_popFirst (C_Lexique & _inLexique" ;
+             "  public : void modifier_popFirst (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -235,7 +235,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : GGS_" << aNomListe << " operator + (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Prepend a new value
-             "  public : void method_prependValue (C_Lexique & _inLexique" ;
+             "  public : void modifier_prependValue (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -564,7 +564,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Generate 'prepend' method
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_prependValue (C_Lexique & /* inLexique */" ;
+               "modifier_prependValue (C_Lexique & /* inLexique */" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -774,7 +774,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'popFirst'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_popFirst (C_Lexique & _inLexique" ;
+               "modifier_popFirst (C_Lexique & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -820,7 +820,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'popLast'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_popLast (C_Lexique & _inLexique" ;
+               "modifier_popLast (C_Lexique & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
