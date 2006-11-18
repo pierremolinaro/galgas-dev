@@ -1209,15 +1209,10 @@ class @C_mapToImplement extends @typeEntityToGenerate {
 
 class @C_classToImplement extends @typeEntityToGenerate {
 #--- Class Name
-  @lstring mClassName ;
-#--- Table des classes ancetre de la classe courante
-  @typeSuperClassesMap mAncestorClassesMap ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeDefClasseAbstraiteAimplementer extends @typeEntityToGenerate {
   @lstring aNomClasse ;
+
+#--- Is Abstract ?
+  @bool mIsAbstract ;
 
 #--- Liste de tous les attributs not externes, y compris ceux definis dans une classe mere
   @typeListeAttributsSemantiques aListeTousAttributsNonExternes ;  
@@ -1239,35 +1234,6 @@ class @typeDefClasseAbstraiteAimplementer extends @typeEntityToGenerate {
 
 #--- Table des messages
   @typeClassMessagesMap mMessagesMap ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeDefClasseNonAbstraiteAimplementer extends @typeEntityToGenerate {
-  @lstring aNomClasse ;
-
-#--- Liste de tous les attributs not externes, y compris ceux definis dans une classe mere
-  @typeListeAttributsSemantiques aListeTousAttributsNonExternes ;  
-
-#--- Table de toutes les methodes, y compris celles heritees
-  @typeTableMethodes aTableToutesMethodes ;
-
-#--- Table des methodes de la classe a implementer
-  @typeTableMethodesAimplementer mMethodsMap ;
-
-#--- Liste des attributs semantiques not externes definis dans cette classe
-  @typeListeAttributsSemantiques aListeAttributsCourants ;
-
-#--- Liste des attributs externes definis dans cette classe
-  @L_nameWithType aListeExternesCourants ;
-
-#--- Table des classes ancetre de la classe courante
-  @typeSuperClassesMap mAncestorClassesMap ;  
-
-#--- Table des messages concrets de la classe courante
-  @typeClassMessagesMap mMessagesMap ;
-
-#--- Method map 
 }
 
 #---------------------------------------------------------------------------*

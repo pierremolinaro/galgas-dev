@@ -1888,8 +1888,6 @@
 		CFD214C40913BE2E0011F11E /* include_typeCplusPlusName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCplusPlusName.h; sourceTree = "<group>"; };
 		CFD214C50913BE2E0011F11E /* include_typeCppInheritedName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCppInheritedName.h; sourceTree = "<group>"; };
 		CFD214C60913BE2E0011F11E /* include_typeCppThisName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCppThisName.h; sourceTree = "<group>"; };
-		CFD214C70913BE2E0011F11E /* include_typeDefClasseAbstraiteAimplementer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDefClasseAbstraiteAimplementer.h; sourceTree = "<group>"; };
-		CFD214C80913BE2E0011F11E /* include_typeDefClasseNonAbstraiteAimplementer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDefClasseNonAbstraiteAimplementer.h; sourceTree = "<group>"; };
 		CFD214C90913BE2E0011F11E /* include_typeDefEntiteUtilisable.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDefEntiteUtilisable.h; sourceTree = "<group>"; };
 		CFD214CA0913BE2E0011F11E /* include_typeDefinitionTableAimplementer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDefinitionTableAimplementer.h; sourceTree = "<group>"; };
 		CFD214CB0913BE2E0011F11E /* include_typeDirectName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDirectName.h; sourceTree = "<group>"; };
@@ -2480,8 +2478,6 @@
 				CFD214C40913BE2E0011F11E /* include_typeCplusPlusName.h */,
 				CFD214C50913BE2E0011F11E /* include_typeCppInheritedName.h */,
 				CFD214C60913BE2E0011F11E /* include_typeCppThisName.h */,
-				CFD214C70913BE2E0011F11E /* include_typeDefClasseAbstraiteAimplementer.h */,
-				CFD214C80913BE2E0011F11E /* include_typeDefClasseNonAbstraiteAimplementer.h */,
 				CFD214C90913BE2E0011F11E /* include_typeDefEntiteUtilisable.h */,
 				CFD214CA0913BE2E0011F11E /* include_typeDefinitionTableAimplementer.h */,
 				CFD214CB0913BE2E0011F11E /* include_typeDirectName.h */,
