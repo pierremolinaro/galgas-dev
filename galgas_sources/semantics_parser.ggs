@@ -2991,7 +2991,7 @@ rule <semantic_instruction>
       !?ioInstructionList
     ;
   #--- Generate instruction
-    instruction := [@typeReaderCallInstruction new !cppVariableName !methodName !expressionsList] ;
+    instruction := [@typeMethodCallInstruction new !cppVariableName !methodName !expressionsList] ;
   or
     $!?$ ;
     @lstring modifiedObjectName ;
@@ -4175,6 +4175,7 @@ rule <semantics_declaration>
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @insertOrSearchMethodList insertMethodList [emptyList] ;
     @insertOrSearchMethodList searchMethodList [emptyList] ;
+    @insertOrSearchMethodList removeMethodList [emptyList] ;
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
     @formalArgumentPassingMode inPassingMode [argumentIn] ;
@@ -4184,6 +4185,33 @@ rule <semantics_declaration>
     @mapMethodMap mapModifierMethodMap [emptyMap] ;
     @mapMethodMap mapReaderMethodMap [emptyMap] ;
     repeat
+    while
+      $remove$ ;
+      @lstring methodName ;
+      @lstring getIndexMethodName ;
+      @lstring errorMessage ;
+      <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
+      action check_KL_escapeCharacters !errorMessage ;
+      $;$ ;
+    #--- Insert method
+      @L_EXsignature methodSignature [emptyList] ;
+      methodSignature += !lstringType !inPassingMode ;
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
+        methodSignature += !kAttributType !outPassingMode ;      
+      end foreach ;
+      [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
+      removeMethodList += !methodName ![errorMessage string] !false !"" ;
+   #-- Insert And Get Index Method
+      if [getIndexMethodName string] != "" then
+        @L_EXsignature getIndexMethodSignature [emptyList] ;
+        getIndexMethodSignature += !lstringType !inPassingMode ;
+        getIndexMethodSignature += !luintType !outPassingMode ;
+        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
+          getIndexMethodSignature += !kAttributType !outPassingMode ;      
+        end foreach ;
+        [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
+        removeMethodList += !getIndexMethodName ![errorMessage string] !true !"" ;
+      end if ;
     while
       $insert$ ;
       @lstring methodName ;
@@ -4260,11 +4288,14 @@ rule <semantics_declaration>
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !mapTypeName !entite] ;
   #--- Insertion dans la map des classes definies dans le fichier source courant
-    @typeEntityToGenerate def := [@C_mapToImplement new !mapTypeName
-                                                        !listeTousAttributsSemantiques
-                                                        !listeTypeeAttributsExternesCourants
-                                                        !insertMethodList
-                                                        !searchMethodList] ;
+    @typeEntityToGenerate def := [@C_mapToImplement new
+      !mapTypeName
+      !listeTousAttributsSemantiques
+      !listeTypeeAttributsExternesCourants
+      !insertMethodList
+      !searchMethodList
+      !removeMethodList
+    ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
   end select ;
@@ -4441,6 +4472,29 @@ label importSemantics
     @mapMethodMap mapModifierMethodMap [emptyMap] ;
     @mapMethodMap mapReaderMethodMap [emptyMap] ;
     repeat
+    while
+      $remove$ ;
+      @lstring methodName ;
+      @lstring getIndexMethodName ;
+      <map_method> ?methodName ?getIndexMethodName ?* ;
+      $;$ ;
+    #--- Enter insert method in modifier map
+      @L_EXsignature methodSignature [emptyList] ;
+      methodSignature += !lstringType !inPassingMode ;
+      foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
+        methodSignature += !kAttributType !outPassingMode ;      
+      end foreach ;
+      [!?mapModifierMethodMap insertKey !methodName !methodSignature] ;
+    #--- Enter 'GetIndex' insert method in modifier map (if any)
+      if [getIndexMethodName string] != "" then
+        @L_EXsignature getIndexMethodSignature [emptyList] ;
+        getIndexMethodSignature += !lstringType !inPassingMode ;
+        getIndexMethodSignature += !luintType !outPassingMode ;
+        foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType ...) :
+          getIndexMethodSignature += !kAttributType !outPassingMode ;      
+        end foreach ;
+        [!?mapModifierMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
+      end if ;
     while
       $insert$ ;
       @lstring methodName ;

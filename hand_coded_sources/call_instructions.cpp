@@ -23,7 +23,7 @@
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeReaderCallInstruction::
+void cPtr_typeMethodCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
@@ -63,14 +63,14 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeReaderCallInstruction::
+bool cPtr_typeMethodCallInstruction::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeReaderCallInstruction::
+bool cPtr_typeMethodCallInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool import = aNomCppVariable.isEqualTo (inArgumentCppName) ;
@@ -102,7 +102,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
   if (inGenerateSemanticInstructions) {
     aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".method_" << aNomMethodeSimple << " (_inLexique"  ;
+    ioCppFile << ".modifier_" << aNomMethodeSimple << " (_inLexique"  ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;

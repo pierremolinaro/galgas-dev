@@ -309,7 +309,7 @@ class @typeMessageInstruction extends @typeInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeReaderCallInstruction extends @typeInstruction {
+class @typeMethodCallInstruction extends @typeInstruction {
   @typeCplusPlusName aNomCppVariable ;
   @lstring aNomMethodeSimple ;
   @typeExpressionList mExpressionsList ;
@@ -1203,6 +1203,7 @@ class @C_mapToImplement extends @typeEntityToGenerate {
   @L_nameWithType mExternAttributesList ;
   @insertOrSearchMethodList mInsertMethodList ;
   @insertOrSearchMethodList mSearchMethodList ;
+  @insertOrSearchMethodList mRemoveMethodList ;
 }
 
 #---------------------------------------------------------------------------*

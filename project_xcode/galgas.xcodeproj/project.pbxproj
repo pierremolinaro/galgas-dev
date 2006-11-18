@@ -293,6 +293,14 @@
 		CF69B28F0A31EFF0002AE337 /* C_ErrorOut.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69B2810A31EFF0002AE337 /* C_ErrorOut.h */; };
 		CF69B2900A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF69B2910A31EFF0002AE337 /* C_ErrorOut.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69B2810A31EFF0002AE337 /* C_ErrorOut.h */; };
+		CF69EB4D0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */; };
+		CF69EB4E0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */; };
+		CF69EB4F0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */; };
+		CF69EB500B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */; };
+		CF69EB510B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */; };
+		CF69EB520B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */; };
+		CF69EB530B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */; };
+		CF69EB540B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */; };
 		CF6DF12609E3F23700506859 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF6DF12709E3F23700506859 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF6DF12809E3F23700506859 /* galgas_LL1_prgm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380D057A53D600854C83 /* galgas_LL1_prgm.cpp */; };
@@ -1673,6 +1681,7 @@
 		CF6702F805C073220065267C /* cocoaGalgas.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = cocoaGalgas.mm; sourceTree = "<group>"; };
 		CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_ErrorOut.cpp; sourceTree = "<group>"; };
 		CF69B2810A31EFF0002AE337 /* C_ErrorOut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_ErrorOut.h; sourceTree = "<group>"; };
+		CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMethodCallInstruction.h; sourceTree = "<group>"; };
 		CF6DF18F09E3F23700506859 /* galgasPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasPPC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6DF20509E3F30400506859 /* galgasDebugPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebugPPC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6DF25509E3F3A700506859 /* cocoaGalgasPPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgasPPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1967,7 +1976,6 @@
 		CFD215180913BE2E0011F11E /* include_typeParserInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeParserInstruction.h; sourceTree = "<group>"; };
 		CFD215190913BE2E0011F11E /* include_typeProductionAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeProductionAengendrer.h; sourceTree = "<group>"; };
 		CFD2151A0913BE2E0011F11E /* include_typeReaderCallInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeReaderCallInExpression.h; sourceTree = "<group>"; };
-		CFD2151B0913BE2E0011F11E /* include_typeReaderCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeReaderCallInstruction.h; sourceTree = "<group>"; };
 		CFD2151C0913BE2E0011F11E /* include_typeRoutineAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineAengendrer.h; sourceTree = "<group>"; };
 		CFD2151D0913BE2E0011F11E /* include_typeRoutineCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineCallInstruction.h; sourceTree = "<group>"; };
 		CFD2151E0913BE2E0011F11E /* include_typeSimpleExtractInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeSimpleExtractInstruction.h; sourceTree = "<group>"; };
@@ -2357,6 +2365,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */,
 				CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */,
 				CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */,
 				CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */,
@@ -2557,7 +2566,6 @@
 				CFD215180913BE2E0011F11E /* include_typeParserInstruction.h */,
 				CFD215190913BE2E0011F11E /* include_typeProductionAengendrer.h */,
 				CFD2151A0913BE2E0011F11E /* include_typeReaderCallInExpression.h */,
-				CFD2151B0913BE2E0011F11E /* include_typeReaderCallInstruction.h */,
 				CFD2151C0913BE2E0011F11E /* include_typeRoutineAengendrer.h */,
 				CFD2151D0913BE2E0011F11E /* include_typeRoutineCallInstruction.h */,
 				CFD2151E0913BE2E0011F11E /* include_typeSimpleExtractInstruction.h */,
@@ -3150,6 +3158,7 @@
 				CFAFD8930AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
 				CFAFD8940AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF9186090B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
+				CF69EB4D0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3225,6 +3234,7 @@
 				CFAFD89F0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
 				CFAFD8A00AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860F0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
+				CF69EB530B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3300,6 +3310,7 @@
 				CFAFD8A10AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
 				CFAFD8A20AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF9186100B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
+				CF69EB540B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3389,6 +3400,7 @@
 				CFAFD8950AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
 				CFAFD8960AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860A0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
+				CF69EB4E0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3464,6 +3476,7 @@
 				CFAFD8970AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
 				CFAFD8980AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860B0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
+				CF69EB4F0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3539,6 +3552,7 @@
 				CFAFD8990AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
 				CFAFD89A0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860C0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
+				CF69EB500B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3614,6 +3628,7 @@
 				CFAFD89B0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
 				CFAFD89C0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860D0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
+				CF69EB510B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3689,6 +3704,7 @@
 				CFAFD89D0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
 				CFAFD89E0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860E0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
+				CF69EB520B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
