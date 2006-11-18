@@ -3868,7 +3868,7 @@ rule <semantic_instruction>
           !?ioVariablesMap
         ;
       #--- Insert iterated variable as local constant
-        [!?ioVariablesMap insertUsedConstInArgument !enumeratedVariableName !enumeratedVariableType !enumeratedVariableCPPName] ;
+        [!?ioVariablesMap insertUsedConstInArgumentNoShadow !enumeratedVariableName !enumeratedVariableType !enumeratedVariableCPPName] ;
       #--- Check this variable can be enumerated
         @typeListeAttributsSemantiques formalEnumerationList ;
         @localConstantBuildStyleEnum localConstantBuildStyleEnum ;

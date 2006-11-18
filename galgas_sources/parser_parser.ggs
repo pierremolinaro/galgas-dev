@@ -779,7 +779,7 @@ rule <rule_declaration_or_implementation>
   ?@L_EXsignature listeDeTypes
   ??@lstring inRuleName
   ??@lstring inReturnedEntity
-  ?@typeListeTypesEtNomsArgMethode unused listeTypeEtNomsArguments
+  ?@typeListeTypesEtNomsArgMethode unused inListeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMapForGrammar
@@ -871,10 +871,9 @@ label importSyntax
     select
       $parse$ ;
       @L_signature signature [emptyList] ;
-      @lstring altName [new !"parse" !here] ;
       @lstring noReturnedEntity := [@lstring new !"" !here] ;
       [!?nonterminalSymbolParametersMap insertKey
-        !altName
+        ![@lstring new !"parse" !here] # Label 'parse'
         !signature
         !noReturnedEntity
       ] ;
@@ -941,16 +940,20 @@ rule <rule_declaration_or_implementation>
     $literal_string$ ? tagName ;
     productionTagName := [tagName string] ;
   end select ;
-  @location errorLocation := here ;
+  @location firstBranchErrorLocation := here ;
   $:$ ;
 #--- Check rule header
-  @L_EXsignature signatureFournieParPrototype ;
+  @L_EXsignature signaturePremiereBrancheFournieParPrototype ;
   @lstring formalReturnedEntity ;
-  [nonterminalSymbolAltMap searchKey !altName ?signatureFournieParPrototype ?formalReturnedEntity] ;
+  [nonterminalSymbolAltMap searchKey
+    !altName
+    ?signaturePremiereBrancheFournieParPrototype
+    ?formalReturnedEntity
+  ] ;
   verifierCompatibiliteSignatures
-    !signatureFournieParPrototype
+    !signaturePremiereBrancheFournieParPrototype
     !listeDeTypesFormels
-    !errorLocation
+    !firstBranchErrorLocation
   ;
   if ([formalReturnedEntity string] == "") & ([inEffectiveReturnedEntity string] != "") then
     error inEffectiveReturnedEntity: "the non terminal declaration does not name any returned entity" ;
@@ -1036,7 +1039,6 @@ rule <rule_declaration_or_implementation>
       ?signatureForGrammarComponent # unused
     ;
     @lstring returnedEntity ;
-    @entityPropertyMap allPropertiesMap [emptyMap] ;
     select
       returnedEntity := [@lstring new !"" !here] ;
     or
@@ -1054,8 +1056,8 @@ rule <rule_declaration_or_implementation>
       !listeDeTypesFormels
       !errorLocation
     ;
-    @typeInstructionList listeInstructions [emptyList] ;
-    @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
+    @typeInstructionList branchInstructionList [emptyList] ;
+    @L_ruleSyntaxSignature branchSyntaxSignature [emptyList] ;
     <syntax_instructions_list>
       !?ioNonTerminalSymbolMapForSyntax
       !false
@@ -1063,19 +1065,19 @@ rule <rule_declaration_or_implementation>
       !?listeEntitesAengendrer
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
-      !?listeInstructions
+      !?branchInstructionList
       !?tableTerminaux
-      !?syntaxSignature
+      !?branchSyntaxSignature
       !inAllMetamodelClassMap
     ;
     [!?altProductionsMap insertKey
       !altName
       !listeTypeEtNomsArguments
-      !listeInstructions
-      !syntaxSignature
+      !branchInstructionList
+      !branchSyntaxSignature
       !here
       ![returnedEntity string]
-      !allPropertiesMap
+      ![@entityPropertyMap emptyMap]
     ] ;
   end repeat ;
   $end$ ;
@@ -1377,8 +1379,8 @@ rule <syntax_instruction>
   @L_branchList_ForGrammarComponent selectList [emptyList] ;
   block ioVariablesMap.testBloc () :
     block ioVariablesMap.testPart () :
-      @typeInstructionList listeInstructionsBrancheChoix [emptyList] ;
-      @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
+      @typeInstructionList firstBranchInstructionList [emptyList] ;
+      @L_ruleSyntaxSignature firstBranchSyntaxSignature [emptyList] ;
       <syntax_instructions_list_no_verif>
         !?ioNonTerminalSymbolMapForSyntax
         !inCheckNonTerminalsAreDeclaredWithParseLabel
@@ -1386,13 +1388,13 @@ rule <syntax_instruction>
         !?listeEntitesAengendrer
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
-        !?listeInstructionsBrancheChoix
+        !?firstBranchInstructionList
         !?tableTerminaux
-        !?syntaxSignature
+        !?firstBranchSyntaxSignature
         !inAllMetamodelClassMap
       ;
-      listeBranchesChoix += !listeInstructionsBrancheChoix ;
-      selectList += !syntaxSignature ;
+      listeBranchesChoix += !firstBranchInstructionList ;
+      selectList += !firstBranchSyntaxSignature ;
     end block (!here) ;
     $or$ ;
     repeat
@@ -1478,7 +1480,6 @@ rule <syntax_instruction>
     @typeInstructionList listeInstructionsPremiereBranche [emptyList] ;
     @L_ruleSyntaxSignature repeatBranchInstructionsList [emptyList] ;
     block ioVariablesMap.repeatPart () :
-      @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
       <syntax_instructions_list_no_verif>
         !?ioNonTerminalSymbolMapForSyntax
         !inCheckNonTerminalsAreDeclaredWithParseLabel

@@ -266,6 +266,13 @@ template <typename INFO> class cGalgasVariablesMap {
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
+  public : sint32 insertUsedConstInArgumentNoShadow (C_Lexique & inLexique,
+                                           const INFO & info,
+                                           const GGS_lstring & clef,
+                                         const GGS_location & inLocation,
+                                           const char * messageErreurInsertion
+                                           COMMA_LOCATION_ARGS) ;
+
   public : sint32 insertUnusedConstInArgument (C_Lexique & inLexique,
                                              const INFO & info,
                                              const GGS_lstring & clef,
@@ -344,7 +351,8 @@ template <typename INFO> class cGalgasVariablesMap {
                          const bool inUsed,
                          const GGS_lstring & clef,
                          const GGS_location & inLocation,
-                         const char * messageErreurInsertion
+                         const char * messageErreurInsertion,
+                         const bool inSearchForShadow
                          COMMA_LOCATION_ARGS) ;
 
   private : void internalInsert (bool & insertionOk ,
