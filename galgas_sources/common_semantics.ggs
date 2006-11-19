@@ -547,14 +547,25 @@ class @metamodelMultipleReferenceProperty extends @metamodelProperty {
 
 class @metamodelMapProperty extends @metamodelProperty {
   @lstring mMapTypeName ;
+  @lstring mMapElementName ;
 #--- Error message
   message messageProperty "a map property" ;
 }
 
 #---------------------------------------------------------------------------*
 
+class @mapIndexProperty extends @metamodelProperty {
+  @lstring mMapTypeName ;
+  @lstring mMapName ;
+#--- Error message
+  message messageProperty "a map index property" ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @metamodelSharedMapProperty extends @metamodelProperty {
   @lstring mMapTypeName ;
+  @lstring mMapElementName ;
 #--- Error message
   message messageProperty "a shared map property" ;
 }

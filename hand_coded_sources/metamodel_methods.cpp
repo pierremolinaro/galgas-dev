@@ -86,7 +86,7 @@ generateAttributeInMetamodel (AC_OutputStream & /* inHFile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelAttributeProperty::
-generateAttributeInMetamodel (AC_OutputStream & inHFile ,
+generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
   inHFile << "  public : GGS_" << mAttributeTypeName
           << " " << inPropertyName << " ;\n" ;
@@ -95,7 +95,7 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile ,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelSingleReferenceProperty::
-generateAttributeInMetamodel (AC_OutputStream & inHFile ,
+generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
   inHFile << "  public : GGM_" << mReferenceEntityName
           << " * " << inPropertyName << " ;\n" ;
@@ -104,7 +104,7 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile ,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelMultipleReferenceProperty::
-generateAttributeInMetamodel (AC_OutputStream & inHFile ,
+generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
   inHFile << "  public : GGM__listOf_" << mReferenceEntityName
           << " " << inPropertyName << " ;\n" ;
@@ -444,8 +444,17 @@ generateAttributeInConstraint (AC_OutputStream & /* inHFile */,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_mapIndexProperty::
+generateAttributeInConstraint (AC_OutputStream & inHFile,
+                               const C_String & /* inConstraintComponentName */,
+                               const C_String & inPropertyName) const {
+  inHFile << "  public : C_GGS_MapIndex " << inPropertyName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_metamodelAttributeProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
+generateAttributeInConstraint (AC_OutputStream & inHFile,
                                const C_String & /* inConstraintComponentName */,
                                const C_String & inPropertyName) const {
   inHFile << "  public : GGS_" << mAttributeTypeName
@@ -455,7 +464,7 @@ generateAttributeInConstraint (AC_OutputStream & inHFile ,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelSingleReferenceProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
+generateAttributeInConstraint (AC_OutputStream & inHFile,
                                const C_String & inConstraintComponentName,
                                const C_String & inPropertyName) const {
   inHFile << "  public : GGM__" << inConstraintComponentName << "_ConstraintOn_" << mReferenceEntityName
@@ -465,7 +474,7 @@ generateAttributeInConstraint (AC_OutputStream & inHFile ,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelMultipleReferenceProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
+generateAttributeInConstraint (AC_OutputStream & inHFile,
                                const C_String & /* inConstraintComponentName */,
                                const C_String & inPropertyName) const {
   inHFile << "  public : GGM__listOfConstraint_" << mReferenceEntityName
@@ -475,7 +484,7 @@ generateAttributeInConstraint (AC_OutputStream & inHFile ,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelMapProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
+generateAttributeInConstraint (AC_OutputStream & inHFile,
                                const C_String & /* inConstraintComponentName */,
                                const C_String & inPropertyName) const {
   inHFile << "  public : GGM_" << mMapTypeName
@@ -485,7 +494,7 @@ generateAttributeInConstraint (AC_OutputStream & inHFile ,
 //---------------------------------------------------------------------------*
 
 void cPtr_metamodelSharedMapProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile ,
+generateAttributeInConstraint (AC_OutputStream & inHFile,
                                const C_String & /* inConstraintComponentName */,
                                const C_String & inPropertyName) const {
   inHFile << "  public : GGM_" << mMapTypeName
