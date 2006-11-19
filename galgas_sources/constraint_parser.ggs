@@ -61,6 +61,7 @@ rule <constraint_class_override_declarations>
   ?@lstring inRootClass
   ?@entityToImplementMap inOriginalMetamodelEntityMap 
   !@entityToImplementMap outMetamodelEntityMap
+  !@stringset outOverriddenClassSet
 label parse
 ;
 
@@ -202,7 +203,7 @@ routine checkCallInstruction
       @metamodelPropertyList formalParameterTypeList [emptyList] ;
       foreach allContraintsPropertyMap (* @metamodelProperty property) :
         extract property :
-        when @metamodelSharedMapProperty (@lstring kMapTypeName) ->
+        when @metamodelSharedMapProperty (@lstring kMapTypeName *) ->
           formalParameterTypeList += !property ;
           #formalParameterTypeList += ![@metamodelMapProperty new !kMapTypeName] ;
         else
@@ -228,14 +229,14 @@ routine checkCallInstruction
         foreach formalParameterTypeList (@metamodelProperty kFormalProperty), effectiveArgumentTypeList (@metamodelProperty kEffectiveProperty) :
           argumentIndex ++ ;
           match kFormalProperty :: kEffectiveProperty :
-          when @metamodelSharedMapProperty (@lstring kFormalTypeName) :: @metamodelMapProperty (@lstring kEffectiveTypeName) :
+          when @metamodelSharedMapProperty (@lstring kFormalTypeName *) :: @metamodelMapProperty (@lstring kEffectiveTypeName *) :
             if [kFormalTypeName string] != [kEffectiveTypeName string] then
               error endOfCallInstruction: "for argument " . [argumentIndex string]
                  . ", the effective argument map type (" . [kEffectiveTypeName string]
                  . ") is incompatible with formal parameter map type (" . [kFormalTypeName string]
                  . ")" ;
             end if ;
-          when @metamodelSharedMapProperty (@lstring kFormalTypeName) :: @metamodelSharedMapProperty (@lstring kEffectiveTypeName) :
+          when @metamodelSharedMapProperty (@lstring kFormalTypeName *) :: @metamodelSharedMapProperty (@lstring kEffectiveTypeName *) :
             if [kFormalTypeName string] != [kEffectiveTypeName string] then
               error endOfCallInstruction: "for argument " . [argumentIndex string]
                  . ", the effective argument map type (" . [kEffectiveTypeName string]
@@ -298,10 +299,12 @@ rule <parse_constraint_document>
   ] ;
 #--- -1- Parse override declarations
   @entityToImplementMap metamodelEntityMap ;
+  @stringset overriddenClassSet ;
   <constraint_class_override_declarations>
     !rootEntity
     !originalMetamodelEntityMap 
     ?metamodelEntityMap
+    ?overriddenClassSet
   ;
 #--- -2- Parse map declarations
   @mapEntityMap mapEntityMap [emptyMap] ;
@@ -325,6 +328,12 @@ rule <parse_constraint_document>
   while
   end repeat ;
   $end$ ;
+#--- Check all overridden classes are actually defined
+  foreach overriddenClassSet (@string kClassName) :
+    if not [constrainedEntityMap hasKey ! kClassName] then
+      error here : "the '%" . kClassName . "' is declared as overridden, but is not defined" ;
+    end if ;
+  end foreach ;
 #--- Root entity is defined ?
   if not [constrainedEntityMap hasKey ![rootEntity string]] then
     error here:"the @" . [rootEntity string] . " root entity should be defined" ;
@@ -617,8 +626,9 @@ rule <constraints_on_entity_declaration>
       repeat
         @lstring typeName ;
         $mda_type_name$ ? typeName ;
-        [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
-        @metamodelProperty property := [@metamodelSharedMapProperty new !typeName] ;
+        @lstring elementTypeName ;
+        [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
+        @metamodelProperty property := [@metamodelSharedMapProperty new !typeName !elementTypeName] ;
         @lstring propertyName ;
         $identifier$ ? propertyName ;
         [!?currentConstraintPropertyMap insertKey !propertyName !property] ;
@@ -635,27 +645,38 @@ rule <constraints_on_entity_declaration>
     repeat
     while
       @lstring typeName ;
-      $mda_type_name$ ? typeName ;
-      [ioMapEntityMap searchKey !typeName ?* ?* ?*] ;
-      @metamodelProperty property := [@metamodelMapProperty new !typeName] ;
+      $mda_type_name$ ?typeName ;
+      @lstring elementTypeName ;
+      [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
+      @metamodelProperty property := [@metamodelMapProperty new !typeName !elementTypeName] ;
       @lstring propertyName ;
       $identifier$ ? propertyName ;
       [!?currentConstraintPropertyMap insertKey !propertyName !property] ;
       [!?allConstraintPropertyMap insertKey !propertyName !property] ;
       [!?allAvailablePropertyMap insertKey !propertyName !property] ;
       $;$ ;
-#    while
-#      $mapindex$ ;
-#      @lstring mapIndexName ;
-#      $identifier$ ? mapIndexName ;
-##      [!?constraintAllPropertiesMap insertKey ! mapIndexName] ;
-#      $on$ ;
-#      @lstring mapAttributeName ;
-#      $identifier$ ? mapAttributeName ;
-##      [allMapsAsConstraintPropertyMap searchKey !mapPropertyName ?* ?* ?* ?* ?*] ;
-#      [!?currentIndexMap insertKey !mapIndexName !mapAttributeName] ;
-#      [!?allIndexes insertKey !mapIndexName !mapAttributeName] ;
-#      $;$ ;
+    while
+      $mapindex$ ;
+      @lstring mapIndexName ;
+      $identifier$ ? mapIndexName ;
+      $on$ ;
+      @lstring mapAttributeName ;
+      $identifier$ ? mapAttributeName ;
+      @metamodelProperty propertyOfMapAttributeName ;
+      [allConstraintPropertyMap searchKey !mapAttributeName ?propertyOfMapAttributeName] ;
+      @metamodelProperty property ;
+      extract propertyOfMapAttributeName :
+      when @metamodelMapProperty (@lstring kMapTypeName *) ->
+        property := [@mapIndexProperty new !kMapTypeName !mapAttributeName] ;
+      when @metamodelSharedMapProperty (@lstring kMapTypeName *) ->
+        property := [@mapIndexProperty new !kMapTypeName !mapAttributeName] ;
+      else
+        error mapAttributeName: "this property should be a map" -> property ;
+      end extract ;
+      [!?currentConstraintPropertyMap insertKey !mapIndexName !property] ;
+      [!?allConstraintPropertyMap insertKey !mapIndexName !property] ;
+      [!?allAvailablePropertyMap insertKey !mapIndexName !property] ;
+      $;$ ;
     end repeat ;
     $}$ ;
     ${$ ;
@@ -663,8 +684,11 @@ rule <constraints_on_entity_declaration>
     @typeVariablesMap variablesMap [emptyMap] ;
     foreach allAvailablePropertyMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
+      when @mapIndexProperty (@lstring kMapTypeName @lstring kMapAttributeName) ->
+        @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapTypeName string]] ;
+        @typeCplusPlusName cppName := [@typeDirectName new !kKey] ;
+        [!?variablesMap insertOutProperty !kKey !t !cppName] ;
       when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
-        # message "attribute '" . [kKey value] . "' has type '@" . [kAttributeTypeName value] . "'\n" ;
         @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey string] ![kKey location]]] ;
         if [kAttributeTypeName string] == "lstring" then
           @AC_galgasType t := [@typeGalgas_lstring new] ;
@@ -705,28 +729,6 @@ rule <constraints_on_entity_declaration>
       else
       end extract ;
     end foreach ;
-#  #--- Enter constraint attribute properties of current constraint
-#    foreach constrainedAttributePropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
-#      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
-#      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kPropertyName string] ![kPropertyTypeName string]] ;
-#      [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
-#    end foreach ;
-#  #--- Enter constraint parameter properties of current constraint
-#    foreach constrainedParameterPropertyToImplementList (@lstring kPropertyTypeName @lstring kPropertyName) :
-#      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kPropertyName string] . ")" !here]] ;
-#      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kPropertyName string] ![kPropertyTypeName string]] ;
-#      [!?variablesMap insertUsedInOutArgument !kPropertyName !t !cppName] ;
-#    end foreach ;
-#  #--- Enter indexes
-#    foreach allIndexes (@lstring kIndexName @lstring kMapTypeName) :
-#      @typeCplusPlusName cppName := [@typeDirectName new !kIndexName] ;
-#      @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapTypeName string]] ;
-#      if [currentIndexMap hasKey ![kIndexName string]] then
-#        [!?variablesMap insertOutProperty !kIndexName !t !cppName] ;
-#      else
-#        [!?variablesMap insertUsedConstInArgument !kIndexName !t !cppName] ;
-#      end if ;
-#    end foreach ;
 #--- Add "self" variable
   @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
   @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string]] ;
@@ -965,24 +967,25 @@ rule <constraint_class_override_declarations>
   ?@lstring inRootClass
   ?@entityToImplementMap inOriginalMetamodelEntityMap 
   !@entityToImplementMap outMetamodelEntityMap
+  !@stringset outOverriddenClassSet
 :
 #--- Parse override class declarations
-  @stringset overriddenClassSet [emptySet] ;
+  outOverriddenClassSet := [@stringset  emptySet] ;
   repeat
     $override$ ;
     @lstring metamodelClass ;
     $mda_type_name$ ? metamodelClass ;
     [inOriginalMetamodelEntityMap searchKey !metamodelClass ?* ?* ?* ?* ?* ?* ?* ?*] ;
-    if [overriddenClassSet hasKey ![metamodelClass string]] then
+    if [outOverriddenClassSet hasKey ![metamodelClass string]] then
       error metamodelClass:"this class is already declared as overridden" ;
     else
-      overriddenClassSet += ![metamodelClass string] ;
+      outOverriddenClassSet += ![metamodelClass string] ;
     end if ;
     $;$ ;
   while
   end repeat ;
 #--- Check root class is declared as overridden
-  if not [overriddenClassSet hasKey ![inRootClass string]] then
+  if not [outOverriddenClassSet hasKey ![inRootClass string]] then
     error here:"the '%" . [inRootClass string] . "' root class should be declared as overridden" ;
   end if ;
 #--- Build useful class set
@@ -991,7 +994,7 @@ rule <constraint_class_override_declarations>
   loop [inOriginalMetamodelEntityMap count] + 1 :
   while continue do
     continue := false ;
-    foreach overriddenClassSet (@string kClassName) :
+    foreach outOverriddenClassSet (@string kClassName) :
       @entityPropertyMap allAvailablePropertyMap ;
       @lstring superEntityName ;
       [inOriginalMetamodelEntityMap searchKey
@@ -1019,12 +1022,12 @@ rule <constraint_class_override_declarations>
         foreach allAvailablePropertyMap (* @metamodelProperty kProperty) :
           extract kProperty:
           when @metamodelSingleReferenceProperty (@lstring kReferenceClassName)->
-            if [overriddenClassSet hasKey ![kReferenceClassName string]] & not [usefulClassSet hasKey ![kReferenceClassName string]] then
+            if [outOverriddenClassSet hasKey ![kReferenceClassName string]] & not [usefulClassSet hasKey ![kReferenceClassName string]] then
               continue := true ;
               usefulClassSet += ![kReferenceClassName string] ;
             end if ;
           when @metamodelMultipleReferenceProperty (@lstring kReferenceClassName * *)->
-            if [overriddenClassSet hasKey ![kReferenceClassName string]] & not [usefulClassSet hasKey ![kReferenceClassName string]] then
+            if [outOverriddenClassSet hasKey ![kReferenceClassName string]] & not [usefulClassSet hasKey ![kReferenceClassName string]] then
               continue := true ;
               usefulClassSet += ![kReferenceClassName string] ;
             end if ;
@@ -1036,12 +1039,12 @@ rule <constraint_class_override_declarations>
   end loop ;
 #  log usefulClassSet ;
 #--- Check for missing classes
-  @stringset missingClasses := usefulClassSet - overriddenClassSet ;
+  @stringset missingClasses := usefulClassSet - outOverriddenClassSet ;
   foreach missingClasses (@string kMissingClassName) :
     error here: "the '%" . kMissingClassName . "' class should be overriden" ;
   end foreach ;
 #--- Warn for useless classes
-  @stringset uselessClasses := overriddenClassSet - usefulClassSet ;
+  @stringset uselessClasses := outOverriddenClassSet - usefulClassSet ;
   foreach uselessClasses (@string kUselessClassName) :
     error here: "it is useless to override '%" . kUselessClassName . "' class" ;
   end foreach ;
