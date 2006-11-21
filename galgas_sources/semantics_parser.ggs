@@ -4095,7 +4095,7 @@ rule <semantics_declaration>
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Build insert and search method map
-    @mapMethodMap mapModifierMethodMap [emptyMap] ;
+    @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @formalArgumentPassingMode inPassingMode [argumentIn] ;
     @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
@@ -4182,7 +4182,7 @@ rule <semantics_declaration>
     @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
-    @mapMethodMap mapModifierMethodMap [emptyMap] ;
+    @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @mapMethodMap mapReaderMethodMap [emptyMap] ;
     repeat
     while
@@ -4392,7 +4392,7 @@ label importSemantics
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Build insert and search method map
-    @mapMethodMap mapModifierMethodMap [emptyMap] ;
+    @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @formalArgumentPassingMode inPassingMode [argumentIn] ;
     @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
@@ -4469,7 +4469,7 @@ label importSemantics
     @formalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
-    @mapMethodMap mapModifierMethodMap [emptyMap] ;
+    @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @mapMethodMap mapReaderMethodMap [emptyMap] ;
     repeat
     while

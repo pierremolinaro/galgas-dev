@@ -2208,10 +2208,18 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 
+map @mapModifierMap {
+  @L_EXsignature mMethodSignature ;
+  insert insertKey error message "an insert or a remove modifier named '%K' is already declared in %L" ;
+  search searchKey error message "there is no insert nor modifier named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @mapMethodMap {
   @L_EXsignature mMethodSignature ;
-  insert insertKey error message "an insert or a search method named '%K' is already declared in %L" ;
-  search searchKey error message "there is no insert nor search method named '%K'" ;
+  insert insertKey error message "a search method named '%K' is already declared in %L" ;
+  search searchKey error message "there is no search method named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2223,10 +2231,10 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Table de toutes les methodes de surcharge
   @typeTableBlocsDeTable aTableMethodesSurcharger ;
 
-#--- Insert or Search (modifier) method map
-  @mapMethodMap mModifierMethodMap ;
+#--- Insert or Remove (modifier) map
+  @mapModifierMap mModifierMethodMap ;
 
-#--- Search (reader) method map
+#--- Search (method) map
   @mapMethodMap mReaderMethodMap ;
 
 #--- Modifiers are insert methods and (when map defines automaton) search methods
