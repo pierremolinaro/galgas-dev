@@ -4730,6 +4730,161 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#     S O R T E D    L I S T   T Y P E   D E C L A R A T I O N              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $sortedlist$ ;
+  @lstring listTypeName ;
+  $type_name$ ? listTypeName ;
+  select
+    $;$ ;
+    if not ([tableEnAvant hasKey ![listTypeName string]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName string]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
+      [!?tableEnAvant insertKey ! listTypeName !t] ;
+    end if ;
+  or
+    ${$ ;
+  #-- Declaration des attributs de la list
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [emptyMap] ;
+    @typeListModel attributeListModel [emptyList] ;
+    <attributes_definition_list>
+      !?attributeListModel
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeTypeeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+    ;
+    @L_EXsignature extractSignature [emptyList] ;
+    @L_EXsignature inputSignature [emptyList] ;
+    foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) :
+      extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
+    end foreach ;
+  #--- Construction de l'attribut semantique
+    $}$ ;
+    @AC_galgasType c := [@typeGalgasSortedListType new
+      !listTypeName
+      !listeTousAttributsSemantiques
+      !extractSignature
+      !inputSignature
+    ] ;
+  #--- Parse sort attributes
+    ${$ ;
+    @sortDescriptorList sortDescriptorList [emptyList] ;
+    @stringset usedSortedAttributes [emptySet] ;
+    repeat
+      @lstring sortAttribute ;
+      $identifier$ ? sortAttribute ;
+      if [usedSortedAttributes hasKey ![sortAttribute string]] then 
+        error sortAttribute: "this attribute is already used in sort list" ;
+      else
+        usedSortedAttributes += ![sortAttribute string] ;
+      end if ;
+      @bool ascendingOrder ;
+      select
+        $<$ ;
+        ascendingOrder := true ;
+      or
+        $>$ ;
+        ascendingOrder := false ;
+      end select ;
+      sortDescriptorList += !sortAttribute !ascendingOrder ;
+    while
+      $,$ ;
+    end repeat ;
+    $}$ ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
+    @typeEntityToGenerate def := [@C_sortedListTypeToImplement new
+      !listTypeName
+      !listeTousAttributsSemantiques
+      !listeTypeeAttributsExternesCourants
+      !sortDescriptorList
+    ] ;
+    listeEntitesAengendrer += !def ;
+  end select ;
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $sortedlist$ ;
+  @lstring listTypeName ;
+  $type_name$ ? listTypeName ;
+  select
+    $;$ ;
+    if not ([tableEnAvant hasKey ![listTypeName string]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName string]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
+      [!?tableEnAvant insertKey ! listTypeName !t] ;
+    end if ;
+  or
+    ${$ ;
+  #-- Declaration des attributs de la list
+    @typeListModel attributeListModel [emptyList] ;
+    @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
+    @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+    @L_nameWithType listeTypeeAttributsExternesCourants ;
+    @typeSemanticAttributesMap tableAttributs [emptyMap] ;
+    <attributes_definition_list>
+      !?attributeListModel
+      !?tableAttributs
+      !?listeTousAttributsSemantiques
+      ?listeAttributsSemantiquesCourants
+      ?listeTypeeAttributsExternesCourants
+      !?ioComponentSemanticsEntitiesMap
+    ;
+    @L_EXsignature extractSignature [emptyList] ;
+    @L_EXsignature inputSignature [emptyList] ;
+    foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) :
+      extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
+    end foreach ;
+  #--- Construction de l'attribut semantique
+    $}$ ;
+    @AC_galgasType c := [@typeGalgasSortedListType new
+      !listTypeName
+      !listeTousAttributsSemantiques
+      !extractSignature
+      !inputSignature
+    ] ;
+  #--- Parse sort attributes
+    ${$ ;
+    repeat
+      $identifier$ ? * ;
+      select
+        $<$ ;
+      or
+        $>$ ;
+      end select ;
+    while
+      $,$ ;
+    end repeat ;
+    $}$ ;
+    @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
+    @TypeModel t := [@ListModel new !attributeListModel] ;
+    [!?ioModelMap insertKey !listTypeName !t] ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #                 LISTE DE DEFINITION DES ATTRIBUTS SEMANTIQUES             *
 #                                                                           *
 #---------------------------------------------------------------------------*

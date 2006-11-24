@@ -2178,6 +2178,103 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    U N D E F I N E D    S O R T E D    L I S T    T Y P E   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgasUndefinedSortedListType extends @AC_galgasType {
+  @lstring mListTypeName ;
+
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := [mListTypeName string] ;
+  end method ;
+
+  message messageGalgasType "a predeclared sorted list type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    S O R T E D    L I S T    T Y P E                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
+#--- List of all attributes
+  @typeListeAttributsSemantiques mNonExternAttributesList ;
+#--- Extract Methods signature (for 'first', 'last', 'popFirst', 'popLast')
+  @L_EXsignature mExtractSignature ;
+#--- Input Methods signature (for 'prependValue')
+  @L_EXsignature mInputSignature ;
+
+#--- list object accepts to be enumerated (foreach instruction)
+  override
+  method acceptForeachInstruction
+    ??@lstring unused inErrorLocation
+    !@typeListeAttributsSemantiques outForeachList
+    !@localConstantBuildStyleEnum outStyle
+  :
+    outForeachList := mNonExternAttributesList ;
+    outStyle := [@localConstantBuildStyleEnum listStyle] ;
+  end method ;
+  
+#--- Modifiers are 'popFirst' and 'popLast' methods
+  override
+  method handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "prependValue" then
+      outModifierSignature := mInputSignature ;
+    elsif ([inModifierName string] == "popFirst") | ([inModifierName string] == "popLast") then
+      outModifierSignature := mExtractSignature ;
+    else
+      error inModifierName: "a list accepts only 'popFirst' and 'popLast' modifiers" -> outModifierSignature ;
+    end if ;
+  end method ;
+
+
+#--- List accept 'first' and last' reader in instruction
+  override
+  method handleReaderInstructionCall
+    ??@lstring unused inReadObjectName
+    ??@lstring inReaderName
+    !@L_EXsignature outReaderSignature
+  :
+    if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
+      error inReaderName: "a list accepts only 'first' and 'last' readers" ;
+    end if ;
+    outReaderSignature := mExtractSignature ;
+  end method ;
+
+#--- list accepts operator "+=" call
+  override method handleAddAssignOperatorCall
+    ??@location unused inErrorLocation
+    !@typeListeAttributsSemantiques outParametersList
+  :
+    outParametersList := mNonExternAttributesList ;
+  end method ;
+
+#--- A list accepts 'emptyList' and 'listWithValue' constructors
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "emptyList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "listWithValue" then
+      outAccessorTypesList := mNonExternAttributesList ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end method ;
+
+  message messageGalgasType "a sorted list type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #            Definition des tables des methodes de surcharge                *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -2568,6 +2665,12 @@ routine checkAssignmentTypesCompatibility
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting the list type '@" . [attNomType1 string] .
                                 "', I have got the list type '@" . [attNomType2 string] . "\"" ;
+    end if ;
+
+  when @typeGalgasUndefinedSortedListType (@lstring attNomType1) :: @typeGalgasUndefinedSortedListType (@lstring attNomType2) :
+    if [attNomType1 string] != [attNomType2 string] then
+      error inErrorLocation : "I was expecting the sorted list type '@" . [attNomType1 string] .
+                                "', I have got the sorted list type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedMapType (@lstring attNomType1) :: @typeGalgasUndefinedMapType (@lstring attNomType2) :
@@ -3059,6 +3162,14 @@ routine handleReaderCall
       else
         error inMethodName :
            "list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgasSortedListType (...) ->
+      if [inMethodName string] == "length" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      else
+        error inMethodName :
+           "sorted list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgasMapType (...) ->
       if [inMethodName string] == "hasKey" then
