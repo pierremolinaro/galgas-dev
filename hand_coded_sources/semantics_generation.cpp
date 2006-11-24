@@ -1345,7 +1345,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark List Type
 #endif
 
 //---------------------------------------------------------------------------*
@@ -1373,7 +1373,35 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark Solrted List Type
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasSortedListType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mListTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasSortedListType::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasSortedListType::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Undefined List Type
 #endif
 
 //---------------------------------------------------------------------------*
@@ -1393,6 +1421,34 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasUndefinedListType::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Undefined Sorted List Type
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedSortedListType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mListTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedSortedListType::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedSortedListType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
                                  AC_OutputStream & /* inCppFile */) const {
 }

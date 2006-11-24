@@ -831,6 +831,30 @@
 		CF9186100B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */; };
 		CF93AC4705B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF93AC4805B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
+		CF9568600B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
+		CF9568610B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
+		CF9568620B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
+		CF9568630B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
+		CF9568640B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
+		CF9568650B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
+		CF9568660B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
+		CF9568670B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
+		CF9568680B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
+		CF9568690B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
+		CF95686A0B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
+		CF95686B0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
+		CF95686C0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
+		CF95686D0B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
+		CF95686E0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
+		CF95686F0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
+		CF9568700B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
+		CF9568710B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
+		CF9568720B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
+		CF9568730B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
+		CF9568740B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
+		CF9568750B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
+		CF9568760B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
+		CF9568770B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
 		CF976F090AD9953D00D81E5D /* galgasPPC in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF18F09E3F23700506859 /* galgasPPC */; };
 		CF976F0A0AD9953F00D81E5D /* galgasDebugPPC in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF20509E3F30400506859 /* galgasDebugPPC */; };
 		CF976F0B0AD9954600D81E5D /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgas */; };
@@ -1795,6 +1819,9 @@
 		CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_classToImplement.h; sourceTree = "<group>"; };
 		CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_dotEqualInstruction.h; sourceTree = "<group>"; };
 		CF93AC4605B483DC0089AD65 /* enum_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = enum_generation.cpp; sourceTree = "<group>"; };
+		CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_sortedListTypeToImplement.h; sourceTree = "<group>"; };
+		CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasSortedListType.h; sourceTree = "<group>"; };
+		CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedSortedListType.h; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
 		CF9F4E14092A70FF0055C8C3 /* C_builtin_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_builtin_CLI_Options.h; sourceTree = "<group>"; };
@@ -2374,6 +2401,9 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */,
+				CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */,
+				CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */,
 				CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */,
 				CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */,
 				CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */,
@@ -3170,6 +3200,9 @@
 				CF9186090B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB4D0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357DE0B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
+				CF9568600B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */,
+				CF9568610B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */,
+				CF9568620B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3247,6 +3280,9 @@
 				CF91860F0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB530B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E40B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
+				CF9568720B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */,
+				CF9568730B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */,
+				CF9568740B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3324,6 +3360,9 @@
 				CF9186100B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB540B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E50B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
+				CF9568750B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */,
+				CF9568760B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */,
+				CF9568770B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3415,6 +3454,9 @@
 				CF91860A0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB4E0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357DF0B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
+				CF9568630B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */,
+				CF9568640B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */,
+				CF9568650B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3492,6 +3534,9 @@
 				CF91860B0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB4F0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E00B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
+				CF9568660B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */,
+				CF9568670B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */,
+				CF9568680B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3569,6 +3614,9 @@
 				CF91860C0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB500B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E10B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
+				CF9568690B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */,
+				CF95686A0B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */,
+				CF95686B0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3646,6 +3694,9 @@
 				CF91860D0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB510B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E20B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
+				CF95686C0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */,
+				CF95686D0B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */,
+				CF95686E0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3723,6 +3774,9 @@
 				CF91860E0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB520B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E30B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
+				CF95686F0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */,
+				CF9568700B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */,
+				CF9568710B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
