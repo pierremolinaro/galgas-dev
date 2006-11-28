@@ -977,7 +977,7 @@ epilogue_testPart (C_Lexique & inLexique,
     while (surchargeCourante != NULL) {
       macroValidPointer (surchargeCourante) ;
       verifierChampEtatApres (inLexique, surchargeCourante->champTable, positionErreur,
-                   "la branche precedente met la variable '", "' dans un etat different que la premiere branche") ;
+                   "this branch leaves the '", "' variable is a state different than the first branch") ;
       surchargeCourante = surchargeCourante->mNextItem ;
     }
   }
@@ -1027,7 +1027,7 @@ epilogue_repeatPart (C_Lexique & inLexique,
   while (surchargeCourante != NULL) {
     macroValidPointer (surchargeCourante) ;
     verifierChampEtatApres (inLexique, surchargeCourante->champTable, positionErreur,
-                 "la branche precedente change l'etat de la variable '", "'") ;
+                 "this branch changes the state of the '", "' variable") ;
     surchargeCourante = surchargeCourante->mNextItem ;
   }
 }
