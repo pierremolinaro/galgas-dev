@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate 'foreach' instructions                                          *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -26,7 +26,7 @@
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark loop ... while instruction
 #endif
 
 //---------------------------------------------------------------------------*
@@ -50,25 +50,25 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mVariantExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n"
                  "GGS_bool " << variableCondition << " (" << variantVariable << "._isBuilt (), true) ;\n"
-                 "while (" << variableCondition << ".isBuiltAndTrue ()) {\n"
-                 "  if (" << variantVariable << ".uintValue () == 0) {\n"
-                 "    _inLexique.onTheFlyRunTimeError (\"loop variant error\" SOURCE_FILE_AT_LINE ("
-              << mLocation.currentLineNumber ()
-              << ")) ;\n"
-                 "    " << variableCondition << " = GGS_bool (true, false) ;\n"
-                 "  }else{\n" 
-                 "    " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
-    ioCppFile.incIndentation (+2) ;
+                 "while (" << variableCondition << ".isBuiltAndTrue ()) {\n" ;
   //--- First instruction list
     C_String inutilise ;
     generateInstructionListForList (mInstructionList1, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
   //--- Condition
     ioCppFile << "  " << variableCondition << " = " ;
     mWhileExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << "  ;\n" ;
+    ioCppFile << " ;\n" ;
+  //--- Evaluate condition
+    ioCppFile << "  if (" << variableCondition << ".isBuiltAndTrue ()) {\n"
+                 "    if (" << variantVariable << ".uintValue () == 0) {\n"
+                 "      _inLexique.onTheFlyRunTimeError (\"loop variant error\" SOURCE_FILE_AT_LINE ("
+              << mLocation.currentLineNumber ()
+              << ")) ;\n"
+                 "      " << variableCondition << " = GGS_bool (true, false) ;\n"
+                 "    }else{\n" 
+                 "      " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
   //--- Second instruction list
-    ioCppFile << "  if (" << variableCondition << ".isBuiltAndTrue ()) {\n" ;
-    ioCppFile.incIndentation (+2) ;
+    ioCppFile.incIndentation (+4) ;
     generateInstructionListForList (mInstructionList2, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
     ioCppFile.incIndentation (-4) ;
     ioCppFile << "    }\n"
@@ -99,7 +99,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark foreach instruction
 #endif
 
 //---------------------------------------------------------------------------*
