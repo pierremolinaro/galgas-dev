@@ -259,13 +259,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     }
     currentArgument = currentArgument->nextObject () ;
   }
-  inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n" ;
+  inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  #ifdef DEBUG_TRACE_ENABLED\n"
+               "    printf (\"ENTER routine_" << aNomRoutine << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
+               "  #endif\n" ;
 //--- Engendrer la liste d'instructions
   generateInstructionListForList (mInstructionList, inCppFile,
                                   inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, true) ;
 //--- Fin de la fonction
-  inCppFile << "}\n\n" ;
+  inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
+               "    printf (\"LEAVE routine_" << aNomRoutine << "\\n\") ;\n"
+               "  #endif\n"
+               "}\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
