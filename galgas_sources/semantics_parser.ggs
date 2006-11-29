@@ -4791,6 +4791,9 @@ rule <semantics_declaration>
       if [usedSortedAttributes hasKey ![sortAttribute string]] then 
         error sortAttribute: "this attribute is already used in sort list" ;
       else
+        @AC_galgasType definitionType ;
+        [tableAttributs searchKey !sortAttribute ?definitionType] ;
+        [definitionType acceptToBeSortKeyInSortedListDefinition !sortAttribute] ;
         usedSortedAttributes += ![sortAttribute string] ;
       end if ;
       @bool ascendingOrder ;

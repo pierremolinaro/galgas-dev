@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate list declaration and implementation                             *
 //                                                                           *
-//  Copyright (C) 1999-2006 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -885,9 +885,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
-  inHfile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
+  inHfile.writeCppTitleComment (C_String ("Element of sorted list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
-  inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_list::cListElement {\n"
+  inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_sortedlist::cSortedListElement {\n"
 //--- Attributes
              "//--- Attributes\n" ;
   GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.firstObject () ;
@@ -924,7 +924,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  protected : bool isEqualToElement (const cListElement * inOperand) const ;\n"
+             "  protected : bool isEqualToElement (const cSortedListElement * inOperand) const ;\n"
+//--- Virtual method for implementing element comparison
+             "//--- Method used for sorting elements\n"
+             "  protected : virtual sint32 compareForSorting (const cSortedListElement * inOperand) const ;\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void appendForListDescription (C_Lexique & _inLexique,\n"
@@ -953,11 +956,11 @@ generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) const {
 //----------------------- List class declaration ----------------  
-  inHfile.writeCppTitleComment (C_String ("list '@") + aNomListe + "'") ;
+  inHfile.writeCppTitleComment (C_String ("sorted list '@") + aNomListe + "'") ;
 
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
-             "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
+             "class GGS_" << aNomListe << " : public AC_galgas_sortedlist {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " element_type ;\n"
 //--- Constructors and assignment operator declaration
              "//--- Default Constructor\n"
@@ -1205,7 +1208,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Element comparison
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n"
-               "isEqualToElement (const cListElement * inOperand) const {\n"
+               "isEqualToElement (const cSortedListElement * inOperand) const {\n"
                "  bool equal = inOperand == this ;\n"
                "  if (! equal) {\n"
                "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
@@ -1227,6 +1230,32 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  return equal ;\n"
                "}\n\n" ;
 
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "sint32 elementOf_GGS_" << aNomListe << "::\n"
+               "compareForSorting (const cSortedListElement * inOperand) const {\n"
+               "  elementOf_GGS_" << aNomListe << " * operand = (elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
+  
+  GGS_sortDescriptorList::element_type * sortAttribute = mSortDescriptorList.firstObject () ;
+  if (sortAttribute != NULL) {
+    macroValidPointer (sortAttribute) ;
+    inCppFile << "  sint32 result = "
+              << (sortAttribute->mAscendingOrder.boolValue () ? "" : "- ")
+              << sortAttribute->mSortAttribute
+              << ".compare (operand->" << sortAttribute->mSortAttribute << ") ;\n" ;
+    sortAttribute = sortAttribute->nextObject () ;
+    while (sortAttribute != NULL) {
+      macroValidPointer (sortAttribute) ;
+      inCppFile << "  if (result == 0) {\n"
+                   "    result = "
+                << (sortAttribute->mAscendingOrder.boolValue () ? "" : "- ")
+                << sortAttribute->mSortAttribute
+                << ".compare (operand->" << sortAttribute->mSortAttribute << ") ;\n"
+                << "  }\n" ;
+      sortAttribute = sortAttribute->nextObject () ;
+    }
+  }
+  inCppFile << "  return result ;\n"
+               "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                "appendForListDescription (C_Lexique & _inLexique,\n"
@@ -1252,14 +1281,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Generate default constructor
   inCppFile << "GGS_" << aNomListe
             << "::GGS_" << aNomListe
-            << " (void): AC_galgas_list () { // Default Constructor\n"
+            << " (void): AC_galgas_sortedlist () { // Default Constructor\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer le constructeur de recopie
   inCppFile << "GGS_" << aNomListe << "::\n"
                "GGS_" << aNomListe
-            << " (const GGS_" << aNomListe << " & inSource): AC_galgas_list (inSource) {\n"
+            << " (const GGS_" << aNomListe << " & inSource): AC_galgas_sortedlist (inSource) {\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 

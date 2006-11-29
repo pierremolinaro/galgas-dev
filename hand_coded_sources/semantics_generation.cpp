@@ -362,7 +362,8 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_lsint64.h\"\n"
                     "#include \"galgas/GGS_stringset.h\"\n"
                     "#include \"galgas/AC_galgas_map.h\"\n"
-                    "#include \"galgas/AC_galgas_list.h\"\n\n" ;
+                    "#include \"galgas/AC_galgas_list.h\"\n"
+                    "#include \"galgas/AC_galgas_sortedlist.h\"\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Generate lexique inclusion

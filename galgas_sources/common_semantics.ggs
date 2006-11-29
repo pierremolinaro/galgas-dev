@@ -407,6 +407,12 @@ abstract class @AC_galgasType {
 #--- Get type name
   abstract method getTypeName !@string outTypeName ;
 
+#--- By default, object does not accept as sort key in sorted list definition
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring inErrorLocation :
+    error inErrorLocation :
+       "this attribute cannot be used for sorting" ;
+  end method ;
+
 #--- By default, object does not accept assignment from 'here'
   method acceptAssignmentFromHere ??@lstring inErrorLocation :
     error inErrorLocation :
@@ -876,8 +882,14 @@ class @typeGalgas_jokerInParameterList extends @AC_galgasType {
 
 class @typeGalgas_bool extends @AC_galgasType {
 #--- Get type name
-  override method getTypeName !@string outTypeName :
+  override
+  method getTypeName !@string outTypeName :
     outTypeName := "bool" ;
+  end method ;
+
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
   end method ;
 
 #--- Error message
@@ -890,6 +902,11 @@ class @typeGalgas_uint extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := "uint" ;
+  end method ;
+
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
   end method ;
 
 #--- This class accepts "++" operator
@@ -929,6 +946,11 @@ class @typeGalgas_string extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := "string" ;
+  end method ;
+
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
   end method ;
 
 #--- By default, class does not accept reader instruction call
@@ -995,6 +1017,11 @@ class @typeGalgas_sint extends @AC_galgasType {
     outTypeName := "sint" ;
   end method ;
 
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
+  end method ;
+
 #--- This class accepts "++" operator
   override method handleIncrementOperatorCall 
     ??@location unused inErrorLocation
@@ -1031,6 +1058,11 @@ class @typeGalgas_sint64 extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := "sint64" ;
+  end method ;
+
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
   end method ;
 
 #--- This class accepts "++" operator
@@ -1071,6 +1103,11 @@ class @typeGalgas_uint64 extends @AC_galgasType {
     outTypeName := "uint64" ;
   end method ;
 
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
+  end method ;
+
 #--- This class accepts "++" operator
   override method handleIncrementOperatorCall 
     ??@location unused inErrorLocation
@@ -1107,6 +1144,11 @@ class @typeGalgas_char extends @AC_galgasType {
     outTypeName := "char" ;
   end method ;
 
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
+  end method ;
+
 #--- Error message
   message messageGalgasType "a '@char' type" ;
 }
@@ -1117,6 +1159,11 @@ class @typeGalgas_double extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := "double" ;
+  end method ;
+
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
   end method ;
 
 #--- Error message
