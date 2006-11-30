@@ -1092,22 +1092,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
              "  public : GGS_" << aNomListe << " operator + (const GGS_" << aNomListe << " & inOperand) const ;\n"
-
-//--- Prepend a new value
-             "  public : void modifier_prependValue (C_Lexique & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inHfile << ",\n                                "
-               "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }
-  inHfile << "\n                                "
-             "COMMA_LOCATION_ARGS) ;\n"
+//--- Internal methods
              "//--- Internal Methods\n"
               "  protected : void _internalAppendValues (" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -1117,19 +1102,6 @@ generateHdeclarations (AC_OutputStream & inHfile,
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
-    inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }
-  inHfile << ") ;\n"
-              "  protected : void _internalPrependValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (numeroVariable > 0) inHfile << ",\n                                " ;
     inHfile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
@@ -1336,38 +1308,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-
-//--- Engendrer la methode _internalPrependValues
-  inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_internalPrependValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                    " ;
-    inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }
-  inCppFile << ") {\n"
-               "  element_type * nouvelElement = (element_type *) NULL ;\n" 
-               "  macroMyNew (nouvelElement, element_type (" ;
-  current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
-    inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }
-  inCppFile << ")) ;\n" 
-               "  _internalPrependItem (nouvelElement) ;\n" 
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
 //--- Generate _addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_addAssign_operation (" ;
@@ -1444,47 +1384,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "    }\n"
                "  }\n"
                "  return result ;\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
-//--- Generate 'prepend' method
-  inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_prependValue (C_Lexique & /* inLexique */" ;
-  current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << ",\n                     "
-                 "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }
-  inCppFile << "\n                     "
-               "COMMA_UNUSED_LOCATION_ARGS) {\n"
-               "  if (_isBuilt ()" ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << " && argument_" << numeroVariable << "._isBuilt ()" ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }
-  inCppFile << ") {\n"
-               "    _insulateList () ;\n"
-               "    _internalPrependValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
-    inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }
-  inCppFile << ") ;\n"
-               "  }\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
