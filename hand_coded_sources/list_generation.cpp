@@ -186,8 +186,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "\n                             "
              "COMMA_LOCATION_ARGS) const ;\n"
 
-//--- Declare method 'popLast'
-             "//--- Method 'popLast'\n"
+//--- Declare modifier 'popLast'
+             "//--- Modifier 'popLast'\n"
              "  public : void modifier_popLast (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
@@ -202,8 +202,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
 
-//--- Declare method 'popFirst'
-             "//--- Method 'popFirst'\n"
+//--- Declare modifier 'popFirst'
+             "//--- Modifier 'popFirst'\n"
              "  public : void modifier_popFirst (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
@@ -797,7 +797,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'popFirst' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'popFirst' modifier invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
                "  if (_p != NULL) {\n" ;
@@ -843,7 +843,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'popLast' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'popLast' modifier invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
                "  if (_p != NULL) {\n" ;
@@ -918,9 +918,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << ") ;\n\n"
 //--- Access to next and previous item
              "//--- Access to next\n"
-             "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalNextItem () ; }\n"
+             "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalGreaterItem () ; }\n"
              "//--- Access to previous\n"
-             "  public : inline elementOf_GGS_" << aNomListe << " * previousObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalPreviousItem () ; }\n"
+             "  public : inline elementOf_GGS_" << aNomListe << " * previousObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalSmallerItem () ; }\n"
 
 //--- Element comparison
              "//--- Element comparison\n"
@@ -971,12 +971,12 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : GGS_bool operator == (const GGS_" << aNomListe << " & inOperand) const ;\n"
              "  public : GGS_bool operator != (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
-//--- Constructor 'emptyList'
-             "//--- Constructor 'emptyList'\n"
-             "  public : static GGS_" << aNomListe << " constructor_emptyList (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
+//--- Constructor 'emptySortedList'
+             "//--- Constructor 'emptySortedList'\n"
+             "  public : static GGS_" << aNomListe << " constructor_emptySortedList (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
 
-//--- Constructor 'listWithValue'
-             "  public : static GGS_" << aNomListe << " constructor_listWithValue (C_Lexique & _inLexique" ;
+//--- Constructor 'sortedListWithValue'
+             "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (C_Lexique & _inLexique" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
@@ -991,25 +991,25 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
 
-//--- Get first inserted object
-             "//--- Get first object\n"
+//--- Get smallest object
+             "//--- Get smallest object\n"
              "  public : inline element_type * firstObject (void) const {\n"
-             "    return (element_type *) internalFirstObject () ;\n"
+             "    return (element_type *) internalSmallestObject () ;\n"
              "  }\n"
 
-//--- Get last inserted object
-             "//--- Get last object\n"
+//--- Get greatest object
+             "//--- Get greatest object\n"
              "  public : inline element_type * lastObject (void) const {\n"
-             "    return (element_type *) internalLastObject () ;\n"
+             "    return (element_type *) internalGreatestObject () ;\n"
              "  }\n"
 
 //--- operators () for method call
              "//--- Operators () used for method call\n"
              "  public : const GGS_" << aNomListe << " * operator () (UNUSED_LOCATION_ARGS) const { return this ;} \n"
 
-//--- Declare method 'first'
-             "//--- Method 'first'\n"
-             "  public : void method_first (C_Lexique & _inLexique" ;
+//--- Declare method 'smallest'
+             "//--- Method 'smallest'\n"
+             "  public : void method_smallest (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1023,9 +1023,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "\n                              "
              "COMMA_LOCATION_ARGS) const ;\n"
 
-//--- Declare method 'last'
-             "//--- Method 'last'\n"
-             "  public : void method_last (C_Lexique & _inLexique" ;
+//--- Declare method 'greatest'
+             "//--- Method 'greatest'\n"
+             "  public : void method_greatest (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1039,9 +1039,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "\n                             "
              "COMMA_LOCATION_ARGS) const ;\n"
 
-//--- Declare method 'popLast'
-             "//--- Method 'popLast'\n"
-             "  public : void modifier_popLast (C_Lexique & _inLexique" ;
+//--- Declare modifier 'popGreatest'
+             "//--- Method 'popGreatest'\n"
+             "  public : void modifier_popGreatest (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1055,9 +1055,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
 
-//--- Declare method 'popFirst'
-             "//--- Method 'popFirst'\n"
-             "  public : void modifier_popFirst (C_Lexique & _inLexique" ;
+//--- Declare modifier 'popSmallest'
+             "//--- Modifier 'popSmallest'\n"
+             "  public : void modifier_popSmallest (C_Lexique & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1412,18 +1412,18 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Implement constructor 'emptyList'
+//--- Implement constructor 'emptySortedList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptySortedList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Implement constructor 'emptyList'
+//--- Implement constructor 'sortedListWithValue'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_listWithValue (C_Lexique & /* _inLexique */" ;
+               "constructor_sortedListWithValue (C_Lexique & /* _inLexique */" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1465,20 +1465,20 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Implement method 'first'
+//--- Implement method 'smallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_first (C_Lexique & _inLexique" ;
+               "method_smallest (C_Lexique & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << ",\n              " ;
+    inCppFile << ",\n                 " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
-  inCppFile << "\n              "
+  inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) const {\n"
                "  element_type * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
@@ -1511,9 +1511,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
 
 
-//--- Implement method 'last'
+//--- Implement method 'greatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_last (C_Lexique & _inLexique" ;
+               "method_greatest (C_Lexique & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -1530,7 +1530,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'last' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'greatest' method invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
                "  if (_p != NULL) {\n" ;
@@ -1556,9 +1556,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Implement method 'popFirst'
+//--- Implement method 'popSmallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popFirst (C_Lexique & _inLexique" ;
+               "modifier_popSmallest (C_Lexique & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -1575,7 +1575,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'popFirst' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'popSmallest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
                "  if (_p != NULL) {\n" ;
@@ -1588,7 +1588,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    _insulateList () ;\n"
-               "    _internalRemoveFirst () ;\n"
+               "    _internalRemoveSmallest () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
@@ -1602,9 +1602,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-//--- Implement method 'popLast'
+//--- Implement modifier 'popGreatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popLast (C_Lexique & _inLexique" ;
+               "modifier_popGreatest (C_Lexique & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -1621,7 +1621,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'popLast' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'popGreatest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
                "  if (_p != NULL) {\n" ;
@@ -1634,7 +1634,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    _insulateList () ;\n"
-               "    _internalRemoveLast () ;\n"
+               "    _internalRemoveGreatest () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;

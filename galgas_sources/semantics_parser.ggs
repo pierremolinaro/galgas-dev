@@ -4768,10 +4768,8 @@ rule <semantics_declaration>
       !?ioComponentSemanticsEntitiesMap
     ;
     @L_EXsignature extractSignature [emptyList] ;
-    @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) :
       extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
-      inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -4779,7 +4777,6 @@ rule <semantics_declaration>
       !listTypeName
       !listeTousAttributsSemantiques
       !extractSignature
-      !inputSignature
     ] ;
   #--- Parse sort attributes
     ${$ ;
@@ -4853,10 +4850,8 @@ label importSemantics
       !?ioComponentSemanticsEntitiesMap
     ;
     @L_EXsignature extractSignature [emptyList] ;
-    @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) :
       extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
-      inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -4864,7 +4859,6 @@ label importSemantics
       !listTypeName
       !listeTousAttributsSemantiques
       !extractSignature
-      !inputSignature
     ] ;
   #--- Parse sort attributes
     ${$ ;

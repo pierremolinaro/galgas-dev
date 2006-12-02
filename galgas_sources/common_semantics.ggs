@@ -2193,7 +2193,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     !@L_EXsignature outReaderSignature
   :
     if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
-      error inReaderName: "a list accepts only 'first' and 'last' readers" ;
+      error inReaderName: "a list accepts only 'first' and 'last' methods" ;
     end if ;
     outReaderSignature := mExtractSignature ;
   end method ;
@@ -2249,10 +2249,8 @@ class @typeGalgasUndefinedSortedListType extends @AC_galgasType {
 class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 #--- List of all attributes
   @typeListeAttributsSemantiques mNonExternAttributesList ;
-#--- Extract Methods signature (for 'first', 'last', 'popFirst', 'popLast')
+#--- Extract Methods signature (for 'smallest', 'greatest', 'popSmallest', 'popGreatest')
   @L_EXsignature mExtractSignature ;
-#--- Input Methods signature (for 'prependValue')
-  @L_EXsignature mInputSignature ;
 
 #--- list object accepts to be enumerated (foreach instruction)
   override
@@ -2265,32 +2263,30 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end method ;
   
-#--- Modifiers are 'popFirst' and 'popLast' methods
+#--- Modifiers are 'popSmallest' and 'popLast' methods
   override
   method handleModifierCall
     ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
-    if [inModifierName string] == "prependValue" then
-      outModifierSignature := mInputSignature ;
-    elsif ([inModifierName string] == "popFirst") | ([inModifierName string] == "popLast") then
+    if ([inModifierName string] == "popSmallest") | ([inModifierName string] == "popGreatest") then
       outModifierSignature := mExtractSignature ;
     else
-      error inModifierName: "a list accepts only 'popFirst' and 'popLast' modifiers" -> outModifierSignature ;
+      error inModifierName: "a sorted list accepts only 'popSmallest' and 'popGreatest' modifiers" -> outModifierSignature ;
     end if ;
   end method ;
 
 
-#--- List accept 'first' and last' reader in instruction
+#--- List accept 'smallest' and greatest' reader in instruction
   override
   method handleReaderInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
-    if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
-      error inReaderName: "a list accepts only 'first' and 'last' readers" ;
+    if ([inReaderName string] != "smallest") & ([inReaderName string] != "greatest") then
+      error inReaderName: "a sorted list accepts only 'smallest' and 'greatest' methods" ;
     end if ;
     outReaderSignature := mExtractSignature ;
   end method ;
@@ -2308,9 +2304,9 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName string] == "emptyList" then
+    if [inClassMethodName string] == "emptySortedList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName string] == "listWithValue" then
+    elsif [inClassMethodName string] == "sortedListWithValue" then
       outAccessorTypesList := mNonExternAttributesList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -3018,6 +3014,14 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       elsif [inMethodName string] == "hexString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_char () ->
+      if [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else
