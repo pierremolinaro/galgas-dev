@@ -734,46 +734,167 @@
       contextInfo:NULL
     ] ;
   }else{
-    OSStatus myStatus = 0 ;
-  //--- Create an empty Authorization
-    const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
-    AuthorizationRef authorizationRef = 0 ;
-    AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & authorizationRef) ; 
-    NSFileManager * fm = [NSFileManager defaultManager] ;
-    if (! [fm fileExistsAtPath:installationPath]) {
-      const char * createDirArgs [] = {"-p", [installationPath cString], NULL} ;
-      myStatus = [self
-        privilegedOperation:authorizationRef
-        commandPath:"/bin/mkdir"
-        arguments: (char * *) createDirArgs
-      ] ;
-    }
-  //--- Bundle path
-    NSString * bundlePath = [[NSBundle mainBundle] bundlePath] ;
-    //NSLog (@"BUNDLE PATH '%@'", bundlePath) ;
-    NSString * resourcePath = [bundlePath stringByAppendingString:@"/Contents/Resources/"] ;
   //--- Tools
     NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
    // NSLog (@"TOOL NAME ARRAY '%@'", toolNameArray) ;
-  //--- Installing tools
+    NSMutableString * s = [NSMutableString stringWithCapacity:1000] ;
+    [s appendFormat:@"This installs in the %@ directory the following tools:", installationPath] ;
     unsigned i ;
-    for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
-      NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i]] ;
-      const char * copyArgs [] = {[toolSourcePath cString], [installationPath cString], NULL} ;
-      myStatus = [self
-        privilegedOperation:authorizationRef
-        commandPath:"/bin/cp"
-        arguments: (char * *) copyArgs
-      ] ;
+    for (i=0 ; i<[toolNameArray count] ; i++) {
+      [s appendFormat:@"\n  - %@", [toolNameArray objectAtIndex:i]] ;
     }
-  //--- Error ?
-    if (myStatus != 0) {
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Perform command line tools installation ?"
+      defaultButton:@"Ok"
+      alternateButton:@"Cancel"
+      otherButton:nil
+      informativeTextWithFormat:@"%@", s
+    ] ;
+    [alert
+      beginSheetModalForWindow:[mCLIToolInstallationPath window]
+      modalDelegate:self
+      didEndSelector:@selector (performToolInstallationAlertDidEnd:returnCode:contextInfo:)
+      contextInfo:NULL
+    ] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) performToolInstallationAlertDidEnd:(NSAlert *)alert 
+         returnCode:(int) inReturnCode
+         contextInfo:(void *) inContextInfo {
+  if (inReturnCode == YES) {
+    [[NSRunLoop currentRunLoop]
+      performSelector:@selector (install:)
+      target:self
+      argument:nil
+      order:0
+      modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+    ] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) install: (id) ininUnusedArg {
+  OSStatus myStatus = 0 ;
+  //NSLog (@"BUNDLE PATH '%@'", bundlePath) ;
+//--- Installation Path
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  NSString * installationPath = [ud objectForKey:@"cliInstallationPath"] ;
+//--- Bundle path
+  NSString * bundlePath = [[NSBundle mainBundle] bundlePath] ;
+//--- Resource Path
+  NSString * resourcePath = [bundlePath stringByAppendingString:@"/Contents/Resources/"] ;
+//--- Tools
+  NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
+//--- Create an empty Authorization
+  const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
+  AuthorizationRef authorizationRef = 0 ;
+  AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & authorizationRef) ; 
+  NSFileManager * fm = [NSFileManager defaultManager] ;
+  if (! [fm fileExistsAtPath:installationPath]) {
+    const char * createDirArgs [] = {"-p", [installationPath cString], NULL} ;
+    myStatus = [self
+      privilegedOperation:authorizationRef
+      commandPath:"/bin/mkdir"
+      arguments: (char * *) createDirArgs
+    ] ;
+  }
+//--- Installing tools
+  unsigned i ;
+  for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
+    NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i]] ;
+    const char * copyArgs [] = {[toolSourcePath cString], [installationPath cString], NULL} ;
+    myStatus = [self
+      privilegedOperation:authorizationRef
+      commandPath:"/bin/cp"
+      arguments: (char * *) copyArgs
+    ] ;
+  }
+//--- Error ?
+  if (myStatus == 0) {
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Done."
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@""
+    ] ;
+    [alert
+      beginSheetModalForWindow:[mCLIToolInstallationPath window]
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
+  }else if (myStatus != -60006) { // -60006 means anthorization dialog has been cancelled
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Cannot Perform Command Line Interface Tools Installation."
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@"Operation returns error %d.", myStatus
+    ] ;
+    [alert
+      beginSheetModalForWindow:[mCLIToolInstallationPath window]
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+#pragma mark Removing CLI tools
+
+//--------------------------------------------------------------------------*
+//                                                                          *
+//            Removing CLI tools                                            *
+//                                                                          *
+//--------------------------------------------------------------------------*
+
+- (IBAction) performCLIToolRemove: (id) inSender {
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  NSString * installationPath = [ud objectForKey:@"cliInstallationPath"] ;
+  if ([installationPath length] == 0) {
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Cannot Perform Command Line Interface Tools Removing."
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@"The installation path is empty."
+    ] ;
+    [alert
+      beginSheetModalForWindow:[mCLIToolInstallationPath window]
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
+  }else{
+    NSFileManager * fm = [NSFileManager defaultManager] ;
+  //--- Tools
+    NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
+   // NSLog (@"TOOL NAME ARRAY '%@'", toolNameArray) ;
+    NSMutableString * s = [NSMutableString stringWithCapacity:1000] ;
+    [s appendFormat:@"This removes from the %@ directory the following tools:", installationPath] ;
+    BOOL nothingToRemove = YES ;
+    unsigned i ;
+    for (i=0 ; i<[toolNameArray count] ; i++) {
+      NSString * toolName = [toolNameArray objectAtIndex:i] ;
+      if ([fm fileExistsAtPath:[NSString stringWithFormat:@"%@/%@", installationPath, toolName]]) {
+        [s appendFormat:@"\n  - %@", toolName] ;
+        nothingToRemove = NO ;
+      }
+    }
+    if (nothingToRemove) {
       NSAlert * alert = [NSAlert
-        alertWithMessageText:@"Cannot Perform Command Line Interface Tools Installation."
+        alertWithMessageText:@"Cannot remove command line tools."
         defaultButton:@"Ok"
         alternateButton:nil
         otherButton:nil
-        informativeTextWithFormat:@"Operation returns error %d.", myStatus
+        informativeTextWithFormat:@"The tools to be removed do not exist."
       ] ;
       [alert
         beginSheetModalForWindow:[mCLIToolInstallationPath window]
@@ -781,7 +902,95 @@
         didEndSelector:NULL
         contextInfo:NULL
       ] ;
+    }else{
+      NSAlert * alert = [NSAlert
+        alertWithMessageText:@"Perform command line tools removing ?"
+        defaultButton:@"Ok"
+        alternateButton:@"Cancel"
+        otherButton:nil
+        informativeTextWithFormat:@"%@", s
+      ] ;
+      [alert
+        beginSheetModalForWindow:[mCLIToolInstallationPath window]
+        modalDelegate:self
+        didEndSelector:@selector (performToolRemovingAlertDidEnd:returnCode:contextInfo:)
+        contextInfo:NULL
+      ] ;
     }
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) performToolRemovingAlertDidEnd:(NSAlert *)alert 
+         returnCode:(int) inReturnCode
+         contextInfo:(void *) inContextInfo {
+  if (inReturnCode == YES) {
+    [[NSRunLoop currentRunLoop]
+      performSelector:@selector (remove:)
+      target:self
+      argument:nil
+      order:0
+      modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+    ] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) remove: (id) ininUnusedArg {
+  OSStatus myStatus = 0 ;
+  //NSLog (@"BUNDLE PATH '%@'", bundlePath) ;
+//--- Installation Path
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  NSString * installationPath = [ud objectForKey:@"cliInstallationPath"] ;
+//--- Tools
+  NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
+//--- Create an empty Authorization
+  const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
+  AuthorizationRef authorizationRef = 0 ;
+  AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & authorizationRef) ; 
+//  NSFileManager * fm = [NSFileManager defaultManager] ;
+//--- Installing tools
+  unsigned i ;
+  for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
+    NSString * toolPath = [NSString stringWithFormat:@"%@/%@", installationPath, [toolNameArray objectAtIndex:i]] ;
+    const char * copyArgs [] = {[toolPath cString], NULL} ;
+    myStatus = [self
+      privilegedOperation:authorizationRef
+      commandPath:"/bin/rm"
+      arguments: (char * *) copyArgs
+    ] ;
+  }
+//--- Error ?
+  if (myStatus == 0) {
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Done."
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@""
+    ] ;
+    [alert
+      beginSheetModalForWindow:[mCLIToolInstallationPath window]
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
+  }else if (myStatus != -60006) { // -60006 means anthorization dialog has been cancelled
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Cannot Perform Command Line Interface Tools Removing."
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@"Operation returns error %d.", myStatus
+    ] ;
+    [alert
+      beginSheetModalForWindow:[mCLIToolInstallationPath window]
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
   }
 }
 
