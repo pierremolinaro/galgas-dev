@@ -53,6 +53,8 @@
 
 - (IBAction) performCLIToolInstallation: (id) inSender ;
 
+- (IBAction) performCLIToolRemove: (id) inSender ;
+
 @end
 
 //--------------------------------------------------------------------------*
