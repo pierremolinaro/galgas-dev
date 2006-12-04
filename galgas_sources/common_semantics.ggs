@@ -440,7 +440,7 @@ abstract class @AC_galgasType {
   end method ;
 
 #--- By default, class does not accept reader instruction call
-  method handleReaderInstructionCall
+  method handleMethodInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -953,9 +953,9 @@ class @typeGalgas_string extends @AC_galgasType {
   method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
   end method ;
 
-#--- By default, class does not accept reader instruction call
+#--- By default, class does not accept method instruction call
   override
-  method handleReaderInstructionCall
+  method handleMethodInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -963,8 +963,14 @@ class @typeGalgas_string extends @AC_galgasType {
     if [inReaderName string] == "writeToFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inReaderName string] == "makeDirectoryAndWriteToFile" then
+      outReaderSignature := [@L_EXsignature emptyList] ;
+      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inReaderName string] == "makeDirectory" then
+      outReaderSignature := [@L_EXsignature emptyList] ;
     else
-      error inReaderName: "this reader is not defined" -> outReaderSignature ;
+      error inReaderName: "this method is not defined (writeToFile, makeDirectoryAndWriteToFile"
+      . " and makeDirectory methods are defined on @string objects) " -> outReaderSignature ;
     end if ;
   end method ;
 
@@ -1747,7 +1753,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
   end method ;
 
 #--- By default, class does not accept reader instruction call
-  override method handleReaderInstructionCall
+  override method handleMethodInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -2187,7 +2193,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 
 #--- List accept 'first' and last' reader in instruction
   override
-  method handleReaderInstructionCall
+  method handleMethodInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -2280,7 +2286,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 
 #--- List accept 'smallest' and greatest' reader in instruction
   override
-  method handleReaderInstructionCall
+  method handleMethodInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -2389,7 +2395,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 
 #--- Readers are search methods (when map defines no automaton)
   override
-  method handleReaderInstructionCall
+  method handleMethodInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
@@ -2481,7 +2487,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 
 #--- Handle method call : return method signature
   override
-  method handleReaderInstructionCall
+  method handleMethodInstructionCall
     ??@lstring unused inReadObjectName
     ??@lstring inMethodName
     !@L_EXsignature outMethodSignature
@@ -2601,7 +2607,7 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
 
 #--- Handle reader instruction call
   override
-  method handleReaderInstructionCall
+  method handleMethodInstructionCall
     ??@lstring inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature

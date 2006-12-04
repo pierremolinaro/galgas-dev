@@ -2979,7 +2979,7 @@ rule <semantic_instruction>
     @lstring methodName ;
     $identifier$ ? methodName ;
     @L_EXsignature methodSignature ;
-    [variableType handleReaderInstructionCall !readObjectName !methodName ?methodSignature] ;
+    [variableType handleMethodInstructionCall !readObjectName !methodName ?methodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
     <actual_parameters_list>
