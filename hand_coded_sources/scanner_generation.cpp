@@ -258,9 +258,9 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
   inCppFile << "C_String "
             << inLexiqueName
             << "::\n"
-               "getCurrentTokenString (void) const {\n"
+               "getCurrentTokenString (const sint16 inTokenCode) const {\n"
                "  C_String s ;\n"
-               "  switch (mCurrentTokenCode) {\n"
+               "  switch (inTokenCode) {\n"
                "  case  " << inLexiqueName << "_1_:\n"
                "    s << \"$$\" ;\n"
                "    break ;\n" ;
@@ -459,184 +459,6 @@ generate_scanning_method (AC_OutputStream & inCppFile,
 }
 
 //---------------------------------------------------------------------------*
-//                                                                           *
-//                     Generate C++ Scanner file                             *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-static void
-generate_scanner_cpp_file (C_Lexique & inLexique,
-                           const C_String & inLexiqueName,
-                           const GGS_typeLexicalAttributesMap & table_attributs,
-                           const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
-                           const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
-                           const GGS_typeListeTestsEtInstructions & programme_principal,
-                           const GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
-                           const GGS_stringset & inUsedErrorMessageSet,
-                           const GGS_M_styles & inStylesMap) {
-// --------------------------------------- Engendrer les inclusions
-  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include \"version_libpm.h\"\n"
-                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
-                    "#endif\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include <ctype.h>\n"
-                    "#include <string.h>\n\n"
-                    "#include \"" << inLexiqueName << ".h\"\n\n"
-                    "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), currentLineNumber ()\n"
-                    "  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE\n"
-                    "#else\n"
-                    "  #define LINE_AND_SOURCE_FILE\n"
-                    "  #define COMMA_LINE_AND_SOURCE_FILE\n"
-                    "#endif\n\n" ;
-
-// --------------------------------------- Constructor
-  generatedZone2.writeCppTitleComment ("Constructor") ;
-  generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
-          << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS)\n"
-             ": C_Lexique (inGalgasInputOutput COMMA_THERE) {\n" ;
-  generateAttributeInitialization (table_attributs, generatedZone2) ;
-  generatedZone2 << "}\n\n" ;
-
-//---------------------------------------- Generate error message list
-  GGS_typeTableMessagesErreurs::element_type * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
-  if (currentMessage != NULL) {
-    generatedZone2.writeCppTitleComment ("Lexical error message list") ;
-    sint32 messageNumber = 0 ;
-    while (currentMessage != NULL) {
-      macroValidPointer (currentMessage) ;
-      const bool used = inUsedErrorMessageSet.hasKey (currentMessage->mKey) ;
-      if (used) {
-        generatedZone2 << "//--- Message " << messageNumber << "\n" ;
-      }else{
-        generatedZone2 << "//--- Message " << messageNumber << " (not used)\n"
-                          "// " ;      
-      }
-      generatedZone2 << "static const char * gErrorMessage_" << messageNumber << " = " ;
-      generatedZone2.writeCstringConstant (currentMessage->mInfo.mErrorMessage) ;
-      generatedZone2 << " ;\n" ;
-      currentMessage = currentMessage->nextObject () ;
-      messageNumber ++ ;
-    }
-    generatedZone2 << "\n" ;
-  }
-
-// --------------------------------------- Generate syntax error messages
-  C_String errorMessageList ;
-
-  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
-  if (currentTerminal != NULL) {
-    generatedZone2.writeCppTitleComment ("Syntax error messages") ;
-  }
-  while (currentTerminal != NULL) {
-    C_String constanteCname ;
-    constanteCname << "gSyntaxErrorMessage_" ;
-    generateTerminalSymbolCppName (currentTerminal->mKey, constanteCname) ;
-    generatedZone2 << "//--- Syntax error message for terminal '$" << currentTerminal->mKey << "$' :\n"
-               "static const char * " << constanteCname << " = " ;
-    generatedZone2.writeCstringConstant (currentTerminal->mInfo.mErrorMessage) ;
-    generatedZone2 << " ;\n\n" ;
-    errorMessageList << ",\n       gSyntaxErrorMessage_" ;
-    generateTerminalSymbolCppName (currentTerminal->mKey, errorMessageList) ;
-    currentTerminal = currentTerminal->nextObject () ;
-  }
-
-  generatedZone2.writeCppTitleComment ("appendTerminalMessageToSyntaxErrorMessage") ;
-  generatedZone2 << "void "
-           << inLexiqueName
-           << "::\n"
-           << "appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,\n"
-           << "                                           C_String & outSyntaxErrorMessage) {\n" ;
-  const sint32 n = table_des_terminaux.count () + 1 ;
-  generatedZone2 << "  static const char * syntaxErrorMessageArray [" << n << "] = {"
-             "\"end of source\"" << errorMessageList << "} ;\n"
-             "  outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;\n"
-             "}\n\n" ;
-
-//---------------------------------------- Terminal symbol table
-  generateTerminalSymbolsTable (table_tables_mots_reserves, inLexiqueName, generatedZone2) ;
-
-//---------------------------------------- Terminal symbol table
-  generateGetTokenStringMethod (table_des_terminaux, inLexiqueName, generatedZone2) ;
-
-//---------------------------------------- Generate parsing method
-  generate_scanning_method (generatedZone2,
-                            inLexiqueName,
-                            table_attributs,
-                            programme_principal) ;
-//---------------------------------------- Generate styles definition 
-  generatedZone2.writeCppTitleComment ("Styles definition") ;
-  generatedZone2 <<  "sint32 " << inLexiqueName << "::getStylesCount (void) {\n"
-                     "  return " <<  inStylesMap.count () << " ;\n"
-                     "}\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleName (const sint32 inIndex) {\n"
-              "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
-  GGS_M_styles::element_type * style = inStylesMap.firstObject () ;
-  while (style != NULL) {
-    macroValidPointer (style) ;
-    generatedZone2.writeCstringConstant (style->mInfo.mTitle) ;
-    generatedZone2 << ", " ;
-    style = style->nextObject () ;
-  }
-  generatedZone2 << "NULL} ;\n"
-             "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
-             "} ;\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleIdentifier (const sint32 inIndex) {\n"
-              "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
-  style = inStylesMap.firstObject () ;
-  while (style != NULL) {
-    macroValidPointer (style) ;
-    generatedZone2.writeCstringConstant (style->mKey) ;
-    generatedZone2 << ", " ;
-    style = style->nextObject () ;
-  }
-  generatedZone2 << "NULL} ;\n"
-                    "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
-                    "} ;\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "uint8 " << inLexiqueName << "::\n"
-                    "terminalStyleIndex (const sint32 inTerminal) {\n"
-                    "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.count () + 1) << "] = {0" ;
-
-  currentTerminal = table_des_terminaux.firstObject () ;
-  while (currentTerminal != NULL) {
-    generatedZone2 << ",\n    "
-                   << currentTerminal->mInfo.mStyleIndex.uintValue ()
-                   << " /* "
-                   << inLexiqueName
-                   << "_1_" ;
-    generateTerminalSymbolCppName (currentTerminal->mKey, generatedZone2) ;
-    generatedZone2 << " */" ;
-    currentTerminal = currentTerminal->nextObject () ;
-  }
-  generatedZone2 << "\n  } ;\n"
-                    "  return kTerminalSymbolStyles [inTerminal] ;\n"
-                    "}\n\n" ;
-
-  C_String generatedZone3 ;
-  generatedZone3.writeCppHyphenLineComment () ;
-
-//--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
-  inLexique.generateFile ("//",
-                          inLexiqueName + ".cpp",
-                          "\n\n", // User Zone 1
-                          generatedZone2,
-                          "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
-}
-
-
-//---------------------------------------------------------------------------*
 
 static void
 generateExternArgumentForList (const GGS_typeListeArgumentsRoutExterne & inList,
@@ -794,7 +616,10 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) const {
   inCppFile << "mCurrentTokenCode = " << inLexiqueName << "_1_" ;
   generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
-  inCppFile << " ;\n" ;
+  inCppFile << " ;\n"
+               "_enterToken (" << inLexiqueName << "_1_" ;
+  generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
+  inCppFile << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -819,7 +644,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
       inCppFile.incIndentation (+2) ;
     }
     inCppFile << "mCurrentTokenCode = search_into_" << courant->attributNomTable << " ("
-             << courant->attributNomAttribut << ") ;\n" ;
+              << courant->attributNomAttribut << ") ;\n" ;
     if (premier) {
       premier = false ;
     }else{
@@ -832,7 +657,8 @@ generate_scanner_instruction (const C_String & inLexiqueName,
   inCppFile.incIndentation (+2) ;
   attributEmissionParDefaut(HERE)->generateDefaultToken (inLexiqueName, inCppFile) ;
   inCppFile.incIndentation (-2) ;
-  inCppFile << "}\n" ;
+  inCppFile << "}\n"
+               "_enterToken (mCurrentTokenCode) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -970,83 +796,6 @@ generateAttributeInitialization (const GGS_lstring & nom,
 }
 
 //---------------------------------------------------------------------------*
-//                                                                           *
-//                     Engendrer le fichier ".h"                             *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-static void
-generate_scanner_header_file (C_Lexique & inLexique,
-                              const GGS_lstring & inLexiqueName,
-                              const GGS_typeLexicalAttributesMap & table_attributs,
-                              const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
-                              const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves) {
-//--- Write #ifndef, ..., #include, ...
-  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
-  generatedZone2 << "#ifndef " << inLexiqueName << "_0_DEFINED\n"
-                    "#define " << inLexiqueName << "_0_DEFINED\n"
-                    "#include \"galgas/C_Lexique.h\"\n\n" ;
-
-// --------------- Declaration de la classe de l'analyseur lexical  
-  generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
-  generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n" ;
-  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
-  generatedZone3 << "//--- Terminal symbols enumeration\n"
-                    "  public : enum {" ;
-  generatedZone3 <<  inLexiqueName << "_1_" ;
-  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
-  while (currentTerminal != NULL) {
-    macroValidPointer (currentTerminal) ;    
-    generatedZone3 << ",\n  " ;
-    generatedZone3 << inLexiqueName ;
-    generatedZone3 << "_1_" ;
-    generateTerminalSymbolCppName (currentTerminal->mKey, generatedZone3) ;
-    currentTerminal = currentTerminal->nextObject () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-  generateTerminalSymbolsTableDeclaration (table_tables_mots_reserves, inLexiqueName, generatedZone3) ;
-  generatedZone3 << "  protected : virtual void parseLexicalToken (const bool inPropagateLexicalErrorException) ;\n"
-                    "  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,\n"
-                    "                                                              C_String & messageErreur) ;\n"
-                    "\n"
-                    "//--- Constructor\n"
-                    "  public : "
-                 << inLexiqueName
-                 << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS) ;\n" ;
-  generateAttributeDeclaration (table_attributs, generatedZone3) ;
-  generatedZone3 << "  public : virtual sint16 terminalVocabularyCount (void) const { return "
-                 << table_des_terminaux.count ()
-                 << " ; }\n\n"
-//--- Get token string (for debugging) 
-                    "//--- Get Token String\n"
-                    "  public : virtual C_String getCurrentTokenString (void) const ;\n"
-//--- Styles definition 
-                    "//--- Style Definition\n"
-                    "  public : static sint32 getStylesCount (void) ;\n"
-                    "  public : static const char * getStyleName (const sint32 inIndex) ;\n"
-                    "  public : static const char * getStyleIdentifier (const sint32 inIndex) ;\n"
-                    "//--- Virtual method called getting terminal style index\n"
-                    "  public : virtual uint8 terminalStyleIndex (const sint32 inTerminal) ;\n"
-        "} ;\n\n" ;
-//--- End of ".h" file
-  generatedZone3.writeCppHyphenLineComment () ;
-  generatedZone3 << "#endif\n" ;
-
-//--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
-  inLexique.generateFile ("//",
-                          inLexiqueName + ".h",
-                          "\n\n", // User Zone 1
-                          generatedZone2,
-                          "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
-}
-
-//---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark ========= generateAttributeDeclaration
@@ -1058,7 +807,7 @@ void cPtr_typeGalgas_lstring::
 generateAttributeDeclaration (const GGS_lstring & nom,
                               AC_OutputStream & H_file) const {
   H_file << "  public : C_String " << nom
-   << " ; // user defined attribute\n" ;
+         << " ; // user defined attribute\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1201,6 +950,299 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark ========= routine_generate_scanner
 #endif
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                     Engendrer le fichier ".h"                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+static void
+generate_scanner_header_file (C_Lexique & inLexique,
+                              const GGS_lstring & inLexiqueName,
+                              const GGS_typeLexicalAttributesMap & table_attributs,
+                              const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
+                              const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves) {
+//--- Write #ifndef, ..., #include, ...
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
+  generatedZone2 << "#ifndef " << inLexiqueName << "_0_DEFINED\n"
+                    "#define " << inLexiqueName << "_0_DEFINED\n"
+                    "#include \"galgas/C_Lexique.h\"\n\n" ;
+// --------------- Token Class declaration  
+  generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
+  generatedZone2 << "class cTokenFor_" << inLexiqueName << " : public cToken {\n" ;
+  generateAttributeDeclaration (table_attributs, generatedZone2) ;
+  generatedZone2 << "} ;\n\n" ;
+
+// --------------- Declaration de la classe de l'analyseur lexical  
+  generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
+  generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n" ;
+  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
+  generatedZone3 << "//--- Terminal symbols enumeration\n"
+                    "  public : enum {" ;
+  generatedZone3 <<  inLexiqueName << "_1_" ;
+  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
+  while (currentTerminal != NULL) {
+    macroValidPointer (currentTerminal) ;    
+    generatedZone3 << ",\n  " ;
+    generatedZone3 << inLexiqueName ;
+    generatedZone3 << "_1_" ;
+    generateTerminalSymbolCppName (currentTerminal->mKey, generatedZone3) ;
+    currentTerminal = currentTerminal->nextObject () ;
+  }
+  generatedZone3 << "} ;\n\n" ;
+  generateTerminalSymbolsTableDeclaration (table_tables_mots_reserves, inLexiqueName, generatedZone3) ;
+  generatedZone3 << "  protected : virtual void parseLexicalToken (const bool inPropagateLexicalErrorException) ;\n"
+                    "  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,\n"
+                    "                                                              C_String & messageErreur) ;\n"
+                    "\n"
+                    "//--- Constructor\n"
+                    "  public : "
+                 << inLexiqueName
+                 << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS) ;\n" ;
+  generateAttributeDeclaration (table_attributs, generatedZone3) ;
+  generatedZone3 << "  public : virtual sint16 terminalVocabularyCount (void) const { return "
+                 << table_des_terminaux.count ()
+                 << " ; }\n\n"
+//--- Get token string (for debugging) 
+                    "//--- Get Token String\n"
+                    "  public : virtual C_String getCurrentTokenString (const sint16 inTokenCode) const ;\n"
+                    "//--- Enter Token\n"
+                    "  protected : void _enterToken (const sint16 inTokenCode) ;\n"
+                    "//--- Restore context from oken\n"
+                    "  protected : virtual void _restoreContextFromToken (void) ;\n"
+//--- Styles definition 
+                    "//--- Style Definition\n"
+                    "  public : static sint32 getStylesCount (void) ;\n"
+                    "  public : static const char * getStyleName (const sint32 inIndex) ;\n"
+                    "  public : static const char * getStyleIdentifier (const sint32 inIndex) ;\n"
+                    "//--- Virtual method called getting terminal style index\n"
+                    "  public : virtual uint8 terminalStyleIndex (const sint32 inTerminal) ;\n"
+        "} ;\n\n" ;
+//--- End of ".h" file
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "#endif\n" ;
+
+//--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
+  inLexique.generateFile ("//",
+                          inLexiqueName + ".h",
+                          "\n\n", // User Zone 1
+                          generatedZone2,
+                          "\n\n", // User Zone 2
+                          generatedZone3,
+                          verboseOptionOn,
+                          false) ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                     Generate C++ Scanner file                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+static void
+generate_scanner_cpp_file (C_Lexique & inLexique,
+                           const C_String & inLexiqueName,
+                           const GGS_typeLexicalAttributesMap & table_attributs,
+                           const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
+                           const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
+                           const GGS_typeListeTestsEtInstructions & programme_principal,
+                           const GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
+                           const GGS_stringset & inUsedErrorMessageSet,
+                           const GGS_M_styles & inStylesMap) {
+// --------------------------------------- Engendrer les inclusions
+  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"version_libpm.h\"\n"
+                    "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+                    "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
+                    "#endif\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include <ctype.h>\n"
+                    "#include <string.h>\n\n"
+                    "#include \"utilities/MF_MemoryControl.h\"\n"
+                    "#include \"" << inLexiqueName << ".h\"\n\n"
+                    "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), currentLineNumber ()\n"
+                    "  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE\n"
+                    "#else\n"
+                    "  #define LINE_AND_SOURCE_FILE\n"
+                    "  #define COMMA_LINE_AND_SOURCE_FILE\n"
+                    "#endif\n\n" ;
+
+// --------------------------------------- Constructor
+  generatedZone2.writeCppTitleComment ("Constructor") ;
+  generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
+          << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS)\n"
+             ": C_Lexique (inGalgasInputOutput COMMA_THERE) {\n" ;
+  generateAttributeInitialization (table_attributs, generatedZone2) ;
+  generatedZone2 << "}\n\n" ;
+
+//---------------------------------------- Generate error message list
+  GGS_typeTableMessagesErreurs::element_type * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
+  if (currentMessage != NULL) {
+    generatedZone2.writeCppTitleComment ("Lexical error message list") ;
+    sint32 messageNumber = 0 ;
+    while (currentMessage != NULL) {
+      macroValidPointer (currentMessage) ;
+      const bool used = inUsedErrorMessageSet.hasKey (currentMessage->mKey) ;
+      if (used) {
+        generatedZone2 << "//--- Message " << messageNumber << "\n" ;
+      }else{
+        generatedZone2 << "//--- Message " << messageNumber << " (not used)\n"
+                          "// " ;      
+      }
+      generatedZone2 << "static const char * gErrorMessage_" << messageNumber << " = " ;
+      generatedZone2.writeCstringConstant (currentMessage->mInfo.mErrorMessage) ;
+      generatedZone2 << " ;\n" ;
+      currentMessage = currentMessage->nextObject () ;
+      messageNumber ++ ;
+    }
+    generatedZone2 << "\n" ;
+  }
+
+// --------------------------------------- Generate syntax error messages
+  C_String errorMessageList ;
+
+  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
+  if (currentTerminal != NULL) {
+    generatedZone2.writeCppTitleComment ("Syntax error messages") ;
+  }
+  while (currentTerminal != NULL) {
+    C_String constanteCname ;
+    constanteCname << "gSyntaxErrorMessage_" ;
+    generateTerminalSymbolCppName (currentTerminal->mKey, constanteCname) ;
+    generatedZone2 << "//--- Syntax error message for terminal '$" << currentTerminal->mKey << "$' :\n"
+               "static const char * " << constanteCname << " = " ;
+    generatedZone2.writeCstringConstant (currentTerminal->mInfo.mErrorMessage) ;
+    generatedZone2 << " ;\n\n" ;
+    errorMessageList << ",\n       gSyntaxErrorMessage_" ;
+    generateTerminalSymbolCppName (currentTerminal->mKey, errorMessageList) ;
+    currentTerminal = currentTerminal->nextObject () ;
+  }
+
+  generatedZone2.writeCppTitleComment ("appendTerminalMessageToSyntaxErrorMessage") ;
+  generatedZone2 << "void "
+           << inLexiqueName
+           << "::\n"
+           << "appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,\n"
+           << "                                           C_String & outSyntaxErrorMessage) {\n" ;
+  const sint32 n = table_des_terminaux.count () + 1 ;
+  generatedZone2 << "  static const char * syntaxErrorMessageArray [" << n << "] = {"
+             "\"end of source\"" << errorMessageList << "} ;\n"
+             "  outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;\n"
+             "}\n\n" ;
+
+//---------------------------------------- Terminal symbol table
+  generateTerminalSymbolsTable (table_tables_mots_reserves, inLexiqueName, generatedZone2) ;
+
+//---------------------------------------- Terminal symbol table
+  generateGetTokenStringMethod (table_des_terminaux, inLexiqueName, generatedZone2) ;
+
+//---------------------------------------- Generate parsing method
+  generate_scanning_method (generatedZone2,
+                            inLexiqueName,
+                            table_attributs,
+                            programme_principal) ;
+//---------------------------------------- Generate styles definition 
+  generatedZone2.writeCppTitleComment ("Styles definition") ;
+  generatedZone2 <<  "sint32 " << inLexiqueName << "::getStylesCount (void) {\n"
+                     "  return " <<  inStylesMap.count () << " ;\n"
+                     "}\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleName (const sint32 inIndex) {\n"
+              "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
+  GGS_M_styles::element_type * style = inStylesMap.firstObject () ;
+  while (style != NULL) {
+    macroValidPointer (style) ;
+    generatedZone2.writeCstringConstant (style->mInfo.mTitle) ;
+    generatedZone2 << ", " ;
+    style = style->nextObject () ;
+  }
+  generatedZone2 << "NULL} ;\n"
+             "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
+             "} ;\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleIdentifier (const sint32 inIndex) {\n"
+              "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
+  style = inStylesMap.firstObject () ;
+  while (style != NULL) {
+    macroValidPointer (style) ;
+    generatedZone2.writeCstringConstant (style->mKey) ;
+    generatedZone2 << ", " ;
+    style = style->nextObject () ;
+  }
+  generatedZone2 << "NULL} ;\n"
+                    "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
+                    "} ;\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "uint8 " << inLexiqueName << "::\n"
+                    "terminalStyleIndex (const sint32 inTerminal) {\n"
+                    "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.count () + 1) << "] = {0" ;
+
+  currentTerminal = table_des_terminaux.firstObject () ;
+  while (currentTerminal != NULL) {
+    generatedZone2 << ",\n    "
+                   << currentTerminal->mInfo.mStyleIndex.uintValue ()
+                   << " /* "
+                   << inLexiqueName
+                   << "_1_" ;
+    generateTerminalSymbolCppName (currentTerminal->mKey, generatedZone2) ;
+    generatedZone2 << " */" ;
+    currentTerminal = currentTerminal->nextObject () ;
+  }
+  generatedZone2 << "\n  } ;\n"
+                    "  return kTerminalSymbolStyles [inTerminal] ;\n"
+                    "}\n\n" ;
+
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "void " << inLexiqueName << "::_enterToken (const sint16 inTokenCode) {\n"
+                    "  cTokenFor_" << inLexiqueName << " * _p = NULL ;\n"
+                    "  macroMyNew (_p, cTokenFor_" << inLexiqueName << " ()) ;\n"
+                    "  _p->_mTokenCode = inTokenCode ;\n"
+                    "  _p->_mCurrentLocation = currentLocationInSource () ;\n" ;
+  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
+  while (currentAttribute != NULL) {
+    generatedZone2 << "  _p->" << currentAttribute->mKey << " = " << currentAttribute->mKey << " ;\n" ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+  generatedZone2 << "  _enterTokenFromPointer (_p) ;\n"
+                    "}\n\n" ;
+
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "void " << inLexiqueName << "::_restoreContextFromToken (void) {\n"
+                    "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " * ) mCurrentTokenPtr ;\n"
+                    "  mCurrentTokenCode = _p->_mTokenCode ;\n"
+                    "  _mCurrentLocation = _p->_mCurrentLocation ;\n" ;
+  currentAttribute = table_attributs.firstObject () ;
+  while (currentAttribute != NULL) {
+    generatedZone2 << "  " << currentAttribute->mKey << " = _p->" << currentAttribute->mKey << " ;\n" ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+  generatedZone2 << "}\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+
+
+  C_String generatedZone3 ;
+  generatedZone3.writeCppHyphenLineComment () ;
+
+//--- Generate file
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output",
+                                                                  false) ;
+  inLexique.generateFile ("//",
+                          inLexiqueName + ".cpp",
+                          "\n\n", // User Zone 1
+                          generatedZone2,
+                          "\n\n", // User Zone 2
+                          generatedZone3,
+                          verboseOptionOn,
+                          false) ;
+}
+
 
 //---------------------------------------------------------------------------*
 

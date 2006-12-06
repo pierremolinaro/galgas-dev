@@ -612,7 +612,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
                    ",\n                     gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                 << productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE)
                 << ") ;\n"
-                   "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"
+                   "  if (ok && ! _inLexique.mParseOnlyFlag) {\n"
                    "    " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "_outReturnedModelInstance = " ;      
