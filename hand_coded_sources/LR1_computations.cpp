@@ -1170,7 +1170,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
         generatedZone3 << "  const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                     gActionTableIndex, gSuccessorTable,\n"
                           "                                                     gProductionsTable) ;\n"
-                          "  if (ok && ! _inLexique.parseOnlyFlagOn ()) {\n"
+                          "  if (ok && ! _inLexique.mParseOnlyFlag) {\n"
                           "    " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "_outReturnedModelInstance = " ;      

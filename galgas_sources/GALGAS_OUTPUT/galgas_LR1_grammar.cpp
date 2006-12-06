@@ -75015,7 +75015,7 @@ startParsing_ (galgas_scanner & _inLexique,
   const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_ (_inLexique, parameter_1, parameter_2, parameter_3, parameter_4, parameter_5, parameter_6, parameter_7) ;
   }
 }
@@ -75027,7 +75027,7 @@ startParsing_importLexique (galgas_scanner & _inLexique,
   const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importLexique (_inLexique, parameter_1) ;
   }
 }
@@ -75040,7 +75040,7 @@ startParsing_importSyntax (galgas_scanner & _inLexique,
   const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importSyntax (_inLexique, parameter_1, parameter_2) ;
   }
 }
@@ -75054,7 +75054,7 @@ startParsing_importSemantics (galgas_scanner & _inLexique,
   const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importSemantics (_inLexique, parameter_1, parameter_2, parameter_3) ;
   }
 }
@@ -75068,7 +75068,7 @@ startParsing_importGrammarForSemantics (galgas_scanner & _inLexique,
   const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importGrammarForSemantics (_inLexique, parameter_1, parameter_2, parameter_3) ;
   }
 }
@@ -75080,7 +75080,7 @@ startParsing_importOptions (galgas_scanner & _inLexique,
   const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importOptions (_inLexique, parameter_1) ;
   }
 }
@@ -75091,7 +75091,7 @@ startParsing_compileFile (galgas_scanner & _inLexique) {
   const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_compileFile (_inLexique) ;
   }
 }

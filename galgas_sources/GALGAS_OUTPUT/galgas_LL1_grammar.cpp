@@ -6935,7 +6935,7 @@ void galgas_LL1_grammar::startParsing_ (galgas_scanner & _inLexique,
 // classCount : 0
   const bool ok = _inLexique.performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                      gFirstProductionIndexes, gDecision, gDecisionIndexes, 1839) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_ (_inLexique, parameter_1, parameter_2, parameter_3, parameter_4, parameter_5, parameter_6, parameter_7) ;
   }
 }
@@ -6946,7 +6946,7 @@ void galgas_LL1_grammar::startParsing_importLexique (galgas_scanner & _inLexique
 // classCount : 0
   const bool ok = _inLexique.performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                      gFirstProductionIndexes, gDecision, gDecisionIndexes, 1839) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importLexique (_inLexique, parameter_1) ;
   }
 }
@@ -6958,7 +6958,7 @@ void galgas_LL1_grammar::startParsing_importSyntax (galgas_scanner & _inLexique,
 // classCount : 0
   const bool ok = _inLexique.performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                      gFirstProductionIndexes, gDecision, gDecisionIndexes, 1839) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importSyntax (_inLexique, parameter_1, parameter_2) ;
   }
 }
@@ -6971,7 +6971,7 @@ void galgas_LL1_grammar::startParsing_importSemantics (galgas_scanner & _inLexiq
 // classCount : 0
   const bool ok = _inLexique.performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                      gFirstProductionIndexes, gDecision, gDecisionIndexes, 1839) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importSemantics (_inLexique, parameter_1, parameter_2, parameter_3) ;
   }
 }
@@ -6984,7 +6984,7 @@ void galgas_LL1_grammar::startParsing_importGrammarForSemantics (galgas_scanner 
 // classCount : 0
   const bool ok = _inLexique.performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                      gFirstProductionIndexes, gDecision, gDecisionIndexes, 1839) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importGrammarForSemantics (_inLexique, parameter_1, parameter_2, parameter_3) ;
   }
 }
@@ -6995,7 +6995,7 @@ void galgas_LL1_grammar::startParsing_importOptions (galgas_scanner & _inLexique
 // classCount : 0
   const bool ok = _inLexique.performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                      gFirstProductionIndexes, gDecision, gDecisionIndexes, 1839) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_importOptions (_inLexique, parameter_1) ;
   }
 }
@@ -7005,7 +7005,7 @@ void galgas_LL1_grammar::startParsing_compileFile (galgas_scanner & _inLexique) 
 // classCount : 0
   const bool ok = _inLexique.performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                      gFirstProductionIndexes, gDecision, gDecisionIndexes, 1839) ;
-  if (ok && ! _inLexique.parseOnlyFlagOn ()) {
+  if (ok && ! _inLexique.mParseOnlyFlag) {
     nt_galgas_start_symbol_compileFile (_inLexique) ;
   }
 }
