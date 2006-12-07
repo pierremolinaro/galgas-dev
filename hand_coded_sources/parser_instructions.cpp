@@ -247,9 +247,10 @@ generateInstruction (AC_OutputStream & inCppFile,
     GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.firstObject () ;
     while (argument != NULL) {
       macroValidPointer (argument) ;
+      inCppFile << "_inLexique._assignFromAttribute_"
+                << argument->aNomAttributSource << " (" ;
       argument->aNomVariableCible (HERE)->generateCplusPlusName (inCppFile) ;
-      inCppFile << ".defineAttributeFromScanner (_inLexique."
-               << argument->aNomAttributSource << ", _inLexique) ;\n" ;
+      inCppFile << ") ;\n" ;
       argument = argument->nextObject () ;
     }
   }
