@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate parser instructions                                             *
 //                                                                           *
-//  Copyright (C) 1999-2006 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -239,10 +239,6 @@ generateInstruction (AC_OutputStream & inCppFile,
                        sint32 & /* ioPrototypeIndex */,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
-  inCppFile << "_inLexique.acceptTerminal (" << inLexiqueClassName << "::"
-            << inLexiqueClassName << "_1_" ;
-  generateTerminalSymbolCppName (aNomTerminal, inCppFile) ;
-  inCppFile << ") ;\n" ;
   if (inGenerateSemanticInstructions) {
     GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.firstObject () ;
     while (argument != NULL) {
@@ -269,6 +265,10 @@ generateInstruction (AC_OutputStream & inCppFile,
                  "  }\n"
                  "#endif\n" ;
   }
+  inCppFile << "_inLexique.acceptTerminal (ACCEPT_TERMINAL (" << inLexiqueClassName << "::"
+            << inLexiqueClassName << "_1_" ;
+  generateTerminalSymbolCppName (aNomTerminal, inCppFile) ;
+  inCppFile << ") COMMA_HERE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
