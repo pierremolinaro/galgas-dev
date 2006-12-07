@@ -198,8 +198,8 @@ class galgas_scanner : public C_Lexique {
   private : static const C_lexique_table_entry galgas_scanner_table_for_galgasKeyWordList [75] ;
   public : static sint16 search_into_galgasKeyWordList (const C_String & inSearchedString) ;
 
-  protected : virtual void parseLexicalToken (void) ;
-  protected : virtual void parseLexicalTokenForLexicalColoring (void) ;
+  protected : virtual bool parseLexicalToken (void) ;
+  protected : virtual sint16 parseLexicalTokenForLexicalColoring (void) ;
   protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,
                                                               C_String & messageErreur) ;
 
@@ -228,8 +228,6 @@ class galgas_scanner : public C_Lexique {
   public : virtual C_String getCurrentTokenString (const sint16 inTokenCode) const ;
 //--- Enter Token
   protected : void _enterToken (const sint16 inTokenCode) ;
-//--- Restore context from oken
-  protected : virtual void _restoreContextFromToken (void) ;
 //--- Style Definition
   public : static sint32 getStylesCount (void) ;
   public : static const char * getStyleName (const sint32 inIndex) ;

@@ -63,11 +63,12 @@ instructions_list_uses_loop_variable (const GGS_typeListeTestsEtInstructions & i
 static void
 generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inList,
                                     const C_String & inLexiqueName,
+                                    const bool inGenerateEnterToken,
                                     AC_OutputStream & inCppFile) {
   GGS_tListeInstructionsLexicales::element_type * courant = inList.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
-    courant->attributInstruction(HERE)->generate_scanner_instruction (inLexiqueName, inCppFile) ;
+    courant->attributInstruction(HERE)->generate_scanner_instruction (inLexiqueName, inGenerateEnterToken, inCppFile) ;
     courant = courant->nextObject () ;
   }
 }
@@ -78,6 +79,7 @@ static void
 generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
                      const C_String & inLexiqueName,
                      AC_OutputStream & inCppFile,
+                     const bool inGenerateEnterToken,
                      bool & outNonEmptyList) {
   bool premier = true ;
   GGS_typeListeTestsEtInstructions::element_type * courant = inList.firstObject () ;
@@ -105,7 +107,7 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
     }
     inCppFile << ") {\n" ;
     inCppFile.incIndentation (+2) ;
-    generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inCppFile) ;
+    generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inGenerateEnterToken, inCppFile) ;
     inCppFile.incIndentation (-2) ;
     courant = courant->nextObject () ;
   }
@@ -419,36 +421,37 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                           const GGS_typeListeTestsEtInstructions & programme_principal) {
 
   inCppFile.writeCppTitleComment ("parseLexicalToken") ;
-  inCppFile << "void " << inLexiqueName << "::\n"
+  inCppFile << "bool " << inLexiqueName << "::\n"
                "parseLexicalToken (void) {\n" ;
   inCppFile.incIndentation (+2) ;
    if (instructions_list_uses_loop_variable (programme_principal)) {
      inCppFile << "bool loop_ = true ;\n" ;
    }
-  inCppFile << "mCurrentTokenCode = -1 ;\n"
-               "while (mCurrentTokenCode < 0) {\n" ;
+  inCppFile << "sint16 currentTokenCode_ = -1 ;\n"
+               "while (currentTokenCode_ < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
   inCppFile << "mCurrentTokenStartLocation = currentLocation () ;\n"
               "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
-  generateScannerCode (programme_principal, inLexiqueName, inCppFile, nonEmptyList) ;
+  generateScannerCode (programme_principal, inLexiqueName, inCppFile, true, nonEmptyList) ;
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
   inCppFile << "if (testForInputChar ('\\0')) { // End of source text ? \n"
-               "  mCurrentTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
+               "  currentTokenCode_ = " << inLexiqueName << "_1_ ; // Empty string code\n"
                "}else{ // Unknown input character\n"
                "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
                "}\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}catch (const C_lexicalErrorException &) {\n"
-               "  mCurrentTokenCode = -1 ; // No token\n"
+               "  currentTokenCode_ = -1 ; // No token\n"
                "  advance () ; // ... go throught unknown character\n"
                "}\n" ;
   inCppFile.incIndentation (-2) ;
-  inCppFile << "}\n" ;
+  inCppFile << "}\n"
+               "return currentTokenCode_ > 0 ;\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}\n\n" ;  
 }
@@ -462,7 +465,7 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
                                           const GGS_typeListeTestsEtInstructions & programme_principal) {
 
   inCppFile.writeCppTitleComment ("parseLexicalTokenForLexicalColoring") ;
-  inCppFile << "void "
+  inCppFile << "sint16 "
            << inLexiqueName
            << "::\n"
               "parseLexicalTokenForLexicalColoring (void) {\n" ;
@@ -470,33 +473,34 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
      inCppFile << "  bool loop_ = true ;\n" ;
    }
   inCppFile.incIndentation (+2) ;
-  inCppFile << "mCurrentTokenCode = -1 ;\n"
-               "while (mCurrentTokenCode < 0) {\n" ;
+  inCppFile << "sint16 currentTokenCode_ = -1 ;\n"
+               "while (currentTokenCode_ < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
   inCppFile << "mCurrentTokenStartLocation = currentLocation () ;\n"
               "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
-  generateScannerCode (programme_principal, inLexiqueName, inCppFile, nonEmptyList) ;
+  generateScannerCode (programme_principal, inLexiqueName, inCppFile, false, nonEmptyList) ;
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
   inCppFile << "if (testForInputChar ('\\0')) { // End of source text ? \n"
-              "  mCurrentTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
+              "  currentTokenCode_ = " << inLexiqueName << "_1_ ; // Empty string code\n"
               "}else{ // Unknown input character\n"
               "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
               "}\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}catch (const C_lexicalErrorException &) {\n"
-             "  mCurrentTokenCode = -1 ; // No token\n"
+             "  currentTokenCode_ = -1 ; // No token\n"
              "  advance () ; // ... go throught unknown character\n"
              "  throw ;\n"
              "}\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}\n" ;
   inCppFile.incIndentation (-2) ;
-  inCppFile << "}\n\n" ;  
+  inCppFile << "  return currentTokenCode_ ;\n"
+               "}\n\n" ;  
 }
 
 //---------------------------------------------------------------------------*
@@ -567,6 +571,7 @@ instruction__uses_loop_variable (void) const {
 
 void cPtr_typeInstructionActionExterne::
 generate_scanner_instruction (const C_String &, //inLexiqueName
+                              const bool /*inGenerateEnterToken */,
                               AC_OutputStream & inCppFile) const {
   inCppFile << "scanner_action_" << attributNomRoutineExterne << " (" ;
 //--- Engendrer la liste des arguments (au moins 1)
@@ -594,16 +599,17 @@ instruction__uses_loop_variable (void) const {
 
 void cPtr_typeInstructionRepetitionLexicale::
 generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
   inCppFile << "do {\n" ;
   inCppFile.incIndentation (+2) ;
-  generate_scanner_instructions_list (attributListeInstructionsDebut, inLexiqueName, inCppFile) ;
+  generate_scanner_instructions_list (attributListeInstructionsDebut, inLexiqueName, inGenerateEnterToken, inCppFile) ;
   bool nonEmptyList = true ;
-  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, nonEmptyList) ;
+  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, inGenerateEnterToken, nonEmptyList) ;
   if (nonEmptyList) {
     inCppFile << "}else{\n"
-                "  loop_ = false ;\n"
-                "}\n" ;
+                 "  loop_ = false ;\n"
+                 "}\n" ;
   }else{
     inCppFile << "  loop_ = false ;\n" ;
   }
@@ -624,20 +630,21 @@ instruction__uses_loop_variable (void) const {
 
 void cPtr_typeInstructionSiLexical::
 generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
   bool nonEmptyList = true ;
-  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, nonEmptyList) ;
+  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, inGenerateEnterToken, nonEmptyList) ;
   if (nonEmptyList) {
     if (attributBrancheSinon.firstObject () != NULL) {
       inCppFile << "}else{\n" ;
       inCppFile.incIndentation (+2) ;
-      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inCppFile) ;
+      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile) ;
       inCppFile.incIndentation (-2) ;
     }
     inCppFile << "}\n" ;
   }else if (attributBrancheSinon.firstObject () != NULL) {
       inCppFile.incIndentation (+2) ;
-      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inCppFile) ;
+      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile) ;
       inCppFile.incIndentation (-2) ;
     }
 }
@@ -654,13 +661,16 @@ instruction__uses_loop_variable (void) const {
 
 void cPtr_typeInstructionEmettreSimple::
 generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "mCurrentTokenCode = " << inLexiqueName << "_1_" ;
+  inCppFile << "currentTokenCode_ = " << inLexiqueName << "_1_" ;
   generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
-  inCppFile << " ;\n"
-               "_enterToken (" << inLexiqueName << "_1_" ;
-  generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
-  inCppFile << ") ;\n" ;
+  inCppFile << " ;\n" ;
+  if (inGenerateEnterToken) {
+    inCppFile << "_enterToken (" << inLexiqueName << "_1_" ;
+    generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
+    inCppFile << ") ;\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -675,16 +685,17 @@ instruction__uses_loop_variable (void) const {
 
 void cPtr_typeInstructionEmettre::
 generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
   bool premier = true ;
   GGS_typeListeRecherche::element_type * courant = attributListeRecherches.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     if (! premier) {
-      inCppFile << "if (mCurrentTokenCode == -1) {\n" ;
+      inCppFile << "if (currentTokenCode_ == -1) {\n" ;
       inCppFile.incIndentation (+2) ;
     }
-    inCppFile << "mCurrentTokenCode = search_into_" << courant->attributNomTable << " ("
+    inCppFile << "currentTokenCode_ = search_into_" << courant->attributNomTable << " ("
               << courant->attributNomAttribut << ") ;\n" ;
     if (premier) {
       premier = false ;
@@ -694,12 +705,14 @@ generate_scanner_instruction (const C_String & inLexiqueName,
     }
     courant = courant->nextObject () ;
   }
-  inCppFile << "if (mCurrentTokenCode == -1) {\n" ;
+  inCppFile << "if (currentTokenCode_ == -1) {\n" ;
   inCppFile.incIndentation (+2) ;
   attributEmissionParDefaut(HERE)->generateDefaultToken (inLexiqueName, inCppFile) ;
   inCppFile.incIndentation (-2) ;
-  inCppFile << "}\n"
-               "_enterToken (mCurrentTokenCode) ;\n" ;
+  inCppFile << "}\n" ;
+  if (inGenerateEnterToken) {
+    inCppFile << "_enterToken (currentTokenCode_) ;\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -707,7 +720,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 void cPtr_typeEmissionTerminalParDefaut::
 generateDefaultToken (const C_String & inLexiqueName,
                       AC_OutputStream & inCppFile) const {
-  inCppFile << "mCurrentTokenCode = " << inLexiqueName << "_1_" ;
+  inCppFile << "currentTokenCode_ = " << inLexiqueName << "_1_" ;
   generateTerminalSymbolCppName (attributNomTerminal, inCppFile) ;
   inCppFile << " ;\n" ;
 }
@@ -732,6 +745,7 @@ instruction__uses_loop_variable (void) const {
 
 void cPtr_typeInstructionErreurLexicale::
 generate_scanner_instruction (const C_String &, // inLexiqueName
+                              const bool /*inGenerateEnterToken */,
                               AC_OutputStream & inCppFile) const {
   inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
@@ -1044,8 +1058,8 @@ generate_scanner_header_file (C_Lexique & inLexique,
   }
   generatedZone3 << "} ;\n\n" ;
   generateTerminalSymbolsTableDeclaration (table_tables_mots_reserves, inLexiqueName, generatedZone3) ;
-  generatedZone3 << "  protected : virtual void parseLexicalToken (void) ;\n"
-                    "  protected : virtual void parseLexicalTokenForLexicalColoring (void) ;\n"
+  generatedZone3 << "  protected : virtual bool parseLexicalToken (void) ;\n"
+                    "  protected : virtual sint16 parseLexicalTokenForLexicalColoring (void) ;\n"
                     "  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,\n"
                     "                                                              C_String & messageErreur) ;\n"
                     "\n"
@@ -1073,8 +1087,6 @@ generate_scanner_header_file (C_Lexique & inLexique,
                     "  public : virtual C_String getCurrentTokenString (const sint16 inTokenCode) const ;\n"
                     "//--- Enter Token\n"
                     "  protected : void _enterToken (const sint16 inTokenCode) ;\n"
-                    "//--- Restore context from oken\n"
-                    "  protected : virtual void _restoreContextFromToken (void) ;\n"
 //--- Styles definition 
                     "//--- Style Definition\n"
                     "  public : static sint32 getStylesCount (void) ;\n"
@@ -1279,18 +1291,6 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   }
   generatedZone2 << "  _enterTokenFromPointer (_p) ;\n"
                     "}\n\n" ;
-
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "void " << inLexiqueName << "::_restoreContextFromToken (void) {\n"
-                    "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) mCurrentTokenPtr ;\n"
-                    "  mCurrentTokenCode = _p->_mTokenCode ;\n"
-                    "  _mCurrentLocation = _p->_mCurrentLocation ;\n" ;
-  currentAttribute = table_attributs.firstObject () ;
-  while (currentAttribute != NULL) {
-    generatedZone2 << "  " << currentAttribute->mKey << " = _p->" << currentAttribute->mKey << " ;\n" ;
-    currentAttribute = currentAttribute->nextObject () ;
-  }
-  generatedZone2 << "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Get lexical attribute value
@@ -1300,10 +1300,11 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                       "_assignFromAttribute_" << currentAttribute->mKey << " (" ;
     currentAttribute->mInfo.attributType (HERE)->generateCppClassName (generatedZone2) ;
     generatedZone2 << "& outValue) const {\n"
+                      "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) mCurrentTokenPtr ;\n"
                       "  outValue = " ;
     currentAttribute->mInfo.attributType (HERE)->generateCppClassName (generatedZone2) ;
 //    generatedZone2 << "(* this, ((cTokenFor_" << inLexiqueName << " *)mCurrentTokenPtr)->" << currentAttribute->mKey << ") ;\n"
-    generatedZone2 << "(* this, " << currentAttribute->mKey << ") ;\n"
+    generatedZone2 << "(* this, _p->" << currentAttribute->mKey << ") ;\n"
                       "}\n\n" ;
     currentAttribute = currentAttribute->nextObject () ;
     generatedZone2.writeCppHyphenLineComment () ;

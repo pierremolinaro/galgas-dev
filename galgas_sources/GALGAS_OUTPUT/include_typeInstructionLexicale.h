@@ -22,6 +22,7 @@ class cPtr_typeInstructionLexicale : public C_GGS_Object {
 
 public : virtual bool instruction__uses_loop_variable (void) const = 0 ;
 public : virtual void generate_scanner_instruction (const C_String & inLexiqueName,
+                                                    const bool inGenerateEnterToken,
                                                     AC_OutputStream & inCppFile) const = 0 ;
 
 //--- END OF USER ZONE 2
