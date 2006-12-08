@@ -117,12 +117,12 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
 
 static void
 engendrerDeclarationAttributInterne (GGS_typeLexicalAttributesMap::element_type * p,
-                                     AC_OutputStream & H_file) {
+                                     AC_OutputStream & inHfile) {
   if (p != NULL) {
     macroValidPointer (p) ;
-    engendrerDeclarationAttributInterne (p->infObject (), H_file) ;
-    p->mInfo.attributType(HERE)->generateAttributeDeclaration (p->mKey, H_file) ;
-    engendrerDeclarationAttributInterne (p->supObject (), H_file) ;
+    engendrerDeclarationAttributInterne (p->infObject (), inHfile) ;
+    p->mInfo.attributType(HERE)->generateAttributeDeclaration (p->mKey, inHfile) ;
+    engendrerDeclarationAttributInterne (p->supObject (), inHfile) ;
   }
 }
 
@@ -130,8 +130,8 @@ engendrerDeclarationAttributInterne (GGS_typeLexicalAttributesMap::element_type 
 
 static void
 generateAttributeDeclaration (const GGS_typeLexicalAttributesMap & inMap,
-                              AC_OutputStream & H_file) {
-  engendrerDeclarationAttributInterne (inMap.rootObject (), H_file) ;
+                              AC_OutputStream & inHfile) {
+  engendrerDeclarationAttributInterne (inMap.rootObject (), inHfile) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -298,23 +298,23 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
 static void generateKeyWordTableDeclaration (const GGS_typeTableMotsReserves & inMap,
                                              const C_String & inLexiqueName,
                                              const C_String & nomTable,
-                                             AC_OutputStream & H_file) {
-  H_file << "//--- Key words table '" << nomTable << "'\n" ;
+                                             AC_OutputStream & inHfile) {
+  inHfile << "//--- Key words table '" << nomTable << "'\n" ;
 // ---------------------------- Table size constant
-  H_file << "  public : static const sint16 "
+  inHfile << "  public : static const sint16 "
            << inLexiqueName
            << "_table_size_"
            << nomTable
            << " ;\n" ; 
 // ---------------------------- Table static const definition
-  H_file << "  private : static const C_lexique_table_entry "
+  inHfile << "  private : static const C_lexique_table_entry "
            << inLexiqueName
            << "_table_for_"
            << nomTable
            << " [" << inMap.count () << "] ;\n" ;
 
 // ---------------------------- Statique search method
-  H_file << "  public : static sint16 search_into_" << nomTable
+  inHfile << "  public : static sint16 search_into_" << nomTable
            << " (const C_String & inSearchedString) ;\n\n" ;
 }
 
@@ -323,12 +323,12 @@ static void generateKeyWordTableDeclaration (const GGS_typeTableMotsReserves & i
 static void
 internalGenerateTerminalSymbolsTableDeclaration (GGS_typeTableTablesDeMotsReserves::element_type * p,
                                                  const C_String & inLexiqueName,
-                                                 AC_OutputStream & H_file) {
+                                                 AC_OutputStream & inHfile) {
   if (p != NULL) {
     macroValidPointer (p) ;
-    internalGenerateTerminalSymbolsTableDeclaration (p->infObject (), inLexiqueName, H_file) ;
-    generateKeyWordTableDeclaration (p->mInfo.attributSimpleTable, inLexiqueName, p->mKey, H_file) ;
-    internalGenerateTerminalSymbolsTableDeclaration (p->supObject (), inLexiqueName, H_file) ;
+    internalGenerateTerminalSymbolsTableDeclaration (p->infObject (), inLexiqueName, inHfile) ;
+    generateKeyWordTableDeclaration (p->mInfo.attributSimpleTable, inLexiqueName, p->mKey, inHfile) ;
+    internalGenerateTerminalSymbolsTableDeclaration (p->supObject (), inLexiqueName, inHfile) ;
   }
 }
 
@@ -336,8 +336,8 @@ internalGenerateTerminalSymbolsTableDeclaration (GGS_typeTableTablesDeMotsReserv
 
 static void generateTerminalSymbolsTableDeclaration (const GGS_typeTableTablesDeMotsReserves & inMap,
                                                      const C_String & inLexiqueName,
-                                                     AC_OutputStream & H_file) {
-  internalGenerateTerminalSymbolsTableDeclaration (inMap.rootObject (), inLexiqueName, H_file) ;
+                                                     AC_OutputStream & inHfile) {
+  internalGenerateTerminalSymbolsTableDeclaration (inMap.rootObject (), inLexiqueName, inHfile) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -473,6 +473,11 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
      inCppFile << "  bool loop_ = true ;\n" ;
    }
   inCppFile.incIndentation (+2) ;
+  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
+  while (currentAttribute != NULL) {
+    currentAttribute->mInfo.attributType (HERE)->generateLexicalAttributeDeclaration (currentAttribute->mKey, inCppFile) ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
   inCppFile << "sint16 currentTokenCode_ = -1 ;\n"
                "while (currentTokenCode_ < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
@@ -853,6 +858,83 @@ generateAttributeInitialization (const GGS_lstring & nom,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark ========= generateLexicalAttributeDeclaration
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_AC_galgasType::
+generateLexicalAttributeDeclaration (const GGS_lstring & /* nom */,
+                                     AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lstring::
+generateLexicalAttributeDeclaration (const GGS_lstring & nom,
+                                     AC_OutputStream & inCppFile) const {
+  inCppFile << "  C_String " << nom << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lchar::
+generateLexicalAttributeDeclaration (const GGS_lstring & nom,
+                                     AC_OutputStream & inCppFile) const {
+  inCppFile << "  char " << nom << " = '\\0' ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lbool::
+generateLexicalAttributeDeclaration (const GGS_lstring & nom,
+                                     AC_OutputStream & inCppFile) const {
+  inCppFile << "  bool " << nom << " = false ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_luint::
+generateLexicalAttributeDeclaration (const GGS_lstring & nom,
+                                     AC_OutputStream & inCppFile) const {
+  inCppFile << "  uint32 " << nom << " = 0 ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_luint64::
+generateLexicalAttributeDeclaration (const GGS_lstring & nom,
+                                     AC_OutputStream & inCppFile) const {
+  inCppFile << "  uint64 " << nom << " = 0 ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lsint::
+generateLexicalAttributeDeclaration (const GGS_lstring & nom,
+                                     AC_OutputStream & inCppFile) const {
+  inCppFile << "  sint32 " << nom << " = 0 ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_lsint64::
+generateLexicalAttributeDeclaration (const GGS_lstring & nom,
+                                     AC_OutputStream & inCppFile) const {
+  inCppFile << "  sint64 " << nom << " = 0 ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_ldouble::
+generateLexicalAttributeDeclaration (const GGS_lstring & nom,
+                                     AC_OutputStream & inCppFile) const {
+  inCppFile << "  double " << nom << " = 0.0 ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark ========= generateAttributeDeclaration
 #endif
 
@@ -860,26 +942,26 @@ generateAttributeInitialization (const GGS_lstring & nom,
 
 void cPtr_typeGalgas_lstring::
 generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & H_file) const {
-  H_file << "  public : C_String " << nom
-         << " ; // user defined attribute\n" ;
+                              AC_OutputStream & inHfile) const {
+  inHfile << "  public : C_String " << nom
+          << " ; // user defined attribute\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lchar::
 generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & H_file) const {
-  H_file << "  public : char " << nom
-         << " ; // user defined attribute\n" ;
+                              AC_OutputStream & inHfile) const {
+  inHfile << "  public : char " << nom
+          << " ; // user defined attribute\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_lbool::
 generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & H_file) const {
-  H_file << "  public : bool " << nom
+                              AC_OutputStream & inHfile) const {
+  inHfile << "  public : bool " << nom
          << " ; // user defined attribute\n" ;
 }
 
@@ -887,8 +969,8 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 
 void cPtr_typeGalgas_luint::
 generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & H_file) const {
-  H_file << "  public : uint32 " << nom
+                              AC_OutputStream & inHfile) const {
+  inHfile << "  public : uint32 " << nom
          << " ; // user defined attribute\n" ;
 }
 
@@ -896,8 +978,8 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 
 void cPtr_typeGalgas_luint64::
 generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & H_file) const {
-  H_file << "  public : uint64 " << nom
+                              AC_OutputStream & inHfile) const {
+  inHfile << "  public : uint64 " << nom
          << " ; // user defined attribute\n" ;
 }
 
@@ -905,8 +987,8 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 
 void cPtr_typeGalgas_lsint::
 generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & H_file) const {
-  H_file << "  public : sint32 " << nom
+                              AC_OutputStream & inHfile) const {
+  inHfile << "  public : sint32 " << nom
          << " ; // user defined attribute\n" ;
 }
 
@@ -914,8 +996,8 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 
 void cPtr_typeGalgas_lsint64::
 generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & H_file) const {
-  H_file << "  public : sint64 " << nom
+                              AC_OutputStream & inHfile) const {
+  inHfile << "  public : sint64 " << nom
          << " ; // user defined attribute\n" ;
 }
 
@@ -923,8 +1005,8 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 
 void cPtr_typeGalgas_ldouble::
 generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & H_file) const {
-  H_file << "  public : double " << nom
+                              AC_OutputStream & inHfile) const {
+  inHfile << "  public : double " << nom
          << " ; // user defined attribute\n" ;
 }
 
