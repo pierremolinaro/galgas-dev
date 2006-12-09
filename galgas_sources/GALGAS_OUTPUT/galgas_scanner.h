@@ -205,14 +205,7 @@ class galgas_scanner : public C_Lexique {
 
 //--- Constructor
   public : galgas_scanner (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS) ;
-  public : char charValue ; // user defined attribute
-  public : double floatValue ; // user defined attribute
-  public : C_String identifierString ; // user defined attribute
-  public : sint32 sint32value ; // user defined attribute
-  public : sint64 sint64value ; // user defined attribute
-  public : C_String tokenString ; // user defined attribute
-  public : uint32 uint32value ; // user defined attribute
-  public : uint64 uint64value ; // user defined attribute
+
 //--- Get attribute values
   public : void _assignFromAttribute_identifierString (GGS_lstring & outValue) const ;
   public : void _assignFromAttribute_uint32value (GGS_luint & outValue) const ;
@@ -227,7 +220,7 @@ class galgas_scanner : public C_Lexique {
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const sint16 inTokenCode) const ;
 //--- Enter Token
-  protected : void _enterToken (const sint16 inTokenCode) ;
+  protected : void _enterToken (const cTokenFor_galgas_scanner & inToken) ;
 //--- Style Definition
   public : static sint32 getStylesCount (void) ;
   public : static const char * getStyleName (const sint32 inIndex) ;
