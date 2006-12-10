@@ -209,6 +209,10 @@ class @typeInstructionEmettreSimple extends @typeInstructionLexicale {
   @lstring attributTerminal ;
 }
 
+class @typeLexicalDropInstruction extends @typeInstructionLexicale {
+  @lstring attributTerminal ;
+}
+
 class @typeInstructionEmettre extends @typeInstructionLexicale {
   @typeListeRecherche attributListeRecherches ;
   @typeEmissionParDefaut attributEmissionParDefaut ;

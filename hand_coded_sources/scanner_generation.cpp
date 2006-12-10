@@ -682,6 +682,27 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+bool cPtr_typeLexicalDropInstruction::
+instruction__uses_loop_variable (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLexicalDropInstruction::
+generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool inGenerateEnterToken,
+                              AC_OutputStream & inCppFile) const {
+  if (! inGenerateEnterToken) {
+    inCppFile << "_token._mTokenCode = " << inLexiqueName << "_1_" ;
+    generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
+    inCppFile << " ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 bool cPtr_typeInstructionEmettre::
 instruction__uses_loop_variable (void) const {
   return false ;
