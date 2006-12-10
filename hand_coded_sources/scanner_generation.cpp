@@ -260,9 +260,10 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
   inCppFile << "C_String "
             << inLexiqueName
             << "::\n"
-               "getCurrentTokenString (const sint16 inTokenCode) const {\n"
+               "getCurrentTokenString (const cToken * inTokenPtr) const {\n"
+               "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) inTokenPtr ;\n"
                "  C_String s ;\n"
-               "  switch (inTokenCode) {\n"
+               "  switch (_p->_mTokenCode) {\n"
                "  case  " << inLexiqueName << "_1_:\n"
                "    s << \"$$\" ;\n"
                "    break ;\n" ;
@@ -430,7 +431,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
    }
   inCppFile << "_token._mTokenCode = -1 ;\n"
                "while (_token._mTokenCode < 0) {\n" ;
-//  generateAttributeInitialization (table_attributs, inCppFile) ;
+  generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
   inCppFile << "mCurrentTokenStartLocation = currentLocation () ;\n"
               "try{\n" ;
@@ -475,11 +476,11 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
      inCppFile << "  bool loop_ = true ;\n" ;
    }
   inCppFile.incIndentation (+2) ;
-  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
+/*  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
     currentAttribute->mInfo.attributType (HERE)->generateLexicalAttributeDeclaration (currentAttribute->mKey, inCppFile) ;
     currentAttribute = currentAttribute->nextObject () ;
-  }
+  }*/
   inCppFile << "_token._mTokenCode = -1 ;\n"
                "while (_token._mTokenCode < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
@@ -533,7 +534,7 @@ generateExternArgumentForList (const GGS_typeListeArgumentsRoutExterne & inList,
 
 void cPtr_typeArgumentAttribut::
 generateExternArgument (AC_OutputStream & inCppFile) const {
-  inCppFile << attributNom ;
+  inCppFile << "_token." << attributNom ;
 }
 
 //---------------------------------------------------------------------------*
@@ -674,9 +675,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
   generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
   inCppFile << " ;\n" ;
   if (inGenerateEnterToken) {
-    inCppFile << "_enterToken (" << inLexiqueName << "_1_" ;
-    generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
-    inCppFile << ") ;\n" ;
+    inCppFile << "_enterToken (_token) ;\n" ;
   }
 }
 
@@ -702,7 +701,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
       inCppFile << "if (_token._mTokenCode == -1) {\n" ;
       inCppFile.incIndentation (+2) ;
     }
-    inCppFile << "_token._mTokenCode = search_into_" << courant->attributNomTable << " ("
+    inCppFile << "_token._mTokenCode = search_into_" << courant->attributNomTable << " (_token."
               << courant->attributNomAttribut << ") ;\n" ;
     if (premier) {
       premier = false ;
@@ -718,7 +717,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
   inCppFile.incIndentation (-2) ;
   inCppFile << "}\n" ;
   if (inGenerateEnterToken) {
-    inCppFile << "_enterToken (_token._mTokenCode) ;\n" ;
+    inCppFile << "_enterToken (_token) ;\n" ;
   }
 }
 
@@ -798,7 +797,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 void cPtr_typeGalgas_lstring::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  " << nom << ".clear () ;\n" ;
+  inCppFile << "  _token." << nom << ".clear () ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -806,7 +805,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_lchar::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  " << nom << " = '\\0' ;\n" ;
+  inCppFile << "  _token." << nom << " = '\\0' ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -814,7 +813,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_lbool::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  " << nom << " = false ;\n" ;
+  inCppFile << "  _token." << nom << " = false ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -822,7 +821,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_luint::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  " << nom << " = 0 ;\n" ;
+  inCppFile << "  _token." << nom << " = 0 ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -830,7 +829,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_luint64::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  " << nom << " = 0 ;\n" ;
+  inCppFile << "  _token." << nom << " = 0 ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -838,7 +837,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_lsint::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  " << nom << " = 0 ;\n" ;
+  inCppFile << "  _token." << nom << " = 0 ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -846,7 +845,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_lsint64::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  " << nom << " = 0 ;\n" ;
+  inCppFile << "  _token." << nom << " = 0 ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -854,7 +853,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_ldouble::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  " << nom << " = 0.0 ;\n" ;
+  inCppFile << "  _token." << nom << " = 0.0 ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1024,7 +1023,7 @@ void cPtr_typeGalgas_lstring::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "    s << ' ' ;\n" ;
-  inCppFile << "    s.writeCstringConstant (" << inAttributeName << ") ;\n" ; 
+  inCppFile << "    s.writeCstringConstant (_p->" << inAttributeName << ") ;\n" ; 
 }
 
 //---------------------------------------------------------------------------*
@@ -1033,7 +1032,7 @@ void cPtr_typeGalgas_lchar::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "    s << ' ' ;\n" ;
-  inCppFile << "    s.writeCcharConstant (" << inAttributeName << ") ;\n" ;
+  inCppFile << "    s.writeCcharConstant (_p->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1041,7 +1040,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_lbool::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << (" << inAttributeName << " ? \"true\" : \"false\") ;\n" ;
+  inCppFile << "    s << ' ' << (_p->" << inAttributeName << " ? \"true\" : \"false\") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1049,7 +1048,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_luint::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
+  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1057,7 +1056,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_luint64::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
+  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1065,7 +1064,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_lsint::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
+  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1073,7 +1072,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_lsint64::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
+  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1081,7 +1080,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_ldouble::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << " << inAttributeName << " ;\n" ;
+  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1151,7 +1150,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
                     "  public : "
                  << inLexiqueName
                  << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS) ;\n" ;
-  generateAttributeDeclaration (table_attributs, generatedZone3) ;
+//  generateAttributeDeclaration (table_attributs, generatedZone3) ;
 //--- Get lexical attribute value
   generatedZone3 << "//--- Get attribute values\n" ;
   GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
@@ -1168,9 +1167,9 @@ generate_scanner_header_file (C_Lexique & inLexique,
                  << " ; }\n"
 //--- Get token string (for debugging) 
                     "//--- Get Token String\n"
-                    "  public : virtual C_String getCurrentTokenString (const sint16 inTokenCode) const ;\n"
+                    "  public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;\n"
                     "//--- Enter Token\n"
-                    "  protected : void _enterToken (const sint16 inTokenCode) ;\n"
+                    "  protected : void _enterToken (const cTokenFor_" << inLexiqueName << " & inToken) ;\n"
 //--- Styles definition 
                     "//--- Style Definition\n"
                     "  public : static sint32 getStylesCount (void) ;\n"
@@ -1238,7 +1237,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
           << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS)\n"
              ": C_Lexique (inGalgasInputOutput COMMA_THERE) {\n" ;
-  generateAttributeInitialization (table_attributs, generatedZone2) ;
+//  generateAttributeInitialization (table_attributs, generatedZone2) ;
   generatedZone2 << "}\n\n" ;
 
 //---------------------------------------- Generate error message list
@@ -1363,14 +1362,14 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                     "}\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "void " << inLexiqueName << "::_enterToken (const sint16 inTokenCode) {\n"
+  generatedZone2 << "void " << inLexiqueName << "::_enterToken (const cTokenFor_" << inLexiqueName << " & inToken) {\n"
                     "  cTokenFor_" << inLexiqueName << " * _p = NULL ;\n"
                     "  macroMyNew (_p, cTokenFor_" << inLexiqueName << " ()) ;\n"
-                    "  _p->_mTokenCode = inTokenCode ;\n"
-                    "  _p->_mCurrentLocation = currentLocationInSource () ;\n" ;
+                    "  _p->_mTokenCode = inToken._mTokenCode ;\n"
+                    "  _p->_mCurrentLocation = _mCurrentLocation ;\n" ;
   GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
-    generatedZone2 << "  _p->" << currentAttribute->mKey << " = " << currentAttribute->mKey << " ;\n" ;
+    generatedZone2 << "  _p->" << currentAttribute->mKey << " = inToken." << currentAttribute->mKey << " ;\n" ;
     currentAttribute = currentAttribute->nextObject () ;
   }
   generatedZone2 << "  _enterTokenFromPointer (_p) ;\n"
@@ -1387,7 +1386,6 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                       "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) mCurrentTokenPtr ;\n"
                       "  outValue = " ;
     currentAttribute->mInfo.attributType (HERE)->generateCppClassName (generatedZone2) ;
-//    generatedZone2 << "(* this, ((cTokenFor_" << inLexiqueName << " *)mCurrentTokenPtr)->" << currentAttribute->mKey << ") ;\n"
     generatedZone2 << "(* this, _p->" << currentAttribute->mKey << ") ;\n"
                       "}\n\n" ;
     currentAttribute = currentAttribute->nextObject () ;
