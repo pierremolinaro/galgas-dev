@@ -8,6 +8,9 @@
 EXECUTABLE := galgas_lr1.exe
 EXECUTABLE_DEBUG := galgas_lr1_debug.exe
 
+#--- Install directory (for "install" goal)
+INSTALL_DIR := /C/WINDOWS/system32
+
 #---------------------------------------------------------------*
 #                                                               *
 #     Object files directory                                    *

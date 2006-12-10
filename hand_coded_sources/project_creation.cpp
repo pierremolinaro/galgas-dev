@@ -2874,7 +2874,7 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
 static C_String
 libpmPathFromOptionValue (const C_String & inLIBPMpathInCommandLineOption) {
   C_String path ;
-  if (inLIBPMpathInCommandLineOption.length () == 0) { // No option
+  if (inLIBPMpathInCommandLineOption == ".") { // No option
     path << "../../libpm" ;
   }else if (! inLIBPMpathInCommandLineOption.isAbsolutePath ()) {
     path << "../../" << inLIBPMpathInCommandLineOption ;
