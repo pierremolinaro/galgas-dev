@@ -269,15 +269,45 @@ end rule ;
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
   "*",     "|",    ",",      "+",     "--",
-  "::",    ">",    "<",      ";",      ":",
+  "::",    ">",    ";",      ":",
   "-",     "(",    ")",     "->",      "?",
   "==",   "??",    "!",     ":=",     "++",
   "[",     "]",   "+=",     "?!",     "!?",
-  "/",    "!=",   "<=",     ">=",      "&",
+  "/",    "!=",   ">=",      "&",
   "{",     "}",   "+>",     "-=",
-  "^",    "<<",   ">>",      "~"  ;
+  "^",    ">>",    "~" ;
 
 rule list galgasDelimitorsList ;
+
+
+# --------- Special delimitors / non terminal symbol --------------------------
+$<$ error message "the '<' delimitor" style delimitersStyle ;
+$<=$ error message "the '<=' delimitor" style delimitersStyle ;
+$<<$ error message "the '<<' delimitor" style delimitersStyle ;
+#$non_terminal_symbol$ ! tokenString error message "a non terminal symbol <...>" style nonTerminalStyle ;
+
+rule '<' :
+#  label onlyInfDelimiter ;
+  select
+  when '=' :
+    send $<=$ ;
+  when '<' :
+    send $<<$ ;
+#  when 'a' -> 'z' | 'A' ->'Z' :
+#    repeat
+#      enterCharacterIntoString (tokenString, *) ;
+#    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+#    end repeat ;
+#    select
+#    when '>' :
+#      send $non_terminal_symbol$ ;
+#    default
+#      rewind onlyInfDelimiter send $<$ ;
+#    end select ;
+  default
+    send $<$ ;
+  end select ;
+end rule ;
 
 # -------------------- Characters string --------------------------------------
 $literal_string$ ! tokenString error message "a character string constant \"...\"" style stringStyle ;
