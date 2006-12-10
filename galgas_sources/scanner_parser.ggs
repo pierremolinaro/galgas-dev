@@ -831,9 +831,14 @@ rule <lexical_instructions_list>
     $end$ ;
     $repeat$ ;
     $;$ ;
-    @typeInstructionLexicale e ;
-    e := [@typeInstructionRepetitionLexicale new !lii !ltq] ;
-    li += !e ;
+    li += ![@typeInstructionRepetitionLexicale new !lii !ltq] ;
+  while
+    $drop$ ;
+    @lstring nomTerminal ;
+    $terminal$ ?nomTerminal ;
+    $;$ ;
+    [table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
+    li += ![@typeLexicalDropInstruction new !nomTerminal] ;
   while
     $send$ ;
     @typeInstructionLexicale e ;

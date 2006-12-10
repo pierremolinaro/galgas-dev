@@ -35,6 +35,7 @@ style characterStyle -> "Character Constants:" ;
 style stringStyle -> "String Constants:" ;
 style typeNameStyle -> "Type Names (@...):" ;
 style mdaTypeNameStyle -> "MDA Type Names (%...):" ;
+style commentStyle -> "Comments:" ;
 
 # -------------------------- identifier or key word --------------------
 # keywords can be written in lower or upper case
@@ -326,10 +327,12 @@ rule '"' :
 end rule ;
 
 # ------------------------------------ Comment ----------------------------
+$comment$ error message "a comment" style commentStyle ;
 rule '#' :
   repeat
   while '\x1' -> '\x9' | '\xB' | '\xC' | '\xE' -> '\xFF' :
   end repeat ;
+  drop $comment$ ;
 end rule ;
 
 # --------------------- separators -----------------------------------------

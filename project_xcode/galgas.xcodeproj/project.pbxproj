@@ -97,6 +97,14 @@
 		CF33792409EFA7DE00EC41F6 /* C_SourceTextForCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */; };
 		CF33792509EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
 		CF397DD60B2C663A001F008D /* AC_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599208536A5B0077AEAF /* AC_CLI_Options.cpp */; };
+		CF397F8B0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
+		CF397F8C0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
+		CF397F8D0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
+		CF397F8E0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
+		CF397F8F0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
+		CF397F900B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
+		CF397F910B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
+		CF397F920B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
 		CF3B8A81058CD05D00D682D2 /* AC_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53872057A558F00854C83 /* AC_galgas_io.cpp */; };
 		CF3B8A9C058CD21900D682D2 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
 		CF3B9EDB0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3B9EDA0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h */; };
@@ -1689,6 +1697,7 @@
 		CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
 		CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = C_SourceTextForCoca.mm; sourceTree = "<group>"; };
 		CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_SourceTextForCocoa.h; sourceTree = "<group>"; };
+		CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
 		CF3B8A9B058CD21900D682D2 /* libstdc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libstdc++.a"; path = "/usr/lib/gcc/darwin/3.3/libstdc++.a"; sourceTree = "<absolute>"; };
 		CF3B9EDA0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_mapIndexInInstruction.h; sourceTree = "<group>"; };
 		CF3E627F096EE4BA00419EBB /* project_creation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = project_creation.h; sourceTree = "<group>"; };
@@ -2429,6 +2438,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */,
 				CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */,
 				CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */,
 				CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */,
@@ -3235,6 +3245,7 @@
 				CF9568620B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 				CF96D6B60B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603430B1F1EFF00161209 /* TC_Array.h in Headers */,
+				CF397F8B0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3317,6 +3328,7 @@
 				CF9568740B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 				CF96D6C20B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603490B1F1EFF00161209 /* TC_Array.h in Headers */,
+				CF397F910B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3399,6 +3411,7 @@
 				CF9568770B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 				CF96D6C40B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD6034A0B1F1EFF00161209 /* TC_Array.h in Headers */,
+				CF397F920B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3495,6 +3508,7 @@
 				CF9568650B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 				CF96D6B80B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603440B1F1EFF00161209 /* TC_Array.h in Headers */,
+				CF397F8C0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3577,6 +3591,7 @@
 				CF9568680B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 				CF96D6BA0B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603450B1F1EFF00161209 /* TC_Array.h in Headers */,
+				CF397F8D0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3659,6 +3674,7 @@
 				CF95686B0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 				CF96D6BC0B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603460B1F1EFF00161209 /* TC_Array.h in Headers */,
+				CF397F8E0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3741,6 +3757,7 @@
 				CF95686E0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 				CF96D6BE0B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603470B1F1EFF00161209 /* TC_Array.h in Headers */,
+				CF397F8F0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3823,6 +3840,7 @@
 				CF9568710B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */,
 				CF96D6C00B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603480B1F1EFF00161209 /* TC_Array.h in Headers */,
+				CF397F900B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
