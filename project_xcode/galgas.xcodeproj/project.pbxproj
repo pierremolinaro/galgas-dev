@@ -96,6 +96,7 @@
 		CF33792309EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
 		CF33792409EFA7DE00EC41F6 /* C_SourceTextForCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */; };
 		CF33792509EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
+		CF397DD60B2C663A001F008D /* AC_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599208536A5B0077AEAF /* AC_CLI_Options.cpp */; };
 		CF3B8A81058CD05D00D682D2 /* AC_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53872057A558F00854C83 /* AC_galgas_io.cpp */; };
 		CF3B8A9C058CD21900D682D2 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
 		CF3B9EDB0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3B9EDA0A2088C90015DF7A /* include_typeGalgas_mapIndexInInstruction.h */; };
@@ -525,7 +526,6 @@
 		CF6DF24409E3F3A700506859 /* OC_GGS_RulerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerView.mm */; };
 		CF6DF24509E3F3A700506859 /* OC_GGS_TextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF82597A08536A130077AEAF /* OC_GGS_TextView.mm */; };
 		CF6DF24609E3F3A700506859 /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259F608536AC20077AEAF /* C_Lexique.cpp */; };
-		CF6DF24709E3F3A700506859 /* AC_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599208536A5B0077AEAF /* AC_CLI_Options.cpp */; };
 		CF6DF24809E3F3A700506859 /* C_CLI_OptionGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599608536A5B0077AEAF /* C_CLI_OptionGroup.cpp */; };
 		CF6DF24909E3F3A700506859 /* C_TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259DA08536A7E0077AEAF /* C_TextFileWrite.cpp */; };
 		CF6DF24A09E3F3A700506859 /* C_Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6908536B780077AEAF /* C_Exception.cpp */; };
@@ -4516,7 +4516,6 @@
 				CF6DF24409E3F3A700506859 /* OC_GGS_RulerView.mm in Sources */,
 				CF6DF24509E3F3A700506859 /* OC_GGS_TextView.mm in Sources */,
 				CF6DF24609E3F3A700506859 /* C_Lexique.cpp in Sources */,
-				CF6DF24709E3F3A700506859 /* AC_CLI_Options.cpp in Sources */,
 				CF6DF24809E3F3A700506859 /* C_CLI_OptionGroup.cpp in Sources */,
 				CF6DF24909E3F3A700506859 /* C_TextFileWrite.cpp in Sources */,
 				CF6DF24A09E3F3A700506859 /* C_Exception.cpp in Sources */,
@@ -4534,6 +4533,7 @@
 				CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */,
 				CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
 				CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */,
+				CF397DD60B2C663A001F008D /* AC_CLI_Options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
