@@ -29,6 +29,14 @@ map @typeLexicalAttributesMap {
 
 #------------------------------------------------------------------*
 
+map @tagMap {
+  insert insertKey error message "the '%K' tag is already declared in %L",
+                                 "the '%K' tag declaration shadows the tag declared in %L" ;
+  search searchKey error message "the '%K' tag is not declared" ;
+}
+
+#------------------------------------------------------------------*
+
 map @lexicalTypeMap {
   @AC_galgasType mAttributType ;
   insert insertKey error message "--- internal error ---" ;
@@ -206,11 +214,20 @@ class @typeInstructionSiLexical extends @typeInstructionLexicale {
 }
 
 class @typeInstructionEmettreSimple extends @typeInstructionLexicale {
-  @lstring attributTerminal ;
+  @lstring mTerminal ;
 }
 
 class @typeLexicalDropInstruction extends @typeInstructionLexicale {
-  @lstring attributTerminal ;
+  @lstring mTerminal ;
+}
+
+class @typeLexicalTagInstruction extends @typeInstructionLexicale {
+  @lstring mLexicalTagName ;
+}
+
+class @typeLexicalRewindAndSendInstruction extends @typeInstructionLexicale {
+  @lstring mLexicalTagName ;
+  @lstring mTerminal ;
 }
 
 class @typeInstructionEmettre extends @typeInstructionLexicale {

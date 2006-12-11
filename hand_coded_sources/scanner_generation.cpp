@@ -660,6 +660,47 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+bool cPtr_typeLexicalRewindAndSendInstruction::
+instruction__uses_loop_variable (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLexicalRewindAndSendInstruction::
+generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool inGenerateEnterToken,
+                              AC_OutputStream & inCppFile) const {
+  inCppFile << "_token = _lexicalTag_" << mLexicalTagName << " ;\n"
+               "_token._mTokenCode = " << inLexiqueName << "_1_" ;
+  generateTerminalSymbolCppName (mTerminal, inCppFile) ;
+  inCppFile << " ;\n" ;
+  if (inGenerateEnterToken) {
+    inCppFile << "_enterToken (_token) ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLexicalTagInstruction::
+instruction__uses_loop_variable (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLexicalTagInstruction::
+generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool /* inGenerateEnterToken */,
+                              AC_OutputStream & inCppFile) const {
+  inCppFile << "const cTokenFor_" << inLexiqueName
+            << " _lexicalTag_" << mLexicalTagName << " = _token ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 bool cPtr_typeInstructionEmettreSimple::
 instruction__uses_loop_variable (void) const {
   return false ;
@@ -672,7 +713,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
   inCppFile << "_token._mTokenCode = " << inLexiqueName << "_1_" ;
-  generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
+  generateTerminalSymbolCppName (mTerminal, inCppFile) ;
   inCppFile << " ;\n" ;
   if (inGenerateEnterToken) {
     inCppFile << "_enterToken (_token) ;\n" ;
@@ -695,7 +736,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) const {
   if (! inGenerateEnterToken) {
     inCppFile << "_token._mTokenCode = " << inLexiqueName << "_1_" ;
-    generateTerminalSymbolCppName (attributTerminal, inCppFile) ;
+    generateTerminalSymbolCppName (mTerminal, inCppFile) ;
     inCppFile << " ;\n" ;
   }
 }
@@ -1347,11 +1388,11 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
     style = style->nextObject () ;
   }
   generatedZone2 << "NULL} ;\n"
-             "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
-             "} ;\n\n" ;
+                    "  return (inIndex < " <<  inStylesMap.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
+                    "} ;\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleIdentifier (const sint32 inIndex) {\n"
-              "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
+                     "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
   style = inStylesMap.firstObject () ;
   while (style != NULL) {
     macroValidPointer (style) ;

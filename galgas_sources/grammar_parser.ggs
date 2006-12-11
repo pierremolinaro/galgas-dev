@@ -213,9 +213,7 @@ rule <galgas_component>
 #--- Grammar start symbol
   $root$ ;
   @lstring startSymbolName ;
-  $<$ ;
-  $identifier$ ? startSymbolName ;
-  $>$ ;
+  $non_terminal_symbol$ ? startSymbolName ;
 #--- (added 8/13/2004, modified 3/19/2006)
   @M_nonterminalSymbolAltsForGrammar grammarAltMap [emptyMap] ;
   @M_startSymbolEntityAndMetamodel startSymbolEntityAndMetamodelMap [emptyMap] ;
@@ -313,9 +311,7 @@ label importLexique
   while
   end repeat ;
   $root$ ;
-  $<$ ;
-  $identifier$ ? * ;
-  $>$ ;
+  $non_terminal_symbol$ ? * ;
   repeat
     <formal_arguments_list> parse ;
     select
@@ -366,9 +362,7 @@ label importSyntax
   while
   end repeat ;
   $root$ ;
-  $<$ ;
-  $identifier$ ? * ;
-  $>$ ;
+  $non_terminal_symbol$ ? * ;
   repeat
     <formal_arguments_list> parse ;
     select
@@ -420,9 +414,7 @@ label importSemantics
   while
   end repeat ;
   $root$ ;
-  $<$ ;
-  $identifier$ ? * ;
-  $>$ ;
+  $non_terminal_symbol$ ? * ;
   repeat
     <formal_arguments_list> parse ;
     select
@@ -490,9 +482,7 @@ label importGrammarForSemantics
   while
   end repeat ;
   $root$ ;
-  $<$ ;
-  $identifier$ ? * ;
-  $>$ ;
+  $non_terminal_symbol$ ? * ;
   @lstring altName := [@lstring new !"" !here] ;
   repeat
     @L_signature signature ;
@@ -552,9 +542,7 @@ label importOptions
   while
   end repeat ;
   $root$ ;
-  $<$ ;
-  $identifier$ ? * ;
-  $>$ ;
+  $non_terminal_symbol$ ? * ;
   repeat
     <formal_arguments_list> parse ;
     select

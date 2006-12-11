@@ -108,6 +108,7 @@ rule <lexical_instructions_list>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
+  ??@tagMap inTagMap
 label parse
 ;
 
@@ -118,6 +119,7 @@ rule <lexical_when_branches_list>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
+  ??@tagMap inTagMap
 label parse
 ;
 
@@ -128,6 +130,7 @@ rule <lexical_default_branch>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
+  ??@tagMap inTagMap
 label parse
 ;
 
@@ -650,6 +653,7 @@ rule <while_branches_list>
       !?table_attributs
       !?table_tables_mots_reserves
       !?ioUsedErrorMessageSet
+      ![@tagMap emptyMap]
     ;
     liste_tests_et_instructions += !lcl !li ;
   while
@@ -729,6 +733,7 @@ rule <lexical_rule>
     !?table_attributs
     !?table_tables_mots_reserves
     !?ioUsedErrorMessageSet
+    ![@tagMap emptyMap]
   ;
   ioLexicalRulesList += !lcl !li ;
   $end$ ;
@@ -765,7 +770,9 @@ rule <lexical_instructions_list>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
+  ??@tagMap inTagMap
 :
+  @tagMap tagMap [mapWithMapToOverride !inTagMap] ;
   li := [@tListeInstructionsLexicales emptyList] ;
   repeat
   while
@@ -792,6 +799,7 @@ rule <lexical_instructions_list>
       !?table_attributs
       !?table_tables_mots_reserves
       !?ioUsedErrorMessageSet
+      !tagMap
     ;
     @tListeInstructionsLexicales liste_instructions_sinon ;
     <lexical_default_branch>
@@ -801,6 +809,7 @@ rule <lexical_instructions_list>
        !?table_attributs
        !?table_tables_mots_reserves
        !?ioUsedErrorMessageSet
+       !tagMap
     ;
     $end$ ;
     $select$ ;
@@ -818,6 +827,7 @@ rule <lexical_instructions_list>
       !?table_attributs
       !?table_tables_mots_reserves
       !?ioUsedErrorMessageSet
+      ![@tagMap emptyMap]
     ;
     @typeListeTestsEtInstructions ltq ;
     <while_branches_list>
@@ -832,6 +842,24 @@ rule <lexical_instructions_list>
     $repeat$ ;
     $;$ ;
     li += ![@typeInstructionRepetitionLexicale new !lii !ltq] ;
+  while
+    $tag$ ;
+    @lstring tagIdentifier ;
+    $identifier$ ?tagIdentifier ;
+    [!?tagMap insertKey !tagIdentifier] ;
+    li += ![@typeLexicalTagInstruction new !tagIdentifier] ;
+    $;$ ;
+  while
+    $rewind$ ;
+    @lstring tagIdentifier ;
+    $identifier$ ?tagIdentifier ;
+    [tagMap searchKey !tagIdentifier] ;
+    $send$ ;
+    @lstring nomTerminal ;
+    $terminal$ ?nomTerminal ;
+    [table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
+    li += ![@typeLexicalRewindAndSendInstruction new !tagIdentifier !nomTerminal] ;
+    $;$ ;
   while
     $drop$ ;
     @lstring nomTerminal ;
@@ -972,6 +1000,7 @@ rule <lexical_when_branches_list>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
+  ??@tagMap inTagMap
 :
   lbs := [@typeListeTestsEtInstructions emptyList] ;
   $when$ ;
@@ -987,6 +1016,7 @@ rule <lexical_when_branches_list>
       !?table_attributs
       !?table_tables_mots_reserves
       !?ioUsedErrorMessageSet
+      !inTagMap
     ;
     lbs += !lcl !li ;
   while
@@ -1003,6 +1033,7 @@ rule <lexical_default_branch>
   ?!@typeLexicalAttributesMap unused table_attributs
   ?!@typeTableTablesDeMotsReserves unused table_tables_mots_reserves
   ?!@stringset unused ioUsedErrorMessageSet
+  ??@tagMap unused inTagMap
 :
   liste_instructions_sinon := [@tListeInstructionsLexicales emptyList] ;
 end rule ;
@@ -1016,6 +1047,7 @@ rule <lexical_default_branch>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
+  ??@tagMap inTagMap
 :
   $default$ ;
   <lexical_instructions_list>
@@ -1025,6 +1057,7 @@ rule <lexical_default_branch>
     !?table_attributs
     !?table_tables_mots_reserves 
     !?ioUsedErrorMessageSet
+    !inTagMap
   ;
 end rule ;
 
