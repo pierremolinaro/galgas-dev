@@ -1432,6 +1432,22 @@
 		CFD7E270059B5B8E00410349 /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
 		CFD7E272059B5B8E00410349 /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
 		CFD7E274059B5B8E00410349 /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
+		CFD8D4D30B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */; };
+		CFD8D4D40B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */; };
+		CFD8D4D50B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */; };
+		CFD8D4D60B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */; };
+		CFD8D4D70B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */; };
+		CFD8D4D80B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */; };
+		CFD8D4D90B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */; };
+		CFD8D4DA0B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */; };
+		CFD8D4F70B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */; };
+		CFD8D4F80B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */; };
+		CFD8D4F90B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */; };
+		CFD8D4FA0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */; };
+		CFD8D4FB0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */; };
+		CFD8D4FC0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */; };
+		CFD8D4FD0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */; };
+		CFD8D4FE0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */; };
 		CFD9E63D0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD9E63B0AE7F07300A9D72A /* include_C_switch_instruction.h */; };
 		CFD9E63E0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD9E63C0AE7F07300A9D72A /* include_typeLogInstruction.h */; };
 		CFD9E63F0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD9E63B0AE7F07300A9D72A /* include_C_switch_instruction.h */; };
@@ -2100,6 +2116,8 @@
 		CFD7D5960911099A00B72461 /* grammarComputations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarComputations.h; sourceTree = "<group>"; };
 		CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_cli_options.cpp; sourceTree = "<group>"; };
 		CFD7E26F059B5B8E00410349 /* galgas_cli_options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
+		CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalTagInstruction.h; sourceTree = "<group>"; };
+		CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalRewindAndSendInstruction.h; sourceTree = "<group>"; };
 		CFD9E63B0AE7F07300A9D72A /* include_C_switch_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_switch_instruction.h; sourceTree = "<group>"; };
 		CFD9E63C0AE7F07300A9D72A /* include_typeLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLogInstruction.h; sourceTree = "<group>"; };
 		CFDA3E02090E758600FEB333 /* semantics_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = semantics_semantics.h; sourceTree = "<group>"; };
@@ -2438,6 +2456,8 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */,
+				CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */,
 				CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */,
 				CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */,
 				CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */,
@@ -3246,6 +3266,8 @@
 				CF96D6B60B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603430B1F1EFF00161209 /* TC_Array.h in Headers */,
 				CF397F8B0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
+				CFD8D4D30B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
+				CFD8D4F70B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3329,6 +3351,8 @@
 				CF96D6C20B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603490B1F1EFF00161209 /* TC_Array.h in Headers */,
 				CF397F910B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
+				CFD8D4D90B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
+				CFD8D4FD0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3412,6 +3436,8 @@
 				CF96D6C40B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD6034A0B1F1EFF00161209 /* TC_Array.h in Headers */,
 				CF397F920B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
+				CFD8D4DA0B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
+				CFD8D4FE0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3509,6 +3535,8 @@
 				CF96D6B80B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603440B1F1EFF00161209 /* TC_Array.h in Headers */,
 				CF397F8C0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
+				CFD8D4D40B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
+				CFD8D4F80B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3592,6 +3620,8 @@
 				CF96D6BA0B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603450B1F1EFF00161209 /* TC_Array.h in Headers */,
 				CF397F8D0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
+				CFD8D4D50B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
+				CFD8D4F90B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3675,6 +3705,8 @@
 				CF96D6BC0B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603460B1F1EFF00161209 /* TC_Array.h in Headers */,
 				CF397F8E0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
+				CFD8D4D60B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
+				CFD8D4FA0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3758,6 +3790,8 @@
 				CF96D6BE0B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603470B1F1EFF00161209 /* TC_Array.h in Headers */,
 				CF397F8F0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
+				CFD8D4D70B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
+				CFD8D4FB0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3841,6 +3875,8 @@
 				CF96D6C00B1DA4750067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFD603480B1F1EFF00161209 /* TC_Array.h in Headers */,
 				CF397F900B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */,
+				CFD8D4D80B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
+				CFD8D4FC0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

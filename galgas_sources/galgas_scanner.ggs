@@ -29,6 +29,7 @@ lexique galgas_scanner :
 style keywordsStyle -> "Keywords:" ;
 style delimitersStyle -> "Delimiters:" ;
 style terminalStyle -> "Terminal Symbols:" ;
+style nonTerminalStyle -> "Non Terminal Symbols:" ;
 style integerStyle -> "Integer Constants:" ;
 style float_csts -> "Floating Point Constants:" ;
 style characterStyle -> "Character Constants:" ;
@@ -284,26 +285,26 @@ rule list galgasDelimitorsList ;
 $<$ error message "the '<' delimitor" style delimitersStyle ;
 $<=$ error message "the '<=' delimitor" style delimitersStyle ;
 $<<$ error message "the '<<' delimitor" style delimitersStyle ;
-#$non_terminal_symbol$ ! tokenString error message "a non terminal symbol <...>" style nonTerminalStyle ;
+$non_terminal_symbol$ ! tokenString error message "a non terminal symbol <...>" style nonTerminalStyle ;
 
 rule '<' :
-#  label onlyInfDelimiter ;
+  tag onlyInfDelimiter ;
   select
   when '=' :
     send $<=$ ;
   when '<' :
     send $<<$ ;
-#  when 'a' -> 'z' | 'A' ->'Z' :
-#    repeat
-#      enterCharacterIntoString (tokenString, *) ;
-#    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
-#    end repeat ;
-#    select
-#    when '>' :
-#      send $non_terminal_symbol$ ;
-#    default
-#      rewind onlyInfDelimiter send $<$ ;
-#    end select ;
+  when 'a' -> 'z' | 'A' ->'Z' :
+    repeat
+      enterCharacterIntoString (tokenString, *) ;
+    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    end repeat ;
+    select
+    when '>' :
+      send $non_terminal_symbol$ ;
+    default
+      rewind onlyInfDelimiter send $<$ ;
+    end select ;
   default
     send $<$ ;
   end select ;

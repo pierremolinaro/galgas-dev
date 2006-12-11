@@ -698,9 +698,7 @@ rule <syntax_declaration>
 :
   $rule$ ;
   @lstring ruleName ;
-  $<$ ;
-  $identifier$ ? ruleName ;
-  $>$ ;
+  $non_terminal_symbol$ ? ruleName ;
   @L_EXsignature listeDeTypesFormels ;
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
@@ -744,10 +742,8 @@ label importSyntax
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
 :
   $rule$ ;
-  $<$ ;
   @lstring nonterminalSymbolName ;
-  $identifier$ ? nonterminalSymbolName ;
-  $>$ ;
+  $non_terminal_symbol$ ? nonterminalSymbolName ;
   @L_signature signature ;
   <formal_arguments_list> importGrammarForSemantics ?signature ;
   @lstring returnedEntity ;
@@ -1244,10 +1240,8 @@ rule <syntax_instruction>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap unused inAllMetamodelClassMap
 :
-  $<$ ;
   @lstring nonterminalSymbolName ;
-  $identifier$ ? nonterminalSymbolName ;
-  $>$ ;
+  $non_terminal_symbol$ ? nonterminalSymbolName ;
   @lstring altName ;
   select
     altName := [@lstring new !"" !here] ;
@@ -1329,10 +1323,8 @@ rule <syntax_instruction>
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 :
-  $<$ ;
   @lstring nonterminalSymbolName ;
-  $identifier$ ? nonterminalSymbolName ;
-  $>$ ;
+  $non_terminal_symbol$ ? nonterminalSymbolName ;
   select
   or
     $parse$ ;
