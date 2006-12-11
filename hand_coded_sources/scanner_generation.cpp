@@ -660,29 +660,6 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLexicalRewindAndSendInstruction::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeLexicalRewindAndSendInstruction::
-generate_scanner_instruction (const C_String & inLexiqueName,
-                              const bool inGenerateEnterToken,
-                              AC_OutputStream & inCppFile) const {
-  inCppFile << "_token = _lexicalTag_" << mLexicalTagName << " ;\n"
-               "_token._mTokenCode = " << inLexiqueName << "_1_" ;
-  generateTerminalSymbolCppName (mTerminal, inCppFile) ;
-  inCppFile << " ;\n" ;
-  if (inGenerateEnterToken) {
-    inCppFile << "_enterToken (_token) ;\n" ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
 bool cPtr_typeLexicalTagInstruction::
 instruction__uses_loop_variable (void) const {
   return false ;
@@ -694,8 +671,30 @@ void cPtr_typeLexicalTagInstruction::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool /* inGenerateEnterToken */,
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "const cTokenFor_" << inLexiqueName
-            << " _lexicalTag_" << mLexicalTagName << " = _token ;\n" ;
+  inCppFile << "const C_LocationInSource _locationForTag_" << mLexicalTagName << " = _mCurrentLocation ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLexicalRewindAndSendInstruction::
+instruction__uses_loop_variable (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLexicalRewindAndSendInstruction::
+generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool inGenerateEnterToken,
+                              AC_OutputStream & inCppFile) const {
+  inCppFile << "_mCurrentLocation = _locationForTag_" << mLexicalTagName << " ;\n"
+               "_token._mTokenCode = " << inLexiqueName << "_1_" ;
+  generateTerminalSymbolCppName (mTerminal, inCppFile) ;
+  inCppFile << " ;\n" ;
+  if (inGenerateEnterToken) {
+    inCppFile << "_enterToken (_token) ;\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
