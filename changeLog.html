@@ -9,11 +9,16 @@
   <div style="font-face: Verdana; font-size:small;">
    <p><b>GALGAS ChangeLog</b></p>
    <p>1.5.6</p>
+   <ul>
     <li>Added a method for <tt><b>@string</b></tt> type: <a href="http://galgas.rts-software.org/doku.php?id=string_type#makedirectory">makeDirectory</a>;</li>
     <li>Added a method for <tt><b>@string</b></tt> type: <a href="http://galgas.rts-software.org/doku.php?id=string_type#makedirectoryandwritefile">makeDirectoryAndWriteFile</a>;</li>
     <li>Run time checking on sorted lists objects now occurs only in debug mode;</li>
     <li>Corrected some bugs on Windows version [<a href="http://galgas.rts-software.org/trac/ticket/25">25</a>];</li>
-   <ul>
+    <li>In Cocoa GALGAS, comments can now be colored [see <a href="http://galgas.rts-software.org/doku.php?id=lex#coloring_comments">coloring comments</a>];</li>
+    <li>Two new lexical instructions provide the way to perform back tracking: <a href="http://galgas.rts-software.org/doku.php?id=lex#lexical_tag_instruction">tag</a>
+        and <a href="http://galgas.rts-software.org/doku.php?id=lex#lexical_rewind_instruction">rewind</a>;
+        an example is given at <a href="http://galgas.rts-software.org/doku.php?id=lex#back_tracking_using_tag_and_rewind_instructions">Back tracking using tag and rewind instructions</a>;
+    </li>
    </ul>
    <p>1.5.5</p>
    <ul>
