@@ -65,7 +65,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
  "constraint", "context",         "call",    "mapindex",
  "method",      "remove",   "sortedlist" ;
 
-rule 'a'->'z' | 'A'->'Z' :
+rule 'a'->'z' |  'A'->'Z' :
   repeat
     enterCharacterIntoString (identifierString, toLower (*)) ;
     enterCharacterIntoString (tokenString, *) ;
