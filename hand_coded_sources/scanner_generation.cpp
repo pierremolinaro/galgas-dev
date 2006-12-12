@@ -1147,7 +1147,145 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= routine_generate_scanner
+  #pragma mark Build Decoder
+#endif
+
+//---------------------------------------------------------------------------*
+
+class cDecoderArray {
+  public : const C_String mTerminal ;
+  public : const sint32 mDecoderIndex ;
+  public : cDecoderArray * mNextStages [256] ;
+  public : cDecoderArray (const C_String & inTerminal, sint32 & ioIndex) ;
+  public : virtual ~cDecoderArray (void) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+cDecoderArray::
+cDecoderArray (const C_String & inTerminal, sint32 & ioIndex):
+mTerminal (inTerminal),
+mDecoderIndex (ioIndex) {
+  ioIndex ++ ;
+  for (sint32 i=0 ; i<256 ; i++) {
+    mNextStages [i] = NULL ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+cDecoderArray::
+~cDecoderArray (void) {
+  for (sint32 i=0 ; i<256 ; i++) {
+    macroMyDelete (mNextStages [i], cDecoderArray) ;
+  }
+}  
+
+//---------------------------------------------------------------------------*
+
+static void 
+writeDecoder (const cDecoderArray * inDecoder,
+              const C_String & inLexiqueName,
+              C_String & inCppFile) {
+  if (inDecoder != NULL) {
+    for (sint32 i=0 ; i<256 ; i++) {
+      writeDecoder (inDecoder->mNextStages [i], inLexiqueName, inCppFile) ;
+    }
+  //--- Find the index of the first not null entry
+    sint32 firstNotNull = 256 ;
+    for (sint32 i=0 ; (i < 256) && (firstNotNull == 256) ; i++) {
+      if (inDecoder->mNextStages [i] != NULL) {
+        firstNotNull = i ;
+      }
+    }
+    if (firstNotNull == 256) {
+      inCppFile << "const sint16 kDecoder_" << inDecoder->mDecoderIndex << " [3] = {\n"
+                   "  " << firstNotNull << ", // First entry\n"
+                   "  0, // Count\n" ;
+    }else{
+    //--- Find the index of the last not null entry
+      sint32 lastNotNull = -1 ;
+      for (sint32 i=255 ; (i >= 0) && (lastNotNull < 0) ; i--) {
+        if (inDecoder->mNextStages [i] != NULL) {
+          lastNotNull = i ;
+        }
+      }
+      const sint32 tabSize = lastNotNull - firstNotNull + 4 ;
+      inCppFile << "static const sint16 kDecoder_" << inDecoder->mDecoderIndex << " [" << tabSize << "] = {\n"
+                   "  " << firstNotNull << ", // First entry\n"
+                   "  " << (lastNotNull - firstNotNull + 1) << ", // Entry Count\n" ;
+      for (sint32 i=firstNotNull ; i<=lastNotNull ; i++) {
+        if (inDecoder->mNextStages [i] == NULL) {
+          inCppFile << "  " <<  inLexiqueName << "::" << inLexiqueName << "_1_" ;
+          generateTerminalSymbolCppName (inDecoder->mTerminal, inCppFile) ;
+          inCppFile << ", // For character " ;
+        }else{
+          inCppFile << "  " << - inDecoder->mNextStages [i]->mDecoderIndex
+                    << ", // GOTO state " << inDecoder->mNextStages [i]->mDecoderIndex
+                    << ", for character " ;
+        }
+        if (::isgraph (i)) {
+          inCppFile << "'" << ((char) i) << "' " ;
+        }
+        inCppFile << "code "  << i << "\n" ;
+      }
+    }
+    inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
+    generateTerminalSymbolCppName (inDecoder->mTerminal, inCppFile) ;
+    inCppFile << " // Default response\n"
+                 "} ;\n\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+static void
+build_decoder (C_Lexique & /* inLexique */,
+              const C_String & inLexiqueName,
+               const GGS_tokensInListMap & inTokensInListMap,
+               C_String & inCppFile) {
+  sint32 decoderIndex = 0 ;
+  cDecoderArray * firstStage = NULL ;
+  GGS_tokensInListMap::element_type * currentEntry = inTokensInListMap.firstObject () ;
+  while (currentEntry != NULL) {
+    C_String key = currentEntry->mKey ;
+    const sint32 keyLength = key.length () ;
+    cDecoderArray * * currentArrayHandle = & firstStage ;
+    for (sint32 i=0 ; i<keyLength ; i++) {
+      if ((* currentArrayHandle) == NULL) {
+        macroMyNew (* currentArrayHandle, cDecoderArray ("", decoderIndex)) ;
+      }
+      const uint32 c = key (i COMMA_HERE) & 0xFFUL ;
+      cDecoderArray * p1 = * currentArrayHandle ;
+      currentArrayHandle = & (p1->mNextStages [c]) ;
+    }
+    if ((* currentArrayHandle) == NULL) {
+      macroMyNew (* currentArrayHandle, cDecoderArray (currentEntry->mInfo.mTerminalSymbol, decoderIndex)) ;
+    }
+    currentEntry = currentEntry->nextObject () ;
+  }
+//--- Write decoder
+  inCppFile.writeCppTitleComment ("Decoder Tables") ;
+  writeDecoder (firstStage, inLexiqueName, inCppFile) ;
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "/* static const sint16 * gDecoderEntries [" << decoderIndex << "] = {\n" ;
+  for (sint32 i=0 ; i<decoderIndex ; i++) {
+    inCppFile << "  kDecoder_" << i ;
+    if (i < (decoderIndex - 1)) {
+      inCppFile << ',' ;
+    }
+    inCppFile << "\n" ;
+  }
+  inCppFile << "} ; */\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+//--- Release decoder
+  macroMyDelete (firstStage, cDecoderArray) ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Files Generation
 #endif
 
 //---------------------------------------------------------------------------*
@@ -1272,7 +1410,8 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                            const GGS_typeListeTestsEtInstructions & programme_principal,
                            const GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
                            const GGS_stringset & inUsedErrorMessageSet,
-                           const GGS_M_styles & inStylesMap) {
+                           const GGS_M_styles & inStylesMap,
+                           const GGS_tokensInListMap & inTokensInListMap) {
 // --------------------------------------- Engendrer les inclusions
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
@@ -1435,11 +1574,11 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   }
   generatedZone2 << "  _enterTokenFromPointer (_p) ;\n"
                     "}\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Get lexical attribute value
   currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
+    generatedZone2.writeCppHyphenLineComment () ;
     generatedZone2 << "void " << inLexiqueName << "::\n"
                       "_assignFromAttribute_" << currentAttribute->mKey << " (" ;
     currentAttribute->mInfo.attributType (HERE)->generateCppClassName (generatedZone2) ;
@@ -1450,13 +1589,15 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
     generatedZone2 << "(* this, _p->" << currentAttribute->mKey << ") ;\n"
                       "}\n\n" ;
     currentAttribute = currentAttribute->nextObject () ;
-    generatedZone2.writeCppHyphenLineComment () ;
   }
 
+//--- Generate decoder
+  build_decoder (inLexique, inLexiqueName, inTokensInListMap, generatedZone2) ;
+
+//--- Generate file
   C_String generatedZone3 ;
   generatedZone3.writeCppHyphenLineComment () ;
 
-//--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
                                                                   "verbose_output",
                                                                   false) ;
@@ -1482,7 +1623,8 @@ routine_generate_scanner (C_Lexique & inLexique,
                           const GGS_typeListeTestsEtInstructions & programme_principal,
                           const GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
                           const GGS_M_styles & inStylesMap,
-                          const GGS_stringset & inUsedErrorMessageSet
+                          const GGS_stringset & inUsedErrorMessageSet,
+                          const GGS_tokensInListMap & inTokensInListMap
                           COMMA_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
   //--- Get version string
@@ -1503,7 +1645,8 @@ routine_generate_scanner (C_Lexique & inLexique,
                                  table_tables_mots_reserves, programme_principal,
                                  inLexicalErrorsMessageMap,
                                  inUsedErrorMessageSet,
-                                 inStylesMap) ;
+                                 inStylesMap,
+                                 inTokensInListMap) ;
     }else{
       C_String errorMessage ;
       errorMessage << "cannot create directory " << GALGAS_OUTPUT_directory ;
