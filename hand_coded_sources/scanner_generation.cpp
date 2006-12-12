@@ -668,7 +668,7 @@ instruction__uses_loop_variable (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLexicalTagInstruction::
-generate_scanner_instruction (const C_String & inLexiqueName,
+generate_scanner_instruction (const C_String & /* inLexiqueName */,
                               const bool /* inGenerateEnterToken */,
                               AC_OutputStream & inCppFile) const {
   inCppFile << "const C_LocationInSource _locationForTag_" << mLexicalTagName << " = _mCurrentLocation ;\n" ;
