@@ -2931,6 +2931,10 @@ routine handleStringReaderCall
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
     outReturnedType := [@typeGalgas_char new] ;
+  elsif [inMethodName string] == "stringByRemovingCharacterAtIndex" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
+    outReturnedType := [@typeGalgas_string new] ;
   elsif [inMethodName string] == "pathExtension" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;

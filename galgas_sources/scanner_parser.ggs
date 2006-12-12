@@ -63,7 +63,7 @@ rule <attribute_or_terminal_symbol_declaration>
   ?!@typeLexicalAttributesMap table_attributs
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
   ?!@lexicalTypeMap inLexicalTypeMap
-  ?!@M_styles ioStylesMap
+  ??@M_styles ioStylesMap
 label parse
 ;
 
@@ -72,7 +72,8 @@ rule <key_words_list_declaration>
   ?!@typeLexicalAttributesMap table_des_attributs
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
-  ?!@M_styles ioStylesMap
+  ??@M_styles ioStylesMap
+  ?!@tokensInListMap ioTokensInListMap
 label parse
 ;
 
@@ -109,6 +110,7 @@ rule <lexical_instructions_list>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
   ??@tagMap inTagMap
+  ??@bool inCanSendTerminal
 label parse
 ;
 
@@ -120,6 +122,7 @@ rule <lexical_when_branches_list>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
   ??@tagMap inTagMap
+  ??@bool inCanSendTerminal
 label parse
 ;
 
@@ -131,6 +134,7 @@ rule <lexical_default_branch>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
   ??@tagMap inTagMap
+  ??@bool inCanSendTerminal
 label parse
 ;
 
@@ -196,6 +200,7 @@ action generate_scanner
   ??@typeTableMessagesErreurs table_messages
   ??@M_styles stylesMap
   ??@stringset inUsedErrorMessageSet
+  ??@tokensInListMap inTokensInListMap
 ;
 
 routine buildLexicalTypeMap !@lexicalTypeMap outLexicalTypeMap :
@@ -244,6 +249,7 @@ rule <galgas_component>
   @typeTableTablesDeMotsReserves table_tables_mots_reserves [emptyMap] ;
   @typeListeTestsEtInstructions lexicalRulesList [emptyList] ;
   @stringset usedErrorMessageSet [emptySet] ;
+  @tokensInListMap tokensInListMap [emptyMap] ;
 
 #--- Define lexical types
   @lexicalTypeMap lexicalTypeMap ;
@@ -259,19 +265,20 @@ rule <galgas_component>
     <style_declaration> !?stylesMap ;
   while
     <attribute_or_terminal_symbol_declaration>
-      !? table_des_terminaux
-      !? table_attributs
-      !? terminalSymbolsMapForUse
-      !? lexicalTypeMap
-      !? stylesMap
+      !?table_des_terminaux
+      !?table_attributs
+      !?terminalSymbolsMapForUse
+      !?lexicalTypeMap
+      !stylesMap
     ;
   while
     <key_words_list_declaration>
       !?table_tables_mots_reserves
-      !? table_attributs
+      !?table_attributs
       !?table_des_terminaux
       !?terminalSymbolsMapForUse
-      !?stylesMap
+      !stylesMap
+      !?tokensInListMap
     ;
   while
     <lexical_error_message_declaration>
@@ -310,6 +317,7 @@ rule <galgas_component>
     !table_messages
     !stylesMap
     !usedErrorMessageSet
+    !tokensInListMap
   ;
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
@@ -324,6 +332,7 @@ label importLexique
   @typeTableMessagesErreurs table_messages [emptyMap] ;
   @typeTableTablesDeMotsReserves table_tables_mots_reserves [emptyMap] ;
   @typeListeTestsEtInstructions lexicalRulesList [emptyList] ;
+  @tokensInListMap tokensInListMap [emptyMap] ;
 #--- Define lexical types
   @lexicalTypeMap lexicalTypeMap ;
   buildLexicalTypeMap ?lexicalTypeMap ;
@@ -341,7 +350,7 @@ label importLexique
       !?table_attributs
       !?terminalSymbolsMapForUse
       !?lexicalTypeMap
-      !?stylesMap
+      !stylesMap
     ;
   while
     <key_words_list_declaration>
@@ -349,7 +358,8 @@ label importLexique
       !?table_attributs
       !?table_des_terminaux
       !?terminalSymbolsMapForUse
-      !?stylesMap
+      !stylesMap
+      !?tokensInListMap
     ;
   while
     <lexical_error_message_declaration> parse ;
@@ -491,7 +501,7 @@ rule <attribute_or_terminal_symbol_declaration>
   ?!@typeLexicalAttributesMap table_des_attributs
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
   ?!@lexicalTypeMap inLexicalTypeMap
-  ?!@M_styles ioStylesMap
+  ??@M_styles ioStylesMap
 :
   select
   #--- semantics attribut
@@ -546,7 +556,8 @@ rule <key_words_list_declaration>
   ?!@typeLexicalAttributesMap table_des_attributs
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
-  ?!@M_styles ioStylesMap
+  ??@M_styles ioStylesMap
+  ?!@tokensInListMap ioTokensInListMap
 :
   $list$ ;
   @typeTableMotsReserves entriesMap [emptyMap] ;
@@ -593,14 +604,16 @@ rule <key_words_list_declaration>
     or
       terminalSymbolName := listEntry ;
     end select ;
+  #--- Build decoder tables
+    [!?ioTokensInListMap insertKey !listEntry !terminalSymbolName] ;
   #--- Build error message
     @string specificErrorMessageString := [[errorMessage string] stringByReplacingStringByString !"%K" ![terminalSymbolName string]] ;
   #--- Insert terminal in terminal symbols map
     [!?table_des_terminaux insertKey
-       !terminalSymbolName
-       !specificErrorMessageString
-       !attributeList
-       !styleIndex
+      !terminalSymbolName
+      !specificErrorMessageString
+      !attributeList
+      !styleIndex
     ] ;
     [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributeList] ;
   #--- Insert entry in the entries map
@@ -654,6 +667,7 @@ rule <while_branches_list>
       !?table_tables_mots_reserves
       !?ioUsedErrorMessageSet
       ![@tagMap emptyMap]
+      !false
     ;
     liste_tests_et_instructions += !lcl !li ;
   while
@@ -734,6 +748,7 @@ rule <lexical_rule>
     !?table_tables_mots_reserves
     !?ioUsedErrorMessageSet
     ![@tagMap emptyMap]
+    !true
   ;
   ioLexicalRulesList += !lcl !li ;
   $end$ ;
@@ -771,6 +786,7 @@ rule <lexical_instructions_list>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
   ??@tagMap inTagMap
+  ??@bool inCanSendTerminal
 :
   @tagMap tagMap [mapWithMapToOverride !inTagMap] ;
   li := [@tListeInstructionsLexicales emptyList] ;
@@ -800,6 +816,7 @@ rule <lexical_instructions_list>
       !?table_tables_mots_reserves
       !?ioUsedErrorMessageSet
       !tagMap
+      !inCanSendTerminal
     ;
     @tListeInstructionsLexicales liste_instructions_sinon ;
     <lexical_default_branch>
@@ -810,6 +827,7 @@ rule <lexical_instructions_list>
        !?table_tables_mots_reserves
        !?ioUsedErrorMessageSet
        !tagMap
+       !inCanSendTerminal
     ;
     $end$ ;
     $select$ ;
@@ -828,6 +846,7 @@ rule <lexical_instructions_list>
       !?table_tables_mots_reserves
       !?ioUsedErrorMessageSet
       ![@tagMap emptyMap]
+      !false
     ;
     @typeListeTestsEtInstructions ltq ;
     <while_branches_list>
@@ -851,6 +870,9 @@ rule <lexical_instructions_list>
     $;$ ;
   while
     $rewind$ ;
+    if not inCanSendTerminal then
+      error here : "the rewind instruction cannot be used within a repeat instruction" ;
+    end if ;
     @lstring tagIdentifier ;
     $identifier$ ?tagIdentifier ;
     [tagMap searchKey !tagIdentifier] ;
@@ -862,6 +884,9 @@ rule <lexical_instructions_list>
     $;$ ;
   while
     $drop$ ;
+    if not inCanSendTerminal then
+      error here : "the drop instruction cannot be used within a repeat instruction" ;
+    end if ;
     @lstring nomTerminal ;
     $terminal$ ?nomTerminal ;
     $;$ ;
@@ -869,6 +894,9 @@ rule <lexical_instructions_list>
     li += ![@typeLexicalDropInstruction new !nomTerminal] ;
   while
     $send$ ;
+    if not inCanSendTerminal then
+      error here : "the send instruction cannot be used within a repeat instruction" ;
+    end if ;
     @typeInstructionLexicale e ;
     <lexical_send_instruction>
       ?e
@@ -1001,6 +1029,7 @@ rule <lexical_when_branches_list>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
   ??@tagMap inTagMap
+  ??@bool inCanSendTerminal
 :
   lbs := [@typeListeTestsEtInstructions emptyList] ;
   $when$ ;
@@ -1017,6 +1046,7 @@ rule <lexical_when_branches_list>
       !?table_tables_mots_reserves
       !?ioUsedErrorMessageSet
       !inTagMap
+      !inCanSendTerminal
     ;
     lbs += !lcl !li ;
   while
@@ -1034,6 +1064,7 @@ rule <lexical_default_branch>
   ?!@typeTableTablesDeMotsReserves unused table_tables_mots_reserves
   ?!@stringset unused ioUsedErrorMessageSet
   ??@tagMap unused inTagMap
+  ??@bool unused inCanSendTerminal
 :
   liste_instructions_sinon := [@tListeInstructionsLexicales emptyList] ;
 end rule ;
@@ -1048,6 +1079,7 @@ rule <lexical_default_branch>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@stringset ioUsedErrorMessageSet
   ??@tagMap inTagMap
+  ??@bool inCanSendTerminal
 :
   $default$ ;
   <lexical_instructions_list>
@@ -1058,6 +1090,7 @@ rule <lexical_default_branch>
     !?table_tables_mots_reserves 
     !?ioUsedErrorMessageSet
     !inTagMap
+    !inCanSendTerminal
   ;
 end rule ;
 

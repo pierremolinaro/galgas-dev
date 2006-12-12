@@ -260,5 +260,15 @@ routine appendToLexicalInstructionList
 end routine ;
 
 #------------------------------------------------------------------*
+#                   SCANNER DECODING TABLES                        *
+#------------------------------------------------------------------*
+
+map @tokensInListMap {
+  @lstring mTerminalSymbol ;
+  insert insertKey error message "the '%K' character is already declared in %L" ;
+  search searchKey error message "the '%K' character is not declared" ;
+}
+
+#------------------------------------------------------------------*
 
 end semantics ;
