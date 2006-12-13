@@ -30,8 +30,7 @@ class cPtr_typeInstructionLexicale : public C_GGS_Object {
 
   public : virtual void
   generateDecoderFromInstruction (C_Lexique & inLexique,
-                                  AC_OutputStream & inCppFile,
-                                  cDecoderArray * & ioFirstStage,
+                                  sint32 & ioCurrentState,
                                   cDecoderController & ioDecoderController) ;
 
 //--- END OF USER ZONE 2
