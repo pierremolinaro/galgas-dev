@@ -21,10 +21,19 @@ class cPtr_typeLexicalDropInstruction : public cPtr_typeInstructionLexicale {
   private : typedef cPtr_typeInstructionLexicale inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual bool instruction__uses_loop_variable (void) const ;
-public : virtual void generate_scanner_instruction (const C_String & inLexiqueName,
-                                                    const bool inGenerateEnterToken,
-                                                    AC_OutputStream & inCppFile) const ;
+  public : virtual bool
+  instruction__uses_loop_variable (void) const ;
+
+  public : virtual void
+  generate_scanner_instruction (const C_String & inLexiqueName,
+                                const bool inGenerateEnterToken,
+                                AC_OutputStream & inCppFile) const ;
+
+  public : virtual void
+  generateDecoderFromInstruction (C_Lexique & inLexique,
+                                  AC_OutputStream & inCppFile,
+                                  cDecoderArray * & ioFirstStage,
+                                  cDecoderController & ioDecoderController) ;
 
 //--- END OF USER ZONE 2
 

@@ -31,7 +31,7 @@
 #include "cVocabulary.h"
 #include "common_semantics.h"
 #include "semantics_instructions.h"
-#include "scanner_generation.h"
+#include "scannerDecoderGeneration.h"
 
 //---------------------------------------------------------------------------*
 

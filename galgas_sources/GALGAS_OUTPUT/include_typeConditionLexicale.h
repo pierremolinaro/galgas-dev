@@ -8,6 +8,8 @@
 
 //--- START OF USER ZONE 1
 
+class cDecoderArray ;
+class cDecoderController ;
 
 //--- END OF USER ZONE 1
 
@@ -20,7 +22,15 @@
 class cPtr_typeConditionLexicale : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
-public : virtual void generateLexicalCondition (AC_OutputStream & inCppFile) = 0 ;
+  public : virtual void
+  generateLexicalCondition (AC_OutputStream & inCppFile) = 0 ;
+
+  public : virtual void
+  generateDecoderFromCondition (C_Lexique & inLexique,
+                                AC_OutputStream & inCppFile,
+                                const GGS_tListeInstructionsLexicales & inInstructionList,
+                                cDecoderArray * & ioFirstStage,
+                                cDecoderController & ioDecoderController) ;
 
 //--- END OF USER ZONE 2
 

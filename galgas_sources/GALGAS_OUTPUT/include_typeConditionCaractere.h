@@ -21,7 +21,15 @@ class cPtr_typeConditionCaractere : public cPtr_typeConditionLexicale {
   private : typedef cPtr_typeConditionLexicale inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual void generateLexicalCondition (AC_OutputStream & inCppFile) ;
+  public : virtual void
+  generateLexicalCondition (AC_OutputStream & inCppFile) ;
+
+  public : virtual void
+  generateDecoderFromCondition (C_Lexique & inLexique,
+                                AC_OutputStream & inCppFile,
+                                const GGS_tListeInstructionsLexicales & inInstructionList,
+                                cDecoderArray * & ioFirstStage,
+                                cDecoderController & ioDecoderController) ;
 
 //--- END OF USER ZONE 2
 

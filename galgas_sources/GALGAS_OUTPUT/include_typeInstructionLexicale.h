@@ -20,10 +20,19 @@
 class cPtr_typeInstructionLexicale : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
-public : virtual bool instruction__uses_loop_variable (void) const = 0 ;
-public : virtual void generate_scanner_instruction (const C_String & inLexiqueName,
-                                                    const bool inGenerateEnterToken,
-                                                    AC_OutputStream & inCppFile) const = 0 ;
+  public : virtual bool
+  instruction__uses_loop_variable (void) const = 0 ;
+
+  public : virtual void
+  generate_scanner_instruction (const C_String & inLexiqueName,
+                                const bool inGenerateEnterToken,
+                                AC_OutputStream & inCppFile) const = 0 ;
+
+  public : virtual void
+  generateDecoderFromInstruction (C_Lexique & inLexique,
+                                  AC_OutputStream & inCppFile,
+                                  cDecoderArray * & ioFirstStage,
+                                  cDecoderController & ioDecoderController) ;
 
 //--- END OF USER ZONE 2
 
