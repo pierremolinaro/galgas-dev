@@ -31,8 +31,7 @@ class cPtr_typeLexicalDropInstruction : public cPtr_typeInstructionLexicale {
 
   public : virtual void
   generateDecoderFromInstruction (C_Lexique & inLexique,
-                                  AC_OutputStream & inCppFile,
-                                  cDecoderArray * & ioFirstStage,
+                                  sint32 & ioCurrentState,
                                   cDecoderController & ioDecoderController) ;
 
 //--- END OF USER ZONE 2

@@ -26,9 +26,8 @@ class cPtr_typeConditionCaractere : public cPtr_typeConditionLexicale {
 
   public : virtual void
   generateDecoderFromCondition (C_Lexique & inLexique,
-                                AC_OutputStream & inCppFile,
                                 const GGS_tListeInstructionsLexicales & inInstructionList,
-                                cDecoderArray * & ioFirstStage,
+                                sint32 & ioCurrentState,
                                 cDecoderController & ioDecoderController) ;
 
 //--- END OF USER ZONE 2
