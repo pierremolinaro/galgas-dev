@@ -24,7 +24,7 @@
 //---------------------------------------------------------------------------*
 
 #include "semantics_instructions.h"
-#include "scanner_generation.h"
+#include "scannerDecoderGeneration.h"
 #include "parser_parser.h"
 
 //---------------------------------------------------------------------------*

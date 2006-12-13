@@ -1,9 +1,13 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//   Scanner Generation (hand-coded file)                                    *
+//   scannerDecoderGeneration.h                                              *
 //                                                                           *
-//  Copyright (C) 2000-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 2006 Pierre Molinaro.                                      *
+//                                                                           *
+//  Started december 13th, 2006.                                             *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -18,19 +22,26 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef SCANNER_GENERATION_ROUTINES_DEFINED
-#define SCANNER_GENERATION_ROUTINES_DEFINED
+#ifndef SCANNER_DECODER_GENERATION_DEFINED
+#define SCANNER_DECODER_GENERATION_DEFINED
 
 //---------------------------------------------------------------------------*
 
-class C_TextFileWrite ;
-class C_String ;
-class C_String ;
+#include "scanner_parser.h"
 
 //---------------------------------------------------------------------------*
 
 void generateTerminalSymbolCppName (const C_String & inValue,
                                     AC_OutputStream & ioFile) ;
+
+//---------------------------------------------------------------------------*
+
+void
+scannerDecoderGeneration (C_Lexique & inLexique,
+                          const C_String & inLexiqueName,
+                          const GGS_tokensInListMap & inTokensInListMap,
+                          const GGS_typeListeTestsEtInstructions & inRuleList,
+                          C_String & inCppFile) ;
 
 //---------------------------------------------------------------------------*
 

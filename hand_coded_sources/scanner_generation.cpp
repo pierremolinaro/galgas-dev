@@ -23,12 +23,9 @@
 #include "time/C_DateTime.h"
 #include "generic_arraies/TC_UniqueArray.h"
 
-#include "scanner_parser.h"
-#include "scanner_generation.h"
-
 //---------------------------------------------------------------------------*
 
-#include <ctype.h>
+#include "scannerDecoderGeneration.h"
 
 //---------------------------------------------------------------------------*
 
@@ -360,22 +357,6 @@ static void
 generateAttributeInitialization (const GGS_typeLexicalAttributesMap & inMap,
                                  AC_OutputStream & inCppFile) {
   engendrerInitialisationAttributInterne (inMap.rootObject (), inCppFile) ;
-}
-
-//---------------------------------------------------------------------------*
-
-void generateTerminalSymbolCppName (const C_String & inValue,
-                                    AC_OutputStream & ioString) {
-  static const char tab [17] = "0123456789ABCDEF" ;
-  const sint32 length = inValue.length () ;
-  for (sint32 i=0 ; i<length ; i++) {
-    const char c = inValue (i COMMA_HERE) ;
-    if (isalnum (c)) {
-      ioString << c ;
-    }else{
-      ioString << '_' << tab [c / 16] << tab [c % 16] ;
-    }
-  }
 }
 
 //---------------------------------------------------------------------------*
@@ -1147,144 +1128,6 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Build Decoder
-#endif
-
-//---------------------------------------------------------------------------*
-
-class cDecoderArray {
-  public : const C_String mTerminal ;
-  public : const sint32 mDecoderIndex ;
-  public : cDecoderArray * mNextStages [256] ;
-  public : cDecoderArray (const C_String & inTerminal, sint32 & ioIndex) ;
-  public : virtual ~cDecoderArray (void) ;
-} ;
-
-//---------------------------------------------------------------------------*
-
-cDecoderArray::
-cDecoderArray (const C_String & inTerminal, sint32 & ioIndex):
-mTerminal (inTerminal),
-mDecoderIndex (ioIndex) {
-  ioIndex ++ ;
-  for (sint32 i=0 ; i<256 ; i++) {
-    mNextStages [i] = NULL ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-cDecoderArray::
-~cDecoderArray (void) {
-  for (sint32 i=0 ; i<256 ; i++) {
-    macroMyDelete (mNextStages [i], cDecoderArray) ;
-  }
-}  
-
-//---------------------------------------------------------------------------*
-
-static void 
-writeDecoder (const cDecoderArray * inDecoder,
-              const C_String & inLexiqueName,
-              C_String & inCppFile) {
-  if (inDecoder != NULL) {
-    for (sint32 i=0 ; i<256 ; i++) {
-      writeDecoder (inDecoder->mNextStages [i], inLexiqueName, inCppFile) ;
-    }
-  //--- Find the index of the first not null entry
-    sint32 firstNotNull = 256 ;
-    for (sint32 i=0 ; (i < 256) && (firstNotNull == 256) ; i++) {
-      if (inDecoder->mNextStages [i] != NULL) {
-        firstNotNull = i ;
-      }
-    }
-    if (firstNotNull == 256) {
-      inCppFile << "const sint16 kDecoder_" << inDecoder->mDecoderIndex << " [3] = {\n"
-                   "  " << firstNotNull << ", // First entry\n"
-                   "  0, // Count\n" ;
-    }else{
-    //--- Find the index of the last not null entry
-      sint32 lastNotNull = -1 ;
-      for (sint32 i=255 ; (i >= 0) && (lastNotNull < 0) ; i--) {
-        if (inDecoder->mNextStages [i] != NULL) {
-          lastNotNull = i ;
-        }
-      }
-      const sint32 tabSize = lastNotNull - firstNotNull + 4 ;
-      inCppFile << "static const sint16 kDecoder_" << inDecoder->mDecoderIndex << " [" << tabSize << "] = {\n"
-                   "  " << firstNotNull << ", // First entry\n"
-                   "  " << (lastNotNull - firstNotNull + 1) << ", // Entry Count\n" ;
-      for (sint32 i=firstNotNull ; i<=lastNotNull ; i++) {
-        if (inDecoder->mNextStages [i] == NULL) {
-          inCppFile << "  " <<  inLexiqueName << "::" << inLexiqueName << "_1_" ;
-          generateTerminalSymbolCppName (inDecoder->mTerminal, inCppFile) ;
-          inCppFile << ", // For character " ;
-        }else{
-          inCppFile << "  " << - inDecoder->mNextStages [i]->mDecoderIndex
-                    << ", // GOTO state " << inDecoder->mNextStages [i]->mDecoderIndex
-                    << ", for character " ;
-        }
-        if (::isgraph (i)) {
-          inCppFile << "'" << ((char) i) << "' " ;
-        }
-        inCppFile << "code "  << i << "\n" ;
-      }
-    }
-    inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
-    generateTerminalSymbolCppName (inDecoder->mTerminal, inCppFile) ;
-    inCppFile << " // Default response\n"
-                 "} ;\n\n" ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-static void
-build_decoder (C_Lexique & /* inLexique */,
-              const C_String & inLexiqueName,
-               const GGS_tokensInListMap & inTokensInListMap,
-               C_String & inCppFile) {
-  sint32 decoderIndex = 0 ;
-  cDecoderArray * firstStage = NULL ;
-  GGS_tokensInListMap::element_type * currentEntry = inTokensInListMap.firstObject () ;
-  while (currentEntry != NULL) {
-    C_String key = currentEntry->mKey ;
-    const sint32 keyLength = key.length () ;
-    cDecoderArray * * currentArrayHandle = & firstStage ;
-    for (sint32 i=0 ; i<keyLength ; i++) {
-      if ((* currentArrayHandle) == NULL) {
-        macroMyNew (* currentArrayHandle, cDecoderArray ("", decoderIndex)) ;
-      }
-      const uint32 c = key (i COMMA_HERE) & 0xFFUL ;
-      cDecoderArray * p1 = * currentArrayHandle ;
-      currentArrayHandle = & (p1->mNextStages [c]) ;
-    }
-    if ((* currentArrayHandle) == NULL) {
-      macroMyNew (* currentArrayHandle, cDecoderArray (currentEntry->mInfo.mTerminalSymbol, decoderIndex)) ;
-    }
-    currentEntry = currentEntry->nextObject () ;
-  }
-//--- Write decoder
-  inCppFile.writeCppTitleComment ("Decoder Tables") ;
-  writeDecoder (firstStage, inLexiqueName, inCppFile) ;
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "/* static const sint16 * gDecoderEntries [" << decoderIndex << "] = {\n" ;
-  for (sint32 i=0 ; i<decoderIndex ; i++) {
-    inCppFile << "  kDecoder_" << i ;
-    if (i < (decoderIndex - 1)) {
-      inCppFile << ',' ;
-    }
-    inCppFile << "\n" ;
-  }
-  inCppFile << "} ; */\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-//--- Release decoder
-  macroMyDelete (firstStage, cDecoderArray) ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Files Generation
 #endif
 
@@ -1592,7 +1435,9 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   }
 
 //--- Generate decoder
-  build_decoder (inLexique, inLexiqueName, inTokensInListMap, generatedZone2) ;
+  scannerDecoderGeneration (inLexique, inLexiqueName,
+                            inTokensInListMap, programme_principal,
+                            generatedZone2) ;
 
 //--- Generate file
   C_String generatedZone3 ;
