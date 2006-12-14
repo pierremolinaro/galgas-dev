@@ -2950,7 +2950,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    R E A D E R    C A L L   I N S T R U C T I O N                         *
+#    M E T H O D    C A L L   I N S T R U C T I O N                         *
 #               [object reader_method !... !?... ?...] ;                    *
 #                                                                           *
 #    M O D I F I E R    C A L L   I N S T R U C T I O N                     *

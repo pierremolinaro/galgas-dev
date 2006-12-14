@@ -48,6 +48,7 @@ SOURCES += C_HTML_FileWrite.cpp
 
 #--- Hand-coded files ---------------------
 SOURCES += scanner_generation.cpp
+SOURCES += scannerDecoderGeneration.cpp
 SOURCES += cocoa_generation.cpp
 SOURCES += option_component_generation.cpp
 SOURCES += semantics_generation.cpp
