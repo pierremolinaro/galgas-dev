@@ -31,7 +31,7 @@ class cPtr_typeInstructionSiLexical : public cPtr_typeInstructionLexicale {
 
   public : virtual void
   generateDecoderFromInstruction (C_Lexique & inLexique,
-                                  sint32 & ioCurrentState,
+                                  cDecoderTargetState & ioCurrentState,
                                   cDecoderController & ioDecoderController) ;
 
 //--- END OF USER ZONE 2
