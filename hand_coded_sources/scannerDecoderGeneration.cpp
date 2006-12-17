@@ -36,11 +36,12 @@
 
 //---------------------------------------------------------------------------*
 
-/*static void
+static void
 generateDecoderForInstructionList (C_Lexique & inLexique,
                                    const GGS_tListeInstructionsLexicales & inInstructionList,
-                                   sint32 & ioCurrentState,
-                                   cDecoderController & ioDecoderController) ;*/
+                                   cDecoderState * ioCurrentState,
+                                   const sint32 inTargetStateNumber,
+                                   cDecoderController & ioDecoderController) ;
 
 //---------------------------------------------------------------------------*
 
@@ -66,9 +67,9 @@ void generateTerminalSymbolCppName (const C_String & inValue,
 
 //---------------------------------------------------------------------------*
 
-class cDecoderTargetState {         // Accept    GOTO state   Error  
-  public : GGS_lstring mTerminal ;  // "..."         xx         xx
-  public : sint32 mNextState ;      //   0          n > 0       -1
+class cDecoderTargetState {         // Accept    GOTO state   Default  Error  
+  public : GGS_lstring mTerminal ;  // "..."         xx         xx      xx
+  public : sint32 mNextState ;      //   0          n > 0       -1      -2
   public : cDecoderTargetState (void) ;
   public : bool operator != (const cDecoderTargetState & inOperand) const ;
 } ;
@@ -81,6 +82,8 @@ class cDecoderTargetState {         // Accept    GOTO state   Error
 
 class cDecoderState {
 //  public : enumStateType mStateType ;
+  public : sint32 mDefaultResponse ; // -1 : error, 0 : terminal
+  public : GGS_lstring mDefaultTerminal ; // Terminal spelling
   public : cDecoderTargetState mTransitions [256] ;
 //--- Constructor
   public : cDecoderState (void) ;
@@ -157,9 +160,8 @@ void cDecoderController::
 newState (cDecoderTargetState & ioSourceState) {
   cDecoderState * result = NULL ;
   macroMyNew (result, cDecoderState) ;
-  for (sint32 i=0 ; i<256 ; i++) {
-    result->mTransitions [i] = ioSourceState ;
-  }
+  result->mDefaultResponse = ioSourceState.mNextState ;
+  result->mDefaultTerminal = ioSourceState.mTerminal ; ;
   addObjectUsingSwap (result) ;
   ioSourceState.mNextState = count () - 1 ;
 }
@@ -167,7 +169,8 @@ newState (cDecoderTargetState & ioSourceState) {
 //---------------------------------------------------------------------------*
 
 cDecoderState::
-cDecoderState (void) {
+cDecoderState (void):
+mDefaultResponse (-1) {
 }
 
 //---------------------------------------------------------------------------*
@@ -193,9 +196,9 @@ generateDecoderFromInstruction (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionEmettreSimple::
-generateDecoderFromInstruction (C_Lexique & inLexique,
-                                cDecoderTargetState & ioCurrentState,
-                                cDecoderController & ioDecoderController) {
+generateDecoderFromInstruction (C_Lexique & /* inLexique */,
+                                cDecoderTargetState & /* ioCurrentState */,
+                                cDecoderController & /* ioDecoderController */) {
 /*  if (ioCurrentState <= 0) {
     ioCurrentState = ioDecoderController.newState () ;
   }else{
@@ -212,9 +215,9 @@ generateDecoderFromInstruction (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLexicalDropInstruction::
-generateDecoderFromInstruction (C_Lexique & inLexique,
-                                cDecoderTargetState & ioCurrentState,
-                                cDecoderController & ioDecoderController) {
+generateDecoderFromInstruction (C_Lexique & /* inLexique */,
+                                cDecoderTargetState & /* ioCurrentState */,
+                                cDecoderController & /* ioDecoderController */) {
 /*  if (ioCurrentState <= 0) {
     ioCurrentState = ioDecoderController.newState () ;
   }else{
@@ -231,9 +234,9 @@ generateDecoderFromInstruction (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionSiLexical::
-generateDecoderFromInstruction (C_Lexique & inLexique,
-                                cDecoderTargetState & ioCurrentState,
-                                cDecoderController & ioDecoderController) {
+generateDecoderFromInstruction (C_Lexique & /* inLexique */,
+                                cDecoderTargetState & /* ioCurrentState */,
+                                cDecoderController & /* ioDecoderController */) {
 /*  GGS_typeListeTestsEtInstructions::element_type * currentBranch = attributListeBranches.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
@@ -257,9 +260,9 @@ generateDecoderFromInstruction (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionRepetitionLexicale::
-generateDecoderFromInstruction (C_Lexique & inLexique,
-                                cDecoderTargetState & ioCurrentState,
-                                cDecoderController & ioDecoderController) {
+generateDecoderFromInstruction (C_Lexique & /* inLexique */,
+                                cDecoderTargetState & /* ioCurrentState */,
+                                cDecoderController & /* ioDecoderController */) {
 //--- Target state
 //  const sint32 targetState = ioDecoderController.newState (GGS_lstring (inLexique, "")) ;
 /*  GGS_typeListeTestsEtInstructions::element_type * currentBranch = attributListeBranches.firstObject () ;
@@ -290,20 +293,22 @@ generateDecoderFromInstruction (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-/*static void
-generateDecoderForInstructionList (C_Lexique & inLexique,
-                                   const GGS_tListeInstructionsLexicales & inInstructionList,
-                                   cDecoderTargetState & ioCurrentState,
-                                   cDecoderController & ioDecoderController) {
-  GGS_tListeInstructionsLexicales::element_type * currentInstruction = inInstructionList.firstObject () ;
+static void
+generateDecoderForInstructionList (C_Lexique & /* inLexique */,
+                                   const GGS_tListeInstructionsLexicales & /* inInstructionList */,
+                                   cDecoderState * /* ioCurrentState */,
+                                   const sint32 /* inTargetStateNumber */,
+                                   cDecoderController & /* ioDecoderController */) {
+/*  GGS_tListeInstructionsLexicales::element_type * currentInstruction = inInstructionList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
     currentInstruction->attributInstruction (HERE)->generateDecoderFromInstruction (inLexique,
       ioCurrentState,
+      inTargetStateNumber,
       ioDecoderController) ;
     currentInstruction = currentInstruction->nextObject () ;
-  }
-}*/
+  }*/
+}
 
 //---------------------------------------------------------------------------*
 
@@ -316,7 +321,8 @@ generateDecoderForInstructionList (C_Lexique & inLexique,
 void cPtr_typeConditionLexicale::
 generateDecoderFromCondition (C_Lexique & /* inLexique */,
                               const GGS_tListeInstructionsLexicales & /* inInstructionList */,
-                              cDecoderTargetState & /* ioCurrentState */,
+                              cDecoderState * /* ioCurrentState */,
+                              const sint32 /* inTargetStateNumber */,
                               cDecoderController & /* ioDecoderController */) {
 }
 
@@ -325,19 +331,21 @@ generateDecoderFromCondition (C_Lexique & /* inLexique */,
 void cPtr_typeConditionCaractere::
 generateDecoderFromCondition (C_Lexique & inLexique,
                               const GGS_tListeInstructionsLexicales & inInstructionList,
-                              cDecoderTargetState & ioCurrentState,
+                              cDecoderState * ioCurrentState,
+                              const sint32 inTargetStateNumber,
                               cDecoderController & ioDecoderController) {
-//--- Allocate first stage if not done
-/*  if (ioCurrentState <= 0) {
-    ioCurrentState = ioDecoderController.newState () ;
-  }
 //--- Get character
   const uint32 c = attributCaractere.charValue () & 0xFFUL ;
+//--- Allocate 
+  if (ioCurrentState->mTransitions [c].mNextState < 0) { // Default or error
+    ioDecoderController.newState (ioCurrentState->mTransitions [c]) ;
+  }
 //--- Enter instruction list
   generateDecoderForInstructionList (inLexique,
     inInstructionList,
-    ioDecoderController (ioCurrentState - 1 COMMA_HERE)->mTransitions [c],
-    ioDecoderController) ;*/
+    ioDecoderController (ioCurrentState->mTransitions [c].mNextState COMMA_HERE),
+    inTargetStateNumber,
+    ioDecoderController) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -352,50 +360,52 @@ void cDecoderState::
 writeDecoderState (const C_String & inLexiqueName,
                    const sint32 inIndex,
                    C_String & inCppFile) const {
-//--- Find the index of the first not null entry
+//--- Find the index of the first not default entry
   sint32 firstNotNull = 256 ;
-  const cDecoderTargetState firstValue = mTransitions [0] ;
-  for (sint32 i=1 ; (i < 256) && (firstNotNull == 256) ; i++) {
-    if (mTransitions [i] != firstValue) {
+  for (sint32 i=0 ; (i < 256) && (firstNotNull == 256) ; i++) {
+    if (mTransitions [i].mNextState != -1) {
       firstNotNull = i ;
     }
   }
   if (firstNotNull == 256) {
-    inCppFile << "const sint16 kDecoder_" << inIndex << " [2] = {\n"
-                 "  -1, // All transitions have the same target\n" ;
-    if (firstValue.mNextState < 0) {
-      inCppFile << "  -1} ; // Lexical error\n\n" ;
+    inCppFile << "const sint16 kDecoder_" << inIndex << " [2] = {\n" ;
+    if (mDefaultResponse < 0) {
+      inCppFile << "  -1, // Default response : lexical error\n" ;
     }else{
       inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
-      generateTerminalSymbolCppName (firstValue.mTerminal, inCppFile) ;
-      inCppFile << " // Default response\n"
-                   "} ;\n\n" ;
+      generateTerminalSymbolCppName (mDefaultTerminal, inCppFile) ;
+      inCppFile << ", // Default response: accept $" << mDefaultTerminal << "$ terminal\n" ;
     }
+    inCppFile << "  -1 // All transitions have the default response\n"
+                 "} ;\n\n" ;
   }else{
-  //--- Find the index of the last not null entry
+  //--- Find the index of the last not default entry
     sint32 lastNotNull = -1 ;
     for (sint32 i=255 ; (i >= 0) && (lastNotNull < 0) ; i--) {
-      if (mTransitions [i] != firstValue) {
+      if (mTransitions [i].mNextState != -1) {
         lastNotNull = i ;
       }
     }
     const sint32 tabSize = lastNotNull - firstNotNull + 4 ;
-    inCppFile << "static const sint16 kDecoder_" << inIndex << " [" << tabSize << "] = {\n"
-                 "  " << firstNotNull << ", // First entry\n"
-                 "  " << (lastNotNull - firstNotNull + 1) << ", // Entry Count\n" ;
-    if (firstValue.mNextState < 0) {
+    inCppFile << "static const sint16 kDecoder_" << inIndex << " [" << tabSize << "] = {\n" ;
+    if (mDefaultResponse < 0) {
       inCppFile << "  -1, // Default response: lexical error\n" ;
     }else{
-       inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
-      generateTerminalSymbolCppName (firstValue.mTerminal, inCppFile) ;
-      inCppFile << ", // Default response: accept terminal\n" ;
+      inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
+      generateTerminalSymbolCppName (mDefaultTerminal, inCppFile) ;
+      inCppFile << ", // Default response: accept $" << mDefaultTerminal << "$ terminal\n" ;
     }
+    inCppFile << "  " << firstNotNull << ", // First entry\n"
+                 "  " << (lastNotNull - firstNotNull + 1) << ", // Entry Count\n" ;
     for (sint32 i=firstNotNull ; i<=lastNotNull ; i++) {
-      if (mTransitions [i].mNextState < 0) {
-        inCppFile << "  -1"
+      if (mTransitions [i].mNextState == -2) {
+        inCppFile << "  -2"
                   << ((i<lastNotNull) ? "," : "") << " // Lexical error" ;
+      }else if (mTransitions [i].mNextState == -1) {
+        inCppFile << "  -1"
+                  << ((i<lastNotNull) ? "," : "") << " // Default response" ;
       }else if (mTransitions [i].mNextState > 0) {
-        inCppFile << "  " << (- mTransitions [i].mNextState - 1)
+        inCppFile << "  " << (- mTransitions [i].mNextState - 2)
                   << ", // GOTO state " << mTransitions [i].mNextState
                   << " (kDecoder_" << mTransitions [i].mNextState << ")"
                   << ((i<lastNotNull) ? "," : "") ;
@@ -404,10 +414,11 @@ writeDecoderState (const C_String & inLexiqueName,
         generateTerminalSymbolCppName (mTransitions [i].mTerminal, inCppFile) ;
         inCppFile << ((i<lastNotNull) ? "," : "") << " // Accept" ;
       }
+      inCppFile << " for character " ;
       if (::isgraph (i)) {
-        inCppFile << " for character'" << ((char) i) << "' " ;
+        inCppFile << "'" << ((char) i) << "' " ;
       }
-      inCppFile << "code "  << i << "\n" ;
+      inCppFile << "code " << i << "\n" ;
     }
     inCppFile << "} ;\n\n" ;
   }
@@ -427,12 +438,12 @@ writeDecoder (const C_String & inLexiqueName,
   }
   inCppFile.writeCppTitleComment ("Decoder Tables") ;
   for (sint32 i=count ()-1 ; i>=0 ; i--) {
-    this->operator () (i COMMA_HERE)->writeDecoderState (inLexiqueName, i+1, inCppFile) ;
+    this->operator () (i COMMA_HERE)->writeDecoderState (inLexiqueName, i, inCppFile) ;
   }
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "/* static */ const sint16 * gDecoderEntries [" << count () << "] = {\n" ;
   for (sint32 i=0 ; i<count () ; i++) {
-    inCppFile << " kDecoder_" << (i+1) ;
+    inCppFile << " kDecoder_" << i ;
     if (i < (count () - 1)) {
       inCppFile << ',' ;
     }
@@ -469,39 +480,46 @@ scannerDecoderGeneration (C_Lexique & inLexique,
     const uint32 c0 = key (0 COMMA_HERE) & 0xFFUL ;
     cDecoderTargetState * currentTargetStatePtr = & (decoderController (0 COMMA_HERE)->mTransitions [c0]) ;
     for (sint32 i=1 ; i<keyLength ; i++) {
+      const uint32 c = key (i COMMA_HERE) & 0xFFUL ;
       if (currentTargetStatePtr->mNextState <= 0) {
         decoderController.newState (* currentTargetStatePtr) ;
+        currentTargetStatePtr = & (decoderController (currentTargetStatePtr->mNextState COMMA_HERE)->mTransitions [c]) ;
+        currentTargetStatePtr->mNextState = -1 ;
+      }else{
+        currentTargetStatePtr = & (decoderController (currentTargetStatePtr->mNextState COMMA_HERE)->mTransitions [c]) ;
       }
-      const uint32 c = key (i COMMA_HERE) & 0xFFUL ;
-      currentTargetStatePtr = & (decoderController (currentTargetStatePtr->mNextState COMMA_HERE)->mTransitions [c]) ;
     }
     if (currentTargetStatePtr->mNextState > 0) { // GOTO
       cDecoderState * currentStatePtr = decoderController (currentTargetStatePtr->mNextState COMMA_HERE) ;
-      bool foundOne = false ;
-      for (sint32 i=0 ; i<256 ; i++) {
-        if (currentStatePtr->mTransitions [i].mNextState < 0) {
-          currentStatePtr->mTransitions [i].mNextState = 0 ;
-          currentStatePtr->mTransitions [i].mTerminal = currentEntry->mInfo.mTerminalSymbol ;
-          foundOne = true ;
-        }
-      }
-      if (! foundOne) {
+      if (currentStatePtr->mDefaultResponse < 0) {
+        currentStatePtr->mDefaultResponse = 0 ;
+        currentStatePtr->mDefaultTerminal = currentEntry->mInfo.mTerminalSymbol ;    
+      }else if (currentStatePtr->mDefaultTerminal.length () == 0) { // accept, no token
+        currentStatePtr->mDefaultTerminal = currentEntry->mInfo.mTerminalSymbol ;    
+      }else{
         currentEntry->mInfo.mTerminalSymbol.signalSemanticWarning (inLexique,
-          C_String ("the '$") + currentEntry->mInfo.mTerminalSymbol + "$'terminal symbol has been already defined"
+          C_String ("the $")
+            + currentEntry->mInfo.mTerminalSymbol
+            + "$ and the $"
+            + currentTargetStatePtr->mTerminal
+            + "$ terminal symbols have the same spelling"
           COMMA_HERE) ;
       }
-    }else if (currentTargetStatePtr->mNextState < 0) { // Error transition : change to accept
+    }else if (currentTargetStatePtr->mNextState < 0) { // Error or default transition : change to accept
       currentTargetStatePtr->mNextState = 0 ;
       currentTargetStatePtr->mTerminal = currentEntry->mInfo.mTerminalSymbol ;
     }else{
       currentEntry->mInfo.mTerminalSymbol.signalSemanticWarning (inLexique,
-        C_String ("the '$") + currentEntry->mInfo.mTerminalSymbol + "$'terminal symbol has been already defined"
+        C_String ("the $")
+          + currentEntry->mInfo.mTerminalSymbol
+          + "$ terminal symbol get no free entry"
         COMMA_HERE) ;
     }
     currentEntry = currentEntry->nextObject () ;
   }
 //--- Enter tokens from rules
-/*  GGS_typeListeTestsEtInstructions::element_type * currentRule = inRuleList.firstObject () ;
+  const sint32 targetState = decoderController.newState () ;
+  GGS_typeListeTestsEtInstructions::element_type * currentRule = inRuleList.firstObject () ;
   while (currentRule != NULL) {
     macroValidPointer (currentRule) ;
     GGS_typeListeConditionsLexicales::element_type * currentCondition = currentRule->attributListeConditions.firstObject () ;
@@ -509,12 +527,13 @@ scannerDecoderGeneration (C_Lexique & inLexique,
       macroValidPointer (currentCondition) ;
       currentCondition->attributCondition (HERE)->generateDecoderFromCondition (inLexique,
         currentRule->attributListeInstructions,
-        firstState,
+        decoderController (0 COMMA_HERE),
+        targetState,
         decoderController) ;
       currentCondition = currentCondition->nextObject () ;
     }
     currentRule = currentRule->nextObject () ;
-  }*/
+  }
 //--- Write decoder
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
                                                                   "verbose_output",

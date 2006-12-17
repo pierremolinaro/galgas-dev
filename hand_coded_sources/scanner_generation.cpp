@@ -1254,7 +1254,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
                            const GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
                            const GGS_stringset & inUsedErrorMessageSet,
                            const GGS_M_styles & inStylesMap,
-                           const GGS_tokensInListMap & inTokensInListMap) {
+                           const GGS_tokensInListMap & /* inTokensInListMap */) {
 // --------------------------------------- Engendrer les inclusions
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
@@ -1435,9 +1435,9 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   }
 
 //--- Generate decoder
-  scannerDecoderGeneration (inLexique, inLexiqueName,
+/*  scannerDecoderGeneration (inLexique, inLexiqueName,
                             inTokensInListMap, programme_principal,
-                            generatedZone2) ;
+                            generatedZone2) ;*/
 
 //--- Generate file
   C_String generatedZone3 ;
