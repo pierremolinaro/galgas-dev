@@ -8,6 +8,13 @@
  <body>
   <div style="font-face: Verdana; font-size:small;">
    <p><b>GALGAS ChangeLog</b></p>
+   <p>1.5.7</p>
+   <ul>
+    <li>New <tt><b>@string</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithenvironmentvariable"><tt><b>stringWithEnvironmentVariable</b></tt></a> that returns a string containing the value of an environment variable;</li>
+    <li>New <tt><b>@string</b></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithenvironmentvariableorempty"><tt><b>stringWithEnvironmentVariableOrEmpty</b></tt></a> that returns a string containing the value of an environment variable, or the empty string if the variable does not exist;</li>
+    <li>Win32 cross compiling on Mac OS X for Win32 now uses Min GW 3.4.5, available at <a href="http://crossgcc.rts-software.org"/>http://crossgcc.rts-software.org/</a>;</li>
+    <li>Win32 cross compiling on Mac OS X for i386 Linux now uses GCC 4.1.1, available at <a href="http://crossgcc.rts-software.org"/>http://crossgcc.rts-software.org/</a>;</li>
+   </ul>
    <p>1.5.6</p>
    <ul>
     <li>Incompatibility in Cocoa target of XCode projects: see <a href="http://galgas.rts-software.org/doku.php?id=1.5.6">1.5.6 release notes</a>;</li>

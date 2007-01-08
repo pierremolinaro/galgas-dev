@@ -990,6 +990,12 @@ class @typeGalgas_string extends @AC_galgasType {
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     elsif [inClassMethodName string] == "stringWithCurrentDateTime" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "stringWithEnvironmentVariable" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "stringWithEnvironmentVariableOrEmpty" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
