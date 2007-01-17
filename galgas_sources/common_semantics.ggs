@@ -2,7 +2,7 @@
 #                                                                           *
 #  Common semantics definitions                                             *
 #                                                                           *
-#  Copyright (C) 1997? ..., 2006 Pierre Molinaro.                           *
+#  Copyright (C) 1997? ..., 2007 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -942,6 +942,23 @@ class @typeGalgas_uint extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 
+class @typeGalgas_char extends @AC_galgasType {
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := "char" ;
+  end method ;
+
+#--- Object accepts as sort key in sorted list definition
+  override
+  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
+  end method ;
+
+#--- Error message
+  message messageGalgasType "a '@char' type" ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgas_string extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -1010,6 +1027,10 @@ class @typeGalgas_string extends @AC_galgasType {
   :
     if [inModifierName string] == "setCapacity" then
       outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "setCharacterAtIndex" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_char new] ![@formalArgumentPassingMode argumentIn] ;
       outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "this modifier is not defined"
@@ -1146,23 +1167,6 @@ class @typeGalgas_uint64 extends @AC_galgasType {
 
 #--- Error message
   message messageGalgasType "a '@uint64' type" ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeGalgas_char extends @AC_galgasType {
-#--- Get type name
-  override method getTypeName !@string outTypeName :
-    outTypeName := "char" ;
-  end method ;
-
-#--- Object accepts as sort key in sorted list definition
-  override
-  method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
-  end method ;
-
-#--- Error message
-  message messageGalgasType "a '@char' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2942,6 +2946,12 @@ routine handleStringReaderCall
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inMethodName string] == "pathExtension" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inMethodName string] == "nativePathWithUnixPath" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inMethodName string] == "unixPathWithNativePath" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inMethodName string] == "lastPathComponent" then
