@@ -162,7 +162,8 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
   generatedZone2 << "} ;\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & inOptions) ;\n"
+  generatedZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & inOptions,\n"
+                    "                                      const TC_UniqueArray <C_String> & inSourceFilesArray) ;\n"
                     "\n"
                     "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & inOptions) ;\n"
                     "\n\n" ;
@@ -494,7 +495,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "      verboseOptionOn = options.boolOptionValueFromKeys (\"generic_galgas_cli_options\",\n"
                     "                                                         \"verbose_output\",\n"
                     "                                                         false) ;\n"
-                    "      " << inProgramComponentName << "_prologue (options) ;\n"
+                    "      " << inProgramComponentName << "_prologue (options, sourceFilesArray) ;\n"
                     "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
                     "        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
                     "        sint16 r = 0 ;\n" ;
@@ -564,7 +565,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   C_String userZone2 ; userZone2.setCapacity (1000) ;
   userZone2 << "\n\n" ;
   userZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
-  userZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
+  userZone2 << "void\n"
+            << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & /* inOptions */,\n"
+               "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n"
                "// ADD YOUR CODE HERE\n"
                "}\n" ;
   userZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
