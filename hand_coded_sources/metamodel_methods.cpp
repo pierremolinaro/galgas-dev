@@ -66,7 +66,7 @@ releasePropertyInDestructor (AC_OutputStream & /* inHFile */,
 void cPtr_metamodelSingleReferenceProperty::
 releasePropertyInDestructor (AC_OutputStream & inHFile,
                              const C_String & inPropertyName) const {
-  inHFile << "  macroMyDelete (" << inPropertyName
+  inHFile << "  macroDetachPointer (" << inPropertyName
           << ", GGM_" << mReferenceEntityName << ") ;\n" ;
 }
 
@@ -368,11 +368,7 @@ generateCreateInConstraintConstructor (AC_OutputStream & inHFile,
                                        const GGS_lstring & inPropertyName,
                                        const GGS_representativeEntityMap & /* inRepresentativeEntityMap */,
                                        const GGS_entityToImplementMap & /* inConstrainedEntityMap */) const {
-  inHFile << "  GGM_" << mMapTypeName << " * _p_" << inPropertyName << " = NULL ;\n"
-             "  macroMyNew (_p_" << inPropertyName << ", GGM_" << mMapTypeName << " (HERE)) ;\n"
-             "  macroAttachPointer ("
-          << inPropertyName
-          << ", _p_" << inPropertyName << ") ;\n" ;
+  inHFile << "  macroMyNew (" << inPropertyName << ", GGM_" << mMapTypeName << " (HERE)) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -521,7 +517,7 @@ void cPtr_metamodelSingleReferenceProperty::
 generateDeleteInConstraintDestructor (AC_OutputStream & inHFile,
                                       const C_String & inConstraintComponentName,
                                       const C_String & inPropertyName) const {
-  inHFile << "  macroMyDelete (" << inPropertyName
+  inHFile << "  macroDetachPointer (" << inPropertyName
           << ", GGM__" << inConstraintComponentName << "_ConstraintOn_"
           << mReferenceEntityName << ") ;\n" ;
 }
@@ -612,7 +608,7 @@ void cPtr_metamodelSharedMapProperty::
 generateTreeWalkingAttributAttachment (AC_OutputStream & inHFile,
                                        const C_String & /* inConstraintComponentName */,
                                        const C_String & inPropertyName) const {
- inHFile << "  macroAttachPointer (" << inPropertyName
+ inHFile << "  macroAssignPointer (" << inPropertyName
          << ", _inParameter_" << inPropertyName << ") ;\n" ;
 }
 

@@ -568,7 +568,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
      inCppFile << "\n"
                   ":GGS_" << superClassName << " () {\n" ;
   }
-  inCppFile << "  macroAttachPointer (mPointer, inOperand.mPointer) ;\n"
+  inCppFile << "  macroAssignPointer (mPointer, inOperand.mPointer) ;\n"
                "}\n\n" ;
 
 //--- Implementer la declaration du destructeur
@@ -582,7 +582,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "void GGS_" << aNomClasse << "::\n"
                "operator = ("
                "const GGS_" << aNomClasse << " & inSource) {\n"
-               "  macroAttachPointer (mPointer, inSource.mPointer) ;\n"
+               "  macroAssignPointer (mPointer, inSource.mPointer) ;\n"
                "}\n\n" ;
 
   if (! mIsAbstract.boolValue ()) {
@@ -602,9 +602,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       variableIndex ++ ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n"
-                 "  cPtr_" << aNomClasse
-              << " * _ptr = (cPtr_" << aNomClasse << " *) NULL ;\n"
-                 "  macroMyNew (_ptr, cPtr_" << aNomClasse << " (" ;
+                 "  GGS_" << aNomClasse << " result ;\n"
+                 "  macroMyNew (result.mPointer, cPtr_" << aNomClasse << " (" ;
     current = aListeTousAttributsNonExternes.firstObject () ;
     variableIndex = 0 ;
     while (current != NULL) {
@@ -622,8 +621,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       inCppFile << "THERE" ;
     }
     inCppFile << ")) ;\n"
-                 "  GGS_" << aNomClasse << " result ;\n"
-                 "  macroAttachPointer (result.mPointer, _ptr) ;\n"
                  "  return result ;\n"
                  "}\n\n" ;
   }

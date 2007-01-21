@@ -76,7 +76,6 @@ grammar_galgas_LL1_prgm::
 grammar_galgas_LL1_prgm (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :
 _mScannerPtr (NULL), mTerminalIO (inIOparameters) {
   macroMyNew (_mScannerPtr, galgas_scanner (& mTerminalIO COMMA_THERE)) ;
-  C_GGS_Object::attachPointer (_mScannerPtr COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*

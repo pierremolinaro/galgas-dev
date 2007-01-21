@@ -1168,6 +1168,8 @@ generate_scanner_header_file (C_Lexique & inLexique,
 // --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n" ;
+  generatedZone2 << "  protected : virtual ~" << inLexiqueName << " (void) {}\n\n" ;
+  
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3 << "//--- Terminal symbols enumeration\n"
                     "  public : enum {" ;

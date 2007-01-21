@@ -282,7 +282,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                    << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :\n"
                       "_mScannerPtr (NULL), mTerminalIO (inIOparameters) {\n"
                       "  macroMyNew (_mScannerPtr, " << currentGrammar->mLexiqueClassName << " (& mTerminalIO COMMA_THERE)) ;\n"
-                      "  C_GGS_Object::attachPointer (_mScannerPtr COMMA_HERE) ;\n"
                       "}\n\n" ;
   //--- Destructor
     generatedZone2.writeCppTitleComment ("D E S T R U C T O R") ;
@@ -360,12 +359,12 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       GGS_L_lstringList::element_type * currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
       while (currentConstraint != NULL) {
         macroValidPointer (currentConstraint) ;
-        generatedZone2 << "macroMyDelete (_rootObjectConstraint_" << currentConstraint->mString
+        generatedZone2 << "macroDetachPointer (_rootObjectConstraint_" << currentConstraint->mString
                        << ", GGM__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
                        << ") ;\n" ;
         currentConstraint = currentConstraint->nextObject () ;
       }
-      generatedZone2 << "macroMyDelete (_metamodelRootObject, GGM_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
+      generatedZone2 << "macroDetachPointer (_metamodelRootObject, GGM_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
                         "C_BDD::markAndSweepUnusedNodes () ;\n" ;
     }
     generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
