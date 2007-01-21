@@ -227,26 +227,6 @@ generate_constraint_header_file (C_Lexique & inLexique,
           currentProperty->mInfo.mProperty (HERE)->generateAttributeInConstraint (generatedZone3, inConstraintComponentName, currentProperty->mKey) ;
           currentProperty = currentProperty->nextObject () ;
         }
-/*        if (! currentConstrainedEntity->mInfo.mIsImplicitlyDefined.boolValue ()) {
-          GGS_constrainedPropertyList::element_type * currentParameterProperty = currentConstrainedEntity->mInfo.mConstrainedParameterPropertyToImplementList.firstObject () ;
-          while (currentParameterProperty != NULL) {
-            macroValidPointer (currentParameterProperty) ;
-            generatedZone3 << "  public : GGM_"
-                           << currentParameterProperty->mPropertyTypeName
-                           << " * " << currentParameterProperty->mPropertyName << " ;\n" ;
-            currentParameterProperty = currentParameterProperty->nextObject () ;
-          }
-        }*/
-/*        GGS_indexMap::element_type * currentIndex = currentConstrainedEntity->mInfo.mCurrentIndexes.firstObject () ;
-        if (currentIndex != NULL) {
-          generatedZone3 << "//--- Indexes\n" ;
-          while (currentIndex != NULL) {
-            macroValidPointer (currentIndex) ;
-            generatedZone3 << "  public : C_GGS_MapIndex " << currentIndex->mKey << " ;\n" ;
-            currentIndex = currentIndex->nextObject () ;
-          }
-          generatedZone3 << "\n" ;
-        }*/
       //--- 'description' reader                 
         generatedZone3 << "//--- 'description' reader\n"
                           "  public : virtual GGS_string reader_description (C_Lexique & _inLexique\n"
@@ -429,7 +409,7 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
                       "~GGM__listOfConstraint_" << currentMultipleReferencedEntity->mKey << " (void) {\n"
                       "  while (mFirstObject != NULL) {\n"
                       "    GGM__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << " * _p = mFirstObject->_mNextObject ;\n"
-                      "    delete mFirstObject ;\n"
+                      "    macroDetachPointer (mFirstObject, GGM__" << inConstraintComponentName << "_ConstraintOn_" << currentMultipleReferencedEntity->mKey << ") ;\n"
                       "    mFirstObject = _p ;\n"
                       "  }\n"
                       "}\n\n" ;

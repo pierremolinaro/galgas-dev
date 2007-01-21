@@ -130,8 +130,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
     }
     generatedZone3 << "\n                             "
                       "COMMA_LOCATION_ARGS) ;\n"
-                      "//--- Destructor\n"
-                      "  public : virtual ~GGM_" << currentEntity->mKey << " (void) ;\n" ;
+                      "//--- Destructor (only C_GGS_Object::detachPointer may delete this object)\n"
+                      "  protected : virtual ~GGM_" << currentEntity->mKey << " (void) ;\n" ;
 
   //--- Attributes                 
     generatedZone3 << "//--- Properties\n" ;
@@ -244,7 +244,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                       "~GGM__listOf_" << currentMultipleReferencedEntity->mKey << " (void) {\n"
                       "  while (_mFirstObject != NULL) {\n"
                       "    GGM_" << currentMultipleReferencedEntity->mKey << " * p = _mFirstObject->_mNextObject ;\n"
-                      "    delete _mFirstObject ;\n"
+                      "    macroDetachPointer (_mFirstObject, GGM_" << currentMultipleReferencedEntity->mKey << ") ;\n"
                       "    _mFirstObject = p ;\n"
                       "  }\n"
                       "}\n\n" ;

@@ -53,6 +53,8 @@ class cTokenFor_galgas_scanner : public cToken {
 //---------------------------------------------------------------------------*
 
 class galgas_scanner : public C_Lexique {
+  protected : virtual ~galgas_scanner (void) {}
+
 //--- START OF USER ZONE 2
 
 

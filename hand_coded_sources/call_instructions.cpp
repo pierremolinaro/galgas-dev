@@ -233,7 +233,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
               << mGrammarName.currentLineNumber ()
               << ")) ;\n"
                  "  }\n"
-                 "  macroMyDelete (scanner_, " << inLexiqueClassName << ") ;\n"
+                 "  macroDetachPointer (scanner_, " << inLexiqueClassName << ") ;\n"
                  "}\n" ; 
   }
 }
