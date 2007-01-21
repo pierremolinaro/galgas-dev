@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate parser instructions                                             *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -263,7 +263,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                    "  #endif\n";
     }
   //--- Build returned entity instance
-    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+    if (currentAltForNonTerminal->mInfo.mMDAResultVariableName.length () > 0) {
+      inCppFile << "  return var_cas_" << currentAltForNonTerminal->mInfo.mMDAResultVariableName << " ;\n" ;
+    }else if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
       inCppFile << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " * _entityInstance = NULL ;\n"
                    "  macroMyNew (_entityInstance, GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << " (_inLexique" ;

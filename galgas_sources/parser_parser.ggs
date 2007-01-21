@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS parser component parser definition                                *
 #                                                                           *
-#  Copyright (C) 1997-2006 Pierre Molinaro.                                 *
+#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -233,6 +233,7 @@ rule <rule_declaration_or_implementation>
   ?@L_EXsignature listeDeTypes
   ??@lstring inRuleName
   ??@lstring inReturnedEntityName
+  ??@lstring inMDAResultVariableName
   ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -712,12 +713,19 @@ rule <syntax_declaration>
     ?signatureForGrammar
   ;
   @lstring returnedEntity ;
+  @lstring mdaResultVariableName ;
   select
     returnedEntity := [@lstring new !"" !here] ;
+    mdaResultVariableName := [@lstring new !"" !here] ;
   or
     $->$ ;
     $mda_type_name$ ? returnedEntity ;
     [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?* ?* ?* ?*] ;
+    select
+      mdaResultVariableName := [@lstring new !"" !here] ; # No variable
+    or
+      $identifier$ ? mdaResultVariableName ;
+    end select ;
   end select ;
   <rule_declaration_or_implementation>
     !?ioNonTerminalSymbolMapForSyntax
@@ -728,6 +736,7 @@ rule <syntax_declaration>
     !listeDeTypesFormels
     !ruleName
     !returnedEntity
+    !mdaResultVariableName
     !listeTypeEtNomsArguments
     !?listeEntitesAengendrer
     !?tableTerminaux
@@ -752,6 +761,10 @@ label importSyntax
   or
     $->$ ;
     $mda_type_name$ ? returnedEntity ;
+    select
+    or
+      $identifier$ ? * ;
+    end select ;
   end select ;
   <rule_declaration_or_implementation> importSyntax
     !?ioNonTerminalSymbolsMap
@@ -775,6 +788,7 @@ rule <rule_declaration_or_implementation>
   ?@L_EXsignature listeDeTypes
   ??@lstring inRuleName
   ??@lstring inReturnedEntity
+  ??@lstring unused inMDAResultVariableName
   ?@typeListeTypesEtNomsArgMethode unused inListeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
@@ -908,6 +922,7 @@ rule <rule_declaration_or_implementation>
   ?@L_EXsignature listeDeTypesFormels
   ??@lstring inRuleName
   ??@lstring inEffectiveReturnedEntity
+  ??@lstring inMDAResultVariableName
   ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse tableTerminaux
@@ -964,7 +979,14 @@ rule <rule_declaration_or_implementation>
 #--- Insert in variable map attributes for returned entity
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
-  if [inEffectiveReturnedEntity string] != "" then
+  if [inMDAResultVariableName string] != "" then
+    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?* ?* ?* ?* ?* ?* ?* ?*] ;
+    @AC_galgasType definitionType := [@typeGalgas_singleEntity new !inEffectiveReturnedEntity] ;
+    @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !inMDAResultVariableName] ;
+    [!?ioVariablesMap insertSingleEntityLocalVariable !inMDAResultVariableName !definitionType !nomCppVariable] ;
+    @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+    listeInstructions += !instruction ;
+  elsif [inEffectiveReturnedEntity string] != "" then
     [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?allPropertiesMap ?* ?* ?* ?* ?* ?* ?*] ;
     foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
@@ -1018,6 +1040,7 @@ rule <rule_declaration_or_implementation>
     !syntaxSignature
     !here
     ![inEffectiveReturnedEntity string]
+    ![inMDAResultVariableName string]
     !allPropertiesMap
   ] ;
   repeat
@@ -1073,6 +1096,7 @@ rule <rule_declaration_or_implementation>
       !branchSyntaxSignature
       !here
       ![returnedEntity string]
+      ![inMDAResultVariableName string]
       ![@entityPropertyMap emptyMap]
     ] ;
   end repeat ;
@@ -1238,7 +1262,7 @@ rule <syntax_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
-  ??@entityToImplementMap unused inAllMetamodelClassMap
+  ??@entityToImplementMap inAllMetamodelClassMap
 :
   @lstring nonterminalSymbolName ;
   $non_terminal_symbol$ ? nonterminalSymbolName ;
@@ -1292,15 +1316,31 @@ rule <syntax_instruction>
     error returnedEntityVariableName: "the non terminal symbol is declared to return an instance of '@" .  [returnedEntityFromSignature  string] . "' entity" ;
   elsif ([returnedEntityFromSignature string] != "") & ([returnedEntityVariableName string] != "") then
   #--- Check type consistency
+    @lstring variableEntityName ;
     if isMultipleEntity then
       @AC_galgasType type ;
       [!?ioVariablesMap searchForReadWriteAccess !returnedEntityVariableName ?type ?*] ;
-      @lstring typeName ;
-      extract type->@typeGalgas_multipleEntity (...) error returnedEntityVariableName : messageGalgasType ;
+      extract type->@typeGalgas_multipleEntity (?variableEntityName) error returnedEntityVariableName : messageGalgasType ;
     else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;
-      extract type->@typeGalgas_singleEntity (...) error returnedEntityVariableName : messageGalgasType ;
+      extract type->@typeGalgas_singleEntity (?variableEntityName) error returnedEntityVariableName : messageGalgasType ;
+    end if ;
+   #--- The returnedEntityFromSignature entity should be a super class of variableEntityName
+    @bool ok := [returnedEntityFromSignature string] == [variableEntityName string] ;
+    if not ok then
+      @lstring testedClass := returnedEntityFromSignature ;
+      loop [inAllMetamodelClassMap count] :
+      while (not ok) & ([testedClass length] > 0) do
+        @lstring superEntity ;
+        [inAllMetamodelClassMap searchKey !testedClass ?3* ?superEntity ?4*] ;
+        testedClass := superEntity ;
+        ok := [testedClass string] == [variableEntityName string] ;
+      end loop ;
+    end if ;
+    if not ok then
+      error returnedEntityVariableName : "the type of this variable is '%" . [variableEntityName string]
+       . "' and is not a super class of '%" . [returnedEntityFromSignature string] . "'" ;
     end if ;
   end if ;
 #--- Generate instruction
