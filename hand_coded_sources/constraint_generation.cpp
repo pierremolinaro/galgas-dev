@@ -25,43 +25,6 @@
 
 //---------------------------------------------------------------------------*
 
-/*static GGS_lstring
-entityForProperty (C_Lexique & inLexique,
-                   GGS_entityToImplementMap & inEntityMap,
-                   const GGS_lstring & inEntityName,
-                   const GGS_lstring & inPropertyName) {
-  GGS_entityPropertyMap mAllMetamodelPropertyMap ;
-  GGS_bool mIsAbstract ;
-  GGS_entityPropertyMap mCurrentMetamodelPropertyMap ;
-  GGS_lstring mSuperEntityName ;
-  GGS_entityPropertyMap mCurrentConstraintPropertyMap ;
-  GGS_stringset mSuperEntitySet ;
-  GGS_entityPropertyMap mAllConstraintPropertyMap ;
-  GGS_bool mIsImplicitlyDefined ;
-  GGS_entityPropertyMap mAllAvailablePropertyMap ;
-  inEntityMap.method_searchKey (inLexique, inEntityName,
-                                mAllMetamodelPropertyMap,
-                                mIsAbstract,
-                                mCurrentMetamodelPropertyMap,
-                                mSuperEntityName,
-                                mCurrentConstraintPropertyMap,
-                                mSuperEntitySet,
-                                mAllConstraintPropertyMap,
-                                mIsImplicitlyDefined,
-                                mAllAvailablePropertyMap
-                                COMMA_HERE) ;
-//---
-  GGS_metamodelPropertyKind var_cas_kind ;
-  GGS_lstring  var_cas_propertyTypeName ;
-  allPropertiesMap.method_searchKey (inLexique, inPropertyName, var_cas_kind,
-                                     var_cas_propertyTypeName
-                                     COMMA_HERE) ;
-//---
-  return var_cas_propertyTypeName ;
-}*/
-
-//---------------------------------------------------------------------------*
-
 static void
 generate_constraint_header_file (C_Lexique & inLexique,
                                  const GGS_entityToImplementMap & /* inEntityMap */,
