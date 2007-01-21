@@ -125,7 +125,8 @@ map @typeAltProductionsMap {
   @typeInstructionList mAllInstructionsList ;
   @L_ruleSyntaxSignature mSyntaxSignature ;
   @location mEndOfInstructionListLocation ;
-  @string mReturnedEntityTypeName ;
+  @string mReturnedEntityTypeName ; # Empty if no MDA result
+  @string mMDAResultVariableName ; # Empty if implicit MDA variable name
   @entityPropertyMap mAllPropertiesMap ;
   insert insertKey error message "the '%K' label has been already declared in %L" ;
   search searchKey error message "the '%K' label is not declared" ;
