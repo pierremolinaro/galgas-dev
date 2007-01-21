@@ -126,22 +126,27 @@ generate_constraint_header_file (C_Lexique & inLexique,
   while (currentMap != NULL) {
     macroValidPointer (currentMap) ;
     generatedZone3.writeCppTitleComment (C_String ("Declaration of GGM_") + currentMap->mKey + " Map") ;
+    C_String elementTypeName ;
+    if (currentMap->mInfo.mElementTypeIsOveriddenByConstraints.boolValue ()) {
+      elementTypeName << "_" << inConstraintComponentName << "_ConstraintOn_" ;
+    }
+    elementTypeName << currentMap->mInfo.mElementEntityName ;
     generatedZone3 << "class GGM_" << currentMap->mKey << " : public C_GGS_entityMap {\n"
                       "//--- Default Constructor\n"
                       "  public : GGM_" << currentMap->mKey << " (LOCATION_ARGS) ;\n"
                       "//--- First object accessor\n"
-                      "  public : GGM_" << currentMap->mInfo.mElementEntityName << " * firstObject (void) ;\n"
+                      "  public : GGM_" << elementTypeName << " * firstObject (void) ;\n"
                       "//--- Operator ()\n"
                       "  public : inline const GGM_" << currentMap->mKey << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
                       "//--- Reader 'searchKey'\n"
                       "  public : void method_searchKey (C_Lexique & inLexique,\n"
                       "                                  const GGS_lstring & inKey,\n"
-                      "                                  GGM_" << currentMap->mInfo.mElementEntityName << " * & outInfo\n"
+                      "                                  GGM_" << elementTypeName << " * & outInfo\n"
                       "                                  COMMA_LOCATION_ARGS) const ;\n"
                       "//--- Reader 'searchKeyAndGetIndex'\n"
                       "  public : void method_searchKeyAndGetIndex (C_Lexique & inLexique,\n"
                       "                                             const GGS_lstring & inKey,\n"
-                      "                                             GGM_" << currentMap->mInfo.mElementEntityName << " * & outInfo,\n"
+                      "                                             GGM_" << elementTypeName << " * & outInfo,\n"
                       "                                             C_GGS_MapIndex & outIndex\n"
                       "                                             COMMA_LOCATION_ARGS) const ;\n"
                       "} ;\n\n" ;
@@ -351,6 +356,13 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
   while (currentMap != NULL) {
     macroValidPointer (currentMap) ;
     generatedZone3.writeCppHyphenLineComment () ;
+
+    C_String elementTypeName ;
+    if (currentMap->mInfo.mElementTypeIsOveriddenByConstraints.boolValue ()) {
+      elementTypeName << "_" << inConstraintComponentName << "_ConstraintOn_" ;
+    }
+    elementTypeName << currentMap->mInfo.mElementEntityName ;
+
     generatedZone3 << "#ifdef PRAGMA_MARK_ALLOWED\n"
                       "  #pragma mark GGM_" << currentMap->mKey << "\n"
                       "#endif\n\n" ;
@@ -365,27 +377,27 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
     generatedZone3 << ") ;\n"
                       "}\n\n" ;
     generatedZone3.writeCppHyphenLineComment () ;
-    generatedZone3 << "GGM_" << currentMap->mInfo.mElementEntityName << " * GGM_" << currentMap->mKey << "::firstObject (void) {\n"
-                      "  return (GGM_" << currentMap->mInfo.mElementEntityName << " *) mFirstItem ;\n"
+    generatedZone3 << "GGM_" << elementTypeName << " * GGM_" << currentMap->mKey << "::firstObject (void) {\n"
+                      "  return (GGM_" << elementTypeName << " *) mFirstItem ;\n"
                       "}\n\n" ;
     generatedZone3.writeCppHyphenLineComment () ;
     generatedZone3 << "void GGM_" << currentMap->mKey << "::\n"
                       "method_searchKey (C_Lexique & inLexique,\n"
                       "                  const GGS_lstring & inKey,\n"
-                      "                  GGM_" << currentMap->mInfo.mElementEntityName << " * & outInfo\n"
+                      "                  GGM_" << elementTypeName << " * & outInfo\n"
                       "                  COMMA_LOCATION_ARGS) const {\n"
                       "  uint32 unusedIndex ;\n"
-                      "  outInfo = (GGM_" << currentMap->mInfo.mElementEntityName << " *) internalSearch (inLexique, inKey, unusedIndex COMMA_THERE) ;\n"
+                      "  outInfo = (GGM_" << elementTypeName << " *) internalSearch (inLexique, inKey, unusedIndex COMMA_THERE) ;\n"
                       "}\n\n" ;
     generatedZone3.writeCppHyphenLineComment () ;
     generatedZone3 << "void GGM_" << currentMap->mKey << "::\n"
                       "method_searchKeyAndGetIndex (C_Lexique & inLexique,\n"
                       "                             const GGS_lstring & inKey,\n"
-                      "                             GGM_" << currentMap->mInfo.mElementEntityName << " * & outInfo,\n"
+                      "                             GGM_" << elementTypeName << " * & outInfo,\n"
                       "                             C_GGS_MapIndex & outIndex\n"
                       "                             COMMA_LOCATION_ARGS) const {\n"
                       "  uint32 index ;\n"
-                      "  outInfo = (GGM_" << currentMap->mInfo.mElementEntityName << " *) internalSearch (inLexique, inKey, index COMMA_THERE) ;\n"
+                      "  outInfo = (GGM_" << elementTypeName << " *) internalSearch (inLexique, inKey, index COMMA_THERE) ;\n"
                       "  outIndex = C_GGS_MapIndex (index) ;\n"
                       "}\n\n" ;
     currentMap = currentMap->nextObject () ;

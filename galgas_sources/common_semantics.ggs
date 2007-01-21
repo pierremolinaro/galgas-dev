@@ -715,6 +715,7 @@ map @mapEntityMap {
   @lstring mElementEntityName ;
   @lstring mInsertErrorMessage ;
   @lstring mSearchErrorMessage ;
+  @bool mElementTypeIsOveriddenByConstraints ;
   insert insertKey error message "the '%K' map has been already declared in %L" ;
   search searchKey error message "the '%K' map is not declared" ;
 }
@@ -2547,6 +2548,7 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
 
 class @typeGalgas_entityInInstruction extends @AC_galgasType {
   @string mEntityName ;
+  @string mOverrideConstraintName ;
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := mEntityName ;
@@ -2582,6 +2584,7 @@ class @typeGalgas_mapIndexInInstruction extends @AC_galgasType {
 class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
   @string mEntityName ;
   @string mElementTypeName ;
+  @string mOverrideConstraintName ;
 #--- Get type name
   override
   method getTypeName !@string outTypeName :
@@ -2599,13 +2602,13 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
       outModifierSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
+      t := [@typeGalgas_entityInInstruction new !mElementTypeName !mOverrideConstraintName] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
     elsif [inModifierName string] == "insertKeyAndGetIndex" then
       outModifierSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
+      t := [@typeGalgas_entityInInstruction new !mElementTypeName !mOverrideConstraintName] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
       t := [@typeGalgas_mapIndexInInstruction new ![inModifiedObjectName string]] ;
       outModifierSignature += !t ![@formalArgumentPassingMode argumentOut] ;
@@ -2626,13 +2629,13 @@ class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
       outReaderSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
+      t := [@typeGalgas_entityInInstruction new !mElementTypeName !mOverrideConstraintName] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
     elsif [inReaderName string] == "searchKeyAndGetIndex" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       @AC_galgasType t := [@typeGalgas_lstring new] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_entityInInstruction new !mElementTypeName] ;
+      t := [@typeGalgas_entityInInstruction new !mElementTypeName !mOverrideConstraintName] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
       t := [@typeGalgas_mapIndexInInstruction new ![inReadObjectName string]] ;
       outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
@@ -2769,8 +2772,8 @@ routine checkAssignmentTypesCompatibility
                                 "' type variable, and I got an enum '@" . [aTypeName2 string] . "' type variable" ;
     end if ;
 
-  when @typeGalgas_entityInInstruction (@string kTypeName1)
-    :: @typeGalgas_entityInInstruction (@string kTypeName2) :
+  when @typeGalgas_entityInInstruction (@string kTypeName1 *)
+    :: @typeGalgas_entityInInstruction (@string kTypeName2 *) :
     if kTypeName1 != kTypeName2 then
       error inErrorLocation : "I was expecting an entity instance of  '@" . kTypeName1 .
                               "' type variable, and I got an entity instance of type '@" . kTypeName2 . "'" ;

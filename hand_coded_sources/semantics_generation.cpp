@@ -772,7 +772,11 @@ generateCppClassName (AC_OutputStream & inFile) const {
 
 void cPtr_typeGalgas_entityInInstruction::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mEntityName << " *" ;
+  inFile << "GGM_" ;
+  if (mOverrideConstraintName.length () > 0) {
+    inFile << "_" << mOverrideConstraintName << "_ConstraintOn_" ;
+  }
+  inFile << mEntityName << " *" ;
 }
 
 //---------------------------------------------------------------------------*

@@ -2897,8 +2897,8 @@
 				CFF5379C057A516000854C83 /* foreach_instructions.cpp */,
 				CFF5379D057A516000854C83 /* map_generation.cpp */,
 				CF93AC4605B483DC0089AD65 /* enum_generation.cpp */,
-				CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */,
 				CFF537A4057A518B00854C83 /* semantics_instructions.cpp */,
+				CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */,
 				CFF537A2057A518B00854C83 /* semantics_generation.cpp */,
 				CFA313B009FD3F0A006B55E7 /* semantics_generation.h */,
 			);

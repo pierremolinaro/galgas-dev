@@ -66,6 +66,7 @@ label parse
 ;
 
 rule <constraint_map_declaration>
+  ??@stringset inOverriddenClassSet
   ?@entityToImplementMap inMetamodelEntityMap
   ?!@mapEntityMap ioMapEntityMap
 label parse
@@ -83,6 +84,8 @@ label parse
 ;
 
 rule <constraints_on_entity_declaration>
+  ??@lstring inConstraintName
+  ??@stringset inOverriddenClassSet
   ?@entityToImplementMap inEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@entityToImplementMap ioConstrainedEntityMap
@@ -311,6 +314,7 @@ rule <parse_constraint_document>
   repeat
   while
     <constraint_map_declaration>
+      !overriddenClassSet
       !metamodelEntityMap
       !?mapEntityMap
     ;
@@ -320,6 +324,8 @@ rule <parse_constraint_document>
   @constraintInstructionListMap constraintInstructionListMap [emptyMap] ;
   repeat
     <constraints_on_entity_declaration>
+      !constraintName
+      !overriddenClassSet
       !metamodelEntityMap
       !?mapEntityMap
       !?constrainedEntityMap
@@ -523,6 +529,7 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <constraint_map_declaration>
+  ??@stringset inOverriddenClassSet
   ?@entityToImplementMap inMetamodelEntityMap
   ?!@mapEntityMap ioMapEntityMap
 :
@@ -535,6 +542,7 @@ rule <constraint_map_declaration>
   $of$ ;
   @lstring mapElementIdentifier ;
   $mda_type_name$ ? mapElementIdentifier ;
+  @bool isElementTypeOverridden := [inOverriddenClassSet hasKey ![mapElementIdentifier string]] ;
   ${$ ;
   $insert$ ;
   $error$ ;
@@ -556,12 +564,15 @@ rule <constraint_map_declaration>
     !mapElementIdentifier
     !insertErrorMessage
     !searchErrorMessage
+    !isElementTypeOverridden
   ] ;
 end rule ;
 
 #-------------------------------------------------------------------*
 
 rule <constraints_on_entity_declaration>
+  ??@lstring inConstraintName
+  ??@stringset inOverriddenClassSet
   ?@entityToImplementMap inEntityMap
   ?!@mapEntityMap ioMapEntityMap
   ?!@entityToImplementMap ioConstrainedEntityMap
@@ -627,7 +638,7 @@ rule <constraints_on_entity_declaration>
         @lstring typeName ;
         $mda_type_name$ ? typeName ;
         @lstring elementTypeName ;
-        [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
+        [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?* ?*] ;
         @metamodelProperty property := [@metamodelSharedMapProperty new !typeName !elementTypeName] ;
         @lstring propertyName ;
         $identifier$ ? propertyName ;
@@ -647,7 +658,7 @@ rule <constraints_on_entity_declaration>
       @lstring typeName ;
       $mda_type_name$ ?typeName ;
       @lstring elementTypeName ;
-      [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?*] ;
+      [ioMapEntityMap searchKey !typeName ?elementTypeName ?* ?* ?*] ;
       @metamodelProperty property := [@metamodelMapProperty new !typeName !elementTypeName] ;
       @lstring propertyName ;
       $identifier$ ? propertyName ;
@@ -685,11 +696,11 @@ rule <constraints_on_entity_declaration>
     foreach allAvailablePropertyMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
       when @mapIndexProperty (@lstring kMapTypeName @lstring kMapAttributeName) ->
-        @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapTypeName string]] ;
+        @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapAttributeName string]] ;
         @typeCplusPlusName cppName := [@typeDirectName new !kKey] ;
         [!?variablesMap insertOutProperty !kKey !t !cppName] ;
       when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
-        @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject->" . [kKey string] ![kKey location]]] ;
+        @typeCplusPlusName cppName := [@typeDirectName new !kKey] ;
         if [kAttributeTypeName string] == "lstring" then
           @AC_galgasType t := [@typeGalgas_lstring new] ;
           [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
@@ -729,9 +740,27 @@ rule <constraints_on_entity_declaration>
       else
       end extract ;
     end foreach ;
+#--- Add constraint property as routines variables
+  # message "************" . [entityName string] . "************\n" ;
+  foreach allConstraintPropertyMap (@lstring kKey @metamodelProperty kType) :
+    # log kKey, kType ;
+    extract kType :
+    when @metamodelSharedMapProperty (@lstring kMapTypeName @lstring kMapElementTypeName) ->
+      @string overrideConstraint ;
+      if [inOverriddenClassSet hasKey ![kMapElementTypeName string]] then
+        overrideConstraint := [inConstraintName string] ;
+      else
+        overrideConstraint := "" ;
+      end if ;
+      @AC_galgasType t := [@typeGalgas_mapEntityInInstruction new ![kMapTypeName string] ![kMapElementTypeName string] !overrideConstraint] ;
+      @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"(* " . [kKey string] . ")" !here]] ;
+      [!?variablesMap insertUsedInOutArgument !kKey !t !cppName] ;
+    else
+    end extract ;
+  end foreach ;
 #--- Add "self" variable
-  @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"_mMetamodelObject" !here]] ;
-  @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string]] ;
+  @typeCplusPlusName cppName := [@typeDirectName new ![@lstring new !"this" !here]] ;
+  @AC_galgasType t := [@typeGalgas_entityInInstruction new ![entityName string] ![inConstraintName string]] ;
   [!?variablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !t !cppName] ;
 #--- Instructions
   @M_semanticsEntitiesForUse componentSemanticsEntitiesMap [emptyMap] ;
@@ -757,30 +786,6 @@ rule <constraints_on_entity_declaration>
     !callInstructionSharedPropertySignatureMap
     !here
   ] ;
-#    [!?constrainedEntityPassMap insertKey
-#      !passName
-#      !instructionsList 
-#      !sharedPropertyList
-#      !constraintPropertyDefinitionSet
-#      !callInstructionSharedPropertySignatureMap
-#    ] ;
-##--- If the entity has no super entity, define the set of defined passes
-#  if [superEntity string] == "" then
-#    foreach constrainedEntityPassMap (??@lstring kPassName ??* ??* ??* ??*) :
-#      passesDefinedByInheritanceTreeRootEntity += ![kPassName string] ;
-#    end foreach ;
-#  end if ;
-##--- If the entity has super entity, check that only passes defined by
-##    inheritance tree root entity are defined
-#  if [superEntity string] != "" then
-#    foreach constrainedEntityPassMap (??@lstring kPassName ??* ??* ??* ??*) :
-#      if not [passesDefinedByInheritanceTreeRootEntity hasKey ![kPassName string]] then
-#       error here: "pass '" . [kPassName string]
-#       . "' cannot be defined because it is not defined by the constraint on '@"
-#       . [superEntity string] . "' entity" ;
-#      end if ;
-#    end foreach ;
-#  end if ;
 #--- Enter in constraint entity map
   [!?ioConstrainedEntityMap insertKey
     !entityName
