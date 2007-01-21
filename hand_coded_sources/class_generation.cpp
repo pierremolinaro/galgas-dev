@@ -283,7 +283,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   C_String generatedZone3 ; generatedZone3.setCapacity (20000) ;
 //--- Generate constructor
   GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
-  generatedZone3 << "  public : cPtr_" << aNomClasse << " (" ;
+  generatedZone3 << "//--- Constructor\n"
+                    "  public : cPtr_" << aNomClasse << " (" ;
   bool first = true ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -301,7 +302,14 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }else{
     generatedZone3 << " COMMA_LOCATION_ARGS" ;
   }
-  generatedZone3 << ") ;\n" ;
+  generatedZone3 << ") ;\n\n" ;
+
+  generatedZone3 << "//--- Declaring a protected virual desstructor enables the compiler to raise\n"
+                    "//    an error if a direct delete is performed; only the static method\n"
+                    "//    C_GGS_Object::detachPointer may invoke delete.\n"
+                    "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "    protected : virtual ~cPtr_" << aNomClasse << " (void) {}\n"
+                    "  #endif\n\n" ;
   
 //--- Engendrer la declaration des attributs
   current = aListeAttributsCourants.firstObject () ;
