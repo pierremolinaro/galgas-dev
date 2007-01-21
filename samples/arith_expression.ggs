@@ -10,7 +10,7 @@ lexique arithmetique_lexical_parser :
   @luint number;
   $number$ ! number error message "a number";
   
-  list operator_list error message "the'" . * . "' delimitor":
+  list operator_list error message "the '%K' delimitor":
     "+", "*", ")", "(" ;
   rule list operator_list;
   
@@ -129,7 +129,7 @@ end syntax;
 grammar arithmetique_grammar "" :
   import lexique arithmetique_lexical_parser;
   import syntax arithmetique_syntax_parser;
-  start <StartSymbol>;
+  root <StartSymbol>;
 end grammar;
 
 #---------------------------------------------------------------------------*
