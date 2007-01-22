@@ -129,6 +129,8 @@ routine matchAndOperator
   !@AC_galgasType outResultType
 :
   match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_bdd ()  :: @typeGalgas_bdd () :
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_bool () :: @typeGalgas_bool () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_uint () :: @typeGalgas_uint () :
@@ -160,6 +162,8 @@ routine matchOrOperator
   !@AC_galgasType outResultType
 :
   match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_bdd ()  :: @typeGalgas_bdd () :
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_bool () :: @typeGalgas_bool () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_uint () :: @typeGalgas_uint () :
@@ -239,7 +243,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   C H E C K    !    O P E R A T O R                                       *
+#   C H E C K    N O T    O P E R A T O R                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -262,6 +266,8 @@ routine checkLogicalNegateOperator
   !@AC_galgasType outResultType
 :
   extract inOperandType :
+  when @typeGalgas_bdd () ->
+    outResultType := inOperandType ;
   when @typeGalgas_uint () ->
     outResultType := inOperandType ;
   when @typeGalgas_sint () ->

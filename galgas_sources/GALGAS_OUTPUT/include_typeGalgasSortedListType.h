@@ -36,7 +36,7 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
                                 const GGS_typeListeAttributsSemantiques & ,
                                 const GGS_L_EXsignature &  COMMA_LOCATION_ARGS) ;
 
-//--- Declaring a protected virual desstructor enables the compiler to raise
+//--- Declaring a protected virual destructor enables the compiler to raise
 //    an error if a direct delete is performed; only the static method
 //    C_GGS_Object::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
