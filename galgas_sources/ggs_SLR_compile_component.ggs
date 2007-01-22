@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS compile component definition (call the SLR grammar)               *
 #                                                                           *
-#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -29,7 +29,7 @@ import grammar galgas_SLR_grammar in "galgas_SLR_grammar.ggs" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <galgas_component>
+nonterminal <galgas_component>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
@@ -54,20 +54,20 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-rule <parse_lexique_for_importing>
+nonterminal <parse_lexique_for_importing>
   ??@lstring inFileName
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label parse
 ;
 
-rule <parse_syntax_for_importing>
+nonterminal <parse_syntax_for_importing>
   ??@lstring inFileName
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
-rule <parse_semantics_component_for_importing>
+nonterminal <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -75,7 +75,7 @@ rule <parse_semantics_component_for_importing>
 label parse
 ;
 
-rule <parse_grammar_component_for_importing>
+nonterminal <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -83,7 +83,7 @@ rule <parse_grammar_component_for_importing>
 label parse
 ;
 
-rule <parse_option_component_for_importing>
+nonterminal <parse_option_component_for_importing>
   ??@lstring inFileName
   ?!@M_optionComponents ioOptionsComponentsMap
 label parse

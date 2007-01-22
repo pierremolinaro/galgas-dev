@@ -2,7 +2,8 @@
 #                                                                           *
 #  GALGAS semantics component parser definition                             *
 #                                                                           *
-#  Copyright (C) 1997-2004 Pierre Molinaro.                                 *
+#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -28,7 +29,7 @@ import semantics semantics_semantics in "semantics_semantics.ggs" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <expression>
+nonterminal <expression>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -37,7 +38,7 @@ rule <expression>
 label parse
 ;
 
-rule <concatenation_term>
+nonterminal <concatenation_term>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -46,7 +47,7 @@ rule <concatenation_term>
 label parse
 ;
 
-rule <relation_term>
+nonterminal <relation_term>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -55,7 +56,7 @@ rule <relation_term>
 label parse
 ;
 
-rule <relation_factor>
+nonterminal <relation_factor>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -64,7 +65,7 @@ rule <relation_factor>
 label parse
 ;
 
-rule <simple_expression>
+nonterminal <simple_expression>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -73,7 +74,7 @@ rule <simple_expression>
 label parse
 ;
 
-rule <term>
+nonterminal <term>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -82,7 +83,7 @@ rule <term>
 label parse
 ;
 
-rule <factor>
+nonterminal <factor>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -91,7 +92,7 @@ rule <factor>
 label parse
 ;
 
-rule <read_access>
+nonterminal <read_access>
   !@lstring nomAttribut
   !@typeCplusPlusName nomCppEntite
   !@AC_galgasType typeEntite
@@ -99,7 +100,7 @@ rule <read_access>
 label parse
 ;
 
-rule <output_expression_list>
+nonterminal <output_expression_list>
   !@typeExpressionList outExpressionList 
   ??@typeListeAttributsSemantiques inAttributesList
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
@@ -108,7 +109,7 @@ rule <output_expression_list>
 label parse
 ;
 
-rule <parse_effective_input_parameters_list>
+nonterminal <parse_effective_input_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation

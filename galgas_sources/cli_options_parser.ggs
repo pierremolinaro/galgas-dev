@@ -2,7 +2,8 @@
 #                                                                           *
 #  GALGAS option component parser definition                                *
 #                                                                           *
-#  Copyright (C) 2004 Pierre Molinaro.                                      *
+#  Copyright (C) 2004, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -24,7 +25,7 @@ import semantics common_semantics in "common_semantics.ggs" ;
 
 #-------------------------------------------------------------------*
 
-rule <galgas_component>
+nonterminal <galgas_component>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
@@ -73,31 +74,6 @@ rule <galgas_component>
   @M_cli_options uintOptionsMap [emptyMap] ;
   @M_cli_options stringOptionsMap [emptyMap] ;
   @stringset optionNameSet [emptySet] ;
-#--- Temp
-#  @lbool b [new !true !here] ;
-#  [!?b setBool !false] ;
-#  [!?b setLocation !here] ;
-##  @lchar c [new !'a' !here] ;
-#  [!?c setChar !'b'] ;
-#  [!?c setLocation !here] ;
-#  @lsint si [new !12s !here] ;
-#  [!?si setSint !-6S] ;
-#  [!?si setLocation !here] ;
-#  @luint u [new !12 !here] ;
-#  [!?u setUint !99] ;
-#  [!?u setLocation !here] ;
-#  @lsint64 si64 [new !12LS !here] ;
-#  [!?si64 setSint64 !-6LS] ;
-#  [!?si64 setLocation !here] ;
-#  @luint64 u64 [new !12L !here] ;
-#  [!?u64 setUint64 !67L] ;
-#  [!?u64 setLocation !here] ;
-#  @ldouble d [new !12.0 !here] ;
-#  [!?d setDouble !14.8] ;
-#  [!?d setLocation !here] ;
-#  @lstring s [new !"az" !here] ;
-#  [!?s setString !"re"] ;
-#  [!?s setLocation !here] ;
 #--- Option component header
   $option$ ;
   @lstring optionComponentName ;

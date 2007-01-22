@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS semantics component parser definition                             *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2006 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -28,7 +28,7 @@ import semantics semantics_semantics in "semantics_semantics.ggs" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <galgas_component>
+nonterminal <galgas_component>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
@@ -53,7 +53,7 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-rule <parse_semantics_component_for_importing>
+nonterminal <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -61,7 +61,7 @@ rule <parse_semantics_component_for_importing>
 label parse
 ;
 
-rule <parse_grammar_component_for_importing>
+nonterminal <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -69,13 +69,13 @@ rule <parse_grammar_component_for_importing>
 label parse
 ;
 
-rule <parse_option_component_for_importing>
+nonterminal <parse_option_component_for_importing>
   ??@lstring inFileName
   ?!@M_optionComponents ioOptionsComponentsMap
 label parse
 ;
 
-rule <semantics_declaration>
+nonterminal <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents ioOptionsComponentsMapForUse
@@ -92,7 +92,7 @@ label importSemantics
 label parse
 ;
 
-rule <import_headers_semantics_and_grammars>
+nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedSemanticsComponents
   !@stringset outIncludedMetamodelComponents
   !@stringset outIncludedOptionComponents
@@ -123,7 +123,7 @@ label importSemantics
 label parse
 ;
 
-rule <parent_class>
+nonterminal <parent_class>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeSemanticAttributesMap tableAttributs
   !@typeListeAttributsSemantiques listeTousAttributsSemantiques
@@ -145,7 +145,7 @@ label importSemantics
 label parse
 ;
 
-rule <attributes_definition_list>
+nonterminal <attributes_definition_list>
   ?!@typeListModel outAttributeListModel
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
@@ -155,14 +155,14 @@ rule <attributes_definition_list>
 label parse
 ;
 
-rule <type_parsing>
+nonterminal <type_parsing>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@AC_galgasType definitionType
   !@lstring outTypeName
 label parse
 ;
 
-rule <parse_method>
+nonterminal <parse_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
@@ -182,7 +182,7 @@ rule <parse_method>
 label parse
 ;
 
-rule <overrided_method>
+nonterminal <overrided_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
@@ -199,7 +199,7 @@ rule <overrided_method>
 label parse
 ;
 
-rule <non_abstract_method>
+nonterminal <non_abstract_method>
   ??@lstring inCurrentClassName
   ??@typeTableMethodes inAncestorClassMethodsMap
   ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
@@ -216,7 +216,7 @@ rule <non_abstract_method>
 label parse
 ;
 
-rule <abstract_method>
+nonterminal <abstract_method>
   ??@bool inIsAbstract
   ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
@@ -227,7 +227,7 @@ rule <abstract_method>
 label parse
 ;
 
-rule <semantic_instructions_list>
+nonterminal <semantic_instructions_list>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -239,7 +239,7 @@ rule <semantic_instructions_list>
 label parse
 ;
 
-rule <semantic_instructions_list_no_verif>
+nonterminal <semantic_instructions_list_no_verif>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -251,7 +251,7 @@ rule <semantic_instructions_list_no_verif>
 label parse
 ;
 
-rule <semantic_instruction>
+nonterminal <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -263,7 +263,7 @@ rule <semantic_instruction>
 label parse
 ;
 
-rule <extract_instruction>
+nonterminal <extract_instruction>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -278,7 +278,7 @@ rule <extract_instruction>
 label parse
 ;
 
-rule <expression>
+nonterminal <expression>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -287,7 +287,7 @@ rule <expression>
 label parse
 ;
 
-rule <input_parameters_list>
+nonterminal <input_parameters_list>
   !@L_assignedVariables listeAffectationParametresEffectifs
   !@typeCplusPlusNameList outAllVariablesList
   ?@typeListeAttributsSemantiques listeAttributsSemantiques
@@ -295,7 +295,7 @@ rule <input_parameters_list>
 label parse
 ;
 
-rule <actual_parameters_list>
+nonterminal <actual_parameters_list>
   ??@L_EXsignature listeTypesParametresFormels
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
@@ -305,7 +305,7 @@ rule <actual_parameters_list>
 label parse
 ;
 
-rule <parse_parameters_list>
+nonterminal <parse_parameters_list>
   !@L_actualParametersSignature listeTypesParametresEffectifs
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
@@ -314,7 +314,7 @@ rule <parse_parameters_list>
 label parse
 ;
 
-rule <read_access>
+nonterminal <read_access>
   !@lstring nomAttribut
   !@typeCplusPlusName nomCppEntite
   !@AC_galgasType typeEntite
@@ -322,7 +322,7 @@ rule <read_access>
 label parse
 ;
 
-rule <instruction_beginning_with_identifier>
+nonterminal <instruction_beginning_with_identifier>
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -331,7 +331,7 @@ rule <instruction_beginning_with_identifier>
 label parse
 ;
 
-rule <optional_assignment>
+nonterminal <optional_assignment>
   ??@lstring unused inTypeName
   ??@lstring nomVarDest
   ??@typeCplusPlusName inVariableCppName
@@ -343,25 +343,25 @@ rule <optional_assignment>
 label parse
 ;
 
-rule <ex_map_method>
+nonterminal <ex_map_method>
   !@lstring nomMethode
   !@lstring outMessage
 label parse
 ;
 
-rule <map_method>
+nonterminal <map_method>
   !@lstring methodName
   !@lstring getIndexMethodName
   !@lstring outMessage
 label parse
 ;
 
-rule <message_pattern>
+nonterminal <message_pattern>
   !@L_stringList outMessageList
 label parse
 ;
 
-rule <formal_arguments_list>
+nonterminal <formal_arguments_list>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@L_EXsignature listeDeTypes
   ?!@typeVariablesMap tableArgumentsMethode
@@ -373,7 +373,7 @@ label importGrammarForSemantics
 label parse
 ;
 
-rule <output_expression_list>
+nonterminal <output_expression_list>
   !@typeExpressionList outExpressionList 
   ??@typeListeAttributsSemantiques inAttributesList
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
@@ -382,7 +382,7 @@ rule <output_expression_list>
 label parse
 ;
 
-rule <formal_argument_type>
+nonterminal <formal_argument_type>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@AC_galgasType type_semantique
   ?!@typeTableEnAvant tableEnAvant
@@ -392,7 +392,7 @@ label importGrammarForSemantics
 label parse
 ;
 
-rule <parse_match_operand>
+nonterminal <parse_match_operand>
   ?!@typeVariablesMap ioVariablesMap
   !@typeCplusPlusName outCppName
   !@lstring outBaseTypeName
@@ -402,7 +402,7 @@ rule <parse_match_operand>
 label parse
 ;
 
-rule <parse_match_case>
+nonterminal <parse_match_case>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeVariablesMap ioVariablesMap
   ?@lstring inTypeName
@@ -413,7 +413,7 @@ rule <parse_match_case>
 label parse
 ;
 
-rule <parse_effective_input_parameters_list>
+nonterminal <parse_effective_input_parameters_list>
   ?!@typeVariablesMap ioVariablesMap
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation

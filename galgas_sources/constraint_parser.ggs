@@ -2,7 +2,8 @@
 #                                                                           *
 #  GALGAS constraint component parser definition                            *
 #                                                                           *
-#  Copyright (C) 2006 Pierre Molinaro.                                      *
+#  Copyright (C) 2006, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -24,7 +25,7 @@ import semantics semantics_semantics in "semantics_semantics.ggs" ;
 
 #-------------------------------------------------------------------*
 
-rule <galgas_component>
+nonterminal <galgas_component>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
@@ -49,7 +50,7 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-rule <parse_semantics_component_for_importing>
+nonterminal <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -57,7 +58,7 @@ rule <parse_semantics_component_for_importing>
 label parse
 ;
 
-rule <constraint_class_override_declarations>
+nonterminal <constraint_class_override_declarations>
   ?@lstring inRootClass
   ?@entityToImplementMap inOriginalMetamodelEntityMap 
   !@entityToImplementMap outMetamodelEntityMap
@@ -65,25 +66,25 @@ rule <constraint_class_override_declarations>
 label parse
 ;
 
-rule <constraint_map_declaration>
+nonterminal <constraint_map_declaration>
   ??@stringset inOverriddenClassSet
   ?@entityToImplementMap inMetamodelEntityMap
   ?!@mapEntityMap ioMapEntityMap
 label parse
 ;
 
-rule <parse_constraint_document>
+nonterminal <parse_constraint_document>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
-rule <property_path_for_constraint>
+nonterminal <property_path_for_constraint>
   !@L_propertyPath outPath
 label parse
 ;
 
-rule <constraints_on_entity_declaration>
+nonterminal <constraints_on_entity_declaration>
   ??@lstring inConstraintName
   ??@stringset inOverriddenClassSet
   ?@entityToImplementMap inEntityMap
@@ -93,35 +94,35 @@ rule <constraints_on_entity_declaration>
 label parse
 ;
 
-rule <constraint_relation_expression>
+nonterminal <constraint_relation_expression>
   ?!@relationVarMap ioRelationVariableMap
   ?!@indexMap ioIndexMap
   !@metamodelRelationExpression outExpression
 label parse 
 ;
 
-rule <constraint_relation_term>
+nonterminal <constraint_relation_term>
   ?!@relationVarMap ioRelationVariableMap
   ?!@indexMap ioIndexMap
   !@metamodelRelationExpression outExpression
 label parse 
 ;
 
-rule <constraint_relation_factor>
+nonterminal <constraint_relation_factor>
   ?!@relationVarMap ioRelationVariableMap
   ?!@indexMap ioIndexMap
   !@metamodelRelationExpression outExpression
 label parse 
 ;
 
-rule <constraint_relation_primary>
+nonterminal <constraint_relation_primary>
   ?!@relationVarMap ioRelationVariableMap
   ?!@indexMap ioIndexMap
   !@metamodelRelationExpression outExpression
 label parse 
 ;
 
-rule <semantic_instructions_list>
+nonterminal <semantic_instructions_list>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse

@@ -2,7 +2,8 @@
 #                                                                           *
 #  GALGAS scanner component parser definition                               *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2006 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -24,7 +25,7 @@ import semantics scanner_semantics in "scanner_semantics.ggs" ;
 
 #-------------------------------------------------------------------*
 
-rule <galgas_component>
+nonterminal <galgas_component>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
@@ -53,12 +54,12 @@ action buildLexicalRulesFromList
   ?!@typeTableMotsReserves keyWordsMap
   ?!@typeListeTestsEtInstructions outLexicalRulesList ;
 
-rule <style_declaration>
+nonterminal <style_declaration>
   ?!@M_styles ioStylesMap
 label parse
 ;
 
-rule <attribute_or_terminal_symbol_declaration>
+nonterminal <attribute_or_terminal_symbol_declaration>
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeLexicalAttributesMap table_attributs
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
@@ -67,7 +68,7 @@ rule <attribute_or_terminal_symbol_declaration>
 label parse
 ;
 
-rule <key_words_list_declaration>
+nonterminal <key_words_list_declaration>
   ?!@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ?!@typeLexicalAttributesMap table_des_attributs
   ?!@typeTableDefinitionTerminaux table_des_terminaux
@@ -77,12 +78,12 @@ rule <key_words_list_declaration>
 label parse
 ;
 
-rule <lexical_error_message_declaration>
+nonterminal <lexical_error_message_declaration>
   ?!@typeTableMessagesErreurs tableMessagesErreurs
 label parse
 ;
 
-rule <while_branches_list>
+nonterminal <while_branches_list>
   !@typeListeTestsEtInstructions liste_tests_et_instructions
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeTableMessagesErreurs table_des_messages_erreur
@@ -92,7 +93,7 @@ rule <while_branches_list>
 label parse
 ;
 
-rule <lexical_rule>
+nonterminal <lexical_rule>
   ?!@typeListeTestsEtInstructions ioLexicalRulesList
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeTableMessagesErreurs table_des_messages_erreur
@@ -102,7 +103,7 @@ rule <lexical_rule>
 label parse
 ;
 
-rule <lexical_instructions_list>
+nonterminal <lexical_instructions_list>
   !@tListeInstructionsLexicales listeInstructions
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeTableMessagesErreurs table_des_messages_erreur
@@ -114,7 +115,7 @@ rule <lexical_instructions_list>
 label parse
 ;
 
-rule <lexical_when_branches_list>
+nonterminal <lexical_when_branches_list>
   !@typeListeTestsEtInstructions lexicalRulesList
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeTableMessagesErreurs table_des_messages_erreur
@@ -126,7 +127,7 @@ rule <lexical_when_branches_list>
 label parse
 ;
 
-rule <lexical_default_branch>
+nonterminal <lexical_default_branch>
   !@tListeInstructionsLexicales liste_instructions_sinon
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeTableMessagesErreurs table_des_messages_erreur
@@ -138,36 +139,36 @@ rule <lexical_default_branch>
 label parse
 ;
 
-rule <lexical_test_expression>
+nonterminal <lexical_test_expression>
   !@typeListeConditionsLexicales listeConditionsLexicales
 label parse
 ;
 
-rule <lexical_test_term>
+nonterminal <lexical_test_term>
   !@typeConditionLexicale conditionLexicale
 label parse
 ;
 
-rule <up_boundary>
+nonterminal <up_boundary>
   ?@lchar caractere
   !@typeConditionLexicale conditionLexicale
 label parse
 ;
 
-rule <lexical_parameters_non_empty_list>
+nonterminal <lexical_parameters_non_empty_list>
   !@typeListeArgumentsRoutExterne listeArgumentsRoutExterne
   ?!@typeLexicalAttributesMap tableDesAttributs
 label parse
 ;
 
-rule <lexical_error_messages_list>
+nonterminal <lexical_error_messages_list>
   ?!@typeListeMessagesErreur listeMessagesErreur
   ?!@typeTableMessagesErreurs tableMessagesErreurs
   ?!@stringset ioUsedErrorMessageSet
 label parse
 ;
 
-rule <lexical_send_or_error>
+nonterminal <lexical_send_or_error>
   !@typeEmissionParDefaut emissionParDefaut
   ?!@typeTableMessagesErreurs tableMessagesErreurs
   ?!@typeTableDefinitionTerminaux table_des_terminaux
@@ -175,13 +176,13 @@ rule <lexical_send_or_error>
 label parse
 ;
 
-rule <lexical_parameter>
+nonterminal <lexical_parameter>
   !@typeArgumentRoutineExterne argumentRoutineExterne
   ?!@typeLexicalAttributesMap table_attributs
 label parse
 ;
 
-rule <lexical_send_instruction>
+nonterminal <lexical_send_instruction>
   !@typeInstructionLexicale instruction
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeTableMessagesErreurs table_des_messages_erreur

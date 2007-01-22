@@ -2,7 +2,8 @@
 #                                                                           *
 #  GALGAS metamodel component parser definition                             *
 #                                                                           *
-#  Copyright (C) 2006 Pierre Molinaro.                                      *
+#  Copyright (C) 2006, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -24,7 +25,7 @@ import semantics common_semantics in "common_semantics.ggs" ;
 
 #-------------------------------------------------------------------*
 
-rule <galgas_component>
+nonterminal <galgas_component>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
@@ -49,19 +50,19 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-rule <parse_metamodel>
+nonterminal <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
-rule <entity_declaration_list>
+nonterminal <entity_declaration_list>
   ?!@entityToImplementMap ioEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 label parse
 ;
 
-rule <entity_declaration>
+nonterminal <entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
