@@ -28,7 +28,7 @@ import semantics parser_semantics in "parser_semantics.ggs" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <galgas_component>
+nonterminal <galgas_component>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents ioSyntaxComponentsMap
@@ -53,7 +53,7 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-rule <semantics_declaration>
+nonterminal <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -70,7 +70,7 @@ label importSemantics
 label parse
 ;
 
-rule <syntax_declaration>
+nonterminal <syntax_declaration>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -87,13 +87,13 @@ label importSyntax
 label parse
 ;
 
-rule <parse_lexique_for_importing>
+nonterminal <parse_lexique_for_importing>
   ??@lstring inFileName
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label parse
 ;
 
-rule <import_headers_semantics_and_grammars>
+nonterminal <import_headers_semantics_and_grammars>
   !@stringset ioIncludedSemanticsComponents
   !@stringset outIncludedMetamodelComponents
   !@stringset ioIncludedOptionComponents
@@ -124,7 +124,7 @@ label importSemantics
 label parse
 ;
 
-rule <semantic_instruction>
+nonterminal <semantic_instruction>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -136,7 +136,7 @@ rule <semantic_instruction>
 label parse
 ;
 
-rule <syntax_instruction>
+nonterminal <syntax_instruction>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
@@ -152,7 +152,7 @@ label importSyntax
 label parse
 ;
 
-rule <expression>
+nonterminal <expression>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -161,7 +161,7 @@ rule <expression>
 label parse
 ;
 
-rule <input_parameters_list>
+nonterminal <input_parameters_list>
   !@L_assignedVariables listeAffectationParametresEffectifs
   !@typeCplusPlusNameList outAllVariablesList
   ?@typeListeAttributsSemantiques listeAttributsSemantiques
@@ -169,7 +169,7 @@ rule <input_parameters_list>
 label parse
 ;
 
-rule <actual_parameters_list>
+nonterminal <actual_parameters_list>
   ??@L_EXsignature listeTypesParametresFormels
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
@@ -180,7 +180,7 @@ rule <actual_parameters_list>
 label parse
 ;
 
-rule <formal_arguments_list>
+nonterminal <formal_arguments_list>
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   !@L_EXsignature listeDeTypes
   ?!@typeVariablesMap tableArgumentsMethode
@@ -192,7 +192,7 @@ label importGrammarForSemantics
 label parse
 ;
 
-rule <syntax_instructions_list>
+nonterminal <syntax_instructions_list>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
@@ -208,7 +208,7 @@ label importSyntax
 label parse
 ;
  
-rule <syntax_instructions_list_no_verif>
+nonterminal <syntax_instructions_list_no_verif>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
@@ -224,34 +224,7 @@ label importSyntax
 label parse
 ;
 
-rule <rule_declaration_or_implementation>
-  ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
-  ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ?!@typeTableEnAvant tableEnAvant
-  ?!@typeVariablesMap tableVariablesMethode
-  ?@L_EXsignature listeDeTypes
-  ??@lstring inRuleName
-  ??@lstring inReturnedEntityName
-  ??@lstring inMDAResultVariableName
-  ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_terminalSymbolsMapForUse tableTerminaux
-  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
-  ?@L_signature inSignatureForGrammar
-  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
-  ??@lstring inSyntaxComponentName
-  ??@entityToImplementMap inAllMetamodelClassMap
-label importSyntax
-  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
-  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
-  ??@lstring inNonterminalSymbolName
-  ??@L_signature inDefaultSignature
-  ??@lstring inReturnedEntity
-label parse
-;
-
-rule <get_lexique_infos>
+nonterminal <get_lexique_infos>
   !@M_terminalSymbolsMapForUse tableTerminaux
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   !@lstring outLexiqueName
@@ -682,22 +655,22 @@ label importSyntax
 end rule ;
 
 #------------------------------------------------------------------------------*
-#     P A R S I N G   P R O D U C T I O N   R U L E                            *
+#     N O N T E R M I N A L    D E C L A R A T I O N                           *
 #------------------------------------------------------------------------------*
 
 rule <syntax_declaration>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_terminalSymbolsMapForUse tableTerminaux
+  ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
-  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
-  ?@lstring inSyntaxComponentName
+  ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
+  ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
 :
-  $rule$ ;
+  $nonterminal$ ;
   @lstring ruleName ;
   $non_terminal_symbol$ ? ruleName ;
   @L_EXsignature listeDeTypesFormels ;
@@ -727,85 +700,14 @@ rule <syntax_declaration>
       $identifier$ ? mdaResultVariableName ;
     end select ;
   end select ;
-  <rule_declaration_or_implementation>
-    !?ioNonTerminalSymbolMapForSyntax
-    !?ioEntitiesMap
-    !inOptionsComponentsMapForUse
-    !?tableEnAvant
-    !?tableArgumentsMethode
-    !listeDeTypesFormels
-    !ruleName
-    !returnedEntity
-    !mdaResultVariableName
-    !listeTypeEtNomsArguments
-    !?listeEntitesAengendrer
-    !?tableTerminaux
-    !?ioNonTerminalSymbolsMap
-    !signatureForGrammar
-    !?ioProductionRulesListForGrammar
-    !inSyntaxComponentName
-    !inAllMetamodelClassMap
-  ;
-label importSyntax
-  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
-  ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
-:
-  $rule$ ;
-  @lstring nonterminalSymbolName ;
-  $non_terminal_symbol$ ? nonterminalSymbolName ;
-  @L_signature signature ;
-  <formal_arguments_list> importGrammarForSemantics ?signature ;
-  @lstring returnedEntity ;
-  select
-    returnedEntity := [@lstring new !"" !here] ;
-  or
-    $->$ ;
-    $mda_type_name$ ? returnedEntity ;
-    select
-    or
-      $identifier$ ? * ;
-    end select ;
-  end select ;
-  <rule_declaration_or_implementation> importSyntax
-    !?ioNonTerminalSymbolsMap
-    !?ioProductionRulesListForGrammar
-    !nonterminalSymbolName
-    !signature
-    !returnedEntity
-  ;
-end rule ;
-
-#----------------------------------------------------------------------------*
-#   Production rule declaration                                              *
-#----------------------------------------------------------------------------*
-
-rule <rule_declaration_or_implementation>
-  ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
-  ?!@M_semanticsEntitiesForUse ioEntitiesMap
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ?!@typeTableEnAvant tableEnAvant
-  ?!@typeVariablesMap unused ioVariablesMap
-  ?@L_EXsignature listeDeTypes
-  ??@lstring inRuleName
-  ??@lstring inReturnedEntity
-  ??@lstring unused inMDAResultVariableName
-  ?@typeListeTypesEtNomsArgMethode unused inListeTypeEtNomsArguments
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?!@M_terminalSymbolsMapForUse unused tableTerminaux
-  ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMapForGrammar
-  ?@L_signature inSignatureForGrammar
-  ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
-  ??@lstring unused inSyntaxComponentName
-  ??@entityToImplementMap unused inAllMetamodelClassMap
-:
   @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
   @M_nonterminalSymbolAltsForGrammar parametersMapForGrammar [emptyMap] ;
   @lstring emptyId := [@lstring new !"" !here] ;
-  [!?parametersMap insertKey !emptyId !listeDeTypes !inReturnedEntity] ;
+  [!?parametersMap insertKey !emptyId !listeDeTypesFormels !returnedEntity] ;
   [!?parametersMapForGrammar insertKey
     !emptyId
-    !inSignatureForGrammar
-    !inReturnedEntity
+    !signatureForGrammar
+    !returnedEntity
   ] ;
   repeat
   while
@@ -857,23 +759,36 @@ rule <rule_declaration_or_implementation>
     end select ;
   end repeat ;
   $;$ ;
-  [!?ioNonTerminalSymbolsMapForGrammar insertKey !inRuleName !parametersMapForGrammar] ;
-  [!?ioNonTerminalSymbolMapForSyntax insertKey !inRuleName !parametersMap] ;
-  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !inRuleName !parametersMap] ;
+  [!?ioNonTerminalSymbolsMap insertKey !ruleName !parametersMapForGrammar] ;
+  [!?ioNonTerminalSymbolMapForSyntax insertKey !ruleName !parametersMap] ;
+  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !ruleName !parametersMap] ;
   listeEntitesAengendrer += !ea ;
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
-  ??@lstring inNonterminalSymbolName
-  ??@L_signature inDefaultSignature
-  ??@lstring inReturnedEntity
 :
+  $nonterminal$ ;
+  @lstring nonterminalSymbolName ;
+  $non_terminal_symbol$ ? nonterminalSymbolName ;
+  @L_signature signature ;
+  <formal_arguments_list> importGrammarForSemantics ?signature ;
+  @lstring returnedEntity ;
+  select
+    returnedEntity := [@lstring new !"" !here] ;
+  or
+    $->$ ;
+    $mda_type_name$ ? returnedEntity ;
+    select
+    or
+      $identifier$ ? * ;
+    end select ;
+  end select ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap [emptyMap] ;
   @lstring altName := [@lstring new !"" !here] ;
   [!?nonterminalSymbolParametersMap insertKey
     !altName
-    !inDefaultSignature
-    !inReturnedEntity
+    !signature
+    !returnedEntity
   ] ;
   repeat
   while
@@ -905,36 +820,59 @@ label importSyntax
       ] ;
     end select ;
   end repeat ;
-  [!?ioNonTerminalSymbolsMap insertKey !inNonterminalSymbolName !nonterminalSymbolParametersMap] ;
+  [!?ioNonTerminalSymbolsMap insertKey !nonterminalSymbolName !nonterminalSymbolParametersMap] ;
   $;$ ;
 end rule ;
 
-#----------------------------------------------------------------------------*
-#   Production rule implementation                                           *
-#----------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#     P A R S I N G   P R O D U C T I O N   R U L E                            *
+#------------------------------------------------------------------------------*
 
-rule <rule_declaration_or_implementation>
+rule <syntax_declaration>
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableEnAvant tableEnAvant
-  ?!@typeVariablesMap ioVariablesMap
-  ?@L_EXsignature listeDeTypesFormels
-  ??@lstring inRuleName
-  ??@lstring inEffectiveReturnedEntity
-  ??@lstring inMDAResultVariableName
-  ?@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_terminalSymbolsMapForUse tableTerminaux
-  ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMapForGrammar
-  ?@L_signature unused inSignatureForGrammar
+  ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
-  ??@lstring unused inSyntaxComponentName
-  ??@entityToImplementMap inAllMetamodelClassMap
+  ?@lstring unused inSyntaxComponentName
+  ?@entityToImplementMap inAllMetamodelClassMap
 :
+  $rule$ ;
+  @lstring ruleName ;
+  $non_terminal_symbol$ ? ruleName ;
+  @L_EXsignature listeDeTypesFormels ;
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammar ;
+  <formal_arguments_list>
+    !?ioEntitiesMap
+    ?listeDeTypesFormels 
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammar
+  ;
+  @lstring returnedEntity ;
+  @lstring mdaResultVariableName ;
+  select
+    returnedEntity := [@lstring new !"" !here] ;
+    mdaResultVariableName := [@lstring new !"" !here] ;
+  or
+    $->$ ;
+    $mda_type_name$ ? returnedEntity ;
+    [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?* ?* ?* ?*] ;
+    select
+      mdaResultVariableName := [@lstring new !"" !here] ; # No variable
+    or
+      $identifier$ ? mdaResultVariableName ;
+    end select ;
+  end select ;
 #--- Search non terminal symbol definition
   @M_nonterminalSymbolAlts nonterminalSymbolAltMap ;
-  [ioNonTerminalSymbolMapForSyntax searchKey !inRuleName ?nonterminalSymbolAltMap] ;
+  [ioNonTerminalSymbolMapForSyntax searchKey !ruleName ?nonterminalSymbolAltMap] ;
 #--- Verifier la declaration de la rule et la compatibilite des arguments effectifs avec les arguments formels
   @typeAltProductionsMap altProductionsMap [emptyMap] ;
   @lstring altName := [@lstring new !"" !here] ;
@@ -966,52 +904,52 @@ rule <rule_declaration_or_implementation>
     !listeDeTypesFormels
     !firstBranchErrorLocation
   ;
-  if ([formalReturnedEntity string] == "") & ([inEffectiveReturnedEntity string] != "") then
-    error inEffectiveReturnedEntity: "the non terminal declaration does not name any returned entity" ;
-  elsif [inEffectiveReturnedEntity string] != [formalReturnedEntity string] then
+  if ([formalReturnedEntity string] == "") & ([returnedEntity string] != "") then
+    error returnedEntity: "the non terminal declaration does not name any returned entity" ;
+  elsif [returnedEntity string] != [formalReturnedEntity string] then
     @stringset superEntityStringSet ;
-    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?* ?* ?* ?* ?* ?superEntityStringSet ?* ?*] ;
+    [inAllMetamodelClassMap searchKey ! returnedEntity ?* ?* ?* ?* ?* ?superEntityStringSet ?* ?*] ;
     if not [superEntityStringSet hasKey ![formalReturnedEntity string]] then
       # message "superEntityStringSet : " . [superEntityStringSet description] ;
-      error inEffectiveReturnedEntity: "the '@" . [formalReturnedEntity string] . "' entity or one of its inherited entities is expected here" ;
+      error returnedEntity: "the '@" . [formalReturnedEntity string] . "' entity or one of its inherited entities is expected here" ;
     end if ;
   end if ;
 #--- Insert in variable map attributes for returned entity
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
-  if [inMDAResultVariableName string] != "" then
-    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?* ?* ?* ?* ?* ?* ?* ?*] ;
-    @AC_galgasType definitionType := [@typeGalgas_singleEntity new !inEffectiveReturnedEntity] ;
-    @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !inMDAResultVariableName] ;
-    [!?ioVariablesMap insertSingleEntityLocalVariable !inMDAResultVariableName !definitionType !nomCppVariable] ;
+  if [mdaResultVariableName string] != "" then
+    [inAllMetamodelClassMap searchKey ! returnedEntity ?* ?* ?* ?* ?* ?* ?* ?*] ;
+    @AC_galgasType definitionType := [@typeGalgas_singleEntity new ! returnedEntity] ;
+    @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ! mdaResultVariableName] ;
+    [!?tableArgumentsMethode insertSingleEntityLocalVariable ! mdaResultVariableName !definitionType !nomCppVariable] ;
     @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
     listeInstructions += !instruction ;
-  elsif [inEffectiveReturnedEntity string] != "" then
-    [inAllMetamodelClassMap searchKey !inEffectiveReturnedEntity ?allPropertiesMap ?* ?* ?* ?* ?* ?* ?*] ;
+  elsif [returnedEntity string] != "" then
+    [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?* ?* ?* ?* ?* ?* ?*] ;
     foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
       when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
         @AC_semanticsEntity entite ;
         [ioEntitiesMap searchKey !kAttributeTypeName ?entite] ;
         @AC_galgasType definitionType ;
-        extract entite->@typeEntiteType (?definitionType) error inEffectiveReturnedEntity : messageTypeEntite ;
-        @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
+        extract entite->@typeEntiteType (?definitionType) error returnedEntity : messageTypeEntite ;
+        @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        [!?ioVariablesMap insertEntityAttributeLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        [!?tableArgumentsMethode insertEntityAttributeLocalVariable !nomVariable !definitionType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
         listeInstructions += !instruction ;
       when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
         @AC_galgasType definitionType := [@typeGalgas_singleEntity new !kReferenceEntityName] ;
-        @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
+        @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        [!?ioVariablesMap insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        [!?tableArgumentsMethode insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
         listeInstructions += !instruction ;
       when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName * *) ->
         @AC_galgasType definitionType := [@typeGalgas_multipleEntity new !kReferenceEntityName] ;
-        @lstring nomVariable := [@lstring new ![kKey string] ![inEffectiveReturnedEntity location]] ;
+        @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        [!?ioVariablesMap insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+        [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
         #log nomVariable, definitionType, nomCppVariable ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
         listeInstructions += !instruction ;
@@ -1027,7 +965,7 @@ rule <rule_declaration_or_implementation>
     !?ioEntitiesMap
     !?listeEntitesAengendrer
     !inOptionsComponentsMapForUse
-    !?ioVariablesMap
+    !?tableArgumentsMethode
     !?listeInstructions
     !?tableTerminaux
     !?syntaxSignature
@@ -1039,20 +977,20 @@ rule <rule_declaration_or_implementation>
     !listeInstructions
     !syntaxSignature
     !here
-    ![inEffectiveReturnedEntity string]
-    ![inMDAResultVariableName string]
+    ![returnedEntity string]
+    ![mdaResultVariableName string]
     !allPropertiesMap
   ] ;
   repeat
   while
     $label$ ;
     $identifier$ ?altName ;
-    ioVariablesMap := [@typeVariablesMap emptyMap] ;
+    tableArgumentsMethode := [@typeVariablesMap emptyMap] ;
     @L_signature signatureForGrammarComponent ;
     <formal_arguments_list>
       !?ioEntitiesMap
       ?listeDeTypesFormels 
-      !?ioVariablesMap
+      !? tableArgumentsMethode
       ?listeTypeEtNomsArguments
       !?tableEnAvant
       ?signatureForGrammarComponent # unused
@@ -1083,7 +1021,7 @@ rule <rule_declaration_or_implementation>
       !?ioEntitiesMap
       !?listeEntitesAengendrer
       !inOptionsComponentsMapForUse
-      !?ioVariablesMap
+      !? tableArgumentsMethode
       !?branchInstructionList
       !?tableTerminaux
       !?branchSyntaxSignature
@@ -1096,7 +1034,7 @@ rule <rule_declaration_or_implementation>
       !branchSyntaxSignature
       !here
       ![returnedEntity string]
-      ![inMDAResultVariableName string]
+      ![mdaResultVariableName string]
       ![@entityPropertyMap emptyMap]
     ] ;
   end repeat ;
@@ -1113,7 +1051,7 @@ rule <rule_declaration_or_implementation>
   end foreach ;
 #--- Generate production
   @typeEntityToGenerate ea := [@typeProductionAengendrer new
-    !inRuleName
+    !ruleName
     !altProductionsMap
     !productionTagName
     !hasParseLabel
@@ -1122,17 +1060,30 @@ rule <rule_declaration_or_implementation>
 #--- Generate list for grammar component
   @uint ruleIndex := 0 ;
   ioProductionRulesListForGrammar +=
-   !inRuleName
+   !ruleName
    !ruleIndex
    !syntaxSignature
   ;
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
-  ??@lstring inNonterminalSymbolName
-  ??@L_signature unused inDefaultSignature
-  ??@lstring unused inReturnedEntity
 :
+  $rule$ ;
+  @lstring nonterminalSymbolName ;
+  $non_terminal_symbol$ ? nonterminalSymbolName ;
+  @L_signature signature ;
+  <formal_arguments_list> importGrammarForSemantics ?signature ;
+  @lstring returnedEntity ;
+  select
+    returnedEntity := [@lstring new !"" !here] ;
+  or
+    $->$ ;
+    $mda_type_name$ ? returnedEntity ;
+    select
+    or
+      $identifier$ ? * ;
+    end select ;
+  end select ;
   select
   or
     $tag$ ;
@@ -1155,9 +1106,11 @@ label importSyntax
     <syntax_instructions_list> parse ;
   end repeat ;
   @uint leftNonterminalSymbolIndex := 0 ;
-  ioProductionRulesListForGrammar += !inNonterminalSymbolName
-                                     !leftNonterminalSymbolIndex
-                                     !instructionsList ;
+  ioProductionRulesListForGrammar +=
+    !nonterminalSymbolName
+    !leftNonterminalSymbolIndex
+    !instructionsList
+  ;
   $end$ ;
   $rule$ ;
   $;$ ;
