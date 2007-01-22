@@ -3065,6 +3065,24 @@ routine handleReaderCall
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
+    when @typeGalgas_bdd () ->
+      if [inMethodName string] == "isTrue" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inMethodName string] == "isFalse" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inMethodName string] == "neededVariableCount" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inMethodName string] == "valueCount" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_uint64 new] ;
+      else
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when @typeGalgas_uint () ->
       if [inMethodName string] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
