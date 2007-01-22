@@ -3385,6 +3385,15 @@
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
 		</Unit>
+		<Unit filename="../../libpm/galgas/GGS_bdd.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="galgas" />
+			<Option target="galgas_debug" />
+			<Option target="galgas_SLR" />
+			<Option target="galgas_SLR_debug" />
+			<Option target="galgasLR1" />
+			<Option target="galgasLR1_debug" />
+		</Unit>
 		<Unit filename="../../libpm/galgas/GGS_bool.cpp">
 			<Option compilerVar="CC" />
 			<Option target="galgas" />

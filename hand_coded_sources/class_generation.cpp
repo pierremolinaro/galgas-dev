@@ -304,7 +304,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
   generatedZone3 << ") ;\n\n" ;
 
-  generatedZone3 << "//--- Declaring a protected virual desstructor enables the compiler to raise\n"
+  generatedZone3 << "//--- Declaring a protected virual destructor enables the compiler to raise\n"
                     "//    an error if a direct delete is performed; only the static method\n"
                     "//    C_GGS_Object::detachPointer may invoke delete.\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"

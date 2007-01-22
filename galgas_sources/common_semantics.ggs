@@ -1189,6 +1189,41 @@ class @typeGalgas_double extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S   B D D                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_bdd extends @AC_galgasType {
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := "bdd" ;
+  end method ;
+
+#--- Class accepts constructor 'max'
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "bddWithBit" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "bddWithBool" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "bddWithString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end method ;
+
+#--- Error message
+  message messageGalgasType "a '@bdd' type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S   P R I M I T I V E    T Y P E S                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -2704,6 +2739,7 @@ routine checkAssignmentTypesCompatibility
   ??@bool inAcceptPolymorphism
 :
   match inFormalType :: inEffectiveType :
+  when @typeGalgas_bdd ()      :: @typeGalgas_bdd () :
   when @typeGalgas_stringset ():: @typeGalgas_stringset () :
   when @typeGalgas_uint ()     :: @typeGalgas_uint () :
   when @typeGalgas_sint ()     :: @typeGalgas_sint () :

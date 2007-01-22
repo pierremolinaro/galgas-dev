@@ -1334,6 +1334,9 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new ![@typeGalgas_bool new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"bool" !here] !e] ;
 
+  e := [@typeEntiteType new ![@typeGalgas_bdd new]] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"bdd" !here] !e] ;
+
   e := [@typeEntiteType new ![@typeGalgas_double new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"double" !here] !e] ;
 

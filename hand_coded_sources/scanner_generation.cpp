@@ -1168,7 +1168,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
 // --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n"
-                    "//--- Declaring a protected virual desstructor enables the compiler to raise\n"
+                    "//--- Declaring a protected virual destructor enables the compiler to raise\n"
                     "//    an error if a direct delete is performed; only the static method\n"
                     "//    C_GGS_Object::detachPointer may invoke delete.\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
