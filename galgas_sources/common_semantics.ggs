@@ -2296,83 +2296,26 @@ routine build_uint64list_type !@AC_galgasType outType :
   ] ;
 end routine ;
 
-#class @typeGalgas_uint64list extends @AC_galgasType {
-##--- Get type name
-#  override method getTypeName !@string outTypeName :
-#    outTypeName := "uint64list" ;
-#  end method ;
-#
-##--- list object accepts to be enumerated (foreach instruction)
-#  override
-#  method acceptForeachInstruction
-#    ??@lstring unused inErrorLocation
-#    !@typeListeAttributsSemantiques outForeachList
-#    !@localConstantBuildStyleEnum outStyle
-#  :
-#    outForeachList := [@typeListeAttributsSemantiques emptyList] ;
-#    outForeachList += ![@typeGalgas_uint64 new] ![@lstring new !"???" !here] ;
-#    outStyle := [@localConstantBuildStyleEnum listStyle] ;
-#  end method ;
-#  
-##--- Modifiers are 'popFirst' and 'popLast' methods
-#  override
-#  method handleModifierCall
-#    ??@lstring unused inModifiedObjectName
-#    ??@lstring inModifierName
-#    !@L_EXsignature outModifierSignature
-#  :
-#    if [inModifierName string] == "prependValue" then
-#      outModifierSignature := [@L_EXsignature emptyList] ;
-#      outModifierSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentConstantIn] ;
-#    elsif ([inModifierName string] == "popFirst") | ([inModifierName string] == "popLast") then
-#      outModifierSignature := [@L_EXsignature emptyList] ;
-#      outModifierSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentOut] ;
-#    else
-#      error inModifierName: "a list accepts only 'popFirst' and 'popLast' modifiers" -> outModifierSignature ;
-#    end if ;
-#  end method ;
-#
-#
-##--- List accept 'first' and last' reader in instruction
-#  override
-#  method handleMethodInstructionCall
-#    ??@lstring unused inReadObjectName
-#    ??@lstring inReaderName
-#    !@L_EXsignature outReaderSignature
-#  :
-#    if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
-#      error inReaderName: "a list accepts only 'first' and 'last' methods" ;
-#    end if ;
-#    outReaderSignature := [@L_EXsignature emptyList] ;
-#    outReaderSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentOut] ;
-#  end method ;
-#
-##--- list accepts operator "+=" call
-#  override method handleAddAssignOperatorCall
-#    ??@location unused inErrorLocation
-#    !@typeListeAttributsSemantiques outParametersList
-#  :
-#    outParametersList := [@typeListeAttributsSemantiques emptyList] ;
-#    outParametersList += ![@typeGalgas_uint64 new] ![@lstring new !"???" !here] ;
-#  end method ;
-#
-##--- A list accepts 'emptyList' and 'listWithValue' constructors
-#  override method handleConstructorCall
-#    ??@lstring inClassMethodName
-#    !@typeListeAttributsSemantiques outAccessorTypesList
-#  :
-#    if [inClassMethodName string] == "emptyList" then
-#      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-#    elsif [inClassMethodName string] == "listWithValue" then
-#      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-#      outAccessorTypesList += ![@typeGalgas_uint64 new] ![@lstring new !"???" !here] ;
-#    else
-#      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
-#    end if ;
-#  end method ;
-#
-#  message messageGalgasType "an uint64 list type" ;
-#}
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    S T R I N G L I S T    T Y P E                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_stringlist_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue" !here] ;
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentOut] ;
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  outType := [@typeGalgasListType new
+    ![@lstring new !"stringlist" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -3178,10 +3121,21 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
+      elsif [inMethodName string] == "compressedValueCount" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint64 new] ;
       elsif [inMethodName string] == "uint64ValueList" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         build_uint64list_type ?outReturnedType ;
+      elsif [inMethodName string] == "stringValueList" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        build_stringlist_type ?outReturnedType ;
+      elsif [inMethodName string] == "compressedStringValueList" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        build_stringlist_type ?outReturnedType ;
       else
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
