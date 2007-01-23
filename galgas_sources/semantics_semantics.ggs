@@ -1342,6 +1342,9 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
 
   e := [@typeEntiteType new ![@typeGalgas_stringset new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"stringset" !here] !e] ;
+
+  e := [@typeEntiteType new ![@typeGalgas_uint64list new]] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint64list" !here] !e] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
