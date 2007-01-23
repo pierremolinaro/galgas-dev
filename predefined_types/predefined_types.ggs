@@ -1,0 +1,11 @@
+semantics predefined_types :
+
+list @UINT64LIST {
+  @uint64 mValue ;
+}
+
+list @STRINGLIST {
+  @string mValue ;
+}
+
+end semantics ;

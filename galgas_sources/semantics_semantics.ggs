@@ -1343,7 +1343,8 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new ![@typeGalgas_stringset new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"stringset" !here] !e] ;
 
-  e := [@typeEntiteType new ![@typeGalgas_uint64list new]] ;
+  @AC_galgasType t ; build_uint64list_type ?t ;
+  e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint64list" !here] !e] ;
 end routine ;
 

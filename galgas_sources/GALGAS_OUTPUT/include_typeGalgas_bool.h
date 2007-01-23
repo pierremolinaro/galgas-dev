@@ -28,8 +28,8 @@ public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
                                                     AC_OutputStream & inHfile) const ;
 
   public : virtual void
-  generateAttributeInitialization (const GGS_lstring & nom,
-                                   AC_OutputStream & inCppFile) const {}
+  generateAttributeInitialization (const GGS_lstring & /* nom */,
+                                   AC_OutputStream & /* inCppFile */) const {}
 
 public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
 

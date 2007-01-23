@@ -368,9 +368,9 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_lsint64.h\"\n"
                     "#include \"galgas/GGS_stringset.h\"\n"
                     "#include \"galgas/GGS_bdd.h\"\n"
+                    "#include \"galgas/predefined_types.h\"\n"
                     "#include \"galgas/AC_galgas_map.h\"\n"
                     "#include \"galgas/AC_galgas_list.h\"\n"
-                    "#include \"galgas/GGS_uint64list.h\"\n"
                     "#include \"galgas/AC_galgas_sortedlist.h\"\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 
@@ -953,20 +953,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 void cPtr_typeGalgas_bool::
 generateAttributeDeclaration (const GGS_lstring & /* inName */,
                               AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_uint64list::
-generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_uint64list" ;
 }
 
 //---------------------------------------------------------------------------*
