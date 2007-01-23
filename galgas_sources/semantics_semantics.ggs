@@ -1346,6 +1346,10 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   @AC_galgasType t ; build_uint64list_type ?t ;
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint64list" !here] !e] ;
+
+  build_stringlist_type ?t ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"stringlist" !here] !e] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
