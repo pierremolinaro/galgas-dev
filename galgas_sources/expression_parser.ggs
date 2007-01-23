@@ -225,6 +225,8 @@ routine matchConcatOperator
   !@AC_galgasType outResultType
 :
   match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_uint64list () :: @typeGalgas_uint64list () :
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_string () :: @typeGalgas_string () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_string () :: @typeGalgas_lstring () :

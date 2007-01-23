@@ -2277,6 +2277,90 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    U I N T 6 4 L I S T    T Y P E                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_uint64list extends @AC_galgasType {
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := "uint64list" ;
+  end method ;
+
+#--- list object accepts to be enumerated (foreach instruction)
+  override
+  method acceptForeachInstruction
+    ??@lstring unused inErrorLocation
+    !@typeListeAttributsSemantiques outForeachList
+    !@localConstantBuildStyleEnum outStyle
+  :
+    outForeachList := [@typeListeAttributsSemantiques emptyList] ;
+    outForeachList += ![@typeGalgas_uint64 new] ![@lstring new !"???" !here] ;
+    outStyle := [@localConstantBuildStyleEnum listStyle] ;
+  end method ;
+  
+#--- Modifiers are 'popFirst' and 'popLast' methods
+  override
+  method handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "prependValue" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentConstantIn] ;
+    elsif ([inModifierName string] == "popFirst") | ([inModifierName string] == "popLast") then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentOut] ;
+    else
+      error inModifierName: "a list accepts only 'popFirst' and 'popLast' modifiers" -> outModifierSignature ;
+    end if ;
+  end method ;
+
+
+#--- List accept 'first' and last' reader in instruction
+  override
+  method handleMethodInstructionCall
+    ??@lstring unused inReadObjectName
+    ??@lstring inReaderName
+    !@L_EXsignature outReaderSignature
+  :
+    if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
+      error inReaderName: "a list accepts only 'first' and 'last' methods" ;
+    end if ;
+    outReaderSignature := [@L_EXsignature emptyList] ;
+    outReaderSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentOut] ;
+  end method ;
+
+#--- list accepts operator "+=" call
+  override method handleAddAssignOperatorCall
+    ??@location unused inErrorLocation
+    !@typeListeAttributsSemantiques outParametersList
+  :
+    outParametersList := [@typeListeAttributsSemantiques emptyList] ;
+    outParametersList += ![@typeGalgas_uint64 new] ![@lstring new !"???" !here] ;
+  end method ;
+
+#--- A list accepts 'emptyList' and 'listWithValue' constructors
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "emptyList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "listWithValue" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint64 new] ![@lstring new !"???" !here] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end method ;
+
+  message messageGalgasType "an uint64 list type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    U N D E F I N E D    S O R T E D    L I S T    T Y P E   *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -2739,25 +2823,26 @@ routine checkAssignmentTypesCompatibility
   ??@bool inAcceptPolymorphism
 :
   match inFormalType :: inEffectiveType :
-  when @typeGalgas_bdd ()      :: @typeGalgas_bdd () :
-  when @typeGalgas_stringset ():: @typeGalgas_stringset () :
-  when @typeGalgas_uint ()     :: @typeGalgas_uint () :
-  when @typeGalgas_sint ()     :: @typeGalgas_sint () :
-  when @typeGalgas_uint64 ()   :: @typeGalgas_uint64 () :
-  when @typeGalgas_sint64 ()   :: @typeGalgas_sint64 () :
-  when @typeGalgas_char ()     :: @typeGalgas_char () :
-  when @typeGalgas_string ()   :: @typeGalgas_string () :
-  when @typeGalgas_bool ()     :: @typeGalgas_bool () :
-  when @typeGalgas_double()    :: @typeGalgas_double () :
-  when @typeGalgas_lbool ()    :: @typeGalgas_lbool () :
-  when @typeGalgas_lchar ()    :: @typeGalgas_lchar () :
-  when @typeGalgas_luint ()    :: @typeGalgas_luint () :
-  when @typeGalgas_lsint ()    :: @typeGalgas_lsint () :
-  when @typeGalgas_luint64 ()  :: @typeGalgas_luint64 () :
-  when @typeGalgas_lsint64 ()  :: @typeGalgas_lsint64 () :
-  when @typeGalgas_ldouble ()  :: @typeGalgas_ldouble () :
-  when @typeGalgas_lstring ()  :: @typeGalgas_lstring () :
-  when @typeGalgas_location () :: @typeGalgas_location () :
+  when @typeGalgas_uint64list () :: @typeGalgas_uint64list () :
+  when @typeGalgas_bdd ()        :: @typeGalgas_bdd () :
+  when @typeGalgas_stringset ()  :: @typeGalgas_stringset () :
+  when @typeGalgas_uint ()       :: @typeGalgas_uint () :
+  when @typeGalgas_sint ()       :: @typeGalgas_sint () :
+  when @typeGalgas_uint64 ()     :: @typeGalgas_uint64 () :
+  when @typeGalgas_sint64 ()     :: @typeGalgas_sint64 () :
+  when @typeGalgas_char ()       :: @typeGalgas_char () :
+  when @typeGalgas_string ()     :: @typeGalgas_string () :
+  when @typeGalgas_bool ()       :: @typeGalgas_bool () :
+  when @typeGalgas_double ()     :: @typeGalgas_double () :
+  when @typeGalgas_lbool ()      :: @typeGalgas_lbool () :
+  when @typeGalgas_lchar ()      :: @typeGalgas_lchar () :
+  when @typeGalgas_luint ()      :: @typeGalgas_luint () :
+  when @typeGalgas_lsint ()      :: @typeGalgas_lsint () :
+  when @typeGalgas_luint64 ()    :: @typeGalgas_luint64 () :
+  when @typeGalgas_lsint64 ()    :: @typeGalgas_lsint64 () :
+  when @typeGalgas_ldouble ()    :: @typeGalgas_ldouble () :
+  when @typeGalgas_lstring ()    :: @typeGalgas_lstring () :
+  when @typeGalgas_location ()   :: @typeGalgas_location () :
 
   when @typeGalgasUndefinedListType (@lstring attNomType1) :: @typeGalgasUndefinedListType (@lstring attNomType2) :
     if [attNomType1 string] != [attNomType2 string] then
@@ -3079,6 +3164,10 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
+      elsif [inMethodName string] == "uint64ValueList" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_uint64list new] ;
       else
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -3304,6 +3393,14 @@ routine handleReaderCall
       else
         error inMethodName :
            "sorted list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when @typeGalgas_uint64list () ->
+      if [inMethodName string] == "length" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      else
+        error inMethodName :
+           "uint64 list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
       end if ;
     when @typeGalgasMapType (...) ->
       if [inMethodName string] == "hasKey" then

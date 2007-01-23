@@ -1287,7 +1287,6 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
           << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS)\n"
              ": C_Lexique (inGalgasInputOutput COMMA_THERE) {\n" ;
-//  generateAttributeInitialization (table_attributs, generatedZone2) ;
   generatedZone2 << "}\n\n" ;
 
 //---------------------------------------- Generate error message list

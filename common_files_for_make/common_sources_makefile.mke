@@ -35,15 +35,10 @@ include $(LIB_PM_PATH)/included_makefiles/default_build_options.mke
 
 #--- Files from libpm --------------------
 include $(LIB_PM_PATH)/galgas/galgas_sources_for_makefile.mke
-SOURCES += C_BDD.cpp
-SOURCES += C_Display_BDD.cpp
 SOURCES += C_BDD_Set1.cpp
 SOURCES += C_BDD_Set2.cpp
 SOURCES += C_BDD_Set3.cpp
 SOURCES += C_BDD_Descriptor.cpp
-SOURCES += C_PrimeCache2.cpp
-SOURCES += C_PrimeCache3.cpp
-SOURCES += F_GetPrime.cpp
 SOURCES += C_HTML_FileWrite.cpp
 
 #--- Hand-coded files ---------------------
