@@ -1193,10 +1193,10 @@ class @typeGalgas_double extends @AC_galgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_bdd extends @AC_galgasType {
+class @typeGalgas_binaryset extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
-    outTypeName := "bdd" ;
+    outTypeName := "binaryset" ;
   end method ;
 
 #--- Class accepts constructor 'max'
@@ -1204,22 +1204,53 @@ class @typeGalgas_bdd extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    if [inClassMethodName string] == "bddWithBit" then
+    if [inClassMethodName string] == "binarySetWithBit" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
-    elsif [inClassMethodName string] == "bddWithBool" then
+    elsif [inClassMethodName string] == "emptyBinarySet" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !""! here] ;
-    elsif [inClassMethodName string] == "bddWithString" then
+    elsif [inClassMethodName string] == "fullBinarySet" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "binarySetWithCompressedString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "binarySetWithEqualComparison" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "binarySetWithNotEqualComparison" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "binarySetWithStrictLowerComparison" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "binarySetWithStrictGreaterComparison" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "binarySetWithLowerOrEqualComparison" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "binarySetWithGreaterOrEqualComparison" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end method ;
 
 #--- Error message
-  message messageGalgasType "a '@bdd' type" ;
+  message messageGalgasType "a '@binaryset' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2781,7 +2812,7 @@ routine checkAssignmentTypesCompatibility
   ??@bool inAcceptPolymorphism
 :
   match inFormalType :: inEffectiveType :
-  when @typeGalgas_bdd ()        :: @typeGalgas_bdd () :
+  when @typeGalgas_binaryset ()  :: @typeGalgas_binaryset () :
   when @typeGalgas_stringset ()  :: @typeGalgas_stringset () :
   when @typeGalgas_uint ()       :: @typeGalgas_uint () :
   when @typeGalgas_sint ()       :: @typeGalgas_sint () :
@@ -3107,16 +3138,32 @@ routine handleReaderCall
         error inMethodName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_bdd () ->
-      if [inMethodName string] == "isTrue" then
+    when @typeGalgas_binaryset () ->
+      if [inMethodName string] == "isFull" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inMethodName string] == "isFalse" then
+      elsif [inMethodName string] == "isEmpty" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inMethodName string] == "neededVariableCount" then
+      elsif [inMethodName string] == "significantVariableCount" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inMethodName string] == "forAllOnVariableIndex" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "forAllOnVariableIndexAndBeyond" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "existOnVariableIndex" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "existOnVariableIndexAndBeyond" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
       elsif [inMethodName string] == "valueCount" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
@@ -3177,6 +3224,11 @@ routine handleReaderCall
         outReturnedType := [@typeGalgas_sint new] ;
       elsif [inMethodName string] == "uint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inMethodName string] == "uintSlice" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_uint new] ;
       elsif [inMethodName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;

@@ -130,7 +130,7 @@ routine matchAndOperator
   !@AC_galgasType outResultType
 :
   match inLeftExpressionType :: inRightExpressionType :
-  when @typeGalgas_bdd ()  :: @typeGalgas_bdd () :
+  when @typeGalgas_binaryset ()  :: @typeGalgas_binaryset () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_bool () :: @typeGalgas_bool () :
     outResultType := inLeftExpressionType ;
@@ -163,7 +163,7 @@ routine matchOrOperator
   !@AC_galgasType outResultType
 :
   match inLeftExpressionType :: inRightExpressionType :
-  when @typeGalgas_bdd ()  :: @typeGalgas_bdd () :
+  when @typeGalgas_binaryset ()  :: @typeGalgas_binaryset () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_bool () :: @typeGalgas_bool () :
     outResultType := inLeftExpressionType ;
@@ -196,6 +196,8 @@ routine matchXorOperator
   !@AC_galgasType outResultType
 :
   match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_binaryset ()  :: @typeGalgas_binaryset () :
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_bool () :: @typeGalgas_bool () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_uint () :: @typeGalgas_uint () :
@@ -267,7 +269,7 @@ routine checkLogicalNegateOperator
   !@AC_galgasType outResultType
 :
   extract inOperandType :
-  when @typeGalgas_bdd () ->
+  when @typeGalgas_binaryset () ->
     outResultType := inOperandType ;
   when @typeGalgas_uint () ->
     outResultType := inOperandType ;

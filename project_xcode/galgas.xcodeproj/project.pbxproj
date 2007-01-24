@@ -1542,14 +1542,6 @@
 		CFE838250AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838260AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838270AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
-		CFEA08480B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */; };
-		CFEA08490B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */; };
-		CFEA084A0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */; };
-		CFEA084B0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */; };
-		CFEA084C0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */; };
-		CFEA084D0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */; };
-		CFEA084E0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */; };
-		CFEA084F0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */; };
 		CFEB5FD509D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEB5FD309D15D9F003FF985 /* C_GGS_entityMap.cpp */; };
 		CFEB5FD709D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEB5FD309D15D9F003FF985 /* C_GGS_entityMap.cpp */; };
 		CFEB5FD909D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEB5FD309D15D9F003FF985 /* C_GGS_entityMap.cpp */; };
@@ -1599,22 +1591,6 @@
 		CFEECA200B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */; };
 		CFEECA210B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEECA110B300C1C00A02FF1 /* scannerDecoderGeneration.h */; };
 		CFEECA220B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */; };
-		CFEFFCD60B64F30900C13A4C /* GGS_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */; };
-		CFEFFCD70B64F30900C13A4C /* GGS_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */; };
-		CFEFFCD80B64F30900C13A4C /* GGS_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */; };
-		CFEFFCD90B64F30900C13A4C /* GGS_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */; };
-		CFEFFCDA0B64F30900C13A4C /* GGS_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */; };
-		CFEFFCDB0B64F30900C13A4C /* GGS_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */; };
-		CFEFFCDC0B64F30900C13A4C /* GGS_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */; };
-		CFEFFCDD0B64F30900C13A4C /* GGS_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */; };
-		CFEFFCDE0B64F30900C13A4C /* GGS_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */; };
-		CFEFFCDF0B64F30900C13A4C /* GGS_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */; };
-		CFEFFCE00B64F30900C13A4C /* GGS_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */; };
-		CFEFFCE10B64F30900C13A4C /* GGS_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */; };
-		CFEFFCE20B64F30900C13A4C /* GGS_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */; };
-		CFEFFCE30B64F30900C13A4C /* GGS_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */; };
-		CFEFFCE40B64F30900C13A4C /* GGS_bdd.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */; };
-		CFEFFCE50B64F30900C13A4C /* GGS_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */; };
 		CFF13E3A059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E3C059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E420597311700C43F5E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
@@ -1634,6 +1610,30 @@
 		CFF283490864369A0055D7B6 /* GGS_ldouble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF283350864369A0055D7B6 /* GGS_ldouble.cpp */; };
 		CFF2834B0864369A0055D7B6 /* GGS_double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF283330864369A0055D7B6 /* GGS_double.cpp */; };
 		CFF2834D0864369A0055D7B6 /* GGS_ldouble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF283350864369A0055D7B6 /* GGS_ldouble.cpp */; };
+		CFF663E80B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
+		CFF663E90B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
+		CFF663EA0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
+		CFF663EB0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
+		CFF663EC0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
+		CFF663ED0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
+		CFF663EE0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
+		CFF663EF0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
+		CFF664030B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF664040B6769FF00E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF664020B6769FF00E97917 /* GGS_binaryset.h */; };
+		CFF664050B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF664060B6769FF00E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF664020B6769FF00E97917 /* GGS_binaryset.h */; };
+		CFF664070B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF664080B6769FF00E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF664020B6769FF00E97917 /* GGS_binaryset.h */; };
+		CFF664090B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF6640A0B6769FF00E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF664020B6769FF00E97917 /* GGS_binaryset.h */; };
+		CFF6640B0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF6640C0B6769FF00E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF664020B6769FF00E97917 /* GGS_binaryset.h */; };
+		CFF6640D0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF6640E0B6769FF00E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF664020B6769FF00E97917 /* GGS_binaryset.h */; };
+		CFF6640F0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF664100B6769FF00E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF664020B6769FF00E97917 /* GGS_binaryset.h */; };
+		CFF664110B6769FF00E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
+		CFF664120B6769FF00E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF664020B6769FF00E97917 /* GGS_binaryset.h */; };
 		CFF8611E09C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
 		CFF8612009C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
 		CFF8612209C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
@@ -2183,7 +2183,6 @@
 		CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelProperty.h; sourceTree = "<group>"; };
 		CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelSingleReferenceProperty.h; sourceTree = "<group>"; };
 		CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_methods.cpp; sourceTree = "<group>"; };
-		CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_bdd.h; sourceTree = "<group>"; };
 		CFEB5FD309D15D9F003FF985 /* C_GGS_entityMap.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_entityMap.cpp; sourceTree = "<group>"; };
 		CFEB5FD409D15D9F003FF985 /* C_GGS_entityMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_entityMap.h; sourceTree = "<group>"; };
 		CFEC15F509CA026700204242 /* metamodel_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_generation.cpp; sourceTree = "<group>"; };
@@ -2194,8 +2193,6 @@
 		CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_generation.cpp; sourceTree = "<group>"; };
 		CFEECA110B300C1C00A02FF1 /* scannerDecoderGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scannerDecoderGeneration.h; sourceTree = "<group>"; };
 		CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scannerDecoderGeneration.cpp; sourceTree = "<group>"; };
-		CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGS_bdd.h; sourceTree = "<group>"; };
-		CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_bdd.cpp; sourceTree = "<group>"; };
 		CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cli_options_parser.cpp; sourceTree = "<group>"; };
 		CFF13E39059730EB00C43F5E /* cli_options_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cli_options_parser.h; sourceTree = "<group>"; };
 		CFF13E410597311700C43F5E /* option_component_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_component_generation.cpp; sourceTree = "<group>"; };
@@ -2251,6 +2248,9 @@
 		CFF53893057A558F00854C83 /* GGS_luint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_luint.cpp; sourceTree = "<group>"; };
 		CFF53895057A558F00854C83 /* GGS_string.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_string.cpp; sourceTree = "<group>"; };
 		CFF53897057A558F00854C83 /* GGS_uint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_uint.cpp; sourceTree = "<group>"; };
+		CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_binaryset.h; sourceTree = "<group>"; };
+		CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_binaryset.cpp; sourceTree = "<group>"; };
+		CFF664020B6769FF00E97917 /* GGS_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_binaryset.h; sourceTree = "<group>"; };
 		CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_Object.cpp; sourceTree = "<group>"; };
 		CFF8611D09C0ACF600F90D05 /* C_GGS_Object.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_Object.h; sourceTree = "<group>"; };
 		CFF98D73058CCD4700176BCE /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2510,7 +2510,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
-				CFEA08470B6512B1009E6056 /* include_typeGalgas_bdd.h */,
+				CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */,
 				CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */,
 				CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */,
 				CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */,
@@ -3115,10 +3115,10 @@
 		CFF53871057A555E00854C83 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */,
+				CFF664020B6769FF00E97917 /* GGS_binaryset.h */,
 				CF4895680B66682D005A9E78 /* predefined_types.cpp */,
 				CF4895690B66682D005A9E78 /* predefined_types.h */,
-				CFEFFCD40B64F30900C13A4C /* GGS_bdd.h */,
-				CFEFFCD50B64F30900C13A4C /* GGS_bdd.cpp */,
 				CF546D970A347E450076D39C /* GGS_lsint64.cpp */,
 				CF546D980A347E450076D39C /* GGS_lsint64.h */,
 				CF546D690A347CF60076D39C /* GGS_luint64.cpp */,
@@ -3328,9 +3328,9 @@
 				CFD8D4D30B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
 				CFD8D4F70B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 				CFEECA150B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */,
-				CFEFFCDE0B64F30900C13A4C /* GGS_bdd.h in Headers */,
-				CFEA084C0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */,
 				CF4895730B66682D005A9E78 /* predefined_types.h in Headers */,
+				CFF663EC0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
+				CFF6640C0B6769FF00E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3416,9 +3416,9 @@
 				CFD8D4D90B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
 				CFD8D4FD0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 				CFEECA170B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */,
-				CFEFFCD60B64F30900C13A4C /* GGS_bdd.h in Headers */,
-				CFEA08480B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */,
 				CF48956B0B66682D005A9E78 /* predefined_types.h in Headers */,
+				CFF663E80B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
+				CFF664040B6769FF00E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3504,9 +3504,9 @@
 				CFD8D4DA0B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
 				CFD8D4FE0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 				CFEECA1F0B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */,
-				CFEFFCE20B64F30900C13A4C /* GGS_bdd.h in Headers */,
-				CFEA084E0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */,
 				CF4895770B66682D005A9E78 /* predefined_types.h in Headers */,
+				CFF663EE0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
+				CFF664100B6769FF00E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3606,9 +3606,9 @@
 				CFD8D4D40B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
 				CFD8D4F80B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 				CFEECA210B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */,
-				CFEFFCDC0B64F30900C13A4C /* GGS_bdd.h in Headers */,
-				CFEA084B0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */,
 				CF4895710B66682D005A9E78 /* predefined_types.h in Headers */,
+				CFF663EB0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
+				CFF6640A0B6769FF00E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3694,9 +3694,9 @@
 				CFD8D4D50B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
 				CFD8D4F90B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 				CFEECA190B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */,
-				CFEFFCE00B64F30900C13A4C /* GGS_bdd.h in Headers */,
-				CFEA084D0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */,
 				CF4895750B66682D005A9E78 /* predefined_types.h in Headers */,
+				CFF663ED0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
+				CFF6640E0B6769FF00E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3782,9 +3782,9 @@
 				CFD8D4D60B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
 				CFD8D4FA0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 				CFEECA1D0B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */,
-				CFEFFCDA0B64F30900C13A4C /* GGS_bdd.h in Headers */,
-				CFEA084A0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */,
 				CF48956F0B66682D005A9E78 /* predefined_types.h in Headers */,
+				CFF663EA0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
+				CFF664080B6769FF00E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3870,9 +3870,9 @@
 				CFD8D4D70B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
 				CFD8D4FB0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 				CFEECA130B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */,
-				CFEFFCD80B64F30900C13A4C /* GGS_bdd.h in Headers */,
-				CFEA08490B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */,
 				CF48956D0B66682D005A9E78 /* predefined_types.h in Headers */,
+				CFF663E90B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
+				CFF664060B6769FF00E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3958,9 +3958,9 @@
 				CFD8D4D80B2DAF820049B27F /* include_typeLexicalTagInstruction.h in Headers */,
 				CFD8D4FC0B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h in Headers */,
 				CFEECA1B0B300C1C00A02FF1 /* scannerDecoderGeneration.h in Headers */,
-				CFEFFCE40B64F30900C13A4C /* GGS_bdd.h in Headers */,
-				CFEA084F0B6512B1009E6056 /* include_typeGalgas_bdd.h in Headers */,
 				CF4895790B66682D005A9E78 /* predefined_types.h in Headers */,
+				CFF663EF0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
+				CFF664120B6769FF00E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4409,8 +4409,8 @@
 				CFE838210AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6B50B1DA4740067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA160B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
-				CFEFFCDF0B64F30900C13A4C /* GGS_bdd.cpp in Sources */,
 				CF4895720B66682D005A9E78 /* predefined_types.cpp in Sources */,
+				CFF6640B0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4525,8 +4525,8 @@
 				CFE838260AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6C10B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA180B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
-				CFEFFCD70B64F30900C13A4C /* GGS_bdd.cpp in Sources */,
 				CF48956A0B66682D005A9E78 /* predefined_types.cpp in Sources */,
+				CFF664030B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4642,8 +4642,8 @@
 				CFE838240AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6C30B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA200B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
-				CFEFFCE30B64F30900C13A4C /* GGS_bdd.cpp in Sources */,
 				CF4895760B66682D005A9E78 /* predefined_types.cpp in Sources */,
+				CFF6640F0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4796,8 +4796,8 @@
 				CFE838200AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6B70B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA220B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
-				CFEFFCDD0B64F30900C13A4C /* GGS_bdd.cpp in Sources */,
 				CF4895700B66682D005A9E78 /* predefined_types.cpp in Sources */,
+				CFF664090B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4912,8 +4912,8 @@
 				CFE838220AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6B90B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA1A0B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
-				CFEFFCE10B64F30900C13A4C /* GGS_bdd.cpp in Sources */,
 				CF4895740B66682D005A9E78 /* predefined_types.cpp in Sources */,
+				CFF6640D0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5029,8 +5029,8 @@
 				CFE838270AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6BB0B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA1E0B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
-				CFEFFCDB0B64F30900C13A4C /* GGS_bdd.cpp in Sources */,
 				CF48956E0B66682D005A9E78 /* predefined_types.cpp in Sources */,
+				CFF664070B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5145,8 +5145,8 @@
 				CFE838230AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6BD0B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA140B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
-				CFEFFCD90B64F30900C13A4C /* GGS_bdd.cpp in Sources */,
 				CF48956C0B66682D005A9E78 /* predefined_types.cpp in Sources */,
+				CFF664050B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5262,8 +5262,8 @@
 				CFE838250AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6BF0B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA1C0B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
-				CFEFFCE50B64F30900C13A4C /* GGS_bdd.cpp in Sources */,
 				CF4895780B66682D005A9E78 /* predefined_types.cpp in Sources */,
+				CFF664110B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
