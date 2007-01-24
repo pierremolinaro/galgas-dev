@@ -30,7 +30,7 @@
 #include "galgas/GGS_luint64.h"
 #include "galgas/GGS_lsint64.h"
 #include "galgas/GGS_stringset.h"
-#include "galgas/GGS_bdd.h"
+#include "galgas/GGS_binaryset.h"
 #include "galgas/predefined_types.h"
 #include "galgas/AC_galgas_map.h"
 #include "galgas/AC_galgas_list.h"
