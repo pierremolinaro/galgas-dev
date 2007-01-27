@@ -61,16 +61,18 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 
 static bool
 displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
-                        C_HTML_FileWrite & inHTMLfile,
+                        C_HTML_FileWrite * inHTMLfile,
                         const cVocabulary & inVocabulary,
                         const sint32 nombreIterations,
                         const bool inVerboseOptionOn) {
   bool warning = false ;
-  inHTMLfile.outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
-  inHTMLfile << "Calculus completed in "
-             << nombreIterations
-             << " iterations.\n" ;
-  inHTMLfile.outputRawData ("</p>") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
+    *inHTMLfile << "Calculus completed in "
+                << nombreIterations
+                << " iterations.\n" ;
+    inHTMLfile->outputRawData ("</p>") ;
+  }
 //--- Get index of last non terminal to check (don't check augmented symbol '<>')
   const uint32 lastNonterminalToCheck = (uint32) (inVocabulary.getAllSymbolsCount () - 2) ;
 
@@ -82,37 +84,45 @@ displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
   unusefulSymbols &= temp ;
 
   const uint32 n = unusefulSymbols.getValuesCount () ;
-  inHTMLfile.outputRawData ("<p>") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p>") ;
+  }
   if (n == 0L) {
-    inHTMLfile.outputRawData ("<span class=\"success\">") ;
-    inHTMLfile << "All terminal and nonterminal symbols are useful.\n\n" ;
-    inHTMLfile.outputRawData ("</span>") ;
+    if (inHTMLfile != NULL) {
+      inHTMLfile->outputRawData ("<span class=\"success\">") ;
+      *inHTMLfile << "All terminal and nonterminal symbols are useful.\n\n" ;
+      inHTMLfile->outputRawData ("</span>") ;
+    }
     if (inVerboseOptionOn) {
       co << "all, ok.\n" ;
     }
   }else{
-    inHTMLfile.outputRawData ("<span class=\"warning\">") ;
-    inHTMLfile << "The vocabulary has "
-               << n
-               << " unuseful element(s) : \n" ;
-    TC_UniqueArray <bool> array ;
-    unusefulSymbols.getArray (array) ;
-    const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
-    inHTMLfile.outputRawData ("<code>") ;
-    for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
-      if (array (symbol COMMA_HERE)) {
-        inHTMLfile.outputRawData ("<br>") ;
-        inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
+    if (inHTMLfile != NULL) {
+      inHTMLfile->outputRawData ("<span class=\"warning\">") ;
+      *inHTMLfile << "The vocabulary has "
+                  << n
+                  << " unuseful element(s) : \n" ;
+      TC_UniqueArray <bool> array ;
+      unusefulSymbols.getArray (array) ;
+      const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
+      inHTMLfile->outputRawData ("<code>") ;
+      for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+        if (array (symbol COMMA_HERE)) {
+          inHTMLfile->outputRawData ("<br>") ;
+          inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
+        }
       }
+      inHTMLfile->outputRawData ("</code></span>") ;
     }
-    inHTMLfile.outputRawData ("</code></span>") ;
     if (inVerboseOptionOn) {
       co << "warning.\n" ;
       co.flush () ;
     }
     warning = true ;
   }
-  inHTMLfile.outputRawData ("</p>") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("</p>") ;
+  }
   co.flush () ;
   return warning ;
 }
@@ -122,7 +132,7 @@ displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
 void
 useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproductions,
                              const cVocabulary & inVocabulary,
-                             C_HTML_FileWrite & inHTMLfile,
+                             C_HTML_FileWrite * inHTMLfile,
                              C_BDD_Set1 & outUsefulSymbols,
                              bool & outWarningFlag,
                              const bool inVerboseOptionOn) {
@@ -132,7 +142,9 @@ useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproduction
     co.flush () ;
   }
 //--- Print in BNF file
-  inHTMLfile.writeCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->writeCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
+  }
   sint32 iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,
                         outUsefulSymbols,

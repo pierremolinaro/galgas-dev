@@ -2,7 +2,7 @@
 //                                                                           *
 //     Routines for LR(1) grammar computations                               *
 //                                                                           *
-//  Copyright (C) 2002 Pierre Molinaro.                                      *
+//  Copyright (C) 2002, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -39,7 +39,7 @@ class C_Lexique ;
 void LR1_computations (C_Lexique & inLexique,
                        const cPureBNFproductionsList & inProductionRules,
                        const cVocabulary & inVocabulary,
-                       C_HTML_FileWrite & inHTMLfile,
+                       C_HTML_FileWrite * inHTMLfile,
                        const TC_UniqueArray <TC_UniqueArray <sint32> > & FIRSTarray,
                        const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                        const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,

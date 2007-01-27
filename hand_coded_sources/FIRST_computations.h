@@ -38,7 +38,7 @@ class C_Lexique ;
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    C_HTML_FileWrite & inHTMLfile,
+                    C_HTML_FileWrite * inHTMLfile,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,

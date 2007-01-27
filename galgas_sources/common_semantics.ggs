@@ -1211,7 +1211,10 @@ class @typeGalgas_binaryset extends @AC_galgasType {
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "fullBinarySet" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName string] == "binarySetWithCompressedString" then
+    elsif [inClassMethodName string] == "binarySetWithCompressedLittleEndianString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "binarySetWithCompressedBigEndianString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     elsif [inClassMethodName string] == "binarySetWithEqualComparison" then
@@ -3255,6 +3258,11 @@ routine handleReaderCall
         outReturnedType := inReceiverType ;
       elsif [inMethodName string] == "transitiveClosure" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "accessibleStates" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
       else

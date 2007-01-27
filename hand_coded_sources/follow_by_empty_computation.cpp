@@ -79,34 +79,36 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
  
 static void
 displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowedByEmpty_BDD,
-                                          C_HTML_FileWrite & inHTMLfile,
+                                          C_HTML_FileWrite * inHTMLfile,
                                           const cVocabulary & inVocabulary,
                                           const sint32 inIterationsCount,
                                           const bool inVerboseOptionOn) { 
-  inHTMLfile.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
-  inHTMLfile << "Calculus completed in "
-             << inIterationsCount
-             << " iterations.\n" ;
-  inHTMLfile.outputRawData ("</p><p>") ;
   const uint32 n = inVocabularyFollowedByEmpty_BDD.getValuesCount () ;
-  if (n == 1) {
-    inHTMLfile << "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
-  }else{
-    inHTMLfile << n << " nonterminal symbols (including the start symbol) can be followed by the empty string.\n" ;
-  }
-  inHTMLfile.outputRawData ("</p>") ;
-  TC_UniqueArray <bool> array ;
-  inVocabularyFollowedByEmpty_BDD.getArray (array) ;
-  const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
-  inHTMLfile.outputRawData ("<table class=\"result\">") ;
-  for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
-    if (array (symbol COMMA_HERE)) {
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
-      inHTMLfile.outputRawData ("</code></td></tr>") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
+    *inHTMLfile << "Calculus completed in "
+                << inIterationsCount
+                << " iterations.\n" ;
+    inHTMLfile->outputRawData ("</p><p>") ;
+    if (n == 1) {
+      *inHTMLfile << "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
+    }else{
+      *inHTMLfile << n << " nonterminal symbols (including the start symbol) can be followed by the empty string.\n" ;
     }
+    inHTMLfile->outputRawData ("</p>") ;
+    TC_UniqueArray <bool> array ;
+    inVocabularyFollowedByEmpty_BDD.getArray (array) ;
+    const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
+    inHTMLfile->outputRawData ("<table class=\"result\">") ;
+    for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
+      if (array (symbol COMMA_HERE)) {
+        inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+        inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
+        inHTMLfile->outputRawData ("</code></td></tr>") ;
+      }
+    }
+    inHTMLfile->outputRawData ("</table>") ;
   }
-  inHTMLfile.outputRawData ("</table>") ;
   if (inVerboseOptionOn) {
     co << n << ".\n" ;
     co.flush () ;
@@ -117,7 +119,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                              C_HTML_FileWrite & inHTMLfile,
+                              C_HTML_FileWrite * inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
@@ -128,7 +130,9 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
     co.flush () ;
   }
 //--- Print in BNF file
-  inHTMLfile.writeCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->writeCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
+  }
 
 //--- Compute nonterminal symbols followed by empty 
   sint32 iterationsCount = 0 ;

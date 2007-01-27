@@ -2,7 +2,7 @@
 //                                                                           *
 //     Routines for SLR grammar computations                                 *
 //                                                                           *
-//  Copyright (C) 2002, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 2002, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -1078,7 +1078,7 @@ void
 SLR_computations (C_Lexique & inLexique,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
-                  C_HTML_FileWrite & inHTMLfile,
+                  C_HTML_FileWrite * inHTMLfile,
                   const TC_UniqueArray <TC_UniqueArray <sint32> > & inFOLLOWarray,
                   const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                   const uint32 inOriginalGrammarStartSymbol,
@@ -1094,8 +1094,10 @@ SLR_computations (C_Lexique & inLexique,
     co.flush () ;
   }
 //--- Print in BNF file
-  inHTMLfile.writeCppTitleComment ("Building SLR automaton", "title") ;
-  inHTMLfile.outputRawData ("<p></p>") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->writeCppTitleComment ("Building SLR automaton", "title") ;
+    inHTMLfile->outputRawData ("<p></p>") ;
+  }
 
 //--- Compute LR0 automaton
   c_LR0_items_sets_collection LR0_items_sets_collection ;
@@ -1110,26 +1112,30 @@ SLR_computations (C_Lexique & inLexique,
     co.flush () ;
   }
 //--- Display automaton states
-  inHTMLfile.outputRawData ("<table class=\"result\">"
-                            "<tr><td class=\"result_title\" colspan=\"2\">") ;
-  inHTMLfile <<"LR0 automaton states" ;
-  inHTMLfile.outputRawData ("</td></tr>") ;
-  LR0_items_sets_collection.display (inProductionRules, inVocabulary, inHTMLfile) ;
-  inHTMLfile.outputRawData ("</table>") ;
-//--- Display automaton transitions
-  inHTMLfile.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
-  inHTMLfile << "LR0 automaton transitions" ;
-  inHTMLfile.outputRawData ("</td></tr>") ;
-  for (sint32 i=0 ; i<transitionList.length () ; i++) {
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-    inHTMLfile << "  S" << transitionList (i COMMA_HERE).mSourceState
-               << " |- " ;
-    inVocabulary.printInFile (inHTMLfile, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
-    inHTMLfile << " -> S"
-               << transitionList (i COMMA_HERE).mTargetState ;
-    inHTMLfile.outputRawData ("</code></td></tr>") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<table class=\"result\">"
+                              "<tr><td class=\"result_title\" colspan=\"2\">") ;
+    *inHTMLfile << "LR0 automaton states" ;
+    inHTMLfile->outputRawData ("</td></tr>") ;
+    LR0_items_sets_collection.display (inProductionRules, inVocabulary, *inHTMLfile) ;
+    inHTMLfile->outputRawData ("</table>") ;
   }
-  inHTMLfile.outputRawData ("</table><p></p>") ;
+//--- Display automaton transitions
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
+    *inHTMLfile << "LR0 automaton transitions" ;
+    inHTMLfile->outputRawData ("</td></tr>") ;
+    for (sint32 i=0 ; i<transitionList.length () ; i++) {
+      inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      *inHTMLfile << "  S" << transitionList (i COMMA_HERE).mSourceState
+                  << " |- " ;
+      inVocabulary.printInFile (*inHTMLfile, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
+      *inHTMLfile << " -> S"
+                  << transitionList (i COMMA_HERE).mTargetState ;
+      inHTMLfile->outputRawData ("</code></td></tr>") ;
+    }
+    inHTMLfile->outputRawData ("</table><p></p>") ;
+  }
 
 //--- Console display
   if (inVerboseOptionOn) {
@@ -1137,7 +1143,9 @@ SLR_computations (C_Lexique & inLexique,
     co.flush () ;
   }
 //--- Print in BNF file
-  inHTMLfile.writeCppTitleComment ("Checking SLR condition", "title") ;
+  if (inHTMLfile != NULL) {
+  inHTMLfile->writeCppTitleComment ("Checking SLR condition", "title") ;
+  }
 
 //--- Build SLR table... detect if grammar is not SLR
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
@@ -1145,22 +1153,26 @@ SLR_computations (C_Lexique & inLexique,
   sint32 shiftActions = 0 ;
   sint32 reduceActions = 0 ;
   sint32 successorEntries = 0 ;
-  inHTMLfile.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
-  inHTMLfile << "SLR decision table" ;
-  inHTMLfile.outputRawData ("</td></tr>") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
+    *inHTMLfile << "SLR decision table" ;
+    inHTMLfile->outputRawData ("</td></tr>") ;
+  }
 //--- Shift actions
   for (sint32 index=0 ; index<transitionList.length () ; index++) {
     if (transitionList (index COMMA_HERE).mAction < terminalSymbolsCount) {
       const sint32 sourceState = transitionList (index COMMA_HERE).mSourceState ;
       const sint32 targetState = transitionList (index COMMA_HERE).mTargetState ;
       const sint32 terminal = transitionList (index COMMA_HERE).mAction ;
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      inHTMLfile << "Action [S" << sourceState << ", " ;
-      inVocabulary.printInFile (inHTMLfile, terminal COMMA_HERE) ;
-      inHTMLfile << "] : shift, goto S" << targetState ;
+      if (inHTMLfile != NULL) {
+        inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+        *inHTMLfile << "Action [S" << sourceState << ", " ;
+        inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
+        *inHTMLfile << "] : shift, goto S" << targetState ;
+        inHTMLfile->outputRawData ("</code></td></tr>") ;
+      }
       SLRdecisionTable (sourceState, terminal COMMA_HERE) = cLR0_decisionTableElement::shiftDecision (targetState) ;
       shiftActions ++ ;
-      inHTMLfile.outputRawData ("</code></td></tr>") ;
     }
   }
 //--- Reduce actions
@@ -1173,44 +1185,56 @@ SLR_computations (C_Lexique & inLexique,
                                                                   productionsSet,
                                                                   acceptCondition) ;
     if (acceptCondition) {
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       const sint32 terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
-      inHTMLfile << "Action [S"
-                << state
-                << ", " ;
-      inVocabulary.printInFile (inHTMLfile, terminal COMMA_HERE) ;
-      inHTMLfile << "] : accept" ;
-      inHTMLfile.outputRawData ("</code>") ;
+      if (inHTMLfile != NULL) {
+        inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+        *inHTMLfile << "Action [S"
+                    << state
+                    << ", " ;
+        inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
+        *inHTMLfile << "] : accept" ;
+        inHTMLfile->outputRawData ("</code>") ;
+      }
       if (! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
-        inHTMLfile.outputRawData ("<span class=\"error\">") ;
-        inHTMLfile << " *** CONFLICT ***" ;
-        inHTMLfile.outputRawData ("</span>") ;
+        if (inHTMLfile != NULL) {
+          inHTMLfile->outputRawData ("<span class=\"error\">") ;
+          *inHTMLfile << " *** CONFLICT ***" ;
+          inHTMLfile->outputRawData ("</span>") ;
+        }
         conflictCount ++ ;
       }
       SLRdecisionTable (state, terminal COMMA_HERE) = cLR0_decisionTableElement::acceptDecision () ;
-      inHTMLfile.outputRawData ("</td></tr>") ;
+      if (inHTMLfile != NULL) {
+        inHTMLfile->outputRawData ("</td></tr>") ;
+      }
     }
     for (sint32 p=0 ; p<productionsSet.count () ; p++) {
       const sint32 productionIndex = productionsSet (p COMMA_HERE) ;
       const sint32 leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
       const TC_UniqueArray <sint32> & followsArray = inFOLLOWarray (leftNonTerminal COMMA_HERE) ;
       for (sint32 f=0 ; f<followsArray.count () ; f++) {
-        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         const sint32 terminal = followsArray (f COMMA_HERE) ;
-        inHTMLfile << "Action [S"
-                  << state
-                  << ", " ;
-        inVocabulary.printInFile (inHTMLfile, terminal COMMA_HERE) ;
-        inHTMLfile << "] : reduce by " ;
-        inVocabulary.printInFile (inHTMLfile, leftNonTerminal COMMA_HERE) ;
-        inHTMLfile.outputRawData ("</code>") ;
+        if (inHTMLfile != NULL) {
+          inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+          *inHTMLfile << "Action [S"
+                      << state
+                      << ", " ;
+          inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
+          *inHTMLfile << "] : reduce by " ;
+          inVocabulary.printInFile (*inHTMLfile, leftNonTerminal COMMA_HERE) ;
+          inHTMLfile->outputRawData ("</code>") ;
+        }
         if (! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
-          inHTMLfile.outputRawData ("<span class=\"error\">") ;
-          inHTMLfile << " *** CONFLICT ***" ;
-          inHTMLfile.outputRawData ("</span>") ;
+          if (inHTMLfile != NULL) {
+            inHTMLfile->outputRawData ("<span class=\"error\">") ;
+            *inHTMLfile << " *** CONFLICT ***" ;
+            inHTMLfile->outputRawData ("</span>") ;
+          }
           conflictCount ++ ;
         }
-        inHTMLfile.outputRawData ("</td></tr>") ;
+        if (inHTMLfile != NULL) {
+          inHTMLfile->outputRawData ("</td></tr>") ;
+        }
         SLRdecisionTable (state, terminal COMMA_HERE) = cLR0_decisionTableElement::reduceDecision (productionIndex) ;
         reduceActions ++ ;
       }    
@@ -1219,51 +1243,54 @@ SLR_computations (C_Lexique & inLexique,
 //--- Successors
   for (sint32 t=0 ; t<transitionList.length () ; t++) {
     if (transitionList (t COMMA_HERE).mAction >= terminalSymbolsCount) {
-      inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      inHTMLfile << "Successor [S"
-                << transitionList (t COMMA_HERE).mSourceState
-                << ", " ;
-      inVocabulary.printInFile (inHTMLfile, transitionList (t COMMA_HERE).mAction COMMA_HERE) ;
-      inHTMLfile << "] = S"
-                << transitionList (t COMMA_HERE).mTargetState ;
       successorEntries ++ ;
-      inHTMLfile.outputRawData ("</code></td></tr>") ;
+      if (inHTMLfile != NULL) {
+        inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+        *inHTMLfile << "Successor [S"
+                    << transitionList (t COMMA_HERE).mSourceState
+                    << ", " ;
+        inVocabulary.printInFile (*inHTMLfile, transitionList (t COMMA_HERE).mAction COMMA_HERE) ;
+        *inHTMLfile << "] = S"
+                    << transitionList (t COMMA_HERE).mTargetState ;
+        inHTMLfile->outputRawData ("</code></td></tr>") ;
+      }
     }
   }
-  inHTMLfile.outputRawData ("</table><p>") ;
-  inHTMLfile << "LR0 automaton has "
-            << LR0_items_sets_collection.getStatesCount ()
-            << " states and "
-            << transitionList.length ()
-            << " transitions.\n\n"
-               "Analyze table has "
-            << shiftActions << " shift actions, "
-            << reduceActions << " reduce actions, and "
-            << successorEntries << " state successor entries." ;
-  inHTMLfile.outputRawData ("</p><p>") ;
-  if (conflictCount == 0) {
-    inHTMLfile.outputRawData ("<span class=\"success\">") ;
-    inHTMLfile << "No conflict : grammar is SLR (1)." ;
-    inHTMLfile.outputRawData ("</span>") ;
-    if (inVerboseOptionOn) {
+//--- Display summary
+  if (inVerboseOptionOn) {
+    if (conflictCount == 0) {
       co << "ok.\n" ;
-      co.flush () ;
-    }
-    outOk = true ; // No error
-  }else{
-    inHTMLfile.outputRawData ("<span class=\"error\">") ;
-    inHTMLfile << conflictCount
-              << " conflict"
-              << ((conflictCount > 1) ? "s" : "")
-              << " : grammar is not SLR (1)." ;
-    inHTMLfile.outputRawData ("</span>") ;
-    if (inVerboseOptionOn) {
+    }else{
       co << "error.\n" ;
-      co.flush () ;
     }
-    outOk = false ; // Error, grammar is not SRL (1)
+    co.flush () ;
   }
-  inHTMLfile.outputRawData ("</p>") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("</table><p>") ;
+    *inHTMLfile << "LR0 automaton has "
+                << LR0_items_sets_collection.getStatesCount ()
+                << " states and "
+                << transitionList.length ()
+                << " transitions.\n\n"
+                   "Analyze table has "
+                << shiftActions << " shift actions, "
+                << reduceActions << " reduce actions, and "
+                << successorEntries << " state successor entries." ;
+    inHTMLfile->outputRawData ("</p><p>") ;
+    if (conflictCount == 0) {
+      inHTMLfile->outputRawData ("<span class=\"success\">") ;
+      *inHTMLfile << "No conflict : grammar is SLR (1)." ;
+      inHTMLfile->outputRawData ("</span>") ;
+    }else{
+      inHTMLfile->outputRawData ("<span class=\"error\">") ;
+      *inHTMLfile << conflictCount
+                  << " conflict"
+                  << ((conflictCount > 1) ? "s" : "")
+                  << " : grammar is not SLR (1)." ;
+      inHTMLfile->outputRawData ("</span>") ;
+    }
+    inHTMLfile->outputRawData ("</p>") ;
+  }
 //--- Generate C++ file
   if (conflictCount == 0) {
     generate_SLR_grammar_cpp_file (inLexique,
@@ -1279,6 +1306,7 @@ SLR_computations (C_Lexique & inLexique,
                                    inStartSymbolEntityAndMetamodelMap) ;
 
   }
+  outOk = conflictCount == 0 ;
 }
 
 //---------------------------------------------------------------------------*
