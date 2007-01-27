@@ -2,7 +2,7 @@
 //                                                                           *
 //  Routines for checking LL(1) condition                                    *
 //                                                                           *
-//  Copyright (C) 1994, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1994, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -77,43 +77,50 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_BDD_Set2 & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
-                     C_HTML_FileWrite & inHTMLfile,
+                     C_HTML_FileWrite * inHTMLfile,
                      const bool inVerboseOptionOn) {
 //--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
 // et verifier l'absence de conflit.
-  inHTMLfile.outputRawData ("<p>") ;
-  inHTMLfile << "The FIRST of a production is :\n"
-                " if the production is empty, the FOLLOW of the left nonterminal symbol ;\n"
-                " if the production is not empty (e.g. g -> x) :\n"
-                "         -- the FIRST of x, and\n"
-                "         -- if x est a nonterminal symbol deriving in the empty string, union the FOLLOW of x.\n\n"
-                "Only are listed the nonterminal having more than one production (see step 2\n"
-                "for inPureBNFproductions numbering) :\n\n" ;
-  inHTMLfile.outputRawData ("</p>") ;
-
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p>") ;
+    *inHTMLfile << "The FIRST of a production is :\n"
+                   " if the production is empty, the FOLLOW of the left nonterminal symbol ;\n"
+                   " if the production is not empty (e.g. g -> x) :\n"
+                   "         -- the FIRST of x, and\n"
+                   "         -- if x est a nonterminal symbol deriving in the empty string, union the FOLLOW of x.\n\n"
+                   "Only are listed the nonterminal having more than one production (see step 2\n"
+                   "for inPureBNFproductions numbering) :\n\n" ;
+    inHTMLfile->outputRawData ("</p>") ;
+  }
   C_BDD_Set2 t (inFOLLOWsets) ; t.clear () ;
   C_BDD_Set1 premierDeProduction (inFOLLOWsets.getDescriptor1 ()) ;
   C_BDD_Set2 temp (inFOLLOWsets) ;
   sint16 nombreDeConflits = 0 ;
   const sint32 nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  inHTMLfile.outputRawData ("<table class=\"result\">") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<table class=\"result\">") ;
+  }
   for (sint32 i=0 ; i<nombreNonTerminaux ; i++) {
     const sint32 first = inPureBNFproductions.tableauIndicePremiereProduction (i COMMA_HERE) ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
       const sint32 derniere = inPureBNFproductions.tableauIndiceDerniereProduction (i COMMA_HERE) ;
       if (derniere > first) { // Plusieurs inPureBNFproductions d'un meme non-terminal
       //--- Calculer et afficher les premiers
-        inHTMLfile.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
-        inVocabulary.printInFile (inHTMLfile, i + terminalSymbolsCount COMMA_HERE) ;
-        inHTMLfile.outputRawData ("</code></td></tr>") ;
+        if (inHTMLfile != NULL) {
+          inHTMLfile->outputRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
+          inVocabulary.printInFile (*inHTMLfile, i + terminalSymbolsCount COMMA_HERE) ;
+          inHTMLfile->outputRawData ("</code></td></tr>") ;
+        }
         for (sint32 j=first ; j<=derniere ; j++) {
           const sint32 numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-          inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
-          inHTMLfile << numeroProduction ;
-          inHTMLfile.outputRawData ("\">") ;
-          inHTMLfile << numeroProduction ;
-          inHTMLfile.outputRawData ("</a></td><td><code>") ;
+          if (inHTMLfile != NULL) {
+            inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
+            *inHTMLfile << numeroProduction ;
+            inHTMLfile->outputRawData ("\">") ;
+            *inHTMLfile << numeroProduction ;
+            inHTMLfile->outputRawData ("</a></td><td><code>") ;
+          }
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
           premierDeProduction.clear () ;
           if (p.aDerivation.count () == 0) {
@@ -131,16 +138,18 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
               }
             }
           }
-          TC_UniqueArray <bool> array ;
-          p.aPremierDeProduction.getArray (array) ;
-          const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
-          for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
-            if (array (symbol COMMA_HERE)) {
-              inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
-              inHTMLfile << ' ' ;
+          if (inHTMLfile != NULL) {
+            TC_UniqueArray <bool> array ;
+            p.aPremierDeProduction.getArray (array) ;
+            const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
+            for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+              if (array (symbol COMMA_HERE)) {
+                inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
+                *inHTMLfile << ' ' ;
+              }
             }
+            inHTMLfile->outputRawData ("</code></td></tr>") ;
           }
-          inHTMLfile.outputRawData ("</code></td></tr>") ;
         }
      //--- Verifier l'absence de conflit
         for (sint32 pr1=first ; pr1<derniere ; pr1++) {
@@ -150,44 +159,52 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             if (! (inPureBNFproductions(numeroProductionJ COMMA_HERE).aPremierDeProduction &
                   inPureBNFproductions(numeroProductionK COMMA_HERE).aPremierDeProduction).isFalse ()) {
               nombreDeConflits ++ ;
-              inHTMLfile.outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
-              inHTMLfile << "***** Conflict between the productions "
-                         << numeroProductionJ
-                         << " and "
-                         << numeroProductionK
-                         << " *****" ;
-              inHTMLfile.outputRawData ("</span></td></tr>\n") ;
+              if (inHTMLfile != NULL) {
+                inHTMLfile->outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
+                *inHTMLfile << "***** Conflict between the productions "
+                            << numeroProductionJ
+                            << " and "
+                            << numeroProductionK
+                            << " *****" ;
+                inHTMLfile->outputRawData ("</span></td></tr>\n") ;
+              }
             }
           }
         }
-        inHTMLfile << '\n' ;
+        if (inHTMLfile != NULL) {
+          *inHTMLfile << '\n' ;
+        }
       }
     }
   }
-  inHTMLfile.outputRawData ("</table><p>") ;
-//--- Bilan de l'analyse
-  if (nombreDeConflits == 0) {
-    inHTMLfile.outputRawData ("<span class=\"success\">") ;
-    inHTMLfile << "No conflict : the grammar is LL (1).\n" ;
-    inHTMLfile.outputRawData ("</span>") ;
-    if (inVerboseOptionOn) {
-      co << "ok.\n" ;
-      co.flush () ;
-    }
-  }else{
-    inHTMLfile.outputRawData ("<span class=\"error\">") ;
-    inHTMLfile << "The grammar is not  LL (1) : "
-               << nombreDeConflits
-               << " conflict"
-               << ((nombreDeConflits > 1) ? "s" : "")
-               << "." ;
-    inHTMLfile.outputRawData ("</span>") ;
-    if (inVerboseOptionOn) {
-      co << "error.\n" ;
-      co.flush () ;
-    }
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("</table><p>") ;
   }
-  inHTMLfile.outputRawData ("</p>") ;
+//--- Bilan de l'analyse
+  if (inVerboseOptionOn) {
+    if (nombreDeConflits == 0) {
+      co << "ok.\n" ;
+    }else{
+      co << "error.\n" ;
+    }
+    co.flush () ;
+  }
+  if (inHTMLfile != NULL) {
+    if (nombreDeConflits == 0) {
+      inHTMLfile->outputRawData ("<span class=\"success\">") ;
+      *inHTMLfile << "No conflict : the grammar is LL (1).\n" ;
+      inHTMLfile->outputRawData ("</span>") ;
+    }else{
+      inHTMLfile->outputRawData ("<span class=\"error\">") ;
+      *inHTMLfile << "The grammar is not  LL (1) : "
+                  << nombreDeConflits
+                  << " conflict"
+                  << ((nombreDeConflits > 1) ? "s" : "")
+                  << "." ;
+      inHTMLfile->outputRawData ("</span>") ;
+    }
+    inHTMLfile->outputRawData ("</p>") ;
+  }
   return nombreDeConflits == 0 ;
 }
 
@@ -681,7 +698,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
 void
 LL1_computations (C_Lexique & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
-                  C_HTML_FileWrite & inHTMLfile,
+                  C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_BDD_Set2 & inFIRSTsets,
@@ -700,7 +717,9 @@ LL1_computations (C_Lexique & inLexique,
     co.flush () ;
   }
 //--- Print in BNF file
-  inHTMLfile.writeCppTitleComment ("Checking LL(1) condition", "title") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->writeCppTitleComment ("Checking LL(1) condition", "title") ;
+  }
 
 //--- Check LL(1) condition
   outOk = check_LL1_condition (inPureBNFproductions,

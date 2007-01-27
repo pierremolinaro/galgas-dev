@@ -34,7 +34,7 @@ class C_Lexique ;
 void
 useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproductions,
                              const cVocabulary & inVocabulary,
-                             C_HTML_FileWrite & inHTMLfile,
+                             C_HTML_FileWrite * inHTMLfile,
                              C_BDD_Set1 & outUsefulSymbols,
                              bool & outWarningFlag,
                              const bool inVerboseOptionOn) ;

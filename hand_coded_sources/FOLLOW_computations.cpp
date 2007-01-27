@@ -2,7 +2,7 @@
 //                                                                           *
 // Routines for FOLLOWS sets                                                 *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -162,7 +162,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <sint32> > & inFOLLOWarray
 //---------------------------------------------------------------------------*
 
 static bool
-checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
+checkFOLLOWsets (C_HTML_FileWrite * inHTMLfile,
                  const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
                  const cVocabulary & inVocabulary,
                  const C_BDD_Set1 & inUsefulSymbols,
@@ -178,14 +178,15 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
   const C_BDD_Set2 suivantsPlusVide = ntVide | inFOLLOWsets ;
 
 //--- Verifier les suivants
-  inHTMLfile.outputRawData ("<p>") ;
-  inHTMLfile << "Every useful nonterminal symbol should:"
-                " either have a non empty FOLLOW,"
-                " either can be followed by the empty string,"
-                " either both."
-                " In no way none of them : it is an error." ;
-  inHTMLfile.outputRawData ("</p>") ;
-
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p>") ;
+    *inHTMLfile << "Every useful nonterminal symbol should:"
+                   " either have a non empty FOLLOW,"
+                   " either can be followed by the empty string,"
+                   " either both."
+                   " In no way none of them : it is an error." ;
+    inHTMLfile->outputRawData ("</p>") ;
+  }
 //--- Obtenir les non terminaux en erreur
   C_BDD_Set1 nterminauxAverifier (inUsefulSymbols) ;
   nterminauxAverifier.init (C_BDD::kGreaterOrEqual, (uint32) inVocabulary.getTerminalSymbolsCount ()) ;
@@ -195,37 +196,39 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
 
 //--- Afficher les non-terminaux en erreur
   const uint32 n = ntErreurSuivants.getValuesCount () ;
-  if (n == 0L) {
-    inHTMLfile.outputRawData ("<p><span class=\"success\">") ;
-    inHTMLfile << "All FOLLOW are correct." ;
-    inHTMLfile.outputRawData ("</span></p>") ;
-    if (inVerboseOptionOn) {
+  if (inVerboseOptionOn) {
+    if (n == 0L) {
       co << "ok.\n" ;
-      co.flush () ;
-    }
-  }else{
-    inHTMLfile.outputRawData ("<p><span class=\"error\">") ;
-    inHTMLfile << "Error : "
-               << n
-               << " nonterminal symbol"
-               << ((n > 1) ? "s have" : " has")
-               << " an empty FOLLOW :\n" ;
-    inHTMLfile.outputRawData ("</span></p>") ;
-    TC_UniqueArray <bool> array ;
-    ntErreurSuivants.getArray (array) ;
-    inHTMLfile.outputRawData ("<table class=\"result\">") ;
-    const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
-    for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
-      if (array (symbol COMMA_HERE)) {
-        inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-        inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
-        inHTMLfile.outputRawData ("</code></td></tr>") ;
-      }
-    }
-    inHTMLfile.outputRawData ("</table>") ;
-    if (inVerboseOptionOn) {
+    }else{
       co << "error.\n" ;
-      co.flush () ;
+    }
+    co.flush () ;
+  }
+  if (inHTMLfile != NULL) {
+    if (n == 0L) {
+      inHTMLfile->outputRawData ("<p><span class=\"success\">") ;
+      *inHTMLfile << "All FOLLOW are correct." ;
+      inHTMLfile->outputRawData ("</span></p>") ;
+    }else{
+      inHTMLfile->outputRawData ("<p><span class=\"error\">") ;
+      *inHTMLfile << "Error : "
+                  << n
+                  << " nonterminal symbol"
+                  << ((n > 1) ? "s have" : " has")
+                  << " an empty FOLLOW :\n" ;
+      inHTMLfile->outputRawData ("</span></p>") ;
+      TC_UniqueArray <bool> array ;
+      ntErreurSuivants.getArray (array) ;
+      inHTMLfile->outputRawData ("<table class=\"result\">") ;
+      const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
+      for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
+        if (array (symbol COMMA_HERE)) {
+          inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+          inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
+          inHTMLfile->outputRawData ("</code></td></tr>") ;
+        }
+      }
+      inHTMLfile->outputRawData ("</table>") ;
     }
   }
   return n == 0L ; 
@@ -235,7 +238,7 @@ checkFOLLOWsets (C_HTML_FileWrite & inHTMLfile,
 
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                     C_HTML_FileWrite & inHTMLfile,
+                     C_HTML_FileWrite * inHTMLfile,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_BDD_Set1 & inUsefulSymbols,
@@ -251,8 +254,10 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
     co.flush () ;
   }
 //--- Print in BNF file
-  inHTMLfile.outputRawData ("<p></p>") ;
-  inHTMLfile.writeCppTitleComment ("Computing the FOLLOW sets", "title") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p></p>") ;
+    inHTMLfile->writeCppTitleComment ("Computing the FOLLOW sets", "title") ;
+  }
 //--- Compute FOLLOW (with BDD)
   sint32 iterationsCount = 0 ;
   computeFOLLOWsets (inPureBNFproductions,
@@ -266,12 +271,13 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      iterationsCount) ;
 
 //--- Print FOLLOW sets
-  printFOLLOWsets (outFOLLOWarray,
-                   inVocabulary,
-                   inHTMLfile,
-                   outFOLLOWsets.getValuesCount (),
-                   iterationsCount) ;
-
+  if (inHTMLfile != NULL) {
+    printFOLLOWsets (outFOLLOWarray,
+                     inVocabulary,
+                     *inHTMLfile,
+                     outFOLLOWsets.getValuesCount (),
+                     iterationsCount) ;
+  }
 
 //--- Check FOLLOW
   outOk = checkFOLLOWsets (inHTMLfile,

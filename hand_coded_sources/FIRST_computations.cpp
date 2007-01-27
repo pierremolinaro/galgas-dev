@@ -71,7 +71,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 static bool
-displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
+displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
                           const C_BDD_Set1 & inVocabularyDerivingInEmptyString,
                           const cVocabulary & inVocabulary,
                           const C_BDD_Set1 & inUsefulSymbols,
@@ -79,6 +79,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
                           TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
                           const sint32 inIterationsCount,
                           const bool inVerboseOptionOn) {
+  const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
   C_BDD_Set1 temp (inVocabularyDerivingInEmptyString) ;
   temp.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; ;
@@ -87,40 +88,35 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
 //--- FIRST union nt symbols deriring in empty string
   const C_BDD_Set2 FIRST_with_empty = nt_x_empty | inFIRSTsets ;
 
+//--- Compute FIRST array
+  FIRST_with_empty.getArray (outFIRSTarray) ;
+
 //--- Display FIRST
   const sint32 m = (sint32) FIRST_with_empty.getValuesCount () ;
-  inHTMLfile.outputRawData ("<p>") ;
-  inHTMLfile << "Calculus completed in "
-             << inIterationsCount
-             << " iterations, "
-             << m
-             << " values ;\n"
-                "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
-  inHTMLfile.outputRawData ("</p>") ;
-  const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
-  FIRST_with_empty.getArray (outFIRSTarray) ;
-  inHTMLfile.outputRawData ("<table class=\"result\">") ;
-  for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
-    inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-    inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
-    inHTMLfile.outputRawData ("</code></td><td><code>") ;
-    const sint32 length = outFIRSTarray (symbol COMMA_HERE).count () ;
-    for (sint32 e=0 ; e<length ; e++) {
-      inHTMLfile << ' ' ;
-      inVocabulary.printInFile (inHTMLfile, outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p>") ;
+    *inHTMLfile << "Calculus completed in "
+                << inIterationsCount
+                << " iterations, "
+                << m
+                << " values ;\n"
+                   "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
+    inHTMLfile->outputRawData ("</p>") ;
+    inHTMLfile->outputRawData ("<table class=\"result\">") ;
+    for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
+      inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
+      inHTMLfile->outputRawData ("</code></td><td><code>") ;
+      const sint32 length = outFIRSTarray (symbol COMMA_HERE).count () ;
+      for (sint32 e=0 ; e<length ; e++) {
+        *inHTMLfile << ' ' ;
+        inVocabulary.printInFile (*inHTMLfile, outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
+      }
+      inHTMLfile->outputRawData ("</code></td></tr>") ;
     }
-    inHTMLfile.outputRawData ("</code></td></tr>") ;
+    inHTMLfile->outputRawData ("</table>") ;
   }
-  inHTMLfile.outputRawData ("</table>") ;
-
-//--- Check FIRST
-  inHTMLfile.outputRawData ("<p>") ;
-  inHTMLfile << "Every useful nonterminal must :"
-                " either have a non empty FIRST,"
-                " either be derived to empty string,"
-                " either both."
-                " In any way having none : it is an error." ;
-  inHTMLfile.outputRawData ("</p>") ;
+//----------------------------------------------- Check FIRST
 
 //--- Ensemble des non-terminaux a verifier
   C_BDD_Set1 ntToCheck (inUsefulSymbols) ;
@@ -128,42 +124,51 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
 
 //--- Get nonterminal symbols in error
   const C_BDD_Set1 ntInError = ntToCheck & inUsefulSymbols & ~(FIRST_with_empty.projeterSurAxe1 ()) ; 
+  const sint32 ntInErrorCount = (sint32) ntInError.getValuesCount () ;
 
 //--- Display nonterminal symbols in error
-  const sint32 ntInErrorCount = (sint32) ntInError.getValuesCount () ;
-  inHTMLfile.outputRawData ("<p>") ;
-  if (ntInErrorCount == 0L) {
-    inHTMLfile.outputRawData ("<span class=\"success\">") ;
-    inHTMLfile << "All FIRST are correct.\n\n" ;
-    inHTMLfile.outputRawData ("</span>") ;
-    if (inVerboseOptionOn) {
-      co << "ok.\n" ;
-      co.flush () ;
-    }
-  }else{
-    inHTMLfile.outputRawData ("<span class=\"error\">") ;
-    inHTMLfile << "Error : "
-               << ntInErrorCount
-               << " nonterminal symbol"
-               << ((ntInErrorCount>1) ? " has" : "s have")
-               << " an empty FIRST :" ;
-    TC_UniqueArray <bool> errorArray ;
-    ntInError.getArray (errorArray) ;
-    inHTMLfile.outputRawData ("<code>") ;
-    for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
-      if (errorArray (symbol COMMA_HERE)) {
-        inHTMLfile << ' ' ;
-        inVocabulary.printInFile (inHTMLfile, symbol COMMA_HERE) ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p>") ;
+    *inHTMLfile << "Every useful nonterminal must :"
+                   " either have a non empty FIRST,"
+                   " either be derived to empty string,"
+                   " either both."
+                   " In any way having none : it is an error." ;
+    inHTMLfile->outputRawData ("</p>") ;
+    inHTMLfile->outputRawData ("<p>") ;
+    if (ntInErrorCount == 0L) {
+      inHTMLfile->outputRawData ("<span class=\"success\">") ;
+      *inHTMLfile << "All FIRST are correct.\n\n" ;
+      inHTMLfile->outputRawData ("</span>") ;
+    }else{
+      inHTMLfile->outputRawData ("<span class=\"error\">") ;
+      *inHTMLfile << "Error : "
+                  << ntInErrorCount
+                  << " nonterminal symbol"
+                  << ((ntInErrorCount>1) ? " has" : "s have")
+                  << " an empty FIRST :" ;
+      TC_UniqueArray <bool> errorArray ;
+      ntInError.getArray (errorArray) ;
+      inHTMLfile->outputRawData ("<code>") ;
+      for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
+        if (errorArray (symbol COMMA_HERE)) {
+          *inHTMLfile << ' ' ;
+          inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
+        }
       }
+      inHTMLfile->outputRawData ("</code>") ;
+      inHTMLfile->outputRawData ("</span>") ;
     }
-    inHTMLfile.outputRawData ("</code>") ;
-    inHTMLfile.outputRawData ("</span>") ;
-    if (inVerboseOptionOn) {
-      co << "error.\n" ;
-      co.flush () ;
-    }
+    inHTMLfile->outputRawData ("</p>") ;
   }
-  inHTMLfile.outputRawData ("</p>") ;
+  if (inVerboseOptionOn) {
+    if (ntInErrorCount == 0L) {
+      co << "ok.\n" ;
+    }else{
+      co << "error.\n" ;
+    }
+    co.flush () ;
+  }
   return ntInErrorCount == 0L ; 
 }
 
@@ -171,7 +176,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & inHTMLfile,
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    C_HTML_FileWrite & inHTMLfile,
+                    C_HTML_FileWrite * inHTMLfile,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
@@ -187,8 +192,10 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
     co.flush () ;
   }
 //--- Print in BNF file
-  inHTMLfile.outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
-  inHTMLfile.writeCppTitleComment ("FIRST set", "title") ;
+  if (inHTMLfile != NULL) {
+    inHTMLfile->outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
+    inHTMLfile->writeCppTitleComment ("FIRST set", "title") ;
+  }
 
 //--- Compute FIRST sets
   sint32 iterationsCount = 0 ;

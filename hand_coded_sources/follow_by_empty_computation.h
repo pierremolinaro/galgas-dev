@@ -37,7 +37,7 @@ class C_Lexique ;
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                              C_HTML_FileWrite & inHTMLfile,
+                              C_HTML_FileWrite * inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,

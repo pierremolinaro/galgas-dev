@@ -2,7 +2,7 @@
 //                                                                           *
 // Routines for FOLLOWS sets                                                 *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -39,7 +39,7 @@ class C_Lexique ;
 
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                     C_HTML_FileWrite & inHTMLfile,
+                     C_HTML_FileWrite * inHTMLfile,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_BDD_Set1 & inUsefulSymbols,
