@@ -41,42 +41,45 @@
 //---------------------------------------------------------------------------*
 
 class c_LR1_item {
-  public : sint32 mLocationIndex ;
-  public : sint32 mTerminalSymbol ;
-  public : sint32 mProductionRuleIndex ;
+  protected : sint32 mLocationIndex ;
+  protected : sint32 mTerminalSymbol ;
+  protected : sint32 mProductionRuleIndex ;
 //--- Default constructor
-  public : c_LR1_item (void) ;
+  public : inline c_LR1_item (void) :
+  mLocationIndex (-1),
+  mTerminalSymbol (-1),
+  mProductionRuleIndex (-1) {
+  }
 //--- Constructor
-  public : c_LR1_item (const sint32 inProductionRuleIndex,
-                       const sint32 inLocationIndex,
-                       const sint32 inTerminalSymbol) ;
+  public : inline c_LR1_item (const sint32 inProductionRuleIndex,
+                              const sint32 inLocationIndex,
+                              const sint32 inTerminalSymbol) :
+  mLocationIndex (inLocationIndex),
+  mTerminalSymbol (inTerminalSymbol),
+  mProductionRuleIndex (inProductionRuleIndex) {
+  }
+//--- Accessors
+  public : inline sint32 locationIndex (void) const { return mLocationIndex ; }
+  public : inline sint32 terminalSymbol (void) const { return mTerminalSymbol ; }
+  public : inline sint32 productionRuleIndex (void) const { return mProductionRuleIndex ; }
+
 //--- Compare two items
-  public : static sint32 compare_LR1_items (const c_LR1_item & inItem1,
-                                            const c_LR1_item & inItem2) ;
+  public : inline static sint32
+  compare_LR1_items (const c_LR1_item & inItem1,
+                     const c_LR1_item & inItem2) ;
+
+//--- Hash code
+  public : inline uint32 hashCode (void) const {
+    uint32 h  = (uint32) mLocationIndex ;
+    h = (h << 11) ^ ((uint32) mTerminalSymbol) ;
+    h = (h << 11) ^ ((uint32) mProductionRuleIndex) ;
+    return h ;
+  }
 } ;
 
 //---------------------------------------------------------------------------*
 
-c_LR1_item::c_LR1_item (void) {
-  mProductionRuleIndex = -1 ;
-  mLocationIndex = -1 ;
-  mTerminalSymbol = -1 ;
-}
-
-//---------------------------------------------------------------------------*
-
-c_LR1_item::
-c_LR1_item (const sint32 inProductionRuleIndex,
-            const sint32 inLocationIndex,
-            const sint32 inTerminalSymbol) {
-  mProductionRuleIndex = inProductionRuleIndex ;
-  mLocationIndex = inLocationIndex ;
-  mTerminalSymbol = inTerminalSymbol ;
-}
-
-//---------------------------------------------------------------------------*
-
-sint32 c_LR1_item::
+sint32  c_LR1_item::
 compare_LR1_items (const c_LR1_item & inItem1,
                    const c_LR1_item & inItem2) {
   sint32 result = inItem1.mProductionRuleIndex - inItem2.mProductionRuleIndex ;
@@ -110,11 +113,11 @@ class cLR1_items_AVL_tree {
   public : virtual ~cLR1_items_AVL_tree (void) ;
   private : sint32 compare (const c_LR1_item & in_LR1_item,
                          const TC_UniqueArray <c_LR1_item> & in_LR1_items_array) ;
-  public : static void recursiveSearchOrInsert
-                         (cLR1_items_AVL_tree * & ioRootPointer,
-                          c_LR1_item & io_LR1_item,
-                          TC_UniqueArray <c_LR1_item> & io_LR1_items_array,
-                          bool & outExtension) ;
+  public : static bool
+  recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
+                                  c_LR1_item & io_LR1_item,
+                                  TC_UniqueArray <c_LR1_item> & io_LR1_items_array,
+                                  bool & outInsertionDone) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -189,27 +192,29 @@ static void rotateRight (cLR1_items_AVL_tree * & ioPtr) {
  
 //---------------------------------------------------------------------------*
 
-void cLR1_items_AVL_tree::
-recursiveSearchOrInsert (cLR1_items_AVL_tree * & ioRootPointer,
-                         c_LR1_item & io_LR1_item,
-                         TC_UniqueArray <c_LR1_item> & io_LR1_items_array,
-                         bool & outExtension) {
+bool cLR1_items_AVL_tree::
+recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
+                                c_LR1_item & io_LR1_item,
+                                TC_UniqueArray <c_LR1_item> & io_LR1_items_array,
+                                bool & outInsertionDone) {
+  bool extension = false ;
   if (ioRootPointer == NULL) {
     macroMyNew (ioRootPointer, cLR1_items_AVL_tree (io_LR1_items_array.count ())) ;
-    io_LR1_items_array.addObjectUsingSwap (io_LR1_item) ;
-    outExtension = true ;
+    io_LR1_items_array.addObject (io_LR1_item) ;
+    extension = true ;
+    outInsertionDone = true ;
   }else{
     const sint32 comp = ioRootPointer->compare (io_LR1_item, io_LR1_items_array) ;
     if (comp > 0) {
-      recursiveSearchOrInsert (ioRootPointer->mPtrToSup,
-                               io_LR1_item,
-                               io_LR1_items_array,
-                               outExtension) ;
-      if (outExtension) {
+      extension = recursiveSearchOrInsertLR1Item (ioRootPointer->mPtrToSup,
+                                                  io_LR1_item,
+                                                  io_LR1_items_array,
+                                                  outInsertionDone) ;
+      if (extension) {
         ioRootPointer->mBalance -- ;
         switch (ioRootPointer->mBalance) {
         case 0:
-          outExtension = false;
+          extension = false;
           break;
         case -1:
           break;
@@ -218,22 +223,22 @@ recursiveSearchOrInsert (cLR1_items_AVL_tree * & ioRootPointer,
             ::rotateRight (ioRootPointer->mPtrToSup) ;
           }
           ::rotateLeft (ioRootPointer) ;
-          outExtension = false;
+          extension = false;
           break;
         default :
           break ;
         }
       }
     }else if (comp < 0) {
-      recursiveSearchOrInsert (ioRootPointer->mPtrToInf,
-                               io_LR1_item,
-                               io_LR1_items_array,
-                               outExtension) ;
-      if (outExtension) {
+      extension = recursiveSearchOrInsertLR1Item (ioRootPointer->mPtrToInf,
+                                                  io_LR1_item,
+                                                  io_LR1_items_array,
+                                                  outInsertionDone) ;
+      if (extension) {
         ioRootPointer->mBalance ++ ;
         switch (ioRootPointer->mBalance) {
         case 0:
-          outExtension = false;
+          extension = false;
           break;
         case 1:
           break;
@@ -242,16 +247,17 @@ recursiveSearchOrInsert (cLR1_items_AVL_tree * & ioRootPointer,
             ::rotateLeft (ioRootPointer->mPtrToInf) ;
           }
           ::rotateRight (ioRootPointer) ;
-          outExtension = false;
+          extension = false;
           break;
         default :
           break ;
         }
       }
     }else{ // Found
-      outExtension = false;
+      extension = false;
     }
   }
+  return extension ;
 }
 
 //---------------------------------------------------------------------------*
@@ -299,13 +305,22 @@ class c_LR1_items_set {
 
 //--- Compare two items sets
   public : static sint32 compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
-                                               const c_LR1_items_set & inItemsSet2) ;
+                                                 const c_LR1_items_set & inItemsSet2) ;
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of LR table)
   public : void getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
                                                     TC_UniqueArray <sint32> & outProductionsSet,
                                                     TC_UniqueArray <sint32> & outTerminalArray,
                                                     bool & outAcceptCondition) ;
+
+//--- Hash code
+  public : inline uint32 hashCode (void) const {
+    uint32 h = (uint32) mItemsSet.count () ;
+    for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
+      h = (h << 11) ^ mItemsSet (i COMMA_HERE).hashCode () ;
+    }
+    return h ;
+  }
 
 //--- No copy
   private : c_LR1_items_set (c_LR1_items_set &) ;
@@ -322,9 +337,10 @@ c_LR1_items_set::c_LR1_items_set (void) {
 
 //---------------------------------------------------------------------------*
 
-bool c_LR1_items_set::add_LR1_item (const sint32 inProductionRuleIndex,
-                                    const sint32 inLocationIndex,
-                                    const sint32 inTerminalSymbol) {
+bool c_LR1_items_set::
+add_LR1_item (const sint32 inProductionRuleIndex,
+              const sint32 inLocationIndex,
+              const sint32 inTerminalSymbol) {
   c_LR1_item item (inProductionRuleIndex, inLocationIndex, inTerminalSymbol) ;
 //--- First, search for this item
   bool found = false ;
@@ -341,21 +357,33 @@ bool c_LR1_items_set::add_LR1_item (const sint32 inProductionRuleIndex,
 
 //---------------------------------------------------------------------------*
 
+sint32 gMax = 0 ;
+sint32 gN = 0 ;
+sint32 gTotal = 0 ;
 void c_LR1_items_set::
 close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
                      const sint32 inTerminalSymbolsCount,
                      const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) {
   TC_UniqueArray <c_LR1_item> itemsSet (100 COMMA_HERE) ;
-  cLR1_items_AVL_tree * root = (cLR1_items_AVL_tree *) NULL ;
+  static const uint32 gItemSetSlotCount = 61 ;
+  cLR1_items_AVL_tree * root [gItemSetSlotCount] ;
+  for (uint32 i=0 ; i<gItemSetSlotCount ; i++) {
+    root [i] = NULL ;
+  }
+  if (mItemsSet.count () > gMax) gMax = mItemsSet.count () ;
+  gN ++ ;
+  gTotal += mItemsSet.count () ;
   { for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-      bool extension = false ; // Not used
-      cLR1_items_AVL_tree::recursiveSearchOrInsert (root, mItemsSet (i COMMA_HERE), itemsSet, extension) ;
+      bool hasBeenInserted = false ; // Not used
+      const uint32 slot = mItemsSet (i COMMA_HERE).hashCode () % gItemSetSlotCount ;
+      cLR1_items_AVL_tree::recursiveSearchOrInsertLR1Item (root [slot], mItemsSet (i COMMA_HERE), itemsSet, hasBeenInserted) ;
     }
   }
+  bool hasChanged = false ;
   for (sint32 i=0 ; i<itemsSet.count () ; i++) {
-    const sint32 locationIndex = itemsSet (i COMMA_HERE).mLocationIndex ;
-    const sint32 productionRule = itemsSet (i COMMA_HERE).mProductionRuleIndex ;
+    const sint32 locationIndex = itemsSet (i COMMA_HERE).locationIndex () ;
+    const sint32 productionRule = itemsSet (i COMMA_HERE).productionRuleIndex () ;
     const cProduction & p = inProductionRules (productionRule COMMA_HERE) ;
     const sint32 derivationLength = p.aDerivation.count () ;
     if (locationIndex < derivationLength) {
@@ -381,10 +409,10 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
           derivationIndex ++ ;
         }
         if (emptyStringAccepted) {
-          theFirst.addObject (itemsSet (i COMMA_HERE).mTerminalSymbol) ;
+          theFirst.addObject (itemsSet (i COMMA_HERE).terminalSymbol ()) ;
         }
         const sint32 first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
-        if (first >= 0) { // first<0 means the non terminal symbol is unuseful
+        if (first >= 0) { // first < 0 means the non terminal symbol is unuseful
           MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
           const sint32 last = inProductionRules.tableauIndiceDerniereProduction (prodX COMMA_HERE) ;
           MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
@@ -392,17 +420,23 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
             const sint32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
             for (sint32 k=theFirst.count () - 1 ; k>=0 ; k--) {
               c_LR1_item item (ip, 0, theFirst (k COMMA_HERE)) ;
-              bool extension = false ; // Not used
-              cLR1_items_AVL_tree::recursiveSearchOrInsert (root, item, itemsSet, extension) ;
+              bool insertionDone = false ;
+              const uint32 slot = item.hashCode () % gItemSetSlotCount ;
+              cLR1_items_AVL_tree::recursiveSearchOrInsertLR1Item (root [slot], item, itemsSet, insertionDone) ;
+              hasChanged |= insertionDone ;
             }
           }
         }
       }
     }
   }
-  swap (itemsSet, mItemsSet) ;
-  mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
-  macroMyDelete (root, cLR1_items_AVL_tree) ;
+  if (hasChanged) {
+    swap (itemsSet, mItemsSet) ;
+    mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
+  }
+  for (uint32 i=0 ; i<gItemSetSlotCount ; i++) {
+    macroMyDelete (root [i], cLR1_items_AVL_tree) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -418,8 +452,8 @@ display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
          C_HTML_FileWrite & inHTMLfile) {
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-    const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
-    const sint32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
+    const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).productionRuleIndex () COMMA_HERE) ;
+    const sint32 location = mItemsSet (i COMMA_HERE).locationIndex () ;
     inHTMLfile.outputRawData ("<span class=\"list\">") ;
     inHTMLfile << "[" ;
     inVocabulary.printInFile (inHTMLfile, p.aNumeroNonTerminalGauche COMMA_HERE) ;
@@ -435,7 +469,7 @@ display (const cPureBNFproductionsList & inProductionRules,
       inHTMLfile << " ." ;      
     }
     inHTMLfile << ", " ;
-    inVocabulary.printInFile (inHTMLfile, mItemsSet (i COMMA_HERE).mTerminalSymbol COMMA_HERE) ;
+    inVocabulary.printInFile (inHTMLfile, mItemsSet (i COMMA_HERE).terminalSymbol () COMMA_HERE) ;
     inHTMLfile << "]" ;
     inHTMLfile.outputRawData ("</span>") ;
   }
@@ -449,13 +483,13 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                    c_LR1_items_set & out_LR1_item_set) {
   out_LR1_item_set.mItemsSet.clear () ;
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-    const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
+    const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).productionRuleIndex () ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
-    const sint32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
+    const sint32 location = mItemsSet (i COMMA_HERE).locationIndex () ;
     if (location < p.aDerivation.count ()) {
       const sint32 symbol = p.aDerivation (location COMMA_HERE) ;
       if (symbol == inSymbol) {
-        out_LR1_item_set.add_LR1_item (productionRuleIndex, location + 1, mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
+        out_LR1_item_set.add_LR1_item (productionRuleIndex, location + 1, mItemsSet (i COMMA_HERE).terminalSymbol ()) ;
       }
     }
   }
@@ -472,12 +506,12 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
   outTerminalArray.clear () ;
   outAcceptCondition = false ;
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-    const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
+    const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).productionRuleIndex () ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
-    const sint32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
+    const sint32 location = mItemsSet (i COMMA_HERE).locationIndex () ;
     if (location == p.aDerivation.count ()) {
       outProductionsSet.addObject (productionRuleIndex) ;
-      outTerminalArray.addObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
+      outTerminalArray.addObject (mItemsSet (i COMMA_HERE).terminalSymbol ()) ;
     }
     if ((productionRuleIndex == (inProductionRules.length () - 1)) && (location == 1)) {
       outAcceptCondition = true ;
@@ -490,8 +524,20 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
 sint32 c_LR1_items_set::
 compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
                         const c_LR1_items_set & inItemsSet2) {
+  const sint32 length1 = inItemsSet1.mItemsSet.count () ;
+  sint32 result = length1 - inItemsSet2.mItemsSet.count () ;
+  for (sint32 i=0 ; (i<length1) && (result==0) ; i++) {
+    result = c_LR1_item::compare_LR1_items (inItemsSet1.mItemsSet (i COMMA_HERE),
+                                            inItemsSet2.mItemsSet (i COMMA_HERE)) ;
+  }
+  return result ;
+}
+
+/*sint32 c_LR1_items_set::
+compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
+                        const c_LR1_items_set & inItemsSet2) {
   sint32 result = c_LR1_item::compare_LR1_items (inItemsSet1.mItemsSet (0 COMMA_HERE),
-                                               inItemsSet2.mItemsSet (0 COMMA_HERE)) ;
+                                                 inItemsSet2.mItemsSet (0 COMMA_HERE)) ;
   if (result == 0) {
     const sint32 length1 = inItemsSet1.mItemsSet.count () ;
     result = length1 - inItemsSet2.mItemsSet.count () ;
@@ -501,7 +547,7 @@ compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
     }
   }
   return result ;
-}
+}*/
 
 //---------------------------------------------------------------------------*
 
@@ -690,6 +736,8 @@ recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+static const uint32 kSlotCount = 46489 ;
+
 class c_LR1_items_sets_collection {
 //--- Default constructor and destructor
   public : c_LR1_items_sets_collection (void) ;
@@ -699,7 +747,7 @@ class c_LR1_items_sets_collection {
   public : sint32 searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) ;
 
 //--- States count
-  public : sint32 getStatesCount (void) ;
+  public : sint32 getStateCount (void) ;
 
 //--- Get transitions LR1 item set from a state for a symbol
   public : void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
@@ -721,21 +769,25 @@ class c_LR1_items_sets_collection {
 
 //--- Private data
   private : TC_UniqueArray <c_LR1_items_set> m_LR1_items_sets_array ;
-  private : cLR1_items_sets_AVL_tree * _mRoot ;
+  private : cLR1_items_sets_AVL_tree * _mRoot [kSlotCount] ;
 } ;
 
 //---------------------------------------------------------------------------*
 
 c_LR1_items_sets_collection::c_LR1_items_sets_collection (void) {
   m_LR1_items_sets_array.makeRoomUsingSwap (500) ;
-  _mRoot = (cLR1_items_sets_AVL_tree *) NULL ;
+  for (uint32 i=0 ; i<kSlotCount ; i++) {
+    _mRoot [i] = (cLR1_items_sets_AVL_tree *) NULL ;
+  }
 }
 
 //---------------------------------------------------------------------------*
 
 c_LR1_items_sets_collection::
 ~c_LR1_items_sets_collection (void) {
-  macroMyDelete (_mRoot, cLR1_items_sets_AVL_tree) ;
+  for (uint32 i=0 ; i<kSlotCount ; i++) {
+    macroMyDelete (_mRoot [i], cLR1_items_sets_AVL_tree) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -743,7 +795,9 @@ c_LR1_items_sets_collection::
 sint32 c_LR1_items_sets_collection::
 searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) {
   bool extension = false ;
-  return cLR1_items_sets_AVL_tree::recursiveSearchOrInsert (_mRoot, ioItemSet, m_LR1_items_sets_array, extension) ;
+  const uint32 h = ioItemSet.hashCode () ;
+  const uint32 slot = h % kSlotCount ;
+  return cLR1_items_sets_AVL_tree::recursiveSearchOrInsert (_mRoot [slot], ioItemSet, m_LR1_items_sets_array, extension) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -763,7 +817,7 @@ display (const cPureBNFproductionsList & inProductionRules,
 
 //---------------------------------------------------------------------------*
 
-sint32 c_LR1_items_sets_collection::getStatesCount (void) {
+sint32 c_LR1_items_sets_collection::getStateCount (void) {
   return m_LR1_items_sets_array.count () ;
 }
 
@@ -803,22 +857,16 @@ void c_LR1_items_sets_collection::getProductionsWhereLocationIsRight (const sint
 //---------------------------------------------------------------------------*
 
 class c_LR1_automaton_transition {
-  public : sint32 mSourceState ;
-  public : sint32 mAction ;
-  public : sint32 mTargetState ;
-  public : c_LR1_automaton_transition (const sint32 inSourceState,
-                                       const sint32 inAction,
-                                       const sint32 inTargetState) ;
-} ;
-
-//---------------------------------------------------------------------------*
-
-c_LR1_automaton_transition::c_LR1_automaton_transition (const sint32 inSourceState,
-                                                        const sint32 inAction,
-                                                        const sint32 inTargetState) {
-  mSourceState = inSourceState ;
-  mAction = inAction ;
-  mTargetState = inTargetState ;
+  public : const sint32 mSourceState ;
+  public : const sint32 mAction ;
+  public : const sint32 mTargetState ;
+  public : inline c_LR1_automaton_transition (const sint32 inSourceState,
+                                              const sint32 inAction,
+                                              const sint32 inTargetState) :
+    mSourceState (inSourceState),
+    mAction (inAction),
+    mTargetState (inTargetState) {
+  }
 } ;
 
 //---------------------------------------------------------------------------*
@@ -1272,7 +1320,9 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
                                      inVocabularyDerivingToEmpty_Array) ;
   outLR1_items_sets_collection.searchOrInsert_LR1_itemSet (LR1_items_set) ;
 //--- Calculate LR1 automaton
-  for (sint32 explorationIndex=0 ; explorationIndex<outLR1_items_sets_collection.getStatesCount () ; explorationIndex++) {
+  printf ("************** LR1 AUTOMATON BEGIN *****************\n") ; co.flush () ;
+  for (sint32 explorationIndex=0 ; explorationIndex<outLR1_items_sets_collection.getStateCount () ; explorationIndex++) {
+     //   printf ("************** exploration %d\n", explorationIndex) ; co.flush () ;
     for (sint32 s=0 ; s<vocabularyCount ; s++) {
       outLR1_items_sets_collection.getTransitionFrom (inProductionRules, explorationIndex, s, LR1_items_set) ;
       if (! LR1_items_set.isEmptySet ()) {
@@ -1286,6 +1336,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
       }
     }
   }
+  printf ("************** LR1 AUTOMATON END %d %d %d *****************\n", gMax, gTotal / gN, gN) ; co.flush () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1321,16 +1372,17 @@ LR1_computations (C_Lexique & inLexique,
   }
 
 //--- Compute LR1 automaton
-  c_LR1_items_sets_collection LR1_items_sets_collection ;
+  c_LR1_items_sets_collection * LR1_items_sets_collection = NULL ;
+  macroMyNew (LR1_items_sets_collection, c_LR1_items_sets_collection) ; ;
   TC_FIFO <c_LR1_automaton_transition> transitionList ;
   compute_LR1_automation (inProductionRules,
                           inVocabulary,
                           inFIRSTarray,
-                          LR1_items_sets_collection,
+                          * LR1_items_sets_collection,
                           inVocabularyDerivingToEmpty_Array,
                           transitionList) ;
   if (inVerboseOptionOn) {
-    co << LR1_items_sets_collection.getStatesCount () << " states, "
+    co << LR1_items_sets_collection->getStateCount () << " states, "
        << transitionList.length () << " transitions.\n" ;
     co.flush () ;
   }
@@ -1339,7 +1391,7 @@ LR1_computations (C_Lexique & inLexique,
     inHTMLfile->outputRawData ("<p></p><table class=\"result\">"
                               "<tr class=\"result_line\"><td  class=\"result_line\" colspan=\"2\">") ;
     *inHTMLfile << "LR1 automaton states" ;
-    LR1_items_sets_collection.display (inProductionRules, inVocabulary, *inHTMLfile) ;
+    LR1_items_sets_collection->display (inProductionRules, inVocabulary, *inHTMLfile) ;
     inHTMLfile->outputRawData ("</table>") ;
   }
 //--- Display automaton transitions
@@ -1369,9 +1421,9 @@ LR1_computations (C_Lexique & inLexique,
     inHTMLfile->writeCppTitleComment ("Checking LR(1) condition", "title") ;
   }
 
-//--- Build SLR table... detect if grammar is not SLR
+//--- Build LR1 table... detect if grammar is not LR1
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  TC_Array2 <cLR1_decisionTableElement> SLRdecisionTable (LR1_items_sets_collection.getStatesCount (), terminalSymbolsCount COMMA_HERE) ;
+  TC_Array2 <cLR1_decisionTableElement> SLRdecisionTable (LR1_items_sets_collection->getStateCount (), terminalSymbolsCount COMMA_HERE) ;
   sint32 shiftActions = 0 ;
   sint32 reduceActions = 0 ;
   sint32 successorEntries = 0 ;
@@ -1401,14 +1453,14 @@ LR1_computations (C_Lexique & inLexique,
   sint32 conflictCount = 0 ;
   TC_UniqueArray <sint32> productionsSet ;
   TC_UniqueArray <sint32> terminalArray ;
-  for (sint32 state=0 ; state<LR1_items_sets_collection.getStatesCount () ; state++) {
+  for (sint32 state=0 ; state<LR1_items_sets_collection->getStateCount () ; state++) {
   //--- Accept condition
     bool acceptCondition = false ;
-    LR1_items_sets_collection.getProductionsWhereLocationIsRight (state,
-                                                                  inProductionRules,
-                                                                  productionsSet,
-                                                                  terminalArray,
-                                                                  acceptCondition) ;
+    LR1_items_sets_collection->getProductionsWhereLocationIsRight (state,
+                                                                   inProductionRules,
+                                                                   productionsSet,
+                                                                   terminalArray,
+                                                                   acceptCondition) ;
     if (acceptCondition) {
       const sint32 terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
       conflictCount += ! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision () ;
@@ -1490,7 +1542,7 @@ LR1_computations (C_Lexique & inLexique,
   }
   if (inHTMLfile != NULL) {
     *inHTMLfile << "LR1 automaton has "
-                << LR1_items_sets_collection.getStatesCount ()
+                << LR1_items_sets_collection->getStateCount ()
                 << " states and "
                 << transitionList.length ()
                 << " transitions.\n\n"
@@ -1528,6 +1580,7 @@ LR1_computations (C_Lexique & inLexique,
                                    inStartSymbolEntityAndMetamodelMap) ;
 
   }
+  macroMyDelete (LR1_items_sets_collection, c_LR1_items_sets_collection) ; ;
   outOk = conflictCount == 0 ;
 }
 
