@@ -69,7 +69,7 @@ class c_LR1_item {
                      const c_LR1_item & inItem2) ;
 
 //--- Hash code
-  public : inline uint32 hashCode (void) const {
+  public : inline uint32 hashCode2 (void) const {
     uint32 h  = (uint32) mLocationIndex ;
     h = (h << 11) ^ ((uint32) mTerminalSymbol) ;
     h = (h << 11) ^ ((uint32) mProductionRuleIndex) ;
@@ -107,25 +107,26 @@ compare_LR1_items (const c_LR1_item & inItem1,
 class cLR1_items_AVL_tree {
   public : cLR1_items_AVL_tree * mPtrToInf ;
   public : cLR1_items_AVL_tree * mPtrToSup ;
-  private : const sint32 mInfo ;
+  public : const c_LR1_item mLR1item ;
   public : sint8 mBalance ;
-  private : cLR1_items_AVL_tree (const sint32 inInfo) ;
+
+  private : cLR1_items_AVL_tree (const c_LR1_item & inLR1item) ;
+
   public : virtual ~cLR1_items_AVL_tree (void) ;
-  private : sint32 compare (const c_LR1_item & in_LR1_item,
-                         const TC_UniqueArray <c_LR1_item> & in_LR1_items_array) ;
-  public : static bool
+
+  public : static cLR1_items_AVL_tree * // Return inserted object, or NULL
   recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
-                                  c_LR1_item & io_LR1_item,
-                                  TC_UniqueArray <c_LR1_item> & io_LR1_items_array,
-                                  bool & outInsertionDone) ;
+                                  const c_LR1_item & in_LR1_item,
+                                  bool & outExtension) ;
 } ;
 
 //---------------------------------------------------------------------------*
 
-cLR1_items_AVL_tree::cLR1_items_AVL_tree (const sint32 inInfo) :
+cLR1_items_AVL_tree::
+cLR1_items_AVL_tree (const c_LR1_item & inLR1item) :
 mPtrToInf ((cLR1_items_AVL_tree *) NULL),
 mPtrToSup ((cLR1_items_AVL_tree *) NULL),
-mInfo (inInfo),
+mLR1item (inLR1item),
 mBalance (0) {
 } ;
 
@@ -135,14 +136,6 @@ cLR1_items_AVL_tree::~cLR1_items_AVL_tree (void) {
   macroMyDelete (mPtrToInf, cLR1_items_AVL_tree) ;
   macroMyDelete (mPtrToSup, cLR1_items_AVL_tree) ;
 } ;
-
-//---------------------------------------------------------------------------*
-
-sint32 cLR1_items_AVL_tree::
-compare (const c_LR1_item & in_LR1_item,
-         const TC_UniqueArray <c_LR1_item> & in_LR1_items_array) {
-  return c_LR1_item::compare_LR1_items (in_LR1_items_array (mInfo COMMA_HERE), in_LR1_item) ;
-}
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -192,29 +185,26 @@ static void rotateRight (cLR1_items_AVL_tree * & ioPtr) {
  
 //---------------------------------------------------------------------------*
 
-bool cLR1_items_AVL_tree::
+cLR1_items_AVL_tree * cLR1_items_AVL_tree::
 recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
-                                c_LR1_item & io_LR1_item,
-                                TC_UniqueArray <c_LR1_item> & io_LR1_items_array,
-                                bool & outInsertionDone) {
-  bool extension = false ;
+                                const c_LR1_item & in_LR1_item,
+                                bool & outExtension) {
+  cLR1_items_AVL_tree * result = NULL ;
   if (ioRootPointer == NULL) {
-    macroMyNew (ioRootPointer, cLR1_items_AVL_tree (io_LR1_items_array.count ())) ;
-    io_LR1_items_array.addObject (io_LR1_item) ;
-    extension = true ;
-    outInsertionDone = true ;
+    macroMyNew (ioRootPointer, cLR1_items_AVL_tree (in_LR1_item)) ;
+    result = ioRootPointer ;
+    outExtension = true ;
   }else{
-    const sint32 comp = ioRootPointer->compare (io_LR1_item, io_LR1_items_array) ;
+    const sint32 comp = c_LR1_item::compare_LR1_items (in_LR1_item, ioRootPointer->mLR1item) ;
     if (comp > 0) {
-      extension = recursiveSearchOrInsertLR1Item (ioRootPointer->mPtrToSup,
-                                                  io_LR1_item,
-                                                  io_LR1_items_array,
-                                                  outInsertionDone) ;
-      if (extension) {
+      result = recursiveSearchOrInsertLR1Item (ioRootPointer->mPtrToSup,
+                                                  in_LR1_item,
+                                                  outExtension) ;
+      if (outExtension) {
         ioRootPointer->mBalance -- ;
         switch (ioRootPointer->mBalance) {
         case 0:
-          extension = false;
+          outExtension = false;
           break;
         case -1:
           break;
@@ -223,22 +213,21 @@ recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
             ::rotateRight (ioRootPointer->mPtrToSup) ;
           }
           ::rotateLeft (ioRootPointer) ;
-          extension = false;
+          outExtension = false;
           break;
         default :
           break ;
         }
       }
     }else if (comp < 0) {
-      extension = recursiveSearchOrInsertLR1Item (ioRootPointer->mPtrToInf,
-                                                  io_LR1_item,
-                                                  io_LR1_items_array,
-                                                  outInsertionDone) ;
-      if (extension) {
+      result = recursiveSearchOrInsertLR1Item (ioRootPointer->mPtrToInf,
+                                                  in_LR1_item,
+                                                  outExtension) ;
+      if (outExtension) {
         ioRootPointer->mBalance ++ ;
         switch (ioRootPointer->mBalance) {
         case 0:
-          extension = false;
+          outExtension = false;
           break;
         case 1:
           break;
@@ -247,17 +236,17 @@ recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
             ::rotateLeft (ioRootPointer->mPtrToInf) ;
           }
           ::rotateRight (ioRootPointer) ;
-          extension = false;
+          outExtension = false;
           break;
         default :
           break ;
         }
       }
     }else{ // Found
-      extension = false;
+      outExtension = false;
     }
   }
-  return extension ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -274,50 +263,67 @@ recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
 
 class c_LR1_items_set {
 //--- Private data
-  private : TC_UniqueArray <c_LR1_item> mItemsSet ;
+  private : mutable TC_UniqueArray <c_LR1_item> mItemsSet ;
+  private : cLR1_items_AVL_tree * mRoot ;
+  private : mutable bool mArrayIsSorted ;
 
 //--- Default constructor
   public : c_LR1_items_set (void) ;
 
+//--- Destructor
+  public : virtual ~c_LR1_items_set (void) ;
+
+//--- No copy
+  private : c_LR1_items_set (const c_LR1_items_set &) {}
+  private : void operator = (const c_LR1_items_set &) {}
+
 //--- Add a new LR1 item (returns false if already present)
-  public : bool add_LR1_item (const sint32 inProductionRuleIndex,
+  public : void add_LR1_item (const sint32 inProductionRuleIndex,
                               const sint32 inLocationIndex,
                               const sint32 inTerminalSymbol) ;
 
 //--- Get transitions LR1 item set from a state for a symbol
-  public : void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
-                                   const sint32 inSymbol,
-                                   c_LR1_items_set & out_LR1_item_set) ;
+  public : void
+  getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+                     const sint32 inSymbol,
+                     c_LR1_items_set & out_LR1_item_set) ;
 
 //--- Closing the LR1 items set
-  public : void close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
-                                     const sint32 inTerminalSymbolsCount,
-                                     const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
-                                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
+  public : void
+  close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
+                       const sint32 inTerminalSymbolsCount,
+                       const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
+                       const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
+
+  public : void sort (void) ;
+  public : void clear (void) ;
 
 //--- Empty set ?
   public : bool isEmptySet (void) const ;
 
 //--- Display LR1 items set
-  public : void display (const cPureBNFproductionsList & inProductionRules,
-                         const cVocabulary & inVocabulary,
-                         C_HTML_FileWrite & inHTMLfile) ;
+  public : void
+  display (const cPureBNFproductionsList & inProductionRules,
+           const cVocabulary & inVocabulary,
+           C_HTML_FileWrite & inHTMLfile) const ;
 
 //--- Compare two items sets
-  public : static sint32 compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
-                                                 const c_LR1_items_set & inItemsSet2) ;
+  public : static
+  sint32 compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
+                                 const c_LR1_items_set & inItemsSet2) ;
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of LR table)
-  public : void getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
-                                                    TC_UniqueArray <sint32> & outProductionsSet,
-                                                    TC_UniqueArray <sint32> & outTerminalArray,
-                                                    bool & outAcceptCondition) ;
+  public : void
+  getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
+                                      TC_UniqueArray <sint32> & outProductionsSet,
+                                      TC_UniqueArray <sint32> & outTerminalArray,
+                                      bool & outAcceptCondition) ;
 
 //--- Hash code
   public : inline uint32 hashCode (void) const {
     uint32 h = (uint32) mItemsSet.count () ;
     for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-      h = (h << 11) ^ mItemsSet (i COMMA_HERE).hashCode () ;
+      h = (h << 1) ^ mItemsSet (i COMMA_HERE).hashCode2 () ;
     }
     return h ;
   }
@@ -332,58 +338,67 @@ class c_LR1_items_set {
 
 //---------------------------------------------------------------------------*
 
-c_LR1_items_set::c_LR1_items_set (void) {
+c_LR1_items_set::c_LR1_items_set (void):
+mRoot (NULL),
+mArrayIsSorted (true) {
 }
 
 //---------------------------------------------------------------------------*
 
-bool c_LR1_items_set::
+c_LR1_items_set::~c_LR1_items_set (void) {
+  macroMyDelete (mRoot, cLR1_items_AVL_tree) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void c_LR1_items_set::sort (void) {
+  if (! mArrayIsSorted) {
+    mArrayIsSorted = true ;
+    mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void c_LR1_items_set::clear (void) {
+  mItemsSet.clear () ;
+  macroMyDelete (mRoot, cLR1_items_AVL_tree) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void c_LR1_items_set::
 add_LR1_item (const sint32 inProductionRuleIndex,
               const sint32 inLocationIndex,
               const sint32 inTerminalSymbol) {
-  c_LR1_item item (inProductionRuleIndex, inLocationIndex, inTerminalSymbol) ;
+  const c_LR1_item item (inProductionRuleIndex, inLocationIndex, inTerminalSymbol) ;
+//--- Find or add
+  bool extension = false ; // Unused
+  cLR1_items_AVL_tree * p = cLR1_items_AVL_tree::recursiveSearchOrInsertLR1Item (mRoot,
+                                                       item,
+                                                       extension) ;
 //--- First, search for this item
-  bool found = false ;
+/*  bool found = false ;
   for (sint32 i=0 ; (i<mItemsSet.count ()) && ! found ; i++) {
     found = c_LR1_item::compare_LR1_items (mItemsSet (i COMMA_HERE), item) == 0 ;
-  }
+  }*/
 //--- If not found, add it
-  if (! found) {
+  if (p != NULL) {
     mItemsSet.addObject (item) ;
-    mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
+    mArrayIsSorted = false ;
   }
-  return ! found ;
 }
 
 //---------------------------------------------------------------------------*
 
-sint32 gMax = 0 ;
-sint32 gN = 0 ;
-sint32 gTotal = 0 ;
 void c_LR1_items_set::
 close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
                      const sint32 inTerminalSymbolsCount,
                      const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) {
-  TC_UniqueArray <c_LR1_item> itemsSet (100 COMMA_HERE) ;
-  static const uint32 gItemSetSlotCount = 61 ;
-  cLR1_items_AVL_tree * root [gItemSetSlotCount] ;
-  for (uint32 i=0 ; i<gItemSetSlotCount ; i++) {
-    root [i] = NULL ;
-  }
-  if (mItemsSet.count () > gMax) gMax = mItemsSet.count () ;
-  gN ++ ;
-  gTotal += mItemsSet.count () ;
-  { for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-      bool hasBeenInserted = false ; // Not used
-      const uint32 slot = mItemsSet (i COMMA_HERE).hashCode () % gItemSetSlotCount ;
-      cLR1_items_AVL_tree::recursiveSearchOrInsertLR1Item (root [slot], mItemsSet (i COMMA_HERE), itemsSet, hasBeenInserted) ;
-    }
-  }
-  bool hasChanged = false ;
-  for (sint32 i=0 ; i<itemsSet.count () ; i++) {
-    const sint32 locationIndex = itemsSet (i COMMA_HERE).locationIndex () ;
-    const sint32 productionRule = itemsSet (i COMMA_HERE).productionRuleIndex () ;
+  for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
+    const sint32 locationIndex = mItemsSet (i COMMA_HERE).locationIndex () ;
+    const sint32 productionRule = mItemsSet (i COMMA_HERE).productionRuleIndex () ;
     const cProduction & p = inProductionRules (productionRule COMMA_HERE) ;
     const sint32 derivationLength = p.aDerivation.count () ;
     if (locationIndex < derivationLength) {
@@ -409,7 +424,7 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
           derivationIndex ++ ;
         }
         if (emptyStringAccepted) {
-          theFirst.addObject (itemsSet (i COMMA_HERE).terminalSymbol ()) ;
+          theFirst.addObject (mItemsSet (i COMMA_HERE).terminalSymbol ()) ;
         }
         const sint32 first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
         if (first >= 0) { // first < 0 means the non terminal symbol is unuseful
@@ -419,24 +434,14 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
           for (sint32 j=first ; j<=last ; j++) {
             const sint32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
             for (sint32 k=theFirst.count () - 1 ; k>=0 ; k--) {
-              c_LR1_item item (ip, 0, theFirst (k COMMA_HERE)) ;
-              bool insertionDone = false ;
-              const uint32 slot = item.hashCode () % gItemSetSlotCount ;
-              cLR1_items_AVL_tree::recursiveSearchOrInsertLR1Item (root [slot], item, itemsSet, insertionDone) ;
-              hasChanged |= insertionDone ;
+              add_LR1_item (ip, 0, theFirst (k COMMA_HERE)) ;
             }
           }
         }
       }
     }
   }
-  if (hasChanged) {
-    swap (itemsSet, mItemsSet) ;
-    mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
-  }
-  for (uint32 i=0 ; i<gItemSetSlotCount ; i++) {
-    macroMyDelete (root [i], cLR1_items_AVL_tree) ;
-  }
+  sort () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -450,7 +455,7 @@ bool c_LR1_items_set::isEmptySet (void) const {
 void c_LR1_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
-         C_HTML_FileWrite & inHTMLfile) {
+         C_HTML_FileWrite & inHTMLfile) const {
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
     const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).productionRuleIndex () COMMA_HERE) ;
     const sint32 location = mItemsSet (i COMMA_HERE).locationIndex () ;
@@ -481,7 +486,7 @@ void c_LR1_items_set::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                    const sint32 inSymbol,
                    c_LR1_items_set & out_LR1_item_set) {
-  out_LR1_item_set.mItemsSet.clear () ;
+  out_LR1_item_set.clear () ;
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
     const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).productionRuleIndex () ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
@@ -490,6 +495,7 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
       const sint32 symbol = p.aDerivation (location COMMA_HERE) ;
       if (symbol == inSymbol) {
         out_LR1_item_set.add_LR1_item (productionRuleIndex, location + 1, mItemsSet (i COMMA_HERE).terminalSymbol ()) ;
+        out_LR1_item_set.sort () ;
       }
     }
   }
@@ -524,6 +530,14 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
 sint32 c_LR1_items_set::
 compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
                         const c_LR1_items_set & inItemsSet2) {
+  if (! inItemsSet1.mArrayIsSorted) {
+    inItemsSet1.mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
+    inItemsSet1.mArrayIsSorted = true ;
+  }
+  if (! inItemsSet2.mArrayIsSorted) {
+    inItemsSet2.mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
+    inItemsSet2.mArrayIsSorted = true ;
+  }
   const sint32 length1 = inItemsSet1.mItemsSet.count () ;
   sint32 result = length1 - inItemsSet2.mItemsSet.count () ;
   for (sint32 i=0 ; (i<length1) && (result==0) ; i++) {
@@ -532,22 +546,6 @@ compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
   }
   return result ;
 }
-
-/*sint32 c_LR1_items_set::
-compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
-                        const c_LR1_items_set & inItemsSet2) {
-  sint32 result = c_LR1_item::compare_LR1_items (inItemsSet1.mItemsSet (0 COMMA_HERE),
-                                                 inItemsSet2.mItemsSet (0 COMMA_HERE)) ;
-  if (result == 0) {
-    const sint32 length1 = inItemsSet1.mItemsSet.count () ;
-    result = length1 - inItemsSet2.mItemsSet.count () ;
-    for (sint32 i=1 ; (i<length1) && (result==0) ; i++) {
-      result = c_LR1_item::compare_LR1_items (inItemsSet1.mItemsSet (i COMMA_HERE),
-                                              inItemsSet2.mItemsSet (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}*/
 
 //---------------------------------------------------------------------------*
 
@@ -570,23 +568,28 @@ void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) {
 class cLR1_items_sets_AVL_tree {
   public : cLR1_items_sets_AVL_tree * mPtrToInf ;
   public : cLR1_items_sets_AVL_tree * mPtrToSup ;
-  private : const sint32 mInfo ;
+  private : const sint32 mInfoIndex ;
   public : sint8 mBalance ;
+
   private : cLR1_items_sets_AVL_tree (const sint32 inInfo) ;
+
   public : virtual ~cLR1_items_sets_AVL_tree (void) ;
-  private : sint32 compare (const c_LR1_items_set & in_LR1_items_set,
-                         const TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) ;
-  public : static sint32 recursiveSearchOrInsert
-                         (cLR1_items_sets_AVL_tree * & ioRootPointer,
-                          c_LR1_items_set & io_LR1_items_set,
-                          TC_UniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
-                          bool & outExtension) ;
+
+  private : sint32
+  compare (const c_LR1_items_set & in_LR1_items_set,
+           const TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) ;
+
+  public : static sint32
+  recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
+                           c_LR1_items_set & io_LR1_items_set,
+                           TC_UniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
+                           bool & outExtension) ;
 } ;
 
 //---------------------------------------------------------------------------*
 
 cLR1_items_sets_AVL_tree::cLR1_items_sets_AVL_tree (const sint32 inInfo) :
-mInfo (inInfo) {
+mInfoIndex (inInfo) {
   mPtrToInf = (cLR1_items_sets_AVL_tree *) NULL;
   mPtrToSup = (cLR1_items_sets_AVL_tree *) NULL;
   mBalance = 0 ;
@@ -604,7 +607,7 @@ cLR1_items_sets_AVL_tree::~cLR1_items_sets_AVL_tree (void) {
 sint32 cLR1_items_sets_AVL_tree::
 compare (const c_LR1_items_set & in_LR1_items_set,
          const TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) {
-  return c_LR1_items_set::compare_LR1_items_sets (in_LR1_items_sets_array (mInfo COMMA_HERE), in_LR1_items_set) ;
+  return c_LR1_items_set::compare_LR1_items_sets (in_LR1_items_sets_array (mInfoIndex COMMA_HERE), in_LR1_items_set) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -717,7 +720,7 @@ recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
         }
       }
     }else{ // Found
-      result = ioRootPointer->mInfo ;
+      result = ioRootPointer->mInfoIndex ;
       outExtension = false;
     }
   }
@@ -795,9 +798,8 @@ c_LR1_items_sets_collection::
 sint32 c_LR1_items_sets_collection::
 searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) {
   bool extension = false ;
-  const uint32 h = ioItemSet.hashCode () ;
-  const uint32 slot = h % kSlotCount ;
-  return cLR1_items_sets_AVL_tree::recursiveSearchOrInsert (_mRoot [slot], ioItemSet, m_LR1_items_sets_array, extension) ;
+  const uint32 h = ioItemSet.hashCode () % kSlotCount ;
+  return cLR1_items_sets_AVL_tree::recursiveSearchOrInsert (_mRoot [h], ioItemSet, m_LR1_items_sets_array, extension) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1314,15 +1316,15 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
   LR1_items_set.add_LR1_item (inProductionRules.length () - 1,
                               0,
                               inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+  LR1_items_set.sort () ;
   LR1_items_set.close_LR1_items_set (inProductionRules,
                                      inVocabulary.getTerminalSymbolsCount (),
                                      inFIRSTarray,
                                      inVocabularyDerivingToEmpty_Array) ;
   outLR1_items_sets_collection.searchOrInsert_LR1_itemSet (LR1_items_set) ;
 //--- Calculate LR1 automaton
-  printf ("************** LR1 AUTOMATON BEGIN *****************\n") ; co.flush () ;
+  // printf ("************** LR1 AUTOMATON BEGIN *****************\n") ; co.flush () ;
   for (sint32 explorationIndex=0 ; explorationIndex<outLR1_items_sets_collection.getStateCount () ; explorationIndex++) {
-     //   printf ("************** exploration %d\n", explorationIndex) ; co.flush () ;
     for (sint32 s=0 ; s<vocabularyCount ; s++) {
       outLR1_items_sets_collection.getTransitionFrom (inProductionRules, explorationIndex, s, LR1_items_set) ;
       if (! LR1_items_set.isEmptySet ()) {
@@ -1336,7 +1338,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
       }
     }
   }
-  printf ("************** LR1 AUTOMATON END %d %d %d *****************\n", gMax, gTotal / gN, gN) ; co.flush () ;
+  // printf ("************** LR1 AUTOMATON END *****************\n") ; co.flush () ;
 }
 
 //---------------------------------------------------------------------------*
