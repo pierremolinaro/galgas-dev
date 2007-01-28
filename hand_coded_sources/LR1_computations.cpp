@@ -376,16 +376,16 @@ cLR1ItemUniqueArray::~cLR1ItemUniqueArray (void) {
 
 void cLR1ItemUniqueArray::makeRoom (const sint32 inNewCapacity) {
   if (mCapacity < inNewCapacity) {
-    const cLR1_items_AVL_tree * * newArray = new const cLR1_items_AVL_tree * [inNewCapacity] ;
-    sint32 i ;
-    for (i=0 ; i<mCapacity ; i++) {
+    sint32 newCapacity = (mCapacity > 32) ? mCapacity : 32 ;
+    while (newCapacity < inNewCapacity) {
+      newCapacity <<= 1 ;
+    }
+    const cLR1_items_AVL_tree * * newArray = new const cLR1_items_AVL_tree * [newCapacity] ;
+    for (sint32 i=0 ; i<mCapacity ; i++) {
       newArray [i] = mArray [i] ;
     }
-    for (i=mCapacity ; i<inNewCapacity ; i++) {
-      newArray [i] = NULL ;
-    }
     delete [] mArray ; mArray = newArray ;
-    mCapacity = inNewCapacity ;
+    mCapacity = newCapacity ;
   }
 }
 
@@ -408,7 +408,9 @@ void cLR1ItemUniqueArray::free (void) {
 //---------------------------------------------------------------------------*
 
 void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
-  makeRoom (mCount + 1) ;
+  if (mCount >= mCapacity) {
+    makeRoom (mCount + 1) ;
+  }
   mArray [mCount] = inValue ;
   mCount ++ ;
 }
@@ -475,10 +477,10 @@ void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
 
 class c_LR1_items_set {
 //--- Private data
-  private : mutable cLR1ItemUniqueArray mItemsSet ;
+  private : cLR1ItemUniqueArray mItemsSet ;
   private : cLR1_items_AVL_tree * mRoot ;
   private : uint32 mHashCode ;
-  private : mutable bool mArrayIsSorted ;
+  private : bool mArrayIsSorted ;
 
 //--- Default constructor
   public : c_LR1_items_set (void) ;
@@ -510,7 +512,6 @@ class c_LR1_items_set {
                        const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
                        const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
 
-  public : void sort (void) ;
   public : void clear (void) ;
 
 //--- Empty set ?
@@ -536,12 +537,6 @@ class c_LR1_items_set {
 
 //--- Hash code
   public : inline uint32 hashCode (void) const { return mHashCode ; }
-/*    uint32 h = 0 ;
-    for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-      h ^= mItemsSet (i COMMA_HERE).mHashCode ;
-    }
-    return h ;
-  }*/
 
 //--- No copy
   private : c_LR1_items_set (c_LR1_items_set &) ;
@@ -563,16 +558,6 @@ mArrayIsSorted (true) {
 
 c_LR1_items_set::~c_LR1_items_set (void) {
   macroMyDelete (mRoot, cLR1_items_AVL_tree) ;
-}
-
-//---------------------------------------------------------------------------*
-
-void c_LR1_items_set::sort (void) {
-  if (! mArrayIsSorted) {
-    mArrayIsSorted = true ;
-    mItemsSet.clear () ;
-    recursiveBuildSortedArray (mRoot) ;
-  }
 }
 
 //---------------------------------------------------------------------------*
@@ -666,7 +651,6 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
       }
     }
   }
-//  sort () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -720,7 +704,6 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
       const sint32 symbol = p.aDerivation (location COMMA_HERE) ;
       if (symbol == inSymbol) {
         out_LR1_item_set.add_LR1_item (productionRuleIndex, location + 1, mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
-        // out_LR1_item_set.sort () ;
       }
     }
   }
@@ -758,8 +741,16 @@ compare_LR1_items_sets (c_LR1_items_set & inItemsSet1,
   const sint32 length1 = inItemsSet1.mItemsSet.count () ;
   sint32 result = length1 - inItemsSet2.mItemsSet.count () ;
   if (result == 0) {
-    inItemsSet1.sort () ;
-    inItemsSet2.sort () ;
+    if (! inItemsSet1.mArrayIsSorted) {
+      inItemsSet1.mArrayIsSorted = true ;
+      inItemsSet1.mItemsSet.clear () ;
+      inItemsSet1.recursiveBuildSortedArray (inItemsSet1.mRoot) ;
+    }
+    if (! inItemsSet2.mArrayIsSorted) {
+      inItemsSet2.mArrayIsSorted = true ;
+      inItemsSet2.mItemsSet.clear () ;
+      inItemsSet2.recursiveBuildSortedArray (inItemsSet2.mRoot) ;
+    }
     for (sint32 i=0 ; (i<length1) && (result==0) ; i++) {
       result = c_LR1_item::compare_LR1_items (inItemsSet1.mItemsSet (i COMMA_HERE),
                                               inItemsSet2.mItemsSet (i COMMA_HERE)) ;
@@ -1540,7 +1531,6 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
   LR1_items_set.add_LR1_item (inProductionRules.length () - 1,
                               0,
                               inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
-//  LR1_items_set.sort () ;
   LR1_items_set.close_LR1_items_set (inProductionRules,
                                      inVocabulary.getTerminalSymbolsCount (),
                                      inFIRSTarray,

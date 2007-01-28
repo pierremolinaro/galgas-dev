@@ -1163,6 +1163,14 @@
 		CFC1774809FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
 		CFC1774909FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
+		CFC953680B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFC953690B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFC9536A0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFC9536B0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFC9536C0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFC9536D0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFC9536E0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFC9536F0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFD1939A09FCFC0300920886 /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
 		CFD1939B09FCFC0300920886 /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
 		CFD1939C09FCFC0300920886 /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
@@ -1970,6 +1978,7 @@
 		CFC1767209FE1CD30026596C /* include_typeSubOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeSubOperation.h; sourceTree = "<group>"; };
 		CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUnaryMinusOperation.h; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		CFC953670B6CD8040031B8F6 /* TC_Array2.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = TC_Array2.h; sourceTree = "<group>"; };
 		CFCAABC709BCD3FF0042E80C /* include_BoolModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_BoolModel.h; sourceTree = "<group>"; };
 		CFCAABC809BCD3FF0042E80C /* include_CharModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_CharModel.h; sourceTree = "<group>"; };
 		CFCAABC909BCD3FF0042E80C /* include_ClassModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_ClassModel.h; sourceTree = "<group>"; };
@@ -2453,6 +2462,7 @@
 		CF3FF14005878B33000D2F8C /* generic_arraies */ = {
 			isa = PBXGroup;
 			children = (
+				CFC953670B6CD8040031B8F6 /* TC_Array2.h */,
 				CFD603420B1F1EFF00161209 /* TC_Array.h */,
 				CF825A1E08536AF20077AEAF /* TC_UniqueArray.h */,
 				CF825A1F08536AF20077AEAF /* TC_UniqueFixedSizeArray.h */,
@@ -3331,6 +3341,7 @@
 				CF4895730B66682D005A9E78 /* predefined_types.h in Headers */,
 				CFF663EC0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
 				CFF6640C0B6769FF00E97917 /* GGS_binaryset.h in Headers */,
+				CFC953680B6CD8040031B8F6 /* TC_Array2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3419,6 +3430,7 @@
 				CF48956B0B66682D005A9E78 /* predefined_types.h in Headers */,
 				CFF663E80B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
 				CFF664040B6769FF00E97917 /* GGS_binaryset.h in Headers */,
+				CFC9536E0B6CD8040031B8F6 /* TC_Array2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3507,6 +3519,7 @@
 				CF4895770B66682D005A9E78 /* predefined_types.h in Headers */,
 				CFF663EE0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
 				CFF664100B6769FF00E97917 /* GGS_binaryset.h in Headers */,
+				CFC9536F0B6CD8040031B8F6 /* TC_Array2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3609,6 +3622,7 @@
 				CF4895710B66682D005A9E78 /* predefined_types.h in Headers */,
 				CFF663EB0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
 				CFF6640A0B6769FF00E97917 /* GGS_binaryset.h in Headers */,
+				CFC953690B6CD8040031B8F6 /* TC_Array2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3697,6 +3711,7 @@
 				CF4895750B66682D005A9E78 /* predefined_types.h in Headers */,
 				CFF663ED0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
 				CFF6640E0B6769FF00E97917 /* GGS_binaryset.h in Headers */,
+				CFC9536A0B6CD8040031B8F6 /* TC_Array2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3785,6 +3800,7 @@
 				CF48956F0B66682D005A9E78 /* predefined_types.h in Headers */,
 				CFF663EA0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
 				CFF664080B6769FF00E97917 /* GGS_binaryset.h in Headers */,
+				CFC9536B0B6CD8040031B8F6 /* TC_Array2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3873,6 +3889,7 @@
 				CF48956D0B66682D005A9E78 /* predefined_types.h in Headers */,
 				CFF663E90B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
 				CFF664060B6769FF00E97917 /* GGS_binaryset.h in Headers */,
+				CFC9536C0B6CD8040031B8F6 /* TC_Array2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3961,6 +3978,7 @@
 				CF4895790B66682D005A9E78 /* predefined_types.h in Headers */,
 				CFF663EF0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */,
 				CFF664120B6769FF00E97917 /* GGS_binaryset.h in Headers */,
+				CFC9536D0B6CD8040031B8F6 /* TC_Array2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
