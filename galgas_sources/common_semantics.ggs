@@ -1211,10 +1211,7 @@ class @typeGalgas_binaryset extends @AC_galgasType {
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "fullBinarySet" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName string] == "binarySetWithCompressedLittleEndianString" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
-    elsif [inClassMethodName string] == "binarySetWithCompressedBigEndianString" then
+    elsif [inClassMethodName string] == "binarySetWithQueryString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     elsif [inClassMethodName string] == "binarySetWithEqualComparison" then
@@ -3127,6 +3124,9 @@ routine handleStringReaderCall
   elsif [inMethodName string] == "uppercaseString" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
+  elsif [inMethodName string] == "reversedString" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
   else
     error inMethodName : "this reader is not defined"
      -> outAccessorTypesList, outReturnedType ;
@@ -3216,6 +3216,9 @@ routine handleReaderCall
       elsif [inMethodName string] == "stringValueList" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        build_stringlist_type ?outReturnedType ;
+      elsif [inMethodName string] == "queryStringValue" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         build_stringlist_type ?outReturnedType ;
       elsif [inMethodName string] == "compressedStringValueList" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
