@@ -40,41 +40,37 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+static uint32
+computeHashCode (const sint32 inProductionRuleIndex,
+                 const sint32 inLocationIndex,
+                 const sint32 inTerminalSymbol) {
+  uint32 h  = (uint32) inLocationIndex ;
+  h = (h << 11) ^ ((uint32) inTerminalSymbol) ;
+  h = (h << 11) ^ ((uint32) inProductionRuleIndex) ;
+  return h ;
+}
+
+//---------------------------------------------------------------------------*
+
 class c_LR1_item {
-  protected : sint32 mLocationIndex ;
-  protected : sint32 mTerminalSymbol ;
-  protected : sint32 mProductionRuleIndex ;
-//--- Default constructor
-  public : inline c_LR1_item (void) :
-  mLocationIndex (-1),
-  mTerminalSymbol (-1),
-  mProductionRuleIndex (-1) {
-  }
+  public : const sint32 mLocationIndex ;
+  public : const sint32 mTerminalSymbol ;
+  public : const sint32 mProductionRuleIndex ;
+  public : const uint32 mHashCode ;
 //--- Constructor
   public : inline c_LR1_item (const sint32 inProductionRuleIndex,
                               const sint32 inLocationIndex,
                               const sint32 inTerminalSymbol) :
   mLocationIndex (inLocationIndex),
   mTerminalSymbol (inTerminalSymbol),
-  mProductionRuleIndex (inProductionRuleIndex) {
+  mProductionRuleIndex (inProductionRuleIndex),
+  mHashCode (computeHashCode (inProductionRuleIndex, inLocationIndex, inTerminalSymbol))  {
   }
-//--- Accessors
-  public : inline sint32 locationIndex (void) const { return mLocationIndex ; }
-  public : inline sint32 terminalSymbol (void) const { return mTerminalSymbol ; }
-  public : inline sint32 productionRuleIndex (void) const { return mProductionRuleIndex ; }
 
 //--- Compare two items
   public : inline static sint32
   compare_LR1_items (const c_LR1_item & inItem1,
                      const c_LR1_item & inItem2) ;
-
-//--- Hash code
-  public : inline uint32 hashCode2 (void) const {
-    uint32 h  = (uint32) mLocationIndex ;
-    h = (h << 11) ^ ((uint32) mTerminalSymbol) ;
-    h = (h << 11) ^ ((uint32) mProductionRuleIndex) ;
-    return h ;
-  }
 } ;
 
 //---------------------------------------------------------------------------*
@@ -252,7 +248,223 @@ recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark Class cLR1ItemUniqueArray
+#endif
+
+//---------------------------------------------------------------------------*
+
+class cLR1ItemUniqueArray {
+//--- Default Constructor
+  public : cLR1ItemUniqueArray (void) ;
+  
+//--- Allocation Constructor (empty array)
+  public : cLR1ItemUniqueArray (const sint32 inAllocatedSize COMMA_LOCATION_ARGS) ;
+  
+//--- Virtual Destructor
+  public : virtual ~cLR1ItemUniqueArray (void) ;
+
+//--- No copy
+  private : cLR1ItemUniqueArray (const cLR1ItemUniqueArray &) {}
+  private : void operator = (const cLR1ItemUniqueArray &) {}
+
+//--- Get Count
+  public : inline sint32 count (void) const { return mCount ; }
+
+//--- Get allocated capacity
+  public : inline sint32 capacity (void) const { return mCapacity ; }
+
+//--- Methods for making room
+  public : void makeRoom (const sint32 inNewCapacity) ;
+
+//--- Remove all objects (no deallocation)
+  public : inline void clear (void) { mCount = 0 ; }
+
+//--- Remove all objects and deallocate
+  public : void free (void) ;
+  
+//--- Add objects at the end of the array
+  public : void addObject (const cLR1_items_AVL_tree * inValue) ;
+
+//--- Array access (with index checking)
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public : const c_LR1_item & operator () (const sint32 inIndex COMMA_LOCATION_ARGS) ;
+    public : const c_LR1_item & operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const ;
+  #endif
+
+//--- Array access (without index checking)
+  #ifdef DO_NOT_GENERATE_CHECKINGS
+    public : inline const c_LR1_item & operator () (const sint32 inIndex) { return mArray [inIndex]->mLR1item ; }
+    public : inline const c_LR1_item & operator () (const sint32 inIndex) const { return mArray [inIndex]->mLR1item ; }
+  #endif
+
+//--- Index checking
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    protected : void checkIndex (const sint32 inIndex COMMA_LOCATION_ARGS) const ;
+    protected : void checkIndexForInsertion (const sint32 inIndex COMMA_LOCATION_ARGS) const ;
+  #endif
+
+//--- Protected attributes
+  protected : const cLR1_items_AVL_tree * * mArray ;
+  protected : sint32 mCount ;
+  protected : sint32 mCapacity ;
+
+//--- swap
+  friend void swap (cLR1ItemUniqueArray & ioOperand1,
+                    cLR1ItemUniqueArray & ioOperand2) ;
+
+} ;
+
+//---------------------------------------------------------------------------*
+
+void swap (cLR1ItemUniqueArray & ioOperand1,
+           cLR1ItemUniqueArray & ioOperand2) {
+  swap (ioOperand1.mArray, ioOperand2.mArray) ;
+  swap (ioOperand1.mCount, ioOperand2.mCount) ;
+  swap (ioOperand1.mCapacity, ioOperand2.mCapacity) ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Default Constructor                                                     *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+cLR1ItemUniqueArray::cLR1ItemUniqueArray (void) {
+  mArray = NULL ;
+  mCount = 0 ;
+  mCapacity = 0 ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Allocation Constructor                                                  *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+cLR1ItemUniqueArray::
+cLR1ItemUniqueArray (const sint32 inAllocatedSize COMMA_LOCATION_ARGS) :
+mArray (NULL),
+mCount (0),
+mCapacity (0) {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    M_assert_there (inAllocatedSize >= 0, "inAllocatedSize (%ld) < 0", inAllocatedSize, 0) ;
+  #endif
+  if (inAllocatedSize > 0) {
+    mArray = new const cLR1_items_AVL_tree * [inAllocatedSize] ;
+    for (sint32 i=0 ; i<inAllocatedSize ; i++) {
+      mArray [i] = NULL ;
+    }
+    mCapacity = inAllocatedSize ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Destructor                                                              *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+cLR1ItemUniqueArray::~cLR1ItemUniqueArray (void) {
+  delete [] mArray ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Method for making room using copy                                       *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+void cLR1ItemUniqueArray::makeRoom (const sint32 inNewCapacity) {
+  if (mCapacity < inNewCapacity) {
+    const cLR1_items_AVL_tree * * newArray = new const cLR1_items_AVL_tree * [inNewCapacity] ;
+    sint32 i ;
+    for (i=0 ; i<mCapacity ; i++) {
+      newArray [i] = mArray [i] ;
+    }
+    for (i=mCapacity ; i<inNewCapacity ; i++) {
+      newArray [i] = NULL ;
+    }
+    delete [] mArray ; mArray = newArray ;
+    mCapacity = inNewCapacity ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Remove all objects and deallocate                                       *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+void cLR1ItemUniqueArray::free (void) {
+  mCount = 0 ;
+  delete [] mArray ; mArray = NULL ;
+  mCapacity = 0 ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Add object at the end of the array                                      *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
+  makeRoom (mCount + 1) ;
+  mArray [mCount] = inValue ;
+  mCount ++ ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Check index before insertion                                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cLR1ItemUniqueArray::
+  checkIndexForInsertion (const sint32 inIndex COMMA_LOCATION_ARGS) const {
+    M_assert_there (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+    M_assert_there (inIndex <= mCount, "inIndex (%d) > mCount (%ld)", inIndex, mCount) ;
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Array Access                                                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cLR1ItemUniqueArray::
+  checkIndex (const sint32 inIndex COMMA_LOCATION_ARGS) const {
+    M_assert_there (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+    M_assert_there (inIndex < mCount, "inIndex (%ld) >= mCount (%ld)", inIndex, mCount) ;
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  const c_LR1_item & cLR1ItemUniqueArray::
+  operator () (const sint32 inIndex COMMA_LOCATION_ARGS) {
+    checkIndex (inIndex COMMA_THERE) ;
+    return mArray [inIndex]->mLR1item ;
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  const c_LR1_item & cLR1ItemUniqueArray::
+  operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const {
+    checkIndex (inIndex COMMA_THERE) ;
+    return mArray [inIndex]->mLR1item ;
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Class c_LR1_items_set
 #endif
 
 //---------------------------------------------------------------------------*
@@ -263,8 +475,9 @@ recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
 
 class c_LR1_items_set {
 //--- Private data
-  private : mutable TC_UniqueArray <c_LR1_item> mItemsSet ;
+  private : mutable cLR1ItemUniqueArray mItemsSet ;
   private : cLR1_items_AVL_tree * mRoot ;
+  private : uint32 mHashCode ;
   private : mutable bool mArrayIsSorted ;
 
 //--- Default constructor
@@ -281,6 +494,8 @@ class c_LR1_items_set {
   public : void add_LR1_item (const sint32 inProductionRuleIndex,
                               const sint32 inLocationIndex,
                               const sint32 inTerminalSymbol) ;
+  protected : void
+  recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) ;
 
 //--- Get transitions LR1 item set from a state for a symbol
   public : void
@@ -309,8 +524,8 @@ class c_LR1_items_set {
 
 //--- Compare two items sets
   public : static
-  sint32 compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
-                                 const c_LR1_items_set & inItemsSet2) ;
+  sint32 compare_LR1_items_sets (c_LR1_items_set & inItemsSet1,
+                                 c_LR1_items_set & inItemsSet2) ;
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of LR table)
   public : void
@@ -320,13 +535,13 @@ class c_LR1_items_set {
                                       bool & outAcceptCondition) ;
 
 //--- Hash code
-  public : inline uint32 hashCode (void) const {
-    uint32 h = (uint32) mItemsSet.count () ;
+  public : inline uint32 hashCode (void) const { return mHashCode ; }
+/*    uint32 h = 0 ;
     for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-      h = (h << 1) ^ mItemsSet (i COMMA_HERE).hashCode2 () ;
+      h ^= mItemsSet (i COMMA_HERE).mHashCode ;
     }
     return h ;
-  }
+  }*/
 
 //--- No copy
   private : c_LR1_items_set (c_LR1_items_set &) ;
@@ -340,6 +555,7 @@ class c_LR1_items_set {
 
 c_LR1_items_set::c_LR1_items_set (void):
 mRoot (NULL),
+mHashCode (0),
 mArrayIsSorted (true) {
 }
 
@@ -354,7 +570,8 @@ c_LR1_items_set::~c_LR1_items_set (void) {
 void c_LR1_items_set::sort (void) {
   if (! mArrayIsSorted) {
     mArrayIsSorted = true ;
-    mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
+    mItemsSet.clear () ;
+    recursiveBuildSortedArray (mRoot) ;
   }
 }
 
@@ -363,6 +580,18 @@ void c_LR1_items_set::sort (void) {
 void c_LR1_items_set::clear (void) {
   mItemsSet.clear () ;
   macroMyDelete (mRoot, cLR1_items_AVL_tree) ;
+  mHashCode = 0 ;
+}
+
+//---------------------------------------------------------------------------*
+
+void c_LR1_items_set::
+recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) {
+  if (inPointer != NULL) {
+    recursiveBuildSortedArray (inPointer->mPtrToSup) ;
+    mItemsSet.addObject (inPointer) ;
+    recursiveBuildSortedArray (inPointer->mPtrToInf) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -377,15 +606,11 @@ add_LR1_item (const sint32 inProductionRuleIndex,
   cLR1_items_AVL_tree * p = cLR1_items_AVL_tree::recursiveSearchOrInsertLR1Item (mRoot,
                                                        item,
                                                        extension) ;
-//--- First, search for this item
-/*  bool found = false ;
-  for (sint32 i=0 ; (i<mItemsSet.count ()) && ! found ; i++) {
-    found = c_LR1_item::compare_LR1_items (mItemsSet (i COMMA_HERE), item) == 0 ;
-  }*/
 //--- If not found, add it
   if (p != NULL) {
-    mItemsSet.addObject (item) ;
+    mItemsSet.addObject (p) ;
     mArrayIsSorted = false ;
+    mHashCode ^= item.mHashCode ;
   }
 }
 
@@ -397,8 +622,8 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
                      const TC_UniqueArray <TC_UniqueArray <sint32> > & inFIRSTarray,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) {
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-    const sint32 locationIndex = mItemsSet (i COMMA_HERE).locationIndex () ;
-    const sint32 productionRule = mItemsSet (i COMMA_HERE).productionRuleIndex () ;
+    const sint32 locationIndex = mItemsSet (i COMMA_HERE).mLocationIndex ;
+    const sint32 productionRule = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRule COMMA_HERE) ;
     const sint32 derivationLength = p.aDerivation.count () ;
     if (locationIndex < derivationLength) {
@@ -424,7 +649,7 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
           derivationIndex ++ ;
         }
         if (emptyStringAccepted) {
-          theFirst.addObject (mItemsSet (i COMMA_HERE).terminalSymbol ()) ;
+          theFirst.addObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
         }
         const sint32 first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
         if (first >= 0) { // first < 0 means the non terminal symbol is unuseful
@@ -441,7 +666,7 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
       }
     }
   }
-  sort () ;
+//  sort () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -457,8 +682,8 @@ display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
          C_HTML_FileWrite & inHTMLfile) const {
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-    const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).productionRuleIndex () COMMA_HERE) ;
-    const sint32 location = mItemsSet (i COMMA_HERE).locationIndex () ;
+    const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
+    const sint32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.outputRawData ("<span class=\"list\">") ;
     inHTMLfile << "[" ;
     inVocabulary.printInFile (inHTMLfile, p.aNumeroNonTerminalGauche COMMA_HERE) ;
@@ -474,7 +699,7 @@ display (const cPureBNFproductionsList & inProductionRules,
       inHTMLfile << " ." ;      
     }
     inHTMLfile << ", " ;
-    inVocabulary.printInFile (inHTMLfile, mItemsSet (i COMMA_HERE).terminalSymbol () COMMA_HERE) ;
+    inVocabulary.printInFile (inHTMLfile, mItemsSet (i COMMA_HERE).mTerminalSymbol COMMA_HERE) ;
     inHTMLfile << "]" ;
     inHTMLfile.outputRawData ("</span>") ;
   }
@@ -488,14 +713,14 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                    c_LR1_items_set & out_LR1_item_set) {
   out_LR1_item_set.clear () ;
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-    const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).productionRuleIndex () ;
+    const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
-    const sint32 location = mItemsSet (i COMMA_HERE).locationIndex () ;
+    const sint32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location < p.aDerivation.count ()) {
       const sint32 symbol = p.aDerivation (location COMMA_HERE) ;
       if (symbol == inSymbol) {
-        out_LR1_item_set.add_LR1_item (productionRuleIndex, location + 1, mItemsSet (i COMMA_HERE).terminalSymbol ()) ;
-        out_LR1_item_set.sort () ;
+        out_LR1_item_set.add_LR1_item (productionRuleIndex, location + 1, mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
+        // out_LR1_item_set.sort () ;
       }
     }
   }
@@ -512,12 +737,12 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
   outTerminalArray.clear () ;
   outAcceptCondition = false ;
   for (sint32 i=0 ; i<mItemsSet.count () ; i++) {
-    const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).productionRuleIndex () ;
+    const sint32 productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
-    const sint32 location = mItemsSet (i COMMA_HERE).locationIndex () ;
+    const sint32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location == p.aDerivation.count ()) {
       outProductionsSet.addObject (productionRuleIndex) ;
-      outTerminalArray.addObject (mItemsSet (i COMMA_HERE).terminalSymbol ()) ;
+      outTerminalArray.addObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
     }
     if ((productionRuleIndex == (inProductionRules.length () - 1)) && (location == 1)) {
       outAcceptCondition = true ;
@@ -528,21 +753,17 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
 //---------------------------------------------------------------------------*
 
 sint32 c_LR1_items_set::
-compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
-                        const c_LR1_items_set & inItemsSet2) {
-  if (! inItemsSet1.mArrayIsSorted) {
-    inItemsSet1.mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
-    inItemsSet1.mArrayIsSorted = true ;
-  }
-  if (! inItemsSet2.mArrayIsSorted) {
-    inItemsSet2.mItemsSet.sortArrayUsingFunction (c_LR1_item::compare_LR1_items) ;
-    inItemsSet2.mArrayIsSorted = true ;
-  }
+compare_LR1_items_sets (c_LR1_items_set & inItemsSet1,
+                        c_LR1_items_set & inItemsSet2) {
   const sint32 length1 = inItemsSet1.mItemsSet.count () ;
   sint32 result = length1 - inItemsSet2.mItemsSet.count () ;
-  for (sint32 i=0 ; (i<length1) && (result==0) ; i++) {
-    result = c_LR1_item::compare_LR1_items (inItemsSet1.mItemsSet (i COMMA_HERE),
-                                            inItemsSet2.mItemsSet (i COMMA_HERE)) ;
+  if (result == 0) {
+    inItemsSet1.sort () ;
+    inItemsSet2.sort () ;
+    for (sint32 i=0 ; (i<length1) && (result==0) ; i++) {
+      result = c_LR1_item::compare_LR1_items (inItemsSet1.mItemsSet (i COMMA_HERE),
+                                              inItemsSet2.mItemsSet (i COMMA_HERE)) ;
+    }
   }
   return result ;
 }
@@ -551,6 +772,9 @@ compare_LR1_items_sets (const c_LR1_items_set & inItemsSet1,
 
 void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) {
   swap (ioOperand1.mItemsSet, ioOperand2.mItemsSet) ;
+  swap (ioOperand1.mRoot, ioOperand2.mRoot) ;
+  swap (ioOperand1.mArrayIsSorted, ioOperand2.mArrayIsSorted) ;
+  swap (ioOperand1.mHashCode, ioOperand2.mHashCode) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -576,8 +800,8 @@ class cLR1_items_sets_AVL_tree {
   public : virtual ~cLR1_items_sets_AVL_tree (void) ;
 
   private : sint32
-  compare (const c_LR1_items_set & in_LR1_items_set,
-           const TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) ;
+  compare (c_LR1_items_set & in_LR1_items_set,
+           TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) ;
 
   public : static sint32
   recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
@@ -605,8 +829,8 @@ cLR1_items_sets_AVL_tree::~cLR1_items_sets_AVL_tree (void) {
 //---------------------------------------------------------------------------*
 
 sint32 cLR1_items_sets_AVL_tree::
-compare (const c_LR1_items_set & in_LR1_items_set,
-         const TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) {
+compare (c_LR1_items_set & in_LR1_items_set,
+         TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) {
   return c_LR1_items_set::compare_LR1_items_sets (in_LR1_items_sets_array (mInfoIndex COMMA_HERE), in_LR1_items_set) ;
 }
 
@@ -1316,7 +1540,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
   LR1_items_set.add_LR1_item (inProductionRules.length () - 1,
                               0,
                               inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
-  LR1_items_set.sort () ;
+//  LR1_items_set.sort () ;
   LR1_items_set.close_LR1_items_set (inProductionRules,
                                      inVocabulary.getTerminalSymbolsCount (),
                                      inFIRSTarray,
