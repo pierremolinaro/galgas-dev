@@ -2,7 +2,8 @@
 //                                                                           *
 //   Scanner Generation (hand-coded file)                                    *
 //                                                                           *
-//  Copyright (C) 2000, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 2000, ..., 2007 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -1168,7 +1169,14 @@ generate_scanner_header_file (C_Lexique & inLexique,
 // --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n"
-                    "//--- Declaring a protected virual destructor enables the compiler to raise\n"
+                    "//--- Constructor\n"
+                    "  public : "
+                 << inLexiqueName
+                 << " (const C_galgas_io_parameters & inParameters,\n"
+                    "             const outputKindEnum inOutputKindEnum\n"
+                    "             COMMA_LOCATION_ARGS) ;\n"
+                    "\n"
+                    "//--- Declaring a protected virtual destructor enables the compiler to raise\n"
                     "//    an error if a direct delete is performed; only the static method\n"
                     "//    C_GGS_Object::detachPointer may invoke delete.\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
@@ -1194,12 +1202,8 @@ generate_scanner_header_file (C_Lexique & inLexique,
                     "  protected : virtual sint16 parseLexicalTokenForLexicalColoring (void) ;\n"
                     "  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,\n"
                     "                                                              C_String & messageErreur) ;\n"
-                    "\n"
-                    "//--- Constructor\n"
-                    "  public : "
-                 << inLexiqueName
-                 << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS) ;\n" ;
-//  generateAttributeDeclaration (table_attributs, generatedZone3) ;
+                    "\n" ;
+
 //--- Get lexical attribute value
   generatedZone3 << "//--- Get attribute values\n" ;
   GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
@@ -1233,8 +1237,8 @@ generate_scanner_header_file (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inLexiqueName + ".h",
                           "\n\n", // User Zone 1
@@ -1285,8 +1289,10 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
 // --------------------------------------- Constructor
   generatedZone2.writeCppTitleComment ("Constructor") ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
-          << " (AC_galgas_io * inGalgasInputOutput COMMA_LOCATION_ARGS)\n"
-             ": C_Lexique (inGalgasInputOutput COMMA_THERE) {\n" ;
+          << " (const C_galgas_io_parameters & inParameters,\n"
+             "             const outputKindEnum inOutputKindEnum\n"
+             "             COMMA_LOCATION_ARGS)\n"
+             ": C_Lexique (inParameters, inOutputKindEnum COMMA_THERE) {\n" ;
   generatedZone2 << "}\n\n" ;
 
 //---------------------------------------- Generate error message list
@@ -1450,8 +1456,8 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
   generatedZone3.writeCppHyphenLineComment () ;
 
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inLexiqueName + ".cpp",
                           "\n\n", // User Zone 1
@@ -1479,7 +1485,7 @@ routine_generate_scanner (C_Lexique & inLexique,
                           COMMA_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
   //--- Get version string
-    const C_String GALGASversionString = inLexique.galgas_IO_Ptr ()->getCompilerVersion () ;
+    const C_String GALGASversionString = inLexique.getCompilerVersion () ;
   //--- Create GALGAS_OUTPUT directory
     const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
     const bool ok = GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;
@@ -1501,7 +1507,7 @@ routine_generate_scanner (C_Lexique & inLexique,
     }else{
       C_String errorMessage ;
       errorMessage << "cannot create directory " << GALGAS_OUTPUT_directory ;
-      inLexique.galgas_IO_Ptr ()->printFileErrorMessage (inLexique.sourceFileName (), errorMessage.cString () COMMA_THERE) ;
+      inLexique.printFileErrorMessage (inLexique.sourceFileName (), errorMessage.cString () COMMA_THERE) ;
     }
   }
 }

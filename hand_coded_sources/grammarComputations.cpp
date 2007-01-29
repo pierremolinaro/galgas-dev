@@ -269,8 +269,8 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inTargetFileName + ".h",
                           "\n\n", // User Zone 1
@@ -480,10 +480,10 @@ createStyleFile (C_Lexique & inLexique,
       C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR COMMA_HERE) ;
       styleFile << k_default_style ;
       if (inVerboseOptionOn) {
-        inLexique.galgas_IO_Ptr ()->ggs_printSuccess ((C_String ("Written '") + f + "'.\n").cString ()) ;
+        inLexique.ggs_printSuccess ((C_String ("Written '") + f + "'.\n").cString ()) ;
       }
     }else{
-      inLexique.galgas_IO_Ptr ()->ggs_printWarning ((C_String ("Need to write '") + f + "'.\n").cString ()) ;
+      inLexique.ggs_printWarning ((C_String ("Need to write '") + f + "'.\n").cString ()) ;
     }
   }
 }
@@ -528,21 +528,15 @@ analyzeGrammar (C_Lexique & inLexique,
   enumErrorKind errorFlag = kNoError ;
 
 //--- Verbose Output
-  const bool verboseOptionOn = inLexique.galgas_IO_Ptr ()->boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                                    "verbose_output",
-                                                                                    NULL) ;
+  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
+                                                                  "verbose_output"
+                                                                  COMMA_HERE) ;
 //--- Output a HTML file ?
-  bool optionExists = false ;
   const char * galgas_cli_component = "galgas_cli_options" ;
   const char * outputHTMLgrammarFile = "outputHTMLgrammarFile" ;
-  const bool outputHTMLfile = inLexique.galgas_IO_Ptr ()->boolOptionValueFromKeys (galgas_cli_component,
-                                                                       outputHTMLgrammarFile,
-                                                                       & optionExists) ;
-  if (! optionExists) {
-    C_String warningMessage ;
-    warningMessage << galgas_cli_component << ".@" << outputHTMLgrammarFile << " option does not exist." ;
-    inLexique.onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
-  }
+  const bool outputHTMLfile = inLexique.boolOptionValueFromKeys (galgas_cli_component,
+                                                                 outputHTMLgrammarFile
+                                                                 COMMA_HERE) ;
 //--- Create "style.css" file if it does not exist
   if (outputHTMLfile) {
     createStyleFile (inLexique, inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css", verboseOptionOn) ;
@@ -869,10 +863,10 @@ analyzeGrammar (C_Lexique & inLexique,
   if (outputHTMLfile) {
     if (inLexique.mPerformGeneration) {
       if (verboseOptionOn) {
-        inLexique.galgas_IO_Ptr ()->ggs_printSuccess ((C_String ("Written '") + HTMLfileName + "'.\n").cString ()) ;
+        inLexique.ggs_printSuccess ((C_String ("Written '") + HTMLfileName + "'.\n").cString ()) ;
       }
     }else{
-      inLexique.galgas_IO_Ptr ()->ggs_printWarning ((C_String ("Need to write '") + HTMLfileName + "'.\n").cString ()) ;
+      inLexique.ggs_printWarning ((C_String ("Need to write '") + HTMLfileName + "'.\n").cString ()) ;
     }
   }
   macroMyDelete (HTMLfile, C_HTML_FileWrite) ;

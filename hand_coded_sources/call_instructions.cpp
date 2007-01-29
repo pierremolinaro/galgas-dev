@@ -208,7 +208,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "{ " << inLexiqueClassName << " * scanner_ = NULL ;\n"
-                 "  macroMyNew (scanner_, " << inLexiqueClassName << " (_inLexique.galgas_IO_Ptr () COMMA_HERE)) ;\n"
+                 "  macroMyNew (scanner_, " << inLexiqueClassName << " (_inLexique.mParameters, _inLexique.mOutputKindEnum COMMA_HERE)) ;\n"
                  "  scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
                  "  const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;

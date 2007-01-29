@@ -217,8 +217,8 @@ generate_constraint_header_file (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inConstraintComponentName + ".h",
                           "\n\n", // User Zone 1
@@ -619,8 +619,8 @@ generate_constraint_cpp_file (C_Lexique & inLexique,
   
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inConstraintComponentName + ".cpp",
                           "\n\n//#define DEBUG_TREE_WALKING\n\n", // User Zone 1
@@ -645,7 +645,7 @@ routine_generate_constraints (C_Lexique & inLexique,
                               GGS_representativeEntityMap inRepresentativeEntityMap,
                               GGS_constraintInstructionListMap inConstraintInstructionListMap
                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (inLexique.galgas_IO_Ptr ()->currentFileErrorCount () == 0) {
+  if (inLexique.currentFileErrorCount () == 0) {
   //--- Generate header file
     generate_constraint_header_file (inLexique, inEntityMap, inMapEntityMap,
                                      inMetamodelComponentName, inConstraintComponentName,

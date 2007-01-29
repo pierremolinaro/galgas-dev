@@ -356,7 +356,6 @@ generate_header_file (C_Lexique & inLexique,
 //--- Include declaration of predefined types
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
-                    "#include \"galgas/AC_galgas_io.h\"\n"
                     "#include \"galgas/GGS_location.h\"\n"
                     "#include \"galgas/GGS_lbool.h\"\n"
                     "#include \"galgas/GGS_lchar.h\"\n"
@@ -434,8 +433,8 @@ generate_header_file (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           nomComposant + ".h",
                           "\n\n", // User Zone 1
@@ -1637,7 +1636,7 @@ generate_cpp_file (C_Lexique & inLexique,
   generatedZone2 << '\n' ;
 
 //--- Generate debug ?
-  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
+  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   if (generateDebug) {
     generatedZone2 << "#define DEBUG_TRACE_ENABLED\n\n" ;
   }
@@ -1661,8 +1660,8 @@ generate_cpp_file (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           nomComposant + ".cpp",
                           "\n\n", // User Zone 1
@@ -1687,7 +1686,7 @@ routine_generateSemanticsComponent (C_Lexique & inLexique,
                                     GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                     GGS_stringset & tableFichiersEnTetePourFichierCPP
                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (inLexique.galgas_IO_Ptr ()->currentFileErrorCount () == 0) {
+  if (inLexique.currentFileErrorCount () == 0) {
     generate_header_file (inLexique,
                           nomComposant,
                           includesForHeaderFile,

@@ -1024,8 +1024,8 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inTargetFileName + ".cpp",
                           "\n\n", // User Zone 1

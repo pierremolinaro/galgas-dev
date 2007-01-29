@@ -536,8 +536,8 @@ scannerDecoderGeneration (C_Lexique & inLexique,
   }
 //--- Write decoder
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   decoderController.writeDecoder (inLexiqueName, inCppFile, verboseOptionOn) ;
 }
 

@@ -19,7 +19,6 @@
 #include "galgas_LL1_grammar.h"
 #include "galgas_scanner.h"
 #include "galgas_cli_options.h"
-#include "galgas/C_galgas_terminal_io.h"
 #include "galgas/C_galgas_CLI_Options.h"
 #include "command_line_interface/C_CLI_OptionGroup.h"
 #include "command_line_interface/C_builtin_CLI_Options.h"

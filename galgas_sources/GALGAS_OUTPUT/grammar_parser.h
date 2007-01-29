@@ -19,7 +19,6 @@
 //---------------------------------------------------------------------------*
 
 #include "galgas/C_GGS_Object.h"
-#include "galgas/AC_galgas_io.h"
 #include "galgas/GGS_location.h"
 #include "galgas/GGS_lbool.h"
 #include "galgas/GGS_lchar.h"
