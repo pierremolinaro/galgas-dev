@@ -222,7 +222,7 @@ createParserFile (const C_String & inCreatedProjectPathName,
   f << "\n"
        "# ADD YOUR CODE HERE\n"
        "\n"
-       "rule <start_symbol>" ;
+       "nonterminal <start_symbol>" ;
   if (inProjectStyle == kMDAproject) {
     f << " -> %" << projectName << "_root" ;
   }
