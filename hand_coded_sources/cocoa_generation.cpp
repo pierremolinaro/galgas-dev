@@ -69,7 +69,6 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 //--- Global static variables
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3.writeCppTitleComment ("Global static variables") ;
-  generatedZone3 << "\n" ;
   sint32 index = 0 ;
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   generatedZone3 << "static C_builtin_CLI_Options gGenericOptions ("
@@ -94,6 +93,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
   }
   generatedZone3 << "NULL) ;\n"
                     "static C_galgas_io_parameters IOparameters (& gCommandLineOptions) ;\n"
+                    "static C_galgas_io * gIOParametersPtr = NULL ;\n"
                     "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
                     "static NSMutableArray * gColorArray ;\n\n" ;
 
@@ -235,7 +235,8 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "                                  sint32 & outEraseRangeStart,\n"
                     "                                  sint32 & outEraseRangeEnd) {\n"
                     "  if (gScannerPtr == NULL) {\n"
-                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
+                    "    macroMyNew (gIOParametersPtr, C_galgas_io (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
+                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (gIOParametersPtr COMMA_HERE)) ;\n"
                     "  }\n"
                     "  AC_sourceText * sourceTextPtr = NULL ;\n"
                     "  macroMyNew (sourceTextPtr,\n"

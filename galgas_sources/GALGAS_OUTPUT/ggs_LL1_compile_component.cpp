@@ -72,7 +72,7 @@ pr_galgas_component_ggs_LL1_compile_component_98_6_ (galgas_scanner & _inLexique
     _inLexique.printMessage (((((GGS_string (true, "------ Compile file '")) + (var_cas_fileName.reader_string (_inLexique SOURCE_FILE_AT_LINE (112))))) + (GGS_string (true, "'\n"))) SOURCE_FILE_AT_LINE (112)) ;
   }
   { galgas_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgas_scanner (_inLexique.mParameters, _inLexique.mOutputKindEnum COMMA_HERE)) ;
+    macroMyNew (scanner_, galgas_scanner (_inLexique.ioParametersPtr () COMMA_HERE)) ;
     scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;
     galgas_LL1_grammar grammar_ ;
     const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (var_cas_fileName) ;
@@ -158,7 +158,7 @@ pr_parse_lexique_for_importing_ggs_LL1_compile_component_158_6_ (galgas_scanner 
                                 const GGS_lstring  &var_cas_inFileName,
                                 GGS_M_lexiqueComponents  &var_cas_ioLexiqueMapForUse) {
   { galgas_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgas_scanner (_inLexique.mParameters, _inLexique.mOutputKindEnum COMMA_HERE)) ;
+    macroMyNew (scanner_, galgas_scanner (_inLexique.ioParametersPtr () COMMA_HERE)) ;
     scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;
     galgas_LL1_grammar grammar_ ;
     const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (var_cas_inFileName) ;
@@ -192,7 +192,7 @@ pr_parse_syntax_for_importing_ggs_LL1_compile_component_173_6_ (galgas_scanner &
                                 GGS_M_syntaxComponents  &var_cas_ioSyntaxComponentsMap,
                                 GGS_M_metamodelsComponents  &var_cas_ioMetamodelComponentMap) {
   { galgas_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgas_scanner (_inLexique.mParameters, _inLexique.mOutputKindEnum COMMA_HERE)) ;
+    macroMyNew (scanner_, galgas_scanner (_inLexique.ioParametersPtr () COMMA_HERE)) ;
     scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;
     galgas_LL1_grammar grammar_ ;
     const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (var_cas_inFileName) ;
@@ -228,7 +228,7 @@ pr_parse_semantics_component_for_importing_ggs_LL1_compile_component_190_6_ (gal
                                 GGS_M_metamodelsComponents  &var_cas_ioMetamodelComponentMap,
                                 GGS_M_constraintComponents  &var_cas_ioConstraintComponentMap) {
   { galgas_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgas_scanner (_inLexique.mParameters, _inLexique.mOutputKindEnum COMMA_HERE)) ;
+    macroMyNew (scanner_, galgas_scanner (_inLexique.ioParametersPtr () COMMA_HERE)) ;
     scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;
     galgas_LL1_grammar grammar_ ;
     const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (var_cas_inFileName) ;
@@ -265,7 +265,7 @@ pr_parse_grammar_component_for_importing_ggs_LL1_compile_component_209_6_ (galga
                                 GGS_M_metamodelsComponents  &var_cas_ioMetamodelComponentMap,
                                 GGS_M_constraintComponents  &var_cas_ioConstraintComponentMap) {
   { galgas_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgas_scanner (_inLexique.mParameters, _inLexique.mOutputKindEnum COMMA_HERE)) ;
+    macroMyNew (scanner_, galgas_scanner (_inLexique.ioParametersPtr () COMMA_HERE)) ;
     scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;
     galgas_LL1_grammar grammar_ ;
     const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (var_cas_inFileName) ;
@@ -300,7 +300,7 @@ pr_parse_option_component_for_importing_ggs_LL1_compile_component_228_6_ (galgas
                                 const GGS_lstring  &var_cas_inFileName,
                                 GGS_M_optionComponents  &var_cas_ioOptionsComponentsMap) {
   { galgas_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgas_scanner (_inLexique.mParameters, _inLexique.mOutputKindEnum COMMA_HERE)) ;
+    macroMyNew (scanner_, galgas_scanner (_inLexique.ioParametersPtr () COMMA_HERE)) ;
     scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;
     galgas_LL1_grammar grammar_ ;
     const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (var_cas_inFileName) ;

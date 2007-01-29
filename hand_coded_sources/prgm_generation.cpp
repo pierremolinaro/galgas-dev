@@ -87,9 +87,8 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     }
     grammarZone2 << "\n//--- Constructor\n"
                     "  public : " << grammarClassName
-                 << " (const C_galgas_io_parameters & inParameters,\n"
-                    "                         const C_galgas_io::outputKindEnum inOutputKindEnum\n"
-                    "                         COMMA_LOCATION_ARGS) ;\n\n"
+                 << " (C_galgas_io * inParametersPtr\n"
+                    "                                  COMMA_LOCATION_ARGS) ;\n\n"
                     "  public : void doCompilation (const C_String & inSourceFileName_,\n"
                     "                               const bool inVerboseOptionOn,\n"
                     "                               sint16 & returnCode) ;\n" ;
@@ -279,11 +278,10 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2.writeCppTitleComment ("C O N S T R U C T O R") ;
     generatedZone2 << "\n" << grammarClassName
                    << "::\n" << grammarClassName
-                   << " (const C_galgas_io_parameters & inParameters,\n"
-                      "                  const C_galgas_io::outputKindEnum inOutputKindEnum\n"
+                   << " (C_galgas_io * inParametersPtr\n"
                       "                  COMMA_LOCATION_ARGS) :\n"
                       "_mScannerPtr (NULL) {\n"
-                      "  macroMyNew (_mScannerPtr, " << currentGrammar->mLexiqueClassName << " (inParameters, inOutputKindEnum COMMA_THERE)) ;\n"
+                      "  macroMyNew (_mScannerPtr, " << currentGrammar->mLexiqueClassName << " (inParametersPtr COMMA_THERE)) ;\n"
                       "}\n\n" ;
   //--- Destructor
     generatedZone2.writeCppTitleComment ("D E S T R U C T O R") ;
@@ -476,6 +474,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "                           extensions,\n"
                     "                           helpMessages,\n"
                     "                           IOparameters.mCocoaOutput) ;\n"
+                    "//--- Build galgas io object\n"
+                    "    C_galgas_io * galgasIOptr = NULL ;\n"
+                    "    macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
                     "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
                     "    #ifdef SIOUX_IS_IMPLEMENTED\n"
                     "      SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
@@ -513,7 +514,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     }
     generatedZone2 << "if (fileExtension.compare (\"" << currentGrammar->mSourceExtension << "\") == 0) {\n"
                       "          " << grammarClassName << " * compiler = NULL ;\n"
-                      "          macroMyNew (compiler, " << grammarClassName << " (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
+                      "          macroMyNew (compiler, " << grammarClassName << " (galgasIOptr COMMA_HERE)) ;\n"
                       "          compiler->_prologue () ;\n"
                       "          compiler->doCompilation (sourceFilesArray (i COMMA_HERE), verboseOptionOn, r) ;\n"
                       "          compiler->_epilogue () ;\n"
@@ -539,6 +540,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "      F_default_display_unknown_exception () ;\n"
                     "      returnCode = 2 ; // Error code\n"
                     "    }\n"
+                    "    macroDetachPointer (galgasIOptr, C_galgas_io) ;\n"
                     "  }\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "    C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
