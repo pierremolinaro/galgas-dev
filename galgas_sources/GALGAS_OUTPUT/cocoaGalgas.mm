@@ -25,7 +25,6 @@
 #import "command_line_interface/C_CLI_OptionGroup.h"
 #import "command_line_interface/C_builtin_CLI_Options.h"
 #import "galgas/C_galgas_CLI_Options.h"
-#import "galgas/C_galgas_null_io.h"
 #import "galgas_scanner.h"
 #import "galgas_cli_options.h"
 #import "GGSUpdateCocoaGalgas.h"
@@ -50,7 +49,6 @@ static C_galgas_CLI_Options gGalgasOptions ;
 static galgas_cli_options gOption0 ;
 static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, & gGalgasOptions, & gOption0, NULL) ;
 static C_galgas_io_parameters IOparameters (& gCommandLineOptions) ;
-static C_galgas_null_io gNullIO (IOparameters) ;
 static galgas_scanner * gScannerPtr = NULL ;
 static NSMutableArray * gColorArray ;
 
@@ -209,7 +207,7 @@ void scanThenGetStyledRangeArray (NSString * inSourceString,
                                   sint32 & outEraseRangeStart,
                                   sint32 & outEraseRangeEnd) {
   if (gScannerPtr == NULL) {
-    macroMyNew (gScannerPtr, galgas_scanner (& gNullIO)) ;
+    macroMyNew (gScannerPtr, galgas_scanner (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;
   }
   AC_sourceText * sourceTextPtr = NULL ;
   macroMyNew (sourceTextPtr,

@@ -1211,7 +1211,7 @@ class @typeGalgas_binaryset extends @AC_galgasType {
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "fullBinarySet" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    elsif [inClassMethodName string] == "binarySetWithQueryString" then
+    elsif [inClassMethodName string] == "binarySetWithPredicateString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     elsif [inClassMethodName string] == "binarySetWithEqualComparison" then
@@ -3217,7 +3217,7 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         build_stringlist_type ?outReturnedType ;
-      elsif [inMethodName string] == "queryStringValue" then
+      elsif [inMethodName string] == "predicateStringValue" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         build_stringlist_type ?outReturnedType ;
       elsif [inMethodName string] == "compressedStringValueList" then

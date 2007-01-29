@@ -50,8 +50,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     }
     currentGrammar = currentGrammar->nextObject () ;
   }
-  generatedZone2 << "#include \"galgas/C_galgas_terminal_io.h\"\n"
-                    "#include \"galgas/C_galgas_CLI_Options.h\"\n"
+  generatedZone2 << "#include \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n" ;
 
@@ -69,7 +68,6 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     macroValidPointer (currentGrammar) ;
     grammarZone2 << "class " << grammarClassName << " : public C_defaultUserSemanticActions {\n"
                     "  protected : " << currentGrammar->mLexiqueClassName << " * _mScannerPtr ;\n"
-                    "  protected : C_galgas_terminal_io mTerminalIO ;\n"
                     "//--- Command line options\n" ;
     TC_UniqueArray <C_String> optionSet ;
     GGS_M_optionComponents::element_type * currentOptionComponent = currentGrammar->mOptionsComponentsMap.firstObject () ;
@@ -89,7 +87,9 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     }
     grammarZone2 << "\n//--- Constructor\n"
                     "  public : " << grammarClassName
-                 << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) ;\n\n"
+                 << " (const C_galgas_io_parameters & inParameters,\n"
+                    "                         const C_galgas_io::outputKindEnum inOutputKindEnum\n"
+                    "                         COMMA_LOCATION_ARGS) ;\n\n"
                     "  public : void doCompilation (const C_String & inSourceFileName_,\n"
                     "                               const bool inVerboseOptionOn,\n"
                     "                               sint16 & returnCode) ;\n" ;
@@ -120,8 +120,8 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                  "\n" ;
 
     const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                    "verbose_output",
-                                                                    false) ;
+                                                                    "verbose_output"
+                                                                     COMMA_HERE) ;
     inLexique.generateFile ("//",
                             grammarClassName + ".h",
                             "\n\n", // User Zone 1
@@ -175,8 +175,8 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inProgramComponentName + ".h",
                           "\n\n", // User Zone 1
@@ -191,8 +191,8 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
 
 static void
 generate_cpp_file_for_prgm (C_Lexique & inLexique,
-                            const uint32 inMaxErrorsCount,
-                            const uint32 inMaxWarningsCount,
+                            const uint32 inmaxErrorCount,
+                            const uint32 inmaxWarningCount,
                             const C_String & inVersionString,
                             const C_String & inProgramComponentName,
                             const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList) {
@@ -279,9 +279,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2.writeCppTitleComment ("C O N S T R U C T O R") ;
     generatedZone2 << "\n" << grammarClassName
                    << "::\n" << grammarClassName
-                   << " (const C_galgas_io_parameters & inIOparameters COMMA_LOCATION_ARGS) :\n"
-                      "_mScannerPtr (NULL), mTerminalIO (inIOparameters) {\n"
-                      "  macroMyNew (_mScannerPtr, " << currentGrammar->mLexiqueClassName << " (& mTerminalIO COMMA_THERE)) ;\n"
+                   << " (const C_galgas_io_parameters & inParameters,\n"
+                      "                  const C_galgas_io::outputKindEnum inOutputKindEnum\n"
+                      "                  COMMA_LOCATION_ARGS) :\n"
+                      "_mScannerPtr (NULL) {\n"
+                      "  macroMyNew (_mScannerPtr, " << currentGrammar->mLexiqueClassName << " (inParameters, inOutputKindEnum COMMA_THERE)) ;\n"
                       "}\n\n" ;
   //--- Destructor
     generatedZone2.writeCppTitleComment ("D E S T R U C T O R") ;
@@ -299,7 +301,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << "C_Timer timer ;\n"
                       "try{\n" ;
     generatedZone2.incIndentation (+2) ;
-    generatedZone2 << "/* if (mTerminalIO.versionModeOn ()) {\n"
+    generatedZone2 << "/* if (_mScannerPtr->versionModeOn ()) {\n"
                       "  co << \"Reading '\" << inSourceFileName_ << \"'\\n\" ;\n"
                       "} */\n"
                       "_mScannerPtr->resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
@@ -367,13 +369,13 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       generatedZone2 << "macroDetachPointer (_metamodelRootObject, GGM_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
                         "C_BDD::markAndSweepUnusedNodes () ;\n" ;
     }
-    generatedZone2 << "if (mTerminalIO.getErrorTotalCount () == 0) {\n"
+    generatedZone2 << "if (_mScannerPtr->totalErrorCount () == 0) {\n"
                       "  _afterParsing (inVerboseOptionOn) ;\n"
                       "}\n"
-                      "if (inVerboseOptionOn || ((mTerminalIO.getErrorTotalCount () + mTerminalIO.getWarningsCount ()) > 0)) {\n"
+                      "if (inVerboseOptionOn || ((_mScannerPtr->totalErrorCount () + _mScannerPtr->totalWarningCount ()) > 0)) {\n"
                       "  co << \"Analysis of '\" << _mScannerPtr->sourceFileName ().lastPathComponent () << \"' completed. \" ;\n"
                       "}\n"
-                      "switch (mTerminalIO.getErrorTotalCount ()) {\n"
+                      "switch (_mScannerPtr->totalErrorCount ()) {\n"
                       "case 0 :\n"
                       "  if (inVerboseOptionOn) {\n"
                       "    co << \"No error, \" ;\n"
@@ -384,11 +386,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "  returnCode = 1 ; // Error code\n"
                       "  break ;\n"
                       "default :\n"
-                      "  co << mTerminalIO.getErrorTotalCount () << \" errors, \" ;\n"
+                      "  co << _mScannerPtr->totalErrorCount () << \" errors, \" ;\n"
                       "  returnCode = 1 ; // Error code\n"
                       "  break ;\n"
                       "}\n"
-                      "switch (mTerminalIO.getWarningsCount ()) {\n"
+                      "switch (_mScannerPtr->totalWarningCount ()) {\n"
                       "case 0 :\n"
                       "  if (inVerboseOptionOn) {\n"
                       "    co << \"no warning\" ;\n"
@@ -398,11 +400,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "  co << \"1 warning\" ;\n"
                       "  break ;\n"
                       "default :\n"
-                      "  co << mTerminalIO.getWarningsCount () << \" warnings\" ;\n"
+                      "  co << _mScannerPtr->totalWarningCount () << \" warnings\" ;\n"
                       "  break ;\n"
                       "}\n"
                       "timer.stopTimer () ;\n"
-                      "if (inVerboseOptionOn || ((mTerminalIO.getErrorTotalCount () + mTerminalIO.getWarningsCount ()) > 0)) {\n"
+                      "if (inVerboseOptionOn || ((_mScannerPtr->totalErrorCount () + _mScannerPtr->totalWarningCount ()) > 0)) {\n"
                       "  co << \" (\" << timer << \").\\n\" ;\n"
                       "}\n" ;
     generatedZone2.incIndentation (-2) ;
@@ -420,7 +422,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   }
 
 //--- Generate 'mainForLIBPM' routine
-  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
+  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   generatedZone2 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
                     "  bool verboseOptionOn = true ;\n"
                     "  sint16 returnCode = 0 ; // No error\n"
@@ -439,11 +441,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2.writeCstringConstant (inVersionString) ;
   generatedZone2 << " ;\n"
                     "    #endif\n"
-                    "    IOparameters.mMaxErrorsCount = "
-                 << inMaxErrorsCount
+                    "    IOparameters.mMaxErrorCount = "
+                 << inmaxErrorCount
                  << " ;\n"
-                    "    IOparameters.mMaxWarningsCount = "
-                 << inMaxWarningsCount
+                    "    IOparameters.mMaxWarningCount = "
+                 << inmaxWarningCount
                  << " ;\n"
                  << "    const char * extensions [] = {" ;
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
@@ -511,7 +513,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     }
     generatedZone2 << "if (fileExtension.compare (\"" << currentGrammar->mSourceExtension << "\") == 0) {\n"
                       "          " << grammarClassName << " * compiler = NULL ;\n"
-                      "          macroMyNew (compiler, " << grammarClassName << " (IOparameters COMMA_HERE)) ;\n"
+                      "          macroMyNew (compiler, " << grammarClassName << " (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
                       "          compiler->_prologue () ;\n"
                       "          compiler->doCompilation (sourceFilesArray (i COMMA_HERE), verboseOptionOn, r) ;\n"
                       "          compiler->_epilogue () ;\n"
@@ -575,8 +577,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                "}\n\n" ;
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inProgramComponentName + ".cpp",
                           "\n\n", // User Zone 1
@@ -594,15 +596,15 @@ routine_generatePRGM (C_Lexique & inLexique,
                       GGS_lstring inProgramComponentName,
                       GGS_lstring inVersionString,
                       GGS_L_grammarDescriptorForProgram inGrammarDescriptorsList,
-                      GGS_luint inMaxErrorsCount,
-                      GGS_luint inMaxWarningsCount
+                      GGS_luint inmaxErrorCount,
+                      GGS_luint inmaxWarningCount
                       COMMA_UNUSED_LOCATION_ARGS) {
   generate_header_file_for_prgm (inLexique,
                                  inProgramComponentName,
                                  inGrammarDescriptorsList) ; 
   generate_cpp_file_for_prgm (inLexique,
-                              inMaxErrorsCount.uintValue (),
-                              inMaxWarningsCount.uintValue (),
+                              inmaxErrorCount.uintValue (),
+                              inmaxWarningCount.uintValue (),
                               inVersionString,
                               inProgramComponentName,
                               inGrammarDescriptorsList) ;

@@ -46,7 +46,6 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "#import \"command_line_interface/C_CLI_OptionGroup.h\"\n"
                     "#import \"command_line_interface/C_builtin_CLI_Options.h\"\n"
                     "#import \"galgas/C_galgas_CLI_Options.h\"\n"
-                    "#import \"galgas/C_galgas_null_io.h\"\n"
                     "#import \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
@@ -72,7 +71,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
   generatedZone3.writeCppTitleComment ("Global static variables") ;
   generatedZone3 << "\n" ;
   sint32 index = 0 ;
-  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug", true) ;
+  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   generatedZone3 << "static C_builtin_CLI_Options gGenericOptions ("
                  << (generateDebug ? "true" : "false")
                  << ") ;\n"
@@ -95,7 +94,6 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
   }
   generatedZone3 << "NULL) ;\n"
                     "static C_galgas_io_parameters IOparameters (& gCommandLineOptions) ;\n"
-                    "static C_galgas_null_io gNullIO (IOparameters) ;\n"
                     "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
                     "static NSMutableArray * gColorArray ;\n\n" ;
 
@@ -237,7 +235,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "                                  sint32 & outEraseRangeStart,\n"
                     "                                  sint32 & outEraseRangeEnd) {\n"
                     "  if (gScannerPtr == NULL) {\n"
-                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (& gNullIO)) ;\n"
+                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
                     "  }\n"
                     "  AC_sourceText * sourceTextPtr = NULL ;\n"
                     "  macroMyNew (sourceTextPtr,\n"
@@ -297,8 +295,8 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inCocoaComponentName + ".mm",
                           "\n\n", // User Zone 1

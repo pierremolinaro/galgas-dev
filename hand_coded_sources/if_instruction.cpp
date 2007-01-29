@@ -1137,7 +1137,9 @@ void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << ", true))" ;
+  ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << mOptionName.currentLineNumber ()
+              << ")))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1168,7 +1170,9 @@ void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << ", true))" ;
+  ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << mOptionName.currentLineNumber ()
+              << ")))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1199,7 +1203,10 @@ void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) {
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << ", true))" ;
+  ioCppFile << " COMMA_HERE))" ;
+  ioCppFile << " SOURCE_FILE_AT_LINE ("
+              << mOptionName.currentLineNumber ()
+              << ")))" ;
 }
 
 //---------------------------------------------------------------------------*

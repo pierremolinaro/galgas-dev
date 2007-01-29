@@ -39,7 +39,6 @@ generate_metamodel_header_file (C_Lexique & inLexique,
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"bdd/C_BDD.h\"\n"
                     "#include \"galgas/C_GGS_Object.h\"\n"
-                    "#include \"galgas/AC_galgas_io.h\"\n"
                     "#include \"galgas/GGS_location.h\"\n"
                     "#include \"galgas/GGS_lbool.h\"\n"
                     "#include \"galgas/GGS_lchar.h\"\n"
@@ -163,8 +162,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inMetamodelComponentName + ".h",
                           "\n\n", // User Zone 1
@@ -402,8 +401,8 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
   
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inMetamodelComponentName + ".cpp",
                           "\n\n", // User Zone 1
@@ -423,7 +422,7 @@ routine_generate_metamodel (C_Lexique & inLexique,
                             GGS_stringset inMultipleReferencedEntities,
                             GGS_lstring inRootEntityName
                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (inLexique.galgas_IO_Ptr ()->currentFileErrorCount () == 0) {
+  if (inLexique.currentFileErrorCount () == 0) {
   //--- Generate header file
     generate_metamodel_header_file (inLexique, inEntityMap, inMetamodelComponentName,
                                     inMultipleReferencedEntities, inRootEntityName) ;

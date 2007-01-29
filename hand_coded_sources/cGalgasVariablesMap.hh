@@ -205,7 +205,7 @@ insertInArgument (C_Lexique & inLexique,
                   const char * messageErreurInsertion
                   COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreIn, etatValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true) COMMA_THERE) ;
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_HERE) COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -219,7 +219,7 @@ insertUnusedInArgument (C_Lexique & inLexique,
                         const char * messageErreurInsertion
                         COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreIn, etatValue, true, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true) COMMA_THERE) ;
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE) COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -233,7 +233,7 @@ insertInOutArgument (C_Lexique & inLexique,
                      const char * messageErreurInsertion
                      COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true) COMMA_THERE) ;
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE) COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -247,7 +247,7 @@ insertListOfEntitiesLocalVariable (C_Lexique & inLexique,
                                    const char * messageErreurInsertion
                                    COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumListOfEntities, etatValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -262,7 +262,7 @@ insertUsedInOutArgument (C_Lexique & inLexique,
                          const char * messageErreurInsertion
                          COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, true, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -277,7 +277,7 @@ insertUnusedInOutArgument (C_Lexique & inLexique,
                            const char * messageErreurInsertion
                            COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, true, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true) COMMA_THERE) ;
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE) COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -292,7 +292,7 @@ insertOutArgument (C_Lexique & inLexique,
                    COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreOut, etatNonValue, false, false,
                     clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -308,7 +308,7 @@ insertSingleEntityLocalVariable (C_Lexique & inLexique,
                                  COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumSingleEntity, etatNonValue, false, false,
                     clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -324,7 +324,7 @@ insertEntityAttributeLocalVariable (C_Lexique & inLexique,
                                     COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumEntityAttribute, etatNonValue, false, false,
                     clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -340,7 +340,7 @@ insertOutProperty (C_Lexique & inLexique,
                    COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumPropertyOut, etatNonValue, false, false,
                     clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -355,7 +355,7 @@ insertLocalVariable (C_Lexique & inLexique,
                      const char * messageErreurInsertion
                      COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumVariableLocale, etatNonValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -370,7 +370,7 @@ insertConstInArgument (C_Lexique & inLexique,
                        const char * messageErreurInsertion
                        COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -385,7 +385,7 @@ insertUsedConstInArgument (C_Lexique & inLexique,
                            const char * messageErreurInsertion
                            COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, true, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 
@@ -415,7 +415,7 @@ insertUnusedConstInArgument (C_Lexique & inLexique,
                              const char * messageErreurInsertion
                              COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, true, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows", true)
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }
 

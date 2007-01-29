@@ -20,7 +20,6 @@
 
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
-#include "galgas/AC_galgas_io.h"
 #include "utilities/MF_MemoryControl.h"
 #include "generic_arraies/TC_Array2.h"
 
@@ -1499,8 +1498,8 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
 
 //--- Generate file
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output",
-                                                                  false) ;
+                                                                  "verbose_output"
+                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inTargetFileName + ".cpp",
                           "\n\n", // User Zone 1
