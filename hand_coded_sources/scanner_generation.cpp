@@ -1172,9 +1172,8 @@ generate_scanner_header_file (C_Lexique & inLexique,
                     "//--- Constructor\n"
                     "  public : "
                  << inLexiqueName
-                 << " (const C_galgas_io_parameters & inParameters,\n"
-                    "             const outputKindEnum inOutputKindEnum\n"
-                    "             COMMA_LOCATION_ARGS) ;\n"
+                 << " (C_galgas_io * inParametersPtr\n"
+                    "                       COMMA_LOCATION_ARGS) ;\n"
                     "\n"
                     "//--- Declaring a protected virtual destructor enables the compiler to raise\n"
                     "//    an error if a direct delete is performed; only the static method\n"
@@ -1289,11 +1288,10 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
 // --------------------------------------- Constructor
   generatedZone2.writeCppTitleComment ("Constructor") ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
-          << " (const C_galgas_io_parameters & inParameters,\n"
-             "             const outputKindEnum inOutputKindEnum\n"
-             "             COMMA_LOCATION_ARGS)\n"
-             ": C_Lexique (inParameters, inOutputKindEnum COMMA_THERE) {\n" ;
-  generatedZone2 << "}\n\n" ;
+                 << " (C_galgas_io * inParametersPtr\n"
+                    "                COMMA_LOCATION_ARGS)\n"
+                    ": C_Lexique (inParametersPtr COMMA_THERE) {\n"
+                    "}\n\n" ;
 
 //---------------------------------------- Generate error message list
   GGS_typeTableMessagesErreurs::element_type * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
