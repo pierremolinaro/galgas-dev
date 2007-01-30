@@ -3186,19 +3186,24 @@ routine handleReaderCall
       elsif [inMethodName string] == "significantVariableCount" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inMethodName string] == "forAllOnVariableIndex" then
+      elsif [inMethodName string] == "ITE" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "forAllOnBitIndex" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
-      elsif [inMethodName string] == "forAllOnVariableIndexAndBeyond" then
+      elsif [inMethodName string] == "forAllOnBitIndexAndBeyond" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
-      elsif [inMethodName string] == "existOnVariableIndex" then
+      elsif [inMethodName string] == "existOnBitIndex" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
-      elsif [inMethodName string] == "existOnVariableIndexAndBeyond" then
+      elsif [inMethodName string] == "existOnBitIndexAndBeyond" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
@@ -3267,6 +3272,30 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "equalTo" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "notEqualTo" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "lowerOrEqualTo" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "greaterOrEqualTo" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "greaterThan" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
+      elsif [inMethodName string] == "lowerThan" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
       else
         error inMethodName : "this reader is not defined"
