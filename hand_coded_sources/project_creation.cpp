@@ -2,7 +2,8 @@
 //                                                                           *
 //  GALGAS Project Creation                                                  *
 //                                                                           *
-//  Copyright (C) 2006 Pierre Molinaro.                                      *
+//  Copyright (C) 2006, ..., 2007 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -957,7 +958,7 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
        "            <Option target=\"" << releaseTarget << "\"/>\n"
        "            <Option target=\"" << debugTarget << "\"/>\n"
        "        </Unit>\n"
-       "        <Unit filename=\"" << inLIBPMpath << "\\galgas\\C_GGS_object.cpp\">\n"
+       "        <Unit filename=\"" << inLIBPMpath << "\\galgas\\C_GGS_Object.cpp\">\n"
        "            <Option compilerVar=\"CC\"/>\n"
        "            <Option target=\"" << releaseTarget << "\"/>\n"
        "            <Option target=\"" << debugTarget << "\"/>\n"
@@ -975,6 +976,16 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
          "        </Unit>\n" ;
   }
   f << "        <Unit filename=\"" << inLIBPMpath << "\\galgas\\GGS_binaryset.cpp\">\n"
+       "            <Option compilerVar=\"CC\"/>\n"
+       "            <Option target=\"" << releaseTarget << "\"/>\n"
+       "            <Option target=\"" << debugTarget << "\"/>\n"
+       "        </Unit>\n"
+       "        <Unit filename=\"" << inLIBPMpath << "\\galgas\\GGS_domain.cpp\">\n"
+       "            <Option compilerVar=\"CC\"/>\n"
+       "            <Option target=\"" << releaseTarget << "\"/>\n"
+       "            <Option target=\"" << debugTarget << "\"/>\n"
+       "        </Unit>\n"
+       "        <Unit filename=\"" << inLIBPMpath << "\\galgas\\predefined_types.cpp\">\n"
        "            <Option compilerVar=\"CC\"/>\n"
        "            <Option target=\"" << releaseTarget << "\"/>\n"
        "            <Option target=\"" << debugTarget << "\"/>\n"
@@ -1605,13 +1616,12 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
         "                CFD286D40A3C969A0066AF65 /* " << projectName << "_constraints.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD286CC0A3C969A0066AF65 /* " << projectName << "_constraints.h */; };\n"
         "                CFD286D50A3C969A0066AF65 /* " << projectName << "_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD286CD0A3C969A0066AF65 /* " << projectName << "_metamodel.cpp */; };\n"
         "                CFD286D60A3C969A0066AF65 /* " << projectName << "_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD286CE0A3C969A0066AF65 /* " << projectName << "_metamodel.h */; };\n"
-
         "                CF5871830A3D68B9009C9D26 /* C_GGS_entityMap.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_entityMap.cpp; sourceTree = \"<group>\"; };\n"
         "                CF5871840A3D68B9009C9D26 /* C_GGS_entityMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_entityMap.h; sourceTree = \"<group>\"; };\n"
         "                CF5871850A3D68B9009C9D26 /* C_GGS_MapIndex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_MapIndex.cpp; sourceTree = \"<group>\"; };\n"
-        "                CF5871860A3D68B9009C9D26 /* C_GGS_MapIndex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_MapIndex.h; sourceTree = \"<group>\"; };\n"
-
-       "                CF512D86092B3023008F7E87 /* C_BDD_Descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512D7A092B3023008F7E87 /* C_BDD_Descriptor.cpp */; };\n"
+        "                CF5871860A3D68B9009C9D26 /* C_GGS_MapIndex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_MapIndex.h; sourceTree = \"<group>\"; };\n" ;
+  }
+  f << "                CF512D86092B3023008F7E87 /* C_BDD_Descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512D7A092B3023008F7E87 /* C_BDD_Descriptor.cpp */; };\n"
        "                CF512D87092B3023008F7E87 /* C_BDD_Descriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CF512D7B092B3023008F7E87 /* C_BDD_Descriptor.h */; };\n"
        "                CF512D88092B3023008F7E87 /* C_BDD_Set1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512D7C092B3023008F7E87 /* C_BDD_Set1.cpp */; };\n"
        "                CF512D89092B3023008F7E87 /* C_BDD_Set1.h in Headers */ = {isa = PBXBuildFile; fileRef = CF512D7D092B3023008F7E87 /* C_BDD_Set1.h */; };\n"
@@ -1632,9 +1642,8 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                CF512D98092B3023008F7E87 /* C_BDD_Set3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512D80092B3023008F7E87 /* C_BDD_Set3.cpp */; };\n"
        "                CF512D99092B3023008F7E87 /* C_BDD_Set3.h in Headers */ = {isa = PBXBuildFile; fileRef = CF512D81092B3023008F7E87 /* C_BDD_Set3.h */; };\n"
        "                CF512D9A092B3023008F7E87 /* C_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512D82092B3023008F7E87 /* C_BDD.cpp */; };\n"
-       "                CF512D9B092B3023008F7E87 /* C_BDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF512D83092B3023008F7E87 /* C_BDD.h */; };\n" ;
- }
- f <<  "                CFE9BABA0A3C303800C9F7EC /* " << projectName << "_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAAD0A3C303800C9F7EC /* " << projectName << "_grammar.cpp */; };\n"
+       "                CF512D9B092B3023008F7E87 /* C_BDD.h in Headers */ = {isa = PBXBuildFile; fileRef = CF512D83092B3023008F7E87 /* C_BDD.h */; };\n"
+       "                CFE9BABA0A3C303800C9F7EC /* " << projectName << "_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAAD0A3C303800C9F7EC /* " << projectName << "_grammar.cpp */; };\n"
        "                CFE9BABB0A3C303800C9F7EC /* " << projectName << "_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAAE0A3C303800C9F7EC /* " << projectName << "_grammar.h */; };\n"
        "                CFE9BABC0A3C303800C9F7EC /* " << projectName << "_lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAAF0A3C303800C9F7EC /* " << projectName << "_lexique.cpp */; };\n"
        "                CFE9BABD0A3C303800C9F7EC /* " << projectName << "_lexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAB00A3C303800C9F7EC /* " << projectName << "_lexique.h */; };\n"
@@ -1822,9 +1831,9 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
         "                CF58718B0A3D68B9009C9D26 /* C_GGS_entityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5871830A3D68B9009C9D26 /* C_GGS_entityMap.cpp */; };\n"
         "                CF58718C0A3D68B9009C9D26 /* C_GGS_entityMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5871840A3D68B9009C9D26 /* C_GGS_entityMap.h */; };\n"
         "                CF58718D0A3D68B9009C9D26 /* C_GGS_MapIndex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5871850A3D68B9009C9D26 /* C_GGS_MapIndex.cpp */; };\n"
-        "                CF58718E0A3D68B9009C9D26 /* C_GGS_MapIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5871860A3D68B9009C9D26 /* C_GGS_MapIndex.h */; };\n"
-
-       "                CF512D7A092B3023008F7E87 /* C_BDD_Descriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_BDD_Descriptor.cpp; sourceTree = \"<group>\"; };\n"
+        "                CF58718E0A3D68B9009C9D26 /* C_GGS_MapIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5871860A3D68B9009C9D26 /* C_GGS_MapIndex.h */; };\n" ;
+  }
+  f << "                CF512D7A092B3023008F7E87 /* C_BDD_Descriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_BDD_Descriptor.cpp; sourceTree = \"<group>\"; };\n"
        "                CF512D7B092B3023008F7E87 /* C_BDD_Descriptor.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_BDD_Descriptor.h; sourceTree = \"<group>\"; };\n"
        "                CF512D7C092B3023008F7E87 /* C_BDD_Set1.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_BDD_Set1.cpp; sourceTree = \"<group>\"; };\n"
        "                CF512D7D092B3023008F7E87 /* C_BDD_Set1.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_BDD_Set1.h; sourceTree = \"<group>\"; };\n"
@@ -1835,9 +1844,8 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                CF512D82092B3023008F7E87 /* C_BDD.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_BDD.cpp; sourceTree = \"<group>\"; };\n"
        "                CF512D83092B3023008F7E87 /* C_BDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_BDD.h; sourceTree = \"<group>\"; };\n"
        "                CF512D84092B3023008F7E87 /* C_Display_BDD.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_Display_BDD.cpp; sourceTree = \"<group>\"; };\n"
-       "                CF512D85092B3023008F7E87 /* C_Display_BDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_Display_BDD.h; sourceTree = \"<group>\"; };\n" ;
- }
- f <<  "                CFE9BAAD0A3C303800C9F7EC /* " << projectName << "_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = " << projectName << "_grammar.cpp; sourceTree = \"<group>\"; };\n"
+       "                CF512D85092B3023008F7E87 /* C_Display_BDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_Display_BDD.h; sourceTree = \"<group>\"; };\n"
+       "                CFE9BAAD0A3C303800C9F7EC /* " << projectName << "_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = " << projectName << "_grammar.cpp; sourceTree = \"<group>\"; };\n"
        "                CFE9BAAE0A3C303800C9F7EC /* " << projectName << "_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = " << projectName << "_grammar.h; sourceTree = \"<group>\"; };\n"
        "                CFE9BAAF0A3C303800C9F7EC /* " << projectName << "_lexique.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = " << projectName << "_lexique.cpp; sourceTree = \"<group>\"; };\n"
        "                CFE9BAB00A3C303800C9F7EC /* " << projectName << "_lexique.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = " << projectName << "_lexique.h; sourceTree = \"<group>\"; };\n"
@@ -2071,11 +2079,9 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                };\n"
        "                CFF5381C057A545B00854C83 /* libpm */ = {\n"
        "                        isa = PBXGroup;\n"
-       "                        children = (\n" ;
- if (inProjectStyle == kMDAproject) {
-   f << "                                CFF538F7057A560F00854C83 /* bdd */,\n" ;
- }
- f <<  "                                CFF538EE057A55F400854C83 /* cache */,\n"
+       "                        children = (\n"
+       "                                CFF538F7057A560F00854C83 /* bdd */,\n"
+       "                                CFF538EE057A55F400854C83 /* cache */,\n"
        "                                CFAD482E0591BCF700BF8381 /* cocoa_galgas */,\n"
        "                                CF31E0ED0598DF5400814123 /* command_line_interface */,\n"
        "                                CFF538CC057A559D00854C83 /* files */,\n"
@@ -2139,9 +2145,9 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                        children = (\n" ;
   if (inProjectStyle == kMDAproject) {
     f << "                                CF5871830A3D68B9009C9D26 /* C_GGS_entityMap.cpp */,\n"
-                 "                                CF5871840A3D68B9009C9D26 /* C_GGS_entityMap.h */,\n"
-                 "                                CF5871850A3D68B9009C9D26 /* C_GGS_MapIndex.cpp */,\n"
-                 "                                CF5871860A3D68B9009C9D26 /* C_GGS_MapIndex.h */,\n" ;
+         "                                CF5871840A3D68B9009C9D26 /* C_GGS_entityMap.h */,\n"
+         "                                CF5871850A3D68B9009C9D26 /* C_GGS_MapIndex.cpp */,\n"
+         "                                CF5871860A3D68B9009C9D26 /* C_GGS_MapIndex.h */,\n" ;
   }
   f << "                                CF6557C50A25EB5900979050 /* C_galgas_CLI_Options.cpp */,\n"
        "                                CF6557C60A25EB5900979050 /* C_galgas_CLI_Options.h */,\n"
@@ -2219,9 +2225,8 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                        );\n"
        "                        path = cache;\n"
        "                        sourceTree = \"<group>\";\n"
-       "                };\n" ;
- if (inProjectStyle == kMDAproject) {
-  f << "                CFF538F7057A560F00854C83 /* bdd */ = {\n"
+       "                };\n"
+       "                CFF538F7057A560F00854C83 /* bdd */ = {\n"
        "                        isa = PBXGroup;\n"
        "                        children = (\n"
        "                                CF512D7A092B3023008F7E87 /* C_BDD_Descriptor.cpp */,\n"
@@ -2239,9 +2244,8 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                        );\n"
        "                        path = bdd;\n"
        "                        sourceTree = \"<group>\";\n"
-       "                };\n" ;
- }
- f <<  "                CFF98D79058CCDA000176BCE /* Documentation */ = {\n"
+       "                };\n"
+       "                CFF98D79058CCDA000176BCE /* Documentation */ = {\n"
        "                        isa = PBXGroup;\n"
        "                        children = (\n"
        "                        );\n"
@@ -2311,19 +2315,19 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CFE9BAC50A3C303800C9F7EC /* " << projectName << "_syntax.h in Headers */,\n"
        "                                CF825DF20853878C0077AEAF /* F_GetPrime.h in Headers */,\n"
        "                                CFE9BAC60A3C303800C9F7EC /* grammar_" << projectName << "_program.h in Headers */,\n" ;
- if (inProjectStyle == kMDAproject) {
-   f << "                                CFD286D00A3C969A0066AF65 /* " << projectName << "_constraints.h in Headers */,\n"
-        "                                CF5871880A3D68B9009C9D26 /* C_GGS_entityMap.h in Headers */,\n"
-        "                                CF58718A0A3D68B9009C9D26 /* C_GGS_MapIndex.h in Headers */,\n"
-        "                                CF512D87092B3023008F7E87 /* C_BDD_Descriptor.h in Headers */,\n"
-        "                                CF512D89092B3023008F7E87 /* C_BDD_Set1.h in Headers */,\n"
-        "                                CF512D8B092B3023008F7E87 /* C_BDD_Set2.h in Headers */,\n"
-        "                                CF512D8D092B3023008F7E87 /* C_BDD_Set3.h in Headers */,\n"
-        "                                CF512D8F092B3023008F7E87 /* C_BDD.h in Headers */,\n"
-        "                                CF512D91092B3023008F7E87 /* C_Display_BDD.h in Headers */,\n"
-                "                                CFD286D20A3C969A0066AF65 /* " << projectName << "_metamodel.h in Headers */,\n" ;
- }
- f <<  "                        );\n"
+  if (inProjectStyle == kMDAproject) {
+    f << "                                CFD286D00A3C969A0066AF65 /* " << projectName << "_constraints.h in Headers */,\n"
+         "                                CF5871880A3D68B9009C9D26 /* C_GGS_entityMap.h in Headers */,\n"
+         "                                CF58718A0A3D68B9009C9D26 /* C_GGS_MapIndex.h in Headers */,\n"
+         "                                CFD286D20A3C969A0066AF65 /* " << projectName << "_metamodel.h in Headers */,\n" ;
+  }
+  f << "                                CF512D87092B3023008F7E87 /* C_BDD_Descriptor.h in Headers */,\n"
+       "                                CF512D89092B3023008F7E87 /* C_BDD_Set1.h in Headers */,\n"
+       "                                CF512D8B092B3023008F7E87 /* C_BDD_Set2.h in Headers */,\n"
+       "                                CF512D8D092B3023008F7E87 /* C_BDD_Set3.h in Headers */,\n"
+       "                                CF512D8F092B3023008F7E87 /* C_BDD.h in Headers */,\n"
+       "                                CF512D91092B3023008F7E87 /* C_Display_BDD.h in Headers */,\n"
+       "                        );\n"
        "                        runOnlyForDeploymentPostprocessing = 0;\n"
        "                };\n"
        "                CF7A1400058CEFE2007126C1 /* Headers */ = {\n"
@@ -2386,19 +2390,19 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CFE9BAD00A3C303800C9F7EC /* " << projectName << "_semantics.h in Headers */,\n"
        "                                CFE9BAD20A3C303800C9F7EC /* " << projectName << "_syntax.h in Headers */,\n"
        "                                CFE9BAD30A3C303800C9F7EC /* grammar_" << projectName << "_program.h in Headers */,\n" ;
- if (inProjectStyle == kMDAproject) {
-     f << "                                CFD286D40A3C969A0066AF65 /* " << projectName << "_constraints.h in Headers */,\n"
-        "                                CF58718C0A3D68B9009C9D26 /* C_GGS_entityMap.h in Headers */,\n"
-        "                                CF58718E0A3D68B9009C9D26 /* C_GGS_MapIndex.h in Headers */,\n"
-        "                                CF512D93092B3023008F7E87 /* C_BDD_Descriptor.h in Headers */,\n"
-        "                                CF512D95092B3023008F7E87 /* C_BDD_Set1.h in Headers */,\n"
-        "                                CF512D97092B3023008F7E87 /* C_BDD_Set2.h in Headers */,\n"
-        "                                CF512D99092B3023008F7E87 /* C_BDD_Set3.h in Headers */,\n"
-        "                                CF512D9B092B3023008F7E87 /* C_BDD.h in Headers */,\n"
-        "                                CF512D9D092B3023008F7E87 /* C_Display_BDD.h in Headers */,\n"
-                "                                CFD286D60A3C969A0066AF65 /* " << projectName << "_metamodel.h in Headers */,\n" ;
- }
- f <<  "                        );\n"
+  if (inProjectStyle == kMDAproject) {
+    f << "                                CFD286D40A3C969A0066AF65 /* " << projectName << "_constraints.h in Headers */,\n"
+         "                                CF58718C0A3D68B9009C9D26 /* C_GGS_entityMap.h in Headers */,\n"
+         "                                CF58718E0A3D68B9009C9D26 /* C_GGS_MapIndex.h in Headers */,\n"
+         "                                CFD286D60A3C969A0066AF65 /* " << projectName << "_metamodel.h in Headers */,\n" ;
+  }
+  f << "                                CF512D93092B3023008F7E87 /* C_BDD_Descriptor.h in Headers */,\n"
+       "                                CF512D95092B3023008F7E87 /* C_BDD_Set1.h in Headers */,\n"
+       "                                CF512D97092B3023008F7E87 /* C_BDD_Set2.h in Headers */,\n"
+       "                                CF512D99092B3023008F7E87 /* C_BDD_Set3.h in Headers */,\n"
+       "                                CF512D9B092B3023008F7E87 /* C_BDD.h in Headers */,\n"
+       "                                CF512D9D092B3023008F7E87 /* C_Display_BDD.h in Headers */,\n"
+       "                        );\n"
        "                        runOnlyForDeploymentPostprocessing = 0;\n"
        "                };\n"
        "/* End PBXHeadersBuildPhase section */\n"
@@ -2514,7 +2518,6 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                        buildActionMask = 2147483647;\n"
        "                        files = (\n"
        "                                CFA7ADBD058DB57E009AC1FE /* C_galgas_io.cpp in Sources */,\n"
-       "                                CFA7ADD7058DB5DF009AC1FE /* predefined_types.cpp in Sources */,\n"
        "                                CF825D58085386810077AEAF /* OC_GGS_BuildWindowController.mm in Sources */,\n"
        "                                CF825D59085386810077AEAF /* OC_GGS_Document.mm in Sources */,\n"
        "                                CF825D5A085386810077AEAF /* OC_GGS_PreferencesController.mm in Sources */,\n"
@@ -2596,19 +2599,19 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CFE9BAC20A3C303800C9F7EC /* " << projectName << "_semantics.cpp in Sources */,\n"
        "                                CFE9BAC40A3C303800C9F7EC /* " << projectName << "_syntax.cpp in Sources */,\n"
        "                                CFE9BAD70A3C392600C9F7EC /* " << projectName << "_computations.cpp in Sources */,\n" ;
- if (inProjectStyle == kMDAproject) {
-   f << "                                CFD286CF0A3C969A0066AF65 /* " << projectName << "_constraints.cpp in Sources */,\n"
-                "                                CFD286D10A3C969A0066AF65 /* " << projectName << "_metamodel.cpp in Sources */,\n"
-                "                                         CF5871870A3D68B9009C9D26 /* C_GGS_entityMap.cpp in Sources */,\n"
-                "                                CF5871890A3D68B9009C9D26 /* C_GGS_MapIndex.cpp in Sources */,\n"
-        "                                CF512D86092B3023008F7E87 /* C_BDD_Descriptor.cpp in Sources */,\n"
-        "                                CF512D88092B3023008F7E87 /* C_BDD_Set1.cpp in Sources */,\n"
-        "                                CF512D8A092B3023008F7E87 /* C_BDD_Set2.cpp in Sources */,\n"
-        "                                CF512D8C092B3023008F7E87 /* C_BDD_Set3.cpp in Sources */,\n"
-        "                                CF512D8E092B3023008F7E87 /* C_BDD.cpp in Sources */,\n"
-        "                                CF512D90092B3023008F7E87 /* C_Display_BDD.cpp in Sources */,\n" ;
- }
- f <<  "                        );\n"
+  if (inProjectStyle == kMDAproject) {
+    f << "                                CFD286CF0A3C969A0066AF65 /* " << projectName << "_constraints.cpp in Sources */,\n"
+         "                                CFD286D10A3C969A0066AF65 /* " << projectName << "_metamodel.cpp in Sources */,\n"
+         "                                CF5871870A3D68B9009C9D26 /* C_GGS_entityMap.cpp in Sources */,\n"
+         "                                CF5871890A3D68B9009C9D26 /* C_GGS_MapIndex.cpp in Sources */,\n" ;
+  }
+  f << "                                CF512D86092B3023008F7E87 /* C_BDD_Descriptor.cpp in Sources */,\n"
+       "                                CF512D88092B3023008F7E87 /* C_BDD_Set1.cpp in Sources */,\n"
+       "                                CF512D8A092B3023008F7E87 /* C_BDD_Set2.cpp in Sources */,\n"
+       "                                CF512D8C092B3023008F7E87 /* C_BDD_Set3.cpp in Sources */,\n"
+       "                                CF512D8E092B3023008F7E87 /* C_BDD.cpp in Sources */,\n"
+       "                                CF512D90092B3023008F7E87 /* C_Display_BDD.cpp in Sources */,\n"
+       "                        );\n"
        "                        runOnlyForDeploymentPostprocessing = 0;\n"
        "                };\n"
        "                CF7A1401058CEFE2007126C1 /* Sources */ = {\n"
@@ -2666,19 +2669,19 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CFE9BACF0A3C303800C9F7EC /* " << projectName << "_semantics.cpp in Sources */,\n"
        "                                CFE9BAD10A3C303800C9F7EC /* " << projectName << "_syntax.cpp in Sources */,\n"
        "                                CFE9BAD80A3C392600C9F7EC /* " << projectName << "_computations.cpp in Sources */,\n" ;
- if (inProjectStyle == kMDAproject) {
-   f << "                                CFD286D30A3C969A0066AF65 /* " << projectName << "_constraints.cpp in Sources */,\n"
-       "                                CF58718B0A3D68B9009C9D26 /* C_GGS_entityMap.cpp in Sources */,\n"
-       "                                CF58718D0A3D68B9009C9D26 /* C_GGS_MapIndex.cpp in Sources */,\n"
-       "                                CF512D92092B3023008F7E87 /* C_BDD_Descriptor.cpp in Sources */,\n"
+  if (inProjectStyle == kMDAproject) {
+    f << "                                CFD286D30A3C969A0066AF65 /* " << projectName << "_constraints.cpp in Sources */,\n"
+         "                                CF58718B0A3D68B9009C9D26 /* C_GGS_entityMap.cpp in Sources */,\n"
+         "                                CF58718D0A3D68B9009C9D26 /* C_GGS_MapIndex.cpp in Sources */,\n"
+         "                                CFD286D50A3C969A0066AF65 /* " << projectName << "_metamodel.cpp in Sources */,\n" ;
+  }
+  f << "                                CF512D92092B3023008F7E87 /* C_BDD_Descriptor.cpp in Sources */,\n"
        "                                CF512D94092B3023008F7E87 /* C_BDD_Set1.cpp in Sources */,\n"
        "                                CF512D96092B3023008F7E87 /* C_BDD_Set2.cpp in Sources */,\n"
        "                                CF512D98092B3023008F7E87 /* C_BDD_Set3.cpp in Sources */,\n"
        "                                CF512D9A092B3023008F7E87 /* C_BDD.cpp in Sources */,\n"
        "                                CF512D9C092B3023008F7E87 /* C_Display_BDD.cpp in Sources */,\n"
-                "                                CFD286D50A3C969A0066AF65 /* " << projectName << "_metamodel.cpp in Sources */,\n" ;
- }
- f <<  "                        );\n"
+       "                        );\n"
        "                        runOnlyForDeploymentPostprocessing = 0;\n"
        "                };\n"
        "/* End PBXSourcesBuildPhase section */\n"
