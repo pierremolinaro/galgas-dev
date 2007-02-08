@@ -113,27 +113,6 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
 
 //---------------------------------------------------------------------------*
 
-static void
-engendrerDeclarationAttributInterne (GGS_typeLexicalAttributesMap::element_type * p,
-                                     AC_OutputStream & inHfile) {
-  if (p != NULL) {
-    macroValidPointer (p) ;
-    engendrerDeclarationAttributInterne (p->infObject (), inHfile) ;
-    p->mInfo.attributType(HERE)->generateAttributeDeclaration (p->mKey, inHfile) ;
-    engendrerDeclarationAttributInterne (p->supObject (), inHfile) ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-static void
-generateAttributeDeclaration (const GGS_typeLexicalAttributesMap & inMap,
-                              AC_OutputStream & inHfile) {
-  engendrerDeclarationAttributInterne (inMap.rootObject (), inHfile) ;
-}
-
-//---------------------------------------------------------------------------*
-
 //--- Local class for storing table entries
 class cTableEntry {
   public : C_String mEntryString ;
@@ -228,24 +207,14 @@ generateKeyWordTableImplementation (const GGS_typeTableMotsReserves & inMap,
 //---------------------------------------------------------------------------*
 
 static void
-internalGenerateTerminalSymbolsTable (GGS_typeTableTablesDeMotsReserves::element_type * p,
-                                      const C_String & inLexiqueName,
-                                      AC_OutputStream & inCppFile) {
-  if (p != NULL) {
-    macroValidPointer (p) ;
-    internalGenerateTerminalSymbolsTable (p->infObject (), inLexiqueName, inCppFile) ;
-    generateKeyWordTableImplementation (p->mInfo.attributSimpleTable, inLexiqueName, p->mKey, inCppFile) ;
-    internalGenerateTerminalSymbolsTable (p->supObject (), inLexiqueName, inCppFile) ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-static void
 generateTerminalSymbolsTable (const GGS_typeTableTablesDeMotsReserves & inMap,
                               const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) {
-  internalGenerateTerminalSymbolsTable (inMap.rootObject (), inLexiqueName, inCppFile) ;
+  GGS_typeTableTablesDeMotsReserves::element_type * currentMap = inMap.firstObject () ;
+  while (currentMap != NULL) {
+    generateKeyWordTableImplementation (currentMap->mInfo.attributSimpleTable, inLexiqueName, currentMap->mKey, inCppFile) ;
+    currentMap = currentMap->nextObject () ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -319,36 +288,13 @@ static void generateKeyWordTableDeclaration (const GGS_typeTableMotsReserves & i
 
 //---------------------------------------------------------------------------*
 
-static void
-internalGenerateTerminalSymbolsTableDeclaration (GGS_typeTableTablesDeMotsReserves::element_type * p,
-                                                 const C_String & inLexiqueName,
-                                                 AC_OutputStream & inHfile) {
-  if (p != NULL) {
-    macroValidPointer (p) ;
-    internalGenerateTerminalSymbolsTableDeclaration (p->infObject (), inLexiqueName, inHfile) ;
-    generateKeyWordTableDeclaration (p->mInfo.attributSimpleTable, inLexiqueName, p->mKey, inHfile) ;
-    internalGenerateTerminalSymbolsTableDeclaration (p->supObject (), inLexiqueName, inHfile) ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 static void generateTerminalSymbolsTableDeclaration (const GGS_typeTableTablesDeMotsReserves & inMap,
                                                      const C_String & inLexiqueName,
                                                      AC_OutputStream & inHfile) {
-  internalGenerateTerminalSymbolsTableDeclaration (inMap.rootObject (), inLexiqueName, inHfile) ;
-}
-
-//---------------------------------------------------------------------------*
-
-static void
-engendrerInitialisationAttributInterne (GGS_typeLexicalAttributesMap::element_type * p,
-                                        AC_OutputStream & inCppFile) {
-  if (p != NULL) {
-    macroValidPointer (p) ;
-    engendrerInitialisationAttributInterne (p->infObject (), inCppFile) ;
-    p->mInfo.attributType(HERE)->generateAttributeInitialization (p->mKey, inCppFile) ;
-    engendrerInitialisationAttributInterne (p->supObject (), inCppFile) ;
+  GGS_typeTableTablesDeMotsReserves::element_type * currentMap = inMap.firstObject () ;
+  while (currentMap != NULL) {
+    generateKeyWordTableDeclaration (currentMap->mInfo.attributSimpleTable, inLexiqueName, currentMap->mKey, inHfile) ;
+    currentMap = currentMap->nextObject () ;
   }
 }
 
@@ -357,7 +303,11 @@ engendrerInitialisationAttributInterne (GGS_typeLexicalAttributesMap::element_ty
 static void
 generateAttributeInitialization (const GGS_typeLexicalAttributesMap & inMap,
                                  AC_OutputStream & inCppFile) {
-  engendrerInitialisationAttributInterne (inMap.rootObject (), inCppFile) ;
+  GGS_typeLexicalAttributesMap::element_type * currentMap = inMap.firstObject () ;
+  while (currentMap != NULL) {
+    currentMap->mInfo.attributType(HERE)->generateAttributeInitialization (currentMap->mKey, inCppFile) ;
+    currentMap = currentMap->nextObject () ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -1163,7 +1113,12 @@ generate_scanner_header_file (C_Lexique & inLexique,
 //--------------- Token Class declaration  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class cTokenFor_" << inLexiqueName << " : public cToken {\n" ;
-  generateAttributeDeclaration (table_attributs, generatedZone2) ;
+//  generateAttributeDeclaration (table_attributs, generatedZone2) ;
+  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
+  while (currentAttribute != NULL) {
+    currentAttribute->mInfo.attributType(HERE)->generateAttributeDeclaration (currentAttribute->mKey, generatedZone2) ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
   generatedZone2 << "} ;\n\n" ;
 
 // --------------- Declaration de la classe de l'analyseur lexical  
@@ -1205,7 +1160,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
 
 //--- Get lexical attribute value
   generatedZone3 << "//--- Get attribute values\n" ;
-  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
+  currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
     generatedZone3 << "  public : void _assignFromAttribute_" << currentAttribute->mKey << " (" ;
     currentAttribute->mInfo.attributType (HERE)->generateCppClassName (generatedZone3) ;
