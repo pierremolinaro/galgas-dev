@@ -48,6 +48,7 @@ SOURCES += cocoa_generation.cpp
 SOURCES += option_component_generation.cpp
 SOURCES += semantics_generation.cpp
 SOURCES += semantics_instructions.cpp
+SOURCES += domain_generation.cpp
 SOURCES += list_generation.cpp
 SOURCES += class_generation.cpp
 SOURCES += map_generation.cpp
@@ -94,5 +95,6 @@ SOURCES += program_parser.cpp
 SOURCES += galgas_start.cpp
 SOURCES += semantics_semantics.cpp
 SOURCES += semantics_parser.cpp
+SOURCES += domain_parser.cpp
 
 #---------------------------------------------------------------*

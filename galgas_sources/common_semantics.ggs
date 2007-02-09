@@ -2385,6 +2385,32 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  D O M A I N    T Y P E                                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @domainAttributeMap {
+
+  insert insertKey error message "an attribute named '%K' is already declared in %L" ;
+  search searchKey error message "there is no attribute named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeGalgasDomainType extends @AC_galgasType {
+  @lstring mDomainTypeName ;
+  @domainAttributeMap mAttributeMap ;
+
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := [mDomainTypeName string] ;
+  end method ;
+
+  message messageGalgasType "a domain type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    U N D E F I N E D    S O R T E D    L I S T    T Y P E   *
 #                                                                           *
 #---------------------------------------------------------------------------*

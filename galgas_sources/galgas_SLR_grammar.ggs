@@ -31,6 +31,7 @@ grammar galgas_SLR_grammar "SLR" :
   import syntax program_parser in "program_parser.ggs" ;
   import syntax ggs_SLR_compile_component in "ggs_SLR_compile_component.ggs" ;
   import syntax galgas_start in "galgas_start.ggs" ;
+  import syntax domain_parser in "domain_parser.ggs" ;
   root <galgas_start_symbol>
     ?!@M_lexiqueComponents ioLexiqueMapForUse
     ?!@M_semanticsComponents ioSemanticsComponentsMap
