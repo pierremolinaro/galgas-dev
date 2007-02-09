@@ -24,7 +24,7 @@ import semantics semantics_semantics in "semantics_semantics.ggs" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#          Rules prototypes                                                 *
+#          Nonterminal symbols declaration                                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
 

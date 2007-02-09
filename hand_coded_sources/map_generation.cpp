@@ -376,8 +376,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  bool extension = false ; // Unused here\n"
                "  sint32 attributeIndex = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  const uint32 h = inPtr->mKey.hash () % MAP_ROOT_SIZE ;\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->_mRoot [h], extension, attributeIndex, existingKeyLocation) ;\n"
+//               "  const uint32 h = inPtr->mKey.hash () % MAP_ROOT_SIZE ;\n"
+//               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->_mRoot [h], extension, attributeIndex, existingKeyLocation) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), extension, attributeIndex, existingKeyLocation) ;\n"
                "}\n\n" ;
 
 //--- 'removeElement' method
@@ -403,8 +404,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "  sint32 elementIndex = - 1 ;\n"
                  "  if (_isBuilt () && inKey._isBuilt ()) {\n"
                  "    bool unused ;\n"
-                 "    const uint32 h = inKey.hash () % MAP_ROOT_SIZE ;\n"
-                 "    _internalRemove (mSharedMapRoot->_mRoot [h], inKey, removedElement, unused) ;\n"
+//                 "    const uint32 h = inKey.hash () % MAP_ROOT_SIZE ;\n"
+//                 "    _internalRemove (mSharedMapRoot->_mRoot [h], inKey, removedElement, unused) ;\n"
+                 "    _internalRemove (mSharedMapRoot->rootForKey (inKey), inKey, removedElement, unused) ;\n"
                  "    if (removedElement == NULL) {\n"
                  "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -476,8 +478,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "    bool extension = false ; // Unused here\n"
                "    GGS_location existingKeyLocation ;\n"
-               "    const uint32 h = inKey.hash () % MAP_ROOT_SIZE ;\n"
-               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot [h], extension, elementIndex, existingKeyLocation) ;\n"
+//               "    const uint32 h = inKey.hash () % MAP_ROOT_SIZE ;\n"
+//               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot [h], extension, elementIndex, existingKeyLocation) ;\n"
+               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), extension, elementIndex, existingKeyLocation) ;\n"
                "    if (elementIndex < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "    }\n"

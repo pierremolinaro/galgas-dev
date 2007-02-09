@@ -1255,6 +1255,15 @@ class @C_classToImplement extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
+class @C_domainToImplement extends @typeEntityToGenerate {
+#--- Domain Name
+  @lstring mDomainName ;
+#--- Attribute Map
+  @domainAttributeMap mAttributeMap ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeEntiteActionExterne extends @AC_semanticsEntity {
   @L_EXsignature aSignature ;
   message messageTypeEntite "an external action" ;

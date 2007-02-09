@@ -31,6 +31,7 @@ grammar galgas_LL1_grammar "LL1" :
   import syntax constraint_parser in "constraint_parser.ggs" ;
   import syntax semantics_parser in "semantics_parser.ggs" ;
   import syntax program_parser in "program_parser.ggs" ;
+  import syntax domain_parser in "domain_parser.ggs" ;
   root <galgas_start_symbol>
     ?!@M_lexiqueComponents ioLexiqueMapForUse
     ?!@M_semanticsComponents ioSemanticsComponentsMap

@@ -1,0 +1,127 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS domain parser                                                     *
+#                                                                           *
+#  Started february 9, 2007.                                                *
+#                                                                           *
+#  Copyright (C) 2007 Pierre Molinaro.                                      *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax domain_parser :
+
+import lexique galgas_scanner in "galgas_scanner.ggs" ;
+
+import semantics semantics_semantics in "semantics_semantics.ggs" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#          Nonterminal symbols declaration                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+nonterminal <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+label parse
+;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#          parsing domain declaration                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $domain$ ;
+  @lstring domainTypeName ;
+  $type_name$ ? domainTypeName ;
+  ${$ ;
+  @domainAttributeMap attributeMap [emptyMap] ;
+  repeat
+  while
+    @lstring attributeTypeName ;
+    $type_name$ ? attributeTypeName ;
+    if [attributeTypeName string] != "lstring" then
+      error attributeTypeName: "only the '@lstring' is supported here" ;
+    end if ;
+    @lstring attributeName ;
+    $identifier$ ? attributeName ;
+    [!?attributeMap insertKey !attributeName] ;
+    $;$ ;
+  end repeat ;
+  @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap] ;
+  @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !domainTypeName !entity] ;
+  $}$ ;
+ #--- Insertion dans la map des classes definies dans le fichier source courant
+  @typeEntityToGenerate def := [@C_domainToImplement new
+      !domainTypeName
+      !attributeMap
+    ] ;
+    listeEntitesAengendrer += !def ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $domain$ ;
+  @lstring domainTypeName ;
+  $type_name$ ? domainTypeName ;
+  ${$ ;
+  @domainAttributeMap attributeMap [emptyMap] ;
+  repeat
+  while
+    @lstring attributeTypeName ;
+    $type_name$ ? attributeTypeName ;
+    if [attributeTypeName string] != "lstring" then
+      error attributeTypeName: "only the '@lstring' is supported here" ;
+    end if ;
+    @lstring attributeName ;
+    $identifier$ ? attributeName ;
+    [!?attributeMap insertKey !attributeName] ;
+    $;$ ;
+  end repeat ;
+  @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap] ;
+  @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !domainTypeName !entity] ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;
+
+#---------------------------------------------------------------------------*

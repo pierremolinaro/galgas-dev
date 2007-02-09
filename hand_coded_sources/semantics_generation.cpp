@@ -368,6 +368,7 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_stringset.h\"\n"
                     "#include \"galgas/GGS_binaryset.h\"\n"
                     "#include \"galgas/predefined_types.h\"\n"
+                    "#include \"galgas/AC_galgas_domain.h\"\n"
                     "#include \"galgas/AC_galgas_map.h\"\n"
                     "#include \"galgas/AC_galgas_list.h\"\n"
                     "#include \"galgas/AC_galgas_sortedlist.h\"\n\n" ;
@@ -791,6 +792,20 @@ generateCppClassName (AC_OutputStream & inFile) const {
 
 void cPtr_typeGalgas_mapEntityInInstruction::
 generateCppClassName (AC_OutputStream & /* inFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasDomainType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mDomainTypeName ;
 }
 
 //---------------------------------------------------------------------------*
