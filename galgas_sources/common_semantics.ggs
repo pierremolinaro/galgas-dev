@@ -2389,6 +2389,14 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+map @domainModifierMap {
+  @L_EXsignature mFormalParametersList ;
+  insert insertKey error message "the '%K' domain modifier has been already declared in %L" ;
+  search searchKey error message "the '%K' domain modifier is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @domainAttributeMap {
 
   insert insertKey error message "an attribute named '%K' is already declared in %L" ;
@@ -2400,10 +2408,37 @@ map @domainAttributeMap {
 class @typeGalgasDomainType extends @AC_galgasType {
   @lstring mDomainTypeName ;
   @domainAttributeMap mAttributeMap ;
+  @domainModifierMap mDomainModifierMap ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := [mDomainTypeName string] ;
+  end method ;
+
+#--- A domain accepts 'emptyDomain' constructor
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "emptyDomain" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    else
+      error inClassMethodName : "a domain only accepts 'emptyDomain' constructor" -> outAccessorTypesList ;
+    end if ;
+  end method ;
+
+#--- Modifiers
+  override
+  method handleModifierCall
+    ??@lstring unused inModifiedObjectName
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [mDomainModifierMap hasKey ![inModifierName string]] then
+      [mDomainModifierMap searchKey !inModifierName ?outModifierSignature] ;
+    else
+      error inModifierName: "this modifier is not defined" -> outModifierSignature ;
+    end if ;
   end method ;
 
   message messageGalgasType "a domain type" ;

@@ -67,6 +67,12 @@ rule <semantics_declaration>
   $type_name$ ? domainTypeName ;
   ${$ ;
   @domainAttributeMap attributeMap [emptyMap] ;
+  @domainModifierMap domainModifierMap [emptyMap] ;
+  @L_EXsignature domainModifierAttributeList [emptyList] ;
+  domainModifierAttributeList +=
+    ![@typeGalgas_string new]
+    ![@formalArgumentPassingMode argumentConstantIn]
+  ;
   repeat
   while
     @lstring attributeTypeName ;
@@ -77,9 +83,11 @@ rule <semantics_declaration>
     @lstring attributeName ;
     $identifier$ ? attributeName ;
     [!?attributeMap insertKey !attributeName] ;
+    @lstring addModifierName [new !"AddTo" . [attributeName stringByCapitalizingFirstCharacter] ![attributeName location]] ;
+    [!?domainModifierMap insertKey !addModifierName !domainModifierAttributeList] ;
     $;$ ;
   end repeat ;
-  @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap] ;
+  @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap !domainModifierMap] ;
   @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !domainTypeName !entity] ;
   $}$ ;
@@ -102,6 +110,12 @@ label importSemantics
   $type_name$ ? domainTypeName ;
   ${$ ;
   @domainAttributeMap attributeMap [emptyMap] ;
+  @domainModifierMap domainModifierMap [emptyMap] ;
+  @L_EXsignature domainModifierAttributeList [emptyList] ;
+  domainModifierAttributeList +=
+    ![@typeGalgas_string new]
+    ![@formalArgumentPassingMode argumentConstantIn]
+  ;
   repeat
   while
     @lstring attributeTypeName ;
@@ -112,9 +126,11 @@ label importSemantics
     @lstring attributeName ;
     $identifier$ ? attributeName ;
     [!?attributeMap insertKey !attributeName] ;
+    @lstring addModifierName [new !"addTo" . [attributeName stringByCapitalizingFirstCharacter] ![attributeName location]] ;
+    [!?domainModifierMap insertKey !addModifierName !domainModifierAttributeList] ;
     $;$ ;
   end repeat ;
-  @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap] ;
+  @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap !domainModifierMap] ;
   @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !domainTypeName !entity] ;
   $}$ ;
