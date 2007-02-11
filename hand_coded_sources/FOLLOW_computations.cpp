@@ -37,87 +37,148 @@
 static void
 computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
                    const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
+                   const uint16 inBDDBitCount,
                    const cVocabulary & inVocabulary,
                    const TC_UniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
                    const C_BDD_Set2 & inFIRSTsets,
                    const sint32 inTerminalSymbolsCount,
-                   C_BDD_Set2 & outFOLLOWsets,
+                   C_BDD_Set2 & ex_outFOLLOWsets,
                    TC_UniqueArray <TC_UniqueArray <sint32> > & outFOLLOWarray,
                    sint32 & outIterationsCount) {
-//--- Build the directFollower and lastOfProduction sets
   C_BDD_Descriptor descriptor = inFIRSTsets.getDescriptor1 () ;
-  C_BDD_Set2 directFollower (inFIRSTsets) ; directFollower.clear () ;
-  C_BDD_Set3 lastOfProduction (descriptor, descriptor, descriptor) ;
-  C_BDD_Set2 s (inFIRSTsets) ; s.clear () ;
-  C_BDD_Set2 temp2 (inFIRSTsets) ; temp2.clear () ;
-  C_BDD_Set2 current (inFIRSTsets) ; current.clear () ;
-  C_BDD_Set3 d (lastOfProduction) ;
-  C_BDD_Set3 left (lastOfProduction) ;
-  C_BDD_Set3 temp3 (lastOfProduction) ;
+  C_BDD_Set2 ex_directFollower (inFIRSTsets) ; ex_directFollower.clear () ;
+  C_BDD_Set3 ex_lastOfProduction (descriptor, descriptor, descriptor) ;
+  C_BDD_Set2 ex_s (inFIRSTsets) ; ex_s.clear () ;
+  C_BDD_Set2 ex_temp2 (inFIRSTsets) ; ex_temp2.clear () ;
+  C_BDD_Set2 ex_current (inFIRSTsets) ; ex_current.clear () ;
+  C_BDD_Set3 ex_d (ex_lastOfProduction) ;
+  C_BDD_Set3 ex_left (ex_lastOfProduction) ;
+  C_BDD_Set3 ex_temp3 (ex_lastOfProduction) ;
+  C_BDD directFollowers ;
+  C_BDD lastOfProduction ;
+  const uint16 twoBDDBitCount = (uint16) (inBDDBitCount + inBDDBitCount) ;
+//--- Build the directFollower and lastOfProduction sets
   for (sint32 ip=0 ; ip<inProductionRules.length () ; ip++) {
     const cProduction & p = inProductionRules (ip COMMA_HERE) ;
     const sint32 derivationLength = p.aDerivation.count () ;
   //--- Direct follower
     if (derivationLength > 1) { // The right sequence has more than one element (from 0 to derivationLength-1)
       for (sint32 i=1 ; i<derivationLength ; i++) {
-        current.initDimension1 (C_BDD::kEqual, (uint32) p.aDerivation (i-1 COMMA_HERE)) ;
-        s.clear () ;
+        ex_current.initDimension1 (C_BDD::kEqual, (uint32) p.aDerivation (i-1 COMMA_HERE)) ;
+        const C_BDD current = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32) p.aDerivation (i-1 COMMA_HERE)) ;
+        ex_s.clear () ;
+        C_BDD s ;
         sint32 j = i ;
         do{
-          temp2.initDimension2 (C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
-          s |= temp2 ;
+          const C_BDD t = C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
+          s |= t ;
+          ex_temp2.initDimension2 (C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
+          ex_s |= ex_temp2 ;
           j++ ;
         }while ((j<derivationLength) && inNonterminalSymbolsDerivingInEmpty (p.aDerivation (j-1 COMMA_HERE) COMMA_HERE)) ;
-        directFollower |= current & s ;
+        ex_directFollower |= ex_current & ex_s ;
+        directFollowers |= current & s ;
       }
     }
   //--- Last of production
     if (derivationLength > 0) { // The right sequence is not empty
-      left.initDimension3 (C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
-      d.clear () ;
+      const C_BDD left = C_BDD::varCompareConst (twoBDDBitCount,
+                                                 inBDDBitCount,
+                                                 C_BDD::kEqual,
+                                                 (uint32) p.aNumeroNonTerminalGauche) ;
+      ex_left.initDimension3 (C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
+      ex_d.clear () ;
+      C_BDD d ;
       sint32 j = derivationLength-1 ; // last one of right sequence
       do{
-      
-        temp3.initDimension1 (C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
-        d |= temp3 ;
+        const C_BDD t = C_BDD::varCompareConst (0,
+                                                inBDDBitCount,
+                                                C_BDD::kEqual,
+                                                (uint32) p.aDerivation (j COMMA_HERE)) ;      
+        ex_temp3.initDimension1 (C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
+        ex_d |= ex_temp3 ;
+        d |= t ;
         j -- ;
       }while ((j>=0) && inNonterminalSymbolsDerivingInEmpty (p.aDerivation (j+1 COMMA_HERE) COMMA_HERE)) ;
+      ex_lastOfProduction |= ex_left & ex_d ;
       lastOfProduction |= left & d ;
     }
   }
+  if (! directFollowers.isEqualToBDD (ex_directFollower.bdd ())) {
+    printf ("\n********* FOLLOW SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+  }
 
-//--- Compute constant for FOLLOW calculus  
-  C_BDD_Set3 temp3_bis (lastOfProduction) ;
-  temp3.initDimension13 (directFollower) ;
-  temp3_bis.initDimension32 (inFIRSTsets) ;
-  const C_BDD_Set2 constant = directFollower | (temp3 & temp3_bis).projeterSurAxe12 () ;
+//--- Compute constant for FOLLOW calculus
+  C_BDD_Set3 ex_temp3_bis (ex_lastOfProduction) ;
+  ex_temp3.initDimension13 (ex_directFollower) ;
+  ex_temp3_bis.initDimension32 (inFIRSTsets) ;
+  const C_BDD_Set2 ex_constant = ex_directFollower | (ex_temp3 & ex_temp3_bis).projeterSurAxe12 () ;
+
+  const C_BDD temp3 = directFollowers.swap132 (inBDDBitCount, inBDDBitCount, inBDDBitCount) ;
+  const C_BDD temp3_bis = inFIRSTsets.bdd ().swap321 (inBDDBitCount, inBDDBitCount, inBDDBitCount) ;
+  const C_BDD constant = directFollowers | (temp3 & temp3_bis).existsOnBitsAfterNumber (twoBDDBitCount) ;
+  if (! constant.isEqualToBDD (ex_constant.bdd ())) {
+    printf ("\n********* FOLLOW SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+    printf ("constant   : %s\n", constant.queryStringValue ().cString ()) ;
+    printf ("ex_constant: %s\n", ex_constant.bdd ().queryStringValue ().cString ()) ;
+  }
 
 //--- Loop for computing FOLLOW
-//       suivants [g, d] += directFollower [g, d] | ?y (facteurConstant [g, d, y] & suivants [y, d]) ;
-  C_BDD_Set2 v (outFOLLOWsets) ;
-  outFOLLOWsets.clear () ;
+//       follows [g, d] += directFollower [g, d] | ?y (constant [g, d, y] & follows [y, d]) ;
+  C_BDD outFOLLOWsets = constant ;
+  C_BDD v ;
   outIterationsCount = 0 ;
   do{
     v = outFOLLOWsets ; outIterationsCount ++ ;
     outFOLLOWsets = constant ;
-    temp3.initDimension32 (v) ;
-    outFOLLOWsets |= (lastOfProduction & temp3).projeterSurAxe12 () ;
-  }while (! v.isEqualTo (outFOLLOWsets COMMA_HERE)) ;
+    const C_BDD t = v.swap321 (inBDDBitCount, inBDDBitCount, inBDDBitCount) ;
+    outFOLLOWsets |= (lastOfProduction & t).existsOnBitsAfterNumber (twoBDDBitCount) ;
+  }while (! v.isEqualToBDD (outFOLLOWsets)) ;
+
+  ex_outFOLLOWsets.clear () ;
+  C_BDD_Set2 ex_v (ex_outFOLLOWsets) ;
+  outIterationsCount = 0 ;
+  do{
+    ex_v = ex_outFOLLOWsets ; outIterationsCount ++ ;
+    ex_outFOLLOWsets = ex_constant ;
+    ex_temp3.initDimension32 (ex_v) ;
+    ex_outFOLLOWsets |= (ex_lastOfProduction & ex_temp3).projeterSurAxe12 () ;
+  }while (! ex_v.isEqualTo (ex_outFOLLOWsets COMMA_HERE)) ;
+  if (! outFOLLOWsets.isEqualToBDD (ex_outFOLLOWsets.bdd ())) {
+    printf ("\n********* FOLLOW SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+  }
 
 //--- Suppress nonterminal symbols in the FOLLOW sets
-  temp2.initDimension2 (C_BDD::kLowerOrEqual, (uint32) (inTerminalSymbolsCount - 1)) ;
-  outFOLLOWsets &= temp2 ;
+  ex_temp2.initDimension2 (C_BDD::kLowerOrEqual, (uint32) (inTerminalSymbolsCount - 1)) ;
+  ex_outFOLLOWsets &= ex_temp2 ;
+  outFOLLOWsets &= C_BDD::varCompareConst (inBDDBitCount,
+                                           inBDDBitCount,
+                                           C_BDD::kLowerOrEqual,
+                                           (uint32) (inTerminalSymbolsCount - 1)) ;
+  if (! outFOLLOWsets.isEqualToBDD (ex_outFOLLOWsets.bdd ())) {
+    printf ("\n********* FOLLOW SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+  }
 
 //--- FOLLOW, with nonterminal symbols followed by empty string
   C_BDD_Set1 temp1 (descriptor) ;
   temp1.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
-  outFOLLOWsets |= inNonterminalSymbolsFollowedByEmpty * temp1 ;
+  ex_outFOLLOWsets |= inNonterminalSymbolsFollowedByEmpty * temp1 ;
+
+  const C_BDD emptyStringBDD = C_BDD::varCompareConst (inBDDBitCount,
+                                           inBDDBitCount,
+                                           C_BDD::kEqual,
+                                           (uint32) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+  outFOLLOWsets |= inNonterminalSymbolsFollowedByEmpty.bdd () & emptyStringBDD ;
+
+  if (! outFOLLOWsets.isEqualToBDD (ex_outFOLLOWsets.bdd ())) {
+    printf ("\n********* FOLLOW SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+  }
 
 //--- FOLLOW sets, given with an array
   { TC_UniqueArray <TC_UniqueArray <sint32> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
     swap (outFOLLOWarray, tempArray) ;
   }
-  outFOLLOWsets.getArray (outFOLLOWarray) ;
+  ex_outFOLLOWsets.getArray (outFOLLOWarray) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -239,12 +300,13 @@ checkFOLLOWsets (C_HTML_FileWrite * inHTMLfile,
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      C_HTML_FileWrite * inHTMLfile,
+                     const uint16 inBDDBitCount,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_BDD_Set1 & inUsefulSymbols,
                      const C_BDD_Set2 & inFIRSTsets,
                      const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
-                     C_BDD_Set2 & outFOLLOWsets,
+                     C_BDD_Set2 & ex_outFOLLOWsets,
                      TC_UniqueArray <TC_UniqueArray <sint32> > & outFOLLOWarray,
                      bool & outOk,
                      const bool inVerboseOptionOn) {
@@ -262,11 +324,12 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
   sint32 iterationsCount = 0 ;
   computeFOLLOWsets (inPureBNFproductions,
                      inNonterminalSymbolsFollowedByEmpty,
+                     inBDDBitCount,
                      inVocabulary,
                      inVocabularyDerivingToEmpty_Array,
                      inFIRSTsets,
                      inVocabulary.getTerminalSymbolsCount (),
-                     outFOLLOWsets,
+                     ex_outFOLLOWsets,
                      outFOLLOWarray,
                      iterationsCount) ;
 
@@ -275,7 +338,7 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
     printFOLLOWsets (outFOLLOWarray,
                      inVocabulary,
                      *inHTMLfile,
-                     outFOLLOWsets.getValuesCount (),
+                     ex_outFOLLOWsets.getValuesCount (),
                      iterationsCount) ;
   }
 
@@ -284,7 +347,7 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                            inNonterminalSymbolsFollowedByEmpty,
                            inVocabulary,
                            inUsefulSymbols,
-                           outFOLLOWsets,
+                           ex_outFOLLOWsets,
                            inVerboseOptionOn) ;
 }
 

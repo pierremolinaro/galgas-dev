@@ -490,6 +490,18 @@ createStyleFile (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
+static uint16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
+  uint16 bddBitCount = 0 ;
+  uint32 temp = inVocabulary.getAllSymbolsCount () ;
+  while (temp != 0) {
+    temp >>= 1 ;
+    bddBitCount ++ ;
+  }
+  return bddBitCount ;
+}
+
+//---------------------------------------------------------------------------*
+
 static void
 analyzeGrammar (C_Lexique & inLexique,
                 const GGS_lstring & inTargetFileName,
@@ -616,6 +628,10 @@ analyzeGrammar (C_Lexique & inLexique,
 //--- Define vocabulary BDD sets descriptor
   const C_BDD_Descriptor vocabularyDescriptor ((uint32) (vocabulary.getAllSymbolsCount () - 1)) ;
 
+//--- Compute the BDD bit count
+  const uint16 bddBitCount = bddBitCountForVocabulary (vocabulary) ;
+
+//--- Compute 
 //--- Search for identical productions -----------------------------------------------------------
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
@@ -716,6 +732,7 @@ analyzeGrammar (C_Lexique & inLexique,
     bool ok = false ;
     FOLLOW_computations (pureBNFproductions,
                          HTMLfile,
+                         bddBitCount,
                          vocabulary,
                          vocabularyDerivingToEmpty_Array,
                          usefulSymbols,
