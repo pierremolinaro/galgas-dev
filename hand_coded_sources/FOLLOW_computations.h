@@ -40,6 +40,7 @@ class C_Lexique ;
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      C_HTML_FileWrite * inHTMLfile,
+                     const uint16 inBDDBitCount,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_BDD_Set1 & inUsefulSymbols,
