@@ -129,7 +129,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   ex_FIRST_with_empty.getArray (outFIRSTarray) ;
 
   TC_UniqueArray <TC_UniqueArray <sint32> > FIRSTArray ;
-  FIRST_with_empty.getArray2 (FIRSTArray, inVocabulary.getAllSymbolsCount(), inBDDBitCount, inBDDBitCount) ;
+  FIRST_with_empty.getArray2 (FIRSTArray, (uint32) inVocabulary.getAllSymbolsCount(), inBDDBitCount, inBDDBitCount) ;
   if (outFIRSTarray != FIRSTArray) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
@@ -208,7 +208,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
                   << ((ntInErrorCount>1) ? " has" : "s have")
                   << " an empty FIRST :" ;
       TC_UniqueArray <bool> errorArray2 ;
-      ntInError.getBoolArray (errorArray2, inVocabulary.getAllSymbolsCount(), inBDDBitCount) ;
+      ntInError.getBoolArray (errorArray2, (uint32) inVocabulary.getAllSymbolsCount(), inBDDBitCount) ;
       TC_UniqueArray <bool> errorArray ;
       ex_ntInError.getArray (errorArray) ;
       if (errorArray != errorArray2) {
