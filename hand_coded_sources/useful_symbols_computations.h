@@ -33,6 +33,7 @@ class C_Lexique ;
 
 void
 useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproductions,
+                             const uint16 inBDDBitCount,
                              const cVocabulary & inVocabulary,
                              C_HTML_FileWrite * inHTMLfile,
                              C_BDD_Set1 & outUsefulSymbols,
