@@ -676,6 +676,7 @@ analyzeGrammar (C_Lexique & inLexique,
   C_BDD_Set1 usefulSymbols (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (pureBNFproductions,
+                                 bddBitCount,
                                  vocabulary,
                                  HTMLfile,
                                  usefulSymbols,
@@ -699,6 +700,7 @@ analyzeGrammar (C_Lexique & inLexique,
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
+                        bddBitCount,
                         HTMLfile,
                         vocabulary,
                         vocabularyDerivingToEmpty_Array,
