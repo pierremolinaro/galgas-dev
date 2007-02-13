@@ -3002,6 +3002,7 @@
 		CFF5378D057A50FF00854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFFE924C0B7CCAFF009BCBF5 /* domain_generation.cpp */,
 				CFF5378E057A512A00854C83 /* if_instruction.cpp */,
 				CFF5378F057A512A00854C83 /* list_generation.cpp */,
 				CFF53792057A514300854C83 /* assignment_instructions.cpp */,
@@ -3010,7 +3011,6 @@
 				CFF5379C057A516000854C83 /* foreach_instructions.cpp */,
 				CFF5379D057A516000854C83 /* map_generation.cpp */,
 				CF93AC4605B483DC0089AD65 /* enum_generation.cpp */,
-				CFFE924C0B7CCAFF009BCBF5 /* domain_generation.cpp */,
 				CFF537A4057A518B00854C83 /* semantics_instructions.cpp */,
 				CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */,
 				CFF537A2057A518B00854C83 /* semantics_generation.cpp */,

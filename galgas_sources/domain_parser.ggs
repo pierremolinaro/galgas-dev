@@ -104,7 +104,7 @@ rule <domain_declaration>
     repeat
       @lstring attributeName ;
       $identifier$ ? attributeName ;
-      [domainModifierMap searchKey !attributeName ?*] ;
+      [attributeMap searchKey !attributeName] ;
       domains += ![attributeName string] ;
       relationModifierAttributeList +=
         ![@typeGalgas_string new]
