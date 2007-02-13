@@ -195,7 +195,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     sint32 idx = 1 ;
     while (currentDomainRelation != NULL) {
       macroValidPointer (currentDomainRelation) ;
-      inCppFile << "  findOrAddEntry (_attribute_" << currentDomainRelation->mValue
+      inCppFile << "  const uint32 entry" << idx << " = findOrAddEntry (_attribute_" << currentDomainRelation->mValue
                 << ", inValue_" << idx << ", bitCountExtended) ;\n" ;
       idx ++ ;
       currentDomainRelation = currentDomainRelation->nextObject () ;
@@ -203,6 +203,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "  if (bitCountExtended) {\n"
                  "    updateRelationsAfterBitCountExtension () ;\n"
                  "  }\n"
+                 "  const uint32 entries [] = {entry1" ;
+    for (sint32 i=2 ;i<=currentRelation->mInfo.mDomains.count () ; i++) {
+      inCppFile << ", entry" << i ;
+    }
+    inCppFile << "} ;\n"
+                 "  const uint16 bitCounts [] = {_bitCount_0_forRelation_" << currentRelation->mKey ;
+    for (sint32 i=1 ;i<currentRelation->mInfo.mDomains.count () ; i++) {
+      inCppFile << ", _bitCount_" << i << "_forRelation_" << currentRelation->mKey ;
+    }
+    inCppFile << "} ;\n"
+                 "  _relationBDD_" << currentRelation->mKey
+              << " |= C_BDD::bddWithConstants (entries, bitCounts, "
+              << currentRelation->mInfo.mDomains.count () << ") ;\n"
                  "}\n\n" ;
     currentRelation = currentRelation->nextObject () ;
   }
@@ -214,15 +227,15 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   sint32 relationIndex = 0 ;
   while (currentRelation != NULL) {
     macroValidPointer (currentRelation) ;
-    inCppFile << "  const cDomainAttribute * domainArray" << relationIndex << " [] = {" ;
+    inCppFile << "  const uint16 bitNeededCountArray" << relationIndex << " [] = {" ;
     GGS_stringlist::element_type * currentDomainRelation = currentRelation->mInfo.mDomains.firstObject () ;
     while (currentDomainRelation != NULL) {
       macroValidPointer (currentDomainRelation) ;
-      inCppFile << "& _attribute_" << currentDomainRelation->mValue << ", " ;
+      inCppFile << "_attribute_" << currentDomainRelation->mValue << ".mBitCount, " ;
       currentDomainRelation = currentDomainRelation->nextObject () ;
     }
-    inCppFile << "NULL} ;\n" ;
-    inCppFile << "  uint16 * bitCountArray" << relationIndex << " [] = {" ;
+    inCppFile << "0} ;\n" ;
+    inCppFile << "  uint16 * bitCountCurrentArray" << relationIndex << " [] = {" ;
     sint32 relationDomainIndex = 0 ;
     currentDomainRelation = currentRelation->mInfo.mDomains.firstObject () ;
     while (currentDomainRelation != NULL) {
@@ -232,9 +245,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       currentDomainRelation = currentDomainRelation->nextObject () ;
     }
     inCppFile << "NULL} ;\n"
-                 "  updateRelation (_relationBDD_" << currentRelation->mKey
-              << ", domainArray" << relationIndex
-              << ", bitCountArray" << relationIndex
+                 "  _relationBDD_" << currentRelation->mKey << " = "
+              << " _relationBDD_" << currentRelation->mKey
+              << ".updateRelation (bitNeededCountArray" << relationIndex
+              << ", bitCountCurrentArray" << relationIndex
               << ", " << currentRelation->mInfo.mDomains.count () << ") ;\n" ;
     relationIndex ++ ;
     currentRelation = currentRelation->nextObject () ;
