@@ -1255,11 +1255,21 @@ class @C_classToImplement extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
+map @domainRelationMap {
+  @stringlist mDomains ;
+  insert insertKey error message "the '%K' domain relation has been already declared in %L" ;
+  search searchKey error message "the '%K' domain relation is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @C_domainToImplement extends @typeEntityToGenerate {
 #--- Domain Name
   @lstring mDomainName ;
 #--- Attribute Map
   @domainAttributeMap mAttributeMap ;
+#--- Relation Map
+  @domainRelationMap mRelationMap ;
 }
 
 #---------------------------------------------------------------------------*

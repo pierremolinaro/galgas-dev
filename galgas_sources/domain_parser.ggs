@@ -48,20 +48,23 @@ label importSemantics
 label parse
 ;
 
+nonterminal <domain_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+label parse
+;
+
 #---------------------------------------------------------------------------*
 #                                                                           *
 #          parsing domain declaration                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantics_declaration>
+rule <domain_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ??@M_optionComponents unused ioOptionsComponentsMapForUse
-  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
-  ?!@typeTableEnAvant unused tableEnAvant
-  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
+  @stringset propertyNameSet [emptySet] ;
   $domain$ ;
   @lstring domainTypeName ;
   $type_name$ ? domainTypeName ;
@@ -73,18 +76,52 @@ rule <semantics_declaration>
     ![@typeGalgas_string new]
     ![@formalArgumentPassingMode argumentConstantIn]
   ;
+  @domainRelationMap relationMap [emptyMap] ;
   repeat
   while
     @lstring attributeTypeName ;
     $type_name$ ? attributeTypeName ;
-    if [attributeTypeName string] != "lstring" then
-      error attributeTypeName: "only the '@lstring' is supported here" ;
+    if [attributeTypeName string] != "string" then
+      error attributeTypeName: "only the '@string' is supported here" ;
     end if ;
     @lstring attributeName ;
     $identifier$ ? attributeName ;
-    [!?attributeMap insertKey !attributeName] ;
-    @lstring addModifierName [new !"AddTo" . [attributeName stringByCapitalizingFirstCharacter] ![attributeName location]] ;
-    [!?domainModifierMap insertKey !addModifierName !domainModifierAttributeList] ;
+    if [propertyNameSet hasKey ![attributeName string]] then
+     error attributeName:"the domain has already a property named '" . [attributeName string] . "'" ;
+    else
+      propertyNameSet += ![attributeName string] ;
+      [!?attributeMap insertKey !attributeName] ;
+      @lstring addModifierName [new !"addTo" . [attributeName stringByCapitalizingFirstCharacter] ![attributeName location]] ;
+      [!?domainModifierMap insertKey !addModifierName !domainModifierAttributeList] ;
+    end if ;
+    $;$ ;
+  while
+    @lstring relationTypeName ;
+    $identifier$ ? relationTypeName ;
+    $[$ ;
+    @L_EXsignature relationModifierAttributeList [emptyList] ;
+    @stringlist domains [emptyList] ;
+    repeat
+      @lstring attributeName ;
+      $identifier$ ? attributeName ;
+      [domainModifierMap searchKey !attributeName ?*] ;
+      domains += ![attributeName string] ;
+      relationModifierAttributeList +=
+        ![@typeGalgas_string new]
+        ![@formalArgumentPassingMode argumentConstantIn]
+      ;
+    while
+      $,$ ;
+    end repeat ;
+    if [propertyNameSet hasKey ![relationTypeName string]] then
+     error relationTypeName:"the domain has already a property named '" . [relationTypeName string] . "'" ;
+    else
+      propertyNameSet += ![relationTypeName string] ;
+      @lstring addModifierName [new !"addTo" . [relationTypeName stringByCapitalizingFirstCharacter] ![relationTypeName location]] ;
+      [!?domainModifierMap insertKey !addModifierName !relationModifierAttributeList] ;
+      [!?relationMap insertKey !relationTypeName !domains] ;
+    end if ;
+    $]$ ;
     $;$ ;
   end repeat ;
   @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap !domainModifierMap] ;
@@ -95,8 +132,25 @@ rule <semantics_declaration>
   @typeEntityToGenerate def := [@C_domainToImplement new
       !domainTypeName
       !attributeMap
+      !relationMap
     ] ;
     listeEntitesAengendrer += !def ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused ioOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  <domain_declaration> 
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+  ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
   ?!@ActionMap unused ioExternActionMap
@@ -105,35 +159,11 @@ label importSemantics
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
 :
-  $domain$ ;
-  @lstring domainTypeName ;
-  $type_name$ ? domainTypeName ;
-  ${$ ;
-  @domainAttributeMap attributeMap [emptyMap] ;
-  @domainModifierMap domainModifierMap [emptyMap] ;
-  @L_EXsignature domainModifierAttributeList [emptyList] ;
-  domainModifierAttributeList +=
-    ![@typeGalgas_string new]
-    ![@formalArgumentPassingMode argumentConstantIn]
+  @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
+  <domain_declaration> 
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
   ;
-  repeat
-  while
-    @lstring attributeTypeName ;
-    $type_name$ ? attributeTypeName ;
-    if [attributeTypeName string] != "lstring" then
-      error attributeTypeName: "only the '@lstring' is supported here" ;
-    end if ;
-    @lstring attributeName ;
-    $identifier$ ? attributeName ;
-    [!?attributeMap insertKey !attributeName] ;
-    @lstring addModifierName [new !"addTo" . [attributeName stringByCapitalizingFirstCharacter] ![attributeName location]] ;
-    [!?domainModifierMap insertKey !addModifierName !domainModifierAttributeList] ;
-    $;$ ;
-  end repeat ;
-  @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap !domainModifierMap] ;
-  @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !domainTypeName !entity] ;
-  $}$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
