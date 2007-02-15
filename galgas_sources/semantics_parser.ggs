@@ -356,11 +356,6 @@ nonterminal <map_method>
 label parse
 ;
 
-nonterminal <message_pattern>
-  !@L_stringList outMessageList
-label parse
-;
-
 nonterminal <formal_arguments_list>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@L_EXsignature listeDeTypes
@@ -3996,6 +3991,125 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  M A P I N D E X    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $mapindex$ ;
+  @lstring mapindexTypeName ;
+  $type_name$ ? mapindexTypeName ;
+  select
+    $;$ ;
+    if not ([tableEnAvant hasKey ![mapindexTypeName string]]
+         | [ioComponentSemanticsEntitiesMap hasKey ![mapindexTypeName string]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedMapindexType new !mapindexTypeName] ;
+      [!?tableEnAvant insertKey !mapindexTypeName !t] ;
+    end if ;
+  or
+    $($ ;
+    @lstring mapTypeName ;
+    $type_name$ ? mapTypeName ;
+    @AC_semanticsEntity entity ;
+    [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ?entity] ;
+    @AC_galgasType aType ;
+    extract entity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
+    @typeListeAttributsSemantiques mapAttributesList ;
+    extract aType->@typeGalgasMapType (?* ?mapAttributesList ...) error mapTypeName : messageGalgasType ;
+    $)$ ;
+    ${$ ;
+    @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
+    repeat
+    while
+      $search$ ;
+      @lstring searchReaderName ;
+      $identifier$ ? searchReaderName ;
+      $error$ ;
+      $message$ ;
+      @lstring mapindexErrorMessage ;
+      $literal_string$ ? mapindexErrorMessage ;
+      action check_KL_escapeCharacters !mapindexErrorMessage ;
+      [!?mapIndexSearchReaderMap insertKey !searchReaderName !mapindexErrorMessage] ;
+      $;$ ;
+    end repeat ;
+    $}$ ;
+    @AC_galgasType t := [@typeGalgasMapindexType new 
+      !mapindexTypeName
+      !mapTypeName
+      !mapAttributesList
+      !mapIndexSearchReaderMap
+    ] ;
+    @typeEntityToGenerate e := [@C_mapindexToImplement new
+      !mapindexTypeName
+      !mapTypeName
+      !mapAttributesList
+      !mapIndexSearchReaderMap
+    ] ;
+    listeEntitesAengendrer += !e ;
+  end select ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+:
+  $mapindex$ ;
+  @lstring mapindexTypeName ;
+  $type_name$ ? mapindexTypeName ;
+  select
+    $;$ ;
+    if not ([tableEnAvant hasKey ![mapindexTypeName string]]
+         | [ioComponentSemanticsEntitiesMap hasKey ![mapindexTypeName string]]) then
+      @AC_galgasType t := [@typeGalgasUndefinedMapindexType new !mapindexTypeName] ;
+      [!?tableEnAvant insertKey !mapindexTypeName !t] ;
+    end if ;
+  or
+    $($ ;
+    @lstring mapTypeName ;
+    $type_name$ ? mapTypeName ;
+    @AC_semanticsEntity entity ;
+    [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ?entity] ;
+    @AC_galgasType aType ;
+    extract entity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
+    @typeListeAttributsSemantiques mapAttributesList ;
+    extract aType->@typeGalgasMapType (?* ?mapAttributesList ...) error mapTypeName : messageGalgasType ;
+    $)$ ;
+    ${$ ;
+    @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
+    repeat
+    while
+      $search$ ;
+      @lstring searchReaderName ;
+      $identifier$ ? searchReaderName ;
+      $error$ ;
+      $message$ ;
+      @lstring mapindexErrorMessage ;
+      $literal_string$ ? mapindexErrorMessage ;
+      action check_KL_escapeCharacters !mapindexErrorMessage ;
+      [!?mapIndexSearchReaderMap insertKey !searchReaderName !mapindexErrorMessage] ;
+      $;$ ;
+    end repeat ;
+    $}$ ;
+    @AC_galgasType t := [@typeGalgasMapindexType new 
+      !mapindexTypeName
+      !mapTypeName
+      !mapAttributesList
+      !mapIndexSearchReaderMap
+    ] ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  M A P    D E C L A R A T I O N                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -4592,28 +4706,6 @@ rule <map_method>
   $error$ ;
   $message$ ;
   $literal_string$ ? outMessage ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <message_pattern>
-  !@L_stringList outMessageList
-:
-  outMessageList := [@L_stringList emptyList] ;
-  repeat
-    select
-      @lstring messageText ;
-      $literal_string$ ? messageText ;
-      if [messageText string] != "" then
-        outMessageList += ![messageText string] ;
-      end if ;
-    or
-      $*$ ;
-      outMessageList += !"" ;
-    end select ;
-  while
-    $.$ ;
-  end repeat ;
 end rule ;
 
 #---------------------------------------------------------------------------*

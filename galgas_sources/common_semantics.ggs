@@ -2446,6 +2446,74 @@ class @typeGalgasDomainType extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    U N D E F I N E D    M A P I N D E X    T Y P E          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgasUndefinedMapindexType extends @AC_galgasType {
+  @lstring mMapindexTypeName ;
+
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := [mMapindexTypeName string] ;
+  end method ;
+
+#--- A mapindex accepts 'placeholder' constructor
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "placeholder" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    else
+      error inClassMethodName : "a map index only accepts 'placeholder' constructor" -> outAccessorTypesList ;
+    end if ;
+  end method ;
+
+  message messageGalgasType "a predeclared mapindex type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    M A P I N D E X    T Y P E                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @mapIndexSearchReaderMap {
+  @lstring mRetrieveErrorMessage ;
+  insert insertKey error message "a search reader named '%K' is already declared in %L" ;
+  search searchKey error message "there is search reader named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
+  @lstring mMapTypeName ;
+  @typeListeAttributsSemantiques mMapAttributesList ;
+  @mapIndexSearchReaderMap mMapIndexSearchReaderMap ;
+
+#--- By default, class does not accept reader instruction call
+  override
+  method handleMethodInstructionCall
+    ??@lstring unused inReadObjectName
+    ??@lstring inReaderName
+    !@L_EXsignature outReaderSignature
+  :
+    [mMapIndexSearchReaderMap searchKey !inReaderName ?*] ;
+    outReaderSignature := [@L_EXsignature listWithValue
+      ![@typeGalgas_lstring new]
+      ![@formalArgumentPassingMode argumentOut]
+    ] ;
+    foreach mMapAttributesList (@AC_galgasType kAttributType *) :
+      outReaderSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
+    end foreach ;
+  end method ;
+
+  message messageGalgasType "a mapindex type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    U N D E F I N E D    S O R T E D    L I S T    T Y P E   *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3213,6 +3281,14 @@ routine handleReaderCall
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   else
     extract inReceiverType :
+    when @typeGalgasUndefinedMapindexType (*) ->
+      if [inMethodName string] == "isRegular" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      else # Inherited @ string reader ?
+        error inMethodName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when @typeGalgas_string () ->
       handleStringReaderCall !inMethodName ?outAccessorTypesList ?outReturnedType ;
     when @typeGalgas_lstring () ->

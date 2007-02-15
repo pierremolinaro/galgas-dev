@@ -79,11 +79,6 @@ nonterminal <parse_constraint_document>
 label parse
 ;
 
-nonterminal <property_path_for_constraint>
-  !@L_propertyPath outPath
-label parse
-;
-
 nonterminal <constraints_on_entity_declaration>
   ??@lstring inConstraintName
   ??@stringset inOverriddenClassSet
@@ -92,34 +87,6 @@ nonterminal <constraints_on_entity_declaration>
   ?!@entityToImplementMap ioConstrainedEntityMap
   ?!@constraintInstructionListMap ioConstraintInstructionListMap
 label parse
-;
-
-nonterminal <constraint_relation_expression>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-label parse 
-;
-
-nonterminal <constraint_relation_term>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-label parse 
-;
-
-nonterminal <constraint_relation_factor>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-label parse 
-;
-
-nonterminal <constraint_relation_primary>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-label parse 
 ;
 
 nonterminal <semantic_instructions_list>
@@ -799,148 +766,6 @@ rule <constraints_on_entity_declaration>
     !allConstraintPropertyMap
     !allAvailablePropertyMap
   ] ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <property_path_for_constraint>
-  !@L_propertyPath outPath
-:
-  outPath := [@L_propertyPath emptyList] ;
-  repeat
-    select
-      @lstring pathElement ;
-      $identifier$ ? pathElement ;
-      outPath += !pathElement ;
-    or
-      @lstring pathElement ;
-      $type_name$ ? pathElement ;
-      outPath += ![@lstring new !".". [pathElement string] ![pathElement location]] ;
-    end select ;
-  while
-    $.$ ;
-  end repeat ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <constraint_relation_expression>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-:
-  <constraint_relation_term>
-    !?ioRelationVariableMap
-    !?ioIndexMap
-    ?outExpression ;
-  repeat
-  while
-    $|$ ;
-    @metamodelRelationExpression e ;
-    <constraint_relation_term> !?ioRelationVariableMap !?ioIndexMap ?e ;
-    outExpression := [@metamodelRelationOr new !outExpression !e] ;
-  end repeat ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <constraint_relation_term>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-:
-  <constraint_relation_factor> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-  repeat
-  while
-    $&$ ;
-    @metamodelRelationExpression e ;
-    <constraint_relation_factor> !?ioRelationVariableMap !?ioIndexMap ?e ;
-    outExpression := [@metamodelRelationOr new !outExpression !e] ;
-  end repeat ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <constraint_relation_factor>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-:
-  select
-    <constraint_relation_primary> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-  or
-    $not$ ;
-    <constraint_relation_primary> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-    outExpression := [@metamodelRelationNot new !outExpression] ;
-  end select ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <constraint_relation_primary>
-  ?!@relationVarMap ioRelationVariableMap
-  ?!@indexMap ioIndexMap
-  !@metamodelRelationExpression outExpression
-:
-  select
-    $true$ ;
-    outExpression := [@metamodelRelationTrue new] ;
-  or
-    $false$ ;
-    outExpression := [@metamodelRelationFalse new] ;
-  or
-    $($ ;
-    <constraint_relation_expression> !?ioRelationVariableMap !?ioIndexMap ?outExpression ;
-    $)$ ;
-  or
-    ${$ ;
-    @lstring localVar ;
-    $identifier$ ? localVar ;
-    @luint variableIndex ;
-    @lstring domainVariable ;
-    [ioRelationVariableMap searchKeyAndGetIndex !localVar ?variableIndex ?domainVariable] ;
-    $==$ ;
-    @lstring indexVariableName ;
-    $identifier$ ? indexVariableName ;
-    @lstring domainVariableFromIndex ;
-    [ioIndexMap searchKey !indexVariableName ?domainVariableFromIndex] ;
-    if [domainVariable string] != [domainVariableFromIndex string] then
-      error indexVariableName: "this index refers to the '" . [domainVariableFromIndex string]
-      . "' domain, while '" . [localVar  string] . "' relation variable refers to the '"
-      . [domainVariable string] . "' domain" ;
-    end if ;
-    $}$ ;
-    outExpression := [@metamodelRelationPrimary new !ioRelationVariableMap !localVar !variableIndex !indexVariableName !domainVariable] ;
-  or
-   $do$ ;
-    $($ ;
-     @L_propertyPath path ;
-     <property_path_for_constraint> ?path ;
-    $[$ ;
-    @metamodelRelationParameterList parameterList [emptyList] ;
-    repeat
-      @lstring parameter ;
-      $identifier$ ? parameter ;
-      @luint parameterIndex ;
-      @lstring domainVariable ;
-      [ioRelationVariableMap searchKeyAndGetIndex !parameter ?parameterIndex ?domainVariable] ;
-      parameterList += !parameter !parameterIndex !domainVariable ;
-    while
-      $,$ ;
-    end repeat ;
-    $]$ ;
-    $:$ ;
-    @lbool operationIsAnd ;
-    select
-      $|$ ;
-      operationIsAnd := [@lbool new !false !here] ;
-    or
-      $&$ ;
-      operationIsAnd := [@lbool new !true !here] ;
-    end select ;
-    $)$ ;
-    outExpression := [@metamodelRelationDo new !ioRelationVariableMap !parameterList !path !operationIsAnd] ;
-  end select ;
 end rule ;
 
 #-------------------------------------------------------------------*

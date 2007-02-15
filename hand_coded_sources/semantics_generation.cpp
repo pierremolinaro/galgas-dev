@@ -1606,6 +1606,62 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 #endif
 
 //---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedMapindexType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mMapindexTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedMapindexType::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasUndefinedMapindexType::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasMapindexType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_"  << mMapindexTypeName << ' ' ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasMapindexType::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasMapindexType::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
 //                                                                           *
 //                     Engendrer le fichier C++                              *
 //                                                                           *

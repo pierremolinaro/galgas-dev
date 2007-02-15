@@ -1255,6 +1255,19 @@ class @C_classToImplement extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
+class @C_mapindexToImplement extends @typeEntityToGenerate {
+#--- Map index type Name
+  @lstring mMapindexTypeName ;
+#--- Map type Map
+  @lstring mMapTypeName ;
+#--- Map attributes
+  @typeListeAttributsSemantiques mMapAttributesList ;
+#--- Readers
+  @mapIndexSearchReaderMap mMapIndexSearchReaderMap ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @domainRelationMap {
   @stringlist mDomains ;
   insert insertKey error message "the '%K' domain relation has been already declared in %L" ;

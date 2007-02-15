@@ -32,6 +32,30 @@
 		CF0357E50B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
 		CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
+		CF0EBFD20B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
+		CF0EBFD30B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
+		CF0EBFD40B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
+		CF0EBFD50B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
+		CF0EBFD60B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
+		CF0EBFD70B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
+		CF0EBFD80B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
+		CF0EBFD90B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
+		CF0EBFDA0B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
+		CF0EBFDB0B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
+		CF0EBFDC0B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
+		CF0EBFDD0B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
+		CF0EBFDE0B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
+		CF0EBFDF0B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
+		CF0EBFE00B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
+		CF0EBFE10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
+		CF0EC0060B846EB10047465A /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */; };
+		CF0EC0070B846EB10047465A /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */; };
+		CF0EC0080B846EB10047465A /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */; };
+		CF0EC0090B846EB10047465A /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */; };
+		CF0EC00A0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */; };
+		CF0EC00B0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */; };
+		CF0EC00C0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */; };
+		CF0EC00D0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */; };
 		CF19AF780A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
 		CF19AF790A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
 		CF19AF7A0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
@@ -1815,6 +1839,9 @@
 		CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleEntity.h; sourceTree = "<group>"; };
 		CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_multipleEntity.h; sourceTree = "<group>"; };
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasMapindexType.h; sourceTree = "<group>"; };
+		CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedMapindexType.h; sourceTree = "<group>"; };
+		CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_mapindexToImplement.h; sourceTree = "<group>"; };
 		CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_while_instruction.h; sourceTree = "<group>"; };
 		CF1EF67E0AD15BB70091DDE8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/galgasUpdate.nib; sourceTree = "<group>"; };
 		CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
@@ -2573,6 +2600,9 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF0EC0050B846EB10047465A /* include_C_mapindexToImplement.h */,
+				CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */,
+				CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */,
 				CFFE92260B7CCA1B009BCBF5 /* include_C_domainToImplement.h */,
 				CFFE92270B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h */,
 				CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */,
@@ -3401,6 +3431,9 @@
 				CFFE92170B7CC06E009BCBF5 /* domain_parser.h in Headers */,
 				CFFE92300B7CCA1B009BCBF5 /* include_C_domainToImplement.h in Headers */,
 				CFFE92310B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h in Headers */,
+				CF0EBFDC0B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */,
+				CF0EBFDD0B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */,
+				CF0EC00B0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3495,6 +3528,9 @@
 				CFFE920F0B7CC06E009BCBF5 /* domain_parser.h in Headers */,
 				CFFE92280B7CCA1B009BCBF5 /* include_C_domainToImplement.h in Headers */,
 				CFFE92290B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h in Headers */,
+				CF0EBFDA0B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */,
+				CF0EBFDB0B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */,
+				CF0EC00A0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3589,6 +3625,9 @@
 				CFFE921B0B7CC06E009BCBF5 /* domain_parser.h in Headers */,
 				CFFE92340B7CCA1B009BCBF5 /* include_C_domainToImplement.h in Headers */,
 				CFFE92350B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h in Headers */,
+				CF0EBFD20B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */,
+				CF0EBFD30B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */,
+				CF0EC0060B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3697,6 +3736,9 @@
 				CFFE92150B7CC06E009BCBF5 /* domain_parser.h in Headers */,
 				CFFE922E0B7CCA1B009BCBF5 /* include_C_domainToImplement.h in Headers */,
 				CFFE922F0B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h in Headers */,
+				CF0EBFD60B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */,
+				CF0EBFD70B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */,
+				CF0EC0080B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3791,6 +3833,9 @@
 				CFFE92190B7CC06E009BCBF5 /* domain_parser.h in Headers */,
 				CFFE92320B7CCA1B009BCBF5 /* include_C_domainToImplement.h in Headers */,
 				CFFE92330B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h in Headers */,
+				CF0EBFE00B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */,
+				CF0EBFE10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */,
+				CF0EC00D0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3885,6 +3930,9 @@
 				CFFE92130B7CC06E009BCBF5 /* domain_parser.h in Headers */,
 				CFFE922C0B7CCA1B009BCBF5 /* include_C_domainToImplement.h in Headers */,
 				CFFE922D0B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h in Headers */,
+				CF0EBFD40B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */,
+				CF0EBFD50B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */,
+				CF0EC0070B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3979,6 +4027,9 @@
 				CFFE92110B7CC06E009BCBF5 /* domain_parser.h in Headers */,
 				CFFE922A0B7CCA1B009BCBF5 /* include_C_domainToImplement.h in Headers */,
 				CFFE922B0B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h in Headers */,
+				CF0EBFDE0B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */,
+				CF0EBFDF0B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */,
+				CF0EC00C0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4073,6 +4124,9 @@
 				CFFE921D0B7CC06E009BCBF5 /* domain_parser.h in Headers */,
 				CFFE92360B7CCA1B009BCBF5 /* include_C_domainToImplement.h in Headers */,
 				CFFE92370B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h in Headers */,
+				CF0EBFD80B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */,
+				CF0EBFD90B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */,
+				CF0EC0090B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

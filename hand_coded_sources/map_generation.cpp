@@ -2,7 +2,8 @@
 //                                                                           *
 //  Generate map declaration and implementation                              *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -21,6 +22,64 @@
 #include "utilities/MF_MemoryControl.h"
 #include "semantics_generation.h"
 #include "semantics_semantics.h"
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Map Index Implementation
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapindexToImplement::
+generateHdeclarations_2 (AC_OutputStream & inHfile,
+                         const C_String & /* inLexiqueClassName */,
+                         C_Lexique & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapindexToImplement::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << mMapindexTypeName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapindexToImplement::
+generateHdeclarations (AC_OutputStream & inHfile,
+                       const C_String & /* inLexiqueClassName */,
+                       C_Lexique & /* inLexique */) const {
+  inHfile.writeCppTitleComment (C_String ("Map index '@") + mMapindexTypeName + "'") ;
+
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_mapindexToImplement::isCppClassNeeded (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapindexToImplement::
+generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
+                             const C_String & /* inLexiqueClassName */,
+                             const C_String & /* inTargetFileName*/,
+                             sint32 & /* ioPrototypeIndex */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapindexToImplement::
+generateCppClassImplementation (AC_OutputStream & inCppFile,
+                                const C_String & /* inLexiqueClassName */,
+                                const C_String & /* inTargetFileName */,
+                                sint32 & /* ioPrototypeIndex */,
+                                const bool /* inGenerateDebug */) const {
+  inCppFile.writeCppTitleComment (C_String ("map index '@") + mMapindexTypeName + "'") ;
+
+}
 
 //---------------------------------------------------------------------------*
 
@@ -275,7 +334,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
-  inCppFile.writeCppTitleComment (C_String ("class map '") + aNomTable + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("class map '@") + aNomTable + "'") ;
 
 //--- Constructor for type element
   inCppFile << "elementOf_GGS_" << aNomTable << "::\n"
@@ -798,7 +857,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "} ;\n\n" ; //--- Fin de la declaration de la classe e_...
 
 // ---------------------- declaration de la classe table -----------------
-  inHfile.writeCppTitleComment (C_String ("Map '") + aNomTable + "'") ;
+  inHfile.writeCppTitleComment (C_String ("Map '@") + aNomTable + "'") ;
 
   inHfile << "class GGS_" << aNomTable << " : public "  << aNomClasseGenerique
           << " <e_" << aNomTable << "> {\n"
@@ -930,7 +989,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 
 //--------------------- ENGENDRER LA CLASSE TABLE ----------------------------
-  inCppFile.writeCppTitleComment (C_String ("Map '") + aNomTable + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("Map '@") + aNomTable + "'") ;
 
   inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
                "constructor_emptyMap (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
