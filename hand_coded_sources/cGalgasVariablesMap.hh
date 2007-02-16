@@ -467,7 +467,7 @@ insertKey (C_Lexique & inLexique,
   //--- Realiser l'insertion
     bool insertionOk = false ;
     bool extension ;
-    internalInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, inKey, _mRoot, extension) ;
+    internalRecursiveInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, inKey, _mRoot, extension) ;
     if (insertionOk) {
       resultat = mListLength - 1 ;
     }else{ // Rechercher une occurrence '%%', afin de la remplacer par la clef
@@ -481,7 +481,7 @@ insertKey (C_Lexique & inLexique,
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-internalInsert (bool & insertionOk,
+internalRecursiveInsert (bool & insertionOk,
                 const INFO & inInfo,
                 const enumNatureEntite nature,
                 const enumEtatVariable etat,
@@ -499,7 +499,7 @@ internalInsert (bool & insertionOk,
     macroValidPointer (racine) ;
     const sint32 comparaison = racine->mKey.compareStringByLength (clef) ;
     if (comparaison > 0) {
-      internalInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, clef, racine->mInfPtr, extension) ;
+      internalRecursiveInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, clef, racine->mInfPtr, extension) ;
       if (extension) {
         racine->mBalance++;
         switch (racine->mBalance) {
@@ -518,7 +518,7 @@ internalInsert (bool & insertionOk,
         }
       }
     }else if (comparaison < 0) {
-      internalInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, clef, racine->mSupPtr, extension) ;
+      internalRecursiveInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, clef, racine->mSupPtr, extension) ;
       if (extension) {
         racine->mBalance-- ;
         switch (racine->mBalance) {

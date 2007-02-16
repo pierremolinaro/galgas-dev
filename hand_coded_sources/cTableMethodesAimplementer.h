@@ -112,7 +112,7 @@ template <typename INFO> class cTableMethodesAimplementer {
                                      const char * messageErreurInsertion
                                      COMMA_LOCATION_ARGS) ;
 
-  private : void internalInsert (const INFO & info,
+  private : void internalRecursiveInsert (const INFO & info,
                                  const GGS_lstring & clef,
                                  sint32 & numero, // renvoie -1 si erreur
                                  const bool estAbstraite,

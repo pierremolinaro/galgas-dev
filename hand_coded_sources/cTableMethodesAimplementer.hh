@@ -168,7 +168,7 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (vo
       while (p != NULL) {
         macroValidPointer (p) ;
         sint32 numeroElement ;
-        internalInsert (p->mInfo, p->mKey, numeroElement, p->champEstAbstraite, _mRoot) ;
+        internalRecursiveInsert (p->mInfo, p->mKey, numeroElement, p->champEstAbstraite, _mRoot) ;
         p = p->mNextItem ;
       }
     }
@@ -189,7 +189,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
   //--- Realiser l'insertion
-    internalInsert (info, clef, numeroElement, true, _mRoot) ;
+    internalRecursiveInsert (info, clef, numeroElement, true, _mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;
@@ -212,7 +212,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexiq
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
   //--- Realiser l'insertion
-    internalInsert (info, clef, numeroElement, false, _mRoot) ;
+    internalRecursiveInsert (info, clef, numeroElement, false, _mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;
@@ -224,7 +224,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexiq
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cTableMethodesAimplementer <INFO>::internalInsert (const INFO & info,
+void cTableMethodesAimplementer <INFO>::internalRecursiveInsert (const INFO & info,
                                                               const GGS_lstring & clef,
                                                            sint32 & numeroElement,
                                                         const bool estAbstraite,
@@ -248,9 +248,9 @@ void cTableMethodesAimplementer <INFO>::internalInsert (const INFO & info,
     macroValidPointer (racine) ;
     const sint32 comparaison = racine->mKey.compareStringByLength (clef) ;
     if (comparaison > 0) {
-      internalInsert (info, clef, numeroElement, estAbstraite, racine->mInfPtr) ;
+      internalRecursiveInsert (info, clef, numeroElement, estAbstraite, racine->mInfPtr) ;
     }else if (comparaison < 0) {
-      internalInsert (info, clef, numeroElement, estAbstraite, racine->mSupPtr) ;
+      internalRecursiveInsert (info, clef, numeroElement, estAbstraite, racine->mSupPtr) ;
     }else{
       numeroElement = -1 ;
     }

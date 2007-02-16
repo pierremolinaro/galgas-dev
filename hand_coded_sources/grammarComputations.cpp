@@ -228,7 +228,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
         parametre = parametre->nextObject () ;
       }
       generatedZone3 << ") ;\n" ; 
-      if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
+      if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
         generatedZone3 << "  public : " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
