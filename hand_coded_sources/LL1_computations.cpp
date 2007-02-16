@@ -451,7 +451,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   bool first = true ;
   while (nonTerminal != NULL) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
-                      nonTerminal->mIndex, productionIndex, first,
+                      nonTerminal->mID, productionIndex, first,
                       productionRulesIndex, productionRulesTitle,
                       firstProductionRuleIndex, generatedZone3) ;
     nonTerminal = nonTerminal->nextObject () ;
@@ -517,7 +517,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
     printDecisionTable (inPureBNFproductions, inVocabulary, inLexiqueName,
-                        nonTerminal->mIndex, decisionTableIndex,
+                        nonTerminal->mID, decisionTableIndex,
                         productionDecisionIndex, generatedZone3) ;
     nonTerminal = nonTerminal->nextObject () ;
   }
@@ -550,7 +550,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
     generatedZone3.writeCppTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
-    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal->mIndex COMMA_HERE) >= 0 ;
+    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal->mID COMMA_HERE) >= 0 ;
     GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
       macroValidPointer (currentAltForNonTerminal) ;
@@ -582,7 +582,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         generatedZone3 << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * _outReturnedModelInstance = NULL ;\n" ;      
       }
-      engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal->mIndex, numeroParametre,
+      engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal->mID, numeroParametre,
                                        inPureBNFproductions, generatedZone3,
                                        currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0,
                                        currentAltForNonTerminal->mKey) ;
@@ -593,7 +593,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
     }
   //--- Generate 'startParsing' method ?
-    if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
+    if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
       generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
       currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (currentAltForNonTerminal != NULL) {

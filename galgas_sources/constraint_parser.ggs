@@ -90,6 +90,7 @@ label parse
 ;
 
 nonterminal <semantic_instructions_list>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -737,7 +738,9 @@ rule <constraints_on_entity_declaration>
   @typeInstructionList instructionsList [emptyList] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
   @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+  @typeTableEnAvant tableEnAvant [emptyMap] ;
   <semantic_instructions_list>
+    !tableEnAvant
     !?componentSemanticsEntitiesMap
     !?listeEntitesAengendrer
     !optionsComponentsMapForUse

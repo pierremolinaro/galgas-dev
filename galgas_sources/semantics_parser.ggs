@@ -146,6 +146,7 @@ label parse
 ;
 
 nonterminal <attributes_definition_list>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@typeListModel outAttributeListModel
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
@@ -156,6 +157,7 @@ label parse
 ;
 
 nonterminal <type_parsing>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@AC_galgasType definitionType
   !@lstring outTypeName
@@ -228,6 +230,7 @@ label parse
 ;
 
 nonterminal <semantic_instructions_list>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -240,6 +243,7 @@ label parse
 ;
 
 nonterminal <semantic_instructions_list_no_verif>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -252,6 +256,7 @@ label parse
 ;
 
 nonterminal <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -264,6 +269,7 @@ label parse
 ;
 
 nonterminal <extract_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -1065,6 +1071,7 @@ rule <semantics_declaration>
     @stringset constraintPropertyDefinitionSet [emptySet] ;
     @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
     <semantic_instructions_list>
+      !tableEnAvant
       !?ioComponentSemanticsEntitiesMap
       !?listeEntitesAengendrer
       !inOptionsComponentsMapForUse
@@ -1318,6 +1325,7 @@ rule <semantics_declaration>
     @L_nameWithType listeAttributsExternesCourants ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -1471,6 +1479,7 @@ label importSemantics
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
     @L_nameWithType listeAttributsExternesCourants ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeList
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -1675,6 +1684,7 @@ rule <parse_method>
   @stringset constraintPropertyDefinitionSet [emptySet] ;
   @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
   <semantic_instructions_list>
+    !tableEnAvant
     !?componentSemanticsEntitiesMap
     !?listeEntitesAengendrer
     !inOptionsComponentsMapForUse
@@ -1982,14 +1992,21 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <type_parsing>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  !@AC_galgasType definitionType
+  !@AC_galgasType outTypeDefinition
   !@lstring outTypeName
 :
   $type_name$ ? outTypeName ;
-  @AC_semanticsEntity entite ;
-  [ioComponentSemanticsEntitiesMap searchKey !outTypeName ?entite] ;
-  extract entite->@typeEntiteType (?definitionType) error outTypeName : messageTypeEntite ;
+  if [ioComponentSemanticsEntitiesMap hasKey ![outTypeName string]] then
+    @AC_semanticsEntity entite ;
+    [ioComponentSemanticsEntitiesMap searchKey !outTypeName ?entite] ;
+    extract entite->@typeEntiteType (?outTypeDefinition) error outTypeName : messageTypeEntite ;
+  elsif [inTableEnAvant hasKey ![outTypeName string]] then
+    [inTableEnAvant searchKey !outTypeName ? outTypeDefinition] ;
+  else
+    error outTypeName: "the '@" . [outTypeName string] . "' type is not defined" -> outTypeDefinition ;
+  end if ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -2435,6 +2452,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instructions_list>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2446,6 +2464,7 @@ rule <semantic_instructions_list>
 :
   block ioVariablesMap.verifyVariableUsing () :
     <semantic_instructions_list_no_verif>
+      !inTableEnAvant
       !?ioComponentSemanticsEntitiesMap
       !?listeEntitesAengendrer
       !inOptionsComponentsMapForUse
@@ -2465,6 +2484,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -2547,6 +2567,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2571,6 +2592,7 @@ rule <semantic_instruction>
 #--- Parse simple or structured extract instruction
   @typeInstruction instruction ;
   <extract_instruction>
+    !inTableEnAvant
     !?ioComponentSemanticsEntitiesMap
     !?listeEntitesAengendrer
     !inOptionsComponentsMapForUse
@@ -2592,6 +2614,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <extract_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2669,6 +2692,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <extract_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2725,6 +2749,7 @@ rule <extract_instruction>
         $->$ ;
         @typeInstructionList instructionsList [emptyList] ;
         <semantic_instructions_list>
+          !inTableEnAvant
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !inOptionsComponentsMapForUse
@@ -2744,6 +2769,7 @@ rule <extract_instruction>
       $else$ ;
       @typeInstructionList elseInstructionList [emptyList] ;
       <semantic_instructions_list>
+        !inTableEnAvant
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
         !inOptionsComponentsMapForUse
@@ -2769,6 +2795,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2781,7 +2808,12 @@ rule <semantic_instruction>
 #--- Type name
   @AC_galgasType definitionType ;
   @lstring typeName ;
-  <type_parsing> !?ioComponentSemanticsEntitiesMap ?definitionType ?typeName ;
+  <type_parsing>
+    !inTableEnAvant
+    !?ioComponentSemanticsEntitiesMap
+    ?definitionType
+    ?typeName
+  ;
 #--- Variable name
   @lstring nomVariable ;
   $identifier$ ? nomVariable ;
@@ -2808,6 +2840,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -2838,6 +2871,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -2905,6 +2939,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2951,9 +2986,13 @@ end rule ;
 #    M O D I F I E R    C A L L   I N S T R U C T I O N                     *
 #               [!?object modifier !... !?... ?...] ;                       *
 #                                                                           *
+#    T Y P E    M E T H O D   C A L L    I N S T R U C T I O N              *
+#               [@aType type_method_name !... !?... ?...] ;                 *
+#                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3011,6 +3050,34 @@ rule <semantic_instruction>
     ;
   #--- Generate instruction
     instruction := [@typeModifierCallInstruction new !cppVariableName !methodName !expressionsList] ;
+  or #--------- TYPE METHOD
+    @lstring typeName ;
+    $type_name$ ? typeName ;
+    @lstring typeMethodName ;
+    $identifier$ ? typeMethodName ;
+  #--- Retrieve type method information
+    @L_EXsignature typeMethodSignature ;
+    @AC_semanticsEntity entity  ;
+    [ioComponentSemanticsEntitiesMap searchKey !typeName ? entity] ;
+    @AC_galgasType type ;
+    extract entity->@typeEntiteType (?type) error typeName : messageTypeEntite ;
+    [type handleTypeMethodCall !typeMethodName ?typeMethodSignature] ;
+  #--- Actual parameters
+    @typeExpressionList expressionsList ;
+    <actual_parameters_list>
+      !typeMethodSignature
+      ?expressionsList
+      !?ioVariablesMap
+      !inOptionsComponentsMapForUse
+      !?ioComponentSemanticsEntitiesMap
+      !?ioInstructionList
+    ;
+  #--- Generate instruction
+    instruction := [@typeCallOfTypeMethodInstruction new
+      !typeName
+      !typeMethodName
+      !expressionsList
+    ] ;
   end select ;
   ioInstructionList += !instruction ;
   $]$ ;
@@ -3025,6 +3092,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3053,6 +3121,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3101,6 +3170,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3168,6 +3238,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3204,6 +3275,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3234,6 +3306,7 @@ rule <semantic_instruction>
         @typeInstructionList listeInstructionsBrancheTest [emptyList] ;
         @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
+          !inTableEnAvant
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !inOptionsComponentsMapForUse
@@ -3264,6 +3337,7 @@ rule <semantic_instruction>
         $else$ ;
         @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
+          !inTableEnAvant
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !inOptionsComponentsMapForUse
@@ -3296,6 +3370,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3347,6 +3422,7 @@ rule <semantic_instruction>
         @typeInstructionList branchInstructionList [emptyList] ;
         @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
+          !inTableEnAvant
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !inOptionsComponentsMapForUse
@@ -3389,6 +3465,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3417,6 +3494,7 @@ rule <semantic_instruction>
     block ioVariablesMap.repeatPart () :
     #--- Liste d'instructions
       <semantic_instructions_list_no_verif>
+        !inTableEnAvant
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
         !inOptionsComponentsMapForUse
@@ -3447,6 +3525,7 @@ rule <semantic_instruction>
     block ioVariablesMap.repeatPart () :
     #--- Liste d'instructions
       <semantic_instructions_list_no_verif>
+        !inTableEnAvant
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
         !inOptionsComponentsMapForUse
@@ -3478,6 +3557,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant unused  inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3549,6 +3629,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3617,6 +3698,7 @@ rule <semantic_instruction>
     #--- Liste d'instructions
       @typeInstructionList instructionList [emptyList] ;
       <semantic_instructions_list_no_verif>
+        !inTableEnAvant
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
         !inOptionsComponentsMapForUse
@@ -3756,6 +3838,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3831,6 +3914,7 @@ rule <semantic_instruction>
         $:$ ;
         @typeInstructionList instructionsList [emptyList] ;
         <semantic_instructions_list>
+          !inTableEnAvant
           !?ioComponentSemanticsEntitiesMap
           !?listeEntitesAengendrer
           !inOptionsComponentsMapForUse
@@ -3848,6 +3932,7 @@ rule <semantic_instruction>
       $else$ ;
       @typeInstructionList elsePartInstructionsList [emptyList] ;
       <semantic_instructions_list>
+        !inTableEnAvant
         !?ioComponentSemanticsEntitiesMap
         !?listeEntitesAengendrer
         !inOptionsComponentsMapForUse
@@ -3879,6 +3964,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instructions_list_no_verif>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3891,6 +3977,7 @@ rule <semantic_instructions_list_no_verif>
   repeat
   while
     <semantic_instruction>
+      !inTableEnAvant
       !?ioComponentSemanticsEntitiesMap
       !?listeEntitesAengendrer
       !inOptionsComponentsMapForUse
@@ -4022,7 +4109,16 @@ rule <semantics_declaration>
     @AC_galgasType aType ;
     extract entity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
     @typeListeAttributsSemantiques mapAttributesList ;
-    extract aType->@typeGalgasMapType (?* ?mapAttributesList ...) error mapTypeName : messageGalgasType ;
+    @typeTableBlocsDeTable tableMethodesSurcharger ;
+    @mapModifierMap modifierMethodMap ;
+    @mapMethodMap readerMethodMap ;
+    extract aType->@typeGalgasMapType (
+      ?*
+      ?mapAttributesList
+      ?tableMethodesSurcharger
+      ?modifierMethodMap
+      ?readerMethodMap)
+      error mapTypeName : messageGalgasType ;
     $)$ ;
     ${$ ;
     @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
@@ -4045,7 +4141,11 @@ rule <semantics_declaration>
       !mapTypeName
       !mapAttributesList
       !mapIndexSearchReaderMap
+      !tableMethodesSurcharger
+      !modifierMethodMap
+      !readerMethodMap
     ] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !mapindexTypeName ![@typeEntiteType new !t]] ;
     @typeEntityToGenerate e := [@C_mapindexToImplement new
       !mapindexTypeName
       !mapTypeName
@@ -4081,7 +4181,16 @@ label importSemantics
     @AC_galgasType aType ;
     extract entity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
     @typeListeAttributsSemantiques mapAttributesList ;
-    extract aType->@typeGalgasMapType (?* ?mapAttributesList ...) error mapTypeName : messageGalgasType ;
+    @typeTableBlocsDeTable tableMethodesSurcharger ;
+    @mapModifierMap modifierMethodMap ;
+    @mapMethodMap readerMethodMap ;
+    extract aType->@typeGalgasMapType (
+      ?*
+      ?mapAttributesList
+      ?tableMethodesSurcharger
+      ?modifierMethodMap
+      ?readerMethodMap)
+      error mapTypeName : messageGalgasType ;
     $)$ ;
     ${$ ;
     @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
@@ -4104,7 +4213,11 @@ label importSemantics
       !mapTypeName
       !mapAttributesList
       !mapIndexSearchReaderMap
+      !tableMethodesSurcharger
+      !modifierMethodMap
+      !readerMethodMap
     ] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !mapindexTypeName ![@typeEntiteType new !t]] ;
   end select ;
 end rule ;
 
@@ -4201,6 +4314,7 @@ rule <semantics_declaration>
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -4279,6 +4393,7 @@ rule <semantics_declaration>
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -4498,6 +4613,7 @@ label importSemantics
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -4569,6 +4685,7 @@ label importSemantics
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -4740,6 +4857,7 @@ rule <semantics_declaration>
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -4792,6 +4910,7 @@ label importSemantics
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -4852,6 +4971,7 @@ rule <semantics_declaration>
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -4934,6 +5054,7 @@ label importSemantics
     @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     <attributes_definition_list>
+      !tableEnAvant
       !?attributeListModel
       !?tableAttributs
       !?listeTousAttributsSemantiques
@@ -4979,6 +5100,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <attributes_definition_list>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@typeListModel outAttributeListModel
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
@@ -4995,6 +5117,7 @@ rule <attributes_definition_list>
     @AC_galgasType definitionType ;
     @lstring typeName ;
     <type_parsing>
+      !inTableEnAvant
       !?ioComponentSemanticsEntitiesMap
       ?definitionType
       ?typeName

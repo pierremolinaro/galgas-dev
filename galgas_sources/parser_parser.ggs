@@ -125,6 +125,7 @@ label parse
 ;
 
 nonterminal <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -1724,6 +1725,7 @@ rule <syntax_instructions_list_no_verif>
   @entityPropertyMap propertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
   @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+  @typeTableEnAvant tableEnAvant [emptyMap] ;
   repeat
   while
     <syntax_instruction>
@@ -1740,6 +1742,7 @@ rule <syntax_instructions_list_no_verif>
     ;
   while
     <semantic_instruction>
+      !tableEnAvant
       !?ioEntitiesMap
       !?listeEntitesAengendrer
       ! inOptionsComponentsMapForUse

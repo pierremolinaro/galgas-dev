@@ -880,7 +880,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
                      << "::\n"
                      << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
                      << " (" << inLexiqueName << " & _inLexique" ;
-      const sint32 pureBNFleftNonterminalIndex = (sint32) nonTerminal->mIndex ;
+      const sint32 pureBNFleftNonterminalIndex = (sint32) nonTerminal->mID ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
@@ -925,7 +925,7 @@ generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
       currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
     }
     //--- Engendrer l'axiome ?
-    if (nonTerminal->mIndex == (sint32) inOriginalGrammarStartSymbol) {
+    if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
       generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
       GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (currentAltForNonTerminal != NULL) {

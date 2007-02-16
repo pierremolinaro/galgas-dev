@@ -355,7 +355,7 @@ template <typename INFO> class cGalgasVariablesMap {
                          const bool inSearchForShadow
                          COMMA_LOCATION_ARGS) ;
 
-  private : void internalInsert (bool & insertionOk ,
+  private : void internalRecursiveInsert (bool & insertionOk ,
                                  const INFO & info,
                                  const enumNatureEntite nature,
                                  const enumEtatVariable etat,
