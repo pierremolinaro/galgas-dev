@@ -12,7 +12,7 @@
 
 SOURCES :=
 
-include ../common_files_for_make/common_sources_makefile.mke
+include ../common_files_for_make/makefile.mke
 
 #--------------- Source files list for building LL(1) galgas --*
 SOURCES += galgas_LL1_grammar.cpp
