@@ -187,6 +187,15 @@
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
 		</Unit>
+		<Unit filename="../galgas_sources/GALGAS_OUTPUT/domain_parser.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="galgas" />
+			<Option target="galgas_debug" />
+			<Option target="galgas_SLR" />
+			<Option target="galgas_SLR_debug" />
+			<Option target="galgasLR1" />
+			<Option target="galgasLR1_debug" />
+		</Unit>
 		<Unit filename="../galgas_sources/GALGAS_OUTPUT/expression_parser.cpp">
 			<Option compilerVar="CC" />
 			<Option target="galgas" />
@@ -2443,6 +2452,17 @@
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
 		</Unit>
+		<Unit filename="../galgas_sources/domain_parser.ggs">
+			<Option compilerVar="CPP" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option target="galgas" />
+			<Option target="galgas_debug" />
+			<Option target="galgas_SLR" />
+			<Option target="galgas_SLR_debug" />
+			<Option target="galgasLR1" />
+			<Option target="galgasLR1_debug" />
+		</Unit>
 		<Unit filename="../hand_coded_sources/FIRST_computations.cpp">
 			<Option compilerVar="CC" />
 			<Option target="galgas" />
@@ -2705,6 +2725,15 @@
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
 		</Unit>
+		<Unit filename="../hand_coded_sources/domain_generation.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="galgas" />
+			<Option target="galgas_debug" />
+			<Option target="galgas_SLR" />
+			<Option target="galgas_SLR_debug" />
+			<Option target="galgasLR1" />
+			<Option target="galgasLR1_debug" />
+		</Unit>
 		<Unit filename="../hand_coded_sources/empty_strings_computations.cpp">
 			<Option compilerVar="CC" />
 			<Option target="galgas" />
@@ -2914,6 +2943,15 @@
 			<Option target="galgasLR1" />
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
+		</Unit>
+		<Unit filename="../hand_coded_sources/scannerDecoderGeneration.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="galgas" />
+			<Option target="galgas_debug" />
+			<Option target="galgas_SLR" />
+			<Option target="galgas_SLR_debug" />
+			<Option target="galgasLR1" />
+			<Option target="galgasLR1_debug" />
 		</Unit>
 		<Unit filename="../hand_coded_sources/scanner_generation.cpp">
 			<Option compilerVar="CC" />
@@ -3280,14 +3318,14 @@
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
 		</Unit>
-		<Unit filename="../../libpm/galgas/C_GGS_MapIndex.cpp">
-			<Option compilerVar="CC" />
+		<Unit filename="../../libpm/galgas/AC_galgas_mapindex.cpp">
+			<Option compilerVar="CPP" />
 			<Option target="galgas" />
 			<Option target="galgas_debug" />
 			<Option target="galgas_SLR" />
+			<Option target="galgas_SLR_debug" />
 			<Option target="galgasLR1" />
 			<Option target="galgasLR1_debug" />
-			<Option target="galgas_SLR_debug" />
 		</Unit>
 		<Unit filename="../../libpm/galgas/C_GGS_Object.cpp">
 			<Option compilerVar="CC" />
@@ -3746,6 +3784,15 @@
 			<Option target="galgasLR1" />
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
+		</Unit>
+		<Unit filename="../../libpm/galgas/predefined_types.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="galgas" />
+			<Option target="galgas_debug" />
+			<Option target="galgas_SLR" />
+			<Option target="galgas_SLR_debug" />
+			<Option target="galgasLR1" />
+			<Option target="galgasLR1_debug" />
 		</Unit>
 		<Unit filename="../../libpm/generic_arraies/TC_UniqueArray.h">
 			<Option compilerVar="CC" />

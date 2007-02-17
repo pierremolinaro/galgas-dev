@@ -775,7 +775,7 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
        "ifdef LIBPM_PATH_ENV_VAR\n"
        "  LIB_PM_PATH := $(LIBPM_PATH_ENV_VAR)\n"
        "else\n"
-       "  LIB_PM_PATH := ../../libpm\n"
+       "  LIB_PM_PATH := " << inLIBPMpath << "\n"
        "endif\n"
        "\n" ;
   f.writeTitleComment ("#", "Project source files directories") ;
