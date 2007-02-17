@@ -8,7 +8,11 @@
 #---------------------------------------------------------------*
 
 #--- Lib PM directory
-LIB_PM_PATH := ../../libpm
+ifdef LIBPM_PATH_ENV_VAR
+  LIB_PM_PATH := $(LIBPM_PATH_ENV_VAR)
+else
+  LIB_PM_PATH := ../../libpm
+endif
 
 #---------------------------------------------------------------*
 #                                                               *
