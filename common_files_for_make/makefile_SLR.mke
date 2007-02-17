@@ -12,7 +12,7 @@
 
 SOURCES :=
 
-include ../common_files_for_make/common_sources_makefile.mke
+include ../common_files_for_make/makefile.mke
 
 #--------------- Source files list for building SLR galgas --*
 SOURCES += galgas_SLR_grammar.cpp
