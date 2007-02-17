@@ -767,7 +767,16 @@ createCommonMakefileFile (const C_String & inCreatedProjectPathName,
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ;
   f.writeTitleComment ("#", "This file is included by every platform makefile") ;
   f.writeTitleComment ("#", "LIBPM path") ;
-  f << "LIB_PM_PATH := " << inLIBPMpath << "\n"
+  
+  f << "# If the 'LIBPM_PATH_ENV_VAR' environnement variable is not defined,\n"
+       "# the default path '../../libpm' is used; otherwise, its value is used\n"
+       "# as libpm path.\n"
+       "\n"
+       "ifdef LIBPM_PATH_ENV_VAR\n"
+       "  LIB_PM_PATH := $(LIBPM_PATH_ENV_VAR)\n"
+       "else\n"
+       "  LIB_PM_PATH := ../../libpm\n"
+       "endif\n"
        "\n" ;
   f.writeTitleComment ("#", "Project source files directories") ;
   f << "SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT\n"
