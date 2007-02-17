@@ -46,7 +46,7 @@ generate_constraint_header_file (C_Lexique & inLexique,
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inMetamodelComponentName << ".h\"\n"
                     "#include \"galgas/C_GGS_entityMap.h\"\n"
-                    "#include \"galgas/AC_mapindex.h\"\n"
+                    "#include \"galgas/AC_galgas_mapindex.h\"\n"
                     "\n" ;
   
   C_String generatedZone3 ; generatedZone3.setCapacity (20000) ;

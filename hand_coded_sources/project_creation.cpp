@@ -970,7 +970,7 @@ createCodeBlockProjectFile (const C_String & inCreatedProjectPathName,
          "            <Option target=\"" << debugTarget << "\"/>\n"
          "        </Unit>\n" ;
   }
-  f << "        <Unit filename=\"" << inLIBPMpath << "\\galgas\\AC_mapindex.cpp\">\n"
+  f << "        <Unit filename=\"" << inLIBPMpath << "\\galgas\\AC_galgas_mapindex.cpp\">\n"
        "            <Option compilerVar=\"CC\"/>\n"
        "            <Option target=\"" << releaseTarget << "\"/>\n"
        "            <Option target=\"" << debugTarget << "\"/>\n"
@@ -1619,8 +1619,8 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
         "                CF5871830A3D68B9009C9D26 /* C_GGS_entityMap.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_entityMap.cpp; sourceTree = \"<group>\"; };\n"
         "                CF5871840A3D68B9009C9D26 /* C_GGS_entityMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_entityMap.h; sourceTree = \"<group>\"; };\n" ;
   }
-  f << "                CF5871850A3D68B9009C9D26 /* AC_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_mapindex.cpp; sourceTree = \"<group>\"; };\n"
-       "                CF5871860A3D68B9009C9D26 /* AC_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_mapindex.h; sourceTree = \"<group>\"; };\n"
+  f << "                CF5871850A3D68B9009C9D26 /* AC_galgas_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_mapindex.cpp; sourceTree = \"<group>\"; };\n"
+       "                CF5871860A3D68B9009C9D26 /* AC_galgas_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_mapindex.h; sourceTree = \"<group>\"; };\n"
        "                CF512D86092B3023008F7E87 /* C_BDD_Descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512D7A092B3023008F7E87 /* C_BDD_Descriptor.cpp */; };\n"
        "                CF512D87092B3023008F7E87 /* C_BDD_Descriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CF512D7B092B3023008F7E87 /* C_BDD_Descriptor.h */; };\n"
        "                CF512D88092B3023008F7E87 /* C_BDD_Set1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF512D7C092B3023008F7E87 /* C_BDD_Set1.cpp */; };\n"
@@ -1817,10 +1817,10 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_map.h; sourceTree = \"<group>\"; };\n"
        "                CFDA45C4090E688B00D522B4 /* AC_galgas_list.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_list.h; sourceTree = \"<group>\"; };\n"
        "                CFDA45C4090E688B00D522B5 /* AC_galgas_sortedlist.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_sortedlist.h; sourceTree = \"<group>\"; };\n"
-       "                CF5871890A3D68B9009C9D26 /* AC_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5871850A3D68B9009C9D26 /* AC_mapindex.cpp */; };\n"
-       "                CF58718A0A3D68B9009C9D26 /* AC_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5871860A3D68B9009C9D26 /* AC_mapindex.h */; };\n"
-       "                CF58718D0A3D68B9009C9D26 /* AC_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5871850A3D68B9009C9D26 /* AC_mapindex.cpp */; };\n"
-       "                CF58718E0A3D68B9009C9D26 /* AC_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5871860A3D68B9009C9D26 /* AC_mapindex.h */; };\n"
+       "                CF5871890A3D68B9009C9D26 /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5871850A3D68B9009C9D26 /* AC_galgas_mapindex.cpp */; };\n"
+       "                CF58718A0A3D68B9009C9D26 /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5871860A3D68B9009C9D26 /* AC_galgas_mapindex.h */; };\n"
+       "                CF58718D0A3D68B9009C9D26 /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5871850A3D68B9009C9D26 /* AC_galgas_mapindex.cpp */; };\n"
+       "                CF58718E0A3D68B9009C9D26 /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5871860A3D68B9009C9D26 /* AC_galgas_mapindex.h */; };\n"
        "                CFDC50A00961ACE0006A0AFD /* GGS_stringset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_stringset.cpp; sourceTree = \"<group>\"; };\n"
        "                CFDC50A10961ACE0006A0AFD /* GGS_stringset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_stringset.h; sourceTree = \"<group>\"; };\n" ;
  if (inProjectStyle == kMDAproject) {
@@ -2146,8 +2146,8 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
   if (inProjectStyle == kMDAproject) {
     f << "                                CF5871830A3D68B9009C9D26 /* C_GGS_entityMap.cpp */,\n"
          "                                CF5871840A3D68B9009C9D26 /* C_GGS_entityMap.h */,\n"
-         "                                CF5871850A3D68B9009C9D26 /* AC_mapindex.cpp */,\n"
-         "                                CF5871860A3D68B9009C9D26 /* AC_mapindex.h */,\n" ;
+         "                                CF5871850A3D68B9009C9D26 /* AC_galgas_mapindex.cpp */,\n"
+         "                                CF5871860A3D68B9009C9D26 /* AC_galgas_mapindex.h */,\n" ;
   }
   f << "                                CF6557C50A25EB5900979050 /* C_galgas_CLI_Options.cpp */,\n"
        "                                CF6557C60A25EB5900979050 /* C_galgas_CLI_Options.h */,\n"
@@ -2302,7 +2302,7 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CFDA45C5090E688B00D522A4 /* AC_galgas_map.h in Headers */,\n"
        "                                CFDA45C5090E688B00D522B4 /* AC_galgas_list.h in Headers */,\n"
        "                                CFDA45C5090E688B00D522B5 /* AC_galgas_sortedlist.h in Headers */,\n"
-       "                                CF58718A0A3D68B9009C9D26 /* AC_mapindex.h in Headers */,\n"
+       "                                CF58718A0A3D68B9009C9D26 /* AC_galgas_mapindex.h in Headers */,\n"
        "                                CF512DA1092B3040008F7E87 /* C_builtin_CLI_Options.h in Headers */,\n"
        "                                CFDC50A30961ACE0006A0AFD /* GGS_stringset.h in Headers */,\n"
        "                                CFF8619109C0DA6100F90D05 /* C_GGS_Object.h in Headers */,\n"
@@ -2377,7 +2377,7 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CFDA45C6090E688B00D522A4 /* AC_galgas_map.h in Headers */,\n"
        "                                CFDA45C6090E688B00D522B4 /* AC_galgas_list.h in Headers */,\n"
        "                                CFDA45C6090E688B00D522B5 /* AC_galgas_sortedlist.h in Headers */,\n"
-       "                                CF58718E0A3D68B9009C9D26 /* AC_mapindex.h in Headers */,\n"
+       "                                CF58718E0A3D68B9009C9D26 /* AC_galgas_mapindex.h in Headers */,\n"
        "                                CF512DA3092B3040008F7E87 /* C_builtin_CLI_Options.h in Headers */,\n"
        "                                CFDC50A50961ACE0006A0AFD /* GGS_stringset.h in Headers */,\n"
        "                                CFF8619309C0DA6100F90D05 /* C_GGS_Object.h in Headers */,\n"
@@ -2552,7 +2552,7 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CFA61CD5061091C90089CEA5 /* AC_galgas_map.cpp in Sources */,\n"
        "                                CFA61CD5061091C90089CEB5 /* AC_galgas_list.cpp in Sources */,\n"
        "                                CFA61CD5061091C90089CEB6 /* AC_galgas_sortedlist.cpp in Sources */,\n"
-       "                                CF5871890A3D68B9009C9D26 /* AC_mapindex.cpp in Sources */,\n"
+       "                                CF5871890A3D68B9009C9D26 /* AC_galgas_mapindex.cpp in Sources */,\n"
        "                                CF2A8827058CCF12003EF2F4 /* predefined_types.cpp in Sources */,\n"
        "                                CF2A882D058CCF2F003EF2F4 /* GGS_binaryset.cpp in Sources */,\n"
        "                                CF2A8842058CCF43003EF2F4 /* GGS_bool.cpp in Sources */,\n"
@@ -2639,7 +2639,7 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CFA61CD6061091C90089CEA5 /* AC_galgas_map.cpp in Sources */,\n"
        "                                CFA61CD6061091C90089CEB5 /* AC_galgas_list.cpp in Sources */,\n"
        "                                CFA61CD6061091C90089CEB6 /* AC_galgas_sortedlist.cpp in Sources */,\n"
-       "                                CF58718D0A3D68B9009C9D26 /* AC_mapindex.cpp in Sources */,\n"
+       "                                CF58718D0A3D68B9009C9D26 /* AC_galgas_mapindex.cpp in Sources */,\n"
        "                                CF825D67085386A80077AEAF /* C_PrimeCache2.cpp in Sources */,\n"
        "                                CF825D69085386A80077AEAF /* C_PrimeCache3.cpp in Sources */,\n"
        "                                CF825D7F085386E10077AEAF /* AC_CLI_Options.cpp in Sources */,\n"
