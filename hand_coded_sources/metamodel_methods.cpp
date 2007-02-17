@@ -328,7 +328,7 @@ generate_constraint_object_creation (const GGS_representativeEntityMap & inRepre
     macroValidPointer (currentRepresentantEntity) ;
     if (currentRepresentantEntity->mInfo.mSuperEntitySet.hasKey (inBaseEntityName)
      && (currentRepresentantEntity->mInfo.mRepresentativeEntityName.length () > 0)
-     && (inConstrainedEntityMap.indexOfKey (currentRepresentantEntity->mKey) >= 0)) {
+     && (inConstrainedEntityMap.IDOfKey (currentRepresentantEntity->mKey) >= 0)) {
       // co << "Key: " << currentRepresentantEntity->mKey << ", INFO: " << currentRepresentantEntity->mInfo.mRepresentativeEntityName << "\n" ;
       if (first) {
         first = false ;

@@ -369,7 +369,7 @@ generate_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_binaryset.h\"\n"
                     "#include \"galgas/predefined_types.h\"\n"
                     "#include \"galgas/AC_galgas_domain.h\"\n"
-                    "#include \"galgas/AC_mapindex.h\"\n"
+                    "#include \"galgas/AC_galgas_mapindex.h\"\n"
                     "#include \"galgas/AC_galgas_map.h\"\n"
                     "#include \"galgas/AC_galgas_list.h\"\n"
                     "#include \"galgas/AC_galgas_sortedlist.h\"\n\n" ;

@@ -32,7 +32,7 @@
 #include "galgas/GGS_binaryset.h"
 #include "galgas/predefined_types.h"
 #include "galgas/AC_galgas_domain.h"
-#include "galgas/AC_mapindex.h"
+#include "galgas/AC_galgas_mapindex.h"
 #include "galgas/AC_galgas_map.h"
 #include "galgas/AC_galgas_list.h"
 #include "galgas/AC_galgas_sortedlist.h"
