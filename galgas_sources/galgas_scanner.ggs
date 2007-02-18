@@ -64,7 +64,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
  "do",        "relation",           "of",        "self",
  "constraint", "context",         "call",    "mapindex",
  "method",      "remove",   "sortedlist", "nonterminal",
- "domain"  ;
+ "domain", "treewalking"  ;
 
 rule 'a'->'z' |  'A'->'Z' :
   repeat

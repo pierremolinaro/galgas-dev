@@ -60,7 +60,7 @@ label parse
 ;
 
 nonterminal <formal_arguments_list>
-  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@L_EXsignature listeDeTypes
   ?!@typeVariablesMap tableArgumentsMethode
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments

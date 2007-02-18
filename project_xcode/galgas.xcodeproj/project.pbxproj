@@ -1530,6 +1530,22 @@
 		CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
 		CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
 		CFDAE7100AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
+		CFDB3A730B8866D500DDA180 /* treewalking_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */; };
+		CFDB3A740B8866D500DDA180 /* treewalking_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDB3A720B8866D500DDA180 /* treewalking_parser.h */; };
+		CFDB3A750B8866D500DDA180 /* treewalking_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */; };
+		CFDB3A760B8866D500DDA180 /* treewalking_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDB3A720B8866D500DDA180 /* treewalking_parser.h */; };
+		CFDB3A770B8866D500DDA180 /* treewalking_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */; };
+		CFDB3A780B8866D500DDA180 /* treewalking_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDB3A720B8866D500DDA180 /* treewalking_parser.h */; };
+		CFDB3A790B8866D500DDA180 /* treewalking_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */; };
+		CFDB3A7A0B8866D500DDA180 /* treewalking_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDB3A720B8866D500DDA180 /* treewalking_parser.h */; };
+		CFDB3A7B0B8866D500DDA180 /* treewalking_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */; };
+		CFDB3A7C0B8866D500DDA180 /* treewalking_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDB3A720B8866D500DDA180 /* treewalking_parser.h */; };
+		CFDB3A7D0B8866D500DDA180 /* treewalking_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */; };
+		CFDB3A7E0B8866D500DDA180 /* treewalking_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDB3A720B8866D500DDA180 /* treewalking_parser.h */; };
+		CFDB3A7F0B8866D500DDA180 /* treewalking_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */; };
+		CFDB3A800B8866D500DDA180 /* treewalking_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDB3A720B8866D500DDA180 /* treewalking_parser.h */; };
+		CFDB3A810B8866D500DDA180 /* treewalking_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */; };
+		CFDB3A820B8866D500DDA180 /* treewalking_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDB3A720B8866D500DDA180 /* treewalking_parser.h */; };
 		CFDC00630B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */; };
 		CFDC00640B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
 		CFDC00650B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */; };
@@ -2268,6 +2284,8 @@
 		CFDAE7060AD19F3E00713406 /* PMDownloadData.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMDownloadData.m; sourceTree = "<group>"; };
 		CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMDownloadFile.h; sourceTree = "<group>"; };
 		CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMDownloadFile.m; sourceTree = "<group>"; };
+		CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = treewalking_parser.cpp; sourceTree = "<group>"; };
+		CFDB3A720B8866D500DDA180 /* treewalking_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = treewalking_parser.h; sourceTree = "<group>"; };
 		CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_mapindex.cpp; sourceTree = "<group>"; };
 		CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_mapindex.h; sourceTree = "<group>"; };
 		CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_entityInInstruction.h; sourceTree = "<group>"; };
@@ -2882,6 +2900,15 @@
 			path = cocoa_utilities;
 			sourceTree = "<group>";
 		};
+		CFDB3A700B8866BF00DDA180 /* Tree walking */ = {
+			isa = PBXGroup;
+			children = (
+				CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */,
+				CFDB3A720B8866D500DDA180 /* treewalking_parser.h */,
+			);
+			name = "Tree walking";
+			sourceTree = "<group>";
+		};
 		CFEC15F109CA021000204242 /* Metamodel Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -2948,6 +2975,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD2149A0913BDFA0011F11E /* Include Files */,
+				CFDB3A700B8866BF00DDA180 /* Tree walking */,
 				CF0196E109DC08020000AD72 /* Constraint Component */,
 				CF446B5709C9C4A7005CBDC8 /* Metamodel Component */,
 				CFF13E4E0597345100C43F5E /* Galgas CLI Options */,
@@ -3445,6 +3473,7 @@
 				CF0EC00B0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 				CFD5E61B0B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h in Headers */,
 				CFDC00640B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFDB3A740B8866D500DDA180 /* treewalking_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3543,6 +3572,7 @@
 				CF0EC00A0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 				CFD5E61A0B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h in Headers */,
 				CFDC00700B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFDB3A800B8866D500DDA180 /* treewalking_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3641,6 +3671,7 @@
 				CF0EC0060B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 				CFD5E6160B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h in Headers */,
 				CFDC00720B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFDB3A820B8866D500DDA180 /* treewalking_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3753,6 +3784,7 @@
 				CF0EC0080B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 				CFD5E6180B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h in Headers */,
 				CFDC00660B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFDB3A760B8866D500DDA180 /* treewalking_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3851,6 +3883,7 @@
 				CF0EC00D0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 				CFD5E61D0B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h in Headers */,
 				CFDC00680B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFDB3A780B8866D500DDA180 /* treewalking_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3949,6 +3982,7 @@
 				CF0EC0070B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 				CFD5E6170B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h in Headers */,
 				CFDC006A0B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFDB3A7A0B8866D500DDA180 /* treewalking_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4047,6 +4081,7 @@
 				CF0EC00C0B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 				CFD5E61C0B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h in Headers */,
 				CFDC006C0B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFDB3A7C0B8866D500DDA180 /* treewalking_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4145,6 +4180,7 @@
 				CF0EC0090B846EB10047465A /* include_C_mapindexToImplement.h in Headers */,
 				CFD5E6190B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h in Headers */,
 				CFDC006E0B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFDB3A7E0B8866D500DDA180 /* treewalking_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4597,6 +4633,7 @@
 				CFFE92160B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE92520B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC00630B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
+				CFDB3A730B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4715,6 +4752,7 @@
 				CFFE920E0B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE92510B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC006F0B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
+				CFDB3A7F0B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4833,6 +4871,7 @@
 				CFFE921A0B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE924D0B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC00710B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
+				CFDB3A810B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4988,6 +5027,7 @@
 				CFFE92140B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE924F0B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC00650B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
+				CFDB3A750B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5106,6 +5146,7 @@
 				CFFE92180B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE92540B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC00670B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
+				CFDB3A770B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5224,6 +5265,7 @@
 				CFFE92120B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE924E0B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC00690B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
+				CFDB3A790B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5342,6 +5384,7 @@
 				CFFE92100B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE92530B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC006B0B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
+				CFDB3A7B0B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5460,6 +5503,7 @@
 				CFFE921C0B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE92500B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC006D0B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
+				CFDB3A7D0B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

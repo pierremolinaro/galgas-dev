@@ -52,6 +52,7 @@ label importOptions
 
 nonterminal <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ??@bool inGenerateMetamodelCode
 label parse
 ;
 
@@ -82,7 +83,7 @@ rule <galgas_component>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_constraintComponents unused ioConstraintComponentMap
 :
-  <parse_metamodel> !?ioMetamodelComponentMap ;
+  <parse_metamodel> !?ioMetamodelComponentMap !true ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
 :
@@ -91,19 +92,19 @@ label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
 :
-  <parse_metamodel> !?ioMetamodelComponentMap ;
+  <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_constraintComponents unused ioConstraintComponentMap
 :
-  <parse_metamodel> !?ioMetamodelComponentMap ;
+  <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_constraintComponents unused ioConstraintComponentMap
 :
-  <parse_metamodel> !?ioMetamodelComponentMap ;
+  <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
 :
@@ -114,6 +115,7 @@ end rule ;
 
 rule <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ??@bool inGenerateMetamodelCode
 :
 #--- Metamodel header
   $metamodel$ ;
@@ -175,12 +177,14 @@ rule <parse_metamodel>
     end foreach ;
   end foreach ;
 #--- Generate C++ code
-  action generate_metamodel
-    !entityMap
-    !metamodelName
-    !multiReferencedEntities
-    !rootEntityName
-  ;
+  if inGenerateMetamodelCode then
+    action generate_metamodel
+      !entityMap
+      !metamodelName
+      !multiReferencedEntities
+      !rootEntityName
+    ;
+  end if ;
 #--- Add metamodel to metamodel map
   if not [ioMetamodelComponentMap hasKey ![metamodelName string]] then
     [!?ioMetamodelComponentMap insertKey
