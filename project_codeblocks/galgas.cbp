@@ -2452,6 +2452,15 @@
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
 		</Unit>
+		<Unit filename="../galgas_sources/GALGAS_OUTPUT/treewalking_parser.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="galgas" />
+			<Option target="galgas_debug" />
+			<Option target="galgas_SLR" />
+			<Option target="galgas_SLR_debug" />
+			<Option target="galgasLR1" />
+			<Option target="galgasLR1_debug" />
+		</Unit>
 		<Unit filename="../galgas_sources/domain_parser.ggs">
 			<Option compilerVar="CPP" />
 			<Option compile="0" />

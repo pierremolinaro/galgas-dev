@@ -19,6 +19,7 @@
 grammar galgas_LL1_grammar "LL1" :
   import lexique galgas_scanner in "galgas_scanner.ggs" ;
   import option galgas_cli_options in "galgas_cli_options.ggs" ;
+  import syntax constraint_parser in "constraint_parser.ggs" ;
   import syntax cli_options_parser in "cli_options_parser.ggs" ;
   import syntax cocoa_parser in "cocoa_parser.ggs" ;
   import syntax scanner_parser in "scanner_parser.ggs" ;
@@ -28,10 +29,10 @@ grammar galgas_LL1_grammar "LL1" :
   import syntax grammar_parser in "grammar_parser.ggs" ;
   import syntax ggs_LL1_compile_component in "ggs_LL1_compile_component.ggs" ;
   import syntax galgas_start in "galgas_start.ggs" ;
-  import syntax constraint_parser in "constraint_parser.ggs" ;
   import syntax semantics_parser in "semantics_parser.ggs" ;
   import syntax program_parser in "program_parser.ggs" ;
   import syntax domain_parser in "domain_parser.ggs" ;
+  import syntax treewalking_parser in "treewalking_parser.ggs" ;
   root <galgas_start_symbol>
     ?!@M_lexiqueComponents ioLexiqueMapForUse
     ?!@M_semanticsComponents ioSemanticsComponentsMap
