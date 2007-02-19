@@ -477,6 +477,13 @@ generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeCurrentObjectName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
+  inFile << "_currentObject->" << mName ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeDirectName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << mName ;
@@ -542,6 +549,13 @@ generateCplusPlusName (AC_OutputStream & /* inFile */) const {
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeCurrentObjectName::
+generateVariableAddress (AC_OutputStream & inFile) const {
+  inFile << "& (_currentObject->" << mName << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeDirectName::
 generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "& " << mName ;
@@ -604,6 +618,12 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
+
+//---------------------------------------------------------------------------*
+
+enumVariableKind cPtr_typeCurrentObjectName::getVariableKind (void) const {
+  return k_other_variable ;
+}
 
 //---------------------------------------------------------------------------*
 

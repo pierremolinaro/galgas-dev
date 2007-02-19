@@ -39,8 +39,12 @@ generateInstructionListForList (const GGS_typeInstructionList & inList,
   while (current != NULL) {
     macroValidPointer (current) ;
     if (inGenerateSemanticInstructions || current->mInstruction(HERE)->isSyntacticInstruction ()) {
-      current->mInstruction(HERE)->generateInstruction (ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
-                                                    inGenerateDebug, inGenerateSemanticInstructions) ;
+      current->mInstruction(HERE)->generateInstruction (ioCppFile,
+                                                        inLexiqueClassName,
+                                                        inTargetFileName,
+                                                        ioPrototypeIndex,
+                                                        inGenerateDebug,
+                                                        inGenerateSemanticInstructions) ;
     }
     current = current->nextObject () ;
   }

@@ -37,6 +37,13 @@ class @typeDirectName extends @typeCplusPlusName {
 }
 
 #---------------------------------------------------------------------------*
+# C++ name is _currentObject->mName
+
+class @typeCurrentObjectName extends @typeCplusPlusName {
+  @lstring mName ;
+}
+
+#---------------------------------------------------------------------------*
 # C++ name is implicit (used for local method call)
 
 class @typeCppThisName extends @typeCplusPlusName {
@@ -1323,81 +1330,6 @@ list @typeEntitiesToGenerateList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#         E N T E R    B U I L T I N    T Y P E S                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap :
-  ioComponentSemanticsEntitiesMap := [@M_semanticsEntitiesForUse emptyMap] ;
-
-  @AC_semanticsEntity e := [@typeEntiteType new ![@typeGalgas_lstring new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"lstring" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_lbool new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"lbool" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_luint new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"luint" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_lsint new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"lsint" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_luint64 new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"luint64" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_lsint64 new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"lsint64" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_ldouble new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"ldouble" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_lchar new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"lchar" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_location new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"location" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_uint new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_sint new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"sint" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_uint64 new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint64" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_sint64 new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"sint64" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_char new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"char" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_string new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"string" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_bool new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"bool" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_binaryset new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"binaryset" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_double new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"double" !here] !e] ;
-
-  e := [@typeEntiteType new ![@typeGalgas_stringset new]] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"stringset" !here] !e] ;
-
-  @AC_galgasType t ; build_uint64list_type ?t ;
-  e := [@typeEntiteType new !t] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint64list" !here] !e] ;
-
-  build_stringlist_type ?t ;
-  e := [@typeEntiteType new !t] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"stringlist" !here] !e] ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    E N U M     T Y P E                                                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1516,6 +1448,26 @@ routine displayConstraintDefinitionErrorsNoElse
    error here: "the '" . kMissingDef . "' property is initialized by first branch, but there is no else branch" ;
   end foreach ;
 end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    T R E E W A L K I N G     C O M P O N E N T                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @treewalkingRoutineToGenerateList {
+  @lstring mMetamodelClass ;
+  @typeListeTypesEtNomsArgMethode mFormalArgumentList ;
+  @typeInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+action generate_treewalking
+  ??@lstring inTreewalkingComponentName
+  ??@stringset inFilesToImportInHeaderSet
+  ??@treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList
+;
 
 #---------------------------------------------------------------------------*
 
