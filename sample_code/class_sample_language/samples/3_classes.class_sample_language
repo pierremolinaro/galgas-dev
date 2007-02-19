@@ -1,0 +1,6 @@
+
+class a : b ;
+
+class b ;
+
+class c : a ;

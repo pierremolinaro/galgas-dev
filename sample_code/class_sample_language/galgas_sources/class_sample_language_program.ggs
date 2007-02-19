@@ -1,0 +1,10 @@
+program class_sample_language_program "version 1.0.0":
+import grammar class_sample_language_grammar in "class_sample_language_grammar.ggs" ;
+#--- max error and warning count
+error 100 ;
+warning 100 ;
+when . "class_sample_language":
+  message "a source text file with the .class_sample_language extension"
+  grammar class_sample_language_grammar
+  ;
+end program ;

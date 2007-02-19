@@ -1,0 +1,95 @@
+syntax class_sample_language_syntax :
+import lexique class_sample_language_lexique in "class_sample_language_lexique.ggs" ;
+import option class_sample_language_options in "class_sample_language_options.ggs" ;
+import semantics class_sample_language_semantics in "class_sample_language_semantics.ggs" ;
+
+nonterminal <start_symbol> ;
+
+rule <start_symbol> :
+  @classMap classMap [emptyMap] ;
+  repeat
+  while
+    $class$ ;
+    @lstring className ;
+    $identifier$ ? className ;
+    @lstring superClassName ;
+    @classMapIndex superClassIndex ;
+    select
+      superClassName := [@lstring new !"" !here] ;
+      superClassIndex := [@classMapIndex null] ;
+    or
+      $:$ ;
+      $identifier$ ? superClassName ;
+      [@classMapIndex makeRegularIndex !superClassName !?classMap ?superClassIndex] ;
+    end select ;
+    [!?classMap insertKey !className !superClassIndex] ;
+    $;$ ;
+  end repeat ;
+#--- Check all classes are defined
+  @uint undefinedClassCount := [classMap unsolvedIndexCount] ;
+  @bool noError := undefinedClassCount == 0 ;
+  if undefinedClassCount == 1 then
+    @string s := "1 class is undefined:" ;
+    @stringlist undefinedClasses := [classMap unsolvedIndexKeyStringList] ;
+    foreach undefinedClasses (@string kClassName) :
+      s.= "\n- " . kClassName ;
+    end foreach ;
+    error here: s ;
+  elsif undefinedClassCount > 1 then
+    @string s := [undefinedClassCount string] . " classes are undefined:" ;
+    @stringlist undefinedClasses := [classMap unsolvedIndexKeyStringList] ;
+    foreach undefinedClasses (@string kClassName) :
+      s.= "\n- " . kClassName ;
+    end foreach ;
+    error here: s ;
+  end if ;
+#--- Check for no circularity and
+#    build list of classes to generate
+  @classesToGenerateList classesToGenerateList [emptySortedList] ;
+  if noError then
+    foreach classMap (@lstring kClassName @classMapIndex kSuperClassIndex) :
+      @string classPath := [kClassName string] ;
+      @stringset superClassSet [setWithString ![kClassName string]] ;
+      @classMapIndex superClassIndex := kSuperClassIndex ;
+      @bool ok := true ;
+      loop [classMap count] :
+      while ok & [superClassIndex isRegular] do
+        @lstring superClassName ;
+        @classMapIndex superSuperClassIndex ;
+        [superClassIndex searchKey ?superClassName ?superSuperClassIndex] ;
+        ok := not [superClassSet hasKey ![superClassName string]] ;
+        superClassSet += ![superClassName string] ;
+        classPath := [superClassName string] . "." . classPath ;
+        superClassIndex := superSuperClassIndex ;
+      end loop ;
+      if ok then
+        classesToGenerateList += !kClassName !kSuperClassIndex !classPath ;
+      else
+        noError := false ;
+        error kClassName:
+          "inheritance circularity for class '" .
+          [kClassName string] . "': " . classPath ;
+      end if ;
+    end foreach ;
+  end if ;
+#--- Generate code
+  if noError then
+    @string codeToGenerate := "" ;
+    foreach classesToGenerateList (@lstring kClassName @classMapIndex kSuperClassIndex *) :
+      codeToGenerate .= "class " ;
+      codeToGenerate .= [kClassName string] ;
+      if [kSuperClassIndex isRegular] then
+        codeToGenerate .= " : " ;
+        codeToGenerate .= [[kSuperClassIndex key] string] ;
+      end if ;
+      codeToGenerate .= " { } ;\n\n" ;
+    end foreach ;
+    if [@uint errorCount] == 0 then
+      @string targetFile [stringWithSourceFilePath] ;
+      targetFile .= ".cpp" ;
+      [codeToGenerate writeToFile !targetFile] ;
+    end if ;
+  end if ;
+end rule ;
+
+end syntax ;
