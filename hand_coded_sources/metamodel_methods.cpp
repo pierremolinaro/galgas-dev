@@ -88,8 +88,9 @@ generateAttributeInMetamodel (AC_OutputStream & /* inHFile */,
 void cPtr_metamodelAttributeProperty::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGS_" << mAttributeTypeName
-          << " " << inPropertyName << " ;\n" ;
+  inHFile << "  public : " ;
+  mAttributeType (HERE)->generateCppClassName (inHFile) ;
+  inHFile << " " << inPropertyName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -128,8 +129,9 @@ generateFormalParameter (AC_OutputStream & /* inHFile */,
 void cPtr_metamodelAttributeProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "const GGS_" << mAttributeTypeName
-          << " & _in_" << inPropertyName ;
+  inHFile << "const " ;
+  mAttributeType (HERE)->generateCppClassName (inHFile) ;
+  inHFile << " & _in_" << inPropertyName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -453,8 +455,9 @@ void cPtr_metamodelAttributeProperty::
 generateAttributeInConstraint (AC_OutputStream & inHFile,
                                const C_String & /* inConstraintComponentName */,
                                const C_String & inPropertyName) const {
-  inHFile << "  public : GGS_" << mAttributeTypeName
-          << " " << inPropertyName << " ;\n" ;
+  inHFile << "  public : " ;
+  mAttributeType (HERE)->generateCppClassName (inHFile) ;
+  inHFile << " " << inPropertyName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*

@@ -667,44 +667,9 @@ rule <constraints_on_entity_declaration>
         @AC_galgasType t := [@typeGalgas_mapIndexInInstruction new ![kMapAttributeName string]] ;
         @typeCplusPlusName cppName := [@typeDirectName new !kKey] ;
         [!?variablesMap insertOutProperty !kKey !t !cppName] ;
-      when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
+      when @metamodelAttributeProperty (@AC_galgasType kType) ->
         @typeCplusPlusName cppName := [@typeDirectName new !kKey] ;
-        if [kAttributeTypeName string] == "lstring" then
-          @AC_galgasType t := [@typeGalgas_lstring new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "string" then
-          @AC_galgasType t := [@typeGalgas_string new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "lchar" then
-          @AC_galgasType t := [@typeGalgas_lchar new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "char" then
-          @AC_galgasType t := [@typeGalgas_char new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "luint" then
-          @AC_galgasType t := [@typeGalgas_luint new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "uint" then
-          @AC_galgasType t := [@typeGalgas_uint new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "lsint" then
-          @AC_galgasType t := [@typeGalgas_lsint new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "sint" then
-          @AC_galgasType t := [@typeGalgas_sint new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "lbool" then
-          @AC_galgasType t := [@typeGalgas_lbool new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "bool" then
-          @AC_galgasType t := [@typeGalgas_bool new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        elsif [kAttributeTypeName string] == "location" then
-          @AC_galgasType t := [@typeGalgas_location new] ;
-          [!?variablesMap insertUsedConstInArgument !kKey !t !cppName] ;
-        else
-          error here : "internal error (@" . [kAttributeTypeName string] . " type not handled" ;
-        end if ;
+        [!?variablesMap insertUsedConstInArgument !kKey !kType !cppName] ;
       else
       end extract ;
     end foreach ;

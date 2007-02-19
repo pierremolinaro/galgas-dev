@@ -928,15 +928,11 @@ rule <syntax_declaration>
     [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?* ?* ?* ?* ?* ?* ?*] ;
     foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
-      when @metamodelAttributeProperty (@lstring kAttributeTypeName) ->
-        @AC_semanticsEntity entite ;
-        [ioEntitiesMap searchKey !kAttributeTypeName ?entite] ;
-        @AC_galgasType definitionType ;
-        extract entite->@typeEntiteType (?definitionType) error returnedEntity : messageTypeEntite ;
+      when @metamodelAttributeProperty (@AC_galgasType kType) ->
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        [!?tableArgumentsMethode insertEntityAttributeLocalVariable !nomVariable !definitionType !nomCppVariable] ;
-        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+        [!?tableArgumentsMethode insertEntityAttributeLocalVariable !nomVariable !kType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kType] ;
         listeInstructions += !instruction ;
       when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
         @AC_galgasType definitionType := [@typeGalgas_singleEntity new !kReferenceEntityName] ;

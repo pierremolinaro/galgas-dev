@@ -57,15 +57,15 @@ label parse
 ;
 
 nonterminal <entity_declaration_list>
+  ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
-  ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 label parse
 ;
 
 nonterminal <entity_declaration>
+  ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
-  ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 label parse
 ;
@@ -121,21 +121,6 @@ rule <parse_metamodel>
   $metamodel$ ;
   @lstring metamodelName ;
   $identifier$ ? metamodelName ;
-#--- Build primitive attribute type name set
-  @stringset primitiveTypeAttributeNameSet [emptySet] ;
-  primitiveTypeAttributeNameSet += !"bool" ;
-  primitiveTypeAttributeNameSet += !"char" ;
-  primitiveTypeAttributeNameSet += !"uint" ;
-  primitiveTypeAttributeNameSet += !"sint" ;
-  primitiveTypeAttributeNameSet += !"double" ;
-  primitiveTypeAttributeNameSet += !"string" ;
-  primitiveTypeAttributeNameSet += !"lbool" ;
-  primitiveTypeAttributeNameSet += !"lchar" ;
-  primitiveTypeAttributeNameSet += !"luint" ;
-  primitiveTypeAttributeNameSet += !"lsint" ;
-  primitiveTypeAttributeNameSet += !"ldouble" ;
-  primitiveTypeAttributeNameSet += !"lstring" ;
-  primitiveTypeAttributeNameSet += !"location" ;
 #--- Root entity
   $root$ ;
   @lstring rootEntityName ;
@@ -143,9 +128,11 @@ rule <parse_metamodel>
   $:$ ;
   @entityToImplementMap entityMap [emptyMap] ;
   @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
+  @M_semanticsEntitiesForUse semanticsEntitiesMap ;
+  enterBuiltinTypes ?semanticsEntitiesMap ;
   <entity_declaration_list>
+    !semanticsEntitiesMap
     !?entityMap
-    !?primitiveTypeAttributeNameSet
     !?mapAndEntityUniqueMap
   ;
   @bool isAbstract ;
@@ -202,15 +189,15 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <entity_declaration_list>
+  ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap outEntityMap
-  ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 :
   repeat
   while
     <entity_declaration>
+      !inSemanticsEntitiesMap
       !?outEntityMap
-      !?ioPrimitiveTypeAttributeNameSet
       !?ioMapAndEntityUniqueMap
     ;
   end repeat ;
@@ -219,8 +206,8 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <entity_declaration>
+  ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
-  ?!@stringset ioPrimitiveTypeAttributeNameSet
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 :
 #--- Abstract ?
@@ -267,13 +254,13 @@ rule <entity_declaration>
   while
     @lstring propertyTypeName ;
     $type_name$ ? propertyTypeName ;
-    if not [ioPrimitiveTypeAttributeNameSet hasKey ![propertyTypeName string]] then
-      error propertyTypeName : "the '@" . [propertyTypeName string]
-      . "' is not a predefined type name" ;
-    end if ;
+    @AC_semanticsEntity entity ;
+    [inSemanticsEntitiesMap searchKey !propertyTypeName ?entity] ;
+    @AC_galgasType aType ;
+    extract entity->@typeEntiteType (?aType) error propertyTypeName : messageTypeEntite ;
     @lstring attributeName ;
     $identifier$ ? attributeName ;
-    @metamodelProperty k := [@metamodelAttributeProperty new !propertyTypeName] ;
+    @metamodelProperty k := [@metamodelAttributeProperty new !aType] ;
     [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
     [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
     $;$ ;

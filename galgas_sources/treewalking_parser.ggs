@@ -69,13 +69,15 @@ nonterminal <treewalking_routine>
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@stringset inMetamodelMultiReferencedEntities
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@treewalkingRoutineToGenerateList ioTreewalkingRoutineToGenerateList
 label parse
 ;
 
 nonterminal <formal_arguments_list>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@L_EXsignature listeDeTypes
-  ?!@typeVariablesMap tableArgumentsMethode
+  ?!@typeVariablesMap localVariableMap
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ?!@typeTableEnAvant tableEnAvant
   !@L_signature outSignature
@@ -172,6 +174,7 @@ rule <parse_treewalking_document>
   $identifier$ ? metamodelName ;
   $)$ ;
   $:$ ;
+  @stringset filesToImportInHeaderSet [setWithString ![metamodelName string]] ;
 #--- Imported Metamodel
   @M_semanticsComponents semanticsComponentMap [emptyMap] ;
   @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
@@ -200,13 +203,16 @@ rule <parse_treewalking_document>
      -> metamodelRootEntity, metamodelEntityMap, metamodelMultiReferencedEntities ;
   end if ;
 #--- Import semantics component(s)
-  @M_semanticsEntitiesForUse semanticsEntitiesMap [emptyMap] ;
+  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+  @M_semanticsEntitiesForUse semanticsEntitiesMap ;
+  enterBuiltinTypes ?semanticsEntitiesMap ;
   repeat
   while
     $import$ ;
     $semantics$ ;
     @lstring semanticsComponentName ;
     $identifier$ ? semanticsComponentName ;
+    filesToImportInHeaderSet += ![semanticsComponentName string] ;
     $in$ ;    
     @lstring fileName ;
     $literal_string$ ? fileName ;
@@ -226,17 +232,24 @@ rule <parse_treewalking_document>
     end foreach ;
   end repeat ;
 #--- parse routine definitions
+  @treewalkingRoutineToGenerateList treewalkingRoutineToGenerateList [emptyList] ;
   repeat
   while
     <treewalking_routine>
       !semanticsEntitiesMap
       !metamodelEntityMap
       !metamodelMultiReferencedEntities
+      !optionsComponentsMapForUse
+      !?treewalkingRoutineToGenerateList
     ;
   end repeat ;
 #--- Generate code ?
   if inGenerateTreewalkingCode then
-    log semanticsEntitiesMap ;
+    action generate_treewalking
+      !treewalkingName
+      !filesToImportInHeaderSet
+      !treewalkingRoutineToGenerateList
+    ;
   end if ;
 #--- End of treewalking component
   $end$ ;
@@ -249,40 +262,59 @@ end rule ;
 rule <treewalking_routine>
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ??@stringset inMetamodelMultiReferencedEntities
+  ??@stringset unused inMetamodelMultiReferencedEntities
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@treewalkingRoutineToGenerateList ioTreewalkingRoutineToGenerateList
 :
   $rule$ ;
-  @lstring className ;
-  $mda_type_name$ ? className ;
+  @lstring metamodelClassName ;
+  $mda_type_name$ ? metamodelClassName ;
+  @entityPropertyMap allMetamodelPropertyMap ;
+  [inMetamodelEntityMap searchKey !metamodelClassName ?allMetamodelPropertyMap ?7*] ;
 #---- Formal arguments -----------------------------------------
   @typeTableEnAvant tableEnAvant [emptyMap] ;
   @L_EXsignature listeDeTypes ;
-  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
-  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @typeVariablesMap localVariableMap [emptyMap] ;
+  @typeListeTypesEtNomsArgMethode formalArgumentList ;
   @L_signature signatureForGrammarComponent ;
   <formal_arguments_list>
     !inSemanticsEntitiesMap
     ?listeDeTypes
-    !?tableArgumentsMethode
-    ?listeTypeEtNomsArguments
+    !?localVariableMap
+    ?formalArgumentList
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-#---- Instruction list
-  @typeInstructionList ioInstructionList [emptyList] ;
+#--- Add metamodel attributes as local constants
+  foreach allMetamodelPropertyMap (@lstring kKey @metamodelProperty kProperty) :
+    extract kProperty :
+    when @metamodelAttributeProperty (@AC_galgasType kType) ->
+      @typeCplusPlusName cppName := [@typeCurrentObjectName new !kKey] ;
+      [!?localVariableMap insertUsedConstInArgument !kKey ! kType !cppName] ;
+    else
+    end extract ;
+  end foreach ;
+#--- Instruction list
+  $:$ ;
+  @typeInstructionList instructionList [emptyList] ;
   @entityPropertyMap propertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
   @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
-@M_optionComponents inOptionsComponentsMapForUse [emptyMap] ;
   <semantic_instructions_list>
     !tableEnAvant
     !inSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
-    !?tableArgumentsMethode
-    !?ioInstructionList
+    !?localVariableMap
+    !?instructionList
     !?propertyMap
     !?constraintPropertyDefinitionSet
     !?callInstructionSharedPropertySignatureMap
+  ;
+#---
+  ioTreewalkingRoutineToGenerateList +=
+    !metamodelClassName
+    !formalArgumentList
+    !instructionList
   ;
 #--- End of rule
   $end$ ;
