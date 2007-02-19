@@ -1,0 +1,3 @@
+gui class_sample_language_cocoa "cocoa":
+import grammar class_sample_language_grammar in "class_sample_language_grammar.ggs" ;
+end gui ;

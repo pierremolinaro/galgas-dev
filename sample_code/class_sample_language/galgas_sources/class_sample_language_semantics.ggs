@@ -1,0 +1,37 @@
+semantics class_sample_language_semantics :
+  import option class_sample_language_options in "class_sample_language_options.ggs" ;
+
+mapindex @classMapIndex ;
+
+map @classMap {
+ # @lstring mSuperClassName ; # Empty if no super class
+  @classMapIndex mSuperClassIndex ;
+  insert insertKey error message "the '%K' class is already declared in %L" ;
+  search searchKey error message "the '%K' class is not declared" ;
+}
+
+mapindex @classMapIndex (@classMap) {
+  search searchKey error message "the '%K' class is not declared" ;
+}
+
+sortedlist @classesToGenerateList {
+  @lstring mClassName ;
+  @classMapIndex mSuperClassIndex ;
+  @string mClassPath ;
+}{
+  mClassPath <
+}
+
+#domain @classDomain {
+#  @string classSet ;
+#  inheritanceRelation [classSet, classSet] ;
+#}
+
+#sortedlist @sortedListSample {
+#  @char mChar ;
+#  @uint mValue ;
+#}{
+#  mChar <
+#}
+
+end semantics ;

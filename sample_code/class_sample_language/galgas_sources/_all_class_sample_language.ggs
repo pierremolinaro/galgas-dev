@@ -1,0 +1,8 @@
+compile "class_sample_language_lexique.ggs" ;
+compile "class_sample_language_options.ggs" ;
+compile "class_sample_language_semantics.ggs" ;
+compile "class_sample_language_syntax.ggs" ;
+compile "class_sample_language_grammar.ggs" ;
+compile "class_sample_language_cocoa.ggs" ;
+compile "class_sample_language_program.ggs" ;
+
