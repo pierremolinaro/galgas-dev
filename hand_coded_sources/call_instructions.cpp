@@ -412,7 +412,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
-      ioCppFile << ",  " ;
+      ioCppFile << ", " ;
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
@@ -442,42 +442,6 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
     argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_callInstruction::
-generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
-                     const C_String & inTargetFileName,
-                     sint32 & /* ioPrototypeIndex */,
-                     const bool /* inGenerateDebug */,
-                     const bool inGenerateSemanticInstructions) const {
-  if (inGenerateSemanticInstructions) {
-    mProperty (HERE)->generateCallInstruction (ioCppFile, mCalledPropertyName, inTargetFileName, mParameterList) ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_callInstruction::
-isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_callInstruction::
-formalArgumentIsUsed (const GGS_typeCplusPlusName & /* inArgumentCppName */,
-                      const bool /* inGenerateSemanticInstructions */) const {
-  return false ;
 }
 
 //---------------------------------------------------------------------------*

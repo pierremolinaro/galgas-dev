@@ -148,6 +148,9 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                       "                                                  const sint32 inIndentation = 0) const"
                    << (currentEntity->mInfo.mIsAbstract.boolValue () ? " = 0" : "")
                    << " ;\n" ;
+  //--- Class ID method Declaration                 
+    generatedZone3 << "//--- Class ID\n"
+                      "  public : virtual uint32 metamodelClassID (void) const ;\n" ;
   //--- Friend Declaration                 
     generatedZone3 << "//--- Friend Class\n"
                       "  friend class GGM__listOf_" << currentEntity->mKey << " ;\n" ;
@@ -351,6 +354,12 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
       currentProperty = currentProperty->nextObject () ;
     }
     generatedZone3 << "}\n\n" ;
+
+     generatedZone3.writeCppHyphenLineComment () ;
+     generatedZone3 << "uint32 GGM_" << currentEntity->mKey << "::\n"
+                       "metamodelClassID (void) const {\n"
+                       "  return " << currentEntity->mID << " ;\n"
+                       "}\n\n" ;
 
 //--- reader_description (C_Lexique & inLexique COMMA_LOCATION_ARGS)
     if (! currentEntity->mInfo.mIsAbstract.boolValue ()) {

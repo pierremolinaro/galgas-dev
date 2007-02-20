@@ -97,7 +97,7 @@ nonterminal <semantic_instructions_list>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
@@ -261,9 +261,30 @@ rule <parse_treewalking_document>
         !?treewalkingRoutineToGenerateList
       ;
     end repeat ;
-  end parse ; 
-#--- Generate code ?
+  end parse ;
+#--- Generate code, and additional checkings ?
   if inGenerateTreewalkingCode then
+  #--- check if a class define a routine, a routine defined by a super class 
+  #    should have the same signature
+    foreach treewalkingRoutineHeaderMap (@lstring kKey @L_EXsignature kRoutineSignature) :
+      @lstring entityName := kKey ;
+      log kRoutineSignature ;
+      loop [metamodelEntityMap count] : while [entityName string] != "" do
+        @lstring superEntityName ;
+        [metamodelEntityMap searchKey !entityName ?3* ?superEntityName ?4*] ;
+        if [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] then
+          @L_EXsignature superRoutineSignature ;
+          [treewalkingRoutineHeaderMap searchKey !superEntityName ?superRoutineSignature] ;
+          verifierCompatibiliteSignatures
+            ! kRoutineSignature
+            ! superRoutineSignature
+            ![kKey location]
+          ;
+        end if ;
+        entityName  := superEntityName ;
+      end loop ;
+    end foreach ;
+  #--- Generate code
     action generate_treewalking
       !treewalkingName
       !filesToImportInHeaderSet
@@ -317,7 +338,6 @@ rule <treewalking_routine>
 #--- Instruction list
   $:$ ;
   @typeInstructionList instructionList [emptyList] ;
-  @entityPropertyMap propertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
   <semantic_instructions_list>
     !inTreewalkingRoutineHeaderMap
@@ -326,7 +346,7 @@ rule <treewalking_routine>
     !inOptionsComponentsMapForUse
     !?localVariableMap
     !?instructionList
-    !?propertyMap
+    !allMetamodelPropertyMap
     !?constraintPropertyDefinitionSet
   ;
 #---
@@ -361,7 +381,7 @@ label firstLocalPhase
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-  [!?ioTreewalkingRoutineHeaderMap insertKey !metamodelClassName !formalArgumentList] ;
+  [!?ioTreewalkingRoutineHeaderMap insertKey !metamodelClassName !listeDeTypes] ;
 #--- Instruction list
   $:$ ;
   <semantic_instructions_list> parse ;

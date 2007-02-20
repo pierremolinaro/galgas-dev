@@ -155,63 +155,6 @@ generateFormalParameter (AC_OutputStream & inHFile,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateCallInstruction
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateCallInstruction (AC_OutputStream & /* ioCppFile */,
-                         const C_String & /* inCalledPropertyName */,
-                         const C_String & /* inTargetFileName */,
-                         const GGS_L_lstringList & /* inParameterList */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSingleReferenceProperty::
-generateCallInstruction (AC_OutputStream & ioCppFile,
-                         const C_String & inCalledPropertyName,
-                         const C_String & /* inTargetFileName */,
-                         const GGS_L_lstringList & inParameterList) const {
-  ioCppFile << "macroValidPointer (" << inCalledPropertyName << ") ;\n"
-            << inCalledPropertyName << "->_performTreeWalking (_inLexique" ;
-  GGS_L_lstringList::element_type * currentParameter = inParameterList.firstObject () ;
-  while (currentParameter != NULL) {
-    macroValidPointer (currentParameter) ;
-    ioCppFile  << ", " << currentParameter->mString ;
-    currentParameter = currentParameter->nextObject () ;
-  }
-  ioCppFile << ") ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMultipleReferenceProperty::
-generateCallInstruction (AC_OutputStream & ioCppFile,
-                         const C_String & inCalledPropertyName,
-                         const C_String & inTargetFileName,
-                         const GGS_L_lstringList & inParameterList) const {
-  ioCppFile << "{ GGM__" << inTargetFileName << "_ConstraintOn_" << mReferenceEntityName
-            << " * _ptr = " << inCalledPropertyName << ".mFirstObject ;\n"
-            << "  while (_ptr != NULL) {\n"
-               "    macroValidPointer (_ptr) ;\n"
-               "    _ptr->_performTreeWalking (_inLexique" ;
-  GGS_L_lstringList::element_type * currentParameter = inParameterList.firstObject () ;
-  while (currentParameter != NULL) {
-    macroValidPointer (currentParameter) ;
-    ioCppFile  << ", "<< currentParameter->mString ;
-    currentParameter = currentParameter->nextObject () ;
-  }
-  ioCppFile << ") ;\n"
-               "    _ptr = _ptr->_mNextObject ;\n"
-               "  }\n"
-               "}\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark generateMultiplicityConstraintChecking
 #endif
 

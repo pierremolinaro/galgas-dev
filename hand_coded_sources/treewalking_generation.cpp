@@ -27,6 +27,121 @@
 
 //---------------------------------------------------------------------------*
 
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark CALL instruction
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_callInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & inTargetFileName,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    mProperty (HERE)->generateCallInstruction (ioCppFile,
+                                               mEntityName,
+                                               mCalledPropertyName,
+                                               inTargetFileName,
+                                               mExpressionsList) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelProperty::
+generateCallInstruction (AC_OutputStream & /* ioCppFile */,
+                         const C_String & /* inEntityName */,
+                         const GGS_lstring & /* inCalledPropertyName */,
+                         const C_String & /* inTargetFileName */,
+                         const GGS_typeExpressionList & /* inParameterList */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelSingleReferenceProperty::
+generateCallInstruction (AC_OutputStream & ioCppFile,
+                         const C_String & inEntityName,
+                         const GGS_lstring & inCalledPropertyName,
+                         const C_String & /* inTargetFileName */,
+                         const GGS_typeExpressionList & inExpressionList) const {
+  ioCppFile << "macroValidPointer (_currentObject->" << inCalledPropertyName << ") ;\n"
+            << "_treewalking_routine_" << inEntityName << " (_inLexique, "
+               "_currentObject->" << inCalledPropertyName ;
+  GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
+  while (argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    ioCppFile << ", " ;
+    argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
+    argCourant = argCourant->nextObject () ;
+  }
+  /* ioCppFile << " SOURCE_FILE_AT_LINE ("
+            << inCalledPropertyName.currentLineNumber ()
+            << ")) ;\n" ; */
+  ioCppFile << ") ;\n" ; 
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_metamodelMultipleReferenceProperty::
+generateCallInstruction (AC_OutputStream & ioCppFile,
+                         const C_String & inEntityName,
+                         const GGS_lstring & inCalledPropertyName,
+                         const C_String & /* inTargetFileName */,
+                         const GGS_typeExpressionList & inExpressionList) const {
+  ioCppFile << "{ GGM_" << inEntityName << " * _ptr = _currentObject->"
+            << inCalledPropertyName << "._mFirstObject ;\n"
+            << "  while (_ptr != NULL) {\n"
+               "    macroValidPointer (_ptr) ;\n"
+               "    _treewalking_routine_" << inEntityName << " (_inLexique, _ptr" ;
+  GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
+  while (argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    ioCppFile << ", " ;
+    argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
+    argCourant = argCourant->nextObject () ;
+  }
+  ioCppFile << // " SOURCE_FILE_AT_LINE ("
+         //   << inCalledPropertyName.currentLineNumber ()
+         //   << ")) ;\n"
+               ") ;\n"
+               "    _ptr = _ptr->_mNextObject ;\n"
+               "  }\n"
+               "}\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_callInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_callInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark treewalking COMPONENT
+#endif
+
+//---------------------------------------------------------------------------*
+
 static void
 generate_treewalking_header (C_Lexique & inLexique,
         const GGS_lstring & inTreewalkingComponentName,
@@ -77,6 +192,13 @@ generate_treewalking_implementation (C_Lexique & inLexique,
 //--- Include declaration of header file
   generatedZone2 << "#include \"" << inTreewalkingComponentName << ".h\"\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "  static const char gGGSsourceFile [] = \"" << inLexique.sourceFileName ().lastPathComponent () << "\" ;\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
+                    "#else\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \n"
+                    "#endif\n\n" ;
 
   C_String generatedZone3 ; generatedZone3.setCapacity (200000) ;
 
@@ -101,6 +223,9 @@ generate_treewalking_implementation (C_Lexique & inLexique,
     generatedZone3 << ") ;\n\n" ;
     currentRoutine = currentRoutine->nextObject () ;
   }
+
+//--- Generate dispatcher
+  generatedZone3.writeCppTitleComment ("Dispatcher tables") ;
 
 //--- Generate routine implementation
   currentRoutine = inTreewalkingRoutineToGenerateList.firstObject () ;
