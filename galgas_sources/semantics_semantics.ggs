@@ -1373,62 +1373,25 @@ action generateSemanticsComponent
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#map @representativeEntityMap {
-#  @lstring mRepresentativeEntityName ;
-#  @stringset mSuperEntitySet ;
-#  insert insertKey error message "internal error: the '%K' entity has been already declared in %L" ;
-#  search searchKey error message "internal error: the '%K' entity is not declared" ;
-#}
-#
-#---------------------------------------------------------------------------*
-
-map @callInstructionSharedPropertySignatureMap {
-  @L_lstringList mEffectiveArgumentList ;
-  @location mSignatureLocation ;
-  insert insertKey error message "internal error: the '%K' property has been already declared in %L" ;
-  search searchKey error message "internal error: the '%K' property is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @callInstruction extends @typeInstruction {
   @lstring mCalledPropertyName ;
   @metamodelProperty mProperty ;
   @L_lstringList mParameterList ;
+#  @typeExpressionList mExpressionsList ;
 }
-
-#---------------------------------------------------------------------------*
-
-routine displayConstraintDefinitionErrors
-  ?@stringset inFirstBranchconstraintDefinitionSet
-  ?@stringset inCurrentBranchconstraintDefinitionSet
-:
-  @stringset missingDefinition := inFirstBranchconstraintDefinitionSet - inCurrentBranchconstraintDefinitionSet ;
-  foreach missingDefinition (@string kMissingDef) :
-   error here: "the '" . kMissingDef . "' property is initialized by first branch, but not by this one" ;
-  end foreach ;
-  @stringset unexpectedDefinition := inCurrentBranchconstraintDefinitionSet  - inFirstBranchconstraintDefinitionSet ;
-  foreach unexpectedDefinition (@string kUnexpectedDef) :
-   error here: "the '" . kUnexpectedDef . "' property is not initialized by first branch, but by this one" ;
-  end foreach ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine displayConstraintDefinitionErrorsNoElse
-  ?@stringset inFirstBranchConstraintDefinitionSet
-  ?@stringset inInheritedConstraintDefinitionSet
-:
-  @stringset missingDefinition := inFirstBranchConstraintDefinitionSet - inInheritedConstraintDefinitionSet ;
-  foreach missingDefinition (@string kMissingDef) :
-   error here: "the '" . kMissingDef . "' property is initialized by first branch, but there is no else branch" ;
-  end foreach ;
-end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    T R E E W A L K I N G     C O M P O N E N T                            *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+map @treewalkingRoutineHeaderMap {
+  @typeListeTypesEtNomsArgMethode mFormalArgumentList ;
+  insert insertKey error message "the '%K' treewalking routine has been already declared in %L" ;
+  search searchKey error message "the '%K' treewalking routine property is not declared" ;
+}
+
 #---------------------------------------------------------------------------*
 
 list @treewalkingRoutineToGenerateList {

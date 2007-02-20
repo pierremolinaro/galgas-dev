@@ -70,7 +70,11 @@ nonterminal <treewalking_routine>
   ??@entityToImplementMap inMetamodelEntityMap
   ??@stringset inMetamodelMultiReferencedEntities
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ?!@treewalkingRoutineToGenerateList ioTreewalkingRoutineToGenerateList
+label firstLocalPhase
+  ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
+  ?!@treewalkingRoutineHeaderMap ioTreewalkingRoutineHeaderMap
 label parse
 ;
 
@@ -87,6 +91,7 @@ label parse
 ;
 
 nonterminal <semantic_instructions_list>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -94,7 +99,6 @@ nonterminal <semantic_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
@@ -231,18 +235,33 @@ rule <parse_treewalking_document>
       end if ;
     end foreach ;
   end repeat ;
-#--- parse routine definitions
+#---------------------- parse routine definitions
+#--- FIRST PASS
   @treewalkingRoutineToGenerateList treewalkingRoutineToGenerateList [emptyList] ;
-  repeat
-  while
-    <treewalking_routine>
-      !semanticsEntitiesMap
-      !metamodelEntityMap
-      !metamodelMultiReferencedEntities
-      !optionsComponentsMapForUse
-      !?treewalkingRoutineToGenerateList
-    ;
-  end repeat ;
+  @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
+  parse do
+#--- FIRST PASS
+    repeat
+    while
+      <treewalking_routine> firstLocalPhase
+        !semanticsEntitiesMap
+        !?treewalkingRoutineHeaderMap
+      ;
+    end repeat ;
+  rewind
+#--- SECOND PASS
+    repeat
+    while
+      <treewalking_routine>
+        !semanticsEntitiesMap
+        !metamodelEntityMap
+        !metamodelMultiReferencedEntities
+        !optionsComponentsMapForUse
+        !treewalkingRoutineHeaderMap
+        !?treewalkingRoutineToGenerateList
+      ;
+    end repeat ;
+  end parse ; 
 #--- Generate code ?
   if inGenerateTreewalkingCode then
     action generate_treewalking
@@ -264,6 +283,7 @@ rule <treewalking_routine>
   ??@entityToImplementMap inMetamodelEntityMap
   ??@stringset unused inMetamodelMultiReferencedEntities
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ?!@treewalkingRoutineToGenerateList ioTreewalkingRoutineToGenerateList
 :
   $rule$ ;
@@ -299,8 +319,8 @@ rule <treewalking_routine>
   @typeInstructionList instructionList [emptyList] ;
   @entityPropertyMap propertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
-  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
   <semantic_instructions_list>
+    !inTreewalkingRoutineHeaderMap
     !tableEnAvant
     !inSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
@@ -308,7 +328,6 @@ rule <treewalking_routine>
     !?instructionList
     !?propertyMap
     !?constraintPropertyDefinitionSet
-    !?callInstructionSharedPropertySignatureMap
   ;
 #---
   ioTreewalkingRoutineToGenerateList +=
@@ -317,6 +336,36 @@ rule <treewalking_routine>
     !instructionList
   ;
 #--- End of rule
+  $end$ ;
+  $rule$ ;
+  $;$ ;
+label firstLocalPhase
+  ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
+  ?!@treewalkingRoutineHeaderMap ioTreewalkingRoutineHeaderMap
+:
+  $rule$ ;
+  @lstring metamodelClassName ;
+  $mda_type_name$ ? metamodelClassName ;
+  @entityPropertyMap allMetamodelPropertyMap ;
+#---- Formal arguments -----------------------------------------
+  @typeTableEnAvant tableEnAvant [emptyMap] ;
+  @L_EXsignature listeDeTypes ;
+  @typeVariablesMap localVariableMap [emptyMap] ;
+  @typeListeTypesEtNomsArgMethode formalArgumentList ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !inSemanticsEntitiesMap
+    ?listeDeTypes
+    !?localVariableMap
+    ?formalArgumentList
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  [!?ioTreewalkingRoutineHeaderMap insertKey !metamodelClassName !formalArgumentList] ;
+#--- Instruction list
+  $:$ ;
+  <semantic_instructions_list> parse ;
+#---
   $end$ ;
   $rule$ ;
   $;$ ;
