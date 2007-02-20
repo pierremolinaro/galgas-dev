@@ -291,260 +291,6 @@ generateInitInConstraintConstructor (AC_OutputStream & /* inHFile */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelMapProperty::
-generateInitInConstraintConstructor (AC_OutputStream & inHFile,
-                                     const C_String & /* inConstraintComponentName */,
-                                     const C_String & inPropertyName) const {
-  inHFile << ",\n" << inPropertyName << " (NULL)" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSharedMapProperty::
-generateInitInConstraintConstructor (AC_OutputStream & inHFile,
-                                     const C_String & /* inConstraintComponentName */,
-                                     const C_String & inPropertyName) const {
-  inHFile << ",\n" << inPropertyName << " (NULL)" ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateCreateInConstraintConstructor
-#endif
-
-//---------------------------------------------------------------------------*
-
-static void
-generate_constraint_object_creation (const GGS_representativeEntityMap & inRepresentativeEntityMap,
-                                     const GGS_entityToImplementMap & inConstrainedEntityMap,
-                                     const C_String & inBaseEntityName,
-                                     const C_String & inCurrentVariableName,
-                                     const C_String & inDestinationVar,
-                                     const GGS_lstring & inConstraintComponentName,
-                                     AC_OutputStream & inCppFile) {
-  // co << "inBaseEntityName: " << inBaseEntityName << "\n" ;
-  bool first = true ;
-  GGS_representativeEntityMap::element_type * currentRepresentantEntity = inRepresentativeEntityMap.firstObject () ;
-  while (currentRepresentantEntity != NULL) {
-    macroValidPointer (currentRepresentantEntity) ;
-    if (currentRepresentantEntity->mInfo.mSuperEntitySet.hasKey (inBaseEntityName)
-     && (currentRepresentantEntity->mInfo.mRepresentativeEntityName.length () > 0)
-     && (inConstrainedEntityMap.IDOfKey (currentRepresentantEntity->mKey) >= 0)) {
-      // co << "Key: " << currentRepresentantEntity->mKey << ", INFO: " << currentRepresentantEntity->mInfo.mRepresentativeEntityName << "\n" ;
-      if (first) {
-        first = false ;
-        inCppFile << "    if" ;
-      }else{
-        inCppFile << "    }else if" ;
-      }
-      inCppFile << " (typeid (GGM_" << currentRepresentantEntity->mKey << ") == typeid (* "
-                << inCurrentVariableName << ")) {\n"
-                   "      macroMyNew (" << inDestinationVar << ", GGM__"
-                << inConstraintComponentName << "_ConstraintOn_"  << currentRepresentantEntity->mInfo.mRepresentativeEntityName
-                << " ((GGM_" << currentRepresentantEntity->mKey << " *) " << inCurrentVariableName
-                << " COMMA_HERE)) ;\n" ;
-    }
-    currentRepresentantEntity = currentRepresentantEntity->nextObject () ;
-  }
-  if (! first) {
-    inCppFile << "    }\n" ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateCreateInConstraintConstructor (AC_OutputStream & /* inHFile */,
-                                       const GGS_lstring & /* inConstraintComponentName */,
-                                       const GGS_lstring & /* inPropertyName */,
-                                       const GGS_representativeEntityMap & /* inRepresentativeEntityMap */,
-                                       const GGS_entityToImplementMap & /* inConstrainedEntityMap */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMapProperty::
-generateCreateInConstraintConstructor (AC_OutputStream & inHFile,
-                                       const GGS_lstring & /* inConstraintComponentName */,
-                                       const GGS_lstring & inPropertyName,
-                                       const GGS_representativeEntityMap & /* inRepresentativeEntityMap */,
-                                       const GGS_entityToImplementMap & /* inConstrainedEntityMap */) const {
-  inHFile << "  macroMyNew (" << inPropertyName << ", GGM_" << mMapTypeName << " (HERE)) ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelAttributeProperty::
-generateCreateInConstraintConstructor (AC_OutputStream & inHFile,
-                                       const GGS_lstring & /* inConstraintComponentName */,
-                                       const GGS_lstring & inPropertyName,
-                                       const GGS_representativeEntityMap & /* inRepresentativeEntityMap */,
-                                       const GGS_entityToImplementMap & /* inConstrainedEntityMap */) const {
-  inHFile << "  " << inPropertyName << " = _inMetamodelObject->" << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMultipleReferenceProperty::
-generateCreateInConstraintConstructor (AC_OutputStream & inHFile,
-                                       const GGS_lstring & inConstraintComponentName,
-                                       const GGS_lstring & inPropertyName,
-                                       const GGS_representativeEntityMap & inRepresentativeEntityMap,
-                                       const GGS_entityToImplementMap & inConstrainedEntityMap) const {
-  C_String currentVarName = C_String ("_p_") ;
-  currentVarName << inPropertyName.currentLocation () ;
-  const C_String destinationVar ("_p") ;
-  inHFile << "  GGM_" << mReferenceEntityName << " * " << currentVarName
-          << " = _inMetamodelObject->" << inPropertyName << "._mFirstObject ;\n"
-          << "  while (" << currentVarName << " != NULL) {\n"
-             "    GGM__" << inConstraintComponentName << "_ConstraintOn_"
-          << mReferenceEntityName << " * " << destinationVar << " = NULL ;\n" ;
-  generate_constraint_object_creation (inRepresentativeEntityMap,
-                                       inConstrainedEntityMap,
-                                       mReferenceEntityName,
-                                       currentVarName,
-                                       destinationVar,
-                                       inConstraintComponentName,
-                                       inHFile) ;
-  inHFile << "    " << inPropertyName << ".add (" << destinationVar << ") ;\n"
-             "    " << currentVarName << " = " << currentVarName << "->_mNextObject ;\n"
-             "  }\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSingleReferenceProperty::
-generateCreateInConstraintConstructor (AC_OutputStream & inHFile,
-                                       const GGS_lstring & inConstraintComponentName,
-                                       const GGS_lstring & inPropertyName,
-                                       const GGS_representativeEntityMap & /* inRepresentativeEntityMap */,
-                                       const GGS_entityToImplementMap & /* inConstrainedEntityMap */) const {
-  inHFile << "  macroMyNew (" << inPropertyName
-          << ", GGM__" << inConstraintComponentName << "_ConstraintOn_"
-          << mReferenceEntityName << " (_inMetamodelObject->"
-          << inPropertyName << " COMMA_HERE)) ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateAttributeInConstraint
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateAttributeInConstraint (AC_OutputStream & /* inHFile */,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_mapIndexProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : C_GGS_MapIndex " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelAttributeProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : " ;
-  mAttributeType (HERE)->generateCppClassName (inHFile) ;
-  inHFile << " " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSingleReferenceProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile,
-                               const C_String & inConstraintComponentName,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM__" << inConstraintComponentName << "_ConstraintOn_" << mReferenceEntityName
-          << " * " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMultipleReferenceProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM__listOfConstraint_" << mReferenceEntityName
-          << " " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMapProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM_" << mMapTypeName
-          << " * " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSharedMapProperty::
-generateAttributeInConstraint (AC_OutputStream & inHFile,
-                               const C_String & /* inConstraintComponentName */,
-                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM_" << mMapTypeName
-          << " * " << inPropertyName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateDeleteInConstraintDestructor
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateDeleteInConstraintDestructor (AC_OutputStream & /* inHFile */,
-                                      const C_String & /* inConstraintComponentName */,
-                                      const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSingleReferenceProperty::
-generateDeleteInConstraintDestructor (AC_OutputStream & inHFile,
-                                      const C_String & inConstraintComponentName,
-                                      const C_String & inPropertyName) const {
-  inHFile << "  macroDetachPointer (" << inPropertyName
-          << ", GGM__" << inConstraintComponentName << "_ConstraintOn_"
-          << mReferenceEntityName << ") ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMapProperty::
-generateDeleteInConstraintDestructor (AC_OutputStream & inHFile,
-                                      const C_String & /* inConstraintComponentName */,
-                                      const C_String & inPropertyName) const {
-  inHFile << "  macroDetachPointer (" << inPropertyName << ", GGM_" << mMapTypeName << ") ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSharedMapProperty::
-generateDeleteInConstraintDestructor (AC_OutputStream & inHFile,
-                                      const C_String & /* inConstraintComponentName */,
-                                      const C_String & inPropertyName) const {
-  inHFile << "  macroDetachPointer (" << inPropertyName << ", GGM_" << mMapTypeName << ") ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark generateTreeWalkingFormalParameter
 #endif
@@ -555,17 +301,6 @@ void cPtr_metamodelProperty::
 generateTreeWalkingFormalParameter (AC_OutputStream & /* inHFile */,
                                     const C_String & /* inConstraintComponentName */,
                                     const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSharedMapProperty::
-generateTreeWalkingFormalParameter (AC_OutputStream & inHFile,
-                                    const C_String & /* inConstraintComponentName */,
-                                    const C_String & inPropertyName) const {
- inHFile << ",\n"
-            "                     GGM_"
-         << mMapTypeName << " * _inParameter_" << inPropertyName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -584,15 +319,6 @@ generateTreeWalkingEffectiveArgument (AC_OutputStream & /* inHFile */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelSharedMapProperty::
-generateTreeWalkingEffectiveArgument (AC_OutputStream & inHFile,
-                                      const C_String & /* inConstraintComponentName */,
-                                      const C_String & inPropertyName) const {
- inHFile << ", _inParameter_" << inPropertyName ;
-}
-
-//---------------------------------------------------------------------------*
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark generateTreeWalkingAttributAttachment
 #endif
@@ -603,16 +329,6 @@ void cPtr_metamodelProperty::
 generateTreeWalkingAttributAttachment (AC_OutputStream & /* inHFile */,
                                        const C_String & /* inConstraintComponentName */,
                                        const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelSharedMapProperty::
-generateTreeWalkingAttributAttachment (AC_OutputStream & inHFile,
-                                       const C_String & /* inConstraintComponentName */,
-                                       const C_String & inPropertyName) const {
- inHFile << "  macroAssignPointer (" << inPropertyName
-         << ", _inParameter_" << inPropertyName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -699,21 +415,6 @@ generateDescription (AC_OutputStream & /* inHFile */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelSharedMapProperty::
-generateDescription (AC_OutputStream & inHFile,
-                     const C_String & /* inConstraintComponentName */,
-                     const C_String & inPropertyName) const {
-  inHFile << "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
-             "  s << \"|-" << inPropertyName << ": shared map %" << mMapTypeName << " object \" ;\n"
-             "  if (" << inPropertyName << " == NULL) {\n"
-             "    s << \"NULL\\n\" ;\n"
-             "  }else{\n"
-             "    s << \"#\" << " << inPropertyName << "->mCreationIndex << \"\\n\" ;\n"
-             "  }\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_metamodelAttributeProperty::
 generateDescription (AC_OutputStream & inHFile,
                      const C_String & /* inConstraintComponentName */,
@@ -721,23 +422,6 @@ generateDescription (AC_OutputStream & inHFile,
   inHFile << "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
              "  s << \"|-" << inPropertyName << ": \" << "
           << inPropertyName << ".reader_description (_inLexique COMMA_THERE, inIndentation + 1) << \"\\n\" ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelMapProperty::
-generateDescription (AC_OutputStream & inHFile,
-                     const C_String & /* inConstraintComponentName */,
-                     const C_String & inPropertyName) const {
-  inHFile << "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
-             "  s << \"|-" << inPropertyName << ": map %" << mMapTypeName << " object \" ;\n"
-             "  if (" << inPropertyName << " == NULL) {\n"
-             "    s << \"NULL\\n\" ;\n"
-             "  }else{\n"
-             "    s << \"#\" << " << inPropertyName << "->mCreationIndex << \"\\n\" ;\n"
-             "  }\n" ;
-//             "  s << \"|-" << inPropertyName << ": \" << "
-//          << inPropertyName << ".reader_description (_inLexique COMMA_THERE, inIndentation + 1) << \"\\n\" ;\n" ;
 }
 
 //---------------------------------------------------------------------------*

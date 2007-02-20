@@ -22,11 +22,6 @@ class cPtr_metamodelSharedMapProperty : public cPtr_metamodelProperty {
 //--- START OF USER ZONE 2
 
   public : virtual void
-  generateAttributeInConstraint (AC_OutputStream & ioHFile,
-                                 const C_String & inConstraintComponentName,
-                                 const C_String & inPropertyName) const ;
-
-  public : virtual void
   generateInitInConstraintConstructor (AC_OutputStream & ioHFile,
                                        const C_String & inConstraintComponentName,
                                        const C_String & inPropertyName) const ;

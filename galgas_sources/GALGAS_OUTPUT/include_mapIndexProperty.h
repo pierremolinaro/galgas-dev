@@ -21,11 +21,6 @@ class cPtr_mapIndexProperty : public cPtr_metamodelProperty {
   private : typedef cPtr_metamodelProperty inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual void
-  generateAttributeInConstraint (AC_OutputStream & ioHFile,
-                                 const C_String & inConstraintComponentName,
-                                 const C_String & inPropertyName) const ;
-
 //--- END OF USER ZONE 2
 
 //--- Constructor
