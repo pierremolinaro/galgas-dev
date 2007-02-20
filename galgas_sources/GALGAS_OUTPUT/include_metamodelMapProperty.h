@@ -22,26 +22,9 @@ class cPtr_metamodelMapProperty : public cPtr_metamodelProperty {
 //--- START OF USER ZONE 2
 
   public : virtual void
-  generateAttributeInConstraint (AC_OutputStream & ioHFile,
-                                 const C_String & inConstraintComponentName,
-                                 const C_String & inPropertyName) const ;
-
-  public : virtual void
   generateInitInConstraintConstructor (AC_OutputStream & ioHFile,
                                        const C_String & inConstraintComponentName,
                                        const C_String & inPropertyName) const ;
-
-  public : virtual void
-  generateCreateInConstraintConstructor (AC_OutputStream & ioHFile,
-                                         const GGS_lstring & inConstraintComponentName,
-                                         const GGS_lstring & inPropertyName,
-                                         const GGS_representativeEntityMap & inRepresentativeEntityMap,
-                                         const GGS_entityToImplementMap & inConstrainedEntityMap) const ;
-
-  public : virtual void
-  generateDeleteInConstraintDestructor (AC_OutputStream & ioHFile,
-                                        const C_String & inConstraintComponentName,
-                                        const C_String & inPropertyName) const ;
 
   public : virtual void
   generateDescription (AC_OutputStream & ioHFile,

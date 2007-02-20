@@ -50,12 +50,7 @@ class cPtr_metamodelProperty : public C_GGS_Object {
   generateAttributeInMetamodel (AC_OutputStream & ioHFile,
                                 const C_String & inPropertyName) const ;
 
-  public : virtual void
-  generateAttributeInConstraint (AC_OutputStream & ioHFile,
-                                 const C_String & inConstraintComponentName,
-                                 const C_String & inPropertyName) const ;
-
-  public : virtual void
+ public : virtual void
   generateInitInConstraintConstructor (AC_OutputStream & ioHFile,
                              const C_String & inConstraintComponentName,
                              const C_String & inPropertyName) const ;
@@ -70,18 +65,6 @@ class cPtr_metamodelProperty : public C_GGS_Object {
                            const C_String & inCalledPropertyName,
                            const C_String & inTargetFileName,
                            const GGS_L_lstringList & inParameterList) const ;
-
-  public : virtual void
-  generateCreateInConstraintConstructor (AC_OutputStream & ioHFile,
-                                         const GGS_lstring & inConstraintComponentName,
-                                         const GGS_lstring & inPropertyName,
-                                         const GGS_representativeEntityMap & inRepresentativeEntityMap,
-                                         const GGS_entityToImplementMap & inConstrainedEntityMap) const ;
-
-  public : virtual void
-  generateDeleteInConstraintDestructor (AC_OutputStream & ioHFile,
-                                        const C_String & inConstraintComponentName,
-                                        const C_String & inPropertyName) const ;
 
   public : virtual void
   generateTreeWalkingFormalParameter (AC_OutputStream & ioHFile,

@@ -19,7 +19,6 @@
 grammar galgas_LL1_grammar "LL1" :
   import lexique galgas_scanner in "galgas_scanner.ggs" ;
   import option galgas_cli_options in "galgas_cli_options.ggs" ;
-  import syntax constraint_parser in "constraint_parser.ggs" ;
   import syntax cli_options_parser in "cli_options_parser.ggs" ;
   import syntax cocoa_parser in "cocoa_parser.ggs" ;
   import syntax scanner_parser in "scanner_parser.ggs" ;

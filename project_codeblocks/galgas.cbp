@@ -167,15 +167,6 @@
 			<Option target="galgasLR1_debug" />
 			<Option target="galgas_SLR_debug" />
 		</Unit>
-		<Unit filename="../galgas_sources/GALGAS_OUTPUT/constraint_parser.cpp">
-			<Option compilerVar="CC" />
-			<Option target="galgas" />
-			<Option target="galgas_debug" />
-			<Option target="galgas_SLR" />
-			<Option target="galgasLR1" />
-			<Option target="galgasLR1_debug" />
-			<Option target="galgas_SLR_debug" />
-		</Unit>
 		<Unit filename="../galgas_sources/GALGAS_OUTPUT/constraint_parser.h">
 			<Option compilerVar="CC" />
 			<Option compile="0" />
@@ -2717,15 +2708,6 @@
 			<Option target="galgas_SLR_debug" />
 		</Unit>
 		<Unit filename="../hand_coded_sources/cocoa_generation.cpp">
-			<Option compilerVar="CC" />
-			<Option target="galgas" />
-			<Option target="galgas_debug" />
-			<Option target="galgas_SLR" />
-			<Option target="galgasLR1" />
-			<Option target="galgasLR1_debug" />
-			<Option target="galgas_SLR_debug" />
-		</Unit>
-		<Unit filename="../hand_coded_sources/constraint_generation.cpp">
 			<Option compilerVar="CC" />
 			<Option target="galgas" />
 			<Option target="galgas_debug" />

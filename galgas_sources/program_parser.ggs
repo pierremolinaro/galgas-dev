@@ -138,17 +138,6 @@ rule <galgas_component>
         ;
       end select ;
       $;$ ;
-    or
-      $constraint$ ;
-      @lstring constraintComponentName ;
-      $identifier$ ? constraintComponentName ;
-      select
-      or
-        $in$ ;
-        @lstring sourceFile ;
-        $literal_string$ ?sourceFile ;
-      end select ;
-      $;$ ;
     end select ;
   while
     $import$ ;
@@ -328,15 +317,6 @@ label importLexique
         <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    or
-      $constraint$ ;
-      $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ?* ;
-      end select ;
-      $;$ ;
     end select ;
   while
     $import$ ;
@@ -421,15 +401,6 @@ label importSyntax
         $in$ ;
         $literal_string$ ?* ;
         <parse_semantics_component_for_importing> parse ;
-      end select ;
-      $;$ ;
-    or
-      $constraint$ ;
-      $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ?* ;
       end select ;
       $;$ ;
     end select ;
@@ -517,15 +488,6 @@ label importSemantics
         <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    or
-      $constraint$ ;
-      $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ?* ;
-      end select ;
-      $;$ ;
     end select ;
   while
     $import$ ;
@@ -611,15 +573,6 @@ label importGrammarForSemantics
         <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    or
-      $constraint$ ;
-      $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ?* ;
-      end select ;
-      $;$ ;
     end select ;
   while
     $import$ ;
@@ -703,16 +656,7 @@ label importOptions
         <parse_semantics_component_for_importing> parse ;
       end select ;
       $;$ ;
-    or
-      $constraint$ ;
-      $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ?* ;
-      end select ;
-      $;$ ;
-    end select ;
+   end select ;
   while
     $import$ ;
   end repeat ;

@@ -1373,13 +1373,13 @@ action generateSemanticsComponent
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @representativeEntityMap {
-  @lstring mRepresentativeEntityName ;
-  @stringset mSuperEntitySet ;
-  insert insertKey error message "internal error: the '%K' entity has been already declared in %L" ;
-  search searchKey error message "internal error: the '%K' entity is not declared" ;
-}
-
+#map @representativeEntityMap {
+#  @lstring mRepresentativeEntityName ;
+#  @stringset mSuperEntitySet ;
+#  insert insertKey error message "internal error: the '%K' entity has been already declared in %L" ;
+#  search searchKey error message "internal error: the '%K' entity is not declared" ;
+#}
+#
 #---------------------------------------------------------------------------*
 
 map @callInstructionSharedPropertySignatureMap {
@@ -1388,30 +1388,6 @@ map @callInstructionSharedPropertySignatureMap {
   insert insertKey error message "internal error: the '%K' property has been already declared in %L" ;
   search searchKey error message "internal error: the '%K' property is not declared" ;
 }
-
-#---------------------------------------------------------------------------*
-
-map @constraintInstructionListMap {
-  @typeInstructionList instructionsList ;
-  @callInstructionSharedPropertySignatureMap mCallInstructionSharedPropertySignatureMap ;
-  @location mEndOfInstructionList ;
-  insert insertKey error message "the instruction list of '%K' entity constraint  is already defined in %L" ;
-  search searchKey error message "the instruction list of '%K' constraint entity is not defined" ;
-}
-
-#---------------------------------------------------------------------------*
-
-action generate_constraints
-  ?@entityToImplementMap inEntityMap
-  ?@mapEntityMap inMapEntityMap
-  ?@lstring inMetamodelComponentName
-  ?@lstring inConstraintComponentName
-  ?@entityToImplementMap inConstrainedEntityMap
-  ?@stringset inMultiReferencedEntities
-  ?@lstring inRootEntityName
-  ?@representativeEntityMap inRepresentativeEntityMap
-  ?@constraintInstructionListMap inConstraintInstructionListMap
-;
 
 #---------------------------------------------------------------------------*
 

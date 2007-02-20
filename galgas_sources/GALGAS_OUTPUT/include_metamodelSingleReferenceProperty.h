@@ -30,29 +30,12 @@ class cPtr_metamodelSingleReferenceProperty : public cPtr_metamodelProperty {
   public : virtual bool isMetamodelDefined (void) const { return true ; }
 
   public : virtual void
-  generateCreateInConstraintConstructor (AC_OutputStream & ioHFile,
-                                         const GGS_lstring & inConstraintComponentName,
-                                         const GGS_lstring & inPropertyName,
-                                         const GGS_representativeEntityMap & inRepresentativeEntityMap,
-                                         const GGS_entityToImplementMap & inConstrainedEntityMap) const ;
-
-  public : virtual void
-  generateDeleteInConstraintDestructor (AC_OutputStream & ioHFile,
-                                        const C_String & inConstraintComponentName,
-                                        const C_String & inPropertyName) const ;
-
-  public : virtual void
   releasePropertyInDestructor (AC_OutputStream & ioHFile,
                                const C_String & inPropertyName) const ;
 
   public : virtual void
   descriptionReaderCall (AC_OutputStream & ioHFile,
                          const C_String & inPropertyName) const ;
-
-  public : virtual void
-  generateAttributeInConstraint (AC_OutputStream & ioHFile,
-                                 const C_String & inConstraintComponentName,
-                                 const C_String & inPropertyName) const ;
 
   public : virtual void
   generateAttributeInMetamodel (AC_OutputStream & ioHFile,

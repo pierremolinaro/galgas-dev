@@ -10,18 +10,6 @@
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		CF0196E409DC082D0000AD72 /* constraint_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0196E209DC082D0000AD72 /* constraint_parser.cpp */; };
-		CF0196E609DC082D0000AD72 /* constraint_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0196E209DC082D0000AD72 /* constraint_parser.cpp */; };
-		CF0196E809DC082D0000AD72 /* constraint_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0196E209DC082D0000AD72 /* constraint_parser.cpp */; };
-		CF0196EA09DC082D0000AD72 /* constraint_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0196E209DC082D0000AD72 /* constraint_parser.cpp */; };
-		CF0196EC09DC082D0000AD72 /* constraint_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0196E209DC082D0000AD72 /* constraint_parser.cpp */; };
-		CF0196EE09DC082D0000AD72 /* constraint_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0196E209DC082D0000AD72 /* constraint_parser.cpp */; };
-		CF01970B09DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
-		CF01970C09DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
-		CF01970D09DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
-		CF01970E09DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
-		CF01970F09DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
-		CF01971009DC288E0000AD72 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
 		CF0357DE0B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
 		CF0357DF0B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
 		CF0357E00B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
@@ -466,8 +454,6 @@
 		CF6DF18409E3F23700506859 /* metamodel_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */; };
 		CF6DF18509E3F23700506859 /* metamodel_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEC15F509CA026700204242 /* metamodel_generation.cpp */; };
 		CF6DF18609E3F23700506859 /* C_GGS_entityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEB5FD309D15D9F003FF985 /* C_GGS_entityMap.cpp */; };
-		CF6DF18709E3F23700506859 /* constraint_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0196E209DC082D0000AD72 /* constraint_parser.cpp */; };
-		CF6DF18809E3F23700506859 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
 		CF6DF18A09E3F23700506859 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
 		CF6DF19F09E3F30400506859 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF6DF1A009E3F30400506859 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
@@ -561,8 +547,6 @@
 		CF6DF1FE09E3F30400506859 /* metamodel_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */; };
 		CF6DF1FF09E3F30400506859 /* metamodel_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEC15F509CA026700204242 /* metamodel_generation.cpp */; };
 		CF6DF20009E3F30400506859 /* C_GGS_entityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEB5FD309D15D9F003FF985 /* C_GGS_entityMap.cpp */; };
-		CF6DF20109E3F30400506859 /* constraint_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0196E209DC082D0000AD72 /* constraint_parser.cpp */; };
-		CF6DF20209E3F30400506859 /* constraint_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01970A09DC288E0000AD72 /* constraint_generation.cpp */; };
 		CF6DF22909E3F3A700506859 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		CF6DF22A09E3F3A700506859 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		CF6DF22B09E3F3A700506859 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
@@ -1872,9 +1856,6 @@
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D15AC370486D014006FF6A4 /* cocoaGalgas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgas.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF0196E209DC082D0000AD72 /* constraint_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = constraint_parser.cpp; sourceTree = "<group>"; };
-		CF0196E309DC082D0000AD72 /* constraint_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = constraint_parser.h; sourceTree = "<group>"; };
-		CF01970A09DC288E0000AD72 /* constraint_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = constraint_generation.cpp; sourceTree = "<group>"; };
 		CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_mapIndexProperty.h; sourceTree = "<group>"; };
 		CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleEntity.h; sourceTree = "<group>"; };
 		CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_multipleEntity.h; sourceTree = "<group>"; };
@@ -2254,14 +2235,6 @@
 		CFD220450913ED2D0011F11E /* grammar_galgas_LR1_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_galgas_LR1_prgm.h; sourceTree = "<group>"; };
 		CFD220460913ED2D0011F11E /* grammar_galgas_SLR_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_galgas_SLR_prgm.h; sourceTree = "<group>"; };
 		CFD220470913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_jokerInParameterList.h; sourceTree = "<group>"; };
-		CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationAnd.h; sourceTree = "<group>"; };
-		CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationExpression.h; sourceTree = "<group>"; };
-		CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationFalse.h; sourceTree = "<group>"; };
-		CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationNot.h; sourceTree = "<group>"; };
-		CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationOr.h; sourceTree = "<group>"; };
-		CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationPrimary.h; sourceTree = "<group>"; };
-		CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationTrue.h; sourceTree = "<group>"; };
-		CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelRelationDo.h; sourceTree = "<group>"; };
 		CFD5E6150B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCallOfTypeMethodInstruction.h; sourceTree = "<group>"; };
 		CFD603420B1F1EFF00161209 /* TC_Array.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = TC_Array.h; sourceTree = "<group>"; };
 		CFD648AB0A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralDoubleExpression.h; sourceTree = "<group>"; };
@@ -2532,23 +2505,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CF0196E109DC08020000AD72 /* Constraint Component */ = {
-			isa = PBXGroup;
-			children = (
-				CF0196E209DC082D0000AD72 /* constraint_parser.cpp */,
-				CF0196E309DC082D0000AD72 /* constraint_parser.h */,
-			);
-			name = "Constraint Component";
-			sourceTree = "<group>";
-		};
-		CF01970009DC28010000AD72 /* Constraint Component */ = {
-			isa = PBXGroup;
-			children = (
-				CF01970A09DC288E0000AD72 /* constraint_generation.cpp */,
-			);
-			name = "Constraint Component";
-			sourceTree = "<group>";
-		};
 		CF1EF6840AD15C720091DDE8 /* cocoa */ = {
 			isa = PBXGroup;
 			children = (
@@ -2704,14 +2660,6 @@
 				CFC1767209FE1CD30026596C /* include_typeSubOperation.h */,
 				CFD1939909FCFC0300920886 /* include_typeAddOperation.h */,
 				CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */,
-				CFD568C309D6FE5200349459 /* include_metamodelRelationDo.h */,
-				CFD567DF09D6C37600349459 /* include_metamodelRelationAnd.h */,
-				CFD567E009D6C37600349459 /* include_metamodelRelationExpression.h */,
-				CFD567E109D6C37600349459 /* include_metamodelRelationFalse.h */,
-				CFD567E209D6C37600349459 /* include_metamodelRelationNot.h */,
-				CFD567E309D6C37600349459 /* include_metamodelRelationOr.h */,
-				CFD567E409D6C37600349459 /* include_metamodelRelationPrimary.h */,
-				CFD567E509D6C37600349459 /* include_metamodelRelationTrue.h */,
 				CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */,
 				CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */,
 				CF446B6609C9C50D005CBDC8 /* include_TypeModel.h */,
@@ -2995,7 +2943,6 @@
 			children = (
 				CFD2149A0913BDFA0011F11E /* Include Files */,
 				CFDB3A700B8866BF00DDA180 /* Tree walking */,
-				CF0196E109DC08020000AD72 /* Constraint Component */,
 				CF446B5709C9C4A7005CBDC8 /* Metamodel Component */,
 				CFF13E4E0597345100C43F5E /* Galgas CLI Options */,
 				CFF53727057A4D3F00854C83 /* Common Semantics */,
@@ -3025,7 +2972,6 @@
 				CFA3131809FD3B95006B55E7 /* cTableMethodesAimplementer.hh */,
 				CFEC15F109CA021000204242 /* Metamodel Component */,
 				CFFC8C830B8A04AC00920BB1 /* Treewalking Component */,
-				CF01970009DC28010000AD72 /* Constraint Component */,
 				CF3E627C096EE48300419EBB /* Project Creation */,
 				CFEEBE6905C056DD009FE498 /* Cocoa Component */,
 				CFF13E40059730FA00C43F5E /* Option Component */,
@@ -4650,8 +4596,6 @@
 				CF446B5A09C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */,
 				CFEC160109CA026700204242 /* metamodel_generation.cpp in Sources */,
 				CFEB5FD509D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */,
-				CF0196E409DC082D0000AD72 /* constraint_parser.cpp in Sources */,
-				CF01970B09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CF6556DA0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF69B2820A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF546CE90A3476300076D39C /* GGS_uint64.cpp in Sources */,
@@ -4770,8 +4714,6 @@
 				CF6DF18409E3F23700506859 /* metamodel_parser.cpp in Sources */,
 				CF6DF18509E3F23700506859 /* metamodel_generation.cpp in Sources */,
 				CF6DF18609E3F23700506859 /* C_GGS_entityMap.cpp in Sources */,
-				CF6DF18709E3F23700506859 /* constraint_parser.cpp in Sources */,
-				CF6DF18809E3F23700506859 /* constraint_generation.cpp in Sources */,
 				CF6556E60A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF69B28E0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF546CF50A3476300076D39C /* GGS_uint64.cpp in Sources */,
@@ -4890,8 +4832,6 @@
 				CF6DF1FE09E3F30400506859 /* metamodel_parser.cpp in Sources */,
 				CF6DF1FF09E3F30400506859 /* metamodel_generation.cpp in Sources */,
 				CF6DF20009E3F30400506859 /* C_GGS_entityMap.cpp in Sources */,
-				CF6DF20109E3F30400506859 /* constraint_parser.cpp in Sources */,
-				CF6DF20209E3F30400506859 /* constraint_generation.cpp in Sources */,
 				CF6556E80A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF69B2900A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF546CF70A3476300076D39C /* GGS_uint64.cpp in Sources */,
@@ -5047,8 +4987,6 @@
 				CF446B5C09C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */,
 				CFEC15F709CA026700204242 /* metamodel_generation.cpp in Sources */,
 				CFEB5FD709D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */,
-				CF0196E609DC082D0000AD72 /* constraint_parser.cpp in Sources */,
-				CF01970C09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CF6556DC0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF69B2840A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF546CEB0A3476300076D39C /* GGS_uint64.cpp in Sources */,
@@ -5167,8 +5105,6 @@
 				CF446B5E09C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */,
 				CFEC15F909CA026700204242 /* metamodel_generation.cpp in Sources */,
 				CFEB5FD909D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */,
-				CF0196E809DC082D0000AD72 /* constraint_parser.cpp in Sources */,
-				CF01970D09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CF6556DE0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF69B2860A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF546CED0A3476300076D39C /* GGS_uint64.cpp in Sources */,
@@ -5287,8 +5223,6 @@
 				CF446B6009C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */,
 				CFEC15FD09CA026700204242 /* metamodel_generation.cpp in Sources */,
 				CFEB5FDB09D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */,
-				CF0196EA09DC082D0000AD72 /* constraint_parser.cpp in Sources */,
-				CF01970E09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CF6556E00A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF69B2880A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF546CEF0A3476300076D39C /* GGS_uint64.cpp in Sources */,
@@ -5407,8 +5341,6 @@
 				CF446B6209C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */,
 				CFEC15FB09CA026700204242 /* metamodel_generation.cpp in Sources */,
 				CFEB5FDD09D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */,
-				CF0196EC09DC082D0000AD72 /* constraint_parser.cpp in Sources */,
-				CF01970F09DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CF6556E20A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF69B28A0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF546CF10A3476300076D39C /* GGS_uint64.cpp in Sources */,
@@ -5527,8 +5459,6 @@
 				CF446B6409C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */,
 				CFEC15FF09CA026700204242 /* metamodel_generation.cpp in Sources */,
 				CFEB5FDF09D15D9F003FF985 /* C_GGS_entityMap.cpp in Sources */,
-				CF0196EE09DC082D0000AD72 /* constraint_parser.cpp in Sources */,
-				CF01971009DC288E0000AD72 /* constraint_generation.cpp in Sources */,
 				CF6556E40A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF69B28C0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF546CF30A3476300076D39C /* GGS_uint64.cpp in Sources */,

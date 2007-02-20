@@ -19,7 +19,6 @@
 
 compile "semantics_semantics.ggs" ;
 compile "treewalking_parser.ggs" ;
-compile "constraint_parser.ggs" ;
 compile "domain_parser.ggs" ;
 compile "semantics_parser.ggs" ;
 compile "common_semantics.ggs" ;
