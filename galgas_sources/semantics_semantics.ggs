@@ -1369,27 +1369,14 @@ action generateSemanticsComponent
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    C O N S T R A I N T     C O M P O N E N T                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @callInstruction extends @typeInstruction {
-  @lstring mCalledPropertyName ;
-  @metamodelProperty mProperty ;
-  @L_lstringList mParameterList ;
-#  @typeExpressionList mExpressionsList ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    T R E E W A L K I N G     C O M P O N E N T                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 map @treewalkingRoutineHeaderMap {
-  @typeListeTypesEtNomsArgMethode mFormalArgumentList ;
+  @L_EXsignature mRoutineSignature ;
   insert insertKey error message "the '%K' treewalking routine has been already declared in %L" ;
-  search searchKey error message "the '%K' treewalking routine property is not declared" ;
+  search searchKey error message "the '%K' treewalking routine is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1407,6 +1394,15 @@ action generate_treewalking
   ??@stringset inFilesToImportInHeaderSet
   ??@treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList
 ;
+
+#---------------------------------------------------------------------------*
+
+class @callInstruction extends @typeInstruction {
+  @lstring mCalledPropertyName ;
+  @lstring mEntityName ;
+  @metamodelProperty mProperty ;
+  @typeExpressionList mExpressionsList ;
+}
 
 #---------------------------------------------------------------------------*
 

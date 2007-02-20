@@ -131,7 +131,7 @@ nonterminal <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
@@ -1743,7 +1743,7 @@ rule <syntax_instructions_list_no_verif>
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
-      !?propertyMap
+      !propertyMap
       !?constraintPropertyDefinitionSet
     ;
   end repeat ;

@@ -233,7 +233,7 @@ nonterminal <semantic_instructions_list>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
@@ -245,7 +245,7 @@ nonterminal <semantic_instructions_list_no_verif>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
@@ -257,7 +257,7 @@ nonterminal <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
@@ -272,7 +272,7 @@ nonterminal <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@typeInstruction outInstruction
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
@@ -1072,7 +1072,7 @@ rule <semantics_declaration>
       !inOptionsComponentsMapForUse
       !?tableArgumentsMethode
       !?ioInstructionList
-      !?propertyMap
+      !propertyMap
       !?constraintPropertyDefinitionSet
     ;
     $end$ ;
@@ -1679,7 +1679,7 @@ rule <parse_method>
     !inOptionsComponentsMapForUse
     !?methodLocalVariablesMap
     !?outInstructionsList
-    !?propertyMap
+    !propertyMap
     !?constraintPropertyDefinitionSet
   ;
 end rule ;
@@ -2448,7 +2448,7 @@ rule <semantic_instructions_list>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   block ioVariablesMap.verifyVariableUsing () :
@@ -2459,7 +2459,7 @@ rule <semantic_instructions_list>
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
-      !?ioPropertyMap
+      !inPropertyMap
       !?ioConstraintPropertyDefinitionSet
     ;
   end block (!here) ;
@@ -2472,57 +2472,57 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
-  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
-  ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ?!@typeVariablesMap unused ioVariablesMap
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
+  ??@entityPropertyMap inPropertyMap
+  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $call$ ;
 #--- Called property
   @lstring calledPropertyName ;
   $identifier$ ?calledPropertyName ;
   @metamodelProperty property ;
-  [ioPropertyMap searchKey !calledPropertyName ?property] ;
+  [inPropertyMap searchKey !calledPropertyName ?property] ;
+  @lstring entityName ;
   extract property :
-  when @metamodelSingleReferenceProperty (*) -> #@lstring kEntityName) ->
-    if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName string]] then
-      error calledPropertyName: "this property has been already initialized" ;
-    else
-      ioConstraintPropertyDefinitionSet += ![calledPropertyName string] ;
-    end if ;
-  when @metamodelMultipleReferenceProperty (* * *) -> #@lstring kEntityName) ->
-    if [ioConstraintPropertyDefinitionSet hasKey ![calledPropertyName string]] then
-      error calledPropertyName: "this property has been already initialized" ;
-    else
-      ioConstraintPropertyDefinitionSet += ![calledPropertyName string] ;
-    end if ;
+  when @metamodelSingleReferenceProperty (@lstring kEntityName) ->
+    entityName := kEntityName ;
+  when @metamodelMultipleReferenceProperty (@lstring kEntityName 2*) ->
+    entityName := kEntityName ;
   else
-    error calledPropertyName: "this property should be a single or a multiple reference" ;
+    error calledPropertyName: "this property should be a single or a multiple reference" -> entityName ;
   end extract ;
-#--- Effective parameters
-  @L_lstringList parameterList [emptyList] ;
-  select
-  or
-    $($ ;
-    repeat
-      @lstring propertyArgumentName ;
-      $identifier$ ?propertyArgumentName ;
-      parameterList += !propertyArgumentName ;
-    while
-      $,$ ;
-    end repeat ;
-    $)$ ;
-  end select ;
+#--- Check a treewalking routine is actually defined
+  @L_EXsignature routineSignature ;
+  if [inTreewalkingRoutineHeaderMap hasKey ![entityName string]] then
+    [inTreewalkingRoutineHeaderMap searchKey !entityName ?routineSignature] ;
+  else
+    error calledPropertyName:
+      "there is no treewalking routine for the '%" . [entityName string] . "' metamodel class"
+      -> routineSignature
+    ;
+  end if ;
+#--- Check argument list types
+  @typeExpressionList expressionsList ;
+  <actual_parameters_list>
+    !routineSignature
+    ?expressionsList
+    !?ioVariablesMap
+    !inOptionsComponentsMapForUse
+    !ioComponentSemanticsEntitiesMap
+    !?ioInstructionList
+  ;
   $;$ ;
 #--- Generate instruction
   @typeInstruction instruction := [@callInstruction new
     !calledPropertyName
+    !entityName
     !property
-    !parameterList
+    !expressionsList
   ] ;
   ioInstructionList += !instruction ;
 end rule ;
@@ -2540,7 +2540,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $extract$ ;
@@ -2567,7 +2567,7 @@ rule <semantic_instruction>
     !nomTypeSource
     !tableMessagesAbstraits
     ?instruction
-    !?ioPropertyMap
+    !inPropertyMap
     !?ioConstraintPropertyDefinitionSet
   ;
   ioInstructionList += !instruction ;
@@ -2588,7 +2588,7 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@typeInstruction outInstruction
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
 #--- Nom de la classe pour la conversion
@@ -2665,7 +2665,7 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap unused tableMessagesAbstraits
   !@typeInstruction outInstruction
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   @typeStructuredExtractCasesList casesList [emptyList] ;
@@ -2718,7 +2718,7 @@ rule <extract_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
-          !?ioPropertyMap
+          !inPropertyMap
           !?ioConstraintPropertyDefinitionSet
         ;
         casesList += !nomType1 !indicatif1 !instructionsList !noUsedParameter ;
@@ -2737,7 +2737,7 @@ rule <extract_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elseInstructionList
-        !?ioPropertyMap
+        !inPropertyMap
         !?ioConstraintPropertyDefinitionSet
       ;
       outInstruction := [@typeStructuredExtractInstructionWithElse new
@@ -2762,7 +2762,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
 #--- Type name
@@ -2806,7 +2806,7 @@ rule <semantic_instruction>
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $log$ ;
@@ -2836,7 +2836,7 @@ rule <semantic_instruction>
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $drop$ ;
@@ -2904,7 +2904,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
 #--- Action name
@@ -2956,7 +2956,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $[$ ;
@@ -3055,7 +3055,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   @lstring nomVarDest ;
@@ -3084,7 +3084,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $warning$ ;
@@ -3132,7 +3132,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $error$ ;
@@ -3199,7 +3199,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $message$ ;
@@ -3235,7 +3235,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $if$ ;
@@ -3265,7 +3265,7 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheTest
-          !?ioPropertyMap
+          !inPropertyMap
           !?constraintPropertyDefinitionSet
         ;
         listeBranchesTest += !testBranche !listeInstructionsBrancheTest ;
@@ -3286,7 +3286,7 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheAutre
-          !?ioPropertyMap
+          !inPropertyMap
           !?constraintPropertyDefinitionSet
         ;
      end select ; 
@@ -3315,7 +3315,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $switch$ ;
@@ -3365,7 +3365,7 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?branchInstructionList
-          !?ioPropertyMap
+          !inPropertyMap
           !?constraintPropertyDefinitionSet
         ;
         switchBranchlist += !branchConstantSet !branchInstructionList ;
@@ -3401,7 +3401,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $loop$ ;
@@ -3429,7 +3429,7 @@ rule <semantic_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList1
-        !?ioPropertyMap
+        !inPropertyMap
         !?ioConstraintPropertyDefinitionSet
       ;
     end block (!here) ;
@@ -3459,7 +3459,7 @@ rule <semantic_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList2
-        !?ioPropertyMap
+        !inPropertyMap
         !?ioConstraintPropertyDefinitionSet
       ;
     end block (!here) ;
@@ -3490,7 +3490,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap unused ioPropertyMap
+  ??@entityPropertyMap unused inPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $grammar$ ;
@@ -3561,7 +3561,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $foreach$ ;
@@ -3629,7 +3629,7 @@ rule <semantic_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList
-        !?ioPropertyMap
+        !inPropertyMap
         !?ioConstraintPropertyDefinitionSet
       ;
     end block (!here) ;
@@ -3768,7 +3768,7 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $match$ ;
@@ -3843,7 +3843,7 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
-          !?ioPropertyMap
+          !inPropertyMap
           !?ioConstraintPropertyDefinitionSet
         ;
         casesList += !case1_name !case2_name !instructionsList ;
@@ -3860,7 +3860,7 @@ rule <semantic_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elsePartInstructionsList
-        !?ioPropertyMap
+        !inPropertyMap
         !?ioConstraintPropertyDefinitionSet
       ;
     end block (!here) ;
@@ -3891,7 +3891,7 @@ rule <semantic_instructions_list_no_verif>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ?!@entityPropertyMap ioPropertyMap
+  ??@entityPropertyMap inPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 :
   repeat
@@ -3903,7 +3903,7 @@ rule <semantic_instructions_list_no_verif>
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
-      !?ioPropertyMap
+      !inPropertyMap
       !?ioConstraintPropertyDefinitionSet
     ;
   end repeat ;

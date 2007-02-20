@@ -10,6 +10,7 @@
 
 class GGS_representativeEntityMap ;
 class GGS_entityToImplementMap ;
+class GGS_typeExpressionList ;
 
 //--- END OF USER ZONE 1
 
@@ -62,9 +63,10 @@ class cPtr_metamodelProperty : public C_GGS_Object {
 
   public : virtual void
   generateCallInstruction (AC_OutputStream & ioCppFile,
-                           const C_String & inCalledPropertyName,
+                           const C_String & inEntityName,
+                           const GGS_lstring & inCalledPropertyName,
                            const C_String & inTargetFileName,
-                           const GGS_L_lstringList & inParameterList) const ;
+                           const GGS_typeExpressionList & inParameterList) const ;
 
   public : virtual void
   generateTreeWalkingFormalParameter (AC_OutputStream & ioHFile,

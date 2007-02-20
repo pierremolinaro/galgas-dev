@@ -47,9 +47,10 @@ class cPtr_metamodelMultipleReferenceProperty : public cPtr_metamodelProperty {
 
   public : virtual void
   generateCallInstruction (AC_OutputStream & ioCppFile,
-                           const C_String & inCalledPropertyName,
+                           const C_String & inEntityName,
+                           const GGS_lstring & inCalledPropertyName,
                            const C_String & inTargetFileName,
-                           const GGS_L_lstringList & inParameterList) const ;
+                           const GGS_typeExpressionList & inParameterList) const ;
 
   public : virtual void
   generateDescription (AC_OutputStream & ioHFile,
