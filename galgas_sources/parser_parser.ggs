@@ -125,6 +125,7 @@ label parse
 ;
 
 nonterminal <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -132,7 +133,6 @@ nonterminal <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
@@ -1719,8 +1719,8 @@ rule <syntax_instructions_list_no_verif>
 :
   @entityPropertyMap propertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
-  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
   @typeTableEnAvant tableEnAvant [emptyMap] ;
+  @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
   repeat
   while
     <syntax_instruction>
@@ -1737,6 +1737,7 @@ rule <syntax_instructions_list_no_verif>
     ;
   while
     <semantic_instruction>
+      !treewalkingRoutineHeaderMap
       !tableEnAvant
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
@@ -1744,7 +1745,6 @@ rule <syntax_instructions_list_no_verif>
       !?ioInstructionList
       !?propertyMap
       !?constraintPropertyDefinitionSet
-      !?callInstructionSharedPropertySignatureMap
     ;
   end repeat ;
 label importSyntax

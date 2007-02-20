@@ -227,6 +227,7 @@ label parse
 ;
 
 nonterminal <semantic_instructions_list>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -234,11 +235,11 @@ nonterminal <semantic_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
 nonterminal <semantic_instructions_list_no_verif>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -246,11 +247,11 @@ nonterminal <semantic_instructions_list_no_verif>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
 nonterminal <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -258,11 +259,11 @@ nonterminal <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
 nonterminal <extract_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -273,7 +274,6 @@ nonterminal <extract_instruction>
   !@typeInstruction outInstruction
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 label parse
 ;
 
@@ -322,6 +322,7 @@ label parse
 ;
 
 nonterminal <instruction_beginning_with_identifier>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -503,6 +504,7 @@ rule <galgas_component>
     @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
     @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [emptyMap] ;
     @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
+    @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
     repeat
     while
       <semantics_declaration>
@@ -1062,8 +1064,9 @@ rule <semantics_declaration>
     @typeInstructionList ioInstructionList [emptyList] ;
     @entityPropertyMap propertyMap [emptyMap] ;
     @stringset constraintPropertyDefinitionSet [emptySet] ;
-    @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+    @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
     <semantic_instructions_list>
+      !treewalkingRoutineHeaderMap
       !tableEnAvant
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
@@ -1071,7 +1074,6 @@ rule <semantics_declaration>
       !?ioInstructionList
       !?propertyMap
       !?constraintPropertyDefinitionSet
-      !?callInstructionSharedPropertySignatureMap
     ;
     $end$ ;
     $routine$ ;
@@ -1669,8 +1671,9 @@ rule <parse_method>
   outInstructionsList := [@typeInstructionList emptyList] ;
   @entityPropertyMap propertyMap [emptyMap] ;
   @stringset constraintPropertyDefinitionSet [emptySet] ;
-  @callInstructionSharedPropertySignatureMap callInstructionSharedPropertySignatureMap [emptyMap] ;
+  @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
   <semantic_instructions_list>
+    !treewalkingRoutineHeaderMap
     !tableEnAvant
     !componentSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
@@ -1678,7 +1681,6 @@ rule <parse_method>
     !?outInstructionsList
     !?propertyMap
     !?constraintPropertyDefinitionSet
-    !?callInstructionSharedPropertySignatureMap
   ;
 end rule ;
 
@@ -1998,6 +2000,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <instruction_beginning_with_identifier>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ?@lstring inTargetVarName
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -2033,6 +2036,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <instruction_beginning_with_identifier>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ?@lstring inTargetVarName
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -2155,6 +2159,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <instruction_beginning_with_identifier>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -2214,6 +2219,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <instruction_beginning_with_identifier>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -2273,6 +2279,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <instruction_beginning_with_identifier>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -2300,6 +2307,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <instruction_beginning_with_identifier>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -2434,6 +2442,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instructions_list>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2441,10 +2450,10 @@ rule <semantic_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   block ioVariablesMap.verifyVariableUsing () :
     <semantic_instructions_list_no_verif>
+      !inTreewalkingRoutineHeaderMap
       !inTableEnAvant
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
@@ -2452,7 +2461,6 @@ rule <semantic_instructions_list>
       !?ioInstructionList
       !?ioPropertyMap
       !?ioConstraintPropertyDefinitionSet
-      !?ioCallInstructionSharedPropertySignatureMap
     ;
   end block (!here) ;
 end rule ;
@@ -2464,6 +2472,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -2471,7 +2480,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $call$ ;
 #--- Called property
@@ -2509,26 +2517,6 @@ rule <semantic_instruction>
     end repeat ;
     $)$ ;
   end select ;
-#--- Check parameter type list
-  if [ioCallInstructionSharedPropertySignatureMap hasKey ![calledPropertyName string]] then
-    @L_lstringList previousParameterList ;
-    @location previousParameterTypeListLocation ;
-    [ioCallInstructionSharedPropertySignatureMap searchKey !calledPropertyName ?previousParameterList ?previousParameterTypeListLocation] ;
-    if [previousParameterList length] == [parameterList length] then
-#      foreach previousParameterList (??@lstring kPreviousTypeName), parameterTypeList (??@lstring kCurrentTypeName) :
-#        if [kPreviousTypeName string] != [kCurrentTypeName string] then
-#          error kCurrentPropertyName: "this shared property has '@" . [kCurrentTypeName string]
-#          . "' type, while a previous call has named an attribute of type '@" . [kPreviousTypeName string] . "'" ;
-#        end if ;
-#      end foreach ;
-    else
-     error previousParameterTypeListLocation:"this instruction names " . [[parameterList length] string]
-     . " shared parameter(s), while a previous call has named "  . [[previousParameterList length] string]
-     . " parameter(s)" ;
-    end if ;
-  else
-    [!?ioCallInstructionSharedPropertySignatureMap insertKey !calledPropertyName !parameterList !here] ;
-  end if ;
   $;$ ;
 #--- Generate instruction
   @typeInstruction instruction := [@callInstruction new
@@ -2546,6 +2534,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2553,7 +2542,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $extract$ ;
 #--- Source variable
@@ -2570,6 +2558,7 @@ rule <semantic_instruction>
 #--- Parse simple or structured extract instruction
   @typeInstruction instruction ;
   <extract_instruction>
+    !inTreewalkingRoutineHeaderMap
     !inTableEnAvant
     !ioComponentSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
@@ -2580,7 +2569,6 @@ rule <semantic_instruction>
     ?instruction
     !?ioPropertyMap
     !?ioConstraintPropertyDefinitionSet
-    !?ioCallInstructionSharedPropertySignatureMap
   ;
   ioInstructionList += !instruction ;
   $;$ ;
@@ -2591,6 +2579,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <extract_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2601,7 +2590,6 @@ rule <extract_instruction>
   !@typeInstruction outInstruction
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
 #--- Nom de la classe pour la conversion
   $->$ ;
@@ -2668,6 +2656,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <extract_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2678,7 +2667,6 @@ rule <extract_instruction>
   !@typeInstruction outInstruction
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   @typeStructuredExtractCasesList casesList [emptyList] ;
   $:$ ;
@@ -2724,6 +2712,7 @@ rule <extract_instruction>
         $->$ ;
         @typeInstructionList instructionsList [emptyList] ;
         <semantic_instructions_list>
+          !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
           !ioComponentSemanticsEntitiesMap
           !inOptionsComponentsMapForUse
@@ -2731,7 +2720,6 @@ rule <extract_instruction>
           !?instructionsList
           !?ioPropertyMap
           !?ioConstraintPropertyDefinitionSet
-          !?ioCallInstructionSharedPropertySignatureMap
         ;
         casesList += !nomType1 !indicatif1 !instructionsList !noUsedParameter ;
       end block (!here) ;
@@ -2743,6 +2731,7 @@ rule <extract_instruction>
       $else$ ;
       @typeInstructionList elseInstructionList [emptyList] ;
       <semantic_instructions_list>
+        !inTreewalkingRoutineHeaderMap
         !inTableEnAvant
         !ioComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
@@ -2750,7 +2739,6 @@ rule <extract_instruction>
         !?elseInstructionList
         !?ioPropertyMap
         !?ioConstraintPropertyDefinitionSet
-        !?ioCallInstructionSharedPropertySignatureMap
       ;
       outInstruction := [@typeStructuredExtractInstructionWithElse new
         !inSourceVarCppName !casesList !elseInstructionList
@@ -2768,6 +2756,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2775,7 +2764,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
 #--- Type name
   @AC_galgasType definitionType ;
@@ -2812,6 +2800,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -2819,7 +2808,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $log$ ;
   repeat
@@ -2842,6 +2830,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -2849,7 +2838,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $drop$ ;
   repeat
@@ -2874,6 +2862,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <instruction_beginning_with_identifier>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
@@ -2909,6 +2898,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2916,7 +2906,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
 #--- Action name
   $action$ ;
@@ -2961,6 +2950,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -2968,7 +2958,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $[$ ;
 #--- Get source identity characteristics
@@ -3060,6 +3049,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3067,11 +3057,11 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   @lstring nomVarDest ;
   $identifier$ ? nomVarDest ;
   <instruction_beginning_with_identifier>
+    !inTreewalkingRoutineHeaderMap
     !nomVarDest
     !?ioVariablesMap 
     !?ioInstructionList
@@ -3088,6 +3078,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3095,7 +3086,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $warning$ ;
   @typeExpression errorExpression ;
@@ -3136,6 +3126,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3143,7 +3134,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $error$ ;
   @typeExpression errorLocationExpression ;
@@ -3203,6 +3193,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3210,7 +3201,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $message$ ;
   @location instructionLocation := here ;
@@ -3239,6 +3229,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3246,7 +3237,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $if$ ;
   @stringset startConstraintPropertyDefinitionSet := ioConstraintPropertyDefinitionSet ;
@@ -3269,6 +3259,7 @@ rule <semantic_instruction>
         @typeInstructionList listeInstructionsBrancheTest [emptyList] ;
         @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
+          !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
           !ioComponentSemanticsEntitiesMap
           !inOptionsComponentsMapForUse
@@ -3276,14 +3267,7 @@ rule <semantic_instruction>
           !?listeInstructionsBrancheTest
           !?ioPropertyMap
           !?constraintPropertyDefinitionSet
-          !?ioCallInstructionSharedPropertySignatureMap
         ;
-        if firstBranch then
-          ioConstraintPropertyDefinitionSet := constraintPropertyDefinitionSet ;
-          firstBranch := false ;
-        elsif ioConstraintPropertyDefinitionSet != constraintPropertyDefinitionSet then
-          displayConstraintDefinitionErrors !ioConstraintPropertyDefinitionSet !constraintPropertyDefinitionSet ; 
-        end if ;
         listeBranchesTest += !testBranche !listeInstructionsBrancheTest ;
       end block (!here) ;
     while
@@ -3292,13 +3276,11 @@ rule <semantic_instruction>
     @typeInstructionList listeInstructionsBrancheAutre [emptyList] ;
     block ioVariablesMap.testPart () :
       select
-        if ioConstraintPropertyDefinitionSet != startConstraintPropertyDefinitionSet then
-          displayConstraintDefinitionErrorsNoElse !ioConstraintPropertyDefinitionSet !startConstraintPropertyDefinitionSet ; 
-       end if ;
       or
         $else$ ;
         @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
+          !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
           !ioComponentSemanticsEntitiesMap
           !inOptionsComponentsMapForUse
@@ -3306,11 +3288,7 @@ rule <semantic_instruction>
           !?listeInstructionsBrancheAutre
           !?ioPropertyMap
           !?constraintPropertyDefinitionSet
-          !?ioCallInstructionSharedPropertySignatureMap
         ;
-        if ioConstraintPropertyDefinitionSet != constraintPropertyDefinitionSet then
-          displayConstraintDefinitionErrors !ioConstraintPropertyDefinitionSet !constraintPropertyDefinitionSet ; 
-       end if ;
      end select ; 
     end block (!here) ;
     $end$ ;
@@ -3331,6 +3309,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3338,7 +3317,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $switch$ ;
 #--- Expression
@@ -3357,7 +3335,6 @@ rule <semantic_instruction>
   extract resultType->@typeGalgas_enum (?enumTypeName ?enumConstantesMap ?*) error here : messageGalgasType ;
 #---- When branches
   @stringset startConstraintPropertyDefinitionSet := ioConstraintPropertyDefinitionSet ;
-  @bool firstBranch := true ;
   @stringset allBranchConstantSet [emptySet] ;
   @L_switchBranchlist switchBranchlist [emptyList] ;
   block ioVariablesMap.testBloc () :
@@ -3382,6 +3359,7 @@ rule <semantic_instruction>
         @typeInstructionList branchInstructionList [emptyList] ;
         @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
+          !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
           !ioComponentSemanticsEntitiesMap
           !inOptionsComponentsMapForUse
@@ -3389,15 +3367,8 @@ rule <semantic_instruction>
           !?branchInstructionList
           !?ioPropertyMap
           !?constraintPropertyDefinitionSet
-          !?ioCallInstructionSharedPropertySignatureMap
         ;
         switchBranchlist += !branchConstantSet !branchInstructionList ;
-        if firstBranch then
-          ioConstraintPropertyDefinitionSet := constraintPropertyDefinitionSet ;
-          firstBranch := false ;
-        elsif ioConstraintPropertyDefinitionSet != constraintPropertyDefinitionSet then
-          displayConstraintDefinitionErrors !ioConstraintPropertyDefinitionSet !constraintPropertyDefinitionSet ; 
-        end if ;
       end block (!here) ;
     while
       $when$ ;
@@ -3424,6 +3395,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3431,7 +3403,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $loop$ ;
 #--- Variant expression
@@ -3452,6 +3423,7 @@ rule <semantic_instruction>
     block ioVariablesMap.repeatPart () :
     #--- Liste d'instructions
       <semantic_instructions_list_no_verif>
+        !inTreewalkingRoutineHeaderMap
         !inTableEnAvant
         !ioComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
@@ -3459,7 +3431,6 @@ rule <semantic_instruction>
         !?instructionList1
         !?ioPropertyMap
         !?ioConstraintPropertyDefinitionSet
-        !?ioCallInstructionSharedPropertySignatureMap
       ;
     end block (!here) ;
   end block () ;
@@ -3482,6 +3453,7 @@ rule <semantic_instruction>
     block ioVariablesMap.repeatPart () :
     #--- Liste d'instructions
       <semantic_instructions_list_no_verif>
+        !inTreewalkingRoutineHeaderMap
         !inTableEnAvant
         !ioComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
@@ -3489,7 +3461,6 @@ rule <semantic_instruction>
         !?instructionList2
         !?ioPropertyMap
         !?ioConstraintPropertyDefinitionSet
-        !?ioCallInstructionSharedPropertySignatureMap
       ;
     end block (!here) ;
   end block () ;
@@ -3513,6 +3484,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant unused  inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3520,7 +3492,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap unused ioPropertyMap
   ?!@stringset unused ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap unused ioCallInstructionSharedPropertySignatureMap
 :
   $grammar$ ;
 #--- Nom du fichier is
@@ -3584,6 +3555,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3591,7 +3563,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $foreach$ ;
   @typeInstruction instruction ;
@@ -3652,6 +3623,7 @@ rule <semantic_instruction>
     #--- Liste d'instructions
       @typeInstructionList instructionList [emptyList] ;
       <semantic_instructions_list_no_verif>
+        !inTreewalkingRoutineHeaderMap
         !inTableEnAvant
         !ioComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
@@ -3659,7 +3631,6 @@ rule <semantic_instruction>
         !?instructionList
         !?ioPropertyMap
         !?ioConstraintPropertyDefinitionSet
-        !?ioCallInstructionSharedPropertySignatureMap
       ;
     end block (!here) ;
   end block () ;
@@ -3791,6 +3762,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3798,7 +3770,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   $match$ ;
 #--- Get first operand
@@ -3866,6 +3837,7 @@ rule <semantic_instruction>
         $:$ ;
         @typeInstructionList instructionsList [emptyList] ;
         <semantic_instructions_list>
+          !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
           !ioComponentSemanticsEntitiesMap
           !inOptionsComponentsMapForUse
@@ -3873,7 +3845,6 @@ rule <semantic_instruction>
           !?instructionsList
           !?ioPropertyMap
           !?ioConstraintPropertyDefinitionSet
-          !?ioCallInstructionSharedPropertySignatureMap
         ;
         casesList += !case1_name !case2_name !instructionsList ;
       end block (!here) ;
@@ -3883,6 +3854,7 @@ rule <semantic_instruction>
       $else$ ;
       @typeInstructionList elsePartInstructionsList [emptyList] ;
       <semantic_instructions_list>
+        !inTreewalkingRoutineHeaderMap
         !inTableEnAvant
         !ioComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
@@ -3890,7 +3862,6 @@ rule <semantic_instruction>
         !?elsePartInstructionsList
         !?ioPropertyMap
         !?ioConstraintPropertyDefinitionSet
-        !?ioCallInstructionSharedPropertySignatureMap
       ;
     end block (!here) ;
   end block () ;
@@ -3914,6 +3885,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instructions_list_no_verif>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -3921,11 +3893,11 @@ rule <semantic_instructions_list_no_verif>
   ?!@typeInstructionList ioInstructionList
   ?!@entityPropertyMap ioPropertyMap
   ?!@stringset ioConstraintPropertyDefinitionSet
-  ?!@callInstructionSharedPropertySignatureMap ioCallInstructionSharedPropertySignatureMap
 :
   repeat
   while
     <semantic_instruction>
+      !inTreewalkingRoutineHeaderMap
       !inTableEnAvant
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
@@ -3933,7 +3905,6 @@ rule <semantic_instructions_list_no_verif>
       !?ioInstructionList
       !?ioPropertyMap
       !?ioConstraintPropertyDefinitionSet
-      !?ioCallInstructionSharedPropertySignatureMap
     ;
   end repeat ;
 end rule ;
