@@ -96,6 +96,16 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_C_while_instruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return formalCurrentObjectArgumentIsUsedForList (mInstructionList1)
+    || mVariantExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+    || mWhileExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+    || formalCurrentObjectArgumentIsUsedForList (mInstructionList2) ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -175,6 +185,21 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   while ((enumeratedVariable != NULL) && ! used) {
     macroValidPointer (enumeratedVariable) ;
     used = enumeratedVariable->mCppEnumeratedVariableName.isEqualTo (inArgumentCppName) ;
+    enumeratedVariable = enumeratedVariable->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeForeachInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = formalCurrentObjectArgumentIsUsedForList (mInstructionList)
+    || mWhileExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+  GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
+  while ((enumeratedVariable != NULL) && ! used) {
+    macroValidPointer (enumeratedVariable) ;
+    used = enumeratedVariable->mCppEnumeratedVariableName (HERE)->isCurrentObject () ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
   }
   return used ;

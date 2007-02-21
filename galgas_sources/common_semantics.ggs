@@ -611,7 +611,7 @@ map @entityToImplementMap {
   @entityPropertyMap mAllAvailablePropertyMap ;
 #--- Access methods
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
-  search searchKey error message "the '@%K' entity is not declared" ;
+  search searchKey, searchKeyGetID error message "the '@%K' entity is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

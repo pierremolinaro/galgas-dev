@@ -109,6 +109,20 @@ formalArgumentIsUsedForList (const GGS_typeInstructionList & inList,
 
 //---------------------------------------------------------------------------*
 
+bool
+formalCurrentObjectArgumentIsUsedForList (const GGS_typeInstructionList & inList) {
+  GGS_typeInstructionList::element_type * current = inList.firstObject () ;
+  bool formalArgumentIsUsed = false ;
+  while (current != NULL && ! formalArgumentIsUsed) {
+    macroValidPointer (current) ;
+    formalArgumentIsUsed = current->mInstruction(HERE)->formalCurrentObjectArgumentIsUsed () ;
+    current = current->nextObject () ;
+  }
+  return formalArgumentIsUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeInstruction::
 generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
                                      const C_String & /* inLexiqueClassName */,
@@ -196,6 +210,21 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   while ((! isUsed) && (affectationCourante != NULL)) {
     macroValidPointer (affectationCourante) ;
     isUsed = affectationCourante->aNomVariableCible.isEqualTo (inArgumentCppName) ;
+    affectationCourante = affectationCourante->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeSimpleExtractInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = aNomVariable (HERE)->isCurrentObject ()
+    || mErrorLocationExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+  GGS_L_assignedVariables::element_type * affectationCourante = aListeAffectationParametresEffectifs.firstObject () ;
+  while ((! isUsed) && (affectationCourante != NULL)) {
+    macroValidPointer (affectationCourante) ;
+    isUsed = affectationCourante->aNomVariableCible (HERE)->isCurrentObject () ;
     affectationCourante = affectationCourante->nextObject () ;
   }
   return isUsed ;
@@ -292,6 +321,21 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeStructuredExtractInstructionWithElse::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = mVariableName (HERE)->isCurrentObject ()
+    || formalCurrentObjectArgumentIsUsedForList (mElseInstructionList) ;
+  GGS_typeStructuredExtractCasesList::element_type * p = mCasesList.firstObject () ;
+  while ((p != NULL) && ! used) {
+    macroValidPointer (p) ;
+    used = formalCurrentObjectArgumentIsUsedForList (p->mInstructionList) ;
+    p = p->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -326,6 +370,13 @@ bool cPtr_typeDropInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return aVariableConsommee.isEqualTo (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeDropInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return false ;
 }
 
 //---------------------------------------------------------------------------*
@@ -368,6 +419,13 @@ bool cPtr_typeLogInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   return mLoggedVariable.isEqualTo (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLogInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mLoggedVariable (HERE)->isCurrentObject () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -427,6 +485,21 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeErrorInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = mErrorLocationExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+             || mErrorMessageExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+  GGS_varToDropList::element_type * currentVarToDrop = mVarToDropList.firstObject () ;
+  while ((currentVarToDrop != NULL) && ! isUsed) {
+    macroValidPointer (currentVarToDrop) ;
+    isUsed = currentVarToDrop->mVarToDrop (HERE)->isCurrentObject ()  ;
+    currentVarToDrop = currentVarToDrop->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -469,6 +542,14 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeWarningInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mWarningLocationExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+       || mWarningMessageExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -506,6 +587,13 @@ bool cPtr_typeMessageInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   return mMessageExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeMessageInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mMessageExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -551,6 +639,13 @@ bool cPtr_typeInstructionDeclarationVarLocale::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   return aNomCppVariable.isEqualTo (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionDeclarationVarLocale::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return false ;
 }
 
 //---------------------------------------------------------------------------*
@@ -664,6 +759,22 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeMatchInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = aNomCppVariable1 (HERE)->isCurrentObject ()
+   || aNomCppVariable2 (HERE)->isCurrentObject ()
+   || formalCurrentObjectArgumentIsUsedForList (mElseInstructionsList) ;
+  GGS_L_matchInstructionCasesList::element_type * casCourant = aListeCas.firstObject () ;
+  while ((! isUsed) && (casCourant != NULL)) {
+    macroValidPointer (casCourant) ;
+    isUsed = formalCurrentObjectArgumentIsUsedForList (casCourant->mInstructionList) ;
+    casCourant = casCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -703,6 +814,13 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeIncrementInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -739,6 +857,13 @@ bool cPtr_typeDecrementInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeDecrementInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return false ;
 }
 
 //---------------------------------------------------------------------------*
@@ -800,6 +925,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   while ((exp != NULL) && ! used) {
     macroValidPointer (exp) ;
     used = exp->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeAppendInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = mTargetVarCppName (HERE)->isCurrentObject () ;
+  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
     exp = exp->nextObject () ;
   }
   return used ;    
@@ -870,6 +1009,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeRemoveInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = mTargetVarCppName (HERE)->isCurrentObject () ;
+  GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -924,6 +1077,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeMapBlockPrologueInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = aNomVariableTable (HERE)->isCurrentObject () ;
+  GGS_typeExpressionList::element_type * exp = mPrologueExpressionList.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -966,7 +1133,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 
 bool cPtr_typeMapBlockEpilogueInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
+                      const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomVariableTable.isEqualTo (inArgumentCppName)  ;
   GGS_typeExpressionList::element_type * argCourant = mEpilogueExpressionList.firstObject () ;
   while ((! isUsed) && (argCourant != NULL)) {
@@ -975,6 +1142,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
     argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeMapBlockEpilogueInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = aNomVariableTable (HERE)->isCurrentObject () ;
+  GGS_typeExpressionList::element_type * exp = mEpilogueExpressionList.firstObject () ;
+  while ((exp != NULL) && ! used) {
+    macroValidPointer (exp) ;
+    used = exp->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    exp = exp->nextObject () ;
+  }
+  return used ;    
 }
 
 //---------------------------------------------------------------------------*

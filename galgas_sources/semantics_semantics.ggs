@@ -1375,6 +1375,7 @@ action generateSemanticsComponent
 
 map @treewalkingRoutineHeaderMap {
   @L_EXsignature mRoutineSignature ;
+  @typeListeTypesEtNomsArgMethode mFormalArgumentList ;
   insert insertKey error message "the '%K' treewalking routine has been already declared in %L" ;
   search searchKey error message "the '%K' treewalking routine is not declared" ;
 }
@@ -1389,10 +1390,25 @@ list @treewalkingRoutineToGenerateList {
 
 #---------------------------------------------------------------------------*
 
+sortedlist @routineDispatcherSortedList {
+  @string mMetamodelClassIDString ;
+  @uint mMetamodelClassID ;
+  @string mRoutineName ;
+  @string mEntityName ;
+}{
+  mMetamodelClassIDString <
+}
+
+#---------------------------------------------------------------------------*
+
 action generate_treewalking
   ??@lstring inTreewalkingComponentName
   ??@stringset inFilesToImportInHeaderSet
   ??@treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList
+  ??@routineDispatcherSortedList inRoutineDispatcherSortedList
+  ??@entityToImplementMap inMetamodelEntityMap
+  ??@typeListeTypesEtNomsArgMethode inFormalArgumentList
+  ??@lstring inRootEntity
 ;
 
 #---------------------------------------------------------------------------*

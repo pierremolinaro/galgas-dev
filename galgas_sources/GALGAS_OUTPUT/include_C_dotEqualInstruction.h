@@ -28,8 +28,12 @@ public : virtual void generateInstruction (AC_OutputStream & inCppFile,
                                            const bool inGenerateDebug,
                                            const bool inGenerateSemanticInstructions) const ;
 public : virtual bool isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const ;
+
 public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                                             const bool inGenerateSemanticInstructions) const ;
+
+  public : virtual bool
+  formalCurrentObjectArgumentIsUsed (void) const ;
 
 //--- END OF USER ZONE 2
 

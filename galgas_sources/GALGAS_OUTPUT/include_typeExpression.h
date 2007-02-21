@@ -21,9 +21,17 @@ class GGS_typeExpressionList ;
 class cPtr_typeExpression : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
-public : virtual void generateExpression (AC_OutputStream & inCppFile) = 0 ;
-public : virtual bool isLexiqueFormalArgumentUsedForTest (void) const  = 0 ;
-public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const = 0 ;
+  public : virtual void
+  generateExpression (AC_OutputStream & inCppFile) = 0 ;
+
+  public : virtual bool
+  isLexiqueFormalArgumentUsedForTest (void) const  = 0 ;
+
+  public : virtual bool
+  formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const = 0 ;
+
+  public : virtual bool 
+  formalCurrentObjectArgumentIsUsedForTest (void) const = 0 ;
 
 //--- END OF USER ZONE 2
 
