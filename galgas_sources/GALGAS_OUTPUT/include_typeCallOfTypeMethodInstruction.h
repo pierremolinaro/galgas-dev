@@ -36,6 +36,9 @@ class cPtr_typeCallOfTypeMethodInstruction : public cPtr_typeInstruction {
   formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const ;
 
+  public : virtual bool
+  formalCurrentObjectArgumentIsUsed (void) const ;
+
 //--- END OF USER ZONE 2
 
 //--- Constructor

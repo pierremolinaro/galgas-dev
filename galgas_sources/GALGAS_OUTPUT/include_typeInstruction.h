@@ -36,6 +36,9 @@ public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgu
                                             const bool inGenerateSemanticInstructions) const = 0 ;
 public : virtual bool isSyntacticInstruction (void) const { return false ; }
 
+  public : virtual bool
+  formalCurrentObjectArgumentIsUsed (void) const = 0 ;
+
 //--- END OF USER ZONE 2
 
 //--- Constructor

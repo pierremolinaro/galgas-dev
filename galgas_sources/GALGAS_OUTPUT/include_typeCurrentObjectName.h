@@ -24,6 +24,8 @@ class cPtr_typeCurrentObjectName : public cPtr_typeCplusPlusName {
   public : virtual enumVariableKind getVariableKind (void) const ;
   public : virtual void generateVariableAddress (AC_OutputStream & fichier) const ;
   public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const ;
+  
+  public : virtual bool isCurrentObject (void) const ;
 
 //--- END OF USER ZONE 2
 

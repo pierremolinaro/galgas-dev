@@ -2499,7 +2499,7 @@ rule <semantic_instruction>
 #--- Check a treewalking routine is actually defined
   @L_EXsignature routineSignature ;
   if [inTreewalkingRoutineHeaderMap hasKey ![entityName string]] then
-    [inTreewalkingRoutineHeaderMap searchKey !entityName ?routineSignature] ;
+    [inTreewalkingRoutineHeaderMap searchKey !entityName ?routineSignature ?*] ;
   else
     error calledPropertyName:
       "there is no treewalking routine for the '%" . [entityName string] . "' metamodel class"

@@ -477,6 +477,18 @@ generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
 
 //---------------------------------------------------------------------------*
 
+bool cPtr_typeCplusPlusName::isCurrentObject (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeCurrentObjectName::isCurrentObject (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeCurrentObjectName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "_currentObject->" << mName ;

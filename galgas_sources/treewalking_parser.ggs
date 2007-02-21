@@ -203,7 +203,7 @@ rule <parse_treewalking_document>
        ?metamodelMultiReferencedEntities
     ] ;
   else
-    error fileName: "this does not defines the '" . [metamodelName string] . "' metamodel"
+    error fileName: "this file does not define the '" . [metamodelName string] . "' metamodel"
      -> metamodelRootEntity, metamodelEntityMap, metamodelMultiReferencedEntities ;
   end if ;
 #--- Import semantics component(s)
@@ -239,6 +239,7 @@ rule <parse_treewalking_document>
 #--- FIRST PASS
   @treewalkingRoutineToGenerateList treewalkingRoutineToGenerateList [emptyList] ;
   @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
+  @routineDispatcherSortedList routineDispatcherSortedList [emptySortedList] ;
   parse do
 #--- FIRST PASS
     repeat
@@ -262,33 +263,78 @@ rule <parse_treewalking_document>
       ;
     end repeat ;
   end parse ;
+#--- Get Root routine signature
+  @typeListeTypesEtNomsArgMethode rootRoutineSignature ;
+  if [treewalkingRoutineHeaderMap hasKey ![metamodelRootEntity string]] then
+    [treewalkingRoutineHeaderMap searchKey !metamodelRootEntity ?* ?rootRoutineSignature] ;
+  else
+    error here:"a routine should be defined for the '%" . [metamodelRootEntity string] . "' root class"
+    -> rootRoutineSignature ;
+  end if ;
 #--- Generate code, and additional checkings ?
   if inGenerateTreewalkingCode then
-  #--- check if a class define a routine, a routine defined by a super class 
+  #--- check if a class defines a routine, a routine defined by a super class 
   #    should have the same signature
-    foreach treewalkingRoutineHeaderMap (@lstring kKey @L_EXsignature kRoutineSignature) :
+    foreach treewalkingRoutineHeaderMap (@lstring kKey @L_EXsignature kRoutineSignature *) :
+      @luint entityID ;
+      [metamodelEntityMap searchKeyGetID !kKey ?entityID ?8*] ;
+      routineDispatcherSortedList += 
+        ![[entityID uint] string]
+        ![entityID uint]
+        ![kKey string]
+        ![kKey string]
+        ;
       @lstring entityName := kKey ;
-      log kRoutineSignature ;
       loop [metamodelEntityMap count] : while [entityName string] != "" do
         @lstring superEntityName ;
         [metamodelEntityMap searchKey !entityName ?3* ?superEntityName ?4*] ;
         if [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] then
           @L_EXsignature superRoutineSignature ;
-          [treewalkingRoutineHeaderMap searchKey !superEntityName ?superRoutineSignature] ;
+          [treewalkingRoutineHeaderMap searchKey !superEntityName ?superRoutineSignature ?*] ;
           verifierCompatibiliteSignatures
-            ! kRoutineSignature
-            ! superRoutineSignature
+            !kRoutineSignature
+            !superRoutineSignature
             ![kKey location]
           ;
         end if ;
         entityName  := superEntityName ;
       end loop ;
     end foreach ;
+  #--- If a class does not define a routine, use the super class 
+  #    routine (if it exists)
+    foreach metamodelEntityMap (@lstring kEntityName 3* @lstring kSuperEntityName 4*) :
+      @bool hasRoutine := [treewalkingRoutineHeaderMap hasKey ![kEntityName string]] ;
+      if not hasRoutine then
+        @lstring superEntityName := kSuperEntityName ;
+        loop [treewalkingRoutineHeaderMap count] : while (not hasRoutine) & ([superEntityName string] != "") do
+          hasRoutine := [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] ;
+          if not hasRoutine then
+            @lstring superSuperEntityName ;
+            [metamodelEntityMap searchKey !superEntityName ?3* ?superSuperEntityName ?4*] ;
+            superEntityName := superSuperEntityName ;
+          end if ;
+        end loop ;
+        if hasRoutine then
+          @luint entityID ;
+          [metamodelEntityMap searchKeyGetID !kEntityName ?entityID ?8*] ;
+          routineDispatcherSortedList += 
+            ![[entityID uint] string]
+            ![entityID uint]
+            ![superEntityName string]
+            ![kEntityName string]
+          ;
+        end if ;
+      end if ;
+    end foreach ;
   #--- Generate code
     action generate_treewalking
       !treewalkingName
       !filesToImportInHeaderSet
       !treewalkingRoutineToGenerateList
+      !routineDispatcherSortedList
+      !metamodelEntityMap
+      !rootRoutineSignature
+      !metamodelRootEntity
     ;
   end if ;
 #--- End of treewalking component
@@ -381,7 +427,7 @@ label firstLocalPhase
     !?tableEnAvant
     ?signatureForGrammarComponent
   ;
-  [!?ioTreewalkingRoutineHeaderMap insertKey !metamodelClassName !listeDeTypes] ;
+  [!?ioTreewalkingRoutineHeaderMap insertKey !metamodelClassName !listeDeTypes !formalArgumentList] ;
 #--- Instruction list
   $:$ ;
   <semantic_instructions_list> parse ;

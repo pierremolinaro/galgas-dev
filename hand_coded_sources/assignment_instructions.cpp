@@ -55,6 +55,13 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_C_assignmentInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_assignmentInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName)
@@ -101,6 +108,13 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_C_declarationInstructionWithAssignment::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_declarationInstructionWithAssignment::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isEqualTo (inArgumentCppName)
@@ -139,6 +153,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
 bool cPtr_C_dotEqualInstruction::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_dotEqualInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*

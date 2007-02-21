@@ -294,6 +294,13 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionVerifSyntaxique::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return false ;    
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -364,6 +371,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
       used = argument->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
       argument = argument->nextObject () ;
     }
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionAppelNonTerminal::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = false ;
+  GGS_typeExpressionList::element_type * argument = mParametersExpressionList.firstObject () ;
+  while ((argument != NULL) && !used) {
+    macroValidPointer (argument) ;
+    used = argument->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    argument = argument->nextObject () ;
   }
   return used ;
 }
@@ -445,12 +466,26 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 
 bool cPtr_C_select_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool inGenerateSemanticInstructions) const {
+                      const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
+    currentBranch = currentBranch->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_select_instruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = false ;
+  GGS_typeListeBranchesInstructions::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  while ((currentBranch != NULL) && ! used) {
+    macroValidPointer (currentBranch) ;
+    used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
     currentBranch = currentBranch->nextObject () ;
   }
   return used ;
@@ -558,6 +593,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_C_repeat_instruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = false ;
+  GGS_typeListeBranchesInstructions::element_type * currentBranch = aListesBranchesRepeter.firstObject () ;
+  while ((currentBranch != NULL) && ! used) {
+    macroValidPointer (currentBranch) ;
+    used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
+    currentBranch = currentBranch->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -644,6 +693,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
+    currentBranch = currentBranch->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_parse_rewind_instruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = false ;
+  GGS_typeListeBranchesInstructions::element_type * currentBranch = mBranchList.firstObject () ;
+  while ((currentBranch != NULL) && ! used) {
+    macroValidPointer (currentBranch) ;
+    used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
     currentBranch = currentBranch->nextObject () ;
   }
   return used ;
@@ -767,4 +830,17 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   return used ;
 }
 
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_parse_when_else_instruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = false ;
+  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  while ((! used) && (currentBranch != NULL)) {
+    macroValidPointer (currentBranch) ;
+    used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
+    currentBranch = currentBranch->nextObject () ;
+  }
+  return used ;
+}
 //---------------------------------------------------------------------------*

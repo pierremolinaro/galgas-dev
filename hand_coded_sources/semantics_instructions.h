@@ -62,6 +62,9 @@ formalArgumentIsUsedForList (const GGS_typeInstructionList & inList,
                              const GGS_typeCplusPlusName & inArgumentCppName,
                              const bool inGenerateSemanticInstructions) ;
 
+bool
+formalCurrentObjectArgumentIsUsedForList (const GGS_typeInstructionList & inList) ;
+
 void
 generateFormalArgumentFromTypeName (const C_String & inTypeName,
                                     const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,

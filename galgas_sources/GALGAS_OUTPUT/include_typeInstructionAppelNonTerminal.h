@@ -36,6 +36,9 @@ public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfi
                                                          sint32 & ioPrototypeIndex,
                                                          const bool inNotDeclared) ;
 
+  public : virtual bool
+  formalCurrentObjectArgumentIsUsed (void) const ;
+
 //--- END OF USER ZONE 2
 
 //--- Constructor

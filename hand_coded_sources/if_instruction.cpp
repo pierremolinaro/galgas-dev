@@ -18,7 +18,6 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-
 #include "utilities/MF_MemoryControl.h"
 #include "semantics_instructions.h"
 #include "semantics_semantics.h"
@@ -39,6 +38,13 @@ generateExpression (AC_OutputStream & ioCppFile) {
 bool cPtr_typeUnaryMinusOperation::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeUnaryMinusOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -75,6 +81,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeTestComplement::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeTestComplement::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
@@ -100,6 +113,13 @@ generateExpression (AC_OutputStream & ioCppFile) {
 bool cPtr_typeLogicalNegate::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLogicalNegate::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -132,6 +152,14 @@ bool cPtr_typeAndOperation::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) || 
          mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeAndOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () || 
+         mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -170,6 +198,14 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeOrOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () || 
+         mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeOrOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest () || 
          mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
@@ -198,6 +234,14 @@ bool cPtr_typeXorOperation::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) || 
          mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeXorOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () || 
+         mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -236,6 +280,14 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeConcatOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () || 
+         mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeConcatOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest () || 
          mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
@@ -258,6 +310,13 @@ void cPtr_typeTrueBool::generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeTrueBool::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeTrueBool::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
   return false ;
 }
 
@@ -291,6 +350,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeFalseBool::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFalseBool::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
@@ -313,6 +379,13 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeHereExpression::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeHereExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
   return false ;
 }
 
@@ -349,6 +422,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeLiteralStringExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralStringExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
@@ -371,6 +451,13 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeLiteralSIntExpression::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralSIntExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
   return false ;
 }
 
@@ -405,6 +492,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeLiteralSInt64Expression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralSInt64Expression::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
@@ -433,6 +527,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeLiteralUIntExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralUIntExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
@@ -455,6 +556,13 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeLiteralUInt64Expression::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralUInt64Expression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
   return false ;
 }
 
@@ -491,6 +599,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName 
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeLiteralCharExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralCharExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return false ;
 }
@@ -515,6 +630,13 @@ generateExpression (AC_OutputStream & ioCppFile) {
 
 bool cPtr_typeLiteralDoubleExpression::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLiteralDoubleExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
   return false ;
 }
 
@@ -564,6 +686,20 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeConstructorExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
+  while ((current != NULL) && ! isUsed) {
+    macroValidPointer (current) ;
+    isUsed = current->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    current = current->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeConstructorExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
@@ -591,6 +727,14 @@ bool cPtr_typeEqualTest::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeEqualTest::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -629,10 +773,25 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeNonEqualTest::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeNonEqualTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
 
 //---------------------------------------------------------------------------*
 
@@ -650,6 +809,14 @@ bool cPtr_typeInfOrEqualTest::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInfOrEqualTest::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -688,6 +855,14 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeStrictInfTest::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeStrictInfTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
@@ -721,6 +896,14 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeSupOrEqualTest::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeSupOrEqualTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
       || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
@@ -749,6 +932,14 @@ bool cPtr_typeStrictSupTest::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeStrictSupTest::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -788,6 +979,14 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeAddOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeAddOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
@@ -816,6 +1015,14 @@ bool cPtr_typeSubOperation::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeSubOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -854,6 +1061,14 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeMultiplyOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeMultiplyOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
@@ -887,6 +1102,14 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeDivideOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeDivideOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
@@ -915,6 +1138,14 @@ bool cPtr_typeModuloOperation::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeModuloOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -954,6 +1185,14 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeLeftShiftOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeLeftShiftOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
@@ -983,6 +1222,14 @@ bool cPtr_typeRightShiftOperation::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mLeftExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || mRightExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeRightShiftOperation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mLeftExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || mRightExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1035,6 +1282,19 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeReaderCallInExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  bool used = mExpressionValue (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+  GGS_typeExpressionList::element_type * e = mExpressionList.firstObject () ;
+  while ((e != NULL) && ! used) {
+    used = e->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    e = e->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeReaderCallInExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
 }
@@ -1067,6 +1327,13 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeVarInExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mCppVarName (HERE)->isCurrentObject () ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1089,6 +1356,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName 
 
 bool cPtr_typeJokerInExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeJokerInExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
   return false ;
 }
 
@@ -1121,6 +1395,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) co
 bool cPtr_typeTextTableCall::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeTextTableCall::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1157,6 +1438,13 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeBoolOption::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1190,6 +1478,13 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeUIntOption::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1220,6 +1515,13 @@ formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName 
 bool cPtr_typeStringOption::
 isLexiqueFormalArgumentUsedForTest (void) const {
   return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeStringOption::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1283,13 +1585,28 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 
 bool cPtr_C_if_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool inGenerateSemanticInstructions) const {
+                      const bool inGenerateSemanticInstructions) const {
   bool used = formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
   GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
     used = currentBranch->mIFexpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
+    currentBranch = currentBranch->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_if_instruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = formalCurrentObjectArgumentIsUsedForList (mElseInstructionsList) ;
+  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  while ((! used) && (currentBranch != NULL)) {
+    macroValidPointer (currentBranch) ;
+    used = currentBranch->mIFexpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+      || formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
     currentBranch = currentBranch->nextObject () ;
   }
   return used ;
@@ -1361,6 +1678,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
     used = formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
+    currentBranch = currentBranch->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_switch_instruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = mSwitchExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+  GGS_L_switchBranchlist::element_type * currentBranch = mBranchList.firstObject () ;
+  while ((! used) && (currentBranch != NULL)) {
+    macroValidPointer (currentBranch) ;
+    used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
     currentBranch = currentBranch->nextObject () ;
   }
   return used ;

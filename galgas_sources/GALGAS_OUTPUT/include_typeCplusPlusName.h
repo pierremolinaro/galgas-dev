@@ -28,6 +28,8 @@ public : virtual enumVariableKind getVariableKind (void) const = 0 ;
 public : virtual void generateVariableAddress (AC_OutputStream & fichier) const = 0 ;
 public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const = 0 ;
 
+  public : virtual bool isCurrentObject (void) const ;
+
 //--- END OF USER ZONE 2
 
 //--- Constructor

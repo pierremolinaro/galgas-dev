@@ -27,6 +27,9 @@ public : virtual bool isLexiqueFormalArgumentUsedForTest (void) const  ;
 
 public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const ;
 
+  public : virtual bool 
+  formalCurrentObjectArgumentIsUsedForTest (void) const ;
+
 //--- END OF USER ZONE 2
 
 //--- Constructor

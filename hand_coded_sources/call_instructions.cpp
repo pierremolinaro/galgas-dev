@@ -69,6 +69,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeCallOfTypeMethodInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -120,6 +134,20 @@ generateInstruction (AC_OutputStream & ioCppFile,
 bool cPtr_typeMethodCallInstruction::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeMethodCallInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
 }
 
 //---------------------------------------------------------------------------*
@@ -180,6 +208,20 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 //---------------------------------------------------------------------------*
 
 bool cPtr_typeModifierCallInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeModifierCallInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool used = aNomCppVariable.isEqualTo (inArgumentCppName) ;
@@ -227,6 +269,20 @@ generateInstruction (AC_OutputStream & ioCppFile,
 bool cPtr_typeInstructionAppelMethodeListe::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionAppelMethodeListe::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = false ;
+  GGS_typeCplusPlusNameList::element_type * argCourant = aListeNomsCppArguments.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mCppName (HERE)->isCurrentObject () ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
 }
 
 //---------------------------------------------------------------------------*
@@ -315,6 +371,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_C_grammarInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -392,6 +462,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 }
 
 //---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionAppelActionExterne::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -439,6 +523,20 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeRoutineCallInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
     argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
