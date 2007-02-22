@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generic map used for GALGAS variables (handles read/write access)        *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -300,22 +300,6 @@ insertOutArgument (C_Lexique & inLexique,
 
 template <typename INFO>
 sint32 cGalgasVariablesMap <INFO>::
-insertSingleEntityLocalVariable (C_Lexique & inLexique,
-                                 const INFO & inInfo,
-                                 const GGS_lstring & clef,
-                                 const GGS_location & inLocation,
-                                 const char * messageErreurInsertion
-                                 COMMA_LOCATION_ARGS) {
-  return insertKey (inLexique, inInfo, enumSingleEntity, etatNonValue, false, false,
-                    clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
-                    COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------*
-
-template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
 insertEntityAttributeLocalVariable (C_Lexique & inLexique,
                                     const INFO & inInfo,
                                     const GGS_lstring & clef,
@@ -415,6 +399,22 @@ insertUnusedConstInArgument (C_Lexique & inLexique,
                              const char * messageErreurInsertion
                              COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, true, false, clef, inLocation, messageErreurInsertion,
+                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
+                    COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::
+insertSingleEntityLocalVariable (C_Lexique & inLexique,
+                                 const INFO & inInfo,
+                                 const GGS_lstring & clef,
+                                 const GGS_location & inLocation,
+                                 const char * messageErreurInsertion
+                                 COMMA_LOCATION_ARGS) {
+  return insertKey (inLexique, inInfo, enumSingleEntity, etatNonValue, false, false,
+                    clef, inLocation, messageErreurInsertion,
                     inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
                     COMMA_THERE) ;
 }

@@ -330,7 +330,9 @@ generateInstruction (AC_OutputStream & inCppFile,
     if (mReturnedEntityShouldInsertedInList.boolValue ()) {
       inCppFile << "var_cas_" << mReturnedEntityVarName << ".add (" ;
     }else{
-      inCppFile << "var_cas_" << mReturnedEntityVarName << " = " ;
+      inCppFile << "macroDetachPointer (var_cas_" << mReturnedEntityVarName
+                << ", GGM_" << mReturnedEntityName << ") ;\n"
+                   "var_cas_" << mReturnedEntityVarName << " = " ;
     }
   }
   inCppFile << "nt_" << mNonterminalName << '_'

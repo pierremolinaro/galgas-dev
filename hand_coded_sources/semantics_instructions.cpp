@@ -657,6 +657,51 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 //---------------------------------------------------------------------------*
 
+void cPtr_mdaVariableDeclaration::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inLexiqueClassName */,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    ioCppFile << "GGM_" << mEntityName << " * " ;
+    mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << " = NULL ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_mdaVariableDeclaration::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_mdaVariableDeclaration::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & /* inArgumentCppName */,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_mdaVariableDeclaration::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeMatchInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & inLexiqueClassName,

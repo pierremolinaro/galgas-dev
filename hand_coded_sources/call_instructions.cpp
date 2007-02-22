@@ -326,7 +326,11 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << ") ;\n"
                  "  try{\n"
                  "    scanner_->resetAndLoadSourceFromFile (sourceFileName) ;\n"
-                 "    grammar_.startParsing_" << mAltSymbol
+                 "    " ;
+    if (mMetamodelClassVariableName.length () > 0) {
+      ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;
+    }
+    ioCppFile << "grammar_.startParsing_" << mAltSymbol
               << " (*scanner_" ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {

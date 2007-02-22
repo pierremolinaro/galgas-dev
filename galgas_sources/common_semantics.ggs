@@ -601,14 +601,10 @@ map @entityToImplementMap {
   @entityPropertyMap mCurrentMetamodelPropertyMap ;
 #--- 
   @lstring mSuperEntityName ;
-#--- Only constraints defined in current constraint
-  @entityPropertyMap mCurrentConstraintPropertyMap ;
 #---
   @stringset mSuperEntitySet ;
-#--- Constraints defined in current constraint and super constraints
-  @entityPropertyMap mAllConstraintPropertyMap ;
-#--- All Available properties
-  @entityPropertyMap mAllAvailablePropertyMap ;
+#--- All properties
+#  @typeListeAttributsSemantiques mTypeList ;
 #--- Access methods
   insert insertKey error message "the '@%K' entity has been already declared in %L" ;
   search searchKey, searchKeyGetID error message "the '@%K' entity is not declared" ;
@@ -3726,7 +3722,7 @@ routine computeRepresentativeEntityName
       outRepresentativeEntityName := searchedEntity ;
     else
       @lstring superEntity ;
-      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?* ?* ?* ?*] ;
+      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?*] ;
       searchedEntity := superEntity ;
     end if ;
   end loop ;

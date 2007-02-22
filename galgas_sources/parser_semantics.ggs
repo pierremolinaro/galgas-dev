@@ -35,7 +35,8 @@ class @typeInstructionAppelNonTerminal extends @typeParserInstruction {
   @lstring mNonterminalName ;
   @typeExpressionList mParametersExpressionList ;
   @lstring mAltName ;
-  @lstring mReturnedEntityVarName ;
+  @lstring mReturnedEntityVarName ; # Empty if no returned entity
+  @lstring mReturnedEntityName ; # Empty if no returned entity
   @bool mReturnedEntityShouldInsertedInList ;
 }
 
