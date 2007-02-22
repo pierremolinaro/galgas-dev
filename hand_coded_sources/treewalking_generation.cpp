@@ -363,7 +363,10 @@ generate_treewalking_implementation (C_Lexique & inLexique,
   }
   generatedZone3 << ") {\n"
                     "  if (_rootObject != NULL) {\n"
-                    "    _treewalking_routine_" << inRootEntity << " (_inLexique, _rootObject" ;
+                    "    _treewalking_routine_" << inRootEntity
+                 << "_type * _f = (_treewalking_routine_" << inRootEntity
+                 << "_type *) kDispatcher [_rootObject->metamodelClassID ()] ;\n"
+                    "    (* _f) (_inLexique, _rootObject" ;
   currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
     generatedZone3 << ", " ;
