@@ -362,7 +362,8 @@ generate_treewalking_implementation (C_Lexique & inLexique,
     currentArgument = currentArgument->nextObject () ;
   }
   generatedZone3 << ") {\n"
-                    "  _treewalking_routine_" << inRootEntity << " (_inLexique, _rootObject" ;
+                    "  if (_rootObject != NULL) {\n"
+                    "    _treewalking_routine_" << inRootEntity << " (_inLexique, _rootObject" ;
   currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
     generatedZone3 << ", " ;
@@ -370,6 +371,17 @@ generate_treewalking_implementation (C_Lexique & inLexique,
     currentArgument = currentArgument->nextObject () ;
   }
   generatedZone3 << ") ;\n"
+                    "  }else{\n" ;
+  currentArgument = inRootRoutineSignature.firstObject () ;
+  while (currentArgument != NULL) {
+    if (currentArgument->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+      generatedZone3 << "    " ;
+      currentArgument->mCppName (HERE)->generateCplusPlusName (generatedZone3) ;
+      generatedZone3 << "._drop_operation () ;\n" ;
+    }
+    currentArgument = currentArgument->nextObject () ;
+  }
+  generatedZone3 << "  }\n"
                     "}\n\n" ;
 
 //--- Generate file

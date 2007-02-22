@@ -98,6 +98,7 @@ nonterminal <semantic_instructions_list>
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap ioPropertyMap
+  ??@entityToImplementMap inMetamodelEntityMap
   ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
@@ -277,7 +278,7 @@ rule <parse_treewalking_document>
   #    should have the same signature
     foreach treewalkingRoutineHeaderMap (@lstring kKey @L_EXsignature kRoutineSignature *) :
       @luint entityID ;
-      [metamodelEntityMap searchKeyGetID !kKey ?entityID ?8*] ;
+      [metamodelEntityMap searchKeyGetID !kKey ?entityID ?5*] ;
       routineDispatcherSortedList += 
         ![[entityID uint] string]
         ![entityID uint]
@@ -287,7 +288,7 @@ rule <parse_treewalking_document>
       @lstring entityName := kKey ;
       loop [metamodelEntityMap count] : while [entityName string] != "" do
         @lstring superEntityName ;
-        [metamodelEntityMap searchKey !entityName ?3* ?superEntityName ?4*] ;
+        [metamodelEntityMap searchKey !entityName ?3* ?superEntityName ?*] ;
         if [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] then
           @L_EXsignature superRoutineSignature ;
           [treewalkingRoutineHeaderMap searchKey !superEntityName ?superRoutineSignature ?*] ;
@@ -302,7 +303,7 @@ rule <parse_treewalking_document>
     end foreach ;
   #--- If a class does not define a routine, use the super class 
   #    routine (if it exists)
-    foreach metamodelEntityMap (@lstring kEntityName 3* @lstring kSuperEntityName 4*) :
+    foreach metamodelEntityMap (@lstring kEntityName 3* @lstring kSuperEntityName *) :
       @bool hasRoutine := [treewalkingRoutineHeaderMap hasKey ![kEntityName string]] ;
       if not hasRoutine then
         @lstring superEntityName := kSuperEntityName ;
@@ -310,13 +311,13 @@ rule <parse_treewalking_document>
           hasRoutine := [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] ;
           if not hasRoutine then
             @lstring superSuperEntityName ;
-            [metamodelEntityMap searchKey !superEntityName ?3* ?superSuperEntityName ?4*] ;
+            [metamodelEntityMap searchKey !superEntityName ?3* ?superSuperEntityName ?*] ;
             superEntityName := superSuperEntityName ;
           end if ;
         end loop ;
         if hasRoutine then
           @luint entityID ;
-          [metamodelEntityMap searchKeyGetID !kEntityName ?entityID ?8*] ;
+          [metamodelEntityMap searchKeyGetID !kEntityName ?entityID ?5*] ;
           routineDispatcherSortedList += 
             ![[entityID uint] string]
             ![entityID uint]
@@ -357,7 +358,7 @@ rule <treewalking_routine>
   @lstring metamodelClassName ;
   $mda_type_name$ ? metamodelClassName ;
   @entityPropertyMap allMetamodelPropertyMap ;
-  [inMetamodelEntityMap searchKey !metamodelClassName ?allMetamodelPropertyMap ?7*] ;
+  [inMetamodelEntityMap searchKey !metamodelClassName ?allMetamodelPropertyMap ?4*] ;
 #---- Formal arguments -----------------------------------------
   @typeTableEnAvant tableEnAvant [emptyMap] ;
   @L_EXsignature listeDeTypes ;
@@ -393,6 +394,7 @@ rule <treewalking_routine>
     !?localVariableMap
     !?instructionList
     !allMetamodelPropertyMap
+    !inMetamodelEntityMap
     !?constraintPropertyDefinitionSet
   ;
 #---
@@ -412,7 +414,6 @@ label firstLocalPhase
   $rule$ ;
   @lstring metamodelClassName ;
   $mda_type_name$ ? metamodelClassName ;
-  @entityPropertyMap allMetamodelPropertyMap ;
 #---- Formal arguments -----------------------------------------
   @typeTableEnAvant tableEnAvant [emptyMap] ;
   @L_EXsignature listeDeTypes ;

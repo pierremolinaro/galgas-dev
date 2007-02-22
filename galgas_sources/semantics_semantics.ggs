@@ -980,6 +980,7 @@ class @C_grammarInstruction extends @typeInstruction {
   @lstring mGrammarName ;
   @typeExpressionList mExpressionsList ;
   @lstring mAltSymbol ;
+  @lstring mMetamodelClassVariableName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1418,6 +1419,13 @@ class @callInstruction extends @typeInstruction {
   @lstring mEntityName ;
   @metamodelProperty mProperty ;
   @typeExpressionList mExpressionsList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @mdaVariableDeclaration extends @typeInstruction {
+  @typeCplusPlusName mVariableName ;
+  @lstring mEntityName ;
 }
 
 #---------------------------------------------------------------------------*
