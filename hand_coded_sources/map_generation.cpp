@@ -219,7 +219,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCstringConstant (currentMethod->mInfo.mRetrieveErrorMessage) ;
     inCppFile << " COMMA_THERE) ;\n"
                  "    }else{\n"
-                 "      MF_Assert (reinterpret_cast <elementOf_GGS_" << mMapTypeName << " *> (mIndex.retrieve ()) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
+                 "      MF_Assert (reinterpret_cast <const elementOf_GGS_" << mMapTypeName << " *> (mIndex.retrieve ()) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                  "      const elementOf_GGS_" << mMapTypeName << " * p = (const elementOf_GGS_" << mMapTypeName << " *) mIndex.retrieve () ;\n"
                  "      outKey = mKey ;\n" ;
     currentAttribute = mMapAttributesList.firstObject () ;
