@@ -1,0 +1,8 @@
+compile "LR1_grammar_lexique.ggs" ;
+compile "LR1_grammar_options.ggs" ;
+compile "LR1_grammar_semantics.ggs" ;
+compile "LR1_grammar_syntax.ggs" ;
+compile "LR1_grammar_grammar.ggs" ;
+compile "LR1_grammar_cocoa.ggs" ;
+compile "LR1_grammar_program.ggs" ;
+

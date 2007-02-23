@@ -1,0 +1,3 @@
+gui LR1_grammar_cocoa "cocoa":
+import grammar LR1_grammar_grammar in "LR1_grammar_grammar.ggs" ;
+end gui ;

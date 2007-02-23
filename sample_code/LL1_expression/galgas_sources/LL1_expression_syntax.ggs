@@ -1,0 +1,90 @@
+syntax LL1_expression_syntax :
+import lexique LL1_expression_lexique in "LL1_expression_lexique.ggs" ;
+import option LL1_expression_options in "LL1_expression_options.ggs" ;
+import semantics LL1_expression_semantics in "LL1_expression_semantics.ggs" ;
+
+nonterminal <StartSymbol> ;
+
+nonterminal <Expression>
+  !@cExpression outExpressionTree
+  !@uint outValue
+;
+nonterminal <Terme>
+  !@cExpression outExpressionTree
+  !@uint outValue
+;
+
+nonterminal <Facteur>
+  !@cExpression outExpressionTree
+  !@uint outValue
+;
+
+nonterminal <Constant>
+  !@cExpression outExpressionTree
+  !@uint outValue
+;
+  
+  
+rule <StartSymbol>:
+  @cExpression expressionTree;
+  @uint value ;
+  <Expression> ?expressionTree ?value ;
+  log value ;
+end rule;
+  
+rule <Constant>
+  !@cExpression outExpressionTree
+  !@uint outValue
+:
+  @luint cst ;
+  $number$ ? cst;
+  outExpressionTree := [@cConst new !cst] ;
+  outValue := [cst uint] ;
+end rule;
+  
+rule <Expression>
+  !@cExpression outExpressionTree
+  !@uint outValue
+:
+  <Terme> ?outExpressionTree ?outValue ;
+  repeat
+  while 
+    $+$ ;
+    @cExpression rightOperand ;
+    @uint v ;
+    <Terme> ?rightOperand ?v ;
+    outExpressionTree := [@cAdd new ! outExpressionTree !rightOperand] ;
+    outValue := outValue + v ;
+  end repeat ;
+end rule;
+  
+rule <Terme>
+  !@cExpression outExpressionTree
+  !@uint outValue
+:
+   <Facteur> ?outExpressionTree ?outValue ;
+   repeat
+   while 
+     $*$ ;
+     @cExpression rightOperand ;
+     @uint v ;
+     <Facteur> ?rightOperand ?v ;
+     outExpressionTree := [@cMult new ! outExpressionTree !rightOperand] ;
+     outValue := outValue * v ;
+   end repeat ;
+end rule;
+
+rule <Facteur>
+  !@cExpression outExpressionTree
+  !@uint outValue
+:
+  select
+    $($ ;
+    <Expression> ?outExpressionTree ?outValue ;
+    $)$ ;
+  or
+    <Constant> ?outExpressionTree ?outValue ;
+  end select ;
+end rule ;
+
+end syntax ;

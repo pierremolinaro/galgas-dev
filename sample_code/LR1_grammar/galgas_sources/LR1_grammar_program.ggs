@@ -1,0 +1,10 @@
+program LR1_grammar_program "version 1.0.0":
+import grammar LR1_grammar_grammar in "LR1_grammar_grammar.ggs" ;
+#--- max error and warning count
+error 100 ;
+warning 100 ;
+when . "LR1_grammar":
+  message "a source text file with the .LR1_grammar extension"
+  grammar LR1_grammar_grammar
+  ;
+end program ;

@@ -1,0 +1,10 @@
+program dangling_else_solution_program "version 1.0.0":
+import grammar dangling_else_solution_grammar in "dangling_else_solution_grammar.ggs" ;
+#--- max error and warning count
+error 100 ;
+warning 100 ;
+when . "dangling_else_solution":
+  message "a source text file with the .dangling_else_solution extension"
+  grammar dangling_else_solution_grammar
+  ;
+end program ;

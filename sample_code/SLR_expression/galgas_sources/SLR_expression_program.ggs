@@ -1,0 +1,10 @@
+program SLR_expression_program "version 1.0.0":
+import grammar SLR_expression_grammar in "SLR_expression_grammar.ggs" ;
+#--- max error and warning count
+error 100 ;
+warning 100 ;
+when . "SLR_expression":
+  message "a source text file with the .SLR_expression extension"
+  grammar SLR_expression_grammar
+  ;
+end program ;
