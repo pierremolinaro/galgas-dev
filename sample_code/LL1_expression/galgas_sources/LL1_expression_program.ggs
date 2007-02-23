@@ -1,0 +1,10 @@
+program LL1_expression_program "version 1.0.0":
+import grammar LL1_expression_grammar in "LL1_expression_grammar.ggs" ;
+#--- max error and warning count
+error 100 ;
+warning 100 ;
+when . "LL1_expression":
+  message "a source text file with the .LL1_expression extension"
+  grammar LL1_expression_grammar
+  ;
+end program ;

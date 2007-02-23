@@ -1,0 +1,8 @@
+compile "SLR_expression_lexique.ggs" ;
+compile "SLR_expression_options.ggs" ;
+compile "SLR_expression_semantics.ggs" ;
+compile "SLR_expression_syntax.ggs" ;
+compile "SLR_expression_grammar.ggs" ;
+compile "SLR_expression_cocoa.ggs" ;
+compile "SLR_expression_program.ggs" ;
+

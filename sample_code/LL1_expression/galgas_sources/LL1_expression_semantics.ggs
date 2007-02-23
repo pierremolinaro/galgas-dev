@@ -1,0 +1,21 @@
+semantics LL1_expression_semantics :
+import option LL1_expression_options in "LL1_expression_options.ggs" ;
+
+abstract class @cExpression {
+}
+
+class @cConst extends @cExpression {
+  @luint mValue ;
+}
+  
+class @cAdd extends @cExpression {
+  @cExpression mLeftExpression ;
+  @cExpression mRightExpression ;
+}
+  
+class @cMult extends @cExpression {
+  @cExpression mLeftExpression ;
+  @cExpression mRightExpression ;
+}
+
+end semantics ;
