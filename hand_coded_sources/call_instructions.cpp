@@ -32,7 +32,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool inGenerateSemanticInstructions) const {
 
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "GGS_" << mTypeName << "::type_method_" << mTypeMethodName << " (_inLexique"  ;
+    ioCppFile << "GGS_" << mTypeName << "::class_method_" << mTypeMethodName << " (_inLexique"  ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;

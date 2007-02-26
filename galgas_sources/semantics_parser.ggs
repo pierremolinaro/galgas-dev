@@ -3099,7 +3099,7 @@ rule <semantic_instruction>
     [ioComponentSemanticsEntitiesMap searchKey !typeName ? entity] ;
     @AC_galgasType type ;
     extract entity->@typeEntiteType (?type) error typeName : messageTypeEntite ;
-    [type handleTypeMethodCall !typeMethodName ?typeMethodSignature] ;
+    [type handleClassMethodCall !typeMethodName ?typeMethodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
     <actual_parameters_list>

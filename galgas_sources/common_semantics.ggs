@@ -458,8 +458,8 @@ abstract class @AC_galgasType {
     error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
   end method ;
 
-#--- By default, class does not accept type method call
-  method handleTypeMethodCall
+#--- By default, class does not accept class method call
+  method handleClassMethodCall
     ??@lstring inTypeMethodName
     !@L_EXsignature outTypeMethodSignature
   :
@@ -2578,12 +2578,11 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
 
 #--- A mapindex only accept 'makeRegularIndex' type method call
   override
-  method handleTypeMethodCall
+  method handleClassMethodCall
     ??@lstring inTypeMethodName
     !@L_EXsignature outTypeMethodSignature
   :
     if [inTypeMethodName string] == "makeRegularIndex" then
-     # [inComponentSemanticsEntitiesMap searchKey !mMapTypeName ?*] ;
       outTypeMethodSignature := [@L_EXsignature emptyList] ;
       outTypeMethodSignature +=
         ![@typeGalgas_lstring new]
@@ -2615,8 +2614,6 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
       error inTypeMethodName : "a map index only accepts 'regularIndex' type method" -> outTypeMethodSignature ;
     end if ;
   end method ;
-
-
 
   message messageGalgasType "a mapindex type" ;
 }
@@ -3108,7 +3105,10 @@ routine handleStringReaderCall
   !@typeListeAttributsSemantiques outAccessorTypesList
   !@AC_galgasType outReturnedType
 :
-  if [inReaderName string] == "length" then
+  if [inReaderName string] == "doesEnvironmentVariableExist" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_bool new] ;
+  elsif [inReaderName string] == "length" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_uint new] ;
   elsif [inReaderName string] == "capacity" then
@@ -3237,10 +3237,6 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
         outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
-        outReturnedType := inReceiverType ;
-      elsif [inReaderName string] == "binarySetByLeftShifting" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
       elsif [inReaderName string] == "forAllOnBitIndex" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3708,28 +3704,6 @@ routine importSemanticsComponent
   #--- Flag component as imported
     ioAlreadyImportedSemanticsComponents += ![inSemanticsComponentName string] ;
   end if ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine computeRepresentativeEntityName
-  ??@entityToImplementMap inMetamodelEntityMap
-  ??@entityToImplementMap inConstrainedEntityMap
-  ??@lstring inEntityName
-  !@lstring outRepresentativeEntityName
-:
-  outRepresentativeEntityName := [@lstring new !"" !here] ;
-  @lstring searchedEntity := inEntityName ;
-  loop [inMetamodelEntityMap count] + 1 :
-  while ([outRepresentativeEntityName string] == "") & ([searchedEntity string] != "") do
-    if [inConstrainedEntityMap hasKey ![searchedEntity string]] then
-      outRepresentativeEntityName := searchedEntity ;
-    else
-      @lstring superEntity ;
-      [inMetamodelEntityMap searchKey !searchedEntity ?* ?* ?* ?superEntity ?*] ;
-      searchedEntity := superEntity ;
-    end if ;
-  end loop ;
 end routine ;
 
 #---------------------------------------------------------------------------*
