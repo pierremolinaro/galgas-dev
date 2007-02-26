@@ -381,7 +381,33 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine shift_types_check
+routine left_shift_types_check
+  ??@AC_galgasType inLeftExpressionType
+  ??@AC_galgasType inRightExpressionType
+  !@AC_galgasType outResultType
+:
+  match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_binaryset () :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint ()      :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_uint64 ()    :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_sint64 ()    :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
+  else
+    error here : "shift between " . [inLeftExpressionType messageGalgasType]
+      ." and " . [inRightExpressionType messageGalgasType] . " is not valid"
+      -> outResultType
+    ;
+  end match ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine right_shift_types_check
   ??@AC_galgasType inLeftExpressionType
   ??@AC_galgasType inRightExpressionType
   !@AC_galgasType outResultType
@@ -869,7 +895,7 @@ rule <simple_expression>
       ?rightExpression
       ?rightType
     ;
-    shift_types_check !leftType !rightType ?outResultType ;
+    left_shift_types_check !leftType !rightType ?outResultType ;
     outExpression := [@typeLeftShiftOperation new !leftExpression !rightExpression !here] ;
   while 
     $>>$ ;
@@ -884,7 +910,7 @@ rule <simple_expression>
       ?rightExpression
       ?rightType
     ;
-    shift_types_check !leftType !rightType ?outResultType ;
+    right_shift_types_check !leftType !rightType ?outResultType ;
     outExpression := [@typeRightShiftOperation new !leftExpression !rightExpression !here] ;
   while 
     $+$ ;
