@@ -3238,6 +3238,10 @@ routine handleReaderCall
         outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
         outAccessorTypesList += !inReceiverType ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
+      elsif [inReaderName string] == "binarySetByLeftShifting" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
       elsif [inReaderName string] == "forAllOnBitIndex" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
