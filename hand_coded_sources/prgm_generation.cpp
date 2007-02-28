@@ -204,7 +204,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/F_DisplayException.h\"\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n"
-                    "#include \"time/C_Timer.h\"\n"
                     "#include \"generic_arraies/TC_UniqueArray.h\"\n"
                     "#include \"command_line_interface/F_Analyze_CLI_Options.h\"\n"
                     "#include \"command_line_interface/mainForLIBPM.h\"\n"
@@ -296,8 +295,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "               const bool inVerboseOptionOn,\n"
                       "               sint16 & returnCode) {\n" ;
     generatedZone2.incIndentation (+2) ;
-    generatedZone2 << "C_Timer timer ;\n"
-                      "try{\n" ;
+    generatedZone2 << "try{\n" ;
     generatedZone2.incIndentation (+2) ;
     generatedZone2 << "/* if (_mScannerPtr->versionModeOn ()) {\n"
                       "  co << \"Reading '\" << inSourceFileName_ << \"'\\n\" ;\n"
@@ -401,9 +399,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "  co << _mScannerPtr->totalWarningCount () << \" warnings\" ;\n"
                       "  break ;\n"
                       "}\n"
-                      "timer.stopTimer () ;\n"
                       "if (inVerboseOptionOn || ((_mScannerPtr->totalErrorCount () + _mScannerPtr->totalWarningCount ()) > 0)) {\n"
-                      "  co << \" (\" << timer << \").\\n\" ;\n"
+                      "  co << \".\\n\" ;\n"
                       "}\n" ;
     generatedZone2.incIndentation (-2) ;
     generatedZone2 << "}catch (const C_TextReadException & inFileReadError) {\n"
