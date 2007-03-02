@@ -213,7 +213,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
     while (currentAltForNonTerminal != NULL) {
       generatedZone3 << "  public : virtual " ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * " ;      
       }else{
         generatedZone3 << "void " ;
@@ -231,7 +231,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
       if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
         generatedZone3 << "  public : " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " * " ;      
         }else{
           generatedZone3 << "void " ;

@@ -64,9 +64,12 @@ label parse
 ;
 
 nonterminal <entity_declaration>
+  ??@stringset inMetamodelClassSet
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
+label parseForEnumeratingClasses
+  ?!@stringset ioMetamodelClassSet
 label parse
 ;
 
@@ -124,7 +127,7 @@ rule <parse_metamodel>
 #--- Root entity
   $root$ ;
   @lstring rootEntityName ;
-  $mda_type_name$ ? rootEntityName ;
+  $type_name$ ? rootEntityName ;
   $:$ ;
   @entityToImplementMap entityMap [emptyMap] ;
   @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
@@ -190,19 +193,32 @@ rule <entity_declaration_list>
   ?!@entityToImplementMap outEntityMap
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
 :
-  repeat
-  while
-    <entity_declaration>
-      !inSemanticsEntitiesMap
-      !?outEntityMap
-      !?ioMapAndEntityUniqueMap
-    ;
-  end repeat ;
+  @stringset metamodelClassSet [emptySet] ;
+  parse
+  do
+    repeat
+    while
+      <entity_declaration> parseForEnumeratingClasses
+        !?metamodelClassSet
+      ;
+    end repeat ;
+  rewind
+    repeat
+    while
+      <entity_declaration>
+        !metamodelClassSet
+        !inSemanticsEntitiesMap
+        !?outEntityMap
+        !?ioMapAndEntityUniqueMap
+      ;
+    end repeat ;
+  end parse ;
 end rule ;
 
 #-------------------------------------------------------------------*
 
 rule <entity_declaration>
+  ??@stringset inMetamodelClassSet
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
@@ -218,7 +234,7 @@ rule <entity_declaration>
 #--- Entity Name
   $class$ ;
   @lstring entityName ;
-  $mda_type_name$ ? entityName ;
+  $type_name$ ? entityName ;
   [!?ioMapAndEntityUniqueMap insertKey !entityName] ;
 #--- Context properties, or super entity (or nothing)
   @entityPropertyMap allMetamodelPropertyMap ;
@@ -230,7 +246,7 @@ rule <entity_declaration>
     superEntitySet := [@stringset emptySet] ;
   or
     $extends$ ;
-    $mda_type_name$ ? superEntity ;
+    $type_name$ ? superEntity ;
     [ioEntityMap searchKey
       !superEntity
       ?allMetamodelPropertyMap
@@ -246,25 +262,25 @@ rule <entity_declaration>
   ${$ ;
   repeat
   while
-    @lstring propertyTypeName ;
-    $type_name$ ? propertyTypeName ;
-    @AC_semanticsEntity entity ;
-    [inSemanticsEntitiesMap searchKey !propertyTypeName ?entity] ;
-    @AC_galgasType aType ;
-    extract entity->@typeEntiteType (?aType) error propertyTypeName : messageTypeEntite ;
-    @lstring attributeName ;
-    $identifier$ ? attributeName ;
-    @metamodelProperty k := [@metamodelAttributeProperty new !aType] ;
-    [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
-    [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
-    $;$ ;
-  while
-    @lstring propertyTypeName ;
-    $mda_type_name$ ? propertyTypeName ;
-    @metamodelProperty k ;
-    @lstring attributeName ;
+    @lstring propertyOrEntityTypeName ;
+    $type_name$ ? propertyOrEntityTypeName ;
     select
-    #--- Multiple reference
+      @lstring attributeName ;
+      $identifier$ ? attributeName ;
+      if [inMetamodelClassSet hasKey ![propertyOrEntityTypeName string]] then
+        @metamodelProperty k := [@metamodelSingleReferenceProperty new !propertyOrEntityTypeName] ;
+        [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
+        [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
+      else
+        @AC_semanticsEntity entity ;
+        [inSemanticsEntitiesMap searchKey !propertyOrEntityTypeName ?entity] ;
+        @AC_galgasType aType ;
+        extract entity->@typeEntiteType (?aType) error propertyOrEntityTypeName : messageTypeEntite ;
+        @metamodelProperty k := [@metamodelAttributeProperty new !aType] ;
+        [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
+        [!?allMetamodelPropertyMap insertKey !attributeName !k] ;
+      end if ;
+    or
       @luint lowerBound ;
       @luint higherBound ;
       $[$ ;
@@ -294,15 +310,12 @@ rule <entity_declaration>
         higherBound := [@luint new !0 !here] ;
       end select ;
       $]$ ;
+      @lstring attributeName ;
       $identifier$ ? attributeName ;
-      k := [@metamodelMultipleReferenceProperty new !propertyTypeName !lowerBound !higherBound] ;
-    or
-    #--- Single Reference
-      $identifier$ ? attributeName ;
-      k := [@metamodelSingleReferenceProperty new !propertyTypeName] ;
+      @metamodelProperty k := [@metamodelMultipleReferenceProperty new !propertyOrEntityTypeName !lowerBound !higherBound] ;
+      [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
+      [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
     end select ;
-    [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
-    [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
     $;$ ;
   end repeat ;
   $}$ ;
@@ -314,6 +327,53 @@ rule <entity_declaration>
     !superEntity
     !superEntitySet
    ] ;
+label parseForEnumeratingClasses
+  ?!@stringset ioMetamodelClassSet
+:
+#--- Abstract ?
+  select
+  or
+    $abstract$ ;
+  end select ;
+#--- Entity Name
+  $class$ ;
+  @lstring entityName ;
+  $type_name$ ? entityName ;
+  ioMetamodelClassSet += ![entityName string] ;
+#--- Super entity (or nothing)
+  select
+  or
+    $extends$ ;
+    $type_name$ ? * ;
+  end select ;
+#--- Property declarations
+  ${$ ;
+  repeat
+  while
+    $type_name$ ? * ;
+    select
+      $identifier$ ? * ;
+    or
+      $[$ ;
+      select
+        $unsigned_literal_integer$ ? * ;
+        select
+          $,$ ;
+          select
+            $unsigned_literal_integer$ ? * ;
+          or
+            $*$ ;
+          end select ;
+        or
+        end select ;
+      or
+      end select ;
+      $]$ ;
+      $identifier$ ? * ;
+    end select ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
 end rule ;
 
 #-------------------------------------------------------------------*

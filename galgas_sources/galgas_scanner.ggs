@@ -35,7 +35,6 @@ style float_csts -> "Floating Point Constants:" ;
 style characterStyle -> "Character Constants:" ;
 style stringStyle -> "String Constants:" ;
 style typeNameStyle -> "Type Names (@...):" ;
-style mdaTypeNameStyle -> "MDA Type Names (%...):" ;
 style commentStyle -> "Comments:" ;
 
 # -------------------------- identifier or key word --------------------
@@ -169,25 +168,6 @@ rule '@' :
     error incorrectTypeNameError ;
   end select ;
   send $type_name$ ; 
-end rule ;
-
-# ------------------------ MDA Type Name ---------------------------
-
-$mda_type_name$ ! tokenString error message "an MDA type name (%...)" style mdaTypeNameStyle ;
-
-message incorrectMDATypeNameError : "in an MDA type name, a letter should follow the '%' character" ;
-
-rule '%' :
-  select
-  when 'a'->'z' | 'A'->'Z' | '_' :
-    repeat
-      enterCharacterIntoString (tokenString, *) ;
-    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    end repeat ;
-  default
-    error incorrectMDATypeNameError ;
-  end select ;
-  send $mda_type_name$ ; 
 end rule ;
 
 #--------------------------------- Character constant ------------------------------------

@@ -356,7 +356,7 @@ rule <treewalking_routine>
 :
   $rule$ ;
   @lstring metamodelClassName ;
-  $mda_type_name$ ? metamodelClassName ;
+  $type_name$ ? metamodelClassName ;
   @entityPropertyMap allMetamodelPropertyMap ;
   [inMetamodelEntityMap searchKey !metamodelClassName ?allMetamodelPropertyMap ?4*] ;
 #---- Formal arguments -----------------------------------------
@@ -413,7 +413,7 @@ label firstLocalPhase
 :
   $rule$ ;
   @lstring metamodelClassName ;
-  $mda_type_name$ ? metamodelClassName ;
+  $type_name$ ? metamodelClassName ;
 #---- Formal arguments -----------------------------------------
   @typeTableEnAvant tableEnAvant [emptyMap] ;
   @L_EXsignature listeDeTypes ;

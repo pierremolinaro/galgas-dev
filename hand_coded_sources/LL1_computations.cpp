@@ -556,7 +556,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       macroValidPointer (currentAltForNonTerminal) ;
       macroValidPointer (currentAltForNonTerminal) ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * " ;      
       }else{
         generatedZone3 << "void " ;
@@ -579,7 +579,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       }
       generatedZone3 << ") {\n" ; 
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+        generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                        << " * _outReturnedModelInstance = NULL ;\n" ;      
       }
       engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal->mID, numeroParametre,
@@ -600,7 +600,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         macroValidPointer (currentAltForNonTerminal) ;
         generatedZone3 << "\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " * " ;      
         }else{
           generatedZone3 << "void " ;
@@ -620,7 +620,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         }
         generatedZone3 << ") {\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " * _outReturnedModelInstance = NULL ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;

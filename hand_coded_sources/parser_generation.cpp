@@ -68,7 +68,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     macroValidPointer (currentAltForNonTerminal) ;
     inHfile << "  protected : virtual " ;
     if (currentAltForNonTerminal->mInfo.mReturnedEntity.length () > 0) {
-      inHfile << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntity
+      inHfile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntity
                 << " * " ;      
     }else{
       inHfile << "void " ;
@@ -141,7 +141,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     inHfile << "  protected : " ;
     macroValidPointer (currentAltForNonTerminal) ;
     if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-      inHfile << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+      inHfile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << " * " ;      
     }else{
       inHfile << "void " ;
@@ -202,7 +202,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     }
     macroValidPointer (currentAltForNonTerminal) ;
     if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-      inCppFile << "GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+      inCppFile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << " * " ;      
     }else{
       inCppFile << "void " ;
@@ -266,8 +266,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (currentAltForNonTerminal->mInfo.mMDAResultVariableName.length () > 0) {
       inCppFile << "  return var_cas_" << currentAltForNonTerminal->mInfo.mMDAResultVariableName << " ;\n" ;
     }else if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-      inCppFile << "  GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " * _entityInstance = NULL ;\n"
-                   "  macroMyNew (_entityInstance, GGM_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+      inCppFile << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " * _entityInstance = NULL ;\n"
+                   "  macroMyNew (_entityInstance, GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << " (_inLexique" ;
       GGS_entityPropertyMap::element_type * currentProperty = currentAltForNonTerminal->mInfo.mAllPropertiesMap.firstObject () ;
       while (currentProperty != NULL) {

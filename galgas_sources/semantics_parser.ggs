@@ -1996,62 +1996,6 @@ rule <type_parsing>
   end if ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  M O D E L    I N S T A N C I A T I O N     idf <- %className ! ... ;     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#rule <instruction_beginning_with_identifier>
-#  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
-#  ?@lstring inTargetVarName
-#  ?!@typeVariablesMap ioVariablesMap
-#  ?!@typeInstructionList ioInstructionList
-#  ??@M_optionComponents inOptionsComponentsMapForUse
-#  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-#  ??@entityToImplementMap inMetamodelEntityMap
-#:
-#  $<-$ ;
-##--- Metamodel class name
-#  @lstring metamodelClassName ;
-#  $mda_type_name$ ? metamodelClassName ;
-#  @entityPropertyMap allMetamodelPropertyMap ;
-#  [inMetamodelEntityMap searchKey !metamodelClassName ?allMetamodelPropertyMap ?4*] ;
-##--- Build 
-#  @typeListeAttributsSemantiques accessorsTypeList [emptyList] ;
-#
-##--- Expression list
-#  @typeExpressionList expressionList ;
-#  <output_expression_list>
-#    ?expressionList 
-#    !accessorsTypeList
-#    !ioComponentSemanticsEntitiesMap
-#    !inOptionsComponentsMapForUse
-#    !?ioVariablesMap
-#  ;
-#
-#
-#
-##--- Parse source expression
-#  @typeExpression sourceExpression ;
-#  @AC_galgasType sourceType ;
-#  <expression>
-#    !ioComponentSemanticsEntitiesMap
-#    !inOptionsComponentsMapForUse
-#    !?ioVariablesMap
-#    ?sourceExpression
-#    ?sourceType
-#  ;
-##--- Get target entity infos
-#  @AC_galgasType targetVarType ;
-#  @typeCplusPlusName targetVarCppName ;
-#  [!?ioVariablesMap searchForWriteAccess !inTargetVarName ?targetVarType ?targetVarCppName] ;
-##--- Match target and source types
-#  checkAssignmentTypesCompatibility !targetVarType !sourceType !here !true ;
-##--- Generate instruction
-#  @typeInstruction instruction := [@C_assignmentInstruction new !targetVarCppName !sourceExpression] ;
-#  ioInstructionList += !instruction ;
-#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -3662,43 +3606,6 @@ rule <semantic_instruction>
   ] ;
   ioInstructionList += !instruction ;
   $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#     Instruction '%metamodel_class variable ;'                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
-  ??@typeTableEnAvant unused inTableEnAvant
-  ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionList ioInstructionList
-  ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
-  ??@entityToImplementMap inAllMetamodelClassMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
-:
-#--- MDA class name
-  @lstring metamodelClassName ;
-  $mda_type_name$ ? metamodelClassName ;
-  [inAllMetamodelClassMap searchKey !metamodelClassName ?5*] ;
-#--- Local variable
-  @lstring localVariableName ;
-  $identifier$ ? localVariableName ;
-  $;$ ;
-#--- Declare variable
-  @AC_galgasType definitionType := [@typeGalgas_singleEntity new !metamodelClassName] ;
-  @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !localVariableName] ;
-  [!?ioVariablesMap insertSingleEntityLocalVariable !localVariableName !definitionType !nomCppVariable] ;
-#--- Enter declaration in instruction list
-  @typeInstruction instruction := [@mdaVariableDeclaration new
-    !nomCppVariable
-    !metamodelClassName
-  ] ;
-  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*

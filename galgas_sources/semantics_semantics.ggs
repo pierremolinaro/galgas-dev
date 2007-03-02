@@ -1423,11 +1423,4 @@ class @callInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 
-class @mdaVariableDeclaration extends @typeInstruction {
-  @typeCplusPlusName mVariableName ;
-  @lstring mEntityName ;
-}
-
-#---------------------------------------------------------------------------*
-
 end semantics ;

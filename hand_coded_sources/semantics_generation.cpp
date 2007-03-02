@@ -807,7 +807,7 @@ generateCppClassName (AC_OutputStream & inFile) const {
 
 void cPtr_typeGalgas_entityInInstruction::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGM_" ;
+  inFile << "GGS_" ;
   if (mOverrideConstraintName.length () > 0) {
     inFile << "_" << mOverrideConstraintName << "_ConstraintOn_" ;
   }
@@ -880,7 +880,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgas_singleEntity::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGM_" << mEntityName ;
+  inFile << "GGS_" << mEntityName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -908,7 +908,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgas_multipleEntity::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGM__listOf_" << mEntityName ;
+  inFile << "GGS__listOf_" << mEntityName ;
 }
 
 //---------------------------------------------------------------------------*

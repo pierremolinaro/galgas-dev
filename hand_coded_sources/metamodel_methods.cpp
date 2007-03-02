@@ -67,7 +67,7 @@ void cPtr_metamodelSingleReferenceProperty::
 releasePropertyInDestructor (AC_OutputStream & inHFile,
                              const C_String & inPropertyName) const {
   inHFile << "  macroDetachPointer (" << inPropertyName
-          << ", GGM_" << mReferenceEntityName << ") ;\n" ;
+          << ", GGS_" << mReferenceEntityName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -98,7 +98,7 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile,
 void cPtr_metamodelSingleReferenceProperty::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM_" << mReferenceEntityName
+  inHFile << "  public : GGS_" << mReferenceEntityName
           << " * " << inPropertyName << " ;\n" ;
 }
 
@@ -107,7 +107,7 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile,
 void cPtr_metamodelMultipleReferenceProperty::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGM__listOf_" << mReferenceEntityName
+  inHFile << "  public : GGS__listOf_" << mReferenceEntityName
           << " " << inPropertyName << " ;\n" ;
 }
 
@@ -139,7 +139,7 @@ generateFormalParameter (AC_OutputStream & inHFile,
 void cPtr_metamodelMultipleReferenceProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGM__listOf_" << mReferenceEntityName
+  inHFile << "GGS__listOf_" << mReferenceEntityName
           << " & _in_" << inPropertyName ;
 }
 
@@ -148,7 +148,7 @@ generateFormalParameter (AC_OutputStream & inHFile,
 void cPtr_metamodelSingleReferenceProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGM_" << mReferenceEntityName
+  inHFile << "GGS_" << mReferenceEntityName
           << " * & _in_" << inPropertyName ;
 }
 
