@@ -64,6 +64,9 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   }
   if (! directFIRST.isEqualToBDD (ex_directFIRST.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+    printf ("inBDDBitCount %hu\n", inBDDBitCount) ;
+    printf ("directFIRST '%s'\n", directFIRST.queryStringValue ().cString ()) ;
+    printf ("ex_directFIRST '%s'\n", ex_directFIRST.bdd ().queryStringValue ().cString ()) ;
   }
 
 

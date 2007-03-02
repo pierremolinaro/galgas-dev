@@ -10,6 +10,8 @@
    <p><b>GALGAS ChangeLog</b></p>
    <p>1.6.2</p>
    <ul>
+    <li>Bug fix: in release 1.6.0 and 1.6.1, GALGAS tools can crash using <tt><b>--parse-only</b></tt> option on SLR and LR(1) grammars;</li>
+    <li>Bug fix: in release 1.6.1, GALGAS tools can crash if the grammar vocabulary has a number of symbols equal to a power of two;</li>
     <li>New <tt><b>@binaryset</b></tt> operator: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#left_shift_operator"><tt><b>&lt;&lt;</b></tt></a> that returns a left shifted binary set;</li>
     <li>New <tt><b>@string</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#doesenvironmentvariableexist"><tt><b>doesEnvironmentVariableExist</b></tt></a> that returns a true value if an environment variable exists;</li>
     <li>GALGAS tools, and GALGAS generated tools do not display anymore their computing time (use <tt><b>time</b></tt> tool instead);</li>

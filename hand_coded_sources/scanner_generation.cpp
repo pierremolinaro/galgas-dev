@@ -230,32 +230,36 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
                "getCurrentTokenString (const cToken * inTokenPtr) const {\n"
                "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) inTokenPtr ;\n"
                "  C_String s ;\n"
-               "  switch (_p->_mTokenCode) {\n"
-               "  case  " << inLexiqueName << "_1_:\n"
+               "  if (_p == NULL) {\n"
                "    s << \"$$\" ;\n"
-               "    break ;\n" ;
+               "  }else{\n"
+               "    switch (_p->_mTokenCode) {\n"
+               "    case  " << inLexiqueName << "_1_:\n"
+               "      s << \"$$\" ;\n"
+               "      break ;\n" ;
   GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     macroValidPointer (currentTerminal) ;    
-    inCppFile << "  case  " << inLexiqueName << "_1_" ;
+    inCppFile << "    case  " << inLexiqueName << "_1_" ;
     generateTerminalSymbolCppName (currentTerminal->mKey, inCppFile) ;
     inCppFile << ":\n"
-                 "    s << '$'\n"
-                 "      << " ;
+                 "      s << '$'\n"
+                 "        << " ;
     inCppFile.writeCstringConstant (currentTerminal->mKey) ;
     inCppFile << "\n"   
-                 "      << '$' ;\n" ;
+                 "        << '$' ;\n" ;
     GGS_typeListeAttributsSemantiques::element_type * currentAttribute = currentTerminal->mInfo.attributListeDesAttributs.firstObject () ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
       currentAttribute->mAttributType (HERE)->generateAttributeGetLexicalValue (currentAttribute->aNomAttribut, inCppFile) ;
       currentAttribute = currentAttribute->nextObject () ;
     }
-    inCppFile << "    break;\n" ;
+    inCppFile << "      break;\n" ;
     currentTerminal = currentTerminal->nextObject () ;
   }
-  inCppFile << "  default:\n"
-               "    break ;\n"
+  inCppFile << "    default:\n"
+               "      break ;\n"
+               "    }\n"
                "  }\n"
                "  return s ;\n"
                "}\n\n" ;

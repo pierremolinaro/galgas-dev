@@ -492,11 +492,12 @@ createStyleFile (C_Lexique & inLexique,
 
 static uint16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
   uint16 bddBitCount = 0 ;
-  uint32 temp = (uint32) inVocabulary.getAllSymbolsCount () ;
+  uint32 temp = (uint32) (inVocabulary.getAllSymbolsCount () - 1) ;
   while (temp != 0) {
     temp >>= 1 ;
     bddBitCount ++ ;
   }
+//  printf ("[%hu bits for %d symbols]\n", bddBitCount, inVocabulary.getAllSymbolsCount ()) ;
   return bddBitCount ;
 }
 
