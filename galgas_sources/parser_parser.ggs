@@ -693,7 +693,7 @@ rule <syntax_declaration>
     mdaResultVariableName := [@lstring new !"" !here] ;
   or
     $->$ ;
-    $mda_type_name$ ? returnedEntity ;
+    $type_name$ ? returnedEntity ;
     [inAllMetamodelClassMap searchKey !returnedEntity ?5*] ;
     select
       mdaResultVariableName := [@lstring new !"" !here] ; # No variable
@@ -744,7 +744,7 @@ rule <syntax_declaration>
         returnedEntity := [@lstring new !"" !here] ;
       or
         $->$ ;
-        $mda_type_name$ ? returnedEntity ;
+        $type_name$ ? returnedEntity ;
         @AC_semanticsEntity e ;
         [ioEntitiesMap searchKey !returnedEntity ?e] ;
         @AC_galgasType type ;
@@ -778,7 +778,7 @@ label importSyntax
     returnedEntity := [@lstring new !"" !here] ;
   or
     $->$ ;
-    $mda_type_name$ ? returnedEntity ;
+    $type_name$ ? returnedEntity ;
     select
     or
       $identifier$ ? * ;
@@ -812,7 +812,7 @@ label importSyntax
         returnedEntity := [@lstring new !"" !here] ;
       or
         $->$ ;
-        $mda_type_name$ ? returnedEntity ;
+        $type_name$ ? returnedEntity ;
       end select ;
       [!?nonterminalSymbolParametersMap insertKey
         !altName
@@ -863,7 +863,7 @@ rule <syntax_declaration>
     mdaResultVariableName := [@lstring new !"" !here] ;
   or
     $->$ ;
-    $mda_type_name$ ? returnedEntity ;
+    $type_name$ ? returnedEntity ;
     [inAllMetamodelClassMap searchKey !returnedEntity ?5*] ;
     select
       mdaResultVariableName := [@lstring new !"" !here] ; # No variable
@@ -1075,7 +1075,7 @@ label importSyntax
     returnedEntity := [@lstring new !"" !here] ;
   or
     $->$ ;
-    $mda_type_name$ ? returnedEntity ;
+    $type_name$ ? returnedEntity ;
     select
     or
       $identifier$ ? * ;

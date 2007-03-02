@@ -331,7 +331,7 @@ generateInstruction (AC_OutputStream & inCppFile,
       inCppFile << "var_cas_" << mReturnedEntityVarName << ".add (" ;
     }else{
       inCppFile << "macroDetachPointer (var_cas_" << mReturnedEntityVarName
-                << ", GGM_" << mReturnedEntityName << ") ;\n"
+                << ", GGS_" << mReturnedEntityName << ") ;\n"
                    "var_cas_" << mReturnedEntityVarName << " = " ;
     }
   }
