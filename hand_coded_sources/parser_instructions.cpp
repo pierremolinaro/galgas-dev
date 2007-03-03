@@ -328,11 +328,9 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions && (mReturnedEntityVarName.length () > 0)) {
     if (mReturnedEntityShouldInsertedInList.boolValue ()) {
-      inCppFile << "var_cas_" << mReturnedEntityVarName << ".add (" ;
+      inCppFile << "var_cas_" << mReturnedEntityVarName << "._addModel (" ;
     }else{
-      inCppFile << "macroDetachPointer (var_cas_" << mReturnedEntityVarName
-                << ", GGS_" << mReturnedEntityName << ") ;\n"
-                   "var_cas_" << mReturnedEntityVarName << " = " ;
+      inCppFile << "var_cas_" << mReturnedEntityVarName << " = " ;
     }
   }
   inCppFile << "nt_" << mNonterminalName << '_'

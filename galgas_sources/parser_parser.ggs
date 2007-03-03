@@ -694,7 +694,7 @@ rule <syntax_declaration>
   or
     $->$ ;
     $type_name$ ? returnedEntity ;
-    [inAllMetamodelClassMap searchKey !returnedEntity ?5*] ;
+    [inAllMetamodelClassMap searchKey !returnedEntity ?6*] ;
     select
       mdaResultVariableName := [@lstring new !"" !here] ; # No variable
     or
@@ -864,7 +864,7 @@ rule <syntax_declaration>
   or
     $->$ ;
     $type_name$ ? returnedEntity ;
-    [inAllMetamodelClassMap searchKey !returnedEntity ?5*] ;
+    [inAllMetamodelClassMap searchKey !returnedEntity ?6*] ;
     select
       mdaResultVariableName := [@lstring new !"" !here] ; # No variable
     or
@@ -908,9 +908,9 @@ rule <syntax_declaration>
   if ([formalReturnedEntity string] == "") & ([returnedEntity string] != "") then
     error returnedEntity: "the non terminal declaration does not name any returned entity" ;
   elsif [returnedEntity string] != [formalReturnedEntity string] then
-    @stringset superEntityStringSet ;
-    [inAllMetamodelClassMap searchKey ! returnedEntity ?* ?* ?* ?* ?superEntityStringSet] ;
-    if not [superEntityStringSet hasKey ![formalReturnedEntity string]] then
+    @typeSuperClassesMap superEntityMap ;
+    [inAllMetamodelClassMap searchKey ! returnedEntity ?4* ?superEntityMap ?*] ;
+    if not [superEntityMap hasKey ![formalReturnedEntity string]] then
       # message "superEntityStringSet : " . [superEntityStringSet description] ;
       error returnedEntity: "the '@" . [formalReturnedEntity string] . "' entity or one of its inherited entities is expected here" ;
     end if ;
@@ -919,14 +919,14 @@ rule <syntax_declaration>
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
   if [mdaResultVariableName string] != "" then
-    [inAllMetamodelClassMap searchKey ! returnedEntity ?5*] ;
+    [inAllMetamodelClassMap searchKey ! returnedEntity ?6*] ;
     @AC_galgasType definitionType := [@typeGalgas_singleEntity new ! returnedEntity] ;
     @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ! mdaResultVariableName] ;
     [!?tableArgumentsMethode insertSingleEntityLocalVariable !mdaResultVariableName !definitionType !nomCppVariable] ;
     @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
     listeInstructions += !instruction ;
   elsif [returnedEntity string] != "" then
-    [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?* ?* ?* ?*] ;
+    [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?5*] ;
     foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
       extract kProperty :
       when @metamodelAttributeProperty (@AC_galgasType kType) ->
@@ -998,7 +998,7 @@ rule <syntax_declaration>
     or
       $->$ ;
       $type_name$ ? returnedEntity ;
-      [inAllMetamodelClassMap searchKey !returnedEntity ?* ?* ?* ?* ?*] ;
+      [inAllMetamodelClassMap searchKey !returnedEntity ?6*] ;
     end select ;
     @location errorLocation := here ;
     $:$ ;
@@ -1283,7 +1283,7 @@ rule <syntax_instruction>
       loop [inAllMetamodelClassMap count] :
       while (not ok) & ([testedClass length] > 0) do
         @lstring superEntity ;
-        [inAllMetamodelClassMap searchKey !testedClass ?3* ?superEntity ?*] ;
+        [inAllMetamodelClassMap searchKey !testedClass ?3* ?superEntity ?2*] ;
         testedClass := superEntity ;
         ok := [testedClass string] == [variableEntityName string] ;
       end loop ;

@@ -217,19 +217,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "  #ifdef __MWERKS__\n"
                     "    #include <WINSIOUX.H>\n"
                     "  #endif\n"
-                    "#endif\n" ;
-  GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  while (currentGrammar != NULL) {
-    macroValidPointer (currentGrammar) ;
-    GGS_L_lstringList::element_type * currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
-    while (currentConstraint != NULL) {
-      macroValidPointer (currentConstraint) ;
-      generatedZone2 << "#include \"" << currentConstraint->mString << ".h\"\n" ;
-      currentConstraint = currentConstraint->nextObject () ;
-    }
-    currentGrammar = currentGrammar->nextObject () ;
-  }
-  generatedZone2 << '\n' ;
+                    "#endif\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inProgramComponentName << ".h\"\n\n" ;
@@ -250,7 +238,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "  add (& mBuiltinOptions) ;\n"
                     "  add (& mGalgasOptions) ;\n" ;
   TC_UniqueArray <C_String> optionSet ;
-  currentGrammar = inGrammarDescriptorsList.firstObject () ;
+  GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
   while (currentGrammar != NULL) {
     macroValidPointer (currentGrammar) ;
     GGS_M_optionComponents::element_type * currentOptionComponent = currentGrammar->mOptionsComponentsMap.firstObject () ;
@@ -323,7 +311,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << currentGrammar->mGrammarName << " grammar_ ;\n" ;
     if (currentGrammar->mReturnedRootEntityName.length () > 0) {
       generatedZone2 << "GGS_" << currentGrammar->mReturnedRootEntityName 
-                     << " * _metamodelRootObject = " ;
+                     << " _metamodelRootObject = " ;
     }
     generatedZone2 << "grammar_.startParsing_ (*_mScannerPtr" ;
     nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
@@ -334,17 +322,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       nomCourant = nomCourant->nextObject () ;
     }
     generatedZone2 << ") ;\n" ;
-    if (currentGrammar->mReturnedRootEntityName.length () > 0) {
-      GGS_L_lstringList::element_type * currentConstraint = currentGrammar->mConstraintsForMetamodel.firstObject () ;
-      while (currentConstraint != NULL) {
-        macroValidPointer (currentConstraint) ;
-        generatedZone2 << "GGS__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
-                       << " * _rootObjectConstraint_" << currentConstraint->mString << " = NULL ;\n"
-                       << "_addConstraintsTo_" << currentConstraint->mString
-                       << " (*_mScannerPtr, _metamodelRootObject, _rootObjectConstraint_" << currentConstraint->mString << ") ;\n" ;
-        currentConstraint = currentConstraint->nextObject () ;
-      }
-    }
  //--- Log objects
     GGS_loggableObjectList::element_type * currentLoggedObject = currentGrammar->mLoggableObjectList.firstObject () ;
     while (currentLoggedObject != NULL) {
@@ -352,20 +329,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       currentLoggedObject->mLoggableObject (HERE)->generateLogInstructions (generatedZone2) ;
       currentLoggedObject = currentLoggedObject->nextObject () ;
     }
-   //--- Delete objects
-    if (currentGrammar->mReturnedRootEntityName.length () > 0) {
-      GGS_L_lstringList::element_type * currentConstraint =  currentGrammar->mConstraintsForMetamodel.firstObject () ; ;
-      while (currentConstraint != NULL) {
-        macroValidPointer (currentConstraint) ;
-        generatedZone2 << "macroDetachPointer (_rootObjectConstraint_" << currentConstraint->mString
-                       << ", GGS__" << currentConstraint->mString << "_ConstraintOn_" << currentGrammar->mReturnedRootEntityName
-                       << ") ;\n" ;
-        currentConstraint = currentConstraint->nextObject () ;
-      }
-      generatedZone2 << "macroDetachPointer (_metamodelRootObject, GGS_" << currentGrammar->mReturnedRootEntityName << ") ;\n"
-                        "C_BDD::markAndSweepUnusedNodes () ;\n" ;
-    }
-    generatedZone2 << "if (_mScannerPtr->totalErrorCount () == 0) {\n"
+    generatedZone2 << "C_BDD::markAndSweepUnusedNodes () ;\n"
+                      "if (_mScannerPtr->totalErrorCount () == 0) {\n"
                       "  _afterParsing (inVerboseOptionOn) ;\n"
                       "}\n"
                       "if (inVerboseOptionOn || ((_mScannerPtr->totalErrorCount () + _mScannerPtr->totalWarningCount ()) > 0)) {\n"

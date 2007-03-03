@@ -399,7 +399,7 @@ generateDescription (AC_OutputStream & inHFile,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_singleReferenceEntity::
-generateAttributeDeclaration (const GGS_lstring & nom,
+generateAttributeDeclaration (const GGS_lstring & /* nom */,
                               AC_OutputStream & inHfile) const {
   inHfile << "?*?" ;
 }
@@ -407,8 +407,8 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_singleReferenceEntity::
-generateAttributeInitialization (const GGS_lstring & nom,
-                                 AC_OutputStream & inCppFile) const {
+generateAttributeInitialization (const GGS_lstring & /* nom */,
+                                 AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -421,15 +421,8 @@ generateCppClassName (AC_OutputStream & fichier) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_singleReferenceEntity::
-generateAttributeGetLexicalValue (const C_String & inAttributeName,
-                                  AC_OutputStream & inCppFile) const {
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeGalgas_singleReferenceEntity::
-isObject (void) const {
-  return false ;
+generateAttributeGetLexicalValue (const C_String & /* inAttributeName */,
+                                  AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -441,37 +434,29 @@ isObject (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_multipleReferenceEntity::
-generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & inHfile) const {
-  inHfile << "??" ;
+generateAttributeDeclaration (const GGS_lstring & /* nom */,
+                              AC_OutputStream & /* inHfile */) const {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_multipleReferenceEntity::
-generateAttributeInitialization (const GGS_lstring & nom,
-                                 AC_OutputStream & inCppFile) const {
+generateAttributeInitialization (const GGS_lstring & /* nom */,
+                                 AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_multipleReferenceEntity::
 generateCppClassName (AC_OutputStream & fichier) const {
-  fichier << "GGS_" << mEntityTypeName << " " ;
+  fichier << "GGS_listOf" << mEntityTypeName.stringWithUpperCaseFirstLetter () << " " ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_multipleReferenceEntity::
-generateAttributeGetLexicalValue (const C_String & inAttributeName,
-                                  AC_OutputStream & inCppFile) const {
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeGalgas_multipleReferenceEntity::
-isObject (void) const {
-  return false ;
+generateAttributeGetLexicalValue (const C_String & /* inAttributeName */,
+                                  AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*

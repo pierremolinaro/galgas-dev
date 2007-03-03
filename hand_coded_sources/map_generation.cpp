@@ -20,7 +20,6 @@
 //---------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
-#include "semantics_generation.h"
 #include "semantics_semantics.h"
 
 //---------------------------------------------------------------------------*
@@ -274,9 +273,6 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     current = current->nextObject () ;
   }
   
-//--- declaration des attributs externes
-  generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
-
   inHfile << "} ;\n\n" ; //--- End of map element class declaration e_...
   inHfile.writeCppHyphenLineComment () ;
   inHfile << "class elementOf_GGS_" << aNomTable << " : public AC_galgas_map_element {\n"
@@ -1036,9 +1032,6 @@ generateHdeclarations (AC_OutputStream & inHfile,
     current = current->nextObject () ;
   }
   
-//--- declaration des attributs externes
-  generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
-
   inHfile << "//--- Method for 'description' reader\n"
              "  public : void appendForMapDescription (C_Lexique & _inLexique,\n"
              "                                         C_String & ioString,\n"

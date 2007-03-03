@@ -2,7 +2,8 @@
 //                                                                           *
 //  Generate list declaration and implementation                             *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -19,7 +20,6 @@
 //---------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
-#include "semantics_generation.h"
 #include "semantics_semantics.h"
 
 //---------------------------------------------------------------------------*
@@ -46,8 +46,6 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
     attributCourant = attributCourant->nextObject () ;
   }
-//--- declaration des attributs externes
-  generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 //--- declaration constructeur
   inHfile << "//--- Constructor\n"
              "  public : elementOf_GGS_" << aNomListe << " (" ;
@@ -68,21 +66,22 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << ") ;\n\n"
 //--- Access to next and previous item
              "//--- Access to next\n"
-             "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalNextItem () ; }\n"
+             "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalNextItem () ; }\n\n"
              "//--- Access to previous\n"
-             "  public : inline elementOf_GGS_" << aNomListe << " * previousObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalPreviousItem () ; }\n"
+             "  public : inline elementOf_GGS_" << aNomListe << " * previousObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalPreviousItem () ; }\n\n"
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  protected : bool isEqualToElement (const cListElement * inOperand) const ;\n"
+             "  protected : bool isEqualToElement (const cListElement * inOperand) const ;\n\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void appendForListDescription (C_Lexique & _inLexique,\n"
              "                                                  C_String & ioString,\n"
              "                                                  const sint32 inIndentation\n"
-             "                                                  COMMA_LOCATION_ARGS) const ;\n"
+             "                                                  COMMA_LOCATION_ARGS) const ;\n\n" ;
 
 //--- Friend declaration
+  inHfile << "//--- Friend class declaration\n" 
              "  friend class GGS_" << aNomListe << " ;\n"
 
 //--- Fin de la declaration de la classe e_...
@@ -270,7 +269,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inHfile << ") ;\n"
+  inHfile << ") ;\n\n"
               "  protected : void _internalPrependValues (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
@@ -283,16 +282,17 @@ generateHdeclarations (AC_OutputStream & inHfile,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inHfile << ") ;\n"
+  inHfile << ") ;\n\n"
              "//--- List Insulation\n"
-             "  protected : void _insulateList (void) ;\n"
+             "  protected : void _insulateList (void) ;\n\n"
              "//--- Reader 'description\n"
-             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
-             "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const sint32 inIndentation = 0) const ;\n"
+             "  public : GGS_string\n"
+             "  reader_description (C_Lexique & _inLexique\n"
+             "                      COMMA_LOCATION_ARGS,\n"
+             "                      const sint32 inIndentation = 0) const ;\n" ;
 
 //--- End of list class declaration
-             "} ;\n\n" ;
+ inHfile << "} ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -408,6 +408,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     }
   }
   inCppFile << "}\n\n" ;
+
 
 // ------------- List Implementation -----------------
   inCppFile.writeCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
@@ -909,8 +910,6 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
     attributCourant = attributCourant->nextObject () ;
   }
-//--- declaration des attributs externes
-  generateExternAttributesDeclaration (mExternAttributesList, inHfile) ;
 //--- declaration constructeur
   inHfile << "//--- Constructor\n"
              "  public : elementOf_GGS_" << aNomListe << " (" ;

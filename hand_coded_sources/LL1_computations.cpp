@@ -557,7 +557,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       macroValidPointer (currentAltForNonTerminal) ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
         generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " * " ;      
+                       << " " ;      
       }else{
         generatedZone3 << "void " ;
       }
@@ -580,7 +580,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
       generatedZone3 << ") {\n" ; 
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
         generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " * _outReturnedModelInstance = NULL ;\n" ;      
+                       << " _outReturnedModelInstance ;\n" ;      
       }
       engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal->mID, numeroParametre,
                                        inPureBNFproductions, generatedZone3,
@@ -601,7 +601,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         generatedZone3 << "\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " * " ;      
+                         << " " ;      
         }else{
           generatedZone3 << "void " ;
         }
@@ -621,7 +621,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
         generatedZone3 << ") {\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " * _outReturnedModelInstance = NULL ;\n" ;      
+                         << " _outReturnedModelInstance ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "  const bool ok = _inLexique"

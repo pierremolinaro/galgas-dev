@@ -614,14 +614,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aTypeVariable (HERE)->generateCppClassName (ioCppFile) ;
-    ioCppFile << ' ' ;
-    if (aTypeVariable (HERE)->isObject ()) {
-      ioCppFile << "* " ;
-    }
+    ioCppFile << " " ;
     aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-    if (aTypeVariable (HERE)->isObject ()) {
-      ioCppFile << " = NULL" ;
-    }
     ioCppFile << " ;\n" ;
   }
 }
