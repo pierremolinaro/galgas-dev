@@ -158,9 +158,9 @@ createMetamodelFile (const C_String & inCreatedProjectPathName) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_metamodel.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
-  f << "metamodel " << projectName << "_metamodel root %" << projectName << "_root :\n"
+  f << "metamodel " << projectName << "_metamodel root @" << projectName << "_root :\n"
        "\n"
-       "class %" << projectName << "_root {\n"
+       "class @" << projectName << "_root {\n"
        "}\n"
        "\n"
        "# ADD YOUR CODE HERE\n"
@@ -186,7 +186,7 @@ createTreewalkingFile (const C_String & inCreatedProjectPathName) {
        "import \"" << projectName << "_metamodel.ggs\" ;\n"
        "import semantics " << projectName << "_semantics in \"" << projectName << "_semantics.ggs\" ;\n"
        "\n"
-       "rule %" << projectName << "_root :\n"
+       "rule @" << projectName << "_root :\n"
        "end rule ;\n"
        "\n"
        "end treewalking ;\n" ;
@@ -219,13 +219,13 @@ createParserFile (const C_String & inCreatedProjectPathName,
        "\n"
        "nonterminal <start_symbol>" ;
   if (inProjectStyle == kMDAproject) {
-    f << " -> %" << projectName << "_root" ;
+    f << " -> @" << projectName << "_root" ;
   }
   f << " ;\n"
        "\n"
        "rule <start_symbol>" ;
   if (inProjectStyle == kMDAproject) {
-    f << " -> %" << projectName << "_root" ;
+    f << " -> @" << projectName << "_root" ;
   }
   f << " :\n"
        "# ADD YOUR CODE HERE\n"

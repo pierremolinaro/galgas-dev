@@ -177,7 +177,8 @@ generateHdeclarations (AC_OutputStream & inHfile,
       current = current->nextObject () ;
       variableIndex ++ ;
     }
-    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
+    inHfile << "\n                                "
+               "COMMA_LOCATION_ARGS) ;\n" ;
   }
 
 //--- Engendrer la declaration de la redefinition de l'operateur =
@@ -219,8 +220,6 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 
-//--- Engendrer la declaration de la surcharge de l'operateur ()
-             "//--- operator ()\n"
 //--- Implicitly declared Readers
              "//--- Readers\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = aListeAttributsCourants.firstObject () ;
@@ -232,7 +231,9 @@ generateHdeclarations (AC_OutputStream & inHfile,
             << " (C_Lexique & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
   }
-  inHfile << "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+//--- Engendrer la declaration de la surcharge de l'operateur ()
+  inHfile << "//--- operator ()\n"
+             "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "    public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n"
              "  #else\n"
              "    public : inline cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const {\n"
@@ -242,7 +243,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   }
   inHfile << "mPointer ;\n"
              "    }\n"
-             "  #endif\n" ;
+             "  #endif\n\n" ;
 
 //--- Generate 'message' reader prototypes              
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
@@ -320,7 +321,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
 
 //--- declaration des attributs externes
-  generateExternAttributesDeclaration (aListeExternesCourants, generatedZone3) ;
+  generateExternAttributesDeclaration (mExternAttributesList, generatedZone3) ;
     
 //--- Pour chaque methode, engendrer sa declaration
   generateClassMethodsDeclaration (mMethodsMap, generatedZone3) ;

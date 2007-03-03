@@ -354,45 +354,58 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Element comparison
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n"
-               "isEqualToElement (const cListElement * inOperand) const {\n"
-               "  bool equal = inOperand == this ;\n"
-               "  if (! equal) {\n"
-               "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
-               "    macroValidPointer (_p) ;\n"
-               "    equal = " ;
   current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (numeroVariable > 0) {
-      inCppFile << "\n         && " ;
+  inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n" ;
+  if (current == NULL) {
+    inCppFile << "isEqualToElement (const cListElement * /* inOperand */) const {\n"
+                 "  return true ;\n" ;
+  }else{
+    inCppFile << "isEqualToElement (const cListElement * inOperand) const {\n"
+                 "  bool equal = inOperand == this ;\n"
+                 "  if (! equal) {\n"
+                 "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
+                 "    macroValidPointer (_p) ;\n"
+                 "    equal = " ;
+    numeroVariable = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      if (numeroVariable > 0) {
+        inCppFile << "\n         && " ;
+      }
+      inCppFile << "(" << current->aNomAttribut << " == _p->"  << current->aNomAttribut << ").boolValue ()" ;
+      current = current->nextObject () ;
+      numeroVariable ++ ;
     }
-    inCppFile << "(" << current->aNomAttribut << " == _p->"  << current->aNomAttribut << ").boolValue ()" ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
+    inCppFile << " ;\n"
+                 "  }\n"
+                 "  return equal ;\n" ;
   }
-  inCppFile << " ;\n"
-               "  }\n"
-               "  return equal ;\n"
-               "}\n\n" ;
+  inCppFile << "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-               "appendForListDescription (C_Lexique & _inLexique,\n"
-               "                          C_String & ioString,\n"
-               "                          const sint32 inIndentation\n"
-               "                          COMMA_LOCATION_ARGS) const {\n" ;
   current = mNonExternAttributesList.firstObject () ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "  ioString << \"\\n\" ;\n"
-                 "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
-                 "  ioString << \"|-\" ;\n"
-                 "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
+  if (current == NULL) {
+    inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
+                 "appendForListDescription (C_Lexique & /* _inLexique */,\n"
+                 "                          C_String & /* ioString */,\n"
+                 "                          const sint32 /* inIndentation */\n"
+                 "                          COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
+  }else{
+    inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
+                 "appendForListDescription (C_Lexique & _inLexique,\n"
+                 "                          C_String & ioString,\n"
+                 "                          const sint32 inIndentation\n"
+                 "                          COMMA_LOCATION_ARGS) const {\n" ;
+    numeroVariable = 0 ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      inCppFile << "  ioString << \"\\n\" ;\n"
+                   "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+                   "  ioString << \"|-\" ;\n"
+                   "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+      current = current->nextObject () ;
+      numeroVariable ++ ;
+    }
   }
   inCppFile << "}\n\n" ;
 

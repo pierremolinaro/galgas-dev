@@ -99,7 +99,7 @@ void cPtr_metamodelSingleReferenceProperty::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
   inHFile << "  public : GGS_" << mReferenceEntityName
-          << " * " << inPropertyName << " ;\n" ;
+          << " " << inPropertyName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -107,7 +107,7 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile,
 void cPtr_metamodelMultipleReferenceProperty::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGS__listOf_" << mReferenceEntityName
+  inHFile << "  public : GGS_listOf" << mReferenceEntityName.stringWithUpperCaseFirstLetter ()
           << " " << inPropertyName << " ;\n" ;
 }
 
@@ -139,7 +139,7 @@ generateFormalParameter (AC_OutputStream & inHFile,
 void cPtr_metamodelMultipleReferenceProperty::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS__listOf_" << mReferenceEntityName
+  inHFile << "GGS_listOf" << mReferenceEntityName.stringWithUpperCaseFirstLetter ()
           << " & _in_" << inPropertyName ;
 }
 
@@ -388,6 +388,90 @@ generateDescription (AC_OutputStream & inHFile,
              "  s << \"|-" << inPropertyName << ": \" << ((" << inPropertyName
           << " == NULL) ? C_String (\"null\") : " << inPropertyName
           << "->reader_description (_inLexique COMMA_THERE, inIndentation + 1)) << \"\\n\" ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_typeGalgas_singleReferenceEntity
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_singleReferenceEntity::
+generateAttributeDeclaration (const GGS_lstring & nom,
+                              AC_OutputStream & inHfile) const {
+  inHfile << "?*?" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_singleReferenceEntity::
+generateAttributeInitialization (const GGS_lstring & nom,
+                                 AC_OutputStream & inCppFile) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_singleReferenceEntity::
+generateCppClassName (AC_OutputStream & fichier) const {
+  fichier << "GGS_" << mEntityTypeName << " " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_singleReferenceEntity::
+generateAttributeGetLexicalValue (const C_String & inAttributeName,
+                                  AC_OutputStream & inCppFile) const {
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeGalgas_singleReferenceEntity::
+isObject (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_typeGalgas_multipleReferenceEntity
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_multipleReferenceEntity::
+generateAttributeDeclaration (const GGS_lstring & nom,
+                              AC_OutputStream & inHfile) const {
+  inHfile << "??" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_multipleReferenceEntity::
+generateAttributeInitialization (const GGS_lstring & nom,
+                                 AC_OutputStream & inCppFile) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_multipleReferenceEntity::
+generateCppClassName (AC_OutputStream & fichier) const {
+  fichier << "GGS_" << mEntityTypeName << " " ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_multipleReferenceEntity::
+generateAttributeGetLexicalValue (const C_String & inAttributeName,
+                                  AC_OutputStream & inCppFile) const {
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeGalgas_multipleReferenceEntity::
+isObject (void) const {
+  return false ;
 }
 
 //---------------------------------------------------------------------------*
