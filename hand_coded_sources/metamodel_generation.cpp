@@ -31,6 +31,16 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_C_metamodelEntityToImplement::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  const C_String listClassName = C_String ("listOf") + aNomClasse.stringWithUpperCaseFirstLetter () ;
+  inHfile << "class GGS_" << listClassName << " ;\n"
+             "class GGS_" << aNomClasse << " ;\n"
+             "class cPtr_" << aNomClasse << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_metamodelEntityToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
@@ -38,7 +48,13 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCppTitleComment (C_String ("Element of list '@") + listClassName + "'") ;
 //--------- Declare internal element class ------------
-  inHfile << "class cPtr_" << aNomClasse << " : public AC_galgas_list::cListElement {\n"
+  inHfile << "class cPtr_" << aNomClasse << " : public " ;
+  if (mSuperClassName.length () == 0) {
+    inHfile << "AC_galgas_list::cListElement" ;
+  }else{
+    inHfile << "cPtr_" << mSuperClassName ;
+  }
+  inHfile << " {\n"
 //--- Attributes
              "//--- Attributes\n" ;
   GGS_typeListeAttributsSemantiques::element_type * attributCourant = aListeTousAttributsNonExternes.firstObject () ;
@@ -67,19 +83,24 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << ") ;\n\n"
 //--- Access to next and previous item
              "//--- Access to next\n"
-             "  public : inline cPtr_" << aNomClasse << " * nextObject (void) const { return (cPtr_" << aNomClasse << " *) internalNextItem () ; }\n\n"
+             "  public : inline cPtr_" << aNomClasse << " * nextObject (void) const {\n"
+             "    return (cPtr_" << aNomClasse << " *) internalNextItem () ;\n"
+             "  }\n\n"
              "//--- Access to previous\n"
-             "  public : inline cPtr_" << aNomClasse << " * previousObject (void) const { return (cPtr_" << aNomClasse << " *) internalPreviousItem () ; }\n\n"
+             "  public : inline cPtr_" << aNomClasse << " * previousObject (void) const {\n"
+             "    return (cPtr_" << aNomClasse << " *) internalPreviousItem () ;\n"
+             "  }\n\n"
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  protected : bool isEqualToElement (const cListElement * inOperand) const ;\n\n"
+             "  public : bool isEqualToObject (const cListElement * inOperand) const ;\n\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
-             "  public : virtual void appendForListDescription (C_Lexique & _inLexique,\n"
-             "                                                  C_String & ioString,\n"
-             "                                                  const sint32 inIndentation\n"
-             "                                                  COMMA_LOCATION_ARGS) const ;\n\n"
+             "  public : virtual void\n"
+             "  appendForDescription (C_Lexique & _inLexique,\n"
+             "                        C_String & ioString,\n"
+             "                        const sint32 inIndentation\n"
+             "                        COMMA_LOCATION_ARGS) const ;\n\n"
 
 //--- Generate metamodel class ID method ?
              "//--- Metamodel Class ID\n"
@@ -96,35 +117,20 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_metamodelEntityToImplement::
-generatePredeclarations (AC_OutputStream & inHfile) const {
-  const C_String listClassName = C_String ("listOf") + aNomClasse.stringWithUpperCaseFirstLetter () ;
-  inHfile << "class GGS_" << listClassName << " ;\n"
-             "class GGS_" << aNomClasse << " ;\n"
-             "class cPtr_" << aNomClasse << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_C_metamodelEntityToImplement::
 generateHdeclarations (AC_OutputStream & inHfile,
                        const C_String & /* inLexiqueClassName */,
                        C_Lexique & /* inLexique */) const {
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inHfile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
-//--- Super class name (empty if no super class)
-  const C_String superClassName = (mAncestorClassesMap.firstObject () == NULL)
-    ? C_String ()
-    : mAncestorClassesMap.lastObject ()->mKey.string () ;
-
   inHfile << "class GGS_" << aNomClasse ;
-  if (superClassName.length () > 0) {
-    inHfile << " : public GGS_" << superClassName ;
+  if (mSuperClassName.length () > 0) {
+    inHfile << " : public GGS_" << mSuperClassName ;
   }
   inHfile << " {\n" ;
 
 //--- Engendrer la declaration de l'attribut 'mPointer'
-  if (superClassName.length () == 0) {
+  if (mSuperClassName.length () == 0) {
     inHfile << "//--- Pointer to actual instance\n"
                "  protected : cPtr_" << aNomClasse << " * mPointer ;\n" ;
   }
@@ -171,7 +177,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  public : GGS_bool operator == (const GGS_" << aNomClasse << " & inOperand) const ;\n"
              "  public : GGS_bool operator != (const GGS_" << aNomClasse << " & inOperand) const ;\n" ;
 
-  if (superClassName.length () == 0) {
+  if (mSuperClassName.length () == 0) {
 //--- Engendrer la declaration de la methode '_isBuilt'
     inHfile << "//--- _isBuilt\n"
                "  public : inline bool _isBuilt (void) const { return mPointer != NULL ; }\n"
@@ -219,7 +225,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  #else\n"
              "    public : inline cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const {\n"
              "      return " ;
-  if (superClassName.length () > 0) {
+  if (mSuperClassName.length () > 0) {
     inHfile << "(cPtr_" << aNomClasse << " *) " ;
   }
   inHfile << "mPointer ;\n"
@@ -235,9 +241,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
   const C_String listClassName = C_String ("listOf") + aNomClasse.stringWithUpperCaseFirstLetter () ;
   inHfile.writeCppTitleComment (C_String ("list '@") + listClassName + "'") ;
 
-  inHfile << "class cPtr_" << aNomClasse << " ;\n"
-             "\n"
-             "class GGS_" << listClassName << " : public AC_galgas_list {\n"
+  inHfile << "class GGS_" << listClassName << " : public AC_galgas_list {\n"
              "  public : typedef cPtr_" << aNomClasse << " element_type ;\n"
 //--- Constructors and assignment operator declaration
              "//--- Default Constructor\n"
@@ -494,10 +498,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "bool cPtr_" << aNomClasse << "::\n" ;
   if (current == NULL) {
-    inCppFile << "isEqualToElement (const cListElement * /* inOperand */) const {\n"
+    inCppFile << "isEqualToObject (const cListElement * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
-    inCppFile << "isEqualToElement (const cListElement * inOperand) const {\n"
+    inCppFile << "isEqualToObject (const cListElement * inOperand) const {\n"
                  "  bool equal = inOperand == this ;\n"
                  "  if (! equal) {\n"
                  "    const cPtr_" << aNomClasse << " * _p = dynamic_cast <const cPtr_" << aNomClasse << " *> (inOperand) ;\n"
@@ -523,16 +527,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   current = aListeTousAttributsNonExternes.firstObject () ;
   if (current == NULL) {
     inCppFile << "void cPtr_" << aNomClasse << "::\n"
-                 "appendForListDescription (C_Lexique & /* _inLexique */,\n"
-                 "                          C_String & /* ioString */,\n"
-                 "                          const sint32 /* inIndentation */\n"
-                 "                          COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
+                 "appendForDescription (C_Lexique & /* _inLexique */,\n"
+                 "                      C_String & /* ioString */,\n"
+                 "                      const sint32 /* inIndentation */\n"
+                 "                      COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
   }else{
     inCppFile << "void cPtr_" << aNomClasse << "::\n"
-                 "appendForListDescription (C_Lexique & _inLexique,\n"
-                 "                          C_String & ioString,\n"
-                 "                          const sint32 inIndentation\n"
-                 "                          COMMA_LOCATION_ARGS) const {\n" ;
+                 "appendForDescription (C_Lexique & _inLexique,\n"
+                 "                      C_String & ioString,\n"
+                 "                      const sint32 inIndentation\n"
+                 "                      COMMA_LOCATION_ARGS) const {\n" ;
     numeroVariable = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -1055,12 +1059,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
-//--- Super class name (empty if no super class)
-  const C_String superClassName = (mAncestorClassesMap.firstObject () == NULL)
-    ? C_String ()
-    : mAncestorClassesMap.lastObject ()->mKey.string () ;
-
-
 //--- Implementer la declaration du constructeur par defaut
   inCppFile << "GGS_" << aNomClasse << "::\n"
                "GGS_" << aNomClasse << " (void) {\n"
@@ -1071,12 +1069,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomClasse << "::\n"
                "GGS_" << aNomClasse << " (const GGS_" << aNomClasse << " & inOperand)" ;
-  if (superClassName.length () == 0) {
+  if (mSuperClassName.length () == 0) {
      inCppFile << " {\n"
                   "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n" ;
   }else{
      inCppFile << "\n"
-                  ":GGS_" << superClassName << " () {\n" ;
+                  ":GGS_" << mSuperClassName << " () {\n" ;
   }
   inCppFile << "  macroAssignPointer (mPointer, inOperand.mPointer) ;\n"
                "}\n\n" ;
@@ -1150,7 +1148,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "  result ;\n"
                  "  if (mPointer != NULL) {\n"
                  "    macroValidPointer (mPointer) ;\n" ;
-    if (superClassName.length () == 0) {
+    if (mSuperClassName.length () == 0) {
       inCppFile << "    result = mPointer->" << current->aNomAttribut << " ;\n" ;
    }else{
       inCppFile << "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
@@ -1164,7 +1162,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
 
 //--- Engendrer la declaration de la methode '_drop_operation'
-  if (superClassName.length () == 0) {
+  if (mSuperClassName.length () == 0) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomClasse << "::\n"
                  "_drop_operation (void) {\n"
@@ -1246,20 +1244,19 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_lsint.h\"\n\n" ;
   
   C_String generatedZone3 ; generatedZone3.setCapacity (20000) ;
+
 //--- Generate entities predeclarations
   generatedZone3.writeCppTitleComment ("Class Predeclarations") ;
-  GGS_entityToImplementMap::element_type * currentEntity = ioEntityMap.firstObject () ;
-  while (currentEntity != NULL) {
-    macroValidPointer (currentEntity) ;
-    generatedZone3 << "class GGS_" << currentEntity->mKey << " ;\n"
-                      "class cPtr_" << currentEntity->mKey << " ;\n"
-                      "class GGS_listOf" << currentEntity->mKey.stringWithUpperCaseFirstLetter () << " ;\n" ;
-    currentEntity = currentEntity->nextObject () ;
+  GGS_typeEntitiesToGenerateList::element_type * element = inEntitiesToGenerateList.firstObject () ;
+  while (element != NULL) {
+    macroValidPointer (element) ;
+    element->mEntityToGenerate (HERE)->generatePredeclarations (generatedZone3) ;
+    element = element->nextObject () ;
   }
   generatedZone3 << "\n" ;
 
 //--- Generate classes declarations
-  GGS_typeEntitiesToGenerateList::element_type * element = inEntitiesToGenerateList.firstObject () ;
+  element = inEntitiesToGenerateList.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
     element->mEntityToGenerate (HERE)->generateHdeclarations (generatedZone3, "C_Lexique", inLexique) ;

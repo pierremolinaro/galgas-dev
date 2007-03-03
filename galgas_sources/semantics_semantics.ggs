@@ -1429,8 +1429,8 @@ class @C_metamodelEntityToImplement extends @typeEntityToGenerate {
 #--- Liste des attributs semantiques not externes definis dans cette classe
   @typeListeAttributsSemantiques aListeAttributsCourants ;
 
-#--- Table des classes ancetre de la classe courante
-  @typeSuperClassesMap mAncestorClassesMap ;
+#--- Super class name
+  @string mSuperClassName ; # Empty string if no super class
 
 #--- Metamodel Class ID
   @uint mMetamodelClassID ;
