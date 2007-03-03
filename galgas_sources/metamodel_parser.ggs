@@ -21,7 +21,7 @@ syntax metamodel_parser :
 
 import lexique galgas_scanner in "galgas_scanner.ggs" ;
 
-import semantics common_semantics in "common_semantics.ggs" ;
+import semantics semantics_semantics in "semantics_semantics.ggs" ;
 
 #-------------------------------------------------------------------*
 
@@ -60,6 +60,7 @@ nonterminal <entity_declaration_list>
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 label parse
 ;
 
@@ -68,6 +69,7 @@ nonterminal <entity_declaration>
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 label parseForEnumeratingClasses
   ?!@stringset ioMetamodelClassSet
 label parse
@@ -132,11 +134,13 @@ rule <parse_metamodel>
   @entityToImplementMap entityMap [emptyMap] ;
   @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
   @M_semanticsEntitiesForUse semanticsEntitiesMap ;
+  @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
   enterBuiltinTypes ?semanticsEntitiesMap ;
   <entity_declaration_list>
     !semanticsEntitiesMap
     !?entityMap
     !?mapAndEntityUniqueMap
+    !?listeEntitesAengendrer
   ;
   @bool isAbstract ;
   [entityMap searchKey !rootEntityName ?* ?isAbstract ?3*] ;
@@ -168,7 +172,7 @@ rule <parse_metamodel>
     action generate_metamodel
       !entityMap
       !metamodelName
-      !multiReferencedEntities
+      !listeEntitesAengendrer
       !rootEntityName
     ;
   end if ;
@@ -192,6 +196,7 @@ rule <entity_declaration_list>
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap outEntityMap
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 :
   @stringset metamodelClassSet [emptySet] ;
   parse
@@ -210,6 +215,7 @@ rule <entity_declaration_list>
         !inSemanticsEntitiesMap
         !?outEntityMap
         !?ioMapAndEntityUniqueMap
+        !?listeEntitesAengendrer
       ;
     end repeat ;
   end parse ;
@@ -222,6 +228,7 @@ rule <entity_declaration>
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
   ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 :
 #--- Abstract ?
   @bool isAbstract ;
@@ -259,6 +266,7 @@ rule <entity_declaration>
   end select ;
 #--- Property declarations
   @entityPropertyMap currentEntityPropertyMap [emptyMap] ;
+  @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
   ${$ ;
   repeat
   while
@@ -267,19 +275,21 @@ rule <entity_declaration>
     select
       @lstring attributeName ;
       $identifier$ ? attributeName ;
+      @AC_galgasType propertyType ;
       if [inMetamodelClassSet hasKey ![propertyOrEntityTypeName string]] then
         @metamodelProperty k := [@metamodelSingleReferenceProperty new !propertyOrEntityTypeName] ;
         [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
-        [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
+        [!?allMetamodelPropertyMap insertKey !attributeName !k] ;
+        propertyType := [@typeGalgas_singleReferenceEntity new !propertyOrEntityTypeName] ;
       else
         @AC_semanticsEntity entity ;
         [inSemanticsEntitiesMap searchKey !propertyOrEntityTypeName ?entity] ;
-        @AC_galgasType aType ;
-        extract entity->@typeEntiteType (?aType) error propertyOrEntityTypeName : messageTypeEntite ;
-        @metamodelProperty k := [@metamodelAttributeProperty new !aType] ;
+        extract entity->@typeEntiteType (?propertyType) error propertyOrEntityTypeName : messageTypeEntite ;
+        @metamodelProperty k := [@metamodelAttributeProperty new !propertyType] ;
         [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
         [!?allMetamodelPropertyMap insertKey !attributeName !k] ;
       end if ;
+      listeTousAttributsSemantiques += !propertyType !attributeName ;
     or
       @luint lowerBound ;
       @luint higherBound ;
@@ -315,6 +325,12 @@ rule <entity_declaration>
       @metamodelProperty k := [@metamodelMultipleReferenceProperty new !propertyOrEntityTypeName !lowerBound !higherBound] ;
       [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
       [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
+      @AC_galgasType propertyType := [@typeGalgas_multipleReferenceEntity new
+        !propertyOrEntityTypeName
+        !lowerBound
+        !higherBound
+      ] ;
+      listeTousAttributsSemantiques += !propertyType !attributeName ;
     end select ;
     $;$ ;
   end repeat ;
@@ -326,7 +342,13 @@ rule <entity_declaration>
     !currentEntityPropertyMap
     !superEntity
     !superEntitySet
-   ] ;
+  ] ;
+  @typeEntityToGenerate def := [@C_listTypeToImplement new
+    ![@lstring new ![entityName string] ![entityName location]]
+    !listeTousAttributsSemantiques
+    ![@L_nameWithType emptyList]
+  ] ;
+  listeEntitesAengendrer += !def ;
 label parseForEnumeratingClasses
   ?!@stringset ioMetamodelClassSet
 :

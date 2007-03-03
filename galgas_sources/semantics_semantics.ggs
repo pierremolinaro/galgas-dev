@@ -1264,7 +1264,7 @@ class @C_classToImplement extends @typeEntityToGenerate {
   @typeListeAttributsSemantiques aListeAttributsCourants ;
 
 #--- Liste des attributs externes definis dans cette classe
-  @L_nameWithType aListeExternesCourants ;
+  @L_nameWithType mExternAttributesList ;
 
 #--- Table des classes ancetre de la classe courante
   @typeSuperClassesMap mAncestorClassesMap ;
@@ -1420,6 +1420,15 @@ class @callInstruction extends @typeInstruction {
   @metamodelProperty mProperty ;
   @typeExpressionList mExpressionsList ;
 }
+
+#---------------------------------------------------------------------------*
+
+action generate_metamodel
+ ?@entityToImplementMap inEntityMap
+ ?@lstring inMetamodelComponentName
+ ?@typeEntitiesToGenerateList listeEntitesAengendrer
+ ?@lstring inRootEntityName
+;
 
 #---------------------------------------------------------------------------*
 

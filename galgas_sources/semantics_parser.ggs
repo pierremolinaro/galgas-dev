@@ -4867,7 +4867,11 @@ rule <semantics_declaration>
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
-    @typeEntityToGenerate def := [@C_listTypeToImplement new !listTypeName !listeTousAttributsSemantiques !listeTypeeAttributsExternesCourants] ;
+    @typeEntityToGenerate def := [@C_listTypeToImplement new
+      !listTypeName
+      !listeTousAttributsSemantiques
+      !listeTypeeAttributsExternesCourants
+    ] ;
     listeEntitesAengendrer += !def ;
   end select ;
 label importSemantics

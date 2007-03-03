@@ -612,15 +612,6 @@ map @entityToImplementMap {
 
 #---------------------------------------------------------------------------*
 
-action generate_metamodel
- ?@entityToImplementMap inEntityMap
- ?@lstring inMetamodelComponentName
- ?@stringset inMultiReferencedEntities
- ?@lstring inRootEntityName
-;
-
-#---------------------------------------------------------------------------*
-
 class @typeGalgas_singleEntity extends @AC_galgasType {
   @lstring mEntityName ;
 #--- Get type name
@@ -2709,34 +2700,16 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   E N T I T Y    T Y P E    I N    I N S T R U C T I O N                  *
+#   S I N G L E   E N T I T Y    R E F E R E N C E                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_entityInInstruction extends @AC_galgasType {
-  @string mEntityName ;
-  @string mOverrideConstraintName ;
-#--- Get type name
-  override method getTypeName !@string outTypeName :
-    outTypeName := mEntityName ;
-  end method ;
-
-#--- Error message
-  message messageGalgasType "an entity" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   M A P    I N D E X    T Y P E    I N    I N S T R U C T I O N           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeGalgas_mapIndexInInstruction extends @AC_galgasType {
-  @string mMapTypeName ;
+class @typeGalgas_singleReferenceEntity extends @AC_galgasType {
+  @lstring mEntityTypeName ;
 #--- Get type name
   override
   method getTypeName !@string outTypeName :
-    outTypeName := "" ;
+    outTypeName := "$$" ;
   end method ;
 #--- Error message
   message messageGalgasType "a map index" ;
@@ -2744,77 +2717,21 @@ class @typeGalgas_mapIndexInInstruction extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   M A P    E N T I T Y    T Y P E    I N    I N S T R U C T I O N         *
+#   M U L T I P L E   E N T I T Y    R E F E R E N C E                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @typeGalgas_mapEntityInInstruction extends @AC_galgasType {
-  @string mEntityName ;
-  @string mElementTypeName ;
-  @string mOverrideConstraintName ;
+class @typeGalgas_multipleReferenceEntity extends @AC_galgasType {
+  @lstring mEntityTypeName ;
+  @luint mLowerBound ;
+  @luint mUpperBound ;
 #--- Get type name
   override
   method getTypeName !@string outTypeName :
-    outTypeName := mEntityName ;
+    outTypeName := "$$" ;
   end method ;
-
-#--- Handle modifiers
-  override
-  method handleModifierCall
-    ??@lstring inModifiedObjectName
-    ??@lstring inModifierName
-    !@L_EXsignature outModifierSignature
-  :
-    if [inModifierName string] == "insertKey" then
-      outModifierSignature := [@L_EXsignature emptyList] ;
-      @AC_galgasType t := [@typeGalgas_lstring new] ;
-      outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_entityInInstruction new !mElementTypeName !mOverrideConstraintName] ;
-      outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-    elsif [inModifierName string] == "insertKeyAndGetIndex" then
-      outModifierSignature := [@L_EXsignature emptyList] ;
-      @AC_galgasType t := [@typeGalgas_lstring new] ;
-      outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_entityInInstruction new !mElementTypeName !mOverrideConstraintName] ;
-      outModifierSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_mapIndexInInstruction new ![inModifiedObjectName string]] ;
-      outModifierSignature += !t ![@formalArgumentPassingMode argumentOut] ;
-    else
-      error inModifierName : "variables of this type only accept 'insertKey' and 'insertKey' modifier calls"
-       -> outModifierSignature ;
-    end if ;
-  end method ;
-
-#--- Handle reader instruction call
-  override
-  method handleMethodInstructionCall
-    ??@lstring inReadObjectName
-    ??@lstring inReaderName
-    !@L_EXsignature outReaderSignature
-  :
-    if [inReaderName string] == "searchKey" then
-      outReaderSignature := [@L_EXsignature emptyList] ;
-      @AC_galgasType t := [@typeGalgas_lstring new] ;
-      outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_entityInInstruction new !mElementTypeName !mOverrideConstraintName] ;
-      outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
-    elsif [inReaderName string] == "searchKeyAndGetIndex" then
-      outReaderSignature := [@L_EXsignature emptyList] ;
-      @AC_galgasType t := [@typeGalgas_lstring new] ;
-      outReaderSignature += !t ![@formalArgumentPassingMode argumentConstantIn] ;
-      t := [@typeGalgas_entityInInstruction new !mElementTypeName !mOverrideConstraintName] ;
-      outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
-      t := [@typeGalgas_mapIndexInInstruction new ![inReadObjectName string]] ;
-      outReaderSignature += !t ![@formalArgumentPassingMode argumentOut] ;
-    else
-      error inReadObjectName :
-       "variables of this type  only accept 'searchKey'  'searchKeyAndGetIndex' reader calls"
-       -> outReaderSignature ;
-    end if ;
-  end method ;
-
 #--- Error message
-  message messageGalgasType "a map entity" ;
+  message messageGalgasType "a map index" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2944,20 +2861,6 @@ routine checkAssignmentTypesCompatibility
     if [aTypeName1 string] != [aTypeName2 string] then
       error inErrorLocation : "I was expecting an enum variable of  '@" . [aTypeName1 string] .
                                 "' type variable, and I got an enum '@" . [aTypeName2 string] . "' type variable" ;
-    end if ;
-
-  when @typeGalgas_entityInInstruction (@string kTypeName1 *)
-    :: @typeGalgas_entityInInstruction (@string kTypeName2 *) :
-    if kTypeName1 != kTypeName2 then
-      error inErrorLocation : "I was expecting an entity instance of  '@" . kTypeName1 .
-                              "' type variable, and I got an entity instance of type '@" . kTypeName2 . "'" ;
-    end if ;
-
-  when @typeGalgas_mapIndexInInstruction (@string kPropertyName1)
-    :: @typeGalgas_mapIndexInInstruction (@string kPropertyName2) :
-    if kPropertyName1 != kPropertyName2 then
-      error inErrorLocation : "I was expecting a map index of  '" . kPropertyName1 .
-                              "' map property, and I got a map index of '" . kPropertyName2 . "' map property" ;
     end if ;
 
   else

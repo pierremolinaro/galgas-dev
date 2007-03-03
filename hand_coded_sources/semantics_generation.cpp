@@ -791,51 +791,6 @@ generatePublicDeclaration (AC_OutputStream & inHfile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_mapIndexInInstruction::
-generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "C_GGS_MapIndex" ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_entityInInstruction::
-generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" ;
-  if (mOverrideConstraintName.length () > 0) {
-    inFile << "_" << mOverrideConstraintName << "_ConstraintOn_" ;
-  }
-  inFile << mEntityName << " *" ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_mapEntityInInstruction::
-generateCppClassName (AC_OutputStream & /* inFile */) const {
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeGalgasDomainType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mDomainTypeName ;
@@ -908,7 +863,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgas_multipleEntity::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS__listOf_" << mEntityName ;
+  inFile << "GGS_listOf" << mEntityName.stringWithUpperCaseFirstLetter () ;
 }
 
 //---------------------------------------------------------------------------*
