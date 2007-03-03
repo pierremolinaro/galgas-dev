@@ -1065,21 +1065,13 @@
 		CFA313A409FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */; };
 		CFA313A509FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */; };
 		CFA313A609FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */; };
-		CFA313B209FD3F0A006B55E7 /* semantics_generation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B009FD3F0A006B55E7 /* semantics_generation.h */; };
 		CFA313B309FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFA313B409FD3F0A006B55E7 /* semantics_generation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B009FD3F0A006B55E7 /* semantics_generation.h */; };
 		CFA313B509FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFA313B609FD3F0A006B55E7 /* semantics_generation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B009FD3F0A006B55E7 /* semantics_generation.h */; };
 		CFA313B709FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFA313B809FD3F0A006B55E7 /* semantics_generation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B009FD3F0A006B55E7 /* semantics_generation.h */; };
 		CFA313B909FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFA313BA09FD3F0A006B55E7 /* semantics_generation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B009FD3F0A006B55E7 /* semantics_generation.h */; };
 		CFA313BB09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFA313BC09FD3F0A006B55E7 /* semantics_generation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B009FD3F0A006B55E7 /* semantics_generation.h */; };
 		CFA313BD09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFA313BE09FD3F0A006B55E7 /* semantics_generation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B009FD3F0A006B55E7 /* semantics_generation.h */; };
 		CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFA313C009FD3F0A006B55E7 /* semantics_generation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B009FD3F0A006B55E7 /* semantics_generation.h */; };
 		CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFAFD83C0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
 		CFAFD83D0AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
@@ -1536,14 +1528,6 @@
 		CFDC00700B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
 		CFDC00710B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */; };
 		CFDC00720B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
-		CFDDACAC0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
-		CFDDACAE0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
-		CFDDACB00A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
-		CFDDACB20A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
-		CFDDACB40A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
-		CFDDACB60A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
-		CFDDACB80A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
-		CFDDACBA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */; };
 		CFE837B10AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
 		CFE837B20AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
 		CFE837B30AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
@@ -1643,6 +1627,14 @@
 		CFEF40940B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */; };
 		CFEF40950B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */; };
 		CFEF40960B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */; };
+		CFEF44050B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
+		CFEF44060B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
+		CFEF44070B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
+		CFEF44080B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
+		CFEF44090B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
+		CFEF440A0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
+		CFEF440B0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
+		CFEF440C0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
 		CFF13E3A059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E3C059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E420597311700C43F5E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
@@ -2056,7 +2048,6 @@
 		CFA3135409FD3ECB006B55E7 /* useful_symbols_computations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computations.h; sourceTree = "<group>"; };
 		CFA3139509FD3EDA006B55E7 /* parser_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_generation.h; sourceTree = "<group>"; };
 		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammar.h; sourceTree = "<group>"; };
-		CFA313B009FD3F0A006B55E7 /* semantics_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_generation.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
 		CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_loggableMetamodel.h; sourceTree = "<group>"; };
 		CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_loggableObject.h; sourceTree = "<group>"; };
@@ -2275,7 +2266,6 @@
 		CFDB3A720B8866D500DDA180 /* treewalking_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = treewalking_parser.h; sourceTree = "<group>"; };
 		CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_mapindex.cpp; sourceTree = "<group>"; };
 		CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_mapindex.h; sourceTree = "<group>"; };
-		CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_entityInInstruction.h; sourceTree = "<group>"; };
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
 		CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelAttributeProperty.h; sourceTree = "<group>"; };
 		CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelMapProperty.h; sourceTree = "<group>"; };
@@ -2292,6 +2282,7 @@
 		CFEF40750B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_multipleReferenceEntity.h; sourceTree = "<group>"; };
 		CFEF40760B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleReferenceEntity.h; sourceTree = "<group>"; };
 		CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_mapindexToImplement.h; sourceTree = "<group>"; };
+		CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_metamodelEntityToImplement.h; sourceTree = "<group>"; };
 		CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cli_options_parser.cpp; sourceTree = "<group>"; };
 		CFF13E39059730EB00C43F5E /* cli_options_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cli_options_parser.h; sourceTree = "<group>"; };
 		CFF13E410597311700C43F5E /* option_component_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_component_generation.cpp; sourceTree = "<group>"; };
@@ -2599,6 +2590,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */,
 				CFEF40750B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h */,
 				CFEF40760B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h */,
 				CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */,
@@ -2648,7 +2640,6 @@
 				CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */,
 				CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */,
 				CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */,
-				CFDDACAA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h */,
 				CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */,
 				CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */,
 				CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */,
@@ -3046,7 +3037,6 @@
 				CFF537A4057A518B00854C83 /* semantics_instructions.cpp */,
 				CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */,
 				CFF537A2057A518B00854C83 /* semantics_generation.cpp */,
-				CFA313B009FD3F0A006B55E7 /* semantics_generation.h */,
 			);
 			name = "Semantics Component";
 			sourceTree = "<group>";
@@ -3368,7 +3358,6 @@
 				CFA3135C09FD3ECB006B55E7 /* useful_symbols_computations.h in Headers */,
 				CFA3139609FD3EDA006B55E7 /* parser_generation.h in Headers */,
 				CFA3139F09FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */,
-				CFA313B209FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313B309FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
 				CFC1767309FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
 				CFC1767409FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
@@ -3377,7 +3366,6 @@
 				CFC1767709FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774209FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 				CF4CBBC009FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
-				CFDDACAC0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */,
 				CF6556DB0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 				CF19AF780A2B718E00813ED1 /* include_C_while_instruction.h in Headers */,
 				CF8D86E30A2C73BF009115FE /* include_typeXorOperation.h in Headers */,
@@ -3446,6 +3434,7 @@
 				CFEF40810B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h in Headers */,
 				CFEF40820B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h in Headers */,
 				CFEF40940B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
+				CFEF440A0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3469,7 +3458,6 @@
 				CFA3138C09FD3ECB006B55E7 /* useful_symbols_computations.h in Headers */,
 				CFA3139C09FD3EDA006B55E7 /* parser_generation.h in Headers */,
 				CFA313A509FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */,
-				CFA313BE09FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
 				CFC1769109FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
 				CFC1769209FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
@@ -3478,7 +3466,6 @@
 				CFC1769509FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774809FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 				CF4CBBC609FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
-				CFDDACB80A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */,
 				CF6556E70A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 				CF19AF7E0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */,
 				CF8D86E90A2C73BF009115FE /* include_typeXorOperation.h in Headers */,
@@ -3547,6 +3534,7 @@
 				CFEF40830B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h in Headers */,
 				CFEF40840B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h in Headers */,
 				CFEF40950B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
+				CFEF440B0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3570,7 +3558,6 @@
 				CFA3139409FD3ECB006B55E7 /* useful_symbols_computations.h in Headers */,
 				CFA3139D09FD3EDA006B55E7 /* parser_generation.h in Headers */,
 				CFA313A609FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */,
-				CFA313C009FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
 				CFC1769609FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
 				CFC1769709FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
@@ -3579,7 +3566,6 @@
 				CFC1769A09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774909FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 				CF4CBBC709FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
-				CFDDACBA0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */,
 				CF6556E90A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 				CF19AF7F0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */,
 				CF8D86EA0A2C73BF009115FE /* include_typeXorOperation.h in Headers */,
@@ -3648,6 +3634,7 @@
 				CFEF40850B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h in Headers */,
 				CFEF40860B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h in Headers */,
 				CFEF40960B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
+				CFEF440C0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3685,7 +3672,6 @@
 				CFA3136409FD3ECB006B55E7 /* useful_symbols_computations.h in Headers */,
 				CFA3139709FD3EDA006B55E7 /* parser_generation.h in Headers */,
 				CFA313A009FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */,
-				CFA313B409FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313B509FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
 				CFC1767809FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
 				CFC1767909FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
@@ -3694,7 +3680,6 @@
 				CFC1767C09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774309FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 				CF4CBBC109FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
-				CFDDACAE0A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */,
 				CF6556DD0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 				CF19AF790A2B718E00813ED1 /* include_C_while_instruction.h in Headers */,
 				CF8D86E40A2C73BF009115FE /* include_typeXorOperation.h in Headers */,
@@ -3763,6 +3748,7 @@
 				CFEF407B0B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h in Headers */,
 				CFEF407C0B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h in Headers */,
 				CFEF40910B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
+				CFEF44070B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3786,7 +3772,6 @@
 				CFA3136C09FD3ECB006B55E7 /* useful_symbols_computations.h in Headers */,
 				CFA3139809FD3EDA006B55E7 /* parser_generation.h in Headers */,
 				CFA313A109FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */,
-				CFA313B609FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313B709FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
 				CFC1767D09FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
 				CFC1767E09FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
@@ -3795,7 +3780,6 @@
 				CFC1768109FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774409FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 				CF4CBBC209FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
-				CFDDACB00A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */,
 				CF6556DF0A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 				CF19AF7A0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */,
 				CF8D86E50A2C73BF009115FE /* include_typeXorOperation.h in Headers */,
@@ -3864,6 +3848,7 @@
 				CFEF40790B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h in Headers */,
 				CFEF407A0B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h in Headers */,
 				CFEF40900B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
+				CFEF44060B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3887,7 +3872,6 @@
 				CFA3137409FD3ECB006B55E7 /* useful_symbols_computations.h in Headers */,
 				CFA3139909FD3EDA006B55E7 /* parser_generation.h in Headers */,
 				CFA313A209FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */,
-				CFA313B809FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313B909FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
 				CFC1768209FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
 				CFC1768309FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
@@ -3896,7 +3880,6 @@
 				CFC1768609FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774509FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 				CF4CBBC309FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
-				CFDDACB20A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */,
 				CF6556E10A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 				CF19AF7B0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */,
 				CF8D86E60A2C73BF009115FE /* include_typeXorOperation.h in Headers */,
@@ -3965,6 +3948,7 @@
 				CFEF407D0B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h in Headers */,
 				CFEF407E0B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h in Headers */,
 				CFEF40920B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
+				CFEF44080B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3988,7 +3972,6 @@
 				CFA3137C09FD3ECB006B55E7 /* useful_symbols_computations.h in Headers */,
 				CFA3139A09FD3EDA006B55E7 /* parser_generation.h in Headers */,
 				CFA313A309FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */,
-				CFA313BA09FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313BB09FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
 				CFC1768709FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
 				CFC1768809FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
@@ -3997,7 +3980,6 @@
 				CFC1768B09FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774609FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 				CF4CBBC409FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
-				CFDDACB40A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */,
 				CF6556E30A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 				CF19AF7C0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */,
 				CF8D86E70A2C73BF009115FE /* include_typeXorOperation.h in Headers */,
@@ -4066,6 +4048,7 @@
 				CFEF40770B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h in Headers */,
 				CFEF40780B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h in Headers */,
 				CFEF408F0B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
+				CFEF44050B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4089,7 +4072,6 @@
 				CFA3138409FD3ECB006B55E7 /* useful_symbols_computations.h in Headers */,
 				CFA3139B09FD3EDA006B55E7 /* parser_generation.h in Headers */,
 				CFA313A409FD3EE9006B55E7 /* printOriginalGrammar.h in Headers */,
-				CFA313BC09FD3F0A006B55E7 /* semantics_generation.h in Headers */,
 				CFA313BD09FD3F0A006B55E7 /* semantics_instructions.h in Headers */,
 				CFC1768C09FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */,
 				CFC1768D09FE1CD30026596C /* include_typeDivideOperation.h in Headers */,
@@ -4098,7 +4080,6 @@
 				CFC1769009FE1CD30026596C /* include_typeSubOperation.h in Headers */,
 				CFC1774709FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */,
 				CF4CBBC509FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */,
-				CFDDACB60A1E540600174E02 /* include_typeGalgas_entityInInstruction.h in Headers */,
 				CF6556E50A25E35E00979050 /* C_galgas_CLI_Options.h in Headers */,
 				CF19AF7D0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */,
 				CF8D86E80A2C73BF009115FE /* include_typeXorOperation.h in Headers */,
@@ -4167,6 +4148,7 @@
 				CFEF407F0B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h in Headers */,
 				CFEF40800B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h in Headers */,
 				CFEF40930B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
+				CFEF44090B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

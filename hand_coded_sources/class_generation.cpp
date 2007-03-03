@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate GALGAS class declaration and implementation                     *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -22,7 +22,6 @@
 #include "utilities/MF_MemoryControl.h"
 
 #include "semantics_instructions.h"
-#include "semantics_generation.h"
 #include "semantics_semantics.h"
 
 //---------------------------------------------------------------------------*
@@ -88,7 +87,8 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
   GGS_typeTableMethodesAimplementer::element_type * current = inMap.mFirstItem ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << "  public : virtual void method_" << current->mKey << " (C_Lexique &" ;
+    inHfile << "//--- Method '" << current->mKey << "'\n"
+               "  public : virtual void method_" << current->mKey << " (C_Lexique &" ;
   //--- Engendrer les arguments formels declares par l'utilisateur
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
     while (currentArgument != NULL) {
@@ -98,11 +98,13 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
       currentArgument = currentArgument->nextObject () ;
     }
   //--- Terminer la declaration
+    inHfile << "\n                                " ;
     if (current->champEstAbstraite) {
-      inHfile << " COMMA_LOCATION_ARGS) = 0 ;\n" ;
+      inHfile << "COMMA_LOCATION_ARGS) = 0 ;\n" ;
     }else{
-      inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
+      inHfile << "COMMA_LOCATION_ARGS) ;\n" ;
     }
+    inHfile << "\n" ;
     current = current->nextObject () ;
   }
 }
@@ -301,7 +303,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   if (first) {
     generatedZone3 << "LOCATION_ARGS" ;
   }else{
-    generatedZone3 << " COMMA_LOCATION_ARGS" ;
+    generatedZone3 << "\n                                "
+                      "COMMA_LOCATION_ARGS" ;
   }
   generatedZone3 << ") ;\n\n" ;
 
@@ -313,6 +316,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "  #endif\n\n" ;
   
 //--- Engendrer la declaration des attributs
+  generatedZone3 << "//--- Attributes\n" ;
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -320,9 +324,6 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     current = current->nextObject () ;
   }
 
-//--- declaration des attributs externes
-  generateExternAttributesDeclaration (mExternAttributesList, generatedZone3) ;
-    
 //--- Pour chaque methode, engendrer sa declaration
   generateClassMethodsDeclaration (mMethodsMap, generatedZone3) ;
 
@@ -342,10 +343,12 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "                                              C_String & ioString,\n"
                     "                                              const sint32 inIndentation\n"
                     "                                              COMMA_LOCATION_ARGS) const ;\n"
+                    "\n"
                     "//--- Comparison\n"
                     "  public : virtual bool isEqualToObject (const C_GGS_Object * inOperand) const"
                  << (mIsAbstract.boolValue () ? " = 0" : "")
                  << " ;\n" ;
+
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
@@ -414,7 +417,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     variableIndex ++ ;
   }
   if (variableIndex > 0) {
-    inCppFile << " COMMA_LOCATION_ARGS" ;    
+    inCppFile << "\n                                "
+                 "COMMA_LOCATION_ARGS" ;    
   }else{
     inCppFile << "LOCATION_ARGS" ;
   }
@@ -610,7 +614,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       current = current->nextObject () ;
       variableIndex ++ ;
     }
-    inCppFile << " COMMA_LOCATION_ARGS) {\n"
+    inCppFile << "\n                                "
+                 "COMMA_LOCATION_ARGS) {\n"
                  "  GGS_" << aNomClasse << " result ;\n"
                  "  macroMyNew (result.mPointer, cPtr_" << aNomClasse << " (" ;
     current = aListeTousAttributsNonExternes.firstObject () ;
@@ -722,7 +727,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  s << \">\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ; 
-
 }
 
 //---------------------------------------------------------------------------*

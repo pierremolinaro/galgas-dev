@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
+//  Copyright (C) 1999? ..., 2007 Pierre Molinaro.                           *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -24,7 +24,6 @@
 //---------------------------------------------------------------------------*
 
 #include "semantics_instructions.h"
-#include "semantics_generation.h"
 #include "semantics_parser.h"
 #include "parser_generation.h"
 #include "galgas_start.h"
@@ -445,27 +444,6 @@ generate_header_file (C_Lexique & inLexique,
                           generatedZone3,
                           verboseOptionOn,
                           false) ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void
-generateExternAttributesDeclaration (const GGS_L_nameWithType & inList,
-                                     AC_OutputStream & inHfile) {
-  GGS_L_nameWithType::element_type * current = inList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inHfile << "  public : " << current->mType << " "
-             << current->mName << " ; // extern attribute\n" ;
-    current = current->nextObject () ;
-  }
 }
 
 //---------------------------------------------------------------------------*

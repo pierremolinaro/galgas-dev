@@ -69,7 +69,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     inHfile << "  protected : virtual " ;
     if (currentAltForNonTerminal->mInfo.mReturnedEntity.length () > 0) {
       inHfile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntity
-                << " * " ;      
+                << " " ;      
     }else{
       inHfile << "void " ;
     }
@@ -142,7 +142,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     macroValidPointer (currentAltForNonTerminal) ;
     if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
       inHfile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                << " * " ;      
+                << " " ;      
     }else{
       inHfile << "void " ;
     }
@@ -203,7 +203,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (currentAltForNonTerminal) ;
     if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
       inCppFile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                << " * " ;      
+                << " " ;      
     }else{
       inCppFile << "void " ;
     }
@@ -266,9 +266,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (currentAltForNonTerminal->mInfo.mMDAResultVariableName.length () > 0) {
       inCppFile << "  return var_cas_" << currentAltForNonTerminal->mInfo.mMDAResultVariableName << " ;\n" ;
     }else if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-      inCppFile << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " * _entityInstance = NULL ;\n"
-                   "  macroMyNew (_entityInstance, GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                << " (_inLexique" ;
+      inCppFile << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " _entityInstance ="
+                   " GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                << "::constructor_new (_inLexique" ;
       GGS_entityPropertyMap::element_type * currentProperty = currentAltForNonTerminal->mInfo.mAllPropertiesMap.firstObject () ;
       while (currentProperty != NULL) {
         macroValidPointer (currentProperty) ;
@@ -277,7 +277,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
         }
         currentProperty = currentProperty->nextObject () ;
       }
-      inCppFile << " COMMA_HERE)) ;\n"
+      inCppFile << " COMMA_HERE) ;\n"
                    "  return _entityInstance ;\n" ;
     }  
   //--- End of function

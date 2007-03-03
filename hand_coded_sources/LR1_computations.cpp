@@ -1347,7 +1347,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
       macroValidPointer (currentAltForNonTerminal) ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
         generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " * " ;      
+                       << " " ;      
       }else{
         generatedZone3 << "void " ;
       }
@@ -1372,7 +1372,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
       generatedZone3 << ") {\n" ; 
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
         generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " * _outReturnedModelInstance = NULL ;\n" ;      
+                       << " _outReturnedModelInstance ;\n" ;      
       }
       generatedZone3 << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
@@ -1407,7 +1407,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
         macroValidPointer (currentAltForNonTerminal) ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " * " ;      
+                         << " " ;      
         }else{
           generatedZone3 << "void " ;
         }
@@ -1428,7 +1428,7 @@ generate_LR1_grammar_cpp_file (C_Lexique & inLexique,
         generatedZone3 << ") {\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " * _outReturnedModelInstance = NULL ;\n" ;      
+                         << " _outReturnedModelInstance ;\n" ;      
         }
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "  const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,\n"

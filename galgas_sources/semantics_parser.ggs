@@ -151,7 +151,6 @@ nonterminal <attributes_definition_list>
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
-  !@L_nameWithType listeTypeeAttributsExternesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 label parse
 ;
@@ -889,14 +888,16 @@ rule <import_headers_semantics_and_grammars>
                                    @bool kIsAbstract
                                    @entityPropertyMap kCurrentMetamodelPropertyMap
                                    @lstring kSuperEntityName
-                                   @stringset kSuperEntitySet) :
+                                   @typeSuperClassesMap kSuperEntityMap
+                                   @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants) :
         [!?outAllMetamodelClassMap insertKey
           !kMetamodelClassName
           !kAllMetamodelPropertyMap
           !kIsAbstract
           !kCurrentMetamodelPropertyMap
           !kSuperEntityName
-          !kSuperEntitySet
+          !kSuperEntityMap
+          !kListeAttributsSemantiquesCourants
         ] ;
         end foreach ;
         outInclusionsForHeaderFile += ![metamodelComponentName string] ;
@@ -1317,7 +1318,6 @@ rule <semantics_declaration>
     ${$ ;
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeAttributsExternesCourants ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
       !tableEnAvant
@@ -1325,7 +1325,6 @@ rule <semantics_declaration>
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Declaration des methodes
@@ -1413,9 +1412,9 @@ rule <semantics_declaration>
        !tableDesMethodes
        !tableMethodesAimplementer
        !listeAttributsSemantiquesCourants
-       !listeAttributsExternesCourants
        !tableDesClassesAncetres
-       !tableMessagesClasseConcrete] ;
+       !tableMessagesClasseConcrete
+    ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
   end select ;
@@ -1470,14 +1469,12 @@ label importSemantics
     ${$ ;
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeAttributsExternesCourants ;
     <attributes_definition_list>
       !tableEnAvant
       !?attributeList
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Declaration des methodes
@@ -4296,7 +4293,6 @@ rule <semantics_declaration>
   #--- Attributs de la map
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
@@ -4305,7 +4301,6 @@ rule <semantics_declaration>
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Build insert and search method map
@@ -4363,7 +4358,6 @@ rule <semantics_declaration>
   #--- Insertion dans la map des classes definies dans le fichier source courant
     @typeEntityToGenerate def := [@typeDefinitionTableAimplementer new !mapTypeName
                                                                        !listeTousAttributsSemantiques
-                                                                       !listeTypeeAttributsExternesCourants
                                                                        !cppClassName
                                                                        !insertMethodList
                                                                        !searchMethodList
@@ -4375,7 +4369,6 @@ rule <semantics_declaration>
   #--- Parse Map attributes
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
@@ -4384,7 +4377,6 @@ rule <semantics_declaration>
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
@@ -4506,7 +4498,6 @@ rule <semantics_declaration>
     @typeEntityToGenerate def := [@C_mapToImplement new
       !mapTypeName
       !listeTousAttributsSemantiques
-      !listeTypeeAttributsExternesCourants
       !insertMethodList
       !searchMethodList
       !removeMethodList
@@ -4595,7 +4586,6 @@ label importSemantics
   #--- Attributs de la map
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
@@ -4604,7 +4594,6 @@ label importSemantics
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Build insert and search method map
@@ -4667,7 +4656,6 @@ label importSemantics
   #--- Map attributes
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
@@ -4676,7 +4664,6 @@ label importSemantics
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
   #--- Declaration des methodes d'insertion, de recherche, et de block
@@ -4839,7 +4826,6 @@ rule <semantics_declaration>
   #-- Declaration des attributs de la list
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
@@ -4848,7 +4834,6 @@ rule <semantics_declaration>
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
     @L_EXsignature extractSignature [emptyList] ;
@@ -4870,7 +4855,6 @@ rule <semantics_declaration>
     @typeEntityToGenerate def := [@C_listTypeToImplement new
       !listTypeName
       !listeTousAttributsSemantiques
-      !listeTypeeAttributsExternesCourants
     ] ;
     listeEntitesAengendrer += !def ;
   end select ;
@@ -4897,7 +4881,6 @@ label importSemantics
     @typeListModel attributeListModel [emptyList] ;
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     <attributes_definition_list>
       !tableEnAvant
@@ -4905,7 +4888,6 @@ label importSemantics
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
     @L_EXsignature extractSignature [emptyList] ;
@@ -4957,7 +4939,6 @@ rule <semantics_declaration>
   #-- Declaration des attributs de la list
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     @typeListModel attributeListModel [emptyList] ;
     <attributes_definition_list>
@@ -4966,7 +4947,6 @@ rule <semantics_declaration>
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
     @L_EXsignature extractSignature [emptyList] ;
@@ -5013,7 +4993,6 @@ rule <semantics_declaration>
     @typeEntityToGenerate def := [@C_sortedListTypeToImplement new
       !listTypeName
       !listeTousAttributsSemantiques
-      !listeTypeeAttributsExternesCourants
       !sortDescriptorList
     ] ;
     listeEntitesAengendrer += !def ;
@@ -5041,7 +5020,6 @@ label importSemantics
     @typeListModel attributeListModel [emptyList] ;
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
-    @L_nameWithType listeTypeeAttributsExternesCourants ;
     @typeSemanticAttributesMap tableAttributs [emptyMap] ;
     <attributes_definition_list>
       !tableEnAvant
@@ -5049,7 +5027,6 @@ label importSemantics
       !?tableAttributs
       !?listeTousAttributsSemantiques
       ?listeAttributsSemantiquesCourants
-      ?listeTypeeAttributsExternesCourants
       !?ioComponentSemanticsEntitiesMap
     ;
     @L_EXsignature extractSignature [emptyList] ;
@@ -5095,10 +5072,8 @@ rule <attributes_definition_list>
   ?!@typeSemanticAttributesMap tableAttributs
   ?!@typeListeAttributsSemantiques listeTousAttributsSemantiques # herites et definis dans la classe courante
   !@typeListeAttributsSemantiques listeAttributsSemantiquesCourants # definis dans la classe courante
-  !@L_nameWithType listeTypeeAttributsExternesCourants # definis dans la classe courante
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
-  listeTypeeAttributsExternesCourants := [@L_nameWithType emptyList] ;
   listeAttributsSemantiquesCourants := [@typeListeAttributsSemantiques emptyList] ;
   outAttributeListModel := [@typeListModel emptyList] ;
   repeat

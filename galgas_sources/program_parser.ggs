@@ -214,7 +214,6 @@ rule <galgas_component>
   #--- Metamodel ?
     @lstring metamodelName ;
     @lstring rootEntityName ;
-    @L_lstringList contraintListForMetamodel [emptyList] ;
     @stringset contraintStringsetForMetamodel [emptySet] ;
     select
       metamodelName := [@lstring new !"" !here] ;
@@ -228,7 +227,6 @@ rule <galgas_component>
         repeat
           @lstring constraintComponentName ;
           $identifier$ ? constraintComponentName ;
-          contraintListForMetamodel += !constraintComponentName ;
           contraintStringsetForMetamodel += ![constraintComponentName string] ;
         while
           $,$ ;
@@ -266,7 +264,6 @@ rule <galgas_component>
       !lexiqueClassName
       !returnedMetamodel
       !rootEntityName
-      !contraintListForMetamodel
       !sourceExtension
       !helpMessage
       !optionsComponentsMap

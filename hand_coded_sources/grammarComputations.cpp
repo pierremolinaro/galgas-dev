@@ -69,7 +69,7 @@ engendrerAppelProduction (const sint16 nombreDeParametres,
                           const bool inReturnsEntityInstance,
                           AC_OutputStream & fichierCPP) const {
   if (inReturnsEntityInstance) {
-    fichierCPP << "_outReturnedModelInstance = " ;
+    fichierCPP << "  _outReturnedModelInstance = " ;
   }
   fichierCPP << "pr_"
              << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE)
@@ -214,7 +214,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
       generatedZone3 << "  public : virtual " ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
         generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " * " ;      
+                       << " " ;      
       }else{
         generatedZone3 << "void " ;
       }
@@ -232,7 +232,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
         generatedZone3 << "  public : " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " * " ;      
+                         << " " ;      
         }else{
           generatedZone3 << "void " ;
         }

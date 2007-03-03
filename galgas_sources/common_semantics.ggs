@@ -591,6 +591,16 @@ map @indexMap {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#                   Super classes map of a class                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @typeSuperClassesMap {
+  insert insertKey error message "the class '%K' is already a super class of the current class" ;
+}
+
+#---------------------------------------------------------------------------*
 
 map @entityToImplementMap {
 #--- All properties, those defined in super entities and defined in current entity 
@@ -602,11 +612,11 @@ map @entityToImplementMap {
 #--- 
   @lstring mSuperEntityName ;
 #---
-  @stringset mSuperEntitySet ;
+  @typeSuperClassesMap mAncestorClassesMap ;
 #--- All properties
-#  @typeListeAttributsSemantiques mTypeList ;
+  @typeListeAttributsSemantiques mPropertyList ;
 #--- Access methods
-  insert insertKey error message "the '@%K' entity has been already declared in %L" ;
+  insert insertKey, insertKeyAndGetID error message "the '@%K' entity has been already declared in %L" ;
   search searchKey, searchKeyGetID error message "the '@%K' entity is not declared" ;
 }
 
@@ -2028,16 +2038,6 @@ map @M_startSymbolEntityAndMetamodel {
 
 list @L_identifiers {
   @lstring aIdentificateur ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#                   Super classes map of a class                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @typeSuperClassesMap {
-  insert insertKey error message "the class '%K' is already a super class of the current class" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -3657,7 +3657,6 @@ list @L_grammarDescriptorForProgram {
   @lstring mLexiqueClassName ;
   @lstring mReturnedMetamodelName ;
   @lstring mReturnedRootEntityName ;
-  @L_lstringList mConstraintsForMetamodel ;
   @lstring mSourceExtension ;
   @string mHelpMessage ;
   @M_optionComponents mOptionsComponentsMap ;

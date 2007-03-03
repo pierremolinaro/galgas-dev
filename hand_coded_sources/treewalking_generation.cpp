@@ -92,8 +92,8 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                          const GGS_lstring & inCalledPropertyName,
                          const C_String & /* inTargetFileName */,
                          const GGS_typeExpressionList & inExpressionList) const {
-  ioCppFile << "{ GGS_" << inEntityName << " * _ptr = _currentObject->"
-            << inCalledPropertyName << "._mFirstObject ;\n"
+  ioCppFile << "{ GGS_listOf" << inEntityName.stringWithUpperCaseFirstLetter () << "::element_type * _ptr = _currentObject->"
+            << inCalledPropertyName << ".firstObject () ;\n"
             << "  while (_ptr != NULL) {\n"
                "    macroValidPointer (_ptr) ;\n"
                "    _treewalking_routine_" << inEntityName
@@ -109,7 +109,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
     argCourant = argCourant->nextObject () ;
   }
   ioCppFile << ") ;\n"
-               "    _ptr = _ptr->_mNextObject ;\n"
+               "    _ptr = _ptr->nextObject () ;\n"
                "  }\n"
                "}\n" ;
 }
@@ -240,7 +240,7 @@ generate_treewalking_implementation (C_Lexique & inLexique,
                       "_treewalking_routine_" << currentRoutine->mMetamodelClass
                    << " (C_Lexique & _inLexique"
                       ",\n                                "
-                      "const GGS_" << currentRoutine->mMetamodelClass << " * _currentObject" ;
+                      "const cPtr_" << currentRoutine->mMetamodelClass << " * _currentObject" ;
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentRoutine->mFormalArgumentList.firstObject () ;
     while (currentArgument != NULL) {
       generatedZone3 << ",\n                                " ;
@@ -262,7 +262,7 @@ generate_treewalking_implementation (C_Lexique & inLexique,
                       "_treewalking_routine_" << currentRoutine->mMetamodelClass
                    << "_type (C_Lexique & _inLexique"
                       ",\n                                "
-                      "const GGS_" << currentRoutine->mMetamodelClass << " * _currentObject" ;
+                      "const cPtr_" << currentRoutine->mMetamodelClass << " * _currentObject" ;
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentRoutine->mFormalArgumentList.firstObject () ;
     while (currentArgument != NULL) {
       generatedZone3 << ",\n                                " ;
@@ -289,7 +289,7 @@ generate_treewalking_implementation (C_Lexique & inLexique,
       currentIndex ++ ;
     }
     generatedZone3 << "  (void *) _treewalking_routine_" << currentEntry->mRoutineName
-                   << ", // #" << entryIndex << " %"
+                   << ", // #" << entryIndex << " @"
                    << currentEntry->mEntityName << "\n" ;
     currentIndex ++ ;
     currentEntry = currentEntry->nextObject () ;
@@ -310,7 +310,7 @@ generate_treewalking_implementation (C_Lexique & inLexique,
     }
     const bool currentObjectArgumentIsUsed = formalCurrentObjectArgumentIsUsedForList (currentRoutine->mInstructionList) ;
     generatedZone3 << ",\n                                "
-                      "const GGS_" << currentRoutine->mMetamodelClass << " * " ;
+                      "const cPtr_" << currentRoutine->mMetamodelClass << " * " ;
     if (currentObjectArgumentIsUsed) {
       generatedZone3 << "_currentObject" ;
     }else{

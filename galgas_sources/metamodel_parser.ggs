@@ -143,7 +143,7 @@ rule <parse_metamodel>
     !?listeEntitesAengendrer
   ;
   @bool isAbstract ;
-  [entityMap searchKey !rootEntityName ?* ?isAbstract ?3*] ;
+  [entityMap searchKey !rootEntityName ?* ?isAbstract ?4*] ;
   if isAbstract then
     error rootEntityName : "the root entity cannot be abstract" ;
   end if ;
@@ -153,15 +153,14 @@ rule <parse_metamodel>
                      @entityPropertyMap kAllPropertiesMap
                      *
                      @entityPropertyMap kEntityPropertiesMap
-                     *
-                     *) :
+                     3*) :
     foreach kEntityPropertiesMap (@lstring kAttributeName
                                   @metamodelProperty kProperty) :
       extract kProperty :
       when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
-        [entityMap searchKey !kReferenceEntityName ?5*] ;
+        [entityMap searchKey !kReferenceEntityName ?6*] ;
       when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName * *) ->
-        [entityMap searchKey !kReferenceEntityName ?5*] ;
+        [entityMap searchKey !kReferenceEntityName ?6*] ;
         multiReferencedEntities += ![kReferenceEntityName string] ;
       else
       end extract ;
@@ -246,11 +245,13 @@ rule <entity_declaration>
 #--- Context properties, or super entity (or nothing)
   @entityPropertyMap allMetamodelPropertyMap ;
   @lstring superEntity ;
-  @stringset superEntitySet ;
+  @typeSuperClassesMap superEntityMap ;
+  @typeListeAttributsSemantiques listeTousAttributsSemantiques ;
   select
     superEntity := [@lstring new !"" !here] ;
     allMetamodelPropertyMap := [@entityPropertyMap emptyMap] ;
-    superEntitySet := [@stringset emptySet] ;
+    superEntityMap := [@typeSuperClassesMap emptyMap] ;
+    listeTousAttributsSemantiques := [@typeListeAttributsSemantiques emptyList] ;
   or
     $extends$ ;
     $type_name$ ? superEntity ;
@@ -260,13 +261,14 @@ rule <entity_declaration>
       ?*
       ?*
       ?*
-      ?superEntitySet
+      ?superEntityMap
+      ?listeTousAttributsSemantiques
     ] ;
-    superEntitySet += ![superEntity string] ;
+    [!?superEntityMap insertKey !superEntity] ;
   end select ;
 #--- Property declarations
   @entityPropertyMap currentEntityPropertyMap [emptyMap] ;
-  @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
+  @typeListeAttributsSemantiques listeAttributsSemantiquesCourants [emptyList] ;
   ${$ ;
   repeat
   while
@@ -290,6 +292,7 @@ rule <entity_declaration>
         [!?allMetamodelPropertyMap insertKey !attributeName !k] ;
       end if ;
       listeTousAttributsSemantiques += !propertyType !attributeName ;
+      listeAttributsSemantiquesCourants += !propertyType !attributeName ;
     or
       @luint lowerBound ;
       @luint higherBound ;
@@ -331,22 +334,30 @@ rule <entity_declaration>
         !higherBound
       ] ;
       listeTousAttributsSemantiques += !propertyType !attributeName ;
+      listeAttributsSemantiquesCourants += !propertyType !attributeName ;
     end select ;
     $;$ ;
   end repeat ;
   $}$ ;
-  [!?ioEntityMap insertKey
+  @luint metamodelClassID ;
+  [!?ioEntityMap insertKeyAndGetID
     !entityName
+    ?metamodelClassID
     !allMetamodelPropertyMap
     !isAbstract
     !currentEntityPropertyMap
     !superEntity
-    !superEntitySet
-  ] ;
-  @typeEntityToGenerate def := [@C_listTypeToImplement new
-    ![@lstring new ![entityName string] ![entityName location]]
+    !superEntityMap
     !listeTousAttributsSemantiques
-    ![@L_nameWithType emptyList]
+  ] ;
+#--- Define entity type generation
+  @typeEntityToGenerate def := [@C_metamodelEntityToImplement new 
+    !entityName
+    !isAbstract
+    !listeTousAttributsSemantiques
+    !listeAttributsSemantiquesCourants
+    !superEntityMap
+    ![metamodelClassID uint]
   ] ;
   listeEntitesAengendrer += !def ;
 label parseForEnumeratingClasses
