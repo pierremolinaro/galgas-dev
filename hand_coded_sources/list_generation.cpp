@@ -72,10 +72,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  protected : bool isEqualToElement (const cListElement * inOperand) const ;\n\n"
+             "  protected : bool isEqualToObject (const cListElement * inOperand) const ;\n\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
-             "  public : virtual void appendForListDescription (C_Lexique & _inLexique,\n"
+             "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
              "                                                  C_String & ioString,\n"
              "                                                  const sint32 inIndentation\n"
              "                                                  COMMA_LOCATION_ARGS) const ;\n\n" ;
@@ -357,10 +357,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   current = mNonExternAttributesList.firstObject () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n" ;
   if (current == NULL) {
-    inCppFile << "isEqualToElement (const cListElement * /* inOperand */) const {\n"
+    inCppFile << "isEqualToObject (const cListElement * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
-    inCppFile << "isEqualToElement (const cListElement * inOperand) const {\n"
+    inCppFile << "isEqualToObject (const cListElement * inOperand) const {\n"
                  "  bool equal = inOperand == this ;\n"
                  "  if (! equal) {\n"
                  "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
@@ -386,13 +386,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   current = mNonExternAttributesList.firstObject () ;
   if (current == NULL) {
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-                 "appendForListDescription (C_Lexique & /* _inLexique */,\n"
+                 "appendForDescription (C_Lexique & /* _inLexique */,\n"
                  "                          C_String & /* ioString */,\n"
                  "                          const sint32 /* inIndentation */\n"
                  "                          COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
   }else{
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-                 "appendForListDescription (C_Lexique & _inLexique,\n"
+                 "appendForDescription (C_Lexique & _inLexique,\n"
                  "                          C_String & ioString,\n"
                  "                          const sint32 inIndentation\n"
                  "                          COMMA_LOCATION_ARGS) const {\n" ;
@@ -936,13 +936,13 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  protected : bool isEqualToElement (const cSortedListElement * inOperand) const ;\n"
+             "  protected : bool isEqualToObject (const cSortedListElement * inOperand) const ;\n"
 //--- Virtual method for implementing element comparison
              "//--- Method used for sorting elements\n"
              "  protected : virtual sint32 compareForSorting (const cSortedListElement * inOperand) const ;\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
-             "  public : virtual void appendForListDescription (C_Lexique & _inLexique,\n"
+             "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
              "                                                  C_String & ioString,\n"
              "                                                  const sint32 inIndentation\n"
              "                                                  COMMA_LOCATION_ARGS) const ;\n"
@@ -1192,7 +1192,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Element comparison
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n"
-               "isEqualToElement (const cSortedListElement * inOperand) const {\n"
+               "isEqualToObject (const cSortedListElement * inOperand) const {\n"
                "  bool equal = inOperand == this ;\n"
                "  if (! equal) {\n"
                "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
@@ -1242,7 +1242,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-               "appendForListDescription (C_Lexique & _inLexique,\n"
+               "appendForDescription (C_Lexique & _inLexique,\n"
                "                          C_String & ioString,\n"
                "                          const sint32 inIndentation\n"
                "                          COMMA_LOCATION_ARGS) const {\n" ;

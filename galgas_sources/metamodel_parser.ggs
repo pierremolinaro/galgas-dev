@@ -356,7 +356,7 @@ rule <entity_declaration>
     !isAbstract
     !listeTousAttributsSemantiques
     !listeAttributsSemantiquesCourants
-    !superEntityMap
+    ![superEntity string]
     ![metamodelClassID uint]
   ] ;
   listeEntitesAengendrer += !def ;
