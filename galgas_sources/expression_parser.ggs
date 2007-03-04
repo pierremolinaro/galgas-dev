@@ -1390,7 +1390,11 @@ rule <factor>
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
     ;
-    outExpression := [@typeConstructorExpression new !className !mClassMethodName !expressionList] ;
+    outExpression := [@typeConstructorExpression new
+      ![className string]
+      ![mClassMethodName string]
+      !expressionList
+    ] ;
   or
     $option$ ;
     select

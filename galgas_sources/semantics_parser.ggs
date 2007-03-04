@@ -3036,10 +3036,10 @@ rule <semantic_instruction>
     $identifier$ ? typeMethodName ;
   #--- Retrieve type method information
     @L_EXsignature typeMethodSignature ;
-    @AC_semanticsEntity entity  ;
-    [ioComponentSemanticsEntitiesMap searchKey !typeName ? entity] ;
+    @AC_semanticsEntity theEntity  ;
+    [ioComponentSemanticsEntitiesMap searchKey !typeName ? theEntity] ;
     @AC_galgasType type ;
-    extract entity->@typeEntiteType (?type) error typeName : messageTypeEntite ;
+    extract theEntity->@typeEntiteType (?type) error typeName : messageTypeEntite ;
     [type handleClassMethodCall !typeMethodName ?typeMethodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
@@ -4054,9 +4054,12 @@ rule <optional_assignment>
   ;
   $]$ ;
 #--- Generate instruction
-  @typeExpression  e := [@typeConstructorExpression new !inTypeName !constructorName !expressionList] ;
-  @typeInstruction i := [@C_declarationInstructionWithAssignment new !inVariableType !inTargetVariableCppName !e] ;
-  ioInstructionList += !i ;
+  @typeExpression  e := [@typeConstructorExpression new 
+    ![inTypeName string]
+    ![constructorName string]
+    !expressionList
+  ] ;
+  ioInstructionList += ![@C_declarationInstructionWithAssignment new !inVariableType !inTargetVariableCppName !e] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -4087,10 +4090,10 @@ rule <semantics_declaration>
     $($ ;
     @lstring mapTypeName ;
     $type_name$ ? mapTypeName ;
-    @AC_semanticsEntity entity ;
-    [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ?entity] ;
+    @AC_semanticsEntity theEntity ;
+    [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ? theEntity] ;
     @AC_galgasType aType ;
-    extract entity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
+    extract theEntity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
     @typeListeAttributsSemantiques mapAttributesList ;
     @typeTableBlocsDeTable tableMethodesSurcharger ;
     @mapModifierMap modifierMethodMap ;
@@ -4159,10 +4162,10 @@ label importSemantics
     $($ ;
     @lstring mapTypeName ;
     $type_name$ ? mapTypeName ;
-    @AC_semanticsEntity entity ;
-    [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ?entity] ;
+    @AC_semanticsEntity theEntity ;
+    [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ? theEntity] ;
     @AC_galgasType aType ;
-    extract entity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
+    extract theEntity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
     @typeListeAttributsSemantiques mapAttributesList ;
     @typeTableBlocsDeTable tableMethodesSurcharger ;
     @mapModifierMap modifierMethodMap ;

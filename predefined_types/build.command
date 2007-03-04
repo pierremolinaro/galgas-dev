@@ -1,7 +1,8 @@
 #!/bin/sh
+set -x
 cd `dirname $0` &&
 #--- Compile 
-galgas predefined_types.ggs &&
+galgas -v predefined_types.ggs &&
 #--- Use sed for renaming header file
 sed "s/UINT64LIST/uint64list/g" GALGAS_OUTPUT/predefined_types.h > GALGAS_OUTPUT/temp &&
 sed "s/STRINGLIST/stringlist/g" GALGAS_OUTPUT/temp > predefined_types.h &&

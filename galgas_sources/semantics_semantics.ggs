@@ -491,8 +491,8 @@ class @typeHereExpression extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeConstructorExpression extends @typeExpression {
-  @lstring mClassName ;
-  @lstring mClassMethodName ;
+  @string mClassName ;
+  @string mClassMethodName ;
   @typeExpressionList mExpressionList ;
 }
  

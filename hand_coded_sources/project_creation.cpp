@@ -160,7 +160,7 @@ createMetamodelFile (const C_String & inCreatedProjectPathName) {
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "metamodel " << projectName << "_metamodel root @" << projectName << "_root :\n"
        "\n"
-       "class @" << projectName << "_root {\n"
+       "entity @" << projectName << "_root {\n"
        "}\n"
        "\n"
        "# ADD YOUR CODE HERE\n"
