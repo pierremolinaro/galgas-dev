@@ -67,12 +67,13 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                          const GGS_lstring & inCalledPropertyName,
                          const C_String & /* inTargetFileName */,
                          const GGS_typeExpressionList & inExpressionList) const {
-  ioCppFile << "macroValidPointer (_currentObject->" << inCalledPropertyName << ") ;\n"
+  ioCppFile << "macroValidPointer (_currentObject->" << inCalledPropertyName << ".getPtr ()) ;\n"
                "{ _treewalking_routine_" << inEntityName
             << "_type * _f = (_treewalking_routine_" << inEntityName
-            << "_type *) kDispatcher [_currentObject->metamodelClassID ()] ;\n"
+            << "_type *) kDispatcher [_currentObject->" << inCalledPropertyName << " (HERE)->_metamodelClassID ()] ;\n"
                "  MF_Assert (_f != NULL, \"treewalking routine is NULL\", 0, 0) ;\n"
-               "  (* _f) (_inLexique, _currentObject->" << inCalledPropertyName ;
+               "  (* _f) (_inLexique, _currentObject->" << inCalledPropertyName
+            << " (HERE)" ;
   GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
   while (argCourant != NULL) {
     macroValidPointer (argCourant) ;
@@ -92,13 +93,14 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                          const GGS_lstring & inCalledPropertyName,
                          const C_String & /* inTargetFileName */,
                          const GGS_typeExpressionList & inExpressionList) const {
-  ioCppFile << "{ GGS_listOf" << inEntityName.stringWithUpperCaseFirstLetter () << "::element_type * _ptr = _currentObject->"
+  ioCppFile << "macroValidPointer (_currentObject) ;\n"
+               "{ GGS_listOf" << inEntityName.stringWithUpperCaseFirstLetter () << "::element_type * _ptr = _currentObject->"
             << inCalledPropertyName << ".firstObject () ;\n"
             << "  while (_ptr != NULL) {\n"
                "    macroValidPointer (_ptr) ;\n"
                "    _treewalking_routine_" << inEntityName
             << "_type * _f = (_treewalking_routine_" << inEntityName
-            << "_type *) kDispatcher [_ptr->metamodelClassID ()] ;\n"
+            << "_type *) kDispatcher [_ptr->_metamodelClassID ()] ;\n"
                "    MF_Assert (_f != NULL, \"treewalking routine is NULL\", 0, 0) ;\n"
                "    (* _f) (_inLexique, _ptr" ;
   GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
@@ -175,7 +177,7 @@ generate_treewalking_header (C_Lexique & inLexique,
   generatedZone3 << "void\n"
                     "_walk_throught_" << inTreewalkingComponentName
                    << " (C_Lexique & _inLexique,\n"
-                      "                                const GGS_" << inRootEntity << " * _rootObject" ;
+                      "                                const GGS_" << inRootEntity << " & _rootObject" ;
   GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
     generatedZone3 << ",\n                                " ;
@@ -333,7 +335,7 @@ generate_treewalking_implementation (C_Lexique & inLexique,
     }
     generatedZone3 << ") {\n"
                       "  #ifdef DEBUG_TREE_WALKING\n"
-                      "    printf (\"TREE WALKING %%" << currentRoutine->mMetamodelClass << "\\n\") ;\n"
+                      "    printf (\"TREE WALKING @" << currentRoutine->mMetamodelClass << "\\n\") ; fflush (stdout) ;\n"
                       "  #endif\n" ;
     sint32 prototypeIndex = 0 ; // Unused here
     generateInstructionListForList (currentRoutine->mInstructionList,
@@ -352,7 +354,7 @@ generate_treewalking_implementation (C_Lexique & inLexique,
   generatedZone3 << "void\n"
                     "_walk_throught_" << inTreewalkingComponentName
                    << " (C_Lexique & _inLexique,\n"
-                      "                                const GGS_" << inRootEntity << " * _rootObject" ;
+                      "                                const GGS_" << inRootEntity << " & _rootObject" ;
   GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
     generatedZone3 << ",\n                                " ;
@@ -362,11 +364,11 @@ generate_treewalking_implementation (C_Lexique & inLexique,
     currentArgument = currentArgument->nextObject () ;
   }
   generatedZone3 << ") {\n"
-                    "  if (_rootObject != NULL) {\n"
+                    "  if (_rootObject._isBuilt ()) {\n"
                     "    _treewalking_routine_" << inRootEntity
                  << "_type * _f = (_treewalking_routine_" << inRootEntity
-                 << "_type *) kDispatcher [_rootObject->metamodelClassID ()] ;\n"
-                    "    (* _f) (_inLexique, _rootObject" ;
+                 << "_type *) kDispatcher [_rootObject (HERE)->_metamodelClassID ()] ;\n"
+                    "    (* _f) (_inLexique, _rootObject (HERE)" ;
   currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
     generatedZone3 << ", " ;

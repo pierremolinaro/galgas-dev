@@ -238,7 +238,7 @@ rule <entity_declaration>
     isAbstract := true ;
   end select ;
 #--- Entity Name
-  $class$ ;
+  $entity$ ;
   @lstring entityName ;
   $type_name$ ? entityName ;
   [!?ioMapAndEntityUniqueMap insertKey !entityName] ;
@@ -284,9 +284,9 @@ rule <entity_declaration>
         [!?allMetamodelPropertyMap insertKey !attributeName !k] ;
         propertyType := [@typeGalgas_singleReferenceEntity new !propertyOrEntityTypeName] ;
       else
-        @AC_semanticsEntity entity ;
-        [inSemanticsEntitiesMap searchKey !propertyOrEntityTypeName ?entity] ;
-        extract entity->@typeEntiteType (?propertyType) error propertyOrEntityTypeName : messageTypeEntite ;
+        @AC_semanticsEntity theEntity ;
+        [inSemanticsEntitiesMap searchKey !propertyOrEntityTypeName ?theEntity] ;
+        extract theEntity->@typeEntiteType (?propertyType) error propertyOrEntityTypeName : messageTypeEntite ;
         @metamodelProperty k := [@metamodelAttributeProperty new !propertyType] ;
         [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
         [!?allMetamodelPropertyMap insertKey !attributeName !k] ;
@@ -369,7 +369,7 @@ label parseForEnumeratingClasses
     $abstract$ ;
   end select ;
 #--- Entity Name
-  $class$ ;
+  $entity$ ;
   @lstring entityName ;
   $type_name$ ? entityName ;
   ioMetamodelClassSet += ![entityName string] ;

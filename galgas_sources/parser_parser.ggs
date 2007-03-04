@@ -948,7 +948,16 @@ rule <syntax_declaration>
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
         [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
         #log nomVariable, definitionType, nomCppVariable ;
-        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
+        @typeExpression sourceExpression := [@typeConstructorExpression new
+          !"listOf" . [kReferenceEntityName stringByCapitalizingFirstCharacter]
+          !"emptyList"
+          ![@typeExpressionList emptyList]
+        ] ;
+        @typeInstruction instruction := [@C_declarationInstructionWithAssignment new
+          !definitionType
+          !nomCppVariable
+          !sourceExpression
+        ] ;
         listeInstructions += !instruction ;
       else
       end extract ;

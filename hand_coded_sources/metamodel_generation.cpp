@@ -80,9 +80,14 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     attributCourant->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     attributCourant = attributCourant->nextObject () ;
   }
-  inHfile << ") ;\n\n"
+  if (premier) {
+    inHfile << "LOCATION_ARGS) ;\n\n" ;
+  }else{
+    inHfile << "\n                                "
+               "COMMA_LOCATION_ARGS) ;\n\n" ;
+  }
 //--- Access to next and previous item
-             "//--- Access to next\n"
+  inHfile << "//--- Access to next\n"
              "  public : inline cPtr_" << aNomClasse << " * nextObject (void) const {\n"
              "    return (cPtr_" << aNomClasse << " *) internalNextItem () ;\n"
              "  }\n\n"
@@ -104,10 +109,14 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Generate metamodel class ID method ?
              "//--- Metamodel Class ID\n"
-             "  public : virtual uint32 metamodelClassID (void) const ;\n\n"
+             "  public : virtual uint32 _metamodelClassID (void) const ;\n\n"
+
+//--- Clone virtual method
+             "//--- 'clone' virtual method\n"
+             "  public : virtual cPtr_" << aNomClasse << " * _cloneObject (void) const ;\n\n"
 
 //--- Friend declaration
-             "//--- Friend class declaration\n" 
+             "//--- Friend class declarations\n" 
              "  friend class GGS_" << listClassName << " ;\n"
 
 //--- Fin de la declaration de la classe e_...
@@ -223,7 +232,7 @@ generateHdeclarations (AC_OutputStream & inHfile,
              "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "    public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n"
              "  #else\n"
-             "    public : inline cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const {\n"
+             "    public : inline cPtr_" << aNomClasse << " * operator () (void) const {\n"
              "      return " ;
   if (mSuperClassName.length () > 0) {
     inHfile << "(cPtr_" << aNomClasse << " *) " ;
@@ -469,24 +478,34 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                                " ;
+    }
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ")" ;
+  if (numeroVariable == 0) {
+    inCppFile << "LOCATION_ARGS" ;
+  }else{
+    inCppFile << "\n                                "
+                 "COMMA_LOCATION_ARGS" ;
+  }
+  inCppFile << ") :\n" ;
+  if (mSuperClassName.length () == 0) {
+    inCppFile << "AC_galgas_list::cListElement (THERE)" ;
+  }else{
+    inCppFile << "cPtr_" << mSuperClassName << " (THERE)" ;
+  }
   current = aListeTousAttributsNonExternes.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable == 0) {
-      inCppFile << ":\n" ;
-    }else{
-      inCppFile << ",\n" ;
-    }
-    inCppFile << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
+    inCppFile << ",\n"
+              << current->aNomAttribut
+              << " (argument_" << numeroVariable << ")" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -528,7 +547,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   if (current == NULL) {
     inCppFile << "void cPtr_" << aNomClasse << "::\n"
                  "appendForDescription (C_Lexique & /* _inLexique */,\n"
-                 "                      C_String & /* ioString */,\n"
+                 "                      C_String & ioString,\n"
                  "                      const sint32 /* inIndentation */\n"
                  "                      COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
   }else{
@@ -537,24 +556,51 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "                      C_String & ioString,\n"
                  "                      const sint32 inIndentation\n"
                  "                      COMMA_LOCATION_ARGS) const {\n" ;
-    numeroVariable = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
-      inCppFile << "  ioString << \"\\n\" ;\n"
-                   "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
-                   "  ioString << \"|-\" ;\n"
-                   "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
-      current = current->nextObject () ;
-      numeroVariable ++ ;
-    }
+  }
+  inCppFile << "  ioString << \"-> instance of @" << aNomClasse << "\" ;\n" ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "  ioString << \"\\n\" ;\n"
+                 "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
+                 "  ioString << \"|-\" ;\n"
+                 "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
   }
   inCppFile << "}\n\n" ;
 
 
 //--- Generate metamodel class ID method ?
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "uint32 cPtr_" << aNomClasse << "::metamodelClassID (void) const {\n"
+  inCppFile << "uint32 cPtr_" << aNomClasse << "::_metamodelClassID (void) const {\n"
                "  return " << mMetamodelClassID.uintValue () << " ;\n"
+               "}\n\n" ;
+
+//--- Clone virtual method
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "cPtr_" << aNomClasse << " * cPtr_" << aNomClasse << "::\n"
+               "_cloneObject (void) const {\n"
+               "  cPtr_" << aNomClasse << " * _p = NULL ;\n"
+               "  macroMyNew (_p, cPtr_" << aNomClasse << " (" ;
+  current = aListeTousAttributsNonExternes.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) {
+      inCppFile << ", " ;
+    }
+    inCppFile << current->aNomAttribut ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  if (numeroVariable == 0) {
+    inCppFile << "HERE" ;
+  }else{
+    inCppFile << " COMMA_HERE" ;
+  }
+  inCppFile << ")) ;\n"
+               "  return _p ;\n"
                "}\n\n" ;
 
 // ------------- List Implementation -----------------
@@ -613,6 +659,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
+  if (numeroVariable == 0) {
+    inCppFile << "HERE" ;
+  }else{
+    inCppFile << "\n                                "
+                 "COMMA_HERE" ;
+  }
   inCppFile << ")) ;\n" 
                "  _internalAppendItem (nouvelElement) ;\n" 
                "}\n\n" ;
@@ -644,6 +696,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
+  }
+  if (numeroVariable == 0) {
+    inCppFile << "HERE" ;
+  }else{
+    inCppFile << "\n                                "
+                 "COMMA_HERE" ;
   }
   inCppFile << ")) ;\n" 
                "  _internalPrependItem (nouvelElement) ;\n" 
@@ -853,23 +911,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "_addModel (const GGS_"
             << aNomClasse << " & inOperand) {\n"
                "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
-               "    _insulateList () ;\n" ;
-  current = aListeTousAttributsNonExternes.firstObject () ;
-  if (current != NULL) {
-    inCppFile << "    cPtr_" << aNomClasse << " * _p = inOperand (HERE) ;\n" ;
-  }
-  inCppFile << "    _internalAppendValues (" ;
-  numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (numeroVariable > 0) {
-      inCppFile << ", " ;
-    }
-    inCppFile << "_p->" << current->aNomAttribut ;
-    current = current->nextObject () ;
-    numeroVariable ++ ;
-  }
-  inCppFile << ") ;\n"
+               "    _insulateList () ;\n"
+               "    _internalAppendItem (inOperand (HERE)->_cloneObject ()) ;\n"
                "  }\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
@@ -1198,7 +1241,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
-               "  s << \"<class @" << aNomClasse << "\" ;\n"
+               "  s << \"<class @" << aNomClasse << " \" ;\n"
                "  if (_isBuilt ()) {\n"
                "    mPointer->appendForDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
                "  }else{\n"
@@ -1209,6 +1252,19 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  s << \">\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ; 
+
+//--- Engendrer la declaration de la surcharge de l'operateur ()
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile <<"#ifndef DO_NOT_GENERATE_CHECKINGS\n"
+             "  cPtr_" << aNomClasse << " * GGS_" << aNomClasse << "::operator () (LOCATION_ARGS) const {\n"
+             "    macroValidPointerThere (mPointer) ;\n"
+             "    return " ;
+  if (mSuperClassName.length () > 0) {
+    inCppFile << "(cPtr_" << aNomClasse << " *) " ;
+  }
+  inCppFile << "mPointer ;\n"
+             "  }\n"
+             "#endif\n\n" ;
 }
 
 
@@ -1222,10 +1278,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 static void
 generate_metamodel_header_file (C_Lexique & inLexique,
-                                const GGS_entityToImplementMap & ioEntityMap,
+                                const GGS_entityToImplementMap & /* ioEntityMap */,
                                 const GGS_lstring & inMetamodelComponentName,
                                 const GGS_typeEntitiesToGenerateList & inEntitiesToGenerateList,
-                                const GGS_lstring & inRootEntityName) {
+                                const GGS_lstring & /* inRootEntityName */) {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
                  << "#define " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
@@ -1241,7 +1297,8 @@ generate_metamodel_header_file (C_Lexique & inLexique,
                     "#include \"galgas/GGS_lstring.h\"\n"
                     "#include \"galgas/GGS_ldouble.h\"\n"
                     "#include \"galgas/GGS_luint.h\"\n"
-                    "#include \"galgas/GGS_lsint.h\"\n\n" ;
+                    "#include \"galgas/GGS_lsint.h\"\n"
+                    "#include \"galgas/AC_galgas_list.h\"\n\n" ;
   
   C_String generatedZone3 ; generatedZone3.setCapacity (20000) ;
 
@@ -1294,7 +1351,7 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
                              GGS_entityToImplementMap & /* ioEntityMap */,
                              const GGS_lstring & inMetamodelComponentName,
                              const GGS_typeEntitiesToGenerateList & inEntitiesToGenerateList,
-                             const GGS_lstring & inRootEntityName) {
+                             const GGS_lstring & /* inRootEntityName */) {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
 //--- Include declaration of header file
   generatedZone2.writeCppHyphenLineComment () ;

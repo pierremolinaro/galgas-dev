@@ -63,7 +63,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     attributCourant->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     attributCourant = attributCourant->nextObject () ;
   }
-  inHfile << ") ;\n\n"
+  inHfile << "\n                                "
+             "COMMA_LOCATION_ARGS) ;\n\n"
 //--- Access to next and previous item
              "//--- Access to next\n"
              "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalNextItem () ; }\n\n"
@@ -269,20 +270,24 @@ generateHdeclarations (AC_OutputStream & inHfile,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inHfile << ") ;\n\n"
-              "  protected : void _internalPrependValues (" ;
+  inHfile << "\n                                "
+             "COMMA_LOCATION_ARGS) ;\n\n"
+             "  protected : void _internalPrependValues (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inHfile << ",\n                                " ;
+    if (numeroVariable > 0) {
+      inHfile << ",\n                                " ;
+    }
     inHfile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inHfile << ") ;\n\n"
+  inHfile << "\n                                "
+             "COMMA_LOCATION_ARGS) ;\n\n"
              "//--- List Insulation\n"
              "  protected : void _insulateList (void) ;\n\n"
              "//--- Reader 'description\n"
@@ -328,24 +333,24 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                                " ;
+    }
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ")" ;
+  inCppFile << "\n                                "
+               "COMMA_LOCATION_ARGS) :\n"
+               "AC_galgas_list::cListElement (THERE)" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable == 0) {
-      inCppFile << ":\n" ;
-    }else{
-      inCppFile << ",\n" ;
-    }
-    inCppFile << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
+    inCppFile << ",\n"
+              << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -447,26 +452,32 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                    " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                    " ;
+    }
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ") {\n"
+  inCppFile << "\n                    "
+               "COMMA_LOCATION_ARGS) {\n"
                "  element_type * nouvelElement = (element_type *) NULL ;\n" 
                "  macroMyNew (nouvelElement, element_type (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                                " ;
+    }
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ")) ;\n" 
+  inCppFile << "\n                                "
+               "COMMA_THERE)) ;\n" 
                "  _internalAppendItem (nouvelElement) ;\n" 
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
@@ -486,7 +497,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ") {\n"
+  inCppFile << "\n                    "
+               "COMMA_LOCATION_ARGS) {\n"
                "  element_type * nouvelElement = (element_type *) NULL ;\n" 
                "  macroMyNew (nouvelElement, element_type (" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -498,7 +510,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ")) ;\n" 
+  inCppFile << "\n                                "
+               "COMMA_THERE)) ;\n" 
                "  _internalPrependItem (nouvelElement) ;\n" 
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
@@ -527,12 +540,15 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                                " ;
+    }
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ") ;\n"
+  inCppFile << "\n                                "
+               "COMMA_HERE) ;\n"
                "  }\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
@@ -572,7 +588,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ") ;\n"
+  inCppFile << " COMMA_HERE) ;\n"
                "          p = p->nextObject () ;\n"
                "        }\n"
                "      }\n"
@@ -613,12 +629,15 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                                " ;
+    }
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ") ;\n"
+  inCppFile << "\n                                "
+               "COMMA_HERE) ;\n"
                "  }\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
@@ -636,12 +655,15 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    if (numeroVariable > 0) inCppFile << ",\n                                " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                                " ;
+    }
     inCppFile << "_p->" << current->aNomAttribut ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << ") ;\n"
+  inCppFile << "\n                                "
+               "COMMA_HERE) ;\n"
                "      _p = _p->nextObject () ;\n"
                "    }\n"
                "  }\n"
@@ -882,7 +904,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
 }
 
 

@@ -125,8 +125,8 @@ rule <domain_declaration>
     $;$ ;
   end repeat ;
   @AC_galgasType t := [@typeGalgasDomainType new !domainTypeName !attributeMap !domainModifierMap] ;
-  @AC_semanticsEntity entity := [@typeEntiteType new !t] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey !domainTypeName !entity] ;
+  @AC_semanticsEntity theEntity := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !domainTypeName !theEntity] ;
   $}$ ;
  #--- Insertion dans la map des classes definies dans le fichier source courant
   @typeEntityToGenerate def := [@C_domainToImplement new

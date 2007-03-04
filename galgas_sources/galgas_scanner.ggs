@@ -60,8 +60,8 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
  "insert",          "in",         "send",      "action",
  "grammar",     "option",         "root",          "on",
  "unused",       "label",        "style",         "gui",
- "do",           "of",        "self",
- "call",    "mapindex",
+ "do",              "of",         "self",       "const",
+ "call",      "mapindex",       "entity",
  "method",      "remove",   "sortedlist", "nonterminal",
  "domain", "treewalking"  ;
 
