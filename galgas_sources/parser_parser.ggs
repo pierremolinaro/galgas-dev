@@ -35,7 +35,6 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -44,11 +43,10 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -100,7 +98,6 @@ nonterminal <import_headers_semantics_and_grammars>
   !@stringset ioIncludedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponents
   !@stringset outInclusionsForImplementationFile
@@ -120,7 +117,6 @@ label importSemantics
   !@ActionMap outActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -133,7 +129,6 @@ nonterminal <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inPropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
 
@@ -254,7 +249,6 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 :
   @typeEntitiesToGenerateList listeEntitesAengendrer ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
@@ -293,7 +287,6 @@ rule <galgas_component>
     ?includedGrammarComponents
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
-    !?ioConstraintComponentMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
     ?inclusionsForImplementationFile
@@ -379,7 +372,6 @@ label importSyntax
   @typeTableEnAvant tableEnAvant ;
   @M_semanticsEntitiesForUse entitiesMap ;
   @M_optionComponents ioOptionsComponentsMapForUse ;
-  @M_constraintComponents constraintComponentMap [emptyMap] ;
   @stringset includedSemanticsComponents ;
   @stringset includedMetamodelComponents ;
   @stringset includedOptionComponents ;
@@ -394,7 +386,6 @@ label importSyntax
     ?includedGrammarComponents
     !?semanticsComponentsMap
     !?ioMetamodelComponentMap
-    !?constraintComponentMap
     !?grammarComponentsMap
     !?optionsComponentsMap
     ?inclusionsForImplementationFile
@@ -431,7 +422,6 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -467,7 +457,7 @@ label importLexique
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -1729,7 +1719,6 @@ rule <syntax_instructions_list_no_verif>
   ??@entityToImplementMap inAllMetamodelClassMap
 :
   @entityPropertyMap propertyMap [emptyMap] ;
-  @stringset constraintPropertyDefinitionSet [emptySet] ;
   @typeTableEnAvant tableEnAvant [emptyMap] ;
   @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
   repeat
@@ -1756,7 +1745,6 @@ rule <syntax_instructions_list_no_verif>
       !?ioInstructionList
       !propertyMap
       !inAllMetamodelClassMap
-      !?constraintPropertyDefinitionSet
     ;
   end repeat ;
 label importSyntax

@@ -36,7 +36,6 @@ nonterminal <galgas_start_symbol>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -45,11 +44,10 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 label compileFile
@@ -62,7 +60,6 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -71,11 +68,10 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -89,7 +85,6 @@ rule <galgas_start_symbol>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 :
   repeat
   while
@@ -100,7 +95,6 @@ rule <galgas_start_symbol>
       !?ioGrammarComponentsMap
       !?ioOptionsComponentsMap
       !?ioMetamodelComponentMap
-      !?ioConstraintComponentMap
     ;
   end repeat ;
 label importLexique
@@ -124,27 +118,25 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 :
   repeat
   while
     <galgas_component> importSemantics
       !?ioSemanticsComponentsMap
       !?ioMetamodelComponentMap
-      !?ioConstraintComponentMap
     ;
   end repeat ;
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
 :
   repeat
   while
     <galgas_component> importGrammarForSemantics
       !?ioGrammarComponentsMap
       !?ioMetamodelComponentMap
-      !?ioConstraintComponentMap
+      !?ioOptionsComponentsMapForUse
     ;
   end repeat ;
 label compileFile
@@ -155,7 +147,6 @@ label compileFile
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
   @M_optionComponents optionsComponentsMap [emptyMap] ;
   @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
-  @M_constraintComponents constraintComponentMap [emptyMap] ;
   repeat
   while
     <galgas_component>
@@ -165,7 +156,6 @@ label compileFile
       !?grammarComponentsMap
       !?optionsComponentsMap
       !?metamodelComponentMap
-      !?constraintComponentMap
     ;
   end repeat ;
 label importOptions

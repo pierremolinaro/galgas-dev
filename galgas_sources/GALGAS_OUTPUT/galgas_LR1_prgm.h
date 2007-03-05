@@ -6,10 +6,6 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-//--- START OF USER ZONE 1
-
-
-//--- END OF USER ZONE 1
 
 #ifndef INTERFACE_galgas_LR1_prgm_DEFINED
 #define INTERFACE_galgas_LR1_prgm_DEFINED

@@ -25,6 +25,7 @@
 //---------------------------------------------------------------------------*
 
 #include "program_parser.h"
+#include "semantics_instructions.h"
 
 //---------------------------------------------------------------------------*
 
@@ -93,14 +94,15 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                     "                               const bool inVerboseOptionOn,\n"
                     "                               sint16 & returnCode) ;\n" ;
   //--- Engendrer la declaration des attributs de l'axiome
-    GGS_L_signature::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.firstObject () ;
+    GGS_L_EXsignature::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.firstObject () ;
     GGS_L_lstringList::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
     sint16 numero = 1 ;
     while ((parametreCourant != NULL) && (nomCourant != NULL)) {
       macroValidPointer (parametreCourant) ;
       macroValidPointer (nomCourant) ;
-      grammarZone2 << "  protected : GGS_" << parametreCourant->mGalgasTypeName
-                     << ' ' << nomCourant->mString << " ; // start symbol attribute #" << numero << "\n" ;
+      grammarZone2 << "  protected : " ;
+      parametreCourant->mType (HERE)->generateCppClassName (grammarZone2) ;
+      grammarZone2 << ' ' << nomCourant->mString << " ; // start symbol attribute #" << numero << "\n" ;
       parametreCourant = parametreCourant->nextObject () ;
       nomCourant = nomCourant->nextObject () ;
       numero ++ ;
@@ -194,7 +196,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                             const uint32 inmaxWarningCount,
                             const C_String & inVersionString,
                             const C_String & inProgramComponentName,
-                            const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList) {
+                            const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
+                            const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList) {
 //--- Generate user includes
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -291,7 +294,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "_mScannerPtr->resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
                       "_beforeParsing () ;\n" ; //--- Give a chance to initialize program parameters
     GGS_L_lstringList::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
-    GGS_L_signature::element_type * p = currentGrammar->mStartSymbolSignature.firstObject () ;
+    GGS_L_EXsignature::element_type * p = currentGrammar->mStartSymbolSignature.firstObject () ;
     while ((p != NULL) && (nomCourant != NULL)) {
       macroValidPointer (nomCourant) ;
       macroValidPointer (p) ;
@@ -463,6 +466,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
                     "        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
                     "        sint16 r = 0 ;\n" ;
+  generatedZone2.incIndentation (+8) ;
   currentGrammar = inGrammarDescriptorsList.firstObject () ;
   grammarIndex = 0 ;
   grammarSuffix = "" ;
@@ -470,22 +474,40 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     macroValidPointer (currentGrammar) ;
     C_String grammarClassName ;
     grammarClassName << "grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << grammarSuffix ;
-    generatedZone2 << "        " ;
     if (grammarIndex > 0) {
       generatedZone2 << "}else " ;
     }
     generatedZone2 << "if (fileExtension.compare (\"" << currentGrammar->mSourceExtension << "\") == 0) {\n"
-                      "          " << grammarClassName << " * compiler = NULL ;\n"
-                      "          macroMyNew (compiler, " << grammarClassName << " (galgasIOptr COMMA_HERE)) ;\n"
-                      "          compiler->_prologue () ;\n"
-                      "          compiler->doCompilation (sourceFilesArray (i COMMA_HERE), verboseOptionOn, r) ;\n"
-                      "          compiler->_epilogue () ;\n"
-                      "          macroMyDelete (compiler, " << grammarClassName << ") ;\n" ;
+                      "  " << grammarClassName << " * compiler = NULL ;\n"
+                      "  macroMyNew (compiler, " << grammarClassName << " (galgasIOptr COMMA_HERE)) ;\n"
+                      "  compiler->_prologue () ;\n"
+                      "  compiler->doCompilation (sourceFilesArray (i COMMA_HERE), verboseOptionOn, r) ;\n"
+                      "  compiler->_epilogue () ;\n"
+                      "  macroMyDelete (compiler, " << grammarClassName << ") ;\n" ;
     currentGrammar = currentGrammar->nextObject () ;
     grammarIndex ++ ;
     grammarSuffix = "" ;
     grammarSuffix << "_" << grammarIndex ;
   }
+  GGS_ruleDescriptorForProgramList::element_type * currentRule = inRuleDescriptorForProgramList.firstObject () ;
+  while (currentRule != NULL) {
+    macroValidPointer (currentRule) ;
+    if (grammarIndex > 0) {
+      generatedZone2 << "}else " ;
+    }
+    sint32 prototypeIndex = 0 ;
+    generatedZone2 << "if (fileExtension.compare (\"" << currentRule->mSourceExtension << "\") == 0) {\n" ;
+    generateInstructionListForList (currentRule->mInstructionList,
+                                    generatedZone2,
+                                    "C_Lexique",
+                                    "",
+                                    prototypeIndex,
+                                    false, // inGenerateDebug,
+                                    true) ; // inGenerateSemanticInstructions
+    currentRule = currentRule->nextObject () ;
+    grammarIndex ++ ;
+  }
+  generatedZone2.incIndentation (-8) ;
   generatedZone2 << "        }else{\n"
                     "          printf (\"*** Error: unhandled extension for file '%s' ***\\n\", sourceFilesArray (i COMMA_HERE).cString ()) ;\n"
                     "          r = 1 ;\n"
@@ -560,18 +582,20 @@ routine_generatePRGM (C_Lexique & inLexique,
                       GGS_lstring inProgramComponentName,
                       GGS_lstring inVersionString,
                       GGS_L_grammarDescriptorForProgram inGrammarDescriptorsList,
-                      GGS_luint inmaxErrorCount,
-                      GGS_luint inmaxWarningCount
+                      GGS_ruleDescriptorForProgramList inRuleDescriptorForProgramList,
+                      GGS_luint inMaxErrorCount,
+                      GGS_luint inMaxWarningCount
                       COMMA_UNUSED_LOCATION_ARGS) {
   generate_header_file_for_prgm (inLexique,
                                  inProgramComponentName,
                                  inGrammarDescriptorsList) ; 
   generate_cpp_file_for_prgm (inLexique,
-                              inmaxErrorCount.uintValue (),
-                              inmaxWarningCount.uintValue (),
+                              inMaxErrorCount.uintValue (),
+                              inMaxWarningCount.uintValue (),
                               inVersionString,
                               inProgramComponentName,
-                              inGrammarDescriptorsList) ;
+                              inGrammarDescriptorsList,
+                              inRuleDescriptorForProgramList) ;
 }
 
 //---------------------------------------------------------------------------*

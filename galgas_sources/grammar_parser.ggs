@@ -32,7 +32,6 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -41,11 +40,10 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -105,7 +103,6 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $grammar$ ;
 #--- Grammar name
@@ -126,7 +123,6 @@ rule <galgas_component>
   @stringset classesNamesSet [emptySet] ;
   @L_syntaxComponents_ForGrammar syntaxComponentsList [emptyList] ;
   @M_nonTerminalSymbolsForGrammar nonterminalSymbolsMapForGrammar [emptyMap] ;
-  @M_optionComponents optionComponentsMap [emptyMap] ;
   repeat
     $import$ ;
     select
@@ -150,7 +146,9 @@ rule <galgas_component>
         [importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       end select ;
       $;$ ;
-      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
+      if not [ioOptionsComponentsMap hasKey ![optionComponentName string]] then
+        [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
+      end if ;
     or
       $syntax$ ;
       @lstring syntaxComponentName ;
@@ -273,7 +271,7 @@ rule <galgas_component>
     !grammarName
     !startSymbolAltMap
     !lexiqueName
-    !optionComponentsMap
+    !ioOptionsComponentsMap
   ] ;
   $end$ ;
   $grammar$ ;
@@ -382,7 +380,6 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   $grammar$ ;
   $identifier$ ? * ;
@@ -434,7 +431,7 @@ label importSemantics
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMap
 :
   $grammar$ ;
   @lstring grammarName ;
@@ -444,7 +441,6 @@ label importGrammarForSemantics
    @lstring lexiqueName ;
   <get_lexique_infos> getLexiqueName ?lexiqueName ;
   @M_nonterminalSymbolAltsForGrammar grammarAltMap [emptyMap] ;
-  @M_optionComponents optionComponentsMap [emptyMap] ;
   repeat
     $import$ ;
     select
@@ -455,7 +451,7 @@ label importGrammarForSemantics
       @M_cli_options uintOptionsMap ;
       @M_cli_options stringOptionsMap ;
       select
-        [optionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+        [ioOptionsComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       or
         $in$ ;
         @lstring fileName ;
@@ -468,7 +464,9 @@ label importGrammarForSemantics
         [importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       end select ;
       $;$ ;
-      [!?optionComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
+      if not [ioOptionsComponentsMap hasKey ![optionComponentName string]] then
+        [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
+      end if ;
     or
       $syntax$ ;
       $identifier$ ? * ;
@@ -504,7 +502,7 @@ label importGrammarForSemantics
     $label$ ;
     $identifier$ ? altName ;
   end repeat ;
-  [!?ioGrammarComponentsMap insertKey !grammarName !grammarAltMap !lexiqueName !optionComponentsMap] ;
+  [!?ioGrammarComponentsMap insertKey !grammarName !grammarAltMap !lexiqueName !ioOptionsComponentsMap] ;
   $;$ ;
   $end$ ;
   $grammar$ ;
