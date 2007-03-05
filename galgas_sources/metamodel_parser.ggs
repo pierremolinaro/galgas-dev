@@ -32,7 +32,6 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -41,11 +40,10 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -86,7 +84,6 @@ rule <galgas_component>
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   <parse_metamodel> !?ioMetamodelComponentMap !true ;
 label importLexique
@@ -101,13 +98,12 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
 :
   <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
 :
   <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importOptions

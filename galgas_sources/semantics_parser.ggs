@@ -35,7 +35,6 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
@@ -44,11 +43,10 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -57,7 +55,6 @@ nonterminal <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -65,7 +62,7 @@ nonterminal <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
 label parse
 ;
 
@@ -99,7 +96,6 @@ nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -107,7 +103,6 @@ nonterminal <import_headers_semantics_and_grammars>
   !@M_optionComponents ioOptionsComponentsMapForUse
   !@ModelMap outModelMap
   !@ActionMap outActionMap
-
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
   !@entityToImplementMap outAllMetamodelClassMap
@@ -119,7 +114,6 @@ label importSemantics
   !@ActionMap outActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 label parse
 ;
 
@@ -234,7 +228,6 @@ nonterminal <semantic_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
 
@@ -247,7 +240,6 @@ nonterminal <semantic_instructions_list_no_verif>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
 
@@ -260,7 +252,6 @@ nonterminal <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
 
@@ -276,7 +267,6 @@ nonterminal <extract_instruction>
   !@typeInstruction outInstruction
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 label parse
 ;
 
@@ -441,7 +431,6 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 :
   $semantics$ ;
 #--- Obtenir le nom du component semantique
@@ -471,7 +460,6 @@ rule <galgas_component>
     ?includedGrammarComponents
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
-    !?ioConstraintComponentMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
     ?inclusionsForImplementationFile
@@ -479,7 +467,6 @@ rule <galgas_component>
     ?optionsComponentsMapForUse
     ?modelMap
     ?actionMap
-
     ?componentEntitiesMap
     ?tableEnAvant
     ?allMetamodelClassMap
@@ -572,7 +559,6 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 :
   $semantics$ ;
   @lstring componentName ;
@@ -594,7 +580,6 @@ label importSemantics
     ?actionMap
     !?componentSemanticsEntitiesMap
     !?ioMetamodelComponentMap
-    !?ioConstraintComponentMap
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [emptyMap] ;
@@ -644,7 +629,7 @@ label importLexique
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-  ?!@M_constraintComponents unused ioConstraintComponentMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -686,7 +671,6 @@ rule <import_headers_semantics_and_grammars>
   !@stringset outImportedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -794,11 +778,12 @@ rule <import_headers_semantics_and_grammars>
           !sourceFile
           !?grammarComponentsMap
           !?ioMetamodelComponentMap
-          !?ioConstraintComponentMap
+          !?ioOptionsComponentsMapForUse
         ;
       end select ;
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
-      [grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?* ?*] ;
+      @lstring lexiqueClassName ;
+      [grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?lexiqueClassName ?*] ;
       @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
       foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature @lstring kReturnedEntity) :
         @L_EXsignature formalParametersList [emptyList] ;
@@ -811,7 +796,7 @@ rule <import_headers_semantics_and_grammars>
         end foreach ;
         [!?grammarAltMap insertKey !altName !formalParametersList !kReturnedEntity] ;
       end foreach ;
-      @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap] ;
+      @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap !lexiqueClassName] ;
       [!?ioComponentSemanticsEntitiesMap insertKey !grammarComponentName !e] ;
       @lstring path := [@lstring new !"" !here] ;
       @lstring extension := [@lstring new !"h" !here] ;
@@ -831,7 +816,6 @@ rule <import_headers_semantics_and_grammars>
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
-          !?ioConstraintComponentMap
         ;
       end select ;
       if not [outImportedSemanticsComponents hasKey ![componentName string]] then
@@ -877,7 +861,6 @@ rule <import_headers_semantics_and_grammars>
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
-          !?ioConstraintComponentMap
         ;
       end select ;
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName string]] then
@@ -919,7 +902,6 @@ label importSemantics
 
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_constraintComponents ioConstraintComponentMap
 :
   outActionMap := [@ActionMap emptyMap] ;
   outModelMap := [@ModelMap emptyMap] ;
@@ -964,7 +946,6 @@ label importSemantics
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
-          !?ioConstraintComponentMap
         ;
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
@@ -997,7 +978,6 @@ label importSemantics
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
-          !?ioConstraintComponentMap
         ;
       end select ;
       [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?* ?*] ;
@@ -1063,7 +1043,6 @@ rule <semantics_declaration>
   #--- Instructions
     @typeInstructionList ioInstructionList [emptyList] ;
     @entityPropertyMap propertyMap [emptyMap] ;
-    @stringset constraintPropertyDefinitionSet [emptySet] ;
     @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
     @entityToImplementMap metamodelEntityMap [emptyMap] ;
     <semantic_instructions_list>
@@ -1075,7 +1054,6 @@ rule <semantics_declaration>
       !?ioInstructionList
       !propertyMap
       !metamodelEntityMap
-      !?constraintPropertyDefinitionSet
     ;
     $end$ ;
     $routine$ ;
@@ -1668,7 +1646,6 @@ rule <parse_method>
 #--- Parse reader instruction list
   outInstructionsList := [@typeInstructionList emptyList] ;
   @entityPropertyMap propertyMap [emptyMap] ;
-  @stringset constraintPropertyDefinitionSet [emptySet] ;
   @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
   @entityToImplementMap metamodelEntityMap [emptyMap] ;
   <semantic_instructions_list>
@@ -1680,7 +1657,6 @@ rule <parse_method>
     !?outInstructionsList
     !propertyMap
     !metamodelEntityMap
-    !?constraintPropertyDefinitionSet
   ;
 end rule ;
 
@@ -2457,7 +2433,6 @@ rule <semantic_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   block ioVariablesMap.verifyVariableUsing () :
     <semantic_instructions_list_no_verif>
@@ -2469,7 +2444,6 @@ rule <semantic_instructions_list>
       !?ioInstructionList
       !inCurrentTreewalkingRoutinePropertyMap
       !inMetamodelEntityMap
-      !?ioConstraintPropertyDefinitionSet
     ;
   end block (!here) ;
 end rule ;
@@ -2489,7 +2463,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $call$ ;
 #--- Called property
@@ -2552,7 +2525,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $extract$ ;
 #--- Source variable
@@ -2580,7 +2552,6 @@ rule <semantic_instruction>
     ?instruction
     !inCurrentTreewalkingRoutinePropertyMap
     !inMetamodelEntityMap
-    !?ioConstraintPropertyDefinitionSet
   ;
   ioInstructionList += !instruction ;
   $;$ ;
@@ -2602,7 +2573,6 @@ rule <extract_instruction>
   !@typeInstruction outInstruction
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
 #--- Nom de la classe pour la conversion
   $->$ ;
@@ -2680,7 +2650,6 @@ rule <extract_instruction>
   !@typeInstruction outInstruction
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   @typeStructuredExtractCasesList casesList [emptyList] ;
   $:$ ;
@@ -2734,7 +2703,6 @@ rule <extract_instruction>
           !?instructionsList
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
-          !?ioConstraintPropertyDefinitionSet
         ;
         casesList += !nomType1 !indicatif1 !instructionsList !noUsedParameter ;
       end block (!here) ;
@@ -2754,7 +2722,6 @@ rule <extract_instruction>
         !?elseInstructionList
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
-        !?ioConstraintPropertyDefinitionSet
       ;
       outInstruction := [@typeStructuredExtractInstructionWithElse new
         !inSourceVarCppName !casesList !elseInstructionList
@@ -2780,7 +2747,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
 #--- Type name
   @AC_galgasType definitionType ;
@@ -2825,7 +2791,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $log$ ;
   repeat
@@ -2856,7 +2821,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $drop$ ;
   repeat
@@ -2926,7 +2890,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
 #--- Action name
   $action$ ;
@@ -2979,7 +2942,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $[$ ;
 #--- Get source identity characteristics
@@ -3079,7 +3041,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inMetamodelPropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   @lstring nomVarDest ;
   $identifier$ ? nomVarDest ;
@@ -3110,7 +3071,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $warning$ ;
   @typeExpression errorExpression ;
@@ -3159,7 +3119,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $error$ ;
   @typeExpression errorLocationExpression ;
@@ -3227,7 +3186,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $message$ ;
   @location instructionLocation := here ;
@@ -3264,10 +3222,8 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $if$ ;
-  @stringset startConstraintPropertyDefinitionSet := ioConstraintPropertyDefinitionSet ;
   @bool firstBranch := true ;
   @L_expression_instructionsList_list listeBranchesTest [emptyList] ;
   block ioVariablesMap.testBloc () :
@@ -3285,7 +3241,6 @@ rule <semantic_instruction>
         extract resultType ->@typeGalgas_bool () error here : messageGalgasType ;
         $then$ ;
         @typeInstructionList listeInstructionsBrancheTest [emptyList] ;
-        @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
           !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
@@ -3295,7 +3250,6 @@ rule <semantic_instruction>
           !?listeInstructionsBrancheTest
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
-          !?constraintPropertyDefinitionSet
         ;
         listeBranchesTest += !testBranche !listeInstructionsBrancheTest ;
       end block (!here) ;
@@ -3307,7 +3261,6 @@ rule <semantic_instruction>
       select
       or
         $else$ ;
-        @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
           !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
@@ -3317,7 +3270,6 @@ rule <semantic_instruction>
           !?listeInstructionsBrancheAutre
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
-          !?constraintPropertyDefinitionSet
         ;
      end select ; 
     end block (!here) ;
@@ -3347,7 +3299,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $switch$ ;
 #--- Expression
@@ -3365,7 +3316,6 @@ rule <semantic_instruction>
   @enumConstantMap enumConstantesMap ;
   extract resultType->@typeGalgas_enum (?enumTypeName ?enumConstantesMap ?*) error here : messageGalgasType ;
 #---- When branches
-  @stringset startConstraintPropertyDefinitionSet := ioConstraintPropertyDefinitionSet ;
   @stringset allBranchConstantSet [emptySet] ;
   @L_switchBranchlist switchBranchlist [emptyList] ;
   block ioVariablesMap.testBloc () :
@@ -3388,7 +3338,6 @@ rule <semantic_instruction>
       allBranchConstantSet := allBranchConstantSet | branchConstantSet ;
       block ioVariablesMap.testPart () :
         @typeInstructionList branchInstructionList [emptyList] ;
-        @stringset constraintPropertyDefinitionSet := startConstraintPropertyDefinitionSet ;
         <semantic_instructions_list_no_verif>
           !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
@@ -3398,7 +3347,6 @@ rule <semantic_instruction>
           !?branchInstructionList
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
-          !?constraintPropertyDefinitionSet
         ;
         switchBranchlist += !branchConstantSet !branchInstructionList ;
       end block (!here) ;
@@ -3435,7 +3383,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $loop$ ;
 #--- Variant expression
@@ -3464,7 +3411,6 @@ rule <semantic_instruction>
         !?instructionList1
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
-        !?ioConstraintPropertyDefinitionSet
       ;
     end block (!here) ;
   end block () ;
@@ -3495,7 +3441,6 @@ rule <semantic_instruction>
         !?instructionList2
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
-        !?ioConstraintPropertyDefinitionSet
       ;
     end block (!here) ;
   end block () ;
@@ -3527,7 +3472,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
-  ?!@stringset unused ioConstraintPropertyDefinitionSet
 :
   $grammar$ ;
 #--- Nom du fichier is
@@ -3562,7 +3506,7 @@ rule <semantic_instruction>
   @AC_semanticsEntity e  ;
   [ioComponentSemanticsEntitiesMap searchKey !grammarName ?e] ;
   @M_nonterminalSymbolAlts startSymbolAltMap ;
-  extract e->@C_grammarForSemantics (?startSymbolAltMap) error grammarName : messageTypeEntite ;
+  extract e->@C_grammarForSemantics (?startSymbolAltMap ?*) error grammarName : messageTypeEntite ;
   @L_EXsignature startSymbolSignature ;
   @lstring returnedEntity ;
   [startSymbolAltMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
@@ -3620,7 +3564,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $foreach$ ;
   @typeInstruction instruction ;
@@ -3689,7 +3632,6 @@ rule <semantic_instruction>
         !?instructionList
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
-        !?ioConstraintPropertyDefinitionSet
       ;
     end block (!here) ;
   end block () ;
@@ -3829,7 +3771,6 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   $match$ ;
 #--- Get first operand
@@ -3905,7 +3846,6 @@ rule <semantic_instruction>
           !?instructionsList
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
-          !?ioConstraintPropertyDefinitionSet
         ;
         casesList += !case1_name !case2_name !instructionsList ;
       end block (!here) ;
@@ -3923,7 +3863,6 @@ rule <semantic_instruction>
         !?elsePartInstructionsList
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
-        !?ioConstraintPropertyDefinitionSet
       ;
     end block (!here) ;
   end block () ;
@@ -3955,7 +3894,6 @@ rule <semantic_instructions_list_no_verif>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ?!@stringset ioConstraintPropertyDefinitionSet
 :
   repeat
   while
@@ -3968,7 +3906,6 @@ rule <semantic_instructions_list_no_verif>
       !?ioInstructionList
       !inCurrentTreewalkingRoutinePropertyMap
       !inMetamodelEntityMap
-      !?ioConstraintPropertyDefinitionSet
     ;
   end repeat ;
 end rule ;

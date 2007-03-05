@@ -5,10 +5,6 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-//--- START OF USER ZONE 1
-
-
-//--- END OF USER ZONE 1
 
 class grammar_galgas_SLR_prgm : public C_defaultUserSemanticActions {
   protected : galgas_scanner * _mScannerPtr ;
@@ -32,7 +28,6 @@ class grammar_galgas_SLR_prgm : public C_defaultUserSemanticActions {
   protected : GGS_M_grammarComponents mGrammarsComponentsMap ; // start symbol attribute #4
   protected : GGS_M_optionComponents mOptionComponentsMap ; // start symbol attribute #5
   protected : GGS_M_metamodelsComponents mMetamodelComponentMap ; // start symbol attribute #6
-  protected : GGS_M_constraintComponents mConstraintComponentMap ; // start symbol attribute #7
 //--- START OF USER ZONE 2
 
 //--- Prologue and epilogue

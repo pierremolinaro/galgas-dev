@@ -1446,5 +1446,34 @@ action generate_metamodel
 ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#              Grammar descriptor (for program component)                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @ruleDescriptorForProgramList {
+  @lstring mSourceExtension ;
+  @string mHelpMessage ;
+  @lstring mSourceFileName ;
+  @typeInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @L_grammarDescriptorForProgram {
+  @string mGrammarPostfix ;
+  @lstring mGrammarName ;
+  @L_EXsignature mStartSymbolSignature ;
+  @L_lstringList mStartSymbolAttributesList ;
+  @lstring mLexiqueClassName ;
+  @lstring mReturnedMetamodelName ;
+  @lstring mReturnedRootEntityName ;
+  @lstring mSourceExtension ;
+  @string mHelpMessage ;
+  @M_optionComponents mOptionsComponentsMap ;
+  @loggableObjectList mLoggableObjectList ;
+}
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

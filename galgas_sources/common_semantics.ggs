@@ -1808,6 +1808,7 @@ abstract class @AC_semanticsEntity {
 
 class @C_grammarForSemantics extends @AC_semanticsEntity {
   @M_nonterminalSymbolAlts mGrammarAltMap ;
+  @lstring mLexiqueClassName ;
   message messageTypeEntite  "a grammar entity";
 }
 
@@ -2977,18 +2978,6 @@ map @M_metamodelsComponents {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    Map of constraints components                                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @M_constraintComponents {
-  @lstring mMetamodel ;
-  insert insertKey error message "a constraint component named '%K' is already declared in %L" ;
-  search searchKey error message "there is no constraint component named '%K'" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #              List of attributes for GUI description                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3641,26 +3630,6 @@ class @loggableConstraint extends @loggableObject {
 
 list @loggableObjectList {
   @loggableObject mLoggableObject ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#              Grammar descriptor (for program component)                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @L_grammarDescriptorForProgram {
-  @string mGrammarPostfix ;
-  @lstring mGrammarName ;
-  @L_signature mStartSymbolSignature ;
-  @L_lstringList mStartSymbolAttributesList ;
-  @lstring mLexiqueClassName ;
-  @lstring mReturnedMetamodelName ;
-  @lstring mReturnedRootEntityName ;
-  @lstring mSourceExtension ;
-  @string mHelpMessage ;
-  @M_optionComponents mOptionsComponentsMap ;
-  @loggableObjectList mLoggableObjectList ;
 }
 
 #---------------------------------------------------------------------------*

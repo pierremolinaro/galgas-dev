@@ -6,7 +6,6 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-//--- START OF USER ZONE 1
 
 #include "bdd/C_BDD.h"
 #include "project_creation.h"
@@ -148,13 +147,6 @@ doCompilation (const C_String & inSourceFileName_,
                  "' program parameter has not been initialized" ;
       throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
     }
-    if (! mConstraintComponentMap._isBuilt ()) {
-      C_String message ;
-      message << "the '"
-                 "mConstraintComponentMap"
-                 "' program parameter has not been initialized" ;
-      throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;
-    }
     galgas_LR1_grammar grammar_ ;
     grammar_.startParsing_ (*_mScannerPtr,
                                 mLexiqueMapForUse,
@@ -162,8 +154,7 @@ doCompilation (const C_String & inSourceFileName_,
                                 mSyntaxComponentsMap,
                                 mGrammarsComponentsMap,
                                 mOptionComponentsMap,
-                                mMetamodelComponentMap,
-                                mConstraintComponentMap) ;
+                                mMetamodelComponentMap) ;
     C_BDD::markAndSweepUnusedNodes () ;
     if (_mScannerPtr->totalErrorCount () == 0) {
       _afterParsing (inVerboseOptionOn) ;
@@ -354,7 +345,6 @@ void grammar_galgas_LR1_prgm::_beforeParsing (void) {
   mGrammarsComponentsMap = GGS_M_grammarComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
   mOptionComponentsMap = GGS_M_optionComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
   mMetamodelComponentMap = GGS_M_metamodelsComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
-  mConstraintComponentMap = GGS_M_constraintComponents::constructor_emptyMap (*_mScannerPtr COMMA_HERE) ;
   _mScannerPtr->ioParametersPtr ()->mFileGenerationStartDir = _mScannerPtr->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = _mScannerPtr->ioParametersPtr ()->mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
   if (! ok) {
