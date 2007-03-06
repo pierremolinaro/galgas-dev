@@ -20,12 +20,13 @@
 class cPtr_typeInstruction : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
-public : virtual void generateInstruction (AC_OutputStream & inCppFile,
-                                           const C_String & inLexiqueClassName,
-                                           const C_String & inTargetFileName,
-                                           sint32 & ioPrototypeIndex,
-                                           const bool inGenerateDebug,
-                                           const bool inGenerateSemanticInstructions) const = 0 ;
+  public : virtual void
+  generateInstruction (AC_OutputStream & inCppFile,
+                       const C_String & inTargetFileName,
+                       sint32 & ioPrototypeIndex,
+                       const bool inGenerateDebug,
+                       const bool inGenerateSemanticInstructions) const = 0 ;
+
 public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                                          const C_String & inLexiqueClassName,
                                                          const C_String & inTargetFileName,

@@ -234,10 +234,10 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 
 void cPtr_typeRoutineAengendrer::
 generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                  const C_String & inLexiqueClassName,
-                                  const C_String & inTargetFileName,
-                                  sint32 & ioPrototypeIndex,
-                                  const bool inGenerateDebug) const {
+                                const C_String & /* inLexiqueClassName */,
+                                const C_String & inTargetFileName,
+                                sint32 & ioPrototypeIndex,
+                                const bool inGenerateDebug) const {
   inCppFile.writeCppTitleComment (C_String ("Implementation of routine \"") + aNomRoutine + '"') ;
   inCppFile << "void routine_" << aNomRoutine << " (C_Lexique &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
@@ -264,7 +264,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  #endif\n" ;
 //--- Engendrer la liste d'instructions
   generateInstructionListForList (mInstructionList, inCppFile,
-                                  inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+                                  inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, true) ;
 //--- Fin de la fonction
   inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"

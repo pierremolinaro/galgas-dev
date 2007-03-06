@@ -35,7 +35,6 @@
 
 void cPtr_callInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & inTargetFileName,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -340,7 +339,6 @@ generate_treewalking_implementation (C_Lexique & inLexique,
     sint32 prototypeIndex = 0 ; // Unused here
     generateInstructionListForList (currentRoutine->mInstructionList,
                                     generatedZone3,
-                                    "", // Unused lexique actual name
                                     inTreewalkingComponentName,
                                     prototypeIndex,
                                     true,

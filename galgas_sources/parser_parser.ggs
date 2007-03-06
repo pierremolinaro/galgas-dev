@@ -1061,6 +1061,7 @@ rule <syntax_declaration>
     !ruleName
     !altProductionsMap
     !productionTagName
+    !inLexiqueClassName
     !hasParseLabel
   ] ;
   listeEntitesAengendrer += !ea ;

@@ -25,7 +25,6 @@
 
 void cPtr_typeCallOfTypeMethodInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -93,7 +92,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeMethodCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -176,7 +174,6 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 void cPtr_typeModifierCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -245,7 +242,6 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 void cPtr_typeInstructionAppelMethodeListe::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -311,7 +307,6 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 void cPtr_C_grammarInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -399,7 +394,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeInstructionAppelActionExterne::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const  C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -490,7 +484,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeRoutineCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,

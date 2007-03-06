@@ -33,7 +33,6 @@
 
 void cPtr_C_while_instruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & inTargetFileName,
                      sint32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
@@ -52,8 +51,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "GGS_bool " << variableCondition << " (" << variantVariable << "._isBuilt (), true) ;\n"
                  "while (" << variableCondition << ".isBuiltAndTrue ()) {\n" ;
   //--- First instruction list
-    C_String inutilise ;
-    generateInstructionListForList (mInstructionList1, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+    generateInstructionListForList (mInstructionList1, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
   //--- Condition
     ioCppFile << "  " << variableCondition << " = " ;
     mWhileExpression (HERE)->generateExpression (ioCppFile) ;
@@ -69,7 +67,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "      " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
   //--- Second instruction list
     ioCppFile.incIndentation (+4) ;
-    generateInstructionListForList (mInstructionList2, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+    generateInstructionListForList (mInstructionList2, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
     ioCppFile.incIndentation (-4) ;
     ioCppFile << "    }\n"
                  "  }\n"
@@ -116,7 +114,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeForeachInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & inTargetFileName,
                      sint32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
@@ -153,8 +150,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "  macroValidPointer (operand_" << enumeratedVariable->mLocationOffset.currentLocation () << ") ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
-    C_String inutilise ;
-    generateInstructionListForList (mInstructionList, ioCppFile, inutilise, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+    generateInstructionListForList (mInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
