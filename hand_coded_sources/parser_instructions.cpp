@@ -234,7 +234,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
 
 void cPtr_typeInstructionVerifSyntaxique::
 generateInstruction (AC_OutputStream & inCppFile,
-                       const C_String & inLexiqueClassName,
+                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool inGenerateDebug,
@@ -265,8 +265,8 @@ generateInstruction (AC_OutputStream & inCppFile,
                  "  }\n"
                  "#endif\n" ;
   }
-  inCppFile << "_inLexique.acceptTerminal (ACCEPT_TERMINAL (" << inLexiqueClassName << "::"
-            << inLexiqueClassName << "_1_" ;
+  inCppFile << "_inLexique.acceptTerminal (ACCEPT_TERMINAL (" << mLexiqueClassName << "::"
+            << mLexiqueClassName << "_1_" ;
   generateTerminalSymbolCppName (aNomTerminal, inCppFile) ;
   inCppFile << ") COMMA_HERE) ;\n" ;
 }

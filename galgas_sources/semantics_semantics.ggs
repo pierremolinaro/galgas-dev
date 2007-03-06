@@ -981,6 +981,7 @@ class @C_grammarInstruction extends @typeInstruction {
   @typeExpressionList mExpressionsList ;
   @lstring mAltSymbol ;
   @lstring mMetamodelClassVariableName ;
+  @lstring mLexiqueClassName ;
 }
 
 #---------------------------------------------------------------------------*

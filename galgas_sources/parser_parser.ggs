@@ -69,6 +69,7 @@ label parse
 ;
 
 nonterminal <syntax_declaration>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -133,6 +134,7 @@ label parse
 ;
 
 nonterminal <syntax_instruction>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -189,6 +191,7 @@ label parse
 ;
 
 nonterminal <syntax_instructions_list>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -205,6 +208,7 @@ label parse
 ;
  
 nonterminal <syntax_instructions_list_no_verif>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -305,6 +309,7 @@ rule <galgas_component>
   repeat
   while
     <syntax_declaration>
+      !defLexique
       !?nonTerminalSymbolsMapForSyntax
       !?entitiesMap
       !ioOptionsComponentsMapForUse
@@ -544,6 +549,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -592,6 +598,7 @@ rule <syntax_instruction>
 #--- Liste d'instructions incluses
   $:$ ;
   <syntax_instructions_list_no_verif>
+    !inLexiqueClassName
     !?ioNonTerminalSymbolMapForSyntax
     !inCheckNonTerminalsAreDeclaredWithParseLabel
     !ioEntitiesMap
@@ -650,6 +657,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_declaration>
+  ??@string unused inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -820,6 +828,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_declaration>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -956,6 +965,7 @@ rule <syntax_declaration>
 #--- Parse instructions list
   @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
   <syntax_instructions_list>
+    !inLexiqueClassName
     !?ioNonTerminalSymbolMapForSyntax
     !checkNonTerminalsAreDeclaredWithParseLabel
     !ioEntitiesMap
@@ -1012,6 +1022,7 @@ rule <syntax_declaration>
     @typeInstructionList branchInstructionList [emptyList] ;
     @L_ruleSyntaxSignature branchSyntaxSignature [emptyList] ;
     <syntax_instructions_list>
+      !inLexiqueClassName
       !?ioNonTerminalSymbolMapForSyntax
       !false
       !ioEntitiesMap
@@ -1117,6 +1128,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_instructions_list>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -1130,6 +1142,7 @@ rule <syntax_instructions_list>
 :
   block ioVariablesMap.verifyVariableUsing () :
     <syntax_instructions_list_no_verif>
+      !inLexiqueClassName
       !?ioNonTerminalSymbolMapForSyntax
       !inCheckNonTerminalsAreDeclaredWithParseLabel
       !ioEntitiesMap
@@ -1154,6 +1167,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax unused ioNonTerminalSymbolMapForSyntax
   ?@bool unused inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
@@ -1178,7 +1192,11 @@ rule <syntax_instruction>
     !?ioVariablesMap
   ;
   @typeInstruction instruction ;
-  instruction := [@typeInstructionVerifSyntaxique new !terminalSymbolName !listeTypeEffectifs] ;
+  instruction := [@typeInstructionVerifSyntaxique new
+    !terminalSymbolName
+    !listeTypeEffectifs
+    !inLexiqueClassName
+  ] ;
   ioInstructionList += !instruction ;
   @uint terminalSymbolIndex := 0 ;
   @AC_instruction_ForGrammar i := [@T_terminalInstruction_forGrammarComponent new ![terminalSymbolName location] !terminalSymbolName !terminalSymbolIndex] ;
@@ -1202,6 +1220,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
+  ??@string unused inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -1344,6 +1363,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -1364,6 +1384,7 @@ rule <syntax_instruction>
       @typeInstructionList firstBranchInstructionList [emptyList] ;
       @L_ruleSyntaxSignature firstBranchSyntaxSignature [emptyList] ;
       <syntax_instructions_list_no_verif>
+        !inLexiqueClassName
         !?ioNonTerminalSymbolMapForSyntax
         !inCheckNonTerminalsAreDeclaredWithParseLabel
         !ioEntitiesMap
@@ -1384,6 +1405,7 @@ rule <syntax_instruction>
         @typeInstructionList listeInstructionsBrancheChoix [emptyList] ;
         @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
         <syntax_instructions_list_no_verif>
+          !inLexiqueClassName
           !?ioNonTerminalSymbolMapForSyntax
           !inCheckNonTerminalsAreDeclaredWithParseLabel
           !ioEntitiesMap
@@ -1443,6 +1465,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -1463,6 +1486,7 @@ rule <syntax_instruction>
     @L_ruleSyntaxSignature repeatBranchInstructionsList [emptyList] ;
     block ioVariablesMap.repeatPart () :
       <syntax_instructions_list_no_verif>
+        !inLexiqueClassName
         !?ioNonTerminalSymbolMapForSyntax
         !inCheckNonTerminalsAreDeclaredWithParseLabel
         !ioEntitiesMap
@@ -1484,6 +1508,7 @@ rule <syntax_instruction>
         @typeInstructionList listeInstructionsBrancheRepeter [emptyList];
         @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
         <syntax_instructions_list_no_verif>
+          !inLexiqueClassName
           !?ioNonTerminalSymbolMapForSyntax
           !inCheckNonTerminalsAreDeclaredWithParseLabel
           !ioEntitiesMap
@@ -1544,6 +1569,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -1567,6 +1593,7 @@ rule <syntax_instruction>
     @typeInstructionList firstBranchInstructionsList [emptyList] ;
     @L_ruleSyntaxSignature firstBranchSyntaxSignature [emptyList] ;
     <syntax_instructions_list_no_verif>
+      !inLexiqueClassName
       !?ioNonTerminalSymbolMapForSyntax
       !inCheckNonTerminalsAreDeclaredWithParseLabel
       !ioEntitiesMap
@@ -1590,6 +1617,7 @@ rule <syntax_instruction>
       @typeInstructionList instructionsList [emptyList] ;
       @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
       <syntax_instructions_list_no_verif>
+        !inLexiqueClassName
         !?ioNonTerminalSymbolMapForSyntax
         !inCheckNonTerminalsAreDeclaredWithParseLabel
         !ioEntitiesMap
@@ -1628,6 +1656,7 @@ rule <syntax_instruction>
           @typeInstructionList instructionsList [emptyList] ;
           @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
           <syntax_instructions_list_no_verif>
+            !inLexiqueClassName
             !?ioNonTerminalSymbolMapForSyntax
             !inCheckNonTerminalsAreDeclaredWithParseLabel
             !ioEntitiesMap
@@ -1650,6 +1679,7 @@ rule <syntax_instruction>
         @typeInstructionList elseInstructionsList [emptyList] ;
         @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
         <syntax_instructions_list_no_verif>
+          !inLexiqueClassName
           !?ioNonTerminalSymbolMapForSyntax
           !inCheckNonTerminalsAreDeclaredWithParseLabel
           !ioEntitiesMap
@@ -1707,6 +1737,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_instructions_list_no_verif>
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?@bool inCheckNonTerminalsAreDeclaredWithParseLabel
   ??@M_semanticsEntitiesForUse ioEntitiesMap
@@ -1724,6 +1755,7 @@ rule <syntax_instructions_list_no_verif>
   repeat
   while
     <syntax_instruction>
+      !inLexiqueClassName
       !?ioNonTerminalSymbolMapForSyntax
       !inCheckNonTerminalsAreDeclaredWithParseLabel
       !ioEntitiesMap

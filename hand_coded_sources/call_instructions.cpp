@@ -311,14 +311,14 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 void cPtr_C_grammarInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & inLexiqueClassName,
+                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "{ " << inLexiqueClassName << " * scanner_ = NULL ;\n"
-                 "  macroMyNew (scanner_, " << inLexiqueClassName << " (_inLexique.ioParametersPtr () COMMA_HERE)) ;\n"
+    ioCppFile << "{ " << mLexiqueClassName << " * scanner_ = NULL ;\n"
+                 "  macroMyNew (scanner_, " << mLexiqueClassName << " (_inLexique.ioParametersPtr () COMMA_HERE)) ;\n"
                  "  scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;\n"
                  "  " << mGrammarName << " grammar_ ;\n"
                  "  const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
@@ -347,7 +347,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
               << mGrammarName.currentLineNumber ()
               << ")) ;\n"
                  "  }\n"
-                 "  macroDetachPointer (scanner_, " << inLexiqueClassName << ") ;\n"
+                 "  macroDetachPointer (scanner_, " << mLexiqueClassName << ") ;\n"
                  "}\n" ; 
   }
 }
