@@ -29,7 +29,6 @@ class AC_OutputStream ;
 
 void
 engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposant,
-                                                  const C_String & inLexiqueName,
                                                   const GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                                   AC_OutputStream & inHfile) ;
 

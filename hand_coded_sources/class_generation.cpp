@@ -126,9 +126,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_classToImplement::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & inHfile) const {
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inHfile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
@@ -263,7 +261,6 @@ generateHdeclarations (AC_OutputStream & inHfile,
 
 void cPtr_C_classToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & inLexique) const {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
@@ -379,7 +376,6 @@ bool cPtr_C_classToImplement::isCppClassNeeded (void) const {
 
 void cPtr_C_classToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
-                               const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
 }
@@ -388,7 +384,6 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 
 void cPtr_C_classToImplement::
 generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                  const C_String & /* inLexiqueClassName */,
                                   const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) const {

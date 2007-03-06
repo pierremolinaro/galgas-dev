@@ -32,7 +32,6 @@
 
 void cPtr_C_listTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
@@ -99,9 +98,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & inHfile) const {
 //----------------------- List class declaration ----------------  
   inHfile.writeCppTitleComment (C_String ("list '@") + aNomListe + "'") ;
 
@@ -310,7 +307,6 @@ bool cPtr_C_listTypeToImplement::isCppClassNeeded (void) const {
 
 void cPtr_C_listTypeToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
-                               const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
 }
@@ -319,7 +315,6 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 
 void cPtr_C_listTypeToImplement::
 generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                  const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
@@ -917,7 +912,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 void cPtr_C_sortedListTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCppTitleComment (C_String ("Element of sorted list '@") + aNomListe + "'") ;
@@ -985,9 +979,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_sortedListTypeToImplement::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & inHfile) const {
 //----------------------- List class declaration ----------------  
   inHfile.writeCppTitleComment (C_String ("sorted list '@") + aNomListe + "'") ;
 
@@ -1163,7 +1155,6 @@ bool cPtr_C_sortedListTypeToImplement::isCppClassNeeded (void) const {
 
 void cPtr_C_sortedListTypeToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
-                               const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
 }
@@ -1172,7 +1163,6 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 
 void cPtr_C_sortedListTypeToImplement::
 generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                  const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {

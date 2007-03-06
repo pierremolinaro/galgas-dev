@@ -657,7 +657,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <syntax_declaration>
-  ??@string unused inLexiqueClassName
+  ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -760,7 +760,7 @@ rule <syntax_declaration>
   $;$ ;
   [!?ioNonTerminalSymbolsMap insertKey !ruleName !parametersMapForGrammar] ;
   [!?ioNonTerminalSymbolMapForSyntax insertKey !ruleName !parametersMap] ;
-  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !ruleName !parametersMap] ;
+  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !ruleName !parametersMap !inLexiqueClassName] ;
   listeEntitesAengendrer += !ea ;
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap

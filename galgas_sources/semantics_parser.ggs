@@ -803,6 +803,19 @@ rule <import_headers_semantics_and_grammars>
       @lstring fileNameWithPath ;
       action buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
       outInclusionsForImplementationFile += ![fileNameWithPath string] ;
+      foreach grammarComponentsMap (@lstring kKey
+                                    @M_nonterminalSymbolAltsForGrammar kNonterminalSymbolParametersMap
+                                    @lstring kLexiqueName
+                                    @M_optionComponents kOptionsMap) :
+        if not [ioGrammarComponentsMap hasKey ![kKey string]] then
+          [!?ioGrammarComponentsMap insertKey
+            !kKey
+            !kNonterminalSymbolParametersMap
+            !kLexiqueName
+            !kOptionsMap
+          ] ;
+        end if ;
+      end foreach ;
     or
       $semantics$ ;
       @lstring componentName ;

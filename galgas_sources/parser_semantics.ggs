@@ -118,6 +118,7 @@ class @C_parse_when_else_instruction extends @typeParserInstruction {
 class @typeNonterminalToGenerate extends @typeEntityToGenerate {
   @lstring aNomNonTerminal ;
   @M_nonterminalSymbolAlts mNonterminalSymbolParametersMap ;
+  @string mLexiqueClassName ;
 }
 
 #---------------------------------------------------------------------------*

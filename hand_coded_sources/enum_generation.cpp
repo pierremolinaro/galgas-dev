@@ -24,7 +24,6 @@
 
 void cPtr_enumGalgasType::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 }
 
@@ -38,9 +37,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_enumGalgasType::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Compute bit count for BDDs (set operations)
   uint16 bitCount = 0 ;
   sint32 n = mConstantMap.count () ;
@@ -115,7 +112,6 @@ bool cPtr_enumGalgasType::isCppClassNeeded (void) const {
 
 void cPtr_enumGalgasType::
 generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
-                               const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
 }
@@ -124,7 +120,6 @@ generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
 
 void cPtr_enumGalgasType::
 generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                  const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {

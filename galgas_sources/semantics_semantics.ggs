@@ -1471,7 +1471,6 @@ list @L_grammarDescriptorForProgram {
   @lstring mReturnedRootEntityName ;
   @lstring mSourceExtension ;
   @string mHelpMessage ;
-  @M_optionComponents mOptionsComponentsMap ;
   @loggableObjectList mLoggableObjectList ;
 }
 

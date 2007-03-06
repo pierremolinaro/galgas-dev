@@ -21,16 +21,25 @@ program galgas_LR1_prgm "version GALGAS_BETA_VERSION (LR(1) grammar)":
   import grammar galgas_LR1_grammar in "galgas_LR1_grammar.ggs" ;
   error 100 ;
   warning 100 ;
-  when . "ggs":
-    message "a GALGAS source file"
-    grammar  galgas_LR1_grammar (
-    mLexiqueMapForUse,
-    mSemanticsComponentsMap,
-    mSyntaxComponentsMap,
-    mGrammarsComponentsMap,
-    mOptionComponentsMap,
-    mMetamodelComponentMap)
-  ;
+
+  when . "ggs"
+  message "a '.ggs' GALGAS source file"
+  ??@lstring inSourceFile {
+    @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+    @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+    @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+    @M_grammarComponents grammarComponentsMap [emptyMap] ;
+    @M_optionComponents optionComponentsMap [emptyMap] ;
+    @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
+    grammar galgas_LR1_grammar in inSourceFile
+      !?lexiqueMapForUse
+      !?semanticsComponentsMap
+      !?syntaxComponentsMap
+      !?grammarComponentsMap
+      !?optionComponentsMap
+      !?metamodelComponentMap
+    ;
+  }
 end program ;
 
 #---------------------------------------------------------------------------*
