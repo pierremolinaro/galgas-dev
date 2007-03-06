@@ -8,6 +8,7 @@
 
 //--- START OF USER ZONE 1
 
+class GGS_typeExpressionList ;
 
 //--- END OF USER ZONE 1
 
@@ -38,6 +39,38 @@ public : void generatePublicDeclaration (AC_OutputStream & inHfile,
                                            const GGS_lstring & nomAttribut) ;
 
 public : void generateFormalParameter (AC_OutputStream & fichier, const bool reference) ;
+
+  public : virtual void
+  generateCallInstruction (AC_OutputStream & ioCppFile,
+                           const C_String & inEntityName,
+                           const GGS_lstring & inCalledPropertyName,
+                           const C_String & inTargetFileName,
+                           const GGS_typeExpressionList & inParameterList) const ;
+  public : virtual void
+  generateDescription (AC_OutputStream & ioHFile,
+                       const C_String & inPropertyName) const ;
+
+  public : virtual void
+  generateMultiplicityConstraintChecking (AC_OutputStream & ioHFile,
+                                          const C_String & inPropertyName) const ;
+
+  public : virtual void
+  generateFormalParameter (AC_OutputStream & ioHFile,
+                           const C_String & inPropertyName) const ;
+
+  public : virtual void
+  generateAttributeInMetamodel (AC_OutputStream & ioHFile,
+                                const C_String & inPropertyName) const ;
+
+  public : virtual void
+  releasePropertyInDestructor (AC_OutputStream & ioHFile,
+                               const C_String & inPropertyName) const ;
+
+
+  public : virtual void
+  descriptionReaderCall (AC_OutputStream & ioHFile,
+                         const C_String & inPropertyName) const ;
+
 
 //--- END OF USER ZONE 2
 

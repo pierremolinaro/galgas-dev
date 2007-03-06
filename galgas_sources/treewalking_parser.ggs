@@ -359,12 +359,13 @@ rule <treewalking_routine>
     ?signatureForGrammarComponent
   ;
 #--- Add metamodel attributes as local constants
-  foreach allMetamodelPropertyMap (@lstring kKey @metamodelProperty kProperty) :
-    extract kProperty :
-    when @metamodelAttributeProperty (@AC_galgasType kType) ->
-      @typeCplusPlusName cppName := [@typeCurrentObjectName new !kKey] ;
-      [!?localVariableMap insertUsedConstInArgument !kKey ! kType !cppName] ;
+  foreach allMetamodelPropertyMap (@lstring kKey @AC_galgasType kType) :
+    extract kType :
+    when @typeGalgas_singleReferenceEntity (*) ->
+    when @typeGalgas_multipleReferenceEntity (3*) ->
     else
+      @typeCplusPlusName cppName := [@typeCurrentObjectName new !kKey] ;
+      [!?localVariableMap insertUsedConstInArgument !kKey !kType !cppName] ;
     end extract ;
   end foreach ;
 #--- Instruction list

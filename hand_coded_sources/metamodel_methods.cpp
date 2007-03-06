@@ -19,14 +19,7 @@
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelProperty::
-descriptionReaderCall (AC_OutputStream & /* inHFile */,
-                       const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelAttributeProperty::
+void cPtr_AC_galgasType::
 descriptionReaderCall (AC_OutputStream & inHFile,
                        const C_String & inPropertyName) const {
   inHFile << "    << " << inPropertyName << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)\n" ;
@@ -34,7 +27,7 @@ descriptionReaderCall (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelSingleReferenceProperty::
+void cPtr_typeGalgas_singleReferenceEntity::
 descriptionReaderCall (AC_OutputStream & inHFile,
                        const C_String & inPropertyName) const {
   inHFile << "    << " << inPropertyName << "->reader_description  (_inLexique COMMA_THERE, inIndentation + 1)\n" ;
@@ -42,7 +35,7 @@ descriptionReaderCall (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelMultipleReferenceProperty::
+void cPtr_typeGalgas_multipleReferenceEntity::
 descriptionReaderCall (AC_OutputStream & inHFile,
                        const C_String & inPropertyName) const {
   inHFile << "    << " << inPropertyName << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)\n" ;
@@ -56,18 +49,18 @@ descriptionReaderCall (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelProperty::
+void cPtr_AC_galgasType::
 releasePropertyInDestructor (AC_OutputStream & /* inHFile */,
                              const C_String & /* inPropertyName */) const {
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelSingleReferenceProperty::
+void cPtr_typeGalgas_singleReferenceEntity::
 releasePropertyInDestructor (AC_OutputStream & inHFile,
                              const C_String & inPropertyName) const {
   inHFile << "  macroDetachPointer (" << inPropertyName
-          << ", GGS_" << mReferenceEntityName << ") ;\n" ;
+          << ", GGS_" << mEntityTypeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -78,36 +71,29 @@ releasePropertyInDestructor (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelProperty::
-generateAttributeInMetamodel (AC_OutputStream & /* inHFile */,
-                              const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelAttributeProperty::
+void cPtr_AC_galgasType::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
   inHFile << "  public : " ;
-  mAttributeType (HERE)->generateCppClassName (inHFile) ;
+  generateCppClassName (inHFile) ;
   inHFile << " " << inPropertyName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelSingleReferenceProperty::
+void cPtr_typeGalgas_singleReferenceEntity::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGS_" << mReferenceEntityName
+  inHFile << "  public : GGS_" << mEntityTypeName
           << " " << inPropertyName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelMultipleReferenceProperty::
+void cPtr_typeGalgas_multipleReferenceEntity::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGS_listOf" << mReferenceEntityName.stringWithUpperCaseFirstLetter ()
+  inHFile << "  public : GGS_listOf" << mEntityTypeName.stringWithUpperCaseFirstLetter ()
           << " " << inPropertyName << " ;\n" ;
 }
 
@@ -119,36 +105,29 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelProperty::
-generateFormalParameter (AC_OutputStream & /* inHFile */,
-                         const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelAttributeProperty::
+void cPtr_AC_galgasType::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
   inHFile << "const " ;
-  mAttributeType (HERE)->generateCppClassName (inHFile) ;
+  generateCppClassName (inHFile) ;
   inHFile << " & _in_" << inPropertyName ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelMultipleReferenceProperty::
+void cPtr_typeGalgas_multipleReferenceEntity::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS_listOf" << mReferenceEntityName.stringWithUpperCaseFirstLetter ()
+  inHFile << "GGS_listOf" << mEntityTypeName.stringWithUpperCaseFirstLetter ()
           << " & _in_" << inPropertyName ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelSingleReferenceProperty::
+void cPtr_typeGalgas_singleReferenceEntity::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS_" << mReferenceEntityName
+  inHFile << "GGS_" << mEntityTypeName
           << " * & _in_" << inPropertyName ;
 }
 
@@ -160,186 +139,28 @@ generateFormalParameter (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelProperty::
+void cPtr_AC_galgasType::
 generateMultiplicityConstraintChecking (AC_OutputStream & /* ioCppFile */,
                                         const C_String & /* inCalledPropertyName */) const {
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelMultipleReferenceProperty::
+void cPtr_typeGalgas_multipleReferenceEntity::
 generateMultiplicityConstraintChecking (AC_OutputStream & ioCppFile,
                                         const C_String & inCalledPropertyName) const {
   ioCppFile << "//--- Checking multiplicity of '" << inCalledPropertyName
             << "': [" << mLowerBound.uintValue () << ", " ;
-  if (mHigherBound.uintValue () == 0) {
+  if (mUpperBound.uintValue () == 0) {
     ioCppFile << "*" ;
   }else{
-    ioCppFile << mHigherBound.uintValue () ;
+    ioCppFile << mUpperBound.uintValue () ;
   }
   ioCppFile << "]\n"
             << " _inLexique.metamodelMultiplicityChecking (\"" << inCalledPropertyName << "\", "
             << inCalledPropertyName << ".count (), "
             << mLowerBound.uintValue () << ", "
-            << mHigherBound.uintValue () << " COMMA_THERE) ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark metamodelObjectIsNeeded
-#endif
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelProperty::
-metamodelObjectIsNeeded (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelAttributeProperty::
-metamodelObjectIsNeeded (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelSingleReferenceProperty::
-metamodelObjectIsNeeded (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelMultipleReferenceProperty::
-metamodelObjectIsNeeded (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateInitInConstraintConstructor
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateInitInConstraintConstructor (AC_OutputStream & /* inHFile */,
-                                     const C_String & /* inConstraintComponentName */,
-                                     const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateTreeWalkingFormalParameter
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateTreeWalkingFormalParameter (AC_OutputStream & /* inHFile */,
-                                    const C_String & /* inConstraintComponentName */,
-                                    const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateTreeWalkingEffectiveArgument
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateTreeWalkingEffectiveArgument (AC_OutputStream & /* inHFile */,
-                                      const C_String & /* inConstraintComponentName */,
-                                      const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark generateTreeWalkingAttributAttachment
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelProperty::
-generateTreeWalkingAttributAttachment (AC_OutputStream & /* inHFile */,
-                                       const C_String & /* inConstraintComponentName */,
-                                       const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark metamodelObjectIsNeeded
-#endif
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelProperty::
-readerDescriptionNeedsLexique (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelAttributeProperty::
-readerDescriptionNeedsLexique (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelMultipleReferenceProperty::
-readerDescriptionNeedsLexique (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelSingleReferenceProperty::
-readerDescriptionNeedsLexique (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark descriptionReaderCallImplementationNeedsLexique
-#endif
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelProperty::
-descriptionReaderCallImplementationNeedsLexique (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelAttributeProperty::
-descriptionReaderCallImplementationNeedsLexique (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelMultipleReferenceProperty::
-descriptionReaderCallImplementationNeedsLexique (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_metamodelSingleReferenceProperty::
-descriptionReaderCallImplementationNeedsLexique (void) const {
-  return true ;
+            << mUpperBound.uintValue () << " COMMA_THERE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -350,17 +171,8 @@ descriptionReaderCallImplementationNeedsLexique (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelProperty::
-generateDescription (AC_OutputStream & /* inHFile */,
-                     const C_String & /* inConstraintComponentName */,
-                     const C_String & /* inPropertyName */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_metamodelAttributeProperty::
+void cPtr_AC_galgasType::
 generateDescription (AC_OutputStream & inHFile,
-                     const C_String & /* inConstraintComponentName */,
                      const C_String & inPropertyName) const {
   inHFile << "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
              "  s << \"|-" << inPropertyName << ": \" << "
@@ -369,9 +181,8 @@ generateDescription (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelMultipleReferenceProperty::
+void cPtr_typeGalgas_multipleReferenceEntity::
 generateDescription (AC_OutputStream & inHFile,
-                     const C_String & /* inConstraintComponentName */,
                      const C_String & inPropertyName) const {
   inHFile << "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
              "  s << \"|-" << inPropertyName << ": \" << "
@@ -380,9 +191,8 @@ generateDescription (AC_OutputStream & inHFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelSingleReferenceProperty::
+void cPtr_typeGalgas_singleReferenceEntity::
 generateDescription (AC_OutputStream & inHFile,
-                     const C_String & /* inConstraintComponentName */,
                      const C_String & inPropertyName) const {
   inHFile << "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
              "  s << \"|-" << inPropertyName << ": \" << ((" << inPropertyName

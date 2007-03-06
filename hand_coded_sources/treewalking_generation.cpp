@@ -40,7 +40,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    mProperty (HERE)->generateCallInstruction (ioCppFile,
+    mPropertyType (HERE)->generateCallInstruction (ioCppFile,
                                                mEntityName,
                                                mCalledPropertyName,
                                                inTargetFileName,
@@ -50,7 +50,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelProperty::
+void cPtr_AC_galgasType::
 generateCallInstruction (AC_OutputStream & /* ioCppFile */,
                          const C_String & /* inEntityName */,
                          const GGS_lstring & /* inCalledPropertyName */,
@@ -60,7 +60,7 @@ generateCallInstruction (AC_OutputStream & /* ioCppFile */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelSingleReferenceProperty::
+void cPtr_typeGalgas_singleReferenceEntity::
 generateCallInstruction (AC_OutputStream & ioCppFile,
                          const C_String & inEntityName,
                          const GGS_lstring & inCalledPropertyName,
@@ -86,7 +86,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_metamodelMultipleReferenceProperty::
+void cPtr_typeGalgas_multipleReferenceEntity::
 generateCallInstruction (AC_OutputStream & ioCppFile,
                          const C_String & inEntityName,
                          const GGS_lstring & inCalledPropertyName,

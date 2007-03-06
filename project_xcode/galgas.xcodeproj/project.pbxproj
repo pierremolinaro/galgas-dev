@@ -293,14 +293,6 @@
 		CF546DE10A3481C80076D39C /* include_typeGalgas_luint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF546DC10A3481C80076D39C /* include_typeGalgas_luint64.h */; };
 		CF546DE20A3481C80076D39C /* include_typeGalgas_sint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF546DC20A3481C80076D39C /* include_typeGalgas_sint64.h */; };
 		CF546DE30A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */; };
-		CF55F8760AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
-		CF55F8770AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
-		CF55F8780AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
-		CF55F8790AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
-		CF55F87A0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
-		CF55F87B0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
-		CF55F87C0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
-		CF55F87D0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */; };
 		CF5E74F607B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF5E74F807B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF6556DA0A25E35E00979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */; };
@@ -1157,6 +1149,8 @@
 		CFC1774809FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
 		CFC1774909FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
+		CFC71BE70B9DED5E0086499A /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
+		CFC71BE80B9DED610086499A /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFC953680B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC953690B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC9536A0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
@@ -1528,53 +1522,11 @@
 		CFDC00700B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
 		CFDC00710B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */; };
 		CFDC00720B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
-		CFE837B10AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
-		CFE837B20AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
-		CFE837B30AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
-		CFE837B40AF0BE61006823FE /* include_metamodelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */; };
-		CFE837B50AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */; };
-		CFE837B70AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
-		CFE837B80AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
-		CFE837B90AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
-		CFE837BA0AF0BE61006823FE /* include_metamodelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */; };
-		CFE837BB0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */; };
-		CFE837BD0AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
-		CFE837BE0AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
-		CFE837BF0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
-		CFE837C00AF0BE61006823FE /* include_metamodelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */; };
-		CFE837C10AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */; };
-		CFE837C30AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
-		CFE837C40AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
-		CFE837C50AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
-		CFE837C60AF0BE61006823FE /* include_metamodelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */; };
-		CFE837C70AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */; };
-		CFE837C90AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
-		CFE837CA0AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
-		CFE837CB0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
-		CFE837CC0AF0BE61006823FE /* include_metamodelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */; };
-		CFE837CD0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */; };
-		CFE837CF0AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
-		CFE837D00AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
-		CFE837D10AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
-		CFE837D20AF0BE61006823FE /* include_metamodelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */; };
-		CFE837D30AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */; };
-		CFE837D50AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
-		CFE837D60AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
-		CFE837D70AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
-		CFE837D80AF0BE61006823FE /* include_metamodelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */; };
-		CFE837D90AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */; };
-		CFE837DB0AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */; };
-		CFE837DC0AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */; };
-		CFE837DD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */; };
-		CFE837DE0AF0BE61006823FE /* include_metamodelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */; };
-		CFE837DF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */; };
 		CFE838200AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838210AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838220AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838230AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
-		CFE838240AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838250AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
-		CFE838260AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838270AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFEC15F709CA026700204242 /* metamodel_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEC15F509CA026700204242 /* metamodel_generation.cpp */; };
 		CFEC15F909CA026700204242 /* metamodel_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEC15F509CA026700204242 /* metamodel_generation.cpp */; };
@@ -1904,7 +1856,6 @@
 		CF546DC10A3481C80076D39C /* include_typeGalgas_luint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_luint64.h; sourceTree = "<group>"; };
 		CF546DC20A3481C80076D39C /* include_typeGalgas_sint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_sint64.h; sourceTree = "<group>"; };
 		CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint64.h; sourceTree = "<group>"; };
-		CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelSharedMapProperty.h; sourceTree = "<group>"; };
 		CF5E74F407B00EA600858338 /* common_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = common_semantics.cpp; sourceTree = "<group>"; };
 		CF5E74F507B00EA600858338 /* common_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = common_semantics.h; sourceTree = "<group>"; };
 		CF6556D80A25E35E00979050 /* C_galgas_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_CLI_Options.cpp; sourceTree = "<group>"; };
@@ -2220,9 +2171,6 @@
 		CFD215260913BE2E0011F11E /* include_typeUIntOption.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUIntOption.h; sourceTree = "<group>"; };
 		CFD215270913BE2E0011F11E /* include_typeVarInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeVarInExpression.h; sourceTree = "<group>"; };
 		CFD215280913BE2E0011F11E /* include_typeWarningInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeWarningInstruction.h; sourceTree = "<group>"; };
-		CFD220440913ED2D0011F11E /* grammar_galgas_LL1_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_galgas_LL1_prgm.h; sourceTree = "<group>"; };
-		CFD220450913ED2D0011F11E /* grammar_galgas_LR1_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_galgas_LR1_prgm.h; sourceTree = "<group>"; };
-		CFD220460913ED2D0011F11E /* grammar_galgas_SLR_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_galgas_SLR_prgm.h; sourceTree = "<group>"; };
 		CFD220470913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_jokerInParameterList.h; sourceTree = "<group>"; };
 		CFD5E6150B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCallOfTypeMethodInstruction.h; sourceTree = "<group>"; };
 		CFD603420B1F1EFF00161209 /* TC_Array.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = TC_Array.h; sourceTree = "<group>"; };
@@ -2267,11 +2215,6 @@
 		CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_mapindex.cpp; sourceTree = "<group>"; };
 		CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_mapindex.h; sourceTree = "<group>"; };
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
-		CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelAttributeProperty.h; sourceTree = "<group>"; };
-		CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelMapProperty.h; sourceTree = "<group>"; };
-		CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelMultipleReferenceProperty.h; sourceTree = "<group>"; };
-		CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelProperty.h; sourceTree = "<group>"; };
-		CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_metamodelSingleReferenceProperty.h; sourceTree = "<group>"; };
 		CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_methods.cpp; sourceTree = "<group>"; };
 		CFEC15F509CA026700204242 /* metamodel_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_generation.cpp; sourceTree = "<group>"; };
 		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
@@ -2590,9 +2533,10 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
-				CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */,
+				CFD2149B0913BE2E0011F11E /* include_AC_galgasType.h */,
 				CFEF40750B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h */,
 				CFEF40760B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h */,
+				CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */,
 				CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */,
 				CFFC8DBF0B8A253200920BB1 /* include_typeCurrentObjectName.h */,
 				CFD5E6150B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h */,
@@ -2614,12 +2558,6 @@
 				CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */,
 				CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */,
 				CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */,
-				CFE837AE0AF0BE61006823FE /* include_metamodelProperty.h */,
-				CF55F8750AFB6C0400D8289C /* include_metamodelSharedMapProperty.h */,
-				CFE837AB0AF0BE61006823FE /* include_metamodelAttributeProperty.h */,
-				CFE837AC0AF0BE61006823FE /* include_metamodelMapProperty.h */,
-				CFE837AD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h */,
-				CFE837AF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h */,
 				CFD9E63B0AE7F07300A9D72A /* include_C_switch_instruction.h */,
 				CFD9E63C0AE7F07300A9D72A /* include_typeLogInstruction.h */,
 				CF50ACA70A4025280081917E /* include_typeGalgasNewClassType.h */,
@@ -2672,11 +2610,7 @@
 				CFCAABD809BCD3FF0042E80C /* include_StringsetModel.h */,
 				CFCAABD909BCD3FF0042E80C /* include_typeStringOption.h */,
 				CFCAABDA09BCD3FF0042E80C /* include_UIntModel.h */,
-				CFD220440913ED2D0011F11E /* grammar_galgas_LL1_prgm.h */,
-				CFD220450913ED2D0011F11E /* grammar_galgas_LR1_prgm.h */,
-				CFD220460913ED2D0011F11E /* grammar_galgas_SLR_prgm.h */,
 				CFD220470913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h */,
-				CFD2149B0913BE2E0011F11E /* include_AC_galgasType.h */,
 				CFD2149C0913BE2E0011F11E /* include_AC_instruction_ForGrammar.h */,
 				CFD2149D0913BE2E0011F11E /* include_AC_semanticsEntity.h */,
 				CFD2149E0913BE2E0011F11E /* include_AC_typeForGrammarComponent.h */,
@@ -3393,12 +3327,6 @@
 				CFD9E63D0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E63E0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06260AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFE837B10AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */,
-				CFE837B20AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */,
-				CFE837B30AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
-				CFE837B40AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
-				CFE837B50AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
-				CF55F8760AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 				CFAFD83C0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
 				CFAFD83D0AFCCB1900C04447 /* include_loggableObject.h in Headers */,
 				CFAFD8930AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
@@ -3493,12 +3421,6 @@
 				CFD9E6490AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E64A0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06320AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFE837D50AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */,
-				CFE837D60AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */,
-				CFE837D70AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
-				CFE837D80AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
-				CFE837D90AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
-				CF55F87C0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 				CFAFD8480AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
 				CFAFD8490AFCCB1900C04447 /* include_loggableObject.h in Headers */,
 				CFAFD89F0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
@@ -3593,12 +3515,6 @@
 				CFD9E64B0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E64C0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06340AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFE837DB0AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */,
-				CFE837DC0AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */,
-				CFE837DD0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
-				CFE837DE0AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
-				CFE837DF0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
-				CF55F87D0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 				CFAFD84A0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
 				CFAFD84B0AFCCB1900C04447 /* include_loggableObject.h in Headers */,
 				CFAFD8A10AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
@@ -3707,12 +3623,6 @@
 				CFD9E63F0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6400AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06280AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFE837B70AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */,
-				CFE837B80AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */,
-				CFE837B90AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
-				CFE837BA0AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
-				CFE837BB0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
-				CF55F8770AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 				CFAFD83E0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
 				CFAFD83F0AFCCB1900C04447 /* include_loggableObject.h in Headers */,
 				CFAFD8950AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
@@ -3807,12 +3717,6 @@
 				CFD9E6410AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6420AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B062A0AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFE837BD0AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */,
-				CFE837BE0AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */,
-				CFE837BF0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
-				CFE837C00AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
-				CFE837C10AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
-				CF55F8780AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 				CFAFD8400AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
 				CFAFD8410AFCCB1900C04447 /* include_loggableObject.h in Headers */,
 				CFAFD8970AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
@@ -3907,12 +3811,6 @@
 				CFD9E6430AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6440AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B062C0AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFE837C30AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */,
-				CFE837C40AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */,
-				CFE837C50AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
-				CFE837C60AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
-				CFE837C70AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
-				CF55F8790AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 				CFAFD8420AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
 				CFAFD8430AFCCB1900C04447 /* include_loggableObject.h in Headers */,
 				CFAFD8990AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
@@ -4007,12 +3905,6 @@
 				CFD9E6450AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6460AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B062E0AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFE837C90AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */,
-				CFE837CA0AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */,
-				CFE837CB0AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
-				CFE837CC0AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
-				CFE837CD0AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
-				CF55F87A0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 				CFAFD8440AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
 				CFAFD8450AFCCB1900C04447 /* include_loggableObject.h in Headers */,
 				CFAFD89B0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
@@ -4107,12 +3999,6 @@
 				CFD9E6470AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6480AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06300AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFE837CF0AF0BE61006823FE /* include_metamodelAttributeProperty.h in Headers */,
-				CFE837D00AF0BE61006823FE /* include_metamodelMapProperty.h in Headers */,
-				CFE837D10AF0BE61006823FE /* include_metamodelMultipleReferenceProperty.h in Headers */,
-				CFE837D20AF0BE61006823FE /* include_metamodelProperty.h in Headers */,
-				CFE837D30AF0BE61006823FE /* include_metamodelSingleReferenceProperty.h in Headers */,
-				CF55F87B0AFB6C0400D8289C /* include_metamodelSharedMapProperty.h in Headers */,
 				CFAFD8460AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
 				CFAFD8470AFCCB1900C04447 /* include_loggableObject.h in Headers */,
 				CFAFD89D0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
@@ -4704,7 +4590,6 @@
 				CF546D770A347CF60076D39C /* GGS_luint64.cpp in Sources */,
 				CF546DA50A347E460076D39C /* GGS_lsint64.cpp in Sources */,
 				CF7B06330AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */,
-				CFE838260AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6C10B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA180B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
 				CF48956A0B66682D005A9E78 /* predefined_types.cpp in Sources */,
@@ -4717,6 +4602,7 @@
 				CFDB3A7F0B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C8D0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE15E0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
+				CFC71BE70B9DED5E0086499A /* metamodel_methods.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4821,7 +4707,6 @@
 				CF546D790A347CF60076D39C /* GGS_luint64.cpp in Sources */,
 				CF546DA70A347E460076D39C /* GGS_lsint64.cpp in Sources */,
 				CF7B06350AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */,
-				CFE838240AF0D8E5006823FE /* metamodel_methods.cpp in Sources */,
 				CF96D6C30B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
 				CFEECA200B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
 				CF4895760B66682D005A9E78 /* predefined_types.cpp in Sources */,
@@ -4834,6 +4719,7 @@
 				CFDB3A810B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C8E0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE1560B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
+				CFC71BE80B9DED610086499A /* metamodel_methods.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

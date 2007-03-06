@@ -262,9 +262,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       GGS_entityPropertyMap::element_type * currentProperty = currentAltForNonTerminal->mInfo.mAllPropertiesMap.firstObject () ;
       while (currentProperty != NULL) {
         macroValidPointer (currentProperty) ;
-        if (currentProperty->mInfo.mProperty (HERE)->isMetamodelDefined ()) {
-          inCppFile << ", var_cas_" << currentProperty->mKey ;
-        }
+        inCppFile << ", var_cas_" << currentProperty->mKey ;
         currentProperty = currentProperty->nextObject () ;
       }
       inCppFile << " COMMA_HERE) ;\n"
