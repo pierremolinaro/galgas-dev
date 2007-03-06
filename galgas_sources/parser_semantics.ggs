@@ -49,6 +49,7 @@ class @typeInstructionAppelNonTerminal extends @typeParserInstruction {
 class @typeInstructionVerifSyntaxique extends @typeParserInstruction {
   @lstring aNomTerminal ;
   @L_assignedVariables aListeTypeEffectifs ;
+  @string mLexiqueClassName ;
 }
 
 #---------------------------------------------------------------------------*

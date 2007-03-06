@@ -3506,7 +3506,8 @@ rule <semantic_instruction>
   @AC_semanticsEntity e  ;
   [ioComponentSemanticsEntitiesMap searchKey !grammarName ?e] ;
   @M_nonterminalSymbolAlts startSymbolAltMap ;
-  extract e->@C_grammarForSemantics (?startSymbolAltMap ?*) error grammarName : messageTypeEntite ;
+  @lstring lexiqueClassName ;
+  extract e->@C_grammarForSemantics (?startSymbolAltMap ?lexiqueClassName) error grammarName : messageTypeEntite ;
   @L_EXsignature startSymbolSignature ;
   @lstring returnedEntity ;
   [startSymbolAltMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
@@ -3544,6 +3545,7 @@ rule <semantic_instruction>
     !expressionsList
     !altName
     !metamodelClassVariableName
+    !lexiqueClassName
   ] ;
   ioInstructionList += !instruction ;
   $;$ ;

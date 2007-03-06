@@ -1914,7 +1914,7 @@
 		CF69B2810A31EFF0002AE337 /* C_ErrorOut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_ErrorOut.h; sourceTree = "<group>"; };
 		CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMethodCallInstruction.h; sourceTree = "<group>"; };
 		CF6DF18F09E3F23700506859 /* galgasPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasPPC; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF6DF20509E3F30400506859 /* galgasDebugPPC */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = galgasDebugPPC; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6DF20509E3F30400506859 /* galgasDebugPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebugPPC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6DF25509E3F3A700506859 /* cocoaGalgasPPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgasPPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6E112F06269BEC001B909F /* GGS_lsint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_lsint.cpp; sourceTree = "<group>"; };
 		CF6E113006269BEC001B909F /* GGS_lsint.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_lsint.h; sourceTree = "<group>"; };
