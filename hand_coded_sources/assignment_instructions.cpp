@@ -32,7 +32,6 @@
 
 void cPtr_C_assignmentInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const  C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -79,7 +78,6 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 void cPtr_C_declarationInstructionWithAssignment::
 generateInstruction (AC_OutputStream & ioCppFile,
-                    const  C_String & /* inLexiqueClassName */,
                     const C_String & /* inTargetFileName */,
                     sint32 & /* ioPrototypeIndex */,
                     const bool /* inGenerateDebug */,
@@ -132,7 +130,6 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 void cPtr_C_dotEqualInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const  C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,

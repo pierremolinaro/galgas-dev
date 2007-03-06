@@ -1535,7 +1535,6 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_C_if_instruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
@@ -1553,13 +1552,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "if ((" ;
       currentBranch->mIFexpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << ").isBuiltAndTrue ()) {\n" ;
-      generateInstructionListForList (currentBranch->mInstructionList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+      generateInstructionListForList (currentBranch->mInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, true) ;
       currentBranch = currentBranch->nextObject () ;
     }
     if (mElseInstructionsList.count () > 0) {
       ioCppFile << "}else{\n" ;
-      generateInstructionListForList (mElseInstructionsList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+      generateInstructionListForList (mElseInstructionsList, ioCppFile, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, true) ;
     }
     ioCppFile << "}\n" ;
@@ -1623,7 +1622,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_C_switch_instruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
@@ -1642,7 +1640,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
         currentConstant = currentConstant->nextObject () ;
       }
       ioCppFile << "  {\n" ;
-      generateInstructionListForList (currentBranch->mInstructionList, ioCppFile, inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+      generateInstructionListForList (currentBranch->mInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, true) ;
       ioCppFile << "  }\n"
                    "  break ;\n" ;

@@ -129,7 +129,7 @@ bool cPtr_typeProductionAengendrer::isCppClassNeeded (void) const {
 
 void cPtr_typeProductionAengendrer::
 generateCppClassDeclaration (AC_OutputStream & inHfile,
-                               const C_String & inLexiqueClassName,
+                               const C_String & /* inLexiqueClassName */,
                                const C_String & inTargetFileName,
                                sint32 & ioPrototypeIndex) const {
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
@@ -151,7 +151,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
             << '_' << aNomProduction.currentLineNumber ()
             << '_' << aNomProduction.currentColumnNumber ()
             << '_' << currentAltForNonTerminal->mKey << " ("
-            << inLexiqueClassName << " &" ;
+            << mLexiqueClassName << " &" ;
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentAltForNonTerminal->mInfo.aListeDeTypesEffectifs.firstObject () ;
     while (currentArgument != NULL) {
       inHfile << ",\n                                " ;
@@ -161,7 +161,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     inHfile << ") ;\n\n" ;
     generateSelectAndRepeatPrototypesForList (currentAltForNonTerminal->mInfo.mAllInstructionsList,
                                               inHfile,
-                                              inLexiqueClassName,
+                                              mLexiqueClassName,
                                               inTargetFileName,
                                               ioPrototypeIndex,
                                               prototypesForSelectedAndRepeatNotDeclared) ;
@@ -176,7 +176,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
             << '_' << aNomProduction.currentLineNumber ()
             << '_' << aNomProduction.currentColumnNumber ()
             << "_parse ("
-            << inLexiqueClassName << " & _inLexique) ;\n\n" ;
+            << mLexiqueClassName << " & _inLexique) ;\n\n" ;
   }
 }
 
@@ -255,7 +255,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                    "  #endif\n" ;
     }
     generateInstructionListForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, inCppFile,
-                                    inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+                                    inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, true) ;
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
@@ -327,7 +327,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                    "  #endif\n" ;
     }
     generateInstructionListForList (firstLabelDef->mInfo.mAllInstructionsList, inCppFile,
-                                    inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+                                    inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, false) ;
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"

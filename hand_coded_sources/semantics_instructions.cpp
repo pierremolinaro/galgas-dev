@@ -29,7 +29,6 @@
 void
 generateInstructionListForList (const GGS_typeInstructionList & inList,
                                 AC_OutputStream & ioCppFile,
-                                const C_String & inLexiqueClassName,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug,
@@ -40,7 +39,6 @@ generateInstructionListForList (const GGS_typeInstructionList & inList,
     macroValidPointer (current) ;
     if (inGenerateSemanticInstructions || current->mInstruction(HERE)->isSyntacticInstruction ()) {
       current->mInstruction(HERE)->generateInstruction (ioCppFile,
-                                                        inLexiqueClassName,
                                                         inTargetFileName,
                                                         ioPrototypeIndex,
                                                         inGenerateDebug,
@@ -142,7 +140,6 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
 
 void cPtr_typeSimpleExtractInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -241,7 +238,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeStructuredExtractInstructionWithElse::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
@@ -272,7 +268,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                 << p->mResultVarID.currentLocation ()
                 << ") ; \n" ;
       generateInstructionListForList (p->mInstructionList, ioCppFile,
-                                      inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+                                      inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
       p = p->nextObject () ;
       branchCount ++ ;
@@ -280,7 +276,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << "}else{ // Else part\n" ;
   //--- Generate _drop_operation instructions
     generateInstructionListForList (mElseInstructionList, ioCppFile,
-                                    inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+                                    inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
     for (sint32 i=0 ; i<branchCount ; i++) {
       ioCppFile << "}\n" ;
@@ -346,7 +342,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeDropInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -390,7 +385,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeLogInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -439,7 +433,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeErrorInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -510,7 +503,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeWarningInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -560,7 +552,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeMessageInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
@@ -607,7 +598,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeInstructionDeclarationVarLocale::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -653,7 +643,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeMatchInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
@@ -709,7 +698,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       }
       ioCppFile << ")) {\n" ;
       generateInstructionListForList (casCourant->mInstructionList, ioCppFile,
-                                      inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
+                                      inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
       ioCppFile << "}else{\n" ;
       casCourant = casCourant->nextObject () ;
@@ -718,8 +707,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
     }
     ioCppFile.incIndentation (-2) ;
     generateInstructionListForList (mElseInstructionsList, ioCppFile,
-                                   inLexiqueClassName, inTargetFileName, ioPrototypeIndex,
-                                   inGenerateDebug, inGenerateSemanticInstructions) ;
+                                    inTargetFileName, ioPrototypeIndex,
+                                    inGenerateDebug, inGenerateSemanticInstructions) ;
     for (sint32 i=0 ; i<index ; i++) {
       ioCppFile << "}\n" ;
       ioCppFile.incIndentation (-2) ;
@@ -779,7 +768,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeIncrementInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -825,7 +813,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeDecrementInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -871,7 +858,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeAppendInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -949,7 +935,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeRemoveInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -1027,7 +1012,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeMapBlockPrologueInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inLexiqueClassName */,
                      const C_String & /* inTargetFileName */,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
@@ -1095,7 +1079,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeMapBlockEpilogueInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inLexiqueClassName */,
                        const C_String & /* inTargetFileName */,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,

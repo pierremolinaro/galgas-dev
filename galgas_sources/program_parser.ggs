@@ -272,7 +272,7 @@ rule <galgas_component>
         ?grammarAttributeList
         ?grammarAttributeSet
       ;
-      warning here: "old style construct; now use:\n"
+      warning here: "old style construct; now use the following construct:\n"
        . "  when . \"" . [sourceExtension string] . "\" message \"an '." . [sourceExtension string] . "' source file\" ??@lstring inSourceFile {\n"
        . "    grammar " . [grammarName string] . " in inSourceFile;\n"
        . "  }\n" ;

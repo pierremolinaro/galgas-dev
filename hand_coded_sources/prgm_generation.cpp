@@ -499,7 +499,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
     generatedZone2 << "if (fileExtension.compare (\"" << currentRule->mSourceExtension << "\") == 0) {\n" ;
     generateInstructionListForList (currentRule->mInstructionList,
                                     generatedZone2,
-                                    "C_Lexique",
                                     "",
                                     prototypeIndex,
                                     false, // inGenerateDebug,

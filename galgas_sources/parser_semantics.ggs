@@ -141,6 +141,7 @@ class @typeProductionAengendrer extends @typeEntityToGenerate {
   @lstring aNomProduction ;
   @typeAltProductionsMap mAltProductionMap ;
   @string mProductionTagName ;
+  @string mLexiqueClassName ;
   @bool mHasParseLabel ;
 }
 

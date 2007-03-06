@@ -21,12 +21,13 @@ class cPtr_typeMapBlockPrologueInstruction : public cPtr_typeInstruction {
   private : typedef cPtr_typeInstruction inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual void generateInstruction (AC_OutputStream & inCppFile,
-                                           const C_String & inLexiqueClassName,
-                                           const C_String & inTargetFileName,
-                                           sint32 & ioPrototypeIndex,
-                                           const bool inGenerateDebug,
-                                           const bool inGenerateSemanticInstructions) const ;
+  public : virtual void
+  generateInstruction (AC_OutputStream & inCppFile,
+                       const C_String & inTargetFileName,
+                       sint32 & ioPrototypeIndex,
+                       const bool inGenerateDebug,
+                       const bool inGenerateSemanticInstructions) const ;
+
 public : virtual bool isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const ;
 public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                                             const bool inGenerateSemanticInstructions) const ;

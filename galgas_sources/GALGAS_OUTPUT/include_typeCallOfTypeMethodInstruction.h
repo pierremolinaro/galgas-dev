@@ -23,7 +23,6 @@ class cPtr_typeCallOfTypeMethodInstruction : public cPtr_typeInstruction {
 
   public : virtual void
   generateInstruction (AC_OutputStream & inCppFile,
-                       const C_String & inLexiqueClassName,
                        const C_String & inTargetFileName,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,

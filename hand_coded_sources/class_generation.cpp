@@ -68,10 +68,9 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
     //--- Terminer la declaration
       inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n" ;
     //--- Engendrer la liste d'instructions
-      C_String inutilise ;
       sint32 prototypeIndex = 0 ; // Non used here
       generateInstructionListForList (current->mInfo.mInstructionList, inCppFile,
-                                      inutilise, inTargetFileName, prototypeIndex,
+                                      inTargetFileName, prototypeIndex,
                                       inGenerateDebug, true) ; 
       inCppFile << "}\n\n" ;
     }
