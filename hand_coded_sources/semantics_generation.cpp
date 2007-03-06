@@ -132,7 +132,6 @@ routine_appendJokersIfNeeded (C_Lexique &,
 
 void cPtr_typeExternTypeToGenerate::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 }
 
@@ -148,9 +147,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeExternTypeToGenerate::
-generateHdeclarations (AC_OutputStream & /* inHfile */,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -163,7 +160,6 @@ bool cPtr_typeExternTypeToGenerate::isCppClassNeeded (void) const {
 
 void cPtr_typeExternTypeToGenerate::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
-                               const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
 }
@@ -172,7 +168,6 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 
 void cPtr_typeExternTypeToGenerate::
 generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
-                                  const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
@@ -189,7 +184,6 @@ generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
 
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 }
 
@@ -202,9 +196,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineAengendrer::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "void routine_" << aNomRoutine << " (C_Lexique &" ;
   GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
   while (currentArgument != NULL) {
@@ -225,7 +217,6 @@ bool cPtr_typeRoutineAengendrer::isCppClassNeeded (void) const {
 
 void cPtr_typeRoutineAengendrer::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
-                               const C_String & /* inLexiqueClassName*/,
                                const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) const {
 }
@@ -234,7 +225,6 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 
 void cPtr_typeRoutineAengendrer::
 generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                const C_String & /* inLexiqueClassName */,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
@@ -284,7 +274,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 void cPtr_typeActionExterneAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 }
 
@@ -297,9 +286,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeActionExterneAengendrer::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "void routine_" << aNomAction << " (C_Lexique &" ;
   GGS_L_EXsignature::element_type * currentArgument = aSignature.firstObject () ;
   while (currentArgument != NULL) {
@@ -320,7 +307,6 @@ bool cPtr_typeActionExterneAengendrer::isCppClassNeeded (void) const {
 
 void cPtr_typeActionExterneAengendrer::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
-                               const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) const {
 }
@@ -329,7 +315,6 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 
 void cPtr_typeActionExterneAengendrer::
 generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
-                                  const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
@@ -406,13 +391,13 @@ generate_header_file (C_Lexique & inLexique,
   element = listeEntitesAengendrer.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateHdeclarations (generatedZone3, lexiqueName, inLexique) ;
+    element->mEntityToGenerate (HERE)->generateHdeclarations (generatedZone3) ;
     element = element->nextObject () ;
   }
   element = listeEntitesAengendrer.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateHdeclarations_2 (generatedZone3, lexiqueName, inLexique) ;
+    element->mEntityToGenerate (HERE)->generateHdeclarations_2 (generatedZone3, inLexique) ;
     element = element->nextObject () ;
   }
 
@@ -425,7 +410,7 @@ generate_header_file (C_Lexique & inLexique,
     element = element->nextObject () ;
   }
   if (engendrerClasseCpp) {
-    engendrerDeclarationPrototypesReglesDeProduction (nomComposant, lexiqueName, listeEntitesAengendrer, generatedZone3) ;
+    engendrerDeclarationPrototypesReglesDeProduction (nomComposant, listeEntitesAengendrer, generatedZone3) ;
   }
   
 //--- Engendrer la fin du fichier
@@ -1636,7 +1621,6 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 static void
 generate_cpp_file (C_Lexique & inLexique,
                    GGS_lstring & nomComposant,
-                   const C_String & inLexiqueName,
                    GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                    GGS_stringset & tableFichiersEnTetePourFichierCPP) {
 //--- Write file header
@@ -1685,7 +1669,6 @@ generate_cpp_file (C_Lexique & inLexique,
   while (element != NULL) {
     macroValidPointer (element) ;
     element->mEntityToGenerate (HERE)->generateCppClassImplementation (generatedZone3,
-                                         inLexiqueName,
                                          nomComposant,
                                          select_repeat_production_index,
                                          generateDebug) ;
@@ -1731,7 +1714,6 @@ routine_generateSemanticsComponent (C_Lexique & inLexique,
                           listeEntitesAengendrer) ;
     generate_cpp_file (inLexique,
                        nomComposant,
-                       defLexique,
                        listeEntitesAengendrer,
                        tableFichiersEnTetePourFichierCPP) ;
   }

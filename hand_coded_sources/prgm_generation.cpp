@@ -32,7 +32,8 @@
 static void
 generate_header_file_for_prgm (C_Lexique & inLexique,
                                const C_String & inProgramComponentName,
-                               const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList) {
+                               const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
+                               const GGS_M_optionComponents & inOptionsComponentsMap) {
 //--- Write includes
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef INTERFACE_" << inProgramComponentName << "_DEFINED\n"
@@ -43,14 +44,15 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
     macroValidPointer (currentGrammar) ;
     generatedZone2 << "#include \"" << currentGrammar->mGrammarName << ".h\"\n"
                       "#include \"" << currentGrammar->mLexiqueClassName << ".h\"\n" ;
-    GGS_M_optionComponents::element_type * currentOptionComponent = currentGrammar->mOptionsComponentsMap.firstObject () ;
-    while (currentOptionComponent != NULL) {
-      macroValidPointer (currentOptionComponent) ;
-      generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
-      currentOptionComponent = currentOptionComponent->nextObject () ;
-    }
     currentGrammar = currentGrammar->nextObject () ;
   }
+  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
+  while (currentOptionComponent != NULL) {
+    macroValidPointer (currentOptionComponent) ;
+    generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
+  }
+  
   generatedZone2 << "#include \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n" ;
@@ -71,7 +73,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                     "  protected : " << currentGrammar->mLexiqueClassName << " * _mScannerPtr ;\n"
                     "//--- Command line options\n" ;
     TC_UniqueArray <C_String> optionSet ;
-    GGS_M_optionComponents::element_type * currentOptionComponent = currentGrammar->mOptionsComponentsMap.firstObject () ;
+    GGS_M_optionComponents::element_type * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
     while (currentOptionComponent != NULL) {
       macroValidPointer (currentOptionComponent) ;
       GGS_M_cli_options::element_type * currentOption = currentOptionComponent->mInfo.mBoolOptionsMap.firstObject () ;
@@ -145,20 +147,12 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
                     "//--- Included options\n"
                     "  private : C_builtin_CLI_Options mBuiltinOptions ;\n"
                     "  private : C_galgas_CLI_Options mGalgasOptions ;\n" ;
-  TC_UniqueArray <C_String> optionSet ;
-  currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  while (currentGrammar != NULL) {
-    GGS_M_optionComponents::element_type * currentOptionComponent = currentGrammar->mOptionsComponentsMap.firstObject () ;
-    while (currentOptionComponent != NULL) {
-      macroValidPointer (currentOptionComponent) ;
-      if (! optionSet.containsObjectEqualTo (currentOptionComponent->mKey)) {
-        optionSet.addObject (currentOptionComponent->mKey) ;
-        generatedZone2 << "  private : " << currentOptionComponent->mKey
-                       << " mOptions_" << currentOptionComponent->mKey << "; \n" ;
-      }
-      currentOptionComponent = currentOptionComponent->nextObject () ;
-    }
-    currentGrammar = currentGrammar->nextObject () ;
+  currentOptionComponent = inOptionsComponentsMap.firstObject () ;
+  while (currentOptionComponent != NULL) {
+    macroValidPointer (currentOptionComponent) ;
+    generatedZone2 << "  private : " << currentOptionComponent->mKey
+                   << " mOptions_" << currentOptionComponent->mKey << "; \n" ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << "} ;\n\n" ;
 
@@ -197,7 +191,9 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                             const C_String & inVersionString,
                             const C_String & inProgramComponentName,
                             const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
-                            const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList) {
+                            const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
+                            const GGS_stringlist & inGrammarNameList,
+                            const GGS_M_optionComponents & inOptionsComponentsMap) {
 //--- Generate user includes
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -223,6 +219,12 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "#endif\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
+  GGS_stringlist::element_type * currentGrammarName = inGrammarNameList.firstObject () ;
+  while (currentGrammarName != NULL) {
+    macroValidPointer (currentGrammarName) ;
+    generatedZone2 << "#include \"" << currentGrammarName->mValue << ".h\"\n" ;
+    currentGrammarName = currentGrammarName->nextObject () ;
+  }
   generatedZone2 << "#include \"" << inProgramComponentName << ".h\"\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
@@ -240,24 +242,15 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     ":mBuiltinOptions (inAcceptsDebugOption) {\n"
                     "  add (& mBuiltinOptions) ;\n"
                     "  add (& mGalgasOptions) ;\n" ;
-  TC_UniqueArray <C_String> optionSet ;
-  GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  while (currentGrammar != NULL) {
-    macroValidPointer (currentGrammar) ;
-    GGS_M_optionComponents::element_type * currentOptionComponent = currentGrammar->mOptionsComponentsMap.firstObject () ;
-    while (currentOptionComponent != NULL) {
-      macroValidPointer (currentOptionComponent) ;
-      if (! optionSet.containsObjectEqualTo (currentOptionComponent->mKey)) {
-        optionSet.addObject (currentOptionComponent->mKey) ;
-        generatedZone2 << "  add (& mOptions_" << currentOptionComponent->mKey << ") ;\n" ;
-      }
-      currentOptionComponent = currentOptionComponent->nextObject () ;
-    }
-    currentGrammar = currentGrammar->nextObject () ;
+  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
+  while (currentOptionComponent != NULL) {
+    macroValidPointer (currentOptionComponent) ;
+    generatedZone2 << "  add (& mOptions_" << currentOptionComponent->mKey << ") ;\n" ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << "}\n\n" ;
 
-  currentGrammar = inGrammarDescriptorsList.firstObject () ;
+  GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
   sint32 grammarIndex = 0 ;
   C_String grammarSuffix ;
   while (currentGrammar != NULL) {
@@ -439,9 +432,11 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "                           extensions,\n"
                     "                           helpMessages,\n"
                     "                           IOparameters.mCocoaOutput) ;\n"
-                    "//--- Build galgas io object\n"
+                    "  //--- Build galgas io object\n"
                     "    C_galgas_io * galgasIOptr = NULL ;\n"
                     "    macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
+                    "  //--- Common lexique object\n"
+                    "    C_Lexique _inLexique (galgasIOptr COMMA_HERE) ;\n"
                     "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
                     "    #ifdef SIOUX_IS_IMPLEMENTED\n"
                     "      SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
@@ -496,7 +491,10 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
       generatedZone2 << "}else " ;
     }
     sint32 prototypeIndex = 0 ;
-    generatedZone2 << "if (fileExtension.compare (\"" << currentRule->mSourceExtension << "\") == 0) {\n" ;
+    generatedZone2 << "if (fileExtension.compare (\"" << currentRule->mSourceExtension << "\") == 0) {\n"
+                      "  const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
+                      "  const GGS_location _here (_inLexique) ;\n"
+                      "  const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;\n" ;
     generateInstructionListForList (currentRule->mInstructionList,
                                     generatedZone2,
                                     "",
@@ -578,23 +576,30 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 
 void
 routine_generatePRGM (C_Lexique & inLexique,
-                      GGS_lstring inProgramComponentName,
-                      GGS_lstring inVersionString,
-                      GGS_L_grammarDescriptorForProgram inGrammarDescriptorsList,
-                      GGS_ruleDescriptorForProgramList inRuleDescriptorForProgramList,
-                      GGS_luint inMaxErrorCount,
-                      GGS_luint inMaxWarningCount
+                      const GGS_lstring & inProgramComponentName,
+                      const GGS_lstring & inVersionString,
+                      const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
+                      const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
+                      const GGS_luint & inMaxErrorCount,
+                      const GGS_luint & inMaxWarningCount,
+                      const GGS_stringlist & inGrammarNameList,
+                      const GGS_M_optionComponents & inOptionsComponentsMap
                       COMMA_UNUSED_LOCATION_ARGS) {
-  generate_header_file_for_prgm (inLexique,
-                                 inProgramComponentName,
-                                 inGrammarDescriptorsList) ; 
-  generate_cpp_file_for_prgm (inLexique,
-                              inMaxErrorCount.uintValue (),
-                              inMaxWarningCount.uintValue (),
-                              inVersionString,
-                              inProgramComponentName,
-                              inGrammarDescriptorsList,
-                              inRuleDescriptorForProgramList) ;
+  if (inLexique.totalErrorCount () == 0) {
+    generate_header_file_for_prgm (inLexique,
+                                   inProgramComponentName,
+                                   inGrammarDescriptorsList,
+                                   inOptionsComponentsMap) ; 
+    generate_cpp_file_for_prgm (inLexique,
+                                inMaxErrorCount.uintValue (),
+                                inMaxWarningCount.uintValue (),
+                                inVersionString,
+                                inProgramComponentName,
+                                inGrammarDescriptorsList,
+                                inRuleDescriptorForProgramList,
+                                inGrammarNameList,
+                                inOptionsComponentsMap) ;
+  }
 }
 
 //---------------------------------------------------------------------------*

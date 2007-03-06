@@ -36,16 +36,13 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate::
-generateHdeclarations (AC_OutputStream & /* inHfile */,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 }
 
@@ -59,7 +56,6 @@ bool cPtr_typeNonterminalToGenerate::isCppClassNeeded (void) const {
 
 void cPtr_typeNonterminalToGenerate::
 generateCppClassDeclaration (AC_OutputStream & inHfile,
-                             const C_String & inLexiqueClassName,
                              const C_String & /* inTargetFileName */,
                              sint32 & /* ioPrototypeIndex */) const {
   GGS_M_nonterminalSymbolAlts::element_type * currentAltForNonTerminal
@@ -74,7 +70,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
       inHfile << "void " ;
     }
     inHfile << "nt_" << aNomNonTerminal << '_' << currentAltForNonTerminal->mKey
-            << " (" << inLexiqueClassName << " &" ;
+            << " (" << mLexiqueClassName << " &" ;
     GGS_L_EXsignature::element_type * currentArgument
                = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
     while (currentArgument != NULL) {
@@ -91,7 +87,6 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
 
 void cPtr_typeNonterminalToGenerate::
 generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
-                                const C_String & /* inLexiqueClassName */,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
@@ -106,16 +101,13 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeProductionAengendrer::
-generateHdeclarations (AC_OutputStream & /* inHfile */,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeProductionAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
 }
 
@@ -129,7 +121,6 @@ bool cPtr_typeProductionAengendrer::isCppClassNeeded (void) const {
 
 void cPtr_typeProductionAengendrer::
 generateCppClassDeclaration (AC_OutputStream & inHfile,
-                               const C_String & /* inLexiqueClassName */,
                                const C_String & inTargetFileName,
                                sint32 & ioPrototypeIndex) const {
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
@@ -184,7 +175,6 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
 
 void cPtr_typeProductionAengendrer::
 generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                  const C_String & inLexiqueClassName,
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) const {
@@ -216,7 +206,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << '_' << aNomProduction.currentLineNumber ()
               << '_' << aNomProduction.currentColumnNumber ()
               << '_' << currentAltForNonTerminal->mKey << " ("
-              << inLexiqueClassName << " & " ;
+              << mLexiqueClassName << " & " ;
     const bool lexiqueFormalArgumentUsed = (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0)
       || isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, true) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
@@ -303,7 +293,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << '_' << aNomProduction.currentLineNumber ()
               << '_' << aNomProduction.currentColumnNumber ()
               << "_parse ("
-              << inLexiqueClassName << " & " ;
+              << mLexiqueClassName << " & " ;
     const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (firstLabelDef->mInfo.mAllInstructionsList, false) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
@@ -347,7 +337,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 void
 engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposant,
-                                                  const C_String & inLexiqueName,
                                                   const GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                                   AC_OutputStream & inHfile) {
 //---  declarer une classe si il existe des regles de production a implementer
@@ -359,7 +348,6 @@ engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposa
   while (element != NULL) {
     macroValidPointer (element) ;
     element->mEntityToGenerate (HERE)->generateCppClassDeclaration (inHfile,
-                                                                    inLexiqueName,
                                                                     nomComposant,
                                                                     select_repeat_production_index) ;
     element = element->nextObject () ;

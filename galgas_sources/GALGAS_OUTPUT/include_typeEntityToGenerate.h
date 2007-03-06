@@ -22,19 +22,14 @@ class cPtr_typeEntityToGenerate : public C_GGS_Object {
 
 public : virtual void generatePredeclarations (AC_OutputStream & inHfile) const = 0 ;
 
-public : virtual void generateHdeclarations (AC_OutputStream & inHfile,
-                                             const C_String & inLexiqueClassName,
-                                             C_Lexique & inLexique) const = 0 ;
+public : virtual void generateHdeclarations (AC_OutputStream & inHfile) const = 0 ;
 public : virtual void generateHdeclarations_2 (AC_OutputStream & inHfile,
-                                               const C_String & inLexiqueClassName,
                                                C_Lexique & inLexique) const = 0 ;
 public : virtual bool isCppClassNeeded (void) const = 0 ;
 public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile,
-                                                   const C_String & inLexiqueClassName,
                                                    const C_String & inTargetFileName,
                                                    sint32 & ioPrototypeIndex) const = 0 ;
 public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                                  const C_String & inLexiqueClassName,
                                                   const C_String & inTargetFileName,
                                                   sint32 & ioPrototypeIndex,
                                                   const bool inGenerateDebug) const = 0 ;

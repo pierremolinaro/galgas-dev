@@ -42,7 +42,6 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 
 void cPtr_C_metamodelEntityToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         const C_String & /* inLexiqueClassName */,
                          C_Lexique & /* inLexique */) const {
   const C_String listClassName = C_String ("listOf") + aNomClasse.stringWithUpperCaseFirstLetter () ;
 //----------------------- Element of list class declaration ----------------  
@@ -126,9 +125,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_metamodelEntityToImplement::
-generateHdeclarations (AC_OutputStream & inHfile,
-                       const C_String & /* inLexiqueClassName */,
-                       C_Lexique & /* inLexique */) const {
+generateHdeclarations (AC_OutputStream & inHfile) const {
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inHfile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
@@ -454,7 +451,6 @@ bool cPtr_C_metamodelEntityToImplement::isCppClassNeeded (void) const {
 
 void cPtr_C_metamodelEntityToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
-                               const C_String & /* inLexiqueClassName */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
 }
@@ -463,7 +459,6 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 
 void cPtr_C_metamodelEntityToImplement::
 generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                  const C_String & /* inLexiqueClassName */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
@@ -1316,13 +1311,13 @@ generate_metamodel_header_file (C_Lexique & inLexique,
   element = inEntitiesToGenerateList.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateHdeclarations (generatedZone3, "C_Lexique", inLexique) ;
+    element->mEntityToGenerate (HERE)->generateHdeclarations (generatedZone3) ;
     element = element->nextObject () ;
   }
   element = inEntitiesToGenerateList.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateHdeclarations_2 (generatedZone3, "C_Lexique", inLexique) ;
+    element->mEntityToGenerate (HERE)->generateHdeclarations_2 (generatedZone3, inLexique) ;
     element = element->nextObject () ;
   }
   
@@ -1378,7 +1373,6 @@ generate_metamodel_cpp_file (C_Lexique & inLexique,
   while (element != NULL) {
     macroValidPointer (element) ;
     element->mEntityToGenerate (HERE)->generateCppClassImplementation (generatedZone3,
-                                         "C_Lexique",
                                          inMetamodelComponentName,
                                          select_repeat_production_index,
                                          false) ;

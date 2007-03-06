@@ -102,12 +102,14 @@ label parse
 ;
 
 action generatePRGM
-  ?@lstring nomPRGMprincipal
-  ?@lstring versionString
-  ?@L_grammarDescriptorForProgram inGrammarDescriptorForProgramList
-  ?@ruleDescriptorForProgramList inRuleDescriptorForProgramList
-  ?@luint nombreMaxErreurs
-  ?@luint nombreMaxAlertes
+  ??@lstring nomPRGMprincipal
+  ??@lstring versionString
+  ??@L_grammarDescriptorForProgram inGrammarDescriptorForProgramList
+  ??@ruleDescriptorForProgramList inRuleDescriptorForProgramList
+  ??@luint nombreMaxErreurs
+  ??@luint nombreMaxAlertes
+  ??@stringlist inGrammarNameList
+  ??@M_optionComponents inOptionsComponentsMap
 ;
 
 #--------------------------------------------------------------------------------*
@@ -172,6 +174,7 @@ rule <galgas_component>
   $unsigned_literal_integer$ ? nombreMaxAlertes ;
   $;$ ;
 #--- WHEN clauses
+#  @stringset implementationFileInclusionSet [emptySet] ;
   @L_grammarDescriptorForProgram grammarDescriptorForProgramList [emptyList] ;
   @ruleDescriptorForProgramList ruleDescriptorForProgramList [emptyList] ;
   $when$ ;
@@ -338,13 +341,17 @@ rule <galgas_component>
         !rootEntityName
         !sourceExtension
         !helpMessage
-        !optionsComponentsMap
         !loggableObjectList
       ;
     end select ;
   while
     $when$ ;
   end repeat ;
+#--- List of all grammars names
+  @stringlist grammarNameList [emptyList] ;
+  foreach ioGrammarComponentsMap (@lstring kKey 3*) :
+    grammarNameList += ![kKey string] ;
+  end foreach ;
 #--- Engendrer le programme principal
   action generatePRGM
     !nomPRGMprincipal
@@ -353,6 +360,8 @@ rule <galgas_component>
     !ruleDescriptorForProgramList
     !nombreMaxErreurs
     !nombreMaxAlertes
+    !grammarNameList
+    !optionsComponentsMap
   ;
   $end$ ;
   $program$ ;

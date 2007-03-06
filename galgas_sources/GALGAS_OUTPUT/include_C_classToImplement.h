@@ -25,13 +25,10 @@ class cPtr_C_classToImplement : public cPtr_typeEntityToGenerate {
   generatePredeclarations (AC_OutputStream & inHfile) const ;
 
   public : virtual void
-  generateHdeclarations (AC_OutputStream & inHfile,
-                         const C_String & inLexiqueClassName,
-                         C_Lexique & inLexique) const ;
+  generateHdeclarations (AC_OutputStream & inHfile) const ;
 
   public : virtual void
   generateHdeclarations_2 (AC_OutputStream & inHfile,
-                           const C_String & inLexiqueClassName,
                            C_Lexique & inLexique) const ;
 
   public : virtual bool
@@ -39,13 +36,11 @@ class cPtr_C_classToImplement : public cPtr_typeEntityToGenerate {
 
   public : virtual void
   generateCppClassDeclaration (AC_OutputStream & inHfile,
-                               const C_String & inLexiqueClassName,
                                const C_String & inTargetFileName,
                                sint32 & /* ioPrototypeIndex */) const ;
 
   public : virtual void
   generateCppClassImplementation (AC_OutputStream & inCppFile,
-                                  const C_String & inLexiqueClassName,
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) const ;
