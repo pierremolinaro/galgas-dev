@@ -747,7 +747,7 @@ rule <syntax_declaration>
         [ioEntitiesMap searchKey !returnedEntity ?e] ;
         @AC_galgasType type ;
         extract e->@typeEntiteType (?type) error returnedEntity : messageTypeEntite ;
-        extract type->@typeGalgas_singleEntity (...) error returnedEntity : messageGalgasType ;
+        extract type->@typeGalgas_singleReferenceEntity (?*) error returnedEntity : messageGalgasType ;
       end select ;
       [!?parametersMap insertKey !altName !listeDeTypesFormels !returnedEntity] ;
       [!?parametersMapForGrammar insertKey
@@ -919,46 +919,42 @@ rule <syntax_declaration>
   @entityPropertyMap allPropertiesMap [emptyMap] ;
   if [mdaResultVariableName string] != "" then
     [inAllMetamodelClassMap searchKey ! returnedEntity ?6*] ;
-    @AC_galgasType definitionType := [@typeGalgas_singleEntity new ! returnedEntity] ;
+    @AC_galgasType definitionType := [@typeGalgas_singleReferenceEntity new !returnedEntity] ;
     @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ! mdaResultVariableName] ;
     [!?tableArgumentsMethode insertSingleEntityLocalVariable !mdaResultVariableName !definitionType !nomCppVariable] ;
     @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
     listeInstructions += !instruction ;
   elsif [returnedEntity string] != "" then
     [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?5*] ;
-    foreach allPropertiesMap (@lstring kKey @metamodelProperty kProperty) :
-      extract kProperty :
-      when @metamodelAttributeProperty (@AC_galgasType kType) ->
+    foreach allPropertiesMap (@lstring kKey @AC_galgasType kPropertyType) :
+      extract kPropertyType :
+      when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName) ->
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        [!?tableArgumentsMethode insertEntityAttributeLocalVariable !nomVariable !kType !nomCppVariable] ;
-        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kType] ;
+        [!?tableArgumentsMethode insertSingleEntityLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kPropertyType] ;
         listeInstructions += !instruction ;
-      when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
-        @AC_galgasType definitionType := [@typeGalgas_singleEntity new !kReferenceEntityName] ;
+      when @typeGalgas_multipleReferenceEntity (@lstring kReferenceEntityName 2*) ->
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        [!?tableArgumentsMethode insertSingleEntityLocalVariable !nomVariable !definitionType !nomCppVariable] ;
-        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-        listeInstructions += !instruction ;
-      when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName * *) ->
-        @AC_galgasType definitionType := [@typeGalgas_multipleEntity new !kReferenceEntityName] ;
-        @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
-        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
-        [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !definitionType !nomCppVariable] ;
-        #log nomVariable, definitionType, nomCppVariable ;
+        [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeExpression sourceExpression := [@typeConstructorExpression new
           !"listOf" . [kReferenceEntityName stringByCapitalizingFirstCharacter]
           !"emptyList"
           ![@typeExpressionList emptyList]
         ] ;
         @typeInstruction instruction := [@C_declarationInstructionWithAssignment new
-          !definitionType
+          !kPropertyType
           !nomCppVariable
           !sourceExpression
         ] ;
         listeInstructions += !instruction ;
       else
+        @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
+        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+        [!?tableArgumentsMethode insertEntityAttributeLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
+        @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kPropertyType] ;
+        listeInstructions += !instruction ;
       end extract ;
     end foreach ;
   end if ;
@@ -1289,11 +1285,11 @@ rule <syntax_instruction>
     if isMultipleEntity then
       @AC_galgasType type ;
       [!?ioVariablesMap searchForReadWriteAccess !returnedEntityVariableName ?type ?*] ;
-      extract type->@typeGalgas_multipleEntity (?variableEntityName) error returnedEntityVariableName : messageGalgasType ;
+      extract type->@typeGalgas_multipleReferenceEntity (?variableEntityName ?2*) error returnedEntityVariableName : messageGalgasType ;
     else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;
-      extract type->@typeGalgas_singleEntity (?variableEntityName) error returnedEntityVariableName : messageGalgasType ;
+      extract type->@typeGalgas_singleReferenceEntity (?variableEntityName) error returnedEntityVariableName : messageGalgasType ;
     end if ;
    #--- The returnedEntityFromSignature entity should be a super class of variableEntityName
     @bool ok := [returnedEntityFromSignature string] == [variableEntityName string] ;

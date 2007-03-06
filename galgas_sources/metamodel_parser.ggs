@@ -57,7 +57,6 @@ label parse
 nonterminal <entity_declaration_list>
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
-  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 label parse
 ;
@@ -66,7 +65,6 @@ nonterminal <entity_declaration>
   ??@stringset inMetamodelClassSet
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
-  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 label parseForEnumeratingClasses
   ?!@stringset ioMetamodelClassSet
@@ -128,14 +126,12 @@ rule <parse_metamodel>
   $type_name$ ? rootEntityName ;
   $:$ ;
   @entityToImplementMap entityMap [emptyMap] ;
-  @mapAndEntityUniqueMap mapAndEntityUniqueMap [emptyMap] ;
   @M_semanticsEntitiesForUse semanticsEntitiesMap ;
   @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
   enterBuiltinTypes ?semanticsEntitiesMap ;
   <entity_declaration_list>
     !semanticsEntitiesMap
     !?entityMap
-    !?mapAndEntityUniqueMap
     !?listeEntitesAengendrer
   ;
   @bool isAbstract ;
@@ -151,11 +147,11 @@ rule <parse_metamodel>
                      @entityPropertyMap kEntityPropertiesMap
                      3*) :
     foreach kEntityPropertiesMap (@lstring kAttributeName
-                                  @metamodelProperty kProperty) :
-      extract kProperty :
-      when @metamodelSingleReferenceProperty (@lstring kReferenceEntityName) ->
+                                  @AC_galgasType kPropertyType) :
+      extract kPropertyType :
+      when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName) ->
         [entityMap searchKey !kReferenceEntityName ?6*] ;
-      when @metamodelMultipleReferenceProperty (@lstring kReferenceEntityName * *) ->
+      when @typeGalgas_multipleReferenceEntity (@lstring kReferenceEntityName 2*) ->
         [entityMap searchKey !kReferenceEntityName ?6*] ;
         multiReferencedEntities += ![kReferenceEntityName string] ;
       else
@@ -190,7 +186,6 @@ end rule ;
 rule <entity_declaration_list>
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap outEntityMap
-  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 :
   @stringset metamodelClassSet [emptySet] ;
@@ -209,7 +204,6 @@ rule <entity_declaration_list>
         !metamodelClassSet
         !inSemanticsEntitiesMap
         !?outEntityMap
-        !?ioMapAndEntityUniqueMap
         !?listeEntitesAengendrer
       ;
     end repeat ;
@@ -222,7 +216,6 @@ rule <entity_declaration>
   ??@stringset inMetamodelClassSet
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
-  ?!@mapAndEntityUniqueMap ioMapAndEntityUniqueMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 :
 #--- Abstract ?
@@ -237,7 +230,6 @@ rule <entity_declaration>
   $entity$ ;
   @lstring entityName ;
   $type_name$ ? entityName ;
-  [!?ioMapAndEntityUniqueMap insertKey !entityName] ;
 #--- Context properties, or super entity (or nothing)
   @entityPropertyMap allMetamodelPropertyMap ;
   @lstring superEntity ;
@@ -275,17 +267,15 @@ rule <entity_declaration>
       $identifier$ ? attributeName ;
       @AC_galgasType propertyType ;
       if [inMetamodelClassSet hasKey ![propertyOrEntityTypeName string]] then
-        @metamodelProperty k := [@metamodelSingleReferenceProperty new !propertyOrEntityTypeName] ;
-        [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
-        [!?allMetamodelPropertyMap insertKey !attributeName !k] ;
         propertyType := [@typeGalgas_singleReferenceEntity new !propertyOrEntityTypeName] ;
-      else
+        [!?currentEntityPropertyMap insertKey !attributeName !propertyType] ; 
+        [!?allMetamodelPropertyMap insertKey !attributeName !propertyType] ;
+      else #--- Attribute
         @AC_semanticsEntity theEntity ;
         [inSemanticsEntitiesMap searchKey !propertyOrEntityTypeName ?theEntity] ;
         extract theEntity->@typeEntiteType (?propertyType) error propertyOrEntityTypeName : messageTypeEntite ;
-        @metamodelProperty k := [@metamodelAttributeProperty new !propertyType] ;
-        [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
-        [!?allMetamodelPropertyMap insertKey !attributeName !k] ;
+        [!?currentEntityPropertyMap insertKey !attributeName !propertyType] ; 
+        [!?allMetamodelPropertyMap insertKey !attributeName !propertyType] ;
       end if ;
       listeTousAttributsSemantiques += !propertyType !attributeName ;
       listeAttributsSemantiquesCourants += !propertyType !attributeName ;
@@ -321,14 +311,13 @@ rule <entity_declaration>
       $]$ ;
       @lstring attributeName ;
       $identifier$ ? attributeName ;
-      @metamodelProperty k := [@metamodelMultipleReferenceProperty new !propertyOrEntityTypeName !lowerBound !higherBound] ;
-      [!?currentEntityPropertyMap insertKey !attributeName !k] ; 
-      [!?allMetamodelPropertyMap insertKey !attributeName !k] ; 
       @AC_galgasType propertyType := [@typeGalgas_multipleReferenceEntity new
         !propertyOrEntityTypeName
         !lowerBound
         !higherBound
       ] ;
+      [!?currentEntityPropertyMap insertKey !attributeName !propertyType] ; 
+      [!?allMetamodelPropertyMap insertKey !attributeName !propertyType] ; 
       listeTousAttributsSemantiques += !propertyType !attributeName ;
       listeAttributsSemantiquesCourants += !propertyType !attributeName ;
     end select ;

@@ -519,47 +519,8 @@ abstract class @AC_galgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @metamodelProperty {
-#--- Error message
-  message messageProperty "any property" ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @metamodelPropertyList {
-  @metamodelProperty mProperty ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @metamodelAttributeProperty extends @metamodelProperty {
-  @AC_galgasType mAttributeType ;
-#--- Error message
-  message messageProperty "an attribute property" ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @metamodelSingleReferenceProperty extends @metamodelProperty {
-  @lstring mReferenceEntityName ;
-#--- Error message
-  message messageProperty "a single reference property" ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @metamodelMultipleReferenceProperty extends @metamodelProperty {
-  @lstring mReferenceEntityName ;
-  @luint mLowerBound ;
-  @luint mHigherBound ; # 0 means no bound
-#--- Error message
-  message messageProperty "a multiple reference property" ;
-}
-
-#---------------------------------------------------------------------------*
-
 map @entityPropertyMap {
-  @metamodelProperty mProperty ;
+  @AC_galgasType mPropertyType ;
   insert insertKey error message "the '%K' property has been already declared in %L" ;
   search searchKey error message "the '%K' property is not declared" ;
 }
@@ -573,21 +534,6 @@ map @mapEntityMap {
   @bool mElementTypeIsOveriddenByConstraints ;
   insert insertKey error message "the '%K' map has been already declared in %L" ;
   search searchKey error message "the '%K' map is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @mapAndEntityUniqueMap {
-  insert insertKey error message "the '%K' entity or map has been already declared in %L" ;
-  search searchKey error message "the '%K' entity or map is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @indexMap {
-  @lstring mMapAttributeName ;
-  insert insertKey error message "the '%K' map index is already defined in %L" ;
-  search searchKey error message "the '%K' map index attribute is not defined" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -618,32 +564,6 @@ map @entityToImplementMap {
 #--- Access methods
   insert insertKey, insertKeyAndGetID error message "the '@%K' entity has been already declared in %L" ;
   search searchKey, searchKeyGetID error message "the '@%K' entity is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeGalgas_singleEntity extends @AC_galgasType {
-  @lstring mEntityName ;
-#--- Get type name
-  override method getTypeName !@string outTypeName :
-    outTypeName := [mEntityName string] ;
-  end method ;
-
-#--- Error message
-  message messageGalgasType "an entity" ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeGalgas_multipleEntity extends @AC_galgasType {
-  @lstring mEntityName ;
-#--- Get type name
-  override method getTypeName !@string outTypeName :
-    outTypeName := "_listOf_" . [mEntityName  string] ;
-  end method ;
-
-#--- Error message
-  message messageGalgasType "a list of entities" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2713,7 +2633,7 @@ class @typeGalgas_singleReferenceEntity extends @AC_galgasType {
     outTypeName := "$$" ;
   end method ;
 #--- Error message
-  message messageGalgasType "a map index" ;
+  message messageGalgasType "an entity single reference" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2732,7 +2652,7 @@ class @typeGalgas_multipleReferenceEntity extends @AC_galgasType {
     outTypeName := "$$" ;
   end method ;
 #--- Error message
-  message messageGalgasType "a map index" ;
+  message messageGalgasType "an entity multiple reference" ;
 }
 
 #---------------------------------------------------------------------------*

@@ -2481,13 +2481,13 @@ rule <semantic_instruction>
 #--- Called property
   @lstring calledPropertyName ;
   $identifier$ ?calledPropertyName ;
-  @metamodelProperty property ;
-  [inCurrentTreewalkingRoutinePropertyMap searchKey !calledPropertyName ?property] ;
+  @AC_galgasType propertyType ;
+  [inCurrentTreewalkingRoutinePropertyMap searchKey !calledPropertyName ?propertyType] ;
   @lstring entityName ;
-  extract property :
-  when @metamodelSingleReferenceProperty (@lstring kEntityName) ->
+  extract propertyType :
+  when @typeGalgas_singleReferenceEntity (@lstring kEntityName) ->
     entityName := kEntityName ;
-  when @metamodelMultipleReferenceProperty (@lstring kEntityName 2*) ->
+  when @typeGalgas_multipleReferenceEntity (@lstring kEntityName 2*) ->
     entityName := kEntityName ;
   else
     error calledPropertyName: "this property should be a single or a multiple reference" -> entityName ;
@@ -2517,7 +2517,7 @@ rule <semantic_instruction>
   @typeInstruction instruction := [@callInstruction new
     !calledPropertyName
     !entityName
-    !property
+    !propertyType
     !expressionsList
   ] ;
   ioInstructionList += !instruction ;
@@ -3544,7 +3544,7 @@ rule <semantic_instruction>
     @AC_galgasType type ;
     [!?ioVariablesMap searchForWriteAccess !metamodelClassVariableName ?type ?*] ;
     @lstring variableEntityName ;
-    extract type->@typeGalgas_singleEntity (?variableEntityName) error metamodelClassVariableName : messageGalgasType ;
+    extract type->@typeGalgas_singleReferenceEntity (?variableEntityName) error metamodelClassVariableName : messageGalgasType ;
     if [returnedEntity string] != [variableEntityName string] then
       error variableEntityName: "this variable has the '%" . [variableEntityName string]
         . "', but a variable of '%" . [returnedEntity string] . "' type is expected" ;

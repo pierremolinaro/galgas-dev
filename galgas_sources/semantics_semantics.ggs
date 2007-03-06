@@ -1411,7 +1411,7 @@ action generate_treewalking
 class @callInstruction extends @typeInstruction {
   @lstring mCalledPropertyName ;
   @lstring mEntityName ;
-  @metamodelProperty mProperty ;
+  @AC_galgasType mPropertyType ;
   @typeExpressionList mExpressionsList ;
 }
 

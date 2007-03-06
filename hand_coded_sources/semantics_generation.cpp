@@ -796,62 +796,6 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_singleEntity::
-generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mEntityName ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_singleEntity::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_singleEntity::
-generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_multipleEntity::
-generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_listOf" << mEntityName.stringWithUpperCaseFirstLetter () ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_multipleEntity::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_multipleEntity::
-generateAttributeInitialization (const GGS_lstring & /* inName */,
-                                 AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeGalgas_jokerInParameterList::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "??" ;
