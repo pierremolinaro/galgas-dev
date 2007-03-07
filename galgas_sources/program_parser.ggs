@@ -110,6 +110,7 @@ action generatePRGM
   ??@luint nombreMaxAlertes
   ??@stringlist inGrammarNameList
   ??@M_optionComponents inOptionsComponentsMap
+  ??@stringset inInclusionsForImplementationFile
 ;
 
 #--------------------------------------------------------------------------------*
@@ -165,6 +166,7 @@ rule <galgas_component>
     ?tableEnAvant
     ?allMetamodelClassMap
   ;
+  inclusionsForImplementationFile += ![nomPRGMprincipal string] . ".h" ;
 #--- Max errors count
   $error$ ;
   @luint nombreMaxErreurs ; # Nombre maximum d'erreurs
@@ -347,6 +349,7 @@ rule <galgas_component>
     !nombreMaxAlertes
     !grammarNameList
     !optionsComponentsMap
+    !inclusionsForImplementationFile
   ;
   $end$ ;
   $program$ ;

@@ -193,7 +193,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                             const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
                             const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
                             const GGS_stringlist & inGrammarNameList,
-                            const GGS_M_optionComponents & inOptionsComponentsMap) {
+                            const GGS_M_optionComponents & inOptionsComponentsMap,
+                            const GGS_stringset & inInclusionsForImplementationFile) {
 //--- Generate user includes
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -219,13 +220,13 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                     "#endif\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_stringlist::element_type * currentGrammarName = inGrammarNameList.firstObject () ;
+  GGS_stringset::element_type * currentGrammarName = inInclusionsForImplementationFile.firstObject () ;
   while (currentGrammarName != NULL) {
     macroValidPointer (currentGrammarName) ;
-    generatedZone2 << "#include \"" << currentGrammarName->mValue << ".h\"\n" ;
+    generatedZone2 << "#include \"" << currentGrammarName->mKey << "\"\n" ;
     currentGrammarName = currentGrammarName->nextObject () ;
   }
-  generatedZone2 << "#include \"" << inProgramComponentName << ".h\"\n\n" ;
+  generatedZone2 << "\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
@@ -615,7 +616,8 @@ routine_generatePRGM (C_Lexique & inLexique,
                       const GGS_luint & inMaxErrorCount,
                       const GGS_luint & inMaxWarningCount,
                       const GGS_stringlist & inGrammarNameList,
-                      const GGS_M_optionComponents & inOptionsComponentsMap
+                      const GGS_M_optionComponents & inOptionsComponentsMap,
+                      const GGS_stringset & inInclusionsForImplementationFile
                       COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.totalErrorCount () == 0) {
     generate_header_file_for_prgm (inLexique,
@@ -630,7 +632,8 @@ routine_generatePRGM (C_Lexique & inLexique,
                                 inGrammarDescriptorsList,
                                 inRuleDescriptorForProgramList,
                                 inGrammarNameList,
-                                inOptionsComponentsMap) ;
+                                inOptionsComponentsMap,
+                                inInclusionsForImplementationFile) ;
   }
 }
 

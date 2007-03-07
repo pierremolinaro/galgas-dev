@@ -30,40 +30,18 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      sint32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
-/*  if (inGenerateSemanticInstructions) {
-    ioCppFile << "{ " << mLexiqueClassName << " * scanner_ = NULL ;\n"
-                 "  macroMyNew (scanner_, " << mLexiqueClassName << " (_inLexique.ioParametersPtr () COMMA_HERE)) ;\n"
-                 "  scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;\n"
-                 "  " << mGrammarName << " grammar_ ;\n"
-                 "  const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ") ;\n"
-                 "  try{\n"
-                 "    scanner_->resetAndLoadSourceFromFile (sourceFileName) ;\n"
-                 "    " ;
-    if (mMetamodelClassVariableName.length () > 0) {
-      ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;
-    }
-    ioCppFile << "grammar_.startParsing_" << mAltSymbol
-              << " (*scanner_" ;
+  if (inGenerateSemanticInstructions) {
+    ioCppFile << "_walk_throught_" << mTreeWalkingComponentName << " (_inLexique, " ;
+    mModelVariableCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
-      ioCppFile << ",\n                                " ;
+      ioCppFile << ", " ;
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << ") ;\n"
-                 "  }catch (const C_TextReadException & inFileReadError) {\n"
-                 "    " ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".signalSemanticError (_inLexique, inFileReadError.what () SOURCE_FILE_AT_LINE ("
-              << mGrammarName.currentLineNumber ()
-              << ")) ;\n"
-                 "  }\n"
-                 "  macroDetachPointer (scanner_, " << mLexiqueClassName << ") ;\n"
-                 "}\n" ; 
-  }*/
+    ioCppFile << ") ;\n" ; 
+  }
 }
 
 //---------------------------------------------------------------------------*
