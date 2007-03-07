@@ -93,8 +93,8 @@ generateAttributeInMetamodel (AC_OutputStream & inHFile,
 void cPtr_typeGalgas_multipleReferenceEntity::
 generateAttributeInMetamodel (AC_OutputStream & inHFile,
                               const C_String & inPropertyName) const {
-  inHFile << "  public : GGS_listOf" << mEntityTypeName.stringWithUpperCaseFirstLetter ()
-          << " " << inPropertyName << " ;\n" ;
+  inHFile << "  public : GGS_" << mEntityTypeName
+          << "List " << inPropertyName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -118,8 +118,8 @@ generateFormalParameter (AC_OutputStream & inHFile,
 void cPtr_typeGalgas_multipleReferenceEntity::
 generateFormalParameter (AC_OutputStream & inHFile,
                          const C_String & inPropertyName) const {
-  inHFile << "GGS_listOf" << mEntityTypeName.stringWithUpperCaseFirstLetter ()
-          << " & _in_" << inPropertyName ;
+  inHFile << "GGS_" << mEntityTypeName
+          << "List & _in_" << inPropertyName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -259,7 +259,7 @@ generateAttributeInitialization (const GGS_lstring & /* nom */,
 
 void cPtr_typeGalgas_multipleReferenceEntity::
 generateCppClassName (AC_OutputStream & fichier) const {
-  fichier << "GGS_listOf" << mEntityTypeName.stringWithUpperCaseFirstLetter () << " " ;
+  fichier << "GGS_" << mEntityTypeName << "List " ;
 }
 
 //---------------------------------------------------------------------------*

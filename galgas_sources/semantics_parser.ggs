@@ -35,18 +35,22 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -55,6 +59,7 @@ nonterminal <parse_semantics_component_for_importing>
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label parse
 ;
 
@@ -63,6 +68,7 @@ nonterminal <parse_grammar_component_for_importing>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label parse
 ;
 
@@ -79,6 +85,7 @@ nonterminal <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap ioExternActionMap
@@ -86,6 +93,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -96,6 +104,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -114,6 +123,7 @@ label importSemantics
   !@ActionMap outActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label parse
 ;
 
@@ -173,6 +183,7 @@ nonterminal <parse_method>
   !@L_EXsignature outMethodSignature
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -189,6 +200,7 @@ nonterminal <overrided_method>
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
   ?!@typeTableEnAvant tableEnAvant
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -205,6 +217,7 @@ nonterminal <non_abstract_method>
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
   ?!@typeTableEnAvant tableEnAvant
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -228,6 +241,7 @@ nonterminal <semantic_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -240,6 +254,7 @@ nonterminal <semantic_instructions_list_no_verif>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -252,6 +267,7 @@ nonterminal <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -267,6 +283,7 @@ nonterminal <extract_instruction>
   !@typeInstruction outInstruction
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -431,6 +448,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   $semantics$ ;
 #--- Obtenir le nom du component semantique
@@ -460,6 +478,7 @@ rule <galgas_component>
     ?includedGrammarComponents
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
+    !?ioTreewalkingComponentMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
     ?inclusionsForImplementationFile
@@ -488,6 +507,7 @@ rule <galgas_component>
       !?UNUSED_tableNomRoutinesDeclarees
       !?UNUSED_tableEnAvant
       !?UNUSED_tableRoutinesAimplementer
+      !ioTreewalkingComponentMap
     ;
     end repeat ;
   #--- Second pass on semantic declarations
@@ -505,6 +525,7 @@ rule <galgas_component>
         !?tableNomRoutinesDeclarees
         !?tableEnAvant
         !?tableRoutinesAimplementer
+        !ioTreewalkingComponentMap
       ; 
     end repeat ;
   end parse ;
@@ -544,6 +565,7 @@ rule <galgas_component>
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -559,6 +581,7 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   $semantics$ ;
   @lstring componentName ;
@@ -580,6 +603,7 @@ label importSemantics
     ?actionMap
     !?componentSemanticsEntitiesMap
     !?ioMetamodelComponentMap
+    !?ioTreewalkingComponentMap
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [emptyMap] ;
@@ -593,6 +617,7 @@ label importSemantics
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
       !?tableRoutinesAimplementer
+      !ioTreewalkingComponentMap
     ;
   end repeat ;
 #--- Enter component entities in map
@@ -630,6 +655,7 @@ label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -671,6 +697,7 @@ rule <import_headers_semantics_and_grammars>
   !@stringset outImportedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -779,6 +806,7 @@ rule <import_headers_semantics_and_grammars>
           !?grammarComponentsMap
           !?ioMetamodelComponentMap
           !?ioOptionsComponentsMapForUse
+          !?ioTreewalkingComponentMap
         ;
       end select ;
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
@@ -829,6 +857,7 @@ rule <import_headers_semantics_and_grammars>
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
+          !?ioTreewalkingComponentMap
         ;
       end select ;
       if not [outImportedSemanticsComponents hasKey ![componentName string]] then
@@ -874,6 +903,7 @@ rule <import_headers_semantics_and_grammars>
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
+          !?ioTreewalkingComponentMap
         ;
       end select ;
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName string]] then
@@ -917,9 +947,9 @@ label importSemantics
   !@stringset outIncludedOptionComponents
   !@ModelMap outModelMap
   !@ActionMap outActionMap
-
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   outActionMap := [@ActionMap emptyMap] ;
   outModelMap := [@ModelMap emptyMap] ;
@@ -964,6 +994,7 @@ label importSemantics
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
+          !?ioTreewalkingComponentMap
         ;
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
@@ -996,6 +1027,7 @@ label importSemantics
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
+          !?ioTreewalkingComponentMap
         ;
       end select ;
       [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?* ?*] ;
@@ -1017,6 +1049,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $routine$ ;
 #---- Nom de la routine -------------------------------------------------------
@@ -1072,6 +1105,7 @@ rule <semantics_declaration>
       !?ioInstructionList
       !propertyMap
       !metamodelEntityMap
+      !inTreewalkingComponentMap
     ;
     $end$ ;
     $routine$ ;
@@ -1090,6 +1124,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $routine$ ;
 #---- Nom de la routine -------------------------------------------------------
@@ -1276,6 +1311,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   @bool estAbstraite ;
   select
@@ -1366,6 +1402,7 @@ rule <semantics_declaration>
         !?tableMethodesAimplementer
         !?tableEnAvant
         !inOptionsComponentsMapForUse
+        !inTreewalkingComponentMap
       ;
      while
       <overrided_method>
@@ -1381,6 +1418,7 @@ rule <semantics_declaration>
         !?tableMethodesAimplementer
         !?tableEnAvant
         !inOptionsComponentsMapForUse
+        !inTreewalkingComponentMap
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
@@ -1421,6 +1459,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   @bool estAbstraite ;
   select
@@ -1517,6 +1556,7 @@ label importSemantics
         !?tableMethodesAimplementer
         !?tableEnAvant
         !optionsComponentsMapForUse
+        !inTreewalkingComponentMap
       ;
      while
       <overrided_method>
@@ -1532,6 +1572,7 @@ label importSemantics
         !?tableMethodesAimplementer
         !?tableEnAvant
         !optionsComponentsMapForUse
+        !inTreewalkingComponentMap
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
@@ -1613,6 +1654,7 @@ rule <parse_method>
   !@L_EXsignature outMethodSignature
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
 #--- Get reader name
   $identifier$ ? outMethodName ;
@@ -1675,6 +1717,7 @@ rule <parse_method>
     !?outInstructionsList
     !propertyMap
     !metamodelEntityMap
+    !inTreewalkingComponentMap
   ;
 end rule ;
 
@@ -1693,6 +1736,7 @@ rule <non_abstract_method>
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
   ?!@typeTableEnAvant tableEnAvant
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   select
     $method$ ;
@@ -1720,7 +1764,8 @@ rule <non_abstract_method>
     ?methodSignature
     ?listeTypeEtNomsArguments
     !inOptionsComponentsMapForUse
- ;
+    !inTreewalkingComponentMap
+  ;
   [!?tableDesMethodes insertKey !methodName !methodSignature] ;
   [!?tableMethodesAimplementer insertNotAbstract !methodName !methodSignature !listeTypeEtNomsArguments !instructionsList] ;
   $end$ ;
@@ -1748,6 +1793,7 @@ rule <overrided_method>
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
   ?!@typeTableEnAvant tableEnAvant
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $override$ ;
   select
@@ -1776,6 +1822,7 @@ rule <overrided_method>
     ?methodSignature
     ?listeTypeEtNomsArguments
     !inOptionsComponentsMapForUse
+    !inTreewalkingComponentMap
   ;
 #--- Verify reader signature is compatible with overriden reader signature
   @L_EXsignature listeDeTypesMethodeOriginale ;
@@ -2451,6 +2498,7 @@ rule <semantic_instructions_list>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   block ioVariablesMap.verifyVariableUsing () :
     <semantic_instructions_list_no_verif>
@@ -2462,6 +2510,7 @@ rule <semantic_instructions_list>
       !?ioInstructionList
       !inCurrentTreewalkingRoutinePropertyMap
       !inMetamodelEntityMap
+      !inTreewalkingComponentMap
     ;
   end block (!here) ;
 end rule ;
@@ -2481,6 +2530,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $call$ ;
 #--- Called property
@@ -2543,6 +2593,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $extract$ ;
 #--- Source variable
@@ -2570,6 +2621,7 @@ rule <semantic_instruction>
     ?instruction
     !inCurrentTreewalkingRoutinePropertyMap
     !inMetamodelEntityMap
+    !inTreewalkingComponentMap
   ;
   ioInstructionList += !instruction ;
   $;$ ;
@@ -2591,6 +2643,7 @@ rule <extract_instruction>
   !@typeInstruction outInstruction
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
 #--- Nom de la classe pour la conversion
   $->$ ;
@@ -2668,6 +2721,7 @@ rule <extract_instruction>
   !@typeInstruction outInstruction
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   @typeStructuredExtractCasesList casesList [emptyList] ;
   $:$ ;
@@ -2721,6 +2775,7 @@ rule <extract_instruction>
           !?instructionsList
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
+          !inTreewalkingComponentMap
         ;
         casesList += !nomType1 !indicatif1 !instructionsList !noUsedParameter ;
       end block (!here) ;
@@ -2740,6 +2795,7 @@ rule <extract_instruction>
         !?elseInstructionList
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
+        !inTreewalkingComponentMap
       ;
       outInstruction := [@typeStructuredExtractInstructionWithElse new
         !inSourceVarCppName !casesList !elseInstructionList
@@ -2765,6 +2821,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
 #--- Type name
   @AC_galgasType definitionType ;
@@ -2809,6 +2866,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $log$ ;
   repeat
@@ -2839,6 +2897,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $drop$ ;
   repeat
@@ -2908,6 +2967,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
 #--- Action name
   $action$ ;
@@ -2960,6 +3020,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $[$ ;
 #--- Get source identity characteristics
@@ -3059,6 +3120,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inMetamodelPropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   @lstring nomVarDest ;
   $identifier$ ? nomVarDest ;
@@ -3089,6 +3151,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $warning$ ;
   @typeExpression errorExpression ;
@@ -3137,6 +3200,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $error$ ;
   @typeExpression errorLocationExpression ;
@@ -3204,6 +3268,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $message$ ;
   @location instructionLocation := here ;
@@ -3240,6 +3305,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $if$ ;
   @bool firstBranch := true ;
@@ -3268,6 +3334,7 @@ rule <semantic_instruction>
           !?listeInstructionsBrancheTest
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
+          !inTreewalkingComponentMap
         ;
         listeBranchesTest += !testBranche !listeInstructionsBrancheTest ;
       end block (!here) ;
@@ -3288,6 +3355,7 @@ rule <semantic_instruction>
           !?listeInstructionsBrancheAutre
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
+          !inTreewalkingComponentMap
         ;
      end select ; 
     end block (!here) ;
@@ -3317,6 +3385,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $switch$ ;
 #--- Expression
@@ -3365,6 +3434,7 @@ rule <semantic_instruction>
           !?branchInstructionList
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
+          !inTreewalkingComponentMap
         ;
         switchBranchlist += !branchConstantSet !branchInstructionList ;
       end block (!here) ;
@@ -3401,6 +3471,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $loop$ ;
 #--- Variant expression
@@ -3429,6 +3500,7 @@ rule <semantic_instruction>
         !?instructionList1
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
+        !inTreewalkingComponentMap
       ;
     end block (!here) ;
   end block () ;
@@ -3459,6 +3531,7 @@ rule <semantic_instruction>
         !?instructionList2
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
+        !inTreewalkingComponentMap
       ;
     end block (!here) ;
   end block () ;
@@ -3490,6 +3563,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $grammar$ ;
 #--- Nom du fichier is
@@ -3571,6 +3645,94 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    T R E E W A L K I N G    I N S T R U C T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#rule <semantic_instruction>
+#  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
+#  ??@typeTableEnAvant unused  inTableEnAvant
+#  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  ?!@typeInstructionList ioInstructionList
+#  ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
+#  ??@entityToImplementMap unused inMetamodelEntityMap
+#  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+#:
+#  $treewalking$ ;
+##--- Treewalking component name
+#  @lstring treewalkingComponentName ;
+#  $identifier$ ? treewalkingComponentName ;
+##--- Model Name
+#  $on$ ;
+#  @lstring modelVariableName ;
+#  @typeCplusPlusName cppNameForModelVariable ;
+#  @AC_galgasType modelVariableType ;
+#  <read_access>
+#    ?modelVariableName
+#    ?cppNameForModelVariable
+#    ?modelVariableType
+#    !?ioVariablesMap
+#  ;
+##  extract typeNomFichierSource ->@typeGalgas_lstring () error nomFichierSource : messageGalgasType ;
+##--- Analyse des arguments effectifs
+#  @typeExpressionList expressionsList ;
+#  @L_actualParametersSignature listeTypesParametresEffectifs ;
+#  <parse_parameters_list>
+#    ?listeTypesParametresEffectifs
+#    ?expressionsList
+#    !?ioVariablesMap
+#    !inOptionsComponentsMapForUse
+#    !ioComponentSemanticsEntitiesMap
+#  ;
+##--- Look for grammar
+#  @AC_semanticsEntity e  ;
+#  [ioComponentSemanticsEntitiesMap searchKey !grammarName ?e] ;
+#  @M_nonterminalSymbolAlts startSymbolAltMap ;
+#  @lstring lexiqueClassName ;
+#  extract e->@C_grammarForSemantics (?startSymbolAltMap ?lexiqueClassName) error grammarName : messageTypeEntite ;
+#  @L_EXsignature startSymbolSignature ;
+#  @lstring returnedEntity ;
+#  [startSymbolAltMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
+##--- Verifier la coherence avec la declaration
+#  verifierCompatibiliteArgEffectifsSignature 
+#    !startSymbolSignature
+#    !listeTypesParametresEffectifs
+#    !here
+#    !?ioInstructionList
+#    !?expressionsList
+#  ;
+##--- returned model
+#  @lstring metamodelClassVariableName [new !"" !here] ;
+#  select
+#    if [returnedEntity string] != "" then
+#      error here: "this grammar returns an instance of '@" . [returnedEntity string] . "' metamodel entity" ; 
+#    end if ;
+#  or
+#    $->$ ;
+#    $identifier$ ? metamodelClassVariableName ;
+#    @AC_galgasType type ;
+#    [!?ioVariablesMap searchForWriteAccess !metamodelClassVariableName ?type ?*] ;
+#    @lstring variableEntityName ;
+#    extract type->@typeGalgas_singleReferenceEntity (?variableEntityName) error metamodelClassVariableName : messageGalgasType ;
+#    if [returnedEntity string] != [variableEntityName string] then
+#      error metamodelClassVariableName: "this variable has the '@" . [variableEntityName string]
+#        . "', but a variable of '@" . [returnedEntity string] . "' type is expected" ;
+#    end if ;
+#  end select ;
+##--- Engendrer l'instruction
+#  @typeInstruction instruction := [@C_treewalkingInstruction new
+#    !treewalkingComponentName
+#    !cppNameForModelVariable
+#    !expressionsList
+#  ] ;
+#  ioInstructionList += !instruction ;
+#  $;$ ;
+#end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #     Instruction 'foreach ... ;'                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3584,6 +3746,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $foreach$ ;
   @typeInstruction instruction ;
@@ -3652,6 +3815,7 @@ rule <semantic_instruction>
         !?instructionList
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
+        !inTreewalkingComponentMap
       ;
     end block (!here) ;
   end block () ;
@@ -3791,6 +3955,7 @@ rule <semantic_instruction>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $match$ ;
 #--- Get first operand
@@ -3866,6 +4031,7 @@ rule <semantic_instruction>
           !?instructionsList
           !inCurrentTreewalkingRoutinePropertyMap
           !inMetamodelEntityMap
+          !inTreewalkingComponentMap
         ;
         casesList += !case1_name !case2_name !instructionsList ;
       end block (!here) ;
@@ -3883,6 +4049,7 @@ rule <semantic_instruction>
         !?elsePartInstructionsList
         !inCurrentTreewalkingRoutinePropertyMap
         !inMetamodelEntityMap
+        !inTreewalkingComponentMap
       ;
     end block (!here) ;
   end block () ;
@@ -3914,6 +4081,7 @@ rule <semantic_instructions_list_no_verif>
   ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   repeat
   while
@@ -3926,6 +4094,7 @@ rule <semantic_instructions_list_no_verif>
       !?ioInstructionList
       !inCurrentTreewalkingRoutinePropertyMap
       !inMetamodelEntityMap
+      !inTreewalkingComponentMap
     ;
   end repeat ;
 end rule ;
@@ -4032,6 +4201,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $mapindex$ ;
   @lstring mapindexTypeName ;
@@ -4104,6 +4274,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $mapindex$ ;
   @lstring mapindexTypeName ;
@@ -4177,6 +4348,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $map$ ;
   @lstring mapTypeName ;
@@ -4472,6 +4644,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $map$ ;
   @lstring mapTypeName ;
@@ -4771,6 +4944,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $list$ ;
   @lstring listTypeName ;
@@ -4825,6 +4999,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $list$ ;
   @lstring listTypeName ;
@@ -4884,6 +5059,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $sortedlist$ ;
   @lstring listTypeName ;
@@ -4964,6 +5140,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $sortedlist$ ;
   @lstring listTypeName ;
@@ -5071,6 +5248,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $extern$ ;
 #--- Parse extern type name
@@ -5201,6 +5379,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $extern$ ;
 #--- Parse extern type name
@@ -5447,6 +5626,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $action$ ;
   @lstring nomAction ;
@@ -5475,6 +5655,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $action$ ;
   @lstring actionName ;
@@ -5510,6 +5691,7 @@ rule <semantics_declaration>
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $enum$ ;
 #--- Enum type name
@@ -5577,6 +5759,7 @@ label importSemantics
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $enum$ ;
 #--- Enum type name

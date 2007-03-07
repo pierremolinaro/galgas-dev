@@ -32,7 +32,7 @@
 
 void cPtr_C_metamodelEntityToImplement::
 generatePredeclarations (AC_OutputStream & inHfile) const {
-  const C_String listClassName = C_String ("listOf") + aNomClasse.stringWithUpperCaseFirstLetter () ;
+  const C_String listClassName = aNomClasse + "List" ;
   inHfile << "class GGS_" << listClassName << " ;\n"
              "class GGS_" << aNomClasse << " ;\n"
              "class cPtr_" << aNomClasse << " ;\n" ;
@@ -43,7 +43,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_metamodelEntityToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Lexique & /* inLexique */) const {
-  const C_String listClassName = C_String ("listOf") + aNomClasse.stringWithUpperCaseFirstLetter () ;
+  const C_String listClassName = aNomClasse + "List" ;
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCppTitleComment (C_String ("Element of list '@") + listClassName + "'") ;
 //--------- Declare internal element class ------------
@@ -244,7 +244,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 
 //----------------------- List class declaration ----------------  
-  const C_String listClassName = C_String ("listOf") + aNomClasse.stringWithUpperCaseFirstLetter () ;
+  const C_String listClassName = aNomClasse + "List" ;
   inHfile.writeCppTitleComment (C_String ("list '@") + listClassName + "'") ;
 
   inHfile << "class GGS_" << listClassName << " : public AC_galgas_list {\n"
@@ -462,7 +462,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
-  const C_String listClassName = C_String ("listOf") + aNomClasse.stringWithUpperCaseFirstLetter () ;
+  const C_String listClassName = aNomClasse + "List" ;
 //------------- Implementation de l'element de liste -----------------
   inCppFile.writeCppTitleComment (C_String ("Element of list '@") + listClassName + "'") ;
 

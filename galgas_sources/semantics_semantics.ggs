@@ -986,6 +986,18 @@ class @C_grammarInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    Treewalking instruction                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @C_treewalkingInstruction extends @typeInstruction {
+  @lstring mTreeWalkingComponentName ;
+  @typeCplusPlusName mModelVariableCppName ;
+  @typeExpressionList mExpressionsList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #          += instruction (without luint assignment)                        *
 #                                                                           *
 #---------------------------------------------------------------------------*

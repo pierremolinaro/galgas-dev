@@ -32,6 +32,7 @@ program galgas_SLR_prgm "version GALGAS_BETA_VERSION (SLR grammar)":
     @M_grammarComponents grammarComponentsMap [emptyMap] ;
     @M_optionComponents optionComponentsMap [emptyMap] ;
     @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
+    @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
     grammar galgas_SLR_grammar in inSourceFile
       !?lexiqueMapForUse
       !?semanticsComponentsMap
@@ -39,6 +40,7 @@ program galgas_SLR_prgm "version GALGAS_BETA_VERSION (SLR grammar)":
       !?grammarComponentsMap
       !?optionComponentsMap
       !?metamodelComponentMap
+      !?treewalkingComponentMap
     ;
   }
 
