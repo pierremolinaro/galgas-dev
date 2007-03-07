@@ -22,6 +22,93 @@
 #include "semantics_semantics.h"
 
 //---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+void cPtr_C_treewalkingInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+/*  if (inGenerateSemanticInstructions) {
+    ioCppFile << "{ " << mLexiqueClassName << " * scanner_ = NULL ;\n"
+                 "  macroMyNew (scanner_, " << mLexiqueClassName << " (_inLexique.ioParametersPtr () COMMA_HERE)) ;\n"
+                 "  scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;\n"
+                 "  " << mGrammarName << " grammar_ ;\n"
+                 "  const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
+    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ") ;\n"
+                 "  try{\n"
+                 "    scanner_->resetAndLoadSourceFromFile (sourceFileName) ;\n"
+                 "    " ;
+    if (mMetamodelClassVariableName.length () > 0) {
+      ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;
+    }
+    ioCppFile << "grammar_.startParsing_" << mAltSymbol
+              << " (*scanner_" ;
+    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+    while (argCourant != NULL) {
+      macroValidPointer (argCourant) ;
+      ioCppFile << ",\n                                " ;
+      argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
+      argCourant = argCourant->nextObject () ;
+    }
+    ioCppFile << ") ;\n"
+                 "  }catch (const C_TextReadException & inFileReadError) {\n"
+                 "    " ;
+    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ".signalSemanticError (_inLexique, inFileReadError.what () SOURCE_FILE_AT_LINE ("
+              << mGrammarName.currentLineNumber ()
+              << ")) ;\n"
+                 "  }\n"
+                 "  macroDetachPointer (scanner_, " << mLexiqueClassName << ") ;\n"
+                 "}\n" ; 
+  }*/
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_treewalkingInstruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+  return inGenerateSemanticInstructions ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_treewalkingInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  bool isUsed = mModelVariableCppName.isEqualTo (inArgumentCppName) ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_treewalkingInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  while ((! isUsed) && argCourant != NULL) {
+    macroValidPointer (argCourant) ;
+    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    argCourant = argCourant->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
 
 void cPtr_typeCallOfTypeMethodInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,

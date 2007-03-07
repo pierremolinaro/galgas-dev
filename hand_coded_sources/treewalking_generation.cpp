@@ -93,7 +93,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                          const C_String & /* inTargetFileName */,
                          const GGS_typeExpressionList & inExpressionList) const {
   ioCppFile << "macroValidPointer (_currentObject) ;\n"
-               "{ GGS_listOf" << inEntityName.stringWithUpperCaseFirstLetter () << "::element_type * _ptr = _currentObject->"
+               "{ GGS_" << inEntityName << "List::element_type * _ptr = _currentObject->"
             << inCalledPropertyName << ".firstObject () ;\n"
             << "  while (_ptr != NULL) {\n"
                "    macroValidPointer (_ptr) ;\n"

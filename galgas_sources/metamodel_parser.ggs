@@ -32,18 +32,22 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -82,6 +86,7 @@ rule <galgas_component>
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
 :
   <parse_metamodel> !?ioMetamodelComponentMap !true ;
 label importLexique
@@ -91,17 +96,20 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
 :
   <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
 :
   <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
 :
   <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importOptions

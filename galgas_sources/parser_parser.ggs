@@ -35,18 +35,22 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -54,17 +58,19 @@ label importOptions
 nonterminal <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_optionComponents ioOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label importSemantics
   ?!@ModelMap ioModelMap
-  ?!@ActionMap unused ioExternActionMap
+  ?!@ActionMap ioExternActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -80,6 +86,7 @@ nonterminal <syntax_declaration>
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ?@lstring inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
@@ -93,21 +100,21 @@ label parse
 ;
 
 nonterminal <import_headers_semantics_and_grammars>
-  !@stringset ioIncludedSemanticsComponents
+  !@stringset outIncludedSemanticsComponents
   !@stringset outIncludedMetamodelComponents
-  !@stringset ioIncludedOptionComponents
-  !@stringset ioIncludedGrammarComponents
+  !@stringset outIncludedOptionComponents
+  !@stringset outIncludedGrammarComponents
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents ioOptionsComponents
+  ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
   !@stringset outInclusionsForHeaderFile
   !@M_optionComponents ioOptionsComponentsMapForUse
   !@ModelMap outModelMap
   !@ActionMap outActionMap
-
-  !@M_semanticsEntitiesForUse ioEntitiesMap
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
   !@entityToImplementMap outAllMetamodelClassMap
 label importSemantics
@@ -118,18 +125,20 @@ label importSemantics
   !@ActionMap outActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label parse
 ;
 
 nonterminal <semantic_instruction>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
-  ??@M_semanticsEntitiesForUse ioEntitiesMap
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityPropertyMap inPropertyMap
+  ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
 
@@ -145,6 +154,7 @@ nonterminal <syntax_instruction>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -202,6 +212,7 @@ nonterminal <syntax_instructions_list>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -219,6 +230,7 @@ nonterminal <syntax_instructions_list_no_verif>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -253,6 +265,7 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   @typeEntitiesToGenerateList listeEntitesAengendrer ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
@@ -291,6 +304,7 @@ rule <galgas_component>
     ?includedGrammarComponents
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
+    !?ioTreewalkingComponentMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
     ?inclusionsForImplementationFile
@@ -320,6 +334,7 @@ rule <galgas_component>
       !?productionRulesListForGrammar
       !componentName
       !allMetamodelClassMap
+      !ioTreewalkingComponentMap
     ;
   while
     <semantics_declaration>
@@ -329,6 +344,7 @@ rule <galgas_component>
       !?tableNomRoutinesDeclarees
       !?tableEnAvant
       !?tableRoutinesAimplementer
+      !ioTreewalkingComponentMap
     ;
   end repeat ;
 #--- Check that all routines have been implemented
@@ -360,6 +376,7 @@ rule <galgas_component>
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   $syntax$ ;
   @lstring syntaxComponentName ;
@@ -391,6 +408,7 @@ label importSyntax
     ?includedGrammarComponents
     !?semanticsComponentsMap
     !?ioMetamodelComponentMap
+    !?ioTreewalkingComponentMap
     !?grammarComponentsMap
     !?optionsComponentsMap
     ?inclusionsForImplementationFile
@@ -427,6 +445,7 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -463,6 +482,7 @@ label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -560,6 +580,7 @@ rule <syntax_instruction>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $block$ ;
 #--- Nom de la map
@@ -609,6 +630,7 @@ rule <syntax_instruction>
     !?tableTerminaux
     !?ioSyntaxSignature
     !inAllMetamodelClassMap
+    !inTreewalkingComponentMap
   ;
   $end$ ;
   $block$ ;
@@ -668,6 +690,7 @@ rule <syntax_declaration>
   ?!@L_productionRules_ForGrammarComponent unused ioProductionRulesListForGrammar
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $nonterminal$ ;
   @lstring ruleName ;
@@ -839,6 +862,7 @@ rule <syntax_declaration>
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $rule$ ;
   @lstring ruleName ;
@@ -939,7 +963,7 @@ rule <syntax_declaration>
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
         [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeExpression sourceExpression := [@typeConstructorExpression new
-          !"listOf" . [kReferenceEntityName stringByCapitalizingFirstCharacter]
+          ![kReferenceEntityName string]. "List"
           !"emptyList"
           ![@typeExpressionList emptyList]
         ] ;
@@ -972,6 +996,7 @@ rule <syntax_declaration>
     !?tableTerminaux
     !?syntaxSignature
     !inAllMetamodelClassMap
+    !inTreewalkingComponentMap
   ;
   [!?altProductionsMap insertKey
     !altName
@@ -1029,6 +1054,7 @@ rule <syntax_declaration>
       !?tableTerminaux
       !?branchSyntaxSignature
       !inAllMetamodelClassMap
+      !inTreewalkingComponentMap
     ;
     [!?altProductionsMap insertKey
       !altName
@@ -1136,6 +1162,7 @@ rule <syntax_instructions_list>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   block ioVariablesMap.verifyVariableUsing () :
     <syntax_instructions_list_no_verif>
@@ -1150,6 +1177,7 @@ rule <syntax_instructions_list>
       !?tableTerminaux
       !?ioSyntaxSignature
       !inAllMetamodelClassMap
+      !inTreewalkingComponentMap
     ;
     @location positionErreur := here ;
   end block (!positionErreur) ;
@@ -1175,6 +1203,7 @@ rule <syntax_instruction>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap unused inAllMetamodelClassMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   @lstring terminalSymbolName ;
   $terminal$ ? terminalSymbolName ;
@@ -1228,6 +1257,7 @@ rule <syntax_instruction>
   ?!@M_terminalSymbolsMapForUse unused tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   @lstring nonterminalSymbolName ;
   $non_terminal_symbol$ ? nonterminalSymbolName ;
@@ -1371,6 +1401,7 @@ rule <syntax_instruction>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $select$ ;
   @location positionDebut := here ;
@@ -1392,6 +1423,7 @@ rule <syntax_instruction>
         !?tableTerminaux
         !?firstBranchSyntaxSignature
         !inAllMetamodelClassMap
+        !inTreewalkingComponentMap
       ;
       listeBranchesChoix += !firstBranchInstructionList ;
       selectList += !firstBranchSyntaxSignature ;
@@ -1413,6 +1445,7 @@ rule <syntax_instruction>
           !?tableTerminaux
           !?syntaxSignature
           !inAllMetamodelClassMap
+          !inTreewalkingComponentMap
         ;
         listeBranchesChoix += !listeInstructionsBrancheChoix ;
         selectList += !syntaxSignature ;
@@ -1473,6 +1506,7 @@ rule <syntax_instruction>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $repeat$ ;
   @location positionDebut := here ;
@@ -1494,6 +1528,7 @@ rule <syntax_instruction>
         !?tableTerminaux
         !?repeatBranchInstructionsList
         !inAllMetamodelClassMap
+        !inTreewalkingComponentMap
        ;
       listeBranchesRepeter += !listeInstructionsPremiereBranche ;
       whileList += !repeatBranchInstructionsList ;
@@ -1516,6 +1551,7 @@ rule <syntax_instruction>
           !?tableTerminaux
           !?syntaxSignature
           !inAllMetamodelClassMap
+          !inTreewalkingComponentMap
         ;
         listeBranchesRepeter += !listeInstructionsBrancheRepeter ;
         whileList += !syntaxSignature ;
@@ -1577,6 +1613,7 @@ rule <syntax_instruction>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   $parse$ ;
   @typeInstruction instruction ;
@@ -1601,6 +1638,7 @@ rule <syntax_instruction>
       !?tableTerminaux
       !?firstBranchSyntaxSignature
       !inAllMetamodelClassMap
+      !inTreewalkingComponentMap
     ;
     branchList += !firstBranchInstructionsList ;
     parse_rewind_signature_list += !firstBranchSyntaxSignature !instructionStartLocation ;
@@ -1625,6 +1663,7 @@ rule <syntax_instruction>
         !?tableTerminaux
         !?syntaxSignature
         !inAllMetamodelClassMap
+        !inTreewalkingComponentMap
       ;
       branchList += !instructionsList ;
       parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
@@ -1664,6 +1703,7 @@ rule <syntax_instruction>
             !?tableTerminaux
             !?syntaxSignature
             !inAllMetamodelClassMap
+            !inTreewalkingComponentMap
           ;
           branchList += !expression !instructionsList ;
           parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
@@ -1687,6 +1727,7 @@ rule <syntax_instruction>
           !?tableTerminaux
           !?syntaxSignature
           !inAllMetamodelClassMap
+          !inTreewalkingComponentMap
         ;
         parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
         foreach syntaxSignature (@AC_instruction_ForGrammar grammarInstruction) :
@@ -1745,6 +1786,7 @@ rule <syntax_instructions_list_no_verif>
   ?!@M_terminalSymbolsMapForUse tableTerminaux
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
 :
   @entityPropertyMap propertyMap [emptyMap] ;
   @typeTableEnAvant tableEnAvant [emptyMap] ;
@@ -1763,6 +1805,7 @@ rule <syntax_instructions_list_no_verif>
       !?tableTerminaux
       !?ioSyntaxSignature
       !inAllMetamodelClassMap
+      !inTreewalkingComponentMap
     ;
   while
     <semantic_instruction>
@@ -1774,6 +1817,7 @@ rule <syntax_instructions_list_no_verif>
       !?ioInstructionList
       !propertyMap
       !inAllMetamodelClassMap
+      !inTreewalkingComponentMap
     ;
   end repeat ;
 label importSyntax

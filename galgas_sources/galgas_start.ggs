@@ -36,18 +36,22 @@ nonterminal <galgas_start_symbol>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 label compileFile
@@ -60,18 +64,22 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -85,6 +93,7 @@ rule <galgas_start_symbol>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   repeat
   while
@@ -95,6 +104,7 @@ rule <galgas_start_symbol>
       !?ioGrammarComponentsMap
       !?ioOptionsComponentsMap
       !?ioMetamodelComponentMap
+      !?ioTreewalkingComponentMap
     ;
   end repeat ;
 label importLexique
@@ -107,29 +117,34 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   repeat
   while
     <galgas_component> importSyntax
       !?ioSyntaxComponentsMap
       !?ioMetamodelComponentMap
+      !?ioTreewalkingComponentMap
     ;
   end repeat ;
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   repeat
   while
     <galgas_component> importSemantics
       !?ioSemanticsComponentsMap
       !?ioMetamodelComponentMap
+      !?ioTreewalkingComponentMap
     ;
   end repeat ;
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
 :
   repeat
   while
@@ -137,6 +152,7 @@ label importGrammarForSemantics
       !?ioGrammarComponentsMap
       !?ioMetamodelComponentMap
       !?ioOptionsComponentsMapForUse
+      !?ioTreewalkingComponentMap
     ;
   end repeat ;
 label compileFile
@@ -147,6 +163,7 @@ label compileFile
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
   @M_optionComponents optionsComponentsMap [emptyMap] ;
   @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
+  @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
   repeat
   while
     <galgas_component>
@@ -156,6 +173,7 @@ label compileFile
       !?grammarComponentsMap
       !?optionsComponentsMap
       !?metamodelComponentMap
+      !?treewalkingComponentMap
     ;
   end repeat ;
 label importOptions
