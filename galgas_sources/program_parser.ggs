@@ -174,7 +174,6 @@ rule <galgas_component>
   $unsigned_literal_integer$ ? nombreMaxAlertes ;
   $;$ ;
 #--- WHEN clauses
-#  @stringset implementationFileInclusionSet [emptySet] ;
   @L_grammarDescriptorForProgram grammarDescriptorForProgramList [emptyList] ;
   @ruleDescriptorForProgramList ruleDescriptorForProgramList [emptyList] ;
   $when$ ;
@@ -313,22 +312,6 @@ rule <galgas_component>
          end if ;
         [ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?* ?*] ;
       end select ;
-      @loggableObjectList loggableObjectList [emptyList] ;
-      repeat
-      while
-        $log$ ;
-        @lstring loggedObjectName ;
-        $identifier$ ? loggedObjectName ;
-        if [metamodelName string] == [loggedObjectName string] then
-          loggableObjectList += ![@loggableMetamodel new !loggedObjectName] ; 
-        elsif [contraintStringsetForMetamodel hasKey ![loggedObjectName string]] then
-          loggableObjectList += ![@loggableConstraint new !metamodelName !loggedObjectName] ; 
-        elsif [grammarAttributeSet hasKey ![loggedObjectName string]] then
-          loggableObjectList += ![@loggableAttribute new !loggedObjectName] ; 
-        else
-         error loggedObjectName:"this object cannot be logged" ;
-        end if ;
-      end repeat ;
       $;$ ;
     #--- Send grammar descriptor
       grammarDescriptorForProgramList +=
@@ -341,7 +324,6 @@ rule <galgas_component>
         !rootEntityName
         !sourceExtension
         !helpMessage
-        !loggableObjectList
       ;
     end select ;
   while
@@ -427,11 +409,6 @@ label importLexique
           $)$ ;
         end select ;
       end select ;
-      repeat
-      while
-        $log$ ;
-        $identifier$ ?* ;
-      end repeat ;
       $;$ ;
     end select ;
   while
@@ -502,11 +479,6 @@ label importSyntax
           $)$ ;
         end select ;
       end select ;
-      repeat
-      while
-        $log$ ;
-        $identifier$ ?* ;
-      end repeat ;
       $;$ ;
     end select ;
   while
@@ -576,11 +548,6 @@ label importSemantics
           $)$ ;
         end select ;
       end select ;
-      repeat
-      while
-        $log$ ;
-        $identifier$ ?* ;
-      end repeat ;
       $;$ ;
     end select ;
   while
@@ -651,11 +618,6 @@ label importGrammarForSemantics
           $)$ ;
         end select ;
       end select ;
-      repeat
-      while
-        $log$ ;
-        $identifier$ ?* ;
-      end repeat ;
       $;$ ;
     end select ;
   while
@@ -724,11 +686,6 @@ label importOptions
           $)$ ;
         end select ;
       end select ;
-      repeat
-      while
-        $log$ ;
-        $identifier$ ?* ;
-      end repeat ;
       $;$ ;
     end select ;
   while

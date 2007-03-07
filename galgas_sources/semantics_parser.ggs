@@ -886,15 +886,20 @@ rule <import_headers_semantics_and_grammars>
                                    @lstring kSuperEntityName
                                    @typeSuperClassesMap kSuperEntityMap
                                    @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants) :
-        [!?outAllMetamodelClassMap insertKey
-          !kMetamodelClassName
-          !kAllMetamodelPropertyMap
-          !kIsAbstract
-          !kCurrentMetamodelPropertyMap
-          !kSuperEntityName
-          !kSuperEntityMap
-          !kListeAttributsSemantiquesCourants
-        ] ;
+          [!?outAllMetamodelClassMap insertKey
+            !kMetamodelClassName
+            !kAllMetamodelPropertyMap
+            !kIsAbstract
+            !kCurrentMetamodelPropertyMap
+            !kSuperEntityName
+            !kSuperEntityMap
+            !kListeAttributsSemantiquesCourants
+          ] ;
+          @AC_semanticsEntity e := [@typeEntiteType new ![@typeGalgas_singleReferenceEntity new !kMetamodelClassName]] ;
+          [!?ioComponentSemanticsEntitiesMap insertKey
+            !kMetamodelClassName
+            !e
+          ] ;
         end foreach ;
         outInclusionsForHeaderFile += ![metamodelComponentName string] ;
       end if ;
@@ -3536,7 +3541,7 @@ rule <semantic_instruction>
   @lstring metamodelClassVariableName [new !"" !here] ;
   select
     if [returnedEntity string] != "" then
-      error here: "this grammar returns an instance of '%" . [returnedEntity string] . "' metamodel class" ; 
+      error here: "this grammar returns an instance of '@" . [returnedEntity string] . "' metamodel entity" ; 
     end if ;
   or
     $->$ ;
@@ -3546,8 +3551,8 @@ rule <semantic_instruction>
     @lstring variableEntityName ;
     extract type->@typeGalgas_singleReferenceEntity (?variableEntityName) error metamodelClassVariableName : messageGalgasType ;
     if [returnedEntity string] != [variableEntityName string] then
-      error variableEntityName: "this variable has the '%" . [variableEntityName string]
-        . "', but a variable of '%" . [returnedEntity string] . "' type is expected" ;
+      error metamodelClassVariableName: "this variable has the '@" . [variableEntityName string]
+        . "', but a variable of '@" . [returnedEntity string] . "' type is expected" ;
     end if ;
   end select ;
 #--- Engendrer l'instruction

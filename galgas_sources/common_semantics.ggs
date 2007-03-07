@@ -3520,40 +3520,6 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   L O G G I N G    O B J E C T S    I N    P R O G R A M                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract class @loggableObject {
-}
-
-#---------------------------------------------------------------------------*
-
-class @loggableMetamodel extends @loggableObject {
-  @lstring mMetamodelName ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @loggableAttribute extends @loggableObject {
-  @lstring mAttributeName ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @loggableConstraint extends @loggableObject {
-  @lstring mMetamodelName ;
-  @lstring mConstraintName ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @loggableObjectList {
-  @loggableObject mLoggableObject ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #         E N T E R    B U I L T I N    T Y P E S                           *
 #                                                                           *
 #---------------------------------------------------------------------------*

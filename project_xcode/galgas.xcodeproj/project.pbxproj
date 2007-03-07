@@ -1065,38 +1065,6 @@
 		CFA313BD09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFAFD83C0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
-		CFAFD83D0AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
-		CFAFD83E0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
-		CFAFD83F0AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
-		CFAFD8400AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
-		CFAFD8410AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
-		CFAFD8420AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
-		CFAFD8430AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
-		CFAFD8440AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
-		CFAFD8450AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
-		CFAFD8460AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
-		CFAFD8470AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
-		CFAFD8480AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
-		CFAFD8490AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
-		CFAFD84A0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */; };
-		CFAFD84B0AFCCB1900C04447 /* include_loggableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */; };
-		CFAFD8930AFCD12A00C04447 /* include_loggableAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */; };
-		CFAFD8940AFCD12A00C04447 /* include_loggableConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */; };
-		CFAFD8950AFCD12A00C04447 /* include_loggableAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */; };
-		CFAFD8960AFCD12A00C04447 /* include_loggableConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */; };
-		CFAFD8970AFCD12A00C04447 /* include_loggableAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */; };
-		CFAFD8980AFCD12A00C04447 /* include_loggableConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */; };
-		CFAFD8990AFCD12A00C04447 /* include_loggableAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */; };
-		CFAFD89A0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */; };
-		CFAFD89B0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */; };
-		CFAFD89C0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */; };
-		CFAFD89D0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */; };
-		CFAFD89E0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */; };
-		CFAFD89F0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */; };
-		CFAFD8A00AFCD12A00C04447 /* include_loggableConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */; };
-		CFAFD8A10AFCD12A00C04447 /* include_loggableAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */; };
-		CFAFD8A20AFCD12A00C04447 /* include_loggableConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */; };
 		CFBC766A0AC694C200443ACA /* OC_GGS_BuildResultTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */; };
 		CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
 		CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
@@ -2000,10 +1968,6 @@
 		CFA3139509FD3EDA006B55E7 /* parser_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_generation.h; sourceTree = "<group>"; };
 		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammar.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
-		CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_loggableMetamodel.h; sourceTree = "<group>"; };
-		CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_loggableObject.h; sourceTree = "<group>"; };
-		CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_loggableAttribute.h; sourceTree = "<group>"; };
-		CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_loggableConstraint.h; sourceTree = "<group>"; };
 		CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
 		CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = "<group>"; };
 		CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
@@ -2554,10 +2518,6 @@
 				CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */,
 				CF69EB4C0B0F6D44007FE494 /* include_typeMethodCallInstruction.h */,
 				CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */,
-				CFAFD83B0AFCCB1900C04447 /* include_loggableObject.h */,
-				CFAFD83A0AFCCB1900C04447 /* include_loggableMetamodel.h */,
-				CFAFD8910AFCD12A00C04447 /* include_loggableAttribute.h */,
-				CFAFD8920AFCD12A00C04447 /* include_loggableConstraint.h */,
 				CFD9E63B0AE7F07300A9D72A /* include_C_switch_instruction.h */,
 				CFD9E63C0AE7F07300A9D72A /* include_typeLogInstruction.h */,
 				CF50ACA70A4025280081917E /* include_typeGalgasNewClassType.h */,
@@ -3327,10 +3287,6 @@
 				CFD9E63D0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E63E0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06260AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFAFD83C0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
-				CFAFD83D0AFCCB1900C04447 /* include_loggableObject.h in Headers */,
-				CFAFD8930AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
-				CFAFD8940AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF9186090B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB4D0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357DE0B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
@@ -3421,10 +3377,6 @@
 				CFD9E6490AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E64A0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06320AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFAFD8480AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
-				CFAFD8490AFCCB1900C04447 /* include_loggableObject.h in Headers */,
-				CFAFD89F0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
-				CFAFD8A00AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860F0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB530B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E40B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
@@ -3515,10 +3467,6 @@
 				CFD9E64B0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E64C0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06340AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFAFD84A0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
-				CFAFD84B0AFCCB1900C04447 /* include_loggableObject.h in Headers */,
-				CFAFD8A10AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
-				CFAFD8A20AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF9186100B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB540B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E50B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
@@ -3623,10 +3571,6 @@
 				CFD9E63F0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6400AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06280AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFAFD83E0AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
-				CFAFD83F0AFCCB1900C04447 /* include_loggableObject.h in Headers */,
-				CFAFD8950AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
-				CFAFD8960AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860A0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB4E0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357DF0B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
@@ -3717,10 +3661,6 @@
 				CFD9E6410AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6420AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B062A0AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFAFD8400AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
-				CFAFD8410AFCCB1900C04447 /* include_loggableObject.h in Headers */,
-				CFAFD8970AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
-				CFAFD8980AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860B0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB4F0B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E00B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
@@ -3811,10 +3751,6 @@
 				CFD9E6430AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6440AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B062C0AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFAFD8420AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
-				CFAFD8430AFCCB1900C04447 /* include_loggableObject.h in Headers */,
-				CFAFD8990AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
-				CFAFD89A0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860C0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB500B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E10B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
@@ -3905,10 +3841,6 @@
 				CFD9E6450AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6460AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B062E0AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFAFD8440AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
-				CFAFD8450AFCCB1900C04447 /* include_loggableObject.h in Headers */,
-				CFAFD89B0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
-				CFAFD89C0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860D0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB510B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E20B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
@@ -3999,10 +3931,6 @@
 				CFD9E6470AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */,
 				CFD9E6480AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */,
 				CF7B06300AEE387C00E94B20 /* AC_galgas_list.h in Headers */,
-				CFAFD8460AFCCB1900C04447 /* include_loggableMetamodel.h in Headers */,
-				CFAFD8470AFCCB1900C04447 /* include_loggableObject.h in Headers */,
-				CFAFD89D0AFCD12A00C04447 /* include_loggableAttribute.h in Headers */,
-				CFAFD89E0AFCD12A00C04447 /* include_loggableConstraint.h in Headers */,
 				CF91860E0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */,
 				CF69EB520B0F6D44007FE494 /* include_typeMethodCallInstruction.h in Headers */,
 				CF0357E30B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */,
