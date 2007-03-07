@@ -430,7 +430,7 @@ label importSemantics
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
 :
   $grammar$ ;
@@ -486,17 +486,19 @@ label importGrammarForSemantics
   repeat
     @L_signature signature ;
     <formal_arguments_list> importGrammarForSemantics ?signature ;
-    @lstring returnedMetamodelName ;
+    @lstring returnedEntityName ;
     select
-      returnedMetamodelName := [@lstring new !"" !here] ;
+      returnedEntityName := [@lstring new !"" !here] ;
     or
       $->$ ;
+      @lstring returnedMetamodelName ;
       $identifier$ ?returnedMetamodelName ;
+      [ioMetamodelComponentMap searchKey !returnedMetamodelName ?returnedEntityName ?2*] ;
     end select ;
     [!?grammarAltMap insertKey
       !altName
       !signature
-      !returnedMetamodelName
+      !returnedEntityName
     ] ;
   while
     $label$ ;

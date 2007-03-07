@@ -16,8 +16,10 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-gui cocoaGalgas "cocoa" :
+gui cocoaGalgas "cocoa" (galgas_LL1_grammar) :
+import semantics semantics_semantics in "semantics_semantics.ggs" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
+
 nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
 
 blockComment : "#" ;

@@ -317,15 +317,8 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                      << nomCourant->mString ;
       nomCourant = nomCourant->nextObject () ;
     }
-    generatedZone2 << ") ;\n" ;
- //--- Log objects
-    GGS_loggableObjectList::element_type * currentLoggedObject = currentGrammar->mLoggableObjectList.firstObject () ;
-    while (currentLoggedObject != NULL) {
-      macroValidPointer (currentLoggedObject) ;
-      currentLoggedObject->mLoggableObject (HERE)->generateLogInstructions (generatedZone2) ;
-      currentLoggedObject = currentLoggedObject->nextObject () ;
-    }
-    generatedZone2 << "C_BDD::markAndSweepUnusedNodes () ;\n"
+    generatedZone2 << ") ;\n"
+                      "C_BDD::markAndSweepUnusedNodes () ;\n"
                       "if (_mScannerPtr->totalErrorCount () == 0) {\n"
                       "  _afterParsing (inVerboseOptionOn) ;\n"
                       "}\n"
@@ -496,13 +489,18 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                       "  C_Lexique & _inLexique = * _commonLexique ;\n"
                       "  const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
                       "  const GGS_location _here (_inLexique) ;\n"
-                      "  const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;\n" ;
+                      "  const GGS_lstring var_cas_"
+                   << currentRule->mSourceFileName
+                   << " (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;\n" ;
     generateInstructionListForList (currentRule->mInstructionList,
                                     generatedZone2,
                                     "",
                                     prototypeIndex,
                                     false, // inGenerateDebug,
                                     true) ; // inGenerateSemanticInstructions
+    generatedZone2 << "  if (verboseOptionOn || ((_inLexique.totalErrorCount () + _inLexique.totalWarningCount ()) > 0)) {\n"
+                      "    co << \"Analysis of '\" << sourceFilesArray (i COMMA_HERE).lastPathComponent () << \"' completed. \" ;\n"
+                      "  }\n" ;
     currentRule = currentRule->nextObject () ;
     grammarIndex ++ ;
   }
@@ -607,32 +605,17 @@ routine_generatePRGM (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_loggableMetamodel::
-generateLogInstructions (AC_OutputStream & inCppFile) const {
-  inCppFile << "_logMetamodel_" << mMetamodelName << " (*_mScannerPtr, _metamodelRootObject SOURCE_FILE_AT_LINE ("
-            << mMetamodelName.currentLineNumber ()
-            << ")) ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_loggableAttribute::
-generateLogInstructions (AC_OutputStream & inCppFile) const {
-  inCppFile << "co << \"LOGGING " << mAttributeName << ": \"\n"
-               "   << " << mAttributeName << ".reader_description (*_mScannerPtr SOURCE_FILE_AT_LINE ("
-            << mAttributeName.currentLineNumber ()
-            << "))\n"
-               "  << \"\\n\" ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_loggableConstraint::
-generateLogInstructions (AC_OutputStream & inCppFile) const {
-  inCppFile << "_logConstraint_" << mConstraintName << "_on_"
-            << mMetamodelName << " (*_mScannerPtr, _rootObjectConstraint_" << mConstraintName << " SOURCE_FILE_AT_LINE ("
-            << mConstraintName.currentLineNumber ()
-            << ")) ;\n" ;
+void
+routine_fixFileGenerationStartDirectory (C_Lexique & inLexique,
+                                         const GGS_lstring & inSourceFile
+                                         COMMA_LOCATION_ARGS) {
+  inLexique.ioParametersPtr ()->mFileGenerationStartDir = inSourceFile.stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
+  const bool ok = inLexique.ioParametersPtr ()->mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;
+  if (! ok) {
+    C_String errorMessage ;
+    errorMessage << "cannot create directory '" << inLexique.ioParametersPtr ()->mFileGenerationStartDir << "'" ;
+    inLexique.ioParametersPtr ()->printFileErrorMessage (inSourceFile, errorMessage.cString () COMMA_THERE) ;
+  }
 }
 
 //---------------------------------------------------------------------------*

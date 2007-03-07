@@ -1471,9 +1471,12 @@ list @L_grammarDescriptorForProgram {
   @lstring mReturnedRootEntityName ;
   @lstring mSourceExtension ;
   @string mHelpMessage ;
-  @loggableObjectList mLoggableObjectList ;
 }
 
 #---------------------------------------------------------------------------*
+
+action fixFileGenerationStartDirectory
+  ??@lstring inSourceFile
+;
 
 end semantics ;

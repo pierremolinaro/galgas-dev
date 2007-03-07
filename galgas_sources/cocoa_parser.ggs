@@ -48,11 +48,31 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-nonterminal <parse_grammar_component_for_importing>
-  ??@lstring inFileName
-  ?!@M_grammarComponents ioGrammarComponentsMap
+nonterminal <import_headers_semantics_and_grammars>
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIncludedMetamodelComponents
+  !@stringset outIncludedOptionComponents
+  !@stringset outIncludedGrammarComponents
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+  !@stringset outInclusionsForImplementationFile
+  !@stringset outInclusionsForHeaderFile
+  !@M_optionComponents ioOptionsComponentsMapForUse
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@typeTableEnAvant tableEnAvant
+  !@entityToImplementMap outAllMetamodelClassMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIcludedOptionComponents
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
 label parse
 ;
 
@@ -69,7 +89,7 @@ action generateCocoaComponent
 
 rule <galgas_component>
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
-  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -81,44 +101,55 @@ rule <galgas_component>
   $identifier$ ? guiComponentName ;
   @lstring guiKindName ;
   $literal_string$ ? guiKindName ;
-  $:$ ;
-#--- Command line tool
-  select
-    $program$ ;
-    warning here: "obsolete construct in GALGAS 1.4.10 and later" ; 
-    $literal_string$ ?* ;
-    $;$ ;
-  or
-  end select ;
-#--- Grammar
-  $import$ ;
-  $grammar$ ;
+#--- Grammar reference
+  $($ ;
   @lstring grammarName ;
   $identifier$ ? grammarName ;
-  @M_grammarComponents grammarComponentsMap ;
-  select
-    grammarComponentsMap := ioGrammarComponentsMap ;
-  or
-    $in$ ;
-    @lstring sourceFileName ;
-    $literal_string$ ? sourceFileName ;
-    grammarComponentsMap := [@M_grammarComponents emptyMap] ;
-    <parse_grammar_component_for_importing>
-     !sourceFileName
-     !?grammarComponentsMap
-     !?ioMetamodelComponentMap
-     !?ioOptionsComponentsMap
+  $)$ ;
+  $:$ ;
+#--- Import semantics
+  @ModelMap modelMap [emptyMap] ;
+  @ActionMap actionMap [emptyMap] ;
+  @stringset inclusionsForHeaderFile ;
+  @stringset inclusionsForImplementationFile ;
+  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+  @M_semanticsEntitiesForUse componentEntitiesMap ;
+  @stringset classNamesSet [emptySet] ;
+  @typeTableEnAvant tableEnAvant [emptyMap] ;
+  @stringset includedSemanticsComponents ;
+  @stringset includedOptionComponents ;
+  @stringset includedMetamodelComponents ;
+  @stringset includedGrammarComponents ;
+  @entityToImplementMap allMetamodelClassMap ;
+  <import_headers_semantics_and_grammars>
+    ?includedSemanticsComponents
+    ?includedMetamodelComponents
+    ?includedOptionComponents
+    ?includedGrammarComponents
+    !?ioSemanticsComponentsMap
+    !?ioMetamodelComponentMap
+    !?ioGrammarComponentsMap
+    !?ioOptionsComponentsMap
+    ?inclusionsForImplementationFile
+    ?inclusionsForHeaderFile
+    ?optionsComponentsMapForUse
+    ?modelMap
+    ?actionMap
+    ?componentEntitiesMap
+    ?tableEnAvant
+    ?allMetamodelClassMap
   ;
-  end select ;
   @lstring lexiqueClassName ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
   @M_optionComponents optionsComponentsMap ;
-  [grammarComponentsMap searchKey !grammarName ?nonterminalSymbolParametersMap
-                                                 ?lexiqueClassName
-                                                 ?optionsComponentsMap] ;
+  [ioGrammarComponentsMap searchKey
+    !grammarName
+    ?nonterminalSymbolParametersMap
+    ?lexiqueClassName
+    ?optionsComponentsMap
+  ] ;
   @lstring altName := [@lstring new !"" !here] ;
   [nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
-  $;$ ;
 #--- Assignment list
   @L_nibAndClassList nibAndClassList [emptyList] ;
   @string blockComment := "" ; # Means undefined
@@ -163,24 +194,11 @@ label importLexique
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $:$ ;
-#--- Command line tool
-  select
-    $program$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  or
-  end select ;
-  $import$ ;
-  $grammar$ ;
+  $($ ;
   $identifier$ ? * ;
-  select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
+  $)$ ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
 #--- Assignment list
   repeat
   while
@@ -199,24 +217,11 @@ label importSyntax
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $:$ ;
-#--- Command line tool
-  select
-    $program$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  or
-  end select ;
-  $import$ ;
-  $grammar$ ;
+  $($ ;
   $identifier$ ? * ;
-  select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
+  $)$ ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
 #--- Assignment list
   repeat
   while
@@ -235,24 +240,11 @@ label importSemantics
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $:$ ;
-#--- Command line tool
-  select
-    $program$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  or
-  end select ;
-  $import$ ;
-  $grammar$ ;
+  $($ ;
   $identifier$ ? * ;
-  select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
+  $)$ ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
 #--- Assignment list
   repeat
   while
@@ -272,24 +264,11 @@ label importGrammarForSemantics
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $:$ ;
-#--- Command line tool
-  select
-    $program$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  or
-  end select ;
-  $import$ ;
-  $grammar$ ;
+  $($ ;
   $identifier$ ? * ;
-  select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
+  $)$ ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
   repeat
   while
     $identifier$ ? * ;
@@ -306,24 +285,11 @@ label importOptions
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $:$ ;
-#--- Command line tool
-  select
-    $program$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  or
-  end select ;
-  $import$ ;
-  $grammar$ ;
+  $($ ;
   $identifier$ ? * ;
-  select
-  or
-   $in$ ;
-   $literal_string$ ? * ;
-   <parse_grammar_component_for_importing> parse ;
-  end select ;
-  $;$ ;
+  $)$ ;
+  $:$ ;
+  <import_headers_semantics_and_grammars> parse ;
 #--- Assignment list
   repeat
   while
