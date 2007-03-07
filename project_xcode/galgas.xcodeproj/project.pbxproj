@@ -1498,6 +1498,10 @@
 		CFDC00700B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
 		CFDC00710B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */; };
 		CFDC00720B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
+		CFE61CF80B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */; };
+		CFE61CFA0B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */; };
+		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
+		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE838200AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838210AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838220AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
@@ -2187,6 +2191,8 @@
 		CFDB3A720B8866D500DDA180 /* treewalking_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = treewalking_parser.h; sourceTree = "<group>"; };
 		CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_mapindex.cpp; sourceTree = "<group>"; };
 		CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_mapindex.h; sourceTree = "<group>"; };
+		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
+		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = "<group>"; };
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
 		CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_methods.cpp; sourceTree = "<group>"; };
 		CFEC15F509CA026700204242 /* metamodel_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_generation.cpp; sourceTree = "<group>"; };
@@ -2492,8 +2498,10 @@
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.mm */,
 				CF82597708536A130077AEAF /* OC_GGS_RulerView.h */,
 				CF82597808536A130077AEAF /* OC_GGS_RulerView.mm */,
-				CF82597908536A130077AEAF /* OC_GGS_TextView.h */,
 				CF82597A08536A130077AEAF /* OC_GGS_TextView.mm */,
+				CF82597908536A130077AEAF /* OC_GGS_TextView.h */,
+				CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */,
+				CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
 				CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */,
 				CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */,
@@ -3239,6 +3247,7 @@
 			files = (
 				CF4397F80ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */,
 				CF4397FA0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */,
+				CFE61CFA0B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3526,6 +3535,7 @@
 				CFDAE70B0AD19F3E00713406 /* PMDownloadFile.h in Headers */,
 				CF4397FC0ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */,
 				CF4397FE0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */,
+				CFE61CF80B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4315,6 +4325,7 @@
 				CF4397FB0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */,
 				CF27C88B0B6FB42D008C1B22 /* C_galgas_io.cpp in Sources */,
 				CF381D3F0B6FD70600289177 /* C_ErrorOut.cpp in Sources */,
+				CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4703,6 +4714,7 @@
 				CF397DD60B2C663A001F008D /* AC_CLI_Options.cpp in Sources */,
 				CFCF92650B6E453800747AC6 /* C_galgas_io.cpp in Sources */,
 				CFCF92670B6E454B00747AC6 /* C_ErrorOut.cpp in Sources */,
+				CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5660,8 +5672,8 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
 				GCC_SHORT_ENUMS = YES;
