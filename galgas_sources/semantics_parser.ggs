@@ -768,11 +768,10 @@ rule <import_headers_semantics_and_grammars>
     $import$ ;
     select
       $treewalking$ ;
-#      @lstring optionComponentName ;
-      $identifier$ ? * ;
-
+      @lstring treewalkingComponentName ;
+      $identifier$ ? treewalkingComponentName ;
+      outInclusionsForImplementationFile += ![treewalkingComponentName string] . ".h" ;
       select
-
       or
         $in$ ;
         @lstring fileName ;
@@ -3687,11 +3686,18 @@ rule <semantic_instruction>
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
 :
-  log inTreewalkingComponentMap ;
   $treewalking$ ;
 #--- Treewalking component name
   @lstring treewalkingComponentName ;
   $identifier$ ? treewalkingComponentName ;
+#--- Search for component name
+  @string rootEntityName ;
+  @L_EXsignature treewalkingRoutineSignature ;
+  [inTreewalkingComponentMap searchKey
+    !treewalkingComponentName
+    ?rootEntityName
+    ?treewalkingRoutineSignature
+  ] ;
 #--- Model Name
   $on$ ;
   @lstring modelVariableName ;
@@ -3703,7 +3709,15 @@ rule <semantic_instruction>
     ?modelVariableType
     !?ioVariablesMap
   ;
-#  extract typeNomFichierSource ->@typeGalgas_lstring () error nomFichierSource : messageGalgasType ;
+#--- Check variable type
+  @lstring variableEntity ;
+  extract modelVariableType ->@typeGalgas_singleReferenceEntity (? variableEntity) error modelVariableName : messageGalgasType ;
+  if [variableEntity string] != rootEntityName then
+    error modelVariableName: "the '" . [modelVariableName string]
+    . "' variable is an instance of '@" . [variableEntity string]
+    . "', but the '" . [treewalkingComponentName string] . "' component requires an instance of '@"
+    . rootEntityName . "' type" ;
+  end if ;
 #--- Analyse des arguments effectifs
   @typeExpressionList expressionsList ;
   @L_actualParametersSignature listeTypesParametresEffectifs ;
@@ -3714,48 +3728,21 @@ rule <semantic_instruction>
     !inOptionsComponentsMapForUse
     !ioComponentSemanticsEntitiesMap
   ;
-#--- Look for grammar
-#  @AC_semanticsEntity e  ;
-#  [ioComponentSemanticsEntitiesMap searchKey !grammarName ?e] ;
-#  @M_nonterminalSymbolAlts startSymbolAltMap ;
-#  @lstring lexiqueClassName ;
-#  extract e->@C_grammarForSemantics (?startSymbolAltMap ?lexiqueClassName) error grammarName : messageTypeEntite ;
-#  @L_EXsignature startSymbolSignature ;
-#  @lstring returnedEntity ;
-#  [startSymbolAltMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
-##--- Verifier la coherence avec la declaration
-#  verifierCompatibiliteArgEffectifsSignature 
-#    !startSymbolSignature
-#    !listeTypesParametresEffectifs
-#    !here
-#    !?ioInstructionList
-#    !?expressionsList
-#  ;
-##--- returned model
-#  @lstring metamodelClassVariableName [new !"" !here] ;
-#  select
-#    if [returnedEntity string] != "" then
-#      error here: "this grammar returns an instance of '@" . [returnedEntity string] . "' metamodel entity" ; 
-#    end if ;
-#  or
-#    $->$ ;
-#    $identifier$ ? metamodelClassVariableName ;
-#    @AC_galgasType type ;
-#    [!?ioVariablesMap searchForWriteAccess !metamodelClassVariableName ?type ?*] ;
-#    @lstring variableEntityName ;
-#    extract type->@typeGalgas_singleReferenceEntity (?variableEntityName) error metamodelClassVariableName : messageGalgasType ;
-#    if [returnedEntity string] != [variableEntityName string] then
-#      error metamodelClassVariableName: "this variable has the '@" . [variableEntityName string]
-#        . "', but a variable of '@" . [returnedEntity string] . "' type is expected" ;
-#    end if ;
-#  end select ;
-##--- Engendrer l'instruction
-#  @typeInstruction instruction := [@C_treewalkingInstruction new
-#    !treewalkingComponentName
-#    !cppNameForModelVariable
-#    !expressionsList
-#  ] ;
-#  ioInstructionList += !instruction ;
+#--- Verifier la coherence avec la declaration
+  verifierCompatibiliteArgEffectifsSignature 
+    !treewalkingRoutineSignature
+    !listeTypesParametresEffectifs
+    !here
+    !?ioInstructionList
+    !?expressionsList
+  ;
+#--- Engendrer l'instruction
+  @typeInstruction instruction := [@C_treewalkingInstruction new
+    !treewalkingComponentName
+    !cppNameForModelVariable
+    !expressionsList
+  ] ;
+  ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
 
