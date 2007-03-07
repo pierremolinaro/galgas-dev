@@ -54,7 +54,7 @@ label importOptions
 
 nonterminal <parse_treewalking_document>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ??@bool inGenerateTreewalkingCode
 label parse
 ;
@@ -121,7 +121,7 @@ rule <galgas_component>
 :
   <parse_treewalking_document>
     !?ioMetamodelComponentMap
-    !ioTreewalkingComponentMap
+    !?ioTreewalkingComponentMap
     !true
   ;
 label importLexique
@@ -135,7 +135,7 @@ label importSyntax
 :
   <parse_treewalking_document>
     !?ioMetamodelComponentMap
-    !ioTreewalkingComponentMap
+    !?ioTreewalkingComponentMap
     !false
   ;
 label importSemantics
@@ -145,7 +145,7 @@ label importSemantics
 :
   <parse_treewalking_document>
     !?ioMetamodelComponentMap
-    !ioTreewalkingComponentMap
+    !?ioTreewalkingComponentMap
     !false
   ;
 label importGrammarForSemantics
@@ -156,7 +156,7 @@ label importGrammarForSemantics
 :
   <parse_treewalking_document>
     !?ioMetamodelComponentMap
-    !ioTreewalkingComponentMap
+    !?ioTreewalkingComponentMap
     !false
   ;
 label importOptions
@@ -170,7 +170,7 @@ end rule ;
 
 rule <parse_treewalking_document>
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-  ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ??@bool inGenerateTreewalkingCode
 :
 #--- Tree walking component header
@@ -266,17 +266,18 @@ rule <parse_treewalking_document>
         !optionsComponentsMapForUse
         !treewalkingRoutineHeaderMap
         !?treewalkingRoutineToGenerateList
-        !inTreewalkingComponentMap
+        !ioTreewalkingComponentMap
       ;
     end repeat ;
   end parse ;
 #--- Get Root routine signature
-  @typeListeTypesEtNomsArgMethode rootRoutineSignature ;
+  @L_EXsignature rootRoutineSignature ;
+  @typeListeTypesEtNomsArgMethode rootRoutineArgumentList ;
   if [treewalkingRoutineHeaderMap hasKey ![metamodelRootEntity string]] then
-    [treewalkingRoutineHeaderMap searchKey !metamodelRootEntity ?* ?rootRoutineSignature] ;
+    [treewalkingRoutineHeaderMap searchKey !metamodelRootEntity ?rootRoutineSignature ?rootRoutineArgumentList] ;
   else
-    error here:"a routine should be defined for the '%" . [metamodelRootEntity string] . "' root class"
-    -> rootRoutineSignature ;
+    error here:"a routine should be defined for the '@" . [metamodelRootEntity string] . "' root class"
+    -> rootRoutineSignature, rootRoutineArgumentList ;
   end if ;
 #--- Generate code, and additional checkings ?
   if inGenerateTreewalkingCode then
@@ -340,9 +341,17 @@ rule <parse_treewalking_document>
       !treewalkingRoutineToGenerateList
       !routineDispatcherSortedList
       !metamodelEntityMap
-      !rootRoutineSignature
+      !rootRoutineArgumentList
       !metamodelRootEntity
     ;
+  end if ;
+#--- Add to treewalking component map
+  if not [ioTreewalkingComponentMap hasKey ![treewalkingName string]] then
+    [!?ioTreewalkingComponentMap insertKey
+      !treewalkingName
+      ![metamodelRootEntity string]
+      !rootRoutineSignature
+    ] ;
   end if ;
 #--- End of treewalking component
   $end$ ;
