@@ -767,6 +767,24 @@ rule <import_headers_semantics_and_grammars>
   while
     $import$ ;
     select
+      $treewalking$ ;
+#      @lstring optionComponentName ;
+      $identifier$ ? * ;
+
+      select
+
+      or
+        $in$ ;
+        @lstring fileName ;
+        $literal_string$ ? fileName ;
+        <parse_semantics_component_for_importing> 
+          !fileName
+          !?ioSemanticsComponentsMap
+          !?ioMetamodelComponentMap
+          !?ioTreewalkingComponentMap
+        ;
+      end select ;
+    or
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
@@ -961,6 +979,15 @@ label importSemantics
   while
     $import$ ;
     select
+      $treewalking$ ;
+      $identifier$ ? * ;
+      select
+      or
+        $in$ ;
+        $literal_string$ ? * ;
+        <parse_semantics_component_for_importing> parse ;
+     end select ;
+    or
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
@@ -3649,44 +3676,45 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#rule <semantic_instruction>
-#  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
-#  ??@typeTableEnAvant unused  inTableEnAvant
-#  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-#  ??@M_optionComponents inOptionsComponentsMapForUse
-#  ?!@typeVariablesMap ioVariablesMap
-#  ?!@typeInstructionList ioInstructionList
-#  ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
-#  ??@entityToImplementMap unused inMetamodelEntityMap
-#  ??@M_treewalkingComponents unused inTreewalkingComponentMap
-#:
-#  $treewalking$ ;
-##--- Treewalking component name
-#  @lstring treewalkingComponentName ;
-#  $identifier$ ? treewalkingComponentName ;
-##--- Model Name
-#  $on$ ;
-#  @lstring modelVariableName ;
-#  @typeCplusPlusName cppNameForModelVariable ;
-#  @AC_galgasType modelVariableType ;
-#  <read_access>
-#    ?modelVariableName
-#    ?cppNameForModelVariable
-#    ?modelVariableType
-#    !?ioVariablesMap
-#  ;
-##  extract typeNomFichierSource ->@typeGalgas_lstring () error nomFichierSource : messageGalgasType ;
-##--- Analyse des arguments effectifs
-#  @typeExpressionList expressionsList ;
-#  @L_actualParametersSignature listeTypesParametresEffectifs ;
-#  <parse_parameters_list>
-#    ?listeTypesParametresEffectifs
-#    ?expressionsList
-#    !?ioVariablesMap
-#    !inOptionsComponentsMapForUse
-#    !ioComponentSemanticsEntitiesMap
-#  ;
-##--- Look for grammar
+rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
+  ??@typeTableEnAvant unused  inTableEnAvant
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
+  ??@entityToImplementMap unused inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
+:
+  log inTreewalkingComponentMap ;
+  $treewalking$ ;
+#--- Treewalking component name
+  @lstring treewalkingComponentName ;
+  $identifier$ ? treewalkingComponentName ;
+#--- Model Name
+  $on$ ;
+  @lstring modelVariableName ;
+  @typeCplusPlusName cppNameForModelVariable ;
+  @AC_galgasType modelVariableType ;
+  <read_access>
+    ?modelVariableName
+    ?cppNameForModelVariable
+    ?modelVariableType
+    !?ioVariablesMap
+  ;
+#  extract typeNomFichierSource ->@typeGalgas_lstring () error nomFichierSource : messageGalgasType ;
+#--- Analyse des arguments effectifs
+  @typeExpressionList expressionsList ;
+  @L_actualParametersSignature listeTypesParametresEffectifs ;
+  <parse_parameters_list>
+    ?listeTypesParametresEffectifs
+    ?expressionsList
+    !?ioVariablesMap
+    !inOptionsComponentsMapForUse
+    !ioComponentSemanticsEntitiesMap
+  ;
+#--- Look for grammar
 #  @AC_semanticsEntity e  ;
 #  [ioComponentSemanticsEntitiesMap searchKey !grammarName ?e] ;
 #  @M_nonterminalSymbolAlts startSymbolAltMap ;
@@ -3728,8 +3756,8 @@ end rule ;
 #    !expressionsList
 #  ] ;
 #  ioInstructionList += !instruction ;
-#  $;$ ;
-#end rule ;
+  $;$ ;
+end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
