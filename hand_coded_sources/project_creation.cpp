@@ -278,22 +278,29 @@ createProgramFile (const C_String & inCreatedProjectPathName,
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_program.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
-  f << "program " << projectName << "_program \"version 1.0.0\":\n"
-       "import grammar " << projectName << "_grammar in \"" << projectName << "_grammar.ggs\" ;\n" ;
+  f << "program " << projectName << "_program \"version 1.0.0\":\n" ;
   if (inProjectStyle == kMDAproject) {
-    f << "#--- WARNING : metamodel handling will change in future releases\n"
-         "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n" ;
+    f << "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n" ;
   }
-  f << "#--- max error and warning count\n"
+  f << "import semantics " << projectName << "_semantics in \"" << projectName << "_semantics.ggs\" ;\n"
+       "import grammar " << projectName << "_grammar in \"" << projectName << "_grammar.ggs\" ;\n"
+       "#--- max error and warning count\n"
        "error 100 ;\n"
        "warning 100 ;\n"
-       "when . \"" << projectName << "\":\n"
-       "  message \"a source text file with the ." << projectName << " extension\"\n"
-       "  grammar " << projectName << "_grammar\n" ;
+       "\n"
+       "when . \"" << projectName << "\"\n"
+       "message \"a source text file with the ." << projectName << " extension\"\n"
+       "??@lstring inSourceFile {\n" ;
   if (inProjectStyle == kMDAproject) {
-    f << "  metamodel " << projectName << "_metamodel # (" << projectName << "_treewalking)\n" ;
+    f << "  @" << projectName << "_root model ;\n" ;
   }
-  f << "  ;\n"
+  f << "  grammar " << projectName << "_grammar in inSourceFile" ;
+  if (inProjectStyle == kMDAproject) {
+    f << " -> model" ;
+  }
+  f << " ;\n"
+       "}\n"
+       "\n"
        "end program ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
@@ -307,12 +314,16 @@ createProgramFile (const C_String & inCreatedProjectPathName,
 //---------------------------------------------------------------------------*
 
 static bool
-createCocoaFile (const C_String & inCreatedProjectPathName) {
+createCocoaFile (const C_String & inCreatedProjectPathName,
+                 const enumProjectStyle inProjectStyle) {
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_cocoa.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
-  f << "gui " << projectName << "_cocoa \"cocoa\":\n"
-       "import grammar " << projectName << "_grammar in \"" << projectName << "_grammar.ggs\" ;\n"
+  f << "gui " << projectName << "_cocoa \"cocoa\" (" << projectName << "_grammar) :\n" ;
+  if (inProjectStyle == kMDAproject) {
+    f << "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n" ;
+  }
+  f << "import grammar " << projectName << "_grammar in \"" << projectName << "_grammar.ggs\" ;\n"
        "end gui ;\n" ;
   const bool ok = f.close () ;
   if (ok) {
@@ -1482,6 +1493,8 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                CF825D5A085386810077AEAF /* OC_GGS_PreferencesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF825D4E085386810077AEAF /* OC_GGS_PreferencesController.mm */; };\n"
        "                CF825D5B085386810077AEAF /* OC_GGS_RulerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF825D50085386810077AEAF /* OC_GGS_RulerView.mm */; };\n"
        "                CF825D5C085386810077AEAF /* OC_GGS_TextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF825D52085386810077AEAF /* OC_GGS_TextView.mm */; };\n"
+       "                CF825D5C085386810077AEA0 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF825D52085386810077AEA0 /* OC_GGS_DelegateForSyntaxColoring.mm */; };\n"
+       "                CF825D5C085386810077AEA1 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CF825D52085386810077AEA1 /* NSSplitViewExtensions.m */; };\n"
        "                CFBC76070AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76060AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm */; };\n"
        "                CF825D610853868A0077AEAF /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF825D5D0853868A0077AEAF /* MainMenu.nib */; };\n"
        "                CF825D620853868A0077AEAF /* OC_GGS_Document.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF825D5F0853868A0077AEAF /* OC_GGS_Document.nib */; };\n"
@@ -1743,6 +1756,10 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                CF825D50085386810077AEAF /* OC_GGS_RulerView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_RulerView.mm; sourceTree = \"<group>\"; };\n"
        "                CF825D51085386810077AEAF /* OC_GGS_TextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextView.h; sourceTree = \"<group>\"; };\n"
        "                CF825D52085386810077AEAF /* OC_GGS_TextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_TextView.mm; sourceTree = \"<group>\"; };\n"
+       "                CF825D51085386810077AEA0 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = \"<group>\"; };\n"
+       "                CF825D52085386810077AEA0 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = \"<group>\"; };\n"
+       "                CF825D51085386810077AEA1 /* NSSplitViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = NSSplitViewExtensions.h; sourceTree = \"<group>\"; };\n"
+       "                CF825D52085386810077AEA1 /* NSSplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = NSSplitViewExtensions.m; sourceTree = \"<group>\"; };\n"
        "                CFBC75C70AC6785A00443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = \"<group>\"; };\n"
        "                CFBC76060AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = \"<group>\"; };\n"
        "                CF825D53085386810077AEAF /* PP_CocoaGalgasPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PP_CocoaGalgasPrefix.pch; sourceTree = \"<group>\"; };\n"
@@ -2004,6 +2021,10 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CF825D50085386810077AEAF /* OC_GGS_RulerView.mm */,\n"
        "                                CF825D51085386810077AEAF /* OC_GGS_TextView.h */,\n"
        "                                CF825D52085386810077AEAF /* OC_GGS_TextView.mm */,\n"
+       "                                CF825D51085386810077AEA0 /* OC_GGS_DelegateForSyntaxColoring.h */,\n"
+       "                                CF825D52085386810077AEA0 /* OC_GGS_DelegateForSyntaxColoring.mm */,\n"
+       "                                CF825D51085386810077AEA1 /* NSSplitViewExtensions.h */,\n"
+       "                                CF825D52085386810077AEA1 /* NSSplitViewExtensions.m */,\n"
        "                                CFBC75C70AC6785A00443ACA /* OC_GGS_BuildResultTextView.h */,\n"
        "                                CFBC76060AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm */,\n"
        "                        );\n"
@@ -2504,6 +2525,8 @@ createXCodeProjectFile (const C_String & inCreatedXcodeProjectPathName,
        "                                CF825D5B085386810077AEAF /* OC_GGS_RulerView.mm in Sources */,\n"
        "                                CFBC76070AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm in Sources */,\n"
        "                                CF825D5C085386810077AEAF /* OC_GGS_TextView.mm in Sources */,\n"
+       "                                CF825D5C085386810077AEA0 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,\n"
+       "                                CF825D5C085386810077AEA1 /* NSSplitViewExtensions.m in Sources */,\n"
        "                                CF825DFF085388270077AEAF /* C_CLI_OptionGroup.cpp in Sources */,\n"
        "                                CF825E01085388290077AEAF /* AC_CLI_Options.cpp in Sources */,\n"
        "                                CF825E020853882D0077AEAF /* C_Lexique.cpp in Sources */,\n"
@@ -2980,7 +3003,7 @@ createProject (const C_String & inCreatedProjectPathName,
       ok = createGrammarFile (inCreatedProjectPathName, inProjectStyle) ;
     }
     if (ok) {
-      ok = createCocoaFile (inCreatedProjectPathName) ;
+      ok = createCocoaFile (inCreatedProjectPathName, inProjectStyle) ;
     }
     if (ok) {
       ok = createProgramFile (inCreatedProjectPathName, inProjectStyle) ;

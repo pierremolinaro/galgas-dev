@@ -1575,6 +1575,14 @@
 		CFF2131B0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */; };
 		CFF2131C0BA017FB0087BA01 /* NSSplitViewExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */; };
 		CFF2131D0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */; };
+		CFF215010BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
+		CFF215020BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
+		CFF215030BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
+		CFF215040BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
+		CFF215050BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
+		CFF215060BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
+		CFF215070BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
+		CFF215080BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
 		CFF253EF07B0CA1E001265A1 /* galgas_scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */; };
 		CFF253F107B0CA1E001265A1 /* galgas_scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */; };
 		CFF253F307B0CA1E001265A1 /* galgas_scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */; };
@@ -1798,7 +1806,6 @@
 		CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_SourceTextForCocoa.h; sourceTree = "<group>"; };
 		CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
 		CF3B8A9B058CD21900D682D2 /* libstdc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libstdc++.a"; path = "/usr/lib/gcc/darwin/3.3/libstdc++.a"; sourceTree = "<absolute>"; };
-		CF3E627F096EE4BA00419EBB /* project_creation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = project_creation.h; sourceTree = "<group>"; };
 		CF3E6280096EE4BA00419EBB /* project_creation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = project_creation.cpp; sourceTree = "<group>"; };
 		CF3FF0C005877B62000D2F8C /* galgas_header.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = galgas_header.h; sourceTree = "<group>"; };
 		CF3FF0C105877B62000D2F8C /* GGS_bool.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GGS_bool.h; sourceTree = "<group>"; };
@@ -2214,6 +2221,7 @@
 		CFF13E410597311700C43F5E /* option_component_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_component_generation.cpp; sourceTree = "<group>"; };
 		CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSSplitViewExtensions.h; sourceTree = "<group>"; };
 		CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSplitViewExtensions.m; sourceTree = "<group>"; };
+		CFF215000BA05AB80087BA01 /* project_creation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = project_creation.h; sourceTree = "<group>"; };
 		CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_scanner.cpp; sourceTree = "<group>"; };
 		CFF253EE07B0CA1E001265A1 /* galgas_scanner.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_scanner.h; sourceTree = "<group>"; };
 		CFF283330864369A0055D7B6 /* GGS_double.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_double.cpp; sourceTree = "<group>"; };
@@ -2451,7 +2459,7 @@
 		CF3E627C096EE48300419EBB /* Project Creation */ = {
 			isa = PBXGroup;
 			children = (
-				CF3E627F096EE4BA00419EBB /* project_creation.h */,
+				CFF215000BA05AB80087BA01 /* project_creation.h */,
 				CF3E6280096EE4BA00419EBB /* project_creation.cpp */,
 			);
 			name = "Project Creation";
@@ -3348,6 +3356,7 @@
 				CFEF40940B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
 				CFEF440A0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D030B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
+				CFF215010BA05AB80087BA01 /* project_creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3439,6 +3448,7 @@
 				CFEF40950B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
 				CFEF440B0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D020B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
+				CFF215070BA05AB80087BA01 /* project_creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3530,6 +3540,7 @@
 				CFEF40960B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
 				CFEF440C0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531CFE0B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
+				CFF215080BA05AB80087BA01 /* project_creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3637,6 +3648,7 @@
 				CFEF40910B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
 				CFEF44070B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D000B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
+				CFF215020BA05AB80087BA01 /* project_creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3728,6 +3740,7 @@
 				CFEF40900B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
 				CFEF44060B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D050B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
+				CFF215030BA05AB80087BA01 /* project_creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3819,6 +3832,7 @@
 				CFEF40920B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
 				CFEF44080B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531CFF0B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
+				CFF215040BA05AB80087BA01 /* project_creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3910,6 +3924,7 @@
 				CFEF408F0B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
 				CFEF44050B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D040B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
+				CFF215050BA05AB80087BA01 /* project_creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4001,6 +4016,7 @@
 				CFEF40930B99886600CA3AF7 /* include_C_mapindexToImplement.h in Headers */,
 				CFEF44090B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D010B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
+				CFF215060BA05AB80087BA01 /* project_creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
