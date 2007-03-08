@@ -108,7 +108,6 @@ action generatePRGM
   ??@ruleDescriptorForProgramList inRuleDescriptorForProgramList
   ??@luint nombreMaxErreurs
   ??@luint nombreMaxAlertes
-  ??@stringlist inGrammarNameList
   ??@M_optionComponents inOptionsComponentsMap
   ??@stringset inInclusionsForImplementationFile
 ;
@@ -334,11 +333,6 @@ rule <galgas_component>
   while
     $when$ ;
   end repeat ;
-#--- List of all grammars names
-  @stringlist grammarNameList [emptyList] ;
-  foreach ioGrammarComponentsMap (@lstring kKey 3*) :
-    grammarNameList += ![kKey string] ;
-  end foreach ;
 #--- Engendrer le programme principal
   action generatePRGM
     !nomPRGMprincipal
@@ -347,7 +341,6 @@ rule <galgas_component>
     !ruleDescriptorForProgramList
     !nombreMaxErreurs
     !nombreMaxAlertes
-    !grammarNameList
     !optionsComponentsMap
     !inclusionsForImplementationFile
   ;
