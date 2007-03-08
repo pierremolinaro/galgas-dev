@@ -3174,6 +3174,11 @@ routine handleReaderCall
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
+      elsif [inReaderName string] == "existsOnBitRange" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ;
       else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
