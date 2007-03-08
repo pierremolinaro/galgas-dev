@@ -192,7 +192,6 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
                             const C_String & inProgramComponentName,
                             const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
                             const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
-                            const GGS_stringlist & inGrammarNameList,
                             const GGS_M_optionComponents & inOptionsComponentsMap,
                             const GGS_stringset & inInclusionsForImplementationFile) {
 //--- Generate user includes
@@ -631,7 +630,6 @@ routine_generatePRGM (C_Lexique & inLexique,
                       const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
                       const GGS_luint & inMaxErrorCount,
                       const GGS_luint & inMaxWarningCount,
-                      const GGS_stringlist & inGrammarNameList,
                       const GGS_M_optionComponents & inOptionsComponentsMap,
                       const GGS_stringset & inInclusionsForImplementationFile
                       COMMA_UNUSED_LOCATION_ARGS) {
@@ -647,7 +645,6 @@ routine_generatePRGM (C_Lexique & inLexique,
                                 inProgramComponentName,
                                 inGrammarDescriptorsList,
                                 inRuleDescriptorForProgramList,
-                                inGrammarNameList,
                                 inOptionsComponentsMap,
                                 inInclusionsForImplementationFile) ;
   }
