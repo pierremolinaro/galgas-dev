@@ -109,10 +109,13 @@ rule <galgas_component>
   @lstring guiKindName ;
   $literal_string$ ? guiKindName ;
 #--- Grammar reference
-  $($ ;
   @lstring grammarName ;
-  $identifier$ ? grammarName ;
-  $)$ ;
+  select
+    grammarName := [@lstring new !"" !here] ;
+  or
+    $grammar$ ;
+    $identifier$ ? grammarName ;
+  end select ;
   $:$ ;
 #--- Import semantics
   @ModelMap modelMap [emptyMap] ;
@@ -150,12 +153,29 @@ rule <galgas_component>
   @lstring lexiqueClassName ;
   @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
   @M_optionComponents optionsComponentsMap ;
-  [ioGrammarComponentsMap searchKey
-    !grammarName
-    ?nonterminalSymbolParametersMap
-    ?lexiqueClassName
-    ?optionsComponentsMap
-  ] ;
+  if [ioGrammarComponentsMap count] == 1 then
+    @lstring grammarKey [new !"" !here] ;
+    foreach ioGrammarComponentsMap (@lstring kKey 3*) :
+      grammarKey := kKey ;
+    end foreach ;
+    [ioGrammarComponentsMap searchKey
+      !grammarKey
+      ?nonterminalSymbolParametersMap
+      ?lexiqueClassName
+      ?optionsComponentsMap
+    ] ;
+  elsif [grammarName string] == "" then
+    error here: "the grammar should be named in the header, as follows (replace xxx by actual grammar name):\n"
+    . "gui " . guiComponentName . "\"" . guiKindName . "\" grammar xxx :"
+    -> nonterminalSymbolParametersMap, lexiqueClassName, optionsComponentsMap ;
+  else
+    [ioGrammarComponentsMap searchKey
+      !grammarName
+      ?nonterminalSymbolParametersMap
+      ?lexiqueClassName
+      ?optionsComponentsMap
+    ] ;
+  end if ;
   @lstring altName := [@lstring new !"" !here] ;
   [nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
 #--- Assignment list
@@ -202,9 +222,11 @@ label importLexique
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $($ ;
-  $identifier$ ? * ;
-  $)$ ;
+  select
+  or
+    $grammar$ ;
+    $identifier$ ? * ;
+  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
 #--- Assignment list
@@ -226,9 +248,11 @@ label importSyntax
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $($ ;
-  $identifier$ ? * ;
-  $)$ ;
+  select
+  or
+    $grammar$ ;
+    $identifier$ ? * ;
+  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
 #--- Assignment list
@@ -250,9 +274,11 @@ label importSemantics
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $($ ;
-  $identifier$ ? * ;
-  $)$ ;
+  select
+  or
+    $grammar$ ;
+    $identifier$ ? * ;
+  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
 #--- Assignment list
@@ -275,9 +301,11 @@ label importGrammarForSemantics
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $($ ;
-  $identifier$ ? * ;
-  $)$ ;
+  select
+  or
+    $grammar$ ;
+    $identifier$ ? * ;
+  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
   repeat
@@ -296,9 +324,11 @@ label importOptions
   $gui$ ;
   $identifier$ ? * ;
   $literal_string$ ? * ;
-  $($ ;
-  $identifier$ ? * ;
-  $)$ ;
+  select
+  or
+    $grammar$ ;
+    $identifier$ ? * ;
+  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
 #--- Assignment list

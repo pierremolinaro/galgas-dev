@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-gui cocoaGalgas "cocoa" (galgas_LL1_grammar) :
+gui cocoaGalgas "cocoa" :
 import semantics semantics_semantics in "semantics_semantics.ggs" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
 
