@@ -413,6 +413,8 @@ routine right_shift_types_check
   !@AC_galgasType outResultType
 :
   match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_binaryset () :: @typeGalgas_uint () :
+    outResultType := inLeftExpressionType ;
   when @typeGalgas_uint ()      :: @typeGalgas_uint () :
     outResultType := inLeftExpressionType ;
   when @typeGalgas_sint ()      :: @typeGalgas_uint () :
