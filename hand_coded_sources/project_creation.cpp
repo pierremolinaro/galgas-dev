@@ -319,7 +319,7 @@ createCocoaFile (const C_String & inCreatedProjectPathName,
   const C_String projectName = inCreatedProjectPathName.lastPathComponent () ;
   const C_String fileName = inCreatedProjectPathName + "/galgas_sources/" + projectName + "_cocoa.ggs" ;
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
-  f << "gui " << projectName << "_cocoa \"cocoa\" (" << projectName << "_grammar) :\n" ;
+  f << "gui " << projectName << "_cocoa \"cocoa\" :\n" ;
   if (inProjectStyle == kMDAproject) {
     f << "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n" ;
   }
