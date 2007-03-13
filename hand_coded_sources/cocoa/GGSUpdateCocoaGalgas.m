@@ -140,7 +140,7 @@
 - (void) updateLIBPMstatus {
   NSFileManager * fm = [NSFileManager defaultManager] ;
   BOOL isDirectory = NO ;
-  NSString * libpmPath = [[NSUserDefaults standardUserDefaults] stringForKey:@"libpmPath"] ;
+  NSString * libpmPath = [[NSUserDefaults standardUserDefaults] stringForKey:@"GGS_libpm_path"] ;
   NSString * libpmVersionFilePath = [NSString stringWithFormat:@"%@/version.txt", libpmPath] ;
   if ([libpmPath length] == 0) {
     [mLIBPMStatusTextField setStringValue:@"The path is empty."] ;
@@ -167,7 +167,21 @@
 //--------------------------------------------------------------------------*
 
 - (void) awakeFromNib {
-//--- Remove tempary dir, if it exists
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+//--- Copy old style preferences
+  NSString * prefString = [ud objectForKey:@"cliInstallationPath"] ;
+  if (prefString != nil) {
+    [ud setObject:prefString forKey:@"GGS_cli_installation_path"] ;
+  }
+  prefString = [ud objectForKey:@"checkUpdateAtStartUp"] ;
+  if (prefString != nil) {
+    [ud setObject:prefString forKey:@"GGS_check_update_at_start_up"] ;
+  }
+  prefString = [ud objectForKey:@"libpmPath"] ;
+  if (prefString != nil) {
+    [ud setObject:prefString forKey:@"GGS_libpm_path"] ;
+  }
+//--- Remove temporary dir, if it exists
   NSFileManager * fm = [NSFileManager defaultManager] ;
   if ([fm fileExistsAtPath:[self temporaryDir]]) {
     [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
@@ -180,50 +194,49 @@
   [prefsTabView addTabViewItem:updateTabViewItem] ;
   [updateTabViewItem release] ;
 //--- Add bindings
-  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   [mCheckUpdateAtStartUpCheckBox
     bind:@"value"
     toObject:ud
-    withKeyPath:@"checkUpdateAtStartUp"
+    withKeyPath:@"GGS_check_update_at_start_up"
     options:nil
   ] ;
   [mCheckUpdateAtStartUpCheckBox2
     bind:@"value"
     toObject:ud
-    withKeyPath:@"checkUpdateAtStartUp"
+    withKeyPath:@"GGS_check_update_at_start_up"
     options:nil
   ] ;
   [mLIBPMpathTextField
     bind:@"value"
     toObject:ud
-    withKeyPath:@"libpmPath"
+    withKeyPath:@"GGS_libpm_path"
     options:nil
   ] ;
 //--- Installation Path
-  if ([ud objectForKey:@"cliInstallationPath"] == nil) {
-    [ud setObject:@"/usr/local/bin/" forKey:@"cliInstallationPath"] ;
+  if ([ud objectForKey:@"GGS_cli_installation_path"] == nil) {
+    [ud setObject:@"/usr/local/bin/" forKey:@"GGS_cli_installation_path"] ;
   }
   [mCLIToolInstallationPath
     bind:@"value"
     toObject:ud
-    withKeyPath:@"cliInstallationPath"
+    withKeyPath:@"GGS_cli_installation_path"
     options:nil
   ] ;
 //--- Add observers
   [[NSUserDefaultsController sharedUserDefaultsController]
     addObserver:self
-    forKeyPath:@"values.libpmPath"
+    forKeyPath:@"values.GGS_libpm_path"
     options:0
     context:NULL
   ] ;
 //--- Update status
   [self updateLIBPMstatus] ;
 //--- Search for update defined ? If not, force to YES
-  if ([ud objectForKey:@"checkUpdateAtStartUp"] == nil) {
-    [ud setBool:YES forKey:@"checkUpdateAtStartUp"] ;
+  if ([ud objectForKey:@"GGS_check_update_at_start_up"] == nil) {
+    [ud setBool:YES forKey:@"GGS_check_update_at_start_up"] ;
   }
 //--- Search for update ?
-  if ([ud boolForKey:@"checkUpdateAtStartUp"]) {
+  if ([ud boolForKey:@"GGS_check_update_at_start_up"]) {
     [self checkForNewVersion:nil] ;
   }
 }
@@ -234,7 +247,7 @@
         ofObject:(id)object
         change:(NSDictionary *)change
         context:(void *)context {
-  if ([inKeyPath isEqualToString:@"values.libpmPath"]) {
+  if ([inKeyPath isEqualToString:@"values.GGS_libpm_path"]) {
     [self updateLIBPMstatus] ;
   }
 }
@@ -246,7 +259,7 @@
 //--------------------------------------------------------------------------*
 
 - (IBAction) resetLIPMpathAction: (id) inSender {
-  [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"libpmPath"] ;
+  [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"GGS_libpm_path"] ;
 }
 
 //--------------------------------------------------------------------------*
@@ -262,7 +275,7 @@
   [libpmOpenPanel setCanSelectHiddenExtension:YES] ;
   [libpmOpenPanel setTreatsFilePackagesAsDirectories:NO] ;
   [libpmOpenPanel
-    beginSheetForDirectory:[[NSUserDefaults standardUserDefaults] stringForKey:@"libpmPath"]
+    beginSheetForDirectory:[[NSUserDefaults standardUserDefaults] stringForKey:@"GGS_libpm_path"]
     file:@""
     types:nil
     modalForWindow:[mLIBPMpathTextField window]
@@ -281,7 +294,7 @@
   if (inReturnCode == NSOKButton) {
     //NSLog (@"filenames %@", [inPanel filenames]) ;
     NSString * newPath = [[inPanel filenames] objectAtIndex:0] ;
-    [[NSUserDefaults standardUserDefaults] setObject:newPath forKey:@"libpmPath"] ;
+    [[NSUserDefaults standardUserDefaults] setObject:newPath forKey:@"GGS_libpm_path"] ;
   }
 }
 
@@ -718,7 +731,7 @@
 
 - (IBAction) performCLIToolInstallation: (id) inSender {
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-  NSString * installationPath = [ud objectForKey:@"cliInstallationPath"] ;
+  NSString * installationPath = [ud objectForKey:@"GGS_cli_installation_path"] ;
   if ([installationPath length] == 0) {
     NSAlert * alert = [NSAlert
       alertWithMessageText:@"Cannot Perform Command Line Interface Tools Installation."
@@ -782,7 +795,7 @@
   //NSLog (@"BUNDLE PATH '%@'", bundlePath) ;
 //--- Installation Path
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-  NSString * installationPath = [ud objectForKey:@"cliInstallationPath"] ;
+  NSString * installationPath = [ud objectForKey:@"GGS_cli_installation_path"] ;
 //--- Bundle path
   NSString * bundlePath = [[NSBundle mainBundle] bundlePath] ;
 //--- Resource Path
@@ -857,7 +870,7 @@
 
 - (IBAction) performCLIToolRemove: (id) inSender {
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-  NSString * installationPath = [ud objectForKey:@"cliInstallationPath"] ;
+  NSString * installationPath = [ud objectForKey:@"GGS_cli_installation_path"] ;
   if ([installationPath length] == 0) {
     NSAlert * alert = [NSAlert
       alertWithMessageText:@"Cannot Perform Command Line Interface Tools Removing."
@@ -943,7 +956,7 @@
   //NSLog (@"BUNDLE PATH '%@'", bundlePath) ;
 //--- Installation Path
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-  NSString * installationPath = [ud objectForKey:@"cliInstallationPath"] ;
+  NSString * installationPath = [ud objectForKey:@"GGS_cli_installation_path"] ;
 //--- Tools
   NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
 //--- Create an empty Authorization
