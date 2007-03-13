@@ -234,10 +234,10 @@ initializeTextColors (NSString * inGGS_indexed_color,
   gColorArray = [NSMutableArray arrayWithCapacity:getStylesCount ()] ;
   [gColorArray retain] ;
   for (int i=0 ; i<getStylesCount () ; i++) {
-    NSString * name = [NSString stringWithFormat:inGGS_named_color, getStyleIdentifier (i)] ;
+    NSString * name = [NSString stringWithFormat:@"%@_%s", inGGS_named_color, getStyleIdentifier (i)] ;
     NSData * colorData = [defaults dataForKey:name] ;
     if (colorData == nil) {
-      NSString * indexedName = [NSString stringWithFormat:inGGS_indexed_color, i] ;
+      NSString * indexedName = [NSString stringWithFormat:@"%@_%d", inGGS_indexed_color, i] ;
       colorData = [defaults dataForKey:indexedName] ;
       [defaults setObject:colorData forKey:name] ;
       [defaults setObject:nil forKey:indexedName] ;
