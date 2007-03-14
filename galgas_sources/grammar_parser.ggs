@@ -247,7 +247,7 @@ rule <galgas_component>
 #--- Search start symbol in non terminal map
   @M_nonterminalSymbolAltsForGrammar startSymbolAltMap ;
   @luint startSymbolIndex ;
-  [nonterminalSymbolsMapForGrammar searchKeyGetIndex !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
+  [nonterminalSymbolsMapForGrammar searchKeyGetID !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
 #--- Check signatures (added 8/13/2004)
   foreach startSymbolAltMap (@lstring cstAltName @L_signature cstAltMap @lstring kReturnedEntity) :
     @L_signature altMap ;

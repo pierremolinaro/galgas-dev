@@ -50,7 +50,7 @@ map @lexicalTypeMap {
 map @typeTableMessagesErreurs {
   @lstring mErrorMessage ;
   insert insertKey error message "the error message '%K' is already declared in %L" ;
-  search searchKey, searchKeyGetIndex error message "the error message '%K' is not declared" ;
+  search searchKey, searchKeyGetID error message "the error message '%K' is not declared" ;
 }
 
 #------------------------------------------------------------------*
@@ -60,7 +60,7 @@ map @typeTableMessagesErreurs {
 map @M_styles {
   @lstring mTitle ;
   insert insertKey error message "the '%K' style is already declared in %L" ;
-  search searchKey, searchKeyGetIndex error message "the '%K' style is not declared" ;
+  search searchKey, searchKeyGetID error message "the '%K' style is not declared" ;
 }
 
 #------------------------------------------------------------------*

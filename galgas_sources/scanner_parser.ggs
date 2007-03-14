@@ -545,7 +545,7 @@ rule <attribute_or_terminal_symbol_declaration>
       $identifier$ ? styleName ;
     end select ;
     @luint styleIndex ;
-    [ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
+    [ioStylesMap searchKeyGetID !styleName ?styleIndex ?*] ;
     @string errorMessageString := [errorMessage string] ;
     [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !attributeList !styleIndex] ;
   end select ;
@@ -595,7 +595,7 @@ rule <key_words_list_declaration>
     $identifier$ ? styleName ;
   end select ;
   @luint styleIndex ;
-  [ioStylesMap searchKeyGetIndex !styleName ?styleIndex ?*] ;
+  [ioStylesMap searchKeyGetID !styleName ?styleIndex ?*] ;
 #--- List of entries
   $:$ ;
   repeat
@@ -918,7 +918,7 @@ rule <lexical_instructions_list>
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
-    [table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
+    [table_des_messages_erreur searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
     ioUsedErrorMessageSet += ![errorMessageName string] ;
     $;$ ;
     @typeInstructionLexicale e := [@typeInstructionErreurLexicale new !errorMessageIndex] ;
@@ -947,7 +947,7 @@ rule <lexical_error_messages_list>
     @lstring errorMessageName ;
     $identifier$ ?errorMessageName ;
     @luint errorMessageIndex ;
-    [table_des_messages_erreur searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
+    [table_des_messages_erreur searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
     lme += !errorMessageIndex ;
     ioUsedErrorMessageSet += ![errorMessageName string] ;
   while
@@ -1178,7 +1178,7 @@ rule <lexical_send_or_error>
   @lstring errorMessageName ;
   $identifier$ ?errorMessageName ;
   @luint errorMessageIndex ;
-  [tableMessagesErreurs searchKeyGetIndex !errorMessageName ?errorMessageIndex ?*] ;
+  [tableMessagesErreurs searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
   ioUsedErrorMessageSet += ![errorMessageName string] ;
   emissionParDefaut := [@typeEmissionErreurParDefaut new !errorMessageIndex] ;
 end rule ;

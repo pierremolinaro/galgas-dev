@@ -57,6 +57,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedMetamodelComponents
   !@stringset outIncludedOptionComponents
   !@stringset outIncludedGrammarComponents
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
@@ -82,19 +83,27 @@ label importSemantics
 label parse
 ;
 
+nonterminal <parse_lexique_for_importing>
+  ??@lstring inFileName
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+label parse
+;
+
 action generateCocoaComponent
-  ?@lstring nomPRGMprincipal
-  ?@lstring inGUIkindName
-  ?@L_nibAndClassList inNIBandClassList
-  ?@string inBlockComment
-  ?@lstring inLexiqueClassName
-  ?@M_optionComponents inOptionsComponents
+  ??@lstring nomPRGMprincipal
+  ??@lstring inGUIkindName
+  ??@L_nibAndClassList inNIBandClassList
+  ??@string inBlockComment
+  ??@lstring inLexiqueClassName
+  ??@M_optionComponents inOptionsComponents
+  ??@labelForPopUpList inLabelForPopUpList
+  ??@uint inTerminalSymbolCount
 ;
 
 #--------------------------------------------------------------------------------*
 
 rule <galgas_component>
-  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -136,6 +145,7 @@ rule <galgas_component>
     ?includedMetamodelComponents
     ?includedOptionComponents
     ?includedGrammarComponents
+    !?ioLexiqueMapForUse
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
     !?ioTreewalkingComponentMap
@@ -178,10 +188,36 @@ rule <galgas_component>
   end if ;
   @lstring altName := [@lstring new !"" !here] ;
   [nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
+#--- Retrieve lexique infos
+  <parse_lexique_for_importing>
+    ![@lstring new ![lexiqueClassName string] . ".ggs" ![lexiqueClassName location]]
+    !?ioLexiqueMapForUse
+  ;
+  @M_terminalSymbolsMapForUse terminalSymbolMap ;
+  [ioLexiqueMapForUse searchKey !lexiqueClassName ?terminalSymbolMap] ;
 #--- Assignment list
   @L_nibAndClassList nibAndClassList [emptyList] ;
+  @labelForPopUpList labelForPopUpList [emptyList] ;
   @string blockComment := "" ; # Means undefined
   repeat
+  while
+    $label$ ;
+    @lstring terminal1 ;
+    $terminal$ ? terminal1 ;
+    @luint terminal1ID ;
+    [terminalSymbolMap searchKeyGetID !terminal1 ?terminal1ID ?*] ; 
+    $,$ ;
+    @lstring terminal2 ;
+    $terminal$ ? terminal2 ;
+    @luint terminal2ID ;
+    [terminalSymbolMap searchKeyGetID !terminal2 ?terminal2ID ?*] ;
+    labelForPopUpList +=
+      !terminal1
+      ![terminal1ID uint]
+      !terminal2
+      ![terminal2ID uint]
+    ;
+    $;$ ;
   while
     @lstring targetName ;
     $identifier$ ? targetName ;
@@ -212,6 +248,8 @@ rule <galgas_component>
     !blockComment
     !lexiqueClassName
     !optionsComponentsMap
+    !labelForPopUpList
+    ![terminalSymbolMap count]
   ;
   $end$ ;
   $gui$ ;
@@ -229,8 +267,15 @@ label importLexique
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
+  <parse_lexique_for_importing> parse ;
 #--- Assignment list
   repeat
+  while
+    $label$ ;
+    $terminal$ ? * ;
+    $,$ ;
+    $terminal$ ? * ;
+    $;$ ;
   while
     $identifier$ ? * ;
     $:$ ;
@@ -255,8 +300,15 @@ label importSyntax
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
+  <parse_lexique_for_importing> parse ;
 #--- Assignment list
   repeat
+  while
+    $label$ ;
+    $terminal$ ? * ;
+    $,$ ;
+    $terminal$ ? * ;
+    $;$ ;
   while
     $identifier$ ? * ;
     $:$ ;
@@ -281,8 +333,15 @@ label importSemantics
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
+  <parse_lexique_for_importing> parse ;
 #--- Assignment list
   repeat
+  while
+    $label$ ;
+    $terminal$ ? * ;
+    $,$ ;
+    $terminal$ ? * ;
+    $;$ ;
   while
     $identifier$ ? * ;
     $:$ ;
@@ -308,7 +367,14 @@ label importGrammarForSemantics
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
+  <parse_lexique_for_importing> parse ;
   repeat
+  while
+    $label$ ;
+    $terminal$ ? * ;
+    $,$ ;
+    $terminal$ ? * ;
+    $;$ ;
   while
     $identifier$ ? * ;
     $:$ ;
@@ -331,8 +397,15 @@ label importOptions
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
+  <parse_lexique_for_importing> parse ;
 #--- Assignment list
   repeat
+  while
+    $label$ ;
+    $terminal$ ? * ;
+    $,$ ;
+    $terminal$ ? * ;
+    $;$ ;
   while
     $identifier$ ? * ;
     $:$ ;

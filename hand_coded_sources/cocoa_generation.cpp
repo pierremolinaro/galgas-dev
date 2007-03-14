@@ -21,8 +21,30 @@
 #include "utilities/MF_MemoryControl.h"
 #include "files/C_TextFileWrite.h"
 #include "time/C_DateTime.h"
+#include "generic_arraies/TC_Array2.h"
+
+//---------------------------------------------------------------------------*
 
 #include "cocoa_parser.h"
+
+//---------------------------------------------------------------------------*
+
+static void
+buildPopUpTreeForGUI (C_Lexique & /* inLexique */,
+                      const GGS_labelForPopUpList & inLabelForPopUpList,
+                      TC_Array2 <bool> & outPopUpTree,
+                      const uint32 inTerminalSymbolCount) {
+  outPopUpTree.reallocArray (inTerminalSymbolCount, inTerminalSymbolCount COMMA_HERE) ;
+  GGS_labelForPopUpList::element_type * currentMark = inLabelForPopUpList.firstObject () ;
+  while (currentMark != NULL) {
+    macroValidPointer (currentMark) ;
+    const uint32 terminalID1 = currentMark->mTerminal1ID.uintValue () ;
+    const uint32 terminalID2 = currentMark->mTerminal2ID.uintValue () ;
+    // printf ("POP $%s$ (%u), $%s$ (%u)\n", currentMark->mTerminal1.cString (), terminalID1, currentMark->mTerminal2.cString (), terminalID2) ;
+    outPopUpTree (terminalID1, terminalID2 COMMA_HERE) = true ;
+    currentMark = currentMark->nextObject () ;
+  }
+}
 
 //---------------------------------------------------------------------------*
 
@@ -32,7 +54,11 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                             const GGS_L_nibAndClassList & inNibAndClassList,
                             const GGS_string & inBlockComment,
                             const C_String & inLexiqueComponentName,
-                            const GGS_M_optionComponents & inOptionComponentsMap) {
+                            const GGS_M_optionComponents & inOptionComponentsMap,
+                            const GGS_labelForPopUpList & inLabelForPopUpList,
+                            const uint32 inTerminalSymbolCount) {
+  TC_Array2 <bool> popUpTree ;
+  buildPopUpTreeForGUI (inLexique, inLabelForPopUpList, popUpTree, inTerminalSymbolCount) ;
 //--- Generate user includes
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -65,7 +91,6 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "  #import \"user_default_colors.h\"\n"
                     "#endif\n"
                     "\n" ;
-
 //--- Global static variables
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3.writeCppTitleComment ("Global static variables") ;
@@ -97,6 +122,40 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
                     "static NSMutableArray * gColorArray ;\n\n" ;
 
+//--- Datas for PopUp list
+  generatedZone3.writeCppTitleComment ("P O P U P    L I S T    D A T A") ;
+  C_String mainArray ;
+  mainArray << "static const uint16 * kPopUpListData [" << (inTerminalSymbolCount + 1) << "] = {\n"
+               "  NULL" ;
+  for (uint32 i=0 ; i<inTerminalSymbolCount ; i++) {
+    mainArray << ",\n  " ;
+    bool first = true ;
+    GGS_labelForPopUpList::element_type * currentMark = inLabelForPopUpList.firstObject () ;
+    while (currentMark != NULL) {
+      macroValidPointer (currentMark) ;
+      const uint32 terminalID1 = currentMark->mTerminal1ID.uintValue () ;
+      if (terminalID1 == i) {
+        const uint32 terminalID2 = currentMark->mTerminal2ID.uintValue () ;
+        if (first) {
+          first = false ;
+          generatedZone3 << "static uint16 kPopUpListData_" << i << " [] = {" ;
+        }else{
+          generatedZone3 << ", " ;
+        }
+        generatedZone3 << (terminalID2 + 1) ;
+      }
+      currentMark = currentMark->nextObject () ;
+    }
+    if (first) {
+      mainArray << "NULL" ;
+    }else{
+      mainArray << "kPopUpListData_" << i ;
+      generatedZone3 << ", 0} ;\n\n" ;
+      generatedZone3.writeCppHyphenLineComment () ;
+    }
+  }
+  mainArray << "} ;\n\n" ;
+  generatedZone3 << mainArray ;
 //--- NIB and main class
   generatedZone3.writeCppTitleComment ("N I B S   A N D   T H E I R   M A I N   C L A S S E S") ;
   generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
@@ -224,16 +283,18 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "  return " << inLexiqueComponentName << "::getStyleIdentifier (inIndex) ;\n"
                     "}\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
-  generatedZone3 << "void scanThenGetStyledRangeArray (NSString * inSourceString,\n"
-                    "                                  const char * inSourceFileName,\n"
-                    "                                  TC_UniqueArray <C_styledRange> & ioStyledRangeArray,\n"
-                    "                                  const sint32 inAffectedRangeLocation,\n"
-                    "                                  const sint32 inAffectedRangeLength,\n"
-                    "                                  const sint32 inReplacementStringLength,\n"
-                    "                                  sint32 & outFirstIndexToRedraw,\n"
-                    "                                  sint32 & outLastIndexToRedraw,\n"
-                    "                                  sint32 & outEraseRangeStart,\n"
-                    "                                  sint32 & outEraseRangeEnd) {\n"
+  generatedZone3 << "void\n"
+                    "scanThenGetStyledRangeArray (NSString * inSourceString,\n"
+                    "                             const char * inSourceFileName,\n"
+                    "                             TC_UniqueArray <C_styledRange> & ioStyledRangeArray,\n"
+                    "                             const sint32 inAffectedRangeLocation,\n"
+                    "                             const sint32 inAffectedRangeLength,\n"
+                    "                             const sint32 inReplacementStringLength,\n"
+                    "                             sint32 & outFirstIndexToRedraw,\n"
+                    "                             sint32 & outLastIndexToRedraw,\n"
+                    "                             sint32 & outEraseRangeStart,\n"
+                    "                             sint32 & outEraseRangeEnd,\n"
+                    "                             TC_UniqueArray <C_popupEntry> & outPopUpEntries) {\n"
                     "  if (gScannerPtr == NULL) {\n"
                     "    macroMyNew (gIOParametersPtr, C_galgas_io (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
                     "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (gIOParametersPtr COMMA_HERE)) ;\n"
@@ -251,7 +312,9 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                     "                                            outFirstIndexToRedraw,\n"
                     "                                            outLastIndexToRedraw,\n"
                     "                                            outEraseRangeStart,\n"
-                    "                                            outEraseRangeEnd) ;\n"
+                    "                                            outEraseRangeEnd,\n"
+                    "                                            kPopUpListData,\n"
+                    "                                            outPopUpEntries) ;\n"
                     "}\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
   generatedZone3 << "void\n"
@@ -312,12 +375,14 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 
 void 
 routine_generateCocoaComponent (C_Lexique & inLexique,
-                                GGS_lstring inGUIcomponentName,
-                                GGS_lstring inGUIkindName,
-                                GGS_L_nibAndClassList inNibAndClassList,
-                                GGS_string inBlockComment,
-                                GGS_lstring inLexiqueComponentName,
-                                GGS_M_optionComponents inOptionComponentsMap
+                                const GGS_lstring & inGUIcomponentName,
+                                const GGS_lstring & inGUIkindName,
+                                const GGS_L_nibAndClassList & inNibAndClassList,
+                                const GGS_string & inBlockComment,
+                                const GGS_lstring & inLexiqueComponentName,
+                                const GGS_M_optionComponents & inOptionComponentsMap,
+                                const GGS_labelForPopUpList & inLabelForPopUpList,
+                                const GGS_uint & inTerminalSymbolCount
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (inGUIkindName.string () == "cocoa") {
     generate_mm_file_for_cocoa (inLexique,
@@ -325,7 +390,9 @@ routine_generateCocoaComponent (C_Lexique & inLexique,
                                 inNibAndClassList,
                                 inBlockComment,
                                 inLexiqueComponentName,
-                                inOptionComponentsMap) ;
+                                inOptionComponentsMap,
+                                inLabelForPopUpList,
+                                inTerminalSymbolCount.uintValue ()) ;
   }else{
     inGUIkindName.semanticError (inLexique,
                                  "only the \"cocoa\" gui is currenly supported"
