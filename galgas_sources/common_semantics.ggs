@@ -1670,7 +1670,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 map @M_terminalSymbolsMapForUse {
   @typeListeAttributsSemantiques aListeDesAttributs ;
   insert insertKey error message "the terminal symbol '$%K$' is already declared in %L" ;
-  search searchKey, searchKeyGetIndex error message "the terminal symbol '$%K$' is not declared" ;
+  search searchKey, searchKeyGetID error message "the terminal symbol '$%K$' is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1855,7 +1855,7 @@ list @L_productionRules_ForGrammarComponent {
 map @M_nonTerminalSymbolsForGrammar {
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
   insert insertKey error message "internal insert error" ;
-  search searchKey, searchKeyGetIndex error message "internal search error" ;
+  search searchKey, searchKeyGetID error message "internal search error" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2921,6 +2921,19 @@ list @L_nibAndClassList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#              List of attributes for label entry in GUI description        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @labelForPopUpList {
+  @lstring mTerminal1 ;
+  @uint mTerminal1ID ;
+  @lstring mTerminal2 ;
+  @uint mTerminal2ID ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   H A N D L E    @ S T R I N G    R E A D E R    C A L L                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3096,7 +3109,7 @@ routine handleReaderCall
         build_stringlist_type ?outReturnedType ;
       elsif [inReaderName string] == "predicateStringValue" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        build_stringlist_type ?outReturnedType ;
+        outReturnedType := [@typeGalgas_string new] ;
       elsif [inReaderName string] == "compressedStringValueList" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;

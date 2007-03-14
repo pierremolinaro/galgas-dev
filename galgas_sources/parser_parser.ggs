@@ -104,6 +104,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedMetamodelComponents
   !@stringset outIncludedOptionComponents
   !@stringset outIncludedGrammarComponents
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
@@ -275,8 +276,8 @@ rule <galgas_component>
   @lstring componentName ;
   $identifier$ ? componentName ;
   $:$ ;
-  @M_terminalSymbolsMapForUse tableTerminaux ;
 #--- Define lexique
+  @M_terminalSymbolsMapForUse tableTerminaux ;
   @lstring  lexiqueName ;
   <get_lexique_infos>
     ?tableTerminaux
@@ -302,6 +303,7 @@ rule <galgas_component>
     ?includedOptionComponents
     ?includedMetamodelComponents
     ?includedGrammarComponents
+    !?ioLexiqueMapForUse
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
     !?ioTreewalkingComponentMap
@@ -384,7 +386,12 @@ label importSyntax
   $:$ ;
 #--- Lexique
   @lstring lexiqueName ;
-  <get_lexique_infos> getLexiqueName ? lexiqueName ;
+  @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+  <get_lexique_infos>
+    ?*
+    !?lexiqueMapForUse
+    ?lexiqueName
+  ;
 #--- Import Semantics, Metamodels
   @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
@@ -406,6 +413,7 @@ label importSyntax
     ?includedOptionComponents
     ?includedMetamodelComponents
     ?includedGrammarComponents
+    !?lexiqueMapForUse
     !?semanticsComponentsMap
     !?ioMetamodelComponentMap
     !?ioTreewalkingComponentMap
@@ -546,9 +554,13 @@ rule <get_lexique_infos>
       !?lexiqueComponentsMap
     ;
   end select ;
-  $;$ ;
 #--- Get lexique from lexique components map
   [lexiqueComponentsMap searchKey !outLexiqueName ?tableTerminaux] ;
+#----
+  if not [ioLexiqueMapForUse hasKey ![outLexiqueName string]] then
+    [!?ioLexiqueMapForUse insertKey !outLexiqueName !tableTerminaux] ;
+  end if ;
+  $;$ ;
 label getLexiqueName
   !@lstring outLexiqueName
 :

@@ -57,6 +57,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedMetamodelComponents
   !@stringset outIncludedOptionComponents
   !@stringset outIncludedGrammarComponents
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
@@ -115,7 +116,7 @@ action generatePRGM
 #--------------------------------------------------------------------------------*
 
 rule <galgas_component>
-  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
@@ -151,6 +152,7 @@ rule <galgas_component>
     ?includedMetamodelComponents
     ?includedOptionComponents
     ?includedGrammarComponents
+    !?ioLexiqueMapForUse
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
     !?ioTreewalkingComponentMap
