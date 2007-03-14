@@ -402,6 +402,15 @@ class @typeReaderCallInExpression extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+#   D E S C R I P T I O N    O P E R A N D                                  *
+#---------------------------------------------------------------------------*
+
+class @typeDescriptionInExpression extends @typeExpression {
+  @typeExpression mExpressionValue ;
+  @location mInstructionLocation ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   B O O L E A N    O P E R A T I O N S                                    *
 #---------------------------------------------------------------------------*
 
