@@ -33,13 +33,13 @@ static void
 buildPopUpTreeForGUI (C_Lexique & /* inLexique */,
                       const GGS_labelForPopUpList & inLabelForPopUpList,
                       TC_Array2 <bool> & outPopUpTree,
-                      const uint32 inTerminalSymbolCount) {
+                      const sint32 inTerminalSymbolCount) {
   outPopUpTree.reallocArray (inTerminalSymbolCount, inTerminalSymbolCount COMMA_HERE) ;
   GGS_labelForPopUpList::element_type * currentMark = inLabelForPopUpList.firstObject () ;
   while (currentMark != NULL) {
     macroValidPointer (currentMark) ;
-    const uint32 terminalID1 = currentMark->mTerminal1ID.uintValue () ;
-    const uint32 terminalID2 = currentMark->mTerminal2ID.uintValue () ;
+    const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
+    const sint32 terminalID2 = (sint32) currentMark->mTerminal2ID.uintValue () ;
     // printf ("POP $%s$ (%u), $%s$ (%u)\n", currentMark->mTerminal1.cString (), terminalID1, currentMark->mTerminal2.cString (), terminalID2) ;
     outPopUpTree (terminalID1, terminalID2 COMMA_HERE) = true ;
     currentMark = currentMark->nextObject () ;
@@ -56,7 +56,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
                             const C_String & inLexiqueComponentName,
                             const GGS_M_optionComponents & inOptionComponentsMap,
                             const GGS_labelForPopUpList & inLabelForPopUpList,
-                            const uint32 inTerminalSymbolCount) {
+                            const sint32 inTerminalSymbolCount) {
   TC_Array2 <bool> popUpTree ;
   buildPopUpTreeForGUI (inLexique, inLabelForPopUpList, popUpTree, inTerminalSymbolCount) ;
 //--- Generate user includes
@@ -127,13 +127,13 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
   C_String mainArray ;
   mainArray << "static const uint16 * kPopUpListData [" << (inTerminalSymbolCount + 1) << "] = {\n"
                "  NULL" ;
-  for (uint32 i=0 ; i<inTerminalSymbolCount ; i++) {
+  for (sint32 i=0 ; i<inTerminalSymbolCount ; i++) {
     mainArray << ",\n  " ;
     bool first = true ;
     GGS_labelForPopUpList::element_type * currentMark = inLabelForPopUpList.firstObject () ;
     while (currentMark != NULL) {
       macroValidPointer (currentMark) ;
-      const uint32 terminalID1 = currentMark->mTerminal1ID.uintValue () ;
+      const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
       if (terminalID1 == i) {
         const uint32 terminalID2 = currentMark->mTerminal2ID.uintValue () ;
         if (first) {
@@ -392,7 +392,7 @@ routine_generateCocoaComponent (C_Lexique & inLexique,
                                 inLexiqueComponentName,
                                 inOptionComponentsMap,
                                 inLabelForPopUpList,
-                                inTerminalSymbolCount.uintValue ()) ;
+                                (sint32) inTerminalSymbolCount.uintValue ()) ;
   }else{
     inGUIkindName.semanticError (inLexique,
                                  "only the \"cocoa\" gui is currenly supported"
