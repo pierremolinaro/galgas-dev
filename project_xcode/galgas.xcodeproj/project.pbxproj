@@ -165,6 +165,14 @@
 		CF4895770B66682D005A9E78 /* predefined_types.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4895690B66682D005A9E78 /* predefined_types.h */; };
 		CF4895780B66682D005A9E78 /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4895680B66682D005A9E78 /* predefined_types.cpp */; };
 		CF4895790B66682D005A9E78 /* predefined_types.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4895690B66682D005A9E78 /* predefined_types.h */; };
+		CF48FB060BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
+		CF48FB070BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
+		CF48FB080BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
+		CF48FB090BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
+		CF48FB0A0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
+		CF48FB0B0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
+		CF48FB0C0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
+		CF48FB0D0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
 		CF4CBBC009FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
 		CF4CBBC109FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
 		CF4CBBC209FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
@@ -1831,6 +1839,7 @@
 		CF446B6609C9C50D005CBDC8 /* include_TypeModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_TypeModel.h; sourceTree = "<group>"; };
 		CF4895680B66682D005A9E78 /* predefined_types.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = predefined_types.cpp; sourceTree = "<group>"; };
 		CF4895690B66682D005A9E78 /* predefined_types.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = predefined_types.h; sourceTree = "<group>"; };
+		CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDescriptionInExpression.h; sourceTree = "<group>"; };
 		CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
 		CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_domain.cpp; sourceTree = "<group>"; };
 		CF507CA80B6F854B00ECFEEB /* AC_galgas_domain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_domain.h; sourceTree = "<group>"; };
@@ -2530,6 +2539,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */,
 				CF531CFD0B9F18770085A6CD /* include_C_treewalkingInstruction.h */,
 				CFD2149B0913BE2E0011F11E /* include_AC_galgasType.h */,
 				CFEF40750B99877300CA3AF7 /* include_typeGalgas_multipleReferenceEntity.h */,
@@ -3357,6 +3367,7 @@
 				CFEF440A0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D030B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215010BA05AB80087BA01 /* project_creation.h in Headers */,
+				CF48FB060BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3449,6 +3460,7 @@
 				CFEF440B0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D020B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215070BA05AB80087BA01 /* project_creation.h in Headers */,
+				CF48FB0C0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3541,6 +3553,7 @@
 				CFEF440C0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531CFE0B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215080BA05AB80087BA01 /* project_creation.h in Headers */,
+				CF48FB0D0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3649,6 +3662,7 @@
 				CFEF44070B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D000B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215020BA05AB80087BA01 /* project_creation.h in Headers */,
+				CF48FB070BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3741,6 +3755,7 @@
 				CFEF44060B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D050B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215030BA05AB80087BA01 /* project_creation.h in Headers */,
+				CF48FB080BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3833,6 +3848,7 @@
 				CFEF44080B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531CFF0B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215040BA05AB80087BA01 /* project_creation.h in Headers */,
+				CF48FB090BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3925,6 +3941,7 @@
 				CFEF44050B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D040B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215050BA05AB80087BA01 /* project_creation.h in Headers */,
+				CF48FB0A0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4017,6 +4034,7 @@
 				CFEF44090B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */,
 				CF531D010B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215060BA05AB80087BA01 /* project_creation.h in Headers */,
+				CF48FB0B0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1329,6 +1329,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #                         F A C T O R                                          *
+#   description         :   [expression description]                           *
 #   reader call         :   [expression reader !... ]                          *
 #   constructor call    :   [@class method !... ]                              *
 #   option value        :   [option option_component_name.option_name]         *
@@ -1354,23 +1355,29 @@ rule <factor>
       ?expressionValue
       ?expressionType
     ;
-  #--- Get reader name
-    @lstring methodName ;
-    $identifier$ ? methodName ;
-  #--- Search reader for getting formal parameters list
-    @typeListeAttributsSemantiques accessorsTypeList ;
-    @string conversionMethod ;
-    handleReaderCall !expressionType !methodName ?accessorsTypeList ?outResultType ?conversionMethod ;
-  #--- Actual parameters
-    @typeExpressionList expressionList ;
-    <output_expression_list>
-      ?expressionList 
-      !accessorsTypeList
-      !ioEntitiesMap
-      !inOptionsComponentsMapForUse
-      !?ioVariablesMap
-    ;
-    outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !here !conversionMethod] ;
+    select
+      $description$ ;
+      outExpression := [@typeDescriptionInExpression new !expressionValue !here] ;
+      outResultType := [@typeGalgas_string new] ;
+    or
+    #--- Get reader name
+      @lstring methodName ;
+      $identifier$ ? methodName ;
+    #--- Search reader for getting formal parameters list
+      @typeListeAttributsSemantiques accessorsTypeList ;
+      @string conversionMethod ;
+      handleReaderCall !expressionType !methodName ?accessorsTypeList ?outResultType ?conversionMethod ;
+    #--- Actual parameters
+      @typeExpressionList expressionList ;
+      <output_expression_list>
+        ?expressionList 
+        !accessorsTypeList
+        !ioEntitiesMap
+        !inOptionsComponentsMapForUse
+        !?ioVariablesMap
+      ;
+      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !here !conversionMethod] ;
+    end select ;
   or
   #--- Class name
     @lstring className ;

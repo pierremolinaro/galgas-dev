@@ -53,6 +53,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "const",
   "constructor",
   "default",
+  "description",
   "do",
   "domain",
   "drop",
