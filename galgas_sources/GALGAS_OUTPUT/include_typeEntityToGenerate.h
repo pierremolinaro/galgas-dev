@@ -24,7 +24,7 @@ public : virtual void generatePredeclarations (AC_OutputStream & inHfile) const 
 
 public : virtual void generateHdeclarations (AC_OutputStream & inHfile) const = 0 ;
 public : virtual void generateHdeclarations_2 (AC_OutputStream & inHfile,
-                                               C_Lexique & inLexique) const = 0 ;
+                                               C_Compiler & inLexique) const = 0 ;
 public : virtual bool isCppClassNeeded (void) const = 0 ;
 public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile,
                                                    const C_String & inTargetFileName,
@@ -48,7 +48,7 @@ public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFil
 
 //--- Attributes
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

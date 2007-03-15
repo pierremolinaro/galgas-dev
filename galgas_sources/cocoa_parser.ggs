@@ -189,12 +189,23 @@ rule <galgas_component>
   @lstring altName := [@lstring new !"" !here] ;
   [nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
 #--- Retrieve lexique infos
-  <parse_lexique_for_importing>
-    ![@lstring new ![lexiqueClassName string] . ".ggs" ![lexiqueClassName location]]
-    !?ioLexiqueMapForUse
-  ;
   @M_terminalSymbolsMapForUse terminalSymbolMap ;
-  [ioLexiqueMapForUse searchKey !lexiqueClassName ?terminalSymbolMap] ;
+  @bool lexiqueImported ;
+  select
+    lexiqueImported := false ;
+    terminalSymbolMap := [@M_terminalSymbolsMapForUse emptyMap] ;
+  or
+    $import__$ ;
+    @lstring lexiqueFileName ;
+    $literal_string$ ? lexiqueFileName ;
+    $;$ ;
+    <parse_lexique_for_importing>
+      !lexiqueFileName
+      !?ioLexiqueMapForUse
+    ;
+    [ioLexiqueMapForUse searchKey !lexiqueClassName ?terminalSymbolMap] ;
+    lexiqueImported := true ;
+  end select ;
 #--- Assignment list
   @L_nibAndClassList nibAndClassList [emptyList] ;
   @labelForPopUpList labelForPopUpList [emptyList] ;
@@ -202,6 +213,9 @@ rule <galgas_component>
   repeat
   while
     $label$ ;
+    if not lexiqueImported then
+      error here: "the lexique should be imported by an import__ \"...\" statement." ;
+    end if ;
     @lstring terminal1 ;
     $terminal$ ? terminal1 ;
     @luint terminal1ID ;
@@ -267,7 +281,13 @@ label importLexique
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
-  <parse_lexique_for_importing> parse ;
+  select
+  or
+    $import__$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+    <parse_lexique_for_importing> parse ;
+  end select ;
 #--- Assignment list
   repeat
   while
@@ -300,7 +320,13 @@ label importSyntax
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
-  <parse_lexique_for_importing> parse ;
+  select
+  or
+    $import__$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+    <parse_lexique_for_importing> parse ;
+  end select ;
 #--- Assignment list
   repeat
   while
@@ -333,7 +359,13 @@ label importSemantics
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
-  <parse_lexique_for_importing> parse ;
+  select
+  or
+    $import__$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+    <parse_lexique_for_importing> parse ;
+  end select ;
 #--- Assignment list
   repeat
   while
@@ -367,7 +399,13 @@ label importGrammarForSemantics
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
-  <parse_lexique_for_importing> parse ;
+  select
+  or
+    $import__$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+    <parse_lexique_for_importing> parse ;
+  end select ;
   repeat
   while
     $label$ ;
@@ -397,7 +435,13 @@ label importOptions
   end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
-  <parse_lexique_for_importing> parse ;
+  select
+  or
+    $import__$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+    <parse_lexique_for_importing> parse ;
+  end select ;
 #--- Assignment list
   repeat
   while

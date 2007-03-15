@@ -43,7 +43,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeNonterminalToGenerate::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -108,7 +108,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeProductionAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*

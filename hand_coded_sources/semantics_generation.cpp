@@ -31,7 +31,7 @@
 //---------------------------------------------------------------------------*
 
 void
-routine_check_KL_escapeCharacters (C_Lexique & inLexique,
+routine_check_KL_escapeCharacters (C_Compiler & inLexique,
                                    GGS_lstring inString
                                    COMMA_LOCATION_ARGS) {
   if (inString._isBuilt ()) {
@@ -61,7 +61,7 @@ routine_check_KL_escapeCharacters (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_check_K_escapeCharacters (C_Lexique & inLexique,
+routine_check_K_escapeCharacters (C_Compiler & inLexique,
                                   GGS_lstring inString
                                   COMMA_LOCATION_ARGS) {
   if (inString._isBuilt ()) {
@@ -91,7 +91,7 @@ routine_check_K_escapeCharacters (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_buildFileNameWithPath (C_Lexique &,
+routine_buildFileNameWithPath (C_Compiler &,
                                GGS_lstring & outFileNameWithPath,
                                GGS_lstring inPath,
                                const GGS_lstring & inCppClassName,
@@ -108,7 +108,7 @@ routine_buildFileNameWithPath (C_Lexique &,
 //---------------------------------------------------------------------------*
 
 void
-routine_appendJokersIfNeeded (C_Lexique &,
+routine_appendJokersIfNeeded (C_Compiler &,
                               GGS_typeCplusPlusNameList & ioVariablesList,
                               GGS_uint inEffectiveArgumentsCount,
                               GGS_uint inFormalParametersCount,
@@ -132,7 +132,7 @@ routine_appendJokersIfNeeded (C_Lexique &,
 
 void cPtr_typeExternTypeToGenerate::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -184,7 +184,7 @@ generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
 
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -197,7 +197,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
-  inHfile << "void routine_" << aNomRoutine << " (C_Lexique &" ;
+  inHfile << "void routine_" << aNomRoutine << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
@@ -229,7 +229,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.writeCppTitleComment (C_String ("Implementation of routine \"") + aNomRoutine + '"') ;
-  inCppFile << "void routine_" << aNomRoutine << " (C_Lexique &" ;
+  inCppFile << "void routine_" << aNomRoutine << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " _inLexique" ;
   }
@@ -274,7 +274,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 void cPtr_typeActionExterneAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -287,7 +287,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeActionExterneAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
-  inHfile << "void routine_" << aNomAction << " (C_Lexique &" ;
+  inHfile << "void routine_" << aNomAction << " (C_Compiler &" ;
   GGS_L_EXsignature::element_type * currentArgument = aSignature.firstObject () ;
   while (currentArgument != NULL) {
     inHfile << ",\n                                " ;
@@ -327,7 +327,7 @@ generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
 //---------------------------------------------------------------------------*
 
 static void
-generate_header_file (C_Lexique & inLexique,
+generate_header_file (C_Compiler & inLexique,
                       const GGS_lstring & nomComposant,
                       const GGS_stringset & inIncludesForHeaderFile,
                       const GGS_string & inLexiqueName,
@@ -1563,7 +1563,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 static void
-generate_cpp_file (C_Lexique & inLexique,
+generate_cpp_file (C_Compiler & inLexique,
                    GGS_lstring & nomComposant,
                    GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                    GGS_stringset & tableFichiersEnTetePourFichierCPP) {
@@ -1643,7 +1643,7 @@ generate_cpp_file (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_generateSemanticsComponent (C_Lexique & inLexique,
+routine_generateSemanticsComponent (C_Compiler & inLexique,
                                     GGS_lstring & nomComposant,
                                     GGS_stringset & includesForHeaderFile,
                                     GGS_string & defLexique,

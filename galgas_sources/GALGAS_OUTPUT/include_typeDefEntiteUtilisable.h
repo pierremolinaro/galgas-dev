@@ -37,7 +37,7 @@ class cPtr_typeDefEntiteUtilisable : public C_GGS_Object {
   public : virtual const char * message_messageTypeEntite (void) const ;
   public : static const char * static_string_message_messageTypeEntite (void) ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

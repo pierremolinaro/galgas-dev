@@ -33,7 +33,7 @@
 //---------------------------------------------------------------------------*
 
 static void
-generate_option_header_file (C_Lexique & inLexique,
+generate_option_header_file (C_Compiler & inLexique,
                              const GGS_lstring & inOptionClassName,
                              const GGS_M_cli_options & inBoolOptionsMap,
                              const GGS_M_cli_options & inUintOptionsMap,
@@ -116,7 +116,7 @@ generate_option_header_file (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_option_cpp_file (C_Lexique & inLexique,
+generate_option_cpp_file (C_Compiler & inLexique,
                           const GGS_lstring & inOptionClassName,
                           const GGS_M_cli_options & inBoolOptionsMap,
                           const GGS_M_cli_options & inUintOptionsMap,
@@ -497,7 +497,7 @@ generate_option_cpp_file (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_generate_option_component (C_Lexique & inLexique,
+routine_generate_option_component (C_Compiler & inLexique,
                                    GGS_lstring & inOptionClassName,
                                    GGS_M_cli_options & inBoolOptionsMap,
                                    GGS_M_cli_options & inUintOptionsMap,

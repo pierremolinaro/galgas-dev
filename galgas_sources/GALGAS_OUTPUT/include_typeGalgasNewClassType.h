@@ -39,7 +39,7 @@ class cPtr_typeGalgasNewClassType : public cPtr_typeGalgasUndefinedClassType {
 //--- Attributes
   public : GGS_typeSuperClassesMap  mSuperClassMap ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

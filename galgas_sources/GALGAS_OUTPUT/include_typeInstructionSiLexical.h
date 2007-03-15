@@ -52,7 +52,7 @@ class cPtr_typeInstructionSiLexical : public cPtr_typeInstructionLexicale {
   public : GGS_typeListeTestsEtInstructions  attributListeBranches ;
   public : GGS_tListeInstructionsLexicales  attributBrancheSinon ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

@@ -30,7 +30,7 @@ class cPtr_C_mapindexToImplement : public cPtr_typeEntityToGenerate {
 
   public : virtual void
   generateHdeclarations_2 (AC_OutputStream & inHfile,
-                           C_Lexique & inLexique) const ;
+                           C_Compiler & inLexique) const ;
 
   public : virtual bool isCppClassNeeded (void) const ;
 
@@ -67,7 +67,7 @@ class cPtr_C_mapindexToImplement : public cPtr_typeEntityToGenerate {
   public : GGS_typeListeAttributsSemantiques  mMapAttributesList ;
   public : GGS_mapIndexSearchReaderMap  mMapIndexSearchReaderMap ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

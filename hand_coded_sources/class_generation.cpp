@@ -39,7 +39,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       inCppFile.writeCppHyphenLineComment () ;
       inCppFile << "void cPtr_" << inClassName
                 << "::\n"
-                   "method_" << current->mKey << " (C_Lexique &" ;
+                   "method_" << current->mKey << " (C_Compiler &" ;
     //--- L'argument lexique est-il utilise ?
       const bool lexiqueUtilise = isLexiqueFormalArgumentUsedForList (current->mInfo.mInstructionList, true) ;
       if (! lexiqueUtilise) {
@@ -87,7 +87,7 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "//--- Method '" << current->mKey << "'\n"
-               "  public : virtual void method_" << current->mKey << " (C_Lexique &" ;
+               "  public : virtual void method_" << current->mKey << " (C_Compiler &" ;
   //--- Engendrer les arguments formels declares par l'utilisateur
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
     while (currentArgument != NULL) {
@@ -164,7 +164,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   //--- 'new' constructor
     inHfile << "//--- 'new' constructor\n"
                "  public : static GGS_" << aNomClasse
-            << " constructor_new (C_Lexique & inLexique" ;
+            << " constructor_new (C_Compiler & inLexique" ;
     sint32 variableIndex = 0 ;
     GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
     while (current != NULL) {
@@ -215,7 +215,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Generate 'description' reader declaration
   inHfile << "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 
@@ -227,7 +227,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "  public : " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
     inHfile << " reader_" << current->aNomAttribut
-            << " (C_Lexique & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+            << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
   }
 //--- Engendrer la declaration de la surcharge de l'operateur ()
@@ -249,7 +249,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inHfile << "//--- '" << messageCourant->mKey << "' message\n"
-               "  public : GGS_string reader_" << messageCourant->mKey << " (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+               "  public : GGS_string reader_" << messageCourant->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     messageCourant = messageCourant->nextObject () ;
   }
 
@@ -261,7 +261,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 void cPtr_C_classToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Lexique & inLexique) const {
+                         C_Compiler & inLexique) const {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
@@ -335,7 +335,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Method for 'description' reader
   generatedZone3 << "//--- Method for 'description' reader\n"
-                    "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
+                    "  public : virtual void appendForDescription (C_Compiler & _inLexique,\n"
                     "                                              C_String & ioString,\n"
                     "                                              const sint32 inIndentation\n"
                     "                                              COMMA_LOCATION_ARGS) const ;\n"
@@ -508,7 +508,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "void cPtr_" << aNomClasse << "::\n"
-               "appendForDescription (C_Lexique & "
+               "appendForDescription (C_Compiler & "
             << ((current == NULL) ? "/* _inLexique */" : "_inLexique")
             << ",\n"
                "                      C_String & ioString,\n"
@@ -596,7 +596,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "GGS_" << aNomClasse
               << " GGS_" << aNomClasse << "::\n"
-                 "constructor_new (C_Lexique & /* inLexique */" ;
+                 "constructor_new (C_Compiler & /* inLexique */" ;
     current = aListeTousAttributsNonExternes.firstObject () ;
     variableIndex = 0 ;
     while (current != NULL) {
@@ -639,7 +639,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (messageCourant) ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
-                 "reader_" << messageCourant->mKey << " (C_Lexique & /* _inLexique */\n"
+                 "reader_" << messageCourant->mKey << " (C_Compiler & /* _inLexique */\n"
                  "                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  return GGS_string (mPointer != NULL, C_String ((mPointer == NULL) ? \"\" : mPointer->message_" << messageCourant->mKey << " ())) ;\n"
                  "}\n\n" ;
@@ -654,7 +654,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " GGS_" << aNomClasse << "::\n"
                  "reader_" << current->aNomAttribut
-              << " (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+              << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << "  result ;\n"
@@ -706,7 +706,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Generate 'description' reader implementation
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
-            << "reader_description (C_Lexique & _inLexique\n"
+            << "reader_description (C_Compiler & _inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"

@@ -58,7 +58,7 @@ public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfi
   public : GGS_typeListeBranchesInstructions  mIFbranchesList ;
   public : GGS_location  aPositionDebut ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

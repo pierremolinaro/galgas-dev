@@ -26,7 +26,7 @@
 
 void cPtr_C_domainToImplement::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -50,7 +50,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  protected : cDomainAttribute _attribute_" << currentAttribute->mKey << " ;\n"
                "  public : void modifier_addTo"
             << currentAttribute->mKey.stringWithUpperCaseFirstLetter ()
-            << " (C_Lexique & inLexique,\n"
+            << " (C_Compiler & inLexique,\n"
                "                                    const GGS_string & inNewValue\n"
                "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
     currentAttribute = currentAttribute->nextObject () ;
@@ -66,7 +66,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "  public : void modifier_addTo"
             << currentRelation->mKey.stringWithUpperCaseFirstLetter ()
-            << " (C_Lexique & inLexique,\n" ;
+            << " (C_Compiler & inLexique,\n" ;
     for (sint32 i=1 ; i<currentRelation->mInfo.mDomains.count () ; i++) {
       inHfile << "                                    const GGS_string & inValue_" << i << ",\n" ;
     }
@@ -84,7 +84,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : virtual ~GGS_" << mDomainName << " (void) ;\n\n"
              "//--- 'emptyDomain' GALGAS constructor\n"
              "  public : static GGS_" << mDomainName << "\n"
-             "  constructor_emptyDomain (C_Lexique & inLexique\n"
+             "  constructor_emptyDomain (C_Compiler & inLexique\n"
              "                           COMMA_LOCATION_ARGS) ;\n"
              "} ;\n\n" ;
 }
@@ -141,7 +141,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- 'emptyDomain' constructor
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << mDomainName << " GGS_" << mDomainName << "::\n"
-               "constructor_emptyDomain (C_Lexique & /* inLexique */\n"
+               "constructor_emptyDomain (C_Compiler & /* inLexique */\n"
                "                         COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << mDomainName << " result ;\n"
                "  result.mIsBuilt = true ;\n"
@@ -156,7 +156,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
             << currentAttribute->mKey.stringWithUpperCaseFirstLetter ()
-            << " (C_Lexique & /* inLexique */,\n"
+            << " (C_Compiler & /* inLexique */,\n"
                "                                    const GGS_string & inNewValue\n"
                "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  bool bitCountExtended = false ;\n"
@@ -177,7 +177,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
               << currentRelation->mKey.stringWithUpperCaseFirstLetter ()
-              << " (C_Lexique & /* inLexique */,\n" ;
+              << " (C_Compiler & /* inLexique */,\n" ;
     for (sint32 i=1 ; i<currentRelation->mInfo.mDomains.count () ; i++) {
       inCppFile << "                                    const GGS_string & inValue_" << i << ",\n" ;
     }
