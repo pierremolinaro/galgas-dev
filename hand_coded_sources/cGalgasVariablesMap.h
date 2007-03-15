@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generic map used for GALGAS variables (handles read/write access)        *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -174,7 +174,7 @@ template <typename INFO> class cGalgasVariablesMap {
   public : void build (void) ;
 
 //--- Reader 'hasKey"
-  public : GGS_bool reader_hasKey (C_Lexique & inLexique,
+  public : GGS_bool reader_hasKey (C_Compiler & inLexique,
                                    const GGS_string & inKey
                                    COMMA_LOCATION_ARGS) const ;
 
@@ -182,105 +182,105 @@ template <typename INFO> class cGalgasVariablesMap {
   public : inline bool _isBuilt (void) const { return true ; }
 
 //--- Insertion Methods
-  public : sint32 insertEntityAttributeLocalVariable (C_Lexique & inLexique,
+  public : sint32 insertEntityAttributeLocalVariable (C_Compiler & inLexique,
                                                       const INFO & info,
                                                       const GGS_lstring & clef,
                                                       const GGS_location & inLocation,
                                                       const char * messageErreurInsertion
                                                       COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertSingleEntityLocalVariable (C_Lexique & inLexique,
+  public : sint32 insertSingleEntityLocalVariable (C_Compiler & inLexique,
                                                    const INFO & info,
                                                    const GGS_lstring & clef,
                                                    const GGS_location & inLocation,
                                                    const char * messageErreurInsertion
                                                    COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertListOfEntitiesLocalVariable (C_Lexique & inLexique,
+  public : sint32 insertListOfEntitiesLocalVariable (C_Compiler & inLexique,
                                                      const INFO & info,
                                                      const GGS_lstring & clef,
                                                      const GGS_location & inLocation,
                                                      const char * messageErreurInsertion
                                                      COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertInArgument (C_Lexique & inLexique,
+  public : sint32 insertInArgument (C_Compiler & inLexique,
                                     const INFO & info,
                                     const GGS_lstring & clef,
                                     const GGS_location & inLocation,
                                     const char * messageErreurInsertion
                                     COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUnusedInArgument (C_Lexique & inLexique,
+  public : sint32 insertUnusedInArgument (C_Compiler & inLexique,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                           const GGS_location & inLocation,
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertOutProperty (C_Lexique & inLexique,
+  public : sint32 insertOutProperty (C_Compiler & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                      const GGS_location & inLocation,
                                      const char * messageErreurInsertion
                                      COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertInOutArgument (C_Lexique & inLexique,
+  public : sint32 insertInOutArgument (C_Compiler & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                      const char * messageErreurInsertion
                                      COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUsedInOutArgument (C_Lexique & inLexique,
+  public : sint32 insertUsedInOutArgument (C_Compiler & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                            const GGS_location & inLocation,
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUnusedInOutArgument (C_Lexique & inLexique,
+  public : sint32 insertUnusedInOutArgument (C_Compiler & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertOutArgument (C_Lexique & inLexique,
+  public : sint32 insertOutArgument (C_Compiler & inLexique,
                                    const INFO & info,
                                    const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                    const char * messageErreurInsertion
                                    COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertConstInArgument (C_Lexique & inLexique,
+  public : sint32 insertConstInArgument (C_Compiler & inLexique,
                                        const INFO & info,
                                        const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                        const char * messageErreurInsertion
                                        COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUsedConstInArgument (C_Lexique & inLexique,
+  public : sint32 insertUsedConstInArgument (C_Compiler & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUsedConstInArgumentNoShadow (C_Lexique & inLexique,
+  public : sint32 insertUsedConstInArgumentNoShadow (C_Compiler & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUnusedConstInArgument (C_Lexique & inLexique,
+  public : sint32 insertUnusedConstInArgument (C_Compiler & inLexique,
                                              const INFO & info,
                                              const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                              const char * messageErreurInsertion
                                              COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertLocalVariable (C_Lexique & inLexique,
+  public : sint32 insertLocalVariable (C_Compiler & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                       const GGS_location & inLocation,
@@ -289,61 +289,61 @@ template <typename INFO> class cGalgasVariablesMap {
 
 
 //--- Search methods
-  private : void chercherInterne (C_Lexique & inLexique,
+  private : void chercherInterne (C_Compiler & inLexique,
                                   element_type * & resultat,
                                   const GGS_lstring & clef,
                                   const char * messageErreurRecherche
                                   COMMA_LOCATION_ARGS) ;
 
-  public : element_type * searchForReadOnlyAccess (C_Lexique & inLexique,
+  public : element_type * searchForReadOnlyAccess (C_Compiler & inLexique,
                                          const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                          const char * messageErreurPhase
                                          COMMA_LOCATION_ARGS) ;
 
-  public : element_type * searchForDestructiveReadAccess (C_Lexique & inLexique,
+  public : element_type * searchForDestructiveReadAccess (C_Compiler & inLexique,
                                                 const GGS_lstring & clef,
                                                 const GGS_location & inLocation,
                                                 const char * messageErreurPhase
                                                 COMMA_LOCATION_ARGS) ;
 
-  public : element_type * searchForReadWriteAccess (C_Lexique & inLexique,
+  public : element_type * searchForReadWriteAccess (C_Compiler & inLexique,
                                           const GGS_lstring & clef,
                                           const GGS_location & inLocation,
                                           const char * messageErreurPhase
                                           COMMA_LOCATION_ARGS) ;
 
-  public : element_type * searchForWriteAccess (C_Lexique & inLexique,
+  public : element_type * searchForWriteAccess (C_Compiler & inLexique,
                                       const GGS_lstring & clef,
                                       const GGS_location & inLocation,
                                       const char * messageErreurPhase
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour verifier l'etat des variables
-  public : void prologue_verifyVariableUsing (C_Lexique & COMMA_LOCATION_ARGS) ;
-  public : void epilogue_verifyVariableUsing (C_Lexique &,
+  public : void prologue_verifyVariableUsing (C_Compiler & COMMA_LOCATION_ARGS) ;
+  public : void epilogue_verifyVariableUsing (C_Compiler &,
                                               const GGS_location & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour l'instruction test et choix
-  public : void prologue_testBloc (C_Lexique & COMMA_LOCATION_ARGS) ;
-  public : void epilogue_testBloc (C_Lexique & COMMA_LOCATION_ARGS) ;
+  public : void prologue_testBloc (C_Compiler & COMMA_LOCATION_ARGS) ;
+  public : void epilogue_testBloc (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour chaque branche de l'instruction test et choix
-  public : void prologue_testPart (C_Lexique & COMMA_LOCATION_ARGS) ;
-  public : void epilogue_testPart (C_Lexique &,
+  public : void prologue_testPart (C_Compiler & COMMA_LOCATION_ARGS) ;
+  public : void epilogue_testPart (C_Compiler &,
                                    const GGS_location & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour chaque instruction repeter
-  public : void prologue_repeatBlock (C_Lexique & COMMA_LOCATION_ARGS) ;
-  public : void epilogue_repeatBlock (C_Lexique & COMMA_LOCATION_ARGS) ;
+  public : void prologue_repeatBlock (C_Compiler & COMMA_LOCATION_ARGS) ;
+  public : void epilogue_repeatBlock (C_Compiler & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes de bloc pour chaque branche de l'instruction repeter
-  public : void prologue_repeatPart (C_Lexique & COMMA_LOCATION_ARGS) ;
-  public : void epilogue_repeatPart (C_Lexique &,
+  public : void prologue_repeatPart (C_Compiler & COMMA_LOCATION_ARGS) ;
+  public : void epilogue_repeatPart (C_Compiler &,
                                      const GGS_location & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes internes privees
-  private : sint32 insertKey (C_Lexique & inLexique,
+  private : sint32 insertKey (C_Compiler & inLexique,
                          const INFO & info,
                          const enumNatureEntite nature,
                          const enumEtatVariable etat,
@@ -365,7 +365,7 @@ template <typename INFO> class cGalgasVariablesMap {
                                  element_type * & racine,
                                  bool & extension) ;
 
-  private : void verificationRecursiveConsommation (C_Lexique & inLexique,
+  private : void verificationRecursiveConsommation (C_Compiler & inLexique,
                                                     element_type * element,
                                                     const GGS_location & positionErreur
                                                     COMMA_LOCATION_ARGS) ;
@@ -378,7 +378,7 @@ template <typename INFO> class cGalgasVariablesMap {
   
   private : void initialiserChampEtatApres (element_type * element) ;
   
-  private : void verifierChampEtatApres (C_Lexique & inLexique,
+  private : void verifierChampEtatApres (C_Compiler & inLexique,
                                          element_type * element,
                                          const GGS_location & positionErreur,
                                          const char * message1,

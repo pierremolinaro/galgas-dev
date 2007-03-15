@@ -429,8 +429,8 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    C_galgas_io * galgasIOptr = NULL ;\n"
                     "    macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
                     "  //--- Common lexique object\n"
-                    "    C_Lexique * _commonLexique = NULL ;\n"
-                    "    macroMyNew (_commonLexique, C_Lexique (galgasIOptr COMMA_HERE)) ;\n"
+                    "    C_Compiler * _commonLexique = NULL ;\n"
+                    "    macroMyNew (_commonLexique, C_Compiler (galgasIOptr COMMA_HERE)) ;\n"
                     "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
                     "    #ifdef SIOUX_IS_IMPLEMENTED\n"
                     "      SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
@@ -486,7 +486,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
     }
     sint32 prototypeIndex = 0 ;
     generatedZone2 << "if (fileExtension.compare (\"" << currentRule->mSourceExtension << "\") == 0) {\n"
-                      "  C_Lexique & _inLexique = * _commonLexique ;\n"
+                      "  C_Compiler & _inLexique = * _commonLexique ;\n"
                       "  const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
                       "  const GGS_location _here (_inLexique) ;\n"
                       "  const GGS_lstring var_cas_"
@@ -569,7 +569,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "      returnCode = 2 ; // Error code\n"
                     "    }\n"
                     "    macroDetachPointer (galgasIOptr, C_galgas_io) ;\n"
-                    "    macroDetachPointer (_commonLexique, C_Lexique) ;\n"
+                    "    macroDetachPointer (_commonLexique, C_Compiler) ;\n"
                     "  }\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "    C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"
