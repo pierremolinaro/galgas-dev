@@ -36,7 +36,7 @@ class C_Lexique ;
 
 //---------------------------------------------------------------------------*
 
-void LR1_computations (C_Lexique & inLexique,
+void LR1_computations (C_Compiler & inLexique,
                        const cPureBNFproductionsList & inProductionRules,
                        const cVocabulary & inVocabulary,
                        C_HTML_FileWrite * inHTMLfile,

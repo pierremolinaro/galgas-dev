@@ -30,7 +30,7 @@
 //---------------------------------------------------------------------------*
 
 static void
-generate_header_file_for_prgm (C_Lexique & inLexique,
+generate_header_file_for_prgm (C_Compiler & inLexique,
                                const C_String & inProgramComponentName,
                                const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
                                const GGS_M_optionComponents & inOptionsComponentsMap) {
@@ -185,7 +185,7 @@ generate_header_file_for_prgm (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_cpp_file_for_prgm (C_Lexique & inLexique,
+generate_cpp_file_for_prgm (C_Compiler & inLexique,
                             const uint32 inmaxErrorCount,
                             const uint32 inmaxWarningCount,
                             const C_String & inVersionString,
@@ -623,7 +623,7 @@ generate_cpp_file_for_prgm (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_generatePRGM (C_Lexique & inLexique,
+routine_generatePRGM (C_Compiler & inLexique,
                       const GGS_lstring & inProgramComponentName,
                       const GGS_lstring & inVersionString,
                       const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
@@ -653,7 +653,7 @@ routine_generatePRGM (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_fixFileGenerationStartDirectory (C_Lexique & inLexique,
+routine_fixFileGenerationStartDirectory (C_Compiler & inLexique,
                                          const GGS_lstring & inSourceFile
                                          COMMA_LOCATION_ARGS) {
   inLexique.ioParametersPtr ()->mFileGenerationStartDir = inSourceFile.stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;

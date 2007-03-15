@@ -165,7 +165,7 @@ generateClassRegistering (AC_OutputStream & inCppfile,
 //---------------------------------------------------------------------------*
 
 static void
-generateGrammarHeaderFile (C_Lexique & inLexique,
+generateGrammarHeaderFile (C_Compiler & inLexique,
                            const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                            const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                            const C_String & inLexiqueName,
@@ -286,7 +286,7 @@ generateGrammarHeaderFile (C_Lexique & inLexique,
 static void
 fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList,
                             cInfo & inInfo,
-                            C_Lexique & inLexique,
+                            C_Compiler & inLexique,
                             bool & ioOk) {
   GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.firstObject () ;
   while (currentInstruction != NULL) {
@@ -301,7 +301,7 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
 
 void cPtr_T_repeatInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & inLexique,
+          C_Compiler & inLexique,
           bool & ioOk) {
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.firstObject () ;
   while (currentBranch != NULL) {
@@ -318,7 +318,7 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_selectInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & inLexique,
+          C_Compiler & inLexique,
           bool & ioOk) {
   GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.firstObject () ;
   while (currentBranch != NULL) {
@@ -335,7 +335,7 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & inLexique,
+          C_Compiler & inLexique,
           bool & ioOk) {
   GGS_luint index ;
   GGS_M_nonterminalSymbolAltsForGrammar unusedParameter ;
@@ -351,7 +351,7 @@ fixInfos (cInfo & inInfo,
 
 void cPtr_T_terminalInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
-          C_Lexique & inLexique,
+          C_Compiler & inLexique,
           bool & ioOk) {
   GGS_luint index ;
   GGS_typeListeAttributsSemantiques unusedArg ;
@@ -466,7 +466,7 @@ static const char k_default_style [] = {
 //---------------------------------------------------------------------------*
 
 static void
-createStyleFile (C_Lexique & inLexique,
+createStyleFile (C_Compiler & inLexique,
                  const C_String & inCurrentDirectory, 
                  const char * inStyleFileName,
                  const bool inVerboseOptionOn) {
@@ -504,7 +504,7 @@ static uint16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
 //---------------------------------------------------------------------------*
 
 static void
-analyzeGrammar (C_Lexique & inLexique,
+analyzeGrammar (C_Compiler & inLexique,
                 const GGS_lstring & inTargetFileName,
                 const GGS_lstring & inGrammarClass,
                 const GGS_luint & inOriginalGrammarStartSymbol,
@@ -895,7 +895,7 @@ analyzeGrammar (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_analyzeGrammar (C_Lexique & inLexique,
+routine_analyzeGrammar (C_Compiler & inLexique,
                         GGS_lstring & inTargetFileName,
                         const GGS_lstring & inGrammarClass,
                         GGS_luint & inOriginalGrammarStartSymbol,

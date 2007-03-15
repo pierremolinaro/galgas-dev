@@ -687,7 +687,7 @@ cLR0_decisionTableElement cLR0_decisionTableElement::acceptDecision (void) {
 //---------------------------------------------------------------------------*
 
 static void
-generate_SLR_grammar_cpp_file (C_Lexique & inLexique,
+generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_Array2 <cLR0_decisionTableElement> & inSLRdecisionTable,
@@ -1075,7 +1075,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 void
-SLR_computations (C_Lexique & inLexique,
+SLR_computations (C_Compiler & inLexique,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,

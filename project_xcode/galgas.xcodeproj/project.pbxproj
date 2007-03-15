@@ -1745,11 +1745,11 @@
 			remoteGlobalIDString = CF6DF12309E3F23700506859;
 			remoteInfo = "GALGAS tool LL1 (ppc)";
 		};
-		CF6DF25A09E3F3C400506859 /* PBXContainerItemProxy */ = {
+		CFE08FB90BA9B5AA006D6BF7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CF6DF19C09E3F30400506859;
+			remoteGlobalIDString = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
 			remoteInfo = "GALGAS tool LL1 debug (ppc)";
 		};
 /* End PBXContainerItemProxy section */
@@ -4135,7 +4135,7 @@
 			);
 			dependencies = (
 				CF6DF25909E3F3C400506859 /* PBXTargetDependency */,
-				CF6DF25B09E3F3C400506859 /* PBXTargetDependency */,
+				CFE08FBA0BA9B5AA006D6BF7 /* PBXTargetDependency */,
 			);
 			name = "GALGAS Cocoa (ppc)";
 			productInstallPath = "$(HOME)/Applications";
@@ -5387,10 +5387,10 @@
 			target = CF6DF12309E3F23700506859 /* GALGAS tool LL1 (ppc) */;
 			targetProxy = CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */;
 		};
-		CF6DF25B09E3F3C400506859 /* PBXTargetDependency */ = {
+		CFE08FBA0BA9B5AA006D6BF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
-			targetProxy = CF6DF25A09E3F3C400506859 /* PBXContainerItemProxy */;
+			targetProxy = CFE08FB90BA9B5AA006D6BF7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -30,7 +30,7 @@
 //---------------------------------------------------------------------------*
 
 static bool
-instructionsListHaveSameSyntaxSignatures (C_Lexique & _inLexique,
+instructionsListHaveSameSyntaxSignatures (C_Compiler & _inLexique,
                                           const GGS_L_ruleSyntaxSignature & inReferenceList,
                                           const GGS_L_ruleSyntaxSignature & inOtherList,
                                           const GGS_location & inEndOfInstructionListLocation) {
@@ -69,7 +69,7 @@ instructionsListHaveSameSyntaxSignatures (C_Lexique & _inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_repeatInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_Lexique & _inLexique,
+isSameSyntaxInstructionThan (C_Compiler & _inLexique,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
   const cPtr_T_repeatInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_repeatInstruction_forGrammarComponent *> (inInstruction) ;
@@ -107,7 +107,7 @@ isSameSyntaxInstructionThan (C_Lexique & _inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_selectInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_Lexique & _inLexique,
+isSameSyntaxInstructionThan (C_Compiler & _inLexique,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
   const cPtr_T_selectInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_selectInstruction_forGrammarComponent *> (inInstruction) ;
@@ -145,7 +145,7 @@ isSameSyntaxInstructionThan (C_Lexique & _inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_nonterminalInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_Lexique & _inLexique,
+isSameSyntaxInstructionThan (C_Compiler & _inLexique,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_T_nonterminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_nonterminalInstruction_forGrammarComponent *> (inInstruction) ;
@@ -161,7 +161,7 @@ isSameSyntaxInstructionThan (C_Lexique & _inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_terminalInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_Lexique & _inLexique,
+isSameSyntaxInstructionThan (C_Compiler & _inLexique,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_T_terminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_terminalInstruction_forGrammarComponent *> (inInstruction) ;
@@ -177,7 +177,7 @@ isSameSyntaxInstructionThan (C_Lexique & _inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_checkLabelSignatures (C_Lexique & _inLexique,
+routine_checkLabelSignatures (C_Compiler & _inLexique,
                               GGS_typeAltProductionsMap & inAltProductionMap
                               COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeAltProductionsMap::element_type * current = inAltProductionMap.firstObject () ;
@@ -197,7 +197,7 @@ routine_checkLabelSignatures (C_Lexique & _inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_checkParseRewindSignatures (C_Lexique & _inLexique,
+routine_checkParseRewindSignatures (C_Compiler & _inLexique,
                                     GGS_L_parse_rewind_signature_list & inParseRewindSignatureList
                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_L_parse_rewind_signature_list::element_type * current = inParseRewindSignatureList.firstObject () ;

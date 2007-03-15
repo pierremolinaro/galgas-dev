@@ -30,7 +30,7 @@
 //---------------------------------------------------------------------------*
 
 static void
-buildPopUpTreeForGUI (C_Lexique & /* inLexique */,
+buildPopUpTreeForGUI (C_Compiler & /* inLexique */,
                       const GGS_labelForPopUpList & inLabelForPopUpList,
                       TC_Array2 <bool> & outPopUpTree,
                       const sint32 inTerminalSymbolCount) {
@@ -49,7 +49,7 @@ buildPopUpTreeForGUI (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 static void
-generate_mm_file_for_cocoa (C_Lexique & inLexique,
+generate_mm_file_for_cocoa (C_Compiler & inLexique,
                             const C_String & inCocoaComponentName,
                             const GGS_L_nibAndClassList & inNibAndClassList,
                             const GGS_string & inBlockComment,
@@ -374,7 +374,7 @@ generate_mm_file_for_cocoa (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void 
-routine_generateCocoaComponent (C_Lexique & inLexique,
+routine_generateCocoaComponent (C_Compiler & inLexique,
                                 const GGS_lstring & inGUIcomponentName,
                                 const GGS_lstring & inGUIkindName,
                                 const GGS_L_nibAndClassList & inNibAndClassList,

@@ -24,7 +24,7 @@
 
 void cPtr_enumGalgasType::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -73,7 +73,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
     inHfile << "  public : static inline GGS_" << mEnumTypeName
-            << " constructor_" << cst->mKey << " (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+            << " constructor_" << cst->mKey << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "    return GGS_" << mEnumTypeName << " (enum_" << cst->mKey << ") ;\n"
                "  }\n" ;
     cst = cst->nextObject () ;
@@ -82,12 +82,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Messages\n" ;
   GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
-    inHfile << "  public : GGS_string reader_" << m->mKey << " (C_Lexique & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    inHfile << "  public : GGS_string reader_" << m->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     m = m->nextObject () ;
   }
   inHfile << "\n"
              "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n\n"
              "//--- Drop operation\n"
@@ -182,7 +182,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::"
                  "\n"
-                 "reader_" << m->mKey << " (C_Lexique & /* _inLexique */\n"
+                 "reader_" << m->mKey << " (C_Compiler & /* _inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
     GGS_L_lstringList::element_type * e = m->mInfo.mMessageStringList.firstObject () ;
@@ -201,7 +201,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile << "GGS_string GGS_" << mEnumTypeName
             << "::\n"
-               "reader_description (C_Lexique & /* _inLexique */\n"
+               "reader_description (C_Compiler & /* _inLexique */\n"
                "                    COMMA_UNUSED_LOCATION_ARGS,\n"
                "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"

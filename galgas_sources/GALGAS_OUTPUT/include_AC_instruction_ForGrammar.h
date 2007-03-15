@@ -23,7 +23,7 @@ class cPureBNFproductionsList ;
 class cPtr_AC_instruction_ForGrammar : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
-  public : virtual bool isSameSyntaxInstructionThan (C_Lexique & _inLexique,
+  public : virtual bool isSameSyntaxInstructionThan (C_Compiler & _inLexique,
                           cPtr_AC_instruction_ForGrammar * inInstruction,
                           const GGS_location & inEndOfInstructionListLocation) const = 0 ;
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) = 0 ;
@@ -36,7 +36,7 @@ class cPtr_AC_instruction_ForGrammar : public C_GGS_Object {
                                            const C_String & inSyntaxComponentName,
                                            cPureBNFproductionsList & ioProductions) = 0 ;
   public : virtual void fixInfos (class cInfo & inInfo,
-                                  C_Lexique & inLexique,
+                                  C_Compiler & inLexique,
                                   bool & ioOk) = 0 ;
 
 //--- END OF USER ZONE 2
@@ -55,7 +55,7 @@ class cPtr_AC_instruction_ForGrammar : public C_GGS_Object {
 //--- Attributes
   public : GGS_location  mStartLocation ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

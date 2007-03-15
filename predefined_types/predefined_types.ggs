@@ -8,4 +8,8 @@ list @STRINGLIST {
   @string mValue ;
 }
 
+list @LSTRINGLIST {
+  @lstring mValue ;
+}
+
 end semantics ;

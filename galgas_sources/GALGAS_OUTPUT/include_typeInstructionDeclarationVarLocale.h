@@ -53,7 +53,7 @@ public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgu
   public : GGS_typeCplusPlusName  aNomCppVariable ;
   public : GGS_AC_galgasType  aTypeVariable ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

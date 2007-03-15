@@ -19,6 +19,7 @@
 gui cocoaGalgas "cocoa" :
 import semantics semantics_semantics in "semantics_semantics.ggs" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
+import__ "galgas_scanner.ggs" ;
 
 nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
 
@@ -31,6 +32,7 @@ label $enum$, $type_name$ ;
 label $class$, $type_name$ ;
 label $nonterminal$, $non_terminal_symbol$ ;
 label $rule$, $non_terminal_symbol$ ;
+label $routine$, $identifier$ ;
 
 end gui ;
 

@@ -407,7 +407,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
 //---------------------------------------------------------------------------*
 
 static void
-generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
+generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                                const uint32 inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
@@ -696,7 +696,7 @@ generate_LL1_grammar_Cpp_file (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-LL1_computations (C_Lexique & inLexique,
+LL1_computations (C_Compiler & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,

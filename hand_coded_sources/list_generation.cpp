@@ -32,7 +32,7 @@
 
 void cPtr_C_listTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
@@ -75,7 +75,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  protected : bool isEqualToObject (const cListElement * inOperand) const ;\n\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
-             "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
+             "  public : virtual void appendForDescription (C_Compiler & _inLexique,\n"
              "                                                  C_String & ioString,\n"
              "                                                  const sint32 inIndentation\n"
              "                                                  COMMA_LOCATION_ARGS) const ;\n\n" ;
@@ -117,10 +117,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
-             "  public : static GGS_" << aNomListe << " constructor_emptyList (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
+             "  public : static GGS_" << aNomListe << " constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n"
 
 //--- Constructor 'listWithValue'
-             "  public : static GGS_" << aNomListe << " constructor_listWithValue (C_Lexique & _inLexique" ;
+             "  public : static GGS_" << aNomListe << " constructor_listWithValue (C_Compiler & _inLexique" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
@@ -153,7 +153,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'first'
              "//--- Method 'first'\n"
-             "  public : void method_first (C_Lexique & _inLexique" ;
+             "  public : void method_first (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -169,7 +169,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'last'
              "//--- Method 'last'\n"
-             "  public : void method_last (C_Lexique & _inLexique" ;
+             "  public : void method_last (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -185,7 +185,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popLast'
              "//--- Modifier 'popLast'\n"
-             "  public : void modifier_popLast (C_Lexique & _inLexique" ;
+             "  public : void modifier_popLast (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -201,7 +201,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popFirst'
              "//--- Modifier 'popFirst'\n"
-             "  public : void modifier_popFirst (C_Lexique & _inLexique" ;
+             "  public : void modifier_popFirst (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -238,7 +238,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_" << aNomListe << " operator + (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Prepend a new value
-             "  public : void modifier_prependValue (C_Lexique & _inLexique" ;
+             "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -289,7 +289,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  protected : void _insulateList (void) ;\n\n"
              "//--- Reader 'description\n"
              "  public : GGS_string\n"
-             "  reader_description (C_Lexique & _inLexique\n"
+             "  reader_description (C_Compiler & _inLexique\n"
              "                      COMMA_LOCATION_ARGS,\n"
              "                      const sint32 inIndentation = 0) const ;\n" ;
 
@@ -386,13 +386,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   current = mNonExternAttributesList.firstObject () ;
   if (current == NULL) {
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-                 "appendForDescription (C_Lexique & /* _inLexique */,\n"
+                 "appendForDescription (C_Compiler & /* _inLexique */,\n"
                  "                          C_String & /* ioString */,\n"
                  "                          const sint32 /* inIndentation */\n"
                  "                          COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
   }else{
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-                 "appendForDescription (C_Lexique & _inLexique,\n"
+                 "appendForDescription (C_Compiler & _inLexique,\n"
                  "                          C_String & ioString,\n"
                  "                          const sint32 inIndentation\n"
                  "                          COMMA_LOCATION_ARGS) const {\n" ;
@@ -595,7 +595,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Generate 'prepend' method
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_prependValue (C_Lexique & /* inLexique */" ;
+               "modifier_prependValue (C_Compiler & /* inLexique */" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -667,7 +667,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_emptyList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptyList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  return result ;\n"
@@ -676,7 +676,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_listWithValue (C_Lexique & /* _inLexique */" ;
+               "constructor_listWithValue (C_Compiler & /* _inLexique */" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -711,7 +711,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
-               "reader_description (C_Lexique & _inLexique\n"
+               "reader_description (C_Compiler & _inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
                "  return _description (_inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
@@ -720,7 +720,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'first'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_first (C_Lexique & _inLexique" ;
+               "method_first (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -766,7 +766,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'last'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_last (C_Lexique & _inLexique" ;
+               "method_last (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -811,7 +811,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'popFirst'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popFirst (C_Lexique & _inLexique" ;
+               "modifier_popFirst (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -857,7 +857,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'popLast'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popLast (C_Lexique & _inLexique" ;
+               "modifier_popLast (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -912,7 +912,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 void cPtr_C_sortedListTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
   inHfile.writeCppTitleComment (C_String ("Element of sorted list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
@@ -957,7 +957,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  protected : virtual sint32 compareForSorting (const cSortedListElement * inOperand) const ;\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
-             "  public : virtual void appendForDescription (C_Lexique & _inLexique,\n"
+             "  public : virtual void appendForDescription (C_Compiler & _inLexique,\n"
              "                                                  C_String & ioString,\n"
              "                                                  const sint32 inIndentation\n"
              "                                                  COMMA_LOCATION_ARGS) const ;\n"
@@ -998,10 +998,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Constructor 'emptySortedList'
              "//--- Constructor 'emptySortedList'\n"
-             "  public : static GGS_" << aNomListe << " constructor_emptySortedList (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n"
+             "  public : static GGS_" << aNomListe << " constructor_emptySortedList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n"
 
 //--- Constructor 'sortedListWithValue'
-             "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (C_Lexique & _inLexique" ;
+             "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (C_Compiler & _inLexique" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
@@ -1034,7 +1034,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'smallest'
              "//--- Method 'smallest'\n"
-             "  public : void method_smallest (C_Lexique & _inLexique" ;
+             "  public : void method_smallest (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1050,7 +1050,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'greatest'
              "//--- Method 'greatest'\n"
-             "  public : void method_greatest (C_Lexique & _inLexique" ;
+             "  public : void method_greatest (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1066,7 +1066,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popGreatest'
              "//--- Method 'popGreatest'\n"
-             "  public : void modifier_popGreatest (C_Lexique & _inLexique" ;
+             "  public : void modifier_popGreatest (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1082,7 +1082,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popSmallest'
              "//--- Modifier 'popSmallest'\n"
-             "  public : void modifier_popSmallest (C_Lexique & _inLexique" ;
+             "  public : void modifier_popSmallest (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1137,7 +1137,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- List Insulation\n"
              "  protected : void _insulateList (void) ;\n"
              "//--- Reader 'description\n"
-             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 
@@ -1253,7 +1253,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-               "appendForDescription (C_Lexique & _inLexique,\n"
+               "appendForDescription (C_Compiler & _inLexique,\n"
                "                          C_String & ioString,\n"
                "                          const sint32 inIndentation\n"
                "                          COMMA_LOCATION_ARGS) const {\n" ;
@@ -1437,7 +1437,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement constructor 'emptySortedList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_emptySortedList (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptySortedList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  return result ;\n"
@@ -1446,7 +1446,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement constructor 'sortedListWithValue'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_sortedListWithValue (C_Lexique & /* _inLexique */" ;
+               "constructor_sortedListWithValue (C_Compiler & /* _inLexique */" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1481,7 +1481,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
-               "reader_description (C_Lexique & _inLexique\n"
+               "reader_description (C_Compiler & _inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
                "  return _description (_inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
@@ -1490,7 +1490,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'smallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_smallest (C_Lexique & _inLexique" ;
+               "method_smallest (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -1536,7 +1536,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'greatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_greatest (C_Lexique & _inLexique" ;
+               "method_greatest (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -1581,7 +1581,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement method 'popSmallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popSmallest (C_Lexique & _inLexique" ;
+               "modifier_popSmallest (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
@@ -1627,7 +1627,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Implement modifier 'popGreatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popGreatest (C_Lexique & _inLexique" ;
+               "modifier_popGreatest (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {

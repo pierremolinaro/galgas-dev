@@ -317,7 +317,7 @@ generateAttributeInitialization (const GGS_typeLexicalAttributesMap & inMap,
 //---------------------------------------------------------------------------*
 
 void
-routine_buildLexicalRulesFromList (C_Lexique & ioLexique, 
+routine_buildLexicalRulesFromList (C_Compiler & ioLexique, 
                                    GGS_typeTableMotsReserves & keyWordsMap,
                                    GGS_typeListeTestsEtInstructions & ioLexicalRulesList
                                    COMMA_LOCATION_ARGS) {
@@ -1093,7 +1093,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 //---------------------------------------------------------------------------*
 
 static void
-generate_scanner_header_file (C_Lexique & inLexique,
+generate_scanner_header_file (C_Compiler & inLexique,
                               const GGS_lstring & inLexiqueName,
                               const GGS_typeLexicalAttributesMap & table_attributs,
                               const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
@@ -1214,7 +1214,7 @@ generate_scanner_header_file (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_scanner_cpp_file (C_Lexique & inLexique,
+generate_scanner_cpp_file (C_Compiler & inLexique,
                            const C_String & inLexiqueName,
                            const GGS_typeLexicalAttributesMap & table_attributs,
                            const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
@@ -1429,7 +1429,7 @@ generate_scanner_cpp_file (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void 
-routine_generate_scanner (C_Lexique & inLexique,
+routine_generate_scanner (C_Compiler & inLexique,
                           const GGS_lstring & inLexiqueName,
                           const GGS_typeLexicalAttributesMap & table_attributs,
                           const GGS_typeTableDefinitionTerminaux & table_des_terminaux,

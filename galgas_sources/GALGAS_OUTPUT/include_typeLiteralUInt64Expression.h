@@ -46,7 +46,7 @@ public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName &
 //--- Attributes
   public : GGS_luint64  mLiteralInt ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

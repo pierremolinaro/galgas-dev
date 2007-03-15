@@ -48,7 +48,7 @@ public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName &
   public : GGS_lstring  aNomMethodeTest ;
   public : GGS_typeCplusPlusName  aNomCppClef ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

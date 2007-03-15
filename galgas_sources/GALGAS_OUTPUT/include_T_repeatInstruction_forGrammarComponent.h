@@ -21,7 +21,7 @@ class cPtr_T_repeatInstruction_forGrammarComponent : public cPtr_AC_instruction_
   private : typedef cPtr_AC_instruction_ForGrammar inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual bool isSameSyntaxInstructionThan (C_Lexique & _inLexique,
+  public : virtual bool isSameSyntaxInstructionThan (C_Compiler & _inLexique,
                             cPtr_AC_instruction_ForGrammar * inInstruction,
                             const GGS_location & inEndOfInstructionListLocation) const ;
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) ;
@@ -34,7 +34,7 @@ class cPtr_T_repeatInstruction_forGrammarComponent : public cPtr_AC_instruction_
                                            const C_String & inSyntaxComponentName,
                                            cPureBNFproductionsList & ioProductions) ;
   public : virtual void fixInfos (cInfo & inInfo,
-                                  C_Lexique & inLexique,
+                                  C_Compiler & inLexique,
                                   bool & ioOk) ;
 
 //--- END OF USER ZONE 2
@@ -56,7 +56,7 @@ class cPtr_T_repeatInstruction_forGrammarComponent : public cPtr_AC_instruction_
   public : GGS_L_branchList_ForGrammarComponent  mRepeatList ;
   public : GGS_uint  mAddedNonterminalmSymbolIndex ;
 //--- Method for 'description' reader
-  public : virtual void appendForDescription (C_Lexique & _inLexique,
+  public : virtual void appendForDescription (C_Compiler & _inLexique,
                                               C_String & ioString,
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;

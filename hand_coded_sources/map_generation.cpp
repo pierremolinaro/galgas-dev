@@ -32,7 +32,7 @@
 
 void cPtr_C_mapindexToImplement::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -51,19 +51,19 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << mMapindexTypeName << " : public AC_galgas_mapindex {\n"
              "//--- 'null' constructor\n"
              "  public : static GGS_" << mMapindexTypeName << "\n"
-             "  constructor_null (C_Lexique & inLexique\n"
+             "  constructor_null (C_Compiler & inLexique\n"
              "                    COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Comparison operators\n"
              "  public : GGS_bool operator == (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n"
              "  public : GGS_bool operator != (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n\n"
              "//--- 'description' reader declaration\n"
              "  public : GGS_string\n"
-             "  reader_description (C_Lexique & _inLexique\n"
+             "  reader_description (C_Compiler & _inLexique\n"
              "                      COMMA_LOCATION_ARGS,\n"
              "                      const sint32 inIndentation = 0) const ;\n\n"
              "//--- Type Method 'makeRegularIndex'\n"
              "  public : static void\n"
-             "  class_method_makeRegularIndex (C_Lexique & inLexique,\n"
+             "  class_method_makeRegularIndex (C_Compiler & inLexique,\n"
              "                                 const GGS_lstring & inKey,\n"
              "                                 GGS_" << mMapTypeName << " & ioMap,\n"
              "                                 GGS_" << mMapindexTypeName << " & outIndex\n"
@@ -78,7 +78,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "  public : void\n"
-               "  method_" << currentMethod->mKey << " (C_Lexique & inLexique,\n"
+               "  method_" << currentMethod->mKey << " (C_Compiler & inLexique,\n"
                "                     GGS_lstring & outKey" ;
     GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mMapAttributesList.firstObject () ;
     sint32 attributeIndex = 1 ;
@@ -121,7 +121,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.writeCppTitleComment (C_String ("map index '@") + mMapindexTypeName + "'") ;
   inCppFile << "GGS_" << mMapindexTypeName << " GGS_" << mMapindexTypeName << "::\n"
-               "constructor_null (C_Lexique & /* inLexique */\n"
+               "constructor_null (C_Compiler & /* inLexique */\n"
                "                  COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << mMapindexTypeName << " result ;\n"
                "  result.mState = kNull ;\n"
@@ -144,7 +144,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mMapindexTypeName << "::\n"
-               "reader_description (C_Lexique & /* inLexique */\n"
+               "reader_description (C_Compiler & /* inLexique */\n"
                "                    COMMA_UNUSED_LOCATION_ARGS,\n"
                "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
@@ -167,7 +167,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Type Method 'makeRegularIndex
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mMapindexTypeName << "::\n"
-               "class_method_makeRegularIndex (C_Lexique & /* inLexique */,\n"
+               "class_method_makeRegularIndex (C_Compiler & /* inLexique */,\n"
                "                               const GGS_lstring & inKey,\n"
                "                               GGS_" << mMapTypeName << " & ioMap,\n"
                "                               GGS_" << mMapindexTypeName << " & outIndex\n"
@@ -186,7 +186,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapindexTypeName << "::\n"
-                 "method_" << currentMethod->mKey << " (C_Lexique & inLexique,\n"
+                 "method_" << currentMethod->mKey << " (C_Compiler & inLexique,\n"
                  "                   GGS_lstring & outKey" ;
     GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mMapAttributesList.firstObject () ;
     sint32 attributeIndex = 1 ;
@@ -254,7 +254,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 void cPtr_C_mapToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
   inHfile.writeCppTitleComment (C_String ("Element of map '@") + aNomTable + "'") ;
 //--- Starting map element class declaration
   inHfile << "class e_" << aNomTable << " {\n" ;
@@ -283,7 +283,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Data member\n"
              "  public : e_" << aNomTable << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
-             "  public : void appendForMapDescription (C_Lexique & _inLexique,\n"
+             "  public : void appendForMapDescription (C_Compiler & _inLexique,\n"
              "                                         const sint32 inElementIndex,\n"
              "                                         C_String & ioString,\n"
              "                                         const sint32 inIndentation\n"
@@ -327,7 +327,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n\n"
              "//--- 'emptyMap' constructor\n"
-             "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n\n"
+             "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n\n" ;
 
@@ -338,7 +338,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "//--- '" << currentMethod->mMethodName << "' Remove Modifier\n" ;
     inHfile <<    "  public : void modifier_"
             << currentMethod->mMethodName
-            << " (C_Lexique & inLexique" 
+            << " (C_Compiler & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inHfile << ",\n                                GGS_luint & outIndex" ;
@@ -363,7 +363,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "//--- '" << currentMethod->mMethodName << "' Insert Modifier\n" ;
     inHfile <<    "  public : void modifier_"
             << currentMethod->mMethodName
-            << " (C_Lexique & inLexique" 
+            << " (C_Compiler & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inHfile << ",\n                                GGS_luint & outIndex" ;
@@ -388,7 +388,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "//--- '" << currentMethod->mMethodName << "' Search Method\n"
                "  public : void method_" 
             << currentMethod->mMethodName
-            << " (C_Lexique & inLexique"
+            << " (C_Compiler & inLexique"
             << ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inHfile <<  ",\n                                GGS_luint & outIndex" ;
@@ -409,7 +409,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   if (mRemoveMethodList.firstObject () != NULL) {
     inHfile << "//--- Internal method for removing an element\n"
-               "  protected : void _removeElement (C_Lexique & inLexique,\n"
+               "  protected : void _removeElement (C_Compiler & inLexique,\n"
                "                                   const char * inErrorMessage,\n"
                "                                   const GGS_lstring & inKey,\n" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
@@ -427,7 +427,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
 
   inHfile << "//--- Internal method for inserting an element\n"
-             "  protected : void _insertElement (C_Lexique & inLexique,\n"
+             "  protected : void _insertElement (C_Compiler & inLexique,\n"
              "                                   const char * inErrorMessage,\n"
              "                                   const GGS_lstring & inKey,\n" ;
   GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
@@ -444,7 +444,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                   COMMA_LOCATION_ARGS) ;\n" ;
   
   inHfile << "//--- Internal method for searching for an element\n"
-             "  protected : void _searchElement (C_Lexique & inLexique,\n"
+             "  protected : void _searchElement (C_Compiler & inLexique,\n"
              "                                   const char * inErrorMessage,\n"
              "                                   const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -460,15 +460,15 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "                                   GGS_luint * outIndex\n"
              "                                   COMMA_LOCATION_ARGS) const ;\n"
 //--- Generate 'description' reader declaration
-             "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+             "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 //--- Generate 'mapWithMapToOverride' constructor declaration
-              "  public : static GGS_" << aNomTable << " constructor_mapWithMapToOverride (C_Lexique & inLexique,\n"
+              "  public : static GGS_" << aNomTable << " constructor_mapWithMapToOverride (C_Compiler & inLexique,\n"
               "                                            const GGS_" << aNomTable << " & inMapToOverride\n"
               "                                            COMMA_LOCATION_ARGS) ;\n"
 //--- Generate 'overriddenMap' reader declaration
-              "  public : GGS_" << aNomTable << " reader_overriddenMap (C_Lexique & inLexique\n"
+              "  public : GGS_" << aNomTable << " reader_overriddenMap (C_Compiler & inLexique\n"
               "                                            COMMA_LOCATION_ARGS) const ;\n"
 //--- End of class Declaration
               "} ;\n\n" ;
@@ -509,7 +509,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Method for 'reader' element
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomTable << "::\n"
-               "appendForMapDescription (C_Lexique & _inLexique,\n"
+               "appendForMapDescription (C_Compiler & _inLexique,\n"
                "                         const sint32 inElementIndex,\n"
                "                         C_String & ioString,\n"
                "                         const sint32 inIndentation\n"
@@ -579,7 +579,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- 'constructor_emptyMap' static method
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
-               "constructor_emptyMap (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomTable << " result ;\n"
                "  macroMyNew (result.mSharedMapRoot, cMapRoot) ;\n"
                "  return result ;\n"
@@ -625,7 +625,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   if (mRemoveMethodList.firstObject () != NULL) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::\n"
-                 "_removeElement (C_Lexique & inLexique,\n"
+                 "_removeElement (C_Compiler & inLexique,\n"
                  "                const char * inErrorMessage,\n"
                  "                const GGS_lstring & inKey,\n" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -678,7 +678,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- '_insertElement' method
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
-               "_insertElement (C_Lexique & inLexique,\n"
+               "_insertElement (C_Compiler & inLexique,\n"
                "                const char * inErrorMessage,\n"
                "                const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -728,7 +728,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- '_searchElement' method
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
-               "_searchElement (C_Lexique & inLexique,\n"
+               "_searchElement (C_Compiler & inLexique,\n"
                "               const char * inErrorMessage,\n"
                "               const GGS_lstring & inKey,\n" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -782,7 +782,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_" 
               << aNomTable << "::\n"
               << "method_" << currentMethod->mMethodName
-              << " (C_Lexique & inLexique"
+              << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
@@ -824,7 +824,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_"
               << aNomTable << "::\n"
                  "modifier_" << currentMethod->mMethodName
-              << " (C_Lexique & _inLexique"
+              << " (C_Compiler & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
@@ -866,7 +866,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_"
               << aNomTable << "::\n"
                  "modifier_" << currentMethod->mMethodName
-              << " (C_Lexique & _inLexique"
+              << " (C_Compiler & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
@@ -920,7 +920,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Implement 'mapWithMapToOverride' constructor
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
-               "constructor_mapWithMapToOverride (C_Lexique & /* inLexique */,\n"
+               "constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,\n"
                "                                  const GGS_" << aNomTable << " & inMapToOverride\n"
                "                                  COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomTable << " result ; // Not Built\n"
@@ -937,7 +937,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Implement reader 'overriddenMap'
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
-               "reader_overriddenMap (C_Lexique & /* inLexique */\n"
+               "reader_overriddenMap (C_Compiler & /* inLexique */\n"
                "                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomTable << " result ; // Not Built\n"
                "  if (mSharedMapRoot != NULL) {\n"
@@ -956,7 +956,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Implement reader 'description'
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
-               "reader_description (C_Lexique & _inLexique\n"
+               "reader_description (C_Compiler & _inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
@@ -991,7 +991,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 void cPtr_typeDefinitionTableAimplementer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Lexique & /* inLexique */) const {
+                         C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1020,7 +1020,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   
   inHfile << "//--- Method for 'description' reader\n"
-             "  public : void appendForMapDescription (C_Lexique & _inLexique,\n"
+             "  public : void appendForMapDescription (C_Compiler & _inLexique,\n"
              "                                         C_String & ioString,\n"
              "                                         const sint32 inIndentation\n"
              "                                         COMMA_LOCATION_ARGS) const ;\n"
@@ -1038,7 +1038,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_bool operator == (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true, true) ; }\n"
              "  public : GGS_bool operator != (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true, true) ; }\n"
              "//--- Handle 'emptyMap' constructor\n"
-             "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Lexique & inLexique COMMA_LOCATION_ARGS) ;\n" ;
+             "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n" ;
 
 //--- Declaring search methods
   GGS_insertOrSearchMethodList::element_type * currentMethod = mSearchMethodList.firstObject () ;
@@ -1047,7 +1047,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "//--- '" << currentMethod->mMethodName << "' search method\n"
                "public : void modifier_" 
             << currentMethod->mMethodName
-            << " (C_Lexique & inLexique"
+            << " (C_Compiler & inLexique"
                ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
@@ -1062,7 +1062,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     inHfile << "public : void method_" 
             << currentMethod->mMethodName
-            << "GetIndex (C_Lexique & inLexique"
+            << "GetIndex (C_Compiler & inLexique"
                ",\n                                const GGS_lstring & inKey"
                ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -1086,7 +1086,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "//---\n"
                "public : void modifier_"
             << currentMethod->mMethodName
-            << " (C_Lexique & inLexique" 
+            << " (C_Compiler & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
@@ -1101,7 +1101,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
     inHfile << "public : void modifier_"
             << currentMethod->mMethodName
-            << "GetIndex (C_Lexique & inLexique" 
+            << "GetIndex (C_Compiler & inLexique" 
                ",\n                                const GGS_lstring & inKey"
                ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -1118,7 +1118,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     currentMethod = currentMethod->nextObject () ;
   }
 //--- Generate 'description' reader declaration
-  inHfile << "  public : GGS_string reader_description (C_Lexique & _inLexique\n"
+  inHfile << "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
              "} ;\n\n" ;
@@ -1160,7 +1160,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppTitleComment (C_String ("Map '@") + aNomTable + "'") ;
 
   inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
-               "constructor_emptyMap (C_Lexique & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  GGS_" << aNomTable << " t ;\n"
                "  t.build () ;\n"
                "  return t ;\n"
@@ -1173,7 +1173,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::modifier_" 
               << currentMethod->mMethodName
-              << " (C_Lexique & inLexique"
+              << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
@@ -1214,7 +1214,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::method_" 
               << currentMethod->mMethodName
-              << "GetIndex (C_Lexique & inLexique"
+              << "GetIndex (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey"
                  ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -1264,7 +1264,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::modifier_"
               << currentMethod->mMethodName
-              << " (C_Lexique & _inLexique"
+              << " (C_Compiler & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
@@ -1293,7 +1293,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::modifier_"
               << currentMethod->mMethodName
-              << "GetIndex (C_Lexique & _inLexique"
+              << "GetIndex (C_Compiler & _inLexique"
                  ",\n                                const GGS_lstring & inKey"
                  ",\n                                GGS_luint & outIndex" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -1327,7 +1327,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Implement reader 'description'
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
-               "reader_description (C_Lexique & /* _inLexique */\n"
+               "reader_description (C_Compiler & /* _inLexique */\n"
                "                    COMMA_UNUSED_LOCATION_ARGS,\n"
                "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
