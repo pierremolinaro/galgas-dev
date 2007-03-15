@@ -378,14 +378,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "{ " << mLexiqueClassName << " * scanner_ = NULL ;\n"
-                 "  macroMyNew (scanner_, " << mLexiqueClassName << " (_inLexique.ioParametersPtr () COMMA_HERE)) ;\n"
-                 "  scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;\n"
-                 "  " << mGrammarName << " grammar_ ;\n"
                  "  const C_String sourceFileName = _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ") ;\n"
+                 "  macroMyNew (scanner_, " << mLexiqueClassName << " (_inLexique.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                 "  scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;\n"
+                 "  " << mGrammarName << " grammar_ ;\n"
                  "  try{\n"
-                 "    scanner_->resetAndLoadSourceFromFile (sourceFileName) ;\n"
                  "    " ;
     if (mMetamodelClassVariableName.length () > 0) {
       ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;

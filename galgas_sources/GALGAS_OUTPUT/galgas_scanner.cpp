@@ -41,9 +41,10 @@
 //---------------------------------------------------------------------------*
 
 galgas_scanner::
-galgas_scanner (C_galgas_io * inParametersPtr
+galgas_scanner (C_galgas_io * inParametersPtr,
+                const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS)
-: C_Lexique (inParametersPtr COMMA_THERE) {
+: C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------*
