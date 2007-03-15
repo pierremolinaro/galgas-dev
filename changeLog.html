@@ -13,6 +13,8 @@
     <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), performing the <tt><b>New...</b></tt> menu item can lead to an infinite loop;</li>
     <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), the <tt><b>Update from File System</b></tt> operation can lead to an infinite loop;</li>
     <li>New <tt><b>description</b></tt> key word: it can be used in pseudo-reader call <tt>[<i>expression</i> <b>description</b>]</tt>, ensuring source compatibility from previous releases;</li>
+    <li>New <tt><b>@lstringlist</b></tt> type: see <a href="http://galgas.rts-software.org/doku.php?id=lstringlist_type"><tt><b>@lstringlist</b></tt> definition</a>;</li>
+    <li>New <tt><b>map</b></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=map_types#keylist"><tt><b>keyList</b></tt></a> that returns a list built with the key values of all entries;</li>
    </ul>
    <p>1.6.3</p>
    <ul>
@@ -209,7 +211,7 @@
    </ul>
    <p>1.3.1</p>
    <ul>
-     <li><b>Version 1.3.0 has been deleted</b>; <tt><b>--create-project</b></tt> option did not work;</li>
+     <li><b>Version 1.3.0 has been deleted</b>: <tt><b>--create-project</b></tt> option did not work;</li>
      <li>on @bool type: added ^ (exclusive or) diadic operator;</li>
      <li>on @uint type: added 'object ++ ;' incrementation instruction, 'object -- ;' decrementation instruction,
          + (addition) , - (subtraction), * (multiplication) , / (division), % (modulo), &amp; (bit wide and),

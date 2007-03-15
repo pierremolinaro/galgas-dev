@@ -1131,7 +1131,8 @@ generate_scanner_header_file (C_Compiler & inLexique,
                     "//--- Constructor\n"
                     "  public : "
                  << inLexiqueName
-                 << " (C_galgas_io * inParametersPtr\n"
+                 << " (C_galgas_io * inParametersPtr,\n"
+                    "                       const C_String & inSourceFileName\n"
                     "                       COMMA_LOCATION_ARGS) ;\n"
                     "\n"
                     "//--- Declaring a protected virtual destructor enables the compiler to raise\n"
@@ -1247,9 +1248,10 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 // --------------------------------------- Constructor
   generatedZone2.writeCppTitleComment ("Constructor") ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
-                 << " (C_galgas_io * inParametersPtr\n"
+                 << " (C_galgas_io * inParametersPtr,\n"
+                    "                const C_String & inSourceFileName\n"
                     "                COMMA_LOCATION_ARGS)\n"
-                    ": C_Lexique (inParametersPtr COMMA_THERE) {\n"
+                    ": C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE) {\n"
                     "}\n\n" ;
 
 //---------------------------------------- Generate error message list
