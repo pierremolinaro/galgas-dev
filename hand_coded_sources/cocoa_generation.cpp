@@ -123,39 +123,41 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "static NSMutableArray * gColorArray ;\n\n" ;
 
 //--- Datas for PopUp list
-  generatedZone3.writeCppTitleComment ("P O P U P    L I S T    D A T A") ;
-  C_String mainArray ;
-  mainArray << "static const uint16 * kPopUpListData [" << (inTerminalSymbolCount + 1) << "] = {\n"
-               "  NULL" ;
-  for (sint32 i=0 ; i<inTerminalSymbolCount ; i++) {
-    mainArray << ",\n  " ;
-    bool first = true ;
-    GGS_labelForPopUpList::element_type * currentMark = inLabelForPopUpList.firstObject () ;
-    while (currentMark != NULL) {
-      macroValidPointer (currentMark) ;
-      const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
-      if (terminalID1 == i) {
-        const uint32 terminalID2 = currentMark->mTerminal2ID.uintValue () ;
-        if (first) {
-          first = false ;
-          generatedZone3 << "static uint16 kPopUpListData_" << i << " [] = {" ;
-        }else{
-          generatedZone3 << ", " ;
+  if (inTerminalSymbolCount > 0) {
+    generatedZone3.writeCppTitleComment ("P O P U P    L I S T    D A T A") ;
+    C_String mainArray ;
+    mainArray << "static const uint16 * kPopUpListData [" << (inTerminalSymbolCount + 1) << "] = {\n"
+                 "  NULL" ;
+    for (sint32 i=0 ; i<inTerminalSymbolCount ; i++) {
+      mainArray << ",\n  " ;
+      bool first = true ;
+      GGS_labelForPopUpList::element_type * currentMark = inLabelForPopUpList.firstObject () ;
+      while (currentMark != NULL) {
+        macroValidPointer (currentMark) ;
+        const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
+        if (terminalID1 == i) {
+          const uint32 terminalID2 = currentMark->mTerminal2ID.uintValue () ;
+          if (first) {
+            first = false ;
+            generatedZone3 << "static uint16 kPopUpListData_" << i << " [] = {" ;
+          }else{
+            generatedZone3 << ", " ;
+          }
+          generatedZone3 << (terminalID2 + 1) ;
         }
-        generatedZone3 << (terminalID2 + 1) ;
+        currentMark = currentMark->nextObject () ;
       }
-      currentMark = currentMark->nextObject () ;
+      if (first) {
+        mainArray << "NULL" ;
+      }else{
+        mainArray << "kPopUpListData_" << i ;
+        generatedZone3 << ", 0} ;\n\n" ;
+        generatedZone3.writeCppHyphenLineComment () ;
+      }
     }
-    if (first) {
-      mainArray << "NULL" ;
-    }else{
-      mainArray << "kPopUpListData_" << i ;
-      generatedZone3 << ", 0} ;\n\n" ;
-      generatedZone3.writeCppHyphenLineComment () ;
-    }
+    mainArray << "} ;\n\n" ;
+    generatedZone3 << mainArray ;
   }
-  mainArray << "} ;\n\n" ;
-  generatedZone3 << mainArray ;
 //--- NIB and main class
   generatedZone3.writeCppTitleComment ("N I B S   A N D   T H E I R   M A I N   C L A S S E S") ;
   generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
@@ -313,7 +315,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "                                            outLastIndexToRedraw,\n"
                     "                                            outEraseRangeStart,\n"
                     "                                            outEraseRangeEnd,\n"
-                    "                                            kPopUpListData,\n"
+                    "                                            "
+                 << ((inTerminalSymbolCount == 0) ? "NULL" : "kPopUpListData")
+                 << ",\n"
                     "                                            outPopUpEntries) ;\n"
                     "}\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
