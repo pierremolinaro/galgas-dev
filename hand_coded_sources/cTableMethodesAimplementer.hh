@@ -178,7 +178,7 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (vo
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
+sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Compiler & inLexique,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                          const GGS_location & inLocation,
@@ -201,7 +201,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Lexique & inLexique,
+sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Compiler & inLexique,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                          const GGS_location & inLocation,

@@ -13,7 +13,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -98,14 +99,14 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : void _drop_operation (void) ;
   protected : void insulateMap (void) ;
 
-  public : sint32 insertAbstract (C_Lexique & inLexique,
+  public : sint32 insertAbstract (C_Compiler & inLexique,
                                   const INFO & info,
                                   const GGS_lstring & clef,
                                   const GGS_location & inLocation,
                                   const char * messageErreurInsertion
                                   COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertNotAbstract (C_Lexique & inLexique,
+  public : sint32 insertNotAbstract (C_Compiler & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                      const GGS_location & inLocation,
