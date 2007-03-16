@@ -3196,6 +3196,12 @@ routine handleReaderCall
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
+      elsif [inReaderName string] == "containsValue" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint64 new] ![@lstring new !"" !here] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_bool new] ;
       elsif [inReaderName string] == "existsOnBitRange" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
