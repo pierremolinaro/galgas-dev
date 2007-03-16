@@ -33,6 +33,7 @@ label $class$, $type_name$ ;
 label $nonterminal$, $non_terminal_symbol$ ;
 label $rule$, $non_terminal_symbol$ ;
 label $routine$, $identifier$ ;
+label $action$, $identifier$ ;
 
 end gui ;
 
