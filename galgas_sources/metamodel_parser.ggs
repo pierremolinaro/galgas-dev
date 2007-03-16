@@ -52,6 +52,37 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
+nonterminal <import_headers_semantics_and_grammars>
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIncludedMetamodelComponents
+  !@stringset outIncludedOptionComponents
+  !@stringset outIncludedGrammarComponents
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+  !@stringset outInclusionsForImplementationFile
+  !@stringset outInclusionsForHeaderFile
+  !@M_optionComponents ioOptionsComponentsMapForUse
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@typeTableEnAvant tableEnAvant
+  !@entityToImplementMap outAllMetamodelClassMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIcludedOptionComponents
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
+label parse
+;
+
 nonterminal <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ??@bool inGenerateMetamodelCode
@@ -59,16 +90,20 @@ label parse
 ;
 
 nonterminal <entity_declaration_list>
+  ??@string inCurrentMetamodelName
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
+  ?!@entityToImplementMap ioAllEntityMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 label parse
 ;
 
 nonterminal <entity_declaration>
+  ??@string inCurrentMetamodelName
   ??@stringset inMetamodelClassSet
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
+  ?!@entityToImplementMap ioAllEntityMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 label parseForEnumeratingClasses
   ?!@stringset ioMetamodelClassSet
@@ -124,44 +159,111 @@ rule <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ??@bool inGenerateMetamodelCode
 :
-#--- Metamodel header
+ #--- Metamodel header
   $metamodel$ ;
   @lstring metamodelName ;
   $identifier$ ? metamodelName ;
+#--- Super metamodels
+  @lstringlist superMetamodelList ;
+  select
+    superMetamodelList := [@lstringlist emptyList] ;
+  or
+    superMetamodelList := [@lstringlist emptyList] ;
+    $extends$ ;
+    repeat
+      @lstring superMetamodel ;
+      $identifier$ ? superMetamodel ;
+      superMetamodelList += !superMetamodel ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
 #--- Root entity
   $root$ ;
   @lstring rootEntityName ;
   $type_name$ ? rootEntityName ;
   $:$ ;
+#--- Import statements
+  @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+  @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+  @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
+  @M_grammarComponents grammarComponentsMap [emptyMap] ;
+  @M_optionComponents optionsComponentsMap [emptyMap] ;
+  @ModelMap modelMap [emptyMap] ;
+  @ActionMap actionMap [emptyMap] ;
+  @stringset inclusionsForHeaderFile ;
+  @stringset inclusionsForImplementationFile ;
+  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+  @M_semanticsEntitiesForUse componentEntitiesMap ;
+  @stringset classNamesSet [emptySet] ;
+  @typeTableEnAvant tableEnAvant [emptyMap] ;
+  @stringset includedSemanticsComponents ;
+  @stringset includedOptionComponents ;
+  @stringset includedMetamodelComponents ;
+  @stringset includedGrammarComponents ;
+  @entityToImplementMap allMetamodelClassMap ;
+  <import_headers_semantics_and_grammars>
+    ?includedSemanticsComponents
+    ?includedMetamodelComponents
+    ?includedOptionComponents
+    ?includedGrammarComponents
+    !?lexiqueMapForUse
+    !?semanticsComponentsMap
+    !?ioMetamodelComponentMap
+    !?treewalkingComponentMap
+    !?grammarComponentsMap
+    !?optionsComponentsMap
+    ?inclusionsForImplementationFile
+    ?inclusionsForHeaderFile
+    ?optionsComponentsMapForUse
+    ?modelMap
+    ?actionMap
+    ?componentEntitiesMap
+    ?tableEnAvant
+    ?allMetamodelClassMap
+  ;
+#--- Header inclusion list
+  @stringlist headerInclusionList [emptyList] ;
+  foreach semanticsComponentsMap (@lstring kSemanticComponentName 7*) :
+    headerInclusionList += ![kSemanticComponentName string] ;
+  end foreach ;
+#--- Check super metamodels are defined, build all entity map
+  @stringset superMetamodels [emptySet] ;
+  @entityToImplementMap allEntityMap [emptyMap] ;
+  foreach superMetamodelList (@lstring kSuperMetamodelName) :
+    headerInclusionList += ![kSuperMetamodelName string] ;
+    performMetamodelInclusion
+      !ioMetamodelComponentMap
+      !kSuperMetamodelName
+      !?superMetamodels
+      !?allEntityMap
+    ;
+  end foreach ;
+#--- Entity declarations
   @entityToImplementMap entityMap [emptyMap] ;
   @M_semanticsEntitiesForUse semanticsEntitiesMap ;
   @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
   enterBuiltinTypes ?semanticsEntitiesMap ;
   <entity_declaration_list>
+    ![metamodelName string]
     !semanticsEntitiesMap
     !?entityMap
+    !?allEntityMap
     !?listeEntitesAengendrer
   ;
-  @bool isAbstract ;
-  [entityMap searchKey !rootEntityName ?* ?isAbstract ?4*] ;
-  if isAbstract then
-    error rootEntityName : "the root entity cannot be abstract" ;
-  end if ;
 #--- Check properties
-  @stringset multiReferencedEntities [emptySet] ;
   foreach entityMap (@lstring kEntityName
                      @entityPropertyMap kAllPropertiesMap
                      *
                      @entityPropertyMap kEntityPropertiesMap
-                     3*) :
+                     4*) :
     foreach kEntityPropertiesMap (@lstring kAttributeName
                                   @AC_galgasType kPropertyType) :
       extract kPropertyType :
       when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName) ->
-        [entityMap searchKey !kReferenceEntityName ?6*] ;
+        [allEntityMap searchKey !kReferenceEntityName ?7*] ;
       when @typeGalgas_multipleReferenceEntity (@lstring kReferenceEntityName 2*) ->
-        [entityMap searchKey !kReferenceEntityName ?6*] ;
-        multiReferencedEntities += ![kReferenceEntityName string] ;
+        [allEntityMap searchKey !kReferenceEntityName ?7*] ;
       else
       end extract ;
     end foreach ;
@@ -173,6 +275,7 @@ rule <parse_metamodel>
       !metamodelName
       !listeEntitesAengendrer
       !rootEntityName
+      !headerInclusionList
     ;
   end if ;
 #--- Add metamodel to metamodel map
@@ -181,7 +284,7 @@ rule <parse_metamodel>
       !metamodelName
       !rootEntityName
       !entityMap
-      !multiReferencedEntities
+      !superMetamodels
     ] ;
   end if ;
   $end$ ;
@@ -192,8 +295,10 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <entity_declaration_list>
+  ??@string inCurrentMetamodelName
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
-  ?!@entityToImplementMap outEntityMap
+  ?!@entityToImplementMap ioEntityMap
+  ?!@entityToImplementMap ioAllEntityMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 :
   @stringset metamodelClassSet [emptySet] ;
@@ -209,9 +314,11 @@ rule <entity_declaration_list>
     repeat
     while
       <entity_declaration>
+        !inCurrentMetamodelName
         !metamodelClassSet
         !inSemanticsEntitiesMap
-        !?outEntityMap
+        !?ioEntityMap
+        !?ioAllEntityMap
         !?listeEntitesAengendrer
       ;
     end repeat ;
@@ -221,9 +328,11 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <entity_declaration>
+  ??@string inCurrentMetamodelName
   ??@stringset inMetamodelClassSet
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@entityToImplementMap ioEntityMap
+  ?!@entityToImplementMap ioAllEntityMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
 :
 #--- Abstract ?
@@ -251,14 +360,13 @@ rule <entity_declaration>
   or
     $extends$ ;
     $type_name$ ? superEntity ;
-    [ioEntityMap searchKey
+    [ioAllEntityMap searchKey
       !superEntity
       ?allMetamodelPropertyMap
-      ?*
-      ?*
-      ?*
+      ?3*
       ?superEntityMap
       ?listeTousAttributsSemantiques
+      ?*
     ] ;
     [!?superEntityMap insertKey !superEntity] ;
   end select ;
@@ -342,6 +450,17 @@ rule <entity_declaration>
     !superEntity
     !superEntityMap
     !listeTousAttributsSemantiques
+    !inCurrentMetamodelName
+  ] ;
+  [!?ioAllEntityMap insertKey
+    !entityName
+    !allMetamodelPropertyMap
+    !isAbstract
+    !currentEntityPropertyMap
+    !superEntity
+    !superEntityMap
+    !listeTousAttributsSemantiques
+    !inCurrentMetamodelName
   ] ;
 #--- Define entity type generation
   @typeEntityToGenerate def := [@C_metamodelEntityToImplement new 

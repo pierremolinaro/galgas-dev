@@ -291,7 +291,8 @@ generate_treewalking_implementation (C_Compiler & inLexique,
     }
     generatedZone3 << "  (void *) _treewalking_routine_" << currentEntry->mRoutineName
                    << ", // #" << entryIndex << " @"
-                   << currentEntry->mEntityName << "\n" ;
+                   << currentEntry->mEntityName << ", defined in '"
+                   << currentEntry->mMetamodelName << "' metamodel\n" ;
     currentIndex ++ ;
     currentEntry = currentEntry->nextObject () ;
   }
@@ -333,7 +334,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
       currentArgument = currentArgument->nextObject () ;
     }
     generatedZone3 << ") {\n"
-                      "  #ifdef DEBUG_TREE_WALKING\n"
+                      "  #ifdef TRACE_TREE_WALKING\n"
                       "    printf (\"TREE WALKING @" << currentRoutine->mMetamodelClass << "\\n\") ; fflush (stdout) ;\n"
                       "  #endif\n" ;
     sint32 prototypeIndex = 0 ; // Unused here
@@ -394,7 +395,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
                                                                    COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inTreewalkingComponentName + ".cpp",
-                          "\n\n//#define DEBUG_TREE_WALKING\n\n", // User Zone 1
+                          "\n\n//#define TRACE_TREE_WALKING\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
                           generatedZone3,

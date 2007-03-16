@@ -235,7 +235,7 @@ rule <galgas_component>
       $->$ ;
       @lstring returnedMetamodelName ;
       $identifier$ ?returnedMetamodelName ;
-      [ioMetamodelComponentMap searchKey !returnedMetamodelName ?returnedEntityName ?* ?*] ;
+      [ioMetamodelComponentMap searchKey !returnedMetamodelName ?returnedEntityName ?2*] ;
       [!?startSymbolEntityAndMetamodelMap insertKey !altName !returnedEntityName !returnedMetamodelName] ;
     end select ;
     [!?grammarAltMap insertKey !altName !signature !returnedEntityName] ;

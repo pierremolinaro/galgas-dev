@@ -1411,8 +1411,9 @@ sortedlist @routineDispatcherSortedList {
   @uint mMetamodelClassID ;
   @string mRoutineName ;
   @string mEntityName ;
+  @string mMetamodelName ; # Where the entity is defined
 }{
-  mMetamodelClassIDString <
+  mMetamodelName <, mMetamodelClassIDString <
 }
 
 #---------------------------------------------------------------------------*
@@ -1461,10 +1462,11 @@ class @C_metamodelEntityToImplement extends @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 action generate_metamodel
- ?@entityToImplementMap inEntityMap
- ?@lstring inMetamodelComponentName
- ?@typeEntitiesToGenerateList listeEntitesAengendrer
- ?@lstring inRootEntityName
+  ?@entityToImplementMap inEntityMap
+  ?@lstring inMetamodelComponentName
+  ?@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?@lstring inRootEntityName
+  ?@stringlist inHeaderInclusionList
 ;
 
 #---------------------------------------------------------------------------*
@@ -1493,6 +1495,53 @@ list @L_grammarDescriptorForProgram {
   @lstring mSourceExtension ;
   @string mHelpMessage ;
 }
+
+#-------------------------------------------------------------------*
+
+routine performMetamodelInclusion
+  ??@M_metamodelsComponents inMetamodelComponentMap
+  ??@lstring inSuperMetamodelName
+  ?!@stringset ioSuperMetamodels
+  ?!@entityToImplementMap ioAllEntityMap
+:
+  if not [ioSuperMetamodels hasKey ![inSuperMetamodelName string]] then
+    ioSuperMetamodels += ![inSuperMetamodelName string] ;
+    @entityToImplementMap superMetamodelEntityMap ;
+    @stringset superMetamodelsOfSuperMetamodels ;
+    [inMetamodelComponentMap searchKey !inSuperMetamodelName ?* ?superMetamodelEntityMap ?superMetamodelsOfSuperMetamodels] ;
+    foreach superMetamodelEntityMap (@lstring kEntityName 
+                                     @entityPropertyMap kAllMetamodelPropertyMap
+                                     @bool kIsAbstract
+                                     @entityPropertyMap kCurrentMetamodelPropertyMap
+                                     @lstring kSuperEntityName
+                                     @typeSuperClassesMap kAncestorClassesMap
+                                     @typeListeAttributsSemantiques kPropertyList
+                                     @string kMetamodelName) :
+      if [ioAllEntityMap hasKey ![kEntityName string]] then
+        error here: "the '@" . [kEntityName string] . "' is already defined in a previously imported metamodel" ;
+      else
+        [!?ioAllEntityMap insertKey
+           !kEntityName 
+           !kAllMetamodelPropertyMap
+           !kIsAbstract
+           !kCurrentMetamodelPropertyMap
+           !kSuperEntityName
+           !kAncestorClassesMap
+           !kPropertyList
+           !kMetamodelName
+         ] ;
+       end if ;
+    end foreach ;
+    foreach superMetamodelsOfSuperMetamodels (@string kSuperMetamodel) :
+      performMetamodelInclusion
+        !inMetamodelComponentMap
+        ![@lstring new !kSuperMetamodel !here]
+        !?ioSuperMetamodels
+        !?ioAllEntityMap
+      ;
+    end foreach ;
+  end if ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 

@@ -106,7 +106,11 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "                        const sint32 inIndentation\n"
              "                        COMMA_LOCATION_ARGS) const ;\n\n"
 
-//--- Generate metamodel class ID method ?
+//--- Generate metamodel Index Method
+             "//--- Metamodel Index\n"
+             "  public : virtual uint32 _metamodelIndex (void) const ;\n\n"
+
+//--- Generate metamodel class ID method
              "//--- Metamodel Class ID\n"
              "  public : virtual uint32 _metamodelClassID (void) const ;\n\n"
 
@@ -565,8 +569,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "}\n\n" ;
 
+//--- Generate metamodel class index
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "uint32 cPtr_" << aNomClasse << "::_metamodelIndex (void) const {\n"
+               "  return gMetamodelManager.mMetamodelIndex ;\n"
+               "}\n\n" ;
 
-//--- Generate metamodel class ID method ?
+//--- Generate metamodel class ID method
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "uint32 cPtr_" << aNomClasse << "::_metamodelClassID (void) const {\n"
                "  return " << mMetamodelClassID.uintValue () << " ;\n"
@@ -1276,7 +1285,8 @@ generate_metamodel_header_file (C_Compiler & inLexique,
                                 const GGS_entityToImplementMap & /* ioEntityMap */,
                                 const GGS_lstring & inMetamodelComponentName,
                                 const GGS_typeEntitiesToGenerateList & inEntitiesToGenerateList,
-                                const GGS_lstring & /* inRootEntityName */) {
+                                const GGS_lstring & /* inRootEntityName */,
+                                const GGS_stringlist & inHeaderInclusionList) {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
                  << "#define " << inMetamodelComponentName << "_METAMODEL_DEFINED\n"
@@ -1293,9 +1303,19 @@ generate_metamodel_header_file (C_Compiler & inLexique,
                     "#include \"galgas/GGS_ldouble.h\"\n"
                     "#include \"galgas/GGS_luint.h\"\n"
                     "#include \"galgas/GGS_lsint.h\"\n"
-                    "#include \"galgas/AC_galgas_list.h\"\n\n" ;
-  
+                    "#include \"galgas/AC_galgas_list.h\"\n" ;
+  GGS_stringlist::element_type * currentInclusion = inHeaderInclusionList.firstObject () ;
+  while (currentInclusion != NULL) {
+    macroValidPointer (currentInclusion) ;
+    generatedZone2 << "#include \"" << currentInclusion->mValue << ".h\"\n" ;
+    currentInclusion = currentInclusion->nextObject () ;
+  }
+  generatedZone2 << "\n" ;
   C_String generatedZone3 ; generatedZone3.setCapacity (20000) ;
+
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "uint32 _metamodel_index_for_" << inMetamodelComponentName << " (void) ;\n"
+                    "\n" ;
 
 //--- Generate entities predeclarations
   generatedZone3.writeCppTitleComment ("Class Predeclarations") ;
@@ -1367,7 +1387,18 @@ generate_metamodel_cpp_file (C_Compiler & inLexique,
                     "#endif\n\n" ;
 
   C_String generatedZone3 ; generatedZone3.setCapacity (200000) ;
-  
+
+//------------- Metamodel Management -----------------
+  generatedZone3.writeCppTitleComment ("Metamodel Management") ;
+  generatedZone3 << "static C_MetamodelManager gMetamodelManager ;\n"
+                    "\n" ;
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "uint32 _metamodel_index_for_" << inMetamodelComponentName << " (void) {\n"
+                    "  return gMetamodelManager.mMetamodelIndex ;\n"
+                    "}\n"
+                    "\n" ;
+
+//------------- Generate classes -----------------
   GGS_typeEntitiesToGenerateList::element_type * element = inEntitiesToGenerateList.firstObject () ;
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {
@@ -1400,7 +1431,8 @@ routine_generate_metamodel (C_Compiler & inLexique,
                             GGS_entityToImplementMap inEntityMap,
                             GGS_lstring inMetamodelComponentName,
                             GGS_typeEntitiesToGenerateList inEntitiesToGenerateList,
-                            GGS_lstring inRootEntityName
+                            GGS_lstring inRootEntityName,
+                            GGS_stringlist inHeaderInclusionList
                             COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount () == 0) {
   //--- Generate header file
@@ -1408,7 +1440,8 @@ routine_generate_metamodel (C_Compiler & inLexique,
                                     inEntityMap,
                                     inMetamodelComponentName,
                                     inEntitiesToGenerateList,
-                                    inRootEntityName) ;
+                                    inRootEntityName,
+                                    inHeaderInclusionList) ;
   //--- Generate implementation file
     generate_metamodel_cpp_file (inLexique,
                                  inEntityMap,
