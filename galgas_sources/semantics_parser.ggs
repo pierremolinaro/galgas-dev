@@ -935,7 +935,8 @@ rule <import_headers_semantics_and_grammars>
                                    @entityPropertyMap kCurrentMetamodelPropertyMap
                                    @lstring kSuperEntityName
                                    @typeSuperClassesMap kSuperEntityMap
-                                   @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants) :
+                                   @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants
+                                   @string kMetamodelName) :
           [!?outAllMetamodelClassMap insertKey
             !kMetamodelClassName
             !kAllMetamodelPropertyMap
@@ -944,6 +945,7 @@ rule <import_headers_semantics_and_grammars>
             !kSuperEntityName
             !kSuperEntityMap
             !kListeAttributsSemantiquesCourants
+            !kMetamodelName
           ] ;
           @AC_semanticsEntity e := [@typeEntiteType new ![@typeGalgas_singleReferenceEntity new !kMetamodelClassName]] ;
           [!?ioComponentSemanticsEntitiesMap insertKey
@@ -1059,7 +1061,7 @@ label importSemantics
           !?ioTreewalkingComponentMap
         ;
       end select ;
-      [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?* ?*] ;
+      [ioMetamodelComponentMap searchKey !metamodelComponentName ?3*] ;
     end select ;
     $;$ ;
   end repeat ;
