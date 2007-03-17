@@ -563,9 +563,11 @@ map @entityToImplementMap {
   @typeListeAttributsSemantiques mPropertyList ;
 #--- Metamodel where the entity is defined
   @string mMetamodelName ;
+#--- Entity ID
+  @uint mID ;
 #--- Access methods
-  insert insertKey, insertKeyAndGetID error message "the '@%K' entity has been already declared in %L" ;
-  search searchKey, searchKeyGetID error message "the '@%K' entity is not declared" ;
+  insert insertKey error message "the '@%K' entity has been already declared in %L" ;
+  search searchKey error message "the '@%K' entity is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

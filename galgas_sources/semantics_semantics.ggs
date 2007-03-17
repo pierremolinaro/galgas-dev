@@ -1051,18 +1051,6 @@ class @typeDecrementInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                Instruction d'appel d'action extern                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeInstructionAppelActionExterne extends @typeInstruction {
-  @lstring aNomAction ;
-  @typeExpressionList mExpressionsList ;
-  @L_EXsignature aListeTypesParametresFormels ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   C A S E S    L I S T    F O R    M A T C H    I N S T R U C T I O N     *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1152,13 +1140,15 @@ class @typeStructuredExtractInstructionWithElse extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                    Routine call instruction                               *
+#       Routine or extern action call instruction                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 class @typeRoutineCallInstruction extends @typeInstruction {
-  @lstring aNomRoutine ;
+  @lstring mRoutineName ;
   @typeExpressionList mExpressionsList ;
+  @L_EXsignature mFormalParameterList ;
+  @bool mIsExternActionCall ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1516,7 +1506,8 @@ routine performMetamodelInclusion
                                      @lstring kSuperEntityName
                                      @typeSuperClassesMap kAncestorClassesMap
                                      @typeListeAttributsSemantiques kPropertyList
-                                     @string kMetamodelName) :
+                                     @string kMetamodelName
+                                     @uint kID) :
       if [ioAllEntityMap hasKey ![kEntityName string]] then
         error here: "the '@" . [kEntityName string] . "' is already defined in a previously imported metamodel" ;
       else
@@ -1529,6 +1520,7 @@ routine performMetamodelInclusion
            !kAncestorClassesMap
            !kPropertyList
            !kMetamodelName
+           !kID
          ] ;
        end if ;
     end foreach ;

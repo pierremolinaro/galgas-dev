@@ -456,96 +456,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionAppelActionExterne::
-generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
-  if (inGenerateSemanticInstructions) {
-    GGS_L_EXsignature::element_type * typeArgumentCourant = aListeTypesParametresFormels.firstObject () ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
-    sint16 nombreArgumentsTestes = 0 ;
-    while (typeArgumentCourant != NULL) {
-      macroValidPointer (typeArgumentCourant) ;
-      if (typeArgumentCourant->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
-        if (nombreArgumentsTestes == 0) {
-          ioCppFile << "if (" ;
-        }else{
-          ioCppFile << " &&\n    " ;
-        }
-        argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
-        ioCppFile << "._isBuilt ()" ;
-        nombreArgumentsTestes ++ ;
-      }
-      typeArgumentCourant = typeArgumentCourant->nextObject () ;
-      argCourant = argCourant->nextObject () ;
-    }
-    if (nombreArgumentsTestes > 0) {
-      ioCppFile << ") {\n  " ;
-    }
-    ioCppFile << "::routine_" << aNomAction << " (_inLexique" ;
-    argCourant = mExpressionsList.firstObject () ;
-    while (argCourant != NULL) {
-      macroValidPointer (argCourant) ;
-      ioCppFile << ",  " ;
-      argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
-      argCourant = argCourant->nextObject () ;
-    }
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << aNomAction.currentLineNumber ()
-              << ")) ;\n" ; 
-    if (nombreArgumentsTestes > 0) {
-      ioCppFile << "}\n" ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionAppelActionExterne::
-isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionAppelActionExterne::
-formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
-  bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
-  while ((! isUsed) && argCourant != NULL) {
-    macroValidPointer (argCourant) ;
-    isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->nextObject () ;
-  }
-  return isUsed ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionAppelActionExterne::
-formalCurrentObjectArgumentIsUsed (void) const {
-  bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
-  while ((! isUsed) && argCourant != NULL) {
-    macroValidPointer (argCourant) ;
-    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-    argCourant = argCourant->nextObject () ;
-  }
-  return isUsed ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeRoutineCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
@@ -553,17 +463,43 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "::routine_" << aNomRoutine << " (_inLexique" ;
+    sint16 nombreArgumentsTestes = 0 ;
+    if (mIsExternActionCall.boolValue ()) {
+      GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+      GGS_L_EXsignature::element_type * typeArgumentCourant = mFormalParameterList.firstObject () ;
+      while (typeArgumentCourant != NULL) {
+        macroValidPointer (typeArgumentCourant) ;
+        if (typeArgumentCourant->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
+          if (nombreArgumentsTestes == 0) {
+            ioCppFile << "if (" ;
+          }else{
+            ioCppFile << " &&\n    " ;
+          }
+          argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
+          ioCppFile << "._isBuilt ()" ;
+          nombreArgumentsTestes ++ ;
+        }
+        typeArgumentCourant = typeArgumentCourant->nextObject () ;
+        argCourant = argCourant->nextObject () ;
+      }
+      if (nombreArgumentsTestes > 0) {
+        ioCppFile << ") {\n  " ;
+      }
+    }
+    ioCppFile << "::routine_" << mRoutineName << " (_inLexique" ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
-      ioCppFile << ", " ;
+      ioCppFile << ",  " ;
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
     ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << aNomRoutine.currentLineNumber ()
+              << mRoutineName.currentLineNumber ()
               << ")) ;\n" ; 
+    if (nombreArgumentsTestes > 0) {
+      ioCppFile << "}\n" ;
+    }
   }
 }
 

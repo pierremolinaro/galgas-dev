@@ -346,7 +346,7 @@ mArray (NULL),
 mCount (0),
 mCapacity (0) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    M_assert_there (inAllocatedSize >= 0, "inAllocatedSize (%ld) < 0", inAllocatedSize, 0) ;
+    MF_AssertThere (inAllocatedSize >= 0, "inAllocatedSize (%ld) < 0", inAllocatedSize, 0) ;
   #endif
   if (inAllocatedSize > 0) {
     mArray = new const cLR1_items_AVL_tree * [inAllocatedSize] ;
@@ -423,8 +423,8 @@ void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cLR1ItemUniqueArray::
   checkIndexForInsertion (const sint32 inIndex COMMA_LOCATION_ARGS) const {
-    M_assert_there (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
-    M_assert_there (inIndex <= mCount, "inIndex (%d) > mCount (%ld)", inIndex, mCount) ;
+    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+    MF_AssertThere (inIndex <= mCount, "inIndex (%d) > mCount (%ld)", inIndex, mCount) ;
   }
 #endif
 
@@ -437,8 +437,8 @@ void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cLR1ItemUniqueArray::
   checkIndex (const sint32 inIndex COMMA_LOCATION_ARGS) const {
-    M_assert_there (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
-    M_assert_there (inIndex < mCount, "inIndex (%ld) >= mCount (%ld)", inIndex, mCount) ;
+    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
+    MF_AssertThere (inIndex < mCount, "inIndex (%ld) >= mCount (%ld)", inIndex, mCount) ;
   }
 #endif
 

@@ -134,7 +134,7 @@ rule <galgas_component>
 #--- Enter option component in option component map
   [!?ioOptionsComponentsMap insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
 #--- Generate option component
-  action generate_option_component !?optionComponentName !?boolOptionsMap !?uintOptionsMap !?stringOptionsMap ;
+  generate_option_component !?optionComponentName !?boolOptionsMap !?uintOptionsMap !?stringOptionsMap ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
 :

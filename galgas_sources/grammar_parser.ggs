@@ -262,7 +262,7 @@ rule <galgas_component>
     [startSymbolAltMap searchKey !cstAltName ?* ?*] ;
   end foreach ;
 #--- Analyze grammar
-  action analyzeGrammar
+  analyzeGrammar
     !?grammarName
     !grammarClass
     !?startSymbolIndex

@@ -105,6 +105,7 @@ nonterminal <entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@entityToImplementMap ioAllEntityMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@uint ioEntityID
 label parseForEnumeratingClasses
   ?!@stringset ioMetamodelClassSet
 label parse
@@ -256,21 +257,21 @@ rule <parse_metamodel>
                      @entityPropertyMap kAllPropertiesMap
                      *
                      @entityPropertyMap kEntityPropertiesMap
-                     4*) :
+                     5*) :
     foreach kEntityPropertiesMap (@lstring kAttributeName
                                   @AC_galgasType kPropertyType) :
       extract kPropertyType :
       when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName) ->
-        [allEntityMap searchKey !kReferenceEntityName ?7*] ;
+        [allEntityMap searchKey !kReferenceEntityName ?8*] ;
       when @typeGalgas_multipleReferenceEntity (@lstring kReferenceEntityName 2*) ->
-        [allEntityMap searchKey !kReferenceEntityName ?7*] ;
+        [allEntityMap searchKey !kReferenceEntityName ?8*] ;
       else
       end extract ;
     end foreach ;
   end foreach ;
 #--- Generate C++ code
   if inGenerateMetamodelCode then
-    action generate_metamodel
+    generate_metamodel
       !entityMap
       !metamodelName
       !listeEntitesAengendrer
@@ -311,6 +312,7 @@ rule <entity_declaration_list>
       ;
     end repeat ;
   rewind
+    @uint entityID := 0 ;
     repeat
     while
       <entity_declaration>
@@ -320,6 +322,7 @@ rule <entity_declaration_list>
         !?ioEntityMap
         !?ioAllEntityMap
         !?listeEntitesAengendrer
+        !?entityID
       ;
     end repeat ;
   end parse ;
@@ -334,6 +337,7 @@ rule <entity_declaration>
   ?!@entityToImplementMap ioEntityMap
   ?!@entityToImplementMap ioAllEntityMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ?!@uint ioEntityID
 :
 #--- Abstract ?
   @bool isAbstract ;
@@ -366,7 +370,7 @@ rule <entity_declaration>
       ?3*
       ?superEntityMap
       ?listeTousAttributsSemantiques
-      ?*
+      ?2*
     ] ;
     [!?superEntityMap insertKey !superEntity] ;
   end select ;
@@ -440,10 +444,8 @@ rule <entity_declaration>
     $;$ ;
   end repeat ;
   $}$ ;
-  @luint metamodelClassID ;
-  [!?ioEntityMap insertKeyAndGetID
+  [!?ioEntityMap insertKey
     !entityName
-    ?metamodelClassID
     !allMetamodelPropertyMap
     !isAbstract
     !currentEntityPropertyMap
@@ -451,6 +453,7 @@ rule <entity_declaration>
     !superEntityMap
     !listeTousAttributsSemantiques
     !inCurrentMetamodelName
+    !ioEntityID
   ] ;
   [!?ioAllEntityMap insertKey
     !entityName
@@ -461,6 +464,7 @@ rule <entity_declaration>
     !superEntityMap
     !listeTousAttributsSemantiques
     !inCurrentMetamodelName
+    !ioEntityID
   ] ;
 #--- Define entity type generation
   @typeEntityToGenerate def := [@C_metamodelEntityToImplement new 
@@ -469,9 +473,10 @@ rule <entity_declaration>
     !listeTousAttributsSemantiques
     !listeAttributsSemantiquesCourants
     ![superEntity string]
-    ![metamodelClassID uint]
+    !ioEntityID
   ] ;
   listeEntitesAengendrer += !def ;
+  ioEntityID ++ ;
 label parseForEnumeratingClasses
   ?!@stringset ioMetamodelClassSet
 :

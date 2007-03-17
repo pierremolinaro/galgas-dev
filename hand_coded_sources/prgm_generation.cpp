@@ -570,6 +570,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    }\n"
                     "    macroDetachPointer (galgasIOptr, C_galgas_io) ;\n"
                     "    macroDetachPointer (_commonLexique, C_Compiler) ;\n"
+                    "    C_TreewalkingDispacher::releaseAllTables () ;\n"
                     "  }\n"
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "    C_GGS_Object::checkAllObjectsHaveBeenReleased () ;\n"

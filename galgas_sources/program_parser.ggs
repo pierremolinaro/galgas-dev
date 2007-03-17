@@ -336,7 +336,7 @@ rule <galgas_component>
     $when$ ;
   end repeat ;
 #--- Engendrer le programme principal
-  action generatePRGM
+  generatePRGM
     !nomPRGMprincipal
     !versionString
     !grammarDescriptorForProgramList

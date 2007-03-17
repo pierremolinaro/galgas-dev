@@ -2123,7 +2123,6 @@
 		CFD214F80913BE2E0011F11E /* include_typeInfOrEqualTest.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInfOrEqualTest.h; sourceTree = "<group>"; };
 		CFD214F90913BE2E0011F11E /* include_typeInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInstruction.h; sourceTree = "<group>"; };
 		CFD214FA0913BE2E0011F11E /* include_typeInstructionActionExterne.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionActionExterne.h; sourceTree = "<group>"; };
-		CFD214FB0913BE2E0011F11E /* include_typeInstructionAppelActionExterne.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionAppelActionExterne.h; sourceTree = "<group>"; };
 		CFD214FC0913BE2E0011F11E /* include_typeInstructionAppelMethodeListe.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionAppelMethodeListe.h; sourceTree = "<group>"; };
 		CFD214FD0913BE2E0011F11E /* include_typeInstructionAppelNonTerminal.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionAppelNonTerminal.h; sourceTree = "<group>"; };
 		CFD214FE0913BE2E0011F11E /* include_typeInstructionDeclarationVarLocale.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionDeclarationVarLocale.h; sourceTree = "<group>"; };
@@ -2704,7 +2703,6 @@
 				CFD214F80913BE2E0011F11E /* include_typeInfOrEqualTest.h */,
 				CFD214F90913BE2E0011F11E /* include_typeInstruction.h */,
 				CFD214FA0913BE2E0011F11E /* include_typeInstructionActionExterne.h */,
-				CFD214FB0913BE2E0011F11E /* include_typeInstructionAppelActionExterne.h */,
 				CFD214FC0913BE2E0011F11E /* include_typeInstructionAppelMethodeListe.h */,
 				CFD214FD0913BE2E0011F11E /* include_typeInstructionAppelNonTerminal.h */,
 				CFD214FE0913BE2E0011F11E /* include_typeInstructionDeclarationVarLocale.h */,
