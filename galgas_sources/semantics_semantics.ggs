@@ -1472,20 +1472,6 @@ list @ruleDescriptorForProgramList {
   @typeInstructionList mInstructionList ;
 }
 
-#---------------------------------------------------------------------------*
-
-list @L_grammarDescriptorForProgram {
-  @string mGrammarPostfix ;
-  @lstring mGrammarName ;
-  @L_EXsignature mStartSymbolSignature ;
-  @L_lstringList mStartSymbolAttributesList ;
-  @lstring mLexiqueClassName ;
-  @lstring mReturnedMetamodelName ;
-  @lstring mReturnedRootEntityName ;
-  @lstring mSourceExtension ;
-  @string mHelpMessage ;
-}
-
 #-------------------------------------------------------------------*
 
 routine performMetamodelInclusion

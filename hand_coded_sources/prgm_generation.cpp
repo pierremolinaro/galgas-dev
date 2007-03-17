@@ -32,20 +32,12 @@
 static void
 generate_header_file_for_prgm (C_Compiler & inLexique,
                                const C_String & inProgramComponentName,
-                               const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
                                const GGS_M_optionComponents & inOptionsComponentsMap) {
 //--- Write includes
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef INTERFACE_" << inProgramComponentName << "_DEFINED\n"
                     "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  while (currentGrammar != NULL) {
-    macroValidPointer (currentGrammar) ;
-    generatedZone2 << "#include \"" << currentGrammar->mGrammarName << ".h\"\n"
-                      "#include \"" << currentGrammar->mLexiqueClassName << ".h\"\n" ;
-    currentGrammar = currentGrammar->nextObject () ;
-  }
   GGS_M_optionComponents::element_type * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
@@ -60,85 +52,6 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 
-//--- Generate class declaration for each grammar
-  currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  sint32 grammarIndex = 0 ;
-  C_String grammarSuffix ;
-  while (currentGrammar != NULL) {
-    C_String grammarClassName ;
-    grammarClassName << "grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << grammarSuffix ;
-    C_String grammarZone2 ; grammarZone2.setCapacity (2000) ;
-    macroValidPointer (currentGrammar) ;
-    grammarZone2 << "class " << grammarClassName << " : public C_defaultUserSemanticActions {\n"
-                    "  protected : " << currentGrammar->mLexiqueClassName << " * _mScannerPtr ;\n"
-                    "//--- Command line options\n" ;
-    TC_UniqueArray <C_String> optionSet ;
-    GGS_M_optionComponents::element_type * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
-    while (currentOptionComponent != NULL) {
-      macroValidPointer (currentOptionComponent) ;
-      GGS_M_cli_options::element_type * currentOption = currentOptionComponent->mInfo.mBoolOptionsMap.firstObject () ;
-      while (currentOption != NULL) {
-        macroValidPointer (currentOption) ;
-        const C_String entry = currentOptionComponent->mKey + "_" + currentOption->mKey ;
-        if (! optionSet.containsObjectEqualTo (entry)) {
-          optionSet.addObject (entry) ;
-          grammarZone2 << "  protected : bool mOption_" << entry << " ;\n" ;
-        }
-        currentOption = currentOption->nextObject () ;
-      }
-      currentOptionComponent = currentOptionComponent->nextObject () ;
-    }
-    grammarZone2 << "\n//--- Constructor\n"
-                    "  public : " << grammarClassName
-                 << " (C_galgas_io * inParametersPtr\n"
-                    "                                  COMMA_LOCATION_ARGS) ;\n\n"
-                    "  public : void doCompilation (const C_String & inSourceFileName_,\n"
-                    "                               const bool inVerboseOptionOn,\n"
-                    "                               sint16 & returnCode) ;\n" ;
-  //--- Engendrer la declaration des attributs de l'axiome
-    GGS_L_EXsignature::element_type * parametreCourant = currentGrammar->mStartSymbolSignature.firstObject () ;
-    GGS_L_lstringList::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
-    sint16 numero = 1 ;
-    while ((parametreCourant != NULL) && (nomCourant != NULL)) {
-      macroValidPointer (parametreCourant) ;
-      macroValidPointer (nomCourant) ;
-      grammarZone2 << "  protected : " ;
-      parametreCourant->mType (HERE)->generateCppClassName (grammarZone2) ;
-      grammarZone2 << ' ' << nomCourant->mString << " ; // start symbol attribute #" << numero << "\n" ;
-      parametreCourant = parametreCourant->nextObject () ;
-      nomCourant = nomCourant->nextObject () ;
-      numero ++ ;
-    }
-    C_String grammarZone3 ;
-    grammarZone3 << "//--- Destructor\n"
-                    "  public : virtual ~" << grammarClassName << " (void) ;\n"
-                    "} ;\n\n" ;
-    grammarZone3.writeCppHyphenLineComment () ;
-
-    C_String userZone2 ; 
-    userZone2 << "\n"
-                 "//--- Prologue and epilogue\n"
-                 "  public : inline void _prologue (void) {}\n"
-                 "  public : inline void _epilogue (void) {}\n"
-                 "\n" ;
-
-    const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                    "verbose_output"
-                                                                     COMMA_HERE) ;
-    inLexique.generateFile ("//",
-                            grammarClassName + ".h",
-                            "\n\n", // User Zone 1
-                            grammarZone2,
-                            userZone2, // User Zone 2
-                            grammarZone3,
-                            verboseOptionOn,
-                            false) ;
-    generatedZone2 << "#include \"" << grammarClassName << ".h\"\n\n" ;
-    currentGrammar = currentGrammar->nextObject () ;
-    grammarIndex ++ ;
-    grammarSuffix = "" ;
-    grammarSuffix << "_" << grammarIndex ;
-  }
 //--- Command line options for this program
   generatedZone2 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
                     "//--- Constructor\n"
@@ -190,7 +103,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                             const uint32 inmaxWarningCount,
                             const C_String & inVersionString,
                             const C_String & inProgramComponentName,
-                            const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
                             const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
                             const GGS_M_optionComponents & inOptionsComponentsMap,
                             const GGS_stringset & inInclusionsForImplementationFile) {
@@ -219,11 +131,11 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "#endif\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_stringset::element_type * currentGrammarName = inInclusionsForImplementationFile.firstObject () ;
-  while (currentGrammarName != NULL) {
-    macroValidPointer (currentGrammarName) ;
-    generatedZone2 << "#include \"" << currentGrammarName->mKey << "\"\n" ;
-    currentGrammarName = currentGrammarName->nextObject () ;
+  GGS_stringset::element_type * currentInclusion = inInclusionsForImplementationFile.firstObject () ;
+  while (currentInclusion != NULL) {
+    macroValidPointer (currentInclusion) ;
+    generatedZone2 << "#include \"" << currentInclusion->mKey << "\"\n" ;
+    currentInclusion = currentInclusion->nextObject () ;
   }
   generatedZone2 << "\n" ;
 
@@ -250,125 +162,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   }
   generatedZone2 << "}\n\n" ;
 
-  GGS_L_grammarDescriptorForProgram::element_type * currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  sint32 grammarIndex = 0 ;
-  C_String grammarSuffix ;
-  while (currentGrammar != NULL) {
-    macroValidPointer (currentGrammar) ;
-    C_String grammarClassName ;
-    grammarClassName << "grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << grammarSuffix ;
-  //--- Constructor
-    generatedZone2.writeCppTitleComment ("C O N S T R U C T O R") ;
-    generatedZone2 << "\n" << grammarClassName
-                   << "::\n" << grammarClassName
-                   << " (C_galgas_io * inParametersPtr\n"
-                      "                  COMMA_LOCATION_ARGS) :\n"
-                      "_mScannerPtr (NULL) {\n"
-                      "  macroMyNew (_mScannerPtr, " << currentGrammar->mLexiqueClassName << " (inParametersPtr COMMA_THERE)) ;\n"
-                      "}\n\n" ;
-  //--- Destructor
-    generatedZone2.writeCppTitleComment ("D E S T R U C T O R") ;
-    generatedZone2 << "\n" << grammarClassName
-                   << "::\n~" << grammarClassName << " (void) {\n"
-                      "  macroDetachPointer (_mScannerPtr, " << currentGrammar->mLexiqueClassName << ") ;\n"
-                      "}\n\n" ;
-  //--- 'doCompilation' method
-    generatedZone2.writeCppTitleComment ("D O    C O M P I L A T I O N") ;
-    generatedZone2 << "void " << grammarClassName << "::\n"
-                      "doCompilation (const C_String & inSourceFileName_,\n"
-                      "               const bool inVerboseOptionOn,\n"
-                      "               sint16 & returnCode) {\n" ;
-    generatedZone2.incIndentation (+2) ;
-    generatedZone2 << "try{\n" ;
-    generatedZone2.incIndentation (+2) ;
-    generatedZone2 << "/* if (_mScannerPtr->versionModeOn ()) {\n"
-                      "  co << \"Reading '\" << inSourceFileName_ << \"'\\n\" ;\n"
-                      "} */\n"
-                      "_mScannerPtr->resetAndLoadSourceFromFile (inSourceFileName_) ;\n"
-                      "_beforeParsing () ;\n" ; //--- Give a chance to initialize program parameters
-    GGS_L_lstringList::element_type * nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
-    GGS_L_EXsignature::element_type * p = currentGrammar->mStartSymbolSignature.firstObject () ;
-    while ((p != NULL) && (nomCourant != NULL)) {
-      macroValidPointer (nomCourant) ;
-      macroValidPointer (p) ;
-      if (p->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
-        generatedZone2 << "if (! " << nomCourant->mString << "._isBuilt ()) {\n"
-                          "  C_String message ;\n"
-                          "  message << \"the '\"\n"
-                          "             \"" << nomCourant->mString << "\"\n"
-                          "             \"' program parameter has not been initialized\" ;\n"
-                          "  throw C_Exception (message.cString (), 0, 0 COMMA_HERE) ;\n"
-                          "}\n" ;
-      }
-      p = p->nextObject () ;
-      nomCourant = nomCourant->nextObject () ;
-    }              
-  //--- Call parser
-    generatedZone2 << currentGrammar->mGrammarName << " grammar_ ;\n" ;
-    if (currentGrammar->mReturnedRootEntityName.length () > 0) {
-      generatedZone2 << "GGS_" << currentGrammar->mReturnedRootEntityName 
-                     << " _metamodelRootObject = " ;
-    }
-    generatedZone2 << "grammar_.startParsing_ (*_mScannerPtr" ;
-    nomCourant = currentGrammar->mStartSymbolAttributesList.firstObject () ;
-    while (nomCourant != NULL) {
-      macroValidPointer (nomCourant) ;
-      generatedZone2 << ",\n                            "
-                     << nomCourant->mString ;
-      nomCourant = nomCourant->nextObject () ;
-    }
-    generatedZone2 << ") ;\n"
-                      "C_BDD::markAndSweepUnusedNodes () ;\n"
-                      "if (_mScannerPtr->totalErrorCount () == 0) {\n"
-                      "  _afterParsing (inVerboseOptionOn) ;\n"
-                      "}\n"
-                      "if (inVerboseOptionOn || ((_mScannerPtr->totalErrorCount () + _mScannerPtr->totalWarningCount ()) > 0)) {\n"
-                      "  co << \"Analysis of '\" << _mScannerPtr->sourceFileName ().lastPathComponent () << \"' completed. \" ;\n"
-                      "}\n"
-                      "switch (_mScannerPtr->totalErrorCount ()) {\n"
-                      "case 0 :\n"
-                      "  if (inVerboseOptionOn) {\n"
-                      "    co << \"No error, \" ;\n"
-                      "  }\n"
-                      "  break ;\n"
-                      "case 1 :\n"
-                      "  co << \"1 error, \" ;\n"
-                      "  returnCode = 1 ; // Error code\n"
-                      "  break ;\n"
-                      "default :\n"
-                      "  co << _mScannerPtr->totalErrorCount () << \" errors, \" ;\n"
-                      "  returnCode = 1 ; // Error code\n"
-                      "  break ;\n"
-                      "}\n"
-                      "switch (_mScannerPtr->totalWarningCount ()) {\n"
-                      "case 0 :\n"
-                      "  if (inVerboseOptionOn) {\n"
-                      "    co << \"no warning\" ;\n"
-                      "  }\n"
-                      "  break ;\n"
-                      "case 1 :\n"
-                      "  co << \"1 warning\" ;\n"
-                      "  break ;\n"
-                      "default :\n"
-                      "  co << _mScannerPtr->totalWarningCount () << \" warnings\" ;\n"
-                      "  break ;\n"
-                      "}\n"
-                      "if (inVerboseOptionOn || ((_mScannerPtr->totalErrorCount () + _mScannerPtr->totalWarningCount ()) > 0)) {\n"
-                      "  co << \".\\n\" ;\n"
-                      "}\n" ;
-    generatedZone2.incIndentation (-2) ;
-    generatedZone2 << "}catch (const C_TextReadException & inFileReadError) {\n"
-                   "  co << \"Error: \" << inFileReadError.what () << \"\\n\" ; // Error when reading source file\n"
-                   "  returnCode = 1 ;\n" ;
-    generatedZone2 << "}\n" ;
-    generatedZone2.incIndentation (-2) ;
-    generatedZone2 << "}\n\n" ;
-    generatedZone2.writeCppHyphenLineComment () ;
-    currentGrammar = currentGrammar->nextObject () ;
-    grammarIndex ++ ;
-    grammarSuffix = "" ;
-    grammarSuffix << "_" << grammarIndex ;
-  }
 
 //--- Generate 'mainForLIBPM' routine
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
@@ -397,20 +190,20 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                  << inmaxWarningCount
                  << " ;\n"
                  << "    const char * extensions [] = {" ;
-  currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  while (currentGrammar != NULL) {
-    macroValidPointer (currentGrammar) ;
-    generatedZone2 << "\"" << currentGrammar->mSourceExtension << "\", " ;
-    currentGrammar = currentGrammar->nextObject () ;
+  GGS_ruleDescriptorForProgramList::element_type * currentDescriptor = inRuleDescriptorForProgramList.firstObject () ;
+  while (currentDescriptor != NULL) {
+    macroValidPointer (currentDescriptor) ;
+    generatedZone2 << "\"" << currentDescriptor->mSourceExtension << "\", " ;
+    currentDescriptor = currentDescriptor->nextObject () ;
   }
   generatedZone2 << "NULL} ;\n"
                  << "    const char * helpMessages [] = {" ;
-  currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  while (currentGrammar != NULL) {
-    macroValidPointer (currentGrammar) ;
-    generatedZone2.writeCstringConstant (currentGrammar->mHelpMessage) ;
+  currentDescriptor = inRuleDescriptorForProgramList.firstObject () ;
+  while (currentDescriptor != NULL) {
+    macroValidPointer (currentDescriptor) ;
+    generatedZone2.writeCstringConstant (currentDescriptor->mHelpMessage) ;
     generatedZone2 << ", " ;
-    currentGrammar = currentGrammar->nextObject () ;
+    currentDescriptor = currentDescriptor->nextObject () ;
   }
   generatedZone2 << "NULL} ;\n"
                     "    TC_UniqueArray <C_String> sourceFilesArray ;\n"
@@ -418,7 +211,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    F_Analyze_CLI_Options (argc, argv,\n"
                     "                           " ;
   generatedZone2.writeCstringConstant (inVersionString) ;
-  currentGrammar = inGrammarDescriptorsList.firstObject () ;
   generatedZone2 << ",\n"
                     "                           options,\n"
                     "                           sourceFilesArray,\n"
@@ -456,28 +248,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
                     "        sint16 r = 0 ;\n" ;
   generatedZone2.incIndentation (+8) ;
-  currentGrammar = inGrammarDescriptorsList.firstObject () ;
-  grammarIndex = 0 ;
-  grammarSuffix = "" ;
-  while (currentGrammar != NULL) {
-    macroValidPointer (currentGrammar) ;
-    C_String grammarClassName ;
-    grammarClassName << "grammar_" << inProgramComponentName << currentGrammar->mGrammarPostfix << grammarSuffix ;
-    if (grammarIndex > 0) {
-      generatedZone2 << "}else " ;
-    }
-    generatedZone2 << "if (fileExtension.compare (\"" << currentGrammar->mSourceExtension << "\") == 0) {\n"
-                      "  " << grammarClassName << " * compiler = NULL ;\n"
-                      "  macroMyNew (compiler, " << grammarClassName << " (galgasIOptr COMMA_HERE)) ;\n"
-                      "  compiler->_prologue () ;\n"
-                      "  compiler->doCompilation (sourceFilesArray (i COMMA_HERE), verboseOptionOn, r) ;\n"
-                      "  compiler->_epilogue () ;\n"
-                      "  macroMyDelete (compiler, " << grammarClassName << ") ;\n" ;
-    currentGrammar = currentGrammar->nextObject () ;
-    grammarIndex ++ ;
-    grammarSuffix = "" ;
-    grammarSuffix << "_" << grammarIndex ;
-  }
+  uint32 grammarIndex = 0 ;
   GGS_ruleDescriptorForProgramList::element_type * currentRule = inRuleDescriptorForProgramList.firstObject () ;
   while (currentRule != NULL) {
     macroValidPointer (currentRule) ;
@@ -627,7 +398,6 @@ void
 routine_generatePRGM (C_Compiler & inLexique,
                       const GGS_lstring & inProgramComponentName,
                       const GGS_lstring & inVersionString,
-                      const GGS_L_grammarDescriptorForProgram & inGrammarDescriptorsList,
                       const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
                       const GGS_luint & inMaxErrorCount,
                       const GGS_luint & inMaxWarningCount,
@@ -637,14 +407,12 @@ routine_generatePRGM (C_Compiler & inLexique,
   if (inLexique.totalErrorCount () == 0) {
     generate_header_file_for_prgm (inLexique,
                                    inProgramComponentName,
-                                   inGrammarDescriptorsList,
                                    inOptionsComponentsMap) ; 
     generate_cpp_file_for_prgm (inLexique,
                                 inMaxErrorCount.uintValue (),
                                 inMaxWarningCount.uintValue (),
                                 inVersionString,
                                 inProgramComponentName,
-                                inGrammarDescriptorsList,
                                 inRuleDescriptorForProgramList,
                                 inOptionsComponentsMap,
                                 inInclusionsForImplementationFile) ;
