@@ -83,12 +83,6 @@ label importSemantics
 label parse
 ;
 
-nonterminal <program_attributes_declaration>
-  !@L_lstringList outAttributeList
-  !@stringset outAttributeSet
-label parse
-;
-
 nonterminal <semantic_instructions_list>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
@@ -105,7 +99,6 @@ label parse
 action generatePRGM
   ??@lstring nomPRGMprincipal
   ??@lstring versionString
-  ??@L_grammarDescriptorForProgram inGrammarDescriptorForProgramList
   ??@ruleDescriptorForProgramList inRuleDescriptorForProgramList
   ??@luint nombreMaxErreurs
   ??@luint nombreMaxAlertes
@@ -179,7 +172,6 @@ rule <galgas_component>
   $unsigned_literal_integer$ ? nombreMaxAlertes ;
   $;$ ;
 #--- WHEN clauses
-  @L_grammarDescriptorForProgram grammarDescriptorForProgramList [emptyList] ;
   @ruleDescriptorForProgramList ruleDescriptorForProgramList [emptyList] ;
   $when$ ;
    repeat
@@ -203,135 +195,52 @@ rule <galgas_component>
         error sourceExtension: "the source extension should contains only lower case letters, upper case letters, digits and underscore characters" ;
       end if ;
     end if ;
-    select
-    #--- Help message
-      @string helpMessage ;
-      $message$ ;
-      @lstring messageString ;
-      $literal_string$ ? messageString ;
-      helpMessage := [messageString string] ;
-    #--- Argument
-      @typeVariablesMap variablesMap [emptyMap] ;
-      $??$ ;
-      @lstring parameterTypeName ;
-      $type_name$ ? parameterTypeName ;
-      if [parameterTypeName string] != "lstring" then
-        error parameterTypeName: "only the '@lstring' type is allowed here" ;
-      end if ;
-      @lstring argumentName ;
-      $identifier$ ? argumentName ;
-      [!?variablesMap insertConstInArgument
-        !argumentName
-        ![@typeGalgas_lstring new]
-        ![@typeAutomaticName new !argumentName]
-      ] ;
-    #--- Instruction list
-      ${$ ;
-      @typeInstructionList instructionList [emptyList] ;
-      @typeTableEnAvant tableEnAvant [emptyMap] ;
-      @entityToImplementMap metamodelEntityMap [emptyMap] ;
-      @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
-      @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
-      <semantic_instructions_list>
-        !treewalkingRoutineHeaderMap
-        !tableEnAvant
-        !componentEntitiesMap
-        !optionsComponentsMap
-        !?variablesMap
-        !?instructionList
-        !currentTreewalkingRoutinePropertyMap
-        !metamodelEntityMap
-        !ioTreewalkingComponentMap
-      ;
-      $}$ ;
-      ruleDescriptorForProgramList += 
-        !sourceExtension
-        !helpMessage
-        !argumentName
-        !instructionList
-      ;
-    or
-      $:$ ;
-      @string helpMessage ;
-      select
-        helpMessage := "" ;
-      or
-        $message$ ;
-        @lstring messageString ;
-        $literal_string$ ? messageString ;
-        helpMessage := [messageString string] ;
-      end select ;
-      $grammar$ ;
-      @lstring grammarName ;
-      $identifier$ ? grammarName ;
-      @AC_semanticsEntity e ;
-      [componentEntitiesMap searchKey !grammarName ?e] ;
-      @M_nonterminalSymbolAlts grammarAltMap ;
-      @lstring lexiqueClassName ;
-      extract e->@C_grammarForSemantics (?grammarAltMap ?lexiqueClassName) error grammarName  : messageTypeEntite ;
-      @lstring altName := [@lstring new !"" !here] ;
-      @L_EXsignature startSymbolSignature ;
-      @lstring returnedMetamodel ;
-      [grammarAltMap searchKey !altName ?startSymbolSignature ?returnedMetamodel] ;
-    #--- Liste des attributs
-      @L_lstringList grammarAttributeList ;
-      @stringset grammarAttributeSet ;
-      <program_attributes_declaration>
-        ?grammarAttributeList
-        ?grammarAttributeSet
-      ;
-      warning here: "old style construct; now use the following construct:\n"
-       . "  when . \"" . [sourceExtension string] . "\" message \"an '." . [sourceExtension string] . "' source file\" ??@lstring inSourceFile {\n"
-       . "    grammar " . [grammarName string] . " in inSourceFile;\n"
-       . "  }\n" ;
-    #--- Verifier que le nombre d'attributs est correct
-      if [grammarAttributeList length] < [startSymbolSignature length] then
-        error here : "one or more parameters missing" ;
-      elsif [grammarAttributeList length] > [startSymbolSignature length] then
-        error here : "too much parameters" ;
-      end if ;
-      @string postfix := "" ;
-    #--- Metamodel ?
-      @lstring metamodelName ;
-      @lstring rootEntityName ;
-      @stringset contraintStringsetForMetamodel [emptySet] ;
-      select
-        metamodelName := [@lstring new !"" !here] ;
-        rootEntityName := [@lstring new !"" !here] ;
-      or
-        $metamodel$ ;
-        $identifier$ ? metamodelName ;
-        select
-        or
-          $($ ;
-          repeat
-            @lstring constraintComponentName ;
-            $identifier$ ? constraintComponentName ;
-            contraintStringsetForMetamodel += ![constraintComponentName string] ;
-          while
-            $,$ ;
-          end repeat ;
-          $)$ ;
-        end select ;
-        if [metamodelName string] != [returnedMetamodel string] then
-          error metamodelName: "the '" . [returnedMetamodel string] . "' metamodel was expected here" ;
-         end if ;
-        [ioMetamodelComponentMap searchKey !metamodelName ?rootEntityName ?2*] ;
-      end select ;
-      $;$ ;
-    #--- Send grammar descriptor
-      grammarDescriptorForProgramList +=
-        !postfix
-        !grammarName
-        !startSymbolSignature
-        !grammarAttributeList
-        !lexiqueClassName
-        !returnedMetamodel
-        !rootEntityName
-        !sourceExtension
-        !helpMessage
-      ;
-    end select ;
+  #--- Help message
+    @string helpMessage ;
+    $message$ ;
+    @lstring messageString ;
+    $literal_string$ ? messageString ;
+    helpMessage := [messageString string] ;
+  #--- Argument
+    @typeVariablesMap variablesMap [emptyMap] ;
+    $??$ ;
+    @lstring parameterTypeName ;
+    $type_name$ ? parameterTypeName ;
+    if [parameterTypeName string] != "lstring" then
+      error parameterTypeName: "only the '@lstring' type is allowed here" ;
+    end if ;
+    @lstring argumentName ;
+    $identifier$ ? argumentName ;
+    [!?variablesMap insertConstInArgument
+      !argumentName
+      ![@typeGalgas_lstring new]
+      ![@typeAutomaticName new !argumentName]
+    ] ;
+  #--- Instruction list
+    ${$ ;
+    @typeInstructionList instructionList [emptyList] ;
+    @typeTableEnAvant tableEnAvant [emptyMap] ;
+    @entityToImplementMap metamodelEntityMap [emptyMap] ;
+    @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
+    @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
+    <semantic_instructions_list>
+      !treewalkingRoutineHeaderMap
+      !tableEnAvant
+      !componentEntitiesMap
+      !optionsComponentsMap
+      !?variablesMap
+      !?instructionList
+      !currentTreewalkingRoutinePropertyMap
+      !metamodelEntityMap
+      !ioTreewalkingComponentMap
+    ;
+    $}$ ;
+    ruleDescriptorForProgramList += 
+      !sourceExtension
+      !helpMessage
+      !argumentName
+      !instructionList
+    ;
   while
     $when$ ;
   end repeat ;
@@ -339,7 +248,6 @@ rule <galgas_component>
   generatePRGM
     !nomPRGMprincipal
     !versionString
-    !grammarDescriptorForProgramList
     !ruleDescriptorForProgramList
     !nombreMaxErreurs
     !nombreMaxAlertes
@@ -373,45 +281,17 @@ label importLexique
   #--- Source file extension definition
     $.$ ;
     $literal_string$ ? * ; # Source file extension
-    select
-    #--- Help message
-      $message$ ;
-      $literal_string$ ? * ;
-    #--- Argument
-      $??$ ;
-      $type_name$ ? * ;
-      $identifier$ ? * ;
-    #--- Instruction list
-      ${$ ;
-      <semantic_instructions_list> parse ;
-     $}$ ; 
-    or
-      $:$ ;
-      select
-      or
-        $message$ ;
-        $literal_string$ ? * ;
-      end select ;
-      $grammar$ ;
-      $identifier$ ? * ; # Grammar name
-      <program_attributes_declaration> parse ;
-      select
-      or
-        $metamodel$ ;
-        $identifier$ ? * ;
-        select
-        or
-          $($ ;
-          repeat
-            $identifier$ ? * ;
-          while
-            $,$ ;
-          end repeat ;
-          $)$ ;
-        end select ;
-      end select ;
-      $;$ ;
-    end select ;
+  #--- Help message
+    $message$ ;
+    $literal_string$ ? * ;
+  #--- Argument
+    $??$ ;
+    $type_name$ ? * ;
+    $identifier$ ? * ;
+  #--- Instruction list
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ; 
   while
     $when$ ;
   end repeat ;
@@ -444,45 +324,17 @@ label importSyntax
   #--- Source file extension definition
     $.$ ;
     $literal_string$ ? * ; # Source file extension
-    select
-    #--- Help message
-      $message$ ;
-      $literal_string$ ? * ;
-    #--- Argument
-      $??$ ;
-      $type_name$ ? * ;
-      $identifier$ ? * ;
-    #--- Instruction list
-      ${$ ;
-      <semantic_instructions_list> parse ;
-     $}$ ; 
-    or
-      $:$ ;
-      select
-      or
-        $message$ ;
-        $literal_string$ ? * ;
-      end select ;
-      $grammar$ ;
-      $identifier$ ? * ; # Grammar name
-      <program_attributes_declaration> parse ;
-      select
-      or
-        $metamodel$ ;
-        $identifier$ ? * ;
-        select
-        or
-          $($ ;
-          repeat
-            $identifier$ ? * ;
-          while
-            $,$ ;
-          end repeat ;
-          $)$ ;
-        end select ;
-      end select ;
-      $;$ ;
-    end select ;
+  #--- Help message
+    $message$ ;
+    $literal_string$ ? * ;
+  #--- Argument
+    $??$ ;
+    $type_name$ ? * ;
+    $identifier$ ? * ;
+  #--- Instruction list
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ; 
   while
     $when$ ;
   end repeat ;
@@ -514,45 +366,17 @@ label importSemantics
   #--- Source file extension definition
     $.$ ;
     $literal_string$ ? * ; # Source file extension
-    select
-    #--- Help message
-      $message$ ;
-      $literal_string$ ? * ;
-    #--- Argument
-      $??$ ;
-      $type_name$ ? * ;
-      $identifier$ ? * ;
-    #--- Instruction list
-      ${$ ;
-      <semantic_instructions_list> parse ;
-     $}$ ; 
-    or
-      $:$ ;
-      select
-      or
-        $message$ ;
-        $literal_string$ ? * ;
-      end select ;
-      $grammar$ ;
-      $identifier$ ? * ; # Grammar name
-      <program_attributes_declaration> parse ;
-      select
-      or
-        $metamodel$ ;
-        $identifier$ ? * ;
-        select
-        or
-          $($ ;
-          repeat
-            $identifier$ ? * ;
-          while
-            $,$ ;
-          end repeat ;
-          $)$ ;
-        end select ;
-      end select ;
-      $;$ ;
-    end select ;
+  #--- Help message
+    $message$ ;
+    $literal_string$ ? * ;
+  #--- Argument
+    $??$ ;
+    $type_name$ ? * ;
+    $identifier$ ? * ;
+  #--- Instruction list
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ; 
   while
     $when$ ;
   end repeat ;
@@ -585,45 +409,17 @@ label importGrammarForSemantics
   #--- Source file extension definition
     $.$ ;
     $literal_string$ ? * ; # Source file extension
-    select
-    #--- Help message
-      $message$ ;
-      $literal_string$ ? * ;
-    #--- Argument
-      $??$ ;
-      $type_name$ ? * ;
-      $identifier$ ? * ;
-    #--- Instruction list
-      ${$ ;
-      <semantic_instructions_list> parse ;
-     $}$ ; 
-    or
-      $:$ ;
-      select
-      or
-        $message$ ;
-        $literal_string$ ? * ;
-      end select ;
-      $grammar$ ;
-      $identifier$ ? * ; # Grammar name
-      <program_attributes_declaration> parse ;
-      select
-      or
-        $metamodel$ ;
-        $identifier$ ? * ;
-        select
-        or
-          $($ ;
-          repeat
-            $identifier$ ? * ;
-          while
-            $,$ ;
-          end repeat ;
-          $)$ ;
-        end select ;
-      end select ;
-      $;$ ;
-    end select ;
+  #--- Help message
+    $message$ ;
+    $literal_string$ ? * ;
+  #--- Argument
+    $??$ ;
+    $type_name$ ? * ;
+    $identifier$ ? * ;
+  #--- Instruction list
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ; 
   while
     $when$ ;
   end repeat ;
@@ -653,74 +449,23 @@ label importOptions
   #--- Source file extension definition
     $.$ ;
     $literal_string$ ? * ; # Source file extension
-    select
-    #--- Help message
-      $message$ ;
-      $literal_string$ ? * ;
-    #--- Argument
-      $??$ ;
-      $type_name$ ? * ;
-      $identifier$ ? * ;
-    #--- Instruction list
-      ${$ ;
-      <semantic_instructions_list> parse ;
-     $}$ ; 
-    or
-      $:$ ;
-      select
-      or
-        $message$ ;
-        $literal_string$ ? * ;
-      end select ;
-      $grammar$ ;
-      $identifier$ ? * ; # Grammar name
-      <program_attributes_declaration> parse ;
-      select
-      or
-        $metamodel$ ;
-        $identifier$ ? * ;
-        select
-        or
-          $($ ;
-          repeat
-            $identifier$ ? * ;
-          while
-            $,$ ;
-          end repeat ;
-          $)$ ;
-        end select ;
-      end select ;
-      $;$ ;
-    end select ;
+  #--- Help message
+    $message$ ;
+    $literal_string$ ? * ;
+  #--- Argument
+    $??$ ;
+    $type_name$ ? * ;
+    $identifier$ ? * ;
+  #--- Instruction list
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ; 
   while
     $when$ ;
   end repeat ;
   $end$ ;
   $program$ ;
   $;$ ;
-end rule ;
-
-#--------------------------------------------------------------------------------*
-
-rule <program_attributes_declaration>
-  !@L_lstringList outAttributeList
-  !@stringset outAttributeSet
-:
-  outAttributeList := [@L_lstringList emptyList] ;
-  outAttributeSet := [@stringset emptySet] ;
-  select
-  or
-    $($ ;
-    repeat
-      @lstring attributeName ;
-      $identifier$ ? attributeName ;
-      outAttributeList += ! attributeName ;
-      outAttributeSet += ![attributeName string] ;
-    while
-      $,$ ;
-    end repeat ;
-    $)$ ;
-  end select ;
 end rule ;
 
 #--------------------------------------------------------------------------------*

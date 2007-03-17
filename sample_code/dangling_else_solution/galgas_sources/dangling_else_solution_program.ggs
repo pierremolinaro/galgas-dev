@@ -3,8 +3,11 @@ import grammar dangling_else_solution_grammar in "dangling_else_solution_grammar
 #--- max error and warning count
 error 100 ;
 warning 100 ;
-when . "dangling_else_solution":
-  message "a source text file with the .dangling_else_solution extension"
-  grammar dangling_else_solution_grammar
-  ;
+
+when . "dangling_else_solution"
+message "an '.dangling_else_solution' source file"
+??@lstring inSourceFile {
+  grammar dangling_else_solution_grammar in inSourceFile;
+}
+
 end program ;
