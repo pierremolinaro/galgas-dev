@@ -44,6 +44,30 @@ program galgas_LR1_prgm "version GALGAS_BETA_VERSION (LR(1) grammar)":
       !?treewalkingComponentMap
     ;
   }
+
+  when . "ggs_option"
+  message "a GALGAS option source file"
+  ??@lstring inSourceFile {
+    fixFileGenerationStartDirectory !inSourceFile ;
+
+    @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+    @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+    @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+    @M_grammarComponents grammarComponentsMap [emptyMap] ;
+    @M_optionComponents optionComponentsMap [emptyMap] ;
+    @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
+    @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
+    grammar galgas_LR1_grammar in inSourceFile
+      !?lexiqueMapForUse
+      !?semanticsComponentsMap
+      !?syntaxComponentsMap
+      !?grammarComponentsMap
+      !?optionComponentsMap
+      !?metamodelComponentMap
+      !?treewalkingComponentMap
+    ;
+  }
+
 end program ;
 
 #---------------------------------------------------------------------------*

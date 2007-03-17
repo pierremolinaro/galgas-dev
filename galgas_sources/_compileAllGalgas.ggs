@@ -17,6 +17,9 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#--- Metamodels
+
+#---
 compile "semantics_semantics.ggs" ;
 compile "treewalking_parser.ggs" ;
 compile "domain_parser.ggs" ;
@@ -30,7 +33,7 @@ compile "parser_semantics.ggs" ;
 compile "cocoa_parser.ggs" ;
 compile "galgas_cocoa.ggs" ;
 compile "cli_options_parser.ggs" ;
-compile "galgas_cli_options.ggs" ;
+compile "galgas_cli_options.ggs_option" ;
 compile "grammar_parser.ggs" ;
 compile "scanner_parser.ggs" ;
 compile "expression_parser.ggs" ;
