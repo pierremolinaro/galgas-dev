@@ -24,3 +24,5 @@ option galgas_cli_options :
   @string create_mda_project : '\0', "create-mda-project" -> "Create a new GALGAS Project, MDA style" ;
   @string libpm              : '\0', "libpm" -> "Define libpm location on project creation (by default, location is ./libpm)" ;
 end option ;
+
+#---------------------------------------------------------------------------*
