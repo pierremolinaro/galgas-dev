@@ -557,7 +557,7 @@ rule <galgas_component>
     end if ;
   end foreach ;
 #--- Generate component
-  action generateSemanticsComponent
+  generateSemanticsComponent
     !?componentName
     !?inclusionsForHeaderFile
     !?defLexique
@@ -849,7 +849,7 @@ rule <import_headers_semantics_and_grammars>
       @lstring path := [@lstring new !"" !here] ;
       @lstring extension := [@lstring new !"h" !here] ;
       @lstring fileNameWithPath ;
-      action buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
+      buildFileNameWithPath ?fileNameWithPath !path !grammarComponentName !extension ;
       outInclusionsForImplementationFile += ![fileNameWithPath string] ;
       foreach grammarComponentsMap (@lstring kKey
                                     @M_nonterminalSymbolAltsForGrammar kNonterminalSymbolParametersMap
@@ -936,7 +936,8 @@ rule <import_headers_semantics_and_grammars>
                                    @lstring kSuperEntityName
                                    @typeSuperClassesMap kSuperEntityMap
                                    @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants
-                                   @string kMetamodelName) :
+                                   @string kMetamodelName
+                                   @uint kID) :
           [!?outAllMetamodelClassMap insertKey
             !kMetamodelClassName
             !kAllMetamodelPropertyMap
@@ -946,6 +947,7 @@ rule <import_headers_semantics_and_grammars>
             !kSuperEntityMap
             !kListeAttributsSemantiquesCourants
             !kMetamodelName
+            !kID
           ] ;
           @AC_semanticsEntity e := [@typeEntiteType new ![@typeGalgas_singleReferenceEntity new !kMetamodelClassName]] ;
           [!?ioComponentSemanticsEntitiesMap insertKey
@@ -2217,7 +2219,7 @@ rule <input_parameters_list>
   end if ;
 #--- Append Joker if needed
   @typeCplusPlusName nullName := [@typeNullName new] ;
-  action appendJokersIfNeeded
+  appendJokersIfNeeded
    !?outAllVariablesList
    ![listeCibles length]
    ![listeAttributsSemantiques length]
@@ -2965,7 +2967,20 @@ rule <instruction_beginning_with_identifier>
   @L_EXsignature signatureRoutine ;
   @AC_semanticsEntity entite ;
   [ioComponentSemanticsEntitiesMap searchKey !nomVarDest ?entite] ;
-  extract entite->@typeEntiteRoutine (?signatureRoutine) error nomVarDest : messageTypeEntite ;
+  @bool isExternActionCall ;
+  extract entite:
+  when @typeEntiteRoutine (@L_EXsignature kSignatureRoutine) ->
+    signatureRoutine := kSignatureRoutine ;
+    isExternActionCall := false ;
+  when @typeEntiteActionExterne (@L_EXsignature kSignatureRoutine) ->
+    signatureRoutine := kSignatureRoutine ;
+    isExternActionCall := true ;
+  else
+    error nomVarDest :
+     "'" . [nomVarDest string] . "' should name a routine or an extern action"
+     -> signatureRoutine, isExternActionCall
+    ;
+  end extract ;
 #--- Arguments effectifs
   @typeExpressionList expressionsList ;
   <actual_parameters_list>
@@ -2977,55 +2992,12 @@ rule <instruction_beginning_with_identifier>
     !?ioInstructionList
   ;
 #--- Generate instruction
-  @typeInstruction instruction := [@typeRoutineCallInstruction new !nomVarDest !expressionsList] ;
-  ioInstructionList += !instruction ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#           E X T E R N    C A L L    I N S T R U C T I O N                 *
-#                                                                           *
-#                         action extern_action ... ;                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
-  ??@typeTableEnAvant unused inTableEnAvant
-  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionList ioInstructionList
-  ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
-  ??@M_treewalkingComponents unused inTreewalkingComponentMap
-:
-#--- Action name
-  $action$ ;
-  @lstring nomAction ;
-  $identifier$ ? nomAction ;
-#--- Search action in action map
-  @AC_semanticsEntity entite ;
-  [ioComponentSemanticsEntitiesMap searchKey !nomAction ?entite] ;
-  @L_EXsignature listeTypesParametresFormels ;
-  extract entite->@typeEntiteActionExterne (?listeTypesParametresFormels) error nomAction : messageTypeEntite ;
-#--- Check argument list types
-  @typeExpressionList expressionsList ;
-  <actual_parameters_list>
-    !listeTypesParametresFormels
-    ?expressionsList
-    !?ioVariablesMap
-    !inOptionsComponentsMapForUse
-    !ioComponentSemanticsEntitiesMap
-    !?ioInstructionList
-  ;
-  $;$ ;
-#--- Generate instruction
-  @typeInstruction instruction :=
-        [@typeInstructionAppelActionExterne new !nomAction
-                                               !expressionsList
-                                               !listeTypesParametresFormels] ;
-
+  @typeInstruction instruction := [@typeRoutineCallInstruction new
+    !nomVarDest
+    !expressionsList
+    !signatureRoutine
+    !isExternActionCall
+  ] ;
   ioInstructionList += !instruction ;
 end rule ;
 
@@ -4264,7 +4236,7 @@ rule <semantics_declaration>
       $message$ ;
       @lstring mapindexErrorMessage ;
       $literal_string$ ? mapindexErrorMessage ;
-      action check_KL_escapeCharacters !mapindexErrorMessage ;
+      check_KL_escapeCharacters !mapindexErrorMessage ;
       [!?mapIndexSearchReaderMap insertKey !searchReaderName !mapindexErrorMessage] ;
       $;$ ;
     end repeat ;
@@ -4337,7 +4309,7 @@ label importSemantics
       $message$ ;
       @lstring mapindexErrorMessage ;
       $literal_string$ ? mapindexErrorMessage ;
-      action check_KL_escapeCharacters !mapindexErrorMessage ;
+      check_KL_escapeCharacters !mapindexErrorMessage ;
       [!?mapIndexSearchReaderMap insertKey !searchReaderName !mapindexErrorMessage] ;
       $;$ ;
     end repeat ;
@@ -4550,7 +4522,7 @@ rule <semantics_declaration>
       @lstring getIndexMethodName ;
       @lstring errorMessage ;
       <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
-      action check_KL_escapeCharacters !errorMessage ;
+      check_KL_escapeCharacters !errorMessage ;
       $;$ ;
     #--- Insert method
       @L_EXsignature methodSignature [emptyList] ;
@@ -4577,7 +4549,7 @@ rule <semantics_declaration>
       @lstring getIndexMethodName ;
       @lstring errorMessage ;
       <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
-      action check_KL_escapeCharacters !errorMessage ;
+      check_KL_escapeCharacters !errorMessage ;
       @string shadowErrorMessage ;
       select
         shadowErrorMessage := "" ;
@@ -4585,7 +4557,7 @@ rule <semantics_declaration>
         $,$ ;
         @lstring shadowErrorMessageString ;
         $literal_string$ ? shadowErrorMessageString ;
-        action check_KL_escapeCharacters !shadowErrorMessageString ;
+        check_KL_escapeCharacters !shadowErrorMessageString ;
         shadowErrorMessage := [shadowErrorMessageString string] ;
       end select ;
       $;$ ;
@@ -4614,7 +4586,7 @@ rule <semantics_declaration>
       @lstring getIndexMethodName ;
       @lstring errorMessage ;
       <map_method> ?methodName ?getIndexMethodName ?errorMessage ;
-      action check_K_escapeCharacters !errorMessage ;
+      check_K_escapeCharacters !errorMessage ;
       $;$ ;
     #--- Insert search method in modifier map
       @L_EXsignature methodSignature [emptyList] ;

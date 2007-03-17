@@ -66,13 +66,11 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                          const GGS_lstring & inCalledPropertyName,
                          const C_String & /* inTargetFileName */,
                          const GGS_typeExpressionList & inExpressionList) const {
-  ioCppFile << "macroValidPointer (_currentObject->" << inCalledPropertyName << ".getPtr ()) ;\n"
-               "{ _treewalking_routine_" << inEntityName
+  ioCppFile << "{ _treewalking_routine_" << inEntityName
             << "_type * _f = (_treewalking_routine_" << inEntityName
-            << "_type *) kDispatcher [_currentObject->" << inCalledPropertyName << " (HERE)->_metamodelClassID ()] ;\n"
-               "  MF_Assert (_f != NULL, \"treewalking routine is NULL\", 0, 0) ;\n"
+            << "_type *) _gDispatcherTable.entry (_currentObject->" << inCalledPropertyName << ".getPtr () COMMA_HERE) ;\n"
                "  (* _f) (_inLexique, _currentObject->" << inCalledPropertyName
-            << " (HERE)" ;
+            << ".getPtr ()" ;
   GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
   while (argCourant != NULL) {
     macroValidPointer (argCourant) ;
@@ -96,11 +94,9 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                "{ GGS_" << inEntityName << "List::element_type * _ptr = _currentObject->"
             << inCalledPropertyName << ".firstObject () ;\n"
             << "  while (_ptr != NULL) {\n"
-               "    macroValidPointer (_ptr) ;\n"
                "    _treewalking_routine_" << inEntityName
             << "_type * _f = (_treewalking_routine_" << inEntityName
-            << "_type *) kDispatcher [_ptr->_metamodelClassID ()] ;\n"
-               "    MF_Assert (_f != NULL, \"treewalking routine is NULL\", 0, 0) ;\n"
+            << "_type *) _gDispatcherTable.entry (_ptr COMMA_HERE) ;\n"
                "    (* _f) (_inLexique, _ptr" ;
   GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
   while (argCourant != NULL) {
@@ -277,27 +273,44 @@ generate_treewalking_implementation (C_Compiler & inLexique,
   }
 
 //--- Generate dispatcher
-  generatedZone3.writeCppTitleComment ("Dispatcher table") ;
-  generatedZone3 << "static void * kDispatcher ["
-                 << (inMetamodelEntityMap.count () + 1)
-                 << "] = {\n" ;
+  generatedZone3.writeCppTitleComment ("Dispatcher tables") ;
   uint32 currentIndex = 0 ;
+  C_String currentMetamodelName ;
+  C_String codeForDispacher ;
+  TC_UniqueArray <C_String> metamodelsWithDispatcher ;
   GGS_routineDispatcherSortedList::element_type * currentEntry = inRoutineDispatcherSortedList.firstObject () ;
   while (currentEntry != NULL) {
+    if (currentEntry->mMetamodelName.string () != currentMetamodelName) {
+      if (currentMetamodelName.length () > 0) {
+        generatedZone3 << "static const uint32 _kSize_" << currentMetamodelName << " = " << currentIndex << " ;\n\n" ;
+        codeForDispacher << "} ;\n\n" ;
+        codeForDispacher.writeCppHyphenLineComment () ;
+        generatedZone3 << codeForDispacher ;
+        codeForDispacher.clear () ;
+      }
+      currentMetamodelName = currentEntry->mMetamodelName ;
+      metamodelsWithDispatcher.addObject (currentMetamodelName) ;
+      currentIndex = 0 ;
+      codeForDispacher << "static void * _kDispatcherFor_" << currentMetamodelName << " [_kSize_" << currentMetamodelName << "] = {\n" ;
+    }
     const uint32 entryIndex = currentEntry->mMetamodelClassID.uintValue () ;
     while (currentIndex < entryIndex) {
-      generatedZone3 << "  NULL,\n" ;
+      codeForDispacher << "  NULL,\n" ;
       currentIndex ++ ;
     }
-    generatedZone3 << "  (void *) _treewalking_routine_" << currentEntry->mRoutineName
+    codeForDispacher << "  (void *) _treewalking_routine_" << currentEntry->mRoutineName
                    << ", // #" << entryIndex << " @"
                    << currentEntry->mEntityName << ", defined in '"
                    << currentEntry->mMetamodelName << "' metamodel\n" ;
     currentIndex ++ ;
     currentEntry = currentEntry->nextObject () ;
   }
-  generatedZone3 << "  NULL\n"
-                    "} ;\n\n" ;
+  codeForDispacher << "} ;\n\n" ;
+  generatedZone3 << "static const uint32 _kSize_" << currentMetamodelName << " = " << currentIndex << " ;\n\n" ;
+  generatedZone3 << codeForDispacher ;
+  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3 << "static C_TreewalkingDispacher _gDispatcherTable ;\n"
+                    "\n" ;
 
 //--- Generate routine implementation
   currentRoutine = inTreewalkingRoutineToGenerateList.firstObject () ;
@@ -348,6 +361,19 @@ generate_treewalking_implementation (C_Compiler & inLexique,
     currentRoutine = currentRoutine->nextObject () ;
   }
 
+//--- Generate dispatcher tree
+  generatedZone3.writeCppTitleComment ("Build Dispatcher Tree") ;
+  generatedZone3 << "static void _build_dispacher_tree (void) {\n" ;
+  for (sint32 i=0 ; i<metamodelsWithDispatcher.count () ; i++) {
+    const C_String metamodelName = metamodelsWithDispatcher (i COMMA_HERE) ;
+    generatedZone3 << "  _gDispatcherTable.enterTable (_metamodel_index_for_" << metamodelName << " (),\n"
+                   << "                                _kSize_" << metamodelName << ",\n"
+                      "                                _kDispatcherFor_" << metamodelName << "\n"
+                      "                                COMMA_HERE) ;\n" ;
+  }
+  generatedZone3 << "}\n"
+                    "\n" ;
+
 //--- Generate root routine implementation
   generatedZone3.writeCppTitleComment ("Root routine") ;
   generatedZone3 << "void\n"
@@ -364,10 +390,12 @@ generate_treewalking_implementation (C_Compiler & inLexique,
   }
   generatedZone3 << ") {\n"
                     "  if (_rootObject._isBuilt ()) {\n"
-                    "    _treewalking_routine_" << inRootEntity
-                 << "_type * _f = (_treewalking_routine_" << inRootEntity
-                 << "_type *) kDispatcher [_rootObject (HERE)->_metamodelClassID ()] ;\n"
-                    "    (* _f) (_inLexique, _rootObject (HERE)" ;
+                    "    if (! _gDispatcherTable.isInited ()) {\n"
+                    "      _build_dispacher_tree () ;\n"
+                    "    }\n"
+                 << "    _treewalking_routine_" << inRootEntity << "_type * _f = (_treewalking_routine_" << inRootEntity
+                 << "_type *) _gDispatcherTable.entry (_rootObject.getPtr () COMMA_HERE) ;\n"
+                    "    (* _f) (_inLexique, _rootObject.getPtr ()" ;
   currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
     generatedZone3 << ", " ;

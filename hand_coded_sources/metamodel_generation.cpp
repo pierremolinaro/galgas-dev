@@ -49,7 +49,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--------- Declare internal element class ------------
   inHfile << "class cPtr_" << aNomClasse << " : public " ;
   if (mSuperClassName.length () == 0) {
-    inHfile << "AC_galgas_list::cListElement" ;
+    inHfile << "C_GGS_MetamodelEntity" ;
   }else{
     inHfile << "cPtr_" << mSuperClassName ;
   }
@@ -494,7 +494,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << ") :\n" ;
   if (mSuperClassName.length () == 0) {
-    inCppFile << "AC_galgas_list::cListElement (THERE)" ;
+    inCppFile << "C_GGS_MetamodelEntity (THERE)" ;
   }else{
     inCppFile << "cPtr_" << mSuperClassName << " (THERE)" ;
   }

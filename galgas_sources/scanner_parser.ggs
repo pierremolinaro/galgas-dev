@@ -311,7 +311,7 @@ rule <galgas_component>
 #--- Enter lexique in lexique map
   [!?ioLexiqueMapForUse insertKey !lexiqueName !terminalSymbolsMapForUse] ;
 #--- Generate scanner
-  action generate_scanner
+  generate_scanner
     !lexiqueName 
     !table_attributs
     !table_des_terminaux
@@ -585,7 +585,7 @@ rule <key_words_list_declaration>
   $message$ ;
   @lstring errorMessage ;
   $literal_string$ ?errorMessage ;
-  action check_K_escapeCharacters !errorMessage ;
+  check_K_escapeCharacters !errorMessage ;
  #--- Style
   @lstring styleName ;
   select
@@ -778,7 +778,7 @@ rule <lexical_rule>
   @typeTableMotsReserves keyWordsMap ;
   [table_tables_mots_reserves searchKey !listName ?keyWordsMap] ;
 #--- Build lexical analyser rules
-  action buildLexicalRulesFromList !?keyWordsMap !?ioLexicalRulesList ;
+  buildLexicalRulesFromList !?keyWordsMap !?ioLexicalRulesList ;
 end rule ;
 
 #-------------------------------------------------------------------*

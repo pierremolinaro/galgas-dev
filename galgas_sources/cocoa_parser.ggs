@@ -255,7 +255,7 @@ rule <galgas_component>
     $;$ ;
   end repeat ;
 #--- Generate Cocoa c++ file
-  action generateCocoaComponent
+  generateCocoaComponent
     !guiComponentName
     !guiKindName
     !nibAndClassList
