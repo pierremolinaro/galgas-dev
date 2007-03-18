@@ -5,9 +5,17 @@ rule @optionComponentRoot
   ??@string inStartDirectory
   ??@string inOptionComponentName
 :
-  @string generatedUserZone2 := "a\n" ;
-  @string generatedUserZone3 := "b\n" ;
+#--- User zone 2
+  @string generatedUserZone2 := "" ;
+  generatedUserZone2 .= "#ifndef " . inOptionComponentName . "_0_DEFINED" ;
+  generatedUserZone2 .= "#define " . inOptionComponentName . "_0_DEFINED" ;
+  generatedUserZone2 .= "#include \"command_line_interface/AC_CLI_Options.h\"\n\n" ;
+
+#--- User zone 2
+  @string generatedUserZone3 := "" ;
   call mOptions ;
+
+#--- Generate header file
   [@string generateFile
     !inStartDirectory
     !inOptionComponentName . ".h"
