@@ -82,17 +82,12 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
-                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inProgramComponentName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
+                          generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -379,17 +374,12 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                "// ADD YOUR CODE HERE\n"
                "}\n\n" ;
 //--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
-                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inProgramComponentName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           userZone2, // User Zone 2
-                          "\n",
-                          verboseOptionOn,
-                          false) ;
+                          "\n") ;
 }
 
 //---------------------------------------------------------------------------*

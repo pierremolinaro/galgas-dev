@@ -1,0 +1,82 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'option' component parser, as model builder                              *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax option_model_builder :
+import lexique galgas_scanner in "galgas_scanner.ggs" ;
+import metamodel option_metamodel in "option_metamodel.ggs" ;
+
+nonterminal <option_component_start_symbol> -> @optionComponentRoot ;
+
+nonterminal <option> ?!@stringset ioOptionNameSet -> @commandLineOption ;
+
+#---------------------------------------------------------------------------*
+
+rule <option_component_start_symbol> -> @optionComponentRoot :
+  $option$ ;
+#--- Option Component Name
+  $identifier$ ? mOptionComponentName ;
+  $:$ ;
+#--- Parse the option list
+  @stringset optionNameSet [emptySet] ;
+  repeat
+  while 
+    <option> !?optionNameSet +> mOptions ;
+  end repeat ;
+  $end$ ;
+  $option$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <option> ?!@stringset ioOptionNameSet -> @commandLineOption :
+  $type_name$ ? mOptionTypeName  ;
+  $identifier$ ? mOptionInternalName ;
+  $:$ ;
+  $literal_char$ ? mOptionInvocationLetter ;
+  $,$ ;
+  $literal_string$ ? mOptionInvocationString ;
+  $->$ ;
+  $literal_string$ ? mOptionComment ;
+  select
+    mDefaultValue := "" ;
+    if [mOptionTypeName string] == "uint" then
+      warning here : "No default value for this option, 0 will be used" ;
+    end if ;
+  or
+    $default$ ;
+    if [mOptionTypeName string] == "bool" then
+      error here : "'default' construct is not allowed for a @bool option (allways false by default)" ;
+    elsif [mOptionTypeName string] == "string" then
+      error here : "'default' construct is not allowed for a @string option (allways false by default)" ;
+    end if ;
+    @luint v ;
+    $unsigned_literal_integer$ ? v ;
+    mDefaultValue := [[v uint] string] ;
+  end select ;
+  $;$ ;
+  if [ioOptionNameSet hasKey ![mOptionInternalName string]] then
+    error mOptionInternalName: "a '" . [mOptionInternalName string] . "' has been already declared" ;
+  end if ;
+  ioOptionNameSet += ![mOptionInternalName string] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

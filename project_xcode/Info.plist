@@ -26,28 +26,6 @@
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
 		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>ggs_option</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS option Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
-		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>cocoaGalgas</string>

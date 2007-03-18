@@ -234,7 +234,6 @@
 		CFE9BAC30A3C303800C9F7EC /* class_sample_language_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAB60A3C303800C9F7EC /* class_sample_language_semantics.h */; };
 		CFE9BAC40A3C303800C9F7EC /* class_sample_language_syntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAB70A3C303800C9F7EC /* class_sample_language_syntax.cpp */; };
 		CFE9BAC50A3C303800C9F7EC /* class_sample_language_syntax.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAB80A3C303800C9F7EC /* class_sample_language_syntax.h */; };
-		CFE9BAC60A3C303800C9F7EC /* grammar_class_sample_language_program.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAB90A3C303800C9F7EC /* grammar_class_sample_language_program.h */; };
 		CFE9BAC70A3C303800C9F7EC /* class_sample_language_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAAD0A3C303800C9F7EC /* class_sample_language_grammar.cpp */; };
 		CFE9BAC80A3C303800C9F7EC /* class_sample_language_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAAE0A3C303800C9F7EC /* class_sample_language_grammar.h */; };
 		CFE9BAC90A3C303800C9F7EC /* class_sample_language_lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAAF0A3C303800C9F7EC /* class_sample_language_lexique.cpp */; };
@@ -247,7 +246,6 @@
 		CFE9BAD00A3C303800C9F7EC /* class_sample_language_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAB60A3C303800C9F7EC /* class_sample_language_semantics.h */; };
 		CFE9BAD10A3C303800C9F7EC /* class_sample_language_syntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAB70A3C303800C9F7EC /* class_sample_language_syntax.cpp */; };
 		CFE9BAD20A3C303800C9F7EC /* class_sample_language_syntax.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAB80A3C303800C9F7EC /* class_sample_language_syntax.h */; };
-		CFE9BAD30A3C303800C9F7EC /* grammar_class_sample_language_program.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAB90A3C303800C9F7EC /* grammar_class_sample_language_program.h */; };
 		CFE9BAD70A3C392600C9F7EC /* class_sample_language_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAD60A3C392600C9F7EC /* class_sample_language_computations.cpp */; };
 		CFE9BAD80A3C392600C9F7EC /* class_sample_language_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAD60A3C392600C9F7EC /* class_sample_language_computations.cpp */; };
 		CFF4A02F0B1DD57E0017F7E7 /* GGS_double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF4A01F0B1DD57E0017F7E7 /* GGS_double.cpp */; };
@@ -406,7 +404,7 @@
 		CFA5D1620A32F661009B4370 /* C_ErrorOut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_ErrorOut.h; sourceTree = "<group>"; };
 		CFA61CD4061091C90089CEA5 /* AC_galgas_map.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_map.cpp; sourceTree = "<group>"; };
 		CFA61CD4061091C90089CEB5 /* AC_galgas_list.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_list.cpp; sourceTree = "<group>"; };
-		CFA61CF6061095160089CEA5 /* class_sample_language */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = class_sample_language; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA61CF6061095160089CEA5 /* class_sample_language */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = class_sample_language; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA61CF8061095160089CEA5 /* class_sample_languageDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = class_sample_languageDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBC75C70AC6785A00443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
 		CFBC76060AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = "<group>"; };
@@ -444,7 +442,6 @@
 		CFE9BAB60A3C303800C9F7EC /* class_sample_language_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = class_sample_language_semantics.h; sourceTree = "<group>"; };
 		CFE9BAB70A3C303800C9F7EC /* class_sample_language_syntax.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = class_sample_language_syntax.cpp; sourceTree = "<group>"; };
 		CFE9BAB80A3C303800C9F7EC /* class_sample_language_syntax.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = class_sample_language_syntax.h; sourceTree = "<group>"; };
-		CFE9BAB90A3C303800C9F7EC /* grammar_class_sample_language_program.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_class_sample_language_program.h; sourceTree = "<group>"; };
 		CFE9BAD60A3C392600C9F7EC /* class_sample_language_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = class_sample_language_computations.cpp; sourceTree = "<group>"; };
 		CFF4A01F0B1DD57E0017F7E7 /* GGS_double.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_double.cpp; sourceTree = "<group>"; };
 		CFF4A0200B1DD57E0017F7E7 /* GGS_double.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_double.h; sourceTree = "<group>"; };
@@ -637,7 +634,6 @@
 				CFE9BAB60A3C303800C9F7EC /* class_sample_language_semantics.h */,
 				CFE9BAB70A3C303800C9F7EC /* class_sample_language_syntax.cpp */,
 				CFE9BAB80A3C303800C9F7EC /* class_sample_language_syntax.h */,
-				CFE9BAB90A3C303800C9F7EC /* grammar_class_sample_language_program.h */,
 			);
 			name = "Sources Files";
 			sourceTree = "<group>";
@@ -887,7 +883,6 @@
 				CFE9BAC30A3C303800C9F7EC /* class_sample_language_semantics.h in Headers */,
 				CFE9BAC50A3C303800C9F7EC /* class_sample_language_syntax.h in Headers */,
 				CF825DF20853878C0077AEAF /* F_GetPrime.h in Headers */,
-				CFE9BAC60A3C303800C9F7EC /* grammar_class_sample_language_program.h in Headers */,
 				CF96D6F80B1DA7840067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFF4A0300B1DD57E0017F7E7 /* GGS_double.h in Headers */,
 				CFF4A0320B1DD57E0017F7E7 /* GGS_ldouble.h in Headers */,
@@ -956,7 +951,6 @@
 				CFE9BACE0A3C303800C9F7EC /* class_sample_language_program.h in Headers */,
 				CFE9BAD00A3C303800C9F7EC /* class_sample_language_semantics.h in Headers */,
 				CFE9BAD20A3C303800C9F7EC /* class_sample_language_syntax.h in Headers */,
-				CFE9BAD30A3C303800C9F7EC /* grammar_class_sample_language_program.h in Headers */,
 				CF96D6FA0B1DA7840067E271 /* AC_galgas_sortedlist.h in Headers */,
 				CFF4A0400B1DD57E0017F7E7 /* GGS_double.h in Headers */,
 				CFF4A0420B1DD57E0017F7E7 /* GGS_ldouble.h in Headers */,

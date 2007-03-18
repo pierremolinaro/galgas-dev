@@ -627,16 +627,6 @@ map @M_accessors_map {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   L I S T    O F    S T R I N G S                                         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @L_stringList {
-  @string mErrorMessageElement ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   G A L G A S    J O K E R    T Y P E                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -812,6 +802,26 @@ class @typeGalgas_string extends @AC_galgasType {
     else
       error inModifierName : "this modifier is not defined"
        -> outModifierSignature ;
+    end if ;
+  end method ;
+
+#--- By default, class does not accept class method call
+  override
+  method handleClassMethodCall
+    ??@lstring inTypeMethodName
+    !@L_EXsignature outTypeMethodSignature
+  :
+    if [inTypeMethodName string] == "generateFile" then
+      outTypeMethodSignature := [@L_EXsignature emptyList] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inTypeMethodName : "This type method is not defined" -> outTypeMethodSignature ;
     end if ;
   end method ;
 
@@ -2661,11 +2671,13 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
 
 class @typeGalgas_singleReferenceEntity extends @AC_galgasType {
   @lstring mEntityTypeName ;
+
 #--- Get type name
   override
   method getTypeName !@string outTypeName :
     outTypeName := "$$" ;
   end method ;
+
 #--- Error message
   message messageGalgasType "an entity single reference" ;
 }

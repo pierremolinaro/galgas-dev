@@ -954,12 +954,16 @@ rule <syntax_declaration>
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
   if [mdaResultVariableName string] != "" then
-    [inAllMetamodelClassMap searchKey ! returnedEntity ?8*] ;
-    @AC_galgasType definitionType := [@typeGalgas_singleReferenceEntity new !returnedEntity] ;
-    @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ! mdaResultVariableName] ;
+    [inAllMetamodelClassMap searchKey
+      !returnedEntity
+      ?8*
+    ] ;
+    @AC_galgasType definitionType := [@typeGalgas_singleReferenceEntity new
+      !returnedEntity
+    ] ;
+    @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !mdaResultVariableName] ;
     [!?tableArgumentsMethode insertSingleEntityLocalVariable !mdaResultVariableName !definitionType !nomCppVariable] ;
-    @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
-    listeInstructions += !instruction ;
+    listeInstructions += ![@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
   elsif [returnedEntity string] != "" then
     [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?7*] ;
     foreach allPropertiesMap (@lstring kKey @AC_galgasType kPropertyType) :

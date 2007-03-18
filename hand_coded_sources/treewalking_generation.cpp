@@ -186,17 +186,12 @@ generate_treewalking_header (C_Compiler & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
-                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inTreewalkingComponentName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
+                          generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -206,7 +201,6 @@ generate_treewalking_implementation (C_Compiler & inLexique,
         const GGS_lstring & inTreewalkingComponentName,
         const GGS_treewalkingRoutineToGenerateList & inTreewalkingRoutineToGenerateList,
         const GGS_routineDispatcherSortedList & inRoutineDispatcherSortedList,
-        const GGS_entityToImplementMap & inMetamodelEntityMap,
         const GGS_typeListeTypesEtNomsArgMethode & inRootRoutineSignature,
         const GGS_lstring & inRootEntity) {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
@@ -418,17 +412,12 @@ generate_treewalking_implementation (C_Compiler & inLexique,
 
 //--- Generate file
   generatedZone3.writeCppHyphenLineComment () ;
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
-                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inTreewalkingComponentName + ".cpp",
                           "\n\n//#define TRACE_TREE_WALKING\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
+                          generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -439,7 +428,6 @@ routine_generate_treewalking (C_Compiler & inLexique,
                               const GGS_stringset & inFilesToImportInHeaderSet,
                               const GGS_treewalkingRoutineToGenerateList & inTreewalkingRoutineToGenerateList,
                               const GGS_routineDispatcherSortedList & inRoutineDispatcherSortedList,
-                              const GGS_entityToImplementMap & inMetamodelEntityMap,
                               const GGS_typeListeTypesEtNomsArgMethode & inRootRoutineSignature,
                               const GGS_lstring & inRootEntity
                               COMMA_UNUSED_LOCATION_ARGS) {
@@ -453,7 +441,6 @@ routine_generate_treewalking (C_Compiler & inLexique,
                                  inTreewalkingComponentName,
                                  inTreewalkingRoutineToGenerateList,
                                  inRoutineDispatcherSortedList,
-                                 inMetamodelEntityMap,
                                  inRootRoutineSignature,
                                  inRootEntity) ;
   }

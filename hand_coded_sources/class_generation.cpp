@@ -350,17 +350,12 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   generatedZone3.writeCppHyphenLineComment () ;
  
 //--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
-                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           C_String ("include_") + aNomClasse + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
+                          generatedZone3) ;
 
   inHfile.writeCppHyphenLineComment () ;
   inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
