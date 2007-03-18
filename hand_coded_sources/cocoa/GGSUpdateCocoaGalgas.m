@@ -322,7 +322,6 @@
 - (IBAction) checkForNewVersion: (id) inSender {
   mSearchForUpdatesInBackground = inSender == nil ;
   [mCheckNowButton setEnabled:NO] ;
-//  [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastCheckDate"] ;
   [[PMDownloadData alloc]
     initWithURLString:[self lastReleaseHTTPPath]
     delegate:self

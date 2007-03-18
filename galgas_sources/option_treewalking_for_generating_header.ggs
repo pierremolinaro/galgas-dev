@@ -1,0 +1,26 @@
+treewalking option_treewalking_for_generating_header (option_metamodel) :
+import "option_metamodel.ggs" ;
+
+rule @optionComponentRoot
+  ??@string inStartDirectory
+  ??@string inOptionComponentName
+:
+  @string generatedUserZone2 := "a\n" ;
+  @string generatedUserZone3 := "b\n" ;
+  call mOptions ;
+  [@string generateFile
+    !inStartDirectory
+    !inOptionComponentName . ".h"
+    !"//"
+    !"\n\n" # Defaut user zone1
+    !generatedUserZone2
+    !"\n\n" # Defaut user zone2
+    !generatedUserZone3
+  ] ;
+end rule ;
+
+rule @commandLineOption :
+
+end rule ;
+
+end treewalking ;

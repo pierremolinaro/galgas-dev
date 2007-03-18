@@ -56,7 +56,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << " {\n"
 //--- Attributes
              "//--- Attributes\n" ;
-  GGS_typeListeAttributsSemantiques::element_type * attributCourant = aListeTousAttributsNonExternes.firstObject () ;
+  GGS_typeListeAttributsSemantiques::element_type * attributCourant = aListeAttributsCourants.firstObject () ;
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
     attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
@@ -493,13 +493,29 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "COMMA_LOCATION_ARGS" ;
   }
   inCppFile << ") :\n" ;
+  const sint32 inheritedAttributeCount = aListeTousAttributsNonExternes.count ()
+                                       - aListeAttributsCourants.count () ;
   if (mSuperClassName.length () == 0) {
     inCppFile << "C_GGS_MetamodelEntity (THERE)" ;
   }else{
-    inCppFile << "cPtr_" << mSuperClassName << " (THERE)" ;
+    inCppFile << "cPtr_" << mSuperClassName << " (" ;
+    current = aListeTousAttributsNonExternes.firstObject () ;
+    for (sint32 i=0 ; i<inheritedAttributeCount ; i++) {
+      macroValidPointer (current) ;
+      if (i != 0) {
+        inCppFile << ", " ;
+      }
+      inCppFile << "argument_" << i ;
+      current = current->nextObject () ;
+    }
+    if (inheritedAttributeCount == 0) {
+      inCppFile << "THERE)" ;
+    }else{
+      inCppFile << " COMMA_THERE)" ;
+    }
   }
-  current = aListeTousAttributsNonExternes.firstObject () ;
-  numeroVariable = 0 ;
+  current = aListeAttributsCourants.firstObject () ;
+  numeroVariable = inheritedAttributeCount ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << ",\n"
@@ -1346,17 +1362,12 @@ generate_metamodel_header_file (C_Compiler & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
-                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inMetamodelComponentName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
+                          generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1411,17 +1422,12 @@ generate_metamodel_cpp_file (C_Compiler & inLexique,
   }
   
 //--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
-                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inMetamodelComponentName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
+                          generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*

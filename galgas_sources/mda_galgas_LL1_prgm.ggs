@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
+program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import semantics semantics_semantics in "semantics_semantics.ggs" ;
   import metamodel option_metamodel in "option_metamodel.ggs" ;
   import treewalking option_treewalking_for_generating_header in "option_treewalking_for_generating_header.ggs" ;
@@ -48,6 +48,21 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
       !?metamodelComponentMap
       !?treewalkingComponentMap
     ;
+  }
+
+  when . "ggs_option"
+  message "a GALGAS option source file"
+  ??@lstring inSourceFile {
+    fixFileGenerationStartDirectory !inSourceFile ;
+    @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+    startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+    @optionComponentRoot optionComponentRoot ;
+    grammar option_LL1_grammar in inSourceFile -> optionComponentRoot ;
+    treewalking option_treewalking_for_generating_header
+      on optionComponentRoot
+     !startDirectory
+     ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
+   ;
   }
 
 end program ;

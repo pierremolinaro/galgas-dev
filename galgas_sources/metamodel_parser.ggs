@@ -387,7 +387,9 @@ rule <entity_declaration>
       $identifier$ ? attributeName ;
       @AC_galgasType propertyType ;
       if [inMetamodelClassSet hasKey ![propertyOrEntityTypeName string]] then
-        propertyType := [@typeGalgas_singleReferenceEntity new !propertyOrEntityTypeName] ;
+        propertyType := [@typeGalgas_singleReferenceEntity new
+           !propertyOrEntityTypeName
+        ] ;
         [!?currentEntityPropertyMap insertKey !attributeName !propertyType] ; 
         [!?allMetamodelPropertyMap insertKey !attributeName !propertyType] ;
       else #--- Attribute

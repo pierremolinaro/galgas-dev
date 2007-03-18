@@ -949,7 +949,10 @@ rule <import_headers_semantics_and_grammars>
             !kMetamodelName
             !kID
           ] ;
-          @AC_semanticsEntity e := [@typeEntiteType new ![@typeGalgas_singleReferenceEntity new !kMetamodelClassName]] ;
+          @AC_galgasType t := [@typeGalgas_singleReferenceEntity new
+            !kMetamodelClassName
+          ] ;
+          @AC_semanticsEntity e := [@typeEntiteType new !t] ;
           [!?ioComponentSemanticsEntitiesMap insertKey
             !kMetamodelClassName
             !e
@@ -3688,7 +3691,7 @@ rule <semantic_instruction>
   ;
 #--- Check variable type
   @lstring variableEntity ;
-  extract modelVariableType ->@typeGalgas_singleReferenceEntity (? variableEntity) error modelVariableName : messageGalgasType ;
+  extract modelVariableType ->@typeGalgas_singleReferenceEntity (?variableEntity) error modelVariableName : messageGalgasType ;
   if [variableEntity string] != rootEntityName then
     error modelVariableName: "the '" . [modelVariableName string]
     . "' variable is an instance of '@" . [variableEntity string]

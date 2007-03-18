@@ -1413,7 +1413,6 @@ action generate_treewalking
   ??@stringset inFilesToImportInHeaderSet
   ??@treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList
   ??@routineDispatcherSortedList inRoutineDispatcherSortedList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@typeListeTypesEtNomsArgMethode inFormalArgumentList
   ??@lstring inRootEntity
 ;

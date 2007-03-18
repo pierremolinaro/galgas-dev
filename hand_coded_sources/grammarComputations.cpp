@@ -268,17 +268,12 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
-                                                                   COMMA_HERE) ;
   inLexique.generateFile ("//",
                           inTargetFileName + ".h",
                           "\n\n", // User Zone 1
                           generatedZone2,
                           "\n\n", // User Zone 2
-                          generatedZone3,
-                          verboseOptionOn,
-                          false) ;
+                          generatedZone3) ;
 }
 
 //---------------------------------------------------------------------------*
