@@ -161,7 +161,7 @@ newState (cDecoderTargetState & ioSourceState) {
   cDecoderState * result = NULL ;
   macroMyNew (result, cDecoderState) ;
   result->mDefaultResponse = ioSourceState.mNextState ;
-  result->mDefaultTerminal = ioSourceState.mTerminal ; ;
+  result->mDefaultTerminal = ioSourceState.mTerminal ;
   addObjectUsingSwap (result) ;
   ioSourceState.mNextState = count () - 1 ;
 }

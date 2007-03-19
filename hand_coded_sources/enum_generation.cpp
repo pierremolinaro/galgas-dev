@@ -68,7 +68,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Bit count for bdd\n"
              "  public : static inline uint16 bitCount (void) { return " << bitCount << " ; }\n\n"
              "//--- Is built ?\n"
-             "  public : inline bool _isBuilt (void) const { return mValue > kNotBuilt ; }\n\n"
+             "  public : bool _isBuilt (void) const ;\n\n"
              "//--- Construction from GALGAS constructor\n" ;
   cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
@@ -125,6 +125,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const bool /* inGenerateDebug */) const {
   inCppFile.writeCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
   
+  inCppFile << "bool GGS_" << mEnumTypeName
+            << "::\n"
+               "_isBuilt (void) const {\n"
+               "  return mValue > kNotBuilt ;\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "operator == (const GGS_" << mEnumTypeName << " inOperand) const {\n"
