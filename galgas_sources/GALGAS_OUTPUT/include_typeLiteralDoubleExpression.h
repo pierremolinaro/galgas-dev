@@ -22,7 +22,7 @@ class cPtr_typeLiteralDoubleExpression : public cPtr_typeExpression {
 //--- START OF USER ZONE 2
 
   public : virtual void
-  generateExpression (AC_OutputStream & inCppFile) ;
+  generateExpression (AC_OutputStream & inCppFile) const ;
 
   public : virtual bool
   isLexiqueFormalArgumentUsedForTest (void) const  ;

@@ -17,6 +17,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#--- Semantics
+compile "option_semantics.ggs" ;
 #--- Metamodels
 compile "option_metamodel.ggs" ;
 #--- Parsers as model builders
@@ -24,6 +26,7 @@ compile "option_model_builder.ggs" ;
 #--- LL1 Grammars
 compile "option_LL1_grammar.ggs" ;
 #--- tree walkings
+compile "option_treewalking_for_building_map.ggs" ;
 compile "option_treewalking_for_generating_header.ggs" ;
 #--- Program
 compile "mda_galgas_LL1_prgm.ggs" ; # Only for PPC GALGAS (temporary)

@@ -21,7 +21,7 @@ class cPtr_typeAndOperation : public cPtr_typeExpression {
   private : typedef cPtr_typeExpression inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual void generateExpression (AC_OutputStream & inCppFile) ;
+public : virtual void generateExpression (AC_OutputStream & inCppFile) const ;
 
 public : virtual bool isLexiqueFormalArgumentUsedForTest (void) const  ;
 
