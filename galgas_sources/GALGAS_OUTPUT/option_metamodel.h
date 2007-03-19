@@ -78,7 +78,7 @@ class GGS_optionComponentRoot {
   public : GGS_bool operator != (const GGS_optionComponentRoot & inOperand) const ;
 
 //--- _isBuilt
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 
 //--- isEqualTo
   public : inline bool isEqualTo (const GGS_optionComponentRoot & _inOperand) const {
@@ -222,7 +222,7 @@ class GGS_commandLineOption {
   public : GGS_bool operator != (const GGS_commandLineOption & inOperand) const ;
 
 //--- _isBuilt
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 
 //--- isEqualTo
   public : inline bool isEqualTo (const GGS_commandLineOption & _inOperand) const {

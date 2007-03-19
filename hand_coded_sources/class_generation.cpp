@@ -192,7 +192,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (superClassName.length () == 0) {
 //--- Engendrer la declaration de la methode '_isBuilt'
     inHfile << "//--- _isBuilt\n"
-               "  public : bool _isBuilt (void) const ;\n"
+               "  public : bool _isBuilt (LOCATION_ARGS) const ;\n"
 
 //--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
                "//--- isEqualTo\n"
@@ -676,7 +676,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "}\n\n" ; 
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "bool GGS_" << aNomClasse << "::\n"
-                 "_isBuilt (void) const {\n"
+                 "_isBuilt (LOCATION_ARGS) const {\n"
                  "   return mPointer != NULL ;\n"
                  "}\n\n" ; 
   }
@@ -685,21 +685,23 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
                "operator == (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "  const bool built = _isBuilt (HERE) && inOperand._isBuilt (HERE) ;\n"
                "  bool equal = mPointer == inOperand.mPointer ;\n"
-               "  if (_isBuilt () && inOperand._isBuilt () && ! equal) {\n"
+               "  if (built && ! equal) {\n"
                "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
                "  }\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), equal) ;\n"
+               "  return GGS_bool (built, equal) ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
                "operator != (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "  const bool built = _isBuilt (HERE) && inOperand._isBuilt (HERE) ;\n"
                "  bool equal = mPointer == inOperand.mPointer ;\n"
-               "  if (_isBuilt () && inOperand._isBuilt () && ! equal) {\n"
+               "  if (built && ! equal) {\n"
                "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
                "  }\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! equal) ;\n"
+               "  return GGS_bool (built, ! equal) ;\n"
                "}\n\n" ;
 
 //--- Generate 'description' reader implementation
@@ -710,7 +712,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<class @" << aNomClasse << "\" ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (_isBuilt (THERE)) {\n"
                "    mPointer->appendForDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"

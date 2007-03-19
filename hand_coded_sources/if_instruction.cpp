@@ -28,8 +28,8 @@
 void cPtr_typeUnaryMinusOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._unary_minus_operation (_inLexique SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
+  ioCppFile << "._unary_minus_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.lineNumber ()
               << "))" ;
 }
 
@@ -974,8 +974,8 @@ void cPtr_typeAddOperation::generateExpression (AC_OutputStream & ioCppFile) con
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._add_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.lineNumber ()
               << "))" ;
 }
 
@@ -1015,8 +1015,8 @@ void cPtr_typeSubOperation::generateExpression (AC_OutputStream & ioCppFile) con
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._substract_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.lineNumber ()
               << "))" ;
 }
 
@@ -1056,8 +1056,8 @@ void cPtr_typeMultiplyOperation::generateExpression (AC_OutputStream & ioCppFile
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._multiply_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.lineNumber ()
               << "))" ;
 }
 
@@ -1097,8 +1097,8 @@ void cPtr_typeDivideOperation::generateExpression (AC_OutputStream & ioCppFile) 
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._divide_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.lineNumber ()
               << "))" ;
 }
 
@@ -1138,8 +1138,8 @@ void cPtr_typeModuloOperation::generateExpression (AC_OutputStream & ioCppFile) 
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._modulo_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE ("
-            << mInstructionLocation.currentLineNumber ()
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.lineNumber ()
             << "))" ;
 }
 
@@ -1180,8 +1180,8 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._left_shift_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE ("
-            << mInstructionLocation.currentLineNumber ()
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.lineNumber ()
             << "))" ;
 }
 
@@ -1222,8 +1222,8 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._right_shift_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE ("
-            << mInstructionLocation.currentLineNumber ()
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.lineNumber ()
             << "))" ;
 }
 
@@ -1272,8 +1272,8 @@ generateExpression (AC_OutputStream & ioCppFile) const {
     e->mExpression (HERE)->generateExpression (ioCppFile) ;
     e = e->nextObject () ;
   }
-  ioCppFile << " SOURCE_FILE_AT_LINE ("
-            << mInstructionLocation.currentLineNumber ()
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.lineNumber ()
             << "))" ;
 }
 
@@ -1322,8 +1322,8 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeDescriptionInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".reader_description (_inLexique SOURCE_FILE_AT_LINE ("
-            << mInstructionLocation.currentLineNumber ()
+  ioCppFile << ".reader_description (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
+            << mInstructionLocation.lineNumber ()
             << "))" ;
 }
 
@@ -1468,8 +1468,8 @@ void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mOptionName.currentLineNumber ()
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mOptionName.lineNumber ()
               << ")))" ;
 }
 
@@ -1508,8 +1508,8 @@ void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mOptionName.currentLineNumber ()
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mOptionName.lineNumber ()
               << ")))" ;
 }
 
@@ -1548,8 +1548,8 @@ void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) con
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
   ioCppFile.writeCstringConstant (mOptionName) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mOptionName.currentLineNumber ()
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mOptionName.lineNumber ()
               << ")))" ;
 }
 

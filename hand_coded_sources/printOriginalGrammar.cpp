@@ -156,7 +156,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                  << "'" ;
       inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile << "line "
-                 << currentRule->mLeftNonterminalSymbol.currentLineNumber () ;
+                 << currentRule->mLeftNonterminalSymbol.lineNumber () ;
       inHTMLfile.outputRawData ("</td><td><code>") ;
       printInstructionsListForGrammar (currentRule->mInstructionList,
                                        inHTMLfile) ;

@@ -214,7 +214,7 @@ rule <galgas_component>
     [!?variablesMap insertConstInArgument
       !argumentName
       ![@typeGalgas_lstring new]
-      ![@typeAutomaticName new !argumentName]
+      ![@typeAutomaticName new ![argumentName location] ![argumentName string]]
     ] ;
   #--- Instruction list
     ${$ ;

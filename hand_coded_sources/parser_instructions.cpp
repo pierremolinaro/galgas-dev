@@ -649,7 +649,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   GGS_typeListeBranchesInstructions::element_type * p = mBranchList.firstObject () ;
-  const sint32 v = mInstructionLocation.currentLocation () ; // For making 'context_xxx' variable unique
+  const sint32 v = mInstructionLocation.location () ; // For making 'context_xxx' variable unique
   const sint32 prototypeIndex = ioPrototypeIndex ;
 //--- First branch
   inCppFile << "//--- First branch of parse/rewind instruction\n"

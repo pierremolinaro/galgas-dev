@@ -961,7 +961,7 @@ rule <syntax_declaration>
     @AC_galgasType definitionType := [@typeGalgas_singleReferenceEntity new
       !returnedEntity
     ] ;
-    @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !mdaResultVariableName] ;
+    @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![mdaResultVariableName location] ![mdaResultVariableName string]] ;
     [!?tableArgumentsMethode insertSingleEntityLocalVariable !mdaResultVariableName !definitionType !nomCppVariable] ;
     listeInstructions += ![@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
   elsif [returnedEntity string] != "" then
@@ -970,13 +970,13 @@ rule <syntax_declaration>
       extract kPropertyType :
       when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName) ->
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
-        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertSingleEntityLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kPropertyType] ;
         listeInstructions += !instruction ;
       when @typeGalgas_multipleReferenceEntity (@lstring kReferenceEntityName 2*) ->
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
-        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeExpression sourceExpression := [@typeConstructorExpression new
           ![kReferenceEntityName string]. "List"
@@ -991,7 +991,7 @@ rule <syntax_declaration>
         listeInstructions += !instruction ;
       else
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
-        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertEntityAttributeLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kPropertyType] ;
         listeInstructions += !instruction ;

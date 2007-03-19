@@ -404,7 +404,7 @@ rule <treewalking_routine>
     when @typeGalgas_singleReferenceEntity (*) ->
     when @typeGalgas_multipleReferenceEntity (3*) ->
     else
-      @typeCplusPlusName cppName := [@typeCurrentObjectName new !kKey] ;
+      @typeCplusPlusName cppName := [@typeCurrentObjectName new ![kKey location] ![kKey string]] ;
       [!?localVariableMap insertUsedConstInArgument !kKey !kType !cppName] ;
     end extract ;
   end foreach ;

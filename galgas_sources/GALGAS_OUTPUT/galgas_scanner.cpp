@@ -27,7 +27,7 @@
 #include "galgas_scanner.h"
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), currentLineNumber ()
+  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
 #else
   #define LINE_AND_SOURCE_FILE
@@ -1496,7 +1496,7 @@ parseLexicalToken (void) {
     _token.charValue = '\0' ;
     _token.tokenString.clear () ;
     _token.floatValue = 0.0 ;
-    mCurrentTokenStartLocation = currentLocation () ;
+    mCurrentTokenStartLocation = location () ;
     try{
       if (testForInputChar ('a', 'z') ||
           testForInputChar ('A', 'Z')) {
@@ -1915,7 +1915,7 @@ parseLexicalTokenForLexicalColoring (void) {
     _token.charValue = '\0' ;
     _token.tokenString.clear () ;
     _token.floatValue = 0.0 ;
-    mCurrentTokenStartLocation = currentLocation () ;
+    mCurrentTokenStartLocation = location () ;
     try{
       if (testForInputChar ('a', 'z') ||
           testForInputChar ('A', 'Z')) {

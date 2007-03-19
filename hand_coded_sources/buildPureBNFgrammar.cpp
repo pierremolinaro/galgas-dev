@@ -191,8 +191,8 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
     }
     cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mStartLocation.currentLineNumber () ;
-    p.aColonneDefinition = mStartLocation.currentColumnNumber () ;
+    p.aLigneDefinition = mStartLocation.lineNumber () ;
+    p.aColonneDefinition = mStartLocation.columnNumber () ;
     p.aNumeroNonTerminalGauche = ((sint32) mAddedNonterminalmSymbolIndex.mValue) + inTerminalSymbolsCount ;
     swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
@@ -237,8 +237,8 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
 //--- Insert empty production <T>=.
   { cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mStartLocation.currentLineNumber () ;
-    p.aColonneDefinition = mStartLocation.currentColumnNumber () ;
+    p.aLigneDefinition = mStartLocation.lineNumber () ;
+    p.aColonneDefinition = mStartLocation.columnNumber () ;
     p.aNumeroNonTerminalGauche = ((sint32) mAddedNonterminalmSymbolIndex.mValue) + inTerminalSymbolsCount ;
     ioProductions.insertByExchange (p) ;
   }
@@ -266,8 +266,8 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
     derivation.addObject ((sint16) (mAddedNonterminalmSymbolIndex.mValue + inTerminalSymbolsCount)) ;
     cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mStartLocation.currentLineNumber () ;
-    p.aColonneDefinition = mStartLocation.currentColumnNumber () ;
+    p.aLigneDefinition = mStartLocation.lineNumber () ;
+    p.aColonneDefinition = mStartLocation.columnNumber () ;
     p.aNumeroNonTerminalGauche = ((sint32) mAddedNonterminalmSymbolIndex.mValue) + inTerminalSymbolsCount ;
     swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
@@ -353,8 +353,8 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
       }
       cProduction p ;
       p.mSourceFileName = currentComponent->mSyntaxComponentName ;
-      p.aLigneDefinition = currentRule->mLeftNonterminalSymbol.currentLineNumber () ;
-      p.aColonneDefinition = currentRule->mLeftNonterminalSymbol.currentColumnNumber () ;
+      p.aLigneDefinition = currentRule->mLeftNonterminalSymbol.lineNumber () ;
+      p.aColonneDefinition = currentRule->mLeftNonterminalSymbol.columnNumber () ;
       p.aNumeroNonTerminalGauche = terminalSymbolsCount
                                  + (sint32) currentRule->mLeftNonterminalSymbolIndex.mValue ;
       swap (p.aDerivation, derivation) ;

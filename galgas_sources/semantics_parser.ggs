@@ -1697,12 +1697,12 @@ rule <parse_method>
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
   foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType) :
-    @typeCplusPlusName nomCpp := [@typeDirectName new !kKey] ;
+    @typeCplusPlusName nomCpp := [@typeDirectName new ![kKey location] ![kKey string]] ;
     [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
   end foreach ;
 #--- Insert the predefined "self" variable
   @lstring me_Constant := [@lstring new !"self" !here] ;
-  @typeCplusPlusName me_constantCppName := [@typeCppThisName new] ;
+  @typeCplusPlusName me_constantCppName := [@typeCppThisName new !here] ;
   @AC_galgasType typeDefinition := [@typeGalgasClassType new 
            !inCurrentClassName
            !tableDesMethodes
@@ -1714,7 +1714,7 @@ rule <parse_method>
   [!?methodLocalVariablesMap insertUsedConstInArgument !me_Constant !typeDefinition !me_constantCppName] ;
 #--- Insert the predefined "super" variable
   @lstring super_Constant := [@lstring new !"super" !here] ;
-  @typeCplusPlusName super_constantCppName := [@typeCppInheritedName new] ;
+  @typeCplusPlusName super_constantCppName := [@typeCppInheritedName new !here] ;
   typeDefinition := [@typeGalgasClassType new 
            !inCurrentClassName
            !inAncestorClassMethodsMap
@@ -1915,12 +1915,12 @@ rule <formal_arguments_list>
     select
       $unused$ ;
       $identifier$ ? nomArgument ;
-      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
       listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
       [!?tableArgumentsMethode insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
     or
       $identifier$ ? nomArgument ;
-      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
       listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
       [!?tableArgumentsMethode insertConstInArgument !nomArgument !type_semantique !natureNom] ;
     end select ;
@@ -1941,13 +1941,13 @@ rule <formal_arguments_list>
       $unused$ ;
       @lstring nomArgument ;
       $identifier$ ? nomArgument ;
-      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
       listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !true ;
       [!?tableArgumentsMethode insertUnusedInArgument !nomArgument !type_semantique !natureNom] ;
     or
       @lstring nomArgument ;
       $identifier$ ? nomArgument ;
-      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
       listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !true ;
       [!?tableArgumentsMethode insertInArgument !nomArgument !type_semantique !natureNom] ;
     end select ;
@@ -1968,12 +1968,12 @@ rule <formal_arguments_list>
     select
       $unused$ ;
       $identifier$ ? nomArgument ;
-      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
       listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !false ;
       [!?tableArgumentsMethode insertUnusedInOutArgument !nomArgument !type_semantique !natureNom] ;
     or
       $identifier$ ? nomArgument ;
-      @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+      @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
       listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !false ;
       [!?tableArgumentsMethode insertInOutArgument !nomArgument !type_semantique !natureNom] ;
     end select ;
@@ -1992,7 +1992,7 @@ rule <formal_arguments_list>
     outSignatureForGrammar += !passingMode !galgasTypeName ;
     @lstring nomArgument ;
     $identifier$ ? nomArgument ;
-    @typeCplusPlusName natureNom := [@typeAutomaticName new !nomArgument] ;
+    @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
     @bool modeIn := false ;
     listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
     [!?tableArgumentsMethode insertOutArgument !nomArgument !type_semantique !natureNom] ;
@@ -2221,7 +2221,7 @@ rule <input_parameters_list>
     end foreach ;
   end if ;
 #--- Append Joker if needed
-  @typeCplusPlusName nullName := [@typeNullName new] ;
+  @typeCplusPlusName nullName := [@typeNullName new !here] ;
   appendJokersIfNeeded
    !?outAllVariablesList
    ![listeCibles length]
@@ -2871,7 +2871,7 @@ rule <semantic_instruction>
 #--- Variable name
   @lstring nomVariable ;
   $identifier$ ? nomVariable ;
-  @typeCplusPlusName nomCppVariable := [@typeAutomaticName new !nomVariable] ;
+  @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ![nomVariable string]] ;
   [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
 #--- Assignment ?
   <optional_assignment>

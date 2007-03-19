@@ -369,7 +369,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                "while (_token._mTokenCode < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
-  inCppFile << "mCurrentTokenStartLocation = currentLocation () ;\n"
+  inCppFile << "mCurrentTokenStartLocation = location () ;\n"
               "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
@@ -421,7 +421,7 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
                "while (_token._mTokenCode < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
-  inCppFile << "mCurrentTokenStartLocation = currentLocation () ;\n"
+  inCppFile << "mCurrentTokenStartLocation = location () ;\n"
               "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
@@ -1233,7 +1233,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"" << inLexiqueName << ".h\"\n\n"
                     "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), currentLineNumber ()\n"
+                    "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), lineNumber ()\n"
                     "  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE\n"
                     "#else\n"
                     "  #define LINE_AND_SOURCE_FILE\n"

@@ -170,8 +170,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << " (HERE)->message_" << aNomMessage << " () ;\n" 
                  "      " ;
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".signalExtractError (_inLexique, message1_, message2_ SOURCE_FILE_AT_LINE ("
-              << aNomMessage.currentLineNumber () << ")) ;\n"
+    ioCppFile << ".signalExtractError (_inLexique, message1_, message2_ COMMA_SOURCE_FILE_AT_LINE ("
+              << aNomMessage.lineNumber () << ")) ;\n"
                  "    }\n"
                  "  }else{\n" ;
     ioCppFile.incIndentation (4) ;
@@ -245,7 +245,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     ioCppFile << "if (" ;
     mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._isBuilt ()) {\n" ;
+    ioCppFile << "._isBuilt (SOURCE_FILE_AT_LINE (" << mVariableName (HERE)->mVariableLocation.lineNumber () << "))) {\n" ;
     ioCppFile.incIndentation (+2) ;
     bool first = true ;
     sint32 branchCount = 0 ;
@@ -259,13 +259,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
         ioCppFile.incIndentation (+2) ;
       }
       ioCppFile << "cPtr_" << p->mClassName << " * operand_"
-                << p->mResultVarID.currentLocation ()
+                << p->mResultVarID.location ()
                 << " = dynamic_cast <cPtr_" << p->mClassName << " *> (" ;
       mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << ".getPtr ()) ;\n"
-                   "if (operand_" << p->mResultVarID.currentLocation () << " != NULL) {\n"
+                   "if (operand_" << p->mResultVarID.location () << " != NULL) {\n"
                    "  macroValidPointer (operand_"
-                << p->mResultVarID.currentLocation ()
+                << p->mResultVarID.location ()
                 << ") ; \n" ;
       generateInstructionListForList (p->mInstructionList, ioCppFile,
                                       inTargetFileName, ioPrototypeIndex,
@@ -394,8 +394,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
               << mGalgasVariableName << ": \") + " ;
     mLoggedVariable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile  << ".reader_description (_inLexique COMMA_HERE) + \"\\n\""
-                 " SOURCE_FILE_AT_LINE ("
-              << mGalgasVariableName.currentLineNumber ()
+                 " COMMA_SOURCE_FILE_AT_LINE ("
+              << mGalgasVariableName.lineNumber ()
               << ")) ;\n" ;
   }
 }
@@ -441,8 +441,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, " ;
     mErrorMessageExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mLocation.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mLocation.lineNumber ()
               << ")) ;\n" ;
     GGS_varToDropList::element_type * currentVarToDrop = mVarToDropList.firstObject () ;
     while (currentVarToDrop != NULL) {
@@ -511,8 +511,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mWarningLocationExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticWarning (_inLexique, " ;
     mWarningMessageExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mLocation.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mLocation.lineNumber ()
               << ")) ;\n" ;
   }
 }
@@ -559,8 +559,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     ioCppFile << "_inLexique.printMessage (" ;
     mMessageExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.lineNumber ()
               << ")) ;\n" ;
   }
 }
@@ -643,24 +643,24 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 void cPtr_typeMatchInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
-                       const bool inGenerateDebug,
-                       const bool inGenerateSemanticInstructions) const {
+                     const C_String & inTargetFileName,
+                     sint32 & ioPrototypeIndex,
+                     const bool inGenerateDebug,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     ioCppFile << "if (" ;
     aNomCppVariable1 (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._isBuilt () && " ;
+    ioCppFile << "._isBuilt (SOURCE_FILE_AT_LINE (" << aNomCppVariable1 (HERE)->mVariableLocation.lineNumber () << ")) && " ;
     aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._isBuilt ()) {\n" ;
+    ioCppFile << "._isBuilt (SOURCE_FILE_AT_LINE (" << aNomCppVariable2 (HERE)->mVariableLocation.lineNumber () << "))) {\n" ;
     ioCppFile.incIndentation (+2) ;
     if (! mOperand1_isEnumeration.boolValue ()) {
-      ioCppFile << "cPtr_" << aNomTypeBase1 << " * ptr_" << aIndicatif1.currentLocation () << " = " ;
+      ioCppFile << "cPtr_" << aNomTypeBase1 << " * ptr_" << aIndicatif1.location () << " = " ;
       aNomCppVariable1 (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE) ;\n" ;
     }
     if (! mOperand2_isEnumeration.boolValue ()) {
-      ioCppFile << "cPtr_" << aNomTypeBase2 << " * ptr_" << aIndicatif2.currentLocation () << " = " ;
+      ioCppFile << "cPtr_" << aNomTypeBase2 << " * ptr_" << aIndicatif2.location () << " = " ;
       aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE) ;\n" ;
     }
@@ -670,31 +670,31 @@ generateInstruction (AC_OutputStream & ioCppFile,
       macroValidPointer (casCourant) ;
       if (! mOperand1_isEnumeration.boolValue ()) {
         ioCppFile << "cPtr_" << casCourant->mCase1_name
-                  << " * operand_" << aIndicatif1.currentLocation ()
+                  << " * operand_" << aIndicatif1.location ()
                   << " = dynamic_cast <"
                      "cPtr_" << casCourant->mCase1_name
-                  << " *> (ptr_" << aIndicatif1.currentLocation () << ") ;\n" ;
+                  << " *> (ptr_" << aIndicatif1.location () << ") ;\n" ;
       }
       if (! mOperand2_isEnumeration.boolValue ()) {
         ioCppFile << "cPtr_" << casCourant->mCase2_name
-                  << " * operand_" << aIndicatif2.currentLocation ()
+                  << " * operand_" << aIndicatif2.location ()
                   << " = dynamic_cast <"
                      "cPtr_" << casCourant->mCase2_name
-                  << " *> (ptr_" << aIndicatif2.currentLocation () << ") ;\n" ;
+                  << " *> (ptr_" << aIndicatif2.location () << ") ;\n" ;
       }
       ioCppFile << "if ((" ;
       if (mOperand1_isEnumeration.boolValue ()) {
         aNomCppVariable1 (HERE)->generateCplusPlusName (ioCppFile) ;
         ioCppFile << ".enumValue () == GGS_" << aNomTypeBase1 << "::enum_" << casCourant->mCase1_name ;
       }else{
-        ioCppFile <<  "operand_" << aIndicatif1.currentLocation () << " != NULL" ;
+        ioCppFile <<  "operand_" << aIndicatif1.location () << " != NULL" ;
       }
       ioCppFile <<   ") && (" ;
       if (mOperand2_isEnumeration.boolValue ()) {
         aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
         ioCppFile << ".enumValue () == GGS_" << aNomTypeBase2 << "::enum_" << casCourant->mCase2_name ;
       }else{
-        ioCppFile << "operand_" << aIndicatif2.currentLocation () << " != NULL" ;
+        ioCppFile << "operand_" << aIndicatif2.location () << " != NULL" ;
       }
       ioCppFile << ")) {\n" ;
       generateInstructionListForList (casCourant->mInstructionList, ioCppFile,
@@ -774,8 +774,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._increment_operation (_inLexique SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
+    ioCppFile << "._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.lineNumber ()
               << ")) ;\n" ;
   }
 }
@@ -819,8 +819,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._decrement_operation (_inLexique SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.currentLineNumber ()
+    ioCppFile << "._decrement_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
+              << mInstructionLocation.lineNumber ()
               << ")) ;\n" ;
   }
 }
@@ -1026,8 +1026,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
       current->mExpression (HERE)->generateExpression (ioCppFile) ;
       current = current->nextObject () ;
     }
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << aNomMethodeBloc.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << aNomMethodeBloc.lineNumber ()
               << ")) ;\n" ;
   }
 }
@@ -1093,8 +1093,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
       current->mExpression (HERE)->generateExpression (ioCppFile) ;
       current = current->nextObject () ;
     }
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << aNomMethodeBloc.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << aNomMethodeBloc.lineNumber ()
               << ")) ;\n" ;
   }
 }

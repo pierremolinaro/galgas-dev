@@ -136,10 +136,11 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
 
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  static const char gGGSsourceFile [] = \"" << inLexique.sourceFileName ().lastPathComponent () << "\" ;\n"
-                    "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inLexique.sourceFileName ().lastPathComponent () << "\", line\n"
+                    "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
                     "#else\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
+                    "  #define COMMA_SOURCE_FILE_AT_LINE(line) \n"
                     "#endif\n\n" ;
 
 //--------------------------------------- Get bool options count

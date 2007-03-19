@@ -179,7 +179,7 @@ template <typename INFO> class cGalgasVariablesMap {
                                    COMMA_LOCATION_ARGS) const ;
 
 //--- This kind of map is always built
-  public : inline bool _isBuilt (void) const { return true ; }
+  public : inline bool _isBuilt (UNUSED_LOCATION_ARGS) const { return true ; }
 
 //--- Insertion Methods
   public : sint32 insertEntityAttributeLocalVariable (C_Compiler & inLexique,
