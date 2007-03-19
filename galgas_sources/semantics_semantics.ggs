@@ -453,7 +453,7 @@ class @typeFalseBool extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeLiteralStringExpression extends @typeExpression {
-  @lstring mLiteralString ;
+  @stringlist mLiteralStringList ;
 }
  
 #---------------------------------------------------------------------------*

@@ -22,7 +22,7 @@ class cPtr_typeExpression : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
   public : virtual void
-  generateExpression (AC_OutputStream & inCppFile) = 0 ;
+  generateExpression (AC_OutputStream & inCppFile) const = 0 ;
 
   public : virtual bool
   isLexiqueFormalArgumentUsedForTest (void) const  = 0 ;

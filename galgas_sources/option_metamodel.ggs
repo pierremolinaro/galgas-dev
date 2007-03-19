@@ -30,7 +30,6 @@ entity @commandLineOption {
   @lchar mOptionInvocationLetter ;
   @lstring mOptionInvocationString ;
   @lstring mOptionComment ;
-  @string mDefaultValue ;
 }
 
 end metamodel ;

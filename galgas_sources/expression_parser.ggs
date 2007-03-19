@@ -1188,9 +1188,14 @@ rule <factor>
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
-  @lstring literalString ;
-  $literal_string$ ?literalString ;
-  outExpression := [@typeLiteralStringExpression new !literalString] ;
+  @stringlist literalStringList [emptyList] ;
+  repeat
+    @lstring literalString ;
+    $literal_string$ ?literalString ;
+    literalStringList += ![literalString string] ;
+  while
+  end repeat ;
+  outExpression := [@typeLiteralStringExpression new !literalStringList] ;
   outResultType := [@typeGalgas_string new] ;
 end rule ;
 

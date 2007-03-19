@@ -23,7 +23,7 @@ import metamodel option_metamodel in "option_metamodel.ggs" ;
 
 nonterminal <option_component_start_symbol> -> @optionComponentRoot ;
 
-nonterminal <option> ?!@stringset ioOptionNameSet -> @commandLineOption ;
+nonterminal <option> -> @commandLineOption ;
 
 #---------------------------------------------------------------------------*
 
@@ -33,10 +33,9 @@ rule <option_component_start_symbol> -> @optionComponentRoot :
   $identifier$ ? mOptionComponentName ;
   $:$ ;
 #--- Parse the option list
-  @stringset optionNameSet [emptySet] ;
   repeat
   while 
-    <option> !?optionNameSet +> mOptions ;
+    <option> +> mOptions ;
   end repeat ;
   $end$ ;
   $option$ ;
@@ -45,7 +44,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <option> ?!@stringset ioOptionNameSet -> @commandLineOption :
+rule <option> -> @commandLineOption :
   $type_name$ ? mOptionTypeName  ;
   $identifier$ ? mOptionInternalName ;
   $:$ ;
@@ -54,27 +53,7 @@ rule <option> ?!@stringset ioOptionNameSet -> @commandLineOption :
   $literal_string$ ? mOptionInvocationString ;
   $->$ ;
   $literal_string$ ? mOptionComment ;
-  select
-    mDefaultValue := "" ;
-    if [mOptionTypeName string] == "uint" then
-      warning here : "No default value for this option, 0 will be used" ;
-    end if ;
-  or
-    $default$ ;
-    if [mOptionTypeName string] == "bool" then
-      error here : "'default' construct is not allowed for a @bool option (allways false by default)" ;
-    elsif [mOptionTypeName string] == "string" then
-      error here : "'default' construct is not allowed for a @string option (allways false by default)" ;
-    end if ;
-    @luint v ;
-    $unsigned_literal_integer$ ? v ;
-    mDefaultValue := [[v uint] string] ;
-  end select ;
   $;$ ;
-  if [ioOptionNameSet hasKey ![mOptionInternalName string]] then
-    error mOptionInternalName: "a '" . [mOptionInternalName string] . "' has been already declared" ;
-  end if ;
-  ioOptionNameSet += ![mOptionInternalName string] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

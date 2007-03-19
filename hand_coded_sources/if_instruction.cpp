@@ -26,7 +26,7 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_typeUnaryMinusOperation::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._unary_minus_operation (_inLexique SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.currentLineNumber ()
@@ -65,7 +65,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeTestComplement::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(! (" ;
   mExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "))" ;
@@ -102,7 +102,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLogicalNegate::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(~ (" ;
   mExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "))" ;
@@ -138,7 +138,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeAndOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeAndOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "((" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") & (" ;
@@ -179,7 +179,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeOrOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeOrOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "((" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") | (" ;
@@ -220,7 +220,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeXorOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeXorOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "((" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") ^ (" ;
@@ -261,7 +261,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeConcatOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeConcatOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "((" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") + (" ;
@@ -302,7 +302,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeTrueBool::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeTrueBool::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_bool (true, true)" ;
 }
 
@@ -336,7 +336,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeFalseBool::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeFalseBool::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_bool (true, false)" ;
 }
 
@@ -371,7 +371,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeHereExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_location (_inLexique)" ;
 }
 
@@ -406,9 +406,20 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralStringExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_string (true, " ;
-  ioCppFile.writeCstringConstant (mLiteralString) ;
+  GGS_stringlist::element_type * currentString = mLiteralStringList.firstObject () ;
+  bool first = true ;
+  while (currentString != NULL) {
+    macroValidPointer (currentString) ;
+    if (first) {
+      first = false ;
+    }else{
+      ioCppFile << "\n  " ;
+    }
+    ioCppFile.writeCstringConstant (currentString->mValue) ;
+    currentString = currentString->nextObject () ;
+  }
   ioCppFile << ")" ;
 }
 
@@ -443,7 +454,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralSIntExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_sint (true, " << mLiteralInt.sintValue () << "L)" ;
 }
 
@@ -478,7 +489,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralSInt64Expression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_sint64 (true, " << mLiteralInt.sint64Value () << "LL)" ;
 }
 
@@ -513,7 +524,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralUIntExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_uint (true, " << mLiteralInt.uintValue () << "U)" ;
 }
 
@@ -548,7 +559,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralUInt64Expression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_uint64 (true, " << mLiteralInt.uint64Value () << "LLU)" ;
 }
 
@@ -583,7 +594,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralCharExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_char (true, " ;
   ioCppFile.writeCcharConstant (mLiteralChar.charValue ()) ;
   ioCppFile << ')' ;
@@ -620,7 +631,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLiteralDoubleExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_double (true, "
             << mLiteralDouble.doubleValue ()
             << ')' ;
@@ -657,7 +668,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeConstructorExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_" << mClassName << "::constructor_" << mClassMethodName << " (_inLexique" ;
   GGS_typeExpressionList::element_type * current = mExpressionList.firstObject () ;
   while (current != NULL) {
@@ -713,7 +724,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") == (" ;
@@ -754,7 +765,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeNonEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeNonEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") != (" ;
@@ -795,7 +806,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInfOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeInfOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") <= (" ;
@@ -836,7 +847,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeStrictInfTest::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeStrictInfTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") < (" ;
@@ -877,7 +888,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeSupOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeSupOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") >= (" ;
@@ -918,7 +929,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeStrictSupTest::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeStrictSupTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ") > (" ;
@@ -959,7 +970,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeAddOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeAddOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._add_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
@@ -1000,7 +1011,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeSubOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeSubOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._substract_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
@@ -1041,7 +1052,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeMultiplyOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeMultiplyOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._multiply_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
@@ -1082,7 +1093,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeDivideOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeDivideOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._divide_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
@@ -1123,7 +1134,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeModuloOperation::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeModuloOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._modulo_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
@@ -1165,7 +1176,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLeftShiftOperation::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._left_shift_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
@@ -1207,7 +1218,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRightShiftOperation::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << "._right_shift_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
@@ -1249,7 +1260,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeReaderCallInExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
   if (mConversionMethod.length () > 0) {
     ioCppFile << "." << mConversionMethod << " ()" ;
@@ -1309,7 +1320,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeDescriptionInExpression::
-generateExpression (AC_OutputStream & ioCppFile) {
+generateExpression (AC_OutputStream & ioCppFile) const {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ".reader_description (_inLexique SOURCE_FILE_AT_LINE ("
             << mInstructionLocation.currentLineNumber ()
@@ -1346,7 +1357,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeVarInExpression::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeVarInExpression::generateExpression (AC_OutputStream & ioCppFile) const {
   mCppVarName (HERE)->generateCplusPlusName (ioCppFile) ;
 }
 
@@ -1380,7 +1391,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeJokerInExpression::generateExpression (AC_OutputStream & /* ioCppFile */) {
+void cPtr_typeJokerInExpression::
+generateExpression (AC_OutputStream & /* ioCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1413,7 +1425,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeTextTableCall::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeTextTableCall::generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << '.' << aNomMethodeTest << " (" ;
   aNomCppClef (HERE)->generateCplusPlusName (ioCppFile) ;
@@ -1451,7 +1463,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_bool (true, _inLexique.boolOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
@@ -1491,7 +1503,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_uint (true, _inLexique.uintOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
@@ -1531,7 +1543,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) {
+void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_string (true, _inLexique.stringOptionValueFromKeys (" ;
   ioCppFile.writeCstringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
