@@ -40,15 +40,17 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
   //--- 'condition' variable
     C_String variableCondition ;
-    variableCondition << "_condition_" << mLocation.currentLocation () ;
+    variableCondition << "_condition_" << mLocation.location () ;
   //--- 'variant' variable
     C_String variantVariable ;
-    variantVariable << "_variant_" << mLocation.currentLocation () ;
+    variantVariable << "_variant_" << mLocation.location () ;
   //--- Loop header
     ioCppFile << "GGS_uint " << variantVariable << " = " ;
     mVariantExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n"
-                 "GGS_bool " << variableCondition << " (" << variantVariable << "._isBuilt (), true) ;\n"
+                 "GGS_bool " << variableCondition << " (" << variantVariable
+              << "._isBuilt (SOURCE_FILE_AT_LINE (" << mLocation.lineNumber ()
+              << ")), true) ;\n"
                  "while (" << variableCondition << ".isBuiltAndTrue ()) {\n" ;
   //--- First instruction list
     generateInstructionListForList (mInstructionList1, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
@@ -59,8 +61,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
   //--- Evaluate condition
     ioCppFile << "  if (" << variableCondition << ".isBuiltAndTrue ()) {\n"
                  "    if (" << variantVariable << ".uintValue () == 0) {\n"
-                 "      _inLexique.onTheFlyRunTimeError (\"loop variant error\" SOURCE_FILE_AT_LINE ("
-              << mLocation.currentLineNumber ()
+                 "      _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE ("
+              << mLocation.lineNumber ()
               << ")) ;\n"
                  "      " << variableCondition << " = GGS_bool (true, false) ;\n"
                  "    }else{\n" 
@@ -123,18 +125,18 @@ generateInstruction (AC_OutputStream & ioCppFile,
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
       ioCppFile << "GGS_" << enumeratedVariable->mCppTypeName
-                << "::element_type * operand_" << enumeratedVariable->mLocationOffset.currentLocation () << " = " ;
+                << "::element_type * operand_" << enumeratedVariable->mLocationOffset.location () << " = " ;
       enumeratedVariable->mCppEnumeratedVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << ".firstObject () ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
     macroValidPointer (enumeratedVariable) ;
-    ioCppFile <<  "while ((operand_" <<enumeratedVariable->mLocationOffset.currentLocation () << " != NULL)" ;
+    ioCppFile <<  "while ((operand_" <<enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
-      ioCppFile <<  "\n    && (operand_" <<enumeratedVariable->mLocationOffset.currentLocation () << " != NULL)" ;
+      ioCppFile <<  "\n    && (operand_" <<enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
  //--- While expression
@@ -147,15 +149,15 @@ generateInstruction (AC_OutputStream & ioCppFile,
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
-      ioCppFile << "  macroValidPointer (operand_" << enumeratedVariable->mLocationOffset.currentLocation () << ") ;\n" ;
+      ioCppFile << "  macroValidPointer (operand_" << enumeratedVariable->mLocationOffset.location () << ") ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
     generateInstructionListForList (mInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
-      ioCppFile << "  operand_" << enumeratedVariable->mLocationOffset.currentLocation () << " = operand_"
-                << enumeratedVariable->mLocationOffset.currentLocation () << "->nextObject () ;\n" ;
+      ioCppFile << "  operand_" << enumeratedVariable->mLocationOffset.location () << " = operand_"
+                << enumeratedVariable->mLocationOffset.location () << "->nextObject () ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
     ioCppFile << "}\n" ;

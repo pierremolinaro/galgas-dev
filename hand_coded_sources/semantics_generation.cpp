@@ -34,7 +34,7 @@ void
 routine_check_KL_escapeCharacters (C_Compiler & inLexique,
                                    GGS_lstring inString
                                    COMMA_LOCATION_ARGS) {
-  if (inString._isBuilt ()) {
+  if (inString._isBuilt (THERE)) {
     bool gotPercent = false ;
     const char * cString = inString.cString () ;
     while ((*cString) != '\0') {
@@ -64,7 +64,7 @@ void
 routine_check_K_escapeCharacters (C_Compiler & inLexique,
                                   GGS_lstring inString
                                   COMMA_LOCATION_ARGS) {
-  if (inString._isBuilt ()) {
+  if (inString._isBuilt (THERE)) {
     bool gotPercent = false ;
     const char * cString = inString.cString () ;
     while ((*cString) != '\0') {
@@ -491,7 +491,7 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeOperandName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "operand_" << mLocationOffset.currentLocation () << "->"
+  inFile << "operand_" << mVariableLocation.location () << "->"
          << (mFieldKind.boolValue () ? "mInfo." : "")
          << mName ;
 }
@@ -500,7 +500,7 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeKeyName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "operand_" << mLocationOffset.currentLocation () << "->mKey" ;
+  inFile << "operand_" << mVariableLocation.location () << "->mKey" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -563,7 +563,7 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 
 void cPtr_typeOperandName::
 generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& operand_" << mLocationOffset.currentLocation () << "->"
+  inFile << "& operand_" << mVariableLocation.location () << "->"
          << (mFieldKind.boolValue () ? "mInfo." : "")
          << mName ;
 }
@@ -572,7 +572,7 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 
 void cPtr_typeKeyName::
 generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& operand_" << mLocationOffset.currentLocation () << "->mKey" ;
+  inFile << "& operand_" << mVariableLocation.location () << "->mKey" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1577,10 +1577,11 @@ generate_cpp_file (C_Compiler & inLexique,
 
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  static const char gGGSsourceFile [] = \"" << inLexique.sourceFileName ().lastPathComponent () << "\" ;\n"
-                    "  #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inLexique.sourceFileName ().lastPathComponent () << "\", line\n"
+                    "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
                     "#else\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
+                    "  #define COMMA_SOURCE_FILE_AT_LINE(line) \n"
                     "#endif\n\n" ;
 
 //--- Engendrer les fichiers d'inclusion correspondant aux methodes externes

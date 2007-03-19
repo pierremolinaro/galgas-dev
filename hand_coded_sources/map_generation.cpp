@@ -131,14 +131,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
                "operator == (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE),\n"
                "                   (mState == inOperand.mState)) ;\n"
                "}\n\n" ;
               
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
                "operator != (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE),\n"
                "                   (mState != inOperand.mState)) ;\n"
                "}\n\n" ;
               
@@ -601,13 +601,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
                "operator == (const GGS_" << aNomTable << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToMap (inOperand)) ;\n"
+               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE), isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
                "operator != (const GGS_" << aNomTable << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToMap (inOperand)) ;\n"
+               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE), ! isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
 //--- 'internalInsertForDuplication' method
@@ -642,7 +642,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "                COMMA_LOCATION_ARGS) {\n"
                  "  AC_galgas_map_element * removedElement = NULL ;\n"
                  "  sint32 elementID = - 1 ;\n"
-                 "  if (_isBuilt () && inKey._isBuilt ()) {\n"
+                 "  if (_isBuilt (THERE) && inKey._isBuilt (THERE)) {\n"
                  "    bool unused ;\n"
                  "    _internalRemove (mSharedMapRoot->rootForKey (inKey), inKey, removedElement, unused) ;\n"
                  "    if (removedElement == NULL) {\n"
@@ -694,16 +694,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "                GGS_luint * outIndex\n"
                "                COMMA_LOCATION_ARGS) {\n"
                "  sint32 elementID = - 1 ;\n"
-               "  if (_isBuilt ()\n" ;
+               "  if (_isBuilt (THERE)\n" ;
   current = mNonExternAttributesList.firstObject () ;
   attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "   && inParameter" << attributeIndex << "._isBuilt ()\n" ;
+    inCppFile << "   && inParameter" << attributeIndex << "._isBuilt (THERE)\n" ;
     attributeIndex ++ ;
     current = current->nextObject () ;
   }
-  inCppFile<<  "   && inKey._isBuilt ()) {\n"
+  inCppFile<<  "   && inKey._isBuilt (THERE)) {\n"
                "    insulateMap () ;\n"
                "    e_" << aNomTable << " info  ;\n" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -744,7 +744,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "               GGS_luint * outIndex\n"
                "               COMMA_LOCATION_ARGS) const {\n"
                "  element_type * node = NULL  ;\n"
-               "  if (_isBuilt () && inKey._isBuilt ()) {\n"
+               "  if (_isBuilt (THERE) && inKey._isBuilt (THERE)) {\n"
                "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (element_type *) p ;\n"
@@ -961,7 +961,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (_isBuilt (THERE)) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
                "    element_type * p = firstObject () ;\n"
                "    sint32 elementID = 0 ;\n"
@@ -1328,11 +1328,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
                "reader_description (C_Compiler & /* _inLexique */\n"
-               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
+               "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (_isBuilt (THERE)) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s\" : \"\") ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"

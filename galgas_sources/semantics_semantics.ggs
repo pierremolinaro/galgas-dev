@@ -27,20 +27,21 @@ import semantics common_semantics in "common_semantics.ggs" ;
 #---------------------------------------------------------------------------*
 
 abstract class @typeCplusPlusName {
+  @location mVariableLocation ;
 }
 
 #---------------------------------------------------------------------------*
 # C++ name is the value of mName
 
 class @typeDirectName extends @typeCplusPlusName {
-  @lstring mName ;
+  @string mName ;
 }
 
 #---------------------------------------------------------------------------*
 # C++ name is _currentObject->mName
 
 class @typeCurrentObjectName extends @typeCplusPlusName {
-  @lstring mName ;
+  @string mName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -59,7 +60,7 @@ class @typeCppInheritedName extends @typeCplusPlusName {
 # C++ name is 'var_cas_' followed by the value of mName
 
 class @typeAutomaticName extends @typeCplusPlusName {
-  @lstring mName ;
+  @string mName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -73,8 +74,7 @@ class @typeLocationAutomaticName extends @typeCplusPlusName {
 # C++ name is 'operand_xxx->zz' followed by the value of mName
 
 class @typeOperandName extends @typeCplusPlusName {
-  @lstring mName ;
-  @location mLocationOffset ;
+  @string mName ;
   @bool mFieldKind ; # false : zz est vide ; true : zz est 'mInfo.'
 }
 
@@ -82,7 +82,6 @@ class @typeOperandName extends @typeCplusPlusName {
 # C++ name is 'operand_xxx->mKey' followed by the value of mName
 
 class @typeKeyName extends @typeCplusPlusName {
-  @location mLocationOffset ;
 }
 
 #---------------------------------------------------------------------------*
@@ -815,7 +814,7 @@ routine buildMapWithLocalConstants
         if (inLocalConstantStyle == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
           cppName := [@typeKeyName new !inLocation] ;
         else
-          cppName := [@typeOperandName new !attributeName !inLocation !mapStyle] ;
+          cppName := [@typeOperandName new !inLocation ![attributeName string] !mapStyle] ;
         end if ;
         [!?ioVariablesMap insertUsedConstInArgument !cstName !type !cppName] ;
       else
@@ -912,7 +911,7 @@ routine verifierCompatibiliteArgEffectifsSignature
             expressionList (@typeExpression attExpressionType) :
       extract attExpressionType :
       when @typeJokerInExpression () ->
-        @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new ![@uint sequenceNumber]] ;
+        @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !here ![@uint sequenceNumber]] ;
         @typeExpression e := [@typeVarInExpression new !cppVarName] ;
         ioExpressionList += !e ;
         @typeInstruction i := [@typeInstructionDeclarationVarLocale new !cppVarName !attSignatureType] ;
@@ -938,7 +937,7 @@ class @typeJoker extends @typeCible {
     ?!@L_assignedVariables unused listeAffectations
     ?!@typeCplusPlusNameList outAllVariablesList
   :
-    outAllVariablesList += ![@typeNullName new] ;
+    outAllVariablesList += ![@typeNullName new !here] ;
   end method ;
 }
 

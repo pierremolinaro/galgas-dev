@@ -358,7 +358,7 @@ class GGS_actualParametersPassingMode {
   public : static inline uint16 bitCount (void) { return 2 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_actualParametersPassingMode constructor_parameterOut (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
@@ -417,7 +417,7 @@ class GGS_formalArgumentPassingMode {
   public : static inline uint16 bitCount (void) { return 3 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_formalArgumentPassingMode constructor_argumentIn (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
@@ -627,7 +627,7 @@ class GGS_TypeModel {
   public : GGS_bool operator == (const GGS_TypeModel & inOperand) const ;
   public : GGS_bool operator != (const GGS_TypeModel & inOperand) const ;
 //--- _isBuilt
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 //--- isEqualTo
   public : inline bool isEqualTo (const GGS_TypeModel & _inOperand) const {
     return mPointer == _inOperand.mPointer ;
@@ -2139,7 +2139,7 @@ class GGS_localConstantBuildStyleEnum {
   public : static inline uint16 bitCount (void) { return 2 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_localConstantBuildStyleEnum constructor_listStyle (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
@@ -2192,7 +2192,7 @@ class GGS_AC_galgasType {
   public : GGS_bool operator == (const GGS_AC_galgasType & inOperand) const ;
   public : GGS_bool operator != (const GGS_AC_galgasType & inOperand) const ;
 //--- _isBuilt
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 //--- isEqualTo
   public : inline bool isEqualTo (const GGS_AC_galgasType & _inOperand) const {
     return mPointer == _inOperand.mPointer ;
@@ -4336,7 +4336,7 @@ class GGS_AC_semanticsEntity {
   public : GGS_bool operator == (const GGS_AC_semanticsEntity & inOperand) const ;
   public : GGS_bool operator != (const GGS_AC_semanticsEntity & inOperand) const ;
 //--- _isBuilt
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 //--- isEqualTo
   public : inline bool isEqualTo (const GGS_AC_semanticsEntity & _inOperand) const {
     return mPointer == _inOperand.mPointer ;
@@ -4503,7 +4503,7 @@ class GGS_AC_typeForGrammarComponent {
   public : GGS_bool operator == (const GGS_AC_typeForGrammarComponent & inOperand) const ;
   public : GGS_bool operator != (const GGS_AC_typeForGrammarComponent & inOperand) const ;
 //--- _isBuilt
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 //--- isEqualTo
   public : inline bool isEqualTo (const GGS_AC_typeForGrammarComponent & _inOperand) const {
     return mPointer == _inOperand.mPointer ;
@@ -4633,7 +4633,7 @@ class GGS_AC_instruction_ForGrammar {
   public : GGS_bool operator == (const GGS_AC_instruction_ForGrammar & inOperand) const ;
   public : GGS_bool operator != (const GGS_AC_instruction_ForGrammar & inOperand) const ;
 //--- _isBuilt
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 //--- isEqualTo
   public : inline bool isEqualTo (const GGS_AC_instruction_ForGrammar & _inOperand) const {
     return mPointer == _inOperand.mPointer ;
@@ -5880,7 +5880,7 @@ class GGS_typeDefEntiteUtilisable {
   public : GGS_bool operator == (const GGS_typeDefEntiteUtilisable & inOperand) const ;
   public : GGS_bool operator != (const GGS_typeDefEntiteUtilisable & inOperand) const ;
 //--- _isBuilt
-  public : bool _isBuilt (void) const ;
+  public : bool _isBuilt (LOCATION_ARGS) const ;
 //--- isEqualTo
   public : inline bool isEqualTo (const GGS_typeDefEntiteUtilisable & _inOperand) const {
     return mPointer == _inOperand.mPointer ;

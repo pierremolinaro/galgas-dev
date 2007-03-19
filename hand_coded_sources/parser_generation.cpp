@@ -139,8 +139,8 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     }
     inHfile << "pr_" << aNomProduction 
             << '_' << inTargetFileName
-            << '_' << aNomProduction.currentLineNumber ()
-            << '_' << aNomProduction.currentColumnNumber ()
+            << '_' << aNomProduction.lineNumber ()
+            << '_' << aNomProduction.columnNumber ()
             << '_' << currentAltForNonTerminal->mKey << " ("
             << mLexiqueClassName << " &" ;
     GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentAltForNonTerminal->mInfo.aListeDeTypesEffectifs.firstObject () ;
@@ -164,8 +164,8 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
   if (hasParseLabel) {
     inHfile << "  protected : void pr_" << aNomProduction 
             << '_' << inTargetFileName
-            << '_' << aNomProduction.currentLineNumber ()
-            << '_' << aNomProduction.currentColumnNumber ()
+            << '_' << aNomProduction.lineNumber ()
+            << '_' << aNomProduction.columnNumber ()
             << "_parse ("
             << mLexiqueClassName << " & _inLexique) ;\n\n" ;
   }
@@ -203,8 +203,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << "::\n"
                  "pr_"
               << aNomProduction << "_" << inTargetFileName
-              << '_' << aNomProduction.currentLineNumber ()
-              << '_' << aNomProduction.currentColumnNumber ()
+              << '_' << aNomProduction.lineNumber ()
+              << '_' << aNomProduction.columnNumber ()
               << '_' << currentAltForNonTerminal->mKey << " ("
               << mLexiqueClassName << " & " ;
     const bool lexiqueFormalArgumentUsed = (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0)
@@ -288,8 +288,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << "::\n"
                  "pr_"
               << aNomProduction << "_" << inTargetFileName
-              << '_' << aNomProduction.currentLineNumber ()
-              << '_' << aNomProduction.currentColumnNumber ()
+              << '_' << aNomProduction.lineNumber ()
+              << '_' << aNomProduction.columnNumber ()
               << "_parse ("
               << mLexiqueClassName << " & " ;
     const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (firstLabelDef->mInfo.mAllInstructionsList, false) ;

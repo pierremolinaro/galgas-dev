@@ -104,8 +104,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mTypeMethodName.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mTypeMethodName.lineNumber ()
               << ")) ;\n" ;
   }
 }
@@ -171,7 +171,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ifGenerated = true ;
       ioCppFile << "if (" ;
       aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << "._isBuilt ()) {\n  " ;
+      ioCppFile << "._isBuilt (HERE)) {\n  " ;
       aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE)->" ;
     }  
@@ -183,8 +183,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << aNomMethodeSimple.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << aNomMethodeSimple.lineNumber ()
               << ")) ;\n" ;
     if (ifGenerated) {
       ioCppFile << "}\n" ;
@@ -254,8 +254,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << aNomMethodeSimple.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << aNomMethodeSimple.lineNumber ()
               << ")) ;\n" ;
   }
 }
@@ -402,8 +402,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "  }catch (const C_TextReadException & inFileReadError) {\n"
                  "    " ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".signalSemanticError (_inLexique, inFileReadError.what () SOURCE_FILE_AT_LINE ("
-              << mGrammarName.currentLineNumber ()
+    ioCppFile << ".signalSemanticError (_inLexique, inFileReadError.what () COMMA_SOURCE_FILE_AT_LINE ("
+              << mGrammarName.lineNumber ()
               << ")) ;\n"
                  "  }\n"
                  "  macroDetachPointer (scanner_, " << mLexiqueClassName << ") ;\n"
@@ -476,7 +476,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
             ioCppFile << " &&\n    " ;
           }
           argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
-          ioCppFile << "._isBuilt ()" ;
+          ioCppFile << "._isBuilt (HERE)" ;
           nombreArgumentsTestes ++ ;
         }
         typeArgumentCourant = typeArgumentCourant->nextObject () ;
@@ -494,8 +494,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << " SOURCE_FILE_AT_LINE ("
-              << mRoutineName.currentLineNumber ()
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << mRoutineName.lineNumber ()
               << ")) ;\n" ; 
     if (nombreArgumentsTestes > 0) {
       ioCppFile << "}\n" ;
