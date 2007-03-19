@@ -185,12 +185,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Comparison
              "//--- Comparison methods\n"
              "  public : GGS_bool operator == (const GGS_" << aNomClasse << " & inOperand) const ;\n"
-             "  public : GGS_bool operator != (const GGS_" << aNomClasse << " & inOperand) const ;\n" ;
+             "  public : GGS_bool operator != (const GGS_" << aNomClasse << " & inOperand) const ;\n\n" ;
 
   if (mSuperClassName.length () == 0) {
 //--- Engendrer la declaration de la methode '_isBuilt'
     inHfile << "//--- _isBuilt\n"
-               "  public : inline bool _isBuilt (void) const { return mPointer != NULL ; }\n"
+               "  public : bool _isBuilt (void) const ;\n\n"
 
 
 //--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
@@ -198,24 +198,24 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  public : inline bool isEqualTo (const GGS_" << aNomClasse
             << " & _inOperand) const {\n"
                "    return mPointer == _inOperand.mPointer ;\n"
-               "  }\n"
+               "  }\n\n"
 
 //--- Engendrer la declaration de la methode 'getPtr'
                "//--- getPtr\n"
                "  public : inline cPtr_" << aNomClasse << " * getPtr (void) const {\n"
                "    return mPointer ;\n"
-               "  }\n"
+               "  }\n\n"
 
 //--- Engendrer la declaration de la methode '_drop_operation'
                "//--- drop\n"
-               "  public : void _drop_operation (void) ;\n" ;
+               "  public : void _drop_operation (void) ;\n\n" ;
   }
 
 //--- Generate 'description' reader declaration
   inHfile << "//--- 'description' reader\n"
              "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const sint32 inIndentation = 0) const ;\n"
+             "                                          const sint32 inIndentation = 0) const ;\n\n"
 
 //--- Implicitly declared Readers
              "//--- Readers\n" ;
@@ -1147,6 +1147,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_" << aNomClasse
             << "::\n~GGS_" << aNomClasse << " (void) {\n"
                "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "bool GGS_" << aNomClasse << "::\n"
+               "_isBuilt (void) const {\n"
+               "  return mPointer != NULL ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;

@@ -1583,7 +1583,7 @@ LR1_computations (C_Compiler & inLexique,
 
 //--- Compute LR1 automaton
   c_LR1_items_sets_collection * LR1_items_sets_collection = NULL ;
-  macroMyNew (LR1_items_sets_collection, c_LR1_items_sets_collection) ; ;
+  macroMyNew (LR1_items_sets_collection, c_LR1_items_sets_collection) ;
   TC_FIFO <c_LR1_automaton_transition> transitionList ;
   compute_LR1_automation (inProductionRules,
                           inVocabulary,
@@ -1790,7 +1790,7 @@ LR1_computations (C_Compiler & inLexique,
                                    inStartSymbolEntityAndMetamodelMap) ;
 
   }
-  macroMyDelete (LR1_items_sets_collection, c_LR1_items_sets_collection) ; ;
+  macroMyDelete (LR1_items_sets_collection, c_LR1_items_sets_collection) ;
   outOk = conflictCount == 0 ;
 }
 

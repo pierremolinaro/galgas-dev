@@ -106,7 +106,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
   C_BDD_Set1 temp (inVocabularyDerivingInEmptyString) ;
-  temp.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; ;
+  temp.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
   const C_BDD_Set2 ex_nt_x_empty = inVocabularyDerivingInEmptyString * temp ;
 
   const C_BDD emptyStringTerminalSymbolIndex =
