@@ -160,8 +160,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "                                    const GGS_string & inNewValue\n"
                "                                    COMMA_LOCATION_ARGS) {\n"
                "  bool bitCountExtended = false ;\n"
-               "  findOrAddEntry (inLexique, _attribute_" << currentAttribute->mKey
-            << ", inNewValue, bitCountExtended COMMA_THERE) ;\n"
+               "  findOrAddEntry (_attribute_" << currentAttribute->mKey
+            << ", inNewValue, bitCountExtended) ;\n"
                "  if (bitCountExtended) {\n"
                "    updateRelationsAfterBitCountExtension () ;\n"
                "  }\n"
@@ -190,8 +190,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     sint32 idx = 1 ;
     while (currentDomainRelation != NULL) {
       macroValidPointer (currentDomainRelation) ;
-      inCppFile << "  const uint32 entry" << idx << " = findOrAddEntry (inLexique, _attribute_" << currentDomainRelation->mValue
-                << ", inValue_" << idx << ", bitCountExtended COMMA_THERE) ;\n" ;
+      inCppFile << "  const uint32 entry" << idx << " = findOrAddEntry (_attribute_" << currentDomainRelation->mValue
+                << ", inValue_" << idx << ", bitCountExtended) ;\n" ;
       idx ++ ;
       currentDomainRelation = currentDomainRelation->nextObject () ;
     }

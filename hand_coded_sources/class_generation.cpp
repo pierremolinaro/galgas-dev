@@ -186,13 +186,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Comparison
              "//--- Comparison methods\n"
-             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << aNomClasse << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomClasse << " & inOperand COMMA_LOCATION_ARGS) const ;\n" ;
+             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomClasse << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomClasse << " & inOperand) const ;\n" ;
 
   if (superClassName.length () == 0) {
 //--- Engendrer la declaration de la methode '_isBuilt'
     inHfile << "//--- _isBuilt\n"
-               "  public : bool _isBuilt (LOCATION_ARGS) const ;\n"
+               "  public : inline bool _isBuilt (void) const { return mPointer != NULL ; }\n"
 
 //--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
                "//--- isEqualTo\n"
@@ -341,9 +341,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "\n"
                     "//--- Comparison\n"
                     "  public : virtual bool\n"
-                    "  isEqualToObject (C_Compiler & inLexique,\n"
-                    "                   const C_GGS_Object * inOperand\n"
-                    "                   COMMA_LOCATION_ARGS) const"
+                    "  isEqualToObject (const C_GGS_Object * inOperand) const"
                  << (mIsAbstract.boolValue () ? " = 0" : "")
                  << " ;\n" ;
 
@@ -469,9 +467,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   if (! mIsAbstract.boolValue ()) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "bool cPtr_" << aNomClasse << "::\n"
-                 "isEqualToObject (C_Compiler & _inLexique,\n"
-                 "                 const C_GGS_Object * inOperand\n"
-                 "                 COMMA_LOCATION_ARGS) const {\n" ;
+                 "isEqualToObject (const C_GGS_Object * inOperand) const {\n" ;
     current = aListeTousAttributsNonExternes.firstObject () ;
     if (current == NULL) {
       inCppFile << "  return typeid (this) == typeid (inOperand) ;\n" ;
@@ -489,7 +485,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
         }else{
           inCppFile << "\n         && " ;
         }
-        inCppFile << current->aNomAttribut << "._operator_isEqual (_inLexique, _p->" << current->aNomAttribut << " THERE).boolValue ()" ;
+        inCppFile << current->aNomAttribut << "._operator_isEqual (_p->" << current->aNomAttribut << ").boolValue ()" ;
         current = current->nextObject () ;
       }
       inCppFile << " ;\n"
@@ -679,34 +675,27 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "_drop_operation (void) {\n"
                  "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
                  "}\n\n" ; 
-    inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "bool GGS_" << aNomClasse << "::\n"
-                 "_isBuilt (LOCATION_ARGS) const {\n"
-                 "   return mPointer != NULL ;\n"
-                 "}\n\n" ; 
   }
 
 //--- Generate comparison operators
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
-               "_operator_isEqual (C_Compiler & _inLexique,\n"
-               "                   const GGS_" << aNomClasse << " & inOperand\n"
-               "                   COMMA_LOCATION_ARGS) const {\n"
-               "  const bool built = _isBuilt (THERE) && inOperand._isBuilt (THERE) ;\n"
+               "_operator_isEqual (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "  const bool built = _isBuilt () && inOperand._isBuilt () ;\n"
                "  bool equal = mPointer == inOperand.mPointer ;\n"
                "  if (built && ! equal) {\n"
-               "    equal = mPointer->isEqualToObject (_inLexique, inOperand.mPointer THERE) ;\n"
+               "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
                "  }\n"
                "  return GGS_bool (built, equal) ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
-               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomClasse << " & inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  const bool built = _isBuilt (THERE) && inOperand._isBuilt (THERE) ;\n"
+               "_operator_isNotEqual (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "  const bool built = _isBuilt () && inOperand._isBuilt () ;\n"
                "  bool equal = mPointer == inOperand.mPointer ;\n"
                "  if (built && ! equal) {\n"
-               "    equal = mPointer->isEqualToObject (_inLexique, inOperand.mPointer THERE) ;\n"
+               "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
                "  }\n"
                "  return GGS_bool (built, ! equal) ;\n"
                "}\n\n" ;
@@ -719,7 +708,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<class @" << aNomClasse << "\" ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    mPointer->appendForDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"

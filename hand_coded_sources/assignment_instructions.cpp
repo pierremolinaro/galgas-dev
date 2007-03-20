@@ -165,10 +165,9 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
         ioCppFile << ") ;\n" ;
         ioPreviousWasLiteralString = false ; 
       }
-      ioCppFile << inTargetVariableCppName << "._dotAssign_operation (_inLexique, " ;
+      ioCppFile << inTargetVariableCppName << "._dotAssign_operation (" ;
       inExpressionPtr->generateExpression (ioCppFile) ;
-      ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-                << inTargetVariableLineNumberInSourceFile << ")) ;\n" ;
+      ioCppFile << ") ;\n" ;
     }
   }
 }
@@ -186,7 +185,9 @@ usesLexiqueArgument (const cPtr_typeExpression * inExpressionPtr) {
     }
   }else{
     const cPtr_typeLiteralStringExpression * p2 = dynamic_cast <const cPtr_typeLiteralStringExpression *> (inExpressionPtr) ;
-    result = p2 == NULL ;
+    if (p2 == NULL) {
+      result = inExpressionPtr->isLexiqueFormalArgumentUsedForTest () ;
+    }
   }
   return result ;
 }
@@ -205,11 +206,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
     const sint32 targetVariableLineNumberInSourceFile = mTargetVarCppName (HERE)->mVariableLocation.lineNumber () ;
     if (mSourceExpressionConverter.length () > 0) {
       ioCppFile << targetVariableCppName
-                << "._dotAssign_operation (_inLexique, " ;
+                << "._dotAssign_operation (" ;
       mSourceExpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << "." << mSourceExpressionConverter
-                << " () COMMA_SOURCE_FILE_AT_LINE ("
-                << targetVariableLineNumberInSourceFile << ")) ;\n" ;
+                << " ()) ;\n" ;
     }else{
       bool previousWasLiteralString = false ;
       generateInstructionPart (ioCppFile,

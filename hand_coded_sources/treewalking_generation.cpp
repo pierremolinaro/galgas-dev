@@ -384,7 +384,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
     currentArgument = currentArgument->nextObject () ;
   }
   generatedZone3 << ") {\n"
-                    "  if (_rootObject._isBuilt (HERE)) {\n"
+                    "  if (_rootObject._isBuilt ()) {\n"
                     "    if (! _gDispatcherTable.isInited ()) {\n"
                     "      _build_dispacher_tree () ;\n"
                     "    }\n"

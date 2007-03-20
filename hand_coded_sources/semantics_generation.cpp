@@ -34,7 +34,7 @@ void
 routine_check_KL_escapeCharacters (C_Compiler & inLexique,
                                    GGS_lstring inString
                                    COMMA_LOCATION_ARGS) {
-  if (inString._isBuilt (THERE)) {
+  if (inString._isBuilt ()) {
     bool gotPercent = false ;
     const char * cString = inString.cString () ;
     while ((*cString) != '\0') {
@@ -64,7 +64,7 @@ void
 routine_check_K_escapeCharacters (C_Compiler & inLexique,
                                   GGS_lstring inString
                                   COMMA_LOCATION_ARGS) {
-  if (inString._isBuilt (THERE)) {
+  if (inString._isBuilt ()) {
     bool gotPercent = false ;
     const char * cString = inString.cString () ;
     while ((*cString) != '\0') {

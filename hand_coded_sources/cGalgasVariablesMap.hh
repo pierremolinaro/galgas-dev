@@ -103,7 +103,7 @@ GGS_bool cGalgasVariablesMap <INFO>::
 reader_hasKey (C_Compiler & /* inLexique */,
                const GGS_string & inKey
                COMMA_UNUSED_LOCATION_ARGS) const {
-  const bool allBuilt = _isBuilt (HERE) && inKey._isBuilt(HERE) ;
+  const bool allBuilt = _isBuilt () && inKey._isBuilt() ;
   bool found = false ;
   if (allBuilt) {
     element_type * current = _mRoot ;
@@ -435,7 +435,7 @@ insertKey (C_Compiler & inLexique,
            const bool inSearchForShadow
            COMMA_LOCATION_ARGS) {
   sint32 resultat = -1 ; // Erreur 'insertion incorrecte'
-  if (_isBuilt (HERE) && inKey._isBuilt (HERE)) {
+  if (_isBuilt () && inKey._isBuilt ()) {
   //--- Warns for shadows ?
     if (inSearchForShadow) {
     //--- Search in overridden maps
@@ -552,7 +552,7 @@ chercherInterne (C_Compiler & inLexique,
                  const GGS_lstring & clef,
                  const char * messageErreurRecherche
                  COMMA_LOCATION_ARGS) {
-  if (clef._isBuilt (HERE)) {
+  if (clef._isBuilt ()) {
   //--- Chercher d'abord dans la table designee par la racine
     resultat = _mRoot ;
     bool found = false ;

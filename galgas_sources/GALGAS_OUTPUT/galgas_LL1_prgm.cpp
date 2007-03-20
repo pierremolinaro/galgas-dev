@@ -127,7 +127,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
           const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (_inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
-          if (var_cas_inSourceFile._isBuilt (HERE)) {
+          if (var_cas_inSourceFile._isBuilt ()) {
             ::routine_fixFileGenerationStartDirectory (_inLexique,  var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (33)) ;
           }
           GGS_M_lexiqueComponents  var_cas_lexiqueMapForUse ;

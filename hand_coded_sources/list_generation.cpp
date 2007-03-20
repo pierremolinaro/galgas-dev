@@ -73,15 +73,14 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Element comparison
              "//--- Element comparison\n"
              "  protected : virtual bool\n"
-             "  isEqualToObject (C_Compiler & _inLexique,\n"
-             "                   const cListElement * inOperand\n"
-             "                   COMMA_LOCATION_ARGS) const ;\n\n"
+             "  isEqualToObject (const cListElement * inOperand) const ;\n\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
-             "  public : virtual void appendForDescription (C_Compiler & _inLexique,\n"
-             "                                                  C_String & ioString,\n"
-             "                                                  const sint32 inIndentation\n"
-             "                                                  COMMA_LOCATION_ARGS) const ;\n\n" ;
+             "  public : virtual void\n"
+             "  appendForDescription (C_Compiler & _inLexique,\n"
+             "                        C_String & ioString,\n"
+             "                        const sint32 inIndentation\n"
+             "                        COMMA_LOCATION_ARGS) const ;\n\n" ;
 
 //--- Friend declaration
   inHfile << "//--- Friend class declaration\n" 
@@ -115,8 +114,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Copy Constructor\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " & inSource) ;\n"
              "//--- Comparison Operators\n"
-             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
@@ -238,7 +237,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << aNomListe << " _operator_concat (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_" << aNomListe << " _operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Prepend a new value
              "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
@@ -360,14 +359,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   current = mNonExternAttributesList.firstObject () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n" ;
   if (current == NULL) {
-    inCppFile << "isEqualToObject (C_Compiler & /* _inLexique */,\n"
-                 "                 const  cListElement * /* inOperand */\n"
-                 "                 COMMA_UNUSED_LOCATION_ARGS) const {\n"
+    inCppFile << "isEqualToObject (const cListElement * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
-    inCppFile << "isEqualToObject (C_Compiler & _inLexique,\n"
-                 "                 const  cListElement * inOperand\n"
-                 "                 COMMA_LOCATION_ARGS) const {\n"
+    inCppFile << "isEqualToObject (const cListElement * inOperand) const {\n"
                  "  bool equal = inOperand == this ;\n"
                  "  if (! equal) {\n"
                  "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
@@ -379,7 +374,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       if (numeroVariable > 0) {
         inCppFile << "\n         && " ;
       }
-      inCppFile << current->aNomAttribut << "._operator_isEqual (_inLexique, _p->"  << current->aNomAttribut << " THERE).boolValue ()" ;
+      inCppFile << current->aNomAttribut << "._operator_isEqual (_p->"  << current->aNomAttribut << ").boolValue ()" ;
       current = current->nextObject () ;
       numeroVariable ++ ;
     }
@@ -436,16 +431,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Generate comparison
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "_operator_isEqual (C_Compiler & _inLexique,\n"
-               "                   const GGS_" << aNomListe << " & inOperand\n"
-               "                   COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), isEqualToList (_inLexique, inOperand THERE)) ;\n"
+               "_operator_isEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), ! isEqualToList (_inLexique, inOperand THERE)) ;\n"
+               "_operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -537,7 +530,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  if (_isBuilt (HERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _insulateList () ;\n"
                "    _internalAppendValues (" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -558,9 +551,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "_operator_concat (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const {\n"
+               "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  if (_isBuilt (THERE) && inOperand._isBuilt (THERE)) {\n"
+               "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
                "    if (count () == 0) {\n"
                "      result = inOperand ;\n"
                "    }else{\n"
@@ -617,12 +610,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << "\n                     "
-               "COMMA_LOCATION_ARGS) {\n"
-               "  if (_isBuilt (THERE)" ;
+               "COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  if (_isBuilt ()" ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << " && argument_" << numeroVariable << "._isBuilt (THERE)" ;
+    inCppFile << " && argument_" << numeroVariable << "._isBuilt ()" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -743,7 +736,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "\n              "
                "COMMA_LOCATION_ARGS) const {\n"
                "  element_type * _p = NULL ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
@@ -789,7 +782,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
                "  element_type * _p = NULL ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'last' method invoked on an empty list\" COMMA_THERE) ;\n"
@@ -834,7 +827,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
                "  element_type * _p = NULL ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'popFirst' modifier invoked on an empty list\" COMMA_THERE) ;\n"
@@ -880,7 +873,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
                "  element_type * _p = NULL ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'popLast' modifier invoked on an empty list\" COMMA_THERE) ;\n"
@@ -961,18 +954,17 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Element comparison
              "//--- Element comparison\n"
              "  protected : virtual bool\n"
-             "  isEqualToObject (C_Compiler & _inLexique,\n"
-             "                   const cSortedListElement * inOperand\n"
-             "                   COMMA_LOCATION_ARGS) const ;\n"
+             "  isEqualToObject (const cSortedListElement * inOperand) const ;\n"
 //--- Virtual method for implementing element comparison
              "//--- Method used for sorting elements\n"
              "  protected : virtual sint32 compareForSorting (const cSortedListElement * inOperand) const ;\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
-             "  public : virtual void appendForDescription (C_Compiler & _inLexique,\n"
-             "                                                  C_String & ioString,\n"
-             "                                                  const sint32 inIndentation\n"
-             "                                                  COMMA_LOCATION_ARGS) const ;\n"
+             "  public : virtual void\n"
+             "  appendForDescription (C_Compiler & _inLexique,\n"
+             "                        C_String & ioString,\n"
+             "                        const sint32 inIndentation\n"
+             "                        COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Friend declaration
              "  friend class GGS_" << aNomListe << " ;\n"
@@ -1005,8 +997,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Copy Constructor\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " & inSource) ;\n"
              "//--- Comparison Operators\n"
-             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand  COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Constructor 'emptySortedList'
              "//--- Constructor 'emptySortedList'\n"
@@ -1128,7 +1120,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << aNomListe << " _operator_concat (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_" << aNomListe << " _operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n"
 //--- Internal methods
              "//--- Internal Methods\n"
               "  protected : void _internalAppendValues (" ;
@@ -1215,9 +1207,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Element comparison
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n"
-               "isEqualToObject (C_Compiler & _inLexique,\n"
-               "                 const cSortedListElement * inOperand\n"
-               "                 COMMA_LOCATION_ARGS) const {\n"
+               "isEqualToObject (const cSortedListElement * inOperand) const {\n"
                "  bool equal = inOperand == this ;\n"
                "  if (! equal) {\n"
                "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
@@ -1230,7 +1220,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (numeroVariable > 0) {
       inCppFile << "\n         && " ;
     }
-    inCppFile << current->aNomAttribut << "._operator_isEqual (_inLexique, _p->"  << current->aNomAttribut << " THERE).boolValue ()" ;
+    inCppFile << current->aNomAttribut << "._operator_isEqual (_p->"  << current->aNomAttribut << ").boolValue ()" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -1268,9 +1258,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                "appendForDescription (C_Compiler & _inLexique,\n"
-               "                          C_String & ioString,\n"
-               "                          const sint32 inIndentation\n"
-               "                          COMMA_LOCATION_ARGS) const {\n" ;
+               "                      C_String & ioString,\n"
+               "                      const sint32 inIndentation\n"
+               "                      COMMA_LOCATION_ARGS) const {\n" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1303,16 +1293,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Generate comparison
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "_operator_isEqual (C_Compiler & _inLexique,\n"
-               "                   const GGS_" << aNomListe << " & inOperand\n"
-               "                   COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), isEqualToList (_inLexique, inOperand THERE)) ;\n"
+               "_operator_isEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), ! isEqualToList (_inLexique, inOperand THERE)) ;\n"
+               "_operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -1364,7 +1352,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  if (_isBuilt (HERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _insulateList () ;\n"
                "    _internalAppendValues (" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -1382,9 +1370,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "_operator_concat (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const {\n"
+               "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  if (_isBuilt (THERE) && inOperand._isBuilt (THERE)) {\n"
+               "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
                "    if (count () == 0) {\n"
                "      result = inOperand ;\n"
                "    }else{\n"
@@ -1520,7 +1508,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) const {\n"
                "  element_type * _p = NULL ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
@@ -1566,7 +1554,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
                "  element_type * _p = NULL ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'greatest' method invoked on an empty list\" COMMA_THERE) ;\n"
@@ -1611,7 +1599,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
                "  element_type * _p = NULL ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'popSmallest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
@@ -1657,7 +1645,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
                "  element_type * _p = NULL ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'popGreatest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
