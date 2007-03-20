@@ -92,7 +92,7 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> &) ; // Copy constructor
   public : void operator = (const cTableMethodesAimplementer <INFO> &) ; // Assignment operator
 
-  public : inline virtual bool _isBuilt (UNUSED_LOCATION_ARGS) const {
+  public : inline virtual bool _isBuilt (void) const {
     return mReferenceCountPtr != NULL ;
   }
   public : void build (void) ;

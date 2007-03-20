@@ -245,7 +245,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     ioCppFile << "if (" ;
     mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._isBuilt (SOURCE_FILE_AT_LINE (" << mVariableName (HERE)->mVariableLocation.lineNumber () << "))) {\n" ;
+    ioCppFile << "._isBuilt ()) {\n" ;
     ioCppFile.incIndentation (+2) ;
     bool first = true ;
     sint32 branchCount = 0 ;
@@ -650,9 +650,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     ioCppFile << "if (" ;
     aNomCppVariable1 (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._isBuilt (SOURCE_FILE_AT_LINE (" << aNomCppVariable1 (HERE)->mVariableLocation.lineNumber () << ")) && " ;
+    ioCppFile << "._isBuilt () && " ;
     aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._isBuilt (SOURCE_FILE_AT_LINE (" << aNomCppVariable2 (HERE)->mVariableLocation.lineNumber () << "))) {\n" ;
+    ioCppFile << "._isBuilt ()) {\n" ;
     ioCppFile.incIndentation (+2) ;
     if (! mOperand1_isEnumeration.boolValue ()) {
       ioCppFile << "cPtr_" << aNomTypeBase1 << " * ptr_" << aIndicatif1.location () << " = " ;

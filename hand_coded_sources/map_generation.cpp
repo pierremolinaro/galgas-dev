@@ -54,8 +54,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  constructor_null (C_Compiler & inLexique\n"
              "                    COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Comparison operators\n"
-             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << mMapindexTypeName << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << mMapindexTypeName << " & inOperand COMMA_LOCATION_ARGS) const ;\n\n"
+             "  public : GGS_bool _operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n\n"
              "//--- 'description' reader declaration\n"
              "  public : GGS_string\n"
              "  reader_description (C_Compiler & _inLexique\n"
@@ -130,17 +130,15 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
-               "_operator_isEqual (C_Compiler & _inLexique,\n"
-               "                   const GGS_" << mMapindexTypeName << " & inOperand\n"
-               "                   COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE),\n"
+               "_operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   (mState == inOperand.mState)) ;\n"
                "}\n\n" ;
               
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
-               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << mMapindexTypeName << " & inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE),\n"
+               "_operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   (mState != inOperand.mState)) ;\n"
                "}\n\n" ;
               
@@ -169,14 +167,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Type Method 'makeRegularIndex
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mMapindexTypeName << "::\n"
-               "class_method_makeRegularIndex (C_Compiler & inLexique,\n"
+               "class_method_makeRegularIndex (C_Compiler & /* inLexique*/ ,\n"
                "                               const GGS_lstring & inKey,\n"
                "                               GGS_" << mMapTypeName << " & ioMap,\n"
                "                               GGS_" << mMapindexTypeName << " & outIndex\n"
-               "                               COMMA_LOCATION_ARGS) {\n"
+               "                               COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  outIndex.mState = kRegular ;\n"
                "  outIndex.mKey = inKey ;\n"
-               "  ioMap.enterIndex (inLexique, inKey, outIndex.mIndex COMMA_THERE) ;\n"
+               "  ioMap.enterIndex (inKey, outIndex.mIndex) ;\n"
                "  if (outIndex.mIndex.retrieve () == NULL) {\n"
                "    outIndex._drop_operation () ;\n"
                "  }\n"
@@ -281,7 +279,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : inline elementOf_GGS_" << aNomTable << " * infObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mInfPtr ; }\n"
              "  public : inline elementOf_GGS_" << aNomTable << " * supObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mSupPtr ; }\n"
              "//--- Comparison\n"
-             "  protected : virtual bool isEqualToMapElement (C_Compiler & _inLexique, const AC_galgas_map_element * inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  protected : virtual bool isEqualToMapElement (const AC_galgas_map_element * inOperand) const ;\n"
              "//--- Data member\n"
              "  public : e_" << aNomTable << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
@@ -314,8 +312,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }\n"
              "  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }\n\n"
              "//--- Comparison methods\n"
-             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << aNomTable << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomTable << " & inOperand COMMA_LOCATION_ARGS) const ;\n\n"
+             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomTable << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomTable << " & inOperand) const ;\n\n"
              "//--- Create a new element\n"
              "  protected : virtual AC_galgas_map_element *\n"
              "  new_element (const GGS_lstring & inKey, void * inInfo) ;\n\n"
@@ -323,10 +321,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  protected : virtual void\n"
              "  assignInfo (AC_galgas_map_element * inPtr, void * inInfo) ;\n\n"
              "//--- Enter an index\n"
-             "  public : void enterIndex (C_Compiler & _inLexique,\n"
-             "                            const GGS_lstring & inKey,\n"
-             "                            AC_galgas_index_core & outIndex\n"
-             "                            COMMA_LOCATION_ARGS) ;\n\n"
+             "  public : void enterIndex (const GGS_lstring & inKey,\n"
+             "                            AC_galgas_index_core & outIndex) ;\n\n"
              "//--- Get object pointer (for method call)\n"
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n\n"
@@ -536,10 +532,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "bool elementOf_GGS_" << aNomTable << "::\n" ;
   current = mNonExternAttributesList.firstObject () ;
   if (current == NULL) {
-    inCppFile << "isEqualToMapElement (C_Compiler &, const AC_galgas_map_element * /* inOperand */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+    inCppFile << "isEqualToMapElement (const AC_galgas_map_element * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
-    inCppFile << "isEqualToMapElement (C_Compiler & _inLexique, const AC_galgas_map_element * inOperand COMMA_LOCATION_ARGS) const {\n"
+    inCppFile << "isEqualToMapElement (const AC_galgas_map_element * inOperand) const {\n"
                  "  const elementOf_GGS_" << aNomTable << " * _p = dynamic_cast <const elementOf_GGS_" << aNomTable << " *> (inOperand) ;\n"
                  "  macroValidPointer (_p) ;\n"
                  "  return " ;
@@ -551,7 +547,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       }else{
         inCppFile << "\n           && " ;
       }
-      inCppFile << "(mInfo." << current->aNomAttribut << "._operator_isEqual (_inLexique, _p->mInfo." << current->aNomAttribut << " THERE)).boolValue ()" ;
+      inCppFile << "(mInfo." << current->aNomAttribut << "._operator_isEqual (_p->mInfo." << current->aNomAttribut << ")).boolValue ()" ;
       current = current->nextObject () ;
     }
     inCppFile << " ;\n" ;
@@ -592,32 +588,26 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- 'enterIndex'  method
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
-               "enterIndex (C_Compiler & inLexique,\n"
-               "            const GGS_lstring & inKey,\n"
-               "            AC_galgas_index_core & outIndex\n"
-               "            COMMA_LOCATION_ARGS) {\n"
+               "enterIndex (const GGS_lstring & inKey,\n"
+               "            AC_galgas_index_core & outIndex) {\n"
                "  e_" << aNomTable << " info  ;\n"
-               "  internalEnterIndex (inLexique,\n"
-               "                      inKey,\n"
+               "  internalEnterIndex (inKey,\n"
                "                      (void *) & info,\n"
                "                      mSharedMapRoot->rootForKey (inKey),\n"
-               "                      outIndex\n"
-               "                      COMMA_THERE) ;\n"
+               "                      outIndex) ;\n"
                "}\n\n" ;
 
 //--- Generate comparison
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
-               "_operator_isEqual (C_Compiler & _inLexique,\n"
-               "                   const GGS_" << aNomTable << " & inOperand\n"
-               "                   COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), isEqualToMap (_inLexique, inOperand THERE)) ;\n"
+               "_operator_isEqual (const GGS_" << aNomTable << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
-               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomTable << " & inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), ! isEqualToMap (_inLexique, inOperand THERE)) ;\n"
+               "_operator_isNotEqual (const GGS_" << aNomTable << " & inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
 //--- 'internalInsertForDuplication' method
@@ -652,7 +642,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "                COMMA_LOCATION_ARGS) {\n"
                  "  AC_galgas_map_element * removedElement = NULL ;\n"
                  "  sint32 elementID = - 1 ;\n"
-                 "  if (_isBuilt (THERE) && inKey._isBuilt (THERE)) {\n"
+                 "  if (_isBuilt () && inKey._isBuilt ()) {\n"
                  "    bool unused ;\n"
                  "    _internalRemove (mSharedMapRoot->rootForKey (inKey), inKey, removedElement, unused) ;\n"
                  "    if (removedElement == NULL) {\n"
@@ -704,16 +694,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "                GGS_luint * outIndex\n"
                "                COMMA_LOCATION_ARGS) {\n"
                "  sint32 elementID = - 1 ;\n"
-               "  if (_isBuilt (THERE)\n" ;
+               "  if (_isBuilt ()\n" ;
   current = mNonExternAttributesList.firstObject () ;
   attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "   && inParameter" << attributeIndex << "._isBuilt (THERE)\n" ;
+    inCppFile << "   && inParameter" << attributeIndex << "._isBuilt ()\n" ;
     attributeIndex ++ ;
     current = current->nextObject () ;
   }
-  inCppFile<<  "   && inKey._isBuilt (THERE)) {\n"
+  inCppFile<<  "   && inKey._isBuilt ()) {\n"
                "    insulateMap () ;\n"
                "    e_" << aNomTable << " info  ;\n" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -754,7 +744,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "               GGS_luint * outIndex\n"
                "               COMMA_LOCATION_ARGS) const {\n"
                "  element_type * node = NULL  ;\n"
-               "  if (_isBuilt (THERE) && inKey._isBuilt (THERE)) {\n"
+               "  if (_isBuilt () && inKey._isBuilt ()) {\n"
                "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (element_type *) p ;\n"
@@ -971,7 +961,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
                "    element_type * p = firstObject () ;\n"
                "    sint32 elementID = 0 ;\n"
@@ -1045,8 +1035,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "//--- Comparison methods\n"
-             "  public : GGS_bool _operator_isEqual (C_Compiler &, const GGS_" << aNomTable << " & /* inOperand */ COMMA_UNUSED_LOCATION_ARGS) const { return GGS_bool (true, true) ; }\n"
-             "  public : GGS_bool _operator_isNotEqual (C_Compiler &, const GGS_" << aNomTable << " & /* inOperand */ COMMA_UNUSED_LOCATION_ARGS) const { return GGS_bool (true, true) ; }\n"
+             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true, true) ; }\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true, true) ; }\n"
              "//--- Handle 'emptyMap' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n" ;
 
@@ -1338,11 +1328,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
                "reader_description (C_Compiler & /* _inLexique */\n"
-               "                    COMMA_LOCATION_ARGS,\n"
+               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
                "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
-               "  if (_isBuilt (THERE)) {\n"
+               "  if (_isBuilt ()) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s\" : \"\") ;\n"
                "  }else{\n"
                "    s << \"not built\" ;\n"

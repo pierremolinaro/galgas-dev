@@ -29,9 +29,7 @@
 void cPtr_typeUnaryMinusOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._operator_unary_minus (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
-              << mOperatorLocation.lineNumber ()
-              << "))" ;
+  ioCppFile << "._operator_unary_minus (_inLexique)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -52,7 +50,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeUnaryMinusOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -69,8 +67,7 @@ void cPtr_typeTestComplement::
 generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_not (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")._operator_not ()" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -91,7 +88,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeTestComplement::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -107,8 +104,7 @@ void cPtr_typeLogicalNegate::
 generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_tilde (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")._operator_tilde ()" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -129,7 +125,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeLogicalNegate::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -144,10 +140,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeAndOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_and (_inLexique, " ;
+  ioCppFile << ")._operator_and (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -170,7 +165,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeAndOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -185,10 +181,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeOrOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_or (_inLexique, " ;
+  ioCppFile << ")._operator_or (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -211,7 +206,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeOrOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -226,10 +222,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeXorOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_xor (_inLexique, " ;
+  ioCppFile << ")._operator_xor (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -252,7 +247,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeXorOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -267,10 +263,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeConcatOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_concat (_inLexique, " ;
+  ioCppFile << ")._operator_concat (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -293,7 +288,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeConcatOperation::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -730,9 +726,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_isEqual (_inLexique, " ;
+  ioCppFile << ")._operator_isEqual (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE (" << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -755,7 +751,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeEqualTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -770,9 +767,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeNonEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_isNotEqual (_inLexique, " ;
+  ioCppFile << ")._operator_isNotEqual (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE (" << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -795,7 +792,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeNonEqualTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -810,9 +808,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeInfOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_infOrEqual (_inLexique, " ;
+  ioCppFile << ")._operator_infOrEqual (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE (" << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -835,7 +833,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeInfOrEqualTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -850,9 +849,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeStrictInfTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_strictInf (_inLexique, " ;
+  ioCppFile << ")._operator_strictInf (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE (" << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -875,7 +874,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeStrictInfTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -890,9 +890,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeSupOrEqualTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_supOrEqual (_inLexique, " ;
+  ioCppFile << ")._operator_supOrEqual (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE (" << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -915,7 +915,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeSupOrEqualTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -930,9 +931,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeStrictSupTest::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ")._operator_strictSup (_inLexique, " ;
+  ioCppFile << ")._operator_strictSup (" ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " SOURCE_FILE_AT_LINE (" << mOperatorLocation.lineNumber () << "))" ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -955,7 +956,8 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeStrictSupTest::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  return mLeftExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+      || mRightExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*

@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate enum class                                                      *
 //                                                                           *
-//  Copyright (C) 2004, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 2004, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -68,7 +68,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Bit count for bdd\n"
              "  public : static inline uint16 bitCount (void) { return " << bitCount << " ; }\n\n"
              "//--- Is built ?\n"
-             "  public : bool _isBuilt (LOCATION_ARGS) const ;\n\n"
+             "  public : bool _isBuilt (void) const ;\n\n"
              "//--- Construction from GALGAS constructor\n" ;
   cst = mConstantMap.firstObject () ;
   while (cst != NULL) {
@@ -93,12 +93,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Drop operation\n"
              "  public : inline void _drop_operation (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
-             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_infOrEqual (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_supOrEqual (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_strictInf (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const ;\n"
-             "  public : GGS_bool _operator_strictSup (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_bool _operator_isEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool _operator_infOrEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool _operator_supOrEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool _operator_strictInf (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool _operator_strictSup (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
              "} ;\n\n" ;
 } 
 
@@ -127,7 +127,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   
   inCppFile << "bool GGS_" << mEnumTypeName
             << "::\n"
-               "_isBuilt (LOCATION_ARGS) const {\n"
+               "_isBuilt (void) const {\n"
                "  return mValue > kNotBuilt ;\n"
                "}\n\n" ;
 
@@ -135,10 +135,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_isEqual (C_Compiler & _inLexique,\n"
-               "                   const GGS_" << mEnumTypeName << " inOperand\n"
-               "                   COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE),\n"
+               "_operator_isEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue == inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -146,8 +144,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE),\n"
+               "_operator_isNotEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue != inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -155,8 +153,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_infOrEqual (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE),\n"
+               "_operator_infOrEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue <= inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -164,8 +162,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_supOrEqual (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE),\n"
+               "_operator_supOrEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue >= inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -173,8 +171,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_strictInf (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE),\n"
+               "_operator_strictInf (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue < inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -182,8 +180,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_strictSup (C_Compiler & _inLexique, const GGS_" << mEnumTypeName << " inOperand COMMA_LOCATION_ARGS) const {\n"
-               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE),\n"
+               "_operator_strictSup (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
                "                   mValue > inOperand.mValue) ;\n"
                "}\n\n" ;
 
