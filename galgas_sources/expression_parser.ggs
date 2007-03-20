@@ -618,6 +618,7 @@ rule <expression>
   ;
   repeat
   while
+    @location operatorLocation := here ;
     $.$ ;
     @typeExpression leftOperand := outExpression ;
     @typeExpression rightOperand ;
@@ -630,7 +631,7 @@ rule <expression>
        ?rightOperand
        ?secondOperandType
     ;
-   outExpression := [@typeConcatOperation new !leftOperand !rightOperand] ;
+   outExpression := [@typeConcatOperation new !operatorLocation !leftOperand !rightOperand] ;
     matchConcatOperator
       !firstOperandType
       !secondOperandType
@@ -661,6 +662,7 @@ rule <concatenation_term>
   ;
   repeat
   while
+    @location operatorLocation := here ;
     $|$ ;
     @typeExpression leftOperand := outExpression ;
     @typeExpression rightOperand ;
@@ -673,13 +675,14 @@ rule <concatenation_term>
       ?rightOperand
       ?secondOperandType
     ;
-    outExpression := [@typeOrOperation new !leftOperand !rightOperand] ;
+    outExpression := [@typeOrOperation new !operatorLocation !leftOperand !rightOperand] ;
     matchOrOperator
       !firstOperandType
       !secondOperandType
       ?outResultType
      ;
   while
+    @location operatorLocation := here ;
     $^$ ;
     @typeExpression leftOperand := outExpression ;
     @typeExpression rightOperand ;
@@ -692,7 +695,7 @@ rule <concatenation_term>
       ?rightOperand
       ?secondOperandType
     ;
-    outExpression := [@typeXorOperation new !leftOperand !rightOperand] ;
+    outExpression := [@typeXorOperation new !operatorLocation !leftOperand !rightOperand] ;
     matchXorOperator
       !firstOperandType
       !secondOperandType
@@ -723,6 +726,7 @@ rule <relation_term>
   ;
   repeat
   while
+    @location operatorLocation := here ;
     $&$ ;
     @typeExpression leftOperand := outExpression ;
     @typeExpression rightOperand ;
@@ -735,7 +739,7 @@ rule <relation_term>
       ?rightOperand
       ?secondOperandType
     ;
-    outExpression := [@typeAndOperation new !leftOperand !rightOperand] ;
+    outExpression := [@typeAndOperation new !operatorLocation !leftOperand !rightOperand] ;
     matchAndOperator
       !firstOperandType
       !secondOperandType
@@ -766,6 +770,7 @@ rule <relation_factor>
   ;
   select
   or
+    @location operatorLocation := here ;
     $==$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -778,9 +783,10 @@ rule <relation_factor>
       ?rightExpression
       ?rightType ;
     comparison_types_check !leftType !rightType ;
-    outExpression := [@typeEqualTest new !leftExpression !rightExpression] ;
+    outExpression := [@typeEqualTest new !operatorLocation !leftExpression !rightExpression] ;
     outResultType := [@typeGalgas_bool new] ;
   or
+    @location operatorLocation := here ;
     $!=$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -794,9 +800,10 @@ rule <relation_factor>
       ?rightType
     ;
     comparison_types_check !leftType !rightType ;
-    outExpression := [@typeNonEqualTest new !leftExpression !rightExpression] ;
+    outExpression := [@typeNonEqualTest new !operatorLocation !leftExpression !rightExpression] ;
     outResultType := [@typeGalgas_bool new] ;
   or
+    @location operatorLocation := here ;
     $<=$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -810,9 +817,10 @@ rule <relation_factor>
       ?rightType
     ;
     magnitude_comparison_types_check !leftType !rightType ;
-    outExpression := [@typeInfOrEqualTest new !leftExpression !rightExpression] ;
+    outExpression := [@typeInfOrEqualTest new !operatorLocation !leftExpression !rightExpression] ;
     outResultType := [@typeGalgas_bool new] ;
   or
+    @location operatorLocation := here ;
     $>=$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -826,9 +834,10 @@ rule <relation_factor>
       ?rightType
     ;
     magnitude_comparison_types_check !leftType !rightType ;
-    outExpression := [@typeSupOrEqualTest new !leftExpression !rightExpression] ;
+    outExpression := [@typeSupOrEqualTest new !operatorLocation !leftExpression !rightExpression] ;
     outResultType := [@typeGalgas_bool new] ;
   or
+    @location operatorLocation := here ;
     $>$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -842,9 +851,10 @@ rule <relation_factor>
       ?rightType
     ;
     magnitude_comparison_types_check !leftType !rightType ;
-    outExpression := [@typeStrictSupTest new !leftExpression !rightExpression] ;
+    outExpression := [@typeStrictSupTest new !operatorLocation !leftExpression !rightExpression] ;
     outResultType := [@typeGalgas_bool new] ;
   or
+    @location operatorLocation := here ;
     $<$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -858,7 +868,7 @@ rule <relation_factor>
       ?rightType
     ;
     magnitude_comparison_types_check !leftType !rightType ;
-    outExpression := [@typeStrictInfTest new !leftExpression !rightExpression] ;
+    outExpression := [@typeStrictInfTest new !operatorLocation !leftExpression !rightExpression] ;
     outResultType := [@typeGalgas_bool new] ;
   end select ;
 end rule ;
@@ -885,6 +895,7 @@ rule <simple_expression>
   ;
   repeat
   while 
+    @location operatorLocation := here ;
     $<<$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -898,8 +909,9 @@ rule <simple_expression>
       ?rightType
     ;
     left_shift_types_check !leftType !rightType ?outResultType ;
-    outExpression := [@typeLeftShiftOperation new !leftExpression !rightExpression !here] ;
+    outExpression := [@typeLeftShiftOperation new !operatorLocation !leftExpression !rightExpression] ;
   while 
+    @location operatorLocation := here ;
     $>>$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -913,8 +925,9 @@ rule <simple_expression>
       ?rightType
     ;
     right_shift_types_check !leftType !rightType ?outResultType ;
-    outExpression := [@typeRightShiftOperation new !leftExpression !rightExpression !here] ;
+    outExpression := [@typeRightShiftOperation new !operatorLocation !leftExpression !rightExpression] ;
   while 
+    @location operatorLocation := here ;
     $+$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -928,8 +941,9 @@ rule <simple_expression>
       ?rightType
     ;
     addition_types_check !leftType !rightType ?outResultType ;
-    outExpression := [@typeAddOperation new !leftExpression !rightExpression !here] ;
+    outExpression := [@typeAddOperation new !operatorLocation !leftExpression !rightExpression] ;
   while 
+    @location operatorLocation := here ;
     $-$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -943,7 +957,7 @@ rule <simple_expression>
       ?rightType
     ;
     substraction_types_check !leftType !rightType ?outResultType ;
-    outExpression := [@typeSubOperation new !leftExpression !rightExpression !here] ;
+    outExpression := [@typeSubOperation new !operatorLocation !leftExpression !rightExpression] ;
   end repeat ;
 end rule ;
 
@@ -969,6 +983,7 @@ rule <term>
   ;
   repeat
   while 
+    @location operatorLocation := here ;
     $*$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -982,8 +997,9 @@ rule <term>
       ?rightType
     ;
     multiply_types_check !leftType !rightType ?outResultType ;
-    outExpression := [@typeMultiplyOperation new !leftExpression !rightExpression !here] ;
+    outExpression := [@typeMultiplyOperation new !operatorLocation !leftExpression !rightExpression] ;
   while 
+    @location operatorLocation := here ;
     $/$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -997,8 +1013,9 @@ rule <term>
       ?rightType
     ;
     divide_types_check !leftType !rightType ?outResultType ;
-    outExpression := [@typeDivideOperation new !leftExpression !rightExpression !here] ;
+    outExpression := [@typeDivideOperation new !operatorLocation !leftExpression !rightExpression] ;
   while 
+    @location operatorLocation := here ;
     $mod$ ;
     @typeExpression leftExpression := outExpression ;
     @AC_galgasType leftType := outResultType ;
@@ -1012,7 +1029,7 @@ rule <term>
       ?rightType
     ;
     modulo_types_check !leftType !rightType ?outResultType ;
-    outExpression := [@typeModuloOperation new !leftExpression !rightExpression !here] ;
+    outExpression := [@typeModuloOperation new !operatorLocation !leftExpression !rightExpression] ;
   end repeat ;
 end rule ;
 
@@ -1029,6 +1046,7 @@ rule <factor>
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
+  @location operatorLocation := here ;
   $-$ ;
   @typeExpression expression ;
   @AC_galgasType type ;
@@ -1040,7 +1058,7 @@ rule <factor>
     ?type
   ;
   unary_minus_type_check !type ?outResultType ;
-  outExpression := [@typeUnaryMinusOperation new !expression !here] ;
+  outExpression := [@typeUnaryMinusOperation new !operatorLocation !expression] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -1098,6 +1116,7 @@ rule <factor>
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
+  @location operatorLocation := here ;
   $not$ ;
   @typeExpression ifCondition ;
   @AC_galgasType operandType ;
@@ -1108,7 +1127,7 @@ rule <factor>
     ?ifCondition
     ?operandType
   ;
-  outExpression := [@typeTestComplement new !ifCondition] ;
+  outExpression := [@typeTestComplement new !operatorLocation !ifCondition] ;
   checkNotOperator !operandType ?outResultType ;
 end rule ;
 
@@ -1125,6 +1144,7 @@ rule <factor>
   !@typeExpression outExpression
   !@AC_galgasType outResultType
 :
+  @location operatorLocation := here ;
   $~$ ;
   @typeExpression ifCondition ;
   @AC_galgasType operandType ;
@@ -1135,7 +1155,7 @@ rule <factor>
     ?ifCondition
     ?operandType
   ;
-  outExpression := [@typeLogicalNegate new !ifCondition] ;
+  outExpression := [@typeLogicalNegate new !operatorLocation !ifCondition] ;
   checkLogicalNegateOperator !operandType ?outResultType ;
 end rule ;
 
@@ -1381,7 +1401,7 @@ rule <factor>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
       ;
-      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !here !conversionMethod] ;
+      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod] ;
     end select ;
   or
   #--- Class name

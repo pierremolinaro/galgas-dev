@@ -72,7 +72,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  protected : bool isEqualToObject (const cListElement * inOperand) const ;\n\n"
+             "  protected : virtual bool\n"
+             "  isEqualToObject (C_Compiler & _inLexique,\n"
+             "                   const cListElement * inOperand\n"
+             "                   COMMA_LOCATION_ARGS) const ;\n\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void appendForDescription (C_Compiler & _inLexique,\n"
@@ -112,8 +115,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Copy Constructor\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " & inSource) ;\n"
              "//--- Comparison Operators\n"
-             "  public : GGS_bool operator == (const GGS_" << aNomListe << " & inOperand) const ;\n"
-             "  public : GGS_bool operator != (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
@@ -235,7 +238,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << aNomListe << " operator + (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_" << aNomListe << " _operator_concat (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Prepend a new value
              "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
@@ -357,10 +360,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   current = mNonExternAttributesList.firstObject () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n" ;
   if (current == NULL) {
-    inCppFile << "isEqualToObject (const cListElement * /* inOperand */) const {\n"
+    inCppFile << "isEqualToObject (C_Compiler & /* _inLexique */,\n"
+                 "                 const  cListElement * /* inOperand */\n"
+                 "                 COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  return true ;\n" ;
   }else{
-    inCppFile << "isEqualToObject (const cListElement * inOperand) const {\n"
+    inCppFile << "isEqualToObject (C_Compiler & _inLexique,\n"
+                 "                 const  cListElement * inOperand\n"
+                 "                 COMMA_LOCATION_ARGS) const {\n"
                  "  bool equal = inOperand == this ;\n"
                  "  if (! equal) {\n"
                  "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
@@ -372,7 +379,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       if (numeroVariable > 0) {
         inCppFile << "\n         && " ;
       }
-      inCppFile << "(" << current->aNomAttribut << " == _p->"  << current->aNomAttribut << ").boolValue ()" ;
+      inCppFile << current->aNomAttribut << "._operator_isEqual (_inLexique, _p->"  << current->aNomAttribut << " THERE).boolValue ()" ;
       current = current->nextObject () ;
       numeroVariable ++ ;
     }
@@ -429,14 +436,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Generate comparison
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "operator == (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE), isEqualToList (inOperand)) ;\n"
+               "_operator_isEqual (C_Compiler & _inLexique,\n"
+               "                   const GGS_" << aNomListe << " & inOperand\n"
+               "                   COMMA_LOCATION_ARGS) const {\n"
+               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), isEqualToList (_inLexique, inOperand THERE)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "operator != (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE), ! isEqualToList (inOperand)) ;\n"
+               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const {\n"
+               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), ! isEqualToList (_inLexique, inOperand THERE)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -549,9 +558,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "operator + (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "_operator_concat (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  if (_isBuilt (HERE) && inOperand._isBuilt (HERE)) {\n"
+               "  if (_isBuilt (THERE) && inOperand._isBuilt (THERE)) {\n"
                "    if (count () == 0) {\n"
                "      result = inOperand ;\n"
                "    }else{\n"
@@ -951,7 +960,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  protected : bool isEqualToObject (const cSortedListElement * inOperand) const ;\n"
+             "  protected : virtual bool\n"
+             "  isEqualToObject (C_Compiler & _inLexique,\n"
+             "                   const cSortedListElement * inOperand\n"
+             "                   COMMA_LOCATION_ARGS) const ;\n"
 //--- Virtual method for implementing element comparison
              "//--- Method used for sorting elements\n"
              "  protected : virtual sint32 compareForSorting (const cSortedListElement * inOperand) const ;\n"
@@ -993,8 +1005,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Copy Constructor\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " & inSource) ;\n"
              "//--- Comparison Operators\n"
-             "  public : GGS_bool operator == (const GGS_" << aNomListe << " & inOperand) const ;\n"
-             "  public : GGS_bool operator != (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand  COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Constructor 'emptySortedList'
              "//--- Constructor 'emptySortedList'\n"
@@ -1116,7 +1128,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << aNomListe << " operator + (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_" << aNomListe << " _operator_concat (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
 //--- Internal methods
              "//--- Internal Methods\n"
               "  protected : void _internalAppendValues (" ;
@@ -1203,7 +1215,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Element comparison
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n"
-               "isEqualToObject (const cSortedListElement * inOperand) const {\n"
+               "isEqualToObject (C_Compiler & _inLexique,\n"
+               "                 const cSortedListElement * inOperand\n"
+               "                 COMMA_LOCATION_ARGS) const {\n"
                "  bool equal = inOperand == this ;\n"
                "  if (! equal) {\n"
                "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
@@ -1216,7 +1230,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (numeroVariable > 0) {
       inCppFile << "\n         && " ;
     }
-    inCppFile << "(" << current->aNomAttribut << " == _p->"  << current->aNomAttribut << ").boolValue ()" ;
+    inCppFile << current->aNomAttribut << "._operator_isEqual (_inLexique, _p->"  << current->aNomAttribut << " THERE).boolValue ()" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -1289,14 +1303,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Generate comparison
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "operator == (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE), isEqualToList (inOperand)) ;\n"
+               "_operator_isEqual (C_Compiler & _inLexique,\n"
+               "                   const GGS_" << aNomListe << " & inOperand\n"
+               "                   COMMA_LOCATION_ARGS) const {\n"
+               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), isEqualToList (_inLexique, inOperand THERE)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "operator != (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE), ! isEqualToList (inOperand)) ;\n"
+               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const {\n"
+               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), ! isEqualToList (_inLexique, inOperand THERE)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -1366,9 +1382,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "operator + (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "_operator_concat (C_Compiler & _inLexique, const GGS_" << aNomListe << " & inOperand COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  if (_isBuilt (HERE) && inOperand._isBuilt (HERE)) {\n"
+               "  if (_isBuilt (THERE) && inOperand._isBuilt (THERE)) {\n"
                "    if (count () == 0) {\n"
                "      result = inOperand ;\n"
                "    }else{\n"

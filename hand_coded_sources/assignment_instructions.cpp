@@ -132,12 +132,13 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 static void
 generateInstructionPart (AC_OutputStream & ioCppFile,
                          const C_String & inTargetVariableCppName,
-                         const cPtr_typeExpression * inExpressionPtr,
+                         const cPtr_typeExpression  * inExpressionPtr,
+                         const sint32 inTargetVariableLineNumberInSourceFile,
                          bool & ioPreviousWasLiteralString) {
   const cPtr_typeConcatOperation * p = dynamic_cast <const cPtr_typeConcatOperation *> (inExpressionPtr) ;
   if (p != NULL) {
-    generateInstructionPart (ioCppFile, inTargetVariableCppName, p->mLeftExpression (HERE), ioPreviousWasLiteralString) ;
-    generateInstructionPart (ioCppFile, inTargetVariableCppName, p->mRightExpression (HERE), ioPreviousWasLiteralString) ;
+    generateInstructionPart (ioCppFile, inTargetVariableCppName, p->mLeftExpression (HERE), inTargetVariableLineNumberInSourceFile, ioPreviousWasLiteralString) ;
+    generateInstructionPart (ioCppFile, inTargetVariableCppName, p->mRightExpression (HERE), inTargetVariableLineNumberInSourceFile, ioPreviousWasLiteralString) ;
   }else{
     const cPtr_typeLiteralStringExpression * p2 = dynamic_cast <const cPtr_typeLiteralStringExpression *> (inExpressionPtr) ;
     if (p2 != NULL) {
@@ -164,11 +165,30 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
         ioCppFile << ") ;\n" ;
         ioPreviousWasLiteralString = false ; 
       }
-      ioCppFile << inTargetVariableCppName << "._dotAssign_operation (" ;
+      ioCppFile << inTargetVariableCppName << "._dotAssign_operation (_inLexique, " ;
       inExpressionPtr->generateExpression (ioCppFile) ;
-      ioCppFile << ") ;\n" ;
+      ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+                << inTargetVariableLineNumberInSourceFile << ")) ;\n" ;
     }
   }
+}
+
+//---------------------------------------------------------------------------*
+
+static bool
+usesLexiqueArgument (const cPtr_typeExpression * inExpressionPtr) {
+  bool result = false ;
+  const cPtr_typeConcatOperation * p = dynamic_cast <const cPtr_typeConcatOperation *> (inExpressionPtr) ;
+  if (p != NULL) {
+    result = usesLexiqueArgument (p->mLeftExpression (HERE)) ;
+    if (! result) {
+      result = usesLexiqueArgument (p->mRightExpression (HERE)) ;
+    }
+  }else{
+    const cPtr_typeLiteralStringExpression * p2 = dynamic_cast <const cPtr_typeLiteralStringExpression *> (inExpressionPtr) ;
+    result = p2 == NULL ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -182,15 +202,20 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     C_String targetVariableCppName ;
     mTargetVarCppName (HERE)->generateCplusPlusName (targetVariableCppName) ;
+    const sint32 targetVariableLineNumberInSourceFile = mTargetVarCppName (HERE)->mVariableLocation.lineNumber () ;
     if (mSourceExpressionConverter.length () > 0) {
-      ioCppFile << targetVariableCppName << "._dotAssign_operation (" ;
+      ioCppFile << targetVariableCppName
+                << "._dotAssign_operation (_inLexique, " ;
       mSourceExpression (HERE)->generateExpression (ioCppFile) ;
-      ioCppFile << "." << mSourceExpressionConverter << " ()) ;\n" ;
+      ioCppFile << "." << mSourceExpressionConverter
+                << " () COMMA_SOURCE_FILE_AT_LINE ("
+                << targetVariableLineNumberInSourceFile << ")) ;\n" ;
     }else{
       bool previousWasLiteralString = false ;
       generateInstructionPart (ioCppFile,
                                targetVariableCppName,
                                mSourceExpression (HERE),
+                               targetVariableLineNumberInSourceFile,
                                previousWasLiteralString) ;
       if (previousWasLiteralString) {
         ioCppFile << ") ;\n" ;
@@ -203,7 +228,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
 bool cPtr_C_dotEqualInstruction::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  return usesLexiqueArgument (mSourceExpression (HERE)) ;
 }
 
 //---------------------------------------------------------------------------*

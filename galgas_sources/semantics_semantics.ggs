@@ -396,7 +396,6 @@ class @typeReaderCallInExpression extends @typeExpression {
   @typeExpression mExpressionValue ;
   @lstring mReaderName ;
   @typeExpressionList mExpressionList ;
-  @location mInstructionLocation ;
   @string mConversionMethod ;
 }
  
@@ -406,7 +405,7 @@ class @typeReaderCallInExpression extends @typeExpression {
 
 class @typeDescriptionInExpression extends @typeExpression {
   @typeExpression mExpressionValue ;
-  @location mInstructionLocation ;
+  @location mOperatorLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -414,6 +413,7 @@ class @typeDescriptionInExpression extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeAndOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -421,6 +421,7 @@ class @typeAndOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeOrOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -428,6 +429,7 @@ class @typeOrOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeXorOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -435,6 +437,7 @@ class @typeXorOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeConcatOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -507,12 +510,14 @@ class @typeConstructorExpression extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeTestComplement extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mExpression ;
 }
  
 #---------------------------------------------------------------------------*
 
 class @typeLogicalNegate extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mExpression ;
 }
  
@@ -557,9 +562,9 @@ class @typeJokerInExpression extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeAddOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -567,9 +572,9 @@ class @typeAddOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeSubOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -577,9 +582,9 @@ class @typeSubOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeMultiplyOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -587,9 +592,9 @@ class @typeMultiplyOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeDivideOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -597,9 +602,9 @@ class @typeDivideOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeModuloOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -607,8 +612,8 @@ class @typeModuloOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeUnaryMinusOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mExpression ;
-  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*
@@ -616,6 +621,7 @@ class @typeUnaryMinusOperation extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeEqualTest extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -623,6 +629,7 @@ class @typeEqualTest extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeNonEqualTest extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -630,6 +637,7 @@ class @typeNonEqualTest extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeStrictInfTest extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -637,6 +645,7 @@ class @typeStrictInfTest extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeInfOrEqualTest extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -644,6 +653,7 @@ class @typeInfOrEqualTest extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeStrictSupTest extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -651,6 +661,7 @@ class @typeStrictSupTest extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeSupOrEqualTest extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
@@ -658,17 +669,17 @@ class @typeSupOrEqualTest extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeLeftShiftOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*
 
 class @typeRightShiftOperation extends @typeExpression {
+  @location mOperatorLocation ;
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
-  @location mInstructionLocation ;
 }
  
 #---------------------------------------------------------------------------*

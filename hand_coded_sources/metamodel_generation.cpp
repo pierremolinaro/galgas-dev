@@ -97,7 +97,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  public : bool isEqualToObject (const cListElement * inOperand) const ;\n\n"
+             "  public : bool isEqualToObject (C_Compiler & _inLexique, const  cListElement * inOperand) const ;\n\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void\n"
@@ -184,8 +184,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Comparison
              "//--- Comparison methods\n"
-             "  public : GGS_bool operator == (const GGS_" << aNomClasse << " & inOperand) const ;\n"
-             "  public : GGS_bool operator != (const GGS_" << aNomClasse << " & inOperand) const ;\n\n" ;
+             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << aNomClasse << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomClasse << " & inOperand COMMA_LOCATION_ARGS) const ;\n\n" ;
 
   if (mSuperClassName.length () == 0) {
 //--- Engendrer la declaration de la methode '_isBuilt'
@@ -259,8 +259,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Copy Constructor\n"
              "  public : GGS_" << listClassName << " (const GGS_" << listClassName << " & inSource) ;\n"
              "//--- Comparison Operators\n"
-             "  public : GGS_bool operator == (const GGS_" << listClassName << " & inOperand) const ;\n"
-             "  public : GGS_bool operator != (const GGS_" << listClassName << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isEqual (C_Compiler & _inLexique, const GGS_" << listClassName << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << listClassName << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
@@ -382,7 +382,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << listClassName << " operator + (const GGS_" << listClassName << " & inOperand) const ;\n"
+             "  public : GGS_" << listClassName << " _operator_concat (C_Compiler & _inLexique, const GGS_" << listClassName << " & inOperand COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Prepend a new value
              "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
@@ -532,10 +532,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "bool cPtr_" << aNomClasse << "::\n" ;
   if (current == NULL) {
-    inCppFile << "isEqualToObject (const cListElement * /* inOperand */) const {\n"
+    inCppFile << "isEqualToObject (C_Compiler & _inLexique, const  cListElement * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
-    inCppFile << "isEqualToObject (const cListElement * inOperand) const {\n"
+    inCppFile << "isEqualToObject (C_Compiler & _inLexique, const  cListElement * inOperand) const {\n"
                  "  bool equal = inOperand == this ;\n"
                  "  if (! equal) {\n"
                  "    const cPtr_" << aNomClasse << " * _p = dynamic_cast <const cPtr_" << aNomClasse << " *> (inOperand) ;\n"
@@ -547,7 +547,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       if (numeroVariable > 0) {
         inCppFile << "\n         && " ;
       }
-      inCppFile << "(" << current->aNomAttribut << " == _p->"  << current->aNomAttribut << ").boolValue ()" ;
+      inCppFile << current->aNomAttribut << "._operator_isEqual (_inLexique, _p->"  << current->aNomAttribut << " THERE).boolValue ()" ;
       current = current->nextObject () ;
       numeroVariable ++ ;
     }
@@ -642,14 +642,16 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Generate comparison
   inCppFile << "GGS_bool GGS_" << listClassName << "::\n"
-               "operator == (const GGS_" << listClassName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE), isEqualToList (inOperand)) ;\n"
+               "_operator_isEqual (C_Compiler & _inLexique,\n"
+               "                   const GGS_" << listClassName << " & inOperand\n"
+               "                   COMMA_LOCATION_ARGS) const {\n"
+               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), isEqualToList (_inLexique, inOperand THERE)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << listClassName << "::\n"
-               "operator != (const GGS_" << listClassName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt (HERE) && inOperand._isBuilt (HERE), ! isEqualToList (inOperand)) ;\n"
+               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << listClassName << " & inOperand COMMA_LOCATION_ARGS) const {\n"
+               "  return GGS_bool (_isBuilt (THERE) && inOperand._isBuilt (THERE), ! isEqualToList (_inLexique, inOperand THERE)) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -763,9 +765,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << listClassName << " GGS_" << listClassName << "::\n"
-               "operator + (const GGS_" << listClassName << " & inOperand) const {\n"
+               "_operator_concat (C_Compiler & _inLexique, const GGS_" << listClassName << " & inOperand COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << listClassName << " result ;\n"
-               "  if (_isBuilt (HERE) && inOperand._isBuilt (HERE)) {\n"
+               "  if (_isBuilt (THERE) && inOperand._isBuilt (THERE)) {\n"
                "    if (count () == 0) {\n"
                "      result = inOperand ;\n"
                "    }else{\n"
@@ -1242,22 +1244,24 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Generate comparison operators
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
-               "operator == (const GGS_" << aNomClasse << " & inOperand) const {\n"
-               "  bool built = _isBuilt (HERE) && inOperand._isBuilt (HERE) ;\n"
+               "_operator_isEqual (C_Compiler & _inLexique,\n"
+               "                   const GGS_" << aNomClasse << " & inOperand\n"
+               "                   COMMA_LOCATION_ARGS) const {\n"
+               "  bool built = _isBuilt (THERE) && inOperand._isBuilt (THERE) ;\n"
                "  bool equal = mPointer == inOperand.mPointer ;\n"
                "  if (built && ! equal) {\n"
-               "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
+               "    equal = mPointer->isEqualToObject (_inLexique, inOperand.mPointer THERE) ;\n"
                "  }\n"
                "  return GGS_bool (built, equal) ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
-               "operator != (const GGS_" << aNomClasse << " & inOperand) const {\n"
+               "_operator_isNotEqual (C_Compiler & _inLexique, const GGS_" << aNomClasse << " & inOperand COMMA_LOCATION_ARGS) const {\n"
                "  bool built = _isBuilt (HERE) && inOperand._isBuilt (HERE) ;\n"
                "  bool equal = mPointer == inOperand.mPointer ;\n"
                "  if (built && ! equal) {\n"
-               "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
+               "    equal = mPointer->isEqualToObject (_inLexique, inOperand.mPointer THERE) ;\n"
                "  }\n"
                "  return GGS_bool (built, ! equal) ;\n"
                "}\n\n" ;
