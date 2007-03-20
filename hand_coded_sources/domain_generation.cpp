@@ -156,12 +156,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
             << currentAttribute->mKey.stringWithUpperCaseFirstLetter ()
-            << " (C_Compiler & /* inLexique */,\n"
+            << " (C_Compiler & inLexique,\n"
                "                                    const GGS_string & inNewValue\n"
-               "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "                                    COMMA_LOCATION_ARGS) {\n"
                "  bool bitCountExtended = false ;\n"
-               "  findOrAddEntry (_attribute_" << currentAttribute->mKey
-            << ", inNewValue, bitCountExtended) ;\n"
+               "  findOrAddEntry (inLexique, _attribute_" << currentAttribute->mKey
+            << ", inNewValue, bitCountExtended COMMA_THERE) ;\n"
                "  if (bitCountExtended) {\n"
                "    updateRelationsAfterBitCountExtension () ;\n"
                "  }\n"
@@ -177,21 +177,21 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
               << currentRelation->mKey.stringWithUpperCaseFirstLetter ()
-              << " (C_Compiler & /* inLexique */,\n" ;
+              << " (C_Compiler & inLexique,\n" ;
     for (sint32 i=1 ; i<currentRelation->mInfo.mDomains.count () ; i++) {
       inCppFile << "                                    const GGS_string & inValue_" << i << ",\n" ;
     }
     inCppFile << "                                    const GGS_string & inValue_"
               << currentRelation->mInfo.mDomains.count ()
               << "\n"
-                 "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "                                    COMMA_LOCATION_ARGS) {\n"
                  "  bool bitCountExtended = false ;\n" ;
     GGS_stringlist::element_type * currentDomainRelation = currentRelation->mInfo.mDomains.firstObject () ;
     sint32 idx = 1 ;
     while (currentDomainRelation != NULL) {
       macroValidPointer (currentDomainRelation) ;
-      inCppFile << "  const uint32 entry" << idx << " = findOrAddEntry (_attribute_" << currentDomainRelation->mValue
-                << ", inValue_" << idx << ", bitCountExtended) ;\n" ;
+      inCppFile << "  const uint32 entry" << idx << " = findOrAddEntry (inLexique, _attribute_" << currentDomainRelation->mValue
+                << ", inValue_" << idx << ", bitCountExtended COMMA_THERE) ;\n" ;
       idx ++ ;
       currentDomainRelation = currentDomainRelation->nextObject () ;
     }

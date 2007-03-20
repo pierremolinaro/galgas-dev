@@ -44,7 +44,7 @@ class cPtr_mapIndexProperty : public cPtr_metamodelProperty {
                                               const sint32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;
 //--- Comparison
-  public : virtual bool isEqualToObject (const C_GGS_Object * inOperand) const ;
+  public : virtual bool isEqualToObject (C_Compiler &, const C_GGS_Object * inOperand COMMA_LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------*
