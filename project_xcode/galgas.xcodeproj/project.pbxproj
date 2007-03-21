@@ -1838,7 +1838,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
+			remoteGlobalIDString = CF6DF19C09E3F30400506859;
 			remoteInfo = "GALGAS tool LL1 debug (ppc)";
 		};
 		CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */ = {

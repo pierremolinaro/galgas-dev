@@ -192,11 +192,11 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
 //--- Display nonterminal symbols in error
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p>") ;
-    *inHTMLfile << "Every useful nonterminal must :"
+    *inHTMLfile << "Every useful nonterminal should"
                    " either have a non empty FIRST,"
                    " either be derived to empty string,"
                    " either both."
-                   " In any way having none : it is an error." ;
+                   " In any way having none: it is an error." ;
     inHTMLfile->outputRawData ("</p>") ;
     inHTMLfile->outputRawData ("<p>") ;
     if (ntInErrorCount == 0L) {

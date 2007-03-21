@@ -726,6 +726,8 @@ class @typeGalgas_char extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 
+action extern_build_stringlist_type !@AC_galgasType outType ;
+
 class @typeGalgas_string extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -790,6 +792,11 @@ class @typeGalgas_string extends @AC_galgasType {
       outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !""! here] ;
     elsif [inClassMethodName string] == "CppString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "componentsJoinedByString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @AC_galgasType stringlistType ; extern_build_stringlist_type ?stringlistType ;
+      outAccessorTypesList += ! stringlistType ![@lstring new !""! here] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
@@ -3055,6 +3062,10 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "reversedString" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
+  elsif [inReaderName string] == "componentsSeparatedByString" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+    build_stringlist_type  ?outReturnedType ;
   else
     error inReaderName : "this reader is not defined"
      -> outAccessorTypesList, outReturnedType ;
