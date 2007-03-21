@@ -661,19 +661,44 @@ rule <while_branches_list>
   $while$ ;
   repeat
     @typeListeConditionsLexicales lcl ;
-    <lexical_test_expression> ? lcl ;
-    $:$ ;
     @tListeInstructionsLexicales li ;
-    <lexical_instructions_list>
-      ?li
-      !?table_des_terminaux
-      !?table_des_messages_erreur
-      !?table_attributs
-      !?table_tables_mots_reserves
-      !?ioUsedErrorMessageSet
-      ![@tagMap emptyMap]
-      !false
+    select
+      $~$ ;
+      lcl := [@typeListeConditionsLexicales emptyList] ;
+      @lstring ch ;
+      $literal_string$ ? ch ;
+      $error$ ;
+      @lstring errorMessageName ;
+      $identifier$ ? errorMessageName ;
+      @luint errorMessageIndex ;
+      [table_des_messages_erreur searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
+      ioUsedErrorMessageSet += ![errorMessageName string] ;
+      lcl += ![@typeConditionNonChaine new !ch !errorMessageIndex] ;
+      $:$ ;
+      <lexical_instructions_list>
+        ?li
+        !?table_des_terminaux
+        !?table_des_messages_erreur
+        !?table_attributs
+        !?table_tables_mots_reserves
+        !?ioUsedErrorMessageSet
+        ![@tagMap emptyMap]
+        !false
+      ;
+    or
+      <lexical_test_expression> ? lcl ;
+      $:$ ;
+      <lexical_instructions_list>
+        ?li
+        !?table_des_terminaux
+        !?table_des_messages_erreur
+        !?table_attributs
+        !?table_tables_mots_reserves
+        !?ioUsedErrorMessageSet
+        ![@tagMap emptyMap]
+        !false
     ;
+    end select ;
     liste_tests_et_instructions += !lcl !li ;
   while
     $while$ ;
@@ -873,6 +898,10 @@ rule <lexical_instructions_list>
     [!?tagMap insertKey !tagIdentifier] ;
     li += ![@typeLexicalTagInstruction new !tagIdentifier] ;
     $;$ ;
+  while
+    $log$ ;
+    $;$ ;
+    li += ![@typeLexicalLogInstruction new] ;
   while
     $rewind$ ;
     if not inCanSendTerminal then

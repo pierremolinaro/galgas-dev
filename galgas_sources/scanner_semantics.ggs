@@ -104,6 +104,11 @@ class @typeConditionChaine extends @typeConditionLexicale {
   @lstring attributChaine ;
 }
 
+class @typeConditionNonChaine extends @typeConditionLexicale {
+  @lstring attributChaine ;
+  @luint mEndOfFileErrorMessageIndex ;
+}
+
 class @typeConditionCaractere extends @typeConditionLexicale {
   @lchar attributCaractere ;
 }
@@ -219,6 +224,9 @@ class @typeInstructionEmettreSimple extends @typeInstructionLexicale {
 
 class @typeLexicalDropInstruction extends @typeInstructionLexicale {
   @lstring mTerminal ;
+}
+
+class @typeLexicalLogInstruction extends @typeInstructionLexicale {
 }
 
 class @typeLexicalTagInstruction extends @typeInstructionLexicale {

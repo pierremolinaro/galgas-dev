@@ -1671,6 +1671,22 @@
 		CFEF440A0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
 		CFEF440B0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
 		CFEF440C0B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */; };
+		CFEFE7D80BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
+		CFEFE7D90BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
+		CFEFE7DA0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
+		CFEFE7DB0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
+		CFEFE7DC0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
+		CFEFE7DD0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
+		CFEFE7DE0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
+		CFEFE7DF0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
+		CFEFE9450BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
+		CFEFE9460BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
+		CFEFE9470BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
+		CFEFE9480BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
+		CFEFE9490BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
+		CFEFE94A0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
+		CFEFE94B0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
+		CFEFE94C0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
 		CFF13E3A059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E3C059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E420597311700C43F5E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
@@ -2334,6 +2350,8 @@
 		CFEF40760B99877300CA3AF7 /* include_typeGalgas_singleReferenceEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleReferenceEntity.h; sourceTree = "<group>"; };
 		CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_mapindexToImplement.h; sourceTree = "<group>"; };
 		CFEF44040B99FC3F00CA3AF7 /* include_C_metamodelEntityToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_metamodelEntityToImplement.h; sourceTree = "<group>"; };
+		CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeConditionNonChaine.h; sourceTree = "<group>"; };
+		CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalLogInstruction.h; sourceTree = "<group>"; };
 		CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cli_options_parser.cpp; sourceTree = "<group>"; };
 		CFF13E39059730EB00C43F5E /* cli_options_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cli_options_parser.h; sourceTree = "<group>"; };
 		CFF13E410597311700C43F5E /* option_component_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_component_generation.cpp; sourceTree = "<group>"; };
@@ -2657,6 +2675,8 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */,
+				CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */,
 				CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */,
 				CF531CFD0B9F18770085A6CD /* include_C_treewalkingInstruction.h */,
 				CFD2149B0913BE2E0011F11E /* include_AC_galgasType.h */,
@@ -3504,6 +3524,8 @@
 				CF7B6B2A0BADB9710046EB3A /* option_treewalking_for_generating_header.h in Headers */,
 				CF3107EF0BAEA43A00BF8C6C /* option_semantics.h in Headers */,
 				CF3107F10BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
+				CFEFE7D80BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
+				CFEFE9450BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3603,6 +3625,8 @@
 				CF7B6B360BADB9710046EB3A /* option_treewalking_for_generating_header.h in Headers */,
 				CF3108070BAEA43A00BF8C6C /* option_semantics.h in Headers */,
 				CF3108090BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
+				CFEFE7DE0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
+				CFEFE94B0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3702,6 +3726,8 @@
 				CF7B6B380BADB9710046EB3A /* option_treewalking_for_generating_header.h in Headers */,
 				CF31080B0BAEA43A00BF8C6C /* option_semantics.h in Headers */,
 				CF31080D0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
+				CFEFE7DF0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
+				CFEFE94C0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3817,6 +3843,8 @@
 				CF7B6B2C0BADB9710046EB3A /* option_treewalking_for_generating_header.h in Headers */,
 				CF3107F30BAEA43A00BF8C6C /* option_semantics.h in Headers */,
 				CF3107F50BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
+				CFEFE7D90BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
+				CFEFE9460BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3916,6 +3944,8 @@
 				CF7B6B2E0BADB9710046EB3A /* option_treewalking_for_generating_header.h in Headers */,
 				CF3107F70BAEA43A00BF8C6C /* option_semantics.h in Headers */,
 				CF3107F90BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
+				CFEFE7DA0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
+				CFEFE9470BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4015,6 +4045,8 @@
 				CF7B6B300BADB9710046EB3A /* option_treewalking_for_generating_header.h in Headers */,
 				CF3107FB0BAEA43A00BF8C6C /* option_semantics.h in Headers */,
 				CF3107FD0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
+				CFEFE7DB0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
+				CFEFE9480BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4114,6 +4146,8 @@
 				CF7B6B320BADB9710046EB3A /* option_treewalking_for_generating_header.h in Headers */,
 				CF3107FF0BAEA43A00BF8C6C /* option_semantics.h in Headers */,
 				CF3108010BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
+				CFEFE7DC0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
+				CFEFE9490BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4213,6 +4247,8 @@
 				CF7B6B340BADB9710046EB3A /* option_treewalking_for_generating_header.h in Headers */,
 				CF3108030BAEA43A00BF8C6C /* option_semantics.h in Headers */,
 				CF3108050BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
+				CFEFE7DD0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
+				CFEFE94A0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
