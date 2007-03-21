@@ -613,6 +613,23 @@ generate_scanner_instruction (const C_String & /* inLexiqueName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+bool cPtr_typeLexicalLogInstruction::
+instruction__uses_loop_variable (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeLexicalLogInstruction::
+generate_scanner_instruction (const C_String & /* inLexiqueName */,
+                              const bool /* inGenerateEnterToken */,
+                              AC_OutputStream & inCppFile) const {
+  inCppFile << "lexicalLog (LINE_AND_SOURCE_FILE) ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 bool cPtr_typeLexicalRewindAndSendInstruction::
 instruction__uses_loop_variable (void) const {
   return false ;
@@ -768,8 +785,19 @@ void cPtr_typeConditionChaine::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
   inCppFile << "testForInputString (" ;
   inCppFile.writeCstringConstant (attributChaine) ;
-  inCppFile << ", " << attributChaine.length () ;
-  inCppFile << ")" ;
+  inCppFile << ", " << attributChaine.length ()
+            << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeConditionNonChaine::
+generateLexicalCondition (AC_OutputStream & inCppFile) {
+  inCppFile << "notTestForInputString (" ;
+  inCppFile.writeCstringConstant (attributChaine) ;
+  inCppFile << ", " << attributChaine.length ()
+            << ", gErrorMessage_" << mEndOfFileErrorMessageIndex.uintValue ()
+            << " COMMA_LINE_AND_SOURCE_FILE)" ;
 }
 
 //---------------------------------------------------------------------------*
