@@ -178,6 +178,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "\n                                "
                "COMMA_LOCATION_ARGS) ;\n" ;
+
+  //--- void constructor
+    /* inHfile << "//--- 'void' constructor\n"
+               "  public : static GGS_" << aNomClasse
+            << "  constructor_void (C_Compiler & inLexique\n" ;
+               "                    COMMA_LOCATION_ARGS) ;\n" ;*/
   }
 
 //--- Engendrer la declaration de la redefinition de l'operateur =
@@ -626,6 +632,17 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << ")) ;\n"
                  "  return result ;\n"
                  "}\n\n" ;
+
+  //--- void constructor
+    /* inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "GGS_" << aNomClasse
+              << " GGS_" << aNomClasse << "::\n"
+                 "constructor_void (C_Compiler & inLexique\n"
+                 "                  COMMA_LOCATION_ARGS) {\n"
+                 "  GGS_" << aNomClasse << " result ;\n"
+                 "  result.mPointer = (void *) 1 ;\n"
+                 "  return result ;\n"
+                 "}\n\n" ; */
   }
   
 //--- Generate declaration of message readers
