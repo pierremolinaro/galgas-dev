@@ -146,7 +146,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
       if (ioPreviousWasLiteralString) {
         first = false ;
       }else{
-        ioCppFile << inTargetVariableCppName << ".writeCstringConstant (" ;
+        ioCppFile << inTargetVariableCppName << ".writeString (" ;
       }
       GGS_stringlist::element_type * currentString = p2->mLiteralStringList.firstObject () ;
       while (currentString != NULL) {
@@ -154,7 +154,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
         if (first) {
           first = false ;
         }else{
-          ioCppFile << "\n  " ;
+          ioCppFile << "\n" ;
         }
         ioCppFile.writeCstringConstant (currentString->mValue) ;
         currentString = currentString->nextObject () ;
