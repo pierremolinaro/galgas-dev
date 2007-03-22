@@ -190,7 +190,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (mSuperClassName.length () == 0) {
 //--- Engendrer la declaration de la methode '_isBuilt'
     inHfile << "//--- _isBuilt\n"
-               "  public : bool _isBuilt (void) const ;\n\n"
+               "  public : inline bool _isBuilt (void) const { return mPointer != NULL ; }\n\n"
 
 
 //--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
@@ -1147,12 +1147,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_" << aNomClasse
             << "::\n~GGS_" << aNomClasse << " (void) {\n"
                "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
-               "}\n\n" ;
-
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "bool GGS_" << aNomClasse << "::\n"
-               "_isBuilt (void) const {\n"
-               "  return mPointer != NULL ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;

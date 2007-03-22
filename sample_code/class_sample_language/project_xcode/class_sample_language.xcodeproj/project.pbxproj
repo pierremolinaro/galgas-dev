@@ -248,6 +248,12 @@
 		CFE9BAD20A3C303800C9F7EC /* class_sample_language_syntax.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE9BAB80A3C303800C9F7EC /* class_sample_language_syntax.h */; };
 		CFE9BAD70A3C392600C9F7EC /* class_sample_language_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAD60A3C392600C9F7EC /* class_sample_language_computations.cpp */; };
 		CFE9BAD80A3C392600C9F7EC /* class_sample_language_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAD60A3C392600C9F7EC /* class_sample_language_computations.cpp */; };
+		CFF1D4800BB320D6007601E2 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1D47D0BB320D6007601E2 /* NSSplitViewExtensions.m */; };
+		CFF1D4810BB320D6007601E2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFF1D47F0BB320D6007601E2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
+		CFF1D4820BB320E5007601E2 /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE37D050B7BA0CA000D1999 /* predefined_types.cpp */; };
+		CFF1D4830BB320F0007601E2 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
+		CFF1D4840BB320F4007601E2 /* GGS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF4A02D0B1DD57E0017F7E7 /* GGS_uint64.cpp */; };
+		CFF1D4860BB3210D007601E2 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA61CD4061091C90089CEB5 /* AC_galgas_list.cpp */; };
 		CFF4A02F0B1DD57E0017F7E7 /* GGS_double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF4A01F0B1DD57E0017F7E7 /* GGS_double.cpp */; };
 		CFF4A0300B1DD57E0017F7E7 /* GGS_double.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF4A0200B1DD57E0017F7E7 /* GGS_double.h */; };
 		CFF4A0310B1DD57E0017F7E7 /* GGS_ldouble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF4A0210B1DD57E0017F7E7 /* GGS_ldouble.cpp */; };
@@ -443,6 +449,10 @@
 		CFE9BAB70A3C303800C9F7EC /* class_sample_language_syntax.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = class_sample_language_syntax.cpp; sourceTree = "<group>"; };
 		CFE9BAB80A3C303800C9F7EC /* class_sample_language_syntax.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = class_sample_language_syntax.h; sourceTree = "<group>"; };
 		CFE9BAD60A3C392600C9F7EC /* class_sample_language_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = class_sample_language_computations.cpp; sourceTree = "<group>"; };
+		CFF1D47C0BB320D6007601E2 /* NSSplitViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = NSSplitViewExtensions.h; sourceTree = "<group>"; };
+		CFF1D47D0BB320D6007601E2 /* NSSplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = NSSplitViewExtensions.m; sourceTree = "<group>"; };
+		CFF1D47E0BB320D6007601E2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
+		CFF1D47F0BB320D6007601E2 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = "<group>"; };
 		CFF4A01F0B1DD57E0017F7E7 /* GGS_double.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_double.cpp; sourceTree = "<group>"; };
 		CFF4A0200B1DD57E0017F7E7 /* GGS_double.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_double.h; sourceTree = "<group>"; };
 		CFF4A0210B1DD57E0017F7E7 /* GGS_ldouble.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_ldouble.cpp; sourceTree = "<group>"; };
@@ -600,6 +610,10 @@
 				CF825D46085386810077AEAF /* I_SaveAs.tiff */,
 				CF825D47085386810077AEAF /* I_Stop.tiff */,
 				CF825D48085386810077AEAF /* I_Window.png */,
+				CFF1D47C0BB320D6007601E2 /* NSSplitViewExtensions.h */,
+				CFF1D47D0BB320D6007601E2 /* NSSplitViewExtensions.m */,
+				CFF1D47E0BB320D6007601E2 /* OC_GGS_DelegateForSyntaxColoring.h */,
+				CFF1D47F0BB320D6007601E2 /* OC_GGS_DelegateForSyntaxColoring.mm */,
 				CF337A2A09EFAED600EC41F6 /* C_SourceTextForCoca.mm */,
 				CF337A2B09EFAED600EC41F6 /* C_SourceTextForCocoa.h */,
 				CF825D49085386810077AEAF /* OC_GGS_BuildWindowController.h */,
@@ -1111,6 +1125,12 @@
 				CFE37D0F0B7BA111000D1999 /* GGS_location.cpp in Sources */,
 				CFE37D110B7BA11C000D1999 /* GGS_string.cpp in Sources */,
 				CFE37D140B7BA136000D1999 /* F_main-fake.cpp in Sources */,
+				CFF1D4800BB320D6007601E2 /* NSSplitViewExtensions.m in Sources */,
+				CFF1D4810BB320D6007601E2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
+				CFF1D4820BB320E5007601E2 /* predefined_types.cpp in Sources */,
+				CFF1D4830BB320F0007601E2 /* GGS_bool.cpp in Sources */,
+				CFF1D4840BB320F4007601E2 /* GGS_uint64.cpp in Sources */,
+				CFF1D4860BB3210D007601E2 /* AC_galgas_list.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
