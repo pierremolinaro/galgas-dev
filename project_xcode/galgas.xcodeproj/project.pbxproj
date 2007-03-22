@@ -3301,6 +3301,10 @@
 				CFA1415E060DB7CB00601791 /* AC_galgas_map.h */,
 				CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */,
 				CF507CA80B6F854B00ECFEEB /* AC_galgas_domain.h */,
+				CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */,
+				CF7B06240AEE387C00E94B20 /* AC_galgas_list.h */,
+				CF96D6B30B1DA4740067E271 /* AC_galgas_sortedlist.cpp */,
+				CF96D6B40B1DA4740067E271 /* AC_galgas_sortedlist.h */,
 				CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */,
 				CFCF92090B6E41B000747AC6 /* C_galgas_io.h */,
 				CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */,
@@ -3349,10 +3353,6 @@
 				CFF53893057A558F00854C83 /* GGS_luint.cpp */,
 				CF3FF0C905877B62000D2F8C /* GGS_luint.h */,
 				CF3FF0C005877B62000D2F8C /* galgas_header.h */,
-				CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */,
-				CF7B06240AEE387C00E94B20 /* AC_galgas_list.h */,
-				CF96D6B30B1DA4740067E271 /* AC_galgas_sortedlist.cpp */,
-				CF96D6B40B1DA4740067E271 /* AC_galgas_sortedlist.h */,
 			);
 			path = galgas;
 			sourceTree = "<group>";

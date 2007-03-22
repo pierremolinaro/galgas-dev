@@ -146,6 +146,22 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
 
+//--- Get a sub list
+             "//--- Get sublist\n"
+             "  protected : void\n"
+             "  internalSubListWithRange (GGS_" << aNomListe << " & ioList,\n"
+             "                            const sint32 inFirstIndex,\n"
+             "                            const sint32 inCount) const ;\n\n"
+             "  public : GGS_" << aNomListe << "\n"
+             "  reader_subListWithRange (C_Compiler & _inLexique,\n"
+             "                           const GGS_uint & inFirstIndex,\n"
+             "                           const GGS_uint & inCount\n"
+             "                           COMMA_LOCATION_ARGS) const ;\n\n"
+             "  public : GGS_" << aNomListe << "\n"
+             "  reader_subListFromIndex (C_Compiler & _inLexique,\n"
+             "                           const GGS_uint & inIndex\n"
+             "                           COMMA_LOCATION_ARGS) const ;\n\n"
+
 //--- Get first inserted object
              "//--- Get first object\n"
              "  public : inline element_type * firstObject (void) const {\n"
@@ -716,6 +732,75 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+//--- Implement 'subListWithRange' reader
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "internalSubListWithRange (GGS_" << aNomListe << " & ioList,\n"
+               "                          const sint32 inFirstIndex,\n"
+               "                          const sint32 inCount) const {\n"
+               "  ioList._alloc () ;\n"
+               "  if (inCount > 0) {\n"
+               "    element_type * _p = firstObject () ;\n"
+               "    for (sint32 i=0 ; i<inFirstIndex ; i++) {\n"
+               "      macroValidPointer (_p) ;\n"
+               "      _p = _p->nextObject () ;\n"
+               "    }\n"
+               "    for (sint32 i=0 ; i<inCount ; i++) {\n"
+               "      macroValidPointer (_p) ;\n"
+               "      ioList._addAssign_operation (" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (numeroVariable > 0) {
+      inCppFile << ", " ;
+    }
+    inCppFile << "_p->" << current->aNomAttribut ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << ") ;\n"
+               "      _p = _p->nextObject () ;\n"
+               "    }\n"
+               "  }\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
+               "reader_subListWithRange (C_Compiler & _inLexique,\n"
+               "                         const GGS_uint & inFirstIndex,\n"
+               "                         const GGS_uint & inCount\n"
+               "                         COMMA_LOCATION_ARGS) const {\n"
+               "  GGS_" << aNomListe << " result ;\n"
+               "  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {\n"
+               "    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;\n"
+               "    const sint32 rangeCount = (sint32) inCount.uintValue () ;\n"
+               "    if ((firstIndex + rangeCount) > count ()) {\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'subListWithRange' method invoked with upper bound greater than list object count\" COMMA_THERE) ;\n"
+               "    }else{\n"
+               "      internalSubListWithRange (result, firstIndex, rangeCount) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
+               "reader_subListFromIndex (C_Compiler & _inLexique,\n"
+               "                         const GGS_uint & inIndex\n"
+               "                         COMMA_LOCATION_ARGS) const {\n"
+               "  GGS_" << aNomListe << " result ;\n"
+               "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
+               "    const sint32 startIndex = (sint32) inIndex.uintValue () ;\n"
+               "    if (startIndex > count ()) {\n"
+               "      _inLexique.onTheFlyRunTimeError (\"'subListFromIndex' method invoked with start index greater than list object count\" COMMA_THERE) ;\n"
+               "    }else{\n"
+               "      internalSubListWithRange (result, startIndex, count () - startIndex) ;\n"
+               "    }\n"
+               "  }\n"
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
