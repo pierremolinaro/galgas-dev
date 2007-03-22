@@ -27,7 +27,9 @@ compile "option_model_builder.ggs" ;
 compile "option_LL1_grammar.ggs" ;
 #--- tree walkings
 compile "option_treewalking_for_building_map.ggs" ;
-compile "option_treewalking_for_generating_header.ggs" ;
+#--- Code generation
+compile "optionHeaderGeneration.ggs" ;
+compile "optionImplementationGeneration.ggs" ;
 #--- Program
 compile "mda_galgas_LL1_prgm.ggs" ; # Only for PPC GALGAS (temporary)
 #--- Old style components

@@ -21,8 +21,9 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import semantics option_semantics in "option_semantics.ggs" ;
   import semantics semantics_semantics in "semantics_semantics.ggs" ;
   import metamodel option_metamodel in "option_metamodel.ggs" ;
-  import treewalking option_treewalking_for_generating_header in "option_treewalking_for_generating_header.ggs" ;
+  import treewalking optionHeaderGeneration in "optionHeaderGeneration.ggs" ;
   import treewalking option_treewalking_for_building_map in "option_treewalking_for_building_map.ggs" ;
+  import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
   import grammar option_LL1_grammar in "option_LL1_grammar.ggs" ;
   
@@ -70,14 +71,21 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
       ?uintOptionMap
       ?stringOptionMap
    ;
-  #--- Treewalking for generating header map
-    treewalking option_treewalking_for_generating_header on optionComponentRoot
+  #--- Treewalking for generating C++ files
+    treewalking optionHeaderGeneration on optionComponentRoot
       !startDirectory
       ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
       !boolOptionMap
       !uintOptionMap
       !stringOptionMap
-   ;
+    ;
+    treewalking optionImplementationGeneration on optionComponentRoot
+      !startDirectory
+      ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ;
   }
 
 end program ;
