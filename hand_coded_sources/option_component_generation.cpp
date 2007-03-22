@@ -155,7 +155,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
   sint32 index = 0 ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
-    generatedZone3 << "  mBoolOptionValues [" << index << "] = " << currentOption->mInfo.mDefaultValue.uintValue () << " ;\n" ;
+    generatedZone3 << "  mBoolOptionValues [" << index << "] = " << currentOption->mInfo.mDefaultValue << " ;\n" ;
     index ++ ;
     currentOption = currentOption->nextObject () ;
   }
@@ -164,7 +164,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
   index = 0 ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
-    generatedZone3 << "  mUintOptionValues [" << index << "] = " << currentOption->mInfo.mDefaultValue.uintValue () << " ;\n" ;
+    generatedZone3 << "  mUintOptionValues [" << index << "] = " << currentOption->mInfo.mDefaultValue << " ;\n" ;
     index ++ ;
     currentOption = currentOption->nextObject () ;
   }
@@ -293,7 +293,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
   currentOption = inUintOptionsMap.firstObject () ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;
-    generatedZone3 << "  " << currentOption->mInfo.mDefaultValue.uintValue () << ",\n" ;
+    generatedZone3 << "  " << currentOption->mInfo.mDefaultValue << ",\n" ;
     currentOption = currentOption->nextObject () ;
   }          
   generatedZone3 << "  0} ;\n"

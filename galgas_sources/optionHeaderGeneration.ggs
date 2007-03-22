@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-treewalking option_treewalking_for_generating_header (option_metamodel) :
+treewalking optionHeaderGeneration (option_metamodel) :
 import "option_metamodel.ggs" ;
 import semantics option_semantics in "option_semantics.ggs" ;
 
