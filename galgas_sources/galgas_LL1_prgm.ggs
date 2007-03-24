@@ -19,9 +19,7 @@
 
 program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import semantics semantics_semantics in "semantics_semantics.ggs" ;
-  import metamodel option_metamodel in "option_metamodel.ggs" ;
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
-  import grammar option_LL1_grammar in "option_LL1_grammar.ggs" ;
   
   error 100 ;
   warning 100 ;

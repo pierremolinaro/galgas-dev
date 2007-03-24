@@ -17,7 +17,7 @@
 #---------------------------------------------------------------------------*
 
 treewalking option_treewalking_for_building_map (option_metamodel) :
-import "option_metamodel.ggs" ;
+import "option_metamodel.gMetamodel" ;
 import semantics option_semantics in "option_semantics.ggs" ;
 
 #---------------------------------------------------------------------------*

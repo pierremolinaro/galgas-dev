@@ -20,10 +20,13 @@
 #--- Semantics
 compile "option_semantics.ggs" ;
 #--- Metamodels
-compile "option_metamodel.ggs" ;
+compile "metamodel_metamodel.gMetamodel" ;
+compile "option_metamodel.gMetamodel" ;
 #--- Parsers as model builders
+compile "metamodel_model_builder.ggs" ;
 compile "option_model_builder.ggs" ;
 #--- LL1 Grammars
+compile "metamodel_LL1_grammar.ggs" ;
 compile "option_LL1_grammar.ggs" ;
 #--- tree walkings
 compile "option_treewalking_for_building_map.ggs" ;
@@ -46,7 +49,7 @@ compile "parser_semantics.ggs" ;
 compile "cocoa_parser.ggs" ;
 compile "galgas_cocoa.ggs" ;
 compile "cli_options_parser.ggs" ;
-compile "galgas_cli_options.ggs_option" ;
+compile "galgas_cli_options.gOption" ;
 compile "grammar_parser.ggs" ;
 compile "scanner_parser.ggs" ;
 compile "expression_parser.ggs" ;
