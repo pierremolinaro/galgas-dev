@@ -1312,16 +1312,7 @@ generate_metamodel_header_file (C_Compiler & inLexique,
 
 //--- Include declaration of predefined types
   generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "#include \"bdd/C_BDD.h\"\n"
-                    "#include \"galgas/C_GGS_Object.h\"\n"
-                    "#include \"galgas/GGS_location.h\"\n"
-                    "#include \"galgas/GGS_lbool.h\"\n"
-                    "#include \"galgas/GGS_lchar.h\"\n"
-                    "#include \"galgas/GGS_lstring.h\"\n"
-                    "#include \"galgas/GGS_ldouble.h\"\n"
-                    "#include \"galgas/GGS_luint.h\"\n"
-                    "#include \"galgas/GGS_lsint.h\"\n"
-                    "#include \"galgas/AC_galgas_list.h\"\n" ;
+  generatedZone2 << "#include \"galgas/predefined_types.h\"\n" ;
   GGS_stringlist::element_type * currentInclusion = inHeaderInclusionList.firstObject () ;
   while (currentInclusion != NULL) {
     macroValidPointer (currentInclusion) ;

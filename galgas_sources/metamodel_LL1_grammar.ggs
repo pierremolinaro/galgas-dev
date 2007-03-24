@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'option' component parser, as model builder                              *
+#  'metamodel' LL1 grammar                                                  *
 #                                                                           *
 #  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
 #                                                                           *
@@ -17,45 +17,10 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax option_model_builder :
-import lexique galgas_scanner in "galgas_scanner.ggs" ;
-import metamodel option_metamodel in "option_metamodel.gMetamodel" ;
+grammar metamodel_LL1_grammar "LL1" :
+  import lexique galgas_scanner in "galgas_scanner.ggs" ;
+  import syntax metamodel_model_builder in "metamodel_model_builder.ggs" ;
 
-nonterminal <option_component_start_symbol> -> @optionComponentRoot ;
-
-nonterminal <option> -> @commandLineOption ;
-
-#---------------------------------------------------------------------------*
-
-rule <option_component_start_symbol> -> @optionComponentRoot :
-  $option$ ;
-#--- Option Component Name
-  $identifier$ ? mOptionComponentName ;
-  $:$ ;
-#--- Parse the option list
-  repeat
-  while 
-    <option> +> mOptions ;
-  end repeat ;
-  $end$ ;
-  $option$ ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <option> -> @commandLineOption :
-  $type_name$ ? mOptionTypeName  ;
-  $identifier$ ? mOptionInternalName ;
-  $:$ ;
-  $literal_char$ ? mOptionInvocationLetter ;
-  $,$ ;
-  $literal_string$ ? mOptionInvocationString ;
-  $->$ ;
-  $literal_string$ ? mOptionComment ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-end syntax ;
+  root <metamodel_component_start_symbol> -> metamodel_metamodel
+  ; # LL1
+end grammar ;

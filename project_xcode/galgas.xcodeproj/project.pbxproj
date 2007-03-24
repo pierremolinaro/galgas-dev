@@ -1161,6 +1161,54 @@
 		CFA313BD09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
+		CFB1C4E00BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
+		CFB1C4E10BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
+		CFB1C4E20BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
+		CFB1C4E30BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
+		CFB1C4E40BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
+		CFB1C4E50BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
+		CFB1C4E60BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
+		CFB1C4E70BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
+		CFB1C4E80BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
+		CFB1C4E90BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
+		CFB1C4EA0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
+		CFB1C4EB0BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
+		CFB1C4EC0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
+		CFB1C4ED0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
+		CFB1C4EE0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
+		CFB1C4EF0BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
+		CFB1C4F00BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
+		CFB1C4F10BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
+		CFB1C4F20BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
+		CFB1C4F30BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
+		CFB1C4F40BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
+		CFB1C4F50BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
+		CFB1C4F60BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
+		CFB1C4F70BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
+		CFB1C4F80BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
+		CFB1C4F90BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
+		CFB1C4FA0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
+		CFB1C4FB0BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
+		CFB1C4FC0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
+		CFB1C4FD0BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
+		CFB1C4FE0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
+		CFB1C4FF0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
+		CFB1C5000BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
+		CFB1C5010BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
+		CFB1C5020BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
+		CFB1C5030BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
+		CFB1C5040BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
+		CFB1C5050BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
+		CFB1C5060BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
+		CFB1C5070BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
+		CFB1C5080BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
+		CFB1C5090BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
+		CFB1C50A0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
+		CFB1C50B0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
+		CFB1C50C0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
+		CFB1C50D0BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
+		CFB1C50E0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
+		CFB1C50F0BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
 		CFBC766A0AC694C200443ACA /* OC_GGS_BuildResultTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */; };
 		CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
 		CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
@@ -2141,6 +2189,12 @@
 		CFA3139509FD3EDA006B55E7 /* parser_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_generation.h; sourceTree = "<group>"; };
 		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammar.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
+		CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_LL1_grammar.cpp; sourceTree = "<group>"; };
+		CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodel_LL1_grammar.h; sourceTree = "<group>"; };
+		CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_metamodel.cpp; sourceTree = "<group>"; };
+		CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodel_metamodel.h; sourceTree = "<group>"; };
+		CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_model_builder.cpp; sourceTree = "<group>"; };
+		CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodel_model_builder.h; sourceTree = "<group>"; };
 		CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
 		CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = "<group>"; };
 		CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
@@ -2633,6 +2687,12 @@
 		CF446B5709C9C4A7005CBDC8 /* Metamodel Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */,
+				CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */,
+				CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */,
+				CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */,
+				CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */,
+				CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */,
 				CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */,
 				CF446B5909C9C4F0005CBDC8 /* metamodel_parser.h */,
 			);
@@ -3547,6 +3607,9 @@
 				CFEFE9450BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47EFF0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F010BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
+				CFB1C4E10BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
+				CFB1C4E30BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
+				CFB1C4E50BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3649,6 +3712,9 @@
 				CFEFE94B0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F170BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F190BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
+				CFB1C5050BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
+				CFB1C5070BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
+				CFB1C5090BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3751,6 +3817,9 @@
 				CFEFE94C0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F1B0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F1D0BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
+				CFB1C50B0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
+				CFB1C50D0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
+				CFB1C50F0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3869,6 +3938,9 @@
 				CFEFE9460BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F030BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F050BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
+				CFB1C4E70BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
+				CFB1C4E90BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
+				CFB1C4EB0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3971,6 +4043,9 @@
 				CFEFE9470BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F070BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F090BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
+				CFB1C4ED0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
+				CFB1C4EF0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
+				CFB1C4F10BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4073,6 +4148,9 @@
 				CFEFE9480BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F0B0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F0D0BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
+				CFB1C4F30BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
+				CFB1C4F50BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
+				CFB1C4F70BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4175,6 +4253,9 @@
 				CFEFE9490BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F0F0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F110BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
+				CFB1C4F90BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
+				CFB1C4FB0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
+				CFB1C4FD0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4277,6 +4358,9 @@
 				CFEFE94A0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F130BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F150BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
+				CFB1C4FF0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
+				CFB1C5010BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
+				CFB1C5030BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4737,6 +4821,9 @@
 				CF3107F00BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47EFE0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F000BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
+				CFB1C4E00BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
+				CFB1C4E20BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
+				CFB1C4E40BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4861,6 +4948,9 @@
 				CF21A4F30BAEE76000C34B66 /* mda_galgas_LL1_prgm.cpp in Sources */,
 				CFD47F160BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F180BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
+				CFB1C5040BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
+				CFB1C5060BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
+				CFB1C5080BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4985,6 +5075,9 @@
 				CF21A5110BAEEB4C00C34B66 /* mda_galgas_LL1_prgm.cpp in Sources */,
 				CFD47F1A0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F1C0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
+				CFB1C50A0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
+				CFB1C50C0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
+				CFB1C50E0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5148,6 +5241,9 @@
 				CF3107F40BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F020BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F040BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
+				CFB1C4E60BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
+				CFB1C4E80BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
+				CFB1C4EA0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5272,6 +5368,9 @@
 				CF3107F80BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F060BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F080BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
+				CFB1C4EC0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
+				CFB1C4EE0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
+				CFB1C4F00BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5396,6 +5495,9 @@
 				CF3107FC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F0A0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F0C0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
+				CFB1C4F20BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
+				CFB1C4F40BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
+				CFB1C4F60BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5520,6 +5622,9 @@
 				CF3108000BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F0E0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F100BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
+				CFB1C4F80BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
+				CFB1C4FA0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
+				CFB1C4FC0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5644,6 +5749,9 @@
 				CF3108040BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F120BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F140BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
+				CFB1C4FE0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
+				CFB1C5000BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
+				CFB1C5020BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
