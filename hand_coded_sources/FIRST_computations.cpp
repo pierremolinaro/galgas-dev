@@ -65,8 +65,8 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   if (! directFIRST.isEqualToBDD (ex_directFIRST.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     printf ("inBDDBitCount %hu\n", inBDDBitCount) ;
-    printf ("directFIRST '%s'\n", directFIRST.queryStringValue ().cString ()) ;
-    printf ("ex_directFIRST '%s'\n", ex_directFIRST.bdd ().queryStringValue ().cString ()) ;
+    printf ("directFIRST '%s'\n", directFIRST.queryStringValue (HERE).cString ()) ;
+    printf ("ex_directFIRST '%s'\n", ex_directFIRST.bdd ().queryStringValue (HERE).cString ()) ;
   }
 
 
@@ -117,8 +117,8 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   const C_BDD nt_x_empty = inVocabularyDerivingInEmptyString.bdd () & emptyStringTerminalSymbolIndex ;
   if (! nt_x_empty.isEqualToBDD (ex_nt_x_empty.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    printf ("nt_x_empty   : %s\n", nt_x_empty.queryStringValue ().cString ()) ;
-    printf ("ex_nt_x_empty: %s\n", ex_nt_x_empty.bdd ().queryStringValue ().cString ()) ;
+    printf ("nt_x_empty   : %s\n", nt_x_empty.queryStringValue (HERE).cString ()) ;
+    printf ("ex_nt_x_empty: %s\n", ex_nt_x_empty.bdd ().queryStringValue (HERE).cString ()) ;
   }
 
 //--- FIRST union nt symbols deriring in empty string
