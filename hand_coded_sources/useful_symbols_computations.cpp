@@ -78,12 +78,12 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   if (! outUsefulSymbols.isEqualToBDD (ex_outUsefulSymbols.bdd ())) {
     printf ("\n********* USEFUL SYMBOLS ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     printf ("inBDDBitCount %hu\n", inBDDBitCount) ;
-    printf ("initialValue '%s'\n", initialValue.queryStringValue ().cString ()) ;
-    printf ("accessibility '%s'\n", accessibility.queryStringValue ().cString ()) ;
-    printf ("outUsefulSymbols '%s'\n", outUsefulSymbols.queryStringValue ().cString ()) ;
-    printf ("ex_initialValue '%s'\n", ex_initialValue.bdd ().queryStringValue ().cString ()) ;
-    printf ("ex_accessibility '%s'\n", ex_accessibility.bdd ().queryStringValue ().cString ()) ;
-    printf ("ex_outUsefulSymbols '%s'\n", ex_outUsefulSymbols.bdd ().queryStringValue ().cString ()) ;
+    printf ("initialValue '%s'\n", initialValue.queryStringValue (HERE).cString ()) ;
+    printf ("accessibility '%s'\n", accessibility.queryStringValue (HERE).cString ()) ;
+    printf ("outUsefulSymbols '%s'\n", outUsefulSymbols.queryStringValue (HERE).cString ()) ;
+    printf ("ex_initialValue '%s'\n", ex_initialValue.bdd ().queryStringValue (HERE).cString ()) ;
+    printf ("ex_accessibility '%s'\n", ex_accessibility.bdd ().queryStringValue (HERE).cString ()) ;
+    printf ("ex_outUsefulSymbols '%s'\n", ex_outUsefulSymbols.bdd ().queryStringValue (HERE).cString ()) ;
   }
 }
 
