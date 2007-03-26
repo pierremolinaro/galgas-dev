@@ -704,7 +704,7 @@
 				CFF5381F057A549B00854C83 /* utilities */,
 			);
 			name = libpm;
-			path = ../../libpm;
+			path = ../../../../libpm;
 			sourceTree = SOURCE_ROOT;
 		};
 		CFF5381F057A549B00854C83 /* utilities */ = {
@@ -1318,7 +1318,7 @@
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
+				GCC_PREFIX_HEADER = ../../../../libpm/galgas/PP_GalgasPrefix.pch;
 				PRODUCT_NAME = class_sample_language;
 			};
 			name = Default;
@@ -1336,7 +1336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
+				GCC_PREFIX_HEADER = ../../../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = cocoaClass_sample_language;
@@ -1384,7 +1384,7 @@
 				HEADER_SEARCH_PATHS = (
 					../galgas_sources/GALGAS_OUTPUT,
 					../hand_coded_sources,
-					../../libpm,
+					../../../../libpm,
 				);
 				PREBINDING = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
