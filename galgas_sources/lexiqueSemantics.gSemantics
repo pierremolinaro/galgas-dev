@@ -1,5 +1,9 @@
 semantics lexiqueSemantics :
 
+
+import semantics toto in "toto.gSemantics" ;
+#import semantics toto in "lexiqueSemantics.gSemantics" ;
+
 #---------------------------------------------------------------------------*
 
 map @lexicalAttributeMap {

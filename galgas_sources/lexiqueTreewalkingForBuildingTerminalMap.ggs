@@ -18,7 +18,7 @@
 
 treewalking lexiqueTreewalkingForBuildingTerminalMap (lexiqueMetamodel) :
 import "lexiqueMetamodel.gMetamodel" ;
-import semantics lexiqueSemantics in "lexiqueSemantics.ggs" ;
+import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

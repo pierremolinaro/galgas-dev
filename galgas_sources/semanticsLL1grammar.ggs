@@ -1,8 +1,9 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  Cocoa component for GALGAS                                               *
+#  'semantics' LL1 grammar                                                  *
 #                                                                           *
-#  Copyright (C) 2004, ..., 2006 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -16,26 +17,10 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-gui cocoaGalgas "cocoa" :
-import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
-import__ "galgas_scanner.gLexique" ;
+grammar semanticsLL1grammar "LL1" :
+  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+  import syntax semanticsModelBuilder in "semanticsModelBuilder.ggs" ;
 
-nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
-
-blockComment : "#" ;
-
-label $map$, $type_name$ ;
-label $list$, $type_name$ ;
-label $sortedlist$, $type_name$ ;
-label $enum$, $type_name$ ;
-label $class$, $type_name$ ;
-label $entity$, $type_name$ ;
-label $nonterminal$, $non_terminal_symbol$ ;
-label $rule$, $non_terminal_symbol$ ;
-label $routine$, $identifier$ ;
-label $action$, $identifier$ ;
-
-end gui ;
-
-#--------------------------------------------------------------------------------*
+  root <semantics_component_start_symbol> -> semanticsMetamodel
+  ; # LL1
+end grammar ;
