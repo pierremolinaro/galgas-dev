@@ -181,7 +181,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {
     macroValidPointer (enumeratedVariable) ;
-    used = enumeratedVariable->mCppEnumeratedVariableName.isEqualTo (inArgumentCppName) ;
+    used = enumeratedVariable->mCppEnumeratedVariableName.isSameObjectAs (inArgumentCppName) ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
   }
   return used ;

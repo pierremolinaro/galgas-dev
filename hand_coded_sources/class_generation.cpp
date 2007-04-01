@@ -164,19 +164,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
 
   if (superClassName.length () == 0) {
-//--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
-    inHfile << "//--- isEqualTo\n"
-               "  public : inline bool isEqualTo (const GGS_" << aNomClasse
-            << " & _inOperand) const {\n"
-               "    return mPointer == _inOperand.mPointer ;\n"
-               "  }\n"
-
 //--- Engendrer la declaration de la methode 'getPtr'
-               "//--- getPtr\n"
+    inHfile << "//--- getPtr\n"
                "  public : inline cPtr_" << aNomClasse << " * getPtr (void) const {\n"
                "    return (cPtr_" << aNomClasse << " *) mPointer ;\n"
                "  }\n" ;
-
   }
 
 //--- Generate 'description' reader declaration

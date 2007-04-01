@@ -116,15 +116,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
              "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
-             "  public : typedef elementOf_GGS_" << aNomListe << " element_type ;\n"
-//--- Constructors and assignment operator declaration
-             "//--- Default Constructor\n"
-             "  public : GGS_" << aNomListe << " (void) ;\n"
-             "//--- Copy Constructor\n"
-             "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " & inSource) ;\n"
-             "//--- Comparison Operators\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : typedef elementOf_GGS_" << aNomListe << " element_type ;\n\n"
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
@@ -439,33 +431,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 // ------------- List Implementation -----------------
   inCppFile.writeCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
-
-//--- Generate default constructor
-  inCppFile << "GGS_" << aNomListe
-            << "::GGS_" << aNomListe
-            << " (void): AC_galgas_list () { // Default Constructor\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
-//--- Engendrer le constructeur de recopie
-  inCppFile << "GGS_" << aNomListe << "::\n"
-               "GGS_" << aNomListe
-            << " (const GGS_" << aNomListe << " & inSource): AC_galgas_list (inSource) {\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
-//--- Generate comparison
-  inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "_operator_isEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToList (inOperand)) ;\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
-  inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "_operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToList (inOperand)) ;\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer la methode _internalAppendValues
   inCppFile << "void GGS_" << aNomListe << "::\n"

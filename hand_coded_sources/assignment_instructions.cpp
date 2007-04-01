@@ -64,7 +64,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 bool cPtr_C_assignmentInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  return mTargetVarCppName.isEqualTo (inArgumentCppName)
+  return mTargetVarCppName.isSameObjectAs (inArgumentCppName)
       || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
 }
 
@@ -116,7 +116,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 bool cPtr_C_declarationInstructionWithAssignment::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  return mTargetVarCppName.isEqualTo (inArgumentCppName)
+  return mTargetVarCppName.isSameObjectAs (inArgumentCppName)
       || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
 }
 
@@ -243,7 +243,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 bool cPtr_C_dotEqualInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  return mTargetVarCppName.isEqualTo (inArgumentCppName)
+  return mTargetVarCppName.isSameObjectAs (inArgumentCppName)
       || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
 }
 

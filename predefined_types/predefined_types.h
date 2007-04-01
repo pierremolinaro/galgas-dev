@@ -54,39 +54,39 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_UINT64LIST ;
-class GGS_STRINGLIST ;
-class GGS_LSTRINGLIST ;
+class GGS_uint64list ;
+class GGS_stringlist ;
+class GGS_lstringlist ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                            list '@UINT64LIST'                             *
+//                            list '@uint64list'                             *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_UINT64LIST ;
+class elementOf_GGS_uint64list ;
 
-class GGS_UINT64LIST : public AC_galgas_list {
-  public : typedef elementOf_GGS_UINT64LIST element_type ;
+class GGS_uint64list : public AC_galgas_list {
+  public : typedef elementOf_GGS_uint64list element_type ;
 
 //--- Constructor 'emptyList'
-  public : static GGS_UINT64LIST constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
-  public : static GGS_UINT64LIST constructor_listWithValue (C_Compiler & _inLexique,
+  public : static GGS_uint64list constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_uint64list constructor_listWithValue (C_Compiler & _inLexique,
                                 const GGS_uint64 & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Get sublist
   protected : void
-  internalSubListWithRange (GGS_UINT64LIST & ioList,
+  internalSubListWithRange (GGS_uint64list & ioList,
                             const sint32 inFirstIndex,
                             const sint32 inCount) const ;
 
-  public : GGS_UINT64LIST
+  public : GGS_uint64list
   reader_subListWithRange (C_Compiler & _inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
-  public : GGS_UINT64LIST
+  public : GGS_uint64list
   reader_subListFromIndex (C_Compiler & _inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
@@ -100,7 +100,7 @@ class GGS_UINT64LIST : public AC_galgas_list {
     return (element_type *) internalLastObject () ;
   }
 //--- Operators () used for method call
-  public : const GGS_UINT64LIST * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
+  public : const GGS_uint64list * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
   public : void method_first (C_Compiler & _inLexique,
                               GGS_uint64 & _out_0
@@ -120,7 +120,7 @@ class GGS_UINT64LIST : public AC_galgas_list {
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_uint64 & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_UINT64LIST _operator_concat (const GGS_UINT64LIST & inOperand) const ;
+  public : GGS_uint64list _operator_concat (const GGS_uint64list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & _inLexique,
                                 const GGS_uint64 & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -143,33 +143,33 @@ class GGS_UINT64LIST : public AC_galgas_list {
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                            list '@STRINGLIST'                             *
+//                            list '@stringlist'                             *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_STRINGLIST ;
+class elementOf_GGS_stringlist ;
 
-class GGS_STRINGLIST : public AC_galgas_list {
-  public : typedef elementOf_GGS_STRINGLIST element_type ;
+class GGS_stringlist : public AC_galgas_list {
+  public : typedef elementOf_GGS_stringlist element_type ;
 
 //--- Constructor 'emptyList'
-  public : static GGS_STRINGLIST constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
-  public : static GGS_STRINGLIST constructor_listWithValue (C_Compiler & _inLexique,
+  public : static GGS_stringlist constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_stringlist constructor_listWithValue (C_Compiler & _inLexique,
                                 const GGS_string& argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Get sublist
   protected : void
-  internalSubListWithRange (GGS_STRINGLIST & ioList,
+  internalSubListWithRange (GGS_stringlist & ioList,
                             const sint32 inFirstIndex,
                             const sint32 inCount) const ;
 
-  public : GGS_STRINGLIST
+  public : GGS_stringlist
   reader_subListWithRange (C_Compiler & _inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
-  public : GGS_STRINGLIST
+  public : GGS_stringlist
   reader_subListFromIndex (C_Compiler & _inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
@@ -183,7 +183,7 @@ class GGS_STRINGLIST : public AC_galgas_list {
     return (element_type *) internalLastObject () ;
   }
 //--- Operators () used for method call
-  public : const GGS_STRINGLIST * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
+  public : const GGS_stringlist * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
   public : void method_first (C_Compiler & _inLexique,
                               GGS_string& _out_0
@@ -203,7 +203,7 @@ class GGS_STRINGLIST : public AC_galgas_list {
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_string& argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_STRINGLIST _operator_concat (const GGS_STRINGLIST & inOperand) const ;
+  public : GGS_stringlist _operator_concat (const GGS_stringlist & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & _inLexique,
                                 const GGS_string& argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -226,33 +226,33 @@ class GGS_STRINGLIST : public AC_galgas_list {
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                           list '@LSTRINGLIST'                             *
+//                           list '@lstringlist'                             *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_LSTRINGLIST ;
+class elementOf_GGS_lstringlist ;
 
-class GGS_LSTRINGLIST : public AC_galgas_list {
-  public : typedef elementOf_GGS_LSTRINGLIST element_type ;
+class GGS_lstringlist : public AC_galgas_list {
+  public : typedef elementOf_GGS_lstringlist element_type ;
 
 //--- Constructor 'emptyList'
-  public : static GGS_LSTRINGLIST constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
-  public : static GGS_LSTRINGLIST constructor_listWithValue (C_Compiler & _inLexique,
+  public : static GGS_lstringlist constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_lstringlist constructor_listWithValue (C_Compiler & _inLexique,
                                 const GGS_lstring & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Get sublist
   protected : void
-  internalSubListWithRange (GGS_LSTRINGLIST & ioList,
+  internalSubListWithRange (GGS_lstringlist & ioList,
                             const sint32 inFirstIndex,
                             const sint32 inCount) const ;
 
-  public : GGS_LSTRINGLIST
+  public : GGS_lstringlist
   reader_subListWithRange (C_Compiler & _inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
-  public : GGS_LSTRINGLIST
+  public : GGS_lstringlist
   reader_subListFromIndex (C_Compiler & _inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
@@ -266,7 +266,7 @@ class GGS_LSTRINGLIST : public AC_galgas_list {
     return (element_type *) internalLastObject () ;
   }
 //--- Operators () used for method call
-  public : const GGS_LSTRINGLIST * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
+  public : const GGS_lstringlist * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
   public : void method_first (C_Compiler & _inLexique,
                               GGS_lstring & _out_0
@@ -286,7 +286,7 @@ class GGS_LSTRINGLIST : public AC_galgas_list {
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_LSTRINGLIST _operator_concat (const GGS_LSTRINGLIST & inOperand) const ;
+  public : GGS_lstringlist _operator_concat (const GGS_lstringlist & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & _inLexique,
                                 const GGS_lstring & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -309,22 +309,22 @@ class GGS_LSTRINGLIST : public AC_galgas_list {
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                      Element of list '@UINT64LIST'                        *
+//                      Element of list '@uint64list'                        *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_UINT64LIST : public AC_galgas_list::cListElement {
+class elementOf_GGS_uint64list : public AC_galgas_list::cListElement {
 //--- Attributes
   public : GGS_uint64  mValue ;
 //--- Constructor
-  public : elementOf_GGS_UINT64LIST (const GGS_uint64 & 
+  public : elementOf_GGS_uint64list (const GGS_uint64 & 
                                 COMMA_LOCATION_ARGS) ;
 
 //--- Access to next
-  public : inline elementOf_GGS_UINT64LIST * nextObject (void) const { return (elementOf_GGS_UINT64LIST *) internalNextItem () ; }
+  public : inline elementOf_GGS_uint64list * nextObject (void) const { return (elementOf_GGS_uint64list *) internalNextItem () ; }
 
 //--- Access to previous
-  public : inline elementOf_GGS_UINT64LIST * previousObject (void) const { return (elementOf_GGS_UINT64LIST *) internalPreviousItem () ; }
+  public : inline elementOf_GGS_uint64list * previousObject (void) const { return (elementOf_GGS_uint64list *) internalPreviousItem () ; }
 
 //--- Element comparison
   protected : virtual bool
@@ -338,27 +338,27 @@ class elementOf_GGS_UINT64LIST : public AC_galgas_list::cListElement {
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
-  friend class GGS_UINT64LIST ;
+  friend class GGS_uint64list ;
 } ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                      Element of list '@STRINGLIST'                        *
+//                      Element of list '@stringlist'                        *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_STRINGLIST : public AC_galgas_list::cListElement {
+class elementOf_GGS_stringlist : public AC_galgas_list::cListElement {
 //--- Attributes
   public : GGS_string mValue ;
 //--- Constructor
-  public : elementOf_GGS_STRINGLIST (const GGS_string& 
+  public : elementOf_GGS_stringlist (const GGS_string& 
                                 COMMA_LOCATION_ARGS) ;
 
 //--- Access to next
-  public : inline elementOf_GGS_STRINGLIST * nextObject (void) const { return (elementOf_GGS_STRINGLIST *) internalNextItem () ; }
+  public : inline elementOf_GGS_stringlist * nextObject (void) const { return (elementOf_GGS_stringlist *) internalNextItem () ; }
 
 //--- Access to previous
-  public : inline elementOf_GGS_STRINGLIST * previousObject (void) const { return (elementOf_GGS_STRINGLIST *) internalPreviousItem () ; }
+  public : inline elementOf_GGS_stringlist * previousObject (void) const { return (elementOf_GGS_stringlist *) internalPreviousItem () ; }
 
 //--- Element comparison
   protected : virtual bool
@@ -372,27 +372,27 @@ class elementOf_GGS_STRINGLIST : public AC_galgas_list::cListElement {
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
-  friend class GGS_STRINGLIST ;
+  friend class GGS_stringlist ;
 } ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                      Element of list '@LSTRINGLIST'                       *
+//                      Element of list '@lstringlist'                       *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class elementOf_GGS_LSTRINGLIST : public AC_galgas_list::cListElement {
+class elementOf_GGS_lstringlist : public AC_galgas_list::cListElement {
 //--- Attributes
   public : GGS_lstring  mValue ;
 //--- Constructor
-  public : elementOf_GGS_LSTRINGLIST (const GGS_lstring & 
+  public : elementOf_GGS_lstringlist (const GGS_lstring & 
                                 COMMA_LOCATION_ARGS) ;
 
 //--- Access to next
-  public : inline elementOf_GGS_LSTRINGLIST * nextObject (void) const { return (elementOf_GGS_LSTRINGLIST *) internalNextItem () ; }
+  public : inline elementOf_GGS_lstringlist * nextObject (void) const { return (elementOf_GGS_lstringlist *) internalNextItem () ; }
 
 //--- Access to previous
-  public : inline elementOf_GGS_LSTRINGLIST * previousObject (void) const { return (elementOf_GGS_LSTRINGLIST *) internalPreviousItem () ; }
+  public : inline elementOf_GGS_lstringlist * previousObject (void) const { return (elementOf_GGS_lstringlist *) internalPreviousItem () ; }
 
 //--- Element comparison
   protected : virtual bool
@@ -406,7 +406,7 @@ class elementOf_GGS_LSTRINGLIST : public AC_galgas_list::cListElement {
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
-  friend class GGS_LSTRINGLIST ;
+  friend class GGS_lstringlist ;
 } ;
 
 //---------------------------------------------------------------------------*
