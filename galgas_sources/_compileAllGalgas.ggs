@@ -17,29 +17,32 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#--- Semantics
-compile "option_semantics.ggs" ;
+#--- Lexique Component
 compile "lexiqueSemantics.ggs" ;
-#--- Metamodels
-compile "lexique_metamodel.gMetamodel" ;
-compile "metamodel_metamodel.gMetamodel" ;
-compile "option_metamodel.gMetamodel" ;
-#--- Parsers as model builders
-compile "metamodel_model_builder.ggs" ;
-compile "lexique_model_builder.ggs" ;
-compile "option_model_builder.ggs" ;
-#--- LL1 Grammars
-compile "lexique_LL1_grammar.ggs" ;
-compile "metamodel_LL1_grammar.ggs" ;
-compile "option_LL1_grammar.ggs" ;
-#--- tree walkings
-compile "option_treewalking_for_building_map.ggs" ;
+compile "lexiqueMetamodel.gMetamodel" ;
+compile "lexiqueModelBuilder.ggs" ;
+compile "lexiqueLL1grammar.ggs" ;
 compile "lexiqueTreewalkingForBuildingTerminalMap.ggs" ;
-#--- Code generation
+
+#--- Option Component
+compile "optionSemantics.ggs" ;
+compile "optionMetamodel.gMetamodel" ;
+compile "optionModelBuilder.ggs" ;
+compile "optionLL1grammar.ggs" ;
+compile "optionTreewalkingForBuildingOptionMap.ggs" ;
 compile "optionHeaderGeneration.ggs" ;
 compile "optionImplementationGeneration.ggs" ;
-#--- Program
-compile "mda_galgas_LL1_prgm.ggs" ; # Only for PPC GALGAS (temporary)
+
+#--- Metamodel Component
+compile "metamodelMetamodel.gMetamodel" ;
+compile "metamodelModelBuilder.ggs" ;
+compile "metamodelLL1grammar.ggs" ;
+
+#--- Semantics Component
+
+#--- Temporary Program for PPC Cocoa GALGAS Only 
+compile "mda_galgas_LL1_prgm.ggs" ;
+
 #--- Old style components
 compile "semantics_semantics.ggs" ;
 compile "treewalking_parser.ggs" ;

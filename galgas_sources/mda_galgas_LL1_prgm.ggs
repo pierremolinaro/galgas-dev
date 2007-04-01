@@ -19,20 +19,20 @@
 
 program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import semantics lexiqueSemantics in "lexiqueSemantics.ggs" ;
-  import semantics option_semantics in "option_semantics.ggs" ;
+  import semantics optionSemantics in "optionSemantics.ggs" ;
   import semantics semantics_semantics in "semantics_semantics.ggs" ;
-  import metamodel option_metamodel in "option_metamodel.gMetamodel" ;
-  import metamodel metamodel_metamodel in "metamodel_metamodel.gMetamodel" ;
-  import metamodel lexique_metamodel in "lexique_metamodel.gMetamodel" ;
+  import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
+  import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
+  import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
   import treewalking optionHeaderGeneration in "optionHeaderGeneration.ggs" ;
-  import treewalking option_treewalking_for_building_map in "option_treewalking_for_building_map.ggs" ;
+  import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.ggs" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
   import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.ggs" ;
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
-  import grammar option_LL1_grammar in "option_LL1_grammar.ggs" ;
-  import grammar metamodel_LL1_grammar in "metamodel_LL1_grammar.ggs" ;
-  import grammar lexique_LL1_grammar in "lexique_LL1_grammar.ggs" ;
+  import grammar optionLL1grammar in "optionLL1grammar.ggs" ;
+  import grammar metamodelLL1grammar in "metamodelLL1grammar.ggs" ;
+  import grammar lexiqueLL1grammar in "lexiqueLL1grammar.ggs" ;
   
   error 100 ;
   warning 100 ;
@@ -68,12 +68,12 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
   #--- Parse option component
     @optionComponentRoot optionComponentRoot ;
-    grammar option_LL1_grammar in inSourceFile -> optionComponentRoot ;
+    grammar optionLL1grammar in inSourceFile -> optionComponentRoot ;
   #--- Treewalking for defining option map
     @commandLineOptionMap boolOptionMap ;
     @commandLineOptionMap uintOptionMap ;
     @commandLineOptionMap stringOptionMap ;
-    treewalking option_treewalking_for_building_map on optionComponentRoot
+    treewalking optionTreewalkingForBuildingOptionMap on optionComponentRoot
       ?boolOptionMap
       ?uintOptionMap
       ?stringOptionMap
@@ -103,7 +103,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
   #--- Parse metamodel component
     @metamodelComponentRoot metamodelComponentRoot ;
-    grammar metamodel_LL1_grammar in inSourceFile -> metamodelComponentRoot ;
+    grammar metamodelLL1grammar in inSourceFile -> metamodelComponentRoot ;
   }
 
   when . "gLexique"
@@ -114,7 +114,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
   #--- Parse metamodel component
     @lexiqueComponentRoot lexiqueComponentRoot ;
-    grammar lexique_LL1_grammar in inSourceFile -> lexiqueComponentRoot ;
+    grammar lexiqueLL1grammar in inSourceFile -> lexiqueComponentRoot ;
   #--- Get terminal symbol map
     @terminalMap terminalMap ;
     treewalking lexiqueTreewalkingForBuildingTerminalMap on lexiqueComponentRoot

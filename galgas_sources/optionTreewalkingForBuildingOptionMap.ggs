@@ -1,0 +1,81 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Treewalking for generating option header file                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+treewalking optionTreewalkingForBuildingOptionMap (optionMetamodel) :
+import "optionMetamodel.gMetamodel" ;
+import semantics optionSemantics in "optionSemantics.ggs" ;
+
+#---------------------------------------------------------------------------*
+
+rule @optionComponentRoot
+  !@commandLineOptionMap outBoolOptionMap
+  !@commandLineOptionMap outUIntOptionMap
+  !@commandLineOptionMap outStringOptionMap
+:
+  outBoolOptionMap := [@commandLineOptionMap emptyMap] ;
+  outUIntOptionMap := [@commandLineOptionMap emptyMap] ;
+  outStringOptionMap := [@commandLineOptionMap emptyMap] ;
+  @stringset optionNameSet [emptySet] ;
+  call mOptions
+    !?optionNameSet
+    !?outBoolOptionMap
+    !?outUIntOptionMap
+    !?outStringOptionMap
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @commandLineOption
+  ?!@stringset ioOptionNameSet
+  ?!@commandLineOptionMap ioBoolOptionMap
+  ?!@commandLineOptionMap ioUIntOptionMap
+  ?!@commandLineOptionMap ioStringOptionMap
+:
+  if [ioOptionNameSet hasKey ![mOptionInternalName string]] then
+    error mOptionInternalName: "the '" . [mOptionInternalName string] . "' command line option has been already declared" ;
+  elsif [mOptionTypeName string] == "bool" then
+    [!?ioBoolOptionMap insertKey
+      !mOptionInternalName
+      !mOptionInvocationLetter
+      !mOptionInvocationString
+      !mOptionComment
+    ] ;
+  elsif [mOptionTypeName string] == "uint" then
+    [!?ioUIntOptionMap insertKey
+      !mOptionInternalName
+      !mOptionInvocationLetter
+      !mOptionInvocationString
+      !mOptionComment
+    ] ;
+  elsif [mOptionTypeName string] == "string" then
+    [!?ioStringOptionMap insertKey
+      !mOptionInternalName
+      !mOptionInvocationLetter
+      !mOptionInvocationString
+      !mOptionComment
+    ] ;
+  else
+    error mOptionTypeName: "only the @bool, @uint or @string types are allowed here" ;
+  end if ;
+  ioOptionNameSet += ![mOptionInternalName string] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end treewalking ;
