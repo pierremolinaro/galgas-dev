@@ -1,0 +1,21 @@
+semantics lexiqueSemantics :
+
+#---------------------------------------------------------------------------*
+
+map @lexicalAttributeMap {
+  @string mTypeName ;
+  insert insertKey error message "the '%K' lexical attribute has been already declared in %L" ;
+  search searchKey error message "the '%K' lexical attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @terminalMap {
+  @stringlist mArgumentTypeList ;
+  insert insertKey error message "the '%K' terminal has been already declared in %L" ;
+  search searchKey error message "the '%K' terminal is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

@@ -1,0 +1,111 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Treewalking for generating option header file                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+treewalking lexiqueTreewalkingForBuildingTerminalMap (lexique_metamodel) :
+import "lexique_metamodel.gMetamodel" ;
+import semantics lexiqueSemantics in "lexiqueSemantics.ggs" ;
+
+#---------------------------------------------------------------------------*
+
+rule @lexiqueComponentRoot
+  !@terminalMap outTerminalMap
+:
+#--- Lexical attribute type name set
+  @stringset allowedLexicalTypeNameSet [emptySet] ;
+  allowedLexicalTypeNameSet += !"lstring" ;
+  allowedLexicalTypeNameSet += !"lchar" ;
+  allowedLexicalTypeNameSet += !"luint" ;
+  allowedLexicalTypeNameSet += !"luint64" ;
+  allowedLexicalTypeNameSet += !"lsint" ;
+  allowedLexicalTypeNameSet += !"lsint64" ;
+  allowedLexicalTypeNameSet += !"ldouble" ;
+#--- Build lexical attribute map
+  @lexicalAttributeMap lexicalAttributeMap [emptyMap] ;
+  call mLexicalAttributeList !allowedLexicalTypeNameSet !?lexicalAttributeMap ;
+#--- Build terminal map
+  outTerminalMap := [@terminalMap emptyMap] ;
+  call mTerminalDeclarationList !lexicalAttributeMap !?outTerminalMap ;
+  call mLexicalListDeclarationList !lexicalAttributeMap !?outTerminalMap ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @lexicalAttribute
+  ??@stringset inAllowedLexicalTypeNameSet
+  ?!@lexicalAttributeMap ioLexicalAttributeMap
+:
+  if [inAllowedLexicalTypeNameSet hasKey ![mTypeName string]] then
+    [!?ioLexicalAttributeMap insertKey !mName ![mTypeName string]] ;
+  else
+    @string m := "" ;
+    m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
+    @bool first := true ;
+    foreach inAllowedLexicalTypeNameSet (@string kTypeName) :
+      if first then
+        first := false ;
+      else
+        m .= "," ;
+      end if ;
+      m .= " @" . kTypeName ;
+    end foreach ;
+    error mTypeName: m ;
+  end if ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @terminalDeclaration
+  ??@lexicalAttributeMap inLexicalAttributeMap
+  ?!@terminalMap ioTerminalMap
+:
+  @stringlist argumentTypeList [emptyList] ;
+  foreach mSentAttributeList (@lstring kAttributeName) :
+    @string attributeTypeName ;
+    [inLexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
+    argumentTypeList += !attributeTypeName ;
+  end foreach ;
+  [!?ioTerminalMap insertKey !mName !argumentTypeList] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @lexicalListDeclaration
+  ??@lexicalAttributeMap inLexicalAttributeMap
+  ?!@terminalMap ioTerminalMap
+:
+  @stringlist argumentTypeList [emptyList] ;
+  foreach mSentAttributeList (@lstring kAttributeName) :
+    @string attributeTypeName ;
+    [inLexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
+    argumentTypeList += !attributeTypeName ;
+  end foreach ;
+  call mEntryList !argumentTypeList !?ioTerminalMap ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @lexicalListEntry
+  ??@stringlist inArgumentTypeList
+  ?!@terminalMap ioTerminalMap
+:
+  [!?ioTerminalMap insertKey !mTerminalSpelling !inArgumentTypeList] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end treewalking ;

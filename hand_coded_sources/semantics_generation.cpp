@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Copyright (C) 1999? ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -352,6 +352,7 @@ generate_header_file (C_Compiler & inLexique,
                     "#include \"galgas/GGS_stringset.h\"\n"
                     "#include \"galgas/GGS_binaryset.h\"\n"
                     "#include \"galgas/predefined_types.h\"\n"
+                    "#include \"galgas/AC_galgas_class.h\"\n"
                     "#include \"galgas/AC_galgas_domain.h\"\n"
                     "#include \"galgas/AC_galgas_mapindex.h\"\n"
                     "#include \"galgas/AC_galgas_map.h\"\n"

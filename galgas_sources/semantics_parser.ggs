@@ -2137,7 +2137,7 @@ rule <instruction_beginning_with_identifier>
 #--- Get target entity infos
   @AC_galgasType targetVarType ;
   @typeCplusPlusName targetVarCppName ;
-  [!?ioVariablesMap searchForWriteAccess !inTargetVarName ?targetVarType ?targetVarCppName] ;
+  [!?ioVariablesMap searchForReadWriteAccess !inTargetVarName ?targetVarType ?targetVarCppName] ;
 #--- Match target and source types
   @string sourceExpressionConverter ;
   match targetVarType :: sourceType :
