@@ -19,9 +19,9 @@
 
 #--- Semantics
 compile "option_semantics.ggs" ;
+compile "lexiqueSemantics.ggs" ;
 #--- Metamodels
 compile "lexique_metamodel.gMetamodel" ;
-compile "metamodel_metamodel.gMetamodel" ;
 compile "metamodel_metamodel.gMetamodel" ;
 compile "option_metamodel.gMetamodel" ;
 #--- Parsers as model builders
@@ -34,6 +34,7 @@ compile "metamodel_LL1_grammar.ggs" ;
 compile "option_LL1_grammar.ggs" ;
 #--- tree walkings
 compile "option_treewalking_for_building_map.ggs" ;
+compile "lexiqueTreewalkingForBuildingTerminalMap.ggs" ;
 #--- Code generation
 compile "optionHeaderGeneration.ggs" ;
 compile "optionImplementationGeneration.ggs" ;
