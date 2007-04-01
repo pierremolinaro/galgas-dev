@@ -43,8 +43,8 @@ entity @metamodelAttribute {
 entity @metamodelMultipleReference {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
-  @luint mLowerBound ;
-  @luint mUpperBound ;
+  @uint mLowerBound ;
+  @uint mUpperBound ;
 }
 
 end metamodel ;

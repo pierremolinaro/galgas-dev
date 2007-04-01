@@ -120,7 +120,10 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
         }
       }
       if (identiques) {
-        *inHTMLfile << "  Error : productions " << i << " and " << j << " are identical.\n" ;
+        ok = false ;
+        if (inHTMLfile != NULL) {
+          *inHTMLfile << "  Error : productions " << i << " and " << j << " are identical.\n" ;
+        }
       }
     }
   }

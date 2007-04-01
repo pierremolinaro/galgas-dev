@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 syntax option_model_builder :
-import lexique galgas_scanner in "galgas_scanner.ggs" ;
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import metamodel option_metamodel in "option_metamodel.gMetamodel" ;
 
 nonterminal <option_component_start_symbol> -> @optionComponentRoot ;

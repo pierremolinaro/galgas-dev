@@ -82,7 +82,7 @@ static void * _kDispatcherFor_option_metamodel [_kSize_option_metamodel] = {
 
 //---------------------------------------------------------------------------*
 
-static C_TreewalkingDispacher _gDispatcherTable ;
+static C_TreewalkingDispacher _gDispatcherTree ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -198,7 +198,7 @@ _treewalking_routine_optionComponentRoot (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void _build_dispacher_tree (void) {
-  _gDispatcherTable.enterTable (_metamodel_index_for_option_metamodel (),
+  _gDispatcherTree.enterTable (_metamodel_index_for_option_metamodel (),
                                 _kSize_option_metamodel,
                                 _kDispatcherFor_option_metamodel
                                 COMMA_HERE) ;
@@ -219,10 +219,10 @@ _walk_throught_optionHeaderGeneration (C_Compiler & _inLexique,
                                 const GGS_commandLineOptionMap  & var_cas_inUIntOptionMap,
                                 const GGS_commandLineOptionMap  & var_cas_inStringOptionMap) {
   if (_rootObject._isBuilt ()) {
-    if (! _gDispatcherTable.isInited ()) {
+    if (! _gDispatcherTree.isInited ()) {
       _build_dispacher_tree () ;
     }
-    _treewalking_routine_optionComponentRoot_type * _f = (_treewalking_routine_optionComponentRoot_type *) _gDispatcherTable.entry (_rootObject.getPtr () COMMA_HERE) ;
+    _treewalking_routine_optionComponentRoot_type * _f = (_treewalking_routine_optionComponentRoot_type *) _gDispatcherTree.entry (_rootObject.getPtr () COMMA_HERE) ;
     (* _f) (_inLexique, _rootObject.getPtr (), var_cas_inStartDirectory, var_cas_inOptionComponentName, var_cas_inBoolOptionMap, var_cas_inUIntOptionMap, var_cas_inStringOptionMap) ;
   }else{
   }

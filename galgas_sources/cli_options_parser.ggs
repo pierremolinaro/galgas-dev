@@ -19,7 +19,7 @@
 
 syntax cli_options_parser :
 
-import lexique galgas_scanner in "galgas_scanner.ggs" ;
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics common_semantics in "common_semantics.ggs" ;
 

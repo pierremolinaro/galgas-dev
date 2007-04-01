@@ -68,7 +68,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                          const GGS_typeExpressionList & inExpressionList) const {
   ioCppFile << "{ _treewalking_routine_" << inEntityName
             << "_type * _f = (_treewalking_routine_" << inEntityName
-            << "_type *) _gDispatcherTable.entry (_currentObject->" << inCalledPropertyName << ".getPtr () COMMA_HERE) ;\n"
+            << "_type *) _gDispatcherTree.entry (_currentObject->" << inCalledPropertyName << ".getPtr () COMMA_HERE) ;\n"
                "  (* _f) (_inLexique, _currentObject->" << inCalledPropertyName
             << ".getPtr ()" ;
   GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
@@ -96,7 +96,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
             << "  while (_ptr != NULL) {\n"
                "    _treewalking_routine_" << inEntityName
             << "_type * _f = (_treewalking_routine_" << inEntityName
-            << "_type *) _gDispatcherTable.entry (_ptr COMMA_HERE) ;\n"
+            << "_type *) _gDispatcherTree.entry (_ptr COMMA_HERE) ;\n"
                "    (* _f) (_inLexique, _ptr" ;
   GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
   while (argCourant != NULL) {
@@ -304,7 +304,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
   generatedZone3 << "static const uint32 _kSize_" << currentMetamodelName << " = " << currentIndex << " ;\n\n" ;
   generatedZone3 << codeForDispacher ;
   generatedZone3.writeCppHyphenLineComment () ;
-  generatedZone3 << "static C_TreewalkingDispacher _gDispatcherTable ;\n"
+  generatedZone3 << "static C_TreewalkingDispacher _gDispatcherTree ;\n"
                     "\n" ;
 
 //--- Generate routine implementation
@@ -361,7 +361,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
   generatedZone3 << "static void _build_dispacher_tree (void) {\n" ;
   for (sint32 i=0 ; i<metamodelsWithDispatcher.count () ; i++) {
     const C_String metamodelName = metamodelsWithDispatcher (i COMMA_HERE) ;
-    generatedZone3 << "  _gDispatcherTable.enterTable (_metamodel_index_for_" << metamodelName << " (),\n"
+    generatedZone3 << "  _gDispatcherTree.enterTable (_metamodel_index_for_" << metamodelName << " (),\n"
                    << "                                _kSize_" << metamodelName << ",\n"
                       "                                _kDispatcherFor_" << metamodelName << "\n"
                       "                                COMMA_HERE) ;\n" ;
@@ -385,11 +385,11 @@ generate_treewalking_implementation (C_Compiler & inLexique,
   }
   generatedZone3 << ") {\n"
                     "  if (_rootObject._isBuilt ()) {\n"
-                    "    if (! _gDispatcherTable.isInited ()) {\n"
+                    "    if (! _gDispatcherTree.isInited ()) {\n"
                     "      _build_dispacher_tree () ;\n"
                     "    }\n"
                  << "    _treewalking_routine_" << inRootEntity << "_type * _f = (_treewalking_routine_" << inRootEntity
-                 << "_type *) _gDispatcherTable.entry (_rootObject.getPtr () COMMA_HERE) ;\n"
+                 << "_type *) _gDispatcherTree.entry (_rootObject.getPtr () COMMA_HERE) ;\n"
                     "    (* _f) (_inLexique, _rootObject.getPtr ()" ;
   currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {

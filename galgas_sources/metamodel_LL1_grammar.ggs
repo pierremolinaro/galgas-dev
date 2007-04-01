@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 grammar metamodel_LL1_grammar "LL1" :
-  import lexique galgas_scanner in "galgas_scanner.ggs" ;
+  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import syntax metamodel_model_builder in "metamodel_model_builder.ggs" ;
 
   root <metamodel_component_start_symbol> -> metamodel_metamodel

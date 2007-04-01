@@ -211,6 +211,38 @@
 		CF48FB0B0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
 		CF48FB0C0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
 		CF48FB0D0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
+		CF49403C0BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
+		CF49403D0BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
+		CF49403E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
+		CF49403F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
+		CF4940400BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
+		CF4940410BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
+		CF4940420BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
+		CF4940430BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
+		CF4940440BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
+		CF4940450BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
+		CF4940460BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
+		CF4940470BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
+		CF4940480BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
+		CF4940490BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
+		CF49404A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
+		CF49404B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
+		CF49404C0BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
+		CF49404D0BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
+		CF49404E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
+		CF49404F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
+		CF4940500BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
+		CF4940510BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
+		CF4940520BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
+		CF4940530BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
+		CF4940540BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
+		CF4940550BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
+		CF4940560BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
+		CF4940570BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
+		CF4940590BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
+		CF49405A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
+		CF49405B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
+		CF4940A60BBECC7F009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
 		CF4CBBC009FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
 		CF4CBBC109FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
 		CF4CBBC209FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
@@ -1271,6 +1303,22 @@
 		CFC9536D0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC9536E0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC9536F0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFCDF8140BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
+		CFCDF8150BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
+		CFCDF8160BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
+		CFCDF8170BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
+		CFCDF8180BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
+		CFCDF8190BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
+		CFCDF81A0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
+		CFCDF81B0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
+		CFCDF81C0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
+		CFCDF81D0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
+		CFCDF81E0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
+		CFCDF81F0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
+		CFCDF8200BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
+		CFCDF8210BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
+		CFCDF8220BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
+		CFCDF8230BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
 		CFCF920E0B6E41B000747AC6 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
 		CFCF920F0B6E41B000747AC6 /* C_galgas_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCF92090B6E41B000747AC6 /* C_galgas_io.h */; };
 		CFCF92140B6E41B000747AC6 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
@@ -2020,6 +2068,10 @@
 		CF4895680B66682D005A9E78 /* predefined_types.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = predefined_types.cpp; sourceTree = "<group>"; };
 		CF4895690B66682D005A9E78 /* predefined_types.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = predefined_types.h; sourceTree = "<group>"; };
 		CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDescriptionInExpression.h; sourceTree = "<group>"; };
+		CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexique_LL1_grammar.cpp; sourceTree = "<group>"; };
+		CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexique_LL1_grammar.h; sourceTree = "<group>"; };
+		CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexique_model_builder.cpp; sourceTree = "<group>"; };
+		CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexique_model_builder.h; sourceTree = "<group>"; };
 		CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
 		CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_domain.cpp; sourceTree = "<group>"; };
 		CF507CA80B6F854B00ECFEEB /* AC_galgas_domain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_domain.h; sourceTree = "<group>"; };
@@ -2225,6 +2277,8 @@
 		CFCAABD809BCD3FF0042E80C /* include_StringsetModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_StringsetModel.h; sourceTree = "<group>"; };
 		CFCAABD909BCD3FF0042E80C /* include_typeStringOption.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeStringOption.h; sourceTree = "<group>"; };
 		CFCAABDA09BCD3FF0042E80C /* include_UIntModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_UIntModel.h; sourceTree = "<group>"; };
+		CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexique_metamodel.cpp; sourceTree = "<group>"; };
+		CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexique_metamodel.h; sourceTree = "<group>"; };
 		CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_io.cpp; sourceTree = "<group>"; };
 		CFCF92090B6E41B000747AC6 /* C_galgas_io.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_galgas_io.h; sourceTree = "<group>"; };
 		CFD1939909FCFC0300920886 /* include_typeAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAddOperation.h; sourceTree = "<group>"; };
@@ -3104,7 +3158,7 @@
 				CFF53727057A4D3F00854C83 /* Common Semantics */,
 				CFF53740057A4EFE00854C83 /* Galgas Scanner */,
 				CFF13E370597308C00C43F5E /* Option Component */,
-				CFF5376A057A504000854C83 /* Scanner Component */,
+				CFF5376A057A504000854C83 /* Lexique Component */,
 				CFF53780057A50B300854C83 /* Semantics Component */,
 				CFF537AA057A51A000854C83 /* Parser Component */,
 				CFEEBE6505C0569F009FE498 /* Cocoa Component */,
@@ -3154,15 +3208,21 @@
 			name = "Galgas Scanner";
 			sourceTree = "<group>";
 		};
-		CFF5376A057A504000854C83 /* Scanner Component */ = {
+		CFF5376A057A504000854C83 /* Lexique Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */,
+				CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */,
+				CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */,
+				CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */,
+				CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */,
+				CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */,
 				CFF5376D057A506700854C83 /* scanner_parser.cpp */,
 				CF76F4A7090E73B900036FAC /* scanner_parser.h */,
 				CF76F4AE090E73C200036FAC /* scanner_semantics.h */,
 				CFF5376F057A506700854C83 /* scanner_semantics.cpp */,
 			);
-			name = "Scanner Component";
+			name = "Lexique Component";
 			sourceTree = "<group>";
 		};
 		CFF53777057A507100854C83 /* Scanner Component */ = {
@@ -3610,6 +3670,9 @@
 				CFB1C4E10BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
 				CFB1C4E30BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
 				CFB1C4E50BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
+				CFCDF8150BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
+				CF49403D0BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
+				CF49403F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3715,6 +3778,9 @@
 				CFB1C5050BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
 				CFB1C5070BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
 				CFB1C5090BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
+				CFCDF8210BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
+				CF4940550BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
+				CF4940570BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3820,6 +3886,9 @@
 				CFB1C50B0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
 				CFB1C50D0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
 				CFB1C50F0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
+				CFCDF8230BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
+				CF4940590BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
+				CF49405B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3941,6 +4010,9 @@
 				CFB1C4E70BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
 				CFB1C4E90BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
 				CFB1C4EB0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
+				CFCDF8170BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
+				CF4940410BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
+				CF4940430BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4046,6 +4118,9 @@
 				CFB1C4ED0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
 				CFB1C4EF0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
 				CFB1C4F10BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
+				CFCDF8190BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
+				CF4940450BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
+				CF4940470BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4151,6 +4226,9 @@
 				CFB1C4F30BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
 				CFB1C4F50BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
 				CFB1C4F70BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
+				CFCDF81B0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
+				CF4940490BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
+				CF49404B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4256,6 +4334,9 @@
 				CFB1C4F90BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
 				CFB1C4FB0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
 				CFB1C4FD0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
+				CFCDF81D0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
+				CF49404D0BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
+				CF49404F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4361,6 +4442,9 @@
 				CFB1C4FF0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
 				CFB1C5010BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
 				CFB1C5030BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
+				CFCDF81F0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
+				CF4940510BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
+				CF4940530BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4824,6 +4908,9 @@
 				CFB1C4E00BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
 				CFB1C4E20BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
 				CFB1C4E40BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
+				CFCDF8140BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
+				CF49403C0BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
+				CF49403E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4951,6 +5038,9 @@
 				CFB1C5040BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
 				CFB1C5060BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
 				CFB1C5080BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
+				CFCDF8200BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
+				CF4940540BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
+				CF4940560BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5078,6 +5168,9 @@
 				CFB1C50A0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
 				CFB1C50C0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
 				CFB1C50E0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
+				CFCDF8220BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
+				CF49405A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
+				CF4940A60BBECC7F009DB633 /* lexique_LL1_grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5244,6 +5337,9 @@
 				CFB1C4E60BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
 				CFB1C4E80BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
 				CFB1C4EA0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
+				CFCDF8160BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
+				CF4940400BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
+				CF4940420BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5371,6 +5467,9 @@
 				CFB1C4EC0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
 				CFB1C4EE0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
 				CFB1C4F00BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
+				CFCDF8180BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
+				CF4940440BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
+				CF4940460BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5498,6 +5597,9 @@
 				CFB1C4F20BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
 				CFB1C4F40BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
 				CFB1C4F60BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
+				CFCDF81A0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
+				CF4940480BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
+				CF49404A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5625,6 +5727,9 @@
 				CFB1C4F80BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
 				CFB1C4FA0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
 				CFB1C4FC0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
+				CFCDF81C0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
+				CF49404C0BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
+				CF49404E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5752,6 +5857,9 @@
 				CFB1C4FE0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
 				CFB1C5000BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
 				CFB1C5020BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
+				CFCDF81E0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
+				CF4940500BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
+				CF4940520BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2793,6 +2793,12 @@ routine checkAssignmentTypesCompatibility
   when @typeGalgas_lstring ()    :: @typeGalgas_lstring () :
   when @typeGalgas_location ()   :: @typeGalgas_location () :
 
+  when @typeGalgas_singleReferenceEntity (@lstring attNomType1) :: @typeGalgas_singleReferenceEntity (@lstring attNomType2) :
+    if [attNomType1 string] != [attNomType2 string] then
+      error inErrorLocation : "I was expecting the single reference type '@" . [attNomType1 string] .
+                                "', I have got the single reference type '@" . [attNomType2 string] . "\"" ;
+    end if ;
+
   when @typeGalgasUndefinedMapindexType (@lstring attNomType1 ...) :: @typeGalgasUndefinedMapindexType (@lstring attNomType2 ...) :
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting the map index type '@" . [attNomType1 string] .
