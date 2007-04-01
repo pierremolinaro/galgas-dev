@@ -18,14 +18,14 @@
 #---------------------------------------------------------------------------*
 
 #--- Lexique Component
-compile "lexiqueSemantics.ggs" ;
+compile "lexiqueSemantics.gSemantics" ;
 compile "lexiqueMetamodel.gMetamodel" ;
 compile "lexiqueModelBuilder.ggs" ;
 compile "lexiqueLL1grammar.ggs" ;
 compile "lexiqueTreewalkingForBuildingTerminalMap.ggs" ;
 
 #--- Option Component
-compile "optionSemantics.ggs" ;
+compile "optionSemantics.gSemantics" ;
 compile "optionMetamodel.gMetamodel" ;
 compile "optionModelBuilder.ggs" ;
 compile "optionLL1grammar.ggs" ;
@@ -39,12 +39,15 @@ compile "metamodelModelBuilder.ggs" ;
 compile "metamodelLL1grammar.ggs" ;
 
 #--- Semantics Component
+compile "semanticsMetamodel.gMetamodel" ;
+compile "semanticsModelBuilder.ggs" ;
+compile "semanticsLL1grammar.ggs" ;
 
 #--- Temporary Program for PPC Cocoa GALGAS Only 
 compile "mda_galgas_LL1_prgm.ggs" ;
 
 #--- Old style components
-compile "semantics_semantics.ggs" ;
+compile "semantics_semantics.gSemantics" ;
 compile "treewalking_parser.ggs" ;
 compile "domain_parser.ggs" ;
 compile "semantics_parser.ggs" ;

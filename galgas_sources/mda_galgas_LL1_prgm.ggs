@@ -18,12 +18,13 @@
 #---------------------------------------------------------------------------*
 
 program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
-  import semantics lexiqueSemantics in "lexiqueSemantics.ggs" ;
-  import semantics optionSemantics in "optionSemantics.ggs" ;
-  import semantics semantics_semantics in "semantics_semantics.ggs" ;
+  import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
+  import semantics optionSemantics in "optionSemantics.gSemantics" ;
+  import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
   import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
   import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
+  import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import treewalking optionHeaderGeneration in "optionHeaderGeneration.ggs" ;
   import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.ggs" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
@@ -33,6 +34,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar optionLL1grammar in "optionLL1grammar.ggs" ;
   import grammar metamodelLL1grammar in "metamodelLL1grammar.ggs" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.ggs" ;
+  import grammar semanticsLL1grammar in "semanticsLL1grammar.ggs" ;
   
   error 100 ;
   warning 100 ;
@@ -121,6 +123,17 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
       ?terminalMap
     ;
     log terminalMap ;
+  }
+
+  when . "gSemantics"
+  message "a GALGAS semantics source file"
+  ??@lstring inSourceFile {
+  #--- File generation start directory
+    @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+    startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+  #--- Parse metamodel component
+    @semanticsComponentRoot semanticsComponentRoot ;
+    grammar semanticsLL1grammar in inSourceFile -> semanticsComponentRoot ;
   }
 
 end program ;

@@ -18,7 +18,7 @@
 
 semantics parser_semantics :
 
-import semantics semantics_semantics in "semantics_semantics.ggs" ;
+import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

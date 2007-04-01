@@ -21,7 +21,7 @@ syntax grammar_parser :
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
-import semantics semantics_semantics in "semantics_semantics.ggs" ;
+import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

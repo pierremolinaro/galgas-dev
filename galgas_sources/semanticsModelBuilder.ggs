@@ -1,0 +1,118 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'semantics' component parser, as model builder                           *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax semanticsModelBuilder :
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <semantics_component_start_symbol> -> @semanticsComponentRoot ;
+
+nonterminal <semantic_declaration> -> @semanticDeclaration ;
+
+nonterminal <attribute_declaration> -> @structuredTypeAttribute ;
+
+nonterminal <map_method_declaration> -> @mapMethod ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantics_component_start_symbol> -> @semanticsComponentRoot :
+  $semantics$ ;
+#--- Semantics Component Name
+  $identifier$ ? mSemanticsComponentName ;
+  $:$ ;
+#--- Loop on import and semantics declarations
+  mImportedComponentFileNameList := [@lstringlist emptyList] ;
+  repeat
+  while
+    $import$ ;
+    select
+      @lstring importedComponentFileName ;
+      $literal_string$ ? importedComponentFileName ;
+      mImportedComponentFileNameList += !importedComponentFileName ;
+    or
+      $semantics$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
+    end select ;
+    $;$ ;
+  while
+    <semantic_declaration> +> mSemanticDeclarationList ;
+  end repeat ;
+#--- end
+  $end$ ;
+  $semantics$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    Common Rules                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <attribute_declaration> -> @structuredTypeAttribute :
+  $type_name$ ? mAttributeTypeName ;
+  $identifier$ ? mAttributeName ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    D E C L A R A T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @mapDeclaration :
+  $map$ ;
+#--- Map type name
+  $type_name$ ? mMapTypeName ;
+  ${$ ;
+#--- Map properties
+  repeat
+  while
+    <attribute_declaration> +> mAttributeList ;
+  while
+    $insert$ ;
+    <map_method_declaration> +> mInsertMethodList ;
+  while
+    $search$ ;
+    <map_method_declaration> +> mSearchMethodList ;
+  while
+    $remove$ ;
+    <map_method_declaration> +> mRemoveMethodList ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <map_method_declaration> -> @mapMethod :
+  $identifier$ ? mMethodName ;
+  $error$ ;
+  $message$ ;
+  $literal_string$ ? mErrorMessage ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;
