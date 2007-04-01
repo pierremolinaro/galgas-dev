@@ -1,5 +1,5 @@
 #!/bin/sh
-set -x
+#set -x
 cd `dirname $0` &&
 #--- Compile 
 galgas -v --Werror predefined_types.ggs &&

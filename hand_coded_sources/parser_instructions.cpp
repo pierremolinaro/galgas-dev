@@ -286,7 +286,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.firstObject () ;
   while ((argument != NULL) && !used) {
     macroValidPointer (argument) ;
-    used = argument->aNomVariableCible.isEqualTo (inArgumentCppName) ;
+    used = argument->aNomVariableCible.isSameObjectAs (inArgumentCppName) ;
     argument = argument->nextObject () ;
   }
   return used ;

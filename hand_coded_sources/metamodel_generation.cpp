@@ -97,7 +97,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Element comparison
              "//--- Element comparison\n"
-             "  public : bool isEqualToObject ( const  cListElement * inOperand) const ;\n\n"
+             "  public : virtual bool isEqualToObject (const cListElement * inOperand) const ;\n\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void\n"
@@ -133,30 +133,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inHfile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
-  inHfile << "class GGS_" << aNomClasse ;
+  inHfile << "class GGS_" << aNomClasse << " : public " ;
   if (mSuperClassName.length () > 0) {
-    inHfile << " : public GGS_" << mSuperClassName ;
+    inHfile << "GGS_" << mSuperClassName ;
+  }else{
+    inHfile << "AC_galgas_entity" ;
   }
   inHfile << " {\n" ;
-
-//--- Engendrer la declaration de l'attribut 'mPointer'
-  if (mSuperClassName.length () == 0) {
-    inHfile << "//--- Pointer to actual instance\n"
-               "  protected : cPtr_" << aNomClasse << " * mPointer ;\n" ;
-  }
-
-//--- Engendrer la declaration du constructeur par defaut
-  inHfile << "//--- Default constructor\n"
-             "  public : GGS_" << aNomClasse << " (void) ;\n"
-
-//--- Engendrer la declaration du constructeur de recopie
-             "//--- Copy constructor\n"
-             "  public : GGS_" << aNomClasse
-          << " (const GGS_" << aNomClasse << " &) ;\n"
-
-//--- Engendrer la declaration du destructeur
-             "//--- Virtual destructor\n"
-             "  public : virtual ~GGS_" << aNomClasse << " (void) ;\n" ;
 
   if (! mIsAbstract.boolValue ()) {
   //--- 'new' constructor
@@ -178,44 +161,17 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "COMMA_LOCATION_ARGS) ;\n" ;
   }
 
-//--- Engendrer la declaration de la redefinition de l'operateur =
-  inHfile << "//--- Assignment operator\n"
-             "  public : void operator = (const GGS_" << aNomClasse << " &) ;\n"
-
-//--- Comparison
-             "//--- Comparison methods\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomClasse << " & inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomClasse << " & inOperand) const ;\n\n" ;
-
   if (mSuperClassName.length () == 0) {
-//--- Engendrer la declaration de la methode '_isBuilt'
-    inHfile << "//--- _isBuilt\n"
-               "  public : inline bool _isBuilt (void) const { return mPointer != NULL ; }\n\n"
-
-
-//--- Engendrer la declaration et l'implementation de la methode 'isEqualTo'
-               "//--- isEqualTo\n"
-               "  public : inline bool isEqualTo (const GGS_" << aNomClasse
-            << " & _inOperand) const {\n"
-               "    return mPointer == _inOperand.mPointer ;\n"
-               "  }\n\n"
-
 //--- Engendrer la declaration de la methode 'getPtr'
-               "//--- getPtr\n"
+   inHfile << "//--- getPtr\n"
                "  public : inline cPtr_" << aNomClasse << " * getPtr (void) const {\n"
-               "    return mPointer ;\n"
-               "  }\n\n"
-
-//--- Engendrer la declaration de la methode '_drop_operation'
-               "//--- drop\n"
-               "  public : void _drop_operation (void) ;\n\n" ;
+               "    return (cPtr_" << aNomClasse << " *) mPointer ;\n"
+               "  }\n\n" ;
   }
 
 //--- Generate 'description' reader declaration
   inHfile << "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
-             "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const sint32 inIndentation = 0) const ;\n\n"
+             "  public : virtual const char * actualTypeName (void) const ;\n\n"
 
 //--- Implicitly declared Readers
              "//--- Readers\n" ;
@@ -234,11 +190,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const ;\n"
              "  #else\n"
              "    public : inline cPtr_" << aNomClasse << " * operator () (void) const {\n"
-             "      return " ;
-  if (mSuperClassName.length () > 0) {
-    inHfile << "(cPtr_" << aNomClasse << " *) " ;
-  }
-  inHfile << "mPointer ;\n"
+             "      return (cPtr_" << aNomClasse << " *) mPointer ;\n"
              "    }\n"
              "  #endif\n\n" ;
 
@@ -253,14 +205,6 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   inHfile << "class GGS_" << listClassName << " : public AC_galgas_list {\n"
              "  public : typedef cPtr_" << aNomClasse << " element_type ;\n"
-//--- Constructors and assignment operator declaration
-             "//--- Default Constructor\n"
-             "  public : GGS_" << listClassName << " (void) ;\n"
-             "//--- Copy Constructor\n"
-             "  public : GGS_" << listClassName << " (const GGS_" << listClassName << " & inSource) ;\n"
-             "//--- Comparison Operators\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << listClassName << " & inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << listClassName << " & inOperand) const ;\n"
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
@@ -295,8 +239,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  }\n"
 
 //--- operators () for method call
-             "//--- Operators () used for method call\n"
-             "  public : const GGS_" << listClassName << " * operator () (UNUSED_LOCATION_ARGS) const { return this ;} \n"
+             "//--- Operator () used for method call\n"
+             "  public : inline const GGS_" << listClassName << " * operator () (UNUSED_LOCATION_ARGS) const { return this ;}\n\n"
 
 //--- Declare method 'first'
              "//--- Method 'first'\n"
@@ -625,33 +569,6 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 // ------------- List Implementation -----------------
   inCppFile.writeCppTitleComment (C_String ("List '@") + listClassName + "'") ;
-
-//--- Generate default constructor
-  inCppFile << "GGS_" << listClassName
-            << "::GGS_" << listClassName
-            << " (void): AC_galgas_list () { // Default Constructor\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
-//--- Engendrer le constructeur de recopie
-  inCppFile << "GGS_" << listClassName << "::\n"
-               "GGS_" << listClassName
-            << " (const GGS_" << listClassName << " & inSource): AC_galgas_list (inSource) {\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
-//--- Generate comparison
-  inCppFile << "GGS_bool GGS_" << listClassName << "::\n"
-               "_operator_isEqual (const GGS_" << listClassName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToList (inOperand)) ;\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
-  inCppFile << "GGS_bool GGS_" << listClassName << "::\n"
-               "_operator_isNotEqual (const GGS_" << listClassName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToList (inOperand)) ;\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
 
 //--- Engendrer la methode _internalAppendValues
   inCppFile << "void GGS_" << listClassName << "::\n"
@@ -1122,42 +1039,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
-//--- Implementer la declaration du constructeur par defaut
-  inCppFile << "GGS_" << aNomClasse << "::\n"
-               "GGS_" << aNomClasse << " (void) {\n"
-               "  mPointer = NULL ;\n"
-               "}\n\n" ;
-
-//--- Implementer la declaration du constructeur de recopie
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomClasse << "::\n"
-               "GGS_" << aNomClasse << " (const GGS_" << aNomClasse << " & inOperand)" ;
-  if (mSuperClassName.length () == 0) {
-     inCppFile << " {\n"
-                  "  mPointer = (cPtr_" << aNomClasse << " *) NULL ;\n" ;
-  }else{
-     inCppFile << "\n"
-                  ":GGS_" << mSuperClassName << " () {\n" ;
-  }
-  inCppFile << "  macroAssignPointer (mPointer, inOperand.mPointer) ;\n"
-               "}\n\n" ;
-
-//--- Implementer la declaration du destructeur
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomClasse
-            << "::\n~GGS_" << aNomClasse << " (void) {\n"
-               "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
-               "}\n\n" ;
-
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << aNomClasse << "::\n"
-               "operator = ("
-               "const GGS_" << aNomClasse << " & inSource) {\n"
-               "  macroAssignPointer (mPointer, inSource.mPointer) ;\n"
-               "}\n\n" ;
-
   if (! mIsAbstract.boolValue ()) {
-    inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "GGS_" << aNomClasse
               << " GGS_" << aNomClasse << "::\n"
                  "constructor_new (C_Compiler & /* inLexique */" ;
@@ -1195,13 +1077,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile << ")) ;\n"
                  "  return result ;\n"
                  "}\n\n" ;
+    inCppFile.writeCppHyphenLineComment () ;
   }
   
 //--- For every attribute, generate a reader
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile.writeCppHyphenLineComment () ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " GGS_" << aNomClasse << "::\n"
                  "reader_" << current->aNomAttribut
@@ -1210,81 +1092,28 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << "  result ;\n"
                  "  if (mPointer != NULL) {\n"
-                 "    macroValidPointer (mPointer) ;\n" ;
-    if (mSuperClassName.length () == 0) {
-      inCppFile << "    result = mPointer->" << current->aNomAttribut << " ;\n" ;
-   }else{
-      inCppFile << "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
-                   "               \"dynamic cast error\", 0, 0) ;\n"
-                   "    result = ((cPtr_" << aNomClasse << " *) mPointer)->" << current->aNomAttribut << " ;\n" ;
-    }
-    inCppFile << "  }\n"
+                 "    macroValidPointer (mPointer) ;\n"
+                 "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
+                 "               \"dynamic cast error\", 0, 0) ;\n"
+                 "    result = ((cPtr_" << aNomClasse << " *) mPointer)->" << current->aNomAttribut << " ;\n"
+                 "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;
+    inCppFile.writeCppHyphenLineComment () ;
     current = current->nextObject () ;
   }
 
-//--- Engendrer la declaration de la methode '_drop_operation'
-  if (mSuperClassName.length () == 0) {
-    inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomClasse << "::\n"
-                 "_drop_operation (void) {\n"
-                 "  macroDetachPointer (mPointer, cPtr_" << aNomClasse << ") ;\n"
-                 "}\n\n" ; 
-  }
-
-//--- Generate comparison operators
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
-               "_operator_isEqual (const GGS_" << aNomClasse << " & inOperand) const {\n"
-               "  bool built = _isBuilt () && inOperand._isBuilt () ;\n"
-               "  bool equal = mPointer == inOperand.mPointer ;\n"
-               "  if (built && ! equal) {\n"
-               "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
-               "  }\n"
-               "  return GGS_bool (built, equal) ;\n"
-               "}\n\n" ;
-
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_bool GGS_" << aNomClasse << "::\n"
-               "_operator_isNotEqual (const GGS_" << aNomClasse << " & inOperand) const {\n"
-               "  bool built = _isBuilt () && inOperand._isBuilt () ;\n"
-               "  bool equal = mPointer == inOperand.mPointer ;\n"
-               "  if (built && ! equal) {\n"
-               "    equal = mPointer->isEqualToObject (inOperand.mPointer) ;\n"
-               "  }\n"
-               "  return GGS_bool (built, ! equal) ;\n"
-               "}\n\n" ;
-
 //--- Generate 'description' reader implementation
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
-            << "reader_description (C_Compiler & _inLexique\n"
-               "                    COMMA_LOCATION_ARGS,\n"
-               "                    const sint32 inIndentation) const {\n"
-               "  C_String s ;\n"
-               "  s << \"<class @" << aNomClasse << " \" ;\n"
-               "  if (_isBuilt ()) {\n"
-               "    mPointer->appendForDescription (_inLexique, s, inIndentation + 1 COMMA_THERE) ;\n"
-               "  }else{\n"
-               "    s << \"not built\" ;\n"
-               "  }\n"
-               "  s << \"\\n\" ;\n"
-               "  s.writeStringMultiple (\"| \", inIndentation) ;\n"
-               "  s << \">\" ;\n"
-               "  return GGS_string (true, s) ;\n"
-               "}\n\n" ; 
-
+  inCppFile << "const char * GGS_" << aNomClasse << "::actualTypeName (void) const {\n"
+               " return \"" << aNomClasse << "\" ;\n"
+               "}\n\n" ;
+ 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile <<"#ifndef DO_NOT_GENERATE_CHECKINGS\n"
              "  cPtr_" << aNomClasse << " * GGS_" << aNomClasse << "::operator () (LOCATION_ARGS) const {\n"
              "    macroValidPointerThere (mPointer) ;\n"
-             "    return " ;
-  if (mSuperClassName.length () > 0) {
-    inCppFile << "(cPtr_" << aNomClasse << " *) " ;
-  }
-  inCppFile << "mPointer ;\n"
+             "    return (cPtr_" << aNomClasse << " *) mPointer ;\n"
              "  }\n"
              "#endif\n\n" ;
 }

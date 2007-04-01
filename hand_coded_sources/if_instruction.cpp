@@ -1364,7 +1364,7 @@ void cPtr_typeVarInExpression::generateExpression (AC_OutputStream & ioCppFile) 
 
 bool cPtr_typeVarInExpression::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
-  return mCppVarName.isEqualTo (inArgumentCppName) ;
+  return mCppVarName.isSameObjectAs (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1436,7 +1436,7 @@ void cPtr_typeTextTableCall::generateExpression (AC_OutputStream & ioCppFile) co
 bool cPtr_typeTextTableCall::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
-      || aNomCppClef.isEqualTo (inArgumentCppName) ;
+      || aNomCppClef.isSameObjectAs (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*

@@ -43,12 +43,12 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                      Element of list '@UINT64LIST'                        *
+//                      Element of list '@uint64list'                        *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-elementOf_GGS_UINT64LIST::
-elementOf_GGS_UINT64LIST (const GGS_uint64 & argument_0
+elementOf_GGS_uint64list::
+elementOf_GGS_uint64list (const GGS_uint64 & argument_0
                                 COMMA_LOCATION_ARGS) :
 AC_galgas_list::cListElement (THERE),
 mValue (argument_0) {
@@ -56,11 +56,11 @@ mValue (argument_0) {
 
 //---------------------------------------------------------------------------*
 
-bool elementOf_GGS_UINT64LIST::
+bool elementOf_GGS_uint64list::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_UINT64LIST * _p = dynamic_cast <const elementOf_GGS_UINT64LIST *> (inOperand) ;
+    const elementOf_GGS_uint64list * _p = dynamic_cast <const elementOf_GGS_uint64list *> (inOperand) ;
     macroValidPointer (_p) ;
     equal = mValue._operator_isEqual (_p->mValue).boolValue () ;
   }
@@ -69,7 +69,7 @@ isEqualToObject (const cListElement * inOperand) const {
 
 //---------------------------------------------------------------------------*
 
-void elementOf_GGS_UINT64LIST::
+void elementOf_GGS_uint64list::
 appendForDescription (C_Compiler & _inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
@@ -82,11 +82,11 @@ appendForDescription (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                            List '@UINT64LIST'                             *
+//                            List '@uint64list'                             *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 _internalAppendValues (const GGS_uint64 & argument_0
                     COMMA_LOCATION_ARGS) {
   element_type * nouvelElement = (element_type *) NULL ;
@@ -97,7 +97,7 @@ _internalAppendValues (const GGS_uint64 & argument_0
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 _internalPrependValues (const GGS_uint64 & argument_0
                     COMMA_LOCATION_ARGS) {
   element_type * nouvelElement = (element_type *) NULL ;
@@ -108,7 +108,7 @@ _internalPrependValues (const GGS_uint64 & argument_0
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 _addAssign_operation (const GGS_uint64 & argument_0) {
   if (_isBuilt ()) {
     _insulateList () ;
@@ -119,9 +119,9 @@ _addAssign_operation (const GGS_uint64 & argument_0) {
 
 //---------------------------------------------------------------------------*
 
-GGS_UINT64LIST GGS_UINT64LIST::
-_operator_concat (const GGS_UINT64LIST & inOperand) const {
-  GGS_UINT64LIST result ;
+GGS_uint64list GGS_uint64list::
+_operator_concat (const GGS_uint64list & inOperand) const {
+  GGS_uint64list result ;
   if (_isBuilt () && inOperand._isBuilt ()) {
     if (count () == 0) {
       result = inOperand ;
@@ -129,7 +129,7 @@ _operator_concat (const GGS_UINT64LIST & inOperand) const {
       result = * this ;
       if (inOperand.count () > 0) {
         result._insulateList () ;
-        elementOf_GGS_UINT64LIST * p = inOperand.firstObject () ;
+        elementOf_GGS_uint64list * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_uint64  p_0 = p->mValue ;
@@ -144,7 +144,7 @@ _operator_concat (const GGS_UINT64LIST & inOperand) const {
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_uint64 & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -157,7 +157,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 _insulateList (void) {
   if (_shared ()) {
     element_type * _p = firstObject () ;
@@ -173,20 +173,20 @@ _insulateList (void) {
 
 //---------------------------------------------------------------------------*
 
-GGS_UINT64LIST  GGS_UINT64LIST::
+GGS_uint64list  GGS_uint64list::
 constructor_emptyList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_UINT64LIST result ;
+  GGS_uint64list result ;
   result._alloc () ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_UINT64LIST  GGS_UINT64LIST::
+GGS_uint64list  GGS_uint64list::
 constructor_listWithValue (C_Compiler & /* _inLexique */,
                            const GGS_uint64 & argument_0
                            COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_UINT64LIST result ;
+  GGS_uint64list result ;
   result._alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
@@ -194,8 +194,8 @@ constructor_listWithValue (C_Compiler & /* _inLexique */,
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
-internalSubListWithRange (GGS_UINT64LIST & ioList,
+void GGS_uint64list::
+internalSubListWithRange (GGS_uint64list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
   ioList._alloc () ;
@@ -215,12 +215,12 @@ internalSubListWithRange (GGS_UINT64LIST & ioList,
 
 //---------------------------------------------------------------------------*
 
-GGS_UINT64LIST GGS_UINT64LIST::
+GGS_uint64list GGS_uint64list::
 reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
-  GGS_UINT64LIST result ;
+  GGS_uint64list result ;
   if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
@@ -235,11 +235,11 @@ reader_subListWithRange (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-GGS_UINT64LIST GGS_UINT64LIST::
+GGS_uint64list GGS_uint64list::
 reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
-  GGS_UINT64LIST result ;
+  GGS_uint64list result ;
   if (_isBuilt () && inIndex._isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
@@ -253,16 +253,16 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-GGS_string GGS_UINT64LIST::
+GGS_string GGS_uint64list::
 reader_description (C_Compiler & _inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@UINT64LIST", inIndentation COMMA_THERE) ;
+  return _description (_inLexique, "@uint64list", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 method_first (C_Compiler & _inLexique,
               GGS_uint64 & _out_0
               COMMA_LOCATION_ARGS) const {
@@ -282,7 +282,7 @@ method_first (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 method_last (C_Compiler & _inLexique,
              GGS_uint64 & _out_0
              COMMA_LOCATION_ARGS) const {
@@ -302,7 +302,7 @@ method_last (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 modifier_popFirst (C_Compiler & _inLexique,
                  GGS_uint64 & _out_0
                  COMMA_LOCATION_ARGS) {
@@ -324,7 +324,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_UINT64LIST::
+void GGS_uint64list::
 modifier_popLast (C_Compiler & _inLexique,
                 GGS_uint64 & _out_0
                 COMMA_LOCATION_ARGS) {
@@ -346,12 +346,12 @@ modifier_popLast (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                      Element of list '@STRINGLIST'                        *
+//                      Element of list '@stringlist'                        *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-elementOf_GGS_STRINGLIST::
-elementOf_GGS_STRINGLIST (const GGS_string& argument_0
+elementOf_GGS_stringlist::
+elementOf_GGS_stringlist (const GGS_string& argument_0
                                 COMMA_LOCATION_ARGS) :
 AC_galgas_list::cListElement (THERE),
 mValue (argument_0) {
@@ -359,11 +359,11 @@ mValue (argument_0) {
 
 //---------------------------------------------------------------------------*
 
-bool elementOf_GGS_STRINGLIST::
+bool elementOf_GGS_stringlist::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_STRINGLIST * _p = dynamic_cast <const elementOf_GGS_STRINGLIST *> (inOperand) ;
+    const elementOf_GGS_stringlist * _p = dynamic_cast <const elementOf_GGS_stringlist *> (inOperand) ;
     macroValidPointer (_p) ;
     equal = mValue._operator_isEqual (_p->mValue).boolValue () ;
   }
@@ -372,7 +372,7 @@ isEqualToObject (const cListElement * inOperand) const {
 
 //---------------------------------------------------------------------------*
 
-void elementOf_GGS_STRINGLIST::
+void elementOf_GGS_stringlist::
 appendForDescription (C_Compiler & _inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
@@ -385,11 +385,11 @@ appendForDescription (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                            List '@STRINGLIST'                             *
+//                            List '@stringlist'                             *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 _internalAppendValues (const GGS_string& argument_0
                     COMMA_LOCATION_ARGS) {
   element_type * nouvelElement = (element_type *) NULL ;
@@ -400,7 +400,7 @@ _internalAppendValues (const GGS_string& argument_0
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 _internalPrependValues (const GGS_string& argument_0
                     COMMA_LOCATION_ARGS) {
   element_type * nouvelElement = (element_type *) NULL ;
@@ -411,7 +411,7 @@ _internalPrependValues (const GGS_string& argument_0
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 _addAssign_operation (const GGS_string& argument_0) {
   if (_isBuilt ()) {
     _insulateList () ;
@@ -422,9 +422,9 @@ _addAssign_operation (const GGS_string& argument_0) {
 
 //---------------------------------------------------------------------------*
 
-GGS_STRINGLIST GGS_STRINGLIST::
-_operator_concat (const GGS_STRINGLIST & inOperand) const {
-  GGS_STRINGLIST result ;
+GGS_stringlist GGS_stringlist::
+_operator_concat (const GGS_stringlist & inOperand) const {
+  GGS_stringlist result ;
   if (_isBuilt () && inOperand._isBuilt ()) {
     if (count () == 0) {
       result = inOperand ;
@@ -432,7 +432,7 @@ _operator_concat (const GGS_STRINGLIST & inOperand) const {
       result = * this ;
       if (inOperand.count () > 0) {
         result._insulateList () ;
-        elementOf_GGS_STRINGLIST * p = inOperand.firstObject () ;
+        elementOf_GGS_stringlist * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_string p_0 = p->mValue ;
@@ -447,7 +447,7 @@ _operator_concat (const GGS_STRINGLIST & inOperand) const {
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_string& argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -460,7 +460,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 _insulateList (void) {
   if (_shared ()) {
     element_type * _p = firstObject () ;
@@ -476,20 +476,20 @@ _insulateList (void) {
 
 //---------------------------------------------------------------------------*
 
-GGS_STRINGLIST  GGS_STRINGLIST::
+GGS_stringlist  GGS_stringlist::
 constructor_emptyList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_STRINGLIST result ;
+  GGS_stringlist result ;
   result._alloc () ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_STRINGLIST  GGS_STRINGLIST::
+GGS_stringlist  GGS_stringlist::
 constructor_listWithValue (C_Compiler & /* _inLexique */,
                            const GGS_string& argument_0
                            COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_STRINGLIST result ;
+  GGS_stringlist result ;
   result._alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
@@ -497,8 +497,8 @@ constructor_listWithValue (C_Compiler & /* _inLexique */,
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
-internalSubListWithRange (GGS_STRINGLIST & ioList,
+void GGS_stringlist::
+internalSubListWithRange (GGS_stringlist & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
   ioList._alloc () ;
@@ -518,12 +518,12 @@ internalSubListWithRange (GGS_STRINGLIST & ioList,
 
 //---------------------------------------------------------------------------*
 
-GGS_STRINGLIST GGS_STRINGLIST::
+GGS_stringlist GGS_stringlist::
 reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
-  GGS_STRINGLIST result ;
+  GGS_stringlist result ;
   if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
@@ -538,11 +538,11 @@ reader_subListWithRange (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-GGS_STRINGLIST GGS_STRINGLIST::
+GGS_stringlist GGS_stringlist::
 reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
-  GGS_STRINGLIST result ;
+  GGS_stringlist result ;
   if (_isBuilt () && inIndex._isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
@@ -556,16 +556,16 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-GGS_string GGS_STRINGLIST::
+GGS_string GGS_stringlist::
 reader_description (C_Compiler & _inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@STRINGLIST", inIndentation COMMA_THERE) ;
+  return _description (_inLexique, "@stringlist", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 method_first (C_Compiler & _inLexique,
               GGS_string& _out_0
               COMMA_LOCATION_ARGS) const {
@@ -585,7 +585,7 @@ method_first (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 method_last (C_Compiler & _inLexique,
              GGS_string& _out_0
              COMMA_LOCATION_ARGS) const {
@@ -605,7 +605,7 @@ method_last (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 modifier_popFirst (C_Compiler & _inLexique,
                  GGS_string& _out_0
                  COMMA_LOCATION_ARGS) {
@@ -627,7 +627,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_STRINGLIST::
+void GGS_stringlist::
 modifier_popLast (C_Compiler & _inLexique,
                 GGS_string& _out_0
                 COMMA_LOCATION_ARGS) {
@@ -649,12 +649,12 @@ modifier_popLast (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                      Element of list '@LSTRINGLIST'                       *
+//                      Element of list '@lstringlist'                       *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-elementOf_GGS_LSTRINGLIST::
-elementOf_GGS_LSTRINGLIST (const GGS_lstring & argument_0
+elementOf_GGS_lstringlist::
+elementOf_GGS_lstringlist (const GGS_lstring & argument_0
                                 COMMA_LOCATION_ARGS) :
 AC_galgas_list::cListElement (THERE),
 mValue (argument_0) {
@@ -662,11 +662,11 @@ mValue (argument_0) {
 
 //---------------------------------------------------------------------------*
 
-bool elementOf_GGS_LSTRINGLIST::
+bool elementOf_GGS_lstringlist::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_LSTRINGLIST * _p = dynamic_cast <const elementOf_GGS_LSTRINGLIST *> (inOperand) ;
+    const elementOf_GGS_lstringlist * _p = dynamic_cast <const elementOf_GGS_lstringlist *> (inOperand) ;
     macroValidPointer (_p) ;
     equal = mValue._operator_isEqual (_p->mValue).boolValue () ;
   }
@@ -675,7 +675,7 @@ isEqualToObject (const cListElement * inOperand) const {
 
 //---------------------------------------------------------------------------*
 
-void elementOf_GGS_LSTRINGLIST::
+void elementOf_GGS_lstringlist::
 appendForDescription (C_Compiler & _inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
@@ -688,11 +688,11 @@ appendForDescription (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                           List '@LSTRINGLIST'                             *
+//                           List '@lstringlist'                             *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 _internalAppendValues (const GGS_lstring & argument_0
                     COMMA_LOCATION_ARGS) {
   element_type * nouvelElement = (element_type *) NULL ;
@@ -703,7 +703,7 @@ _internalAppendValues (const GGS_lstring & argument_0
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 _internalPrependValues (const GGS_lstring & argument_0
                     COMMA_LOCATION_ARGS) {
   element_type * nouvelElement = (element_type *) NULL ;
@@ -714,7 +714,7 @@ _internalPrependValues (const GGS_lstring & argument_0
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 _addAssign_operation (const GGS_lstring & argument_0) {
   if (_isBuilt ()) {
     _insulateList () ;
@@ -725,9 +725,9 @@ _addAssign_operation (const GGS_lstring & argument_0) {
 
 //---------------------------------------------------------------------------*
 
-GGS_LSTRINGLIST GGS_LSTRINGLIST::
-_operator_concat (const GGS_LSTRINGLIST & inOperand) const {
-  GGS_LSTRINGLIST result ;
+GGS_lstringlist GGS_lstringlist::
+_operator_concat (const GGS_lstringlist & inOperand) const {
+  GGS_lstringlist result ;
   if (_isBuilt () && inOperand._isBuilt ()) {
     if (count () == 0) {
       result = inOperand ;
@@ -735,7 +735,7 @@ _operator_concat (const GGS_LSTRINGLIST & inOperand) const {
       result = * this ;
       if (inOperand.count () > 0) {
         result._insulateList () ;
-        elementOf_GGS_LSTRINGLIST * p = inOperand.firstObject () ;
+        elementOf_GGS_lstringlist * p = inOperand.firstObject () ;
         while (p != NULL) {
           macroValidPointer (p) ;
           GGS_lstring  p_0 = p->mValue ;
@@ -750,7 +750,7 @@ _operator_concat (const GGS_LSTRINGLIST & inOperand) const {
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -763,7 +763,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 _insulateList (void) {
   if (_shared ()) {
     element_type * _p = firstObject () ;
@@ -779,20 +779,20 @@ _insulateList (void) {
 
 //---------------------------------------------------------------------------*
 
-GGS_LSTRINGLIST  GGS_LSTRINGLIST::
+GGS_lstringlist  GGS_lstringlist::
 constructor_emptyList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_LSTRINGLIST result ;
+  GGS_lstringlist result ;
   result._alloc () ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_LSTRINGLIST  GGS_LSTRINGLIST::
+GGS_lstringlist  GGS_lstringlist::
 constructor_listWithValue (C_Compiler & /* _inLexique */,
                            const GGS_lstring & argument_0
                            COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_LSTRINGLIST result ;
+  GGS_lstringlist result ;
   result._alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
@@ -800,8 +800,8 @@ constructor_listWithValue (C_Compiler & /* _inLexique */,
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
-internalSubListWithRange (GGS_LSTRINGLIST & ioList,
+void GGS_lstringlist::
+internalSubListWithRange (GGS_lstringlist & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
   ioList._alloc () ;
@@ -821,12 +821,12 @@ internalSubListWithRange (GGS_LSTRINGLIST & ioList,
 
 //---------------------------------------------------------------------------*
 
-GGS_LSTRINGLIST GGS_LSTRINGLIST::
+GGS_lstringlist GGS_lstringlist::
 reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
-  GGS_LSTRINGLIST result ;
+  GGS_lstringlist result ;
   if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
@@ -841,11 +841,11 @@ reader_subListWithRange (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-GGS_LSTRINGLIST GGS_LSTRINGLIST::
+GGS_lstringlist GGS_lstringlist::
 reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
-  GGS_LSTRINGLIST result ;
+  GGS_lstringlist result ;
   if (_isBuilt () && inIndex._isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
@@ -859,16 +859,16 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-GGS_string GGS_LSTRINGLIST::
+GGS_string GGS_lstringlist::
 reader_description (C_Compiler & _inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@LSTRINGLIST", inIndentation COMMA_THERE) ;
+  return _description (_inLexique, "@lstringlist", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 method_first (C_Compiler & _inLexique,
               GGS_lstring & _out_0
               COMMA_LOCATION_ARGS) const {
@@ -888,7 +888,7 @@ method_first (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 method_last (C_Compiler & _inLexique,
              GGS_lstring & _out_0
              COMMA_LOCATION_ARGS) const {
@@ -908,7 +908,7 @@ method_last (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 modifier_popFirst (C_Compiler & _inLexique,
                  GGS_lstring & _out_0
                  COMMA_LOCATION_ARGS) {
@@ -930,7 +930,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_LSTRINGLIST::
+void GGS_lstringlist::
 modifier_popLast (C_Compiler & _inLexique,
                 GGS_lstring & _out_0
                 COMMA_LOCATION_ARGS) {

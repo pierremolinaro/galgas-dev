@@ -201,12 +201,12 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeSimpleExtractInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
-  bool isUsed = aNomVariable.isEqualTo (inArgumentCppName)
+  bool isUsed = aNomVariable.isSameObjectAs (inArgumentCppName)
     || mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_L_assignedVariables::element_type * affectationCourante = aListeAffectationParametresEffectifs.firstObject () ;
   while ((! isUsed) && (affectationCourante != NULL)) {
     macroValidPointer (affectationCourante) ;
-    isUsed = affectationCourante->aNomVariableCible.isEqualTo (inArgumentCppName) ;
+    isUsed = affectationCourante->aNomVariableCible.isSameObjectAs (inArgumentCppName) ;
     affectationCourante = affectationCourante->nextObject () ;
   }
   return isUsed ;
@@ -305,7 +305,7 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 bool cPtr_typeStructuredExtractInstructionWithElse::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
-  bool used = mVariableName.isEqualTo (inArgumentCppName)
+  bool used = mVariableName.isSameObjectAs (inArgumentCppName)
         || formalArgumentIsUsedForList (mElseInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
   GGS_typeStructuredExtractCasesList::element_type * p = mCasesList.firstObject () ;
   while ((p != NULL) && ! used) {
@@ -364,7 +364,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeDropInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
-  return aVariableConsommee.isEqualTo (inArgumentCppName) ;
+  return aVariableConsommee.isSameObjectAs (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -412,7 +412,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeLogInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  return mLoggedVariable.isEqualTo (inArgumentCppName) ;
+  return mLoggedVariable.isSameObjectAs (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -471,7 +471,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   GGS_varToDropList::element_type * currentVarToDrop = mVarToDropList.firstObject () ;
   while ((currentVarToDrop != NULL) && ! isUsed) {
     macroValidPointer (currentVarToDrop) ;
-    isUsed = currentVarToDrop->mVarToDrop.isEqualTo (inArgumentCppName)  ;
+    isUsed = currentVarToDrop->mVarToDrop.isSameObjectAs (inArgumentCppName)  ;
     currentVarToDrop = currentVarToDrop->nextObject () ;
   }
   return isUsed ;
@@ -622,7 +622,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeInstructionDeclarationVarLocale::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  return aNomCppVariable.isEqualTo (inArgumentCppName) ;
+  return aNomCppVariable.isSameObjectAs (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -729,8 +729,8 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeMatchInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
-  bool isUsed = aNomCppVariable1.isEqualTo (inArgumentCppName)
-   || aNomCppVariable2.isEqualTo (inArgumentCppName)
+  bool isUsed = aNomCppVariable1.isSameObjectAs (inArgumentCppName)
+   || aNomCppVariable2.isSameObjectAs (inArgumentCppName)
    || formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
   GGS_L_matchInstructionCasesList::element_type * casCourant = aListeCas.firstObject () ;
   while ((! isUsed) && (casCourant != NULL)) {
@@ -792,7 +792,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeIncrementInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  return mTargetVarCppName.isEqualTo (inArgumentCppName) ;
+  return mTargetVarCppName.isSameObjectAs (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -837,7 +837,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeDecrementInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  return mTargetVarCppName.isEqualTo (inArgumentCppName) ;
+  return mTargetVarCppName.isSameObjectAs (inArgumentCppName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -900,7 +900,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeAppendInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  bool used = mTargetVarCppName.isEqualTo (inArgumentCppName) ;
+  bool used = mTargetVarCppName.isSameObjectAs (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
   while ((exp != NULL) && ! used) {
     macroValidPointer (exp) ;
@@ -977,7 +977,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeRemoveInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  bool used = mTargetVarCppName.isEqualTo (inArgumentCppName) ;
+  bool used = mTargetVarCppName.isSameObjectAs (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * exp = mSourceExpressions.firstObject () ;
   while ((exp != NULL) && ! used) {
     macroValidPointer (exp) ;
@@ -1044,7 +1044,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeMapBlockPrologueInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
-  bool isUsed = aNomVariableTable.isEqualTo (inArgumentCppName) ;
+  bool isUsed = aNomVariableTable.isSameObjectAs (inArgumentCppName) ;
   GGS_typeExpressionList::element_type * argCourant = mPrologueExpressionList.firstObject () ;
   while ((! isUsed) && (argCourant != NULL)) {
     macroValidPointer (argCourant) ;
@@ -1111,7 +1111,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeMapBlockEpilogueInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
-  bool isUsed = aNomVariableTable.isEqualTo (inArgumentCppName)  ;
+  bool isUsed = aNomVariableTable.isSameObjectAs (inArgumentCppName)  ;
   GGS_typeExpressionList::element_type * argCourant = mEpilogueExpressionList.firstObject () ;
   while ((! isUsed) && (argCourant != NULL)) {
     macroValidPointer (argCourant) ;

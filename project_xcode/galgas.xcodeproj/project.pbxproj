@@ -52,22 +52,38 @@
 		CF0CB4040BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
 		CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CF0CB4060BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
-		CF0CB41E0BBFCADB00E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */; };
-		CF0CB41F0BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */; };
-		CF0CB4200BBFCADB00E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */; };
-		CF0CB4210BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */; };
-		CF0CB4220BBFCADB00E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */; };
-		CF0CB4230BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */; };
-		CF0CB4240BBFCADB00E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */; };
-		CF0CB4250BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */; };
-		CF0CB4260BBFCADB00E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */; };
-		CF0CB4270BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */; };
-		CF0CB4280BBFCADB00E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */; };
-		CF0CB4290BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */; };
-		CF0CB42A0BBFCADB00E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */; };
-		CF0CB42B0BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */; };
-		CF0CB42C0BBFCADB00E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */; };
-		CF0CB42D0BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB41E0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
+		CF0CB41F0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
+		CF0CB4200BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
+		CF0CB4210BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
+		CF0CB4220BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
+		CF0CB4230BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
+		CF0CB4240BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
+		CF0CB4250BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
+		CF0CB4260BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
+		CF0CB4270BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
+		CF0CB4280BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
+		CF0CB4290BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
+		CF0CB42A0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
+		CF0CB42B0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
+		CF0CB42C0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
+		CF0CB42D0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
+		CF0CB5DA0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB5DB0BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
+		CF0CB5DC0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB5DD0BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
+		CF0CB5DE0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB5DF0BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
+		CF0CB5E00BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB5E10BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
+		CF0CB5E20BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB5E30BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
+		CF0CB5E40BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB5E50BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
+		CF0CB5E60BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB5E70BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
+		CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
+		CF0CB5E90BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
 		CF0EBFD20B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
 		CF0EBFD30B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
 		CF0EBFD40B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
@@ -2080,8 +2096,10 @@
 		CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueTreewalkingForBuildingTerminalMap.h; sourceTree = "<group>"; };
 		CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueSemantics.cpp; sourceTree = "<group>"; };
 		CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueSemantics.h; sourceTree = "<group>"; };
-		CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_class.h; sourceTree = "<group>"; };
-		CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_class.cpp; sourceTree = "<group>"; };
+		CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_entity.h; sourceTree = "<group>"; };
+		CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_entity.cpp; sourceTree = "<group>"; };
+		CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_class.cpp; sourceTree = "<group>"; };
+		CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_class.h; sourceTree = "<group>"; };
 		CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasMapindexType.h; sourceTree = "<group>"; };
 		CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedMapindexType.h; sourceTree = "<group>"; };
 		CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_while_instruction.h; sourceTree = "<group>"; };
@@ -3493,6 +3511,10 @@
 			children = (
 				CF8259F608536AC20077AEAF /* C_Lexique.cpp */,
 				CF8259F708536AC20077AEAF /* C_Lexique.h */,
+				CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */,
+				CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */,
+				CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */,
+				CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */,
 				CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */,
 				CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */,
 				CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */,
@@ -3551,8 +3573,6 @@
 				CFF53893057A558F00854C83 /* GGS_luint.cpp */,
 				CF3FF0C905877B62000D2F8C /* GGS_luint.h */,
 				CF3FF0C005877B62000D2F8C /* galgas_header.h */,
-				CF0CB41C0BBFCADB00E6FABE /* AC_galgas_class.h */,
-				CF0CB41D0BBFCADB00E6FABE /* AC_galgas_class.cpp */,
 			);
 			path = galgas;
 			sourceTree = "<group>";
@@ -3735,7 +3755,8 @@
 				CF49403F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3D50BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB3F80BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
-				CF0CB4280BBFCADB00E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB4280BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
+				CF0CB5E50BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3846,7 +3867,8 @@
 				CF4940570BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3ED0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4040BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
-				CF0CB42A0BBFCADB00E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB42A0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
+				CF0CB5E70BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3957,7 +3979,8 @@
 				CF49405B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3F10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4060BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
-				CF0CB42C0BBFCADB00E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB42C0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
+				CF0CB5E90BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4084,7 +4107,8 @@
 				CF4940430BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3D90BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB3FA0BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
-				CF0CB4220BBFCADB00E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB4220BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
+				CF0CB5DF0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4195,7 +4219,8 @@
 				CF4940470BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3DD0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB3FC0BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
-				CF0CB4200BBFCADB00E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB4200BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
+				CF0CB5DD0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4306,7 +4331,8 @@
 				CF49404B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3E10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB3FE0BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
-				CF0CB4260BBFCADB00E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB4260BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
+				CF0CB5E30BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4417,7 +4443,8 @@
 				CF49404F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3E50BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4000BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
-				CF0CB4240BBFCADB00E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB4240BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
+				CF0CB5E10BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4528,7 +4555,8 @@
 				CF4940530BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3E90BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4020BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
-				CF0CB41E0BBFCADB00E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB41E0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
+				CF0CB5DB0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4997,7 +5025,8 @@
 				CF49403E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3D40BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3F70BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
-				CF0CB4290BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB4290BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
+				CF0CB5E40BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5130,7 +5159,8 @@
 				CF4940560BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3EC0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
-				CF0CB42B0BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB42B0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
+				CF0CB5E60BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5263,7 +5293,8 @@
 				CF4940A60BBECC7F009DB633 /* lexique_LL1_grammar.cpp in Sources */,
 				CF0CB3F00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
-				CF0CB42D0BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB42D0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
+				CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5435,7 +5466,8 @@
 				CF4940420BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3D80BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3F90BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
-				CF0CB4230BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB4230BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
+				CF0CB5DE0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5568,7 +5600,8 @@
 				CF4940460BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3DC0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3FB0BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
-				CF0CB4210BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB4210BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
+				CF0CB5DC0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5701,7 +5734,8 @@
 				CF49404A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3E00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3FD0BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
-				CF0CB4270BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB4270BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
+				CF0CB5E20BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5834,7 +5868,8 @@
 				CF49404E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3E40BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3FF0BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
-				CF0CB4250BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB4250BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
+				CF0CB5E00BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5967,7 +6002,8 @@
 				CF4940520BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3E80BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB4010BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
-				CF0CB41F0BBFCADB00E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB41F0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
+				CF0CB5DA0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
