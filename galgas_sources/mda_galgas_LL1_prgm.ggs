@@ -22,12 +22,14 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import semantics semantics_semantics in "semantics_semantics.ggs" ;
   import metamodel option_metamodel in "option_metamodel.gMetamodel" ;
   import metamodel metamodel_metamodel in "metamodel_metamodel.gMetamodel" ;
+  import metamodel lexique_metamodel in "lexique_metamodel.gMetamodel" ;
   import treewalking optionHeaderGeneration in "optionHeaderGeneration.ggs" ;
   import treewalking option_treewalking_for_building_map in "option_treewalking_for_building_map.ggs" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.ggs" ;
   import grammar option_LL1_grammar in "option_LL1_grammar.ggs" ;
   import grammar metamodel_LL1_grammar in "metamodel_LL1_grammar.ggs" ;
+  import grammar lexique_LL1_grammar in "lexique_LL1_grammar.ggs" ;
   
   error 100 ;
   warning 100 ;
@@ -99,6 +101,17 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   #--- Parse metamodel component
     @metamodelComponentRoot metamodelComponentRoot ;
     grammar metamodel_LL1_grammar in inSourceFile -> metamodelComponentRoot ;
+  }
+
+  when . "gLexique"
+  message "a GALGAS lexique source file"
+  ??@lstring inSourceFile {
+  #--- File generation start directory
+    @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+    startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+  #--- Parse metamodel component
+    @lexiqueComponentRoot lexiqueComponentRoot ;
+    grammar lexique_LL1_grammar in inSourceFile -> lexiqueComponentRoot ;
   }
 
 end program ;

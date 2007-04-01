@@ -4,7 +4,6 @@ semantics class_sample_language_semantics :
 mapindex @classMapIndex ;
 
 map @classMap {
- # @lstring mSuperClassName ; # Empty if no super class
   @classMapIndex mSuperClassIndex ;
   insert insertKey error message "the '%K' class is already declared in %L" ;
   search searchKey error message "the '%K' class is not declared" ;

@@ -17,7 +17,7 @@
 #---------------------------------------------------------------------------*
 
 grammar galgas_SLR_grammar "SLR" :
-  import lexique galgas_scanner in "galgas_scanner.ggs" ;
+  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import option galgas_cli_options in "galgas_cli_options.gOption" ;
   import syntax cocoa_parser in "cocoa_parser.ggs" ;
   import syntax cli_options_parser in "cli_options_parser.ggs" ;

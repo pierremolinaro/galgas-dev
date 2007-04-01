@@ -95,7 +95,7 @@ static void * _kDispatcherFor_option_metamodel [_kSize_option_metamodel] = {
 
 //---------------------------------------------------------------------------*
 
-static C_TreewalkingDispacher _gDispatcherTable ;
+static C_TreewalkingDispacher _gDispatcherTree ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -120,7 +120,7 @@ _treewalking_routine_optionComponentRoot (C_Compiler & _inLexique,
   macroValidPointer (_currentObject) ;
   { GGS_commandLineOptionList::element_type * _ptr = _currentObject->mOptions.firstObject () ;
     while (_ptr != NULL) {
-      _treewalking_routine_commandLineOption_type * _f = (_treewalking_routine_commandLineOption_type *) _gDispatcherTable.entry (_ptr COMMA_HERE) ;
+      _treewalking_routine_commandLineOption_type * _f = (_treewalking_routine_commandLineOption_type *) _gDispatcherTree.entry (_ptr COMMA_HERE) ;
       (* _f) (_inLexique, _ptr, var_cas_optionNameSet, var_cas_outBoolOptionMap, var_cas_outUIntOptionMap, var_cas_outStringOptionMap) ;
       _ptr = _ptr->nextObject () ;
     }
@@ -164,7 +164,7 @@ _treewalking_routine_commandLineOption (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void _build_dispacher_tree (void) {
-  _gDispatcherTable.enterTable (_metamodel_index_for_option_metamodel (),
+  _gDispatcherTree.enterTable (_metamodel_index_for_option_metamodel (),
                                 _kSize_option_metamodel,
                                 _kDispatcherFor_option_metamodel
                                 COMMA_HERE) ;
@@ -183,10 +183,10 @@ _walk_throught_option_treewalking_for_building_map (C_Compiler & _inLexique,
                                 GGS_commandLineOptionMap  & var_cas_outUIntOptionMap,
                                 GGS_commandLineOptionMap  & var_cas_outStringOptionMap) {
   if (_rootObject._isBuilt ()) {
-    if (! _gDispatcherTable.isInited ()) {
+    if (! _gDispatcherTree.isInited ()) {
       _build_dispacher_tree () ;
     }
-    _treewalking_routine_optionComponentRoot_type * _f = (_treewalking_routine_optionComponentRoot_type *) _gDispatcherTable.entry (_rootObject.getPtr () COMMA_HERE) ;
+    _treewalking_routine_optionComponentRoot_type * _f = (_treewalking_routine_optionComponentRoot_type *) _gDispatcherTree.entry (_rootObject.getPtr () COMMA_HERE) ;
     (* _f) (_inLexique, _rootObject.getPtr (), var_cas_outBoolOptionMap, var_cas_outUIntOptionMap, var_cas_outStringOptionMap) ;
   }else{
     var_cas_outBoolOptionMap._drop_operation () ;

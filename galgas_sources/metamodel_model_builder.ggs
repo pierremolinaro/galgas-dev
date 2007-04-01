@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 syntax metamodel_model_builder :
-import lexique galgas_scanner in "galgas_scanner.ggs" ;
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import metamodel metamodel_metamodel in "metamodel_metamodel.gMetamodel" ;
 
 nonterminal <metamodel_component_start_symbol> -> @metamodelComponentRoot ;
@@ -129,21 +129,32 @@ end rule ;
 
 rule <multiple_reference_declaration> ??@lstring inPropertyTypeName -> @metamodelMultipleReference :
   select # [] equivalent to [0, 0]
-    mLowerBound := [@luint new !0 !here] ;
-    mUpperBound := [@luint new !0 !here] ;
+    mLowerBound := 0 ;
+    mUpperBound := 0 ;
   or
-    $unsigned_literal_integer$ ? mLowerBound ;
+    @luint lowerBound ;
+    $unsigned_literal_integer$ ? lowerBound ;
+    mLowerBound := [lowerBound uint] ;
     select # [n] equivalent to [n, n], with n > 0
       mUpperBound := mLowerBound ;
-      if [mLowerBound uint] == 0 then
-        error mLowerBound: "multiplicity should be greater than zero" -> mLowerBound, mUpperBound ;
+      if mLowerBound == 0 then
+        error lowerBound: "multiplicity should be greater than zero" ;
       end if ;
-    or # [n, p], and p >= n
+    or # [n, p], and p >= n ; [0, 0] forbidden
       $,$ ;
-      $unsigned_literal_integer$ ? mUpperBound ;
-      if [mUpperBound uint] < [mLowerBound uint] then
-        error mUpperBound: "upper bound should be greater or equal to lower bound" -> mLowerBound, mUpperBound ;
-      end if ;
+      select
+        @luint upperBound ;
+        $unsigned_literal_integer$ ? upperBound ;
+        mUpperBound := [upperBound uint] ;
+        if mUpperBound < mLowerBound then
+          error upperBound: "upper bound should be greater or equal to lower bound" ;
+        elsif (mUpperBound == 0) & (mLowerBound == 0) then
+          error upperBound: "lower bound and upper bound should not to be both zero" ;
+        end if ;
+      or # [n, *]
+        $*$ ;
+        mUpperBound := 0 ;
+      end select ;
     end select ;
   end select ;
   $]$ ;

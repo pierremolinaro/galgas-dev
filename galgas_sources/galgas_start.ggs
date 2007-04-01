@@ -18,7 +18,7 @@
 
 syntax galgas_start :
 
-import lexique galgas_scanner in "galgas_scanner.ggs" ;
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import option galgas_cli_options in "galgas_cli_options.gOption" ;
 
 import semantics semantics_semantics in "semantics_semantics.ggs" ;
