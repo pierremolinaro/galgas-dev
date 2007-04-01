@@ -1,0 +1,15 @@
+semantics optionSemantics :
+
+#---------------------------------------------------------------------------*
+
+map @commandLineOptionMap {
+  @lchar mOptionChar ;
+  @lstring mOptionString ;
+  @lstring mComment ;
+  insert insertKey error message "the '%K' command line option has been already declared in %L" ;
+  search searchKey error message "the '%K' command line option is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

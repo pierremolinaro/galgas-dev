@@ -84,6 +84,182 @@
 		CF0CB5E70BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
 		CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
 		CF0CB5E90BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
+		CF0CB77A0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
+		CF0CB77B0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
+		CF0CB77C0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
+		CF0CB77D0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
+		CF0CB77E0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
+		CF0CB77F0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
+		CF0CB7800BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
+		CF0CB7810BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
+		CF0CB7820BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
+		CF0CB7830BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
+		CF0CB7840BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
+		CF0CB7850BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
+		CF0CB7860BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
+		CF0CB7870BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
+		CF0CB7880BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
+		CF0CB7890BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
+		CF0CB78F0BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF0CB7900BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
+		CF0CB7910BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF0CB7920BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
+		CF0CB7930BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF0CB7940BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
+		CF0CB7950BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF0CB7960BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
+		CF0CB7970BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF0CB7980BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
+		CF0CB7990BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF0CB79A0BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
+		CF0CB79B0BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF0CB79C0BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
+		CF0CB79D0BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF0CB79E0BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
+		CF0CB7A30BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF0CB7A40BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
+		CF0CB7A50BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF0CB7A60BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
+		CF0CB7A70BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF0CB7A80BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
+		CF0CB7A90BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF0CB7AA0BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
+		CF0CB7AB0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF0CB7AC0BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
+		CF0CB7AD0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF0CB7AE0BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
+		CF0CB7AF0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF0CB7B00BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
+		CF0CB7B10BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF0CB7B20BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
+		CF0CB7B80BC0152500E6FABE /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
+		CF0CB7B90BC0152500E6FABE /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
+		CF0CB7BA0BC0152500E6FABE /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
+		CF0CB7BB0BC0152600E6FABE /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
+		CF0CB7BC0BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
+		CF0CB7BD0BC0152600E6FABE /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
+		CF0CB7BE0BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
+		CF0CB7BF0BC0152600E6FABE /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
+		CF0CB7C00BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
+		CF0CB7C10BC0152600E6FABE /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
+		CF0CB7C20BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
+		CF0CB7C30BC0152600E6FABE /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
+		CF0CB7C40BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
+		CF0CB7C50BC0152600E6FABE /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
+		CF0CB7C60BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
+		CF0CB7C70BC0152600E6FABE /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
+		CF0CB7CD0BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF0CB7CE0BC0161E00E6FABE /* optionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */; };
+		CF0CB7CF0BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF0CB7D00BC0161E00E6FABE /* optionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */; };
+		CF0CB7D10BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF0CB7D20BC0161E00E6FABE /* optionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */; };
+		CF0CB7D30BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF0CB7D40BC0161E00E6FABE /* optionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */; };
+		CF0CB7D50BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF0CB7D60BC0161E00E6FABE /* optionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */; };
+		CF0CB7D70BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF0CB7D80BC0161E00E6FABE /* optionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */; };
+		CF0CB7D90BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF0CB7DA0BC0161E00E6FABE /* optionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */; };
+		CF0CB7DB0BC0161E00E6FABE /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF0CB7DC0BC0161E00E6FABE /* optionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */; };
+		CF0CB7E00BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
+		CF0CB7E10BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
+		CF0CB7E20BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
+		CF0CB7E30BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
+		CF0CB7E40BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
+		CF0CB7E50BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
+		CF0CB7E60BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
+		CF0CB7E70BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
+		CF0CB7E80BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
+		CF0CB7E90BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
+		CF0CB7EA0BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
+		CF0CB7EB0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
+		CF0CB7EC0BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
+		CF0CB7ED0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
+		CF0CB7EE0BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
+		CF0CB7EF0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
+		CF0CB7F40BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF0CB7F50BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
+		CF0CB7F60BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF0CB7F70BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
+		CF0CB7F80BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF0CB7F90BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
+		CF0CB7FA0BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF0CB7FB0BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
+		CF0CB7FC0BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF0CB7FD0BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
+		CF0CB7FE0BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF0CB7FF0BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
+		CF0CB8000BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF0CB8010BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
+		CF0CB8020BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF0CB8030BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
+		CF0CB80A0BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF0CB80B0BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
+		CF0CB80C0BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF0CB80D0BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
+		CF0CB80E0BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF0CB80F0BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
+		CF0CB8100BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF0CB8110BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
+		CF0CB8120BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF0CB8130BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
+		CF0CB8140BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF0CB8150BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
+		CF0CB8160BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF0CB8170BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
+		CF0CB8180BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF0CB8190BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
+		CF0CB81E0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF0CB81F0BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
+		CF0CB8200BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF0CB8210BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
+		CF0CB8220BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF0CB8230BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
+		CF0CB8240BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF0CB8250BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
+		CF0CB8260BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF0CB8270BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
+		CF0CB8280BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF0CB8290BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
+		CF0CB82A0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF0CB82B0BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
+		CF0CB82C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF0CB82D0BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
+		CF0CB8300BC0198700E6FABE /* metamodelLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */; };
+		CF0CB8310BC0198700E6FABE /* metamodelLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */; };
+		CF0CB8320BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */; };
+		CF0CB8330BC0198800E6FABE /* metamodelLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */; };
+		CF0CB8340BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */; };
+		CF0CB8350BC0198800E6FABE /* metamodelLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */; };
+		CF0CB8360BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */; };
+		CF0CB8370BC0198800E6FABE /* metamodelLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */; };
+		CF0CB8380BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */; };
+		CF0CB8390BC0198800E6FABE /* metamodelLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */; };
+		CF0CB83A0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */; };
+		CF0CB83B0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */; };
+		CF0CB83C0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */; };
+		CF0CB83D0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */; };
+		CF0CB83E0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */; };
+		CF0CB83F0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */; };
+		CF0CB8420BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF0CB8430BC019CA00E6FABE /* optionLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */; };
+		CF0CB8440BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF0CB8450BC019CA00E6FABE /* optionLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */; };
+		CF0CB8460BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF0CB8470BC019CA00E6FABE /* optionLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */; };
+		CF0CB8480BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF0CB8490BC019CB00E6FABE /* optionLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */; };
+		CF0CB84A0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF0CB84B0BC019CB00E6FABE /* optionLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */; };
+		CF0CB84C0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF0CB84D0BC019CB00E6FABE /* optionLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */; };
+		CF0CB84E0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF0CB84F0BC019CB00E6FABE /* optionLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */; };
+		CF0CB8500BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF0CB8510BC019CB00E6FABE /* optionLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */; };
 		CF0EBFD20B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
 		CF0EBFD30B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */; };
 		CF0EBFD40B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
@@ -167,38 +343,6 @@
 		CF2A8852058CCF53003EF2F4 /* GGS_luint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53893057A558F00854C83 /* GGS_luint.cpp */; };
 		CF2A8854058CCF55003EF2F4 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CF2A8856058CCF56003EF2F4 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
-		CF3107EE0BAEA43A00BF8C6C /* option_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */; };
-		CF3107EF0BAEA43A00BF8C6C /* option_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */; };
-		CF3107F00BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */; };
-		CF3107F10BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */; };
-		CF3107F20BAEA43A00BF8C6C /* option_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */; };
-		CF3107F30BAEA43A00BF8C6C /* option_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */; };
-		CF3107F40BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */; };
-		CF3107F50BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */; };
-		CF3107F60BAEA43A00BF8C6C /* option_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */; };
-		CF3107F70BAEA43A00BF8C6C /* option_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */; };
-		CF3107F80BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */; };
-		CF3107F90BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */; };
-		CF3107FA0BAEA43A00BF8C6C /* option_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */; };
-		CF3107FB0BAEA43A00BF8C6C /* option_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */; };
-		CF3107FC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */; };
-		CF3107FD0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */; };
-		CF3107FE0BAEA43A00BF8C6C /* option_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */; };
-		CF3107FF0BAEA43A00BF8C6C /* option_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */; };
-		CF3108000BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */; };
-		CF3108010BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */; };
-		CF3108020BAEA43A00BF8C6C /* option_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */; };
-		CF3108030BAEA43A00BF8C6C /* option_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */; };
-		CF3108040BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */; };
-		CF3108050BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */; };
-		CF3108060BAEA43A00BF8C6C /* option_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */; };
-		CF3108070BAEA43A00BF8C6C /* option_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */; };
-		CF3108080BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */; };
-		CF3108090BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */; };
-		CF31080A0BAEA43A00BF8C6C /* option_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */; };
-		CF31080B0BAEA43A00BF8C6C /* option_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */; };
-		CF31080C0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */; };
-		CF31080D0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */; };
 		CF33792309EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
 		CF33792409EFA7DE00EC41F6 /* C_SourceTextForCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */; };
 		CF33792509EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
@@ -275,38 +419,6 @@
 		CF48FB0B0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
 		CF48FB0C0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
 		CF48FB0D0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
-		CF49403C0BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
-		CF49403D0BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
-		CF49403E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
-		CF49403F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
-		CF4940400BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
-		CF4940410BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
-		CF4940420BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
-		CF4940430BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
-		CF4940440BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
-		CF4940450BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
-		CF4940460BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
-		CF4940470BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
-		CF4940480BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
-		CF4940490BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
-		CF49404A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
-		CF49404B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
-		CF49404C0BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
-		CF49404D0BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
-		CF49404E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
-		CF49404F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
-		CF4940500BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
-		CF4940510BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
-		CF4940520BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
-		CF4940530BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
-		CF4940540BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
-		CF4940550BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
-		CF4940560BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
-		CF4940570BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
-		CF4940590BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */; };
-		CF49405A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */; };
-		CF49405B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */; };
-		CF4940A60BBECC7F009DB633 /* lexique_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */; };
 		CF4CBBC009FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
 		CF4CBBC109FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
 		CF4CBBC209FF941700C0A868 /* include_typeRemoveInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */; };
@@ -769,54 +881,6 @@
 		CF7B06330AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
 		CF7B06340AEE387C00E94B20 /* AC_galgas_list.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B06240AEE387C00E94B20 /* AC_galgas_list.h */; };
 		CF7B06350AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
-		CF7B6AE00BAD74E90046EB3A /* option_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */; };
-		CF7B6AE10BAD74E90046EB3A /* option_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */; };
-		CF7B6AE20BAD74E90046EB3A /* option_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */; };
-		CF7B6AE30BAD74E90046EB3A /* option_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */; };
-		CF7B6AE40BAD74E90046EB3A /* option_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */; };
-		CF7B6AE50BAD74E90046EB3A /* option_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */; };
-		CF7B6AE60BAD74E90046EB3A /* option_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */; };
-		CF7B6AE70BAD74E90046EB3A /* option_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */; };
-		CF7B6AE80BAD74E90046EB3A /* option_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */; };
-		CF7B6AE90BAD74E90046EB3A /* option_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */; };
-		CF7B6AEA0BAD74E90046EB3A /* option_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */; };
-		CF7B6AEB0BAD74E90046EB3A /* option_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */; };
-		CF7B6AEC0BAD74E90046EB3A /* option_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */; };
-		CF7B6AED0BAD74E90046EB3A /* option_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */; };
-		CF7B6AEE0BAD74E90046EB3A /* option_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */; };
-		CF7B6AEF0BAD74E90046EB3A /* option_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */; };
-		CF7B6AFE0BAD7A800046EB3A /* option_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */; };
-		CF7B6AFF0BAD7A800046EB3A /* option_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */; };
-		CF7B6B000BAD7A800046EB3A /* option_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */; };
-		CF7B6B010BAD7A800046EB3A /* option_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */; };
-		CF7B6B020BAD7A800046EB3A /* option_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */; };
-		CF7B6B030BAD7A800046EB3A /* option_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */; };
-		CF7B6B040BAD7A800046EB3A /* option_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */; };
-		CF7B6B050BAD7A800046EB3A /* option_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */; };
-		CF7B6B060BAD7A800046EB3A /* option_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */; };
-		CF7B6B070BAD7A800046EB3A /* option_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */; };
-		CF7B6B080BAD7A800046EB3A /* option_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */; };
-		CF7B6B090BAD7A800046EB3A /* option_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */; };
-		CF7B6B0A0BAD7A800046EB3A /* option_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */; };
-		CF7B6B0B0BAD7A800046EB3A /* option_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */; };
-		CF7B6B0C0BAD7A800046EB3A /* option_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */; };
-		CF7B6B0D0BAD7A800046EB3A /* option_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */; };
-		CF7B6B120BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */; };
-		CF7B6B130BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */; };
-		CF7B6B140BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */; };
-		CF7B6B150BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */; };
-		CF7B6B160BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */; };
-		CF7B6B170BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */; };
-		CF7B6B180BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */; };
-		CF7B6B190BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */; };
-		CF7B6B1A0BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */; };
-		CF7B6B1B0BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */; };
-		CF7B6B1C0BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */; };
-		CF7B6B1D0BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */; };
-		CF7B6B1E0BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */; };
-		CF7B6B1F0BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */; };
-		CF7B6B200BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */; };
-		CF7B6B210BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */; };
 		CF825954085369E70077AEAF /* C_PrimeCache2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825950085369E70077AEAF /* C_PrimeCache2.cpp */; };
 		CF825956085369E70077AEAF /* C_PrimeCache3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825952085369E70077AEAF /* C_PrimeCache3.cpp */; };
 		CF825958085369E70077AEAF /* C_PrimeCache2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825950085369E70077AEAF /* C_PrimeCache2.cpp */; };
@@ -1257,54 +1321,6 @@
 		CFA313BD09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFB1C4E00BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
-		CFB1C4E10BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
-		CFB1C4E20BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
-		CFB1C4E30BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
-		CFB1C4E40BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
-		CFB1C4E50BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
-		CFB1C4E60BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
-		CFB1C4E70BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
-		CFB1C4E80BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
-		CFB1C4E90BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
-		CFB1C4EA0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
-		CFB1C4EB0BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
-		CFB1C4EC0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
-		CFB1C4ED0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
-		CFB1C4EE0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
-		CFB1C4EF0BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
-		CFB1C4F00BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
-		CFB1C4F10BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
-		CFB1C4F20BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
-		CFB1C4F30BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
-		CFB1C4F40BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
-		CFB1C4F50BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
-		CFB1C4F60BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
-		CFB1C4F70BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
-		CFB1C4F80BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
-		CFB1C4F90BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
-		CFB1C4FA0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
-		CFB1C4FB0BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
-		CFB1C4FC0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
-		CFB1C4FD0BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
-		CFB1C4FE0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
-		CFB1C4FF0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
-		CFB1C5000BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
-		CFB1C5010BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
-		CFB1C5020BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
-		CFB1C5030BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
-		CFB1C5040BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
-		CFB1C5050BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
-		CFB1C5060BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
-		CFB1C5070BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
-		CFB1C5080BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
-		CFB1C5090BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
-		CFB1C50A0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */; };
-		CFB1C50B0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */; };
-		CFB1C50C0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */; };
-		CFB1C50D0BB54C56009AC862 /* metamodel_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */; };
-		CFB1C50E0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */; };
-		CFB1C50F0BB54C56009AC862 /* metamodel_model_builder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */; };
 		CFBC766A0AC694C200443ACA /* OC_GGS_BuildResultTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */; };
 		CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
 		CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
@@ -1367,22 +1383,6 @@
 		CFC9536D0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC9536E0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC9536F0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
-		CFCDF8140BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
-		CFCDF8150BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
-		CFCDF8160BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
-		CFCDF8170BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
-		CFCDF8180BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
-		CFCDF8190BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
-		CFCDF81A0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
-		CFCDF81B0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
-		CFCDF81C0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
-		CFCDF81D0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
-		CFCDF81E0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
-		CFCDF81F0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
-		CFCDF8200BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
-		CFCDF8210BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
-		CFCDF8220BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */; };
-		CFCDF8230BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */; };
 		CFCF920E0B6E41B000747AC6 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
 		CFCF920F0B6E41B000747AC6 /* C_galgas_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCF92090B6E41B000747AC6 /* C_galgas_io.h */; };
 		CFCF92140B6E41B000747AC6 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
@@ -2100,16 +2100,34 @@
 		CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_entity.cpp; sourceTree = "<group>"; };
 		CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_class.cpp; sourceTree = "<group>"; };
 		CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_class.h; sourceTree = "<group>"; };
+		CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionTreewalkingForBuildingOptionMap.cpp; sourceTree = "<group>"; };
+		CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionTreewalkingForBuildingOptionMap.h; sourceTree = "<group>"; };
+		CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionSemantics.cpp; sourceTree = "<group>"; };
+		CF0CB78E0BC0130500E6FABE /* optionSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionSemantics.h; sourceTree = "<group>"; };
+		CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueMetamodel.cpp; sourceTree = "<group>"; };
+		CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueMetamodel.h; sourceTree = "<group>"; };
+		CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodelMetamodel.cpp; sourceTree = "<group>"; };
+		CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodelMetamodel.h; sourceTree = "<group>"; };
+		CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionMetamodel.cpp; sourceTree = "<group>"; };
+		CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionMetamodel.h; sourceTree = "<group>"; };
+		CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodelModelBuilder.cpp; sourceTree = "<group>"; };
+		CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodelModelBuilder.h; sourceTree = "<group>"; };
+		CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueModelBuilder.cpp; sourceTree = "<group>"; };
+		CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueModelBuilder.h; sourceTree = "<group>"; };
+		CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionModelBuilder.cpp; sourceTree = "<group>"; };
+		CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionModelBuilder.h; sourceTree = "<group>"; };
+		CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueLL1grammar.cpp; sourceTree = "<group>"; };
+		CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueLL1grammar.h; sourceTree = "<group>"; };
+		CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodelLL1grammar.cpp; sourceTree = "<group>"; };
+		CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodelLL1grammar.h; sourceTree = "<group>"; };
+		CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionLL1grammar.cpp; sourceTree = "<group>"; };
+		CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionLL1grammar.h; sourceTree = "<group>"; };
 		CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasMapindexType.h; sourceTree = "<group>"; };
 		CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedMapindexType.h; sourceTree = "<group>"; };
 		CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_while_instruction.h; sourceTree = "<group>"; };
 		CF1EF67E0AD15BB70091DDE8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/galgasUpdate.nib; sourceTree = "<group>"; };
 		CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
-		CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_semantics.cpp; sourceTree = "<group>"; };
-		CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = option_semantics.h; sourceTree = "<group>"; };
-		CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_treewalking_for_building_map.cpp; sourceTree = "<group>"; };
-		CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = option_treewalking_for_building_map.h; sourceTree = "<group>"; };
 		CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = C_SourceTextForCoca.mm; sourceTree = "<group>"; };
 		CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_SourceTextForCocoa.h; sourceTree = "<group>"; };
 		CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
@@ -2140,10 +2158,6 @@
 		CF4895680B66682D005A9E78 /* predefined_types.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = predefined_types.cpp; sourceTree = "<group>"; };
 		CF4895690B66682D005A9E78 /* predefined_types.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = predefined_types.h; sourceTree = "<group>"; };
 		CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDescriptionInExpression.h; sourceTree = "<group>"; };
-		CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexique_LL1_grammar.cpp; sourceTree = "<group>"; };
-		CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexique_LL1_grammar.h; sourceTree = "<group>"; };
-		CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexique_model_builder.cpp; sourceTree = "<group>"; };
-		CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexique_model_builder.h; sourceTree = "<group>"; };
 		CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
 		CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_domain.cpp; sourceTree = "<group>"; };
 		CF507CA80B6F854B00ECFEEB /* AC_galgas_domain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_domain.h; sourceTree = "<group>"; };
@@ -2191,12 +2205,6 @@
 		CF7A1403058CEFE2007126C1 /* galgasDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7B06240AEE387C00E94B20 /* AC_galgas_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_list.h; sourceTree = "<group>"; };
 		CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_list.cpp; sourceTree = "<group>"; };
-		CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_metamodel.cpp; sourceTree = "<group>"; };
-		CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = option_metamodel.h; sourceTree = "<group>"; };
-		CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_model_builder.cpp; sourceTree = "<group>"; };
-		CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = option_model_builder.h; sourceTree = "<group>"; };
-		CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = option_LL1_grammar.cpp; sourceTree = "<group>"; };
-		CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = option_LL1_grammar.h; sourceTree = "<group>"; };
 		CF7B6B4A0BADC2930046EB3A /* mda_galgas_LL1_prgm.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = mda_galgas_LL1_prgm.cpp; sourceTree = "<group>"; };
 		CF7B6B4B0BADC2930046EB3A /* mda_galgas_LL1_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = mda_galgas_LL1_prgm.h; sourceTree = "<group>"; };
 		CF825950085369E70077AEAF /* C_PrimeCache2.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_PrimeCache2.cpp; path = cache/C_PrimeCache2.cpp; sourceTree = "<group>"; };
@@ -2313,12 +2321,6 @@
 		CFA3139509FD3EDA006B55E7 /* parser_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_generation.h; sourceTree = "<group>"; };
 		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammar.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
-		CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_LL1_grammar.cpp; sourceTree = "<group>"; };
-		CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodel_LL1_grammar.h; sourceTree = "<group>"; };
-		CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_metamodel.cpp; sourceTree = "<group>"; };
-		CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodel_metamodel.h; sourceTree = "<group>"; };
-		CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_model_builder.cpp; sourceTree = "<group>"; };
-		CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodel_model_builder.h; sourceTree = "<group>"; };
 		CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
 		CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = "<group>"; };
 		CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
@@ -2349,8 +2351,6 @@
 		CFCAABD809BCD3FF0042E80C /* include_StringsetModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_StringsetModel.h; sourceTree = "<group>"; };
 		CFCAABD909BCD3FF0042E80C /* include_typeStringOption.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeStringOption.h; sourceTree = "<group>"; };
 		CFCAABDA09BCD3FF0042E80C /* include_UIntModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_UIntModel.h; sourceTree = "<group>"; };
-		CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexique_metamodel.cpp; sourceTree = "<group>"; };
-		CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexique_metamodel.h; sourceTree = "<group>"; };
 		CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_io.cpp; sourceTree = "<group>"; };
 		CFCF92090B6E41B000747AC6 /* C_galgas_io.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_galgas_io.h; sourceTree = "<group>"; };
 		CFD1939909FCFC0300920886 /* include_typeAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAddOperation.h; sourceTree = "<group>"; };
@@ -2813,12 +2813,12 @@
 		CF446B5709C9C4A7005CBDC8 /* Metamodel Component */ = {
 			isa = PBXGroup;
 			children = (
-				CFB1C4DA0BB54C55009AC862 /* metamodel_LL1_grammar.cpp */,
-				CFB1C4DB0BB54C55009AC862 /* metamodel_LL1_grammar.h */,
-				CFB1C4DC0BB54C55009AC862 /* metamodel_metamodel.cpp */,
-				CFB1C4DD0BB54C55009AC862 /* metamodel_metamodel.h */,
-				CFB1C4DE0BB54C56009AC862 /* metamodel_model_builder.cpp */,
-				CFB1C4DF0BB54C56009AC862 /* metamodel_model_builder.h */,
+				CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */,
+				CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */,
+				CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */,
+				CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */,
+				CF0CB82E0BC0198700E6FABE /* metamodelLL1grammar.cpp */,
+				CF0CB82F0BC0198700E6FABE /* metamodelLL1grammar.h */,
 				CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */,
 				CF446B5909C9C4F0005CBDC8 /* metamodel_parser.h */,
 			);
@@ -3174,20 +3174,20 @@
 		CFF13E370597308C00C43F5E /* Option Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */,
+				CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */,
+				CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */,
+				CF0CB78E0BC0130500E6FABE /* optionSemantics.h */,
 				CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */,
 				CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */,
 				CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */,
 				CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */,
-				CF3107EA0BAEA43A00BF8C6C /* option_semantics.cpp */,
-				CF3107EB0BAEA43A00BF8C6C /* option_semantics.h */,
-				CF3107EC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp */,
-				CF3107ED0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h */,
-				CF7B6ADE0BAD74E90046EB3A /* option_metamodel.cpp */,
-				CF7B6ADF0BAD74E90046EB3A /* option_metamodel.h */,
-				CF7B6AFC0BAD7A800046EB3A /* option_model_builder.cpp */,
-				CF7B6AFD0BAD7A800046EB3A /* option_model_builder.h */,
-				CF7B6B100BAD7CC60046EB3A /* option_LL1_grammar.cpp */,
-				CF7B6B110BAD7CC60046EB3A /* option_LL1_grammar.h */,
+				CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */,
+				CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */,
+				CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */,
+				CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */,
+				CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */,
+				CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */,
 				CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */,
 				CFF13E39059730EB00C43F5E /* cli_options_parser.h */,
 			);
@@ -3283,16 +3283,16 @@
 		CFF5376A057A504000854C83 /* Lexique Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */,
+				CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */,
+				CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */,
+				CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */,
 				CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */,
 				CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */,
 				CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */,
 				CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */,
-				CF4940380BBEB2E5009DB633 /* lexique_LL1_grammar.cpp */,
-				CF4940390BBEB2E5009DB633 /* lexique_LL1_grammar.h */,
-				CF49403A0BBEB2E5009DB633 /* lexique_model_builder.cpp */,
-				CF49403B0BBEB2E5009DB633 /* lexique_model_builder.h */,
-				CFCDF8120BBE8DF1004EEBE8 /* lexique_metamodel.cpp */,
-				CFCDF8130BBE8DF1004EEBE8 /* lexique_metamodel.h */,
+				CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */,
+				CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */,
 				CFF5376D057A506700854C83 /* scanner_parser.cpp */,
 				CF76F4A7090E73B900036FAC /* scanner_parser.h */,
 				CF76F4AE090E73C200036FAC /* scanner_semantics.h */,
@@ -3738,25 +3738,25 @@
 				CF531D030B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215010BA05AB80087BA01 /* project_creation.h in Headers */,
 				CF48FB060BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
-				CF7B6AE10BAD74E90046EB3A /* option_metamodel.h in Headers */,
-				CF7B6AFF0BAD7A800046EB3A /* option_model_builder.h in Headers */,
-				CF7B6B130BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */,
-				CF3107EF0BAEA43A00BF8C6C /* option_semantics.h in Headers */,
-				CF3107F10BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
 				CFEFE7D80BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE9450BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47EFF0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F010BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CFB1C4E10BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
-				CFB1C4E30BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
-				CFB1C4E50BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
-				CFCDF8150BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
-				CF49403D0BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
-				CF49403F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3D50BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB3F80BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB4280BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E50BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB7850BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
+				CF0CB79A0BC0130500E6FABE /* optionSemantics.h in Headers */,
+				CF0CB7AE0BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
+				CF0CB7C30BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
+				CF0CB7D80BC0161E00E6FABE /* optionMetamodel.h in Headers */,
+				CF0CB7EB0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
+				CF0CB7FF0BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
+				CF0CB8150BC0187500E6FABE /* optionModelBuilder.h in Headers */,
+				CF0CB8290BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
+				CF0CB83B0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
+				CF0CB84D0BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3850,25 +3850,25 @@
 				CF531D020B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215070BA05AB80087BA01 /* project_creation.h in Headers */,
 				CF48FB0C0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
-				CF7B6AED0BAD74E90046EB3A /* option_metamodel.h in Headers */,
-				CF7B6B0B0BAD7A800046EB3A /* option_model_builder.h in Headers */,
-				CF7B6B1F0BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */,
-				CF3108070BAEA43A00BF8C6C /* option_semantics.h in Headers */,
-				CF3108090BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
 				CFEFE7DE0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE94B0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F170BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F190BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CFB1C5050BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
-				CFB1C5070BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
-				CFB1C5090BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
-				CFCDF8210BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
-				CF4940550BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
-				CF4940570BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3ED0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4040BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB42A0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E70BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB7870BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
+				CF0CB79C0BC0130500E6FABE /* optionSemantics.h in Headers */,
+				CF0CB7B00BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
+				CF0CB7C50BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
+				CF0CB7DA0BC0161E00E6FABE /* optionMetamodel.h in Headers */,
+				CF0CB7ED0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
+				CF0CB8010BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
+				CF0CB8170BC0187500E6FABE /* optionModelBuilder.h in Headers */,
+				CF0CB82B0BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
+				CF0CB83D0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
+				CF0CB84F0BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3962,25 +3962,25 @@
 				CF531CFE0B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215080BA05AB80087BA01 /* project_creation.h in Headers */,
 				CF48FB0D0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
-				CF7B6AEF0BAD74E90046EB3A /* option_metamodel.h in Headers */,
-				CF7B6B0D0BAD7A800046EB3A /* option_model_builder.h in Headers */,
-				CF7B6B210BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */,
-				CF31080B0BAEA43A00BF8C6C /* option_semantics.h in Headers */,
-				CF31080D0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
 				CFEFE7DF0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE94C0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F1B0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F1D0BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CFB1C50B0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
-				CFB1C50D0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
-				CFB1C50F0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
-				CFCDF8230BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
-				CF4940590BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
-				CF49405B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3F10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4060BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB42C0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E90BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB7890BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
+				CF0CB79E0BC0130500E6FABE /* optionSemantics.h in Headers */,
+				CF0CB7B20BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
+				CF0CB7C70BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
+				CF0CB7DC0BC0161E00E6FABE /* optionMetamodel.h in Headers */,
+				CF0CB7EF0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
+				CF0CB8030BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
+				CF0CB8190BC0187500E6FABE /* optionModelBuilder.h in Headers */,
+				CF0CB82D0BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
+				CF0CB83F0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
+				CF0CB8510BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4090,25 +4090,25 @@
 				CF531D000B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215020BA05AB80087BA01 /* project_creation.h in Headers */,
 				CF48FB070BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
-				CF7B6AE30BAD74E90046EB3A /* option_metamodel.h in Headers */,
-				CF7B6B010BAD7A800046EB3A /* option_model_builder.h in Headers */,
-				CF7B6B150BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */,
-				CF3107F30BAEA43A00BF8C6C /* option_semantics.h in Headers */,
-				CF3107F50BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
 				CFEFE7D90BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE9460BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F030BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F050BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CFB1C4E70BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
-				CFB1C4E90BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
-				CFB1C4EB0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
-				CFCDF8170BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
-				CF4940410BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
-				CF4940430BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3D90BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB3FA0BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB4220BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5DF0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB77F0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
+				CF0CB7940BC0130500E6FABE /* optionSemantics.h in Headers */,
+				CF0CB7A80BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
+				CF0CB7BD0BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
+				CF0CB7D20BC0161E00E6FABE /* optionMetamodel.h in Headers */,
+				CF0CB7E50BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
+				CF0CB7F90BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
+				CF0CB80F0BC0187500E6FABE /* optionModelBuilder.h in Headers */,
+				CF0CB8230BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
+				CF0CB8350BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
+				CF0CB8470BC019CA00E6FABE /* optionLL1grammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4202,25 +4202,25 @@
 				CF531D050B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215030BA05AB80087BA01 /* project_creation.h in Headers */,
 				CF48FB080BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
-				CF7B6AE50BAD74E90046EB3A /* option_metamodel.h in Headers */,
-				CF7B6B030BAD7A800046EB3A /* option_model_builder.h in Headers */,
-				CF7B6B170BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */,
-				CF3107F70BAEA43A00BF8C6C /* option_semantics.h in Headers */,
-				CF3107F90BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
 				CFEFE7DA0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE9470BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F070BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F090BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CFB1C4ED0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
-				CFB1C4EF0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
-				CFB1C4F10BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
-				CFCDF8190BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
-				CF4940450BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
-				CF4940470BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3DD0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB3FC0BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB4200BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5DD0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB77D0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
+				CF0CB7920BC0130500E6FABE /* optionSemantics.h in Headers */,
+				CF0CB7A60BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
+				CF0CB7BB0BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
+				CF0CB7D00BC0161E00E6FABE /* optionMetamodel.h in Headers */,
+				CF0CB7E30BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
+				CF0CB7F70BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
+				CF0CB80D0BC0187500E6FABE /* optionModelBuilder.h in Headers */,
+				CF0CB8210BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
+				CF0CB8330BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
+				CF0CB8450BC019CA00E6FABE /* optionLL1grammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4314,25 +4314,25 @@
 				CF531CFF0B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215040BA05AB80087BA01 /* project_creation.h in Headers */,
 				CF48FB090BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
-				CF7B6AE70BAD74E90046EB3A /* option_metamodel.h in Headers */,
-				CF7B6B050BAD7A800046EB3A /* option_model_builder.h in Headers */,
-				CF7B6B190BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */,
-				CF3107FB0BAEA43A00BF8C6C /* option_semantics.h in Headers */,
-				CF3107FD0BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
 				CFEFE7DB0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE9480BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F0B0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F0D0BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CFB1C4F30BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
-				CFB1C4F50BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
-				CFB1C4F70BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
-				CFCDF81B0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
-				CF4940490BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
-				CF49404B0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3E10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB3FE0BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB4260BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E30BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB7830BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
+				CF0CB7980BC0130500E6FABE /* optionSemantics.h in Headers */,
+				CF0CB7AC0BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
+				CF0CB7C10BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
+				CF0CB7D60BC0161E00E6FABE /* optionMetamodel.h in Headers */,
+				CF0CB7E90BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
+				CF0CB7FD0BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
+				CF0CB8130BC0187500E6FABE /* optionModelBuilder.h in Headers */,
+				CF0CB8270BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
+				CF0CB8390BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
+				CF0CB84B0BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4426,25 +4426,25 @@
 				CF531D040B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215050BA05AB80087BA01 /* project_creation.h in Headers */,
 				CF48FB0A0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
-				CF7B6AE90BAD74E90046EB3A /* option_metamodel.h in Headers */,
-				CF7B6B070BAD7A800046EB3A /* option_model_builder.h in Headers */,
-				CF7B6B1B0BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */,
-				CF3107FF0BAEA43A00BF8C6C /* option_semantics.h in Headers */,
-				CF3108010BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
 				CFEFE7DC0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE9490BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F0F0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F110BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CFB1C4F90BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
-				CFB1C4FB0BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
-				CFB1C4FD0BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
-				CFCDF81D0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
-				CF49404D0BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
-				CF49404F0BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3E50BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4000BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB4240BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E10BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB7810BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
+				CF0CB7960BC0130500E6FABE /* optionSemantics.h in Headers */,
+				CF0CB7AA0BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
+				CF0CB7BF0BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
+				CF0CB7D40BC0161E00E6FABE /* optionMetamodel.h in Headers */,
+				CF0CB7E70BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
+				CF0CB7FB0BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
+				CF0CB8110BC0187500E6FABE /* optionModelBuilder.h in Headers */,
+				CF0CB8250BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
+				CF0CB8370BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
+				CF0CB8490BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4538,25 +4538,25 @@
 				CF531D010B9F18770085A6CD /* include_C_treewalkingInstruction.h in Headers */,
 				CFF215060BA05AB80087BA01 /* project_creation.h in Headers */,
 				CF48FB0B0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
-				CF7B6AEB0BAD74E90046EB3A /* option_metamodel.h in Headers */,
-				CF7B6B090BAD7A800046EB3A /* option_model_builder.h in Headers */,
-				CF7B6B1D0BAD7CC60046EB3A /* option_LL1_grammar.h in Headers */,
-				CF3108030BAEA43A00BF8C6C /* option_semantics.h in Headers */,
-				CF3108050BAEA43A00BF8C6C /* option_treewalking_for_building_map.h in Headers */,
 				CFEFE7DD0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE94A0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F130BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F150BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CFB1C4FF0BB54C56009AC862 /* metamodel_LL1_grammar.h in Headers */,
-				CFB1C5010BB54C56009AC862 /* metamodel_metamodel.h in Headers */,
-				CFB1C5030BB54C56009AC862 /* metamodel_model_builder.h in Headers */,
-				CFCDF81F0BBE8DF1004EEBE8 /* lexique_metamodel.h in Headers */,
-				CF4940510BBEB2E5009DB633 /* lexique_LL1_grammar.h in Headers */,
-				CF4940530BBEB2E5009DB633 /* lexique_model_builder.h in Headers */,
 				CF0CB3E90BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4020BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB41E0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5DB0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
+				CF0CB77B0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
+				CF0CB7900BC0130500E6FABE /* optionSemantics.h in Headers */,
+				CF0CB7A40BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
+				CF0CB7B90BC0152500E6FABE /* metamodelMetamodel.h in Headers */,
+				CF0CB7CE0BC0161E00E6FABE /* optionMetamodel.h in Headers */,
+				CF0CB7E10BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
+				CF0CB7F50BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
+				CF0CB80B0BC0187500E6FABE /* optionModelBuilder.h in Headers */,
+				CF0CB81F0BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
+				CF0CB8310BC0198700E6FABE /* metamodelLL1grammar.h in Headers */,
+				CF0CB8430BC019CA00E6FABE /* optionLL1grammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5010,23 +5010,23 @@
 				CFDB3A730B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C8C0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE1600B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CF7B6AE00BAD74E90046EB3A /* option_metamodel.cpp in Sources */,
-				CF7B6AFE0BAD7A800046EB3A /* option_model_builder.cpp in Sources */,
-				CF7B6B120BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */,
-				CF3107EE0BAEA43A00BF8C6C /* option_semantics.cpp in Sources */,
-				CF3107F00BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47EFE0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F000BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CFB1C4E00BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
-				CFB1C4E20BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
-				CFB1C4E40BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
-				CFCDF8140BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
-				CF49403C0BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
-				CF49403E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3D40BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3F70BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB4290BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E40BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB7840BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
+				CF0CB7990BC0130500E6FABE /* optionSemantics.cpp in Sources */,
+				CF0CB7AD0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
+				CF0CB7C20BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
+				CF0CB7D70BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
+				CF0CB7EA0BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
+				CF0CB7FE0BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
+				CF0CB8140BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
+				CF0CB8280BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
+				CF0CB83A0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
+				CF0CB84C0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5141,26 +5141,26 @@
 				CFFC8C8D0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE15E0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
 				CFC71BE70B9DED5E0086499A /* metamodel_methods.cpp in Sources */,
-				CF7B6AEC0BAD74E90046EB3A /* option_metamodel.cpp in Sources */,
-				CF7B6B0A0BAD7A800046EB3A /* option_model_builder.cpp in Sources */,
-				CF7B6B1E0BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */,
-				CF3108060BAEA43A00BF8C6C /* option_semantics.cpp in Sources */,
-				CF3108080BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CF21A4F10BAEE75A00C34B66 /* galgas_LL1_grammar.cpp in Sources */,
 				CF21A4F20BAEE75C00C34B66 /* ggs_LL1_compile_component.cpp in Sources */,
 				CF21A4F30BAEE76000C34B66 /* mda_galgas_LL1_prgm.cpp in Sources */,
 				CFD47F160BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F180BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CFB1C5040BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
-				CFB1C5060BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
-				CFB1C5080BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
-				CFCDF8200BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
-				CF4940540BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
-				CF4940560BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3EC0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB42B0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E60BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB7860BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
+				CF0CB79B0BC0130500E6FABE /* optionSemantics.cpp in Sources */,
+				CF0CB7AF0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
+				CF0CB7C40BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
+				CF0CB7D90BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
+				CF0CB7EC0BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
+				CF0CB8000BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
+				CF0CB8160BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
+				CF0CB82A0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
+				CF0CB83C0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
+				CF0CB84E0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5275,26 +5275,26 @@
 				CFFC8C8E0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE1560B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
 				CFC71BE80B9DED610086499A /* metamodel_methods.cpp in Sources */,
-				CF7B6AEE0BAD74E90046EB3A /* option_metamodel.cpp in Sources */,
-				CF7B6B0C0BAD7A800046EB3A /* option_model_builder.cpp in Sources */,
-				CF7B6B200BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */,
-				CF31080A0BAEA43A00BF8C6C /* option_semantics.cpp in Sources */,
-				CF31080C0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CF21A50F0BAEEB4300C34B66 /* galgas_LL1_grammar.cpp in Sources */,
 				CF21A5100BAEEB4700C34B66 /* ggs_LL1_compile_component.cpp in Sources */,
 				CF21A5110BAEEB4C00C34B66 /* mda_galgas_LL1_prgm.cpp in Sources */,
 				CFD47F1A0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F1C0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CFB1C50A0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
-				CFB1C50C0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
-				CFB1C50E0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
-				CFCDF8220BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
-				CF49405A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
-				CF4940A60BBECC7F009DB633 /* lexique_LL1_grammar.cpp in Sources */,
 				CF0CB3F00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB42D0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB7880BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
+				CF0CB79D0BC0130500E6FABE /* optionSemantics.cpp in Sources */,
+				CF0CB7B10BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
+				CF0CB7C60BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
+				CF0CB7DB0BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
+				CF0CB7EE0BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
+				CF0CB8020BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
+				CF0CB8180BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
+				CF0CB82C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
+				CF0CB83E0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
+				CF0CB8500BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5451,23 +5451,23 @@
 				CFDB3A750B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C890B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE15A0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CF7B6AE20BAD74E90046EB3A /* option_metamodel.cpp in Sources */,
-				CF7B6B000BAD7A800046EB3A /* option_model_builder.cpp in Sources */,
-				CF7B6B140BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */,
-				CF3107F20BAEA43A00BF8C6C /* option_semantics.cpp in Sources */,
-				CF3107F40BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F020BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F040BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CFB1C4E60BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
-				CFB1C4E80BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
-				CFB1C4EA0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
-				CFCDF8160BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
-				CF4940400BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
-				CF4940420BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3D80BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3F90BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB4230BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5DE0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB77E0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
+				CF0CB7930BC0130500E6FABE /* optionSemantics.cpp in Sources */,
+				CF0CB7A70BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
+				CF0CB7BC0BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
+				CF0CB7D10BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
+				CF0CB7E40BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
+				CF0CB7F80BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
+				CF0CB80E0BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
+				CF0CB8220BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
+				CF0CB8340BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
+				CF0CB8460BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5585,23 +5585,23 @@
 				CFDB3A770B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C880B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE1640B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CF7B6AE40BAD74E90046EB3A /* option_metamodel.cpp in Sources */,
-				CF7B6B020BAD7A800046EB3A /* option_model_builder.cpp in Sources */,
-				CF7B6B160BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */,
-				CF3107F60BAEA43A00BF8C6C /* option_semantics.cpp in Sources */,
-				CF3107F80BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F060BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F080BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CFB1C4EC0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
-				CFB1C4EE0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
-				CFB1C4F00BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
-				CFCDF8180BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
-				CF4940440BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
-				CF4940460BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3DC0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3FB0BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB4210BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5DC0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB77C0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
+				CF0CB7910BC0130500E6FABE /* optionSemantics.cpp in Sources */,
+				CF0CB7A50BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
+				CF0CB7BA0BC0152500E6FABE /* metamodelMetamodel.cpp in Sources */,
+				CF0CB7CF0BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
+				CF0CB7E20BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
+				CF0CB7F60BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
+				CF0CB80C0BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
+				CF0CB8200BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
+				CF0CB8320BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
+				CF0CB8440BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5719,23 +5719,23 @@
 				CFDB3A790B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C8A0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE1580B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CF7B6AE60BAD74E90046EB3A /* option_metamodel.cpp in Sources */,
-				CF7B6B040BAD7A800046EB3A /* option_model_builder.cpp in Sources */,
-				CF7B6B180BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */,
-				CF3107FA0BAEA43A00BF8C6C /* option_semantics.cpp in Sources */,
-				CF3107FC0BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F0A0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F0C0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CFB1C4F20BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
-				CFB1C4F40BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
-				CFB1C4F60BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
-				CFCDF81A0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
-				CF4940480BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
-				CF49404A0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3E00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3FD0BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB4270BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E20BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB7820BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
+				CF0CB7970BC0130500E6FABE /* optionSemantics.cpp in Sources */,
+				CF0CB7AB0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
+				CF0CB7C00BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
+				CF0CB7D50BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
+				CF0CB7E80BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
+				CF0CB7FC0BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
+				CF0CB8120BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
+				CF0CB8260BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
+				CF0CB8380BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
+				CF0CB84A0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5853,23 +5853,23 @@
 				CFDB3A7B0B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C870B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE1620B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CF7B6AE80BAD74E90046EB3A /* option_metamodel.cpp in Sources */,
-				CF7B6B060BAD7A800046EB3A /* option_model_builder.cpp in Sources */,
-				CF7B6B1A0BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */,
-				CF3107FE0BAEA43A00BF8C6C /* option_semantics.cpp in Sources */,
-				CF3108000BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F0E0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F100BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CFB1C4F80BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
-				CFB1C4FA0BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
-				CFB1C4FC0BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
-				CFCDF81C0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
-				CF49404C0BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
-				CF49404E0BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3E40BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB3FF0BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB4250BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E00BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB7800BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
+				CF0CB7950BC0130500E6FABE /* optionSemantics.cpp in Sources */,
+				CF0CB7A90BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
+				CF0CB7BE0BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
+				CF0CB7D30BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
+				CF0CB7E60BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
+				CF0CB7FA0BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
+				CF0CB8100BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
+				CF0CB8240BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
+				CF0CB8360BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
+				CF0CB8480BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5987,23 +5987,23 @@
 				CFDB3A7D0B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C8B0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE15C0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CF7B6AEA0BAD74E90046EB3A /* option_metamodel.cpp in Sources */,
-				CF7B6B080BAD7A800046EB3A /* option_model_builder.cpp in Sources */,
-				CF7B6B1C0BAD7CC60046EB3A /* option_LL1_grammar.cpp in Sources */,
-				CF3108020BAEA43A00BF8C6C /* option_semantics.cpp in Sources */,
-				CF3108040BAEA43A00BF8C6C /* option_treewalking_for_building_map.cpp in Sources */,
 				CFD47F120BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F140BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CFB1C4FE0BB54C56009AC862 /* metamodel_LL1_grammar.cpp in Sources */,
-				CFB1C5000BB54C56009AC862 /* metamodel_metamodel.cpp in Sources */,
-				CFB1C5020BB54C56009AC862 /* metamodel_model_builder.cpp in Sources */,
-				CFCDF81E0BBE8DF1004EEBE8 /* lexique_metamodel.cpp in Sources */,
-				CF4940500BBEB2E5009DB633 /* lexique_LL1_grammar.cpp in Sources */,
-				CF4940520BBEB2E5009DB633 /* lexique_model_builder.cpp in Sources */,
 				CF0CB3E80BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB4010BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB41F0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5DA0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
+				CF0CB77A0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
+				CF0CB78F0BC0130500E6FABE /* optionSemantics.cpp in Sources */,
+				CF0CB7A30BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
+				CF0CB7B80BC0152500E6FABE /* metamodelMetamodel.cpp in Sources */,
+				CF0CB7CD0BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
+				CF0CB7E00BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
+				CF0CB7F40BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
+				CF0CB80A0BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
+				CF0CB81E0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
+				CF0CB8300BC0198700E6FABE /* metamodelLL1grammar.cpp in Sources */,
+				CF0CB8420BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

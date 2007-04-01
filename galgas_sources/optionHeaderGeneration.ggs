@@ -16,9 +16,9 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-treewalking optionHeaderGeneration (option_metamodel) :
-import "option_metamodel.gMetamodel" ;
-import semantics option_semantics in "option_semantics.ggs" ;
+treewalking optionHeaderGeneration (optionMetamodel) :
+import "optionMetamodel.gMetamodel" ;
+import semantics optionSemantics in "optionSemantics.ggs" ;
 
 #---------------------------------------------------------------------------*
 
