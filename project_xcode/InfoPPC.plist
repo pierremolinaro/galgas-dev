@@ -29,6 +29,28 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
+				<string>gSemantics</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>galgasDocuments.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS semantics Component</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>TEXT</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>OC_GGS_Document</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
 				<string>gLexique</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
