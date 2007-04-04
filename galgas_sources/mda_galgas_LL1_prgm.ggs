@@ -34,7 +34,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar optionLL1grammar in "optionLL1grammar.ggs" ;
   import grammar metamodelLL1grammar in "metamodelLL1grammar.ggs" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.ggs" ;
-  import grammar semanticsLL1grammar in "semanticsLL1grammar.ggs" ;
+  import grammar semanticsSLRgrammar in "semanticsSLRgrammar.ggs" ;
   
   error 100 ;
   warning 100 ;
@@ -133,7 +133,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
   #--- Parse metamodel component
     @semanticsComponentRoot semanticsComponentRoot ;
-    grammar semanticsLL1grammar in inSourceFile -> semanticsComponentRoot ;
+    grammar semanticsSLRgrammar in inSourceFile -> semanticsComponentRoot ;
   }
 
 end program ;

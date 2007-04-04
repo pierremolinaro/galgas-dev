@@ -58,4 +58,20 @@ entity @mapDeclaration extends @semanticDeclaration {
 
 #---------------------------------------------------------------------------*
 
+entity @classDeclaration extends @semanticDeclaration {
+  @bool mIsAbstract ;
+  @lstring mClassTypeName ;
+  @lstring mSuperClassName ; # Empty if no super class
+  @structuredTypeAttribute [] mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @listDeclaration extends @semanticDeclaration {
+  @lstring mListTypeName ;
+  @structuredTypeAttribute [] mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+
 end metamodel ;

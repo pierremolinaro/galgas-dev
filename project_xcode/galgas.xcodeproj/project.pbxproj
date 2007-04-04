@@ -276,36 +276,20 @@
 		CF0CB8650BC0203700E6FABE /* semanticsMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8570BC0203600E6FABE /* semanticsMetamodel.h */; };
 		CF0CB8660BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CF0CB8670BC0203700E6FABE /* semanticsMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8570BC0203600E6FABE /* semanticsMetamodel.h */; };
-		CF0CB86C0BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */; };
-		CF0CB86D0BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */; };
 		CF0CB86E0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB86F0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
-		CF0CB8700BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */; };
-		CF0CB8710BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */; };
 		CF0CB8720BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB8730BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
-		CF0CB8740BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */; };
-		CF0CB8750BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */; };
 		CF0CB8760BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB8770BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
-		CF0CB8780BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */; };
-		CF0CB8790BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */; };
 		CF0CB87A0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB87B0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
-		CF0CB87C0BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */; };
-		CF0CB87D0BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */; };
 		CF0CB87E0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB87F0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
-		CF0CB8800BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */; };
-		CF0CB8810BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */; };
 		CF0CB8820BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB8830BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
-		CF0CB8840BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */; };
-		CF0CB8850BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */; };
 		CF0CB8860BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB8870BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
-		CF0CB8880BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */; };
-		CF0CB8890BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */; };
 		CF0CB88A0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB88B0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
 		CF0EBFD20B84680C0047465A /* include_typeGalgasMapindexType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */; };
@@ -335,7 +319,6 @@
 		CF1EF67F0AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CF1EF69E0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */; };
-		CF1EF69F0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h in Headers */ = {isa = PBXBuildFile; fileRef = CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */; };
 		CF1EF6A00AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */; };
 		CF21A4F10BAEE75A00C34B66 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF21A4F20BAEE75C00C34B66 /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
@@ -392,7 +375,6 @@
 		CF2A8854058CCF55003EF2F4 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CF2A8856058CCF56003EF2F4 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
 		CF33792309EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
-		CF33792409EFA7DE00EC41F6 /* C_SourceTextForCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */; };
 		CF33792509EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
 		CF381D3F0B6FD70600289177 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF397DD60B2C663A001F008D /* AC_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599208536A5B0077AEAF /* AC_CLI_Options.cpp */; };
@@ -411,13 +393,9 @@
 		CF3E6288096EE4BA00419EBB /* project_creation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3E6280096EE4BA00419EBB /* project_creation.cpp */; };
 		CF3E628A096EE4BA00419EBB /* project_creation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3E6280096EE4BA00419EBB /* project_creation.cpp */; };
 		CF3E628C096EE4BA00419EBB /* project_creation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3E6280096EE4BA00419EBB /* project_creation.cpp */; };
-		CF4397F80ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */; };
 		CF4397F90ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */; };
-		CF4397FA0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */; };
 		CF4397FB0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
-		CF4397FC0ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */; };
 		CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */; };
-		CF4397FE0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */; };
 		CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
 		CF4398040ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
@@ -1369,7 +1347,22 @@
 		CFA313BD09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
-		CFBC766A0AC694C200443ACA /* OC_GGS_BuildResultTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */; };
+		CFB822150BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFB822160BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
+		CFB822190BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFB8221A0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
+		CFB8221D0BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFB8221E0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
+		CFB822210BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFB822220BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
+		CFB822250BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFB822260BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
+		CFB822290BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFB8222A0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
+		CFB8222D0BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFB8222E0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
+		CFB822310BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFB822320BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
 		CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
 		CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
 		CFC1767309FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
@@ -1788,9 +1781,7 @@
 		CFD9E64A0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD9E63C0AE7F07300A9D72A /* include_typeLogInstruction.h */; };
 		CFD9E64B0AE7F07300A9D72A /* include_C_switch_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD9E63B0AE7F07300A9D72A /* include_C_switch_instruction.h */; };
 		CFD9E64C0AE7F07300A9D72A /* include_typeLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD9E63C0AE7F07300A9D72A /* include_typeLogInstruction.h */; };
-		CFDAE7090AD19F3E00713406 /* PMDownloadData.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDAE7050AD19F3E00713406 /* PMDownloadData.h */; };
 		CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
-		CFDAE70B0AD19F3E00713406 /* PMDownloadFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */; };
 		CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
 		CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
 		CFDAE7100AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
@@ -1826,8 +1817,6 @@
 		CFDC00700B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
 		CFDC00710B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */; };
 		CFDC00720B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
-		CFE61CF80B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */; };
-		CFE61CFA0B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE838200AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
@@ -1915,9 +1904,7 @@
 		CFF13E3C059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E420597311700C43F5E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CFF13E430597311700C43F5E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
-		CFF2131A0BA017FB0087BA01 /* NSSplitViewExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */; };
 		CFF2131B0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */; };
-		CFF2131C0BA017FB0087BA01 /* NSSplitViewExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */; };
 		CFF2131D0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */; };
 		CFF215010BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
 		CFF215020BA05AB80087BA01 /* project_creation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF215000BA05AB80087BA01 /* project_creation.h */; };
@@ -2172,8 +2159,6 @@
 		CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionLL1grammar.h; sourceTree = "<group>"; };
 		CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsMetamodel.cpp; sourceTree = "<group>"; };
 		CF0CB8570BC0203600E6FABE /* semanticsMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsMetamodel.h; sourceTree = "<group>"; };
-		CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsLL1grammar.cpp; sourceTree = "<group>"; };
-		CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsLL1grammar.h; sourceTree = "<group>"; };
 		CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsModelBuilder.cpp; sourceTree = "<group>"; };
 		CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsModelBuilder.h; sourceTree = "<group>"; };
 		CF0EBFD00B84680C0047465A /* include_typeGalgasMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasMapindexType.h; sourceTree = "<group>"; };
@@ -2375,6 +2360,8 @@
 		CFA3139509FD3EDA006B55E7 /* parser_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_generation.h; sourceTree = "<group>"; };
 		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammar.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
+		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
+		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
 		CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
 		CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = "<group>"; };
 		CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
@@ -3368,12 +3355,12 @@
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */,
+				CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */,
 				CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */,
 				CF0CB8570BC0203600E6FABE /* semanticsMetamodel.h */,
 				CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */,
 				CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */,
-				CF0CB8680BC0273E00E6FABE /* semanticsLL1grammar.cpp */,
-				CF0CB8690BC0273E00E6FABE /* semanticsLL1grammar.h */,
 				CFFE920C0B7CC06E009BCBF5 /* domain_parser.cpp */,
 				CFFE920D0B7CC06E009BCBF5 /* domain_parser.h */,
 				CF76F4A0090E739A00036FAC /* expression_parser.h */,
@@ -3701,10 +3688,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF4397F80ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */,
-				CF4397FA0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */,
-				CFE61CFA0B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h in Headers */,
-				CFF2131A0BA017FB0087BA01 /* NSSplitViewExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3818,8 +3801,8 @@
 				CF0CB83B0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB84D0BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB8630BC0203700E6FABE /* semanticsMetamodel.h in Headers */,
-				CF0CB8810BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */,
 				CF0CB8830BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
+				CFB8222A0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3933,8 +3916,8 @@
 				CF0CB83D0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB84F0BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB8650BC0203700E6FABE /* semanticsMetamodel.h in Headers */,
-				CF0CB8850BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */,
 				CF0CB8870BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
+				CFB8222E0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4048,8 +4031,8 @@
 				CF0CB83F0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB8510BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB8670BC0203700E6FABE /* semanticsMetamodel.h in Headers */,
-				CF0CB8890BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */,
 				CF0CB88B0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
+				CFB822320BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4057,15 +4040,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF33792409EFA7DE00EC41F6 /* C_SourceTextForCocoa.h in Headers */,
-				CFBC766A0AC694C200443ACA /* OC_GGS_BuildResultTextView.h in Headers */,
-				CF1EF69F0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h in Headers */,
-				CFDAE7090AD19F3E00713406 /* PMDownloadData.h in Headers */,
-				CFDAE70B0AD19F3E00713406 /* PMDownloadFile.h in Headers */,
-				CF4397FC0ADFE16D0085F47C /* PMCancelButtonForPanel.h in Headers */,
-				CF4397FE0ADFE16D0085F47C /* PMOkButtonForPanel.h in Headers */,
-				CFE61CF80B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h in Headers */,
-				CFF2131C0BA017FB0087BA01 /* NSSplitViewExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4179,8 +4153,8 @@
 				CF0CB8350BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB8470BC019CA00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB85D0BC0203600E6FABE /* semanticsMetamodel.h in Headers */,
-				CF0CB8750BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */,
 				CF0CB8770BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
+				CFB8221E0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4294,8 +4268,8 @@
 				CF0CB8330BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB8450BC019CA00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB85B0BC0203600E6FABE /* semanticsMetamodel.h in Headers */,
-				CF0CB8710BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */,
 				CF0CB8730BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
+				CFB8221A0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4409,8 +4383,8 @@
 				CF0CB8390BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB84B0BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB8610BC0203600E6FABE /* semanticsMetamodel.h in Headers */,
-				CF0CB87D0BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */,
 				CF0CB87F0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
+				CFB822260BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4524,8 +4498,8 @@
 				CF0CB8370BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB8490BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB85F0BC0203600E6FABE /* semanticsMetamodel.h in Headers */,
-				CF0CB8790BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */,
 				CF0CB87B0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
+				CFB822220BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4639,8 +4613,8 @@
 				CF0CB8310BC0198700E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB8430BC019CA00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB8590BC0203600E6FABE /* semanticsMetamodel.h in Headers */,
-				CF0CB86D0BC0273E00E6FABE /* semanticsLL1grammar.h in Headers */,
 				CF0CB86F0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
+				CFB822160BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5112,8 +5086,8 @@
 				CF0CB83A0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB84C0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB8620BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */,
-				CF0CB8800BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */,
 				CF0CB8820BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
+				CFB822290BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5249,8 +5223,8 @@
 				CF0CB83C0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB84E0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB8640BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */,
-				CF0CB8840BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */,
 				CF0CB8860BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
+				CFB8222D0BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5386,8 +5360,8 @@
 				CF0CB83E0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB8500BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB8660BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */,
-				CF0CB8880BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */,
 				CF0CB88A0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
+				CFB822310BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5562,8 +5536,8 @@
 				CF0CB8340BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB8460BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB85C0BC0203600E6FABE /* semanticsMetamodel.cpp in Sources */,
-				CF0CB8740BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */,
 				CF0CB8760BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
+				CFB8221D0BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5699,8 +5673,8 @@
 				CF0CB8320BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB8440BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB85A0BC0203600E6FABE /* semanticsMetamodel.cpp in Sources */,
-				CF0CB8700BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */,
 				CF0CB8720BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
+				CFB822190BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5836,8 +5810,8 @@
 				CF0CB8380BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB84A0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB8600BC0203600E6FABE /* semanticsMetamodel.cpp in Sources */,
-				CF0CB87C0BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */,
 				CF0CB87E0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
+				CFB822250BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5973,8 +5947,8 @@
 				CF0CB8360BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB8480BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB85E0BC0203600E6FABE /* semanticsMetamodel.cpp in Sources */,
-				CF0CB8780BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */,
 				CF0CB87A0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
+				CFB822210BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6110,8 +6084,8 @@
 				CF0CB8300BC0198700E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB8420BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB8580BC0203600E6FABE /* semanticsMetamodel.cpp in Sources */,
-				CF0CB86C0BC0273E00E6FABE /* semanticsLL1grammar.cpp in Sources */,
 				CF0CB86E0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
+				CFB822150BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

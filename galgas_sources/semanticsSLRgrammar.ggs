@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'semantics' LL1 grammar                                                  *
+#  'semantics' SLR grammar                                                  *
 #                                                                           *
 #  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
 #                                                                           *
@@ -17,10 +17,10 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar semanticsLL1grammar "LL1" :
+grammar semanticsSLRgrammar "SLR" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import syntax semanticsModelBuilder in "semanticsModelBuilder.ggs" ;
 
   root <semantics_component_start_symbol> -> semanticsMetamodel
-  ; # LL1
+  ; # SLR
 end grammar ;
