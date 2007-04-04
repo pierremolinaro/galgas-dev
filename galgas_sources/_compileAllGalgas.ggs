@@ -17,6 +17,13 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#--- Common semantics files
+compile "commonSemantics.gSemantics" ;
+
+#--- Instructions
+compile "instructionMetamodel.gMetamodel" ;
+compile "semanticInstructionListModelBuilder.ggs" ;
+
 #--- Lexique Component
 compile "lexiqueSemantics.gSemantics" ;
 compile "lexiqueMetamodel.gMetamodel" ;

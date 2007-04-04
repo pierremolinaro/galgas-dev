@@ -19,7 +19,9 @@
 
 syntax semanticsModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
 import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -30,6 +32,18 @@ nonterminal <semantic_declaration> -> @semanticDeclaration ;
 nonterminal <attribute_declaration> -> @structuredTypeAttribute ;
 
 nonterminal <map_method_declaration> -> @mapMethod ;
+
+nonterminal <map_abstract_method_declaration> -> @abstractMethodDefinition ;
+
+nonterminal <formal_parameter_list> -> @formalParameters ;
+
+nonterminal <formal_parameter> -> @formalParameter ;
+
+nonterminal <enum_message_declaration> -> @enumMessage ;
+
+nonterminal <enum_message_association> -> @enumMessageAssociation ;
+
+nonterminal <semantic_instruction_list> -> @semanticInstructions ;
 
 nonterminal <obsolete_declaration> ;
 
@@ -77,6 +91,35 @@ rule <attribute_declaration> -> @structuredTypeAttribute :
   $type_name$ ? mAttributeTypeName ;
   $identifier$ ? mAttributeName ;
   $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_parameter_list> -> @formalParameters :
+  repeat
+  while
+    <formal_parameter> +> mFormalParameterList ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_parameter> -> @formalParameter :
+  select
+    $?$ ;
+    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentIn] ;
+  or
+    $??$ ;
+    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+  or
+    $?!$ ;
+    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentInOut] ;
+  or
+    $!$ ;
+    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentOut] ;
+  end select ;
+  $type_name$ ? mFormalParameterTypeName ;
+  $identifier$ ? mFormalParameterName ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -143,8 +186,21 @@ rule <semantic_declaration> -> @classDeclaration :
   repeat
   while
     <attribute_declaration> +> mAttributeList ;
+  while
+    <map_abstract_method_declaration> +> mAbstractMethodList ;
   end repeat ;
   $}$ ;
+end rule ;
+
+
+#---------------------------------------------------------------------------*
+
+rule <map_abstract_method_declaration> -> @abstractMethodDefinition :
+  $abstract$ ;
+  $method$ ;
+  $identifier$ ? mMethodName ;
+  <formal_parameter_list> -> mSignature ;
+  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -210,12 +266,77 @@ rule <semantic_declaration> -> @listDeclaration :
   $list$ ;
   $type_name$ ? mListTypeName ;
   ${$ ;
-#--- Class properties
   repeat
   while
     <attribute_declaration> +> mAttributeList ;
   end repeat ;
   $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @enumDeclaration :
+  $enum$ ;
+  $type_name$ ? mEnumTypeName ;
+  ${$ ;
+  mConstantList := [@lstringlist emptyList] ;
+  repeat
+    @lstring constantName ;
+    $identifier$ ? constantName ;
+    mConstantList += !constantName ;
+  while
+    $,$ ;
+  end repeat ;
+  $}$ ;
+  ${$ ;
+  repeat
+  while
+    <enum_message_declaration> +> mEnumMessageList ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_message_declaration> -> @enumMessage :
+  $message$ ;
+  $identifier$ ? mEnumMessageName ;
+  $:$ ;
+  repeat
+    <enum_message_association> +> mMessageAssociationList ;
+  while
+  end repeat ;
+  $end$ ;
+  $message$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_message_association> -> @enumMessageAssociation :
+  $identifier$ ? mConstantName ;
+  $->$ ;
+  $literal_string$ ? mMessage ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @routineDeclaration :
+  $routine$ ;
+  $identifier$ ? mRoutineName ;
+  <formal_parameter_list> -> mFormalParameters ;
+  $:$ ;
+  <semantic_instruction_list> -> mRoutineInstructions ;
+  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*

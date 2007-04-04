@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'semantics' SLR grammar                                                  *
+#  'metamodel' component parser, as model builder                           *
 #                                                                           *
 #  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
 #                                                                           *
@@ -17,11 +17,35 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar semanticsSLRgrammar "SLR" :
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax semanticsModelBuilder in "semanticsModelBuilder.ggs" ;
-  import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.ggs" ;
+syntax semanticInstructionListModelBuilder :
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
 
-  root <semantics_component_start_symbol> -> semanticsMetamodel
-  ; # SLR
-end grammar ;
+nonterminal <semantic_instruction_list> -> @semanticInstructions ;
+
+nonterminal <semantic_instruction> -> @semanticInstruction ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction_list> -> @semanticInstructions :
+  repeat
+  while
+    <semantic_instruction> +> mInstruction ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @localVariableDeclaration :
+  $type_name$ ? mTypeName ;
+  $identifier$ ? mVariableName ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

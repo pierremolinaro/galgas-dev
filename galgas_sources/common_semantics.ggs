@@ -18,6 +18,8 @@
 
 semantics common_semantics :
 
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+
 #---------------------------------------------------------------------------*
 #                                                                           *
 #   L I S T    O F    L S T R I N G S                                       *
@@ -26,39 +28,6 @@ semantics common_semantics :
 
 list @L_lstringList {
   @lstring mString ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  A C T U A L    P A R A M E T E R S    P A S S I N G    M O D E S         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-enum @actualParametersPassingMode {
-  parameterOut, parameterOutIn, parameterIn
-}{
-  message actualArgumentMessage :
-    parameterOutIn -> "an output/input (!?) actual parameter" ;
-    parameterIn -> "an input (?) actual parameter" ;
-    parameterOut -> "an output (!) actual parameter" ;
-  end message ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-enum @formalArgumentPassingMode {
-  argumentIn, argumentOut, argumentInOut, argumentConstantIn
-}{
-  message formalArgumentMessage :
-    argumentConstantIn -> "a constant input (??) formal argument" ;
-    argumentIn -> "an input (?) formal argument" ;
-    argumentOut -> "an output (!) formal argument" ;
-    argumentInOut -> "an input/output (?!) argument" ;
-  end message ;
 }
 
 #---------------------------------------------------------------------------*
