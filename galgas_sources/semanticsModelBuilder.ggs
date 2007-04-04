@@ -31,6 +31,8 @@ nonterminal <attribute_declaration> -> @structuredTypeAttribute ;
 
 nonterminal <map_method_declaration> -> @mapMethod ;
 
+nonterminal <obsolete_declaration> ;
+
 #---------------------------------------------------------------------------*
 
 rule <semantics_component_start_symbol> -> @semanticsComponentRoot :
@@ -56,6 +58,8 @@ rule <semantics_component_start_symbol> -> @semanticsComponentRoot :
     $;$ ;
   while
     <semantic_declaration> +> mSemanticDeclarationList ;
+  while
+    <obsolete_declaration> ;
   end repeat ;
 #--- end
   $end$ ;
@@ -111,6 +115,107 @@ rule <map_method_declaration> -> @mapMethod :
   $message$ ;
   $literal_string$ ? mErrorMessage ;
   $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C L A S S    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @classDeclaration :
+  select
+    mIsAbstract := false ;
+  or
+    $abstract$ ;
+    mIsAbstract := true ;
+  end select ;
+  $class$ ;
+  $type_name$ ? mClassTypeName ;
+  select
+    mSuperClassName := [@lstring new !"" !here] ;
+  or
+    $extends$ ;
+    $type_name$ ? mSuperClassName ;
+  end select ;
+  ${$ ;
+#--- Class properties
+  repeat
+  while
+    <attribute_declaration> +> mAttributeList ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <obsolete_declaration> :
+  $map$ ;
+  $type_name$ ?* ;
+  $class$ ;
+  $identifier$ ?* ;
+  $;$ ;
+  repeat
+  while
+    $insert$ ;
+    $identifier$ ?* ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  while
+    $search$ ;
+    $identifier$ ?* ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  while
+    $type_name$ ?* ;
+    $identifier$ ?* ;
+    $;$ ;
+  while
+    $block$ ;
+    $identifier$ ?* ;
+    $:$ ;
+    $($ ;
+    repeat
+    while
+      $?$ ;
+      $type_name$ ?* ;
+      $identifier$ ?* ;
+    end repeat ;
+    $)$ ;
+    $:$ ;
+    $($ ;
+    repeat
+    while
+      $?$ ;
+      $type_name$ ?* ;
+      $identifier$ ?* ;
+    end repeat ;
+    $)$ ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @listDeclaration :
+  $list$ ;
+  $type_name$ ? mListTypeName ;
+  ${$ ;
+#--- Class properties
+  repeat
+  while
+    <attribute_declaration> +> mAttributeList ;
+  end repeat ;
+  $}$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*

@@ -41,7 +41,7 @@ compile "metamodelLL1grammar.ggs" ;
 #--- Semantics Component
 compile "semanticsMetamodel.gMetamodel" ;
 compile "semanticsModelBuilder.ggs" ;
-compile "semanticsLL1grammar.ggs" ;
+compile "semanticsSLRgrammar.ggs" ;
 
 #--- Temporary Program for PPC Cocoa GALGAS Only 
 compile "mda_galgas_LL1_prgm.ggs" ;
