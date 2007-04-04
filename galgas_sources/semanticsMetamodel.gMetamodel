@@ -17,7 +17,10 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-metamodel semanticsMetamodel root @semanticsComponentRoot :
+metamodel semanticsMetamodel extends instructionMetamodel root @semanticsComponentRoot :
+
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
 
 #---------------------------------------------------------------------------*
 
@@ -33,6 +36,10 @@ abstract entity @semanticDeclaration {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#    Common Rules                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
 
 entity @structuredTypeAttribute {
   @lstring mAttributeTypeName ;
@@ -41,11 +48,22 @@ entity @structuredTypeAttribute {
 
 #---------------------------------------------------------------------------*
 
-entity @mapMethod {
-  @lstring mMethodName ;
-  @lstring mErrorMessage ;
+entity @formalParameters {
+  @formalParameter [] mFormalParameterList ;
 }
 
+#---------------------------------------------------------------------------*
+
+entity @formalParameter {
+  @formalArgumentPassingMode mFormalParameterPassingMode ;
+  @lstring mFormalParameterTypeName ;
+  @lstring mFormalParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    D E C L A R A T I O N                                         *
+#                                                                           *
 #---------------------------------------------------------------------------*
 
 entity @mapDeclaration extends @semanticDeclaration {
@@ -58,18 +76,79 @@ entity @mapDeclaration extends @semanticDeclaration {
 
 #---------------------------------------------------------------------------*
 
+entity @mapMethod {
+  @lstring mMethodName ;
+  @lstring mErrorMessage ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C L A S S    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
 entity @classDeclaration extends @semanticDeclaration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
   @lstring mSuperClassName ; # Empty if no super class
   @structuredTypeAttribute [] mAttributeList ;
+  @abstractMethodDefinition [] mAbstractMethodList ;
 }
 
+#---------------------------------------------------------------------------*
+
+entity @abstractMethodDefinition {
+  @lstring mMethodName ;
+  @formalParameters mSignature ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    D E C L A R A T I O N                                       *
+#                                                                           *
 #---------------------------------------------------------------------------*
 
 entity @listDeclaration extends @semanticDeclaration {
   @lstring mListTypeName ;
   @structuredTypeAttribute [] mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @enumDeclaration extends @semanticDeclaration {
+  @lstring mEnumTypeName ;
+  @lstringlist mConstantList ;
+  @enumMessage [] mEnumMessageList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumMessage {
+  @lstring mEnumMessageName ;
+  @enumMessageAssociation [] mMessageAssociationList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumMessageAssociation {
+  @lstring mConstantName ;
+  @lstring mMessage ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @routineDeclaration extends @semanticDeclaration {
+  @lstring mRoutineName ;
+  @formalParameters mFormalParameters ;
+  @semanticInstructions mRoutineInstructions ;
 }
 
 #---------------------------------------------------------------------------*

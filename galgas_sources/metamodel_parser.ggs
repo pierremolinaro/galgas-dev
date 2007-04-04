@@ -160,29 +160,49 @@ rule <parse_metamodel>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ??@bool inGenerateMetamodelCode
 :
- #--- Metamodel header
-  $metamodel$ ;
   @lstring metamodelName ;
-  $identifier$ ? metamodelName ;
-#--- Super metamodels
   @lstringlist superMetamodelList ;
-  select
-    superMetamodelList := [@lstringlist emptyList] ;
-  or
-    superMetamodelList := [@lstringlist emptyList] ;
-    $extends$ ;
-    repeat
-      @lstring superMetamodel ;
-      $identifier$ ? superMetamodel ;
-      superMetamodelList += !superMetamodel ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
-#--- Root entity
-  $root$ ;
   @lstring rootEntityName ;
-  $type_name$ ? rootEntityName ;
+  select
+    $abstract$ ;
+    $metamodel$ ;
+    $identifier$ ? metamodelName ;
+  #--- Super metamodels
+    select
+      superMetamodelList := [@lstringlist emptyList] ;
+    or
+      superMetamodelList := [@lstringlist emptyList] ;
+      $extends$ ;
+      repeat
+       @lstring superMetamodel ;
+        $identifier$ ? superMetamodel ;
+        superMetamodelList += !superMetamodel ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+    rootEntityName := [@lstring new !"" !here] ;
+  or
+    $metamodel$ ;
+    $identifier$ ? metamodelName ;
+  #--- Super metamodels
+    select
+      superMetamodelList := [@lstringlist emptyList] ;
+    or
+      superMetamodelList := [@lstringlist emptyList] ;
+      $extends$ ;
+      repeat
+       @lstring superMetamodel ;
+        $identifier$ ? superMetamodel ;
+        superMetamodelList += !superMetamodel ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+  #--- Root entity
+    $root$ ;
+    $type_name$ ? rootEntityName ;
+  end select ;
   $:$ ;
 #--- Import statements
   @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
@@ -195,7 +215,7 @@ rule <parse_metamodel>
   @stringset inclusionsForHeaderFile ;
   @stringset inclusionsForImplementationFile ;
   @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
-  @M_semanticsEntitiesForUse componentEntitiesMap ;
+  @M_semanticsEntitiesForUse semanticsEntitiesMap ;
   @stringset classNamesSet [emptySet] ;
   @typeTableEnAvant tableEnAvant [emptyMap] ;
   @stringset includedSemanticsComponents ;
@@ -219,7 +239,7 @@ rule <parse_metamodel>
     ?optionsComponentsMapForUse
     ?modelMap
     ?actionMap
-    ?componentEntitiesMap
+    ?semanticsEntitiesMap
     ?tableEnAvant
     ?allMetamodelClassMap
   ;
@@ -242,9 +262,7 @@ rule <parse_metamodel>
   end foreach ;
 #--- Entity declarations
   @entityToImplementMap entityMap [emptyMap] ;
-  @M_semanticsEntitiesForUse semanticsEntitiesMap ;
   @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
-  enterBuiltinTypes ?semanticsEntitiesMap ;
   <entity_declaration_list>
     ![metamodelName string]
     !semanticsEntitiesMap

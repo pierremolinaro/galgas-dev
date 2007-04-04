@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'semantics' SLR grammar                                                  *
+#  metamodel that defines instructions                                      *
 #                                                                           *
 #  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
 #                                                                           *
@@ -17,11 +17,30 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar semanticsSLRgrammar "SLR" :
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax semanticsModelBuilder in "semanticsModelBuilder.ggs" ;
-  import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.ggs" ;
+abstract metamodel instructionMetamodel :
 
-  root <semantics_component_start_symbol> -> semanticsMetamodel
-  ; # SLR
-end grammar ;
+#---------------------------------------------------------------------------*
+
+abstract entity @semanticInstruction {
+}
+
+#---------------------------------------------------------------------------*
+
+entity @semanticInstructions {
+  @semanticInstruction [] mInstruction ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @localVariableDeclaration extends @semanticInstruction {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+}
+
+#---------------------------------------------------------------------------*
+
+end metamodel ;
