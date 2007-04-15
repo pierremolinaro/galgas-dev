@@ -22,7 +22,7 @@ metamodel metamodelMetamodel root @metamodelComponentRoot :
 entity @metamodelComponentRoot {
   @lstring mMetamodelComponentName ;
   @lstringlist mSuperMetamodels ;
-  @lstring mMetamodelRootEntityName ;
+  @lstring mMetamodelRootEntityName ; # Empty if abstract metamodel
   @lstringlist mMetamodelImportedComponents ;
   @metamodelEntity [] mMetamodelEntities ;
 }
