@@ -34,25 +34,46 @@ nonterminal <multiple_reference_declaration> ??@lstring inPropertyTypeName -> @m
 #---------------------------------------------------------------------------*
 
 rule <metamodel_component_start_symbol> -> @metamodelComponentRoot :
-  $metamodel$ ;
-#--- Metamodel Component Name
-  $identifier$ ? mMetamodelComponentName ;
-#--- Super metamodels
   mSuperMetamodels := [@lstringlist emptyList] ;
   select
+    $metamodel$ ;
+  #--- Metamodel Component Name
+    $identifier$ ? mMetamodelComponentName ;
+  #--- Super metamodels
+    select
+    or
+      $extends$ ;
+      repeat
+        @lstring superMetamodelName ;
+        $identifier$ ? superMetamodelName ;
+        mSuperMetamodels += !superMetamodelName ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+  #--- Root Entity
+    $root$ ;
+    $type_name$ ? mMetamodelRootEntityName ;
   or
-    $extends$ ;
-    repeat
-      @lstring superMetamodelName ;
-      $identifier$ ? superMetamodelName ;
-      mSuperMetamodels += !superMetamodelName ;
-    while
-      $,$ ;
-    end repeat ;
+    $abstract$ ;
+    $metamodel$ ;
+  #--- Metamodel Component Name
+    $identifier$ ? mMetamodelComponentName ;
+  #--- Super metamodels
+    select
+    or
+      $extends$ ;
+      repeat
+        @lstring superMetamodelName ;
+        $identifier$ ? superMetamodelName ;
+        mSuperMetamodels += !superMetamodelName ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+  #--- No Root Entity
+    mMetamodelRootEntityName := [@lstring new !"" !here] ;
   end select ;
-#--- Root Entity
-  $root$ ;
-  $type_name$ ? mMetamodelRootEntityName ;
   $:$ ;
 #--- Parse entities and import
   mMetamodelImportedComponents := [@lstringlist emptyList] ;
@@ -72,9 +93,21 @@ end rule ;
 rule <component_importation> ?!@lstringlist ioImportedComponentList :
   $import$ ;
   repeat
-    @lstring importedComponentFileName ;
-    $literal_string$ ? importedComponentFileName ;
-    ioImportedComponentList += !importedComponentFileName ;
+    select
+      @lstring importedComponentFileName ;
+      $literal_string$ ? importedComponentFileName ;
+      ioImportedComponentList += !importedComponentFileName ;
+    or
+      $semantics$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
+    or
+      $metamodel$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
+    end select ;
   while
     $,$ ;
   end repeat ;

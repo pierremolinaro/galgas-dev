@@ -17,7 +17,9 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract metamodel instructionMetamodel :
+abstract metamodel instructionMetamodel extends expressionMetamodel :
+
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
 
 #---------------------------------------------------------------------------*
 
@@ -39,6 +41,14 @@ entity @semanticInstructions {
 entity @localVariableDeclaration extends @semanticInstruction {
   @lstring mTypeName ;
   @lstring mVariableName ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @localVariableDeclarationWithInitialization extends @semanticInstruction {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+  @semanticExpression mSourceExpression ;
 }
 
 #---------------------------------------------------------------------------*

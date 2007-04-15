@@ -21,6 +21,7 @@
 compile "commonSemantics.gSemantics" ;
 
 #--- Instructions
+compile "expressionMetamodel.gMetamodel" ;
 compile "instructionMetamodel.gMetamodel" ;
 compile "semanticInstructionListModelBuilder.ggs" ;
 

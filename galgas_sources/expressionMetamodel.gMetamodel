@@ -1,0 +1,118 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  metamodel that defines expression                                        *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract metamodel expressionMetamodel :
+
+#---------------------------------------------------------------------------*
+
+abstract entity @semanticExpression {
+}
+
+#---------------------------------------------------------------------------*
+
+entity @outExpressions {
+  @semanticExpression [] mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @variableExpression extends @semanticExpression {
+  @lstring mVariableName ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @literalBooleanExpression extends @semanticExpression {
+  @bool mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @literalCharExpression extends @semanticExpression {
+  @lchar mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @literalStringExpression extends @semanticExpression {
+  @lstring mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @literalDoubleExpression extends @semanticExpression {
+  @ldouble mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @literalUIntExpression extends @semanticExpression {
+  @luint mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @literalUInt64Expression extends @semanticExpression {
+  @luint64 mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @literalSIntExpression extends @semanticExpression {
+  @lsint mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @literalSInt64Expression extends @semanticExpression {
+  @lsint64 mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @hereExpression extends @semanticExpression {
+  @location mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @constructorCallExpression extends @semanticExpression {
+  @lstring mTypeName ;
+  @lstring mConstructorName ;
+  @outExpressions mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @readerCallExpression extends @semanticExpression {
+  @semanticExpression mReceiver ;
+  @lstring mReaderName ;
+  @outExpressions mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @optionExpression extends @semanticExpression {
+  @lstring mOptionComponentName ;
+  @lstring mOptionEntryName ;
+}
+
+#---------------------------------------------------------------------------*
+
+end metamodel ;
