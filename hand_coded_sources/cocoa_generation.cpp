@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate cocoa file                                                      *
 //                                                                           *
-//  Copyright (C) 2004 Pierre Molinaro.                                      *
+//  Copyright (C) 2004, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -375,14 +375,14 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
 
 void 
 routine_generateCocoaComponent (C_Compiler & inLexique,
-                                const GGS_lstring & inGUIcomponentName,
-                                const GGS_lstring & inGUIkindName,
-                                const GGS_L_nibAndClassList & inNibAndClassList,
-                                const GGS_string & inBlockComment,
-                                const GGS_lstring & inLexiqueComponentName,
-                                const GGS_M_optionComponents & inOptionComponentsMap,
-                                const GGS_labelForPopUpList & inLabelForPopUpList,
-                                const GGS_uint & inTerminalSymbolCount
+                                const GGS_lstring inGUIcomponentName,
+                                const GGS_lstring inGUIkindName,
+                                const GGS_L_nibAndClassList inNibAndClassList,
+                                const GGS_string inBlockComment,
+                                const GGS_lstring inLexiqueComponentName,
+                                const GGS_M_optionComponents inOptionComponentsMap,
+                                const GGS_labelForPopUpList inLabelForPopUpList,
+                                const GGS_uint inTerminalSymbolCount
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (inGUIkindName.string () == "cocoa") {
     generate_mm_file_for_cocoa (inLexique,
