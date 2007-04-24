@@ -387,13 +387,13 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
 
 void
 routine_generatePRGM (C_Compiler & inLexique,
-                      const GGS_lstring & inProgramComponentName,
-                      const GGS_lstring & inVersionString,
-                      const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
-                      const GGS_luint & inMaxErrorCount,
-                      const GGS_luint & inMaxWarningCount,
-                      const GGS_M_optionComponents & inOptionsComponentsMap,
-                      const GGS_stringset & inInclusionsForImplementationFile
+                      const GGS_lstring inProgramComponentName,
+                      const GGS_lstring inVersionString,
+                      const GGS_ruleDescriptorForProgramList inRuleDescriptorForProgramList,
+                      const GGS_luint inMaxErrorCount,
+                      const GGS_luint inMaxWarningCount,
+                      const GGS_M_optionComponents inOptionsComponentsMap,
+                      const GGS_stringset inInclusionsForImplementationFile
                       COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.totalErrorCount () == 0) {
     generate_header_file_for_prgm (inLexique,
@@ -414,7 +414,7 @@ routine_generatePRGM (C_Compiler & inLexique,
 
 void
 routine_fixFileGenerationStartDirectory (C_Compiler & inLexique,
-                                         const GGS_lstring & inSourceFile
+                                         const GGS_lstring inSourceFile
                                          COMMA_LOCATION_ARGS) {
   inLexique.ioParametersPtr ()->mFileGenerationStartDir = inSourceFile.stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
   const bool ok = inLexique.ioParametersPtr ()->mFileGenerationStartDir.makeDirectoryIfDoesNotExists () ;

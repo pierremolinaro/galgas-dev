@@ -1450,15 +1450,15 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 
 void 
 routine_generate_scanner (C_Compiler & inLexique,
-                          const GGS_lstring & inLexiqueName,
-                          const GGS_typeLexicalAttributesMap & table_attributs,
-                          const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
-                          const GGS_typeTableTablesDeMotsReserves & table_tables_mots_reserves,
-                          const GGS_typeListeTestsEtInstructions & programme_principal,
-                          const GGS_typeTableMessagesErreurs & inLexicalErrorsMessageMap,
-                          const GGS_M_styles & inStylesMap,
-                          const GGS_stringset & inUsedErrorMessageSet,
-                          const GGS_tokensInListMap & inTokensInListMap
+                          const GGS_lstring inLexiqueName,
+                          const GGS_typeLexicalAttributesMap table_attributs,
+                          const GGS_typeTableDefinitionTerminaux table_des_terminaux,
+                          const GGS_typeTableTablesDeMotsReserves table_tables_mots_reserves,
+                          const GGS_typeListeTestsEtInstructions programme_principal,
+                          const GGS_typeTableMessagesErreurs inLexicalErrorsMessageMap,
+                          const GGS_M_styles inStylesMap,
+                          const GGS_stringset inUsedErrorMessageSet,
+                          const GGS_tokensInListMap inTokensInListMap
                           COMMA_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
   //--- Get version string

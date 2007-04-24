@@ -94,8 +94,8 @@ void
 routine_buildFileNameWithPath (C_Compiler &,
                                GGS_lstring & outFileNameWithPath,
                                GGS_lstring inPath,
-                               const GGS_lstring & inCppClassName,
-                               const GGS_lstring & inExtension
+                               const GGS_lstring inCppClassName,
+                               const GGS_lstring inExtension
                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String s ;
   if (inPath.length () > 0) {
@@ -669,7 +669,7 @@ generateFormalArgumentFromTypeName (const C_String & inTypeName,
     inFile << "GGS_" << inTypeName << " &" ;
     break ;
   case GGS_formalArgumentPassingMode::enum_argumentConstantIn :
-    inFile << "const GGS_" << inTypeName << " &" ;
+    inFile << "const GGS_" << inTypeName ;
     break ;
   case GGS_formalArgumentPassingMode::kNotBuilt :
     break ;
@@ -706,7 +706,7 @@ generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
   case GGS_formalArgumentPassingMode::enum_argumentConstantIn :
     inFile << "const " ;
     inTypePtr->generateCppClassName (inFile) ;
-    inFile << " &" ;
+    inFile << ' ' ;
     break ;
   case GGS_formalArgumentPassingMode::kNotBuilt :
     break ;

@@ -425,12 +425,12 @@ generate_treewalking_implementation (C_Compiler & inLexique,
 
 void
 routine_generate_treewalking (C_Compiler & inLexique,
-                              const GGS_lstring & inTreewalkingComponentName,
-                              const GGS_stringset & inFilesToImportInHeaderSet,
-                              const GGS_treewalkingRoutineToGenerateList & inTreewalkingRoutineToGenerateList,
-                              const GGS_routineDispatcherSortedList & inRoutineDispatcherSortedList,
-                              const GGS_typeListeTypesEtNomsArgMethode & inRootRoutineSignature,
-                              const GGS_lstring & inRootEntity
+                              const GGS_lstring inTreewalkingComponentName,
+                              const GGS_stringset inFilesToImportInHeaderSet,
+                              const GGS_treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList,
+                              const GGS_routineDispatcherSortedList inRoutineDispatcherSortedList,
+                              const GGS_typeListeTypesEtNomsArgMethode inRootRoutineSignature,
+                              const GGS_lstring inRootEntity
                               COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount () == 0) {
     generate_treewalking_header (inLexique,
