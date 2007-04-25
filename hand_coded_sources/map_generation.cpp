@@ -643,6 +643,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "  AC_galgas_map_element * removedElement = NULL ;\n"
                  "  sint32 elementID = - 1 ;\n"
                  "  if (_isBuilt () && inKey._isBuilt ()) {\n"
+                 "    insulateMap () ;\n"
                  "    bool unused ;\n"
                  "    _internalRemove (mSharedMapRoot->rootForKey (inKey), inKey, removedElement, unused) ;\n"
                  "    if (removedElement == NULL) {\n"
