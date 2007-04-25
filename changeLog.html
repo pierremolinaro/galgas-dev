@@ -10,8 +10,11 @@
    <p><b>GALGAS ChangeLog</b></p>
    <p>1.6.7</p>
    <ul>
+    <li><font color="#FF0000"><b>WARNING: INCOMPATIBILITY ISSUES;</b></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.7">1.6.7 release notes</a>];</li>
     <li>Bug fix: in previous releases, the <tt><b>.=</b></tt> operator did not detect an uninitialized target variable [<a href="http://galgas.rts-software.org/trac/ticket/29">29</a>];</li>
     <li>Bug fix: in previous releases, the <tt><b>.</b></tt> operator did generate erroneous C++ code [<a href="http://galgas.rts-software.org/trac/ticket/30">30</a>];</li>
+    <li>Bug fix: in previous releases, a map <tt><b>remove</b></tt> method did not copy map before removing an entry;</li>
+    <li>Bug fix: in previous releases, the constant input (<tt><b>??</b></tt>) formal parameter passing mode did not perform a copy of the correspondant actual argument;</li>
    </ul>
    <p>1.6.6</p>
    <ul>
