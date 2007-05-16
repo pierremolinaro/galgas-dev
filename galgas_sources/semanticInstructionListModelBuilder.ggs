@@ -47,5 +47,19 @@ rule <semantic_instruction> -> @localVariableDeclaration :
 end rule ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#    A S S I G N M E N T    I N S T R U C T I O N                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#rule <semantic_instruction> -> @assignmentInstruction :
+#  $identifier$ ? mTargetVariableName ;
+#  $:=$ ;
+#  <expression> -> mSourceExpression ;
+#  $;$ ;
+#end rule ;
+
+
+#---------------------------------------------------------------------------*
 
 end syntax ;

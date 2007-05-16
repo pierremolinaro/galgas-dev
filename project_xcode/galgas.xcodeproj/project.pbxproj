@@ -1832,6 +1832,38 @@
 		CFEC15FF09CA026700204242 /* metamodel_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEC15F509CA026700204242 /* metamodel_generation.cpp */; };
 		CFEC160109CA026700204242 /* metamodel_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEC15F509CA026700204242 /* metamodel_generation.cpp */; };
 		CFEDB1A909E434C700701490 /* InfoPPC.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFEDB1A809E434C700701490 /* InfoPPC.plist */; };
+		CFEE57860BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
+		CFEE57870BFB5A4200B99D47 /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
+		CFEE57880BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFEE57890BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */; };
+		CFEE578A0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
+		CFEE578B0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
+		CFEE578C0BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFEE578D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */; };
+		CFEE578E0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
+		CFEE578F0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
+		CFEE57900BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFEE57910BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */; };
+		CFEE57920BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
+		CFEE57930BFB5A4200B99D47 /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
+		CFEE57940BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFEE57950BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */; };
+		CFEE57960BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
+		CFEE57970BFB5A4200B99D47 /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
+		CFEE57980BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFEE57990BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */; };
+		CFEE579A0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
+		CFEE579B0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
+		CFEE579C0BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFEE579D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */; };
+		CFEE579E0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
+		CFEE579F0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
+		CFEE57A00BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFEE57A10BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */; };
+		CFEE57A20BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
+		CFEE57A30BFB5A4200B99D47 /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
+		CFEE57A40BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFEE57A50BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */; };
 		CFEEBE6705C056D0009FE498 /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFEEBE6805C056D0009FE498 /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFEEBE6B05C056F9009FE498 /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
@@ -2629,6 +2661,10 @@
 		CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_methods.cpp; sourceTree = "<group>"; };
 		CFEC15F509CA026700204242 /* metamodel_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_generation.cpp; sourceTree = "<group>"; };
 		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
+		CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = expressionMetamodel.cpp; sourceTree = "<group>"; };
+		CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = expressionMetamodel.h; sourceTree = "<group>"; };
+		CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = expressionModelBuilder.cpp; sourceTree = "<group>"; };
+		CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = expressionModelBuilder.h; sourceTree = "<group>"; };
 		CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_parser.cpp; sourceTree = "<group>"; };
 		CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_generation.cpp; sourceTree = "<group>"; };
 		CFEECA110B300C1C00A02FF1 /* scannerDecoderGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scannerDecoderGeneration.h; sourceTree = "<group>"; };
@@ -3248,6 +3284,17 @@
 			name = "Metamodel Component";
 			sourceTree = "<group>";
 		};
+		CFEE57810BFB59E900B99D47 /* Expressions */ = {
+			isa = PBXGroup;
+			children = (
+				CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */,
+				CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */,
+				CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */,
+				CFEE57850BFB5A4200B99D47 /* expressionModelBuilder.h */,
+			);
+			name = Expressions;
+			sourceTree = "<group>";
+		};
 		CFEEBE6505C0569F009FE498 /* Cocoa Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -3320,6 +3367,7 @@
 		CFF53732057A4E5000854C83 /* GALGAS_OUTPUT */ = {
 			isa = PBXGroup;
 			children = (
+				CFEE57810BFB59E900B99D47 /* Expressions */,
 				CFD2149A0913BDFA0011F11E /* Include Files */,
 				CFF9E5330BC3D87A005A1AEC /* Instructions */,
 				CFDB3A700B8866BF00DDA180 /* Tree walking */,
@@ -3874,6 +3922,8 @@
 				CFF9E4FC0BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E5370BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E5580BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
+				CFEE57870BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
+				CFEE57890BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3992,6 +4042,8 @@
 				CFF9E5080BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E5430BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E55E0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
+				CFEE579F0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
+				CFEE57A10BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4110,6 +4162,8 @@
 				CFF9E50A0BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E5450BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E55F0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
+				CFEE57A30BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
+				CFEE57A50BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4235,6 +4289,8 @@
 				CFF9E4FE0BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E5390BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E5590BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
+				CFEE578B0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
+				CFEE578D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4353,6 +4409,8 @@
 				CFF9E5000BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E53B0BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E55A0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
+				CFEE578F0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
+				CFEE57910BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4471,6 +4529,8 @@
 				CFF9E5020BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E53D0BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E55B0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
+				CFEE57930BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
+				CFEE57950BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4589,6 +4649,8 @@
 				CFF9E5040BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E53F0BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E55C0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
+				CFEE57970BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
+				CFEE57990BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4707,6 +4769,8 @@
 				CFF9E5060BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E5410BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E55D0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
+				CFEE579B0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
+				CFEE579D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5183,6 +5247,8 @@
 				CFF9E4FB0BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E5360BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E5480BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
+				CFEE57860BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
+				CFEE57880BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5323,6 +5389,8 @@
 				CFF9E5070BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E5420BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E54E0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
+				CFEE579E0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
+				CFEE57A00BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5463,6 +5531,8 @@
 				CFF9E5090BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E5440BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E54F0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
+				CFEE57A20BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
+				CFEE57A40BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5642,6 +5712,8 @@
 				CFF9E4FD0BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E5380BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E5490BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
+				CFEE578A0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
+				CFEE578C0BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5782,6 +5854,8 @@
 				CFF9E4FF0BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E53A0BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E54A0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
+				CFEE578E0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
+				CFEE57900BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5922,6 +5996,8 @@
 				CFF9E5010BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E53C0BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E54B0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
+				CFEE57920BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
+				CFEE57940BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6062,6 +6138,8 @@
 				CFF9E5030BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E53E0BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E54C0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
+				CFEE57960BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
+				CFEE57980BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6202,6 +6280,8 @@
 				CFF9E5050BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E5400BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E54D0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
+				CFEE579A0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
+				CFEE579C0BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

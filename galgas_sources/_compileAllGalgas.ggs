@@ -20,8 +20,11 @@
 #--- Common semantics files
 compile "commonSemantics.gSemantics" ;
 
-#--- Instructions
+#--- Expression
 compile "expressionMetamodel.gMetamodel" ;
+compile "expressionModelBuilder.ggs" ;
+
+#--- Instructions
 compile "instructionMetamodel.gMetamodel" ;
 compile "semanticInstructionListModelBuilder.ggs" ;
 

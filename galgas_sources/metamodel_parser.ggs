@@ -279,7 +279,7 @@ rule <parse_metamodel>
     foreach kEntityPropertiesMap (@lstring kAttributeName
                                   @AC_galgasType kPropertyType) :
       extract kPropertyType :
-      when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName) ->
+      when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName 2*) ->
         [allEntityMap searchKey !kReferenceEntityName ?8*] ;
       when @typeGalgas_multipleReferenceEntity (@lstring kReferenceEntityName 2*) ->
         [allEntityMap searchKey !kReferenceEntityName ?8*] ;
@@ -407,6 +407,8 @@ rule <entity_declaration>
       if [inMetamodelClassSet hasKey ![propertyOrEntityTypeName string]] then
         propertyType := [@typeGalgas_singleReferenceEntity new
            !propertyOrEntityTypeName
+           ![@typeListeAttributsSemantiques emptyList]
+           ![@stringset emptySet]
         ] ;
         [!?currentEntityPropertyMap insertKey !attributeName !propertyType] ; 
         [!?allMetamodelPropertyMap insertKey !attributeName !propertyType] ;

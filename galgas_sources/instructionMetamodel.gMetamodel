@@ -52,5 +52,16 @@ entity @localVariableDeclarationWithInitialization extends @semanticInstruction 
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  A S S I G N M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @assignmentInstruction extends @semanticInstruction {
+  @lstring mTargetVariableName ;
+  @semanticExpression mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
 
 end metamodel ;

@@ -2658,11 +2658,26 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
 
 class @typeGalgas_singleReferenceEntity extends @AC_galgasType {
   @lstring mEntityTypeName ;
+  @typeListeAttributsSemantiques mConstructorTypesList ;
+  @stringset mSuperEntitySet ;
 
 #--- Get type name
   override
   method getTypeName !@string outTypeName :
     outTypeName := "$$" ;
+  end method ;
+
+#--- By default, class does not accept constructor call
+  override
+  method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "new" then
+      outAccessorTypesList := mConstructorTypesList ;
+    else
+      error inClassMethodName : "Only the 'new' constructor is defined" -> outAccessorTypesList ;
+    end if ;
   end method ;
 
 #--- Error message
@@ -2762,10 +2777,26 @@ routine checkAssignmentTypesCompatibility
   when @typeGalgas_lstring ()    :: @typeGalgas_lstring () :
   when @typeGalgas_location ()   :: @typeGalgas_location () :
 
-  when @typeGalgas_singleReferenceEntity (@lstring attNomType1) :: @typeGalgas_singleReferenceEntity (@lstring attNomType2) :
-    if [attNomType1 string] != [attNomType2 string] then
+  when @typeGalgasUndefinedClassType (@lstring kNomType1)
+    :: @typeGalgasClassType (@lstring kNomType2 2* @typeSuperClassesMap kAncestorClassesMap ...) :
+    @bool accept := [kNomType1 string] == [kNomType2 string] ;
+    if (not accept) & inAcceptPolymorphism then
+      accept := [kAncestorClassesMap hasKey ![kNomType1 string]] ;
+    end if ;
+    if not accept then
+      error inErrorLocation : "I was expecting the class type '@" . [kNomType1 string] .
+                              "', I have got the class type '@" . [kNomType2 string] . "\"" ;
+    end if ;
+
+  when @typeGalgas_singleReferenceEntity (@lstring attNomType1 2*)
+    :: @typeGalgas_singleReferenceEntity (@lstring attNomType2 * @stringset kSuperEntitySet) :
+    @bool accept := [attNomType1 string] == [attNomType2 string] ;
+    if (not accept) & inAcceptPolymorphism then
+      accept := [kSuperEntitySet hasKey ![attNomType1 string]] ;
+    end if ;
+    if not accept then
       error inErrorLocation : "I was expecting the single reference type '@" . [attNomType1 string] .
-                                "', I have got the single reference type '@" . [attNomType2 string] . "\"" ;
+                              "', I have got the single reference type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedMapindexType (@lstring attNomType1 ...) :: @typeGalgasUndefinedMapindexType (@lstring attNomType2 ...) :
@@ -2790,17 +2821,6 @@ routine checkAssignmentTypesCompatibility
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting the map type '@" . [attNomType1 string] .
                               "', I have got the map type '@" . [attNomType2 string] . "\"" ;
-    end if ;
-
-  when @typeGalgasUndefinedClassType (@lstring kNomType1)
-    :: @typeGalgasClassType (@lstring kNomType2 * * @typeSuperClassesMap kAncestorClassesMap ...) :
-    @bool accept := [kNomType1 string] == [kNomType2 string] ;
-    if (not accept) & inAcceptPolymorphism then
-      accept := [kAncestorClassesMap hasKey ![kNomType1 string]] ;
-    end if ;
-    if not accept then
-      error inErrorLocation : "I was expecting the class type '@" . [kNomType1 string] .
-                              "', I have got the class type '@" . [kNomType2 string] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedClassType (@lstring attNomType1) :: @typeGalgasUndefinedClassType (@lstring attNomType2) :

@@ -112,6 +112,13 @@ entity @optionExpression extends @semanticExpression {
   @lstring mOptionComponentName ;
   @lstring mOptionEntryName ;
 }
+#---------------------------------------------------------------------------*
+
+entity @concatExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
 
 #---------------------------------------------------------------------------*
 
