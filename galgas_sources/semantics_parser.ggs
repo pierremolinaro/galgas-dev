@@ -951,11 +951,12 @@ rule <import_headers_semantics_and_grammars>
           ] ;
           @AC_galgasType t := [@typeGalgas_singleReferenceEntity new
             !kMetamodelClassName
+            !kListeAttributsSemantiquesCourants
+            ![kSuperEntityMap allKeys]
           ] ;
-          @AC_semanticsEntity e := [@typeEntiteType new !t] ;
           [!?ioComponentSemanticsEntitiesMap insertKey
             !kMetamodelClassName
-            !e
+            ![@typeEntiteType new !t]
           ] ;
         end foreach ;
         outInclusionsForHeaderFile += ![metamodelComponentName string] ;
@@ -2576,7 +2577,7 @@ rule <semantic_instruction>
   [inCurrentTreewalkingRoutinePropertyMap searchKey !calledPropertyName ?propertyType] ;
   @lstring entityName ;
   extract propertyType :
-  when @typeGalgas_singleReferenceEntity (@lstring kEntityName) ->
+  when @typeGalgas_singleReferenceEntity (@lstring kEntityName 2*) ->
     entityName := kEntityName ;
   when @typeGalgas_multipleReferenceEntity (@lstring kEntityName 2*) ->
     entityName := kEntityName ;
@@ -3629,7 +3630,7 @@ rule <semantic_instruction>
     @AC_galgasType type ;
     [!?ioVariablesMap searchForWriteAccess !metamodelClassVariableName ?type ?*] ;
     @lstring variableEntityName ;
-    extract type->@typeGalgas_singleReferenceEntity (?variableEntityName) error metamodelClassVariableName : messageGalgasType ;
+    extract type->@typeGalgas_singleReferenceEntity (?variableEntityName ?2*) error metamodelClassVariableName : messageGalgasType ;
     if [returnedEntity string] != [variableEntityName string] then
       error metamodelClassVariableName: "this variable has the '@" . [variableEntityName string]
         . "', but a variable of '@" . [returnedEntity string] . "' type is expected" ;
@@ -3691,7 +3692,7 @@ rule <semantic_instruction>
   ;
 #--- Check variable type
   @lstring variableEntity ;
-  extract modelVariableType ->@typeGalgas_singleReferenceEntity (?variableEntity) error modelVariableName : messageGalgasType ;
+  extract modelVariableType ->@typeGalgas_singleReferenceEntity (?variableEntity ?2*) error modelVariableName : messageGalgasType ;
   if [variableEntity string] != rootEntityName then
     error modelVariableName: "the '" . [modelVariableName string]
     . "' variable is an instance of '@" . [variableEntity string]

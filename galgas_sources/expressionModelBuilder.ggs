@@ -1,0 +1,1041 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'expression' component parser, as model builder                          *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax expressionModelBuilder :
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+nonterminal <expression> -> @semanticExpression ;
+
+nonterminal <concatenation_term> -> @semanticExpression ;
+
+nonterminal <relation_term> -> @semanticExpression ;
+
+nonterminal <relation_factor> -> @semanticExpression ;
+
+nonterminal <simple_expression> -> @semanticExpression ;
+
+nonterminal <term> -> @semanticExpression ;
+
+nonterminal <factor> -> @semanticExpression ;
+
+nonterminal <read_access> -> @semanticExpression ;
+
+nonterminal <output_expression_list>  -> @semanticExpression ;
+
+nonterminal <parse_effective_input_parameters_list> -> @semanticExpression ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   E X P R E S S I O N                                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <expression> -> @semanticExpression expression :
+  <concatenation_term> -> expression ;
+  repeat
+  while
+    @location operatorLocation := here ;
+    $.$ ;
+    @semanticExpression leftOperand := expression ;
+    @semanticExpression rightOperand ;
+    <concatenation_term> -> rightOperand ;
+    expression := [@concatExpression new !operatorLocation !leftOperand !rightOperand] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   E X P R E S S I O N                                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#rule <concatenation_term>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  <relation_term>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?outExpression
+#    ?outResultType
+#  ;
+#  repeat
+#  while
+#    @location operatorLocation := here ;
+#    $|$ ;
+#    @typeExpression leftOperand := outExpression ;
+#    @typeExpression rightOperand ;
+#    @AC_galgasType firstOperandType := outResultType ;
+#    @AC_galgasType secondOperandType ;
+#    <relation_term>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightOperand
+#      ?secondOperandType
+#    ;
+#    outExpression := [@typeOrOperation new !operatorLocation !leftOperand !rightOperand] ;
+#    matchOrOperator
+#      !firstOperandType
+#      !secondOperandType
+#      ?outResultType
+#     ;
+#  while
+#    @location operatorLocation := here ;
+#    $^$ ;
+#    @typeExpression leftOperand := outExpression ;
+#    @typeExpression rightOperand ;
+#    @AC_galgasType firstOperandType := outResultType ;
+#    @AC_galgasType secondOperandType ;
+#    <relation_term>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightOperand
+#      ?secondOperandType
+#    ;
+#    outExpression := [@typeXorOperation new !operatorLocation !leftOperand !rightOperand] ;
+#    matchXorOperator
+#      !firstOperandType
+#      !secondOperandType
+#      ?outResultType
+#     ;
+#  end repeat ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   R E L A T I O N    T E R M                                                 *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <relation_term>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  <relation_factor>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?outExpression
+#    ?outResultType
+#  ;
+#  repeat
+#  while
+#    @location operatorLocation := here ;
+#    $&$ ;
+#    @typeExpression leftOperand := outExpression ;
+#    @typeExpression rightOperand ;
+#    @AC_galgasType firstOperandType := outResultType ;
+#    @AC_galgasType secondOperandType ;
+#    <relation_factor>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightOperand
+#      ?secondOperandType
+#    ;
+#    outExpression := [@typeAndOperation new !operatorLocation !leftOperand !rightOperand] ;
+#    matchAndOperator
+#      !firstOperandType
+#      !secondOperandType
+#      ?outResultType
+#    ;
+#  end repeat ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   R E L A T I O N    F A C T O R                                             *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <relation_factor>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  <simple_expression>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?outExpression
+#    ?outResultType
+#  ;
+#  select
+#  or
+#    @location operatorLocation := here ;
+#    $==$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <simple_expression>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType ;
+#    comparison_types_check !leftType !rightType ;
+#    outExpression := [@typeEqualTest new !operatorLocation !leftExpression !rightExpression] ;
+#    outResultType := [@typeGalgas_bool new] ;
+#  or
+#    @location operatorLocation := here ;
+#    $!=$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <simple_expression>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    comparison_types_check !leftType !rightType ;
+#    outExpression := [@typeNonEqualTest new !operatorLocation !leftExpression !rightExpression] ;
+#    outResultType := [@typeGalgas_bool new] ;
+#  or
+#    @location operatorLocation := here ;
+#    $<=$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <simple_expression>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    magnitude_comparison_types_check !leftType !rightType ;
+#    outExpression := [@typeInfOrEqualTest new !operatorLocation !leftExpression !rightExpression] ;
+#    outResultType := [@typeGalgas_bool new] ;
+#  or
+#    @location operatorLocation := here ;
+#    $>=$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <simple_expression>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    magnitude_comparison_types_check !leftType !rightType ;
+#    outExpression := [@typeSupOrEqualTest new !operatorLocation !leftExpression !rightExpression] ;
+#    outResultType := [@typeGalgas_bool new] ;
+#  or
+#    @location operatorLocation := here ;
+#    $>$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <simple_expression>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    magnitude_comparison_types_check !leftType !rightType ;
+#    outExpression := [@typeStrictSupTest new !operatorLocation !leftExpression !rightExpression] ;
+#    outResultType := [@typeGalgas_bool new] ;
+#  or
+#    @location operatorLocation := here ;
+#    $<$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <simple_expression>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    magnitude_comparison_types_check !leftType !rightType ;
+#    outExpression := [@typeStrictInfTest new !operatorLocation !leftExpression !rightExpression] ;
+#    outResultType := [@typeGalgas_bool new] ;
+#  end select ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   S I M P L E    E X P R E S S I O N                                         *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <simple_expression>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  <term>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?outExpression
+#    ?outResultType
+#  ;
+#  repeat
+#  while 
+#    @location operatorLocation := here ;
+#    $<<$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <term>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    left_shift_types_check !leftType !rightType ?outResultType ;
+#    outExpression := [@typeLeftShiftOperation new !operatorLocation !leftExpression !rightExpression] ;
+#  while 
+#    @location operatorLocation := here ;
+#    $>>$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <term>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    right_shift_types_check !leftType !rightType ?outResultType ;
+#    outExpression := [@typeRightShiftOperation new !operatorLocation !leftExpression !rightExpression] ;
+#  while 
+#    @location operatorLocation := here ;
+#    $+$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <term>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    addition_types_check !leftType !rightType ?outResultType ;
+#    outExpression := [@typeAddOperation new !operatorLocation !leftExpression !rightExpression] ;
+#  while 
+#    @location operatorLocation := here ;
+#    $-$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <term>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    substraction_types_check !leftType !rightType ?outResultType ;
+#    outExpression := [@typeSubOperation new !operatorLocation !leftExpression !rightExpression] ;
+#  end repeat ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   T E R M                                                                    *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <term>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  <factor>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?outExpression
+#    ?outResultType
+#  ;
+#  repeat
+#  while 
+#    @location operatorLocation := here ;
+#    $*$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <factor>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    multiply_types_check !leftType !rightType ?outResultType ;
+#    outExpression := [@typeMultiplyOperation new !operatorLocation !leftExpression !rightExpression] ;
+#  while 
+#    @location operatorLocation := here ;
+#    $/$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <factor>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    divide_types_check !leftType !rightType ?outResultType ;
+#    outExpression := [@typeDivideOperation new !operatorLocation !leftExpression !rightExpression] ;
+#  while 
+#    @location operatorLocation := here ;
+#    $mod$ ;
+#    @typeExpression leftExpression := outExpression ;
+#    @AC_galgasType leftType := outResultType ;
+#    @typeExpression rightExpression ;
+#    @AC_galgasType rightType ;
+#    <factor>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?rightExpression
+#      ?rightType
+#    ;
+#    modulo_types_check !leftType !rightType ?outResultType ;
+#    outExpression := [@typeModuloOperation new !operatorLocation !leftExpression !rightExpression] ;
+#  end repeat ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    - factor                                               *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @location operatorLocation := here ;
+#  $-$ ;
+#  @typeExpression expression ;
+#  @AC_galgasType type ;
+#  <factor>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?expression
+#    ?type
+#  ;
+#  unary_minus_type_check !type ?outResultType ;
+#  outExpression := [@typeUnaryMinusOperation new !operatorLocation !expression] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    <var>                                                  *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @typeCplusPlusName nomCppEntite1 ;
+#  <read_access> ?* ?nomCppEntite1 ?outResultType !?ioVariablesMap ;
+#  outExpression := [@typeVarInExpression new !nomCppEntite1] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    ( EXPRESSION )                                         *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  $($ ;
+#  <expression>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?outExpression
+#    ?outResultType
+#  ;
+#  $)$ ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    not FACTOR                                             *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @location operatorLocation := here ;
+#  $not$ ;
+#  @typeExpression ifCondition ;
+#  @AC_galgasType operandType ;
+#  <factor>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?ifCondition
+#    ?operandType
+#  ;
+#  outExpression := [@typeTestComplement new !operatorLocation !ifCondition] ;
+#  checkNotOperator !operandType ?outResultType ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    ~ FACTOR                                               *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @location operatorLocation := here ;
+#  $~$ ;
+#  @typeExpression ifCondition ;
+#  @AC_galgasType operandType ;
+#  <factor>
+#    !ioEntitiesMap
+#    !inOptionsComponentsMapForUse
+#    !?ioVariablesMap
+#    ?ifCondition
+#    ?operandType
+#  ;
+#  outExpression := [@typeLogicalNegate new !operatorLocation !ifCondition] ;
+#  checkLogicalNegateOperator !operandType ?outResultType ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    true                                                   *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  $true$ ;
+#  outExpression := [@typeTrueBool new] ;
+#  outResultType := [@typeGalgas_bool new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    false                                                  *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  $false$ ;
+#  outExpression := [@typeFalseBool new] ;
+#  outResultType := [@typeGalgas_bool new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    a literal string "..."                                 *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @stringlist literalStringList [emptyList] ;
+#  repeat
+#    @lstring literalString ;
+#    $literal_string$ ?literalString ;
+#    literalStringList += ![literalString string] ;
+#  while
+#  end repeat ;
+#  outExpression := [@typeLiteralStringExpression new !literalStringList] ;
+#  outResultType := [@typeGalgas_string new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    a 32-bit unsigned literal integer value                *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @luint literalInt ;
+#  $unsigned_literal_integer$ ?literalInt ;
+#  outExpression := [@typeLiteralUIntExpression new !literalInt] ;
+#  outResultType := [@typeGalgas_uint new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    a 32-bit signed literal integer value                  *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @lsint literalInt ;
+#  $signed_literal_integer$ ?literalInt ;
+#  outExpression := [@typeLiteralSIntExpression new !literalInt] ;
+#  outResultType := [@typeGalgas_sint new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    a 64-bit unsigned literal integer value                *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @luint64 literalInt ;
+#  $unsigned_literal_integer64$ ?literalInt ;
+#  outExpression := [@typeLiteralUInt64Expression new !literalInt] ;
+#  outResultType := [@typeGalgas_uint64 new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    a 64-bit signed literal integer value                  *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @lsint64 literalInt ;
+#  $signed_literal_integer64$ ?literalInt ;
+#  outExpression := [@typeLiteralSInt64Expression new !literalInt] ;
+#  outResultType := [@typeGalgas_sint64 new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    a literal character value                              *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @lchar literalChar ;
+#  $literal_char$ ?literalChar ;
+#  outExpression := [@typeLiteralCharExpression new !literalChar] ;
+#  outResultType := [@typeGalgas_char new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    a double value                                         *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  @ldouble literalDouble ;
+#  $literal_double$ ? literalDouble ?* ;
+#  outExpression := [@typeLiteralDoubleExpression new !literalDouble] ;
+#  outResultType := [@typeGalgas_double new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   F A C T O R    :    here                                                   *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+#  ??@M_optionComponents unused inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap unused ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  $here$ ;
+#  outExpression := [@typeHereExpression new] ;
+#  outResultType := [@typeGalgas_location new] ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##                         F A C T O R                                          *
+##   description         :   [expression description]                           *
+##   reader call         :   [expression reader !... ]                          *
+##   constructor call    :   [@class method !... ]                              *
+##   option value        :   [option option_component_name.option_name]         *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <factor>
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#  !@typeExpression outExpression
+#  !@AC_galgasType outResultType
+#:
+#  $[$ ;
+#  select
+#  #--- Get source identity characteristics
+#    @typeExpression expressionValue ;
+#    @AC_galgasType expressionType ;
+#    <expression>
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?expressionValue
+#      ?expressionType
+#    ;
+#    select
+#      $description$ ;
+#      outExpression := [@typeDescriptionInExpression new !expressionValue !here] ;
+#      outResultType := [@typeGalgas_string new] ;
+#    or
+#    #--- Get reader name
+#      @lstring methodName ;
+#      $identifier$ ? methodName ;
+#    #--- Search reader for getting formal parameters list
+#      @typeListeAttributsSemantiques accessorsTypeList ;
+#      @string conversionMethod ;
+#      handleReaderCall !expressionType !methodName ?accessorsTypeList ?outResultType ?conversionMethod ;
+#    #--- Actual parameters
+#      @typeExpressionList expressionList ;
+#      <output_expression_list>
+#        ?expressionList 
+#        !accessorsTypeList
+#        !ioEntitiesMap
+#        !inOptionsComponentsMapForUse
+#        !?ioVariablesMap
+#      ;
+#      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod] ;
+#    end select ;
+#  or
+#  #--- Class name
+#    @lstring className ;
+#    $type_name$ ?className ;
+#  #--- Class method name
+#    @lstring mClassMethodName ;
+#    $identifier$ ? mClassMethodName ;
+#    @AC_semanticsEntity e ;
+#    [ioEntitiesMap searchKey !className ?e] ;
+#    extract e->@typeEntiteType (?outResultType) error className : messageTypeEntite ;
+#    @typeListeAttributsSemantiques listeAttributsSemantiques ;
+#    [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques] ;
+#  #--- Actual arguments
+#    @typeExpressionList expressionList ;
+#    <output_expression_list>
+#      ?expressionList
+#      !listeAttributsSemantiques
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#    ;
+#    outExpression := [@typeConstructorExpression new
+#      ![className string]
+#      ![mClassMethodName string]
+#      !expressionList
+#    ] ;
+#  or
+#    $option$ ;
+#    select
+#      $.$ ;
+#      @lstring optionName ;
+#      $identifier$ ?optionName ;
+#      if ([optionName string] != "verbose_output") then
+#        error optionName: "this option name does not correspond to a builtin option" ;
+#      end if ;
+#       outExpression := [@typeBoolOption new !"generic_galgas_cli_options" !optionName] ;
+#       outResultType := [@typeGalgas_bool new] ;
+#    or
+#      @lstring optionComponentName ;
+#      $identifier$ ? optionComponentName ;
+#      @M_cli_options boolOptionsMap ;
+#      @M_cli_options uintOptionsMap ;
+#      @M_cli_options stringOptionsMap ;
+#      [inOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+#      $.$ ;
+#      @lstring optionName ;
+#      $identifier$ ?optionName ;
+#      if [boolOptionsMap hasKey ![optionName string]] then
+#        outExpression := [@typeBoolOption new ![optionComponentName string] !optionName] ;
+#        outResultType := [@typeGalgas_bool new] ;
+#      elsif [uintOptionsMap hasKey ![optionName string]] then
+#        outExpression := [@typeUIntOption new ![optionComponentName string] !optionName] ;
+#        outResultType := [@typeGalgas_uint new] ;
+#      elsif [stringOptionsMap hasKey ![optionName string]] then
+#        outExpression := [@typeStringOption new ![optionComponentName string] !optionName] ;
+#        outResultType := [@typeGalgas_string new] ;
+#      else
+#        error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
+#          -> outExpression, outResultType ;
+#      end if ;
+#    end select ;
+#  end select ;
+#  $]$ ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   R E A D    A C C E S S    T O    A N    E N T I T Y                        *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <read_access>
+#  !@lstring nomVariable
+#  !@typeCplusPlusName nomCppEntite
+#  !@AC_galgasType typeEntite
+#  ?!@typeVariablesMap ioVariablesMap
+#:
+#  $identifier$ ? nomVariable ;
+#  [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ; 
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   R E A D    A C C E S S    T O    S E L F                                   *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <read_access>
+#  !@lstring nomVariable
+#  !@typeCplusPlusName nomCppEntite
+#  !@AC_galgasType typeEntite
+#  ?!@typeVariablesMap ioVariablesMap
+#:
+#  $self$ ;
+#  if [ioVariablesMap hasKey !"self"] then
+#    nomVariable := [@lstring new !"self" !here] ;
+#    [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ;
+#  else
+#    error here: "'self' is not defined in this context"
+#     -> nomVariable, nomCppEntite, typeEntite ;
+#  end if ;
+#end rule ;
+#
+##------------------------------------------------------------------------------*
+##                                                                              *
+##   O U T P U T    E X P R E S S I O N    L I S T                              *
+##                                                                              *
+##------------------------------------------------------------------------------*
+#
+#rule <output_expression_list>
+#  !@typeExpressionList outExpressionList 
+#  ??@typeListeAttributsSemantiques inFormalAttributesList
+#  ??@M_semanticsEntitiesForUse ioEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@typeVariablesMap ioVariablesMap
+#:
+#  @typeTypesList effectiveTypesList [emptyList] ;
+#  outExpressionList := [@typeExpressionList emptyList] ;
+#  repeat
+#  while
+#    $!$ ;
+#    @typeExpression expression ;
+#    @AC_galgasType resultType ;
+#    <expression> 
+#      !ioEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?ioVariablesMap
+#      ?expression
+#      ?resultType
+#    ;
+#    @location errorLocation := here ;
+#    effectiveTypesList += !resultType !errorLocation ;
+#    outExpressionList += !expression ;
+#  end repeat ;
+#  @location endOfListLocation := here ;
+##--- Check types compatibility
+#  if [inFormalAttributesList length] < [effectiveTypesList length] then 
+#      error endOfListLocation : "too much expressions" ;
+#  elsif [inFormalAttributesList length] > [effectiveTypesList length] then
+#    error endOfListLocation : "one or more expressions missing" ;
+#  else
+#    foreach inFormalAttributesList (@AC_galgasType kFormalType @lstring kFormalParameterName),
+#            effectiveTypesList (@AC_galgasType kEffectiveType @location kErrorLocation) :
+#      checkAssignmentTypesCompatibility !kFormalType !kEffectiveType !kErrorLocation !true ;
+#    end foreach ;
+#  end if ;
+#end rule ;
+#
+##---------------------------------------------------------------------------*
+##                                                                           *
+##     I N P U T   P A R A M E T E R S   L IS T                              *
+##                                                                           *
+##---------------------------------------------------------------------------*
+#
+#rule <parse_effective_input_parameters_list>
+#  ?!@typeVariablesMap ioVariablesMap
+#  ?@typeListeAttributsSemantiques inFormalArgumentsList
+#  ?@location inVarLocation
+#  ?@localConstantBuildStyleEnum inLocalConstantStyle
+#  !@bool outNoUsedParameter
+#:
+#  outNoUsedParameter := true ;
+#  $($ ;
+#  @L_nameWithType argumentsList [emptyList] ;
+#  repeat
+#  while
+#     select
+#      outNoUsedParameter := false ;
+#      @lstring typeName ;
+#      $type_name$ ? typeName ;
+#      @lstring constantName ;
+#      $identifier$ ? constantName ;
+#      argumentsList += !typeName !constantName ;
+#    or
+#      $*$ ;
+#      argumentsList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
+#    or
+#      @luint jokerCountWithLocation ;
+#      $unsigned_literal_integer$ ? jokerCountWithLocation ;
+#      $*$ ;
+#      @uint jokerCount := [jokerCountWithLocation uint] ;
+#      loop jokerCount + 1 :
+#      while jokerCount > 0 do
+#        argumentsList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
+#        jokerCount -- ;
+#      end loop ;
+#    end select ;
+#  end repeat ;
+##--- Ellipsis ?
+#  @bool ellipsisFound ;
+#  select
+#    ellipsisFound := false ;
+#  or
+#    $...$ ;
+#     ellipsisFound := true ;
+#  end select ;
+#  $)$ ;
+#  buildMapWithLocalConstants
+#    !argumentsList
+#    !inFormalArgumentsList
+#    !?ioVariablesMap
+#    !inVarLocation
+#    !inLocalConstantStyle
+#    !ellipsisFound
+#  ;
+#end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

@@ -401,7 +401,7 @@ rule <treewalking_routine>
 #--- Add metamodel attributes as local constants
   foreach allMetamodelPropertyMap (@lstring kKey @AC_galgasType kType) :
     extract kType :
-    when @typeGalgas_singleReferenceEntity (*) ->
+    when @typeGalgas_singleReferenceEntity (3*) ->
     when @typeGalgas_multipleReferenceEntity (3*) ->
     else
       @typeCplusPlusName cppName := [@typeCurrentObjectName new ![kKey location] ![kKey string]] ;

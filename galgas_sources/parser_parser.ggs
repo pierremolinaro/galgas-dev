@@ -782,7 +782,7 @@ rule <syntax_declaration>
         [ioEntitiesMap searchKey !returnedEntity ?e] ;
         @AC_galgasType type ;
         extract e->@typeEntiteType (?type) error returnedEntity : messageTypeEntite ;
-        extract type->@typeGalgas_singleReferenceEntity (?*) error returnedEntity : messageGalgasType ;
+        extract type->@typeGalgas_singleReferenceEntity (?3*) error returnedEntity : messageGalgasType ;
       end select ;
       [!?parametersMap insertKey !altName !listeDeTypesFormels !returnedEntity] ;
       [!?parametersMapForGrammar insertKey
@@ -954,12 +954,19 @@ rule <syntax_declaration>
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
   if [mdaResultVariableName string] != "" then
+    @typeListeAttributsSemantiques propertyList ;
+    @typeSuperClassesMap superEntityMap ;
     [inAllMetamodelClassMap searchKey
       !returnedEntity
-      ?8*
+      ?4*
+      ?superEntityMap
+      ?propertyList
+      ?2*
     ] ;
     @AC_galgasType definitionType := [@typeGalgas_singleReferenceEntity new
       !returnedEntity
+      !propertyList
+      ![superEntityMap allKeys]
     ] ;
     @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![mdaResultVariableName location] ![mdaResultVariableName string]] ;
     [!?tableArgumentsMethode insertSingleEntityLocalVariable !mdaResultVariableName !definitionType !nomCppVariable] ;
@@ -968,7 +975,7 @@ rule <syntax_declaration>
     [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?7*] ;
     foreach allPropertiesMap (@lstring kKey @AC_galgasType kPropertyType) :
       extract kPropertyType :
-      when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName) ->
+      when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName 2*) ->
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertSingleEntityLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
@@ -1335,7 +1342,7 @@ rule <syntax_instruction>
     else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;
-      extract type->@typeGalgas_singleReferenceEntity (?variableEntityName) error returnedEntityVariableName : messageGalgasType ;
+      extract type->@typeGalgas_singleReferenceEntity (?variableEntityName ?2*) error returnedEntityVariableName : messageGalgasType ;
     end if ;
    #--- The returnedEntityFromSignature entity should be a super class of variableEntityName
     @bool ok := [returnedEntityFromSignature string] == [variableEntityName string] ;

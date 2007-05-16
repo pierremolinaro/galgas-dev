@@ -93,6 +93,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "not",
   "of",
   "on",
+  "once",
   "option",
   "or",
   "override",
