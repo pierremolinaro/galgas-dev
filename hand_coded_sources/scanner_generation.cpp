@@ -412,11 +412,6 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
      inCppFile << "  bool loop_ = true ;\n" ;
    }
   inCppFile.incIndentation (+2) ;
-/*  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
-  while (currentAttribute != NULL) {
-    currentAttribute->mInfo.attributType (HERE)->generateLexicalAttributeDeclaration (currentAttribute->mKey, inCppFile) ;
-    currentAttribute = currentAttribute->nextObject () ;
-  }*/
   inCppFile << "_token._mTokenCode = -1 ;\n"
                "while (_token._mTokenCode < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
@@ -884,78 +879,70 @@ generateAttributeInitialization (const GGS_lstring & nom,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= generateLexicalAttributeDeclaration
+  #pragma mark ========= lexicalAttributeCppType
 #endif
 
 //---------------------------------------------------------------------------*
 
-void cPtr_AC_galgasType::
-generateLexicalAttributeDeclaration (const GGS_lstring & /* nom */,
-                                     AC_OutputStream & /* inCppFile */) const {
+C_String cPtr_AC_galgasType::
+lexicalAttributeCppType (void) const {
+  return "" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_lstring::
-generateLexicalAttributeDeclaration (const GGS_lstring & nom,
-                                     AC_OutputStream & inCppFile) const {
-  inCppFile << "  C_String " << nom << " ;\n" ;
+C_String cPtr_typeGalgas_lstring::
+lexicalAttributeCppType (void) const {
+  return "C_String" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_lchar::
-generateLexicalAttributeDeclaration (const GGS_lstring & nom,
-                                     AC_OutputStream & inCppFile) const {
-  inCppFile << "  char " << nom << " = '\\0' ;\n" ;
+C_String cPtr_typeGalgas_lchar::
+lexicalAttributeCppType (void) const {
+  return "char" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_lbool::
-generateLexicalAttributeDeclaration (const GGS_lstring & nom,
-                                     AC_OutputStream & inCppFile) const {
-  inCppFile << "  bool " << nom << " = false ;\n" ;
+C_String cPtr_typeGalgas_lbool::
+lexicalAttributeCppType (void) const {
+  return "bool" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_luint::
-generateLexicalAttributeDeclaration (const GGS_lstring & nom,
-                                     AC_OutputStream & inCppFile) const {
-  inCppFile << "  uint32 " << nom << " = 0 ;\n" ;
+C_String cPtr_typeGalgas_luint::
+lexicalAttributeCppType (void) const {
+  return "uint32" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_luint64::
-generateLexicalAttributeDeclaration (const GGS_lstring & nom,
-                                     AC_OutputStream & inCppFile) const {
-  inCppFile << "  uint64 " << nom << " = 0 ;\n" ;
+C_String cPtr_typeGalgas_luint64::
+lexicalAttributeCppType (void) const {
+  return "uint64" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_lsint::
-generateLexicalAttributeDeclaration (const GGS_lstring & nom,
-                                     AC_OutputStream & inCppFile) const {
-  inCppFile << "  sint32 " << nom << " = 0 ;\n" ;
+C_String cPtr_typeGalgas_lsint::
+lexicalAttributeCppType (void) const {
+  return "sint32" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_lsint64::
-generateLexicalAttributeDeclaration (const GGS_lstring & nom,
-                                     AC_OutputStream & inCppFile) const {
-  inCppFile << "  sint64 " << nom << " = 0 ;\n" ;
+C_String cPtr_typeGalgas_lsint64::
+lexicalAttributeCppType (void) const {
+  return "sint64" ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_ldouble::
-generateLexicalAttributeDeclaration (const GGS_lstring & nom,
-                                     AC_OutputStream & inCppFile) const {
-  inCppFile << "  double " << nom << " = 0.0 ;\n" ;
+C_String cPtr_typeGalgas_ldouble::
+lexicalAttributeCppType (void) const {
+  return "double" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1198,6 +1185,9 @@ generate_scanner_header_file (C_Compiler & inLexique,
     generatedZone3 << "  public : void _assignFromAttribute_" << currentAttribute->mKey << " (" ;
     currentAttribute->mInfo.attributType (HERE)->generateCppClassName (generatedZone3) ;
     generatedZone3 << "& outValue) const ;\n" ;
+    generatedZone3 << "  public : "
+                   << currentAttribute->mInfo.attributType (HERE)->lexicalAttributeCppType ()
+                   << " _attributeValue_" << currentAttribute->mKey << " (void) const ;\n" ;
     currentAttribute = currentAttribute->nextObject () ;
   }
 
@@ -1425,8 +1415,16 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     currentAttribute->mInfo.attributType (HERE)->generateCppClassName (generatedZone2) ;
     generatedZone2 << "(* this, _p->" << currentAttribute->mKey << ") ;\n"
                       "}\n\n" ;
+    generatedZone2.writeCppHyphenLineComment () ;
+    generatedZone2 << currentAttribute->mInfo.attributType (HERE)->lexicalAttributeCppType ()
+                   << " " << inLexiqueName << "::\n"
+                      "_attributeValue_" << currentAttribute->mKey << " (void) const {\n"
+                      "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) mCurrentTokenPtr ;\n"
+                      "  return _p->" << currentAttribute->mKey << " ;\n"
+                      "}\n\n" ;
     currentAttribute = currentAttribute->nextObject () ;
   }
+  generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Generate decoder
 /*  scannerDecoderGeneration (inLexique, inLexiqueName,

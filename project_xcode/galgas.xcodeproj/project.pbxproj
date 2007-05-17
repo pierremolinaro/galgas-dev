@@ -1049,6 +1049,20 @@
 		CF85E4B70A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */; };
 		CF85E4B80A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */; };
 		CF85E4B90A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */; };
+		CF8824F80BFC94600012F2AE /* PMAllocationStats.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8824F60BFC94600012F2AE /* PMAllocationStats.h */; };
+		CF8824F90BFC94600012F2AE /* PMAllocationStats.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8824F70BFC94600012F2AE /* PMAllocationStats.m */; };
+		CF8824FA0BFC94600012F2AE /* PMAllocationStats.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8824F60BFC94600012F2AE /* PMAllocationStats.h */; };
+		CF8824FB0BFC94600012F2AE /* PMAllocationStats.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8824F70BFC94600012F2AE /* PMAllocationStats.m */; };
+		CF88254D0BFC99700012F2AE /* OC_GGS_BuildWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */; };
+		CF88254E0BFC99710012F2AE /* NSSplitViewExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */; };
+		CF88254F0BFC99730012F2AE /* OC_GGS_Document.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82597308536A130077AEAF /* OC_GGS_Document.h */; };
+		CF8825500BFC99740012F2AE /* OC_GGS_PreferencesController.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */; };
+		CF8825510BFC99750012F2AE /* OC_GGS_RulerView.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82597708536A130077AEAF /* OC_GGS_RulerView.h */; };
+		CF8825520BFC99770012F2AE /* OC_GGS_TextView.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82597908536A130077AEAF /* OC_GGS_TextView.h */; };
+		CF8825530BFC997B0012F2AE /* OC_GGS_DelegateForSyntaxColoring.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */; };
+		CF8825540BFC997C0012F2AE /* PP_CocoaGalgasPrefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */; };
+		CF8825550BFC997E0012F2AE /* C_SourceTextForCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */; };
+		CF8825560BFC997E0012F2AE /* OC_GGS_BuildResultTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */; };
 		CF89D55C0A359BEA0042BDEC /* include_LSInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */; };
 		CF89D55D0A359BEA0042BDEC /* include_LUInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */; };
 		CF89D55E0A359BEA0042BDEC /* include_SInt64Model.h in Headers */ = {isa = PBXBuildFile; fileRef = CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */; };
@@ -1424,6 +1438,7 @@
 		CFC9536D0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC9536E0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC9536F0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
+		CFC9E49D0BFCAB1A00F89065 /* F_CocoaWrapperForGalgas.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */; };
 		CFCF920E0B6E41B000747AC6 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
 		CFCF920F0B6E41B000747AC6 /* C_galgas_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCF92090B6E41B000747AC6 /* C_galgas_io.h */; };
 		CFCF92140B6E41B000747AC6 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
@@ -2391,6 +2406,8 @@
 		CF825A7908536B780077AEAF /* TF_Swap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = TF_Swap.h; sourceTree = "<group>"; };
 		CF82944F0587AE820058E762 /* galgas_LL1_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_LL1_prgm.h; sourceTree = "<group>"; };
 		CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLogicalNegate.h; sourceTree = "<group>"; };
+		CF8824F60BFC94600012F2AE /* PMAllocationStats.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMAllocationStats.h; sourceTree = "<group>"; };
+		CF8824F70BFC94600012F2AE /* PMAllocationStats.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMAllocationStats.m; sourceTree = "<group>"; };
 		CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_LSInt64Model.h; sourceTree = "<group>"; };
 		CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_LUInt64Model.h; sourceTree = "<group>"; };
 		CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_SInt64Model.h; sourceTree = "<group>"; };
@@ -2984,6 +3001,8 @@
 				CF82596E08536A130077AEAF /* I_SaveAs.tiff */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
 				CF82597008536A130077AEAF /* I_Window.png */,
+				CF8824F60BFC94600012F2AE /* PMAllocationStats.h */,
+				CF8824F70BFC94600012F2AE /* PMAllocationStats.m */,
 				CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */,
 				CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.mm */,
 				CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */,
@@ -3804,6 +3823,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8824F80BFC94600012F2AE /* PMAllocationStats.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4171,6 +4191,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8824FA0BFC94600012F2AE /* PMAllocationStats.h in Headers */,
+				CF88254D0BFC99700012F2AE /* OC_GGS_BuildWindowController.h in Headers */,
+				CF88254E0BFC99710012F2AE /* NSSplitViewExtensions.h in Headers */,
+				CF88254F0BFC99730012F2AE /* OC_GGS_Document.h in Headers */,
+				CF8825500BFC99740012F2AE /* OC_GGS_PreferencesController.h in Headers */,
+				CF8825510BFC99750012F2AE /* OC_GGS_RulerView.h in Headers */,
+				CF8825520BFC99770012F2AE /* OC_GGS_TextView.h in Headers */,
+				CF8825530BFC997B0012F2AE /* OC_GGS_DelegateForSyntaxColoring.h in Headers */,
+				CF8825540BFC997C0012F2AE /* PP_CocoaGalgasPrefix.pch in Headers */,
+				CF8825550BFC997E0012F2AE /* C_SourceTextForCocoa.h in Headers */,
+				CF8825560BFC997E0012F2AE /* OC_GGS_BuildResultTextView.h in Headers */,
+				CFC9E49D0BFCAB1A00F89065 /* F_CocoaWrapperForGalgas.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5107,6 +5139,7 @@
 				CF381D3F0B6FD70600289177 /* C_ErrorOut.cpp in Sources */,
 				CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
 				CFF2131B0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */,
+				CF8824F90BFC94600012F2AE /* PMAllocationStats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5572,6 +5605,7 @@
 				CFCF92670B6E454B00747AC6 /* C_ErrorOut.cpp in Sources */,
 				CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
 				CFF2131D0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */,
+				CF8824FB0BFC94600012F2AE /* PMAllocationStats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

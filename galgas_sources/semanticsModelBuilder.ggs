@@ -33,7 +33,11 @@ nonterminal <attribute_declaration> -> @structuredTypeAttribute ;
 
 nonterminal <map_method_declaration> -> @mapMethod ;
 
-nonterminal <map_abstract_method_declaration> -> @abstractMethodDefinition ;
+nonterminal <class_abstract_method_declaration> -> @abstractMethodDefinition ;
+
+nonterminal <class_overriden_method_declaration> -> @overridenMethodDefinition ;
+
+nonterminal <class_message_declaration> -> @classMessageDefinition ;
 
 nonterminal <formal_parameter_list> -> @formalParameters ;
 
@@ -119,6 +123,12 @@ rule <formal_parameter> -> @formalParameter :
     mFormalParameterPassingMode := [@formalArgumentPassingMode argumentOut] ;
   end select ;
   $type_name$ ? mFormalParameterTypeName ;
+  select
+    mIsUnused := false ;
+  or
+    $unused$ ;
+    mIsUnused := true ;
+  end select ;
   $identifier$ ? mFormalParameterName ;
 end rule ;
 
@@ -187,7 +197,11 @@ rule <semantic_declaration> -> @classDeclaration :
   while
     <attribute_declaration> +> mAttributeList ;
   while
-    <map_abstract_method_declaration> +> mAbstractMethodList ;
+    <class_abstract_method_declaration> +> mAbstractMethodList ;
+  while
+    <class_overriden_method_declaration> +> mOverridenMethodList ;
+  while
+    <class_message_declaration> +> mMessageList ;
   end repeat ;
   $}$ ;
 end rule ;
@@ -195,11 +209,34 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <map_abstract_method_declaration> -> @abstractMethodDefinition :
+rule <class_message_declaration> -> @classMessageDefinition :
+  $message$ ;
+  $identifier$ ? mMessageName ;
+  $literal_string$ ? mMessageValue ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <class_abstract_method_declaration> -> @abstractMethodDefinition :
   $abstract$ ;
   $method$ ;
   $identifier$ ? mMethodName ;
   <formal_parameter_list> -> mSignature ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <class_overriden_method_declaration> -> @overridenMethodDefinition :
+  $override$ ;
+  $method$ ;
+  $identifier$ ? mMethodName ;
+  <formal_parameter_list> -> mSignature ;
+  $:$ ;
+  <semantic_instruction_list> -> mInstructionList ;
+  $end$ ;
+  $method$ ;
   $;$ ;
 end rule ;
 
@@ -336,6 +373,8 @@ rule <semantic_declaration> -> @routineDeclaration :
   <formal_parameter_list> -> mFormalParameters ;
   $:$ ;
   <semantic_instruction_list> -> mRoutineInstructions ;
+  $end$ ;
+  $routine$ ;
   $;$ ;
 end rule ;
 

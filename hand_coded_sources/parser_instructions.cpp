@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate parser instructions                                             *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -181,17 +181,18 @@ routine_checkLabelSignatures (C_Compiler & _inLexique,
                               GGS_typeAltProductionsMap & inAltProductionMap
                               COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeAltProductionsMap::element_type * current = inAltProductionMap.firstObject () ;
-  macroValidPointer (current) ;
-  GGS_L_ruleSyntaxSignature referenceSyntaxList = current->mInfo.mSyntaxSignature ;
-  current = current->nextObject () ;
-  while (current != NULL) {
+  if (current != NULL) { // current may be NULL in case of error
     macroValidPointer (current) ;
-    instructionsListHaveSameSyntaxSignatures (_inLexique, referenceSyntaxList,
-                                              current->mInfo.mSyntaxSignature,
-                                              current->mInfo.mEndOfInstructionListLocation) ;
+    GGS_L_ruleSyntaxSignature referenceSyntaxList = current->mInfo.mSyntaxSignature ;
     current = current->nextObject () ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      instructionsListHaveSameSyntaxSignatures (_inLexique, referenceSyntaxList,
+                                                current->mInfo.mSyntaxSignature,
+                                                current->mInfo.mEndOfInstructionListLocation) ;
+      current = current->nextObject () ;
+    }
   }
-
 }
 
 //---------------------------------------------------------------------------*
@@ -257,7 +258,7 @@ generateInstruction (AC_OutputStream & inCppFile,
               << ";\n" ;
     while (argument != NULL) {
       macroValidPointer (argument) ;
-      inCppFile << "    message_ << ' ' << _inLexique." << argument->aNomAttributSource << " ;\n" ;
+      inCppFile << "    message_ << ' ' << _inLexique._attributeValue_" << argument->aNomAttributSource << " () ;\n" ;
       argument = argument->nextObject () ;
     }
     inCppFile << "    _inLexique.didParseTerminal (\"$" << aNomTerminal << "$\", message_) ;\n"

@@ -58,6 +58,7 @@ entity @formalParameter {
   @formalArgumentPassingMode mFormalParameterPassingMode ;
   @lstring mFormalParameterTypeName ;
   @lstring mFormalParameterName ;
+  @bool mIsUnused ;
 }
 
 #---------------------------------------------------------------------------*
@@ -93,6 +94,8 @@ entity @classDeclaration extends @semanticDeclaration {
   @lstring mSuperClassName ; # Empty if no super class
   @structuredTypeAttribute [] mAttributeList ;
   @abstractMethodDefinition [] mAbstractMethodList ;
+  @overridenMethodDefinition [] mOverridenMethodList ;
+  @classMessageDefinition [] mMessageList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -100,6 +103,21 @@ entity @classDeclaration extends @semanticDeclaration {
 entity @abstractMethodDefinition {
   @lstring mMethodName ;
   @formalParameters mSignature ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @overridenMethodDefinition {
+  @lstring mMethodName ;
+  @formalParameters mSignature ;
+  @semanticInstructions mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @classMessageDefinition {
+  @lstring mMessageName ;
+  @lstring mMessageValue ;
 }
 
 #---------------------------------------------------------------------------*

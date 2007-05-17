@@ -19,11 +19,28 @@
 
 syntax semanticInstructionListModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
 import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+
+#---------------------------------------------------------------------------*
 
 nonterminal <semantic_instruction_list> -> @semanticInstructions ;
 
 nonterminal <semantic_instruction> -> @semanticInstruction ;
+
+nonterminal <expression> -> @semanticExpression ;
+
+nonterminal <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject ;
+
+nonterminal <foreach_enumeration_element> -> @foreachInstructionEnumeratedObjectElement ;
+
+nonterminal <actual_parameter> -> @actualParameter ;
+
+nonterminal <match_instruction_branch> -> @matchInstructionBranch ;
+
+nonterminal <extract_instruction_branch> -> @extractInstructionBranch ;
+
+nonterminal <output_expression_list> -> @outExpressionList ;
 
 #---------------------------------------------------------------------------*
 
@@ -36,13 +53,55 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  A C T U A L    P A R A M E T E R                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter> -> @outputActualParameter :
+  $!$ ;
+  <expression> -> mOutputActualParameterExpression ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter> -> @outputInputActualParameter :
+  $!?$ ;
+  $identifier$ ?mOutputInputActualParameterName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter> -> @inputActualParameter :
+  $?$ ;
+  $identifier$ ?mInputActualParameterName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter> -> @inputJokerActualParameter :
+  $?$ ;
+  $*$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @localVariableDeclaration :
-  $type_name$ ? mTypeName ;
-  $identifier$ ? mVariableName ;
+rule <semantic_instruction> -> @semanticInstruction instruction :
+  @lstring typeName ;
+  $type_name$ ? typeName ;
+  @lstring variableName ;
+  $identifier$ ? variableName ;
+  select
+    instruction := [@localVariableDeclaration new !typeName !variableName] ;
+  or
+    $:=$ ;
+    @semanticExpression sourceExpression ;
+    <expression> -> sourceExpression ;
+    instruction := [@localVariableDeclarationWithInitialization new !typeName !variableName !sourceExpression] ;
+  end select ;
   $;$ ;
 end rule ;
 
@@ -52,13 +111,285 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#rule <semantic_instruction> -> @assignmentInstruction :
-#  $identifier$ ? mTargetVariableName ;
-#  $:=$ ;
-#  <expression> -> mSourceExpression ;
-#  $;$ ;
-#end rule ;
+rule <semantic_instruction> -> @assignmentInstruction :
+  $identifier$ ? mTargetVariableName ;
+  $:=$ ;
+  <expression> -> mSourceExpression ;
+  $;$ ;
+end rule ;
 
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F O R E A C H    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <foreach_enumeration_element> -> @foreachInstructionJoker :
+  $*$ ;
+  mCount := 1 ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <foreach_enumeration_element> -> @foreachInstructionJoker :
+  @luint count ;
+  $unsigned_literal_integer$ ?count ;
+  $*$ ;
+  mCount := [count uint] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <foreach_enumeration_element> -> @foreachInstructionEnumeratedConstant :
+  $type_name$ ?mTypeName ;
+  $identifier$ ?mConstantName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject :
+  $identifier$ ?mEnumeratedObjectName ;
+  $($ ;
+  repeat
+  while
+    <foreach_enumeration_element> +> mElement ;
+  end repeat ;
+  $)$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @foreachInstruction :
+  $foreach$ ;
+  repeat
+    <foreach_enumerated_object> +> mEnumeratedObjects ;
+  while
+    $,$ ;
+  end repeat ;
+  $:$ ;
+  <semantic_instruction_list> -> mInstructionList ;
+  $end$ ;
+  $foreach$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I F    I N S T R U C T I O N                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @ifInstruction :
+  $if$ ;
+  repeat
+    <expression> +> mIFexpressionList ;
+    $then$ ;
+    <semantic_instruction_list> +> mIFinstructionListList ;
+  while
+    $elsif$ ;
+  end repeat ;
+  select
+  or
+    $else$ ;
+    <semantic_instruction_list> +> mElseInstructionList ;
+  end select ;
+  $end$ ;
+  $if$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M E T H O D    C A L L    I N S T R U C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @methodCallInstruction :
+  $[$ ;
+  <expression> -> mReceiverExpression ;
+  $identifier$ ?mMethodName ;
+  repeat
+    <actual_parameter> +> mActualParameterList ;
+  while
+  end repeat ;
+  $]$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M O D I F I E R    C A L L    I N S T R U C T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @modifierCallInstruction :
+  $[$ ;
+  $!?$ ;
+  $identifier$ ?mReceiverName ;
+  $identifier$ ?mModifierName ;
+  repeat
+    <actual_parameter> +> mActualParameterList ;
+  while
+  end repeat ;
+  $]$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E R R O R    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @errorInstruction :
+  $error$ ;
+  <expression> -> mReceiverExpression ;
+  $:$ ;
+  <expression> -> mErrorExpression ;
+  mBuiltVariableList := [@lstringlist emptyList] ;
+  select
+  or
+    $->$ ;
+    repeat
+     @lstring builtVariableName ;
+     $identifier$ ? builtVariableName ;
+     mBuiltVariableList += !builtVariableName ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    W A R N I N G    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @warningInstruction :
+  $warning$ ;
+  <expression> -> mReceiverExpression ;
+  $:$ ;
+  <expression> -> mErrorExpression ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @routineCallInstruction :
+  $identifier$ ? mRoutineName ;
+  repeat
+    <actual_parameter> +> mActualParameterList ;
+  while
+  end repeat ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <match_instruction_branch> -> @matchInstructionBranch :
+  $when$ ;
+  mMatchedEntryList := [@lstringlist emptyList] ;
+  @lstring matchedVariableName ;
+  $identifier$ ? matchedVariableName ;
+  mMatchedEntryList += !matchedVariableName ;
+  $::$ ;
+  repeat
+    $identifier$ ? matchedVariableName ;
+    mMatchedEntryList += !matchedVariableName ;
+  while
+    $::$ ;
+  end repeat ;
+  $:$ ;
+  <semantic_instruction_list> -> mMatchBranchInstructionList ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @matchInstruction :
+  $match$ ;
+  mMatchedVariableNameList := [@lstringlist emptyList] ;
+  @lstring matchedVariableName ;
+  $identifier$ ? matchedVariableName ;
+  mMatchedVariableNameList += !matchedVariableName ;
+  $::$ ;
+  repeat
+    $identifier$ ? matchedVariableName ;
+    mMatchedVariableNameList += !matchedVariableName ;
+  while
+    $::$ ;
+  end repeat ;
+  $:$ ;
+  repeat
+    <match_instruction_branch> +> mMatchInstructionBranchList ;
+  while
+  end repeat ;
+  select
+  or
+    $else$ ;
+    <semantic_instruction_list> +> mElseInstructionList ;
+  end select ;
+  $end$ ;
+  $match$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T R A C T    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <extract_instruction_branch> -> @extractInstructionBranch :
+  $when$ ;
+  $type_name$ ? mExtractBranchTypeName ;
+  $($ ;
+  $)$ ;
+  $->$ ;
+  <semantic_instruction_list> -> mExtractBranchInstructionList ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @extractInstruction :
+  $extract$ ;
+  $identifier$ ? mReceiverName ;
+  $:$ ;
+  repeat
+    <extract_instruction_branch> +> mExtractInstructionBranchList ;
+  while
+  end repeat ;
+  select
+  or
+    $else$ ;
+    <semantic_instruction_list> +> mElseInstructionList ;
+  end select ;
+  $end$ ;
+  $extract$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A P P E N D    I N S T R U C T I O N    + =                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @appendInstruction :
+  $identifier$ ? mReceiverName ;
+  $+=$ ;
+  <output_expression_list> -> mExpressionList ;
+  $;$ ;
+end rule ;
 
 #---------------------------------------------------------------------------*
 
