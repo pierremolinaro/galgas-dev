@@ -1601,7 +1601,7 @@ generate_cpp_file (C_Compiler & inLexique,
 //--- Generate debug ?
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   if (generateDebug) {
-    generatedZone2 << "#define DEBUG_TRACE_ENABLED\n\n" ;
+    generatedZone2 << "//#define DEBUG_TRACE_ENABLED\n\n" ;
   }
                  
 //--- Engendrer les implementations

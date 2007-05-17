@@ -34,6 +34,38 @@ entity @semanticInstructions {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  A C T U A L    P A R A M E T E R                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract entity @actualParameter {
+}
+
+#---------------------------------------------------------------------------*
+
+entity @outputActualParameter extends @actualParameter {
+  @semanticExpression mOutputActualParameterExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @outputInputActualParameter extends @actualParameter {
+  @lstring mOutputInputActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @inputActualParameter extends @actualParameter {
+  @lstring mInputActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @inputJokerActualParameter extends @actualParameter {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -60,6 +92,161 @@ entity @localVariableDeclarationWithInitialization extends @semanticInstruction 
 entity @assignmentInstruction extends @semanticInstruction {
   @lstring mTargetVariableName ;
   @semanticExpression mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R E A C H    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract entity @foreachInstructionEnumeratedObjectElement {
+}
+
+#---------------------------------------------------------------------------*
+
+entity @foreachInstructionJoker extends @foreachInstructionEnumeratedObjectElement {
+  @uint mCount ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @foreachInstructionEnumeratedConstant extends @foreachInstructionEnumeratedObjectElement {
+  @lstring mTypeName ;
+  @lstring mConstantName ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @foreachInstructionEnumeratedObject {
+  @lstring mEnumeratedObjectName ;
+  @foreachInstructionEnumeratedObjectElement [] mElement ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @foreachInstruction extends @semanticInstruction {
+  @foreachInstructionEnumeratedObject [] mEnumeratedObjects ;
+  @semanticInstructions mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  I F    I N S T R U C T I O N                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @ifInstruction extends @semanticInstruction {
+  @semanticExpression [] mIFexpressionList ;
+  @semanticInstructions [] mIFinstructionListList ;
+  @semanticInstructions [0, 1] mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E T H O D    C A L L    I N S T R U C T I O N                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @methodCallInstruction extends @semanticInstruction {
+  @semanticExpression mReceiverExpression ;
+  @lstring mMethodName ;
+  @actualParameter [] mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D I F I E R    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @modifierCallInstruction extends @semanticInstruction {
+  @lstring mReceiverName ;
+  @lstring mModifierName ;
+  @actualParameter [] mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E R R O R    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @errorInstruction extends @semanticInstruction {
+  @semanticExpression mReceiverExpression ;
+  @semanticExpression mErrorExpression ;
+  @lstringlist mBuiltVariableList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E R R O R    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @warningInstruction extends @semanticInstruction {
+  @semanticExpression mReceiverExpression ;
+  @semanticExpression mErrorExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @routineCallInstruction extends @semanticInstruction {
+  @lstring mRoutineName ;
+  @actualParameter [] mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @matchInstructionBranch {
+  @lstringlist mMatchedEntryList ;
+  @semanticInstructions mMatchBranchInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @matchInstruction extends @semanticInstruction {
+  @lstringlist mMatchedVariableNameList ;
+  @matchInstructionBranch [] mMatchInstructionBranchList ;
+  @semanticInstructions [0, 1] mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T R A C T    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @extractInstructionBranch {
+  @lstring mExtractBranchTypeName ;
+  @semanticInstructions mExtractBranchInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @extractInstruction extends @semanticInstruction {
+  @lstring mReceiverName ;
+  @extractInstructionBranch [] mExtractInstructionBranchList ;
+  @semanticInstructions [0, 1] mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A P P E N D    I N S T R U C T I O N      + =                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @appendInstruction extends @semanticInstruction {
+  @lstring mReceiverName ;
+  @outExpressionList mExpressionList ;
 }
 
 #---------------------------------------------------------------------------*

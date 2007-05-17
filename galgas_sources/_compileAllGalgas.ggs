@@ -58,7 +58,7 @@ compile "semanticsSLRgrammar.ggs" ;
 compile "mda_galgas_LL1_prgm.ggs" ;
 
 #--- Old style components
-compile "semantics_semantics.gSemantics" ;
+compile "semantics_semantics.gSemantics" ; # En cours de test
 compile "treewalking_parser.ggs" ;
 compile "domain_parser.ggs" ;
 compile "semantics_parser.ggs" ;

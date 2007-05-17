@@ -26,8 +26,9 @@ abstract entity @semanticExpression {
 
 #---------------------------------------------------------------------------*
 
-entity @outExpressions {
+entity @outExpressionList {
   @semanticExpression [] mExpression ;
+  @location mEndOfExpressionLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -51,7 +52,7 @@ entity @literalCharExpression extends @semanticExpression {
 #---------------------------------------------------------------------------*
 
 entity @literalStringExpression extends @semanticExpression {
-  @lstring mValue ;
+  @stringlist mStringSequence ;
 }
 
 #---------------------------------------------------------------------------*
@@ -87,15 +88,14 @@ entity @literalSInt64Expression extends @semanticExpression {
 #---------------------------------------------------------------------------*
 
 entity @hereExpression extends @semanticExpression {
-  @location mValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @constructorCallExpression extends @semanticExpression {
+entity @constructorExpression extends @semanticExpression {
   @lstring mTypeName ;
   @lstring mConstructorName ;
-  @outExpressions mExpressions ;
+  @outExpressionList mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -103,7 +103,7 @@ entity @constructorCallExpression extends @semanticExpression {
 entity @readerCallExpression extends @semanticExpression {
   @semanticExpression mReceiver ;
   @lstring mReaderName ;
-  @outExpressions mExpressions ;
+  @outExpressionList mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -112,12 +112,192 @@ entity @optionExpression extends @semanticExpression {
   @lstring mOptionComponentName ;
   @lstring mOptionEntryName ;
 }
+
 #---------------------------------------------------------------------------*
 
 entity @concatExpression extends @semanticExpression {
   @location mOperatorLocation ;
   @semanticExpression mLeftExpression ;
   @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @orExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @xorExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @andExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @equalExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @notEqualExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @lowerOrEqualExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @greaterOrEqualExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @strictGreaterExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @strictLowerExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @leftShiftExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @rightShiftExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @addExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @subExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @multiplicationExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @divisionExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @moduloExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mLeftExpression ;
+  @semanticExpression mRightExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @unaryMinusExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @notExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @negateExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+  @semanticExpression mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @trueExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @falseExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @varInExpression extends @semanticExpression {
+  @lstring mVarName ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @selfInExpression extends @semanticExpression {
+}
+
+#---------------------------------------------------------------------------*
+
+entity @descriptionInExpression extends @semanticExpression {
+  @semanticExpression mReceiverExpression ;
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
