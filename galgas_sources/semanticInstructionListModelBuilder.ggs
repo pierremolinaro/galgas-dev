@@ -42,6 +42,8 @@ nonterminal <extract_instruction_branch> -> @extractInstructionBranch ;
 
 nonterminal <output_expression_list> -> @outExpressionList ;
 
+nonterminal <match_entry> -> @matchEntry ;
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction_list> -> @semanticInstructions :
@@ -100,7 +102,15 @@ rule <semantic_instruction> -> @semanticInstruction instruction :
     $:=$ ;
     @semanticExpression sourceExpression ;
     <expression> -> sourceExpression ;
-    instruction := [@localVariableDeclarationWithInitialization new !typeName !variableName !sourceExpression] ;
+    instruction := [@localVariableDeclarationWithAssignment new !typeName !variableName !sourceExpression] ;
+  or
+    $[$ ;
+    @lstring constructorName ;
+    $identifier$ ? constructorName ;
+    @outExpressionList expressionList ;
+    <output_expression_list> -> expressionList ;
+    instruction := [@localVariableDeclarationWithInitialization new !typeName !variableName !constructorName !expressionList] ;
+    $]$ ;
   end select ;
   $;$ ;
 end rule ;
@@ -166,6 +176,12 @@ rule <semantic_instruction> -> @foreachInstruction :
   while
     $,$ ;
   end repeat ;
+  select
+    mWhileExpression := [@trueExpression new !here] ;
+  or
+    $while$ ;
+    <expression> -> mWhileExpression ;
+  end select ;
   $:$ ;
   <semantic_instruction_list> -> mInstructionList ;
   $end$ ;
@@ -296,16 +312,34 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+rule <match_entry> -> @constantMatchEntry :
+  $identifier$ ? mConstantName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <match_entry> -> @classMatchEntry :
+  $type_name$ ? mClassName ;
+  $($ ;
+  repeat
+  while
+    <foreach_enumeration_element> +> mElements ;
+  end repeat ;
+  select
+    mEndsWithEllipsis := false ;
+  or
+    $...$ ;
+    mEndsWithEllipsis := true ;
+  end select ;
+  $)$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <match_instruction_branch> -> @matchInstructionBranch :
   $when$ ;
-  mMatchedEntryList := [@lstringlist emptyList] ;
-  @lstring matchedVariableName ;
-  $identifier$ ? matchedVariableName ;
-  mMatchedEntryList += !matchedVariableName ;
-  $::$ ;
   repeat
-    $identifier$ ? matchedVariableName ;
-    mMatchedEntryList += !matchedVariableName ;
+    <match_entry> +> mMatchedEntryList ;
   while
     $::$ ;
   end repeat ;
@@ -353,6 +387,16 @@ rule <extract_instruction_branch> -> @extractInstructionBranch :
   $when$ ;
   $type_name$ ? mExtractBranchTypeName ;
   $($ ;
+  repeat
+  while
+    <foreach_enumeration_element> +> mElements ;
+  end repeat ;
+  select
+    mEndsWithEllipsis := false ;
+  or
+    $...$ ;
+    mEndsWithEllipsis := true ;
+  end select ;
   $)$ ;
   $->$ ;
   <semantic_instruction_list> -> mExtractBranchInstructionList ;

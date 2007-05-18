@@ -20,7 +20,7 @@ syntax parser_parser :
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
-import semantics parser_semantics in "parser_semantics.ggs" ;
+import semantics parser_semantics in "parser_semantics.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *

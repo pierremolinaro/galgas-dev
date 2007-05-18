@@ -18,7 +18,7 @@
 
 semantics semantics_semantics :
 
-import semantics common_semantics in "common_semantics.ggs" ;
+import semantics common_semantics in "common_semantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

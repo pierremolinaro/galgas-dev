@@ -79,7 +79,9 @@ entity @mapDeclaration extends @semanticDeclaration {
 
 entity @mapMethod {
   @lstring mMethodName ;
+  @lstring mGetIDMethodName ;
   @lstring mErrorMessage ;
+  @lstring mShadowErrorMessage ;
 }
 
 #---------------------------------------------------------------------------*
@@ -95,6 +97,7 @@ entity @classDeclaration extends @semanticDeclaration {
   @structuredTypeAttribute [] mAttributeList ;
   @abstractMethodDefinition [] mAbstractMethodList ;
   @overridenMethodDefinition [] mOverridenMethodList ;
+  @methodDefinition [] mMethodList ;
   @classMessageDefinition [] mMessageList ;
 }
 
@@ -108,6 +111,14 @@ entity @abstractMethodDefinition {
 #---------------------------------------------------------------------------*
 
 entity @overridenMethodDefinition {
+  @lstring mMethodName ;
+  @formalParameters mSignature ;
+  @semanticInstructions mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @methodDefinition {
   @lstring mMethodName ;
   @formalParameters mSignature ;
   @semanticInstructions mInstructionList ;
@@ -129,6 +140,25 @@ entity @classMessageDefinition {
 entity @listDeclaration extends @semanticDeclaration {
   @lstring mListTypeName ;
   @structuredTypeAttribute [] mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S O R T E D    L I S T    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @sortedListSortDescriptor {
+  @lstring mSortedAttributeName ;
+  @bool mAscending ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @sortedListDeclaration extends @semanticDeclaration {
+  @lstring mSortedListTypeName ;
+  @structuredTypeAttribute [] mAttributeList ;
+  @sortedListSortDescriptor [] mSortDescriptorList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -167,6 +197,17 @@ entity @routineDeclaration extends @semanticDeclaration {
   @lstring mRoutineName ;
   @formalParameters mFormalParameters ;
   @semanticInstructions mRoutineInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    A C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @actionDeclaration extends @semanticDeclaration {
+  @lstring mActionName ;
+  @formalParameters mFormalParameters ;
 }
 
 #---------------------------------------------------------------------------*

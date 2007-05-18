@@ -35,6 +35,8 @@ nonterminal <map_method_declaration> -> @mapMethod ;
 
 nonterminal <class_abstract_method_declaration> -> @abstractMethodDefinition ;
 
+nonterminal <class_method_declaration> -> @methodDefinition ;
+
 nonterminal <class_overriden_method_declaration> -> @overridenMethodDefinition ;
 
 nonterminal <class_message_declaration> -> @classMessageDefinition ;
@@ -48,6 +50,8 @@ nonterminal <enum_message_declaration> -> @enumMessage ;
 nonterminal <enum_message_association> -> @enumMessageAssociation ;
 
 nonterminal <semantic_instruction_list> -> @semanticInstructions ;
+
+nonterminal <sortedlist_sort_descriptor> -> @sortedListSortDescriptor ;
 
 nonterminal <obsolete_declaration> ;
 
@@ -164,9 +168,21 @@ end rule ;
 
 rule <map_method_declaration> -> @mapMethod :
   $identifier$ ? mMethodName ;
+  select
+    mGetIDMethodName := [@lstring new !"" !here] ;
+  or
+    $,$ ;
+    $identifier$ ? mGetIDMethodName ;
+  end select ;
   $error$ ;
   $message$ ;
   $literal_string$ ? mErrorMessage ;
+  select
+    mShadowErrorMessage := [@lstring new !"" !here] ;
+  or
+    $,$ ;
+    $literal_string$ ? mShadowErrorMessage ;
+  end select ;
   $;$ ;
 end rule ;
 
@@ -201,6 +217,8 @@ rule <semantic_declaration> -> @classDeclaration :
   while
     <class_overriden_method_declaration> +> mOverridenMethodList ;
   while
+    <class_method_declaration> +> mMethodList ;
+  while
     <class_message_declaration> +> mMessageList ;
   end repeat ;
   $}$ ;
@@ -230,6 +248,19 @@ end rule ;
 
 rule <class_overriden_method_declaration> -> @overridenMethodDefinition :
   $override$ ;
+  $method$ ;
+  $identifier$ ? mMethodName ;
+  <formal_parameter_list> -> mSignature ;
+  $:$ ;
+  <semantic_instruction_list> -> mInstructionList ;
+  $end$ ;
+  $method$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <class_method_declaration> -> @methodDefinition :
   $method$ ;
   $identifier$ ? mMethodName ;
   <formal_parameter_list> -> mSignature ;
@@ -311,6 +342,51 @@ rule <semantic_declaration> -> @listDeclaration :
 end rule ;
 
 #---------------------------------------------------------------------------*
+
+rule <obsolete_declaration> :
+  $list$ ;
+  $type_name$ ? * ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S O R T E D    L I S T    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <sortedlist_sort_descriptor> -> @sortedListSortDescriptor :
+  $identifier$ ? mSortedAttributeName ;
+  select
+    $<$ ;
+    mAscending := true ;
+  or
+    $>$ ;
+    mAscending := false ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @sortedListDeclaration :
+  $sortedlist$ ;
+  $type_name$ ? mSortedListTypeName ;
+  ${$ ;
+  repeat
+  while
+    <attribute_declaration> +> mAttributeList ;
+  end repeat ;
+  $}$ ;
+  ${$ ;
+  repeat
+    <sortedlist_sort_descriptor> +> mSortDescriptorList ;
+  while
+    $,$ ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    E N U M    D E C L A R A T I O N                                       *
 #                                                                           *
@@ -375,6 +451,19 @@ rule <semantic_declaration> -> @routineDeclaration :
   <semantic_instruction_list> -> mRoutineInstructions ;
   $end$ ;
   $routine$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    A C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @actionDeclaration :
+  $action$ ;
+  $identifier$ ? mActionName ;
+  <formal_parameter_list> -> mFormalParameters ;
   $;$ ;
 end rule ;
 
