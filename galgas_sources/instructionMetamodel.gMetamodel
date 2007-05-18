@@ -80,6 +80,15 @@ entity @localVariableDeclaration extends @semanticInstruction {
 entity @localVariableDeclarationWithInitialization extends @semanticInstruction {
   @lstring mTypeName ;
   @lstring mVariableName ;
+  @lstring mConstructorName ;
+  @outExpressionList mConstructorArguments ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @localVariableDeclarationWithAssignment extends @semanticInstruction {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
   @semanticExpression mSourceExpression ;
 }
 
@@ -127,6 +136,7 @@ entity @foreachInstructionEnumeratedObject {
 
 entity @foreachInstruction extends @semanticInstruction {
   @foreachInstructionEnumeratedObject [] mEnumeratedObjects ;
+  @semanticExpression mWhileExpression ;
   @semanticInstructions mInstructionList ;
 }
 
@@ -206,8 +216,27 @@ entity @routineCallInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+abstract entity @matchEntry {
+}
+
+#---------------------------------------------------------------------------*
+
+entity @constantMatchEntry extends @matchEntry {
+  @lstring mConstantName ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @classMatchEntry extends @matchEntry {
+  @lstring mClassName ;
+  @foreachInstructionEnumeratedObjectElement [] mElements ;
+  @bool mEndsWithEllipsis ;
+}
+
+#---------------------------------------------------------------------------*
+
 entity @matchInstructionBranch {
-  @lstringlist mMatchedEntryList ;
+  @matchEntry [] mMatchedEntryList ;
   @semanticInstructions mMatchBranchInstructionList ;
 }
 
@@ -227,6 +256,8 @@ entity @matchInstruction extends @semanticInstruction {
 
 entity @extractInstructionBranch {
   @lstring mExtractBranchTypeName ;
+  @foreachInstructionEnumeratedObjectElement [] mElements ;
+  @bool mEndsWithEllipsis ;
   @semanticInstructions mExtractBranchInstructionList ;
 }
 
