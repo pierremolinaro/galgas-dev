@@ -421,6 +421,14 @@
 		CF446B6009C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */; };
 		CF446B6209C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */; };
 		CF446B6409C9C4F0005CBDC8 /* metamodel_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */; };
+		CF47045D0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */; };
+		CF47045E0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */; };
+		CF47045F0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */; };
+		CF4704600C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */; };
+		CF4704610C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */; };
+		CF4704620C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */; };
+		CF4704630C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */; };
+		CF4704640C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */; };
 		CF48956A0B66682D005A9E78 /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4895680B66682D005A9E78 /* predefined_types.cpp */; };
 		CF48956B0B66682D005A9E78 /* predefined_types.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4895690B66682D005A9E78 /* predefined_types.h */; };
 		CF48956C0B66682D005A9E78 /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4895680B66682D005A9E78 /* predefined_types.cpp */; };
@@ -1049,10 +1057,6 @@
 		CF85E4B70A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */; };
 		CF85E4B80A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */; };
 		CF85E4B90A385AB600A190C1 /* include_typeLogicalNegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */; };
-		CF8824F80BFC94600012F2AE /* PMAllocationStats.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8824F60BFC94600012F2AE /* PMAllocationStats.h */; };
-		CF8824F90BFC94600012F2AE /* PMAllocationStats.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8824F70BFC94600012F2AE /* PMAllocationStats.m */; };
-		CF8824FA0BFC94600012F2AE /* PMAllocationStats.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8824F60BFC94600012F2AE /* PMAllocationStats.h */; };
-		CF8824FB0BFC94600012F2AE /* PMAllocationStats.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8824F70BFC94600012F2AE /* PMAllocationStats.m */; };
 		CF88254D0BFC99700012F2AE /* OC_GGS_BuildWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */; };
 		CF88254E0BFC99710012F2AE /* NSSplitViewExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */; };
 		CF88254F0BFC99730012F2AE /* OC_GGS_Document.h in Headers */ = {isa = PBXBuildFile; fileRef = CF82597308536A130077AEAF /* OC_GGS_Document.h */; };
@@ -2289,6 +2293,7 @@
 		CF446B5809C9C4F0005CBDC8 /* metamodel_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_parser.cpp; sourceTree = "<group>"; };
 		CF446B5909C9C4F0005CBDC8 /* metamodel_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = metamodel_parser.h; sourceTree = "<group>"; };
 		CF446B6609C9C50D005CBDC8 /* include_TypeModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_TypeModel.h; sourceTree = "<group>"; };
+		CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeStructuredCastInstruction.h; sourceTree = "<group>"; };
 		CF4895680B66682D005A9E78 /* predefined_types.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = predefined_types.cpp; sourceTree = "<group>"; };
 		CF4895690B66682D005A9E78 /* predefined_types.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = predefined_types.h; sourceTree = "<group>"; };
 		CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDescriptionInExpression.h; sourceTree = "<group>"; };
@@ -2406,8 +2411,6 @@
 		CF825A7908536B780077AEAF /* TF_Swap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = TF_Swap.h; sourceTree = "<group>"; };
 		CF82944F0587AE820058E762 /* galgas_LL1_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_LL1_prgm.h; sourceTree = "<group>"; };
 		CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLogicalNegate.h; sourceTree = "<group>"; };
-		CF8824F60BFC94600012F2AE /* PMAllocationStats.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMAllocationStats.h; sourceTree = "<group>"; };
-		CF8824F70BFC94600012F2AE /* PMAllocationStats.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMAllocationStats.m; sourceTree = "<group>"; };
 		CF89D5560A359BEA0042BDEC /* include_LSInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_LSInt64Model.h; sourceTree = "<group>"; };
 		CF89D5570A359BEA0042BDEC /* include_LUInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_LUInt64Model.h; sourceTree = "<group>"; };
 		CF89D5580A359BEA0042BDEC /* include_SInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_SInt64Model.h; sourceTree = "<group>"; };
@@ -3001,8 +3004,6 @@
 				CF82596E08536A130077AEAF /* I_SaveAs.tiff */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
 				CF82597008536A130077AEAF /* I_Window.png */,
-				CF8824F60BFC94600012F2AE /* PMAllocationStats.h */,
-				CF8824F70BFC94600012F2AE /* PMAllocationStats.m */,
 				CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */,
 				CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.mm */,
 				CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */,
@@ -3029,6 +3030,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */,
 				CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */,
 				CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */,
 				CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */,
@@ -3386,8 +3388,8 @@
 		CFF53732057A4E5000854C83 /* GALGAS_OUTPUT */ = {
 			isa = PBXGroup;
 			children = (
-				CFEE57810BFB59E900B99D47 /* Expressions */,
 				CFD2149A0913BDFA0011F11E /* Include Files */,
+				CFEE57810BFB59E900B99D47 /* Expressions */,
 				CFF9E5330BC3D87A005A1AEC /* Instructions */,
 				CFDB3A700B8866BF00DDA180 /* Tree walking */,
 				CF446B5709C9C4A7005CBDC8 /* Metamodel Component */,
@@ -3823,7 +3825,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8824F80BFC94600012F2AE /* PMAllocationStats.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3944,6 +3945,7 @@
 				CFF9E5580BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE57870BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE57890BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
+				CF47045D0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4064,6 +4066,7 @@
 				CFF9E55E0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE579F0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE57A10BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
+				CF4704630C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4184,6 +4187,7 @@
 				CFF9E55F0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE57A30BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE57A50BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
+				CF4704640C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4191,7 +4195,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8824FA0BFC94600012F2AE /* PMAllocationStats.h in Headers */,
 				CF88254D0BFC99700012F2AE /* OC_GGS_BuildWindowController.h in Headers */,
 				CF88254E0BFC99710012F2AE /* NSSplitViewExtensions.h in Headers */,
 				CF88254F0BFC99730012F2AE /* OC_GGS_Document.h in Headers */,
@@ -4323,6 +4326,7 @@
 				CFF9E5590BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE578B0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE578D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
+				CF47045E0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4443,6 +4447,7 @@
 				CFF9E55A0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE578F0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE57910BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
+				CF47045F0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4563,6 +4568,7 @@
 				CFF9E55B0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE57930BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE57950BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
+				CF4704600C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4683,6 +4689,7 @@
 				CFF9E55C0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE57970BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE57990BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
+				CF4704610C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4803,6 +4810,7 @@
 				CFF9E55D0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE579B0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE579D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
+				CF4704620C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5139,7 +5147,6 @@
 				CF381D3F0B6FD70600289177 /* C_ErrorOut.cpp in Sources */,
 				CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
 				CFF2131B0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */,
-				CF8824F90BFC94600012F2AE /* PMAllocationStats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5605,7 +5612,6 @@
 				CFCF92670B6E454B00747AC6 /* C_ErrorOut.cpp in Sources */,
 				CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
 				CFF2131D0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */,
-				CF8824FB0BFC94600012F2AE /* PMAllocationStats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

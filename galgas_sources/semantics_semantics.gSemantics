@@ -1100,7 +1100,7 @@ class @typeMatchInstruction extends @typeInstruction {
 #---------------------------------------------------------------------------*
 
 list @foreachEnumerationList  {
-  @typeCplusPlusName mCppEnumeratedVariableName ;
+  @typeExpression mSourceExpression ;
   @location mLocationOffset ;
   @string mCppTypeName ;
 }
@@ -1147,6 +1147,30 @@ class @typeStructuredExtractInstructionWithElse extends @typeInstruction {
   @typeStructuredExtractCasesList mCasesList ;
   @typeInstructionList mElseInstructionList ;
 }
+
+#----------------------------------------------------------------------*
+#                                                                      *
+#                    Structured instruction 'cast ...'                 *
+#                                                                      *
+#----------------------------------------------------------------------*
+
+list @typeStructuredCastBranchList {
+  @lstring mCastClassName ;
+  @bool mCheckForKindOfClass ;
+  @typeCplusPlusNameList mLocalConstantName ; # 0 or 1 element
+  @typeInstructionList mInstructionList ;
+}
+
+#----------------------------------------------------------------------*
+
+class @typeStructuredCastInstruction extends @typeInstruction {
+  @location mCastInstructionLocation ;
+  @typeExpression mSourceExpression ;
+  @lstring mSourceExpressionTypeName ;
+  @typeStructuredCastBranchList mBranchList ;
+  @typeInstructionList mElseInstructionList ;
+}
+
 
 #---------------------------------------------------------------------------*
 #                                                                           *

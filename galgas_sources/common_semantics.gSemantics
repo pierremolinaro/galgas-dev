@@ -390,7 +390,7 @@ abstract class @AC_galgasType {
 
 #--- By default, object does not accept to be enumerated (foreach instruction)
   method acceptForeachInstruction
-    ??@lstring inErrorLocation
+    ??@location inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
@@ -1549,7 +1549,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
 #--- stringset object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
-    ??@lstring unused inErrorLocation
+    ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
@@ -2051,7 +2051,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- list object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
-    ??@lstring unused inErrorLocation
+    ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
@@ -2270,7 +2270,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 #--- list object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
-    ??@lstring unused inErrorLocation
+    ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
@@ -2416,7 +2416,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- table object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
-    ??@lstring unused inErrorLocation
+    ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :

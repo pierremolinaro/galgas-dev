@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate 'foreach' instructions                                          *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -123,10 +123,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
     GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
+      ioCppFile << "const GGS_" << enumeratedVariable->mCppTypeName
+                << " _var_" << enumeratedVariable->mLocationOffset.location () << " = " ;
+      enumeratedVariable->mSourceExpression (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << " ;\n" ;
       ioCppFile << "GGS_" << enumeratedVariable->mCppTypeName
-                << "::element_type * operand_" << enumeratedVariable->mLocationOffset.location () << " = " ;
-      enumeratedVariable->mCppEnumeratedVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << ".firstObject () ;\n" ;
+                << "::element_type * operand_" << enumeratedVariable->mLocationOffset.location ()
+                << " = _var_" << enumeratedVariable->mLocationOffset.location () << ".firstObject () ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
@@ -167,8 +170,15 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
 bool cPtr_typeForeachInstruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
-  return isLexiqueFormalArgumentUsedForList (mInstructionList, inGenerateSemanticInstructions)
+  bool used = isLexiqueFormalArgumentUsedForList (mInstructionList, inGenerateSemanticInstructions)
     || mWhileExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
+  while ((enumeratedVariable != NULL) && ! used) {
+    macroValidPointer (enumeratedVariable) ;
+    used = enumeratedVariable->mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+    enumeratedVariable = enumeratedVariable->nextObject () ;
+  }
+  return used ;
 }
 
 //---------------------------------------------------------------------------*
@@ -181,7 +191,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {
     macroValidPointer (enumeratedVariable) ;
-    used = enumeratedVariable->mCppEnumeratedVariableName.isSameObjectAs (inArgumentCppName) ;
+    used = enumeratedVariable->mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
   }
   return used ;
@@ -196,7 +206,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
   GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {
     macroValidPointer (enumeratedVariable) ;
-    used = enumeratedVariable->mCppEnumeratedVariableName (HERE)->isCurrentObject () ;
+    used = enumeratedVariable->mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
   }
   return used ;
