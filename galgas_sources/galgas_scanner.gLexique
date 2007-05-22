@@ -48,6 +48,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "action",
   "block",
   "call",
+  "cast",
   "class",
   "compile",
   "const",
