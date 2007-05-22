@@ -340,6 +340,114 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeStructuredCastInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                       const C_String & inTargetFileName,
+                       sint32 & ioPrototypeIndex,
+                       const bool inGenerateDebug,
+                       const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    const C_String varName = C_String ("_var_") + C_String (mCastInstructionLocation.location ()) ;
+    ioCppFile << "{ const GGS_" << mSourceExpressionTypeName
+              << " " << varName << " = " ;
+    mSourceExpression (HERE)->generateExpression (ioCppFile) ;
+    ioCppFile << " ; // CAST instruction\n"
+              << "  if (" << varName << ".getPtr () != NULL) {\n"
+              << "    macroValidPointer (" << varName << ".getPtr ()) ;\n" ;
+    ioCppFile.incIndentation (+4) ;
+    bool first = true ;
+    GGS_typeStructuredCastBranchList::element_type * p = mBranchList.firstObject () ;
+    while (p != NULL) {
+      macroValidPointer (p) ;
+      if (first) {
+        first = false ;
+      }else{
+        ioCppFile << "}else " ;
+      }
+      if (p->mCheckForKindOfClass.boolValue ()) {
+        ioCppFile << "if (dynamic_cast <cPtr_" << p->mCastClassName << " *> (" << varName << ".getPtr ()) != NULL) {\n" ;
+       }else{
+        ioCppFile << "if (typeid (cPtr_" << p->mCastClassName << ") == typeid (" << varName << ".getPtr ())) {\n" ;
+      }
+      GGS_typeCplusPlusNameList::element_type * cstName = p->mLocalConstantName.firstObject () ;
+      if (cstName != NULL) {
+        macroValidPointer (cstName) ;
+        ioCppFile << "  const GGS_" << p->mCastClassName << " " ;
+        cstName->mCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+        ioCppFile << " (" << varName << ".getPtr ()) ;\n" ;
+      }
+      generateInstructionListForList (p->mInstructionList, ioCppFile,
+                                      inTargetFileName, ioPrototypeIndex,
+                                      inGenerateDebug, inGenerateSemanticInstructions) ;
+      p = p->nextObject () ;
+    }
+    ioCppFile << "}else{ // Else part OF CAST instruction\n" ;
+  //--- Generate else part instructions
+    generateInstructionListForList (mElseInstructionList, ioCppFile,
+                                    inTargetFileName, ioPrototypeIndex,
+                                    inGenerateDebug, inGenerateSemanticInstructions) ;
+    ioCppFile.incIndentation (-4) ;
+    ioCppFile << "    }\n"
+                 "  }\n"
+                 "}\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeStructuredCastInstruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+  bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionList, inGenerateSemanticInstructions)
+    || mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  GGS_typeStructuredCastBranchList::element_type * p = mBranchList.firstObject () ;
+  while ((p != NULL) && ! used) {
+    macroValidPointer (p) ;
+    used = isLexiqueFormalArgumentUsedForList (p->mInstructionList, inGenerateSemanticInstructions) ;
+    p = p->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeStructuredCastInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                        const bool inGenerateSemanticInstructions) const {
+  bool used = formalArgumentIsUsedForList (mElseInstructionList, inArgumentCppName, inGenerateSemanticInstructions)
+    || mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  GGS_typeStructuredCastBranchList::element_type * p = mBranchList.firstObject () ;
+  while ((p != NULL) && ! used) {
+    macroValidPointer (p) ;
+    used = formalArgumentIsUsedForList (p->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
+    p = p->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeStructuredCastInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  bool used = formalCurrentObjectArgumentIsUsedForList (mElseInstructionList)
+    || mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+  GGS_typeStructuredCastBranchList::element_type * p = mBranchList.firstObject () ;
+  while ((p != NULL) && ! used) {
+    macroValidPointer (p) ;
+    used = formalCurrentObjectArgumentIsUsedForList (p->mInstructionList) ;
+    p = p->nextObject () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeDropInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,

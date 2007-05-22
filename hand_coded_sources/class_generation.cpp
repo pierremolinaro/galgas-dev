@@ -143,8 +143,21 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << " {\n" ;
 
+//--- Default constructor
+  inHfile << "//--- Default constructor\n"
+             "  public : inline GGS_" << aNomClasse << " (void) : " ;
+  if (superClassName.length () > 0) {
+    inHfile << "GGS_" << superClassName ;
+  }else{
+    inHfile << "AC_galgas_class" ;
+  }
+  inHfile << " () {}\n\n" ;
+//--- Pointer assignment constructor
+  inHfile << "//--- Pointer assignment constructor\n"
+             "  public : GGS_" << aNomClasse << " (cPtr__AC_galgas_class * inPointer) ;\n\n" ;
+
+//--- 'new' constructor
   if (! mIsAbstract.boolValue ()) {
-  //--- 'new' constructor
     inHfile << "//--- 'new' constructor\n"
                "  public : static GGS_" << aNomClasse
             << " constructor_new (C_Compiler & inLexique" ;
@@ -160,16 +173,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
       variableIndex ++ ;
     }
     inHfile << "\n                                "
-               "COMMA_LOCATION_ARGS) ;\n" ;
+               "COMMA_LOCATION_ARGS) ;\n\n" ;
   }
 
-  if (superClassName.length () == 0) {
+// § if (superClassName.length () == 0) {
 //--- Engendrer la declaration de la methode 'getPtr'
     inHfile << "//--- getPtr\n"
                "  public : inline cPtr_" << aNomClasse << " * getPtr (void) const {\n"
                "    return (cPtr_" << aNomClasse << " *) mPointer ;\n"
-               "  }\n" ;
-  }
+               "  }\n\n" ;
+// §  }
 
 //--- Generate 'description' reader declaration
   inHfile << "//--- 'description' reader\n"
@@ -186,6 +199,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
             << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
   }
+  inHfile << "\n" ;
+
 //--- Generate 'message' reader prototypes              
   GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
@@ -503,6 +518,12 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
+//--- Pointer assignment constructor
+  inCppFile << "GGS_" << aNomClasse << "::\n"
+               "GGS_" << aNomClasse << " (cPtr__AC_galgas_class * inPointer) {\n"
+               "  macroAssignPointer (mPointer, inPointer) ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
 
   if (! mIsAbstract.boolValue ()) {
     inCppFile << "GGS_" << aNomClasse
