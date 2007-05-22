@@ -29,7 +29,7 @@
 void cPtr_typeUnaryMinusOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._operator_unary_minus (_inLexique)" ;
+  ioCppFile << "._operator_unary_minus (_inLexique COMMA_HERE)" ;
 }
 
 //---------------------------------------------------------------------------*
