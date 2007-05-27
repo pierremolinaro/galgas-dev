@@ -136,6 +136,7 @@ nonterminal <parent_class>
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@lstring outSuperClassName
+  !@string outSuperClassMessage
 label importSemantics
   ?!@ModelMap ioModelMap
   !@stringset outSuperClasses
@@ -185,6 +186,7 @@ nonterminal <parse_method>
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@string inClassMessage
 label parse
 ;
 
@@ -202,6 +204,7 @@ nonterminal <overrided_method>
   ?!@typeTableEnAvant tableEnAvant
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@string inClassMessage
 label parse
 ;
 
@@ -219,6 +222,7 @@ nonterminal <non_abstract_method>
   ?!@typeTableEnAvant tableEnAvant
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@string inClassMessage
 label parse
 ;
 
@@ -1225,6 +1229,7 @@ rule <parent_class>
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@lstring outSuperClassName
+  !@string outSuperClassMessage
 :
   listeTousAttributsSemantiques := [@typeListeAttributsSemantiques emptyList] ;
   tableDesClassesAncetres := [@typeSuperClassesMap emptyMap] ;
@@ -1232,6 +1237,7 @@ rule <parent_class>
   tableMessagesAbstraits := [@typeClassInheritedMessagesMap emptyMap] ;
   tableAttributs := [@typeSemanticAttributesMap emptyMap] ;
   outSuperClassName := [@lstring new !"" !here] ;
+  outSuperClassMessage := "" ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
   !@stringset outSuperClasses
@@ -1265,6 +1271,7 @@ rule <parent_class>
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@lstring outSuperClassName
+  !@string outSuperClassMessage
 :
 #--- Parse super class name
   $extends$ ;
@@ -1280,7 +1287,8 @@ rule <parent_class>
                                     ?tableDesClassesAncetres
                                     ?tableMessagesAbstraits
                                     ?tableAttributs
-                                    ?*)
+                                    ?*
+                                    ?outSuperClassMessage)
              error outSuperClassName : messageGalgasType ;
 #--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
   [!?tableDesClassesAncetres insertKey ! outSuperClassName] ;
@@ -1305,28 +1313,30 @@ label importSemantics
   @AC_semanticsEntity entite ;
   [ioComponentSemanticsEntitiesMap searchKey ! superClassName ?entite] ;
   extract entite->@typeEntiteType (?typeUtilisateur) error superClassName : messageTypeEntite ;
+  @string superClassMessage ;
   extract typeUtilisateur->@typeGalgasClassType (?*
                                     ?tableDesMethodes
                                     ?listeTousAttributsSemantiques
                                     ?tableDesClassesAncetres
                                     ?tableMessagesAbstraits
                                     ?tableAttributs
-                                    ?*)
+                                    ?*
+                                    ?superClassMessage)
              error superClassName : messageGalgasType ;
 #--- The direct super class is last inserted one 
   [!?tableDesClassesAncetres insertKey ! superClassName] ;
 #---
   @TypeModel type ;
-  [ioModelMap searchKey ! superClassName ?type] ;
-  extract type :
-  when @ClassModel (* @stringset superClasses @typeListModel attributeList @classMessageMap messageMap) ->
-    outSuperClasses := superClasses ;
-    outAttributeList := attributeList ;
-    outMessageMap := messageMap ;
+  [ioModelMap searchKey !superClassName ?type] ;
+  cast type :
+  when >= @ClassModel model do #(* @stringset superClasses @typeListModel attributeList @classMessageMap messageMap) ->
+    outSuperClasses := [model mSuperClasses] ;
+    outAttributeList := [model mAttributeList] ;
+    outMessageMap := [model mMessageMap] ;
   else
     error superClassName: "the '@" . [superClassName string] . "' type is not a class"
      -> outSuperClasses, outAttributeList, outMessageMap ;
-  end extract ;
+  end cast ;
   outSuperClasses += ![superClassName string] ;
 
   outMessageMap := [@classMessageMap emptyMap] ;
@@ -1375,6 +1385,7 @@ rule <semantics_declaration>
     @typeSuperClassesMap tableDesClassesAncetres ;
     @typeClassInheritedMessagesMap inheritedMessageMap ;
     @typeSemanticAttributesMap tableAttributs ;
+    @string superClassMessage ;
     <parent_class>
       !?ioComponentSemanticsEntitiesMap
       ?tableAttributs
@@ -1383,6 +1394,7 @@ rule <semantics_declaration>
       ?tableDesClassesAncetres
       ?inheritedMessageMap
       ?*
+      ?superClassMessage
     ;
     ${$ ;
   #--- Attributs de la classe
@@ -1401,19 +1413,32 @@ rule <semantics_declaration>
     @typeClassMessagesMap tableMessagesClasseConcrete [emptyMap] ;
     @typeClassInheritedMessagesMap messageMapForHeirs [emptyMap] ;
     @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
+    @string classMessage := "" ;
     repeat
     while
       $message$ ;
-      @lstring messageName ;
-      $identifier$ ? messageName ;
-    #--- Chaine definissant le message d'erreur
-      @lstring messageText ;
-      $literal_string$ ? messageText ;
-    #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![messageName string]] then
-        [!?messageMapForHeirs insertKey !messageName] ;
-      end if ; 
-      [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ;
+      select
+        @lstring messageText ;
+        $literal_string$ ? messageText ;
+        if [classMessage length] > 0 then
+          error messageText : "the class message is already defined" ;
+        elsif [messageText length] == 0 then
+          error messageText : "the class message string should not be empty" ;
+        else
+          classMessage := [messageText string] ;
+        end if ;
+      or
+        @lstring messageName ;
+        $identifier$ ? messageName ;
+      #--- Chaine definissant le message d'erreur
+        @lstring messageText ;
+        $literal_string$ ? messageText ;
+      #--- Entrer le message dans la map
+        if not [inheritedMessageMap hasKey ![messageName string]] then
+          [!?messageMapForHeirs insertKey !messageName] ;
+        end if ; 
+        [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ;
+      end select ;
       $;$ ;
     while
       <abstract_method>
@@ -1440,6 +1465,7 @@ rule <semantics_declaration>
         !?tableEnAvant
         !inOptionsComponentsMapForUse
         !inTreewalkingComponentMap
+        !classMessage
       ;
      while
       <overrided_method>
@@ -1456,8 +1482,13 @@ rule <semantics_declaration>
         !?tableEnAvant
         !inOptionsComponentsMapForUse
         !inTreewalkingComponentMap
+        !classMessage
      ;
     end repeat ;
+  #--- Check class message is defined if needed
+    if ([superClassMessage length] > 0) & ([classMessage length] == 0) then
+      error here: "this class should defined a class message, as it inherits from a class that does" ;
+    end if ;
   #--- Verify that all inherited messages are defined
     foreach inheritedMessageMap (@lstring nomMessageAbstrait) :
       if not [tableMessagesClasseConcrete hasKey ![nomMessageAbstrait string]] then
@@ -1472,7 +1503,8 @@ rule <semantics_declaration>
       !tableDesClassesAncetres
       !messageMapForHeirs
       !tableAttributs
-      !estAbstraite] ;
+      !estAbstraite
+      !classMessage] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
   #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
@@ -1485,6 +1517,7 @@ rule <semantics_declaration>
        !listeAttributsSemantiquesCourants
        !tableDesClassesAncetres
        !tableMessagesClasseConcrete
+       !classMessage
     ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
@@ -1556,19 +1589,32 @@ label importSemantics
     @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
     @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
     @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+    @string classMessage := "" ;
     repeat
     while
       $message$ ;
-      @lstring messageName ;
-      $identifier$ ? messageName ;
-    #--- Chaine definissant le message d'erreur
-      @lstring messageText ;
-      $literal_string$ ? messageText ;
-    #--- Entrer le message dans la map
-      if not [inheritedMessageMap hasKey ![messageName string]] then
-        [!?messageMapForHeirs insertKey !messageName] ;
-      end if ; 
-      [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ;
+      select
+        @lstring messageText ;
+        $literal_string$ ? messageText ;
+        if [classMessage length] > 0 then
+          error messageText : "the class message is already defined" ;
+        elsif [messageText length] == 0 then
+          error messageText : "the class message string should not be empty" ;
+        else
+          classMessage := [messageText string] ;
+        end if ;
+      or
+        @lstring messageName ;
+        $identifier$ ? messageName ;
+      #--- Chaine definissant le message d'erreur
+        @lstring messageText ;
+        $literal_string$ ? messageText ;
+      #--- Entrer le message dans la map
+        if not [inheritedMessageMap hasKey ![messageName string]] then
+          [!?messageMapForHeirs insertKey !messageName] ;
+        end if ; 
+        [!?tableMessagesClasseConcrete insertKey !messageName !messageText] ;
+      end select ;
       $;$ ;
     while
       <abstract_method>
@@ -1594,6 +1640,7 @@ label importSemantics
         !?tableEnAvant
         !optionsComponentsMapForUse
         !inTreewalkingComponentMap
+        !classMessage
       ;
      while
       <overrided_method>
@@ -1610,6 +1657,7 @@ label importSemantics
         !?tableEnAvant
         !optionsComponentsMapForUse
         !inTreewalkingComponentMap
+        !classMessage
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
@@ -1626,7 +1674,8 @@ label importSemantics
                                              !tableDesClassesAncetres
                                              !messageMapForHeirs
                                              !tableAttributs
-                                             !estAbstraite] ;
+                                             !estAbstraite
+                                             !classMessage] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
     $}$ ;
@@ -1692,6 +1741,7 @@ rule <parse_method>
   !@typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@string inClassMessage
 :
 #--- Get reader name
   $identifier$ ? outMethodName ;
@@ -1711,7 +1761,8 @@ rule <parse_method>
            !tableDesClassesAncetres
            !messageMapForHeirs
            !tableAttributsHerites
-           !inClassIsAbstract] ;
+           !inClassIsAbstract
+           !inClassMessage] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument !me_Constant !typeDefinition !me_constantCppName] ;
 #--- Insert the predefined "super" variable
   @lstring super_Constant := [@lstring new !"super" !here] ;
@@ -1723,7 +1774,9 @@ rule <parse_method>
            !tableDesClassesAncetres
            !messageMapForHeirs
            !tableAttributsHerites
-           !inClassIsAbstract] ;
+           !inClassIsAbstract
+        !inClassMessage
+  ] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument !super_Constant !typeDefinition !super_constantCppName] ;
 #--- Parse formal arguments
   @L_signature signatureForGrammarComponent ;
@@ -1774,6 +1827,7 @@ rule <non_abstract_method>
   ?!@typeTableEnAvant tableEnAvant
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@string inClassMessage
 :
   select
     $method$ ;
@@ -1802,6 +1856,7 @@ rule <non_abstract_method>
     ?listeTypeEtNomsArguments
     !inOptionsComponentsMapForUse
     !inTreewalkingComponentMap
+    !inClassMessage
   ;
   [!?tableDesMethodes insertKey !methodName !methodSignature] ;
   [!?tableMethodesAimplementer insertNotAbstract !methodName !methodSignature !listeTypeEtNomsArguments !instructionsList] ;
@@ -1831,6 +1886,7 @@ rule <overrided_method>
   ?!@typeTableEnAvant tableEnAvant
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@string inClassMessage
 :
   $override$ ;
   select
@@ -1860,6 +1916,7 @@ rule <overrided_method>
     ?listeTypeEtNomsArguments
     !inOptionsComponentsMapForUse
     !inTreewalkingComponentMap
+    !inClassMessage
   ;
 #--- Verify reader signature is compatible with overriden reader signature
   @L_EXsignature listeDeTypesMethodeOriginale ;
@@ -2576,14 +2633,14 @@ rule <semantic_instruction>
   @AC_galgasType propertyType ;
   [inCurrentTreewalkingRoutinePropertyMap searchKey !calledPropertyName ?propertyType] ;
   @lstring entityName ;
-  extract propertyType :
-  when @typeGalgas_singleReferenceEntity (@lstring kEntityName 2*) ->
-    entityName := kEntityName ;
-  when @typeGalgas_multipleReferenceEntity (@lstring kEntityName 2*) ->
-    entityName := kEntityName ;
+  cast propertyType :
+  when >= @typeGalgas_singleReferenceEntity ref do
+    entityName := [ref mEntityTypeName] ;
+  when >= @typeGalgas_multipleReferenceEntity ref do
+    entityName := [ref mEntityTypeName] ;
   else
     error calledPropertyName: "this property should be a single or a multiple reference" -> entityName ;
-  end extract ;
+  end cast ;
 #--- Check a treewalking routine is actually defined
   @L_EXsignature routineSignature ;
   if [inTreewalkingRoutineHeaderMap hasKey ![entityName string]] then
@@ -2642,7 +2699,7 @@ rule <semantic_instruction>
   @lstring nomTypeSource ;
   @typeClassInheritedMessagesMap tableMessagesAbstraits ;
   extract typeVarSource->@typeGalgasClassType
-           (?nomTypeSource ?* ?* ?* ?tableMessagesAbstraits ?* ?*)
+           (?nomTypeSource ?* ?* ?* ?tableMessagesAbstraits ?3*)
            error nomVarSource : messageGalgasType ;
 #--- Parse simple or structured extract instruction
   @typeInstruction instruction ;
@@ -2682,6 +2739,7 @@ rule <extract_instruction>
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
+  warning here:"simple extract instruction is obsolete: use cast expression instead" ;
 #--- Nom de la classe pour la conversion
   $->$ ;
   # warning here:"simple extract instruction is obsolete" ;
@@ -2699,9 +2757,7 @@ rule <extract_instruction>
                 ?*
                 ?listeAttributsSemantiques
                 ?tableDesClassesAncetres
-                ?*
-                ?*
-                ?*)
+                ?4*)
              error nomClasse : messageGalgasType ;
 #--- Verify class is an heir of variable type
   if not [tableDesClassesAncetres hasKey ![nomTypeSource string]] then
@@ -2785,9 +2841,7 @@ rule <extract_instruction>
                    ?*
                    ?listeAttributs1
                    ?tableDesClassesAncetresType1
-                   ?*
-                   ?*
-                   ?*)
+                   ?4*)
               error nomType1 : messageGalgasType ;
       #--- Verify class is an heir of variable type
         if not [tableDesClassesAncetresType1 hasKey ![nomTypeSource string]] then
@@ -2876,7 +2930,7 @@ rule <semantic_instruction>
 #--- Check variable has class type
   @lstring sourceExpressionTypeName ;
   extract sourceExpressionType->@typeGalgasClassType
-           (? sourceExpressionTypeName ?* ?* ?* ?* ?* ?*)
+           (? sourceExpressionTypeName ?7*)
            error here : messageGalgasType ;
 #--- When branches
   @typeInstructionList elseBranchInstructionsList [emptyList] ;
@@ -2903,7 +2957,7 @@ rule <semantic_instruction>
         extract entite->@typeEntiteType (?typeDefinition) error castedTypeName : messageTypeEntite ;
       #--- Check the type is a class
         @typeSuperClassesMap superClassMap ;
-        extract typeDefinition->@typeGalgasClassType (?3* ?superClassMap ?3*) error castedTypeName : messageGalgasType ;
+        extract typeDefinition->@typeGalgasClassType (?3* ?superClassMap ?4*) error castedTypeName : messageGalgasType ;
       #--- Verify class is an heir of variable type
         @string sourceExpressionTypeNameString := [sourceExpressionTypeName string] ;
         if not checkForKindOfClass then
@@ -2981,103 +3035,6 @@ rule <semantic_instruction>
   $;$ ;
 end rule ;
 
-
-##rule <extract_instruction>
-##  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
-##  ??@typeTableEnAvant inTableEnAvant
-##  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-##  ??@M_optionComponents inOptionsComponentsMapForUse
-##  ?!@typeVariablesMap ioVariablesMap
-##  ?@typeCplusPlusName inSourceVarCppName
-##  ?@lstring nomTypeSource
-##  ?@typeClassInheritedMessagesMap unused tableMessagesAbstraits
-##  !@typeInstruction outInstruction
-##  ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
-##  ??@entityToImplementMap inMetamodelEntityMap
-##  ??@M_treewalkingComponents inTreewalkingComponentMap
-##:
-##  @typeStructuredExtractCasesList casesList [emptyList] ;
-##  $:$ ;
-##  $when$ ;
-##  block ioVariablesMap.testBloc () :
-##    repeat
-##      block ioVariablesMap.testPart () :
-##        @location indicatif1 := here ;
-##      #--- Nom du type 1
-##        @lstring nomType1 ;
-##        $type_name$ ? nomType1 ;
-##      #--- Verifier que la classe 'nomType1' est declaree
-##        @AC_galgasType definitionClasse1 ;
-##        @AC_semanticsEntity entite ;
-##        [ioComponentSemanticsEntitiesMap searchKey !nomType1 ?entite] ;
-##        extract entite->@typeEntiteType (?definitionClasse1) error nomType1 : messageTypeEntite ;
-##      #--- Verifier que la classe 'nomType1' herite de la classe 'nomTypeBase1'
-##        @typeSuperClassesMap tableDesClassesAncetresType1 ;
-##        @typeListeAttributsSemantiques listeAttributs1 ;
-##        extract definitionClasse1->@typeGalgasClassType
-##                  (?*
-##                   ?*
-##                   ?listeAttributs1
-##                   ?tableDesClassesAncetresType1
-##                   ?*
-##                   ?*
-##                   ?*)
-##              error nomType1 : messageGalgasType ;
-##      #--- Verify class is an heir of variable type
-##        if not [tableDesClassesAncetresType1 hasKey ![nomTypeSource string]] then
-##          error nomType1 : "This class does not inherit from '@" . [nomTypeSource string] . "'" ;
-##        end if ;
-##      #--- Arguments du type 1
-##       @bool noUsedParameter ;
-##        <parse_effective_input_parameters_list>
-##          !?ioVariablesMap
-##          !listeAttributs1
-##          !indicatif1
-##          ![@localConstantBuildStyleEnum listStyle]
-##          ?noUsedParameter
-##        ;
-##      #--- Liste des instructions
-##        $->$ ;
-##        @typeInstructionList instructionsList [emptyList] ;
-##        <semantic_instructions_list>
-##          !inTreewalkingRoutineHeaderMap
-##          !inTableEnAvant
-##          !ioComponentSemanticsEntitiesMap
-##          !inOptionsComponentsMapForUse
-##          !?ioVariablesMap
-##          !?instructionsList
-##          !inCurrentTreewalkingRoutinePropertyMap
-##          !inMetamodelEntityMap
-##          !inTreewalkingComponentMap
-##        ;
-##        casesList += !nomType1 !indicatif1 !instructionsList !noUsedParameter ;
-##      end block (!here) ;
-##    while
-##      $when$ ;
-##    end repeat ;
-##  #---------------------  Default error -----------------------
-##    block ioVariablesMap.testPart () :
-##      $else$ ;
-##      @typeInstructionList elseInstructionList [emptyList] ;
-##      <semantic_instructions_list>
-##        !inTreewalkingRoutineHeaderMap
-##        !inTableEnAvant
-##        !ioComponentSemanticsEntitiesMap
-##        !inOptionsComponentsMapForUse
-##        !?ioVariablesMap
-##        !?elseInstructionList
-##        !inCurrentTreewalkingRoutinePropertyMap
-##        !inMetamodelEntityMap
-##        !inTreewalkingComponentMap
-##      ;
-##      outInstruction := [@typeStructuredExtractInstructionWithElse new
-##        !inSourceVarCppName !casesList !elseInstructionList
-##      ] ;
-##    end block (!here) ;
-##  end block () ;
-##  $end$ ;
-##  $extract$ ;
-##end rule ;
 #---------------------------------------------------------------------------*
 #                                                                           *
 # Local variable declaration                                                *
@@ -3207,19 +3164,19 @@ rule <instruction_beginning_with_identifier>
   @AC_semanticsEntity entite ;
   [ioComponentSemanticsEntitiesMap searchKey !nomVarDest ?entite] ;
   @bool isExternActionCall ;
-  extract entite:
-  when @typeEntiteRoutine (@L_EXsignature kSignatureRoutine) ->
-    signatureRoutine := kSignatureRoutine ;
+  cast entite:
+  when >= @typeEntiteRoutine r do
+    signatureRoutine := [r aListeArgumentsFormels] ;
     isExternActionCall := false ;
-  when @typeEntiteActionExterne (@L_EXsignature kSignatureRoutine) ->
-    signatureRoutine := kSignatureRoutine ;
+  when >= @typeEntiteActionExterne ae do
+    signatureRoutine := [ae aSignature] ;
     isExternActionCall := true ;
   else
     error nomVarDest :
      "'" . [nomVarDest string] . "' should name a routine or an extern action"
      -> signatureRoutine, isExternActionCall
     ;
-  end extract ;
+  end cast ;
 #--- Arguments effectifs
   @typeExpressionList expressionsList ;
   <actual_parameters_list>
@@ -4081,22 +4038,22 @@ rule <parse_match_operand>
     !?ioVariablesMap
   ;
   outVarLocation := here ;
-  extract type :
-  when @typeGalgasClassType (@lstring baseTypeName * * * * * *) ->
-    outBaseTypeName := baseTypeName ;
+  cast type :
+  when >= @typeGalgasClassType t do
+    outBaseTypeName := [t mClassTypeName] ;
     outIsEnumeration := false ;
     outEnumMessageMap := [@enumConstantMap emptyMap] ;
-  when @typeGalgas_enum (@lstring typeName @enumConstantMap enumMessageMap *) ->
-    outBaseTypeName := typeName ;
+  when >= @typeGalgas_enum e do
+    outBaseTypeName := [e mEnumTypeName] ;
     outIsEnumeration := true ;
-    outEnumMessageMap := enumMessageMap ;
+    outEnumMessageMap := [e mEnumConstantesMap] ;
   else
     @string actualTypeName ;
     [type getTypeName ?actualTypeName] ; 
     error variableName : "the type of this variable is '@" . actualTypeName
       . "' ; I was expected an enumeration type or an abstract type" 
       -> outBaseTypeName, outIsEnumeration, outEnumMessageMap ;
-  end extract ;
+  end cast ;
 end rule ;
 
 
@@ -4129,7 +4086,7 @@ rule <parse_match_case>
                    ?tableDesClassesAncetresType1
                    ?*
                    ?*
-                   ?isAbstract)
+                   ?isAbstract ?*)
               error outTypeName : messageGalgasType ;
 #--- Check class is not abstract
   if isAbstract then

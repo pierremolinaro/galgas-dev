@@ -156,6 +156,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Pointer assignment constructor\n"
              "  public : GGS_" << aNomClasse << " (cPtr__AC_galgas_class * inPointer) ;\n\n" ;
 
+//--- _castFrom class method
+inHfile << "//--- _castFrom class method (implements cast expression)\n"
+             "  public : static GGS_" << aNomClasse << "\n"
+             "  _castFrom (C_Compiler & inLexique,\n"
+             "             cPtr__AC_galgas_class * inPointer,\n"
+             "             const bool inUseKindOfClass,\n"
+             "             const GGS_location & inErrorLocation\n"
+             "             COMMA_LOCATION_ARGS) ;\n\n" ;
+
+
 //--- 'new' constructor
   if (! mIsAbstract.boolValue ()) {
     inHfile << "//--- 'new' constructor\n"
@@ -176,13 +186,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "COMMA_LOCATION_ARGS) ;\n\n" ;
   }
 
-// § if (superClassName.length () == 0) {
 //--- Engendrer la declaration de la methode 'getPtr'
-    inHfile << "//--- getPtr\n"
-               "  public : inline cPtr_" << aNomClasse << " * getPtr (void) const {\n"
-               "    return (cPtr_" << aNomClasse << " *) mPointer ;\n"
-               "  }\n\n" ;
-// §  }
+  inHfile << "//--- getPtr\n"
+             "  public : inline cPtr_" << aNomClasse << " * getPtr (void) const {\n"
+             "    return (cPtr_" << aNomClasse << " *) mPointer ;\n"
+             "  }\n\n" ;
 
 //--- Generate 'description' reader declaration
   inHfile << "//--- 'description' reader\n"
@@ -209,6 +217,9 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  public : GGS_string reader_" << messageCourant->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n\n" ;
     messageCourant = messageCourant->nextObject () ;
   }
+
+/* §  inHfile << "//--- Class message\n"
+             "  public : GGS_string reader_message (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n\n" ; */
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
   inHfile << "//--- operator ()\n"
@@ -299,6 +310,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     generatedZone3 << "  public : static const char * static_string_message_" << messageCourant->mKey << " (void) ;\n" ;
     messageCourant = messageCourant->nextObject () ;
   }
+  generatedZone3 << "//--- Class message\n"
+                    "  public : virtual const char * _message (void) const ;\n"
+                    "  public : static const char * _static_message (void) ;\n\n" ;
 
 //--- Method for 'description' reader
   generatedZone3 << "//--- Method for 'description' reader\n"
@@ -498,8 +512,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "const char * cPtr_" << aNomClasse
-              << "\n::static_string_message_" << messageCourant->mKey
+    inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
+                 "static_string_message_" << messageCourant->mKey
               << " (void) {\n"
                  "  return " ;
     inCppFile.writeCstringConstant (messageCourant->mInfo.mMessage) ;
@@ -515,6 +529,21 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     messageCourant = messageCourant->nextObject () ;
   }
 
+  inCppFile.writeCppTitleComment ("Class message") ;
+  inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
+               "_message (void) const {\n"
+               "  return " ;
+  inCppFile.writeCstringConstant (mClassMessage) ;
+  inCppFile << " ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
+               "_static_message (void) {\n"
+               "  return " ;
+  inCppFile.writeCstringConstant (mClassMessage) ;
+  inCppFile << " ;\n"
+               "}\n\n" ;
+
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
@@ -525,9 +554,38 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
+//--- _castFrom method
+  inCppFile << "//--- _castFrom class method (implements cast expression)\n"
+               "GGS_" << aNomClasse << " GGS_" << aNomClasse << "::\n"
+               "_castFrom (C_Compiler & inLexique,\n"
+               "           cPtr__AC_galgas_class * inPointer,\n"
+               "           const bool inUseKindOfClass,\n"
+               "           const GGS_location & inErrorLocation\n"
+               "           COMMA_LOCATION_ARGS) {\n"
+               "  GGS_" << aNomClasse << " _result ;\n"
+               "  if (inPointer != NULL) {\n"
+               "    macroValidPointer (inPointer) ;\n"
+               "    const bool ok = inUseKindOfClass\n"
+               "      ? (dynamic_cast <cPtr_" << aNomClasse << " *> (inPointer) != NULL)\n"
+               "      : (typeid (cPtr_" << aNomClasse << ") == typeid (*inPointer)) ;\n"
+               "    if (ok) {\n"
+               "      _result = GGS_" << aNomClasse << " (inPointer) ;\n"
+               "    }else{\n"
+               "      TC_UniqueArray <C_String> message1_ (1, \"\" COMMA_HERE) ;\n"
+               "      message1_ (0 COMMA_HERE) << cPtr_" << aNomClasse << "::_static_message () ;\n"
+               "      inErrorLocation.signalExtractError (inLexique,\n"
+               "                                          message1_,\n"
+               "                                          inPointer->_message ()\n"
+               "                                          COMMA_THERE) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return _result ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+
   if (! mIsAbstract.boolValue ()) {
-    inCppFile << "GGS_" << aNomClasse
-              << " GGS_" << aNomClasse << "::\n"
+    inCppFile << "GGS_" << aNomClasse << " GGS_" << aNomClasse << "::\n"
                  "constructor_new (C_Compiler & /* inLexique */" ;
     current = aListeTousAttributsNonExternes.firstObject () ;
     variableIndex = 0 ;
@@ -586,6 +644,22 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     inCppFile.writeCppHyphenLineComment () ;
     messageCourant = messageCourant->nextObject () ;
   }
+
+//--- Generate declaration of message readers
+// §  inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
+//               "reader_message (C_Compiler & /* _inLexique */\n"
+/*               "                COMMA_UNUSED_LOCATION_ARGS) const {\n"
+               "  GGS_string result ;\n"
+               "  if (mPointer != NULL) {\n"
+               "    macroValidPointer (mPointer) ;\n"
+               "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
+               "               \"dynamic cast error\", 0, 0) ;\n"
+               "    cPtr_" << aNomClasse << " * p = (cPtr_" << aNomClasse << " *) mPointer ;\n"
+               "    result = p->_message () ;\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ; */
 
 //--- For every attribute, generate a reader
   current = aListeAttributsCourants.firstObject () ;

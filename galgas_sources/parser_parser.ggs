@@ -974,19 +974,19 @@ rule <syntax_declaration>
   elsif [returnedEntity string] != "" then
     [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?7*] ;
     foreach allPropertiesMap (@lstring kKey @AC_galgasType kPropertyType) :
-      extract kPropertyType :
-      when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName 2*) ->
+      cast kPropertyType :
+      when >= @typeGalgas_singleReferenceEntity do # § (@lstring kReferenceEntityName 2*) ->
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertSingleEntityLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kPropertyType] ;
         listeInstructions += !instruction ;
-      when @typeGalgas_multipleReferenceEntity (@lstring kReferenceEntityName 2*) ->
+      when >= @typeGalgas_multipleReferenceEntity e do # § (@lstring kReferenceEntityName 2*) ->
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeExpression sourceExpression := [@typeConstructorExpression new
-          ![kReferenceEntityName string]. "List"
+          ![[e mEntityTypeName] string]. "List"
           !"emptyList"
           ![@typeExpressionList emptyList]
         ] ;
@@ -1002,7 +1002,7 @@ rule <syntax_declaration>
         [!?tableArgumentsMethode insertEntityAttributeLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kPropertyType] ;
         listeInstructions += !instruction ;
-      end extract ;
+      end cast ;
     end foreach ;
   end if ;
 #--- Parse instructions list
@@ -1338,7 +1338,8 @@ rule <syntax_instruction>
     if isMultipleEntity then
       @AC_galgasType type ;
       [!?ioVariablesMap searchForReadWriteAccess !returnedEntityVariableName ?type ?*] ;
-      extract type->@typeGalgas_multipleReferenceEntity (?variableEntityName ?2*) error returnedEntityVariableName : messageGalgasType ;
+      variableEntityName := [(cast type if >= @typeGalgas_multipleReferenceEntity else error returnedEntityVariableName) mEntityTypeName] ;
+      #extract type->@typeGalgas_multipleReferenceEntity (?variableEntityName ?2*) error returnedEntityVariableName : messageGalgasType ;
     else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;

@@ -26,6 +26,45 @@
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+void cPtr_typeCastInExpression::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "GGS_" << mCastTypeName <<"::_castFrom (_inLexique, " ;
+  mCastedExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ".getPtr (), "
+            << (mCheckForKindOfClass.boolValue () ? "true" : "false")
+            << ", " ;
+  mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+            << mCastTypeName.lineNumber ()
+            << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeCastInExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mCastedExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+    || mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeCastInExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mCastedExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+    || mErrorLocationExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeCastInExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 void cPtr_typeUnaryMinusOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;

@@ -278,13 +278,13 @@ rule <parse_metamodel>
                      5*) :
     foreach kEntityPropertiesMap (@lstring kAttributeName
                                   @AC_galgasType kPropertyType) :
-      extract kPropertyType :
-      when @typeGalgas_singleReferenceEntity (@lstring kReferenceEntityName 2*) ->
-        [allEntityMap searchKey !kReferenceEntityName ?8*] ;
-      when @typeGalgas_multipleReferenceEntity (@lstring kReferenceEntityName 2*) ->
-        [allEntityMap searchKey !kReferenceEntityName ?8*] ;
+      cast kPropertyType :
+      when >= @typeGalgas_singleReferenceEntity e do # § (@lstring kReferenceEntityName 2*) ->
+        [allEntityMap searchKey ![e mEntityTypeName] ?8*] ;
+      when >= @typeGalgas_multipleReferenceEntity e do # § (@lstring kReferenceEntityName 2*) ->
+        [allEntityMap searchKey ![e mEntityTypeName] ?8*] ;
       else
-      end extract ;
+      end cast ;
     end foreach ;
   end foreach ;
 #--- Generate C++ code

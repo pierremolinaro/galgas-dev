@@ -268,22 +268,22 @@ routine checkLogicalNegateOperator
   ??@AC_galgasType inOperandType
   !@AC_galgasType outResultType
 :
-  extract inOperandType :
-  when @typeGalgas_binaryset () ->
+  cast inOperandType :
+  when >= @typeGalgas_binaryset do
     outResultType := inOperandType ;
-  when @typeGalgas_uint () ->
+  when >= @typeGalgas_uint do
     outResultType := inOperandType ;
-  when @typeGalgas_sint () ->
+  when >= @typeGalgas_sint do
     outResultType := inOperandType ;
-  when @typeGalgas_uint64 () ->
+  when >= @typeGalgas_uint64 do
     outResultType := inOperandType ;
-  when @typeGalgas_sint64 () ->
+  when >= @typeGalgas_sint64 do
     outResultType := inOperandType ;
   else
     error here : "the ~ operator is not defined for an "
     . [inOperandType messageGalgasType] . " object"
     -> outResultType ;
-  end extract ;
+  end cast ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -583,17 +583,17 @@ routine unary_minus_type_check
   ??@AC_galgasType inExpressionType
   !@AC_galgasType outResultType
 :
-  extract inExpressionType :
-  when @typeGalgas_sint ()->
+  cast inExpressionType :
+  when >= @typeGalgas_sint do
     outResultType := inExpressionType ;
-  when @typeGalgas_sint64 ()->
+  when >= @typeGalgas_sint64 do
     outResultType := inExpressionType ;
   else
     error here : "unary minus for " . [inExpressionType messageGalgasType]
       . " is not valid"
       -> outResultType
     ;
-  end extract ;
+  end cast ;
 end routine ;
 
 #------------------------------------------------------------------------------*
@@ -1082,6 +1082,8 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #   F A C T O R    :    ( EXPRESSION )                                         *
+#                       (cast EXPRESSION if >= @T else error EXPRESSION)       *
+#                       (cast EXPRESSION if == @T else error EXPRESSION)       *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -1093,13 +1095,83 @@ rule <factor>
   !@AC_galgasType outResultType
 :
   $($ ;
-  <expression>
-    !ioEntitiesMap
-    !inOptionsComponentsMapForUse
-    !?ioVariablesMap
-    ?outExpression
-    ?outResultType
-  ;
+  select
+    <expression>
+      !ioEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?outExpression
+      ?outResultType
+    ;
+  or
+    $cast$ ;
+    @typeExpression castedExpression ;
+    @AC_galgasType castExpressionType ;
+    <expression>
+      !ioEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?castedExpression
+      ?castExpressionType
+    ;
+  #--- Check the type is a class
+    @lstring kSourceExpresionClassName ;
+    @typeClassInheritedMessagesMap classMessageMap ;
+    extract castExpressionType->@typeGalgasClassType (?kSourceExpresionClassName ?3* ? classMessageMap ?3*) error here : messageGalgasType ;
+    $if$ ;
+    @bool checkForKindOfClass ;
+    select
+      $>=$ ;
+      checkForKindOfClass := true ;
+    or
+      $==$ ;
+      checkForKindOfClass := false ;
+    end select ;
+  #--- Cast type
+    @lstring castedTypeName ;
+    $type_name$ ?castedTypeName ;
+  #--- Check the name 'castedTypeName' refers to a type
+    @AC_semanticsEntity entite ;
+    [ioEntitiesMap searchKey !castedTypeName ?entite] ;
+    extract entite->@typeEntiteType (? outResultType) error castedTypeName : messageTypeEntite ;
+  #--- Check the type is a class
+    @typeSuperClassesMap superClassMap ;
+    @string classMessage ;
+    extract outResultType->@typeGalgasClassType (?3* ?superClassMap ?3* ?classMessage) error castedTypeName : messageGalgasType ;
+  #--- Check class does define a message
+    if [classMessage length] == 0 then
+      error castedTypeName: "in order to be used in a cast expression, the '@" . castedTypeName . "' class should define a class message" ;
+    end if ;
+  #--- Verify class is an heir of variable type
+    @string sourceExpressionTypeNameString := [kSourceExpresionClassName string] ;
+    if not checkForKindOfClass then
+      if ([castedTypeName string] != sourceExpressionTypeNameString) & not [superClassMap hasKey ! sourceExpressionTypeNameString] then
+        error castedTypeName : "This class is not '@" . sourceExpressionTypeNameString . "' and does inherit from it" ;
+      end if ;
+    elsif not [superClassMap hasKey !sourceExpressionTypeNameString] then
+      error castedTypeName : "This class does not inherit from '@" . sourceExpressionTypeNameString . "'" ;
+    end if ;
+    $else$ ;
+    $error$ ;
+    @typeExpression errorLocationExpression ;
+    @AC_galgasType errorLocationExpressionType ;
+    <expression>
+      !ioEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?errorLocationExpression
+      ?errorLocationExpressionType
+    ;
+  #--- Verifier que la variable est d'une type contenant une location localisant l'error
+    [errorLocationExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
+  #--- Generate instruction
+    outExpression := [@typeCastInExpression new
+      !castedExpression
+      !checkForKindOfClass
+      !castedTypeName
+      !errorLocationExpression
+    ] ;
+  end select ;
   $)$ ;
 end rule ;
 

@@ -123,7 +123,8 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  #ifdef __MWERKS__\n"
                     "    #include <WINSIOUX.H>\n"
                     "  #endif\n"
-                    "#endif\n\n" ;
+                    "#endif\n\n"
+                    "#include <typeinfo>\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
   GGS_stringset::element_type * currentInclusion = inInclusionsForImplementationFile.firstObject () ;
