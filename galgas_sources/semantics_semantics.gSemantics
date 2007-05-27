@@ -409,6 +409,17 @@ class @typeDescriptionInExpression extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+#   C A S T    O P E R A N D                                                *
+#---------------------------------------------------------------------------*
+
+class @typeCastInExpression extends @typeExpression {
+  @typeExpression mCastedExpression ;
+  @bool mCheckForKindOfClass ;
+  @lstring mCastTypeName ;
+  @typeExpression mErrorLocationExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   B O O L E A N    O P E R A T I O N S                                    *
 #---------------------------------------------------------------------------*
 
@@ -905,11 +916,11 @@ routine verifierCompatibiliteArgEffectifsSignature
       when argumentInOut :: parameterOutIn :
         checkAssignmentTypesCompatibility !attSignatureType !attEffectiveType !inErrorLocation !false ;
       when argumentOut :: parameterIn :
-        extract attEffectiveType :
-        when @typeGalgas_jokerInParameterList () ->
+        cast attEffectiveType :
+        when >= @typeGalgas_jokerInParameterList do
         else
           checkAssignmentTypesCompatibility !attSignatureType !attEffectiveType !inErrorLocation !false ;
-        end extract ;
+        end cast ;
       else
         error inErrorLocation : [parameterPassingMode actualArgumentMessage] . " is not compatible with " .
                                 [formalArgPassingMode formalArgumentMessage] ;
@@ -920,8 +931,8 @@ routine verifierCompatibiliteArgEffectifsSignature
     ioExpressionList := [@typeExpressionList emptyList] ;
     foreach signatureReference (@AC_galgasType attSignatureType *),
             expressionList (@typeExpression attExpressionType) :
-      extract attExpressionType :
-      when @typeJokerInExpression () ->
+      cast attExpressionType :
+      when >= @typeJokerInExpression do
         @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !here ![@uint sequenceNumber]] ;
         @typeExpression e := [@typeVarInExpression new !cppVarName] ;
         ioExpressionList += !e ;
@@ -929,7 +940,7 @@ routine verifierCompatibiliteArgEffectifsSignature
         ioInstructionsList += !i ;
       else
         ioExpressionList += !attExpressionType ;
-      end extract ;
+      end cast ;
     end foreach ;
   end if ;
 end routine ;
@@ -1310,6 +1321,9 @@ class @C_classToImplement extends @typeEntityToGenerate {
 
 #--- Table des messages
   @typeClassMessagesMap mMessagesMap ;
+
+#--- Table des messages
+  @string mClassMessage ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1348,6 +1362,7 @@ class @C_domainToImplement extends @typeEntityToGenerate {
 
 class @typeEntiteActionExterne extends @AC_semanticsEntity {
   @L_EXsignature aSignature ;
+  message "an external action" ;
   message messageTypeEntite "an external action" ;
 }
 

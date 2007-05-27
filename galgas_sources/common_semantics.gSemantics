@@ -480,6 +480,7 @@ abstract class @AC_galgasType {
 
 #--- Error message
   message messageGalgasType "any type" ;
+  message "any type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -608,6 +609,7 @@ class @typeGalgas_jokerInParameterList extends @AC_galgasType {
 
 #--- Error message
   message messageGalgasType "??" ;
+  message "a joker" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -629,6 +631,7 @@ class @typeGalgas_bool extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@bool' type" ;
   message messageGalgasType "a '@bool' type" ;
 }
 
@@ -673,6 +676,7 @@ class @typeGalgas_uint extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@uint' type" ;
   message messageGalgasType "a '@uint' type" ;
 }
 
@@ -690,6 +694,7 @@ class @typeGalgas_char extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@char' type" ;
   message messageGalgasType "a '@char' type" ;
 }
 
@@ -813,6 +818,7 @@ class @typeGalgas_string extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@string' type" ;
   message messageGalgasType "a '@string' type" ;
 }
 
@@ -857,6 +863,7 @@ class @typeGalgas_sint extends @AC_galgasType {
 
 #--- Error message
   message messageGalgasType "a '@sint' type" ;
+  message "a '@sint' type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -899,6 +906,7 @@ class @typeGalgas_sint64 extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@sint64' type" ;
   message messageGalgasType "a '@sint64' type" ;
 }
 
@@ -949,6 +957,7 @@ class @typeGalgas_uint64 extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@uint64' type" ;
   message messageGalgasType "a '@uint64' type" ;
 }
 
@@ -966,6 +975,7 @@ class @typeGalgas_double extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@double' type" ;
   message messageGalgasType "a '@double' type" ;
 }
 
@@ -1067,6 +1077,7 @@ class @typeGalgas_binaryset extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@binaryset' type" ;
   message messageGalgasType "a '@binaryset' type" ;
 }
 
@@ -1077,6 +1088,7 @@ class @typeGalgas_binaryset extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 abstract class @C_galgasPrimitiveType extends @AC_galgasType {
+  message "any primitive type" ;
   message messageGalgasType "any primitive type" ;
 }
 
@@ -1100,6 +1112,7 @@ class @typeGalgas_location extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@location' type" ;
   message messageGalgasType "a '@location' type" ;
 }
 
@@ -1148,6 +1161,7 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@lstring' type" ;
   message messageGalgasType "a '@lstring' type" ;
 }
 
@@ -1198,6 +1212,7 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@lchar' type" ;
   message messageGalgasType "a '@lchar' type" ;
 }
 
@@ -1247,6 +1262,7 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@lbool' type" ;
   message messageGalgasType "a '@lbool' type" ;
 }
 
@@ -1296,6 +1312,7 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@luint' type" ;
   message messageGalgasType "a '@luint' type" ;
 }
 
@@ -1345,6 +1362,7 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@luint64' type" ;
   message messageGalgasType "a '@luint64' type" ;
 }
 
@@ -1394,6 +1412,7 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@lsint' type" ;
   message messageGalgasType "a '@lsint' type" ;
 }
 
@@ -1443,6 +1462,7 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@lsint64' type" ;
   message messageGalgasType "a '@lsint64' type" ;
 }
 
@@ -1492,6 +1512,7 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
   override method checkAbilityToBeSilentlyConvertedToLocation :
   end method ;
 
+  message "a '@ldouble' type" ;
   message messageGalgasType "a '@ldouble' type" ;
 }
 
@@ -1560,6 +1581,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "a '@stringset' type" ;
   message messageGalgasType "a '@stringset' type" ;
 }
 
@@ -1595,6 +1617,7 @@ class @typeGalgasUndefinedExternType extends @AC_galgasType {
 
 #--- Message
   message messageGalgasType "an undefined extern type" ;
+  message "an undefined extern type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1668,6 +1691,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
   end method ;
 
 #--- Message
+  message "an extern type" ;
   message messageGalgasType "an extern type" ;
 }
 
@@ -1727,6 +1751,7 @@ map @M_nonterminalSymbolAlts {
 #---------------------------------------------------------------------------*
 
 abstract class @AC_semanticsEntity {
+  message  "any entity";
   message messageTypeEntite  "any entity";
 }
 
@@ -1740,6 +1765,7 @@ class @C_grammarForSemantics extends @AC_semanticsEntity {
   @M_nonterminalSymbolAlts mGrammarAltMap ;
   @lstring mLexiqueClassName ;
   message messageTypeEntite  "a grammar entity";
+  message "a grammar entity";
 }
 
 #---------------------------------------------------------------------------*
@@ -2031,6 +2057,7 @@ class @typeGalgasUndefinedListType extends @AC_galgasType {
     outTypeName := [mListTypeName string] ;
   end method ;
 
+  message "an undefined list type" ;
   message messageGalgasType "an undefined list type" ;
 }
 
@@ -2111,6 +2138,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     end if ;
   end method ;
 
+  message "a list type" ;
   message messageGalgasType "a list type" ;
 }
 
@@ -2235,6 +2263,7 @@ class @typeGalgasDomainType extends @AC_galgasType {
     end if ;
   end method ;
 
+  message "a domain type" ;
   message messageGalgasType "a domain type" ;
 }
 
@@ -2252,6 +2281,7 @@ class @typeGalgasUndefinedSortedListType extends @AC_galgasType {
     outTypeName := [mListTypeName string] ;
   end method ;
 
+  message "a predeclared sorted list type" ;
   message messageGalgasType "a predeclared sorted list type" ;
 }
 
@@ -2328,6 +2358,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
     end if ;
   end method ;
 
+  message "a sorted list type" ;
   message messageGalgasType "a sorted list type" ;
 }
 
@@ -2358,6 +2389,7 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
     outTypeName := [mMapTypeName string] ;
   end method ;
 
+  message "an undefined map type" ;
   message messageGalgasType "an undefined map type" ;
 }
 
@@ -2446,6 +2478,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     end if ;
   end method ;
   
+  message "a map type" ;
   message messageGalgasType "a map type" ;
 }
 
@@ -2475,6 +2508,7 @@ class @typeGalgasUndefinedMapindexType extends @AC_galgasType {
     end if ;
   end method ;
 
+  message "a predeclared mapindex type" ;
   message messageGalgasType "a predeclared mapindex type" ;
 }
 
@@ -2558,6 +2592,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
     end if ;
   end method ;
 
+  message "a mapindex type" ;
   message messageGalgasType "a mapindex type" ;
 }
 
@@ -2575,14 +2610,8 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType {
     outTypeName := [mClassTypeName string] ;
   end method ;
 
+  message "an undefined class type" ;
   message messageGalgasType "an undefined class type" ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeGalgasNewClassType extends @typeGalgasUndefinedClassType {
-#--- Super classes
-  @typeSuperClassesMap mSuperClassMap ;  
 }
 
 #---------------------------------------------------------------------------*
@@ -2605,6 +2634,9 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 
 #--- La classe est-elle abstract ?
   @bool mClassIsAbstract ;
+
+#--- message
+  @string mClassMessage ;
 
 #--- Handle method call : return method signature
   override
@@ -2631,6 +2663,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
   end method ;
 
 #--- Error message
+  message "a class type" ;
   message messageGalgasType "a class type" ;
 }
 
@@ -2640,6 +2673,7 @@ class @typeEntiteType extends @AC_semanticsEntity {
   @AC_galgasType aDefType ;
 
   message messageTypeEntite "a type" ;
+  message "a type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2647,6 +2681,7 @@ class @typeEntiteType extends @AC_semanticsEntity {
 class @typeEntiteRoutine extends @AC_semanticsEntity {
   @L_EXsignature aListeArgumentsFormels ;
 
+  message "a routine" ;
   message messageTypeEntite "a routine" ;
 }
 
@@ -2681,6 +2716,7 @@ class @typeGalgas_singleReferenceEntity extends @AC_galgasType {
   end method ;
 
 #--- Error message
+  message "an entity single reference" ;
   message messageGalgasType "an entity single reference" ;
 }
 
@@ -2700,6 +2736,7 @@ class @typeGalgas_multipleReferenceEntity extends @AC_galgasType {
     outTypeName := "$$" ;
   end method ;
 #--- Error message
+  message "an entity multiple reference" ;
   message messageGalgasType "an entity multiple reference" ;
 }
 
@@ -2741,6 +2778,7 @@ class @typeGalgas_enum extends @AC_galgasType {
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   end method ;
 
+  message "an enum type" ;
   message messageGalgasType "an enum type" ;
 }
 
@@ -3085,8 +3123,8 @@ routine handleReaderCall
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   else
-    extract inReceiverType :
-    when @typeGalgasUndefinedMapindexType (*) ->
+    cast inReceiverType :
+    when >= @typeGalgasUndefinedMapindexType do
       if [inReaderName string] == "isRegular" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
@@ -3100,9 +3138,9 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_string () ->
+    when >= @typeGalgas_string do
       handleStringReaderCall ! inReaderName ?outAccessorTypesList ?outReturnedType ;
-    when @typeGalgas_lstring () ->
+    when >= @typeGalgas_lstring do
       if [inReaderName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
@@ -3116,7 +3154,7 @@ routine handleReaderCall
         handleStringReaderCall ! inReaderName ?outAccessorTypesList ?outReturnedType ;
         outCppConversionMethod := "ggs_string" ;
       end if ;
-    when @typeGalgas_location () ->
+    when >= @typeGalgas_location do
       if [inReaderName string] == "locationString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
@@ -3124,7 +3162,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_binaryset () ->
+    when >= @typeGalgas_binaryset do
       if [inReaderName string] == "isFull" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
@@ -3265,7 +3303,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_uint () ->
+    when >= @typeGalgas_uint do
       if [inReaderName string] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
@@ -3285,7 +3323,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_char () ->
+    when >= @typeGalgas_char do
       if [inReaderName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
@@ -3293,7 +3331,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_uint64 () ->
+    when >= @typeGalgas_uint64 do
       if [inReaderName string] == "sint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint64 new] ;
@@ -3318,7 +3356,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_sint () ->
+    when >= @typeGalgas_sint do
       if [inReaderName string] == "uint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
@@ -3335,7 +3373,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_sint64 () ->
+    when >= @typeGalgas_sint64 do
       if [inReaderName string] == "uint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
@@ -3352,7 +3390,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_lchar () ->
+    when >= @typeGalgas_lchar do
       if [inReaderName string] == "char" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_char new] ;
@@ -3370,7 +3408,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_lbool () ->
+    when >= @typeGalgas_lbool do
       if [inReaderName string] == "bool" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
@@ -3385,7 +3423,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_luint ()->
+    when >= @typeGalgas_luint do
       if [inReaderName string] == "uint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
@@ -3403,7 +3441,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_luint64 ()->
+    when >= @typeGalgas_luint64 do
       if [inReaderName string] == "uint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
@@ -3417,7 +3455,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_lsint () ->
+    when >= @typeGalgas_lsint do
       if [inReaderName string] == "sint" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
@@ -3438,7 +3476,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_lsint64 () ->
+    when >= @typeGalgas_lsint64 do
       if [inReaderName string] == "sint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint64 new] ;
@@ -3455,7 +3493,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_ldouble () ->
+    when >= @typeGalgas_ldouble do
       if [inReaderName string] == "double" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_double new] ;
@@ -3476,7 +3514,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgasListType (...) ->
+    when >= @typeGalgasListType do
       if [inReaderName string] == "length" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
@@ -3493,7 +3531,7 @@ routine handleReaderCall
         error inReaderName :
            "list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgasSortedListType (...) ->
+    when >= @typeGalgasSortedListType do
       if [inReaderName string] == "length" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
@@ -3501,7 +3539,7 @@ routine handleReaderCall
         error inReaderName :
            "sorted list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgasMapType (...) ->
+    when >= @typeGalgasMapType do
       if [inReaderName string] == "hasKey" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         @AC_galgasType keyType := [@typeGalgas_string new] ;
@@ -3523,7 +3561,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgas_stringset () ->
+    when >= @typeGalgas_stringset do
       if [inReaderName string] == "hasKey" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         @AC_galgasType keyType := [@typeGalgas_string new] ;
@@ -3536,13 +3574,13 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when @typeGalgasClassType (* * @typeListeAttributsSemantiques kNonExternAttributesList * @typeClassInheritedMessagesMap kMessagesMap * *) ->
+    when >= @typeGalgasClassType t do # § (* * @typeListeAttributsSemantiques kNonExternAttributesList * @typeClassInheritedMessagesMap kMessagesMap * *) ->
       outReturnedType := [@typeGalgas_string new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      if not [kMessagesMap hasKey ![inReaderName string]] then
+      if not [[t mMessagesMap] hasKey ![inReaderName string]] then
       #--- Search for attribute
         @bool found := false ;
-        foreach kNonExternAttributesList (@AC_galgasType kAttributType @lstring kNomAttribut) while not found :
+        foreach [t mNonExternAttributesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found :
           outReturnedType := kAttributType ;
           found := [inReaderName string] == [kNomAttribut string] ;
         end foreach ;
@@ -3550,7 +3588,8 @@ routine handleReaderCall
           error inReaderName: "this reader is not defined (you can name as class reader class attributes and class messages)" ;
         end if ;
       end if ;
-    when @typeGalgas_enum (* * @typeEnumMessageMap kMessagesMap) ->
+    when >= @typeGalgas_enum e do # § (* * @typeEnumMessageMap kMessagesMap)
+      @typeEnumMessageMap kMessagesMap := [e mMessagesMap] ;
       [kMessagesMap searchKey ! inReaderName ?*] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ; #--- No argument
       outReturnedType := [@typeGalgas_string new] ;
@@ -3558,7 +3597,7 @@ routine handleReaderCall
       error inReaderName :
          "variables of this type do not support reader call"
          -> outAccessorTypesList, outReturnedType ;
-    end extract ;
+    end cast ;
   end if ;
 end routine ;
 

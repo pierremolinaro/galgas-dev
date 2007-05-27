@@ -367,7 +367,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       if (p->mCheckForKindOfClass.boolValue ()) {
         ioCppFile << "if (dynamic_cast <cPtr_" << p->mCastClassName << " *> (" << varName << ".getPtr ()) != NULL) {\n" ;
        }else{
-        ioCppFile << "if (typeid (cPtr_" << p->mCastClassName << ") == typeid (" << varName << ".getPtr ())) {\n" ;
+        ioCppFile << "if (typeid (cPtr_" << p->mCastClassName << ") == typeid (* (" << varName << ".getPtr ()))) {\n" ;
       }
       GGS_typeCplusPlusNameList::element_type * cstName = p->mLocalConstantName.firstObject () ;
       if (cstName != NULL) {
