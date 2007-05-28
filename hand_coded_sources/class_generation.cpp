@@ -543,6 +543,17 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCstringConstant (mClassMessage) ;
   inCppFile << " ;\n"
                "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "C_galgas_class_inspector _gInspectorFor_" << aNomClasse
+            << " (& typeid (cPtr_" << aNomClasse << "), " ;
+  if (superClassName.length () == 0) {
+    inCppFile << "NULL\n" ;
+  }else{
+    inCppFile << "& typeid (cPtr_" << superClassName << ")" ;
+  }
+  inCppFile << ", " ;
+  inCppFile.writeCstringConstant (mClassMessage) ;
+  inCppFile << ") ;\n" ;
 
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
@@ -571,12 +582,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "    if (ok) {\n"
                "      _result = GGS_" << aNomClasse << " (inPointer) ;\n"
                "    }else{\n"
-               "      TC_UniqueArray <C_String> message1_ (1, \"\" COMMA_HERE) ;\n"
-               "      message1_ (0 COMMA_HERE) << cPtr_" << aNomClasse << "::_static_message () ;\n"
-               "      inErrorLocation.signalExtractError (inLexique,\n"
-               "                                          message1_,\n"
-               "                                          inPointer->_message ()\n"
-               "                                          COMMA_THERE) ;\n"
+               "      inErrorLocation.signalCastError (inLexique,\n"
+               "                                       & typeid (cPtr_" << aNomClasse << "),\n"
+               "                                       inUseKindOfClass,\n"
+               "                                       inPointer->_message ()\n"
+               "                                       COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
                "  return _result ;\n"
