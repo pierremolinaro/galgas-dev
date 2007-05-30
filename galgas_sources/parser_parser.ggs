@@ -601,8 +601,9 @@ rule <syntax_instruction>
   @AC_galgasType typeEntite ;
   @typeCplusPlusName nomCppVariableTable ;
   [!?ioVariablesMap searchForReadWriteAccess !nomTable ?typeEntite ?nomCppVariableTable] ; 
-  @typeTableBlocsDeTable tableMethodesBloc ;
-  extract typeEntite->@typeGalgasMapType (?* ?* ?tableMethodesBloc ?* ?*) error nomTable : messageGalgasType ;
+  @typeTableBlocsDeTable tableMethodesBloc :=
+   [(cast typeEntite if >=@typeGalgasMapType else error nomTable) aTableMethodesSurcharger] ;
+  # ¤ extract typeEntite->@typeGalgasMapType (?* ?* ?tableMethodesBloc ?* ?*) error nomTable : messageGalgasType ;
 #--- Methode block
   $.$ ;
   @lstring nomMethodeBloc ;
@@ -780,9 +781,12 @@ rule <syntax_declaration>
         $type_name$ ? returnedEntity ;
         @AC_semanticsEntity e ;
         [ioEntitiesMap searchKey !returnedEntity ?e] ;
-        @AC_galgasType type ;
-        extract e->@typeEntiteType (?type) error returnedEntity : messageTypeEntite ;
-        extract type->@typeGalgas_singleReferenceEntity (?3*) error returnedEntity : messageGalgasType ;
+        @AC_galgasType type :=
+          [(cast e if >= @typeEntiteType else error returnedEntity) aDefType] ;
+        # ¤ extract e->@typeEntiteType (?type) error returnedEntity : messageTypeEntite ;
+       @typeGalgas_singleReferenceEntity sre :=
+          (cast type if >= @typeGalgas_singleReferenceEntity else error returnedEntity) ;
+        # ¤ extract type->@typeGalgas_singleReferenceEntity (?3*) error returnedEntity : messageGalgasType ;
       end select ;
       [!?parametersMap insertKey !altName !listeDeTypesFormels !returnedEntity] ;
       [!?parametersMapForGrammar insertKey
@@ -1343,7 +1347,9 @@ rule <syntax_instruction>
     else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;
-      extract type->@typeGalgas_singleReferenceEntity (?variableEntityName ?2*) error returnedEntityVariableName : messageGalgasType ;
+      variableEntityName :=
+          [(cast type if >= @typeGalgas_singleReferenceEntity else error returnedEntityVariableName) mEntityTypeName] ;
+      # ¤ extract type->@typeGalgas_singleReferenceEntity (?variableEntityName ?2*) error returnedEntityVariableName : messageGalgasType ;
     end if ;
    #--- The returnedEntityFromSignature entity should be a super class of variableEntityName
     @bool ok := [returnedEntityFromSignature string] == [variableEntityName string] ;
