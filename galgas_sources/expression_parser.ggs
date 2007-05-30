@@ -254,7 +254,8 @@ routine checkNotOperator
   ??@AC_galgasType inOperandType
   !@AC_galgasType outResultType
 :
-  extract inOperandType -> @typeGalgas_bool () error here : messageGalgasType ;
+  @typeGalgas_bool gb := (cast inOperandType if >= @typeGalgas_bool else error here) ;
+  # ¤ extract inOperandType -> @typeGalgas_bool () error here : messageGalgasType ;
   outResultType := inOperandType ;
 end routine ;
 
@@ -1115,9 +1116,8 @@ rule <factor>
       ?castExpressionType
     ;
   #--- Check the type is a class
-    @lstring kSourceExpresionClassName ;
-    @typeClassInheritedMessagesMap classMessageMap ;
-    extract castExpressionType->@typeGalgasClassType (?kSourceExpresionClassName ?3* ? classMessageMap ?3*) error here : messageGalgasType ;
+    @lstring kSourceExpresionClassName := [(cast castExpressionType if >= @typeGalgasClassType else error here) mClassTypeName] ;
+    # ¤ extract castExpressionType->@typeGalgasClassType (?kSourceExpresionClassName ?3* ? classMessageMap ?3*) error here : messageGalgasType ;
     $if$ ;
     @bool checkForKindOfClass ;
     select
@@ -1133,11 +1133,13 @@ rule <factor>
   #--- Check the name 'castedTypeName' refers to a type
     @AC_semanticsEntity entite ;
     [ioEntitiesMap searchKey !castedTypeName ?entite] ;
-    extract entite->@typeEntiteType (? outResultType) error castedTypeName : messageTypeEntite ;
+    outResultType := [(cast entite if >= @typeEntiteType else error castedTypeName) aDefType] ;
+    # ¤ extract entite->@typeEntiteType (? outResultType) error castedTypeName : messageTypeEntite ;
   #--- Check the type is a class
-    @typeSuperClassesMap superClassMap ;
-    @string classMessage ;
-    extract outResultType->@typeGalgasClassType (?3* ?superClassMap ?3* ?classMessage) error castedTypeName : messageGalgasType ;
+    @typeGalgasClassType resultClassType := (cast outResultType if >= @typeGalgasClassType else error castedTypeName) ;
+    @typeSuperClassesMap superClassMap := [resultClassType mAncestorClassesMap] ;
+    @string classMessage := [resultClassType mClassMessage] ;
+    # ¤ extract outResultType->@typeGalgasClassType (?3* ?superClassMap ?3* ?classMessage) error castedTypeName : messageGalgasType ;
   #--- Check class does define a message
     if [classMessage length] == 0 then
       error castedTypeName: "in order to be used in a cast expression, the '@" . castedTypeName . "' class should define a class message" ;
@@ -1484,7 +1486,8 @@ rule <factor>
     $identifier$ ? mClassMethodName ;
     @AC_semanticsEntity e ;
     [ioEntitiesMap searchKey !className ?e] ;
-    extract e->@typeEntiteType (?outResultType) error className : messageTypeEntite ;
+    outResultType := [(cast e if >= @typeEntiteType else error className) aDefType] ;
+    # ¤ extract e->@typeEntiteType (?outResultType) error className : messageTypeEntite ;
     @typeListeAttributsSemantiques listeAttributsSemantiques ;
     [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques] ;
   #--- Actual arguments

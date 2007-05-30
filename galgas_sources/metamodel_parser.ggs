@@ -415,7 +415,8 @@ rule <entity_declaration>
       else #--- Attribute
         @AC_semanticsEntity theEntity ;
         [inSemanticsEntitiesMap searchKey !propertyOrEntityTypeName ?theEntity] ;
-        extract theEntity->@typeEntiteType (?propertyType) error propertyOrEntityTypeName : messageTypeEntite ;
+        propertyType := [(cast theEntity if >= @typeEntiteType else error propertyOrEntityTypeName) aDefType] ;
+        # ¤ extract theEntity->@typeEntiteType (?propertyType) error propertyOrEntityTypeName : messageTypeEntite ;
         [!?currentEntityPropertyMap insertKey !attributeName !propertyType] ; 
         [!?allMetamodelPropertyMap insertKey !attributeName !propertyType] ;
       end if ;
