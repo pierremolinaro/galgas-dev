@@ -2025,6 +2025,30 @@
 		CFF283490864369A0055D7B6 /* GGS_ldouble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF283350864369A0055D7B6 /* GGS_ldouble.cpp */; };
 		CFF2834B0864369A0055D7B6 /* GGS_double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF283330864369A0055D7B6 /* GGS_double.cpp */; };
 		CFF2834D0864369A0055D7B6 /* GGS_ldouble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF283350864369A0055D7B6 /* GGS_ldouble.cpp */; };
+		CFF2C8E10C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
+		CFF2C8E20C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
+		CFF2C8E30C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
+		CFF2C8E40C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
+		CFF2C8E50C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
+		CFF2C8E60C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
+		CFF2C8E70C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
+		CFF2C8E80C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
+		CFF2C8E90C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
+		CFF2C8EA0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
+		CFF2C8EB0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
+		CFF2C8EC0C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
+		CFF2C8ED0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
+		CFF2C8EE0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
+		CFF2C8EF0C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
+		CFF2C8F00C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
+		CFF2C8F10C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
+		CFF2C8F20C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
+		CFF2C8F30C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
+		CFF2C8F40C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
+		CFF2C8F50C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
+		CFF2C8F60C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
+		CFF2C8F70C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
+		CFF2C8F80C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
 		CFF663E80B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
 		CFF663E90B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
 		CFF663EA0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
@@ -2753,6 +2777,9 @@
 		CFF283340864369A0055D7B6 /* GGS_double.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_double.h; sourceTree = "<group>"; };
 		CFF283350864369A0055D7B6 /* GGS_ldouble.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GGS_ldouble.cpp; sourceTree = "<group>"; };
 		CFF283360864369A0055D7B6 /* GGS_ldouble.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GGS_ldouble.h; sourceTree = "<group>"; };
+		CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_elseOrDefaultForCastInstruction.h; sourceTree = "<group>"; };
+		CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_defaultForCastInstruction.h; sourceTree = "<group>"; };
+		CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_elseForCastInstruction.h; sourceTree = "<group>"; };
 		CFF5376D057A506700854C83 /* scanner_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_parser.cpp; sourceTree = "<group>"; };
 		CFF5376F057A506700854C83 /* scanner_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_semantics.cpp; sourceTree = "<group>"; };
 		CFF5377A057A509C00854C83 /* scanner_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_generation.cpp; sourceTree = "<group>"; };
@@ -3076,6 +3103,9 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */,
+				CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */,
+				CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */,
 				CF66FEA60C0896C400887089 /* include_typeCastInExpression.h */,
 				CF47045C0C03574600B027E6 /* include_typeStructuredCastInstruction.h */,
 				CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */,
@@ -3994,6 +4024,9 @@
 				CFEE57890BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 				CF47045D0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 				CF66FEA70C0896C400887089 /* include_typeCastInExpression.h in Headers */,
+				CFF2C8E10C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
+				CFF2C8E20C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
+				CFF2C8E30C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4135,6 +4168,9 @@
 				CFE675CA0C0B0381007C1E98 /* GGS_lstring.h in Headers */,
 				CFE675CB0C0B038A007C1E98 /* GGS_luint.h in Headers */,
 				CFE675CC0C0B038A007C1E98 /* galgas_header.h in Headers */,
+				CFF2C8F30C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
+				CFF2C8F40C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
+				CFF2C8F50C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4275,6 +4311,9 @@
 				CFE675DD0C0B03C8007C1E98 /* C_GGS_Object.h in Headers */,
 				CFE675DE0C0B03CE007C1E98 /* AC_galgas_map.h in Headers */,
 				CFE675DF0C0B03CF007C1E98 /* C_Lexique.h in Headers */,
+				CFF2C8F60C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
+				CFF2C8F70C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
+				CFF2C8F80C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4415,6 +4454,9 @@
 				CFEE578D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 				CF47045E0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 				CF66FEA80C0896C400887089 /* include_typeCastInExpression.h in Headers */,
+				CFF2C8E40C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
+				CFF2C8E50C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
+				CFF2C8E60C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4537,6 +4579,9 @@
 				CFEE57910BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 				CF47045F0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 				CF66FEA90C0896C400887089 /* include_typeCastInExpression.h in Headers */,
+				CFF2C8E70C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
+				CFF2C8E80C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
+				CFF2C8E90C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4659,6 +4704,9 @@
 				CFEE57950BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 				CF4704600C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 				CF66FEAA0C0896C400887089 /* include_typeCastInExpression.h in Headers */,
+				CFF2C8EA0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
+				CFF2C8EB0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
+				CFF2C8EC0C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4781,6 +4829,9 @@
 				CFEE57990BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 				CF4704610C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 				CF66FEAB0C0896C400887089 /* include_typeCastInExpression.h in Headers */,
+				CFF2C8ED0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
+				CFF2C8EE0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
+				CFF2C8EF0C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4903,6 +4954,9 @@
 				CFEE579D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 				CF4704620C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
 				CF66FEAC0C0896C400887089 /* include_typeCastInExpression.h in Headers */,
+				CFF2C8F00C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
+				CFF2C8F10C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
+				CFF2C8F20C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

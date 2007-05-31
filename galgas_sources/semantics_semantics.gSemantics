@@ -1165,6 +1165,24 @@ class @typeStructuredExtractInstructionWithElse extends @typeInstruction {
 #                                                                      *
 #----------------------------------------------------------------------*
 
+abstract class @AC_elseOrDefaultForCastInstruction {
+}
+
+#----------------------------------------------------------------------*
+
+class @C_elseForCastInstruction extends @AC_elseOrDefaultForCastInstruction {
+  @typeInstructionList mElseInstructionList ;
+}
+
+#----------------------------------------------------------------------*
+
+class @C_defaultForCastInstruction extends @AC_elseOrDefaultForCastInstruction {
+  @typeExpression mErrorLocationExpression ;
+  @location mLocation ;
+}
+
+#----------------------------------------------------------------------*
+
 list @typeStructuredCastBranchList {
   @lstring mCastClassName ;
   @bool mCheckForKindOfClass ;
@@ -1179,7 +1197,7 @@ class @typeStructuredCastInstruction extends @typeInstruction {
   @typeExpression mSourceExpression ;
   @lstring mSourceExpressionTypeName ;
   @typeStructuredCastBranchList mBranchList ;
-  @typeInstructionList mElseInstructionList ;
+  @AC_elseOrDefaultForCastInstruction mElseOrDefault ;
 }
 
 

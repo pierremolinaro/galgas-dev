@@ -2951,7 +2951,9 @@ rule <semantic_instruction>
     ?sourceExpressionType
   ;
 #--- Check variable has class type
-  @lstring sourceExpressionTypeName := [(cast sourceExpressionType if >= @typeGalgasClassType else error here) mClassTypeName] ;
+  @typeGalgasClassType sourceClassType := (cast sourceExpressionType if >= @typeGalgasClassType else error here) ;
+  @lstring sourceExpressionTypeName := [sourceClassType mClassTypeName] ;
+  @string sourceClassMessage := [sourceClassType mClassMessage] ;
 # ¤ extract sourceExpressionType->@typeGalgasClassType
 #           (? sourceExpressionTypeName ?7*)
 #           error here : messageGalgasType ;
@@ -3026,10 +3028,30 @@ rule <semantic_instruction>
     while
     end repeat ;
   #--- else part
+    @AC_elseOrDefaultForCastInstruction elseOrDefault ;
     block ioVariablesMap.testPart () :
       select
+        $default$ ;
+        if [sourceClassMessage length] == 0 then
+          error here : "for using the 'default' construct, the static class of source expression (@"
+                     . sourceExpressionTypeName . ") should define a class message" ;
+        end if ;
+        $error$ ;
+        @typeExpression errorLocationExpression ;
+        @AC_galgasType errorLocationExpressionType ;
+        <expression>
+          !ioComponentSemanticsEntitiesMap
+          !inOptionsComponentsMapForUse
+          !?ioVariablesMap
+          ?errorLocationExpression
+          ?errorLocationExpressionType
+        ;
+      #--- Check expression has location info
+        [errorLocationExpressionType checkAbilityToBeSilentlyConvertedToLocation] ;
+        elseOrDefault := [@C_defaultForCastInstruction new !errorLocationExpression !here] ;
       or
         $else$ ;
+        @typeInstructionList elseBranchInstructionsList [emptyList] ;
         <semantic_instructions_list_no_verif>
           !inTreewalkingRoutineHeaderMap
           !inTableEnAvant
@@ -3041,6 +3063,7 @@ rule <semantic_instruction>
           !inMetamodelEntityMap
           !inTreewalkingComponentMap
         ;
+        elseOrDefault := [@C_elseForCastInstruction new !elseBranchInstructionsList] ;
      end select ; 
     end block (!here) ;
   end block () ;
@@ -3050,7 +3073,7 @@ rule <semantic_instruction>
     !sourceExpression
     !sourceExpressionTypeName
     !branchList
-    !elseBranchInstructionsList
+    !elseOrDefault
   ] ;
   ioInstructionList += !instruction ;
 #--- End of cast instruction
