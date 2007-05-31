@@ -335,17 +335,109 @@ formalCurrentObjectArgumentIsUsed (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark Structured CAST instruction
 #endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_elseForCastInstruction::
+generateInstructions (AC_OutputStream & inCppFile,
+                      const GGS_typeStructuredCastBranchList & /* inBranchList */,
+                      const C_String & /* inTemporaryVarName */,
+                      const C_String & inTargetFileName,
+                      sint32 & ioPrototypeIndex,
+                      const bool inGenerateDebug) const {
+  generateInstructionListForList (mElseInstructionList, inCppFile,
+                                  inTargetFileName, ioPrototypeIndex,
+                                  inGenerateDebug, true) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_elseForCastInstruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+  return isLexiqueFormalArgumentUsedForList (mElseInstructionList, inGenerateSemanticInstructions) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_elseForCastInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool inGenerateSemanticInstructions) const {
+  return formalArgumentIsUsedForList (mElseInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_elseForCastInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return formalCurrentObjectArgumentIsUsedForList (mElseInstructionList) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_defaultForCastInstruction::
+generateInstructions (AC_OutputStream & inCppFile,
+                      const GGS_typeStructuredCastBranchList & inBranchList,
+                      const C_String & inTemporaryVarName,
+                      const C_String & /* inTargetFileName */,
+                      sint32 & /* ioPrototypeIndex */,
+                      const bool /* inGenerateDebug */) const {
+  inCppFile << "const castBranchDescriptorType _castBranchDescriptor ["
+            << inBranchList.count () << "] = {\n" ;
+  GGS_typeStructuredCastBranchList::element_type * p = inBranchList.firstObject () ;
+  bool first = true ;
+  while (p != NULL) {
+    if (first) {
+      first = false ;
+    }else{
+      inCppFile << ",\n" ;
+    }
+    inCppFile << "  {& typeid (cPtr_" << p->mCastClassName << "), "
+              << (p->mCheckForKindOfClass.boolValue () ? "true" : "false") << "}" ;
+    p = p->nextObject () ;
+  }
+  inCppFile << "\n"
+               "} ;\n" ;
+  mErrorLocationExpression (HERE)->generateExpression (inCppFile) ;
+  inCppFile << "._castDefaultErrorMessage (_inLexique, _castBranchDescriptor, "
+            << inBranchList.count ()
+            << ", & typeid (* (" << inTemporaryVarName << ".getPtr ())) COMMA_SOURCE_FILE_AT_LINE ("
+            << mLocation.lineNumber ()
+            << ")) ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_defaultForCastInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return true ;
+//  return mErrorLocationExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_defaultForCastInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_defaultForCastInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mErrorLocationExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeStructuredCastInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
-                       const bool inGenerateDebug,
-                       const bool inGenerateSemanticInstructions) const {
+                     const C_String & inTargetFileName,
+                     sint32 & ioPrototypeIndex,
+                     const bool inGenerateDebug,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     const C_String varName = C_String ("_var_") + C_String (mCastInstructionLocation.location ()) ;
     ioCppFile << "{ const GGS_" << mSourceExpressionTypeName
@@ -381,11 +473,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
       p = p->nextObject () ;
     }
-    ioCppFile << "}else{ // Else part OF CAST instruction\n" ;
-  //--- Generate else part instructions
-    generateInstructionListForList (mElseInstructionList, ioCppFile,
-                                    inTargetFileName, ioPrototypeIndex,
-                                    inGenerateDebug, inGenerateSemanticInstructions) ;
+    ioCppFile << "}else{\n" ;
+    mElseOrDefault (HERE)->generateInstructions (ioCppFile,
+                                                 mBranchList,
+                                                 varName,
+                                                 inTargetFileName,
+                                                 ioPrototypeIndex,
+                                                 inGenerateDebug) ;
     ioCppFile.incIndentation (-4) ;
     ioCppFile << "    }\n"
                  "  }\n"
@@ -397,7 +491,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
 bool cPtr_typeStructuredCastInstruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
-  bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionList, inGenerateSemanticInstructions)
+  bool used = mElseOrDefault (HERE)->isLexiqueFormalArgumentUsed (inGenerateSemanticInstructions)
     || mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
   GGS_typeStructuredCastBranchList::element_type * p = mBranchList.firstObject () ;
   while ((p != NULL) && ! used) {
@@ -412,8 +506,8 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 
 bool cPtr_typeStructuredCastInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool inGenerateSemanticInstructions) const {
-  bool used = formalArgumentIsUsedForList (mElseInstructionList, inArgumentCppName, inGenerateSemanticInstructions)
+                      const bool inGenerateSemanticInstructions) const {
+  bool used = mElseOrDefault (HERE)->formalArgumentIsUsed (inArgumentCppName, inGenerateSemanticInstructions)
     || mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_typeStructuredCastBranchList::element_type * p = mBranchList.firstObject () ;
   while ((p != NULL) && ! used) {
@@ -428,7 +522,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 bool cPtr_typeStructuredCastInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
-  bool used = formalCurrentObjectArgumentIsUsedForList (mElseInstructionList)
+  bool used = mElseOrDefault (HERE)->formalCurrentObjectArgumentIsUsed ()
     || mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
   GGS_typeStructuredCastBranchList::element_type * p = mBranchList.firstObject () ;
   while ((p != NULL) && ! used) {
