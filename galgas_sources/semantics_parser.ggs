@@ -1623,6 +1623,7 @@ label importSemantics
       or
         @lstring messageName ;
         $identifier$ ? messageName ;
+        # warning messageName:"old class feature" ;
       #--- Chaine definissant le message d'erreur
         @lstring messageText ;
         $literal_string$ ? messageText ;
