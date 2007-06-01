@@ -128,7 +128,7 @@ entity @foreachInstructionEnumeratedConstant extends @foreachInstructionEnumerat
 #---------------------------------------------------------------------------*
 
 entity @foreachInstructionEnumeratedObject {
-  @lstring mEnumeratedObjectName ;
+  @semanticExpression mEnumeratedExpression ;
   @foreachInstructionEnumeratedObjectElement [] mElement ;
 }
 
@@ -250,23 +250,41 @@ entity @matchInstruction extends @semanticInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    E X T R A C T    I N S T R U C T I O N                                 *
+#    C A S T    I N S T R U C T I O N                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @extractInstructionBranch {
-  @lstring mExtractBranchTypeName ;
-  @foreachInstructionEnumeratedObjectElement [] mElements ;
-  @bool mEndsWithEllipsis ;
-  @semanticInstructions mExtractBranchInstructionList ;
+entity @castInstructionBranch {
+  @bool mUseKindOfClass ;
+  @lstring mTypeName ;
+  @lstring mConstantVarName ; # Empty string if no constant var
+  @bool mConstantVarNameIsUnused ; # true if no constant var
+  @semanticInstructions mCastBranchInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @extractInstruction extends @semanticInstruction {
-  @lstring mReceiverName ;
-  @extractInstructionBranch [] mExtractInstructionBranchList ;
-  @semanticInstructions [0, 1] mElseInstructionList ;
+abstract entity @elseOrDefaultForCastInstruction {
+}
+
+#---------------------------------------------------------------------------*
+
+entity @elseForCastInstruction extends @elseOrDefaultForCastInstruction {
+  @semanticInstructions mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @defaultForCastInstruction extends @elseOrDefaultForCastInstruction {
+  @semanticExpression mErrorLocationExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @castInstruction extends @semanticInstruction {
+  @semanticExpression mExpression ;
+  @castInstructionBranch [] mCastInstructionBranchList ;
+  @elseOrDefaultForCastInstruction mElseOrDefault ;
 }
 
 #---------------------------------------------------------------------------*
@@ -278,6 +296,26 @@ entity @extractInstruction extends @semanticInstruction {
 entity @appendInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
   @outExpressionList mExpressionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @incrementInstruction extends @semanticInstruction {
+  @lstring mReceiverName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @decrementInstruction extends @semanticInstruction {
+  @lstring mReceiverName ;
 }
 
 #---------------------------------------------------------------------------*

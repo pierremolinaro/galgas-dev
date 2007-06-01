@@ -273,12 +273,41 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #   F A C T O R    :    ( EXPRESSION )                                         *
+#                       (cast EXP if >= @T else error ERROR_LOCATION_EXP)      *
+#                       (cast EXP if == @T else error ERROR_LOCATION_EXP)      *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <factor> -> @semanticExpression expression :
   $($ ;
-  <expression> -> expression ;
+  select
+    <expression> -> expression ;
+  or
+    $cast$ ;
+    @semanticExpression receiverExpression ;
+    <expression> -> receiverExpression ;
+    $if$ ;
+    @bool useKindOfClass ;
+    select
+      $>=$ ;
+      useKindOfClass := true ;
+    or
+      $==$ ;
+      useKindOfClass := false ;
+    end select ;
+    @lstring typeName ;
+    $type_name$ ? typeName ;
+    $else$ ;
+    $error$ ;
+    @semanticExpression errorLocationExpression ;
+    <expression> -> errorLocationExpression ;
+    expression := [@castInExpression new
+      !receiverExpression
+      !useKindOfClass
+      !typeName
+      !errorLocationExpression
+    ] ;
+  end select ;
   $)$ ;
 end rule ;
 
