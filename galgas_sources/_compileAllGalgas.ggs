@@ -20,39 +20,51 @@
 #--- Common semantics files
 compile "commonSemantics.gSemantics" ;
 
-#--- Expression
-compile "expressionMetamodel.gMetamodel" ;
-compile "expressionModelBuilder.ggs" ;
-
-#--- Instructions
-compile "instructionMetamodel.gMetamodel" ;
-compile "semanticInstructionListModelBuilder.ggs" ;
+#--- Common Scanner
+compile "galgas_scanner.gLexique" ;
 
 #--- Lexique Component
 compile "lexiqueSemantics.gSemantics" ;
 compile "lexiqueMetamodel.gMetamodel" ;
-compile "lexiqueModelBuilder.ggs" ;
+compile "lexiqueModelBuilder.gSyntax" ;
 compile "lexiqueLL1grammar.ggs" ;
 compile "lexiqueTreewalkingForBuildingTerminalMap.ggs" ;
 
 #--- Option Component
 compile "optionSemantics.gSemantics" ;
 compile "optionMetamodel.gMetamodel" ;
-compile "optionModelBuilder.ggs" ;
+compile "optionModelBuilder.gSyntax" ;
 compile "optionLL1grammar.ggs" ;
 compile "optionTreewalkingForBuildingOptionMap.ggs" ;
 compile "optionHeaderGeneration.ggs" ;
 compile "optionImplementationGeneration.ggs" ;
 
+#--- Expression
+compile "expressionMetamodel.gMetamodel" ;
+compile "expressionModelBuilder.gSyntax" ;
+
+#--- Parameters and arguments
+compile "parameterArgumentMetamodel.gMetamodel" ;
+compile "parameterArgumentBuilder.gSyntax" ;
+
+#--- Instructions
+compile "instructionMetamodel.gMetamodel" ;
+compile "semanticInstructionListModelBuilder.gSyntax" ;
+
 #--- Metamodel Component
 compile "metamodelMetamodel.gMetamodel" ;
-compile "metamodelModelBuilder.ggs" ;
+compile "metamodelModelBuilder.gSyntax" ;
 compile "metamodelLL1grammar.ggs" ;
 
 #--- Semantics Component
 compile "semanticsMetamodel.gMetamodel" ;
-compile "semanticsModelBuilder.ggs" ;
+compile "semanticsModelBuilder.gSyntax" ;
 compile "semanticsSLRgrammar.ggs" ;
+
+#--- syntax Component
+compile "syntaxMetamodel.gMetamodel" ;
+compile "syntaxModelBuilder.gSyntax" ;
+compile "syntaxSLRgrammar.ggs" ;
 
 #--- Temporary Program for PPC Cocoa GALGAS Only 
 compile "mda_galgas_LL1_prgm.ggs" ;
@@ -61,12 +73,11 @@ compile "mda_galgas_LL1_prgm.ggs" ;
 compile "common_semantics.gSemantics" ;
 compile "semantics_semantics.gSemantics" ;
 compile "parser_semantics.gSemantics" ;
-compile "treewalking_parser.ggs" ;
+compile "treewalking_parser.gSyntax" ; # En cours de test
 compile "domain_parser.ggs" ;
 compile "semantics_parser.ggs" ;
 compile "metamodel_parser.ggs" ;
 compile "parser_parser.ggs" ;
-compile "galgas_scanner.gLexique" ;
 compile "scanner_semantics.gSemantics" ;
 compile "cocoa_parser.ggs" ;
 compile "galgas_cocoa.ggs" ;

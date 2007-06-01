@@ -20,6 +20,7 @@
 syntax semanticInstructionListModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
 import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
 
 #---------------------------------------------------------------------------*
@@ -34,7 +35,7 @@ nonterminal <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject ;
 
 nonterminal <foreach_enumeration_element> -> @foreachInstructionEnumeratedObjectElement ;
 
-nonterminal <actual_parameter> -> @actualParameter ;
+nonterminal <actual_parameter_list> -> @actualParameters ;
 
 nonterminal <match_instruction_branch> -> @matchInstructionBranch ;
 
@@ -53,38 +54,6 @@ rule <semantic_instruction_list> -> @semanticInstructions :
   while
     <semantic_instruction> +> mInstruction ;
   end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  A C T U A L    P A R A M E T E R                                         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <actual_parameter> -> @outputActualParameter :
-  $!$ ;
-  <expression> -> mOutputActualParameterExpression ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <actual_parameter> -> @outputInputActualParameter :
-  $!?$ ;
-  $identifier$ ?mOutputInputActualParameterName ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <actual_parameter> -> @inputActualParameter :
-  $?$ ;
-  $identifier$ ?mInputActualParameterName ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <actual_parameter> -> @inputJokerActualParameter :
-  $?$ ;
-  $*$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -250,10 +219,7 @@ rule <semantic_instruction> -> @methodCallInstruction :
   $[$ ;
   <expression> -> mReceiverExpression ;
   $identifier$ ?mMethodName ;
-  repeat
-    <actual_parameter> +> mActualParameterList ;
-  while
-  end repeat ;
+  <actual_parameter_list> -> mActualParameterList ;
   $]$ ;
   $;$ ;
 end rule ;
@@ -269,10 +235,7 @@ rule <semantic_instruction> -> @modifierCallInstruction :
   $!?$ ;
   $identifier$ ?mReceiverName ;
   $identifier$ ?mModifierName ;
-  repeat
-    <actual_parameter> +> mActualParameterList ;
-  while
-  end repeat ;
+  <actual_parameter_list> -> mActualParameterList ;
   $]$ ;
   $;$ ;
 end rule ;
@@ -325,10 +288,7 @@ end rule ;
 
 rule <semantic_instruction> -> @routineCallInstruction :
   $identifier$ ? mRoutineName ;
-  repeat
-    <actual_parameter> +> mActualParameterList ;
-  while
-  end repeat ;
+  <actual_parameter_list> -> mActualParameterList ;
   $;$ ;
 end rule ;
 

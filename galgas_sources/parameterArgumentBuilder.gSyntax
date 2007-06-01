@@ -1,0 +1,120 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'expression' component parser, as model builder                          *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax parameterArgumentBuilder :
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+nonterminal <expression> -> @semanticExpression ;
+
+nonterminal <formal_parameter_list> -> @formalParameters ;
+
+nonterminal <formal_parameter> -> @formalParameter ;
+
+nonterminal <actual_parameter> -> @actualParameter ;
+
+nonterminal <actual_parameter_list> -> @actualParameters ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_parameter_list> -> @formalParameters :
+  repeat
+  while
+    <formal_parameter> +> mFormalParameterList ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_parameter> -> @formalParameter :
+  select
+    $?$ ;
+    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentIn] ;
+  or
+    $??$ ;
+    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+  or
+    $?!$ ;
+    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentInOut] ;
+  or
+    $!$ ;
+    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentOut] ;
+  end select ;
+  $type_name$ ? mFormalParameterTypeName ;
+  select
+    mIsUnused := false ;
+  or
+    $unused$ ;
+    mIsUnused := true ;
+  end select ;
+  $identifier$ ? mFormalParameterName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    P A R A M E T E R                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter> -> @outputActualParameter :
+  $!$ ;
+  <expression> -> mOutputActualParameterExpression ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter> -> @outputInputActualParameter :
+  $!?$ ;
+  $identifier$ ?mOutputInputActualParameterName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter> -> @inputActualParameter :
+  $?$ ;
+  $identifier$ ?mInputActualParameterName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter> -> @inputJokerActualParameter :
+  $?$ ;
+  $*$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter_list> -> @actualParameters :
+  repeat
+  while
+    <actual_parameter> +> mActualParameter ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

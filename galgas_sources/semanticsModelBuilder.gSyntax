@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'semantics' component parser, as model builder                           *
+#  'syntax' component parser, as model builder                              *
 #                                                                           *
 #  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
 #                                                                           *
@@ -19,6 +19,8 @@
 
 syntax semanticsModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
 import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
 import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
@@ -42,8 +44,6 @@ nonterminal <class_overriden_method_declaration> -> @overridenMethodDefinition ;
 nonterminal <class_message_declaration> -> @classMessageDefinition ;
 
 nonterminal <formal_parameter_list> -> @formalParameters ;
-
-nonterminal <formal_parameter> -> @formalParameter ;
 
 nonterminal <enum_message_declaration> -> @enumMessage ;
 
@@ -99,41 +99,6 @@ rule <attribute_declaration> -> @structuredTypeAttribute :
   $type_name$ ? mAttributeTypeName ;
   $identifier$ ? mAttributeName ;
   $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <formal_parameter_list> -> @formalParameters :
-  repeat
-  while
-    <formal_parameter> +> mFormalParameterList ;
-  end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <formal_parameter> -> @formalParameter :
-  select
-    $?$ ;
-    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentIn] ;
-  or
-    $??$ ;
-    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentConstantIn] ;
-  or
-    $?!$ ;
-    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentInOut] ;
-  or
-    $!$ ;
-    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentOut] ;
-  end select ;
-  $type_name$ ? mFormalParameterTypeName ;
-  select
-    mIsUnused := false ;
-  or
-    $unused$ ;
-    mIsUnused := true ;
-  end select ;
-  $identifier$ ? mFormalParameterName ;
 end rule ;
 
 #---------------------------------------------------------------------------*

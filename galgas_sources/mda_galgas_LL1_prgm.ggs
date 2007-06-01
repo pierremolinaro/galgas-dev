@@ -25,6 +25,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
   import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
+  import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
   import treewalking optionHeaderGeneration in "optionHeaderGeneration.ggs" ;
   import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.ggs" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
@@ -35,9 +36,12 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar metamodelLL1grammar in "metamodelLL1grammar.ggs" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.ggs" ;
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.ggs" ;
+  import grammar syntaxSLRgrammar in "syntaxSLRgrammar.ggs" ;
   
   error 100 ;
   warning 100 ;
+
+#---------------------------------------------------------------------------*
 
   when . "ggs"
   message "a '.ggs' GALGAS source file"
@@ -61,6 +65,8 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
       !?treewalkingComponentMap
     ;
   }
+
+#---------------------------------------------------------------------------*
 
   when . "gOption"
   message "a GALGAS option source file"
@@ -97,6 +103,8 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     ;
   }
 
+#---------------------------------------------------------------------------*
+
   when . "gMetamodel"
   message "a GALGAS metamodel source file"
   ??@lstring inSourceFile {
@@ -107,6 +115,8 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     @metamodelComponentRoot metamodelComponentRoot ;
     grammar metamodelLL1grammar in inSourceFile -> metamodelComponentRoot ;
   }
+
+#---------------------------------------------------------------------------*
 
   when . "gLexique"
   message "a GALGAS lexique source file"
@@ -125,6 +135,8 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     log terminalMap ;
   }
 
+#---------------------------------------------------------------------------*
+
   when . "gSemantics"
   message "a GALGAS semantics source file"
   ??@lstring inSourceFile {
@@ -135,6 +147,21 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     @semanticsComponentRoot semanticsComponentRoot ;
     grammar semanticsSLRgrammar in inSourceFile -> semanticsComponentRoot ;
   }
+
+#---------------------------------------------------------------------------*
+
+  when . "gSyntax"
+  message "a GALGAS syntax source file"
+  ??@lstring inSourceFile {
+  #--- File generation start directory
+    @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+    startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+  #--- Parse metamodel component
+    @syntaxComponentRoot syntaxComponentRoot ;
+    grammar syntaxSLRgrammar in inSourceFile -> syntaxComponentRoot ;
+  }
+
+#---------------------------------------------------------------------------*
 
 end program ;
 

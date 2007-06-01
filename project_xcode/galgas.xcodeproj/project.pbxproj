@@ -1844,6 +1844,38 @@
 		CFDC00700B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
 		CFDC00710B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */; };
 		CFDC00720B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
+		CFE154350C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFE154360C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
+		CFE154370C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFE154380C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
+		CFE154390C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFE1543A0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
+		CFE1543B0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFE1543C0C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
+		CFE1543D0C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFE1543E0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
+		CFE1543F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFE154400C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
+		CFE154410C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFE154420C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
+		CFE154430C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFE154440C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
+		CFE154450C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFE154460C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
+		CFE154470C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFE154480C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
+		CFE154490C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFE1544A0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
+		CFE1544B0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFE1544C0C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
+		CFE1544D0C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFE1544E0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
+		CFE1544F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFE154500C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
+		CFE154510C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFE154520C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
+		CFE154530C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFE154540C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE675BA0C0B035F007C1E98 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA1415E060DB7CB00601791 /* AC_galgas_map.h */; };
@@ -2128,6 +2160,54 @@
 		CFF9E55D0BC3D931005A1AEC /* instructionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E5570BC3D930005A1AEC /* instructionMetamodel.h */; };
 		CFF9E55E0BC3D931005A1AEC /* instructionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E5570BC3D930005A1AEC /* instructionMetamodel.h */; };
 		CFF9E55F0BC3D931005A1AEC /* instructionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E5570BC3D930005A1AEC /* instructionMetamodel.h */; };
+		CFFA525A0C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFFA525B0C10268B00B81CF3 /* syntaxMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */; };
+		CFFA525C0C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFFA525D0C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */; };
+		CFFA525E0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFFA525F0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */; };
+		CFFA52600C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFFA52610C10268B00B81CF3 /* syntaxMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */; };
+		CFFA52620C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFFA52630C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */; };
+		CFFA52640C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFFA52650C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */; };
+		CFFA52660C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFFA52670C10268B00B81CF3 /* syntaxMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */; };
+		CFFA52680C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFFA52690C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */; };
+		CFFA526A0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFFA526B0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */; };
+		CFFA526C0C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFFA526D0C10268B00B81CF3 /* syntaxMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */; };
+		CFFA526E0C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFFA526F0C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */; };
+		CFFA52700C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFFA52710C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */; };
+		CFFA52720C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFFA52730C10268B00B81CF3 /* syntaxMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */; };
+		CFFA52740C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFFA52750C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */; };
+		CFFA52760C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFFA52770C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */; };
+		CFFA52780C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFFA52790C10268B00B81CF3 /* syntaxMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */; };
+		CFFA527A0C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFFA527B0C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */; };
+		CFFA527C0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFFA527D0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */; };
+		CFFA527E0C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFFA527F0C10268B00B81CF3 /* syntaxMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */; };
+		CFFA52800C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFFA52810C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */; };
+		CFFA52820C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFFA52830C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */; };
+		CFFA52840C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFFA52850C10268B00B81CF3 /* syntaxMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */; };
+		CFFA52860C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFFA52870C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */; };
+		CFFA52880C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFFA52890C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */; };
 		CFFC8C870B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
 		CFFC8C880B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
 		CFFC8C890B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
@@ -2745,6 +2825,10 @@
 		CFDB3A720B8866D500DDA180 /* treewalking_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = treewalking_parser.h; sourceTree = "<group>"; };
 		CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_mapindex.cpp; sourceTree = "<group>"; };
 		CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_mapindex.h; sourceTree = "<group>"; };
+		CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentBuilder.cpp; sourceTree = "<group>"; };
+		CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentBuilder.h; sourceTree = "<group>"; };
+		CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentMetamodel.cpp; sourceTree = "<group>"; };
+		CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentMetamodel.h; sourceTree = "<group>"; };
 		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
 		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = "<group>"; };
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
@@ -2838,6 +2922,12 @@
 		CFF9E5350BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticInstructionListModelBuilder.h; sourceTree = "<group>"; };
 		CFF9E5470BC3D8F6005A1AEC /* instructionMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = instructionMetamodel.cpp; sourceTree = "<group>"; };
 		CFF9E5570BC3D930005A1AEC /* instructionMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = instructionMetamodel.h; sourceTree = "<group>"; };
+		CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = syntaxMetamodel.cpp; sourceTree = "<group>"; };
+		CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = syntaxMetamodel.h; sourceTree = "<group>"; };
+		CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = syntaxModelBuilder.cpp; sourceTree = "<group>"; };
+		CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = syntaxModelBuilder.h; sourceTree = "<group>"; };
+		CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = syntaxSLRgrammar.cpp; sourceTree = "<group>"; };
+		CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = syntaxSLRgrammar.h; sourceTree = "<group>"; };
 		CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = treewalking_generation.cpp; sourceTree = "<group>"; };
 		CFFC8DBF0B8A253200920BB1 /* include_typeCurrentObjectName.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCurrentObjectName.h; sourceTree = "<group>"; };
 		CFFE920C0B7CC06E009BCBF5 /* domain_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = domain_parser.cpp; sourceTree = "<group>"; };
@@ -3373,6 +3463,17 @@
 			name = "Tree walking";
 			sourceTree = "<group>";
 		};
+		CFE154300C106A0800A1D904 /* Parameters & Arguments */ = {
+			isa = PBXGroup;
+			children = (
+				CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */,
+				CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */,
+				CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */,
+				CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */,
+			);
+			name = "Parameters & Arguments";
+			sourceTree = "<group>";
+		};
 		CFEC15F109CA021000204242 /* Metamodel Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -3465,6 +3566,7 @@
 		CFF53732057A4E5000854C83 /* GALGAS_OUTPUT */ = {
 			isa = PBXGroup;
 			children = (
+				CFE154300C106A0800A1D904 /* Parameters & Arguments */,
 				CFD2149A0913BDFA0011F11E /* Include Files */,
 				CFEE57810BFB59E900B99D47 /* Expressions */,
 				CFF9E5330BC3D87A005A1AEC /* Instructions */,
@@ -3598,6 +3700,12 @@
 		CFF537AA057A51A000854C83 /* Parser Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */,
+				CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */,
+				CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */,
+				CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */,
+				CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */,
+				CFFA52590C10268B00B81CF3 /* syntaxSLRgrammar.h */,
 				CF76F4B5090E73EC00036FAC /* parser_parser.h */,
 				CFF537AD057A51CB00854C83 /* parser_parser.cpp */,
 				CF76F4B6090E73EC00036FAC /* parser_semantics.h */,
@@ -4027,6 +4135,11 @@
 				CFF2C8E10C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
 				CFF2C8E20C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
 				CFF2C8E30C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
+				CFFA525B0C10268B00B81CF3 /* syntaxMetamodel.h in Headers */,
+				CFFA525D0C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */,
+				CFFA525F0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
+				CFE154360C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
+				CFE154380C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4171,6 +4284,11 @@
 				CFF2C8F30C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
 				CFF2C8F40C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
 				CFF2C8F50C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
+				CFFA527F0C10268B00B81CF3 /* syntaxMetamodel.h in Headers */,
+				CFFA52810C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */,
+				CFFA52830C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
+				CFE1544E0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
+				CFE154500C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4314,6 +4432,11 @@
 				CFF2C8F60C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
 				CFF2C8F70C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
 				CFF2C8F80C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
+				CFFA52850C10268B00B81CF3 /* syntaxMetamodel.h in Headers */,
+				CFFA52870C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */,
+				CFFA52890C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
+				CFE154520C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
+				CFE154540C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4457,6 +4580,11 @@
 				CFF2C8E40C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
 				CFF2C8E50C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
 				CFF2C8E60C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
+				CFFA52610C10268B00B81CF3 /* syntaxMetamodel.h in Headers */,
+				CFFA52630C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */,
+				CFFA52650C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
+				CFE1543A0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
+				CFE1543C0C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4582,6 +4710,11 @@
 				CFF2C8E70C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
 				CFF2C8E80C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
 				CFF2C8E90C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
+				CFFA52670C10268B00B81CF3 /* syntaxMetamodel.h in Headers */,
+				CFFA52690C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */,
+				CFFA526B0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
+				CFE1543E0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
+				CFE154400C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4707,6 +4840,11 @@
 				CFF2C8EA0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
 				CFF2C8EB0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
 				CFF2C8EC0C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
+				CFFA526D0C10268B00B81CF3 /* syntaxMetamodel.h in Headers */,
+				CFFA526F0C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */,
+				CFFA52710C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
+				CFE154420C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
+				CFE154440C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4832,6 +4970,11 @@
 				CFF2C8ED0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
 				CFF2C8EE0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
 				CFF2C8EF0C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
+				CFFA52730C10268B00B81CF3 /* syntaxMetamodel.h in Headers */,
+				CFFA52750C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */,
+				CFFA52770C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
+				CFE154460C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
+				CFE154480C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4957,6 +5100,11 @@
 				CFF2C8F00C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */,
 				CFF2C8F10C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */,
 				CFF2C8F20C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */,
+				CFFA52790C10268B00B81CF3 /* syntaxMetamodel.h in Headers */,
+				CFFA527B0C10268B00B81CF3 /* syntaxModelBuilder.h in Headers */,
+				CFFA527D0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
+				CFE1544A0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
+				CFE1544C0C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5435,6 +5583,11 @@
 				CFF9E5480BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE57860BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE57880BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
+				CFFA525A0C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */,
+				CFFA525C0C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */,
+				CFFA525E0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
+				CFE154350C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
+				CFE154370C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5577,6 +5730,11 @@
 				CFF9E54E0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE579E0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE57A00BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
+				CFFA527E0C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */,
+				CFFA52800C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */,
+				CFFA52820C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
+				CFE1544D0C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
+				CFE1544F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5719,6 +5877,11 @@
 				CFF9E54F0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE57A20BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE57A40BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
+				CFFA52840C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */,
+				CFFA52860C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */,
+				CFFA52880C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
+				CFE154510C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
+				CFE154530C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5900,6 +6063,11 @@
 				CFF9E5490BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE578A0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE578C0BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
+				CFFA52600C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */,
+				CFFA52620C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */,
+				CFFA52640C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
+				CFE154390C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
+				CFE1543B0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6042,6 +6210,11 @@
 				CFF9E54A0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE578E0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE57900BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
+				CFFA52660C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */,
+				CFFA52680C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */,
+				CFFA526A0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
+				CFE1543D0C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
+				CFE1543F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6184,6 +6357,11 @@
 				CFF9E54B0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE57920BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE57940BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
+				CFFA526C0C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */,
+				CFFA526E0C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */,
+				CFFA52700C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
+				CFE154410C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
+				CFE154430C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6326,6 +6504,11 @@
 				CFF9E54C0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE57960BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE57980BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
+				CFFA52720C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */,
+				CFFA52740C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */,
+				CFFA52760C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
+				CFE154450C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
+				CFE154470C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6468,6 +6651,11 @@
 				CFF9E54D0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE579A0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE579C0BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
+				CFFA52780C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */,
+				CFFA527A0C10268B00B81CF3 /* syntaxModelBuilder.cpp in Sources */,
+				CFFA527C0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
+				CFE154490C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
+				CFE1544B0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

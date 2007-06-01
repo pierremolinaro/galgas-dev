@@ -17,51 +17,25 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract metamodel instructionMetamodel extends expressionMetamodel :
+abstract metamodel instructionMetamodel extends parameterArgumentMetamodel :
 
 import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
 
 #---------------------------------------------------------------------------*
 
-abstract entity @semanticInstruction {
+abstract entity @syntaxInstruction {
+}
+
+#---------------------------------------------------------------------------*
+
+abstract entity @semanticInstruction extends @syntaxInstruction {
 }
 
 #---------------------------------------------------------------------------*
 
 entity @semanticInstructions {
   @semanticInstruction [] mInstruction ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  A C T U A L    P A R A M E T E R                                         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract entity @actualParameter {
-}
-
-#---------------------------------------------------------------------------*
-
-entity @outputActualParameter extends @actualParameter {
-  @semanticExpression mOutputActualParameterExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @outputInputActualParameter extends @actualParameter {
-  @lstring mOutputInputActualParameterName ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @inputActualParameter extends @actualParameter {
-  @lstring mInputActualParameterName ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @inputJokerActualParameter extends @actualParameter {
 }
 
 #---------------------------------------------------------------------------*
@@ -161,7 +135,7 @@ entity @ifInstruction extends @semanticInstruction {
 entity @methodCallInstruction extends @semanticInstruction {
   @semanticExpression mReceiverExpression ;
   @lstring mMethodName ;
-  @actualParameter [] mActualParameterList ;
+  @actualParameters mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -173,7 +147,7 @@ entity @methodCallInstruction extends @semanticInstruction {
 entity @modifierCallInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
   @lstring mModifierName ;
-  @actualParameter [] mActualParameterList ;
+  @actualParameters mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -207,7 +181,7 @@ entity @warningInstruction extends @semanticInstruction {
 
 entity @routineCallInstruction extends @semanticInstruction {
   @lstring mRoutineName ;
-  @actualParameter [] mActualParameterList ;
+  @actualParameters mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*

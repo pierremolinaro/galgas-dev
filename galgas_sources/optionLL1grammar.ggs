@@ -19,7 +19,7 @@
 
 grammar optionLL1grammar "LL1" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax optionModelBuilder in "optionModelBuilder.ggs" ;
+  import syntax optionModelBuilder in "optionModelBuilder.gSyntax" ;
 
   root <option_component_start_symbol> -> optionMetamodel
   ; # LL1

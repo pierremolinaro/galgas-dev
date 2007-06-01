@@ -19,9 +19,10 @@
 
 grammar semanticsSLRgrammar "SLR" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax semanticsModelBuilder in "semanticsModelBuilder.ggs" ;
-  import syntax expressionModelBuilder in "expressionModelBuilder.ggs" ;
-  import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.ggs" ;
+  import syntax expressionModelBuilder in "expressionModelBuilder.gSyntax" ;
+  import syntax parameterArgumentBuilder in "parameterArgumentBuilder.gSyntax" ;
+  import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.gSyntax" ;
+  import syntax semanticsModelBuilder in "semanticsModelBuilder.gSyntax" ;
 
   root <semantics_component_start_symbol> -> semanticsMetamodel
   ; # SLR
