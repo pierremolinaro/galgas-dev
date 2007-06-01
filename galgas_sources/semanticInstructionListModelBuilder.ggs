@@ -38,7 +38,9 @@ nonterminal <actual_parameter> -> @actualParameter ;
 
 nonterminal <match_instruction_branch> -> @matchInstructionBranch ;
 
-nonterminal <extract_instruction_branch> -> @extractInstructionBranch ;
+nonterminal <cast_instruction_branch> -> @castInstructionBranch ;
+
+nonterminal <cast_else_or_default> -> @elseOrDefaultForCastInstruction ;
 
 nonterminal <output_expression_list> -> @outExpressionList ;
 
@@ -130,6 +132,30 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    I N C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @incrementInstruction :
+  $identifier$ ? mReceiverName ;
+  $++$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @decrementInstruction :
+  $identifier$ ? mReceiverName ;
+  $--$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    F O R E A C H    I N S T R U C T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -158,7 +184,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject :
-  $identifier$ ?mEnumeratedObjectName ;
+  <expression> -> mEnumeratedExpression ;
   $($ ;
   repeat
   while
@@ -379,46 +405,63 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    E X T R A C T    I N S T R U C T I O N                                 *
+#    C A S T    I N S T R U C T I O N                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <extract_instruction_branch> -> @extractInstructionBranch :
+rule <cast_instruction_branch> -> @castInstructionBranch :
   $when$ ;
-  $type_name$ ? mExtractBranchTypeName ;
-  $($ ;
-  repeat
-  while
-    <foreach_enumeration_element> +> mElements ;
-  end repeat ;
   select
-    mEndsWithEllipsis := false ;
+    $>=$ ;
+    mUseKindOfClass := true ;
   or
-    $...$ ;
-    mEndsWithEllipsis := true ;
+    $==$ ;
+    mUseKindOfClass := false ;
   end select ;
-  $)$ ;
-  $->$ ;
-  <semantic_instruction_list> -> mExtractBranchInstructionList ;
+  $type_name$ ? mTypeName ;
+  select
+    $identifier$ ?mConstantVarName ;
+    mConstantVarNameIsUnused := false ;
+  or
+    $unused$ ;
+    $identifier$ ?mConstantVarName ;
+    mConstantVarNameIsUnused := true ;
+  or
+    mConstantVarName := [@lstring new !"" !here] ;
+    mConstantVarNameIsUnused := true ;
+  end select ;
+  $do$ ;
+  <semantic_instruction_list> -> mCastBranchInstructionList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @extractInstruction :
-  $extract$ ;
-  $identifier$ ? mReceiverName ;
+rule <cast_else_or_default> -> @elseForCastInstruction :
+  $else$ ;
+  <semantic_instruction_list> -> mElseInstructionList ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <cast_else_or_default> -> @defaultForCastInstruction :
+  $default$ ;
+  $error$ ;
+  <expression> -> mErrorLocationExpression ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @castInstruction :
+  $cast$ ;
+  <expression> -> mExpression ;
   $:$ ;
   repeat
-    <extract_instruction_branch> +> mExtractInstructionBranchList ;
+    <cast_instruction_branch> +> mCastInstructionBranchList ;
   while
   end repeat ;
-  select
-  or
-    $else$ ;
-    <semantic_instruction_list> +> mElseInstructionList ;
-  end select ;
+  <cast_else_or_default> -> mElseOrDefault ;
   $end$ ;
-  $extract$ ;
+  $cast$ ;
   $;$ ;
 end rule ;
 

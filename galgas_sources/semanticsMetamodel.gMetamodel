@@ -99,6 +99,7 @@ entity @classDeclaration extends @semanticDeclaration {
   @overridenMethodDefinition [] mOverridenMethodList ;
   @methodDefinition [] mMethodList ;
   @classMessageDefinition [] mMessageList ;
+  @string mClassMessage ;
 }
 
 #---------------------------------------------------------------------------*

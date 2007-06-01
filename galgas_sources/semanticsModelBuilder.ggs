@@ -208,6 +208,7 @@ rule <semantic_declaration> -> @classDeclaration :
     $type_name$ ? mSuperClassName ;
   end select ;
   ${$ ;
+  mClassMessage := "" ;
 #--- Class properties
   repeat
   while
@@ -220,6 +221,18 @@ rule <semantic_declaration> -> @classDeclaration :
     <class_method_declaration> +> mMethodList ;
   while
     <class_message_declaration> +> mMessageList ;
+  while
+    $message$ ;
+    if [mClassMessage length] > 0 then
+      error here: "the class message is already defined" ;
+    end if ;
+    @lstring classMessage ;
+    $literal_string$ ? classMessage ;
+    if [classMessage length] == 0 then
+      error classMessage: "the class message string should be not empty" ;
+    end if ;
+    mClassMessage := [classMessage string] ;
+    $;$ ;
   end repeat ;
   $}$ ;
 end rule ;

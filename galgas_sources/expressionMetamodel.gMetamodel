@@ -302,4 +302,13 @@ entity @descriptionInExpression extends @semanticExpression {
 
 #---------------------------------------------------------------------------*
 
+entity @castInExpression extends @semanticExpression {
+  @semanticExpression mReceiverExpression ;
+  @bool mUseKindOfClass ;
+  @lstring mTypeName ;
+  @semanticExpression mErrorLocationExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
 end metamodel ;
