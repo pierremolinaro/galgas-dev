@@ -19,7 +19,9 @@
 
 syntax expressionModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *

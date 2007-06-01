@@ -1,0 +1,106 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'syntax' component metamodel                                             *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+metamodel syntaxMetamodel extends instructionMetamodel root @syntaxComponentRoot :
+
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
+import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+
+#---------------------------------------------------------------------------*
+
+entity @syntaxComponentRoot {
+  @lstring mSyntaxComponentName ;
+  @nonterminalDeclaration [] mNonterminalDeclarations ;
+  @syntaxRule [] mRules ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @syntaxInstructions {
+  @syntaxInstruction [] mInstruction ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @nonterminalDeclaration {
+  @lstring mNonterminalName ;
+  @formalParameters mFormalParameters ;
+  @lstring mReturnedEntityName ; # Empty string if no returned entity
+}
+
+#---------------------------------------------------------------------------*
+
+entity @syntaxRule {
+  @lstring mNonterminalName ;
+  @formalParameters mFormalParameters ;
+  @lstring mReturnedEntityName ; # Empty string if no returned entity
+  @lstring mReturnedVariableName ;  # Empty string if no returned variable
+  @syntaxInstructions mSyntaxInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   N O N T E R M I N A L    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @nonterminalCallInstruction extends @syntaxInstruction {
+  @lstring mNonterminalName ;
+  @actualParameters mActualParameterList ;
+  @lstring mReturnedValueTargetVariableName ; # Empty String if no returned value
+  @bool mReturnedValueIsAssigned ; # if false, is appended
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   T E R M I N A L    C H E C K    I N S T R U C T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @terminalCheckInstruction extends @syntaxInstruction {
+  @lstring mTerminalName ;
+  @lstringlist mReturnedValueTargetVariableNames ; # Empty String if no returned value
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   R E P E A T    I N S T R U C T I O N                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @repeatInstruction extends @syntaxInstruction {
+  @syntaxInstructions mRepeatedInstructionList ;
+  @syntaxInstructions [1, *] mRepeatBranchList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S E L E C T    I N S T R U C T I O N                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @selectInstruction extends @syntaxInstruction {
+  @syntaxInstructions [2, *] mSelectBranchList ;
+}
+
+#---------------------------------------------------------------------------*
+
+end metamodel ;

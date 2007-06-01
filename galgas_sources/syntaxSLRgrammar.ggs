@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'lexique' LL1 grammar                                                  *
+#  'syntax' SLR grammar                                                     *
 #                                                                           *
 #  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
 #                                                                           *
@@ -17,10 +17,13 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar lexiqueLL1grammar "LL1" :
+grammar syntaxSLRgrammar "SLR" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax lexiqueModelBuilder in "lexiqueModelBuilder.gSyntax" ;
+  import syntax syntaxModelBuilder in "syntaxModelBuilder.gSyntax" ;
+  import syntax expressionModelBuilder in "expressionModelBuilder.gSyntax" ;
+  import syntax parameterArgumentBuilder in "parameterArgumentBuilder.gSyntax" ;
+  import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.gSyntax" ;
 
-  root <lexique_component_start_symbol> -> lexiqueMetamodel
-  ; # LL1
+  root <syntax_component_start_symbol> -> syntaxMetamodel
+  ; # SLR
 end grammar ;

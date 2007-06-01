@@ -963,7 +963,6 @@ rule <import_headers_semantics_and_grammars>
             ![@typeEntiteType new !t]
           ] ;
         end foreach ;
-        outInclusionsForHeaderFile += ![metamodelComponentName string] ;
       end if ;
     #---
       outInclusionsForHeaderFile += ![metamodelComponentName string] ;

@@ -20,6 +20,8 @@
 metamodel semanticsMetamodel extends instructionMetamodel root @semanticsComponentRoot :
 
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
 import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
 
 #---------------------------------------------------------------------------*
@@ -44,21 +46,6 @@ abstract entity @semanticDeclaration {
 entity @structuredTypeAttribute {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @formalParameters {
-  @formalParameter [] mFormalParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @formalParameter {
-  @formalArgumentPassingMode mFormalParameterPassingMode ;
-  @lstring mFormalParameterTypeName ;
-  @lstring mFormalParameterName ;
-  @bool mIsUnused ;
 }
 
 #---------------------------------------------------------------------------*

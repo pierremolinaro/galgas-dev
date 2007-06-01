@@ -1551,6 +1551,14 @@ routine performMetamodelInclusion
     @entityToImplementMap superMetamodelEntityMap ;
     @stringset superMetamodelsOfSuperMetamodels ;
     [inMetamodelComponentMap searchKey !inSuperMetamodelName ?* ?superMetamodelEntityMap ?superMetamodelsOfSuperMetamodels] ;
+    foreach superMetamodelsOfSuperMetamodels (@string kSuperMetamodel) :
+      performMetamodelInclusion
+        !inMetamodelComponentMap
+        ![@lstring new !kSuperMetamodel !here]
+        !?ioSuperMetamodels
+        !?ioAllEntityMap
+      ;
+    end foreach ;
     foreach superMetamodelEntityMap (@lstring kEntityName 
                                      @entityPropertyMap kAllMetamodelPropertyMap
                                      @bool kIsAbstract
@@ -1575,14 +1583,6 @@ routine performMetamodelInclusion
            !kID
          ] ;
        end if ;
-    end foreach ;
-    foreach superMetamodelsOfSuperMetamodels (@string kSuperMetamodel) :
-      performMetamodelInclusion
-        !inMetamodelComponentMap
-        ![@lstring new !kSuperMetamodel !here]
-        !?ioSuperMetamodels
-        !?ioAllEntityMap
-      ;
     end foreach ;
   end if ;
 end routine ;

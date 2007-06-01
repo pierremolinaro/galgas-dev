@@ -1,0 +1,223 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'semantics' component parser, as model builder                           *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax syntaxModelBuilder :
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
+import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <syntax_component_start_symbol> -> @syntaxComponentRoot ;
+
+nonterminal <nonterminal_declaration> -> @nonterminalDeclaration ;
+
+nonterminal <syntax_rule_declaration> -> @syntaxRule ;
+
+nonterminal <syntax_instruction_list> -> @syntaxInstructions ;
+
+nonterminal <semantic_instruction> -> @semanticInstruction ;
+
+nonterminal <syntax_instruction> -> @syntaxInstruction ;
+
+nonterminal <formal_parameter_list> -> @formalParameters ;
+
+nonterminal <actual_parameter_list> -> @actualParameters ;
+
+#---------------------------------------------------------------------------*
+
+rule <syntax_component_start_symbol> -> @syntaxComponentRoot :
+  $syntax$ ;
+#--- Semantics Component Name
+  $identifier$ ? mSyntaxComponentName ;
+  $:$ ;
+#--- Loop on import declarations
+  repeat
+  while
+    $import$ ;
+    select
+      $semantics$ ;
+    or
+      $lexique$ ;
+    or
+      $metamodel$ ;
+    or
+      $grammar$ ;
+    end select ;
+    $identifier$ ?* ;
+    $in$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
+#--- Loop on declarations
+  repeat
+  while
+    <nonterminal_declaration> +> mNonterminalDeclarations ;
+  while
+    <syntax_rule_declaration> +> mRules ;
+  end repeat ;
+#--- end
+  $end$ ;
+  $syntax$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <nonterminal_declaration> -> @nonterminalDeclaration :
+  $nonterminal$ ;
+  $non_terminal_symbol$ ? mNonterminalName ;
+  <formal_parameter_list> -> mFormalParameters ;
+  select
+    mReturnedEntityName := [@lstring new !"" !here] ;
+  or
+    $->$ ;
+    $type_name$ ? mReturnedEntityName ;
+  end select ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <syntax_rule_declaration> -> @syntaxRule :
+  $rule$ ;
+  $non_terminal_symbol$ ? mNonterminalName ;
+  <formal_parameter_list> -> mFormalParameters ;
+  select
+    mReturnedEntityName := [@lstring new !"" !here] ;
+    mReturnedVariableName := [@lstring new !"" !here] ;
+  or
+    $->$ ;
+    $type_name$ ? mReturnedEntityName ;
+    select
+      mReturnedVariableName := [@lstring new !"" !here] ;
+    or
+      $identifier$ ? mReturnedVariableName ;
+    end select ;
+  end select ;
+  $:$ ;
+  <syntax_instruction_list> -> mSyntaxInstructionList ;
+  $end$ ;
+  $rule$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <syntax_instruction_list> -> @syntaxInstructions :
+  repeat
+  while
+    <semantic_instruction> +> mInstruction ;
+  while
+    <syntax_instruction> +> mInstruction ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   N O N T E R M I N A L    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <syntax_instruction> -> @nonterminalCallInstruction :
+  $non_terminal_symbol$ ? mNonterminalName ;
+  <actual_parameter_list> -> mActualParameterList ;
+  select
+    mReturnedValueTargetVariableName := [@lstring new !"" !here] ;
+    mReturnedValueIsAssigned := true ; # Any Value
+  or
+    $->$ ;
+    $identifier$ ? mReturnedValueTargetVariableName ;
+    mReturnedValueIsAssigned := true ;
+  or
+    $+>$ ;
+    $identifier$ ? mReturnedValueTargetVariableName ;
+    mReturnedValueIsAssigned := false ;
+  end select ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   T E R M I N A L    C H E C K    I N S T R U C T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <syntax_instruction> -> @terminalCheckInstruction :
+  $terminal$ ? mTerminalName ;
+  mReturnedValueTargetVariableNames := [@lstringlist emptyList] ;
+  repeat
+  while
+    $?$ ;
+    select
+      $*$ ;
+      mReturnedValueTargetVariableNames += ![@lstring new !"" !here] ;
+    or
+      @lstring returnedValueTargetVariableName ;
+      $identifier$ ? returnedValueTargetVariableName ;
+      mReturnedValueTargetVariableNames += !returnedValueTargetVariableName ;
+    end select ;
+  end repeat ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   R E P E A T    I N S T R U C T I O N                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <syntax_instruction> -> @repeatInstruction :
+  $repeat$ ;
+  <syntax_instruction_list> -> mRepeatedInstructionList ;
+  repeat
+    $while$ ;
+    <syntax_instruction_list> +> mRepeatBranchList ;
+  while
+  end repeat ;
+  $end$ ;
+  $repeat$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S E L E C T    I N S T R U C T I O N                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <syntax_instruction> -> @selectInstruction :
+  $select$ ;
+  <syntax_instruction_list> +> mSelectBranchList ;
+  repeat
+    $or$ ;
+    <syntax_instruction_list> +> mSelectBranchList ;
+  while
+  end repeat ;
+  $end$ ;
+  $select$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;
