@@ -2730,11 +2730,13 @@ class @typeGalgas_multipleReferenceEntity extends @AC_galgasType {
   @lstring mEntityTypeName ;
   @luint mLowerBound ;
   @luint mUpperBound ;
+
 #--- Get type name
   override
   method getTypeName !@string outTypeName :
     outTypeName := "$$" ;
   end method ;
+
 #--- Error message
   message "an entity multiple reference" ;
   message messageGalgasType "an entity multiple reference" ;

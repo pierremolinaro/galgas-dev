@@ -35,8 +35,6 @@ nonterminal <formal_parameter_list> -> @formalParameters ;
 
 nonterminal <formal_parameter> -> @formalParameter ;
 
-nonterminal <actual_parameter> -> @actualParameter ;
-
 nonterminal <actual_parameter_list> -> @actualParameters ;
 
 #---------------------------------------------------------------------------*
@@ -76,42 +74,47 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  A C T U A L    P A R A M E T E R                                         *
+#  A C T U A L    P A R A M E T E R    L I S T                              *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <actual_parameter> -> @outputActualParameter :
-  $!$ ;
-  <expression> -> mOutputActualParameterExpression ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <actual_parameter> -> @outputInputActualParameter :
-  $!?$ ;
-  $identifier$ ?mOutputInputActualParameterName ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <actual_parameter> -> @inputActualParameter :
-  $?$ ;
-  $identifier$ ?mInputActualParameterName ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <actual_parameter> -> @inputJokerActualParameter :
-  $?$ ;
-  $*$ ;
-end rule ;
-
 #---------------------------------------------------------------------------*
 
 rule <actual_parameter_list> -> @actualParameters :
   repeat
   while
-    <actual_parameter> +> mActualParameter ;
+    $?$ ;
+    select
+      $*$ ;
+      mActualParameter += ![@inputJokerActualParameter new] ;
+    or
+      @luint count ;
+      $unsigned_literal_integer$ ? count ;
+      $*$ ;
+      @uint n := [count uint] ;
+      if n == 0 then
+        error count: "the count value should be > 0" ;
+      else
+        loop n :
+        while n > 0 do
+          mActualParameter += ![@inputJokerActualParameter new] ;
+          n -- ;
+        end loop ;
+      end if ;
+    end select ;
+  while
+    $!$ ;
+    @semanticExpression e ;
+    <expression> -> e ;
+    mActualParameter += ![@outputActualParameter new !e] ;
+  while
+    $!?$ ;
+    @lstring outputInputActualParameterName ;
+    $identifier$ ?outputInputActualParameterName ;
+    mActualParameter += ![@outputInputActualParameter new !outputInputActualParameterName] ;
+  while
+    $?$ ;
+    @lstring inputActualParameterName ;
+    $identifier$ ?inputActualParameterName ;
+    mActualParameter += ![@inputActualParameter new !inputActualParameterName] ;
   end repeat ;
 end rule ;
 

@@ -2330,7 +2330,16 @@ rule <instruction_beginning_with_identifier>
   [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetVariableType ?nomCppVariableSource] ;
 #--- Does the variable class accept the += operator ?
   @typeListeAttributsSemantiques formalParametersList ;
-  [targetVariableType handleAddAssignOperatorCall !here ?formalParametersList] ;
+  cast targetVariableType :
+  when == @typeGalgas_multipleReferenceEntity mre do
+    formalParametersList := [@typeListeAttributsSemantiques emptyList] ;
+    @AC_semanticsEntity entite ;
+    [ioComponentSemanticsEntitiesMap searchKey ![mre mEntityTypeName] ? entite] ;
+    @AC_galgasType elementType := [(cast entite if >= @typeEntiteType else error here) aDefType] ;
+    formalParametersList += !elementType ![@lstring new !"" !here] ;
+  else
+    [targetVariableType handleAddAssignOperatorCall !here ?formalParametersList] ;
+  end cast ;
 #--- Parse argument list
   @typeTypesList typeList := [@typeTypesList emptyList] ;
   @typeExpressionList expressionList [emptyList] ;
