@@ -40,20 +40,35 @@ entity @syntaxInstructions {
 
 #---------------------------------------------------------------------------*
 
-entity @nonterminalDeclaration {
-  @lstring mNonterminalName ;
+entity @nonTerminalLabel {
+  @lstring mLabelName ;
   @formalParameters mFormalParameters ;
   @lstring mReturnedEntityName ; # Empty string if no returned entity
 }
 
 #---------------------------------------------------------------------------*
 
-entity @syntaxRule {
+entity @nonterminalDeclaration {
   @lstring mNonterminalName ;
+  @nonTerminalLabel [1, *] mLabels ;
+  @bool mHasParseLabel ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @syntaxRuleLabel {
+  @lstring mLabelName ;
   @formalParameters mFormalParameters ;
   @lstring mReturnedEntityName ; # Empty string if no returned entity
   @lstring mReturnedVariableName ;  # Empty string if no returned variable
   @syntaxInstructions mSyntaxInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @syntaxRule {
+  @lstring mNonterminalName ;
+  @syntaxRuleLabel [] mLabelList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -64,6 +79,7 @@ entity @syntaxRule {
 
 entity @nonterminalCallInstruction extends @syntaxInstruction {
   @lstring mNonterminalName ;
+  @lstring mLabelName ; # No label : empty string
   @actualParameters mActualParameterList ;
   @lstring mReturnedValueTargetVariableName ; # Empty String if no returned value
   @bool mReturnedValueIsAssigned ; # if false, is appended

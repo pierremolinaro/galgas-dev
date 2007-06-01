@@ -43,6 +43,10 @@ nonterminal <formal_parameter_list> -> @formalParameters ;
 
 nonterminal <actual_parameter_list> -> @actualParameters ;
 
+nonterminal <nonterminal_label_declaration> ??@lstring inLabelName -> @nonTerminalLabel ;
+
+nonterminal <syntax_rule_label> ??@lstring inLabelName -> @syntaxRuleLabel ;
+
 #---------------------------------------------------------------------------*
 
 rule <syntax_component_start_symbol> -> @syntaxComponentRoot :
@@ -83,9 +87,8 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <nonterminal_declaration> -> @nonterminalDeclaration :
-  $nonterminal$ ;
-  $non_terminal_symbol$ ? mNonterminalName ;
+rule <nonterminal_label_declaration> ??@lstring inLabelName -> @nonTerminalLabel :
+  mLabelName := inLabelName ;
   <formal_parameter_list> -> mFormalParameters ;
   select
     mReturnedEntityName := [@lstring new !"" !here] ;
@@ -93,14 +96,37 @@ rule <nonterminal_declaration> -> @nonterminalDeclaration :
     $->$ ;
     $type_name$ ? mReturnedEntityName ;
   end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <nonterminal_declaration> -> @nonterminalDeclaration :
+  mHasParseLabel := false ;
+  $nonterminal$ ;
+  $non_terminal_symbol$ ?mNonterminalName ;
+  <nonterminal_label_declaration> ![@lstring new !"" !here] +> mLabels ;
+  repeat
+  while
+    $label$ ;
+    select
+      @lstring labelName ;
+      $identifier$ ?labelName ;
+      <nonterminal_label_declaration> !labelName +> mLabels ;
+    or
+      $parse$ ;
+      if mHasParseLabel then
+        error here: "the 'parse' id already defined for this nonterminal" ;
+      end if ;
+      mHasParseLabel := true ;
+    end select ;
+  end repeat ;
   $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <syntax_rule_declaration> -> @syntaxRule :
-  $rule$ ;
-  $non_terminal_symbol$ ? mNonterminalName ;
+rule <syntax_rule_label> ??@lstring inLabelName -> @syntaxRuleLabel :
+  mLabelName := inLabelName ;
   <formal_parameter_list> -> mFormalParameters ;
   select
     mReturnedEntityName := [@lstring new !"" !here] ;
@@ -116,6 +142,20 @@ rule <syntax_rule_declaration> -> @syntaxRule :
   end select ;
   $:$ ;
   <syntax_instruction_list> -> mSyntaxInstructionList ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <syntax_rule_declaration> -> @syntaxRule :
+  $rule$ ;
+  $non_terminal_symbol$ ? mNonterminalName ;
+  @lstring labelName [new !"" !here] ;
+  repeat
+    <syntax_rule_label> ! labelName +> mLabelList ;
+  while
+    $label$ ;
+    $identifier$ ?labelName ;
+  end repeat ;
   $end$ ;
   $rule$ ;
   $;$ ;
@@ -140,6 +180,14 @@ end rule ;
 
 rule <syntax_instruction> -> @nonterminalCallInstruction :
   $non_terminal_symbol$ ? mNonterminalName ;
+  select
+    mLabelName := [@lstring new !"" !here] ;
+  or
+    $parse$ ;
+    mLabelName := [@lstring new !"parse" !here] ;
+  or
+    $identifier$ ? mLabelName ;
+  end select ;
   <actual_parameter_list> -> mActualParameterList ;
   select
     mReturnedValueTargetVariableName := [@lstring new !"" !here] ;
