@@ -39,6 +39,34 @@ entity @semanticInstructions {
 }
 
 #---------------------------------------------------------------------------*
+
+abstract entity @semanticDeclaration {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @routineDeclaration extends @semanticDeclaration {
+  @lstring mRoutineName ;
+  @formalParameters mFormalParameters ;
+  @semanticInstructions mRoutineInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    A C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @actionDeclaration extends @semanticDeclaration {
+  @lstring mActionName ;
+  @formalParameters mFormalParameters ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
 #                                                                           *
@@ -89,7 +117,6 @@ abstract entity @foreachInstructionEnumeratedObjectElement {
 #---------------------------------------------------------------------------*
 
 entity @foreachInstructionJoker extends @foreachInstructionEnumeratedObjectElement {
-  @uint mCount ;
 }
 
 #---------------------------------------------------------------------------*
@@ -103,7 +130,8 @@ entity @foreachInstructionEnumeratedConstant extends @foreachInstructionEnumerat
 
 entity @foreachInstructionEnumeratedObject {
   @semanticExpression mEnumeratedExpression ;
-  @foreachInstructionEnumeratedObjectElement [] mElement ;
+  @foreachInstructionEnumeratedObjectElement [] mElements ;
+  @bool mEndsWithEllipsis ;
 }
 
 #---------------------------------------------------------------------------*
@@ -290,6 +318,52 @@ entity @incrementInstruction extends @semanticInstruction {
 
 entity @decrementInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L O O P    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @loopInstruction extends @semanticInstruction {
+  @semanticExpression mVariantExpression ;
+  @semanticInstructions mFirstInstructions ;
+  @semanticExpression mLoopExpression ;
+  @semanticInstructions mSecondInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E S S A G E    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @messageInstruction extends @semanticInstruction {
+  @semanticExpression mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O G    I N S T R U C T I O N                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @logInstruction extends @semanticInstruction {
+  @lstringlist mLoggedVariableList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G R A M M A R    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @grammarInstruction extends @semanticInstruction {
+  @lstring mGrammarComponentName ;
+  @lstring mLabelName ;
+  @semanticExpression mSourceFileExpression ;
+  @actualParameters mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*

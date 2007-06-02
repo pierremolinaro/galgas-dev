@@ -19,18 +19,18 @@
 grammar galgas_LL1_grammar "LL1" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import option galgas_cli_options in "galgas_cli_options.gOption" ;
-  import syntax cli_options_parser in "cli_options_parser.ggs" ;
-  import syntax cocoa_parser in "cocoa_parser.ggs" ;
-  import syntax scanner_parser in "scanner_parser.ggs" ;
-  import syntax expression_parser in "expression_parser.ggs" ;
-  import syntax metamodel_parser in "metamodel_parser.ggs" ;
-  import syntax parser_parser in "parser_parser.ggs"  ;
-  import syntax grammar_parser in "grammar_parser.ggs" ;
-  import syntax ggs_LL1_compile_component in "ggs_LL1_compile_component.ggs" ;
-  import syntax galgas_start in "galgas_start.ggs" ;
-  import syntax semantics_parser in "semantics_parser.ggs" ;
-  import syntax program_parser in "program_parser.ggs" ;
-  import syntax domain_parser in "domain_parser.ggs" ;
+  import syntax cli_options_parser in "cli_options_parser.gSyntax" ;
+  import syntax cocoa_parser in "cocoa_parser.gSyntax" ;
+  import syntax scanner_parser in "scanner_parser.gSyntax" ;
+  import syntax expression_parser in "expression_parser.gSyntax" ;
+  import syntax metamodel_parser in "metamodel_parser.gSyntax" ;
+  import syntax parser_parser in "parser_parser.gSyntax"  ;
+  import syntax grammar_parser in "grammar_parser.gSyntax" ;
+  import syntax ggs_LL1_compile_component in "ggs_LL1_compile_component.gSyntax" ;
+  import syntax galgas_start in "galgas_start.gSyntax" ;
+  import syntax semantics_parser in "semantics_parser.gSyntax" ;
+  import syntax program_parser in "program_parser.gSyntax" ;
+  import syntax domain_parser in "domain_parser.gSyntax" ;
   import syntax treewalking_parser in "treewalking_parser.gSyntax" ;
   root <galgas_start_symbol>
     ?!@M_lexiqueComponents ioLexiqueMapForUse

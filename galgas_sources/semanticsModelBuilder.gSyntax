@@ -416,35 +416,5 @@ rule <enum_message_association> -> @enumMessageAssociation :
 end rule ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#    R O U T I N E    D E C L A R A T I O N                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_declaration> -> @routineDeclaration :
-  $routine$ ;
-  $identifier$ ? mRoutineName ;
-  <formal_parameter_list> -> mFormalParameters ;
-  $:$ ;
-  <semantic_instruction_list> -> mRoutineInstructions ;
-  $end$ ;
-  $routine$ ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    E X T E R N    A C T I O N    D E C L A R A T I O N                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_declaration> -> @actionDeclaration :
-  $action$ ;
-  $identifier$ ? mActionName ;
-  <formal_parameter_list> -> mFormalParameters ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
 
 end syntax ;
