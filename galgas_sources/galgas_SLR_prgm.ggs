@@ -18,7 +18,7 @@
 
 program galgas_SLR_prgm "version GALGAS_BETA_VERSION (SLR grammar)":
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-  import grammar galgas_SLR_grammar in "galgas_SLR_grammar.ggs" ;
+  import grammar galgas_SLR_grammar in "galgas_SLR_grammar.gGrammar" ;
   error 100 ;
   warning 100 ;
 

@@ -21,7 +21,7 @@ syntax ggs_SLR_compile_component :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-import grammar galgas_SLR_grammar in "galgas_SLR_grammar.ggs" ;
+import grammar galgas_SLR_grammar in "galgas_SLR_grammar.gGrammar" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *

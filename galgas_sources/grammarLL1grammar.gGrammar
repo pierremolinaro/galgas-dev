@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  GALGAS LL1 program definition                                            *
+#  'grammar' LL(1) grammar                                                  *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,36 +17,12 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
-  import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-  import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
-  
-  error 100 ;
-  warning 100 ;
+grammar grammarLL1grammar "LL1" :
+  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+  import syntax grammarModelBuilder in "grammarModelBuilder.gSyntax" ;
 
-  when . "ggs"
-  message "a '.ggs' GALGAS source file"
-  ??@lstring inSourceFile {
-    fixFileGenerationStartDirectory !inSourceFile ;
-
-    @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
-    @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
-    @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
-    @M_grammarComponents grammarComponentsMap [emptyMap] ;
-    @M_optionComponents optionComponentsMap [emptyMap] ;
-    @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
-    @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
-    grammar galgas_LL1_grammar in inSourceFile
-      !?lexiqueMapForUse
-      !?semanticsComponentsMap
-      !?syntaxComponentsMap
-      !?grammarComponentsMap
-      !?optionComponentsMap
-      !?metamodelComponentMap
-      !?treewalkingComponentMap
-    ;
-  }
-
-end program ;
+  root <grammar_component_start_symbol> -> grammarMetamodel
+  ; # LL1
+end grammar ;
 
 #---------------------------------------------------------------------------*
