@@ -1844,6 +1844,54 @@
 		CFDC00700B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
 		CFDC00710B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */; };
 		CFDC00720B8720FB00B10A6E /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */; };
+		CFDD30750C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
+		CFDD30760C11C9440089A9F3 /* grammarLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */; };
+		CFDD30770C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFDD30780C11C9440089A9F3 /* grammarMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */; };
+		CFDD30790C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFDD307A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */; };
+		CFDD307D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
+		CFDD307E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */; };
+		CFDD307F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFDD30800C11C9440089A9F3 /* grammarMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */; };
+		CFDD30810C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFDD30820C11C9440089A9F3 /* grammarModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */; };
+		CFDD30850C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
+		CFDD30860C11C9440089A9F3 /* grammarLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */; };
+		CFDD30870C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFDD30880C11C9440089A9F3 /* grammarMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */; };
+		CFDD30890C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFDD308A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */; };
+		CFDD308D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
+		CFDD308E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */; };
+		CFDD308F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFDD30900C11C9440089A9F3 /* grammarMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */; };
+		CFDD30910C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFDD30920C11C9440089A9F3 /* grammarModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */; };
+		CFDD30950C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
+		CFDD30960C11C9440089A9F3 /* grammarLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */; };
+		CFDD30970C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFDD30980C11C9440089A9F3 /* grammarMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */; };
+		CFDD30990C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFDD309A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */; };
+		CFDD309D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
+		CFDD309E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */; };
+		CFDD309F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFDD30A00C11C9440089A9F3 /* grammarMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */; };
+		CFDD30A10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFDD30A20C11C9440089A9F3 /* grammarModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */; };
+		CFDD30A50C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
+		CFDD30A60C11C9440089A9F3 /* grammarLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */; };
+		CFDD30A70C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFDD30A80C11C9440089A9F3 /* grammarMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */; };
+		CFDD30A90C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFDD30AA0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */; };
+		CFDD30AD0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
+		CFDD30AE0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */; };
+		CFDD30AF0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFDD30B00C11C9440089A9F3 /* grammarMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */; };
+		CFDD30B10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFDD30B20C11C9440089A9F3 /* grammarModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */; };
 		CFE154350C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
 		CFE154360C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
 		CFE154370C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
@@ -2825,6 +2873,12 @@
 		CFDB3A720B8866D500DDA180 /* treewalking_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = treewalking_parser.h; sourceTree = "<group>"; };
 		CFDC00610B8720FB00B10A6E /* AC_galgas_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_mapindex.cpp; sourceTree = "<group>"; };
 		CFDC00620B8720FB00B10A6E /* AC_galgas_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_mapindex.h; sourceTree = "<group>"; };
+		CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = grammarLL1grammar.cpp; sourceTree = "<group>"; };
+		CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarLL1grammar.h; sourceTree = "<group>"; };
+		CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = grammarMetamodel.cpp; sourceTree = "<group>"; };
+		CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarMetamodel.h; sourceTree = "<group>"; };
+		CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = grammarModelBuilder.cpp; sourceTree = "<group>"; };
+		CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarModelBuilder.h; sourceTree = "<group>"; };
 		CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentBuilder.cpp; sourceTree = "<group>"; };
 		CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentBuilder.h; sourceTree = "<group>"; };
 		CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentMetamodel.cpp; sourceTree = "<group>"; };
@@ -3151,6 +3205,12 @@
 		CF9040E3057F26B5007362F4 /* Grammar Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */,
+				CFDD306E0C11C9440089A9F3 /* grammarLL1grammar.h */,
+				CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */,
+				CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */,
+				CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */,
+				CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */,
 				CF76F4CA090E741200036FAC /* grammar_parser.h */,
 				CF9040E6057F270E007362F4 /* grammar_parser.cpp */,
 			);
@@ -4140,6 +4200,9 @@
 				CFFA525F0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
 				CFE154360C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
 				CFE154380C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
+				CFDD30760C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
+				CFDD30780C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
+				CFDD307A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4289,6 +4352,9 @@
 				CFFA52830C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
 				CFE1544E0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
 				CFE154500C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
+				CFDD30A60C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
+				CFDD30A80C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
+				CFDD30AA0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4437,6 +4503,9 @@
 				CFFA52890C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
 				CFE154520C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
 				CFE154540C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
+				CFDD30AE0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
+				CFDD30B00C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
+				CFDD30B20C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4585,6 +4654,9 @@
 				CFFA52650C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
 				CFE1543A0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
 				CFE1543C0C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
+				CFDD307E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
+				CFDD30800C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
+				CFDD30820C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4715,6 +4787,9 @@
 				CFFA526B0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
 				CFE1543E0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
 				CFE154400C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
+				CFDD30860C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
+				CFDD30880C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
+				CFDD308A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4845,6 +4920,9 @@
 				CFFA52710C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
 				CFE154420C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
 				CFE154440C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
+				CFDD308E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
+				CFDD30900C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
+				CFDD30920C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4975,6 +5053,9 @@
 				CFFA52770C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
 				CFE154460C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
 				CFE154480C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
+				CFDD30960C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
+				CFDD30980C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
+				CFDD309A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5105,6 +5186,9 @@
 				CFFA527D0C10268B00B81CF3 /* syntaxSLRgrammar.h in Headers */,
 				CFE1544A0C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */,
 				CFE1544C0C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */,
+				CFDD309E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
+				CFDD30A00C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
+				CFDD30A20C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5588,6 +5672,9 @@
 				CFFA525E0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
 				CFE154350C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
 				CFE154370C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFDD30750C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
+				CFDD30770C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
+				CFDD30790C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5735,6 +5822,9 @@
 				CFFA52820C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
 				CFE1544D0C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
 				CFE1544F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFDD30A50C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
+				CFDD30A70C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
+				CFDD30A90C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5882,6 +5972,9 @@
 				CFFA52880C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
 				CFE154510C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
 				CFE154530C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFDD30AD0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
+				CFDD30AF0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
+				CFDD30B10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6068,6 +6161,9 @@
 				CFFA52640C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
 				CFE154390C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
 				CFE1543B0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFDD307D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
+				CFDD307F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
+				CFDD30810C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6215,6 +6311,9 @@
 				CFFA526A0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
 				CFE1543D0C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
 				CFE1543F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFDD30850C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
+				CFDD30870C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
+				CFDD30890C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6362,6 +6461,9 @@
 				CFFA52700C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
 				CFE154410C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
 				CFE154430C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFDD308D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
+				CFDD308F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
+				CFDD30910C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6509,6 +6611,9 @@
 				CFFA52760C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
 				CFE154450C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
 				CFE154470C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFDD30950C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
+				CFDD30970C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
+				CFDD30990C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6656,6 +6761,9 @@
 				CFFA527C0C10268B00B81CF3 /* syntaxSLRgrammar.cpp in Sources */,
 				CFE154490C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */,
 				CFE1544B0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFDD309D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
+				CFDD309F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
+				CFDD30A10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
