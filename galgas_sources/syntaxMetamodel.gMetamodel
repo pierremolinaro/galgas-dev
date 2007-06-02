@@ -30,6 +30,7 @@ entity @syntaxComponentRoot {
   @lstring mSyntaxComponentName ;
   @nonterminalDeclaration [] mNonterminalDeclarations ;
   @syntaxRule [] mRules ;
+  @semanticDeclaration [] mSemanticDeclarations ;
 }
 
 #---------------------------------------------------------------------------*
@@ -115,6 +116,30 @@ entity @repeatInstruction extends @syntaxInstruction {
 
 entity @selectInstruction extends @syntaxInstruction {
   @syntaxInstructions [2, *] mSelectBranchList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E   D O    I N S T R U C T I O N                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @parseDoInstruction extends @syntaxInstruction {
+  @syntaxInstructions [2, *] mParseDoBranchList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   B L O C K   I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @blockInstruction extends @syntaxInstruction {
+  @lstring mReceiverVariable ;
+  @lstring mBlockMethodName ;
+  @actualParameters mPrologActualParameterList ;
+  @syntaxInstructions mInstructionList ;
+  @actualParameters mEpilogActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*

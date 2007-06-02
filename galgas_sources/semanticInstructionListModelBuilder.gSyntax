@@ -33,8 +33,6 @@ nonterminal <expression> -> @semanticExpression ;
 
 nonterminal <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject ;
 
-nonterminal <foreach_enumeration_element> -> @foreachInstructionEnumeratedObjectElement ;
-
 nonterminal <actual_parameter_list> -> @actualParameters ;
 
 nonterminal <match_instruction_branch> -> @matchInstructionBranch ;
@@ -47,6 +45,14 @@ nonterminal <output_expression_list> -> @outExpressionList ;
 
 nonterminal <match_entry> -> @matchEntry ;
 
+nonterminal <semantic_declaration> -> @semanticDeclaration ;
+
+nonterminal <formal_parameter_list> -> @formalParameters ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E M A N T I C    I N S T R U C T I O N    L I S T                    *
+#                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction_list> -> @semanticInstructions :
@@ -54,6 +60,36 @@ rule <semantic_instruction_list> -> @semanticInstructions :
   while
     <semantic_instruction> +> mInstruction ;
   end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @routineDeclaration :
+  $routine$ ;
+  $identifier$ ? mRoutineName ;
+  <formal_parameter_list> -> mFormalParameters ;
+  $:$ ;
+  <semantic_instruction_list> -> mRoutineInstructions ;
+  $end$ ;
+  $routine$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    A C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @actionDeclaration :
+  $action$ ;
+  $identifier$ ? mActionName ;
+  <formal_parameter_list> -> mFormalParameters ;
+  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -129,36 +165,40 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <foreach_enumeration_element> -> @foreachInstructionJoker :
-  $*$ ;
-  mCount := 1 ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <foreach_enumeration_element> -> @foreachInstructionJoker :
-  @luint count ;
-  $unsigned_literal_integer$ ?count ;
-  $*$ ;
-  mCount := [count uint] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <foreach_enumeration_element> -> @foreachInstructionEnumeratedConstant :
-  $type_name$ ?mTypeName ;
-  $identifier$ ?mConstantName ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
 rule <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject :
   <expression> -> mEnumeratedExpression ;
   $($ ;
   repeat
   while
-    <foreach_enumeration_element> +> mElement ;
+    $*$ ;
+    mElements += ![@foreachInstructionJoker new] ;
+  while
+    @luint count ;
+    $unsigned_literal_integer$ ?count ;
+    $*$ ;
+    @uint n := [count uint] ;
+    if n == 0 then
+      error count: "this value should be > 0" ;
+    end if ;
+    loop n :
+    while n > 0 do
+      mElements += ![@foreachInstructionJoker new] ;
+      n -- ;
+    end loop ;
+  while
+    @lstring typeName ;
+    $type_name$ ?typeName ;
+    @lstring constantName ;
+    $identifier$ ?constantName ;
+    @foreachInstructionEnumeratedConstant c [new !typeName !constantName] ;
+    mElements += !c ;
   end repeat ;
+  select
+    mEndsWithEllipsis := false ;
+  or
+    $...$ ;
+    mEndsWithEllipsis := true ;
+  end select ;
   $)$ ;
 end rule ;
 
@@ -309,7 +349,28 @@ rule <match_entry> -> @classMatchEntry :
   $($ ;
   repeat
   while
-    <foreach_enumeration_element> +> mElements ;
+    $*$ ;
+    mElements += ![@foreachInstructionJoker new] ;
+  while
+    @luint count ;
+    $unsigned_literal_integer$ ?count ;
+    $*$ ;
+    @uint n := [count uint] ;
+    if n == 0 then
+      error count: "this value should be > 0" ;
+    end if ;
+    loop n :
+    while n > 0 do
+      mElements += ![@foreachInstructionJoker new] ;
+      n -- ;
+    end loop ;
+  while
+    @lstring typeName ;
+    $type_name$ ?typeName ;
+    @lstring constantName ;
+    $identifier$ ?constantName ;
+    @foreachInstructionEnumeratedConstant c [new !typeName !constantName] ;
+    mElements += !c ;
   end repeat ;
   select
     mEndsWithEllipsis := false ;
@@ -435,6 +496,78 @@ rule <semantic_instruction> -> @appendInstruction :
   $identifier$ ? mReceiverName ;
   $+=$ ;
   <output_expression_list> -> mExpressionList ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L O O P    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @loopInstruction :
+  $loop$ ;
+  <expression> -> mVariantExpression ;
+  $:$ ;
+  <semantic_instruction_list> -> mFirstInstructions ;
+  $while$ ;
+  <expression> -> mLoopExpression ;
+  $do$ ;
+  <semantic_instruction_list> -> mSecondInstructions ;
+  $end$ ;
+  $loop$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M E S S A G E    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @messageInstruction :
+  $message$ ;
+  <expression> -> mExpression ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L O G    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @logInstruction :
+  $log$ ;
+  mLoggedVariableList := [@lstringlist emptyList] ;
+  repeat
+    @lstring loggedVariableName ;
+    $identifier$ ? loggedVariableName ;
+    mLoggedVariableList += !loggedVariableName ;
+  while
+    $,$ ;
+  end repeat ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G R A M M A R    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @grammarInstruction :
+  $grammar$ ;
+  $identifier$ ?mGrammarComponentName ;
+  select
+    mLabelName := [@lstring new !"" !here] ;
+  or
+    $label$ ;
+    $identifier$ ?mLabelName ;
+  end select ;
+  $in$ ;
+  <expression> -> mSourceFileExpression ;
+  <actual_parameter_list> -> mActualParameterList ;
   $;$ ;
 end rule ;
 

@@ -33,11 +33,6 @@ entity @semanticsComponentRoot {
 }
 
 #---------------------------------------------------------------------------*
-
-abstract entity @semanticDeclaration {
-}
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #    Common Rules                                                           *
 #                                                                           *
@@ -173,29 +168,6 @@ entity @enumMessage {
 entity @enumMessageAssociation {
   @lstring mConstantName ;
   @lstring mMessage ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    R O U T I N E    D E C L A R A T I O N                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-entity @routineDeclaration extends @semanticDeclaration {
-  @lstring mRoutineName ;
-  @formalParameters mFormalParameters ;
-  @semanticInstructions mRoutineInstructions ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    E X T E R N    A C T I O N    D E C L A R A T I O N                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-entity @actionDeclaration extends @semanticDeclaration {
-  @lstring mActionName ;
-  @formalParameters mFormalParameters ;
 }
 
 #---------------------------------------------------------------------------*
