@@ -488,14 +488,27 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    A P P E N D    I N S T R U C T I O N    + =                            *
+#    A D D    I N S T R U C T I O N    + =                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @addInstruction :
+  $identifier$ ? mReceiverName ;
+  $+=$ ;
+  <output_expression_list> -> mExpressionList ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A P P E N D    I N S T R U C T I O N    . =                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction> -> @appendInstruction :
-  $identifier$ ? mReceiverName ;
-  $+=$ ;
-  <output_expression_list> -> mExpressionList ;
+  $identifier$ ? mTargetVariableName ;
+  $.=$ ;
+  <expression> -> mSourceExpression ;
   $;$ ;
 end rule ;
 
@@ -567,6 +580,27 @@ rule <semantic_instruction> -> @grammarInstruction :
   end select ;
   $in$ ;
   <expression> -> mSourceFileExpression ;
+  <actual_parameter_list> -> mActualParameterList ;
+  select
+    mReturnedModelName := [@lstring new !"" !here] ;
+  or
+    $->$ ;
+    $identifier$ ? mReturnedModelName ;
+  end select ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T R E E W A L K I N G    I N S T R U C T I O N                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @treewalkingInstruction :
+  $treewalking$ ;
+  $identifier$ ? mTreewalkingComponentName ;
+  $on$ ;
+  $identifier$ ? mModelName ;
   <actual_parameter_list> -> mActualParameterList ;
   $;$ ;
 end rule ;

@@ -76,8 +76,13 @@ compile "guiMetamodel.gMetamodel" ;
 compile "guiModelBuilder.gSyntax" ;
 compile "guiLL1grammar.gGrammar" ;
 
+#--- Program component
+compile "programMetamodel.gMetamodel" ;
+compile "programModelBuilder.gSyntax" ;
+compile "programSLRgrammar.gGrammar" ;
+
 #--- Temporary Program for PPC Cocoa GALGAS Only 
-compile "mda_galgas_LL1_prgm.ggs" ;
+compile "mda_galgas_LL1_prgm.gProgram" ;
 
 #--- Old style components
 compile "common_semantics.gSemantics" ;
@@ -102,10 +107,10 @@ compile "ggs_SLR_compile_component.gSyntax" ;
 compile "ggs_LR1_compile_component.gSyntax" ;
 compile "galgas_start.gSyntax" ;
 compile "galgas_LL1_grammar.gGrammar" ;
-compile "galgas_LL1_prgm.ggs" ;
+compile "galgas_LL1_prgm.gProgram" ;
 compile "galgas_SLR_grammar.gGrammar" ;
-compile "galgas_SLR_prgm.ggs" ;
+compile "galgas_SLR_prgm.gProgram" ;
 compile "galgas_LR1_grammar.gGrammar" ;
-compile "galgas_LR1_prgm.ggs" ;
+compile "galgas_LR1_prgm.gProgram" ;
 
 #---------------------------------------------------------------------------*

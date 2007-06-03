@@ -1,0 +1,31 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'program' SLR grammar                                                    *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+grammar programSLRgrammar "SLR" :
+  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+  import syntax expressionModelBuilder in "expressionModelBuilder.gSyntax" ;
+  import syntax parameterArgumentBuilder in "parameterArgumentBuilder.gSyntax" ;
+  import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.gSyntax" ;
+  import syntax programModelBuilder in "programModelBuilder.gSyntax" ;
+
+  root <program_component_start_symbol> -> programMetamodel
+  ; # SLR
+end grammar ;
+
+#---------------------------------------------------------------------------*

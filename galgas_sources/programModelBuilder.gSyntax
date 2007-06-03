@@ -1,0 +1,124 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'program' component parser, as model builder                             *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax programModelBuilder :
+
+import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
+import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <program_component_start_symbol> -> @programComponentRoot ;
+
+nonterminal <program_rule> -> @programRule ;
+
+nonterminal <semantic_instruction_list> -> @semanticInstructions ;
+
+nonterminal <semantic_declaration> -> @semanticDeclaration ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G U I    C O M P O N E N T                                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <program_component_start_symbol> -> @programComponentRoot :
+  $program$ ;
+  $identifier$ ? mProgramName ;
+  $literal_string$ ? mVersionString ;
+  $:$ ;
+#--- Loop on import declarations
+  repeat
+  while
+    $import__$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  while
+    $import$ ;
+    select
+      $semantics$ ;
+    or
+      $lexique$ ;
+    or
+      $metamodel$ ;
+    or
+      $grammar$ ;
+    or
+      $syntax$ ;
+    or
+      $option$ ;
+    or
+      $treewalking$ ;
+    end select ;
+    $identifier$ ?* ;
+    $in$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
+#--- Errors and warnings
+  $error$ ;
+  $unsigned_literal_integer$ ? mErrorMaximumCount ;
+  $;$ ;
+  $warning$ ;
+  $unsigned_literal_integer$ ? mWarningMaximumCount ;
+  $;$ ;
+#--- Program rules
+  repeat
+  while
+    <program_rule> +> mProgramRules ;
+  while
+    <semantic_declaration> +> mSemanticDeclarations ;
+  end repeat ;
+#---
+  $end$ ;
+  $program$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P R O G R A M    R U L E                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <program_rule> -> @programRule :
+  $when$ ;
+  $.$ ;
+  $literal_string$ ? mSourceFileExtension ;
+  $message$ ;
+  $literal_string$ ? mSourceFileHelp ;
+  $??$ ;
+  @lstring typeName ;
+  $type_name$ ? typeName ;
+  if [typeName string] != "lstring" then
+    error typeName : "the only type allowed here is '@lstring'" ;
+  end if ;
+  $identifier$ ? mSourceFileVariableName ;
+  ${$ ;
+  <semantic_instruction_list> -> mInstructionList ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;
