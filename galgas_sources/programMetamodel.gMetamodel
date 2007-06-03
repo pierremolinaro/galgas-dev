@@ -1,0 +1,48 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'gui' component metamodel                                                *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+metamodel programMetamodel extends instructionMetamodel root @programComponentRoot :
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
+import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+
+#---------------------------------------------------------------------------*
+
+entity @programRule {
+  @lstring mSourceFileExtension ;
+  @lstring mSourceFileHelp ;
+  @lstring mSourceFileVariableName ;
+  @semanticInstructions mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @programComponentRoot {
+  @lstring mProgramName ;
+  @lstring mVersionString ;
+  @luint mErrorMaximumCount ;
+  @luint mWarningMaximumCount ;
+  @programRule [1, *] mProgramRules ;
+  @semanticDeclaration [] mSemanticDeclarations ;
+}
+
+#---------------------------------------------------------------------------*
+
+end metamodel ;

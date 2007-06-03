@@ -606,5 +606,20 @@ rule <semantic_instruction> -> @treewalkingInstruction :
 end rule ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> -> @typeMethodInstruction :
+  $[$ ;
+  $type_name$ ? mTypeName ;
+  $identifier$ ? mMethodName ;
+  <actual_parameter_list> -> mActualParameterList ;
+  $]$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
 
 end syntax ;

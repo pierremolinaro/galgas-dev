@@ -2020,6 +2020,54 @@
 		CFE26D270C1327B90066ACB3 /* programSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */; };
 		CFE26D280C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
 		CFE26D290C1327B90066ACB3 /* programSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */; };
+		CFE26D370C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */; };
+		CFE26D380C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */; };
+		CFE26D390C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */; };
+		CFE26D3A0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */; };
+		CFE26D3B0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */; };
+		CFE26D3C0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */; };
+		CFE26D3D0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */; };
+		CFE26D3E0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */; };
+		CFE26D3F0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */; };
+		CFE26D400C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */; };
+		CFE26D410C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */; };
+		CFE26D420C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */; };
+		CFE26D430C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */; };
+		CFE26D440C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */; };
+		CFE26D450C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */; };
+		CFE26D460C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */; };
+		CFE26D470C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */; };
+		CFE26D480C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */; };
+		CFE26D490C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */; };
+		CFE26D4A0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */; };
+		CFE26D4B0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */; };
+		CFE26D4C0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */; };
+		CFE26D4D0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */; };
+		CFE26D4E0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */; };
+		CFE26D4F0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */; };
+		CFE26D500C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */; };
+		CFE26D510C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */; };
+		CFE26D520C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */; };
+		CFE26D530C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */; };
+		CFE26D540C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */; };
+		CFE26D550C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */; };
+		CFE26D560C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */; };
+		CFE26D570C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */; };
+		CFE26D580C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */; };
+		CFE26D590C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */; };
+		CFE26D5A0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */; };
+		CFE26D5B0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */; };
+		CFE26D5C0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */; };
+		CFE26D5D0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */; };
+		CFE26D5E0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */; };
+		CFE26D5F0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */; };
+		CFE26D600C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */; };
+		CFE26D610C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */; };
+		CFE26D620C133CA80066ACB3 /* treewalkingMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */; };
+		CFE26D630C133CA80066ACB3 /* treewalkingModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */; };
+		CFE26D640C133CA80066ACB3 /* treewalkingModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */; };
+		CFE26D650C133CA80066ACB3 /* treewalkingSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */; };
+		CFE26D660C133CA80066ACB3 /* treewalkingSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE675BA0C0B035F007C1E98 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA1415E060DB7CB00601791 /* AC_galgas_map.h */; };
@@ -2991,6 +3039,12 @@
 		CFE26CDA0C12FD100066ACB3 /* programModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programModelBuilder.h; sourceTree = "<group>"; };
 		CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programSLRgrammar.h; sourceTree = "<group>"; };
+		CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = treewalkingMetamodel.cpp; sourceTree = "<group>"; };
+		CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = treewalkingMetamodel.h; sourceTree = "<group>"; };
+		CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = treewalkingModelBuilder.cpp; sourceTree = "<group>"; };
+		CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = treewalkingModelBuilder.h; sourceTree = "<group>"; };
+		CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = treewalkingSLRgrammar.cpp; sourceTree = "<group>"; };
+		CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = treewalkingSLRgrammar.h; sourceTree = "<group>"; };
 		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
 		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = "<group>"; };
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
@@ -3625,6 +3679,12 @@
 		CFDB3A700B8866BF00DDA180 /* Tree walking */ = {
 			isa = PBXGroup;
 			children = (
+				CFE26D310C133CA70066ACB3 /* treewalkingMetamodel.cpp */,
+				CFE26D320C133CA70066ACB3 /* treewalkingMetamodel.h */,
+				CFE26D330C133CA70066ACB3 /* treewalkingModelBuilder.cpp */,
+				CFE26D340C133CA70066ACB3 /* treewalkingModelBuilder.h */,
+				CFE26D350C133CA70066ACB3 /* treewalkingSLRgrammar.cpp */,
+				CFE26D360C133CA70066ACB3 /* treewalkingSLRgrammar.h */,
 				CFDB3A710B8866D500DDA180 /* treewalking_parser.cpp */,
 				CFDB3A720B8866D500DDA180 /* treewalking_parser.h */,
 			);
@@ -4329,6 +4389,9 @@
 				CFE26CDE0C12FD100066ACB3 /* programMetamodel.h in Headers */,
 				CFE26CE00C12FD100066ACB3 /* programModelBuilder.h in Headers */,
 				CFE26D1B0C1327B90066ACB3 /* programSLRgrammar.h in Headers */,
+				CFE26D380C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
+				CFE26D3A0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
+				CFE26D3C0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4487,6 +4550,9 @@
 				CFE26D020C12FD100066ACB3 /* programMetamodel.h in Headers */,
 				CFE26D040C12FD100066ACB3 /* programModelBuilder.h in Headers */,
 				CFE26D270C1327B90066ACB3 /* programSLRgrammar.h in Headers */,
+				CFE26D5C0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
+				CFE26D5E0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
+				CFE26D600C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4644,6 +4710,9 @@
 				CFE26D080C12FD100066ACB3 /* programMetamodel.h in Headers */,
 				CFE26D0A0C12FD100066ACB3 /* programModelBuilder.h in Headers */,
 				CFE26D290C1327B90066ACB3 /* programSLRgrammar.h in Headers */,
+				CFE26D620C133CA80066ACB3 /* treewalkingMetamodel.h in Headers */,
+				CFE26D640C133CA80066ACB3 /* treewalkingModelBuilder.h in Headers */,
+				CFE26D660C133CA80066ACB3 /* treewalkingSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4801,6 +4870,9 @@
 				CFE26CE40C12FD100066ACB3 /* programMetamodel.h in Headers */,
 				CFE26CE60C12FD100066ACB3 /* programModelBuilder.h in Headers */,
 				CFE26D1D0C1327B90066ACB3 /* programSLRgrammar.h in Headers */,
+				CFE26D3E0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
+				CFE26D400C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
+				CFE26D420C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4940,6 +5012,9 @@
 				CFE26CEA0C12FD100066ACB3 /* programMetamodel.h in Headers */,
 				CFE26CEC0C12FD100066ACB3 /* programModelBuilder.h in Headers */,
 				CFE26D1F0C1327B90066ACB3 /* programSLRgrammar.h in Headers */,
+				CFE26D440C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
+				CFE26D460C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
+				CFE26D480C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5079,6 +5154,9 @@
 				CFE26CF00C12FD100066ACB3 /* programMetamodel.h in Headers */,
 				CFE26CF20C12FD100066ACB3 /* programModelBuilder.h in Headers */,
 				CFE26D210C1327B90066ACB3 /* programSLRgrammar.h in Headers */,
+				CFE26D4A0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
+				CFE26D4C0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
+				CFE26D4E0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5218,6 +5296,9 @@
 				CFE26CF60C12FD100066ACB3 /* programMetamodel.h in Headers */,
 				CFE26CF80C12FD100066ACB3 /* programModelBuilder.h in Headers */,
 				CFE26D230C1327B90066ACB3 /* programSLRgrammar.h in Headers */,
+				CFE26D500C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
+				CFE26D520C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
+				CFE26D540C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5357,6 +5438,9 @@
 				CFE26CFC0C12FD100066ACB3 /* programMetamodel.h in Headers */,
 				CFE26CFE0C12FD100066ACB3 /* programModelBuilder.h in Headers */,
 				CFE26D250C1327B90066ACB3 /* programSLRgrammar.h in Headers */,
+				CFE26D560C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
+				CFE26D580C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
+				CFE26D5A0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5849,6 +5933,9 @@
 				CFE26CDD0C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26CDF0C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D1A0C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
+				CFE26D370C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
+				CFE26D390C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
+				CFE26D3B0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6005,6 +6092,9 @@
 				CFE26D010C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26D030C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D260C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
+				CFE26D5B0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
+				CFE26D5D0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
+				CFE26D5F0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6161,6 +6251,9 @@
 				CFE26D070C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26D090C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D280C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
+				CFE26D610C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
+				CFE26D630C133CA80066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
+				CFE26D650C133CA80066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6356,6 +6449,9 @@
 				CFE26CE30C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26CE50C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D1C0C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
+				CFE26D3D0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
+				CFE26D3F0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
+				CFE26D410C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6512,6 +6608,9 @@
 				CFE26CE90C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26CEB0C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D1E0C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
+				CFE26D430C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
+				CFE26D450C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
+				CFE26D470C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6668,6 +6767,9 @@
 				CFE26CEF0C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26CF10C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D200C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
+				CFE26D490C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
+				CFE26D4B0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
+				CFE26D4D0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6824,6 +6926,9 @@
 				CFE26CF50C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26CF70C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D220C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
+				CFE26D4F0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
+				CFE26D510C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
+				CFE26D530C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6980,6 +7085,9 @@
 				CFE26CFB0C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
 				CFE26CFD0C12FD100066ACB3 /* programModelBuilder.cpp in Sources */,
 				CFE26D240C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
+				CFE26D550C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
+				CFE26D570C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
+				CFE26D590C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

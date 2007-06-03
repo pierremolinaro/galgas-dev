@@ -28,16 +28,16 @@ compile "lexiqueSemantics.gSemantics" ;
 compile "lexiqueMetamodel.gMetamodel" ;
 compile "lexiqueModelBuilder.gSyntax" ;
 compile "lexiqueLL1grammar.gGrammar" ;
-compile "lexiqueTreewalkingForBuildingTerminalMap.ggs" ;
+compile "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
 
 #--- Option Component
 compile "optionSemantics.gSemantics" ;
 compile "optionMetamodel.gMetamodel" ;
 compile "optionModelBuilder.gSyntax" ;
 compile "optionLL1grammar.gGrammar" ;
-compile "optionTreewalkingForBuildingOptionMap.ggs" ;
-compile "optionHeaderGeneration.ggs" ;
-compile "optionImplementationGeneration.ggs" ;
+compile "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
+compile "optionHeaderGeneration.gTreewalking" ;
+compile "optionImplementationGeneration.gTreewalking" ;
 
 #--- Expression
 compile "expressionMetamodel.gMetamodel" ;
@@ -55,6 +55,11 @@ compile "semanticInstructionListModelBuilder.gSyntax" ;
 compile "metamodelMetamodel.gMetamodel" ;
 compile "metamodelModelBuilder.gSyntax" ;
 compile "metamodelLL1grammar.gGrammar" ;
+
+#--- Treewalking component
+compile "treewalkingMetamodel.gMetamodel" ;
+compile "treewalkingModelBuilder.gSyntax" ;
+compile "treewalkingSLRgrammar.gGrammar" ;
 
 #--- Semantics Component
 compile "semanticsMetamodel.gMetamodel" ;
