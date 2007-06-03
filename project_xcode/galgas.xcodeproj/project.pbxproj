@@ -1924,6 +1924,54 @@
 		CFE154520C106A8200A1D904 /* parameterArgumentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */; };
 		CFE154530C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
 		CFE154540C106A8200A1D904 /* parameterArgumentMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */; };
+		CFE26C830C12C38A0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
+		CFE26C840C12C38A0066ACB3 /* guiLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */; };
+		CFE26C850C12C38A0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
+		CFE26C860C12C38A0066ACB3 /* guiMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */; };
+		CFE26C870C12C38A0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
+		CFE26C880C12C38A0066ACB3 /* guiModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */; };
+		CFE26C890C12C38A0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
+		CFE26C8A0C12C38A0066ACB3 /* guiLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */; };
+		CFE26C8B0C12C38A0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
+		CFE26C8C0C12C38A0066ACB3 /* guiMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */; };
+		CFE26C8D0C12C38A0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
+		CFE26C8E0C12C38A0066ACB3 /* guiModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */; };
+		CFE26C8F0C12C38A0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
+		CFE26C900C12C38A0066ACB3 /* guiLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */; };
+		CFE26C910C12C38A0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
+		CFE26C920C12C38A0066ACB3 /* guiMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */; };
+		CFE26C930C12C38A0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
+		CFE26C940C12C38A0066ACB3 /* guiModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */; };
+		CFE26C950C12C38A0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
+		CFE26C960C12C38A0066ACB3 /* guiLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */; };
+		CFE26C970C12C38A0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
+		CFE26C980C12C38A0066ACB3 /* guiMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */; };
+		CFE26C990C12C38A0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
+		CFE26C9A0C12C38A0066ACB3 /* guiModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */; };
+		CFE26C9B0C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
+		CFE26C9C0C12C38B0066ACB3 /* guiLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */; };
+		CFE26C9D0C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
+		CFE26C9E0C12C38B0066ACB3 /* guiMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */; };
+		CFE26C9F0C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
+		CFE26CA00C12C38B0066ACB3 /* guiModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */; };
+		CFE26CA10C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
+		CFE26CA20C12C38B0066ACB3 /* guiLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */; };
+		CFE26CA30C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
+		CFE26CA40C12C38B0066ACB3 /* guiMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */; };
+		CFE26CA50C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
+		CFE26CA60C12C38B0066ACB3 /* guiModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */; };
+		CFE26CA70C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
+		CFE26CA80C12C38B0066ACB3 /* guiLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */; };
+		CFE26CA90C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
+		CFE26CAA0C12C38B0066ACB3 /* guiMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */; };
+		CFE26CAB0C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
+		CFE26CAC0C12C38B0066ACB3 /* guiModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */; };
+		CFE26CAD0C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
+		CFE26CAE0C12C38B0066ACB3 /* guiLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */; };
+		CFE26CAF0C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
+		CFE26CB00C12C38B0066ACB3 /* guiMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */; };
+		CFE26CB10C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
+		CFE26CB20C12C38B0066ACB3 /* guiModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE675BA0C0B035F007C1E98 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA1415E060DB7CB00601791 /* AC_galgas_map.h */; };
@@ -2883,6 +2931,12 @@
 		CFE154320C106A8200A1D904 /* parameterArgumentBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentBuilder.h; sourceTree = "<group>"; };
 		CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parameterArgumentMetamodel.cpp; sourceTree = "<group>"; };
 		CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentMetamodel.h; sourceTree = "<group>"; };
+		CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = guiLL1grammar.cpp; sourceTree = "<group>"; };
+		CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = guiLL1grammar.h; sourceTree = "<group>"; };
+		CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = guiMetamodel.cpp; sourceTree = "<group>"; };
+		CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = guiMetamodel.h; sourceTree = "<group>"; };
+		CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = guiModelBuilder.cpp; sourceTree = "<group>"; };
+		CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = guiModelBuilder.h; sourceTree = "<group>"; };
 		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
 		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = "<group>"; };
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
@@ -3554,14 +3608,20 @@
 			name = Expressions;
 			sourceTree = "<group>";
 		};
-		CFEEBE6505C0569F009FE498 /* Cocoa Component */ = {
+		CFEEBE6505C0569F009FE498 /* GUI Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */,
+				CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */,
+				CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */,
+				CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */,
+				CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */,
+				CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */,
 				CF6702F805C073220065267C /* cocoaGalgas.mm */,
 				CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */,
 				CF76F4C3090E73FE00036FAC /* cocoa_parser.h */,
 			);
-			name = "Cocoa Component";
+			name = "GUI Component";
 			sourceTree = "<group>";
 		};
 		CFEEBE6905C056DD009FE498 /* Cocoa Component */ = {
@@ -3639,7 +3699,7 @@
 				CFF5376A057A504000854C83 /* Lexique Component */,
 				CFF53780057A50B300854C83 /* Semantics Component */,
 				CFF537AA057A51A000854C83 /* Parser Component */,
-				CFEEBE6505C0569F009FE498 /* Cocoa Component */,
+				CFEEBE6505C0569F009FE498 /* GUI Component */,
 				CF9040E3057F26B5007362F4 /* Grammar Component */,
 				CFF537F4057A52D900854C83 /* Program Component */,
 				CFF53803057A537C00854C83 /* Galgas Start */,
@@ -4203,6 +4263,9 @@
 				CFDD30760C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
 				CFDD30780C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
 				CFDD307A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
+				CFE26C840C12C38A0066ACB3 /* guiLL1grammar.h in Headers */,
+				CFE26C860C12C38A0066ACB3 /* guiMetamodel.h in Headers */,
+				CFE26C880C12C38A0066ACB3 /* guiModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4355,6 +4418,9 @@
 				CFDD30A60C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
 				CFDD30A80C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
 				CFDD30AA0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
+				CFE26CA80C12C38B0066ACB3 /* guiLL1grammar.h in Headers */,
+				CFE26CAA0C12C38B0066ACB3 /* guiMetamodel.h in Headers */,
+				CFE26CAC0C12C38B0066ACB3 /* guiModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4506,6 +4572,9 @@
 				CFDD30AE0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
 				CFDD30B00C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
 				CFDD30B20C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
+				CFE26CAE0C12C38B0066ACB3 /* guiLL1grammar.h in Headers */,
+				CFE26CB00C12C38B0066ACB3 /* guiMetamodel.h in Headers */,
+				CFE26CB20C12C38B0066ACB3 /* guiModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4657,6 +4726,9 @@
 				CFDD307E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
 				CFDD30800C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
 				CFDD30820C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
+				CFE26C8A0C12C38A0066ACB3 /* guiLL1grammar.h in Headers */,
+				CFE26C8C0C12C38A0066ACB3 /* guiMetamodel.h in Headers */,
+				CFE26C8E0C12C38A0066ACB3 /* guiModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4790,6 +4862,9 @@
 				CFDD30860C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
 				CFDD30880C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
 				CFDD308A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
+				CFE26C900C12C38A0066ACB3 /* guiLL1grammar.h in Headers */,
+				CFE26C920C12C38A0066ACB3 /* guiMetamodel.h in Headers */,
+				CFE26C940C12C38A0066ACB3 /* guiModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4923,6 +4998,9 @@
 				CFDD308E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
 				CFDD30900C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
 				CFDD30920C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
+				CFE26C960C12C38A0066ACB3 /* guiLL1grammar.h in Headers */,
+				CFE26C980C12C38A0066ACB3 /* guiMetamodel.h in Headers */,
+				CFE26C9A0C12C38A0066ACB3 /* guiModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5056,6 +5134,9 @@
 				CFDD30960C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
 				CFDD30980C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
 				CFDD309A0C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
+				CFE26C9C0C12C38B0066ACB3 /* guiLL1grammar.h in Headers */,
+				CFE26C9E0C12C38B0066ACB3 /* guiMetamodel.h in Headers */,
+				CFE26CA00C12C38B0066ACB3 /* guiModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5189,6 +5270,9 @@
 				CFDD309E0C11C9440089A9F3 /* grammarLL1grammar.h in Headers */,
 				CFDD30A00C11C9440089A9F3 /* grammarMetamodel.h in Headers */,
 				CFDD30A20C11C9440089A9F3 /* grammarModelBuilder.h in Headers */,
+				CFE26CA20C12C38B0066ACB3 /* guiLL1grammar.h in Headers */,
+				CFE26CA40C12C38B0066ACB3 /* guiMetamodel.h in Headers */,
+				CFE26CA60C12C38B0066ACB3 /* guiModelBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5675,6 +5759,9 @@
 				CFDD30750C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD30770C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30790C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
+				CFE26C830C12C38A0066ACB3 /* guiLL1grammar.cpp in Sources */,
+				CFE26C850C12C38A0066ACB3 /* guiMetamodel.cpp in Sources */,
+				CFE26C870C12C38A0066ACB3 /* guiModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5825,6 +5912,9 @@
 				CFDD30A50C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD30A70C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30A90C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
+				CFE26CA70C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */,
+				CFE26CA90C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */,
+				CFE26CAB0C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5975,6 +6065,9 @@
 				CFDD30AD0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD30AF0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30B10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
+				CFE26CAD0C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */,
+				CFE26CAF0C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */,
+				CFE26CB10C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6164,6 +6257,9 @@
 				CFDD307D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD307F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30810C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
+				CFE26C890C12C38A0066ACB3 /* guiLL1grammar.cpp in Sources */,
+				CFE26C8B0C12C38A0066ACB3 /* guiMetamodel.cpp in Sources */,
+				CFE26C8D0C12C38A0066ACB3 /* guiModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6314,6 +6410,9 @@
 				CFDD30850C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD30870C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30890C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
+				CFE26C8F0C12C38A0066ACB3 /* guiLL1grammar.cpp in Sources */,
+				CFE26C910C12C38A0066ACB3 /* guiMetamodel.cpp in Sources */,
+				CFE26C930C12C38A0066ACB3 /* guiModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6464,6 +6563,9 @@
 				CFDD308D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD308F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30910C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
+				CFE26C950C12C38A0066ACB3 /* guiLL1grammar.cpp in Sources */,
+				CFE26C970C12C38A0066ACB3 /* guiMetamodel.cpp in Sources */,
+				CFE26C990C12C38A0066ACB3 /* guiModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6614,6 +6716,9 @@
 				CFDD30950C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD30970C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30990C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
+				CFE26C9B0C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */,
+				CFE26C9D0C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */,
+				CFE26C9F0C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6764,6 +6869,9 @@
 				CFDD309D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD309F0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30A10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
+				CFE26CA10C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */,
+				CFE26CA30C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */,
+				CFE26CA50C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

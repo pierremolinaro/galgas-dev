@@ -27,6 +27,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
   import metamodel grammarMetamodel in "grammarMetamodel.gMetamodel" ;
+  import metamodel guiMetamodel in "guiMetamodel.gMetamodel" ;
   import treewalking optionHeaderGeneration in "optionHeaderGeneration.ggs" ;
   import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.ggs" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
@@ -39,6 +40,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
   import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
+  import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
   
   error 100 ;
   warning 100 ;
@@ -173,6 +175,19 @@ message "a GALGAS grammar source file"
 #--- Parse metamodel component
   @grammarComponentRoot grammarComponentRoot ;
   grammar grammarLL1grammar in inSourceFile -> grammarComponentRoot ;
+}
+
+#---------------------------------------------------------------------------*
+
+when . "gGui"
+message "a GALGAS GUI source file"
+??@lstring inSourceFile {
+#--- File generation start directory
+  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+#--- Parse metamodel component
+  @guiComponentRoot guiComponentRoot ;
+  grammar guiLL1grammar in inSourceFile -> guiComponentRoot ;
 }
 
 #---------------------------------------------------------------------------*

@@ -71,6 +71,11 @@ compile "grammarMetamodel.gMetamodel" ;
 compile "grammarModelBuilder.gSyntax" ;
 compile "grammarLL1grammar.gGrammar" ;
 
+#--- GUI component
+compile "guiMetamodel.gMetamodel" ;
+compile "guiModelBuilder.gSyntax" ;
+compile "guiLL1grammar.gGrammar" ;
+
 #--- Temporary Program for PPC Cocoa GALGAS Only 
 compile "mda_galgas_LL1_prgm.ggs" ;
 
@@ -85,7 +90,7 @@ compile "metamodel_parser.gSyntax" ;
 compile "parser_parser.gSyntax" ;
 compile "scanner_semantics.gSemantics" ;
 compile "cocoa_parser.gSyntax" ;
-compile "galgas_cocoa.ggs" ;
+compile "galgas_cocoa.gGui" ;
 compile "cli_options_parser.gSyntax" ;
 compile "galgas_cli_options.gOption" ;
 compile "grammar_parser.gSyntax" ;
