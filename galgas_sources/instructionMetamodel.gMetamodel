@@ -107,6 +107,19 @@ entity @assignmentInstruction extends @semanticInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  D O T    A S S I G N M E N T    I N S T R U C T I O N                    *
+#                                                                           *
+#  VARIABLE .= EXPRESSION ;                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @appendInstruction extends @semanticInstruction {
+  @lstring mTargetVariableName ;
+  @semanticExpression mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  F O R E A C H    I N S T R U C T I O N                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -291,11 +304,11 @@ entity @castInstruction extends @semanticInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    A P P E N D    I N S T R U C T I O N      + =                          *
+#    A D D    I N S T R U C T I O N      + =                                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @appendInstruction extends @semanticInstruction {
+entity @addInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
   @outExpressionList mExpressionList ;
 }
@@ -363,6 +376,19 @@ entity @grammarInstruction extends @semanticInstruction {
   @lstring mGrammarComponentName ;
   @lstring mLabelName ;
   @semanticExpression mSourceFileExpression ;
+  @actualParameters mActualParameterList ;
+  @lstring mReturnedModelName ; # Empty string if no returned model
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T R E E W A L K I N G    I N S T R U C T I O N                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @treewalkingInstruction extends @semanticInstruction {
+  @lstring mTreewalkingComponentName ;
+  @lstring mModelName ;
   @actualParameters mActualParameterList ;
 }
 
