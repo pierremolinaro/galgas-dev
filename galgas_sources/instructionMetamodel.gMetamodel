@@ -393,5 +393,17 @@ entity @treewalkingInstruction extends @semanticInstruction {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @typeMethodInstruction extends @semanticInstruction {
+  @lstring mTypeName ;
+  @lstring mMethodName ;
+  @actualParameters mActualParameterList ;
+}
+
+#---------------------------------------------------------------------------*
 
 end metamodel ;

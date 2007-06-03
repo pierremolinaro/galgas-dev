@@ -29,11 +29,12 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import metamodel grammarMetamodel in "grammarMetamodel.gMetamodel" ;
   import metamodel guiMetamodel in "guiMetamodel.gMetamodel" ;
   import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
-  import treewalking optionHeaderGeneration in "optionHeaderGeneration.ggs" ;
-  import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.ggs" ;
-  import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
-  import treewalking optionImplementationGeneration in "optionImplementationGeneration.ggs" ;
-  import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.ggs" ;
+  import metamodel treewalkingMetamodel in "treewalkingMetamodel.gMetamodel" ;
+  import treewalking optionHeaderGeneration in "optionHeaderGeneration.gTreewalking" ;
+  import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
+  import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
+  import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
+  import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
   import grammar metamodelLL1grammar in "metamodelLL1grammar.gGrammar" ;
@@ -43,6 +44,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
   import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
+  import grammar treewalkingSLRgrammar in "treewalkingSLRgrammar.gGrammar" ;
   
   error 100 ;
   warning 100 ;
@@ -203,6 +205,19 @@ message "a GALGAS program source file"
 #--- Parse metamodel component
   @programComponentRoot programComponentRoot ;
   grammar programSLRgrammar in inSourceFile -> programComponentRoot ;
+}
+
+#---------------------------------------------------------------------------*
+
+when . "gTreewalking"
+message "a GALGAS treewalking source file"
+??@lstring inSourceFile {
+#--- File generation start directory
+  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+#--- Parse metamodel component
+  @treewalkingComponentRoot treewalkingComponentRoot ;
+  grammar treewalkingSLRgrammar in inSourceFile -> treewalkingComponentRoot ;
 }
 
 #---------------------------------------------------------------------------*
