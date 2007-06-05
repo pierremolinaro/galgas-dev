@@ -39,6 +39,18 @@ entity @variableExpression extends @semanticExpression {
 
 #---------------------------------------------------------------------------*
 
+entity @trueExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @falseExpression extends @semanticExpression {
+  @location mOperatorLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
 entity @literalBooleanExpression extends @semanticExpression {
   @bool mValue ;
 }
@@ -268,18 +280,6 @@ entity @notExpression extends @semanticExpression {
 entity @negateExpression extends @semanticExpression {
   @location mOperatorLocation ;
   @semanticExpression mExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @trueExpression extends @semanticExpression {
-  @location mOperatorLocation ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @falseExpression extends @semanticExpression {
-  @location mOperatorLocation ;
 }
 
 #---------------------------------------------------------------------------*
