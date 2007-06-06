@@ -39,19 +39,8 @@ entity @variableExpression extends @semanticExpression {
 
 #---------------------------------------------------------------------------*
 
-entity @trueExpression extends @semanticExpression {
-  @location mOperatorLocation ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @falseExpression extends @semanticExpression {
-  @location mOperatorLocation ;
-}
-
-#---------------------------------------------------------------------------*
-
 entity @literalBooleanExpression extends @semanticExpression {
+  @location mOperatorLocation ;
   @bool mValue ;
 }
 

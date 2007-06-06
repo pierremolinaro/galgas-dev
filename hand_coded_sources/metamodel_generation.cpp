@@ -107,12 +107,20 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "                        COMMA_LOCATION_ARGS) const ;\n\n"
 
 //--- Generate metamodel Index Method
-             "//--- Metamodel Index\n"
-             "  public : virtual uint32 _metamodelIndex (void) const ;\n\n"
+             "//--- Metamodel Component Index\n"
+             "  public : virtual uint32 _metamodelComponentIndex (void) const ;\n\n"
+
+//--- Generate metamodel Component name Method
+             "//--- Metamodel Component Name\n"
+             "  public : virtual const char * _metamodelComponentName (void) const ;\n\n"
 
 //--- Generate metamodel class ID method
              "//--- Metamodel Class ID\n"
              "  public : virtual uint32 _metamodelClassID (void) const ;\n\n"
+
+//--- Generate metamodel class name method
+             "//--- Metamodel Class Name\n"
+             "  public : virtual const char * _metamodelClassName (void) const ;\n\n"
 
 //--- Clone virtual method
              "//--- 'clone' virtual method\n"
@@ -475,16 +483,28 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "}\n\n" ;
 
-//--- Generate metamodel class index
+//--- Generate metamodel component index
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "uint32 cPtr_" << aNomClasse << "::_metamodelIndex (void) const {\n"
-               "  return gMetamodelManager.mMetamodelIndex ;\n"
+  inCppFile << "uint32 cPtr_" << aNomClasse << "::_metamodelComponentIndex (void) const {\n"
+               "  return gMetamodelManager.mMetamodelComponentIndex ;\n"
+               "}\n\n" ;
+
+//--- Generate metamodel component name
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "const char * cPtr_" << aNomClasse << "::_metamodelComponentName (void) const {\n"
+               "  return gMetamodelManager.mMetamodelComponentName ;\n"
                "}\n\n" ;
 
 //--- Generate metamodel class ID method
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "uint32 cPtr_" << aNomClasse << "::_metamodelClassID (void) const {\n"
                "  return " << mMetamodelClassID.uintValue () << " ;\n"
+               "}\n\n" ;
+
+//--- Generate metamodel class Name method
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "const char * cPtr_" << aNomClasse << "::_metamodelClassName (void) const {\n"
+               "  return \"" << aNomClasse << "\" ;\n"
                "}\n\n" ;
 
 //--- Clone virtual method
@@ -1088,11 +1108,11 @@ generate_metamodel_cpp_file (C_Compiler & inLexique,
 
 //------------- Metamodel Management -----------------
   generatedZone3.writeCppTitleComment ("Metamodel Management") ;
-  generatedZone3 << "static C_MetamodelManager gMetamodelManager ;\n"
+  generatedZone3 << "static C_MetamodelManager gMetamodelManager (\"" << inMetamodelComponentName << "\") ;\n"
                     "\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
   generatedZone3 << "uint32 _metamodel_index_for_" << inMetamodelComponentName << " (void) {\n"
-                    "  return gMetamodelManager.mMetamodelIndex ;\n"
+                    "  return gMetamodelManager.mMetamodelComponentIndex ;\n"
                     "}\n"
                     "\n" ;
 

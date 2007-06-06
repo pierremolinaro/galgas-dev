@@ -323,7 +323,7 @@ rule <parse_treewalking_document>
       @bool hasRoutine := [treewalkingRoutineHeaderMap hasKey ![kEntityName string]] ;
       if not hasRoutine then
         @lstring superEntityName := kSuperEntityName ;
-        loop [treewalkingRoutineHeaderMap count] : while (not hasRoutine) & ([superEntityName string] != "") do
+        loop [treewalkingRoutineHeaderMap count] + 1 : while (not hasRoutine) & ([superEntityName string] != "") do
           hasRoutine := [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] ;
           if not hasRoutine then
             @lstring superSuperEntityName ;
