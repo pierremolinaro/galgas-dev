@@ -115,9 +115,11 @@ SOURCES += treewalkingMetamodel.cpp
 SOURCES += treewalkingModelBuilder.cpp
 SOURCES += treewalkingSLRgrammar.cpp
 
+SOURCES += semanticsSemantics.cpp
 SOURCES += semanticsMetamodel.cpp
 SOURCES += semanticsModelBuilder.cpp
 SOURCES += semanticsSLRgrammar.cpp
+SOURCES += buildTypeMapForSemantics.cpp
 
 SOURCES += syntaxMetamodel.cpp
 SOURCES += syntaxModelBuilder.cpp
@@ -154,6 +156,5 @@ SOURCES += semantics_semantics.cpp
 SOURCES += semantics_parser.cpp
 SOURCES += domain_parser.cpp
 SOURCES += treewalking_parser.cpp
-SOURCES += commonSemantics.cpp
 
 #---------------------------------------------------------------*

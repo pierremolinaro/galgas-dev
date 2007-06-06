@@ -2685,19 +2685,19 @@
 			remoteGlobalIDString = CFD6CE6208519E740000FA6E;
 			remoteInfo = "GALGAS tool SLR debug (universal)";
 		};
-		CF6514110C1707EA002D7BD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
-			remoteInfo = "GALGAS tool LL1 debug (ppc)";
-		};
 		CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CF6DF12309E3F23700506859;
 			remoteInfo = "GALGAS tool LL1 (ppc)";
+		};
+		CFE48C2D0C1749D900F4A842 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
+			remoteInfo = "GALGAS tool LL1 debug (ppc)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -5939,7 +5939,7 @@
 			);
 			dependencies = (
 				CF6DF25909E3F3C400506859 /* PBXTargetDependency */,
-				CF6514120C1707EA002D7BD4 /* PBXTargetDependency */,
+				CFE48C2E0C1749D900F4A842 /* PBXTargetDependency */,
 			);
 			name = "GALGAS Cocoa (ppc)";
 			productInstallPath = "$(HOME)/Applications";
@@ -7538,15 +7538,15 @@
 			target = CFD6CE6208519E740000FA6E /* GALGAS tool SLR debug (universal) */;
 			targetProxy = CF3780810AE93C5400D69EDB /* PBXContainerItemProxy */;
 		};
-		CF6514120C1707EA002D7BD4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
-			targetProxy = CF6514110C1707EA002D7BD4 /* PBXContainerItemProxy */;
-		};
 		CF6DF25909E3F3C400506859 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF6DF12309E3F23700506859 /* GALGAS tool LL1 (ppc) */;
 			targetProxy = CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */;
+		};
+		CFE48C2E0C1749D900F4A842 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
+			targetProxy = CFE48C2D0C1749D900F4A842 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
