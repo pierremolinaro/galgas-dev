@@ -153,6 +153,36 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    M A P    I N D E X    D E C L A R A T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <obsolete_declaration> :
+  $mapindex$ ;
+  $type_name$ ? * ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> -> @mapindexDeclaration :
+  $mapindex$ ;
+  $type_name$ ? mMapIndexName ;
+  $($ ;
+  $type_name$ ? mMapTypeName ;
+  $)$ ;
+  ${$ ;
+  $search$ ;
+  $identifier$ ? mSearchMethodName ;
+  $error$ ;
+  $message$ ;
+  $literal_string$ ? mSearchMethodErrorMessage ;
+  $;$ ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    C L A S S    D E C L A R A T I O N                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*

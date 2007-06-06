@@ -68,6 +68,19 @@ entity @mapMethod {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    M A P    I N D E X    D E C L A R A T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @mapindexDeclaration extends @semanticDeclaration {
+  @lstring mMapIndexName ;
+  @lstring mMapTypeName ;
+  @lstring mSearchMethodName ;
+  @lstring mSearchMethodErrorMessage ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    C L A S S    D E C L A R A T I O N                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*

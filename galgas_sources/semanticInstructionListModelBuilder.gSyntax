@@ -212,7 +212,7 @@ rule <semantic_instruction> -> @foreachInstruction :
     $,$ ;
   end repeat ;
   select
-    mWhileExpression := [@trueExpression new !here] ;
+    mWhileExpression := [@literalBooleanExpression new !here !true] ;
   or
     $while$ ;
     <expression> -> mWhileExpression ;

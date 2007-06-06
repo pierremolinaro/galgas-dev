@@ -290,7 +290,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
     }
     const uint32 entryIndex = currentEntry->mMetamodelClassID.uintValue () ;
     while (currentIndex < entryIndex) {
-      codeForDispacher << "  NULL,\n" ;
+      codeForDispacher << "  NULL, // #" << currentIndex << "\n" ;
       currentIndex ++ ;
     }
     codeForDispacher << "  (void *) _treewalking_routine_" << currentEntry->mRoutineName
