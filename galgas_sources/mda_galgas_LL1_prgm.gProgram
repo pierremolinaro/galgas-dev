@@ -155,10 +155,15 @@ message "a GALGAS semantics source file"
   startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
 #--- Parse metamodel component
   @semanticsComponentRoot semanticsComponentRoot ;
-  grammar semanticsSLRgrammar in inSourceFile -> semanticsComponentRoot ;
+  @location endOfSourceFile ;
+  grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile -> semanticsComponentRoot ;
 #--- Build type map
+#  log semanticsComponentRoot ;
   @typeMap typeMap ;
-  treewalking buildTypeMapForSemantics on semanticsComponentRoot ?typeMap ;
+  treewalking buildTypeMapForSemantics on semanticsComponentRoot
+    !endOfSourceFile
+    ?typeMap
+  ;
 }
 
 #---------------------------------------------------------------------------*

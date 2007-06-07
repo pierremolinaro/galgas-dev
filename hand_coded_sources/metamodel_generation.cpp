@@ -1140,7 +1140,8 @@ generate_metamodel_cpp_file (C_Compiler & inLexique,
 
 //------------- Metamodel Management -----------------
   generatedZone3.writeCppTitleComment ("Metamodel Management") ;
-  generatedZone3 << "static C_MetamodelManager gMetamodelManager (\"" << inMetamodelComponentName << "\") ;\n"
+  generatedZone3 << "static C_MetamodelManager gMetamodelManager (\"" << inMetamodelComponentName << "\", "
+                 << inEntitiesToGenerateList.count () << ") ;\n"
                     "\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
   generatedZone3 << "sint32 _metamodel_index_for_" << inMetamodelComponentName << " (void) {\n"

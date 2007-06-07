@@ -38,7 +38,7 @@ entity @semanticsComponentRoot {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @structuredTypeAttribute {
+entity @attributeInCollection {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
 }
@@ -51,7 +51,7 @@ entity @structuredTypeAttribute {
 
 entity @mapDeclaration extends @semanticDeclaration {
   @lstring mMapTypeName ;
-  @structuredTypeAttribute [] mAttributeList ;
+  @attributeInCollection [] mAttributeList ;
   @mapMethod [] mInsertMethodList ;
   @mapMethod [] mSearchMethodList ;
   @mapMethod [] mRemoveMethodList ;
@@ -89,7 +89,7 @@ entity @classDeclaration extends @semanticDeclaration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
   @lstring mSuperClassName ; # Empty if no super class
-  @structuredTypeAttribute [] mAttributeList ;
+  @attributeInCollection [] mAttributeList ;
   @abstractMethodDefinition [] mAbstractMethodList ;
   @overridenMethodDefinition [] mOverridenMethodList ;
   @methodDefinition [] mMethodList ;
@@ -135,7 +135,7 @@ entity @classMessageDefinition {
 
 entity @listDeclaration extends @semanticDeclaration {
   @lstring mListTypeName ;
-  @structuredTypeAttribute [] mAttributeList ;
+  @attributeInCollection [] mAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -153,7 +153,7 @@ entity @sortedListSortDescriptor {
 
 entity @sortedListDeclaration extends @semanticDeclaration {
   @lstring mSortedListTypeName ;
-  @structuredTypeAttribute [] mAttributeList ;
+  @attributeInCollection [] mAttributeList ;
   @sortedListSortDescriptor [] mSortDescriptorList ;
 }
 
