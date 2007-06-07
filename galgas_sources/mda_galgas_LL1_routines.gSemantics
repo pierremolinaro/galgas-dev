@@ -1,0 +1,197 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS LL1 routines                                                      *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics mda_galgas_LL1_routines :
+  import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
+  import semantics optionSemantics in "optionSemantics.gSemantics" ;
+  import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+  import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+
+  import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
+  import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
+  import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
+  import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
+  import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
+  import metamodel grammarMetamodel in "grammarMetamodel.gMetamodel" ;
+  import metamodel guiMetamodel in "guiMetamodel.gMetamodel" ;
+  import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
+  import metamodel treewalkingMetamodel in "treewalkingMetamodel.gMetamodel" ;
+
+  import treewalking optionHeaderGeneration in "optionHeaderGeneration.gTreewalking" ;
+  import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
+  import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
+  import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
+  import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
+  import treewalking buildTypeMapForSemantics in "buildTypeMapForSemantics.gTreewalking" ;
+
+  import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
+  import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
+  import grammar metamodelLL1grammar in "metamodelLL1grammar.gGrammar" ;
+  import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
+  import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
+  import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
+  import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
+  import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
+  import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
+  import grammar treewalkingSLRgrammar in "treewalkingSLRgrammar.gGrammar" ;
+  import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+
+routine getOutputDirectory
+  ??@lstring inSourceFile
+  !@string outOuputDirectory
+:
+  outOuputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+  outOuputDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+end routine ;
+  
+#---------------------------------------------------------------------------*
+
+routine compileOptionComponentLL1
+  ??@lstring inSourceFile
+  ??@string inOutputDirectory
+:
+#--- Parse option component
+  @optionComponentRoot optionComponentRoot ;
+  grammar optionLL1grammar in inSourceFile -> optionComponentRoot ;
+#--- Treewalking for defining option map
+  @commandLineOptionMap boolOptionMap ;
+  @commandLineOptionMap uintOptionMap ;
+  @commandLineOptionMap stringOptionMap ;
+  treewalking optionTreewalkingForBuildingOptionMap on optionComponentRoot
+    ?boolOptionMap
+    ?uintOptionMap
+    ?stringOptionMap
+ ;
+#--- Treewalking for generating C++ files
+  treewalking optionHeaderGeneration on optionComponentRoot
+    !inOutputDirectory
+    ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
+    !boolOptionMap
+    !uintOptionMap
+    !stringOptionMap
+  ;
+  treewalking optionImplementationGeneration on optionComponentRoot
+    !inOutputDirectory
+    ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
+    !boolOptionMap
+    !uintOptionMap
+    !stringOptionMap
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileMetamodelComponentLL1
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @metamodelComponentRoot metamodelComponentRoot ;
+  grammar metamodelLL1grammar in inSourceFile -> metamodelComponentRoot ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileLexiqueComponentLL1
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @lexiqueComponentRoot lexiqueComponentRoot ;
+  grammar lexiqueLL1grammar in inSourceFile -> lexiqueComponentRoot ;
+#--- Get terminal symbol map
+  @terminalMap terminalMap ;
+  treewalking lexiqueTreewalkingForBuildingTerminalMap on lexiqueComponentRoot
+    ?terminalMap
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileSemanticsComponentLL1
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @semanticsComponentRoot semanticsComponentRoot ;
+  @location endOfSourceFile ;
+  grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile -> semanticsComponentRoot ;
+#--- Build type map
+#  log semanticsComponentRoot ;
+  @typeMap typeMap ;
+  treewalking buildTypeMapForSemantics on semanticsComponentRoot
+    !endOfSourceFile
+    ?typeMap
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileSyntaxComponentLL1
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @syntaxComponentRoot syntaxComponentRoot ;
+  grammar syntaxSLRgrammar in inSourceFile -> syntaxComponentRoot ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileGrammarComponentLL1
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @grammarComponentRoot grammarComponentRoot ;
+  grammar grammarLL1grammar in inSourceFile -> grammarComponentRoot ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileGuiComponentLL1
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @guiComponentRoot guiComponentRoot ;
+  grammar guiLL1grammar in inSourceFile -> guiComponentRoot ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileProgramComponentLL1
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @programComponentRoot programComponentRoot ;
+  grammar programSLRgrammar in inSourceFile -> programComponentRoot ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileTreewalkingComponentLL1
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @treewalkingComponentRoot treewalkingComponentRoot ;
+  grammar treewalkingSLRgrammar in inSourceFile -> treewalkingComponentRoot ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
+
+#---------------------------------------------------------------------------*
