@@ -288,7 +288,7 @@ rule <parse_treewalking_document>
   end if ;
 #--- Generate code, and additional checkings ?
   if inGenerateTreewalkingCode then
-  #--- check if a class defines a routine, a routine defined by a super class 
+  #--- check if a class defines a routine, check a routine defined by a super class 
   #    should have the same signature
     foreach treewalkingRoutineHeaderMap (@lstring kKey @L_EXsignature kRoutineSignature *) :
       @uint entityID ;
@@ -319,32 +319,32 @@ rule <parse_treewalking_document>
     end foreach ;
   #--- If a class does not define a routine, use the super class 
   #    routine (if it exists)
-    foreach metamodelEntityMap (@lstring kEntityName 3* @lstring kSuperEntityName 4*) :
-      @bool hasRoutine := [treewalkingRoutineHeaderMap hasKey ![kEntityName string]] ;
-      if not hasRoutine then
-        @lstring superEntityName := kSuperEntityName ;
-        loop [treewalkingRoutineHeaderMap count] + 1 : while (not hasRoutine) & ([superEntityName string] != "") do
-          hasRoutine := [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] ;
-          if not hasRoutine then
-            @lstring superSuperEntityName ;
-            [metamodelEntityMap searchKey !superEntityName ?3* ?superSuperEntityName ?4*] ;
-            superEntityName := superSuperEntityName ;
-          end if ;
-        end loop ;
-        if hasRoutine then
-          @uint entityID ;
-          @string metamodelName ;
-          [metamodelEntityMap searchKey !kEntityName ?6* ?metamodelName ?entityID] ;
-          routineDispatcherSortedList += 
-            ![entityID string]
-            !entityID
-            ![superEntityName string]
-            ![kEntityName string]
-            !metamodelName
-          ;
-        end if ;
-      end if ;
-    end foreach ;
+#   ¤ foreach metamodelEntityMap (@lstring kEntityName 3* @lstring kSuperEntityName 4*) :
+#      @bool hasRoutine := [treewalkingRoutineHeaderMap hasKey ![kEntityName string]] ;
+#      if not hasRoutine then
+#        @lstring superEntityName := kSuperEntityName ;
+#        loop [treewalkingRoutineHeaderMap count] + 1 : while (not hasRoutine) & ([superEntityName string] != "") do
+#          hasRoutine := [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] ;
+#          if not hasRoutine then
+#            @lstring superSuperEntityName ;
+#            [metamodelEntityMap searchKey !superEntityName ?3* ?superSuperEntityName ?4*] ;
+#            superEntityName := superSuperEntityName ;
+#          end if ;
+#        end loop ;
+#        if hasRoutine then
+#          @uint entityID ;
+#          @string metamodelName ;
+#          [metamodelEntityMap searchKey !kEntityName ?6* ?metamodelName ?entityID] ;
+#          routineDispatcherSortedList += 
+#            ![entityID string]
+#            !entityID
+#            ![superEntityName string]
+#            ![kEntityName string]
+#            !metamodelName
+#          ;
+#        end if ;
+#      end if ;
+#    end foreach ;
   #--- Generate code
     generate_treewalking
       !treewalkingName

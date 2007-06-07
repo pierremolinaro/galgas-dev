@@ -23,7 +23,10 @@ import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-rule @semanticsComponentRoot !@typeMap outTypeMap :
+rule @semanticsComponentRoot
+  ?@location inEndOfSourceFile
+  !@typeMap outTypeMap
+:
   outTypeMap := [@typeMap emptyMap] ;
 #--- Enter builtin type
   [!?outTypeMap insertKey ![@lstring new !"string"    !here] ![@stringGalgasType    new]] ;
@@ -47,29 +50,72 @@ rule @semanticsComponentRoot !@typeMap outTypeMap :
 #--- Walk throught definition for building map
   call mSemanticDeclarationList !?outTypeMap ;
 #--- Warn for undefined types
+  message [[outTypeMap unsolvedIndexCount] string] . " unresolved indexes\n" ;
   if [outTypeMap unsolvedIndexCount] > 0 then
     @string m := [[outTypeMap unsolvedIndexCount] string] . " type" ;
     if [outTypeMap unsolvedIndexCount] == 1 then
-      m := "1 type is not defined: " ;
+      m := "1 type is not defined:" ;
     else
-      m := [[outTypeMap unsolvedIndexCount] string] . " types are not defined: " ;
+      m := [[outTypeMap unsolvedIndexCount] string] . " types are not defined:" ;
     end if ;
-    @bool first := true ;
     foreach [outTypeMap unsolvedIndexKeyStringList] (@string kKey) :
-      if first then
-        first := false ;
-      else
-        m .= ", " ;
-      end if ;
-      m .= "@" . kKey ;
+      m .= "\n  - @" . kKey ;
     end foreach ;
-    warning here : m ;
+    warning inEndOfSourceFile : m ;
   end if ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
 rule @semanticDeclaration ?!@typeMap unused ioTypeMap :
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @classDeclaration ?!@typeMap ioTypeMap :
+#--- Super class index
+  @typeMapIndex superClassIndex ;
+  if [mSuperClassName length] == 0 then
+    superClassIndex := [@typeMapIndex null] ;
+  else
+    [@typeMapIndex makeRegularIndex !mSuperClassName !?ioTypeMap ?superClassIndex] ;
+  end if ;
+#--- Attributes
+  @attributeList attributeList [emptyList] ;
+  call mAttributeList !?attributeList !?ioTypeMap ;
+#--- Enter in type map
+  @ACGalgasType t := [@classGalgasType new
+    !mIsAbstract
+    !mClassTypeName
+    !superClassIndex
+    !attributeList
+  ] ;
+  [!?ioTypeMap insertKey !mClassTypeName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @listDeclaration ?!@typeMap ioTypeMap :
+#--- Attributes
+  @attributeList attributeList [emptyList] ;
+  call mAttributeList !?attributeList !?ioTypeMap ;
+#--- Enter in type map
+  @ACGalgasType t := [@listGalgasType new
+    !mListTypeName
+    !attributeList
+  ] ;
+  [!?ioTypeMap insertKey !mListTypeName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @attributeInCollection
+  ?!@attributeList ioAttributeList
+  ?!@typeMap ioTypeMap
+:
+  @typeMapIndex index ;
+  [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioTypeMap ?index] ;
+  ioAttributeList += !index !mAttributeName ;
 end rule ;
 
 #---------------------------------------------------------------------------*

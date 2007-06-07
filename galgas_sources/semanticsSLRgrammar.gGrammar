@@ -24,6 +24,8 @@ grammar semanticsSLRgrammar "SLR" :
   import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.gSyntax" ;
   import syntax semanticsModelBuilder in "semanticsModelBuilder.gSyntax" ;
 
-  root <semantics_component_start_symbol> -> semanticsMetamodel
+  root <semantics_component_start_symbol>
+   !@location outEndOfSourceFile
+  -> semanticsMetamodel
   ; # SLR
 end grammar ;

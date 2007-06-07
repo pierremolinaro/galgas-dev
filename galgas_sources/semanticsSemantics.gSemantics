@@ -52,6 +52,17 @@ mapindex @typeMapIndex (@typeMap) {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  A T T R I B U T E    L I S T                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @attributeList {
+  @typeMapIndex mAttributeTypeIndex ;
+  @lstring mAttributeName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  S T R I N G    T Y P E                                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -210,6 +221,30 @@ class @stringsetGalgasType extends @ACGalgasType {
 #---------------------------------------------------------------------------*
 
 class @binarysetGalgasType extends @ACGalgasType {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C L A S S    T Y P E                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @classGalgasType extends @ACGalgasType {
+  @bool mIsAbstract ;
+  @lstring mClassName ;
+  @typeMapIndex mSuperClassIndex ;
+  @attributeList mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    T Y P E                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listGalgasType extends @ACGalgasType {
+  @lstring mListTypeName ;
+  @attributeList mAttributeList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -269,14 +269,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
 
 //--- Generate dispatcher
   generatedZone3.writeCppTitleComment ("Dispatcher tables") ;
-/*  generatedZone3 << "static const uint32 _kDefinedRoutineTableSize = " << (inRoutineDispatcherSortedList.count () + 1) << " ;\n\n" ;
- §  GGS_routineDispatcherSortedList::element_type * currentEntry = inRoutineDispatcherSortedList.firstObject () ;
-  while (currentEntry != NULL) {
-    const uint32 entryIndex = currentEntry->mMetamodelClassID.uintValue () ;
-    generatedZone3 << "// {" << currentEntry->mMetamodelName << ", " << entryIndex
-                   << ", (void *) _treewalking_routine_" << currentEntry->mRoutineName << "}\n" ;
-    currentEntry = currentEntry->nextObject () ;
-  }*/
+  generatedZone3 << "\n" ;
   uint32 currentIndex = 0 ;
   C_String currentMetamodelName ;
   C_String codeForDispacher ;
@@ -294,17 +287,13 @@ generate_treewalking_implementation (C_Compiler & inLexique,
       currentMetamodelName = currentEntry->mMetamodelName ;
       metamodelsWithDispatcher.addObject (currentMetamodelName) ;
       currentIndex = 0 ;
-      codeForDispacher << "static void * _kDispatcherFor_" << currentMetamodelName << " [_kSize_" << currentMetamodelName << "] = {\n" ;
+      codeForDispacher << "static const CTreewalkingVirtualMethod _kDispatcherFor_" << currentMetamodelName << " [_kSize_" << currentMetamodelName << "] = {\n" ;
     }
-    const uint32 entryIndex = currentEntry->mMetamodelClassID.uintValue () ;
-    while (currentIndex < entryIndex) {
-      codeForDispacher << "  NULL, // #" << currentIndex << "\n" ;
-      currentIndex ++ ;
-    }
-    codeForDispacher << "  (void *) _treewalking_routine_" << currentEntry->mRoutineName
-                   << ", // #" << entryIndex << " @"
-                   << currentEntry->mEntityName << ", defined in '"
-                   << currentEntry->mMetamodelName << "' metamodel\n" ;
+    codeForDispacher << "  {" << currentEntry->mMetamodelClassID.uintValue ()
+                     << ", (void *) _treewalking_routine_" << currentEntry->mRoutineName
+                     << "}, // @"
+                     << currentEntry->mEntityName << ", defined in '"
+                     << currentEntry->mMetamodelName << "' metamodel\n" ;
     currentIndex ++ ;
     currentEntry = currentEntry->nextObject () ;
   }

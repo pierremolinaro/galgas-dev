@@ -27,11 +27,11 @@ import semantics commonSemantics in "commonSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <semantics_component_start_symbol> -> @semanticsComponentRoot ;
+nonterminal <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semanticsComponentRoot ;
 
 nonterminal <semantic_declaration> -> @semanticDeclaration ;
 
-nonterminal <attribute_declaration> -> @structuredTypeAttribute ;
+nonterminal <attribute_declaration> -> @attributeInCollection ;
 
 nonterminal <map_method_declaration> -> @mapMethod ;
 
@@ -57,7 +57,7 @@ nonterminal <obsolete_declaration> ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantics_component_start_symbol> -> @semanticsComponentRoot :
+rule <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semanticsComponentRoot :
   $semantics$ ;
 #--- Semantics Component Name
   $identifier$ ? mSemanticsComponentName ;
@@ -85,17 +85,18 @@ rule <semantics_component_start_symbol> -> @semanticsComponentRoot :
   end repeat ;
 #--- end
   $end$ ;
+  outEndOfSourceFile := here ;
   $semantics$ ;
   $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    Common Rules                                                           *
+#    A T T R I B U T E    I N    C O L L E C T I O N                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <attribute_declaration> -> @structuredTypeAttribute :
+rule <attribute_declaration> -> @attributeInCollection :
   $type_name$ ? mAttributeTypeName ;
   $identifier$ ? mAttributeName ;
   $;$ ;
