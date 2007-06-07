@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS LL1 program definition                                            *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -22,6 +22,8 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+  import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
+
   import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
   import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
@@ -31,6 +33,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import metamodel guiMetamodel in "guiMetamodel.gMetamodel" ;
   import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
   import metamodel treewalkingMetamodel in "treewalkingMetamodel.gMetamodel" ;
+
   import treewalking optionHeaderGeneration in "optionHeaderGeneration.gTreewalking" ;
   import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
@@ -48,6 +51,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
   import grammar treewalkingSLRgrammar in "treewalkingSLRgrammar.gGrammar" ;
+  import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
   
   error 100 ;
   warning 100 ;
@@ -81,36 +85,9 @@ message "a '.ggs' GALGAS source file"
 when . "gOption"
 message "a GALGAS option source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-#--- Parse option component
-  @optionComponentRoot optionComponentRoot ;
-  grammar optionLL1grammar in inSourceFile -> optionComponentRoot ;
-#--- Treewalking for defining option map
-  @commandLineOptionMap boolOptionMap ;
-  @commandLineOptionMap uintOptionMap ;
-  @commandLineOptionMap stringOptionMap ;
-  treewalking optionTreewalkingForBuildingOptionMap on optionComponentRoot
-    ?boolOptionMap
-    ?uintOptionMap
-    ?stringOptionMap
- ;
-#--- Treewalking for generating C++ files
-  treewalking optionHeaderGeneration on optionComponentRoot
-    !startDirectory
-    ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-    !boolOptionMap
-    !uintOptionMap
-    !stringOptionMap
-  ;
-  treewalking optionImplementationGeneration on optionComponentRoot
-    !startDirectory
-    ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-    !boolOptionMap
-    !uintOptionMap
-    !stringOptionMap
-  ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileOptionComponentLL1 !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -118,12 +95,9 @@ message "a GALGAS option source file"
 when . "gMetamodel"
 message "a GALGAS metamodel source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-#--- Parse metamodel component
-  @metamodelComponentRoot metamodelComponentRoot ;
-  grammar metamodelLL1grammar in inSourceFile -> metamodelComponentRoot ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileMetamodelComponentLL1 !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -131,18 +105,9 @@ message "a GALGAS metamodel source file"
 when . "gLexique"
 message "a GALGAS lexique source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-#--- Parse metamodel component
-  @lexiqueComponentRoot lexiqueComponentRoot ;
-  grammar lexiqueLL1grammar in inSourceFile -> lexiqueComponentRoot ;
-#--- Get terminal symbol map
-  @terminalMap terminalMap ;
-  treewalking lexiqueTreewalkingForBuildingTerminalMap on lexiqueComponentRoot
-    ?terminalMap
-  ;
-  log terminalMap ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileLexiqueComponentLL1 !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -150,20 +115,9 @@ message "a GALGAS lexique source file"
 when . "gSemantics"
 message "a GALGAS semantics source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-#--- Parse metamodel component
-  @semanticsComponentRoot semanticsComponentRoot ;
-  @location endOfSourceFile ;
-  grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile -> semanticsComponentRoot ;
-#--- Build type map
-#  log semanticsComponentRoot ;
-  @typeMap typeMap ;
-  treewalking buildTypeMapForSemantics on semanticsComponentRoot
-    !endOfSourceFile
-    ?typeMap
-  ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileSemanticsComponentLL1 !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -171,12 +125,9 @@ message "a GALGAS semantics source file"
 when . "gSyntax"
 message "a GALGAS syntax source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-#--- Parse metamodel component
-  @syntaxComponentRoot syntaxComponentRoot ;
-  grammar syntaxSLRgrammar in inSourceFile -> syntaxComponentRoot ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileSyntaxComponentLL1 !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -184,12 +135,9 @@ message "a GALGAS syntax source file"
 when . "gGrammar"
 message "a GALGAS grammar source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-#--- Parse metamodel component
-  @grammarComponentRoot grammarComponentRoot ;
-  grammar grammarLL1grammar in inSourceFile -> grammarComponentRoot ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileGrammarComponentLL1 !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -197,12 +145,9 @@ message "a GALGAS grammar source file"
 when . "gGui"
 message "a GALGAS GUI source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-#--- Parse metamodel component
-  @guiComponentRoot guiComponentRoot ;
-  grammar guiLL1grammar in inSourceFile -> guiComponentRoot ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileGuiComponentLL1 !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -210,12 +155,9 @@ message "a GALGAS GUI source file"
 when . "gProgram"
 message "a GALGAS program source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-#--- Parse metamodel component
-  @programComponentRoot programComponentRoot ;
-  grammar programSLRgrammar in inSourceFile -> programComponentRoot ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileProgramComponentLL1 !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -223,12 +165,55 @@ message "a GALGAS program source file"
 when . "gTreewalking"
 message "a GALGAS treewalking source file"
 ??@lstring inSourceFile {
-#--- File generation start directory
-  @string startDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
-  startDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+  @string outputDirectory ;
+  getOutputDirectory !inSourceFile ?outputDirectory ;
+  compileTreewalkingComponentLL1 !inSourceFile !outputDirectory ;
+}
+
+#---------------------------------------------------------------------------*
+
+when . "gProject"
+message "a GALGAS project source file"
+??@lstring inSourceFile {
+#--- Define output directory
+  @string outputDirectory ;
+  getOutputDirectory
+    !inSourceFile
+    ?outputDirectory
+  ;
 #--- Parse metamodel component
-  @treewalkingComponentRoot treewalkingComponentRoot ;
-  grammar treewalkingSLRgrammar in inSourceFile -> treewalkingComponentRoot ;
+  @lstringlist fileList ;
+  grammar projectLL1grammar in inSourceFile ?fileList ;
+#--- loop for compiling each file
+  foreach fileList (@lstring kFile) :
+    message "----- Compiling '" . kFile . "'\n" ;
+    @string extension := [kFile pathExtension] ;
+    @lstring fullFilePath [new
+      ![inSourceFile stringByDeletingLastPathComponent] . "/" . [kFile string]
+      ![kFile location]
+    ] ;
+    if extension == "gTreewalking" then
+      compileTreewalkingComponentLL1 !fullFilePath !outputDirectory ;
+    elsif extension == "gSemantics" then
+      compileSemanticsComponentLL1 !fullFilePath !outputDirectory ;
+    elsif extension == "gLexique" then
+      compileLexiqueComponentLL1 !fullFilePath !outputDirectory ;
+    elsif extension == "gSyntax" then
+      compileSyntaxComponentLL1 !fullFilePath !outputDirectory ;
+    elsif extension == "gMetamodel" then
+      compileMetamodelComponentLL1 !fullFilePath !outputDirectory ;
+    elsif extension == "gOption" then
+      compileOptionComponentLL1 !fullFilePath !outputDirectory ;
+    elsif extension == "gGrammar" then
+      compileGrammarComponentLL1 !fullFilePath !outputDirectory ;
+    elsif extension == "gProgram" then
+      compileProgramComponentLL1 !fullFilePath !outputDirectory ;
+    elsif extension == "gGui" then
+      compileGuiComponentLL1 !fullFilePath !outputDirectory ;
+    else
+      error kFile:"unhandled extension" ;
+    end if ;
+  end foreach ;
 }
 
 #---------------------------------------------------------------------------*

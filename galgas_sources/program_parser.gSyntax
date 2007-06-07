@@ -161,6 +161,9 @@ rule <galgas_component>
     ?allMetamodelClassMap
   ;
   inclusionsForImplementationFile += ![nomPRGMprincipal string] . ".h" ;
+  foreach includedSemanticsComponents (@string kSemanticComponentName) :
+    inclusionsForImplementationFile += !kSemanticComponentName . ".h" ;
+  end foreach ;
 #--- Max errors count
   $error$ ;
   @luint nombreMaxErreurs ; # Nombre maximum d'erreurs

@@ -76,6 +76,21 @@ rule <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semant
       $identifier$ ?* ;
       $in$ ;
       $literal_string$ ?* ;
+    or
+      $metamodel$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
+    or
+      $treewalking$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
+    or
+      $grammar$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
     end select ;
     $;$ ;
   while

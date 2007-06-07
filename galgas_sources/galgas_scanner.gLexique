@@ -100,7 +100,6 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "override",
   "parse",
   "program",
-  "project",
   "reader",
   "remove",
   "repeat",
