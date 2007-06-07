@@ -157,8 +157,8 @@ message "a GALGAS semantics source file"
   @semanticsComponentRoot semanticsComponentRoot ;
   grammar semanticsSLRgrammar in inSourceFile -> semanticsComponentRoot ;
 #--- Build type map
-#  @typeMap typeMap ;
-#  treewalking buildTypeMapForSemantics on semanticsComponentRoot ?typeMap ;
+  @typeMap typeMap ;
+  treewalking buildTypeMapForSemantics on semanticsComponentRoot ?typeMap ;
 }
 
 #---------------------------------------------------------------------------*
