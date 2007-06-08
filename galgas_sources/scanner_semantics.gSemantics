@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics scanner_semantics :
+semantics scanner_semantics extends common_semantics :
 import semantics common_semantics in "common_semantics.gSemantics" ;
 
 #------------------------------------------------------------------*

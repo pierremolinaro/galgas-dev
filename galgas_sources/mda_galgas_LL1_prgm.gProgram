@@ -39,7 +39,6 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
   import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
-  import treewalking buildTypeMapForSemantics in "buildTypeMapForSemantics.gTreewalking" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;

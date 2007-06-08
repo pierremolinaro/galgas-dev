@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics semanticsSemantics :
+semantics semanticsSemantics extends commonSemantics :
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
@@ -59,6 +59,15 @@ mapindex @typeMapIndex (@typeMap) {
 list @attributeList {
   @typeMapIndex mAttributeTypeIndex ;
   @lstring mAttributeName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A T I O N    T Y P E                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @locationGalgasType extends @ACGalgasType {
 }
 
 #---------------------------------------------------------------------------*
@@ -259,6 +268,60 @@ class @mapindexType extends @ACGalgasType {
   @lstring mSearchMethodName ;
   @lstring mSearchMethodErrorMessage ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P   T Y P E                                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @mapType extends @ACGalgasType {
+  @lstring mMapTypeName ;
+  @attributeList mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M    T Y P E                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @enumType extends @ACGalgasType {
+  @lstring mEnumTypeName ;
+  @lstringlist mConstantList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O N S T R U C T    B U I L T I N     T Y P E    M A P                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine constructBuiltinTypeMap
+  !@typeMap outTypeMap
+:
+  outTypeMap := [@typeMap emptyMap] ;
+#--- Enter builtin type
+  [!?outTypeMap insertKey ![@lstring new !"string"    !here] ![@stringGalgasType    new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"char"      !here] ![@charGalgasType      new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"bool"      !here] ![@boolGalgasType      new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"uint"      !here] ![@uintGalgasType      new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"sint"      !here] ![@sintGalgasType      new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"uint64"    !here] ![@uint64GalgasType    new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"sint64"    !here] ![@sint64GalgasType    new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"double"    !here] ![@doubleGalgasType    new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lstring"   !here] ![@lstringGalgasType   new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lchar"     !here] ![@lcharGalgasType     new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lbool"     !here] ![@lboolGalgasType     new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"luint"     !here] ![@luintGalgasType     new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lsint"     !here] ![@lsintGalgasType     new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"luint64"   !here] ![@luint64GalgasType   new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lsint64"   !here] ![@lsint64GalgasType   new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"ldouble"   !here] ![@ldoubleGalgasType   new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"binaryset" !here] ![@binarysetGalgasType new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"stringset" !here] ![@stringsetGalgasType new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"location"  !here] ![@locationGalgasType new]] ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 

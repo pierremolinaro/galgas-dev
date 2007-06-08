@@ -21,24 +21,34 @@ import "semanticsMetamodel.gMetamodel" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
+import__ "semanticsSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
 rule @semanticsComponentRoot
   ??@string inSourceFileDirectory
+  ??@location inErrorLocation
   ?!@stringset ioImportedComponentSet
   ?!@typeMap ioTypeMap
 :
 #--- Walk throught imported components
   foreach mImportedSemanticsComponentSet (@string kComponentName) :
     if not [ioImportedComponentSet hasKey !kComponentName] then
+      message "*** " . kComponentName . " ***\n" ;
       ioImportedComponentSet += !kComponentName ;
-      @string sourceFilePath := inSourceFileDirectory . "/" . kComponentName . ".gSemantics" ;
+      @lstring sourceFilePath [new
+        !inSourceFileDirectory . "/" . kComponentName . ".gSemantics"
+        !inErrorLocation
+      ] ;
       @semanticsComponentRoot semanticsComponentRoot ;
       @location endOfSourceFile ;
-#      parseSemanticsComponentLL1 !sourceFilePath ?endOfSourceFile ?semanticsComponentRoot ;
-#      grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
-
+      grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
+      treewalking buildMapsForSemantics on semanticsComponentRoot
+        !inSourceFileDirectory
+        !inErrorLocation
+        !?ioImportedComponentSet
+        !?ioTypeMap
+      ;
     end if ;
   end foreach ;
 #--- Walk throught definitions of current files
@@ -75,6 +85,39 @@ rule @classDeclaration ?!@typeMap ioTypeMap :
     !attributeList
   ] ;
   [!?ioTypeMap insertKey !mClassTypeName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  E N U M    T Y P E                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule @enumDeclaration ?!@typeMap ioTypeMap :
+#--- Enter in type map
+  @ACGalgasType t := [@enumType new
+    !mEnumTypeName
+    !mConstantList
+  ] ;
+  [!?ioTypeMap insertKey !mEnumTypeName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M A P    T Y P E                                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule @mapDeclaration ?!@typeMap ioTypeMap :
+#--- Attributes
+  @attributeList attributeList [emptyList] ;
+  call mAttributeList !?attributeList !?ioTypeMap ;
+#--- Enter in type map
+  @ACGalgasType t := [@mapType new
+    !mMapTypeName
+    !attributeList
+  ] ;
+  [!?ioTypeMap insertKey !mMapTypeName !t] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

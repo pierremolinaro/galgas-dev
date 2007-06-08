@@ -58,6 +58,10 @@ rule <treewalking_component_start_symbol> -> @treewalkingComponentRoot :
   mImportedComponentFileNameList := [@lstringlist emptyList] ;
   repeat
   while
+    $import__$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  while
     $import$ ;
     select
       @lstring importedComponentFileName ;
