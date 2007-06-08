@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics common_semantics :
+semantics common_semantics extends commonSemantics :
 
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 

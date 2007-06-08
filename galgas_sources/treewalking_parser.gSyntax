@@ -105,6 +105,15 @@ nonterminal <semantic_instructions_list>
 label parse
 ;
 
+nonterminal <parse_grammar_component_for_importing>
+  ??@lstring inFileName
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
+label parse
+;
+
 #-------------------------------------------------------------------*
 #                   treewalking component                           *
 #-------------------------------------------------------------------*
@@ -272,6 +281,45 @@ rule <parse_treewalking_document>
       end if ;
     end foreach ;
   end foreach ;
+#--- Import grammars
+  repeat
+  while 
+    $import__$ ;
+    @lstring grammarFileName ;
+    $literal_string$ ? grammarFileName ;
+    @M_grammarComponents grammarComponentsMap [emptyMap] ;
+    @M_treewalkingComponents unusedTreewalkingComponentMap [emptyMap] ;
+    @M_optionComponents unusedOptionsComponentsMapForUse [emptyMap] ;
+    <parse_grammar_component_for_importing> 
+      !grammarFileName
+      !?grammarComponentsMap
+      !?metamodelComponentMap
+      !?unusedOptionsComponentsMapForUse
+      !?unusedTreewalkingComponentMap
+    ;
+    $;$ ;
+    foreach grammarComponentsMap (@lstring grammarComponentName
+                                  @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap
+                                  @lstring lexiqueClassName
+                                  *) :
+      filesToImportInHeaderSet += ![grammarComponentName string] ;
+      if not [semanticsEntitiesMap hasKey ![grammarComponentName string]] then
+        @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
+        foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature @lstring kReturnedEntity) :
+          @L_EXsignature formalParametersList [emptyList] ;
+          foreach signature (@formalArgumentPassingMode passingMode @lstring typeName) :
+            @AC_semanticsEntity e ;
+            [semanticsEntitiesMap searchKey !typeName ?e] ;
+            @AC_galgasType type := [(cast e if >= @typeEntiteType else error typeName) aDefType] ;
+            formalParametersList += !type !passingMode ;
+          end foreach ;
+          [!?grammarAltMap insertKey !altName !formalParametersList !kReturnedEntity] ;
+        end foreach ;
+        @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap !lexiqueClassName] ;
+        [!?semanticsEntitiesMap insertKey !grammarComponentName !e] ;
+      end if ;
+     end foreach ;
+  end repeat ;
 #---------------------- parse routine definitions
 #--- FIRST PASS
   @treewalkingRoutineToGenerateList treewalkingRoutineToGenerateList [emptyList] ;
@@ -286,6 +334,23 @@ rule <parse_treewalking_document>
         !?treewalkingRoutineHeaderMap
       ;
     end repeat ;
+  #--- Get Root routine signature
+    @L_EXsignature rootRoutineSignature ;
+    @typeListeTypesEtNomsArgMethode rootRoutineArgumentList ;
+    if [treewalkingRoutineHeaderMap hasKey ![metamodelRootEntity string]] then
+      [treewalkingRoutineHeaderMap searchKey !metamodelRootEntity ?rootRoutineSignature ?rootRoutineArgumentList] ;
+    else
+      error here:"a routine should be defined for the '@" . [metamodelRootEntity string] . "' root class"
+      -> rootRoutineSignature, rootRoutineArgumentList ;
+    end if ;
+  #--- Add to treewalking component map
+    if not [ioTreewalkingComponentMap hasKey ![treewalkingName string]] then
+      [!?ioTreewalkingComponentMap insertKey
+        !treewalkingName
+        ![metamodelRootEntity string]
+        !rootRoutineSignature
+      ] ;
+    end if ;
   rewind
 #--- SECOND PASS
     repeat
@@ -300,15 +365,6 @@ rule <parse_treewalking_document>
       ;
     end repeat ;
   end parse ;
-#--- Get Root routine signature
-  @L_EXsignature rootRoutineSignature ;
-  @typeListeTypesEtNomsArgMethode rootRoutineArgumentList ;
-  if [treewalkingRoutineHeaderMap hasKey ![metamodelRootEntity string]] then
-    [treewalkingRoutineHeaderMap searchKey !metamodelRootEntity ?rootRoutineSignature ?rootRoutineArgumentList] ;
-  else
-    error here:"a routine should be defined for the '@" . [metamodelRootEntity string] . "' root class"
-    -> rootRoutineSignature, rootRoutineArgumentList ;
-  end if ;
 #--- Generate code, and additional checkings ?
   if inGenerateTreewalkingCode then
   #--- check if a class defines a routine, check a routine defined by a super class 
@@ -340,34 +396,6 @@ rule <parse_treewalking_document>
         entityName  := superEntityName ;
       end loop ;
     end foreach ;
-  #--- If a class does not define a routine, use the super class 
-  #    routine (if it exists)
-#   ¤ foreach metamodelEntityMap (@lstring kEntityName 3* @lstring kSuperEntityName 4*) :
-#      @bool hasRoutine := [treewalkingRoutineHeaderMap hasKey ![kEntityName string]] ;
-#      if not hasRoutine then
-#        @lstring superEntityName := kSuperEntityName ;
-#        loop [treewalkingRoutineHeaderMap count] + 1 : while (not hasRoutine) & ([superEntityName string] != "") do
-#          hasRoutine := [treewalkingRoutineHeaderMap hasKey ![superEntityName string]] ;
-#          if not hasRoutine then
-#            @lstring superSuperEntityName ;
-#            [metamodelEntityMap searchKey !superEntityName ?3* ?superSuperEntityName ?4*] ;
-#            superEntityName := superSuperEntityName ;
-#          end if ;
-#        end loop ;
-#        if hasRoutine then
-#          @uint entityID ;
-#          @string metamodelName ;
-#          [metamodelEntityMap searchKey !kEntityName ?6* ?metamodelName ?entityID] ;
-#          routineDispatcherSortedList += 
-#            ![entityID string]
-#            !entityID
-#            ![superEntityName string]
-#            ![kEntityName string]
-#            !metamodelName
-#          ;
-#        end if ;
-#      end if ;
-#    end foreach ;
   #--- Generate code
     generate_treewalking
       !treewalkingName
@@ -377,14 +405,6 @@ rule <parse_treewalking_document>
       !rootRoutineArgumentList
       !metamodelRootEntity
     ;
-  end if ;
-#--- Add to treewalking component map
-  if not [ioTreewalkingComponentMap hasKey ![treewalkingName string]] then
-    [!?ioTreewalkingComponentMap insertKey
-      !treewalkingName
-      ![metamodelRootEntity string]
-      !rootRoutineSignature
-    ] ;
   end if ;
 #--- End of treewalking component
   $end$ ;

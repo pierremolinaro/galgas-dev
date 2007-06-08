@@ -38,7 +38,7 @@ semantics mda_galgas_LL1_routines :
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
   import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
-  import treewalking buildTypeMapForSemantics in "buildTypeMapForSemantics.gTreewalking" ;
+  import treewalking buildMapsForSemantics in "buildMapsForSemantics.gTreewalking" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
@@ -128,16 +128,33 @@ routine compileSemanticsComponentLL1
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
+#--- Parse source file
   @semanticsComponentRoot semanticsComponentRoot ;
   @location endOfSourceFile ;
   grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile -> semanticsComponentRoot ;
-#--- Build type map
-#  log semanticsComponentRoot ;
+#--- Analyze imported files
   @typeMap typeMap ;
-  treewalking buildTypeMapForSemantics on semanticsComponentRoot
+  constructBuiltinTypeMap ?typeMap ;
+  @stringset importedComponentSet [emptySet] ;
+  treewalking buildMapsForSemantics on semanticsComponentRoot
+    ![inSourceFile stringByDeletingLastPathComponent]
     !endOfSourceFile
-    ?typeMap
+    !?importedComponentSet
+    !?typeMap
   ;
+#--- Warn for undefined types
+  if [typeMap unsolvedIndexCount] > 0 then
+    @string m := [[typeMap unsolvedIndexCount] string] . " type" ;
+    if [typeMap unsolvedIndexCount] == 1 then
+      m := "1 type is not defined:" ;
+    else
+      m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
+    end if ;
+    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) :
+      m .= "\n  - @" . kKey ;
+    end foreach ;
+    warning endOfSourceFile : m ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

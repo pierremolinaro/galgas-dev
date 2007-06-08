@@ -374,6 +374,22 @@
 		CF2A8852058CCF53003EF2F4 /* GGS_luint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53893057A558F00854C83 /* GGS_luint.cpp */; };
 		CF2A8854058CCF55003EF2F4 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CF2A8856058CCF56003EF2F4 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
+		CF2EE34D0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */; };
+		CF2EE34E0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */; };
+		CF2EE34F0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */; };
+		CF2EE3500C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */; };
+		CF2EE3510C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */; };
+		CF2EE3520C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */; };
+		CF2EE3530C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */; };
+		CF2EE3540C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */; };
+		CF2EE3550C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */; };
+		CF2EE3560C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */; };
+		CF2EE3570C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */; };
+		CF2EE3580C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */; };
+		CF2EE3590C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */; };
+		CF2EE35A0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */; };
+		CF2EE35B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */; };
+		CF2EE35C0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */; };
 		CF33792309EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
 		CF33792509EFA7DE00EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */; };
 		CF381D3F0B6FD70600289177 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
@@ -591,36 +607,20 @@
 		CF546DE30A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */; };
 		CF5E74F607B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF5E74F807B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
-		CF6511550C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */; };
-		CF6511560C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */; };
 		CF6511570C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF6511580C16F14D002D7BD4 /* semanticsSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */; };
-		CF6511590C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */; };
-		CF65115A0C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */; };
 		CF65115B0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF65115C0C16F14D002D7BD4 /* semanticsSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */; };
-		CF65115D0C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */; };
-		CF65115E0C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */; };
 		CF65115F0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF6511600C16F14D002D7BD4 /* semanticsSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */; };
-		CF6511610C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */; };
-		CF6511620C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */; };
 		CF6511630C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF6511640C16F14D002D7BD4 /* semanticsSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */; };
-		CF6511650C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */; };
-		CF6511660C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */; };
 		CF6511670C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF6511680C16F14D002D7BD4 /* semanticsSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */; };
-		CF6511690C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */; };
-		CF65116A0C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */; };
 		CF65116B0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF65116C0C16F14D002D7BD4 /* semanticsSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */; };
-		CF65116D0C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */; };
-		CF65116E0C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */; };
 		CF65116F0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF6511700C16F14D002D7BD4 /* semanticsSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */; };
-		CF6511710C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */; };
-		CF6511720C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */; };
 		CF6511730C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF6511740C16F14D002D7BD4 /* semanticsSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */; };
 		CF6511880C16F163002D7BD4 /* include_ACGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6511750C16F162002D7BD4 /* include_ACGalgasType.h */; };
@@ -2847,6 +2847,8 @@
 		CF1EF67E0AD15BB70091DDE8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/galgasUpdate.nib; sourceTree = "<group>"; };
 		CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
+		CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = buildMapsForSemantics.cpp; sourceTree = "<group>"; };
+		CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = buildMapsForSemantics.h; sourceTree = "<group>"; };
 		CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = C_SourceTextForCoca.mm; sourceTree = "<group>"; };
 		CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_SourceTextForCocoa.h; sourceTree = "<group>"; };
 		CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
@@ -2897,8 +2899,6 @@
 		CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint64.h; sourceTree = "<group>"; };
 		CF5E74F407B00EA600858338 /* common_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = common_semantics.cpp; sourceTree = "<group>"; };
 		CF5E74F507B00EA600858338 /* common_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = common_semantics.h; sourceTree = "<group>"; };
-		CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = buildTypeMapForSemantics.cpp; sourceTree = "<group>"; };
-		CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = buildTypeMapForSemantics.h; sourceTree = "<group>"; };
 		CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSemantics.cpp; sourceTree = "<group>"; };
 		CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSemantics.h; sourceTree = "<group>"; };
 		CF6511750C16F162002D7BD4 /* include_ACGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_ACGalgasType.h; sourceTree = "<group>"; };
@@ -4198,8 +4198,8 @@
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
 			isa = PBXGroup;
 			children = (
-				CF6511510C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp */,
-				CF6511520C16F14D002D7BD4 /* buildTypeMapForSemantics.h */,
+				CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */,
+				CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */,
 				CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */,
 				CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */,
 				CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */,
@@ -4700,7 +4700,6 @@
 				CFE26D380C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
 				CFE26D3A0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
 				CFE26D3C0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
-				CF6511560C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */,
 				CF6511580C16F14D002D7BD4 /* semanticsSemantics.h in Headers */,
 				CF6511880C16F163002D7BD4 /* include_ACGalgasType.h in Headers */,
 				CF6511890C16F163002D7BD4 /* include_binaryGalgasType.h in Headers */,
@@ -4725,6 +4724,7 @@
 				CFDC56A80C186FBB00DF8818 /* projectModelBuilder.h in Headers */,
 				CFDC56C60C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56D60C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
+				CF2EE34E0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4886,7 +4886,6 @@
 				CFE26D5C0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
 				CFE26D5E0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
 				CFE26D600C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
-				CF65116E0C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */,
 				CF6511700C16F14D002D7BD4 /* semanticsSemantics.h in Headers */,
 				CF6511FA0C16F163002D7BD4 /* include_ACGalgasType.h in Headers */,
 				CF6511FB0C16F163002D7BD4 /* include_binaryGalgasType.h in Headers */,
@@ -4911,6 +4910,7 @@
 				CFDC56C00C186FBB00DF8818 /* projectModelBuilder.h in Headers */,
 				CFDC56CC0C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56E20C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
+				CF2EE35A0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5071,7 +5071,6 @@
 				CFE26D620C133CA80066ACB3 /* treewalkingMetamodel.h in Headers */,
 				CFE26D640C133CA80066ACB3 /* treewalkingModelBuilder.h in Headers */,
 				CFE26D660C133CA80066ACB3 /* treewalkingSLRgrammar.h in Headers */,
-				CF6511720C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */,
 				CF6511740C16F14D002D7BD4 /* semanticsSemantics.h in Headers */,
 				CF65120D0C16F163002D7BD4 /* include_ACGalgasType.h in Headers */,
 				CF65120E0C16F163002D7BD4 /* include_binaryGalgasType.h in Headers */,
@@ -5096,6 +5095,7 @@
 				CFDC56C40C186FBB00DF8818 /* projectModelBuilder.h in Headers */,
 				CFDC56CD0C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56E40C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
+				CF2EE35C0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5256,7 +5256,6 @@
 				CFE26D3E0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
 				CFE26D400C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
 				CFE26D420C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
-				CF65115A0C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */,
 				CF65115C0C16F14D002D7BD4 /* semanticsSemantics.h in Headers */,
 				CF65119B0C16F163002D7BD4 /* include_ACGalgasType.h in Headers */,
 				CF65119C0C16F163002D7BD4 /* include_binaryGalgasType.h in Headers */,
@@ -5281,6 +5280,7 @@
 				CFDC56AC0C186FBB00DF8818 /* projectModelBuilder.h in Headers */,
 				CFDC56C70C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56D80C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
+				CF2EE3500C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5423,7 +5423,6 @@
 				CFE26D440C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
 				CFE26D460C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
 				CFE26D480C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
-				CF65115E0C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */,
 				CF6511600C16F14D002D7BD4 /* semanticsSemantics.h in Headers */,
 				CF6511AE0C16F163002D7BD4 /* include_ACGalgasType.h in Headers */,
 				CF6511AF0C16F163002D7BD4 /* include_binaryGalgasType.h in Headers */,
@@ -5448,6 +5447,7 @@
 				CFDC56B00C186FBB00DF8818 /* projectModelBuilder.h in Headers */,
 				CFDC56C80C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56DA0C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
+				CF2EE3520C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5590,7 +5590,6 @@
 				CFE26D4A0C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
 				CFE26D4C0C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
 				CFE26D4E0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
-				CF6511620C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */,
 				CF6511640C16F14D002D7BD4 /* semanticsSemantics.h in Headers */,
 				CF6511C10C16F163002D7BD4 /* include_ACGalgasType.h in Headers */,
 				CF6511C20C16F163002D7BD4 /* include_binaryGalgasType.h in Headers */,
@@ -5615,6 +5614,7 @@
 				CFDC56B40C186FBB00DF8818 /* projectModelBuilder.h in Headers */,
 				CFDC56C90C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56DC0C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
+				CF2EE3540C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5757,7 +5757,6 @@
 				CFE26D500C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
 				CFE26D520C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
 				CFE26D540C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
-				CF6511660C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */,
 				CF6511680C16F14D002D7BD4 /* semanticsSemantics.h in Headers */,
 				CF6511D40C16F163002D7BD4 /* include_ACGalgasType.h in Headers */,
 				CF6511D50C16F163002D7BD4 /* include_binaryGalgasType.h in Headers */,
@@ -5782,6 +5781,7 @@
 				CFDC56B80C186FBB00DF8818 /* projectModelBuilder.h in Headers */,
 				CFDC56CA0C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56DE0C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
+				CF2EE3560C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5924,7 +5924,6 @@
 				CFE26D560C133CA70066ACB3 /* treewalkingMetamodel.h in Headers */,
 				CFE26D580C133CA70066ACB3 /* treewalkingModelBuilder.h in Headers */,
 				CFE26D5A0C133CA70066ACB3 /* treewalkingSLRgrammar.h in Headers */,
-				CF65116A0C16F14D002D7BD4 /* buildTypeMapForSemantics.h in Headers */,
 				CF65116C0C16F14D002D7BD4 /* semanticsSemantics.h in Headers */,
 				CF6511E70C16F163002D7BD4 /* include_ACGalgasType.h in Headers */,
 				CF6511E80C16F163002D7BD4 /* include_binaryGalgasType.h in Headers */,
@@ -5949,6 +5948,7 @@
 				CFDC56BC0C186FBB00DF8818 /* projectModelBuilder.h in Headers */,
 				CFDC56CB0C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56E00C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
+				CF2EE3580C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6444,11 +6444,11 @@
 				CFE26D370C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
 				CFE26D390C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
 				CFE26D3B0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
-				CF6511550C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */,
 				CF6511570C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */,
 				CFDC56A50C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56A70C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56D50C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
+				CF2EE34D0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6608,11 +6608,11 @@
 				CFE26D5B0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
 				CFE26D5D0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
 				CFE26D5F0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
-				CF65116D0C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */,
 				CF65116F0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */,
 				CFDC56BD0C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56BF0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56E10C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
+				CF2EE3590C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6772,11 +6772,11 @@
 				CFE26D610C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
 				CFE26D630C133CA80066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
 				CFE26D650C133CA80066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
-				CF6511710C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */,
 				CF6511730C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */,
 				CFDC56C10C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56C30C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56E30C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
+				CF2EE35B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6975,11 +6975,11 @@
 				CFE26D3D0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
 				CFE26D3F0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
 				CFE26D410C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
-				CF6511590C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */,
 				CF65115B0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */,
 				CFDC56A90C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56AB0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56D70C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
+				CF2EE34F0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7139,11 +7139,11 @@
 				CFE26D430C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
 				CFE26D450C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
 				CFE26D470C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
-				CF65115D0C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */,
 				CF65115F0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */,
 				CFDC56AD0C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56AF0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56D90C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
+				CF2EE3510C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7303,11 +7303,11 @@
 				CFE26D490C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
 				CFE26D4B0C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
 				CFE26D4D0C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
-				CF6511610C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */,
 				CF6511630C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */,
 				CFDC56B10C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56B30C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56DB0C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
+				CF2EE3530C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7467,11 +7467,11 @@
 				CFE26D4F0C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
 				CFE26D510C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
 				CFE26D530C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
-				CF6511650C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */,
 				CF6511670C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */,
 				CFDC56B50C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56B70C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56DD0C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
+				CF2EE3550C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7631,11 +7631,11 @@
 				CFE26D550C133CA70066ACB3 /* treewalkingMetamodel.cpp in Sources */,
 				CFE26D570C133CA70066ACB3 /* treewalkingModelBuilder.cpp in Sources */,
 				CFE26D590C133CA70066ACB3 /* treewalkingSLRgrammar.cpp in Sources */,
-				CF6511690C16F14D002D7BD4 /* buildTypeMapForSemantics.cpp in Sources */,
 				CF65116B0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */,
 				CFDC56B90C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56BB0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56DF0C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
+				CF2EE3570C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
