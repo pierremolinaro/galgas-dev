@@ -119,7 +119,7 @@ SOURCES += semanticsSemantics.cpp
 SOURCES += semanticsMetamodel.cpp
 SOURCES += semanticsModelBuilder.cpp
 SOURCES += semanticsSLRgrammar.cpp
-SOURCES += buildTypeMapForSemantics.cpp
+SOURCES += buildMapsForSemantics.cpp
 
 SOURCES += syntaxMetamodel.cpp
 SOURCES += syntaxModelBuilder.cpp
