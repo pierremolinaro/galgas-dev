@@ -249,6 +249,29 @@ rule <parse_treewalking_document>
       end if ;
     end foreach ;
   end repeat ;
+  foreach metamodelComponentMap (@lstring kComponentName @lstring kRootEntity @entityToImplementMap kEntityMap @stringset kSuperMetamodels) :
+    foreach kEntityMap (@lstring kMetamodelClassName
+                        @entityPropertyMap kAllMetamodelPropertyMap
+                        @bool kIsAbstract
+                        @entityPropertyMap kCurrentMetamodelPropertyMap
+                        @lstring kSuperEntityName
+                        @typeSuperClassesMap kSuperEntityMap
+                        @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants
+                        @string kMetamodelName
+                        @uint kID) :
+      if not [semanticsEntitiesMap hasKey ![kMetamodelClassName string]] then
+        @AC_galgasType t := [@typeGalgas_singleReferenceEntity new
+          !kMetamodelClassName
+          !kListeAttributsSemantiquesCourants
+          ![kSuperEntityMap allKeys]
+        ] ;
+        [!?semanticsEntitiesMap insertKey
+          !kMetamodelClassName
+          ![@typeEntiteType new !t]
+        ] ;
+      end if ;
+    end foreach ;
+  end foreach ;
 #---------------------- parse routine definitions
 #--- FIRST PASS
   @treewalkingRoutineToGenerateList treewalkingRoutineToGenerateList [emptyList] ;
