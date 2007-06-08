@@ -138,11 +138,11 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   }
 
 //--- Display FIRST
-  const sint32 mm = (sint32) FIRST_with_empty.valueCount (inBDDBitCount) ;
   const sint32 m = (sint32) ex_FIRST_with_empty.getValuesCount () ;
+/*   const sint32 mm = (sint32) FIRST_with_empty.valueCount (inBDDBitCount) ;
   if (mm != m) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-  }
+  }*/
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p>") ;
     *inHTMLfile << "Calculus completed in "

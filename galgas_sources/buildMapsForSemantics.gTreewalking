@@ -1,0 +1,132 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Treewalking for building type map of a semantics component               *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+treewalking buildMapsForSemantics (semanticsMetamodel) :
+import "semanticsMetamodel.gMetamodel" ;
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+rule @semanticsComponentRoot
+  ??@string inSourceFileDirectory
+  ?!@stringset ioImportedComponentSet
+  ?!@typeMap ioTypeMap
+:
+#--- Walk throught imported components
+  foreach mImportedSemanticsComponentSet (@string kComponentName) :
+    if not [ioImportedComponentSet hasKey !kComponentName] then
+      ioImportedComponentSet += !kComponentName ;
+      @string sourceFilePath := inSourceFileDirectory . "/" . kComponentName . ".gSemantics" ;
+      @semanticsComponentRoot semanticsComponentRoot ;
+      @location endOfSourceFile ;
+#      parseSemanticsComponentLL1 !sourceFilePath ?endOfSourceFile ?semanticsComponentRoot ;
+#      grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
+
+    end if ;
+  end foreach ;
+#--- Walk throught definitions of current files
+  call mSemanticDeclarationList !?ioTypeMap ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @semanticDeclaration ?!@typeMap unused ioTypeMap :
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C L A S S    T Y P E                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule @classDeclaration ?!@typeMap ioTypeMap :
+#--- Super class index
+  @typeMapIndex superClassIndex ;
+  if [mSuperClassName length] == 0 then
+    superClassIndex := [@typeMapIndex null] ;
+  else
+    [@typeMapIndex makeRegularIndex !mSuperClassName !?ioTypeMap ?superClassIndex] ;
+  end if ;
+#--- Attributes
+  @attributeList attributeList [emptyList] ;
+  call mAttributeList !?attributeList !?ioTypeMap ;
+#--- Enter in type map
+  @ACGalgasType t := [@classGalgasType new
+    !mIsAbstract
+    !mClassTypeName
+    !superClassIndex
+    !attributeList
+  ] ;
+  [!?ioTypeMap insertKey !mClassTypeName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    T Y P E                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule @listDeclaration ?!@typeMap ioTypeMap :
+#--- Attributes
+  @attributeList attributeList [emptyList] ;
+  call mAttributeList !?attributeList !?ioTypeMap ;
+#--- Enter in type map
+  @ACGalgasType t := [@listGalgasType new
+    !mListTypeName
+    !attributeList
+  ] ;
+  [!?ioTypeMap insertKey !mListTypeName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @attributeInCollection
+  ?!@attributeList ioAttributeList
+  ?!@typeMap ioTypeMap
+:
+  @typeMapIndex index ;
+  [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioTypeMap ?index] ;
+  ioAttributeList += !index !mAttributeName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    I N D E X    T Y P E                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule @mapindexDeclaration
+  ?!@typeMap ioTypeMap
+:
+  @typeMapIndex index ;
+  [@typeMapIndex makeRegularIndex !mMapTypeName !?ioTypeMap ?index] ;
+#--- Enter in type map
+  @ACGalgasType t := [@mapindexType new
+    !mMapIndexName
+    !index
+    !mSearchMethodName
+    !mSearchMethodErrorMessage
+  ] ;
+  [!?ioTypeMap insertKey !mMapIndexName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end treewalking ;

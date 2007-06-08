@@ -28,6 +28,7 @@ import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
 
 entity @semanticsComponentRoot {
   @lstring mSemanticsComponentName ;
+  @stringset mImportedSemanticsComponentSet ;
   @lstringlist mImportedComponentFileNameList ;
   @semanticDeclaration [] mSemanticDeclarationList ;
 }

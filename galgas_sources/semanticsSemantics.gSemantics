@@ -248,5 +248,18 @@ class @listGalgasType extends @ACGalgasType {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    I N D E X    T Y P E                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @mapindexType extends @ACGalgasType {
+  @lstring mMapIndexName ;
+  @typeMapIndex mMapTypeIndex ;
+  @lstring mSearchMethodName ;
+  @lstring mSearchMethodErrorMessage ;
+}
+
+#---------------------------------------------------------------------------*
 
 end semantics ;
