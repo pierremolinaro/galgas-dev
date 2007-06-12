@@ -52,7 +52,7 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-action generate_option_component
+extern routine generate_option_component
   ?!@lstring inOptionComponentName
   ?!@M_cli_options inBoolOptionMap
   ?!@M_cli_options inUintOptionMap

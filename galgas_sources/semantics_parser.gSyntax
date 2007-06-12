@@ -96,6 +96,24 @@ label importSemantics
   ??@M_treewalkingComponents inTreewalkingComponentMap
 label parse
 ;
+nonterminal <semantics_declaration_begining_by_extern>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
+label parse
+;
 
 nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedSemanticsComponents
@@ -433,7 +451,7 @@ nonterminal <parse_effective_input_parameters_list>
 label parse
 ;
 
-action buildFileNameWithPath
+extern routine buildFileNameWithPath
   !@lstring outFileNameWithPath
   ?@lstring inPath
   ??@lstring inCppClassName
@@ -3283,7 +3301,7 @@ rule <instruction_beginning_with_identifier>
     isExternActionCall := true ;
   else
     error nomVarDest :
-     "'" . [nomVarDest string] . "' should name a routine or an extern action"
+     "'" . [nomVarDest string] . "' should name a routine or an extern extern routine"
      -> signatureRoutine, isExternActionCall
     ;
   end cast ;
@@ -5553,13 +5571,58 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
+:
+  $extern$ ;
+  <semantics_declaration_begining_by_extern>
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !inOptionsComponentsMapForUse
+    !?tableNomRoutinesDeclarees
+    !?tableEnAvant
+    !?tableRoutinesAimplementer
+    !inTreewalkingComponentMap
+  ;
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ??@M_treewalkingComponents inTreewalkingComponentMap
+:
+  $extern$ ;
+  <semantics_declaration_begining_by_extern> importSemantics
+    !?ioModelMap
+    !?ioExternActionMap
+    !?ioComponentSemanticsEntitiesMap
+    !?tableNomRoutinesDeclarees
+    !?tableEnAvant
+    !?tableRoutinesAimplementer
+    !inTreewalkingComponentMap
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     E X T E R N   T Y P E   D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration_begining_by_extern>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
-  $extern$ ;
 #--- Parse extern type name
   @lstring externTypeName ;
   $type_name$ ? externTypeName ;
@@ -5690,7 +5753,6 @@ label importSemantics
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
-  $extern$ ;
 #--- Parse extern type name
   @lstring externTypeName ;
   $type_name$ ? externTypeName ;
@@ -5931,11 +5993,11 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                   DECLARATION D'UNE ACTION EXTERNE                        *
+#                   DECLARATION D'UNE extern routine EXTERNE                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantics_declaration>
+rule <semantics_declaration_begining_by_extern>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents unused inOptionsComponentsMapForUse
@@ -5944,7 +6006,7 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
-  $action$ ;
+  $routine$ ;
   @lstring nomAction ;
   $identifier$ ?nomAction ;
   @L_EXsignature listeDeTypes ;
@@ -5973,7 +6035,7 @@ label importSemantics
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
-  $action$ ;
+  $routine$ ;
   @lstring actionName ;
   $identifier$ ? actionName ;
   @L_EXsignature listeDeTypes ;

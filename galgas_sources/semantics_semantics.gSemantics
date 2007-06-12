@@ -1203,7 +1203,7 @@ class @typeStructuredCastInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#       Routine or extern action call instruction                           *
+#       Routine or extern extern routine call instruction                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1380,8 +1380,8 @@ class @C_domainToImplement extends @typeEntityToGenerate {
 
 class @typeEntiteActionExterne extends @AC_semanticsEntity {
   @L_EXsignature aSignature ;
-  message "an external action" ;
-  message messageTypeEntite "an external action" ;
+  message "an external extern routine" ;
+  message messageTypeEntite "an external extern routine" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1423,7 +1423,7 @@ class @enumGalgasType extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
-action appendJokersIfNeeded
+extern routine appendJokersIfNeeded
  ?!@typeCplusPlusNameList ioAllVariablesList
  ?@uint inEffectiveParametersCount
  ?@uint inFormalArgumentsCount
@@ -1432,7 +1432,7 @@ action appendJokersIfNeeded
 
 #---------------------------------------------------------------------------*
 
-action generateSemanticsComponent
+extern routine generateSemanticsComponent
   ?!@lstring componentName
   ?!@stringset includesForHeaderFile
   ?!@string defLexique
@@ -1475,7 +1475,7 @@ sortedlist @routineDispatcherSortedList {
 
 #---------------------------------------------------------------------------*
 
-action generate_treewalking
+extern routine generate_treewalking
   ??@lstring inTreewalkingComponentName
   ??@stringset inFilesToImportInHeaderSet
   ??@treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList
@@ -1517,7 +1517,7 @@ class @C_metamodelEntityToImplement extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
-action generate_metamodel
+extern routine generate_metamodel
   ?@entityToImplementMap inEntityMap
   ?@lstring inMetamodelComponentName
   ?@typeEntitiesToGenerateList listeEntitesAengendrer
@@ -1589,7 +1589,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-action fixFileGenerationStartDirectory
+extern routine fixFileGenerationStartDirectory
   ??@lstring inSourceFile
 ;
 

@@ -89,7 +89,7 @@ nonterminal <parse_lexique_for_importing>
 label parse
 ;
 
-action generateCocoaComponent
+extern routine generateCocoaComponent
   ??@lstring nomPRGMprincipal
   ??@lstring inGUIkindName
   ??@L_nibAndClassList inNIBandClassList

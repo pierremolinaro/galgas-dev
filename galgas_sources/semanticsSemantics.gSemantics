@@ -26,6 +26,8 @@ import semantics commonSemantics in "commonSemantics.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 abstract class @ACGalgasType {
+  method checkNoCircularity ??@uint unused inTypeCount :
+  end method ;
 }
 
 #---------------------------------------------------------------------------*
@@ -48,6 +50,30 @@ map @typeMap {
 
 mapindex @typeMapIndex (@typeMap) {
   search searchKey error message "the '@%K' type is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S I G N A T U R E                                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @signature {
+  @typeMapIndex mAttributeTypeIndex ;
+  @lstring mFormalArgumentName ;
+  @formalArgumentPassingMode mFormalArgumentPassingMode ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R O U T I N E   M A P                                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @routineMap {
+  @signature mRoutineSignature ;
+  insert insertKey error message "the '@%K' routine has been already declared in %L" ;
+  search searchKey error message "the '@%K' routine is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -238,11 +264,66 @@ class @binarysetGalgasType extends @ACGalgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+list @classMethodList {
+  @lstring mMethodName ;
+  @signature mMethodSignature ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @classGalgasType extends @ACGalgasType {
   @bool mIsAbstract ;
   @lstring mClassName ;
   @typeMapIndex mSuperClassIndex ;
   @attributeList mAttributeList ;
+  @classMethodList mMethodList ;
+
+  override
+  method checkNoCircularity ??@uint inTypeCount :
+    @string classPath := [mClassName string] ;
+    @stringset superClassSet [setWithString ![mClassName string]] ;
+    @typeMapIndex superClassIndex := mSuperClassIndex ;
+    @bool circularityError := false ;
+    @bool ok := true ;
+    loop inTypeCount :
+    while [superClassIndex isRegular] & ok & not circularityError do
+      if [superClassIndex isSolved] then
+      #--- Retrieve super class features
+        @lstring superClassName ;
+        @ACGalgasType t ;
+        [superClassIndex searchKey ?superClassName ?t] ;
+      #--- Check there is no circularity
+        circularityError := [superClassSet hasKey ![superClassName string]] ;
+        superClassSet += ![superClassName string] ;
+        classPath .= "." .  [superClassName string] ;
+      #--- Check super class is actually a class, and get super super class info.
+        @typeMapIndex superSuperClassIndex ;
+        cast t :
+        when >= @classGalgasType kClassType do
+          superSuperClassIndex := [kClassType mSuperClassIndex] ;
+        else
+          error mClassName: "this class inherits from @"
+            . superClassName . ", but @" . superClassName . " is not a class"
+            -> superSuperClassIndex
+          ;
+        end cast ;
+        superClassIndex := superSuperClassIndex ;
+      else
+        ok := false ;
+        @string superClassName := [[superClassIndex key] string] ;
+        error mClassName: "this class inherits from @"
+          . superClassName . ", but @" . superClassName . " does not exist"
+        ;
+      end if ;
+    end loop ;
+  #--- Circularity error
+    if circularityError then
+      error mClassName:
+        "inheritance circularity for class '"
+      . [mClassName string] . "': "
+      . [classPath stringByReplacingStringByString !"." !" extends "] ;
+    end if ;
+  end method ;
 }
 
 #---------------------------------------------------------------------------*

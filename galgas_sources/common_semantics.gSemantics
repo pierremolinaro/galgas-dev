@@ -345,9 +345,9 @@ map @ModelMap {
 
 map @ActionMap {
   @L_signature mSignature ;
-  @bool mIsExtern ; # true for extern action, false for routines
-  insert insertKey error message "the '%K' extern action has been already declared in %L" ;
-  search searchKey error message "the '%K' action is not declared" ;
+  @bool mIsExtern ; # true for extern extern routine, false for routines
+  insert insertKey error message "the '%K' extern extern routine has been already declared in %L" ;
+  search searchKey error message "the '%K' extern routine is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -700,7 +700,7 @@ class @typeGalgas_char extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 
-action extern_build_stringlist_type !@AC_galgasType outType ;
+extern routine extern_build_stringlist_type !@AC_galgasType outType ;
 
 #---------------------------------------------------------------------------*
 
@@ -3138,6 +3138,9 @@ routine handleReaderCall
       elsif [inReaderName string] == "key" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_lstring new] ;
+      elsif [inReaderName string] == "isSolved" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
       else # Inherited @ string reader ?
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -3607,13 +3610,13 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-action check_KL_escapeCharacters
+extern routine check_KL_escapeCharacters
  ?@lstring inString
 ;
 
 #---------------------------------------------------------------------------*
 
-action check_K_escapeCharacters
+extern routine check_K_escapeCharacters
  ?@lstring inString
 ;
 

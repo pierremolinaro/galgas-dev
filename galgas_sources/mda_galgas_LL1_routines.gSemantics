@@ -136,11 +136,13 @@ routine compileSemanticsComponentLL1
   @typeMap typeMap ;
   constructBuiltinTypeMap ?typeMap ;
   @stringset importedComponentSet [emptySet] ;
+  @routineMap routineMap [emptyMap] ;
   treewalking buildMapsForSemantics on semanticsComponentRoot
     ![inSourceFile stringByDeletingLastPathComponent]
     !endOfSourceFile
     !?importedComponentSet
     !?typeMap
+    !?routineMap
   ;
 #--- Warn for undefined types
   if [typeMap unsolvedIndexCount] > 0 then
@@ -153,8 +155,12 @@ routine compileSemanticsComponentLL1
     foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) :
       m .= "\n  - @" . kKey ;
     end foreach ;
-    warning endOfSourceFile : m ;
+    error endOfSourceFile : m ;
   end if ;
+#--- Checks class inheritance has no circularity
+  foreach typeMap (@lstring kTypeName @ACGalgasType kType) :
+    [kType checkNoCircularity ![typeMap count]] ;
+  end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*
