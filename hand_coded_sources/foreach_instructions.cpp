@@ -127,7 +127,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                 << " _var_" << enumeratedVariable->mLocationOffset.location () << " = " ;
       enumeratedVariable->mSourceExpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << " ;\n" ;
-      ioCppFile << "GGS_" << enumeratedVariable->mCppTypeName
+      ioCppFile << "const GGS_" << enumeratedVariable->mCppTypeName
                 << "::element_type * operand_" << enumeratedVariable->mLocationOffset.location ()
                 << " = _var_" << enumeratedVariable->mLocationOffset.location () << ".firstObject () ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;

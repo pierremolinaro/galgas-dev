@@ -702,6 +702,8 @@ class @typeGalgas_char extends @AC_galgasType {
 
 action extern_build_stringlist_type !@AC_galgasType outType ;
 
+#---------------------------------------------------------------------------*
+
 class @typeGalgas_string extends @AC_galgasType {
 #--- Get type name
   override method getTypeName !@string outTypeName :

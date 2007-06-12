@@ -96,33 +96,4 @@ compile "projectLL1grammar.gGrammar" ;
 compile "mda_galgas_LL1_routines.gSemantics" ;
 compile "mda_galgas_LL1_prgm.gProgram" ;
 
-#--- Old style components
-compile "common_semantics.gSemantics" ;
-compile "semantics_semantics.gSemantics" ;
-compile "parser_semantics.gSemantics" ;
-compile "treewalking_parser.gSyntax" ;
-compile "domain_parser.gSyntax" ;
-compile "semantics_parser.gSyntax" ;
-compile "metamodel_parser.gSyntax" ;
-compile "parser_parser.gSyntax" ;
-compile "scanner_semantics.gSemantics" ;
-compile "cocoa_parser.gSyntax" ;
-compile "galgas_cocoa.gGui" ;
-compile "cli_options_parser.gSyntax" ;
-compile "galgas_cli_options.gOption" ;
-compile "grammar_parser.gSyntax" ;
-compile "scanner_parser.gSyntax" ;
-compile "expression_parser.gSyntax" ;
-compile "program_parser.gSyntax" ;
-compile "ggs_LL1_compile_component.gSyntax" ;
-compile "ggs_SLR_compile_component.gSyntax" ;
-compile "ggs_LR1_compile_component.gSyntax" ;
-compile "galgas_start.gSyntax" ;
-compile "galgas_LL1_grammar.gGrammar" ;
-compile "galgas_LL1_prgm.gProgram" ;
-compile "galgas_SLR_grammar.gGrammar" ;
-compile "galgas_SLR_prgm.gProgram" ;
-compile "galgas_LR1_grammar.gGrammar" ;
-compile "galgas_LR1_prgm.gProgram" ;
-
 #---------------------------------------------------------------------------*
