@@ -320,7 +320,28 @@ routine constructBuiltinTypeMap
   [!?outTypeMap insertKey ![@lstring new !"ldouble"   !here] ![@ldoubleGalgasType   new]] ;
   [!?outTypeMap insertKey ![@lstring new !"binaryset" !here] ![@binarysetGalgasType new]] ;
   [!?outTypeMap insertKey ![@lstring new !"stringset" !here] ![@stringsetGalgasType new]] ;
-  [!?outTypeMap insertKey ![@lstring new !"location"  !here] ![@locationGalgasType new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"location"  !here] ![@locationGalgasType  new]] ;
+#--- @lstringlist type
+  @attributeList lstringAttribute [emptyList] ;
+  @typeMapIndex lstringIndex ;
+  [@typeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?outTypeMap ?lstringIndex] ;
+  lstringAttribute += !lstringIndex ![@lstring new !"mValue" !here] ;
+  @lstring lstringlist [new !"lstringlist" !here] ;
+  [!?outTypeMap insertKey !lstringlist ![@listGalgasType new !lstringlist !lstringAttribute]] ;
+#--- @stringlist type
+  @attributeList stringAttribute [emptyList] ;
+  @typeMapIndex stringIndex ;
+  [@typeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?outTypeMap ?stringIndex] ;
+  stringAttribute += !stringIndex ![@lstring new !"mValue" !here] ;
+  @lstring stringlist [new !"stringlist" !here] ;
+  [!?outTypeMap insertKey !stringlist ![@listGalgasType new !stringlist !stringAttribute]] ;
+#--- @uint64list type
+  @attributeList uint64Attribute [emptyList] ;
+  @typeMapIndex uint64Index ;
+  [@typeMapIndex makeRegularIndex ![@lstring new !"uint64" !here] !?outTypeMap ?uint64Index] ;
+  uint64Attribute += !uint64Index ![@lstring new !"mValue" !here] ;
+  @lstring uint64list [new !"uint64list" !here] ;
+  [!?outTypeMap insertKey !uint64list ![@listGalgasType new !uint64list !uint64Attribute]] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

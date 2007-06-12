@@ -34,25 +34,30 @@ rule @semanticsComponentRoot
 #--- Walk throught imported components
   foreach mImportedSemanticsComponentSet (@string kComponentName) :
     if not [ioImportedComponentSet hasKey !kComponentName] then
-      message "*** " . kComponentName . " ***\n" ;
+      if kComponentName != [mSemanticsComponentName string] then
+        @lstring sourceFilePath [new
+          !inSourceFileDirectory . "/" . kComponentName . ".gSemantics"
+          !inErrorLocation
+        ] ;
+        @semanticsComponentRoot semanticsComponentRoot ;
+        @location endOfSourceFile ;
+        grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
+        treewalking buildMapsForSemantics on semanticsComponentRoot
+          !inSourceFileDirectory
+          !inErrorLocation
+          !?ioImportedComponentSet
+          !?ioTypeMap
+       ;
+      end if ;
       ioImportedComponentSet += !kComponentName ;
-      @lstring sourceFilePath [new
-        !inSourceFileDirectory . "/" . kComponentName . ".gSemantics"
-        !inErrorLocation
-      ] ;
-      @semanticsComponentRoot semanticsComponentRoot ;
-      @location endOfSourceFile ;
-      grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
-      treewalking buildMapsForSemantics on semanticsComponentRoot
-        !inSourceFileDirectory
-        !inErrorLocation
-        !?ioImportedComponentSet
-        !?ioTypeMap
-      ;
     end if ;
   end foreach ;
 #--- Walk throught definitions of current files
-  call mSemanticDeclarationList !?ioTypeMap ;
+  if [ioImportedComponentSet hasKey ![mSemanticsComponentName string]] then
+    error mSemanticsComponentName: "this component is involved in a circularity in 'extends' definitions" ;
+  else
+    call mSemanticDeclarationList !?ioTypeMap ;
+  end if ;
 end rule ;
 
 #---------------------------------------------------------------------------*
