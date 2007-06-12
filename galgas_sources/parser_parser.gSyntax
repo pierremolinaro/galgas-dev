@@ -246,10 +246,10 @@ label getLexiqueName
 label parse
 ;
 
-action checkLabelSignatures
+extern routine checkLabelSignatures
   ?!@typeAltProductionsMap ioAltProductionMap ;
 
-action checkParseRewindSignatures
+extern routine checkParseRewindSignatures
   ?!@L_parse_rewind_signature_list ioParseRewindSignature
  ;
 

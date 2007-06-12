@@ -52,7 +52,7 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-action buildLexicalRulesFromList
+extern routine buildLexicalRulesFromList
   ?!@typeTableMotsReserves keyWordsMap
   ?!@typeListeTestsEtInstructions outLexicalRulesList ;
 
@@ -194,7 +194,7 @@ nonterminal <lexical_send_instruction>
 label parse
 ;
 
-action generate_scanner
+extern routine generate_scanner
   ??@lstring lexiqueName 
   ??@typeLexicalAttributesMap table_attributs
   ??@typeTableDefinitionTerminaux table_des_terminaux

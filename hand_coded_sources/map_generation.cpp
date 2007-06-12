@@ -157,7 +157,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "    s << \": null\" ;\n"
                "    break ;\n"
                "  case kRegular:\n"
-               "    s << \": regular\" ;\n"
+               "    s << \": regular (\" << mKey << \")\" ;\n"
                "    break ;\n"
                "  }\n"
                "  s << \">\" ;\n"

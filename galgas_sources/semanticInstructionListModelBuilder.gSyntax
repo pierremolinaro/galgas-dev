@@ -81,12 +81,13 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    E X T E R N    A C T I O N    D E C L A R A T I O N                    *
+#    E X T E R N    R O U T I N E    D E C L A R A T I O N                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> -> @actionDeclaration :
-  $action$ ;
+rule <semantic_declaration> -> @externRoutineDeclaration :
+  $extern$ ;
+  $routine$ ;
   $identifier$ ? mActionName ;
   <formal_parameter_list> -> mFormalParameters ;
   $;$ ;

@@ -30,6 +30,7 @@ rule @semanticsComponentRoot
   ??@location inErrorLocation
   ?!@stringset ioImportedComponentSet
   ?!@typeMap ioTypeMap
+  ?!@routineMap ioRoutineMap
 :
 #--- Walk throught imported components
   foreach mImportedSemanticsComponentSet (@string kComponentName) :
@@ -47,6 +48,7 @@ rule @semanticsComponentRoot
           !inErrorLocation
           !?ioImportedComponentSet
           !?ioTypeMap
+          !?ioRoutineMap
        ;
       end if ;
       ioImportedComponentSet += !kComponentName ;
@@ -56,13 +58,46 @@ rule @semanticsComponentRoot
   if [ioImportedComponentSet hasKey ![mSemanticsComponentName string]] then
     error mSemanticsComponentName: "this component is involved in a circularity in 'extends' definitions" ;
   else
-    call mSemanticDeclarationList !?ioTypeMap ;
+    call mSemanticDeclarationList !?ioTypeMap !?ioRoutineMap ;
   end if ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule @semanticDeclaration ?!@typeMap unused ioTypeMap :
+rule @semanticDeclaration
+  ?!@typeMap unused ioTypeMap
+  ?!@routineMap unused ioRoutineMap
+:
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R O U T I N E    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule @routineDeclaration
+  ?!@typeMap ioTypeMap
+  ?!@routineMap ioRoutineMap
+:
+  @signature methodSignature ;
+  call mFormalParameters ?methodSignature !?ioTypeMap ;
+  [!?ioRoutineMap insertKey !mRoutineName !methodSignature] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  E X T E R N    R O U T I N E    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule @externRoutineDeclaration
+  ?!@typeMap ioTypeMap
+  ?!@routineMap ioRoutineMap
+:
+  @signature methodSignature ;
+  call mFormalParameters ?methodSignature !?ioTypeMap ;
+  [!?ioRoutineMap insertKey !mActionName !methodSignature] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -71,7 +106,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule @classDeclaration ?!@typeMap ioTypeMap :
+rule @classDeclaration
+  ?!@typeMap ioTypeMap
+  ?!@routineMap unused ioRoutineMap
+:
 #--- Super class index
   @typeMapIndex superClassIndex ;
   if [mSuperClassName length] == 0 then
@@ -82,14 +120,76 @@ rule @classDeclaration ?!@typeMap ioTypeMap :
 #--- Attributes
   @attributeList attributeList [emptyList] ;
   call mAttributeList !?attributeList !?ioTypeMap ;
+#--- Methods
+  @classMethodList classMethodList [emptyList] ;
+  call mAbstractMethodList !?classMethodList !?ioTypeMap ;
+  call mMethodList !?classMethodList !?ioTypeMap ;
+  call mOverridenMethodList !?classMethodList !?ioTypeMap ;
 #--- Enter in type map
   @ACGalgasType t := [@classGalgasType new
     !mIsAbstract
     !mClassTypeName
     !superClassIndex
     !attributeList
+    !classMethodList
   ] ;
   [!?ioTypeMap insertKey !mClassTypeName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @formalParameter 
+  ?!@signature ioMethodSignature
+  ?!@typeMap ioTypeMap
+:
+#--- Parameter type index
+  @typeMapIndex parameterTypeIndex ;
+  [@typeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioTypeMap ?parameterTypeIndex] ;
+#--- Add formalparameter to signature
+  ioMethodSignature += !parameterTypeIndex !mFormalParameterName !mFormalParameterPassingMode ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @formalParameters 
+  !@signature outMethodSignature
+  ?!@typeMap ioTypeMap
+:
+  outMethodSignature := [@signature emptyList] ;
+  call mFormalParameterList !?outMethodSignature !?ioTypeMap ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @abstractMethodDefinition 
+  ?!@classMethodList ioClassMethodList
+  ?!@typeMap ioTypeMap
+:
+  @signature methodSignature ;
+  call mSignature ?methodSignature !?ioTypeMap ;
+  ioClassMethodList += !mMethodName !methodSignature ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @overridenMethodDefinition 
+  ?!@classMethodList ioClassMethodList
+  ?!@typeMap ioTypeMap
+:
+  @signature methodSignature ;
+  call mSignature ?methodSignature !?ioTypeMap ;
+  ioClassMethodList += !mMethodName !methodSignature ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @methodDefinition 
+  ?!@classMethodList ioClassMethodList
+  ?!@typeMap ioTypeMap
+:
+  @signature methodSignature ;
+  call mSignature ?methodSignature !?ioTypeMap ;
+  ioClassMethodList += !mMethodName !methodSignature ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -98,7 +198,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule @enumDeclaration ?!@typeMap ioTypeMap :
+rule @enumDeclaration
+  ?!@typeMap ioTypeMap
+  ?!@routineMap unused ioRoutineMap
+:
 #--- Enter in type map
   @ACGalgasType t := [@enumType new
     !mEnumTypeName
@@ -113,7 +216,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule @mapDeclaration ?!@typeMap ioTypeMap :
+rule @mapDeclaration
+  ?!@typeMap ioTypeMap
+  ?!@routineMap unused ioRoutineMap
+:
 #--- Attributes
   @attributeList attributeList [emptyList] ;
   call mAttributeList !?attributeList !?ioTypeMap ;
@@ -131,7 +237,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule @listDeclaration ?!@typeMap ioTypeMap :
+rule @listDeclaration
+  ?!@typeMap ioTypeMap
+  ?!@routineMap unused ioRoutineMap
+:
 #--- Attributes
   @attributeList attributeList [emptyList] ;
   call mAttributeList !?attributeList !?ioTypeMap ;
@@ -162,6 +271,7 @@ end rule ;
 
 rule @mapindexDeclaration
   ?!@typeMap ioTypeMap
+  ?!@routineMap unused ioRoutineMap
 :
   @typeMapIndex index ;
   [@typeMapIndex makeRegularIndex !mMapTypeName !?ioTypeMap ?index] ;

@@ -45,7 +45,6 @@ $identifier$ ! tokenString error message "an identifier" ;
 
 list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "abstract",
-  "action",
   "block",
   "call",
   "cast",

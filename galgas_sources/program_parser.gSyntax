@@ -96,7 +96,7 @@ nonterminal <semantic_instructions_list>
 label parse
 ;
 
-action generatePRGM
+extern routine generatePRGM
   ??@lstring nomPRGMprincipal
   ??@lstring versionString
   ??@ruleDescriptorForProgramList inRuleDescriptorForProgramList

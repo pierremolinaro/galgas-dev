@@ -87,7 +87,7 @@ nonterminal <parse_option_component_for_importing>
 label parse
 ;
 
-action analyzeGrammar
+extern routine analyzeGrammar
   ?!@lstring inGrammarName
   ??@lstring inGrammarClass
   ?!@luint startSymbolIndex
