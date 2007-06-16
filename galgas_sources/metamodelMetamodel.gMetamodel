@@ -28,7 +28,7 @@ entity @metamodelComponentRoot {
 }
 
 entity @metamodelEntity {
-  @lstring mEntityName ;
+  @lstringlist mEntityNameList ;
   @lstring mSuperEntityName ; # Empty String if no super entity
   @bool mIsAbstract ;
   @metamodelAttribute [] mAttributes ;

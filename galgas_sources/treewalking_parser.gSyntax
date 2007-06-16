@@ -185,7 +185,7 @@ rule <parse_treewalking_document>
   $treewalking$ ;
   @lstring treewalkingName ;
   $identifier$ ? treewalkingName ;
-#--- Metamodel to walking trought
+#--- Metamodel to walking throught
   $($ ;
   @lstring metamodelName ;
   $identifier$ ? metamodelName ;

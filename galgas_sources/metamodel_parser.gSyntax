@@ -365,10 +365,16 @@ rule <entity_declaration>
     $abstract$ ;
     isAbstract := true ;
   end select ;
-#--- Entity Name
+#--- Entity Names
   $entity$ ;
-  @lstring entityName ;
-  $type_name$ ? entityName ;
+  @lstringlist entityNameList [emptyList] ;
+  repeat
+    @lstring entityName ;
+    $type_name$ ? entityName ;
+    entityNameList += !entityName ;
+  while
+    $,$ ;
+  end repeat ;
 #--- Context properties, or super entity (or nothing)
   @entityPropertyMap allMetamodelPropertyMap ;
   @lstring superEntity ;
@@ -467,39 +473,41 @@ rule <entity_declaration>
     $;$ ;
   end repeat ;
   $}$ ;
-  [!?ioEntityMap insertKey
-    !entityName
-    !allMetamodelPropertyMap
-    !isAbstract
-    !currentEntityPropertyMap
-    !superEntity
-    !superEntityMap
-    !listeTousAttributsSemantiques
-    !inCurrentMetamodelName
-    !ioEntityID
-  ] ;
-  [!?ioAllEntityMap insertKey
-    !entityName
-    !allMetamodelPropertyMap
-    !isAbstract
-    !currentEntityPropertyMap
-    !superEntity
-    !superEntityMap
-    !listeTousAttributsSemantiques
-    !inCurrentMetamodelName
-    !ioEntityID
-  ] ;
-#--- Define entity type generation
-  @typeEntityToGenerate def := [@C_metamodelEntityToImplement new 
-    !entityName
-    !isAbstract
-    !listeTousAttributsSemantiques
-    !listeAttributsSemantiquesCourants
-    ![superEntity string]
-    !ioEntityID
-  ] ;
-  listeEntitesAengendrer += !def ;
-  ioEntityID ++ ;
+  foreach entityNameList (@lstring kEntityName) :
+    [!?ioEntityMap insertKey
+      !kEntityName
+      !allMetamodelPropertyMap
+      !isAbstract
+      !currentEntityPropertyMap
+      !superEntity
+      !superEntityMap
+      !listeTousAttributsSemantiques
+      !inCurrentMetamodelName
+      !ioEntityID
+    ] ;
+    [!?ioAllEntityMap insertKey
+      !kEntityName
+      !allMetamodelPropertyMap
+      !isAbstract
+      !currentEntityPropertyMap
+      !superEntity
+      !superEntityMap
+      !listeTousAttributsSemantiques
+      !inCurrentMetamodelName
+      !ioEntityID
+    ] ;
+  #--- Define entity type generation
+    @typeEntityToGenerate def := [@C_metamodelEntityToImplement new 
+      !kEntityName
+      !isAbstract
+      !listeTousAttributsSemantiques
+      !listeAttributsSemantiquesCourants
+      ![superEntity string]
+      !ioEntityID
+    ] ;
+    listeEntitesAengendrer += !def ;
+    ioEntityID ++ ;
+  end foreach ;
 label parseForEnumeratingClasses
   ?!@stringset ioMetamodelClassSet
 :
@@ -510,9 +518,13 @@ label parseForEnumeratingClasses
   end select ;
 #--- Entity Name
   $entity$ ;
-  @lstring entityName ;
-  $type_name$ ? entityName ;
-  ioMetamodelClassSet += ![entityName string] ;
+  repeat
+    @lstring entityName ;
+    $type_name$ ? entityName ;
+    ioMetamodelClassSet += ![entityName string] ;
+  while
+    $,$ ;
+  end repeat ;
 #--- Super entity (or nothing)
   select
   or
