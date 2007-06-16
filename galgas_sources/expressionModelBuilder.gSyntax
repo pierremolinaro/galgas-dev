@@ -346,9 +346,8 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <factor> -> @semanticExpression expression :
-  @location operatorLocation := here ;
   $true$ ;
-  expression := [@literalBooleanExpression new !operatorLocation !true] ;
+  expression := [@trueExpression new] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -358,9 +357,8 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <factor> -> @semanticExpression expression :
-  @location operatorLocation := here ;
   $false$ ;
-  expression := [@literalBooleanExpression new !operatorLocation !false] ;
+  expression := [@falseExpression new] ;
 end rule ;
 
 #------------------------------------------------------------------------------*

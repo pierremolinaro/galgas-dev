@@ -126,7 +126,14 @@ rule <entity_declaration> -> @metamodelEntity :
   end select ;
 #---
   $entity$ ;
-  $type_name$ ? mEntityName  ;
+  mEntityNameList := [@lstringlist emptyList] ;
+  repeat
+    @lstring entityName ;
+    $type_name$ ? entityName  ;
+    mEntityNameList += !entityName ;
+  while
+    $,$ ;
+  end repeat ;
 #--- Super entity
   select
     mSuperEntityName := [@lstring new !"" !here] ;
