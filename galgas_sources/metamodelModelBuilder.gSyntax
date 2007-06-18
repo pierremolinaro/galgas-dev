@@ -21,19 +21,23 @@ syntax metamodelModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
 
-nonterminal <metamodel_component_start_symbol> -> @metamodelComponentRoot ;
+nonterminal <metamodel_component_start_symbol>
+  !@location outEndOfSourceFile
+-> @metamodelComponentRoot ;
 
 nonterminal <entity_declaration> -> @metamodelEntity ;
 
 nonterminal <component_importation> ?!@lstringlist ioImportedComponentList ;
 
-nonterminal <attribute_or_single_reference_declaration> ??@lstring inPropertyTypeName -> @metamodelAttribute ;
+nonterminal <attribute_or_single_reference_declaration> ??@lstring inPropertyTypeName -> @metamodelProperty ;
 
 nonterminal <multiple_reference_declaration> ??@lstring inPropertyTypeName -> @metamodelMultipleReference ;
 
 #---------------------------------------------------------------------------*
 
-rule <metamodel_component_start_symbol> -> @metamodelComponentRoot :
+rule <metamodel_component_start_symbol>
+  !@location outEndOfSourceFile
+-> @metamodelComponentRoot :
   mSuperMetamodels := [@lstringlist emptyList] ;
   select
     $metamodel$ ;
@@ -85,6 +89,7 @@ rule <metamodel_component_start_symbol> -> @metamodelComponentRoot :
   end repeat ;
   $end$ ;
   $metamodel$ ;
+  outEndOfSourceFile := here ;
   $;$ ;
 end rule ;
 
@@ -148,10 +153,10 @@ rule <entity_declaration> -> @metamodelEntity :
     @lstring propertyTypeName ;
     $type_name$ ? propertyTypeName ;
     select
-      <attribute_or_single_reference_declaration> !propertyTypeName +> mAttributes ;
+      <attribute_or_single_reference_declaration> !propertyTypeName +> mProperties ;
     or
       $[$ ;
-      <multiple_reference_declaration> !propertyTypeName +> mMultipleReferences ;
+      <multiple_reference_declaration> !propertyTypeName +> mProperties ;
     end select ;
     $;$ ;
   end repeat ;
@@ -160,7 +165,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <attribute_or_single_reference_declaration> ??@lstring inPropertyTypeName -> @metamodelAttribute :
+rule <attribute_or_single_reference_declaration> ??@lstring inPropertyTypeName -> @metamodelProperty :
   mAttributeTypeName := inPropertyTypeName ;
   $identifier$ ? mAttributeName ;
 end rule ;

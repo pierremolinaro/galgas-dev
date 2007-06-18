@@ -2513,6 +2513,22 @@
 		CFF2C8F60C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */; };
 		CFF2C8F70C0EF225009D54B8 /* include_C_defaultForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */; };
 		CFF2C8F80C0EF225009D54B8 /* include_C_elseForCastInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */; };
+		CFF2FFAC0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */; };
+		CFF2FFAD0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */; };
+		CFF2FFAE0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */; };
+		CFF2FFAF0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */; };
+		CFF2FFB00C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */; };
+		CFF2FFB10C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */; };
+		CFF2FFB20C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */; };
+		CFF2FFB30C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */; };
+		CFF2FFB40C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */; };
+		CFF2FFB50C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */; };
+		CFF2FFB60C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */; };
+		CFF2FFB70C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */; };
+		CFF2FFB80C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */; };
+		CFF2FFB90C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */; };
+		CFF2FFBA0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */; };
+		CFF2FFBB0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */; };
 		CFF663E80B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
 		CFF663E90B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
 		CFF663EA0B67698600E97917 /* include_typeGalgas_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF663E70B67698600E97917 /* include_typeGalgas_binaryset.h */; };
@@ -2741,19 +2757,19 @@
 			remoteGlobalIDString = CFD6CE6208519E740000FA6E;
 			remoteInfo = "GALGAS tool SLR debug (universal)";
 		};
-		CF471DFB0C185BF000C6B81D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CF6DF19C09E3F30400506859;
-			remoteInfo = "GALGAS tool LL1 debug (ppc)";
-		};
 		CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CF6DF12309E3F23700506859;
 			remoteInfo = "GALGAS tool LL1 (ppc)";
+		};
+		CFF200D60C26CF87003BC992 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
+			remoteInfo = "GALGAS tool LL1 debug (ppc)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -3350,6 +3366,8 @@
 		CFF2C8DE0C0EF225009D54B8 /* include_AC_elseOrDefaultForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_elseOrDefaultForCastInstruction.h; sourceTree = "<group>"; };
 		CFF2C8DF0C0EF225009D54B8 /* include_C_defaultForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_defaultForCastInstruction.h; sourceTree = "<group>"; };
 		CFF2C8E00C0EF225009D54B8 /* include_C_elseForCastInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_elseForCastInstruction.h; sourceTree = "<group>"; };
+		CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = buildMapsForMetamodel.cpp; sourceTree = "<group>"; };
+		CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = buildMapsForMetamodel.h; sourceTree = "<group>"; };
 		CFF5376D057A506700854C83 /* scanner_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_parser.cpp; sourceTree = "<group>"; };
 		CFF5376F057A506700854C83 /* scanner_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_semantics.cpp; sourceTree = "<group>"; };
 		CFF5377A057A509C00854C83 /* scanner_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_generation.cpp; sourceTree = "<group>"; };
@@ -3613,6 +3631,8 @@
 		CF446B5709C9C4A7005CBDC8 /* Metamodel Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFF2FFAA0C267E6B003BC992 /* buildMapsForMetamodel.cpp */,
+				CFF2FFAB0C267E6C003BC992 /* buildMapsForMetamodel.h */,
 				CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */,
 				CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */,
 				CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */,
@@ -4725,6 +4745,7 @@
 				CFDC56C60C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56D60C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
 				CF2EE34E0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
+				CFF2FFAD0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4911,6 +4932,7 @@
 				CFDC56CC0C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56E20C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
 				CF2EE35A0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
+				CFF2FFB90C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5096,6 +5118,7 @@
 				CFDC56CD0C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56E40C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
 				CF2EE35C0C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
+				CFF2FFBB0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5281,6 +5304,7 @@
 				CFDC56C70C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56D80C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
 				CF2EE3500C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
+				CFF2FFAF0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5448,6 +5472,7 @@
 				CFDC56C80C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56DA0C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
 				CF2EE3520C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
+				CFF2FFB10C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5615,6 +5640,7 @@
 				CFDC56C90C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56DC0C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
 				CF2EE3540C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
+				CFF2FFB30C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5782,6 +5808,7 @@
 				CFDC56CA0C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56DE0C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
 				CF2EE3560C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
+				CFF2FFB50C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5949,6 +5976,7 @@
 				CFDC56CB0C186FCD00DF8818 /* include_binarysetGalgasType.h in Headers */,
 				CFDC56E00C187A4C00DF8818 /* mda_galgas_LL1_routines.h in Headers */,
 				CF2EE3580C19AC0C00AD8BEE /* buildMapsForSemantics.h in Headers */,
+				CFF2FFB70C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6049,7 +6077,7 @@
 			);
 			dependencies = (
 				CF6DF25909E3F3C400506859 /* PBXTargetDependency */,
-				CF471DFC0C185BF000C6B81D /* PBXTargetDependency */,
+				CFF200D70C26CF87003BC992 /* PBXTargetDependency */,
 			);
 			name = "GALGAS Cocoa (ppc)";
 			productInstallPath = "$(HOME)/Applications";
@@ -6449,6 +6477,7 @@
 				CFDC56A70C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56D50C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE34D0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
+				CFF2FFAC0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6613,6 +6642,7 @@
 				CFDC56BF0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56E10C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE3590C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
+				CFF2FFB80C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6777,6 +6807,7 @@
 				CFDC56C30C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56E30C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE35B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
+				CFF2FFBA0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6980,6 +7011,7 @@
 				CFDC56AB0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56D70C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE34F0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
+				CFF2FFAE0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7144,6 +7176,7 @@
 				CFDC56AF0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56D90C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE3510C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
+				CFF2FFB00C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7308,6 +7341,7 @@
 				CFDC56B30C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56DB0C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE3530C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
+				CFF2FFB20C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7472,6 +7506,7 @@
 				CFDC56B70C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56DD0C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE3550C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
+				CFF2FFB40C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7636,6 +7671,7 @@
 				CFDC56BB0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
 				CFDC56DF0C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE3570C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
+				CFF2FFB60C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7672,15 +7708,15 @@
 			target = CFD6CE6208519E740000FA6E /* GALGAS tool SLR debug (universal) */;
 			targetProxy = CF3780810AE93C5400D69EDB /* PBXContainerItemProxy */;
 		};
-		CF471DFC0C185BF000C6B81D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
-			targetProxy = CF471DFB0C185BF000C6B81D /* PBXContainerItemProxy */;
-		};
 		CF6DF25909E3F3C400506859 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF6DF12309E3F23700506859 /* GALGAS tool LL1 (ppc) */;
 			targetProxy = CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */;
+		};
+		CFF200D70C26CF87003BC992 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (ppc) */;
+			targetProxy = CFF200D60C26CF87003BC992 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

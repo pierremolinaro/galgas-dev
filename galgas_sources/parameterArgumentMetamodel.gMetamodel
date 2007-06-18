@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 abstract metamodel parameterArgumentMetamodel extends expressionMetamodel :
-
+import "commonSemantics.gSemantics" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
 

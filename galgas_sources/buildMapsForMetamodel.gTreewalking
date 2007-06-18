@@ -1,0 +1,158 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Treewalking for building type map of a metamodel component               *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+treewalking buildMapsForMetamodel (metamodelMetamodel) :
+import "metamodelMetamodel.gMetamodel" ;
+import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
+import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
+import semantics commonSemantics in "commonSemantics.gSemantics" ;
+import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
+import grammar metamodelLL1grammar in "metamodelLL1grammar.gGrammar" ;
+import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
+import treewalking buildMapsForSemantics in "buildMapsForSemantics.gTreewalking" ;
+
+#---------------------------------------------------------------------------*
+
+rule @metamodelComponentRoot
+  ??@string inSourceFileDirectory
+  ??@location inErrorLocation
+  ?!@stringset ioImportedComponentSet
+  ?!@typeMap ioTypeMap
+  ?!@routineMap ioRoutineMap
+:
+#--- Walk throught inherited metamodels
+  foreach mSuperMetamodels (@lstring kSuperMetamodelName) :
+    if not [ioImportedComponentSet hasKey ![kSuperMetamodelName string]] then
+      if [kSuperMetamodelName string] != [mMetamodelComponentName string] then
+        @lstring sourceFilePath [new
+          !inSourceFileDirectory . "/" . kSuperMetamodelName . ".gMetamodel"
+          !inErrorLocation
+        ] ;
+        @metamodelComponentRoot metamodemComponentRoot ;
+        @location endOfSourceFile ;
+        grammar metamodelLL1grammar in sourceFilePath ?endOfSourceFile -> metamodemComponentRoot ;
+        treewalking buildMapsForMetamodel on metamodemComponentRoot
+          !inSourceFileDirectory
+          !inErrorLocation
+          !?ioImportedComponentSet
+          !?ioTypeMap
+          !?ioRoutineMap
+       ;
+      end if ;
+      ioImportedComponentSet += ![kSuperMetamodelName string] ;
+    end if ;
+  end foreach ;
+#--- Walk throught imported components
+  foreach mMetamodelImportedComponents (@lstring kImportedComponentName) :
+    if not [ioImportedComponentSet hasKey ![kImportedComponentName string]] then
+      if [kImportedComponentName string] != [mMetamodelComponentName string] then
+        @lstring sourceFilePath [new
+          !inSourceFileDirectory . "/" . kImportedComponentName
+          !inErrorLocation
+        ] ;
+        @string extension := [kImportedComponentName pathExtension] ;
+        if extension == "gSemantics" then
+          @semanticsComponentRoot semanticsComponentRoot ;
+          @location endOfSourceFile ;
+          grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
+          treewalking buildMapsForSemantics on semanticsComponentRoot
+            !inSourceFileDirectory
+            !inErrorLocation
+            !?ioImportedComponentSet
+            !?ioTypeMap
+            !?ioRoutineMap
+         ;
+        else
+          error kImportedComponentName: "only a semantics component can be imported in a metamodel" ;
+        end if ;
+      end if ;
+      ioImportedComponentSet += ![kImportedComponentName string] ;
+    end if ;
+  end foreach ;
+#--- Walk throught definitions of current file
+  if [ioImportedComponentSet hasKey ![mMetamodelComponentName string]] then
+    error mMetamodelComponentName: "this component is involved in a circularity in 'extends' definitions" ;
+  else
+    call mMetamodelEntities !?ioTypeMap ;
+  end if ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @metamodelEntity
+  ?!@typeMap ioTypeMap
+:
+#--- Super class index
+  @typeMapIndex superEntityIndex ;
+  if [mSuperEntityName length] == 0 then
+    superEntityIndex := [@typeMapIndex null] ;
+  else
+    [@typeMapIndex makeRegularIndex !mSuperEntityName !?ioTypeMap ?superEntityIndex] ;
+  end if ;
+#--- Attributes and single references
+  @attributeList propertyList [emptyList] ;
+  call mProperties !?ioTypeMap !?propertyList ;
+#--- Create galgas types
+  foreach mEntityNameList (@lstring kEntityName) :
+    @ACGalgasType t := [@entityGalgasType new
+      !mIsAbstract
+      !kEntityName
+      !superEntityIndex
+      !propertyList
+    ] ;
+    [!?ioTypeMap insertKey !kEntityName !t] ;
+    t := [@multipleReferenceGalgasType new
+      !kEntityName
+    ] ;
+    [!?ioTypeMap insertKey
+     ![@lstring new !"_list_" . kEntityName ! [kEntityName location]]
+     !t
+    ] ;
+  end foreach ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @metamodelProperty
+  ?!@typeMap ioTypeMap
+  ?!@attributeList ioPropertyList
+:
+  @typeMapIndex typeIndex ;
+  [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioTypeMap ?typeIndex] ;
+  ioPropertyList += !typeIndex !mAttributeName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @metamodelMultipleReference
+  ?!@typeMap ioTypeMap
+  ?!@attributeList ioPropertyList
+:
+  @typeMapIndex typeIndex ;
+  [@typeMapIndex makeRegularIndex
+    ![@lstring new !"_list_" . mAttributeTypeName ![mAttributeTypeName location]]
+    !?ioTypeMap
+    ?typeIndex
+  ] ;
+  ioPropertyList += !typeIndex !mAttributeName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end treewalking ;

@@ -55,6 +55,7 @@ compile "semanticInstructionListModelBuilder.gSyntax" ;
 compile "metamodelMetamodel.gMetamodel" ;
 compile "metamodelModelBuilder.gSyntax" ;
 compile "metamodelLL1grammar.gGrammar" ;
+compile "buildMapsForMetamodel.gTreewalking" ;
 
 #--- Treewalking component
 compile "treewalkingMetamodel.gMetamodel" ;

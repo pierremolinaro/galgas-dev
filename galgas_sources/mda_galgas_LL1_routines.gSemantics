@@ -39,6 +39,7 @@ semantics mda_galgas_LL1_routines :
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
   import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
   import treewalking buildMapsForSemantics in "buildMapsForSemantics.gTreewalking" ;
+  import treewalking buildMapsForMetamodel in "buildMapsForMetamodel.gTreewalking" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
@@ -104,7 +105,37 @@ routine compileMetamodelComponentLL1
   ??@string unused inOutputDirectory
 :
   @metamodelComponentRoot metamodelComponentRoot ;
-  grammar metamodelLL1grammar in inSourceFile -> metamodelComponentRoot ;
+  @location endOfSourceFile ;
+  grammar metamodelLL1grammar in inSourceFile ?endOfSourceFile -> metamodelComponentRoot ;
+#--- Analyze imported files
+  @typeMap typeMap ;
+  constructBuiltinTypeMap ?typeMap ;
+  @stringset importedComponentSet [emptySet] ;
+  @routineMap routineMap [emptyMap] ;
+  treewalking buildMapsForMetamodel on metamodelComponentRoot
+    ![inSourceFile stringByDeletingLastPathComponent]
+    !endOfSourceFile
+    !?importedComponentSet
+    !?typeMap
+    !?routineMap
+  ;
+#--- Warn for undefined types
+  if [typeMap unsolvedIndexCount] > 0 then
+    @string m := [[typeMap unsolvedIndexCount] string] . " type" ;
+    if [typeMap unsolvedIndexCount] == 1 then
+      m := "1 type is not defined:" ;
+    else
+      m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
+    end if ;
+    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) :
+      m .= "\n  - @" . kKey ;
+    end foreach ;
+    error endOfSourceFile : m ;
+  end if ;
+#--- Checks inheritance has no circularity
+  foreach typeMap (@lstring kTypeName @ACGalgasType kType) :
+    [kType checkNoCircularity ![typeMap count]] ;
+  end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -157,7 +188,7 @@ routine compileSemanticsComponentLL1
     end foreach ;
     error endOfSourceFile : m ;
   end if ;
-#--- Checks class inheritance has no circularity
+#--- Checks inheritance has no circularity
   foreach typeMap (@lstring kTypeName @ACGalgasType kType) :
     [kType checkNoCircularity ![typeMap count]] ;
   end foreach ;

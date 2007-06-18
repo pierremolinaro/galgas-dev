@@ -198,6 +198,7 @@ generate_treewalking_header (C_Compiler & inLexique,
 
 static void
 generate_treewalking_implementation (C_Compiler & inLexique,
+        const GGS_stringset & inFilesToImportInImplementationSet,
         const GGS_lstring & inTreewalkingComponentName,
         const GGS_treewalkingRoutineToGenerateList & inTreewalkingRoutineToGenerateList,
         const GGS_routineDispatcherSortedList & inRoutineDispatcherSortedList,
@@ -210,8 +211,15 @@ generate_treewalking_implementation (C_Compiler & inLexique,
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
 //--- Include declaration of header file
-  generatedZone2 << "#include \"" << inTreewalkingComponentName << ".h\"\n"
-                    "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
+  generatedZone2 << "#include \"" << inTreewalkingComponentName << ".h\"\n" ;
+  GGS_stringset::element_type * currentInclude = inFilesToImportInImplementationSet.firstObject () ;
+  while (currentInclude != NULL) {
+    macroValidPointer (currentInclude) ;
+    generatedZone2 << "#include \"" << currentInclude->mKey << "\"\n" ;
+    currentInclude = currentInclude->nextObject () ;
+  }
+  generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
+
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \"" << inLexique.sourceFileName ().lastPathComponent () << "\", line\n"
@@ -424,6 +432,7 @@ void
 routine_generate_treewalking (C_Compiler & inLexique,
                               const GGS_lstring inTreewalkingComponentName,
                               const GGS_stringset inFilesToImportInHeaderSet,
+                              const GGS_stringset inFilesToImportInImplementationSet,
                               const GGS_treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList,
                               const GGS_routineDispatcherSortedList inRoutineDispatcherSortedList,
                               const GGS_typeListeTypesEtNomsArgMethode inRootRoutineSignature,
@@ -436,6 +445,7 @@ routine_generate_treewalking (C_Compiler & inLexique,
                                  inRootRoutineSignature,
                                  inRootEntity) ;
     generate_treewalking_implementation (inLexique,
+                                 inFilesToImportInImplementationSet,
                                  inTreewalkingComponentName,
                                  inTreewalkingRoutineToGenerateList,
                                  inRoutineDispatcherSortedList,

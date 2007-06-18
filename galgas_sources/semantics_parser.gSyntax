@@ -846,10 +846,12 @@ rule <import_headers_semantics_and_grammars>
   while
     $import$ ;
     select
+      $literal_string$ ? * ;
+    or
       $treewalking$ ;
       @lstring treewalkingComponentName ;
       $identifier$ ? treewalkingComponentName ;
-      outInclusionsForImplementationFile += ![treewalkingComponentName string] . ".h" ;
+      outInclusionsForHeaderFile += ![treewalkingComponentName string] ;
       select
       or
         $in$ ;
@@ -866,6 +868,7 @@ rule <import_headers_semantics_and_grammars>
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
+      outInclusionsForHeaderFile += ![optionComponentName string] ;
       outImportedOptionComponents += ![optionComponentName string] ;
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
@@ -888,6 +891,7 @@ rule <import_headers_semantics_and_grammars>
       $grammar$ ;
       @lstring grammarComponentName ;
       $identifier$ ? grammarComponentName ;
+      outInclusionsForImplementationFile += ![grammarComponentName string] . ".h" ;
       outImportedGrammarComponents += ![grammarComponentName string] ;
       @M_grammarComponents grammarComponentsMap ;
       select
@@ -944,6 +948,7 @@ rule <import_headers_semantics_and_grammars>
       $semantics$ ;
       @lstring componentName ;
       $identifier$ ?componentName ;
+      outInclusionsForHeaderFile += ![componentName string] ;
       select
       or
         $in$ ;
@@ -990,6 +995,7 @@ rule <import_headers_semantics_and_grammars>
       $metamodel$ ;
       @lstring metamodelComponentName ;
       $identifier$ ? metamodelComponentName ;
+      outInclusionsForHeaderFile += ![metamodelComponentName string] ;
       select
       or
         $in$ ;
@@ -1064,6 +1070,8 @@ label importSemantics
   while
     $import$ ;
     select
+      $literal_string$ ? * ;
+    or
       $treewalking$ ;
       $identifier$ ? * ;
       select
@@ -5993,7 +6001,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                   DECLARATION D'UNE extern routine EXTERNE                        *
+#                   DECLARATION D'UNE extern routine EXTERNE               *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
