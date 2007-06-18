@@ -1478,6 +1478,7 @@ sortedlist @routineDispatcherSortedList {
 extern routine generate_treewalking
   ??@lstring inTreewalkingComponentName
   ??@stringset inFilesToImportInHeaderSet
+  ??@stringset inFilesToImportInImplementationSet
   ??@treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList
   ??@routineDispatcherSortedList inRoutineDispatcherSortedList
   ??@typeListeTypesEtNomsArgMethode inFormalArgumentList

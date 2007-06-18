@@ -51,22 +51,23 @@ compile "parameterArgumentBuilder.gSyntax" ;
 compile "instructionMetamodel.gMetamodel" ;
 compile "semanticInstructionListModelBuilder.gSyntax" ;
 
-#--- Metamodel Component
-compile "metamodelMetamodel.gMetamodel" ;
-compile "metamodelModelBuilder.gSyntax" ;
-compile "metamodelLL1grammar.gGrammar" ;
-
-#--- Treewalking component
-compile "treewalkingMetamodel.gMetamodel" ;
-compile "treewalkingModelBuilder.gSyntax" ;
-compile "treewalkingSLRgrammar.gGrammar" ;
-
 #--- Semantics Component
 compile "semanticsSemantics.gSemantics" ;
 compile "semanticsMetamodel.gMetamodel" ;
 compile "semanticsModelBuilder.gSyntax" ;
 compile "semanticsSLRgrammar.gGrammar" ;
 compile "buildMapsForSemantics.gTreewalking" ;
+
+#--- Metamodel Component
+compile "metamodelMetamodel.gMetamodel" ;
+compile "metamodelModelBuilder.gSyntax" ;
+compile "metamodelLL1grammar.gGrammar" ;
+compile "buildMapsForMetamodel.gTreewalking" ;
+
+#--- Treewalking component
+compile "treewalkingMetamodel.gMetamodel" ;
+compile "treewalkingModelBuilder.gSyntax" ;
+compile "treewalkingSLRgrammar.gGrammar" ;
 
 #--- Syntax Component
 compile "syntaxMetamodel.gMetamodel" ;
@@ -100,11 +101,11 @@ compile "mda_galgas_LL1_prgm.gProgram" ;
 compile "common_semantics.gSemantics" ;
 compile "semantics_semantics.gSemantics" ;
 compile "parser_semantics.gSemantics" ;
-compile "treewalking_parser.gSyntax" ;
 compile "domain_parser.gSyntax" ;
 compile "semantics_parser.gSyntax" ;
 compile "metamodel_parser.gSyntax" ;
 compile "parser_parser.gSyntax" ;
+compile "treewalking_parser.gSyntax" ;
 compile "scanner_semantics.gSemantics" ;
 compile "cocoa_parser.gSyntax" ;
 compile "galgas_cocoa.gGui" ;

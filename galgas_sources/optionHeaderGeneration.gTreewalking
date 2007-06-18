@@ -18,6 +18,7 @@
 
 treewalking optionHeaderGeneration (optionMetamodel) :
 import "optionMetamodel.gMetamodel" ;
+import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
 import semantics optionSemantics in "optionSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*

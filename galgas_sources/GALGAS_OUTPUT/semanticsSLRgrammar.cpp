@@ -7769,15 +7769,29 @@ nt_semantics_component_start_symbol_ (galgas_scanner & _inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+static TC_UniqueArray <cCacheFor_semanticsSLRgrammar> gCache ;
+
 GGS_semanticsComponentRoot semanticsSLRgrammar::startParsing_ (galgas_scanner & _inLexique,
                                 GGS_location & parameter_1) {
   GGS_semanticsComponentRoot _outReturnedModelInstance ;
+  bool found = false ;
+  for (sint32 i=0 ; (i<gCache.count ()) && ! found ; i++) {
+  //  found = _inLexique.sourceFileName () == gCache (i COMMA_HERE).mFileName ;
+    if (found) {
+      parameter_1 = gCache (i COMMA_HERE).mArg1 ;
+      _outReturnedModelInstance = gCache (i COMMA_HERE).mArg2 ;
+    }
+  }
+  if (! found) {
 // classCount : 0
-  const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
-                                                     gActionTableIndex, gSuccessorTable,
-                                                     gProductionsTable) ;
-  if (ok && ! _inLexique.mParseOnlyFlag) {
-    _outReturnedModelInstance = nt_semantics_component_start_symbol_ (_inLexique, parameter_1) ;
+    const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,
+                                                       gActionTableIndex, gSuccessorTable,
+                                                       gProductionsTable) ;
+    if (ok && ! _inLexique.mParseOnlyFlag) {
+      _outReturnedModelInstance = nt_semantics_component_start_symbol_ (_inLexique, parameter_1) ;
+    }
+    cCacheFor_semanticsSLRgrammar entry = {_inLexique.sourceFileName (), parameter_1, _outReturnedModelInstance} ;
+    gCache.addObject (entry) ;
   }
   return _outReturnedModelInstance ;
 }

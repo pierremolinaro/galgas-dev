@@ -68,6 +68,21 @@ rule <treewalking_component_start_symbol> -> @treewalkingComponentRoot :
       $literal_string$ ? importedComponentFileName ;
       mImportedComponentFileNameList += !importedComponentFileName ;
     or
+      $treewalking$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
+    or
+      $grammar$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
+    or
+      $metamodel$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
+    or
       $semantics$ ;
       $identifier$ ?* ;
       $in$ ;

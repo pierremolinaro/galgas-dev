@@ -114,6 +114,37 @@ nonterminal <parse_grammar_component_for_importing>
 label parse
 ;
 
+nonterminal <import_headers_semantics_and_grammars>
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIncludedMetamodelComponents
+  !@stringset outIncludedOptionComponents
+  !@stringset outIncludedGrammarComponents
+  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_grammarComponents ioGrammarComponentsMap
+  ?!@M_optionComponents ioOptionsComponentsMap
+  !@stringset outInclusionsForImplementationFile
+  !@stringset outInclusionsForHeaderFile
+  !@M_optionComponents ioOptionsComponentsMapForUse
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+  !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@typeTableEnAvant tableEnAvant
+  !@entityToImplementMap outAllMetamodelClassMap
+label importSemantics
+  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  !@stringset outIncludedSemanticsComponents
+  !@stringset outIcludedOptionComponents
+  !@ModelMap outModelMap
+  !@ActionMap outActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
+label parse
+;
+
 #-------------------------------------------------------------------*
 #                   treewalking component                           *
 #-------------------------------------------------------------------*
@@ -192,20 +223,48 @@ rule <parse_treewalking_document>
   $)$ ;
   $:$ ;
   @stringset filesToImportInHeaderSet [setWithString ![metamodelName string]] ;
-#--- Imported Metamodel
-  @M_semanticsComponents semanticsComponentMap [emptyMap] ;
+#--- Import clauses
+  @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+  @ModelMap modelMap [emptyMap] ;
+  @ActionMap actionMap [emptyMap] ;
+  @stringset inclusionsForImplementationFile ;
+  @M_semanticsEntitiesForUse componentEntitiesMap ;
+  @stringset classNamesSet [emptySet] ;
+  @typeTableEnAvant tableEnAvant [emptyMap] ;
+  @stringset includedSemanticsComponents ;
+  @stringset includedOptionComponents ;
+  @stringset includedMetamodelComponents ;
+  @stringset includedGrammarComponents ;
+  @entityToImplementMap allMetamodelClassMap ;
+  @M_optionComponents optionsComponentsMapForUse ;
+  @M_optionComponents optionsComponentsMap [emptyMap] ;
+  @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
   @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
-  @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
-  $import$ ;
-  @lstring fileName ;
-  $literal_string$ ? fileName ;
-  $;$ ;  
-  <parse_semantics_component_for_importing>
-    !fileName
-    !?semanticsComponentMap
+  @M_grammarComponents grammarComponentsMap [emptyMap] ;
+  <import_headers_semantics_and_grammars>
+    ?includedSemanticsComponents
+    ?includedMetamodelComponents
+    ?includedOptionComponents
+    ?includedGrammarComponents
+    !?lexiqueMapForUse
+    !?semanticsComponentsMap
     !?metamodelComponentMap
-    !?treewalkingComponentMap
+    !?ioTreewalkingComponentMap
+    !?grammarComponentsMap
+    !?optionsComponentsMap
+    ?inclusionsForImplementationFile
+    ?filesToImportInHeaderSet
+    ?optionsComponentsMapForUse
+    ?modelMap
+    ?actionMap
+    ?componentEntitiesMap
+    ?tableEnAvant
+    ?allMetamodelClassMap
   ;
+  foreach includedSemanticsComponents (@string kSemanticComponentName) :
+    inclusionsForImplementationFile += !kSemanticComponentName . ".h" ;
+  end foreach ;
+#--- Get metamodel root entity
   @lstring metamodelRootEntity ;
   @entityToImplementMap metamodelEntityMap ;
   @stringset importedMetamodels ;
@@ -226,100 +285,162 @@ rule <parse_treewalking_document>
       ;
     end foreach ;
   else
-    error fileName: "this file does not define the '" . [metamodelName string] . "' metamodel"
+    error here: "imported files do not define the '" . [metamodelName string] . "' metamodel"
      -> metamodelRootEntity, metamodelEntityMap, importedMetamodels ;
   end if ;
-#--- Import semantics component(s)
-  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
-  @M_semanticsEntitiesForUse semanticsEntitiesMap ;
-  enterBuiltinTypes ?semanticsEntitiesMap ;
-  repeat
-  while
-    $import$ ;
-    $semantics$ ;
-    @lstring semanticsComponentName ;
-    $identifier$ ? semanticsComponentName ;
-    filesToImportInHeaderSet += ![semanticsComponentName string] ;
-    $in$ ;    
-    @lstring fileName ;
-    $literal_string$ ? fileName ;
-    $;$ ;  
-    <parse_semantics_component_for_importing>
-      !fileName
-      !?semanticsComponentMap
-      !?metamodelComponentMap
-      !?treewalkingComponentMap
-    ;
-    @M_semanticsEntitiesForUse importedSemanticsEntitiesMap ;
-    [semanticsComponentMap searchKey !semanticsComponentName ?6* ?importedSemanticsEntitiesMap] ;
-    foreach importedSemanticsEntitiesMap (@lstring kKey @AC_semanticsEntity kEntity) :
-      if not [semanticsEntitiesMap hasKey ![kKey string]] then
-        [!?semanticsEntitiesMap insertKey !kKey  !kEntity] ;
-      end if ;
-    end foreach ;
-  end repeat ;
-  foreach metamodelComponentMap (@lstring kComponentName @lstring kRootEntity @entityToImplementMap kEntityMap @stringset kSuperMetamodels) :
-    foreach kEntityMap (@lstring kMetamodelClassName
-                        @entityPropertyMap kAllMetamodelPropertyMap
-                        @bool kIsAbstract
-                        @entityPropertyMap kCurrentMetamodelPropertyMap
-                        @lstring kSuperEntityName
-                        @typeSuperClassesMap kSuperEntityMap
-                        @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants
-                        @string kMetamodelName
-                        @uint kID) :
-      if not [semanticsEntitiesMap hasKey ![kMetamodelClassName string]] then
-        @AC_galgasType t := [@typeGalgas_singleReferenceEntity new
-          !kMetamodelClassName
-          !kListeAttributsSemantiquesCourants
-          ![kSuperEntityMap allKeys]
-        ] ;
-        [!?semanticsEntitiesMap insertKey
-          !kMetamodelClassName
-          ![@typeEntiteType new !t]
-        ] ;
-      end if ;
-    end foreach ;
-  end foreach ;
-#--- Import grammars
-  repeat
-  while 
-    $import__$ ;
-    @lstring grammarFileName ;
-    $literal_string$ ? grammarFileName ;
-    @M_grammarComponents grammarComponentsMap [emptyMap] ;
-    @M_treewalkingComponents unusedTreewalkingComponentMap [emptyMap] ;
-    @M_optionComponents unusedOptionsComponentsMapForUse [emptyMap] ;
-    <parse_grammar_component_for_importing> 
-      !grammarFileName
-      !?grammarComponentsMap
-      !?metamodelComponentMap
-      !?unusedOptionsComponentsMapForUse
-      !?unusedTreewalkingComponentMap
-    ;
-    $;$ ;
-    foreach grammarComponentsMap (@lstring grammarComponentName
-                                  @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap
-                                  @lstring lexiqueClassName
-                                  *) :
-      filesToImportInHeaderSet += ![grammarComponentName string] ;
-      if not [semanticsEntitiesMap hasKey ![grammarComponentName string]] then
-        @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
-        foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature @lstring kReturnedEntity) :
-          @L_EXsignature formalParametersList [emptyList] ;
-          foreach signature (@formalArgumentPassingMode passingMode @lstring typeName) :
-            @AC_semanticsEntity e ;
-            [semanticsEntitiesMap searchKey !typeName ?e] ;
-            @AC_galgasType type := [(cast e if >= @typeEntiteType else error typeName) aDefType] ;
-            formalParametersList += !type !passingMode ;
-          end foreach ;
-          [!?grammarAltMap insertKey !altName !formalParametersList !kReturnedEntity] ;
-        end foreach ;
-        @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap !lexiqueClassName] ;
-        [!?semanticsEntitiesMap insertKey !grammarComponentName !e] ;
-      end if ;
-     end foreach ;
-  end repeat ;
+
+#--- Imported Metamodel
+#  @M_semanticsComponents semanticsComponentMap [emptyMap] ;
+#  @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
+#  @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
+#  $import$ ;
+#  @lstring fileName ;
+#  $literal_string$ ? fileName ;
+#  $;$ ;  
+#  <parse_semantics_component_for_importing>
+#    !fileName
+#    !?semanticsComponentMap
+#    !?metamodelComponentMap
+#    !?treewalkingComponentMap
+#  ;
+#  @lstring metamodelRootEntity ;
+#  @entityToImplementMap metamodelEntityMap ;
+#  @stringset importedMetamodels ;
+#  if [metamodelComponentMap hasKey ![metamodelName string]] then
+#    [metamodelComponentMap searchKey
+#       !metamodelName
+#       ?metamodelRootEntity
+#       ?metamodelEntityMap
+#       ?importedMetamodels
+#    ] ;
+#    @stringset superMetamodels [emptySet] ;
+#    foreach importedMetamodels (@string kSuperMetamodelName) :
+#      performMetamodelInclusion
+#        !metamodelComponentMap
+#        ![@lstring new !kSuperMetamodelName !here]
+#        !?superMetamodels
+#        !?metamodelEntityMap
+#      ;
+#    end foreach ;
+#  else
+#    error fileName: "this file does not define the '" . [metamodelName string] . "' metamodel"
+#     -> metamodelRootEntity, metamodelEntityMap, importedMetamodels ;
+#  end if ;
+##--- Import semantics component(s)
+#  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+#  @M_semanticsEntitiesForUse semanticsEntitiesMap ;
+#  enterBuiltinTypes ?semanticsEntitiesMap ;
+#  repeat
+#  while
+#    $import$ ;
+#    select
+#      $treewalking$ ;
+#      @lstring treewalkingComponentName ;
+#      $identifier$ ? treewalkingComponentName ;
+#      filesToImportInHeaderSet += ![treewalkingComponentName string] ;
+#      $in$ ;    
+#      @lstring fileName ;
+#      $literal_string$ ? fileName ;
+#      $;$ ;  
+#      <parse_semantics_component_for_importing>
+#        !fileName
+#        !?semanticsComponentMap
+#        !?metamodelComponentMap
+#        !?treewalkingComponentMap
+#      ;
+##      @M_semanticsEntitiesForUse importedSemanticsEntitiesMap ;
+##      [semanticsComponentMap searchKey !semanticsComponentName ?6* ?importedSemanticsEntitiesMap] ;
+##      foreach importedSemanticsEntitiesMap (@lstring kKey @AC_semanticsEntity kEntity) :
+##        if not [semanticsEntitiesMap hasKey ![kKey string]] then
+##          [!?semanticsEntitiesMap insertKey !kKey  !kEntity] ;
+##        end if ;
+##      end foreach ;
+#    or
+#      $semantics$ ;
+#      @lstring semanticsComponentName ;
+#      $identifier$ ? semanticsComponentName ;
+#      filesToImportInHeaderSet += ![semanticsComponentName string] ;
+#      $in$ ;    
+#      @lstring fileName ;
+#      $literal_string$ ? fileName ;
+#      $;$ ;  
+#      <parse_semantics_component_for_importing>
+#        !fileName
+#        !?semanticsComponentMap
+#        !?metamodelComponentMap
+#        !?treewalkingComponentMap
+#      ;
+#      @M_semanticsEntitiesForUse importedSemanticsEntitiesMap ;
+#      [semanticsComponentMap searchKey !semanticsComponentName ?6* ?importedSemanticsEntitiesMap] ;
+#      foreach importedSemanticsEntitiesMap (@lstring kKey @AC_semanticsEntity kEntity) :
+#        if not [semanticsEntitiesMap hasKey ![kKey string]] then
+#          [!?semanticsEntitiesMap insertKey !kKey  !kEntity] ;
+#        end if ;
+#      end foreach ;
+#    end select ;
+#  end repeat ;
+#  foreach metamodelComponentMap (@lstring kComponentName @lstring kRootEntity @entityToImplementMap kEntityMap @stringset kSuperMetamodels) :
+#    foreach kEntityMap (@lstring kMetamodelClassName
+#                        @entityPropertyMap kAllMetamodelPropertyMap
+#                        @bool kIsAbstract
+#                        @entityPropertyMap kCurrentMetamodelPropertyMap
+#                        @lstring kSuperEntityName
+#                        @typeSuperClassesMap kSuperEntityMap
+#                        @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants
+#                        @string kMetamodelName
+#                        @uint kID) :
+#      if not [semanticsEntitiesMap hasKey ![kMetamodelClassName string]] then
+#        @AC_galgasType t := [@typeGalgas_singleReferenceEntity new
+#          !kMetamodelClassName
+#          !kListeAttributsSemantiquesCourants
+#          ![kSuperEntityMap allKeys]
+#        ] ;
+#        [!?semanticsEntitiesMap insertKey
+#          !kMetamodelClassName
+#          ![@typeEntiteType new !t]
+#        ] ;
+#      end if ;
+#    end foreach ;
+#  end foreach ;
+##--- Import grammars
+#  repeat
+#  while 
+#    $import__$ ;
+#    @lstring grammarFileName ;
+#    $literal_string$ ? grammarFileName ;
+#    @M_grammarComponents grammarComponentsMap [emptyMap] ;
+#    @M_treewalkingComponents unusedTreewalkingComponentMap [emptyMap] ;
+#    @M_optionComponents unusedOptionsComponentsMapForUse [emptyMap] ;
+#    <parse_grammar_component_for_importing> 
+#      !grammarFileName
+#      !?grammarComponentsMap
+#      !?metamodelComponentMap
+#      !?unusedOptionsComponentsMapForUse
+#      !?unusedTreewalkingComponentMap
+#    ;
+#    $;$ ;
+#    foreach grammarComponentsMap (@lstring grammarComponentName
+#                                  @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap
+#                                  @lstring lexiqueClassName
+#                                  *) :
+#      filesToImportInHeaderSet += ![grammarComponentName string] ;
+#      if not [semanticsEntitiesMap hasKey ![grammarComponentName string]] then
+#        @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
+#        foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature @lstring kReturnedEntity) :
+#          @L_EXsignature formalParametersList [emptyList] ;
+#          foreach signature (@formalArgumentPassingMode passingMode @lstring typeName) :
+#            @AC_semanticsEntity e ;
+#            [semanticsEntitiesMap searchKey !typeName ?e] ;
+#            @AC_galgasType type := [(cast e if >= @typeEntiteType else error typeName) aDefType] ;
+#            formalParametersList += !type !passingMode ;
+#          end foreach ;
+#          [!?grammarAltMap insertKey !altName !formalParametersList !kReturnedEntity] ;
+#        end foreach ;
+#        @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap !lexiqueClassName] ;
+#        [!?semanticsEntitiesMap insertKey !grammarComponentName !e] ;
+#      end if ;
+#     end foreach ;
+#  end repeat ;
 #---------------------- parse routine definitions
 #--- FIRST PASS
   @treewalkingRoutineToGenerateList treewalkingRoutineToGenerateList [emptyList] ;
@@ -330,7 +451,7 @@ rule <parse_treewalking_document>
     repeat
     while
       <treewalking_routine> firstLocalPhase
-        !semanticsEntitiesMap
+        !componentEntitiesMap
         !?treewalkingRoutineHeaderMap
       ;
     end repeat ;
@@ -356,7 +477,7 @@ rule <parse_treewalking_document>
     repeat
     while
       <treewalking_routine>
-        !semanticsEntitiesMap
+        !componentEntitiesMap
         !metamodelEntityMap
         !optionsComponentsMapForUse
         !treewalkingRoutineHeaderMap
@@ -400,6 +521,7 @@ rule <parse_treewalking_document>
     generate_treewalking
       !treewalkingName
       !filesToImportInHeaderSet
+      !inclusionsForImplementationFile
       !treewalkingRoutineToGenerateList
       !routineDispatcherSortedList
       !rootRoutineArgumentList

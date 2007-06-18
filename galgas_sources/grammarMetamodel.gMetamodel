@@ -18,6 +18,7 @@
 #---------------------------------------------------------------------------*
 
 metamodel grammarMetamodel root @grammarComponentRoot :
+import "commonSemantics.gSemantics" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*

@@ -19,6 +19,8 @@
 
 metamodel metamodelMetamodel root @metamodelComponentRoot :
 
+#---------------------------------------------------------------------------*
+
 entity @metamodelComponentRoot {
   @lstring mMetamodelComponentName ;
   @lstringlist mSuperMetamodels ;
@@ -27,24 +29,29 @@ entity @metamodelComponentRoot {
   @metamodelEntity [] mMetamodelEntities ;
 }
 
+#---------------------------------------------------------------------------*
+
 entity @metamodelEntity {
   @lstringlist mEntityNameList ;
   @lstring mSuperEntityName ; # Empty String if no super entity
   @bool mIsAbstract ;
-  @metamodelAttribute [] mAttributes ;
-  @metamodelMultipleReference [] mMultipleReferences ;
+  @metamodelProperty [] mProperties ;
 }
 
-entity @metamodelAttribute {
+#---------------------------------------------------------------------------*
+
+entity @metamodelProperty {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
 }
 
-entity @metamodelMultipleReference {
-  @lstring mAttributeTypeName ;
-  @lstring mAttributeName ;
+#---------------------------------------------------------------------------*
+
+entity @metamodelMultipleReference extends @metamodelProperty {
   @uint mLowerBound ;
   @uint mUpperBound ;
 }
+
+#---------------------------------------------------------------------------*
 
 end metamodel ;

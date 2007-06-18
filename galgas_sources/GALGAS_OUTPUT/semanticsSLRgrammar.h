@@ -23,6 +23,11 @@
 
 //--- START OF USER ZONE 2
 
+class cCacheFor_semanticsSLRgrammar {
+  public : C_String mFileName ;
+  public : GGS_location mArg1 ;
+  public : GGS_semanticsComponentRoot mArg2 ;
+} ;
 
 //--- END OF USER ZONE 2
 

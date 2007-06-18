@@ -21,6 +21,8 @@ grammar metamodelLL1grammar "LL1" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import syntax metamodelModelBuilder in "metamodelModelBuilder.gSyntax" ;
 
-  root <metamodel_component_start_symbol> -> metamodelMetamodel
+  root <metamodel_component_start_symbol>
+   !@location outEndOfSourceFile
+  -> metamodelMetamodel
   ; # LL1
 end grammar ;

@@ -328,6 +328,76 @@ class @classGalgasType extends @ACGalgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  E N T I T Y    T Y P E                                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @entityGalgasType extends @ACGalgasType {
+  @bool mIsAbstract ;
+  @lstring mEntityName ;
+  @typeMapIndex mSuperEntityIndex ;
+  @attributeList mPropertyList ;
+
+  override
+  method checkNoCircularity ??@uint inTypeCount :
+    @string entityPath := [mEntityName string] ;
+    @stringset superEntitySet [setWithString ![mEntityName string]] ;
+    @typeMapIndex superEntityIndex := mSuperEntityIndex ;
+    @bool circularityError := false ;
+    @bool ok := true ;
+    loop inTypeCount :
+    while [superEntityIndex isRegular] & ok & not circularityError do
+      if [superEntityIndex isSolved] then
+      #--- Retrieve super class features
+        @lstring superEntityName ;
+        @ACGalgasType t ;
+        [superEntityIndex searchKey ?superEntityName ?t] ;
+      #--- Check there is no circularity
+        circularityError := [superEntitySet hasKey ![superEntityName string]] ;
+        superEntitySet += ![superEntityName string] ;
+        entityPath .= "." .  [superEntityName string] ;
+      #--- Check super class is actually a class, and get super super class info.
+        @typeMapIndex superSuperEntityIndex ;
+        cast t :
+        when >= @entityGalgasType kClassType do
+          superSuperEntityIndex := [kClassType mSuperEntityIndex] ;
+        else
+          error mEntityName: "this entity inherits from @"
+            . superEntityName . ", but @" . superEntityName . " is not a class"
+            -> superSuperEntityIndex
+          ;
+        end cast ;
+        superEntityIndex := superSuperEntityIndex ;
+      else
+        ok := false ;
+        @string superEntityName := [[superEntityIndex key] string] ;
+        error mEntityName: "this entity inherits from @"
+          . superEntityName . ", but @" . superEntityName . " does not exist"
+        ;
+      end if ;
+    end loop ;
+  #--- Circularity error
+    if circularityError then
+      error mEntityName:
+        "inheritance circularity for entity '"
+      . [mEntityName string] . "': "
+      . [entityPath stringByReplacingStringByString !"." !" extends "] ;
+    end if ;
+  end method ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M U L T I P L E    R E F E R E N C E    T Y P E                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @multipleReferenceGalgasType extends @ACGalgasType {
+  @lstring mEntityName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    L I S T    T Y P E                                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*

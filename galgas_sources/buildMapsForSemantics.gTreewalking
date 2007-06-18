@@ -18,10 +18,12 @@
 
 treewalking buildMapsForSemantics (semanticsMetamodel) :
 import "semanticsMetamodel.gMetamodel" ;
+import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
-import__ "semanticsSLRgrammar.gGrammar" ;
+import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
+#import__ "semanticsSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
