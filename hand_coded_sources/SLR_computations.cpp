@@ -706,6 +706,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
@@ -938,8 +940,10 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "void " ;
         }
         generatedZone3 << inTargetFileName
-                       << "::startParsing_" << currentAltForNonTerminal->mKey
-                       << " (" << inLexiqueName << " & _inLexique" ;
+                       << "::_performParsing" << currentAltForNonTerminal->mKey
+                       << " (C_Compiler & _inCompiler"
+                          ",\n                                "
+                          "const GGS_lstring & _inFileName" ;
         GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
@@ -950,22 +954,32 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << ") {\n" ;
+        generatedZone3 << "\n                                "
+                          "COMMA_LOCATION_ARGS) {\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " _outReturnedModelInstance ;\n" ;      
         }
+        generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
+                          "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
+                          "    ? _inFileName.string ()\n"
+                          "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
+                          "  if (sourceFileName.fileExists ()) {\n"
+                          "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    if (scanner_->sourceText () != NULL) {\n"
+                          "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
-        generatedZone3 << "  const bool ok = _inLexique.performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
-                          "                                                     gActionTableIndex, gSuccessorTable,\n"
-                          "                                                     gProductionsTable) ;\n"
-                          "  if (ok && ! _inLexique.mParseOnlyFlag) {\n"
-                          "    " ;
+        generatedZone3 << "      const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
+                          "                                                        gActionTableIndex, gSuccessorTable,\n"
+                          "                                                        gProductionsTable) ;\n"
+                          "      if (ok && ! scanner_->mParseOnlyFlag) {\n"
+                          "        " << inTargetFileName << " _grammar ;\n"
+                          "        " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "_outReturnedModelInstance = " ;      
         }
-        generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
-                       << " (_inLexique" ;
+        generatedZone3 << "_grammar.nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+                       << " (*scanner_" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         numeroParametre = 1 ;
         while (parametre != NULL) {
@@ -974,7 +988,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << ") ;\n" ;
+        generatedZone3 << ") ;\n"
+                          "      }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           GGS_lstring entityName ;
           GGS_lstring metamodelName ;
@@ -983,6 +998,36 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                                                                entityName,
                                                                metamodelName
                                                                COMMA_HERE) ;
+        }
+        generatedZone3 << "    }else{\n"
+                          "      C_String message ;\n"
+                          "      message << \"the '\" << sourceFileName << \"' file exits, but cannot be read\" ;\n"
+                          "      _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        numeroParametre = 1 ;
+        while (parametre != NULL) {
+          macroValidPointer (parametre) ;
+          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+            generatedZone3 << "      parameter_" << numeroParametre << "._drop_operation () ;\n" ;
+          }
+          parametre = parametre->nextObject () ;
+          numeroParametre ++ ;
+        }
+        generatedZone3 << "    }\n"
+                          "    macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n"
+                          "  }else{\n"
+                          "    C_String message ;\n"
+                          "    message << \"the '\" << sourceFileName << \"' file does not exist\" ;\n"
+                          "    _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        numeroParametre = 1 ;
+        while (parametre != NULL) {
+          macroValidPointer (parametre) ;
+          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+            generatedZone3 << "    parameter_" << numeroParametre << "._drop_operation () ;\n" ;
+          }
+          parametre = parametre->nextObject () ;
+          numeroParametre ++ ;
         }
         generatedZone3 << "  }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {

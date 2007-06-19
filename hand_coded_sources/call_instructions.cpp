@@ -377,27 +377,14 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "{ " << mLexiqueClassName << " * scanner_ = NULL ;\n"
-                 "  const C_String sourceFileName = " ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".isAbsolutePath ()\n"
-                 "    ? " ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".string ()\n"
-                 "    : _inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (" ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ") ;\n"
-                 "  if (sourceFileName.fileExists ()) {\n"
-                 "    macroMyNew (scanner_, " << mLexiqueClassName << " (_inLexique.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
-                 "    if (scanner_->sourceText () != NULL) {\n"
-                 "      scanner_->mPerformGeneration = _inLexique.mPerformGeneration ;\n"
-                 "      " << mGrammarName << " grammar_ ;\n"
-                 "      " ;
+    ioCppFile << "  " ;
     if (mMetamodelClassVariableName.length () > 0) {
       ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;
     }
-    ioCppFile << "grammar_.startParsing_" << mAltSymbol
-              << " (*scanner_" ;
+    ioCppFile << mGrammarName << "::_performParsing" << mAltSymbol
+              << " (_inLexique,"
+                 "\n                                " ;
+    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -405,27 +392,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
       argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
       argCourant = argCourant->nextObject () ;
     }
-    ioCppFile << ") ;\n"
-                 "    }else{\n"
-                 "      C_String message ;\n"
-                 "      message << \"the '\" << sourceFileName << \"' file exits, but cannot be read\" ;\n"
-                 "      " ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".signalSemanticError (_inLexique, message COMMA_SOURCE_FILE_AT_LINE ("
+    ioCppFile << "\n                                "
+                 "COMMA_SOURCE_FILE_AT_LINE ("
               << mGrammarName.lineNumber ()
-              << ")) ;\n"
-                 "    }\n"
-                 "    macroDetachPointer (scanner_, " << mLexiqueClassName << ") ;\n"
-                 "  }else{\n"
-                 "    C_String message ;\n"
-                 "    message << \"the '\" << sourceFileName << \"' file does not exist\" ;\n"
-                 "    " ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".signalSemanticError (_inLexique, message COMMA_SOURCE_FILE_AT_LINE ("
-              << mGrammarName.lineNumber ()
-              << ")) ;\n"
-                 "  }\n"
-                 "}\n" ; 
+              << ")) ;\n" ; 
   }
 }
 

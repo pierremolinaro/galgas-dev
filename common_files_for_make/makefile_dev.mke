@@ -110,6 +110,7 @@ SOURCES += semanticInstructionListModelBuilder.cpp
 SOURCES += metamodelMetamodel.cpp
 SOURCES += metamodelModelBuilder.cpp
 SOURCES += metamodelLL1grammar.cpp
+SOURCES += buildMapsForMetamodel.cpp
 
 SOURCES += treewalkingMetamodel.cpp
 SOURCES += treewalkingModelBuilder.cpp
