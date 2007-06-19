@@ -232,15 +232,17 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
       }
       generatedZone3 << ") ;\n" ; 
       if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
-        generatedZone3 << "  public : " ;
+        generatedZone3 << "  public : static " ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " " ;      
         }else{
           generatedZone3 << "void " ;
         }
-        generatedZone3 << "startParsing_" << currentAltForNonTerminal->mKey 
-                       << " (" << inLexiqueName << " &" ;
+        generatedZone3 << "_performParsing" << currentAltForNonTerminal->mKey 
+                       << " (C_Compiler & _inCompiler"
+                          ",\n                                "
+                          "const GGS_lstring & inFileName" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
@@ -248,7 +250,8 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
           generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
           parametre = parametre->nextObject () ;
         }
-        generatedZone3 << ") ;\n" ;
+        generatedZone3 << "\n                                "
+                          "COMMA_LOCATION_ARGS) ;\n" ;
       }
       currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
     }
