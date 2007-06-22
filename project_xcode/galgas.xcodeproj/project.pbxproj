@@ -20,6 +20,7 @@
 		CF0357E50B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
 		CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
+		CF0915A30C296EE7003C327E /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
 		CF0CB3D40BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */; };
 		CF0CB3D50BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */; };
 		CF0CB3D80BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */; };
@@ -2659,7 +2660,6 @@
 		CFFC8C870B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
 		CFFC8C880B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
 		CFFC8C890B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
-		CFFC8C8A0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
 		CFFC8C8B0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
 		CFFC8C8C0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
 		CFFC8C8D0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC8C860B8A04DA00920BB1 /* treewalking_generation.cpp */; };
@@ -7292,7 +7292,6 @@
 				CFFE924E0B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CFDC00690B8720FB00B10A6E /* AC_galgas_mapindex.cpp in Sources */,
 				CFDB3A790B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
-				CFFC8C8A0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE1580B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
 				CFD47F0A0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F0C0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
@@ -7342,6 +7341,7 @@
 				CFDC56DB0C187A4C00DF8818 /* mda_galgas_LL1_routines.cpp in Sources */,
 				CF2EE3530C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 				CFF2FFB20C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
+				CF0915A30C296EE7003C327E /* treewalking_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
