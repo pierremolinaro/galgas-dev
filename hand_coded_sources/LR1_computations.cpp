@@ -1404,10 +1404,10 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
-      generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
       GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (currentAltForNonTerminal != NULL) {
         macroValidPointer (currentAltForNonTerminal) ;
+        generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " " ;      
@@ -1435,11 +1435,11 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " _outReturnedModelInstance ;\n" ;      
         }
-        generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
+        generatedZone3 << "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
                           "    ? _inFileName.string ()\n"
                           "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
+                          "    " << inLexiqueName << " * scanner_ = NULL ;\n"
                           "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
                           "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;

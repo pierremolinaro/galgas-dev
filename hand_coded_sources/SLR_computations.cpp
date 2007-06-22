@@ -929,10 +929,39 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
-      generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
       GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (currentAltForNonTerminal != NULL) {
         macroValidPointer (currentAltForNonTerminal) ;
+        generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
+        GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        bool onlyOutputArguments = true ;
+        while ((parametre != NULL) && onlyOutputArguments) {
+          macroValidPointer (parametre) ;
+          onlyOutputArguments = parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut ;
+          parametre = parametre->nextObject () ;
+        }
+        if (onlyOutputArguments) {
+          generatedZone3 << "class _" << inTargetFileName << "_" << currentAltForNonTerminal->mKey << " {\n"
+                            "  public : C_String mFileName ;\n" ;
+          if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+            generatedZone3 << "  public : GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                           << " mReturnedModelInstance ;\n" ;      
+            parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+            sint16 numeroParametre = 1 ;
+            while (parametre != NULL) {
+              macroValidPointer (parametre) ;
+              generatedZone3 << "  public : GGS_" << parametre->mGalgasTypeName
+                             << " mParameter" << numeroParametre << " ;\n" ;
+              parametre = parametre->nextObject () ;
+              numeroParametre ++ ;
+            }
+          }
+          generatedZone3 << "} ;\n\n" ;
+          generatedZone3.writeCppHyphenLineComment () ;
+          generatedZone3 << "static TC_UniqueArray <_" << inTargetFileName << "_" << currentAltForNonTerminal->mKey
+                         << "> gCache" << currentAltForNonTerminal->mKey << " ;\n\n" ;
+          generatedZone3.writeCppHyphenLineComment () ;
+        }
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " " ;      
@@ -944,8 +973,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "const GGS_lstring & _inFileName" ;
-        GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-        sint16 numeroParametre = 1 ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        sint32 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
           generatedZone3 << ",\n                                " ;
@@ -960,11 +989,35 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " _outReturnedModelInstance ;\n" ;      
         }
-        generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
+        generatedZone3 << "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
                           "    ? _inFileName.string ()\n"
-                          "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
-                          "  if (sourceFileName.fileExists ()) {\n"
+                          "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n" ;
+        if (onlyOutputArguments) {
+          generatedZone3 << "  bool found = false ;\n"
+                            "  for (sint32 i=0 ; (i<gCache" << currentAltForNonTerminal->mKey << ".count ()) && ! found ; i++) {\n"
+                            "    found = gCache" << currentAltForNonTerminal->mKey << " (i COMMA_HERE).mFileName == sourceFileName ;\n"
+                            "    if (found) {\n" ;
+          if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+            generatedZone3 << "      _outReturnedModelInstance = gCache" << currentAltForNonTerminal->mKey
+                           << " (i COMMA_HERE).mReturnedModelInstance ;\n" ;      
+          }
+          parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+          numeroParametre = 1 ;
+          while (parametre != NULL) {
+            macroValidPointer (parametre) ;
+            generatedZone3 << "      parameter_" << numeroParametre
+                           << " = gCache" << currentAltForNonTerminal->mKey
+                           << " (i COMMA_HERE).mParameter" << numeroParametre << " ;\n" ;
+            parametre = parametre->nextObject () ;
+            numeroParametre ++ ;
+          }
+          generatedZone3 << "    }\n"
+                            "  }\n" ;
+        }
+        generatedZone3 << "  if ("
+                       << (onlyOutputArguments ? "(! found) && " : "")
+                       << "sourceFileName.fileExists ()) {\n"
+                          "    " << inLexiqueName << " * scanner_ = NULL ;\n"
                           "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
                           "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
@@ -988,8 +1041,24 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << ") ;\n"
-                          "      }\n" ;
+        generatedZone3 << ") ;\n" ;
+        if (onlyOutputArguments) {
+          generatedZone3 << "        _" << inTargetFileName << "_" << currentAltForNonTerminal->mKey << " entry ;\n"
+                            "        entry.mFileName = sourceFileName ;\n" ;
+          if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+            generatedZone3 << "        entry.mReturnedModelInstance = _outReturnedModelInstance ;\n" ;      
+          }
+          parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+          numeroParametre = 1 ;
+          while (parametre != NULL) {
+            macroValidPointer (parametre) ;
+            generatedZone3 << "        entry.mParameter" << numeroParametre << " = parameter_" << numeroParametre << " ;\n" ;
+            parametre = parametre->nextObject () ;
+            numeroParametre ++ ;
+          }
+          generatedZone3 << "        gCache" << currentAltForNonTerminal->mKey << ".addObject (entry) ;\n" ;
+        }
+        generatedZone3 << "      }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           GGS_lstring entityName ;
           GGS_lstring metamodelName ;
@@ -1015,7 +1084,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "    }\n"
                           "    macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n"
-                          "  }else{\n"
+                          "  }else" << (onlyOutputArguments ? " if (! found) " : "") << "{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << sourceFileName << \"' file does not exist\" ;\n"
                           "    _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
