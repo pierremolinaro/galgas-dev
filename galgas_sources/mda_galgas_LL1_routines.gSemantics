@@ -102,8 +102,9 @@ end routine ;
 
 routine compileMetamodelComponentLL1
   ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
+  ??@string inOutputDirectory
 :
+  @string metamodelComponentName := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   @metamodelComponentRoot metamodelComponentRoot ;
   @location endOfSourceFile ;
   grammar metamodelLL1grammar in inSourceFile ?endOfSourceFile -> metamodelComponentRoot ;
@@ -112,12 +113,14 @@ routine compileMetamodelComponentLL1
   constructBuiltinTypeMap ?typeMap ;
   @stringset importedComponentSet [emptySet] ;
   @routineMap routineMap [emptyMap] ;
+  @typeList typeList ;
   treewalking buildMapsForMetamodel on metamodelComponentRoot
     ![inSourceFile stringByDeletingLastPathComponent]
     !endOfSourceFile
     !?importedComponentSet
     !?typeMap
     !?routineMap
+    ?typeList
   ;
 #--- Warn for undefined types
   if [typeMap unsolvedIndexCount] > 0 then
@@ -136,6 +139,59 @@ routine compileMetamodelComponentLL1
   foreach typeMap (@lstring kTypeName @ACGalgasType kType) :
     [kType checkNoCircularity ![typeMap count]] ;
   end foreach ;
+#--- If no error, build type sorted list for C++ code generation
+  @sortedTypeList sortedTypeList [emptySortedList] ;
+  if [@uint errorCount] == 0 then
+    foreach typeList (@ACGalgasType kType) :
+      [kType enterInSortedList !?sortedTypeList !typeMap] ;
+    end foreach ;
+  end if ;
+#--- If no error, build header file
+  if [@uint errorCount] == 0 then
+  #--- User Zone 2
+    @string generatedUserZone2 := "" ;
+    generatedUserZone2 .=
+      "#ifndef " . metamodelComponentName . "_METAMODEL_DEFINED\n"
+    . "#define " . metamodelComponentName . "_METAMODEL_DEFINED\n"
+    . "\n"
+    . "#include <string.h>\n"
+    . "\n"
+    . [@string CppLineComment]
+    . "#include \"galgas/predefined_types.h\"\n" ;
+    foreach importedComponentSet (@string kComponentName) :
+      generatedUserZone2 .= "#include \"" . kComponentName . ".h\"\n" ;
+    end foreach ;
+    generatedUserZone2 .= "\n" ;
+  #--- Predeclarations
+    @string generatedUserZone3 := "" ;
+    [!?generatedUserZone3 setCapacity !50000] ;
+    generatedUserZone3 .=
+      [@string CppLineComment]
+    . "sint32 _metamodel_index_for_" . metamodelComponentName . " (void) ;\n\n"
+    . [@string CppTitleComment !"Class Predeclarations"] ;
+    foreach sortedTypeList (@ACGalgasType kType @string kSortString) :
+      [kType generatePredeclarationInHeader !?generatedUserZone3] ;
+    end foreach ;
+    generatedUserZone3 .= "\n" ;
+    foreach sortedTypeList (@ACGalgasType kType @string kSortString) :
+      [kType generateDeclaration_1_inHeader !?generatedUserZone3] ;
+    end foreach ;
+    foreach sortedTypeList (@ACGalgasType kType @string kSortString) :
+      [kType generateDeclaration_2_inHeader !?generatedUserZone3] ;
+    end foreach ;
+    generatedUserZone3 .= [@string CppLineComment]
+    . "#endif\n" ;
+  #--- Generate header file
+    [@string generateFile
+      !inOutputDirectory
+      !metamodelComponentName . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !generatedUserZone2
+      !"\n\n" # Defaut user zone2
+      !generatedUserZone3
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -168,12 +224,14 @@ routine compileSemanticsComponentLL1
   constructBuiltinTypeMap ?typeMap ;
   @stringset importedComponentSet [emptySet] ;
   @routineMap routineMap [emptyMap] ;
+  @typeList typeList ;
   treewalking buildMapsForSemantics on semanticsComponentRoot
     ![inSourceFile stringByDeletingLastPathComponent]
     !endOfSourceFile
     !?importedComponentSet
     !?typeMap
     !?routineMap
+    ?typeList
   ;
 #--- Warn for undefined types
   if [typeMap unsolvedIndexCount] > 0 then

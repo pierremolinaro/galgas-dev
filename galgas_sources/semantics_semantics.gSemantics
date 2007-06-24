@@ -1279,7 +1279,7 @@ class @C_listTypeToImplement extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
-list @sortDescriptorList {
+list @EXsortDescriptorList {
   @lstring mSortAttribute ;
   @bool mAscendingOrder ;
 }
@@ -1289,7 +1289,7 @@ list @sortDescriptorList {
 class @C_sortedListTypeToImplement extends @typeEntityToGenerate {
   @lstring aNomListe ;
   @typeListeAttributsSemantiques mNonExternAttributesList ;
-  @sortDescriptorList mSortDescriptorList ;
+  @EXsortDescriptorList mSortDescriptorList ;
 }
 
 #---------------------------------------------------------------------------*

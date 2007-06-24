@@ -35,6 +35,7 @@ rule @metamodelComponentRoot
   ?!@stringset ioImportedComponentSet
   ?!@typeMap ioTypeMap
   ?!@routineMap ioRoutineMap
+  !@typeList outTypeList
 :
 #--- Walk throught inherited metamodels
   foreach mSuperMetamodels (@lstring kSuperMetamodelName) :
@@ -47,12 +48,14 @@ rule @metamodelComponentRoot
         @metamodelComponentRoot metamodemComponentRoot ;
         @location endOfSourceFile ;
         grammar metamodelLL1grammar in sourceFilePath ?endOfSourceFile -> metamodemComponentRoot ;
+        @typeList unusedTypeList ;
         treewalking buildMapsForMetamodel on metamodemComponentRoot
           !inSourceFileDirectory
           !inErrorLocation
           !?ioImportedComponentSet
           !?ioTypeMap
           !?ioRoutineMap
+          ?unusedTypeList
        ;
       end if ;
       ioImportedComponentSet += ![kSuperMetamodelName string] ;
@@ -71,25 +74,28 @@ rule @metamodelComponentRoot
           @semanticsComponentRoot semanticsComponentRoot ;
           @location endOfSourceFile ;
           grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
+          @typeList unusedTypeList ;
           treewalking buildMapsForSemantics on semanticsComponentRoot
             !inSourceFileDirectory
             !inErrorLocation
             !?ioImportedComponentSet
             !?ioTypeMap
             !?ioRoutineMap
+            ?unusedTypeList
          ;
         else
           error kImportedComponentName: "only a semantics component can be imported in a metamodel" ;
         end if ;
       end if ;
-      ioImportedComponentSet += ![kImportedComponentName string] ;
+      ioImportedComponentSet += ![kImportedComponentName stringByDeletingPathExtension] ;
     end if ;
   end foreach ;
 #--- Walk throught definitions of current file
   if [ioImportedComponentSet hasKey ![mMetamodelComponentName string]] then
-    error mMetamodelComponentName: "this component is involved in a circularity in 'extends' definitions" ;
+    error mMetamodelComponentName: "this component is involved in a circularity in 'extends' definitions" -> outTypeList ;
   else
-    call mMetamodelEntities !?ioTypeMap ;
+    outTypeList := [@typeList emptyList] ;
+    call mMetamodelEntities !?ioTypeMap !?outTypeList ;
   end if ;
 end rule ;
 
@@ -97,6 +103,7 @@ end rule ;
 
 rule @metamodelEntity
   ?!@typeMap ioTypeMap
+  ?!@typeList ioTypeList
 :
 #--- Super class index
   @typeMapIndex superEntityIndex ;
@@ -108,7 +115,7 @@ rule @metamodelEntity
 #--- Attributes and single references
   @attributeList propertyList [emptyList] ;
   call mProperties !?ioTypeMap !?propertyList ;
-#--- Create galgas types
+#--- Create galgas types and enter in type list
   foreach mEntityNameList (@lstring kEntityName) :
     @ACGalgasType t := [@entityGalgasType new
       !mIsAbstract
@@ -117,6 +124,7 @@ rule @metamodelEntity
       !propertyList
     ] ;
     [!?ioTypeMap insertKey !kEntityName !t] ;
+    ioTypeList += !t ;
     t := [@multipleReferenceGalgasType new
       !kEntityName
     ] ;

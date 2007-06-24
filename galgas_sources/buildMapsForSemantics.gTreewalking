@@ -23,7 +23,6 @@ import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
 import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
-#import__ "semanticsSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
@@ -33,6 +32,7 @@ rule @semanticsComponentRoot
   ?!@stringset ioImportedComponentSet
   ?!@typeMap ioTypeMap
   ?!@routineMap ioRoutineMap
+  !@typeList outTypeList
 :
 #--- Walk throught imported components
   foreach mImportedSemanticsComponentSet (@string kComponentName) :
@@ -44,6 +44,7 @@ rule @semanticsComponentRoot
         ] ;
         @semanticsComponentRoot semanticsComponentRoot ;
         @location endOfSourceFile ;
+        @typeList unusedTypeList ;
         grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
         treewalking buildMapsForSemantics on semanticsComponentRoot
           !inSourceFileDirectory
@@ -51,6 +52,7 @@ rule @semanticsComponentRoot
           !?ioImportedComponentSet
           !?ioTypeMap
           !?ioRoutineMap
+          ?unusedTypeList
        ;
       end if ;
       ioImportedComponentSet += !kComponentName ;
@@ -58,9 +60,11 @@ rule @semanticsComponentRoot
   end foreach ;
 #--- Walk throught definitions of current files
   if [ioImportedComponentSet hasKey ![mSemanticsComponentName string]] then
-    error mSemanticsComponentName: "this component is involved in a circularity in 'extends' definitions" ;
+    error mSemanticsComponentName:
+    "this component is involved in a circularity in 'extends' definitions" -> outTypeList ;
   else
-    call mSemanticDeclarationList !?ioTypeMap !?ioRoutineMap ;
+    outTypeList := [@typeList emptyList] ;
+    call mSemanticDeclarationList !?ioTypeMap !?ioRoutineMap !?outTypeList ;
   end if ;
 end rule ;
 
@@ -69,6 +73,7 @@ end rule ;
 rule @semanticDeclaration
   ?!@typeMap unused ioTypeMap
   ?!@routineMap unused ioRoutineMap
+  ?!@typeList unused ioTypeList
 :
 end rule ;
 
@@ -81,6 +86,7 @@ end rule ;
 rule @routineDeclaration
   ?!@typeMap ioTypeMap
   ?!@routineMap ioRoutineMap
+  ?!@typeList unused ioTypeList
 :
   @signature methodSignature ;
   call mFormalParameters ?methodSignature !?ioTypeMap ;
@@ -96,6 +102,7 @@ end rule ;
 rule @externRoutineDeclaration
   ?!@typeMap ioTypeMap
   ?!@routineMap ioRoutineMap
+  ?!@typeList unused ioTypeList
 :
   @signature methodSignature ;
   call mFormalParameters ?methodSignature !?ioTypeMap ;
@@ -111,6 +118,7 @@ end rule ;
 rule @classDeclaration
   ?!@typeMap ioTypeMap
   ?!@routineMap unused ioRoutineMap
+  ?!@typeList unused ioTypeList
 :
 #--- Super class index
   @typeMapIndex superClassIndex ;
@@ -203,6 +211,7 @@ end rule ;
 rule @enumDeclaration
   ?!@typeMap ioTypeMap
   ?!@routineMap unused ioRoutineMap
+  ?!@typeList unused ioTypeList
 :
 #--- Enter in type map
   @ACGalgasType t := [@enumType new
@@ -221,6 +230,7 @@ end rule ;
 rule @mapDeclaration
   ?!@typeMap ioTypeMap
   ?!@routineMap unused ioRoutineMap
+  ?!@typeList unused ioTypeList
 :
 #--- Attributes
   @attributeList attributeList [emptyList] ;
@@ -242,6 +252,7 @@ end rule ;
 rule @listDeclaration
   ?!@typeMap ioTypeMap
   ?!@routineMap unused ioRoutineMap
+  ?!@typeList unused ioTypeList
 :
 #--- Attributes
   @attributeList attributeList [emptyList] ;
@@ -267,6 +278,40 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    S O R T E D    L I S T    T Y P E                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule @sortedListSortDescriptor
+  ?!@sortDescriptorList ioSortDescriptorList
+:
+  ioSortDescriptorList += !mSortedAttributeName !mAscending ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule @sortedListDeclaration
+  ?!@typeMap ioTypeMap
+  ?!@routineMap unused ioRoutineMap
+  ?!@typeList unused ioTypeList
+:
+#--- Attributes
+  @attributeList attributeList [emptyList] ;
+  call mAttributeList !?attributeList !?ioTypeMap ;
+#--- Sort Descriptors
+  @sortDescriptorList sortDescriptorList [emptyList] ;
+  call mSortDescriptorList !?sortDescriptorList ;
+#--- Enter in type map
+  @ACGalgasType t := [@sortedlistGalgasType new
+    !mSortedListTypeName
+    !attributeList
+    !sortDescriptorList
+  ] ;
+  [!?ioTypeMap insertKey !mSortedListTypeName !t] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    M A P    I N D E X    T Y P E                                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -274,6 +319,7 @@ end rule ;
 rule @mapindexDeclaration
   ?!@typeMap ioTypeMap
   ?!@routineMap unused ioRoutineMap
+  ?!@typeList unused ioTypeList
 :
   @typeMapIndex index ;
   [@typeMapIndex makeRegularIndex !mMapTypeName !?ioTypeMap ?index] ;

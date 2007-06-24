@@ -1293,7 +1293,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "compareForSorting (const cSortedListElement * inOperand) const {\n"
                "  elementOf_GGS_" << aNomListe << " * operand = (elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
   
-  GGS_sortDescriptorList::element_type * sortAttribute = mSortDescriptorList.firstObject () ;
+  GGS_EXsortDescriptorList::element_type * sortAttribute = mSortDescriptorList.firstObject () ;
   if (sortAttribute != NULL) {
     macroValidPointer (sortAttribute) ;
     inCppFile << "  sint32 result = "
