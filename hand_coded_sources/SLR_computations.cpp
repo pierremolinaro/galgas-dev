@@ -934,7 +934,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         macroValidPointer (currentAltForNonTerminal) ;
         generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
         GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-        bool onlyOutputArguments = true ;
+        bool onlyOutputArguments = false ; // DON'T USE PARSING CACHING (otherwise, set to true)
         while ((parametre != NULL) && onlyOutputArguments) {
           macroValidPointer (parametre) ;
           onlyOutputArguments = parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut ;

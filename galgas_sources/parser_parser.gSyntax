@@ -990,7 +990,7 @@ rule <syntax_declaration>
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeExpression sourceExpression := [@typeConstructorExpression new
-          ![[e mEntityTypeName] string]. "List"
+          !"_list_" . [[e mEntityTypeName] string]
           !"emptyList"
           ![@typeExpressionList emptyList]
         ] ;

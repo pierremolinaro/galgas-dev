@@ -91,7 +91,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                          const C_String & /* inTargetFileName */,
                          const GGS_typeExpressionList & inExpressionList) const {
   ioCppFile << "macroValidPointer (_currentObject) ;\n"
-               "{ GGS_" << inEntityName << "List::element_type * _ptr = _currentObject->"
+               "{ GGS__list_" << inEntityName << "::element_type * _ptr = _currentObject->"
             << inCalledPropertyName << ".firstObject () ;\n"
             << "  while (_ptr != NULL) {\n"
                "    _treewalking_routine_" << inEntityName

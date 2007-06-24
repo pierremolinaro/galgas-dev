@@ -139,6 +139,14 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+rule <obsolete_declaration> :
+  $map$ ;
+  $type_name$ ? * ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_declaration> -> @mapDeclaration :
   $map$ ;
 #--- Map type name
@@ -393,6 +401,14 @@ end rule ;
 #                                                                           *
 #    S O R T E D    L I S T    D E C L A R A T I O N                        *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <obsolete_declaration> :
+  $sortedlist$ ;
+  $type_name$ ? * ;
+  $;$ ;
+end rule ;
+
 #---------------------------------------------------------------------------*
 
 rule <sortedlist_sort_descriptor> -> @sortedListSortDescriptor :

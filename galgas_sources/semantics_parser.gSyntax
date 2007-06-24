@@ -852,6 +852,7 @@ rule <import_headers_semantics_and_grammars>
       @lstring treewalkingComponentName ;
       $identifier$ ? treewalkingComponentName ;
       outInclusionsForHeaderFile += ![treewalkingComponentName string] ;
+      outInclusionsForImplementationFile += ![treewalkingComponentName string] . ".h" ;
       select
       or
         $in$ ;
@@ -5402,7 +5403,7 @@ rule <semantics_declaration>
   select
     $;$ ;
     if not ([tableEnAvant hasKey ![listTypeName string]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName string]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
+      @AC_galgasType t := [@typeGalgasUndefinedSortedListType new ! listTypeName] ;
       [!?tableEnAvant insertKey ! listTypeName !t] ;
     end if ;
   or
@@ -5433,7 +5434,7 @@ rule <semantics_declaration>
     ] ;
   #--- Parse sort attributes
     ${$ ;
-    @sortDescriptorList sortDescriptorList [emptyList] ;
+    @EXsortDescriptorList sortDescriptorList [emptyList] ;
     @stringset usedSortedAttributes [emptySet] ;
     repeat
       @lstring sortAttribute ;
@@ -5483,7 +5484,7 @@ label importSemantics
   select
     $;$ ;
     if not ([tableEnAvant hasKey ![listTypeName string]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName string]]) then
-      @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
+      @AC_galgasType t := [@typeGalgasUndefinedSortedListType new ! listTypeName] ;
       [!?tableEnAvant insertKey ! listTypeName !t] ;
     end if ;
   or

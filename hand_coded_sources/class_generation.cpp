@@ -156,6 +156,9 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Pointer assignment constructor\n"
              "  public : GGS_" << aNomClasse << " (cPtr__AC_galgas_class * inPointer) ;\n\n" ;
 
+  inHfile << "//--- Object assignment constructor\n"
+             "  public : GGS_" << aNomClasse << " (cPtr__AC_galgas_class & inObject) ;\n\n" ;
+
 //--- _castFrom class method
 inHfile << "//--- _castFrom class method (implements cast expression)\n"
              "  public : static GGS_" << aNomClasse << "\n"
@@ -562,6 +565,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "GGS_" << aNomClasse << "::\n"
                "GGS_" << aNomClasse << " (cPtr__AC_galgas_class * inPointer) {\n"
                "  macroAssignPointer (mPointer, inPointer) ;\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+//--- Object assignment constructor
+  inCppFile << "GGS_" << aNomClasse << "::\n"
+               "GGS_" << aNomClasse << " (cPtr__AC_galgas_class & inObject) {\n"
+               "  macroAssignPointer (mPointer, & inObject) ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 

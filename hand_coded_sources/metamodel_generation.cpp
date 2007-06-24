@@ -32,7 +32,7 @@
 
 void cPtr_C_metamodelEntityToImplement::
 generatePredeclarations (AC_OutputStream & inHfile) const {
-  const C_String listClassName = aNomClasse + "List" ;
+  const C_String listClassName = C_String ("_list_") + aNomClasse ;
   inHfile << "class GGS_" << listClassName << " ;\n"
              "class GGS_" << aNomClasse << " ;\n"
              "class cPtr_" << aNomClasse << " ;\n" ;
@@ -43,9 +43,9 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_metamodelEntityToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
-  const C_String listClassName = aNomClasse + "List" ;
+  const C_String listClassName = C_String ("_list_") + aNomClasse ;
 //----------------------- Element of list class declaration ----------------  
-  inHfile.writeCppTitleComment (C_String ("Element of list '@") + listClassName + "'") ;
+  inHfile.writeCppTitleComment (C_String ("Element of list '@") + aNomClasse + "'") ;
 //--------- Declare internal element class ------------
   inHfile << "class cPtr_" << aNomClasse << " : public " ;
   if (mSuperClassName.length () == 0) {
@@ -139,7 +139,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 void cPtr_C_metamodelEntityToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  inHfile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inHfile.writeCppTitleComment (C_String ("GALGAS entity '@") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << aNomClasse << " : public " ;
   if (mSuperClassName.length () > 0) {
@@ -208,8 +208,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 
 //----------------------- List class declaration ----------------  
-  const C_String listClassName = aNomClasse + "List" ;
-  inHfile.writeCppTitleComment (C_String ("list '@") + listClassName + "'") ;
+  const C_String listClassName = C_String ("_list_") + aNomClasse ;
+  inHfile.writeCppTitleComment (C_String ("GALGAS list of entity '@") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << listClassName << " : public AC_galgas_list {\n"
              "  public : typedef cPtr_" << aNomClasse << " element_type ;\n"
@@ -364,9 +364,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
-  const C_String listClassName = aNomClasse + "List" ;
+  const C_String listClassName = C_String ("_list_") + aNomClasse ;
 //------------- Implementation de l'element de liste -----------------
-  inCppFile.writeCppTitleComment (C_String ("Element of list '@") + listClassName + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("Element of list '@") + aNomClasse + "'") ;
 
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "cPtr_" << aNomClasse << "::\n"
@@ -953,7 +953,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "} */\n\n" ;
 
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("GALGAS entity '@") + aNomClasse + "'") ;
 
   if (! mIsAbstract.boolValue ()) {
     inCppFile << "GGS_" << aNomClasse
