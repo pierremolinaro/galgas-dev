@@ -192,6 +192,55 @@ routine compileMetamodelComponentLL1
       !generatedUserZone3
     ] ;
   end if ;
+#--- If no error, build implementation file
+  if [@uint errorCount] == 0 then
+  #--- Zone 2
+    @string generatedCode2 := "" ;
+    generatedCode2 .=
+      [@string CppLineComment]
+    . "#include \"version_libpm.h\"\n"
+    . "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
+    . "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
+    . "#endif\n\n"
+    . "#include \"" . metamodelComponentName . ".h\"\n"
+    . "#include \"utilities/MF_MemoryControl.h\"\n\n"
+    . [@string CppLineComment]
+    . "#include <typeinfo>\n\n"
+    . [@string CppLineComment]
+    . "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
+    . "  #define SOURCE_FILE_AT_LINE(line) \"" . metamodelComponentName . ".gMetamodel\", line\n"
+    . "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
+    . "#else\n"
+    . "  #define SOURCE_FILE_AT_LINE(line)\n"
+    . "  #define COMMA_SOURCE_FILE_AT_LINE(line)\n"
+    . "#endif\n\n"
+    . [@string CppLineComment] ;
+  #--- Zone 3
+    @string generatedCode3 := "" ;
+    [!?generatedCode3 setCapacity !500000] ;
+    generatedCode3 .=
+      [@string CppTitleComment !"Metamodel Management"]
+    . "static C_MetamodelManager gMetamodelManager (\"" . metamodelComponentName . "\", "
+    . [[sortedTypeList length] string] . ") ;\n\n"
+    . [@string CppLineComment]
+    . "sint32 _metamodel_index_for_expressionMetamodel (void) {\n"
+    . "  return gMetamodelManager.mMetamodelComponentIndex ;\n"
+    . "}\n\n" ;
+    foreach sortedTypeList (@ACGalgasType kType @string kSortString) :
+      [kType generateImplementation !?generatedCode3] ;
+    end foreach ;
+    generatedCode3 .= [@string CppLineComment] ;
+  #--- Generate implementation file
+    [@string generateFile
+      !inOutputDirectory
+      !metamodelComponentName . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !generatedCode2
+      !"\n\n" # Defaut user zone2
+      !generatedCode3
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
