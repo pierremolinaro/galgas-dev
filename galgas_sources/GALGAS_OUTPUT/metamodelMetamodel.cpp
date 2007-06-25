@@ -67,7 +67,7 @@ cPtr_metamodelComponentRoot (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_3,
                                 const GGS__list_metamodelEntity & argument_4
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mMetamodelComponentName (argument_0),
 mSuperMetamodels (argument_1),
 mMetamodelRootEntityName (argument_2),
@@ -557,7 +557,7 @@ cPtr_metamodelEntity (const GGS_lstringlist & argument_0,
                                 const GGS_bool& argument_2,
                                 const GGS__list_metamodelProperty & argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mEntityNameList (argument_0),
 mSuperEntityName (argument_1),
 mIsAbstract (argument_2),
@@ -1009,7 +1009,7 @@ cPtr_metamodelProperty::
 cPtr_metamodelProperty (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mAttributeTypeName (argument_0),
 mAttributeName (argument_1) {
 }

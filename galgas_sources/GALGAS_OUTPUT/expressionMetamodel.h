@@ -162,7 +162,7 @@ class cPtr_castInExpression ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_semanticExpression : public AC_galgas_entity {
+class GGS_semanticExpression : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_semanticExpression * getPtr (void) const {
     return (cPtr_semanticExpression *) mPointer ;
@@ -252,7 +252,7 @@ class GGS__list_semanticExpression : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_outExpressionList : public AC_galgas_entity {
+class GGS_outExpressionList : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_outExpressionList constructor_new (C_Compiler & inLexique,
                                 const GGS__list_semanticExpression & argument_0,
@@ -4111,7 +4111,7 @@ class GGS__list_castInExpression : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_semanticExpression : public C_GGS_MetamodelEntity {
+class cPtr_semanticExpression : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_semanticExpression (LOCATION_ARGS) ;
@@ -4161,7 +4161,7 @@ class cPtr_semanticExpression : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_outExpressionList : public C_GGS_MetamodelEntity {
+class cPtr_outExpressionList : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS__list_semanticExpression  mExpression ;
   public : GGS_location  mEndOfExpressionLocation ;

@@ -48,7 +48,7 @@ class cPtr_commandLineOption ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_optionComponentRoot : public AC_galgas_entity {
+class GGS_optionComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_optionComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -151,7 +151,7 @@ class GGS__list_optionComponentRoot : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_commandLineOption : public AC_galgas_entity {
+class GGS_commandLineOption : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_commandLineOption constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -272,7 +272,7 @@ class GGS__list_commandLineOption : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_optionComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_optionComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mOptionComponentName ;
   public : GGS__list_commandLineOption  mOptions ;
@@ -326,7 +326,7 @@ class cPtr_optionComponentRoot : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_commandLineOption : public C_GGS_MetamodelEntity {
+class cPtr_commandLineOption : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mOptionTypeName ;
   public : GGS_lstring  mOptionInternalName ;

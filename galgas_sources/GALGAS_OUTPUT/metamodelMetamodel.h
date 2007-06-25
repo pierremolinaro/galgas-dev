@@ -54,7 +54,7 @@ class cPtr_metamodelMultipleReference ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_metamodelComponentRoot : public AC_galgas_entity {
+class GGS_metamodelComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_metamodelComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -175,7 +175,7 @@ class GGS__list_metamodelComponentRoot : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_metamodelEntity : public AC_galgas_entity {
+class GGS_metamodelEntity : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_metamodelEntity constructor_new (C_Compiler & inLexique,
                                 const GGS_lstringlist & argument_0,
@@ -290,7 +290,7 @@ class GGS__list_metamodelEntity : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_metamodelProperty : public AC_galgas_entity {
+class GGS_metamodelProperty : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_metamodelProperty constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -501,7 +501,7 @@ class GGS__list_metamodelMultipleReference : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_metamodelComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_metamodelComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mMetamodelComponentName ;
   public : GGS_lstringlist  mSuperMetamodels ;
@@ -561,7 +561,7 @@ class cPtr_metamodelComponentRoot : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_metamodelEntity : public C_GGS_MetamodelEntity {
+class cPtr_metamodelEntity : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstringlist  mEntityNameList ;
   public : GGS_lstring  mSuperEntityName ;
@@ -619,7 +619,7 @@ class cPtr_metamodelEntity : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_metamodelProperty : public C_GGS_MetamodelEntity {
+class cPtr_metamodelProperty : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mAttributeTypeName ;
   public : GGS_lstring  mAttributeName ;

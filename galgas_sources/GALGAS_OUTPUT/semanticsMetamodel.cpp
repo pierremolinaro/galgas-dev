@@ -66,7 +66,7 @@ cPtr_semanticsComponentRoot (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_2,
                                 const GGS__list_semanticDeclaration & argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mSemanticsComponentName (argument_0),
 mImportedSemanticsComponentSet (argument_1),
 mImportedComponentFileNameList (argument_2),
@@ -518,7 +518,7 @@ cPtr_attributeInCollection::
 cPtr_attributeInCollection (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mAttributeTypeName (argument_0),
 mAttributeName (argument_1) {
 }
@@ -1391,7 +1391,7 @@ cPtr_mapMethod (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstring & argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mMethodName (argument_0),
 mGetIDMethodName (argument_1),
 mErrorMessage (argument_2),
@@ -2936,7 +2936,7 @@ cPtr_abstractMethodDefinition::
 cPtr_abstractMethodDefinition (const GGS_lstring & argument_0,
                                 const GGS_formalParameters & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mMethodName (argument_0),
 mSignature (argument_1) {
 }
@@ -3317,7 +3317,7 @@ cPtr_overridenMethodDefinition (const GGS_lstring & argument_0,
                                 const GGS_formalParameters & argument_1,
                                 const GGS_semanticInstructions & argument_2
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mMethodName (argument_0),
 mSignature (argument_1),
 mInstructionList (argument_2) {
@@ -3734,7 +3734,7 @@ cPtr_methodDefinition (const GGS_lstring & argument_0,
                                 const GGS_formalParameters & argument_1,
                                 const GGS_semanticInstructions & argument_2
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mMethodName (argument_0),
 mSignature (argument_1),
 mInstructionList (argument_2) {
@@ -4150,7 +4150,7 @@ cPtr_classMessageDefinition::
 cPtr_classMessageDefinition (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mMessageName (argument_0),
 mMessageValue (argument_1) {
 }
@@ -4910,7 +4910,7 @@ cPtr_sortedListSortDescriptor::
 cPtr_sortedListSortDescriptor (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mSortedAttributeName (argument_0),
 mAscending (argument_1) {
 }
@@ -6124,7 +6124,7 @@ cPtr_enumMessage::
 cPtr_enumMessage (const GGS_lstring & argument_0,
                                 const GGS__list_enumMessageAssociation & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mEnumMessageName (argument_0),
 mMessageAssociationList (argument_1) {
 }
@@ -6504,7 +6504,7 @@ cPtr_enumMessageAssociation::
 cPtr_enumMessageAssociation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mConstantName (argument_0),
 mMessage (argument_1) {
 }

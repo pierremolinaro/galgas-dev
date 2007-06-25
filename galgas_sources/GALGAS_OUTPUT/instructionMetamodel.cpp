@@ -62,7 +62,7 @@ sint32 _metamodel_index_for_instructionMetamodel (void) {
 
 cPtr_syntaxInstruction::
 cPtr_syntaxInstruction (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -657,7 +657,7 @@ const char * GGS_semanticInstruction::actualTypeName (void) const {
 cPtr_semanticInstructions::
 cPtr_semanticInstructions (const GGS__list_semanticInstruction & argument_0
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mInstruction (argument_0) {
 }
 
@@ -999,7 +999,7 @@ const char * GGS_semanticInstructions::actualTypeName (void) const {
 
 cPtr_semanticDeclaration::
 cPtr_semanticDeclaration (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -4104,7 +4104,7 @@ const char * GGS_appendInstruction::actualTypeName (void) const {
 
 cPtr_foreachInstructionEnumeratedObjectElement::
 cPtr_foreachInstructionEnumeratedObjectElement (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -5091,7 +5091,7 @@ cPtr_foreachInstructionEnumeratedObject (const GGS_semanticExpression & argument
                                 const GGS__list_foreachInstructionEnumeratedObjectElement & argument_1,
                                 const GGS_bool& argument_2
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mEnumeratedExpression (argument_0),
 mElements (argument_1),
 mEndsWithEllipsis (argument_2) {
@@ -8350,7 +8350,7 @@ const char * GGS_routineCallInstruction::actualTypeName (void) const {
 
 cPtr_matchEntry::
 cPtr_matchEntry (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -9409,7 +9409,7 @@ cPtr_matchInstructionBranch::
 cPtr_matchInstructionBranch (const GGS__list_matchEntry & argument_0,
                                 const GGS_semanticInstructions & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mMatchedEntryList (argument_0),
 mMatchBranchInstructionList (argument_1) {
 }
@@ -10209,7 +10209,7 @@ cPtr_castInstructionBranch (const GGS_bool& argument_0,
                                 const GGS_bool& argument_3,
                                 const GGS_semanticInstructions & argument_4
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mUseKindOfClass (argument_0),
 mTypeName (argument_1),
 mConstantVarName (argument_2),
@@ -10695,7 +10695,7 @@ const char * GGS_castInstructionBranch::actualTypeName (void) const {
 
 cPtr_elseOrDefaultForCastInstruction::
 cPtr_elseOrDefaultForCastInstruction (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*

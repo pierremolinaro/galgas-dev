@@ -153,7 +153,7 @@ class cPtr_lexicalLogInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexiqueComponentRoot : public AC_galgas_entity {
+class GGS_lexiqueComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexiqueComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -292,7 +292,7 @@ class GGS__list_lexiqueComponentRoot : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalImplicitRule : public AC_galgas_entity {
+class GGS_lexicalImplicitRule : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalImplicitRule constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0
@@ -389,7 +389,7 @@ class GGS__list_lexicalImplicitRule : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalErrorMessageDeclaration : public AC_galgas_entity {
+class GGS_lexicalErrorMessageDeclaration : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalErrorMessageDeclaration constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -492,7 +492,7 @@ class GGS__list_lexicalErrorMessageDeclaration : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalAttribute : public AC_galgas_entity {
+class GGS_lexicalAttribute : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalAttribute constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -595,7 +595,7 @@ class GGS__list_lexicalAttribute : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalStyle : public AC_galgas_entity {
+class GGS_lexicalStyle : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalStyle constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -698,7 +698,7 @@ class GGS__list_lexicalStyle : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_terminalDeclaration : public AC_galgas_entity {
+class GGS_terminalDeclaration : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_terminalDeclaration constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -813,7 +813,7 @@ class GGS__list_terminalDeclaration : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalListDeclaration : public AC_galgas_entity {
+class GGS_lexicalListDeclaration : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalListDeclaration constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -934,7 +934,7 @@ class GGS__list_lexicalListDeclaration : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalListEntry : public AC_galgas_entity {
+class GGS_lexicalListEntry : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalListEntry constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -1037,7 +1037,7 @@ class GGS__list_lexicalListEntry : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalExplicitRule : public AC_galgas_entity {
+class GGS_lexicalExplicitRule : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalExplicitRule constructor_new (C_Compiler & inLexique,
                                 const GGS_lexicalExpression & argument_0,
@@ -1140,7 +1140,7 @@ class GGS__list_lexicalExplicitRule : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalExpression : public AC_galgas_entity {
+class GGS_lexicalExpression : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_lexicalExpression * getPtr (void) const {
     return (cPtr_lexicalExpression *) mPointer ;
@@ -1708,7 +1708,7 @@ class GGS__list_lexicalStringNotMatch : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalInstruction : public AC_galgas_entity {
+class GGS_lexicalInstruction : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_lexicalInstruction * getPtr (void) const {
     return (cPtr_lexicalInstruction *) mPointer ;
@@ -1988,7 +1988,7 @@ class GGS__list_lexicalSimpleSendInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalSendDefaultAction : public AC_galgas_entity {
+class GGS_lexicalSendDefaultAction : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_lexicalSendDefaultAction * getPtr (void) const {
     return (cPtr_lexicalSendDefaultAction *) mPointer ;
@@ -2262,7 +2262,7 @@ class GGS__list_lexicalErrorByDefault : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalSendSearch : public AC_galgas_entity {
+class GGS_lexicalSendSearch : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalSendSearch constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -2463,7 +2463,7 @@ class GGS__list_lexicalRepeatInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalWhileBranch : public AC_galgas_entity {
+class GGS_lexicalWhileBranch : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalWhileBranch constructor_new (C_Compiler & inLexique,
                                 const GGS_lexicalExpression & argument_0,
@@ -2664,7 +2664,7 @@ class GGS__list_lexicalSelectInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalSelectBranch : public AC_galgas_entity {
+class GGS_lexicalSelectBranch : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_lexicalSelectBranch constructor_new (C_Compiler & inLexique,
                                 const GGS_lexicalExpression & argument_0,
@@ -2871,7 +2871,7 @@ class GGS__list_lexicalActionInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_lexicalActualArgument : public AC_galgas_entity {
+class GGS_lexicalActualArgument : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_lexicalActualArgument * getPtr (void) const {
     return (cPtr_lexicalActualArgument *) mPointer ;
@@ -3793,7 +3793,7 @@ class GGS__list_lexicalLogInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexiqueComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_lexiqueComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mLexiqueComponentName ;
   public : GGS__list_lexicalAttribute  mLexicalAttributeList ;
@@ -3859,7 +3859,7 @@ class cPtr_lexiqueComponentRoot : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalImplicitRule : public C_GGS_MetamodelEntity {
+class cPtr_lexicalImplicitRule : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mListName ;
 //--- Constructor
@@ -3911,7 +3911,7 @@ class cPtr_lexicalImplicitRule : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalErrorMessageDeclaration : public C_GGS_MetamodelEntity {
+class cPtr_lexicalErrorMessageDeclaration : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mMessageName ;
   public : GGS_lstring  mMessageValue ;
@@ -3965,7 +3965,7 @@ class cPtr_lexicalErrorMessageDeclaration : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalAttribute : public C_GGS_MetamodelEntity {
+class cPtr_lexicalAttribute : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mTypeName ;
   public : GGS_lstring  mName ;
@@ -4019,7 +4019,7 @@ class cPtr_lexicalAttribute : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalStyle : public C_GGS_MetamodelEntity {
+class cPtr_lexicalStyle : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mName ;
   public : GGS_lstring  mComment ;
@@ -4073,7 +4073,7 @@ class cPtr_lexicalStyle : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_terminalDeclaration : public C_GGS_MetamodelEntity {
+class cPtr_terminalDeclaration : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mName ;
   public : GGS_lstringlist  mSentAttributeList ;
@@ -4131,7 +4131,7 @@ class cPtr_terminalDeclaration : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalListDeclaration : public C_GGS_MetamodelEntity {
+class cPtr_lexicalListDeclaration : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mName ;
   public : GGS_lstring  mStyle ;
@@ -4191,7 +4191,7 @@ class cPtr_lexicalListDeclaration : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalListEntry : public C_GGS_MetamodelEntity {
+class cPtr_lexicalListEntry : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mEntrySpelling ;
   public : GGS_lstring  mTerminalSpelling ;
@@ -4245,7 +4245,7 @@ class cPtr_lexicalListEntry : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalExplicitRule : public C_GGS_MetamodelEntity {
+class cPtr_lexicalExplicitRule : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lexicalExpression  mLexicalRuleExpression ;
   public : GGS__list_lexicalInstruction  mInstructionList ;
@@ -4299,7 +4299,7 @@ class cPtr_lexicalExplicitRule : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalExpression : public C_GGS_MetamodelEntity {
+class cPtr_lexicalExpression : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_lexicalExpression (LOCATION_ARGS) ;
@@ -4615,7 +4615,7 @@ class cPtr_lexicalStringNotMatch : public cPtr_lexicalExpression {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalInstruction : public C_GGS_MetamodelEntity {
+class cPtr_lexicalInstruction : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_lexicalInstruction (LOCATION_ARGS) ;
@@ -4771,7 +4771,7 @@ class cPtr_lexicalSimpleSendInstruction : public cPtr_lexicalInstruction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalSendDefaultAction : public C_GGS_MetamodelEntity {
+class cPtr_lexicalSendDefaultAction : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_lexicalSendDefaultAction (LOCATION_ARGS) ;
@@ -4925,7 +4925,7 @@ class cPtr_lexicalErrorByDefault : public cPtr_lexicalSendDefaultAction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalSendSearch : public C_GGS_MetamodelEntity {
+class cPtr_lexicalSendSearch : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mAttributeName ;
   public : GGS_lstring  mSearchListName ;
@@ -5033,7 +5033,7 @@ class cPtr_lexicalRepeatInstruction : public cPtr_lexicalInstruction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalWhileBranch : public C_GGS_MetamodelEntity {
+class cPtr_lexicalWhileBranch : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lexicalExpression  mWhileExpression ;
   public : GGS__list_lexicalInstruction  mWhileInstructionList ;
@@ -5141,7 +5141,7 @@ class cPtr_lexicalSelectInstruction : public cPtr_lexicalInstruction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalSelectBranch : public C_GGS_MetamodelEntity {
+class cPtr_lexicalSelectBranch : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lexicalExpression  mSelectExpression ;
   public : GGS__list_lexicalInstruction  mSelectInstructionList ;
@@ -5251,7 +5251,7 @@ class cPtr_lexicalActionInstruction : public cPtr_lexicalInstruction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_lexicalActualArgument : public C_GGS_MetamodelEntity {
+class cPtr_lexicalActualArgument : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_lexicalActualArgument (LOCATION_ARGS) ;

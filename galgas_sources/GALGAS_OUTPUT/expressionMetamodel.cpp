@@ -62,7 +62,7 @@ sint32 _metamodel_index_for_expressionMetamodel (void) {
 
 cPtr_semanticExpression::
 cPtr_semanticExpression (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -361,7 +361,7 @@ cPtr_outExpressionList::
 cPtr_outExpressionList (const GGS__list_semanticExpression & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mExpression (argument_0),
 mEndOfExpressionLocation (argument_1) {
 }

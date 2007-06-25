@@ -64,7 +64,7 @@ cPtr_guiAttribute::
 cPtr_guiAttribute (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mKey (argument_0),
 mValue (argument_1) {
 }
@@ -444,7 +444,7 @@ cPtr_guiLabel::
 cPtr_guiLabel (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mAttribute1 (argument_0),
 mAttribute2 (argument_1) {
 }
@@ -826,7 +826,7 @@ cPtr_guiComponentRoot (const GGS_lstring & argument_0,
                                 const GGS__list_guiAttribute & argument_2,
                                 const GGS__list_guiLabel & argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mGUIName (argument_0),
 mGUIClass (argument_1),
 mAttributes (argument_2),

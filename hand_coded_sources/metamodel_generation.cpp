@@ -49,7 +49,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--------- Declare internal element class ------------
   inHfile << "class cPtr_" << aNomClasse << " : public " ;
   if (mSuperClassName.length () == 0) {
-    inHfile << "C_GGS_MetamodelEntity" ;
+    inHfile << "EX_C_GGS_MetamodelEntity" ;
   }else{
     inHfile << "cPtr_" << mSuperClassName ;
   }
@@ -145,7 +145,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (mSuperClassName.length () > 0) {
     inHfile << "GGS_" << mSuperClassName ;
   }else{
-    inHfile << "AC_galgas_entity" ;
+    inHfile << "EX_AC_galgas_entity" ;
   }
   inHfile << " {\n" ;
 
@@ -394,7 +394,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   const sint32 inheritedAttributeCount = aListeTousAttributsNonExternes.count ()
                                        - aListeAttributsCourants.count () ;
   if (mSuperClassName.length () == 0) {
-    inCppFile << "C_GGS_MetamodelEntity (THERE)" ;
+    inCppFile << "EX_C_GGS_MetamodelEntity (THERE)" ;
   }else{
     inCppFile << "cPtr_" << mSuperClassName << " (" ;
     current = aListeTousAttributsNonExternes.firstObject () ;
