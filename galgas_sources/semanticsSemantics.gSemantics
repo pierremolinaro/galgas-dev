@@ -55,6 +55,11 @@ abstract class @ACGalgasType {
     ?!@string unused ioGeneratedUserZone3
   :
   end method ;
+
+  method generateImplementation
+    ?!@string unused ioGeneratedCode
+  :
+  end method ;
 }
 
 #---------------------------------------------------------------------------*
@@ -435,6 +440,41 @@ class @entityGalgasType extends @ACGalgasType {
 
 #-----------------------
 
+  method getInheritedAttributeList
+    !@attributeList outInheritedPropertyList
+  :
+    outInheritedPropertyList := [@attributeList emptyList] ;
+#    @typeMapIndex entityIndex := mSuperEntityIndex ;
+#    @bool ok := true ;
+#    loop [@uint max] :
+#    while [entityIndex isRegular] & ok do
+#      @lstring superEntityName ;
+#      @ACGalgasType superType ;
+#      [entityIndex searchKey ?superEntityName ?superType] ;
+#      cast superType :
+#      when >= @entityGalgasType kClassType do
+#        outInheritedPropertyList := [kClassType mPropertyList] . outInheritedPropertyList ;
+#        entityIndex := [kClassType mSuperEntityIndex] ;
+#      else
+#        error mEntityName: "this entity inherits from @"
+#          . superEntityName . ", but @" . superEntityName . " is not a class"
+#        ;
+#        ok := false ;
+#      end cast ;
+#    end loop ;
+  end method ;
+
+#-----------------------
+
+  method getAllAttributeList
+    !@attributeList outAllPropertyList
+  :
+    [self getInheritedAttributeList ? outAllPropertyList] ;
+    outAllPropertyList := outAllPropertyList . mPropertyList ;
+  end method ;
+
+#-----------------------
+
   override
   method enterInSortedList
     ?!@sortedTypeList ioSortedTypeList
@@ -442,8 +482,9 @@ class @entityGalgasType extends @ACGalgasType {
   :
     @string sortDescriptor := [mEntityName string] ;
     @typeMapIndex entityIndex := mSuperEntityIndex ;
+    @bool ok := true ;
     loop [inTypeMap count] :
-    while [entityIndex isRegular] do
+    while [entityIndex isRegular] & ok do
       @lstring superEntityName ;
       @ACGalgasType superType ;
       [entityIndex searchKey ?superEntityName ?superType] ;
@@ -455,6 +496,7 @@ class @entityGalgasType extends @ACGalgasType {
         error mEntityName: "this entity inherits from @"
           . superEntityName . ", but @" . superEntityName . " is not a class"
         ;
+        ok := false ;
       end cast ;
     end loop ;
     ioSortedTypeList += !self !sortDescriptor ;
@@ -478,127 +520,127 @@ class @entityGalgasType extends @ACGalgasType {
   method generateDeclaration_1_inHeader
     ?!@string ioGeneratedUserZone3
   :
-  ioGeneratedUserZone3 .= [@string CppTitleComment !"GALGAS entity '@" . mEntityName . "'"]
-  . "class GGS_" . mEntityName . " : public " ;
-  if [mSuperEntityIndex isRegular] then
-    ioGeneratedUserZone3 .= "GGS_" . [mSuperEntityIndex key] ;
-  else
-    ioGeneratedUserZone3 .= " AC_galgas_entity" ;
-  end if ;
-  ioGeneratedUserZone3 .= " {\n" ;
-  if not mIsAbstract then
-    ioGeneratedUserZone3 .= "//--- 'new' constructor\n"
-    . "  public : static GGS_" . mEntityName . " constructor_new (C_Compiler & inLexique" ;
+    @attributeList allAttributeList := mPropertyList ;
+#    [self getAllAttributeList ? allAttributeList] ;
+    ioGeneratedUserZone3 .= [@string CppTitleComment !"GALGAS entity '@" . mEntityName . "'"]
+    . "class GGS_" . mEntityName . " : public " ;
+    if [mSuperEntityIndex isRegular] then
+      ioGeneratedUserZone3 .= "GGS_" . [mSuperEntityIndex key] ;
+    else
+      ioGeneratedUserZone3 .= " AC_galgas_entity" ;
+    end if ;
+    ioGeneratedUserZone3 .= " {\n" ;
+    if not mIsAbstract then
+      ioGeneratedUserZone3 .= "//--- 'new' constructor\n"
+      . "  public : static GGS_" . mEntityName . " constructor_new (C_Compiler & inLexique" ;
+      @uint n := 0 ;
+      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+        ioGeneratedUserZone3 .= ",\n"
+        . "                                const GGS_" . [attributeTypeIndex key]
+        . " & argument_" . [n string] ;
+        n ++ ;
+      end foreach ;
+      ioGeneratedUserZone3 .= "\n"
+      . "                                COMMA_LOCATION_ARGS) ;\n\n" ;
+    end if ;
+    ioGeneratedUserZone3 .= "//--- getPtr\n"
+    . "  public : inline cPtr_" . mEntityName . " * getPtr (void) const {\n"
+    . "    return (cPtr_" . mEntityName . " *) mPointer ;\n"
+    . "  }\n\n"
+    . "//--- 'description' reader\n"
+    . "  public : virtual const char * actualTypeName (void) const ;\n\n"
+    . "//--- Readers\n" ;
+    foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+      ioGeneratedUserZone3 .= "  public : GGS_" . [attributeTypeIndex key]
+      . " reader_" . attributeName  . " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    end foreach ;
+    ioGeneratedUserZone3 .= "\n"
+    . "//--- operator ()\n"
+    . "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+    . "    public : cPtr_" . mEntityName . " * operator () (LOCATION_ARGS) const ;\n"
+    . "  #else\n"
+    . "    public : inline cPtr_" . mEntityName . " * operator () (void) const {\n"
+    . "      return (cPtr_" . mEntityName . " *) mPointer ;\n"
+    . "    }\n"
+    . "  #endif\n"
+    . "} ;\n\n" ;
+    ioGeneratedUserZone3 .= [@string CppTitleComment !"GALGAS list of entity '@" . mEntityName . "'"]
+    . "class GGS__list_" . mEntityName . " : public AC_galgas_list {\n"
+    . "  public : typedef cPtr_" . mEntityName . " element_type ;\n"
+    . "//--- Constructor 'emptyList'\n"
+    . "  public : static GGS__list_" . mEntityName . " constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n"
+    . "  public : static GGS__list_" . mEntityName . " constructor_listWithValue (C_Compiler & _inLexique" ;
     @uint n := 0 ;
-    foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+    foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
       ioGeneratedUserZone3 .= ",\n"
       . "                                const GGS_" . [attributeTypeIndex key]
       . " & argument_" . [n string] ;
       n ++ ;
     end foreach ;
     ioGeneratedUserZone3 .= "\n"
-    . "                                COMMA_LOCATION_ARGS) ;\n\n" ;
-  end if ;
-  ioGeneratedUserZone3 .= "//--- getPtr\n"
-  . "  public : inline cPtr_" . mEntityName . " * getPtr (void) const {\n"
-  . "    return (cPtr_" . mEntityName . " *) mPointer ;\n"
-  . "  }\n\n"
-  . "//--- 'description' reader\n"
-  . "  public : virtual const char * actualTypeName (void) const ;\n\n"
-  . "//--- Readers\n" ;
-  foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
-    ioGeneratedUserZone3 .= "  public : GGS_" . [attributeTypeIndex key]
-    . " reader_" . attributeName  . " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
-  end foreach ;
-  ioGeneratedUserZone3 .= "\n"
-  . "//--- operator ()\n"
-  . "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-  . "    public : cPtr_" . mEntityName . " * operator () (LOCATION_ARGS) const ;\n"
-  . "  #else\n"
-  . "    public : inline cPtr_" . mEntityName . " * operator () (void) const {\n"
-  . "      return (cPtr_" . mEntityName . " *) mPointer ;\n"
-  . "    }\n"
-  . "  #endif\n"
-  . "} ;\n\n" ;
-  ioGeneratedUserZone3 .= [@string CppTitleComment !"GALGAS list of entity '@" . mEntityName . "'"]
-  . "class GGS__list_" . mEntityName . " : public AC_galgas_list {\n"
-  . "  public : typedef cPtr_" . mEntityName . " element_type ;\n"
-  . "//--- Constructor 'emptyList'\n"
-  . "  public : static GGS__list_" . mEntityName . " constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n"
-  . "  public : static GGS__list_" . mEntityName . " constructor_listWithValue (C_Compiler & _inLexique" ;
-  @uint n := 0 ;
-  foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
-    ioGeneratedUserZone3 .= ",\n"
-    . "                                const GGS_" . [attributeTypeIndex key]
-    . " & argument_" . [n string] ;
-    n ++ ;
-  end foreach ;
-  ioGeneratedUserZone3 .= "\n"
-  . "                                COMMA_LOCATION_ARGS) ;\n\n"
-  . "//--- Get first object\n"
-  . "  public : inline element_type * firstObject (void) const {\n"
-  . "    return (element_type *) internalFirstObject () ;\n"
-  . "  }\n\n"
-  . "//--- Get last object\n"
-  . "  public : inline element_type * lastObject (void) const {\n"
-  . "    return (element_type *) internalLastObject () ;\n"
-  . "  }\n\n"
-  . "//--- Operator () used for method call\n"
-  . "  public : inline const GGS__list_" . mEntityName . " * operator () (UNUSED_LOCATION_ARGS) const {\n"
-  . "    return this ;\n"
-  . "  }\n\n"
-  . "//--- Handling '+=' GALGAS operator\n"
-  . "  public : void _addAssign_operation (const GGS_" . mEntityName . " & inElement) ;\n\n"
-  . "//--- Handling '.' GALGAS operator\n"
-  . "  public : GGS__list_" . mEntityName . " _operator_concat (const GGS__list_" . mEntityName . " & inOperand) const ;\n\n"
-  . "//--- Handling 'prependValue' GALGAS modifier\n"
-  . "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
-  n := 0 ;
-  foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
-    ioGeneratedUserZone3 .= ",\n"
-    . "                                const GGS_" . [attributeTypeIndex key]
-    . " & argument_" . [n string] ;
-    n ++ ;
-  end foreach ;
-  ioGeneratedUserZone3 .= "\n"
-  . "                                COMMA_LOCATION_ARGS) ;\n\n"
-  . "//--- Internal Methods\n"
-  . "  protected : void _internalAppendValues (" ;
-  n := 0 ;
-  foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
-    if n > 0 then
+    . "                                COMMA_LOCATION_ARGS) ;\n\n"
+    . "//--- Get first object\n"
+    . "  public : inline element_type * firstObject (void) const {\n"
+    . "    return (element_type *) internalFirstObject () ;\n"
+    . "  }\n\n"
+    . "//--- Get last object\n"
+    . "  public : inline element_type * lastObject (void) const {\n"
+    . "    return (element_type *) internalLastObject () ;\n"
+    . "  }\n\n"
+    . "//--- Operator () used for method call\n"
+    . "  public : inline const GGS__list_" . mEntityName . " * operator () (UNUSED_LOCATION_ARGS) const {\n"
+    . "    return this ;\n"
+    . "  }\n\n"
+    . "//--- Handling '+=' GALGAS operator\n"
+    . "  public : void _addAssign_operation (const GGS_" . mEntityName . " & inElement) ;\n\n"
+    . "//--- Handling '.' GALGAS operator\n"
+    . "  public : GGS__list_" . mEntityName . " _operator_concat (const GGS__list_" . mEntityName . " & inOperand) const ;\n\n"
+    . "//--- Handling 'prependValue' GALGAS modifier\n"
+    . "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
+    n := 0 ;
+    foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
       ioGeneratedUserZone3 .= ",\n"
-      . "                                " ;
-    end if ;
-    ioGeneratedUserZone3 .= "const GGS_" . [attributeTypeIndex key]
-    . " & argument_" . [n string] ;
-    
-    n ++ ;
-  end foreach ;
-  ioGeneratedUserZone3 .= ") ;\n\n"
-  . "  protected : void _internalPrependValues (" ;
-  n := 0 ;
-  foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
-    if n > 0 then
-      ioGeneratedUserZone3 .= ",\n"
-      . "                                " ;
-    end if ;
-    ioGeneratedUserZone3 .= "const GGS_" . [attributeTypeIndex key]
-    . " & argument_" . [n string] ;
-    
-    n ++ ;
-  end foreach ;
-  ioGeneratedUserZone3 .= ") ;\n\n"
-  . "//--- List Insulation\n"
-  . "  protected : void _insulateList (void) ;\n\n"
-  . "//--- 'description' reader\n"
-  . "  public : GGS_string\n"
-  . "  reader_description (C_Compiler & _inLexique\n"
-  . "                      COMMA_LOCATION_ARGS,\n"
-  . "                      const sint32 inIndentation = 0) const ;\n\n"
-  . "//--- Metamodel Add method\n"
-  . "  public : void _addModel (const GGS_" . mEntityName . " & inOperand) ;\n"
-  . "} ;\n\n" ;
+      . "                                const GGS_" . [attributeTypeIndex key]
+      . " & argument_" . [n string] ;
+      n ++ ;
+    end foreach ;
+    ioGeneratedUserZone3 .= "\n"
+    . "                                COMMA_LOCATION_ARGS) ;\n\n"
+    . "//--- Internal Methods\n"
+    . "  protected : void _internalAppendValues (" ;
+    n := 0 ;
+    foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+      if n > 0 then
+        ioGeneratedUserZone3 .= ",\n"
+        . "                                " ;
+      end if ;
+      ioGeneratedUserZone3 .= "const GGS_" . [attributeTypeIndex key]
+      . " & argument_" . [n string] ;
+      n ++ ;
+    end foreach ;
+    ioGeneratedUserZone3 .= ") ;\n\n"
+    . "  protected : void _internalPrependValues (" ;
+    n := 0 ;
+    foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+      if n > 0 then
+        ioGeneratedUserZone3 .= ",\n"
+        . "                                " ;
+      end if ;
+      ioGeneratedUserZone3 .= "const GGS_" . [attributeTypeIndex key]
+      . " & argument_" . [n string] ;
+      n ++ ;
+    end foreach ;
+    ioGeneratedUserZone3 .= ") ;\n\n"
+    . "//--- List Insulation\n"
+    . "  protected : void _insulateList (void) ;\n\n"
+    . "//--- 'description' reader\n"
+    . "  public : GGS_string\n"
+    . "  reader_description (C_Compiler & _inLexique\n"
+    . "                      COMMA_LOCATION_ARGS,\n"
+    . "                      const sint32 inIndentation = 0) const ;\n\n"
+    . "//--- Metamodel Add method\n"
+    . "  public : void _addModel (const GGS_" . mEntityName . " & inOperand) ;\n"
+    . "} ;\n\n" ;
   end method ;
 
 #-----------------------
@@ -606,6 +648,8 @@ class @entityGalgasType extends @ACGalgasType {
   method generateDeclaration_2_inHeader
     ?!@string ioGeneratedUserZone3
   :
+    @attributeList allAttributeList := mPropertyList ;
+#    [self getAllAttributeList ? allAttributeList] ;
     ioGeneratedUserZone3 .= [@string CppTitleComment !"Element of list '@" . mEntityName . "'"]
     . "class cPtr_" . mEntityName . " : public " ;
     if [mSuperEntityIndex isRegular] then
@@ -615,6 +659,7 @@ class @entityGalgasType extends @ACGalgasType {
     end if ;
     ioGeneratedUserZone3 .= " {\n"
     . "//--- Attributes\n" ;
+log mPropertyList ;
     foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
       ioGeneratedUserZone3 .= "  public : GGS_" . [attributeTypeIndex key]
       . " " . attributeName . " ;\n" ;
@@ -622,11 +667,11 @@ class @entityGalgasType extends @ACGalgasType {
     ioGeneratedUserZone3 .= "\n"
     . "//--- Constructor\n"
     . "  public : cPtr_" . mEntityName . " (" ;
-    if [mPropertyList length] == 0 then
+    if [allAttributeList length] == 0 then
       ioGeneratedUserZone3 .= "LOCATION_ARGS" ;
     else
       @uint n := 0 ;
-      foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
         if n > 0 then
           ioGeneratedUserZone3 .= ",\n"
           . "                                " ;
@@ -671,6 +716,64 @@ class @entityGalgasType extends @ACGalgasType {
   end method ;
 
 #-----------------------
+
+  override
+  method generateImplementation
+    ?!@string ioGeneratedCode
+  :
+    @attributeList allAttributeList := mPropertyList ;
+#    [self getAllAttributeList ? allAttributeList] ;
+    @attributeList inheritedAttributeList [emptyList];
+#    [self getInheritedAttributeList ? inheritedAttributeList] ;
+    ioGeneratedCode .= [@string CppTitleComment !"Element of list '@" . mEntityName . "'"]
+    . "cPtr_" . mEntityName . "::\n"
+    . "cPtr_" . mEntityName . " (" ;
+    if [allAttributeList length] == 0 then
+      ioGeneratedCode .= "LOCATION_ARGS) :\n" ;
+    else
+      @uint n := 0 ;
+      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+        if n > 0 then
+          ioGeneratedCode .= ",\n"
+          . "                                " ;
+        end if ;
+        ioGeneratedCode .= "const GGS_" . [attributeTypeIndex key]
+        . " & argument_" . [n string] ;
+        n ++ ;
+      end foreach ;
+      ioGeneratedCode .= "\n"
+      . "                                COMMA_LOCATION_ARGS) :\n" ;
+    end if ;
+    if [mSuperEntityIndex isRegular] then
+      ioGeneratedCode .= "cPtr_" . [mSuperEntityIndex key] . " (" ;
+      if [allAttributeList length] == 0 then
+        ioGeneratedCode .= "THERE)" ;
+      else
+        @uint n := 0 ;
+        foreach allAttributeList (* *) :
+          if n > 0 then
+            ioGeneratedCode .= ",\n"
+            . "                                " ;
+          end if ;
+          ioGeneratedCode .= "argument_" . [n string] ;
+          n ++ ;
+        end foreach ;
+        ioGeneratedCode .= "\n"
+        . "                                COMMA_THERE)" ;
+      end if ;
+    else
+      ioGeneratedCode .= "C_GGS_MetamodelEntity (THERE)" ;
+    end if ;
+    @uint n := [inheritedAttributeList length] ;
+    foreach mPropertyList (* @lstring attributeName) :
+      ioGeneratedCode .= ",\n" . attributeName . " (argument_" . [n string]. ")" ;
+      n ++ ;
+    end foreach ;
+    ioGeneratedCode .= " {\n" 
+    . "}\n\n" ;
+    ioGeneratedCode .= [@string CppTitleComment !"List '@" . mEntityName . "'"] ;
+    ioGeneratedCode .= [@string CppTitleComment !"Entity '@" . mEntityName . "'"] ;
+  end method ;
 }
 
 #---------------------------------------------------------------------------*
