@@ -80,7 +80,7 @@ class cPtr_blockInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxComponentRoot : public AC_galgas_entity {
+class GGS_syntaxComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_syntaxComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -195,7 +195,7 @@ class GGS__list_syntaxComponentRoot : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxInstructions : public AC_galgas_entity {
+class GGS_syntaxInstructions : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_syntaxInstructions constructor_new (C_Compiler & inLexique,
                                 const GGS__list_syntaxInstruction & argument_0
@@ -292,7 +292,7 @@ class GGS__list_syntaxInstructions : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_nonTerminalLabel : public AC_galgas_entity {
+class GGS_nonTerminalLabel : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_nonTerminalLabel constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -401,7 +401,7 @@ class GGS__list_nonTerminalLabel : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_nonterminalDeclaration : public AC_galgas_entity {
+class GGS_nonterminalDeclaration : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_nonterminalDeclaration constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -510,7 +510,7 @@ class GGS__list_nonterminalDeclaration : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxRuleLabel : public AC_galgas_entity {
+class GGS_syntaxRuleLabel : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_syntaxRuleLabel constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -631,7 +631,7 @@ class GGS__list_syntaxRuleLabel : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxRule : public AC_galgas_entity {
+class GGS_syntaxRule : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_syntaxRule constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -1346,7 +1346,7 @@ class GGS__list_blockInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_syntaxComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_syntaxComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mSyntaxComponentName ;
   public : GGS__list_nonterminalDeclaration  mNonterminalDeclarations ;
@@ -1404,7 +1404,7 @@ class cPtr_syntaxComponentRoot : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_syntaxInstructions : public C_GGS_MetamodelEntity {
+class cPtr_syntaxInstructions : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS__list_syntaxInstruction  mInstruction ;
 //--- Constructor
@@ -1456,7 +1456,7 @@ class cPtr_syntaxInstructions : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_nonTerminalLabel : public C_GGS_MetamodelEntity {
+class cPtr_nonTerminalLabel : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mLabelName ;
   public : GGS_formalParameters  mFormalParameters ;
@@ -1512,7 +1512,7 @@ class cPtr_nonTerminalLabel : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_nonterminalDeclaration : public C_GGS_MetamodelEntity {
+class cPtr_nonterminalDeclaration : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mNonterminalName ;
   public : GGS__list_nonTerminalLabel  mLabels ;
@@ -1568,7 +1568,7 @@ class cPtr_nonterminalDeclaration : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_syntaxRuleLabel : public C_GGS_MetamodelEntity {
+class cPtr_syntaxRuleLabel : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mLabelName ;
   public : GGS_formalParameters  mFormalParameters ;
@@ -1628,7 +1628,7 @@ class cPtr_syntaxRuleLabel : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_syntaxRule : public C_GGS_MetamodelEntity {
+class cPtr_syntaxRule : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mNonterminalName ;
   public : GGS__list_syntaxRuleLabel  mLabelList ;

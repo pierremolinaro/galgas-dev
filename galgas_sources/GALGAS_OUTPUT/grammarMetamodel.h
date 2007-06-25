@@ -52,7 +52,7 @@ class cPtr_grammarComponentRoot ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_startSymbolLabelFormalParameter : public AC_galgas_entity {
+class GGS_startSymbolLabelFormalParameter : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_startSymbolLabelFormalParameter constructor_new (C_Compiler & inLexique,
                                 const GGS_formalArgumentPassingMode& argument_0,
@@ -155,7 +155,7 @@ class GGS__list_startSymbolLabelFormalParameter : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_grammarLabel : public AC_galgas_entity {
+class GGS_grammarLabel : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_grammarLabel constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -264,7 +264,7 @@ class GGS__list_grammarLabel : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_grammarComponentRoot : public AC_galgas_entity {
+class GGS_grammarComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_grammarComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -379,7 +379,7 @@ class GGS__list_grammarComponentRoot : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_startSymbolLabelFormalParameter : public C_GGS_MetamodelEntity {
+class cPtr_startSymbolLabelFormalParameter : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_formalArgumentPassingMode mFormalAgumentPassingMode ;
   public : GGS_lstring  mTypeName ;
@@ -433,7 +433,7 @@ class cPtr_startSymbolLabelFormalParameter : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_grammarLabel : public C_GGS_MetamodelEntity {
+class cPtr_grammarLabel : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mLabelName ;
   public : GGS__list_startSymbolLabelFormalParameter  mFormalParameters ;
@@ -489,7 +489,7 @@ class cPtr_grammarLabel : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_grammarComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_grammarComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mGrammarName ;
   public : GGS_lstring  mGrammarClass ;

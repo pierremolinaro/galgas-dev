@@ -64,7 +64,7 @@ cPtr_startSymbolLabelFormalParameter::
 cPtr_startSymbolLabelFormalParameter (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mFormalAgumentPassingMode (argument_0),
 mTypeName (argument_1) {
 }
@@ -445,7 +445,7 @@ cPtr_grammarLabel (const GGS_lstring & argument_0,
                                 const GGS__list_startSymbolLabelFormalParameter & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mLabelName (argument_0),
 mFormalParameters (argument_1),
 mMetamodelName (argument_2) {
@@ -863,7 +863,7 @@ cPtr_grammarComponentRoot (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS__list_grammarLabel & argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mGrammarName (argument_0),
 mGrammarClass (argument_1),
 mStartSymbol (argument_2),

@@ -50,7 +50,7 @@ class cPtr_programComponentRoot ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_programRule : public AC_galgas_entity {
+class GGS_programRule : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_programRule constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -165,7 +165,7 @@ class GGS__list_programRule : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_programComponentRoot : public AC_galgas_entity {
+class GGS_programComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_programComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -292,7 +292,7 @@ class GGS__list_programComponentRoot : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_programRule : public C_GGS_MetamodelEntity {
+class cPtr_programRule : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mSourceFileExtension ;
   public : GGS_lstring  mSourceFileHelp ;
@@ -350,7 +350,7 @@ class cPtr_programRule : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_programComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_programComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mProgramName ;
   public : GGS_lstring  mVersionString ;

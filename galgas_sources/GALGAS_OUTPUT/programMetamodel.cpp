@@ -66,7 +66,7 @@ cPtr_programRule (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_semanticInstructions & argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mSourceFileExtension (argument_0),
 mSourceFileHelp (argument_1),
 mSourceFileVariableName (argument_2),
@@ -522,7 +522,7 @@ cPtr_programComponentRoot (const GGS_lstring & argument_0,
                                 const GGS__list_programRule & argument_4,
                                 const GGS__list_semanticDeclaration & argument_5
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mProgramName (argument_0),
 mVersionString (argument_1),
 mErrorMaximumCount (argument_2),

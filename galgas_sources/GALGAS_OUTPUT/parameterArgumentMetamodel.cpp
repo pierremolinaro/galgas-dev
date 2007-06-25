@@ -63,7 +63,7 @@ sint32 _metamodel_index_for_parameterArgumentMetamodel (void) {
 cPtr_formalParameters::
 cPtr_formalParameters (const GGS__list_formalParameter & argument_0
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mFormalParameterList (argument_0) {
 }
 
@@ -409,7 +409,7 @@ cPtr_formalParameter (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_bool& argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mFormalParameterPassingMode (argument_0),
 mFormalParameterTypeName (argument_1),
 mFormalParameterName (argument_2),
@@ -859,7 +859,7 @@ const char * GGS_formalParameter::actualTypeName (void) const {
 
 cPtr_actualParameter::
 cPtr_actualParameter (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -2493,7 +2493,7 @@ const char * GGS_inputJokerActualParameter::actualTypeName (void) const {
 cPtr_actualParameters::
 cPtr_actualParameters (const GGS__list_actualParameter & argument_0
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mActualParameter (argument_0) {
 }
 

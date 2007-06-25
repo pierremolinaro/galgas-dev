@@ -64,7 +64,7 @@ cPtr_optionComponentRoot::
 cPtr_optionComponentRoot (const GGS_lstring & argument_0,
                                 const GGS__list_commandLineOption & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mOptionComponentName (argument_0),
 mOptions (argument_1) {
 }
@@ -447,7 +447,7 @@ cPtr_commandLineOption (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_3,
                                 const GGS_lstring & argument_4
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mOptionTypeName (argument_0),
 mOptionInternalName (argument_1),
 mOptionInvocationLetter (argument_2),

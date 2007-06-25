@@ -53,7 +53,7 @@ class cPtr_referenceCallInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_treewalkingRule : public AC_galgas_entity {
+class GGS_treewalkingRule : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_treewalkingRule constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -162,7 +162,7 @@ class GGS__list_treewalkingRule : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_treewalkingComponentRoot : public AC_galgas_entity {
+class GGS_treewalkingComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_treewalkingComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -381,7 +381,7 @@ class GGS__list_referenceCallInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_treewalkingRule : public C_GGS_MetamodelEntity {
+class cPtr_treewalkingRule : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mEntityName ;
   public : GGS_formalParameters  mFormalParameterList ;
@@ -437,7 +437,7 @@ class cPtr_treewalkingRule : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_treewalkingComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_treewalkingComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mTreewalkingComponentName ;
   public : GGS_lstring  mMetamodelReferenceName ;

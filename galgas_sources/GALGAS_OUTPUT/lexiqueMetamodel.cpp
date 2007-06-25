@@ -70,7 +70,7 @@ cPtr_lexiqueComponentRoot (const GGS_lstring & argument_0,
                                 const GGS__list_lexicalImplicitRule & argument_6,
                                 const GGS__list_lexicalExplicitRule & argument_7
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mLexiqueComponentName (argument_0),
 mLexicalAttributeList (argument_1),
 mLexicalStyleList (argument_2),
@@ -665,7 +665,7 @@ const char * GGS_lexiqueComponentRoot::actualTypeName (void) const {
 cPtr_lexicalImplicitRule::
 cPtr_lexicalImplicitRule (const GGS_lstring & argument_0
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mListName (argument_0) {
 }
 
@@ -1009,7 +1009,7 @@ cPtr_lexicalErrorMessageDeclaration::
 cPtr_lexicalErrorMessageDeclaration (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mMessageName (argument_0),
 mMessageValue (argument_1) {
 }
@@ -1389,7 +1389,7 @@ cPtr_lexicalAttribute::
 cPtr_lexicalAttribute (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mTypeName (argument_0),
 mName (argument_1) {
 }
@@ -1769,7 +1769,7 @@ cPtr_lexicalStyle::
 cPtr_lexicalStyle (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mName (argument_0),
 mComment (argument_1) {
 }
@@ -2151,7 +2151,7 @@ cPtr_terminalDeclaration (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstring & argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mName (argument_0),
 mSentAttributeList (argument_1),
 mErrorMessage (argument_2),
@@ -2606,7 +2606,7 @@ cPtr_lexicalListDeclaration (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_3,
                                 const GGS__list_lexicalListEntry & argument_4
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mName (argument_0),
 mStyle (argument_1),
 mErrorMessage (argument_2),
@@ -3094,7 +3094,7 @@ cPtr_lexicalListEntry::
 cPtr_lexicalListEntry (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mEntrySpelling (argument_0),
 mTerminalSpelling (argument_1) {
 }
@@ -3474,7 +3474,7 @@ cPtr_lexicalExplicitRule::
 cPtr_lexicalExplicitRule (const GGS_lexicalExpression & argument_0,
                                 const GGS__list_lexicalInstruction & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mLexicalRuleExpression (argument_0),
 mInstructionList (argument_1) {
 }
@@ -3852,7 +3852,7 @@ const char * GGS_lexicalExplicitRule::actualTypeName (void) const {
 
 cPtr_lexicalExpression::
 cPtr_lexicalExpression (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -5975,7 +5975,7 @@ const char * GGS_lexicalStringNotMatch::actualTypeName (void) const {
 
 cPtr_lexicalInstruction::
 cPtr_lexicalInstruction (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -6995,7 +6995,7 @@ const char * GGS_lexicalSimpleSendInstruction::actualTypeName (void) const {
 
 cPtr_lexicalSendDefaultAction::
 cPtr_lexicalSendDefaultAction (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -7980,7 +7980,7 @@ cPtr_lexicalSendSearch::
 cPtr_lexicalSendSearch (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mAttributeName (argument_0),
 mSearchListName (argument_1) {
 }
@@ -8740,7 +8740,7 @@ cPtr_lexicalWhileBranch::
 cPtr_lexicalWhileBranch (const GGS_lexicalExpression & argument_0,
                                 const GGS__list_lexicalInstruction & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mWhileExpression (argument_0),
 mWhileInstructionList (argument_1) {
 }
@@ -9500,7 +9500,7 @@ cPtr_lexicalSelectBranch::
 cPtr_lexicalSelectBranch (const GGS_lexicalExpression & argument_0,
                                 const GGS__list_lexicalInstruction & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mSelectExpression (argument_0),
 mSelectInstructionList (argument_1) {
 }
@@ -10295,7 +10295,7 @@ const char * GGS_lexicalActionInstruction::actualTypeName (void) const {
 
 cPtr_lexicalActualArgument::
 cPtr_lexicalActualArgument (LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE) {
+EX_C_GGS_MetamodelEntity (THERE) {
 }
 
 //---------------------------------------------------------------------------*

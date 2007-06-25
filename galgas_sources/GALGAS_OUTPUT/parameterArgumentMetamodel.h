@@ -68,7 +68,7 @@ class cPtr_actualParameters ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_formalParameters : public AC_galgas_entity {
+class GGS_formalParameters : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_formalParameters constructor_new (C_Compiler & inLexique,
                                 const GGS__list_formalParameter & argument_0
@@ -165,7 +165,7 @@ class GGS__list_formalParameters : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_formalParameter : public AC_galgas_entity {
+class GGS_formalParameter : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_formalParameter constructor_new (C_Compiler & inLexique,
                                 const GGS_formalArgumentPassingMode& argument_0,
@@ -280,7 +280,7 @@ class GGS__list_formalParameter : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_actualParameter : public AC_galgas_entity {
+class GGS_actualParameter : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_actualParameter * getPtr (void) const {
     return (cPtr_actualParameter *) mPointer ;
@@ -734,7 +734,7 @@ class GGS__list_inputJokerActualParameter : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_actualParameters : public AC_galgas_entity {
+class GGS_actualParameters : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_actualParameters constructor_new (C_Compiler & inLexique,
                                 const GGS__list_actualParameter & argument_0
@@ -831,7 +831,7 @@ class GGS__list_actualParameters : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_formalParameters : public C_GGS_MetamodelEntity {
+class cPtr_formalParameters : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS__list_formalParameter  mFormalParameterList ;
 //--- Constructor
@@ -883,7 +883,7 @@ class cPtr_formalParameters : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_formalParameter : public C_GGS_MetamodelEntity {
+class cPtr_formalParameter : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_formalArgumentPassingMode mFormalParameterPassingMode ;
   public : GGS_lstring  mFormalParameterTypeName ;
@@ -941,7 +941,7 @@ class cPtr_formalParameter : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_actualParameter : public C_GGS_MetamodelEntity {
+class cPtr_actualParameter : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_actualParameter (LOCATION_ARGS) ;
@@ -1197,7 +1197,7 @@ class cPtr_inputJokerActualParameter : public cPtr_actualParameter {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_actualParameters : public C_GGS_MetamodelEntity {
+class cPtr_actualParameters : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS__list_actualParameter  mActualParameter ;
 //--- Constructor

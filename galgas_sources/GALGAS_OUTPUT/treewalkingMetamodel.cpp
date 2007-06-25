@@ -65,7 +65,7 @@ cPtr_treewalkingRule (const GGS_lstring & argument_0,
                                 const GGS_formalParameters & argument_1,
                                 const GGS_semanticInstructions & argument_2
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mEntityName (argument_0),
 mFormalParameterList (argument_1),
 mInstructionList (argument_2) {
@@ -484,7 +484,7 @@ cPtr_treewalkingComponentRoot (const GGS_lstring & argument_0,
                                 const GGS__list_semanticDeclaration & argument_3,
                                 const GGS__list_treewalkingRule & argument_4
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mTreewalkingComponentName (argument_0),
 mMetamodelReferenceName (argument_1),
 mImportedComponentFileNameList (argument_2),

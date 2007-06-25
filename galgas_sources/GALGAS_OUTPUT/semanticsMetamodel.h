@@ -92,7 +92,7 @@ class cPtr_enumMessageAssociation ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_semanticsComponentRoot : public AC_galgas_entity {
+class GGS_semanticsComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_semanticsComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -207,7 +207,7 @@ class GGS__list_semanticsComponentRoot : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_attributeInCollection : public AC_galgas_entity {
+class GGS_attributeInCollection : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_attributeInCollection constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -426,7 +426,7 @@ class GGS__list_mapDeclaration : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_mapMethod : public AC_galgas_entity {
+class GGS_mapMethod : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_mapMethod constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -791,7 +791,7 @@ class GGS__list_classDeclaration : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_abstractMethodDefinition : public AC_galgas_entity {
+class GGS_abstractMethodDefinition : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_abstractMethodDefinition constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -894,7 +894,7 @@ class GGS__list_abstractMethodDefinition : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_overridenMethodDefinition : public AC_galgas_entity {
+class GGS_overridenMethodDefinition : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_overridenMethodDefinition constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -1003,7 +1003,7 @@ class GGS__list_overridenMethodDefinition : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_methodDefinition : public AC_galgas_entity {
+class GGS_methodDefinition : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_methodDefinition constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -1112,7 +1112,7 @@ class GGS__list_methodDefinition : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_classMessageDefinition : public AC_galgas_entity {
+class GGS_classMessageDefinition : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_classMessageDefinition constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -1313,7 +1313,7 @@ class GGS__list_listDeclaration : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_sortedListSortDescriptor : public AC_galgas_entity {
+class GGS_sortedListSortDescriptor : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_sortedListSortDescriptor constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -1624,7 +1624,7 @@ class GGS__list_enumDeclaration : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_enumMessage : public AC_galgas_entity {
+class GGS_enumMessage : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_enumMessage constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -1727,7 +1727,7 @@ class GGS__list_enumMessage : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_enumMessageAssociation : public AC_galgas_entity {
+class GGS_enumMessageAssociation : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_enumMessageAssociation constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -1830,7 +1830,7 @@ class GGS__list_enumMessageAssociation : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_semanticsComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_semanticsComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mSemanticsComponentName ;
   public : GGS_stringset  mImportedSemanticsComponentSet ;
@@ -1888,7 +1888,7 @@ class cPtr_semanticsComponentRoot : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_attributeInCollection : public C_GGS_MetamodelEntity {
+class cPtr_attributeInCollection : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mAttributeTypeName ;
   public : GGS_lstring  mAttributeName ;
@@ -2002,7 +2002,7 @@ class cPtr_mapDeclaration : public cPtr_semanticDeclaration {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_mapMethod : public C_GGS_MetamodelEntity {
+class cPtr_mapMethod : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_lstring  mGetIDMethodName ;
@@ -2186,7 +2186,7 @@ class cPtr_classDeclaration : public cPtr_semanticDeclaration {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_abstractMethodDefinition : public C_GGS_MetamodelEntity {
+class cPtr_abstractMethodDefinition : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_formalParameters  mSignature ;
@@ -2240,7 +2240,7 @@ class cPtr_abstractMethodDefinition : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_overridenMethodDefinition : public C_GGS_MetamodelEntity {
+class cPtr_overridenMethodDefinition : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_formalParameters  mSignature ;
@@ -2296,7 +2296,7 @@ class cPtr_overridenMethodDefinition : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_methodDefinition : public C_GGS_MetamodelEntity {
+class cPtr_methodDefinition : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mMethodName ;
   public : GGS_formalParameters  mSignature ;
@@ -2352,7 +2352,7 @@ class cPtr_methodDefinition : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_classMessageDefinition : public C_GGS_MetamodelEntity {
+class cPtr_classMessageDefinition : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mMessageName ;
   public : GGS_lstring  mMessageValue ;
@@ -2460,7 +2460,7 @@ class cPtr_listDeclaration : public cPtr_semanticDeclaration {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_sortedListSortDescriptor : public C_GGS_MetamodelEntity {
+class cPtr_sortedListSortDescriptor : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mSortedAttributeName ;
   public : GGS_bool mAscending ;
@@ -2626,7 +2626,7 @@ class cPtr_enumDeclaration : public cPtr_semanticDeclaration {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_enumMessage : public C_GGS_MetamodelEntity {
+class cPtr_enumMessage : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mEnumMessageName ;
   public : GGS__list_enumMessageAssociation  mMessageAssociationList ;
@@ -2680,7 +2680,7 @@ class cPtr_enumMessage : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_enumMessageAssociation : public C_GGS_MetamodelEntity {
+class cPtr_enumMessageAssociation : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mConstantName ;
   public : GGS_lstring  mMessage ;

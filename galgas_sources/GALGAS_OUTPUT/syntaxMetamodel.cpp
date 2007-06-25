@@ -66,7 +66,7 @@ cPtr_syntaxComponentRoot (const GGS_lstring & argument_0,
                                 const GGS__list_syntaxRule & argument_2,
                                 const GGS__list_semanticDeclaration & argument_3
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mSyntaxComponentName (argument_0),
 mNonterminalDeclarations (argument_1),
 mRules (argument_2),
@@ -517,7 +517,7 @@ const char * GGS_syntaxComponentRoot::actualTypeName (void) const {
 cPtr_syntaxInstructions::
 cPtr_syntaxInstructions (const GGS__list_syntaxInstruction & argument_0
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mInstruction (argument_0) {
 }
 
@@ -862,7 +862,7 @@ cPtr_nonTerminalLabel (const GGS_lstring & argument_0,
                                 const GGS_formalParameters & argument_1,
                                 const GGS_lstring & argument_2
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mLabelName (argument_0),
 mFormalParameters (argument_1),
 mReturnedEntityName (argument_2) {
@@ -1279,7 +1279,7 @@ cPtr_nonterminalDeclaration (const GGS_lstring & argument_0,
                                 const GGS__list_nonTerminalLabel & argument_1,
                                 const GGS_bool& argument_2
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mNonterminalName (argument_0),
 mLabels (argument_1),
 mHasParseLabel (argument_2) {
@@ -1698,7 +1698,7 @@ cPtr_syntaxRuleLabel (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_3,
                                 const GGS_syntaxInstructions & argument_4
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mLabelName (argument_0),
 mFormalParameters (argument_1),
 mReturnedEntityName (argument_2),
@@ -2186,7 +2186,7 @@ cPtr_syntaxRule::
 cPtr_syntaxRule (const GGS_lstring & argument_0,
                                 const GGS__list_syntaxRuleLabel & argument_1
                                 COMMA_LOCATION_ARGS) :
-C_GGS_MetamodelEntity (THERE),
+EX_C_GGS_MetamodelEntity (THERE),
 mNonterminalName (argument_0),
 mLabelList (argument_1) {
 }

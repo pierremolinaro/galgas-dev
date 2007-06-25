@@ -52,7 +52,7 @@ class cPtr_guiComponentRoot ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_guiAttribute : public AC_galgas_entity {
+class GGS_guiAttribute : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_guiAttribute constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -155,7 +155,7 @@ class GGS__list_guiAttribute : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_guiLabel : public AC_galgas_entity {
+class GGS_guiLabel : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_guiLabel constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -258,7 +258,7 @@ class GGS__list_guiLabel : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_guiComponentRoot : public AC_galgas_entity {
+class GGS_guiComponentRoot : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_guiComponentRoot constructor_new (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
@@ -373,7 +373,7 @@ class GGS__list_guiComponentRoot : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_guiAttribute : public C_GGS_MetamodelEntity {
+class cPtr_guiAttribute : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mKey ;
   public : GGS_lstring  mValue ;
@@ -427,7 +427,7 @@ class cPtr_guiAttribute : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_guiLabel : public C_GGS_MetamodelEntity {
+class cPtr_guiLabel : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mAttribute1 ;
   public : GGS_lstring  mAttribute2 ;
@@ -481,7 +481,7 @@ class cPtr_guiLabel : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_guiComponentRoot : public C_GGS_MetamodelEntity {
+class cPtr_guiComponentRoot : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_lstring  mGUIName ;
   public : GGS_lstring  mGUIClass ;

@@ -166,7 +166,7 @@ class cPtr_typeMethodInstruction ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_syntaxInstruction : public AC_galgas_entity {
+class GGS_syntaxInstruction : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_syntaxInstruction * getPtr (void) const {
     return (cPtr_syntaxInstruction *) mPointer ;
@@ -341,7 +341,7 @@ class GGS__list_semanticInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_semanticInstructions : public AC_galgas_entity {
+class GGS_semanticInstructions : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_semanticInstructions constructor_new (C_Compiler & inLexique,
                                 const GGS__list_semanticInstruction & argument_0
@@ -438,7 +438,7 @@ class GGS__list_semanticInstructions : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_semanticDeclaration : public AC_galgas_entity {
+class GGS_semanticDeclaration : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_semanticDeclaration * getPtr (void) const {
     return (cPtr_semanticDeclaration *) mPointer ;
@@ -1238,7 +1238,7 @@ class GGS__list_appendInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_foreachInstructionEnumeratedObjectElement : public AC_galgas_entity {
+class GGS_foreachInstructionEnumeratedObjectElement : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_foreachInstructionEnumeratedObjectElement * getPtr (void) const {
     return (cPtr_foreachInstructionEnumeratedObjectElement *) mPointer ;
@@ -1514,7 +1514,7 @@ class GGS__list_foreachInstructionEnumeratedConstant : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_foreachInstructionEnumeratedObject : public AC_galgas_entity {
+class GGS_foreachInstructionEnumeratedObject : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_foreachInstructionEnumeratedObject constructor_new (C_Compiler & inLexique,
                                 const GGS_semanticExpression & argument_0,
@@ -2339,7 +2339,7 @@ class GGS__list_routineCallInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_matchEntry : public AC_galgas_entity {
+class GGS_matchEntry : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_matchEntry * getPtr (void) const {
     return (cPtr_matchEntry *) mPointer ;
@@ -2625,7 +2625,7 @@ class GGS__list_classMatchEntry : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_matchInstructionBranch : public AC_galgas_entity {
+class GGS_matchInstructionBranch : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_matchInstructionBranch constructor_new (C_Compiler & inLexique,
                                 const GGS__list_matchEntry & argument_0,
@@ -2832,7 +2832,7 @@ class GGS__list_matchInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_castInstructionBranch : public AC_galgas_entity {
+class GGS_castInstructionBranch : public EX_AC_galgas_entity {
 //--- 'new' constructor
   public : static GGS_castInstructionBranch constructor_new (C_Compiler & inLexique,
                                 const GGS_bool& argument_0,
@@ -2953,7 +2953,7 @@ class GGS__list_castInstructionBranch : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_elseOrDefaultForCastInstruction : public AC_galgas_entity {
+class GGS_elseOrDefaultForCastInstruction : public EX_AC_galgas_entity {
 //--- getPtr
   public : inline cPtr_elseOrDefaultForCastInstruction * getPtr (void) const {
     return (cPtr_elseOrDefaultForCastInstruction *) mPointer ;
@@ -4231,7 +4231,7 @@ class GGS__list_typeMethodInstruction : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_syntaxInstruction : public C_GGS_MetamodelEntity {
+class cPtr_syntaxInstruction : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_syntaxInstruction (LOCATION_ARGS) ;
@@ -4331,7 +4331,7 @@ class cPtr_semanticInstruction : public cPtr_syntaxInstruction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_semanticInstructions : public C_GGS_MetamodelEntity {
+class cPtr_semanticInstructions : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS__list_semanticInstruction  mInstruction ;
 //--- Constructor
@@ -4383,7 +4383,7 @@ class cPtr_semanticInstructions : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_semanticDeclaration : public C_GGS_MetamodelEntity {
+class cPtr_semanticDeclaration : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_semanticDeclaration (LOCATION_ARGS) ;
@@ -4819,7 +4819,7 @@ class cPtr_appendInstruction : public cPtr_semanticInstruction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_foreachInstructionEnumeratedObjectElement : public C_GGS_MetamodelEntity {
+class cPtr_foreachInstructionEnumeratedObjectElement : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_foreachInstructionEnumeratedObjectElement (LOCATION_ARGS) ;
@@ -4973,7 +4973,7 @@ class cPtr_foreachInstructionEnumeratedConstant : public cPtr_foreachInstruction
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_foreachInstructionEnumeratedObject : public C_GGS_MetamodelEntity {
+class cPtr_foreachInstructionEnumeratedObject : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_semanticExpression  mEnumeratedExpression ;
   public : GGS__list_foreachInstructionEnumeratedObjectElement  mElements ;
@@ -5417,7 +5417,7 @@ class cPtr_routineCallInstruction : public cPtr_semanticInstruction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_matchEntry : public C_GGS_MetamodelEntity {
+class cPtr_matchEntry : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_matchEntry (LOCATION_ARGS) ;
@@ -5575,7 +5575,7 @@ class cPtr_classMatchEntry : public cPtr_matchEntry {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_matchInstructionBranch : public C_GGS_MetamodelEntity {
+class cPtr_matchInstructionBranch : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS__list_matchEntry  mMatchedEntryList ;
   public : GGS_semanticInstructions  mMatchBranchInstructionList ;
@@ -5685,7 +5685,7 @@ class cPtr_matchInstruction : public cPtr_semanticInstruction {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_castInstructionBranch : public C_GGS_MetamodelEntity {
+class cPtr_castInstructionBranch : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
   public : GGS_bool mUseKindOfClass ;
   public : GGS_lstring  mTypeName ;
@@ -5745,7 +5745,7 @@ class cPtr_castInstructionBranch : public C_GGS_MetamodelEntity {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cPtr_elseOrDefaultForCastInstruction : public C_GGS_MetamodelEntity {
+class cPtr_elseOrDefaultForCastInstruction : public EX_C_GGS_MetamodelEntity {
 //--- Attributes
 //--- Constructor
   public : cPtr_elseOrDefaultForCastInstruction (LOCATION_ARGS) ;
