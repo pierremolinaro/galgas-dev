@@ -184,7 +184,7 @@ createTreewalkingFile (const C_String & inCreatedProjectPathName) {
   C_TextFileWrite f (fileName COMMA_GALGAS_CREATOR COMMA_HERE) ; 
   f << "treewalking " << projectName << "_treewalking (" << projectName << "_metamodel) :\n"
        "import \"" << projectName << "_metamodel.ggs\" ;\n"
-       "import semantics " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n"
+       "import metamodel " << projectName << "_metamodel in \"" << projectName << "_metamodel.ggs\" ;\n"
        "import semantics " << projectName << "_semantics in \"" << projectName << "_semantics.ggs\" ;\n"
        "\n"
        "rule @" << projectName << "_root :\n"
