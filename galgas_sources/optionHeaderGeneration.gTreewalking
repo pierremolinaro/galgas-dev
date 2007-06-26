@@ -45,7 +45,7 @@ rule @optionComponentRoot
     [@string CppTitleComment !"Command Line Options definitions class"]
   . "class " . inOptionComponentName . " : public AC_CLI_Options {\n"
     "//--- Constructor\n"
-    "  public : galgas_cli_options (void) ;\n"
+    "  public : " . inOptionComponentName . " (void) ;\n"
     "\n"
     "//--- Boolean Command Line Interface Options\n"
     "  public : virtual sint32 getBoolOptionsCount (void) const ;\n\n"

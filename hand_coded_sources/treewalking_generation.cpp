@@ -91,13 +91,13 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                          const C_String & /* inTargetFileName */,
                          const GGS_typeExpressionList & inExpressionList) const {
   ioCppFile << "macroValidPointer (_currentObject) ;\n"
-               "{ GGS__list_" << inEntityName << "::element_type * _ptr = _currentObject->"
+               "{ AC_galgas_entity_list::cEntityListElement * _ptr = _currentObject->"
             << inCalledPropertyName << ".firstObject () ;\n"
             << "  while (_ptr != NULL) {\n"
                "    _treewalking_routine_" << inEntityName
             << "_type * _f = (_treewalking_routine_" << inEntityName
-            << "_type *) _gDispatcherTree.entry (_ptr COMMA_HERE) ;\n"
-               "    (* _f) (_inLexique, _ptr" ;
+            << "_type *) _gDispatcherTree.entry (_ptr->ptr () COMMA_HERE) ;\n"
+               "    (* _f) (_inLexique, (cPtr_" << inEntityName << " *) _ptr->ptr ()" ;
   GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
   while (argCourant != NULL) {
     macroValidPointer (argCourant) ;
@@ -106,7 +106,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
     argCourant = argCourant->nextObject () ;
   }
   ioCppFile << ") ;\n"
-               "    _ptr = _ptr->nextObject () ;\n"
+               "    _ptr = _ptr->internalNextItem () ;\n"
                "  }\n"
                "}\n" ;
 }
