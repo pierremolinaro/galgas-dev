@@ -3199,14 +3199,14 @@ rule <semantic_instruction>
     ?typeName
   ;
 #--- Variable name
-  @lstring nomVariable ;
-  $identifier$ ? nomVariable ;
-  @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ![nomVariable string]] ;
-  [!?ioVariablesMap insertLocalVariable !nomVariable !definitionType !nomCppVariable] ;
+  @lstring targetVarName ;
+  $identifier$ ? targetVarName ;
+  @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![targetVarName location] ![targetVarName string]] ;
+  [!?ioVariablesMap insertLocalVariable !targetVarName !definitionType !nomCppVariable] ;
 #--- Assignment ?
   <optional_assignment>
     !typeName
-    !nomVariable
+    !targetVarName
     !nomCppVariable
     !definitionType
     !?ioVariablesMap
@@ -4439,7 +4439,7 @@ end rule ;
 
 rule <optional_assignment>
   ??@lstring unused inTypeName
-  ??@lstring unused nomVarDest
+  ??@lstring unused inTargetVarName
   ??@typeCplusPlusName inVariableCppName
   ??@AC_galgasType inVariableType
   ?!@typeVariablesMap unused ioVariablesMap
@@ -4464,14 +4464,12 @@ rule <optional_assignment>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
   $:=$ ;
-#--- Indicate variable is written
-  [!?ioVariablesMap searchForWriteAccess !inTargetVarName ?* ?*] ;
 #--- Parse source expression
   @typeExpression sourceExpression ;
   @AC_galgasType sourceType ;
   <expression>
     !ioComponentSemanticsEntitiesMap
-    ! inOptionsComponentsMapForUse
+    !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?sourceExpression
     ?sourceType
@@ -4481,6 +4479,8 @@ rule <optional_assignment>
 #--- Generate instruction
   @typeInstruction instruction := [@C_declarationInstructionWithAssignment new !inVariableType !inTargetVariableCppName !sourceExpression] ;
   ioInstructionList += !instruction ;
+#--- Indicate variable is written
+  [!?ioVariablesMap searchForWriteAccess !inTargetVarName ?* ?*] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -4496,7 +4496,6 @@ rule <optional_assignment>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
 :
 #--- Indicate variable is written
-  [!?ioVariablesMap searchForWriteAccess !inTargetVarName ?* ?*] ;
   $[$ ;
 #--- Class method name
   @lstring constructorName ;
@@ -4520,6 +4519,8 @@ rule <optional_assignment>
     !expressionList
   ] ;
   ioInstructionList += ![@C_declarationInstructionWithAssignment new !inVariableType !inTargetVariableCppName !e] ;
+#--- Indicate variable is written
+  [!?ioVariablesMap searchForWriteAccess !inTargetVarName ?* ?*] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

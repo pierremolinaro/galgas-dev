@@ -327,7 +327,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions && (mReturnedEntityVarName.length () > 0)) {
     if (mReturnedEntityShouldInsertedInList.boolValue ()) {
-      inCppFile << "var_cas_" << mReturnedEntityVarName << "._addModel (" ;
+      inCppFile << "var_cas_" << mReturnedEntityVarName << "._addAssign_operation (" ;
     }else{
       inCppFile << "var_cas_" << mReturnedEntityVarName << " = " ;
     }
