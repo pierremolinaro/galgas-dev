@@ -97,6 +97,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
                "    _treewalking_routine_" << inEntityName
             << "_type * _f = (_treewalking_routine_" << inEntityName
             << "_type *) _gDispatcherTree.entry (_ptr->ptr () COMMA_HERE) ;\n"
+               "    MF_Assert (dynamic_cast <cPtr_" << inEntityName << " *> (_ptr->ptr ()) != NULL, \"Treewalking dispatch error\", 0, 0) ;\n"
                "    (* _f) (_inLexique, (cPtr_" << inEntityName << " *) _ptr->ptr ()" ;
   GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
   while (argCourant != NULL) {
