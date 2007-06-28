@@ -736,12 +736,22 @@ class @entityGalgasType extends @ACGalgasType {
       "  return equal ;\n"
     . "}\n\n"
     . [@string CppLineComment]
-    . "void cPtr_" . mEntityName . "::\n"
-    . "appendForDescription (C_Compiler & _inLexique,\n"
-    . "                      C_String & ioString,\n"
-    . "                      const sint32 inIndentation\n"
-    . "                      COMMA_LOCATION_ARGS) const {\n"
-    . "  ioString << \"-> instance of @" . mEntityName . "\" ;\n"
+    . "void cPtr_" . mEntityName . "::\n" ;
+    if [allAttributeList length] == 0 then
+      ioGeneratedCode .=
+        "appendForDescription (C_Compiler & /* _inLexique */,\n"
+      . "                      C_String & ioString,\n"
+      . "                      const sint32 /* inIndentation */\n"
+      . "                      COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
+    else
+      ioGeneratedCode .=
+        "appendForDescription (C_Compiler & _inLexique,\n"
+      . "                      C_String & ioString,\n"
+      . "                      const sint32 inIndentation\n"
+      . "                      COMMA_LOCATION_ARGS) const {\n" ;
+    end if ;
+    ioGeneratedCode .=
+      "  ioString << \"-> instance of @" . mEntityName . "\" ;\n"
     . "  ioString << \"\\n\" ;\n" ;
     @bool first := true ;
     foreach allAttributeList (* @lstring attributeName) :
