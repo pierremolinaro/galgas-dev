@@ -104,7 +104,7 @@ template <typename INFO> class cElementTableControlePhase {
   public : INFO mInfo ;
   public : const sint32 mEntryIndex ;
   public : agregatChainageEtat * champChainageEtat ;
-  public : sint16 mBalance ;
+  public : sint32 mBalance ;
   public : const enumNatureEntite champNature ;
   public : enumEtatVariable champEtat ;
   public : bool champUtilise ;

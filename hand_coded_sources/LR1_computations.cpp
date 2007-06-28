@@ -103,7 +103,7 @@ class cLR1_items_AVL_tree {
   public : cLR1_items_AVL_tree * mPtrToInf ;
   public : cLR1_items_AVL_tree * mPtrToSup ;
   public : const c_LR1_item mLR1item ;
-  public : sint8 mBalance ;
+  public : sint32 mBalance ;
 
   private : cLR1_items_AVL_tree (const c_LR1_item & inLR1item) ;
 
@@ -783,7 +783,7 @@ class cLR1_items_sets_AVL_tree {
   public : cLR1_items_sets_AVL_tree * mPtrToInf ;
   public : cLR1_items_sets_AVL_tree * mPtrToSup ;
   private : const sint32 mInfoIndex ;
-  public : sint8 mBalance ;
+  public : sint32 mBalance ;
 
   private : cLR1_items_sets_AVL_tree (const sint32 inInfo) ;
 

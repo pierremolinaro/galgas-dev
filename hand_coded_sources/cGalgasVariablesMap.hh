@@ -161,10 +161,10 @@ void cGalgasVariablesMap <INFO>::rotateLeft (element_type * & a) {
   if (b->mBalance >= 0) {
     a->mBalance++ ;
   }else{
-    a->mBalance += (sint16) (1 - b->mBalance) ;
+    a->mBalance += 1 - b->mBalance ;
   }
   if (a->mBalance > 0) {
-    b->mBalance += (sint16) (a->mBalance + 1) ;
+    b->mBalance += a->mBalance + 1 ;
   }else{
     b->mBalance++ ;
   }
@@ -182,14 +182,14 @@ void cGalgasVariablesMap <INFO>::rotateRight (element_type * & a) {
  
 // recalculer l'equilibrage 
   if (b->mBalance > 0) {
-    a->mBalance += (sint16) (-b->mBalance - 1) ;
+    a->mBalance += -b->mBalance - 1 ;
   }else{
     a->mBalance-- ;
   } ;
   if (a->mBalance >= 0) {
     b->mBalance-- ;
   }else{
-    b->mBalance += (sint16) (a->mBalance - 1) ;
+    b->mBalance += a->mBalance - 1 ;
   }
   a = b ;
 }

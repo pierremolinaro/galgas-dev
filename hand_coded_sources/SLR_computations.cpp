@@ -305,7 +305,7 @@ class cLR0_items_sets_AVL_tree {
   public : cLR0_items_sets_AVL_tree * mPtrToInf ;
   public : cLR0_items_sets_AVL_tree * mPtrToSup ;
   private : const sint32 mInfo ;
-  public : sint8 mBalance ;
+  public : sint32 mBalance ;
   private : cLR0_items_sets_AVL_tree (const sint32 inInfo) ;
   public : virtual ~cLR0_items_sets_AVL_tree (void) ;
   private : sint32 compare (const c_LR0_items_set & in_LR0_items_set,
