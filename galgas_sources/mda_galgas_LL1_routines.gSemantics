@@ -223,7 +223,7 @@ routine compileMetamodelComponentLL1
     . "static C_MetamodelManager gMetamodelManager (\"" . metamodelComponentName . "\", "
     . [[sortedTypeList length] string] . ") ;\n\n"
     . [@string CppLineComment]
-    . "sint32 _metamodel_index_for_expressionMetamodel (void) {\n"
+    . "sint32 _metamodel_index_for_" . metamodelComponentName . " (void) {\n"
     . "  return gMetamodelManager.mMetamodelComponentIndex ;\n"
     . "}\n\n" ;
     foreach sortedTypeList (@ACGalgasType kType @string kSortString) :

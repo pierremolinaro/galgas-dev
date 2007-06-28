@@ -686,11 +686,11 @@ class @entityGalgasType extends @ACGalgasType {
     end if ;
     if [mSuperEntityIndex isRegular] then
       ioGeneratedCode .= "cPtr_" . [mSuperEntityIndex key] . " (" ;
-      if [allAttributeList length] == 0 then
+      if [inheritedAttributeList length] == 0 then
         ioGeneratedCode .= "THERE)" ;
       else
         @uint n := 0 ;
-        foreach allAttributeList (* *) :
+        foreach inheritedAttributeList (* *) :
           if n > 0 then
             ioGeneratedCode .= ",\n"
             . "                                " ;
@@ -723,13 +723,14 @@ class @entityGalgasType extends @ACGalgasType {
       foreach allAttributeList (* @lstring attributeName) :
         if first then
           ioGeneratedCode .= "    equal = " ;
+          first := false ;
         else
           ioGeneratedCode .= "\n         && " ;
-          first := false ;
         end if ;
         ioGeneratedCode .= [attributeName string] . "._operator_isEqual (_p->" . [attributeName string] . ").boolValue ()" ;
       end foreach ;
-      ioGeneratedCode .= " ;\n" ;
+      ioGeneratedCode .= " ;\n"
+      . "  }\n" ;
     end if ;
     ioGeneratedCode .=
       "  return equal ;\n"
@@ -786,9 +787,130 @@ class @entityGalgasType extends @ACGalgasType {
     . "  }\n"
     . "  return result ;\n"
     . "}\n\n"
+    . [@string CppTitleComment !"List '@" . mEntityName . "'"]
+    . "void GGS__list_" . mEntityName . "::\n"
+    . "_addAssign_operation (const GGS_" . mEntityName . " & inObject) {\n"
+    . "   _insulateList () ;\n"
+    . "   _internalAppendItem (inObject._ptr ()) ;\n"
+    . "}\n\n"
+    . [@string CppLineComment]
+    . "GGS__list_" . mEntityName . " GGS__list_" . mEntityName . "::\n"
+    . "_operator_concat (const GGS__list_" . mEntityName . " & inOperand) const {\n"
+    . "  GGS__list_" . mEntityName . " result ;\n"
+    . "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
+    . "    if (count () == 0) {\n"
+    . "      result = inOperand ;\n"
+    . "    }else{\n"
+    . "      result = * this ;\n"
+    . "      if (inOperand.count () > 0) {\n"
+    . "        result._insulateList () ;\n"
+    . "        cEntityListElement * p = inOperand.firstObject () ;\n"
+    . "        while (p != NULL) {\n"
+    . "          macroValidPointer (p) ;\n"
+    . "          macroValidPointer (p->ptr ()) ;\n"
+    . "          result._internalAppendItem (p->ptr ()) ;\n"
+    . "          p = p->internalNextItem () ;\n"
+    . "        }\n"
+    . "      }\n"
+    . "    }\n"
+    . "  }\n"
+    . "  return result ;\n"
+    . "}\n\n"
+    . [@string CppLineComment]
+    . "void GGS__list_" . mEntityName . "::\n"
+    . "modifier_prependValue (C_Compiler & /* inLexique */,\n"
+    . "                       const GGS_" . mEntityName . " & inObject\n"
+    . "                       COMMA_UNUSED_LOCATION_ARGS) {\n"
+    . "  if (_isBuilt () && inObject._isBuilt ()) {\n"
+    . "    _insulateList () ;\n"
+    . "    _internalPrependItem (inObject._ptr ()) ;\n"
+    . "  }\n"
+    . "}\n\n"
+    . [@string CppLineComment]
+    . "GGS__list_" . mEntityName . "  GGS__list_" . mEntityName . "::\n"
+    . "constructor_emptyList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+    . "  GGS__list_" . mEntityName . " result ;\n"
+    . "  result._alloc () ;\n"
+    . "  return result ;\n"
+    . "}\n\n"
+    . [@string CppLineComment]
+    . "GGS__list_" . mEntityName . "  GGS__list_" . mEntityName . "::\n"
+    . "constructor_listWithValue (C_Compiler & /* _inLexique */,\n"
+    . "                           const GGS_" . mEntityName . " & inObject\n"
+    . "                           COMMA_UNUSED_LOCATION_ARGS) {\n"
+    . "  GGS__list_" . mEntityName . " result ;\n"
+    . "  result._alloc () ;\n"
+    . "  result._internalAppendItem (inObject._ptr ()) ;\n"
+    . "  return result ;\n"
+    . "}\n\n"
+    . [@string CppLineComment]
+    . "GGS_string GGS__list_" . mEntityName . "::\n"
+    . "reader_description (C_Compiler & _inLexique\n"
+    . "                    COMMA_LOCATION_ARGS,\n"
+    . "                    const sint32 inIndentation) const {\n"
+    . "  return _description (_inLexique, \"@_list_" . mEntityName . "\", inIndentation COMMA_THERE) ;\n"
+    . "}\n\n"
+    . [@string CppTitleComment !"Entity '@" . mEntityName . "'"] ;
+    if not mIsAbstract then
+      ioGeneratedCode .=
+        "GGS_" . mEntityName . " GGS_" . mEntityName . "::\n"
+      . "constructor_new (C_Compiler & /* inLexique */" ;
+      @uint n := 0 ;
+      foreach allAttributeList (@typeMapIndex attributeTypeIndex *) :
+        ioGeneratedCode .= ",\n                                "
+        . "const GGS_" . [attributeTypeIndex key]
+        . " & argument_" . [n string] ;
+        n ++ ;
+      end foreach ;
+      ioGeneratedCode .= "\n                                "
+      . "COMMA_LOCATION_ARGS) {\n"
+      . "  GGS_" . mEntityName . " result ;\n"
+      . "  macroMyNew (result.mPointer, cPtr_" . mEntityName . " (" ;
+      if [allAttributeList length] == 0 then
+        ioGeneratedCode .= "THERE)) ;" ;
+      else
+        n := 0 ;
+        foreach allAttributeList (* *) :
+        if n > 0 then
+          ioGeneratedCode .= ",\n                                " ;
+        end if ;
+        ioGeneratedCode .= "argument_" . [n string] ;
+        n ++ ;
+        end foreach ;
+        ioGeneratedCode .= "\n                                "
+        . "COMMA_THERE)) ;\n" ;
+      end if ;
+      ioGeneratedCode .=
+        "  return result ;\n"
+      . "}\n\n" ;
+    end if ;
+    foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+    ioGeneratedCode .= [@string CppLineComment]
+      . "GGS_" . [attributeTypeIndex key] . " GGS_" . mEntityName . "::\n"
+      . "reader_" . attributeName . " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+      . "  GGS_" . [attributeTypeIndex key] . " result ;\n"
+      . "  if (mPointer != NULL) {\n"
+      . "    macroValidPointer (mPointer) ;\n"
+      . "    MF_Assert (dynamic_cast <cPtr_" . mEntityName . " *> (mPointer) != NULL,\n"
+      . "               \"dynamic cast error\", 0, 0) ;\n"
+      . "    result = ((cPtr_" . mEntityName . " *) mPointer)->" . attributeName . " ;\n"
+      . "  }\n"
+      . "  return result ;\n"
+      . "}\n\n" ;
+    end foreach ;
+    ioGeneratedCode .=
+      [@string CppLineComment]
+    . "const char * GGS_" . mEntityName . "::actualTypeName (void) const {\n"
+    . " return \"" . mEntityName . "\" ;\n"
+    . "}\n\n"
+    . [@string CppLineComment]
+    . "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
+    . "  cPtr_" . mEntityName . " * GGS_" . mEntityName . "::operator () (LOCATION_ARGS) const {\n"
+    . "    macroValidPointerThere (mPointer) ;\n"
+    . "    return (cPtr_" . mEntityName . " *) mPointer ;\n"
+    . "  }\n"
+    . "#endif\n\n"
     ;
-    ioGeneratedCode .= [@string CppTitleComment !"List '@" . mEntityName . "'"] ;
-    ioGeneratedCode .= [@string CppTitleComment !"Entity '@" . mEntityName . "'"] ;
   end method ;
 }
 
