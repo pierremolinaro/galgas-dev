@@ -17,11 +17,14 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#--- Common semantics files
-compile "commonSemantics.gSemantics" ;
+#--- Command Line Options
+compile "galgas_cli_options.gOption" ;
 
 #--- Common Scanner
 compile "galgas_scanner.gLexique" ;
+
+#--- Common semantics files
+compile "commonSemantics.gSemantics" ;
 
 #--- Lexique Component
 compile "lexiqueSemantics.gSemantics" ;

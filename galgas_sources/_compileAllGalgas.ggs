@@ -17,6 +17,9 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#--- Command Line Options
+compile "galgas_cli_options.gOption" ;
+
 #--- Common semantics files
 compile "commonSemantics.gSemantics" ;
 
