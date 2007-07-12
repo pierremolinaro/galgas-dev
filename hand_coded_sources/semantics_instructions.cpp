@@ -798,51 +798,6 @@ formalCurrentObjectArgumentIsUsed (void) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeInstructionDeclarationVarLocale::
-generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
-                     const bool /* inGenerateDebug */,
-                     const bool inGenerateSemanticInstructions) const {
-  if (inGenerateSemanticInstructions) {
-    aTypeVariable (HERE)->generateCppClassName (ioCppFile) ;
-    ioCppFile << " " ;
-    aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << " ;\n" ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionDeclarationVarLocale::
-isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionDeclarationVarLocale::
-formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                      const bool /* inGenerateSemanticInstructions */) const {
-  return aNomCppVariable.isSameObjectAs (inArgumentCppName) ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionDeclarationVarLocale::
-formalCurrentObjectArgumentIsUsed (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeMatchInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & inTargetFileName,

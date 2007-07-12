@@ -191,7 +191,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       inCppFile.writeCppHyphenLineComment () ;
     }
     macroValidPointer (currentAltForNonTerminal) ;
-    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+    const bool returnsEntity = currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0 ;
+    if (returnsEntity) {
       inCppFile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << " " ;      
     }else{
@@ -207,7 +208,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << '_' << aNomProduction.columnNumber ()
               << '_' << currentAltForNonTerminal->mKey << " ("
               << mLexiqueClassName << " & " ;
-    const bool lexiqueFormalArgumentUsed = (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0)
+    const bool hasExplicityReturnedEntity = currentAltForNonTerminal->mInfo.mMDAResultVariableName.length () > 0 ;
+    const bool lexiqueFormalArgumentUsed = (returnsEntity && ! hasExplicityReturnedEntity)
       || isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, true) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
@@ -253,9 +255,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                    "  #endif\n";
     }
   //--- Build returned entity instance
-    if (currentAltForNonTerminal->mInfo.mMDAResultVariableName.length () > 0) {
+    if (hasExplicityReturnedEntity) {
       inCppFile << "  return var_cas_" << currentAltForNonTerminal->mInfo.mMDAResultVariableName << " ;\n" ;
-    }else if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+    }else if (returnsEntity) {
       inCppFile << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " _entityInstance ="
                    " GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << "::constructor_new (_inLexique" ;
