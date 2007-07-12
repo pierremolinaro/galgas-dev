@@ -33,10 +33,10 @@
 
 void cPtr_C_assignmentInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " = " ;
@@ -118,6 +118,51 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   return mTargetVarCppName.isSameObjectAs (inArgumentCppName)
       || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Declaration without assignment
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeInstructionDeclarationVarLocale::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    aTypeVariable (HERE)->generateCppClassName (ioCppFile) ;
+    ioCppFile << " " ;
+    aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << " ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionDeclarationVarLocale::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionDeclarationVarLocale::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return aNomCppVariable.isSameObjectAs (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionDeclarationVarLocale::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return false ;
 }
 
 //---------------------------------------------------------------------------*
