@@ -418,7 +418,9 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
   inHTMLfile.outputRawData ("<p><a name=\"pure_bnf\"></a>") ;
   inHTMLfile << "Listing of the "
              << productionsCount
-             << " BNF productions :" ;
+             << " BNF production"
+             << ((productionsCount > 1) ? "s" : "")
+             << " :" ;
   inHTMLfile.outputRawData ("</p>\n<table class=\"result\">") ;
   for (sint32 i=0 ; i<productionsCount ; i++) {
     const cProduction & p = inProductions (i COMMA_HERE) ;

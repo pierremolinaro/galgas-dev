@@ -128,7 +128,9 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile << "The original grammar has "
              << productionsCount
-             << " productions." ;
+             << " production"
+             << ((productionsCount > 1) ? "s" : "")
+             << "." ;
   inHTMLfile.outputRawData ("</p><table class=\"result\">") ;
 
 //--- Print productions rules by traversing syntax components
