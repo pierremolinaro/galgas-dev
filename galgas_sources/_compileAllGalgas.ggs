@@ -17,6 +17,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+compile "parser_parser.gSyntax" ;
+
 #--- Command Line Options
 compile "galgas_cli_options.gOption" ;
 
@@ -107,7 +109,6 @@ compile "parser_semantics.gSemantics" ;
 compile "domain_parser.gSyntax" ;
 compile "semantics_parser.gSyntax" ;
 compile "metamodel_parser.gSyntax" ;
-compile "parser_parser.gSyntax" ;
 compile "treewalking_parser.gSyntax" ;
 compile "scanner_semantics.gSemantics" ;
 compile "cocoa_parser.gSyntax" ;
