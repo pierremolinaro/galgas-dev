@@ -603,7 +603,6 @@ rule <syntax_instruction>
   [!?ioVariablesMap searchForReadWriteAccess !nomTable ?typeEntite ?nomCppVariableTable] ; 
   @typeTableBlocsDeTable tableMethodesBloc :=
    [(cast typeEntite if >=@typeGalgasMapType else error nomTable) aTableMethodesSurcharger] ;
-  # ¤ extract typeEntite->@typeGalgasMapType (?* ?* ?tableMethodesBloc ?* ?*) error nomTable : messageGalgasType ;
 #--- Methode block
   $.$ ;
   @lstring nomMethodeBloc ;
@@ -694,81 +693,151 @@ end rule ;
 routine implicitDeclaration
   ??@lstring inNonterminalBaseName
   ??@uint inLevel
-  ??@string unused inReturnedEntityName
-  ??@M_nonterminalSymbolAltsForGrammar parametersMapForGrammar
-  ??@M_nonterminalSymbolAlts parametersMap
+  ??@lstring inReturnedEntityName
   ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax ioNonTerminalSymbolMapForSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
 :
+#---
+  @AC_galgasType entityType := [@typeGalgas_singleReferenceEntity new
+    !inReturnedEntityName
+    ![@typeListeAttributsSemantiques emptyList]
+    ![@stringset emptySet]
+  ] ;
+
+  @bool hasSemantics := [inReturnedEntityName string] != "" ;
+  @lstring var_e ;
+  @lstring var_exp ;
+  if hasSemantics then
+    var_e := [@lstring new !"e" !here] ;
+    var_exp := [@lstring new !"exp" !here] ;
+  else
+    var_e := [@lstring new !"" !here] ;
+    var_exp := [@lstring new !"" !here] ;
+  end if ;
+#---
+  @M_nonterminalSymbolAlts parametersMapNoArgument [emptyMap] ;
+  @M_nonterminalSymbolAltsForGrammar parametersMapForGrammarNoArgument [emptyMap] ;
+  [!?parametersMapNoArgument insertKey ![@lstring new !"" !here] ![@L_EXsignature emptyList] !inReturnedEntityName] ;
+  [!?parametersMapForGrammarNoArgument insertKey
+    ![@lstring new !"" !here] # Empty Id
+    ![@L_signature emptyList]
+    !inReturnedEntityName
+  ] ;
+#---
+  @M_nonterminalSymbolAlts parametersMapOneArgument ;
+  @M_nonterminalSymbolAltsForGrammar parametersMapForGrammarOneArgument ;
+  if hasSemantics then
+    parametersMapOneArgument := [@M_nonterminalSymbolAlts emptyMap] ;
+    parametersMapForGrammarOneArgument := [@M_nonterminalSymbolAltsForGrammar emptyMap] ;
+    @L_signature signatureForGrammar [emptyList] ;
+    signatureForGrammar += ![@formalArgumentPassingMode argumentConstantIn] !inReturnedEntityName ;
+    @L_EXsignature listeDeTypesFormels [emptyList] ;
+    listeDeTypesFormels += !entityType ![@formalArgumentPassingMode argumentConstantIn] ;
+    [!?parametersMapOneArgument insertKey ![@lstring new !"" !here] !listeDeTypesFormels !inReturnedEntityName] ;
+    [!?parametersMapForGrammarOneArgument insertKey
+      ![@lstring new !"" !here] # Empty Id
+      !signatureForGrammar
+      !inReturnedEntityName
+    ] ;
+  else
+    parametersMapOneArgument := parametersMapNoArgument ;
+   parametersMapForGrammarOneArgument := parametersMapForGrammarNoArgument ;
+  end if ;
+
 #--- Nonterminal <Expression__i>
   @lstring actualRuleName [new ![inNonterminalBaseName string] . "__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualRuleName !parametersMapForGrammar] ;
-  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualRuleName !parametersMap] ;
-  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !actualRuleName !parametersMap !inLexiqueClassName] ;
+  [!?ioNonTerminalSymbolsMap insertKey !actualRuleName !parametersMapForGrammarNoArgument] ;
+  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualRuleName !parametersMapNoArgument] ;
+  @typeEntityToGenerate ea := [@typeNonterminalToGenerate new !actualRuleName !parametersMapNoArgument !inLexiqueClassName] ;
   listeEntitesAengendrer += !ea ;
 #--- Nonterminal <Expression__prefix__i>
   @lstring actualPrefixName [new ![inNonterminalBaseName string] . "__prefix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualPrefixName !parametersMapForGrammar] ;
-  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualPrefixName !parametersMap] ;
-  ea := [@typeNonterminalToGenerate new !actualPrefixName !parametersMap !inLexiqueClassName] ;
+  [!?ioNonTerminalSymbolsMap insertKey !actualPrefixName !parametersMapForGrammarNoArgument] ;
+  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualPrefixName !parametersMapNoArgument] ;
+  ea := [@typeNonterminalToGenerate new !actualPrefixName !parametersMapNoArgument !inLexiqueClassName] ;
   listeEntitesAengendrer += !ea ;
 #--- Nonterminal <Expression__infix__i>
   @lstring actualInfixName [new ![inNonterminalBaseName string] . "__infix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualInfixName !parametersMapForGrammar] ;
-  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualInfixName !parametersMap] ;
-  ea := [@typeNonterminalToGenerate new !actualInfixName !parametersMap !inLexiqueClassName] ;
+  [!?ioNonTerminalSymbolsMap insertKey !actualInfixName !parametersMapForGrammarOneArgument] ;
+  [!?ioNonTerminalSymbolMapForSyntax insertKey !actualInfixName !parametersMapOneArgument] ;
+  ea := [@typeNonterminalToGenerate new !actualInfixName !parametersMapOneArgument !inLexiqueClassName] ;
   listeEntitesAengendrer += !ea ;
 #--- Nonterminal <Expression__postfix__i>
   @lstring actualPostfixName [new ![inNonterminalBaseName string] . "__postfix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualPostfixName !parametersMapForGrammar] ;
-   [!?ioNonTerminalSymbolMapForSyntax insertKey !actualPostfixName !parametersMap] ;
-   ea := [@typeNonterminalToGenerate new !actualPostfixName !parametersMap !inLexiqueClassName] ;
+  [!?ioNonTerminalSymbolsMap insertKey !actualPostfixName !parametersMapForGrammarOneArgument] ;
+   [!?ioNonTerminalSymbolMapForSyntax insertKey !actualPostfixName !parametersMapOneArgument] ;
+   ea := [@typeNonterminalToGenerate new !actualPostfixName !parametersMapOneArgument !inLexiqueClassName] ;
    listeEntitesAengendrer += !ea ;
 #------------------------------------------ Rule <Expression__i>
   @typeAltProductionsMap altProductionsMap [emptyMap] ;
-  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments [emptyList] ;
   @typeInstructionList listeInstructions [emptyList] ;
   @entityPropertyMap allPropertiesMap [emptyMap] ;
   @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
 #--- Building instruction list
-  @typeParserInstruction instruction := [@typeInstructionAppelNonTerminal new
+  if hasSemantics then 
+    @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new
+      ![@typeAutomaticName new !here !"e"]
+      !entityType
+    ] ;
+    listeInstructions += !instruction ;
+  end if ;
+
+  @typeInstruction instruction := [@typeInstructionAppelNonTerminal new
     !actualPrefixName
     ![@typeExpressionList emptyList]
     ![@lstring new !"" !here] #  mAltName
-    ![@lstring new !"" !here] # Empty if no returned entity
-    ![@lstring new !"" !here] # Empty if no returned entity
+    !var_e
+    !inReturnedEntityName
     !false # mReturnedEntityShouldInsertedInList ;
   ] ;
   listeInstructions += !instruction ;
+
+  if hasSemantics then 
+    instruction := [@typeInstructionDeclarationVarLocale new
+      ![@typeAutomaticName new !here !"exp"]
+      !entityType
+    ] ;
+    listeInstructions += !instruction ;
+  end if ;
+
+  @typeExpressionList effectiveArguments [emptyList] ;
+  if hasSemantics then 
+    effectiveArguments += ![@typeVarInExpression new ![@typeAutomaticName new !here !"e"]] ;
+  end if ;
   instruction := [@typeInstructionAppelNonTerminal new
     !actualInfixName
-    ![@typeExpressionList emptyList]
+    !effectiveArguments
     ![@lstring new !"" !here] #  mAltName
-    ![@lstring new !"" !here] # Empty if no returned entity
-    ![@lstring new !"" !here] # Empty if no returned entity
+    !var_exp
+    !inReturnedEntityName
     !false # mReturnedEntityShouldInsertedInList ;
   ] ;
   listeInstructions += !instruction ;
+
+  effectiveArguments := [@typeExpressionList emptyList] ;
+  if hasSemantics then 
+    effectiveArguments += ![@typeVarInExpression new ![@typeAutomaticName new !here !"exp"]] ;
+  end if ;
   instruction := [@typeInstructionAppelNonTerminal new
     !actualPostfixName
-    ![@typeExpressionList emptyList]
+    !effectiveArguments
     ![@lstring new !"" !here] #  mAltName
-    ![@lstring new !"" !here] # Empty if no returned entity
-    ![@lstring new !"" !here] # Empty if no returned entity
+    !var_e
+    !inReturnedEntityName
     !false # mReturnedEntityShouldInsertedInList ;
   ] ;
   listeInstructions += !instruction ;
   [!?altProductionsMap insertKey
     ![@lstring new !"" !here] # Alt Name
-    !listeTypeEtNomsArguments
+    ![@typeListeTypesEtNomsArgMethode emptyList]
     !listeInstructions
     !syntaxSignature
     !here
-    !"" # ¤ inReturnedEntityName
-    !"" # ¤ "e"
+    ![inReturnedEntityName string]
+    ![var_e string]
     !allPropertiesMap
   ] ;
 #--- Generate production
@@ -788,28 +857,35 @@ routine implicitDeclaration
   ;
 #------------------------------------------ Rule <Expression__prefix__i>
   altProductionsMap := [@typeAltProductionsMap  emptyMap] ;
-  listeTypeEtNomsArguments := [@typeListeTypesEtNomsArgMethode emptyList] ;
   listeInstructions := [@typeInstructionList emptyList] ;
   allPropertiesMap := [@entityPropertyMap emptyMap] ;
   syntaxSignature := [@L_ruleSyntaxSignature emptyList] ;
   @lstring nextRuleName [new ![inNonterminalBaseName string] . "__" . [inLevel + 1 string] ![inNonterminalBaseName location]] ;
+  if hasSemantics then 
+    instruction := [@typeInstructionDeclarationVarLocale new
+      ![@typeAutomaticName new !here !"e"]
+      !entityType
+    ] ;
+    listeInstructions += !instruction ;
+  end if ;
+
   instruction := [@typeInstructionAppelNonTerminal new
     !nextRuleName
     ![@typeExpressionList emptyList]
     ![@lstring new !"" !here] #  mAltName
-    ![@lstring new !"" !here] # Empty if no returned entity
-    ![@lstring new !"" !here] # Empty if no returned entity
+    !var_e
+    !inReturnedEntityName
     !false # mReturnedEntityShouldInsertedInList ;
   ] ;
   listeInstructions += !instruction ;
   [!?altProductionsMap insertKey
     ![@lstring new !"" !here] # Alt Name
-    !listeTypeEtNomsArguments
+    ![@typeListeTypesEtNomsArgMethode emptyList]
     !listeInstructions
     !syntaxSignature
     !here
-    !"" # ¤ inReturnedEntityName
-    !"" # ¤ "e"
+    ![inReturnedEntityName string]
+    ![var_e string]
     !allPropertiesMap
   ] ;
 #--- Generate production
@@ -829,8 +905,27 @@ routine implicitDeclaration
   ;
 #------------------------------------------ Rule <Expression__infix__i>
   altProductionsMap := [@typeAltProductionsMap  emptyMap] ;
-  listeTypeEtNomsArguments := [@typeListeTypesEtNomsArgMethode emptyList] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments [emptyList] ;
   listeInstructions := [@typeInstructionList emptyList] ;
+  if hasSemantics then 
+    instruction := [@typeInstructionDeclarationVarLocale new
+      ![@typeAutomaticName new !here !"e"]
+      !entityType
+    ] ;
+    listeInstructions += !instruction ;
+    @typeAutomaticName var_inE [new !here !"inE"] ;
+    instruction := [@C_assignmentInstruction new
+      ![@typeAutomaticName new !here !"e"]
+      ![@typeVarInExpression new !var_inE]
+    ] ;
+    listeInstructions += !instruction ;
+    listeTypeEtNomsArguments +=
+      !entityType
+      ![@formalArgumentPassingMode argumentConstantIn]
+      !var_inE
+      !true
+    ;
+  end if ;
   allPropertiesMap := [@entityPropertyMap emptyMap] ;
   syntaxSignature := [@L_ruleSyntaxSignature emptyList] ;
   [!?altProductionsMap insertKey
@@ -839,8 +934,8 @@ routine implicitDeclaration
     !listeInstructions
     !syntaxSignature
     !here
-    !"" # ¤ inReturnedEntityName
-    !"" # ¤ "e"
+    ![inReturnedEntityName string]
+    ![var_e string]
     !allPropertiesMap
   ] ;
 #--- Generate production
@@ -860,8 +955,6 @@ routine implicitDeclaration
   ;
 #------------------------------------------ Rule <Expression__postfix__i>
   altProductionsMap := [@typeAltProductionsMap  emptyMap] ;
-  listeTypeEtNomsArguments := [@typeListeTypesEtNomsArgMethode emptyList] ;
-  listeInstructions := [@typeInstructionList emptyList] ;
   allPropertiesMap := [@entityPropertyMap emptyMap] ;
   syntaxSignature := [@L_ruleSyntaxSignature emptyList] ;
   [!?altProductionsMap insertKey
@@ -870,8 +963,8 @@ routine implicitDeclaration
     !listeInstructions
     !syntaxSignature
     !here
-    !"" # ¤ inReturnedEntityName
-    !"" # ¤ "e"
+    ![inReturnedEntityName string]
+    ![var_e string]
     !allPropertiesMap
   ] ;
 #--- Generate production
@@ -896,23 +989,41 @@ end routine ;
 routine implicitDeclarationImportSyntax
   ??@lstring inNonterminalBaseName
   ??@uint inLevel
-  ??@string unused inReturnedEntityName
-  ??@M_nonterminalSymbolAltsForGrammar parametersMapForGrammar
+  ??@lstring inReturnedEntityName
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
 :
+  @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMapNoParameter [emptyMap] ;
+  [!?nonterminalSymbolParametersMapNoParameter insertKey
+    ![@lstring new !"" !here] # Alt Name
+    ![@L_signature emptyList]
+    !inReturnedEntityName
+  ] ;
+  @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMapOneParameter ;
+  if [inReturnedEntityName string] == "" then
+    nonterminalSymbolParametersMapOneParameter := nonterminalSymbolParametersMapNoParameter ;
+  else
+    nonterminalSymbolParametersMapOneParameter := [@M_nonterminalSymbolAltsForGrammar emptyMap] ;
+    @L_signature signature [emptyList] ;
+    signature += ![@formalArgumentPassingMode argumentConstantIn] !inReturnedEntityName ;
+    [!?nonterminalSymbolParametersMapOneParameter insertKey
+      ![@lstring new !"" !here] # Alt Name
+      !signature
+      !inReturnedEntityName
+    ] ;
+  end if ;
 #--- Nonterminal <Expression__i>
   @lstring actualRuleName [new ![inNonterminalBaseName string] . "__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualRuleName ! parametersMapForGrammar] ;
+  [!?ioNonTerminalSymbolsMap insertKey !actualRuleName !nonterminalSymbolParametersMapNoParameter] ;
 #--- Nonterminal <Expression__prefix__i>
   @lstring actualPrefixName [new ![inNonterminalBaseName string] . "__prefix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualPrefixName ! parametersMapForGrammar] ;
+  [!?ioNonTerminalSymbolsMap insertKey !actualPrefixName !nonterminalSymbolParametersMapNoParameter] ;
 #--- Nonterminal <Expression__infix__i>
   @lstring actualInfixName [new ![inNonterminalBaseName string] . "__infix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualInfixName ! parametersMapForGrammar] ;
+  [!?ioNonTerminalSymbolsMap insertKey !actualInfixName !nonterminalSymbolParametersMapOneParameter] ;
 #--- Nonterminal <Expression__postfix__i>
   @lstring actualPostfixName [new ![inNonterminalBaseName string] . "__postfix__" . [inLevel string] ![inNonterminalBaseName location]] ;
-  [!?ioNonTerminalSymbolsMap insertKey !actualPostfixName ! parametersMapForGrammar] ;
+  [!?ioNonTerminalSymbolsMap insertKey !actualPostfixName !nonterminalSymbolParametersMapOneParameter] ;
 #------------------------------------------ Rule <Expression__i>
   @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
   @AC_instruction_ForGrammar instruction := [@T_nonterminalInstruction_forGrammarComponent new
@@ -1333,10 +1444,8 @@ rule <syntax_declaration>
   @lstring ruleName ;
   $non_terminal_symbol$ ? ruleName ;
   select
-    @L_EXsignature listeDeTypesFormels [emptyList] ;
     @typeVariablesMap tableArgumentsMethode [emptyMap] ;
     @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments [emptyList] ;
-    @L_signature signatureForGrammar [emptyList] ;
     @luint levelCount ;
     $unsigned_literal_integer$ ? levelCount ;
     if [levelCount uint] == 0 then
@@ -1350,23 +1459,12 @@ rule <syntax_declaration>
       $type_name$ ? returnedEntity ;
       [inAllMetamodelClassMap searchKey !returnedEntity ?8*] ;
     end select ;
-    @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
-    @M_nonterminalSymbolAltsForGrammar parametersMapForGrammar [emptyMap] ;
-    @lstring emptyId := [@lstring new !"" !here] ;
-    [!?parametersMap insertKey !emptyId !listeDeTypesFormels !returnedEntity] ;
-    [!?parametersMapForGrammar insertKey
-      !emptyId
-      !signatureForGrammar
-      ![@lstring new !"" !here] # ¤ returnedEntity
-    ] ;
     @uint i := 1 ;
     loop [levelCount uint] :
       implicitDeclaration
         !ruleName
         !i
-        ![returnedEntity string]
-        !parametersMapForGrammar
-        !parametersMap
+        !returnedEntity
         !inLexiqueClassName
         !?ioNonTerminalSymbolMapForSyntax
         !?ioNonTerminalSymbolsMap
@@ -1377,6 +1475,17 @@ rule <syntax_declaration>
     while i <= [levelCount uint] do
     end loop ;
     #--- Nonterminal <Expression__n+1>
+      @L_signature signatureForGrammar [emptyList] ;
+      @L_EXsignature listeDeTypesFormels [emptyList] ;
+      @M_nonterminalSymbolAlts parametersMap [emptyMap] ;
+      @M_nonterminalSymbolAltsForGrammar parametersMapForGrammar [emptyMap] ;
+      @lstring emptyId := [@lstring new !"" !here] ;
+      [!?parametersMap insertKey !emptyId !listeDeTypesFormels !returnedEntity] ;
+      [!?parametersMapForGrammar insertKey
+        !emptyId
+        !signatureForGrammar
+        !returnedEntity
+      ] ;
       @lstring actualRuleName [new
         ![ruleName string] . "__" . [[levelCount uint] + 1 string]
         ![ruleName location]
@@ -1495,32 +1604,30 @@ label importSyntax
       $->$ ;
       $type_name$ ? returnedEntity ;
     end select ;
-    @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap [emptyMap] ;
-    @lstring altName := [@lstring new !"" !here] ;
-    [!?nonterminalSymbolParametersMap insertKey
-      !altName
-      ![@L_signature emptyList]
-      ![@lstring new !"" !here] # ¤ returnedEntity
-    ] ;
     @uint i := 1 ;
     loop [levelCount uint] :
       implicitDeclarationImportSyntax
         !nonterminalSymbolName
         !i
-        ![returnedEntity string]
-        !nonterminalSymbolParametersMap
+        !returnedEntity
         !?ioNonTerminalSymbolsMap
         !?ioProductionRulesListForGrammar
       ;
       i ++ ;
     while i <= [levelCount uint] do
     end loop ;
-    #--- Nonterminal <Expression__i>
-      @lstring actualRuleName [new
-        ![nonterminalSymbolName string] . "__" . [[levelCount uint] + 1 string]
-        ![nonterminalSymbolName location]
-      ] ;
-      [!?ioNonTerminalSymbolsMap insertKey !actualRuleName !nonterminalSymbolParametersMap] ;
+   #--- Nonterminal <Expression__i>
+    @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap [emptyMap] ;
+    [!?nonterminalSymbolParametersMap insertKey
+      ![@lstring new !"" !here] # Alt Name
+      ![@L_signature emptyList]
+      !returnedEntity
+    ] ;
+    @lstring actualRuleName [new
+      ![nonterminalSymbolName string] . "__" . [[levelCount uint] + 1 string]
+      ![nonterminalSymbolName location]
+    ] ;
+    [!?ioNonTerminalSymbolsMap insertKey !actualRuleName !nonterminalSymbolParametersMap] ;
   or
     @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap [emptyMap] ;
     @L_signature signature ;
@@ -2066,7 +2173,6 @@ rule <syntax_instruction>
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;
       variableEntityName :=
           [(cast type if >= @typeGalgas_singleReferenceEntity else error returnedEntityVariableName) mEntityTypeName] ;
-      # ¤ extract type->@typeGalgas_singleReferenceEntity (?variableEntityName ?2*) error returnedEntityVariableName : messageGalgasType ;
     end if ;
    #--- The returnedEntityFromSignature entity should be a super class of variableEntityName
     @bool ok := [returnedEntityFromSignature string] == [variableEntityName string] ;
