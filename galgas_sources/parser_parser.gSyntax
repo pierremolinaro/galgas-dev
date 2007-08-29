@@ -1097,7 +1097,7 @@ rule <syntax_declaration>
   ?!@M_nonTerminalSymbolsForGrammar unused ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
   ?@lstring unused inSyntaxComponentName
-  ?@entityToImplementMap unused  inAllMetamodelClassMap
+  ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
   $operator$ ;
@@ -1109,21 +1109,54 @@ rule <syntax_declaration>
   $non_terminal_symbol$ ? nonterminalBaseName ;
   @luint operatorPriority ;
   $unsigned_literal_integer$ ? operatorPriority ;
+  @lstring returnedEntityName ;
+  @lstring baseEntityName ;
+  select
+    returnedEntityName := [@lstring new !"" !here] ;
+    baseEntityName := [@lstring new !"" !here] ;
+  or
+    $->$ ;
+    $type_name$ ? returnedEntityName ;
+    [inAllMetamodelClassMap searchKey !returnedEntityName ?3* ?baseEntityName ?4*] ;
+  end select ;
   $;$ ;
+#---
+  @typeAutomaticName automaticVar_right [new !here !"right"] ;
+  @typeAutomaticName automaticVar_e [new !here !"e"] ;
+  @typeAutomaticName automaticVar_inE [new !here !"inE"] ;
+  @AC_galgasType baseEntityType := [@typeGalgas_singleReferenceEntity new
+    !baseEntityName
+    ![@typeListeAttributsSemantiques emptyList]
+    ![@stringset emptySet]
+  ] ;
+
+  @bool hasSemantics := [returnedEntityName string] != "" ;
+  @lstring var_e ;
+  @lstring var_right ;
+  if hasSemantics then
+    var_e := [@lstring new !"e" !here] ;
+    var_right := [@lstring new !"right" !here] ;
+  else
+    var_e := [@lstring new !"" !here] ;
+    var_right := [@lstring new !"" !here] ;
+  end if ;
 #--- Generate operator
   @typeInstructionList listeInstructions [emptyList] ;
-  @typeParserInstruction instruction :=[@typeInstructionVerifSyntaxique new
+  @typeInstruction instruction :=[@typeInstructionVerifSyntaxique new
     !terminalSymbolName
     ![@L_assignedVariables emptyList]
     !inLexiqueClassName
   ] ;
   listeInstructions += !instruction ;
+  if hasSemantics then 
+    instruction := [@typeInstructionDeclarationVarLocale new
+      !automaticVar_e
+      !baseEntityType
+    ] ;
+    listeInstructions += !instruction ;
+  end if ;
 #---
-  @typeAltProductionsMap altProductionsMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments [emptyList] ;
-  @entityPropertyMap allPropertiesMap [emptyMap] ;
-  @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
-#---
   @lstring leftNonTerminalName ;
   if [operatorAttributes string] == "multiple prefix" then
     leftNonTerminalName := [@lstring new
@@ -1138,11 +1171,22 @@ rule <syntax_declaration>
       !calledRuleName
       ![@typeExpressionList emptyList]
       ![@lstring new !"" !here] #  mAltName
-      ![@lstring new !"" !here] # Empty if no returned entity
-      ![@lstring new !"" !here] # Empty if no returned entity
+      !var_e
+      !returnedEntityName
       !false # mReturnedEntityShouldInsertedInList ;
     ] ;
     listeInstructions += !instruction ;
+    if hasSemantics then
+      instruction := [@C_assignmentInstruction new
+        !automaticVar_e
+        ![@typeConstructorExpression new
+          ![returnedEntityName string]
+          !"new"
+          ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_e]]
+        ]
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
   elsif [operatorAttributes string] == "simple prefix" then
     leftNonTerminalName := [@lstring new
       ![nonterminalBaseName string] . "__prefix__" . [[operatorPriority uint] string]
@@ -1156,16 +1200,42 @@ rule <syntax_declaration>
       !calledRuleName
       ![@typeExpressionList emptyList]
       ![@lstring new !"" !here] #  mAltName
-      ![@lstring new !"" !here] # Empty if no returned entity
-      ![@lstring new !"" !here] # Empty if no returned entity
+      !var_e
+      !returnedEntityName
       !false # mReturnedEntityShouldInsertedInList ;
     ] ;
     listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "infix" then
+    if hasSemantics then
+      instruction := [@C_assignmentInstruction new
+        !automaticVar_e
+        ![@typeConstructorExpression new
+          ![returnedEntityName string]
+          !"new"
+          ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_e]]
+        ]
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
+  elsif [operatorAttributes string] == "infix" then #--------------------------------------
+    if hasSemantics then 
+      listeTypeEtNomsArguments +=
+        !baseEntityType
+        ![@formalArgumentPassingMode argumentConstantIn]
+        !automaticVar_inE
+        !true
+      ;
+    end if ;
     leftNonTerminalName := [@lstring new
       ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
       ![nonterminalBaseName location]
     ] ;
+    if hasSemantics then 
+      instruction := [@typeInstructionDeclarationVarLocale new
+        !automaticVar_right
+        !baseEntityType
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
     @lstring calledRuleName [new
       ![nonterminalBaseName string] . "__" . [[operatorPriority uint] + 1 string]
       ![nonterminalBaseName location]
@@ -1174,16 +1244,44 @@ rule <syntax_declaration>
       !calledRuleName
       ![@typeExpressionList emptyList]
       ![@lstring new !"" !here] #  mAltName
-      ![@lstring new !"" !here] # Empty if no returned entity
-      ![@lstring new !"" !here] # Empty if no returned entity
+      !var_right
+      !returnedEntityName
       !false # mReturnedEntityShouldInsertedInList ;
     ] ;
     listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "right infix" then
+    if hasSemantics then
+      @typeExpressionList expressionList [listWithValue ![@typeVarInExpression new !automaticVar_inE]] ;
+      expressionList += ![@typeVarInExpression new !automaticVar_right] ;
+      instruction := [@C_assignmentInstruction new
+        !automaticVar_e
+        ![@typeConstructorExpression new
+          ![returnedEntityName string]
+          !"new"
+          !expressionList
+        ]
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
+  elsif [operatorAttributes string] == "right infix" then  #--------------------------------------
+    if hasSemantics then 
+      listeTypeEtNomsArguments +=
+        !baseEntityType
+        ![@formalArgumentPassingMode argumentConstantIn]
+        !automaticVar_inE
+        !true
+      ;
+    end if ;
     leftNonTerminalName := [@lstring new
       ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
       ![nonterminalBaseName location]
     ] ;
+    if hasSemantics then 
+      instruction := [@typeInstructionDeclarationVarLocale new
+        !automaticVar_right
+        !baseEntityType
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
     @lstring calledRuleName [new
       ![nonterminalBaseName string] . "__" . [[operatorPriority uint] string]
       ![nonterminalBaseName location]
@@ -1192,16 +1290,44 @@ rule <syntax_declaration>
       !calledRuleName
       ![@typeExpressionList emptyList]
       ![@lstring new !"" !here] #  mAltName
-      ![@lstring new !"" !here] # Empty if no returned entity
-      ![@lstring new !"" !here] # Empty if no returned entity
+      !var_right
+      !returnedEntityName
       !false # mReturnedEntityShouldInsertedInList ;
     ] ;
     listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "left infix" then
+    if hasSemantics then
+      @typeExpressionList expressionList [listWithValue ![@typeVarInExpression new !automaticVar_inE]] ;
+      expressionList += ![@typeVarInExpression new !automaticVar_right] ;
+      instruction := [@C_assignmentInstruction new
+        !automaticVar_e
+        ![@typeConstructorExpression new
+          ![returnedEntityName string]
+          !"new"
+          !expressionList
+        ]
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
+  elsif [operatorAttributes string] == "left infix" then  #--------------------------------------
+    if hasSemantics then 
+      listeTypeEtNomsArguments +=
+        !baseEntityType
+        ![@formalArgumentPassingMode argumentConstantIn]
+        !automaticVar_inE
+        !true
+      ;
+    end if ;
     leftNonTerminalName := [@lstring new
       ![nonterminalBaseName string] . "__infix__" . [[operatorPriority uint] string]
       ![nonterminalBaseName location]
     ] ;
+    if hasSemantics then 
+      instruction := [@typeInstructionDeclarationVarLocale new
+        !automaticVar_right
+        !baseEntityType
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
     @lstring calledRuleName [new
       ![nonterminalBaseName string] . "__" . [[operatorPriority uint] + 1 string]
       ![nonterminalBaseName location]
@@ -1210,39 +1336,104 @@ rule <syntax_declaration>
       !calledRuleName
       ![@typeExpressionList emptyList]
       ![@lstring new !"" !here] #  mAltName
-      ![@lstring new !"" !here] # Empty if no returned entity
-      ![@lstring new !"" !here] # Empty if no returned entity
+      !var_right
+      !returnedEntityName
       !false # mReturnedEntityShouldInsertedInList ;
     ] ;
     listeInstructions += !instruction ;
+    if hasSemantics then
+      @typeExpressionList expressionList [listWithValue ![@typeVarInExpression new !automaticVar_inE]] ;
+      expressionList += ![@typeVarInExpression new !automaticVar_right] ;
+      instruction := [@C_assignmentInstruction new
+        !automaticVar_e
+        ![@typeConstructorExpression new
+          ![returnedEntityName string]
+          !"new"
+          !expressionList
+        ]
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
+    @typeExpressionList effectiveArguments [emptyList] ;
+    if hasSemantics then 
+      effectiveArguments += ![@typeVarInExpression new ! automaticVar_e] ;
+    end if ;
     instruction := [@typeInstructionAppelNonTerminal new
       !leftNonTerminalName
-      ![@typeExpressionList emptyList]
+      !effectiveArguments
       ![@lstring new !"" !here] #  mAltName
-      ![@lstring new !"" !here] # Empty if no returned entity
-      ![@lstring new !"" !here] # Empty if no returned entity
+      !var_e
+      !returnedEntityName
       !false # mReturnedEntityShouldInsertedInList ;
     ] ;
     listeInstructions += !instruction ;
-  elsif [operatorAttributes string] == "simple postfix" then
+  elsif [operatorAttributes string] == "simple postfix" then  #--------------------------------------
+    if hasSemantics then 
+      listeTypeEtNomsArguments +=
+        !baseEntityType
+        ![@formalArgumentPassingMode argumentConstantIn]
+        !automaticVar_inE
+        !true
+      ;
+    end if ;
     leftNonTerminalName := [@lstring new
       ![nonterminalBaseName string] . "__postfix__" . [[operatorPriority uint] string]
       ![nonterminalBaseName location]
     ] ;
-  elsif [operatorAttributes string] == "multiple postfix" then
+    if hasSemantics then
+      instruction := [@C_assignmentInstruction new
+        !automaticVar_e
+        ![@typeConstructorExpression new
+          ![returnedEntityName string]
+          !"new"
+          ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_inE]]
+        ]
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
+  elsif [operatorAttributes string] == "multiple postfix" then  #--------------------------------------
+    if hasSemantics then 
+      listeTypeEtNomsArguments +=
+        !baseEntityType
+        ![@formalArgumentPassingMode argumentConstantIn]
+        !automaticVar_inE
+        !true
+      ;
+    end if ;
     leftNonTerminalName := [@lstring new
       ![nonterminalBaseName string] . "__postfix__" . [[operatorPriority uint] string]
       ![nonterminalBaseName location]
     ] ;
-    instruction := [@typeInstructionAppelNonTerminal new
-      !leftNonTerminalName
-      ![@typeExpressionList emptyList]
-      ![@lstring new !"" !here] #  mAltName
-      ![@lstring new !"" !here] # Empty if no returned entity
-      ![@lstring new !"" !here] # Empty if no returned entity
-      !false # mReturnedEntityShouldInsertedInList ;
-    ] ;
-    listeInstructions += !instruction ;
+    if hasSemantics then
+      instruction := [@C_assignmentInstruction new
+        !automaticVar_e
+        ![@typeConstructorExpression new
+          ![returnedEntityName string]
+          !"new"
+          ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_inE]]
+        ]
+      ] ;
+      listeInstructions += !instruction ;
+      instruction := [@typeInstructionAppelNonTerminal new
+       !leftNonTerminalName
+       ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_e]]
+       ![@lstring new !"" !here] #  mAltName
+       !var_e
+       !returnedEntityName
+       !false # mReturnedEntityShouldInsertedInList ;
+      ] ;
+      listeInstructions += !instruction ;
+    else
+      instruction := [@typeInstructionAppelNonTerminal new
+        !leftNonTerminalName
+        ![@typeExpressionList emptyList]
+        ![@lstring new !"" !here] #  mAltName
+        !var_e
+        !returnedEntityName
+        !false # mReturnedEntityShouldInsertedInList ;
+      ] ;
+      listeInstructions += !instruction ;
+    end if ;
   else
     error operatorAttributes: "Valid operator attributes are:\n"
       "  - \"multiple prefix\" ;\n"
@@ -1256,14 +1447,17 @@ rule <syntax_declaration>
     ;
   end if ;
 #---
+  @typeAltProductionsMap altProductionsMap [emptyMap] ;
+  @entityPropertyMap allPropertiesMap [emptyMap] ;
+  @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
   [!?altProductionsMap insertKey
     ![@lstring new !"" !here] # Alt Name
     !listeTypeEtNomsArguments
     !listeInstructions
     !syntaxSignature
     !here
-    !"" # ¤ inReturnedEntityName
-    !"" # ¤ "e"
+    ![baseEntityName string]
+    ![var_e string]
     !allPropertiesMap
   ] ;
 #--- Generate production
@@ -1294,6 +1488,13 @@ label importSyntax
   $non_terminal_symbol$ ? nonterminalBaseName ;
   @luint operatorPriority ;
   $unsigned_literal_integer$ ? operatorPriority ;
+  @lstring returnedEntityName ;
+  select
+    returnedEntityName := [@lstring new !"" !here] ;
+  or
+    $->$ ;
+    $type_name$ ? returnedEntityName ;
+  end select ;
   $;$ ;
 #--- Operator call
   @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
