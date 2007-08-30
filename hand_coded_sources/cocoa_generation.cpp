@@ -117,7 +117,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     index ++ ;
   }
   generatedZone3 << "NULL) ;\n"
-                    "static C_galgas_io_parameters IOparameters (& gCommandLineOptions) ;\n"
+                    "static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, \"\", 100, 100) ;\n"
                     "static C_galgas_io * gIOParametersPtr = NULL ;\n"
                     "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
                     "static NSMutableArray * gColorArray ;\n\n" ;

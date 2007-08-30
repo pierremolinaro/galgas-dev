@@ -26,6 +26,7 @@
 #include "bdd/C_BDD_Set2.h"
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
+#include "galgas/C_galgas_CLI_Options.h"
 
 //---------------------------------------------------------------------------*
 
@@ -543,7 +544,7 @@ analyzeGrammar (C_Compiler & inLexique,
 
 //--- Verbose Output
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  "verbose_output"
+                                                                  VERBOSE_OUTPUT
                                                                   COMMA_HERE) ;
 //--- Output a HTML file ?
   const char * galgas_cli_component = "galgas_cli_options" ;

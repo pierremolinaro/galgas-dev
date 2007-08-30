@@ -94,8 +94,8 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
 
 static void
 generate_cpp_file_for_prgm (C_Compiler & inLexique,
-                            const uint32 inmaxErrorCount,
-                            const uint32 inmaxWarningCount,
+                            const uint32 inMaxErrorCount,
+                            const uint32 inMaxWarningCount,
                             const C_String & inVersionString,
                             const C_String & inProgramComponentName,
                             const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
@@ -158,7 +158,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << "}\n\n" ;
-
+  generatedZone2.writeCppHyphenLineComment () ;
 
 //--- Generate 'mainForLIBPM' routine
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
@@ -170,22 +170,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    C_options_for_" << inProgramComponentName << " options ("
                  << (generateDebug ? "true" : "false")
                  << ") ;\n"
-                    "    C_galgas_io_parameters IOparameters  (& options) ;\n"
-                    "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "      IOparameters.mCompilerVersion = " ;
-  generatedZone2.writeCstringConstant (inVersionString) ;
-  generatedZone2 << " \" [debug]\" ;\n"
-                    "    #else\n"
-                    "      IOparameters.mCompilerVersion = " ;
-  generatedZone2.writeCstringConstant (inVersionString) ;
-  generatedZone2 << " ;\n"
-                    "    #endif\n"
-                    "    IOparameters.mMaxErrorCount = "
-                 << inmaxErrorCount
-                 << " ;\n"
-                    "    IOparameters.mMaxWarningCount = "
-                 << inmaxWarningCount
-                 << " ;\n"
                  << "    const char * extensions [] = {" ;
   GGS_ruleDescriptorForProgramList::element_type * currentDescriptor = inRuleDescriptorForProgramList.firstObject () ;
   while (currentDescriptor != NULL) {
@@ -205,6 +189,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "NULL} ;\n"
                     "    TC_UniqueArray <C_String> sourceFilesArray ;\n"
                     "  //--- Analyze Command Line Options\n"
+                    "    bool cocoaOutput = false ;\n"
                     "    F_Analyze_CLI_Options (argc, argv,\n"
                     "                           " ;
   generatedZone2.writeCstringConstant (inVersionString) ;
@@ -213,7 +198,20 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "                           sourceFilesArray,\n"
                     "                           extensions,\n"
                     "                           helpMessages,\n"
-                    "                           IOparameters.mCocoaOutput) ;\n"
+                    "                           cocoaOutput) ;\n"
+                    "    C_galgas_io_parameters IOparameters  (& options,\n"
+                    "      cocoaOutput,\n"
+                    "      #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "        " ;
+  generatedZone2.writeCstringConstant (inVersionString) ;
+  generatedZone2 << " \" [debug]\",\n"
+                    "      #else\n"
+                    "        " ;
+  generatedZone2.writeCstringConstant (inVersionString) ;
+  generatedZone2 << ",\n"
+                    "      #endif\n"
+                    "      " << inMaxErrorCount << ",\n"
+                    "      " << inMaxWarningCount << ") ;\n"
                     "  //--- Build galgas io object\n"
                     "    C_galgas_io * galgasIOptr = NULL ;\n"
                     "    macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
@@ -266,13 +264,11 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                                     prototypeIndex,
                                     false, // inGenerateDebug,
                                     true) ; // inGenerateSemanticInstructions
-    generatedZone2 << "  if (verboseOptionOn || ((_inLexique.totalErrorCount () + _inLexique.totalWarningCount ()) > 0)) {\n"
+    generatedZone2 << "  if (verboseOptionOn) {\n"
                       "    co << \"Analysis of '\" << sourceFilesArray (i COMMA_HERE).lastPathComponent () << \"' completed. \" ;\n"
                       "    switch (_commonLexique->totalErrorCount ()) {\n"
                       "    case 0 :\n"
-                      "      if (verboseOptionOn) {\n"
-                      "        co << \"No error, \" ;\n"
-                      "      }\n"
+                      "      co << \"No error, \" ;\n"
                       "      break ;\n"
                       "    case 1 :\n"
                       "      co << \"1 error, \" ;\n"
@@ -285,9 +281,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                       "    }\n"
                       "    switch (_commonLexique->totalWarningCount ()) {\n"
                       "    case 0 :\n"
-                      "      if (verboseOptionOn) {\n"
-                      "        co << \"no warning\" ;\n"
-                      "      }\n"
+                      "      co << \"no warning\" ;\n"
                       "      break ;\n"
                       "    case 1 :\n"
                       "      co << \"1 warning\" ;\n"
@@ -318,7 +312,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "      }else if (_commonLexique->totalWarningCount () > 0) {\n"
                     "        const bool warningsAreTreatedAsError\n"
                     "            = options.boolOptionValueFromKeys (\"generic_galgas_cli_options\",\n"
-                    "                                               \"treat_warnings_as_error\",\n"
+                    "                                               TREAT_WARNINGS_AS_ERRORS,\n"
                     "                                               false) ;\n"
                     "        if (warningsAreTreatedAsError) {\n"
                     "          returnCode = 1 ; // Error code\n"
