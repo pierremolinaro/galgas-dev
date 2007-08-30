@@ -105,7 +105,6 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
     }
     inCppFile << ") {\n" ;
     inCppFile.incIndentation (+2) ;
-    inCppFile << "_token._mLastLocation = _mCurrentLocation ; // §\n" ;
     generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inGenerateEnterToken, inCppFile) ;
     inCppFile.incIndentation (-2) ;
     courant = courant->nextObject () ;
@@ -370,8 +369,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                "while (_token._mTokenCode < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
-  inCppFile << "_token._mFirstLocation = _mCurrentLocation ;\n"
-               "mCurrentTokenStartLocation = location () ;\n"
+  inCppFile << "_mTokenFirstLocation = _mCurrentLocation ;\n"
                "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
@@ -418,8 +416,7 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
                "while (_token._mTokenCode < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
-  inCppFile << "_token._mFirstLocation = _mCurrentLocation ;\n"
-               "mCurrentTokenStartLocation = location () ;\n"
+  inCppFile << "_mTokenFirstLocation = _mCurrentLocation ;\n"
                "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
@@ -581,14 +578,12 @@ generate_scanner_instruction (const C_String & inLexiqueName,
       inCppFile << "}else{\n" ;
       inCppFile.incIndentation (+2) ;
       generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile) ;
-      inCppFile << "_token._mLastLocation = _mCurrentLocation ; // §\n" ;
       inCppFile.incIndentation (-2) ;
     }
     inCppFile << "}\n" ;
   }else if (attributBrancheSinon.firstObject () != NULL) {
       inCppFile.incIndentation (+2) ;
       generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile) ;
-      inCppFile << "_token._mLastLocation = _mCurrentLocation ; // §\n" ;
       inCppFile.incIndentation (-2) ;
     }
 }
@@ -1398,7 +1393,8 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "  cTokenFor_" << inLexiqueName << " * _p = NULL ;\n"
                     "  macroMyNew (_p, cTokenFor_" << inLexiqueName << " ()) ;\n"
                     "  _p->_mTokenCode = inToken._mTokenCode ;\n"
-                    "  _p->_mLastLocation = _mCurrentLocation ;\n" ;
+                    "  _p->_mFirstLocation = _mTokenFirstLocation ;\n"
+                    "  _p->_mLastLocation  = _mTokenLastLocation ;\n" ;
   GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
     generatedZone2 << "  _p->" << currentAttribute->mKey << " = inToken." << currentAttribute->mKey << " ;\n" ;
