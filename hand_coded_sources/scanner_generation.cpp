@@ -581,12 +581,14 @@ generate_scanner_instruction (const C_String & inLexiqueName,
       inCppFile << "}else{\n" ;
       inCppFile.incIndentation (+2) ;
       generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile) ;
+      inCppFile << "_token._mLastLocation = _mCurrentLocation ; // §\n" ;
       inCppFile.incIndentation (-2) ;
     }
     inCppFile << "}\n" ;
   }else if (attributBrancheSinon.firstObject () != NULL) {
       inCppFile.incIndentation (+2) ;
       generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile) ;
+      inCppFile << "_token._mLastLocation = _mCurrentLocation ; // §\n" ;
       inCppFile.incIndentation (-2) ;
     }
 }
