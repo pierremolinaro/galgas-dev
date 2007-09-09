@@ -3103,6 +3103,18 @@ routine handleStringReaderCall
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
     build_stringlist_type  ?outReturnedType ;
+  elsif [inReaderName string] == "regularFiles" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
+    build_stringlist_type  ?outReturnedType ;
+  elsif [inReaderName string] == "regularFilesWithExtensions" then
+    build_stringlist_type  ?outReturnedType ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
+    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
+  elsif [inReaderName string] == "system" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_sint new] ;
   else
     error inReaderName : "this reader is not defined"
      -> outAccessorTypesList, outReturnedType ;

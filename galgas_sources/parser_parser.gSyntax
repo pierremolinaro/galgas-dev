@@ -2720,7 +2720,7 @@ rule <syntax_instruction>
         !inTreewalkingComponentMap
       ;
       branchList += !instructionsList ;
-      parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
+      parse_rewind_signature_list += !syntaxSignature !branchStartLocation ;
     while
     end repeat ;
     instruction := [@C_parse_rewind_instruction new !here !branchList] ;
