@@ -156,6 +156,7 @@ nonterminal <syntax_instruction>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -214,6 +215,7 @@ nonterminal <syntax_instructions_list>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -232,6 +234,7 @@ nonterminal <syntax_instructions_list_no_verif>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -593,6 +596,7 @@ rule <syntax_instruction>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 :
   $block$ ;
 #--- Nom de la map
@@ -643,6 +647,7 @@ rule <syntax_instruction>
     !?ioSyntaxSignature
     !inAllMetamodelClassMap
     !inTreewalkingComponentMap
+    !inIsInvokedWithinParseLoopInstruction
   ;
   $end$ ;
   $block$ ;
@@ -2047,6 +2052,7 @@ rule <syntax_declaration>
     !?syntaxSignature
     !inAllMetamodelClassMap
     !inTreewalkingComponentMap
+    !false # inIsInvokedWithinParseLoopInstruction
   ;
   [!?altProductionsMap insertKey
     !altName
@@ -2105,6 +2111,7 @@ rule <syntax_declaration>
       !?branchSyntaxSignature
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
+      !false # inIsInvokedWithinParseLoopInstruction
     ;
     [!?altProductionsMap insertKey
       !altName
@@ -2213,6 +2220,7 @@ rule <syntax_instructions_list>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 :
   block ioVariablesMap.verifyVariableUsing () :
     <syntax_instructions_list_no_verif>
@@ -2228,6 +2236,7 @@ rule <syntax_instructions_list>
       !?ioSyntaxSignature
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
+      !inIsInvokedWithinParseLoopInstruction
     ;
     @location positionErreur := here ;
   end block (!positionErreur) ;
@@ -2254,6 +2263,7 @@ rule <syntax_instruction>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap unused inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ??@bool unused inIsInvokedWithinParseLoopInstruction
 :
   @lstring terminalSymbolName ;
   $terminal$ ? terminalSymbolName ;
@@ -2310,6 +2320,7 @@ rule <syntax_instruction>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 :
   @lstring nonterminalSymbolName ;
   $non_terminal_symbol$ ? nonterminalSymbolName ;
@@ -2331,6 +2342,11 @@ rule <syntax_instruction>
   if inCheckNonTerminalsAreDeclaredWithParseLabel & ([altName string] != "parse") then
     if not [nonterminalSymbolAltMap hasKey !"parse"] then
       error here : "As current rule has 'parse' label, every invoked non terminal symbol must be declared with 'parse' label" ;
+    end if ;
+  end if ;
+  if inIsInvokedWithinParseLoopInstruction & ([altName string] != "parse") then
+    if not [nonterminalSymbolAltMap hasKey !"parse"] then
+      error here : "As this nonterminal is inked wintin a 'parse loop ...' instruction, it must be declared with 'parse' label" ;
     end if ;
   end if ;
 #--- Parse effective parameter list
@@ -2456,6 +2472,7 @@ rule <syntax_instruction>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 :
   $select$ ;
   @location positionDebut := here ;
@@ -2478,6 +2495,7 @@ rule <syntax_instruction>
         !?firstBranchSyntaxSignature
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
+        !inIsInvokedWithinParseLoopInstruction
       ;
       listeBranchesChoix += !firstBranchInstructionList ;
       selectList += !firstBranchSyntaxSignature ;
@@ -2500,6 +2518,7 @@ rule <syntax_instruction>
           !?syntaxSignature
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
+          !inIsInvokedWithinParseLoopInstruction
         ;
         listeBranchesChoix += !listeInstructionsBrancheChoix ;
         selectList += !syntaxSignature ;
@@ -2561,6 +2580,7 @@ rule <syntax_instruction>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 :
   $repeat$ ;
   @location positionDebut := here ;
@@ -2583,6 +2603,7 @@ rule <syntax_instruction>
         !?repeatBranchInstructionsList
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
+        !inIsInvokedWithinParseLoopInstruction
        ;
       listeBranchesRepeter += !listeInstructionsPremiereBranche ;
       whileList += !repeatBranchInstructionsList ;
@@ -2606,6 +2627,7 @@ rule <syntax_instruction>
           !?syntaxSignature
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
+          !inIsInvokedWithinParseLoopInstruction
         ;
         listeBranchesRepeter += !listeInstructionsBrancheRepeter ;
         whileList += !syntaxSignature ;
@@ -2668,12 +2690,67 @@ rule <syntax_instruction>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 :
   $parse$ ;
   @typeInstruction instruction ;
-  @L_parse_rewind_signature_list parse_rewind_signature_list [emptyList] ;
   select
+    $loop$ ;
+  #--- Variant expression
+    @typeExpression variantExpression ;
+    @AC_galgasType variantResultType ;
+    <expression>
+      !ioEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?variantExpression
+      ?variantResultType
+    ;
+    @typeGalgas_uint ui := (cast variantResultType if >= @typeGalgas_uint else error here) ;
+    $while$ ;
+  #--- Conditionnal expression
+    @typeExpression conditionalExpression ;
+    @AC_galgasType resultType ;
+    <expression>
+      !ioEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?ioVariablesMap
+      ?conditionalExpression
+      ?resultType
+    ;
+    @typeGalgas_bool b := (cast resultType if >= @typeGalgas_bool else error here) ;
     $do$ ;
+  #--- Repeated instruction list
+    @typeInstructionList instructionList [emptyList] ;
+    @L_ruleSyntaxSignature syntaxSignature [emptyList] ;
+    block ioVariablesMap.repeatBlock () :
+      block ioVariablesMap.repeatPart () :
+        <syntax_instructions_list_no_verif>
+          !inLexiqueClassName
+          !?ioNonTerminalSymbolMapForSyntax
+          !inCheckNonTerminalsAreDeclaredWithParseLabel
+          !ioEntitiesMap
+          !?listeEntitesAengendrer
+          !inOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?instructionList
+          !?tableTerminaux
+          !?syntaxSignature
+          !inAllMetamodelClassMap
+          !inTreewalkingComponentMap
+          !true # inIsInvokedWithinParseLoopInstruction
+        ;
+      end block (!here) ;
+    end block () ;
+    instruction := [@C_parse_loop_instruction new
+      !here
+      !variantExpression
+      !conditionalExpression
+      !instructionList
+    ] ;
+  or
+    $do$ ;
+    @L_parse_rewind_signature_list parse_rewind_signature_list [emptyList] ;
     @location instructionStartLocation := here ;
     @typeListeBranchesInstructions branchList [emptyList] ;
   #--- First branch
@@ -2693,6 +2770,7 @@ rule <syntax_instruction>
       !?firstBranchSyntaxSignature
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
+      !inIsInvokedWithinParseLoopInstruction
     ;
     branchList += !firstBranchInstructionsList ;
     parse_rewind_signature_list += !firstBranchSyntaxSignature !instructionStartLocation ;
@@ -2718,13 +2796,17 @@ rule <syntax_instruction>
         !?syntaxSignature
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
+        !inIsInvokedWithinParseLoopInstruction
       ;
       branchList += !instructionsList ;
       parse_rewind_signature_list += !syntaxSignature !branchStartLocation ;
     while
     end repeat ;
     instruction := [@C_parse_rewind_instruction new !here !branchList] ;
+  #--- Check all branches have the same syntax signature
+    checkParseRewindSignatures !?parse_rewind_signature_list ;
   or
+    @L_parse_rewind_signature_list parse_rewind_signature_list [emptyList] ;
   #--- Instruction parse when ... when ... else ... end parse ;
     @L_expression_instructionsList_list branchList [emptyList] ;
     block ioVariablesMap.testBloc () :
@@ -2758,6 +2840,7 @@ rule <syntax_instruction>
             !?syntaxSignature
             !inAllMetamodelClassMap
             !inTreewalkingComponentMap
+            !inIsInvokedWithinParseLoopInstruction
           ;
           branchList += !expression !instructionsList ;
           parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
@@ -2782,6 +2865,7 @@ rule <syntax_instruction>
           !?syntaxSignature
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
+          !inIsInvokedWithinParseLoopInstruction
         ;
         parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
         foreach syntaxSignature (@AC_instruction_ForGrammar grammarInstruction) :
@@ -2790,19 +2874,26 @@ rule <syntax_instruction>
       end block (!here) ;
     end block () ;
     instruction := [@C_parse_when_else_instruction new !branchList !elseInstructionsList] ;
+  #--- Check all branches have the same syntax signature
+    checkParseRewindSignatures !?parse_rewind_signature_list ;
   end select ;
   $end$ ;
   $parse$ ;
   $;$ ;
 #--- Generate instruction
   ioInstructionList += !instruction ;
-#--- Check all branches have the same syntax signature
-  checkParseRewindSignatures !?parse_rewind_signature_list ;
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 :
   $parse$ ;
   select
+    $loop$ ;
+    <expression> parse ;
+    $while$ ;
+    <expression> parse ;
+    $do$ ;
+    <syntax_instructions_list_no_verif> importSyntax !?ioInstructionList ;
+  or
     $do$ ;
     <syntax_instructions_list_no_verif> importSyntax !?ioInstructionList ;
     repeat
@@ -2841,6 +2932,7 @@ rule <syntax_instructions_list_no_verif>
   ?!@L_ruleSyntaxSignature ioSyntaxSignature
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@bool inIsInvokedWithinParseLoopInstruction
 :
   @entityPropertyMap propertyMap [emptyMap] ;
   @typeTableEnAvant tableEnAvant [emptyMap] ;
@@ -2860,6 +2952,7 @@ rule <syntax_instructions_list_no_verif>
       !?ioSyntaxSignature
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
+      !inIsInvokedWithinParseLoopInstruction
     ;
   while
     <semantic_instruction>

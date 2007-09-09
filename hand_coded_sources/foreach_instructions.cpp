@@ -39,31 +39,31 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
   //--- 'condition' variable
-    C_String variableCondition ;
-    variableCondition << "_condition_" << mLocation.location () ;
+    C_String conditionVariable ;
+    conditionVariable << "_condition_" << mLocation.location () ;
   //--- 'variant' variable
     C_String variantVariable ;
     variantVariable << "_variant_" << mLocation.location () ;
-  //--- Loop header
+  //--- Loop header : compute variant initial value
     ioCppFile << "GGS_uint " << variantVariable << " = " ;
     mVariantExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n"
-                 "GGS_bool " << variableCondition << " (" << variantVariable
+                 "GGS_bool " << conditionVariable << " (" << variantVariable
               << "._isBuilt (), true) ;\n"
-                 "while (" << variableCondition << ".isBuiltAndTrue ()) {\n" ;
+                 "while (" << conditionVariable << ".isBuiltAndTrue ()) {\n" ;
   //--- First instruction list
     generateInstructionListForList (mInstructionList1, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
   //--- Condition
-    ioCppFile << "  " << variableCondition << " = " ;
+    ioCppFile << "  " << conditionVariable << " = " ;
     mWhileExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n" ;
-  //--- Evaluate condition
-    ioCppFile << "  if (" << variableCondition << ".isBuiltAndTrue ()) {\n"
+  //--- Evaluate variant and condition
+    ioCppFile << "  if (" << conditionVariable << ".isBuiltAndTrue ()) {\n"
                  "    if (" << variantVariable << ".uintValue () == 0) {\n"
                  "      _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE ("
               << mLocation.lineNumber ()
               << ")) ;\n"
-                 "      " << variableCondition << " = GGS_bool (true, false) ;\n"
+                 "      " << conditionVariable << " = GGS_bool (true, false) ;\n"
                  "    }else{\n" 
                  "      " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
   //--- Second instruction list

@@ -104,6 +104,19 @@ class @C_parse_rewind_instruction extends @typeParserInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    P A R S E    L O O P   ...     I N S T R U C T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @C_parse_loop_instruction extends @typeParserInstruction {
+  @location mEndOfInstructionLocation ;
+  @typeExpression mVariantExpression ;
+  @typeExpression mConditionalExpression ;
+  @typeInstructionList mInstructionsList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    P A R S E    W H E N   ...    E L S E    ...     I N S T R U C T I O N *
 #                                                                           *
 #---------------------------------------------------------------------------*
