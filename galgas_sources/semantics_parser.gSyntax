@@ -3825,13 +3825,11 @@ rule <semantic_instruction>
     ?variantResultType
   ;
   @typeGalgas_uint ui := (cast variantResultType if >= @typeGalgas_uint else error here) ;
-  # ¤ extract variantResultType ->@typeGalgas_uint () error here : messageGalgasType ;
   $:$ ;
 #--- Repeated instruction list
   @typeInstructionList instructionList1 [emptyList] ;
   block ioVariablesMap.repeatBlock () :
     block ioVariablesMap.repeatPart () :
-    #--- Liste d'instructions
       <semantic_instructions_list_no_verif>
         !inTreewalkingRoutineHeaderMap
         !inTableEnAvant
@@ -3857,7 +3855,6 @@ rule <semantic_instruction>
     ?resultType
   ;
   @typeGalgas_bool b := (cast resultType if >= @typeGalgas_bool else error here) ;
-  # ¤ extract resultType ->@typeGalgas_bool () error here : messageGalgasType ;
   $do$ ;
 #--- Repeated instruction list
   @typeInstructionList instructionList2 [emptyList] ;

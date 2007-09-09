@@ -28,15 +28,19 @@ class cPtr_C_parse_rewind_instruction : public cPtr_typeParserInstruction {
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const ;
 
-public : virtual bool isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const ;
-public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                                            const bool inGenerateSemanticInstructions) const ;
+  public : virtual bool
+  isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const ;
 
-public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
-                                                         const C_String & inLexiqueClassName,
-                                                         const C_String & inTargetFileName,
-                                                         sint32 & ioPrototypeIndex,
-                                                         const bool inNotDeclared) ;
+  public : virtual bool
+  formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                        const bool inGenerateSemanticInstructions) const ;
+
+  public : virtual void
+  generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+                                     const C_String & inLexiqueClassName,
+                                     const C_String & inTargetFileName,
+                                     sint32 & ioPrototypeIndex,
+                                     const bool inNotDeclared) ;
 
   public : virtual bool
   formalCurrentObjectArgumentIsUsed (void) const ;

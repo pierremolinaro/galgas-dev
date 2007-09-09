@@ -218,7 +218,7 @@ routine_checkParseRewindSignatures (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark CLASS cPtr_typeInstructionVerifSyntaxique
 #endif
 
 //---------------------------------------------------------------------------*
@@ -304,7 +304,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark CLASS cPtr_typeInstructionAppelNonTerminal
 #endif
 
 //---------------------------------------------------------------------------*
@@ -392,7 +392,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark CLASS cPtr_C_select_instruction
 #endif
 
 //---------------------------------------------------------------------------*
@@ -493,7 +493,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark CLASS cPtr_C_repeat_instruction
 #endif
 
 //---------------------------------------------------------------------------*
@@ -607,7 +607,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark CLASS cPtr_C_parse_rewind_instruction
 #endif
 
 //---------------------------------------------------------------------------*
@@ -712,7 +712,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
+  #pragma mark CLASS cPtr_C_parse_when_else_instruction
 #endif
 
 //---------------------------------------------------------------------------*
@@ -838,4 +838,115 @@ formalCurrentObjectArgumentIsUsed (void) const {
   }
   return used ;
 }
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark CLASS cPtr_C_parse_loop_instruction
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_parse_loop_instruction::
+generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
+                                   const C_String & inLexiqueClassName,
+                                   const C_String & inTargetFileName,
+                                   sint32 & ioPrototypeIndex,
+                                   const bool inNotDeclared) {
+  generateSelectAndRepeatPrototypesForList (mInstructionsList,
+                                            inHfile,
+                                            inLexiqueClassName,
+                                            inTargetFileName,
+                                            ioPrototypeIndex,
+                                            inNotDeclared) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_parse_loop_instruction::
+generateInstruction (AC_OutputStream & inCppFile,
+                     const C_String & inTargetFileName,
+                     sint32 & ioPrototypeIndex,
+                     const bool inGenerateDebug,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+  //--- 'condition' variable
+    C_String conditionVariable ;
+    conditionVariable << "_condition_" << mEndOfInstructionLocation.location () ;
+  //--- 'variant' variable
+    C_String variantVariable ;
+    variantVariable << "_variant_" << mEndOfInstructionLocation.location () ;
+  //--- Loop header : compute variant initial value
+    inCppFile << "GGS_uint " << variantVariable << " = " ;
+    mVariantExpression (HERE)->generateExpression (inCppFile) ;
+    inCppFile << " ;\n" ;
+  //--- First pass on instruction list (parse only)
+    const sint32 v = mEndOfInstructionLocation.location () ; // For making 'context_xxx' variable unique
+    inCppFile << "const C_parsingContext context_" << v << " = _inLexique.parsingContext () ;\n" ;
+    const sint32 prototypeIndex = ioPrototypeIndex ;
+    inCppFile.incIndentation (-2) ;
+    generateInstructionListForList (mInstructionsList, inCppFile,
+                                    inTargetFileName, ioPrototypeIndex,
+                                    inGenerateDebug, false) ;
+    inCppFile.incIndentation (+2) ;
+  //--- Condition variable
+    inCppFile << "GGS_bool " << conditionVariable << " ;\n"
+              << "if (" << variantVariable << "._isBuilt ()) {\n"
+              << "  " << conditionVariable << " = " ;
+    mConditionalExpression (HERE)->generateExpression (inCppFile) ;
+    inCppFile << " ;\n" 
+                 "}\n"
+                 "while (" << conditionVariable << ".isBuiltAndTrue ()) {\n"
+                 "  _inLexique.setParsingContext (context_" << v << ") ;\n"
+                 "  if (" << variantVariable << ".uintValue () == 0) {\n"
+                 "    _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE ("
+              << mEndOfInstructionLocation.lineNumber ()
+              << ")) ;\n"
+                 "    " << conditionVariable << " = GGS_bool (true, false) ;\n"
+                 "  }else{\n" 
+                 "    " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
+    sint32 tempPrototypeIndex = prototypeIndex ;
+    inCppFile.incIndentation (+2) ;
+    generateInstructionListForList (mInstructionsList, inCppFile,
+                                    inTargetFileName, tempPrototypeIndex,
+                                    inGenerateDebug, inGenerateSemanticInstructions) ;
+    inCppFile.incIndentation (-2) ;
+    inCppFile << "    " << conditionVariable << " = " ;
+    mConditionalExpression (HERE)->generateExpression (inCppFile) ;
+    inCppFile << " ;\n" 
+                 "  }\n"
+                 "}\n" ;   
+  }else{
+    generateInstructionListForList (mInstructionsList, inCppFile,
+                                    inTargetFileName, ioPrototypeIndex,
+                                    inGenerateDebug, inGenerateSemanticInstructions) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_parse_loop_instruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_parse_loop_instruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool inGenerateSemanticInstructions) const {
+  return formalArgumentIsUsedForList (mInstructionsList, inArgumentCppName, inGenerateSemanticInstructions)
+    || mVariantExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+    || mConditionalExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+  ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_parse_loop_instruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return formalCurrentObjectArgumentIsUsedForList (mInstructionsList) ;
+}
+
 //---------------------------------------------------------------------------*
