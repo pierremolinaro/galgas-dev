@@ -854,7 +854,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                    const C_String & inTargetFileName,
                                    sint32 & ioPrototypeIndex,
                                    const bool inNotDeclared) {
-  generateSelectAndRepeatPrototypesForList (mInstructionsList,
+  generateSelectAndRepeatPrototypesForList (mInstructionList,
                                             inHfile,
                                             inLexiqueClassName,
                                             inTargetFileName,
@@ -886,7 +886,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     inCppFile << "const C_parsingContext context_" << v << " = _inLexique.parsingContext () ;\n" ;
     const sint32 prototypeIndex = ioPrototypeIndex ;
     inCppFile.incIndentation (-2) ;
-    generateInstructionListForList (mInstructionsList, inCppFile,
+    generateInstructionListForList (mInstructionList, inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, false) ;
     inCppFile.incIndentation (+2) ;
@@ -894,7 +894,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     inCppFile << "GGS_bool " << conditionVariable << " ;\n"
               << "if (" << variantVariable << "._isBuilt ()) {\n"
               << "  " << conditionVariable << " = " ;
-    mConditionalExpression (HERE)->generateExpression (inCppFile) ;
+    mWhileExpression (HERE)->generateExpression (inCppFile) ;
     inCppFile << " ;\n" 
                  "}\n"
                  "while (" << conditionVariable << ".isBuiltAndTrue ()) {\n"
@@ -908,17 +908,17 @@ generateInstruction (AC_OutputStream & inCppFile,
                  "    " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
     sint32 tempPrototypeIndex = prototypeIndex ;
     inCppFile.incIndentation (+2) ;
-    generateInstructionListForList (mInstructionsList, inCppFile,
+    generateInstructionListForList (mInstructionList, inCppFile,
                                     inTargetFileName, tempPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
     inCppFile.incIndentation (-2) ;
     inCppFile << "    " << conditionVariable << " = " ;
-    mConditionalExpression (HERE)->generateExpression (inCppFile) ;
+    mWhileExpression (HERE)->generateExpression (inCppFile) ;
     inCppFile << " ;\n" 
                  "  }\n"
                  "}\n" ;   
   }else{
-    generateInstructionListForList (mInstructionsList, inCppFile,
+    generateInstructionListForList (mInstructionList, inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
   }
@@ -928,7 +928,11 @@ generateInstruction (AC_OutputStream & inCppFile,
 
 bool cPtr_C_parse_loop_instruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
-  return true ;
+  return inGenerateSemanticInstructions
+    || isLexiqueFormalArgumentUsedForList (mInstructionList, inGenerateSemanticInstructions)
+    || mVariantExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+    || mWhileExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+  ;
 }
 
 //---------------------------------------------------------------------------*
@@ -936,9 +940,9 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 bool cPtr_C_parse_loop_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
-  return formalArgumentIsUsedForList (mInstructionsList, inArgumentCppName, inGenerateSemanticInstructions)
+  return formalArgumentIsUsedForList (mInstructionList, inArgumentCppName, inGenerateSemanticInstructions)
     || mVariantExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
-    || mConditionalExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+    || mWhileExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
   ;
 }
 
@@ -946,7 +950,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 bool cPtr_C_parse_loop_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
-  return formalCurrentObjectArgumentIsUsedForList (mInstructionsList) ;
+  return formalCurrentObjectArgumentIsUsedForList (mInstructionList) ;
 }
 
 //---------------------------------------------------------------------------*
