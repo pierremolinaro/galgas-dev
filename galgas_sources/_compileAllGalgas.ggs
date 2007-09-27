@@ -17,8 +17,6 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-compile "parser_parser.gSyntax" ;
-
 #--- Command Line Options
 compile "galgas_cli_options.gOption" ;
 
@@ -103,6 +101,7 @@ compile "mda_galgas_LL1_routines.gSemantics" ;
 compile "mda_galgas_LL1_prgm.gProgram" ;
 
 #--- Old style components
+compile "parser_parser.gSyntax" ;
 compile "common_semantics.gSemantics" ;
 compile "semantics_semantics.gSemantics" ;
 compile "parser_semantics.gSemantics" ;

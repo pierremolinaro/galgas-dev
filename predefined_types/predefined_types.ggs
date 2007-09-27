@@ -1,5 +1,9 @@
 semantics predefined_types :
 
+list @UINTLIST {
+  @uint mValue ;
+}
+
 list @UINT64LIST {
   @uint64 mValue ;
 }
