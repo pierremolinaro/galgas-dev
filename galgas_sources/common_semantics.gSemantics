@@ -2146,6 +2146,27 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    U I N T L I S T    T Y P E                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_uintlist_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_uint new] ![@lstring new !"mValue" !here] ;
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentOut] ;
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  outType := [@typeGalgasListType new
+    ![@lstring new !"uintlist" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    U I N T 6 4 L I S T    T Y P E                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3050,6 +3071,9 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "length" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_uint new] ;
+  elsif [inReaderName string] == "uint" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_uint new] ;
   elsif [inReaderName string] == "capacity" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_uint new] ;
@@ -3756,7 +3780,11 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new ![@typeGalgas_stringset new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"stringset" !here] !e] ;
 
-  @AC_galgasType t ; build_uint64list_type ?t ;
+  @AC_galgasType t ; build_uintlist_type ?t ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uintlist" !here] !e] ;
+
+  build_uint64list_type ?t ;
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uint64list" !here] !e] ;
 
