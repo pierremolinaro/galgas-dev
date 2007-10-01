@@ -298,6 +298,7 @@ routine comparison_types_check
   ??@AC_galgasType inRightExpressionType
 :
   match inLeftExpressionType :: inRightExpressionType :
+  when @typeGalgas_binaryset () :: @typeGalgas_binaryset () :
   when @typeGalgas_stringset () :: @typeGalgas_stringset () :
   when @typeGalgas_bool ()      :: @typeGalgas_bool () :
   when @typeGalgas_char ()      :: @typeGalgas_char () :
@@ -1117,7 +1118,6 @@ rule <factor>
     ;
   #--- Check the type is a class
     @lstring kSourceExpresionClassName := [(cast castExpressionType if >= @typeGalgasClassType else error here) mClassTypeName] ;
-    # ¤ extract castExpressionType->@typeGalgasClassType (?kSourceExpresionClassName ?3* ? classMessageMap ?3*) error here : messageGalgasType ;
     $if$ ;
     @bool checkForKindOfClass ;
     select
@@ -1134,12 +1134,10 @@ rule <factor>
     @AC_semanticsEntity entite ;
     [ioEntitiesMap searchKey !castedTypeName ?entite] ;
     outResultType := [(cast entite if >= @typeEntiteType else error castedTypeName) aDefType] ;
-    # ¤ extract entite->@typeEntiteType (? outResultType) error castedTypeName : messageTypeEntite ;
   #--- Check the type is a class
     @typeGalgasClassType resultClassType := (cast outResultType if >= @typeGalgasClassType else error castedTypeName) ;
     @typeSuperClassesMap superClassMap := [resultClassType mAncestorClassesMap] ;
     @string classMessage := [resultClassType mClassMessage] ;
-    # ¤ extract outResultType->@typeGalgasClassType (?3* ?superClassMap ?3* ?classMessage) error castedTypeName : messageGalgasType ;
   #--- Check class does define a message
     if [classMessage length] == 0 then
       error castedTypeName: "in order to be used in a cast expression, the '@" . castedTypeName . "' class should define a class message" ;
