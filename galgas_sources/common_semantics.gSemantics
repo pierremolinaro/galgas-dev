@@ -670,6 +670,10 @@ class @typeGalgas_uint extends @AC_galgasType {
        ([inClassMethodName string] == "errorCount") |  
        ([inClassMethodName string] == "warningCount") then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "valueWithMask" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
@@ -3353,6 +3357,12 @@ routine handleReaderCall
       elsif [inReaderName string] == "uint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint64 new] ;
+      elsif [inReaderName string] == "lsbIndex" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inReaderName string] == "significantBitCount" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
       elsif [inReaderName string] == "sint64" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint64 new] ;
