@@ -8,6 +8,13 @@
  <body>
   <div style="font-face: Verdana; font-size:small;">
    <p><strong>GALGAS ChangeLog</strong></p>
+   <p>1.6.12</p>
+   <ul>
+    <li>New type: <a href="http://galgas.rts-software.org/doku.php?id=uintlist_type"><tt><strong>@uintlist</strong></tt></a>;</li>
+    <li>New @uint constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#valuewithmask"><tt><strong>valueWithMask</strong></tt></a>;</li>
+    <li>New @uint reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#significantbitcount"><tt><strong>significantBitCount</strong></tt></a> that returns the number of bits needed to express of receiver value;</li>
+    <li>New @uint reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#lsbindex"><tt><strong>lsbIndex</strong></tt></a> that returns the first not null bit index of receiver value;</li>
+   </ul>
    <p>1.6.11</p>
    <ul>
     <li>New string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#regularfiles"><tt><strong>regularFiles</strong></tt></a> that enumerates the regular files at receiver's path;</li>
