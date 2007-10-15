@@ -3116,6 +3116,13 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "stringByDeletingLastPathComponent" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
+  elsif [inReaderName string] == "stringByStandardizingPath" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inReaderName string] == "absolutePathFromPath" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
   elsif [inReaderName string] == "stringByReplacingStringByString" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
