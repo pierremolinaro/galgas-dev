@@ -25,7 +25,6 @@
   [NSApp terminate:nil] ;
 }
 
-
 //---------------------------------------------------------------------------*
 
 #pragma mark Installation Did Fail
