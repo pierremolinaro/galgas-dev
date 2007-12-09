@@ -527,14 +527,14 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
 
 void cPtr_C_repeat_instruction::
 generateInstruction (AC_OutputStream & inCppFile,
-                       const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
-                       const bool inGenerateDebug,
-                       const bool inGenerateSemanticInstructions) const {
+                     const C_String & inTargetFileName,
+                     sint32 & ioPrototypeIndex,
+                     const bool inGenerateDebug,
+                     const bool inGenerateSemanticInstructions) const {
   const sint32 prototypeIndex = ioPrototypeIndex ;
   ioPrototypeIndex ++ ;
-  inCppFile << "{ bool syntaxRepeat = true ;\n"
-               "  while (syntaxRepeat) {\n" ;
+  inCppFile << "{ bool syntaxRepeat_" << prototypeIndex << " = true ;\n"
+               "  while (syntaxRepeat_" << prototypeIndex << ") {\n" ;
   inCppFile.incIndentation (+4) ;
   GGS_typeListeBranchesInstructions::element_type * currentBranch = aListesBranchesRepeter.firstObject () ;
   macroValidPointer (currentBranch) ;
@@ -559,7 +559,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   }
   inCppFile.incIndentation (-2) ;
   inCppFile << "  default :\n"
-               "    syntaxRepeat = false ;\n"
+               "    syntaxRepeat_" << prototypeIndex << " = false ;\n"
                "    break ;\n"
                "}\n" ;
   inCppFile.incIndentation (-4) ;

@@ -408,12 +408,6 @@ rule '#' :
   drop $comment$ ;
 end rule ;
 
-#message unterminated_comment_error : "unterminated comment" ;
-#rule "%" :
-#  repeat
-#  while ~ "%%" error unterminated_comment_error :
-#  end repeat ;
-#end rule ;
 # --------------------- separators -----------------------------------------
 rule '\x1' -> ' ' :
 end rule ;
