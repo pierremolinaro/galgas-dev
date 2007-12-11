@@ -9725,7 +9725,7 @@
 					../hand_coded_sources,
 					../../libpm,
 				);
-				INFOPLIST_FILE = /Volumes/Developpements/mes_prgms/galgas/project_xcode/InfoPPC.plist;
+				INFOPLIST_FILE = InfoPPC.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-Wall";
