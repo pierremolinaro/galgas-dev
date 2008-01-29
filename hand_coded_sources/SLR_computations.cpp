@@ -1305,7 +1305,7 @@ SLR_computations (C_Compiler & inLexique,
         *inHTMLfile << "] : accept" ;
         inHTMLfile->outputRawData ("</code>") ;
       }
-      if (! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
+      if (SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
         if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("<span class=\"error\">") ;
           *inHTMLfile << " *** CONFLICT ***" ;
@@ -1334,7 +1334,7 @@ SLR_computations (C_Compiler & inLexique,
           inVocabulary.printInFile (*inHTMLfile, leftNonTerminal COMMA_HERE) ;
           inHTMLfile->outputRawData ("</code>") ;
         }
-        if (! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
+        if (SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
           if (inHTMLfile != NULL) {
             inHTMLfile->outputRawData ("<span class=\"error\">") ;
             *inHTMLfile << " *** CONFLICT ***" ;

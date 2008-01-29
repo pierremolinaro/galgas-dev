@@ -377,20 +377,20 @@ static const char k_default_style [] = {
   "}\n"
   "\n"
   "a.header_link {\n"
-  "   border: 1px solid #999999 ;\n"
-  "   padding: 4px ;\n"
+  "  border: 1px solid #999999 ;\n"
+  "  padding: 4px ;\n"
   "  background-color: #FFFFCC ;\n"
   "  font-weight: bold ;\n"
   "}\n"
   "\n"
   "a:visited, a:link, a:active{\n"
-  " color: blue ;\n"
-  " text-decoration: underline ;\n"
+  "  color: blue ;\n"
+  "  text-decoration: underline ;\n"
   "}\n"
   "\n"
   "a:hover {\n"
   "  color:green ;\n"
-  "  background-color: #FF9966 ;\n"
+  "  background-color: #FFFF00 ;\n"
   "  text-decoration: none ;\n"
   "}\n"
   "\n"
@@ -467,7 +467,7 @@ static const char k_default_style [] = {
 
 //---------------------------------------------------------------------------*
 
-static void
+/* static void
 createStyleFile (C_Compiler & inLexique,
                  const C_String & inCurrentDirectory, 
                  const char * inStyleFileName,
@@ -488,7 +488,7 @@ createStyleFile (C_Compiler & inLexique,
       inLexique.ggs_printWarning ((C_String ("Need to write '") + f + "'.\n").cString ()) ;
     }
   }
-}
+}*/
 
 //---------------------------------------------------------------------------*
 
@@ -553,9 +553,9 @@ analyzeGrammar (C_Compiler & inLexique,
                                                                  outputHTMLgrammarFile
                                                                  COMMA_HERE) ;
 //--- Create "style.css" file if it does not exist
-  if (outputHTMLfile) {
-    createStyleFile (inLexique, inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css", verboseOptionOn) ;
-  }
+//  if (outputHTMLfile) {
+//    createStyleFile (inLexique, inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css", verboseOptionOn) ;
+//  }
 
 //--- If 'HTMLfileName' is the empty string, no file is created
 
@@ -571,7 +571,8 @@ analyzeGrammar (C_Compiler & inLexique,
     s << "'" << inTargetFileName << "' grammar" ;
     macroMyNew (HTMLfile, C_HTML_FileWrite (HTMLfileName,
                                             s,
-                                            "style.css"
+                                            "", // No css file
+                                            k_default_style // Style definition
                                             COMMA_SAFARI_CREATOR
                                             COMMA_HERE)) ;
   //--- HTML title
