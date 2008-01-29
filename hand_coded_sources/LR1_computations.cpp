@@ -1728,7 +1728,7 @@ LR1_computations (C_Compiler & inLexique,
         inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
         *inHTMLfile << "] : accept" ;
         inHTMLfile->outputRawData ("</code>") ;
-        if (! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
+        if (SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
           inHTMLfile->outputRawData ("<span class=\"error\">") ;
           *inHTMLfile << " *** CONFLICT ***" ;
           inHTMLfile->outputRawData ("</span>") ;
@@ -1754,7 +1754,7 @@ LR1_computations (C_Compiler & inLexique,
           *inHTMLfile << "] : reduce by " ;
           inVocabulary.printInFile (*inHTMLfile, leftNonTerminal COMMA_HERE) ;
           inHTMLfile->outputRawData ("</code>") ;
-          if (! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
+          if (SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
             inHTMLfile->outputRawData ("<span class=\"error\">") ;
             *inHTMLfile << " *** CONFLICT ***" ;
             inHTMLfile->outputRawData ("</span>") ;
