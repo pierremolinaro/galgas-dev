@@ -622,36 +622,58 @@ c_LR0_automaton_transition::c_LR0_automaton_transition (const sint32 inSourceSta
 //---------------------------------------------------------------------------*
 
 class cLR0_decisionTableElement {
-  public : enum enumDecision {kDecisionError, kDecisionShift, kDecisionReduce, kDecisionAccept} ;
-  public : enumDecision mDecision ;
-  public : sint32 mParameter ;
+  private : sint32 mParameter ;
+  public : inline sint32 parameter (void) const { return mParameter ; }
+
+  public : typedef enum {kUndefinedState, kDecisionShift, kDecisionReduce, kDecisionAccept} enumDecision ;
+  private : enumDecision mDecision ;
+  public : inline enumDecision decision (void) const { return mDecision ; }
+
+  public : inline bool isInUndefinedState (void) const {
+    return mDecision == kUndefinedState ;
+  }
+
   public : cLR0_decisionTableElement (void) ;
-  public : bool isInErrorDecision (void) const ;
+
+  public : cLR0_decisionTableElement (const cLR0_decisionTableElement & inSource) ;
+
+  private : cLR0_decisionTableElement (const sint32 inParameter, const enumDecision inDecision) ;
+  
   public : static cLR0_decisionTableElement shiftDecision (const sint32 inNextState) ;
+
   public : static cLR0_decisionTableElement reduceDecision (const sint32 inReduceProduction) ;
+
   public : static cLR0_decisionTableElement acceptDecision (void) ;
 } ;
 
 //---------------------------------------------------------------------------*
 
 cLR0_decisionTableElement::cLR0_decisionTableElement (void) :
-mDecision (kDecisionError) {
-  mParameter = 0 ;
+mParameter (0),
+mDecision (kUndefinedState) {
 }
 
 //---------------------------------------------------------------------------*
 
-bool cLR0_decisionTableElement::isInErrorDecision (void) const {
-  return mDecision == kDecisionError ;
+cLR0_decisionTableElement::
+cLR0_decisionTableElement (const cLR0_decisionTableElement & inSource) :
+mParameter (inSource.mParameter),
+mDecision (inSource.mDecision) {
+}
+
+//---------------------------------------------------------------------------*
+
+cLR0_decisionTableElement::
+cLR0_decisionTableElement (const sint32 inParameter, const enumDecision inDecision) :
+mParameter (inParameter),
+mDecision (inDecision) {
 }
 
 //---------------------------------------------------------------------------*
 
 cLR0_decisionTableElement cLR0_decisionTableElement::
 shiftDecision (const sint32 inNextState) {
-  cLR0_decisionTableElement d ;
-  d.mDecision = kDecisionShift ;
-  d.mParameter = inNextState ;
+  cLR0_decisionTableElement d (inNextState, kDecisionShift) ;
   return d ;
 }
 
@@ -659,18 +681,14 @@ shiftDecision (const sint32 inNextState) {
 
 cLR0_decisionTableElement cLR0_decisionTableElement::
 reduceDecision (const sint32 inReduceProduction) {
-  cLR0_decisionTableElement d ;
-  d.mDecision = kDecisionReduce ;
-  d.mParameter = inReduceProduction ;
+  cLR0_decisionTableElement d (inReduceProduction, kDecisionReduce) ;
   return d ;
 }
 
 //---------------------------------------------------------------------------*
 
 cLR0_decisionTableElement cLR0_decisionTableElement::acceptDecision (void) {
-  cLR0_decisionTableElement d ;
-  d.mDecision = kDecisionAccept ;
-  d.mParameter = 0 ; // Unused value
+  cLR0_decisionTableElement d (0, kDecisionAccept) ;
   return d ;
 }
 
@@ -753,9 +771,9 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     startIndexArray.addObject (startIndex) ;
     generatedZone3 <<"\n// State S" << i << " (index = " << startIndex << ')' ;
     for (sint32 j=0 ; j<columnsCount ; j++) {
-      const sint32 parameter = inSLRdecisionTable (i, j COMMA_HERE).mParameter ;
-      const cLR0_decisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).mDecision ;
-      if (decision != cLR0_decisionTableElement::kDecisionError) {
+      const sint32 parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
+      const cLR0_decisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
+      if (decision != cLR0_decisionTableElement::kUndefinedState) {
         startIndex += 2 ;
         generatedZone3 << '\n' ;
         if (first) {
@@ -1305,7 +1323,7 @@ SLR_computations (C_Compiler & inLexique,
         *inHTMLfile << "] : accept" ;
         inHTMLfile->outputRawData ("</code>") ;
       }
-      if (SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
+      if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
         if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("<span class=\"error\">") ;
           *inHTMLfile << " *** CONFLICT ***" ;
@@ -1334,7 +1352,7 @@ SLR_computations (C_Compiler & inLexique,
           inVocabulary.printInFile (*inHTMLfile, leftNonTerminal COMMA_HERE) ;
           inHTMLfile->outputRawData ("</code>") ;
         }
-        if (SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
+        if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
           if (inHTMLfile != NULL) {
             inHTMLfile->outputRawData ("<span class=\"error\">") ;
             *inHTMLfile << " *** CONFLICT ***" ;
