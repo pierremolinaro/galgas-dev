@@ -21,7 +21,7 @@
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
 #include "utilities/MF_MemoryControl.h"
-#include "generic_arraies/TC_Array2.h"
+#include "generic_arraies/TC_UniqueArray2.h"
 
 //---------------------------------------------------------------------------*
 
@@ -32,6 +32,7 @@
 #include "common_semantics.h"
 #include "semantics_instructions.h"
 #include "scannerDecoderGeneration.h"
+#include "cDecisionTableElement.h"
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1093,69 +1094,6 @@ class c_LR1_automaton_transition {
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-// L R 1    D E C I S I O N    T A B L E    E L E M E N T                    *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-class cLR1_decisionTableElement {
-  public : enum enumDecision {kUndefinedState, kDecisionShift, kDecisionReduce, kDecisionAccept} ;
-  public : enumDecision mDecision ;
-  public : sint32 mParameter ;
-  public : cLR1_decisionTableElement (void) ;
-  public : bool isInUndefinedState (void) const ;
-  public : static cLR1_decisionTableElement shiftDecision (const sint32 inNextState) ;
-  public : static cLR1_decisionTableElement reduceDecision (const sint32 inReduceProduction) ;
-  public : static cLR1_decisionTableElement acceptDecision (void) ;
-} ;
-
-//---------------------------------------------------------------------------*
-
-cLR1_decisionTableElement::cLR1_decisionTableElement (void) :
-mDecision (kUndefinedState) {
-  mParameter = 0 ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cLR1_decisionTableElement::isInUndefinedState (void) const {
-  return mDecision == kUndefinedState ;
-}
-
-//---------------------------------------------------------------------------*
-
-cLR1_decisionTableElement cLR1_decisionTableElement::shiftDecision (const sint32 inNextState) {
-  cLR1_decisionTableElement d ;
-  d.mDecision = kDecisionShift ;
-  d.mParameter = inNextState ;
-  return d ;
-}
-
-//---------------------------------------------------------------------------*
-
-cLR1_decisionTableElement cLR1_decisionTableElement::reduceDecision (const sint32 inReduceProduction) {
-  cLR1_decisionTableElement d ;
-  d.mDecision = kDecisionReduce ;
-  d.mParameter = inReduceProduction ;
-  return d ;
-}
-
-//---------------------------------------------------------------------------*
-
-cLR1_decisionTableElement cLR1_decisionTableElement::acceptDecision (void) {
-  cLR1_decisionTableElement d ;
-  d.mDecision = kDecisionAccept ;
-  d.mParameter = 0 ; // Unused value
-  return d ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-//                                                                           *
 // G E N E R A T E    L R ( 1 )    A N A L Y Z E R                           *
 //                                                                           *
 //---------------------------------------------------------------------------*
@@ -1164,7 +1102,7 @@ static void
 generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
-                               const TC_Array2 <cLR1_decisionTableElement> & inSLRdecisionTable,
+                               const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_FIFO <c_LR1_automaton_transition> & inTransitionList,
                                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                                const uint32 inOriginalGrammarStartSymbol,
@@ -1226,9 +1164,9 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
     startIndexArray.addObject (startIndex) ;
     generatedZone3 <<"\n// State S" << i << " (index = " << startIndex << ')' ;
     for (sint32 j=0 ; j<columnsCount ; j++) {
-      const sint32 parameter = inSLRdecisionTable (i, j COMMA_HERE).mParameter ;
-      const cLR1_decisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).mDecision ;
-      if (decision != cLR1_decisionTableElement::kUndefinedState) {
+      const sint32 parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
+      const cDecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
+      if (decision != cDecisionTableElement::kUndefinedState) {
         startIndex += 2 ;
         generatedZone3 << '\n' ;
         if (first) {
@@ -1240,9 +1178,9 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << inLexiqueName << "::" << inLexiqueName << "_1_" ;
         generateTerminalSymbolCppName (inVocabulary.getSymbol (j COMMA_HERE), generatedZone3) ;
         generatedZone3 << ", " ;
-        if (decision == cLR1_decisionTableElement::kDecisionReduce) { // Reduce action
+        if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
           generatedZone3 << "REDUCE (" << parameter << ')' ;
-        }else if (decision == cLR1_decisionTableElement::kDecisionShift) { // Shift action
+        }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
           generatedZone3 << "SHIFT (" << parameter << ')' ;
         }else{ // Accept action
           generatedZone3 << "ACCEPT" ;
@@ -1678,7 +1616,7 @@ LR1_computations (C_Compiler & inLexique,
 
 //--- Build LR1 table... detect if grammar is not LR1
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  TC_Array2 <cLR1_decisionTableElement> SLRdecisionTable (LR1_items_sets_collection->getStateCount (), terminalSymbolsCount COMMA_HERE) ;
+  TC_UniqueArray2 <cDecisionTableElement> SLRdecisionTable (LR1_items_sets_collection->getStateCount (), terminalSymbolsCount COMMA_HERE) ;
   sint32 shiftActions = 0 ;
   sint32 reduceActions = 0 ;
   sint32 successorEntries = 0 ;
@@ -1693,7 +1631,7 @@ LR1_computations (C_Compiler & inLexique,
       const sint32 sourceState = transitionList (index COMMA_HERE).mSourceState ;
       const sint32 targetState = transitionList (index COMMA_HERE).mTargetState ;
       const sint32 terminal = transitionList (index COMMA_HERE).mAction ;
-      SLRdecisionTable (sourceState, terminal COMMA_HERE) = cLR1_decisionTableElement::shiftDecision (targetState) ;
+      SLRdecisionTable (sourceState, terminal COMMA_HERE) = cDecisionTableElement::shiftDecision (targetState) ;
       shiftActions ++ ;
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
@@ -1718,8 +1656,6 @@ LR1_computations (C_Compiler & inLexique,
                                                                    acceptCondition) ;
     if (acceptCondition) {
       const sint32 terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
-      conflictCount += ! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState () ;
-      SLRdecisionTable (state, terminal COMMA_HERE) = cLR1_decisionTableElement::acceptDecision () ;
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         *inHTMLfile << "Action [S"
@@ -1732,9 +1668,11 @@ LR1_computations (C_Compiler & inLexique,
           inHTMLfile->outputRawData ("<span class=\"error\">") ;
           *inHTMLfile << " *** CONFLICT ***" ;
           inHTMLfile->outputRawData ("</span>") ;
+          conflictCount ++ ;
         }
         inHTMLfile->outputRawData ("</td></tr>") ;
       }
+      SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::acceptDecision () ;
     }
   //--- Reduce
     for (sint32 p=0 ; p<productionsSet.count () ; p++) {
@@ -1742,8 +1680,6 @@ LR1_computations (C_Compiler & inLexique,
       const sint32 leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
       if (leftNonTerminal != (inVocabulary.getAllSymbolsCount () - 1)) {
         const sint32 terminal = terminalArray (p COMMA_HERE) ;
-        conflictCount += ! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState () ;
-        SLRdecisionTable (state, terminal COMMA_HERE) = cLR1_decisionTableElement::reduceDecision (productionIndex) ;
         reduceActions ++ ;
         if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
@@ -1758,9 +1694,11 @@ LR1_computations (C_Compiler & inLexique,
             inHTMLfile->outputRawData ("<span class=\"error\">") ;
             *inHTMLfile << " *** CONFLICT ***" ;
             inHTMLfile->outputRawData ("</span>") ;
+            conflictCount ++ ;
           }
           inHTMLfile->outputRawData ("</td></tr>") ;
         }
+        SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::reduceDecision (productionIndex) ;
       }
     }
   }
