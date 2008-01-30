@@ -20,7 +20,7 @@
 
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
-#include "generic_arraies/TC_Array2.h"
+#include "generic_arraies/TC_UniqueArray2.h"
 
 //---------------------------------------------------------------------------*
 
@@ -31,6 +31,7 @@
 #include "common_semantics.h"
 #include "semantics_instructions.h"
 #include "scannerDecoderGeneration.h"
+#include "cDecisionTableElement.h"
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -616,83 +617,6 @@ c_LR0_automaton_transition::c_LR0_automaton_transition (const sint32 inSourceSta
 #endif
 
 //---------------------------------------------------------------------------*
-//                                                                           *
-// L R 0    D E C I S I O N    T A B L E    E L E M E N T                    *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-class cLR0_decisionTableElement {
-  private : sint32 mParameter ;
-  public : inline sint32 parameter (void) const { return mParameter ; }
-
-  public : typedef enum {kUndefinedState, kDecisionShift, kDecisionReduce, kDecisionAccept} enumDecision ;
-  private : enumDecision mDecision ;
-  public : inline enumDecision decision (void) const { return mDecision ; }
-
-  public : inline bool isInUndefinedState (void) const {
-    return mDecision == kUndefinedState ;
-  }
-
-  public : cLR0_decisionTableElement (void) ;
-
-  public : cLR0_decisionTableElement (const cLR0_decisionTableElement & inSource) ;
-
-  private : cLR0_decisionTableElement (const sint32 inParameter, const enumDecision inDecision) ;
-  
-  public : static cLR0_decisionTableElement shiftDecision (const sint32 inNextState) ;
-
-  public : static cLR0_decisionTableElement reduceDecision (const sint32 inReduceProduction) ;
-
-  public : static cLR0_decisionTableElement acceptDecision (void) ;
-} ;
-
-//---------------------------------------------------------------------------*
-
-cLR0_decisionTableElement::cLR0_decisionTableElement (void) :
-mParameter (0),
-mDecision (kUndefinedState) {
-}
-
-//---------------------------------------------------------------------------*
-
-cLR0_decisionTableElement::
-cLR0_decisionTableElement (const cLR0_decisionTableElement & inSource) :
-mParameter (inSource.mParameter),
-mDecision (inSource.mDecision) {
-}
-
-//---------------------------------------------------------------------------*
-
-cLR0_decisionTableElement::
-cLR0_decisionTableElement (const sint32 inParameter, const enumDecision inDecision) :
-mParameter (inParameter),
-mDecision (inDecision) {
-}
-
-//---------------------------------------------------------------------------*
-
-cLR0_decisionTableElement cLR0_decisionTableElement::
-shiftDecision (const sint32 inNextState) {
-  cLR0_decisionTableElement d (inNextState, kDecisionShift) ;
-  return d ;
-}
-
-//---------------------------------------------------------------------------*
-
-cLR0_decisionTableElement cLR0_decisionTableElement::
-reduceDecision (const sint32 inReduceProduction) {
-  cLR0_decisionTableElement d (inReduceProduction, kDecisionReduce) ;
-  return d ;
-}
-
-//---------------------------------------------------------------------------*
-
-cLR0_decisionTableElement cLR0_decisionTableElement::acceptDecision (void) {
-  cLR0_decisionTableElement d (0, kDecisionAccept) ;
-  return d ;
-}
-
-//---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
@@ -708,7 +632,7 @@ static void
 generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
-                               const TC_Array2 <cLR0_decisionTableElement> & inSLRdecisionTable,
+                               const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_FIFO <c_LR0_automaton_transition> & inTransitionList,
                                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                                const uint32 inOriginalGrammarStartSymbol,
@@ -772,8 +696,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     generatedZone3 <<"\n// State S" << i << " (index = " << startIndex << ')' ;
     for (sint32 j=0 ; j<columnsCount ; j++) {
       const sint32 parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
-      const cLR0_decisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
-      if (decision != cLR0_decisionTableElement::kUndefinedState) {
+      const cDecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
+      if (decision != cDecisionTableElement::kUndefinedState) {
         startIndex += 2 ;
         generatedZone3 << '\n' ;
         if (first) {
@@ -785,9 +709,9 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << inLexiqueName << "::" << inLexiqueName << "_1_" ;
         generateTerminalSymbolCppName (inVocabulary.getSymbol (j COMMA_HERE), generatedZone3) ;
         generatedZone3 << ", " ;
-        if (decision == cLR0_decisionTableElement::kDecisionReduce) { // Reduce action
+        if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
           generatedZone3 << "REDUCE (" << parameter << ')' ;
-        }else if (decision == cLR0_decisionTableElement::kDecisionShift) { // Shift action
+        }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
           generatedZone3 << "SHIFT (" << parameter << ')' ;
         }else{ // Accept action
           generatedZone3 << "ACCEPT" ;
@@ -1277,7 +1201,7 @@ SLR_computations (C_Compiler & inLexique,
 
 //--- Build SLR table... detect if grammar is not SLR
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  TC_Array2 <cLR0_decisionTableElement> SLRdecisionTable (LR0_items_sets_collection.getStatesCount (), terminalSymbolsCount COMMA_HERE) ;
+  TC_UniqueArray2 <cDecisionTableElement> SLRdecisionTable (LR0_items_sets_collection.getStatesCount (), terminalSymbolsCount COMMA_HERE) ;
   sint32 shiftActions = 0 ;
   sint32 reduceActions = 0 ;
   sint32 successorEntries = 0 ;
@@ -1299,7 +1223,7 @@ SLR_computations (C_Compiler & inLexique,
         *inHTMLfile << "] : shift, goto S" << targetState ;
         inHTMLfile->outputRawData ("</code></td></tr>") ;
       }
-      SLRdecisionTable (sourceState, terminal COMMA_HERE) = cLR0_decisionTableElement::shiftDecision (targetState) ;
+      SLRdecisionTable (sourceState, terminal COMMA_HERE) = cDecisionTableElement::shiftDecision (targetState) ;
       shiftActions ++ ;
     }
   }
@@ -1331,7 +1255,7 @@ SLR_computations (C_Compiler & inLexique,
         }
         conflictCount ++ ;
       }
-      SLRdecisionTable (state, terminal COMMA_HERE) = cLR0_decisionTableElement::acceptDecision () ;
+      SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::acceptDecision () ;
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("</td></tr>") ;
       }
@@ -1363,7 +1287,7 @@ SLR_computations (C_Compiler & inLexique,
         if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("</td></tr>") ;
         }
-        SLRdecisionTable (state, terminal COMMA_HERE) = cLR0_decisionTableElement::reduceDecision (productionIndex) ;
+        SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::reduceDecision (productionIndex) ;
         reduceActions ++ ;
       }    
     }
