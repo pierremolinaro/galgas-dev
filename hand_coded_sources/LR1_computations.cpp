@@ -1098,11 +1098,11 @@ class c_LR1_automaton_transition {
 //---------------------------------------------------------------------------*
 
 class cLR1_decisionTableElement {
-  public : enum enumDecision {kDecisionError, kDecisionShift, kDecisionReduce, kDecisionAccept} ;
+  public : enum enumDecision {kUndefinedState, kDecisionShift, kDecisionReduce, kDecisionAccept} ;
   public : enumDecision mDecision ;
   public : sint32 mParameter ;
   public : cLR1_decisionTableElement (void) ;
-  public : bool isInErrorDecision (void) const ;
+  public : bool isInUndefinedState (void) const ;
   public : static cLR1_decisionTableElement shiftDecision (const sint32 inNextState) ;
   public : static cLR1_decisionTableElement reduceDecision (const sint32 inReduceProduction) ;
   public : static cLR1_decisionTableElement acceptDecision (void) ;
@@ -1111,14 +1111,14 @@ class cLR1_decisionTableElement {
 //---------------------------------------------------------------------------*
 
 cLR1_decisionTableElement::cLR1_decisionTableElement (void) :
-mDecision (kDecisionError) {
+mDecision (kUndefinedState) {
   mParameter = 0 ;
 }
 
 //---------------------------------------------------------------------------*
 
-bool cLR1_decisionTableElement::isInErrorDecision (void) const {
-  return mDecision == kDecisionError ;
+bool cLR1_decisionTableElement::isInUndefinedState (void) const {
+  return mDecision == kUndefinedState ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1228,7 +1228,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
     for (sint32 j=0 ; j<columnsCount ; j++) {
       const sint32 parameter = inSLRdecisionTable (i, j COMMA_HERE).mParameter ;
       const cLR1_decisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).mDecision ;
-      if (decision != cLR1_decisionTableElement::kDecisionError) {
+      if (decision != cLR1_decisionTableElement::kUndefinedState) {
         startIndex += 2 ;
         generatedZone3 << '\n' ;
         if (first) {
@@ -1718,7 +1718,7 @@ LR1_computations (C_Compiler & inLexique,
                                                                    acceptCondition) ;
     if (acceptCondition) {
       const sint32 terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
-      conflictCount += ! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision () ;
+      conflictCount += ! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState () ;
       SLRdecisionTable (state, terminal COMMA_HERE) = cLR1_decisionTableElement::acceptDecision () ;
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
@@ -1728,7 +1728,7 @@ LR1_computations (C_Compiler & inLexique,
         inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
         *inHTMLfile << "] : accept" ;
         inHTMLfile->outputRawData ("</code>") ;
-        if (SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
+        if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
           inHTMLfile->outputRawData ("<span class=\"error\">") ;
           *inHTMLfile << " *** CONFLICT ***" ;
           inHTMLfile->outputRawData ("</span>") ;
@@ -1742,7 +1742,7 @@ LR1_computations (C_Compiler & inLexique,
       const sint32 leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
       if (leftNonTerminal != (inVocabulary.getAllSymbolsCount () - 1)) {
         const sint32 terminal = terminalArray (p COMMA_HERE) ;
-        conflictCount += ! SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision () ;
+        conflictCount += ! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState () ;
         SLRdecisionTable (state, terminal COMMA_HERE) = cLR1_decisionTableElement::reduceDecision (productionIndex) ;
         reduceActions ++ ;
         if (inHTMLfile != NULL) {
@@ -1754,7 +1754,7 @@ LR1_computations (C_Compiler & inLexique,
           *inHTMLfile << "] : reduce by " ;
           inVocabulary.printInFile (*inHTMLfile, leftNonTerminal COMMA_HERE) ;
           inHTMLfile->outputRawData ("</code>") ;
-          if (SLRdecisionTable (state, terminal COMMA_HERE).isInErrorDecision ()) {
+          if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
             inHTMLfile->outputRawData ("<span class=\"error\">") ;
             *inHTMLfile << " *** CONFLICT ***" ;
             inHTMLfile->outputRawData ("</span>") ;
