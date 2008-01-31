@@ -294,6 +294,22 @@ nonterminal <semantic_instruction>
 label parse
 ;
 
+nonterminal <error_instruction>
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+label parse
+;
+
+nonterminal <warning_instruction>
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+label parse
+;
+
 nonterminal <extract_instruction>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
@@ -3489,6 +3505,22 @@ rule <semantic_instruction>
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
+  <warning_instruction>
+    !ioComponentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    !?ioVariablesMap
+    !?ioInstructionList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <warning_instruction>
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+:
   $warning$ ;
   @typeExpression errorExpression ;
   @AC_galgasType errorExpressionType ;
@@ -3539,6 +3571,22 @@ rule <semantic_instruction>
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
 :
+  <error_instruction>
+   !ioComponentSemanticsEntitiesMap
+   !inOptionsComponentsMapForUse
+   !?ioVariablesMap
+   !?ioInstructionList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <error_instruction>
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+:
   $error$ ;
   @typeExpression errorLocationExpression ;
   @AC_galgasType errorLocationExpressionType ;
@@ -3564,7 +3612,6 @@ rule <semantic_instruction>
   ;
 #--- Check that error message is a @string instance
   @typeGalgas_string gs := (cast errorMessageExpressionType if >= @typeGalgas_string else error here) ;
-  # ¤ extract errorMessageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
 #--- Valuations fictives
   @varToDropList variablesToDrop [emptyList] ;
   select
@@ -6072,7 +6119,7 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -6102,13 +6149,34 @@ rule <semantics_declaration>
     $modifier$ ;
     @lstring actionName ;
     $identifier$ ? actionName ;
+    @L_EXsignature signature [emptyList] ;
+    @typeVariablesMap localVariableMap [emptyMap] ;
+    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
     select
     or
-    $??$ ;
+      $??$ ;
       @lstring typeName ;
       $type_name$ ? typeName ;
-      @lstring parameterName ;
-      $identifier$ ? parameterName ;
+      if [typeName string] != "location" then
+        error typeName:"the type should be '@location'" ;
+      end if ;
+      @AC_galgasType type_semantique := [@typeGalgas_location new] ;
+      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      select
+        $unused$ ;
+        @lstring nomArgument ;
+        $identifier$ ? nomArgument ;
+        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
+      or
+        @lstring nomArgument ;
+        $identifier$ ? nomArgument ;
+        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
+      end select ;
+      signature += !type_semantique !argumentConstantIn ;
     end select ;
     ${$ ;
     @enumConstantMap definedSourceMap [emptyMap] ;
@@ -6122,11 +6190,25 @@ rule <semantics_declaration>
       @lstring targetName ;
       $identifier$ ? targetName ;
       [constantMap searchKey !targetName] ;
-#      select
-#      or
-#      end select ;
-      enumActionDefinitionList += !sourceName !targetName ;
-      $;$ ;
+      @typeInstructionList instructionList [emptyList] ;
+      select
+        $;$ ;
+      or
+        <error_instruction>
+          !ioComponentSemanticsEntitiesMap
+          !inOptionsComponentsMapForUse
+          !?localVariableMap
+          !?instructionList
+        ;
+      or
+        <warning_instruction>
+          !ioComponentSemanticsEntitiesMap
+          !inOptionsComponentsMapForUse
+          !?localVariableMap
+          !?instructionList
+        ;
+      end select ;
+      enumActionDefinitionList += !sourceName !targetName !instructionList ;
     while
     end repeat ;
    #--- Check all enum values are used for source
@@ -6136,7 +6218,7 @@ rule <semantics_declaration>
       end if ;
     end foreach ;
   #--- Enter in action map
-    [!?actionMap insertKey !actionName !enumActionDefinitionList] ;
+    [!?actionMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
     $}$ ;
   while
     $reader$ ;
@@ -6200,7 +6282,7 @@ label importSemantics
   end repeat ;
   $}$ ;
   ${$ ;
-#--- Messages map
+#--- readers, modifiers map
   @typeEnumMessageMap exEnumMessageMap [emptyMap] ;
   @enumModifierMap actionMap [emptyMap] ;
   @enumMessageMap enumMessageMap [emptyMap] ;
@@ -6209,13 +6291,20 @@ label importSemantics
     $modifier$ ;
     @lstring actionName ;
     $identifier$ ? actionName ;
+    @L_EXsignature signature [emptyList] ;
+    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
     select
     or
-    $??$ ;
+      signature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentConstantIn] ;
+      $??$ ;
       @lstring typeName ;
       $type_name$ ? typeName ;
-      @lstring parameterName ;
-      $identifier$ ? parameterName ;
+      select
+        $unused$ ;
+        $identifier$ ? * ;
+      or
+        $identifier$ ? * ;
+      end select ;
     end select ;
     ${$ ;
     @enumConstantMap definedSourceMap [emptyMap] ;
@@ -6229,15 +6318,18 @@ label importSemantics
       @lstring targetName ;
       $identifier$ ? targetName ;
       [constantMap searchKey !targetName] ;
-#      select
-#      or
-#      end select ;
-      enumActionDefinitionList += !sourceName !targetName ;
-      $;$ ;
+      select
+        $;$ ;
+      or
+        <error_instruction> parse ;
+      or
+        <warning_instruction> parse ;
+      end select ;
+      enumActionDefinitionList += !sourceName !targetName ![@typeInstructionList emptyList] ;
     while
     end repeat ;
   #--- Enter in action map
-    [!?actionMap insertKey !actionName !enumActionDefinitionList] ;
+    [!?actionMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
     $}$ ;
   while
     $reader$ ;

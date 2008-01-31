@@ -8,6 +8,7 @@
 
 //--- START OF USER ZONE 1
 
+class GGS_typeCplusPlusName ;
 
 //--- END OF USER ZONE 1
 

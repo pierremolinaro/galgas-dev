@@ -28,7 +28,6 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   message "a '.ggs' GALGAS source file"
   ??@lstring inSourceFile {
     fixFileGenerationStartDirectory !inSourceFile ;
-
     @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
     @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
     @M_syntaxComponents syntaxComponentsMap [emptyMap] ;

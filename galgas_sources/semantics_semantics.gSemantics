@@ -22,76 +22,6 @@ import semantics common_semantics in "common_semantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#       C++ NAME FOR A FORMAL PARAMETER OR LOCAL VARIABLE                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract class @typeCplusPlusName {
-  @location mVariableLocation ;
-}
-
-#---------------------------------------------------------------------------*
-# C++ name is the value of mName
-
-class @typeDirectName extends @typeCplusPlusName {
-  @string mName ;
-}
-
-#---------------------------------------------------------------------------*
-# C++ name is _currentObject->mName
-
-class @typeCurrentObjectName extends @typeCplusPlusName {
-  @string mName ;
-}
-
-#---------------------------------------------------------------------------*
-# C++ name is implicit (used for local method call)
-
-class @typeCppThisName extends @typeCplusPlusName {
-}
-
-#---------------------------------------------------------------------------*
-# C++ name is implicit (used for inherited method call)
-
-class @typeCppInheritedName extends @typeCplusPlusName {
-}
-
-#---------------------------------------------------------------------------*
-# C++ name is 'var_cas_' followed by the value of mName
-
-class @typeAutomaticName extends @typeCplusPlusName {
-  @string mName ;
-}
-
-#---------------------------------------------------------------------------*
-# C++ name is 'var_cas_' followed by the value of an unique sequence number
-
-class @typeLocationAutomaticName extends @typeCplusPlusName {
-  @uint mSequenceNumber ;
-}
-
-#---------------------------------------------------------------------------*
-# C++ name is 'operand_xxx->zz' followed by the value of mName
-
-class @typeOperandName extends @typeCplusPlusName {
-  @string mName ;
-  @bool mFieldKind ; # false : zz est vide ; true : zz est 'mInfo.'
-}
-
-#---------------------------------------------------------------------------*
-# C++ name is 'operand_xxx->mKey' followed by the value of mName
-
-class @typeKeyName extends @typeCplusPlusName {
-}
-
-#---------------------------------------------------------------------------*
-# No variable
-
-class @typeNullName extends @typeCplusPlusName {
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   A LIST OF C++ NAMES                                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -199,38 +129,6 @@ abstract class @typeCible {
 
 list @typeListeCibles {
   @typeCible aCible ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#     Liste des types et des noms C++ des arguments d'une methode           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @typeListeTypesEtNomsArgMethode {
-  @AC_galgasType mType ;
-  @formalArgumentPassingMode mFormalArgumentPassingMode ;
-  @typeCplusPlusName mCppName ;
-  @bool mModeIn ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#        Definition du type abstrait instruction d'une methode              *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract class @typeInstruction {
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#        Definition du type list d'instructions d'une methode               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @typeInstructionList {
-  @typeInstruction mInstruction ;
 }
 
 #---------------------------------------------------------------------------*
