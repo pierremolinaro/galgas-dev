@@ -60,7 +60,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Private attribute\n"
              "  private : enumeration mValue ;\n\n"
              "//--- Get value\n"
-             "  public : inline enumeration enumValue (void) const {return mValue ; }\n\n"
+             "  public : inline enumeration enumValue (void) const { return mValue ; }\n\n"
              "//--- Default constructor\n"
              "  public : inline GGS_" << mEnumTypeName << " (void) : mValue (kNotBuilt) {}\n\n"
              "//--- Internal constructor\n"
@@ -78,15 +78,28 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  }\n" ;
     cst = cst->nextObject () ;
   }
-  inHfile << "\n"
-             "//--- Messages\n" ;
+  inHfile << "\n" ;
+
+//--- Messages
+  inHfile << "//--- Messages\n" ;
   GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
     inHfile << "  public : GGS_string reader_" << m->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     m = m->nextObject () ;
   }
-  inHfile << "\n"
-             "//--- 'description' reader\n"
+  inHfile << '\n' ;
+
+//--- Modifiers
+  inHfile << "//--- Modifiers\n" ;
+  GGS_enumModifierMap::element_type * modifier = mEnumActionMap.firstObject () ;
+  while (modifier != NULL) {
+    inHfile << "  public : void modifier_" << modifier->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) ;\n" ;
+    modifier = modifier->nextObject () ;
+  }
+  inHfile << '\n' ;
+
+//--- 
+  inHfile << "//--- 'description' reader\n"
              "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n\n"
@@ -188,8 +201,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "GGS_string GGS_" << mEnumTypeName << "::"
-                 "\n"
+    inCppFile << "GGS_string GGS_" << mEnumTypeName << "::\n"
                  "reader_" << m->mKey << " (C_Compiler & /* _inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
@@ -205,8 +217,28 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     m = m->nextObject () ;
   }
 
-  inCppFile.writeCppHyphenLineComment () ;
+//--- Modifiers
+  GGS_enumModifierMap::element_type * modifier = mEnumActionMap.firstObject () ;
+  while (modifier != NULL) {
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << mEnumTypeName << "::\n"
+                 "modifier_" << modifier->mKey << " (C_Compiler & /* _inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "  switch (mValue) {\n" ;
+    GGS_enumModifierDefinitionList::element_type * element = modifier->mInfo.mActionDefinitionList.firstObject () ;
+    while (element != NULL) {
+      inCppFile << "  case enum_" << element->mSourceState << ":\n"
+                   "    mValue = enum_" << element->mTargetState << " ;\n"
+                   "    break ;\n" ;
+      element = element->nextObject () ;
+    }
+    inCppFile << "  default : break ;\n"
+                 "  }\n"
+                 "}\n\n" ;
+    modifier = modifier->nextObject () ;
+  }
 
+//---
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mEnumTypeName
             << "::\n"
                "reader_description (C_Compiler & /* _inLexique */\n"

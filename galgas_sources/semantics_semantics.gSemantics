@@ -1419,6 +1419,7 @@ class @enumGalgasType extends @typeEntityToGenerate {
   @lstring mEnumTypeName ;
   @enumConstantMap mConstantMap ;
   @typeEnumMessageMap mEnumMessageMap ;
+  @enumModifierMap mEnumActionMap ;
 }
 
 #---------------------------------------------------------------------------*
