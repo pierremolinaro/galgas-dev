@@ -6085,8 +6085,6 @@ rule <semantics_declaration>
   ${$ ;
 #--- Enum constants
   @enumConstantMap constantMap [emptyMap] ;
-#--- Messages map
-  @typeEnumMessageMap enumMessageMap [emptyMap] ;
   repeat
     @lstring constantName ;
     $identifier$ ? constantName ;
@@ -6096,13 +6094,55 @@ rule <semantics_declaration>
   end repeat ;
   $}$ ;
   ${$ ;
-#--- Enum messages
+#--- Enum messages, action messages
+  @typeEnumMessageMap enumMessageMap [emptyMap] ;
+  @enumModifierMap actionMap [emptyMap] ;
   repeat
   while
-    $message$ ;
+    $modifier$ ;
+    @lstring actionName ;
+    $identifier$ ? actionName ;
+    select
+    or
+    $??$ ;
+      @lstring typeName ;
+      $type_name$ ? typeName ;
+      @lstring parameterName ;
+      $identifier$ ? parameterName ;
+    end select ;
+    ${$ ;
+    @enumConstantMap definedSourceMap [emptyMap] ;
+    @enumModifierDefinitionList enumActionDefinitionList [emptyList] ;
+    repeat
+      @lstring sourceName ;
+      $identifier$ ? sourceName ;
+      [constantMap searchKey !sourceName] ;
+      [!?definedSourceMap insertKey !sourceName] ;
+      $->$ ;
+      @lstring targetName ;
+      $identifier$ ? targetName ;
+      [constantMap searchKey !targetName] ;
+#      select
+#      or
+#      end select ;
+      enumActionDefinitionList += !sourceName !targetName ;
+      $;$ ;
+    while
+    end repeat ;
+   #--- Check all enum values are used for source
+    foreach constantMap (@lstring inConstant) :
+      if not [definedSourceMap hasKey ![inConstant string]] then
+        error here: "The '" . [inConstant string] . "' is not handled" ;
+      end if ;
+    end foreach ;
+  #--- Enter in action map
+    [!?actionMap insertKey !actionName !enumActionDefinitionList] ;
+    $}$ ;
+  while
+    $reader$ ;
     @lstring messageName ;
     $identifier$ ? messageName ;
-    $:$ ;
+    ${$ ;
     @typeEnumCstMessageStringMap cstMessageStringMap [emptyMap] ;
     repeat
       @lstring cstName ;
@@ -6114,27 +6154,25 @@ rule <semantics_declaration>
       $;$ ;
     while
     end repeat ;
-    $end$ ;
+    $}$ ;
   #--- Build message string list
     @L_lstringList messageStringList [emptyList] ;
     foreach constantMap (@lstring constantName) :
-      @lstring name := [@lstring new ![constantName string] !here] ; #--- For best error location
+      @lstring name := [@lstring new ![constantName string] !here] ;
       @lstring cstString ;
       [cstMessageStringMap searchKey !name ?cstString] ;
       messageStringList += !cstString ;
     end foreach ;
   #--- Enter message definition into message map
     [!?enumMessageMap insertKey !messageName !messageStringList] ;
-    $message$ ;
-    $;$ ;
   end repeat ;
 #--- End type definition end
   $}$ ;
 #---- Enter enum datas into the list of entities to generate
-  @typeEntityToGenerate e := [@enumGalgasType new !enumTypeName !constantMap !enumMessageMap] ;
+  @typeEntityToGenerate e := [@enumGalgasType new !enumTypeName !constantMap !enumMessageMap !actionMap] ;
   listeEntitesAengendrer += !e ;
 #--- Enter enum type into semantic entities map
-  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !enumMessageMap] ;
+  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !enumMessageMap !actionMap] ;
   @AC_semanticsEntity ee := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !ee] ;
 label importSemantics
@@ -6164,17 +6202,52 @@ label importSemantics
   ${$ ;
 #--- Messages map
   @typeEnumMessageMap exEnumMessageMap [emptyMap] ;
+  @enumModifierMap actionMap [emptyMap] ;
   @enumMessageMap enumMessageMap [emptyMap] ;
   repeat
   while
-    $message$ ;
+    $modifier$ ;
+    @lstring actionName ;
+    $identifier$ ? actionName ;
+    select
+    or
+    $??$ ;
+      @lstring typeName ;
+      $type_name$ ? typeName ;
+      @lstring parameterName ;
+      $identifier$ ? parameterName ;
+    end select ;
+    ${$ ;
+    @enumConstantMap definedSourceMap [emptyMap] ;
+    @enumModifierDefinitionList enumActionDefinitionList [emptyList] ;
+    repeat
+      @lstring sourceName ;
+      $identifier$ ? sourceName ;
+      [constantMap searchKey !sourceName] ;
+      [!?definedSourceMap insertKey !sourceName] ;
+      $->$ ;
+      @lstring targetName ;
+      $identifier$ ? targetName ;
+      [constantMap searchKey !targetName] ;
+#      select
+#      or
+#      end select ;
+      enumActionDefinitionList += !sourceName !targetName ;
+      $;$ ;
+    while
+    end repeat ;
+  #--- Enter in action map
+    [!?actionMap insertKey !actionName !enumActionDefinitionList] ;
+    $}$ ;
+  while
+    $reader$ ;
     @lstring messageName ;
     $identifier$ ? messageName ;
   #--- Enter message definition into message map
     [!?enumMessageMap insertKey !messageName] ;
     @L_lstringList messageStringList [emptyList] ;
     [!? exEnumMessageMap insertKey !messageName !messageStringList] ;
-    $:$ ;
+    ${$ ;
     repeat
       $identifier$ ? * ;
       $->$ ;
@@ -6182,13 +6255,11 @@ label importSemantics
       $;$ ;
     while
     end repeat ;
-    $end$ ;
-    $message$ ;
-    $;$ ;
+    $}$ ;
   end repeat ;
   $}$ ;
 #--- Enter enum type into semantic entities map
-  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !exEnumMessageMap] ;
+  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !exEnumMessageMap !actionMap] ;
   @AC_semanticsEntity e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !e] ;
   @TypeModel type := [@EnumModel new !constantMap !enumMessageMap] ;

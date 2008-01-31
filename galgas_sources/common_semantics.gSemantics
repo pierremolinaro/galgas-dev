@@ -2787,6 +2787,21 @@ map @typeEnumMessageMap {
 
 #---------------------------------------------------------------------------*
 
+list @enumModifierDefinitionList {
+  @lstring mSourceState ;
+  @lstring mTargetState ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @enumModifierMap {
+  @enumModifierDefinitionList mActionDefinitionList ;
+  insert insertKey error message "the '%K' enum action is already declared in %L" ;
+  search searchKey error message "the '%K' enum action is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgas_enum extends @AC_galgasType {
 #--- Enumeration name
   @lstring mEnumTypeName ;
@@ -2796,6 +2811,9 @@ class @typeGalgas_enum extends @AC_galgasType {
 
 #--- Messages map
   @typeEnumMessageMap mMessagesMap ;
+
+#--- Action map
+  @enumModifierMap mEnumActionMap ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -2907,8 +2925,8 @@ routine checkAssignmentTypesCompatibility
                                "' type variable, and I got an extern '@" . [attNomType2 string] . "' type variable" ;
     end if ;
 
-  when @typeGalgas_enum (@lstring aTypeName1 * *)
-    :: @typeGalgas_enum (@lstring aTypeName2 * *) :
+  when @typeGalgas_enum (@lstring aTypeName1 * * *)
+    :: @typeGalgas_enum (@lstring aTypeName2 * * *) :
     if [aTypeName1 string] != [aTypeName2 string] then
       error inErrorLocation : "I was expecting an enum variable of  '@" . [aTypeName1 string] .
                                 "' type variable, and I got an enum '@" . [aTypeName2 string] . "' type variable" ;

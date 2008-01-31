@@ -27,11 +27,11 @@ semantics commonSemantics :
 enum @actualParametersPassingMode {
   parameterOut, parameterOutIn, parameterIn
 }{
-  message actualArgumentMessage :
+  reader actualArgumentMessage {
     parameterOutIn -> "an output/input (!?) actual parameter" ;
     parameterIn -> "an input (?) actual parameter" ;
     parameterOut -> "an output (!) actual parameter" ;
-  end message ;
+  }
 }
 
 #---------------------------------------------------------------------------*
@@ -43,12 +43,32 @@ enum @actualParametersPassingMode {
 enum @formalArgumentPassingMode {
   argumentIn, argumentOut, argumentInOut, argumentConstantIn
 }{
-  message formalArgumentMessage :
+  reader formalArgumentMessage {
     argumentConstantIn -> "a constant input (??) formal argument" ;
     argumentIn -> "an input (?) formal argument" ;
     argumentOut -> "an output (!) formal argument" ;
     argumentInOut -> "an input/output (?!) argument" ;
-  end message ;
+  }
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#          V A R I A B L E    S T A T E    A U T O M A T O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @variableStateAutomaton {
+#--- Local variable
+  localVariableDeclared, localVariableUsed, localVariableDropped
+}{
+
+#--- Action Write
+  modifier writeAccess {
+  #--- Local variable
+    localVariableDeclared -> localVariableUsed ;
+    localVariableUsed -> localVariableUsed ;
+    localVariableDropped -> localVariableUsed ;
+  }
 }
 
 #---------------------------------------------------------------------------*

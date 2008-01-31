@@ -472,16 +472,14 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <enum_message_declaration> -> @enumMessage :
-  $message$ ;
+  $reader$ ;
   $identifier$ ? mEnumMessageName ;
-  $:$ ;
+  ${$ ;
   repeat
     <enum_message_association> +> mMessageAssociationList ;
   while
   end repeat ;
-  $end$ ;
-  $message$ ;
-  $;$ ;
+  $}$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
