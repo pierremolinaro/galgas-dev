@@ -59,15 +59,89 @@ enum @formalArgumentPassingMode {
 
 enum @variableStateAutomaton {
 #--- Local variable
-  localVariableDeclared, localVariableUsed, localVariableDropped
+  localVariableDeclared, localVariableUsed, localVariableDropped,
+#--- Local constant
+  localConstantDeclared, localConstantDefined, localContantUsed,
+#--- Input formal parameter (?@... )
+  inputFormalParameterDefined, inputFormalParameterUsed, inputFormalParameterDropped,
+#--- Constant input formal parameter (??@... )
+  constantInputFormalParameterDefined, constantInputFormalParameterUsed
 }{
 
 #--- Action Write
-  modifier writeAccess {
+  modifier writeAccess ??@location inErrorLocation {
   #--- Local variable
     localVariableDeclared -> localVariableUsed ;
     localVariableUsed -> localVariableUsed ;
     localVariableDropped -> localVariableUsed ;
+  #--- Local constant
+    localConstantDeclared -> localConstantDefined ;
+    localConstantDefined -> localConstantDefined error inErrorLocation:"the local constant is already defined" ;
+    localContantUsed -> localContantUsed error inErrorLocation:"the local constant is already defined" ;
+  #--- Input formal parameter (?@... )
+    inputFormalParameterDefined -> inputFormalParameterDefined ;
+    inputFormalParameterUsed -> inputFormalParameterUsed ;
+    inputFormalParameterDropped -> inputFormalParameterUsed ;
+  #--- Constant input formal parameter (??@... )
+    constantInputFormalParameterDefined -> constantInputFormalParameterUsed error inErrorLocation: "the input parameter cannot be written" ;
+    constantInputFormalParameterUsed -> constantInputFormalParameterUsed error inErrorLocation: "the input parameter cannot be written" ;
+  }
+
+#--- Action Read
+  modifier readAccess ??@location inErrorLocation {
+  #--- Local variable
+    localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it has no value" ;
+    localVariableUsed -> localVariableUsed ;
+    localVariableDropped -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it is dropped" ;
+  #--- Local constant
+    localConstantDeclared -> localConstantDefined error inErrorLocation: "the local constant cannot be read, it has no value" ;
+    localConstantDefined -> localContantUsed ;
+    localContantUsed -> localContantUsed ;
+  #--- Input formal parameter (?@... )
+    inputFormalParameterDefined -> inputFormalParameterUsed ;
+    inputFormalParameterUsed -> inputFormalParameterUsed ;
+    inputFormalParameterDropped -> inputFormalParameterDefined  error inErrorLocation: "the input parameter cannot be read, it is dropped" ;
+  #--- Constant input formal parameter (??@... )
+    constantInputFormalParameterDefined -> constantInputFormalParameterUsed ;
+    constantInputFormalParameterUsed -> constantInputFormalParameterUsed ;
+  }
+
+#--- Action Read/write
+  modifier readWriteAccess ??@location inErrorLocation {
+  #--- Local variable
+    localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, has no value" ;
+    localVariableUsed -> localVariableUsed ;
+    localVariableDropped -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, it is dropped" ;
+  #--- Local constant
+    localConstantDeclared -> localContantUsed error inErrorLocation: "a local constant cannot be modified" ;
+    localConstantDefined -> localContantUsed error inErrorLocation: "a local constant cannot be modified" ;
+    localContantUsed -> localContantUsed error inErrorLocation: "a local constant cannot be modified" ;
+  #--- Input formal parameter (?@... )
+    inputFormalParameterDefined -> inputFormalParameterUsed error inErrorLocation: "the input parameter cannot be modified, has no value" ;
+    inputFormalParameterUsed -> inputFormalParameterUsed ;
+    inputFormalParameterDropped -> inputFormalParameterDefined error inErrorLocation: "the input parameter cannot be modified, it is dropped" ;
+  #--- Constant input formal parameter (??@... )
+    constantInputFormalParameterDefined -> constantInputFormalParameterUsed error inErrorLocation: "an input parameter cannot be modified" ;
+    constantInputFormalParameterUsed -> constantInputFormalParameterUsed error inErrorLocation: "an input parameter cannot be modified" ;
+  }
+
+#--- Action Drop
+  modifier dropAccess ??@location inErrorLocation {
+  #--- Local variable
+    localVariableDeclared -> localVariableDropped error inErrorLocation: "the local variable cannot be dropped, has no value" ;
+    localVariableUsed -> localVariableDropped ;
+    localVariableDropped -> localVariableDropped error inErrorLocation: "the local variable is already dropped" ;
+  #--- Local constant
+    localConstantDeclared -> localContantUsed error inErrorLocation: "a local constant cannot be dropped" ;
+    localConstantDefined -> localContantUsed error inErrorLocation: "a local constant cannot be dropped" ;
+    localContantUsed -> localContantUsed error inErrorLocation: "a local constant cannot be dropped" ;
+  #--- Input formal parameter (?@... )
+    inputFormalParameterDefined -> inputFormalParameterUsed error inErrorLocation: "the input parameter cannot be dropped, has no value" ;
+    inputFormalParameterUsed -> inputFormalParameterDropped ;
+    inputFormalParameterDropped -> inputFormalParameterDropped error inErrorLocation: "the input parameter is already dropped" ;
+  #--- Constant input formal parameter (??@... )
+    constantInputFormalParameterDefined -> constantInputFormalParameterUsed error inErrorLocation: "an input parameter cannot be dropped" ;
+    constantInputFormalParameterUsed -> constantInputFormalParameterUsed error inErrorLocation: "an input parameter cannot be dropped" ;
   }
 }
 
