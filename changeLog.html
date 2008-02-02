@@ -1,16 +1,27 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
- <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <meta http-equiv="Content-Style-Type" content="text/css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="fr">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
    <title>GALGAS ChangeLog</title>
+   <style type="text/css">
+     hilite {
+       font-weight:bold;
+       color:red;
+     }
+     api {
+       font: courier;
+       color:red;
+     }
+   </style>
  </head>
  <body>
-  <div style="font-face: Verdana; font-size:small;">
+  <div style="font: Verdana; font-size:small;">
    <p><strong>GALGAS ChangeLog</strong></p>
    <p>1.6.14</p>
    <ul>
-    <li>New @string constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithsequenceofcharacters"><tt><strong>stringWithSequenceOfCharacters</strong></tt></a>;</li>
+    <li>New @string constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithsequenceofcharacters"><span class="api">stringWithSequenceOfCharacters</span></a>;</li>
+    <li>Optimisation: a constructor of a class without any attribute returns now a shared singleton object, instead of instancing a new one;</li>
    </ul>
    <p>1.6.13</p>
    <ul>
@@ -19,131 +30,131 @@
    </ul>
    <p>1.6.12</p>
    <ul>
-    <li>New type: <a href="http://galgas.rts-software.org/doku.php?id=uintlist_type"><tt><strong>@uintlist</strong></tt></a>;</li>
-    <li>New @uint constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#valuewithmask"><tt><strong>valueWithMask</strong></tt></a>;</li>
-    <li>New @uint reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#significantbitcount"><tt><strong>significantBitCount</strong></tt></a> that returns the number of bits needed to express of receiver value;</li>
-    <li>New @uint reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#lsbindex"><tt><strong>lsbIndex</strong></tt></a> that returns the first not null bit index of receiver value;</li>
-    <li>New @string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringbystandardizingpath"><tt><strong>stringByStandardizingPath</strong></tt></a>;</li>
-    <li>New @string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#absolutepathfrompath"><tt><strong>absolutePathFromPath</strong></tt></a>;</li>
+    <li>New type: <a href="http://galgas.rts-software.org/doku.php?id=uintlist_type"><span class="api">@uintlist</span></a>;</li>
+    <li>New @uint constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#valuewithmask"><span class="api">valueWithMask</span></a>;</li>
+    <li>New @uint reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#significantbitcount"><span class="api">significantBitCount</span></a> that returns the number of bits needed to express of receiver value;</li>
+    <li>New @uint reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#lsbindex"><span class="api">lsbIndex</span></a> that returns the first not null bit index of receiver value;</li>
+    <li>New @string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringbystandardizingpath"><span class="api">stringByStandardizingPath</span></a>;</li>
+    <li>New @string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#absolutepathfrompath"><span class="api">absolutePathFromPath</span></a>;</li>
    </ul>
    <p>1.6.11</p>
    <ul>
-    <li>New string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#regularfiles"><tt><strong>regularFiles</strong></tt></a> that enumerates the regular files at receiver's path;</li>
-    <li>New string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#regularfileswithextensions"><tt><strong>regularFilesWithExtensions</strong></tt></a> that enumerates the regular files with given extensions at receiver's path;</li>
-    <li>New instruction: <a href="http://galgas.rts-software.org/doku.php?id=parse#parse_instruction"><tt><strong>parse loop ... end parse;</strong></tt></a> that expresses a repeated parsing;</li>
+    <li>New string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#regularfiles"><span class="api">regularFiles</span></a> that enumerates the regular files at receiver's path;</li>
+    <li>New string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#regularfileswithextensions"><span class="api">regularFilesWithExtensions</span></a> that enumerates the regular files with given extensions at receiver's path;</li>
+    <li>New instruction: <a href="http://galgas.rts-software.org/doku.php?id=parse#parse_instruction"><span class="api">parse loop ... end parse;</span></a> that expresses a repeated parsing;</li>
    </ul>
    <p>1.6.10</p>
    <ul>
-    <li>New command line option: <a href="http://galgas.rts-software.org/doku.php?id=lineoptions"><tt><strong>-d</strong></tt></a>
-        or <a href="http://galgas.rts-software.org/doku.php?id=lineoptions"><tt><strong>--detailled-error-messages</strong></tt></a>:
+    <li>New command line option: <a href="http://galgas.rts-software.org/doku.php?id=lineoptions"><span class="api">-d</span></a>
+        or <a href="http://galgas.rts-software.org/doku.php?id=lineoptions"><span class="api">--detailled-error-messages</span></a>:
         by default from now, GALGAS issues GCC-like error and warning messages;
         this command line option enables previous style messages;</li>
    </ul>
    <p>1.6.9</p>
    <ul>
-    <li>New lexical action: <tt><strong>multiplyUInt</strong></tt> [<a href="http://galgas.rts-software.org/doku.php?id=lex#multiplyuint">see multiplyUInt</a>];</li>
-    <li>New lexical action: <tt><strong>multiplyUInt64</strong></tt> [<a href="http://galgas.rts-software.org/doku.php?id=lex#multiplyuint64">see multiplyUInt64</a>];</li>
+    <li>New lexical action: <span class="api">multiplyUInt</span> [<a href="http://galgas.rts-software.org/doku.php?id=lex#multiplyuint">see multiplyUInt</a>];</li>
+    <li>New lexical action: <span class="api">multiplyUInt64</span> [<a href="http://galgas.rts-software.org/doku.php?id=lex#multiplyuint64">see multiplyUInt64</a>];</li>
     <li>Corrected undefined method bug in treewalking component [not documented];</li>
-    <li>New features for <tt><strong>cast</strong></tt> instruction;</li>
+    <li>New features for <span class="api">cast</span> instruction;</li>
    </ul>
    <p>1.6.8</p>
    <ul>
     <li>Bug fix: in previous releases, a syntax error with a SLR or LR(1) grammar could crash the compiler;</li>
     <li>Bug fix: in previous releases, GALGAS generates buggy code for the unary minus operator;</li>
-    <li>Two key words have been added: <tt><strong>once</strong></tt> and <tt><strong>cast</strong></tt>;</li>
-    <li>New features for <tt><strong>foreach</strong></tt> instruction;</li>
-    <li>New <tt><strong>cast</strong></tt> instruction [<a href="http://galgas.rts-software.org/doku.php?id=cast_instruction">see cast instruction</a>];</li>
-    <li>New <tt><strong>cast</strong></tt> expression [<a href="http://galgas.rts-software.org/doku.php?id=expression#cast_expression">see cast expression</a>];</li>
-    <li><tt><strong>extract</strong></tt> instructions are from now considered as obsolete and raise a warning on compilation: you are encouraged to use the new <tt><strong>cast</strong></tt> operator and the new <tt><strong>cast</strong></tt> instruction;</li>
+    <li>Two key words have been added: <span class="api">once</span> and <span class="api">cast</span>;</li>
+    <li>New features for <span class="api">foreach</span> instruction;</li>
+    <li>New <span class="api">cast</span> instruction [<a href="http://galgas.rts-software.org/doku.php?id=cast_instruction">see cast instruction</a>];</li>
+    <li>New <span class="api">cast</span> expression [<a href="http://galgas.rts-software.org/doku.php?id=expression#cast_expression">see cast expression</a>];</li>
+    <li><span class="api">extract</span> instructions are from now considered as obsolete and raise a warning on compilation: you are encouraged to use the new <span class="api">cast</span> operator and the new <span class="api">cast</span> instruction;</li>
    </ul>
    <p>1.6.7</p>
    <ul>
-    <li><font color="#FF0000"><strong>WARNING: INCOMPATIBILITY ISSUES;</strong></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.7">1.6.7 release notes</a>];</li>
-    <li>Bug fix: in previous releases, the <tt><strong>.=</strong></tt> operator did not detect an uninitialized target variable [<a href="http://galgas.rts-software.org/trac/ticket/29">29</a>];</li>
-    <li>Bug fix: in previous releases, the <tt><strong>.</strong></tt> operator did generate erroneous C++ code [<a href="http://galgas.rts-software.org/trac/ticket/30">30</a>];</li>
-    <li>Bug fix: in previous releases, a map <tt><strong>remove</strong></tt> method did not copy map before removing an entry;</li>
-    <li>Bug fix: in previous releases, the constant input (<tt><strong>??</strong></tt>) formal parameter passing mode did not perform a copy of the correspondant actual argument;</li>
+    <li><span class="hilite">WARNING: INCOMPATIBILITY ISSUES;</span> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.7">1.6.7 release notes</a>];</li>
+    <li>Bug fix: in previous releases, the <span class="api">.=</span> operator did not detect an uninitialized target variable [<a href="http://galgas.rts-software.org/trac/ticket/29">29</a>];</li>
+    <li>Bug fix: in previous releases, the <span class="api">.</span> operator did generate erroneous C++ code [<a href="http://galgas.rts-software.org/trac/ticket/30">30</a>];</li>
+    <li>Bug fix: in previous releases, a map <span class="api">remove</span> method did not copy map before removing an entry;</li>
+    <li>Bug fix: in previous releases, the constant input (<span class="api">??</span>) formal parameter passing mode did not perform a copy of the correspondant actual argument;</li>
    </ul>
    <p>1.6.6</p>
    <ul>
-    <li>Bug fix: in release 1.6.5 the <tt><strong>.=</strong></tt> operator generates erroneous code [<a href="http://galgas.rts-software.org/trac/ticket/28">28</a>];</li>
-    <li>New list reader: <a href="http://galgas.rts-software.org/doku.php?id=list_types#sublistwithrange"><tt><strong>subListWithRange</strong></tt></a>;</li>
-    <li>New list reader: <a href="http://galgas.rts-software.org/doku.php?id=list_types#sublistfromindex"><tt><strong>subListFromIndex</strong></tt></a>;</li>
+    <li>Bug fix: in release 1.6.5 the <span class="api">.=</span> operator generates erroneous code [<a href="http://galgas.rts-software.org/trac/ticket/28">28</a>];</li>
+    <li>New list reader: <a href="http://galgas.rts-software.org/doku.php?id=list_types#sublistwithrange"><span class="api">subListWithRange</span></a>;</li>
+    <li>New list reader: <a href="http://galgas.rts-software.org/doku.php?id=list_types#sublistfromindex"><span class="api">subListFromIndex</span></a>;</li>
    </ul>
    <p>1.6.5</p>
    <ul>
-    <li>New <tt><strong>@string</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#componentsjoinedbystring"><tt><strong>componentsJoinedByString</strong></tt></a> that implodes a string value;</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#componentsseparatedbystring"><tt><strong>componentsSeparatedByString</strong></tt></a> that explodes a string value;</li>
+    <li>New <span class="api">@string</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#componentsjoinedbystring"><span class="api">componentsJoinedByString</span></a> that implodes a string value;</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#componentsseparatedbystring"><span class="api">componentsSeparatedByString</span></a> that explodes a string value;</li>
     <li>New lexical features: see <a href="http://galgas.rts-software.org/doku.php?id=1.6.5">1.6.5 release notes</a>;</li>
    </ul>
    <p>1.6.4</p>
    <ul>
-    <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), performing the <tt><strong>New...</strong></tt> menu item can lead to an infinite loop;</li>
-    <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), the <tt><strong>Update from File System</strong></tt> operation can lead to an infinite loop;</li>
+    <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), performing the <span class="api">New...</span> menu item can lead to an infinite loop;</li>
+    <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), the <span class="api">Update from File System</span> operation can lead to an infinite loop;</li>
     <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), changing a lexical color can lead to an infinite loop;</li>
     <li>new feature for GALGAS generated Cocoa application: definition pop up button management: see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.4">1.6.4 release notes</a>];</li>
-    <li>New <tt><strong>description</strong></tt> key word: it can be used in pseudo-reader call <tt>[<i>expression</i> <strong>description</strong>]</tt>, ensuring source compatibility from previous releases;</li>
-    <li>New <tt><strong>@lstringlist</strong></tt> type: see <a href="http://galgas.rts-software.org/doku.php?id=lstringlist_type"><tt><strong>@lstringlist</strong></tt> definition</a>;</li>
-    <li>New <tt><strong>map</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=map_types#keylist"><tt><strong>keyList</strong></tt></a> that returns a list built with the key values of all entries;</li>
-    <li>New <tt><strong>@binaryset</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#containsvalue"><tt><strong>containsValue</strong></tt></a> that tests if a binary set contains a given value;</li>
-    <li>New <tt><strong>@uint64</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#uint64withbitstring"><tt><strong>uint64WithBitString</strong></tt></a> that converts a string into an integer value;</li>
-    <li>New <tt><strong>@uint64</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#uint64maskwithcompressedbitstring"><tt><strong>uint64MaskWithCompressedBitString</strong></tt></a> that converts a string into an integer value;</li>
-    <li>New <tt><strong>@uint64</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#uint64basevaluewithcompressedbitstring"><tt><strong>uint64MaskWithCompressedBitString</strong></tt></a> that converts a string into an integer value;</li>
+    <li>New <span class="api">description</span> key word: it can be used in pseudo-reader call <tt>[<i>expression</i> <strong>description</strong>]</tt>, ensuring source compatibility from previous releases;</li>
+    <li>New <span class="api">@lstringlist</span> type: see <a href="http://galgas.rts-software.org/doku.php?id=lstringlist_type"><span class="api">@lstringlist</span> definition</a>;</li>
+    <li>New <span class="api">map</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=map_types#keylist"><span class="api">keyList</span></a> that returns a list built with the key values of all entries;</li>
+    <li>New <span class="api">@binaryset</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#containsvalue"><span class="api">containsValue</span></a> that tests if a binary set contains a given value;</li>
+    <li>New <span class="api">@uint64</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#uint64withbitstring"><span class="api">uint64WithBitString</span></a> that converts a string into an integer value;</li>
+    <li>New <span class="api">@uint64</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#uint64maskwithcompressedbitstring"><span class="api">uint64MaskWithCompressedBitString</span></a> that converts a string into an integer value;</li>
+    <li>New <span class="api">@uint64</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#uint64basevaluewithcompressedbitstring"><span class="api">uint64MaskWithCompressedBitString</span></a> that converts a string into an integer value;</li>
    </ul>
    <p>1.6.3</p>
    <ul>
-    <li><font color="#FF0000"><strong>WARNING: INCOMPATIBILITY ISSUES;</strong></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.3">1.6.3 release notes</a>];</li>
-    <li>New <tt><strong>@binaryset</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#binarysetbytranslatingfromindex"><tt><strong>binarySetByTranslatingFromIndex</strong></tt></a>;</li>
-    <li>New <tt><strong>@binaryset</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#existsonbitrange"><tt><strong>existsOnBitRange</strong></tt></a>;</li>
-    <li>New <tt><strong>@binaryset</strong></tt> operator: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#right_shift_operator"><tt><strong>&gt;&gt;</strong></tt></a>;</li>
+    <li><span class="hilite">WARNING: INCOMPATIBILITY ISSUES;</span> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.3">1.6.3 release notes</a>];</li>
+    <li>New <span class="api">@binaryset</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#binarysetbytranslatingfromindex"><span class="api">binarySetByTranslatingFromIndex</span></a>;</li>
+    <li>New <span class="api">@binaryset</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#existsonbitrange"><span class="api">existsOnBitRange</span></a>;</li>
+    <li>New <span class="api">@binaryset</span> operator: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#right_shift_operator"><span class="api">&gt;&gt;</span></a>;</li>
     <li>Cocoa GALGAS application (and Cocoa applications generated by GALGAS) open source files much quickly that before;</li>
     <li>The source files of Cocoa GALGAS application (and Cocoa applications generated by GALGAS) open source files much more quickly than before;</li>
    </ul>
    <p>1.6.2</p>
    <ul>
-    <li>Bug fix: in release 1.6.0 and 1.6.1, GALGAS tools can crash using <tt><strong>--parse-only</strong></tt> option on SLR and LR(1) grammars;</li>
+    <li>Bug fix: in release 1.6.0 and 1.6.1, GALGAS tools can crash using <span class="api">--parse-only</span> option on SLR and LR(1) grammars;</li>
     <li>Bug fix: in release 1.6.1, GALGAS tools can crash if the grammar vocabulary has a number of symbols equal to a power of two;</li>
-    <li>New <tt><strong>@binaryset</strong></tt> operator: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#left_shift_operator"><tt><strong>&lt;&lt;</strong></tt></a> that returns a left shifted binary set;</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#doesenvironmentvariableexist"><tt><strong>doesEnvironmentVariableExist</strong></tt></a> that returns a true value if an environment variable exists;</li>
-    <li>GALGAS tools, and GALGAS generated tools do not display anymore their computing time (use <tt><strong>time</strong></tt> tool instead);</li>
-    <li>Cocoa GALGAS tool, and Cocoa GALGAS generated tools present a new option (from preferences window) for invoking automatically <tt><strong>time</strong></tt> tool;</li>
-    <li>Added the new <tt><strong>const</strong></tt> keyword (currently unused);</li>
-    <li>Added the new <tt><strong>entity</strong></tt> keyword (used in metamodel description);</li>
+    <li>New <span class="api">@binaryset</span> operator: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#left_shift_operator"><span class="api">&lt;&lt;</span></a> that returns a left shifted binary set;</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#doesenvironmentvariableexist"><span class="api">doesEnvironmentVariableExist</span></a> that returns a true value if an environment variable exists;</li>
+    <li>GALGAS tools, and GALGAS generated tools do not display anymore their computing time (use <span class="api">time</span> tool instead);</li>
+    <li>Cocoa GALGAS tool, and Cocoa GALGAS generated tools present a new option (from preferences window) for invoking automatically <span class="api">time</span> tool;</li>
+    <li>Added the new <span class="api">const</span> keyword (currently unused);</li>
+    <li>Added the new <span class="api">entity</span> keyword (used in metamodel description);</li>
    </ul>
    <p>1.6.1</p>
    <ul>
-    <li><font color="#FF0000"><strong>WARNING: INCOMPATIBILITY ISSUES;</strong></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.1">1.6.1 release notes</a>];</li>
+    <li><span class="hilite">WARNING: INCOMPATIBILITY ISSUES;</span> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.1">1.6.1 release notes</a>];</li>
     <li>Fixed a bug: incorrect generated C++ code for a string command line option invokation;</li>
     <li>Makefile now can use an environment variable for locating LIBPM directory: see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.1">1.6.1 release notes</a>];</li>
    </ul>
    <p>1.6.0</p>
    <ul>
-    <li><font color="#FF0000"><strong>WARNING: INCOMPATIBILITY ISSUES;</strong></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.0">1.6.0 release notes</a>];</li>
-    <li>New <tt><strong>@binaryset</strong></tt> type: see <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type"><tt><strong>@binaryset</strong></tt> definition</a>;</li>
-    <li>New <tt><strong>@uint64list</strong></tt> type: see <a href="http://galgas.rts-software.org/doku.php?id=uint64list_type"><tt><strong>@uint64list</strong></tt> definition</a>;</li>
-    <li>New <tt><strong>@stringlist</strong></tt> type: see <a href="http://galgas.rts-software.org/doku.php?id=stringlist_type"><tt><strong>@stringlist</strong></tt> definition</a>;</li>
-    <li>New <tt><strong>@uint64</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#uintslice"><tt><strong>uintSlice</strong></tt></a> that extracts an @uint value from a receiver's bit slice;</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#reversedstring"><tt><strong>reversedString</strong></tt></a> that returns the inversed value of the receiver.</li>
+    <li><span class="hilite">WARNING: INCOMPATIBILITY ISSUES;</span> see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.0">1.6.0 release notes</a>];</li>
+    <li>New <span class="api">@binaryset</span> type: see <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type"><span class="api">@binaryset</span> definition</a>;</li>
+    <li>New <span class="api">@uint64list</span> type: see <a href="http://galgas.rts-software.org/doku.php?id=uint64list_type"><span class="api">@uint64list</span> definition</a>;</li>
+    <li>New <span class="api">@stringlist</span> type: see <a href="http://galgas.rts-software.org/doku.php?id=stringlist_type"><span class="api">@stringlist</span> definition</a>;</li>
+    <li>New <span class="api">@uint64</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#uintslice"><span class="api">uintSlice</span></a> that extracts an @uint value from a receiver's bit slice;</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#reversedstring"><span class="api">reversedString</span></a> that returns the inversed value of the receiver.</li>
    </ul>
    <p>1.5.8</p>
    <ul>
-    <li><font color="#FF0000"><strong>WARNING: INCOMPATIBILITY ISSUE;</strong></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.5.8">1.5.8 release notes</a>];</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#nativepathwithunixpath"><tt><strong>nativePathWithUnixPath</strong></tt></a> that returns a platform native path from an Unix path;</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#unixpathwithnativepath"><tt><strong>unixPathWithNativePath</strong></tt></a> that returns an Unix path from a platform native path;</li>
-    <li>New <tt><strong>@string</strong></tt> modifier: <a href="http://galgas.rts-software.org/doku.php?id=string_type#setcharacteratindex"><tt><strong>setCharacterAtIndex</strong></tt></a> for setting a character at a given index.</li>
+    <li><span class="hilite">WARNING: INCOMPATIBILITY ISSUE;</span> see [<a href="http://galgas.rts-software.org/doku.php?id=1.5.8">1.5.8 release notes</a>];</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#nativepathwithunixpath"><span class="api">nativePathWithUnixPath</span></a> that returns a platform native path from an Unix path;</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#unixpathwithnativepath"><span class="api">unixPathWithNativePath</span></a> that returns an Unix path from a platform native path;</li>
+    <li>New <span class="api">@string</span> modifier: <a href="http://galgas.rts-software.org/doku.php?id=string_type#setcharacteratindex"><span class="api">setCharacterAtIndex</span></a> for setting a character at a given index.</li>
    </ul>
    <p>1.5.7</p>
    <ul>
-    <li>New <tt><strong>@string</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithenvironmentvariable"><tt><strong>stringWithEnvironmentVariable</strong></tt></a> that returns a string containing the value of an environment variable;</li>
-    <li>New <tt><strong>@string</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithenvironmentvariableorempty"><tt><strong>stringWithEnvironmentVariableOrEmpty</strong></tt></a> that returns a string containing the value of an environment variable, or the empty string if the variable does not exist;</li>
+    <li>New <span class="api">@string</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithenvironmentvariable"><span class="api">stringWithEnvironmentVariable</span></a> that returns a string containing the value of an environment variable;</li>
+    <li>New <span class="api">@string</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithenvironmentvariableorempty"><span class="api">stringWithEnvironmentVariableOrEmpty</span></a> that returns a string containing the value of an environment variable, or the empty string if the variable does not exist;</li>
     <li>Win32 cross compiling on Mac OS X for Win32 now uses Min GW 3.4.5, available at <a href="http://crossgcc.rts-software.org">http://crossgcc.rts-software.org/</a>;</li>
     <li>Win32 cross compiling on Mac OS X for i386 Linux now uses GCC 4.1.1, available at <a href="http://crossgcc.rts-software.org">http://crossgcc.rts-software.org/</a>.</li>
    </ul>
    <p>1.5.6</p>
    <ul>
     <li>Incompatibility in Cocoa target of XCode projects: see <a href="http://galgas.rts-software.org/doku.php?id=1.5.6">1.5.6 release notes</a>;</li>
-    <li>Added a method for <tt><strong>@string</strong></tt> type: <a href="http://galgas.rts-software.org/doku.php?id=string_type#makedirectory">makeDirectory</a>;</li>
-    <li>Added a method for <tt><strong>@string</strong></tt> type: <a href="http://galgas.rts-software.org/doku.php?id=string_type#makedirectoryandwritefile">makeDirectoryAndWriteFile</a>;</li>
+    <li>Added a method for <span class="api">@string</span> type: <a href="http://galgas.rts-software.org/doku.php?id=string_type#makedirectory">makeDirectory</a>;</li>
+    <li>Added a method for <span class="api">@string</span> type: <a href="http://galgas.rts-software.org/doku.php?id=string_type#makedirectoryandwritefile">makeDirectoryAndWriteFile</a>;</li>
     <li>Run time checking on sorted lists objects now occurs only in debug mode;</li>
     <li>Corrected some bugs on Windows version [<a href="http://galgas.rts-software.org/trac/ticket/25">25</a>];</li>
     <li>In Cocoa GALGAS, comments can now be colored [see <a href="http://galgas.rts-software.org/doku.php?id=lex#coloring_comments">coloring comments</a>];</li>
@@ -155,11 +166,11 @@
    <p>1.5.5</p>
    <ul>
     <li>Some error messages in french are now translated in english [<a href="http://galgas.rts-software.org/trac/ticket/18">18</a>];</li>
-    <li>New semantics for <tt><strong>loop</strong></tt> instruction variant: (see <a href="http://galgas.rts-software.org/doku.php?id=loop_instruction">loop instruction</a>);</li>
+    <li>New semantics for <span class="api">loop</span> instruction variant: (see <a href="http://galgas.rts-software.org/doku.php?id=loop_instruction">loop instruction</a>);</li>
     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/20">20</a>] on invoke the short form of a string command line option;</li>
     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/21">21</a>] on crashes on Windows platforms;</li>
     <li>Added a new type: <a href="http://galgas.rts-software.org/doku.php?id=sorted_list_types">sorted list</a>;</li>
-    <li>Added a reader for <tt><strong>@char</strong></tt> type: <a href="http://galgas.rts-software.org/doku.php?id=char_type#string">string</a>;</li>
+    <li>Added a reader for <span class="api">@char</span> type: <a href="http://galgas.rts-software.org/doku.php?id=char_type#string">string</a>;</li>
     <li>Modified the XCode project generated by project creation: now, it includes the C++ sources files for handling @sint, @uint64, @sint64, @lsint, @luint64 and @lsint64 types;</li>
    </ul>
    <p>1.5.4</p>
@@ -169,57 +180,57 @@
    </ul>
    <p>1.5.3</p>
    <ul>
-    <li>New <tt><strong>@uint</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#sequencenumber"><tt><strong>sequenceNumber</strong></tt></a> that returns an unique value;</li>
-    <li>New command line option: <a href="http://galgas.rts-software.org/doku.php?id=lineoptions"><tt><strong>-S</strong></tt> or <tt><strong>--shadow</strong></tt></a>, that warns when a variable declaration shadows a previously declared variable;</li>
-    <li>New <tt><strong>map</strong></tt> modifier: <a href="http://galgas.rts-software.org/doku.php?id=map_types#remove_modifier_declaration"><tt><strong>remove modifier</strong></tt></a>; a remove modifier performs entry removing;</li>
-    <li>New short cut in <a href="http://galgas.rts-software.org/doku.php?id=modifier_call_instruction"><tt><strong>modifier call instruction</strong></tt></a>;</li>
-    <li>New short cut in <a href="http://galgas.rts-software.org/doku.php?id=method_call_instruction"><tt><strong>method call instruction</strong></tt></a>;</li>
-    <li>New short cut in <a href="http://galgas.rts-software.org/doku.php?id=foreach_instruction"><tt><strong>foreach instruction</strong></tt></a>;</li>
+    <li>New <span class="api">@uint</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#sequencenumber"><span class="api">sequenceNumber</span></a> that returns an unique value;</li>
+    <li>New command line option: <a href="http://galgas.rts-software.org/doku.php?id=lineoptions"><span class="api">-S</span> or <span class="api">--shadow</span></a>, that warns when a variable declaration shadows a previously declared variable;</li>
+    <li>New <span class="api">map</span> modifier: <a href="http://galgas.rts-software.org/doku.php?id=map_types#remove_modifier_declaration"><span class="api">remove modifier</span></a>; a remove modifier performs entry removing;</li>
+    <li>New short cut in <a href="http://galgas.rts-software.org/doku.php?id=modifier_call_instruction"><span class="api">modifier call instruction</span></a>;</li>
+    <li>New short cut in <a href="http://galgas.rts-software.org/doku.php?id=method_call_instruction"><span class="api">method call instruction</span></a>;</li>
+    <li>New short cut in <a href="http://galgas.rts-software.org/doku.php?id=foreach_instruction"><span class="api">foreach instruction</span></a>;</li>
    </ul>
    <p>1.5.2</p>
    <ul>
-    <li>New <tt><strong>@string</strong></tt> modifier: <a href="http://galgas.rts-software.org/doku.php?id=string_type#setcapacity"><tt><strong>setCapacity</strong></tt></a> that sets the receiver capacity;</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#capacity"><tt><strong>capacity</strong></tt></a> that returns the receiver current capacity;</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#uppercasestring_reader"><tt><strong>uppercaseString</strong></tt></a> that returns an uppercased representation of the receiver;</li>
-    <li>New <tt><strong>@uint</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#hexstring"><tt><strong>hexString</strong></tt></a> that returns hexadecimal representation of the receiver;</li>
-    <li>New <tt><strong>@uint64</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#hexstring"><tt><strong>hexString</strong></tt></a> that returns hexadecimal representation of the receiver;</li>
-    <li>Added the <a href="http://galgas.rts-software.org/doku.php?id=string_type#append_._operator"><tt><strong>.=</strong></tt> operator</a> that appends an <tt><strong>@string</strong></tt> to an <tt><strong>@string</strong></tt>;</li>
-    <li>Fixed a bug on <tt><strong>@string</strong></tt> <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringbyreplacingstringbystring_reader">stringByReplacingStringByString</a> reader;</li>
+    <li>New <span class="api">@string</span> modifier: <a href="http://galgas.rts-software.org/doku.php?id=string_type#setcapacity"><span class="api">setCapacity</span></a> that sets the receiver capacity;</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#capacity"><span class="api">capacity</span></a> that returns the receiver current capacity;</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#uppercasestring_reader"><span class="api">uppercaseString</span></a> that returns an uppercased representation of the receiver;</li>
+    <li>New <span class="api">@uint</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#hexstring"><span class="api">hexString</span></a> that returns hexadecimal representation of the receiver;</li>
+    <li>New <span class="api">@uint64</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#hexstring"><span class="api">hexString</span></a> that returns hexadecimal representation of the receiver;</li>
+    <li>Added the <a href="http://galgas.rts-software.org/doku.php?id=string_type#append_._operator"><span class="api">.=</span> operator</a> that appends an <span class="api">@string</span> to an <span class="api">@string</span>;</li>
+    <li>Fixed a bug on <span class="api">@string</span> <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringbyreplacingstringbystring_reader">stringByReplacingStringByString</a> reader;</li>
    </ul>
    <p>1.5.1</p>
    <ul>
     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/14">14</a>] on using an option in a semantic source file;</li>
-    <li>Syntax change: in a class declaration, the <tt><strong>reader</strong></tt> key word is replaced by the <tt><strong>method</strong></tt> key word [see <a href="http://galgas.rts-software.org/doku.php?id=1.5.1">1.5.1 release notes</a>];</li>
-    <li>New <tt><strong>@string</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithcurrentdatetime"><tt><strong>stringWithCurrentDateTime</strong></tt></a> that returns a string containing the current date time;</li>
-    <li>From now, all <tt><strong>@string</strong></tt> are available for <tt><strong>@lstring</strong></tt> objects;</li>
-    <li>From now, concatenation operator '.' concats an <tt><strong>@string</strong></tt> object with an <tt><strong>@lstring</strong></tt> object, returning an <tt><strong>@string</strong></tt> object;</li>
-    <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/17">17</a>] on <tt><strong>count</strong></tt> reader of <tt><strong>@stringset</strong></tt> type: it was badly declared in <tt><strong>GGS_stringset</strong></tt> C++ class (LIBPM revision <a href="http://libpm.rts-software.org/trac/changeset/265">265</a>);</li>
+    <li>Syntax change: in a class declaration, the <span class="api">reader</span> key word is replaced by the <span class="api">method</span> key word [see <a href="http://galgas.rts-software.org/doku.php?id=1.5.1">1.5.1 release notes</a>];</li>
+    <li>New <span class="api">@string</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithcurrentdatetime"><span class="api">stringWithCurrentDateTime</span></a> that returns a string containing the current date time;</li>
+    <li>From now, all <span class="api">@string</span> are available for <span class="api">@lstring</span> objects;</li>
+    <li>From now, concatenation operator '.' concats an <span class="api">@string</span> object with an <span class="api">@lstring</span> object, returning an <span class="api">@string</span> object;</li>
+    <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/17">17</a>] on <span class="api">count</span> reader of <span class="api">@stringset</span> type: it was badly declared in <span class="api">GGS_stringset</span> C++ class (LIBPM revision <a href="http://libpm.rts-software.org/trac/changeset/265">265</a>);</li>
    </ul>
    <p>1.5.0</p>
    <ul>
-    <li>Now all types accept <tt><strong>==</strong></tt> and <tt><strong>!=</strong></tt> operators [<a href="http://galgas.rts-software.org/trac/ticket/13">13</a>];</li>
+    <li>Now all types accept <span class="api">==</span> and <span class="api">!=</span> operators [<a href="http://galgas.rts-software.org/trac/ticket/13">13</a>];</li>
     <li>Removed unused feature in cocoa gui component: see [<a href="http://galgas.rts-software.org/doku.php?id=1.5.0">1.5.0 release notes</a>];</li>
-    <li><tt><strong>makefile</strong></tt> for Mac OS X has been modified so that compilation using GCC 3.3 can be performed without any change;</li>
+    <li><span class="api">makefile</span> for Mac OS X has been modified so that compilation using GCC 3.3 can be performed without any change;</li>
     <li>Fixed a bug in Cocoa GALGAS on version number checking;</li>
    </ul>
    <p>1.4.9</p>
    <ul>
-    <li><font color="#FF0000"><strong>WARNING: INCOMPATIBILITY ISSUE;</strong></font> see [<a href="http://galgas.rts-software.org/doku.php?id=1.4.9">1.4.9 release notes</a>];</li>
-    <li>New command line option: <tt><strong>-W</strong></tt> or <tt><strong>--Werror</strong></tt>, that treats warnings as errors (similar to <tt><strong>-Werror</strong></tt> gcc command line option);</li>
-    <li>Improved list generated code: GALGAS generates smaller code size, using a common super class: <tt><strong>AC_galgas_list</strong></tt>;</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#characteratindex"><tt><strong>characterAtIndex</strong></tt></a> that returns the character at index given by argument value;</li>
-    <li>New <tt><strong>@string</strong></tt> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#length"><tt><strong>length</strong></tt></a> that returns the number of characters;</li>
-    <li>New <tt><strong>@string</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithcurrentdirectory"><tt><strong>stringWithCurrentDirectory</strong></tt></a> that returns the current directory;</li>
-    <li>New <tt><strong>@uint</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#errorcount"><tt><strong>errorCount</strong></tt></a> that returns the number of errors;</li>
-    <li>New <tt><strong>@uint</strong></tt> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#warningcount"><tt><strong>warningCount</strong></tt></a> that returns the number of warnings;</li>
-    <li>GALGAS generated code now contains checkings for detecting GALGAS version mismatch against <tt><strong>libpm</strong></tt> library version;</li>
+    <li><span class="hilite">WARNING: INCOMPATIBILITY ISSUE;</span> see [<a href="http://galgas.rts-software.org/doku.php?id=1.4.9">1.4.9 release notes</a>];</li>
+    <li>New command line option: <span class="api">-W</span> or <span class="api">--Werror</span>, that treats warnings as errors (similar to <span class="api">-Werror</span> gcc command line option);</li>
+    <li>Improved list generated code: GALGAS generates smaller code size, using a common super class: <span class="api">AC_galgas_list</span>;</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#characteratindex"><span class="api">characterAtIndex</span></a> that returns the character at index given by argument value;</li>
+    <li>New <span class="api">@string</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#length"><span class="api">length</span></a> that returns the number of characters;</li>
+    <li>New <span class="api">@string</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithcurrentdirectory"><span class="api">stringWithCurrentDirectory</span></a> that returns the current directory;</li>
+    <li>New <span class="api">@uint</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#errorcount"><span class="api">errorCount</span></a> that returns the number of errors;</li>
+    <li>New <span class="api">@uint</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=uint_type#warningcount"><span class="api">warningCount</span></a> that returns the number of warnings;</li>
+    <li>GALGAS generated code now contains checkings for detecting GALGAS version mismatch against <span class="api">libpm</span> library version;</li>
    </ul>
    <p>1.4.8</p>
    <ul>
-    <li>Syntax change: '??' is no longer used in <tt><strong>foreach</strong></tt>, <tt><strong>extract</strong></tt> and <tt><strong>match</strong></tt> instructions; a warning is raised for every deprecated syntax;</li>
+    <li>Syntax change: '??' is no longer used in <span class="api">foreach</span>, <span class="api">extract</span> and <span class="api">match</span> instructions; a warning is raised for every deprecated syntax;</li>
     <li>GALGAS tools and GALGAS generated tools no longer retain unuseful objects: all allocated objects are now released;</li>
-    <li>New <tt><strong>@string</strong></tt> constructors: <tt><strong>stringWithSourceFilePath</strong></tt>, <tt><strong>stringWithContentsOfFile</strong></tt>, <tt><strong>stringWithMainFirstArgument</strong></tt>;</li>
-    <li>New <tt><strong>@string</strong></tt> method: <tt><strong>writeToFile</strong></tt>;</li>
+    <li>New <span class="api">@string</span> constructors: <span class="api">stringWithSourceFilePath</span>, <span class="api">stringWithContentsOfFile</span>, <span class="api">stringWithMainFirstArgument</span>;</li>
+    <li>New <span class="api">@string</span> method: <span class="api">writeToFile</span>;</li>
     <li>Entries are now correctly searched in overriden maps;</li>
     <li>Shadow keys are now correctly detected in overridden map [<a href="http://galgas.rts-software.org/trac/ticket/12">12</a>];</li>
    </ul>
@@ -227,21 +238,21 @@
    <ul>
      <li>Added two lexical actions (thanks to Mika&euml;l Briday [<a href="http://galgas.rts-software.org/trac/ticket/9">9</a>]): escape sequences in strings were not recognized if they occur at the end of the string;</li>
      <li>Added many features on list types (see <a href="http://galgas.rts-software.org/doku.php?id=1.4.7">1.4.7 release notes</a>);</li>
-     <li>Added a new <tt><strong>log</strong></tt> instruction;</li>
-     <li>Reader <tt><strong>description</strong></tt> now displays variable value in an indented form;</li>
+     <li>Added a new <span class="api">log</span> instruction;</li>
+     <li>Reader <span class="api">description</span> now displays variable value in an indented form;</li>
    </ul>
    <p>1.4.6</p>
    <ul>
-     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/8">8</a>]: <tt><strong>enterOctDigitIntoUInt</strong></tt> and  <tt><strong>enterOctDigitIntoUInt64</strong></tt>;</li>
-     <li>In GALGAS generated XCode projects, the <tt><strong>-Wshadow</strong></tt> flag is not set any more [<a href="http://galgas.rts-software.org/trac/ticket/7">7</a>];</li>
+     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/8">8</a>]: <span class="api">enterOctDigitIntoUInt</span> and  <span class="api">enterOctDigitIntoUInt64</span>;</li>
+     <li>In GALGAS generated XCode projects, the <span class="api">-Wshadow</span> flag is not set any more [<a href="http://galgas.rts-software.org/trac/ticket/7">7</a>];</li>
      <li>Added a feature that enables getting key word spelling in syntax;</li>
      <li>Added in Cocoa Galgas two menu items: "Block Comment", for commenting out several lines in one time, and "Block Uncomment", the reverse operation;</li>
-     <li>Added a <tt><strong>switch</strong></tt> instruction enumerated values;</li>
+     <li>Added a <span class="api">switch</span> instruction enumerated values;</li>
    </ul>
    <p>1.4.5</p>
    <ul>
-     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/4">4</a>] on <tt><strong>&gt;&gt;</strong></tt> operator;</li>
-     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/5">5</a>] on <tt><strong>&gt;=</strong></tt> operator;</li>
+     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/4">4</a>] on <span class="api">&gt;&gt;</span> operator;</li>
+     <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/5">5</a>] on <span class="api">&gt;=</span> operator;</li>
      <li>Fixed a bug [<a href="http://galgas.rts-software.org/trac/ticket/6">6</a>] on "GALGAS Cocoa (ppc)" target of Galgas XCode project: an absolute path was used instead of a relative one;</li>
      <li>Fixed a bug that prevents cocoa Galgas to open an UTF-8 encoded text file;</li>
    </ul>
@@ -254,22 +265,22 @@
    </ul>
    <p>1.4.3</p>
    <ul>
-     <li>Added two new lexical actions (thanks to Mika&euml;l Briday): <tt><strong>enterBinDigitIntoUInt</strong></tt> and <tt><strong>enterBinDigitIntoUInt64</strong></tt> that enable building an 32-bit and 64-bit unsigned value from binary string;</li>
+     <li>Added two new lexical actions (thanks to Mika&euml;l Briday): <span class="api">enterBinDigitIntoUInt</span> and <span class="api">enterBinDigitIntoUInt64</span> that enable building an 32-bit and 64-bit unsigned value from binary string;</li>
      <li>In Cocoa GALGAS Applications (and Cocoa GALGAS generated applications), the ruler thickness is now adjusted to display 5 digit line numbers.</li>
      <li>From now, GALGAS compilers (and GALGAS generated tools) run silently without any message on success (of course, warnings and errors are still displayed);</li>
-     <li>From now, GALGAS compilers (and GALGAS generated tools) have a new command line option <tt><strong>--verbose</strong></tt> (shortly <tt>-v</tt>) that enables message displaying, as for previous releases.</li>
+     <li>From now, GALGAS compilers (and GALGAS generated tools) have a new command line option <span class="api">--verbose</span> (shortly <tt>-v</tt>) that enables message displaying, as for previous releases.</li>
    </ul>
    <p>1.4.2</p>
    <ul>
-     <li>Added <tt><strong>--libpm</strong></tt> command line option for defining libpm path on project creation</li>
+     <li>Added <span class="api">--libpm</span> command line option for defining libpm path on project creation</li>
      <li>Fixed a bug in Cocoa application that prevents vertical text view ruler to be updated on text font change;</li>
-     <li>Fixed a bug in <tt><strong>loop</strong></tt> instruction generation.</li>
+     <li>Fixed a bug in <span class="api">loop</span> instruction generation.</li>
    </ul>
    <p>1.4.1</p>
    <ul>
-     <li>New 64-bit integer types <tt><strong>@uint64</strong></tt> and <tt><strong>@sint64</strong></tt>;</li>
-     <li>New 64-bit integer types with location <tt><strong>@luint64</strong></tt> and <tt><strong>@lsint64</strong></tt>;</li>
-     <li><tt><strong>value</strong></tt> accessor of types with location is deprecated; use instead <tt><strong>bool</strong></tt> accessor for <tt><strong>@lbool</strong></tt> type, ... (see release notes);</li>
+     <li>New 64-bit integer types <span class="api">@uint64</span> and <span class="api">@sint64</span>;</li>
+     <li>New 64-bit integer types with location <span class="api">@luint64</span> and <span class="api">@lsint64</span>;</li>
+     <li><span class="api">value</span> accessor of types with location is deprecated; use instead <span class="api">bool</span> accessor for <span class="api">@lbool</span> type, ... (see release notes);</li>
      <li>Types with location now accept modifiers;</li>
      <li>Project creation options now create Mac OS X Xcode project;</li>
      <li>GALGAS and libpm can be now considered as 64-bit clean.</li>
@@ -277,15 +288,15 @@
    <p>1.4.0</p>
    <ul>
      <li>First attempt to provide galgas and libpm code 64-bit clean: now, makefiles build both 32-bit and 64-bit tools;</li>
-     <li>Consequently, the <tt><strong>makefile_i386linux_on_macosx</strong></tt> directory is now named <tt><strong>makefile_x86linux_on_macosx</strong></tt>;</li>
-     <li>makefiles are now invoked with <tt><strong>--warn-undefined-variables</strong></tt> command line option (strangely, compilation under MSYS on Windows warns that '^' variable is not defined)</li>
+     <li>Consequently, the <span class="api">makefile_i386linux_on_macosx</span> directory is now named <span class="api">makefile_x86linux_on_macosx</span>;</li>
+     <li>makefiles are now invoked with <span class="api">--warn-undefined-variables</span> command line option (strangely, compilation under MSYS on Windows warns that '^' variable is not defined)</li>
      <li>Ouput effective arguments now support polymorphic assignment;</li>
      <li>An empty lexical analyzer now raises lexical errors on every character until the end of source file (on previous versions, it runs indefinitly);</li>
      <li>Many limitations on class handling have been relaxed (see Release notes);</li>
    </ul>
    <p>1.3.1</p>
    <ul>
-     <li><strong>Version 1.3.0 has been deleted</strong>: <tt><strong>--create-project</strong></tt> option did not work;</li>
+     <li><strong>Version 1.3.0 has been deleted</strong>: <span class="api">--create-project</span> option did not work;</li>
      <li>on @bool type: added ^ (exclusive or) diadic operator;</li>
      <li>on @uint type: added 'object ++ ;' incrementation instruction, 'object -- ;' decrementation instruction,
          + (addition) , - (subtraction), * (multiplication) , / (division), % (modulo), &amp; (bit wide and),
@@ -309,7 +320,7 @@
      <li>grammar component change: now 'root' keyword is used instead of 'start' keyword for name the start symbol;</li>
      <li>fixed a lexique component bug: 'send' instruction now checks the terminal symbol is actually declared;</li>
      <li>fixed a grammar component bug: output HTML file was not generated when the source file was written in command line without any path;</li>
-     <li>fixed a bug when linking on MSYS/MinGW: now <tt><strong>strip</strong></tt> is called, instead of <tt><strong>mingw32-strip</strong></tt>;</li>
+     <li>fixed a bug when linking on MSYS/MinGW: now <span class="api">strip</span> is called, instead of <span class="api">mingw32-strip</span>;</li>
    </ul>
    <p>1.2.4</p>
    <ul>
@@ -329,7 +340,7 @@
      <li>First avalaible release on this site.</li>
    </ul>
    <p>END</p>
-   <p><br></p>
+   <p><br /></p>
   </div>
  </body>
 </html>

@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate GALGAS class declaration and implementation                     *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -434,7 +434,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << " {\n"
                "}\n\n" ;
 
-//--- Engendrer la declaration de la surcharge de l'opeerateur ()
+//--- Engendrer la declaration de la surcharge de l'operateur ()
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                "  cPtr_" << aNomClasse << " * GGS_" << aNomClasse << "::\n"
@@ -603,8 +603,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-
   if (! mIsAbstract.boolValue ()) {
+    if (NULL == aListeTousAttributsNonExternes.firstObject ()) {
+      inCppFile << "static cPtr_" << aNomClasse << " * gSingleton_" << aNomClasse << " = NULL ;\n\n" ;
+      inCppFile.writeCppHyphenLineComment () ;
+    }
     inCppFile << "GGS_" << aNomClasse << " GGS_" << aNomClasse << "::\n"
                  "constructor_new (C_Compiler & /* inLexique */" ;
     current = aListeTousAttributsNonExternes.firstObject () ;
@@ -620,26 +623,34 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     }
     inCppFile << "\n                                "
                  "COMMA_LOCATION_ARGS) {\n"
-                 "  GGS_" << aNomClasse << " result ;\n"
-                 "  macroMyNew (result.mPointer, cPtr_" << aNomClasse << " (" ;
-    current = aListeTousAttributsNonExternes.firstObject () ;
-    variableIndex = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
-      if (variableIndex > 0) {
-        inCppFile << ",\n                                " ;
-      }
-      inCppFile << "argument_" << variableIndex ;
-      current = current->nextObject () ;
-      variableIndex ++ ;
-    }
-    if (variableIndex > 0) {
-      inCppFile << " COMMA_THERE" ;
+                 "  GGS_" << aNomClasse << " result ;\n" ;
+    if (NULL == aListeTousAttributsNonExternes.firstObject ()) {
+      inCppFile << "  if (NULL == gSingleton_" << aNomClasse << ") {\n"
+                   "    macroMyNew (gSingleton_" << aNomClasse << ", cPtr_" << aNomClasse << " (THERE)) ;\n"
+                   "    registerSingleton (& gSingleton_" << aNomClasse << ") ;\n"
+                   "  }\n"
+                   "  macroAssignPointer (result.mPointer, gSingleton_" << aNomClasse << ") ;\n" ;
     }else{
-      inCppFile << "THERE" ;
+      inCppFile << "  macroMyNew (result.mPointer, cPtr_" << aNomClasse << " (" ;
+      current = aListeTousAttributsNonExternes.firstObject () ;
+      variableIndex = 0 ;
+      while (current != NULL) {
+        macroValidPointer (current) ;
+        if (variableIndex > 0) {
+          inCppFile << ",\n                                " ;
+        }
+        inCppFile << "argument_" << variableIndex ;
+        current = current->nextObject () ;
+        variableIndex ++ ;
+      }
+      if (variableIndex > 0) {
+        inCppFile << " COMMA_THERE" ;
+      }else{
+        inCppFile << "THERE" ;
+      }
+      inCppFile << ")) ;\n" ;
     }
-    inCppFile << ")) ;\n"
-                 "  return result ;\n"
+    inCppFile << "  return result ;\n"
                  "}\n\n" ;
     inCppFile.writeCppHyphenLineComment () ;
   }
