@@ -607,6 +607,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (NULL == aListeTousAttributsNonExternes.firstObject ()) {
       inCppFile << "static cPtr_" << aNomClasse << " * gSingleton_" << aNomClasse << " = NULL ;\n\n" ;
       inCppFile.writeCppHyphenLineComment () ;
+      inCppFile << "static void cleanUp_" << aNomClasse << " (void) {\n"
+                   "  macroDetachPointer (gSingleton_" << aNomClasse << ", cPtr_" << aNomClasse << ") ;\n"
+                   "}\n\n" ;
+      inCppFile.writeCppHyphenLineComment () ;
     }
     inCppFile << "GGS_" << aNomClasse << " GGS_" << aNomClasse << "::\n"
                  "constructor_new (C_Compiler & /* inLexique */" ;
@@ -627,7 +631,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (NULL == aListeTousAttributsNonExternes.firstObject ()) {
       inCppFile << "  if (NULL == gSingleton_" << aNomClasse << ") {\n"
                    "    macroMyNew (gSingleton_" << aNomClasse << ", cPtr_" << aNomClasse << " (THERE)) ;\n"
-                   "    registerSingleton (& gSingleton_" << aNomClasse << ") ;\n"
+                   "    registerReleaseRoutine (cleanUp_" << aNomClasse << ") ;\n"
                    "  }\n"
                    "  macroAssignPointer (result.mPointer, gSingleton_" << aNomClasse << ") ;\n" ;
     }else{
