@@ -41,6 +41,7 @@
 		CF6557C90A25EB5900979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6557C60A25EB5900979050 /* C_galgas_CLI_Options.h */; };
 		CF6557CA0A25EB5900979050 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6557C50A25EB5900979050 /* C_galgas_CLI_Options.cpp */; };
 		CF6557CB0A25EB5900979050 /* C_galgas_CLI_Options.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6557C60A25EB5900979050 /* C_galgas_CLI_Options.h */; };
+		CF6F90940D539FAC003FF96F /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
 		CF7A148D058D0109007126C1 /* galgas_header.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0C005877B62000D2F8C /* galgas_header.h */; };
 		CF7A148E058D010A007126C1 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CF7A148F058D010B007126C1 /* GGS_bool.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0C105877B62000D2F8C /* GGS_bool.h */; };
@@ -1049,9 +1050,11 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = CF32C9570856F9220042CEEB /* Build configuration list for PBXProject "class_sample_language" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* class_sample_language_cocoa */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D15AC270486D014006FF6A4 /* Cocoa Class_sample_language */,
 				8DD76F620486A84900D96B5E /* Class_sample_language tool */,
@@ -1131,6 +1134,7 @@
 				CFF1D4830BB320F0007601E2 /* GGS_bool.cpp in Sources */,
 				CFF1D4840BB320F4007601E2 /* GGS_uint64.cpp in Sources */,
 				CFF1D4860BB3210D007601E2 /* AC_galgas_list.cpp in Sources */,
+				CF6F90940D539FAC003FF96F /* GGS_uint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

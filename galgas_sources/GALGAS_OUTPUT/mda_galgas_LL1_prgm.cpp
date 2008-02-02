@@ -657,6 +657,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     macroDetachPointer (galgasIOptr, C_galgas_io) ;
     macroDetachPointer (_commonLexique, C_Compiler) ;
     C_TreewalkingDispacher::releaseAllTables () ;
+    releaseAllSingletonObjects () ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
     C_GGS_Object::checkAllObjectsHaveBeenReleased () ;
