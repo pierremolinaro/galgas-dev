@@ -116,6 +116,25 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << '\n' ;
 
+//--- Methods
+  inHfile << "//--- Methods\n" ;
+  GGS_enumMethodMap::element_type * method = mMethodMap.firstObject () ;
+  while (method != NULL) {
+    macroValidPointer (method) ;
+    inHfile << "  public : void method_" << method->mKey << " (C_Compiler & _inLexique" ;
+    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = method->mInfo.mArgumentTypeAndNameList.firstObject () ;
+    while (currentArgument != NULL) {
+      macroValidPointer (currentArgument) ;
+      inHfile << ",\n                                " ;
+      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
+      currentArgument = currentArgument->nextObject () ;
+    }
+    inHfile << "\n                                "
+               "COMMA_LOCATION_ARGS) const ;\n" ;
+    method = method->nextObject () ;
+  }
+  inHfile << '\n' ;
+
 //--- 
   inHfile << "//--- 'description' reader\n"
              "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
@@ -261,6 +280,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       inCppFile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
       bool variableIsUsed = false ;
+      definition = modifier->mInfo.mActionDefinitionList.firstObject ()  ;
       while ((definition != NULL) && ! variableIsUsed) {
         macroValidPointer (definition) ;
         variableIsUsed = formalArgumentIsUsedForList (definition->mInstructionList, currentArgument->mCppName, true) ;
@@ -302,6 +322,72 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "  }\n"
                  "}\n\n" ;
     modifier = modifier->nextObject () ;
+  }
+
+//--- Methods
+  GGS_enumMethodMap::element_type * method = mMethodMap.firstObject () ;
+  while (method != NULL) {
+    macroValidPointer (method) ;
+    GGS_enumMethodDefinitionList::element_type * definition = method->mInfo.mActionDefinitionList.firstObject ()  ;
+    bool lexiqueIsUsed = false ;
+    while ((definition != NULL) && ! lexiqueIsUsed) {
+      macroValidPointer (definition) ;
+      lexiqueIsUsed = isLexiqueFormalArgumentUsedForList (definition->mInstructionList, true) ;
+      definition = definition->nextObject () ;
+    }
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << mEnumTypeName << "::\n"
+                 "method_" << method->mKey << " (C_Compiler &" ;
+    if (lexiqueIsUsed) {
+      inCppFile << " _inLexique" ;
+    }
+    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = method->mInfo.mArgumentTypeAndNameList.firstObject () ;
+    while (currentArgument != NULL) {
+      macroValidPointer (currentArgument) ;
+      inCppFile << ",\n                                " ;
+      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
+      bool variableIsUsed = false ;
+      definition = method->mInfo.mActionDefinitionList.firstObject ()  ;
+      while ((definition != NULL) && ! variableIsUsed) {
+        macroValidPointer (definition) ;
+        variableIsUsed = formalArgumentIsUsedForList (definition->mInstructionList, currentArgument->mCppName, true) ;
+        definition = definition->nextObject () ;
+      }
+      inCppFile << ' ' ;
+      if (! variableIsUsed) {
+        inCppFile << "/* " ;
+      }
+      currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+      if (! variableIsUsed) {
+        inCppFile << " */" ;
+      }
+      currentArgument = currentArgument->nextObject () ;
+    }
+    inCppFile << "\n                                " ;
+    inCppFile << "COMMA_UNUSED_LOCATION_ARGS) const {\n"
+                 "  #ifdef DEBUG_TRACE_ENABLED\n"
+                 "    printf (\"ENTER GGS_" << mEnumTypeName << "::modifier_" << method->mKey << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
+                 "  #endif\n"
+                 "  switch (mValue) {\n" ;
+    definition = method->mInfo.mActionDefinitionList.firstObject () ;
+    while (definition != NULL) {
+      macroValidPointer (definition) ;
+      inCppFile << "  case enum_" << definition->mSourceState << ":\n" ;
+      inCppFile.incIndentation (2) ;
+      generateInstructionListForList (definition->mInstructionList,
+                                      inCppFile,
+                                      inTargetFileName,
+                                      ioPrototypeIndex,
+                                      inGenerateDebug,
+                                      true) ;
+      inCppFile.incIndentation (-2) ;
+      inCppFile << "    break ;\n" ;
+      definition = definition->nextObject () ;
+    }
+    inCppFile << "  default : break ;\n"
+                 "  }\n"
+                 "}\n\n" ;
+    method = method->nextObject () ;
   }
 
 //---

@@ -68,7 +68,7 @@ enum @variableStateAutomaton {
   constantInputFormalParameterDefined, constantInputFormalParameterUsed
 }{
 
-#--- Action Write
+#--- Modifier Write
   modifier writeAccess ??@location inErrorLocation {
   #--- Local variable
     localVariableDeclared -> localVariableUsed ;
@@ -87,7 +87,7 @@ enum @variableStateAutomaton {
     constantInputFormalParameterUsed -> constantInputFormalParameterUsed error inErrorLocation: "the input parameter cannot be written" ;
   }
 
-#--- Action Read
+#--- Modifier Read
   modifier readAccess ??@location inErrorLocation {
   #--- Local variable
     localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it has no value" ;
@@ -106,7 +106,7 @@ enum @variableStateAutomaton {
     constantInputFormalParameterUsed -> constantInputFormalParameterUsed ;
   }
 
-#--- Action Read/write
+#--- Modifier Read/write
   modifier readWriteAccess ??@location inErrorLocation {
   #--- Local variable
     localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, has no value" ;
@@ -125,7 +125,7 @@ enum @variableStateAutomaton {
     constantInputFormalParameterUsed -> constantInputFormalParameterUsed error inErrorLocation: "an input parameter cannot be modified" ;
   }
 
-#--- Action Drop
+#--- Modifier Drop
   modifier dropAccess ??@location inErrorLocation {
   #--- Local variable
     localVariableDeclared -> localVariableDropped error inErrorLocation: "the local variable cannot be dropped, has no value" ;
@@ -142,6 +142,48 @@ enum @variableStateAutomaton {
   #--- Constant input formal parameter (??@... )
     constantInputFormalParameterDefined -> constantInputFormalParameterUsed error inErrorLocation: "an input parameter cannot be dropped" ;
     constantInputFormalParameterUsed -> constantInputFormalParameterUsed error inErrorLocation: "an input parameter cannot be dropped" ;
+  }
+}
+
+#---------------------------------------------------------------------------*
+
+enum @localVariableStateAutomaton {
+  localVariableDeclared, localVariableUsed, localVariableDropped
+}{
+
+#--- Modifier Write
+  modifier writeAccess ??@location inErrorLocation {
+    localVariableDeclared -> localVariableUsed ;
+    localVariableUsed -> localVariableUsed ;
+    localVariableDropped -> localVariableUsed ;
+  }
+
+#--- Modifier Read
+  modifier readAccess ??@location inErrorLocation {
+    localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it has no value" ;
+    localVariableUsed -> localVariableUsed ;
+    localVariableDropped -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it is dropped" ;
+  }
+
+#--- Modifier Read/write
+  modifier readWriteAccess ??@location inErrorLocation {
+    localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, has no value" ;
+    localVariableUsed -> localVariableUsed ;
+    localVariableDropped -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, it is dropped" ;
+  }
+
+#--- Modifier Drop
+  modifier dropAccess ??@location inErrorLocation {
+    localVariableDeclared -> localVariableDropped error inErrorLocation: "the local variable cannot be dropped, has no value" ;
+    localVariableUsed -> localVariableDropped ;
+    localVariableDropped -> localVariableDropped error inErrorLocation: "the local variable is already dropped" ;
+  }
+
+#--- Method checkFinalState
+  method checkFinalState ??@location inErrorLocation {
+    localVariableDeclared warning inErrorLocation: "the local variable is unused" ;
+    localVariableUsed ;
+    localVariableDropped ;
   }
 }
 
