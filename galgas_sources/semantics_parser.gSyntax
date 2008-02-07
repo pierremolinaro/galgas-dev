@@ -6143,7 +6143,8 @@ rule <semantics_declaration>
   ${$ ;
 #--- Enum messages, action messages
   @typeEnumMessageMap enumMessageMap [emptyMap] ;
-  @enumModifierMap actionMap [emptyMap] ;
+  @enumModifierMap modifierMap [emptyMap] ;
+  @enumMethodMap methodMap [emptyMap] ;
   repeat
   while
     $modifier$ ;
@@ -6218,7 +6219,78 @@ rule <semantics_declaration>
       end if ;
     end foreach ;
   #--- Enter in action map
-    [!?actionMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
+    [!?modifierMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
+    $}$ ;
+  while
+    $method$ ;
+    @lstring actionName ;
+    $identifier$ ? actionName ;
+    @L_EXsignature signature [emptyList] ;
+    @typeVariablesMap localVariableMap [emptyMap] ;
+    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
+    select
+    or
+      $??$ ;
+      @lstring typeName ;
+      $type_name$ ? typeName ;
+      if [typeName string] != "location" then
+        error typeName:"the type should be '@location'" ;
+      end if ;
+      @AC_galgasType type_semantique := [@typeGalgas_location new] ;
+      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      select
+        $unused$ ;
+        @lstring nomArgument ;
+        $identifier$ ? nomArgument ;
+        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
+      or
+        @lstring nomArgument ;
+        $identifier$ ? nomArgument ;
+        @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
+      end select ;
+      signature += !type_semantique !argumentConstantIn ;
+    end select ;
+    ${$ ;
+    @enumConstantMap definedSourceMap [emptyMap] ;
+    @enumMethodDefinitionList enumActionDefinitionList [emptyList] ;
+    repeat
+      @lstring sourceName ;
+      $identifier$ ? sourceName ;
+      [constantMap searchKey !sourceName] ;
+      [!?definedSourceMap insertKey !sourceName] ;
+      @typeInstructionList instructionList [emptyList] ;
+      select
+        $;$ ;
+      or
+        <error_instruction>
+          !ioComponentSemanticsEntitiesMap
+          !inOptionsComponentsMapForUse
+          !?localVariableMap
+          !?instructionList
+        ;
+      or
+        <warning_instruction>
+          !ioComponentSemanticsEntitiesMap
+          !inOptionsComponentsMapForUse
+          !?localVariableMap
+          !?instructionList
+        ;
+      end select ;
+      enumActionDefinitionList += !sourceName !instructionList ;
+    while
+    end repeat ;
+   #--- Check all enum values are used for source
+    foreach constantMap (@lstring inConstant) :
+      if not [definedSourceMap hasKey ![inConstant string]] then
+        error here: "The '" . [inConstant string] . "' is not handled" ;
+      end if ;
+    end foreach ;
+  #--- Enter in action map
+    [!?methodMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
     $}$ ;
   while
     $reader$ ;
@@ -6251,10 +6323,10 @@ rule <semantics_declaration>
 #--- End type definition end
   $}$ ;
 #---- Enter enum datas into the list of entities to generate
-  @typeEntityToGenerate e := [@enumGalgasType new !enumTypeName !constantMap !enumMessageMap !actionMap] ;
+  @typeEntityToGenerate e := [@enumGalgasType new !enumTypeName !constantMap !enumMessageMap !modifierMap !methodMap] ;
   listeEntitesAengendrer += !e ;
 #--- Enter enum type into semantic entities map
-  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !enumMessageMap !actionMap] ;
+  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !enumMessageMap !modifierMap !methodMap] ;
   @AC_semanticsEntity ee := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !ee] ;
 label importSemantics
@@ -6284,7 +6356,8 @@ label importSemantics
   ${$ ;
 #--- readers, modifiers map
   @typeEnumMessageMap exEnumMessageMap [emptyMap] ;
-  @enumModifierMap actionMap [emptyMap] ;
+  @enumModifierMap modifierMap [emptyMap] ;
+  @enumMethodMap methodMap [emptyMap] ;
   @enumMessageMap enumMessageMap [emptyMap] ;
   repeat
   while
@@ -6329,7 +6402,47 @@ label importSemantics
     while
     end repeat ;
   #--- Enter in action map
-    [!?actionMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
+    [!?modifierMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
+    $}$ ;
+  while
+    $method$ ;
+    @lstring actionName ;
+    $identifier$ ? actionName ;
+    @L_EXsignature signature [emptyList] ;
+    @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
+    select
+    or
+      signature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentConstantIn] ;
+      $??$ ;
+      @lstring typeName ;
+      $type_name$ ? typeName ;
+      select
+        $unused$ ;
+        $identifier$ ? * ;
+      or
+        $identifier$ ? * ;
+      end select ;
+    end select ;
+    ${$ ;
+    @enumConstantMap definedSourceMap [emptyMap] ;
+    @enumMethodDefinitionList enumActionDefinitionList [emptyList] ;
+    repeat
+      @lstring sourceName ;
+      $identifier$ ? sourceName ;
+      [constantMap searchKey !sourceName] ;
+      [!?definedSourceMap insertKey !sourceName] ;
+      select
+        $;$ ;
+      or
+        <error_instruction> parse ;
+      or
+        <warning_instruction> parse ;
+      end select ;
+      enumActionDefinitionList += !sourceName ![@typeInstructionList emptyList] ;
+    while
+    end repeat ;
+  #--- Enter in action map
+    [!?methodMap insertKey !actionName !enumActionDefinitionList !signature !argumentList] ;
     $}$ ;
   while
     $reader$ ;
@@ -6351,7 +6464,7 @@ label importSemantics
   end repeat ;
   $}$ ;
 #--- Enter enum type into semantic entities map
-  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !exEnumMessageMap !actionMap] ;
+  @AC_galgasType t := [@typeGalgas_enum new !enumTypeName !constantMap !exEnumMessageMap !modifierMap !methodMap] ;
   @AC_semanticsEntity e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !enumTypeName !e] ;
   @TypeModel type := [@EnumModel new !constantMap !enumMessageMap] ;
