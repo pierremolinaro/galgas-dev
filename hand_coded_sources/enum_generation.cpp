@@ -56,11 +56,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
              "  public : enum enumeration {kNotBuilt" ;
-  GGS_enumConstantMap::element_type * cst = mConstantMap.firstObject () ;
-  while (cst != NULL) {
-    macroValidPointer (cst) ;
-    inHfile << ", enum_" << cst->mKey ;
-    cst = cst->nextObject () ;
+  GGS_enumConstantMap::element_type * constant = mConstantMap.firstObject () ;
+  while (constant != NULL) {
+    macroValidPointer (constant) ;
+    inHfile << ", enum_" << constant->mKey ;
+    constant = constant->nextObject () ;
   }
   inHfile << "} ;\n\n"
              "//--- Private attribute\n"
@@ -76,14 +76,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Is built ?\n"
              "  public : bool _isBuilt (void) const ;\n\n"
              "//--- Construction from GALGAS constructor\n" ;
-  cst = mConstantMap.firstObject () ;
-  while (cst != NULL) {
-    macroValidPointer (cst) ;
-    inHfile << "  public : static inline GGS_" << mEnumTypeName
-            << "  constructor_" << cst->mKey << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
-               "    return GGS_" << mEnumTypeName << " (enum_" << cst->mKey << ") ;\n"
-               "  }\n" ;
-    cst = cst->nextObject () ;
+  constant = mConstantMap.firstObject () ;
+  while (constant != NULL) {
+    macroValidPointer (constant) ;
+    if (constant->mInfo.mHasConstructor.boolValue ()) {
+      inHfile << "  public : static inline GGS_" << mEnumTypeName
+              << "  constructor_" << constant->mKey << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "    return GGS_" << mEnumTypeName << " (enum_" << constant->mKey << ") ;\n"
+                 "  }\n" ;
+    }
+    constant = constant->nextObject () ;
   }
   inHfile << "\n" ;
 
@@ -400,13 +402,13 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  C_String s ;\n"
                "  s << \"<enum @" << mEnumTypeName << "\" ;\n"
                "  switch (mValue) {\n" ;
-  GGS_enumConstantMap::element_type * cst = mConstantMap.firstObject () ;
-  while (cst != NULL) {
-    macroValidPointer (cst) ;
-    inCppFile << "  case enum_" << cst->mKey << ":\n"
-                 "    s << \" "  << cst->mKey << ">\" ;\n"
+  GGS_enumConstantMap::element_type * constant = mConstantMap.firstObject () ;
+  while (constant != NULL) {
+    macroValidPointer (constant) ;
+    inCppFile << "  case enum_" << constant->mKey << ":\n"
+                 "    s << \" "  << constant->mKey << ">\" ;\n"
                  "    break ;\n" ;
-    cst = cst->nextObject () ;
+    constant = constant->nextObject () ;
   } 
   inCppFile << "  case kNotBuilt:\n"
                "    s << \" (not built)>\" ;\n"

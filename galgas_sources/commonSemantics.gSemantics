@@ -25,7 +25,7 @@ semantics commonSemantics :
 #---------------------------------------------------------------------------*
 
 enum @actualParametersPassingMode {
-  parameterOut, parameterOutIn, parameterIn
+  constructor parameterOut, parameterOutIn, parameterIn ;
 }{
   reader actualArgumentMessage {
     parameterOutIn -> "an output/input (!?) actual parameter" ;
@@ -41,7 +41,7 @@ enum @actualParametersPassingMode {
 #---------------------------------------------------------------------------*
 
 enum @formalArgumentPassingMode {
-  argumentIn, argumentOut, argumentInOut, argumentConstantIn
+  constructor argumentIn, argumentOut, argumentInOut, argumentConstantIn ;
 }{
   reader formalArgumentMessage {
     argumentConstantIn -> "a constant input (??) formal argument" ;
@@ -53,19 +53,19 @@ enum @formalArgumentPassingMode {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#          V A R I A B L E    S T A T E    A U T O M A T O N                *
+#     L O C A L    V A R I A B L E    S T A T E    A U T O M A T O N        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 enum @variableStateAutomaton {
 #--- Local variable
-  localVariableDeclared, localVariableUsed, localVariableDropped,
+  constructor localVariableDeclared, localVariableUsed, localVariableDropped ;
 #--- Local constant
-  localConstantDeclared, localConstantDefined, localContantUsed,
+  localConstantDeclared, localConstantDefined, localContantUsed ;
 #--- Input formal parameter (?@... )
-  inputFormalParameterDefined, inputFormalParameterUsed, inputFormalParameterDropped,
+  constructor inputFormalParameterDefined, inputFormalParameterUsed, inputFormalParameterDropped ;
 #--- Constant input formal parameter (??@... )
-  constantInputFormalParameterDefined, constantInputFormalParameterUsed
+  constructor constantInputFormalParameterDefined, constantInputFormalParameterUsed ;
 }{
 
 #--- Modifier Write
@@ -148,7 +148,7 @@ enum @variableStateAutomaton {
 #---------------------------------------------------------------------------*
 
 enum @localVariableStateAutomaton {
-  localVariableDeclared, localVariableUsed, localVariableDropped
+  constructor localVariableDeclared, localVariableUsed, localVariableDropped ;
 }{
 
 #--- Modifier Write

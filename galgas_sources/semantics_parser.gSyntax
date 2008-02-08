@@ -3801,7 +3801,7 @@ rule <semantic_instruction>
         @lstring enumConstantName ;
         $identifier$ ? enumConstantName ;
         branchConstantSet += ![enumConstantName string] ;
-        [enumConstantesMap searchKey !enumConstantName] ;
+        [enumConstantesMap searchKey !enumConstantName ?*] ;
         if [allBranchConstantSet hasKey ![enumConstantName string]] then
           error enumConstantName: "this constant is already used in current switch instruction" ;
         end if ;
@@ -4316,7 +4316,7 @@ rule <parse_match_case>
   $identifier$ ? outEnumConstantName ;
 #--- Verify constant belongs to constants map
   if inIsEnumeration then
-    [inEnumMessageMap searchKey !outEnumConstantName] ;
+    [inEnumMessageMap searchKey !outEnumConstantName ?*] ;
   else
     error outEnumConstantName : "a class that inherit from '@" . [inTypeName string] . "' abstract class is expected here" ;
   end if ;
@@ -6133,11 +6133,22 @@ rule <semantics_declaration>
 #--- Enum constants
   @enumConstantMap constantMap [emptyMap] ;
   repeat
-    @lstring constantName ;
-    $identifier$ ? constantName ;
-    [!?constantMap insertKey !constantName] ;
+    @bool hasConstructor ;
+    select
+      $constructor$ ;
+      hasConstructor := true ;
+    or
+      hasConstructor := false ;
+    end select ;
+    repeat
+      @lstring constantName ;
+      $identifier$ ? constantName ;
+      [!?constantMap insertKey !constantName !hasConstructor] ;
+    while
+      $,$ ;
+    end repeat ;
+    $;$ ;
   while
-    $,$ ;
   end repeat ;
   $}$ ;
   ${$ ;
@@ -6180,17 +6191,17 @@ rule <semantics_declaration>
       signature += !type_semantique !argumentConstantIn ;
     end select ;
     ${$ ;
-    @enumConstantMap definedSourceMap [emptyMap] ;
+    @enumUsedConstantMap definedSourceMap [emptyMap] ;
     @enumModifierDefinitionList enumActionDefinitionList [emptyList] ;
     repeat
       @lstring sourceName ;
       $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName] ;
+      [constantMap searchKey !sourceName ?*] ;
       [!?definedSourceMap insertKey !sourceName] ;
       $->$ ;
       @lstring targetName ;
       $identifier$ ? targetName ;
-      [constantMap searchKey !targetName] ;
+      [constantMap searchKey !targetName ?*] ;
       @typeInstructionList instructionList [emptyList] ;
       select
         $;$ ;
@@ -6213,7 +6224,7 @@ rule <semantics_declaration>
     while
     end repeat ;
    #--- Check all enum values are used for source
-    foreach constantMap (@lstring inConstant) :
+    foreach constantMap (@lstring inConstant *) :
       if not [definedSourceMap hasKey ![inConstant string]] then
         error here: "The '" . [inConstant string] . "' is not handled" ;
       end if ;
@@ -6255,12 +6266,12 @@ rule <semantics_declaration>
       signature += !type_semantique !argumentConstantIn ;
     end select ;
     ${$ ;
-    @enumConstantMap definedSourceMap [emptyMap] ;
+    @enumUsedConstantMap definedSourceMap [emptyMap] ;
     @enumMethodDefinitionList enumActionDefinitionList [emptyList] ;
     repeat
       @lstring sourceName ;
       $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName] ;
+      [constantMap searchKey !sourceName ?*] ;
       [!?definedSourceMap insertKey !sourceName] ;
       @typeInstructionList instructionList [emptyList] ;
       select
@@ -6284,7 +6295,7 @@ rule <semantics_declaration>
     while
     end repeat ;
    #--- Check all enum values are used for source
-    foreach constantMap (@lstring inConstant) :
+    foreach constantMap (@lstring inConstant *) :
       if not [definedSourceMap hasKey ![inConstant string]] then
         error here: "The '" . [inConstant string] . "' is not handled" ;
       end if ;
@@ -6311,7 +6322,7 @@ rule <semantics_declaration>
     $}$ ;
   #--- Build message string list
     @L_lstringList messageStringList [emptyList] ;
-    foreach constantMap (@lstring constantName) :
+    foreach constantMap (@lstring constantName *) :
       @lstring name := [@lstring new ![constantName string] !here] ;
       @lstring cstString ;
       [cstMessageStringMap searchKey !name ?cstString] ;
@@ -6346,11 +6357,22 @@ label importSemantics
 #--- Enum constants
   @enumConstantMap constantMap [emptyMap] ;
   repeat
-    @lstring constantName ;
-    $identifier$ ? constantName ;
-    [!?constantMap insertKey !constantName] ;
+    @bool hasConstructor ;
+    select
+      $constructor$ ;
+      hasConstructor := true ;
+    or
+      hasConstructor := false ;
+    end select ;
+    repeat
+      @lstring constantName ;
+      $identifier$ ? constantName ;
+      [!?constantMap insertKey !constantName !hasConstructor] ;
+    while
+      $,$ ;
+    end repeat ;
+    $;$ ;
   while
-    $,$ ;
   end repeat ;
   $}$ ;
   ${$ ;
@@ -6380,17 +6402,17 @@ label importSemantics
       end select ;
     end select ;
     ${$ ;
-    @enumConstantMap definedSourceMap [emptyMap] ;
+    @enumUsedConstantMap definedSourceMap [emptyMap] ;
     @enumModifierDefinitionList enumActionDefinitionList [emptyList] ;
     repeat
       @lstring sourceName ;
       $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName] ;
+      [constantMap searchKey !sourceName ?*] ;
       [!?definedSourceMap insertKey !sourceName] ;
       $->$ ;
       @lstring targetName ;
       $identifier$ ? targetName ;
-      [constantMap searchKey !targetName] ;
+      [constantMap searchKey !targetName ?*] ;
       select
         $;$ ;
       or
@@ -6424,12 +6446,12 @@ label importSemantics
       end select ;
     end select ;
     ${$ ;
-    @enumConstantMap definedSourceMap [emptyMap] ;
+    @enumUsedConstantMap definedSourceMap [emptyMap] ;
     @enumMethodDefinitionList enumActionDefinitionList [emptyList] ;
     repeat
       @lstring sourceName ;
       $identifier$ ? sourceName ;
-      [constantMap searchKey !sourceName] ;
+      [constantMap searchKey !sourceName ?*] ;
       [!?definedSourceMap insertKey !sourceName] ;
       select
         $;$ ;
