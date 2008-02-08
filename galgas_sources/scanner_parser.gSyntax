@@ -1162,7 +1162,6 @@ rule <lexical_send_instruction>
     @AC_galgasType natureAttribut ;
     [table_attributs searchKey !nomAttribut ?natureAttribut] ;
     @typeGalgas_lstring lgs := (cast natureAttribut if >= @typeGalgas_lstring else error nomAttribut) ;
-    # ¤ extract natureAttribut->@typeGalgas_lstring () error nomAttribut : messageGalgasType ;
     $in$ ;
     @lstring listName ;
     $identifier$ ?listName ;
