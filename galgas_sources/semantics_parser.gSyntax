@@ -936,7 +936,6 @@ rule <import_headers_semantics_and_grammars>
           @AC_semanticsEntity e ;
           [ioComponentSemanticsEntitiesMap searchKey !typeName ?e] ;
           @AC_galgasType type := [(cast e if >= @typeEntiteType else error typeName) aDefType] ;
-          # ¤extract e->@typeEntiteType (?type) error typeName : messageTypeEntite ;
           formalParametersList += !type !passingMode ;
         end foreach ;
         [!?grammarAltMap insertKey !altName !formalParametersList !kReturnedEntity] ;
@@ -1212,7 +1211,6 @@ rule <semantics_declaration>
     [ioComponentSemanticsEntitiesMap searchKey ! routineName ?entite] ;
     @L_EXsignature listeDeTypesPrecedenteDeclaration :=
       [(cast entite if == @typeEntiteRoutine else error routineName) aListeArgumentsFormels] ;
-    # ¤ extract entite->@typeEntiteRoutine (?listeDeTypesPrecedenteDeclaration) error routineName : messageTypeEntite ;
     verifierCompatibiliteSignatures
       !listeDeTypesPrecedenteDeclaration
       !listeDeTypes
@@ -1289,7 +1287,6 @@ label importSemantics
     [ioComponentSemanticsEntitiesMap searchKey ! routineName ?entite] ;
     @L_EXsignature listeDeTypesPrecedenteDeclaration :=
       [(cast entite if == @typeEntiteRoutine else error routineName) aListeArgumentsFormels] ;
-    # ¤ extract entite->@typeEntiteRoutine (?listeDeTypesPrecedenteDeclaration) error routineName : messageTypeEntite ;
     verifierCompatibiliteSignatures
       !listeDeTypesPrecedenteDeclaration
       !listeDeTypes
@@ -1379,7 +1376,6 @@ rule <parent_class>
   [ioComponentSemanticsEntitiesMap searchKey ! outSuperClassName ?entite] ;
   @AC_galgasType typeUtilisateur :=
       [(cast entite if >= @typeEntiteType else error outSuperClassName) aDefType] ;
- # ¤ extract entite->@typeEntiteType (?typeUtilisateur) error outSuperClassName : messageTypeEntite ;
   @typeGalgasClassType classType := (cast typeUtilisateur if >= @typeGalgasClassType else error outSuperClassName) ;
   tableDesMethodes := [classType mReaderMap] ;
   listeTousAttributsSemantiques := [classType mNonExternAttributesList] ;
@@ -1387,15 +1383,6 @@ rule <parent_class>
   tableMessagesAbstraits := [classType mMessagesMap] ;
   tableAttributs := [classType mNonExternAttributesMap] ;
   outSuperClassMessage := [classType mClassMessage] ;
-# ¤ extract typeUtilisateur->@typeGalgasClassType (?*
-#                                    ?tableDesMethodes
-#                                    ?listeTousAttributsSemantiques
-#                                    ?tableDesClassesAncetres
-#                                    ?tableMessagesAbstraits
-#                                    ?tableAttributs
-#                                    ?*
-#                                    ?outSuperClassMessage)
-#             error outSuperClassName : messageGalgasType ;
 #--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
   [!?tableDesClassesAncetres insertKey ! outSuperClassName] ;
 label importSemantics
@@ -1419,22 +1406,12 @@ label importSemantics
   [ioComponentSemanticsEntitiesMap searchKey ! superClassName ?entite] ;
   @AC_galgasType typeUtilisateur :=
       [(cast entite if >= @typeEntiteType else error superClassName) aDefType] ;
- # ¤ extract entite->@typeEntiteType (?typeUtilisateur) error outSuperClassName : messageTypeEntite ;
   @typeGalgasClassType classType := (cast typeUtilisateur if >= @typeGalgasClassType else error superClassName) ;
   tableDesMethodes := [classType mReaderMap] ;
   listeTousAttributsSemantiques := [classType mNonExternAttributesList] ;
   tableDesClassesAncetres := [classType mAncestorClassesMap] ;
   tableMessagesAbstraits := [classType mMessagesMap] ;
   tableAttributs := [classType mNonExternAttributesMap] ;
-# ¤ extract typeUtilisateur->@typeGalgasClassType (?*
-#                                    ?tableDesMethodes
-#                                    ?listeTousAttributsSemantiques
-#                                    ?tableDesClassesAncetres
-#                                    ?tableMessagesAbstraits
-#                                    ?tableAttributs
-#                                    ?*
-#                                    ?outSuperClassMessage)
-#             error outSuperClassName : messageGalgasType ;
 #--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
 #--- The direct super class is last inserted one 
   [!?tableDesClassesAncetres insertKey ! superClassName] ;
@@ -2235,7 +2212,6 @@ rule <type_parsing>
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey !outTypeName ?entite] ;
     outTypeDefinition := [(cast entite if >= @typeEntiteType else error outTypeName) aDefType] ;
-    # ¤ extract entite->@typeEntiteType (?outTypeDefinition) error outTypeName : messageTypeEntite ;
   elsif [inTableEnAvant hasKey ![outTypeName string]] then
     [inTableEnAvant searchKey !outTypeName ? outTypeDefinition] ;
   else
@@ -2823,9 +2799,6 @@ rule <semantic_instruction>
   @typeGalgasClassType classType := (cast typeVarSource if >= @typeGalgasClassType else error nomVarSource) ;
   @lstring nomTypeSource := [classType mClassTypeName] ;
   @typeClassInheritedMessagesMap tableMessagesAbstraits := [classType mMessagesMap] ;
-# ¤ extract typeVarSource->@typeGalgasClassType
-#           (?nomTypeSource ?* ?* ?* ?tableMessagesAbstraits ?3*)
-#           error nomVarSource : messageGalgasType ;
 #--- Parse simple or structured extract instruction
   @typeInstruction instruction ;
   <extract_instruction>
@@ -2874,17 +2847,9 @@ rule <extract_instruction>
   @AC_semanticsEntity entite ;
   [ioComponentSemanticsEntitiesMap searchKey !nomClasse ?entite] ;
   @AC_galgasType leType := [(cast entite if >= @typeEntiteType else error nomClasse) aDefType] ;
-  # ¤ extract entite->@typeEntiteType (?leType) error nomClasse : messageTypeEntite ;
   @typeGalgasClassType classType := (cast leType if >= @typeGalgasClassType else error nomClasse) ;
   @typeListeAttributsSemantiques listeAttributsSemantiques := [classType mNonExternAttributesList] ;
   @typeSuperClassesMap tableDesClassesAncetres := [classType mAncestorClassesMap] ;
-# ¤ extract leType->@typeGalgasClassType
-#               (?*
-#                ?*
-#                ?listeAttributsSemantiques
-#                ?tableDesClassesAncetres
-#                ?4*)
-#             error nomClasse : messageGalgasType ;
 #--- Verify class is an heir of variable type
   if not [tableDesClassesAncetres hasKey ![nomTypeSource string]] then
     error nomClasse : "This class does not inherit from '@" . [nomTypeSource string] . "'" ;
@@ -2958,20 +2923,10 @@ rule <extract_instruction>
         @AC_semanticsEntity entite ;
         [ioComponentSemanticsEntitiesMap searchKey !nomType1 ?entite] ;
         @AC_galgasType definitionClasse1 := [(cast entite if >= @typeEntiteType else error nomType1) aDefType] ;
-        # ¤ extract entite->@typeEntiteType (?definitionClasse1) error nomType1 : messageTypeEntite ;
       #--- Verifier que la classe 'nomType1' herite de la classe 'nomTypeBase1'
         @typeGalgasClassType classType1 := (cast definitionClasse1 if >= @typeGalgasClassType else error nomType1) ;
         @typeListeAttributsSemantiques listeAttributs1 := [classType1 mNonExternAttributesList] ;
         @typeSuperClassesMap tableDesClassesAncetresType1 := [classType1 mAncestorClassesMap] ;
-#  ¤      @typeSuperClassesMap tableDesClassesAncetresType1 ;
-#        @typeListeAttributsSemantiques listeAttributs1 ;
-#        extract definitionClasse1->@typeGalgasClassType
-#                  (?*
-#                   ?*
-#                   ?listeAttributs1
-#                   ?tableDesClassesAncetresType1
-#                   ?4*)
-#              error nomType1 : messageGalgasType ;
       #--- Verify class is an heir of variable type
         if not [tableDesClassesAncetresType1 hasKey ![nomTypeSource string]] then
           error nomType1 : "This class does not inherit from '@" . [nomTypeSource string] . "'" ;
@@ -3060,9 +3015,6 @@ rule <semantic_instruction>
   @typeGalgasClassType sourceClassType := (cast sourceExpressionType if >= @typeGalgasClassType else error here) ;
   @lstring sourceExpressionTypeName := [sourceClassType mClassTypeName] ;
   @string sourceClassMessage := [sourceClassType mClassMessage] ;
-# ¤ extract sourceExpressionType->@typeGalgasClassType
-#           (? sourceExpressionTypeName ?7*)
-#           error here : messageGalgasType ;
 #--- When branches
   @typeInstructionList elseBranchInstructionsList [emptyList] ;
   @typeStructuredCastBranchList branchList [emptyList] ;
@@ -3085,11 +3037,9 @@ rule <semantic_instruction>
         @AC_semanticsEntity entite ;
         [ioComponentSemanticsEntitiesMap searchKey !castedTypeName ?entite] ;
         @AC_galgasType typeDefinition := [(cast entite if >= @typeEntiteType else error castedTypeName) aDefType] ;
-        # ¤extract entite->@typeEntiteType (?typeDefinition) error castedTypeName : messageTypeEntite ;
       #--- Check the type is a class
         @typeSuperClassesMap superClassMap :=
            [(cast typeDefinition if >= @typeGalgasClassType else error castedTypeName) mAncestorClassesMap] ;
-        # ¤ extract typeDefinition->@typeGalgasClassType (?3* ?superClassMap ?4*) error castedTypeName : messageGalgasType ;
       #--- Verify class is an heir of variable type
         @string sourceExpressionTypeNameString := [sourceExpressionTypeName string] ;
         if not checkForKindOfClass then
@@ -3546,7 +3496,6 @@ rule <warning_instruction>
   ;
 #--- Check that error message is a @string instance
   @typeGalgas_string gs := (cast warningMessageExpressionType if >= @typeGalgas_string else error here) ;
-  # ¤ extract warningMessageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
 #--- Generate instruction
   @typeInstruction instruction ;
   instruction := [@typeWarningInstruction new !errorExpression !warningMessageExpression !here] ;
@@ -3669,7 +3618,6 @@ rule <semantic_instruction>
   ;
 #--- Check that error message is a @string instance
   @typeGalgas_string gs := (cast messageExpressionType if >= @typeGalgas_string else error here) ;
-# ¤  extract messageExpressionType->@typeGalgas_string () error here : messageGalgasType ;
 #--- Construire l'instruction
   @typeInstruction instruction := [@typeMessageInstruction new !messageExpression !instructionLocation] ;
   ioInstructionList += !instruction ;
@@ -3708,7 +3656,6 @@ rule <semantic_instruction>
           ?resultType
         ;
         @typeGalgas_bool b := (cast resultType if >= @typeGalgas_bool else error here) ;
-        # ¤extract resultType ->@typeGalgas_bool () error here : messageGalgasType ;
         $then$ ;
         @typeInstructionList listeInstructionsBrancheTest [emptyList] ;
         <semantic_instructions_list_no_verif>
@@ -3743,7 +3690,7 @@ rule <semantic_instruction>
           !inMetamodelEntityMap
           !inTreewalkingComponentMap
         ;
-     end select ; 
+      end select ; 
     end block (!here) ;
     $end$ ;
     $if$ ;
@@ -3788,7 +3735,6 @@ rule <semantic_instruction>
   @typeGalgas_enum e := (cast resultType if >= @typeGalgas_enum else error here) ;
   @lstring enumTypeName := [e mEnumTypeName] ;
   @enumConstantMap enumConstantesMap := [e mEnumConstantesMap] ;
-  # ¤ extract resultType->@typeGalgas_enum (?enumTypeName ?enumConstantesMap ?*) error here : messageGalgasType ;
 #---- When branches
   @stringset allBranchConstantSet [emptySet] ;
   @L_switchBranchlist switchBranchlist [emptyList] ;
@@ -3970,7 +3916,6 @@ rule <semantic_instruction>
   @AC_galgasType typeNomFichierSource ;
   <read_access> ?nomFichierSource ?nomCppFichierSource ?typeNomFichierSource !?ioVariablesMap ;
   @typeGalgas_lstring gs := (cast typeNomFichierSource if >= @typeGalgas_lstring else error nomFichierSource) ;
-# ¤  extract typeNomFichierSource ->@typeGalgas_lstring () error nomFichierSource : messageGalgasType ;
 #--- Analyse des arguments effectifs
   @typeExpressionList expressionsList ;
   @L_actualParametersSignature listeTypesParametresEffectifs ;
@@ -3987,7 +3932,6 @@ rule <semantic_instruction>
   @C_grammarForSemantics gfs := (cast e if >= @C_grammarForSemantics else error grammarName) ;
   @M_nonterminalSymbolAlts startSymbolAltMap := [gfs mGrammarAltMap] ;
   @lstring lexiqueClassName := [gfs mLexiqueClassName] ;
-  # ¤ extract e->@C_grammarForSemantics (?startSymbolAltMap ?lexiqueClassName) error grammarName : messageTypeEntite ;
   @L_EXsignature startSymbolSignature ;
   @lstring returnedEntity ;
   [startSymbolAltMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
@@ -4012,7 +3956,6 @@ rule <semantic_instruction>
     [!?ioVariablesMap searchForWriteAccess !metamodelClassVariableName ?type ?*] ;
     @lstring variableEntityName :=
       [(cast type if >= @typeGalgas_singleReferenceEntity else error metamodelClassVariableName) mEntityTypeName] ;
-# ¤    extract type->@typeGalgas_singleReferenceEntity (?variableEntityName ?2*) error metamodelClassVariableName : messageGalgasType ;
     if [returnedEntity string] != [variableEntityName string] then
       error metamodelClassVariableName: "this variable has the '@" . [variableEntityName string]
         . "', but a variable of '@" . [returnedEntity string] . "' type is expected" ;
@@ -4075,7 +4018,6 @@ rule <semantic_instruction>
 #--- Check variable type
   @lstring variableEntity :=
       [(cast modelVariableType if >= @typeGalgas_singleReferenceEntity else error modelVariableName) mEntityTypeName] ;
-  # ¤ extract modelVariableType ->@typeGalgas_singleReferenceEntity (?variableEntity ?2*) error modelVariableName : messageGalgasType ;
   if [variableEntity string] != rootEntityName then
     error modelVariableName: "the '" . [modelVariableName string]
     . "' variable is an instance of '@" . [variableEntity string]
@@ -4266,21 +4208,11 @@ rule <parse_match_case>
   @AC_semanticsEntity entite ;
   [ioComponentSemanticsEntitiesMap searchKey !outTypeName ?entite] ;
   @AC_galgasType definitionClasse1 := [(cast entite if >= @typeEntiteType else error outTypeName) aDefType] ;
-  # ¤ extract entite->@typeEntiteType (?definitionClasse1) error outTypeName : messageTypeEntite ;
 #--- Verifier que la classe 'outTypeName' herite de la classe 'baseTypeName1'
   @typeGalgasClassType classType := (cast definitionClasse1 if >= @typeGalgasClassType else error outTypeName) ;
   @typeSuperClassesMap tableDesClassesAncetresType1 := [classType mAncestorClassesMap] ;
   @typeListeAttributsSemantiques listeAttributs1 := [classType mNonExternAttributesList] ;
   @bool isAbstract := [classType mClassIsAbstract] ;
-# ¤ extract definitionClasse1->@typeGalgasClassType
-#                 (?*
-#                   ?*
-#                   ?listeAttributs1
-#                   ?tableDesClassesAncetresType1
-#                   ?*
-#                   ?*
-#                   ?isAbstract ?*)
-#              error outTypeName : messageGalgasType ;
 #--- Check class is not abstract
   if isAbstract then
     error outTypeName : "an abstract class is not allowed here" ;
@@ -4599,19 +4531,11 @@ rule <semantics_declaration>
     @AC_semanticsEntity theEntity ;
     [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ? theEntity] ;
     @AC_galgasType aType := [(cast theEntity if >= @typeEntiteType else error mapTypeName) aDefType] ;
-    # ¤ extract theEntity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
     @typeGalgasMapType mapType := (cast aType if >= @typeGalgasMapType else error mapTypeName) ;
     @typeListeAttributsSemantiques mapAttributesList := [mapType mNonExternAttributesList] ;
     @typeTableBlocsDeTable tableMethodesSurcharger := [mapType aTableMethodesSurcharger] ;
     @mapModifierMap modifierMethodMap := [mapType mModifierMethodMap] ;
     @mapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
-#  ¤  extract aType->@typeGalgasMapType (
-#      ?*
-#      ?mapAttributesList
-#      ?tableMethodesSurcharger
-#      ?modifierMethodMap
-#      ?readerMethodMap)
-#      error mapTypeName : messageGalgasType ;
     $)$ ;
     ${$ ;
     @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
@@ -4673,19 +4597,11 @@ label importSemantics
     @AC_semanticsEntity theEntity ;
     [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ? theEntity] ;
     @AC_galgasType aType := [(cast theEntity if >= @typeEntiteType else error mapTypeName) aDefType] ;
-    # ¤ extract theEntity->@typeEntiteType (?aType) error mapTypeName : messageTypeEntite ;
     @typeGalgasMapType mapType := (cast aType if >= @typeGalgasMapType else error mapTypeName) ;
     @typeListeAttributsSemantiques mapAttributesList := [mapType mNonExternAttributesList] ;
     @typeTableBlocsDeTable tableMethodesSurcharger := [mapType aTableMethodesSurcharger] ;
     @mapModifierMap modifierMethodMap := [mapType mModifierMethodMap] ;
     @mapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
-#    extract aType->@typeGalgasMapType (
-#      ?*
-#      ?mapAttributesList
-#      ?tableMethodesSurcharger
-#      ?modifierMethodMap
-#      ?readerMethodMap)
-#      error mapTypeName : messageGalgasType ;
     $)$ ;
     ${$ ;
     @mapIndexSearchReaderMap mapIndexSearchReaderMap [emptyMap] ;
@@ -5952,7 +5868,6 @@ rule <formal_argument_type>
     @AC_semanticsEntity entite ;
     [inComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     type_semantique := [(cast entite if >= @typeEntiteType else error outGalgasTypeName) aDefType] ;
-    # ¤ extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
   else # Declaration 'enavant' ?
     [tableEnAvant searchKey !outGalgasTypeName ?type_semantique] ;
   end if ;
@@ -5976,11 +5891,9 @@ rule <formal_argument_type>
     @AC_semanticsEntity entite ;
     [inComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     type_semantique := [(cast entite if >= @typeEntiteType else error outGalgasTypeName) aDefType] ;
-    # ¤ extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
   else # Declaration 'enavant' ?
     [tableEnAvant searchKey !outGalgasTypeName ?type_semantique] ;
     @typeGalgasUndefinedListType x := (cast type_semantique if >= @typeGalgasUndefinedListType else error outGalgasTypeName) ;
-    # ¤ extract type_semantique->@typeGalgasUndefinedListType (?*) error outGalgasTypeName : messageGalgasType ;
   end if ;
 label importGrammarForSemantics
   !@lstring outGalgasTypeName 
@@ -6003,11 +5916,9 @@ rule <formal_argument_type>
     @AC_semanticsEntity entite ;
     [inComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     type_semantique := [(cast entite if >= @typeEntiteType else error outGalgasTypeName) aDefType] ;
-    # ¤ extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
   else # Declaration 'enavant' ?
     [tableEnAvant searchKey !outGalgasTypeName ?type_semantique] ;
     @typeGalgasUndefinedMapType x := (cast type_semantique if >= @typeGalgasUndefinedMapType else error outGalgasTypeName) ;
-# ¤    extract type_semantique->@typeGalgasUndefinedMapType (?*) error outGalgasTypeName : messageGalgasType ;
   end if ;
 label importGrammarForSemantics
   !@lstring outGalgasTypeName 
@@ -6031,11 +5942,9 @@ rule <formal_argument_type>
     @AC_semanticsEntity entite ;
     [inComponentSemanticsEntitiesMap searchKey !outGalgasTypeName ?entite] ;
     type_semantique := [(cast entite if >= @typeEntiteType else error outGalgasTypeName) aDefType] ;
-    # ¤ extract entite->@typeEntiteType (?type_semantique) error outGalgasTypeName : messageTypeEntite ;
   else # Declaration 'enavant' ?
     [tableEnAvant searchKey !outGalgasTypeName ?type_semantique] ;
     @typeGalgasUndefinedClassType x := (cast type_semantique if >= @typeGalgasUndefinedClassType else error outGalgasTypeName) ;
-    # ¤ extract type_semantique->@typeGalgasUndefinedClassType (?*) error outGalgasTypeName : messageGalgasType ;
   end if ;
 label importGrammarForSemantics
   !@lstring outGalgasTypeName 

@@ -255,7 +255,6 @@ routine checkNotOperator
   !@AC_galgasType outResultType
 :
   @typeGalgas_bool gb := (cast inOperandType if >= @typeGalgas_bool else error here) ;
-  # ¤ extract inOperandType -> @typeGalgas_bool () error here : messageGalgasType ;
   outResultType := inOperandType ;
 end routine ;
 
@@ -1485,7 +1484,6 @@ rule <factor>
     @AC_semanticsEntity e ;
     [ioEntitiesMap searchKey !className ?e] ;
     outResultType := [(cast e if >= @typeEntiteType else error className) aDefType] ;
-    # ¤ extract e->@typeEntiteType (?outResultType) error className : messageTypeEntite ;
     @typeListeAttributsSemantiques listeAttributsSemantiques ;
     [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques] ;
   #--- Actual arguments
