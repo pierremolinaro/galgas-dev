@@ -593,7 +593,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  e_" << aNomTable << " info  ;\n"
                "  internalEnterIndex (inKey,\n"
                "                      (void *) & info,\n"
-               "                      mSharedMapRoot->rootForKey (inKey),\n"
+               "                      mSharedMapRoot->_mRoot,\n"
                "                      outIndex) ;\n"
                "}\n\n" ;
 
@@ -618,7 +618,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  element_type * p = (element_type *) inPtr ;\n"
                "  sint32 attributeIndex = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;\n"
                "}\n\n" ;
 
 //--- 'removeElement' method
@@ -645,7 +645,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "  if (_isBuilt () && inKey._isBuilt ()) {\n"
                  "    insulateMap () ;\n"
                  "    bool unused ;\n"
-                 "    _internalRemove (mSharedMapRoot->rootForKey (inKey), inKey, removedElement, unused) ;\n"
+                 "    _internalRemove (mSharedMapRoot->_mRoot, inKey, removedElement, unused) ;\n"
                  "    if (removedElement == NULL) {\n"
                  "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n" ;
     current = mNonExternAttributesList.firstObject () ;
@@ -716,7 +716,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     current = current->nextObject () ;
   }
   inCppFile << "    GGS_location existingKeyLocation ;\n"
-               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;\n"
+               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;\n"
                "    if (elementID < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "    }\n"
