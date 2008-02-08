@@ -268,8 +268,16 @@ class @MapModel extends @TypeModel {
 #---------------------------------------------------------------------------*
 
 map @enumConstantMap {
+  @bool mHasConstructor ;
   insert insertKey error message "the '%K' constant is already declared in %L" ;
   search searchKey error message "the '%K' constant is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @enumUsedConstantMap {
+  insert insertKey error message "the '%K' constant is already used in %L" ;
+#  search searchKey error message "the '%K' constant is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -381,7 +389,7 @@ list @typeListeAttributsSemantiques ;
 #---------------------------------------------------------------------------*
 
 enum @localConstantBuildStyleEnum {
-  listStyle, mapStyle, firstIsKeyOtherMapStyle
+  constructor listStyle, mapStyle, firstIsKeyOtherMapStyle ;
 }{
 }
 
@@ -2950,8 +2958,16 @@ class @typeGalgas_enum extends @AC_galgasType {
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
-    [mEnumConstantesMap searchKey !inClassMethodName] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    @bool hasConstructor ;
+    [mEnumConstantesMap searchKey !inClassMethodName ?hasConstructor] ;
+    if hasConstructor then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    else
+      error inClassMethodName:
+        "the '" . [inClassMethodName string] . "' is not declared as constructor"
+        -> outAccessorTypesList
+      ;
+    end if ;
   end method ;
 
 #--- Modifiers
